@@ -57,7 +57,7 @@ public class IntegerParameter extends CountPrimitive
     }
 
     /**
-     * @see de.dante.extex.interpreter.primitives.register.count.IntegerParameter#getKey(
+     * @see de.dante.extex.interpreter.primitives.register.box.AbstractBox#getKey(
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.interpreter.context.Context)
      */
