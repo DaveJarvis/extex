@@ -283,7 +283,7 @@ public class Max1 extends TestCase {
         Interpreter interpreter = new InterpreterFactory(config
                 .getConfiguration("Interpreter")).newInstance();
         TokenStreamFactory factory = new TokenStreamFactory(config
-                .getConfiguration("Reader"), null);
+                .getConfiguration("Reader"), "base");
         interpreter.setTokenStreamFactory(factory);
 
         TestTypesetter typesetter = new TestTypesetter();
