@@ -109,7 +109,7 @@ import de.dante.util.GeneralException;
  *     }
  * }
  * </pre>
- *
+ * <p>
  * Now we can add the NodeVisitor interface. Thus we are forced to define a
  * bunch of methods declared in this interface:
  * </p>
