@@ -92,4 +92,5 @@ public interface Manager {
      * @return the current paragraph builder
      */
     ParagraphBuilder getParagraphBuilder();
+
 }
