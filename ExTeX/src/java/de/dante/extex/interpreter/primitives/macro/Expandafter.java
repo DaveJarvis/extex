@@ -27,7 +27,6 @@ import de.dante.extex.interpreter.type.AbstractCode;
 import de.dante.extex.interpreter.type.ExpandableCode;
 import de.dante.extex.scanner.type.Token;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.GeneralException;
 
 /**
  * This class provides an implementation for the primitive
@@ -88,7 +87,8 @@ public class Expandafter extends AbstractCode implements ExpandableCode {
             throws InterpreterException {
 
         Token t = source.getToken(context);
-        source.push(source.scanToken(context));
+        Token token = source.getToken(context);
+        source.execute(token, context, typesetter);
         source.push(t);
     }
 
@@ -103,7 +103,10 @@ public class Expandafter extends AbstractCode implements ExpandableCode {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        execute(prefix, context, source, typesetter);
+        Token t = source.getToken(context);
+        Token token = source.getToken(context);
+        source.execute(token, context, typesetter);
+        source.push(t);
     }
 
 }
