@@ -194,6 +194,47 @@ public interface Configuration {
             throws ConfigurationException;
 
     /**
+     * Extract a sub-configuration with a given name and a given attribute.
+     * <p>
+     * Consider the following example with the configuration currently rooted
+     * at cfg:
+     * </p>
+     * <pre>
+     *   &lt;cfg&gt;
+     *     . . .
+     *     &lt;abc name="one"&gt;
+     *     . . .
+     *     &lt;/abc&gt;
+     *     &lt;abc name="two"&gt;
+     *     . . .
+     *     &lt;/abc&gt;
+     *     . . .
+     *   &lt;/cfg&gt;
+     * </pre>
+     * <p>
+     * Then <tt>getConfig("abc","two")</tt> returns a new XMLConfig rooted at
+     * the abc with the name attribute "two".
+     * </p>
+     * <p>
+     * If there are more than one tags with the same name then the first one is
+     * used.
+     * </p>
+     * <p>
+     * If there are no tags with the given name then <code>null</code> is
+     * returned.
+     * </p>
+     *
+     * @param key the tag name of the sub-configuration
+     * @param attribute the value of the attribute name
+     *
+     * @return the sub-configuration
+     *
+     * @throws ConfigurationException in case of other errors.
+     */
+    Configuration findConfiguration(String key, String attribute)
+            throws ConfigurationException;
+
+    /**
      * Retrieve a value from the configuration as <i>String</i>.
      * If the value could not be determined then <code>null</code> is
      * returned.
