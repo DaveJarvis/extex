@@ -31,14 +31,14 @@ import de.dante.extex.typesetter.type.noad.util.MathContext;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class OrdNoad extends AbstractNucleusNoad {
+public class OrdinaryNoad extends AbstractNucleusNoad {
 
     /**
      * Creates a new object.
      *
      * @param nucleus the nucleus
      */
-    public OrdNoad(final Noad nucleus) {
+    public OrdinaryNoad(final Noad nucleus) {
 
         super(nucleus);
     }
