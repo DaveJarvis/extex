@@ -159,7 +159,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl
             throws IOException,
                 ConfigurationException {
 
-        super(false);
+        super(true);
 
         int bufferSize = -1;
         String size = config.getAttribute(BUFFERSIZE_ATTRIBUTE).trim();
