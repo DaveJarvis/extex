@@ -102,6 +102,9 @@ public interface TokenSource {
     /**
      * Get the next token from the token stream and check that it is a
      * control sequence or active character.
+     * At the end of all input streams the control sequence "inaccessible"
+     * is insered and an exception is thrown. Thus thismethod will never return
+     * <code>null</code>.
      *
      * <p>
      * This method parses the following syntactic entity:
@@ -165,7 +168,7 @@ public interface TokenSource {
      * This method parses the following syntactic entity:
      * <pre class="syntax">
      *   &lang;equals&rang;
-     *     := {@linkplain #skipSpace() &lang;optional spaces&rang;}
+     *     &rarr; {@linkplain #skipSpace() &lang;optional spaces&rang;}
      *      |  {@linkplain #skipSpace()
      *          &lang;optional spaces&rang;} <tt>=</tt><sub>12</sub> </pre>
      * </doc>
