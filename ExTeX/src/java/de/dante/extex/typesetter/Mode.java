@@ -174,9 +174,9 @@ public abstract class Mode {
     }
 
     /**
-     * ...
+     * Check for a math mode.
      *
-     * @return ...
+     * @return <code>true</code> iff the mode is one of the math modes
      */
     public boolean isMath() {
 
@@ -184,9 +184,9 @@ public abstract class Mode {
     }
 
     /**
-     * ...
+     * Check for a horizontal mode.
      *
-     * @return ...
+     * @return <code>true</code> iff the mode is one of the horizontal modes
      */
     public boolean isHmode() {
 
@@ -194,9 +194,9 @@ public abstract class Mode {
     }
 
     /**
-     * ...
+     * Check for a vertical mode.
      *
-     * @return ...
+     * @return <code>true</code> iff the mode is one of the vertical modes
      */
     public boolean isVmode() {
 
