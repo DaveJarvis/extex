@@ -24,6 +24,7 @@ import java.io.Serializable;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.type.box.Box;
 import de.dante.extex.interpreter.type.box.Boxable;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.GeneralException;
@@ -77,9 +78,13 @@ public class Copy extends BoxPrimitive implements Boxable, Serializable {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        //String key = getKey(source, context);
-        //Box box = context.getBox(key);
-        throw new RuntimeException("unimplemented");
+        String key = getKey(source, context);
+        Box box = context.getBox(key);
+        if (box != null) {
+            typesetter.add(box.getNodes());
+        }
+
+        return true;
     }
 
 }
