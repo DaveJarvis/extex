@@ -89,10 +89,11 @@ public interface Context extends Tokenizer, Serializable {
 
     /**
      * Expand some tokens.
-     * @param tokens the tokens to expand
-     * @param typesetter TODO
      *
-     * @return ...
+     * @param tokens the tokens to expand
+     * @param typesetter the typesetter to use
+     *
+     * @return the expanded tokens
      *
      * @throws GeneralException in case of an error
      */
