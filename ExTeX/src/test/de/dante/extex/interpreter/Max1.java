@@ -32,6 +32,7 @@ import de.dante.extex.typesetter.Mode;
 import de.dante.extex.typesetter.Node;
 import de.dante.extex.typesetter.NodeList;
 import de.dante.extex.typesetter.Typesetter;
+import de.dante.extex.typesetter.paragraphBuilder.ParagraphShape;
 import de.dante.util.UnicodeChar;
 import de.dante.util.configuration.Configuration;
 import de.dante.util.configuration.ConfigurationFactory;
@@ -308,6 +309,14 @@ public class Max1 extends TestCase {
         public Node getLastNode() {
 
             return null;
+        }
+        /**
+         * @see de.dante.extex.typesetter.Typesetter#setParshape(
+         *      de.dante.extex.typesetter.paragraphBuilder.ParagraphShape)
+         */
+        public void setParshape(ParagraphShape parshape) {
+
+            // TODO Auto-generated method stub
         }
     }
 

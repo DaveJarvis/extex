@@ -57,6 +57,26 @@ import de.dante.util.GeneralException;
 public class GlueComponent implements Serializable, FixedGlueComponent {
 
     /**
+     * The field <tt>ZERO</tt> contains the ...
+     */
+    public static GlueComponent ZERO = new GlueComponent(0);
+
+    /**
+     * The field <tt>MINUS_ONE_FIL</tt> contains the ...
+     */
+    public static GlueComponent MINUS_ONE_FIL = new GlueComponent(-1,1);
+
+    /**
+     * The field <tt>MINUS_ONE_FIL</tt> contains the ...
+     */
+    public static GlueComponent ONE_FIL = new GlueComponent(1,1);
+
+    /**
+     * The field <tt>ONE_FILL</tt> contains the ...
+     */
+    public static GlueComponent ONE_FILL = new GlueComponent(1,2);
+
+    /**
      * The constant <tt>FLOAT_DIGITS</tt> contains the number of digits to
      * consider when producing a string representation of this type.
      *
