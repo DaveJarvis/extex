@@ -174,7 +174,6 @@ public class TokenStreamImpl extends TokenStreamBufferImpl {
 
         CharBuffer buffer = decoder.decode(ByteBuffer.wrap(line.getBytes()));
         setBuffer(buffer);
-        pointer = 0;
         return true;
     }
 }

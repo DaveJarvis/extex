@@ -86,7 +86,7 @@ public class TokenStreamBufferImpl extends TokenStreamBaseImpl implements
      * is an invariant: to read a character this pointer has to be advanced
      * first.
      */
-    protected int pointer = -1;
+    private int pointer = -1;
 
     /**
      * The buffer to read from. The line is empty initially.
