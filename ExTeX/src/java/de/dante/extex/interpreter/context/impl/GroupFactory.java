@@ -64,6 +64,7 @@ public class GroupFactory {
      */
     public GroupFactory(final Configuration config)
             throws ConfigurationException {
+
         super();
 
         String classname = config.getAttribute(CLASS_ATTRIBUTE);
@@ -73,8 +74,8 @@ public class GroupFactory {
         }
 
         try {
-            constructor = Class.forName(classname).getConstructor(
-                    new Class[]{Group.class});
+            constructor = Class.forName(classname)
+                    .getConstructor(new Class[]{Group.class});
         } catch (SecurityException e) {
             throw new ConfigurationInstantiationException(e);
         } catch (NoSuchMethodException e) {
