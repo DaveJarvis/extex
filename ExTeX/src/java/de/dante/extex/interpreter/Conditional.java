@@ -19,6 +19,8 @@
 
 package de.dante.extex.interpreter;
 
+import java.io.Serializable;
+
 import de.dante.util.Locator;
 
 /**
@@ -27,7 +29,7 @@ import de.dante.util.Locator;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Conditional {
+public class Conditional implements Serializable {
 
     /**
      * The field <tt>locator</tt> contains the locator to the position of the

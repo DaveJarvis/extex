@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -20,6 +20,7 @@
 package de.dante.util.framework.i18n;
 
 import java.io.PrintStream;
+import java.io.Serializable;
 
 /**
  * The localizer is a convenience class which joins the features of a resource
@@ -28,7 +29,7 @@ import java.io.PrintStream;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface Localizer {
+public interface Localizer extends Serializable {
 
     /**
      * Getter for the value of a format string associated to a given key.

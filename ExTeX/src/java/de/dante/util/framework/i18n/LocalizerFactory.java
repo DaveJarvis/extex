@@ -47,7 +47,7 @@ public final class LocalizerFactory {
          * The field <tt>bundle</tt> contains the resource bundle for this
          * instance or <code>null</code> if none has been loaded yet.
          */
-        private ResourceBundle bundle = null;
+        private transient ResourceBundle bundle = null;
 
         /**
          * The field <tt>bundleName</tt> contains the name of the resource
