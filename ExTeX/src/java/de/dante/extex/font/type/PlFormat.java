@@ -21,6 +21,8 @@ package de.dante.extex.font.type;
 
 import java.io.IOException;
 
+import de.dante.extex.font.exception.FontException;
+
 /**
  * Interface for the PL-Format.
  *
@@ -38,6 +40,7 @@ public interface PlFormat {
      *
      * @param out  the plwriter
      * @throws IOException if an IO-error occurs.
+     * @throws FontException if a font-error occurs.
      */
-    void toPL(PlWriter out) throws IOException;
+    void toPL(PlWriter out) throws IOException, FontException;
 }

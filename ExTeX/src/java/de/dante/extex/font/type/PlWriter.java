@@ -143,6 +143,16 @@ public class PlWriter extends PrintWriter {
     }
 
     /**
+     * Prints <code>R</code> prefix and real number.
+     * @param   d    the real number.
+     * @return Return this, reference for subsequent printing.
+     */
+    public PlWriter addReal(final double d) {
+
+        return out(" R " + d);
+    }
+
+    /**
      * Roman or Italic slope
      */
     private static final char[] RI = {'R', 'I'};
@@ -259,8 +269,26 @@ public class PlWriter extends PrintWriter {
 
         if (fw != null && fw.getValue() != 0) {
             plopen(name).addReal(fw).plclose();
+        } else {
+            if (printZeroWidth && "CHARWD".equals(name)) {
+                plopen(name).addReal(0.0d).plclose();
+            }
         }
         return this;
+    }
+
+    /**
+     * Print a zero fixpointwidth.
+     */
+    private boolean printZeroWidth = false;
+
+    /**
+     * Print a zero fixpointwidth.
+     * @param pzw   print or not
+     */
+    public void printZeroWidth(final boolean pzw) {
+
+        printZeroWidth = pzw;
     }
 
     /**

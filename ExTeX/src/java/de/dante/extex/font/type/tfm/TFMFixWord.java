@@ -87,6 +87,14 @@ public class TFMFixWord implements Serializable {
 
     /**
      * Create a new object
+     */
+    public TFMFixWord() {
+
+        value = 0;
+    }
+
+    /**
+     * Create a new object
      *
      * @param val the values as String
      */
@@ -214,5 +222,14 @@ public class TFMFixWord implements Serializable {
             v = TFMConstants.CONST_10 * (v & mask);
         } while (v > (delta *= TFMConstants.CONST_10));
         return buf.toString();
+    }
+
+    /**
+     * Set the value.
+     * @param v The value to set.
+     */
+    public void setValue(final long v) {
+
+        value = v;
     }
 }

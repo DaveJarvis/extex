@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,44 +17,33 @@
  *
  */
 
-package de.dante.extex.font.type.tfm;
+package de.dante.extex.font.type.vf.exception;
 
+import de.dante.extex.font.exception.FontException;
 
 /**
- * TFM-Kerning
- * <p>
- * Kerning instruction
- * </p>
+ * VF-Font-Exception: pre command not found.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class TFMKerning extends TFMLigKern {
+
+public class VFPreNotFoundException extends FontException {
 
     /**
-     * Create a new object
-     *
-     * @param skip  the skip amount to the next instruction.
-     * @param next  the code of the next character.
-     * @param k     the amount of kerning between the current and
-     *              the next characters.
+     * Create a new object.
      */
-    public TFMKerning(final int skip, final short next, final TFMFixWord k) {
+    public VFPreNotFoundException() {
 
-        super(skip, next);
-        kern = k;
+        super();
     }
 
     /**
-     * The amount of kerning
+     * Create a new object.
+     * @param message   the message
      */
-    private TFMFixWord kern;
+    public VFPreNotFoundException(final String message) {
 
-    /**
-     * @see de.dante.extex.font.type.tfm.TFMLigKern#getKern()
-     */
-    public TFMFixWord getKern() {
-
-        return kern;
+        super(message);
     }
 }

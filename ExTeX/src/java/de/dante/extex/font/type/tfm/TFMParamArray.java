@@ -177,6 +177,7 @@ public class TFMParamArray implements XMLConvertible, PlFormat, Serializable {
             if (name.length() != 0) {
                 e.setAttribute("name", name);
             }
+            e.setAttribute("value_fw", String.valueOf(table[i].getValue()));
             e.setAttribute("value", table[i].toStringComma());
             element.addContent(e);
         }

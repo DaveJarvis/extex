@@ -84,6 +84,7 @@ public class TFMItalicArray implements XMLConvertible, Serializable {
         for (int i = 0; i < table.length; i++) {
             Element e = new Element("italic");
             e.setAttribute("id", String.valueOf(i));
+            e.setAttribute("value_fw", String.valueOf(table[i].getValue()));
             e.setAttribute("value", table[i].toStringComma());
             element.addContent(e);
         }

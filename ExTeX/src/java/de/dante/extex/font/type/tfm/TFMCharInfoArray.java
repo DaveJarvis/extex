@@ -354,6 +354,19 @@ public class TFMCharInfoArray implements XMLConvertible, PlFormat, Serializable 
     }
 
     /**
+     * Returns the charinfoword for the character.
+     * @param i the position of the character
+     * @return Returns the charinfoword for the character.
+     */
+    public TFMCharInfoWord getCharInfoWord(final int i) {
+
+        if (i >= 0 && i < charinfoword.length) {
+            return charinfoword[i];
+        }
+        return null;
+    }
+
+    /**
      * @see de.dante.extex.font.type.PlFormat#toPL(de.dante.extex.font.type.PlWriter)
      */
     public void toPL(final PlWriter out) throws IOException {

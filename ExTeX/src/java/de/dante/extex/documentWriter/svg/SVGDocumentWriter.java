@@ -241,7 +241,8 @@ public class SVGDocumentWriter
     private Dimen currentY = new Dimen();
 
     /**
-     * @see de.dante.extex.documentWriter.DocumentWriter#shipout(de.dante.extex.typesetter.NodeList)
+     * @see de.dante.extex.documentWriter.DocumentWriter#shipout(
+     *      de.dante.extex.typesetter.type.NodeList)
      */
     public void shipout(final NodeList nodes) throws IOException,
             GeneralException {
