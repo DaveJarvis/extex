@@ -115,7 +115,7 @@ public class DviXmlTest extends TestCase {
      */
     public void testlistings() throws Exception {
 
-        Element root = readXML(1);
+        /*Element root = */readXML(1);
 
     }
 
