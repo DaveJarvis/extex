@@ -55,7 +55,7 @@ public class DumpDocumentWriter implements DocumentWriter {
     /**
      * @see de.dante.extex.documentWriter.DocumentWriter#setOutputStream(java.io.OutputStream)
      */
-    public void setOutputStream(OutputStream os) {
+    public void setOutputStream(final OutputStream os) {
     }
 
     /**

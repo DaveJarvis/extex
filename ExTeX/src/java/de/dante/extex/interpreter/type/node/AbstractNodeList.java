@@ -93,7 +93,7 @@ public abstract class AbstractNodeList extends AbstractNode
      * @param sb the target StringBuffer
      * @param prefix ...
      */
-    protected void toString(StringBuffer sb, String prefix) {
+    protected void toString(final StringBuffer sb, final String prefix) {
         sb.append("(");
         sb.append(prefix);
 

@@ -149,7 +149,7 @@ public final class Messages {
      *
      * @return the expanded format string
      */
-    public static String format(final String fmt, final Object a, 
+    public static String format(final String fmt, final Object a,
             final Object b, final Object c, final Object d) {
         return MessageFormat.format(format(fmt), new Object[]{a, b, c, d});
     }

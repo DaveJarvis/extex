@@ -90,7 +90,7 @@ public class MacroCode extends AbstractCode implements Code {
      * @return ...
      */
     private Tokens[] getArgs(final TokenSource source) {
-        Tokens[] ta = new Tokens[10];
+        Tokens[] ta = new Tokens[2];
         Tokens t    = new Tokens();
         //TODO
         return ta;
