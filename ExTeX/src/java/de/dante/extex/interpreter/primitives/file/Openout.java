@@ -25,8 +25,8 @@ import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.type.file.OutFile;
-import de.dante.extex.interpreter.type.node.WhatsItOpenNode;
 import de.dante.extex.typesetter.Typesetter;
+import de.dante.extex.typesetter.type.node.WhatsItOpenNode;
 import de.dante.util.GeneralException;
 
 /**

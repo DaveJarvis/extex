@@ -22,8 +22,8 @@ import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.type.AbstractCode;
-import de.dante.extex.interpreter.type.node.SpecialNode;
 import de.dante.extex.typesetter.Typesetter;
+import de.dante.extex.typesetter.type.node.SpecialNode;
 import de.dante.util.GeneralException;
 
 /**
@@ -36,7 +36,7 @@ import de.dante.util.GeneralException;
  *  This primitive sends a string to the backend driver.
  *  The argument is a balanced block of text which is expanded and translated
  *  into a string.  The string is given in
- *  a {@link de.dante.extex.interpreter.type.node.SpecialNode SpecialNode} to
+ *  a {@link de.dante.extex.typesetter.type.node.SpecialNode SpecialNode} to
  *  the typesetter for passing it down.
  * </p>
  * <p>

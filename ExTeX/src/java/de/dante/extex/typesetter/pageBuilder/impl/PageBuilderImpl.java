@@ -22,8 +22,8 @@ package de.dante.extex.typesetter.pageBuilder.impl;
 import java.io.IOException;
 
 import de.dante.extex.documentWriter.DocumentWriter;
-import de.dante.extex.typesetter.NodeList;
 import de.dante.extex.typesetter.pageBuilder.PageBuilder;
+import de.dante.extex.typesetter.type.NodeList;
 import de.dante.util.GeneralException;
 
 /**

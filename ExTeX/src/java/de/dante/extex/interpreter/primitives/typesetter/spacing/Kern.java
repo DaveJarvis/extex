@@ -24,8 +24,8 @@ import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.type.AbstractCode;
 import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.node.ExplicitKernNode;
 import de.dante.extex.typesetter.Typesetter;
+import de.dante.extex.typesetter.type.node.ExplicitKernNode;
 import de.dante.util.GeneralException;
 
 /**
@@ -60,7 +60,7 @@ import de.dante.util.GeneralException;
  *
  * <p>
  *  The effect of the primitive is that a
- *  {@link de.dante.extex.interpreter.type.node.KernNode KernNode} is is sent to
+ *  {@link de.dante.extex.typesetter.type.node.KernNode KernNode} is is sent to
  *  the typesetter.
  * </p>
  *

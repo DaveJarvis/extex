@@ -18,7 +18,7 @@
  */
 package de.dante.extex.typesetter.ligatureBuilder;
 
-import de.dante.extex.typesetter.NodeList;
+import de.dante.extex.typesetter.type.NodeList;
 
 
 /**

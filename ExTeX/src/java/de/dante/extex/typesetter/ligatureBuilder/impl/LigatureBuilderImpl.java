@@ -22,12 +22,12 @@ package de.dante.extex.typesetter.ligatureBuilder.impl;
 import de.dante.extex.font.Glyph;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.font.Font;
-import de.dante.extex.interpreter.type.node.CharNode;
-import de.dante.extex.interpreter.type.node.ImplicitKernNode;
-import de.dante.extex.interpreter.type.node.LigatureNode;
-import de.dante.extex.typesetter.Node;
-import de.dante.extex.typesetter.NodeList;
 import de.dante.extex.typesetter.ligatureBuilder.LigatureBuilder;
+import de.dante.extex.typesetter.type.Node;
+import de.dante.extex.typesetter.type.NodeList;
+import de.dante.extex.typesetter.type.node.CharNode;
+import de.dante.extex.typesetter.type.node.ImplicitKernNode;
+import de.dante.extex.typesetter.type.node.LigatureNode;
 import de.dante.util.UnicodeChar;
 
 /**

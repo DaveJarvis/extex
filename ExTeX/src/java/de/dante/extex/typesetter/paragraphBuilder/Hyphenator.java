@@ -18,7 +18,7 @@
  */
 package de.dante.extex.typesetter.paragraphBuilder;
 
-import de.dante.extex.typesetter.NodeList;
+import de.dante.extex.typesetter.type.NodeList;
 
 
 /**

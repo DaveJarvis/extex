@@ -19,11 +19,11 @@
 package de.dante.extex.typesetter.listMaker;
 
 import de.dante.extex.documentWriter.DocumentWriter;
-import de.dante.extex.interpreter.type.node.CharNodeFactory;
 import de.dante.extex.typesetter.ListMaker;
 import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.typesetter.ligatureBuilder.LigatureBuilder;
 import de.dante.extex.typesetter.paragraphBuilder.ParagraphBuilder;
+import de.dante.extex.typesetter.type.node.CharNodeFactory;
 import de.dante.util.GeneralException;
 
 /**

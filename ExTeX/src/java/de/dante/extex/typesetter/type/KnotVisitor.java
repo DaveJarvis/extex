@@ -18,7 +18,6 @@
  */
 package de.dante.extex.typesetter.type;
 
-import de.dante.extex.typesetter.Node;
 
 
 /**

@@ -22,7 +22,7 @@ package de.dante.extex.hyphenation;
 import java.io.Serializable;
 
 import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.type.node.HorizontalListNode;
+import de.dante.extex.typesetter.type.node.HorizontalListNode;
 import de.dante.util.GeneralException;
 
 /**

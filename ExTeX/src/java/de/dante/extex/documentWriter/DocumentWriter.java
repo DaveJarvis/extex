@@ -20,7 +20,7 @@ package de.dante.extex.documentWriter;
 
 import java.io.IOException;
 
-import de.dante.extex.typesetter.NodeList;
+import de.dante.extex.typesetter.type.NodeList;
 import de.dante.util.GeneralException;
 
 /**

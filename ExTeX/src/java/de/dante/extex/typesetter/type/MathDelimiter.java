@@ -27,7 +27,6 @@ import de.dante.extex.interpreter.exception.helping.MissingNumberException;
 import de.dante.extex.interpreter.primitives.math.delimiter.Delimiter;
 import de.dante.extex.scanner.CodeToken;
 import de.dante.extex.scanner.Token;
-import de.dante.extex.typesetter.NodeList;
 import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.typesetter.type.noad.MathGlyph;
 import de.dante.extex.typesetter.type.noad.util.MathContext;
