@@ -25,7 +25,10 @@ import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This interface describes the capabilities needed for the NativeDef to
+ * work on the class.
+ * This interface is meant to enable to integration of macro definitions
+ * implemented in arbitrary programming languages.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -33,7 +36,7 @@ import de.dante.extex.interpreter.exception.InterpreterException;
 public interface Definer {
 
     /**
-     * TODO gene: missing JavaDoc
+     * Perform a define operation
      *
      * @param prefix the flags
      * @param context the interpreter context

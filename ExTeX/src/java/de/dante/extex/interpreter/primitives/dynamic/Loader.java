@@ -25,7 +25,10 @@ import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.typesetter.Typesetter;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This interface describes the capabilities needed for NativeLoad to
+ * work on the class.
+ * This interface is meant to enable to integration of extensions
+ * implemented in arbitrary programming languages.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -33,7 +36,7 @@ import de.dante.extex.typesetter.Typesetter;
 public interface Loader {
 
     /**
-     * TODO gene: missing JavaDoc
+     * Perform a load operation.
      *
      * @param context the interpreter context
      * @param source the source for new tokens

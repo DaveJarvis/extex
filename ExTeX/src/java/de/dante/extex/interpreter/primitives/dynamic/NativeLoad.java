@@ -29,7 +29,6 @@ import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.AbstractCode;
-import de.dante.extex.interpreter.type.Code;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.configuration.Configuration;
 import de.dante.util.configuration.ConfigurationException;
@@ -73,12 +72,13 @@ public class NativeLoad extends AbstractCode
     }
 
     /**
-     * The field <tt>logger</tt> contains the ...
+     * The field <tt>logger</tt> contains the logger to use.
      */
     private Logger logger = null;
 
     /**
-     * The field <tt>map</tt> contains the ...
+     * The field <tt>map</tt> contains the mapping from a symbolic name to a
+     * configuration.
      */
     private Map map = new HashMap();
 
@@ -110,9 +110,9 @@ public class NativeLoad extends AbstractCode
      * @see de.dante.util.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
-    public void enableLogging(final Logger logger) {
+    public void enableLogging(final Logger theLogger) {
 
-        this.logger = logger;
+        this.logger = theLogger;
     }
 
     /**
