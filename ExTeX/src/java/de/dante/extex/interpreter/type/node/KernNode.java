@@ -97,4 +97,15 @@ public class KernNode extends AbstractNode implements Node, Discartable {
         return visitor.visitKern(value, value2);
     }
 
+    /**
+     * @see de.dante.extex.typesetter.Node#visit(
+     *      de.dante.extex.typesetter.NodeVisitor,
+     *      java.lang.Object)
+     */
+    public Object visit(final NodeVisitor visitor, final Object value)
+            throws GeneralException {
+
+        return visitor.visitKern(this, value);
+    }
+
 }
