@@ -80,7 +80,10 @@ public class BoxPrimitive extends AbstractBox implements Boxable, Serializable {
 
         String key = getKey(source, context);
         Box box = context.getBox(key);
-        context.setBox(key, box, prefix.isGlobal());
+        if (box != null) {
+            typesetter.add(box.getNodes());
+            context.setBox(key, null, prefix.isGlobal());
+        }
         return true;
     }
 
