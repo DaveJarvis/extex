@@ -27,6 +27,7 @@ import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.type.Code;
 import de.dante.extex.interpreter.type.InitializableCode;
 import de.dante.extex.scanner.Catcode;
+import de.dante.extex.scanner.CodeToken;
 import de.dante.extex.scanner.TokenFactory;
 import de.dante.util.GeneralException;
 import de.dante.util.configuration.Configuration;
@@ -99,8 +100,9 @@ public class PrimitiveFactory extends AbstractFactory {
             Code code = (Code) createInstanceForConfiguration(cfg, Code.class,
                     name);
 
-            context.setCode(tokenFactory.createToken(Catcode.ESCAPE, name,
-                    Namespace.DEFAULT_NAMESPACE), code, true);
+            context.setCode((CodeToken) tokenFactory.createToken(
+                    Catcode.ESCAPE, name, Namespace.DEFAULT_NAMESPACE), code,
+                    true);
             if (code instanceof LogEnabled) {
                 ((LogEnabled) code).enableLogging(outputLogger);
             }
