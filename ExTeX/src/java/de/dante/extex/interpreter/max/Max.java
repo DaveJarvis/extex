@@ -291,7 +291,7 @@ public class Max extends Moritz
                     throw e;
                 }
             } catch (Exception e) {
-                //e.printStackTrace();
+                e.printStackTrace();
                 throw new PanicException(e);
             }
         }
@@ -869,7 +869,7 @@ public class Max extends Moritz
     public Object visitTabMark(final TabMarkToken token, final Object ignore)
             throws GeneralException {
 
-        throw new HelpingException(getLocalizer(), "TTP.MisplacedTabMark",
-                token.toString());
+        typesetter.tab(context, this, token);
+        return null;
     }
 }
