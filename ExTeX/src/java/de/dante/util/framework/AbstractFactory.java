@@ -166,7 +166,7 @@ public abstract class AbstractFactory implements Configurable, LogEnabled {
      *
      * @throws ConfigurationException in case of an configuration error
      */
-    private Object createInstanceForConfiguration(final Configuration cfg,
+    protected Object createInstanceForConfiguration(final Configuration cfg,
             final Class target) throws ConfigurationException {
 
         String className = cfg.getAttribute(CLASS_ATTRIBUTE);
