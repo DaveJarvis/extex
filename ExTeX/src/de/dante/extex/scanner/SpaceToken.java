@@ -37,9 +37,11 @@ public class SpaceToken extends AbstractToken implements Token {
      * Creates a new object.
      *
      * @param value the actual value
+     * 
+     * @see "The TeXbook [Chapter 8; p.47]"
      */
     protected SpaceToken(String value) {
-        super(value);
+        super(" ");
     }
 
     /**
