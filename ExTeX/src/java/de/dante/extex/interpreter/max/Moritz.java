@@ -23,6 +23,7 @@ import java.util.ArrayList;
 
 import de.dante.extex.i18n.EofHelpingException;
 import de.dante.extex.i18n.HelpingException;
+import de.dante.extex.i18n.MissingLeftBraceHelpingException;
 import de.dante.extex.i18n.PanicException;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
@@ -646,7 +647,7 @@ public abstract class Moritz
         if (token == null) {
             throw new EofHelpingException(localizer.format("Tokens.Text"));
         } else if (!token.isa(Catcode.LEFTBRACE)) {
-            throw new HelpingException(localizer, "TTP.MissingLeftBrace");
+            throw new MissingLeftBraceHelpingException("???");
         }
 
         int balance = 1;
@@ -1029,7 +1030,6 @@ public abstract class Moritz
         Token token = getNonSpace();
 
         if (token == null) {
-            //TODO: handle EOF
             throw new HelpingException(getLocalizer(), "TTP.MissingNumber");
         }
 
@@ -1066,7 +1066,7 @@ public abstract class Moritz
             //TODO: handle EOF
             throw new RuntimeException("unimplemented");
         } else if (!token.isa(Catcode.LEFTBRACE)) {
-            throw new HelpingException(localizer, "TTP.MissingLeftBrace");
+            throw new MissingLeftBraceHelpingException("???");
         }
 
         int balance = 1;
