@@ -53,6 +53,15 @@ public class TokenStreamStringImplTest extends TestCase {
     private static class MockConfiguration implements Configuration {
 
         /**
+         * @see de.dante.util.configuration.Configuration#getValues(
+         *      de.dante.util.StringList, java.lang.String)
+         */
+        public void getValues(final StringList list, final String key) {
+
+            // TODO unimplemented
+
+        }
+        /**
          * The field <tt>classname</tt> contains the name of the class to use.
          */
         private String classname = "de.dante.extex.interpreter.context.impl.ContextImpl";
