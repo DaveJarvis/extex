@@ -57,16 +57,19 @@ public class KernNode extends AbstractNode implements Node, Discartable {
      */
     public String toText(final String prefix) {
 
-        return "kern " + theKern.toString();
+        StringBuffer sb = new StringBuffer();
+        toText(sb, prefix);
+        return sb.toString();
     }
 
     /**
      * @see de.dante.extex.typesetter.Node#toText(java.lang.StringBuffer,
      *      java.lang.String)
+     * @see "TeX -- The Program [191]"
      */
     public void toText(final StringBuffer sb, final String prefix) {
 
-        sb.append("kern ");
+        sb.append("kern");
         theKern.toString(sb);
     }
 

@@ -41,4 +41,16 @@ public class ImplicitKernNode extends KernNode {
         super(kern);
     }
 
+    /**
+     * @see de.dante.extex.typesetter.Node#toText(java.lang.StringBuffer,
+     *      java.lang.String)
+     * @see "TeX -- The Program [191]"
+     */
+    public void toText(final StringBuffer sb, final String prefix) {
+
+        sb.append("kern ");
+        getWidth().toString(sb);
+    }
+
+
 }
