@@ -34,7 +34,8 @@ import de.dante.util.observer.Observable;
 import de.dante.util.resource.ResourceFinder;
 
 /**
- * ...
+ * This interface represents the outside view on an interpreter. It contains
+ * everything needed to set it up and make it run.
  *
  * @see "TeX -- The Program [1029]"
  *

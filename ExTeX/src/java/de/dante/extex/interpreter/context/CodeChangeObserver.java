@@ -32,7 +32,7 @@ import de.dante.extex.scanner.Token;
 public interface CodeChangeObserver {
 
     /**
-     * ...
+     * Receive a notification on a code change.
      *
      * @param name the token containing the name of the changed entity.
      *  This is a macro or an active character.

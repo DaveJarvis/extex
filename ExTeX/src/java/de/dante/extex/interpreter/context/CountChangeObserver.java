@@ -31,7 +31,7 @@ import de.dante.extex.interpreter.type.count.Count;
 public interface CountChangeObserver {
 
     /**
-     * ...
+     * Receive a notification on a count change.
      *
      * @param name the token containing the name of the changed Count.
      * @param value the new value assigned to the name. In case of
