@@ -134,6 +134,9 @@ public class ErrorHandlerImpl
     protected void showErrorLine(final Logger aLogger, final String message,
             final Locator locator) {
 
+        if (locator == null) {
+            return;
+        }
         String file = locator.getFilename();
         StringBuffer sb = new StringBuffer();
 
