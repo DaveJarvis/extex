@@ -181,6 +181,19 @@ public class Tokens implements Serializable, FixedTokens {
     }
 
     /**
+     * ...
+     *
+     * @return the last token or <code>null</code>
+     */
+    public Token removeLast() {
+
+        if (tokens.size() == 0) {
+            return null;
+        }
+        return (Token) tokens.remove(tokens.size() - 1);
+    }
+
+    /**
      * Return a String, which show all tokens in the list.
      *
      * @return a String, which show all tokens in the list
