@@ -26,38 +26,38 @@ import junit.framework.TestCase;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class OtherTokenTest extends TestCase {
+public class RightBraceTokenTest extends TestCase {
 
     /*
      */
     public static void main(String[] args) {
-        junit.textui.TestRunner.run(OtherTokenTest.class);
+        junit.textui.TestRunner.run(RightBraceTokenTest.class);
     }
 
-    private static Token t = new OtherToken(";");
+    private static Token t = new RightBraceToken(">");
 
     /*
      */
     public void testGetCatcode() {
-        assertEquals(Catcode.OTHER,t.getCatcode());
+        assertEquals(Catcode.RIGHTBRACE,t.getCatcode());
     }
 
     /*
      */
     public void testToString() {
-        assertEquals("the character ;",t.toString());
+        assertEquals("end-group character >",t.toString());
     }
 
     /*
      */
     public void testToText() {
-        assertEquals(";",t.toText());
+        assertEquals(">",t.toText());
     }
 
     /*
      */
     public void testGetValue() {
-        assertEquals(";",t.getValue());
+        assertEquals(">",t.getValue());
     }
 
     /*
@@ -69,39 +69,39 @@ public class OtherTokenTest extends TestCase {
     /*
      */
     public void testEqualsToken1() {
-        Token t1 = new OtherToken(" ");
+        Token t1 = new RightBraceToken(" ");
         Token t2 = new SpaceToken(" ");
-        assertFalse(t.equals(t2));
+        assertFalse(t1.equals(t2));
     }
 
     /*
      */
     public void testEqualsCatcodeString0() {
-        assertTrue(t.equals(Catcode.OTHER,";"));
+        assertTrue(t.equals(Catcode.RIGHTBRACE,">"));
     }
 
     /*
      */
     public void testEqualsCatcodeString1() {
-        assertFalse(t.equals(Catcode.LETTER,";"));
+        assertFalse(t.equals(Catcode.LETTER,">"));
     }
 
     /*
      */
     public void testEqualsCatcodechar0() {
-        assertTrue(t.equals(Catcode.OTHER,';'));
+        assertTrue(t.equals(Catcode.RIGHTBRACE,'>'));
     }
 
     /*
      */
     public void testEqualsCatcodechar1() {
-        assertFalse(t.equals(Catcode.LETTER,';'));
+        assertFalse(t.equals(Catcode.LETTER,'>'));
     }
 
     /*
      */
     public void testEqualschar0() {
-        assertTrue(t.equals(';'));
+        assertTrue(t.equals('>'));
     }
 
     /*
@@ -179,13 +179,13 @@ public class OtherTokenTest extends TestCase {
     /*
      */
     public void testIsa11() {
-        assertTrue(t.isa(Catcode.OTHER));
+        assertFalse(t.isa(Catcode.OTHER));
     }
 
     /*
      */
     public void testIsa12() {
-        assertFalse(t.isa(Catcode.RIGHTBRACE));
+        assertTrue(t.isa(Catcode.RIGHTBRACE));
     }
 
     /*
