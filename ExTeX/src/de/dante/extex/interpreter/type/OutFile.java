@@ -21,7 +21,6 @@ package de.dante.extex.interpreter.type;
 import java.io.File;
 import java.io.Serializable;
 
-import de.dante.extex.scanner.Token;
 import de.dante.util.GeneralException;
 
 /**
@@ -58,7 +57,7 @@ public class OutFile implements Serializable {
      * @throws GeneralException in case of an error
      */
     public void open() throws GeneralException {
-
+        //TODO
     }
 
     /**
@@ -67,17 +66,22 @@ public class OutFile implements Serializable {
      * @throws GeneralException in case of an error
      */
     public void close() throws GeneralException {
+        //TODO
+    }
 
+    public boolean isOpened() {
+        return false; // TODO
     }
 
     /**
      * ...
      *
      * @param t ...
+     *
      * @throws GeneralException in case of an error
      */
-    public void write(final Token t) throws GeneralException {
-
+    public void write(final Tokens t) throws GeneralException {
+        //TODO
     }
 
 }
