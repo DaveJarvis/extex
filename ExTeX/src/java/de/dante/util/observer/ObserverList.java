@@ -64,7 +64,7 @@ public class ObserverList implements Observer {
      * The update methods of all contained observers are invoked in turn with
      * the same arguments.
      *
-     * @see de.dante.util.observer.Observer#update(de.gene.bcd.util.Observable,
+     * @see de.dante.util.observer.Observer#update(de.dante.util.observer.Observable,
      *      java.lang.Object)
      */
     public void update(final Observable source, final Object object)

@@ -647,7 +647,7 @@ public class ContextImpl
 
     /**
      * @see de.dante.extex.interpreter.context.Context#setActive(java.lang.String,
-     *      de.dante.extex.interpreter.Code, boolean)
+     *      de.dante.extex.interpreter.type.Code, boolean)
      */
     public void setActive(final Token token, final Code code,
             final boolean global) {
@@ -687,7 +687,7 @@ public class ContextImpl
     /**
      * @see de.dante.extex.interpreter.context.Context#setCode(
      *      de.dante.extex.scanner.Token,
-     *      de.dante.extex.interpreter.Code, boolean)
+     *      de.dante.extex.interpreter.type.Code, boolean)
      */
     public void setCode(final Token t, final Code code, final boolean global)
             throws GeneralException {

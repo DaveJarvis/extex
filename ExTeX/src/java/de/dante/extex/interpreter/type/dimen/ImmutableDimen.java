@@ -57,7 +57,7 @@ public class ImmutableDimen extends Dimen implements Serializable {
 
     /**
      * @see de.dante.extex.interpreter.type.dimen.Dimen#add(
-     *      de.dante.extex.interpreter.type.dimen.Dimen)
+     *      de.dante.extex.interpreter.type.dimen.FixedDimen)
      */
     public void add(final Dimen d) {
 
@@ -74,7 +74,7 @@ public class ImmutableDimen extends Dimen implements Serializable {
 
     /**
      * @see de.dante.extex.interpreter.type.dimen.Dimen#max(
-     *      de.dante.extex.interpreter.type.dimen.Dimen)
+     *      de.dante.extex.interpreter.type.dimen.FixedDimen)
      */
     public void max(final Dimen d) {
 
@@ -113,7 +113,7 @@ public class ImmutableDimen extends Dimen implements Serializable {
 
     /**
      * @see de.dante.extex.interpreter.type.dimen.Dimen#subtract(
-     *      de.dante.extex.interpreter.type.dimen.Dimen)
+     *      de.dante.extex.interpreter.type.dimen.FixedDimen)
      */
     public void subtract(final Dimen d) {
 

@@ -636,7 +636,7 @@ public class GroupImpl implements Group, Tokenizer, Serializable {
     /**
      * @see de.dante.extex.interpreter.context.impl.Group#setCode(
      *      de.dante.extex.scanner.Token,
-     *      de.dante.extex.interpreter.Code, boolean)
+     *      de.dante.extex.interpreter.type.Code, boolean)
      */
     public void setCode(final Token token, final Code code, final boolean global) {
 
