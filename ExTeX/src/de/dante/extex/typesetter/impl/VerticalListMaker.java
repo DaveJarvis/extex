@@ -40,6 +40,11 @@ import de.dante.util.UnicodeChar;
 public class VerticalListMaker extends AbstractListMaker implements ListMaker {
 
     /**
+     * The field <tt>nodes</tt> contains the list of nodes encapsulated.
+     */
+    private VerticalListNode nodes = new VerticalListNode();
+
+    /**
      * This value contains the previous depth for baseline calculations. In
      * contrast to TeX the value null is used to indicate that the next box on
      * the vertical list should be exempt from the baseline calculations.
@@ -49,25 +54,12 @@ public class VerticalListMaker extends AbstractListMaker implements ListMaker {
     private Dimen prevDepth = new Dimen(-1000 * Dimen.ONE);
 
     /**
-     * The field <tt>nodes</tt> contains the list of nodes encapsulated.
-     */
-    private VerticalListNode nodes = new VerticalListNode();
-
-    /**
      * Creates a new object.
      *
      * @param manager the manager to ask for global changes
      */
     public VerticalListMaker(final Manager manager) {
         super(manager);
-    }
-
-    /**
-     * @see de.dante.extex.typesetter.ListMaker#getMode()
-     */
-    public Mode getMode() {
-
-        return Mode.VERTICAL;
     }
 
     /**
@@ -119,6 +111,22 @@ public class VerticalListMaker extends AbstractListMaker implements ListMaker {
     public final NodeList close() {
 
         return nodes;
+    }
+
+    /**
+     * @see de.dante.extex.typesetter.ListMaker#getLastNode()
+     */
+    public Node getLastNode() {
+
+        return (nodes.empty() ? null : nodes.get(nodes.size() - 1));
+    }
+
+    /**
+     * @see de.dante.extex.typesetter.ListMaker#getMode()
+     */
+    public Mode getMode() {
+
+        return Mode.VERTICAL;
     }
 
     /**

@@ -71,6 +71,9 @@ public class TypesetterImpl implements Typesetter, Manager {
      */
     private DocumentWriter documentWriter;
 
+    /**
+     * The field <tt>ligatureBuilder</tt> contains the ...
+     */
     private LigatureBuilder ligatureBuilder;
 
     /**
@@ -335,4 +338,13 @@ public class TypesetterImpl implements Typesetter, Manager {
         listMaker.toggleMath();
     }
 
+    /**
+     * ...
+     *
+     * @return ...
+     */
+    public Node getLastNode() {
+
+        return this.listMaker.getLastNode();
+    }
 }
