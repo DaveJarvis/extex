@@ -34,7 +34,7 @@ import de.dante.util.GeneralException;
  *  The formal description is the following:
  *  <pre class="syntax">
  *    &lang;font&rang;
- *        :=  &lang;loaded font&rang;
+ *        &rarr;  &lang;loaded font&rang;
  *         |   <tt>\textfont</tt> {@linkplain
  *             de.dante.extex.interpreter.TokenSource#scanNumber()
  *             &lang;8-bit&nbsp;number&rang;}
