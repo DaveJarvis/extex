@@ -19,7 +19,6 @@
 
 package de.dante.extex.interpreter.primitives.info;
 
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import de.dante.extex.interpreter.Flags;
