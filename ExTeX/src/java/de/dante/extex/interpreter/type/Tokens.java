@@ -124,4 +124,19 @@ public class Tokens implements Serializable {
 
 		return sb.toString();
 	}
+
+	/**
+	 * Return a String, which show all tokens (in textformat) in the list.
+	 * 
+	 * @return a String, which show all tokens (in textformat) in the list
+	 */
+	public String toText() {
+		StringBuffer sb = new StringBuffer();
+
+		for (int i = 0; i < tokens.size(); i++) {
+			sb.append(((Token) tokens.get(i)).getValue());
+		}
+
+		return sb.toString();
+	}
 }

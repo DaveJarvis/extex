@@ -186,6 +186,7 @@ public class TokenStreamFactory implements FileFinder, Observable {
     
     /**
      * @see de.dante.extex.scanner.stream.FileFinder#findFile(java.lang.String, java.lang.String)
+     * TODO Aufrufparameter texinputs verwenden
      */
     public File findFile(String name, String type) throws ConfigurationException {
         File file = new File(name);
