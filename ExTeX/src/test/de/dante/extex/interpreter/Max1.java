@@ -143,7 +143,7 @@ public class Max1 extends TestCase {
 
         /**
          */
-        public void addSpace() {
+        public void addSpace(TypesettingContext typesettingContext) {
             sb.append(" ");
         }
 
