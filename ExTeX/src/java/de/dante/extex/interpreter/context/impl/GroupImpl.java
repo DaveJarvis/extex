@@ -93,13 +93,6 @@ public class GroupImpl implements Group, Tokenizer, Serializable {
     private static final Count SFCODE_LETTER = new ImmutableCount(999);
 
     /**
-     * The constant <tt>SUPPORT_NAMESPACES</tt> contains the indicator that
-     * namespaces should be honoured. In this case the lookup for Code is
-     * also performed in the default namespace if not found in the current one.
-     */
-    private static final boolean SUPPORT_NAMESPACES = true;
-
-    /**
      * The field <tt>afterGroup</tt> contains the tokens to be inserted after
      * the group has been closed.
      */
@@ -330,7 +323,8 @@ public class GroupImpl implements Group, Tokenizer, Serializable {
 
         Code code = getCodeForToken(token);
 
-        if (SUPPORT_NAMESPACES && code == null && token instanceof CodeToken) {
+        if (Namespace.SUPPORT_NAMESPACE_DEF && code == null
+                && token instanceof CodeToken) {
             CodeToken t = (CodeToken) token.cloneInDefaultNamespace();
             if (t != token) {
                 code = getCodeForToken(t);
@@ -486,6 +480,19 @@ public class GroupImpl implements Group, Tokenizer, Serializable {
             return value;
         }
         return UnicodeChar.NULL;
+    }
+
+    /**
+     * Getter for the group level. The group level is the number of groups which
+     * are currently open. Thus this number of groups can be closed.
+     *
+     * @return the group level
+     *
+     * @see de.dante.extex.interpreter.context.impl.Group#getLevel()
+     */
+    public long getLevel() {
+
+        return (next == null ? 1 : 1 + next.getLevel());
     }
 
     /**

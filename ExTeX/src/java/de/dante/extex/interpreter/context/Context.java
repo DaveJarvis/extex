@@ -178,6 +178,14 @@ public interface Context extends Tokenizer, Serializable {
     Glue getGlue(String name);
 
     /**
+     * Getter for the group level. The group level is the number of groups which
+     * are currently open. Thus this number of groups can be closed.
+     *
+     * @return the group level
+     */
+    long getGroupLevel();
+
+    /**
      * Getter for the hyphenation record for a given language. The language is
      * used to find the hyphenation table. If the language is not known an
      * attempt is made to load it. Otherwise the default hyphenation table is
@@ -568,7 +576,8 @@ public interface Context extends Tokenizer, Serializable {
     /**
      * Setter for the namespace.
      * @param namespace the new namespace
-     * @param global TODO
+     * @param global the indicator for the scope; <code>true</code> means all
+     *            groups; otherwise the current group is affected only
      */
     void setNamespace(String namespace, boolean global);
 

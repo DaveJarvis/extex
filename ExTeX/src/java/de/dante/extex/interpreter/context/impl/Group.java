@@ -80,6 +80,14 @@ public interface Group extends Tokenizer, Serializable {
     Tokens getAfterGroup();
 
     /**
+     * Getter for the group level. The group level is the number of groups which
+     * are currently open. Thus this number of groups can be closed.
+     *
+     * @return the group level
+     */
+    long getLevel();
+
+    /**
      * Getter for the {@link de.dante.extex.interpreter.type.box.Box box}register.
      * Count registers are named, either with a number or an arbitrary string.
      * The numbered registers where limited to 256 in TeX. This restriction
@@ -453,7 +461,8 @@ public interface Group extends Tokenizer, Serializable {
     /**
      * Setter for the namespace.
      * @param namespace the new namespace
-     * @param global TODO
+     * @param global the indicator for the scope; <code>true</code> means all
+     *            groups; otherwise the current group is affected only
      */
     void setNamespace(String namespace, boolean global);
 
