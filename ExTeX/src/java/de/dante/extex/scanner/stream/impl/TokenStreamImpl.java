@@ -474,7 +474,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl
      *      java.lang.Object, java.lang.Object)
      */
     public Object visitCr(final Object oFactory, final Object oTokenizer,
-            final Object uc) throws GeneralException {
+            final Object uchar) throws GeneralException {
 
         TokenFactory factory = (TokenFactory) oFactory;
         Tokenizer tokenizer = (Tokenizer) oTokenizer;
@@ -484,8 +484,8 @@ public class TokenStreamImpl extends TokenStreamBaseImpl
             t = factory.createToken(Catcode.SPACE, ' ', tokenizer
                     .getNamespace());
         } else if (state == NEW_LINE) {
-            t = factory.createToken(Catcode.ESCAPE, "par", tokenizer
-                    .getNamespace());
+            t = factory.createToken(Catcode.ESCAPE, (UnicodeChar) uchar, "par",
+                    tokenizer.getNamespace());
         }
 
         endLine();
@@ -505,13 +505,15 @@ public class TokenStreamImpl extends TokenStreamBaseImpl
 
         if (atEndOfLine()) {
             //empty control sequence; see "The TeXbook, Chapter 8, p. 47"
-            return factory.createToken(Catcode.ESCAPE, "", namespace);
+            return factory.createToken(Catcode.ESCAPE, (UnicodeChar) uchar, "",
+                    namespace);
         }
 
         UnicodeChar uc = getChar(tokenizer);
 
         if (uc == null) {
-            return factory.createToken(Catcode.ESCAPE, "", namespace);
+            return factory.createToken(Catcode.ESCAPE, (UnicodeChar) uchar, "",
+                    namespace);
 
         } else if (tokenizer.getCatcode(uc) == Catcode.LETTER) {
             StringBuffer sb = new StringBuffer();
@@ -522,15 +524,15 @@ public class TokenStreamImpl extends TokenStreamBaseImpl
             while (!atEndOfLine() && (uc = getChar(tokenizer)) != null) {
                 if (tokenizer.getCatcode(uc) != Catcode.LETTER) {
                     pointer = savedPointer;
-                    return factory.createToken(Catcode.ESCAPE, sb.toString(),
-                            namespace);
+                    return factory.createToken(Catcode.ESCAPE,
+                            (UnicodeChar) uchar, sb.toString(), namespace);
                 }
                 sb.append((char) (uc.getCodePoint()));
                 savedPointer = pointer;
             }
 
-            return factory
-                    .createToken(Catcode.ESCAPE, sb.toString(), namespace);
+            return factory.createToken(Catcode.ESCAPE, (UnicodeChar) uchar, sb
+                    .toString(), namespace);
 
         } else {
             state = MID_LINE;
