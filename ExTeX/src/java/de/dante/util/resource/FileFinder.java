@@ -134,6 +134,8 @@ public class FileFinder implements ResourceFinder, LoggerTaker, PropertiesTaker 
                     // Ignore unreadable files.
                     // This should not happen since it has already been
                     // tested before.
+                    logger.fine("FileFinder: Not found " + file.toString()
+                            + "\n");
                 }
             }
         }
