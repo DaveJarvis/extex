@@ -45,15 +45,21 @@ import de.dante.util.framework.i18n.LocalizerFactory;
 public class MathDelimiter {
 
     /**
+     * The constant <tt>CHAR_MASK</tt> contains the character mask.
+     */
+    private static final int CHAR_MASK = 0xff;
+
+    /**
      * The constant <tt>CLASS_MAX</tt> contains the maximum number for a
      * math class.
      */
     private static final int CLASS_MAX = 0xf;
 
     /**
-     * The constant <tt>CHAR_MASK</tt> contains the character mask.
+     * The field <tt>CLASS_SHIFT</tt> contains the number of bits to shift the
+     * class rightwards in the TeX encoding of delimiters.
      */
-    private static final int CHAR_MASK = 0xff;
+    private static final int CLASS_SHIFT = 24;
 
     /**
      * The field <tt>largeChar</tt> contains the code of the large character.
@@ -170,12 +176,13 @@ public class MathDelimiter {
     /**
      * Initialize the state of this instance from a TeX encoded delimiter code.
      *
-     * @param delcode
+     * @param delcode the delimiter code in TeX encoding
+     *
      * @throws HelpingException in case of an error
      */
     private void init(final long delcode) throws HelpingException {
 
-        int classCode = (int) ((delcode >> 24));
+        int classCode = (int) ((delcode >> CLASS_SHIFT));
 
         if (delcode < 0 || classCode > CLASS_MAX) {
             throw new HelpingException(LocalizerFactory
@@ -204,10 +211,12 @@ public class MathDelimiter {
      * string buffer.
      *
      * @param sb the target string buffer
+     *
+     * @see "TTP [691]"
      */
     public void toString(final StringBuffer sb) {
 
-        sb.append("delimiter \"");
+        sb.append('\"');
         mathClass.toString(sb);
         smallChar.toString(sb);
         largeChar.toString(sb);
