@@ -80,7 +80,7 @@ public class Insert extends AbstractBox {
             throw new HelpingException(getLocalizer(), "???");
         }
         long index = source.scanNumber(context);
-        Box b = new Box(context, source, typesetter, false);
+        Box b = new Box(context, source, typesetter, false, null);
 
         //TODO gene: execute() unimplemented
         throw new RuntimeException("unimplemented");
