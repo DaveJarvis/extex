@@ -139,14 +139,54 @@ public interface ListMaker {
      */
     void setSpacefactor(Count sf) throws GeneralException;
 
+    /**
+     * ...
+     *
+     * @param context ...
+     * @param uc ...
+     *
+     * @throws GeneralException in case of an error
+     */
     void treatLetter(TypesettingContext context, UnicodeChar uc) throws GeneralException;
 
+    /**
+     * ...
+     *
+     * @param context ...
+     * @param t ...
+     *
+     * @throws GeneralException in case of an error
+     */
     void treatTabMark(TypesettingContext context, Token t) throws GeneralException;
 
+    /**
+     * ...
+     *
+     * @param context ...
+     * @param t ...
+     *
+     * @throws GeneralException in case of an error
+     */
     void treatSubMark(TypesettingContext context, Token t) throws GeneralException;
 
+    /**
+     * ...
+     *
+     * @param context ...
+     * @param t ...
+     *
+     * @throws GeneralException in case of an error
+     */
     void treatSupMark(TypesettingContext context, Token t) throws GeneralException;
 
+    /**
+     * ...
+     *
+     * @param t ...
+     * @param source ...
+     *
+     * @throws GeneralException in case of an error
+     */
     void treatMathShift(Token t, TokenSource source) throws GeneralException;
 
 }
