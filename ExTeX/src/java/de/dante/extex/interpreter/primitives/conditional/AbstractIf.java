@@ -89,8 +89,8 @@ public abstract class AbstractIf extends AbstractCode implements ExpandableCode 
                 } else if (code.isIf()) {
                     n++;
                 } else if (code.isOuter()) {
-                    // TODO incomplete
-                    throw new RuntimeException("unimplemented");
+                    throw new HelpingException(getMyLocalizer(),
+                            "TTP.OuterInSkipped");
                 }
             }
         }
