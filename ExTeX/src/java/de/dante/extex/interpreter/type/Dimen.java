@@ -47,6 +47,11 @@ public class Dimen extends GlueComponent implements Serializable {
      public static final Dimen ONE_PT = new Dimen(1 << 16);
 
      /**
+      * The constant <tt>ONE_INCH</tt> contains the ...
+      */
+     public static final Dimen ONE_INCH = new Dimen((1 << 16) * 7227 / 100);
+
+     /**
       * The constant <tt>ONE</tt> contains the internal representation for 1pt.
       *
       * @see "TeX -- The Program [101]"
