@@ -23,8 +23,8 @@ import java.io.IOException;
 import java.nio.CharBuffer;
 import java.util.Stack;
 
-import de.dante.extex.i18n.HelpingException;
 import de.dante.extex.interpreter.Tokenizer;
+import de.dante.extex.interpreter.exception.helping.HelpingException;
 import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.main.exception.MainIOException;
 import de.dante.extex.scanner.stream.TokenStream;
