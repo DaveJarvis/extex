@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2004  Gerd Neugebauer
+ * Copyright (C) 2003-2004 Gerd Neugebauer
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -17,6 +17,8 @@
  *
  */
 package de.dante.extex.scanner;
+
+import de.dante.extex.i18n.Messages;
 
 
 /**
@@ -55,6 +57,5 @@ public class ActiveCharacterToken extends AbstractToken implements Token {
      * @return the string representation
      */
     public String toString() {
-        return "<active " + value + ">"; //TODO: use i18n
-    }
+        return Messages.format("ActiveCharacterToken.Text",value);    }
 }
