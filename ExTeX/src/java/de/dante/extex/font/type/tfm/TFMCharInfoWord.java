@@ -689,6 +689,15 @@ public class TFMCharInfoWord implements XMLConvertible, PlFormat, Serializable {
     }
 
     /**
+     * Returns the bc.
+     * @return Returns the bc.
+     */
+    public short getBc() {
+
+        return bc;
+    }
+
+    /**
      * @see de.dante.util.XMLConvertible#toXML()
      */
     public Element toXML() {

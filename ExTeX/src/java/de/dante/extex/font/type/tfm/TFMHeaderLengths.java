@@ -63,7 +63,7 @@ import de.dante.util.file.random.RandomAccessR;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-class TFMHeaderLengths implements XMLConvertible, Serializable {
+public class TFMHeaderLengths implements XMLConvertible, Serializable {
 
     /**
      * max chars
