@@ -192,9 +192,9 @@ public class ContextImpl
     /**
      * The field <tt>magnification</tt> contains the magnification for the
      * whole document in permille. The value is always greater than 0 and
-     * less or equal to magnificationMax.
+     * less or equal to <tt>magnificationMax</tt>.
      */
-    private long magnification = Math.max(1000, MAGNIFICATION_MAX);
+    private long magnification = Math.min(1000, MAGNIFICATION_MAX);
 
     /**
      * The field <tt>magnificationLock</tt> is used to determine whether the
