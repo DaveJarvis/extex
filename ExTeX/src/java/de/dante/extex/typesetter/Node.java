@@ -23,6 +23,7 @@ import de.dante.extex.interpreter.type.glue.Glue;
 import de.dante.extex.typesetter.type.Knot;
 import de.dante.util.GeneralException;
 
+// TODO:This interface should be moved to the package type
 /**
  * A node is the basic data structure for the typesetter. It has a reference
  * point and three dimensions, namely width, height, and depth (see figure).
