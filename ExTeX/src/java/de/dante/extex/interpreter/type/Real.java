@@ -108,15 +108,15 @@ public class Real implements Serializable {
             t = source.scanNonSpace();
         } else if (t instanceof ControlSequenceToken) {
             Code code = context.getMacro(t.getValue());
-            if (code != null && code instanceof CountConvertible) {
+            if (code != null && code instanceof RealConvertible) {
+                return (((RealConvertible) code).convertReal(context, source))
+                        .getValue();
+            } else if (code != null && code instanceof CountConvertible) {
                 return (new Real(((CountConvertible) code).convertCount(
                         context, source))).getValue();
             } else if (code != null && code instanceof DimenConvertible) {
                 return (new Real(((DimenConvertible) code).convertDimen(
                         context, source))).getValue();
-            } else if (code != null && code instanceof RealConvertible) {
-                return (((RealConvertible) code).convertReal(context, source))
-                        .getValue();
             }
         }
 
