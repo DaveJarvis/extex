@@ -70,11 +70,13 @@ public class LogFormatter extends Formatter {
             return "";
         }
         if (col == 0) {
-            if (msg.charAt(0) == '\n') {
+            if (msg.charAt(0) == '\n' || msg.charAt(0) == '\r') {
                 msg.deleteCharAt(0);
             }
+            /*
         } else if (msg.charAt(0) != ' ') {
             msg.insert(0, ' ');
+            */
         }
         int idx = msg.lastIndexOf("\n");
         if (idx >= 0) {
