@@ -294,6 +294,30 @@ public class Max extends Moritz
         }
     }
 
+    public void execute(final Token token) throws GeneralException {
+        
+        observersExpand.update(this, token);
+        try {
+            token.visit(this, null, null);
+        } catch (PanicException e) {
+            throw e;
+        } catch (GeneralException e) {
+            if (++errorCount > maxErrors) { // cf. TTP[82]
+                throw new PanicException(getLocalizer(),
+                        "TTP.ErrorLimitReached", //
+                        Integer.toString(maxErrors));
+            } else if (errorHandler != null) {
+                if (!errorHandler.handleError(e, token, this, context)) {
+                    return;
+                }
+            } else {
+                throw e;
+            }
+        } catch (Exception e) {
+            throw new PanicException(e);
+        }
+    }
+
     /**
      * @see de.dante.extex.interpreter.TokenSource#executeGroup()
      */

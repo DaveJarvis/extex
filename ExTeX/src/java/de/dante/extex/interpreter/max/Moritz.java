@@ -252,6 +252,8 @@ public abstract class Moritz
      */
     protected abstract Token expand(final Token token) throws GeneralException;
 
+    public abstract void execute(final Token token) throws GeneralException;
+
     /**
      * @see de.dante.extex.interpreter.TokenSource#getBox(
      *      de.dante.extex.typesetter.Typesetter)

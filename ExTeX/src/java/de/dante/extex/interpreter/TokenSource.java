@@ -75,6 +75,15 @@ public interface TokenSource {
     void closeNextFileStream() throws GeneralException;
 
     /**
+     * Tries to execute a token.
+     *
+     * @param token the Token to execute
+     *
+     * @throws GeneralException in case of an error
+     */
+    void execute(final Token token) throws GeneralException;
+
+    /**
      * Scan and execute tokens until the group ends.
      *
      * @throws GeneralException in case of an error

@@ -76,6 +76,15 @@ public class StringSource extends Moritz {
     }
 
     /**
+     * @see de.dante.extex.interpreter.TokenSource#execute(de.dante.extex.scanner.Token)
+     */
+    public void execute(final Token token) throws GeneralException {
+
+        // TODO unimplemented
+        throw new RuntimeException("unimplemented");
+    }
+
+    /**
      * @see de.dante.extex.interpreter.max.Moritz#getContext()
      */
     public Context getContext() {
