@@ -16,32 +16,42 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  *
  */
-package de.dante.extex.main;
+package de.dante.extex.main.exception;
 
 import de.dante.extex.i18n.Messages;
 
 /**
- * This exception is thrown when the user attempty to set the interaction mode
- * but specifies an invalid value for the mode.
+ * This exception is thrown when the main program detects an configuration
+ * error.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class MainUnknownInteractionException extends MainException {
+public class MainConfigurationException extends MainException {
+
+    /**
+     * The constant <tt>ERROR_CODE</tt> contains the return code.
+     */
+    private static final int ERROR_CODE = -1;
+
     /**
      * Creates a new object.
      *
-     * @param message the name of the missing argument
+     * @param cause the root of all evil
      */
-    public MainUnknownInteractionException(final String message) {
-        super(-14, message);
+    public MainConfigurationException(final Throwable cause) {
+
+        super(ERROR_CODE, cause);
     }
 
     /**
      * @see java.lang.Throwable#getMessage()
      */
     public String getMessage() {
-        return Messages.format("MainUnknownInteractionException.Message",
-                               super.getMessage());
+
+        String message = super.getMessage();
+        return Messages.format("MainConfigurationException.Message",
+                               (message != null ? message : ""));
     }
+
 }

@@ -16,32 +16,38 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  *
  */
-package de.dante.extex.main;
+package de.dante.extex.main.exception;
 
 import de.dante.extex.i18n.Messages;
 
 /**
- * This exception is a wrapper for the IOException. It converts this exception
- * into a MainException with an appropriate exit status.
+ * This exception is thrown when the main program detects that an advertised
+ * argument is missing.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class MainIOException extends MainException {
+public class MainMissingArgumentException extends MainException {
+
+    /**
+     * The constant <tt>ERROR_CODE</tt> contains the return code.
+     */
+    private static final int ERROR_CODE = -10;
+
     /**
      * Creates a new object.
      *
-     * @param cause the root of all evil
+     * @param message the name of the missing argument
      */
-    public MainIOException(final Throwable cause) {
-        super(-1, cause);
+    public MainMissingArgumentException(final String message) {
+        super(ERROR_CODE, message);
     }
 
     /**
      * @see java.lang.Throwable#getMessage()
      */
     public String getMessage() {
-        return Messages.format("MainIOException.Message",
+        return Messages.format("MainMissingArgumentException.Message",
                                super.getMessage());
     }
 }

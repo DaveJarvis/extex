@@ -16,7 +16,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  *
  */
-package de.dante.extex.main;
+package de.dante.extex.main.exception;
 
 import de.dante.extex.i18n.Messages;
 
@@ -28,6 +28,12 @@ import de.dante.extex.i18n.Messages;
  * @version $Revision$
  */
 public class MainCodingException extends MainException {
+
+    /**
+     * The constant <tt>ERROR_CODE</tt> contains the return code.
+     */
+    private static final int ERROR_CODE = -32;
+
     /**
      * Creates a new object.
      *
@@ -35,14 +41,15 @@ public class MainCodingException extends MainException {
      */
     public MainCodingException(final Throwable cause) {
 
-        super(-32, cause);
+        super(ERROR_CODE, cause);
     }
 
     /**
      * @see java.lang.Throwable#getMessage()
      */
     public String getMessage() {
-        return Messages.format("MainCodingException.Message",
-                               super.getMessage());
+
+        return Messages.format("MainCodingException.Message", super
+                .getMessage());
     }
 }
