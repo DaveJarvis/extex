@@ -76,7 +76,7 @@ public class FontdimenTest extends ExTeXLauncher {
     public void testSet1() throws Exception {
 
         runCode(//--- input code ---
-                "\\fontdimen0\\nullfont=42pt "
+                "\\fontdimen65000\\nullfont=42pt "
                 + "\\the\\fontdimen65000\\nullfont "
                 + "\\end",
                 //--- log message ---
@@ -93,7 +93,7 @@ public class FontdimenTest extends ExTeXLauncher {
 
         runCode(//--- input code ---
                 "\\font\\fnt=cmtt12\\relax "
-                + "\\fontdimen0\\fnt=42pt "
+                + "\\fontdimen65000\\fnt=42pt "
                 + "\\the\\fontdimen65000\\fnt "
                 + "\\end",
                 //--- log message ---
