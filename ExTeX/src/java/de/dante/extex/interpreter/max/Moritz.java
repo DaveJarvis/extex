@@ -118,15 +118,6 @@ public abstract class Moritz
     private ObserverList observersLogMessage = new ObserverList();
 
     /**
-     * The field <tt>observersMessage</tt> contains the observer list is used
-     * for the observers which are registered to receive notifications when a
-     * message is send from another component. This message shuld be made
-     * accessible to the user in some way, e.g. on the terminal or in the log
-     * file.
-     */
-    private ObserverList observersMessage = new ObserverList();
-
-    /**
      * The field <tt>observersPop</tt> contains the observer list is used for
      * the observers which are registered to receive a notification when a new
      * token is about to be delivered. The argument is the token to be
@@ -757,22 +748,21 @@ public abstract class Moritz
      *  </tr>
      *  <tr>
      *   <td>pop</td>
-     *   <td>...</td>
+     *   <td>This observer is triggered by a pop operation on the token stream.
+     *   </td>
      *  </tr>
      *  <tr>
      *   <td>push</td>
-     *   <td>...</td>
+     *   <td>This observer is triggered by a push operation on the token stream.
+     *   </td>
      *  </tr>
      *  <tr>
      *   <td>EOF</td>
-     *   <td>...</td>
+     *   <td>This oberserver is triggered by an end of file on the token stream.
+     *   </td>
      *  </tr>
      *  <tr>
      *   <td>close</td>
-     *   <td>...</td>
-     *  </tr>
-     *  <tr>
-     *   <td>message</td>
      *   <td>...</td>
      *  </tr>
      *  <tr>
@@ -795,8 +785,6 @@ public abstract class Moritz
             observersEOF.add(observer);
         } else if ("close".equals(name)) {
             observersCloseStream.add(observer);
-        } else if ("message".equals(name)) {
-            observersMessage.add(observer);
         } else if ("log".equals(name)) {
             observersLogMessage.add(observer);
         } else {
@@ -1131,12 +1119,6 @@ public abstract class Moritz
     public void update(final String name, final String text)
             throws GeneralException {
 
-        if ("message".equals(name)) {
-            observersMessage.update(this, text);
-        } else if ("log".equals(name)) {
-            observersLogMessage.update(this, text);
-        } else {
-            throw new NotObservableException(name);
-        }
+        throw new NotObservableException(name);
     }
 }
