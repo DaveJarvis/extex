@@ -169,6 +169,12 @@ public class HorizontalListMaker extends AbstractListMaker implements ListMaker 
 
 	/**
 	 * make the linebreak
+	 * <p>
+	 * First of all, the toks-register 'linebreaker' is use, to find
+	 * the <code>LineBreaker</code>. If no <code>Linebreaker</code> found
+	 * in the <code>Map</code>, then it use the <tt>default</tt>.
+	 * 
+	 * @return the new <code>NodeList</code>, with linebreaks ...
 	 */
 	private NodeList makeLineBreak() throws GeneralException {
 		Map linebreakerMap = manager.getLineBreakerMap();
