@@ -27,9 +27,9 @@ import java.io.LineNumberReader;
 import java.io.Reader;
 import java.io.StringReader;
 
-import de.dante.extex.i18n.InvalidCharacterException;
 import de.dante.extex.interpreter.Namespace;
 import de.dante.extex.interpreter.Tokenizer;
+import de.dante.extex.interpreter.exception.InvalidCharacterException;
 import de.dante.extex.main.exception.MainIOException;
 import de.dante.extex.scanner.Catcode;
 import de.dante.extex.scanner.CatcodeException;
