@@ -128,6 +128,21 @@ public class ContextImpl
             Serializable {
 
     /**
+     * ...
+     *
+     * @param tokens ...
+     * @return ...
+     * @throws GeneralException ....
+     *
+     * @see de.dante.extex.interpreter.context.Context#expand(
+     *      de.dante.extex.interpreter.type.tokens.Tokens)
+     */
+    public Tokens expand(final Tokens tokens) throws GeneralException {
+
+        // TODO expand() unimplemented
+        throw new RuntimeException("unimplemented");
+    }
+    /**
      * The constant <tt>GROUP_TAG</tt> contains the name of the tag for the
      * sub-configuration for the group factory.
      */

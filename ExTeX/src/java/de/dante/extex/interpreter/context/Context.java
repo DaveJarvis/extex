@@ -88,6 +88,17 @@ public interface Context extends Tokenizer, Serializable {
             throws GeneralException;
 
     /**
+     * Expand some tokens.
+     *
+     * @param tokens ...
+     *
+     * @return ...
+     *
+     * @throws GeneralException
+     */
+    Tokens expand(Tokens tokens) throws GeneralException;
+
+    /**
      * Getter for the afterassignment token.
      *
      * @return the afterassignment token.
