@@ -29,7 +29,7 @@ import de.dante.util.GeneralException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface FontConvertable {
+public interface FontConvertible {
 
     /**
      * ...
