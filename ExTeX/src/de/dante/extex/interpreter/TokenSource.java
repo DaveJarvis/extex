@@ -221,17 +221,6 @@ public interface TokenSource {
     Token scanNonSpace() throws GeneralException;
 
     /**
-     * Scan the input for the next token which has not the catcode SPACE.
-     *
-     * @param token the first token to consider
-     *
-     * @return the next non-space token or <code>null</code> at EOF
-     *
-     * @throws GeneralException in case of an error
-     */
-    Token scanNonSpace(Token token) throws GeneralException;
-
-    /**
      * Get the next expanded token form the input streams. If the current input
      * stream is at its end then the next one on the streamStack is used until
      * a token could be read. If all stream are at the end then
