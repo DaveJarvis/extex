@@ -79,4 +79,12 @@ public class FontCode extends AbstractCode implements Theable {
 		return font.getFontName();
 	}
 	
+	/**
+	 * Return the font.
+	 * @return	the font.
+	 */
+	public Font getFont() {
+		return font;
+	}
+	
 }

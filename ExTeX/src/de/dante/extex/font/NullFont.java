@@ -118,4 +118,19 @@ public class NullFont implements Font {
 	public Glyph getGlyph(UnicodeChar c) {
 		return null;
 	}
+	
+	
+	/**
+	 * @see de.dante.extex.interpreter.type.Font#getFontType()
+	 */
+	public String getFontType() {
+		return null;
+	}
+
+	/**
+	 * @see de.dante.extex.interpreter.type.Font#setFontDimen(java.lang.String, de.dante.extex.interpreter.type.Dimen)
+	 */
+	public void setFontDimen(String key, Dimen value) {
+	}
+
 }
