@@ -29,7 +29,7 @@ import de.dante.util.GeneralException;
  *
  * <p>
  * All features are inherited from
- * {@link de.dante.extex.interpreter.primitives.register.skip.NamedSkip NamedSkip}.
+ * {@link de.dante.extex.interpreter.primitives.register.skip.SkipParameter SkipParameter}.
  * Just the key has to be provided under which this Glue has to be stored.
  * This key is constructed from the name, a hash mark and the running number.
  * </p>
@@ -42,14 +42,14 @@ import de.dante.util.GeneralException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class NamedSkip extends NumberedSkip {
+public class SkipParameter extends SkipPrimitive {
 
     /**
      * Creates a new object.
      *
      * @param name the name for debugging
      */
-    public NamedSkip(final String name) {
+    public SkipParameter(final String name) {
 
         super(name);
     }
