@@ -170,7 +170,7 @@ public abstract class ConfigurationException extends Exception {
             return Messages.format("ConfigurationException.FormatMessage",
                                    getText(), message);
         } else {
-            return Messages.format("ConfigurationException.Text", getText());
+            return Messages.format("ConfigurationException.Format", getText());
         }
     }
 
