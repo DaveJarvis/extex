@@ -34,7 +34,7 @@ import de.dante.extex.scanner.Catcode;
 import de.dante.extex.scanner.Token;
 import de.dante.extex.typesetter.NodeList;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.extex.typesetter.impl.HAlignListMaker;
+import de.dante.extex.typesetter.listMaker.HAlignListMaker;
 import de.dante.util.GeneralException;
 import de.dante.util.configuration.ConfigurationException;
 
@@ -56,9 +56,6 @@ import de.dante.util.configuration.ConfigurationException;
  *        &rarr;
  *         | <tt>to</tt> &lang;rule dimension&rang;
  *         | <tt>spread</tt> &lang;rule dimension&rang;  </pre>
- *
- *    &lang;preamble&rang;
- *       &rarr; ...
  *
  *    &lang;rows&rang;
  *       &rarr;
