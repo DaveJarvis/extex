@@ -16,17 +16,29 @@
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
-package de.dante.extex.font.type.vf.command.dvi;
 
+package de.dante.extex.format.dvi;
+
+import java.io.IOException;
+
+import de.dante.extex.format.dvi.exception.DVIException;
+import de.dante.util.file.random.RandomAccessR;
 
 /**
- * Abstract cass for DVI Command.
+ * Interface for a DVI interpreter step.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public abstract class DVICommand {
+public interface DviInterpreterStep {
 
-    //public static final 
-    
+    /**
+     * Interpreter for DVI
+     * @param rar       the input
+     * @param opcode    the opcode
+     * @throws IOException in case of a IO-error.
+     * @throws DVIException in case of a DVI-error.
+     */
+    void interpret(RandomAccessR rar, int opcode) throws IOException,
+            DVIException;
 }
