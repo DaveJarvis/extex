@@ -228,10 +228,10 @@ public abstract class Moritz implements TokenSource, Configurable, Observable {
     public Box getBox(final Typesetter typesetter) throws GeneralException {
 
         Token t = getToken();
-        Context context = getContext();
         if (t == null || !(t instanceof CodeToken)) {
             throw new HelpingException("TTP.BoxExpected");
         }
+        Context context = getContext();
         Code code = context.getCode((CodeToken) t);
         if (code == null || !(code instanceof Boxable)) {
             throw new HelpingException("TTP.BoxExpected");
