@@ -25,7 +25,7 @@ import de.dante.util.GeneralException;
 import java.io.Serializable;
 
 /**
- * This class provides a ztype-save enumeration of the interactions styles of
+ * This class provides a type-save enumeration of the interactions styles of
  * ExTeX.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -113,7 +113,7 @@ public abstract class Interaction implements Serializable {
     public static Interaction get(final String mode)
             throws MainUnknownInteractionException {
 
-        if (mode == null || mode.equals("")) {
+        if (mode == null || "".equals(mode)) {
             throw new MainUnknownInteractionException("");
         } else if ("batchmode".startsWith(mode) || mode.equals("0")) {
             return BATCHMODE;

@@ -33,17 +33,19 @@ import de.dante.util.GeneralException;
  * <doc name="shipout">
  * <h3>The Primitive <tt>\shipout</tt></h3>
  * <p>
- *  ...
+ *  The primitive <tt>\shipout</tt> takes a box and send the contents of the
+ *  box to the document writer.
  * </p>
  * <p>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    <tt>\shipout ...</tt>  </pre>
+ *    <tt>\shipout</tt> {@linkplain
+ *    de.dante.extex.interpreter.TokenSource#getBox() &lang;box&rang;}  </pre>
  * </p>
  * <p>
  *  Examples:
  *  <pre class="TeXSample">
- *    \shipout ...  </pre>
+ *    \shipout\box255  </pre>
  * </p>
  * </doc>
  *

@@ -41,6 +41,21 @@ import de.dante.util.GeneralException;
  * <p>
  *  ...
  * </p>
+ * <p>
+ *  The formal description of this primitive is the following:
+ *  <pre class="syntax">
+ *    <tt>\raise</tt> &lang;dimen&rang; {@linkplain
+ *    de.dante.extex.interpreter.TokenSource#getBox() &lang;box&rang;}  </pre>
+ * </p>
+ * <p>
+ *  Examples:
+ *  <pre class="TeXSample">
+ *    \raise 2em \hbox{abc}  </pre>
+ *  <pre class="TeXSample">
+ *    \raise -1pt \hbox to 120pt {abc}  </pre>
+ *  <pre class="TeXSample">
+ *    \raise 2mm \hbox spread 12pt {abc}  </pre>
+ * </p>
  * </doc>
  *
  * <p>

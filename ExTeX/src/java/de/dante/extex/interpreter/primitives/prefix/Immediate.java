@@ -30,7 +30,7 @@ import de.dante.extex.typesetter.Typesetter;
  * It does simply nothing, but as a side effect the prefix <i>IMMEDIATE</i> is
  * added to the prefixes.
  *
- * <doc name="tt">
+ * <doc name="immediate">
  * <h3>The Prefix Primitive <tt>\immediate</tt></h3>
  * <p>
  *  ...

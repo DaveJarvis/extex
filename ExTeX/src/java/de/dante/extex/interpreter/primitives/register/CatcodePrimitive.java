@@ -33,7 +33,7 @@ import de.dante.util.UnicodeChar;
  * This class provides an implementation for the primitive
  * <code>\catcode</code>.
  *
- * <doc>
+ * <doc name="catcode">
  * <h3>The Primitive <tt>\catcode</tt></h3>
  * <p>
  *  ...
@@ -46,7 +46,7 @@ import de.dante.util.UnicodeChar;
  * <p>
  *  Examples:
  *  <pre class="TeXSample">
- *    \ccatcode ...  </pre>
+ *    \catcode ...  </pre>
  * </p>
  * </doc>
  *

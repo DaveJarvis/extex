@@ -32,7 +32,7 @@ import de.dante.util.UnicodeChar;
  * This class provides an implementation for the primitive
  * <code>\chardef</code>.
  *
- * <doc>
+ * <doc name="chardef">
  * <h3>The Primitive <tt>\chardef</tt></h3>
  * <p>
  *  ...
@@ -44,7 +44,9 @@ import de.dante.util.UnicodeChar;
  *    de.dante.extex.interpreter.TokenSource#getControlSequence()
  *    &lang;control sequence&rang;} {@linkplain
  *    de.dante.extex.interpreter.TokenSource#getOptionalEquals()
- *    &lang;equals&rang;} &lang;8-bit number&rang;</pre>
+ *    &lang;equals&rang;} {@linkplain
+ *      de.dante.extex.interpreter.TokenSource#scanNumber()
+ *      &lang;8-bit&nbsp;number&rang;}  </pre>
  * </p>
  * <p>
  *  Examples:

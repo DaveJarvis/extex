@@ -40,7 +40,7 @@ import de.dante.util.GeneralException;
  * This class provides an implementation for any macro code bound to a
  * control sequence or active character.
  *
- * <doc>
+ * <doc name="macros" type="hotwo">
  * <h3>The Macro Code</h3>
  * <p>
  *  ...

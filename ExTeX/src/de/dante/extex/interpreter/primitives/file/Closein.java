@@ -40,7 +40,9 @@ import de.dante.util.GeneralException;
  * <p>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    <tt>\closein</tt> {@linkplain de.dante.extex.interpreter.TokenSource#scanInteger() &lang;number&rang;} </pre>
+ *    <tt>\closein</tt> {@linkplain
+ *    de.dante.extex.interpreter.TokenSource#scanInteger()
+ *    &lang;number&rang;} </pre>
  * </p>
  * <p>
  *  Examples:
