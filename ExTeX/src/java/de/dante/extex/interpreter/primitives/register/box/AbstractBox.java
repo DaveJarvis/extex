@@ -59,12 +59,12 @@ public abstract class AbstractBox extends AbstractCode implements Serializable {
     protected String getKey(final TokenSource source, final Context context)
             throws GeneralException {
 
-        String number = Long.toString(source.scanNumber());
+        String name = source.scanRegisterName();
 
         if (Namespace.SUPPORT_NAMESPACE_DIMEN) {
-            return context.getNamespace() + "box" + number;
+            return context.getNamespace() + "box" + name;
         } else {
-            return "box" + number;
+            return "box" + name;
         }
     }
 

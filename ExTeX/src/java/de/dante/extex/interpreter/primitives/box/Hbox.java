@@ -16,6 +16,7 @@
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
+
 package de.dante.extex.interpreter.primitives.box;
 
 import de.dante.extex.interpreter.Flags;
@@ -83,6 +84,7 @@ public class Hbox extends AbstractCode implements Boxable {
      * @param name the name for debugging
      */
     public Hbox(final String name) {
+
         super(name);
     }
 

@@ -114,11 +114,11 @@ public class Raise extends AbstractCode implements Boxable {
         Dimen amount = new Dimen(context, source);
         Token t = source.getToken();
         if (t == null || !(t instanceof CodeToken)) {
-            throw new HelpingException("TTP.BoxExpected");
+            throw new HelpingException(getLocalizer(), "TTP.BoxExpected");
         }
         Code code = context.getCode((CodeToken) t);
         if (code == null || !(code instanceof Boxable)) {
-            throw new HelpingException("TTP.BoxExpected");
+            throw new HelpingException(getLocalizer(), "TTP.BoxExpected");
         }
         Box box = ((Boxable) code).getBox(context, source, typesetter);
 

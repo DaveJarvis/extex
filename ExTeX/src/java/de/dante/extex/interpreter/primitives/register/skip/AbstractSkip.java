@@ -59,12 +59,12 @@ public abstract class AbstractSkip extends AbstractAssignment {
     protected String getKey(final TokenSource source, final Context context)
             throws GeneralException {
 
-        String number = Long.toString(source.scanNumber());
+        String name = source.scanRegisterName();
 
         if (Namespace.SUPPORT_NAMESPACE_SKIP) {
-            return context.getNamespace() + "skip#" + number;
+            return context.getNamespace() + "skip#" + name;
         } else {
-            return "skip#" + number;
+            return "skip#" + name;
         }
     }
 

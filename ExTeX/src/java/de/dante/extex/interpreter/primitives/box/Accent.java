@@ -116,7 +116,8 @@ public class Accent extends AbstractCode {
 
         if (token == null) {
 
-            throw new HelpingException("EOF");
+            throw new HelpingException(getLocalizer(), "UnexpectedEOF",
+                    printableControlSequence(context));
 
         } else if (token.isa(Catcode.LETTER) || token.isa(Catcode.OTHER)) {
             UnicodeChar c = token.getChar();

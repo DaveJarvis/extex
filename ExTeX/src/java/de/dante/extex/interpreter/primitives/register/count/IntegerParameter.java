@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter.primitives.register.count;
 
-import de.dante.extex.i18n.Messages;
+import de.dante.extex.i18n.HelpingException;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.type.InitializableCode;
@@ -86,8 +86,9 @@ public class IntegerParameter extends CountPrimitive
                 long val = Long.parseLong(value);
                 context.setCount(getKey(null, context), val, true);
             } catch (NumberFormatException e) {
-                throw new GeneralException(Messages.format(
-                        "IntegerParameter.InitError", value));
+                throw new HelpingException(getLocalizer(),
+                        "NumberFormatException",
+                        printableControlSequence(context), value);
             }
         }
     }

@@ -125,7 +125,7 @@ public class Dump extends AbstractCode {
 
         Tokens jobnameTokens = context.getToks("jobname");
         if (jobnameTokens == null) {
-            throw new PanicException("Dump.MissingJobname",
+            throw new PanicException(getLocalizer(), "Dump.MissingJobname",
                     printableControlSequence(context));
         }
         String jobname = jobnameTokens.toText();

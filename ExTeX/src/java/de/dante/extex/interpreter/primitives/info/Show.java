@@ -119,7 +119,8 @@ public class Show extends AbstractCode {
         toks.add(new Tokens(context, "="));
         Code code = context.getCode((CodeToken) t);
         if (code == null) {
-            toks.add(new Tokens(context, Messages.format("TTP.Undefined")));
+            toks.add(new Tokens(context, getLocalizer().format(
+                            "TTP.Undefined")));
         } else if ((code instanceof Showable)) {
             toks.add(((Showable) code).show(context));
         } else {

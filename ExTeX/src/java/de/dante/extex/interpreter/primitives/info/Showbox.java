@@ -19,7 +19,6 @@
 
 package de.dante.extex.interpreter.primitives.info;
 
-import de.dante.extex.i18n.Messages;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
@@ -86,7 +85,7 @@ public class Showbox extends AbstractBox {
             // TODO unimplemented
             throw new RuntimeException("unimplemented");
         }
-        source.update("message", Messages.format("TTP.Show.OK"));
+        source.update("message", getLocalizer().format("TTP.Show.OK"));
         return true;
     }
 

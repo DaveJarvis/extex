@@ -183,8 +183,6 @@ public class DimenPrimitive extends AbstractDimen
 
         Dimen d = new Dimen(context.getDimen(key).getValue() / value);
         context.setDimen(key, d, prefix.isGlobal());
-
-        prefix.clear();
     }
 
     /**

@@ -59,12 +59,12 @@ public abstract class AbstractCount extends AbstractAssignment {
     protected String getKey(final TokenSource source, final Context context)
             throws GeneralException {
 
-        String number = Long.toString(source.scanNumber());
+        String name = source.scanRegisterName();
 
         if (Namespace.SUPPORT_NAMESPACE_COUNT) {
-            return context.getNamespace() + "count#" + number;
+            return context.getNamespace() + "count#" + name;
         } else {
-            return "count#" + number;
+            return "count#" + name;
         }
     }
 

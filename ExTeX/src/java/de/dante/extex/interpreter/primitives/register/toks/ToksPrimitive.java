@@ -92,7 +92,7 @@ public class ToksPrimitive extends AbstractToks implements Theable {
      *
      * @param prefix the prefix flags
      * @param context the interpreter context
-     * @param source the tokensource
+     * @param source the token source
      * @param key the key
      *
      * @throws GeneralException in case of an error

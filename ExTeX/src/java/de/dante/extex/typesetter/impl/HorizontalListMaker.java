@@ -218,7 +218,8 @@ public class HorizontalListMaker extends AbstractListMaker implements ListMaker 
 
         long sf = f.getValue();
         if (sf <= 0) {
-            throw new HelpingException("TTP.BadSpaceFactor", Long.toString(sf));
+            throw new HelpingException(getLocalizer(), "TTP.BadSpaceFactor",
+                    Long.toString(sf));
         }
         spacefactor = sf;
     }

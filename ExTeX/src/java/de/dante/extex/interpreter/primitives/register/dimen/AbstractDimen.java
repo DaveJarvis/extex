@@ -59,12 +59,12 @@ public abstract class AbstractDimen extends AbstractAssignment {
     protected String getKey(final TokenSource source, final Context context)
             throws GeneralException {
 
-        String number = Long.toString(source.scanNumber());
+        String name = source.scanRegisterName();
 
         if (Namespace.SUPPORT_NAMESPACE_DIMEN) {
-            return context.getNamespace() + "dimen#" + number;
+            return context.getNamespace() + "dimen#" + name;
         } else {
-            return "dimen#" + number;
+            return "dimen#" + name;
         }
     }
 
