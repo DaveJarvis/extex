@@ -717,7 +717,7 @@ public class Max extends Moritz
     public Object visitLetter(final LetterToken token, final Object ignore)
             throws GeneralException {
 
-        typesetter.treatLetter(context, context.getTypesettingContext(), token
+        typesetter.letter(context, context.getTypesettingContext(), token
                 .getChar());
         return null;
     }
@@ -792,7 +792,7 @@ public class Max extends Moritz
     public Object visitOther(final OtherToken token, final Object ignore)
             throws GeneralException {
 
-        typesetter.treatLetter(context, //
+        typesetter.letter(context, //
                 context.getTypesettingContext(), //
                 token.getChar());
         return null;
