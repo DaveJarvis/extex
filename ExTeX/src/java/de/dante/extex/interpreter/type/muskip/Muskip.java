@@ -67,6 +67,12 @@ public class Muskip implements Serializable {
     }
 
     /**
+     * The field <tt>kill</tt> contains the indicator that the following glue
+     * might be killed.
+     */
+    private boolean kill;
+
+    /**
      * The field <tt>length</tt> contains the the natural length.
      */
     private GlueComponent length = new GlueComponent(0);
@@ -149,6 +155,26 @@ public class Muskip implements Serializable {
     public Dimen getLength() {
 
         return new Dimen(length.getValue());
+    }
+
+    /**
+     * Getter for kill.
+     *
+     * @return the kill
+     */
+    public boolean isKill() {
+
+        return this.kill;
+    }
+
+    /**
+     * Setter for kill.
+     *
+     * @param kill the kill to set
+     */
+    public void setKill(final boolean kill) {
+
+        this.kill = kill;
     }
 
     /**
