@@ -106,7 +106,7 @@ public class ExTeXLauncher extends TestCase {
      */
     private static void prepareProperties(final Properties properties) {
 
-        provide(properties, "extex.output", "text");
+        provide(properties, "extex.output", "out");
         provide(properties, "extex.interaction", "batchmode");
         provide(properties, "extex.fonts", "src/font");
     }
