@@ -895,6 +895,11 @@ public class ExTeX {
     }
 
     /**
+     * The field <tt>errorHandler</tt> contains the ...
+     */
+    private ErrorHandler errorHandler = null;
+
+    /**
      * The field <tt>interactionObserver</tt> contains the observer called
      * whenever the interaction mode is changed.
      */
@@ -1430,12 +1435,15 @@ public class ExTeX {
         interpreterFactory.enableLogging(logger);
 
         Interpreter interpreter = interpreterFactory.newInstance();
-        ErrorHandlerFactory errorHandlerFactory = new ErrorHandlerFactory(
-                config.getConfiguration(TAG_ERRORHANDLER));
-        errorHandlerFactory.enableLogging(logger);
-        ErrorHandler errorHandler = errorHandlerFactory.newInstance(properties
-                .getProperty(PROP_ERROR_HANDLER));
-        interpreter.setErrorHandler(errorHandler);
+        ErrorHandler errHandler = errorHandler;
+        if (errHandler == null) {
+            ErrorHandlerFactory errorHandlerFactory = new ErrorHandlerFactory(
+                    config.getConfiguration(TAG_ERRORHANDLER));
+            errorHandlerFactory.enableLogging(logger);
+            errHandler = errorHandlerFactory.newInstance(properties
+                    .getProperty(PROP_ERROR_HANDLER));
+        }
+        interpreter.setErrorHandler(errHandler);
         interpreter.setResourceFinder(finder);
         factory.setOptions((TokenStreamOptions) interpreter.getContext());
         interpreter.setTokenStreamFactory(factory);
@@ -1844,6 +1852,16 @@ public class ExTeX {
     public void setLogger(final Logger aLogger) {
 
         this.logger = aLogger;
+    }
+
+    /**
+     * Setter for errorHandler.
+     *
+     * @param handler the errorHandler to set.
+     */
+    public void setErrorHandler(final ErrorHandler handler) {
+
+        this.errorHandler = handler;
     }
 
     /**
