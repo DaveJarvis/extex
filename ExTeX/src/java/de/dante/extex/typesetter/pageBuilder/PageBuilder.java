@@ -18,6 +18,10 @@
  */
 package de.dante.extex.typesetter.pageBuilder;
 
+import de.dante.extex.documentWriter.DocumentWriter;
+import de.dante.extex.typesetter.NodeList;
+import de.dante.util.GeneralException;
+
 
 /**
  * ...
@@ -26,5 +30,39 @@ package de.dante.extex.typesetter.pageBuilder;
  * @version $Revision$
  */
 public interface PageBuilder {
+    
+    /**
+     * ...
+     *
+     */
+    void close() throws GeneralException;
 
+    /**
+     * This method is used when the page builder has received its last nodes.
+     * It indicates that now the pages should be written out.
+     * <p>
+     * Nevertheless some shipouts might come afterwards.
+     * </p>
+     */
+    void flush() throws GeneralException;
+
+    /**
+     * Setter for the document writer.
+     * This has to be provided before the page builder can be active.
+     *
+     * @param docWriter the new document writer to use
+     */
+    void setDocumentWriter(DocumentWriter docWriter);
+
+    /**
+     * This is the entry point for the page builder. Here it receives a
+     * complete node list to be sent to the output writer. It can be assumed
+     * that all values for width, height, and depth of the node lists are
+     * properly filled.
+     *
+     * @param nodes the nodes to send
+     *
+     * @throws GeneralException in case of an error
+     */
+    void shipout(NodeList nodes) throws GeneralException;
 }
