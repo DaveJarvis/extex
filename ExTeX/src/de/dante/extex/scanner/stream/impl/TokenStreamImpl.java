@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003 Gerd Neugebauer, Michael Niedermair
+ * Copyright (C) 2004 Gerd Neugebauer, Michael Niedermair
  * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -166,6 +166,8 @@ public class TokenStreamImpl extends TokenStreamBufferImpl {
 			reader = null;
 			return false;
 		}
+		
+		// TODO überprüfen, ob sich das Encoding geändert hat (durch \inputencoding)
 		
 		// System.err.println("line [" + reader.getLineNumber() + "] :" + line + ":");
 

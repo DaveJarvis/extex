@@ -56,7 +56,7 @@ public class Message extends AbstractCode {
 	public void expand(Flags prefix, Context context, TokenSource source, Typesetter typesetter) throws GeneralException {
 		
 		Tokens toks = source.scanNextTokens();
-		System.err.println("MESSAGE " + toks); 
+		System.err.println("\nMESSAGE " + toks.toText()); 
 		// TODO Ausgabe in LOG fehlt  noch und expand
 		prefix.clear();
 	}

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003 Michael Niedermair
+ * Copyright (C) 2004 Michael Niedermair
  * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -16,9 +16,8 @@
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *  
  */
-package de.dante.extex.interpreter.primitives.show;
+package de.dante.extex.interpreter.primitives.register;
 
-import de.dante.extex.interpreter.AbstractCode;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
@@ -27,12 +26,20 @@ import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.GeneralException;
 
 /**
- * This class provides an implementation for the primitive <code>\message</code>.
+ * This class provides an implementation for the primitive <code>\toks</code>.
+ * It sets the numbered toks register to the value given, and as a side effect
+ * all prefixes are zeroed.
  * 
- * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
+ * Example
+ * 
+ * <pre>
+ *  \toks12{123}
+ * </pre>
+ * 
+ * @author <a href="mailto:mgn@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class Message extends AbstractCode {
+public class NumberedToks extends NamedToks {
 
 	/**
 	 * Creates a new object.
@@ -40,24 +47,28 @@ public class Message extends AbstractCode {
 	 * @param name
 	 *                 the name for debugging
 	 */
-	public Message(String name) {
+	public NumberedToks(String name) {
 		super(name);
 	}
 
 	/**
-	 * Show the content from <code>{</code> to <code>}</code> in the
-	 * LOG-file.
+	 * Return the register-value as <code>Tokens</code> for <code>\the</code>.
 	 * 
+	 * @see de.dante.extex.interpreter.Code#getThe(de.dante.extex.interpreter.context.Context)
+	 */
+	public Tokens getThe(Context context, TokenSource source) throws GeneralException {
+		String key = getName() + "#" + Long.toString(source.scanNumber());
+		return context.getToks(key);
+	}
+
+	/**
 	 * @see de.dante.extex.interpreter.Code#expand(de.dante.extex.interpreter.Flags,
 	 *         de.dante.extex.interpreter.context.Context,
 	 *         de.dante.extex.interpreter.TokenSource,
 	 *         de.dante.extex.typesetter.Typesetter)
 	 */
 	public void expand(Flags prefix, Context context, TokenSource source, Typesetter typesetter) throws GeneralException {
-		
-		Tokens toks = source.scanNextTokens();
-		System.err.println("\nMESSAGE " + toks.toText()); 
-		// TODO Ausgabe in LOG fehlt  noch und expand
-		prefix.clear();
+		String key = getName() + "#" + Long.toString(source.scanNumber());
+		super.expand(prefix, context, source, key);
 	}
 }

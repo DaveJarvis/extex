@@ -293,6 +293,7 @@ public class Max extends Moritz implements CatcodeVisitor, Interpreter, TokenSou
 		//TODO TTP[1335]
 	}
 
+	
 	/**
 	 * Add a token stream and start processing it.
 	 * 
