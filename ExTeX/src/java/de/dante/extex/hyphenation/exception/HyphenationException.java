@@ -37,7 +37,6 @@ public class HyphenationException extends GeneralException {
     public HyphenationException(final String message) {
 
         super(message);
-        // TODO gene: HypenationException constructor unimplemented
     }
 
     /**
