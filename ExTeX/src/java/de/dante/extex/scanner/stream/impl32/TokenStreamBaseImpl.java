@@ -70,7 +70,7 @@ public class TokenStreamBaseImpl implements TokenStream {
     }
 
     /**
-     * @see de.dante.extex.token.TokenStream#get()
+     * @see de.dante.extex.token.InputFilter#get()
      */
     public Token get(TokenFactory factory, Tokenizer tokenizer)
             throws GeneralException {
@@ -80,7 +80,7 @@ public class TokenStreamBaseImpl implements TokenStream {
     }
 
     /**
-     * @see de.dante.extex.token.TokenStream#put(Token)
+     * @see de.dante.extex.token.InputFilter#put(Token)
      */
     public void put(Token token) {
 
@@ -90,7 +90,7 @@ public class TokenStreamBaseImpl implements TokenStream {
     }
 
     /**
-     * @see de.dante.extex.token.TokenStream#put(Tokens)
+     * @see de.dante.extex.token.InputFilter#put(Tokens)
      */
     public void put(Tokens toks) {
 
