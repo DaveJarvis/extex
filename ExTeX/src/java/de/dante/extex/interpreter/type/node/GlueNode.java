@@ -27,7 +27,15 @@ import de.dante.extex.typesetter.NodeVisitor;
 import de.dante.util.GeneralException;
 
 /**
- * ...
+ * This node represents a TeX "glue" node.
+ * <p>
+ * For the document writer it acts like a kern node. The width contains
+ * the distance to add.
+ * </p>
+ * <p>
+ * The stretchability is adjusted by the typesetter and the width is adjusted
+ * accordingly.
+ * </p>
  *
  * @see "TeX -- The Program [149]"
  *
@@ -100,7 +108,8 @@ public class GlueNode extends AbstractNode implements Node, Discartable {
      */
     public void toString(final StringBuffer sb, final String prefix) {
 
-        sb.append("\\skip ");
+        sb.append('\\');
+        sb.append("skip ");
         sb.append(size.toString());
     }
 
