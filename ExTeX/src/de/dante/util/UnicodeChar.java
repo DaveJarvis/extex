@@ -289,18 +289,6 @@ public class UnicodeChar {
     }
 
     /**
-     * Test, of the code is a letter or digit.
-     *
-     * @return <code>true</code>, if the code is a letter or digit,
-     *            otherwise <code>false</code>
-     * @deprecated
-     */
-    public boolean isLetterOrDigit() {
-
-        return UCharacter.isLetterOrDigit(code);
-    }
-
-    /**
      * Test, if the code is printable.
      *
      * @return <code>true</code>, if the code is printable,
