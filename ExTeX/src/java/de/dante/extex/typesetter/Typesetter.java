@@ -39,7 +39,7 @@ import de.dante.util.GeneralException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface Typesetter extends ListMaker, NoadConsumer {
+public interface Typesetter extends ListMaker {
 
     /**
      * Instructs the typesetter to perform any actions necessary for cleaning up
