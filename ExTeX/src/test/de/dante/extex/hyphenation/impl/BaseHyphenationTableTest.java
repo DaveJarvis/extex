@@ -28,6 +28,7 @@ import de.dante.extex.font.Ligature;
 import de.dante.extex.font.type.BoundingBox;
 import de.dante.extex.font.type.tfm.TFMFixWord;
 import de.dante.extex.hyphenation.HyphenationTable;
+import de.dante.extex.hyphenation.base.BaseHyphenationTable;
 import de.dante.extex.interpreter.Conditional;
 import de.dante.extex.interpreter.Interaction;
 import de.dante.extex.interpreter.TokenSource;
@@ -1033,7 +1034,7 @@ public class BaseHyphenationTableTest extends TestCase {
      */
     public void test1() throws Exception {
 
-        HorizontalListNode nodes = table.hyphenate(hlist(""), context);
+        HorizontalListNode nodes = table.hyphenate(hlist(""), context, null);
         assertEquals(0, nodes.size());
     }
 
@@ -1044,7 +1045,7 @@ public class BaseHyphenationTableTest extends TestCase {
      */
     public void test2() throws Exception {
 
-        HorizontalListNode nodes = table.hyphenate(hlist("abc"), context);
+        HorizontalListNode nodes = table.hyphenate(hlist("abc"), context, null);
         assertEquals(3, nodes.size());
     }
 
@@ -1055,7 +1056,8 @@ public class BaseHyphenationTableTest extends TestCase {
      */
     public void test3() throws Exception {
 
-        HorizontalListNode nodes = table.hyphenate(hlist("abcdef"), context);
+        HorizontalListNode nodes = table.hyphenate(hlist("abcdef"), context,
+                null);
         assertEquals(7, nodes.size());
         assertTrue(nodes.get(3) instanceof DiscretionaryNode);
     }
@@ -1067,7 +1069,8 @@ public class BaseHyphenationTableTest extends TestCase {
      */
     public void test4() throws Exception {
 
-        HorizontalListNode nodes = table.hyphenate(hlist("abcdefgh"), context);
+        HorizontalListNode nodes = table.hyphenate(hlist("abcdefgh"), context,
+                null);
         assertEquals(8, nodes.size());
     }
 
@@ -1078,7 +1081,7 @@ public class BaseHyphenationTableTest extends TestCase {
      */
     public void test5() throws Exception {
 
-        HorizontalListNode nodes = table.hyphenate(hlist("def"), context);
+        HorizontalListNode nodes = table.hyphenate(hlist("def"), context, null);
         assertEquals(5, nodes.size());
         assertTrue(nodes.get(1) instanceof DiscretionaryNode);
         assertTrue(nodes.get(3) instanceof DiscretionaryNode);
