@@ -52,14 +52,7 @@ public class OverlinedNoad extends AbstractNucleusNoad {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.noad.Noad#toString(java.lang.StringBuffer)
-     */
-    public void toString(final StringBuffer sb) {
-
-        // TODO gene: unimplemented
-    }
-
-    /**
+     * @see "TTP [705,734]"
      * @see de.dante.extex.typesetter.type.noad.Noad#typeset(
      *      de.dante.extex.typesetter.NodeList,
      *      de.dante.extex.typesetter.type.noad.util.MathContext,

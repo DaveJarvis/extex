@@ -24,7 +24,7 @@ import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.typesetter.type.noad.util.MathContext;
 
 /**
- * ...
+ * TODO gene: missing JavaDoc.
  *
  * @see "TTP [687]"
  *
@@ -60,6 +60,7 @@ public class VCenterNoad extends AbstractNoad {
     }
 
     /**
+     * @see "TTP [736]"
      * @see de.dante.extex.typesetter.type.noad.Noad#typeset(
      *      de.dante.extex.typesetter.NodeList,
      *      de.dante.extex.typesetter.type.noad.util.MathContext,
