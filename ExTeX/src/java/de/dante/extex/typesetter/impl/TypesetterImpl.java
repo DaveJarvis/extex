@@ -502,8 +502,8 @@ public class TypesetterImpl
      *      Context,
      *      TokenSource, de.dante.extex.scanner.Token)
      */
-    public void tab(Context context, TokenSource source, final Token t)
-            throws GeneralException {
+    public void tab(final Context context, final TokenSource source,
+            final Token t) throws GeneralException {
 
         listMaker.tab(context, source, t);
     }
