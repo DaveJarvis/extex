@@ -115,4 +115,22 @@ public class NullFont implements Font {
 	public String ligature(UnicodeChar c1, UnicodeChar c2) {
 		return null;
 	}
+	
+	
+	/**
+	 * @see de.dante.extex.interpreter.type.Font#externalFileName()
+	 */
+	public String externalFileName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+	 * @see de.dante.extex.interpreter.type.Font#isExternalFont()
+	 */
+	public boolean isExternalFont() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
