@@ -102,8 +102,10 @@ public class LogFormatter extends Formatter {
 
         ByteArrayOutputStream os = new ByteArrayOutputStream();
         PrintWriter writer = new PrintWriter(os);
+        writer.write("\n");
         t.printStackTrace(writer);
+        writer.write("\n");
         writer.flush();
-        return "\n" + os.toString() + "\n";
+        return os.toString();
     }
 }

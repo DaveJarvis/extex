@@ -85,13 +85,13 @@ public class OperatorNoad extends AbstractNucleusNoad {
      */
     public void toString(final StringBuffer sb) {
 
-        final char esc ='\\';
+        final char esc = '\\';
         sb.append(esc);
         sb.append("mathop");
         if (limits == Boolean.TRUE) {
             sb.append(esc);
             sb.append("limits");
-        } else if (limits == Boolean.TRUE) {
+        } else if (limits == Boolean.FALSE) {
             sb.append(esc);
             sb.append("nolimits");
         }
