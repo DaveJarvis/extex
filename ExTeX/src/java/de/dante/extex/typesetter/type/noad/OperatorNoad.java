@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -48,6 +48,26 @@ public class OperatorNoad extends AbstractNucleusNoad {
     public OperatorNoad(final Noad nucleus) {
 
         super(nucleus);
+    }
+
+    /**
+     * Getter for limits.
+     *
+     * @return the limits
+     */
+    public Boolean getLimits() {
+
+        return this.limits;
+    }
+
+    /**
+     * Setter for limits.
+     *
+     * @param limits the limits to set
+     */
+    public void setLimits(Boolean limits) {
+
+        this.limits = limits;
     }
 
     /**
