@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2004 Gerd Neugebauer, Michael Niedermair
+ * Copyright (C) 2003-2004 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -34,7 +34,7 @@ import de.dante.util.GeneralException;
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @author <a href="m.g.n@gmx.de">Michael Niedermair</a>
+ * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
 public interface Code {

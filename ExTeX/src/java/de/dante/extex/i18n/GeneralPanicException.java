@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2004 Gerd Neugebauer
+ * Copyright (C) 2003-2004 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -28,7 +28,8 @@ import de.dante.util.GeneralException;
  */
 public class GeneralPanicException extends GeneralException {
     /**
-     * The constant <tt>PANIC_ERROR_CODE</tt> ...
+     * The constant <tt>PANIC_ERROR_CODE</tt> contains the return code for this
+     * kind of Exception.
      */
     private static final int PANIC_ERROR_CODE = -666;
 

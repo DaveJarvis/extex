@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003 Gerd Neugebauer
+ * Copyright (C) 2003-2004 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -65,7 +65,7 @@ public interface DocumentWriter {
      *
      * @param nodes the nodes to send
      *
-     * @throws GeneralException iun case of an error
+     * @throws GeneralException in case of an error
      * @throws IOException in cayse that a writing operation fails
      */
     void shipout(NodeList nodes) throws GeneralException, IOException;
@@ -77,4 +77,5 @@ public interface DocumentWriter {
      * @throws IOException in cayse that a writing operation fails
      */
     void close() throws GeneralException, IOException;
+
 }
