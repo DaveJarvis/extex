@@ -58,13 +58,13 @@ public class ContextFactory implements Configurable {
         Context context;
 
         try {
-            context = (Context) Class.forName(config.getAttribute("class"))
-                                         .newInstance();
+            context = (Context) (Class.forName(config.getAttribute("class"))
+                    .getConstructor(new Class[]{Configuration.class})
+                    .newInstance(new Object[]{config}));
+            
         } catch (Exception e) {
             throw new ConfigurationException("ContextFactory", e);
         }
-
-        context.configure(config);
 
         return context;
     }
