@@ -39,7 +39,7 @@ public class FileKeyValidator {
      *
      * @throws BadFileNumberHelpingException in case of a failure
      */
-    static final void validateInFile(final long no, final String key)
+    public static final void validateInFile(final long no, final String key)
             throws BadFileNumberHelpingException {
 
         if (no < 0 || no > InFile.MAX_FILE_NO) {
@@ -56,7 +56,7 @@ public class FileKeyValidator {
      *
      * @throws BadFileNumberHelpingException in case of a failure
      */
-    static final void validateOutFile(final long no, final String key)
+    public static final void validateOutFile(final long no, final String key)
             throws BadFileNumberHelpingException {
 
         if (no < 0 || no > OutFile.MAX_FILE_NO) {
