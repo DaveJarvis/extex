@@ -355,10 +355,6 @@ public abstract class MathClass {
      */
     public static final MathClass getMathClass(final int n) {
 
-        if (n < 0 || n >= MC.length) {
-            //TODO gene: error unimplemented
-            throw new ArrayIndexOutOfBoundsException("MC");
-        }
         return MC[n];
     }
 
