@@ -78,12 +78,8 @@ public class Underline extends AbstractMathCode {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        ListMaker maker = typesetter.getListMaker();
-        if (!(maker instanceof NoadConsumer)) {
-            throw new MathHelpingException(printableControlSequence(context));
-        }
-        NoadConsumer nc = (NoadConsumer) maker;
-        Noad noad = nc.scanNoads(context, source);
+        NoadConsumer nc = getListMaker(typesetter);
+        Noad noad = nc.scanNoad(context, source);
         nc.add(new UnderlinedNoad(noad));
         return true;
     }
