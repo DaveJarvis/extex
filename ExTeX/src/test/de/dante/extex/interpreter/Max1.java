@@ -21,9 +21,9 @@ package de.dante.extex.interpreter;
 
 import junit.framework.TestCase;
 import de.dante.extex.documentWriter.DocumentWriter;
-import de.dante.extex.i18n.MathHelpingException;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.context.TypesettingContext;
+import de.dante.extex.interpreter.exception.MissingMathException;
 import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.glue.Glue;
@@ -253,7 +253,7 @@ public class Max1 extends TestCase {
         public Noad scanNoad(final Context context, final TokenSource source)
                 throws GeneralException {
 
-            throw new MathHelpingException("???");
+            throw new MissingMathException("???");
         }
 
         /**
