@@ -21,6 +21,7 @@
 package de.dante.extex.documentWriter.dvi;
 
 import de.dante.extex.interpreter.type.dimen.FixedDimen;
+import de.dante.extex.typesetter.InspectableNodeVisitor;
 import de.dante.extex.typesetter.Node;
 import de.dante.extex.typesetter.NodeVisitor;
 import de.dante.util.GeneralException;
@@ -32,19 +33,19 @@ import de.dante.util.GeneralException;
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
  * @version $Revision$
  */
-public class DebugNodeVisitor implements DebugableNodeVisitor {
+public class DebugNodeVisitor implements InspectableNodeVisitor {
     /**
      * Visitor for debugging.
      *
      */
-    private DebugableNodeVisitor nodeVisitor = null;
+    private InspectableNodeVisitor nodeVisitor = null;
 
     /**
      * Creates a new instance.
      *
-     * @param visitor <code>DebugableNodeVisitor</code> to inspect
+     * @param visitor <code>InspectableNodeVisitor</code> to inspect
      */
-    public DebugNodeVisitor(final DebugableNodeVisitor visitor) {
+    public DebugNodeVisitor(final InspectableNodeVisitor visitor) {
         this.nodeVisitor = visitor;
         visitor.setVisitor(this);
     }
@@ -54,7 +55,7 @@ public class DebugNodeVisitor implements DebugableNodeVisitor {
      *
      * @param visitor a <code>NodeVisitor</code> value
      * @see
-     *   DebugableNodeVisitor#setVisitor(de.dante.extex.typesetter.NodeVisitor)
+     *   InspectableNodeVisitor#setVisitor(de.dante.extex.typesetter.NodeVisitor)
      */
     public void setVisitor(final NodeVisitor visitor) {
         nodeVisitor.setVisitor(visitor);
