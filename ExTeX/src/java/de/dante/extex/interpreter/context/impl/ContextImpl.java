@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2005 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -391,9 +391,9 @@ public class ContextImpl
             throws GeneralException {
 
         /*
-        Tokens result = new Tokens();
-        //TODO gene: use interface instead of implementation
-        TokenStreamBaseImpl stream = new TokenStreamBaseImpl(false, tokens);
+         Tokens result = new Tokens();
+         //TODO gene: use interface instead of implementation
+         TokenStreamBaseImpl stream = new TokenStreamBaseImpl(false, tokens);
 
          while (!stream.isEof()) {
          Token t = stream.get(null, null);
