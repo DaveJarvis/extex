@@ -53,7 +53,7 @@ public class TokenStreamBaseImpl implements TokenStream {
 	 * @see de.dante.extex.scanner.stream.TokenStream#getLocator()
 	 */
 	public Locator getLocator() {
-		return new Locator(null, 0);
+		return new Locator(null, 0,null,0);
 	}
 
 	/**
