@@ -1226,7 +1226,7 @@ public class ExTeX {
                         format));
             }
             try {
-                interpreter.loadFormat(stream);
+                interpreter.loadFormat(stream, fmt);
             } catch (LoaderException e) {
                 throw new HelpingException(localizer, "TTP.FormatFileError",
                         format);
