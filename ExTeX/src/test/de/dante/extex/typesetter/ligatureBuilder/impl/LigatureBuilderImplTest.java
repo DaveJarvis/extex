@@ -31,6 +31,7 @@ import de.dante.extex.font.type.other.NullFont;
 import de.dante.extex.interpreter.context.TypesettingContext;
 import de.dante.extex.interpreter.context.TypesettingContextImpl;
 import de.dante.extex.interpreter.type.dimen.Dimen;
+import de.dante.extex.interpreter.type.dimen.FixedDimen;
 import de.dante.extex.interpreter.type.glue.Glue;
 import de.dante.extex.interpreter.type.node.CharNode;
 import de.dante.extex.interpreter.type.node.GlueNode;
@@ -331,9 +332,9 @@ public class LigatureBuilderImplTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Glyph#setWidth(de.dante.extex.interpreter.type.dimen.Dimen)
+         * @see de.dante.extex.interpreter.type.font.Glyph#setWidth(FixedDimen)
          */
-        public void setWidth(final Dimen w) {
+        public void setWidth(final FixedDimen w) {
 
         }
 
