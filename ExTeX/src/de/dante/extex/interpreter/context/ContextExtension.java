@@ -29,7 +29,7 @@ import de.dante.extex.interpreter.type.Real;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public interface ContextExTeX extends Serializable, Context {
+public interface ContextExtension extends Serializable {
 
 	/**
 	 * Setter for the {@link de.dante.extex.interpreter.type.Real real}
