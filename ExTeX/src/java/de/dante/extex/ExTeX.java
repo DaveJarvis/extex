@@ -1504,7 +1504,8 @@ public class ExTeX {
             throws ConfigurationException,
                 NotObservableException {
 
-        TokenStreamFactory factory = new TokenStreamFactory(config, properties.getProperty(PROP_TOKEN_STREAM));
+        TokenStreamFactory factory = new TokenStreamFactory(config, properties
+                .getProperty(PROP_TOKEN_STREAM));
 
         factory.enableLogging(logger);
         factory.setResourceFinder(finder);
@@ -1585,8 +1586,7 @@ public class ExTeX {
                 finder.enableTrace(true);
             }
             TokenStreamFactory tokenStreamFactory //
-            = makeTokenStreamFactory(config.getConfiguration("Scanner"),
-                    finder);
+            = makeTokenStreamFactory(config.getConfiguration("Scanner"), finder);
 
             FontFactory fontFactory = makeFontFactory(config
                     .getConfiguration("Fonts"));
