@@ -126,7 +126,7 @@ public class Fontdimen extends AbstractAssignment
      *
      * @throws GeneralException in case of an error
      */
-    private String getKey(final Context context, final TokenSource source)
+    protected String getKey(final Context context, final TokenSource source)
             throws GeneralException {
 
         Token t = source.getNonSpace();
