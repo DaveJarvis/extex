@@ -199,8 +199,10 @@ public class EFMFont extends XMLFont implements Font {
 					}
 
 				} catch (JDOMException e) {
+					e.printStackTrace();
 					throw new MainFontException(e.getMessage()); // TODO change
 				} catch (IOException e) {
+					e.printStackTrace();
 					throw new MainFontException(e.getMessage()); // TODO change
 				}
 

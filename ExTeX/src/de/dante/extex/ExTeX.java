@@ -507,15 +507,19 @@ public class ExTeX {
                 : pages == 1 ? "ExTeX.Page" : "ExTeX.Pages"), outname, Integer
                 .toString(pages)));
         } catch (ConfigurationException e) {
+        	e.printStackTrace(); // TODO delete after test
             logger.throwing(this.getClass().getName(), "run", e);
             throw new MainConfigurationException(e);
         } catch (CharacterCodingException e) {
+			e.printStackTrace(); // TODO delete after test
             logger.throwing(this.getClass().getName(), "run", e);
             throw new MainCodingException(e);
         } catch (IOException e) {
+			e.printStackTrace(); // TODO delete after test
             logger.throwing(this.getClass().getName(), "run", e);
             throw new MainIOException(e);
         } catch (GeneralException e) {
+			e.printStackTrace(); // TODO delete after test
             logger.throwing(this.getClass().getName(), "run", e);
             throw new MainException(e);
         }
