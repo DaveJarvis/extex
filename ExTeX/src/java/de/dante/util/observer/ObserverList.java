@@ -19,8 +19,8 @@
 
 package de.dante.util.observer;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import de.dante.util.GeneralException;
@@ -55,9 +55,7 @@ public class ObserverList implements Observer {
      */
     public void add(final Observer observer) {
 
-        if (!list.contains(observer)) {
-            list.add(observer);
-        }
+        list.add(new WeakReference(observer));
     }
 
     /**
@@ -70,10 +68,15 @@ public class ObserverList implements Observer {
     public void update(final Observable source, final Object object)
             throws GeneralException {
 
-        Iterator iterator = list.iterator();
+        for (int i=0; i < list.size(); i++ ) {
+            Observer ob = (Observer) ((WeakReference) list.get(i)).get();
 
-        while (iterator.hasNext()) {
-            ((Observer) (iterator.next())).update(source, object);
+            if (ob != null) {
+                ob.update(source, object);
+            } else {
+                list.remove(i);
+                i--;
+            }
         }
     }
 
