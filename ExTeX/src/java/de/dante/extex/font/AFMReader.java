@@ -529,13 +529,6 @@ public class AFMReader implements FontMetric {
 	}
 
 	/**
-	 * Add the kerning-pais for the glyph
-	 */
-	private void addKerning(Element glyph) {
-
-	}
-
-	/**
 	 * Return the id for a charname 
 	 */
 	private String getIDforName(String name) {

@@ -143,8 +143,8 @@ public class NullFont implements Font {
 	/**
 	 * @see de.dante.extex.interpreter.type.Font#getItalic(de.dante.util.UnicodeChar)
 	 */
-	public Dimen getItalic(UnicodeChar c) {
-		return null;
+	public float getItalic(UnicodeChar c) {
+		return 0.0f;
 	}
 
 }
