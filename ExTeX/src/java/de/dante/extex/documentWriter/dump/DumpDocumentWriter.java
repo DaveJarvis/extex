@@ -426,9 +426,12 @@ public class DumpDocumentWriter
     /**
      * @see de.dante.extex.documentWriter.DocumentWriter#close()
      */
-    public void close() {
+    public void close() throws IOException {
 
-        // nothing to do
+        if (out != null) {
+            out.close();
+            out = null;
+        }
     }
 
     /**

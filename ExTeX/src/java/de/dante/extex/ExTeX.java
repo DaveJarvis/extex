@@ -1625,9 +1625,6 @@ public class ExTeX {
 
             interpreter.run();
 
-            //outStream.close();
-            //docWriter.close();
-
             int pages = docWriter.getPages();
             String outname = jobname + "." + docWriter.getExtension();
             logger.info(localizer.format((pages == 0
