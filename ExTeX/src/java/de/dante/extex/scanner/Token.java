@@ -111,7 +111,7 @@ public interface Token {
     boolean isa(Catcode cc);
 
     /**
-     * This method retruns the textual representation for the Token.
+     * This method returns the textual representation for the Token.
      * This textual representation might not contain the full information but
      * can be used as an abbreviated form to be shown to the end user.
      * A representation with more complete information can be received with the

@@ -34,16 +34,18 @@ import de.dante.util.file.FileFinder;
 public class FileFinderImpl implements FileFinder {
 
     /**
-     * The field <tt>logger</tt> contains the ...
+     * The field <tt>logger</tt> contains the logger to write output to.
      */
     private Logger logger;
 
     /**
      * Creates a new object.
+     *
+     * @param aLogger ...
      */
-    public FileFinderImpl(final Logger logger) {
+    public FileFinderImpl(final Logger aLogger) {
         super();
-        this.logger = logger;
+        this.logger = aLogger;
     }
 
     /**
