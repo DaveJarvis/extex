@@ -673,7 +673,7 @@ public class Max extends Moritz implements Interpreter, TokenSource,
                 Code code = (Code) (Class.forName(classname)
                         .getConstructor(new Class[]{String.class})
                         .newInstance(new Object[]{name}));
-                code.set(context, cfg.getValue());
+//                code.set(context, new StringSource(,cfg.getValue()));
                 context.setCode(tokenFactory.newInstance(Catcode.ESCAPE, name, NAMESPACE),
                                 code, true);
             } catch (IllegalArgumentException e) {

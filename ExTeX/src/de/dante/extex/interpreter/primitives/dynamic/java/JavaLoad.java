@@ -42,7 +42,7 @@ import de.dante.util.GeneralException;
  * </p>
  * <p>
  *  The general form of this primitive is
- * <pre style="background:#eeffff;border-width:1pt;border-style:solid;border-color:#666666">
+ * <pre class="syntax">
  *   \javaload&lang;<i>tokens</i>&rang; </pre>
  * </p>
  * <p>
@@ -56,13 +56,13 @@ import de.dante.util.GeneralException;
  * </p>
  * <p>
  *  The following example illustrates the use of this primitive:
- * <pre>
+ * <pre class="TeXSample">
  *   \javaload{de.dante.extex.extensions.Basic} </pre>
  * </p>
  * <p>
  *  For the loading of the Java class it is necessary that this Java
  *  class implements the interface {@link Loadable Loadable}.
- * <pre style="background:#eeeeee;border-width:1pt;border-style:solid;border-color:#666666">
+ * <pre class="JavaSample">
  *   <b>package</b> my.package;
  *
  *   <b>import</b> de.dante.extex.interpreter.contect.Context;

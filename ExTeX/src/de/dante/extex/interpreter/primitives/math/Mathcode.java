@@ -32,6 +32,23 @@ import de.dante.util.UnicodeChar;
  * This class provides an implementation for the primitive
  * <code>\mathcode</code>.
  *
+ * <doc>
+ * <h3>The Primitive <tt>\mathcode</tt></h3>
+ * <p>
+ *  ...
+ * </p>
+ * <p>
+ *  The formal description of this primitive is the following:
+ *  <pre class="syntax">
+ *    <tt>\mathcode ...</tt>  </pre>
+ * </p>
+ * <p>
+ *  Examples:
+ *  <pre class="TeXSample">
+ *    \mathcode ...  </pre>
+ * </p>
+ * </doc>
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -58,7 +75,7 @@ public class Mathcode extends AbstractAssignment {
             throws GeneralException {
 
         UnicodeChar charCode = source.scanCharacterCode();
-        source.scanOptionalEquals();
+        source.getOptionalEquals();
         Count mathCode = new Count(source.scanNumber());
 
         context.setMathcode(charCode, mathCode, prefix.isGlobal());

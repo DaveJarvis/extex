@@ -61,7 +61,7 @@ public class NamedBox extends AbstractCode implements Code, Serializable {
             throws GeneralException {
 
         String key = getKey(source, context.getNamespace());
-        source.scanOptionalEquals();
+        source.getOptionalEquals();
         Box box = source.getBox(typesetter);
         context.setBox(key, box, prefix.isGlobal());
         prefix.clear();

@@ -34,6 +34,13 @@ import de.dante.util.GeneralException;
 /**
  * This class provides an implementation for the primitive <code>\read</code>.
  *
+ * <doc>
+ * <h3>The Primitive <tt>\read</tt></h3>
+ * <p>
+ *  ...
+ * </p>
+ * </doc>
+ *
  * Example
  * <pre>
  * \read3 to \abc

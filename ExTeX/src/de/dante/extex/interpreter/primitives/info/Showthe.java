@@ -34,6 +34,13 @@ import de.dante.util.GeneralException;
  * This class provides an implementation for the primitive
  * <code>\showthe</code>.
  *
+ * <doc>
+ * <h3>The Primitive <tt>\showthe</tt></h3>
+ * <p>
+ *  ...
+ * </p>
+ * </doc>
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$

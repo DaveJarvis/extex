@@ -32,6 +32,13 @@ import de.dante.util.GeneralException;
 /**
  * This class provides an implementation for the primitive <code>\ifcase</code>.
  *
+ * <doc>
+ * <h3>The Primitive <tt>\ifcase</tt></h3>
+ * <p>
+ *  ...
+ * </p>
+ * </doc>
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */

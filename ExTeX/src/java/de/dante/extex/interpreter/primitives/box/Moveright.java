@@ -31,6 +31,14 @@ import de.dante.util.GeneralException;
 
 /**
  * This class provides an implementation for the primitive <code>\moveright</code>.
+ *
+ * <doc name="moveright">
+ * <h3>The Primitive <tt>\moveright</tt></h3>
+ * <p>
+ *  ...
+ * </p>
+ * </doc>
+ *
  * <p>
  * Examples
  * </p>

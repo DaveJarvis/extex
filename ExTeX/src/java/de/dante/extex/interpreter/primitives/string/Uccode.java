@@ -61,7 +61,7 @@ public class Uccode extends AbstractAssignment implements ExpandableCode,
             throws GeneralException {
 
         UnicodeChar ucCode = source.scanCharacterCode();
-        source.scanOptionalEquals();
+        source.getOptionalEquals();
         UnicodeChar lcCode = source.scanCharacterCode();
         context.setUccode(ucCode, lcCode);
     }

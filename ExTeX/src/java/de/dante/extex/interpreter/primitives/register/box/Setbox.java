@@ -47,7 +47,7 @@ public class Setbox extends NamedBox implements Code, Serializable {
      * Return the key (the number) for the box register.
      *
      * @param source the source for new tokens
-     * @param namespace the namespace to use 
+     * @param namespace the namespace to use
      *
      * @return the key for the box register
      *

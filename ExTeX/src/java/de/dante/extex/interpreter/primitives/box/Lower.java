@@ -35,6 +35,14 @@ import de.dante.util.GeneralException;
 
 /**
  * This class provides an implementation for the primitive <code>\lower</code>.
+ *
+ * <doc name="lower">
+ * <h3>The Primitive <tt>\lower</tt></h3>
+ * <p>
+ *  ...
+ * </p>
+ * </doc>
+ *
  * <p>
  * Examples
  * </p>

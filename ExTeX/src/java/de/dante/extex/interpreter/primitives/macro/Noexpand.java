@@ -32,6 +32,23 @@ import de.dante.util.GeneralException;
  * This class provides an implementation for the primitive
  * <code>\noexpand</code>.
  *
+ * <doc>
+ * <h3>The Primitive <tt>\noexpand</tt></h3>
+ * <p>
+ *  ...
+ * </p>
+ * <p>
+ *  The formal description of this primitive is the following:
+ *  <pre class="syntax">
+ *    <tt>\noexpand</tt>  </pre>
+ * </p>
+ * <p>
+ *  Examples:
+ *  <pre class="TeXSample">
+ *    \noexpand  </pre>
+ * </p>
+ * </doc>
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */

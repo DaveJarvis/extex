@@ -65,27 +65,9 @@ public class NumberedToks extends AbstractToks implements Theable {
             throws GeneralException {
 
         String key = getKey(source, context.getNamespace());
-        source.scanOptionalEquals();
+        source.getOptionalEquals();
         Tokens toks = source.getTokens();
         context.setToks(key, toks, prefix.isGlobal());
-    }
-
-    /**
-     * Set the value for the register.
-     * This method is void since a whole array of values can not be initialized.
-     *
-     * @param context the interpreter context
-     * @param value the value for the tokens
-     *
-     * @throws GeneralException in case of an exception
-     */
-    public void set(final Context context, final String value)
-        throws GeneralException {
-
-        if (!"".equals(value)) {
-            //TODO
-            throw new RuntimeException("unimplemented");
-        }
     }
 
     /**

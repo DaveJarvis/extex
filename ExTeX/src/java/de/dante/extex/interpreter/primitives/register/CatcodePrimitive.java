@@ -33,6 +33,23 @@ import de.dante.util.UnicodeChar;
  * This class provides an implementation for the primitive
  * <code>\catcode</code>.
  *
+ * <doc>
+ * <h3>The Primitive <tt>\catcode</tt></h3>
+ * <p>
+ *  ...
+ * </p>
+ * <p>
+ *  The formal description of this primitive is the following:
+ *  <pre class="syntax">
+ *    <tt>\catcode</tt> ... </pre>
+ * </p>
+ * <p>
+ *  Examples:
+ *  <pre class="TeXSample">
+ *    \ccatcode ...  </pre>
+ * </p>
+ * </doc>
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
@@ -59,7 +76,7 @@ public class CatcodePrimitive extends AbstractAssignment {
             throws GeneralException {
 
         UnicodeChar charCode = source.scanCharacterCode();
-        source.scanOptionalEquals();
+        source.getOptionalEquals();
         long ccNumber = source.scanNumber();
 
         try {

@@ -28,6 +28,23 @@ import de.dante.util.GeneralException;
 /**
  * This class provides an implementation for the primitive <code>\end</code>.
  *
+ * <doc>
+ * <h3>The Primitive <tt>\end</tt></h3>
+ * <p>
+ *  ...
+ * </p>
+ * <p>
+ *  The formal description of this primitive is the following:
+ *  <pre class="syntax">
+ *    <tt>\end</tt>  </pre>
+ * </p>
+ * <p>
+ *  Examples:
+ *  <pre class="TeXSample">
+ *    \end  </pre>
+ * </p>
+ * </doc>
+ *
  * Example
  * <pre>
  * \end

@@ -27,7 +27,13 @@ import de.dante.util.GeneralException;
 
 /**
  * This class provides an implementation for the primitive <code>\relax</code>.
- * It does simply nothing, but as a side effect all prefixes are zeroed.
+ *
+ * <doc name="par">
+ * <h3>The Primitive <tt>\par</tt></h3>
+ * <p>
+ *  ...
+ * </p>
+ * </doc>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

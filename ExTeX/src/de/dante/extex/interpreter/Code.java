@@ -79,15 +79,4 @@ public interface Code {
     void execute(Flags prefix, Context context,
             TokenSource source, Typesetter typesetter) throws GeneralException;
 
-    /**
-     * Setter for the content from a String.
-     *
-     * @param context the interpreter context
-     * @param value the string to get the value from
-     *
-     * @throws GeneralException in case of an error
-     */
-    void set(Context context, String value)
-            throws GeneralException;
-
 }

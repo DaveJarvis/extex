@@ -210,7 +210,7 @@ public class FontFactoryImpl implements FontFactory {
      * Load the efm-Font
      * @param name  the name of the efm-file
      * @return  the efm as Document or <code>null</code>, if not found
-     * @throws ConfigurationException ...
+     * @throws ConfigurationException in case of an error in the configuration
      */
     private Document loadEFMDocument(final String name)
             throws ConfigurationException {

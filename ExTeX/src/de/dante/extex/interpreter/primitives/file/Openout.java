@@ -32,6 +32,13 @@ import de.dante.util.GeneralException;
  * This class provides an implementation for the primitive
  * <code>\openout</code>.
  *
+ * <doc>
+ * <h3>The Primitive <tt>\openout</tt></h3>
+ * <p>
+ *  ...
+ * </p>
+ * </doc>
+ *
  * Example
  * <pre>
  * \openout3= abc.def
@@ -68,7 +75,7 @@ public class Openout extends AbstractFileCode {
                     Integer.toString(OutFile.MAX_FILE_NO));
         }
 
-        source.scanOptionalEquals();
+        source.getOptionalEquals();
         String name = scanFileName(source, context);
 
         OutFile file = new OutFile(new File(name));

@@ -28,6 +28,13 @@ import de.dante.util.GeneralException;
 /**
  * This class provides an implementation for the primitive <code>\if</code>.
  *
+ * <doc>
+ * <h3>The Primitive <tt>\if</tt></h3>
+ * <p>
+ *  ...
+ * </p>
+ * </doc>
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */

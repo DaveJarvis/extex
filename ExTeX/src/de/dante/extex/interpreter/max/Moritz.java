@@ -231,9 +231,12 @@ public abstract class Moritz implements TokenSource, Observable {
     }
 
     /**
-     * ...
+     * Get the next token and check that it is a CodeToken.
+     * This means that only the classes ActiveCharacterToken and
+     * ControlSequenceToken are accepted. All other tokens lead to an
+     * exception.
      *
-     * @return ...
+     * @return the next token found
      *
      * @throws GeneralException in case of an error
      */
@@ -454,6 +457,8 @@ public abstract class Moritz implements TokenSource, Observable {
      * as well and all spaces afterwards.
      *
      * @throws GeneralException in case of an error
+     *
+     * @see de.dante.extex.interpreter.TokenSource#getOptionalEquals()
      */
     public void getOptionalEquals() throws GeneralException {
 
@@ -1004,12 +1009,14 @@ public abstract class Moritz implements TokenSource, Observable {
     /**
      * @see de.dante.extex.interpreter.TokenSource#skipSpace()
      */
-    public void skipSpace() throws GeneralException {
+    public boolean skipSpace() throws GeneralException {
 
         Token t = getNonSpace();
         if (t != null) {
             stream.put(t);
+            return true;
         }
+        return false;
     }
 
     /**

@@ -31,6 +31,13 @@ import de.dante.util.GeneralException;
 /**
  * This class provides an implementation for the primitive <code>\write</code>.
  *
+ * <doc>
+ * <h3>The Primitive <tt>\write</tt></h3>
+ * <p>
+ *  ...
+ * </p>
+ * </doc>
+ *
  * Example
  * <pre>
  * \write3{abc \def}

@@ -61,7 +61,7 @@ public class Lccode extends AbstractAssignment implements ExpandableCode,
             throws GeneralException {
 
         UnicodeChar ucCode = source.scanCharacterCode();
-        source.scanOptionalEquals();
+        source.getOptionalEquals();
         UnicodeChar lcCode = source.scanCharacterCode();
         context.setLccode(ucCode, lcCode);
     }

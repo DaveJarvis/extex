@@ -30,6 +30,23 @@ import de.dante.util.GeneralException;
 /**
  * This class provides an implementation for the primitive <code>\output</code>.
  *
+ * <doc>
+ * <h3>The Primitive <tt>\output</tt></h3>
+ * <p>
+ *  ...
+ * </p>
+ * <p>
+ *  The formal description of this primitive is the following:
+ *  <pre class="syntax">
+ *    <tt>\output ...</tt>  </pre>
+ * </p>
+ * <p>
+ *  Examples:
+ *  <pre class="TeXSample">
+ *    \output ...  </pre>
+ * </p>
+ * </doc>
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */

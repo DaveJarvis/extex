@@ -30,7 +30,7 @@ import de.dante.util.GeneralException;
 public interface InteractionVisitor {
 
     /**
-     * ...
+     * Invoke the method in case of a batchmode interaction.
      *
      * @param arg1 the first argument
      * @param arg2 the second argument
@@ -44,7 +44,7 @@ public interface InteractionVisitor {
             throws GeneralException;
 
     /**
-     * ...
+     * Invoke the method in case of a non-stop mode interaction.
      *
      * @param arg1 the first argument
      * @param arg2 the second argument
@@ -58,7 +58,7 @@ public interface InteractionVisitor {
             throws GeneralException;
 
     /**
-     * ...
+     * Invoke the method in case of a scroll mode interaction.
      *
      * @param arg1 the first argument
      * @param arg2 the second argument
@@ -72,7 +72,7 @@ public interface InteractionVisitor {
             throws GeneralException;
 
     /**
-     * ...
+     * Invoke the method in case of a error-stop mode interaction.
      *
      * @param arg1 the first argument
      * @param arg2 the second argument

@@ -31,6 +31,13 @@ import de.dante.util.GeneralException;
  * This class provides an implementation for the primitive
  * <code>\closein</code>.
  *
+ * <doc>
+ * <h3>The Primitive <tt>\closein</tt></h3>
+ * <p>
+ *  ...
+ * </p>
+ * </doc>
+ *
  * Example
  * <pre>
  * \closein3

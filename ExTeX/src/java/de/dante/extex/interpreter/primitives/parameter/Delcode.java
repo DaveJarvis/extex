@@ -32,6 +32,23 @@ import de.dante.util.UnicodeChar;
  * This class provides an implementation for the primitive
  * <code>\delcode</code>.
  *
+ * <doc>
+ * <h3>The Primitive <tt>\delcode</tt></h3>
+ * <p>
+ *  ...
+ * </p>
+ * <p>
+ *  The formal description of this primitive is the following:
+ *  <pre class="syntax">
+ *    <tt>\delcode ...</tt>  </pre>
+ * </p>
+ * <p>
+ *  Examples:
+ *  <pre class="TeXSample">
+ *    \delcode ...  </pre>
+ * </p>
+ * </doc>
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -58,7 +75,7 @@ public class Delcode extends AbstractAssignment {
             throws GeneralException {
 
         UnicodeChar charCode = source.scanCharacterCode();
-        source.scanOptionalEquals();
+        source.getOptionalEquals();
         Count sfCode = new Count(source.scanInteger());
 
         context.setDelcode(charCode, sfCode, prefix.isGlobal());

@@ -110,31 +110,10 @@ public class NumberedDimen extends AbstractDimen implements Advanceable,
             throws GeneralException {
 
         String key = getKey(source);
-        source.scanOptionalEquals();
+        source.getOptionalEquals();
 
         Dimen dimen = new Dimen(context, source);
         context.setDimen(key, dimen, prefix.isGlobal());
-    }
-
-    /**
-     * Setter for the value fron a given String.
-     * The emty string is interpreted as 0.
-     *
-     * @param context the interpreter context
-     * @param value the string containing the value
-     *
-     * @throws GeneralException in case of an error
-     */
-    public void set(final Context context, final String value)
-            throws GeneralException {
-
-        if (value.equals("")) {
-            context.setDimen(getName(), 0, true);
-        } else {
-            //Dimen d = new Dimen(context, new StringSource(context.getTo(), value));
-            //TODO
-            throw new RuntimeException("unimplemented");
-        }
     }
 
     /**

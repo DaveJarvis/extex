@@ -31,6 +31,14 @@ import de.dante.util.GeneralException;
 
 /**
  * This class provides an implementation for the primitive <code>\hbox</code>.
+ *
+ * <doc name="hbox">
+ * <h3>The Primitive <tt>\hbox</tt></h3>
+ * <p>
+ *  ...
+ * </p>
+ * </doc>
+ *
  * <p>
  * Examples
  * </p>

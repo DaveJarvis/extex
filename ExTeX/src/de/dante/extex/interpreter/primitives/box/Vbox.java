@@ -31,6 +31,14 @@ import de.dante.util.GeneralException;
 
 /**
  * This class provides an implementation for the primitive <code>\vbox</code>.
+ *
+ * <doc name="vbox">
+ * <h3>The Primitive <tt>\vbox</tt></h3>
+ * <p>
+ *  ...
+ * </p>
+ * </doc>
+ *
  * <p>
  * Examples
  * </p>
