@@ -79,12 +79,12 @@ public interface TokenStream {
      * Check to see if a further token can be acquired from the token stream.
      *
      * @return <code>true</code> if the stream is at its end
-     * 
+     *
      * @throws ScannerException in case that an error has been encountered.
      *  Especially if an IO exceptions occurs it is delivered as chained
      *  exception in a ScannerException.
      */
-    boolean isEof() throws ScannerException ;
+    boolean isEof() throws ScannerException;
 
     /**
      * Check whether the current stream is associated with a file to read from.
