@@ -4,7 +4,7 @@
 #* Author: Gerd Neugebauer
 #*=============================================================================
 
-FLAGS = -verbose
+FLAGS = -verbose -src=src -dest=www
 
 all:
 	@perl .make.pl $(FLAGS)
