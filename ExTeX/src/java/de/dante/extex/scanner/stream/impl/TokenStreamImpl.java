@@ -58,6 +58,11 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements
         TokenStream, CatcodeVisitor {
 
     /**
+     * The field <tt>CR</tt> contains the ...
+     */
+    private static final UnicodeChar CR = new UnicodeChar('\r');
+
+    /**
      * The constant <tt>BUFFERSIZE_ATTRIBUTE</tt> contains the name of the
      * attribute used to get the buffer size.
      */
@@ -542,8 +547,11 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements
      */
     private UnicodeChar getRawChar() {
 
-        return (pointer >= line.length() ? null : new UnicodeChar(line,
-                pointer++));
+        if (pointer < line.length()) {
+            return new UnicodeChar(line, pointer++);
+        }
+
+        return (pointer++ > line.length() ? null : CR);
     }
 
     /**
@@ -552,9 +560,9 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements
      * @return <code>true</code> iff the next reading operation would try to
      * refill the line buffer
      */
-    private final boolean atEndOfLine() {
+    private boolean atEndOfLine() {
 
-        return (pointer >= line.length());
+        return (pointer > line.length());
     }
 
     /**
@@ -562,7 +570,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements
      */
     private void endLine() {
 
-        pointer = line.length();
+        pointer = line.length() + 1;
     }
 
     /**
