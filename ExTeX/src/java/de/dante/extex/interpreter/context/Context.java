@@ -375,7 +375,8 @@ public interface Context
      *
      * @throws GeneralException in case of an error
      */
-    void setCode(Token t, Code code, boolean global) throws GeneralException;
+    void setCode(CodeToken t, Code code, boolean global)
+            throws GeneralException;
 
     /**
      * Setter for the {@link de.dante.extex.interpreter.type.count.Count count}

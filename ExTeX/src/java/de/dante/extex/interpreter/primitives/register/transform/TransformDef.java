@@ -19,14 +19,12 @@
 
 package de.dante.extex.interpreter.primitives.register.transform;
 
-import de.dante.extex.i18n.HelpingException;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.type.AbstractAssignment;
 import de.dante.extex.interpreter.type.count.Count;
-import de.dante.extex.scanner.ControlSequenceToken;
-import de.dante.extex.scanner.Token;
+import de.dante.extex.scanner.CodeToken;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.GeneralException;
 
@@ -63,10 +61,7 @@ public class TransformDef extends AbstractAssignment {
             throws GeneralException {
 
         //  \transformdef\hugo=7
-        Token tok = source.scanNonSpace(context);
-        if (!(tok instanceof ControlSequenceToken)) {
-            throw new HelpingException("TTP.MissingCtrlSeq");
-        }
+        CodeToken tok = source.getControlSequence(context);
         source.getOptionalEquals(context);
         String key = "transform#"
                 + Long.toString(Count.scanCount(context, source, typesetter));
