@@ -300,7 +300,7 @@ public class OutFile implements Serializable {
         for (int i = 0; i < len; i++) {
             try {
 
-                toks.get(i).visit(VISITOR, null);
+                toks.get(i).visit(VISITOR, writer);
 
             } catch (IOException e) {
                 throw e;
