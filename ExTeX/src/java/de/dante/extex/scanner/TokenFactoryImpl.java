@@ -127,6 +127,11 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     private final class USKey {
 
         /**
+         * The field <tt>HASH_FACTOR</tt> contains the ...
+         */
+        private static final int HASH_FACTOR = 17;
+
+        /**
          * The field <tt>namespace</tt> contains the namespace of the active
          * character.
          */
@@ -167,7 +172,7 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
          */
         public int hashCode() {
 
-            return uc.hashCode() + 17 * namespace.hashCode();
+            return uc.hashCode() + HASH_FACTOR * namespace.hashCode();
         }
     }
 
