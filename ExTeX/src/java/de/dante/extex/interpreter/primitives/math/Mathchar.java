@@ -29,7 +29,7 @@ import de.dante.extex.scanner.Token;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.listMaker.math.NoadConsumer;
 import de.dante.extex.typesetter.type.MathClass;
-import de.dante.extex.typesetter.type.MathGlyph;
+import de.dante.extex.typesetter.type.noad.MathGlyph;
 import de.dante.util.GeneralException;
 
 /**
