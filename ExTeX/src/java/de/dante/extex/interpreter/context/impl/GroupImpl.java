@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003 Gerd Neugebauer, Michael Niedermair
+ * Copyright (C) 2003-2004 Gerd Neugebauer, Michael Niedermair
  * 
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -255,7 +255,7 @@ public class GroupImpl implements Tokenizer, Group, Serializable {
 		Count count = (Count) (countMap.get(name));
 
 		if (count == null) {
-			if (next == null) {
+			if (next != null) {
 				count = next.getCount(name);
 			} else {
 				count = new Count(0);
@@ -293,7 +293,7 @@ public class GroupImpl implements Tokenizer, Group, Serializable {
 		Dimen dimen = (Dimen) (dimenMap.get(name));
 
 		if (dimen == null) {
-			if (next == null) {
+			if (next != null) {
 				dimen = next.getDimen(name);
 			} else {
 				dimen = new Dimen();
