@@ -23,14 +23,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 import junit.framework.TestCase;
+import de.dante.extex.font.FontFile;
+import de.dante.extex.font.Glyph;
+import de.dante.extex.font.Kerning;
+import de.dante.extex.font.Ligature;
 import de.dante.extex.font.type.other.NullFont;
 import de.dante.extex.interpreter.context.TypesettingContext;
 import de.dante.extex.interpreter.context.TypesettingContextImpl;
 import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.font.FontFile;
-import de.dante.extex.interpreter.type.font.Glyph;
-import de.dante.extex.interpreter.type.font.Kerning;
-import de.dante.extex.interpreter.type.font.Ligature;
 import de.dante.extex.interpreter.type.glue.Glue;
 import de.dante.extex.interpreter.type.node.CharNode;
 import de.dante.extex.interpreter.type.node.GlueNode;
