@@ -22,7 +22,7 @@ package de.dante.extex.interpreter.primitives.register.skip;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.scanner.Token;
+import de.dante.extex.scanner.CodeToken;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.GeneralException;
 
@@ -93,7 +93,7 @@ public class Skipdef extends AbstractSkip {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        Token cs = source.getControlSequence();
+        CodeToken cs = source.getControlSequence();
         source.getOptionalEquals();
         String key = getKey(source, context);
         context.setCode(cs, new SkipParameter(key), prefix.isGlobal());

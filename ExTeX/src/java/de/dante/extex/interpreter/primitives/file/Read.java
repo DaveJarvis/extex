@@ -29,7 +29,7 @@ import de.dante.extex.interpreter.primitives.macro.MacroPattern;
 import de.dante.extex.interpreter.type.AbstractCode;
 import de.dante.extex.interpreter.type.file.InFile;
 import de.dante.extex.interpreter.type.tokens.Tokens;
-import de.dante.extex.scanner.Token;
+import de.dante.extex.scanner.CodeToken;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.GeneralException;
 
@@ -79,7 +79,7 @@ public class Read extends AbstractCode {
         if (!source.getKeyword("to")) {
             throw new HelpingException(getLocalizer(), "TTP.MissingToForRead");
         }
-        Token cs = source.getControlSequence();
+        CodeToken cs = source.getControlSequence();
         InFile file = context.getInFile(key);
 
         if (file == null) {
