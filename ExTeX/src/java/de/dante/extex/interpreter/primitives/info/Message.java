@@ -16,42 +16,38 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  *
  */
-package de.dante.extex.interpreter.primitives.debugging;
+package de.dante.extex.interpreter.primitives.info;
 
-import de.dante.extex.i18n.GeneralHelpingException;
 import de.dante.extex.interpreter.AbstractCode;
-import de.dante.extex.interpreter.Code;
 import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.Theable;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.type.Tokens;
-import de.dante.extex.scanner.ControlSequenceToken;
-import de.dante.extex.scanner.Token;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.GeneralException;
 
 /**
- * This class provides an implementation for the primitive <code>\the</code>.
+ * This class provides an implementation for the primitive
+ * <code>\message</code>.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class The extends AbstractCode {
+public class Message extends AbstractCode {
 
     /**
      * Creates a new object.
      *
      * @param name the name for tracing and debugging
      */
-    public The(final String name) {
+    public Message(final String name) {
         super(name);
     }
 
     /**
-     * Get the next token (not expand) and if it <code>Theable</code>, then
-     * call <code>the()</code> and put the result on the stack.
+     * Scan the next tokens (between braces) and put the value (as text) on the
+     * log. In fact only the source is informed that there is something to
+     * write out. This is done using the observer pattern.
      *
      * @see de.dante.extex.interpreter.Code#execute(de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
@@ -62,26 +58,7 @@ public class The extends AbstractCode {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        Token cs = source.getToken();
-
-        if (!(cs instanceof ControlSequenceToken)) {
-            throw new GeneralHelpingException("TTP.CantUseAfter",
-                    cs.toString(), printableControlSequence(context));
-        }
-
-        Code code = context.getMacro(cs.getValue());
-
-        if (code == null) {
-            throw new GeneralHelpingException("TTP.UndefinedToken", cs
-                    .toString());
-        } else if (code instanceof Theable) {
-            Tokens toks = ((Theable) code).the(context, source);
-            source.push(toks);
-        } else {
-            throw new GeneralHelpingException("TTP.CantUseAfter",
-                    cs.toString(), printableControlSequence(context));
-        }
-
+        source.update("message", source.scanTokens().toText());
         prefix.clear();
     }
 }

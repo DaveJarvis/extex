@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2004 Gerd Neugebauer, Michael Niedermair
+ * Copyright (C) 2004 Gerd Neugebauer
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -16,39 +16,36 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  *
  */
-package de.dante.extex.interpreter.primitives.debugging;
+package de.dante.extex.interpreter.primitives.info;
 
 import de.dante.extex.interpreter.AbstractCode;
+import de.dante.extex.interpreter.ExpandableCode;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.type.Tokens;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.GeneralException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\message</code>.
+ * <code>\jobname</code>.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class Message extends AbstractCode {
+public class Jobname extends AbstractCode implements ExpandableCode {
 
     /**
      * Creates a new object.
      *
      * @param name the name for tracing and debugging
      */
-    public Message(final String name) {
+    public Jobname(final String name) {
         super(name);
     }
 
     /**
-     * Scan the next tokens (between braces) and put the value (as text) on the
-     * log. In fact only the source is informed that there is something to
-     * write out. This is done using the observer pattern.
-     *
      * @see de.dante.extex.interpreter.Code#execute(de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource,
@@ -58,7 +55,27 @@ public class Message extends AbstractCode {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        source.update("message", source.scanTokens().toText());
+        Tokens jobname = context.getToks("jobname");
+        if (jobname != null) {
+            source.push(jobname);
+        }
         prefix.clear();
     }
+
+    /**
+     * @see de.dante.extex.interpreter.ExpandableCode#expand(de.dante.extex.interpreter.Flags,
+     *      de.dante.extex.interpreter.context.Context,
+     *      de.dante.extex.interpreter.TokenSource,
+     *      de.dante.extex.typesetter.Typesetter)
+     */
+    public void expand(final Flags prefix, final Context context,
+            final TokenSource source, final Typesetter typesetter)
+            throws GeneralException {
+
+        Tokens jobname = context.getToks("jobname");
+        if (jobname != null) {
+            source.push(jobname);
+        }
+    }
+
 }
