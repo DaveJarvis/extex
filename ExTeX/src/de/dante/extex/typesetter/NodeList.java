@@ -79,4 +79,6 @@ public interface NodeList extends Node {
      */
     Dimen getMove();
     
+    NodeIterator iterator();
+    
 }

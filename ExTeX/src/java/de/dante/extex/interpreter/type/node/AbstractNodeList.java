@@ -21,6 +21,7 @@ package de.dante.extex.interpreter.type.node;
 import de.dante.extex.interpreter.type.Dimen;
 import de.dante.extex.interpreter.type.Glue;
 import de.dante.extex.typesetter.Node;
+import de.dante.extex.typesetter.NodeIterator;
 import de.dante.extex.typesetter.NodeList;
 
 import java.util.ArrayList;
@@ -108,6 +109,12 @@ public abstract class AbstractNodeList extends AbstractNode
         list.add(glue);
     }
 
+    /**
+     * @see de.dante.extex.typesetter.NodeList#iterator()
+     */
+    public NodeIterator iterator() {
+        return new NodeIterator(list);
+    }
     /**
      * ...
      *
