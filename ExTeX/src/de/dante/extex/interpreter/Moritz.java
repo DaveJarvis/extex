@@ -661,31 +661,32 @@ public abstract class Moritz implements TokenSource, Observable {
         if (t == null) {
             throw new GeneralHelpingException("TTP.MissingNumber");
         } else if (t.isa(Catcode.OTHER) && t.getValue().matches("[0-9]")) {
-            do {
-                n = n * 10 + t.getValue().charAt(0) - '0';
-                t = scanToken();
-            } while (t != null && t.isa(Catcode.OTHER)
-                     && t.getValue().matches("[0-9]"));
+        	// number: 0-9
+        	while (t != null && t.isa(Catcode.OTHER) && t.getValue().matches("[0-9]")) {
+        		n = n * 10 + t.getChar().getHexDigit();
+        		t =scanToken();
+        	}
 
             stream.put(t);
         } else if (t.isa(Catcode.OTHER) && t.getValue().equals("'")) {
-            while (t != null && t.isa(Catcode.OTHER)
-                   && t.getValue().matches("[0-7]")) {
-                n = n * 8 + t.getValue().charAt(0) - '0';
-                t = scanToken();
+        	// oktal: '123
+            while ((t = scanToken())!= null && t.isa(Catcode.OTHER) && t.getValue().matches("[0-7]")) {
+                n = n * 8 + t.getChar().getHexDigit();
             }
 
             stream.put(t);
         } else if (t.isa(Catcode.OTHER) && t.getValue().equals("`")) {
+        	// char `K
             t = getToken();
-
             if (t == null) {
                 throw new GeneralHelpingException("TTP.MissingNumber");
             }
-
-            n = t.getValue().charAt(0);
+            n = t.getChar().getCodePoint();
         } else if (t.isa(Catcode.OTHER) && t.getValue().equals("\"")) {
-            //TODO parse hex numbers
+        	// hex: "123
+        	while ((t = scanToken())!= null && (t.isa(Catcode.OTHER) || t.isa(Catcode.LETTER)) && t.getChar().isHexDigit()) {
+        		n = n * 16 + t.getChar().getHexDigit();
+        	}
         } else {
             stream.put(t);
             throw new GeneralHelpingException("TTP.MissingNumber");

@@ -97,6 +97,9 @@ public abstract class AbstractToken implements Token {
      * @see de.dante.extex.scanner.Token#getChar()
      */
     public UnicodeChar getChar() {
+    	if (uniCode == null) {
+    		uniCode = new UnicodeChar(getValue(),0);
+    	}
         return uniCode;
     }
     
