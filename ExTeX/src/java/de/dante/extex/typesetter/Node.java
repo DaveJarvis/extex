@@ -25,10 +25,10 @@ import de.dante.util.GeneralException;
 /**
  * A node is the basic data structure for the typesetter. It has a reference
  * point and three dimensions, namely width, height and depth (see figure).
- * <img src="Node.gif" alt="" align="right"/>
+ * <img src="doc-files/Node.gif" alt="" align="right"/>
  *
- * @author <a href="m.g.n@gmx.de">Michael Niedermair</a>
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
 public interface Node {
