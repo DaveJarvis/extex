@@ -33,7 +33,7 @@ import de.dante.util.GeneralException;
 /**
  * ...
  *
- * @author <a href="mailto:gene@gerd-neugebauer.de"> Gerd Neugebauer </a>
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  *
  * @version $Revision$
  */

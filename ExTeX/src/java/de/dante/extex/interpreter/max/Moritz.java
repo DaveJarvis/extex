@@ -65,7 +65,7 @@ import de.dante.util.observer.ObserverList;
  * Wilhelm Busch)
  * </p>
  *
- * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer </a>
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair </a>
  * @version $Revision$
  */

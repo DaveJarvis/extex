@@ -68,7 +68,7 @@ import de.dante.util.resource.ResourceFinder;
  * This is a reference implementation for a <b>MA </b>cro e <b>X </b>pander. The
  * macro expander is the core engine driving TeX.
  *
- * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer </a>
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair </a>
  * @version $Revision$
  */

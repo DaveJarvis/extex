@@ -25,7 +25,7 @@ import de.dante.extex.i18n.Messages;
  * This Exception is thrown when a configuration is requested with the path
  * <code>null</code>> or the empty string.
  *
- * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer </a>
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public class NoTypesetterException extends ConfigurationException {
