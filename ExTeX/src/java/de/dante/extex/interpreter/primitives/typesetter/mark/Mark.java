@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -45,7 +45,7 @@ import de.dante.util.GeneralException;
  * <p>
  *  Examples:
  *  <pre class="TeXSample">
- *    \mark ...  </pre>
+ *    \mark{abc}  </pre>
  * </p>
  * </doc>
  *
@@ -76,7 +76,7 @@ public class Mark extends AbstractCode {
             throws GeneralException {
 
         Tokens toks = source.scanTokens(context);
-        typesetter.add(new MarkNode(toks));
+        typesetter.add(new MarkNode(toks, 0));
         return true;
     }
 }

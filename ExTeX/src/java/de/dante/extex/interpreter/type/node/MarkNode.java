@@ -54,18 +54,6 @@ public class MarkNode extends AbstractNode implements Node {
      * Creates a new object.
      *
      * @param theMark the mark tokens to store
-     */
-    public MarkNode(final Tokens theMark) {
-
-        super();
-        mark = theMark;
-        index = 0;
-    }
-
-    /**
-     * Creates a new object.
-     *
-     * @param theMark the mark tokens to store
      * @param theIndex the index of the mark
      */
     public MarkNode(final Tokens theMark, final long theIndex) {
