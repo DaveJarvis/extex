@@ -58,7 +58,7 @@ import de.dante.util.observer.Observer;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public interface Context extends Serializable {
+public interface Context extends Tokenizer, Serializable {
 
     /**
      * Register a observer to be called at the end of the group.
@@ -118,6 +118,7 @@ public interface Context extends Serializable {
      *
      * @throws GeneralException in case of an error
      */
+    //TODO change the signature to use CodeToken instead of Token
     Code getCode(Token t) throws GeneralException;
 
     /**
@@ -566,10 +567,10 @@ public interface Context extends Serializable {
 
     /**
      * Setter for the namespace.
-     *
      * @param namespace the new namespace
+     * @param global TODO
      */
-    void setNamespace(String namespace);
+    void setNamespace(String namespace, boolean global);
 
     /**
      * Setter for a outfile descriptor.
