@@ -194,4 +194,17 @@ public interface ListMaker {
     void superscriptMark(Context context, TokenSource source, Token t)
             throws GeneralException;
 
+    /**
+     * Notification method to deal the case that a left brace hs been
+     * encountered.
+     */
+    void leftBrace();
+
+    /**
+     * Notification method to deal the case that a right brace hs been
+     * encountered.
+     */
+    void rightBrace();
+
+
 }

@@ -170,4 +170,21 @@ public abstract class AbstractListMaker implements ListMaker {
         throw new HelpingException(getMyLocalizer(), "TTP.MisplacedTabMark",
                 token.toString());
     }
+
+    /**
+     * Notification method to deal the case that a left brace hs been
+     * encountered.
+     */
+    public void leftBrace() {
+
+    }
+
+    /**
+     * Notification method to deal the case that a right brace hs been
+     * encountered.
+     */
+    public void rightBrace() {
+
+    }
+
 }

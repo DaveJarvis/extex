@@ -176,6 +176,13 @@ public class NullTypesetterImpl implements Typesetter {
 
         return null;
     }
+    /**
+     * Notification method to deal the case that a left brace hs been
+     * encountered.
+     */
+    public void leftBrace() {
+
+    }
 
     /**
      * @see de.dante.extex.typesetter.ListMaker#mathShift(
@@ -206,6 +213,14 @@ public class NullTypesetterImpl implements Typesetter {
      * @see de.dante.extex.typesetter.ListMaker#removeLastNode()
      */
     public void removeLastNode() {
+
+    }
+
+    /**
+     * Notification method to deal the case that a right brace hs been
+     * encountered.
+     */
+    public void rightBrace() {
 
     }
 
