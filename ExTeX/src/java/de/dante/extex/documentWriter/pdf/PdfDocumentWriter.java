@@ -558,7 +558,7 @@ public class PdfDocumentWriter implements DocumentWriter, NodeVisitor {
                 FontReader reader = null;
                 int nb = i + 1;
                 try {
-                    reader = new FontReader("file:font/fop-" + name + ".xml");
+                    reader = new FontReader("file:src/font/fop-" + name + ".xml");
                 } catch (FOPException e) {
                     e.printStackTrace();
                 }
