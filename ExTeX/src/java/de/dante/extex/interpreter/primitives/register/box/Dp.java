@@ -58,7 +58,9 @@ import de.dante.util.GeneralException;
  *        &lang;8-bit&nbsp;number&rang;} {@linkplain
  *        de.dante.extex.interpreter.TokenSource#getOptionalEquals()
  *        &lang;equals&rang;} {@linkplain
- *        de.dante.extex.interreter.type.dimen#Dimen(Context,TokenSource)
+ *        de.dante.extex.interreter.type.dimen#Dimen(
+ *          de.dante.extex.interpreter.context.Context,
+ *          de.dante.extex.interpreter.TokenSource)
  *        &lang;dimen&rang;}
  *
  *    &lang;optional prefix&rang;
