@@ -21,7 +21,6 @@ package de.dante.extex.main;
 import java.util.logging.Logger;
 
 import de.dante.util.Locator;
-import de.dante.util.configuration.Configuration;
 
 
 /**
@@ -41,14 +40,10 @@ public class ErrorHandlerTeXImpl extends ErrorHandlerImpl {
 
     /**
      * Creates a new object.
-     *
-     * @param configuration the configuration
-     * @param theLogger the logger for the interaction logging
      */
-    public ErrorHandlerTeXImpl(final Configuration configuration,
-            final Logger theLogger) {
+    public ErrorHandlerTeXImpl() {
 
-        super(configuration, theLogger);
+        super();
     }
 
     /**

@@ -47,11 +47,6 @@ public class DumpDocumentWriter implements DocumentWriter {
     private int shippedPages = 0;
 
     /**
-     * The field <tt>options</tt> contains the ...
-     */
-    private DocumentWriterOptions options;
-
-    /**
      * Creates a new object.
      *
      * @param cfg the configuration object
@@ -61,7 +56,6 @@ public class DumpDocumentWriter implements DocumentWriter {
             final DocumentWriterOptions opts) {
 
         super();
-        options = opts;
     }
 
     /**

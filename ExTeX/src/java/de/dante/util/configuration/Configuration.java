@@ -134,7 +134,7 @@ public interface Configuration {
      * @return the sub-configuration or <code>null</code> if none is found
      *
      * @throws ConfigurationInvalidResourceException in case that the given
-     *  resource name is nullor empty
+     *  resource name is <code>null</code> or empty
      * @throws ConfigurationNotFoundException in case that the named path does
      *  not lead to a resource
      * @throws ConfigurationSyntaxException in case that the resource contains

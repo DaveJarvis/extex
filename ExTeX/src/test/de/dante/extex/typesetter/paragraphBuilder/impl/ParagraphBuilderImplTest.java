@@ -116,7 +116,7 @@ public class ParagraphBuilderImplTest extends TestCase {
      */
     public void test1() {
 
-        ParagraphBuilder builder = new ParagraphBuilderImpl(null);
+        ParagraphBuilder builder = new ParagraphBuilderImpl();
         builder.setOptions(new MockOptions());
         HorizontalListNode nodes = new HorizontalListNode();
         assertEquals(0, builder.build(nodes).size());

@@ -27,7 +27,6 @@ import de.dante.extex.typesetter.Node;
 import de.dante.extex.typesetter.NodeList;
 import de.dante.extex.typesetter.ligatureBuilder.LigatureBuilder;
 import de.dante.util.UnicodeChar;
-import de.dante.util.configuration.Configuration;
 
 /**
  * ...
@@ -39,10 +38,8 @@ public class LigatureBuilderImpl implements LigatureBuilder {
 
     /**
      * Creates a new object.
-     *
-     * @param configuration ...
      */
-    public LigatureBuilderImpl(final Configuration configuration) {
+    public LigatureBuilderImpl() {
 
         super();
     }

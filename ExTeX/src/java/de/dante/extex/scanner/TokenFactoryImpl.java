@@ -56,6 +56,12 @@ import de.dante.util.UnicodeChar;
 public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
 
     /**
+     * The constant <tt>HASH_FACTOR</tt> contains the factor used to construct
+     * the hash code.
+     */
+    private static final int HASH_FACTOR = 17;
+
+    /**
      * This inner class is used as key for caching controls sequences.
      * The equality is determined from a name string (S) and
      * a namespace string (S).
@@ -106,7 +112,7 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
          */
         public int hashCode() {
 
-            return name.hashCode() + 17 * namespace.hashCode();
+            return name.hashCode() + HASH_FACTOR * namespace.hashCode();
         }
     }
 
@@ -439,7 +445,7 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     /**
      * Ignored characters are simply ignored;-)
      *
-     * @param oValue ...
+     * @param oValue the string value token or <code>null</code>
      * @param oChar the requested character code
      * @param ignore the third argument is ignored
      *
@@ -457,7 +463,7 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     /**
      * Invalid characters are ignored; even without any error message.
      *
-     * @param oValue ...
+     * @param oValue the string value token or <code>null</code>
      * @param oChar the requested character code
      * @param ignore the third argument is ignored
      *
@@ -663,7 +669,7 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     /**
      * There is only one space token. It has the character code 32.
      *
-     * @param oValue ...
+     * @param oValue the string value token or <code>null</code>
      * @param oChar the requested character code
      * @param ignore the third argument is ignored
      *

@@ -20,7 +20,7 @@ package de.dante.extex.typesetter.paragraphBuilder.impl;
 
 
 /**
- * ...
+ * This is a container for a list of break points and the associated penalty.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -28,20 +28,22 @@ package de.dante.extex.typesetter.paragraphBuilder.impl;
 class Breaks {
 
     /**
-     * The field <tt>penalty</tt> contains the ...
+     * The field <tt>penalty</tt> contains the accumulated penalty for the
+     * breaks contained.
      */
     private int penalty;
 
     /**
-     * The field <tt>points</tt> contains the ...
+     * The field <tt>points</tt> contains the array of break point actually
+     * used.
      */
     private int[] points;
 
     /**
      * Creates a new object.
      *
-     * @param thePenalty ...
-     * @param thePoints ...
+     * @param thePenalty the accumulated penalty
+     * @param thePoints the array of points
      */
     public Breaks(final int thePenalty, final int[] thePoints) {
 

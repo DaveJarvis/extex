@@ -45,7 +45,7 @@ public class StringSource extends Moritz implements TokenSource {
     public StringSource(final TokenStreamFactory factory, final String s)
             throws ConfigurationException {
 
-        super(null);
+        super();
         addStream(factory.newInstance(s));
     }
 

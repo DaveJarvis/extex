@@ -21,9 +21,6 @@ package de.dante.extex.interpreter.type.node;
 import de.dante.extex.interpreter.context.TypesettingContext;
 import de.dante.util.UnicodeChar;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * ...
  *
@@ -35,7 +32,8 @@ public class CharNodeFactory {
     /**
      * The field <tt>cache</tt> contains the cache for previously created nodes.
      */
-    private Map cache = new HashMap();
+    //private Map cache = new HashMap();
+    //TODO use a cache for
 
     /**
      * Creates a new object.

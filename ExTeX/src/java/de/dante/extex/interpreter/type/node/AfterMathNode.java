@@ -26,7 +26,7 @@ import de.dante.extex.typesetter.NodeVisitor;
 import de.dante.util.GeneralException;
 
 /**
- * ...
+ * this n ode signals that the math mode previously entered is completed.
  *
  * @see "TeX -- The Program [147]"
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>

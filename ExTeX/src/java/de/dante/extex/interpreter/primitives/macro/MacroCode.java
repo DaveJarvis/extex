@@ -51,7 +51,11 @@ import de.dante.util.GeneralException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class MacroCode extends AbstractCode implements Code, ExpandableCode, Showable {
+public class MacroCode extends AbstractCode
+        implements
+            Code,
+            ExpandableCode,
+            Showable {
 
     /**
      * The field <tt>body</tt> contains the tokens of the macro expansion text.
@@ -200,6 +204,16 @@ public class MacroCode extends AbstractCode implements Code, ExpandableCode, Sho
     public boolean isOuter() {
 
         return outerP;
+    }
+
+    /**
+     * Getter for protected property.
+     *
+     * @return the protected property.
+     */
+    public boolean isProtected() {
+
+        return this.protectedP;
     }
 
     /**

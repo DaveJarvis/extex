@@ -349,7 +349,7 @@ public class LigatureBuilderImplTest extends TestCase {
     /**
      * The field <tt>builder</tt> contains the ...
      */
-    private static LigatureBuilder builder = new LigatureBuilderImpl(null);
+    private static LigatureBuilder builder = new LigatureBuilderImpl();
 
     /**
      * The field <tt>tc1</tt> contains the ...
