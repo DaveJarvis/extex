@@ -21,6 +21,7 @@ package de.dante.extex.documentWriter.dump;
 import java.io.OutputStream;
 
 import de.dante.extex.documentWriter.DocumentWriter;
+import de.dante.extex.typesetter.NodeList;
 
 /**
  * This is a first dummy implementation of a document writer.
@@ -57,4 +58,10 @@ public class DumpDocumentWriter implements DocumentWriter {
     public void setOutputStream(OutputStream os) {
     }
 
+    /**
+     * @see de.dante.extex.documentWriter.DocumentWriter#shipout(de.dante.extex.typesetter.NodeList)
+     */
+    public void shipout(NodeList nodes) {
+        // TODO 
+    }
 }

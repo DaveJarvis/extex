@@ -20,6 +20,7 @@ package de.dante.extex.typesetter;
 
 import de.dante.extex.documentWriter.DocumentWriter;
 import de.dante.extex.interpreter.context.TypesettingContext;
+import de.dante.extex.interpreter.type.Box;
 import de.dante.extex.interpreter.type.Count;
 import de.dante.extex.interpreter.type.Dimen;
 import de.dante.extex.interpreter.type.Glue;
@@ -144,4 +145,9 @@ public class NullTypesetterImpl implements Typesetter {
     public void setPrevDepth(Dimen pd) throws GeneralException {
     }
 
+    /**
+     * @see de.dante.extex.typesetter.Typesetter#shipout(de.dante.extex.typesetter.NodeList)
+     */
+    public void shipout(Box nodes) throws GeneralException {
+    }
 }
