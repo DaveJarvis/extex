@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter.primitives.math;
 
-import de.dante.extex.i18n.HelpingException;
+import de.dante.extex.i18n.MathHelpingException;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
@@ -58,7 +58,7 @@ public abstract class AbstractMathCode extends AbstractCode {
 
         if (!typesetter.getMode().isMath()) {
 
-            throw new HelpingException("TTP.MissingDollar");
+            throw new MathHelpingException();
         }
         return true;
     }

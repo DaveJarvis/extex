@@ -209,7 +209,8 @@ public interface Context extends Tokenizer, Serializable {
     String getId();
 
     /**
-     * Getter for a input file register.
+     * Getter for a input file register.  In the case that the named
+     * descriptor doe not exist yet a new one is returned.
      *
      * @param name the name or the number of the file register
      *

@@ -101,7 +101,7 @@ public abstract class ConfigurationException extends Exception {
 
     /**
      * Getter for the localized message of this Exception.
-     * The text is taken from the {@link de.dante.extex.i18n.Messages Messages}.
+     * The text is taken from the resource bundle <tt>ConfigurationEception</tt>
      * The key depends on the further information present:
      *
      * <p>
@@ -199,7 +199,7 @@ public abstract class ConfigurationException extends Exception {
 
     /**
      * Getter for the text prefix of this ConfigurationException.
-     * The text is taken from the {@link de.dante.extex.i18n.Messages Messages}
+     * The text is taken from the resource bundle <tt>ConfigurationEception</tt>
      * under the key <tt>ConfigurationException.Text</tt>.
      *
      * @return the text

@@ -92,7 +92,7 @@ public class MainException extends GeneralException {
      *
      * @return the message
      */
-    public String getMessage() {
+    public String getLocalizedMessage() {
 
         return (message != null ? message : getCause().getMessage());
     }

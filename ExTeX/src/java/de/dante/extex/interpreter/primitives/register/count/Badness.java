@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter.primitives.register.count;
 
-import de.dante.extex.i18n.HelpingException;
+import de.dante.extex.i18n.CantUseHelpingException;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
@@ -87,9 +87,8 @@ public class Badness extends AbstractCode implements CountConvertible, Theable {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        throw new HelpingException("TTP.CantUseIn",
-                printableControlSequence(context), typesetter.getMode()
-                        .toString());
+        throw new CantUseHelpingException(printableControlSequence(context),
+                typesetter.getMode().toString());
     }
 
     /**

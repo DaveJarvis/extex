@@ -53,7 +53,7 @@ public class ConfigurationInstantiationException extends ConfigurationException 
 
     /**
      * Getter for the text prefix of this ConfigException.
-     * The text is taken from the {@link de.dante.extex.i18n.Messages Messages}
+     * The text is taken from the resource bundle <tt>ConfigurationEception</tt>
      * under the key <tt>ConfigurationInstantiationException.Text</tt>. The
      * argument {0} is replaced by the message of the embedded cause as passed
      * to the constructor.

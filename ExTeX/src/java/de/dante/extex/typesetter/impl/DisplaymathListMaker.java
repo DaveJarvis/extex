@@ -20,6 +20,7 @@
 package de.dante.extex.typesetter.impl;
 
 import de.dante.extex.i18n.HelpingException;
+import de.dante.extex.i18n.MathHelpingException;
 import de.dante.extex.interpreter.context.TypesettingContext;
 import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.interpreter.type.glue.Glue;
@@ -133,7 +134,7 @@ public class DisplaymathListMaker extends AbstractListMaker
     public void par() throws GeneralException {
 
         getManager().endParagraph();
-        throw new HelpingException(getLocalizer(), "TTP.MissingDollar");
+        throw new MathHelpingException();
     }
 
     /**

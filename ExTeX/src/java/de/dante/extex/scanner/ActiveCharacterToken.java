@@ -19,11 +19,8 @@
 
 package de.dante.extex.scanner;
 
-import de.dante.extex.i18n.Messages;
 import de.dante.extex.interpreter.Namespace;
 import de.dante.util.UnicodeChar;
-import de.dante.util.framework.i18n.Localizable;
-import de.dante.util.framework.i18n.Localizer;
 
 /**
  * This class represents an active character token.

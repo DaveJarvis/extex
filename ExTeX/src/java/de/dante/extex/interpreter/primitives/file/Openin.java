@@ -20,7 +20,7 @@ package de.dante.extex.interpreter.primitives.file;
 
 import java.io.File;
 
-import de.dante.extex.i18n.HelpingException;
+import de.dante.extex.i18n.BadFileNumberHelpingException;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
@@ -70,7 +70,7 @@ public class Openin extends AbstractFileCode {
         long no = source.scanInteger();
         String key = Long.toString(no);
         if (no < 0 || no > InFile.MAX_FILE_NO) {
-            throw new HelpingException("TTP.BadFileNum", key, "0",
+            throw new BadFileNumberHelpingException(key, "0",
                     Integer.toString(InFile.MAX_FILE_NO));
         }
 

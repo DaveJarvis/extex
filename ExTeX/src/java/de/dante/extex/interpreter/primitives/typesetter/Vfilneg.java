@@ -86,7 +86,8 @@ public class Vfilneg extends AbstractCode {
 
         Mode mode = typesetter.getMode();
         if (mode != Mode.VERTICAL && mode != Mode.INNER_VERTICAL) {
-            throw new HelpingException("TTP.MissingInserted", "}");
+            throw new HelpingException(getLocalizer(), "TTP.MissingInserted",
+            "}");
         }
         typesetter.addGlue(FIL_NEG);
         return true;

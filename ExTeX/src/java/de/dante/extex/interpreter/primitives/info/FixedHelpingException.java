@@ -55,7 +55,7 @@ public class FixedHelpingException extends HelpingException {
      */
     public FixedHelpingException(final String theMessage, final String theHelp) {
 
-        super(""); //TODO add localizer
+        super();
         this.message = theMessage;
         this.help = theHelp;
     }

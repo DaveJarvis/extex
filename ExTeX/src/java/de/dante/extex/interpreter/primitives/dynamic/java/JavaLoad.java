@@ -119,7 +119,7 @@ public class JavaLoad extends AbstractCode {
         Tokens name = source.getTokens();
         String classname = name.toText();
         if ("".equals(classname)) {
-            throw new HelpingException("JavaDef.ClassNotFound",
+            throw new HelpingException(getLocalizer(), "JavaDef.ClassNotFound",
                     classname);
         }
         Loadable component;
@@ -128,7 +128,7 @@ public class JavaLoad extends AbstractCode {
             component = (Loadable) (Class.forName(classname).newInstance());
             component.init(context, typesetter);
         } catch (ClassNotFoundException e) {
-            throw new HelpingException("JavaDef.ClassNotFound",
+            throw new HelpingException(getLocalizer(), "JavaDef.ClassNotFound",
                     classname);
         } catch (Throwable e) {
             throw new GeneralException(e);

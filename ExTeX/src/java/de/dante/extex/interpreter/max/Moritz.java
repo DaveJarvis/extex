@@ -21,6 +21,7 @@ package de.dante.extex.interpreter.max;
 
 import java.util.ArrayList;
 
+import de.dante.extex.i18n.EofHelpingException;
 import de.dante.extex.i18n.HelpingException;
 import de.dante.extex.i18n.PanicException;
 import de.dante.extex.interpreter.Flags;
@@ -507,7 +508,12 @@ public abstract class Moritz
                     t = getToken();
 
                     if (t != null) {
-                        return t.getValue().charAt(0);
+                        String val = t.getValue();
+                        if (val.length() != 1) {
+                            throw new HelpingException(localizer,
+                                    "TTP.NonNumericToken", t.getValue());
+                        }
+                        return val.charAt(0);
                     }
                     // fall through to error handling
                     break;
@@ -638,7 +644,7 @@ public abstract class Moritz
         Token token = getToken();
 
         if (token == null) {
-            throw new HelpingException(localizer, "EOF");
+            throw new EofHelpingException(localizer.format("Tokens.Text"));
         } else if (!token.isa(Catcode.LEFTBRACE)) {
             throw new HelpingException(localizer, "TTP.MissingLeftBrace");
         }

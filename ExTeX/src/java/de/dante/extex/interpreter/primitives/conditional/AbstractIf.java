@@ -30,6 +30,8 @@ import de.dante.extex.scanner.CodeToken;
 import de.dante.extex.scanner.Token;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.GeneralException;
+import de.dante.util.framework.i18n.Localizer;
+import de.dante.util.framework.i18n.LocalizerFactory;
 
 /**
  * This is the abstract base class for all ifs.
@@ -159,7 +161,16 @@ public abstract class AbstractIf extends AbstractCode implements ExpandableCode 
             }
         }
 
-        throw new HelpingException("TTP.EOFinSkipped");
+        throw new HelpingException(getMyLocalizer(), "TTP.EOFinSkipped");
     }
 
+    /**
+     * ...
+     *
+     * @return ...
+     */
+    static protected Localizer getMyLocalizer() {
+
+        return LocalizerFactory.getLocalizer(AbstractIf.class.getName());
+    }
 }

@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter.primitives.info;
 
-import de.dante.extex.i18n.HelpingException;
+import de.dante.extex.i18n.CantUseAfterHelpingException;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
@@ -85,7 +85,7 @@ public class Showthe extends The {
             }
         }
 
-        throw new HelpingException("TTP.CantUseAfter", cs.toString(),
+        throw new CantUseAfterHelpingException(cs.toString(),
                 printableControlSequence(context));
     }
 

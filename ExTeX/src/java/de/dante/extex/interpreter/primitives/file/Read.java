@@ -80,14 +80,13 @@ public class Read extends AbstractCode {
         }
         Token cs = source.getControlSequence();
         InFile file = context.getInFile(Long.toString(no));
-        Tokens toks;
 
         if (file == null) {
-            //TODO use better error handling
-            throw new PanicException("TTP.Confusion", "file not existent");
+            throw new PanicException(getLocalizer(), "NoInFile");
         }
 
-        toks = file.read(context.getTokenFactory(), context.getTokenizer(), cs);
+        Tokens toks = file.read(context.getTokenFactory(), context
+                .getTokenizer(), cs);
         context.setCode(cs, new MacroCode(cs.getValue(), prefix,
                 MacroPattern.EMPTY, toks), prefix.isGlobal());
 

@@ -56,7 +56,7 @@ public class ConfigurationUnsupportedEncodingException
 
     /**
      * Getter for the text prefix of this ConfigException.
-     * The text is taken from the {@link de.dante.extex.i18n.Messages Messages}
+     * The text is taken from the resource bundle <tt>ConfigurationEception</tt>
      * under the key <tt>ConfigurationUnsupportedEncodingException.Text</tt>.
      *
      * @return the text

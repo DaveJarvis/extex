@@ -20,8 +20,6 @@ package de.dante.util.configuration;
 
 import java.lang.reflect.InvocationTargetException;
 
-import de.dante.extex.i18n.Messages;
-
 /**
  * This is the factory for configurations.
  * <p>
@@ -71,8 +69,7 @@ public class ConfigurationFactory {
         throws ConfigurationException {
 
         if (source == null) {
-            throw new ConfigurationInvalidNameException(Messages
-                .format("ConfigurationFactory.EmptySourceMessage"));
+            throw new ConfigurationInvalidNameException(null);
         }
 
         String classname = System.getProperty("Util.Configuration.class");

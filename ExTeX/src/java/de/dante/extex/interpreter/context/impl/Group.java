@@ -171,7 +171,8 @@ public interface Group extends Tokenizer, Serializable {
     boolean getIf(String name);
 
     /**
-     * Getter for the input file descriptor.
+     * Getter for the input file descriptor. In the case that the named
+     * descriptor doe not exist yet a new one is returned.
      *
      * @param name the name of the descriptor to get
      *

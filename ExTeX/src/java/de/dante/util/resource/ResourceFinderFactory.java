@@ -57,7 +57,8 @@ public class ResourceFinderFactory {
      *
      * @return ...
      *
-     * @throws ConfigurationException ...
+     * @throws ConfigurationException in cse of an error in the configuration
+     *  or during instantiation
      */
     public ResourceFinder createResourceFinder(final Configuration config,
             final Logger logger, final Properties properties)

@@ -27,7 +27,9 @@ import java.util.Iterator;
 import java.util.logging.Logger;
 
 import de.dante.extex.font.FontFactory;
+import de.dante.extex.i18n.CantUseHelpingException;
 import de.dante.extex.i18n.HelpingException;
+import de.dante.extex.i18n.MathHelpingException;
 import de.dante.extex.i18n.PanicException;
 import de.dante.extex.interpreter.ErrorHandler;
 import de.dante.extex.interpreter.Flags;
@@ -710,8 +712,8 @@ public class Max extends Moritz
     public Object visitMacroParam(final MacroParamToken token,
             final Object ignore) throws GeneralException {
 
-        throw new HelpingException(getLocalizer(), "TTP.CantUseIn", token
-                .toString(), typesetter.getMode().toString());
+        throw new CantUseHelpingException(token.toString(), typesetter
+                .getMode().toString());
     }
 
     /**
@@ -751,7 +753,7 @@ public class Max extends Moritz
         Token next = getToken();
 
         if (next == null) {
-            throw new HelpingException(getLocalizer(), "TTP.MissingDollar");
+            throw new MathHelpingException();
         } else if (next.isa(Catcode.MATHSHIFT)) {
             typesetter.toggleDisplaymath();
         } else {
@@ -847,7 +849,7 @@ public class Max extends Moritz
             throw new RuntimeException("unimplemented");
         }
 
-        throw new HelpingException(getLocalizer(), "TTP.MissingDollar");
+        throw new MathHelpingException();
     }
 
     /**
@@ -873,7 +875,7 @@ public class Max extends Moritz
             throw new RuntimeException("unimplemented");
         }
 
-        throw new HelpingException(getLocalizer(), "TTP.MissingDollar");
+        throw new MathHelpingException();
     }
 
     /**

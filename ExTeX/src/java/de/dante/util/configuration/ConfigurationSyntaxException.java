@@ -53,7 +53,7 @@ public class ConfigurationSyntaxException extends ConfigurationException {
 
     /**
      * Getter for the text prefix of this Exception.
-     * The text is taken from the {@link de.dante.extex.i18n.Messages Messages}
+     * The text is taken from the resource bundle <tt>ConfigurationEception</tt>
      * under the key <tt>ConfigurationSyntaxException.Text</tt>.
      *
      * @return the text

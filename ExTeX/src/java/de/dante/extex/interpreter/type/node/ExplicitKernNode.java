@@ -19,7 +19,6 @@
 
 package de.dante.extex.interpreter.type.node;
 
-import de.dante.extex.i18n.Messages;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.typesetter.Discartable;
 

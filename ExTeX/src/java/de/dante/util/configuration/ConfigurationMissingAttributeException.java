@@ -67,7 +67,7 @@ public class ConfigurationMissingAttributeException extends
 
     /**
      * Getter for the text prefix of this ConfigException.
-     * The text is taken from the {@link de.dante.extex.i18n.Messages Messages}
+     * The text is taken from the resource bundle <tt>ConfigurationEception</tt>
      * under the key <tt>ConfigurationMissingAttributeException.Text</tt>. The
      * argument {0} is replaced by the name of the missing attribute as passed
      * to the constructor.

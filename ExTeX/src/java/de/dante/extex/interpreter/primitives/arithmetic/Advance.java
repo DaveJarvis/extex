@@ -19,6 +19,7 @@
 
 package de.dante.extex.interpreter.primitives.arithmetic;
 
+import de.dante.extex.i18n.CantUseAfterHelpingException;
 import de.dante.extex.i18n.HelpingException;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
@@ -106,8 +107,8 @@ public class Advance extends AbstractAssignment {
         Token cs = source.getToken();
 
         if (!(cs instanceof CodeToken)) {
-            throw new HelpingException(getLocalizer(), "TTP.CantUseAfter", //
-                    cs.toString(), printableControlSequence(context));
+            throw new CantUseAfterHelpingException(cs.toString(),
+                    printableControlSequence(context));
         }
 
         Code code = context.getCode((CodeToken) cs);
@@ -118,8 +119,8 @@ public class Advance extends AbstractAssignment {
         } else if (code instanceof Advanceable) {
             ((Advanceable) code).advance(prefix, context, source);
         } else {
-            throw new HelpingException(getLocalizer(), "TTP.CantUseAfter", //
-                    cs.toString(), printableControlSequence(context));
+            throw new CantUseAfterHelpingException(cs.toString(),
+                    printableControlSequence(context));
         }
     }
 

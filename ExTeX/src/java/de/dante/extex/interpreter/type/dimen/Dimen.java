@@ -21,12 +21,16 @@ package de.dante.extex.interpreter.type.dimen;
 
 import java.io.Serializable;
 
+import de.dante.extex.i18n.ArithmeticOverflowHelpingException;
 import de.dante.extex.i18n.HelpingException;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.type.box.Box;
 import de.dante.extex.interpreter.type.glue.FixedGlueComponent;
 import de.dante.extex.interpreter.type.glue.GlueComponent;
 import de.dante.util.GeneralException;
+import de.dante.util.framework.i18n.Localizer;
+import de.dante.util.framework.i18n.LocalizerFactory;
 
 /**
  * This class implements the dimen value. This is a length with fixed point
@@ -167,9 +171,19 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
     public void divide(final long denom) throws HelpingException {
 
         if (denom == 0) {
-            throw new HelpingException("TTP.ArithOverflow");
+            throw new ArithmeticOverflowHelpingException("");
         }
         setValue(getValue() / denom);
+    }
+
+    /**
+     * ...
+     *
+     * @return ...
+     */
+    protected Localizer getLocalizer() {
+
+        return LocalizerFactory.getLocalizer(Box.class.getName());
     }
 
     /**

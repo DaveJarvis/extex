@@ -23,7 +23,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
 import de.dante.extex.typesetter.Node;
 import de.dante.extex.typesetter.NodeIterator;
 import de.dante.extex.typesetter.NodeList;
