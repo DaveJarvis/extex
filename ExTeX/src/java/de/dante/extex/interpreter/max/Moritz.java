@@ -264,7 +264,7 @@ public abstract class Moritz implements TokenSource, Configurable, Observable {
      * @throws GeneralException
      *             in case of an error
      */
-    public Token getControlSequence() throws GeneralException {
+    public CodeToken getControlSequence() throws GeneralException {
 
         Token t = getToken();
 
@@ -286,7 +286,7 @@ public abstract class Moritz implements TokenSource, Configurable, Observable {
             throw new HelpingException("TTP.MissingCtrlSeq");
         }
 
-        return t;
+        return (CodeToken) t;
     }
 
     /**
