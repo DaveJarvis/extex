@@ -89,6 +89,14 @@ public interface Context
     String esc(Token token);
 
     /**
+     * Return the current escape character or <code>\<code> if it is undefined.
+     * This is a convenience method.
+     *
+     * @return the escape character
+     */
+    char escapechar();
+
+    /**
      * Expand some tokens.
      *
      * @param tokens the tokens to expand
