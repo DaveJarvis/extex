@@ -92,4 +92,17 @@ public class CharNoad extends AbstractNoad implements Noad {
         return null;
     }
 
+    /**
+     * ...
+     *
+     * @return
+     *
+     * @see de.dante.extex.typesetter.type.noad.AbstractNoad#stringName()
+     */
+    protected String stringName() {
+
+        // TODO unimplemented
+        return "mathchar";
+    }
+
 }

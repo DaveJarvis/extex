@@ -108,9 +108,13 @@ public class MathList extends AbstractNoad implements Noad, NSSNoad {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.noad.Noad#typeset(MathContext)
+     * ...
+     *
+     * @return
+     *
+     * @see de.dante.extex.typesetter.type.noad.AbstractNoad#stringName()
      */
-    public NodeList typeset(final MathContext mathContext) {
+    protected String stringName() {
 
         // TODO unimplemented
         return null;
@@ -134,5 +138,14 @@ public class MathList extends AbstractNoad implements Noad, NSSNoad {
         for (int i = 0; i < list.size(); i++) {
             ((Noad) list.get(i)).toString(sb);
         }
+    }
+
+    /**
+     * @see de.dante.extex.typesetter.type.noad.Noad#typeset(MathContext)
+     */
+    public NodeList typeset(final MathContext mathContext) {
+
+        // TODO unimplemented
+        return null;
     }
 }

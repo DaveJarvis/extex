@@ -57,4 +57,17 @@ public class AccentNoad extends AbstractNoad {
         // TODO unimplemented
         return null;
     }
+
+    /**
+     * ...
+     *
+     * @return
+     *
+     * @see de.dante.extex.typesetter.type.noad.AbstractNoad#stringName()
+     */
+    protected String stringName() {
+
+        // TODO unimplemented
+        return "accent";
+    }
 }

@@ -16,11 +16,11 @@
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
+
 package de.dante.extex.typesetter.type.noad;
 
 import de.dante.extex.typesetter.NodeList;
 import de.dante.extex.typesetter.type.noad.util.MathContext;
-
 
 /**
  * This class provides a overlining for the nucleus.
@@ -40,6 +40,19 @@ public class OverlinedNoad extends AbstractNoad {
     public OverlinedNoad(final Noad nucleus) {
 
         super(nucleus);
+    }
+
+    /**
+     * ...
+     *
+     * @return
+     *
+     * @see de.dante.extex.typesetter.type.noad.AbstractNoad#stringName()
+     */
+    protected String stringName() {
+
+        // TODO unimplemented
+        return "overline";
     }
 
     /**

@@ -59,4 +59,17 @@ public class PunctationNoad extends AbstractNoad {
         return null;
     }
 
+    /**
+     * ...
+     *
+     * @return
+     *
+     * @see de.dante.extex.typesetter.type.noad.AbstractNoad#stringName()
+     */
+    protected String stringName() {
+
+        // TODO unimplemented
+        return "mathpunc";
+    }
+
 }

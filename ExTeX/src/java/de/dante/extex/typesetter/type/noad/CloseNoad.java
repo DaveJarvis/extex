@@ -16,11 +16,11 @@
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
+
 package de.dante.extex.typesetter.type.noad;
 
 import de.dante.extex.typesetter.NodeList;
 import de.dante.extex.typesetter.type.noad.util.MathContext;
-
 
 /**
  * ...
@@ -39,6 +39,19 @@ public class CloseNoad extends AbstractNoad {
     public CloseNoad() {
 
         super();
+    }
+
+    /**
+     * ...
+     *
+     * @return
+     *
+     * @see de.dante.extex.typesetter.type.noad.AbstractNoad#stringName()
+     */
+    protected String stringName() {
+
+        // TODO unimplemented
+        return "mathend";
     }
 
     /**

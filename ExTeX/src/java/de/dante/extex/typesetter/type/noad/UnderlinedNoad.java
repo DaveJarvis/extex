@@ -43,6 +43,19 @@ public class UnderlinedNoad extends AbstractNoad {
     }
 
     /**
+     * ...
+     *
+     * @return
+     *
+     * @see de.dante.extex.typesetter.type.noad.AbstractNoad#stringName()
+     */
+    protected String stringName() {
+
+        // TODO unimplemented
+        return "underline";
+    }
+
+    /**
      * @see de.dante.extex.typesetter.type.noad.Noad#toString(java.lang.StringBuffer)
      */
     public void toString(final StringBuffer sb) {
