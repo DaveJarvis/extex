@@ -41,6 +41,7 @@ import de.dante.extex.typesetter.Node;
 import de.dante.extex.typesetter.NodeIterator;
 import de.dante.extex.typesetter.NodeList;
 import de.dante.extex.typesetter.NodeVisitor;
+import de.dante.util.configuration.Configuration;
 import de.dante.util.GeneralException;
 
 /**
@@ -51,7 +52,7 @@ import de.dante.util.GeneralException;
  * @see org.apache.fop.render.pdf.PDFRenderer
  * @see org.apache.fop.svg.PDFGraphics2D
  */
-public class PDFDocumentWriter implements DocumentWriter, NodeVisitor {
+public class PdfDocumentWriter implements DocumentWriter, NodeVisitor {
 
     /**
     * The field <tt>out</tt> ...
@@ -66,7 +67,7 @@ public class PDFDocumentWriter implements DocumentWriter, NodeVisitor {
     /**
     * Creates a new object.
     */
-    public PDFDocumentWriter() {
+    public PdfDocumentWriter(final Configuration cfg) {
         super();
     }
 
