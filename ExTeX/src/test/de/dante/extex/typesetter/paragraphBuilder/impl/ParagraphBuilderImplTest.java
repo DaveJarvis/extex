@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -27,10 +27,12 @@ import de.dante.extex.interpreter.type.dimen.FixedDimen;
 import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.interpreter.type.glue.FixedGlue;
 import de.dante.extex.interpreter.type.glue.Glue;
+import de.dante.extex.scanner.type.TokenFactory;
 import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.typesetter.paragraphBuilder.ParagraphBuilder;
 import de.dante.extex.typesetter.paragraphBuilder.ParagraphShape;
 import de.dante.extex.typesetter.type.node.HorizontalListNode;
+import de.dante.util.UnicodeChar;
 
 /**
  * ...
@@ -72,7 +74,6 @@ public class ParagraphBuilderImplTest extends TestCase {
          */
         public FixedDimen getDimenOption(final String name) {
 
-            // TODO Auto-generated method stub
             return null;
         }
 
@@ -96,6 +97,14 @@ public class ParagraphBuilderImplTest extends TestCase {
         }
 
         /**
+         * @see de.dante.extex.typesetter.TypesetterOptions#getLccode(de.dante.util.UnicodeChar)
+         */
+        public UnicodeChar getLccode(final UnicodeChar uc) {
+
+            return null;
+        }
+
+        /**
          * @see de.dante.extex.typesetter.TypesetterOptions#getNamespace()
          */
         public String getNamespace() {
@@ -109,6 +118,14 @@ public class ParagraphBuilderImplTest extends TestCase {
         public ParagraphShape getParshape() {
 
             // TODO Auto-generated method stub
+            return null;
+        }
+
+        /**
+         * @see de.dante.extex.typesetter.TypesetterOptions#getTokenFactory()
+         */
+        public TokenFactory getTokenFactory() {
+
             return null;
         }
 
