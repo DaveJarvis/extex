@@ -53,13 +53,4 @@ public abstract class AbstractNucleusNoad extends AbstractNoad {
         return this.nucleus;
     }
 
-    /**
-     * @see de.dante.extex.typesetter.type.noad.Noad#toString(java.lang.StringBuffer)
-     */
-    public void toString(final StringBuffer sb) {
-
-        //TODO gene: unimplemented
-        throw new RuntimeException("unimplemented");
-    }
-
 }
