@@ -76,7 +76,7 @@ public class Read extends AbstractCode {
 
         long no = source.scanInteger();
         if (!source.getKeyword("to")) {
-            throw new HelpingException("TTP.MissingToForRead");
+            throw new HelpingException(getLocalizer(), "TTP.MissingToForRead");
         }
         Token cs = source.getControlSequence();
         InFile file = context.getInFile(Long.toString(no));

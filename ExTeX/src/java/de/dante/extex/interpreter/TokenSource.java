@@ -103,8 +103,8 @@ public interface TokenSource {
      * Get the next token from the token stream and check that it is a
      * control sequence or active character.
      * At the end of all input streams the control sequence "inaccessible"
-     * is insered and an exception is thrown. Thus thismethod will never return
-     * <code>null</code>.
+     * is inserted and an exception is thrown. Thus this method will never
+     * return <code>null</code>.
      *
      * <p>
      * This method parses the following syntactic entity:

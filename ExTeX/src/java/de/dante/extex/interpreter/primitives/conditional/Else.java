@@ -89,7 +89,7 @@ public class Else extends AbstractCode {
         Conditional cond = context.popConditional();
 
         if (cond == null || AbstractIf.skipToElseOrFi(context, source)) {
-            throw new HelpingException("TTP.ExtraOrElseFi",
+            throw new HelpingException(getLocalizer(), "TTP.ExtraOrElseFi",
                     printableControlSequence(context));
         }
 

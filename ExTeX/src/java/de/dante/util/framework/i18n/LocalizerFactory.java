@@ -240,12 +240,6 @@ public final class LocalizerFactory {
     }
 
     /**
-     * The field <tt>BUNDLE_PREFIX</tt> contains the prefix used for the
-     * resource bundle.
-     */
-    private static final String BUNDLE_PREFIX = "config.";
-
-    /**
      * The field <tt>cache</tt> contains the ...
      */
     private static final Map cache = new HashMap();
@@ -261,7 +255,7 @@ public final class LocalizerFactory {
 
         Localizer loc = (Localizer) cache.get(name);
         if (loc == null) {
-            loc = new BasicLocalizer(BUNDLE_PREFIX + name);
+            loc = new BasicLocalizer(name);
             cache.put(name, loc);
         }
         return loc;

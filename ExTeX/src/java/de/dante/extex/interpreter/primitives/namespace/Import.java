@@ -91,8 +91,8 @@ public class Import extends Let {
             Token t = export.get(i);
             if (t instanceof CodeToken) {
                 if (context.getCode((CodeToken) t) == null) {
-                    throw new HelpingException("Namespace.Import.undef", t
-                            .toString());
+                    throw new HelpingException(getLocalizer(),
+                            "Namespace.Import.undef", t.toString());
                 } else {
                     let(prefix, context, //
                             ((CodeToken) t).cloneInNamespace(namespace), t);

@@ -84,7 +84,7 @@ public class Fi extends AbstractCode implements ExpandableCode {
             throws GeneralException {
 
         if (context.popConditional() == null) {
-            throw new HelpingException("TTP.ExtraOrElseFi",
+            throw new HelpingException(getLocalizer(), "TTP.ExtraOrElseFi",
                     printableControlSequence(context));
         }
         return true;
@@ -110,7 +110,7 @@ public class Fi extends AbstractCode implements ExpandableCode {
             throws GeneralException {
 
         if (context.popConditional() == null) {
-            throw new HelpingException("TTP.ExtraOrElseFi",
+            throw new HelpingException(getLocalizer(), "TTP.ExtraOrElseFi",
                     printableControlSequence(context));
         }
     }

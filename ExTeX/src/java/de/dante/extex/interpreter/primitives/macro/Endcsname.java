@@ -79,7 +79,7 @@ public class Endcsname extends AbstractCode {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        throw new HelpingException("TTP.ExtraEndcsname",
+        throw new HelpingException(getLocalizer(), "TTP.ExtraEndcsname",
                 printableControlSequence(context));
     }
 

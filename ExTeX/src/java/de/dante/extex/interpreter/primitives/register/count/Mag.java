@@ -158,7 +158,7 @@ public class Mag extends AbstractCount
         long value = Count.scanCount(context, source, null);
 
         if (value == 0) {
-            throw new HelpingException("TTP.ArithOverflow");
+            throw new HelpingException(getLocalizer(), "TTP.ArithOverflow");
         }
 
         value = context.getMagnification() / value;
