@@ -38,7 +38,7 @@ public interface ErrorHandler {
      * This is the error handling callback.
      *
      * @param e the exception which has led to the invokation
-     * @param token ...
+     * @param token the token leading to the error
      * @param source the token source
      * @param context the processor context
      *

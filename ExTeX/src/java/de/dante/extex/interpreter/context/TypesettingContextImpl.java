@@ -55,12 +55,13 @@ public class TypesettingContextImpl implements TypesettingContext {
     private Font font;
 
     /**
-     * The field <tt>hyphenation</tt> contains the ...
+     * The field <tt>hyphenation</tt> contains the hyphenation table for the
+     * current language.
      */
     private HyphenationTable hyphenation;
 
     /**
-     * The field <tt>angle</tt> contains the ...
+     * The field <tt>angle</tt> contains the angle for the glyphs.
      */
     private int angle;
 

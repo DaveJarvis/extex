@@ -80,7 +80,7 @@ public interface Code {
             TokenSource source, Typesetter typesetter) throws GeneralException;
 
     /**
-     * ...
+     * Setter for the content from a String.
      *
      * @param context the interpreter context
      * @param value the string to get the value from

@@ -129,7 +129,7 @@ public abstract class Interaction implements Serializable {
     }
 
     /**
-     * This method provides an entry for the visitor pattern.
+     * This method provides an entry point for the visitor pattern.
      * ...
      *
      * @param visitor this argument contains the visitor which has initiated
