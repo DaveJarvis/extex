@@ -301,7 +301,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl
         Token t = null;
 
         if (state == MID_LINE) {
-            t = factory.newInstance(Catcode.SPACE, ' ');
+            t = factory.newInstance(Catcode.SPACE, ' ', "");
         } else if (state == NEW_LINE) {
             t = factory.newInstance(Catcode.ESCAPE, "par", namespace);
         }
@@ -468,7 +468,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl
 
         if (state == MID_LINE) {
             state = SKIP_BLANKS;
-            return factory.newInstance(Catcode.SPACE, ' ');
+            return factory.newInstance(Catcode.SPACE, ' ', "");
         }
 
         return null;
