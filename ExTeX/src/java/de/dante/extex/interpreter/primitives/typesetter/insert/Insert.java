@@ -77,7 +77,7 @@ public class Insert extends AbstractBox {
             throws GeneralException {
 
         if (!typesetter.getMode().isVmode()) {
-            throw new HelpingException(getLocalizer(),"");
+            throw new HelpingException(getLocalizer(), "???");
         }
         long index = source.scanNumber(context);
         Box b = new Box(context, source, typesetter, false);
