@@ -58,7 +58,7 @@ public class HruleTest extends ExTeXLauncher {
                 + "\\end ",
                 //--- log message ---
                 "",
-                //--- output chanel ---
+                //--- output channel ---
                 "\\vbox(0.4pt+0.0pt)x0.0pt\n.\\rule(0.4pt+0.0pt)x0.0pt\n");
         //TODO is this correct?
     }

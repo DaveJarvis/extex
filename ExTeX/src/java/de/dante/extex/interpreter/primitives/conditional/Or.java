@@ -69,7 +69,7 @@ public class Or extends AbstractIf {
                     printableControlSequence(context));
         } else if (skipToElseOrFi(context, source)) {
             throw new HelpingException(getLocalizer(), "TTP.ExtraOrElseFi",
-                    printableControlSequence(context, "else"));
+                    context.esc("else"));
         }
 
         return true;

@@ -57,7 +57,7 @@ public class CrcrTest extends ExTeXLauncher {
                 + "\\end ",
                 //--- log message ---
                 "Misplaced \\crcr",
-                //--- output chanel ---
+                //--- output channel ---
                 null);
     }
 

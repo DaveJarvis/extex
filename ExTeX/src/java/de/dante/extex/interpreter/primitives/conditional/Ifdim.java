@@ -101,7 +101,7 @@ public class Ifdim extends AbstractIf {
             // Fal through to error handling
             }
         }
-        //TODO pushback the tokens read
+
         throw new HelpingException(getLocalizer(), "TTP.IllegalIfnumOp",
                 printableControlSequence(context));
     }

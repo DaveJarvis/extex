@@ -105,7 +105,7 @@ public class Ifnum extends AbstractIf {
             // fall-through
             }
         }
-        //TODO pushback the tokens read
+
         throw new HelpingException(getLocalizer(), "TTP.IllegalIfnumOp");
     }
 }

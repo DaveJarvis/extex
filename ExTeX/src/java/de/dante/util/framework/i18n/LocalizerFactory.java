@@ -27,7 +27,7 @@ import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 /**
- * ...
+ * This factory provides means to get a localizer.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -35,7 +35,7 @@ import java.util.ResourceBundle;
 public final class LocalizerFactory {
 
     /**
-     * This inner class is the one ond only implementation of a Localizer
+     * This inner class is the one and only implementation of a Localizer
      * delived by this factory.
      *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>

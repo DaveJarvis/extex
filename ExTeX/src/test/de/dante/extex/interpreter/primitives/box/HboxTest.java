@@ -55,7 +55,7 @@ public class HboxTest extends ExTeXLauncher {
                 + "\\end ",
                 //--- log message ---
                 "Missing `{' inserted",
-                //--- output chanel ---
+                //--- output channel ---
                 null);
     }
 
@@ -75,7 +75,7 @@ public class HboxTest extends ExTeXLauncher {
                 + "\\end ",
                 //--- log message ---
                 "Missing `{' inserted",
-                //--- output chanel ---
+                //--- output channel ---
                 null);
     }
 
@@ -95,7 +95,7 @@ public class HboxTest extends ExTeXLauncher {
                 + "\\end ",
                 //--- log message ---
                 "Missing `{' inserted",
-                //--- output chanel ---
+                //--- output channel ---
                 null);
     }
 
@@ -113,7 +113,7 @@ public class HboxTest extends ExTeXLauncher {
                 + "\\hbox ",
                 //--- log message ---
                 "Unexpected end of file while processing \\hbox",
-                //--- output chanel ---
+                //--- output channel ---
                 null);
     }
 

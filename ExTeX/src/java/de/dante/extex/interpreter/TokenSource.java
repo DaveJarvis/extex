@@ -75,7 +75,7 @@ public interface TokenSource {
     void closeNextFileStream() throws GeneralException;
 
     /**
-     * ...
+     * Scan and execute tokens until the group ends.
      *
      * @throws GeneralException in case of an error
      */
@@ -283,6 +283,8 @@ public interface TokenSource {
 
     /**
      * Push back a list of tokens onto the input stream for subsequent reading.
+     * In case that the argument is <code>null</code> then it is silently
+     * ignored.
      *
      * @param tokens the tokens to push
      *

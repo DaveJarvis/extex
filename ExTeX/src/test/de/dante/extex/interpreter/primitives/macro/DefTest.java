@@ -56,7 +56,7 @@ public class DefTest extends ExTeXLauncher {
                 + "\\end ",
                 //--- log message ---
                 "",
-                //--- output chanel ---
+                //--- output channel ---
                 "xxx");
     }
 

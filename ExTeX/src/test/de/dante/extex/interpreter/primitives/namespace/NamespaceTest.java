@@ -67,7 +67,7 @@ public class NamespaceTest extends ExTeXLauncher {
                 + "\\end ",
                 //--- log message ---
                 "",
-                //--- output chanel ---
+                //--- output channel ---
                 "\n");
     }
 

@@ -58,7 +58,7 @@ public class HalignTest extends ExTeXLauncher {
                 + "\\end ",
                 //--- log message ---
                 "Missing `{' inserted",
-                //--- output chanel ---
+                //--- output channel ---
                 null);
     }
 
@@ -78,7 +78,7 @@ public class HalignTest extends ExTeXLauncher {
                 + "\\halign",
                 //--- log message ---
                 "Unexpected end of file while processing \\halign",
-                //--- output chanel ---
+                //--- output channel ---
                 null);
     }
 
@@ -100,7 +100,7 @@ public class HalignTest extends ExTeXLauncher {
                 + "\\end ",
                 //--- log message ---
                 "Forbidden control sequence found while scanning preamble of \\halign",
-                //--- output chanel ---
+                //--- output channel ---
                 null);
     }
 
@@ -122,7 +122,7 @@ public class HalignTest extends ExTeXLauncher {
                 + "\\end ",
                 //--- log message ---
                 "Forbidden control sequence found while scanning preamble of \\halign",
-                //--- output chanel ---
+                //--- output channel ---
                 null);
     }
 
@@ -144,7 +144,7 @@ public class HalignTest extends ExTeXLauncher {
                 + "\\end ",
                 //--- log message ---
                 "Forbidden control sequence found while scanning preamble of \\halign",
-                //--- output chanel ---
+                //--- output channel ---
                 null);
     }
 
@@ -165,7 +165,7 @@ public class HalignTest extends ExTeXLauncher {
                 + "\\end ",
                 //--- log message ---
                 "Missing # inserted in alignment preamble",
-                //--- output chanel ---
+                //--- output channel ---
                 null);
     }
 
@@ -186,7 +186,7 @@ public class HalignTest extends ExTeXLauncher {
                 + "\\end ",
                 //--- log message ---
                 "Missing # inserted in alignment preamble",
-                //--- output chanel ---
+                //--- output channel ---
                 null);
     }
 
@@ -207,7 +207,7 @@ public class HalignTest extends ExTeXLauncher {
                 + "\\end ",
                 //--- log message ---
                 "Only one # is allowed per tab",
-                //--- output chanel ---
+                //--- output channel ---
                 null);
     }
 
@@ -232,7 +232,7 @@ public class HalignTest extends ExTeXLauncher {
                 + "\\end ",
                 //--- log message ---
                 "",
-                //--- output chanel ---
+                //--- output channel ---
                 "???");
     }
 
