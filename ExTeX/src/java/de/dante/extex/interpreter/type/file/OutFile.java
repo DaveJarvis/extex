@@ -121,7 +121,8 @@ public class OutFile implements Serializable {
         int len = toks.length();
 
         for (int i = 0; i < len; i++) {
-            writer.write(toks.get(i).getValue());
+            writer.write(toks.get(i).getChar().getCodePoint());
+            //TODO gene: check whether cs can arrive here
         }
     }
 
