@@ -22,6 +22,7 @@ package de.dante.extex.documentWriter.dvi;
 
 import de.dante.extex.documentWriter.DocumentWriter;
 import de.dante.extex.documentWriter.DocumentWriterOptions;
+import de.dante.extex.documentWriter.NoOutputStreamException;
 import de.dante.extex.i18n.Messages;
 import de.dante.extex.i18n.PanicException;
 import de.dante.extex.interpreter.type.font.Font;
@@ -454,6 +455,10 @@ public class DviDocumentWriter implements DocumentWriter {
         throws GeneralException, IOException {
 
         GeneralException error;
+
+        if (dviWriter == null) {
+            throw new NoOutputStreamException();
+        }
 
         if (isBeginDviFile) {
             isBeginDviFile = false;
