@@ -38,7 +38,7 @@ import de.dante.util.configuration.ConfigurationException;
  * 
  * @see <a href="package-summary.html#TFMformat">TFM-Format</a>
  *
- * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair </a>
+ * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
 public class TFMReader implements FontMetric {
