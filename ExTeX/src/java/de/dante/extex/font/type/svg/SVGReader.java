@@ -93,7 +93,7 @@ public class SVGReader implements FontMetric {
     private Element efmelement;
 
     /**
-     * @see de.dante.util.font.FontMetric#getFontMetric()
+     * @see de.dante.util.font.type.FontMetric#getFontMetric()
      */
     public Element getFontMetric() {
 

@@ -143,10 +143,11 @@ public class NullFont implements Font {
         return null;
     }
 
-   /**
+    /**
      * @see de.dante.extex.interpreter.type.font.Font#getLetterSpacing()
      */
     public Glue getLetterSpacing() {
+
         return null;
     }
 
@@ -157,12 +158,12 @@ public class NullFont implements Font {
 
         return null;
     }
-    /**
-     * @see de.dante.extex.interpreter.type.font.Font#setProperty(
-     *      java.lang.String,
-     *      java.lang.String)
-     */
-    public void setProperty(final String key, final String value) {
-
-    }
+    //    /**
+    //     * @see de.dante.extex.interpreter.type.font.Font#setProperty(
+    //     *      java.lang.String,
+    //     *      java.lang.String)
+    //     */
+    //    public void setProperty(final String key, final String value) {
+    //
+    //    }
 }

@@ -79,15 +79,15 @@ public abstract class AbstractMath extends AbstractCode
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource, Typesetter)
      */
-    public Tokens the(final Context context, final TokenSource source, final Typesetter typesetter)
-            throws GeneralException {
+    public Tokens the(final Context context, final TokenSource source,
+            final Typesetter typesetter) throws GeneralException {
 
         Real real = calculate(context, source);
         return new Tokens(context, real.toString());
     }
 
     /**
-     * @see de.dante.extex.interpreter.RealConvertible#convertReal(
+     * @see de.dante.extex.interpreter.type.real.RealConvertible#convertReal(
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource)
      */
@@ -98,12 +98,13 @@ public abstract class AbstractMath extends AbstractCode
     }
 
     /**
-     * @see de.dante.extex.interpreter.CountConvertible#convertCount(
+     * @see de.dante.extex.interpreter.type.count.CountConvertible#convertCount(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource, Typesetter)
+     *      de.dante.extex.interpreter.TokenSource,
+     *      de.dante.extex.typesetter.Typesetter)
      */
-    public long convertCount(final Context context, final TokenSource source, final Typesetter typesetter)
-            throws GeneralException {
+    public long convertCount(final Context context, final TokenSource source,
+            final Typesetter typesetter) throws GeneralException {
 
         return calculate(context, source).getLong();
     }

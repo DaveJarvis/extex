@@ -29,7 +29,7 @@ import de.dante.util.GeneralException;
  *
  * <p>
  * All features are inherited from
- * {@link de.dante.extex.interpreter.primitives.register.NamedBool NamedBool}.
+ * {@link de.dante.extex.interpreter.primitives.register.bool.NamedBool NamedBool}.
  * Just the key has to be provided under which this Bool has to be stored.
  * This key is constructed from the name, a hash mark and the running number.
  * </p>
@@ -55,7 +55,7 @@ public class NumberedBool extends NamedBool {
     }
 
     /**
-     * @see de.dante.extex.interpreter.primitives.register.NamedCount#getKey(
+     * @see de.dante.extex.interpreter.primitives.register.bool.NamedBool#getKey(
      *      de.dante.extex.interpreter.TokenSource)
      */
     protected String getKey(final TokenSource source) throws GeneralException {

@@ -90,7 +90,7 @@ public class TokenStreamStringArrayImpl32 extends TokenStreamBaseImpl32
     }
 
     /**
-     * @see de.dante.extex.scanner.stream.impl.TokenStreamBufferImpl#refill()
+     * @see de.dante.extex.scanner.stream.impl32.TokenStreamBaseImpl32#refill()
      */
     protected boolean refill() throws IOException {
 

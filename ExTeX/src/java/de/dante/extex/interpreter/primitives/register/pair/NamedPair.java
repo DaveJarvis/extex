@@ -150,7 +150,7 @@ public class NamedPair extends AbstractAssignment
     }
 
     /**
-     * @see de.dante.extex.interpreter.PairConvertable#convertPair(
+     * @see de.dante.extex.interpreter.type.pair.PairConvertible#convertPair(
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource)
      */

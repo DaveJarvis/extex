@@ -29,7 +29,7 @@ import de.dante.util.GeneralException;
  *
  * <p>
  * All features are inherited from
- * {@link de.dante.extex.interpreter.type.NamedTransform transform}. Just the key
+ * {@link de.dante.extex.interpreter.type.transform.NamedTransform transform}. Just the key
  * has to be provided under which this Transform has to be stored. This key is
  * constructed from the name, a hash mark and the running number.
  * </p>

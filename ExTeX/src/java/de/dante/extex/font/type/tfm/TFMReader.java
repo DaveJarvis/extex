@@ -1249,7 +1249,7 @@ public class TFMReader implements FontMetric {
     }
 
     /**
-     * @see de.dante.util.font.FontMetric#getFontMetric()
+     * @see de.dante.util.font.type.FontMetric#getFontMetric()
      */
     public Element getFontMetric() throws IOException, ConfigurationException,
             HelpingException {

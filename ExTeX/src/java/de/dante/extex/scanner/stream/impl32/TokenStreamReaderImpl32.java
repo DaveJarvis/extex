@@ -95,7 +95,7 @@ public class TokenStreamReaderImpl32 extends TokenStreamBaseImpl32
     }
 
     /**
-     * @see de.dante.extex.scanner.stream.impl.TokenStreamBufferImpl#refill()
+     * @see de.dante.extex.scanner.stream.impl32.TokenStreamBaseImpl32#refill()
      */
     protected boolean refill() throws IOException {
 
@@ -114,7 +114,7 @@ public class TokenStreamReaderImpl32 extends TokenStreamBaseImpl32
     }
 
     /**
-     * @see de.dante.extex.scanner.stream.impl.TokenStreamBufferImpl#getLineno()
+     * @see de.dante.extex.scanner.stream.impl32.TokenStreamBaseImpl32#getLineno()
      */
     protected int getLineno() {
 
