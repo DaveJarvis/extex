@@ -127,9 +127,7 @@ public class Show extends AbstractCode implements LogEnabled {
 
         if (t instanceof ControlSequenceToken) {
 
-            toks = new Tokens(context, //
-                    t.toText((char) (context.getCount("escapechar")
-                            .getValue())));
+            toks = new Tokens(context, context.esc(t));
 
         } else {
             toks = new Tokens(context, t.getChar().getCodePoint());
@@ -148,9 +146,7 @@ public class Show extends AbstractCode implements LogEnabled {
 
         } else if (t instanceof ControlSequenceToken) {
 
-            toks.add(new Tokens(context, //
-                    t.toText((char) (context.getCount("escapechar")
-                                    .getValue()))));
+            toks.add(new Tokens(context, context.esc(t)));
 
         } else {
 
