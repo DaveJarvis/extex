@@ -23,6 +23,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Calendar;
 
 import de.dante.extex.i18n.HelpingException;
 import de.dante.extex.i18n.PanicException;
@@ -65,12 +66,6 @@ import de.dante.util.GeneralException;
  * @version $Revision$
  */
 public class Dump extends AbstractCode {
-
-    /**
-     * The constant <tt>FORMAT_VERSION</tt> contains the version number of the
-     * format file.
-     */
-    private static final String FORMAT_VERSION = "ExTeX 1.0";
 
     /**
      * The constant <tt>FORMAT_EXTENSION</tt> contains the extension for the
@@ -127,13 +122,18 @@ public class Dump extends AbstractCode {
                     printableControlSequence(context));
         }
         String jobname = tJobname.toText();
-        SerialLoader loader = new SerialLoader();
+        Calendar calendar = Calendar.getInstance();
+
+        context.setId(jobname + " " + //
+                calendar.get(Calendar.YEAR) + "."
+                + calendar.get(Calendar.MONTH) + "."
+                + calendar.get(Calendar.DAY_OF_MONTH));
 
         try {
             OutputStream stream = new FileOutputStream(jobname
                     + FORMAT_EXTENSION);
             //TODO: log "TTP.Dumping", jobname + FORMAT_EXTENSION
-            loader.save(stream, jobname, context);
+            new SerialLoader().save(stream, jobname, context);
             stream.close();
         } catch (FileNotFoundException e) {
             throw new GeneralException(e);
