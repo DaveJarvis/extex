@@ -155,9 +155,10 @@ public class VerticalListMaker extends AbstractListMaker {
     public void letter(final Context context, final TypesettingContext font,
             final UnicodeChar symbol) throws TypesetterException {
 
-        ListMaker hlist = new HorizontalListMaker(getManager());
+        ListManager man = getManager();
+        ListMaker hlist = new HorizontalListMaker(man);
         hlist.letter(context, font, symbol);
-        getManager().push(hlist);
+        man.push(hlist);
     }
 
 }
