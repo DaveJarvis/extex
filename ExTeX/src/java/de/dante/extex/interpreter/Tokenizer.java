@@ -39,4 +39,11 @@ public interface Tokenizer {
      */
     Catcode getCatcode(UnicodeChar c);
 
+    /**
+     * Getter for the namespace.
+     *
+     * @return the namespace
+     */
+    String getNamespace();
+
 }
