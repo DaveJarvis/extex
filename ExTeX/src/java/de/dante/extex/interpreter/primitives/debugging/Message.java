@@ -22,6 +22,7 @@ import de.dante.extex.interpreter.AbstractCode;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.type.Tokens;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.GeneralException;
 
@@ -47,9 +48,9 @@ public class Message extends AbstractCode {
     public void expand(Flags prefix, Context context,
                        TokenSource source, Typesetter typesetter)
                 throws GeneralException {
-                    
-                    
-
+        Tokens toks = source.scanGroup();
+        String msg = toks.toString();
+        source.update("message",msg); 
         prefix.clear();
     }
 }

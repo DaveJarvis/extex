@@ -58,8 +58,7 @@ public class Dump extends AbstractCode {
      * @see "TeX -- The Program [1303,1304]"
      * @see de.dante.extex.interpreter.Code#expand(de.dante.extex.interpreter.Flags, de.dante.extex.interpreter.context.Context, de.dante.extex.interpreter.TokenSource, de.dante.extex.typesetter.Typesetter)
      */
-    public void expand(Flags prefix, Context context, TokenSource source,
-                      Typesetter typesetter) throws GeneralException {
+    public void expand(Flags prefix, Context context, TokenSource source, Typesetter typesetter) throws GeneralException {
         if (!context.isGlobalGroup()) {
             throw new GeneralHelpingException("TTP.DumpInGroup");
         }

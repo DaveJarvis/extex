@@ -60,8 +60,7 @@ public class MacroCode extends AbstractCode implements Code {
     /**
      * @see de.dante.extex.interpreter.Code#expand(de.dante.extex.interpreter.Flags, de.dante.extex.interpreter.context.Context, de.dante.extex.interpreter.TokenSource, de.dante.extex.typesetter.Typesetter)
      */
-    public void expand(Flags prefix, Context context, TokenSource source,
-                      Typesetter typesetter) {
+    public void expand(Flags prefix, Context context, TokenSource source, Typesetter typesetter) {
         Tokens[] args = getArgs(source); //TODO
 
         for (int i = body.length() - 1; i >= 0; i--) {

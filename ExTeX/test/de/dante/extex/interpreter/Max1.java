@@ -107,7 +107,6 @@ public class Max1 extends TestCase {
 
         Configuration config = new ConfigurationFactory().newInstance("config/extex.xml");
         Interpreter interpreter = new InterpreterFactory(config.getConfiguration("Interpreter")).newInstance();
-        interpreter.setLogger(noLogger);
         TestTypesetter typesetter = new TestTypesetter();
 
         interpreter.setTypesetter(typesetter);

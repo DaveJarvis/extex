@@ -366,7 +366,6 @@ public class ExTeX {
             Configuration config = new ConfigurationFactory().newInstance(properties.getProperty("extex.config"));
 
             Interpreter interpreter = new InterpreterFactory(config.getConfiguration("Interpreter")).newInstance();
-            interpreter.setLogger(logger);
             interpreter.setErrorHandler(new ErrorHandlerImpl(logger));
             interpreter.registerObserver("close",
                                          new FileCloseObserver(logger));

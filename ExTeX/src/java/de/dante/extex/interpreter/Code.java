@@ -18,10 +18,8 @@
  */
 package de.dante.extex.interpreter;
 
-import de.dante.extex.interpreter.context.*;
-import de.dante.extex.interpreter.type.Tokens;
+import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.typesetter.Typesetter;
-
 import de.dante.util.GeneralException;
 
 /**
@@ -65,16 +63,6 @@ public interface Code {
 	public abstract String getName();
 
 	/**
-	 * ...
-	 * 
-	 * @return ...
-	 * 
-	 * @throws GeneralException
-	 *                 in case of an error
-	 */
-	public abstract Tokens getThe(Context context, TokenSource source) throws GeneralException;
-
-	/**
 	 * This method takes the first token and executes it. The result is placed
 	 * on the stack. This operation might have side effects. To execute a token
 	 * it might be necessary to consume further tokens.
@@ -113,8 +101,6 @@ public interface Code {
 	 *                 the interpreter context
 	 * @param source
 	 *                 the token source
-	 * @param typesetter
-	 *                 the typesetter
 	 * 
 	 * @return the updated prefix
 	 * 
