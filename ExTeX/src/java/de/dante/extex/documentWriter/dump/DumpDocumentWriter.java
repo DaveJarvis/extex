@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import de.dante.extex.documentWriter.DocumentWriter;
+import de.dante.extex.documentWriter.DocumentWriterOptions;
 import de.dante.extex.typesetter.NodeList;
 import de.dante.util.configuration.Configuration;
 
@@ -47,8 +48,9 @@ public class DumpDocumentWriter implements DocumentWriter {
      * Creates a new object.
      *
      * @param cfg the configuration object
+     * @param options the dynamic access to the context
      */
-    public DumpDocumentWriter(final Configuration cfg) {
+    public DumpDocumentWriter(final Configuration cfg, final DocumentWriterOptions options) {
         super();
     }
 
