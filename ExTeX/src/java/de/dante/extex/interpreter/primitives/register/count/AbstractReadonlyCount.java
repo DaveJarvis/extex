@@ -64,7 +64,6 @@ public abstract class AbstractReadonlyCount extends AbstractCode
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        System.out.println("Test");
         throw new HelpingException("TTP.CantUseIn",
                 printableControlSequence(context), typesetter.getMode()
                         .toString());
@@ -77,7 +76,7 @@ public abstract class AbstractReadonlyCount extends AbstractCode
      */
     public Tokens the(final Context context, final TokenSource source,
             final Typesetter typesetter) throws GeneralException {
-        System.out.println("Test");
+
         long value = convertCount(context, source, typesetter);
         return new Tokens(context, Long.toString(value));
     }
