@@ -147,7 +147,7 @@ public class ExTeX {
      * The constant <tt>VERSION</tt> contains the manually incremented version
      * string.
      */
-    private static final String EXTEX_VERSION = "0.8";
+    private static final String EXTEX_VERSION = "0.0";
 
     /**
      * The field <tt>PROP_CODE</tt> contains the name of the
