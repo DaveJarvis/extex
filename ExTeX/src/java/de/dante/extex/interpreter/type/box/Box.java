@@ -23,10 +23,10 @@ import java.io.Serializable;
 
 import javax.naming.OperationNotSupportedException;
 
-import de.dante.extex.i18n.EofHelpingException;
-import de.dante.extex.i18n.MissingLeftBraceHelpingException;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.exception.EofException;
+import de.dante.extex.interpreter.exception.MissingLeftBraceException;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.dimen.FixedDimen;
 import de.dante.extex.interpreter.type.node.HorizontalListNode;
@@ -51,7 +51,7 @@ import de.dante.util.framework.i18n.LocalizerFactory;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class Box implements Serializable {
+public class Box implements BoxOrRule, Serializable {
 
     /**
      * The field <tt>nodes</tt> contains the node list stored in this box.
@@ -81,12 +81,12 @@ public class Box implements Serializable {
 
         super();
 
-        Token t = source.getToken();
+        Token t = source.getToken(context);
 
         if (t == null) {
-            throw new EofHelpingException(null);
+            throw new EofException(null);
         } else if (!t.isa(Catcode.LEFTBRACE)) {
-            throw new MissingLeftBraceHelpingException(null);
+            throw new MissingLeftBraceException(null);
         }
 
         if (isHorizontal) {
