@@ -27,7 +27,7 @@ import junit.framework.TestSuite;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class AllTests {
+public final class AllTests {
 
     /**
      * Creates a new object.
@@ -40,7 +40,7 @@ public class AllTests {
      * @param args the arguments
      */
     public static void main(final String[] args) {
-        junit.textui.TestRunner.run(AllTests.class);
+        junit.textui.TestRunner.run(suite());
     }
 
     /**

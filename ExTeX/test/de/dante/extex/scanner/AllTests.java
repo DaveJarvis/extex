@@ -16,6 +16,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  *
  */
+
 package de.dante.extex.scanner;
 
 import junit.framework.Test;
@@ -36,14 +37,15 @@ public class AllTests {
 
         super();
     }
-    
+
     /**
      * Command line interface.
      *
      * @param args the arguments
      */
     public static void main(final String[] args) {
-        junit.textui.TestRunner.run(AllTests.class);
+
+        junit.textui.TestRunner.run(suite());
     }
 
     /**
@@ -52,6 +54,7 @@ public class AllTests {
      * @return the suite
      */
     public static Test suite() {
+
         TestSuite suite = new TestSuite("Test for de.dante.extex.scanner");
         //$JUnit-BEGIN$
         suite.addTestSuite(SpaceTokenTest.class);
