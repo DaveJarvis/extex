@@ -167,6 +167,8 @@ public class TypesetterImpl implements Typesetter, Manager {
         par();
         //TODO
         System.err.println(listMaker.close().toString());
+        
+        
     }
 
     /**
@@ -185,7 +187,7 @@ public class TypesetterImpl implements Typesetter, Manager {
      */
     public void pop() throws GeneralException {
         if (saveStack.empty()) {
-            throw new GeneralException("xxx");
+            throw new GeneralException("xxx");// TODO
         }
 
         this.listMaker = (ListMaker) (saveStack.pop());

@@ -18,6 +18,7 @@
  */
 package de.dante.extex.font;
 
+import de.dante.extex.interpreter.type.Dimen;
 import de.dante.extex.interpreter.type.Font;
 import de.dante.util.GeneralException;
 import de.dante.util.configuration.ConfigurationException;
@@ -34,12 +35,13 @@ public interface FontFactory {
     /**
      * ...
      * 
-     * @param name ...
-     * @return ...
+     * @param name	the filename of the font
+     * @param size	the size of the font.
+     * @return the Font, or <code>null</code>, if the font are not aviable
      * @throws GeneralException ...
      * @throws ConfigurationException ...
      */
-    public abstract Font getInstance(String name) throws GeneralException,
+    public abstract Font getInstance(String name, Dimen size) throws GeneralException,
             ConfigurationException;
     
 }
