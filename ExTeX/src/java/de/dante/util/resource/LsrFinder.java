@@ -49,7 +49,8 @@ import de.dante.util.framework.logger.LogEnabled;
  * tree. For this purpose the ls-R files found are read and stored internally.
  *
  * <h2>Configuration</h2>
- * ...
+ *
+ * TODO doc incomplete
  *
  * <pre>
  * &lt;Finder class="de.dante.util.resource.LsrFinder"
@@ -194,6 +195,9 @@ public class LsrFinder implements ResourceFinder, LogEnabled, PropertiesTaker {
                         config);
             }
             cfg = config.getConfiguration(t);
+            if (cfg == null) {
+                return null;
+            }
 
             if (log != null) {
                 log.fine("LsrFinder: Type ``" + type
@@ -284,6 +288,14 @@ public class LsrFinder implements ResourceFinder, LogEnabled, PropertiesTaker {
 
         long start = System.currentTimeMillis();
         File file = new File(path, LSR_FILE_NAME);
+        if (!file.canRead()) {
+            if (logger != null) {
+                logger.fine("LsrFinder: File " + file.toString()
+                        + " is not readable.\n");
+            }
+            return;
+        }
+
         String directory = "";
         File absoluteDirectory = new File(path);
         List list;
