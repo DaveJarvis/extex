@@ -19,11 +19,15 @@
 
 package de.dante.extex.format.dvi;
 
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
 import java.util.List;
 
 import junit.framework.TestCase;
 
+import org.jdom.Document;
 import org.jdom.Element;
+import org.jdom.output.XMLOutputter;
 
 import de.dante.util.file.random.RandomAccessInputFile;
 
@@ -35,6 +39,11 @@ import de.dante.util.file.random.RandomAccessInputFile;
  */
 
 public class DviXmlTest extends TestCase {
+
+    /**
+     * write xml file
+     */
+    private static final boolean WRITEXML = true;
 
     /**
      * the root
@@ -56,13 +65,14 @@ public class DviXmlTest extends TestCase {
         dvixml.interpret(rar);
 
         // write to efm-file
-        //        XMLOutputter xmlout = new XMLOutputter("   ", true);
-        //        BufferedOutputStream out = new BufferedOutputStream(
-        //                new FileOutputStream("dvi.tmp"));
-        //        Document doc = new Document(root);
-        //        xmlout.output(doc, out);
-        //        out.close();
-
+        if (WRITEXML) {
+            XMLOutputter xmlout = new XMLOutputter("   ", true);
+            BufferedOutputStream out = new BufferedOutputStream(
+                    new FileOutputStream("dvi.xml.tmp"));
+            Document doc = new Document(root);
+            xmlout.output(doc, out);
+            out.close();
+        }
     }
 
     /**
@@ -93,6 +103,7 @@ public class DviXmlTest extends TestCase {
         assertEquals("15", findAttrElementNr("fntdef1", "font", 0));
         assertEquals("cmbx12", findAttrElementNr("fntdef1", "name", 0));
         assertEquals("-1026142560", findAttrElementNr("fntdef1", "checksum", 0));
+        assertEquals("943718", findAttrElementNr("fntdef1", "scalefactor", 0));
     }
 
     /**
