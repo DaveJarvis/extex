@@ -59,7 +59,8 @@ public class VerticalListNode extends AbstractNodeList implements NodeList {
     }
 
     /**
-     * TODO gene: missing JavaDoc.
+     * Spread the list vertically to a desired size by distributing the
+     * differences to the glues contained.
      *
      * @param size the target size
      */

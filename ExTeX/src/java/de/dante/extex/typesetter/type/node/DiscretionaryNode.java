@@ -123,7 +123,7 @@ public class DiscretionaryNode extends AbstractNode implements Node {
      */
     public void toString(final StringBuffer sb, final String prefix) {
 
-        sb.append("discretionary"); //TODO gene: incomplete
+        sb.append("discretionary"); //TODO gene: toString() incomplete
     }
 
     /**

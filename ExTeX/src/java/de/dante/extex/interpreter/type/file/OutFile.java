@@ -27,9 +27,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.io.Writer;
 
-import de.dante.extex.i18n.PanicException;
 import de.dante.extex.interpreter.type.tokens.Tokens;
-import de.dante.util.GeneralException;
 
 /**
  * This class holds an output file onto which tokens can be wrtitten.
@@ -64,10 +62,8 @@ public class OutFile implements Serializable {
 
     /**
      * Open the current file.
-     *
-     * @throws GeneralException in case of an error
      */
-    public void open() throws GeneralException {
+    public void open() {
 
         if (file != null) {
             try {

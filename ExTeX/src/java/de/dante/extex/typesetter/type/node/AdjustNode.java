@@ -33,6 +33,7 @@ import de.dante.util.GeneralException;
  * @version $Revision$
  */
 public class AdjustNode extends AbstractNode implements Node {
+
     /**
      * Creates a new object.
      */
@@ -52,7 +53,7 @@ public class AdjustNode extends AbstractNode implements Node {
      */
     public String toString() {
 
-        return "vadjust "; //TODO gene: incomplete
+        return "vadjust "; //TODO gene: toString() incomplete
     }
 
     /**

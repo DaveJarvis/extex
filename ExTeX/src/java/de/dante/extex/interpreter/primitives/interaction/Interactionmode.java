@@ -29,7 +29,6 @@ import de.dante.extex.interpreter.type.AbstractAssignment;
 import de.dante.extex.interpreter.type.count.CountConvertible;
 import de.dante.extex.main.exception.MainUnknownInteractionException;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.GeneralException;
 
 /**
  * This class provides an implementation for the primitive
@@ -81,11 +80,15 @@ public class Interactionmode extends AbstractAssignment
      */
     public void assign(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws GeneralException {
+            throws InterpreterException {
 
         source.getOptionalEquals(context);
         long mode = source.scanNumber(context);
-        context.setInteraction(Interaction.get((int) mode), prefix.isGlobal());
+        try {
+            context.setInteraction(Interaction.get((int) mode), prefix.isGlobal());
+        } catch (MainUnknownInteractionException e) {
+            throw new InterpreterException(e);
+        }
     }
 
     /**

@@ -23,6 +23,7 @@ import java.io.Serializable;
 
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.dimen.FixedDimen;
 import de.dante.extex.interpreter.type.tokens.Tokens;
@@ -111,10 +112,10 @@ public class Glue implements Serializable, FixedGlue {
      * @param source the source to read new tokens from
      * @param context the processing context
      *
-     * @throws GeneralException in case of an error
+     * @throws InterpreterException in case of an error
      */
     public Glue(final TokenSource source, final Context context)
-            throws GeneralException {
+            throws InterpreterException {
 
         super();
         this.length = new GlueComponent(context, source, false);

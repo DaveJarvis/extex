@@ -21,6 +21,7 @@ package de.dante.extex.interpreter.primitives.register.real;
 
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.Theable;
 import de.dante.extex.interpreter.type.count.CountConvertible;
 import de.dante.extex.interpreter.type.real.Real;
@@ -68,7 +69,7 @@ public class MathSqrt extends AbstractMath
      * @throws GeneralException if a error occoured
      */
     protected Real calculate(final Context context, final TokenSource source)
-            throws GeneralException {
+    throws InterpreterException {
 
         Real real = new Real(context, source);
         return new Real(Math.sqrt(real.getValue()));

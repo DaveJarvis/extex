@@ -22,6 +22,7 @@ package de.dante.extex.interpreter.primitives.typesetter.spacing;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.AbstractCode;
 import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.interpreter.type.count.ImmutableCount;
@@ -84,8 +85,12 @@ public class Space extends AbstractCode {
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws GeneralException {
+            throws InterpreterException {
 
-        typesetter.addSpace(context.getTypesettingContext(), SPACEFACTOR);
+        try {
+            typesetter.addSpace(context.getTypesettingContext(), SPACEFACTOR);
+        } catch (GeneralException e) {
+            throw new InterpreterException(e);
+        }
     }
 }

@@ -97,9 +97,15 @@ public class Halign extends AbstractAlign implements Boxable {
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws GeneralException {
+            throws InterpreterException {
 
-        typesetter.add(getNodes(context, source, typesetter));
+        try {
+            typesetter.add(getNodes(context, source, typesetter));
+        } catch (InterpreterException e) {
+            throw e;
+        } catch (GeneralException e) {
+            throw new InterpreterException(e);
+        }
     }
 
     /**

@@ -30,7 +30,6 @@ import de.dante.extex.interpreter.type.ExpandableCode;
 import de.dante.extex.scanner.type.CodeToken;
 import de.dante.extex.scanner.type.Token;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.GeneralException;
 import de.dante.util.framework.i18n.Localizer;
 import de.dante.util.framework.i18n.LocalizerFactory;
 
@@ -137,7 +136,7 @@ public abstract class AbstractIf extends AbstractCode implements ExpandableCode 
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws GeneralException {
+            throws InterpreterException {
 
         if (conditional(context, source, typesetter)
                 || skipToElseOrFi(context, source)) {

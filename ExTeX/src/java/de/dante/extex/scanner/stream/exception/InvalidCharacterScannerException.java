@@ -18,6 +18,7 @@
  */
 package de.dante.extex.scanner.stream.exception;
 
+import de.dante.extex.scanner.exception.ScannerException;
 import de.dante.util.UnicodeChar;
 
 

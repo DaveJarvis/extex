@@ -78,7 +78,7 @@ public class NamedReal extends AbstractAssignment
      */
     public void assign(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws GeneralException {
+            throws InterpreterException {
 
         if (context instanceof ContextExtension) {
 
@@ -169,7 +169,7 @@ public class NamedReal extends AbstractAssignment
      *      de.dante.extex.interpreter.TokenSource)
      */
     public void advance(final Flags prefix, final Context context,
-            final TokenSource source) throws GeneralException {
+            final TokenSource source) throws InterpreterException {
 
         if (context instanceof ContextExtension) {
 
@@ -194,7 +194,7 @@ public class NamedReal extends AbstractAssignment
      *      de.dante.extex.interpreter.TokenSource)
      */
     public void multiply(final Flags prefix, final Context context,
-            final TokenSource source) throws GeneralException {
+            final TokenSource source) throws InterpreterException {
 
         if (context instanceof ContextExtension) {
             ContextExtension contextextex = (ContextExtension) context;
@@ -219,7 +219,7 @@ public class NamedReal extends AbstractAssignment
      *       de.dante.extex.interpreter.TokenSource)
      */
     public void divide(final Flags prefix, final Context context,
-            final TokenSource source) throws GeneralException {
+            final TokenSource source) throws InterpreterException {
 
         if (context instanceof ContextExtension) {
             ContextExtension contextextex = (ContextExtension) context;

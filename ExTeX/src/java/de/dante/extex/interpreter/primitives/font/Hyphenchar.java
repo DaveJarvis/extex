@@ -94,7 +94,7 @@ public class Hyphenchar extends AbstractAssignment
      */
     public void assign(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws GeneralException {
+            throws InterpreterException {
 
         try {
             Font font = source.getFont(context);

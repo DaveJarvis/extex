@@ -83,10 +83,14 @@ public class Moveleft extends AbstractCode implements Boxable {
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws GeneralException {
+            throws InterpreterException {
 
         Box box = getBox(context, source, typesetter);
-        typesetter.add(box.getNodes());
+        try {
+            typesetter.add(box.getNodes());
+        } catch (GeneralException e) {
+            throw new InterpreterException(e);
+        }
     }
 
     /**

@@ -16,10 +16,11 @@
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
+
 package de.dante.extex.interpreter.exception;
 
 import de.dante.util.GeneralException;
-
+import de.dante.util.framework.i18n.Localizer;
 
 /**
  * This is the base class for all exceptions of the interpreter.
@@ -28,6 +29,11 @@ import de.dante.util.GeneralException;
  * @version $Revision$
  */
 public class InterpreterException extends GeneralException {
+
+    /**
+     * The field <tt>localizer</tt> contains the localizer.
+     */
+    private Localizer localizer = null;
 
     /**
      * Creates a new object.
@@ -68,4 +74,26 @@ public class InterpreterException extends GeneralException {
         super(cause);
     }
 
+    /**
+     * Creates a new object.
+     *
+     * @param cause the root of all evil
+     */
+    public InterpreterException(final Localizer localizer) {
+
+        super();
+        this.localizer = localizer;
+    }
+
+    /**
+     * Getter for localizer.
+     * If no localizer is stored within the current instance than the localizer
+     * is created with the class name as key.
+     *
+     * @return the localizer
+     */
+    public Localizer getLocalizer() {
+
+        return (this.localizer != null ? this.localizer : super.getLocalizer());
+    }
 }

@@ -29,7 +29,6 @@ import de.dante.extex.interpreter.type.Theable;
 import de.dante.extex.interpreter.type.count.CountConvertible;
 import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.GeneralException;
 
 /**
  * This abstract base class provides the methods an read only count
@@ -62,7 +61,7 @@ public abstract class AbstractReadonlyCount extends AbstractCode
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws GeneralException {
+            throws InterpreterException {
 
         throw new CantUseInException(printableControlSequence(context),
                 typesetter.getMode().toString());

@@ -77,12 +77,16 @@ public class BoxPrimitive extends AbstractBox implements Boxable, Serializable {
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws GeneralException {
+            throws InterpreterException {
 
         String key = getKey(context, source);
         Box box = context.getBox(key);
         if (box != null) {
-            typesetter.add(box.getNodes());
+            try {
+                typesetter.add(box.getNodes());
+            } catch (GeneralException e) {
+                throw new InterpreterException(e);
+            }
             context.setBox(key, null, prefix.isGlobal());
         }
     }

@@ -24,6 +24,7 @@ import java.io.FileNotFoundException;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.scanner.stream.TokenStreamFactory;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.GeneralException;
@@ -93,7 +94,7 @@ public class Input extends AbstractFileCode {
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws GeneralException {
+            throws InterpreterException {
 
         String name = scanFileName(context, source);
         String encoding = getEncoding(context);
@@ -102,9 +103,9 @@ public class Input extends AbstractFileCode {
         try {
             source.addStream(factory.newInstance(name, FILE_TYPE, encoding));
         } catch (FileNotFoundException e) {
-            throw new GeneralException(e);
+            throw new InterpreterException(e);
         } catch (ConfigurationException e) {
-            throw new GeneralException(e);
+            throw new InterpreterException(e);
         }
     }
 

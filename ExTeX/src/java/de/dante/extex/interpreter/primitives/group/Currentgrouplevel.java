@@ -29,7 +29,6 @@ import de.dante.extex.interpreter.type.Theable;
 import de.dante.extex.interpreter.type.count.CountConvertible;
 import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.GeneralException;
 
 /*
  * TODO:
@@ -87,7 +86,7 @@ public class Currentgrouplevel extends AbstractCode
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws GeneralException {
+            throws InterpreterException {
 
         throw new HelpingException(getLocalizer(), "TTP.CantUseIn",
                 printableControlSequence(context), typesetter.getMode()

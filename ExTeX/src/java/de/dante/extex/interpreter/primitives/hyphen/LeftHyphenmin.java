@@ -70,7 +70,7 @@ public class LeftHyphenmin extends AbstractCode implements Theable {
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws GeneralException {
+            throws InterpreterException {
 
         Count language = context.getCount("language");
         HyphenationTable ht = context.getHyphenationTable((int) language

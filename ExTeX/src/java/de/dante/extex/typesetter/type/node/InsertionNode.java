@@ -62,13 +62,13 @@ public class InsertionNode extends AbstractNode implements Node {
      */
     public void toString(final StringBuffer sb, final String prefix) {
 
-        sb.append("insert"); //TODO gene: incomplete
+        sb.append("insert"); //TODO gene: toString() incomplete
     }
 
     /**
      * @see de.dante.extex.typesetter.type.Node#toText(java.lang.StringBuffer, java.lang.String)
      */
-    public void toText(StringBuffer sb, String prefix) {
+    public void toText(final StringBuffer sb, final String prefix) {
 
         // TODO gene: toText unimplemented
 

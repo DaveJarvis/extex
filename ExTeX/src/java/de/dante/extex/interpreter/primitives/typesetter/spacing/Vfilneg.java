@@ -22,6 +22,7 @@ package de.dante.extex.interpreter.primitives.typesetter.spacing;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.primitives.typesetter.AbstractVerticalCode;
 import de.dante.extex.interpreter.type.glue.Glue;
 import de.dante.extex.interpreter.type.glue.GlueComponent;
@@ -80,10 +81,14 @@ public class Vfilneg extends AbstractVerticalCode implements VerticalSkip {
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws GeneralException {
+            throws InterpreterException {
 
         ensureVerticalMode(typesetter);
-        typesetter.addGlue(FIL_NEG);
+        try {
+            typesetter.addGlue(FIL_NEG);
+        } catch (GeneralException e) {
+            throw new InterpreterException(e);
+        }
     }
 
     /**

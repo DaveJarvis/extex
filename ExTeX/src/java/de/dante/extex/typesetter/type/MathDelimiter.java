@@ -21,6 +21,7 @@ package de.dante.extex.typesetter.type;
 
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.exception.helping.EofException;
 import de.dante.extex.interpreter.exception.helping.HelpingException;
 import de.dante.extex.interpreter.exception.helping.MissingNumberException;
@@ -81,10 +82,10 @@ public class MathDelimiter {
      * @param context the interpreter context
      * @param source the token source to read from
      *
-     * @throws GeneralException in case of an error
+     * @throws InterpreterException in case of an error
      */
     public MathDelimiter(final Context context, final TokenSource source)
-            throws GeneralException {
+            throws InterpreterException {
 
         super();
         Token t = source.getToken(context);

@@ -63,7 +63,7 @@ public class SkipPrimitive extends AbstractSkip implements Theable {
      */
     public void assign(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws GeneralException {
+            throws InterpreterException {
 
         String key = getKey(source, context);
         source.getOptionalEquals(context);

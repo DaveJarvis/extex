@@ -25,11 +25,11 @@ import java.util.Iterator;
 
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.exception.helping.HelpingException;
 import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.scanner.type.Catcode;
 import de.dante.extex.scanner.type.Token;
-import de.dante.util.GeneralException;
 
 /**
  * A Hash for Tokens.
@@ -58,10 +58,10 @@ public class HashToks implements Serializable {
      * get the <code>TokenSource</code> for a <code>HashToks</code> (noexpand).
      * @param context   the context
      * @param source    the token source
-     * @throws GeneralException ...
+     * @throws InterpreterException ...
      */
     public HashToks(final Context context, final TokenSource source)
-            throws GeneralException {
+            throws InterpreterException {
 
         super();
         map = new HashMap();

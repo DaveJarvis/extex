@@ -36,7 +36,6 @@ import de.dante.extex.interpreter.type.dimen.DimenConvertible;
 import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.scanner.type.CatcodeException;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.GeneralException;
 
 /**
  * This class provides an implementation for the primitive <code>\dimen</code>.
@@ -119,7 +118,7 @@ public class DimenPrimitive extends AbstractDimen
      */
     public void assign(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws GeneralException {
+            throws InterpreterException {
 
         String key = getKey(source, context);
         source.getOptionalEquals(context);
@@ -159,7 +158,7 @@ public class DimenPrimitive extends AbstractDimen
      *      de.dante.extex.interpreter.TokenSource)
      */
     public void multiply(final Flags prefix, final Context context,
-            final TokenSource source) throws GeneralException {
+            final TokenSource source) throws InterpreterException {
 
         String key = getKey(source, context);
         source.getKeyword(context, "by");
@@ -177,7 +176,7 @@ public class DimenPrimitive extends AbstractDimen
      *      de.dante.extex.interpreter.TokenSource)
      */
     public void divide(final Flags prefix, final Context context,
-            final TokenSource source) throws GeneralException {
+            final TokenSource source) throws InterpreterException {
 
         String key = getKey(source, context);
         source.getKeyword(context, "by");

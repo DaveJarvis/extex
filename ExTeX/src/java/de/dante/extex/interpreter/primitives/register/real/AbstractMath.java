@@ -68,7 +68,7 @@ public abstract class AbstractMath extends AbstractCode
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws GeneralException {
+            throws InterpreterException {
 
         Real real = calculate(context, source);
         source.push(new Tokens(context, real.toString()));
@@ -134,6 +134,6 @@ public abstract class AbstractMath extends AbstractCode
      * @throws GeneralException if a error occoured
      */
     protected abstract Real calculate(final Context context,
-            final TokenSource source) throws GeneralException;
+            final TokenSource source) throws InterpreterException;
 
 }

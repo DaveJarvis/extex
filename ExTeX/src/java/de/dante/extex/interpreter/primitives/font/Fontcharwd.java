@@ -113,7 +113,7 @@ public class Fontcharwd extends AbstractCode
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws GeneralException {
+            throws InterpreterException {
 
         throw new CantUseInException(printableControlSequence(context),
                 typesetter.getMode().toString());

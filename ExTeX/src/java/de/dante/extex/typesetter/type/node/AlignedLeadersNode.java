@@ -63,7 +63,7 @@ public class AlignedLeadersNode extends GlueNode implements Node {
      */
     public String toString() {
 
-        return "aleaders "; //TODO gene: incomplete
+        return "aleaders "; //TODO gene: toString() incomplete
     }
 
     /**

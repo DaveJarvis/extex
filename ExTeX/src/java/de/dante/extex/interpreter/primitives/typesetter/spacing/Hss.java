@@ -22,6 +22,7 @@ package de.dante.extex.interpreter.primitives.typesetter.spacing;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.primitives.typesetter.AbstractHorizontalCode;
 import de.dante.extex.interpreter.type.glue.Glue;
 import de.dante.extex.interpreter.type.glue.GlueComponent;
@@ -80,10 +81,14 @@ public class Hss extends AbstractHorizontalCode {
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws GeneralException {
+            throws InterpreterException {
 
         ensureHorizontalMode(typesetter);
-        typesetter.addGlue(HSS);
+        try {
+            typesetter.addGlue(HSS);
+        } catch (GeneralException e) {
+            throw new InterpreterException(e);
+        }
     }
 
 }

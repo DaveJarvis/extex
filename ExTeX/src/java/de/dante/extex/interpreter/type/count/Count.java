@@ -73,11 +73,11 @@ public class Count implements Serializable, FixedCount {
      *
      * @return the value of the count
      *
-     * @throws GeneralException in case of an error
+     * @throws InterpreterException in case of an error
      */
     public static long scanCount(final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws GeneralException {
+            throws InterpreterException {
 
         Token t = source.getNonSpace(context);
 
@@ -108,10 +108,10 @@ public class Count implements Serializable, FixedCount {
      * @param context the processor context
      * @param source the source for new tokens
      *
-     * @throws GeneralException in case of an error
+     * @throws InterpreterException in case of an error
      */
     public Count(final Context context, final TokenSource source)
-            throws GeneralException {
+            throws InterpreterException {
 
         super();
         value = scanCount(context, source, null);

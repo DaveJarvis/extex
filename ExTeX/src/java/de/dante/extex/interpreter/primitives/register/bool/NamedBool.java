@@ -75,7 +75,7 @@ public class NamedBool extends AbstractAssignment
      */
     public void assign(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws GeneralException {
+            throws InterpreterException {
 
         if (context instanceof ContextExtension) {
 

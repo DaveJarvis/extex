@@ -24,6 +24,7 @@ import java.io.FileNotFoundException;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.scanner.stream.TokenStreamFactory;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.GeneralException;
@@ -61,14 +62,15 @@ public class InputFileEncoding extends InputFile {
      * Scan the encoding and file name and open the file in the tokenizer
      * stream.
      *
-     * @see de.dante.extex.interpreter.type.Code#execute(de.dante.extex.interpreter.Flags,
+     * @see de.dante.extex.interpreter.type.Code#execute(
+     *      de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws GeneralException {
+            throws InterpreterException {
 
         String encoding = source.scanTokensAsString(context);
         String name = scanFileName(context, source);
@@ -77,9 +79,9 @@ public class InputFileEncoding extends InputFile {
         try {
             source.addStream(factory.newInstance(name, "tex", encoding));
         } catch (FileNotFoundException e) {
-            throw new GeneralException(e); // TODO: use Helping and i18n
+            throw new InterpreterException(e); // TODO: use Helping and i18n
         } catch (ConfigurationException e) {
-            throw new GeneralException(e);
+            throw new InterpreterException(e);
         }
     }
 }

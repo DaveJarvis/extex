@@ -63,7 +63,7 @@ public class CenteredLeadersNode extends GlueNode implements Node {
      */
     public String toString() {
 
-        return "cleaders "; //TODO gene: incomplete
+        return "cleaders "; //TODO gene: toString() incomplete
     }
 
     /**

@@ -105,7 +105,7 @@ public class FontPrimitive extends AbstractAssignment
      */
     public void assign(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws GeneralException {
+            throws InterpreterException {
 
         CodeToken fontId = source.getControlSequence(context);
         source.getOptionalEquals(context);
@@ -158,7 +158,9 @@ public class FontPrimitive extends AbstractAssignment
             throw new HelpingException(getLocalizer(), "TTP.TFMnotFound", //
                     context.esc(fontId), fontname);
         } catch (ConfigurationException e) {
-            throw new GeneralException(e);
+            throw new InterpreterException(e);
+        } catch (GeneralException e) {
+            throw new InterpreterException(e);
         }
 
         Code code = new FontCode(fontId.getName(), font);
@@ -184,10 +186,10 @@ public class FontPrimitive extends AbstractAssignment
      *
      * @return the file name as string
      *
-     * @throws GeneralException in case of an error
+     * @throws InterpreterException in case of an error
      */
     private String scanFontName(final Context context, final TokenSource source)
-            throws GeneralException {
+            throws InterpreterException {
 
         Token t = source.scanNonSpace(context);
 

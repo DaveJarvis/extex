@@ -20,12 +20,12 @@
 package de.dante.extex.interpreter.primitives.math;
 
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.exception.helping.MissingMathException;
 import de.dante.extex.interpreter.type.AbstractCode;
 import de.dante.extex.typesetter.ListMaker;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.listMaker.math.NoadConsumer;
-import de.dante.util.GeneralException;
 
 /**
  * This is the base class for all math primitives.
@@ -55,10 +55,10 @@ public abstract class AbstractMathCode extends AbstractCode {
      *
      * @return the current list maker
      *
-     * @throws GeneralException in case of an error
+     * @throws InterpreterException in case of an error
      */
     protected NoadConsumer getListMaker(final Context context,
-            final Typesetter typesetter) throws GeneralException {
+            final Typesetter typesetter) throws InterpreterException {
 
         ListMaker lm = typesetter.getListMaker();
         if (!(lm instanceof NoadConsumer)) {

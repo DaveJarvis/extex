@@ -98,7 +98,7 @@ public class Ht extends Setbox
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws GeneralException {
+            throws InterpreterException {
 
         Box box = context.getBox(getKey(context, source));
         source.getOptionalEquals(context);

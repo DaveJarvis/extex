@@ -84,7 +84,7 @@ public class Lccode extends AbstractAssignment
      */
     public void assign(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws GeneralException {
+            throws InterpreterException {
 
         UnicodeChar ucCode = source.scanCharacterCode(context);
         source.getOptionalEquals(context);

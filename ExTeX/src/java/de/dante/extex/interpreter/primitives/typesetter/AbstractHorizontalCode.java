@@ -23,7 +23,6 @@ import de.dante.extex.interpreter.exception.helping.HelpingException;
 import de.dante.extex.interpreter.type.AbstractCode;
 import de.dante.extex.typesetter.Mode;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.GeneralException;
 import de.dante.util.framework.i18n.LocalizerFactory;
 
 /**
@@ -50,10 +49,10 @@ public class AbstractHorizontalCode extends AbstractCode {
      *
      * @param typesetter the typesetter to ask for the mode
      *
-     * @throws GeneralException in case of an error
+     * @throws HelpingException in case of an error
      */
     protected void ensureHorizontalMode(final Typesetter typesetter)
-            throws GeneralException {
+            throws HelpingException {
 
         Mode mode = typesetter.getMode();
         if (mode == Mode.VERTICAL || mode == Mode.INNER_VERTICAL) {

@@ -22,9 +22,9 @@ package de.dante.extex.interpreter.primitives.info;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.primitives.register.box.AbstractBox;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.GeneralException;
 
 /**
  * This class provides an implementation for the primitive <code>\showlists</code>.
@@ -71,11 +71,9 @@ public class Showlists extends AbstractBox {
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws GeneralException {
+            throws InterpreterException {
 
         //TODO gene: execute() unimplemented
-        throw new RuntimeException("unimplemented");
-        //return true;
     }
 
 }

@@ -174,9 +174,10 @@ public interface Context
      *
      * @return the hyphenation table for the requested language
      *
-     * @throws GeneralException in case of an error
+     * @throws InterpreterException in case of an error
      */
-    HyphenationTable getHyphenationTable(int language) throws GeneralException;
+    HyphenationTable getHyphenationTable(int language)
+            throws InterpreterException;
 
     /**
      * Getter for the id string. The id string is the classification of the
@@ -374,11 +375,10 @@ public interface Context
      * @param code the code for the token
      * @param global the indicator for the scope; <code>true</code> means all
      *            groups; otherwise the current group is affected only
-     *
-     * @throws GeneralException in case of an error
+     * @throws InterpreterException In case of an error
      */
     void setCode(CodeToken t, Code code, boolean global)
-            throws GeneralException;
+            throws InterpreterException;
 
     /**
      * Setter for the {@link de.dante.extex.interpreter.type.count.Count count}
@@ -430,10 +430,10 @@ public interface Context
      * @param global the indicator for the scope; <code>true</code> means all
      *            groups; otherwise the current group is affected only
      *
-     * @throws GeneralException in case of an error
+     * @throws InterpreterException in case of an error
      */
     void setInteraction(Interaction interaction, boolean global)
-            throws GeneralException;
+            throws InterpreterException;
 
     /**
      * Declare the translation from an upper case character to a lower case

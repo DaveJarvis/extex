@@ -20,7 +20,7 @@
 package de.dante.extex.scanner.stream;
 
 import de.dante.extex.interpreter.Tokenizer;
-import de.dante.extex.scanner.stream.exception.ScannerException;
+import de.dante.extex.scanner.exception.ScannerException;
 import de.dante.extex.scanner.type.Token;
 import de.dante.extex.scanner.type.TokenFactory;
 import de.dante.util.Locator;

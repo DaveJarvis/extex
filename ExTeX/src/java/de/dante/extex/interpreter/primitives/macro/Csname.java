@@ -114,7 +114,7 @@ public class Csname extends AbstractCode
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws GeneralException {
+            throws InterpreterException {
 
         Token t = convertCs(context, source);
         source.push(t);
