@@ -7,12 +7,12 @@
 
 ; allow paths to be relative to project file
  '(jde-resolve-relative-paths-p t)
- '(jde-sourcepath 
-   (quote 
+ '(jde-sourcepath
+   (quote
     ("./src/java"
      "./src/test")))
  '(jde-global-classpath
-   (quote 
+   (quote
     ("./target/classes"
     "./lib"
     "./lib.develop")))
