@@ -81,7 +81,7 @@ public class CrToken extends AbstractToken implements Token {
     public Object visit(final TokenVisitor visitor, final Object arg1,
             final Object arg2) throws Exception {
 
-        return visitor.visitCr(this, arg1, arg2);
+        return visitor.visitCr(this, arg1);
     }
 
 }

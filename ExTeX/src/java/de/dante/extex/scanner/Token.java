@@ -130,7 +130,7 @@ public interface Token {
      *
      * @return ...
      *
-     * @throws Exception in case of ...
+     * @throws Exception in case of an error
      */
     Object visit(TokenVisitor visitor, Object arg1, Object arg2)
             throws Exception;

@@ -41,6 +41,15 @@ public interface CodeToken extends Token {
      *
      * @return the new token
      */
-    Token cloneInDefaultNamespace();
+    CodeToken cloneInDefaultNamespace();
+
+    /**
+     * Create a new instance of the token where the namespace is the given one.
+     *
+     * @param namespace the namespace to use
+     *
+     * @return the new token
+     */
+    CodeToken cloneInNamespace(final String namespace);
 
 }
