@@ -46,7 +46,7 @@ import junit.framework.TestCase;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class TestFixedPoint extends TestCase {
+public class FixedPointTest extends TestCase {
 
     /**
      * mains
@@ -54,7 +54,7 @@ public class TestFixedPoint extends TestCase {
      */
     public static void main(final String[] args) {
 
-        junit.textui.TestRunner.run(TestFixedPoint.class);
+        junit.textui.TestRunner.run(FixedPointTest.class);
     }
 
     /**
