@@ -473,7 +473,7 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
             source.push(t);
         } else if ((t = source.getToken()) != null) {
             if (t instanceof CodeToken) {
-                Code code = context.getCode(t);
+                Code code = context.getCode((CodeToken) t);
                 if (code instanceof DimenConvertible) {
                     value = value
                             * ((DimenConvertible) code).convertDimen(context,

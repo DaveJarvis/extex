@@ -77,7 +77,7 @@ public class The extends AbstractCode implements ExpandableCode {
 
         if (cs instanceof CodeToken) {
 
-            Code code = context.getCode(cs);
+            Code code = context.getCode((CodeToken) cs);
 
             if (code != null && code instanceof Theable) {
                 Tokens toks = ((Theable) code).the(context, source, typesetter);

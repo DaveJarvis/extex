@@ -155,7 +155,7 @@ public class Csname extends AbstractCode implements ExpandableCode,
         for (Token t = source.getToken(); t != null; t = source.getToken()) {
 
             if (t instanceof CodeToken) {
-                Code code = context.getCode(t);
+                Code code = context.getCode((CodeToken) t);
 
                 if (code == null) {
                     //TODO handle EOF

@@ -116,7 +116,7 @@ public class Raise extends AbstractCode implements Boxable {
         if (t == null || !(t instanceof CodeToken)) {
             throw new HelpingException("TTP.BoxExpected");
         }
-        Code code = context.getCode(t);
+        Code code = context.getCode((CodeToken) t);
         if (code == null || !(code instanceof Boxable)) {
             throw new HelpingException("TTP.BoxExpected");
         }

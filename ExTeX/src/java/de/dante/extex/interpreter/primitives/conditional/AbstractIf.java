@@ -140,7 +140,8 @@ public abstract class AbstractIf extends AbstractCode implements ExpandableCode 
 
         for (Token t = source.getToken(); t != null; t = source.getToken()) {
 
-            if (t instanceof CodeToken && (code = context.getCode(t)) != null) {
+            if (t instanceof CodeToken
+                    && (code = context.getCode((CodeToken) t)) != null) {
                 if (code instanceof Fi) {
                     if (--n < 0) {
                         return false;

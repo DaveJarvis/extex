@@ -108,7 +108,7 @@ public class Advance extends AbstractAssignment {
                     cs.toString(), printableControlSequence(context));
         }
 
-        Code code = context.getCode(cs);
+        Code code = context.getCode((CodeToken) cs);
 
         if (code == null) {
             throw new HelpingException("TTP.UndefinedToken", cs
