@@ -369,6 +369,7 @@ public class TFMFont
         root.setAttribute("id", getFontFamily());
         root.setAttribute("default-size", String.valueOf(getDesignSize()));
         root.setAttribute("empr", "100");
+        root.setAttribute("type","tfm");
 
         Element fontdimen = new Element("fontdimen");
         root.addContent(fontdimen);
@@ -465,7 +466,7 @@ public class TFMFont
     }
 
     /**
-     * @see de.dante.extex.font.type.PlFormat#toPL(java.io.OutputStream)
+     * @see de.dante.extex.font.type.PlFormat#toPL(de.dante.extex.font.type.PlWriter)
      */
     public void toPL(final PlWriter out) throws IOException {
 

@@ -70,6 +70,20 @@ public class DviValues {
     }
 
     /**
+     * Create a new object.
+     * @param val   the new values.
+     */
+    public DviValues(final DviValues val) {
+
+        h = val.h;
+        v = val.v;
+        w = val.w;
+        x = val.x;
+        y = val.y;
+        z = val.z;
+    }
+
+    /**
      * clear all values (without f!).
      */
     public void clear() {

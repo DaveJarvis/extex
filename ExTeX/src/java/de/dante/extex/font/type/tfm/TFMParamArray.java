@@ -145,7 +145,7 @@ public class TFMParamArray implements XMLConvertible, PlFormat, Serializable {
     }
 
     /**
-     * @see de.dante.extex.font.type.PlFormat#toPL(java.io.OutputStream)
+     * @see de.dante.extex.font.type.PlFormat#toPL(de.dante.extex.font.type.PlWriter)
      */
     public void toPL(final PlWriter out) throws IOException {
 

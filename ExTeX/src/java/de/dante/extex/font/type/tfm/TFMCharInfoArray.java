@@ -270,6 +270,14 @@ public class TFMCharInfoArray implements XMLConvertible, PlFormat, Serializable 
                 glyph.setAttribute("height", ci.getHeight().toStringComma());
                 glyph.setAttribute("depth", ci.getDepth().toStringComma());
                 glyph.setAttribute("italic", ci.getItalic().toStringComma());
+                glyph.setAttribute("width-fw", String.valueOf(ci.getWidth()
+                        .getValue()));
+                glyph.setAttribute("height-fw", String.valueOf(ci.getHeight()
+                        .getValue()));
+                glyph.setAttribute("depth-fw", String.valueOf(ci.getDepth()
+                        .getValue()));
+                glyph.setAttribute("italic-fw", String.valueOf(ci.getItalic()
+                        .getValue()));
 
                 // ligature
                 int ligstart = ci.getLigkernstart();

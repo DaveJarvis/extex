@@ -259,6 +259,6 @@ public class TftoPlTest extends TestCase {
      */
     public static void main(final String[] args) {
 
-        junit.textui.TestRunner.run(DviXmlTest.class);
+        junit.textui.TestRunner.run(TftoPlTest.class);
     }
 }

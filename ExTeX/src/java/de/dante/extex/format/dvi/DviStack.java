@@ -70,7 +70,7 @@ public class DviStack {
      */
     public DviValues push(final DviValues item) {
 
-        return (DviValues) stack.push(item);
+        return (DviValues) stack.push(new DviValues(item));
     }
 
     /**

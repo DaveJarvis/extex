@@ -186,6 +186,7 @@ public class VFCommandFontDef extends VFCommand {
                     true, true);
             fontmap.put(new Integer(fontnumbers), f);
         } catch (Exception e) {
+            e.printStackTrace();
             throw new FontNotFoundException(fontname);
         }
     }
@@ -216,7 +217,7 @@ public class VFCommandFontDef extends VFCommand {
     public Element toXML() {
 
         Element element = new Element("fontdef");
-        element.setAttribute("ccode", String.valueOf(getCommandCode()));
+        element.setAttribute("opcode", String.valueOf(getCommandCode()));
         element.setAttribute("fontnumbers", String.valueOf(fontnumbers));
         element.setAttribute("fontname", fontname);
         element.setAttribute("checksum", String.valueOf(checksum));

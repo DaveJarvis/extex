@@ -157,7 +157,7 @@ public class VFCommandPre extends VFCommand {
     public Element toXML() {
 
         Element element = new Element("preamble");
-        element.setAttribute("ccode", String.valueOf(getCommandCode()));
+        element.setAttribute("opcode", String.valueOf(getCommandCode()));
         element.setAttribute("identification", String.valueOf(identification));
         element.setAttribute("checksum", String.valueOf(checksum));
         element.setAttribute("designsize", designsize.toString());
