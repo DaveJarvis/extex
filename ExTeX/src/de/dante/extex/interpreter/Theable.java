@@ -16,40 +16,31 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  *
  */
-package de.dante.extex.scanner;
+package de.dante.extex.interpreter;
+
+import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.type.Tokens;
 
 import de.dante.util.GeneralException;
 
 /**
- * This is the interface for the token factory.
- * The token factory is the only instance to deliver new tokens.
- * It is up to the implementation of the factory to create new tokens or to
- * cache some of them and deliver the same token several times.
+ * This is a interface to mark those classes which are able to provide a description.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface TokenFactory {
+public interface Theable {
     /**
-     * Get an instance of a token with a given Catcode and value.
+     * ...
      *
-     * @param code the catcode
-     * @param value the value
+     * @param context ...
+     * @param source ...
      *
-     * @return the appropriate token
+     * @return ...
+     *
+     * @throws GeneralException ...
      */
-    public abstract Token newInstance(Catcode code, String value)
-                               throws GeneralException;
-
-    /**
-     * Get an instance of a token with a given Catcode and character value.
-     *
-     * @param code the catcode
-     * @param c the character value
-     *
-     * @return the appropriate token
-     */
-    public abstract Token newInstance(Catcode code, char c)
-                               throws GeneralException;
+    public abstract Tokens the(Context context, TokenSource source)
+                        throws GeneralException;
 
 }

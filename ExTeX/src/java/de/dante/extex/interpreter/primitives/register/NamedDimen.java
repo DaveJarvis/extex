@@ -110,6 +110,7 @@ public class NamedDimen extends AbstractCode implements Advanceable {
         Dimen dimen = new Dimen(source, context);
         context.setDimen(key, dimen, prefix.isGlobal());
         prefix.clear();
+        doAfterAssignment(context, source);
     }
     
     /**

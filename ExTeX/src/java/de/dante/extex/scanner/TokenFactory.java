@@ -51,4 +51,5 @@ public interface TokenFactory {
      */
     public abstract Token newInstance(Catcode code, char c)
                                throws GeneralException;
+
 }
