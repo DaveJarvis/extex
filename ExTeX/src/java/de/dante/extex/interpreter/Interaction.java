@@ -131,6 +131,27 @@ public abstract class Interaction implements Serializable {
     }
 
     /**
+     * TODO gene: missing JavaDoc
+     *
+     * @param mode the mode to identify
+     *
+     * @return the number of the mode
+     *
+     * @throws MainUnknownInteractionException in case of an error
+     */
+    public static int get(final Interaction mode)
+            throws MainUnknownInteractionException {
+
+        for (int i = 0; i < MODE_MAP.length; i++) {
+            if (mode == MODE_MAP[i]) {
+                return i;
+            }
+        }
+
+        throw new MainUnknownInteractionException(mode.toString());
+    }
+
+    /**
      * This method provides an entry point for the visitor pattern.
      *
      * @param visitor this argument contains the visitor which has initiated
