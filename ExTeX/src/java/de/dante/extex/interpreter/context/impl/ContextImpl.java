@@ -999,11 +999,12 @@ public class ContextImpl
     }
 
     /**
-     * ...
+     * Setter for the token factory
      *
-     * @param factory ...
+     * @param factory the new value of the factory
      *
-     * @see de.dante.extex.interpreter.context.Context#setTokenFactory(de.dante.extex.scanner.TokenFactory)
+     * @see de.dante.extex.interpreter.context.Context#setTokenFactory(
+     *      de.dante.extex.scanner.TokenFactory)
      */
     public void setTokenFactory(final TokenFactory factory) {
 
