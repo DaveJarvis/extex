@@ -22,6 +22,7 @@ package de.dante.extex.interpreter.primitives.hyphen;
 import de.dante.extex.hyphenation.HyphenationTable;
 import de.dante.extex.hyphenation.exception.DuplicateHyphenationException;
 import de.dante.extex.hyphenation.exception.IllegalTokenHyphenationException;
+import de.dante.extex.hyphenation.exception.IllegalValueHyphenationException;
 import de.dante.extex.hyphenation.exception.ImmutableHyphenationException;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.Namespace;
@@ -379,7 +380,9 @@ public class Patterns extends AbstractHyphenationCode {
         } catch (IllegalTokenHyphenationException e) {
             throw new InterpreterException(getLocalizer().format(
                     "TTP.NonLetter"));
-            //TODO gene: map other Exceptions too
+        } catch (IllegalValueHyphenationException e) {
+            throw new InterpreterException(getLocalizer().format(
+                    "TTP.BadPatterns"));
         } catch (ImmutableHyphenationException e) {
             throw new InterpreterException(getLocalizer().format(
                     "TTP.LatePatterns"));
