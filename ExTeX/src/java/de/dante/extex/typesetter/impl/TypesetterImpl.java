@@ -44,7 +44,6 @@ import de.dante.extex.typesetter.paragraphBuilder.ParagraphBuilder;
 import de.dante.extex.typesetter.paragraphBuilder.impl.ParagraphBuilderImpl;
 import de.dante.util.GeneralException;
 import de.dante.util.UnicodeChar;
-import de.dante.util.configuration.Configuration;
 import de.dante.util.framework.logger.LogEnabled;
 
 /**
