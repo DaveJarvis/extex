@@ -16,57 +16,47 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  *
  */
+package de.dante.extex.interpreter.primitives.register.dimen;
 
-package de.dante.extex.interpreter.primitives.register;
-
-import de.dante.extex.interpreter.AbstractAssignment;
-import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.scanner.Token;
-import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.GeneralException;
-import de.dante.util.UnicodeChar;
 
 /**
- * This class provides an implementation for the primitive
- * <code>\chardef</code>.
+ * This class provides an implementation for the primitive <code>\dimen</code>.
+ * It sets the named count register to the value given,
+ * and as a side effect all prefixes are zeroed.
  *
  * <p>Example</p>
  * <pre>
- * \chardef\abc=45
- * \chardef\abc 54
+ * \dimen12=345.67pt
  * </pre>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Chardef extends AbstractAssignment {
+public class NumberedDimen extends NamedDimen {
 
     /**
      * Creates a new object.
      *
      * @param name the name for debugging
      */
-    public Chardef(final String name) {
-
+    public NumberedDimen(final String name) {
         super(name);
     }
 
     /**
-     * @see de.dante.extex.interpreter.AbstractAssignment#assign(de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     * Return the key (the number) for the register.
+     *
+     * @param source ...
+     *
+     * @return ...
+     *
+     * @throws GeneralException ...
      */
-    public void assign(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
-            throws GeneralException {
+    protected String getKey(final TokenSource source) throws GeneralException {
 
-        Token cs = source.getControlSequence();
-        source.scanOptionalEquals();
-        UnicodeChar uc = source.scanCharacterCode();
-        context.setCode(cs, new CharFixed("", uc), prefix.isGlobal());
+        return getName() + "#" + Long.toString(source.scanNumber());
     }
 
 }

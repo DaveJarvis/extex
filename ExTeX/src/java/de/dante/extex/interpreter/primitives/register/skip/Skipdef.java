@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -16,40 +16,53 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  *
  */
+package de.dante.extex.interpreter.primitives.register.skip;
 
-package de.dante.extex.interpreter.primitives.register;
-
+import de.dante.extex.i18n.GeneralHelpingException;
 import de.dante.extex.interpreter.AbstractAssignment;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.type.Count;
+import de.dante.extex.scanner.ActiveCharacterToken;
+import de.dante.extex.scanner.ControlSequenceToken;
 import de.dante.extex.scanner.Token;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.GeneralException;
-import de.dante.util.UnicodeChar;
 
 /**
- * This class provides an implementation for the primitive
- * <code>\chardef</code>.
+ * This class provides an implementation for the primitive <code>\skipdef</code>.
  *
  * <p>Example</p>
  * <pre>
- * \chardef\abc=45
- * \chardef\abc 54
+ * \skipdef\abc=45
+ * \skipdef\abc 54
  * </pre>
+ *
+ *
+ * <h3>Possible Extension</h3>
+ * Allow an expandable expression instead of the number to defined real named
+ * counters.
+ *
+ * <p>Example</p>
+ * <pre>
+ * \skipdef\abc={xyz\the\count0}
+ * \skipdef\abc {def}
+ * </pre>
+ * To protect the buildin registers one might consider to use the key
+ * "#<i>name</i>" or "skip#<i>name</i>".
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Chardef extends AbstractAssignment {
+public class Skipdef extends AbstractAssignment {
 
     /**
      * Creates a new object.
      *
      * @param name the name for debugging
      */
-    public Chardef(final String name) {
-
+    public Skipdef(final String name) {
         super(name);
     }
 
@@ -63,10 +76,24 @@ public class Chardef extends AbstractAssignment {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        Token cs = source.getControlSequence();
-        source.scanOptionalEquals();
-        UnicodeChar uc = source.scanCharacterCode();
-        context.setCode(cs, new CharFixed("", uc), prefix.isGlobal());
-    }
+        Token cs = source.scanToken();
 
+        if (cs instanceof ControlSequenceToken) {
+            source.scanOptionalEquals();
+            //todo: unfortunately we have to know the internal format of the key:-(
+            String key = "skip#" + Long.toString(Count.scanCount(context, source));
+            context.setMacro(cs.getValue(), new NamedSkip(key), prefix.isGlobal());
+            return;
+
+        } else if (cs instanceof ActiveCharacterToken) {
+            source.scanOptionalEquals();
+            //todo: unfortunately we have to know the internal format of the key:-(
+            String key = "skip#" + Long.toString(Count.scanCount(context, source));
+            context.setActive(cs.getValue(), new NamedSkip(key), prefix.isGlobal());
+            return;
+
+        }
+
+        throw new GeneralHelpingException("TTP.MissingCtrlSeq");
+    }
 }
