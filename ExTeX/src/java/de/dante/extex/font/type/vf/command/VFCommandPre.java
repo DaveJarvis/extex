@@ -91,7 +91,7 @@ public class VFCommandPre extends VFCommand {
             throw new VFWrongCodeException(String.valueOf(ccode));
         }
 
-        identification = rar.read();
+        identification = rar.readByteAsInt();
         comment = readString(rar);
         checksum = rar.readInt();
         designsize = new TFMFixWord(rar.readInt(),
@@ -107,10 +107,10 @@ public class VFCommandPre extends VFCommand {
      */
     private String readString(final RandomAccessR rar) throws IOException {
 
-        int len = rar.read();
+        int len = rar.readByteAsInt();
         StringBuffer buf = new StringBuffer();
         for (int i = 0; i < len; i++) {
-            buf.append((char) rar.read());
+            buf.append((char) rar.readByteAsInt());
         }
         return buf.toString();
     }

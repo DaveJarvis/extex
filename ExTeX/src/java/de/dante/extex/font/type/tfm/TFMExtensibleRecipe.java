@@ -83,10 +83,10 @@ public class TFMExtensibleRecipe implements XMLConvertible {
             throws IOException {
 
         etid = id;
-        top = (short) rar.read();
-        mid = (short) rar.read();
-        bot = (short) rar.read();
-        rep = (short) rar.read();
+        top = (short) rar.readByteAsInt();
+        mid = (short) rar.readByteAsInt();
+        bot = (short) rar.readByteAsInt();
+        rep = (short) rar.readByteAsInt();
     }
 
     /**

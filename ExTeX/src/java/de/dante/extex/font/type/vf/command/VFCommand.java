@@ -114,7 +114,7 @@ public abstract class VFCommand implements XMLConvertible, Serializable {
     public static VFCommand getInstance(final RandomAccessR rar)
             throws IOException, FontException {
 
-        int c = rar.read();
+        int c = rar.readByteAsInt();
         if (c < 0) {
             return null;
         }

@@ -155,7 +155,7 @@ class TFMHeaderArray implements XMLConvertible, PlFormat, Serializable {
                     // ignore 2 bytes
                     rar.skipBytes(2);
                     // face
-                    xeroxfacecode = rar.read();
+                    xeroxfacecode = rar.readByteAsInt();
                     hr--;
                     // optional rest
                     if (hr > 0) {
