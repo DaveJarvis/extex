@@ -372,8 +372,6 @@ public class Patterns extends AbstractHyphenationCode {
                 t = source.getToken(context);
             } while (t != null && t.visit(tv, null) == null);
 
-        } catch (InterpreterException e) {
-            throw e;
         } catch (DuplicateHyphenationException e) {
             throw new InterpreterException(getLocalizer().format(
                     "TTP.DuplicatePattern"));
@@ -386,6 +384,8 @@ public class Patterns extends AbstractHyphenationCode {
         } catch (ImmutableHyphenationException e) {
             throw new InterpreterException(getLocalizer().format(
                     "TTP.LatePatterns"));
+        } catch (InterpreterException e) {
+            throw e;
         } catch (Exception e) {
             throw new InterpreterException(e);
         }
