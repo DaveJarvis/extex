@@ -33,6 +33,8 @@ import de.dante.util.GeneralException;
  */
 public class ObserverList implements Observer {
 
+    private boolean WEAK_P = false;
+
     /**
      * The field <tt>list</tt> contains the internal lit of observers.
      */
@@ -55,7 +57,11 @@ public class ObserverList implements Observer {
      */
     public void add(final Observer observer) {
 
-        list.add(new WeakReference(observer));
+        if (WEAK_P) {
+            list.add(new WeakReference(observer));
+        } else {
+            list.add(observer);
+        }
     }
 
     /**
@@ -68,8 +74,13 @@ public class ObserverList implements Observer {
     public void update(final Observable source, final Object object)
             throws GeneralException {
 
-        for (int i=0; i < list.size(); i++ ) {
-            Observer ob = (Observer) ((WeakReference) list.get(i)).get();
+        for (int i = 0; i < list.size(); i++) {
+            Observer ob;
+            if (WEAK_P) {
+                ob = (Observer) ((WeakReference) list.get(i)).get();
+            } else {
+                ob = (Observer) list.get(i);
+            }
 
             if (ob != null) {
                 ob.update(source, object);
