@@ -106,7 +106,7 @@ public class Real implements Serializable {
         } else if (t.equals(Catcode.OTHER, "+")) {
             t = source.scanNonSpace();
         } else if (t instanceof ControlSequenceToken) {
-            Code code = context.getMacro(t.getValue());
+            Code code = context.getCode(t);
             if (code != null && code instanceof RealConvertible) {
                 return (((RealConvertible) code).convertReal(context, source))
                         .getValue();

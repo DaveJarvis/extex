@@ -70,7 +70,7 @@ public class NamedTransform extends AbstractAssignment implements Theable {
             ContextExtension contextextex = (ContextExtension) context;
 
             String key = getKey(source);
-            source.scanOptionalEquals();
+            source.getOptionalEquals();
             Transform value = new Transform(context, source);
             contextextex.setTransform(key, value, prefix.isGlobal());
 

@@ -97,6 +97,8 @@ public class FontFactoryImpl implements FontFactory {
             final Glue letterspaced, final boolean ligatures)
             throws GeneralException, ConfigurationException {
 
+        // TODO missing kerning
+
         String filename;
         if (name != null) {
             filename = name.trim();

@@ -94,7 +94,7 @@ public class ToSP extends AbstractCode implements Theable {
                     cs.toString(), Character.toString(esc) + getName());
         }
 
-        Code code = context.getMacro(cs.getValue());
+        Code code = context.getCode(cs);
 
         if (code == null) {
             throw new GeneralHelpingException("TTP.UndefinedToken", cs

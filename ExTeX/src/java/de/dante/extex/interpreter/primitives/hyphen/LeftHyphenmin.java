@@ -75,7 +75,7 @@ public class LeftHyphenmin extends AbstractCode implements Theable {
         HyphenationTable ht = context.getHyphenationTable((int) language
                 .getValue());
 
-        source.scanOptionalEquals();
+        source.getOptionalEquals();
         int lefthyphmin = (int) source.scanInteger();
 
         ht.setLeftHyphenmin(lefthyphmin);

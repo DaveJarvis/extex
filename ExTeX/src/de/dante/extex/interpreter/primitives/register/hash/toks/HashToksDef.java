@@ -68,10 +68,9 @@ public class HashToksDef extends AbstractAssignment {
         if (!(tok instanceof ControlSequenceToken)) {
             throw new GeneralHelpingException("TTP.MissingCtrlSeq");
         }
-        source.scanOptionalEquals();
+        source.getOptionalEquals();
         String key = "hashtoks#"
                 + Long.toString(Count.scanCount(context, source));
-        context.setCode(tok, new NamedHashToks(key), prefix
-                .isGlobal());
+        context.setCode(tok, new NamedHashToks(key), prefix.isGlobal());
     }
 }

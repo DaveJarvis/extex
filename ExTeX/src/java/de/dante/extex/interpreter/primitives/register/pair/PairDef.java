@@ -67,7 +67,7 @@ public class PairDef extends AbstractAssignment {
         if (!(tok instanceof ControlSequenceToken)) {
             throw new GeneralHelpingException("TTP.MissingCtrlSeq");
         }
-        source.scanOptionalEquals();
+        source.getOptionalEquals();
         String key = "pair#" + Long.toString(Count.scanCount(context, source));
         context.setCode(tok, new NamedPair(key), prefix.isGlobal());
     }

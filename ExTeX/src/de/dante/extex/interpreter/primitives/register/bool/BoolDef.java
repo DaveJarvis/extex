@@ -69,7 +69,7 @@ public class BoolDef extends AbstractAssignment {
         if (!(tok instanceof ControlSequenceToken)) {
             throw new GeneralHelpingException("TTP.MissingCtrlSeq");
         }
-        source.scanOptionalEquals();
+        source.getOptionalEquals();
         String key = "bool#" + Long.toString(Count.scanCount(context, source));
         context.setCode(tok, new NamedBool(key), prefix.isGlobal());
     }

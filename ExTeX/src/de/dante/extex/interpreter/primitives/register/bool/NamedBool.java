@@ -81,7 +81,7 @@ public class NamedBool extends AbstractAssignment
             ContextExtension contextextex = (ContextExtension) context;
 
             String key = getKey(source);
-            source.scanOptionalEquals();
+            source.getOptionalEquals();
             Bool value = new Bool(context, source);
             contextextex.setBool(key, value, prefix.isGlobal());
 

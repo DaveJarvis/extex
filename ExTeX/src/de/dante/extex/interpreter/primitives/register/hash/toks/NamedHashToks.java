@@ -72,7 +72,7 @@ public class NamedHashToks extends AbstractAssignment implements Theable {
             ContextExtension contextextex = (ContextExtension) context;
 
             String key = getKey(source);
-            source.scanOptionalEquals();
+            source.getOptionalEquals();
 
             HashToks value = new HashToks(context, source);
             contextextex.setHashToks(key, value, prefix.isGlobal());

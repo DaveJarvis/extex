@@ -68,7 +68,7 @@ public class RealDef extends AbstractAssignment {
         if (!(tok instanceof ControlSequenceToken)) {
             throw new GeneralHelpingException("TTP.MissingCtrlSeq");
         }
-        source.scanOptionalEquals();
+        source.getOptionalEquals();
         String key = "real#" + Long.toString(Count.scanCount(context, source));
         context.setCode(tok, new NamedReal(key), prefix.isGlobal());
     }
