@@ -316,35 +316,16 @@ public class TableDirectory implements XMLConvertible {
         }
 
         /**
-         * Returns the info for this class
-         * @return Returns the info for this class
-         */
-        public String toString() {
-
-            StringBuffer buf = new StringBuffer();
-
-            buf.append("DirectoryEntry:\n");
-            buf.append("   tag      : ").append(getTagName()).append('\n');
-            buf.append("   offset   : ").append(offset).append('\n');
-            buf.append("   length   : ").append(length).append('\n');
-            buf.append("   checksum : 0x")
-                    .append(Integer.toHexString(checkSum)).append('\n');
-
-            return buf.toString();
-        }
-
-        /**
          * @see de.dante.util.XMLConvertible#toXML()
          */
         public Element toXML() {
 
             Element entry = new Element("entry");
             entry.setAttribute("tag", getTagName());
-            entry.setAttribute("offset", String.valueOf(offset));
+            entry.setAttribute("offset", TTFFont.convertIntToHexString(offset));
             entry.setAttribute("length", String.valueOf(length));
-            entry
-                    .setAttribute("checksum", "0x"
-                            + Integer.toHexString(checkSum));
+            entry.setAttribute("checksum", TTFFont
+                    .convertIntToHexString(checkSum));
             return entry;
         }
     }
