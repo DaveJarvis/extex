@@ -70,9 +70,9 @@ public class EFMType1TFMMathextFont extends EFMType1TFMNOFont implements Font {
                 + getFontName()
                 + (getExternalFile() != null
                         ? " (" + getExternalFile() + ")"
-                        : "") + " with size " + getEmsize().toPT()
+                        : "") + " with size " + getEmsize().toString()
                 + " unitsperem = " + getUnitsperem() + " ex = " + getEx()
-                + " em = " + getEm().toPT() + " (with " + getEmpr() + "%)"
+                + " em = " + getEm().toString() + " (with " + getEmpr() + "%)"
                 + " number of glyphs = " + getGylphMapSize() + " >";
     }
 
