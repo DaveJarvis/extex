@@ -28,7 +28,7 @@ import de.dante.extex.interpreter.type.Glue;
 import de.dante.extex.interpreter.type.node.CharNodeFactory;
 import de.dante.extex.scanner.stream.TokenStream;
 import de.dante.extex.scanner.stream.TokenStreamFactory;
-import de.dante.extex.scanner.stream.impl.TokenStreamBufferImpl;
+import de.dante.extex.scanner.stream.impl.TokenStreamStringImpl;
 import de.dante.extex.typesetter.Mode;
 import de.dante.extex.typesetter.Node;
 import de.dante.extex.typesetter.NodeList;
@@ -119,7 +119,7 @@ public class Max1 extends TestCase {
 
         interpreter.setTypesetter(typesetter);
 
-        TokenStream stream = new TokenStreamBufferImpl(in,"ISO-8859-1");
+        TokenStream stream = new TokenStreamStringImpl(in);// mgn: changed
         interpreter.run(stream);
         return typesetter.toString();
     }

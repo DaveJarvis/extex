@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2004 Gerd Neugebauer, Michael Niedermair
+ * Copyright (C) 2003-2004 The ExTeX Group
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -831,15 +831,14 @@ public class ExTeX {
         String post = properties.getProperty(PROP_CODE);
 
         if (post != null && !post.equals("")) {
-            TokenStream stream = factory.newInstance(post, properties
-                .getProperty(PROP_ENCODING));
+            TokenStream stream = factory.newInstance(post);
             interpreter.addStream(stream);
             notInitialized = false;
         }
 
         if (notInitialized) {
             TokenStream stream = factory.newInstance(new InputStreamReader(
-                System.in), properties.getProperty(PROP_ENCODING));
+                System.in));
             interpreter.addStream(stream);
 
         }
