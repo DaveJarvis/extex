@@ -311,6 +311,7 @@ public class TokenStreamStringImplTest extends TestCase {
 
     /**
      * ...
+     *
      * @throws Exception in case of an error
      */
     public void testCr4() throws Exception {
@@ -330,8 +331,8 @@ public class TokenStreamStringImplTest extends TestCase {
      */
     private TokenStream makeStream(final String line) throws IOException {
 
-        return new TokenStreamImpl(null, new StringReader(line), Boolean.FALSE,
-                "#");
+        return new TokenStreamImpl(null, null, new StringReader(line),
+                Boolean.FALSE, "#");
     }
 
     /**
@@ -345,8 +346,7 @@ public class TokenStreamStringImplTest extends TestCase {
         /**
          * The field <tt>classname</tt> contains the name of the class to use.
          */
-        private String classname =
-            "de.dante.extex.interpreter.context.impl.ContextImpl";
+        private String classname = "de.dante.extex.interpreter.context.impl.ContextImpl";
 
         /**
          * Creates a new object.
