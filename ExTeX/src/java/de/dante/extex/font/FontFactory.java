@@ -21,6 +21,7 @@ package de.dante.extex.font;
 
 import de.dante.extex.interpreter.type.Dimen;
 import de.dante.extex.interpreter.type.Font;
+import de.dante.extex.interpreter.type.Glue;
 import de.dante.util.GeneralException;
 import de.dante.util.configuration.ConfigurationException;
 
@@ -36,8 +37,23 @@ public interface FontFactory {
     /**
      * Factory for <code>Font</code>.
      *
-     * @param name the filename of the font
-     * @param size the size of the font.
+     * @param name          the filename of the font
+     * @param size          the size of the font
+     * @param letterspaced  the glue fo letterspaced
+     * @param ligatures     switch ligatures on/off
+     * @return the Font, or <code>null</code>, if the font are not aviable
+     * @throws GeneralException ...
+     * @throws ConfigurationException ...
+     */
+    Font getInstance(String name, Dimen size, final Glue letterspaced,
+            final boolean ligatures) throws GeneralException,
+            ConfigurationException;
+
+    /**
+     * Factory for <code>Font</code>.
+     *
+     * @param name          the filename of the font
+     * @param size          the size of the font
      * @return the Font, or <code>null</code>, if the font are not aviable
      * @throws GeneralException ...
      * @throws ConfigurationException ...

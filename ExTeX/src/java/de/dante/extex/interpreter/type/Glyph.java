@@ -82,6 +82,16 @@ public class Glyph {
     private FontFile externalfile = null;
 
     /**
+     * The left space in a glyph
+     */
+    private Dimen leftSpace = new Dimen(0);
+
+    /**
+     * The rigtht space in a glyph
+     */
+    private Dimen rightSpace = new Dimen(0);
+
+    /**
      * Create a new object.
      */
     public Glyph() {
@@ -361,5 +371,37 @@ public class Glyph {
     public void setExternalFile(final FontFile file) {
 
         externalfile = file;
+    }
+
+    /**
+     * @return Returns the leftSpace.
+     */
+    public Dimen getLeftSpace() {
+
+        return leftSpace;
+    }
+
+    /**
+     * @param ls The leftSpace to set.
+     */
+    public void setLeftSpace(final Dimen ls) {
+
+        leftSpace = ls;
+    }
+
+    /**
+     * @return Returns the rightSpace.
+     */
+    public Dimen getRightSpace() {
+
+        return rightSpace;
+    }
+
+    /**
+     * @param rs The rightSpace to set.
+     */
+    public void setRightSpace(final Dimen rs) {
+
+        rightSpace = rs;
     }
 }

@@ -36,9 +36,8 @@ import de.dante.util.GeneralException;
  * The value are stored in the <code>HyphernationTable</code>.
  * Each <code>HyphernationTable</code> are based on <code>\language</code>
  * and have its own <code>\lefthyphenmin</code>-value (different to original TeX).
- * <p>
- * Example:
  *
+ * <p>Example:</p>
  * <pre>
  * \lefthyphenmin=2
  * </pre>
@@ -62,7 +61,8 @@ public class LeftHyphenmin extends AbstractCode implements Theable {
      * Scan for lefthyphenmin-value and stored it in the
      * <code>HyphernationTable</code> with the language-number.
      *
-     * @see de.dante.extex.interpreter.Code#execute(de.dante.extex.interpreter.Flags,
+     * @see de.dante.extex.interpreter.Code#execute(
+     *      de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)

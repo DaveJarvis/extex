@@ -21,6 +21,7 @@ package de.dante.extex.font;
 
 import de.dante.extex.interpreter.type.Dimen;
 import de.dante.extex.interpreter.type.Font;
+import de.dante.extex.interpreter.type.FontFileList;
 import de.dante.extex.interpreter.type.Glue;
 import de.dante.extex.interpreter.type.Glyph;
 import de.dante.util.UnicodeChar;
@@ -148,4 +149,25 @@ public class NullFont implements Font {
         return null;
     }
 
+    /**
+     * @see de.dante.extex.interpreter.type.Font#getFontFiles()
+     */
+    public FontFileList getFontFiles() {
+
+        return null;
+    }
+
+    /**
+     * @see de.dante.extex.interpreter.type.Font#getLetterSpaced()
+     */
+    public Glue getLetterSpaced() {
+        return null;
+    }
+
+    /**
+     * @see de.dante.extex.interpreter.type.Font#getLigatures()
+     */
+    public boolean getLigatures() {
+        return false;
+    }
 }
