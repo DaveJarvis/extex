@@ -45,6 +45,11 @@ public class CharNode extends AbstractNode implements Node {
     private UnicodeChar character;
 
     /**
+     * The field <tt>chars</tt> contains the ...
+     */
+    private UnicodeChar[] chars;
+
+    /**
      * The field <tt>glyph</tt> contains the glyph from the font associated to
      * the Unicode character.
      */
@@ -66,6 +71,7 @@ public class CharNode extends AbstractNode implements Node {
         super();
         typesettingContext = context;
         character = uc;
+        chars = new UnicodeChar[] {uc};
         glyph = context.getFont().getGlyph(uc);
 
         if (glyph != null) {
@@ -81,6 +87,14 @@ public class CharNode extends AbstractNode implements Node {
     }
 
     /**
+     * @see de.dante.extex.typesetter.type.Node#countChars()
+     */
+    public int countChars() {
+
+        return 1;
+    }
+
+    /**
      * Getter for character.
      *
      * @return the character.
@@ -88,6 +102,14 @@ public class CharNode extends AbstractNode implements Node {
     public UnicodeChar getCharacter() {
 
         return this.character;
+    }
+
+    /**
+     * @see de.dante.extex.typesetter.type.Node#getChars()
+     */
+    public UnicodeChar[] getChars() {
+
+        return chars;
     }
 
     /**
