@@ -246,7 +246,7 @@ public abstract class Moritz
 
         Configuration cfg = config.findConfiguration("ExtendedRegisterNames");
         if (cfg != null) {
-            extendedRegisterNames = Boolean.getBoolean(cfg.getValue());
+            extendedRegisterNames = Boolean.valueOf(cfg.getValue()).booleanValue();
         }
 
     }

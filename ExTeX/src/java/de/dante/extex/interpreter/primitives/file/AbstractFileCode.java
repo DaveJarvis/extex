@@ -140,7 +140,7 @@ public abstract class AbstractFileCode extends AbstractCode
             throws ConfigurationException {
 
         String strict = config.getAttribute("strict");
-        strictTeX = (strict != null && Boolean.getBoolean(strict));
+        strictTeX = (strict != null && Boolean.valueOf(strict).booleanValue());
     }
 
     /**
