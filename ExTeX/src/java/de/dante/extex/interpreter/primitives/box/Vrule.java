@@ -98,7 +98,7 @@ public class Vrule extends AbstractCode {
      *      de.dante.extex.typesetter.Typesetter)
      * @see "TeX -- The Program [463]"
      */
-    public void execute(final Flags prefix, final Context context,
+    public boolean execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
@@ -120,6 +120,6 @@ public class Vrule extends AbstractCode {
 
         typesetter.add(new RuleNode(width, height, depth, context
                 .getTypesettingContext()));
-        prefix.clear();
+        return true;
     }
 }

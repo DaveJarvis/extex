@@ -74,14 +74,14 @@ public class BoxPrimitive extends AbstractCode implements Boxable, Serializable 
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
+    public boolean execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
         String key = getKey(source, context.getNamespace());
         Box box = context.getBox(key);
         context.setBox(key, box, prefix.isGlobal());
-        prefix.clear();
+        return true;
     }
 
     /**

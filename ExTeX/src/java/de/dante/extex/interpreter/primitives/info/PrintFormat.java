@@ -72,12 +72,12 @@ public class PrintFormat extends AbstractCode implements Theable {
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
+    public boolean execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
         source.push(the(context, source));
-        prefix.clear();
+        return true;
     }
 
     /**

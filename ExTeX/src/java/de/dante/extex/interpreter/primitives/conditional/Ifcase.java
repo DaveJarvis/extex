@@ -76,7 +76,7 @@ public class Ifcase extends AbstractIf {
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
+    public boolean execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
@@ -86,7 +86,7 @@ public class Ifcase extends AbstractIf {
             if (skipToElseOrFi(context, source)) {
                 context.pushConditional(source.getLocator(), true);
             }
-            return;
+            return true;
         }
 
         while (val > 0) {
@@ -95,10 +95,10 @@ public class Ifcase extends AbstractIf {
                 val--;
             } else if (tag == ELSE) {
                 context.pushConditional(source.getLocator(), true);
-                return;
+                return true;
 
             } else if (tag == FI) {
-                return;
+                return true;
 
             } else {
                 throw new RuntimeException("this can't happen");
@@ -106,6 +106,7 @@ public class Ifcase extends AbstractIf {
             }
         }
         context.pushConditional(source.getLocator(), true);
+        return true;
     }
 
     /**

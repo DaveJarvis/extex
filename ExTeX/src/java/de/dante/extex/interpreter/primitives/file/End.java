@@ -16,6 +16,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  *
  */
+
 package de.dante.extex.interpreter.primitives.file;
 
 import de.dante.extex.interpreter.AbstractCode;
@@ -54,12 +55,14 @@ import de.dante.util.GeneralException;
  * @version $Revision$
  */
 public class End extends AbstractCode {
+
     /**
      * Creates a new object.
      *
      * @param name the name for debugging
      */
     public End(final String name) {
+
         super(name);
     }
 
@@ -69,10 +72,11 @@ public class End extends AbstractCode {
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-        final TokenSource source, final Typesetter typesetter)
-        throws GeneralException {
+    public boolean execute(final Flags prefix, final Context context,
+            final TokenSource source, final Typesetter typesetter)
+            throws GeneralException {
 
         source.closeAllStreams();
+        return true;
     }
 }

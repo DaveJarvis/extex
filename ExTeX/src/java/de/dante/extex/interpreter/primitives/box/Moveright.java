@@ -81,13 +81,13 @@ public class Moveright extends AbstractCode implements Boxable {
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
+    public boolean execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
         Box box = getBox(context, source, typesetter);
         typesetter.add(box.getNodes());
-        prefix.clear();
+        return true;
     }
 
     /**

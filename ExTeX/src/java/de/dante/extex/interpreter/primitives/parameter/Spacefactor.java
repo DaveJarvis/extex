@@ -66,13 +66,13 @@ public class Spacefactor extends AbstractCode {
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
+    public boolean execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
         source.getOptionalEquals();
         long f = source.scanInteger();
         typesetter.setSpacefactor(new Count(f));
-        prefix.clear();
+        return true;
     }
 }

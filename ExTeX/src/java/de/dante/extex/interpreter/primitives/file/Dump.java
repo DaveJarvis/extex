@@ -89,7 +89,7 @@ public class Dump extends AbstractCode {
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
+    public boolean execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
@@ -125,7 +125,7 @@ public class Dump extends AbstractCode {
             throw new GeneralException(e);
         }
 
-        prefix.clear();
+        return true;
     }
 
 }

@@ -69,7 +69,7 @@ public class The extends AbstractCode implements ExpandableCode {
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
+    public boolean execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
@@ -93,7 +93,7 @@ public class The extends AbstractCode implements ExpandableCode {
                     cs.toString(), printableControlSequence(context));
         }
 
-        prefix.clear();
+        return true;
     }
 
     /**

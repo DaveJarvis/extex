@@ -76,12 +76,12 @@ public class Lowercase extends AbstractCode implements ExpandableCode {
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
+    public boolean execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
         expand(prefix, context, source, typesetter);
-        prefix.clear();
+        return true;
     }
 
     /**

@@ -80,10 +80,11 @@ public interface Code {
      * @param context the interpreter context
      * @param source the token source
      * @param typesetter the typesetter
+     * @return TODO
      *
      * @throws GeneralException in case of an error
      */
-    void execute(Flags prefix, Context context,
+    boolean execute(Flags prefix, Context context,
             TokenSource source, Typesetter typesetter) throws GeneralException;
 
 }

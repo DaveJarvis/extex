@@ -82,7 +82,7 @@ public class Ht extends Setbox implements Serializable, ExpandableCode, Theable,
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
+    public boolean execute(final Flags prefix, final Context context,
         final TokenSource source, final Typesetter typesetter)
         throws GeneralException {
 
@@ -94,7 +94,7 @@ public class Ht extends Setbox implements Serializable, ExpandableCode, Theable,
             box.setHeight(d);
         }
 
-        prefix.clear();
+        return true;
     }
 
     /**

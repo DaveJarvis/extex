@@ -67,7 +67,7 @@ public class HyphenActive extends AbstractCode implements Theable {
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
+    public boolean execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
@@ -81,6 +81,7 @@ public class HyphenActive extends AbstractCode implements Theable {
             active = false;
         }
         ht.setHyphenActive(active);
+        return true;
     }
 
     /**
