@@ -20,7 +20,7 @@ package de.dante.extex.interpreter.primitives.string;
 
 import de.dante.extex.interpreter.AbstractAssignment;
 import de.dante.extex.interpreter.CountConvertable;
-import de.dante.extex.interpreter.DimenConvertable;
+import de.dante.extex.interpreter.DimenConvertible;
 import de.dante.extex.interpreter.ExpandableCode;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.Theable;
@@ -38,7 +38,7 @@ import de.dante.util.UnicodeChar;
  * @version $Revision$
  */
 public class Uccode extends AbstractAssignment implements ExpandableCode,
-        Theable, CountConvertable, DimenConvertable {
+        Theable, CountConvertable, DimenConvertible {
 
     /**
      * Creates a new object.
@@ -101,7 +101,7 @@ public class Uccode extends AbstractAssignment implements ExpandableCode,
     }
 
     /**
-     * @see de.dante.extex.interpreter.DimenConvertable#convertDimen(de.dante.extex.interpreter.context.Context,
+     * @see de.dante.extex.interpreter.DimenConvertible#convertDimen(de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource)
      */
     public long convertDimen(final Context context, final TokenSource source)
