@@ -347,7 +347,7 @@ import de.dante.util.resource.ResourceFinderFactory;
  *
  * <a name="fileSearch"/><h3>Searching Files</h3>
  *
- * ...
+ * TODO doc incomplete
  *
  *
  *
@@ -585,7 +585,8 @@ import de.dante.util.resource.ResourceFinderFactory;
  *  jar file. In this section we will describe how to overwrite the settings in
  *  the default configuration resource.
  * </p>
- * ...
+ *
+ * TODO doc incomplete
  *
  *
  *
