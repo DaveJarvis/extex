@@ -26,6 +26,6 @@ package de.dante.extex.hyphenation;
  */
 public interface HyphenationFactory {
     
-    public abstract Hyphenation getInstance(String name);
+    public abstract HyphenationManager getInstance(String name);
 
 }

@@ -16,23 +16,30 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  *
  */
-package de.dante.extex.hyphenation.impl;
+package de.dante.extex.interpreter;
 
-import de.dante.extex.hyphenation.HyphenationTable;
+import de.dante.extex.interpreter.context.Context;
+
+import de.dante.util.GeneralException;
 
 /**
  * ...
- * 
- * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ *
+ * @author <a href="gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class EmptyHyphenation implements HyphenationTable {
-
+public interface CountConvertable {
     /**
-     * Creates a new object.
+     * ...
+     *
+     * @param context ...
+     * @param source ...
+     *
+     * @return ...
+     *
+     * @throws GeneralException ...
      */
-    public EmptyHyphenation() {
-        super();
-    }
-
+    public abstract long convertCount(Context context,
+                                      TokenSource source)
+                               throws GeneralException;
 }

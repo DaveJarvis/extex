@@ -19,7 +19,6 @@
 package de.dante.extex.scanner;
 
 
-
 /**
  * This is the interface for a token. A token is a pair of catcode and value.
  * In most cases the value is a single character. Nevertheless it is also
@@ -41,11 +40,18 @@ public interface Token {
     public abstract Catcode getCatcode();
 
     /**
-     * Getter for the value
+     * Getter for the value.
      *
      * @return the value
      */
     public abstract String getValue();
+
+	/**
+	 * Getter for the value.
+	 *
+	 * @return the value
+	 */
+	//public abstract UnicodeChar getCharValue();
 
     /**
      * Compare the current token to another token.

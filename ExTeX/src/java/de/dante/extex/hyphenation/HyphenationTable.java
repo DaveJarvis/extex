@@ -26,4 +26,6 @@ package de.dante.extex.hyphenation;
  */
 public interface HyphenationTable {
 
+	public abstract void add(String word);
+
 }

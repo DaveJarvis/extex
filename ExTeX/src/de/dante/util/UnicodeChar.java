@@ -16,14 +16,20 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  *
  */
-package de.dante.extex.hyphenation;
+package de.dante.util;
 
 /**
- * ...
- * 
- * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @author <a href="gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  */
-public interface Hyphenation {
+public class UnicodeChar {
+
+	private int code = 0;
+	/**
+	 * 
+	 */
+	public UnicodeChar(int code) {
+		super();
+		this.code = code;
+	}
 
 }

@@ -79,6 +79,12 @@ public class NumberedCount extends NamedCount {
         super.advance(prefix, context, source, key);
     }
 
+
+	public long convertCount(Context context, TokenSource source) throws GeneralException {
+		String key = Integer.toString(source.scanNumber());
+		return convertCount(context,source,key);
+	}
+	
     /**
      * @see de.dante.extex.interpreter.Code#expand(de.dante.extex.interpreter.Flags, de.dante.extex.interpreter.context.Context, de.dante.extex.interpreter.TokenSource, de.dante.extex.typesetter.Typesetter)
      */

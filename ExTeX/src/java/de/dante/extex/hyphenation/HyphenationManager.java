@@ -16,9 +16,8 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  *
  */
-package de.dante.extex.hyphenation.impl;
+package de.dante.extex.hyphenation;
 
-import de.dante.extex.hyphenation.HyphenationTable;
 
 /**
  * ...
@@ -26,13 +25,10 @@ import de.dante.extex.hyphenation.HyphenationTable;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class EmptyHyphenation implements HyphenationTable {
+public interface HyphenationManager {
 
-    /**
-     * Creates a new object.
-     */
-    public EmptyHyphenation() {
-        super();
-    }
+	public abstract HyphenationTable getHyphenationTable(String index);
+
+	public abstract HyphenationTable createHyphenationTable(String index);
 
 }

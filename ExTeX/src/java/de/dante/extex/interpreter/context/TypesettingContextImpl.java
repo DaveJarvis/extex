@@ -18,7 +18,7 @@
  */
 package de.dante.extex.interpreter.context;
 
-import de.dante.extex.hyphenation.Hyphenation;
+import de.dante.extex.hyphenation.HyphenationManager;
 import de.dante.extex.interpreter.type.Font;
 
 /**
@@ -38,7 +38,7 @@ public class TypesettingContextImpl implements TypesettingContext {
     private Font font;
 
     /** ... */
-    private Hyphenation hyphenation;
+    private HyphenationManager hyphenation;
 
     /** ... */
     private int angle;
