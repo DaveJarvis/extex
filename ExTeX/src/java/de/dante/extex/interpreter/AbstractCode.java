@@ -93,20 +93,7 @@ public class AbstractCode implements Code {
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
-        expand(prefix, context, source, typesetter);
-    }
-
-    /**
-     * @see de.dante.extex.interpreter.Code#expand(de.dante.extex.interpreter.Flags,
-     *         de.dante.extex.interpreter.context.Context,
-     *         de.dante.extex.interpreter.TokenSource,
-     *         de.dante.extex.typesetter.Typesetter)
-     */
-    public boolean expand(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
-                throws GeneralException {
         prefix.clear();
-        return false;
     }
 
     /**
