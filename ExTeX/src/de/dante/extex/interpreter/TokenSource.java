@@ -81,6 +81,16 @@ public interface TokenSource {
 	public abstract Token scanNextToken() throws GeneralException;
 
 	/**
+	 * Get the next expanded token form the input streams between <code>{</code>
+	 * and <code>}</code>. If the current inputstream is at its end then the
+	 * next one on the streamStack is used until a token could be read. If all
+	 * stream are at the end then <code>null</code> is returned.
+	 * 
+	 * @return the next token or <code>null</code>
+	 */
+	public abstract Tokens scanNextTokens() throws GeneralException;
+
+	/**
 	 * Scan the input stream for tokens making up a number, this is a sequence
 	 * of digits with catcode <tt>OTHER</tt>. The number can be preceeded by
 	 * optional whitespace. Alternate representations for an integer exist.

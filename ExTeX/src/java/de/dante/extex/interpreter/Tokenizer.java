@@ -29,6 +29,6 @@ import de.dante.extex.scanner.Catcode;
  */
 public interface Tokenizer {
     
-    public abstract Catcode getCatcode(char c);
+    public abstract Catcode getCatcode(char c); // TODO auf UnicodeChar umstellen
 
 }
