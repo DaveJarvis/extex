@@ -20,82 +20,70 @@
 package de.dante.extex.interpreter.primitives.font;
 
 import de.dante.extex.interpreter.AbstractCode;
+import de.dante.extex.interpreter.ExpandableCode;
 import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.Theable;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.type.Font;
 import de.dante.extex.interpreter.type.Tokens;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.GeneralException;
-import de.dante.util.configuration.ConfigurationException;
 
 /**
- * This class provides an implementation for a font-primitve.
+ * This class provides an implementation for the primitive <code>\fontname</code>.
+ * <p>
+ * Example:
+ * <pre>
+ * \fontname\myfont
+ * </pre>
  *
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class FontCode extends AbstractCode implements Theable {
-
-    /**
-     * The <code>Font</code>
-     */
-    private Font font;
+public class Fontname extends AbstractCode implements ExpandableCode {
 
     /**
      * Creates a new object.
      *
-     * @param name      the name for debugging
-     * @param fontname  the font for this primitve
+     * @param name the name for debugging
      */
-    public FontCode(final String name, final Font fontname) {
+    public Fontname(final String name) {
 
         super(name);
-        font = fontname;
     }
 
     /**
+     * Get the next <code>ControlSequenceToken</code> with the <code>FontCode</code>
+     * and put the fontname on the stack.
+     *
      * @see de.dante.extex.interpreter.Code#execute(de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context, final TokenSource source, final Typesetter typesetter) throws GeneralException {
+    public void execute(final Flags prefix, final Context context,
+            final TokenSource source, final Typesetter typesetter)
+            throws GeneralException {
 
-        try {
-            context.setTypesettingContext(font);
-        } catch (ConfigurationException e) {
-            throw new GeneralException(e.getMessage());
-        }
+        source.skipSpace();
+        Font font = source.getFont();
+        source.push(new Tokens(context, font.getFontName()));
+
+        prefix.clear();
     }
 
     /**
-     * @see de.dante.extex.interpreter.Theable#the(
+     * @see de.dante.extex.interpreter.ExpandableCode#expand(de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource)
+     *      de.dante.extex.interpreter.TokenSource,
+     *      de.dante.extex.typesetter.Typesetter)
+     * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      */
-    public Tokens the(final Context context, final TokenSource source) throws GeneralException {
+    public void expand(final Flags prefix, final Context context,
+            final TokenSource source, final Typesetter typesetter)
+            throws GeneralException {
 
-        return new Tokens(context, font.getFontName());
+        execute(prefix, context, source, typesetter);
     }
-
-    /**
-     * Return the fontname.
-     * @return  the fontname
-     */
-    public String getFontname() {
-
-        return font.getFontName();
-    }
-
-    /**
-     * Return the font.
-     * @return  the font.
-     */
-    public Font getFont() {
-
-        return font;
-    }
-
 }
