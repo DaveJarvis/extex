@@ -233,7 +233,7 @@ public class Max extends Moritz
         try {
             while (iterator.hasNext()) {
                 primitiveFactory.define((Configuration) iterator.next(),
-                        tokenFactory, context);
+                        tokenFactory, context, logger);
             }
         } catch (GeneralException e) {
             throw new ConfigurationWrapperException(e);
@@ -745,7 +745,7 @@ public class Max extends Moritz
     public Object visitMathShift(final MathShiftToken token, final Object ignore)
             throws GeneralException {
 
-        typesetter.treatMathShift(token, this);
+        typesetter.mathShift(context, this, token);
         return null;
     }
 
@@ -827,7 +827,7 @@ public class Max extends Moritz
     public Object visitSubMark(final SubMarkToken token, final Object ignore)
             throws GeneralException {
 
-        typesetter.treatSubMark(context.getTypesettingContext(), token);
+        typesetter.subscriptMark(context.getTypesettingContext(), token);
         return null;
     }
 
@@ -848,7 +848,7 @@ public class Max extends Moritz
     public Object visitSupMark(final SupMarkToken token, final Object ignore)
             throws GeneralException {
 
-        typesetter.treatSupMark(context.getTypesettingContext(), token);
+        typesetter.superscriptMark(context.getTypesettingContext(), token);
         return null;
     }
 
