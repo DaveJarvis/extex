@@ -28,7 +28,7 @@ import de.dante.util.GeneralException;
  *
  * <doc type="syntax" name="font">
  * <p>
- *  TODO missing syntax documentation
+ *  TODO missing documentation
  * </p>
  * <p>
  *  The formal description is the following:

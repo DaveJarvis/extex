@@ -74,7 +74,9 @@ public interface ListMaker {
 
     /**
      * Close the node list.
-     * @param context TODO
+     *
+     * @param context the typesetter options mapping a fragment of the
+     *  interpreter context
      *
      * @return the node list enclosed in this instance.
      *

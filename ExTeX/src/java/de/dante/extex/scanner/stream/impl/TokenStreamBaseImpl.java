@@ -126,11 +126,11 @@ public class TokenStreamBaseImpl implements TokenStream {
     }
 
     /**
-     * ...
+     * Test for end of file.
      *
-     * @return ...
+     * @return <code>true</code> iff the stream is at its end
      *
-     * @throws GeneralException ...
+     * @throws GeneralException in case of an error; this should not happen
      */
     public boolean isEof() throws GeneralException {
 

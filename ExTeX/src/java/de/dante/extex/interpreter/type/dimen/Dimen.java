@@ -75,7 +75,7 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
      * This method parses the following syntactic entity:
      * <pre class="syntax">
      *   &lang;dimen&rang; </pre>
-     *  TODO missing syntax documentation
+     *  TODO missing documentation
      * </doc>
      *
      *

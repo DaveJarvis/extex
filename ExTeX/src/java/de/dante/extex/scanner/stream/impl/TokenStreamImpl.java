@@ -28,6 +28,7 @@ import java.io.Reader;
 import java.io.StringReader;
 
 import de.dante.extex.i18n.HelpingException;
+import de.dante.extex.i18n.InvalidCharacterException;
 import de.dante.extex.interpreter.Namespace;
 import de.dante.extex.interpreter.Tokenizer;
 import de.dante.extex.main.exception.MainIOException;
@@ -84,12 +85,13 @@ public class TokenStreamImpl extends TokenStreamBaseImpl
     private static final String BUFFERSIZE_ATTRIBUTE = "buffersize";
 
     /**
-     * The constant <tt>CARET_LIMIT</tt> contains the ...
+     * The constant <tt>CARET_LIMIT</tt> contains the threshold for the ^
+     * notation.
      */
     private static final int CARET_LIMIT = 0100; // 0100 = 64
 
     /**
-     * The constant <tt>CR</tt> contains the ...
+     * The constant <tt>CR</tt> contains the one and only CR character.
      */
     private static final UnicodeChar CR = new UnicodeChar('\r');
 
@@ -237,9 +239,11 @@ public class TokenStreamImpl extends TokenStreamBaseImpl
     }
 
     /**
-     * ...
+     * Test for end of file.
      *
-     * @return ...
+     * @return <code>true</code> iff the stream is at its end
+     *
+     * @throws GeneralException in case of an IO error
      */
     public boolean isEof() throws GeneralException {
 
@@ -555,7 +559,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl
 
         state = MID_LINE;
 
-        throw new HelpingException("TTP.InvalidChar");
+        throw new InvalidCharacterException((UnicodeChar) uc);
     }
 
     /**
