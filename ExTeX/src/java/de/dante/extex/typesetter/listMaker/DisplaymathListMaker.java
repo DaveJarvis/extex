@@ -51,7 +51,7 @@ public class DisplaymathListMaker extends MathListMaker {
         HorizontalListNode list = new HorizontalListNode();
 
         getNoades().typeset(list, new MathContext(StyleNoad.DISPLAYSTYLE),
-                context); //TODO genen: ???
+                context); //TODO gene: ???
         return list;
     }
 }
