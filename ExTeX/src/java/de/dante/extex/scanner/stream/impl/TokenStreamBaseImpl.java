@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.dante.extex.interpreter.Tokenizer;
-import de.dante.extex.interpreter.type.Tokens;
+import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.scanner.Token;
 import de.dante.extex.scanner.TokenFactory;
 import de.dante.extex.scanner.stream.TokenStream;
