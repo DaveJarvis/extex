@@ -41,11 +41,6 @@ public abstract class AbstractToken implements Token, Serializable {
     private static final int HASH_FACTOR = 17;
 
     /**
-     * The field <tt>localizer</tt> contains the localizer.
-     */
-    private Localizer localizer = null;
-
-    /**
      * The field <tt>uniCode</tt> contains the Unicode character assigned to
      * this token. Note that <code>null</code> is a legal value.
      */
@@ -143,11 +138,7 @@ public abstract class AbstractToken implements Token, Serializable {
      */
     protected Localizer getLocalizer() {
 
-        if (this.localizer == null) {
-            this.localizer = LocalizerFactory.getLocalizer(Token.class
-                    .getName());
-        }
-        return this.localizer;
+        return LocalizerFactory.getLocalizer(Token.class.getName());
     }
 
     /**
