@@ -248,10 +248,10 @@ public class MathListMaker extends AbstractListMaker implements NoadConsumer {
      *
      * @return the node list enclosed in this instance
      *
-     * @see de.dante.extex.typesetter.ListMaker#close(TypesetterOptions)
+     * @see de.dante.extex.typesetter.ListMaker#complete(TypesetterOptions)
      * @see "TeX -- The Program [719]"
      */
-    public NodeList close(final TypesetterOptions context) {
+    public NodeList complete(final TypesetterOptions context) {
 
         HorizontalListNode list = new HorizontalListNode();
 

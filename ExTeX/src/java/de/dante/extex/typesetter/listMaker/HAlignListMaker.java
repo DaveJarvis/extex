@@ -207,9 +207,9 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#close(TypesetterOptions)
+     * @see de.dante.extex.typesetter.ListMaker#complete(TypesetterOptions)
      */
-    public NodeList close(final TypesetterOptions context)
+    public NodeList complete(final TypesetterOptions context)
             throws GeneralException {
 
         NodeList result = new VerticalListNode();
@@ -350,7 +350,7 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
 
         source.push(format.getPost()); //TODO gene: wrong! process the tokens before closing
 
-        line[col] = new Cell(super.close((TypesetterOptions) context));
+        line[col] = new Cell(super.complete((TypesetterOptions) context));
         wd[col].max(line[col].getList().getWidth());
         setNodes(new HorizontalListNode());
         col++;

@@ -61,9 +61,9 @@ public class DisplaymathListMaker extends MathListMaker implements EqConsumer {
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#close(TypesetterOptions)
+     * @see de.dante.extex.typesetter.ListMaker#complete(TypesetterOptions)
      */
-    public NodeList close(final TypesetterOptions context) {
+    public NodeList complete(final TypesetterOptions context) {
 
         HorizontalListNode list = new HorizontalListNode();
 
@@ -71,7 +71,7 @@ public class DisplaymathListMaker extends MathListMaker implements EqConsumer {
                 new MathContext(StyleNoad.DISPLAYSTYLE, context), context);
 
         if (eqno != null) {
-            //TODO gene: unimplemented
+            //TODO gene: eqno unimplemented
             throw new RuntimeException("unimplemented");
         }
         return list;
@@ -91,6 +91,9 @@ public class DisplaymathListMaker extends MathListMaker implements EqConsumer {
      *
      * @param left the indicator on which side to produce the equation number.
      *  A value <code>true</code> indicates that the left side should be used.
+     *
+     * @throws CantUseInException in case that the eqnumber has already been
+     *  started
      *
      * @see de.dante.extex.typesetter.listMaker.math.EqConsumer#switchToNumber(boolean)
      */

@@ -102,9 +102,9 @@ public class Max1 extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.Typesetter#close(TypesetterOptions)
+         * @see de.dante.extex.typesetter.Typesetter#complete(TypesetterOptions)
          */
-        public NodeList close(final TypesetterOptions context) {
+        public NodeList complete(final TypesetterOptions context) {
 
             return null;
         }

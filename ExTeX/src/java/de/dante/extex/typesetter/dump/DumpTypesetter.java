@@ -75,11 +75,11 @@ public class DumpTypesetter extends TypesetterImpl {
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#close(TypesetterOptions)
+     * @see de.dante.extex.typesetter.ListMaker#complete(TypesetterOptions)
      */
-    public NodeList close(TypesetterOptions context) throws GeneralException {
+    public NodeList complete(TypesetterOptions context) throws GeneralException {
 
-        return super.close(context);
+        return super.complete(context);
     }
 
     /**

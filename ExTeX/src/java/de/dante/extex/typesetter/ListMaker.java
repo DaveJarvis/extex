@@ -89,7 +89,7 @@ public interface ListMaker {
      *
      * @throws GeneralException in case of an error
      */
-    NodeList close(TypesetterOptions context) throws GeneralException;
+    NodeList complete(TypesetterOptions context) throws GeneralException;
 
     /**
      * Access the last node on the list.

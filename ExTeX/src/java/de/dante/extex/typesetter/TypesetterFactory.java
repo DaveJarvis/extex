@@ -20,9 +20,9 @@
 package de.dante.extex.typesetter;
 
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.typesetter.hyphenator.Hyphenator;
 import de.dante.extex.typesetter.ligatureBuilder.LigatureBuilder;
 import de.dante.extex.typesetter.pageBuilder.PageBuilder;
-import de.dante.extex.typesetter.paragraphBuilder.Hyphenator;
 import de.dante.extex.typesetter.paragraphBuilder.ParagraphBuilder;
 import de.dante.util.configuration.Configuration;
 import de.dante.util.configuration.ConfigurationException;

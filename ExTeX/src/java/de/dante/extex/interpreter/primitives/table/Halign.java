@@ -168,7 +168,7 @@ public class Halign extends AbstractAlign implements Boxable {
         }
 
         source.executeGroup();
-        return typesetter.close((TypesetterOptions) context);
+        return typesetter.complete((TypesetterOptions) context);
     }
 
 }
