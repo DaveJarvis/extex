@@ -108,8 +108,7 @@ public class Char extends AbstractCode implements ExpandableCode {
             throws GeneralException {
 
         UnicodeChar uc = source.scanCharacterCode();
-        Catcode cc = context.getTokenizer().getCatcode(uc);
-        Token t = context.getTokenFactory().createToken(cc, uc,
+        Token t = context.getTokenFactory().createToken(Catcode.OTHER, uc,
                 context.getNamespace());
         source.push(t);
     }
