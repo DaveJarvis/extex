@@ -88,11 +88,21 @@ public class ImmutableDimen extends Dimen implements Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.GlueComponent#set(de.dante.extex.interpreter.context.Context, de.dante.extex.interpreter.TokenSource)
+     * @see de.dante.extex.interpreter.type.GlueComponent#set(de.dante.extex.interpreter.context.Context,
+     *      de.dante.extex.interpreter.TokenSource)
      */
-
     public void set(final Context context, final TokenSource source)
             throws GeneralException {
+
+        throw new RuntimeException("Unable to set an immutable object");
+    }
+
+    /**
+     * @see de.dante.extex.interpreter.type.GlueComponent#set(de.dante.extex.interpreter.context.Context,
+     *      de.dante.extex.interpreter.TokenSource, boolean)
+     */
+    protected void set(final Context context, final TokenSource source,
+            final boolean fixed) throws GeneralException {
 
         throw new RuntimeException("Unable to set an immutable object");
     }
