@@ -69,13 +69,6 @@ public class HorizontalListNode extends AbstractNodeList implements NodeList {
 	}
 
 	/**
-	 * @see de.dante.extex.typesetter.Node#getType()
-	 */
-	public String getType() {
-		return "horizontallist";
-	}
-
-	/**
 	 * Is a linebreak occured 
 	 */
 	private boolean linebreak = false;

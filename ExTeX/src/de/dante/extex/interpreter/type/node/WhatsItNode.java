@@ -53,12 +53,4 @@ public class WhatsItNode extends AbstractNode implements Node {
 	public Object visit(NodeVisitor visitor, Object value, Object value2) throws GeneralException {
 		return visitor.visitWhatsIt(value, value2);
 	}
-
-	/**
-	 * @see de.dante.extex.typesetter.Node#getType()
-	 */
-	public String getType() {
-		return "whatsit";
-	}
-
 }

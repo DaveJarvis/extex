@@ -69,13 +69,6 @@ public class VerticalListNode extends AbstractNodeList implements NodeList {
 	}
 
 	/**
-	 * @see de.dante.extex.typesetter.Node#getType()
-	 */
-	public String getType() {
-		return "verticallist";
-	}
-
-	/**
 	 * Propagate the size
 	 */
 	protected void propagateSizes(Node node) {

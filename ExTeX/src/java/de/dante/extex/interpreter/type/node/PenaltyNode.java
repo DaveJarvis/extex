@@ -84,11 +84,4 @@ public class PenaltyNode extends AbstractNode implements Node, Discartable {
 	public Object visit(final NodeVisitor visitor, final Object value, final Object value2) throws GeneralException {
 		return visitor.visitPenalty(value, value2);
 	}
-	/**
-	 * @see de.dante.extex.typesetter.Node#getType()
-	 */
-	public String getType() {
-		return "penalty";
-	}
-
 }

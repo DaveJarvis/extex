@@ -88,6 +88,9 @@ public class GlueNode extends AbstractNode implements Node, Discartable {
 	public void toString(final StringBuffer sb, String prefix) {
 		sb.append("\\skip ");
 		sb.append(theSize.toString());
+		
+		// TODO delete after test
+		sb.append(" (" + theSize.toPT() + ")");
 	}
 
 	/**
@@ -96,12 +99,5 @@ public class GlueNode extends AbstractNode implements Node, Discartable {
 	 */
 	public Object visit(final NodeVisitor visitor, final Object value, final Object value2) throws GeneralException {
 		return visitor.visitGlue(value, value2);
-	}
-
-	/**
-	 * @see de.dante.extex.typesetter.Node#getType()
-	 */
-	public String getType() {
-		return "glue";
 	}
 }

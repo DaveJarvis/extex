@@ -68,10 +68,4 @@ public class AfterMathNode extends AbstractNode implements Node, Discartable {
 		return visitor.visitAfterMath(value, value2);
 	}
 
-	/**
-	 * @see de.dante.extex.typesetter.Node#getType()
-	 */
-	public String getType() {
-		return "aftermath";
-	}
 }

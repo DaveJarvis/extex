@@ -53,13 +53,6 @@ public class Box extends AbstractNodeList implements Serializable, NodeList {
 	}
 
 	/**
-	 * @see de.dante.extex.typesetter.Node#getType()
-	 */
-	public String getType() {
-		return "box";
-	}
-
-	/**
 	 * Propagate the size
 	 */
 	protected void propagateSizes(Node node) {

@@ -105,9 +105,4 @@ public interface Node {
 	 */
 	Object visit(NodeVisitor visitor, Object value, Object value2) throws GeneralException;
 
-	/**
-	 * Return the type of the node as <code>String</code>
-	 */
-	String getType();
-
 }

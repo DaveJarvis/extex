@@ -77,12 +77,4 @@ public class SpaceNode extends AbstractNode implements Node {
 	public Object visit(final NodeVisitor visitor, final Object value, final Object value2) throws GeneralException {
 		return visitor.visitSpace(value, value2);
 	}
-
-	/**
-	 * @see de.dante.extex.typesetter.Node#getType()
-	 */
-	public String getType() {
-		return "space";
-	}
-
 }

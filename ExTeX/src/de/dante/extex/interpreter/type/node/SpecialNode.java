@@ -47,12 +47,4 @@ public class SpecialNode extends WhatsItNode implements Node {
 	public String getText() {
 		return text;
 	}
-
-	/**
-	 * @see de.dante.extex.typesetter.Node#getType()
-	 */
-	public String getType() {
-		return "special";
-	}
-
 }

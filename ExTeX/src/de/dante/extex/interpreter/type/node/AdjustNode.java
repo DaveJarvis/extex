@@ -71,10 +71,4 @@ public class AdjustNode extends AbstractNode implements Node {
 		return visitor.visitAdjust(value, value2);
 	}
 
-	/**
-	 * @see de.dante.extex.typesetter.Node#getType()
-	 */
-	public String getType() {
-		return "adjust";
-	}
 }

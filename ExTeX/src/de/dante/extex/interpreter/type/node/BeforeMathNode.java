@@ -65,10 +65,4 @@ public class BeforeMathNode extends AbstractNode implements Node, Discartable {
 		return visitor.visitBeforeMath(value, value2);
 	}
 
-	/**
-	 * @see de.dante.extex.typesetter.Node#getType()
-	 */
-	public String getType() {
-		return "beforemath";
-	}
 }

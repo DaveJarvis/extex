@@ -58,13 +58,6 @@ public class UnsetNode extends AbstractNodeList implements Node {
 	}
 
 	/**
-	 * @see de.dante.extex.typesetter.Node#getType()
-	 */
-	public String getType() {
-		return "unset";
-	}
-
-	/**
 	 * Propagate the size
 	 */
 	protected void propagateSizes(Node node) {

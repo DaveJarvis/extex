@@ -104,12 +104,4 @@ public class RuleNode extends AbstractNode implements Node {
 	public Object visit(final NodeVisitor visitor, final Object value, final Object value2) throws GeneralException {
 		return visitor.visitRule(value, value2);
 	}
-
-	/**
-	 * @see de.dante.extex.typesetter.Node#getType()
-	 */
-	public String getType() {
-		return "rule";
-	}
-
 }
