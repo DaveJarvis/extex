@@ -242,6 +242,10 @@ public class Max extends Moritz implements Interpreter,
         this.typesetter = theTypesetter;
     }
 
+    public Typesetter getTypesetter() {
+        return this.typesetter;
+    }
+
     /**
      * @see de.dante.extex.interpreter.Interpreter#loadFormat(java.lang.String)
      */
