@@ -608,8 +608,8 @@ public class Max extends Moritz
             throws ConfigurationException {
 
         super.setTokenStreamFactory(factory);
-        context.setStandardTokenStream(factory
-                .newInstance(new InputStreamReader(System.in)));
+//        context.setStandardTokenStream(factory
+//                .newInstance(new InputStreamReader(System.in)));
     }
 
     /**
