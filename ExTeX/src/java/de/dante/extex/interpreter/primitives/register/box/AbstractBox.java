@@ -62,9 +62,9 @@ public abstract class AbstractBox extends AbstractCode implements Serializable {
         String name = source.scanRegisterName();
 
         if (Namespace.SUPPORT_NAMESPACE_DIMEN) {
-            return context.getNamespace() + "box" + name;
+            return context.getNamespace() + "#box#" + name;
         } else {
-            return "box" + name;
+            return "box#" + name;
         }
     }
 
