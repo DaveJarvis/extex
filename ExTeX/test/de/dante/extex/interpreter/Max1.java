@@ -20,6 +20,7 @@ package de.dante.extex.interpreter;
 
 import junit.framework.TestCase;
 import de.dante.extex.documentWriter.DocumentWriter;
+import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.context.TypesettingContext;
 import de.dante.extex.interpreter.type.Box;
 import de.dante.extex.interpreter.type.Count;
@@ -224,7 +225,7 @@ public class Max1 extends TestCase {
         /**
          * @see de.dante.extex.typesetter.Typesetter#finish()
          */
-        public void finish() {
+        public void finish(Context context) {
         }
 
         /**

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003  Gerd Neugebauer
+ * Copyright (C) 2003-2004 Gerd Neugebauer
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -34,7 +34,7 @@ public class InnerVerticalListMaker extends VerticalListMaker
      *
      * @param manager the manager to ask for global changes
      */
-    public InnerVerticalListMaker(Manager manager) {
+    public InnerVerticalListMaker(final Manager manager) {
         super(manager);
     }
 

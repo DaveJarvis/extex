@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2004 Gerd Neugebauer
+ * Copyright (C) 2004 Gerd Neugebauer
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -18,31 +18,29 @@
  */
 package de.dante.util.file;
 
-import de.dante.util.configuration.ConfigurationException;
-
-import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.OutputStreamWriter;
 
 /**
- * This interface describes a class which is ab le to find files of different
- * kinds for reading.
- * It is not determined how the search for files is performed.
- * Searching for the given file name, augmenting extension and path, or using
- * an external library &ndash; like kpathsea &ndash; are left to possible
- * implementations. Also an interaction with the user can be envisioned.
+ * ...
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface FileFinder {
+public interface OutFileFactory {
+
     /**
-     * Find a file which can be opened for reading.
+     * ...
      *
-     * @param name the base name of the file
-     * @param type the type, i.e. the extension
+     * @param name ...
+     * @param type ...
      *
-     * @return the file or <code>null</code> if none could be found
+     * @return ...
      *
-     * @throws ConfigurationException in case of an exception
+     * @throws FileNotFoundException in case that the outpout file coud not be
+     *             opened
      */
-    File findFile(String name, String type) throws ConfigurationException;
+    OutputStreamWriter newInstance(String name, String type)
+        throws FileNotFoundException;
+
 }
