@@ -688,7 +688,7 @@ public class TFMReader implements FontMetric {
     private TFMFixWord[] depthTable;
 
     /**
-     * The italic corrections of characters in <code>charAuxTab<code>
+     * The italic corrections of characters in <code>charAuxTab</code>
      */
     private TFMFixWord[] italicTable;
 
