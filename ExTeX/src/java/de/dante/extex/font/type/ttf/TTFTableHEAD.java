@@ -24,7 +24,7 @@ import java.text.DateFormat;
 
 import org.jdom.Element;
 
-import de.dante.util.Fixed32;
+import de.dante.extex.font.type.Fixed32;
 import de.dante.util.XMLConvertible;
 import de.dante.util.file.random.RandomAccessR;
 

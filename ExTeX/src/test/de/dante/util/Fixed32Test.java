@@ -19,6 +19,7 @@
 
 package de.dante.util;
 
+import de.dante.extex.font.type.Fixed32;
 import junit.framework.TestCase;
 
 /**
