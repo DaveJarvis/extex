@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.format.dvi;
+package de.dante.extex.format.dvi.command;
 
 import java.io.IOException;
 
@@ -27,21 +27,24 @@ import de.dante.util.configuration.ConfigurationException;
 import de.dante.util.file.random.RandomAccessR;
 
 /**
- * Interface for a DVI interpreter.
+ * Interface for a DVI command to read.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public interface DviInterpreter {
+public interface DviReadCommand {
 
     /**
-     * Interpreter for DVI
-     * @param rar   the input
+     * Read a dvi vommand.
+     * @param rar       the input
+     * @param opcode    the opcode
+     * @param sp        the start pointer
+     * @return Returns the dvi command
      * @throws IOException in case of a IO-error.
-     * @throws DVIException in case of a DVI-error.
+     * @throws DviException in case of a DVI-error.
      * @throws FontException in case of a font-error.
      * @throws ConfigurationException from the config-system.
      */
-    void interpret(RandomAccessR rar) throws IOException, DviException,
-            FontException, ConfigurationException;
+    DviCommand read(RandomAccessR rar, int opcode, int sp) throws IOException,
+            DviException, FontException, ConfigurationException;
 }

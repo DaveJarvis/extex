@@ -1,38 +1,40 @@
 /*
  * Copyright (C) 2005 The ExTeX Group and individual authors listed below
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
  *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
 
-package de.dante.util.font;
+package de.dante.extex.format.dvi;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
+import java.io.LineNumberReader;
+import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Properties;
+import java.util.TreeMap;
 
-import org.jdom.Document;
-import org.jdom.output.XMLOutputter;
-
+import junit.framework.TestCase;
 import de.dante.extex.font.FontFactory;
-import de.dante.extex.font.type.vf.VFFont;
 import de.dante.util.configuration.Configuration;
 import de.dante.util.configuration.ConfigurationClassNotFoundException;
 import de.dante.util.configuration.ConfigurationException;
@@ -40,98 +42,103 @@ import de.dante.util.configuration.ConfigurationFactory;
 import de.dante.util.configuration.ConfigurationInstantiationException;
 import de.dante.util.configuration.ConfigurationMissingAttributeException;
 import de.dante.util.configuration.ConfigurationNoSuchMethodException;
-import de.dante.util.file.random.RandomAccessInputStream;
+import de.dante.util.file.random.RandomAccessInputFile;
 import de.dante.util.resource.ResourceFinder;
 import de.dante.util.resource.ResourceFinderFactory;
 
 /**
- * Convert a VF-file to a XML-file
+ * Test the DviType class.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public final class VF2XML {
+
+public class DviTypeTest extends TestCase {
 
     /**
-     * private: no instance
+     * path
      */
-    private VF2XML() {
+    private static final String PATH = "src/test/data/dvi/";
 
+    /**
+     * file
+     */
+    private static final String FILE = "lettrine";
+
+    /**
+     * @see junit.framework.TestCase#setUp()
+     */
+    protected void setUp() throws Exception {
+
+        String file = PATH + FILE + ".dvi";
+        RandomAccessInputFile rar = new RandomAccessInputFile(file);
+
+        PrintWriter writer = new PrintWriter(new BufferedOutputStream(
+                new FileOutputStream(PATH + FILE + ".tmp")));
+        DviType dvitype = new DviType(writer, makeFontFactory());
+
+        dvitype.interpret(rar);
+        rar.close();
+        writer.close();
     }
 
     /**
-     * parameter
+     * test the dviXml interpreter
+     * @throws IOException if a IO-error occurs
      */
-    private static final int PARAMETER = 2;
+    public void test01() throws IOException {
+
+        LineNumberReader inorg = new LineNumberReader(new FileReader(PATH
+                + FILE + ".dvitype"));
+        LineNumberReader innew = new LineNumberReader(new FileReader(PATH
+                + FILE + ".tmp"));
+
+        Map maporg = new TreeMap();
+        Map mapnew = new TreeMap();
+
+        readFile(inorg, maporg);
+        readFile(innew, mapnew);
+
+        inorg.close();
+        innew.close();
+
+        Iterator it = maporg.keySet().iterator();
+        while (it.hasNext()) {
+            Integer key = (Integer) it.next();
+            String lineorg = (String) maporg.get(key);
+            String linenew = (String) mapnew.get(key);
+            assertEquals(lineorg, linenew);
+        }
+    }
+
+    // --------------------------------------
+    // --------------------------------------
+    // --------------------------------------
 
     /**
-     * main
-     * @param args      the comandlinearguments
-     * @throws Exception  in case of an error
+     * @param in    the input
+     * @param map   the map
+     * @throws IOException
      */
-    public static void main(final String[] args) throws Exception {
+    private void readFile(final LineNumberReader in, final Map map)
+            throws IOException {
 
-        if (args.length != PARAMETER) {
-            System.err
-                    .println("java de.dante.util.font.VF2XML <vf-file> <xml-file>");
-            System.exit(1);
+        // read all line with start with a number "111:..."
+        String line;
+        while ((line = in.readLine()) != null) {
+            if (line.matches("^[0-9]*:.*")) {
+                int pos = line.indexOf(":");
+                Integer key = new Integer(line.substring(0, pos));
+                map.put(key, line.trim());
+            }
         }
-
-        File xmlfile = new File(args[1]);
-        String fontname = args[0].replaceAll("\\.vf|\\.VF", "");
-
-        Configuration config = new ConfigurationFactory()
-                .newInstance("config/extex.xml");
-
-        Configuration cfgfonts = config.getConfiguration("Fonts");
-
-        Properties prop = new Properties();
-        try {
-            InputStream in = new FileInputStream(".extex");
-            prop.load(in);
-        } catch (Exception e) {
-            prop.setProperty("extex.fonts", "src/font");
-        }
-
-        ResourceFinder finder = (new ResourceFinderFactory())
-                .createResourceFinder(cfgfonts.getConfiguration("Resource"),
-                        null, prop);
-
-        // EncFactory ef = new EncFactory(finder);
-
-        // vf-file
-        InputStream vfin = finder.findResource(args[0], "");
-
-        if (vfin == null) {
-            System.err.println(args[0] + " not found!");
-            System.exit(1);
-        }
-
-        // psfonts.map
-        InputStream psin = finder.findResource("psfonts.map", "");
-
-        if (psin == null) {
-            System.err.println("psfonts.map not found!");
-            System.exit(1);
-        }
-        // PSFontsMapReader psfm = new PSFontsMapReader(psin);
-
-        // RandomAccessInputFileDebug rar = new RandomAccessInputFileDebug("src/font/aer12.vf");
-
-        VFFont font = new VFFont(new RandomAccessInputStream(vfin), fontname,
-                makeFontFactory());
-        //        VFFont font = new VFFont(rar, fontname);
-
-        //font.setFontMapEncoding(psfm, ef);
-
-        // write to efm-file
-        XMLOutputter xmlout = new XMLOutputter("   ", true);
-        BufferedOutputStream out = new BufferedOutputStream(
-                new FileOutputStream(xmlfile));
-        Document doc = new Document(font.toXML());
-        xmlout.output(doc, out);
-        out.close();
     }
+
+    /**
+     * The field <tt>props</tt> contains the merged properties from the
+     * system properties and the properties loaded from <tt>.extex-test</tt>.
+     */
+    private Properties props = null;
 
     /**
      * make a font factroy
@@ -139,7 +146,7 @@ public final class VF2XML {
      * @throws Exception if an error occurs.
      */
 
-    private static FontFactory makeFontFactory() throws Exception {
+    private FontFactory makeFontFactory() throws Exception {
 
         Configuration config = new ConfigurationFactory()
                 .newInstance("config/extex.xml");
@@ -160,7 +167,7 @@ public final class VF2XML {
      * @throws ConfigurationException in case that some kind of problems have
      * been detected in the configuration
      */
-    protected static FontFactory makeFontFactory(final Configuration config)
+    protected FontFactory makeFontFactory(final Configuration config)
             throws ConfigurationException {
 
         FontFactory fontFactory;
@@ -208,29 +215,32 @@ public final class VF2XML {
      *
      * @return the props
      */
-    private static Properties getProps() {
+    private Properties getProps() {
 
         if (props == null) {
             props = System.getProperties();
 
-            File file = new File(".extex");
+            File file = new File(".extex-test");
             if (file.canRead()) {
                 try {
                     FileInputStream inputStream = new FileInputStream(file);
                     props.load(inputStream);
                     inputStream.close();
-                } catch (IOException e) {
+                } catch (Exception e) {
                     // ignored on purpose
+                    e.printStackTrace();
                 }
             }
         }
-        return (Properties) props.clone();
+        return (Properties) this.props.clone();
     }
 
     /**
-     * The field <tt>props</tt> contains the merged properties from the
-     * system properties and the properties loaded from <tt>.extex-test</tt>.
+     * test DviXml
+     * @param args  the commandline
      */
-    private static Properties props = null;
+    public static void main(final String[] args) {
 
+        junit.textui.TestRunner.run(DviXmlTest.class);
+    }
 }

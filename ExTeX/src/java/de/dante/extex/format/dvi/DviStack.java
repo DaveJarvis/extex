@@ -80,4 +80,13 @@ public class DviStack {
 
         stack.removeAllElements();
     }
+
+    /**
+     * Returns the size (depth) of the stack.
+     * @return Returns the size (depth) of the stack.
+     */
+    public int size() {
+
+        return stack.size();
+    }
 }

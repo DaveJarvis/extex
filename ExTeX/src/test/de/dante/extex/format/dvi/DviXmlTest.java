@@ -77,8 +77,10 @@ public class DviXmlTest extends TestCase {
         RandomAccessInputFile rar = new RandomAccessInputFile(file);
 
         DviXml dvixml = new DviXml(root, makeFontFactory());
+        dvixml.setShowPT(true);
 
         dvixml.interpret(rar);
+        rar.close();
 
         // write to efm-file
         if (WRITEXML) {
@@ -107,8 +109,8 @@ public class DviXmlTest extends TestCase {
      */
     public void testInterpretpostpost() {
 
-        assertEquals("20510", findAttrElement("postpost", "q"));
-        assertEquals("2", findAttrElement("postpost", "identifies"));
+        assertEquals("20510", findAttrElement("post_post", "q"));
+        assertEquals("2", findAttrElement("post_post", "identifies"));
     }
 
     /**

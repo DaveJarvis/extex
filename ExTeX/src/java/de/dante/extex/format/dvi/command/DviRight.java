@@ -17,31 +17,55 @@
  *
  */
 
-package de.dante.extex.format.dvi;
-
-import java.io.IOException;
-
-import de.dante.extex.font.exception.FontException;
-import de.dante.extex.format.dvi.exception.DviException;
-import de.dante.util.configuration.ConfigurationException;
-import de.dante.util.file.random.RandomAccessR;
+package de.dante.extex.format.dvi.command;
 
 /**
- * Interface for a DVI interpreter.
+ * DVI: right
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public interface DviInterpreter {
+
+public class DviRight extends DviCommand {
 
     /**
-     * Interpreter for DVI
-     * @param rar   the input
-     * @throws IOException in case of a IO-error.
-     * @throws DVIException in case of a DVI-error.
-     * @throws FontException in case of a font-error.
-     * @throws ConfigurationException from the config-system.
+     * the value
      */
-    void interpret(RandomAccessR rar) throws IOException, DviException,
-            FontException, ConfigurationException;
+    private int value;
+
+    /**
+     * Create a new object.
+     * @param opc   the opcode
+     * @param sp    the start pointer
+     * @param v     the value
+     */
+    public DviRight(final int opc, final int sp, final int v) {
+
+        super(opc, sp);
+        value = v;
+    }
+
+    /**
+     * Returns the value.
+     * @return Returns the value.
+     */
+    public int getValue() {
+
+        return value;
+    }
+
+    /**
+     * right1
+     */
+    private static final int RIGHT1 = 143;
+
+    /**
+     * @see de.dante.extex.format.dvi.command.DviCommand#getName()
+     */
+    public String getName() {
+
+        StringBuffer buf = new StringBuffer();
+        buf.append("right").append(getOpcode() - RIGHT1 + 1);
+        return buf.toString();
+    }
 }

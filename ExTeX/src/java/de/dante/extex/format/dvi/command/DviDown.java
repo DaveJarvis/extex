@@ -17,28 +17,56 @@
  *
  */
 
-package de.dante.extex.format.dvi;
-
-import java.io.IOException;
-
-import de.dante.extex.format.dvi.exception.DviException;
-import de.dante.util.file.random.RandomAccessR;
+package de.dante.extex.format.dvi.command;
 
 /**
- * Interface for a DVI interpreter step.
+ * DVI: down
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public interface DviInterpreterStep {
+
+public class DviDown extends DviCommand {
 
     /**
-     * Interpreter for DVI
-     * @param rar       the input
-     * @param opcode    the opcode
-     * @throws IOException in case of a IO-error.
-     * @throws DVIException in case of a DVI-error.
+     * the value
      */
-    void interpret(RandomAccessR rar, int opcode) throws IOException,
-            DviException;
+    private int value;
+
+    /**
+     * Create a new object.
+     * @param opc   the opcode
+     * @param sp        the start pointer
+     * @param v     the value
+     */
+    public DviDown(final int opc, final int sp, final int v) {
+
+        super(opc, sp);
+        value = v;
+    }
+
+    /**
+     * Returns the value.
+     * @return Returns the value.
+     */
+    public int getValue() {
+
+        return value;
+    }
+
+    /**
+     * down1
+     */
+    private static final int DOWN1 = 157;
+
+    /**
+     * @see de.dante.extex.format.dvi.command.DviCommand#getName()
+     */
+    public String getName() {
+
+        StringBuffer buf = new StringBuffer();
+        buf.append("down").append(getOpcode() - DOWN1 + 1);
+        return buf.toString();
+    }
+
 }

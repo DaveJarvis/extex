@@ -115,7 +115,7 @@ public abstract class EFMFount implements ModifiableFount, Serializable {
         }
         Count scalefactor = sf;
         // scale factor = 0 -> 1000
-        if (sf == null) {
+        if (sf == null || sf.getValue() == 0) {
             scalefactor = new Count(PERMILLE_FACTOR);
         }
         letterspaced = ls;
