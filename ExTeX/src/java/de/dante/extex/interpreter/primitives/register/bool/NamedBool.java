@@ -157,11 +157,11 @@ public class NamedBool extends AbstractAssignment
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.bool.BoolConvertible#convertBoot(
+     * @see de.dante.extex.interpreter.type.bool.BoolConvertible#convertBool(
      *     de.dante.extex.interpreter.context.Context,
      *     de.dante.extex.interpreter.TokenSource)
      */
-    public Bool convertBoot(final Context context, final TokenSource source)
+    public Bool convertBool(final Context context, final TokenSource source)
             throws GeneralException {
 
         if (context instanceof ContextExtension) {

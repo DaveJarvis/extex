@@ -39,6 +39,6 @@ public interface BoolConvertible {
      * @return the converted value
      * @throws GeneralException in case of an error
      */
-    Bool convertBoot(Context context, TokenSource source)
+    Bool convertBool(Context context, TokenSource source)
             throws GeneralException;
 }

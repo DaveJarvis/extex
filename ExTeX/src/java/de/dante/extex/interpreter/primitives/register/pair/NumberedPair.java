@@ -29,7 +29,7 @@ import de.dante.util.GeneralException;
  *
  * <p>
  * All features are inherited from
- * {@link de.dante.extex.interpreter.type.pair.NamedPair pair}. Just the key
+ * {@link de.dante.extex.interpreter.primitives.register.pair.NamedPair pair}. Just the key
  * has to be provided under which this Pair has to be stored. This key is
  * constructed from the name, a hash mark and the running number.
  * </p>
