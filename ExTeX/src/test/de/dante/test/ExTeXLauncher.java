@@ -35,9 +35,9 @@ import de.dante.extex.ExTeX;
 import de.dante.extex.interpreter.ErrorHandler;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.logging.LogFormatter;
 import de.dante.extex.main.errorHandler.editHandler.EditHandler;
 import de.dante.extex.main.exception.MainException;
+import de.dante.extex.main.logging.LogFormatter;
 import de.dante.extex.scanner.type.Token;
 import de.dante.util.GeneralException;
 
