@@ -53,7 +53,7 @@ public class Endgroup extends AbstractCode {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        context.closeGroup(typesetter);
+        context.closeGroup(typesetter, source);
         prefix.clear();
     }
 

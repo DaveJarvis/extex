@@ -25,6 +25,7 @@ import de.dante.extex.hyphenation.HyphenationTable;
 import de.dante.extex.i18n.GeneralHelpingException;
 import de.dante.extex.interpreter.Code;
 import de.dante.extex.interpreter.Interaction;
+import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.Tokenizer;
 import de.dante.extex.interpreter.type.Box;
 import de.dante.extex.interpreter.type.Count;
@@ -543,7 +544,7 @@ public interface Context extends Serializable {
      *
      * @throws GeneralException in case of an error
      */
-    void closeGroup(Typesetter typesetter) throws GeneralException;
+    void closeGroup(Typesetter typesetter, TokenSource source) throws GeneralException;
 
     /**
      * ...
