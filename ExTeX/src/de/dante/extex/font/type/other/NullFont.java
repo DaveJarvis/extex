@@ -19,9 +19,9 @@
 
 package de.dante.extex.font.type.other;
 
+import de.dante.extex.font.Glyph;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.font.Font;
-import de.dante.extex.interpreter.type.font.Glyph;
 import de.dante.extex.interpreter.type.glue.Glue;
 import de.dante.util.UnicodeChar;
 

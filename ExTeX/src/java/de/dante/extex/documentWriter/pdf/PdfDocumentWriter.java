@@ -38,10 +38,10 @@ import org.apache.fop.pdf.PDFResources;
 import org.apache.fop.pdf.PDFStream;
 
 import de.dante.extex.documentWriter.DocumentWriter;
+import de.dante.extex.font.FontFile;
+import de.dante.extex.font.Glyph;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.font.Font;
-import de.dante.extex.interpreter.type.font.FontFile;
-import de.dante.extex.interpreter.type.font.Glyph;
 import de.dante.extex.interpreter.type.node.CharNode;
 import de.dante.extex.interpreter.type.node.GlueNode;
 import de.dante.extex.interpreter.type.node.HorizontalListNode;

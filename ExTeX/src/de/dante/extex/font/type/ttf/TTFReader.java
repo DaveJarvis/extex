@@ -46,8 +46,8 @@ import org.apache.batik.svggen.font.table.TableDirectory;
 import org.apache.batik.svggen.font.table.TableFactory;
 import org.jdom.Element;
 
+import de.dante.extex.font.Kerning;
 import de.dante.extex.font.type.FontMetric;
-import de.dante.extex.interpreter.type.font.Kerning;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 
 /**

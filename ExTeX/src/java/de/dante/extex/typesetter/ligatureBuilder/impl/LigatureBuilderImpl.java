@@ -19,8 +19,8 @@
 
 package de.dante.extex.typesetter.ligatureBuilder.impl;
 
+import de.dante.extex.font.Glyph;
 import de.dante.extex.interpreter.type.font.Font;
-import de.dante.extex.interpreter.type.font.Glyph;
 import de.dante.extex.interpreter.type.node.CharNode;
 import de.dante.extex.interpreter.type.node.LigatureNode;
 import de.dante.extex.typesetter.Node;

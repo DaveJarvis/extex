@@ -44,6 +44,7 @@ public interface FontFactory {
      * @return the Font, or <code>null</code>, if the font are not aviable
      * @throws GeneralException ...
      * @throws ConfigurationException ...
+     * @deprecated
      */
     Font getInstance(String name, Dimen size, final Glue letterspaced,
             boolean ligatures) throws GeneralException, ConfigurationException;

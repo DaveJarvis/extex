@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -17,54 +17,55 @@
  *
  */
 
-package de.dante.extex.interpreter.type.font;
+package de.dante.extex.font;
 
-import de.dante.extex.font.type.Fount;
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.util.UnicodeChar;
+import java.io.File;
+
 
 /**
- * Font Interface
+ * Abstract class for a Font-file.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public interface Font extends Fount {
+public abstract class AbstractFontFile implements FontFile {
 
     /**
-     * Return the hyphenationchar
-     *
-     * @return the hypenationchar
+     * Create a new object
+     * @param file  the external file
      */
-    UnicodeChar getHyphenChar();
+    AbstractFontFile(final File file) {
+
+        super();
+        externalfile = file;
+    }
 
     /**
-     * Return the skewchar
-     *
-     * @return the skewxchar
+     * the external file
      */
-    UnicodeChar getSkewChar();
+    private File externalfile;
 
     /**
-     * Set the char for hyphenation
-     *
-     * @param hyphen the char to set
+     * Return the <code>File</code> for the external fontfile
+     * @return  the external font-file
      */
-    void setHyphenChar(UnicodeChar hyphen);
+    public File getFile() {
+
+        return externalfile;
+    }
 
     /**
-     * Set the skewchar
-     *
-     * @param skew the new skewchar
+     * @param file The externalfile to set.
      */
-    void setSkewChar(UnicodeChar skew);
+    public void setFile(final File file) {
+
+        externalfile = file;
+    }
 
     /**
-     * Setter for the font dimen register.
-     *
-     * @param key       the key
-     * @param value     the value for the key
+     * Return the String for the class
+     * @return the string for the class
      */
-    void setFontDimen(String key, Dimen value);
+    public abstract String toString();
 
 }
