@@ -69,8 +69,7 @@ public class Char extends AbstractCode implements ExpandableCode {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        long val = source.scanNumber();
-        UnicodeChar uc = new UnicodeChar((int) val); // TODO ClassCastException
+        UnicodeChar uc = source.scanCharacterCode();
         Catcode cc = context.getTokenizer().getCatcode(uc);
         Token t = context.getTokenFactory().newInstance(cc, uc);
         source.push(t);
