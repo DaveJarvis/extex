@@ -132,7 +132,7 @@ public abstract class AbstractIf extends AbstractCode implements ExpandableCode 
      *
      * @throws GeneralException in case of en error
      */
-    protected boolean skipToElseOrFi(final Context context,
+    protected static boolean skipToElseOrFi(final Context context,
             final TokenSource source) throws GeneralException {
 
         Code code;
