@@ -72,7 +72,7 @@ public class Closeout extends AbstractCode implements LogEnabled {
     /**
      * The field <tt>logger</tt> contains the logger to use.
      */
-    private Logger logger = null;
+    private transient Logger logger = null;
 
     /**
      * Creates a new object.

@@ -67,7 +67,7 @@ public class Show extends AbstractCode implements LogEnabled {
     /**
      * The field <tt>logger</tt> contains the target channel for the message.
      */
-    private Logger logger = null;
+    private transient Logger logger = null;
 
     /**
      * Creates a new object.

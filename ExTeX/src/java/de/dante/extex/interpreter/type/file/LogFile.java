@@ -36,7 +36,7 @@ public class LogFile extends OutFile {
     /**
      * The field <tt>logger</tt> contains the ...
      */
-    private Logger logger;
+    private transient Logger logger;
 
     /**
      * Creates a new object.

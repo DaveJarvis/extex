@@ -87,7 +87,7 @@ public class Write extends AbstractCode
     /**
      * The field <tt>logger</tt> contains the target channel for the message.
      */
-    private Logger logger = null;
+    private transient Logger logger = null;
 
     /**
      * The field <tt>write18</tt> contains the indicator that the ancient
