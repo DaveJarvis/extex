@@ -21,13 +21,13 @@ package de.dante.extex.interpreter.primitives.register.pair;
 
 import de.dante.extex.interpreter.AbstractAssignment;
 import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.PairConvertible;
 import de.dante.extex.interpreter.Theable;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.context.ContextExtension;
-import de.dante.extex.interpreter.type.Pair;
-import de.dante.extex.interpreter.type.Tokens;
+import de.dante.extex.interpreter.type.pair.Pair;
+import de.dante.extex.interpreter.type.pair.PairConvertible;
+import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.main.MainExTeXExtensionException;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.GeneralException;

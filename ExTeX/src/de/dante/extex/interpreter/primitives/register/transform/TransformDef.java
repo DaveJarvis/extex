@@ -24,7 +24,7 @@ import de.dante.extex.interpreter.AbstractAssignment;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.type.Count;
+import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.scanner.ControlSequenceToken;
 import de.dante.extex.scanner.Token;
 import de.dante.extex.typesetter.Typesetter;
@@ -70,7 +70,7 @@ public class TransformDef extends AbstractAssignment {
         source.scanOptionalEquals();
         String key = "transform#"
                 + Long.toString(Count.scanCount(context, source));
-        context.setMacro(tok.getValue(), new NamedTransform(key), prefix
+        context.setCode(tok, new NamedTransform(key), prefix
                 .isGlobal());
     }
 }

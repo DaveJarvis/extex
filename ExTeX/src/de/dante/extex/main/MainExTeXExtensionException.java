@@ -20,6 +20,7 @@
 package de.dante.extex.main;
 
 import de.dante.extex.i18n.Messages;
+import de.dante.extex.main.exception.MainException;
 
 /**
  * This exception is thrown when the main program use a ExTeX-extension witch is not avaiable.
