@@ -203,6 +203,22 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
     }
 
     /**
+     * Sets the value of the dimen to the minimum of the value already stored
+     * and a given argument.
+     *
+     * <i>|this| = min(|this|, |d|)</i>
+     *
+     * @param d the other dimen
+     */
+    public void min(final FixedDimen d) {
+
+        long val = d.getValue();
+        if (val < getValue()) {
+            setValue(val);
+        }
+    }
+
+    /**
      * Multiply the current value with a given number.
      * This operation modifies this instance.
      *
