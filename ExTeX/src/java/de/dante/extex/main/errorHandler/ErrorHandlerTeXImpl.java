@@ -16,7 +16,7 @@
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
-package de.dante.extex.main;
+package de.dante.extex.main.errorHandler;
 
 import java.util.logging.Logger;
 
@@ -33,12 +33,6 @@ import de.dante.util.Locator;
 public class ErrorHandlerTeXImpl extends ErrorHandlerImpl {
 
     /**
-     * The constant <tt>NL</tt> contains the String with the newline character,
-     * since it is needed several times.
-     */
-    private static final String NL = "\n";
-
-    /**
      * Creates a new object.
      */
     public ErrorHandlerTeXImpl() {
@@ -47,7 +41,7 @@ public class ErrorHandlerTeXImpl extends ErrorHandlerImpl {
     }
 
     /**
-     * @see de.dante.extex.main.ErrorHandlerImpl#showErrorLine(
+     * @see de.dante.extex.main.errorHandler.ErrorHandlerImpl#showErrorLine(
      *      java.util.logging.Logger, java.lang.String, de.dante.util.Locator)
      */
     protected void showErrorLine(final Logger logger, final String message,
