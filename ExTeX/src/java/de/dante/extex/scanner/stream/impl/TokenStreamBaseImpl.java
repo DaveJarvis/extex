@@ -53,6 +53,9 @@ public class TokenStreamBaseImpl implements TokenStream {
 
     /**
      * Creates a new object.
+     *
+     * @param isFile indicator whether or not the token stream is assigned to
+     * a file
      */
     public TokenStreamBaseImpl(final boolean isFile) {
 
