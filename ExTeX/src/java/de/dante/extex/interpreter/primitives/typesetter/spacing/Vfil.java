@@ -53,7 +53,7 @@ import de.dante.util.GeneralException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Vfil extends AbstractVerticalCode {
+public class Vfil extends AbstractVerticalCode implements VerticalSkip {
 
     /**
      * The field <tt>FIL</tt> contains the amount of 1 fil.
@@ -85,6 +85,16 @@ public class Vfil extends AbstractVerticalCode {
         ensureVerticalMode(typesetter);
         typesetter.addGlue(FIL);
         return true;
+    }
+
+    /**
+     * @see de.dante.extex.interpreter.primitives.typesetter.spacing.VerticalSkip#verticalSkip(
+     *      de.dante.extex.interpreter.context.Context,
+     *      de.dante.extex.interpreter.TokenSource)
+     */
+    public Glue verticalSkip(final Context context, final TokenSource source) throws GeneralException {
+
+        return FIL;
     }
 
 }
