@@ -94,7 +94,7 @@ public interface ListMaker {
     void toggleMath() throws GeneralException;
 
     /**
-     * ZToggle the displaymath mode.
+     * Toggle the displaymath mode.
      *
      * @throws GeneralException in case of an error
      */
