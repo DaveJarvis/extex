@@ -50,6 +50,12 @@ public interface Font {
 	public abstract Dimen getDepth(UnicodeChar c);
 
 	/**
+	 * Return the italic of a <code>UnicodeChar</code>, or
+	 * 0pt, if no character is defined.
+	 */
+	public abstract Dimen getItalic(UnicodeChar c);
+	
+	/**
 	 * Check, if the <code>UnicodeChar</code> is defined in the font.
 	 */
 	public abstract boolean isDefined(UnicodeChar c);
@@ -95,7 +101,10 @@ public interface Font {
 	 */
 	public abstract Dimen getEx();
 
-	public abstract Dimen getFontDimen(long index);
+	/**
+	 * Return font-dimen-size with a key.
+	 */
+	public abstract Dimen getFontDimen(String key);
 
 	/**
 	 * Return the fontname.
