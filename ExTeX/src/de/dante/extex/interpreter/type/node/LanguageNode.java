@@ -47,4 +47,12 @@ public class LanguageNode extends WhatsItNode implements Node {
 	public int getLanguage() {
 		return language;
 	}
+
+	/**
+	 * @see de.dante.extex.typesetter.Node#getType()
+	 */
+	public String getType() {
+		return "language";
+	}
+
 }

@@ -95,8 +95,9 @@ public class Dimen extends GlueComponent implements Serializable {
      * 
      * @param d the Dimen to add to
      */
-    public void add(final Dimen d) {
+    public Dimen add(final Dimen d) {
         setValue(getValue() + d.getValue());
+        return new Dimen(getValue());
     }
 
     /**
@@ -104,8 +105,9 @@ public class Dimen extends GlueComponent implements Serializable {
      * 
      * @param d the Dimen to add to
      */
-    public void subtract(final Dimen d) {
+    public Dimen subtract(final Dimen d) {
         setValue(getValue() - d.getValue());
+        return new Dimen(getValue());
     }
 
     /**

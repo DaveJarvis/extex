@@ -482,7 +482,7 @@ public class ExTeX {
             initializeStreams(interpreter);
 
             Typesetter typesetter = new TypesetterFactory(config
-                .getConfiguration("Typesetter")).newInstance();
+                .getConfiguration("Typesetter")).newInstance(interpreter.getContext());
 
             DocumentWriter docWriter = new DocumentWriterFactory(config
                 .getConfiguration("DocumentWriter")).newInstance();

@@ -744,6 +744,13 @@ public abstract class Moritz implements TokenSource, Observable {
     }
 
     /**
+     * @see Interpreter.getContext()
+     */
+    public Context getContext() {
+    	return context;
+    }
+    
+    /**
      * Scans the input token stream for a given sequence of tokens. Those
      * tokens may have the catcodes <tt>LETTER</tt> or <tt>OTHER</tt>.
      *
