@@ -61,9 +61,9 @@ public abstract class Moritz implements TokenSource, Observable {
 	private static final long MAX_CHAR_CODE = Integer.MAX_VALUE; //TODO: find a good value
 
 	/**
-	 * The interpreter context. well, the two of them are more closely linked
-	 * than I like it.
-	 */
+     * The interpreter context. well, the two of them (max and Moritz) are more
+     * closely linked than I like it.
+     */
 	private Context context;
 
 	/** The observer list is used for the observers which are registered to

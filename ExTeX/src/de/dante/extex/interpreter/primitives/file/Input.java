@@ -73,7 +73,7 @@ public class Input extends AbstractCode {
 		String encoding = getEncoding(context);
 
 		try {
-			source.addStream(factory.newInstance(factory.findFile(name, "tex"), encoding));
+			source.addStream(factory.newInstance(name, "tex", encoding));
 		} catch (FileNotFoundException e) {
 			throw new GeneralException(e);
 		} catch (ConfigurationException e) {

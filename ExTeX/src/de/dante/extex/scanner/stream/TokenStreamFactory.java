@@ -103,7 +103,7 @@ public class TokenStreamFactory implements FileFinder, Observable {
      *
      * @return the new instance
      */
-    public TokenStream newInstance(File file, String encoding)
+    public TokenStream newInstance(String file, String type, String encoding)
                             throws ConfigurationException, 
                                    IOException, 
                                    FileNotFoundException {

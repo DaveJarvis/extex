@@ -22,7 +22,6 @@ import de.dante.extex.interpreter.type.Dimen;
 import de.dante.extex.interpreter.type.Font;
 import de.dante.extex.interpreter.type.Glue;
 import de.dante.util.UnicodeChar;
-import de.dante.util.file.FileFinder;
 
 /**
  * This class implements a dummy font which does not contain any characters.
@@ -31,12 +30,12 @@ import de.dante.util.file.FileFinder;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class DummyFont implements Font {
+public class NullFont implements Font {
 
 	/**
 	 * Creates a new object.
 	 */
-	public DummyFont(String name, FileFinder finder) {
+	public NullFont() {
 		super();
 	}
 

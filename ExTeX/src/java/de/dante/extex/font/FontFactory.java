@@ -31,5 +31,15 @@ import de.dante.util.configuration.ConfigurationException;
  */
 public interface FontFactory {
 
-    public abstract Font getInstance(String name) throws GeneralException, ConfigurationException;
+    /**
+     * ...
+     * 
+     * @param name ...
+     * @return ...
+     * @throws GeneralException ...
+     * @throws ConfigurationException ...
+     */
+    public abstract Font getInstance(String name) throws GeneralException,
+            ConfigurationException;
+    
 }

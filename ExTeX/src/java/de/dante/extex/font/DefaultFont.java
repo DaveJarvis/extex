@@ -58,6 +58,9 @@ public class DefaultFont implements Font {
 	 * load the Font
 	 * @throws GeneralException, if a error is thrown.
 	 */
+	//TODO: gene: loadFont should take an input stream to read from
+	// finding a font and opening should be done uniformly by the factory
+	//TODO: gene: Main*Exceptions are for the main program only!
 	private void loadFont(FileFinder finder) throws GeneralException, ConfigurationException {
 		if (name != null) {
 
