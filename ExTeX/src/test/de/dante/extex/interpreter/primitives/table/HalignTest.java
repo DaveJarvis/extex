@@ -21,7 +21,6 @@ package de.dante.extex.interpreter.primitives.table;
 
 import java.util.Properties;
 
-import de.dante.extex.main.exception.MainException;
 import de.dante.test.ExTeXLauncher;
 
 /**

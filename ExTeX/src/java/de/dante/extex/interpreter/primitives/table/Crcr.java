@@ -23,7 +23,6 @@ import de.dante.extex.i18n.HelpingException;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.type.AbstractCode;
 import de.dante.extex.typesetter.ListMaker;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.impl.AlignmentList;
@@ -56,7 +55,7 @@ import de.dante.util.GeneralException;
 public class Crcr extends Cr {
 
     /**
-     * Creates a new object.
+     * Creates a new object.O
      *
      * @param name the name for tracing and debugging
      */
