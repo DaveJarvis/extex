@@ -21,8 +21,9 @@ package de.dante.extex.typesetter;
 
 import de.dante.extex.documentWriter.DocumentWriter;
 import de.dante.extex.interpreter.type.node.CharNodeFactory;
-import de.dante.extex.typesetter.impl.Manager;
 import de.dante.extex.typesetter.ligatureBuilder.LigatureBuilder;
+import de.dante.extex.typesetter.listMaker.ListManager;
+import de.dante.extex.typesetter.listMaker.NoadConsumer;
 import de.dante.extex.typesetter.pageBuilder.PageBuilder;
 import de.dante.extex.typesetter.paragraphBuilder.ParagraphBuilder;
 import de.dante.util.GeneralException;
@@ -38,7 +39,7 @@ import de.dante.util.GeneralException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface Typesetter extends ListMaker {
+public interface Typesetter extends ListMaker, NoadConsumer {
 
     /**
      * Instructs the typesetter to perform any actions necessary for cleaning up
@@ -68,7 +69,7 @@ public interface Typesetter extends ListMaker {
      *
      * @return the manager
      */
-    Manager getManager();
+    ListManager getManager();
 
     /**
      * Open a new list maker and put it in the top of the stack as current
