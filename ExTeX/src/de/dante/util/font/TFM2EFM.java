@@ -51,17 +51,17 @@ public class TFM2EFM {
      */
     public static void main(final String[] args) throws IOException {
 
-        if (args.length != 2) {
+        if (args.length != 3) {
             System.err
-                    .println("java de.dante.util.font.TFM2EFM <tfm-file> <efm-file>");
+                    .println("java de.dante.util.font.TFM2EFM <tfm-file> <pfb-file> <efm-file>");
             System.exit(1);
         }
 
         File tfmfile = new File(args[0]);
-        File efmfile = new File(args[1]);
+        File efmfile = new File(args[2]);
 
         TFMReader tfmr = new TFMReader(new BufferedInputStream(
-                new FileInputStream(tfmfile), FILEBUFFER));
+                new FileInputStream(tfmfile), FILEBUFFER), args[1]);
 
         // write to efm-file
         XMLOutputter xmlout = new XMLOutputter("   ", true);

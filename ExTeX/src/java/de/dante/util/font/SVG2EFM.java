@@ -54,8 +54,8 @@ public class SVG2EFM {
             JDOMException {
 
         if (args.length != 3) {
-            System.err
-                    .println("java de.dante.util.font.SVG2EFM <svg-file> <efm-file> <default-size>");
+            System.err.println("java de.dante.util.font.SVG2EFM "
+                    + "<svg-file> <efm-file> <default-size>");
             System.exit(1);
         }
 
