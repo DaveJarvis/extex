@@ -87,7 +87,7 @@ class NV implements NodeVisitor {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * This method uniformly handles any node lists.
      *
      * @param list the node list to process
      * @param index the index in the word to start with
