@@ -123,7 +123,7 @@ public class NamedDimen extends AbstractCode implements Advanceable, Multiplyabl
 	 */
 	public Tokens the(final Context context, final TokenSource source) throws GeneralException {
 		String key = getKey(source);
-		String s = context.getDimen(key).toString();
+		String s = context.getDimen(key).toPT();
 		return new Tokens(context, s);
 	}
 
