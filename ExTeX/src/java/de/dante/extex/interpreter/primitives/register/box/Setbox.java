@@ -21,8 +21,8 @@ package de.dante.extex.interpreter.primitives.register.box;
 
 import java.io.Serializable;
 
-import de.dante.extex.interpreter.Code;
 import de.dante.extex.interpreter.TokenSource;
+import de.dante.extex.interpreter.type.Code;
 import de.dante.util.GeneralException;
 
 /**

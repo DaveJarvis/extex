@@ -18,7 +18,7 @@
  */
 package de.dante.extex.interpreter.primitives.conditional;
 
-import de.dante.extex.i18n.GeneralHelpingException;
+import de.dante.extex.i18n.HelpingException;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.scanner.Catcode;
@@ -77,6 +77,6 @@ public class Ifnum extends AbstractIf {
             }
         }
         //TODO pushback the tokens read
-        throw new GeneralHelpingException("TTP.IllegalIfnumOp");
+        throw new HelpingException("TTP.IllegalIfnumOp");
     }
 }

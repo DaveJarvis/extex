@@ -18,11 +18,11 @@
  */
 package de.dante.extex.interpreter.primitives.macro;
 
-import de.dante.extex.i18n.GeneralHelpingException;
-import de.dante.extex.interpreter.AbstractCode;
+import de.dante.extex.i18n.HelpingException;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.type.AbstractCode;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.GeneralException;
 
@@ -63,7 +63,7 @@ public class Endcsname extends AbstractCode {
     }
 
     /**
-     * @see de.dante.extex.interpreter.Code#execute(de.dante.extex.interpreter.Flags,
+     * @see de.dante.extex.interpreter.type.Code#execute(de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
@@ -74,7 +74,7 @@ public class Endcsname extends AbstractCode {
 
         prefix.clear();
 
-        throw new GeneralHelpingException("TTP.ExtraEndcsname",
+        throw new HelpingException("TTP.ExtraEndcsname",
                 printableControlSequence(context));
     }
 

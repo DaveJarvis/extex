@@ -65,7 +65,7 @@ public class Input extends AbstractFileCode {
      * Scan the filename (until a <code>SpaceToken</code>) and put the file
      * onto the tokenizer stream.
      *
-     * @see de.dante.extex.interpreter.Code#execute(
+     * @see de.dante.extex.interpreter.type.Code#execute(
      *      de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource,

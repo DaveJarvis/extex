@@ -19,8 +19,8 @@
 
 package de.dante.extex.interpreter.primitives.register.skip;
 
-import de.dante.extex.interpreter.AbstractAssignment;
 import de.dante.extex.interpreter.TokenSource;
+import de.dante.extex.interpreter.type.AbstractAssignment;
 import de.dante.util.GeneralException;
 
 /**

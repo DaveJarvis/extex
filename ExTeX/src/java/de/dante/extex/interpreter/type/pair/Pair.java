@@ -22,7 +22,7 @@ package de.dante.extex.interpreter.type.pair;
 import java.io.Serializable;
 import java.util.StringTokenizer;
 
-import de.dante.extex.i18n.GeneralHelpingException;
+import de.dante.extex.i18n.HelpingException;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.type.real.Real;
@@ -118,17 +118,17 @@ public class Pair implements Serializable {
                 if (st.hasMoreTokens()) {
                     xval = new Real(st.nextToken());
                 } else {
-                    throw new GeneralHelpingException("TTP.NumberFormatError",
+                    throw new HelpingException("TTP.NumberFormatError",
                             s);
                 }
                 if (st.hasMoreTokens()) {
                     yval = new Real(st.nextToken());
                 } else {
-                    throw new GeneralHelpingException("TTP.NumberFormatError",
+                    throw new HelpingException("TTP.NumberFormatError",
                             s);
                 }
             } catch (NumberFormatException e) {
-                throw new GeneralHelpingException("TTP.NumberFormatError", s);
+                throw new HelpingException("TTP.NumberFormatError", s);
             }
         }
     }

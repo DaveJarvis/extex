@@ -22,7 +22,7 @@ package de.dante.extex.interpreter.type.transform;
 import java.io.Serializable;
 import java.util.StringTokenizer;
 
-import de.dante.extex.i18n.GeneralHelpingException;
+import de.dante.extex.i18n.HelpingException;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.type.real.Real;
@@ -168,12 +168,12 @@ public class Transform implements Serializable {
                     if (st.hasMoreTokens()) {
                         val[i] = new Real(st.nextToken());
                     } else {
-                        throw new GeneralHelpingException(
+                        throw new HelpingException(
                                 "TTP.NumberFormatError", s);
                     }
                 }
             } catch (NumberFormatException e) {
-                throw new GeneralHelpingException("TTP.NumberFormatError", s);
+                throw new HelpingException("TTP.NumberFormatError", s);
             }
         }
     }

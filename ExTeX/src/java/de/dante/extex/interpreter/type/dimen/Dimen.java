@@ -21,7 +21,7 @@ package de.dante.extex.interpreter.type.dimen;
 
 import java.io.Serializable;
 
-import de.dante.extex.i18n.GeneralHelpingException;
+import de.dante.extex.i18n.HelpingException;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.type.glue.FixedGlueComponent;
@@ -137,13 +137,13 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
      *
      * @param denom denominator to divide by
      *
-     * @throws GeneralHelpingException in case of a division by 0, i.e. if
+     * @throws HelpingException in case of a division by 0, i.e. if
      * denom is 0.
      */
-    public void divide(final long denom) throws GeneralHelpingException {
+    public void divide(final long denom) throws HelpingException {
 
         if (denom == 0) {
-            throw new GeneralHelpingException("TTP.ArithOverflow");
+            throw new HelpingException("TTP.ArithOverflow");
         }
         setValue(getValue() / denom);
     }

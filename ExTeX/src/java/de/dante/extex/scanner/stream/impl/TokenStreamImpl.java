@@ -27,7 +27,7 @@ import java.io.LineNumberReader;
 import java.io.Reader;
 import java.io.StringReader;
 
-import de.dante.extex.i18n.GeneralHelpingException;
+import de.dante.extex.i18n.HelpingException;
 import de.dante.extex.interpreter.Tokenizer;
 import de.dante.extex.main.exception.MainIOException;
 import de.dante.extex.scanner.Catcode;
@@ -375,7 +375,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl
 
         state = MID_LINE;
 
-        throw new GeneralHelpingException("TTP.InvalidChar");
+        throw new HelpingException("TTP.InvalidChar");
     }
 
     /**

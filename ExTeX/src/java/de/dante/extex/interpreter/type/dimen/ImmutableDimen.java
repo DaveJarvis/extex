@@ -20,7 +20,7 @@ package de.dante.extex.interpreter.type.dimen;
 
 import java.io.Serializable;
 
-import de.dante.extex.i18n.GeneralHelpingException;
+import de.dante.extex.i18n.HelpingException;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.util.GeneralException;
@@ -67,7 +67,7 @@ public class ImmutableDimen extends Dimen implements Serializable {
     /**
      * @see de.dante.extex.interpreter.type.dimen.Dimen#divide(long)
      */
-    public void divide(final long denom) throws GeneralHelpingException {
+    public void divide(final long denom) throws HelpingException {
 
         throw new RuntimeException("Unable to divide an immutable object");
     }

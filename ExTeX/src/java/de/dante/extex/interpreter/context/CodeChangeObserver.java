@@ -18,7 +18,7 @@
  */
 package de.dante.extex.interpreter.context;
 
-import de.dante.extex.interpreter.Code;
+import de.dante.extex.interpreter.type.Code;
 import de.dante.extex.scanner.Token;
 
 

@@ -18,7 +18,7 @@
  */
 package de.dante.extex.interpreter.primitives.conditional;
 
-import de.dante.extex.i18n.GeneralHelpingException;
+import de.dante.extex.i18n.HelpingException;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.type.dimen.Dimen;
@@ -63,7 +63,7 @@ public class Ifdim extends AbstractIf {
         long x = new Dimen(context, source).getValue();
         Token rel = source.getToken();
         if (rel == null) {
-            throw new GeneralHelpingException("UnexpectedEOF",
+            throw new HelpingException("UnexpectedEOF",
                     printableControlSequence(context));
         }
         if (rel.getCatcode() == Catcode.OTHER) {
@@ -79,6 +79,6 @@ public class Ifdim extends AbstractIf {
             }
         }
         //TODO pushback the tokens read
-        throw new GeneralHelpingException("TTP.IllegalIfnumOp");
+        throw new HelpingException("TTP.IllegalIfnumOp");
     }
 }

@@ -20,12 +20,12 @@
 package de.dante.extex.interpreter.primitives.register.font;
 
 import de.dante.extex.font.FontFactory;
-import de.dante.extex.i18n.GeneralHelpingException;
-import de.dante.extex.interpreter.AbstractAssignment;
-import de.dante.extex.interpreter.Code;
+import de.dante.extex.i18n.HelpingException;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.type.AbstractAssignment;
+import de.dante.extex.interpreter.type.Code;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.interpreter.type.font.FontConvertible;
@@ -80,7 +80,7 @@ public class FontPrimitive extends AbstractAssignment
     }
 
     /**
-     * @see de.dante.extex.interpreter.Code#execute(
+     * @see de.dante.extex.interpreter.type.Code#execute(
      *      de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource,
@@ -116,7 +116,7 @@ public class FontPrimitive extends AbstractAssignment
 
         // fontsize < 0
         if (fontsize.lt(Dimen.ZERO_PT)) {
-            throw new GeneralHelpingException("FONT.nofontsize");
+            throw new HelpingException("FONT.nofontsize");
         }
 
         Glue letterspaced = new Glue(0);
@@ -204,7 +204,7 @@ public class FontPrimitive extends AbstractAssignment
         Token t = source.scanNonSpace();
 
         if (t == null) {
-            throw new GeneralHelpingException("TTP.EOFinDef", "font");
+            throw new HelpingException("TTP.EOFinDef", "font");
         }
 
         StringBuffer sb = new StringBuffer(t.getValue());

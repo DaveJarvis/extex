@@ -19,7 +19,7 @@
 
 package de.dante.extex.typesetter.impl;
 
-import de.dante.extex.i18n.GeneralHelpingException;
+import de.dante.extex.i18n.HelpingException;
 import de.dante.extex.interpreter.context.TypesettingContext;
 import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.interpreter.type.glue.Glue;
@@ -126,7 +126,7 @@ public class DisplaymathListMaker extends AbstractListMaker
     public void par() throws GeneralException {
 
         getManager().closeTopList();
-        throw new GeneralHelpingException("TTP.MissingDollar");
+        throw new HelpingException("TTP.MissingDollar");
     }
 
     /**
@@ -144,7 +144,7 @@ public class DisplaymathListMaker extends AbstractListMaker
     public void toggleMath() throws GeneralException {
 
         getManager().closeTopList();
-        throw new GeneralHelpingException("TTP.DisplayMathEnd");
+        throw new HelpingException("TTP.DisplayMathEnd");
     }
 
 }
