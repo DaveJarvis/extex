@@ -134,7 +134,7 @@ public class NullFont implements Font, Serializable {
      */
     public String getFontName() {
 
-        return "nullFont";
+        return "nullfont";
     }
 
     /**
