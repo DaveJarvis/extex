@@ -151,6 +151,8 @@ public class TokenStreamBaseImpl implements TokenStream {
      * Test for end of file.
      *
      * @return <code>true</code> iff the stream is at its end
+     *
+     * @throws ScannerException in case of an error
      */
     public boolean isEof() throws ScannerException {
 
