@@ -16,6 +16,7 @@
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
+
 package de.dante.extex.interpreter.primitives.box;
 
 import de.dante.extex.interpreter.Flags;
@@ -70,6 +71,7 @@ public class Space extends AbstractCode {
      * @param name the name for debugging
      */
     public Space(final String name) {
+
         super(name);
     }
 
