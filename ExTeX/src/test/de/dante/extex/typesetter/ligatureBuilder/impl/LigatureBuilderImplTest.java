@@ -357,9 +357,8 @@ public class LigatureBuilderImplTest extends TestCase {
     private static TypesettingContext tc1;
 
     /**
-     * ...
-     *
-     * @param args ...
+     * Command line interface.
+     * @param args the arguments
      */
     public static void main(final String[] args) {
 
