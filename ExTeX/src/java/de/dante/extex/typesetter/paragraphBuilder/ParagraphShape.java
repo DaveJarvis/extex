@@ -83,4 +83,14 @@ public class ParagraphShape {
         int i = points.size() / 2;
         return (Dimen) points.get((index > i ? i : index) * 2 + 1);
     }
+
+    /**
+     * ...
+     *
+     * @return ...
+     */
+    public long getSize() {
+
+        return points.size();
+    }
 }
