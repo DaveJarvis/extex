@@ -24,7 +24,8 @@ import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.typesetter.type.noad.util.MathContext;
 
 /**
- * ...
+ * This noad is used to represent mathematical material which has additional
+ * whitespace around it under certain circumstances.
  *
  * @see "TTP [682]"
  *
