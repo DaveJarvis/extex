@@ -16,47 +16,47 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  *
  */
-package de.dante.extex.main;
+package de.dante.extex.main.observer;
 
-import java.util.logging.Logger;
+import java.util.logging.Handler;
+import java.util.logging.Level;
 
+import de.dante.extex.interpreter.Interaction;
 import de.dante.util.observer.Observable;
 import de.dante.util.observer.Observer;
 
 /**
- * This observer waits for an update event and writes the argument as info to
- * the Logger specified upon construction.
- * <p>
- * This observer is meant for writing the message of the primitive \message to
- * the appropriate output stream.
- * </p>
+ * ...
  *
- * @author <a href="mailto:gene@gerd-neugebauer.de"> Gerd Neugebauer </a>
- *
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class MessageObserver implements Observer {
+public class InteractionObserver implements Observer {
+
     /**
-     * The field <tt>logger</tt> contains the logger for output.
+     * The field <tt>handler</tt> contains the {@link java.util.logging.Handler
+     * Handler} at which the logging should be directed.
      */
-    private Logger logger;
+    private Handler handler;
 
     /**
      * Creates a new object.
      *
-     * @param logger the logger for potential output
+     * @param theHandler the target handler
      */
-    public MessageObserver(final Logger logger) {
+    public InteractionObserver(final Handler theHandler) {
         super();
-        this.logger = logger;
+        this.handler = theHandler;
     }
 
     /**
      * @see de.dante.util.observer.Observer#update(de.dante.util.Observable,
-     *      java.lang.Object)
+     *       java.lang.Object)
      */
     public void update(final Observable observable, final Object item) {
-        logger.info(item.toString() + " ");
+
+        handler.setLevel((Interaction) item == Interaction.BATCHMODE //
+                ? Level.SEVERE : Level.INFO);
     }
 
 }

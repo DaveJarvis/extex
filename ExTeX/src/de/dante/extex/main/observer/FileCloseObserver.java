@@ -16,7 +16,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  *
  */
-package de.dante.extex.main;
+package de.dante.extex.main.observer;
 
 import java.util.logging.Logger;
 
@@ -40,11 +40,11 @@ public class FileCloseObserver implements Observer {
     /**
      * Creates a new object.
      *
-     * @param logger the logger for potential output
+     * @param theLogger the logger for potential output
      */
-    public FileCloseObserver(final Logger logger) {
+    public FileCloseObserver(final Logger theLogger) {
         super();
-        this.logger = logger;
+        this.logger = theLogger;
     }
 
     /**
