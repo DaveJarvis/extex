@@ -458,24 +458,28 @@ public class Max extends Moritz implements Interpreter,
      * @see de.dante.extex.interpreter.max.Moritz#expand(de.dante.extex.scanner.Token)
      */
     protected Token expand(final Token token) throws GeneralException {
-        Code code;
 
-        for (Token t = token; t != null; t = getToken()) { //TODO ???
-            if (token instanceof ControlSequenceToken) {
-                observersMacro.update(this, token);
-                code = context.getMacro(token.getValue());
-            } else if (token instanceof ActiveCharacterToken) {
-                code = context.getActive(token.getValue());
+        Code code;
+        Token t = token;
+
+        while (t != null) { //TODO ???
+            if (t instanceof ControlSequenceToken) {
+                observersMacro.update(this, t);
+                code = context.getMacro(t.getValue());
+            } else if (t instanceof ActiveCharacterToken) {
+                code = context.getActive(t.getValue());
             } else {
-                return token;
+                return t;
             }
             if (code instanceof ExpandableCode) {
                 ((ExpandableCode) code).expand(prefix, context, this,
                                                typesetter);
+            } else {
+                return t;
             }
-            return token;
+            t = getToken();
         }
-        return token;
+        return t;
     }
 
     /**
