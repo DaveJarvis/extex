@@ -178,7 +178,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
     /**
      * @see de.dante.extex.typesetter.type.node.CharNode#getChars()
      */
-    public UnicodeChar[] getChars() {
+    public CharNode[] getChars() {
 
         return this.nodes.getChars();
     }

@@ -40,9 +40,9 @@ import de.dante.util.framework.i18n.LocalizerFactory;
 public abstract class AbstractNode implements Node {
 
     /**
-     * The constant <tt>NO_CHAR</tt> contains the empty array of UnicodeChar.
+     * The constant <tt>NO_CHAR</tt> contains the empty array of CharNode.
      */
-    protected static final UnicodeChar[] NO_CHARS = new UnicodeChar[0];
+    protected static final CharNode[] NO_CHARS = new CharNode[0];
 
     /**
      * The field <tt>depth</tt> contains the depth of the node.
@@ -145,7 +145,7 @@ public abstract class AbstractNode implements Node {
     /**
      * @see de.dante.extex.typesetter.type.Node#getChars()
      */
-    public UnicodeChar[] getChars() {
+    public CharNode[] getChars() {
 
         return NO_CHARS;
     }

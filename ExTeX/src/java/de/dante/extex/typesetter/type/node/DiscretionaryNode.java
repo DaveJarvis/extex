@@ -126,15 +126,15 @@ public class DiscretionaryNode extends AbstractNode implements Node {
         String pre = prefix + ".";
         sb.append("\\discretionary{");
         if (preBreak != null) {
-            preBreak.toText(sb, pre);
+            preBreak.toString(sb, pre);
         }
         sb.append("}{");
         if (postBreak != null) {
-            postBreak.toText(sb, pre);
+            postBreak.toString(sb, pre);
         }
         sb.append("}{");
         if (noBreak != null) {
-            noBreak.toText(sb, pre);
+            noBreak.toString(sb, pre);
         }
         sb.append("}");
     }

@@ -20,8 +20,8 @@ package de.dante.extex.interpreter.context;
 
 import java.io.Serializable;
 
-import de.dante.extex.hyphenation.HyphenationTable;
 import de.dante.extex.interpreter.type.font.Font;
+import de.dante.extex.language.Language;
 
 /**
  * The typesetting context is a container for attributes describing the
@@ -72,14 +72,14 @@ public interface TypesettingContext extends Serializable {
      *
      * @param language the hyphenation table
      */
-    void setLanguage(HyphenationTable language);
+    void setLanguage(Language language);
 
     /**
      * Getter for the hyphenation table.
      *
      * @return the hyphenation table
      */
-    HyphenationTable getHyphenation();
+    Language getLanguage();
 
     /**
      * Setter for the color.

@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter.context;
 
-import de.dante.extex.hyphenation.HyphenationManagerCarrier;
+import de.dante.extex.language.LanguageManagerCarrier;
 
 /**
  * This interface describes the abilities of a Context together with some
@@ -28,7 +28,7 @@ import de.dante.extex.hyphenation.HyphenationManagerCarrier;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface ContextInternals extends Context, HyphenationManagerCarrier {
+public interface ContextInternals extends Context, LanguageManagerCarrier {
 
     /**
      * Getter for the typesetting context factory.

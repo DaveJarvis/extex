@@ -19,11 +19,6 @@
 
 package de.dante.extex.interpreter.primitives.hyphen;
 
-import de.dante.extex.hyphenation.HyphenationTable;
-import de.dante.extex.hyphenation.exception.DuplicateHyphenationException;
-import de.dante.extex.hyphenation.exception.IllegalTokenHyphenationException;
-import de.dante.extex.hyphenation.exception.IllegalValueHyphenationException;
-import de.dante.extex.hyphenation.exception.ImmutableHyphenationException;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.Namespace;
 import de.dante.extex.interpreter.TokenSource;
@@ -32,6 +27,11 @@ import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.exception.helping.EofException;
 import de.dante.extex.interpreter.exception.helping.MissingLeftBraceException;
 import de.dante.extex.interpreter.type.tokens.Tokens;
+import de.dante.extex.language.Language;
+import de.dante.extex.language.hyphenation.exception.DuplicateHyphenationException;
+import de.dante.extex.language.hyphenation.exception.IllegalTokenHyphenationException;
+import de.dante.extex.language.hyphenation.exception.IllegalValueHyphenationException;
+import de.dante.extex.language.hyphenation.exception.ImmutableHyphenationException;
 import de.dante.extex.scanner.type.ActiveCharacterToken;
 import de.dante.extex.scanner.type.Catcode;
 import de.dante.extex.scanner.type.CatcodeException;
@@ -78,7 +78,7 @@ public class Patterns extends AbstractHyphenationCode {
         /**
          * The field <tt>table</tt> contains the ...
          */
-        private HyphenationTable table;
+        private Language table;
 
         /**
          * The field <tt>toks</tt> contains the the container for the tokens.
@@ -110,7 +110,7 @@ public class Patterns extends AbstractHyphenationCode {
          * @throws CatcodeException in case of a problem when creating the zero
          *  token.
          */
-        public TV(final Context context, final HyphenationTable table)
+        public TV(final Context context, final Language table)
                 throws CatcodeException {
 
             super();

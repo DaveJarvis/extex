@@ -19,12 +19,12 @@
 
 package de.dante.extex.interpreter.primitives.hyphen;
 
-import de.dante.extex.hyphenation.HyphenationTable;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.AbstractCode;
 import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.interpreter.type.tokens.Tokens;
+import de.dante.extex.language.Language;
 
 /**
  * This is the abstract base class for all hyphenation related primitives.
@@ -82,7 +82,7 @@ public abstract class AbstractHyphenationCode extends AbstractCode {
      *
      * @throws InterpreterException in case of an error
      */
-    protected HyphenationTable getHyphenationTable(final Context context)
+    protected Language getHyphenationTable(final Context context)
             throws InterpreterException {
 
         Tokens lang = context.getToksOrNull(LANGUAGE_TOKS);
@@ -93,7 +93,7 @@ public abstract class AbstractHyphenationCode extends AbstractCode {
             name = Long.toString(language.getValue());
         }
 
-        return context.getHyphenationTable(name);
+        return context.getLanguage(name);
     }
 
 }
