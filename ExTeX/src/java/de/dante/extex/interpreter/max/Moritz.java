@@ -266,12 +266,12 @@ public abstract class Moritz
     public Box getBox(final Typesetter typesetter) throws GeneralException {
 
         Token t = getToken();
-        if (t == null || !(t instanceof CodeToken)) {
+        if (!(t instanceof CodeToken)) {
             throw new HelpingException(localizer, "TTP.BoxExpected");
         }
         Context context = getContext();
         Code code = context.getCode((CodeToken) t);
-        if (code == null || !(code instanceof Boxable)) {
+        if (!(code instanceof Boxable)) {
             throw new HelpingException(localizer, "TTP.BoxExpected");
         }
         Box box = ((Boxable) code).getBox(context, this, typesetter);
