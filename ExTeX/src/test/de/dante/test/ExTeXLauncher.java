@@ -157,21 +157,24 @@ public class ExTeXLauncher extends TestCase {
 
         Logger logger = Logger.getLogger("test");
         logger.setUseParentHandlers(false);
+        logger.setLevel(Level.WARNING);
 
-        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-        Handler handler = new StreamHandler(bytes, new LogFormatter());
+        ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
+        Handler handler = new StreamHandler(byteStream, new LogFormatter());
+        handler.setLevel(Level.WARNING);
         logger.addHandler(handler);
 
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         main.setOutStream(stream);
         main.setErrorHandler(new EHandler(logger));
+        main.setLogger(logger);
 
         main.run();
 
         handler.close();
         logger.removeHandler(handler);
         if (log != null) {
-            assertEquals(log, bytes.toString());
+            assertEquals(log, byteStream.toString());
         }
         if (expect != null) {
             assertEquals(expect, stream.toString());
@@ -214,9 +217,11 @@ public class ExTeXLauncher extends TestCase {
 
         Logger logger = Logger.getLogger("test");
         logger.setUseParentHandlers(false);
+        logger.setLevel(Level.ALL);
 
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         Handler handler = new StreamHandler(bytes, new LogFormatter());
+        handler.setLevel(Level.WARNING);
         logger.addHandler(handler);
         main.setLogger(logger);
         main.setErrorHandler(new EHandler(logger));
