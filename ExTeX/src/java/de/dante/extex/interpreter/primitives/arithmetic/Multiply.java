@@ -16,15 +16,15 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  *
  */
-package de.dante.extex.interpreter.primitives.register;
+package de.dante.extex.interpreter.primitives.arithmetic;
 
 import de.dante.extex.i18n.GeneralHelpingException;
 import de.dante.extex.interpreter.AbstractAssignment;
-import de.dante.extex.interpreter.Advanceable;
 import de.dante.extex.interpreter.Code;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.type.arithmetic.Multiplyable;
 import de.dante.extex.scanner.ControlSequenceToken;
 import de.dante.extex.scanner.Token;
 import de.dante.extex.typesetter.Typesetter;
@@ -32,30 +32,29 @@ import de.dante.util.GeneralException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\advance</code>.
+ * <code>\multiply</code>.
  * The real work is done by the object implementing the Advanceable interface.
  *
  * Example
  * <pre>
- * \advance\count12 345
- * \advance\count12 by -345
+ * \multiply\count12 345
+ * \multiply\count12 by -345
  * </pre>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Advance extends AbstractAssignment {
-
+public class Multiply extends AbstractAssignment {
     /**
      * Creates a new object.
      *
      * @param name the name for debugging
      */
-    public Advance(final String name) {
+    public Multiply(final String name) {
         super(name);
     }
 
-    /**
+/**
      * @see de.dante.extex.interpreter.Code#execute(de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource,
@@ -65,7 +64,7 @@ public class Advance extends AbstractAssignment {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        Token cs = source.getToken();
+        Token cs = source.scanToken();
 
         if (!(cs instanceof ControlSequenceToken)) {
             throw new GeneralHelpingException("TTP.CantUseAfter",
@@ -77,12 +76,11 @@ public class Advance extends AbstractAssignment {
         if (code == null) {
             throw new GeneralHelpingException("TTP.UndefinedToken", cs
                     .toString());
-        } else if (code instanceof Advanceable) {
-            ((Advanceable) code).advance(prefix, context, source);
+        } else if (code instanceof Multiplyable) {
+            ((Multiplyable) code).multiply(prefix, context, source);
         } else {
             throw new GeneralHelpingException("TTP.CantUseAfter",
                     cs.toString(), printableControlSequence(context));
         }
     }
-
 }
