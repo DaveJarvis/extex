@@ -314,7 +314,7 @@ public class GroupImpl implements Group, Tokenizer, Serializable {
         if (next != null) {
             return next.getCode(token);
         }
-        if (SUPPORT_NAMESPACES) {
+        if (SUPPORT_NAMESPACES && token instanceof CodeToken) {
             Token t = ((CodeToken) token).cloneInDefaultNamespace();
             if (t != token) {
                 return getCode(t);
