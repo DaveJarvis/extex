@@ -19,9 +19,11 @@
 
 package de.dante.extex.language.ligature.impl;
 
+import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.language.hyphenation.exception.HyphenationException;
 import de.dante.extex.language.ligature.LigatureBuilder;
 import de.dante.extex.typesetter.type.NodeList;
+import de.dante.extex.typesetter.type.node.CharNode;
 
 /**
  * This class provides an implementation for a ligature builder.
@@ -42,10 +44,23 @@ public class EmptyLigatureBuilder implements LigatureBuilder {
 
     /**
      * @see de.dante.extex.language.ligature.LigatureBuilder#insertLigatures(
-     *      de.dante.extex.typesetter.NodeList)
+     *      de.dante.extex.typesetter.NodeList, int)
      */
-    public void insertLigatures(final NodeList list) throws HyphenationException {
+    public int insertLigatures(final NodeList list, int start)
+            throws HyphenationException {
 
+        int i = start;
+        while (i < list.size() && !(list.get(i) instanceof CharNode)) {
+            i++;
+        }
+        Font font = ((CharNode) list.get(i)).getTypesettingContext().getFont();
+
+        while (i < list.size()
+                && (list.get(i) instanceof CharNode)
+                && ((CharNode) list.get(i)).getTypesettingContext().getFont() == font) {
+            i++;
+        }
+        return i;
     }
 
 }
