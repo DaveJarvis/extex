@@ -53,6 +53,16 @@ public class AlignedLeadersNode extends GlueNode implements Node {
     }
 
     /**
+     * Getter for the repeated construction.
+     *
+     * @return the repeated node
+     */
+    public Node getRepeat() {
+
+        return node;
+    }
+
+    /**
      * This method returns the printable representation.
      * This is meant to produce a exaustive form as it is used in tracing
      * output to the log file.
@@ -69,7 +79,7 @@ public class AlignedLeadersNode extends GlueNode implements Node {
     /**
      * @see de.dante.extex.typesetter.type.Node#visit(
      *      de.dante.extex.typesetter.NodeVisitor,
-     *      java.lang.Object, java.lang.Object)
+     *      java.lang.Object)
      */
     public Object visit(final NodeVisitor visitor, final Object value)
             throws GeneralException {

@@ -53,6 +53,16 @@ public class CenteredLeadersNode extends GlueNode implements Node {
     }
 
     /**
+     * Getter for the repeated construction.
+     *
+     * @return the repeated node
+     */
+    public Node getRepeat() {
+
+        return node;
+    }
+
+    /**
      * This method returns the printable representation.
      * This is meant to produce a exaustive form as it is used in tracing
      * output to the log file.
