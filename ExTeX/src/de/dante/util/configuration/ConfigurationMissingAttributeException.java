@@ -28,7 +28,8 @@ import de.dante.extex.i18n.Messages;
  * @version $Revision$
  */
 public class ConfigurationMissingAttributeException extends
-    ConfigurationException {
+        ConfigurationException {
+
     /**
      * Create a new object.
      *
@@ -37,6 +38,7 @@ public class ConfigurationMissingAttributeException extends
      */
     public ConfigurationMissingAttributeException(final String message,
         final String location) {
+
         super(message, location);
     }
 
@@ -48,6 +50,7 @@ public class ConfigurationMissingAttributeException extends
      */
     public ConfigurationMissingAttributeException(final String message,
         final Configuration origin) {
+
         super(message, origin.toString());
     }
 
@@ -59,6 +62,7 @@ public class ConfigurationMissingAttributeException extends
      */
     public ConfigurationMissingAttributeException(final String message,
         final Throwable cause) {
+
         super(message, cause);
     }
 
@@ -71,8 +75,9 @@ public class ConfigurationMissingAttributeException extends
      *
      * @return the text
      */
-    public String getMessage() {
-        return Messages.format("ConfigurationMissingAttributeException.Text",
-                               super.getMessage());
+    public String getText() {
+
+        return Messages.format("ConfigurationMissingAttributeException.Text");
     }
+
 }
