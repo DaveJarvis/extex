@@ -97,7 +97,7 @@ public class VerticalListMaker extends AbstractListMaker {
     /**
      * @see de.dante.extex.typesetter.ListMaker#close(TypesetterOptions)
      */
-    public final NodeList close(TypesetterOptions context) {
+    public final NodeList close(final TypesetterOptions context) {
 
         return nodes;
     }
