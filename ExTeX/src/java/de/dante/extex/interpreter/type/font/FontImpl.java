@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -197,5 +197,14 @@ public class FontImpl implements Font, Serializable {
     public Dimen getDesignSize() {
 
         return fount.getDesignSize();
+    }
+
+    /**
+     * Returns the fount.
+     * @return Returns the fount.
+     */
+    protected ModifiableFount getFount() {
+
+        return fount;
     }
 }

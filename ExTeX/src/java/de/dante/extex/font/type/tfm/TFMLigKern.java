@@ -78,7 +78,7 @@ public abstract class TFMLigKern implements Serializable {
      */
     public int nextIndex(final int pos) {
 
-        return (skip < 0) ? TFMCharInfo.NOINDEX : pos + skip + 1;
+        return (skip < 0) ? TFMCharInfoWord.NOINDEX : pos + skip + 1;
     }
 
     /**

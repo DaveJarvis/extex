@@ -24,6 +24,7 @@ import java.io.Serializable;
 
 import org.jdom.Element;
 
+import de.dante.extex.font.type.tfm.exception.TFMReadFileException;
 import de.dante.util.XMLConvertible;
 import de.dante.util.file.random.RandomAccessR;
 

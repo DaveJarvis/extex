@@ -93,6 +93,11 @@ public abstract class EFMFount implements ModifiableFount, Serializable {
     private String type;
 
     /**
+     * virtual font
+     */
+    private boolean virtual;
+
+    /**
      * permille factor for scale factor
      */
     private static final int PERMILLE_FACTOR = 1000;
@@ -165,13 +170,18 @@ public abstract class EFMFount implements ModifiableFount, Serializable {
 
             // empr
             Attribute attr = fontgroup.getAttribute(ATTREMPR);
-
             if (attr != null) {
                 try {
                     empr = attr.getFloatValue();
                 } catch (Exception e) {
                     empr = DEFAULTEMPR;
                 }
+            }
+
+            // virtual
+            attr = fontgroup.getAttribute("virtual");
+            if (attr != null) {
+                virtual = attr.getBooleanValue();
             }
 
             // get unitsperem
@@ -259,12 +269,14 @@ public abstract class EFMFount implements ModifiableFount, Serializable {
                         gv.setName(e.getAttributeValue("glyph-name"));
                         gv.setExternalFile(externalfile);
                         if ("tfm".equals(type)) {
-                            gv.setWidth(new TFMFixWord(e
-                                    .getAttributeValue("width-fw")),
-                                    actualsize);
-                            gv.setDepth(new TFMFixWord(e
-                                    .getAttributeValue("depth-fw")),
-                                    actualsize);
+                            gv
+                                    .setWidth(new TFMFixWord(e
+                                            .getAttributeValue("width-fw")),
+                                            actualsize);
+                            gv
+                                    .setDepth(new TFMFixWord(e
+                                            .getAttributeValue("depth-fw")),
+                                            actualsize);
                             gv.setHeight(new TFMFixWord(e
                                     .getAttributeValue("height-fw")),
                                     actualsize);
@@ -650,5 +662,12 @@ public abstract class EFMFount implements ModifiableFount, Serializable {
 
         return designsize;
     }
+    /**
+     * Returns the virtual.
+     * @return Returns the virtual.
+     */
+    public boolean isVirtual() {
 
+        return virtual;
+    }
 }

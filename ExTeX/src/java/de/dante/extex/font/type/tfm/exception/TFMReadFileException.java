@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.font.type.tfm;
+package de.dante.extex.font.type.tfm.exception;
 
 import java.io.IOException;
 
