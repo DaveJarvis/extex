@@ -53,5 +53,5 @@ public interface NoadConsumer {
      *
      * @throws GeneralException in case of an error
      */
-    Noad scanNoads(Context context, TokenSource source) throws GeneralException;
+    Noad scanNoad(Context context, TokenSource source) throws GeneralException;
 }
