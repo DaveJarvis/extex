@@ -27,7 +27,6 @@ import java.io.LineNumberReader;
 import java.io.Reader;
 import java.io.StringReader;
 
-import de.dante.extex.i18n.HelpingException;
 import de.dante.extex.i18n.InvalidCharacterException;
 import de.dante.extex.interpreter.Namespace;
 import de.dante.extex.interpreter.Tokenizer;
@@ -239,37 +238,6 @@ public class TokenStreamImpl extends TokenStreamBaseImpl
     }
 
     /**
-     * Test for end of file.
-     *
-     * @return <code>true</code> iff the stream is at its end
-     *
-     * @throws GeneralException in case of an IO error
-     */
-    public boolean isEof() throws GeneralException {
-
-        if (!super.isEof()) {
-            return false;
-        }
-
-        for (;;) {
-
-            if (pointer < line.length()) {
-                return false;
-            }
-
-            try {
-                if (!refill()) {
-                    return true;
-                }
-            } catch (IOException e) {
-                throw new MainIOException(e);
-            }
-
-            pointer = 0;
-        }
-    }
-
-    /**
      * End the current line.
      */
     private void endLine() {
@@ -421,6 +389,37 @@ public class TokenStreamImpl extends TokenStreamBaseImpl
             //    return c - 'A' + 10;
         } else {
             return -1;
+        }
+    }
+
+    /**
+     * Test for end of file.
+     *
+     * @return <code>true</code> iff the stream is at its end
+     *
+     * @throws GeneralException in case of an IO error
+     */
+    public boolean isEof() throws GeneralException {
+
+        if (!super.isEof()) {
+            return false;
+        }
+
+        for (;;) {
+
+            if (pointer < line.length()) {
+                return false;
+            }
+
+            try {
+                if (!refill()) {
+                    return true;
+                }
+            } catch (IOException e) {
+                throw new MainIOException(e);
+            }
+
+            pointer = 0;
         }
     }
 
