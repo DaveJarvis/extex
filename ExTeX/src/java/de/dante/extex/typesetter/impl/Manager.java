@@ -56,7 +56,7 @@ public interface Manager {
      *
      * @throws GeneralException in case of an error
      */
-    void closeTopList() throws GeneralException;
+    void endParagraph() throws GeneralException;
 
     /**
      * Getter for the char node factory.

@@ -130,7 +130,7 @@ public class DisplaymathListMaker extends AbstractListMaker
      */
     public void par() throws GeneralException {
 
-        getManager().closeTopList();
+        getManager().endParagraph();
         throw new HelpingException("TTP.MissingDollar");
     }
 
@@ -147,7 +147,7 @@ public class DisplaymathListMaker extends AbstractListMaker
      */
     public void toggleDisplaymath() throws GeneralException {
 
-        getManager().closeTopList();
+        getManager().endParagraph();
     }
 
     /**
@@ -156,7 +156,7 @@ public class DisplaymathListMaker extends AbstractListMaker
      */
     public void toggleMath() throws GeneralException {
 
-        getManager().closeTopList();
+        getManager().endParagraph();
         throw new HelpingException("TTP.DisplayMathEnd");
     }
 

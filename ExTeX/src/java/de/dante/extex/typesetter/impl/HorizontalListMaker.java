@@ -199,7 +199,7 @@ public class HorizontalListMaker extends AbstractListMaker implements ListMaker 
      */
     public void par() throws GeneralException {
 
-        getManager().closeTopList();
+        getManager().endParagraph();
     }
 
     /**
