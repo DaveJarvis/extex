@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -97,9 +97,6 @@ public class ResourceFinderFactory {
                 throw new ConfigurationClassNotFoundException(classname, config);
             }
 
-            if (finder instanceof LoggerTaker) {
-                ((LoggerTaker) finder).setLogger(logger);
-            }
             if (finder instanceof LogEnabled) {
                 ((LogEnabled) finder).enableLogging(logger);
             }

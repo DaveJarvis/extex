@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2005 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -95,9 +95,9 @@ public class ResourceFinderImpl
      *
      * @param flag the trace flag
      *
-     * @see de.dante.util.resource.ResourceFinder#enableTrace(boolean)
+     * @see de.dante.util.resource.ResourceFinder#enableTracing(boolean)
      */
-    public void enableTrace(final boolean flag) {
+    public void enableTracing(final boolean flag) {
 
     }
 
