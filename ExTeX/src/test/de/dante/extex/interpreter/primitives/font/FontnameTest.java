@@ -85,7 +85,8 @@ public class FontnameTest extends ExTeXLauncher {
     }
 
     /**
-     * Test case checking that a correct value is produced.
+     * Test case checking that a correct value is produced for a font loaded at
+     * its deign size.
      *
      * @throws Exception in case of an error
      */
@@ -117,6 +118,42 @@ public class FontnameTest extends ExTeXLauncher {
                 "",
                 //--- output channel ---
                 "cmmi10\n");
+    }
+
+    /**
+     * Test case checking that a correct value is produced for a font loaded
+     * with an explicit size which is its design size.
+     *
+     * @throws Exception in case of an error
+     */
+    public void testFontname3() throws Exception {
+
+        runCode(//--- input code ---
+                "\\font\\x=cmtt12 at 12 pt"
+                + "\\fontname\\x "
+                + "\\end ",
+                //--- log message ---
+                "",
+                //--- output channel ---
+                "cmtt12\n");
+    }
+
+    /**
+     * Test case checking that a correct value is produced for a font loaded
+     * with an explicit size which is not its design size.
+     *
+     * @throws Exception in case of an error
+     */
+    public void testFontname4() throws Exception {
+
+        runCode(//--- input code ---
+                "\\font\\x=cmtt12 at 24 pt"
+                + "\\fontname\\x "
+                + "\\end ",
+                //--- log message ---
+                "",
+                //--- output channel ---
+                "cmtt12 at 24.0pt\n");
     }
 
 }
