@@ -117,15 +117,7 @@ public class NullFont implements Font {
 	public UnicodeChar ligature(UnicodeChar c1, UnicodeChar c2) {
 		return null;
 	}
-	
-	/**
-	 * @see de.dante.extex.interpreter.type.Font#isExternalFont()
-	 */
-	public boolean isExternalFont() {
-		return false;
-	}
 
-	
 	/**
 	 * @see de.dante.extex.interpreter.type.Font#getExternalFile()
 	 */
@@ -139,7 +131,7 @@ public class NullFont implements Font {
 	public String getExternalID(UnicodeChar c) {
 		return null;
 	}
-	
+
 	/**
 	 * @see de.dante.extex.interpreter.type.Font#getItalic(de.dante.util.UnicodeChar)
 	 */

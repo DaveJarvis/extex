@@ -147,10 +147,6 @@ public class UnicodeChar {
      * Returns the bidirection property of the character.
      *
      * @return the bidirection property
-     *             MGN das muss drinbleiben,
-     *             da es Zeichen gibt, die die Schreibrichtung umstellen.
-     *             Wird vom TypeSetter benötigt, wenn die die etex bzw.
-     *             Omega Funktionen einbauen.
      */
     public int getDirection() {
         return UCharacter.getDirection(code);

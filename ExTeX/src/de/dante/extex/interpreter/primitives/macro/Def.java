@@ -25,7 +25,6 @@ import de.dante.extex.interpreter.MacroCode;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.type.Tokens;
-import de.dante.extex.scanner.Catcode;
 import de.dante.extex.scanner.LeftBraceToken;
 import de.dante.extex.scanner.MacroParamToken;
 import de.dante.extex.scanner.OtherToken;

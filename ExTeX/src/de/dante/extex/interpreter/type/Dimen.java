@@ -150,8 +150,17 @@ public class Dimen extends GlueComponent implements Serializable {
 	 * @return a String with the Dimen-value in pt
 	 */
 	public String toPT() {
-		return String.valueOf((double)getValue() / ONE) + "pt";
-		//TODO use the rounding algorithm of TeX
+		return String.valueOf(round((double)getValue() / ONE)) + "pt";
+	}
+
+	/** 
+	 * Rounds a floating-point number to nearest whole number.
+	 * It uses exactly the same algorithm as web2c implementation of TeX.
+	 * @param	d	number to be rounded
+	 * @return	rounded value
+	 */
+	private long round(double d) { 
+		return (long) ((d >= 0.0) ? d + 0.5 : d - 0.5); 
 	}
 
 	/**
