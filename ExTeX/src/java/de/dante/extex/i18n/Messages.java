@@ -193,7 +193,7 @@ public final class Messages {
      */
     public static void message(final PrintStream writer, final String fmt) {
 
-        writer.println(Messages.format(fmt));
+        writer.println(format(fmt));
     }
 
     /**
