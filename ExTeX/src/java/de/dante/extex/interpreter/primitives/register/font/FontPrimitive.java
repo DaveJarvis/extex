@@ -239,13 +239,13 @@ public class FontPrimitive extends AbstractAssignment
 
         StringBuffer sb = new StringBuffer((char) t.getChar().getCodePoint());
 
-        for (t = source.getToken(context); t != null
-                && !(t instanceof SpaceToken); t = source.getToken(context)) {
+        while (t != null && !(t instanceof SpaceToken)) {
             if (t instanceof ControlSequenceToken) {
                 source.push(t);
                 break;
             }
             sb.append((char) t.getChar().getCodePoint());
+            t = source.getToken(context);
         }
 
         return sb.toString();
