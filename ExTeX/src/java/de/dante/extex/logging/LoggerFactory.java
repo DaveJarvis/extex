@@ -29,18 +29,6 @@ import de.dante.util.configuration.ConfigurationInstantiationException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-/*
- * ...
- *
- * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
-/*
- * ...
- *
- * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
- */
 public class LoggerFactory {
 
     /**
