@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003  Gerd Neugebauer
+ * Copyright (C) 2003-2004 Gerd Neugebauer
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -49,18 +49,16 @@ public class InterpreterFactory {
 
     /**
      * Get a instance for the interface Interpreter.
-     *
+     * 
      * @return a new instance for the interface Interpreter
      */
     public Interpreter newInstance() throws ConfigurationException {
         Interpreter interpreter;
 
         try {
-            interpreter = (Interpreter) (Class.forName(classname).getConstructor(new Class[] {
-                                                                                     Configuration.class
-                                                                                 }).newInstance(new Object[] {
-                                                                                                    config
-                                                                                                }));
+            interpreter = (Interpreter) (Class.forName(classname)
+                    .getConstructor(new Class[]{Configuration.class})
+                    .newInstance(new Object[]{config}));
         } catch (IllegalArgumentException e) {
             throw new ConfigurationInstantiationException(e);
         } catch (SecurityException e) {

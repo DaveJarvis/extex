@@ -18,6 +18,8 @@
  */
 package de.dante.extex.scanner;
 
+import de.dante.extex.i18n.Messages;
+
 
 /**
  * This class represents a control sequence token.
@@ -50,10 +52,10 @@ public class ControlSequenceToken extends AbstractToken implements Token {
 
     /**
      * Get the string representation of this object for debugging purposes.
-     *
+     * 
      * @return the string representation
      */
     public String toString() {
-        return "<control " + value + ">"; //TODO: use i18n
+        return Messages.format("ControlSequenceToken.Text", value);
     }
 }

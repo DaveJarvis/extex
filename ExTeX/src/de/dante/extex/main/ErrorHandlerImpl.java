@@ -20,7 +20,6 @@ package de.dante.extex.main;
 
 import java.io.IOException;
 
-import de.dante.util.configuration.ConfigurationException;
 import de.dante.extex.i18n.GeneralHelpingException;
 import de.dante.extex.i18n.Messages;
 import de.dante.extex.interpreter.ErrorHandler;
@@ -31,6 +30,7 @@ import de.dante.extex.logging.Logger;
 import de.dante.extex.scanner.Token;
 import de.dante.util.GeneralException;
 import de.dante.util.Locator;
+import de.dante.util.configuration.ConfigurationException;
 
 /**
  * This is a simple implementation of the error handler interacting with the
