@@ -73,10 +73,12 @@ public class Lowercase extends AbstractCode implements ExpandableCode {
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
-    public void expand(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws GeneralException {
+    public void expand(final Flags prefix, final Context context,
+            final TokenSource source, final Typesetter typesetter)
+            throws GeneralException {
 
         Tokens toks = source.getTokens();
+        String namespace = context.getNamespace();
 
         if (toks == null) {
             throw new RuntimeException("unimplemented");
@@ -91,9 +93,9 @@ public class Lowercase extends AbstractCode implements ExpandableCode {
             if (t instanceof LetterToken || t instanceof OtherToken) {
                 UnicodeChar uc = context.getLccode(t.getChar());
                 if (uc != null && //
-                        uc.getCodePoint() != 0 && //
-                        !uc.equals(t.getChar())) {
-                    t = factory.newInstance(t.getCatcode(), uc);
+                    uc.getCodePoint() != 0 && //
+                    !uc.equals(t.getChar())) {
+                    t = factory.newInstance(t.getCatcode(), uc, namespace);
                 }
             }
             result[i] = t;
