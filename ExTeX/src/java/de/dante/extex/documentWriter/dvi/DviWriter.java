@@ -394,7 +394,7 @@ public class DviWriter {
 
 
     /**
-     * Default magnication.  Used if the class could not get the
+     * Default magnification.  Used if the class could not get the
      * magnification of the document.
      *
      */
