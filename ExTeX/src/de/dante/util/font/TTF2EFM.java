@@ -35,12 +35,19 @@ import de.dante.extex.font.TTFReader;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class TTF2EFM {
+public final class TTF2EFM {
 
     /**
      * filebuffer
      */
     private static final int FILEBUFFER = 0x8000;
+
+    /**
+     * private: no instance
+     */
+    private TTF2EFM() {
+
+    }
 
     /**
      * main

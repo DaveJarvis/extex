@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2004 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -17,49 +17,46 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.register;
+package de.dante.extex.interpreter.primitives.register.bool;
 
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.util.GeneralException;
 
 /**
- * This class provides an implementation for the primitive <code>\real</code>.
- * It sets the named real register to the value given,
+ * This class provides an implementation for the primitive <code>\bool</code>.
+ * It sets the named bool register to the value given,
  * and as a side effect all prefixes are zeroed.
  *
  * <p>
  * All features are inherited from
- * {@link de.dante.extex.interpreter.type.NamedReal Real}. Just the key
- * has to be provided under which this Real has to be stored. This key is
- * constructed from the name, a hash mark and the running number.
+ * {@link de.dante.extex.interpreter.primitives.register.NamedBool NamedBool}.
+ * Just the key has to be provided under which this Bool has to be stored.
+ * This key is constructed from the name, a hash mark and the running number.
  * </p>
  *
  * <p>Example</p>
  * <pre>
- * \real12=345.67
+ * \bool12=true
  * </pre>
  *
  * @author <a href="mailto:mgn@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class NumberedReal extends NamedReal {
+public class NumberedBool extends NamedBool {
 
     /**
      * Creates a new object.
      *
      * @param name the name for debugging
      */
-    public NumberedReal(final String name) {
+    public NumberedBool(final String name) {
 
         super(name);
     }
 
     /**
-     * Return the key (the number) for the register.
-     *
-     * @param source    the tokensource
-     * @return Return the key
-     * @throws GeneralException if an ecxeption was occured
+     * @see de.dante.extex.interpreter.primitives.register.NamedCount#getKey(
+     *      de.dante.extex.interpreter.TokenSource)
      */
     protected String getKey(final TokenSource source) throws GeneralException {
 

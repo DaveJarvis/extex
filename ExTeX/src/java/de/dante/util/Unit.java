@@ -27,7 +27,14 @@ import de.dante.extex.interpreter.type.GlueComponent;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class Unit {
+public final class Unit {
+
+    /**
+     * private: no instance
+     */
+    private Unit() {
+
+    }
 
     /**
      * basis 10

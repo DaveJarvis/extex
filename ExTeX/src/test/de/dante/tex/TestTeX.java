@@ -31,7 +31,14 @@ import de.dante.extex.ExTeX;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class TestTeX {
+public final class TestTeX {
+
+    /**
+     * private: no instance
+     */
+    private TestTeX() {
+
+    }
 
     /**
      * Run ExTeX with a special File and compare the output with a output-test-file.

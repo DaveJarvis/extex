@@ -17,10 +17,10 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.register;
+package de.dante.extex.interpreter.primitives.register.bool;
 
 import de.dante.extex.i18n.GeneralHelpingException;
-import de.dante.extex.interpreter.AbstractCode;
+import de.dante.extex.interpreter.AbstractAssignment;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
@@ -31,51 +31,46 @@ import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.GeneralException;
 
 /**
- * This class provides an implementation for the primitive <code>\realdef</code>.
+ * This class provides an implementation for the primitive <code>\booldef</code>.
  *
- * <p>
- * Example
- * </p>
- *
+ * <p>Example</p>
  * <pre>
- *  \realdef\hugo=7
+ * \booldef\hugo=7
  * </pre>
  *
  * @author <a href="mailto:mgn@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class RealDef extends AbstractCode {
+public class BoolDef extends AbstractAssignment {
 
     /**
      * Creates a new object.
      *
      * @param name the name for debugging
      */
-    public RealDef(final String name) {
+    public BoolDef(final String name) {
 
         super(name);
     }
 
     /**
-     * @see de.dante.extex.interpreter.Code#execute(de.dante.extex.interpreter.Flags,
+     * @see de.dante.extex.interpreter.Code#execute(
+     *      de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
+    public void assign(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        //  \realdef\hugo=7
+        //  \booldef\hugo=7
         Token tok = source.scanNonSpace();
         if (!(tok instanceof ControlSequenceToken)) {
             throw new GeneralHelpingException("TTP.MissingCtrlSeq");
         }
         source.scanOptionalEquals();
-        String key = "real#" + Long.toString(Count.scanCount(context, source));
-        context.setMacro(tok.getValue(), new NamedReal(key), prefix.isGlobal());
-
-        prefix.clear();
-        // doAfterAssignment(context, source);
+        String key = "bool#" + Long.toString(Count.scanCount(context, source));
+        context.setMacro(tok.getValue(), new NamedBool(key), prefix.isGlobal());
     }
 }
