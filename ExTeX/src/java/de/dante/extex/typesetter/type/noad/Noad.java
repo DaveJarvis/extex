@@ -41,4 +41,11 @@ public interface Noad extends Knot {
      */
     NodeList typeset(MathContext mathContext);
 
+    /**
+     * Produce a printable representation of the noad in a StringBuffer.
+     *
+     * @param sb the string buffer
+     */
+    void toString(StringBuffer sb);
+
 }

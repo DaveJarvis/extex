@@ -116,4 +116,23 @@ public class MathList extends AbstractNoad implements Noad, NSSNoad {
         return null;
     }
 
+    /**
+     * @see java.lang.Object#toString()
+     */
+    public String toString() {
+
+        StringBuffer sb = new StringBuffer();
+        toString(sb);
+        return sb.toString();
+    }
+
+    /**
+     * @see de.dante.extex.typesetter.type.noad.Noad#toString(java.lang.StringBuffer)
+     */
+    public void toString(final StringBuffer sb) {
+
+        for (int i = 0; i < list.size(); i++) {
+            ((Noad) list.get(i)).toString(sb);
+        }
+    }
 }

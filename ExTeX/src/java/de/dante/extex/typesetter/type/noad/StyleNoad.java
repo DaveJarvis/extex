@@ -67,6 +67,16 @@ public final class StyleNoad implements Noad {
     }
 
     /**
+     * @see "TTP [694]"
+     * @see de.dante.extex.typesetter.type.noad.Noad#toString(java.lang.StringBuffer)
+     */
+    public void toString(final StringBuffer sb) {
+
+        // TODO unimplemented
+
+    }
+
+    /**
      * @see de.dante.extex.typesetter.type.noad.Noad#typeset(MathContext)
      */
     public NodeList typeset(final MathContext mathContext) {

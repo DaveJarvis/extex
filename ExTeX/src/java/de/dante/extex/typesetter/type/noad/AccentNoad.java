@@ -41,6 +41,15 @@ public class AccentNoad extends AbstractNoad {
     }
 
     /**
+     * @see de.dante.extex.typesetter.type.noad.Noad#toString(java.lang.StringBuffer)
+     */
+    public void toString(final StringBuffer sb) {
+
+        // TODO unimplemented
+
+    }
+
+    /**
      * @see de.dante.extex.typesetter.type.noad.Noad#typeset(MathContext)
      */
     public NodeList typeset(final MathContext mathContext) {
@@ -48,5 +57,4 @@ public class AccentNoad extends AbstractNoad {
         // TODO unimplemented
         return null;
     }
-
 }

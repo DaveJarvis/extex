@@ -31,13 +31,21 @@ import de.dante.extex.typesetter.type.noad.util.MathContext;
  * @version $Revision$
  */
 public class BinNoad extends AbstractNoad {
-
     /**
      * Creates a new object.
      */
     public BinNoad() {
 
         super();
+    }
+
+    /**
+     * @see de.dante.extex.typesetter.type.noad.Noad#toString(java.lang.StringBuffer)
+     */
+    public void toString(final StringBuffer sb) {
+
+        // TODO unimplemented
+
     }
 
     /**
