@@ -112,15 +112,6 @@ public class TestFixedPoint extends TestCase {
     }
 
     /**
-     * test 0x21998
-     */
-    public void testA7() {
-
-        FixedPoint fp = new FixedPoint(0x21998);
-        assertEquals(2.09997558594, fp.getDoubleValue(), 0.0);
-    }
-
-    /**
      * test 1.999939
      */
     public void testB1() {
@@ -172,6 +163,24 @@ public class TestFixedPoint extends TestCase {
 
         FixedPoint fp = new FixedPoint(-2.0);
         assertEquals(0x8000, fp.getFixedPoint());
+    }
+
+    /**
+     * test 0x21998
+     */
+    public void testA7() {
+
+        FixedPoint fp = new FixedPoint(0x21998);
+        assertEquals(2.09997558594, fp.getDoubleValue(), 0.0);
+    }
+
+    /**
+     * test 2.09997558594
+     */
+    public void testB7() {
+
+        FixedPoint fp = new FixedPoint(2.09997558594);
+        assertEquals(0x21998, fp.getFixedPoint());
     }
 
 }
