@@ -50,7 +50,6 @@ import de.dante.extex.scanner.TokenFactoryImpl;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.GeneralException;
 import de.dante.util.Locator;
-import de.dante.util.NotObservableException;
 import de.dante.util.StringList;
 import de.dante.util.UnicodeChar;
 import de.dante.util.configuration.Configuration;
@@ -62,6 +61,7 @@ import de.dante.util.file.FileFinder;
 import de.dante.util.file.FileFinderConfigImpl;
 import de.dante.util.file.FileFinderDirect;
 import de.dante.util.file.FileFinderList;
+import de.dante.util.observer.NotObservableException;
 import de.dante.util.observer.Observable;
 import de.dante.util.observer.Observer;
 

@@ -26,13 +26,13 @@ import java.io.Reader;
 import java.lang.reflect.InvocationTargetException;
 
 import de.dante.util.GeneralException;
-import de.dante.util.NotObservableException;
 import de.dante.util.configuration.Configuration;
 import de.dante.util.configuration.ConfigurationException;
 import de.dante.util.configuration.ConfigurationInstantiationException;
 import de.dante.util.configuration.ConfigurationWrapperException;
 import de.dante.util.file.FileFinder;
 import de.dante.util.file.FileFinderConfigImpl;
+import de.dante.util.observer.NotObservableException;
 import de.dante.util.observer.Observable;
 import de.dante.util.observer.Observer;
 import de.dante.util.observer.ObserverList;

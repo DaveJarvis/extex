@@ -20,7 +20,6 @@ package de.dante.extex.interpreter.type;
 
 import java.io.Serializable;
 
-import de.dante.extex.interpreter.CountConvertable;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.scanner.Catcode;
