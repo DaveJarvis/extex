@@ -269,12 +269,10 @@ public class TFMFont
      * @param apsfontmap    the psfonts.map reader
      * @param encf          the encoding factory
      * @throws IOException if an IO-erorr occured
-     * @throws HelpingException if an error occured
-     * @throws ConfigurationException if a config error occured
+     * @throws ConfigurationException ...
      */
     public void setFontMapEncoding(final PSFontsMapReader apsfontmap,
-            final EncFactory encf) throws IOException, HelpingException,
-            ConfigurationException {
+            final EncFactory encf) throws IOException, ConfigurationException {
 
         psfontmap = apsfontmap;
         encfactory = encf;

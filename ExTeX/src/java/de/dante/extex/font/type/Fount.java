@@ -105,4 +105,16 @@ public interface Fount {
      */
     Glue getLetterSpacing();
 
+    /**
+     * Returns the design size.
+     * @return Returns the design size.
+     */
+    Dimen getDesignSize();
+
+    /**
+     * Returns the actual size.
+     * @return Returns the actual size.
+     */
+    Dimen getActualSize();
+
 }

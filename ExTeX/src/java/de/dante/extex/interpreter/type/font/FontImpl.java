@@ -183,4 +183,19 @@ public class FontImpl implements Font, Serializable {
         return fount.getBoundingBox();
     }
 
+    /**
+     * @see de.dante.extex.font.type.Fount#getActualSize()
+     */
+    public Dimen getActualSize() {
+
+        return fount.getActualSize();
+    }
+
+    /**
+     * @see de.dante.extex.font.type.Fount#getDesignSize()
+     */
+    public Dimen getDesignSize() {
+
+        return fount.getDesignSize();
+    }
 }

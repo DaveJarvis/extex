@@ -185,4 +185,20 @@ public class NullFont implements Font, Serializable {
 
         return null;
     }
+
+    /**
+     * @see de.dante.extex.font.type.Fount#getActualSize()
+     */
+    public Dimen getActualSize() {
+
+        return Dimen.ZERO_PT;
+    }
+
+    /**
+     * @see de.dante.extex.font.type.Fount#getDesignSize()
+     */
+    public Dimen getDesignSize() {
+
+        return Dimen.ZERO_PT;
+    }
 }
