@@ -628,7 +628,7 @@ public abstract class Moritz
 
         if (t == null) {
             return;
-        } else if (t.equals(Catcode.OTHER, "=")) {
+        } else if (t.equals(Catcode.OTHER, '=')) {
             skipSpaces = true;
         } else {
             stream.put(t);
@@ -908,9 +908,9 @@ public abstract class Moritz
 
         if (t == null) {
             throw new HelpingException(localizer, "TTP.MissingNumber");
-        } else if (t.equals(Catcode.OTHER, "-")) {
+        } else if (t.equals(Catcode.OTHER, '-')) {
             return -scanNumber(context);
-        } else if (t.equals(Catcode.OTHER, "+")) {
+        } else if (t.equals(Catcode.OTHER, '+')) {
             return scanNumber(context);
         }
 
