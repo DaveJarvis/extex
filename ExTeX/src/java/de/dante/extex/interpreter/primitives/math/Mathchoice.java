@@ -75,7 +75,7 @@ public class Mathchoice extends AbstractMathCode {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        NoadConsumer nc = getListMaker(typesetter);
+        NoadConsumer nc = getListMaker(context, typesetter);
         Noad display = nc.scanNoad(context, source);
         Noad text = nc.scanNoad(context, source);
         Noad script = nc.scanNoad(context, source);

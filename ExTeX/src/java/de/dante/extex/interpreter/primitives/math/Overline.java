@@ -19,11 +19,9 @@
 
 package de.dante.extex.interpreter.primitives.math;
 
-import de.dante.extex.i18n.MathHelpingException;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.typesetter.ListMaker;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.listMaker.NoadConsumer;
 import de.dante.extex.typesetter.type.noad.Noad;
@@ -77,7 +75,7 @@ public class Overline extends AbstractMathCode {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        NoadConsumer nc = getListMaker(typesetter);
+        NoadConsumer nc = getListMaker(context, typesetter);
         Noad noad = nc.scanNoad(context, source);
         nc.add(new OverlinedNoad(noad));
         return true;
