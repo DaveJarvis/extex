@@ -72,7 +72,8 @@ public abstract class AbstractToken implements Token, Serializable {
      */
     public boolean equals(final Catcode cc, final String s) {
 
-        return false;
+        return getCatcode() == cc && s.length() == 1
+                && (char) uniCode.getCodePoint() == s.charAt(0);
     }
 
     /**
