@@ -1625,8 +1625,7 @@ public class ExTeX {
 
             interpreter.run();
 
-            outStream.close();
-
+            //outStream.close();
             //docWriter.close();
 
             int pages = docWriter.getPages();
