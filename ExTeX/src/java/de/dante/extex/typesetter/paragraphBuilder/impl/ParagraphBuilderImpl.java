@@ -235,10 +235,10 @@ public class ParagraphBuilderImpl implements ParagraphBuilder, LogEnabled, Hyphe
     }
 
     /**
-     * Compute badness.
+     * Compute the badness.
      *
-     * @param t ... given t >= 0
-     * @param s ...
+     * @param t total given t >= 0
+     * @param s sum
      *
      * @return the computed badness
      *
