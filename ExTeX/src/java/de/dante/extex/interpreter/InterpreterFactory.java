@@ -40,7 +40,9 @@ public class InterpreterFactory {
      */
     private static final String CLASS_ATTRIBUTE = "class";
 
-    /** the configuration for this factory */
+    /**
+     * The field <tt>config</tt> contains the configuration for this factory
+     */
     private Configuration config;
 
     /**
@@ -55,7 +57,7 @@ public class InterpreterFactory {
      * @param configuration the configuration object to use
      * 
      * @throws ConfigurationException in case that the attribute <tt>classname</tt>
-     *             is kissing
+     *             is missing
      */
     public InterpreterFactory(final Configuration configuration)
             throws ConfigurationException {
