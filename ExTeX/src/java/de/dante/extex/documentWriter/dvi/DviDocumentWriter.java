@@ -58,10 +58,10 @@ public class DviDocumentWriter implements DocumentWriter {
 
 
     /**
-     * The variable <code>debug</code> turn debug on or off.
+     * The constant <code>DEBUG</code> turn debug on or off.
      *
      */
-    private final boolean debug = false;
+    private final boolean DEBUG = false;
 
 
     /**
@@ -166,7 +166,12 @@ public class DviDocumentWriter implements DocumentWriter {
             dviWriter.writeVerticalSpace(nodes.getShift());
             while (iterator.hasNext()) {
                 Node node = iterator.next();
-                node.visit(visitor, node);
+                node.visit(visitor, null);
+
+                // write next Nodes after this node in vertical list
+                if (mode == Mode.VERTICAL) {
+                    dviWriter.writeSpace(node.getHeight(), Mode.VERTICAL);
+                }
             }
             dviWriter.restoreCurrentPositions();
         }
@@ -347,7 +352,6 @@ public class DviDocumentWriter implements DocumentWriter {
 
             writeNodes(nodes);
 
-
             mode = oldMode;
             return null;
         }
@@ -412,7 +416,7 @@ public class DviDocumentWriter implements DocumentWriter {
         dviWriter = new DviWriter(writer, documentWriterOptions);
         visitor = new DviVisitor(dviWriter);
 
-        if (debug) {
+        if (DEBUG) {
             visitor = new DebugNodeVisitor(visitor);
         }
     }
@@ -451,7 +455,7 @@ public class DviDocumentWriter implements DocumentWriter {
         mode = Mode.VERTICAL;
         dviWriter.beginPage();
 
-        nodes.visit(visitor, nodes);
+        nodes.visit(visitor, null);
 
         dviWriter.endPage();
 
