@@ -85,7 +85,8 @@ public abstract class AbstractNodeList extends AbstractNode implements NodeList 
      */
     public void add(final int index, final Node node) {
 
-        this.list.add(index, node);
+        list.add(index, node);
+        updateDimensions(node);
     }
 
     /**
@@ -104,7 +105,8 @@ public abstract class AbstractNodeList extends AbstractNode implements NodeList 
      */
     public void addGlyph(final CharNode node) {
 
-        add(node);
+        list.add(node);
+        updateDimensions(node);
     }
 
     /**
@@ -186,7 +188,8 @@ public abstract class AbstractNodeList extends AbstractNode implements NodeList 
      */
     public Node remove(final int index) {
 
-        return (Node) this.list.remove(index);
+        Node node = (Node) list.remove(index);
+        return node;
     }
 
     /**

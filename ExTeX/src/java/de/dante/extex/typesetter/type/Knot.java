@@ -20,7 +20,7 @@ package de.dante.extex.typesetter.type;
 
 
 /**
- * ...
+ * This is a super-interface for all types of nodes used in the typesetter.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

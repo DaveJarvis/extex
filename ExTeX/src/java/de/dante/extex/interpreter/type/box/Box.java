@@ -33,8 +33,8 @@ import de.dante.extex.scanner.Catcode;
 import de.dante.extex.scanner.Token;
 import de.dante.extex.typesetter.NodeList;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.extex.typesetter.impl.InnerVerticalListMaker;
-import de.dante.extex.typesetter.impl.RestrictedHorizontalListMaker;
+import de.dante.extex.typesetter.listMaker.InnerVerticalListMaker;
+import de.dante.extex.typesetter.listMaker.RestrictedHorizontalListMaker;
 import de.dante.util.GeneralException;
 import de.dante.util.configuration.ConfigurationException;
 import de.dante.util.framework.i18n.Localizer;
@@ -293,7 +293,7 @@ public class Box implements Serializable {
     }
 
     /**
-     * ...
+     * Adjust the height of the box if it is not void.
      *
      * @param spread the length to add to the height
      */
@@ -306,7 +306,7 @@ public class Box implements Serializable {
     }
 
     /**
-     * ...
+     * Adjust the width of the box if it is not void.
      *
      * @param spread the length to add to the width
      */

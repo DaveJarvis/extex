@@ -25,7 +25,7 @@ import de.dante.extex.typesetter.NodeVisitor;
 import de.dante.util.GeneralException;
 
 /**
- * ...
+ * This node represents a glyph which can be broken if required.
  *
  * @see "TeX -- The Program [145]"
  *

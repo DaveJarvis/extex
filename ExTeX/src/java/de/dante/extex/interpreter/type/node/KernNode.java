@@ -22,7 +22,8 @@ package de.dante.extex.interpreter.type.node;
 import de.dante.extex.typesetter.Node;
 
 /**
- * ...
+ * This interface describes a horizpntal or vertical adjustment of the
+ * current position on the page.
  *
  * From The TeXbook
  * <p>

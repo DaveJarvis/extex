@@ -32,7 +32,7 @@ import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.GeneralException;
 
 /**
- * ...
+ * This class provides a Box parameter implementation.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  *
@@ -66,7 +66,6 @@ public class BoxParameter extends AbstractCode implements Code, Serializable {
         Box box = source.getBox(typesetter);
         context.setBox(key, box, prefix.isGlobal());
         return true;
-        //TODO doAfterAssignment(context, source);
     }
 
     /**

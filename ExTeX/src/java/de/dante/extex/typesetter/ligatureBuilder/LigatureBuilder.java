@@ -22,7 +22,7 @@ import de.dante.extex.typesetter.NodeList;
 
 
 /**
- * ...
+ * This interface describes the capability of a ligature builder.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

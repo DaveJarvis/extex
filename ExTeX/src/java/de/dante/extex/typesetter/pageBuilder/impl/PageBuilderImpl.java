@@ -55,8 +55,6 @@ public class PageBuilderImpl implements PageBuilder {
     }
 
     /**
-     * ...
-     *
      * @see de.dante.extex.typesetter.pageBuilder.PageBuilder#close()
      */
     public void close() throws GeneralException {
