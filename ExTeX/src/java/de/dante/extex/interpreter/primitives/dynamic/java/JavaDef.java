@@ -158,7 +158,7 @@ public class JavaDef extends AbstractCode {
         try {
             code = (Code) (Class.forName(classname)
                     .getConstructor(new Class[]{String.class})
-                    .newInstance(new Object[]{cs.getValue()}));
+                    .newInstance(new Object[]{cs.getName()}));
         } catch (IllegalArgumentException e) {
             throw new GeneralException(e);
         } catch (SecurityException e) {
