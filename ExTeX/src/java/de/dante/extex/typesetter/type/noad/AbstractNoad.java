@@ -98,6 +98,11 @@ public abstract class AbstractNoad implements Noad {
         // TODO gene: unimplemented
     }
 
+    /**
+     * TODO gene: missing JavaDoc
+     *
+     * @param sb the target string buffer
+     */
     protected void printNoad(final StringBuffer sb) {
         
         // TODO gene: unimplemented
