@@ -349,6 +349,10 @@ public class TypesetterImpl
     public void par() throws GeneralException {
 
         listMaker.par();
+
+        if (saveStack == null) {
+            pageBuilder.inspectAndBuild(listMaker.close(options));
+        }
     }
 
     /**
@@ -485,7 +489,7 @@ public class TypesetterImpl
      */
     public void shipout(final NodeList nodes) throws GeneralException {
 
-        pageBuilder.inspectAndBuild(nodes);
+        pageBuilder.flush(nodes);
     }
 
     /**
