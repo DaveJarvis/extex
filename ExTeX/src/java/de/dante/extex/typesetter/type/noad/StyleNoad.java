@@ -79,6 +79,7 @@ public final class StyleNoad implements Noad {
      * instead.
      *
      * @param style the style
+     * @param printName the printable representation
      */
     private StyleNoad(final String style, final String printName) {
 
