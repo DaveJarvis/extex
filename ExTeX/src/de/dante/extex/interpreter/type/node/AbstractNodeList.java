@@ -266,6 +266,16 @@ public abstract class AbstractNodeList extends AbstractNode implements NodeList 
     }
 
     /**
+     * @see java.lang.Object#toString()
+     */
+    public String toString() {
+
+        StringBuffer sb = new StringBuffer();
+        toString(sb, "");
+        return sb.toString();
+    }
+
+    /**
      * @see de.dante.extex.typesetter.Node#toString(java.lang.StringBuffer,
      *      java.lang.String)
      */
