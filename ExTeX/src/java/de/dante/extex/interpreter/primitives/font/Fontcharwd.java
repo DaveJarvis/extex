@@ -126,7 +126,7 @@ public class Fontcharwd extends AbstractCode
             throws GeneralException {
 
         long value = convertDimen(context, source, typesetter);
-        source.push(new Tokens(context, value));
+        source.push(new Dimen(value).toToks(context.getTokenFactory()));
     }
 
     /**
@@ -138,7 +138,7 @@ public class Fontcharwd extends AbstractCode
             final Typesetter typesetter) throws GeneralException {
 
         long value = convertDimen(context, source, typesetter);
-        return new Tokens(context, value);
+        return new Dimen(value).toToks(context.getTokenFactory());
     }
 
 }
