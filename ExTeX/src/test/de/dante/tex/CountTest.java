@@ -43,8 +43,8 @@ public class CountTest extends TestCase {
      */
     public void testCount01() {
 
-        assertTrue(TestTeX.test("testdata/jucount01",
-                "testdata/jucount01.testtxt"));
+        assertTrue(TestTeX.test("jucount01",
+                                "src/test/data/jucount01.testtxt"));
     }
 
 }

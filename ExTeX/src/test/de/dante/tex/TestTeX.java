@@ -54,7 +54,7 @@ public final class TestTeX {
 
             // run ExTeX
             Properties pro = System.getProperties();
-            ExTeX extex = new ExTeX(pro);
+            ExTeX extex = new ExTeX(pro, ".extex");
             pro.setProperty("extex.output", "text");
             pro.setProperty("extex.file", texfile);
             pro.setProperty("extex.jobname", texfile);

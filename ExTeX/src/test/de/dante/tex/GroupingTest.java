@@ -37,7 +37,8 @@ public class GroupingTest extends TestCase {
 	/*
 	 */
 	public void testGroup() {
-		assertTrue(TestTeX.test("jugrouping", "testdata/jugrouping.testtxt"));
+		assertTrue(TestTeX.test("jugrouping",
+                                        "src/test/data/jugrouping.testtxt"));
 	}
 
 }
