@@ -402,7 +402,8 @@ public class GroupImpl implements Group, Tokenizer, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.impl.Group#setDelcode(de.dante.util.UnicodeChar, de.dante.extex.interpreter.type.Count, boolean)
+     * @see de.dante.extex.interpreter.context.impl.Group#setDelcode(de.dante.util.UnicodeChar,
+     *      de.dante.extex.interpreter.type.Count, boolean)
      */
     public void setDelcode(final UnicodeChar c, final Count code, final boolean global) {
 
@@ -545,7 +546,8 @@ public class GroupImpl implements Group, Tokenizer, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.impl.Group#setMathcode(de.dante.util.UnicodeChar, Count, boolean)
+     * @see de.dante.extex.interpreter.context.impl.Group#setMathcode(de.dante.util.UnicodeChar,
+     *      de.dante.extex.interpreter.type.Count, boolean)
      */
     public void setMathcode(final UnicodeChar c, final Count code, final boolean global) {
 
@@ -744,7 +746,8 @@ public class GroupImpl implements Group, Tokenizer, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.impl.Group#setSfcode(de.dante.util.UnicodeChar, de.dante.extex.interpreter.type.Count, boolean)
+     * @see de.dante.extex.interpreter.context.impl.Group#setSfcode(de.dante.util.UnicodeChar,
+     *      de.dante.extex.interpreter.type.Count, boolean)
      */
     public void setSfcode(final UnicodeChar c, final Count code, final boolean global) {
 

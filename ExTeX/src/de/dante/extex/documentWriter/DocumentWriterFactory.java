@@ -42,6 +42,9 @@ public class DocumentWriterFactory {
      */
     private static final String CLASS_ATTRIBUTE = "class";
 
+    /**
+     * The constant <tt>DEFAULT_ATTRIBUTE</tt> contains the ...
+     */
     private static final String DEFAULT_ATTRIBUTE = "default";
 
     /**
