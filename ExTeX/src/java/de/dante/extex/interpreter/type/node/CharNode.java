@@ -75,6 +75,7 @@ public class CharNode extends AbstractNode implements Node {
             setWidth(new Dimen(0));
             setHeight(new Dimen(0));
             setDepth(new Dimen(0));
+            character = null;
         }
     }
 

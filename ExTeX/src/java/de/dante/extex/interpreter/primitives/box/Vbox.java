@@ -118,11 +118,11 @@ public class Vbox extends AbstractCode implements Boxable {
         }
 
         Box box;
-        if (source.scanKeyword("to")) {
+        if (source.getKeyword("to")) {
             Dimen d = new Dimen(context, source);
             box = new Box(context, source, typesetter, false);
             box.setWidth(d);
-        } else if (source.scanKeyword("spread")) {
+        } else if (source.getKeyword("spread")) {
             Dimen d = new Dimen(context, source);
             box = new Box(context, source, typesetter, false);
             box.getWidth().add(d);

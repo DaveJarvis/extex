@@ -94,7 +94,7 @@ public class CountPrimitive extends AbstractCount implements ExpandableCode,
             final TokenSource source) throws GeneralException {
 
         String key = getKey(source, context.getNamespace());
-        source.scanKeyword("by");
+        source.getKeyword("by");
 
         long value = Count.scanCount(context, source);
         value += context.getCount(key).getValue();
@@ -158,7 +158,7 @@ public class CountPrimitive extends AbstractCount implements ExpandableCode,
             final TokenSource source) throws GeneralException {
 
         String key = getKey(source, context.getNamespace());
-        source.scanKeyword("by");
+        source.getKeyword("by");
 
         long value = Count.scanCount(context, source);
 
@@ -180,7 +180,7 @@ public class CountPrimitive extends AbstractCount implements ExpandableCode,
             final TokenSource source) throws GeneralException {
 
         String key = getKey(source, context.getNamespace());
-        source.scanKeyword("by");
+        source.getKeyword("by");
 
         long value = Count.scanCount(context, source);
         value *= context.getCount(key).getValue();

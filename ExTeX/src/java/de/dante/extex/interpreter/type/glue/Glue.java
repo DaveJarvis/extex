@@ -102,10 +102,10 @@ public class Glue implements Serializable, FixedGlue {
 
         super();
         this.length = new GlueComponent(context, source, false);
-        if (source.scanKeyword("plus")) {
+        if (source.getKeyword("plus")) {
             this.stretch = new GlueComponent(context, source, true);
         }
-        if (source.scanKeyword("minus")) {
+        if (source.getKeyword("minus")) {
             this.shrink = new GlueComponent(context, source, true);
         }
     }

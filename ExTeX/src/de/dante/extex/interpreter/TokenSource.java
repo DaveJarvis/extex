@@ -305,7 +305,7 @@ public interface TokenSource {
      *
      * @throws GeneralException in case of an error
      */
-    boolean scanKeyword(String keyword) throws GeneralException;
+    boolean getKeyword(String keyword) throws GeneralException;
 
     /**
      * Scan the expanded token stream for a sequence of letter tokens. If all
@@ -321,7 +321,7 @@ public interface TokenSource {
      *
      * @throws GeneralException in case of an error
      */
-    boolean scanKeyword(String s, boolean space) throws GeneralException;
+    boolean getKeyword(String s, boolean space) throws GeneralException;
 
     /**
      * Scan the input for the next token which has not the catcode SPACE.

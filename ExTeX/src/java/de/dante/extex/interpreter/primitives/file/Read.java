@@ -74,7 +74,7 @@ public class Read extends AbstractCode {
             throws GeneralException {
 
         long no = source.scanInteger();
-        if (!source.scanKeyword("to")) {
+        if (!source.getKeyword("to")) {
             throw new GeneralHelpingException("TTP.MissingToForRead");
         }
         Token cs = source.getControlSequence();
