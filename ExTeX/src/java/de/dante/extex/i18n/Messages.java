@@ -51,7 +51,7 @@ public final class Messages {
      * The constant <tt>BUNDLE_NAME</tt> contains the name of the resource
      * bundle to use.
      */
-    private static final String BUNDLE_NAME = "config.extexMessage";
+    private static final String BUNDLE_NAME = "config.de.dante.extex.message";
 
     /**
      * The constant <tt>bundle</tt> contains the resource bundle for further
