@@ -23,14 +23,14 @@ import de.dante.extex.interpreter.context.Context;
 import de.dante.util.GeneralException;
 
 /**
- * This is an interface which describes the feature to be convertibe into a
+ * This is an interface which describes the feature to be convertible into a
  * dimen.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public interface DimenConvertable {
+public interface DimenConvertible {
 
     /**
      * This method converts a register into a dimen.
