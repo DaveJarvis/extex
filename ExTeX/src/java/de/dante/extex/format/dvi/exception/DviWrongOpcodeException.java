@@ -19,17 +19,17 @@
 package de.dante.extex.format.dvi.exception;
 
 /**
- * DVI: undefined opcode exception.
+ * DVI: wrong opcode exception.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class DVIUndefinedOpcodeException extends DVIException {
+public class DviWrongOpcodeException extends DviException {
 
     /**
      * Create anew object.
      */
-    public DVIUndefinedOpcodeException() {
+    public DviWrongOpcodeException() {
 
         super();
     }
@@ -39,7 +39,7 @@ public class DVIUndefinedOpcodeException extends DVIException {
      *
      * @param message   the message
      */
-    public DVIUndefinedOpcodeException(final String message) {
+    public DviWrongOpcodeException(final String message) {
 
         super(message);
     }

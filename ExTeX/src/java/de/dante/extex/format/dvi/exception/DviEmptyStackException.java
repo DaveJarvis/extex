@@ -16,21 +16,20 @@
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
-
 package de.dante.extex.format.dvi.exception;
 
 /**
- * DVI: exception
+ * DVI: stack is empty!
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class DVIException extends Exception {
+public class DviEmptyStackException extends DviException {
 
     /**
      * Create anew object.
      */
-    public DVIException() {
+    public DviEmptyStackException() {
 
         super();
     }
@@ -40,7 +39,7 @@ public class DVIException extends Exception {
      *
      * @param message   the message
      */
-    public DVIException(final String message) {
+    public DviEmptyStackException(final String message) {
 
         super(message);
     }

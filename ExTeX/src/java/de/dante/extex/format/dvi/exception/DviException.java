@@ -16,20 +16,21 @@
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
+
 package de.dante.extex.format.dvi.exception;
 
 /**
- * DVI: wrong opcode exception.
+ * DVI: exception
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class DVIWrongOpcodeException extends DVIException {
+public class DviException extends Exception {
 
     /**
      * Create anew object.
      */
-    public DVIWrongOpcodeException() {
+    public DviException() {
 
         super();
     }
@@ -39,7 +40,7 @@ public class DVIWrongOpcodeException extends DVIException {
      *
      * @param message   the message
      */
-    public DVIWrongOpcodeException(final String message) {
+    public DviException(final String message) {
 
         super(message);
     }

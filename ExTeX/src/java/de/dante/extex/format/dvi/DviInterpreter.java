@@ -21,7 +21,7 @@ package de.dante.extex.format.dvi;
 
 import java.io.IOException;
 
-import de.dante.extex.format.dvi.exception.DVIException;
+import de.dante.extex.format.dvi.exception.DviException;
 import de.dante.util.file.random.RandomAccessR;
 
 /**
@@ -38,5 +38,5 @@ public interface DviInterpreter {
      * @throws IOException in case of a IO-error.
      * @throws DVIException in case of a DVI-error.
      */
-    void interpret(RandomAccessR rar) throws IOException, DVIException;
+    void interpret(RandomAccessR rar) throws IOException, DviException;
 }
