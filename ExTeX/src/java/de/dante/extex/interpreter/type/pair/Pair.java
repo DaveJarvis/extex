@@ -22,9 +22,9 @@ package de.dante.extex.interpreter.type.pair;
 import java.io.Serializable;
 import java.util.StringTokenizer;
 
-import de.dante.extex.i18n.HelpingException;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.exception.helping.HelpingException;
 import de.dante.extex.interpreter.type.real.Real;
 import de.dante.util.GeneralException;
 

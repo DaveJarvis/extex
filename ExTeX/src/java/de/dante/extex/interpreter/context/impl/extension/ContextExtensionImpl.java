@@ -24,12 +24,12 @@ import java.io.Serializable;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.context.ContextExtension;
 import de.dante.extex.interpreter.context.impl.ContextImpl;
+import de.dante.extex.interpreter.exception.InterpreterExtensionException;
 import de.dante.extex.interpreter.type.bool.Bool;
 import de.dante.extex.interpreter.type.hash.toks.HashToks;
 import de.dante.extex.interpreter.type.pair.Pair;
 import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.transform.Transform;
-import de.dante.extex.main.exception.MainExTeXExtensionException;
 import de.dante.util.GeneralException;
 import de.dante.util.configuration.Configuration;
 import de.dante.util.configuration.ConfigurationException;
@@ -58,7 +58,7 @@ public class ContextExtensionImpl extends ContextImpl
 
         super(config);
         if (!(getGroup() instanceof GroupExtension)) {
-            throw new MainExTeXExtensionException();
+            throw new InterpreterExtensionException();
         }
     }
 

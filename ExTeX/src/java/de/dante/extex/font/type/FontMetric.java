@@ -23,7 +23,7 @@ import java.io.IOException;
 
 import org.jdom.Element;
 
-import de.dante.extex.i18n.HelpingException;
+import de.dante.extex.interpreter.exception.helping.HelpingException;
 import de.dante.util.configuration.ConfigurationException;
 
 /**

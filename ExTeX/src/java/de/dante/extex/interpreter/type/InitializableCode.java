@@ -19,7 +19,7 @@
 package de.dante.extex.interpreter.type;
 
 import de.dante.extex.interpreter.context.Context;
-import de.dante.util.GeneralException;
+import de.dante.extex.interpreter.exception.InterpreterException;
 
 
 /**
@@ -37,8 +37,8 @@ public interface InitializableCode {
      * @param context the interpreter context
      * @param value the source of information for the initialization
      *
-     * @throws GeneralException in case of an error
+     * @throws InterpreterException in case of an error
      */
-    void init(Context context, String value) throws GeneralException;
+    void init(Context context, String value) throws InterpreterException;
 
 }

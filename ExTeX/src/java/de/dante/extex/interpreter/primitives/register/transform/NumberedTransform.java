@@ -20,6 +20,7 @@
 package de.dante.extex.interpreter.primitives.register.transform;
 
 import de.dante.extex.interpreter.TokenSource;
+import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.util.GeneralException;
 
 /**
@@ -29,7 +30,8 @@ import de.dante.util.GeneralException;
  *
  * <p>
  * All features are inherited from
- * {@link de.dante.extex.interpreter.primitives.register.transform.NamedTransform transform}. Just the key
+ * {@link de.dante.extex.interpreter.primitives.register.transform.NamedTransform transform}.
+ * Just the key
  * has to be provided under which this Transform has to be stored. This key is
  * constructed from the name, a hash mark and the running number.
  * </p>
@@ -58,10 +60,17 @@ public class NumberedTransform extends NamedTransform {
      *
      * @param source    the tokensource
      * @return Return the key
-     * @throws GeneralException if an ecxeption was occured
+     * @throws InterpreterException if an ecxeption was occured
      */
-    protected String getKey(final TokenSource source) throws GeneralException {
+    protected String getKey(final TokenSource source)
+            throws InterpreterException {
 
-        return getName() + "#" + Long.toString(source.scanNumber());
+        try {
+            return getName() + "#" + Long.toString(source.scanNumber());
+        } catch (InterpreterException e) {
+            throw e;
+        } catch (GeneralException e) {
+            throw new InterpreterException(e);
+        }
     }
 }

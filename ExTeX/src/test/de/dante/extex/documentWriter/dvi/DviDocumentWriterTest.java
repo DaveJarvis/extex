@@ -30,6 +30,7 @@ import de.dante.extex.documentWriter.NoOutputStreamException;
 import de.dante.extex.documentWriter.SingleDocumentStream;
 import de.dante.extex.i18n.PanicException;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.count.FixedCount;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.dimen.FixedDimen;
@@ -249,7 +250,7 @@ public class DviDocumentWriterTest extends TestCase {
             buffer.append(toString());
         }
 
-        public Tokens toToks(final Context context) throws GeneralException {
+        public Tokens toToks(final Context context) throws InterpreterException {
             return new Tokens(context, value);
         }
     }

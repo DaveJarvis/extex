@@ -22,6 +22,7 @@ package de.dante.extex.interpreter.primitives.register.font;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.AbstractCode;
 import de.dante.extex.interpreter.type.Theable;
 import de.dante.extex.interpreter.type.font.Font;
@@ -81,7 +82,7 @@ public class FontCode extends AbstractCode implements FontConvertible, Theable {
      *      de.dante.extex.interpreter.TokenSource, Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws GeneralException {
+            final Typesetter typesetter) throws InterpreterException {
 
         return new Tokens(context, font.getFontName());
     }
@@ -92,7 +93,7 @@ public class FontCode extends AbstractCode implements FontConvertible, Theable {
      *      de.dante.extex.interpreter.TokenSource)
      */
     public Font convertFont(final Context context, final TokenSource source)
-            throws GeneralException {
+            throws InterpreterException {
 
         return font;
     }

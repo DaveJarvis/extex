@@ -127,6 +127,14 @@ public interface Interpreter extends TokenSource, Observable {
     void setFontFactory(FontFactory fontFactory);
 
     /**
+     * Setter for the context.
+     * Use with care!
+     *
+     * @param context the interpreter context
+     */
+    void setContext(Context context);
+
+    /**
      * Setter for the interaction mode.
      *
      * @param interaction the interaction mode

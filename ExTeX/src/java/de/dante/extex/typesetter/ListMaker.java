@@ -22,6 +22,7 @@ package de.dante.extex.typesetter;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.context.TypesettingContext;
+import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.glue.Glue;
@@ -86,10 +87,9 @@ public interface ListMaker {
      *  interpreter context
      *
      * @return the node list enclosed in this instance.
-     *
-     * @throws GeneralException in case of an error
+     * @throws InterpreterException TODO
      */
-    NodeList complete(TypesetterOptions context) throws GeneralException;
+    NodeList complete(TypesetterOptions context) throws InterpreterException;
 
     /**
      * Access the last node on the list.

@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter.primitives.typesetter;
 
-import de.dante.extex.i18n.HelpingException;
+import de.dante.extex.interpreter.exception.helping.HelpingException;
 import de.dante.extex.interpreter.type.AbstractCode;
 import de.dante.extex.typesetter.Mode;
 import de.dante.extex.typesetter.Typesetter;

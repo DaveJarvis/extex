@@ -22,10 +22,12 @@ package de.dante.extex.interpreter.primitives.register;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.AbstractCode;
 import de.dante.extex.interpreter.type.ExpandableCode;
 import de.dante.extex.interpreter.type.count.CountConvertible;
 import de.dante.extex.scanner.Catcode;
+import de.dante.extex.scanner.CatcodeException;
 import de.dante.extex.scanner.Token;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.GeneralException;
@@ -87,11 +89,15 @@ public class CharCode extends AbstractCode
      */
     public void expand(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws GeneralException {
+            throws InterpreterException {
 
-        Token t = context.getTokenFactory().createToken(Catcode.OTHER,
-                character, context.getNamespace());
-        source.push(t);
+        try {
+            Token t = context.getTokenFactory().createToken(Catcode.OTHER,
+                    character, context.getNamespace());
+            source.push(t);
+        } catch (CatcodeException e) {
+            throw new InterpreterException(e);
+        }
     }
 
     /**
@@ -100,7 +106,7 @@ public class CharCode extends AbstractCode
      *      de.dante.extex.interpreter.TokenSource, Typesetter)
      */
     public long convertCount(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws GeneralException {
+            final Typesetter typesetter) throws InterpreterException {
 
         return character.getCodePoint();
     }

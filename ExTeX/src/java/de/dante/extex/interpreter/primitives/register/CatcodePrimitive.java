@@ -19,10 +19,10 @@
 
 package de.dante.extex.interpreter.primitives.register;
 
-import de.dante.extex.i18n.HelpingException;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.exception.helping.HelpingException;
 import de.dante.extex.interpreter.type.AbstractAssignment;
 import de.dante.extex.scanner.Catcode;
 import de.dante.extex.scanner.CatcodeException;

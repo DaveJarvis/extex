@@ -23,6 +23,7 @@ import java.io.Serializable;
 
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.exception.helping.ArithmeticOverflowException;
 import de.dante.extex.interpreter.exception.helping.EofException;
 import de.dante.extex.interpreter.type.Code;
@@ -259,9 +260,9 @@ public class Count implements Serializable, FixedCount {
      *
      * @return the Tokens representing this instance
      *
-     * @throws GeneralException in case of an error
+     * @throws InterpreterException in case of an error
      */
-    public Tokens toToks(final Context context) throws GeneralException {
+    public Tokens toToks(final Context context) throws InterpreterException {
 
         return new Tokens(context, Long.toString(value));
     }

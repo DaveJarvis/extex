@@ -22,6 +22,7 @@ package de.dante.extex.interpreter.primitives.font;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.exception.helping.EofException;
 import de.dante.extex.interpreter.type.AbstractAssignment;
 import de.dante.extex.interpreter.type.ExpandableCode;
@@ -112,7 +113,7 @@ public class Fontdimen extends AbstractAssignment
      */
     public void expand(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws GeneralException {
+            throws InterpreterException {
 
         source.push(the(context, source, typesetter));
     }
@@ -152,16 +153,21 @@ public class Fontdimen extends AbstractAssignment
      *      de.dante.extex.interpreter.TokenSource, Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws GeneralException {
+            final Typesetter typesetter)
+            throws InterpreterException {
 
-        String key = getKey(context, source);
-        source.skipSpace();
-        Font font = source.getFont(context);
-        Dimen size = font.getFontDimen(key);
-        if (null == size) {
-            size = Dimen.ZERO_PT;
+        try {
+            String key = getKey(context, source);
+            source.skipSpace();
+            Font font = source.getFont(context);
+            Dimen size = font.getFontDimen(key);
+            if (null == size) {
+                size = Dimen.ZERO_PT;
+            }
+            return size.toToks(context.getTokenFactory());
+        } catch (GeneralException e) {
+            throw new InterpreterException(e);
         }
-        return size.toToks(context.getTokenFactory());
     }
 
 }

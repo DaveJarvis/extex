@@ -21,10 +21,10 @@ package de.dante.extex.interpreter.type.muskip;
 
 import java.io.Serializable;
 
-import de.dante.extex.i18n.HelpingException;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.helping.EofException;
+import de.dante.extex.interpreter.exception.helping.HelpingException;
 import de.dante.extex.interpreter.type.glue.GlueComponent;
 import de.dante.extex.scanner.Token;
 import de.dante.util.GeneralException;

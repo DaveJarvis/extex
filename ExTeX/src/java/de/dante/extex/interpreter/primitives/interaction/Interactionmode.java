@@ -23,8 +23,11 @@ import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.Interaction;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.exception.ImpossibleException;
+import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.AbstractAssignment;
 import de.dante.extex.interpreter.type.count.CountConvertible;
+import de.dante.extex.main.exception.MainUnknownInteractionException;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.GeneralException;
 
@@ -92,9 +95,13 @@ public class Interactionmode extends AbstractAssignment
      *      de.dante.extex.typesetter.Typesetter)
      */
     public long convertCount(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws GeneralException {
+            final Typesetter typesetter) {
 
-        return Interaction.get(context.getInteraction());
+        try {
+            return Interaction.get(context.getInteraction());
+        } catch (MainUnknownInteractionException e) {
+            throw new ImpossibleException("unknown interaction");
+        }
     }
 
 }

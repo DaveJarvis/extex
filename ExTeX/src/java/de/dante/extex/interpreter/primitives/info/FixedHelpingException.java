@@ -18,14 +18,14 @@
  */
 package de.dante.extex.interpreter.primitives.info;
 
-import de.dante.extex.i18n.HelpingException;
+import de.dante.extex.interpreter.exception.helping.HelpingException;
 
 /**
  * This class provides an Exception with the possibility to provide additional
  * help on the error encoutered. Thus it has two levels of information: the
  * first level is the message and the second level is the additional help.
  * <p>
- * In contrast to {@link de.dante.extex.i18n.HelpingException HelpingException}
+ * In contrast to {@link de.dante.extex.interpreter.exception.helping.HelpingException HelpingException}
  * the messages are not mapped.
  * </p>
  *

@@ -26,12 +26,12 @@ import java.util.Map;
 import de.dante.extex.interpreter.Tokenizer;
 import de.dante.extex.interpreter.context.impl.Group;
 import de.dante.extex.interpreter.context.impl.GroupImpl;
+import de.dante.extex.interpreter.exception.InterpreterExtensionException;
 import de.dante.extex.interpreter.type.bool.Bool;
 import de.dante.extex.interpreter.type.hash.toks.HashToks;
 import de.dante.extex.interpreter.type.pair.Pair;
 import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.transform.Transform;
-import de.dante.extex.main.exception.MainExTeXExtensionException;
 import de.dante.util.GeneralException;
 
 /**
@@ -88,7 +88,7 @@ public class GroupExtensionImpl extends GroupImpl
 
         super(next);
         if (next != null && !(next instanceof GroupExtension)) {
-            throw new MainExTeXExtensionException();
+            throw new InterpreterExtensionException();
         }
         nextext = (GroupExtension) next;
     }

@@ -21,13 +21,13 @@ package de.dante.extex.interpreter.type.dimen;
 
 import java.io.Serializable;
 
-import de.dante.extex.i18n.HelpingException;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.exception.helping.ArithmeticOverflowException;
+import de.dante.extex.interpreter.exception.helping.HelpingException;
 import de.dante.extex.interpreter.type.glue.FixedGlueComponent;
 import de.dante.extex.interpreter.type.glue.GlueComponent;
-import de.dante.util.GeneralException;
 import de.dante.util.framework.i18n.Localizer;
 import de.dante.util.framework.i18n.LocalizerFactory;
 
@@ -82,10 +82,10 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
      * @param context the interpreter context
      * @param source the source for next tokens
      *
-     * @throws GeneralException in case of an error
+     * @throws InterpreterException in case of an error
      */
     public Dimen(final Context context, final TokenSource source)
-            throws GeneralException {
+            throws InterpreterException {
 
         super(context, source, false);
     }
@@ -252,14 +252,12 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
      * @param context the interpreter context
      * @param source the source for next tokens
      *
-     * @throws GeneralException in case of an error
-     *
      * @see de.dante.extex.interpreter.type.glue.GlueComponent#set(
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource)
      */
     public void set(final Context context, final TokenSource source)
-            throws GeneralException {
+            throws InterpreterException {
 
         set(context, source, true);
     }

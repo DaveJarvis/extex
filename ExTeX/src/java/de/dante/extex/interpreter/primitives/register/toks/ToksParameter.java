@@ -22,6 +22,7 @@ package de.dante.extex.interpreter.primitives.register.toks;
 import de.dante.extex.interpreter.Namespace;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.InitializableCode;
 import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.util.GeneralException;
@@ -92,11 +93,15 @@ public class ToksParameter extends ToksPrimitive implements InitializableCode {
      *      java.lang.String)
      */
     public void init(final Context context, final String value)
-            throws GeneralException {
+            throws InterpreterException {
 
         if (value != null && value.length() > 0) {
-            context.setToks(getKey((TokenSource) null, context), //
-                    new Tokens(context, value), true);
+            try {
+                context.setToks(getKey((TokenSource) null, context), //
+                        new Tokens(context, value), true);
+            } catch (GeneralException e) {
+                throw new InterpreterException(e);
+            }
 
         }
     }

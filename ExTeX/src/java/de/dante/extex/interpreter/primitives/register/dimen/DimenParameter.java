@@ -21,7 +21,6 @@ package de.dante.extex.interpreter.primitives.register.dimen;
 
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
-import de.dante.util.GeneralException;
 
 /**
  * This class provides an implementation for the primitive <code>\dimen</code>.
@@ -56,11 +55,11 @@ public class DimenParameter extends DimenPrimitive {
      *
      * @return the key for the current register
      *
-     * @throws GeneralException in case that a derived class need to throw an
-     *             Exception this one is declared.
+     * @see de.dante.extex.interpreter.primitives.register.dimen.AbstractDimen#getKey(
+     *      de.dante.extex.interpreter.TokenSource,
+     *      de.dante.extex.interpreter.context.Context)
      */
-    protected String getKey(final TokenSource source, final Context context)
-            throws GeneralException {
+    protected String getKey(final TokenSource source, final Context context) {
 
         return getName();
     }

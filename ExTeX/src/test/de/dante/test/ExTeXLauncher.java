@@ -82,8 +82,7 @@ public class ExTeXLauncher extends TestCase {
          *      de.dante.extex.interpreter.context.Context)
          */
         public boolean handleError(final GeneralException e, final Token token,
-                final TokenSource source, final Context context)
-                throws GeneralException {
+                final TokenSource source, final Context context) {
 
             logger.log(Level.SEVERE, e.getLocalizedMessage());
             return false;

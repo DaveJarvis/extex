@@ -21,10 +21,10 @@ package de.dante.extex.interpreter.primitives.register.font;
 import de.dante.extex.font.type.other.NullFont;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.AbstractCode;
 import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.interpreter.type.font.FontConvertible;
-import de.dante.util.GeneralException;
 
 
 /**
@@ -76,7 +76,7 @@ public class NullfontPrimitive extends AbstractCode
      *      de.dante.extex.interpreter.TokenSource)
      */
     public Font convertFont(final Context context, final TokenSource source)
-            throws GeneralException {
+            throws InterpreterException {
 
         return nullFont;
     }

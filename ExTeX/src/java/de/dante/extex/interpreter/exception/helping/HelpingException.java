@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.i18n;
+package de.dante.extex.interpreter.exception.helping;
 
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.util.framework.i18n.Localizer;

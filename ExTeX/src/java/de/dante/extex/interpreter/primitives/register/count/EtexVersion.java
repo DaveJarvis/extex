@@ -21,9 +21,9 @@ package de.dante.extex.interpreter.primitives.register.count;
 
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.Theable;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.GeneralException;
 
 
 /**
@@ -59,7 +59,7 @@ public class EtexVersion extends AbstractReadonlyCount {
      *      de.dante.extex.interpreter.TokenSource, Typesetter)
      */
     public long convertCount(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws GeneralException {
+            final Typesetter typesetter) throws InterpreterException {
 
         return ETEX_VERSION;
     }
