@@ -54,6 +54,11 @@ public class FlagsImpl implements Flags {
     private boolean outerP = false;
 
     /**
+     * The field <tt>protectedP</tt> contains the protected flag.
+     */
+    private boolean protectedP = false;
+
+    /**
      * Creates a new object.
      * Initially no flags are set.
      */
@@ -72,6 +77,7 @@ public class FlagsImpl implements Flags {
         outerP = false;
         expandedP = false;
         immediateP = false;
+        protectedP = false;
     }
 
     /**
@@ -125,6 +131,14 @@ public class FlagsImpl implements Flags {
     }
 
     /**
+     * @see de.dante.extex.interpreter.Flags#isProtected()
+     */
+    public boolean isProtected() {
+
+        return protectedP;
+    }
+
+    /**
      * Setter for the expanded flag.
      */
     public void setExpanded() {
@@ -172,6 +186,14 @@ public class FlagsImpl implements Flags {
     public void setOuter() {
 
         outerP = true;
+    }
+
+    /**
+     * @see de.dante.extex.interpreter.Flags#setProtected()
+     */
+    public void setProtected() {
+
+        protectedP = true;
     }
 
 }
