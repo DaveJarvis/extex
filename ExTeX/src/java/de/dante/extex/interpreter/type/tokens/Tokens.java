@@ -201,6 +201,7 @@ public class Tokens implements Serializable, FixedTokens {
 
         for (int i = 0; i < tokens.size(); i++) {
             ((Token) tokens.get(i)).toString(sb);
+            sb.append("\n  ");
         }
     }
 
