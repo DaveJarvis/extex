@@ -165,12 +165,4 @@ public class MathList extends AbstractNoad implements Noad {
         //TODO gene: subscript and superscript unimplemented ???
     }
 
-    /**
-     * @see de.dante.extex.typesetter.type.noad.Noad#visit(
-     *      de.dante.extex.typesetter.type.noad.NoadVisitor)
-     */
-    public void visit(final NoadVisitor visitor) {
-
-        visitor.visitMathList(this);
-    }
 }

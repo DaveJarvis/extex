@@ -63,13 +63,4 @@ public class GlueNoad extends AbstractNoad {
         list.add(new GlueNode(mathContext.convert(muglue)));
     }
 
-    /**
-     * @see de.dante.extex.typesetter.type.noad.Noad#visit(
-     *      de.dante.extex.typesetter.type.noad.NoadVisitor)
-     */
-    public void visit(final NoadVisitor visitor) {
-
-        // TODO gene: visit unimplemented
-
-    }
 }

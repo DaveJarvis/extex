@@ -91,12 +91,4 @@ public class OperatorNoad extends AbstractNucleusNoad {
         throw new RuntimeException("unimplemented");
     }
 
-    /**
-     * @see de.dante.extex.typesetter.type.noad.Noad#visit(
-     *      de.dante.extex.typesetter.type.noad.NoadVisitor)
-     */
-    public void visit(final NoadVisitor visitor) {
-
-        visitor.visitOperator(this);
-    }
 }

@@ -21,7 +21,6 @@ package de.dante.extex.typesetter.type.noad;
 
 import de.dante.extex.typesetter.type.MathClass;
 import de.dante.extex.typesetter.type.MathClassVisitor;
-import de.dante.extex.typesetter.type.MathGlyph;
 
 /**
  * This class is a factory for CharNoades.

@@ -86,10 +86,4 @@ public interface Noad extends Knot {
     void typeset(NodeList list, MathContext mathContext,
             TypesetterOptions context);
 
-    /**
-     * Visit a noad acording to its type.
-     *
-     * @param visitor the visitor insance to call-back
-     */
-    void visit(NoadVisitor visitor);
 }
