@@ -42,7 +42,7 @@ public class TokenStreamBaseImpl implements TokenStream {
      * The field <tt>fileStream</tt> contains the indicator whether or not this
      * TokenStream is attached to a file.
      */
-    private boolean fileStream = false;
+    private boolean fileStream;
 
     /**
      * The field <tt>skipSpaces</tt> contains the indicator that spaces should
