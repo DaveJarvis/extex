@@ -183,4 +183,14 @@ public abstract class ConfigurationException extends Exception {
     protected String getText() {
         return Messages.format("ConfigurationException.Text");
     }
+
+    /**
+     * ...
+     * 
+     * @return ...
+     */
+    protected String getMessageUnformatted() {
+
+        return super.getMessage();
+    }
 }
