@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -123,8 +123,7 @@ public class MathGlyph implements Noad {
      */
     public void setSubscript(final Noad subscript) {
 
-        // TODO gene: error unimplemented
-        throw new RuntimeException("error");
+        throw new UnsupportedOperationException("subscript");
     }
 
     /**
@@ -133,8 +132,7 @@ public class MathGlyph implements Noad {
      */
     public void setSuperscript(final Noad superscript) {
 
-        // TODO gene: error unimplemented
-        throw new RuntimeException("error");
+        throw new UnsupportedOperationException("superscript");
     }
 
     /**
