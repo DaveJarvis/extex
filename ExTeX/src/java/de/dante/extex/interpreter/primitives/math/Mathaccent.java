@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -25,8 +25,8 @@ import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.listMaker.math.NoadConsumer;
-import de.dante.extex.typesetter.type.MathGlyph;
 import de.dante.extex.typesetter.type.noad.AccentNoad;
+import de.dante.extex.typesetter.type.noad.MathGlyph;
 import de.dante.extex.typesetter.type.noad.Noad;
 import de.dante.util.GeneralException;
 
