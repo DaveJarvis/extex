@@ -23,6 +23,7 @@ import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.typesetter.Typesetter;
+import de.dante.extex.typesetter.listMaker.NoadConsumer;
 import de.dante.util.GeneralException;
 
 /**
@@ -71,6 +72,8 @@ public class Nolimits extends AbstractMathCode {
     public boolean execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
+
+        NoadConsumer nc = getListMaker(context, typesetter);
 
         //TODO execute() unimplemented
         throw new RuntimeException("unimplemented");
