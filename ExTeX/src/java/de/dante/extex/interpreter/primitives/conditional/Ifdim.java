@@ -19,10 +19,10 @@
 
 package de.dante.extex.interpreter.primitives.conditional;
 
-import de.dante.extex.i18n.EofHelpingException;
 import de.dante.extex.i18n.HelpingException;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.exception.EofException;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.scanner.Catcode;
 import de.dante.extex.scanner.Token;
@@ -85,9 +85,9 @@ public class Ifdim extends AbstractIf {
             throws GeneralException {
 
         long x = new Dimen(context, source).getValue();
-        Token rel = source.getToken();
+        Token rel = source.getToken(context);
         if (rel == null) {
-            throw new EofHelpingException(printableControlSequence(context));
+            throw new EofException(printableControlSequence(context));
         }
         if (rel.getCatcode() == Catcode.OTHER) {
             switch (rel.getChar().getCodePoint()) {

@@ -76,8 +76,8 @@ public class Mathchardef extends AbstractAssignment {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        CodeToken cs = source.getControlSequence();
-        source.getOptionalEquals();
+        CodeToken cs = source.getControlSequence(context);
+        source.getOptionalEquals(context);
         Count mathchar = new Count(context, source);
         context.setCode(cs, new MathcharCode(cs.toString(), mathchar),
                 prefix.isGlobal());

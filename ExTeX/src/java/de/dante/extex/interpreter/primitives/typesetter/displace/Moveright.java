@@ -44,7 +44,7 @@ import de.dante.util.GeneralException;
  *      &rarr; <tt>\moveright</tt> {@linkplain
  *        de.dante.extex.interpreter.type.dimen#Dimen(Context,TokenSource)
  *        &lang;dimen&rang;} {@linkplain
- *        de.dante.extex.interpreter.TokenSource#getBox(de.dante.extex.typesetter.Typesetter)
+ *        de.dante.extex.interpreter.TokenSource#getBox(Context, de.dante.extex.typesetter.Typesetter)
  *        &lang;box&rang;}  </pre>
  * </p>
  * <p>
@@ -103,7 +103,7 @@ public class Moveright extends AbstractCode implements Boxable {
             final Typesetter typesetter) throws GeneralException {
 
         Dimen move = new Dimen(context, source);
-        Box box = source.getBox(typesetter);
+        Box box = source.getBox(context, typesetter);
         move.add(box.getMove());
         box.setMove(move);
         return box;

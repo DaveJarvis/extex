@@ -38,7 +38,7 @@ import de.dante.util.GeneralException;
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    <tt>\muskipdef</tt> {@linkplain
- *    de.dante.extex.interpreter.TokenSource#getControlSequence()
+ *    de.dante.extex.interpreter.TokenSource#getControlSequence(Context)
  *    &lang;control sequence&rang;} {@linkplain
  *    de.dante.extex.interpreter.TokenSource#getOptionalEquals()
  *    &lang;equals&rang;} {@linkplain
@@ -93,8 +93,8 @@ public class Muskipdef extends AbstractMuskip {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        CodeToken cs = source.getControlSequence();
-        source.getOptionalEquals();
+        CodeToken cs = source.getControlSequence(context);
+        source.getOptionalEquals(context);
         String key = getKey(source, context);
         context.setCode(cs, new MuskipParameter(key), prefix.isGlobal());
     }

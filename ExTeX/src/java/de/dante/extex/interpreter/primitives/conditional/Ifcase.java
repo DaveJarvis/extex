@@ -86,7 +86,7 @@ public class Ifcase extends AbstractIf {
             throws GeneralException {
 
         prefix.clear();
-        long val = source.scanInteger();
+        long val = source.scanInteger(context);
         if (val < 0) {
             if (skipToElseOrFi(context, source)) {
                 context.pushConditional(source.getLocator(), true);
@@ -147,7 +147,8 @@ public class Ifcase extends AbstractIf {
         Code code;
         int n = 0;
 
-        for (Token t = source.getToken(); t != null; t = source.getToken()) {
+        for (Token t = source.getToken(context); t != null; t = source
+                .getToken(context)) {
             if (t instanceof CodeToken
                     && (code = context.getCode((CodeToken) t)) != null) {
                 if (code instanceof Fi) {

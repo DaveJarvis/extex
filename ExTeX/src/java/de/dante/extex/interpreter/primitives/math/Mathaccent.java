@@ -85,7 +85,7 @@ public class Mathaccent extends AbstractMathCode {
             throws GeneralException {
 
         NoadConsumer nc = getListMaker(context, typesetter);
-        long accent = source.scanNumber();
+        long accent = source.scanNumber(context);
         if (accent > CHARCODE_MAX) {
             throw new HelpingException(getLocalizer(), "TTP.BadMathCharCode",
                     Long.toHexString(accent));

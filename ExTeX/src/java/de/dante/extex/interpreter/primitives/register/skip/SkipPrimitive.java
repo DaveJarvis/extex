@@ -65,7 +65,7 @@ public class SkipPrimitive extends AbstractSkip implements Theable {
             throws GeneralException {
 
         String key = getKey(source, context);
-        source.getOptionalEquals();
+        source.getOptionalEquals(context);
         Glue g = new Glue(source, context);
         context.setGlue(key, g, prefix.isGlobal());
     }

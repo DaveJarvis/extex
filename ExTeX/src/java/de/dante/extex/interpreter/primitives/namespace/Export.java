@@ -82,7 +82,7 @@ public class Export extends AbstractAssignment {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        Tokens export = source.getTokens();
+        Tokens export = source.getTokens(context);
         context.setToks(context.getNamespace() + "\bexport", export, true);
     }
 

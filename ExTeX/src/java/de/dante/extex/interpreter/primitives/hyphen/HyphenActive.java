@@ -77,7 +77,7 @@ public class HyphenActive extends AbstractCode implements Theable {
 
         source.getOptionalEquals();
         boolean active = true;
-        if (source.scanInteger() != 0) {
+        if (source.scanInteger(context) != 0) {
             active = false;
         }
         ht.setHyphenActive(active);

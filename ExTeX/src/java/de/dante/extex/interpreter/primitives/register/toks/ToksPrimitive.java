@@ -66,8 +66,8 @@ public class ToksPrimitive extends AbstractToks implements Theable {
             throws GeneralException {
 
         String key = getKey(source, context);
-        source.getOptionalEquals();
-        Tokens toks = source.getTokens();
+        source.getOptionalEquals(context);
+        Tokens toks = source.getTokens(context);
         context.setToks(key, toks, prefix.isGlobal());
     }
 
@@ -100,7 +100,7 @@ public class ToksPrimitive extends AbstractToks implements Theable {
     protected void expand(final Flags prefix, final Context context,
             final TokenSource source, final String key) throws GeneralException {
 
-        Tokens toks = source.getTokens();
+        Tokens toks = source.getTokens(context);
         context.setToks(key, toks, prefix.isGlobal());
         prefix.clear();
     }

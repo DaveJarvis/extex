@@ -77,7 +77,7 @@ public class End extends AbstractCode {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        source.closeAllStreams();
+        source.closeAllStreams(context);
         return true;
     }
 }

@@ -59,7 +59,7 @@ public abstract class AbstractToks extends AbstractAssignment {
     protected String getKey(final TokenSource source, final Context context)
             throws GeneralException {
 
-        String name = source.scanRegisterName();
+        String name = source.scanRegisterName(context);
 
         if (Namespace.SUPPORT_NAMESPACE_TOKS) {
             return context.getNamespace() + "toks#" + name;

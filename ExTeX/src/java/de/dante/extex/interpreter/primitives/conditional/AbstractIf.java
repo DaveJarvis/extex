@@ -74,7 +74,8 @@ public abstract class AbstractIf extends AbstractCode implements ExpandableCode 
         Code code;
         int n = 0;
 
-        for (Token t = source.getToken(); t != null; t = source.getToken()) {
+        for (Token t = source.getToken(context); t != null; t = source
+                .getToken(context)) {
 
             if (t instanceof CodeToken
                     && (code = context.getCode((CodeToken) t)) != null) {

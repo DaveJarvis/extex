@@ -81,9 +81,9 @@ public class Delcode extends AbstractAssignment {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        UnicodeChar charCode = source.scanCharacterCode();
-        source.getOptionalEquals();
-        Count sfCode = new Count(source.scanInteger());
+        UnicodeChar charCode = source.scanCharacterCode(context);
+        source.getOptionalEquals(context);
+        Count sfCode = new Count(source.scanInteger(context));
 
         context.setDelcode(charCode, sfCode, prefix.isGlobal());
     }

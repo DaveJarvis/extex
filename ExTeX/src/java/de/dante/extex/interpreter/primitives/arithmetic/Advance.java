@@ -19,12 +19,12 @@
 
 package de.dante.extex.interpreter.primitives.arithmetic;
 
-import de.dante.extex.i18n.CantUseAfterHelpingException;
-import de.dante.extex.i18n.EofHelpingException;
-import de.dante.extex.i18n.UndefinedControlSequenceHelpingException;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.exception.CantUseAfterException;
+import de.dante.extex.interpreter.exception.EofException;
+import de.dante.extex.interpreter.exception.UndefinedControlSequenceException;
 import de.dante.extex.interpreter.type.AbstractAssignment;
 import de.dante.extex.interpreter.type.Code;
 import de.dante.extex.interpreter.type.arithmetic.Advanceable;
@@ -105,7 +105,7 @@ public class Advance extends AbstractAssignment {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        Token cs = source.getToken();
+        Token cs = source.getToken(context);
 
         if (cs instanceof CodeToken) {
             Code code = context.getCode((CodeToken) cs);
@@ -116,13 +116,13 @@ public class Advance extends AbstractAssignment {
                 return;
 
             } else if (code == null) {
-                throw new UndefinedControlSequenceHelpingException(//
+                throw new UndefinedControlSequenceException(//
                         printable(context, cs));
             }
         } else if (cs == null) {
-            throw new EofHelpingException(printableControlSequence(context));
+            throw new EofException(printableControlSequence(context));
         }
-        throw new CantUseAfterHelpingException(cs.toText(),
+        throw new CantUseAfterException(cs.toText(),
                 printableControlSequence(context));
     }
 

@@ -76,9 +76,9 @@ public class Discretionary extends AbstractCode {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        Tokens pre = source.getTokens();
-        Tokens post = source.getTokens();
-        Tokens nobreak = source.getTokens();
+        Tokens pre = source.getTokens(context);
+        Tokens post = source.getTokens(context);
+        Tokens nobreak = source.getTokens(context);
         typesetter.add(new DiscretionaryNode(pre, post, nobreak));
         return true;
     }

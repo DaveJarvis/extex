@@ -92,9 +92,9 @@ public class CatcodePrimitive extends AbstractAssignment {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        UnicodeChar charCode = source.scanCharacterCode();
-        source.getOptionalEquals();
-        long ccNumber = source.scanNumber();
+        UnicodeChar charCode = source.scanCharacterCode(context);
+        source.getOptionalEquals(context);
+        long ccNumber = source.scanNumber(context);
 
         try {
             context.setCatcode(charCode, Catcode.toCatcode((int) ccNumber),

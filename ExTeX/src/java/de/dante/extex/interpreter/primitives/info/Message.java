@@ -85,7 +85,7 @@ public class Message extends AbstractCode implements LogEnabled {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        logger.severe("\n" + source.scanTokens().toText() + "\n");
+        logger.severe("\n" + source.scanTokens(context).toText() + "\n");
         return true;
     }
 }

@@ -75,7 +75,7 @@ public class Delimiter extends AbstractMathCode {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        MathDelimiter del = new MathDelimiter(source);
+        MathDelimiter del = new MathDelimiter(context, source);
 
         //TODO gene: execute() unimplemented
         throw new RuntimeException("unimplemented");

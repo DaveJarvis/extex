@@ -74,12 +74,12 @@ public class Read extends AbstractCode {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        String key = AbstractFileCode.scanInFileKey(source);
+        String key = AbstractFileCode.scanInFileKey(context, source);
 
-        if (!source.getKeyword("to")) {
+        if (!source.getKeyword(context, "to")) {
             throw new HelpingException(getLocalizer(), "TTP.MissingToForRead");
         }
-        CodeToken cs = source.getControlSequence();
+        CodeToken cs = source.getControlSequence(context);
         InFile file = context.getInFile(key);
 
         if (file == null) {

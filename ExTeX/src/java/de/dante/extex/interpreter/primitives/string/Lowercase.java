@@ -18,10 +18,10 @@
  */
 package de.dante.extex.interpreter.primitives.string;
 
-import de.dante.extex.i18n.EofHelpingException;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.exception.EofException;
 import de.dante.extex.interpreter.type.AbstractCode;
 import de.dante.extex.interpreter.type.ExpandableCode;
 import de.dante.extex.interpreter.type.tokens.Tokens;
@@ -97,10 +97,10 @@ public class Lowercase extends AbstractCode implements ExpandableCode {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        Tokens toks = source.getTokens();
+        Tokens toks = source.getTokens(context);
 
         if (toks == null) {
-            throw new EofHelpingException(printableControlSequence(context));
+            throw new EofException(printableControlSequence(context));
         }
         String namespace = context.getNamespace();
         Token[] result = new Token[toks.length()];

@@ -244,7 +244,7 @@ public class ErrorHandlerImpl
                                 count = count * 10 + line.charAt(1) - '0';
                             }
                             while (count-- > 0) {
-                                source.getToken();
+                                source.getToken(context);
                             }
                             firstHelp = false;
                             break;

@@ -75,8 +75,8 @@ public class Spacefactor extends AbstractCode {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        source.getOptionalEquals();
-        long f = source.scanInteger();
+        source.getOptionalEquals(context);
+        long f = source.scanInteger(context);
 
         try {
             typesetter.setSpacefactor(new Count(f));

@@ -70,8 +70,8 @@ public class Openin extends AbstractFileCode {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        String key = AbstractFileCode.scanInFileKey(source);
-        source.getOptionalEquals();
+        String key = AbstractFileCode.scanInFileKey(context, source);
+        source.getOptionalEquals(context);
         String name = scanFileName(context, source);
 
         InFile file;

@@ -75,9 +75,9 @@ public class Sfcode extends AbstractAssignment {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        UnicodeChar charCode = source.scanCharacterCode();
-        source.getOptionalEquals();
-        Count sfCode = new Count(source.scanNumber());
+        UnicodeChar charCode = source.scanCharacterCode(context);
+        source.getOptionalEquals(context);
+        Count sfCode = new Count(source.scanNumber(context));
 
         context.setSfcode(charCode, sfCode, prefix.isGlobal());
     }

@@ -27,7 +27,6 @@ import java.util.Iterator;
 import java.util.logging.Logger;
 
 import de.dante.extex.font.FontFactory;
-import de.dante.extex.i18n.CantUseHelpingException;
 import de.dante.extex.i18n.HelpingException;
 import de.dante.extex.i18n.PanicException;
 import de.dante.extex.interpreter.ErrorHandler;
@@ -38,6 +37,7 @@ import de.dante.extex.interpreter.Interpreter;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.context.ContextFactory;
+import de.dante.extex.interpreter.exception.CantUseInException;
 import de.dante.extex.interpreter.loader.LoaderException;
 import de.dante.extex.interpreter.loader.SerialLoader;
 import de.dante.extex.interpreter.type.Code;
@@ -267,9 +267,9 @@ public class Max extends Moritz
      */
     private void execute(final Switch onceMore) throws GeneralException {
 
-        for (Token current = getToken(); //
+        for (Token current = getToken(context); //
         current != null && onceMore.isOn(); //
-        current = getToken()) {
+        current = getToken(context)) {
             observersExpand.update(this, current);
             try {
                 current.visit(this, null, null);
@@ -349,7 +349,7 @@ public class Max extends Moritz
             } else {
                 return t;
             }
-            t = getToken();
+            t = getToken(context);
         }
         return t;
     }
@@ -739,7 +739,7 @@ public class Max extends Moritz
     public Object visitMacroParam(final MacroParamToken token,
             final Object ignore) throws GeneralException {
 
-        throw new CantUseHelpingException(token.toString(), typesetter
+        throw new CantUseInException(token.toString(), typesetter
                 .getMode().toString());
     }
 

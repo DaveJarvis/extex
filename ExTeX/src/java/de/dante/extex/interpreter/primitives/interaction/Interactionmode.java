@@ -80,8 +80,8 @@ public class Interactionmode extends AbstractAssignment
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        source.getOptionalEquals();
-        long mode = source.scanNumber();
+        source.getOptionalEquals(context);
+        long mode = source.scanNumber(context);
         context.setInteraction(Interaction.get((int) mode), prefix.isGlobal());
     }
 

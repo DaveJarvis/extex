@@ -75,9 +75,9 @@ public class Mathcode extends AbstractAssignment {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        UnicodeChar charCode = source.scanCharacterCode();
-        source.getOptionalEquals();
-        Count mathCode = new Count(source.scanNumber());
+        UnicodeChar charCode = source.scanCharacterCode(context);
+        source.getOptionalEquals(context);
+        Count mathCode = new Count(source.scanNumber(context));
         context.setMathcode(charCode, mathCode, prefix.isGlobal());
     }
 }

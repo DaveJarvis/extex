@@ -304,7 +304,7 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
 
         format = (PreambleItem) preamble.get(col);
 
-        Token t = source.scanNonSpace();
+        Token t = source.scanNonSpace(context);
         if (t instanceof CodeToken) {
             Code code = context.getCode((CodeToken) t);
             if (code instanceof Omit) {

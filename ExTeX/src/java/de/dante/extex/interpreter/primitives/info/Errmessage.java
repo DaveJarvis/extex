@@ -74,7 +74,7 @@ public class Errmessage extends AbstractCode {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        String message = source.scanTokens().toText();
+        String message = source.scanTokens(context).toText();
         String help = context.getToks("errhelp").toText();
         prefix.clear();
         throw new FixedHelpingException(message, help);

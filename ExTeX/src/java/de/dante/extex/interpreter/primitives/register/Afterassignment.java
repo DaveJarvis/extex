@@ -83,7 +83,7 @@ public class Afterassignment extends AbstractCode {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        Token t = source.getToken();
+        Token t = source.getToken(context);
         context.setAfterassignment(t);
         return true;
     }

@@ -20,9 +20,9 @@
 package de.dante.extex.typesetter.listMaker;
 
 import de.dante.extex.i18n.HelpingException;
-import de.dante.extex.i18n.MathHelpingException;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.exception.MissingMathException;
 import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.scanner.Catcode;
@@ -100,10 +100,10 @@ public abstract class AbstractListMaker implements ListMaker {
     public void mathShift(final Context context, final TokenSource source,
             final Token t) throws GeneralException {
 
-        Token next = source.getToken();
+        Token next = source.getToken(context);
 
         if (next == null) {
-            throw new MathHelpingException(t.toString());
+            throw new MissingMathException(t.toString());
         } else if (!next.isa(Catcode.MATHSHIFT)) {
             source.push(next);
             manager.push(new MathListMaker(manager));
@@ -142,7 +142,7 @@ public abstract class AbstractListMaker implements ListMaker {
     public void subscriptMark(final Context context, final TokenSource source,
             final Token token) throws GeneralException {
 
-        throw new MathHelpingException(token.toString());
+        throw new MissingMathException(token.toString());
     }
 
     /**
@@ -155,7 +155,7 @@ public abstract class AbstractListMaker implements ListMaker {
             final TokenSource source, final Token token)
             throws GeneralException {
 
-        throw new MathHelpingException(token.toString());
+        throw new MissingMathException(token.toString());
     }
 
     /**

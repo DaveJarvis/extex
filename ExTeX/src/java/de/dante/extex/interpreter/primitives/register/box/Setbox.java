@@ -80,9 +80,9 @@ public class Setbox extends AbstractBox implements Code, Serializable {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        String key = getKey(source, context);
-        source.getOptionalEquals();
-        Box box = source.getBox(typesetter);
+        String key = getKey(context, source);
+        source.getOptionalEquals(context);
+        Box box = source.getBox(context, typesetter);
         context.setBox(key, box, prefix.isGlobal());
         return true;
     }

@@ -100,7 +100,7 @@ public class StringPrimitive extends AbstractCode implements ExpandableCode {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        Token t = source.getToken();
+        Token t = source.getToken(context);
         if (t instanceof ControlSequenceToken) {
             char esc = (char) (context.getCount("escapechar").getValue());
             source.push(new Tokens(context, t.toText(esc)));

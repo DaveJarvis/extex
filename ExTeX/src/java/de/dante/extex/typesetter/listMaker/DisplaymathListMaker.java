@@ -19,7 +19,7 @@
 
 package de.dante.extex.typesetter.listMaker;
 
-import de.dante.extex.i18n.CantUseHelpingException;
+import de.dante.extex.interpreter.exception.CantUseInException;
 import de.dante.extex.interpreter.type.node.HorizontalListNode;
 import de.dante.extex.typesetter.Mode;
 import de.dante.extex.typesetter.NodeList;
@@ -91,7 +91,7 @@ public class DisplaymathListMaker extends MathListMaker implements EqConsumer {
     public void switchToNumber(final boolean left) throws GeneralException {
 
         if (eqno != null) {
-            throw new CantUseHelpingException(null, null);
+            throw new CantUseInException(null, null);
         }
 
         leq = left;

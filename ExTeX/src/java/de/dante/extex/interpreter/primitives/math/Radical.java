@@ -77,7 +77,7 @@ public class Radical extends AbstractMathCode {
             throws GeneralException {
 
         NoadConsumer nc = getListMaker(context, typesetter);
-        MathDelimiter delcode = new MathDelimiter(source);
+        MathDelimiter delcode = new MathDelimiter(context, source);
         Noad noad = nc.scanNoad(context, source);
         nc.add(new RadicalNoad(delcode, noad));
         return true;

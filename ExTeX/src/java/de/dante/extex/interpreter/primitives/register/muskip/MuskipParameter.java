@@ -55,15 +55,14 @@ public class MuskipParameter extends AbstractAssignment {
 
     /**
      * Return the key (the number) for the skip register.
-     *
-     * @param source the source for the next tokens -- if required
      * @param context the interpreter context to use
+     * @param source the source for the next tokens -- if required
      *
      * @return the key for the skip register
      *
      * @throws GeneralException in case oif an error
      */
-    protected String getKey(final TokenSource source, final Context context)
+    protected String getKey(final Context context, final TokenSource source)
             throws GeneralException {
 
         if (Namespace.SUPPORT_NAMESPACE_MUSKIP) {
@@ -84,8 +83,8 @@ public class MuskipParameter extends AbstractAssignment {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        String key = getKey(source, context);
-        source.getOptionalEquals();
+        String key = getKey(context, source);
+        source.getOptionalEquals(context);
         Muskip skip = new Muskip(context, source);
         context.setMuskip(key, skip, prefix.isGlobal());
     }

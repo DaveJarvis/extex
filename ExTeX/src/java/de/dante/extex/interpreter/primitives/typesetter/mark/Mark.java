@@ -75,7 +75,7 @@ public class Mark extends AbstractCode {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        Tokens toks = source.scanTokens();
+        Tokens toks = source.scanTokens(context);
         typesetter.add(new MarkNode(toks));
         return true;
     }

@@ -71,9 +71,9 @@ public class Openout extends AbstractFileCode {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        String key = AbstractFileCode.scanOutFileKey(source);
+        String key = AbstractFileCode.scanOutFileKey(context, source);
 
-        source.getOptionalEquals();
+        source.getOptionalEquals(context);
         String name = scanFileName(context, source);
 
         OutFile file = new OutFile(new File(name));

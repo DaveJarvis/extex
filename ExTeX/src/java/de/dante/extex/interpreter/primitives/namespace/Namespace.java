@@ -84,7 +84,7 @@ public class Namespace extends AbstractAssignment
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        Tokens toks = source.getTokens();
+        Tokens toks = source.getTokens(context);
         context.setNamespace(toks.toText(), prefix.isGlobal());
     }
 

@@ -37,10 +37,10 @@ import de.dante.util.GeneralException;
  *  <pre class="syntax">
  *    &lang;ifodd&rang;
  *      &rarr; <tt>\ifodd</tt> {@linkplain
- *        de.dante.extex.interpreter.TokenSource#scanInteger()
+ *        de.dante.extex.interpreter.TokenSource#scanInteger(Context)
  *        &lang;number&rang;} &lang;true text&rang; <tt>\fi</tt>
  *      | <tt>\ifodd</tt> {@linkplain
- *        de.dante.extex.interpreter.TokenSource#scanInteger()
+ *        de.dante.extex.interpreter.TokenSource#scanInteger(Context)
  *        &lang;number&rang;} &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt> </pre>
  * </p>
  * <p>
@@ -73,6 +73,6 @@ public class Ifodd extends AbstractIf {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        return ((source.scanInteger() & 1) == 1);
+        return ((source.scanInteger(context) & 1) == 1);
     }
 }

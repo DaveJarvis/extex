@@ -86,9 +86,9 @@ public class Uccode extends AbstractAssignment
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        UnicodeChar ucCode = source.scanCharacterCode();
-        source.getOptionalEquals();
-        UnicodeChar lcCode = source.scanCharacterCode();
+        UnicodeChar ucCode = source.scanCharacterCode(context);
+        source.getOptionalEquals(context);
+        UnicodeChar lcCode = source.scanCharacterCode(context);
         context.setUccode(ucCode, lcCode);
     }
 
@@ -125,7 +125,7 @@ public class Uccode extends AbstractAssignment
     public long convertCount(final Context context, final TokenSource source,
             final Typesetter typesetter) throws GeneralException {
 
-        UnicodeChar ucCode = source.scanCharacterCode();
+        UnicodeChar ucCode = source.scanCharacterCode(context);
         return context.getUccode(ucCode).getCodePoint();
     }
 

@@ -82,7 +82,7 @@ public class Import extends Let {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        String ns = source.getTokens().toText();
+        String ns = source.getTokens(context).toText();
         Tokens export = context.getToks(ns + "\bexport");
         String namespace = context.getNamespace();
         int length = export.length();

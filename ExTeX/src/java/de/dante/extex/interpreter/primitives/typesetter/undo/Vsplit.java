@@ -112,8 +112,8 @@ public class Vsplit extends AbstractBox implements Boxable {
     private NodeList vsplit(final Context context, final TokenSource source,
             final Typesetter typesetter) throws GeneralException {
 
-        String key = getKey(source, context);
-        if (!source.getKeyword("to", true)) {
+        String key = getKey(context, source);
+        if (!source.getKeyword(context, "to")) {
             throw new HelpingException(getLocalizer(), "TTP.MissingToForVsplit");
         }
         Dimen ht = new Dimen(context, source);

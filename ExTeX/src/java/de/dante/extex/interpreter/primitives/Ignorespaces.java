@@ -75,10 +75,7 @@ public class Ignorespaces extends AbstractCode {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        Token t = source.getNonSpace();
-        if (t != null) {
-            source.push(t);
-        }
+        source.skipSpace();
         return true;
     }
 

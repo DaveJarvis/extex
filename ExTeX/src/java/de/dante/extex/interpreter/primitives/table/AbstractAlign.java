@@ -107,8 +107,8 @@ public class AbstractAlign extends AbstractCode {
         Tokens pre = new Tokens();
         Tokens post = new Tokens();
 
-        for (Token t = source.getToken(); t != null
-                && !t.isa(Catcode.MACROPARAM); t = source.getToken()) {
+        for (Token t = source.getToken(context); t != null
+                && !t.isa(Catcode.MACROPARAM); t = source.getToken(context)) {
 
             if (t.isa(Catcode.TABMARK)) {
                 throw new HelpingException(getMyLocalizer(),
@@ -128,7 +128,8 @@ public class AbstractAlign extends AbstractCode {
             pre.add(t);
         }
 
-        for (Token t = source.getToken(); t != null; t = source.getToken()) {
+        for (Token t = source.getToken(context); t != null; t = source
+                .getToken(context)) {
 
             if (t.isa(Catcode.MACROPARAM)) {
                 throw new HelpingException(getMyLocalizer(),

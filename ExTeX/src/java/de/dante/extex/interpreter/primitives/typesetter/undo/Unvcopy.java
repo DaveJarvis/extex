@@ -79,7 +79,7 @@ public class Unvcopy extends AbstractBox {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        String key = getKey(source, context);
+        String key = getKey(context, source);
         Box b = context.getBox(key);
         if (b.isVoid()) {
             // nothing to do
