@@ -330,7 +330,7 @@ public abstract class Moritz
 
         if (t instanceof CodeToken) {
             Code code = context.getCode((CodeToken) t);
-            if (code != null && code instanceof CsConvertible) {
+            if (code instanceof CsConvertible) {
                 t = ((CsConvertible) code).convertCs(context, this);
             }
             return (CodeToken) t;
