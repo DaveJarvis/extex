@@ -20,6 +20,8 @@
 package de.dante.test;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.Properties;
 import java.util.logging.Handler;
 import java.util.logging.Level;
@@ -93,6 +95,11 @@ public class ExTeXLauncher extends TestCase {
 
         }
     }
+
+    /**
+     * The field <tt>props</tt> contains the ...
+     */
+    private static Properties props = null;
 
     /**
      * Set some properties to default values. The properties set are:
@@ -197,7 +204,17 @@ public class ExTeXLauncher extends TestCase {
     public void runCode(final String code, final String log, final String expect)
             throws Exception {
 
-        runCode(System.getProperties(), code, log, expect);
+        if (props == null) {
+            props = System.getProperties();
+
+            File file = new File(".extex-test");
+            if (file.canRead()) {
+                FileInputStream inputStream = new FileInputStream(file);
+                props.load(inputStream);
+                inputStream.close();
+            }
+        }
+        runCode(props, code, log, expect);
     }
 
     /**
