@@ -58,9 +58,11 @@ public interface AlignmentList {
 
     /**
      * ...
+     * @param context TODO
+     * @param source TODO
      *
      * @throws GeneralException in case of an error
      */
-    void span() throws GeneralException;
+    void span(Context context, TokenSource source) throws GeneralException;
 
 }
