@@ -30,6 +30,8 @@ import junit.framework.TestCase;
 public class ActiveCharacterTokenTest extends TestCase {
 
     /**
+     * ...
+     * @param args ...
      */
     public static void main(final String[] args) {
         junit.textui.TestRunner.run(ActiveCharacterTokenTest.class);
