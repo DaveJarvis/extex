@@ -28,6 +28,11 @@ package de.dante.extex.interpreter;
 public class Flags {
 
     /**
+     * The constant <tt>NONE</tt> contains the ...
+     */
+    public static final Flags NONE = new Flags();
+
+    /**
      * The field <tt>globalP</tt> contains the ...
      */
     private boolean globalP = false;
