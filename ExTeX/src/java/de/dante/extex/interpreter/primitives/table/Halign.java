@@ -139,7 +139,7 @@ public class Halign extends AbstractAlign implements Boxable {
         } else if (t.isa(Catcode.LEFTBRACE)) {
             List preamble = getPreamble(context, source);
             typesetter.push(new HAlignListMaker(typesetter.getManager(),
-                    preamble, width));
+                    context, source, preamble, width));
         } else {
             throw new MissingLeftBraceHelpingException(
                     printableControlSequence(context));

@@ -77,7 +77,7 @@ public class Crcr extends Cr {
 
         ListMaker maker = typesetter.getListMaker();
         if (maker instanceof AlignmentList) {
-            ((AlignmentList) maker).crcr();
+            ((AlignmentList) maker).crcr(context, source);
         } else {
             throw new HelpingException(getLocalizer(), "TTP.MisplacedCrSpan",
                     printableControlSequence(context));

@@ -78,7 +78,7 @@ public class Cr extends AbstractCode {
 
         ListMaker maker = typesetter.getListMaker();
         if (maker instanceof AlignmentList) {
-            ((AlignmentList) maker).cr();
+            ((AlignmentList) maker).cr(context, source);
         } else {
             throw new HelpingException(getLocalizer(), "TTP.MisplacedCrSpan",
                     printableControlSequence(context));
