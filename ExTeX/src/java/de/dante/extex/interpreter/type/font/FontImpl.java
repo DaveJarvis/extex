@@ -60,7 +60,7 @@ public class FontImpl implements Font, Serializable {
     /**
      * skew-char
      */
-    private UnicodeChar skewchar = new UnicodeChar('-');
+    private UnicodeChar skewchar = new UnicodeChar(-1);
 
     /**
      * @see de.dante.extex.interpreter.type.font.Font#setFontDimen(

@@ -42,7 +42,7 @@ public class NullFont implements Font, Serializable {
     /**
      * The field <tt>hyphen</tt> contains the hyphen char for this font.
      */
-    private UnicodeChar hyphen = new UnicodeChar(-1);
+    private UnicodeChar hyphen = new UnicodeChar('-');
 
     /**
      * The field <tt>skew</tt> contains the skew char for this font
