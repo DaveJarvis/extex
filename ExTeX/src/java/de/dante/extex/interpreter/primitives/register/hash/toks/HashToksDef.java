@@ -70,7 +70,7 @@ public class HashToksDef extends AbstractAssignment {
         }
         source.getOptionalEquals();
         String key = "hashtoks#"
-                + Long.toString(Count.scanCount(context, source));
+                + Long.toString(Count.scanCount(context, source, typesetter));
         context.setCode(tok, new NamedHashToks(key), prefix.isGlobal());
     }
 }

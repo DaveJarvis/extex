@@ -69,7 +69,7 @@ public class TransformDef extends AbstractAssignment {
         }
         source.getOptionalEquals();
         String key = "transform#"
-                + Long.toString(Count.scanCount(context, source));
+                + Long.toString(Count.scanCount(context, source, typesetter));
         context.setCode(tok, new NamedTransform(key), prefix.isGlobal());
     }
 }

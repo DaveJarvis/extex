@@ -77,7 +77,7 @@ public class Showthe extends The {
             Code code = context.getCode(cs);
 
             if (code != null && code instanceof Theable) {
-                Tokens toks = ((Theable) code).the(context, source);
+                Tokens toks = ((Theable) code).the(context, source, typesetter);
                 source.update("message", toks.toText());
                 return true;
             }

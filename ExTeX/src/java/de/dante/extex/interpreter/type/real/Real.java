@@ -112,10 +112,10 @@ public class Real implements Serializable {
                         .getValue();
             } else if (code != null && code instanceof CountConvertible) {
                 return (new Real(((CountConvertible) code).convertCount(
-                        context, source))).getValue();
+                        context, source, null))).getValue();
             } else if (code != null && code instanceof DimenConvertible) {
                 return (new Real(((DimenConvertible) code).convertDimen(
-                        context, source))).getValue();
+                        context, source, null))).getValue();
             }
         }
 

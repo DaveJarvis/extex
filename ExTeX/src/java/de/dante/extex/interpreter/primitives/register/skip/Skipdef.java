@@ -96,7 +96,7 @@ public class Skipdef extends AbstractAssignment {
         Token cs = source.getControlSequence();
         source.getOptionalEquals();
         //todo: unfortunately we have to know the internal format of the key:-(
-        String key = "skip#" + Long.toString(Count.scanCount(context, source));
+        String key = "skip#" + Long.toString(Count.scanCount(context, source, typesetter));
         context.setCode(cs, new SkipParameter(key), prefix.isGlobal());
 
     }

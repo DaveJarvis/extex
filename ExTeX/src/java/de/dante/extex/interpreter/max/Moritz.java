@@ -962,7 +962,7 @@ public abstract class Moritz implements TokenSource, Observable {
                     throw new HelpingException("TTP.MissingNumber");
                 } else if (code instanceof CountConvertible) {
                     return ((CountConvertible) code)
-                            .convertCount(context, this);
+                            .convertCount(context, this, getTypesetter());
                 } else if (code instanceof ExpandableCode) {
                     ((ExpandableCode) code).expand(Flags.NONE, context, this,
                             getTypesetter());

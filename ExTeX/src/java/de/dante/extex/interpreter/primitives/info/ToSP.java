@@ -73,16 +73,16 @@ public class ToSP extends AbstractCode implements Theable {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        source.push(the(context, source));
+        source.push(the(context, source, typesetter));
         return true;
     }
 
     /**
      * @see de.dante.extex.interpreter.type.Theable#the(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource)
+     *      de.dante.extex.interpreter.TokenSource, Typesetter)
      */
-    public Tokens the(final Context context, final TokenSource source)
+    public Tokens the(final Context context, final TokenSource source, Typesetter typesetter)
             throws GeneralException {
 
         Token cs = source.getToken();
@@ -101,7 +101,7 @@ public class ToSP extends AbstractCode implements Theable {
                     .toString());
         } else if (code instanceof DimenConvertible) {
             Dimen val = new Dimen(((DimenConvertible) code).convertDimen(
-                    context, source));
+                    context, source, typesetter));
             Tokens toks = new Tokens(context, val.toString());
             return toks;
         } else {

@@ -68,7 +68,7 @@ public class PairDef extends AbstractAssignment {
             throw new HelpingException("TTP.MissingCtrlSeq");
         }
         source.getOptionalEquals();
-        String key = "pair#" + Long.toString(Count.scanCount(context, source));
+        String key = "pair#" + Long.toString(Count.scanCount(context, source, typesetter));
         context.setCode(tok, new NamedPair(key), prefix.isGlobal());
     }
 }

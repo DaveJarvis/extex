@@ -70,7 +70,7 @@ public class BoolDef extends AbstractAssignment {
             throw new HelpingException("TTP.MissingCtrlSeq");
         }
         source.getOptionalEquals();
-        String key = "bool#" + Long.toString(Count.scanCount(context, source));
+        String key = "bool#" + Long.toString(Count.scanCount(context, source, typesetter));
         context.setCode(tok, new NamedBool(key), prefix.isGlobal());
     }
 }
