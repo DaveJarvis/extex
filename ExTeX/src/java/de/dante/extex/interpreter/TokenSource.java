@@ -233,7 +233,7 @@ public interface TokenSource {
      *
      * @return the next tokens as <code>String</code> or <code>null</code>
      */
-    public abstract String scanNextTokensAsString()
+    public abstract String scanTokensAsString()
                                            throws GeneralException;
 
     /**

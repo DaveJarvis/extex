@@ -51,8 +51,10 @@ import de.dante.util.configuration.Configuration;
  * @version $Revision$
  */
 public abstract class Moritz implements TokenSource, Observable {
-    /** This is the maximum value for a character code. In original TeX this
-     *  value would be 255.
+	
+    /** 
+     * This is the maximum value for a character code. In original TeX this
+     * value would be 255.
      */
     private static final long MAX_CHAR_CODE = Integer.MAX_VALUE; //TODO: find a good value
 
@@ -528,7 +530,7 @@ public abstract class Moritz implements TokenSource, Observable {
     /**
      * @see de.dante.extex.interpreter.TokenSource#scanNextTokensAsString()
      */
-    public String scanNextTokensAsString() throws GeneralException {
+    public String scanTokensAsString() throws GeneralException {
         return scanTokens()
                    .toText();
     }
