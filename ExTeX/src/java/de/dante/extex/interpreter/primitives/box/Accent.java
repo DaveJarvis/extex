@@ -129,7 +129,7 @@ public class Accent extends AbstractCode {
 
             if (glyph != null) {
                 if (g == null) {
-                    typesetter.treatLetter(tc, accent);
+                    typesetter.treatLetter(context, tc, accent);
                 } else {
                     Node node = typesetter.getCharNodeFactory().newInstance(tc,
                             accent);
@@ -149,10 +149,10 @@ public class Accent extends AbstractCode {
                     typesetter.add(node);
                     d.set(-a - delta);
                     typesetter.add(new AccentKernNode(d));
-                    typesetter.treatLetter(tc, c);
+                    typesetter.treatLetter(context, tc, c);
                 }
             } else if (g != null) {
-                typesetter.treatLetter(tc, c);
+                typesetter.treatLetter(context, tc, c);
             } else {
                 //TODO letter and accent are undefined
                 throw new RuntimeException("unimplemented");
