@@ -2079,8 +2079,9 @@ public class TFMReader implements FontMetric {
             AuxLigKern alk = ligAuxTab[start];
             if (alk.meansRestart()) {
                 start = alk.restartIndex();
-                if (start < ligAuxLen && alk.activity == AuxLigKern.UNREACHABLE)
+                if (start < ligAuxLen && alk.activity == AuxLigKern.UNREACHABLE){
                     alk.activity = AuxLigKern.PASSTHROUGH;
+                }
             }
         }
         return start;
