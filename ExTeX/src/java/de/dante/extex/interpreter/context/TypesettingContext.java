@@ -24,7 +24,8 @@ import de.dante.extex.hyphenation.HyphenationTable;
 import de.dante.extex.interpreter.type.font.Font;
 
 /**
- * ...
+ * The typesetting context is a container for attributes describing the
+ * appearance of glyphs or other nodes.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

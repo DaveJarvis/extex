@@ -123,16 +123,7 @@ public class TypesettingContextFactory extends AbstractFactory {
     public TypesettingContext newInstance(final TypesettingContext context,
             final Font font) throws ConfigurationInstantiationException {
 
-        TypesettingContext c;
-
-        try {
-            c = (TypesettingContext) (theClass.newInstance());
-        } catch (InstantiationException e) {
-            throw new ConfigurationInstantiationException(e);
-        } catch (IllegalAccessException e) {
-            throw new ConfigurationInstantiationException(e);
-        }
-
+        TypesettingContext c = newInstance();
         c.set(context);
         c.setFont(font);
 
@@ -153,16 +144,7 @@ public class TypesettingContextFactory extends AbstractFactory {
     public TypesettingContext newInstance(final TypesettingContext context,
             final Color color) throws ConfigurationInstantiationException {
 
-        TypesettingContext c;
-
-        try {
-            c = (TypesettingContext) (theClass.newInstance());
-        } catch (InstantiationException e) {
-            throw new ConfigurationInstantiationException(e);
-        } catch (IllegalAccessException e) {
-            throw new ConfigurationInstantiationException(e);
-        }
-
+        TypesettingContext c = newInstance();
         c.set(context);
         c.setColor(color);
 
@@ -184,21 +166,11 @@ public class TypesettingContextFactory extends AbstractFactory {
             final Direction direction)
             throws ConfigurationInstantiationException {
 
-        TypesettingContext c;
-
-        try {
-            c = (TypesettingContext) (theClass.newInstance());
-        } catch (InstantiationException e) {
-            throw new ConfigurationInstantiationException(e);
-        } catch (IllegalAccessException e) {
-            throw new ConfigurationInstantiationException(e);
-        }
-
+        TypesettingContext c = newInstance();
         c.set(context);
         c.setDirection(direction);
 
         return c;
     }
-
 
 }

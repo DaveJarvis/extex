@@ -54,6 +54,9 @@ public final class Direction implements Serializable {
      * Creates a new object.
      * This constructor is private since only a very limited set of instances
      * of this class is allowed. Those are provided as constants.
+     *
+     * @param isLR indicator for the direction; <code>true</code> denotes
+     *  left to right
      */
     private Direction(final boolean isLR) {
 
