@@ -35,7 +35,7 @@ import de.dante.util.UnicodeChar;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class ActiveCharacterToken extends AbstractToken implements Token {
+public class ActiveCharacterToken extends AbstractToken implements CodeToken {
 
     /**
      * Creates a new object.

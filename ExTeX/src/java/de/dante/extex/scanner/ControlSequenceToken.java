@@ -32,7 +32,7 @@ import de.dante.extex.i18n.Messages;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class ControlSequenceToken extends AbstractToken implements Token {
+public class ControlSequenceToken extends AbstractToken implements CodeToken {
 
     /**
      * Creates a new object.
