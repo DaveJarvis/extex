@@ -100,12 +100,6 @@ public class StringPrimitive extends AbstractCode implements ExpandableCode {
             throws InterpreterException {
 
         Token t = source.getToken(context);
-        if (t instanceof ControlSequenceToken) {
-            long esc = context.getCount("escapechar").getValue();
-            source.push(new Tokens(context, //
-                    t.toText((esc < 0 ? '\\' : (char) esc))));
-        } else {
-            source.push(new Tokens(context, t.getChar().getCodePoint()));
-        }
+        source.push(new Tokens(context, context.esc(t)));
     }
 }

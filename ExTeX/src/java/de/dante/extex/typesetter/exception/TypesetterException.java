@@ -51,17 +51,6 @@ public class TypesetterException extends InterpreterException {
     /**
      * Creates a new object.
      *
-     * @param message the textual representation
-     * @param cause the root of all evil
-     */
-    public TypesetterException(final String message, final Throwable cause) {
-
-        super(message, cause);
-    }
-
-    /**
-     * Creates a new object.
-     *
      * @param cause the root of all evil
      */
     public TypesetterException(final Throwable cause) {

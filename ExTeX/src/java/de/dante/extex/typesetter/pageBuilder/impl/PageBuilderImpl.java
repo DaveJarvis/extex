@@ -157,12 +157,10 @@ public class PageBuilderImpl implements PageBuilder {
     public void setContext(final Context context) {
 
         this.context = context;
-        long esc = context.getCount("escapechar").getValue();
 
         try {
             this.outputToken = (CodeToken) context.getTokenFactory()
-                    .createToken(Catcode.ESCAPE, //
-                            (esc < 0 ? '\\' : (char) esc), "");
+                    .createToken(Catcode.ESCAPE, context.escapechar(), "");
         } catch (CatcodeException e) {
             //TODO gene: error unimplemented
             throw new RuntimeException("unimplemented");

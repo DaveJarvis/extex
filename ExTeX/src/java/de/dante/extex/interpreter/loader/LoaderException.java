@@ -57,15 +57,4 @@ public class LoaderException extends InterpreterException {
         super(arg0);
     }
 
-    /**
-     * Creates a new object.
-     *
-     * @param arg0 the message
-     * @param arg1 the cause
-     */
-    public LoaderException(final String arg0, final Throwable arg1) {
-
-        super(arg0, arg1);
-    }
-
 }

@@ -56,17 +56,6 @@ public class InterpreterException extends GeneralException {
     /**
      * Creates a new object.
      *
-     * @param message the message field
-     * @param cause the root of all evil
-     */
-    public InterpreterException(final String message, final Throwable cause) {
-
-        super(message, cause);
-    }
-
-    /**
-     * Creates a new object.
-     *
      * @param cause the root of all evil
      */
     public InterpreterException(final Throwable cause) {
