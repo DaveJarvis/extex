@@ -63,6 +63,7 @@ import de.dante.util.GeneralException;
  * </p>
  * </doc>
  *
+ * TODO gene: document Extension
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
