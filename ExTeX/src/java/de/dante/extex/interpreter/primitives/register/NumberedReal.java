@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004 Michael Niedermair
+ * Copyright (C) 2004 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -16,6 +16,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  *
  */
+
 package de.dante.extex.interpreter.primitives.register;
 
 import de.dante.extex.interpreter.TokenSource;
@@ -27,12 +28,12 @@ import de.dante.util.GeneralException;
  * and as a side effect all prefixes are zeroed.
  *
  * <p>
- * All features are inherited from 
- * {@link de.dante.extex.interpreter.type.NamedReal Real}. Just the key 
+ * All features are inherited from
+ * {@link de.dante.extex.interpreter.type.NamedReal Real}. Just the key
  * has to be provided under which this Real has to be stored. This key is
  * constructed from the name, a hash mark and the running number.
  * </p>
- * 
+ *
  * <p>Example</p>
  * <pre>
  * \real12=345.67
@@ -43,23 +44,25 @@ import de.dante.util.GeneralException;
  */
 public class NumberedReal extends NamedReal {
 
-	/**
-	 * Creates a new object.
-	 *
-	 * @param name the name for debugging
-	 */
-	public NumberedReal(String name) {
-		super(name);
-	}
+    /**
+     * Creates a new object.
+     *
+     * @param name the name for debugging
+     */
+    public NumberedReal(final String name) {
 
-	/**
-	 * Return the key (the number) for the register.
-	 *
-	 * @param source 	the tokensource
-	 * @return Return the key
-	 * @throws GeneralException, if an ecxeption was occured
-	 */
-	protected String getKey(final TokenSource source) throws GeneralException {
-		return getName() + "#" + Long.toString(source.scanNumber());
-	}
+        super(name);
+    }
+
+    /**
+     * Return the key (the number) for the register.
+     *
+     * @param source    the tokensource
+     * @return Return the key
+     * @throws GeneralException if an ecxeption was occured
+     */
+    protected String getKey(final TokenSource source) throws GeneralException {
+
+        return getName() + "#" + Long.toString(source.scanNumber());
+    }
 }

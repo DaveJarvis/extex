@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004 The ExTeX Group
+ * Copyright (C) 2004 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -93,6 +93,7 @@ public class SVGReader implements FontMetric {
      * @see de.dante.util.font.FontMetric#getFontMetric()
      */
     public Element getFontMetric() {
+
         return efmelement;
     }
 }

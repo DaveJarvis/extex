@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004 The ExTeX Group
+ * Copyright (C) 2004 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -40,6 +40,11 @@ import de.dante.extex.font.TFMReader;
 public class TFM2EFM {
 
     /**
+     * filebuffer
+     */
+    private static final int FILEBUFFER = 0x8000;
+
+    /**
      * main
      * @param args      the comandlinearguments
      * @throws IOException ...
@@ -56,12 +61,12 @@ public class TFM2EFM {
         File efmfile = new File(args[1]);
 
         TFMReader tfmr = new TFMReader(new BufferedInputStream(
-                new FileInputStream(tfmfile), 0x8000));
+                new FileInputStream(tfmfile), FILEBUFFER));
 
         // write to efm-file
         XMLOutputter xmlout = new XMLOutputter("   ", true);
         BufferedOutputStream out = new BufferedOutputStream(
-                new FileOutputStream(efmfile), 0x8000);
+                new FileOutputStream(efmfile), FILEBUFFER);
         Document doc = new Document(tfmr.getFontMetric());
         xmlout.output(doc, out);
         out.close();
