@@ -42,7 +42,7 @@ import de.dante.util.GeneralException;
  * </pre>
  * Then the following instruction can savely be used:
  * <pre>
- *     throw new GeneralHelpingException("abc.def");
+ *     throw new HelpingException("abc.def");
  * </pre>
  * <p>
  * With this exception up to three arguments can be used. The String value of
