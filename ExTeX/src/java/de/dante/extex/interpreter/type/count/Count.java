@@ -53,6 +53,13 @@ public class Count implements Serializable, FixedCount {
     public static final Count ZERO = new ImmutableCount(0);
 
     /**
+     * The constant <tt>THOUSAND</tt> contains the count register with the
+     * value 1000.
+     * This count register is in fact immutable.
+     */
+    public static final Count THOUSAND = new ImmutableCount(1000);
+
+    /**
      * The field <tt>value</tt> contains the value of the count register.
      */
     private long value = 0;
