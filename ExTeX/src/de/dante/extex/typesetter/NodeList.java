@@ -31,7 +31,7 @@ import de.dante.extex.interpreter.type.node.CharNode;
 public interface NodeList extends Node {
 
     /**
-     * Add anode to the node list.
+     * Add a node to the node list.
      *
      * @param node the node to add
      */

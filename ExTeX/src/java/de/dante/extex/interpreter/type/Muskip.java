@@ -84,10 +84,10 @@ public class Muskip implements Serializable {
         super();
         this.length = new Dimen(context, source);
         if (source.scanKeyword("plus")) {
-            this.stretch = new GlueComponent(source, context, true);
+            this.stretch = new GlueComponent(context, source, true);
         }
         if (source.scanKeyword("minus")) {
-            this.shrink = new GlueComponent(source, context, true);
+            this.shrink = new GlueComponent(context, source, true);
         }
     }
 
