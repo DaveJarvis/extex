@@ -93,7 +93,7 @@ public class EFMFont extends XMLFont implements Font {
 
 			fontfile = finder.findFile(name, "efm");
 
-			if (fontfile.exists()) {
+			if (fontfile != null && fontfile.exists()) {
 
 				try {
 

@@ -779,4 +779,26 @@ public abstract class Moritz implements TokenSource, Observable {
         return true;
     }
 
+	/**
+	 * @see de.dante.extex.interpreter.TokenSource#skipSpace()
+	 */
+	public void skipSpace() throws GeneralException {
+		Token t = scanNonSpace();
+		if (t == null) {
+			throw new GeneralHelpingException("TTP.MissingNumber");
+		} else {
+			stream.put(t);
+		}
+	}
+
+	/**
+	 * @see de.dante.extex.interpreter.TokenSource#scanKeyword(java.lang.String, boolean)
+	 */
+	public boolean scanKeyword(final String s, final boolean space) throws GeneralException {
+		if (space) {
+			skipSpace();
+		}
+		return scanKeyword(s);
+	}
+
 }

@@ -62,7 +62,7 @@ public class FontFactoryImpl implements FontFactory {
 		Font font = (Font) (fontmap.get(name));
 		if (font == null) {
 			font = new EFMFont(name,size,finder);
-			System.err.println(font);// TODO delete after test
+			// System.err.println(font);
 			 // System.err.println(font.getFontDimen("SPACE").toPT());
 			 // UnicodeChar uc;
 			 // System.err.println((uc = font.ligature(new UnicodeChar('f'),new UnicodeChar('f'))).getCodePoint());
