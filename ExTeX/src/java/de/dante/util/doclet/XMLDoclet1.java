@@ -67,7 +67,7 @@ public class XMLDoclet1 extends Doclet {
      */
     public static boolean start(final RootDoc root) {
 
-        System.out.println("XMLDoclet1");
+        //System.out.println("XMLDoclet1");
 
         // init öffnet packages.xml , ...
         init();
@@ -138,7 +138,7 @@ public class XMLDoclet1 extends Doclet {
             Element packages = new Element("package");
             rootelement.addContent(packages);
 
-            System.out.println("* Package: " + pkg.getPkg());
+            //System.out.println("* Package: " + pkg.getPkg());
 
             //Verweis in main eintragen! (&package.name)
             packages.setAttribute("name", pkg.getPkg());
@@ -263,7 +263,7 @@ public class XMLDoclet1 extends Doclet {
                     realtype = "interface";
                 }
 
-                System.out.println("  " + cd.name());
+                // System.out.println("  " + cd.name());
 
                 Element realtypeelement = new Element(realtype);
                 child.addContent(realtypeelement);
@@ -859,7 +859,7 @@ public class XMLDoclet1 extends Doclet {
     /**
      * outdir
      */
-    private static String outdir = "xmldoc";
+    private static String outdir = "doc/javadocxml";
 
     /**
      * dtd

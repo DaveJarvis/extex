@@ -125,7 +125,9 @@ public class NamedReal extends AbstractCode
     }
 
     /**
-     * @see de.dante.extex.interpreter.Theable#the(de.dante.extex.interpreter.context.Context, de.dante.extex.interpreter.TokenSource)
+     * @see de.dante.extex.interpreter.Theable#the(
+     *      de.dante.extex.interpreter.context.Context,
+     *      de.dante.extex.interpreter.TokenSource)
      */
     public Tokens the(final Context context, final TokenSource source)
             throws GeneralException {
@@ -153,7 +155,10 @@ public class NamedReal extends AbstractCode
     }
 
     /**
-     * @see de.dante.extex.interpreter.Advanceable#advance(de.dante.extex.interpreter.Flags, de.dante.extex.interpreter.context.Context, de.dante.extex.interpreter.TokenSource)
+     * @see de.dante.extex.interpreter.Advanceable#advance(
+     *      de.dante.extex.interpreter.Flags,
+     *      de.dante.extex.interpreter.context.Context,
+     *      de.dante.extex.interpreter.TokenSource)
      */
     public void advance(final Flags prefix, final Context context, final TokenSource source)
             throws GeneralException {
@@ -175,7 +180,10 @@ public class NamedReal extends AbstractCode
     }
 
     /**
-     * @see de.dante.extex.interpreter.Multiplyable#multiply(de.dante.extex.interpreter.Flags, de.dante.extex.interpreter.context.Context, de.dante.extex.interpreter.TokenSource)
+     * @see de.dante.extex.interpreter.Multiplyable#multiply(
+     *      de.dante.extex.interpreter.Flags,
+     *      de.dante.extex.interpreter.context.Context,
+     *      de.dante.extex.interpreter.TokenSource)
      */
     public void multiply(final Flags prefix, final Context context, final TokenSource source)
             throws GeneralException {
@@ -196,7 +204,10 @@ public class NamedReal extends AbstractCode
     }
 
     /**
-     * @see de.dante.extex.interpreter.Divideable#divide(de.dante.extex.interpreter.Flags, de.dante.extex.interpreter.context.Context, de.dante.extex.interpreter.TokenSource)
+     * @see de.dante.extex.interpreter.Divideable#divide(
+     *      de.dante.extex.interpreter.Flags,
+     *      de.dante.extex.interpreter.context.Context,
+     *      de.dante.extex.interpreter.TokenSource)
      */
     public void divide(final Flags prefix, final Context context, final TokenSource source)
             throws GeneralException {
@@ -217,7 +228,9 @@ public class NamedReal extends AbstractCode
     }
 
     /**
-     * @see de.dante.extex.interpreter.RealConvertable#convertReal(de.dante.extex.interpreter.context.Context, de.dante.extex.interpreter.TokenSource)
+     * @see de.dante.extex.interpreter.RealConvertable#convertReal(
+     *      de.dante.extex.interpreter.context.Context,
+     *      de.dante.extex.interpreter.TokenSource)
      */
     public Real convertReal(final Context context, final TokenSource source)
             throws GeneralException {

@@ -61,7 +61,8 @@ public class Patterns extends AbstractCode {
      * The <code>HyphernationTable</code> are based on the
      * value from <code>\language</code>.
      *
-     * @see de.dante.extex.interpreter.Code#execute(de.dante.extex.interpreter.Flags,
+     * @see de.dante.extex.interpreter.Code#execute(
+     *      de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)

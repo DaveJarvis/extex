@@ -16,6 +16,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  *
  */
+
 package de.dante.extex.main;
 
 import de.dante.extex.i18n.Messages;
@@ -28,20 +29,26 @@ import de.dante.extex.i18n.Messages;
  */
 public class MainExTeXExtensionException extends MainException {
 
-	// TODO check
-	
-	/**
-	 * Creates a new object.
-	 *
-	 */
-	public MainExTeXExtensionException() {
-		super(-16, "ExTeXExtensionException");
-	}
+    /**
+     * number
+     */
+    private static final int NUMBER = -16;
 
-	/**
-	 * @see java.lang.Throwable#getMessage()
-	 */
-	public String getMessage() {
-		return Messages.format("MainExTeXExtensionException.Message", super.getMessage());
-	}
+    /**
+     * Creates a new object.
+     *
+     */
+    public MainExTeXExtensionException() {
+
+        super(NUMBER, "ExTeXExtensionException");
+    }
+
+    /**
+     * @see java.lang.Throwable#getMessage()
+     */
+    public String getMessage() {
+
+        return Messages.format("MainExTeXExtensionException.Message", super
+                .getMessage());
+    }
 }

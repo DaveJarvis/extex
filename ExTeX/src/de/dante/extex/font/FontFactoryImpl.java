@@ -68,7 +68,7 @@ public class FontFactoryImpl implements FontFactory {
         Font font = (Font) (fontmap.get(name));
         if (font == null) {
             font = new EFMFont(name, size, finder);
-            // System.err.println(font);
+            //System.err.println(font);
         }
         return font;
     }

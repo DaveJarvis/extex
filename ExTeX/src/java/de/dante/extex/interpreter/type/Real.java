@@ -123,7 +123,7 @@ public class Real implements Serializable {
             }
         }
 
-        StringBuffer sb = new StringBuffer(32);
+        StringBuffer sb = new StringBuffer();
         if (neg) {
             sb.append('-');
         }

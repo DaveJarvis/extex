@@ -42,7 +42,7 @@ public class AFM2EFM {
      * filebuffer
      */
     private static final int FILEBUFFER = 0x8000;
-    
+
     /**
      * main
      * @param args the commandlinearguments
@@ -51,8 +51,8 @@ public class AFM2EFM {
     public static void main(final String[] args) throws IOException {
 
         if (args.length != 4) {
-            System.err
-                    .println("java de.dante.util.font.AFM2EFM <afm-file> <pfb-file> <efm-file> <default-size>");
+            System.err.println("java de.dante.util.font.AFM2EFM "
+                    + "<afm-file> <pfb-file> <efm-file> <default-size>");
             System.exit(1);
         }
 
