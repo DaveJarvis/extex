@@ -133,6 +133,14 @@ public class NullTypesetterImpl implements Typesetter {
     }
 
     /**
+     * @see de.dante.extex.typesetter.Typesetter#getListMaker()
+     */
+    public ListMaker getListMaker() {
+
+        return null;
+    }
+
+    /**
      * @see de.dante.extex.typesetter.Typesetter#getManager()
      */
     public Manager getManager() {
@@ -278,7 +286,8 @@ public class NullTypesetterImpl implements Typesetter {
      * @see de.dante.extex.typesetter.ListMaker#treatMathShift(
      *      de.dante.extex.scanner.Token, TokenSource)
      */
-    public void treatMathShift(Token t, TokenSource source) throws GeneralException {
+    public void treatMathShift(Token t, TokenSource source)
+            throws GeneralException {
 
     }
 

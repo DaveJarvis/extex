@@ -53,6 +53,13 @@ public interface Typesetter extends ListMaker {
     CharNodeFactory getCharNodeFactory();
 
     /**
+     * Getter for the current list maker..
+     *
+     * @return the top list maker or <code>null</code> if the stack is empty
+     */
+    ListMaker getListMaker();
+
+    /**
      * Getter for the manager of the list maker stack.
      *
      * @return the manager

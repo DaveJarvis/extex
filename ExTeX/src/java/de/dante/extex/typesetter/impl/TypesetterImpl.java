@@ -273,6 +273,14 @@ public class TypesetterImpl
     }
 
     /**
+     * @see de.dante.extex.typesetter.Typesetter#getListMaker()
+     */
+    public ListMaker getListMaker() {
+
+        return listMaker;
+    }
+
+    /**
      * Getter for the manager of the list maker stack.
      * This instance also acts as a manager.
      *
