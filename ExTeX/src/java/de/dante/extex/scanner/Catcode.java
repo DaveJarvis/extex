@@ -194,6 +194,15 @@ public abstract class Catcode {
     }
 
     /**
+     * Getter for the maximal numerical catcode
+     * 
+     * @return ...
+     */
+    public static int getCatcodeMax() {
+        return catcodes.length-1;
+    }
+
+    /**
      * Get the numerical representation for the Catcode.
      * Beware: this method should be used only as a last resort.
      *
