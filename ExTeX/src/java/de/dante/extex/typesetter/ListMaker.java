@@ -18,7 +18,6 @@
  */
 package de.dante.extex.typesetter;
 
-
 import de.dante.extex.interpreter.context.TypesettingContext;
 import de.dante.extex.interpreter.type.Count;
 import de.dante.extex.interpreter.type.Dimen;
@@ -35,27 +34,27 @@ import de.dante.util.UnicodeChar;
  * @version $Revision$
  */
 public interface ListMaker {
-    
-    public abstract void add(Node node) throws GeneralException;
 
-    public abstract void add(TypesettingContext typesettingContext, UnicodeChar symbol) throws GeneralException;
+	public abstract void add(Node node) throws GeneralException;
 
-    public abstract void addSpace(TypesettingContext typesettingContext, Count spacefactor) throws GeneralException;
+	public abstract void add(TypesettingContext typesettingContext, UnicodeChar symbol) throws GeneralException;
 
-    public abstract void addGlue(Glue g) throws GeneralException;
+	public abstract void addSpace(TypesettingContext typesettingContext, Count spacefactor) throws GeneralException;
 
-    public abstract void par() throws GeneralException;
+	public abstract void addGlue(Glue g) throws GeneralException;
 
-    public abstract void toggleMath() throws GeneralException;
+	public abstract void par() throws GeneralException;
 
-    public abstract void toggleDisplaymath() throws GeneralException;
+	public abstract void toggleMath() throws GeneralException;
 
-    public abstract void setSpacefactor(Count f) throws GeneralException;
+	public abstract void toggleDisplaymath() throws GeneralException;
 
-    public abstract void setPrevDepth(Dimen pd) throws GeneralException;
+	public abstract void setSpacefactor(Count f) throws GeneralException;
 
-    public abstract Mode getMode();
+	public abstract void setPrevDepth(Dimen pd) throws GeneralException;
 
-    public abstract NodeList close();
+	public abstract Mode getMode();
+
+	public abstract NodeList close() throws GeneralException;
 
 }

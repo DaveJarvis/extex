@@ -89,7 +89,7 @@ public abstract class AbstractListMaker implements ListMaker {
 	/**
 	 * @see de.dante.extex.typesetter.ListMaker#close()
 	 */
-	public abstract NodeList close();
+	public abstract NodeList close() throws GeneralException;
 
 	/**
 	 * @see de.dante.extex.typesetter.ListMaker#par()

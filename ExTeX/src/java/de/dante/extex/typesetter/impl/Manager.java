@@ -18,10 +18,11 @@
  */
 package de.dante.extex.typesetter.impl;
 
+import java.util.Map;
+
 import de.dante.extex.documentWriter.DocumentWriter;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.type.node.CharNodeFactory;
-import de.dante.extex.typesetter.LineBreaker;
 import de.dante.extex.typesetter.ListMaker;
 import de.dante.util.GeneralException;
 
@@ -45,7 +46,7 @@ public interface Manager {
 	DocumentWriter getDocumentWriter();
 
 	Context getContext();
-	
-	LineBreaker getLineBreaker();
+
+	Map getLineBreakerMap();
 
 }
