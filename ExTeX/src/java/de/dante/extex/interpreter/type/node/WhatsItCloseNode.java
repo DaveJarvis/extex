@@ -60,14 +60,17 @@ public class WhatsItCloseNode extends WhatsItNode implements LogEnabled {
     /**
      * This method performs any action which are required to executed at the
      * time of shipping the node to the DocumentWriter.
+     *
      * @param context the interpreter context
+     * @param typesetter the typesetter
      *
      * @throws GeneralException in case of an error
      *
      * @see de.dante.extex.typesetter.Node#atShipping(
      *      de.dante.extex.interpreter.context.Context, Typesetter)
      */
-    public void atShipping(final Context context, Typesetter typesetter) throws GeneralException {
+    public void atShipping(final Context context, final Typesetter typesetter)
+            throws GeneralException {
 
         OutFile file = context.getOutFile(key);
         if (file != null) {
