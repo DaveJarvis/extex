@@ -71,7 +71,7 @@ public class InFile implements Serializable {
             return true;
         }
         //TODO return stream.isEof();
-        return false; // TODO
+        return false;
     }
 
     /**
