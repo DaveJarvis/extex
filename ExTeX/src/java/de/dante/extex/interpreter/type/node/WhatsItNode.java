@@ -23,7 +23,7 @@ import de.dante.extex.typesetter.NodeVisitor;
 import de.dante.util.GeneralException;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This node type represents the extension node from the perspective of TeX.
  *
  * @see "TeX -- The Program [146]"
  *

@@ -87,12 +87,12 @@ public class SpaceNode extends GlueNode implements Node {
      */
     public void toString(final StringBuffer sb, final String prefix) {
 
-        sb.append("\\space "); //TODO gene: I18N???
-        sb.append(this.size.toString());
-        if (DEVELOP && !getWidth().eq(size.getLength())) {
-            sb.append(" [");
-            sb.append(getWidth().toString());
-            sb.append(']');
+        if (!DEVELOP || getWidth().eq(size.getLength())) {
+            sb.append(getLocalizer().format("SpaceNode.Format", //
+                    size.toString()));
+        } else {
+            sb.append(getLocalizer().format("SpaceNode.Format2", //
+                    size.toString(), getWidth().toString()));
         }
     }
 
