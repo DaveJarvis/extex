@@ -226,11 +226,6 @@ public abstract class AbstractNode implements Node {
      * @param sb the output string buffer
      * @param prefix the string prepended to each line of the resulting text
      */
-    public void toText(final StringBuffer sb, final String prefix) {
+    public abstract void toText(final StringBuffer sb, final String prefix);
 
-        sb.append(prefix);
-
-        //TODO gene: unimplemented
-        throw new RuntimeException("unimplemented");
-    }
 }
