@@ -632,7 +632,8 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
                 sb.append('l');
             }
         } else {
-            throw new RuntimeException("This can't happen."); //TODO incomplete
+            throw new RuntimeException(getLocalizer().format("Illegal.Order",
+                    Integer.toString(order)));
         }
     }
 
