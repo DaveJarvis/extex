@@ -36,7 +36,7 @@ import de.dante.util.GeneralException;
  * <p>
  *  The macro <tt>\endcsname</tt> is used in combination with the macro
  *  <tt>\csname</tt> only. Whenever a <tt>\endcsname</tt> is seen alone it must
- *  be an error. Thus thus primitive produces an error message only.
+ *  be an error. Thus thus primitive produces an error message ikn any case.
  * </p>
  * <p>
  *  The formal description of this primitive is the following:
@@ -51,6 +51,7 @@ import de.dante.util.GeneralException;
  * </p>
  * </doc>
  *
+ * @see "TTP [1134]"
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

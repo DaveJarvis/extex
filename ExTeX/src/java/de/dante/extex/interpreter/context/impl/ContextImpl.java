@@ -225,7 +225,8 @@ public class ContextImpl
     private transient ObserverList observersInteraction = new ObserverList();
 
     /**
-     * The field <tt>parshape</tt> contains the ...
+     * The field <tt>parshape</tt> contains the object containing the
+     * dimensions of the paragraph.
      */
     private ParagraphShape parshape = null;
 
