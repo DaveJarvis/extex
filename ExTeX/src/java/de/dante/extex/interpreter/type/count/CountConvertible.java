@@ -38,9 +38,10 @@ public interface CountConvertible {
      * It might be necessary to read further tokens to determine which value to
      * use. For instance an additional register number might be required. In
      * this case the additional arguments Context and TokenSource can be used.
+     *
      * @param context the interpreter context
      * @param source the source for new tokens
-     * @param typesetter TODO
+     * @param typesetter the typesetter to use for conversion
      *
      * @return the converted value
      *

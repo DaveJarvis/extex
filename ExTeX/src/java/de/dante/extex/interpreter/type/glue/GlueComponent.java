@@ -104,12 +104,13 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
     private static final int POINT_PER_100_IN = 7227;
 
     /**
-     * The constant <tt>PT_PER_PC</tt> contains the ...
+     * The constant <tt>PT_PER_PC</tt> contains the number of points per pica.
      */
     private static final int PT_PER_PC = 12;
 
     /**
-     * The field <tt>ZERO</tt> contains the ...
+     * The constant <tt>ZERO</tt> contains the non-stretchable and
+     * non-shrinkable value of 0&nbsp;pt.
      */
     public static final GlueComponent ZERO = new GlueComponent(0);
 

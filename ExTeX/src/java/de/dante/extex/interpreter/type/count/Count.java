@@ -104,9 +104,10 @@ public class Count implements Serializable, FixedCount {
 
     /**
      * Scan the input stream for a count value.
+     *
      * @param context the processor context
      * @param source the source for new tokens
-     * @param typesetter TODO
+     * @param typesetter the typesetter to use for conversion
      *
      * @return the value of the count
      *

@@ -43,7 +43,7 @@ public interface DimenConvertible {
      * The return value is the length in scaled points.
      * @param context the interpreter context
      * @param source the source for new tokens
-     * @param typesetter TODO
+     * @param typesetter the typesetter to use for conversion
      *
      * @return the converted value in sp
      *
