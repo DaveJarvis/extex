@@ -53,4 +53,31 @@ public abstract class AbstractNucleusNoad extends AbstractNoad {
         return this.nucleus;
     }
 
+    /**
+     * @see "TTP [696]"
+     * @see de.dante.extex.typesetter.type.noad.Noad#toString(
+     *      java.lang.StringBuffer, int)
+     */
+    public void toString(final StringBuffer sb, final int depth) {
+
+        if (depth < 0) {
+            sb.append(" {}");
+        } else {
+            sb.append('\\');
+            sb.append(stringName());
+            if (nucleus != null) {
+                sb.append('.');
+                nucleus.toString(sb, depth - 1);
+            }
+            if (getSuperscript() != null) {
+                sb.append('^');
+                getSuperscript().toString(sb, depth - 1);
+            }
+            if (getSubscript() != null) {
+                sb.append('_');
+                getSubscript().toString(sb, depth - 1);
+            }
+        }
+    }
+
 }
