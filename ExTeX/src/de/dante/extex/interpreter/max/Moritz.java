@@ -351,7 +351,7 @@ public abstract class Moritz implements TokenSource, Observable {
 
         if (stream == null) {
             try {
-                stream = getTokenStreamFactory().newInstance("","ISO8859-1");
+                stream = getTokenStreamFactory().newInstance("");
             } catch (ConfigurationException e) {
                 throw new GeneralPanicException(e);
             }

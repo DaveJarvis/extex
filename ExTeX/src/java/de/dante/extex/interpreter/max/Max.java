@@ -318,12 +318,13 @@ public class Max extends Moritz implements Interpreter,
         }
 
         if (everyRun != null) {
+            /*
             String enc = everyRun.getAttribute("encoding");
             if (enc == null || "".equals(enc)) {
                 enc = DEFAULT_ENCODING;
             }
-            addStream(getTokenStreamFactory().newInstance(everyRun.getValue(),
-                                                          enc));
+            */
+            addStream(getTokenStreamFactory().newInstance(everyRun.getValue()));
         }
 
         push(context.getToks("everyjob"));
