@@ -192,9 +192,10 @@ public class MultiConfiguration implements Configuration {
     }
 
     /**
+     * @throws ConfigurationException ...
      * @see de.dante.util.configuration.Configuration#iterator(java.lang.String)
      */
-    public Iterator iterator(final String key) {
+    public Iterator iterator(final String key) throws ConfigurationException {
 
         return new MultiConfigurationIterator(configs, key);
     }
