@@ -197,34 +197,5 @@ public class TypesettingContextFactory {
         return c;
     }
 
-    /**
-     * Factory method to acquire an instance of the TypesettingContext.
-     *
-     * @param context the typesetting context to clone
-     * @param angle the new value for the angle
-     *
-     * @return an appropriate instance of the TypesettingContext.
-     *
-     * @throws ConfigurationInstantiationException in case that the
-     *             instantiation of the class failed.
-     */
-    public TypesettingContext newInstance(final TypesettingContext context,
-            final int angle) throws ConfigurationInstantiationException {
-
-        TypesettingContext c;
-
-        try {
-            c = (TypesettingContext) (theClass.newInstance());
-        } catch (InstantiationException e) {
-            throw new ConfigurationInstantiationException(e);
-        } catch (IllegalAccessException e) {
-            throw new ConfigurationInstantiationException(e);
-        }
-
-        c.set(context);
-        c.setAngle(angle);
-
-        return c;
-    }
 
 }

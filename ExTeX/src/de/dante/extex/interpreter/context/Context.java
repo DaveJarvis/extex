@@ -667,15 +667,6 @@ public interface Context extends Serializable {
     void setTypesettingContext(Font font) throws ConfigurationException;
 
     /**
-     * Setter for the angle of the glyphs in the current typesetting context.
-     *
-     * @param angle the new angle
-     *
-     * @throws ConfigurationException in case of an error in the configuration.
-     */
-    void setTypesettingContext(int angle) throws ConfigurationException;
-
-    /**
      * Setter for the typesetting context in the current group.
      *
      * @param context the new typesetting context

@@ -92,18 +92,4 @@ public interface TypesettingContext {
      */
     Color getColor();
 
-    /**
-     * Setter for the angle.
-     *
-     * @param angle the new angle
-     */
-    void setAngle(int angle);
-
-    /**
-     * Getter for the angle.
-     *
-     * @return the current angle
-     */
-    int getAngle();
-
 }
