@@ -47,6 +47,17 @@ public class HorizontalListNode extends AbstractNodeList implements NodeList {
     }
 
     /**
+     * Creates a new object.
+     *
+     * @param node the initialnode to add
+     */
+    public HorizontalListNode(final Node node) {
+
+        super();
+        add(node);
+    }
+
+    /**
      * @see de.dante.extex.typesetter.NodeList#addSkip(
      *      de.dante.extex.interpreter.type.glue.Glue)
      */
