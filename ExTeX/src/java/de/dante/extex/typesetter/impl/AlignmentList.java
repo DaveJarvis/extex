@@ -27,5 +27,21 @@ package de.dante.extex.typesetter.impl;
  */
 public interface AlignmentList {
 
-    
+    /**
+     * ...
+     *
+     */
+    void omit();
+
+    /**
+     * ...
+     *
+     */
+    void cr();
+
+    /**
+     * ...
+     *
+     */
+    void crcr();
 }
