@@ -44,7 +44,8 @@ import de.dante.util.GeneralException;
  * <p>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    <tt>\raise</tt> &lang;dimen&rang; {@linkplain
+ *    &lang;raise&rang;
+ *        := <tt>\raise</tt> &lang;dimen&rang; {@linkplain
  *    de.dante.extex.interpreter.TokenSource#getBox() &lang;box&rang;}  </pre>
  * </p>
  * <p>

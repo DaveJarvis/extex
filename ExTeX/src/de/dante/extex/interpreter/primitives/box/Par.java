@@ -36,7 +36,8 @@ import de.dante.util.GeneralException;
  * <p>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    <tt>\par</tt>  </pre>
+ *    &lang;par&rang;
+ *        := <tt>\par</tt>  </pre>
  * </p>
  * <p>
  *  Examples:

@@ -42,7 +42,8 @@ import de.dante.util.GeneralException;
  * <p>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    <tt>\kern</tt>&lang;dimen&rang;  </pre>
+ *    &lang;kern&rang;
+ *        := <tt>\kern</tt>&lang;dimen&rang;  </pre>
  * </p>
  * <p>
  *  Examples:
