@@ -33,7 +33,8 @@ import de.dante.util.configuration.ConfigurationMissingException;
 public class LoggerFactory {
 
     /**
-     * The field <tt>classname</tt> ...
+     * The field <tt>classname</tt> contains the name of the class to
+     * instantiate.
      */
     private String classname;
     
@@ -41,6 +42,8 @@ public class LoggerFactory {
      * Creates a new object.
      * 
      * @param classname the configuration to use
+     *
+     * @throws ConfigurationException in case that the configuration is missing
      */
     public LoggerFactory(final String classname) throws ConfigurationException {
         super();
@@ -56,11 +59,10 @@ public class LoggerFactory {
      * @param name ...
      * @param logfile ...
      * @param template ...
+     *
      * @return ...
+     *
      * @throws ConfigurationException ...
-     */
-    /**
-     * @return
      */
     public Logger getInstance(final String name, final File logfile,
         final String template) throws ConfigurationException {
