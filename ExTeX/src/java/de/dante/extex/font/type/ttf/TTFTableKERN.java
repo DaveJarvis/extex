@@ -45,7 +45,10 @@ import de.dante.util.file.random.RandomAccessR;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class TTFTableKERN implements TTFTable, XMLConvertible {
+public class TTFTableKERN extends AbstractTTFTable
+        implements
+            TTFTable,
+            XMLConvertible {
 
     /**
      * version
@@ -65,13 +68,15 @@ public class TTFTableKERN implements TTFTable, XMLConvertible {
     /**
      * Create a new object
      *
+     * @param tablemap  the tablemap
      * @param de        entry
      * @param rar       input
      * @throws IOException if an IO-error occurs
      */
-    TTFTableKERN(final TableDirectory.Entry de, final RandomAccessR rar)
-            throws IOException {
+    TTFTableKERN(final TableMap tablemap, final TableDirectory.Entry de,
+            final RandomAccessR rar) throws IOException {
 
+        super(tablemap);
         rar.seek(de.getOffset());
         version = rar.readUnsignedShort();
         nTables = rar.readUnsignedShort();

@@ -33,18 +33,23 @@ import de.dante.util.file.random.RandomAccessR;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class TTFTableACNT implements TTFTable, XMLConvertible {
+public class TTFTableACNT extends AbstractTTFTable
+        implements
+            TTFTable,
+            XMLConvertible {
 
     /**
      * Create a new object
      *
+     * @param tablemap  the tablemap
      * @param de        entry
      * @param rar       input
      * @throws IOException if an IO-error occurs
      */
-    TTFTableACNT(final TableDirectory.Entry de, final RandomAccessR rar)
-            throws IOException {
+    TTFTableACNT(final TableMap tablemap, final TableDirectory.Entry de,
+            final RandomAccessR rar) throws IOException {
 
+        super(tablemap);
         rar.seek(de.getOffset());
 
         // incomplete

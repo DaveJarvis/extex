@@ -32,4 +32,22 @@ public interface TTFTable {
      * @return Returns the table-type.
      */
     int getType();
+
+    /**
+     * Returns a order number to sort the tables for the init process.
+     * @return Returns the order number.
+     */
+    int getInitOrder();
+
+    /**
+     * Returns the table map with all tables.
+     * @return Returns the table map with all tables.
+     */
+    TableMap getTableMap();
+
+    /**
+     * Init the table.
+     */
+    void init();
+
 }
