@@ -88,7 +88,7 @@ public class Read extends AbstractCode {
 
         Tokens toks = file.read(context.getTokenFactory(), context
                 .getTokenizer());
-        context.setCode(cs, new MacroCode(cs.getValue(), prefix,
+        context.setCode(cs, new MacroCode(cs.getName(), prefix,
                 MacroPattern.EMPTY, toks), prefix.isGlobal());
 
         return true;

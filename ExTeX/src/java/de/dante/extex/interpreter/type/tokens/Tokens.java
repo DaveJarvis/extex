@@ -227,7 +227,7 @@ public class Tokens implements Serializable, FixedTokens {
         StringBuffer sb = new StringBuffer();
 
         for (int i = 0; i < tokens.size(); i++) {
-            sb.append(((Token) tokens.get(i)).getValue());
+            sb.append(((Token) tokens.get(i)).toText());
         }
 
         return sb.toString();

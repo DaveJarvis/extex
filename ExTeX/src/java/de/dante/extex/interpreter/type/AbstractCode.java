@@ -154,9 +154,11 @@ public class AbstractCode implements Code, Localizable, Serializable {
 
         if (token instanceof ControlSequenceToken) {
             char esc = (char) (context.getCount("escapechar").getValue());
-            return Character.toString(esc) + token.getValue();
+            return Character.toString(esc)
+                    + ((ControlSequenceToken) token).getChar().getCodePoint();
+                    //TODO gene: check whether cs can arrive here
         }
-        return token.getValue();
+        return token.getChar().toString();
     }
 
     /**

@@ -87,7 +87,7 @@ public class Csname extends AbstractCode
         Token t = source.getControlSequence();
 
         if ((t instanceof ControlSequenceToken)
-                && t.getValue().equals("csname")) {
+                && ((ControlSequenceToken) t).getName().equals("csname")) {
             Tokens toks = scanToEndCsname(context, source);
             t = context.getTokenFactory().createToken(Catcode.ESCAPE,
                     toks.toString(), context.getNamespace());
