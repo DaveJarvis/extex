@@ -69,17 +69,6 @@ public class InsertionNode extends AbstractNode implements Node {
     /**
      * @see de.dante.extex.typesetter.type.Node#visit(
      *      de.dante.extex.typesetter.NodeVisitor,
-     *      java.lang.Object, java.lang.Object)
-     */
-    public Object visit(final NodeVisitor visitor, final Object value,
-            final Object value2) throws GeneralException {
-
-        return visitor.visitInsertion(value, value2);
-    }
-
-    /**
-     * @see de.dante.extex.typesetter.type.Node#visit(
-     *      de.dante.extex.typesetter.NodeVisitor,
      *      java.lang.Object)
      */
     public Object visit(final NodeVisitor visitor, final Object value)

@@ -146,19 +146,4 @@ public interface Node extends Knot {
      */
     Object visit(NodeVisitor visitor, Object value) throws GeneralException;
 
-    /**
-     * This method provides an entry point for the visitor pattern.
-     *
-     * @param visitor the visitor to apply
-     * @param value  the first argument for the visitor
-     * @param value2 the second argument for the visitor
-     *
-     * @return the result of the method invocation of the visitor
-     *
-     * @throws GeneralException in case of an error
-     * @deprecated use the other visit method instead
-     */
-    Object visit(NodeVisitor visitor, Object value, Object value2)
-            throws GeneralException;
-
 }
