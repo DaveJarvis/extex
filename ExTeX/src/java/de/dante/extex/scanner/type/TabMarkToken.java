@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2005 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -80,11 +80,10 @@ public class TabMarkToken extends AbstractToken implements Token {
     /**
      * @see de.dante.extex.scanner.type.Token#visit(
      *      de.dante.extex.scanner.TokenVisitor,
-     *      java.lang.Object,
      *      java.lang.Object)
      */
-    public Object visit(final TokenVisitor visitor, final Object arg1,
-            final Object arg2) throws Exception {
+    public Object visit(final TokenVisitor visitor, final Object arg1)
+            throws Exception {
 
         return visitor.visitTabMark(this, arg1);
     }
