@@ -27,6 +27,7 @@ import junit.framework.TestCase;
 import de.dante.extex.documentWriter.DocumentWriter;
 import de.dante.extex.documentWriter.DocumentWriterOptions;
 import de.dante.extex.documentWriter.NoOutputStreamException;
+import de.dante.extex.documentWriter.SingleDocumentStream;
 import de.dante.extex.i18n.PanicException;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.type.count.FixedCount;
@@ -115,7 +116,7 @@ public class DviDocumentWriterTest extends TestCase {
                                                documentWriterOptions);
         nodeList = new VerticalListNode();
         outputStream = new ByteArrayOutputStream();
-        documentWriter.setOutputStream(outputStream);
+        ((SingleDocumentStream)documentWriter).setOutputStream(outputStream);
     }
 
 
@@ -206,7 +207,7 @@ public class DviDocumentWriterTest extends TestCase {
         documentWriterOptions.setMagnification(magnification);
         documentWriter = new DviDocumentWriter(configuration,
                                                documentWriterOptions);
-        documentWriter.setOutputStream(outputStream);
+        ((SingleDocumentStream)documentWriter).setOutputStream(outputStream);
         documentWriter.shipout(nodeList);
     }
 
