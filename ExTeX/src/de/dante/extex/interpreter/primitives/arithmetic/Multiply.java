@@ -43,7 +43,8 @@ import de.dante.util.GeneralException;
  * <p>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    <tt>\multiply</tt> &lang;multiplyable&rang; 
+ *   &lang;multiply&rang;
+ *     := <tt>\multiply</tt> &lang;multiplyable&rang;
  *
  *   &lang;multiplyable&rang;
  *     := &lang;integer variable&rang; &lang;optional <tt>by</tt>&rang; {@linkplain

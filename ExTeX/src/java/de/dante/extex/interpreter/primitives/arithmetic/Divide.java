@@ -42,7 +42,8 @@ import de.dante.util.GeneralException;
  * <p>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    <tt>\divide</tt> &lang;dividable&rang; 
+ *   &lang;divide&rang;
+ *     := <tt>\divide</tt> &lang;dividable&rang;
  *
  *   &lang;dividable&rang;
  *     := &lang;integer variable&rang; &lang;optional <tt>by</tt>&rang; {@linkplain
