@@ -18,6 +18,8 @@
  */
 package de.dante.extex.typesetter.impl;
 
+import de.dante.extex.interpreter.TokenSource;
+import de.dante.extex.interpreter.context.Context;
 import de.dante.util.GeneralException;
 
 
@@ -40,17 +42,19 @@ public interface AlignmentList {
 
     /**
      * ...
-     *
+     * @param context TODO
+     * @param source TODO
      * @throws GeneralException in case of an error
      */
-    void cr() throws GeneralException;
+    void cr(Context context, TokenSource source) throws GeneralException;
 
     /**
      * ...
-     *
+     * @param context TODO
+     * @param source TODO
      * @throws GeneralException in case of an error
      */
-    void crcr() throws GeneralException;
+    void crcr(Context context, TokenSource source) throws GeneralException;
 
     /**
      * ...
