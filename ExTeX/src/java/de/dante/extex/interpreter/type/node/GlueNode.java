@@ -136,7 +136,7 @@ public class GlueNode extends AbstractNode implements Node, Discartable {
 
     /**
      * This method returns the printable representation.
-     * This is meant to produce a exaustive form as it is used in tracing
+     * This is meant to produce an exhaustive form as it is used in tracing
      * output to the log file.
      *
      * @return the printable representation
