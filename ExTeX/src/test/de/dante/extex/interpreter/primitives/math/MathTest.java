@@ -49,7 +49,7 @@ public class MathTest extends ExTeXLauncher {
                 "\\catcode`$=3 "
                 + "$a$",
                 //--- log message ---
-                "?",
+                "?", //TODO gene: check
                 //--- output channel ---
                 null);
     }
