@@ -118,4 +118,14 @@ public class TokenStreamBaseImpl implements TokenStream {
 
         return false;
     }
+    
+    
+    /**
+     * @see de.dante.extex.scanner.stream.TokenStream#isEof()
+     * TODO mgn incomplete
+     */
+    public boolean isEof() {
+
+        return false;
+    }
 }

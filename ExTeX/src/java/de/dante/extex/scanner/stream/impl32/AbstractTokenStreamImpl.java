@@ -712,4 +712,13 @@ public abstract class AbstractTokenStreamImpl extends TokenStreamBaseImpl
         }
     }
 
+    
+    
+    /**
+     * @see de.dante.extex.scanner.stream.TokenStream#isEof()
+     */
+    public boolean isEof() {
+        // TODO mgn incomplete
+        return false;
+    }
 }

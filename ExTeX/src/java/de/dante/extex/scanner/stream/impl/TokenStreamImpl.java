@@ -396,10 +396,8 @@ public class TokenStreamImpl extends TokenStreamBaseImpl
      * Test for end of file.
      *
      * @return <code>true</code> iff the stream is at its end
-     *
-     * @throws GeneralException in case of an IO error
      */
-    public boolean isEof() throws GeneralException {
+    public boolean isEof() {
 
         if (!super.isEof()) {
             return false;
@@ -416,7 +414,8 @@ public class TokenStreamImpl extends TokenStreamBaseImpl
                     return true;
                 }
             } catch (IOException e) {
-                throw new MainIOException(e);
+                // TODO gene: incomplete
+                // throw new MainIOException(e);
             }
 
             pointer = 0;

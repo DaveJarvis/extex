@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.scanner.stream.impl;
+package de.dante.extex.scanner.stream.impl32.newversion;
 
 import java.util.LinkedList;
 
@@ -195,4 +195,12 @@ public abstract class AbstractTokenStreamImpl implements TokenStream {
         }
     }
 
+    /**
+     * @see de.dante.extex.scanner.stream.TokenStream#isEof()
+     */
+    public boolean isEof() {
+
+        // TODO mgn incomplete
+        return false;
+    }
 }

@@ -856,4 +856,12 @@ public abstract class TokenStreamBaseImpl32
         }
     }
 
+    
+    /**
+     * @see de.dante.extex.scanner.stream.TokenStream#isEof()
+     */
+    public boolean isEof() {
+        // TODO mgn incomplete
+        return false;
+    }
 }
