@@ -95,7 +95,7 @@ public class Input extends AbstractFileCode {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        String name = scanFileName(source, context);
+        String name = scanFileName(context, source);
         String encoding = getEncoding(context);
         TokenStreamFactory factory = source.getTokenStreamFactory();
 

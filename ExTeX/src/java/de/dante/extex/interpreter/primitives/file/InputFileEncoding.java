@@ -71,7 +71,7 @@ public class InputFileEncoding extends InputFile {
             throws GeneralException {
 
         String encoding = source.scanTokensAsString();
-        String name = scanFileName(source, context);
+        String name = scanFileName(context, source);
         TokenStreamFactory factory = source.getTokenStreamFactory();
 
         try {

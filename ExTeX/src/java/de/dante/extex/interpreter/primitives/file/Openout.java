@@ -74,7 +74,7 @@ public class Openout extends AbstractFileCode {
         String key = AbstractFileCode.scanOutFileKey(source);
 
         source.getOptionalEquals();
-        String name = scanFileName(source, context);
+        String name = scanFileName(context, source);
 
         OutFile file = new OutFile(new File(name));
 

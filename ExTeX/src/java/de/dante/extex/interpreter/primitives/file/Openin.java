@@ -72,7 +72,7 @@ public class Openin extends AbstractFileCode {
 
         String key = AbstractFileCode.scanInFileKey(source);
         source.getOptionalEquals();
-        String name = scanFileName(source, context);
+        String name = scanFileName(context, source);
 
         InFile file;
         try {
