@@ -26,6 +26,7 @@ package de.dante.extex.interpreter.context;
  * @version $Revision$
  */
 public final class Direction {
+
     /**
      * The constant <tt>LR</tt> contains the direction for left-to-right
      * languages.
@@ -40,10 +41,11 @@ public final class Direction {
 
     /**
      * Creates a new object.
-     * This constructor is private since only a very limited of instances
+     * This constructor is private since only a very limited set of instances
      * of this class is allowed.
      */
     private Direction() {
         super();
     }
+
 }

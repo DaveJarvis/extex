@@ -30,6 +30,13 @@ import de.dante.extex.interpreter.type.Font;
 public interface TypesettingContext {
 
     /**
+     * Setter for all components.
+     *
+     * @param context the context to clone
+     */
+    void set(TypesettingContext context);
+
+    /**
      * Setter for the font component.
      *
      * @param font the font to store
