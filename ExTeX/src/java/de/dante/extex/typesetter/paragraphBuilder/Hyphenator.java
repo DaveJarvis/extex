@@ -32,7 +32,7 @@ public interface Hyphenator {
     /**
      * ...
      *
-     * @param nodes ...
+     * @param nodes the nodes to hyphenate
      *
      * @return <code>true</code> iff some hyphenation points have been inserted
      */
