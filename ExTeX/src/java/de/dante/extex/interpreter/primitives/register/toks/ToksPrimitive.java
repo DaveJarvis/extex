@@ -41,14 +41,14 @@ import de.dante.util.GeneralException;
  * @author <a href="mailto:mgn@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class NumberedToks extends AbstractToks implements Theable {
+public class ToksPrimitive extends AbstractToks implements Theable {
 
     /**
      * Creates a new object.
      *
      * @param name the name for debugging
      */
-    public NumberedToks(final String name) {
+    public ToksPrimitive(final String name) {
 
         super(name);
     }
