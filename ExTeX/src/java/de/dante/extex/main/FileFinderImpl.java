@@ -53,7 +53,7 @@ public class FileFinderImpl implements FileFinder {
         File file = null;
 
         try {
-            while (file == null) {
+            do {
                 if (!name.equals("")) {
                     logger.severe("\n! "+Messages.format("CLI.FileNotFound",
                                                   name));
@@ -68,7 +68,7 @@ public class FileFinderImpl implements FileFinder {
                     //TODO make use of the line read
                     return null;
                 }
-            }
+            } while (file == null);
         } catch (IOException e) {
             //TODO incomplete
             file = null;
