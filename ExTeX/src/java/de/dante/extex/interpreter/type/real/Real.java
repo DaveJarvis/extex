@@ -97,14 +97,14 @@ public class Real implements Serializable {
         boolean neg = false;
 
         // get number
-        Token t = source.scanNonSpace();
+        Token t = source.scanNonSpace(context);
         if (t == null) {
             throw new HelpingException("TTP.MissingNumber");
         } else if (t.equals(Catcode.OTHER, "-")) {
             neg = true;
-            t = source.scanNonSpace();
+            t = source.scanNonSpace(context);
         } else if (t.equals(Catcode.OTHER, "+")) {
-            t = source.scanNonSpace();
+            t = source.scanNonSpace(context);
         } else if (t instanceof ControlSequenceToken) {
             Code code = context.getCode(t);
             if (code != null && code instanceof RealConvertible) {
@@ -126,8 +126,8 @@ public class Real implements Serializable {
 
         if (t != null && !t.equals(Catcode.OTHER, ".")
                 && !t.equals(Catcode.OTHER, ",")) {
-            val = source.scanNumber(t);
-            t = source.getToken();
+            val = source.scanNumber(context, t);
+            t = source.getToken(context);
         }
 
         sb.append(Long.toString(val));
@@ -137,7 +137,7 @@ public class Real implements Serializable {
         if (t != null
                 && (t.equals(Catcode.OTHER, ".") || t
                         .equals(Catcode.OTHER, ","))) {
-            val = source.scanNumber();
+            val = source.scanNumber(context);
         } else {
             source.push(t);
         }
