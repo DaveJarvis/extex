@@ -18,7 +18,7 @@
  */
 package de.dante.extex.interpreter.primitives;
 
-import de.dante.extex.ExTeXLauncher;
+import de.dante.test.ExTeXLauncher;
 import junit.framework.TestCase;
 
 /*
