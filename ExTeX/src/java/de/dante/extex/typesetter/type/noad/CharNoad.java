@@ -93,7 +93,7 @@ public class CharNoad extends AbstractNoad implements Noad {
                 type, Integer.toString(mg.getFamily())));
         if (font == null) {
             //TODO gene: impossible
-            throw new RuntimeException("this should not happen");
+            throw new NullPointerException("font");
         }
         //TODO gene: use factory?
         TypesettingContext tc = new TypesettingContextImpl(context
