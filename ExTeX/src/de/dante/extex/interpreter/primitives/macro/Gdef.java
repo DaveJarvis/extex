@@ -31,6 +31,7 @@ import de.dante.util.GeneralException;
  * @version $Revision$
  */
 public class Gdef extends Def {
+
     /**
      * Creates a new object.
      *
@@ -51,7 +52,7 @@ public class Gdef extends Def {
             throws GeneralException {
 
         prefix.setGlobal();
-        super.execute(prefix, context, source, typesetter);
+        super.assign(prefix, context, source, typesetter);
     }
 
 }
