@@ -51,9 +51,9 @@ public interface ErrorHandler {
             Context context) throws GeneralException;
 
     /**
-     * ...
+     * Setter for the edit handler.
      *
-     * @param editHandler ...
+     * @param editHandler the new edit handler
      */
     void setEditHandler(EditHandler editHandler);
 }

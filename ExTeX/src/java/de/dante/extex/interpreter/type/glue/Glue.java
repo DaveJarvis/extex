@@ -30,7 +30,8 @@ import de.dante.extex.scanner.TokenFactory;
 import de.dante.util.GeneralException;
 
 /**
- * ...
+ * This class provides the basic data type of a stretchable and shrinkable
+ * quantity of length.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>

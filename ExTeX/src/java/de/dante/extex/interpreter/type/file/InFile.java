@@ -31,7 +31,7 @@ import de.dante.extex.scanner.stream.TokenStream;
 import de.dante.util.GeneralException;
 
 /**
- * ...
+ * This class holds an input file from which tokens can be read.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

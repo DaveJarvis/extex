@@ -80,10 +80,10 @@ public class GlueNode extends AbstractNode implements Node, Discartable {
     }
 
     /**
-     * ...
+     * Adjust the width of the flexible node.
      *
-     * @param width ...
-     * @param sum ...
+     * @param width the desired with
+     * @param sum the total sum of the glues
      *
      * @see de.dante.extex.typesetter.Node#spread(FixedDimen, FixedGlueComponent)
      */

@@ -130,13 +130,6 @@ public class ContextImpl
             Serializable {
 
     /**
-     * ...
-     * @param tokens ...
-     *
-     * @return ...
-     *
-     * @throws GeneralException ....
-     *
      * @see de.dante.extex.interpreter.context.Context#expand(
      *      de.dante.extex.interpreter.type.tokens.Tokens, Typesetter)
      */
