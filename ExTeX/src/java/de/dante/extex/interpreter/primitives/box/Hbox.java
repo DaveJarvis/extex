@@ -116,10 +116,8 @@ public class Hbox extends AbstractCode implements Boxable {
     public Box getBox(final Context context, final TokenSource source,
             final Typesetter typesetter) throws GeneralException {
 
-        Tokens toks = context.getToks("everyhbox");
-        if (toks != null) {
-            source.push(toks);
-        }
+        //TODO afterassign
+        source.push(context.getToks("everyhbox"));
 
         Box box;
         try {
