@@ -446,7 +446,7 @@ public class MathListMaker extends AbstractListMaker implements NoadConsumer {
             if (t.isa(Catcode.LEFTBRACE)) {
                 source.executeGroup();
             } else {
-                source.execute(t);
+                source.execute(t, context, null); //TODO gene: provide typesetter argument
             }
         } catch (TypesetterException e) {
             throw e;

@@ -20,12 +20,10 @@
 package de.dante.extex.interpreter.max;
 
 import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.ErrorLimitException;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.scanner.stream.TokenStreamFactory;
 import de.dante.extex.scanner.type.Token;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.GeneralException;
 import de.dante.util.configuration.ConfigurationException;
 
 /**
@@ -78,9 +76,9 @@ public class StringSource extends Moritz {
     }
 
     /**
-     * @see de.dante.extex.interpreter.TokenSource#execute(de.dante.extex.scanner.Token)
+     * @see de.dante.extex.interpreter.TokenSource#execute(de.dante.extex.scanner.Token, Context, Typesetter)
      */
-    public void execute(final Token token)
+    public void execute(final Token token, Context context, Typesetter typesetter)
             throws InterpreterException {
 
         // TODO gene: unimplemented
