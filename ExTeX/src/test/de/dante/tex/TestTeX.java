@@ -70,7 +70,7 @@ public final class TestTeX {
         String linetxt, linetesttxt;
         while ((linetxt = intxt.readLine()) != null) {
             linetesttxt = intesttxt.readLine();
-            Assert.assertEquals(linetxt, linetesttxt);
+            Assert.assertEquals(linetesttxt, linetxt);
         }
         intxt.close();
         intesttxt.close();
