@@ -762,9 +762,7 @@ public abstract class Moritz implements TokenSource, Observable {
      */
     public void skipSpace() throws GeneralException {
         Token t = scanNonSpace();
-        if (t == null) {
-            throw new GeneralHelpingException("TTP.MissingNumber");
-        } else {
+        if (t != null) {
             stream.put(t);
         }
     }
