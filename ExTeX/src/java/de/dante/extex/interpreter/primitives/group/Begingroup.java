@@ -78,7 +78,7 @@ public class Begingroup extends AbstractCode {
         try {
             context.openGroup();
         } catch (ConfigurationException e) {
-            throw new GeneralException(e); //TODO gene: incomplete
+            throw new GeneralException(e);
         }
 
         return true;
