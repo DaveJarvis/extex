@@ -24,8 +24,8 @@ import de.dante.extex.scanner.stream.TokenStream;
 import de.dante.extex.scanner.stream.TokenStreamFactory;
 import de.dante.util.GeneralException;
 import de.dante.util.Locator;
-import de.dante.util.NotObservableException;
 import de.dante.util.UnicodeChar;
+import de.dante.util.observer.NotObservableException;
 
 /**
  * This interface describes a class to acquire

@@ -18,7 +18,6 @@
  */
 package de.dante.util.observer;
 
-import de.dante.util.NotObservableException;
 
 /**
  * An observable is an object which has the feature to register an observer
