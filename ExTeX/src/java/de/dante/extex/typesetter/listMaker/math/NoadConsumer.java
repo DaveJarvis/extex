@@ -121,7 +121,7 @@ public interface NoadConsumer extends ListMaker {
      * @param context the interpreter context
      * @param source the source for new tokens
      *
-     * @return the Noad read
+     * @return the Noad read or <code>null</code> if none could be gathered
      *
      * @throws GeneralException in case of an error
      */
