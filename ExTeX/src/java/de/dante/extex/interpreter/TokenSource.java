@@ -279,7 +279,7 @@ public interface TokenSource {
      *   &lang;number&rang; </pre>
      * <p>
      *  A number consists of a non-empty sequence of digits with catcode
-     *  {@link de.dante.extex.scanner.Token#OTHER OTHER}. The number is
+     *  {@link de.dante.extex.scanner.Catcode#OTHER OTHER}. The number is
      *  optionally precceded by whitespace and a sign <tt>+</tt> or <tt>-</tt>.
      * </p>
      * <p>
@@ -359,7 +359,7 @@ public interface TokenSource {
      *   &lang;8-bit number&rang; </pre>
      * <p>
      *  A number consists of a non-empty sequence of digits with catcode
-     *  {@link de.dante.extex.scanner.Token#OTHER OTHER}.
+     *  {@link de.dante.extex.scanner.Catcode#OTHER OTHER}.
      *  The check for a maximal value of 255 is not performed in ExTeX.
      * </p>
      * </doc>
