@@ -17,13 +17,11 @@
  *
  */
 
-package de.dante.extex.main;
-
-import de.dante.extex.i18n.Messages;
-import de.dante.extex.main.exception.MainException;
+package de.dante.extex.main.exception;
 
 /**
- * This exception is thrown when the main program use a ExTeX-extension witch is not avaiable.
+ * This exception is thrown when the main program use a
+ * ExTeX-extension witch is not avaiable.
  *
  * @author <a href="mailto:mgn@gmx.de">Michael Niedermair</a>
  * @version $Revision$
@@ -45,11 +43,11 @@ public class MainExTeXExtensionException extends MainException {
     }
 
     /**
-     * @see java.lang.Throwable#getMessage()
+     * @see java.lang.Throwable#getLocalizedMessage()
      */
-    public String getMessage() {
+    public String getLocalizedMessage() {
 
-        return Messages.format("MainExTeXExtensionException.Message", super
-                .getMessage());
+        return getLocalizer().format("MainExTeXExtensionException.Message",
+                super.getMessage());
     }
 }

@@ -32,7 +32,7 @@ import de.dante.extex.interpreter.type.count.CountConvertible;
 import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.real.RealConvertible;
 import de.dante.extex.interpreter.type.tokens.Tokens;
-import de.dante.extex.main.MainExTeXExtensionException;
+import de.dante.extex.main.exception.MainExTeXExtensionException;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.GeneralException;
 

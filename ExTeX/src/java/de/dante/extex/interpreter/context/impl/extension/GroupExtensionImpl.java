@@ -31,7 +31,7 @@ import de.dante.extex.interpreter.type.hash.toks.HashToks;
 import de.dante.extex.interpreter.type.pair.Pair;
 import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.transform.Transform;
-import de.dante.extex.main.MainExTeXExtensionException;
+import de.dante.extex.main.exception.MainExTeXExtensionException;
 import de.dante.util.GeneralException;
 
 /**

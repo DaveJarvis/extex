@@ -28,7 +28,7 @@ import de.dante.extex.interpreter.type.Theable;
 import de.dante.extex.interpreter.type.pair.Pair;
 import de.dante.extex.interpreter.type.pair.PairConvertible;
 import de.dante.extex.interpreter.type.tokens.Tokens;
-import de.dante.extex.main.MainExTeXExtensionException;
+import de.dante.extex.main.exception.MainExTeXExtensionException;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.GeneralException;
 
