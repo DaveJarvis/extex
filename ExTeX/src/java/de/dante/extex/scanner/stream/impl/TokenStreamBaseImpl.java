@@ -19,6 +19,7 @@
 package de.dante.extex.scanner.stream.impl;
 
 import de.dante.extex.interpreter.Tokenizer;
+import de.dante.extex.interpreter.type.Tokens;
 import de.dante.extex.scanner.Token;
 import de.dante.extex.scanner.TokenFactory;
 import de.dante.extex.scanner.stream.TokenStream;
@@ -32,7 +33,7 @@ import java.util.Stack;
  * of tokens which can be enlarged with push() or reduced with pop().
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @author <a href="m.g.n@gmx.de">Michael Niedermair</a>
+ * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
 public class TokenStreamBaseImpl implements TokenStream {
@@ -82,6 +83,15 @@ public class TokenStreamBaseImpl implements TokenStream {
 		}
 	}
 
+	/**
+	 * @see de.dante.extex.token.TokenStream#put(Tokens)
+	 */
+	public void put(Tokens toks) {
+		if (toks != null) {
+			stack.push(toks);
+		}
+	}
+	
 	/**
 	 * Get the next token when the stack is empty.
 	 * This method is meant to be overloaded by derived classes.
