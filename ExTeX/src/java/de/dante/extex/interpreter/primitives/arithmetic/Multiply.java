@@ -20,6 +20,7 @@
 package de.dante.extex.interpreter.primitives.arithmetic;
 
 import de.dante.extex.i18n.CantUseAfterHelpingException;
+import de.dante.extex.i18n.EofHelpingException;
 import de.dante.extex.i18n.UndefinedControlSequenceHelpingException;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
@@ -118,6 +119,8 @@ public class Multiply extends AbstractAssignment {
                 throw new UndefinedControlSequenceHelpingException(//
                         printable(context, cs));
             }
+        } else if (cs == null) {
+            throw new EofHelpingException(printableControlSequence(context));
         }
         throw new CantUseAfterHelpingException(cs.toText(),
                 printableControlSequence(context));

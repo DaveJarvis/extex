@@ -20,6 +20,7 @@
 package de.dante.extex.interpreter.primitives.arithmetic;
 
 import de.dante.extex.i18n.CantUseAfterHelpingException;
+import de.dante.extex.i18n.EofHelpingException;
 import de.dante.extex.i18n.UndefinedControlSequenceHelpingException;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
@@ -27,7 +28,6 @@ import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.type.AbstractAssignment;
 import de.dante.extex.interpreter.type.Code;
 import de.dante.extex.interpreter.type.arithmetic.Advanceable;
-import de.dante.extex.interpreter.type.arithmetic.Divideable;
 import de.dante.extex.scanner.CodeToken;
 import de.dante.extex.scanner.Token;
 import de.dante.extex.typesetter.Typesetter;
@@ -119,6 +119,8 @@ public class Advance extends AbstractAssignment {
                 throw new UndefinedControlSequenceHelpingException(//
                         printable(context, cs));
             }
+        } else if (cs == null) {
+            throw new EofHelpingException(printableControlSequence(context));
         }
         throw new CantUseAfterHelpingException(cs.toText(),
                 printableControlSequence(context));
