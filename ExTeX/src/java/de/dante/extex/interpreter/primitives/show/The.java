@@ -21,6 +21,7 @@ package de.dante.extex.interpreter.primitives.show;
 import de.dante.extex.interpreter.AbstractCode;
 import de.dante.extex.interpreter.Code;
 import de.dante.extex.interpreter.Flags;
+import de.dante.extex.interpreter.Theable;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.scanner.Token;
@@ -58,7 +59,8 @@ public class The extends AbstractCode {
 		if (tok != null) {
 			Code code = context.getMacro(tok.getValue());
 			if (code != null) {
-				source.push(code.getThe(context, source));
+				Theable the = (Theable)code;
+				source.push(the.the(context, source));
 			}
 		}
 		prefix.clear();
