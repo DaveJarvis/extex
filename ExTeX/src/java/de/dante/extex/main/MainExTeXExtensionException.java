@@ -28,6 +28,8 @@ import de.dante.extex.i18n.Messages;
  */
 public class MainExTeXExtensionException extends MainException {
 
+	// TODO check
+	
 	/**
 	 * Creates a new object.
 	 *

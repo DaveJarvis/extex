@@ -112,6 +112,8 @@ public class Max1 extends TestCase {
 
         Configuration config = new ConfigurationFactory()
                 .newInstance("config/extex.xml");
+
+        // TODO FileFinder 
         Interpreter interpreter = new InterpreterFactory(config
                 .getConfiguration("Interpreter")).newInstance();
         TokenStreamFactory factory = new TokenStreamFactory(config
