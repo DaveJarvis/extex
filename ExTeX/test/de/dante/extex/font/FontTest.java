@@ -25,6 +25,7 @@ import de.dante.extex.interpreter.InterpreterFactory;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.type.Dimen;
 import de.dante.extex.interpreter.type.Font;
+import de.dante.extex.interpreter.type.GlueComponent;
 import de.dante.util.configuration.Configuration;
 import de.dante.util.configuration.ConfigurationFactory;
 
@@ -49,7 +50,7 @@ public class FontTest extends TestCase {
     /**
      * Dimen 12 pt
      */
-    private static final Dimen DIM12 = new Dimen(Dimen.ONE * 12);
+    private static final Dimen DIM12 = new Dimen(GlueComponent.ONE * 12);
 
     /**
      * test 01

@@ -157,7 +157,7 @@ public class HyphenationTableImpl implements HyphenationTable, NodeVisitor {
          //   nodelist.visit(this, nodelist, hv);
             // TODO incomplete
             // MGN hier gehts weiter!!!
-            return parent;
+           // return parent;
         }
         return nodelist;
     }
