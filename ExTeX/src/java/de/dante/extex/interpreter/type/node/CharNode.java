@@ -112,4 +112,24 @@ public class CharNode extends AbstractNode implements Node {
         return visitor.visitChar(value, value2);
     }
 
+    /**
+     * Getter for character.
+     *
+     * @return the character.
+     */
+    public UnicodeChar getCharacter() {
+
+        return character;
+    }
+
+    /**
+     * Getter for typesettingContext.
+     *
+     * @return the typesettingContext.
+     */
+    public TypesettingContext getTypesettingContext() {
+
+        return typesettingContext;
+    }
+
 }
