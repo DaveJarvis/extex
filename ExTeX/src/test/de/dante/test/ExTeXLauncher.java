@@ -211,6 +211,9 @@ public class ExTeXLauncher extends TestCase {
             main.run();
         } catch (MainException e) {
             errorP = true;
+        } catch (Throwable e) {
+            e.printStackTrace();
+            assertTrue(false);
         }
 
         handler.close();
