@@ -44,7 +44,7 @@ public class NumberedCatcode extends AbstractCode {
 	 * @param name
 	 *                 the name for debugging
 	 */
-	public NumberedCatcode(String name) {
+	public NumberedCatcode(final String name) {
 		super(name);
 	}
 
@@ -54,18 +54,19 @@ public class NumberedCatcode extends AbstractCode {
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws GeneralException {
+    public void execute(final Flags prefix, final Context context,
+        final TokenSource source, Typesetter typesetter)
+        throws GeneralException {
         UnicodeChar charCode = source.scanCharacterCode();
         source.scanOptionalEquals();
         long ccNumber = source.scanNumber();
 
         try {
-            context.setCatcode(charCode, Catcode
-                    .toCatcode((int) ccNumber), prefix.isGlobal());
+            context.setCatcode(charCode, Catcode.toCatcode((int) ccNumber),
+                               prefix.isGlobal());
         } catch (CatcodeException e) {
             throw new GeneralHelpingException("TTP.CodeOutOfRange", Long
-                    .toString(ccNumber), "15");
+                .toString(ccNumber), Integer.toString(Catcode.getCatcodeMax()));
         }
 
         prefix.clear();

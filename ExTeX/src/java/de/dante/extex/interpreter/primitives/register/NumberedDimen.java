@@ -59,7 +59,7 @@ public class NumberedDimen extends NamedDimen {
             Typesetter typesetter) throws GeneralException {
         String key = Long.toString(source.scanNumber());
 
-        super.expand(prefix, context, source, typesetter);
+        super.execute(prefix, context, source, typesetter);
     }
     
     /**
