@@ -167,4 +167,5 @@ public class TFMCharInfo {
 
         return NOCHARCODE;
     }
+
 }

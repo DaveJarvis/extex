@@ -491,20 +491,19 @@ public abstract class EFMFount implements ModifiableFount, Serializable {
 
         if (e.getName().equals(name)) {
             return e;
-        } else {
-            Element element = e.getChild(name);
+        }
+        Element element = e.getChild(name);
+        if (element != null) {
+            return element;
+        }
+        List liste = e.getChildren();
+        for (int i = 0; i < liste.size(); i++) {
+            element = scanForElement((Element) liste.get(i), name);
             if (element != null) {
                 return element;
-            } else {
-                List liste = e.getChildren();
-                for (int i = 0; i < liste.size(); i++) {
-                    element = scanForElement((Element) liste.get(i), name);
-                    if (element != null) {
-                        return element;
-                    }
-                }
             }
         }
+
         return null;
     }
 

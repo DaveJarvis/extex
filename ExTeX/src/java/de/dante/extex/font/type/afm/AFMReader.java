@@ -773,8 +773,7 @@ public class AFMReader implements FontMetric, Serializable {
     /**
      * LineFeed
      */
-//    private static final char LF = '\n';
-
+    //    private static final char LF = '\n';
     /**
      * remove the fileextension and path, if exists
      * @param   file    the filename
@@ -831,9 +830,8 @@ public class AFMReader implements FontMetric, Serializable {
 
         if (id >= 0) {
             return String.valueOf(id);
-        } else {
-            return "notdef_" + n;
         }
+        return "notdef_" + n;
     }
 
     /**
