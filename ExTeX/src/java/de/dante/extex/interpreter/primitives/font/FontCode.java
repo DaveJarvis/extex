@@ -76,7 +76,7 @@ public class FontCode extends AbstractCode implements Theable {
     public Tokens the(final Context context, final TokenSource source)
             throws GeneralException {
 
-        return new Tokens(context, font.toString());
+        return new Tokens(context, font.getFontName());
     }
 
     /**
