@@ -40,11 +40,12 @@ public class CountTest extends TestCase {
 
     /**
      * count01
+     * @exception Exception iff test failed
      */
-    public void testCount01() {
+    public void testCount01()
+        throws Exception {
 
-        assertTrue(TestTeX.test("jucount01",
-                                "src/test/data/jucount01.testtxt"));
+        TestTeX.test("jucount01", "src/test/data/jucount01.testtxt");
     }
 
 }

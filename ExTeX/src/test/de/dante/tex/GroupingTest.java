@@ -28,17 +28,23 @@ import junit.framework.TestCase;
  */
 public class GroupingTest extends TestCase {
 
-	/*
-	 */
-	public static void main(String[] args) {
-		junit.textui.TestRunner.run(GroupingTest.class);
-	}
+    /**
+     * Main entry function for running alone.
+     * @param  args commandlineargs
+     */
+    public static void main(String[] args) {
+        junit.textui.TestRunner.run(GroupingTest.class);
+    }
 
-	/*
-	 */
-	public void testGroup() {
-		assertTrue(TestTeX.test("jugrouping",
-                                        "src/test/data/jugrouping.testtxt"));
-	}
+
+    /**
+     * Test the primitive <tt>\u005cunless</tt>.
+     * @exception Exception iff test failed
+     */
+    public void testGroup()
+        throws Exception {
+
+        TestTeX.test("jugrouping", "src/test/data/jugrouping.testtxt");
+    }
 
 }

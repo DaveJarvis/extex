@@ -40,11 +40,12 @@ public class JobnameTest extends TestCase {
 
     /**
      * Test 01 for jobname
+     * @exception Exception iff test failed
      */
-    public void testJobname01() {
+    public void testJobname01()
+        throws Exception {
 
-        assertTrue(TestTeX.test("jujobnametest",
-                                "src/test/data/jujobname.testtxt"));
+        TestTeX.test("jujobnametest", "src/test/data/jujobname.testtxt");
     }
 
 }
