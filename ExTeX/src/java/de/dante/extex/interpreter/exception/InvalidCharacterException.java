@@ -17,35 +17,34 @@
  *
  */
 
-package de.dante.extex.i18n;
+package de.dante.extex.interpreter.exception;
 
+import de.dante.extex.i18n.HelpingException;
+import de.dante.util.UnicodeChar;
 import de.dante.util.framework.i18n.LocalizerFactory;
 
 /**
- * This exception is raised when a situation is detected where the continuation
- * is illegal.
+ * This exception is raised when an unexpected end of file is encountered.
  * <p>
- * The localization format is taken from the resource bundle of the parent
- * class under the key <tt>TTP.CantUseAfter</tt>.
+ *  The localization format is taken from the Localizer under the key
+ *  <tt>UnexpectedEofIn</tt>.
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class CantUseAfterHelpingException extends HelpingException {
+public class InvalidCharacterException extends HelpingException {
 
     /**
      * Creates a new object.
      *
-     * @param cause the name of the macro in which the condition has been
-     *  encoutered
-     * @param predecessor the current mode
+     * @param uc the invalid character
      */
-    public CantUseAfterHelpingException(final String cause,
-            final String predecessor) {
+    public InvalidCharacterException(final UnicodeChar uc) {
 
-        super(LocalizerFactory.getLocalizer(HelpingException.class.getName()),
-                "TTP.CantUseAfter", cause, predecessor);
+        super(LocalizerFactory.getLocalizer(//
+                InvalidCharacterException.class.getName()),
+                "TTP.InvalidChar", uc.toString());
     }
 
 }

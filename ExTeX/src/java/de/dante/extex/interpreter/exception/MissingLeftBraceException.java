@@ -17,28 +17,33 @@
  *
  */
 
-package de.dante.extex.i18n;
+package de.dante.extex.interpreter.exception;
 
+import de.dante.extex.i18n.HelpingException;
 import de.dante.util.framework.i18n.LocalizerFactory;
 
 /**
- * This exception signals that an undefined control sequence has been
- * encountered.
+ * This exception is raised when an arithmetic overflow has been encoutered.
+ * <p>
+ *  The localization format is taken from the Localizer under the key
+ *  <tt>TTP.ArithmeticOverflow</tt>.
+ * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class UndefinedControlSequenceHelpingException extends HelpingException {
+public class MissingLeftBraceException extends HelpingException {
 
     /**
      * Creates a new object.
      *
      * @param macro the name of the macro in which the eof has been encoutered
      */
-    public UndefinedControlSequenceHelpingException(final String macro) {
+    public MissingLeftBraceException(final String macro) {
 
-        super(LocalizerFactory.getLocalizer(HelpingException.class.getName()),
-                "TTP.UndefinedToken", macro);
+        super(LocalizerFactory.getLocalizer(//
+                MissingLeftBraceException.class.getName()),
+                "TTP.MissingLeftBrace");
     }
 
 }

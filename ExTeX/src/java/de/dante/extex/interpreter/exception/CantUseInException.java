@@ -17,34 +17,35 @@
  *
  */
 
-package de.dante.extex.i18n;
+package de.dante.extex.interpreter.exception;
 
+import de.dante.extex.i18n.HelpingException;
 import de.dante.util.framework.i18n.LocalizerFactory;
 
 /**
- * This exception is raised when a illegal file reference has been encoutered.
+ * This exception is raised when a macro is encouterend in a mode for which it
+ * is not meant.
  * <p>
- * The localization format is taken from the resource bundle of the parent
- * class under the key <tt>TTP.BadFileNumber</tt>.
+ *  The localization format is taken from the Localizer under the key
+ *  <tt>TTP.CantUseIn</tt>.
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class BadFileNumberHelpingException extends HelpingException {
+public class CantUseInException extends HelpingException {
 
     /**
      * Creates a new object.
      *
-     * @param value the illegal file reference
-     * @param min the minimum for numerical values
-     * @param max the maximum for numerical values
+     * @param macro the name of the macro in which the eof has been encoutered
+     * @param mode the current mode
      */
-    public BadFileNumberHelpingException(final String value, final String min,
-            final String max) {
+    public CantUseInException(final String macro, final String mode) {
 
-        super(LocalizerFactory.getLocalizer(HelpingException.class.getName()),
-                "TTP.BadFileNumber", value, min, max);
+        super(LocalizerFactory.getLocalizer(//
+                CantUseInException.class.getName()),
+                "TTP.CantUseIn", macro, mode);
     }
 
 }

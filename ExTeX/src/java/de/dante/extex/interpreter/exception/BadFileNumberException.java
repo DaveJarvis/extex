@@ -17,31 +17,36 @@
  *
  */
 
-package de.dante.extex.i18n;
+package de.dante.extex.interpreter.exception;
 
+import de.dante.extex.i18n.HelpingException;
 import de.dante.util.framework.i18n.LocalizerFactory;
 
 /**
- * This exception is raised when an unexpected end of file is encountered.
+ * This exception is raised when a illegal file reference has been encoutered.
  * <p>
- * The localization format is taken from the resource bundle of the parent
- * class under the key <tt>UnexpectedEofIn</tt>.
+ *  The localization format is taken from the Localizer under the key
+ *  <tt>TTP.BadFileNumber</tt>.
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class EofHelpingException extends HelpingException {
+public class BadFileNumberException extends HelpingException {
 
     /**
      * Creates a new object.
      *
-     * @param macro the name of the macro in which the eof has been encoutered
+     * @param value the illegal file reference
+     * @param min the minimum for numerical values
+     * @param max the maximum for numerical values
      */
-    public EofHelpingException(final String macro) {
+    public BadFileNumberException(final String value, final String min,
+            final String max) {
 
-        super(LocalizerFactory.getLocalizer(HelpingException.class.getName()),
-                "UnexpectedEofIn", macro);
+        super(LocalizerFactory.getLocalizer(//
+                BadFileNumberException.class.getName()), "TTP.BadFileNumber",
+                value, min, max);
     }
 
 }
