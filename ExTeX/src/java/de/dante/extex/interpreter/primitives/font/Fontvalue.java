@@ -74,7 +74,7 @@ public class Fontvalue extends AbstractAssignment implements Theable {
         source.skipSpace();
         Font font = source.getFont(context);
         String key = source.scanTokensAsString(context);
-        if (key == null || key.trim().length() == 0) {
+        if (key == null || key.length() == 0) {
             throw new HelpingException(getLocalizer(), "FONT.fontkeynotfound");
             //TODO gene: i18n
         }
@@ -96,7 +96,7 @@ public class Fontvalue extends AbstractAssignment implements Theable {
         source.skipSpace();
         Font font = source.getFont(context);
         String key = source.scanTokensAsString(context);
-        if (key == null || key.trim().length() == 0) {
+        if (key == null || key.length() == 0) {
             throw new HelpingException(getLocalizer(), "FONT.fontkeynotfound");
             //TODO gene: i18n
         }
