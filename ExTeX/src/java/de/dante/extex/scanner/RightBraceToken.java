@@ -46,7 +46,7 @@ public class RightBraceToken extends AbstractToken implements Token {
      * @see de.dante.extex.scanner.Token#getCatcode()
      */
     public Catcode getCatcode() {
-        return Catcode.RIGTHBRACE;
+        return Catcode.RIGHTBRACE;
     }
 
     /**

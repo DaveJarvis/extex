@@ -45,7 +45,7 @@ public abstract class Catcode {
     public static final Catcode LEFTBRACE = new CatcodeLeftBrace();
 
     /** the constant for the right brace catcode */
-    public static final Catcode RIGTHBRACE = new CatcodeRigthBrace();
+    public static final Catcode RIGHTBRACE = new CatcodeRigthBrace();
 
     /** the constant for the math shift catcode */
     public static final Catcode MATHSHIFT = new CatcodeMathShift();
@@ -57,7 +57,7 @@ public abstract class Catcode {
     public static final Catcode CR = new CatcodeCr();
 
     /** the constant for the macro param catcode */
-    public static final Catcode MACPARAM = new CatcodeMacroParam();
+    public static final Catcode MACROPARAM = new CatcodeMacroParam();
 
     /** the constant for the super mark catcode */
     public static final Catcode SUPMARK = new CatcodeSupMark();
@@ -92,11 +92,11 @@ public abstract class Catcode {
     private static final Catcode[] catcodes = {
                                                   ESCAPE,
                                                   LEFTBRACE,
-                                                  RIGTHBRACE,
+                                                  RIGHTBRACE,
                                                   MATHSHIFT,
                                                   TABMARK,
                                                   CR,
-                                                  MACPARAM,
+                                                  MACROPARAM,
                                                   SUPMARK,
                                                   SUBMARK,
                                                   IGNORE,

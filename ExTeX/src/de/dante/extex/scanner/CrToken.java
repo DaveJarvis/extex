@@ -59,4 +59,11 @@ public class CrToken extends AbstractToken implements Token {
     public String toString() {
         return Messages.format("CrToken.Text",value);
     }
+    
+    /**
+     * @see de.dante.extex.scanner.Token#toText()
+     */
+    public String toText() {
+        return "[]";
+    }
 }

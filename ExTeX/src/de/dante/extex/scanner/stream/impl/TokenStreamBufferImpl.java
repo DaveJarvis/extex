@@ -287,7 +287,7 @@ public class TokenStreamBufferImpl extends TokenStreamBaseImpl implements
             throws GeneralException {
         state = MID_LINE;
 
-        return ((TokenFactory) oFactory).newInstance(Catcode.MACPARAM, buffer
+        return ((TokenFactory) oFactory).newInstance(Catcode.MACROPARAM, buffer
                 .get(pointer));
     }
 
@@ -320,7 +320,7 @@ public class TokenStreamBufferImpl extends TokenStreamBaseImpl implements
             throws GeneralException {
         state = MID_LINE;
 
-        return ((TokenFactory) oFactory).newInstance(Catcode.RIGTHBRACE, buffer
+        return ((TokenFactory) oFactory).newInstance(Catcode.RIGHTBRACE, buffer
                 .get(pointer));
     }
 

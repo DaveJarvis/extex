@@ -46,7 +46,7 @@ public class MacroParamToken extends AbstractToken implements Token {
      * @see de.dante.extex.scanner.Token#getCatcode()
      */
     public Catcode getCatcode() {
-        return Catcode.MACPARAM;
+        return Catcode.MACROPARAM;
     }
 
     /**
