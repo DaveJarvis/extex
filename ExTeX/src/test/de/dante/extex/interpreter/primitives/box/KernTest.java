@@ -71,16 +71,12 @@ public class KernTest extends ExTeXLauncher {
      */
     public void testEof1() throws Exception {
 
-        Properties properties = System.getProperties();
-        properties.setProperty("extex.output", "dump");
-
-        runCode(properties,
-                //--- input code ---
+        runCode(//--- input code ---
                 "x\\kern ",
                 //--- log message ---
                 "Illegal unit of measure (pt inserted)",
                 //--- output channel ---
-                null);
+                "");
     }
 
 }

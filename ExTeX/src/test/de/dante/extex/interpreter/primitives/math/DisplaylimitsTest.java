@@ -50,7 +50,7 @@ public class DisplaylimitsTest extends ExTeXLauncher {
                 //--- log message ---
                 "Missing $ inserted",
                 //--- output channel ---
-                null);
+                "");
     }
 
 }

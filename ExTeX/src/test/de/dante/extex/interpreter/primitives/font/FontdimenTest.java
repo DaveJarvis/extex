@@ -51,7 +51,7 @@ public class FontdimenTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "\n\\nullfont 0\\nullfont .\\nullfont 0\\nullfont p\\nullfont t\n");
+                "0.0pt\n");
     }
 
     /**
@@ -66,7 +66,7 @@ public class FontdimenTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "\n\\nullfont 0\\nullfont .\\nullfont 0\\nullfont p\\nullfont t\n");
+                "0.0pt\n");
     }
 
     /**
@@ -82,7 +82,7 @@ public class FontdimenTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "\n\\nullfont 4\\nullfont 2\\nullfont .\\nullfont 0\\nullfont p\\nullfont t\n");
+                "42.0pt\n");
     }
 
     /**
@@ -99,7 +99,7 @@ public class FontdimenTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "\n\\nullfont 4\\nullfont 2\\nullfont .\\nullfont 0\\nullfont p\\nullfont t\n");
+                "42.0pt\n");
     }
 
 }

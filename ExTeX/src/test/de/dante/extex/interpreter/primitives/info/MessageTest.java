@@ -55,7 +55,7 @@ public class MessageTest extends ExTeXLauncher {
                 //--- log message ---
                 "Missing `{' inserted",
                 //--- output channel ---
-                null);
+                "");
     }
 
     /**
@@ -72,7 +72,7 @@ public class MessageTest extends ExTeXLauncher {
                 //--- log message ---
                 "Missing `{' inserted",
                 //--- output channel ---
-                null);
+                "");
     }
 
     /**

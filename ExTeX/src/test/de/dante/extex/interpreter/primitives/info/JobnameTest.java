@@ -56,8 +56,7 @@ public class JobnameTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "\n\\nullFont t\\nullFont e\\nullFont x"
-                + "\\nullFont p\\nullFont u\\nullFont t\n");
+                "texput\n");
     }
 
     /**
@@ -79,6 +78,6 @@ public class JobnameTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "\n\\nullFont j\\nullFont o\\nullFont b\n");
+                "job\n");
     }
 }

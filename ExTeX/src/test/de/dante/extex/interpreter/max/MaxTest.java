@@ -53,7 +53,7 @@ public class MaxTest extends ExTeXLauncher {
                 //--- log message ---
                 "Misplaced alignment tab character &",
                 //--- output channel ---
-                "\n");
+                "");
     }
 
     /**
@@ -70,7 +70,7 @@ public class MaxTest extends ExTeXLauncher {
                 //--- log message ---
                 "Missing $ inserted",
                 //--- output channel ---
-                "\n");
+                "");
     }
 
     /**
@@ -87,7 +87,7 @@ public class MaxTest extends ExTeXLauncher {
                 //--- log message ---
                 "Missing $ inserted",
                 //--- output channel ---
-                "\n");
+                "");
     }
 
     /**
@@ -104,7 +104,7 @@ public class MaxTest extends ExTeXLauncher {
                 //--- log message ---
                 "You can't use `macro parameter character #' in vertical mode",
                 //--- output channel ---
-                "\n");
+                "");
     }
 
     /**
@@ -122,7 +122,7 @@ public class MaxTest extends ExTeXLauncher {
                 //--- log message ---
                 "Undefined control sequence",
                 //--- output channel ---
-                "\n");
+                "");
     }
 
     /**
@@ -139,7 +139,7 @@ public class MaxTest extends ExTeXLauncher {
                 //--- log message ---
                 "Undefined control sequence",
                 //--- output channel ---
-                "\n");
+                "");
     }
 
 }

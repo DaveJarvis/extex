@@ -57,7 +57,7 @@ public class DefTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "xxx");
+                "xxx"); //TODO gene:
     }
 
 }

@@ -50,7 +50,7 @@ public class MathaccentTest extends ExTeXLauncher {
                 //--- log message ---
                 "Missing $ inserted",
                 //--- output channel ---
-                null);
+                "");
     }
 
 }

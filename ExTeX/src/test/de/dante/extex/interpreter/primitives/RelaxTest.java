@@ -60,7 +60,7 @@ public class RelaxTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "\n");
+                "");
     }
 
     /**
@@ -75,7 +75,7 @@ public class RelaxTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "\nabcdef \n");
+                "abcdef \n");
     }
 
     /**
@@ -89,7 +89,7 @@ public class RelaxTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "\n");
+                "");
     }
 
     /**
@@ -103,7 +103,7 @@ public class RelaxTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "\n");
+                "");
     }
 
     /**
@@ -117,7 +117,7 @@ public class RelaxTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "\n");
+                "");
     }
 
 }
