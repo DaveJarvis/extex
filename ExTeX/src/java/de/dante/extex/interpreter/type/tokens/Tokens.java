@@ -253,10 +253,11 @@ public class Tokens implements Serializable, FixedTokens {
         for (int i = 0; i < tokens.size(); i++) {
             t = (Token) (tokens.get(i));
             if (t instanceof ControlSequenceToken) {
-                toks.add(factory.createToken(Catcode.OTHER, (char) (context
-                        .getCount("escapechar").getValue()),
-                        Namespace.DEFAULT_NAMESPACE));
-                toks.add(factory, t.toString());
+                long esc = context.getCount("escapechar").getValue();
+                if (esc >= 0) {
+                    toks.add(factory.createToken(Catcode.OTHER, (char) (esc),
+                            Namespace.DEFAULT_NAMESPACE));
+                }                toks.add(factory, t.toString());
             } else if (t instanceof MacroParamToken) {
                 toks.add(factory.createToken(Catcode.OTHER, '#',
                         Namespace.DEFAULT_NAMESPACE));
