@@ -16,10 +16,8 @@
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
-package de.dante.extex.interpreter.context;
 
-import de.dante.extex.hyphenation.HyphenationManager;
-
+package de.dante.extex.hyphenation;
 
 /**
  * This interface describes the ability to carry a hyphenation factory.
@@ -27,10 +25,10 @@ import de.dante.extex.hyphenation.HyphenationManager;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface HyphenationFactoryCarrier {
+public interface HyphenationManagerCarrier {
 
     /**
-     * Setter for th hyphenation factory.
+     * Setter for the hyphenation factory.
      *
      * @param hyphenationFactory the hyphenation factory to carry
      */
