@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003  Gerd Neugebauer
+ * Copyright (C) 2003-2004 Gerd Neugebauer
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -33,7 +33,7 @@ public class NotObservableException extends GeneralException {
      *
      * @param message the message
      */
-    public NotObservableException(String message) {
+    public NotObservableException(final String message) {
         super(message);
     }
 
@@ -43,16 +43,16 @@ public class NotObservableException extends GeneralException {
      * @param message the message
      * @param cause the chained throwable
      */
-    public NotObservableException(String message, Throwable cause) {
+    public NotObservableException(final String message, final Throwable cause) {
         super(message, cause);
     }
 
     /**
      * Create a new object.
      *
-     * @param cause
+     * @param cause ...
      */
-    public NotObservableException(Throwable cause) {
+    public NotObservableException(final Throwable cause) {
         super(cause);
     }
 

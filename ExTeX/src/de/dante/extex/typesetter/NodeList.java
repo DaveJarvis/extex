@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003  Gerd Neugebauer
+ * Copyright (C) 2003-2004 Gerd Neugebauer
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -18,6 +18,7 @@
  */
 package de.dante.extex.typesetter;
 
+import de.dante.extex.interpreter.type.Dimen;
 import de.dante.extex.interpreter.type.Glue;
 import de.dante.extex.interpreter.type.node.CharNode;
 
@@ -28,7 +29,54 @@ import de.dante.extex.interpreter.type.node.CharNode;
  * @version $Revision$
  */
 public interface NodeList extends Node {
-    public abstract void add(Node node);
-    public abstract void addGlyph(CharNode node);
-    public abstract void addSkip(Glue glue);
+
+    /**
+     * ...
+     * 
+     * @param node ...
+     */
+    void add(Node node);
+
+    /**
+     * ...
+     * 
+     * @param node ...
+     */
+    void addGlyph(CharNode node);
+
+    /**
+     * ...
+     * 
+     * @param glue ...
+     */
+    void addSkip(Glue glue);
+
+    /**
+     * ...
+     * 
+     * @param d
+     */
+    void setShift(Dimen d);
+
+    /**
+     * ...
+     * 
+     * @return
+     */
+    Dimen getShift();
+
+    /**
+     * ...
+     * 
+     * @param d
+     */
+    void setMove(Dimen d);
+
+    /**
+     * ...
+     * 
+     * @return
+     */
+    Dimen getMove();
+    
 }

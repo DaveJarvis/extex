@@ -198,8 +198,6 @@ public class GroupImpl implements Tokenizer, Group, Serializable {
 	    if (box == null) {
 	        if (next != null) {
 	            box = next.getBox(name);
-	        } else {
-	            box = Box.VOID;
 	        }
 	    }
 

@@ -302,7 +302,7 @@ public class Max extends Moritz implements CatcodeVisitor, Interpreter,
             }
         }
 
-        typesetter.finish();
+        typesetter.finish(context);
 
         //TODO TTP[1335]
     }

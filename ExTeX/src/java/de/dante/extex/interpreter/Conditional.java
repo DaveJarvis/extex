@@ -32,7 +32,7 @@ public class Conditional {
     private Locator locator;
 
     /** the value of the conditional */
-    private boolean value;
+    private long value;
 
     /**
      * Creates a new object.
@@ -40,7 +40,7 @@ public class Conditional {
      * @param theLocator the locator
      * @param theValue the new value
      */
-    public Conditional(final Locator theLocator, final boolean theValue) {
+    public Conditional(final Locator theLocator, final long theValue) {
         super();
         this.locator = theLocator;
         this.value   = theValue;
@@ -57,11 +57,11 @@ public class Conditional {
     }
 
     /**
-     * Getter for the boolean value of the conditional.
+     * Getter for the value of the conditional.
      *
-     * @return the boolean value
+     * @return the value
      */
-    public boolean isValue() {
+    public long getValue() {
         return value;
     }
 }

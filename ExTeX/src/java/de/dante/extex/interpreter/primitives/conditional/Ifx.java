@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003  Gerd Neugebauer
+ * Copyright (C) 2003-2004 Gerd Neugebauer
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -38,15 +38,18 @@ public class Ifx extends AbstractIf {
      * 
      * @param name the name for debugging
      */
-    public Ifx(String name) {
+    public Ifx(final String name) {
         super(name);
     }
 
     /**
-     * @see de.dante.extex.interpreter.Code#expand(de.dante.extex.interpreter.context.Context, de.dante.extex.interpreter.TokenSource)
+     * @see de.dante.extex.interpreter.AbstractIf#conditional(de.dante.extex.interpreter.context.Context,
+     *      de.dante.extex.interpreter.TokenSource,
+     *      de.dante.extex.typesetter.Typesetter)
      */
-    protected boolean conditional(Context context, TokenSource source, Typesetter typesetter)
-                           throws GeneralException {
+    protected boolean conditional(final Context context,
+        final TokenSource source, final Typesetter typesetter)
+        throws GeneralException {
         Token t1 = source.getToken();
         Token t2 = source.getToken();
 
