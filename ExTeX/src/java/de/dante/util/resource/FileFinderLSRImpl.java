@@ -147,14 +147,14 @@ public class FileFinderLSRImpl
 
         Configuration cfgpath = config.findConfiguration("path");
         if (cfgpath == null) {
-            throw new ConfigurationMissingAttributeException("path", cfgpath);
+            throw new ConfigurationMissingAttributeException("path", config);
 
         }
 
         String path = null;
         String pathproperty = cfgpath.getAttribute("property");
         if (pathproperty != null) {
-            path = System.getProperty(pathproperty);
+            path = properties.getProperty(pathproperty);
         } else {
             path = cfgpath.getValue();
         }
