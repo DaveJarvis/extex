@@ -19,7 +19,6 @@
 
 package de.dante.extex.typesetter.impl;
 
-import de.dante.extex.typesetter.ListMaker;
 import de.dante.extex.typesetter.Mode;
 
 /**
@@ -28,9 +27,7 @@ import de.dante.extex.typesetter.Mode;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class RestrictedHorizontalListMaker extends HorizontalListMaker
-        implements
-            ListMaker {
+public class RestrictedHorizontalListMaker extends HorizontalListMaker {
 
     /**
      * Creates a new object.

@@ -19,6 +19,10 @@
 
 package de.dante.extex.typesetter.impl;
 
+import de.dante.extex.interpreter.context.TypesettingContext;
+import de.dante.extex.scanner.Token;
+import de.dante.util.GeneralException;
+
 /**
  * ...
  *
@@ -38,6 +42,18 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
     public HAlignListMaker(final Manager manager, final Align align) {
 
         super(manager);
+    }
+
+    /**
+     * @see de.dante.extex.typesetter.ListMaker#treatTabMark(
+     *      de.dante.extex.interpreter.context.TypesettingContext,
+     *      de.dante.extex.scanner.Token)
+     */
+    public void treatTabMark(TypesettingContext context, Token token)
+            throws GeneralException {
+
+        // TODO unimplemented
+        super.treatTabMark(context, token);
     }
 
 }

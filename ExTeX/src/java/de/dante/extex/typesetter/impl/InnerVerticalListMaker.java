@@ -28,9 +28,7 @@ import de.dante.extex.typesetter.Mode;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class InnerVerticalListMaker extends VerticalListMaker
-        implements
-            ListMaker {
+public class InnerVerticalListMaker extends VerticalListMaker {
 
     /**
      * Creates a new object.
