@@ -46,14 +46,14 @@ public class DiscretionaryNode extends AbstractNode implements Node {
      * @see "TeX -- The Program [195]"
      */
     public String toString() {
-        return "discretionary"; //TODO
+        return "discretionary"; //TODO incomplete
     }
     
     /**
      * @see de.dante.extex.typesetter.Node#toString(java.lang.StringBuffer)
      */
     public void toString(StringBuffer sb) {
-        sb.append("descretionary"); //TODO
+        sb.append("descretionary"); //TODO incomplete
     }
 
     /**

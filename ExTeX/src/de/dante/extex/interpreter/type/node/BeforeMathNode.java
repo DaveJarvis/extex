@@ -46,7 +46,7 @@ public class BeforeMathNode extends AbstractNode implements Node {
      * @see "TeX -- The Program [192]"
      */
     public String toString() {
-        return "mathon"; //TODO
+        return "mathon"; //TODO incomplete
     }
 
     /**

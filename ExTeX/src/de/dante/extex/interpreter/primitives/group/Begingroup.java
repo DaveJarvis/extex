@@ -54,7 +54,7 @@ public class Begingroup extends AbstractCode {
         try {
             context.openGroup();
         } catch (ConfigurationException e) {
-            throw new GeneralException(e); //TODO
+            throw new GeneralException(e); //TODO incomplete
         }
 
         prefix.clear();

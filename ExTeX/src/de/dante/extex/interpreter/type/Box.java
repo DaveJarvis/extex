@@ -46,7 +46,7 @@ public class Box extends AbstractNodeList implements Serializable, NodeList {
      */
     public Object visit(NodeVisitor visitor, Object value, Object value2)
         throws GeneralException {
-            throw new GeneralException("unimplemented"); //TODO
+            throw new GeneralException("unimplemented"); //TODO incomplete
     }
 
 }

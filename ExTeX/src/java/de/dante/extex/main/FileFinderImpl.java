@@ -75,7 +75,7 @@ public class FileFinderImpl implements FileFinder {
                 }
             }
         } catch (IOException e) {
-            //TODO
+            //TODO incomplete
             file = null;
         }
 

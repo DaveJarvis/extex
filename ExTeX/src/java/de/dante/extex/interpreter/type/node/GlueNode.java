@@ -58,14 +58,14 @@ public class GlueNode extends AbstractNode implements Node {
      * @see "TeX -- The Program [186]"
      */
     public String toString() {
-        return " "; //TODO
+        return " "; //TODO incomplete
     }
     
     /**
      * @see de.dante.extex.typesetter.Node#toString(java.lang.StringBuffer)
      */
     public void toString(StringBuffer sb) {
-        sb.append(" "); //TODO
+        sb.append(" "); //TODO incomplete
     }
 
     /**

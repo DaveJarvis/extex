@@ -122,8 +122,8 @@ public class HorizontalListMaker extends AbstractListMaker
         } else if (sf == 0) {
             return;
         } else if (sf >= 2000) {
-            Glue xspaceskip = null; //TODO
-            Glue spaceskip  = null; //TODO
+            Glue xspaceskip = null; //TODO unimplemented
+            Glue spaceskip  = null;
 
             if (xspaceskip != null) {
                 space = xspaceskip.copy();

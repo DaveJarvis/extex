@@ -46,7 +46,7 @@ public class AfterMathNode extends AbstractNode implements Node {
      * @see "TeX -- The Program [192]"
      */
     public String toString() {
-        return "mathoff"; //TODO
+        return "mathoff"; //TODO incomplete
     }
 
     /**

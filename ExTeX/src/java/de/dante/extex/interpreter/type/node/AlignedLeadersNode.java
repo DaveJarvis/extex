@@ -46,7 +46,7 @@ public class AlignedLeadersNode extends GlueNode implements Node {
      * @see "TeX -- The Program [190]"
      */
     public String toString() {
-        return "aleaders "; //TODO
+        return "aleaders "; //TODO incomplete
     }
 
     /**

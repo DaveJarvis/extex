@@ -48,7 +48,7 @@ public class AdjustNode extends AbstractNode implements Node {
      * @see "TeX -- The Program [197]"
      */
     public String toString() {
-        return "vadjust "; //TODO
+        return "vadjust "; //TODO incomplete
     }
 
 
@@ -56,7 +56,7 @@ public class AdjustNode extends AbstractNode implements Node {
      * @see de.dante.extex.typesetter.Node#toString(java.lang.StringBuffer)
      */
     public void toString(StringBuffer sb) {
-        sb.append("vadjust "); //TODO
+        sb.append("vadjust "); //TODO unimplemented
     }
 
     /**

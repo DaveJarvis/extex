@@ -33,6 +33,7 @@ import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.context.TypesettingContext;
 import de.dante.extex.interpreter.type.Count;
 import de.dante.extex.interpreter.type.Dimen;
+import de.dante.extex.interpreter.type.Real;
 import de.dante.extex.interpreter.type.Tokens;
 import de.dante.extex.scanner.Catcode;
 import de.dante.extex.scanner.Token;
@@ -478,4 +479,28 @@ public class ContextImpl implements Context, Serializable {
 	public void setToks(String name, Tokens toks) {
 		group.setToks(name, toks);
 	}
+	
+	
+	
+	/**
+	 * @see de.dante.extex.interpreter.context.Context#getReal(java.lang.String)
+	 */
+	public Real getReal(String name) {
+		return group.getReal(name);
+	}
+
+	/**
+	 * @see de.dante.extex.interpreter.context.Context#setReal(java.lang.String, de.dante.extex.interpreter.type.Real, boolean)
+	 */
+	public void setReal(String name, Real value, boolean global) {
+		group.setReal(name, value, global);
+	}
+
+	/**
+	 * @see de.dante.extex.interpreter.context.Context#setReal(java.lang.String, de.dante.extex.interpreter.type.Real)
+	 */
+	public void setReal(String name, Real value) {
+		group.setReal(name, value);
+	}
+
 }

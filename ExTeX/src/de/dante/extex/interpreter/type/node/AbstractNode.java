@@ -141,6 +141,6 @@ public abstract class AbstractNode implements Node {
     protected void toString(StringBuffer sb, String prefix) {
         sb.append(prefix);
 
-        //TODO
+        //TODO incomplete
     }
 }

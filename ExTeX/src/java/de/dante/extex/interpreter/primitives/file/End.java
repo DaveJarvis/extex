@@ -55,6 +55,6 @@ public class End extends AbstractCode {
      */
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws GeneralException {
-        throw new GeneralTerminateException("xxx"); //TODO
+        throw new GeneralTerminateException("xxx"); //TODO  incomplete
     }
 }

@@ -46,7 +46,7 @@ public class FontFactoryImpl implements FontFactory {
     public Font getInstance(String name) {
         Font font = (Font)(fontmap.get(name));
         if ( font == null ) {
-            // TODO 
+            // TODO incomplete
             font = new DummyFont(name);
         }
         return font;

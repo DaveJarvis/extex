@@ -182,7 +182,7 @@ public class GlueComponent implements Serializable {
             Token t = source.scanNonSpace();
 
             if (t == null) {
-                throw new GeneralHelpingException("xxx"); //TODO
+                throw new GeneralHelpingException("xxx"); //TODO imcomplete
             }
 
             source.push(t);

@@ -86,7 +86,7 @@ public class Dimen extends GlueComponent implements Serializable {
     public void set(String source, Context context)
              throws GeneralException {
         //set(source, context, false);
-        //TODO
+        //TODO incomplete
     }
 
     /**
@@ -94,7 +94,7 @@ public class Dimen extends GlueComponent implements Serializable {
      */
     public void advance(int prefix, Context context, TokenSource source)
                  throws GeneralException {
-        // TODO 
+        // TODO incomplete
     }
 
     /**
