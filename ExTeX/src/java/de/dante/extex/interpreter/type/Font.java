@@ -19,6 +19,8 @@
 
 package de.dante.extex.interpreter.type;
 
+import de.dante.extex.interpreter.type.dimen.Dimen;
+import de.dante.extex.interpreter.type.glue.Glue;
 import de.dante.util.UnicodeChar;
 
 /**

@@ -28,7 +28,7 @@ import de.dante.util.GeneralException;
  * @see "TeX -- The Program [142]"
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @author <a href="m.g.n@gmx.de">Michael Niedermair</a>
+ * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
 public class AdjustNode extends AbstractNode implements Node {
@@ -50,6 +50,7 @@ public class AdjustNode extends AbstractNode implements Node {
      * ...
      *
      * @return ...
+     *
      * @see "TeX -- The Program [197]"
      */
     public String toString() {

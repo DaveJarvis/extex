@@ -18,7 +18,7 @@
  */
 package de.dante.extex.interpreter.type.node;
 
-import de.dante.extex.interpreter.type.Glue;
+import de.dante.extex.interpreter.type.glue.Glue;
 import de.dante.extex.typesetter.Discartable;
 import de.dante.extex.typesetter.Node;
 import de.dante.extex.typesetter.NodeVisitor;

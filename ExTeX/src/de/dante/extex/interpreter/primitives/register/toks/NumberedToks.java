@@ -53,6 +53,8 @@ public class NumberedToks extends NamedToks {
      *
      * @param context the interpreter context
      * @param value the value for the tokens
+     *
+     * @throws GeneralException ...
      */
     public void set(final Context context, final String value)
         throws GeneralException {

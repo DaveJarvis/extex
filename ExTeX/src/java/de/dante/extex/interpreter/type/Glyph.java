@@ -21,6 +21,7 @@ package de.dante.extex.interpreter.type;
 
 import java.util.HashMap;
 
+import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.util.UnicodeChar;
 
 /**

@@ -47,7 +47,8 @@ public class Char extends AbstractCode implements ExpandableCode {
     }
 
     /**
-     * @see de.dante.extex.interpreter.Code#execute(de.dante.extex.interpreter.Flags,
+     * @see de.dante.extex.interpreter.Code#execute(
+     *      de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
@@ -60,7 +61,8 @@ public class Char extends AbstractCode implements ExpandableCode {
     }
 
     /**
-     * @see de.dante.extex.interpreter.ExpandableCode#expand(de.dante.extex.interpreter.Flags,
+     * @see de.dante.extex.interpreter.ExpandableCode#expand(
+     *      de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
