@@ -50,7 +50,7 @@ import de.dante.util.GeneralException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Crcr extends AbstractCode {
+public class Crcr extends Cr {
 
     /**
      * Creates a new object.
