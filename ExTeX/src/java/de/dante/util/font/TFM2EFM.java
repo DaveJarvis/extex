@@ -30,6 +30,7 @@ import org.jdom.Document;
 import org.jdom.output.XMLOutputter;
 
 import de.dante.extex.font.type.tfm.TFMReader;
+import de.dante.extex.i18n.HelpingException;
 
 /**
  * Convert a TFM-file to a EFM-file
@@ -60,8 +61,10 @@ public final class TFM2EFM {
      * main
      * @param args      the comandlinearguments
      * @throws IOException ...
+     * @throws HelpingException ...
      */
-    public static void main(final String[] args) throws IOException {
+    public static void main(final String[] args) throws IOException,
+            HelpingException {
 
         if (args.length != PARAMETER) {
             System.err

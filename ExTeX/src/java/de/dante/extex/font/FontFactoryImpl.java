@@ -105,22 +105,7 @@ public class FontFactoryImpl implements FontFactory {
     public Font getInstance(final String name, final Dimen size)
             throws GeneralException, ConfigurationException {
 
-        return getInstance(name, size, new Glue(0), true);
-    }
-
-    /**
-     * @see de.dante.extex.font.FontFactory#getInstance(
-     *      java.lang.String,
-     *      de.dante.extex.interpreter.type.dimen.Dimen,
-     *      de.dante.extex.interpreter.type.glue.Glue,
-     *      boolean)
-     * @deprecated
-     */
-    public Font getInstance(final String name, final Dimen size,
-            final Glue letterspaced, final boolean ligatures)
-            throws GeneralException, ConfigurationException {
-
-        return getInstance(name, size, letterspaced, ligatures, true);
+        return getInstance(name, size, new Glue(0), true, true);
     }
 
     /**
