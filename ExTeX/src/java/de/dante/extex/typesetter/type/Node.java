@@ -80,7 +80,8 @@ public interface Node extends Knot {
     /**
      * Compute the vertical size of a node.
      * The vertical size is the size of the box enclosing the bouding
-     * box and containing the base line.
+     * box and containing the base line (see figure).
+     * <img src="doc-files/verticalSize.png" alt="" align="right"/>
      * <ul>
      *  <li>
      *   The vertical size is normally the sum of height and depth.
