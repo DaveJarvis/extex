@@ -30,8 +30,6 @@ public class ConfigurationFactory {
     /**
      * Creates a new object.
      *
-     * @param source the name of the file to read from
-     *
      * @throws ConfigException in case that something went wrong
      */
     public ConfigurationFactory() throws ConfigurationException {
