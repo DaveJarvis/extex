@@ -95,6 +95,16 @@ public class Box implements Serializable {
     }
 
     /**
+     * Creates a new object.
+     *
+     * @param list the node list
+     */
+    public Box(final NodeList list) {
+
+        nodes = list;
+    }
+
+    /**
      * Clear the contents of the box. Afterwards the box is void.
      */
     public void clear() {
