@@ -98,9 +98,9 @@ public class Unless extends AbstractIf implements Localizable {
         code = context.getCode(token);
 
         // TODO: this does not work with \def-ifs (TE)
-        try {
+        if (code instanceof AbstractIf) {
             abstractIf = (AbstractIf) code;
-        } catch (ClassCastException e) {
+        } else {
              // TODO: message (TE)
             throw new HelpingException(localizer, "Except If Conditional",
                                        printableControlSequence(context));
