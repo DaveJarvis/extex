@@ -30,7 +30,7 @@ import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.dimen.FixedDimen;
 import de.dante.extex.interpreter.type.glue.FixedGlue;
 import de.dante.extex.interpreter.type.glue.Glue;
-import de.dante.extex.logging.LogFormatter;
+import de.dante.extex.main.logging.LogFormatter;
 import de.dante.extex.typesetter.Discartable;
 import de.dante.extex.typesetter.HyphenationEnabled;
 import de.dante.extex.typesetter.TypesetterOptions;
