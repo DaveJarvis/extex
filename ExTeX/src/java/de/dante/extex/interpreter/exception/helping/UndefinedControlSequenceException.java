@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,33 +17,29 @@
  *
  */
 
-package de.dante.extex.interpreter.exception;
+package de.dante.extex.interpreter.exception.helping;
 
 import de.dante.extex.i18n.HelpingException;
 import de.dante.util.framework.i18n.LocalizerFactory;
 
 /**
- * This exception is raised when a math macro is encountered outside a math
- * mode.
- * <p>
- *  The localization format is taken from the Localizer under the key
- *  <tt>TTP.MissingDollar</tt>.
- * </p>
+ * This exception signals that an undefined control sequence has been
+ * encountered.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class MissingMathException extends HelpingException {
+public class UndefinedControlSequenceException extends HelpingException {
 
     /**
      * Creates a new object.
      *
      * @param macro the name of the macro in which the eof has been encoutered
      */
-    public MissingMathException(final String macro) {
+    public UndefinedControlSequenceException(final String macro) {
 
-        super(LocalizerFactory.getLocalizer(MissingMathException.class.getName()),
-                "TTP.MissingDollar", macro);
+        super(LocalizerFactory.getLocalizer(HelpingException.class.getName()),
+                "TTP.UndefinedToken", macro);
     }
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.interpreter.exception;
+package de.dante.extex.interpreter.exception.helping;
 
 import de.dante.extex.i18n.HelpingException;
 import de.dante.util.framework.i18n.LocalizerFactory;
