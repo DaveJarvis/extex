@@ -174,7 +174,10 @@ public class PDFDocumentWriter implements DocumentWriter, NodeVisitor {
       nodeName = nodeName.substring(0, nodeName.lastIndexOf("Node"));
       // Haben wir irgendwo "regular expressions" bei der Hand?
       
-      if (nodeName.equals("Glue")) node.toString(sb, "");
+      if (nodeName.equals("Glue"))
+      {
+        sb.append("\n"); node.toString(sb, "");
+      }
       
       return nodeName + 
        " (wd=" + node.getWidth().toPT() + 
