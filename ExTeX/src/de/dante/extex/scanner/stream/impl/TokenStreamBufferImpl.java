@@ -473,10 +473,10 @@ public class TokenStreamBufferImpl extends TokenStreamBaseImpl implements TokenS
 
 							String unicodename = scanUnicodeName();
 							UnicodeChar uc = new UnicodeChar(unicodename);
-							if (uc.getCodePoint()<0) {
-								throw new GeneralHelpingException("TTP.NoUnicodeName",unicodename);	
+							if (uc.getCodePoint() < 0) {
+								throw new GeneralHelpingException("TTP.NoUnicodeName", unicodename);
 							}
-							c = uc.getASCIIChar();// TODO change ti 32 bit
+							c = uc.getASCIIChar(); // TODO change ti 32 bit
 
 						} else {
 							throw new GeneralHelpingException("TTP.NoUnicodeNameFoundAfter");

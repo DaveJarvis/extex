@@ -90,7 +90,7 @@ public class VerticalListMaker extends AbstractListMaker implements ListMaker {
 	 * @see de.dante.extex.typesetter.ListMaker#addGlue(de.dante.extex.interpreter.type.Glue)
 	 */
 	public void addGlue(final Glue g) throws GeneralException {
-		// TODO Auto-generated method stub
+		nodes.addSkip(g);
 	}
 
 	/**
