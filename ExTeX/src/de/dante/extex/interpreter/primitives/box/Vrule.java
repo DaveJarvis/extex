@@ -16,15 +16,16 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  *
  */
+
 package de.dante.extex.interpreter.primitives.box;
 
 import de.dante.extex.interpreter.AbstractCode;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.type.Dimen;
+import de.dante.extex.interpreter.type.dimen.Dimen;
+import de.dante.extex.interpreter.type.node.RuleNode;
 import de.dante.extex.typesetter.Typesetter;
-
 import de.dante.util.GeneralException;
 
 /**
@@ -34,6 +35,7 @@ import de.dante.util.GeneralException;
  * @version $Revision$
  */
 public class Vrule extends AbstractCode {
+
     /**
      * The constant <tt>DEFAULT_RULE</tt> contains the equivalent to 0.4pt.
      */
@@ -45,11 +47,13 @@ public class Vrule extends AbstractCode {
      * @param name the name for debugging
      */
     public Vrule(final String name) {
+
         super(name);
     }
 
     /**
-     * @see de.dante.extex.interpreter.Code#execute(de.dante.extex.interpreter.Flags,
+     * @see de.dante.extex.interpreter.Code#execute(
+     *      de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
@@ -75,7 +79,8 @@ public class Vrule extends AbstractCode {
             }
         }
 
-        //TODO: typesetter.add(new RuleNode(width,height,depth));
+        typesetter.add(new RuleNode(width, height, depth, context
+                .getTypesettingContext()));
         prefix.clear();
     }
 }

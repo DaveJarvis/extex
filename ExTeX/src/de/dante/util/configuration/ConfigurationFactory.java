@@ -55,7 +55,7 @@ public class ConfigurationFactory {
      *
      * @return a new Configuration object
      *
-     * @throws NoTypesetterException in case that the source is
+     * @throws ConfigurationInvalidNameException in case that the source is
      *             <code>null</code>
      * @throws ConfigurationInstantiationException in case of some kind of
      *             error during instantiation

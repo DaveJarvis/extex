@@ -87,7 +87,8 @@ public class AbstractCode implements Code {
      * In general this method is simply a noop. Classes which need this feature
      * can overwrite this method.
      *
-     * @see de.dante.extex.interpreter.Code#set(de.dante.extex.interpreter.context.Context, java.lang.String)
+     * @see de.dante.extex.interpreter.Code#set(
+     *      de.dante.extex.interpreter.context.Context, java.lang.String)
      */
     public void set(final Context context, final String value)
         throws GeneralException {

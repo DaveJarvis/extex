@@ -20,7 +20,6 @@
 package de.dante.extex.interpreter.primitives.conditional;
 
 import de.dante.extex.i18n.GeneralHelpingException;
-import de.dante.extex.interpreter.AbstractIf;
 import de.dante.extex.interpreter.Conditional;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
@@ -73,7 +72,7 @@ public class Or extends AbstractIf {
     /**
      * This method is overwritten here since <tt>\or</tt> does not count as
      * an opening conditional even so it is derived from
-     * {@link de.dante.extex.interpreter.AbstractIf AbstractIf}.
+     * {@link de.dante.extex.interpreter.primitives.conditional.AbstractIf AbstractIf}.
      *
      * @see de.dante.extex.interpreter.Code#isIf()
      */
@@ -83,7 +82,8 @@ public class Or extends AbstractIf {
     }
 
     /**
-     * @see de.dante.extex.interpreter.AbstractIf#conditional(de.dante.extex.interpreter.context.Context,
+     * @see de.dante.extex.interpreter.primitives.conditional.AbstractIf#conditional(
+     *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */

@@ -83,7 +83,7 @@ public interface Code {
      * ...
      *
      * @param context the interpreter context
-     * @param value ...
+     * @param value the string to get the value from
      *
      * @throws GeneralException in case of an error
      */

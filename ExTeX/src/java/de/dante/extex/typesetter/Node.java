@@ -18,7 +18,7 @@
  */
 package de.dante.extex.typesetter;
 
-import de.dante.extex.interpreter.type.Dimen;
+import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.util.GeneralException;
 
 /**

@@ -23,7 +23,7 @@ import de.dante.extex.interpreter.AbstractCode;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.type.InFile;
+import de.dante.extex.interpreter.type.file.InFile;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.GeneralException;
 

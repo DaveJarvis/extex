@@ -185,9 +185,9 @@ public abstract class ConfigurationException extends Exception {
     }
 
     /**
-     * ...
-     * 
-     * @return ...
+     * Getter for the unformatted message.
+     *
+     * @return the unformatted message
      */
     protected String getMessageUnformatted() {
 

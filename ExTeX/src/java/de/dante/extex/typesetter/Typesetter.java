@@ -20,7 +20,6 @@ package de.dante.extex.typesetter;
 
 
 import de.dante.extex.documentWriter.DocumentWriter;
-import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.type.node.CharNodeFactory;
 import de.dante.util.GeneralException;
 
@@ -52,11 +51,9 @@ public interface Typesetter extends ListMaker {
     /**
      * ...
      *
-     * @param context the processor context
-     *
      * @throws GeneralException in case of an error
      */
-    void finish(Context context) throws GeneralException;
+    void finish() throws GeneralException;
 
     /**
      * ...

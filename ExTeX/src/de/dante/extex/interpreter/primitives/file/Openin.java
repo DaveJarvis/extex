@@ -24,7 +24,7 @@ import de.dante.extex.i18n.GeneralHelpingException;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.type.InFile;
+import de.dante.extex.interpreter.type.file.InFile;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.GeneralException;
 
@@ -73,7 +73,7 @@ public class Openin extends AbstractFileCode {
         InFile file = new InFile(new File(name));
 
         if (prefix.isImmediate()) {
-            file.open();
+            file.isOpen();
         }
         context.setInFile(key, file, prefix.isGlobal());
 

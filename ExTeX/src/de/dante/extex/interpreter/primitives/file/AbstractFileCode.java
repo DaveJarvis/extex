@@ -86,6 +86,7 @@ public abstract class AbstractFileCode extends AbstractCode {
      * Scan the file name until a <code>SpaceToken</code> is found.
      *
      * @param source the source for new tokens
+     * @param context the processing context
      *
      * @return the file name as string
      *

@@ -40,13 +40,15 @@ public class LogFormatter extends Formatter {
      * The field <tt>col</tt> contains the current column for the next
      * output character.
      */
-    private int col = 0;
+    private int col;
 
     /**
      * Creates a new object.
      */
     public LogFormatter() {
+
         super();
+        this.col = 0;
     }
 
     /**

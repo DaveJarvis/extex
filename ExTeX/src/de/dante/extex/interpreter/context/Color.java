@@ -19,7 +19,8 @@
 package de.dante.extex.interpreter.context;
 
 /**
- * ...
+ * This interface declares some methods to access the color in the RGB model
+ * with an alpha channel.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -27,40 +28,35 @@ package de.dante.extex.interpreter.context;
 public interface Color {
 
     /**
-     * ...
+     * Getter for the red channel of the color in the RGB model.
+     * The range of the value is 0x00 to 0xffff.
      *
-     * @return ...
+     * @return the red channel
      */
     int getR();
+
     /**
-     * ...
+     * Getter for the green channel of the color in the RGB model.
+     * The range of the value is 0x00 to 0xffff.
      *
-     * @return ...
+     * @return the green channel
      */
     int getG();
+
     /**
-     * ...
+     * Getter for the blue channel of the color in the RGB model.
+     * The range of the value is 0x00 to 0xffff.
      *
-     * @return ...
+     * @return the blue channel
      */
     int getB();
+
     /**
-     * ...
+     * Getter for the alpha channel.
+     * The range of the value is 0x00 to 0xffff.
      *
-     * @return ...
+     * @return the alpha channel
      */
-    int getAlphaR();
-    /**
-     * ...
-     *
-     * @return ...
-     */
-    int getAlphaG();
-    /**
-     * ...
-     *
-     * @return ...
-     */
-    int getAlphaB();
+    int getAlpha();
 
 }

@@ -22,7 +22,8 @@ import de.dante.util.configuration.ConfigurationException;
 import de.dante.extex.i18n.Messages;
 
 /**
- * This Exception is thrown when ...
+ * This Exception is thrown when a TokenStreamFactory is needed but none is
+ * found.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

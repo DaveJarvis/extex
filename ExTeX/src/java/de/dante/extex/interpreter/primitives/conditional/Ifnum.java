@@ -19,7 +19,6 @@
 package de.dante.extex.interpreter.primitives.conditional;
 
 import de.dante.extex.i18n.GeneralHelpingException;
-import de.dante.extex.interpreter.AbstractIf;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.scanner.Catcode;
@@ -44,7 +43,8 @@ public class Ifnum extends AbstractIf {
     }
 
     /**
-     * @see de.dante.extex.interpreter.AbstractIf#conditional(de.dante.extex.interpreter.context.Context,
+     * @see de.dante.extex.interpreter.primitives.conditional.AbstractIf#conditional(
+     *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */

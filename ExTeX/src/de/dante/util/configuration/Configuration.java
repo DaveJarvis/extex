@@ -97,6 +97,7 @@ public interface Configuration {
      *
      * @throws ConfigurationNotFoundException in case that the given name does
      * not correspond to one of the tags in the current configuration
+     * @throws ConfigurationException in case of other errors
      */
     Configuration getConfiguration(String key)
         throws ConfigurationNotFoundException, ConfigurationException;
@@ -173,6 +174,7 @@ public interface Configuration {
      *
      * @throws ConfigurationNotFoundException in case that the given name does
      * not correspond to one of the tags in the current configuration
+     * @throws ConfigurationException in case of other errors
      */
     Configuration getConfiguration(String key, String attribute)
         throws ConfigurationNotFoundException, ConfigurationException;

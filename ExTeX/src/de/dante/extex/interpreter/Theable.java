@@ -19,14 +19,14 @@
 package de.dante.extex.interpreter;
 
 import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.type.Tokens;
+import de.dante.extex.interpreter.type.tokens.Tokens;
 
 import de.dante.util.GeneralException;
 
 /**
  * This is a interface to mark those classes which are able to provide a
  * description. This description is returned in form of
- * {@link de.dante.extex.interpreter.type.Tokens Tokens}.
+ * {@link de.dante.extex.interpreter.type.tokens.Tokens Tokens}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

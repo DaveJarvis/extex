@@ -119,7 +119,8 @@ public abstract class AbstractToken implements Token {
     }
 
     /**
-     * @see de.dante.extex.scanner.Token#equals(de.dante.extex.scanner.Catcode, java.lang.String)
+     * @see de.dante.extex.scanner.Token#equals(
+     *      de.dante.extex.scanner.Catcode, java.lang.String)
      */
     public boolean equals(final Catcode cc, final String s) {
 

@@ -37,7 +37,8 @@ import de.dante.util.configuration.ConfigurationNoSuchMethodException;
 public class InterpreterFactory {
 
     /**
-     * The constant <tt>CLASS_ATTRIBUTE</tt> ...
+     * The constant <tt>CLASS_ATTRIBUTE</tt> contains the name of the attribute
+     * for the class name to be used.
      */
     private static final String CLASS_ATTRIBUTE = "class";
 
