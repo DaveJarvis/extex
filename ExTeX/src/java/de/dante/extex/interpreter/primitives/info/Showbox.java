@@ -97,7 +97,8 @@ public class Showbox extends AbstractBox implements LogEnabled {
         Box b = context.getBox(key);
 
         if (b == null) {
-            logger.info(context.esc(key) + "=void");
+            logger.info(getLocalizer().format("TTP.Show.void", //
+                    context.esc(key)));
         } else {
             logger.info(b.getNodes().toString());
             //TODO gene: correct??
