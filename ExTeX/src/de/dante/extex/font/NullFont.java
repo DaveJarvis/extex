@@ -136,7 +136,7 @@ public class NullFont implements Font {
 	}
 
 	/**
-	 * @see de.dante.extex.interpreter.type.Font#getExternalID()
+	 * @see de.dante.extex.interpreter.type.Font#getExternalID(UnicodeChar)
 	 */
 	public String getExternalID(UnicodeChar c) {
 		// TODO Auto-generated method stub

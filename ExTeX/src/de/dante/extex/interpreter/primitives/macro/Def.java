@@ -37,7 +37,7 @@ public class Def extends AbstractCode {
      *
      * @param name the name for debugging
      */
-    public Def(String name) {
+    public Def(final String name) {
         super(name);
     }
 
@@ -47,10 +47,11 @@ public class Def extends AbstractCode {
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws GeneralException {
+    public void execute(final Flags prefix, final Context context, final TokenSource source,
+        final Typesetter typesetter) throws GeneralException {
         //TODO unimplemented
         prefix.clear();
+        throw new GeneralException("unimplemented");
     }
 
 }

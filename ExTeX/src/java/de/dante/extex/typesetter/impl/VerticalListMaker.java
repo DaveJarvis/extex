@@ -113,7 +113,8 @@ public class VerticalListMaker extends AbstractListMaker implements ListMaker {
      *
      * @see de.dante.extex.typesetter.ListMaker#par()
      */
-    public void par() throws GeneralException {
+    public void par() {
+        // nothing to do
     }
 
     /**

@@ -58,7 +58,6 @@ public class Vrule extends AbstractCode {
         Dimen width = new Dimen(DEFAULT_RULE);
         Dimen height = new Dimen(0);
         Dimen depth = new Dimen(0);
-        boolean onceMore = true;
 
         for (; ; ) {
             if (source.scanKeyword("width")) {

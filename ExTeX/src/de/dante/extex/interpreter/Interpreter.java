@@ -106,7 +106,7 @@ public interface Interpreter extends TokenSource,
      *
      * @param format the base name of the format file
      *
-     * @throws IOException ...
+     * @throws IOException in case of an IO error
      */
     void loadFormat(String format) throws IOException;
 

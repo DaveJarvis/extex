@@ -27,5 +27,5 @@ package de.dante.extex.typesetter;
  * @version $Revision$
  */
 public interface Discartable {
-
+    // nothing to do
 }

@@ -26,5 +26,7 @@ package de.dante.extex.hyphenation;
  * @version $Revision$
  */
 public interface HyphenationList {
+    // to be completed
+    
 
 }

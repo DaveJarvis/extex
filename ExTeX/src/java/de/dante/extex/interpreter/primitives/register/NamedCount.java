@@ -91,14 +91,12 @@ public class NamedCount extends AbstractCode implements
      * @param source ...
      * 
      * @return ...
-     * 
-     * @throws GeneralException ...
      */
     public long convertCount(Context context, TokenSource source)
         throws GeneralException {
         String key = getKey(source);
-
-        return context.getCount(key).getValue();
+        Count c = context.getCount(key);
+        return (c != null ? c.getValue() : 0);
     }
 
     /**
@@ -181,8 +179,13 @@ public class NamedCount extends AbstractCode implements
      * @param value ...
      */
     public void set(Context context, String value) throws GeneralException {
-        context.setCount(getName(), (value.equals("") ? 0 : Long
-            .parseLong(value)));
+        try {
+            context.setCount(getName(), (value.equals("") ? 0 : Long
+                .parseLong(value)));
+        } catch (NumberFormatException e) {
+            // TODO 
+            throw new GeneralException(e);
+        }
     }
 
     /**

@@ -424,6 +424,7 @@ public abstract class Moritz implements TokenSource, Observable {
         Token t = scanNonSpace();
 
         if (t == null) {
+            // TODO: to be completed
         } else if (t.equals(Catcode.OTHER, "-")) {
             neg = true;
             t = scanNonSpace();

@@ -45,7 +45,7 @@ public interface DocumentWriter {
     /**
      * Setter for the output stream.
      *
-     * @param os the output stream
+     * @param writer the output stream
      */
     void setWriter(Writer writer);
 

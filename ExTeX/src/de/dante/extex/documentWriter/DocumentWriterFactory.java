@@ -47,7 +47,7 @@ public class DocumentWriterFactory {
      *
      * @return the new instance
      *
-     * @throws ConfigurationException ...
+     * @throws ConfigurationException in case of an error
      */
     public DocumentWriter newInstance() throws ConfigurationException {
         DocumentWriter docWriter;

@@ -23,7 +23,6 @@ import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.GeneralException;
 
 /**
  * This class provides an implementation for the primitive <code>\endinput</code>.
@@ -45,7 +44,7 @@ public class Endinput extends AbstractCode {
      *
      * @param name the name for debugging
      */
-    public Endinput(String name) {
+    public Endinput(final String name) {
         super(name);
     }
 
@@ -55,8 +54,8 @@ public class Endinput extends AbstractCode {
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context, TokenSource source, Typesetter typesetter)
-               throws GeneralException {
+    public void execute(final Flags prefix, final Context context,
+        final TokenSource source, final Typesetter typesetter) {
         source.closeNextFileStream();
         prefix.clear();
     }

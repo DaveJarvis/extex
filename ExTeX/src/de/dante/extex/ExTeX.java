@@ -537,16 +537,14 @@ public class ExTeX {
      * value is used as initial input after the input file has been processed.
      * Finally, if everything before failed then read input from the stdin
      * stream.
-     *
+     * 
      * @param interpreter the interpreter context
-     *
-     * @throws CharacterCodingException ...
+     * 
      * @throws ConfigurationException ...
      * @throws MainIOException ...
      */
     private void initializeStreams(final Interpreter interpreter)
-            throws CharacterCodingException, ConfigurationException,
-            MainIOException {
+        throws ConfigurationException, MainIOException {
         TokenStreamFactory factory = interpreter.getTokenStreamFactory();
         boolean notInitialized = true;
         String filename = properties.getProperty(PROP_FILE);
@@ -555,8 +553,8 @@ public class ExTeX {
 
             try {
                 TokenStream stream = factory
-                        .newInstance(filename, "tex", properties
-                                .getProperty(PROP_ENCODING));
+                    .newInstance(filename, "tex", properties
+                        .getProperty(PROP_ENCODING));
                 interpreter.addStream(stream);
                 notInitialized = false;
             } catch (FileNotFoundException e) {
@@ -570,19 +568,16 @@ public class ExTeX {
 
         if (post != null && !post.equals("")) {
             TokenStream stream = factory.newInstance(post, properties
-                    .getProperty(PROP_ENCODING));
+                .getProperty(PROP_ENCODING));
             interpreter.addStream(stream);
             notInitialized = false;
         }
 
         if (notInitialized) {
-            try {
-                TokenStream stream = factory.newInstance(new InputStreamReader(
-                        System.in), properties.getProperty(PROP_ENCODING));
-                interpreter.addStream(stream);
-            } catch (IOException e) {
-                throw new MainIOException(e);
-            }
+            TokenStream stream = factory.newInstance(new InputStreamReader(
+                System.in), properties.getProperty(PROP_ENCODING));
+            interpreter.addStream(stream);
+
         }
     }
 

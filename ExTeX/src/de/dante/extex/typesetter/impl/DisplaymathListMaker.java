@@ -54,7 +54,7 @@ public class DisplaymathListMaker extends AbstractListMaker implements ListMaker
     /**
      * @see de.dante.extex.typesetter.ListMaker#add(de.dante.extex.interpreter.type.node.CharNode)
      */
-    public void add(final Node c) throws GeneralException {
+    public void add(final Node c) {
         nodes.add(c);
     }
 
@@ -62,8 +62,7 @@ public class DisplaymathListMaker extends AbstractListMaker implements ListMaker
      * @see de.dante.extex.typesetter.ListMaker#add(de.dante.extex.interpreter.type.Font,
      *      java.lang.String)
      */
-    public void add(final TypesettingContext font, final UnicodeChar symbol)
-            throws GeneralException {
+    public void add(final TypesettingContext font, final UnicodeChar symbol) {
         nodes.add(manager.getCharNodeFactory().newInstance(font, symbol));
     }
 

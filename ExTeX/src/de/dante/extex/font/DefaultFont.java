@@ -42,17 +42,24 @@ public class DefaultFont implements Font {
 	 */
 	private String name;
 
-	/**
-	 * Creates a new object.
-	 */
-	public DefaultFont(String name, FileFinder fileFinder) throws GeneralException, ConfigurationException {
-		super();
-		// trim name !
-		if (name != null) {
-			this.name = name.trim();
-		}
-		loadFont(fileFinder);
-	}
+    /**
+     * Creates a new object.
+     * 
+     * @param name ...
+     * @param fileFinder ...
+     * 
+     * @throws GeneralException
+     * @throws ConfigurationException
+     */
+    public DefaultFont(String name, FileFinder fileFinder)
+        throws GeneralException, ConfigurationException {
+        super();
+        // trim name !
+        if (name != null) {
+            this.name = name.trim();
+        }
+        loadFont(fileFinder);
+    }
 
 	/**
 	 * load the Font

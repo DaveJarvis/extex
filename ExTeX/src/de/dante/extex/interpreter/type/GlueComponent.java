@@ -199,6 +199,7 @@ public class GlueComponent implements Serializable {
         if (source.scanKeyword("sp")) {
             value = value / ONE;
         } else if (source.scanKeyword("pt")) {
+            // nothing to do
         } else if (source.scanKeyword("mm")) {
             value = value * 7227 / 2540;
         } else if (source.scanKeyword("cm")) {

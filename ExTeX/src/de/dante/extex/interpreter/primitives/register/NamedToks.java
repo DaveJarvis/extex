@@ -52,14 +52,15 @@ public class NamedToks extends AbstractCode implements Theable {
 		super(name);
 	}
 
-	/**
-	 * Return the register value as <code>Tokens</code> for <code>\the</code>.
-	 * 
-	 * @see de.dante.extex.interpreter.Theable#the(de.dante.extex.interpreter.context.Context)
-	 */
-	public Tokens the(Context context, TokenSource source) throws GeneralException {
-		return context.getToks(getName());
-	}
+    /**
+     * Return the register value as <code>Tokens</code> for <code>\the</code>.
+     * 
+     * @see de.dante.extex.interpreter.Theable#the(de.dante.extex.interpreter.context.Context)
+     */
+    public Tokens the(Context context, TokenSource source)
+        throws GeneralException {
+        return context.getToks(getName());
+    }
 
 	/**
 	 * @see de.dante.extex.interpreter.Code#execute(de.dante.extex.interpreter.Flags,

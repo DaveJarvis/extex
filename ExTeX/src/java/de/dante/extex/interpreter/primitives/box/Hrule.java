@@ -59,7 +59,6 @@ public class Hrule extends AbstractCode {
         Dimen width = new Dimen(0);
         Dimen height = new Dimen(DEFAULT_RULE);
         Dimen depth = new Dimen(0);
-        boolean onceMore = true;
 
         for (;;) {
             if (source.scanKeyword("width")) {
