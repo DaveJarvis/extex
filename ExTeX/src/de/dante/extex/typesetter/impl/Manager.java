@@ -23,6 +23,7 @@ import de.dante.extex.interpreter.type.node.CharNodeFactory;
 import de.dante.extex.typesetter.ListMaker;
 import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.typesetter.ligatureBuilder.LigatureBuilder;
+import de.dante.extex.typesetter.paragraphBuilder.ParagraphBuilder;
 import de.dante.util.GeneralException;
 
 /**
@@ -84,4 +85,11 @@ public interface Manager {
      * @return the current ligature builder
      */
     LigatureBuilder getLigatureBuilder();
+
+    /**
+     * Getter for the current paragraph builder.
+     *
+     * @return the current paragraph builder
+     */
+    ParagraphBuilder getParagraphBuilder();
 }

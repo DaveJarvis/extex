@@ -31,6 +31,7 @@ import de.dante.extex.typesetter.Mode;
 import de.dante.extex.typesetter.Node;
 import de.dante.extex.typesetter.NodeList;
 import de.dante.extex.typesetter.TypesetterOptions;
+import de.dante.extex.typesetter.paragraphBuilder.ParagraphBuilder;
 import de.dante.util.GeneralException;
 import de.dante.util.UnicodeChar;
 
@@ -172,6 +173,8 @@ public class HorizontalListMaker extends AbstractListMaker implements ListMaker 
     public NodeList close() throws GeneralException {
 
         getManager().getLigatureBuilder().insertLigatures(nodes);
+        ParagraphBuilder builder = getManager().getParagraphBuilder();
+
         //TODO: paragraph breaking without additional hyphenation points
         //TODO: insert optional hyphenation positions
         //TODO: paragraph breaking second pass
