@@ -102,4 +102,12 @@ public interface TokenStream {
      * @return <code>true</code> if the stream is at its end
      */
     //TODO gene: boolean isEof();
+
+    /**
+     * Setter for skipSpaces.
+     * The field <tt>skipSpaces</tt> contains the indicator that spaces should
+     * be ignored before the next token is delivered.
+     */
+     //TODO gene: public void skipSpaces();
+
 }
