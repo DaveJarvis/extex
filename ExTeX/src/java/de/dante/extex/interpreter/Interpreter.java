@@ -20,9 +20,11 @@
 package de.dante.extex.interpreter;
 
 import java.io.IOException;
+import java.io.InputStream;
 
 import de.dante.extex.font.FontFactory;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.loader.LoaderException;
 import de.dante.extex.scanner.stream.TokenStream;
 import de.dante.extex.scanner.stream.TokenStreamFactory;
 import de.dante.extex.typesetter.Typesetter;
@@ -128,19 +130,14 @@ public interface Interpreter extends TokenSource, Observable {
     /**
      * Load the format from an external source.
      *
-     * @param format the base name of the format file
+     * @param stream stream to read from
      *
      * @throws IOException in case of an IO error
+     * @throws LoaderException ...
      */
-    void loadFormat(String format) throws IOException;
-
-    /**
-     * Saves a format to an external source.
-     *
-     * @throws IOException in case of an IO error
-     * @throws GeneralException in case of another error
-     */
-    void dumpFormat() throws GeneralException, IOException;
+    void loadFormat(InputStream stream)
+            throws LoaderException,
+                IOException;
 
     /**
      * Process the current token streams by repeatedly reading a single token
