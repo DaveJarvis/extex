@@ -71,7 +71,7 @@ public class ConfigurationNoSuchMethodException extends ConfigurationException {
     }
 
     /**
-     * Getter for the text prefix of this ConfigException.
+     * Getter for the text prefix of this ConfigurationException.
      * The text is taken from the {@link de.dante.extex.i18n.Messages Messages}
      * under the key <tt>ConfigurationNoSuchMethodException.Text</tt>. The
      * argument {0} is replaced by the name of the missing method as passed to

@@ -104,8 +104,9 @@ public class Csname extends AbstractCode implements ExpandableCode,
 
             if (t.getValue().equals("csname")) {
                 Tokens toks = scanToEndCsname(context, source);
-                t = context.getTokenFactory().newInstance(Catcode.ESCAPE,
-                                                          toks.toString());
+                t = context.getTokenFactory()
+                        .newInstance(Catcode.ESCAPE, toks.toString(),
+                                     context.getNamespace());
             }
 
         } else if (!(t instanceof ActiveCharacterToken)) {

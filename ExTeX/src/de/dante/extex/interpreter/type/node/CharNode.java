@@ -74,9 +74,9 @@ public class CharNode extends AbstractNode implements Node {
     }
 
     /**
-     * ...
+     * Getter for the space factor
      *
-     * @return ...
+     * @return the space factor
      */
     public int getSpaceFactor() {
 
@@ -111,7 +111,11 @@ public class CharNode extends AbstractNode implements Node {
     }
 
     /**
-     * @see java.lang.Object#toString()
+     * This method returns the printable representation.
+     * This is meant to produce a exaustive form as it is used in tracing
+     * output to the log file.
+     *
+     * @return the printable representation
      */
     public String toString() {
 

@@ -41,7 +41,7 @@ public class FileFinderImpl implements FileFinder {
     /**
      * Creates a new object.
      *
-     * @param aLogger ...
+     * @param aLogger the logger to use
      */
     public FileFinderImpl(final Logger aLogger) {
         super();

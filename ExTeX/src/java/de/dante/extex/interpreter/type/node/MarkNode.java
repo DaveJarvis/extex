@@ -34,16 +34,18 @@ public class MarkNode extends AbstractNode implements Node {
 
     /**
      * Creates a new object.
-     *
      */
     public MarkNode() {
         super();
     }
 
     /**
-     * ...
+     * This method returns the printable representation.
+     * This is meant to produce a exaustive form as it is used in tracing
+     * output to the log file.
      *
-     * @return ...
+     * @return the printable representation
+     *
      * @see "TeX -- The Program [196]"
      */
     public String toString() {

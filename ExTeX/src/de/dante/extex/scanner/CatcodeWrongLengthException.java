@@ -40,9 +40,7 @@ public class CatcodeWrongLengthException extends CatcodeException {
     }
 
     /**
-     * ...
-     *
-     * @return ...
+     * @see java.lang.Throwable#getMessage()
      */
     public String getMessage() {
 

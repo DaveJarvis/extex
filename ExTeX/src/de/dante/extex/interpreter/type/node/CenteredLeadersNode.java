@@ -40,9 +40,12 @@ public class CenteredLeadersNode extends GlueNode implements Node {
     }
 
     /**
-     * ...
+     * This method returns the printable representation.
+     * This is meant to produce a exaustive form as it is used in tracing
+     * output to the log file.
      *
-     * @return ...
+     * @return the printable representation
+     *
      * @see "TeX -- The Program [190]"
      */
     public String toString() {

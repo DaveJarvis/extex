@@ -70,7 +70,7 @@ public class Showthe extends The {
                     cs.toString(), printableControlSequence(context));
         }
 
-        Code code = context.getMacro(cs.getValue());
+        Code code = context.getCode(cs);
 
         if (code == null) {
             throw new GeneralHelpingException("TTP.UndefinedToken", cs

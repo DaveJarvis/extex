@@ -83,7 +83,6 @@ public class Fontdimen extends AbstractAssignment implements ExpandableCode,
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
-     * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      */
     public void expand(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)

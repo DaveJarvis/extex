@@ -75,14 +75,14 @@ public class Write extends AbstractCode {
     }
 
     /**
-     * ...
+     * Immediately write some tokens to a write register.
      *
-     * @param no ...
-     * @param toks ...
-     * @param context ...
-     * @param source TODO
+     * @param no the number of the write register
+     * @param toks the tokens to write
+     * @param context the processing context
+     * @param source the source for new tokens
      *
-     * @throws GeneralException ...
+     * @throws GeneralException in case of an error
      */
     private void writeImmediate(final long no, final Tokens toks,
             final Context context, final TokenSource source)
@@ -103,10 +103,10 @@ public class Write extends AbstractCode {
     }
 
     /**
-     * ...
+     * Write with delay.
      *
-     * @param no ...
-     * @param toks ...
+     * @param no the number of the write register
+     * @param toks the tokens to write
      */
     private void write(final long no, final Tokens toks) {
 

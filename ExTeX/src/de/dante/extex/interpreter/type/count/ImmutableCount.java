@@ -22,7 +22,8 @@ import de.dante.util.GeneralException;
 
 
 /**
- * ...
+ * This class provides an implementation of a Count where all methods modifying
+ * the contents are redefined to produce an exception.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -32,7 +33,7 @@ public class ImmutableCount extends Count {
     /**
      * Creates a new object.
      *
-     * @param value ...
+     * @param value the value to be stored
      */
     public ImmutableCount(final long value) {
 

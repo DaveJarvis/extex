@@ -90,7 +90,6 @@ public class FontCode extends AbstractCode implements FontConvertible, Theable {
      * @see de.dante.extex.interpreter.type.font.FontConvertible#convertFont(
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource)
-     * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      */
     public Font convertFont(final Context context, final TokenSource source)
             throws GeneralException {

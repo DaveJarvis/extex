@@ -16,6 +16,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  *
  */
+
 package de.dante.util.observer;
 
 import java.util.ArrayList;
@@ -31,13 +32,17 @@ import de.dante.util.GeneralException;
  * @version $Revision$
  */
 public class ObserverList implements Observer {
-    /** The internal list of observers */
+
+    /**
+     * The field <tt>list</tt> contains the internal lit of observers.
+     */
     private List list = new ArrayList();
 
     /**
      * Creates a new object containing no elements.
      */
     public ObserverList() {
+
         super();
     }
 
@@ -49,7 +54,10 @@ public class ObserverList implements Observer {
      * @param observer the observer to add
      */
     public void add(final Observer observer) {
-        list.add(observer);
+
+        if (!list.contains(observer)) {
+            list.add(observer);
+        }
     }
 
     /**
@@ -61,10 +69,12 @@ public class ObserverList implements Observer {
      */
     public void update(final Observable source, final Object object)
             throws GeneralException {
+
         Iterator iterator = list.iterator();
 
         while (iterator.hasNext()) {
             ((Observer) (iterator.next())).update(source, object);
         }
     }
+
 }

@@ -34,22 +34,18 @@ import de.dante.util.GeneralException;
 public class AdjustNode extends AbstractNode implements Node {
 
     /**
-     * The field <tt>adjust</tt> ...
-     */
-    private VerticalListNode adjust = null;
-
-    /**
      * Creates a new object.
-     *
      */
     public AdjustNode() {
         super();
     }
 
     /**
-     * ...
+     * This method returns the printable representation.
+     * This is meant to produce a exaustive form as it is used in tracing
+     * output to the log file.
      *
-     * @return ...
+     * @return the printable representation
      *
      * @see "TeX -- The Program [197]"
      */

@@ -126,9 +126,9 @@ public abstract class AbstractNodeList extends AbstractNode implements NodeList 
     }
 
     /**
-     * ...
+     * Recompute the dimensions of the given node.
      *
-     * @param node ...
+     * @param node the node to update
      */
     protected abstract void updateDimensions(final Node node);
 
@@ -238,7 +238,7 @@ public abstract class AbstractNodeList extends AbstractNode implements NodeList 
     }
 
     /**
-     * ...
+     * Provides a string representation of the current instance.
      *
      * @return the String representation of the object
      * @see "TeX -- The Program [182]"

@@ -67,7 +67,8 @@ public class ErrorHandlerImpl implements ErrorHandler, InteractionVisitor {
     /**
      * Creates a new object.
      *
-     * @param configuration ...
+     * @param configuration the configuration to consider.
+     * This argument is ignored currently
      * @param theLogger the logger for the interaction logging
      */
     public ErrorHandlerImpl(final Configuration configuration,

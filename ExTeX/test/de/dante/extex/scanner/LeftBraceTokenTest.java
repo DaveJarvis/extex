@@ -22,7 +22,7 @@ import de.dante.util.UnicodeChar;
 import junit.framework.TestCase;
 
 /**
- * ...
+ * This class contains the test cases for left brace tokens.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -30,8 +30,8 @@ import junit.framework.TestCase;
 public class LeftBraceTokenTest extends TestCase {
 
     /**
-     * ...
-     * @param args ...
+     * Command line interface
+     * @param args the arguments
      */
     public static void main(final String[] args) {
         junit.textui.TestRunner.run(LeftBraceTokenTest.class);

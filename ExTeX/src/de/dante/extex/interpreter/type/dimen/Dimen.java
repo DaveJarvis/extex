@@ -33,7 +33,7 @@ import de.dante.util.GeneralException;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class Dimen extends GlueComponent implements Serializable {
+public class Dimen extends GlueComponent implements Serializable, FixedDimen {
 
     /**
       * The constant <tt>ZERO_PT</tt> contains the immutable dimen register

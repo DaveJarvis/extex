@@ -65,7 +65,7 @@ public interface Token {
      *
      * @return <code>true</code> iff the tokens are equal
      */
-    boolean equals(Token t);
+    boolean equals(Object t);
 
     /**
      * Compare the current token with a pair of catcode and String value. This

@@ -38,7 +38,7 @@ public class ImmutableDimen extends Dimen implements Serializable {
     /**
      * Creates a new object.
      *
-     * @param value ...
+     * @param value the value to be stored
      */
     public ImmutableDimen(final long value) {
 
@@ -48,7 +48,7 @@ public class ImmutableDimen extends Dimen implements Serializable {
     /**
      * Creates a new object.
      *
-     * @param value ...
+     * @param value the value to be stored
      */
     public ImmutableDimen(final Dimen value) {
 

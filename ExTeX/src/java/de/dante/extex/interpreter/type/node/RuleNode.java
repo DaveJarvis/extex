@@ -36,16 +36,16 @@ import de.dante.util.GeneralException;
 public class RuleNode extends AbstractNode implements Node {
 
     /**
-     * The field <tt>context</tt> ...
+     * The field <tt>context</tt> the typographic context.
      */
     private TypesettingContext context;
 
     /**
      * Creates a new object.
      *
-     * @param width ...
-     * @param height ...
-     * @param depth ...
+     * @param width the width of the rule
+     * @param height the height of the rule
+     * @param depth the depth of the rule
      * @param theContext the typographic context
      *
      * @see "TeX -- The Program [139]"
@@ -68,9 +68,11 @@ public class RuleNode extends AbstractNode implements Node {
     }
 
     /**
-     * ...
+     * This method returns the printable representation.
+     * This is meant to produce a exaustive form as it is used in tracing
+     * output to the log file.
      *
-     * @return ...
+     * @return the printable representation
      *
      * @see "TeX -- The Program [187]"
      */

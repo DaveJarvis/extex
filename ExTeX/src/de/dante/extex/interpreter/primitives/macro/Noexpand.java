@@ -60,6 +60,7 @@ public class Noexpand extends AbstractCode implements ExpandableCode {
 
         Token t = source.getToken();
         prefix.clear();
+        throw new RuntimeException("unimplemented");
     }
 
     /**

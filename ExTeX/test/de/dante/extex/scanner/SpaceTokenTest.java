@@ -75,7 +75,7 @@ public class SpaceTokenTest extends TestCase {
     /**
      */
     public void testEqualsToken1() {
-        Token t2 = new ActiveCharacterToken(new UnicodeChar(' '));
+        Token t2 = new ActiveCharacterToken(new UnicodeChar(' '), "");
         assertFalse(t.equals(t2));
     }
 

@@ -56,11 +56,11 @@ public class Ifvoid extends AbstractIf {
     }
 
     /**
-     * Return the key (the number) for the register.
+     * Return the key (the number) for the box register.
      *
      * @param source the source for new tokens
      *
-     * @return ...
+     * @return the key for the box register
      *
      * @throws GeneralException in case of an error
      */

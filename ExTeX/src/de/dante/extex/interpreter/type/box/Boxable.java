@@ -32,13 +32,13 @@ import de.dante.util.GeneralException;
 public interface Boxable {
 
     /**
-     * ...
+     * Getter for the content as Box.
      *
      * @param context the interpreter context
      * @param source the source for new tokens
-     * @param typesetter ...
+     * @param typesetter the typesetter to use
      *
-     * @return ...
+     * @return an appropriate Box
      *
      * @throws GeneralException in case of an error
      */

@@ -38,12 +38,12 @@ import de.dante.util.GeneralException;
 public class Ifcase extends AbstractIf {
 
     /**
-     * The constant <tt>OR</tt> contains the value indicating a \or.
+     * The constant <tt>OR</tt> contains the value indicating an \or.
      */
     protected static final Tag OR = new Tag();
 
     /**
-     * The constant <tt>ELSE</tt> contains the value indicating a \else.
+     * The constant <tt>ELSE</tt> contains the value indicating an \else.
      */
     protected static final Tag ELSE = new Tag();
 
@@ -170,7 +170,7 @@ public class Ifcase extends AbstractIf {
     }
 
     /**
-     * ...
+     * This is an internal class for typesafe values.
      *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision$
