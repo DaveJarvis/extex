@@ -48,6 +48,13 @@ public interface Code {
     boolean isIf();
 
     /**
+     * ...
+     *
+     * @return ...
+     */
+    boolean isOuter();
+
+    /**
      * Setter for the name of this primitive.
      *
      * @param name the name
