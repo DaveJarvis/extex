@@ -121,6 +121,16 @@ public class Delimiter {
     }
 
     /**
+     * @see java.lang.Object#toString()
+     */
+    public String toString() {
+
+        StringBuffer sb = new StringBuffer();
+        toString(sb);
+        return sb.toString();
+    }
+
+    /**
      * Append the printable representation of the  current instance to the
      * string buffer.
      *
@@ -128,8 +138,9 @@ public class Delimiter {
      */
     public void toString(final StringBuffer sb) {
 
-        //TODO gene: unimplemented
-        throw new RuntimeException("unimplemented");
+        sb.append("delimiter \"");
+        mathClass.toString(sb);
+        smallChar.toString(sb);
+        largeChar.toString(sb);
     }
-
 }
