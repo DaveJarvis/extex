@@ -25,7 +25,7 @@ import de.dante.extex.typesetter.NodeVisitor;
 import de.dante.util.GeneralException;
 
 /**
- * ...
+ * A space noad represents a simple space character.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>

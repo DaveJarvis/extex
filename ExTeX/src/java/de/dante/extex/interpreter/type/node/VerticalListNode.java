@@ -60,14 +60,11 @@ public class VerticalListNode extends AbstractNodeList implements NodeList {
     /**
      * ...
      *
-     * @param size ...
-     *
-     * @see de.dante.extex.typesetter.NodeList#spread(de.dante.extex.interpreter.type.dimen.FixedDimen)
+     * @param size the target size
      */
     public void spread(final FixedDimen size) {
 
         // TODO unimplemented
-
     }
 
     /**

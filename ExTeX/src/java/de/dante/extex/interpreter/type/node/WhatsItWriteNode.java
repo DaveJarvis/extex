@@ -34,12 +34,12 @@ import de.dante.util.GeneralException;
 public class WhatsItWriteNode extends WhatsItNode {
 
     /**
-     * The field <tt>key</tt> contains the ...
+     * The field <tt>key</tt> contains the key of the outfile to write to.
      */
     private String key;
 
     /**
-     * The field <tt>tokens</tt> contains the ...
+     * The field <tt>tokens</tt> contains the tokens to expand and write.
      */
     private Tokens tokens;
 

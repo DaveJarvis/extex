@@ -181,7 +181,8 @@ public class Tokens implements Serializable, FixedTokens {
     }
 
     /**
-     * ...
+     * Remove the last token from the list and return it. If the list is empty
+     * then <code>null</code> is returned.
      *
      * @return the last token or <code>null</code>
      */

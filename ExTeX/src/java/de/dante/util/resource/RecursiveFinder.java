@@ -28,9 +28,9 @@ package de.dante.util.resource;
 public interface RecursiveFinder {
 
     /**
-     * ...
+     * Setter for the parent finder.
      *
-     * @param parent ...
+     * @param parent the parent finder
      */
     void setParent(ResourceFinder parent);
 }

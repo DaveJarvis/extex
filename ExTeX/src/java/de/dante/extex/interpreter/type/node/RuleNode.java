@@ -26,7 +26,8 @@ import de.dante.extex.typesetter.NodeVisitor;
 import de.dante.util.GeneralException;
 
 /**
- * ...
+ * The rule node represents a rectangular area on the page filled with some
+ * color.
  *
  * @see "TeX -- The Program [138]"
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>

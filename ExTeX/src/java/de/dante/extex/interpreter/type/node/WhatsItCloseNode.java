@@ -34,6 +34,7 @@ import de.dante.util.framework.logger.LogEnabled;
  * @version $Revision$
  */
 public class WhatsItCloseNode extends WhatsItNode implements LogEnabled {
+
     /**
      * The field <tt>key</tt> contains the key of the outfile to close.
      */
