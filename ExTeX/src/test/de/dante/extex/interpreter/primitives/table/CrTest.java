@@ -19,8 +19,6 @@
 
 package de.dante.extex.interpreter.primitives.table;
 
-import java.util.Properties;
-
 import de.dante.test.ExTeXLauncher;
 
 /**
@@ -32,7 +30,7 @@ import de.dante.test.ExTeXLauncher;
 public class CrTest extends ExTeXLauncher {
 
     /**
-     * Constructor for RelaxTest.
+     * Creates a new object.
      *
      * @param arg the name
      */
@@ -49,10 +47,7 @@ public class CrTest extends ExTeXLauncher {
      */
     public void testLonelyCr() throws Exception {
 
-        Properties properties = System.getProperties();
-        properties.setProperty("extex.config", "nextex");
-
-        runCode(properties,
+        runCode(//--- input code ---
                 "\\catcode`{=1"
                 + "\\catcode`}=2"
                 + "\\catcode`&=4"
@@ -60,7 +55,9 @@ public class CrTest extends ExTeXLauncher {
                 + ""
                 + "\\cr"
                 + "\\end ",
+                //--- log message ---
                 "Misplaced \\cr",
+                //--- output chanel ---
                 null);
     }
 

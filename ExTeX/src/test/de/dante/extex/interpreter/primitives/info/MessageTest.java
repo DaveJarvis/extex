@@ -19,8 +19,6 @@
 
 package de.dante.extex.interpreter.primitives.info;
 
-import java.util.Properties;
-
 import de.dante.test.ExTeXLauncher;
 
 /**
@@ -32,7 +30,7 @@ import de.dante.test.ExTeXLauncher;
 public class MessageTest extends ExTeXLauncher {
 
     /**
-     * Constructor for RelaxTest.
+     * Constructor for JobnameTest.
      *
      * @param arg the name
      */
@@ -49,15 +47,14 @@ public class MessageTest extends ExTeXLauncher {
      */
     public void testMissingBrace1() throws Exception {
 
-        Properties properties = System.getProperties();
-        properties.setProperty("extex.config", "extex");
-
-        runCode(properties,
+        runCode(//--- input code ---
                 "\\catcode`{=1"
                 + "\\catcode`}=2"
                 + "\\message }"
                 + "\\end ",
+                //--- log message ---
                 "Missing `{' inserted",
+                //--- output chanel ---
                 null);
     }
 
@@ -69,13 +66,12 @@ public class MessageTest extends ExTeXLauncher {
      */
     public void testMissingBrace2() throws Exception {
 
-        Properties properties = System.getProperties();
-        properties.setProperty("extex.config", "extex");
-
-        runCode(properties,
+        runCode(//--- input code ---
                 "\\message {"
                 + "\\end ",
+                //--- log message ---
                 "Missing `{' inserted",
+                //--- output chanel ---
                 null);
     }
 
@@ -84,21 +80,18 @@ public class MessageTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
-    /*
     public void testMessage1() throws Exception {
 
-        Properties properties = System.getProperties();
-        properties.setProperty("extex.config", "extex");
-
-        runCode(properties,
+        runCode(//--- input code ---
                 "\\errorstopmode"
                 + "\\catcode`{=1"
                 + "\\catcode`}=2"
                 + "\\message{Hello world!}"
                 + "\\end ",
+                //--- log message ---
                 "Hello world!",
+                //--- output chanel ---
                 "");
     }
-    */
 
 }

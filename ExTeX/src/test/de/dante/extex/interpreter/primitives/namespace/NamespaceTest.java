@@ -32,7 +32,7 @@ import de.dante.test.ExTeXLauncher;
 public class NamespaceTest extends ExTeXLauncher {
 
     /**
-     * Constructor for RelaxTest.
+     * Constructor for NamespaceTest.
      *
      * @param arg the name
      */
@@ -52,6 +52,7 @@ public class NamespaceTest extends ExTeXLauncher {
         properties.setProperty("extex.config", "nextex");
 
         runCode(properties,
+                //--- input code ---
                 "\\catcode`{=1"
                 + "\\catcode`}=2"
                 + "\\escapechar=`\\\\"
@@ -63,7 +64,11 @@ public class NamespaceTest extends ExTeXLauncher {
                 + "\\showthe\namespace"
                 + "\\showthe\\count1"
                 + ""
-                + "\\end ", "", "\n");
+                + "\\end ",
+                //--- log message ---
+                "",
+                //--- output chanel ---
+                "\n");
     }
 
 }

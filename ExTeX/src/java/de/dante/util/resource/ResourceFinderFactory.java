@@ -103,8 +103,8 @@ public class ResourceFinderFactory {
             if (finder instanceof LogEnabled) {
                 ((LogEnabled) finder).enableLogging(logger);
             }
-            if (finder instanceof PropertiesTaker) {
-                ((PropertiesTaker) finder).setProperties(properties);
+            if (finder instanceof PropertyConfigurable) {
+                ((PropertyConfigurable) finder).setProperties(properties);
             }
             list.add(finder);
         }
