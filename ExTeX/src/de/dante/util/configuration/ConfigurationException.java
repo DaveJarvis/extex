@@ -38,7 +38,7 @@ public abstract class ConfigurationException extends Exception {
      *
      * @param message the message string
      */
-    public ConfigurationException(String message) {
+    public ConfigurationException(final String message) {
         super(message);
     }
 
@@ -48,7 +48,7 @@ public abstract class ConfigurationException extends Exception {
      * @param message the message string
      * @param source the name of the file causing this error
      */
-    public ConfigurationException(String message, String source) {
+    public ConfigurationException(final String message, final String source) {
         super(message);
         this.message = message;
         this.source  = source;
@@ -56,11 +56,11 @@ public abstract class ConfigurationException extends Exception {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param message message the message string
      * @param cause the next Throwable in the list
      */
-    public ConfigurationException(String message, Throwable cause) {
+    public ConfigurationException(final String message, final Throwable cause) {
         super(message, cause);
         this.message = message;
     }
