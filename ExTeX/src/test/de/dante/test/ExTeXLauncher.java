@@ -106,9 +106,24 @@ public class ExTeXLauncher extends TestCase {
      */
     private static void prepareProperties(final Properties properties) {
 
-        properties.setProperty("extex.output", "text");
-        properties.setProperty("extex.interaction", "batchmode");
-        properties.setProperty("extex.fonts", "src/font");
+        provide(properties, "extex.output", "text");
+        provide(properties, "extex.interaction", "batchmode");
+        provide(properties, "extex.fonts", "src/font");
+    }
+
+    /**
+     * Set a property if it has not been set yet.
+     *
+     * @param properties th properties o modify
+     * @param name the name of the property
+     * @param value the new value
+     */
+    private static void provide(final Properties properties, final String name,
+            final String value) {
+
+        if (properties.getProperty(name) == null) {
+            properties.setProperty(name, value);
+        }
     }
 
     /**
