@@ -20,6 +20,7 @@
 package de.dante.extex.interpreter.type.node;
 
 import de.dante.extex.interpreter.type.dimen.Dimen;
+import de.dante.extex.interpreter.type.dimen.FixedDimen;
 import de.dante.extex.interpreter.type.glue.Glue;
 import de.dante.extex.typesetter.Node;
 
@@ -147,6 +148,17 @@ public abstract class AbstractNode implements Node {
     public void setWidth(final Dimen aWidth) {
 
         width.set(aWidth);
+    }
+
+    /**
+     * ...
+     * @param denom ...
+     * @param nom ...
+     * @param sum ...
+     *
+     * @see de.dante.extex.typesetter.Node#spread(long, long, FixedDimen)
+     */
+    public void spread(final long nom, final long denom, final FixedDimen sum) {
     }
 
     /**
