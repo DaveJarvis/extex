@@ -37,14 +37,15 @@ public interface CodeToken extends Token {
 
     /**
      * Create a new instance of the token where the namespace is the default
-     * namespace.
+     * namespace and the other attributes are the same as for the current token.
      *
      * @return the new token
      */
     CodeToken cloneInDefaultNamespace();
 
     /**
-     * Create a new instance of the token where the namespace is the given one.
+     * Create a new instance of the token where the namespace is the given one
+     * and the other attributes are the same as for the current token.
      *
      * @param namespace the namespace to use
      *
