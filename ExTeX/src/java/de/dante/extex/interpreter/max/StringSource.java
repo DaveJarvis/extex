@@ -19,7 +19,6 @@
 
 package de.dante.extex.interpreter.max;
 
-import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.scanner.Token;
 import de.dante.extex.scanner.stream.TokenStreamFactory;
@@ -33,7 +32,7 @@ import de.dante.util.configuration.ConfigurationException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class StringSource extends Moritz implements TokenSource {
+public class StringSource extends Moritz {
 
     /**
      * Creates a new object.
