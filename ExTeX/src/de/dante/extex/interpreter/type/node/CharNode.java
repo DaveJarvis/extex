@@ -118,4 +118,11 @@ public class CharNode extends AbstractNode implements Node {
 	public Object visit(final NodeVisitor visitor, final Object value, final Object value2) throws GeneralException {
 		return visitor.visitChar(value, value2);
 	}
+	
+	/**
+	 * @return Returns the character.
+	 */
+	public UnicodeChar getCharacter() {
+		return character;
+	}
 }
