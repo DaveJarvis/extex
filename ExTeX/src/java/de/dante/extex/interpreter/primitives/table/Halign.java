@@ -30,6 +30,8 @@ import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.scanner.Catcode;
 import de.dante.extex.scanner.Token;
 import de.dante.extex.typesetter.Typesetter;
+import de.dante.extex.typesetter.impl.Align;
+import de.dante.extex.typesetter.impl.HAlignListMaker;
 import de.dante.util.GeneralException;
 
 /**
@@ -69,29 +71,6 @@ public class Halign extends AbstractAlign {
     }
 
     /**
-     * ...
-     *
-     * @param preamble ...
-     * @param width the target width or <code>null</code> for the natural width
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter to use
-     *
-     * @throws GeneralException in case of an error
-     */
-    private void applyPreamble(final List preamble, final Dimen width,
-            final Context context, final TokenSource source,
-            final Typesetter typesetter) throws GeneralException {
-
-        for (Token t = source.getToken(); t != null; t = source.getToken()) {
-
-            //TODO execute() unimplemented
-            throw new RuntimeException("unimplemented");
-        }
-        throw new EofHelpingException(printableControlSequence(context));
-    }
-
-    /**
      * @see de.dante.extex.interpreter.type.Code#execute(
      *      de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
@@ -112,7 +91,8 @@ public class Halign extends AbstractAlign {
             throw new EofHelpingException(printableControlSequence(context));
         } else if (t.isa(Catcode.LEFTBRACE)) {
             List preamble = getPreamble(context, source);
-            applyPreamble(preamble, width, context, source, typesetter);
+            typesetter.push(new HAlignListMaker(typesetter.getManager(),
+                    new Align(preamble, width)));
         } else {
             throw new MissingLeftBraceHelpingException(
                     printableControlSequence(context));
