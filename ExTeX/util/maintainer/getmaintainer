@@ -5,8 +5,11 @@
 
 s/^.*@author.*<[aA][^>]*>\([^<]*\)<.*$/\1/
 s/^.*<meta.*name="author".*content="\([^"]*\).*$/\1/
+s/^.*\\author{\([^}]*\)}.*$/\1/
 
 t end
+
+# skip line
 d
 b
 
