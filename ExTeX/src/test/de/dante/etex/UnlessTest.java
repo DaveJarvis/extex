@@ -40,10 +40,10 @@ public class UnlessTest extends TestCase {
     }
 
     /**
-     * Test the primitive <tt>\currengrouplevel</tt>.
+     * Test the primitive <tt>\u005cnless</tt>.
      *
      */
-    public void testCurrentgrouplevel()
+    public void testUnless()
         throws Exception {
 
         TestTeX.test("juunless", "src/test/data/juunless.testtxt");
