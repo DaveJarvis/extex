@@ -18,7 +18,7 @@
  */
 package de.dante.extex.interpreter.context;
 
-import de.dante.extex.hyphenation.HyphenationFactory;
+import de.dante.extex.hyphenation.HyphenationManager;
 
 
 /**
@@ -34,5 +34,5 @@ public interface HyphenationFactoryCarrier {
      *
      * @param hyphenationFactory the hyphenation factory to carry
      */
-    void setHyphenationfactory(HyphenationFactory hyphenationFactory);
+    void setHyphenationManager(HyphenationManager hyphenationFactory);
 }
