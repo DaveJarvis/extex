@@ -435,6 +435,15 @@ public class TokenStreamImpl extends TokenStreamBaseImpl
         return true;
     }
 
+    
+    /**
+     * @see java.lang.Object#toString()
+     */
+    public String toString() {
+
+        return source + ":" + in.getLineNumber() + "[" + pointer + "]:" + line;
+    }
+
     /**
      * @see de.dante.extex.scanner.type.CatcodeVisitor#visitActive(
      *      java.lang.Object, java.lang.Object, java.lang.Object)
