@@ -19,7 +19,7 @@
 package de.dante.extex.documentWriter;
 
 import java.io.IOException;
-import java.io.Writer;
+import java.io.OutputStream;
 
 import de.dante.extex.typesetter.NodeList;
 import de.dante.util.GeneralException;
@@ -47,7 +47,7 @@ public interface DocumentWriter {
      *
      * @param writer the output stream
      */
-    void setWriter(Writer writer);
+    void setOutputStream(OutputStream writer);
 
     /**
      * Getter for the number of pages already produced.

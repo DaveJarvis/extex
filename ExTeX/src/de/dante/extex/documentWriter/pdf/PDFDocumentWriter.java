@@ -22,7 +22,7 @@ package de.dante.extex.documentWriter.pdf;
 // Java
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.Writer;
+import java.io.OutputStream;
 
 import org.apache.fop.apps.FOPException;
 import org.apache.fop.layout.FontInfo;
@@ -52,7 +52,7 @@ public class PDFDocumentWriter implements DocumentWriter {
     /**
      * The field <tt>out</tt> ...
      */
-    private Writer out = null;
+    private OutputStream out = null;
 
     /**
      * The field <tt>shippedPages</tt> ...
@@ -81,9 +81,9 @@ public class PDFDocumentWriter implements DocumentWriter {
     }
 
     /**
-     * @see de.dante.extex.documentWriter.DocumentWriter#setWriter(java.io.Writer)
+     * @see de.dante.extex.documentWriter.DocumentWriter#setOutputStream(java.io.Writer)
      */
-    public void setWriter(final Writer outStream) {
+    public void setOutputStream(final OutputStream outStream) {
         out = outStream;
     }
 
@@ -93,7 +93,7 @@ public class PDFDocumentWriter implements DocumentWriter {
     public void shipout(final NodeList nodes) throws IOException {
         StringBuffer sb = new StringBuffer();
         nodes.toString(sb,"\n");
-        out.write(sb.toString());
+        out.write(sb.toString().getBytes());
         out.write('\n');
         shippedPages++;
     }
