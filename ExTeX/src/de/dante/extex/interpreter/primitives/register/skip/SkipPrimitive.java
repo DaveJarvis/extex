@@ -41,14 +41,14 @@ import de.dante.util.GeneralException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class NumberedSkip extends AbstractSkip implements Theable {
+public class SkipPrimitive extends AbstractSkip implements Theable {
 
     /**
      * Creates a new object.
      *
      * @param name the name for debugging
      */
-    public NumberedSkip(final String name) {
+    public SkipPrimitive(final String name) {
 
         super(name);
     }
