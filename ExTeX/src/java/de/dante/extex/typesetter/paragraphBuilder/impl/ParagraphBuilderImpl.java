@@ -608,7 +608,7 @@ public class ParagraphBuilderImpl
 
                 node.addWidthTo(wd);
                 breakList.add(new BreakPoint(i, w, wd,
-                        (((DiscretionaryNode) node).getPreBreak().length() != 0
+                        (((DiscretionaryNode) node).getPreBreak() != null
                                 ? hyphenpenalty
                                 : exhyphenpenalty)));
                 i = discartNodes(i, len, nodes, wd);
