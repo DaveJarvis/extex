@@ -38,7 +38,7 @@ public class KernNode extends AbstractNode implements Node, Discartable {
     /**
      * The field <tt>kern</tt> contains the width of the kern.
      */
-    private Dimen theKern = new Dimen(); //TODO: maybe elimitae in favour of width
+    private Dimen theKern = new Dimen(); //TODO: eliminate in favour of width?
 
     /**
      * Creates a new object.
