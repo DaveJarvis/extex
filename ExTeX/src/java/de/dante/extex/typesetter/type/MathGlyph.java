@@ -182,8 +182,7 @@ public class MathGlyph implements Noad {
      */
     public void visit(final NoadVisitor visitor) {
 
-        //TODO gene: unimplemented
-        throw new RuntimeException("unimplemented");
+        visitor.visitGlyph(this);
     }
 
 }
