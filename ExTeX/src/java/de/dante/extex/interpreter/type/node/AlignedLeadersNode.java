@@ -39,7 +39,7 @@ public class AlignedLeadersNode extends GlueNode implements Node {
      */
     public AlignedLeadersNode() {
 
-        super();
+        super(null);
     }
 
     /**

@@ -36,7 +36,7 @@ public class CenteredLeadersNode extends GlueNode implements Node {
      * Creates a new object.
      */
     public CenteredLeadersNode() {
-        super();
+        super(null);
     }
 
     /**

@@ -37,7 +37,7 @@ public class ExpandedLeadersNode extends GlueNode implements Node {
      *
      */
     public ExpandedLeadersNode() {
-        super();
+        super(null);
     }
 
     /**
