@@ -42,7 +42,7 @@ public final class Interaction implements Serializable {
     public static final Interaction ERRORSTOPMODE = new Interaction(3);
 
     /** the list for mapping integers to modes */
-    private static final Interaction[] modeMap = {BATCHMODE,
+    private static final Interaction[] MODE_MAP = {BATCHMODE,
                                                      NONSTOPMODE,
                                                      SCROLLMODE,
                                                      ERRORSTOPMODE};
@@ -73,11 +73,11 @@ public final class Interaction implements Serializable {
      */
     public static Interaction get(final int mode)
             throws MainUnknownInteractionException {
-        if (mode < 0 || mode >= modeMap.length) {
+        if (mode < 0 || mode >= MODE_MAP.length) {
             throw new MainUnknownInteractionException(Integer.toString(mode));
         }
 
-        return modeMap[mode];
+        return MODE_MAP[mode];
     }
 
     /**
