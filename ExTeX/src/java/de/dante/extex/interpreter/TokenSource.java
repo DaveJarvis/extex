@@ -186,7 +186,9 @@ public interface TokenSource {
      * <p>
      *  <pre class="syntax">
      *    &lang;token&rang;  </pre>
-     *
+     * </p>
+     * <p>
+     *  A single token depends on the category code of the characters.
      * </p>
      * </doc>
      *
@@ -370,17 +372,6 @@ public interface TokenSource {
      * @throws GeneralException in case of an error
      */
     long scanNumber(Token t) throws GeneralException;
-
-    /**
-     * Skip spaces and if the next non-space character is an equal sign skip it
-     * as well and all spaces afterwards.
-     *
-     * @throws GeneralException in case of an error
-     *
-     * @deprecated TeX does not need this method. Consider using
-     * getOptionalEquals() instead.
-     */
-    void scanOptionalEquals() throws GeneralException;
 
     /**
      * Get the next expanded token form the input streams. If the current input
