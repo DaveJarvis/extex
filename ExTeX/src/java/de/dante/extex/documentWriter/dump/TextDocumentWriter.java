@@ -111,9 +111,11 @@ public class TextDocumentWriter implements DocumentWriter, NodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.documentWriter.DocumentWriter#setParameter(java.lang.String, java.lang.String)
+     * @see de.dante.extex.documentWriter.DocumentWriter#setParameter(
+     *      java.lang.String,
+     *      java.lang.String)
      */
-    public void setParameter(String name, String value) {
+    public void setParameter(final String name, final String value) {
 
         // TODO Auto-generated method stub
 
