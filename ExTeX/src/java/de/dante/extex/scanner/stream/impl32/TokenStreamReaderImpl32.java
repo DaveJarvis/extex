@@ -23,8 +23,8 @@ import java.io.IOException;
 import java.io.LineNumberReader;
 import java.io.Reader;
 
-import de.dante.extex.scanner.CatcodeVisitor;
 import de.dante.extex.scanner.stream.TokenStream;
+import de.dante.extex.scanner.type.CatcodeVisitor;
 
 /**
  * This class contains an implementation of a token stream which is fed from a

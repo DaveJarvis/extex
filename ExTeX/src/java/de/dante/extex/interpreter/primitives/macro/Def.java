@@ -26,12 +26,12 @@ import de.dante.extex.interpreter.exception.helping.HelpingException;
 import de.dante.extex.interpreter.type.AbstractAssignment;
 import de.dante.extex.interpreter.type.Code;
 import de.dante.extex.interpreter.type.tokens.Tokens;
-import de.dante.extex.scanner.CodeToken;
-import de.dante.extex.scanner.LeftBraceToken;
-import de.dante.extex.scanner.MacroParamToken;
-import de.dante.extex.scanner.OtherToken;
-import de.dante.extex.scanner.RightBraceToken;
-import de.dante.extex.scanner.Token;
+import de.dante.extex.scanner.type.CodeToken;
+import de.dante.extex.scanner.type.LeftBraceToken;
+import de.dante.extex.scanner.type.MacroParamToken;
+import de.dante.extex.scanner.type.OtherToken;
+import de.dante.extex.scanner.type.RightBraceToken;
+import de.dante.extex.scanner.type.Token;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.GeneralException;
 

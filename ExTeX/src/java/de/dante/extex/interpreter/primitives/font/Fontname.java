@@ -29,8 +29,8 @@ import de.dante.extex.interpreter.type.ExpandableCode;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.interpreter.type.tokens.Tokens;
-import de.dante.extex.scanner.CatcodeException;
-import de.dante.extex.scanner.TokenFactory;
+import de.dante.extex.scanner.type.CatcodeException;
+import de.dante.extex.scanner.type.TokenFactory;
 import de.dante.extex.typesetter.Typesetter;
 
 /**

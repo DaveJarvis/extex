@@ -18,7 +18,7 @@
  */
 package de.dante.extex.interpreter;
 
-import de.dante.extex.scanner.Catcode;
+import de.dante.extex.scanner.type.Catcode;
 import de.dante.util.UnicodeChar;
 
 /**

@@ -19,7 +19,7 @@
 package de.dante.extex.interpreter.context;
 
 import de.dante.extex.interpreter.type.Code;
-import de.dante.extex.scanner.Token;
+import de.dante.extex.scanner.type.Token;
 
 
 /**

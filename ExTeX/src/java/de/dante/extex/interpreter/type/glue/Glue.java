@@ -26,7 +26,7 @@ import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.dimen.FixedDimen;
 import de.dante.extex.interpreter.type.tokens.Tokens;
-import de.dante.extex.scanner.TokenFactory;
+import de.dante.extex.scanner.type.TokenFactory;
 import de.dante.util.GeneralException;
 
 /**

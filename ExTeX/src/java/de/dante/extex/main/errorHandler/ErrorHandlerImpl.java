@@ -31,7 +31,7 @@ import de.dante.extex.interpreter.exception.ImpossibleException;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.exception.helping.HelpingException;
 import de.dante.extex.main.errorHandler.editHandler.EditHandler;
-import de.dante.extex.scanner.Token;
+import de.dante.extex.scanner.type.Token;
 import de.dante.util.GeneralException;
 import de.dante.util.Locator;
 import de.dante.util.configuration.ConfigurationException;

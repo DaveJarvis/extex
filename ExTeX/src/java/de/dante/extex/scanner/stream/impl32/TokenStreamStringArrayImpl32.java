@@ -22,8 +22,8 @@ package de.dante.extex.scanner.stream.impl32;
 import java.io.IOException;
 import java.nio.charset.CharacterCodingException;
 
-import de.dante.extex.scanner.CatcodeVisitor;
 import de.dante.extex.scanner.stream.TokenStream;
+import de.dante.extex.scanner.type.CatcodeVisitor;
 
 /**
  * This class contains an implementation of a token stream which is fed from a

@@ -22,7 +22,7 @@ package de.dante.extex.interpreter;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.main.errorHandler.editHandler.EditHandler;
-import de.dante.extex.scanner.Token;
+import de.dante.extex.scanner.type.Token;
 import de.dante.util.GeneralException;
 
 /**
