@@ -98,7 +98,6 @@ import de.dante.util.configuration.ConfigurationNoSuchMethodException;
 import de.dante.util.configuration.ConfigurationSyntaxException;
 import de.dante.util.configuration.ConfigurationUnsupportedEncodingException;
 import de.dante.util.file.OutputFactory;
-import de.dante.util.framework.logger.LogEnabled;
 import de.dante.util.observer.NotObservableException;
 import de.dante.util.observer.Observer;
 import de.dante.util.resource.ResourceFinder;
@@ -1614,9 +1613,6 @@ public class ExTeX {
             Typesetter typesetter = makeTypesetter(config
                     .getConfiguration("Typesetter"), docWriter, interpreter
                     .getContext());
-            if (typesetter instanceof LogEnabled) {
-                ((LogEnabled) typesetter).enableLogging(logger);
-            }
             interpreter.setTypesetter(typesetter);
 
             loadFormat(interpreter, finder, properties.getProperty(PROP_FMT),
