@@ -21,6 +21,7 @@ package de.dante.extex.interpreter;
 
 import junit.framework.TestCase;
 import de.dante.extex.documentWriter.DocumentWriter;
+import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.context.TypesettingContext;
 import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.interpreter.type.dimen.Dimen;
@@ -274,6 +275,16 @@ public class Max1 extends TestCase {
         }
 
         /**
+         * @see de.dante.extex.typesetter.Typesetter#tab(
+         *      Context,
+         *      TokenSource, de.dante.extex.scanner.Token)
+         */
+        public void tab(Context context, TokenSource source, final Token t)
+                throws GeneralException {
+
+        }
+
+        /**
          * @see de.dante.extex.typesetter.ListMaker#toggleDisplaymath()
          */
         public void toggleDisplaymath() {
@@ -342,16 +353,6 @@ public class Max1 extends TestCase {
          *      de.dante.extex.scanner.Token)
          */
         public void treatSupMark(final TypesettingContext context, final Token t)
-                throws GeneralException {
-
-        }
-
-        /**
-         * @see de.dante.extex.typesetter.Typesetter#treatTabMark(
-         *      de.dante.extex.interpreter.context.TypesettingContext,
-         *      de.dante.extex.scanner.Token)
-         */
-        public void treatTabMark(final TypesettingContext context, final Token t)
                 throws GeneralException {
 
         }

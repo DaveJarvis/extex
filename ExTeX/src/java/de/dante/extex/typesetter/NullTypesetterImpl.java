@@ -21,6 +21,7 @@ package de.dante.extex.typesetter;
 
 import de.dante.extex.documentWriter.DocumentWriter;
 import de.dante.extex.interpreter.TokenSource;
+import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.context.TypesettingContext;
 import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.interpreter.type.dimen.Dimen;
@@ -35,6 +36,7 @@ import de.dante.extex.typesetter.type.noad.Noad;
 import de.dante.util.GeneralException;
 import de.dante.util.UnicodeChar;
 import de.dante.util.configuration.Configuration;
+
 
 /**
  * The dummy typesetter which does nothing but provide the appropriate
@@ -312,11 +314,11 @@ public class NullTypesetterImpl implements Typesetter {
     }
 
     /**
-     * @see de.dante.extex.typesetter.Typesetter#treatTabMark(
-     *      de.dante.extex.interpreter.context.TypesettingContext,
-     *      de.dante.extex.scanner.Token)
+     * @see de.dante.extex.typesetter.Typesetter#tab(
+     *      Context,
+     *      TokenSource, de.dante.extex.scanner.Token)
      */
-    public void treatTabMark(final TypesettingContext context, final Token t)
+    public void tab(final Context context, TokenSource source, final Token t)
             throws GeneralException {
 
     }
