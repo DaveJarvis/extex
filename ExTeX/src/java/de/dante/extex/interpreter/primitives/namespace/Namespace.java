@@ -74,14 +74,6 @@ public class Namespace extends AbstractAssignment
     }
 
     /**
-     * ...
-     *
-     * @param prefix
-     * @param context
-     * @param source
-     * @param typesetter
-     * @throws GeneralException
-     *
      * @see de.dante.extex.interpreter.type.Code#execute(
      *      de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
@@ -97,14 +89,6 @@ public class Namespace extends AbstractAssignment
     }
 
     /**
-     * ...
-     *
-     * @param prefix
-     * @param context
-     * @param source
-     * @param typesetter
-     * @throws GeneralException
-     *
      * @see de.dante.extex.interpreter.type.ExpandableCode#expand(
      *      de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
@@ -119,14 +103,6 @@ public class Namespace extends AbstractAssignment
     }
 
     /**
-     * ...
-     *
-     * @param context
-     * @param source
-     * @param typesetter
-     * @return
-     * @throws GeneralException
-     *
      * @see de.dante.extex.interpreter.type.Theable#the(
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource,
