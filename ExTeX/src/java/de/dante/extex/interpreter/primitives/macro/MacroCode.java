@@ -72,7 +72,7 @@ public class MacroCode extends AbstractCode
     /**
      * The field <tt>numberOfParams</tt> contains the number of parameters used.
      */
-    private int numberOfParams = 10;
+    private int numberOfParams = 10; //TODO: adjust to the correct value
 
     /**
      * The field <tt>outerP</tt> contains the indicator for outer definitions.
