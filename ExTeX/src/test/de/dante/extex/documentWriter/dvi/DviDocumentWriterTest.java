@@ -215,7 +215,7 @@ public class DviDocumentWriterTest extends TestCase {
      *
      * @exception Exception if an error occurs
      */
-    public void testMagnifikation() throws Exception {
+    public void testMagnification() throws Exception {
         boolean gotRangeException = false;
 
         checkMagnification(-1); // TODO
