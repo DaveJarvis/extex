@@ -23,7 +23,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-import de.dante.extex.hyphenation.impl.BaseHyphenationTable;
+import de.dante.extex.hyphenation.liang.LiangsHyphenationTable;
 import de.dante.util.framework.AbstractFactory;
 
 /**
@@ -66,7 +66,7 @@ public class HyphenationFactory extends AbstractFactory implements Serializable 
 
         HyphenationTable table = (HyphenationTable) (tables.get(index));
         if (table == null) {
-            table = new BaseHyphenationTable();
+            table = new LiangsHyphenationTable();
             tables.put(index, table);
         }
         return table;
