@@ -31,7 +31,7 @@ import de.dante.util.GeneralException;
  * <doc name="mathinner">
  * <h3>The Primitive <tt>\mathinner</tt></h3>
  * <p>
- *  ...
+ *  TODO missing documentation
  * </p>
  * <p>
  *  The formal description of this primitive is the following:
@@ -72,7 +72,7 @@ public class Mathinner extends AbstractMathCode {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        //TODO unimplemented
+        //TODO execute() unimplemented
         throw new RuntimeException("unimplemented");
         //return true;
     }

@@ -37,7 +37,7 @@ import de.dante.util.UnicodeChar;
  * <doc name="catcode">
  * <h3>The Primitive <tt>\catcode</tt></h3>
  * <p>
- *  ...
+ *  TODO missing documentation
  * </p>
  * <p>
  *  The assignment is controlled by the modifier <tt>\global</tt> and the

@@ -43,7 +43,7 @@ import de.dante.util.GeneralException;
  * <doc name="macros" type="howto">
  * <h3>The Macro Code</h3>
  * <p>
- *  ...
+ *  TODO missing documentation
  * </p>
  * </doc>
  *
@@ -212,7 +212,7 @@ public class MacroCode extends AbstractCode
     }
 
     /**
-     * ...
+     * match a single parameter.
      *
      * @param context the processor context
      * @param source the source for new tokens

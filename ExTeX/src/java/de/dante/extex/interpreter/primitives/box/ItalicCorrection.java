@@ -33,7 +33,7 @@ import de.dante.util.GeneralException;
  * <doc name="/">
  * <h3>The Primitive <tt>\/</tt></h3>
  * <p>
- *  ...
+ *  TODO missing documentation
  * </p>
  * <p>
  *  The formal description of this primitive is the following:
@@ -89,7 +89,7 @@ public class ItalicCorrection extends AbstractCode {
                 typesetter.add(new KernNode(ic));
             }
             */
-            // TODO unimplemented
+            //TODO execute() unimplemented
             throw new RuntimeException("unimplemented");
         }
         return true;

@@ -36,7 +36,7 @@ import de.dante.util.GeneralException;
  * <doc name="inputlineno">
  * <h3>The Primitive <tt>\inputlineno</tt></h3>
  * <p>
- *  ...
+ *  TODO missing documentation
  * </p>
  * <p>
  *  Examples:

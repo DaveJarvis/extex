@@ -134,7 +134,7 @@ public class DisplaymathListMaker extends AbstractListMaker
     public void par() throws GeneralException {
 
         getManager().endParagraph();
-        throw new MathHelpingException();
+        throw new MathHelpingException("\\par"); //TODO other string?
     }
 
     /**

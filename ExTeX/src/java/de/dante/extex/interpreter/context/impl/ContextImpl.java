@@ -192,7 +192,10 @@ public class ContextImpl
     private transient HyphenationManager hyphenationManager = new HyphenationManagerImpl();
 
     /**
-     * The field <tt>id</tt> contains the ...
+     * The field <tt>id</tt> contains the is string.
+     * The id string is the classification of the
+     * original source as given in the fmt file. The id string can be
+     * <code>null</code> if not known yet.
      */
     private String id = null;
 
@@ -510,7 +513,7 @@ public class ContextImpl
 
     /**
      * Getter for the id string. The id string is the classification of the
-     * original source like given in the fmt file. The id string can be
+     * original source as given in the fmt file. The id string can be
      * <code>null</code> if not known yet.
      *
      * @return the id string

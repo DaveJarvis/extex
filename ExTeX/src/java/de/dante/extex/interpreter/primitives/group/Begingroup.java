@@ -34,7 +34,7 @@ import de.dante.util.configuration.ConfigurationException;
  * <doc name="begingroup">
  * <h3>The Primitive <tt>\begingroup</tt></h3>
  * <p>
- *  ...
+ *  TODO missing documentation
  * </p>
  * <p>
  *  The formal description of this primitive is the following:

@@ -34,7 +34,7 @@ import de.dante.util.GeneralException;
  * <doc name="lastnodetype">
  * <h3>The Primitive <tt>\lastnodetype</tt></h3>
  * <p>
- *  ...
+ *  TODO missing documentation
  * </p>
  * <p>
  *  Examples:

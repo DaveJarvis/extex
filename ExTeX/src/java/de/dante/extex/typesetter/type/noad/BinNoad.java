@@ -29,7 +29,6 @@ public class BinNoad extends AbstractNoad {
 
     /**
      * Creates a new object.
-     *
      */
     public BinNoad() {
 

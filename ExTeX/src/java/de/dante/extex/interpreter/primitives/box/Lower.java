@@ -39,7 +39,7 @@ import de.dante.util.GeneralException;
  * <doc name="lower">
  * <h3>The Primitive <tt>\lower</tt></h3>
  * <p>
- *  ...
+ *  TODO missing documentation
  * </p>
  * <p>
  *  The formal description of this primitive is the following:

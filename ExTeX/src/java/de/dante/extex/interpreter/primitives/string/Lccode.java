@@ -38,7 +38,7 @@ import de.dante.util.UnicodeChar;
  * <doc name="lccode">
  * <h3>The Primitive <tt>\lccode</tt></h3>
  * <p>
- *  ...
+ *  TODO missing documentation
  * </p>
  * <p>
  *  The formal description of this primitive is the following:

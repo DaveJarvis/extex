@@ -52,7 +52,7 @@ public interface Manager {
     void push(ListMaker listMaker) throws GeneralException;
 
     /**
-     * ...
+     * End the current paragraph.
      *
      * @throws GeneralException in case of an error
      */

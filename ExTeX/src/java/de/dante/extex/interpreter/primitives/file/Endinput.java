@@ -33,7 +33,7 @@ import de.dante.util.GeneralException;
  * <doc name="endinput">
  * <h3>The Primitive <tt>\endinput</tt></h3>
  * <p>
- *  ...
+ *  TODO missing documentation
  * </p>
  * <p>
  *  The formal description of this primitive is the following:

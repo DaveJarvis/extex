@@ -39,7 +39,7 @@ import de.dante.util.UnicodeChar;
  * <doc name="uccode">
  * <h3>The Primitive <tt>&#x5c;uccode</tt></h3>
  * <p>
- *  ...
+ *  TODO missing documentation
  * </p>
  * <p>
  *  The formal description of this primitive is the following:

@@ -45,7 +45,7 @@ import de.dante.util.UnicodeChar;
  * <doc name="accent">
  * <h3>The Primitive <tt>\accent</tt></h3>
  * <p>
- *  ...
+ *  TODO missing documentation
  * </p>
  * <p>
  *  The formal description of this primitive is the following:

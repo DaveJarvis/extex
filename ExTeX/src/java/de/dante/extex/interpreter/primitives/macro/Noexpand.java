@@ -34,7 +34,7 @@ import de.dante.util.GeneralException;
  * <doc name="noexpand">
  * <h3>The Primitive <tt>\noexpand</tt></h3>
  * <p>
- *  ...
+ *  TODO missing documentation
  * </p>
  * <p>
  *  The formal description of this primitive is the following:
@@ -90,7 +90,7 @@ public class Noexpand extends AbstractCode implements ExpandableCode {
             throws GeneralException {
 
         //Token t = source.getToken();
-        // TODO unimplemented
+        //TODO execute() unimplemented
         throw new RuntimeException("unimplemented");
     }
 

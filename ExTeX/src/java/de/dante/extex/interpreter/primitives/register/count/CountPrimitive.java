@@ -42,7 +42,7 @@ import de.dante.util.GeneralException;
  * <doc name="count">
  * <h3>The Primitive <tt>\count</tt></h3>
  * <p>
- *  ...
+ *  TODO missing documentation
  * </p>
  * <p>
  *  The formal description of this primitive is the following:

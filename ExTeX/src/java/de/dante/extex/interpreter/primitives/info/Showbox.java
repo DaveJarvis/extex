@@ -33,7 +33,7 @@ import de.dante.util.GeneralException;
  * <doc name="showbox">
  * <h3>The Primitive <tt>\showbox</tt></h3>
  * <p>
- *  ...
+ *  TODO missing documentation
  * </p>
  * <p>
  *  The formal description of this primitive is the following:
@@ -82,7 +82,7 @@ public class Showbox extends AbstractBox {
         if (b == null) {
             source.update("message", "\\" + key + "=void");
         } else {
-            // TODO unimplemented
+            //TODO execute() unimplemented
             throw new RuntimeException("unimplemented");
         }
         source.update("message", getLocalizer().format("TTP.Show.OK"));

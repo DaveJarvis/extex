@@ -61,7 +61,7 @@ public abstract class AbstractFileCode extends AbstractCode
     }
 
     /**
-     * ...
+     * Configure an object according to a given Configuration.
      *
      * @param config the configuration to use
      *

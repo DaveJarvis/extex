@@ -753,7 +753,7 @@ public class Max extends Moritz
         Token next = getToken();
 
         if (next == null) {
-            throw new MathHelpingException();
+            throw new MathHelpingException(token.toString());
         } else if (next.isa(Catcode.MATHSHIFT)) {
             typesetter.toggleDisplaymath();
         } else {
@@ -849,7 +849,7 @@ public class Max extends Moritz
             throw new RuntimeException("unimplemented");
         }
 
-        throw new MathHelpingException();
+        throw new MathHelpingException(token.toString());
     }
 
     /**
@@ -875,7 +875,7 @@ public class Max extends Moritz
             throw new RuntimeException("unimplemented");
         }
 
-        throw new MathHelpingException();
+        throw new MathHelpingException(token.toString());
     }
 
     /**

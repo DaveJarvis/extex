@@ -33,7 +33,7 @@ import de.dante.util.GeneralException;
  * <doc name="xleaders">
  * <h3>The Primitive <tt>\xleaders</tt></h3>
  * <p>
- *  ...
+ *  TODO missing documentation
  * </p>
  * <p>
  *  The formal description of this primitive is the following:
@@ -74,7 +74,7 @@ public class Xleaders extends AbstractCode  {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        // TODO unimplemented
+        //TODO execute() unimplemented
         throw new RuntimeException("unimplemented");
         //return false;
     }

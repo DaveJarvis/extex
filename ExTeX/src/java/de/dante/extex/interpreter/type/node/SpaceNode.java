@@ -34,9 +34,10 @@ import de.dante.util.GeneralException;
 public class SpaceNode extends GlueNode implements Node {
 
     /**
-     * The field <tt>DEVELOP</tt> contains the ...
+     * The field <tt>DEVELOP</tt> contains the indicator that part of the code
+     * is used in the development version.
      */
-    private boolean DEVELOP = true;
+    private static final boolean DEVELOP = true;
 
     /**
      * The field <tt>size</tt> contains the width of the space to insert.

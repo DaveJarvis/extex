@@ -76,7 +76,7 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
      * This method parses the following syntactic entity:
      * <pre class="syntax">
      *   &lang;dimen&rang; </pre>
-     * ...
+     *  TODO missing syntax documentation
      * </doc>
      *
      *
@@ -177,13 +177,14 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
     }
 
     /**
-     * ...
+     * Getter for the localizer.
+     * The localizer is initialized from the name of the Dimen class.
      *
-     * @return ...
+     * @return the localizer
      */
     protected Localizer getLocalizer() {
 
-        return LocalizerFactory.getLocalizer(Box.class.getName());
+        return LocalizerFactory.getLocalizer(Dimen.class.getName());
     }
 
     /**

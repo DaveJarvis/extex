@@ -36,7 +36,7 @@ import de.dante.util.GeneralException;
  * <doc name="openout">
  * <h3>The Primitive <tt>\openout</tt></h3>
  * <p>
- *  ...
+ *  TODO missing documentation
  * </p>
  * </doc>
  *

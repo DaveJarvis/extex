@@ -37,7 +37,7 @@ import de.dante.util.GeneralException;
  * <doc name="badness">
  * <h3>The Primitive <tt>\badness</tt></h3>
  * <p>
- *  ...
+ *  TODO missing documentation
  * </p>
  * <p>
  *  Examples:

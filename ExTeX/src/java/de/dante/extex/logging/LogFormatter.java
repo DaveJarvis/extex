@@ -76,7 +76,7 @@ public class LogFormatter extends Formatter {
         }
 
         if (col >= LINE_LENGTH) {
-            //TODO
+            //TODO improve
             msg.append('\n');
             col = 0;
         }

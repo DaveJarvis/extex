@@ -36,7 +36,7 @@ import de.dante.util.GeneralException;
  * <doc name="vfill">
  * <h3>The Primitive <tt>\vfill</tt></h3>
  * <p>
- *  ...
+ *  TODO missing documentation
  * </p>
  * <p>
  *  The formal description of this primitive is the following:
@@ -58,7 +58,7 @@ import de.dante.util.GeneralException;
 public class Vfill extends AbstractCode {
 
     /**
-     * The field <tt>FILL</tt> contains the ...
+     * The field <tt>FILL</tt> contains the amount of 1 fill.
      */
     private static final Glue FILL = new Glue(GlueComponent.ZERO,
             GlueComponent.ONE_FILL, GlueComponent.ZERO);

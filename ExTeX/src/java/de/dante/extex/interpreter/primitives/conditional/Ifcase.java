@@ -37,7 +37,7 @@ import de.dante.util.framework.i18n.LocalizerFactory;
  * <doc name="ifcase">
  * <h3>The Primitive <tt>\ifcase</tt></h3>
  * <p>
- *  ...
+ *  TODO missing documentation
  * </p>
  *  <pre class="syntax">
  *    &lang;ifcase&rang;

@@ -22,7 +22,11 @@ package de.dante.extex.i18n;
 import de.dante.util.framework.i18n.LocalizerFactory;
 
 /**
- * ...
+ * This exception is raised when an unexpected end of file is encountered.
+ * <p>
+ * The localization format is taken from the resource bundle of the parent
+ * class under the key <tt>UnexpectedEofIn</tt>.
+ * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -36,8 +40,7 @@ public class EofHelpingException extends HelpingException {
      */
     public EofHelpingException(final String macro) {
 
-        super(LocalizerFactory
-                .getLocalizer(HelpingException.class.getName()),
+        super(LocalizerFactory.getLocalizer(HelpingException.class.getName()),
                 "UnexpectedEofIn", macro);
     }
 

@@ -53,7 +53,7 @@ public class PanicException extends GeneralException {
     private String arg3;
 
     /**
-     * The field <tt>localizer</tt> contains the ...
+     * The field <tt>localizer</tt> contains the localizer.
      */
     private Localizer localizer;
 

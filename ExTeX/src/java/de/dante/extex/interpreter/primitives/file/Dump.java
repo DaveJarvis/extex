@@ -49,7 +49,7 @@ import de.dante.util.GeneralException;
  * The primitive can be used outside of any group only.
  * </p>
  * <p>
- *  ...
+ *  TODO missing documentation
  * </p>
  * <p>
  *  The formal description of this primitive is the following:

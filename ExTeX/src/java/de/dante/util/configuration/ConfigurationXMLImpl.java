@@ -690,7 +690,8 @@ public class ConfigurationXMLImpl implements Configuration {
      *  contains a syntax error.
      * @throws ConfigurationNotFoundException in case that the specified
      *  configuration can not be found.
-     * @throws ConfigurationInvalidResourceException in case that ...
+     * @throws ConfigurationInvalidResourceException in case that the resource
+     *  is invalid
      *
      * @see de.dante.util.configuration.Configuration#iterator(java.lang.String)
      */

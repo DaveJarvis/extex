@@ -95,8 +95,9 @@ public interface Node extends Knot {
     /**
      * Adjust the width of a flexible node. This method is a noop for any but
      * the flexible nodes.
-     * @param width ...
-     * @param sum TODO
+     *
+     * @param width the desired with
+     * @param sum the total sum of the glues
      */
     void spread(FixedDimen width, FixedGlueComponent sum);
 

@@ -32,7 +32,7 @@ import de.dante.util.GeneralException;
  * <doc name="ifcat">
  * <h3>The Primitive <tt>\ifcat</tt></h3>
  * <p>
- *  ...
+ *  TODO missing documentation
  * </p>
  *  <pre class="syntax">
  *    &lang;ifcat&rang;

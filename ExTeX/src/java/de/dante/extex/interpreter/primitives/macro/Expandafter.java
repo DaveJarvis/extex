@@ -35,7 +35,7 @@ import de.dante.util.GeneralException;
  * <doc name="expandafter">
  * <h3>The Primitive <tt>\expandafter</tt></h3>
  * <p>
- *  ...
+ *  TODO missing documentation
  * </p>
  * <p class="TeXbook">
  * TeX first reads the token that comes immediately after <tt>\expandafter</tt>,

@@ -48,7 +48,8 @@ import de.dante.util.GeneralException;
 public class GlueNode extends AbstractNode implements Node, Discartable {
 
     /**
-     * The field <tt>DEVELOP</tt> contains the ...
+     * The field <tt>DEVELOP</tt> contains the indicator that the development
+     * is not finished.
      */
     private static final boolean DEVELOP = true;
 

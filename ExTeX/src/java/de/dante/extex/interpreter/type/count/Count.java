@@ -25,7 +25,6 @@ import de.dante.extex.i18n.ArithmeticOverflowHelpingException;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.type.Code;
-import de.dante.extex.interpreter.type.box.Box;
 import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.scanner.CodeToken;
 import de.dante.extex.scanner.Token;
@@ -81,7 +80,7 @@ public class Count implements Serializable, FixedCount {
         Token t = source.getNonSpace();
 
         if (t == null) {
-            // TODO eof
+            // TODO report eof?
             return 0;
         }
 
@@ -168,13 +167,14 @@ public class Count implements Serializable, FixedCount {
     }
 
     /**
-     * ...
+     * Getter for the localizer.
+     * The localizer is initialized from the name of the Count class.
      *
-     * @return ...
+     * @return the localizer
      */
     protected Localizer getLocalizer() {
 
-        return LocalizerFactory.getLocalizer(Box.class.getName());
+        return LocalizerFactory.getLocalizer(Count.class.getName());
     }
 
     /**

@@ -35,7 +35,7 @@ import de.dante.util.GeneralException;
  * <doc name="ifdim">
  * <h3>The Primitive <tt>\ifdim</tt></h3>
  * <p>
- *  ...
+ *  TODO missing documentation
  * </p>
  * <p>
  *  The formal description of this primitive is the following:

@@ -36,7 +36,7 @@ import de.dante.util.GeneralException;
  * <doc name="hss">
  * <h3>The Primitive <tt>\hss</tt></h3>
  * <p>
- *  ...
+ *  TODO missing documentation
  * </p>
  * <p>
  *  The formal description of this primitive is the following:

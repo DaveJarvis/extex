@@ -79,9 +79,9 @@ public abstract class AbstractListMaker implements ListMaker {
     }
 
     /**
-     * ...
+     * Getter for the localizer.
      *
-     * @return ...
+     * @return the localizer
      */
     protected Localizer getMyLocalizer() {
 
@@ -125,9 +125,9 @@ public abstract class AbstractListMaker implements ListMaker {
     }
 
     /**
-     * ...
+     * Getter for the localizer.
      *
-     * @return ...
+     * @return the localizer
      */
     protected Localizer getLocalizer() {
 

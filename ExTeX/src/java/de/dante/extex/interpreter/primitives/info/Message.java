@@ -33,7 +33,7 @@ import de.dante.util.GeneralException;
  * <doc name="message">
  * <h3>The Primitive <tt>\message</tt></h3>
  * <p>
- *  ...
+ *  TODO missing documentation
  * </p>
  * </doc>
  *

@@ -34,7 +34,7 @@ import de.dante.util.UnicodeChar;
  * <doc name="skewchar">
  * <h3>The Primitive <tt>\skewchar</tt></h3>
  * <p>
- *  ...
+ *  TODO missing documentation
  * </p>
  * <p>
  *  The formal description of this primitive is the following:

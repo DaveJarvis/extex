@@ -40,7 +40,7 @@ import de.dante.util.GeneralException;
  * <doc name="wd">
  * <h3>The Primitive <tt>\wd</tt></h3>
  * <p>
- *  ...
+ *  TODO missing documentation
  * </p>
  * <p>
  *  The formal description of this primitive is the following:

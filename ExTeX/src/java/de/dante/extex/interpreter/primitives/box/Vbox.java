@@ -35,7 +35,7 @@ import de.dante.util.GeneralException;
  * <doc name="vbox">
  * <h3>The Primitive <tt>\vbox</tt></h3>
  * <p>
- *  ...
+ *  TODO missing documentation
  * </p>
  * <p>
  *  The contents of the toks register <tt>\everyvbox</tt> is inserted at the
