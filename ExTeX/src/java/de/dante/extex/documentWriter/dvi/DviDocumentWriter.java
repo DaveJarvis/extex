@@ -166,7 +166,7 @@ public class DviDocumentWriter implements DocumentWriter {
             dviWriter.writeVerticalSpace(nodes.getShift());
             while (iterator.hasNext()) {
                 Node node = iterator.next();
-                node.visit(visitor, node, null);
+                node.visit(visitor, node);
             }
             dviWriter.restoreCurrentPositions();
         }
@@ -451,7 +451,7 @@ public class DviDocumentWriter implements DocumentWriter {
         mode = Mode.VERTICAL;
         dviWriter.beginPage();
 
-        nodes.visit(visitor, nodes, null);
+        nodes.visit(visitor, nodes);
 
         dviWriter.endPage();
 
