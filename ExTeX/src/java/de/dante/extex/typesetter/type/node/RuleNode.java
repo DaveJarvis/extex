@@ -42,16 +42,6 @@ public class RuleNode extends AbstractNode implements Node {
     private TypesettingContext context;
 
     /**
-     * The field <tt>move</tt> contains the ...
-     */
-    private Dimen move = new Dimen(0);
-
-    /**
-     * The field <tt>shift</tt> contains the ...
-     */
-    private Dimen shift = new Dimen(0);
-
-    /**
      * Creates a new object.
      *
      * @param width the width of the rule
@@ -76,46 +66,6 @@ public class RuleNode extends AbstractNode implements Node {
     public TypesettingContext getContext() {
 
         return context;
-    }
-
-    /**
-     * Getter for move.
-     *
-     * @return the move
-     */
-    public Dimen getMove() {
-
-        return this.move;
-    }
-
-    /**
-     * Getter for shift.
-     *
-     * @return the shift
-     */
-    public Dimen getShift() {
-
-        return this.shift;
-    }
-
-    /**
-     * Setter for move.
-     *
-     * @param move the move to set
-     */
-    public void setMove(Dimen move) {
-
-        this.move = move;
-    }
-
-    /**
-     * Setter for shift.
-     *
-     * @param shift the shift to set
-     */
-    public void setShift(Dimen shift) {
-
-        this.shift = shift;
     }
 
     /**
