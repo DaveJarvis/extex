@@ -27,4 +27,10 @@ package de.dante.util.framework.i18n;
  */
 public interface Localizable {
 
+    /**
+     * ...
+     *
+     * @param localizer the localizer to use
+     */
+    void enableLocalization(Localizer localizer);
 }

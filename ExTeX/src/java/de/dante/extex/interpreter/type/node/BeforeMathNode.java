@@ -19,7 +19,6 @@
 
 package de.dante.extex.interpreter.type.node;
 
-import de.dante.extex.i18n.Messages;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.typesetter.Discartable;
 import de.dante.extex.typesetter.Node;
@@ -79,11 +78,12 @@ public class BeforeMathNode extends AbstractNode implements Node, Discartable {
      */
     public void toString(final StringBuffer sb, final String prefix) {
 
-        sb.append(Messages.format("TTP.BeforeMathNode.Text"));
         Dimen width = getWidth();
-        if (!width.eq(Dimen.ZERO_PT)) {
-            sb.append(Messages.format("TTP.MathNode.Surrounded"));
-            width.toString(sb);
+        if (width.eq(Dimen.ZERO_PT)) {
+            sb.append(getLocalizer().format("BeforeMathNode.Text"));
+        } else {
+            sb.append(getLocalizer().format("BeforeMathNode.Surrounded",
+                    width.toString()));
         }
     }
 

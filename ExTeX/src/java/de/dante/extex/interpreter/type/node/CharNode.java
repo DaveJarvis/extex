@@ -129,7 +129,9 @@ public class CharNode extends AbstractNode implements Node {
      */
     public String toString() {
 
-        return this.character.toString();
+        return getLocalizer().format("CharNode.Text",
+                typesettingContext.getFont().getFontName(),
+                character.toString());
     }
 
     /**
@@ -138,16 +140,17 @@ public class CharNode extends AbstractNode implements Node {
      */
     public void toString(final StringBuffer sb, final String prefix) {
 
-        sb.append('\\');
-        sb.append(typesettingContext.getFont().getFontName());
-        sb.append(' ');
-        sb.append(character.toString());
-        sb.append(" (");
-        sb.append(getHeight().toString());
-        sb.append("+");
-        sb.append(getDepth().toString());
-        sb.append(")x");
-        sb.append(getWidth().toString());
+        sb.append(getLocalizer().format("CharNode.Text",
+                typesettingContext.getFont().getFontName(),
+                character.toString()));
+        if (false) {
+            sb.append(" (");
+            sb.append(getHeight().toString());
+            sb.append("+");
+            sb.append(getDepth().toString());
+            sb.append(")x");
+            sb.append(getWidth().toString());
+        }
     }
 
     /**

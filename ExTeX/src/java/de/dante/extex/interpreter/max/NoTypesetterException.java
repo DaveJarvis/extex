@@ -16,10 +16,10 @@
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
+
 package de.dante.extex.interpreter.max;
 
 import de.dante.util.configuration.ConfigurationException;
-import de.dante.extex.i18n.Messages;
 
 /**
  * This Exception is thrown when a configuration is requested with the path
@@ -53,7 +53,7 @@ public class NoTypesetterException extends ConfigurationException {
      */
     public String getMessage() {
 
-        return Messages.format("ConfigurationNoTypesetterException.Text",
-                               message);
+        return getLocalizer().format("ConfigurationNoTypesetterException.Text",
+                message);
     }
 }

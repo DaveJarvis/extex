@@ -19,7 +19,6 @@
 
 package de.dante.extex.scanner;
 
-import de.dante.extex.i18n.Messages;
 
 /**
  * This class represents a cr token.
@@ -61,7 +60,7 @@ public class CrToken extends AbstractToken implements Token {
      */
     public String toString() {
 
-        return Messages.format("CrToken.Text", getValue());
+        return getLocalizer().format("CrToken.Text", getValue());
     }
 
     /**
@@ -73,7 +72,7 @@ public class CrToken extends AbstractToken implements Token {
      */
     public void toString(final StringBuffer sb) {
 
-        sb.append(Messages.format("CrToken.Text", getValue()));
+        sb.append(getLocalizer().format("CrToken.Text", getValue()));
     }
 
     /**

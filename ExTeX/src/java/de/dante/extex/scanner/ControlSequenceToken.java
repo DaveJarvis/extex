@@ -19,7 +19,6 @@
 
 package de.dante.extex.scanner;
 
-import de.dante.extex.i18n.Messages;
 import de.dante.extex.interpreter.Namespace;
 
 /**
@@ -136,7 +135,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      */
     public String toString() {
 
-        return Messages.format("ControlSequenceToken.Text", getValue());
+        return getLocalizer().format("ControlSequenceToken.Text", getValue());
     }
 
     /**
@@ -148,7 +147,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      */
     public void toString(final StringBuffer sb) {
 
-        sb.append(Messages.format("ControlSequenceToken.Text", getValue()));
+        sb.append(getLocalizer().format("ControlSequenceToken.Text", getValue()));
     }
 
     /**

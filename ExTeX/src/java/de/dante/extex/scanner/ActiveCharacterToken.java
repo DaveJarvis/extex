@@ -22,6 +22,8 @@ package de.dante.extex.scanner;
 import de.dante.extex.i18n.Messages;
 import de.dante.extex.interpreter.Namespace;
 import de.dante.util.UnicodeChar;
+import de.dante.util.framework.i18n.Localizable;
+import de.dante.util.framework.i18n.Localizer;
 
 /**
  * This class represents an active character token.
@@ -37,6 +39,7 @@ import de.dante.util.UnicodeChar;
  * @version $Revision$
  */
 public class ActiveCharacterToken extends AbstractToken implements CodeToken {
+
     /**
      * The constant <tt>HASH_FACTOR</tt> contains the factor used to construct
      * the hash code.
@@ -132,7 +135,7 @@ public class ActiveCharacterToken extends AbstractToken implements CodeToken {
      */
     public String toString() {
 
-        return Messages.format("ActiveCharacterToken.Text", getValue());
+        return getLocalizer().format("ActiveCharacterToken.Text", getValue());
     }
 
     /**
@@ -144,7 +147,7 @@ public class ActiveCharacterToken extends AbstractToken implements CodeToken {
      */
     public void toString(final StringBuffer sb) {
 
-        sb.append(Messages.format("ActiveCharacterToken.Text", getValue()));
+        sb.append(getLocalizer().format("ActiveCharacterToken.Text", getValue()));
     }
 
     /**

@@ -18,7 +18,6 @@
  */
 package de.dante.extex.scanner;
 
-import de.dante.extex.i18n.Messages;
 
 
 /**
@@ -44,7 +43,7 @@ public class CatcodeWrongLengthException extends CatcodeException {
      */
     public String getMessage() {
 
-        return Messages.format("CatcodeWrongLengthException.Text", //
+        return getLocalizer().format("CatcodeWrongLengthException.Text", //
                                super.getMessage());
     }
 

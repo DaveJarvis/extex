@@ -19,7 +19,6 @@
 
 package de.dante.extex.scanner;
 
-import de.dante.extex.i18n.Messages;
 import de.dante.util.UnicodeChar;
 
 /**
@@ -62,7 +61,7 @@ public class MacroParamToken extends AbstractToken implements Token {
      */
     public String toString() {
 
-        return Messages.format("MacroParamToken.Text", getValue());
+        return getLocalizer().format("MacroParamToken.Text", getValue());
     }
 
     /**
@@ -74,7 +73,7 @@ public class MacroParamToken extends AbstractToken implements Token {
      */
     public void toString(final StringBuffer sb) {
 
-        sb.append(Messages.format("MacroParamToken.Text", getValue()));
+        sb.append(getLocalizer().format("MacroParamToken.Text", getValue()));
     }
 
     /**
