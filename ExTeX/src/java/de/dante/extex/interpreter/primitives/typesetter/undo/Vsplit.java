@@ -19,6 +19,9 @@
 
 package de.dante.extex.interpreter.primitives.typesetter.undo;
 
+import javax.naming.OperationNotSupportedException;
+
+import de.dante.extex.i18n.HelpingException;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
@@ -110,10 +113,22 @@ public class Vsplit extends AbstractBox implements Boxable {
             final Typesetter typesetter) throws GeneralException {
 
         String key = getKey(source, context);
-        source.getKeyword("to", true);
+        if (!source.getKeyword("to", true)) {
+            throw new HelpingException(getLocalizer(), "TTP.MissingToForVsplit");
+        }
         Dimen ht = new Dimen(context, source);
         Box b = context.getBox(key);
-        return b.vsplit(ht);
+        if (b == null || !b.isVbox()) {
+            throw new HelpingException(getLocalizer(), "TTP.SplittingNonVbox",
+                    printableControlSequence(context), context.esc("vbox"));
+        }
+        try {
+            return b.vsplit(ht);
+        } catch (OperationNotSupportedException e) {
+            // just to be sure. This should not happen
+            throw new HelpingException(getLocalizer(), "TTP.SplittingNonVbox",
+                    printableControlSequence(context), context.esc("vbox"));
+        }
     }
 
 }
