@@ -76,9 +76,7 @@ public class CharNoad extends AbstractNoad implements Noad {
      */
     public void toString(final StringBuffer sb) {
 
-        //TODO gene: unimplemented
-        throw new RuntimeException("unimplemented");
-
+        mg.toString(sb);
     }
 
     /**
