@@ -278,6 +278,9 @@ public class HelpingException extends InterpreterException {
      */
     public String getLocalizedMessage() {
 
+        if (localizer == null) {
+            return "???";
+        }
         return localizer.format(tag, arg1, arg2, arg3);
     }
 
