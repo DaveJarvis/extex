@@ -58,7 +58,7 @@ import de.dante.util.GeneralException;
 public class Hss extends AbstractCode {
 
     /**
-     * The field <tt>HSS</tt> contains the ...
+     * The field <tt>HSS</tt> contains the glue to insert for this primitive.
      */
     private static final Glue HSS = new Glue(GlueComponent.ZERO,
             GlueComponent.ONE_FIL, GlueComponent.ONE_FIL);

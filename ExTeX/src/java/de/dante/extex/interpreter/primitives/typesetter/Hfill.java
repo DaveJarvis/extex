@@ -58,7 +58,7 @@ import de.dante.util.GeneralException;
 public class Hfill extends AbstractCode {
 
     /**
-     * The field <tt>FILL</tt> contains the ...
+     * The field <tt>FILL</tt> contains the glue to insert for this primitive.
      */
     private static final Glue FILL = new Glue(GlueComponent.ZERO,
             GlueComponent.ONE_FILL, GlueComponent.ZERO);

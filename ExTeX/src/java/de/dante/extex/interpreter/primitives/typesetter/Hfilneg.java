@@ -58,7 +58,7 @@ import de.dante.util.GeneralException;
 public class Hfilneg extends AbstractCode {
 
     /**
-     * The field <tt>FIL</tt> contains the ...
+     * The field <tt>FIL_NEG</tt> contains the glue to insert for this primitive.
      */
     private static final Glue FIL_NEG = new Glue(GlueComponent.ZERO,
             GlueComponent.MINUS_ONE_FIL, GlueComponent.ZERO);
