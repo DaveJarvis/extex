@@ -65,6 +65,18 @@ public class CrToken extends AbstractToken implements Token {
     }
 
     /**
+     * Print the token into a StringBuffer.
+     *
+     * @param sb the target string buffer
+     *
+     * @see de.dante.extex.scanner.Token#toString(java.lang.StringBuffer)
+     */
+    public void toString(final StringBuffer sb) {
+
+        sb.append(Messages.format("CrToken.Text", getValue()));
+    }
+
+    /**
      * @see de.dante.extex.scanner.Token#toText()
      */
     public String toText() {

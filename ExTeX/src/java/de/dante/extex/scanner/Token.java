@@ -122,16 +122,24 @@ public interface Token {
     String toText();
 
     /**
+     * Print the token into a StringBuffer.
+     *
+     * @param sb the target string buffer
+     */
+    void toString(StringBuffer sb);
+
+    /**
      * ...
      *
      * @param visitor the calling visitor
      * @param arg1 the first argument to pass
      * @param arg2 the second argument to pass
      *
-     * @return ...
+     * @return the result object
      *
      * @throws Exception in case of an error
      */
     Object visit(TokenVisitor visitor, Object arg1, Object arg2)
             throws Exception;
+
 }

@@ -66,6 +66,18 @@ public class MathShiftToken extends AbstractToken implements Token {
     }
 
     /**
+     * Print the token into a StringBuffer.
+     *
+     * @param sb the target string buffer
+     *
+     * @see de.dante.extex.scanner.Token#toString(java.lang.StringBuffer)
+     */
+    public void toString(final StringBuffer sb) {
+
+        sb.append(Messages.format("MathShiftToken.Text", getValue()));
+    }
+
+    /**
      * @see de.dante.extex.scanner.Token#visit(
      *      de.dante.extex.scanner.TokenVisitor,
      *      java.lang.Object,
