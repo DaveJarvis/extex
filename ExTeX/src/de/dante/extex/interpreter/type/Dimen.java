@@ -20,6 +20,7 @@ package de.dante.extex.interpreter.type;
 
 import java.io.Serializable;
 
+import de.dante.extex.i18n.GeneralHelpingException;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.scanner.Catcode;
@@ -108,12 +109,10 @@ public class Dimen extends GlueComponent implements Serializable {
      * This modifies this instance.
      *
      * @param d the Dimen to add to
-     *
-     * @return ...
      */
-    public Dimen add(final Dimen d) {
+    public void add(final Dimen d) {
+
         setValue(getValue() + d.getValue());
-        return new Dimen(getValue());
     }
 
     /**
@@ -121,12 +120,37 @@ public class Dimen extends GlueComponent implements Serializable {
      * This modifies this instance.
      *
      * @param d the Dimen to add to
-     *
-     * @return ...
      */
-    public Dimen subtract(final Dimen d) {
+    public void subtract(final Dimen d) {
+
         setValue(getValue() - d.getValue());
-        return new Dimen(getValue());
+    }
+
+    /**
+     * Multiply the current value with a given number.
+     * This modifies this instance.
+     *
+     * @param factor ...
+     */
+    public void multiply(final long factor) {
+
+        setValue(getValue() * factor);
+    }
+
+    /**
+     * Divide the current value with a given number.
+     * This modifies this instance.
+     *
+     * @param denom ...
+     *
+     * @throws GeneralHelpingException in case of an division by 0
+     */
+    public void divide(final long denom) throws GeneralHelpingException {
+
+        if (denom == 0) {
+            throw new GeneralHelpingException("TTP.ArithOverflow");
+        }
+        setValue(getValue() / denom);
     }
 
     /**
