@@ -45,9 +45,9 @@ public class MainOutputFileNotFoundException extends MainException {
     }
 
     /**
-     * @see java.lang.Throwable#getMessage()
+     * @see java.lang.Throwable#getLocalizedMessage()
      */
-    public String getMessage() {
+    public String getLocalizedMessage() {
 
         return getLocalizer().format("MainOutputFileNotFoundException.Message",
                 super.getMessage());

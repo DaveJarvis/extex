@@ -44,13 +44,13 @@ public class MainConfigurationException extends MainException {
     }
 
     /**
-     * @see java.lang.Throwable#getMessage()
+     * @see java.lang.Throwable#getLocalizedMessage()
      */
-    public String getMessage() {
+    public String getLocalizedMessage() {
 
         Throwable cause = getCause();
-        String message = (cause != null ? cause.getMessage() : super
-                .getMessage());
+        String message = (cause != null ? cause.getLocalizedMessage() : super
+                .getLocalizedMessage());
         return getLocalizer().format("MainConfigurationException.Message",
                 (message != null ? message : ""));
     }

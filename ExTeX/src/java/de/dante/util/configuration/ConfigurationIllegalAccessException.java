@@ -51,7 +51,7 @@ public class ConfigurationIllegalAccessException extends ConfigurationException 
 
         return getLocalizer().format(
                 "ConfigurationIllegalAccessException.Text",
-                getCause().getMessage());
+                getCause().getLocalizedMessage());
     }
 
 }

@@ -26,6 +26,8 @@ import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.GeneralException;
+import de.dante.util.framework.i18n.Localizable;
+import de.dante.util.framework.i18n.Localizer;
 
 /**
  * This is the abstract base class which can be used for all classes
@@ -36,7 +38,12 @@ import de.dante.util.GeneralException;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class AbstractCode implements Code, Serializable {
+public class AbstractCode implements Code, Localizable, Serializable {
+
+    /**
+     * The field <tt>localizer</tt> contains the ...
+     */
+    private Localizer localizer = null;
 
     /**
      * The field <tt>name</tt> contains the name of this code for debugging.
@@ -55,6 +62,19 @@ public class AbstractCode implements Code, Serializable {
     }
 
     /**
+     * Setter for the localizer.
+     *
+     * @param localizer the new value for the localizer
+     *
+     * @see de.dante.util.framework.i18n.Localizable#enableLocalization(
+     *      de.dante.util.framework.i18n.Localizer)
+     */
+    public void enableLocalization(final Localizer localizer) {
+
+        this.localizer = localizer;
+    }
+
+    /**
      * @see de.dante.extex.interpreter.type.Code#execute(
      *      de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
@@ -66,6 +86,16 @@ public class AbstractCode implements Code, Serializable {
             throws GeneralException {
 
         return true;
+    }
+
+    /**
+     * Getter for localizer.
+     *
+     * @return the localizer.
+     */
+    protected Localizer getLocalizer() {
+
+        return this.localizer;
     }
 
     /**
@@ -117,5 +147,4 @@ public class AbstractCode implements Code, Serializable {
 
         this.name = theName;
     }
-
 }

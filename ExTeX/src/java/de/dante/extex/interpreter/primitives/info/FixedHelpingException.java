@@ -55,7 +55,7 @@ public class FixedHelpingException extends HelpingException {
      */
     public FixedHelpingException(final String theMessage, final String theHelp) {
 
-        super("");
+        super(""); //TODO add localizer
         this.message = theMessage;
         this.help = theHelp;
     }
@@ -66,6 +66,14 @@ public class FixedHelpingException extends HelpingException {
     public String getHelp() {
 
         return help;
+    }
+
+    /**
+     * @see java.lang.Throwable#getLocalizedMessage()
+     */
+    public String getLocalizedMessage() {
+
+        return message;
     }
 
     /**

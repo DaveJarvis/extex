@@ -38,9 +38,9 @@ public class CatcodeVisitorException extends CatcodeException {
     }
 
     /**
-     * @see java.lang.Throwable#getMessage()
+     * @see java.lang.Throwable#getLocalizedMessage()
      */
-    public String getMessage() {
+    public String getLocalizedMessage() {
 
         return getLocalizer().format("CatcodeVisitorException.Text", //
                 super.getMessage());

@@ -16,45 +16,50 @@
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
-
 package de.dante.extex.interpreter.max;
 
+import de.dante.extex.scanner.TokenFactory;
+import de.dante.util.configuration.Configuration;
 import de.dante.util.configuration.ConfigurationException;
+import de.dante.util.framework.AbstractFactory;
+
 
 /**
- * This Exception is thrown when a TokenStreamFactory is needed but none is
- * found.
+ * ...
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class NoTokenStreamFactoryException extends ConfigurationException {
+class TokenFactoryFactory extends AbstractFactory {
 
     /**
-     * The field <tt>message</tt> contains the message of this exception.
+     * The field <tt>configuration</tt> contains the configuration for
+     * this factory.
      */
-    private String message;
+    private Configuration configuration;
 
     /**
-     * Create a new object.
+     * Creates a new object.
      *
-     * @param aMessage the message string
+     * @param config the configuration to use
      */
-    public NoTokenStreamFactoryException(final String aMessage) {
+    public TokenFactoryFactory(final Configuration config) {
 
-        super(aMessage, (String) null);
-        this.message = aMessage;
+        super();
+        this.configuration = config;
     }
 
     /**
-     * Getter for the text prefix of this ConfigException.
+     * Instance delivering method.
      *
-     * @return the text
+     * @return an appropriate instance
+     *
+     * @throws ConfigurationException in case of an error in the
+     *  configuration
      */
-    public String getLocalizedMessage() {
+    public TokenFactory createInstance() throws ConfigurationException {
 
-        return getLocalizer().format(
-                "ConfigurationNoTokenStreamFactoryException.Text", message);
+        return (TokenFactory) createInstanceForConfiguration(configuration,
+                TokenFactory.class);
     }
-
 }

@@ -64,7 +64,7 @@ public class ConfigurationInstantiationException extends ConfigurationException 
 
         return getLocalizer().format(
                 "ConfigurationInstantiationException.Text",
-                getCause().getMessage());
+                getCause().getLocalizedMessage());
     }
 
 }

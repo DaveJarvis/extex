@@ -51,7 +51,7 @@ public class NoTypesetterException extends ConfigurationException {
      *
      * @return the text
      */
-    public String getMessage() {
+    public String getLocalizedMessage() {
 
         return getLocalizer().format("ConfigurationNoTypesetterException.Text",
                 message);

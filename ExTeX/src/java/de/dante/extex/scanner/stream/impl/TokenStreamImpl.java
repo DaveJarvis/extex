@@ -166,9 +166,8 @@ public class TokenStreamImpl extends TokenStreamBaseImpl
             try {
                 bufferSize = Integer.parseInt(size);
             } catch (NumberFormatException e) {
-                throw new ConfigurationSyntaxException(e.getMessage(), config
-                        .toString()
-                        + "#" + BUFFERSIZE_ATTRIBUTE);
+                throw new ConfigurationSyntaxException(e.getLocalizedMessage(),
+                        config.toString() + "#" + BUFFERSIZE_ATTRIBUTE);
             }
         }
 

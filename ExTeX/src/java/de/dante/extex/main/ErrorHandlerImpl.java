@@ -171,7 +171,7 @@ public class ErrorHandlerImpl
         final TokenSource source = (TokenSource) oSource;
         final Context context = (Context) oContext;
         GeneralException ex = (GeneralException) oException;
-        showErrorLine(logger, ex.getMessage(), source.getLocator());
+        showErrorLine(logger, ex.getLocalizedMessage(), source.getLocator());
 
         try {
             boolean firstHelp = true;

@@ -154,11 +154,14 @@ public class ConfigurationXMLImpl implements Configuration {
         } catch (IOException e) {
             throw new ConfigurationIOException(null, e);
         } catch (ParserConfigurationException e) {
-            throw new ConfigurationSyntaxException(e.getMessage(), theResource);
+            throw new ConfigurationSyntaxException(e.getLocalizedMessage(),
+                    theResource);
         } catch (SAXException e) {
-            throw new ConfigurationSyntaxException(e.getMessage(), theResource);
+            throw new ConfigurationSyntaxException(e.getLocalizedMessage(),
+                    theResource);
         } catch (FactoryConfigurationError e) {
-            throw new ConfigurationSyntaxException(e.getMessage(), theResource);
+            throw new ConfigurationSyntaxException(e.getLocalizedMessage(),
+                    theResource);
         }
     }
 
@@ -241,11 +244,14 @@ public class ConfigurationXMLImpl implements Configuration {
         } catch (IOException e) {
             throw new ConfigurationIOException(null, e);
         } catch (ParserConfigurationException e) {
-            throw new ConfigurationSyntaxException(e.getMessage(), theResource);
+            throw new ConfigurationSyntaxException(e.getLocalizedMessage(),
+                    theResource);
         } catch (SAXException e) {
-            throw new ConfigurationSyntaxException(e.getMessage(), theResource);
+            throw new ConfigurationSyntaxException(e.getLocalizedMessage(),
+                    theResource);
         } catch (FactoryConfigurationError e) {
-            throw new ConfigurationSyntaxException(e.getMessage(), theResource);
+            throw new ConfigurationSyntaxException(e.getLocalizedMessage(),
+                    theResource);
         }
     }
 

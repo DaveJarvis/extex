@@ -50,7 +50,7 @@ public class MissingResourceFinderException extends ConfigurationException {
      *
      * @return the text
      */
-    public String getMessage() {
+    public String getLocalizedMessage() {
 
         return Messages
                 .format("ConfigurationMissingFileFinderException.Text",

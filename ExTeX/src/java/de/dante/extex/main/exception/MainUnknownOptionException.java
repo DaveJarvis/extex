@@ -19,7 +19,6 @@
 
 package de.dante.extex.main.exception;
 
-
 /**
  * This exception is thrown when the main program encounters an unknown
  * commandline option.
@@ -45,9 +44,9 @@ public class MainUnknownOptionException extends MainException {
     }
 
     /**
-     * @see java.lang.Throwable#getMessage()
+     * @see java.lang.Throwable#getLocalizedMessage()
      */
-    public String getMessage() {
+    public String getLocalizedMessage() {
 
         return getLocalizer().format("MainUnknownOptionException.Message",
                 super.getMessage());

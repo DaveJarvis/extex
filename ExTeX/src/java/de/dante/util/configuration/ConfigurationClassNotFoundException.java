@@ -47,15 +47,15 @@ public class ConfigurationClassNotFoundException extends ConfigurationException 
     /**
      * Creates a new object.
      *
-     * @param aClassName the name of the class which could not be found
+     * @param className the name of the class which could not be found
      * @param config the configuration in which the problem occurred or
      * <code>null</code>
      */
-    public ConfigurationClassNotFoundException(final String aClassName,
+    public ConfigurationClassNotFoundException(final String className,
             final Configuration config) {
 
         super(null, config.toString());
-        this.classname = aClassName;
+        this.classname = className;
     }
 
     /**
@@ -71,9 +71,12 @@ public class ConfigurationClassNotFoundException extends ConfigurationException 
     protected String getText() {
 
         return getLocalizer().format(
-                "ConfigurationClassNotFoundException.Text", (classname != null //
+                "ConfigurationClassNotFoundException.Text",
+                (classname != null //
                         ? classname //
-                        : getCause() != null ? getCause().getMessage() : ""));
+                        : getCause() != null
+                                ? getCause().getLocalizedMessage()
+                                : ""));
     }
 
 }
