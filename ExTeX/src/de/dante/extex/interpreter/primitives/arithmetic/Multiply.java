@@ -100,7 +100,7 @@ public class Multiply extends AbstractAssignment {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        Token cs = source.scanToken();
+        Token cs = source.getToken();
 
         if (!(cs instanceof ControlSequenceToken)) {
             throw new GeneralHelpingException("TTP.CantUseAfter",
