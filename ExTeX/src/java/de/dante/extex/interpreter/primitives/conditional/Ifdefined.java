@@ -75,11 +75,11 @@ public class Ifdefined extends AbstractIf {
             throws GeneralException {
 
 
-        Token token = source.getToken();
+        Token token = source.getControlSequence(context);
         Code code = context.getCode(token);
 
         // TODO: is this correct? (TE)
-        return code == null;
+        return code != null;
     }
 
 }
