@@ -52,12 +52,12 @@ public class NumberedToks extends NamedToks {
     }
 
     /**
-     * @see de.dante.extex.interpreter.Code#expand(de.dante.extex.interpreter.Flags,
+     * @see de.dante.extex.interpreter.Code#execute(de.dante.extex.interpreter.Flags,
      *         de.dante.extex.interpreter.context.Context,
      *         de.dante.extex.interpreter.TokenSource,
      *         de.dante.extex.typesetter.Typesetter)
      */
-    public void expand(Flags prefix, Context context,
+    public void execute(Flags prefix, Context context,
                        TokenSource source, Typesetter typesetter)
                 throws GeneralException {
         String key = getName() + "#" +

@@ -47,8 +47,8 @@ public class Ifx extends AbstractIf {
      */
     protected boolean conditional(Context context, TokenSource source, Typesetter typesetter)
                            throws GeneralException {
-        Token t1 = source.getNextToken();
-        Token t2 = source.getNextToken();
+        Token t1 = source.getToken();
+        Token t2 = source.getToken();
 
         if (t1 == null || t2 == null) {
             throw new GeneralException("unexpected EOF");//TODO: i18n
