@@ -34,6 +34,8 @@ import de.dante.util.configuration.Configuration;
 /**
  * This is a text dummy implementation of a document writer (very simple).
  *
+ *
+ * MGN eigenes Packages
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair </a>
  * @version $Revision$
  */

@@ -74,6 +74,7 @@ public class Glyph {
 
     /**
      * Is the glyph used?
+     * @TODO raus
      */
     private boolean isused = false;
 

@@ -32,6 +32,8 @@
         <define name="real" class="de.dante.extex.interpreter.primitives.register.real.NumberedReal"/>
         <define name="realdef" class="de.dante.extex.interpreter.primitives.register.real.RealDef"/>
         <define name="mathexpr" class="de.dante.extex.interpreter.primitives.register.real.MathExpression"/>
+        <define name="mathpi" class="de.dante.extex.interpreter.primitives.register.real.MathPi"/>
+        <define name="mathsin" class="de.dante.extex.interpreter.primitives.register.real.MathSin"/>
         <define name="pair" class="de.dante.extex.interpreter.primitives.register.pair.NumberedPair"/>
         <define name="pairdef" class="de.dante.extex.interpreter.primitives.register.pair.PairDef"/>
         <define name="transform" class="de.dante.extex.interpreter.primitives.register.transform.NumberedTransform"/>

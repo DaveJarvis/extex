@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Map;
 
 import de.dante.extex.font.FontFactory;
-import de.dante.extex.font.NullFont;
+import de.dante.extex.font.type.other.NullFont;
 import de.dante.extex.hyphenation.HyphenationManager;
 import de.dante.extex.hyphenation.HyphenationTable;
 import de.dante.extex.hyphenation.impl.HyphenationManagerImpl;

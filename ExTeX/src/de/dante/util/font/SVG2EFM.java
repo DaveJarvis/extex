@@ -29,7 +29,7 @@ import org.jdom.Document;
 import org.jdom.JDOMException;
 import org.jdom.output.XMLOutputter;
 
-import de.dante.extex.font.SVGReader;
+import de.dante.extex.font.type.svg.SVGReader;
 
 /**
  * Convert a SVG-file to a EFM-file.

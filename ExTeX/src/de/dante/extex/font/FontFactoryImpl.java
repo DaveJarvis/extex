@@ -29,8 +29,14 @@ import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
 
-import de.dante.extex.interpreter.type.font.Font;
+import de.dante.extex.font.type.efm.EFMFont;
+import de.dante.extex.font.type.efm.EFMTTFFont;
+import de.dante.extex.font.type.efm.EFMType1AFMFont;
+import de.dante.extex.font.type.efm.EFMType1TFMMathextFont;
+import de.dante.extex.font.type.efm.EFMType1TFMMathsymlFont;
+import de.dante.extex.font.type.efm.EFMType1TFMNOFont;
 import de.dante.extex.interpreter.type.dimen.Dimen;
+import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.interpreter.type.glue.Glue;
 import de.dante.util.GeneralException;
 import de.dante.util.configuration.ConfigurationException;
@@ -125,10 +131,6 @@ public class FontFactoryImpl implements FontFactory {
                 throw new ConfigurationIOException("unknown font-type");
                 // TODO i18n
             }
-            // ---------------
-            // logger.info(font.toString());
-            // -----------------------------
-            // TODO delete after test
         }
         return font;
     }

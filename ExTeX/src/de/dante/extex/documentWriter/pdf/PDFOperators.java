@@ -19,9 +19,9 @@
 
 package de.dante.extex.documentWriter.pdf;
 
-import org.apache.fop.pdf.PDFColor;
-
 import java.awt.Color;
+
+import org.apache.fop.pdf.PDFColor;
 
 /**
  * Some operators for PDF.
@@ -63,7 +63,7 @@ public class PDFOperators {
      * @param x the end x location
      * @param y the end y location
      */
-    public String moveTo(float x, float y) {
+    public String moveTo(final float x, final float y) {
         this.lastX = x;
         this.lastY = y;
         return " " + x + " " + y + " m\n";
@@ -266,7 +266,8 @@ public class PDFOperators {
     /**
      * "Concat"
      */
-    public String concat(float sx, float u, float v, float sy, float tx, float ty) {
+    public String concat(float sx, float u, float v, float sy, float tx,
+            float ty) {
         return " " + sx + " " + u + " " + v + " " + sy + " " + tx + " " + ty + " cm\n";
     }
 

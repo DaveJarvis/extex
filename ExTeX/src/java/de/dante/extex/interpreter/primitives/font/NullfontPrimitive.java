@@ -18,7 +18,7 @@
  */
 package de.dante.extex.interpreter.primitives.font;
 
-import de.dante.extex.font.NullFont;
+import de.dante.extex.font.type.other.NullFont;
 import de.dante.extex.interpreter.AbstractCode;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
