@@ -54,8 +54,9 @@ public class MultiConfigurationIterator implements Iterator {
      * Creates a new object.
      *
      * @param theConfigs the array of configurations to combine
-     * @param theKey ...
-     * @throws ConfigurationException ...
+     * @param theKey the name of the sub-configuration
+     *
+     * @throws ConfigurationException in case of an error in a sub-iterator
      */
     public MultiConfigurationIterator(final Configuration[] theConfigs,
         final String theKey) throws ConfigurationException {
@@ -131,8 +132,7 @@ public class MultiConfigurationIterator implements Iterator {
      */
     public void remove() {
 
-        //todo unimplemented because not needed yet
-        throw new RuntimeException("unimplemented");
+        throw new UnsupportedOperationException();
     }
 
 }

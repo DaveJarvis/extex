@@ -37,7 +37,8 @@ import de.dante.util.configuration.ConfigurationException;
 public interface ResourceFinder {
 
     /**
-     * Find a resource which can be opened for reading.
+     * Find a resource which can be used for reading. If the search fails then
+     * <code>null</code> is returned.
      *
      * @param name the base name of the resource
      * @param type the type, i.e. the extension
