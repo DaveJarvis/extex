@@ -73,6 +73,17 @@ public class TypesettingContextImpl implements TypesettingContext {
     }
 
     /**
+     * Creates a new object.
+     */
+    public TypesettingContextImpl(final Font font) {
+
+        super();
+        this.font = font;
+        this.color = RgbColor.BLACK;
+        this.hyphenation = null;
+    }
+
+    /**
      * @see de.dante.extex.interpreter.context.TypesettingContext#set(
      *      de.dante.extex.interpreter.context.TypesettingContext)
      */
