@@ -22,10 +22,10 @@ package de.dante.extex.interpreter.type.glue;
 import java.io.Serializable;
 
 import de.dante.extex.i18n.HelpingException;
-import de.dante.extex.i18n.PanicException;
 import de.dante.extex.interpreter.Namespace;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.exception.ImpossibleException;
 import de.dante.extex.interpreter.type.Code;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.dimen.DimenConvertible;
@@ -762,7 +762,7 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
                 toks.add(factory.createToken(Catcode.LETTER, 'l', ""));
             }
         } else {
-            throw new PanicException(getMyLocalizer(), "Illegal.Order", Long
+            throw new ImpossibleException("illegal order " + Long
                     .toString(order));
         }
     }
