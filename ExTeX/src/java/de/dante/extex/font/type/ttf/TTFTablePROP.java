@@ -69,8 +69,7 @@ public class TTFTablePROP extends AbstractTTFTable
      */
     public Element toXML() {
 
-        Element table = new Element("table");
-        table.setAttribute("name", "PROP");
+        Element table = new Element("prop");
         table.setAttribute("id", "0x" + Integer.toHexString(getType()));
         Comment c = new Comment("incomplete");
         table.addContent(c);

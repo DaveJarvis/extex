@@ -69,8 +69,7 @@ public class TTFTableTYP1 extends AbstractTTFTable
      */
     public Element toXML() {
 
-        Element table = new Element("table");
-        table.setAttribute("name", "TYP1");
+        Element table = new Element("typ1");
         table.setAttribute("id", "0x" + Integer.toHexString(getType()));
         Comment c = new Comment("incomplete");
         table.addContent(c);

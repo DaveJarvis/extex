@@ -19,6 +19,8 @@
 
 package de.dante.extex.interpreter.type.font;
 
+import java.io.Serializable;
+
 import de.dante.extex.font.Glyph;
 import de.dante.extex.font.type.BoundingBox;
 import de.dante.extex.font.type.ModifiableFount;
@@ -32,7 +34,7 @@ import de.dante.util.UnicodeChar;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class FontImpl implements Font {
+public class FontImpl implements Font, Serializable {
 
     /**
      * EFM-fount

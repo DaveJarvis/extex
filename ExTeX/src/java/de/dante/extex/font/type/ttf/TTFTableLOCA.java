@@ -180,8 +180,7 @@ public class TTFTableLOCA extends AbstractTTFTable
      */
     public Element toXML() {
 
-        Element table = new Element("table");
-        table.setAttribute("name", "loca");
+        Element table = new Element("loca");
         table.setAttribute("id", "0x" + Integer.toHexString(getType()));
         for (int i = 0; i < offsets.length; i++) {
             Element offset = new Element("offset");

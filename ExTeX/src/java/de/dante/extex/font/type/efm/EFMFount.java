@@ -20,6 +20,7 @@
 package de.dante.extex.font.type.efm;
 
 import java.io.File;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -50,7 +51,7 @@ import de.dante.util.resource.ResourceFinder;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public abstract class EFMFount implements ModifiableFount {
+public abstract class EFMFount implements ModifiableFount, Serializable {
 
     /**
      * The fontname

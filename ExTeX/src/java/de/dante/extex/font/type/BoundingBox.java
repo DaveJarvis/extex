@@ -19,6 +19,8 @@
 
 package de.dante.extex.font.type;
 
+import java.io.Serializable;
+
 import de.dante.extex.interpreter.type.dimen.Dimen;
 
 /**
@@ -27,7 +29,7 @@ import de.dante.extex.interpreter.type.dimen.Dimen;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class BoundingBox {
+public class BoundingBox implements Serializable {
 
     /**
      * llx

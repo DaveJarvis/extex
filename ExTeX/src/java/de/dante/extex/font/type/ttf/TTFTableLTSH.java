@@ -69,8 +69,7 @@ public class TTFTableLTSH extends AbstractTTFTable
      */
     public Element toXML() {
 
-        Element table = new Element("table");
-        table.setAttribute("name", "LTSH");
+        Element table = new Element("ltsh");
         table.setAttribute("id", "0x" + Integer.toHexString(getType()));
         Comment c = new Comment("incomplete");
         table.addContent(c);

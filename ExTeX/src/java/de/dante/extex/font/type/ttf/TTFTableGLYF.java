@@ -163,23 +163,11 @@ public class TTFTableGLYF extends AbstractTTFTable
     }
 
     /**
-     * Returns the info for this class
-     * @return Returns the info for this class
-     */
-    public String toString() {
-
-        StringBuffer sbuf = new StringBuffer();
-        sbuf.append("Table Glyf\n");
-        return sbuf.toString();
-    }
-
-    /**
      * @see de.dante.util.XMLConvertible#toXML()
      */
     public Element toXML() {
 
-        Element table = new Element("table");
-        table.setAttribute("name", "glyf");
+        Element table = new Element("glyf");
         table.setAttribute("id", "0x" + Integer.toHexString(getType()));
         for (int i = 0; i < descript.length; i++) {
             Element des = new Element("description");

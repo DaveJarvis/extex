@@ -19,13 +19,15 @@
 
 package de.dante.extex.font;
 
+import java.io.Serializable;
+
 /**
  * Ligature
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class Ligature {
+public class Ligature implements Serializable {
 
     /**
      * The letter

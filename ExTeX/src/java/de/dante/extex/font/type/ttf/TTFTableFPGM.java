@@ -88,23 +88,11 @@ public class TTFTableFPGM extends AbstractTTFTable
     }
 
     /**
-     * Returns the info for this class
-     * @return Returns the info for this class
-     */
-    public String toString() {
-
-        StringBuffer buf = new StringBuffer();
-        buf.append("Table FPGM\n");
-        return buf.toString();
-    }
-
-    /**
      * @see de.dante.util.XMLConvertible#toXML()
      */
     public Element toXML() {
 
-        Element table = new Element("table");
-        table.setAttribute("name", "fpgm");
+        Element table = new Element("fpgm");
         table.setAttribute("id", "0x" + Integer.toHexString(getType()));
         for (int i = 0; i < instructions.length; i++) {
             Element ins = new Element("instructions");

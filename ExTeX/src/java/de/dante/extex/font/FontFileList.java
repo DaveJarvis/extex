@@ -19,6 +19,7 @@
 
 package de.dante.extex.font;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -27,7 +28,7 @@ import java.util.ArrayList;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class FontFileList {
+public class FontFileList implements Serializable {
 
     /**
      * The list
