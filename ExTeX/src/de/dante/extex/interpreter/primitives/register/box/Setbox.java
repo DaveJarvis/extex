@@ -33,7 +33,7 @@ import de.dante.util.GeneralException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Setbox extends NamedBox implements Code, Serializable {
+public class Setbox extends BoxParameter implements Code, Serializable {
 
     /**
      * Creates a new object.

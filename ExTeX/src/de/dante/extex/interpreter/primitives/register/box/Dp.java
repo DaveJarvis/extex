@@ -52,7 +52,11 @@ import de.dante.util.GeneralException;
  * <p>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    <tt>\dp</tt> &lang;8-bit number&rang; = &lang;dimen&rang;</pre>
+ *    <tt>\dp</tt> {@linkplain
+ *    de.dante.extex.interpreter.TokenSource#scanNumber()
+ *    &lang;8-bit&nbsp;number&rang;} {@linkplain
+ *    de.dante.extex.interpreter.TokenSource#getOptionalEquals()
+ *    &lang;equals&rang;} &lang;dimen&rang;</pre>
  * </p>
  * <p>
  *  Examples:
@@ -71,7 +75,9 @@ import de.dante.util.GeneralException;
  * <p>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    <tt>\dp</tt> &lang;8-bit number&rang; </pre>
+ *    <tt>\dp</tt> {@linkplain
+ *      de.dante.extex.interpreter.TokenSource#scanNumber()
+ *      &lang;8-bit&nbsp;number&rang;} </pre>
  * </p>
  * <p>
  *  Examples:

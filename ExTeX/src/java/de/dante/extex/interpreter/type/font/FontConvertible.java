@@ -26,6 +26,30 @@ import de.dante.util.GeneralException;
  * This is an interface which describes the feature to be convertibe into a
  * font.
  *
+ * <doc type="syntax" name="font">
+ * <p>
+ *  ...
+ * </p>
+ * <p>
+ *  The formal description is the following:
+ *  <pre class="syntax">
+ *    &lang;font&rang;
+ *        :=  &lang;loaded font&rang;
+ *         |   <tt>\textfont</tt> {@linkplain
+ *             de.dante.extex.interpreter.TokenSource#scanNumber()
+ *             &lang;8-bit&nbsp;number&rang;}
+ *         |   <tt>\scriptfont</tt> {@linkplain
+ *             de.dante.extex.interpreter.TokenSource#scanNumber()
+ *             &lang;8-bit&nbsp;number&rang;}
+ *         |   <tt>\scriptscriptfont</tt> {@linkplain
+ *             de.dante.extex.interpreter.TokenSource#scanNumber()
+ *             &lang;8-bit&nbsp;number&rang;}
+ *         |   <tt>\font</tt>
+ *  </pre>
+ * </p>
+ * </doc>
+ *
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
