@@ -35,15 +35,23 @@ public class ConfigurationInstantiationException
      * @param cause the next Throwable in the list
      */
     public ConfigurationInstantiationException(Throwable cause) {
-        super(null, cause);
+        super("", cause);
     }
 
+    /**
+     * Creates a new object.
+     *
+     * @param cause the next Throwable in the list
+     */
+    public ConfigurationInstantiationException(String message, Throwable cause) {
+        super(message, cause);
+    }
     /**
      * Getter for the text prefix of this ConfigException.
      *
      * @return the text
      */
-    protected String getMesssage() {
+    protected String getText() {
         return Messages.format("ConfigInstantiationException.Text",
                                getCause().getMessage());
     }
