@@ -30,7 +30,7 @@ public class LoaderClassNotFoundException extends LoaderException {
     /**
      * Creates a new object.
      *
-     * @param arg1 ...
+     * @param arg1 the cause
      */
     public LoaderClassNotFoundException(final Throwable arg1) {
 

@@ -22,7 +22,8 @@ import de.dante.extex.typesetter.type.Knot;
 
 
 /**
- * ...
+ * The interface Noad is a type of data structure which represents mathematical
+ * constructions.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

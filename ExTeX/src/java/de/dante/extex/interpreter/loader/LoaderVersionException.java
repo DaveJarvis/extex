@@ -30,7 +30,7 @@ public class LoaderVersionException extends LoaderException {
     /**
      * Creates a new object.
      *
-     * @param arg0 ...
+     * @param arg0 the message
      */
     public LoaderVersionException(final String arg0) {
 

@@ -30,9 +30,9 @@ import java.util.logging.Logger;
 public interface LoggerTaker {
 
     /**
-     * ...
+     * Setter for the logger.
      *
-     * @param logger ...
+     * @param logger the logger to use
      */
     void setLogger(Logger logger);
 }

@@ -29,7 +29,6 @@ public class LoaderException extends Exception {
 
     /**
      * Creates a new object.
-     *
      */
     public LoaderException() {
 
@@ -39,7 +38,7 @@ public class LoaderException extends Exception {
     /**
      * Creates a new object.
      *
-     * @param arg0 ...
+     * @param arg0 the message
      */
     public LoaderException(final String arg0) {
 
@@ -49,7 +48,7 @@ public class LoaderException extends Exception {
     /**
      * Creates a new object.
      *
-     * @param arg0 ...
+     * @param arg0 the cause
      */
     public LoaderException(final Throwable arg0) {
 
@@ -59,8 +58,8 @@ public class LoaderException extends Exception {
     /**
      * Creates a new object.
      *
-     * @param arg0 ...
-     * @param arg1 ...
+     * @param arg0 the message
+     * @param arg1 the cause
      */
     public LoaderException(final String arg0, final Throwable arg1) {
 

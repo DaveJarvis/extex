@@ -30,20 +30,20 @@ import de.dante.util.UnicodeChar;
 public class MathCharNoad extends AbstractNoad implements Noad {
 
     /**
-     * The field <tt>family</tt> contains the ...
+     * The field <tt>family</tt> contains the font family for this character.
      */
     private int family;
 
     /**
-     * The field <tt>uc</tt> contains the ...
+     * The field <tt>uc</tt> contains the Unicode character representation.
      */
     private UnicodeChar uc;
 
     /**
      * Creates a new object.
      *
-     * @param fam ...
-     * @param character ...
+     * @param fam the font family for the character
+     * @param character the Unicode character representation
      */
     public MathCharNoad(final int fam, final UnicodeChar character) {
 

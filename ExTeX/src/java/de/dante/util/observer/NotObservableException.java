@@ -51,7 +51,7 @@ public class NotObservableException extends GeneralException {
     /**
      * Create a new object.
      *
-     * @param cause ...
+     * @param cause the cause for this exception
      */
     public NotObservableException(final Throwable cause) {
         super(cause);

@@ -48,9 +48,9 @@ public abstract class Mode {
         }
 
         /**
-         * ...
+         * Check for a math mode.
          *
-         * @return ...
+         * @return <code>true</code> since this is one of the math modes
          */
         public final boolean isMath() {
 
@@ -77,9 +77,9 @@ public abstract class Mode {
         }
 
         /**
-         * ...
+         * Check for a vertical mode.
          *
-         * @return ...
+         * @return <code>true</code> since this is one of the vertical modes
          */
         public final boolean isVmode() {
 
@@ -106,9 +106,9 @@ public abstract class Mode {
         }
 
         /**
-         * ...
+         * Check for a horizontal mode.
          *
-         * @return ...
+         * @return <code>true</code> since this is a horizontal modes
          */
         public final boolean isHmode() {
 
