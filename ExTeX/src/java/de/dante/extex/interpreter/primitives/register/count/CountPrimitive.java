@@ -197,9 +197,7 @@ public class CountPrimitive extends AbstractCount implements ExpandableCode,
             throws GeneralException {
 
         String key = getKey(source, context.getNamespace());
-        String s = context.getCount(key).toString();
-        Tokens toks = new Tokens(context, s);
-        return toks;
+        return new Tokens(context, context.getCount(key).toString());
     }
 
 }
