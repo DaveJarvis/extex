@@ -19,6 +19,8 @@
 
 package de.dante.extex.typesetter.type.noad;
 
+import de.dante.extex.typesetter.NodeList;
+import de.dante.extex.typesetter.type.noad.util.MathContext;
 import de.dante.util.UnicodeChar;
 
 /**
@@ -71,4 +73,15 @@ public class MathCharNoad extends AbstractNoad implements Noad {
 
         return this.uc;
     }
+
+
+    /**
+     * @see de.dante.extex.typesetter.type.noad.Noad#typeset(MathContext)
+     */
+    public NodeList typeset(final MathContext mathContext) {
+
+        // TODO unimplemented
+        return null;
+    }
+
 }

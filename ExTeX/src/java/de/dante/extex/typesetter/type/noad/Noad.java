@@ -18,7 +18,9 @@
  */
 package de.dante.extex.typesetter.type.noad;
 
+import de.dante.extex.typesetter.NodeList;
 import de.dante.extex.typesetter.type.Knot;
+import de.dante.extex.typesetter.type.noad.util.MathContext;
 
 
 /**
@@ -30,5 +32,13 @@ import de.dante.extex.typesetter.type.Knot;
  */
 public interface Noad extends Knot {
 
+    /**
+     * Translate a Noad into a NodeList.
+     *
+     * @param mathContext the context to consider
+     *
+     * @return the typeset instance
+     */
+    NodeList typeset(MathContext mathContext);
 
 }
