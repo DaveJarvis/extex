@@ -37,7 +37,7 @@ public class JobnameTest extends TestCase {
 	/*
 	 */
 	public void testCount01() {
-		assertTrue(TestTeX.test("testdata/jobnametest", "testdata/jobname.testtxt"));
+		assertTrue(TestTeX.test("jujobnametest", "testdata/jujobname.testtxt"));
 	}
 
 }
