@@ -28,7 +28,7 @@ import de.dante.extex.interpreter.type.Glue;
 import de.dante.extex.interpreter.type.node.CharNodeFactory;
 import de.dante.extex.scanner.stream.TokenStream;
 import de.dante.extex.scanner.stream.TokenStreamFactory;
-import de.dante.extex.scanner.stream.impl.TokenStreamStringImpl;
+import de.dante.extex.scanner.stream.impl32.TokenStreamStringImpl;
 import de.dante.extex.typesetter.Mode;
 import de.dante.extex.typesetter.Node;
 import de.dante.extex.typesetter.NodeList;
