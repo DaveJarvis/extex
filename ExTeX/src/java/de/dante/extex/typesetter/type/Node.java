@@ -168,7 +168,7 @@ public interface Node extends Knot {
 
     /**
      * This method puts the printable representation into the string buffer.
-     * This is meant to produce a exaustive form as it is used in tracing
+     * This is meant to produce a exhaustive form as it is used in tracing
      * output to the log file.
      *
      * @param sb the output string buffer
