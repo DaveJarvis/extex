@@ -31,6 +31,7 @@ import de.dante.extex.interpreter.context.TypesettingContext;
 import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.glue.Glue;
+import de.dante.extex.interpreter.type.muskip.Muskip;
 import de.dante.extex.interpreter.type.node.CharNodeFactory;
 import de.dante.extex.interpreter.type.node.VerticalListNode;
 import de.dante.extex.scanner.Token;
@@ -161,6 +162,19 @@ public class TypesetterImpl
 
         if (listMaker instanceof NoadConsumer) {
             ((NoadConsumer) listMaker).add(noad);
+        } else {
+            throw new MathHelpingException("???");
+        }
+    }
+
+    /**
+     * @see de.dante.extex.typesetter.listMaker.NoadConsumer#add(
+     *      de.dante.extex.interpreter.type.muskip.Muskip)
+     */
+    public void add(final Muskip glue) throws GeneralException {
+
+        if (listMaker instanceof NoadConsumer) {
+            ((NoadConsumer) listMaker).add(glue);
         } else {
             throw new MathHelpingException("???");
         }
