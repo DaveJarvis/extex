@@ -38,7 +38,8 @@ import de.dante.util.GeneralException;
 public class GlueNode extends AbstractNode implements Node, Discartable {
 
     /**
-     * The field <tt>size</tt> ...
+     * The field <tt>size</tt> contains the glue specification for this node.
+     * The natural size of the glue is the initial width of this node.
      */
     private FixedGlue size;
 
