@@ -39,7 +39,7 @@ import de.dante.util.framework.logger.LogEnabled;
  * several extensions.
  *
  * <h2>Configuration</h2>
- * ...
+ * TODO document configuration
  *
  * <pre>
  * &lt;Finder class="de.dante.util.resource.FileFinder"
