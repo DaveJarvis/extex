@@ -22,6 +22,7 @@ package de.dante.extex.documentWriter.svg;
 import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.channels.ClosedChannelException;
 
 import org.jdom.DocType;
 import org.jdom.Document;
@@ -163,6 +164,10 @@ public class SVGDocumentWriter
             doc.setRootElement(root);
             xmlout.output(doc, bout);
             bout.close();
+            out.close();
+            out = null;
+        } else {
+            throw new ClosedChannelException();
         }
     }
 
@@ -222,9 +227,8 @@ public class SVGDocumentWriter
     /**
      * @see de.dante.extex.documentWriter.DocumentWriter#shipout(de.dante.extex.typesetter.NodeList)
      */
-    public void shipout(final NodeList nodes)
-            throws IOException,
-                GeneralException {
+    public void shipout(final NodeList nodes) throws IOException,
+            GeneralException {
 
         if (shippedPages == 0) {
             // TeX primitives should set the papersize in any way:

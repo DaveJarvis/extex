@@ -22,6 +22,7 @@ package de.dante.extex.documentWriter.xml;
 import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.channels.ClosedChannelException;
 
 import org.jdom.Document;
 import org.jdom.Element;
@@ -213,6 +214,10 @@ public class XMLDocumentWriter
             Document doc = new Document(root);
             xmlout.output(doc, bout);
             bout.close();
+            out.close();
+            out = null;
+        } else {
+            throw new ClosedChannelException();
         }
     }
 
@@ -317,9 +322,8 @@ public class XMLDocumentWriter
     /**
      * @see de.dante.extex.documentWriter.DocumentWriter#shipout(de.dante.extex.typesetter.NodeList)
      */
-    public void shipout(final NodeList nodes)
-            throws IOException,
-                GeneralException {
+    public void shipout(final NodeList nodes) throws IOException,
+            GeneralException {
 
         // try {
         Element page = new Element("page");
