@@ -92,7 +92,7 @@ public class WdTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "0\n");
+                "0 \n");
     }
 
     /**
