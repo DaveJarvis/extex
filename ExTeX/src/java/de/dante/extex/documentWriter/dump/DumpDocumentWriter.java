@@ -26,6 +26,7 @@ import de.dante.extex.documentWriter.DocumentWriter;
 import de.dante.extex.documentWriter.DocumentWriterOptions;
 import de.dante.extex.interpreter.type.node.CharNode;
 import de.dante.extex.interpreter.type.node.HorizontalListNode;
+import de.dante.extex.interpreter.type.node.LigatureNode;
 import de.dante.extex.interpreter.type.node.VerticalListNode;
 import de.dante.extex.typesetter.NodeList;
 import de.dante.extex.typesetter.NodeVisitor;
@@ -258,7 +259,7 @@ public class DumpDocumentWriter implements DocumentWriter, Configurable {
         public Object visitLigature(final Object oNode, final Object oOut)
                 throws GeneralException {
 
-            // TODO gene: visitLigature unimplemented
+            write(((LigatureNode) oNode).getCharacter().getCodePoint());
             return null;
         }
 
