@@ -156,7 +156,7 @@ public class ResourceFinderImpl
             for (int c = System.in.read(); c > 0 && c != '\n'; c = System.in
                     .read()) {
 
-                if (c != ' ' || sb.length() > 0) {
+                if (c != '\r' && (c != ' ' || sb.length() > 0)) {
                     sb.append((char) c);
                 }
             }
