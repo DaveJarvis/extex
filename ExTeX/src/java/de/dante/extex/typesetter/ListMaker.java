@@ -27,7 +27,7 @@ import de.dante.util.GeneralException;
 import de.dante.util.UnicodeChar;
 
 /**
- * ...
+ * This interface describes the capabiliteis of a list maker.
  *
  * @see "TeX -- The Program [211]"
  *
