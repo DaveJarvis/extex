@@ -84,7 +84,6 @@ public class Box implements Serializable {
         if (t == null) {
             throw new EofHelpingException(null);
         } else if (!t.isa(Catcode.LEFTBRACE)) {
-            //TODO insert { and try to recover
             throw new MissingLeftBraceHelpingException(null);
         }
 
