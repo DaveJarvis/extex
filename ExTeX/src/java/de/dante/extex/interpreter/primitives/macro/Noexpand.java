@@ -90,7 +90,7 @@ public class Noexpand extends AbstractCode implements ExpandableCode {
             throws GeneralException {
 
         //Token t = source.getToken();
-        //TODO execute() unimplemented
+        //TODO gene: execute() unimplemented
         throw new RuntimeException("unimplemented");
     }
 

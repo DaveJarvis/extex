@@ -109,7 +109,7 @@ public class LigatureBuilderImpl implements LigatureBuilder {
             //UnicodeChar lig = font1.getLigature(uc1, uc2);
             Glyph g = font1.getGlyph(uc1);
             if (g == null) {
-                return i; //TODO: DIRTY?
+                return i; //TODO gene: DIRTY?
             }
 
             UnicodeChar lig = g.getLigature(uc2);

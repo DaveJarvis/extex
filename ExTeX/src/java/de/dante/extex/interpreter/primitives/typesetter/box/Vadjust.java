@@ -73,7 +73,7 @@ public class Vadjust extends AbstractBox {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        //TODO execute() unimplemented
+        //TODO gene: execute() unimplemented
         throw new RuntimeException("unimplemented");
         //return true;
     }

@@ -223,7 +223,7 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
                 Cell cell = line[i];
                 if (cell != null) {
                     nl = cell.getList();
-                    nl.spread(wd[i], wd[i]); //TODO genen: check
+                    nl.spread(wd[i], wd[i]); //TODO gene: check
                     row.add(nl);
                 }
             }
