@@ -20,8 +20,6 @@ package de.dante.extex.documentWriter;
 
 import de.dante.extex.interpreter.type.count.FixedCount;
 import de.dante.extex.interpreter.type.dimen.FixedDimen;
-import de.dante.extex.interpreter.type.glue.FixedGlue;
-import de.dante.extex.typesetter.paragraphBuilder.ParagraphShape;
 
 
 /**
@@ -53,10 +51,10 @@ public interface DocumentWriterOptions {
     FixedDimen getDimenOption(String name);
 
     /**
-     * ...
-     * 
-     * @return
+     * Getter for the magnification of the document.
+     *
+     * @return the magnifactikon in sp.
      */
-    public long getMagnification();
-    
+    long getMagnification();
+
 }

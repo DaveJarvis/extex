@@ -45,12 +45,12 @@ public class GlueNode extends AbstractNode implements Node, Discartable {
     /**
      * Creates a new object.
      *
-     * @param size the actual size
+     * @param theSize the actual size
      */
-    public GlueNode(final FixedGlue size) {
+    public GlueNode(final FixedGlue theSize) {
 
-        super(size.getLength());
-        this.size = new Glue(size);
+        super(theSize.getLength());
+        this.size = new Glue(theSize);
     }
 
     /**

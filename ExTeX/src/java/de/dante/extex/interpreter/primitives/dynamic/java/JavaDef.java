@@ -116,7 +116,7 @@ import de.dante.util.GeneralException;
  * <p>
  * There is more to say about primitives like how to write expandable
  * primitives or ifs. Those details can be found in section
- * {@linkplain de.dante.extex.interpreter.primitives Primitives}. 
+ * {@linkplain de.dante.extex.interpreter.primitives Primitives}.
  * </p>
  * </doc>
  *

@@ -54,6 +54,8 @@ public class LigatureNode extends CharNode implements Node {
      *
      * @param context the typesetting context
      * @param uc the unicode character
+     * @param n1 ...
+     * @param n2 ...
      *
      * @see "TeX -- The Program [144]"
      */

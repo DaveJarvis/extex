@@ -58,12 +58,6 @@ import de.dante.util.framework.logger.LogEnabled;
 public class TypesetterImpl implements Typesetter, Manager, LogEnabled {
 
     /**
-     * The constant <tt>CLASS_ATTRIBUTE</tt> contains the name of the attribute
-     * use to acquire the class name from the configuration.
-     */
-    private static final String CLASS_ATTRIBUTE = "class";
-
-    /**
      * The field <tt>charNodeFactory</tt> contains the factory to produce glyph
      * nodes.
      */
@@ -120,8 +114,8 @@ public class TypesetterImpl implements Typesetter, Manager, LogEnabled {
         super();
         this.options = theOptions;
         listMaker = new VerticalListMaker(this);
-        ligatureBuilder = new LigatureBuilderImpl(config);//TODO: IoC
-        paragraphBuilder = new ParagraphBuilderImpl(config);//TODO: IoC
+        ligatureBuilder = new LigatureBuilderImpl(config);    //TODO: IoC
+        paragraphBuilder = new ParagraphBuilderImpl(config);  //TODO: IoC
         paragraphBuilder.setOptions(theOptions);
     }
 
@@ -196,9 +190,9 @@ public class TypesetterImpl implements Typesetter, Manager, LogEnabled {
      * @see de.dante.util.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
-    public void enableLogging(final Logger logger) {
+    public void enableLogging(final Logger theLogger) {
 
-        this.logger = logger;
+        this.logger = theLogger;
     }
 
     /**

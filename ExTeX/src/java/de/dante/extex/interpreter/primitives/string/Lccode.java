@@ -102,7 +102,6 @@ public class Lccode extends AbstractAssignment
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        UnicodeChar ucCode = source.scanCharacterCode();
         source.push(the(context, source, typesetter));
     }
 

@@ -46,7 +46,7 @@ public class DimenParameter extends DimenPrimitive {
 
         super(name);
     }
-    
+
     /**
      * Return the key (the name of the primitive) for the register.
      *

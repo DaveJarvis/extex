@@ -306,7 +306,7 @@ public abstract class Moritz implements TokenSource, Observable {
      * number. All non-whitespace characters must have the catcode OTHER.
      *
      * @return the value of the integer scanned
-     * 
+     *
      * @throws GeneralException
      *             in case that no number is found or the end of file has been
      *             reached before an integer could be acquired

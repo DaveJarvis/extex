@@ -77,8 +77,8 @@ public class Vskip extends AbstractCode {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        Mode mode = typesetter.getMode(); 
-        if ( mode != Mode.VERTICAL && mode != Mode.INNER_VERTICAL) {
+        Mode mode = typesetter.getMode();
+        if (mode != Mode.VERTICAL && mode != Mode.INNER_VERTICAL) {
             throw new HelpingException("TTP.MissingInserted", "}");
         }
         Glue g = new Glue(source, context);

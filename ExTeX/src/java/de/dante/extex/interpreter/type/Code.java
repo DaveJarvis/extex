@@ -82,7 +82,8 @@ public interface Code {
      * @param context the interpreter context
      * @param source the token source
      * @param typesetter the typesetter
-     * @return TODO
+     *
+     * @return ...
      *
      * @throws GeneralException in case of an error
      */

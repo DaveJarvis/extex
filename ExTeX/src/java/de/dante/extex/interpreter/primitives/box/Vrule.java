@@ -52,10 +52,10 @@ import de.dante.util.GeneralException;
  *    &lang;rule dimension&rang;
  *        &rarr; <tt>width</tt> {@linkplain
  *        de.dante.extex.interpreter.type.dimen#Dimen(Context,TokenSource)
- *        &lang;dimen&rang;} 
+ *        &lang;dimen&rang;}
  *         |  <tt>height</tt> {@linkplain
  *        de.dante.extex.interpreter.type.dimen#Dimen(Context,TokenSource)
- *        &lang;dimen&rang;} 
+ *        &lang;dimen&rang;}
  *         |  <tt>depth</tt> {@linkplain
  *        de.dante.extex.interpreter.type.dimen#Dimen(Context,TokenSource)
  *        &lang;dimen&rang;}   </pre>

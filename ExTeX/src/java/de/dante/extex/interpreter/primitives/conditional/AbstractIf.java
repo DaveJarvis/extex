@@ -153,6 +153,7 @@ public abstract class AbstractIf extends AbstractCode implements ExpandableCode 
                     n++;
                 } else if (code.isOuter()) {
                     // TODO incomplete
+                    throw new RuntimeException("unimplemented");
                 }
             }
         }

@@ -34,7 +34,7 @@ import de.dante.util.GeneralException;
 /**
  * This class provides an implementation for the primitive
  * <code>\fontdimen</code>.
- * 
+ *
  * <doc name="fontdimen">
  * <h3>The Primitive <tt>\fontdimen</tt></h3>
  * <p>

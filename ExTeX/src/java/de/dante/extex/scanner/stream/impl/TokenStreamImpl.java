@@ -32,6 +32,7 @@ import de.dante.extex.interpreter.Namespace;
 import de.dante.extex.interpreter.Tokenizer;
 import de.dante.extex.main.exception.MainIOException;
 import de.dante.extex.scanner.Catcode;
+import de.dante.extex.scanner.CatcodeException;
 import de.dante.extex.scanner.CatcodeVisitor;
 import de.dante.extex.scanner.Token;
 import de.dante.extex.scanner.TokenFactory;
@@ -458,12 +459,22 @@ public class TokenStreamImpl extends TokenStreamBaseImpl
     }
 
     /**
+     * This visit method is invoked on a space token.
+     *
+     * @param oFactory the first argument ias the factory to use
+     * @param oTokenizer the second argument is the tokenizer to use
+     * @param uc the third argument is the UnicodeCharacer
+     *
+     * @return a space token if in mid line mode or <code>null</code> otherwise
+     *
+     * @throws CatcodeException in case of an error
+     *
      * @see de.dante.extex.scanner.CatcodeVisitor#visitSpace(
      *      java.lang.Object, java.lang.Object, java.lang.Object)
      * @see "The TeXbook [Chapter 8, page 47]"
      */
     public Object visitSpace(final Object oFactory, final Object oTokenizer,
-            final Object uc) throws GeneralException {
+            final Object uc) throws CatcodeException {
 
         TokenFactory factory = (TokenFactory) oFactory;
 

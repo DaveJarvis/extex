@@ -84,6 +84,13 @@ public class RuleNode extends AbstractNode implements Node {
     }
 
     /**
+     * This method puts the printable representation into the string buffer.
+     * This is meant to produce a short form only as it is used in error
+     * messages to the user.
+     *
+     * @param sb the output string buffer
+     * @param prefix the prefix string inserted at the beginning of each line
+     *
      * @see de.dante.extex.typesetter.Node#toString(java.lang.StringBuffer,
      *      java.lang.String)
      * @see "TeX -- The Program [187]"

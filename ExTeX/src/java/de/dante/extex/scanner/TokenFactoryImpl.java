@@ -439,6 +439,12 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     /**
      * Ignored characters are simply ignored;-)
      *
+     * @param oValue ...
+     * @param oChar the requested character code
+     * @param ignore the third argument is ignored
+     *
+     * @return <code>null</code>
+     *
      * @see de.dante.extex.scanner.CatcodeVisitor#visitIgnore(java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      */
@@ -450,6 +456,12 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
 
     /**
      * Invalid characters are ignored; even without any error message.
+     *
+     * @param oValue ...
+     * @param oChar the requested character code
+     * @param ignore the third argument is ignored
+     *
+     * @return <code>null</code>
      *
      * @see de.dante.extex.scanner.CatcodeVisitor#visitInvalid(java.lang.Object,
      *      java.lang.Object, java.lang.Object)
@@ -650,6 +662,12 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
 
     /**
      * There is only one space token. It has the character code 32.
+     *
+     * @param oValue ...
+     * @param oChar the requested character code
+     * @param ignore the third argument is ignored
+     *
+     * @return the space token.
      *
      * @see de.dante.extex.scanner.CatcodeVisitor#visitSpace(java.lang.Object,
      *      java.lang.Object, java.lang.Object)

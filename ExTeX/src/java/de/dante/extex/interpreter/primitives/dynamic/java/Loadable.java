@@ -45,6 +45,8 @@ public interface Loadable {
      *
      * @param context the processor context
      * @param typesetter the current typesetter
+     *
+     * @throws GeneralException in case of an error
      */
     void init(Context context, Typesetter typesetter) throws GeneralException;
 }

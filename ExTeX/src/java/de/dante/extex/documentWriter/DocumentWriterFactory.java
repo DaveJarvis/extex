@@ -75,7 +75,8 @@ public class DocumentWriterFactory {
      *
      * @throws ConfigurationException in case of an error
      */
-    public DocumentWriter newInstance(final String type, final DocumentWriterOptions options)
+    public DocumentWriter newInstance(final String type,
+            final DocumentWriterOptions options)
             throws ConfigurationException {
 
         Configuration cfg = config.findConfiguration(type != null ? type : "");

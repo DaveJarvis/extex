@@ -129,7 +129,7 @@ public abstract class AbstractNodeList extends AbstractNode implements NodeList 
     /**
      * @see de.dante.extex.typesetter.NodeList#get(int)
      */
-    public Node get(int index) {
+    public Node get(final int index) {
 
         return (Node) list.get(index);
     }
