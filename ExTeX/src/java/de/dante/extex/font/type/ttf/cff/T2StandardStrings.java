@@ -435,6 +435,15 @@ public final class T2StandardStrings {
     };
 
     /**
+     * Returns the highest sid.
+     * @return Returns the highest sid.
+     */
+    public static int getHighestSID() {
+
+        return DATA.length - 1;
+    }
+
+    /**
      * Returns the StandardString or '.notdef' if number out of range.
      * @param sid   the sid for the string
      * @return Returns the StandardString  or '.notdef' if number out of range.

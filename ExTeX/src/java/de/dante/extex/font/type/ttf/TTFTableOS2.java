@@ -678,7 +678,7 @@ public class TTFTableOS2 extends AbstractTTFTable
                 .convertIntToBinaryString(ulCodePageRange1));
         table.setAttribute("ulcodepagerange1", TTFFont
                 .convertIntToBinaryString(ulCodePageRange2));
-        if (panose != null && panose instanceof XMLConvertible) {
+        if (panose != null) {
             table.addContent(panose.toXML());
         }
         return table;

@@ -21,7 +21,6 @@ package de.dante.extex.font.type.ttf;
 
 import java.io.IOException;
 
-import org.apache.batik.bridge.BaseScriptingEnvironment;
 import org.jdom.Comment;
 import org.jdom.Element;
 

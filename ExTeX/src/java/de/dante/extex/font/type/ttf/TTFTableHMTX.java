@@ -162,9 +162,9 @@ public class TTFTableHMTX extends AbstractTTFTable
         }
         if (i < hMetrics.length) {
             return hMetrics[i] >> TTFConstants.SHIFT16;
-        } else {
-            return hMetrics[hMetrics.length - 1] >> TTFConstants.SHIFT16;
         }
+        return hMetrics[hMetrics.length - 1] >> TTFConstants.SHIFT16;
+
     }
 
     /**
@@ -179,9 +179,9 @@ public class TTFTableHMTX extends AbstractTTFTable
         }
         if (i < hMetrics.length) {
             return (short) (hMetrics[i] & TTFConstants.CONSTXFFFF);
-        } else {
-            return leftSideBearing[i - hMetrics.length];
         }
+        return leftSideBearing[i - hMetrics.length];
+
     }
 
     /**
