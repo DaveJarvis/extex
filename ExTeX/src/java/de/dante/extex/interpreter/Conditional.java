@@ -36,11 +36,14 @@ public class Conditional {
 
     /**
      * Creates a new object.
+     *
+     * @param theLocator the locator
+     * @param theValue the new value
      */
-    public Conditional(Locator locator, boolean value) {
+    public Conditional(final Locator theLocator, final boolean theValue) {
         super();
-        this.locator = locator;
-        this.value   = value;
+        this.locator = theLocator;
+        this.value   = theValue;
     }
 
     /**

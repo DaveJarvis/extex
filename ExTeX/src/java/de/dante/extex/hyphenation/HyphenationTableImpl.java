@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003  Gerd Neugebauer
+ * Copyright (C) 2003-2004 Gerd Neugebauer
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -33,12 +33,12 @@ public class HyphenationTableImpl implements HyphenationTable {
         super();
     }
 
-	/**
-	 * @see de.dante.extex.hyphenation.HyphenationTable#add(java.lang.String)
-	 */
-	public void add(String word) {
-		// TODO Auto-generated method stub
+    /**
+     * @see de.dante.extex.hyphenation.HyphenationTable#add(java.lang.String)
+     */
+    public void add(final String word) {
+        // TODO Auto-generated method stub
 
-	}
+    }
 
 }

@@ -31,13 +31,19 @@ import de.dante.util.GeneralException;
  */
 public class SpaceNode extends AbstractNode implements Node {
 
+    /**
+     * The field <tt>width</tt> contains the width of the space to insert.
+     */
     private Glue width;
-    
+
     /**
      * Creates a new object.
+     * 
+     * @param width the width of the space
      */
     public SpaceNode(Glue width) {
         super();
+        this.width = width;
     }
 
     /**

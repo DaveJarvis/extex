@@ -39,7 +39,6 @@ public interface CountConvertable {
      *
      * @throws GeneralException in case of an error
      */
-    public abstract long convertCount(Context context,
-                                      TokenSource source)
-                               throws GeneralException;
+    long convertCount(Context context, TokenSource source)
+            throws GeneralException;
 }

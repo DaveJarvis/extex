@@ -48,7 +48,8 @@ public class Glue implements Serializable {
         this.length = new Dimen(length);
     }
 
-    public Glue(GlueComponent length, GlueComponent stretch, GlueComponent shrink ) {
+    public Glue(GlueComponent length, GlueComponent stretch,
+            GlueComponent shrink) {
         super();
         this.length = length;
         this.stretch = stretch;

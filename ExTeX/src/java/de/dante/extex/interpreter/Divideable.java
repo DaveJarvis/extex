@@ -38,7 +38,6 @@ public interface Divideable {
      *
      * @throws GeneralException in case of an error
      */
-    public abstract void divide(Flags prefix, Context context,
-                                 TokenSource source)
-                          throws GeneralException;
+    void divide(Flags prefix, Context context, TokenSource source)
+            throws GeneralException;
 }

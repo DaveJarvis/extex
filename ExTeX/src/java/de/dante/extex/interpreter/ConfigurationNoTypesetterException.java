@@ -36,11 +36,11 @@ public class ConfigurationNoTypesetterException
     /**
      * Create a new object.
      *
-     * @param message the message string
+     * @param messageText the message string
      */
-    public ConfigurationNoTypesetterException(String message) {
-        super(message, (String) null);
-        this.message = message;
+    public ConfigurationNoTypesetterException(final String messageText) {
+        super(messageText, (String) null);
+        this.message = messageText;
     }
 
     /**

@@ -35,17 +35,19 @@ public class DocumentWriterFactory {
     /**
      * Creates a new object.
      *
-     * @param config the configuration to use
+     * @param configuration the configuration to use
      */
-    public DocumentWriterFactory(Configuration config) {
+    public DocumentWriterFactory(final Configuration configuration) {
         super();
-        this.config = config;
+        this.config = configuration;
     }
 
     /**
      * Provide a new instance of a document writer.
-     * 
+     *
      * @return the new instance
+     *
+     * @throws ConfigurationException ...
      */
     public DocumentWriter newInstance() throws ConfigurationException {
         DocumentWriter docWriter;

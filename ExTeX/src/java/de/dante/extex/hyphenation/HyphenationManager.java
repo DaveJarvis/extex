@@ -21,14 +21,26 @@ package de.dante.extex.hyphenation;
 
 /**
  * ...
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public interface HyphenationManager {
 
-	public abstract HyphenationTable getHyphenationTable(String index);
+    /**
+     * ...
+     *
+     * @param index ...
+     * @return ...
+     */
+    HyphenationTable getHyphenationTable(String index);
 
-	public abstract HyphenationTable createHyphenationTable(String index);
+    /**
+     * ...
+     *
+     * @param index ...
+     * @return ...
+     */
+    HyphenationTable createHyphenationTable(String index);
 
 }

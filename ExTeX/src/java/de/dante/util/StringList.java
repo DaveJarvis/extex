@@ -24,7 +24,7 @@ import java.util.List;
 
 /**
  * This class provides a {@link java.util.List List} of
- * {@link java.util.String String}s. This class is meant to be used as a
+ * {@link java.lang.String String}s. This class is meant to be used as a
  * type-save replacement for the generic classes implementing the
  * {@link java.util.List List} interface.
  * 

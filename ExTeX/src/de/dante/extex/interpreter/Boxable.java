@@ -29,10 +29,10 @@ import de.dante.util.GeneralException;
  * @version $Revision$
  */
 public interface Boxable {
-    
+
     /**
      * ...
-     * 
+     *
      * @param context the interpreter context
      * @param source the source for new tokens
      *
@@ -40,7 +40,7 @@ public interface Boxable {
      *
      * @throws GeneralException in case of an error
      */
-    public abstract Box getBox(Context context, TokenSource source)
+    Box getBox(Context context, TokenSource source)
             throws GeneralException;
 
 }
