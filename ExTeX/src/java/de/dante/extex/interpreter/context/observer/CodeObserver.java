@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -16,27 +16,34 @@
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
-package de.dante.extex.interpreter.context;
 
-import de.dante.extex.interpreter.type.count.Count;
+package de.dante.extex.interpreter.context.observer;
 
+import de.dante.extex.interpreter.context.ContextInternals;
+import de.dante.extex.interpreter.type.Code;
+import de.dante.extex.scanner.type.Token;
 
 /**
  * This interface describes the ability to receive a notification about the
- * change of a count register.
+ * change of a code assignment for a macro or an  active character.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface CountChangeObserver {
+public interface CodeObserver {
 
     /**
-     * Receive a notification on a count change.
+     * Receive a notification on a code change.
      *
-     * @param name the token containing the name of the changed Count.
+     * @param context te interpreter context
+     * @param name the token containing the name of the changed entity.
+     *  This is a macro or an active character.
      * @param value the new value assigned to the name. In case of
      *  <code>null</code> the name is unbound.
+     *
+     * @throws Exception in case of a problem
      */
-    void receiveCountChange(String name, Count value);
+    void receiveCodeChange(ContextInternals context, Token name, Code value)
+            throws Exception;
 
 }
