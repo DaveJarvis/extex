@@ -223,10 +223,10 @@ public class LiangsHyphenationTable extends BaseHyphenationTable {
      * @see de.dante.extex.language.Language#hyphenate(
      *      de.dante.extex.interpreter.type.node.HorizontalListNode,
      *      de.dante.extex.interpreter.context.Context,
-     *      Token)
+     *      UnicodeChar)
      */
     public HorizontalListNode hyphenate(final HorizontalListNode nodelist,
-            final TypesetterOptions context, final Token hyphen)
+            final TypesetterOptions context, final UnicodeChar hyphen)
             throws HyphenationException {
 
         if (!isHyphenActive()) {
@@ -303,7 +303,7 @@ public class LiangsHyphenationTable extends BaseHyphenationTable {
                         nodes.add(new DiscretionaryNode(null,
                                 new HorizontalListNode(cnf.newInstance(//
                                         tc, //
-                                        hyphen.getChar())), null));
+                                        hyphen)), null));
                     }
                     nodes.add(node);
                     index.add(1);

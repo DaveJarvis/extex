@@ -22,10 +22,10 @@ package de.dante.extex.language.impl;
 import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.language.Language;
 import de.dante.extex.language.hyphenation.exception.HyphenationException;
-import de.dante.extex.scanner.type.Token;
 import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.node.HorizontalListNode;
+import de.dante.util.UnicodeChar;
 
 /**
  * This class implements the future pattern for a language object. The real
@@ -124,10 +124,10 @@ public class FutureLanguage implements Language {
      * @see de.dante.extex.language.hyphenation.Hyphenator#hyphenate(
      *      de.dante.extex.typesetter.type.node.HorizontalListNode,
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.scanner.type.Token)
+     *      UnicodeChar)
      */
     public HorizontalListNode hyphenate(final HorizontalListNode nodelist,
-            final TypesetterOptions context, final Token hyphen)
+            final TypesetterOptions context, final UnicodeChar hyphen)
             throws HyphenationException {
 
         return load().hyphenate(nodelist, context, hyphen);

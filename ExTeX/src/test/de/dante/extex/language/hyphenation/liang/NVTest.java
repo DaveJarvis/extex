@@ -504,7 +504,7 @@ public class NVTest extends TestCase {
     /**
      * The field <tt>hyphen</tt> contains the token for the hyphen char.
      */
-    private static Token hyphen;
+    private static UnicodeChar hyphen;
 
     /**
      * The field <tt>tf</tt> contains the token factory.
@@ -557,8 +557,7 @@ public class NVTest extends TestCase {
         tf = new TokenFactoryImpl();
         f = tf.createToken(Catcode.LETTER, 'f', Namespace.DEFAULT_NAMESPACE);
         l = tf.createToken(Catcode.LETTER, 'l', Namespace.DEFAULT_NAMESPACE);
-        hyphen = tf.createToken(Catcode.OTHER, font.getHyphenChar(), //
-                Namespace.DEFAULT_NAMESPACE);
+        hyphen = font.getHyphenChar();
         tc = new TypesettingContextImpl(font);
         ModifiableLanguage lang = new BaseHyphenationTable();
         lang.setLigatureBuilder(new LigatureBuilderImpl());

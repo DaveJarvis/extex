@@ -23,9 +23,9 @@ import java.io.Serializable;
 
 import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.language.hyphenation.exception.HyphenationException;
-import de.dante.extex.scanner.type.Token;
 import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.typesetter.type.node.HorizontalListNode;
+import de.dante.util.UnicodeChar;
 
 /**
  * Interface for the <code>HyphenationTable</code>.
@@ -88,7 +88,7 @@ public interface Hyphenator extends Serializable {
      * @throws HyphenationException in case of an error
      */
     HorizontalListNode hyphenate(HorizontalListNode nodelist,
-            TypesetterOptions context, Token hyphen)
+            TypesetterOptions context, UnicodeChar hyphen)
             throws HyphenationException;
 
     /**
