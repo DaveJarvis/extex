@@ -24,6 +24,7 @@ import java.io.Serializable;
 import de.dante.extex.hyphenation.exception.HyphenationException;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.type.tokens.Tokens;
+import de.dante.extex.scanner.type.Token;
 import de.dante.extex.typesetter.type.node.HorizontalListNode;
 import de.dante.util.GeneralException;
 
@@ -83,7 +84,7 @@ public interface HyphenationTable extends Serializable {
      * @throws GeneralException in case of an error
      */
     HorizontalListNode hyphenate(HorizontalListNode nodelist, Context context,
-            Tokens hyphen) throws GeneralException;
+            Token hyphen) throws GeneralException;
 
     /**
      * Return <code>true</code>, if hyphenation is active,
