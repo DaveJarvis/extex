@@ -38,8 +38,10 @@ public class UndefinedControlSequenceException extends HelpingException {
      */
     public UndefinedControlSequenceException(final String macro) {
 
-        super(LocalizerFactory.getLocalizer(HelpingException.class.getName()),
-                "TTP.UndefinedToken", macro);
+        super(
+                LocalizerFactory
+                        .getLocalizer(UndefinedControlSequenceException.class
+                                .getName()), "TTP.UndefinedToken", macro);
     }
 
 }
