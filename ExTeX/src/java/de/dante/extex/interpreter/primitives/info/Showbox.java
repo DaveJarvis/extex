@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -89,7 +89,7 @@ public class Showbox extends AbstractBox implements LogEnabled {
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
-    public boolean execute(final Flags prefix, final Context context,
+    public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
@@ -103,7 +103,6 @@ public class Showbox extends AbstractBox implements LogEnabled {
             //TODO gene: correct??
         }
         logger.info(getLocalizer().format("TTP.Show.OK"));
-        return true;
     }
 
 }

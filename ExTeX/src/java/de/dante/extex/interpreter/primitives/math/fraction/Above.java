@@ -71,7 +71,7 @@ public class Above extends AbstractMathCode {
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
-    public boolean execute(final Flags prefix, final Context context,
+    public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
@@ -79,7 +79,6 @@ public class Above extends AbstractMathCode {
         Dimen d = new Dimen(context, source);
 
         nc.switchToFraction(null, null, d);
-        return true;
     }
 
 }

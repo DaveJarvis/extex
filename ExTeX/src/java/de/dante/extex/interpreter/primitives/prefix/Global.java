@@ -71,10 +71,9 @@ public class Global extends AbstractCode implements PrefixCode {
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
-    public boolean execute(final Flags prefix, final Context context,
+    public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter) {
 
         prefix.setGlobal();
-        return false;
     }
 }

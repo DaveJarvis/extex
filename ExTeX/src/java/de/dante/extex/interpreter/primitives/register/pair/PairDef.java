@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -63,11 +63,11 @@ public class PairDef extends AbstractAssignment {
             throws GeneralException {
 
         //  \pairdef\hugo=7
-        Token tok = source.scanNonSpace();
+        Token tok = source.scanNonSpace(context);
         if (!(tok instanceof ControlSequenceToken)) {
             throw new HelpingException("TTP.MissingCtrlSeq");
         }
-        source.getOptionalEquals();
+        source.getOptionalEquals(context);
         String key = "pair#" + Long.toString(Count.scanCount(context, source, typesetter));
         context.setCode(tok, new NamedPair(key), prefix.isGlobal());
     }

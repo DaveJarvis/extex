@@ -81,7 +81,7 @@ public class Cleaders extends AbstractCode {
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
-    public boolean execute(final Flags prefix, final Context context,
+    public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
@@ -117,7 +117,6 @@ public class Cleaders extends AbstractCode {
         Glue skip = ((VerticalSkip) code).verticalSkip(context, source);
 
         typesetter.add(new CenteredLeadersNode(node, skip));
-        return false;
     }
 
 }

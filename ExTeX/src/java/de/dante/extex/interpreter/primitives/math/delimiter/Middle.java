@@ -71,14 +71,13 @@ public class Middle extends AbstractMathCode {
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
-    public boolean execute(final Flags prefix, final Context context,
+    public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
         NoadConsumer nc = getListMaker(context, typesetter);
         MathDelimiter del = new MathDelimiter(context, source);
         nc.left(del);
-        return true;
     }
 
 }

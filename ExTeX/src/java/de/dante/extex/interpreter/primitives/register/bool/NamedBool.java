@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -81,7 +81,7 @@ public class NamedBool extends AbstractAssignment
             ContextExtension contextextex = (ContextExtension) context;
 
             String key = getKey(source);
-            source.getOptionalEquals();
+            source.getOptionalEquals(context);
             Bool value = new Bool(context, source);
             contextextex.setBool(key, value, prefix.isGlobal());
 

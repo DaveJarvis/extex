@@ -72,7 +72,7 @@ public class Eqno extends AbstractMathCode {
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
-    public boolean execute(final Flags prefix, final Context context,
+    public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
             throws CantUseInException {
 
@@ -92,7 +92,6 @@ public class Eqno extends AbstractMathCode {
                     printableControlSequence(context), //
                     typesetter.getMode().toString());
         }
-        return true;
     }
 
 }

@@ -80,7 +80,7 @@ public class Mathchar extends AbstractMathCode {
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
-    public boolean execute(final Flags prefix, final Context context,
+    public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
@@ -100,7 +100,6 @@ public class Mathchar extends AbstractMathCode {
             source.push(t);
             insert(nc, new Count(context, source));
         }
-        return true;
     }
 
     /**

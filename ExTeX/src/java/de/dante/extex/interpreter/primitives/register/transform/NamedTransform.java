@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -70,7 +70,7 @@ public class NamedTransform extends AbstractAssignment implements Theable {
             ContextExtension contextextex = (ContextExtension) context;
 
             String key = getKey(source);
-            source.getOptionalEquals();
+            source.getOptionalEquals(context);
             Transform value = new Transform(context, source);
             contextextex.setTransform(key, value, prefix.isGlobal());
 

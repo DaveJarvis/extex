@@ -72,13 +72,12 @@ public class Displaystyle extends AbstractMathCode {
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
-    public boolean execute(final Flags prefix, final Context context,
+    public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
         NoadConsumer nc = getListMaker(context, typesetter);
         nc.add(StyleNoad.DISPLAYSTYLE);
-        return true;
     }
 
 }

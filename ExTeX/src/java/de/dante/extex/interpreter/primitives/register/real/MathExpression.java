@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -96,7 +96,7 @@ public class MathExpression extends AbstractMath
         Real real = new Real(0);
 
         // \mathexpr{7+5+3}
-        String expr = source.scanTokensAsString();
+        String expr = source.scanTokensAsString(context);
 
         // compile
         CompiledExpression compileexpr = null;

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -66,7 +66,7 @@ public class Openin extends AbstractFileCode {
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
-    public boolean execute(final Flags prefix, final Context context,
+    public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
@@ -76,16 +76,14 @@ public class Openin extends AbstractFileCode {
 
         InFile file;
         try {
-            file = new InFile(source.getTokenStreamFactory()
-                    .newInstance(name, "tex", "iso-8859-1")); //TODO gene: encoding?
+            file = new InFile(source.getTokenStreamFactory().newInstance(name,
+                    "tex", "iso-8859-1")); //TODO gene: encoding?
             context.setInFile(key, file, prefix.isGlobal());
         } catch (FileNotFoundException e) {
             //ignored on purpose
         } catch (ConfigurationException e) {
             throw new GeneralException(e);
         }
-
-        return true;
     }
 
 }

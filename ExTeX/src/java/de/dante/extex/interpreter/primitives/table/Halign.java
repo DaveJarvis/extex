@@ -94,13 +94,11 @@ public class Halign extends AbstractAlign implements Boxable {
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
-    public boolean execute(final Flags prefix, final Context context,
+    public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
         typesetter.add(getNodes(context, source, typesetter));
-
-        return true;
     }
 
     /**

@@ -69,7 +69,7 @@ public class Read extends AbstractCode {
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
-    public boolean execute(final Flags prefix, final Context context,
+    public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
@@ -88,8 +88,6 @@ public class Read extends AbstractCode {
         }
         context.setCode(cs, new MacroCode(cs.getName(), prefix,
                 MacroPattern.EMPTY, toks), prefix.isGlobal());
-
-        return true;
     }
 
 }

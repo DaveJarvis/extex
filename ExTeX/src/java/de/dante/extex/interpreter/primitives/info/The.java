@@ -69,7 +69,7 @@ public class The extends AbstractCode implements ExpandableCode {
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
-    public boolean execute(final Flags prefix, final Context context,
+    public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
@@ -82,7 +82,6 @@ public class The extends AbstractCode implements ExpandableCode {
             if (code instanceof Theable) {
                 Tokens toks = ((Theable) code).the(context, source, typesetter);
                 source.push(toks);
-                return true;
             }
         }
 

@@ -67,7 +67,7 @@ public class HashToks implements Serializable {
         map = new HashMap();
 
         // { {key1}{value1} {key2}{value2} }
-        Token token = source.getNonSpace();
+        Token token = source.getNonSpace(context);
 
         if (token == null) {
             throw new HelpingException("TTP.MissingLeftBrace");
@@ -78,18 +78,18 @@ public class HashToks implements Serializable {
         }
 
         while (true) {
-            String key = source.scanTokensAsString();
+            String key = source.scanTokensAsString(context);
             if (key.trim().length() == 0) {
                 throw new HelpingException("TTP.hasherrorKey");
             }
-            Tokens toks = source.getTokens();
+            Tokens toks = source.getTokens(context);
             if (toks == null) {
                 throw new HelpingException("TTP.hasherrorvalue");
             }
             put(key, toks);
 
             // next ?
-            token = source.getNonSpace();
+            token = source.getNonSpace(context);
             if (token == null) {
                 throw new HelpingException("TTP.MissingRightBrace");
                 //TODO: handle EOF
