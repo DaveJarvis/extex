@@ -9,8 +9,8 @@
  '(jde-resolve-relative-paths-p t)
  '(jde-sourcepath
    (quote
-    ("./src/java"
-     "./src/test")))
+    ("./src/test"
+     "./src/java")))
  '(jde-global-classpath
    (quote
     ("./target/classes"
@@ -51,5 +51,6 @@
  '(jde-gen-k&r t)
 
  ;; xrefdb
+ ;'(jde-xref-db-base-directory "./.jde")
  '(jde-xref-store-prefixes (quote ("de.dante")))
 )
