@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004 Gerd Neugebauer
+ * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -169,7 +169,11 @@ public class ExTeXLauncher extends TestCase {
         main.setErrorHandler(new EHandler(logger));
         main.setLogger(logger);
 
-        main.run();
+        try {
+            main.run();
+        } catch (MainException e) {
+            // TODO gene: error handling unimplemented
+        }
 
         handler.close();
         logger.removeHandler(handler);
