@@ -29,6 +29,7 @@ package de.dante.util.configuration;
  * @version $Revision$
  */
 public interface Configurable {
+
     /**
      * Configure an object according to a given Configuration.
      *
@@ -37,4 +38,5 @@ public interface Configurable {
      * @throws ConfigurationException in case that something went wrong
      */
     void configure(Configuration config) throws ConfigurationException;
+
 }

@@ -38,10 +38,10 @@ public class Nonstopmode extends AbstractCode {
 
     /**
      * Creates a new object.
-     * 
+     *
      * @param name the name for debugging
      */
-    public Nonstopmode(String name) {
+    public Nonstopmode(final String name) {
         super(name);
     }
 
@@ -51,10 +51,10 @@ public class Nonstopmode extends AbstractCode {
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) {
-        context.setInteraction(Interaction.NONSTOPMODE, prefix.isGlobal());
+    public void execute(final Flags prefix, final Context context,
+            final TokenSource source, final Typesetter typesetter) {
 
+        context.setInteraction(Interaction.NONSTOPMODE, prefix.isGlobal());
         prefix.clear();
     }
 }

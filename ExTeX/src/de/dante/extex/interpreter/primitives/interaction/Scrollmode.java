@@ -38,10 +38,10 @@ public class Scrollmode extends AbstractCode {
 
     /**
      * Creates a new object.
-     * 
+     *
      * @param name the name for debugging
      */
-    public Scrollmode(String name) {
+    public Scrollmode(final String name) {
         super(name);
     }
 
@@ -51,10 +51,10 @@ public class Scrollmode extends AbstractCode {
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) {
-        context.setInteraction(Interaction.SCROLLMODE, prefix.isGlobal());
+    public void execute(final Flags prefix, final Context context,
+            final TokenSource source, final Typesetter typesetter) {
 
+        context.setInteraction(Interaction.SCROLLMODE, prefix.isGlobal());
         prefix.clear();
     }
 }

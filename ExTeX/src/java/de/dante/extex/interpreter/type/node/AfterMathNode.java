@@ -28,8 +28,8 @@ import de.dante.util.GeneralException;
  * ...
  *
  * @see "TeX -- The Program [147]"
- * @author <a href="m.g.n@gmx.de">Michael Niedermair</a>
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * @author <a href="m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
 public class AfterMathNode extends AbstractNode implements Node, Discartable {

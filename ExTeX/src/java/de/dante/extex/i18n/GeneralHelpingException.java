@@ -27,16 +27,26 @@ import de.dante.util.GeneralException;
  * @version $Revision$
  */
 public class GeneralHelpingException extends GeneralException {
-    /** the first argument */
+    /**
+     * The field <tt>arg1</tt> contains the first argument.
+     */
     private String arg1 = "?";
 
-    /** the second argument */
+    /**
+     * The field <tt>arg2</tt> contains the second argument.
+     */
     private String arg2 = "?";
 
-    /** the third argument */
+    /**
+     * The field <tt>arg3</tt> contains the third argument.
+     */
     private String arg3 = "?";
 
-    /** the name of the message to show; cf. Messages */
+    /**
+     * The field <tt>tag</tt> contains the name of the message to show.
+     *
+     * @see de.dante.extex.i18n.Messages
+     */
     private String tag = "GeneralDetailedException.help";
 
     /**

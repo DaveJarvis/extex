@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003  Gerd Neugebauer
+ * Copyright (C) 2003-2004 Gerd Neugebauer
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -30,7 +30,9 @@ public class MultiConfigurationIterator implements Iterator {
     /** the internal iterator in config[ptr] */
     private Iterator iter = null;
 
-    /** the symbolic key for this Iterator */
+    /**
+     * The field <tt>key</tt> contains the symbolic key for this Iterator.
+     */
     private String key;
 
     /** the list of configurations to iterate over */
@@ -40,12 +42,17 @@ public class MultiConfigurationIterator implements Iterator {
     private int ptr = 0;
 
     /**
-     * Create a new XMLMultiIterator object.
+     * Creates a new object.
+     *
+     * @param cfg ...
+     * @param key ...
+     *
+     * @throws ConfigurationException ...
      */
-    public MultiConfigurationIterator(Configuration[] cfg, String key)
-                               throws ConfigurationException {
+    public MultiConfigurationIterator(final Configuration[] cfg,
+        final String key) throws ConfigurationException {
         super();
-        config   = cfg;
+        config = cfg;
         this.key = key;
 
         if (cfg.length > 0) {

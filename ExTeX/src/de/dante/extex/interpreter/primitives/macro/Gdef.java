@@ -46,9 +46,10 @@ public class Gdef extends Def {
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-        final TokenSource source, final Typesetter typesetter)
-        throws GeneralException {
+    public void assign(final Flags prefix, final Context context,
+            final TokenSource source, final Typesetter typesetter)
+            throws GeneralException {
+
         prefix.setGlobal();
         super.execute(prefix, context, source, typesetter);
     }

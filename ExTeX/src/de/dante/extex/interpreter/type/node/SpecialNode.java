@@ -23,8 +23,8 @@ import de.dante.extex.typesetter.Node;
 /**
  * ...
  *
- * @author <a href="m.g.n@gmx.de">Michael Niedermair</a>
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * @author <a href="m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
 public class SpecialNode extends WhatsItNode implements Node {
@@ -47,4 +47,5 @@ public class SpecialNode extends WhatsItNode implements Node {
 	public String getText() {
 		return text;
 	}
+
 }

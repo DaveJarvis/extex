@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2004  Gerd Neugebauer
+ * Copyright (C) 2003-2004 Gerd Neugebauer
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -25,8 +25,8 @@ import de.dante.util.UnicodeChar;
 /**
  * This class represents a left brace token.
  * <p>
- * This class has a protected constructor only. Use the factory 
- * {@link de.dante.extex.scanner.stream.TokenFactoryIml TokenFactoryImpl}
+ * This class has a protected constructor only. Use the factory
+ * {@link de.dante.extex.scanner.TokenFactory TokenFactory}
  * to get an instance of this class.
  * </p>
  *
@@ -34,12 +34,13 @@ import de.dante.util.UnicodeChar;
  * @version $Revision$
  */
 public class LeftBraceToken extends AbstractToken implements Token {
+
     /**
      * Creates a new object.
      *
      * @param uc the actual value
      */
-    protected LeftBraceToken(UnicodeChar uc) {
+    protected LeftBraceToken(final UnicodeChar uc) {
         super(uc);
     }
 
@@ -54,10 +55,12 @@ public class LeftBraceToken extends AbstractToken implements Token {
      * Get the string representation of this object for debugging purposes.
      *
      * @return the string representation
-     * 
+     *
      * @see "TeX -- The Program [298]"
      */
     public String toString() {
-        return Messages.format("LeftBraceToken.Text",getValue());
+
+        return Messages.format("LeftBraceToken.Text", getValue());
     }
+
 }

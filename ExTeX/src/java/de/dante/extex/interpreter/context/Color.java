@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003  Gerd Neugebauer
+ * Copyright (C) 2003-2004 Gerd Neugebauer
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -26,11 +26,41 @@ package de.dante.extex.interpreter.context;
  */
 public interface Color {
 
+    /**
+     * ...
+     *
+     * @return ...
+     */
     int getR();
+    /**
+     * ...
+     *
+     * @return ...
+     */
     int getG();
+    /**
+     * ...
+     *
+     * @return ...
+     */
     int getB();
+    /**
+     * ...
+     *
+     * @return ...
+     */
     int getAlphaR();
+    /**
+     * ...
+     *
+     * @return ...
+     */
     int getAlphaG();
+    /**
+     * ...
+     *
+     * @return ...
+     */
     int getAlphaB();
 
 }

@@ -33,7 +33,6 @@ public class MainExTeXExtensionException extends MainException {
 	/**
 	 * Creates a new object.
 	 *
-	 * @param message the name of the unknown option
 	 */
 	public MainExTeXExtensionException() {
 		super(-16, "ExTeXExtensionException");

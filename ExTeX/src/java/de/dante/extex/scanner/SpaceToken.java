@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2004  Gerd Neugebauer
+ * Copyright (C) 2003-2004 Gerd Neugebauer
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -24,8 +24,8 @@ import de.dante.extex.i18n.Messages;
 /**
  * This class represents a space token.
  * <p>
- * This class has a protected constructor only. Use the factory 
- * {@link de.dante.extex.scanner.stream.TokenFactoryIml TokenFactoryImpl}
+ * This class has a protected constructor only. Use the factory
+ * {@link de.dante.extex.scanner.TokenFactory TokenFactory}
  * to get an instance of this class.
  * </p>
  *
@@ -33,14 +33,15 @@ import de.dante.extex.i18n.Messages;
  * @version $Revision$
  */
 public class SpaceToken extends AbstractToken implements Token {
+
     /**
      * Creates a new object.
      *
      * @param value the actual value
-     * 
+     *
      * @see "The TeXbook [Chapter 8; p.47]"
      */
-    protected SpaceToken(String value) {
+    protected SpaceToken(final String value) {
         super(" ");
     }
 
@@ -55,10 +56,12 @@ public class SpaceToken extends AbstractToken implements Token {
      * Get the string representation of this object for debugging purposes.
      *
      * @return the string representation
-     * 
+     *
      * @see "TeX -- The Program [298]"
      */
     public String toString() {
-        return Messages.format("SpaceToken.Text",getValue());
+
+        return Messages.format("SpaceToken.Text", getValue());
     }
+
 }

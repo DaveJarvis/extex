@@ -32,6 +32,7 @@ import de.dante.util.GeneralException;
  * @version $Revision$
  */
 public interface Theable {
+
     /**
      * This method is the getter for the description of the primitive.
      *

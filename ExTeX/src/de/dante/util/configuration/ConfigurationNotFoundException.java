@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003  Gerd Neugebauer
+ * Copyright (C) 2003-2004 Gerd Neugebauer
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -33,22 +33,23 @@ public class ConfigurationNotFoundException extends ConfigurationException {
      * configuration.
      */
     private String configName;
-    
+
     /**
      * Create a new object.
-     * 
+     *
      * @param configName the name of the missing configuration
      * @param source the the name of the file for which this exception occurred
      */
-    public ConfigurationNotFoundException(String configName, String source) {
-        super(null,source);
+    public ConfigurationNotFoundException(final String configName,
+        final String source) {
+        super(null, source);
         this.configName = configName;
     }
 
     /**
      * Getter for the text prefix of this
      * {@link de.dante.util.ConfigurationException ConfigurationException}.
-     * 
+     *
      * @return the text
      */
     protected String getText() {

@@ -28,8 +28,8 @@ import de.dante.extex.hyphenation.impl.HyphenationTableImpl;
 /**
  * This class managed the <code>HyphernationTable</code>.
  *
- * @author <a href="gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @author <a href="m.g.n@gmx.de">Michael Niedermair</a>
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
 public class HyphenationManagerImpl implements HyphenationManager {

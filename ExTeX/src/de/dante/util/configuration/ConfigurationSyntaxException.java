@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003  Gerd Neugebauer
+ * Copyright (C) 2003-2004 Gerd Neugebauer
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -32,8 +32,10 @@ public class ConfigurationSyntaxException extends ConfigurationException {
      * Create a new object.
      *
      * @param message the message string
+     * @param source the source of the exception
      */
-    public ConfigurationSyntaxException(String message, String source) {
+    public ConfigurationSyntaxException(final String message,
+        final String source) {
         super(message, source);
     }
 
@@ -43,7 +45,8 @@ public class ConfigurationSyntaxException extends ConfigurationException {
      * @param message message the message string
      * @param cause the next Throwable in the list
      */
-    public ConfigurationSyntaxException(String message, Throwable cause) {
+    public ConfigurationSyntaxException(final String message,
+        final Throwable cause) {
         super(message, cause);
     }
 

@@ -19,6 +19,7 @@
 package de.dante.extex.interpreter.primitives.file;
 
 import de.dante.extex.interpreter.TokenSource;
+import de.dante.extex.interpreter.context.Context;
 import de.dante.util.GeneralException;
 
 /**
@@ -52,7 +53,7 @@ public class InputFile extends Input {
 	 * 
 	 * @throws GeneralException in case of an error
 	 */
-	protected String scanFileName(TokenSource source) throws GeneralException {
+	protected String scanFileName(TokenSource source, Context context) throws GeneralException {
 		return source.scanTokensAsString();
 	}
 }

@@ -23,7 +23,7 @@ import de.dante.extex.interpreter.AbstractCode;
 /**
  * This class provides an implementation for the primitive <code>\relax</code>.
  * It does simply nothing, but as a side effect all prefixes are zeroed.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -31,10 +31,11 @@ public class Relax extends AbstractCode {
 
     /**
      * Creates a new object.
-     * 
+     *
      * @param name the name for tracing and debugging
      */
     public Relax(final String name) {
+
         super(name);
     }
 

@@ -30,10 +30,13 @@ import de.dante.util.GeneralException;
  * @version $Revision$
  */
 public class MainException extends GeneralException {
-    /** The message for this exception */
+    /**
+     * The field <tt>message</tt> contains the message for this exception.
+     */
     private String message = null;
 
-    /** The exit code
+    /**
+     * The field <tt>code</tt> contains the exit code.
      */
     private int code = -1;
 
@@ -43,7 +46,7 @@ public class MainException extends GeneralException {
      * @param code the exit code
      * @param message the message
      */
-    public MainException(int code, String message) {
+    public MainException(final int code, final String message) {
         super(message);
         this.message = message;
         this.code    = code;
@@ -55,7 +58,7 @@ public class MainException extends GeneralException {
      * @param code the exit code
      * @param e the cause for this Exception
      */
-    public MainException(int code, Throwable e) {
+    public MainException(final int code, final Throwable e) {
         super(e);
         this.code = code;
     }
@@ -65,7 +68,7 @@ public class MainException extends GeneralException {
      *
      * @param e the cause for this Exception
      */
-    public MainException(GeneralException e) {
+    public MainException(final GeneralException e) {
         super(e);
         this.code = e.getExitCode();
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004  Gerd Neugebauer
+ * Copyright (C) 2004 Gerd Neugebauer
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -49,5 +49,5 @@ public interface ExpandableCode {
      */
     void expand(Flags prefix, Context context,
         TokenSource source, Typesetter typesetter) throws GeneralException;
-    
+
 }

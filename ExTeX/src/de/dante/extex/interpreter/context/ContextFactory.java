@@ -54,7 +54,8 @@ public class ContextFactory {
     /**
      * The field <tt>constructor</tt> contains the constructor of the class to
      * instantiate. It is kept here to speed up the method
-     * {@link #newInstance(de.dante.extex.interpreter.context.impl.Group) newInstance}.
+     * {@link #newInstance(de.dante.extex.interpreter.context.impl.Group)
+     *  newInstance}.
      */
     private Constructor constructor;
 

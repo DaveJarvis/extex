@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2004  Gerd Neugebauer
+ * Copyright (C) 2003-2004 Gerd Neugebauer
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -24,8 +24,8 @@ import de.dante.extex.i18n.Messages;
 /**
  * This class represents a control sequence token.
  * <p>
- * This class has a protected constructor only. Use the factory 
- * {@link de.dante.extex.scanner.stream.TokenFactoryIml TokenFactoryImpl}
+ * This class has a protected constructor only. Use the factory
+ * {@link de.dante.extex.scanner.TokenFactory TokenFactory}
  * to get an instance of this class.
  * </p>
  *
@@ -33,18 +33,19 @@ import de.dante.extex.i18n.Messages;
  * @version $Revision$
  */
 public class ControlSequenceToken extends AbstractToken implements Token {
+
     /**
      * Creates a new object.
      *
      * @param value the name of the control sequence -- without the leading
      * escape character token
      */
-    protected ControlSequenceToken(String value) {
+    protected ControlSequenceToken(final String value) {
         super(value);
     }
 
     /**
-     * @see de.dante.extex.scanenr.Token#getCatcode()
+     * @see de.dante.extex.scanner.Token#getCatcode()
      */
     public Catcode getCatcode() {
         return Catcode.ESCAPE;
@@ -52,10 +53,11 @@ public class ControlSequenceToken extends AbstractToken implements Token {
 
     /**
      * Get the string representation of this object for debugging purposes.
-     * 
+     *
      * @return the string representation
      */
     public String toString() {
         return Messages.format("ControlSequenceToken.Text", getValue());
     }
+
 }

@@ -69,7 +69,7 @@ public class InputFileEncoding extends InputFile {
             Typesetter typesetter) throws GeneralException {
 
         String encoding = source.scanTokensAsString();
-        String name = scanFileName(source);
+        String name = scanFileName(source, context);
         TokenStreamFactory factory = source.getTokenStreamFactory();
 
         try {

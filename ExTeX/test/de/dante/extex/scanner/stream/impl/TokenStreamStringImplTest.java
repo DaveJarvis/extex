@@ -263,6 +263,12 @@ public class TokenStreamStringImplTest extends TestCase {
             return null;
         }
         /**
+         * @see de.dante.util.configuration.Configuration#findConfiguration(java.lang.String)
+         */
+        public Configuration findConfiguration(final String key) {
+            return null;
+        }
+        /**
          * @see de.dante.util.configuration.Configuration#getConfiguration(java.lang.String)
          */
         public Configuration getConfiguration(final String key) {

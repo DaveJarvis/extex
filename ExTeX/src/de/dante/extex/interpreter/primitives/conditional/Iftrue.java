@@ -33,7 +33,7 @@ public class Iftrue extends AbstractIf {
 
     /**
      * Creates a new object.
-     * 
+     *
      * @param name the name for debugging
      */
     public Iftrue(final String name) {

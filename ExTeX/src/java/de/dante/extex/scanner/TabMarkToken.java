@@ -25,8 +25,8 @@ import de.dante.util.UnicodeChar;
 /**
  * This class represents a tab mark token.
  * <p>
- * This class has a protected constructor only. Use the factory 
- * {@link de.dante.extex.scanner.stream.TokenFactoryIml TokenFactoryImpl}
+ * This class has a protected constructor only. Use the factory
+ * {@link de.dante.extex.scanner.TokenFactory TokenFactory}
  * to get an instance of this class.
  * </p>
  *
@@ -34,12 +34,13 @@ import de.dante.util.UnicodeChar;
  * @version $Revision$
  */
 public class TabMarkToken extends AbstractToken implements Token {
+
     /**
      * Creates a new object.
      *
      * @param uc the actual value
      */
-    protected TabMarkToken(UnicodeChar uc) {
+    protected TabMarkToken(final UnicodeChar uc) {
         super(uc);
     }
 
@@ -54,10 +55,12 @@ public class TabMarkToken extends AbstractToken implements Token {
      * Get the string representation of this object for debugging purposes.
      *
      * @return the string representation
-     * 
+     *
      * @see "TeX -- The Program [298]"
      */
     public String toString() {
-        return Messages.format("TabMarkToken.Text",getValue());
+
+        return Messages.format("TabMarkToken.Text", getValue());
     }
+
 }

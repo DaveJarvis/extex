@@ -25,8 +25,8 @@ import de.dante.util.UnicodeChar;
 /**
  * This class represents a right brace token.
  * <p>
- * This class has a protected constructor only. Use the factory 
- * {@link de.dante.extex.scanner.stream.TokenFactoryIml TokenFactoryImpl}
+ * This class has a protected constructor only. Use the factory
+ * {@link de.dante.extex.scanner.TokenFactory TokenFactory}
  * to get an instance of this class.
  * </p>
  *
@@ -34,12 +34,13 @@ import de.dante.util.UnicodeChar;
  * @version $Revision$
  */
 public class RightBraceToken extends AbstractToken implements Token {
+
     /**
      * Creates a new object.
      *
      * @param uc the actual value
      */
-    protected RightBraceToken(UnicodeChar uc) {
+    protected RightBraceToken(final UnicodeChar uc) {
         super(uc);
     }
 
@@ -54,10 +55,12 @@ public class RightBraceToken extends AbstractToken implements Token {
      * Get the string representation of this object for debugging purposes.
      *
      * @return the string representation
-     * 
+     *
      * @see "TeX -- The Program [298]"
      */
     public String toString() {
-        return Messages.format("RightBraceToken.Text",getValue());
+
+        return Messages.format("RightBraceToken.Text", getValue());
     }
+
 }

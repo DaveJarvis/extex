@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003  Gerd Neugebauer
+ * Copyright (C) 2003-2004 Gerd Neugebauer
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -34,13 +34,17 @@ import de.dante.util.GeneralException;
  */
 public class Space extends AbstractCode {
 
-	private static final Count THOUSAND = new Count(1000);
+    /**
+     * The constant <tt>THOUSAND</tt> contains the ...
+     */
+    private static final Count THOUSAND = new Count(1000);
+
     /**
      * Creates a new object.
      *
      * @param name the name for debugging
      */
-    public Space(String name) {
+    public Space(final String name) {
         super(name);
     }
 
@@ -51,8 +55,10 @@ public class Space extends AbstractCode {
      *      de.dante.extex.typesetter.Typesetter)
      * @see "TeX -- The Program [...]"
      */
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws GeneralException {
+    public void execute(final Flags prefix, final Context context,
+            final TokenSource source, final Typesetter typesetter)
+            throws GeneralException {
+
         typesetter.addSpace(context.getTypesettingContext(), THOUSAND);
         prefix.clear();
     }

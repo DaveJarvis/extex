@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003  Gerd Neugebauer
+ * Copyright (C) 2003-2004 Gerd Neugebauer
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -25,11 +25,17 @@ package de.dante.extex.interpreter.context;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Direction {
-    /** This is the direction for left-to-right languages */
+public final class Direction {
+    /**
+     * The constant <tt>LR</tt> contains the direction for left-to-right
+     * languages.
+     */
     public static final Direction LR = new Direction();
 
-    /** This is the direction for right-to-left languages */
+    /**
+     * The field <tt>RL</tt> contains the direction for right-to-left
+     * languages.
+     */
     public static final Direction RL = new Direction();
 
     /**

@@ -38,18 +38,19 @@ public class Global extends AbstractCode {
      *
      * @param name the name for debugging
      */
-    public Global(String name) {
+    public Global(final String name) {
         super(name);
     }
 
-    /**
+/**
      * @see de.dante.extex.interpreter.Code#execute(de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) {
+    public void execute(final Flags prefix, final Context context,
+            final TokenSource source, final Typesetter typesetter) {
+
         prefix.setGlobal();
     }
 }

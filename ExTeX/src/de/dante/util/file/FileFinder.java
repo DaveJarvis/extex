@@ -34,6 +34,7 @@ import java.io.File;
  * @version $Revision$
  */
 public interface FileFinder {
+
     /**
      * Find a file which can be opened for reading.
      *
@@ -45,4 +46,5 @@ public interface FileFinder {
      * @throws ConfigurationException in case of an exception
      */
     File findFile(String name, String type) throws ConfigurationException;
+
 }

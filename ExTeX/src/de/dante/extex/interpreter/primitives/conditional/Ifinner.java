@@ -25,7 +25,8 @@ import de.dante.extex.typesetter.Mode;
 import de.dante.extex.typesetter.Typesetter;
 
 /**
- * This class provides an implementation for the primitive <code>\ifinner</code>.
+ * This class provides an implementation for the primitive
+ * <code>\ifinner</code>.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
