@@ -21,6 +21,7 @@ package de.dante.extex.typesetter;
 
 import de.dante.extex.documentWriter.DocumentWriter;
 import de.dante.extex.interpreter.type.node.CharNodeFactory;
+import de.dante.extex.typesetter.paragraphBuilder.ParagraphShape;
 import de.dante.util.GeneralException;
 
 /**
@@ -78,4 +79,10 @@ public interface Typesetter extends ListMaker {
      */
     void openVbox();
 
+    /**
+     * ...
+     *
+     * @param parshape the parshape specification for the next paragraph
+     */
+    void setParshape(ParagraphShape parshape);
 }

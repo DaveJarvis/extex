@@ -50,4 +50,12 @@ public interface ParagraphBuilder {
      */
     void setOptions(TypesetterOptions options);
 
+
+    /**
+     * ...
+     *
+     * @param parshape the parshape specification for the next paragraph
+     */
+    void setParshape(ParagraphShape parshape);
+
 }
