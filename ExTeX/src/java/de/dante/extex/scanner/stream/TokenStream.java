@@ -96,4 +96,10 @@ public interface TokenStream {
      */
     void put(Token token);
 
+    /**
+     * Check to see if a further token can be acquired from the token stream.
+     *
+     * @return <code>true</code> if the stream is at its end
+     */
+    //TODO boolean isEof();
 }
