@@ -67,7 +67,7 @@ public class DisplaymathListMaker extends MathListMaker implements EqConsumer {
 
         HorizontalListNode list = new HorizontalListNode();
 
-        getNoades().typeset(list, new MathContext(StyleNoad.DISPLAYSTYLE),
+        getNoades().typeset(list, new MathContext(StyleNoad.DISPLAYSTYLE, context),
                 context);
 
         if (eqno != null) {
