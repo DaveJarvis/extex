@@ -31,7 +31,7 @@ import de.dante.util.observer.Observer;
  * the appropriate output stream.
  * </p>
  *
- * @author <a href="mailto:gene@gerd-neugebauer.de"> Gerd Neugebauer </a>
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  *
  * @version $Revision$
  */

@@ -32,7 +32,7 @@ import de.dante.util.UnicodeChar;
  *
  * @see "TeX -- The Program [134]"
  *
- * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer </a>
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="m.g.n@gmx.de">Michael Niedermair </a>
  * @version $Revision$
  */
