@@ -77,6 +77,7 @@ public abstract class Moritz implements TokenSource, Configurable, Observable {
      * character code. In original TeX this value would be 255.
      */
     private static final long MAX_CHAR_CODE = Long.MAX_VALUE;
+
     //TODO: find a good value
 
     /**
@@ -933,7 +934,8 @@ public abstract class Moritz implements TokenSource, Configurable, Observable {
                                             + 10;
                                     break;
                                 default:
-                                    throw new PanicException("TTP.Confusion");
+                                    throw new PanicException("TTP.Confusion",
+                                            "Strange character in hex number");
                             }
                         }
 

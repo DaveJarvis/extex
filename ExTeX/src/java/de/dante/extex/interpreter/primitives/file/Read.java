@@ -83,7 +83,8 @@ public class Read extends AbstractCode {
         Tokens toks;
 
         if (file == null) {
-            throw new PanicException("TTP.Confusion");
+            //TODO use better error handling
+            throw new PanicException("TTP.Confusion", "file not existent");
         }
 
         toks = file.read(context.getTokenFactory(), context.getTokenizer(), cs);

@@ -711,7 +711,8 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
                 toks.add(factory.createToken(Catcode.LETTER, 'l', ""));
             }
         } else {
-            throw new PanicException("TTP.Confusion");
+            //TODO i18n
+            throw new PanicException("TTP.Confusion", "negative order found");
         }
     }
 
