@@ -174,9 +174,7 @@ public class HorizontalListMaker extends AbstractListMaker implements ListMaker 
 
         Manager manager = getManager();
         manager.getLigatureBuilder().insertLigatures(nodes);
-        manager.getParagraphBuilder().build(nodes);
-
-        return nodes;
+        return manager.getParagraphBuilder().build(nodes);
     }
 
     /**
