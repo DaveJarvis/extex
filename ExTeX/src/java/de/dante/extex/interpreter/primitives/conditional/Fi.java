@@ -53,7 +53,7 @@ public class Fi extends AbstractCode {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        if (context.popConditional() == 0) {
+        if (context.popConditional() == null) {
             throw new GeneralHelpingException("TTP.ExtraOrElseFi",
                     printableControlSequence(context));
         }
