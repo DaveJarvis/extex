@@ -63,7 +63,7 @@ public abstract class AbstractToken implements Token, Serializable {
      */
     public boolean equals(final Catcode cc, final char c) {
 
-        return getCatcode() == cc && (char) uniCode.getCodePoint() == c;
+        return getCatcode() == cc && equals(c);
     }
 
     /**
@@ -73,7 +73,7 @@ public abstract class AbstractToken implements Token, Serializable {
     public boolean equals(final Catcode cc, final String s) {
 
         return getCatcode() == cc && s.length() == 1
-                && (char) uniCode.getCodePoint() == s.charAt(0);
+                && uniCode.getCodePoint() == s.charAt(0);
     }
 
     /**
@@ -81,7 +81,9 @@ public abstract class AbstractToken implements Token, Serializable {
      */
     public boolean equals(final char c) {
 
-        return (char) getChar().getCodePoint() == c;
+        UnicodeChar uc = getChar();
+
+        return (uc != null && uc.getCodePoint() == c);
     }
 
     /**
@@ -105,7 +107,7 @@ public abstract class AbstractToken implements Token, Serializable {
     /**
      * @see de.dante.extex.scanner.Token#getChar()
      */
-    public UnicodeChar getChar() {
+    public final UnicodeChar getChar() {
 
         return uniCode;
     }
