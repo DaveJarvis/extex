@@ -116,14 +116,15 @@ public class UnicodeChar {
 
     /**
      * Compares a <code>UnicodeChar</code> character with the value of this
-     * object.
+     * object. They are considered equal if the are both UnicodeChars and have
+     * the same code.
      * <p>
      * The general signature for comparison to an arbitray object is required
-     * for the implementation of HahshMap and friends.
+     * for the implementation of {@link java.util.HashMap HashMap} and friends.
      * </p>
      * 
      * @param unicodeChar the character to compare
-     * @return <code>true</code>, if the characters are equals, otherwise
+     * @return <code>true</code> if the characters are equal, otherwise
      *         <code>false</code>
      */
     public boolean equals(final Object unicodeChar) {
