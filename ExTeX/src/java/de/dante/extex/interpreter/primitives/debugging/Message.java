@@ -43,12 +43,12 @@ public class Message extends AbstractCode {
     }
 
     /**
-     * @see de.dante.extex.interpreter.Code#expand(de.dante.extex.interpreter.Flags, de.dante.extex.interpreter.context.Context, de.dante.extex.interpreter.TokenSource, de.dante.extex.typesetter.Typesetter)
+     * @see de.dante.extex.interpreter.Code#execute(de.dante.extex.interpreter.Flags, de.dante.extex.interpreter.context.Context, de.dante.extex.interpreter.TokenSource, de.dante.extex.typesetter.Typesetter)
      */
-    public void expand(Flags prefix, Context context,
+    public void execute(Flags prefix, Context context,
                        TokenSource source, Typesetter typesetter)
                 throws GeneralException {
-        Tokens toks = source.scanGroup();
+        Tokens toks = source.scanTokens();
         String msg = toks.toString();
         source.update("message",msg); 
         prefix.clear();
