@@ -79,4 +79,18 @@ public class UnicodeCharList {
 
         return list.size();
     }
+
+    /**
+     * Return the <code>UnicodeCharList</code> as <code>String</code>.
+     * @return the string of the list
+     */
+    public String toString() {
+
+        StringBuffer buf = new StringBuffer(list.size());
+        for (int i = 0; i < list.size(); i++) {
+            buf.append(get(i).toString());
+        }
+        return buf.toString();
+    }
+
 }
