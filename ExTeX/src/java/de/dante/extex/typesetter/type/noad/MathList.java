@@ -82,6 +82,16 @@ public class MathList extends AbstractNoad implements Noad {
     }
 
     /**
+     * Getter for the last noad previously stored.
+     *
+     * @return the last noad or <code>null</code> if none is available
+     */
+    public Noad getLastNoad() {
+
+        return nucleus.getLastNoad();
+    }
+
+    /**
      * Remove an element at a given position.
      *
      * @param index the position
@@ -91,16 +101,6 @@ public class MathList extends AbstractNoad implements Noad {
     public Noad remove(final int index) {
 
         return (Noad) this.nucleus.remove(index);
-    }
-
-    /**
-     * Getter for the last noad previously stored.
-     *
-     * @return the last noad or <code>null</code> if none is available
-     */
-    public Noad getLastNoad() {
-
-        return nucleus.getLastNoad();
     }
 
     /**
