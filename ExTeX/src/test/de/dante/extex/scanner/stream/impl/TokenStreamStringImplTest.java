@@ -234,7 +234,10 @@ public class TokenStreamStringImplTest extends TestCase {
 
         super.setUp();
         fac = new TokenFactoryImpl();
-        context = new ContextImpl(new MockConfiguration());
+        ContextImpl contextImpl = new ContextImpl();
+        contextImpl.configure(new MockConfiguration());
+        context = contextImpl;
+        
         tokenizer = context.getTokenizer();
     }
 
