@@ -282,7 +282,7 @@ public class FontFactoryImpl implements FontFactory, Serializable {
             } else {
 
                 // try tfm
-                InputStream tfmfile = finder.findResource(name + ".tfm",
+                InputStream tfmfile = finder.findResource(name /* + ".tfm"*/,
                         TFMEXTENSION);
 
                 if (tfmfile != null) {
@@ -316,14 +316,14 @@ public class FontFactoryImpl implements FontFactory, Serializable {
                 } else {
 
                     // try afm
-                    InputStream afmfile = finder.findResource(name + ".afm",
-                            AFMEXTENSION);
+                    InputStream afmfile = finder.findResource(
+                            name /*+ ".afm"*/, AFMEXTENSION);
 
                     if (afmfile != null) {
 
                         try {
                             AFMReader afmreader = new AFMReader(afmfile, name
-                                    + ".pfb", "10");
+                            /*+ ".pfb"*/, "10");
 
                             doc = new Document(afmreader.getFontMetric());
                         } catch (IOException e) {
@@ -391,6 +391,15 @@ public class FontFactoryImpl implements FontFactory, Serializable {
             letterspaced = ls;
             ligatures = lig;
             kerning = kern;
+        }
+
+        /**
+         * @see java.lang.Object#toString()
+         */
+        public String toString() {
+
+            return name.toString() + size.toString() + letterspaced.toString()
+                    + String.valueOf(ligatures) + String.valueOf(kerning);
         }
     }
 }
