@@ -23,6 +23,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.StringTokenizer;
@@ -38,7 +39,7 @@ import de.dante.extex.i18n.HelpingException;
  * @version $Revision$
  */
 
-public class PSFontsMapReader {
+public class PSFontsMapReader implements Serializable {
 
     /**
      * Create a new object.

@@ -23,6 +23,7 @@ import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serializable;
 
 import org.jdom.Element;
 
@@ -41,7 +42,7 @@ import de.dante.util.configuration.ConfigurationException;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class TFMReader implements FontMetric {
+public class TFMReader implements FontMetric, Serializable {
 
     /**
      * InputStream for Reading
@@ -1329,7 +1330,7 @@ public class TFMReader implements FontMetric {
         }
 
         // filename
-        if (psfenc != null &&  psfenc.getPfbfile() != null) {
+        if (psfenc != null && psfenc.getPfbfile() != null) {
             font.setAttribute("filename", filenameWithoutPath(psfenc
                     .getPfbfile()));
         }

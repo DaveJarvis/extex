@@ -19,6 +19,8 @@
 
 package de.dante.extex.font.type.tfm.psfontsmap;
 
+import java.io.Serializable;
+
 /**
  * Container for a psfonts.map-line
  *
@@ -26,7 +28,7 @@ package de.dante.extex.font.type.tfm.psfontsmap;
  * @version $Revision$
  */
 
-public class PSFontEncoding {
+public class PSFontEncoding implements Serializable {
 
     /**
      * Create a new object.

@@ -23,6 +23,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 
 import de.dante.extex.i18n.HelpingException;
 
@@ -35,7 +36,7 @@ import de.dante.extex.i18n.HelpingException;
  * @version $Revision$
  */
 
-public class EncReader {
+public class EncReader implements Serializable {
 
     /**
      * Create a new object.
