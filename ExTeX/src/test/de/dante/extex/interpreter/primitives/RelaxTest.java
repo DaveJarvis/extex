@@ -16,6 +16,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  *
  */
+
 package de.dante.extex.interpreter.primitives;
 
 import de.dante.test.ExTeXLauncher;
@@ -29,11 +30,22 @@ import de.dante.test.ExTeXLauncher;
 public class RelaxTest extends ExTeXLauncher {
 
     /**
+     * Method for running the tests standalone.
+     *
+     * @param args command line parameter
+     */
+    public static void main(final String[] args) {
+
+        junit.textui.TestRunner.run(RelaxTest.class);
+    }
+
+    /**
      * Constructor for RelaxTest.
      *
      * @param arg the name
      */
     public RelaxTest(final String arg) {
+
         super(arg);
     }
 
@@ -42,39 +54,8 @@ public class RelaxTest extends ExTeXLauncher {
      * @throws Exception in case of an error
      */
     public void test1() throws Exception {
-        runCode("\\relax",
-                "",
-                "\n");
-    }
 
-    /**
-     * Test case checking that a whitespace after a \relax is ignored.
-     * @throws Exception in case of an error
-     */
-    public void test2() throws Exception {
-        runCode("\\relax ",
-                "",
-                "\n");
-    }
-
-    /**
-     * Test case checking that more whitespace after a \relax is ignored.
-     * @throws Exception in case of an error
-     */
-    public void test4() throws Exception {
-        runCode("\\relax         ",
-                "",
-                "\n");
-    }
-
-    /**
-     * Test case checking that a comment after a \relax is ignored.
-     * @throws Exception in case of an error
-     */
-    public void test5() throws Exception {
-        runCode("\\relax %1234 ",
-                "",
-                "\n");
+        runCode("\\relax", "", "\n");
     }
 
     /**
@@ -83,9 +64,35 @@ public class RelaxTest extends ExTeXLauncher {
      * @throws Exception in case of an error
      */
     public void test10() throws Exception {
-        runCode("abc\\relax def",
-                "",
-                "\nabcdef\n");
+
+        runCode("abc\\relax def", "", "\nabcdef \n");
+    }
+
+    /**
+     * Test case checking that a whitespace after a \relax is ignored.
+     * @throws Exception in case of an error
+     */
+    public void test2() throws Exception {
+
+        runCode("\\relax ", "", "\n");
+    }
+
+    /**
+     * Test case checking that more whitespace after a \relax is ignored.
+     * @throws Exception in case of an error
+     */
+    public void test4() throws Exception {
+
+        runCode("\\relax         ", "", "\n");
+    }
+
+    /**
+     * Test case checking that a comment after a \relax is ignored.
+     * @throws Exception in case of an error
+     */
+    public void test5() throws Exception {
+
+        runCode("\\relax %1234 ", "", "\n");
     }
 
 }
