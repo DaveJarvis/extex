@@ -1648,7 +1648,6 @@ public class ExTeX {
             logger.throwing(this.getClass().getName(), "run", e);
             throw e;
         } catch (GeneralException e) {
-            e.getCause().printStackTrace();
             logger.throwing(this.getClass().getName(), "run", e);
             throw new MainException(e);
         } catch (Throwable e) {
