@@ -39,4 +39,7 @@ public interface Font {
     public abstract Dimen getEm();
     public abstract Dimen getEx();
 
+	public abstract Dimen getFontDimen(long index);
+
+	public abstract String getFontName();
 }

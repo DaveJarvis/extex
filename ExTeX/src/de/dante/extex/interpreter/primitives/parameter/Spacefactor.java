@@ -22,6 +22,7 @@ import de.dante.extex.interpreter.AbstractCode;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.type.Count;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.GeneralException;
 
@@ -47,8 +48,8 @@ public class Spacefactor extends AbstractCode {
     public void expand(Flags prefix, Context context, TokenSource source,
                       Typesetter typesetter) throws GeneralException {
         source.scanOptionalEquals();
-        int f = source.scanInteger();
-        typesetter.setSpacefactor(f);
+        long f = source.scanInteger();
+        typesetter.setSpacefactor(new Count(f));
         prefix.clear();
     }
 }

@@ -54,7 +54,7 @@ public class NumberedDimen extends NamedDimen {
      */
     public void expand(Flags prefix, Context context, TokenSource source,
                       Typesetter typesetter) throws GeneralException {
-        String key = Integer.toString(source.scanNumber());
+        String key = Long.toString(source.scanNumber());
 
         super.expand(prefix, context, source, key);
     }
@@ -64,7 +64,7 @@ public class NumberedDimen extends NamedDimen {
      */
     public void advance(Flags prefix, Context context, TokenSource source)
         throws GeneralException {
-        String key = Integer.toString(source.scanNumber());
+        String key = Long.toString(source.scanNumber());
         super.advance(prefix, context, source, key);
     }
 

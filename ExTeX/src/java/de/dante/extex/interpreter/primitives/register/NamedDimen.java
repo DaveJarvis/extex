@@ -83,7 +83,7 @@ public class NamedDimen extends AbstractCode implements Advanceable {
                     throws GeneralException {
         source.scanKeyword("by");
 
-        int val     = source.scanInteger();
+        long val     = source.scanInteger();//TODO: incorrect
         Dimen dimen = context.getDimen(key);
         dimen.set(dimen.getValue() + val);
 

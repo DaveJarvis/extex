@@ -25,7 +25,7 @@ package de.dante.extex.scanner;
  * This name is a single letter string.
  * <p>
  * This class has a protected constructor only. Use the factory 
- * {@link de.dante.extex.scanner.TokenFactoryIml TokenFactoryImpl}
+ * {@link de.dante.extex.scanner.stream.TokenFactoryIml TokenFactoryImpl}
  * to get an instance of this class.
  * </p>
  *

@@ -25,5 +25,12 @@ package de.dante.extex.interpreter.context;
  * @version $Revision$
  */
 public interface Color {
+	
+	public abstract int getR();
+	public abstract int getG();
+	public abstract int getB();
+	public abstract int getAlphaR();
+	public abstract int getAlphaG();
+	public abstract int getAlphaB();
 
 }

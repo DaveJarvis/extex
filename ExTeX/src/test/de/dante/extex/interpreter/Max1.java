@@ -21,6 +21,7 @@ package de.dante.extex.interpreter;
 import junit.framework.TestCase;
 import de.dante.extex.documentWriter.DocumentWriter;
 import de.dante.extex.interpreter.context.TypesettingContext;
+import de.dante.extex.interpreter.type.Count;
 import de.dante.extex.interpreter.type.Dimen;
 import de.dante.extex.interpreter.type.Glue;
 import de.dante.extex.interpreter.type.node.CharNodeFactory;
@@ -143,7 +144,7 @@ public class Max1 extends TestCase {
 
         /**
          */
-        public void addSpace(TypesettingContext typesettingContext) {
+        public void addSpace(TypesettingContext typesettingContext, Count spacefactor) {
             sb.append(" ");
         }
 
@@ -224,7 +225,7 @@ public class Max1 extends TestCase {
         /**
          * @see de.dante.extex.typesetter.ListMaker#setSpacefactor(int)
          */
-        public void setSpacefactor(int f) throws GeneralException {
+        public void setSpacefactor(Count f) throws GeneralException {
         }
 
         /**

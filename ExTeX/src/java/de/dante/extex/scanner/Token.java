@@ -76,6 +76,16 @@ public interface Token {
     public abstract boolean equals(Catcode cc, String s);
 
     /**
+     * Compare the current token with a character value.
+     * They are the same if the values are the same.
+     *
+     * @param c the value
+     *
+     * @return <code>true</code> iff the tokens are equal
+     */
+    public abstract boolean equals(char c);
+
+    /**
      * Compare the current token with a pair of catcode and character value.
      * This pair constitutes a vitual token.
      * They are the same if the catcode and the value are the same.

@@ -35,4 +35,12 @@ public class EmptyHyphenation implements HyphenationTable {
         super();
     }
 
+	/**
+	 * @see de.dante.extex.hyphenation.HyphenationTable#add(java.lang.String)
+	 */
+	public void add(String word) {
+		// TODO Auto-generated method stub
+
+	}
+
 }

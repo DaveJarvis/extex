@@ -31,7 +31,7 @@ public class MainConfigurationException extends MainException {
     /**
      * Creates a new object.
      *
-     * @param message the name of the missing argument
+     * @param cause the root of all evil
      */
     public MainConfigurationException(Throwable cause) {
         super(-1, cause);

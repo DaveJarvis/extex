@@ -19,8 +19,6 @@
 package de.dante.extex.scanner;
 
 
-
-
 /**
  * This is the abstract base class for all Tokens.
  *
@@ -87,10 +85,16 @@ public abstract class AbstractToken implements Token {
     }
 
     /**
+     * @see de.dante.extex.scanner.Token#equals(char)
+     */
+    public boolean equals(char c) {
+        return value.length() == 1 && value.charAt(0) == c;
+    }
+
+    /**
      * @see de.dante.extex.scanner.Token#isa(Catcode)
      */
     public boolean isa(Catcode cc) {
         return getCatcode() == cc;
     }
-
 }

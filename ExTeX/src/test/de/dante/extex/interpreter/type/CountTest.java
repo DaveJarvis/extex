@@ -16,45 +16,58 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  *
  */
-package de.dante.extex.interpreter.type;
+ package de.dante.extex.interpreter.type;
 
+import junit.framework.TestCase;
 
-/**
+/** 
  * ...
- *
- * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * 
+ * @author <a href="gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class GlueOrder {
-    /** ... */
-    public static final GlueOrder NONE   = new GlueOrder("");
+public class CountTest extends TestCase {
 
-    /** ... */
-    public static final GlueOrder FIL   = new GlueOrder("fil");
-
-    /** ... */
-    public static final GlueOrder FILL  = new GlueOrder("fill");
-
-    /** ... */
-    public static final GlueOrder FILLL = new GlueOrder("filll");
-
-    /** ... */
-    private String name;
+	/**
+	 */
+	public CountTest(String arg0) {
+		super(arg0);
+	}
 
     /**
-     * Creates a new object.
      */
-    private GlueOrder(String name) {
-        super();
-        this.name = name;
-    }
+    public static void main(String[] args) {
+		junit.textui.TestRunner.run(CountTest.class);
+	}
 
-    /**
-     * ...
-     *
-     * @return ...
-     */
-    public String toString() {
-        return name;
-    }
+	/*
+	 * Test for void Count(String)
+	 */
+	public void testCountString() {
+	}
+
+	/*
+	 * Test for void Count(long)
+	 */
+	public void testCountlong() {
+	}
+
+	/*
+	 * Test for void Count(String, long)
+	 */
+	public void testCountStringlong() {
+	}
+
+	/*
+	 * Test for void Count(String, TokenSource)
+	 */
+	public void testCountStringTokenSource() {
+	}
+
+	public void testSetValue() {
+	}
+
+	public void testGetValue() {
+	}
+
 }

@@ -34,7 +34,7 @@ public class RestrictedHorizontalListMaker
     /**
      * Creates a new object.
      * 
-     * @param parent
+     * @param manager the manager to ask for global changes
      */
     public RestrictedHorizontalListMaker(Manager manager) {
         super(manager);

@@ -25,7 +25,7 @@ import de.dante.extex.i18n.Messages;
  * This class represents a letter token.
  * <p>
  * This class has a protected constructor only. Use the factory 
- * {@link de.dante.extex.scanner.TokenFactoryIml TokenFactoryImpl}
+ * {@link de.dante.extex.scanner.stream.TokenFactoryIml TokenFactoryImpl}
  * to get an instance of this class.
  * </p>
  *

@@ -32,4 +32,13 @@ public class HyphenationTableImpl implements HyphenationTable {
     public HyphenationTableImpl() {
         super();
     }
+
+	/**
+	 * @see de.dante.extex.hyphenation.HyphenationTable#add(java.lang.String)
+	 */
+	public void add(String word) {
+		// TODO Auto-generated method stub
+
+	}
+
 }

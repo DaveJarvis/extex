@@ -31,7 +31,7 @@ public class MainOutputFileNotFoundException extends MainException {
     /**
      * Creates a new object.
      *
-     * @param message the name of the missing argument
+     * @param filename the name of the file to open
      */
     public MainOutputFileNotFoundException(String filename) {
         super(-15, filename);

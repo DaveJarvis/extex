@@ -31,7 +31,7 @@ public class MainCodingException extends MainException {
     /**
      * Creates a new object.
      *
-     * @param message the name of the missing argument
+     * @param cause the root of all evil
      */
     public MainCodingException(Throwable cause) {
         super(-32, cause);

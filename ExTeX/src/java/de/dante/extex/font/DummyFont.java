@@ -100,4 +100,18 @@ public class DummyFont implements Font {
         return new Dimen(6*Dimen.ONE);
     }
 
+	/**
+	 * @see de.dante.extex.interpreter.type.Font#getFontDimen(long)
+	 */
+	public Dimen getFontDimen(long index) {
+		return null;
+	}
+
+	/**
+	 * @see de.dante.extex.interpreter.type.Font#getFontName()
+	 */
+	public String getFontName() {
+		return "dummy";
+	}
+
 }
