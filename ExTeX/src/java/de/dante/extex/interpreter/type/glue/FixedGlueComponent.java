@@ -88,7 +88,7 @@ public interface FixedGlueComponent {
      * @throws GeneralException in case of an error
      *
      * @see "TeX -- The Program [103]"
-     * @see #toToks(TokenFactory)
+     * @see #toToks(Tokens, TokenFactory)
      * @see #toString()
      * @see #toString(StringBuffer)
      */
@@ -108,7 +108,7 @@ public interface FixedGlueComponent {
      * @throws GeneralException in case of an error
      *
      * @see "TeX -- The Program [103]"
-     * @see #toToks()
+     * @see #toToks(TokenFactory)
      * @see #toString()
      * @see #toString(StringBuffer)
      */
