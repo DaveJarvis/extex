@@ -154,7 +154,7 @@ public interface ListMaker {
      *
      * @throws GeneralException in case of an error
      */
-    void treatLetter(Context context, TypesettingContext tc, UnicodeChar uc)
+    void letter(Context context, TypesettingContext tc, UnicodeChar uc)
             throws GeneralException;
 
     /**

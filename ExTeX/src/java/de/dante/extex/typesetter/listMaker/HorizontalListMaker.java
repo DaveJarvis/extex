@@ -229,7 +229,7 @@ public class HorizontalListMaker extends AbstractListMaker {
      *      de.dante.util.UnicodeChar)
      * @see "The TeXbook [p.76]"
      */
-    public void treatLetter(Context context,
+    public void letter(Context context,
             final TypesettingContext tc, final UnicodeChar symbol) {
 
         CharNode c = getManager().getCharNodeFactory().newInstance(tc,
