@@ -90,11 +90,11 @@ public interface Context extends Tokenizer, Serializable {
     /**
      * Expand some tokens.
      *
-     * @param tokens ...
+     * @param tokens the tokens to expand
      *
      * @return ...
      *
-     * @throws GeneralException
+     * @throws GeneralException in case of an error
      */
     Tokens expand(Tokens tokens) throws GeneralException;
 
@@ -221,7 +221,8 @@ public interface Context extends Tokenizer, Serializable {
 
     /**
      * Getter for a input file register.  In the case that the named
-     * descriptor doe not exist yet a new one is returned.
+     * descriptor doe not exist yet a new one is returned. Especially if the
+     * name is <code>null</code> then the default input stream is used.
      *
      * @param name the name or the number of the file register
      *
