@@ -55,7 +55,7 @@ import de.dante.util.GeneralException;
 public class Crcr extends Cr {
 
     /**
-     * Creates a new object.O
+     * Creates a new object.
      *
      * @param name the name for tracing and debugging
      */
