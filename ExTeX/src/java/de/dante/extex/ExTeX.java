@@ -1442,7 +1442,7 @@ public class ExTeX {
         ErrorHandler errorHandler = errorHandlerFactory.newInstance(properties
                 .getProperty(PROP_ERROR_HANDLER));
         interpreter.setErrorHandler(errorHandler);
-        interpreter.setFileFinder(finder);
+        interpreter.setResourceFinder(finder);
         factory.setOptions((TokenStreamOptions) interpreter.getContext());
         interpreter.setTokenStreamFactory(factory);
         interpreter.setFontFactory(fontFactory);

@@ -575,7 +575,7 @@ public class Max extends Moritz
      *
      * @param fileFinder the new file finder
      */
-    public void setFileFinder(final ResourceFinder fileFinder) {
+    public void setResourceFinder(final ResourceFinder fileFinder) {
 
         //finder = fileFinder;
     }
