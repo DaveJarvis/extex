@@ -49,7 +49,7 @@ public class Gdef extends Def {
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws GeneralException {
         prefix.setGlobal();
-        super.expand(prefix, context, source, typesetter);
+        super.execute(prefix, context, source, typesetter);
     }
 
 }
