@@ -46,8 +46,7 @@ public class IfdefinedTest extends TestCase {
     public void testIfdefined()
         throws Exception {
 
-        TestTeX.test("juifdefined",
-                     "src/test/data/juifdefined.testtxt");
+        TestTeX.test("juifdefined");
     }
 
 }

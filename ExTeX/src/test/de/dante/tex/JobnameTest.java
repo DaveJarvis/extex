@@ -45,7 +45,7 @@ public class JobnameTest extends TestCase {
     public void testJobname01()
         throws Exception {
 
-        TestTeX.test("jujobnametest", "src/test/data/jujobname.testtxt");
+        TestTeX.test("jujobnametest");
     }
 
 }

@@ -46,8 +46,7 @@ public class CurrentgrouplevelTest extends TestCase {
     public void testCurrentgrouplevel()
         throws Exception {
 
-        TestTeX.test("jucurrentgrouplevel",
-                     "src/test/data/jucurrentgrouplevel.testtxt");
+        TestTeX.test("jucurrentgrouplevel");
     }
 
 }

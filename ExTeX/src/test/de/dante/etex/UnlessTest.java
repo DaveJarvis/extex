@@ -46,7 +46,7 @@ public class UnlessTest extends TestCase {
     public void testUnless()
         throws Exception {
 
-        TestTeX.test("juunless", "src/test/data/juunless.testtxt");
+        TestTeX.test("juunless");
     }
 
 }
