@@ -767,14 +767,6 @@ public class DviWriter {
         Glyph glyph = node.getGlyph();
         int characterNumber;
 
-        // TODO: the kerning should do the typesetter (TE)
-        if (lastGlyph != null) {
-            FixedDimen kerning = lastGlyph.getKerning(unicodeChar);
-            if (!Dimen.ZERO_PT.eq(kerning)) {
-                writeHorizontalSpace(kerning);
-            }
-        }
-
         /* get the chracterNumber */
         try {
             characterNumber = Integer.parseInt(glyph.getNumber());
@@ -844,7 +836,9 @@ public class DviWriter {
      * @exception GeneralException if an error occurs
      */
     public void writeNode(final WhatsItNode node) throws GeneralException {
-        // TODO
+        // TODO unimplemented
+        throw new RuntimeException("unimplemented");
+
     }
 
 
