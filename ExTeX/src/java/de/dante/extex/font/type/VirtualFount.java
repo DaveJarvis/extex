@@ -20,7 +20,7 @@
 package de.dante.extex.font.type;
 
 import de.dante.extex.interpreter.context.TypesettingContext;
-import de.dante.extex.typesetter.type.node.HorizontalListNode;
+import de.dante.extex.typesetter.type.node.VitualCharNode;
 import de.dante.util.UnicodeChar;
 
 /**
@@ -32,11 +32,11 @@ import de.dante.util.UnicodeChar;
 public interface VirtualFount {
 
     /**
-     * Returns the horz. nodelist for the virtual font.
+     * Returns the virt. char node.
      * @param context   the typesetting context
      * @param uc        the character
-     * @return Returns the horz. nodelist for the virtual font.
+     * @return Returns the virt. char node.
      */
-    HorizontalListNode getNodeList(TypesettingContext context, UnicodeChar uc);
+    VitualCharNode getVirtualCharNode(TypesettingContext context, UnicodeChar uc);
 
 }
