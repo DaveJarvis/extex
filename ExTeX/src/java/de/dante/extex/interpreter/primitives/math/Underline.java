@@ -19,14 +19,20 @@
 
 package de.dante.extex.interpreter.primitives.math;
 
+import de.dante.extex.i18n.MathHelpingException;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.typesetter.ListMaker;
 import de.dante.extex.typesetter.Typesetter;
+import de.dante.extex.typesetter.listMaker.NoadConsumer;
+import de.dante.extex.typesetter.type.noad.Noad;
+import de.dante.extex.typesetter.type.noad.UnderlinedNoad;
 import de.dante.util.GeneralException;
 
 /**
- * This class provides an implementation for the primitive <code>&#x5c;underline</code>.
+ * This class provides an implementation for the primitive
+ * <code>&#x5c;underline</code>.
  *
  * <doc name="span">
  * <h3>The Primitive <tt>&#x5c;underline</tt></h3>
@@ -72,9 +78,14 @@ public class Underline extends AbstractMathCode {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        //TODO execute() unimplemented
-        throw new RuntimeException("unimplemented");
-        //return true;
+        ListMaker maker = typesetter.getListMaker();
+        if (!(maker instanceof NoadConsumer)) {
+            throw new MathHelpingException(printableControlSequence(context));
+        }
+        NoadConsumer nc = (NoadConsumer) maker;
+        Noad noad = nc.scanNoads(context, source);
+        nc.add(new UnderlinedNoad(noad));
+        return true;
     }
 
 }
