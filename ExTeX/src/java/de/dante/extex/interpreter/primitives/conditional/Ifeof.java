@@ -18,9 +18,9 @@
  */
 package de.dante.extex.interpreter.primitives.conditional;
 
-import de.dante.extex.i18n.BadFileNumberHelpingException;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.primitives.file.FileKeyValidator;
 import de.dante.extex.interpreter.type.file.InFile;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.GeneralException;
@@ -78,11 +78,9 @@ public class Ifeof extends AbstractIf {
 
         long no = source.scanInteger();
         String key = Long.toString(no);
-        if (no < 0 || no > InFile.MAX_FILE_NO) {
-            throw new BadFileNumberHelpingException(key, "0",
-                    Integer.toString(InFile.MAX_FILE_NO));
-        }
+        FileKeyValidator.validateInFile(no, key);
+
         InFile file = context.getInFile(key);
-        return (file == null || file.ifEof());
+        return (file == null || file.isEof());
     }
 }
