@@ -21,12 +21,10 @@ package de.dante.extex.font;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.apache.batik.dom.svg.SVGDOMImplementation;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
-import org.w3c.dom.svg.SVGDocument;
 
 /**
  * This class read a SVG-file.
