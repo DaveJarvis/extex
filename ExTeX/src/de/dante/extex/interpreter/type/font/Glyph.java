@@ -183,6 +183,7 @@ public class Glyph {
 
     /**
      * @return Returns the italic.
+     * MGN als Dimen zurück
      */
     public float getItalic() {
 
