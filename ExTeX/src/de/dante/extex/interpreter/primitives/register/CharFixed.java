@@ -19,7 +19,7 @@
 package de.dante.extex.interpreter.primitives.register;
 
 import de.dante.extex.interpreter.AbstractCode;
-import de.dante.extex.interpreter.CountConvertable;
+import de.dante.extex.interpreter.CountConvertible;
 import de.dante.extex.interpreter.ExpandableCode;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
@@ -36,7 +36,7 @@ import de.dante.util.UnicodeChar;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class CharFixed extends AbstractCode implements ExpandableCode, CountConvertable {
+public class CharFixed extends AbstractCode implements ExpandableCode, CountConvertible {
 
     /**
      * The field <tt>character</tt> contains the ...

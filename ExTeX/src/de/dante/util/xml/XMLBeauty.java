@@ -37,7 +37,14 @@ import org.jdom.output.XMLOutputter;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class XMLBeauty {
+public final class XMLBeauty {
+
+    /**
+     * private: no instance
+     */
+    private XMLBeauty() {
+
+    }
 
     /**
      * filebuffe

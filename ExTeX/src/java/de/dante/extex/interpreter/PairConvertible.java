@@ -20,25 +20,25 @@
 package de.dante.extex.interpreter;
 
 import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.type.Bool;
+import de.dante.extex.interpreter.type.Pair;
 import de.dante.util.GeneralException;
 
 /**
- * This is an interface which describes the feature to be convertibe into a bool.
+ * This is an interface which describes the feature to be convertibe into a pair.
  *
  * @author <a href="mailto:mgn@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public interface BoolConvertable {
+public interface PairConvertible {
 
     /**
-     * Convert to a bool.
+     * Convert to a pair.
      *
      * @param context   the interpreter context
      * @param source    the source for new tokens
      * @return the converted value
      * @throws GeneralException in case of an error
      */
-    Bool convertBoot(Context context, TokenSource source)
+    Pair convertPair(Context context, TokenSource source)
             throws GeneralException;
 }
