@@ -330,9 +330,8 @@ public class TTFTableMAXP extends AbstractTTFTable
     public Element toXML() {
 
         Element table = new Element("maxp");
-        table.setAttribute("id", "0x" + Integer.toHexString(getType()));
-        table.setAttribute("version", String.valueOf(TTFFont
-                .convertVersion(version)));
+        table.setAttribute("id", TTFFont.convertIntToHexString(getType()));
+        table.setAttribute("version", TTFFont.convertIntToHexString(version));
         table.setAttribute("numberofglyphs", String.valueOf(numGlyphs));
         table.setAttribute("maxpoints", String.valueOf(maxPoints));
         table.setAttribute("maxcontours", String.valueOf(maxContours));
