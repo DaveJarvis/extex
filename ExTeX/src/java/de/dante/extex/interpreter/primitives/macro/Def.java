@@ -25,6 +25,8 @@ import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.primitives.MacroCode;
 import de.dante.extex.interpreter.type.Tokens;
+import de.dante.extex.scanner.ActiveCharacterToken;
+import de.dante.extex.scanner.ControlSequenceToken;
 import de.dante.extex.scanner.LeftBraceToken;
 import de.dante.extex.scanner.MacroParamToken;
 import de.dante.extex.scanner.OtherToken;
@@ -57,14 +59,25 @@ public class Def extends AbstractAssignment {
     public void assign(final Flags prefix, final Context context,
         final TokenSource source, final Typesetter typesetter)
         throws GeneralException {
+
         Token cs = source.getControlSequence();
-        String name = cs.getValue();
         Tokens pattern = getPattern(context, source);
         Tokens body = (prefix.isExpanded() //
             ? expandedBody(source)//
             : source.getTokens());
-        context.setMacro(name, new MacroCode(name, prefix, pattern, body),
-                         prefix.isGlobal());
+
+        if (cs instanceof ControlSequenceToken) {
+            String name = cs.getValue();
+            context.setMacro(name, new MacroCode(name, prefix, pattern, body),
+                    prefix.isGlobal());
+        } else if (cs instanceof ActiveCharacterToken) {
+            context.setCode(cs, new MacroCode("xxx", prefix, pattern, body),
+                    prefix.isGlobal());
+        } else if (cs == null) {
+            throw new GeneralHelpingException("TTP.MissingCtrlSeq");
+        } else {
+            throw new RuntimeException("This can't happen");
+        }
     }
 
     /**
@@ -75,7 +88,8 @@ public class Def extends AbstractAssignment {
      */
     private Tokens expandedBody(final TokenSource source) {
         //TODO
-        return null;
+        //return null;
+        throw new RuntimeException("Unimplemented");
     }
 
     /**
