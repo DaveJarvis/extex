@@ -845,7 +845,7 @@ public class Max extends Moritz
 
         Mode mode = typesetter.getMode();
         if (mode == Mode.MATH || mode == Mode.DISPLAYMATH) {
-            //TODO unimplemented
+            //TODO _ unimplemented
             throw new RuntimeException("unimplemented");
         }
 
@@ -871,7 +871,7 @@ public class Max extends Moritz
 
         Mode mode = typesetter.getMode();
         if (mode == Mode.MATH || mode == Mode.DISPLAYMATH) {
-            //TODO unimplemented
+            //TODO ^ unimplemented
             throw new RuntimeException("unimplemented");
         }
 
@@ -895,7 +895,7 @@ public class Max extends Moritz
     public Object visitTabMark(final TabMarkToken token, final Object ignore)
             throws GeneralException {
 
-        // TODO unimplemented
-        throw new RuntimeException("unimplemented");
+        throw new HelpingException(getLocalizer(), "TTP.MisplacedTabMark",
+                token.toString());
     }
 }
