@@ -192,7 +192,7 @@ public class RandomAccessInputFileDebug implements RandomAccessR {
     public int readInt() throws IOException {
 
         int b = raf.readInt();
-        out.println("\nInt: (" + b + ":0x" + Integer.toHexString(b) + ")");
+        out.println("\nInt: (" + b + " :0x" + Integer.toHexString(b) + ") ");
         return b;
     }
 
