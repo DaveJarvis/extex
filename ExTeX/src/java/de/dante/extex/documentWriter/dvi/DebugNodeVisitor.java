@@ -74,7 +74,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
      *
      * @param visitor a <code>NodeVisitor</code> value
      * @see
-     *   InspectableNodeVisitor#setVisitor(de.dante.extex.typesetter.NodeVisitor)
+     *   InspectableNodeVisitor#setVisitor(de.dante.extex.typesetter.type.NodeVisitor)
      */
     public void setVisitor(final NodeVisitor visitor) {
         nodeVisitor.setVisitor(visitor);

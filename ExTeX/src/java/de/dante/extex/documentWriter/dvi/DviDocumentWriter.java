@@ -408,7 +408,7 @@ public class DviDocumentWriter
     /**
      * Setter for the output stream.  This method throws no exception.
      * If somethings goes wrong {@link
-     * #shipout(de.dante.extex.typesetter.NodeList) shipout(NodeList)}
+     * #shipout(de.dante.extex.typesetter.type.NodeList) shipout(NodeList)}
      * informs the caller.
      *
      * @param writer an <code>OutputStream</code> value
