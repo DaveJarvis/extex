@@ -23,9 +23,9 @@ import java.util.LinkedList;
 
 import de.dante.extex.interpreter.Tokenizer;
 import de.dante.extex.scanner.stream.TokenStream;
+import de.dante.extex.scanner.stream.exception.ScannerException;
 import de.dante.extex.scanner.type.Token;
 import de.dante.extex.scanner.type.TokenFactory;
-import de.dante.util.GeneralException;
 import de.dante.util.Locator;
 import de.dante.util.UnicodeChar;
 
@@ -84,7 +84,7 @@ public abstract class AbstractTokenStreamImpl implements TokenStream {
      *      de.dante.extex.interpreter.Tokenizer)
      */
     public Token get(final TokenFactory factory, final Tokenizer tokenizer)
-            throws GeneralException {
+            throws ScannerException {
 
         return (stack.size() == 0 ? getNext(factory, tokenizer) : (Token) stack
                 .removeLast());
@@ -110,10 +110,10 @@ public abstract class AbstractTokenStreamImpl implements TokenStream {
      *
      * @return the next Token or <code>null</code>
      *
-     * @throws GeneralException in case of an error
+     * @throws ScannerException in case of an error
      */
     protected abstract Token getNext(final TokenFactory factory,
-            final Tokenizer tokenizer) throws GeneralException;
+            final Tokenizer tokenizer) throws ScannerException;
 
     /**
      * @see de.dante.extex.scanner.stream.TokenStream#isFileStream()
