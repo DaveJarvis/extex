@@ -22,6 +22,7 @@ package de.dante.extex.interpreter.type.node;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.type.file.OutFile;
 import de.dante.extex.interpreter.type.tokens.Tokens;
+import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.GeneralException;
 
 /**
@@ -69,8 +70,8 @@ public class WhatsItWriteNode extends WhatsItNode {
     public void atShipping(final Context context) throws GeneralException {
 
         OutFile file = context.getOutFile(key);
-
-        Tokens toks = context.expand(tokens);
+        Typesetter typesetter = null; //TODO fill with value
+        Tokens toks = context.expand(tokens, typesetter);
 
         if (file == null || !file.isOpen()) {
             // TODO stdout unimplemented
