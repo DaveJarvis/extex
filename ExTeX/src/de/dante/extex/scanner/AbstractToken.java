@@ -47,12 +47,21 @@ public abstract class AbstractToken implements Token {
     public abstract Catcode getCatcode();
 
     /**
-     * Return the printable representation of this object
+     * Return the printable representation of this object.
      *
      * @return the printable representation
      */
     public abstract String toString();
 
+    /**
+     * Return the text representation of this object.
+     *
+     * @return the text representation
+     */
+    public String toText() {
+        return value;
+    }
+    
     /**
      * @see de.dante.extex.scanner.Token#getValue()
      */
