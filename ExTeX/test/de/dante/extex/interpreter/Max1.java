@@ -301,6 +301,14 @@ public class Max1 extends TestCase {
 
             // TODO Auto-generated method stub
         }
+
+        /**
+         * @see de.dante.extex.typesetter.ListMaker#getLastNode()
+         */
+        public Node getLastNode() {
+
+            return null;
+        }
     }
 
 }
