@@ -243,7 +243,7 @@ public class ParagraphBuilderImpl implements ParagraphBuilder, LogEnabled, Hyphe
      *
      * @see "TTP [108]"
      */
-    int badness(final long t, final long s) {
+    private int badness(final long t, final long s) {
 
         if (t == 0) {
             return 0;
