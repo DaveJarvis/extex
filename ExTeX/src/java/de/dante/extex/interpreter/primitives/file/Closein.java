@@ -82,11 +82,9 @@ public class Closein extends AbstractCode {
         final TokenSource source, final Typesetter typesetter)
         throws GeneralException {
 
-        long no = source.scanInteger();
-        String key = Long.toString(no);
-        FileKeyValidator.validateInFile(no, key);
-
+        String key = AbstractFileCode.scanInFileKey(source);
         InFile file = context.getInFile(key);
+
         if (file != null) {
             file.close();
         }

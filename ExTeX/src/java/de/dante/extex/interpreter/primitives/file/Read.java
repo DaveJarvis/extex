@@ -74,9 +74,7 @@ public class Read extends AbstractCode {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        long no = source.scanInteger();
-        String key = Long.toString(no);
-        FileKeyValidator.validateInFile(no, key);
+        String key = AbstractFileCode.scanInFileKey(source);
 
         if (!source.getKeyword("to")) {
             throw new HelpingException(getLocalizer(), "TTP.MissingToForRead");

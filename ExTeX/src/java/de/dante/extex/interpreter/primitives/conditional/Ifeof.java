@@ -20,7 +20,7 @@ package de.dante.extex.interpreter.primitives.conditional;
 
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.primitives.file.FileKeyValidator;
+import de.dante.extex.interpreter.primitives.file.AbstractFileCode;
 import de.dante.extex.interpreter.type.file.InFile;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.GeneralException;
@@ -76,10 +76,7 @@ public class Ifeof extends AbstractIf {
         final TokenSource source, final Typesetter typesetter)
         throws GeneralException {
 
-        long no = source.scanInteger();
-        String key = Long.toString(no);
-        FileKeyValidator.validateInFile(no, key);
-
+        String key = AbstractFileCode.scanInFileKey(source);
         InFile file = context.getInFile(key);
         return (file == null || file.isEof());
     }
