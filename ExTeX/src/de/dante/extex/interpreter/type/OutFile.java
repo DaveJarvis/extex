@@ -35,7 +35,6 @@ public class OutFile implements Serializable {
      */
     public OutFile() {
         super();
-        // TODO unimplemented
     }
 
 }
