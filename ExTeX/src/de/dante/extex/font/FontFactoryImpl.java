@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2004  Gerd Neugebauer, Michael Niedermair
+ * Copyright (C) 2003-2004 The ExTeX Group
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -16,6 +16,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  *
  */
+
 package de.dante.extex.font;
 
 import java.util.HashMap;
@@ -67,13 +68,7 @@ public class FontFactoryImpl implements FontFactory {
         if (font == null) {
             font = new EFMFont(name, size, finder);
             // System.err.println(font);
-            // System.err.println(font.getFontDimen("SPACE").toPT());
-            // UnicodeChar uc;
-            // System.err.println((uc = font.ligature(new UnicodeChar('f'),new UnicodeChar('f'))).getCodePoint());
-            // System.err.println(font.ligature(uc,new UnicodeChar('l')).getCodePoint());
-            // System.err.println(font.kern(new UnicodeChar('W'),new UnicodeChar('o')).toPT());
         }
         return font;
     }
-
 }
