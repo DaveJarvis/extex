@@ -74,12 +74,12 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
         /**
          * Creates a new object.
          *
-         * @param namespace ...
-         * @param uc ...
+         * @param theNamespace ...
+         * @param theChar ...
          */
-        public USKey (final String namespace, final UnicodeChar uc) {
-            this.namespace = namespace;
-            this.uc = uc;
+        public USKey (final String theNamespace, final UnicodeChar theChar) {
+            this.namespace = theNamespace;
+            this.uc = theChar;
         }
 
         /**
@@ -125,12 +125,12 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
         /**
          * Creates a new object.
          *
-         * @param namespace ...
-         * @param name ...
+         * @param theNamespace ...
+         * @param theName ...
          */
-        public SSKey (final String namespace, final String name) {
-            this.namespace = namespace;
-            this.name = name;
+        public SSKey (final String theNamespace, final String theName) {
+            this.namespace = theNamespace;
+            this.name = theName;
         }
 
         /**
