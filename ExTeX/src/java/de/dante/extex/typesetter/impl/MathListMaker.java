@@ -54,7 +54,7 @@ public class MathListMaker extends AbstractListMaker implements ListMaker {
     /**
      * @see de.dante.extex.typesetter.ListMaker#add(de.dante.extex.interpreter.type.node.CharNode)
      */
-    public void add(final Node c) throws GeneralException {
+    public void add(final Node c) {
         nodes.add(c);
     }
 

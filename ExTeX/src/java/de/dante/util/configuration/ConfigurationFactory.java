@@ -29,30 +29,28 @@ import de.dante.extex.i18n.Messages;
 public class ConfigurationFactory {
     /**
      * Creates a new object.
-     *
-     * @throws ConfigException in case that something went wrong
      */
-    public ConfigurationFactory() throws ConfigurationException {
+    public ConfigurationFactory() {
         super();
     }
 
     /**
-     * Determine a new Configuration object which is initialized from a
-     * file. 
-     *
+     * Determine a new Configuration object which is initialized from a file.
+     * 
      * @param source the source of the confugration
-     *
+     * 
      * @return a new Configuration object
-     *
+     * 
      * @throws ConfigurationNoTypesetterException in case that the source is
-     * <code>null</code>
+     *             <code>null</code>
      * @throws ConfigurationException in case that the creation of the
-     * Configuration fails
+     *             Configuration fails
      */
     public Configuration newInstance(String source)
-                              throws ConfigurationException {
+        throws ConfigurationException {
         if (source == null) {
-            throw new ConfigurationInvalidNameException(Messages.format("ConfigurationFactory.EmptySourceMessage"));
+            throw new ConfigurationInvalidNameException(Messages
+                .format("ConfigurationFactory.EmptySourceMessage"));
         }
 
         return new ConfigurationXMLImpl(source);

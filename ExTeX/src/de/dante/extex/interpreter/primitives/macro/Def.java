@@ -18,10 +18,15 @@
  */
 package de.dante.extex.interpreter.primitives.macro;
 
+import de.dante.extex.i18n.GeneralHelpingException;
 import de.dante.extex.interpreter.AbstractCode;
 import de.dante.extex.interpreter.Flags;
+import de.dante.extex.interpreter.MacroCode;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.type.Tokens;
+import de.dante.extex.scanner.LeftBraceToken;
+import de.dante.extex.scanner.Token;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.GeneralException;
 
@@ -47,11 +52,40 @@ public class Def extends AbstractCode {
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context, final TokenSource source,
-        final Typesetter typesetter) throws GeneralException {
-        //TODO unimplemented
+    public void execute(final Flags prefix, final Context context,
+        final TokenSource source, final Typesetter typesetter)
+        throws GeneralException {
+        Token cs = source.getControlSequence();
+        String name = cs.getValue();
+        Tokens pattern = getPattern(source);
+        Tokens body = source.getTokens();
+        context.setMacro(name, new MacroCode(name, prefix, pattern, body),
+                         prefix.isGlobal());
         prefix.clear();
-        throw new GeneralException("unimplemented");
     }
 
+    /**
+     * ...
+     * 
+     * @param source the source for new tokens
+     *
+     * @return the tokens read
+     *
+     * @throws GeneralException in case of an error
+     */
+    private Tokens getPattern(final TokenSource source) throws GeneralException {
+        Tokens toks = new Tokens();
+
+        //TODO verify that the macro parameters are correct
+        for (Token t = source.getToken(); t != null; t = source.getToken() ) {
+            if (t instanceof LeftBraceToken) {
+                
+                return toks;
+            }
+            toks.add(t);
+        }
+
+        throw new GeneralHelpingException("xxx");//TODO EOF
+    }
+    
 }

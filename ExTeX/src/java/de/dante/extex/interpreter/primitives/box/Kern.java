@@ -55,7 +55,7 @@ public class Kern extends AbstractCode {
             throws GeneralException {
         Dimen kern = new Dimen();
         try {
-            kern.set(source, context);
+            kern.set(context, source);
         } catch (GeneralException e) {
             typesetter.add(new KernNode(kern));
             throw e;

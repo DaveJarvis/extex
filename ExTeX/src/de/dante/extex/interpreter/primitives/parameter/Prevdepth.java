@@ -51,7 +51,7 @@ public class Prevdepth extends AbstractCode {
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws GeneralException {
         source.scanOptionalEquals();
-        Dimen pd = new Dimen(source, context);
+        Dimen pd = new Dimen(context, source);
         typesetter.setPrevDepth(pd);
         prefix.clear();
     }

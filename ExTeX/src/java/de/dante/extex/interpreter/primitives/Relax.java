@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003  Gerd Neugebauer
+ * Copyright (C) 2003-2004 Gerd Neugebauer
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -34,7 +34,7 @@ public class Relax extends AbstractCode {
      * 
      * @param name the name for tracing and debugging
      */
-    public Relax(String name) {
+    public Relax(final String name) {
         super(name);
     }
 

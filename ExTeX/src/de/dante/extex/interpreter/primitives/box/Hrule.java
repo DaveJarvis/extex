@@ -62,11 +62,11 @@ public class Hrule extends AbstractCode {
 
         for (;;) {
             if (source.scanKeyword("width")) {
-                width.set(source, context);
+                width.set(context, source);
             } else if (source.scanKeyword("height")) {
-                height.set(source, context);
+                height.set(context, source);
             } else if (source.scanKeyword("depth")) {
-                depth.set(source, context);
+                depth.set(context, source);
             } else {
                 break;
             }

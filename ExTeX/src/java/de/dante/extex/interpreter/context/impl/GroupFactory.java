@@ -46,11 +46,6 @@ public class GroupFactory {
     private static final String CLASS_ATTRIBUTE = "class";
 
     /**
-     * The field <tt>config</tt> contains the configuration for this factory.
-     */
-    private Configuration config = null;
-
-    /**
      * The field <tt>constructor</tt> contains the constructor of the class to
      * instantiate. It is kept here to speed up the method
      * {@link #newInstance(de.dante.extex.interpreter.context.impl.Group) newInstance}.
@@ -64,7 +59,6 @@ public class GroupFactory {
      */
     public GroupFactory(Configuration config) throws ConfigurationException {
         super();
-        this.config = config;
 
         String classname = config.getAttribute(CLASS_ATTRIBUTE);
         if (classname == null) {

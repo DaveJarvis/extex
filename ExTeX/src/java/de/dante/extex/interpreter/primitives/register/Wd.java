@@ -67,7 +67,7 @@ public class Wd extends NumberedBox implements Serializable, Theable,
         throws GeneralException {
         String key = getKey(source);
         source.scanOptionalEquals();
-        Dimen d = new Dimen(source, context);
+        Dimen d = new Dimen(context, source);
         Box b = context.getBox(key);
 
         if (b == null) {

@@ -28,13 +28,22 @@ import de.dante.extex.typesetter.Node;
  */
 public class SpecialNode extends WhatsItNode implements Node {
 
-    private String theText;
+    private String text;
+
     /**
      * Creates a new object.
      */
-    public SpecialNode(final String text) {
+    public SpecialNode(final String theText) {
         super();
-        theText = text;
+        text = theText;
     }
 
+    /**
+     * Getter for text.
+     *
+     * @return the text.
+     */
+    public String getText() {
+        return text;
+    }
 }
