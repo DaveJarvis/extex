@@ -39,20 +39,20 @@ import de.dante.util.GeneralException;
  * @author <a href="mailto:mgn@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class NamedCount extends NumberedCount {
+public class IntegerParameter extends CountPrimitive {
 
     /**
      * Creates a new object.
      *
      * @param name the name for debugging
      */
-    public NamedCount(final String name) {
+    public IntegerParameter(final String name) {
 
         super(name);
     }
 
     /**
-     * @see de.dante.extex.interpreter.primitives.register.count.NamedCount#getKey(
+     * @see de.dante.extex.interpreter.primitives.register.count.IntegerParameter#getKey(
      *      de.dante.extex.interpreter.TokenSource, String)
      */
     protected String getKey(final TokenSource source, final String namespace)
