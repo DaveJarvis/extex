@@ -27,7 +27,7 @@ import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.GeneralException;
 
 /**
- * This class provides an implementation for the primitive <code>\relax</code>.
+ * This class provides an implementation for the primitive <code>\par</code>.
  *
  * <doc name="par">
  * <h3>The Primitive <tt>\par</tt></h3>
