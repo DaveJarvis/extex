@@ -28,6 +28,7 @@ import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.font.Font;
+import de.dante.extex.interpreter.type.font.FontConvertible;
 import de.dante.extex.interpreter.type.glue.Glue;
 import de.dante.extex.scanner.SpaceToken;
 import de.dante.extex.scanner.Token;
@@ -57,7 +58,7 @@ import de.dante.util.configuration.ConfigurationException;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class FontPrimitive extends AbstractAssignment {
+public class FontPrimitive extends AbstractAssignment implements FontConvertible	 {
 
     /**
      * The field <tt>DEFAULT_SCALE_FACTOR</tt> contains the default scale
@@ -149,6 +150,17 @@ public class FontPrimitive extends AbstractAssignment {
     }
 
     /**
+     * @see de.dante.extex.interpreter.type.font.FontConvertible#convertFont(
+     *      de.dante.extex.interpreter.context.Context,
+     *      de.dante.extex.interpreter.TokenSource)
+     */
+    public Font convertFont(final Context context, final TokenSource source)
+            throws GeneralException {
+
+        return context.getTypesettingContext().getFont();
+    }
+
+    /**
      * Return the size of a font with a fontname. If no number in the
      * filename exits, -1 is returned.
      *
@@ -178,7 +190,9 @@ public class FontPrimitive extends AbstractAssignment {
      * scan the filename until a <code>SpaceToken</code>.
      *
      * @param source the source for new tokens
+     *
      * @return the file name as string
+     *
      * @throws GeneralException in case of an error
      */
     private String scanFontName(final TokenSource source)
@@ -199,4 +213,5 @@ public class FontPrimitive extends AbstractAssignment {
 
         return sb.toString();
     }
+
 }
