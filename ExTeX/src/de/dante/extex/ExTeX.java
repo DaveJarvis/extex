@@ -390,7 +390,6 @@ public class ExTeX {
 		try {
 			Configuration config = new ConfigurationFactory().newInstance(properties.getProperty("extex.config"));
 
-			// FileFinder
 			FileFinderList finder = new FileFinderList(new FileFinderDirect(new StringList(":tex", ":")));
 			String path = properties.getProperty("extex.texinputs", "");
 			if (!path.equals("")) {

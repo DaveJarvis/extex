@@ -107,11 +107,15 @@ public class TokenStreamFactory implements FileFinder, Observable {
     public TokenStream newInstance(String file, String type, String encoding)
             throws ConfigurationException, IOException, FileNotFoundException {
         TokenStream stream;
-
+        File theFile = fileFinder.findFile(file,type);
+        if ( theFile ==  null) {
+            throw new FileNotFoundException(file);
+        }
+        
         try {
             stream = (TokenStream) Class.forName(classname).getConstructor(
                     new Class[]{File.class, String.class}).newInstance(
-                    new Object[]{new File(file), encoding});
+                    new Object[]{theFile, encoding});
         } catch (InvocationTargetException e) {
             Throwable cause = e.getCause();
 
