@@ -149,6 +149,8 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
                     .visit(this, null, new UnicodeChar(c), namespace);
         } catch (CatcodeException e) {
             throw e;
+        } catch (RuntimeException e) {
+            throw e;
         } catch (Exception e) {
             // this should not happen
             throw new CatcodeException(e);
@@ -201,6 +203,8 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
             return (Token) code.visit(this, value, esc, namespace);
         } catch (CatcodeException e) {
             throw e;
+        } catch (RuntimeException e) {
+            throw e;
         } catch (Exception e) {
             // this should not happen
             throw new CatcodeException(e);
@@ -232,6 +236,8 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
         try {
             return (Token) code.visit(this, null, c, namespace);
         } catch (CatcodeException e) {
+            throw e;
+        } catch (RuntimeException e) {
             throw e;
         } catch (Exception e) {
             // this should not happen
