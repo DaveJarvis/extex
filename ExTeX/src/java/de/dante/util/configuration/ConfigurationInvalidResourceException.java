@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004 Gerd Neugebauer
+ * Copyright (C) 2004 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -29,6 +29,7 @@ import de.dante.extex.i18n.Messages;
  * @version $Revision$
  */
 public class ConfigurationInvalidResourceException extends ConfigurationException {
+
     /**
      * Create a new object.
      *
@@ -39,10 +40,13 @@ public class ConfigurationInvalidResourceException extends ConfigurationExceptio
 
     /**
      * Getter for the text prefix of this ConfigException.
+     * The text is taken from the {@link de.dante.extex.i18n.Messages Messages}
+     * under the key <tt>ConfigurationInvalidResourceException.Text</tt>.
      *
      * @return the text
      */
     protected String getText() {
-        return Messages.format("ConfigInvalidResourceException.Text");
+        return Messages.format("ConfigurationInvalidResourceException.Text");
     }
+
 }
