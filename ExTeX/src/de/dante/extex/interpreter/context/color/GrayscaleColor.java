@@ -34,7 +34,7 @@ public class GrayscaleColor implements Color {
      * The constant <tt>MAX_VALUE</tt> contains the maximal values for all
      * channels.
      */
-    private static final int MAX_VALUE = 0xffff;
+    public static final int MAX_VALUE = 0xffff;
 
     /**
      * The constant <tt>BLACK</tt> contains the color black.
@@ -76,11 +76,12 @@ public class GrayscaleColor implements Color {
     }
 
     /**
-     * ...
+     * Getter for the gray value.
+     * It has a value in the range from 0 to {@link #MAX_VALUE MAX_VALUE}.
      *
-     * @return ...
+     * @return the gray value.
      */
-    public int getgray() {
+    public int getGray() {
 
         return gray;
     }

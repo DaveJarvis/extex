@@ -16,6 +16,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  *
  */
+
 package de.dante.extex.interpreter;
 
 import java.io.IOException;
@@ -112,9 +113,10 @@ public interface Interpreter extends TokenSource, Observable {
      *
      * @param factory the token stream factory
      *
-     * @throws ConfigurationException ...
+     * @throws ConfigurationException in case of en error in the configuration
      */
-    void setTokenStreamFactory(TokenStreamFactory factory) throws ConfigurationException;
+    void setTokenStreamFactory(TokenStreamFactory factory)
+            throws ConfigurationException;
 
     /**
      * Setter for the typesetter.
@@ -160,7 +162,8 @@ public interface Interpreter extends TokenSource, Observable {
      *
      * @see #run()
      */
-    void run(TokenStream stream) throws ConfigurationException,
-            GeneralException;
+    void run(TokenStream stream)
+            throws ConfigurationException,
+                GeneralException;
 
 }

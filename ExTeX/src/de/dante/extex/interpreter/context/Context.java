@@ -87,18 +87,6 @@ public interface Context extends Serializable {
             throws GeneralException;
 
     /**
-     * Getter for active characters.
-     *
-     * @param name the name of the active character
-     *
-     * @return the code assigned to the active character or <code>null</code>
-     *         if none is assigned
-     *
-     * @deprecated use getCode(Token) instead.
-     */
-    Code getActive(String name);
-
-    /**
      * Getter for the afterassignment token.
      *
      * @return the afterassignment token.
@@ -228,17 +216,6 @@ public interface Context extends Serializable {
      * @return the lower case equivalent or null if none exists
      */
     UnicodeChar getLccode(UnicodeChar uc);
-
-    /**
-     * Getter for a macro definition.
-     *
-     * @param name the name or the number of the macro
-     *
-     * @return the definition of a macro
-     *
-     * @deprecated use getCode(Token) instead.
-     */
-    Code getMacro(String name);
 
     /**
      * Getter for the magnification factor in permille. The default value is
@@ -382,17 +359,6 @@ public interface Context extends Serializable {
      * active character token.
      */
     void registerCodeChangeObserver(CodeChangeObserver observer, Token name);
-
-    /**
-     * Setter for active characters in the requested group.
-     *
-     * @param name the name of the active character
-     * @param code the assigned code
-     * @param global the indicator for the scope; <code>true</code> means all
-     *            groups; otherwise the current group is affected only
-     * @deprecated use setCode() instead.
-     */
-    void setActive(String name, Code code, boolean global);
 
     /**
      * Setter for the afterassignment token.

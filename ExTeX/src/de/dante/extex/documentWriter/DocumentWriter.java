@@ -79,10 +79,13 @@ public interface DocumentWriter {
     void close() throws GeneralException, IOException;
 
     /**
-     * ...
+     * Setter of an named parameter.
+     * Parameters are a general mechanism to influence the behaviour of the
+     * document writer. ANy parameter not knwon by the document writer has to
+     * be ignored.
      *
-     * @param name ...
-     * @param value ...
+     * @param name the name of the parameter
+     * @param value the value of the parameter
      */
     void setParameter(String name, String value);
 }

@@ -26,7 +26,9 @@ import de.dante.util.configuration.ConfigurationInstantiationException;
 import de.dante.util.configuration.ConfigurationMissingAttributeException;
 
 /**
- * ...
+ * This class provides a factory for a
+ * {@link de.dante.extex.interpreter.context.TypesettingContext
+ *  TypesettingContext}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

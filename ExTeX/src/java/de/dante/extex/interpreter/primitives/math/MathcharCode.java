@@ -42,7 +42,7 @@ public class MathcharCode extends Mathchar {
      * Creates a new object.
      *
      * @param name the name for debugging
-     * @param mc ...
+     * @param mc the code of the math char
      */
     public MathcharCode(final String name, final Count mc) {
 

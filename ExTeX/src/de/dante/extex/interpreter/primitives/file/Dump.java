@@ -103,7 +103,7 @@ public class Dump extends AbstractCode {
 
         Tokens tJobname = context.getToks("jobname");
         if (tJobname == null) {
-            throw new GeneralException("invalid jobname"); //TODO i18n
+            throw new GeneralHelpingException("invalid jobname"); //TODO i18n
         }
         String format = tJobname.toText() + FORMAT_EXTENSION;
 

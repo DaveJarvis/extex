@@ -54,12 +54,6 @@ import de.dante.util.GeneralException;
  * </p>
  * </doc>
  *
- * <p>Example</p>
- * <pre>
- * \toksdef\abc=45
- * \toksdef\abc 54
- * </pre>
- *
  *
  * <h3>Possible Extension</h3>
  * Allow an expandable expression instead of the number to define real named

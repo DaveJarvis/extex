@@ -983,22 +983,6 @@ public abstract class Moritz implements TokenSource, Observable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.TokenSource#scanOptionalEquals()
-     */
-    public void scanOptionalEquals() throws GeneralException {
-
-        Token t = scanNonSpace();
-
-        if (t == null) {
-            throw new GeneralHelpingException("TTP.MissingNumber");
-        } else if (t.equals(Catcode.OTHER, "=")) {
-            stream.put(getNonSpace());
-        } else {
-            stream.put(t);
-        }
-    }
-
-    /**
      * Expand tokens from the input stream until an unexpandable token is found.
      * This unexpandable token is returned.
      *

@@ -35,7 +35,9 @@ import de.dante.util.GeneralException;
  * <doc name="batchmode">
  * <h3>The Primitive <tt>\batchmode</tt></h3>
  * <p>
- *  ...
+ *  This primitive is an assignment. The interaction mode is set to batch mode.
+ *  In batch mode the processing is terminated if the program needs input from
+ *  the terminal.
  * </p>
  * <p>
  *  The formal description of this primitive is the following:
