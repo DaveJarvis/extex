@@ -34,6 +34,7 @@ import de.dante.extex.typesetter.NodeList;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.typesetter.paragraphBuilder.ParagraphShape;
+import de.dante.extex.typesetter.type.noad.Noad;
 import de.dante.util.UnicodeChar;
 import de.dante.util.configuration.Configuration;
 import de.dante.util.configuration.ConfigurationFactory;
@@ -52,6 +53,14 @@ public class Max1 extends TestCase {
         /**
          */
         private StringBuffer sb = new StringBuffer();
+
+        /**
+         * @see de.dante.extex.typesetter.ListMaker#add(
+         *      de.dante.extex.typesetter.type.noad.Noad)
+         */
+        public void add(final Noad noad) {
+            // nothing to do
+        }
 
         /**
          * @see de.dante.extex.typesetter.Typesetter#add(
