@@ -16,7 +16,10 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  *
  */
-package de.dante.util.configuration;
+package de.dante.util.framework.configuration;
+
+import de.dante.util.configuration.Configuration;
+import de.dante.util.configuration.ConfigurationException;
 
 /**
  * This interface describes the possibilities to configure an object.
