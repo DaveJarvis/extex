@@ -164,7 +164,7 @@ public class ContextImpl
      * The field <tt>countChangeObservers</tt> contains the list of observers
      * registered for change event on the count registers.
      */
-    private Map countChangeObservers = new HashMap();
+    private transient Map countChangeObservers = new HashMap();
 
     /**
      * The field <tt>fontFactory</tt> contains the font factory to use.
@@ -186,8 +186,12 @@ public class ContextImpl
     /**
      * The field <tt>hyphenationManager</tt> contains the hyphenation manager.
      */
-    private transient HyphenationManager hyphenationManager = new HyphenationManagerImpl();
+    private transient HyphenationManager hyphenationManager =
+        new HyphenationManagerImpl();
 
+    /**
+     * The field <tt>id</tt> contains the ...
+     */
     private String id = null;
 
     /**
@@ -244,8 +248,12 @@ public class ContextImpl
      */
     private transient TokenFactory tokenFactory;
 
+    /**
+     * Creates a new object.
+     *
+     */
     protected ContextImpl() {
-        
+
         super();
         codeChangeObservers = new HashMap();
     }
