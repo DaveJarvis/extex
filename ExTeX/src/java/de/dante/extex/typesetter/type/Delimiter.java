@@ -120,4 +120,16 @@ public class Delimiter {
         return this.smallChar;
     }
 
+    /**
+     * Append the printable representation of the  current instance to the
+     * string buffer.
+     *
+     * @param sb the target string buffer
+     */
+    public void toString(final StringBuffer sb) {
+
+        //TODO gene: unimplemented
+        throw new RuntimeException("unimplemented");
+    }
+
 }
