@@ -25,6 +25,7 @@ import java.io.InputStream;
 import de.dante.extex.font.FontFactory;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.ErrorLimitException;
+import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.loader.LoaderException;
 import de.dante.extex.scanner.stream.TokenStream;
 import de.dante.extex.scanner.stream.TokenStreamFactory;
@@ -85,13 +86,13 @@ public interface Interpreter extends TokenSource, Observable {
      * branch to the appropriate method for processing a single token.
      *
      * @throws ConfigurationException in case of a configuration error
-     * @throws GeneralException in case of another error
-     * @throws ErrorLimitException in case that the error limit has been reached
+     * @throws ErrorLimitException in case that the error limit has been
+     *  reached
+     * @throws InterpreterException in case of another error
      */
     void run()
             throws ConfigurationException,
-                GeneralException,
-                ErrorLimitException;
+                ErrorLimitException, InterpreterException;
 
     /**
      * Add a token stream and start processing it.
@@ -99,15 +100,15 @@ public interface Interpreter extends TokenSource, Observable {
      * @param stream the input stream to consider
      *
      * @throws ConfigurationException in case of a configuration error
-     * @throws GeneralException in case of another error
-     * @throws ErrorLimitException in case that the error limit has been reached
+     * @throws ErrorLimitException in case that the error limit has been
+     *  reached
+     * @throws InterpreterException in case of another error
      *
      * @see #run()
      */
     void run(TokenStream stream)
             throws ConfigurationException,
-                GeneralException,
-                ErrorLimitException;
+                ErrorLimitException, InterpreterException;
 
     /**
      * Setter for the error handler.

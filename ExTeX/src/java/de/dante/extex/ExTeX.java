@@ -1624,9 +1624,10 @@ public class ExTeX {
                     jobname);
 
             interpreter.run();
-            //outStream.close();
 
-            docWriter.close();
+            outStream.close();
+
+            //docWriter.close();
 
             int pages = docWriter.getPages();
             String outname = jobname + "." + docWriter.getExtension();
