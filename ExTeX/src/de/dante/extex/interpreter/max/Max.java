@@ -22,6 +22,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Calendar;
 import java.util.Iterator;
 
+import de.dante.extex.font.FontFactory;
 import de.dante.extex.i18n.GeneralHelpingException;
 import de.dante.extex.i18n.GeneralPanicException;
 import de.dante.extex.i18n.Messages;
@@ -202,6 +203,14 @@ public class Max extends Moritz implements Interpreter,
      */
     public void setFileFinder(final FileFinder fileFinder) {
         //finder = fileFinder;
+    }
+
+    /**
+     * @see de.dante.extex.interpreter.Interpreter#setFontFactory(de.dante.extex.font.FontFactory)
+     */
+    public void setFontFactory(final FontFactory fontFactory) {
+
+        context.setFontFactory(fontFactory);
     }
 
     /**
