@@ -252,6 +252,8 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
      * @param context the interpreter context
      * @param source the source for next tokens
      *
+     * @throws InterpreterException in case of an error
+     *
      * @see de.dante.extex.interpreter.type.glue.GlueComponent#set(
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource)
