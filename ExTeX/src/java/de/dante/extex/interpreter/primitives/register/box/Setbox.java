@@ -36,7 +36,10 @@ import de.dante.util.GeneralException;
  * <p>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    <tt>\setbox</tt> ...</pre>
+ *    &lang;setbox&rang;
+ *      &rarr; <tt>\setbox</tt> {@linkplain
+ *          de.dante.extex.interpreter.TokenSource#scanNumber()
+ *          &lang;8-bit&nbsp;number&rang;}...</pre>
  * </p>
  * <p>
  *  Examples:

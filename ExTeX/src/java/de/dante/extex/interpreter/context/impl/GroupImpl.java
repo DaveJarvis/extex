@@ -81,7 +81,7 @@ public class GroupImpl implements Group, Tokenizer, Serializable {
      * namespaces should be honoured. In this case the lookup for Code is
      * also performed in the default namespace if not found in the current one.
      */
-    private static boolean SUPPORT_NAMESPACES = true;
+    private static final boolean SUPPORT_NAMESPACES = true;
 
     /**
      * The field <tt>afterGroup</tt> contains the tokens to be inserted after

@@ -49,7 +49,7 @@ import de.dante.util.GeneralException;
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;csname&rang;
- *     &rarr; <tt>\csname</tt> &lang;...&rang; <tt>\endcsname</tt>  </pre>
+ *      &rarr; <tt>\csname</tt> &lang;...&rang; <tt>\endcsname</tt>  </pre>
  * </p>
  * <p>
  *  Examples:

@@ -150,7 +150,7 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
     /**
      * Creates a new object with a fixed width.
      *
-     * @param theValue the fixed value
+     * @param component the fixed value
      */
     public GlueComponent(final FixedGlueComponent component) {
 

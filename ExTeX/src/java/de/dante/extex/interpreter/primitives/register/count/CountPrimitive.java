@@ -47,13 +47,14 @@ import de.dante.util.GeneralException;
  * <p>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    <tt>\count</tt> {@linkplain
- *      de.dante.extex.interpreter.TokenSource#scanNumber()
- *      &lang;8-bit&nbsp;number&rang;} {@linkplain
- *      de.dante.extex.interpreter.TokenSource#getOptionalEquals()
- *      &lang;equals&rang;} {@linkplain
- *      de.dante.extex.interpreter.TokenSource#scanInteger()
- *      &lang;number&rang;}</pre>
+ *    &lang;count&rang;
+ *      &rarr; <tt>\count</tt> {@linkplain
+ *        de.dante.extex.interpreter.TokenSource#scanNumber()
+ *        &lang;8-bit&nbsp;number&rang;} {@linkplain
+ *        de.dante.extex.interpreter.TokenSource#getOptionalEquals()
+ *        &lang;equals&rang;} {@linkplain
+ *        de.dante.extex.interpreter.TokenSource#scanInteger()
+ *        &lang;number&rang;}</pre>
  * </p>
  * <p>
  *  Examples:

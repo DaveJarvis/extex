@@ -73,12 +73,15 @@ public class TypesettingContextImpl implements TypesettingContext {
     }
 
     /**
-     * Creates a new object.
+     * Creates a new object with the given initial font, the color black and no
+     * hyphenation.
+     *
+     * @param theFont the font to use
      */
-    public TypesettingContextImpl(final Font font) {
+    public TypesettingContextImpl(final Font theFont) {
 
         super();
-        this.font = font;
+        this.font = theFont;
         this.color = RgbColor.BLACK;
         this.hyphenation = null;
     }

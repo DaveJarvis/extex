@@ -37,7 +37,8 @@ import de.dante.extex.typesetter.Typesetter;
  * <p>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    <tt>\global ...</tt>  </pre>
+ *    &lang;global&rang;
+ *      &rarr; <tt>\global ...</tt>  </pre>
  * </p>
  * <p>
  *  Examples:

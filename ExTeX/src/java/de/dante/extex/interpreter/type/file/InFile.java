@@ -20,7 +20,6 @@
 package de.dante.extex.interpreter.type.file;
 
 import java.io.File;
-import java.io.InputStream;
 import java.io.Serializable;
 
 import de.dante.extex.interpreter.Tokenizer;
@@ -116,6 +115,8 @@ public class InFile implements Serializable {
     /**
      * Read a line of characters into a tokens list.
      *
+     * @param factory ...
+     * @param tokenizer ...
      * @param cs ...
      *
      * @return the tokens read

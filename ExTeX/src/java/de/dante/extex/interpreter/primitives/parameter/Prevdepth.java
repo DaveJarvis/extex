@@ -38,7 +38,8 @@ import de.dante.util.GeneralException;
  * <p>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    <tt>\prevdepth ...</tt>  </pre>
+ *    &lang;prevdepth&rang;
+ *      &rarr; <tt>\prevdepth ...</tt>  </pre>
  * </p>
  * <p>
  *  Examples:

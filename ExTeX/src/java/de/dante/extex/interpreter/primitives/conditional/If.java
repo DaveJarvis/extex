@@ -43,9 +43,8 @@ import de.dante.util.GeneralException;
  *       de.dante.extex.interpreter.TokenSource#getToken()
  *       &lang;token<sub>1</sub>&rang;} {@linkplain
  *       de.dante.extex.interpreter.TokenSource#getToken()
- *       &lang;token<sub>2</sub>&rang;}; &lang;true text&rang; <tt>\fi</tt>
- *
- *      |  <tt>\if</tt> {@linkplain
+ *       &lang;token<sub>2</sub>&rang;} &lang;true text&rang; <tt>\fi</tt>
+ *     | <tt>\if</tt> {@linkplain
  *       de.dante.extex.interpreter.TokenSource#getToken()
  *       &lang;token<sub>1</sub>&rang;} {@linkplain
  *       de.dante.extex.interpreter.TokenSource#getToken()

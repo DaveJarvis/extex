@@ -42,7 +42,7 @@ import de.dante.util.GeneralException;
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;endcsname&rang;
- *     &rarr; <tt>\endscsname</tt>  </pre>
+ *      &rarr; <tt>\endscsname</tt>  </pre>
  * </p>
  * <p>
  *  Examples:

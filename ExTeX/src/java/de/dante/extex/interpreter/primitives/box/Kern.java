@@ -43,7 +43,9 @@ import de.dante.util.GeneralException;
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;kern&rang;
- *        &rarr; <tt>\kern</tt>&lang;dimen&rang;  </pre>
+ *      &rarr; <tt>\kern</tt> {@linkplain
+ *      de.dante.extex.interpreter.type.dimen#Dimen(Context,TokenSource)
+ *      &lang;dimen&rang;}   </pre>
  * </p>
  * <p>
  *  Examples:

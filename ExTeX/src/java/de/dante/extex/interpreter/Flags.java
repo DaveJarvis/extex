@@ -83,7 +83,7 @@ public interface Flags {
      * The constant <tt>NONE</tt> contains a instance where no flags are set.
      * Beware of changing this instance!
      */
-    static final Flags NONE = new FlagsImpl();
+    Flags NONE = new FlagsImpl();
 
     /**
      * This method clears all flags.

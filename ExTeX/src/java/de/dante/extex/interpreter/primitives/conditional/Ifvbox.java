@@ -37,9 +37,13 @@ import de.dante.util.GeneralException;
  * <p>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    <tt>\ifvbox</tt> {@linkplain de.dante.extex.interpreter.TokenSource#scanInteger() &lang;number&rang;} &lang;true text&rang; <tt>\fi</tt>
- *
- *    <tt>\ifvbox</tt> {@linkplain de.dante.extex.interpreter.TokenSource#scanInteger() &lang;number&rang;} &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt> </pre>
+ *    &lang;ifvbox&rang;
+ *      &rarr; <tt>\ifvbox</tt> {@linkplain
+ *        de.dante.extex.interpreter.TokenSource#scanInteger()
+ *        &lang;number&rang;} &lang;true text&rang; <tt>\fi</tt>
+ *      | <tt>\ifvbox</tt> {@linkplain
+ *        de.dante.extex.interpreter.TokenSource#scanInteger()
+ *        &lang;number&rang;} &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt> </pre>
  * </p>
  * <p>
  *  Examples:

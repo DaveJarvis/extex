@@ -38,13 +38,12 @@ import de.dante.util.GeneralException;
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;ifeof&rang;
- *    &rarr; <tt>\ifeof</tt> {@linkplain
+ *      &rarr; <tt>\ifeof</tt> {@linkplain
  *        de.dante.extex.interpreter.TokenSource#scanInteger()
  *        &lang;number&rang;} &lang;true text&rang; <tt>\fi</tt>
- *
- *    |  <tt>\ifeof</tt> {@linkplain
- *       de.dante.extex.interpreter.TokenSource#scanInteger()
- *       &lang;number&rang;} &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt> </pre>
+ *      | <tt>\ifeof</tt> {@linkplain
+ *        de.dante.extex.interpreter.TokenSource#scanInteger()
+ *        &lang;number&rang;} &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt> </pre>
  * </p>
  * <p>
  *  Examples:

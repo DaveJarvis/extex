@@ -41,8 +41,11 @@ import de.dante.util.GeneralException;
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;moveleft&rang;
- *        &rarr; <tt>\moveleft</tt> &lang;dimen&rang; {@linkplain
- *    de.dante.extex.interpreter.TokenSource#getBox() &lang;box&rang;}  </pre>
+ *      &rarr; <tt>\moveleft</tt> {@linkplain
+ *        de.dante.extex.interpreter.type.dimen#Dimen(Context,TokenSource)
+ *        &lang;dimen&rang;} {@linkplain
+ *        de.dante.extex.interpreter.TokenSource#getBox(de.dante.extex.typesetter.Typesetter)
+ *        &lang;box&rang;}  </pre>
  * </p>
  * <p>
  *  Examples:

@@ -44,10 +44,12 @@ import de.dante.util.GeneralException;
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    <tt>\fontdimen</tt> {@linkplain
- *    de.dante.extex.interpreter.TokenSource#scanNumber()
- *    &lang;8-bit&nbsp;number&rang;}  {@linkplain
- *    de.dante.extex.interpreter.TokenSource#getOptionalEquals()
- *    &lang;equals&rang;} &lang;dimen&rang;  </pre>
+ *      de.dante.extex.interpreter.TokenSource#scanNumber()
+ *      &lang;8-bit&nbsp;number&rang;}  {@linkplain
+ *      de.dante.extex.interpreter.TokenSource#getOptionalEquals()
+ *      &lang;equals&rang;} {@linkplain
+ *      de.dante.extex.interpreter.type.dimen#Dimen(Context,TokenSource)
+ *      &lang;dimen&rang;}   </pre>
  * </p>
  * <p>
  *  Examples:

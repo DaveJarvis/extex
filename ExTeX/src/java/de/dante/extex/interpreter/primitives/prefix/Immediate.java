@@ -38,7 +38,8 @@ import de.dante.extex.typesetter.Typesetter;
  * <p>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    <tt>\immediate ...</tt>  </pre>
+ *    &lang;immediate&rang;
+ *      &rarr; <tt>\immediate ...</tt>  </pre>
  * </p>
  * <p>
  *  Examples:

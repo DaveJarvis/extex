@@ -38,7 +38,8 @@ import de.dante.util.GeneralException;
  * <p>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    <tt>\spacefactor ...</tt>  </pre>
+ *    &lang;spacefactor&rang;
+ *      &rarr; <tt>\spacefactor ...</tt>  </pre>
  * </p>
  * <p>
  *  Examples:

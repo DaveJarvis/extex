@@ -152,7 +152,7 @@ public abstract class AbstractIf extends AbstractCode implements ExpandableCode 
                 } else if (code.isIf()) {
                     n++;
                 } else if (code.isOuter()) {
-                    
+                    // TODO incomplete
                 }
             }
         }

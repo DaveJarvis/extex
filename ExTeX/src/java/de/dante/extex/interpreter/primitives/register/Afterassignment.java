@@ -41,9 +41,10 @@ import de.dante.util.GeneralException;
  * <p>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    <tt>\afterassignment</tt> {@linkplain
- *      de.dante.extex.interpreter.TokenSource#getToken()
- *      &lang;token&rang;} </pre>
+ *    &lang;afterassignment&rang;
+ *      &rarr; <tt>\afterassignment</tt> {@linkplain
+ *         de.dante.extex.interpreter.TokenSource#getToken()
+ *         &lang;token&rang;} </pre>
  * </p>
  * <p>
  *  Examples:

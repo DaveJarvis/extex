@@ -35,12 +35,13 @@ import de.dante.util.GeneralException;
  * <p>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    &lang;prefix&rang; <tt>\xdef</tt> {@linkplain
- *    de.dante.extex.interpreter.TokenSource#getControlSequence()
- *    &lang;control sequence&rang;} &lang;parameter text&rang; <tt>{</tt> &lang;replacement text&rang; <tt>}</tt>
+ *    &lang;xdef&rang;
+ *       &rarr; &lang;prefix&rang; <tt>\xdef</tt> {@linkplain
+ *         de.dante.extex.interpreter.TokenSource#getControlSequence()
+ *         &lang;control sequence&rang;} &lang;parameter text&rang; <tt>{</tt> &lang;replacement text&rang; <tt>}</tt>
  *
  *    &lang;prefix&rang;
- *      :=
+ *      &rarr;
  *       | <tt>\global</tt> &lang;prefix&rang;
  *       | <tt>\long</tt> &lang;prefix&rang;
  *       | <tt>\outer</tt> &lang;prefix&rang;</pre>

@@ -37,9 +37,9 @@ import de.dante.extex.typesetter.Typesetter;
  * <p>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    <tt>\ifhmode</tt> &lang;true text&rang; <tt>\fi</tt>
- *
- *    <tt>\ifhmode</tt> &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt> </pre>
+ *    &lang;ifhmode&rang;
+ *      &rarr; <tt>\ifhmode</tt> &lang;true text&rang; <tt>\fi</tt>
+ *      | <tt>\ifhmode</tt> &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt> </pre>
  * </p>
  * <p>
  *  Examples:

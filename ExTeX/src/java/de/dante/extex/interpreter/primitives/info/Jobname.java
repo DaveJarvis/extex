@@ -39,7 +39,8 @@ import de.dante.util.GeneralException;
  * <p>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    <tt>\jobname</tt>  </pre>
+ *    &lang;ifnum&rang;
+ *      &rarr; <tt>\jobname</tt>  </pre>
  * </p>
  * <p>
  *  Examples:

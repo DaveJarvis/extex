@@ -212,13 +212,11 @@ public abstract class Moritz implements TokenSource, Observable {
      * recursively expanded and the result is pushed. The first not-expandable
      * token is returned.
      *
-     * @param token
-     *            the Token to expand
+     * @param token the Token to expand
      *
      * @return the next non-expandable token or <code>null</code>
      *
-     * @throws GeneralException
-     *             in case of an error
+     * @throws GeneralException in case of an error
      */
     protected abstract Token expand(final Token token) throws GeneralException;
 
@@ -334,8 +332,7 @@ public abstract class Moritz implements TokenSource, Observable {
      * <code>true</code> is returned. Otherwise all tokens are left in the
      * input stream and <code>false</code> is returned.
      *
-     * @param s
-     *            the tokens to scan
+     * @param s the tokens to scan
      *
      * @return <code>true</code> iff the tokens could have been successfully
      *         removed from the input stream

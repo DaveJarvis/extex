@@ -40,7 +40,8 @@ import de.dante.util.UnicodeChar;
  * <p>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    <tt>\sfcode ...</tt>  </pre>
+ *    &lang;sfcode&rang;
+ *      &rarr; <tt>\sfcode ...</tt>  </pre>
  * </p>
  * <p>
  *  Examples:
