@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -18,44 +18,45 @@
  */
 package de.dante.extex.main;
 
-import java.util.logging.Logger;
+import java.util.logging.Handler;
+import java.util.logging.Level;
 
-import de.dante.extex.scanner.stream.TokenStream;
+import de.dante.extex.interpreter.Interaction;
 import de.dante.util.observer.Observable;
 import de.dante.util.observer.Observer;
 
 /**
- * This observer waits for update events when files are closed. According to the
- * reference in TeX a closing parenthesis is written to the log file.
+ * ...
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class FileCloseObserver implements Observer {
+public class InteractionObserver implements Observer {
+
     /**
-     * The field <tt>logger</tt> contains the logger for output
+     * The field <tt>handler</tt> contains the {@link java.util.logging.Handler
+     * Handler} at which the logging should be directed.
      */
-    private Logger logger;
+    private Handler handler;
 
     /**
      * Creates a new object.
      *
-     * @param logger the logger for potential output
+     * @param theHandler the target handler
      */
-    public FileCloseObserver(final Logger logger) {
+    public InteractionObserver(final Handler theHandler) {
         super();
-        this.logger = logger;
+        this.handler = theHandler;
     }
 
     /**
      * @see de.dante.util.observer.Observer#update(de.dante.util.Observable,
-     *      java.lang.Object)
+     *       java.lang.Object)
      */
     public void update(final Observable observable, final Object item) {
-        TokenStream stream = (TokenStream) item;
 
-        if (stream.isFileStream()) {
-            logger.info(")");
-        }
+        handler.setLevel((Interaction) item == Interaction.BATCHMODE //
+                ? Level.SEVERE : Level.INFO);
     }
+
 }

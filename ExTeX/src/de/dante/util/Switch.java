@@ -30,9 +30,9 @@ package de.dante.util;
 public class Switch {
 
     /**
-     * The field <tt>on</tt> contains the encapsulated boolean value.
+     * The field <tt>value</tt> contains the encapsulated boolean value.
      */
-    private boolean on;
+    private boolean value;
 
     /**
      * Creates a new object with a given boolean value.
@@ -42,25 +42,25 @@ public class Switch {
     public Switch(final boolean on) {
 
         super();
-        this.on = on;
+        this.value = on;
     }
 
     /**
-     * Getter for on.
+     * Getter for value.
      *
-     * @return the on.
+     * @return the value.
      */
     public boolean isOn() {
 
-        return on;
+        return value;
     }
     /**
-     * Setter for on.
+     * Setter for value.
      *
-     * @param on the on to set.
+     * @param on the value to set.
      */
     public void setOn(final boolean on) {
 
-        this.on = on;
+        this.value = on;
     }
 }
