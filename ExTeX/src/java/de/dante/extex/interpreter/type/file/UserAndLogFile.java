@@ -26,7 +26,8 @@ import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.tokens.Tokens;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This implementation of an OutFile encapsulates a Logger.
+ * It outputs the items to the log file and the console.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -34,7 +35,7 @@ import de.dante.extex.interpreter.type.tokens.Tokens;
 public class UserAndLogFile extends OutFile {
 
     /**
-     * The field <tt>logger</tt> contains the ...
+     * The field <tt>logger</tt> contains the encapsulated logger.
      */
     private transient Logger logger;
 
