@@ -19,7 +19,6 @@
 
 package de.dante.extex.font.type.vf.command;
 
-import java.io.EOFException;
 import java.io.IOException;
 
 import org.jdom.Element;

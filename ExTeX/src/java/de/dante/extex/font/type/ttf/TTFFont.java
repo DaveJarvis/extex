@@ -458,12 +458,12 @@ public class TTFFont implements XMLConvertible {
 
     /**
      * Return the table with the spezial type
-     * @param type the tabletype
+     * @param tabletype the tabletype
      * @return Returns the table
      */
-    public TTFTable getTable(final int type) {
+    public TTFTable getTable(final int tabletype) {
 
-        return tablemap.get(type);
+        return tablemap.get(tabletype);
     }
 
     /**
