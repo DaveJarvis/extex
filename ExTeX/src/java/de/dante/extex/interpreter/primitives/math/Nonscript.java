@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.math.style;
+package de.dante.extex.interpreter.primitives.math;
 
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
