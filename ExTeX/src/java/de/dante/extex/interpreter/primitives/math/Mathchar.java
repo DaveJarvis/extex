@@ -85,6 +85,7 @@ public class Mathchar extends AbstractCode {
      */
     protected void insert(final Typesetter typesetter, final Count mathchar) {
 
+        // TODO unimplemented
         throw new RuntimeException("unimplemented");
     }
 

@@ -71,6 +71,7 @@ public class StringSource extends Moritz implements TokenSource {
      */
     public void executeGroup() throws GeneralException {
 
+        // TODO unimplemented
         throw new RuntimeException("unimplemented");
     }
 

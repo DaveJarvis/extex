@@ -89,6 +89,7 @@ public class ItalicCorrection extends AbstractCode {
                 typesetter.add(new KernNode(ic));
             }
             */
+            // TODO unimplemented
             throw new RuntimeException("unimplemented");
         }
         return true;

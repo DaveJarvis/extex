@@ -117,6 +117,7 @@ public class Write extends AbstractCode {
      */
     private void write(final long no, final Tokens toks) {
 
+        // TODO unimplemented
         throw new RuntimeException("unimplemented");
     }
 

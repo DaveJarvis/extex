@@ -76,6 +76,7 @@ public class Meaning extends Show {
 
         Token t = source.getToken();
         if (t == null) {
+            // TODO unimplemented
             throw new RuntimeException("unimplemented");
         }
         source.push(meaning(t, context));
