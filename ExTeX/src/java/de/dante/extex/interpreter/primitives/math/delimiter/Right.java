@@ -25,12 +25,14 @@ import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.primitives.math.AbstractMathCode;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.listMaker.math.NoadConsumer;
+import de.dante.extex.typesetter.type.MathDelimiter;
+import de.dante.extex.typesetter.type.noad.RightNoad;
 import de.dante.util.GeneralException;
 
 /**
  * This class provides an implementation for the primitive <code>\right</code>.
  *
- * <doc name="span">
+ * <doc name="right">
  * <h3>The Primitive <tt>\right</tt></h3>
  * <p>
  *  TODO missing documentation
@@ -75,10 +77,10 @@ public class Right extends AbstractMathCode {
             throws GeneralException {
 
         NoadConsumer nc = getListMaker(context, typesetter);
-
-        //TODO gene: execute() unimplemented
-        throw new RuntimeException("unimplemented");
-        //return true;
+        MathDelimiter del = new MathDelimiter(context, source);
+        nc.right(del);
+        typesetter.add(new RightNoad(del));
+        return true;
     }
 
 }
