@@ -25,7 +25,6 @@ import de.dante.extex.i18n.ArithmeticOverflowHelpingException;
 import de.dante.extex.i18n.HelpingException;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.type.box.Box;
 import de.dante.extex.interpreter.type.glue.FixedGlueComponent;
 import de.dante.extex.interpreter.type.glue.GlueComponent;
 import de.dante.util.GeneralException;
