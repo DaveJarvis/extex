@@ -101,4 +101,22 @@ public class FontnameTest extends ExTeXLauncher {
                 "cmtt12\n");
     }
 
+    /**
+     * Test case checking that a correct value is produced.
+     * This test case needs an external font cmi10!
+     *
+     * @throws Exception in case of an error
+     */
+    public void testFontname2() throws Exception {
+
+        runCode(//--- input code ---
+                "\\font\\x=cmmi10"
+                + "\\fontname\\x "
+                + "\\end ",
+                //--- log message ---
+                "",
+                //--- output channel ---
+                "cmi10\n");
+    }
+
 }
