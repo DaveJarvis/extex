@@ -130,6 +130,15 @@ public class Max extends Moritz implements CatcodeVisitor, Interpreter,
     private Configuration config;
 
     /**
+     * Getter for context.
+     *
+     * @return the context.
+     */
+    public Context getContext() {
+        return context;
+    }
+
+    /**
      * Creates a new object.
      *
      * @param configuration the configuration object to take into account
@@ -625,7 +634,7 @@ public class Max extends Moritz implements CatcodeVisitor, Interpreter,
     protected Token expand(final Token token) throws GeneralException {
         Code code;
 
-        for (Token t = token; t == null; t = getToken()) {
+        for (Token t = token; t != null; t = getToken()) { //TODO ???
             if (token instanceof ControlSequenceToken) {
                 observersMacro.update(this, token);
                 code = context.getMacro(token.getValue());
