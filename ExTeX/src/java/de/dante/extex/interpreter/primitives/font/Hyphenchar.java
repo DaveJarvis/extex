@@ -40,7 +40,7 @@ import de.dante.util.UnicodeChar;
  * <doc name="hyphenchar">
  * <h3>The Primitive <tt>\hyphenchar</tt></h3>
  * <p>
- *  TODO documentation missing
+ *  TODO missing documentation
  * </p>
  * <p>
  *  The formal description of this primitive is the following:
