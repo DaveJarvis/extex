@@ -188,9 +188,9 @@ public class NullTypesetterImpl implements Typesetter {
     }
 
     /**
-     * @see de.dante.extex.typesetter.listMaker.math.NoadConsumer#left()
+     * @see de.dante.extex.typesetter.listMaker.math.NoadConsumer#left(MathDelimiter)
      */
-    public void left() throws GeneralException {
+    public void left(final MathDelimiter delimiter) throws GeneralException {
 
     }
 
@@ -223,6 +223,14 @@ public class NullTypesetterImpl implements Typesetter {
     }
 
     /**
+     * @see de.dante.extex.typesetter.listMaker.math.NoadConsumer#middle(
+     *      de.dante.extex.typesetter.type.MathDelimiter)
+     */
+    public void middle(final MathDelimiter delimiter) throws GeneralException {
+
+    }
+
+    /**
      * @see de.dante.extex.typesetter.Typesetter#par()
      */
     public void par() {
@@ -246,9 +254,9 @@ public class NullTypesetterImpl implements Typesetter {
     }
 
     /**
-     * @see de.dante.extex.typesetter.listMaker.math.NoadConsumer#right()
+     * @see de.dante.extex.typesetter.listMaker.math.NoadConsumer#right(MathDelimiter)
      */
-    public void right() throws GeneralException {
+    public void right(final MathDelimiter delimiter) throws GeneralException {
 
     }
 

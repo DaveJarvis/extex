@@ -198,9 +198,9 @@ public class Max1 extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.listMaker.math.NoadConsumer#left()
+         * @see de.dante.extex.typesetter.listMaker.math.NoadConsumer#left(MathDelimiter)
          */
-        public void left() throws GeneralException {
+        public void left(final MathDelimiter delimiter) throws GeneralException {
 
         }
 
@@ -229,6 +229,15 @@ public class Max1 extends TestCase {
          */
         public void mathShift(final Context context, final TokenSource source,
                 final Token t) throws GeneralException {
+
+        }
+
+        /**
+         * @see de.dante.extex.typesetter.listMaker.math.NoadConsumer#middle(
+         *      de.dante.extex.typesetter.type.MathDelimiter)
+         */
+        public void middle(final MathDelimiter delimiter)
+                throws GeneralException {
 
         }
 
@@ -264,10 +273,12 @@ public class Max1 extends TestCase {
 
             // nothing to do
         }
+
         /**
-         * @see de.dante.extex.typesetter.listMaker.math.NoadConsumer#right()
+         * @see de.dante.extex.typesetter.listMaker.math.NoadConsumer#right(MathDelimiter)
          */
-        public void right() throws GeneralException {
+        public void right(final MathDelimiter delimiter)
+                throws GeneralException {
 
         }
 

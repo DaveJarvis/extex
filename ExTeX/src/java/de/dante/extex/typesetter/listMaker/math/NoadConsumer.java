@@ -80,16 +80,29 @@ public interface NoadConsumer extends ListMaker {
     /**
      * Open the group for a \left-\right construction.
      *
+     * @param delimiter the delimiter to typeset on theleft side
+     *
      * @throws GeneralException in case of an error
      */
-    void left() throws GeneralException;
+    void left(MathDelimiter delimiter) throws GeneralException;
+
+    /**
+     * Middle in the group for a \left-\right construction.
+     * 
+     * @param delimiter the delimiter to typeset here
+     *
+     * @throws GeneralException in case of an error
+     */
+    void middle(MathDelimiter delimiter) throws GeneralException;
 
     /**
      * Close the group for a \left-\right construction.
      *
+     * @param delimiter the delimiter to typeset on the right side
+     *
      * @throws GeneralException in case of an error
      */
-    void right() throws GeneralException;
+    void right(MathDelimiter delimiter) throws GeneralException;
 
     /**
      * Process the input until a Noad is completed. A Noad is either a single
