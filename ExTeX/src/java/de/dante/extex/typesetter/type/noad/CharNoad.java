@@ -92,7 +92,7 @@ public class CharNoad extends AbstractNoad implements Noad {
         Font font = context.getFont(NumberedFont.key(context, //
                 type, Integer.toString(mg.getFamily())));
         if (font == null) {
-            //TODO gene: impossible
+            //gene: impossible
             throw new NullPointerException("font");
         }
         //TODO gene: use factory?
