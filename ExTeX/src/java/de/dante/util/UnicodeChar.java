@@ -91,6 +91,18 @@ public class UnicodeChar {
     }
 
     /**
+     * Init with a char32 from a String at position idx.
+     *
+     * @param sb the <code>StringBuffer</code>
+     * @param index the position in the string
+     */
+    public UnicodeChar(final StringBuffer sb, final int index) {
+
+        super();
+        this.code = UTF16.charAt(sb, index);
+    }
+
+    /**
      * Init with a char32 from a <code>CharBuffer</code> at position idx.
      * <p>
      * This use the code from <code>UTF16.charAt(String,int)</code> and
