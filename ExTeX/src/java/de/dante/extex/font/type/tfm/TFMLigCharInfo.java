@@ -49,7 +49,7 @@ public class TFMLigCharInfo extends TFMCharInfo {
     }
 
     /**
-     * Index of the starting instruction of lig/kern program 
+     * Index of the starting instruction of lig/kern program
      * in the <code>ligKernTable</code>.
      */
     private int start;

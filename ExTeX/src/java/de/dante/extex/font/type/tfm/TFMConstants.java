@@ -20,49 +20,77 @@
 package de.dante.extex.font.type.tfm;
 
 /**
- * TFM: key-value-container
+ * Constants for the TFM font.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
 
-public class TFMKeyInt {
+public class TFMConstants {
 
     /**
-     * key
+     * 0xff
      */
-    private int key;
+    public static final int CONST_XFF = 0xff;
 
     /**
-     * int-value
+     * 0x0f
      */
-    private int val;
+    public static final int CONST_X0F = 0x0f;
 
     /**
-     * Create a new object
-     *
-     * @param k the key
-     * @param v the value
+     * 0x3f
      */
-    TFMKeyInt(final int k, final int v) {
-
-        key = k;
-        val = v;
-    }
+    public static final int CONST_X3F = 0x3f;
 
     /**
-     * @return Returns the key.
+     * 0x03
      */
-    public int getKey() {
-
-        return key;
-    }
+    public static final int CONST_X03 = 0x03;
 
     /**
-     * @return Returns the val.
+     * 0x80
      */
-    public int getVal() {
+    public static final int CONST_X80 = 0x80;
 
-        return val;
-    }
+    /**
+     * 2
+     */
+    public static final int CONST_2 = 2;
+
+    /**
+     * 4
+     */
+    public static final int CONST_4 = 4;
+
+    /**
+     * 8
+     */
+    public static final int CONST_8 = 8;
+
+    /**
+     * 5
+     */
+    public static final int CONST_5 = 5;
+
+    /**
+     * 6
+     */
+    public static final int CONST_6 = 6;
+
+    /**
+     * 10
+     */
+    public static final int CONST_10 = 10;
+
+    /**
+     * 127
+     */
+    public static final int CONST_127 = 127;
+
+    /**
+     * 1000
+     */
+    public static final int CONST_1000 = 1000;
+
 }

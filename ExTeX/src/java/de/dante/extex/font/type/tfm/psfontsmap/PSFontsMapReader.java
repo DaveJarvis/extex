@@ -54,7 +54,7 @@ public class PSFontsMapReader {
     }
 
     /**
-     * Map for the font-data 
+     * Map for the font-data
      */
     private Map data;
 

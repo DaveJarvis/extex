@@ -29,7 +29,7 @@ public class TFMAuxExtRecipe {
 
     /**
      * Create a new object.
-     * 
+     *
      * @param t top
      * @param m mid
      * @param b bot

@@ -22,10 +22,10 @@ package de.dante.extex.font.type.tfm;
 /**
  * TFM-ListCharInfo
  * <p>
- * Character information for character which has next larger 
+ * Character information for character which has next larger
  * character associated.
  * </p>
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
