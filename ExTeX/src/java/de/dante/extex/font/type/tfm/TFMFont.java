@@ -154,6 +154,7 @@ public class TFMFont
     public Element toXML() {
 
         Element tfm = new Element("tfm");
+        tfm.setAttribute("name", fontname);
         tfm.addContent(lengths.toXML());
         tfm.addContent(header.toXML());
         tfm.addContent(charinfo.toXML());
