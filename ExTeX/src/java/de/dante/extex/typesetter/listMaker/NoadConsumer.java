@@ -50,7 +50,8 @@ public interface NoadConsumer {
      * Add some math glue Noad to the internal lust.
      *
      * @param glue the glue to add
-     * @throws GeneralException TODO
+     *
+     * @throws GeneralException in case of an error
      */
     void add(Muskip glue) throws GeneralException;
 
