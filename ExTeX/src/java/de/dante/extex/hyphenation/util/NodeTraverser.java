@@ -256,7 +256,7 @@ public class NodeTraverser implements NodeVisitor {
         switch (count) {
             case 0:
                 count++;
-                nt = new NodeTraverser(node.getFirst());
+                nt = new NodeTraverser(node.getLeft());
                 uc = nt.next();
                 if (uc != null) {
                     return uc;
@@ -264,7 +264,7 @@ public class NodeTraverser implements NodeVisitor {
             // continue with the second part
             case 1:
                 count++;
-                nt = new NodeTraverser(node.getSecond());
+                nt = new NodeTraverser(node.getRight());
                 uc = nt.next();
                 if (uc != null) {
                     return uc;

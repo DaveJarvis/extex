@@ -652,8 +652,8 @@ public class XMLDocumentWriter
 
         Element element = new Element("ligature");
         addNodeAttributes(node, element);
-        Node first = node.getFirst();
-        Node second = node.getSecond();
+        Node first = node.getLeft();
+        Node second = node.getRight();
         if (first != null) {
             Element e = getNodeElement(first);
             if (e != null) {
