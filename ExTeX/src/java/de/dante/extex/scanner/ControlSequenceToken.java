@@ -20,6 +20,7 @@
 package de.dante.extex.scanner;
 
 import de.dante.extex.i18n.Messages;
+import de.dante.extex.interpreter.Namespace;
 
 /**
  * This class represents a control sequence token.
@@ -53,6 +54,17 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
     }
 
     /**
+     * @see de.dante.extex.scanner.CodeToken#cloneInDefaultNamespace()
+     */
+    public Token cloneInDefaultNamespace() {
+
+        if (Namespace.DEFAULT_NAMESPACE.equals(namespace)) {
+            return this;
+        }
+        return new ControlSequenceToken(getValue(), Namespace.DEFAULT_NAMESPACE);
+    }
+
+    /**
      * @see java.lang.Object#equals(java.lang.Object)
      */
     public boolean equals(final Object other) {
@@ -61,8 +73,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
             return false;
         }
         ControlSequenceToken othertoken = (ControlSequenceToken) other;
-        return (super.equals(other) && namespace
-                .equals(othertoken.namespace));
+        return (super.equals(other) && namespace.equals(othertoken.namespace));
     }
 
     /**

@@ -35,4 +35,11 @@ public interface CodeToken extends Token {
      */
     String getNamespace();
 
+    /**
+     * ...
+     *
+     * @return ...
+     */
+    Token cloneInDefaultNamespace();
+
 }
