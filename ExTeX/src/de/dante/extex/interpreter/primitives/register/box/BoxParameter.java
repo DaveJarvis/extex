@@ -37,14 +37,14 @@ import de.dante.util.GeneralException;
  *
  * @version $Revision$
  */
-public class NamedBox extends AbstractCode implements Code, Serializable {
+public class BoxParameter extends AbstractCode implements Code, Serializable {
 
     /**
      * Creates a new object.
      *
      * @param name the name of the box
      */
-    public NamedBox(final String name) {
+    public BoxParameter(final String name) {
 
         super(name);
     }
