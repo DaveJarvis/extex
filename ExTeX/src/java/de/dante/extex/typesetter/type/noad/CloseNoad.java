@@ -38,7 +38,7 @@ public class CloseNoad extends AbstractNucleusNoad {
      *
      * @param nucleus the nucleus
      */
-    protected CloseNoad(final Noad nucleus) {
+    public CloseNoad(final Noad nucleus) {
 
         super(nucleus);
     }
