@@ -96,7 +96,7 @@ public class Dimendef extends AbstractDimen {
 
         Token cs = source.getControlSequence();
         source.getOptionalEquals();
-        String key = getKey(source, context.getNamespace());
+        String key = getKey(source, context);
         context.setCode(cs, new DimenParameter(key), prefix.isGlobal());
     }
 

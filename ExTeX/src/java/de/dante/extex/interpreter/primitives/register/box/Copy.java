@@ -77,7 +77,7 @@ public class Copy extends BoxPrimitive implements Boxable, Serializable {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        //String key = getKey(source, context.getNamespace());
+        //String key = getKey(source, context);
         //Box box = context.getBox(key);
         throw new RuntimeException("unimplemented");
     }

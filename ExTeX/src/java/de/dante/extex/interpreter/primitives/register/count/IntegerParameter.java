@@ -20,6 +20,7 @@
 package de.dante.extex.interpreter.primitives.register.count;
 
 import de.dante.extex.interpreter.TokenSource;
+import de.dante.extex.interpreter.context.Context;
 import de.dante.util.GeneralException;
 
 /**
@@ -53,9 +54,10 @@ public class IntegerParameter extends CountPrimitive {
 
     /**
      * @see de.dante.extex.interpreter.primitives.register.count.IntegerParameter#getKey(
-     *      de.dante.extex.interpreter.TokenSource, String)
+     *      de.dante.extex.interpreter.TokenSource,
+     *      de.dante.extex.interpreter.context.Context)
      */
-    protected String getKey(final TokenSource source, final String namespace)
+    protected String getKey(final TokenSource source, final Context context)
             throws GeneralException {
 
         return getName();

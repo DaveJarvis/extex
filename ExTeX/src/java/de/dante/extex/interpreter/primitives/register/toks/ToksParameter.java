@@ -18,7 +18,9 @@
  */
 package de.dante.extex.interpreter.primitives.register.toks;
 
+import de.dante.extex.interpreter.Namespace;
 import de.dante.extex.interpreter.TokenSource;
+import de.dante.extex.interpreter.context.Context;
 import de.dante.util.GeneralException;
 
 /**
@@ -51,16 +53,20 @@ public class ToksParameter extends ToksPrimitive {
      * Return the key (the number) for the toks register.
      *
      * @param source the source for the next tokens -- if required
-     * @param namespace the namespace to use
+     * @param context the interpreter context to use
      *
      * @return the key for the toks register
      *
-     * @throws GeneralException in case of an exception
+     * @throws GeneralException in case oif an error
      */
-    protected String getKey(final TokenSource source, final String namespace)
+    protected String getKey(final TokenSource source, final Context context)
             throws GeneralException {
 
-        return namespace + getName();
+        if (Namespace.SUPPORT_NAMESPACE_TOKS) {
+            return context.getNamespace() + "\b" + getName();
+        } else {
+            return getName();
+        }
     }
 
 }

@@ -99,7 +99,7 @@ public class Wd extends Setbox
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        Box box = context.getBox(getKey(source, context.getNamespace()));
+        Box box = context.getBox(getKey(source, context));
         source.getOptionalEquals();
         Dimen d = new Dimen(context, source);
 
@@ -132,7 +132,7 @@ public class Wd extends Setbox
     public Tokens the(final Context context, final TokenSource source,
             final Typesetter typesetter) throws GeneralException {
 
-        Box box = context.getBox(getKey(source, context.getNamespace()));
+        Box box = context.getBox(getKey(source, context));
         Dimen d = (box == null ? Dimen.ZERO_PT : box.getWidth());
         return d.toToks(context.getTokenFactory());
     }
@@ -156,7 +156,7 @@ public class Wd extends Setbox
     public long convertDimen(final Context context, final TokenSource source,
             final Typesetter typesetter) throws GeneralException {
 
-        Box b = context.getBox(getKey(source, context.getNamespace()));
+        Box b = context.getBox(getKey(source, context));
         return (b == null ? 0 : b.getWidth().getValue());
     }
 
