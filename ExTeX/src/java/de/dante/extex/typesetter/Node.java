@@ -55,12 +55,13 @@ public interface Node extends Knot {
     /**
      * This method performs any action which are required to executed at the
      * time of shipping the node to the DocumentWriter.
-     *
      * @param context the interpreter context
+     * @param typesetter the typesetter
      *
      * @throws GeneralException in case of an error
      */
-    void atShipping(Context context) throws GeneralException;
+    void atShipping(Context context, Typesetter typesetter)
+            throws GeneralException;
 
     /**
      * Getter for the depth of the node.
