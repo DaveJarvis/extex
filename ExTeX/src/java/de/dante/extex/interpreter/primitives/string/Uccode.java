@@ -44,12 +44,12 @@ import de.dante.util.UnicodeChar;
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;uccode&rang;
- *        &rarr; <tt>&#5c;uccode</tt> &lang;...&rang; </pre>
+ *        &rarr; <tt>\u005cuccode</tt> &lang;...&rang; </pre>
  * </p>
  * <p>
  *  Examples:
  *  <pre class="TeXSample">
- *    &#5c;uccode ...  </pre>
+ *    \u005cuccode ...  </pre>
  * </p>
  * </doc>
  *

@@ -37,7 +37,7 @@ import de.dante.util.UnicodeChar;
  * <code>&#5c;uppercase</code>.
  *
  * <doc name="uppercase">
- * <h3>The Primitive <tt>&#5c;uppercase</tt></h3>
+ * <h3>The Primitive <tt>\u005cuppercase</tt></h3>
  * <p>
  *  ...
  * </p>
@@ -45,12 +45,12 @@ import de.dante.util.UnicodeChar;
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;uppercase&rang;
- *        &rarr; <tt>&#5c;uppercase</tt> &lang;...&rang; </pre>
+ *        &rarr; <tt>\u005cuppercase</tt> &lang;...&rang; </pre>
  * </p>
  * <p>
  *  Examples:
  *  <pre class="TeXSample">
- *    &#5c;uppercase ...  </pre>
+ *    \u005cuppercase ...  </pre>
  * </p>
  * </doc>
  *
