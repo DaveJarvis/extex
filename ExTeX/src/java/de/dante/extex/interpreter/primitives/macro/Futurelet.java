@@ -38,7 +38,12 @@ import de.dante.util.GeneralException;
  * <p>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    <tt>\futurelet</tt> ...  </pre>
+ *    &lang;futurelet&rang;
+ *      &rarr; <tt>\futurelet</tt> {@linkplain
+ *        de.dante.extex.interpreter.TokenSource#getControlSequence()
+ *        &lang;control sequence&rang;} {@linkplain
+ *       de.dante.extex.interpreter.TokenSource#getToken()
+ *       &lang;token&rang;} ...  </pre>
  * </p>
  * <p>
  *  Examples:

@@ -37,6 +37,21 @@ import de.dante.util.GeneralException;
  * <p>
  *  ...
  * </p>
+ * <p>
+ *  The formal description of this primitive is the following:
+ *  <pre class="syntax">
+ *    &lang;closeout&rang;
+ *       &rarr; <tt>\closeout</tt> {@linkplain
+ *       de.dante.extex.interpreter.TokenSource#scanInteger()
+ *       &lang;number&rang;} </pre>
+ * </p>
+ * <p>
+ *  Examples:
+ *  <pre class="TeXSample">
+ *    \closeout5  </pre>
+ *  <pre class="TeXSample">
+ *    \closeout\count120  </pre>
+ * </p>
  * </doc>
  *
  * Example

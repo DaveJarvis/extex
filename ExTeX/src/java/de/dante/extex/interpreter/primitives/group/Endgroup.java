@@ -37,7 +37,8 @@ import de.dante.util.GeneralException;
  * <p>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    <tt>\endgroup</tt>  </pre>
+ *    &lang;endgroup&rang;
+ *      &rarr; <tt>\endgroup</tt>  </pre>
  * </p>
  * <p>
  *  Examples:
@@ -63,7 +64,8 @@ public class Endgroup extends AbstractCode {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.Code#execute(de.dante.extex.interpreter.Flags,
+     * @see de.dante.extex.interpreter.type.Code#execute(
+     *      de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)

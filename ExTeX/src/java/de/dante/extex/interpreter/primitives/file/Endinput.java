@@ -38,7 +38,8 @@ import de.dante.util.GeneralException;
  * <p>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    <tt>\endinput</tt>  </pre>
+ *    &lang;endinput&rang;
+ *       &rarr; <tt>\endinput</tt>  </pre>
  * </p>
  * <p>
  *  Examples:

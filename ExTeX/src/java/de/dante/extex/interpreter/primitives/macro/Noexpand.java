@@ -40,7 +40,8 @@ import de.dante.util.GeneralException;
  * <p>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    <tt>\noexpand</tt>  </pre>
+ *    &lang;noexpand&rang;
+ *      &rarr; <tt>\noexpand</tt>  </pre>
  * </p>
  * <p>
  *  Examples:

@@ -46,7 +46,8 @@ import de.dante.util.GeneralException;
  * <p>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    <tt>\string</tt> &lang;token&rang; </pre>
+ *    &lang;string&rang;
+ *        &rarr; <tt>\string</tt> &lang;token&rang; </pre>
  * </p>
  * <p>
  *  Examples:

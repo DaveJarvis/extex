@@ -39,7 +39,7 @@ import de.dante.util.GeneralException;
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;if&rang;
- *     := <tt>\if</tt> {@linkplain
+ *     &rarr; <tt>\if</tt> {@linkplain
  *       de.dante.extex.interpreter.TokenSource#getToken()
  *       &lang;token<sub>1</sub>&rang;} {@linkplain
  *       de.dante.extex.interpreter.TokenSource#getToken()

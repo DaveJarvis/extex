@@ -43,7 +43,7 @@ import de.dante.util.GeneralException;
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;special&rang;
- *        := <tt>\special</tt> {@linkplain
+ *        &rarr; <tt>\special</tt> {@linkplain
  *           de.dante.extex.interpreter.TokenSource#scanTokens()
  *           &lang;general text&rang;}  </pre>
  * </p>

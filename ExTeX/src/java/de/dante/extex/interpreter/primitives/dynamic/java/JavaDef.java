@@ -47,7 +47,10 @@ import de.dante.util.GeneralException;
  * <p>
  * The general form of this primitive is
  * <pre class="syntax">
- *   \javadef&lang;<i>control sequence</i>&rang;&lang;<i>tokens</i>&rang; </pre>
+ *   &lang;javaload&rang;
+ *       &rarr; <tt>\javadef</tt> {@linkplain
+ *       de.dante.extex.interpreter.TokenSource#getControlSequence()
+ *       &lang;control sequence&rang;} &lang;<i>tokens</i>&rang; </pre>
  * </p>
  * <p>
  * The &lang;<i>control sequence</i>&rang; is any macro or active

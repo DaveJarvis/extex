@@ -41,7 +41,8 @@ import de.dante.util.GeneralException;
  * <p>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    <tt>\number</tt> &lang;...&rang; </pre>
+ *    &lang;number&rang;
+ *        &rarr; <tt>\number</tt> &lang;...&rang; </pre>
  * </p>
  * <p>
  *  Examples:

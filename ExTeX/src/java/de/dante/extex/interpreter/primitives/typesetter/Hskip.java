@@ -41,7 +41,7 @@ import de.dante.util.GeneralException;
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;hskip&rang;
- *        := <tt>\hskip</tt> &lang;Glue&rang;  </pre>
+ *        &rarr; <tt>\hskip</tt> &lang;Glue&rang;  </pre>
  * </p>
  * <p>
  *  Examples:

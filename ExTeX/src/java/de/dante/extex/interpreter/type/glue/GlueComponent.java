@@ -148,6 +148,18 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
     }
 
     /**
+     * Creates a new object with a fixed width.
+     *
+     * @param theValue the fixed value
+     */
+    public GlueComponent(final FixedGlueComponent component) {
+
+        super();
+        this.value = component.getValue();
+        this.order = component.getOrder();
+    }
+
+    /**
      * Creates a new object with a width with a possibly higher order.
      *
      * @param theValue the fixed width or the factor
@@ -247,6 +259,22 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
         int o = g.getOrder();
         if (order == o) {
             value += g.getValue();
+        } else if (order < o) {
+            order = o;
+            value = g.getValue();
+        }
+    }
+
+    /**
+     * ...
+     *
+     * @param g the GlueCoponent to subtract
+     */
+    public void subtract(final FixedGlueComponent g) {
+
+        int o = g.getOrder();
+        if (order == o) {
+            value -= g.getValue();
         } else if (order < o) {
             order = o;
             value = g.getValue();

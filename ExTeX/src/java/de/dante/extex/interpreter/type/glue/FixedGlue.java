@@ -35,6 +35,13 @@ import de.dante.util.GeneralException;
 public interface FixedGlue {
 
     /**
+     * Make a copy of this object.
+     *
+     * @return a new instance with the same internal values
+     */
+    Glue copy();
+
+    /**
      * Getter for the length.
      * Note that the value returned is independent from the original object.
      * Changing its value does not affect the length of the glue.
@@ -50,7 +57,7 @@ public interface FixedGlue {
      *
      * @return the shrink.
      */
-    Dimen getShrink();
+    FixedGlueComponent getShrink();
 
     /**
      * Getter for stretch.
@@ -59,14 +66,7 @@ public interface FixedGlue {
      *
      * @return the stretch.
      */
-    GlueComponent getStretch();
-
-    /**
-     * Make a copy of this object.
-     *
-     * @return a new instance with the same internal values
-     */
-    Glue copy();
+    FixedGlueComponent getStretch();
 
     /**
      * Provide a string representation of this instance.

@@ -32,7 +32,8 @@ import de.dante.extex.interpreter.type.AbstractCode;
  * <p>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    <tt>\relax</tt>  </pre>
+ *    &lang;relax&rang;
+ *        &rarr; <tt>\relax</tt>  </pre>
  * </p>
  * <p>
  *  Examples:

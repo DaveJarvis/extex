@@ -42,7 +42,7 @@ import de.dante.util.GeneralException;
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;hfil&rang;
- *        := <tt>\hfil</tt>  </pre>
+ *        &rarr; <tt>\hfil</tt>  </pre>
  * </p>
  * <p>
  *  Examples:

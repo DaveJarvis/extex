@@ -44,7 +44,8 @@ import de.dante.util.UnicodeChar;
  * <p>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    <tt>\lowercase</tt> &lang;...&rang; </pre>
+ *    &lang;lowercase&rang;
+ *        &rarr; <tt>\lowercase</tt> &lang;...&rang; </pre>
  * </p>
  * <p>
  *  Examples:

@@ -40,7 +40,8 @@ import de.dante.util.GeneralException;
  * <p>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    <tt>\scrollmode</tt>  </pre>
+ *    &lang;scrollmode&rang;
+ *      &rarr; <tt>\scrollmode</tt>  </pre>
  * </p>
  * <p>
  *  Examples:

@@ -43,7 +43,8 @@ import de.dante.util.GeneralException;
  * <p>
  *  The general form of this primitive is
  * <pre class="syntax">
- *   \javaload&lang;<i>tokens</i>&rang; </pre>
+ *   &lang;javaload&rang;
+ *       &rarr; \javaload&lang;<i>tokens</i>&rang; </pre>
  * </p>
  * <p>
  *  The &lang;<i>tokens</i>&rang; is any specification of a list of

@@ -42,6 +42,17 @@ import de.dante.util.GeneralException;
  * <p>
  *  ...
  * </p>
+ * <p>
+ *  The formal description of this primitive is the following:
+ *  <pre class="syntax">
+ *    &lang;dump&rang;
+ *       &rarr; <tt>\dump</tt>  </pre>
+ * </p>
+ * <p>
+ *  Examples:
+ *  <pre class="TeXSample">
+ *    \dump  </pre>
+ * </p>
  * </doc>
  *
  * Example

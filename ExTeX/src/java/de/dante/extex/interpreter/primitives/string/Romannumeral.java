@@ -44,7 +44,7 @@ import de.dante.util.GeneralException;
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;romannumeral&rang;
- *        := <tt>\romannumeral</tt> {@linkplain
+ *        &rarr; <tt>\romannumeral</tt> {@linkplain
  *           de.dante.extex.interpreter.TokenSource#scanInteger()
  *           &lang;number&rang;} </pre>
  * </p>

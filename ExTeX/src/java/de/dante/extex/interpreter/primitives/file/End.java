@@ -37,7 +37,8 @@ import de.dante.util.GeneralException;
  * <p>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    <tt>\end</tt>  </pre>
+ *    &lang;end&rang;
+ *       &rarr; <tt>\end</tt>  </pre>
  * </p>
  * <p>
  *  Examples:

@@ -40,8 +40,8 @@ import de.dante.util.GeneralException;
  * <p>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    <&lang;moveleft&rang;
- *        := tt>\moveleft</tt> &lang;dimen&rang; {@linkplain
+ *    &lang;moveleft&rang;
+ *        &rarr; <tt>\moveleft</tt> &lang;dimen&rang; {@linkplain
  *    de.dante.extex.interpreter.TokenSource#getBox() &lang;box&rang;}  </pre>
  * </p>
  * <p>

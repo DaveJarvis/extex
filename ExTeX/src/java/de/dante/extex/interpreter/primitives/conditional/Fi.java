@@ -40,7 +40,7 @@ import de.dante.util.GeneralException;
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;fi&rang;
- *     := <tt>\fi</tt>  </pre>
+ *     &rarr; <tt>\fi</tt>  </pre>
  * </p>
  * <p>
  *  Examples:

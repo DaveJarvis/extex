@@ -39,7 +39,8 @@ import de.dante.util.GeneralException;
  * <p>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    <tt>\ignorespaces</tt> </pre>
+ *    &lang;ignorespaces&rang;
+ *        &rarr; <tt>\ignorespaces</tt> </pre>
  * </p>
  * <p>
  *  Examples:

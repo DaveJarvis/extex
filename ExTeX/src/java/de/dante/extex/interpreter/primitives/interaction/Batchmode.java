@@ -42,7 +42,8 @@ import de.dante.util.GeneralException;
  * <p>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    <tt>\batchmode</tt>  </pre>
+ *    &lang;batchmode&rang;
+ *      &rarr; <tt>\batchmode</tt>  </pre>
  * </p>
  * <p>
  *  Examples:

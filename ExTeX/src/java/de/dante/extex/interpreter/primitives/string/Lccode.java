@@ -42,7 +42,8 @@ import de.dante.util.UnicodeChar;
  * <p>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    <tt>\lccode</tt> &lang;...&rang; </pre>
+ *    &lang;lccode&rang;
+ *        &rarr; <tt>\lccode</tt> &lang;...&rang; </pre>
  * </p>
  * <p>
  *  Examples:

@@ -37,6 +37,9 @@ import de.dante.util.GeneralException;
  * <p>
  *  ...
  * </p>
+ *  <pre class="syntax">
+ *    &lang;ifcase&rang;
+ *     &rarr; <tt>\ifcase</tt> ...  </pre>
  * </doc>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
