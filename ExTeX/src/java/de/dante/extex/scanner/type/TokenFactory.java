@@ -106,7 +106,7 @@ public interface TokenFactory {
      *
      * @throws CatcodeException in case of an error
      *
-     * @deprecated use newInstance(Catcode,UnicodeChar,String) instead.
+     * @deprecated use createToken(Catcode,UnicodeChar,String) instead.
      */
     Token createToken(Catcode code, UnicodeChar c) throws CatcodeException;
 

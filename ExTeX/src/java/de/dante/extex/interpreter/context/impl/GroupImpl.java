@@ -640,6 +640,17 @@ public class GroupImpl implements Group, Tokenizer, Serializable {
     }
 
     /**
+     * @see de.dante.extex.interpreter.context.impl.Group#getToksOrNull(java.lang.String)
+     */
+    public Tokens getToksOrNull(String name) {
+
+        Tokens toks = (Tokens) (toksMap.get(name));
+        return toks != null ? toks : next != null
+                ? next.getToks(name)
+                : null;
+    }
+
+    /**
      * @see de.dante.extex.interpreter.context.impl.Group#getTypesettingContext()
      */
     public TypesettingContext getTypesettingContext() {
