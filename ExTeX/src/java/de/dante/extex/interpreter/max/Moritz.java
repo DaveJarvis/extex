@@ -264,7 +264,7 @@ public abstract class Moritz implements TokenSource, Observable {
         Token t = getToken();
 
         if (t == null) {
-            push(context.getTokenFactory().newInstance(Catcode.ESCAPE,
+            push(context.getTokenFactory().createToken(Catcode.ESCAPE,
                     "inaccessible ", context.getNamespace()));
 
             throw new HelpingException("TTP.MissingCtrlSeq");
@@ -275,7 +275,7 @@ public abstract class Moritz implements TokenSource, Observable {
             }
 
         } else {
-            push(context.getTokenFactory().newInstance(Catcode.ESCAPE,
+            push(context.getTokenFactory().createToken(Catcode.ESCAPE,
                     "inaccessible ", context.getNamespace()));
             push(t);
             throw new HelpingException("TTP.MissingCtrlSeq");

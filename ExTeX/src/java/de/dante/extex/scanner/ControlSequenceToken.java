@@ -38,7 +38,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
     /**
      * The field <tt>namespace</tt> contains the namespace for this token.
      */
-    private String namespace = null;
+    private String namespace;
 
     /**
      * Creates a new object.

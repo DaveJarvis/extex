@@ -113,7 +113,7 @@ public class Lowercase extends AbstractCode implements ExpandableCode {
                 if (uc != null && //
                     uc.getCodePoint() != 0 && //
                     !uc.equals(t.getChar())) {
-                    t = factory.newInstance(t.getCatcode(), uc, namespace);
+                    t = factory.createToken(t.getCatcode(), uc, namespace);
                 }
             }
             result[i] = t;

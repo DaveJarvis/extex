@@ -58,7 +58,7 @@ public class IntegerParameter extends CountPrimitive {
     protected String getKey(final TokenSource source, final String namespace)
             throws GeneralException {
 
-        return namespace + getName();
+        return getName();
     }
 
 }

@@ -20,6 +20,7 @@
 package de.dante.extex.interpreter.primitives.font;
 
 import de.dante.extex.interpreter.Flags;
+import de.dante.extex.interpreter.Namespace;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.type.AbstractCode;
@@ -62,11 +63,6 @@ import de.dante.util.UnicodeChar;
 public class Hyphenchar extends AbstractCode implements ExpandableCode {
 
     /**
-     * The field <tt>NAMESPACE</tt> contains the ...
-     */
-    private static final String NAMESPACE = "";
-
-    /**
      * Creates a new object.
      *
      * @param name the name for debugging
@@ -106,8 +102,8 @@ public class Hyphenchar extends AbstractCode implements ExpandableCode {
             throws GeneralException {
 
         Font font = source.getFont();
-        Token t = context.getTokenFactory().newInstance(Catcode.OTHER,
-                                                        font.getHyphenChar(), NAMESPACE);
+        Token t = context.getTokenFactory().createToken(Catcode.OTHER,
+                font.getHyphenChar(), Namespace.DEFAULT_NAMESPACE);
         source.push(t);
     }
 }

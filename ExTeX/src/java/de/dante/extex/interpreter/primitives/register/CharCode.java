@@ -82,7 +82,7 @@ public class CharCode extends AbstractCode implements ExpandableCode, CountConve
             throws GeneralException {
 
         Catcode cc = context.getTokenizer().getCatcode(character);
-        Token t = context.getTokenFactory().newInstance(cc, character,
+        Token t = context.getTokenFactory().createToken(cc, character,
                                                         context.getNamespace());
         source.push(t);
     }
