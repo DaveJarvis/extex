@@ -59,7 +59,7 @@ public class NumberedReal extends NamedReal {
 	 * @return Return the key
 	 * @throws GeneralException, if an ecxeption was occured
 	 */
-	protected String getKey(TokenSource source) throws GeneralException {
+	protected String getKey(final TokenSource source) throws GeneralException {
 		return getName() + "#" + Long.toString(source.scanNumber());
 	}
 }
