@@ -179,6 +179,21 @@ public final class Messages {
     }
 
     /**
+     * Initialize the messages with a given bundle name and locale.
+     * This method should be
+     * called early in the application and not called again. Otherwise the
+     * change in the language might confuse the user.
+     *
+     * @param bundleName the name of the resource bundle to use
+     * @param locale the preferred locale to use
+     */
+    public static void 
+    configure(final String bundleName, final Locale locale) {
+
+        bundle = ResourceBundle.getBundle(bundleName, locale);
+    }
+
+    /**
      * Get the value of a format string associated to a given key in the
      * resource bundle and print it to the given writer.
      *
