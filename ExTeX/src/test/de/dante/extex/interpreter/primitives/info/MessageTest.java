@@ -79,4 +79,26 @@ public class MessageTest extends ExTeXLauncher {
                 null);
     }
 
+    /**
+     * Test case checking that \message prints its plain argument.
+     *
+     * @throws Exception in case of an error
+     */
+    /*
+    public void testMessage1() throws Exception {
+
+        Properties properties = System.getProperties();
+        properties.setProperty("extex.config", "extex");
+
+        runCode(properties,
+                "\\errorstopmode"
+                + "\\catcode`{=1"
+                + "\\catcode`}=2"
+                + "\\message{Hello world!}"
+                + "\\end ",
+                "Hello world!",
+                "");
+    }
+    */
+
 }
