@@ -20,7 +20,7 @@ package de.dante.extex.interpreter.loader;
 
 
 /**
- * ...
+ * This exception is used when the loader detects a class not found exception.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
