@@ -19,7 +19,6 @@
 
 package de.dante.extex.interpreter.type.node;
 
-import de.dante.extex.i18n.Messages;
 import de.dante.extex.interpreter.type.glue.Glue;
 import de.dante.extex.typesetter.Node;
 import de.dante.extex.typesetter.NodeVisitor;
@@ -66,8 +65,8 @@ public class SpaceNode extends AbstractNode implements Node {
      */
     public void toString(final StringBuffer sb, final String prefix) {
 
-        sb.append("\\space");//TODO I18N???
-      }
+        sb.append("\\space"); //TODO I18N???
+    }
 
     /**
      * This method returns the printable representation.
