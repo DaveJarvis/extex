@@ -34,7 +34,6 @@ import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.FlagsImpl;
 import de.dante.extex.interpreter.Interaction;
 import de.dante.extex.interpreter.Interpreter;
-import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.context.ContextFactory;
 import de.dante.extex.interpreter.exception.ErrorLimitException;
@@ -43,6 +42,7 @@ import de.dante.extex.interpreter.loader.LoaderException;
 import de.dante.extex.interpreter.loader.SerialLoader;
 import de.dante.extex.interpreter.type.Code;
 import de.dante.extex.interpreter.type.ExpandableCode;
+import de.dante.extex.interpreter.type.PrefixCode;
 import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.scanner.ActiveCharacterToken;
 import de.dante.extex.scanner.CodeToken;
@@ -89,7 +89,6 @@ import de.dante.util.resource.ResourceFinder;
 public class Max extends Moritz
         implements
             Interpreter,
-            TokenSource,
             LogEnabled,
             Observable,
             TokenVisitor {
@@ -618,7 +617,10 @@ public class Max extends Moritz
             throw new HelpingException(getLocalizer(), "TTP.UndefinedToken",
                     token.toString());
         }
-        if (code.execute(prefix, context, this, typesetter)) {
+
+        code.execute(prefix, context, this, typesetter);
+
+        if (!(code instanceof PrefixCode)) {
             prefix.clear();
         }
         return null;
@@ -667,7 +669,10 @@ public class Max extends Moritz
             throw new HelpingException(getLocalizer(), "TTP.UndefinedToken", //
                     token.toString());
         }
-        if (code.execute(prefix, context, this, typesetter)) {
+
+        code.execute(prefix, context, this, typesetter);
+
+        if (!(code instanceof PrefixCode)) {
             prefix.clear();
         }
         return null;
