@@ -28,7 +28,7 @@ package de.dante.extex.format.dvi.exception;
 public class DviException extends Exception {
 
     /**
-     * Create anew object.
+     * Create a new object.
      */
     public DviException() {
 
@@ -36,7 +36,7 @@ public class DviException extends Exception {
     }
 
     /**
-     * Create a new opject.#
+     * Create a new object.
      *
      * @param message   the message
      */
