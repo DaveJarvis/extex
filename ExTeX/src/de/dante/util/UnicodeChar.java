@@ -82,12 +82,12 @@ public class UnicodeChar {
      * Init with a char32 from a String at position idx.
      *
      * @param s the <code>String</code>
-     * @param idx the position in the string
+     * @param index the position in the string
      */
-    public UnicodeChar(final String s, final int idx) {
+    public UnicodeChar(final String s, final int index) {
 
         super();
-        this.code = UTF16.charAt(s, idx);
+        this.code = UTF16.charAt(s, index);
     }
 
     /**

@@ -60,7 +60,7 @@ public class GlueComponent implements Serializable {
     /**
      * The field <tt>order</tt> contains the order of infinity.
      * In case of an order 0 the value holds the absolute value; otherwise
-     * value holde the factor of the order.
+     * value holds the factor of the order.
      */
     private int order = 0;
 

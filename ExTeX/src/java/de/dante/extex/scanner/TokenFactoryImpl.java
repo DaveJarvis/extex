@@ -142,7 +142,8 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
      *
      * @throws CatcodeException in case of an error
      */
-    public Token newInstance(Catcode code, char c) throws CatcodeException {
+    public Token newInstance(final Catcode code, final char c)
+            throws CatcodeException {
 
         try {
             return (Token) code.visit(this, null, new UnicodeChar(c), null);
