@@ -318,8 +318,8 @@ public class HelpingException extends GeneralException {
             return localizer.format(name);
         }
 
-        // TODO The following fallback should be eliminated as soon as the
-        //       deprecated methods are removed.
+        // TODO gene: The following fallback should be eliminated
+        //       as soon as the deprecated methods are removed.
 
         String format;
         try {

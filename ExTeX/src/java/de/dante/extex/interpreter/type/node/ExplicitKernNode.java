@@ -23,7 +23,7 @@ import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.typesetter.Discartable;
 
 /**
- * ...
+ * TODO gene: missing JavaDoc.
  *
  * From The TeXbook
  * <p>

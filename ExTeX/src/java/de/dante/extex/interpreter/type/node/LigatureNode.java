@@ -102,7 +102,7 @@ public class LigatureNode extends CharNode implements Node {
     public String toString() {
 
         return " (ligature " + first.toString() + " " + second.toString() + ")";
-        //TODO incomplete
+        //TODO gene: incomplete
     }
 
     /**

@@ -119,7 +119,7 @@ public class ChoiceNoad implements Noad {
         script.toString(sb);
         sb.append(" s");
         scriptScript.toString(sb);
-        // TODO Check
+        //TODO gene: Check
 
     }
 

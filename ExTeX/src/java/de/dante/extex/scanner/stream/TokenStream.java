@@ -101,5 +101,5 @@ public interface TokenStream {
      *
      * @return <code>true</code> if the stream is at its end
      */
-    //TODO boolean isEof();
+    //TODO gene: boolean isEof();
 }

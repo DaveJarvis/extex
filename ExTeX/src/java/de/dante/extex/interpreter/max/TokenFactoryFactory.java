@@ -25,7 +25,7 @@ import de.dante.util.framework.AbstractFactory;
 
 
 /**
- * ...
+ * This class provides a factory for token factories.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

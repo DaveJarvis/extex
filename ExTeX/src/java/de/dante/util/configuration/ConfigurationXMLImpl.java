@@ -186,7 +186,7 @@ public class ConfigurationXMLImpl implements Configuration {
      * </pre>
      *
      *
-     * TODO documentation incomplete
+     * TODO gene: documentation incomplete
      *
      * searches the following files on the classpath:
      *

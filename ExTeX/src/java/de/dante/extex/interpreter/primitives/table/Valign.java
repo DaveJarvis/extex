@@ -69,7 +69,7 @@ public class Valign extends AbstractAlign {
     }
 
     /**
-     * ....
+     * TODO gene: missing JavaDoc.
      *
      * @param preamble the list of preamble items to use
      * @param height the target height or <code>null</code> for the natural
@@ -84,7 +84,7 @@ public class Valign extends AbstractAlign {
             final Context context, final TokenSource source,
             final Typesetter typesetter) throws GeneralException {
 
-        //TODO execute() unimplemented
+        //TODO gene: execute() unimplemented
         throw new RuntimeException("unimplemented");
     }
 

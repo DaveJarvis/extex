@@ -99,8 +99,8 @@ public class Showbox extends AbstractBox implements LogEnabled {
         if (b == null) {
             logger.info(context.esc(key) + "=void");
         } else {
-            //TODO execute() unimplemented
-            throw new RuntimeException("unimplemented");
+            logger.info(b.getNodes().toString());
+            //TODO gene: correct??
         }
         logger.info(getLocalizer().format("TTP.Show.OK"));
         return true;

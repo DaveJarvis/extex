@@ -29,7 +29,7 @@ import de.dante.util.GeneralException;
 import de.dante.util.framework.logger.LogEnabled;
 
 /**
- * ...
+ * This WhatsIt node closes an out file on shipping.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

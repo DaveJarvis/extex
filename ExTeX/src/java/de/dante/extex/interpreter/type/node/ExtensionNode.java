@@ -24,7 +24,7 @@ import de.dante.extex.interpreter.type.dimen.FixedDimen;
 import de.dante.extex.typesetter.Node;
 
 /**
- * ...
+ * TODO gene: missing JavaDoc.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -39,7 +39,7 @@ public class ExtensionNode extends WhatsItNode implements Node {
     /**
      * Creates a new object.
      *
-     * @param theExtension ...
+     * @param theExtension the extension object
      */
     public ExtensionNode(final Extension theExtension) {
 
@@ -92,7 +92,8 @@ public class ExtensionNode extends WhatsItNode implements Node {
      */
     public void setWidth(final FixedDimen width) {
 
-        //TODO correct
+        // TODO gene: incomplete
+        throw new RuntimeException("incomplete");
         //this.extension.setWidth(width);
     }
 

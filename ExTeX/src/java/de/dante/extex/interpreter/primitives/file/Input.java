@@ -70,7 +70,7 @@ public class Input extends AbstractFileCode {
      * stream for.
      */
     private static final String FILE_TYPE = "tex";
-    //TODO is "tex" as constant good?
+    //TODO gene: is "tex" as constant good?
 
     /**
      * Creates a new object.

@@ -228,6 +228,7 @@ public abstract class AbstractNode implements Node {
 
         sb.append(prefix);
 
-        //TODO incomplete
+        //TODO gene: unimplemented
+        throw new RuntimeException("unimplemented");
     }
 }

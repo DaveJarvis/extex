@@ -247,7 +247,7 @@ public class MacroCode extends AbstractCode
             if (pi >= len) {
                 args[no] = getTokenOrBlock(context, source);
             } else if (pattern.get(pi) instanceof MacroParamToken
-            //TODO #1##
+            //TODO gene: #1##
             ) {
                 args[no] = getTokenOrBlock(context, source);
             } else {

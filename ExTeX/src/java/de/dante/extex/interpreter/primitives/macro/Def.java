@@ -116,7 +116,7 @@ public class Def extends AbstractAssignment {
             throws GeneralException {
 
         Tokens body = source.scanTokens();
-        //TODO maybe the treatment of # is incorrect
+        //TODO gene: maybe the treatment of # is incorrect
         return body;
     }
 

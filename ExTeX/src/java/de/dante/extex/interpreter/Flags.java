@@ -69,7 +69,8 @@ package de.dante.extex.interpreter;
  *  <tr>
  *   <td><b>protected</b></td>
  *   <td><tt>\protected</tt></td>
- *   <td>The protected flag controls ...
+ *   <td>The protected flag controls
+ *       TODO gene: describe
  *   </td>
  *  </tr>
  * </table>

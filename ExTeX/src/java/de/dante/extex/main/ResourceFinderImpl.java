@@ -131,7 +131,7 @@ public class ResourceFinderImpl
                 return null;
             }
             if (line.charAt(0) == '\\') {
-                //TODO make use of the line read
+                //TODO gene: make use of the line read
                 throw new RuntimeException("unimplemented");
             } else {
                 InputStream stream = parent.findResource(line, type);

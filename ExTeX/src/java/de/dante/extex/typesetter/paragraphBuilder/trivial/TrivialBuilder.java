@@ -139,7 +139,7 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
     }
 
     /**
-     * ...
+     * TODO gene: missing JavaDoc.
      *
      * @param start the index of the first node to consider
      * @param len the length of nodes

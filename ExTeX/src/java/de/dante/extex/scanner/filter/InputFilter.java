@@ -20,7 +20,7 @@ package de.dante.extex.scanner.filter;
 
 
 /**
- * ...
+ * TODO gene: missing JavaDoc.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

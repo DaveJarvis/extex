@@ -107,7 +107,7 @@ public class CharNode extends AbstractNode implements Node {
      */
     public int getSpaceFactor() {
 
-        return 0; // TODO incomplete
+        return 0; //TODO gene: incomplete
     }
 
     /**

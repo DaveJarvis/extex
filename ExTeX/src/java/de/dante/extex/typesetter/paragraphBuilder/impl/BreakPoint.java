@@ -22,7 +22,7 @@ package de.dante.extex.typesetter.paragraphBuilder.impl;
 import de.dante.extex.interpreter.type.glue.FixedGlue;
 
 /**
- * ...
+ * TODO gene: missing JavaDoc.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

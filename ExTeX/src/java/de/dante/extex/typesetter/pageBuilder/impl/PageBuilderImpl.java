@@ -28,7 +28,7 @@ import de.dante.extex.typesetter.pageBuilder.PageBuilder;
 import de.dante.util.GeneralException;
 
 /**
- * ...
+ * TODO gene: missing JavaDoc.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

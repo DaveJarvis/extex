@@ -46,7 +46,7 @@ import java.util.ResourceBundle;
  * @version $Revision$
  */
 public final class Messages {
-    //TODO: This class is a mess. Integrate the localized messages into the components.
+    //TODO gene: This class is a mess. Integrate the localized messages into the components.
 
     /**
      * The constant <tt>BUNDLE_NAME</tt> contains the name of the resource
