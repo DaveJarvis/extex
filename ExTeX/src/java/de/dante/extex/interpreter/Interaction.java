@@ -22,6 +22,7 @@ package de.dante.extex.interpreter;
 import de.dante.extex.main.exception.MainUnknownInteractionException;
 import de.dante.util.GeneralException;
 
+import java.io.ObjectStreamException;
 import java.io.Serializable;
 
 /**
@@ -166,6 +167,19 @@ public abstract class Interaction implements Serializable {
             return visitor.visitBatchmode(arg1, arg2, arg3);
         }
 
+        /**
+         * Return the singleton constant object after the serialized instance
+         * has been read back in.
+         *
+         * @return the one and only instance of this object
+         *
+         * @throws ObjectStreamException never
+         */
+        protected Object readResolve() throws ObjectStreamException {
+
+            return Interaction.BATCHMODE;
+        }
+
     }
 
     /**
@@ -186,6 +200,19 @@ public abstract class Interaction implements Serializable {
                 throws GeneralException {
 
             return visitor.visitNonstopmode(arg1, arg2, arg3);
+        }
+
+        /**
+         * Return the singleton constant object after the serialized instance
+         * has been read back in.
+         *
+         * @return the one and only instance of this object
+         *
+         * @throws ObjectStreamException never
+         */
+        protected Object readResolve() throws ObjectStreamException {
+
+            return Interaction.NONSTOPMODE;
         }
 
     }
@@ -210,6 +237,19 @@ public abstract class Interaction implements Serializable {
             return visitor.visitScrollmode(arg1, arg2, arg3);
         }
 
+        /**
+         * Return the singleton constant object after the serialized instance
+         * has been read back in.
+         *
+         * @return the one and only instance of this object
+         *
+         * @throws ObjectStreamException never
+         */
+        protected Object readResolve() throws ObjectStreamException {
+
+            return Interaction.SCROLLMODE;
+        }
+
     }
 
     /**
@@ -230,6 +270,19 @@ public abstract class Interaction implements Serializable {
                 throws GeneralException {
 
             return visitor.visitErrorstopmode(arg1, arg2, arg3);
+        }
+
+        /**
+         * Return the singleton constant object after the serialized instance
+         * has been read back in.
+         *
+         * @return the one and only instance of this object
+         *
+         * @throws ObjectStreamException never
+         */
+        protected Object readResolve() throws ObjectStreamException {
+
+            return Interaction.ERRORSTOPMODE;
         }
 
     }

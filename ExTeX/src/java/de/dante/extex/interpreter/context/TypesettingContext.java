@@ -18,6 +18,8 @@
  */
 package de.dante.extex.interpreter.context;
 
+import java.io.Serializable;
+
 import de.dante.extex.hyphenation.HyphenationTable;
 import de.dante.extex.interpreter.type.font.Font;
 
@@ -27,7 +29,7 @@ import de.dante.extex.interpreter.type.font.Font;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface TypesettingContext {
+public interface TypesettingContext extends Serializable {
 
     /**
      * Setter for all components.

@@ -19,6 +19,8 @@
 
 package de.dante.extex.hyphenation;
 
+import java.io.Serializable;
+
 /**
  * Interface for a <code>HyphernationManager</code>.
  *
@@ -26,7 +28,7 @@ package de.dante.extex.hyphenation;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface HyphenationManager {
+public interface HyphenationManager extends Serializable {
 
     /**
      * Return the <code>HyphernationTable</code> with the index.
