@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003  Gerd Neugebauer
+ * Copyright (C) 2003-.2004  Gerd Neugebauer
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -53,6 +53,8 @@ public class LetterToken extends AbstractToken implements Token {
      * Get the string representation of this object for debugging purposes.
      *
      * @return the string representation
+     * 
+     * @see "TeX -- The Program [298]"
      */
     public String toString() {
         return Messages.format("LetterToken.Text",value);
