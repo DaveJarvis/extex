@@ -99,7 +99,7 @@ public class MathDelimiter {
                     init(del);
                     return;
                 }
-            } else if (context.getCode(t) instanceof Delimiter) {
+            } else if (context.getCode((CodeToken) t) instanceof Delimiter) {
                 long del = source.scanNumber(context);
                 init(del);
                 return;

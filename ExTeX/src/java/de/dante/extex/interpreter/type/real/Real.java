@@ -106,14 +106,14 @@ public class Real implements Serializable {
         } else if (t.equals(Catcode.OTHER, "+")) {
             t = source.scanNonSpace(context);
         } else if (t instanceof ControlSequenceToken) {
-            Code code = context.getCode(t);
-            if (code != null && code instanceof RealConvertible) {
+            Code code = context.getCode((ControlSequenceToken) t);
+            if (code instanceof RealConvertible) {
                 return (((RealConvertible) code).convertReal(context, source))
                         .getValue();
-            } else if (code != null && code instanceof CountConvertible) {
+            } else if (code instanceof CountConvertible) {
                 return (new Real(((CountConvertible) code).convertCount(
                         context, source, null))).getValue();
-            } else if (code != null && code instanceof DimenConvertible) {
+            } else if (code instanceof DimenConvertible) {
                 return (new Real(((DimenConvertible) code).convertDimen(
                         context, source, null))).getValue();
             }

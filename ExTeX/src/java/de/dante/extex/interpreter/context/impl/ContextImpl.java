@@ -447,11 +447,11 @@ public class ContextImpl
 
     /**
      * @see de.dante.extex.interpreter.context.Context#getCode(
-     *      de.dante.extex.scanner.Token)
+     *      de.dante.extex.scanner.CodeToken)
      */
-    public Code getCode(final Token t) throws GeneralException {
+    public Code getCode(final CodeToken t) throws GeneralException {
 
-        return group.getCode((CodeToken) t);
+        return group.getCode(t);
     }
 
     /**
