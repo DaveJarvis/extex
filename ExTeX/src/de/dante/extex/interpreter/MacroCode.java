@@ -124,7 +124,7 @@ public class MacroCode extends AbstractCode implements Code {
         Tokens[] ta = new Tokens[9];
         Token ti;
         Token t;
-        int i = 1;
+        //int i = 1;
         int len = pattern.length();
 
         for (int pi = 0; pi < len; pi++) {
