@@ -37,7 +37,6 @@ import de.dante.util.GeneralException;
  * @version $Revision$
  */
 public class MarkNode extends AbstractNode implements Node {
-
     /**
      * The field <tt>index</tt> contains the index of the mark node for eTeX.
      * The index 0 corresponds to the original mark of TeX.
@@ -106,6 +105,15 @@ public class MarkNode extends AbstractNode implements Node {
     public void toString(final StringBuffer sb, final String prefix) {
 
         sb.append(getLocalizer().format("MarkNode.Text", mark.toString()));
+    }
+
+    /**
+     * @see de.dante.extex.typesetter.type.Node#toText(java.lang.StringBuffer, java.lang.String)
+     */
+    public void toText(StringBuffer sb, String prefix) {
+
+        // TODO gene: toText unimplemented
+
     }
 
     /**

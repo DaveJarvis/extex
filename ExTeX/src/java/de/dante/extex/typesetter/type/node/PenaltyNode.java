@@ -37,7 +37,6 @@ import de.dante.util.GeneralException;
  * @version $Revision$
  */
 public class PenaltyNode extends AbstractNode implements Node, Discartable {
-
     /**
      * The field <tt>penalty</tt> contains the penalty value of this node.
      */
@@ -100,6 +99,15 @@ public class PenaltyNode extends AbstractNode implements Node, Discartable {
 
         sb.append(getLocalizer().format("PenaltyNode.Text",
                 Long.toString(penalty)));
+    }
+
+    /**
+     * @see de.dante.extex.typesetter.type.Node#toText(java.lang.StringBuffer, java.lang.String)
+     */
+    public void toText(StringBuffer sb, String prefix) {
+
+        // TODO gene: toText unimplemented
+
     }
 
     /**

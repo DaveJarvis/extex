@@ -39,7 +39,6 @@ import de.dante.util.GeneralException;
  * @version $Revision$
  */
 public class AfterMathNode extends AbstractNode implements Node, Discartable {
-
     /**
      * Creates a new object.
      */
@@ -85,6 +84,15 @@ public class AfterMathNode extends AbstractNode implements Node, Discartable {
             sb.append(getLocalizer().format("AfterMathNode.Surrounded",
                     width.toString()));
         }
+    }
+
+    /**
+     * @see de.dante.extex.typesetter.type.Node#toText(java.lang.StringBuffer, java.lang.String)
+     */
+    public void toText(StringBuffer sb, String prefix) {
+
+        // TODO gene: toText unimplemented
+
     }
 
     /**

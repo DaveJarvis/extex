@@ -35,7 +35,6 @@ import de.dante.util.GeneralException;
  * @version $Revision$
  */
 public class RuleNode extends AbstractNode implements Node {
-
     /**
      * The field <tt>context</tt> the typographic context.
      */
@@ -105,6 +104,15 @@ public class RuleNode extends AbstractNode implements Node {
         x = getWidth();
         String w = (x == null ? "*" : x.toString());
         sb.append(getLocalizer().format("RuleNode.Text", h, d, w));
+    }
+
+    /**
+     * @see de.dante.extex.typesetter.type.Node#toText(java.lang.StringBuffer, java.lang.String)
+     */
+    public void toText(StringBuffer sb, String prefix) {
+
+        // TODO gene: toText unimplemented
+
     }
 
     /**

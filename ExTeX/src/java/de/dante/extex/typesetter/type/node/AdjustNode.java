@@ -33,7 +33,6 @@ import de.dante.util.GeneralException;
  * @version $Revision$
  */
 public class AdjustNode extends AbstractNode implements Node {
-
     /**
      * Creates a new object.
      */
@@ -63,6 +62,15 @@ public class AdjustNode extends AbstractNode implements Node {
     public void toString(final StringBuffer sb, final String prefix) {
 
         sb.append("vadjust "); //TODO gene: unimplemented
+    }
+
+    /**
+     * @see de.dante.extex.typesetter.type.Node#toText(java.lang.StringBuffer, java.lang.String)
+     */
+    public void toText(StringBuffer sb, String prefix) {
+
+        // TODO gene: toText unimplemented
+
     }
 
     /**
