@@ -29,7 +29,8 @@ import de.dante.extex.typesetter.type.noad.Noad;
 import de.dante.util.GeneralException;
 
 /**
- * This class provides an implementation for the primitive <code>\mathchoice</code>.
+ * This class provides an implementation for the primitive
+ * <code>\mathchoice</code>.
  *
  * <doc name="mathchoice">
  * <h3>The Primitive <tt>\mathchoice</tt></h3>
