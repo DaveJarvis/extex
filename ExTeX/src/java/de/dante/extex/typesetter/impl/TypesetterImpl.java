@@ -304,7 +304,8 @@ public class TypesetterImpl implements Typesetter, Manager, LogEnabled {
     public void pop() throws GeneralException {
 
         if (saveStack.isEmpty()) {
-            throw new PanicException("TTP.Confusion");
+            //TODO i18n
+            throw new PanicException("TTP.Confusion", "stack is empty");
         }
 
         this.listMaker = (ListMaker) (saveStack.remove(saveStack.size() - 1));
