@@ -80,14 +80,6 @@ public interface Group extends Tokenizer, Serializable {
     Tokens getAfterGroup();
 
     /**
-     * Getter for the group level. The group level is the number of groups which
-     * are currently open. Thus this number of groups can be closed.
-     *
-     * @return the group level
-     */
-    long getLevel();
-
-    /**
      * Getter for the {@link de.dante.extex.interpreter.type.box.Box box}register.
      * Count registers are named, either with a number or an arbitrary string.
      * The numbered registers where limited to 256 in TeX. This restriction
@@ -116,8 +108,7 @@ public interface Group extends Tokenizer, Serializable {
      * @return the code associated to the name or <code>null</code> if none
      *         is defined yet
      */
-    //TODO change the signature to use CodeToken instead of Token
-    Code getCode(CodeToken token);
+     Code getCode(CodeToken token);
 
     /**
      * Getter for the named count register in the current group. The name can
@@ -204,6 +195,15 @@ public interface Group extends Tokenizer, Serializable {
      * @return the lower case equivalent or null if none exists
      */
     UnicodeChar getLccode(UnicodeChar uc);
+
+    /**
+     * Getter for the group level. The group level is the number of groups which
+     * are currently open. Thus this number of groups can be closed. Since the
+     * top-level group can not be closed this group counts as 0.
+     *
+     * @return the group level
+     */
+    long getLevel();
 
     /**
      * Getter for the mathcode of a character.
