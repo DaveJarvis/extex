@@ -163,9 +163,6 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
      * <i>|this| = max(|this|, |d|)</i>
      *
      * @param d the other dimen
-     *
-     * @throws NullPointerException in case that the argument is
-     *  <code>null</code>.
      */
     public void max(final FixedDimen d) {
 
