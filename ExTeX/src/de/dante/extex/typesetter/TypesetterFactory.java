@@ -112,7 +112,7 @@ public class TypesetterFactory {
         try {
             Constructor constructor = Class.forName(className)
                     .getConstructor(new Class[]{Configuration.class,
-                                            Context.class});
+                                            TypesetterOptions.class});
             typesetter = (Typesetter) constructor
                     .newInstance(new Object[]{cfg, context});
         } catch (SecurityException e) {
@@ -123,7 +123,7 @@ public class TypesetterFactory {
                                                          + Configuration.class
                                                                  .getName()
                                                          + ", "
-                                                         + Context.class
+                                                         + TypesetterOptions.class
                                                          .getName()
                                                          + ")");
         } catch (ClassNotFoundException e) {
