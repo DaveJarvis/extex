@@ -35,6 +35,7 @@ import de.dante.extex.interpreter.type.muskip.Muskip;
 import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.scanner.Catcode;
 import de.dante.extex.scanner.Token;
+import de.dante.extex.scanner.stream.TokenStream;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.GeneralException;
 import de.dante.util.UnicodeChar;
@@ -460,6 +461,13 @@ public interface Group extends Tokenizer, Serializable {
      *            groups; otherwise the current group is affected only
      */
     void setSkip(String name, Glue value, boolean global);
+
+    /**
+     * Setter for standardTokenStream.
+     *
+     * @param standardTokenStream the standardTokenStream to set.
+     */
+    void setStandardTokenStream(TokenStream standardTokenStream);
 
     /**
      * Setter for a toks register in all groups.

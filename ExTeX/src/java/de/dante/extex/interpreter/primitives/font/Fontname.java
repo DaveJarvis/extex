@@ -33,7 +33,7 @@ import de.dante.util.GeneralException;
  * This class provides an implementation for the primitive
  * <code>\fontname</code>.
  *
- * <doc>
+ * <doc name="fontname">
  * <h3>The Primitive <tt>\fontname</tt></h3>
  * <p>
  *  ...

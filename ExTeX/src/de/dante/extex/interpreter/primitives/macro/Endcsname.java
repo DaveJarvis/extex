@@ -30,7 +30,7 @@ import de.dante.util.GeneralException;
  * This class provides an implementation for the primitive
  * <code>\endcsname</code>.
  *
- * <doc>
+ * <doc name="endcsname">
  * <h3>The Primitive <tt>\endcsname</tt></h3>
  * <p>
  *  The macro <tt>\endcsname</tt> is used in combination with the macro

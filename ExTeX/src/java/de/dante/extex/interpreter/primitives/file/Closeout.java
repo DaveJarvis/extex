@@ -32,7 +32,7 @@ import de.dante.util.GeneralException;
  * This class provides an implementation for the primitive
  * <code>\closeout</code>.
  *
- * <doc>
+ * <doc name="closeout">
  * <h3>The Primitive <tt>\closeout</tt></h3>
  * <p>
  *  ...

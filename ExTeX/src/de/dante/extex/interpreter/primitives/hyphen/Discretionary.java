@@ -32,7 +32,7 @@ import de.dante.util.GeneralException;
  * This class provides an implementation for the primitive
  * <code>\discretionary</code>.
  *
- * <doc>
+ * <doc name="discretionary">
  * <h3>The Primitive <tt>\discretionary</tt></h3>
  * <p>
  *  ...

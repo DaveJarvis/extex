@@ -30,7 +30,7 @@ import de.dante.util.GeneralException;
  * This class provides an implementation for the primitive
  * <code>\prevdepth</code>.
  *
- * <doc>
+ * <doc name="prevdepth">
  * <h3>The Primitive <tt>\prevdepth</tt></h3>
  * <p>
  *  ...

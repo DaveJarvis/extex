@@ -31,7 +31,7 @@ import de.dante.util.GeneralException;
  * This class provides an implementation for the primitive
  * <code>\aftergroup</code>.
  *
- * <doc>
+ * <doc name="aftergroup">
  * <h3>The Primitive <tt>\aftergroup</tt></h3>
  * <p>
  *  ...

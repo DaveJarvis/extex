@@ -30,7 +30,7 @@ import de.dante.util.configuration.ConfigurationException;
  * This class provides an implementation for the primitive
  * <code>\begingroup</code>.
  *
- * <doc>
+ * <doc name="begingroup">
  * <h3>The Primitive <tt>\begingroup</tt></h3>
  * <p>
  *  ...

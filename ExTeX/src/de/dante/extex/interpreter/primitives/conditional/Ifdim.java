@@ -30,7 +30,7 @@ import de.dante.util.GeneralException;
 /**
  * This class provides an implementation for the primitive <code>\ifdim</code>.
  *
- * <doc>
+ * <doc name="ifdim">
  * <h3>The Primitive <tt>\ifdim</tt></h3>
  * <p>
  *  ...

@@ -32,7 +32,7 @@ import de.dante.util.GeneralException;
  * This class provides an implementation for the primitive
  * <code>\noexpand</code>.
  *
- * <doc>
+ * <doc name="noexpand">
  * <h3>The Primitive <tt>\noexpand</tt></h3>
  * <p>
  *  ...

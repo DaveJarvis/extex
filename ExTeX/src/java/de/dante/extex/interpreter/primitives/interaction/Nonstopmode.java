@@ -32,7 +32,7 @@ import de.dante.util.GeneralException;
  * effect all prefixes are zeroed and the interaction mode is set to
  * <tt>nonstopmode</tt>.
  *
- * <doc>
+ * <doc name="nonstopmode">
  * <h3>The Primitive <tt>\nonstopmode</tt></h3>
  * <p>
  *  ...

@@ -29,7 +29,7 @@ import de.dante.util.GeneralException;
 /**
  * This class provides an implementation for the primitive <code>\ifnum</code>.
  *
- * <doc>
+ * <doc name="ifnum">
  * <h3>The Primitive <tt>\ifnum</tt></h3>
  * <p>
  *  ...

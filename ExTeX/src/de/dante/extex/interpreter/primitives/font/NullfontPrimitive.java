@@ -31,7 +31,7 @@ import de.dante.util.GeneralException;
  * This class provides an implementation for the primitive
  * <code>\nullfont</code>.
  *
- * <doc>
+ * <doc name="nullfont">
  * <h3>The Primitive <tt>\nullfont</tt></h3>
  * <p>
  *  ...

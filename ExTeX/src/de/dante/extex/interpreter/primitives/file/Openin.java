@@ -31,7 +31,7 @@ import de.dante.util.GeneralException;
 /**
  * This class provides an implementation for the primitive <code>\openin</code>.
  *
- * <doc>
+ * <doc name="openin">
  * <h3>The Primitive <tt>\openin</tt></h3>
  * <p>
  *  ...

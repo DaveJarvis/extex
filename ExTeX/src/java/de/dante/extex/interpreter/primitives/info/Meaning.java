@@ -29,7 +29,7 @@ import de.dante.util.GeneralException;
  * This class provides an implementation for the primitive
  * <code>\meaning</code>.
  *
- * <doc>
+ * <doc name="meaning">
  * <h3>The Primitive <tt>\meaning</tt></h3>
  * <p>
  *  ...

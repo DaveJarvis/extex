@@ -32,7 +32,7 @@ import de.dante.util.GeneralException;
  * effect all prefixes are zeroed and the interaction mode is set to
  * <tt>scrollmode</tt>.
  *
- * <doc>
+ * <doc name="scrollmode">
  * <h3>The Primitive <tt>\scrollmode</tt></h3>
  * <p>
  *  ...

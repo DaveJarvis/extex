@@ -29,7 +29,7 @@ import de.dante.util.GeneralException;
  * This class provides an implementation for the primitive
  * <code>\endgroup</code>.
  *
- * <doc>
+ * <doc name="endgroup">
  * <h3>The Primitive <tt>\endgroup</tt></h3>
  * <p>
  *  ...

@@ -32,7 +32,7 @@ import de.dante.util.GeneralException;
 /**
  * This class provides an implementation for the primitive <code>\ifcase</code>.
  *
- * <doc>
+ * <doc name="ifcase">
  * <h3>The Primitive <tt>\ifcase</tt></h3>
  * <p>
  *  ...

@@ -32,7 +32,7 @@ import de.dante.util.GeneralException;
 /**
  * This class provides an implementation for the primitive <code>\copy</code>.
  *
- * <doc>
+ * <doc name="copy">
  * <h3>The Primitive <tt>\copy</tt></h3>
  * <p>
  *  ...

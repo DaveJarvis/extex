@@ -32,7 +32,7 @@ import de.dante.util.UnicodeChar;
  * This class provides an implementation for the primitive
  * <code>\mathcode</code>.
  *
- * <doc>
+ * <doc name="mathcode">
  * <h3>The Primitive <tt>\mathcode</tt></h3>
  * <p>
  *  ...

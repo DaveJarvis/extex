@@ -28,7 +28,7 @@ import de.dante.util.GeneralException;
 /**
  * This class provides an implementation for the primitive <code>\ifcat</code>.
  *
- * <doc>
+ * <doc name="ifcat">
  * <h3>The Primitive <tt>\ifcat</tt></h3>
  * <p>
  *  ...

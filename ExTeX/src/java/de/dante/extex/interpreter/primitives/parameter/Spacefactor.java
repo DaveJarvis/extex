@@ -30,7 +30,7 @@ import de.dante.util.GeneralException;
  * This class provides an implementation for the primitive
  * <code>\spacefactor</code>.
  *
- * <doc>
+ * <doc name="spacefactor">
  * <h3>The Primitive <tt>\spacefactor</tt></h3>
  * <p>
  *  ...

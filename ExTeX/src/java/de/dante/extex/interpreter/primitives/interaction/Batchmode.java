@@ -32,7 +32,7 @@ import de.dante.util.GeneralException;
  * effect all prefixes are zeroed and the interaction mode is set to
  * <tt>batchmode</tt>.
  *
- * <doc>
+ * <doc name="batchmode">
  * <h3>The Primitive <tt>\batchmode</tt></h3>
  * <p>
  *  ...

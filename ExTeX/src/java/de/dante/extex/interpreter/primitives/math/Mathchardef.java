@@ -32,7 +32,7 @@ import de.dante.util.GeneralException;
  * This class provides an implementation for the primitive
  * <code>\mathchardef</code>.
  *
- * <doc>
+ * <doc name="mathchardef">
  * <h3>The Primitive <tt>\mathchardef</tt></h3>
  * <p>
  *  ...

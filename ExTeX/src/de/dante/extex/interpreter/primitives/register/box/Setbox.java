@@ -26,6 +26,8 @@ import de.dante.extex.interpreter.TokenSource;
 import de.dante.util.GeneralException;
 
 /**
+ * This class provides an implementation for the primitive <code>\setbox</code>.
+ * 
  * ...
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>

@@ -37,7 +37,7 @@ import de.dante.util.GeneralException;
 /**
  * This class provides an implementation for the primitive <code>\dump</code>.
  *
- * <doc>
+ * <doc name="dump">
  * <h3>The Primitive <tt>\dump</tt></h3>
  * <p>
  *  ...

@@ -111,8 +111,10 @@ public interface Interpreter extends TokenSource, Observable {
      * to acquire them.
      *
      * @param factory the token stream factory
+     *
+     * @throws ConfigurationException ...
      */
-    void setTokenStreamFactory(TokenStreamFactory factory);
+    void setTokenStreamFactory(TokenStreamFactory factory) throws ConfigurationException;
 
     /**
      * Setter for the typesetter.

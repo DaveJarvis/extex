@@ -28,7 +28,7 @@ import de.dante.util.GeneralException;
 /**
  * This class provides an implementation for the primitive <code>\end</code>.
  *
- * <doc>
+ * <doc name="end">
  * <h3>The Primitive <tt>\end</tt></h3>
  * <p>
  *  ...

@@ -30,7 +30,7 @@ import de.dante.util.GeneralException;
 /**
  * This class provides an implementation for the primitive <code>\output</code>.
  *
- * <doc>
+ * <doc name="output">
  * <h3>The Primitive <tt>\output</tt></h3>
  * <p>
  *  ...

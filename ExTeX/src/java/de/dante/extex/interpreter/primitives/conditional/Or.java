@@ -30,7 +30,7 @@ import de.dante.util.GeneralException;
 /**
  * This class provides an implementation for the primitive <code>\or</code>.
  *
- * <doc>
+ * <doc name="or">
  * <h3>The Primitive <tt>\or</tt></h3>
  * <p>
  *  ...

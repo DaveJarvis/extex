@@ -27,7 +27,7 @@ import de.dante.util.GeneralException;
 /**
  * This class provides an implementation for the primitive <code>\xdef</code>.
  *
- * <doc>
+ * <doc name="xdef">
  * <h3>The Primitive <tt>\xdef</tt></h3>
  * <p>
  *  ...

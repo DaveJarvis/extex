@@ -31,7 +31,7 @@ import de.dante.util.UnicodeChar;
  * This class provides an implementation for the primitive
  * <code>\skewchar</code>.
  *
- * <doc>
+ * <doc name="skewchar">
  * <h3>The Primitive <tt>\skewchar</tt></h3>
  * <p>
  *  ...

@@ -31,7 +31,7 @@ import de.dante.util.GeneralException;
  * This class provides an implementation for the primitive
  * <code>\jobname</code>.
  *
- * <doc>
+ * <doc name="jobname">
  * <h3>The Primitive <tt>\jobname</tt></h3>
  * <p>
  *  ...

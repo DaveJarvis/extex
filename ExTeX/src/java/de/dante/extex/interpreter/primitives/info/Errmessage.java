@@ -29,7 +29,7 @@ import de.dante.util.GeneralException;
  * This class provides an implementation for the primitive
  * <code>\errmessage</code>.
  *
- * <doc>
+ * <doc name="errmessage">
  * <h3>The Primitive <tt>\errmessage</tt></h3>
  * <p>
  *  ...
