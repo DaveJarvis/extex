@@ -79,7 +79,7 @@ public abstract class AbstractMath extends AbstractCode
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource, Typesetter)
      */
-    public Tokens the(final Context context, final TokenSource source, Typesetter typesetter)
+    public Tokens the(final Context context, final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
         Real real = calculate(context, source);
@@ -102,7 +102,7 @@ public abstract class AbstractMath extends AbstractCode
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource, Typesetter)
      */
-    public long convertCount(final Context context, final TokenSource source, Typesetter typesetter)
+    public long convertCount(final Context context, final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
         return calculate(context, source).getLong();

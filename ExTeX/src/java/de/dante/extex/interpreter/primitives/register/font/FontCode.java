@@ -81,8 +81,8 @@ public class FontCode extends AbstractCode implements FontConvertible, Theable {
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource, Typesetter)
      */
-    public Tokens the(final Context context, final TokenSource source, Typesetter typesetter)
-            throws GeneralException {
+    public Tokens the(final Context context, final TokenSource source,
+            final Typesetter typesetter) throws GeneralException {
 
         return new Tokens(context, font.getFontName());
     }

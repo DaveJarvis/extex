@@ -89,8 +89,8 @@ public class Fontvalue extends AbstractAssignment implements Theable {
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource, Typesetter)
      */
-    public Tokens the(final Context context, final TokenSource source, Typesetter typesetter)
-            throws GeneralException {
+    public Tokens the(final Context context, final TokenSource source,
+            final Typesetter typesetter) throws GeneralException {
 
         source.skipSpace();
         Font font = source.getFont();
