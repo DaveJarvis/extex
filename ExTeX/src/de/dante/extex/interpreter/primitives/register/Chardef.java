@@ -54,7 +54,8 @@ public class Chardef extends AbstractAssignment {
     }
 
     /**
-     * @see de.dante.extex.interpreter.AbstractAssignment#assign(de.dante.extex.interpreter.Flags,
+     * @see de.dante.extex.interpreter.AbstractAssignment#assign(
+     *      de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
@@ -66,7 +67,7 @@ public class Chardef extends AbstractAssignment {
         Token cs = source.getControlSequence();
         source.scanOptionalEquals();
         UnicodeChar uc = source.scanCharacterCode();
-        context.setCode(cs, new CharFixed("", uc), prefix.isGlobal());
+        context.setCode(cs, new CharCode("", uc), prefix.isGlobal());
     }
 
 }
