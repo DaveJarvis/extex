@@ -107,7 +107,7 @@ public class PenaltyNode extends AbstractNode implements Node, Discartable {
     public void toText(StringBuffer sb, String prefix) {
 
         // TODO gene: toText unimplemented
-
+        throw new RuntimeException("unimplemented");
     }
 
     /**

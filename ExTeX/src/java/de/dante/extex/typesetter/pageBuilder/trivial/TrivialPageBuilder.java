@@ -120,9 +120,10 @@ public class TrivialPageBuilder implements PageBuilder {
     }
 
     /**
-     * @see de.dante.extex.typesetter.pageBuilder.PageBuilder#setContext(de.dante.extex.interpreter.context.Context)
+     * @see de.dante.extex.typesetter.pageBuilder.PageBuilder#setContext(
+     *      de.dante.extex.interpreter.context.Context)
      */
-    public void setContext(Context context) {
+    public void setContext(final Context context) {
 
     }
 
