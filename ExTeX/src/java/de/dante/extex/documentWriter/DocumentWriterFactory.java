@@ -53,7 +53,8 @@ public class DocumentWriterFactory extends AbstractFactory {
      * Creates a new object.
      *
      * @param configuration the configuration to use for the factory
-     * @throws ConfigurationException ...
+     *
+     * @throws ConfigurationException in case of an error
      */
     public DocumentWriterFactory(final Configuration configuration)
             throws ConfigurationException {
