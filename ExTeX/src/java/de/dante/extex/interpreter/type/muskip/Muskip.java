@@ -124,6 +124,7 @@ public class Muskip implements Serializable {
 
         Token t = source.getToken();
         if (t == null) {
+            // TODO unimplemented
             throw new RuntimeException("unimplemented");
         }
         long value = GlueComponent.scanFloat(source, t);

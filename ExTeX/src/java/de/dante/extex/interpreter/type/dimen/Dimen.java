@@ -125,7 +125,7 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
      * This operation modifies the instance.
      *
      * <p>
-     * |<i>this</i>| := |<i>this</i>| + |<i>d</i>|
+     * |<i>this</i>| &rarr; |<i>this</i>| + |<i>d</i>|
      * </p>
      *
      * @param d the Dimen to add
@@ -140,7 +140,7 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
      * This operation modifies this instance.
      *
      * <p>
-     * |<i>this</i>| := |<i>this</i>| / <i>denom</i>
+     * |<i>this</i>| &rarr; |<i>this</i>| / <i>denom</i>
      * </p>
      *
      * @param denom denominator to divide by
@@ -177,7 +177,7 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
      * This operation modifies this instance.
      *
      * <p>
-     * |<i>this</i>| := |<i>this</i>| * <i>factor</i>
+     * |<i>this</i>| &rarr; |<i>this</i>| * <i>factor</i>
      * </p>
      *
      * @param factor the factor to multiply with
@@ -192,7 +192,7 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
      * This operation modifies the instance.
      *
      * <p>
-     * |<i>this</i>| :=  - |<i>this</i>|
+     * |<i>this</i>| &rarr;  - |<i>this</i>|
      * </p>
      */
     public void negate() {
@@ -234,7 +234,7 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
      * This operation modifies the instance.
      *
      * <p>
-     * |<i>this</i>| := |<i>this</i>| - |<i>d</i>|
+     * |<i>this</i>| &rarr; |<i>this</i>| - |<i>d</i>|
      * </p>
      *
      * @param d the Dimen to subtract

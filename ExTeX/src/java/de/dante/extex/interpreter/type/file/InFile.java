@@ -128,8 +128,10 @@ public class InFile implements Serializable {
 
         if (stream == null) {
             if (file == null) {
+                // TODO unimplemented
                 throw new RuntimeException("unimplemented");
             } else if (!isOpen()) {
+                // TODO unimplemented
                 throw new RuntimeException("unimplemented");
             }
         }
