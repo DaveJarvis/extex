@@ -89,7 +89,7 @@ public interface Context
     String esc(Token token);
 
     /**
-     * Return the current escape character or <code>\<code> if it is undefined.
+     * Return the current escape character or <code>\0<code> if it is undefined.
      * This is a convenience method.
      *
      * @return the escape character

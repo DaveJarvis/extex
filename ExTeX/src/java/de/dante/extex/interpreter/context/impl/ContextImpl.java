@@ -380,7 +380,8 @@ public class ContextImpl
      */
     public String esc(final String name) {
 
-        return escapechar() + name;
+        char escapechar = escapechar();
+        return (escapechar != '\0' ? escapechar + name : name);
     }
 
     /**
@@ -399,7 +400,7 @@ public class ContextImpl
 
         long esc = getCount("escapechar").getValue();
 
-        return (esc >= 0 ? (char) esc : '\\');
+        return (esc >= 0 ? (char) esc : '\0');
     }
 
     /**

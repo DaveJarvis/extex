@@ -190,10 +190,11 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      */
     public String toText(final char esc) {
 
-        StringBuffer sb = new StringBuffer();
-        sb.append(esc);
-        sb.append(name);
-        return sb.toString();
+        if (esc != '\0') {
+            return esc + name;
+        }
+
+        return name;
     }
 
     /**
