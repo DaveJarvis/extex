@@ -23,7 +23,7 @@ import java.util.Stack;
 
 import de.dante.extex.font.FontFactory;
 import de.dante.extex.hyphenation.HyphenationManager;
-import de.dante.extex.hyphenation.HyphenationManagerImpl;
+import de.dante.extex.hyphenation.impl.HyphenationManagerImpl;
 import de.dante.extex.hyphenation.HyphenationTable;
 import de.dante.extex.i18n.GeneralHelpingException;
 import de.dante.extex.interpreter.Code;
