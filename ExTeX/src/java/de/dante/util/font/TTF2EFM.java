@@ -87,7 +87,7 @@ public final class TTF2EFM {
 
         File efmfile = new File(args[1]);
 
-        TTFReader ttfr = new TTFReader(ttfin, fontname);
+        TTFReader ttfr = null; //new TTFReader(ttfin, fontname);
 
         // write to efm-file
         XMLOutputter xmlout = new XMLOutputter("   ", true);
