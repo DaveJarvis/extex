@@ -73,4 +73,13 @@ public interface FontFactory {
     Font getInstance(String name) throws GeneralException,
             ConfigurationException;
 
+    /**
+     * Factory for <code>Font</code>.
+     *
+     * @return the Font, or <code>null</code>, if the font are not aviable
+     * @throws GeneralException ...
+     * @throws ConfigurationException ...
+     */
+    Font getInstance() throws GeneralException, ConfigurationException;
+
 }
