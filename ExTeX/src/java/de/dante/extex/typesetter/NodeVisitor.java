@@ -65,7 +65,7 @@ import de.dante.util.GeneralException;
  * sequence diagram.
  * </p>
  * <div class="Figure">
- *  <img src="nodeVisitor.png" />
+ *  <img src="doc-files/nodeVisitor.png" />
  *  <br />
  *  <caption>A sequence diagram for the NodeVisitor</caption>
  * </div>
