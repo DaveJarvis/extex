@@ -19,7 +19,7 @@
 package de.dante.extex.interpreter.context;
 
 import de.dante.extex.hyphenation.HyphenationTable;
-import de.dante.extex.interpreter.type.Font;
+import de.dante.extex.interpreter.type.font.Font;
 
 /**
  * ...

@@ -22,7 +22,7 @@ package de.dante.extex.interpreter.primitives.register;
 import junit.framework.TestCase;
 import de.dante.extex.interpreter.Interpreter;
 import de.dante.extex.interpreter.InterpreterFactory;
-import de.dante.extex.interpreter.type.Pair;
+import de.dante.extex.interpreter.type.pair.Pair;
 import de.dante.extex.scanner.stream.impl32.TokenStreamStringImpl;
 import de.dante.util.configuration.Configuration;
 import de.dante.util.configuration.ConfigurationFactory;

@@ -23,7 +23,7 @@ import junit.framework.TestCase;
 import de.dante.extex.interpreter.Interpreter;
 import de.dante.extex.interpreter.InterpreterFactory;
 import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.type.Real;
+import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.scanner.stream.impl32.TokenStreamStringImpl;
 import de.dante.util.configuration.Configuration;
 import de.dante.util.configuration.ConfigurationFactory;

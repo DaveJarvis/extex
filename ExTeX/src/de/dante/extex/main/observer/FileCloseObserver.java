@@ -48,8 +48,8 @@ public class FileCloseObserver implements Observer {
     }
 
     /**
-     * @see de.dante.util.observer.Observer#update(de.dante.util.Observable,
-     *      java.lang.Object)
+     * @see de.dante.util.observer.Observer#update(
+     *      de.dante.util.observer.Observable, java.lang.Object)
      */
     public void update(final Observable observable, final Object item) {
         TokenStream stream = (TokenStream) item;

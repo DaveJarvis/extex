@@ -20,8 +20,8 @@
 package de.dante.extex.interpreter.type.node;
 
 import de.dante.extex.interpreter.context.TypesettingContext;
-import de.dante.extex.interpreter.type.Glyph;
 import de.dante.extex.interpreter.type.dimen.Dimen;
+import de.dante.extex.interpreter.type.font.Glyph;
 import de.dante.extex.typesetter.Node;
 import de.dante.extex.typesetter.NodeVisitor;
 import de.dante.util.GeneralException;

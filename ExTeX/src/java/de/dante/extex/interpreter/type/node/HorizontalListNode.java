@@ -48,7 +48,7 @@ public class HorizontalListNode extends AbstractNodeList implements NodeList {
 
     /**
      * @see de.dante.extex.typesetter.NodeList#addSkip(
-     *      de.dante.extex.interpreter.type.Glue)
+     *      de.dante.extex.interpreter.type.glue.Glue)
      */
     public void addSkip(final Glue glue) {
 

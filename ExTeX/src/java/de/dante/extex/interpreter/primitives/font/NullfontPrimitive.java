@@ -22,7 +22,7 @@ import de.dante.extex.font.NullFont;
 import de.dante.extex.interpreter.AbstractCode;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.type.Font;
+import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.interpreter.type.font.FontConvertible;
 import de.dante.util.GeneralException;
 

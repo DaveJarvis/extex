@@ -32,14 +32,14 @@ import de.dante.util.observer.Observer;
 public class FileOpenObserver implements Observer {
 
     /**
-     * The field <tt>logger</tt> contains the ...
+     * The field <tt>logger</tt> contains the current logger
      */
     private Logger logger;
 
     /**
      * Creates a new object.
      *
-     * @param theLogger ...
+     * @param theLogger the logger to use
      */
     public FileOpenObserver(final Logger theLogger) {
         super();
@@ -47,8 +47,8 @@ public class FileOpenObserver implements Observer {
     }
 
     /**
-     * @see de.dante.util.observer.Observer#update(de.dante.util.Observable,
-     *       java.lang.Object)
+     * @see de.dante.util.observer.Observer#update(
+     *      de.dante.util.observer.Observable, java.lang.Object)
      */
     public void update(final Observable observable, final Object item) {
 

@@ -122,7 +122,7 @@ public interface Interpreter extends TokenSource, Observable {
     void setTypesetter(Typesetter typesetter);
 
     /**
-     * ...
+     * Load the format from an external source.
      *
      * @param format the base name of the format file
      *
@@ -131,7 +131,7 @@ public interface Interpreter extends TokenSource, Observable {
     void loadFormat(String format) throws IOException;
 
     /**
-     * ...
+     * Saves a format to an external source.
      *
      * @throws IOException in case of an IO error
      * @throws GeneralException in case of another error

@@ -360,7 +360,7 @@ public class TokenStreamFactory implements Observable {
 
     /**
      * @see de.dante.util.observer.Observable#registerObserver(java.lang.String,
-     *      de.dante.util.Observer)
+     *      de.dante.util.observer.Observer)
      */
     public void registerObserver(final String name, final Observer observer)
             throws NotObservableException {

@@ -18,8 +18,8 @@
  */
 package de.dante.extex.interpreter;
 
-import de.dante.extex.interpreter.type.Font;
 import de.dante.extex.interpreter.type.box.Box;
+import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.scanner.Token;
 import de.dante.extex.scanner.stream.TokenStream;

@@ -35,7 +35,6 @@ public class WhatsItNode extends AbstractNode implements Node {
 
     /**
      * Creates a new object.
-     *
      */
     public WhatsItNode() {
         super();
@@ -50,7 +49,8 @@ public class WhatsItNode extends AbstractNode implements Node {
     }
 
     /**
-     * @see de.dante.extex.typesetter.Node#visit(de.dante.extex.typesetter.NodeVisitor,
+     * @see de.dante.extex.typesetter.Node#visit(
+     *      de.dante.extex.typesetter.NodeVisitor,
      *      java.lang.Object, java.lang.Object)
      */
     public Object visit(final NodeVisitor visitor, final Object value,
