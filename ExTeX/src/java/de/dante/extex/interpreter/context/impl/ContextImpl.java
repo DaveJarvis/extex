@@ -798,10 +798,12 @@ public class ContextImpl
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * This method is mapps instances to their normal representations if
+     * required. It is used during the deserialization.
      *
-     * @return ...
-     * @throws ObjectStreamException ...
+     * @return the normalized object
+     *
+     * @throws ObjectStreamException in case of an error
      */
     public Object readResolve() throws ObjectStreamException {
 
