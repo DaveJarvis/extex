@@ -116,7 +116,7 @@ public class FontnameTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "cmi10\n");
+                "cmmi10\n");
     }
 
 }
