@@ -29,16 +29,13 @@ import de.dante.extex.i18n.Messages;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class ConfigurationMissingException extends ConfigurationException {
-
-    private String item = "";
-    
+public class ConfigurationIOException extends ConfigurationException {
     /**
      * Create a new object.
      *
      * @param message the message string
      */
-    public ConfigurationMissingException(String message) {
+    public ConfigurationIOException(String message) {
         super(message,(String)null);
     }
 
@@ -46,11 +43,10 @@ public class ConfigurationMissingException extends ConfigurationException {
      * Create a new object.
      *
      * @param message the message string
-     * @param location the location of the missing configuration item
+     * @param location the location of the IO configuration item
      */
-    public ConfigurationMissingException(String message, String location) {
-        super(null,location);
-        item = message;
+    public ConfigurationIOException(String message, String location) {
+        super(message,location);
     }
     
     /**
@@ -59,7 +55,7 @@ public class ConfigurationMissingException extends ConfigurationException {
      * @param message message the message string
      * @param cause the next Throwable in the list
      */
-    public ConfigurationMissingException(String message, Throwable cause) {
+    public ConfigurationIOException(String message, Throwable cause) {
         super(message, cause);
     }
 
@@ -69,6 +65,6 @@ public class ConfigurationMissingException extends ConfigurationException {
      * @return the text
      */
     protected String getText() {
-        return Messages.format("ConfigurationMissingException.Text",item);
+        return Messages.format("ConfigIOException.Text");
     }
 }

@@ -42,7 +42,7 @@ public class NullTypesetterImpl implements Typesetter {
     /**
      * Creates a new object.
      */
-    public NullTypesetterImpl() {
+    public NullTypesetterImpl(Configuration config) {
         super();
     }
 

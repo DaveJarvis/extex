@@ -59,7 +59,7 @@ public class TypesetterImpl implements Typesetter, Manager {
     /**
      * Creates a new object.
      */
-    public TypesetterImpl() {
+    public TypesetterImpl(Configuration config) {
         super();
         listMaker = new VerticalListMaker(this);
     }

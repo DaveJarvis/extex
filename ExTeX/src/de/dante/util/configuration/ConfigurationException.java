@@ -26,7 +26,7 @@ import de.dante.extex.i18n.Messages;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class ConfigurationException extends Exception {
+public abstract class ConfigurationException extends Exception {
     /** The message string for this exception */
     public String message = null;
 

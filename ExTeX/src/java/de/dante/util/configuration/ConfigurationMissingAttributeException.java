@@ -34,10 +34,19 @@ public class ConfigurationMissingAttributeException extends ConfigurationExcepti
      *
      * @param message the message string
      */
-    public ConfigurationMissingAttributeException(String message) {
-        super(message,(String)null);
+    public ConfigurationMissingAttributeException(String message, String location) {
+        super(message,location);
     }
-
+    
+    /**
+     * Create a new object.
+     *
+     * @param message the message string
+     */
+    public ConfigurationMissingAttributeException(String message, Configuration origin) {
+        super(message,origin.toString());
+    }
+    
     /**
      * Creates a new object.
      *

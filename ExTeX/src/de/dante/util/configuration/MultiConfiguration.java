@@ -136,7 +136,7 @@ public class MultiConfiguration implements Configuration {
 
         for (int i = 0; i < configs.length; i++) {
             // TODO configs[i].addValues(key, sl);
-            throw new ConfigurationException("unimplemented");
+            throw new ConfigurationMissingException("unimplemented");
         }
 
         return sl;
@@ -154,14 +154,14 @@ public class MultiConfiguration implements Configuration {
      */
     public String getAttribute(String name) throws ConfigurationException {
         // todo unimplemented because not needed
-        throw new ConfigurationException("unimplemented");
+        throw new ConfigurationMissingException("unimplemented");
     }
     /**
      * @see de.dante.util.configuration.Configuration#getValue()
      */
     public String getValue() throws ConfigurationException {
         // todo unimplemented because not needed
-        throw new ConfigurationException("unimplemented");
+        throw new ConfigurationMissingException("unimplemented");
     }
 
 }

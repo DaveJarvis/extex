@@ -28,6 +28,24 @@ import de.dante.extex.i18n.Messages;
  */
 public class ConfigurationClassNotFoundException
     extends ConfigurationException {
+    
+    /**
+     * The field <tt>classname</tt> ...
+     */
+    private String classname = null;
+
+    /**
+     * Creates a new object.
+     * 
+     * @param classname ...
+     * @param config ...
+     */
+    public ConfigurationClassNotFoundException(String classname,
+            Configuration config) {
+        super(null, config.toString());
+        this.classname = classname;
+    }
+    
     /**
      * Creates a new object.
      *
@@ -36,14 +54,16 @@ public class ConfigurationClassNotFoundException
     public ConfigurationClassNotFoundException(Throwable cause) {
         super(null, cause);
     }
-
+    
     /**
      * Getter for the text prefix of this ConfigException.
-     *
+     * 
      * @return the text
      */
-    protected String getMesssage() {
-        return Messages.format("ConfigClassNotFoundException.Text",
-                               getCause().getMessage());
+    protected String getText() {
+        return Messages.format("ConfigurationClassNotFoundException.Text",
+                               (classname != null ? //
+                                       classname : //
+                                       getCause().getMessage()));
     }
 }

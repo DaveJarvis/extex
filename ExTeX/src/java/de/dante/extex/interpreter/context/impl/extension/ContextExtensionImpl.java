@@ -27,6 +27,7 @@ import de.dante.extex.interpreter.type.Real;
 import de.dante.util.GeneralException;
 import de.dante.util.configuration.Configuration;
 import de.dante.util.configuration.ConfigurationException;
+import de.dante.util.configuration.ConfigurationMissingException;
 
 /**
  * This is a reference implementation for an interpreter context with
@@ -45,7 +46,7 @@ public class ContextExtensionImpl extends ContextImpl implements Context,
             throws ConfigurationException, GeneralException {
         super(config);
         if (!(getGroup() instanceof GroupExtension)) {
-            throw new ConfigurationException("illegal group found"); //TODO:
+            throw new ConfigurationMissingException("illegal group found"); //TODO:
             // i18n
         }
     }
