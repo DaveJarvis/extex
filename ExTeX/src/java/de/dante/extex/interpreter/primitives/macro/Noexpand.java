@@ -75,9 +75,7 @@ public class Noexpand extends AbstractCode implements ExpandableCode {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        Token t = source.getToken();
         prefix.clear();
-        throw new RuntimeException("unimplemented");
     }
 
     /**
@@ -92,7 +90,6 @@ public class Noexpand extends AbstractCode implements ExpandableCode {
             throws GeneralException {
 
         Token t = source.getToken();
-        prefix.clear();
         throw new RuntimeException("unimplemented");
     }
 

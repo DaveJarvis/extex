@@ -40,7 +40,7 @@ import de.dante.util.GeneralException;
  *    &lang;control sequence&rang;} &lang;parameter text&rang; <tt>{</tt> &lang;replacement text&rang; <tt>}</tt>
  *
  *    &lang;prefix&rang;
- *      := 
+ *      :=
  *       | <tt>\global</tt> &lang;prefix&rang;
  *       | <tt>\long</tt> &lang;prefix&rang;
  *       | <tt>\outer</tt> &lang;prefix&rang;</pre>

@@ -260,5 +260,4 @@ public class Box implements Serializable {
             nodes.setWidth(width);
         }
     }
-
 }

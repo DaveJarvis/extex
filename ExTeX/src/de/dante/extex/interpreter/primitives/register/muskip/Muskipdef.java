@@ -19,11 +19,9 @@
 
 package de.dante.extex.interpreter.primitives.register.muskip;
 
-import de.dante.extex.interpreter.AbstractAssignment;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.scanner.Token;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.GeneralException;
