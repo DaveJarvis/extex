@@ -57,7 +57,7 @@ public abstract class AbstractMathCode extends AbstractCode {
             throws GeneralException {
 
         if (!typesetter.getMode().isMath()) {
-            
+
             throw new HelpingException("TTP.MissingDollar");
         }
         return true;

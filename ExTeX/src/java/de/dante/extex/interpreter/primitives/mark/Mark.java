@@ -65,17 +65,6 @@ public class Mark extends AbstractCode {
     }
 
     /**
-     * ...
-     *
-     * @param prefix
-     * @param context
-     * @param source
-     * @param typesetter
-     *
-     * @return
-     *
-     * @throws GeneralException
-     *
      * @see de.dante.extex.interpreter.type.Code#execute(
      *      de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
