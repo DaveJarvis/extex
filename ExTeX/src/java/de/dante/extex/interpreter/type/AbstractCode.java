@@ -139,27 +139,7 @@ public class AbstractCode implements Code, Localizable, Serializable {
      */
     protected String printableControlSequence(final Context context) {
 
-        return printableControlSequence(context, name);
-    }
-
-    /**
-     * Attach the current escape character in front of a name and return the
-     * result.
-     * <p>
-     * This method is meant to produce a printable version of a control
-     * sequence for error messages.
-     * </p>
-     *
-     * @param context the processing context
-     * @param theName the name of the control sequence
-     *
-     * @return the control sequence including the escape character
-     */
-    protected String printableControlSequence(final Context context,
-            final String theName) {
-
-        char esc = (char) (context.getCount("escapechar").getValue());
-        return Character.toString(esc) + theName;
+        return context.esc(name);
     }
 
     /**
