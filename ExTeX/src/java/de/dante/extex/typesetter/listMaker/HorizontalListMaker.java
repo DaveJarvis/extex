@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.typesetter.impl;
+package de.dante.extex.typesetter.listMaker;
 
 import de.dante.extex.i18n.HelpingException;
 import de.dante.extex.interpreter.context.TypesettingContext;
@@ -77,7 +77,7 @@ public class HorizontalListMaker extends AbstractListMaker {
      *
      * @param manager the manager to ask for global changes
      */
-    public HorizontalListMaker(final Manager manager) {
+    public HorizontalListMaker(final ListManager manager) {
 
         super(manager);
     }
@@ -147,7 +147,7 @@ public class HorizontalListMaker extends AbstractListMaker {
      */
     public NodeList close() throws GeneralException {
 
-        Manager manager = getManager();
+        ListManager manager = getManager();
         manager.getLigatureBuilder().insertLigatures(nodes);
         return manager.getParagraphBuilder().build(nodes);
     }

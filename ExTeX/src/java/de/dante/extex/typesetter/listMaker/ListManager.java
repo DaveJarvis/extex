@@ -16,7 +16,7 @@
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
-package de.dante.extex.typesetter.impl;
+package de.dante.extex.typesetter.listMaker;
 
 import de.dante.extex.documentWriter.DocumentWriter;
 import de.dante.extex.interpreter.type.node.CharNodeFactory;
@@ -33,7 +33,7 @@ import de.dante.util.GeneralException;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public interface Manager {
+public interface ListManager {
 
     /**
      * Discart to top of the stack of list makers.

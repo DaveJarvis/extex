@@ -16,53 +16,29 @@
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
-package de.dante.extex.typesetter.impl;
+package de.dante.extex.typesetter.listMaker;
 
-import de.dante.extex.interpreter.TokenSource;
-import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.typesetter.type.noad.Noad;
 import de.dante.util.GeneralException;
 
 
 /**
- * ...
+ * This interface describes list makers which are able to consume a Noad.
+ * This is usually the case for math list makers.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface AlignmentList {
+public interface NoadConsumer {
 
     /**
-     * The invocation of this method indicates that the pattern for the current
-     * cell should not be taken from the preamble but the defaut should be used
-     * instead.
+     * Add an arbitrary Noad to the internal list if it is prepared to hold one.
+     * This is usually the case in math modes.
+     *
+     * @param noad the noad to add
      *
      * @throws GeneralException in case of an error
      */
-    void omit() throws GeneralException;
-
-    /**
-     * ...
-     * @param context TODO
-     * @param source TODO
-     * @throws GeneralException in case of an error
-     */
-    void cr(Context context, TokenSource source) throws GeneralException;
-
-    /**
-     * ...
-     * @param context TODO
-     * @param source TODO
-     * @throws GeneralException in case of an error
-     */
-    void crcr(Context context, TokenSource source) throws GeneralException;
-
-    /**
-     * ...
-     * @param context TODO
-     * @param source TODO
-     *
-     * @throws GeneralException in case of an error
-     */
-    void span(Context context, TokenSource source) throws GeneralException;
+    void add(Noad noad) throws GeneralException;
 
 }
