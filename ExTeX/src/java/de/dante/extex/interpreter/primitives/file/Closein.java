@@ -18,7 +18,6 @@
  */
 package de.dante.extex.interpreter.primitives.file;
 
-import de.dante.extex.i18n.BadFileNumberHelpingException;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
