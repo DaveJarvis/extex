@@ -30,6 +30,7 @@ import de.dante.util.configuration.ConfigurationException;
 import de.dante.util.configuration.ConfigurationInstantiationException;
 import de.dante.util.configuration.ConfigurationMissingAttributeException;
 import de.dante.util.configuration.ConfigurationNoSuchMethodException;
+import de.dante.util.framework.logger.LogEnabled;
 
 /**
  * ...
@@ -97,6 +98,9 @@ public class ResourceFinderFactory {
 
             if (finder instanceof LoggerTaker) {
                 ((LoggerTaker) finder).setLogger(logger);
+            }
+            if (finder instanceof LogEnabled) {
+                ((LogEnabled) finder).enableLogging(logger);
             }
             if (finder instanceof PropertiesTaker) {
                 ((PropertiesTaker) finder).setProperties(properties);

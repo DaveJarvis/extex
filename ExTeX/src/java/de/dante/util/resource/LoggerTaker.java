@@ -24,6 +24,7 @@ import java.util.logging.Logger;
 /**
  * ...
  *
+ * @deprecated use LogEnabled instead
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -33,6 +34,7 @@ public interface LoggerTaker {
      * Setter for the logger.
      *
      * @param logger the logger to use
+     * @deprecated use LogEnabled instead
      */
     void setLogger(Logger logger);
 }
