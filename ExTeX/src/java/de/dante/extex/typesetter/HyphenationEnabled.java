@@ -18,7 +18,7 @@
  */
 package de.dante.extex.typesetter;
 
-import de.dante.extex.typesetter.paragraphBuilder.Hyphenator;
+import de.dante.extex.typesetter.hyphenator.Hyphenator;
 
 
 /**
