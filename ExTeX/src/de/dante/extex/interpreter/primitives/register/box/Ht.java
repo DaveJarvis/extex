@@ -21,7 +21,7 @@ package de.dante.extex.interpreter.primitives.register.box;
 import java.io.Serializable;
 
 import de.dante.extex.interpreter.CountConvertable;
-import de.dante.extex.interpreter.DimenConvertable;
+import de.dante.extex.interpreter.DimenConvertible;
 import de.dante.extex.interpreter.ExpandableCode;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.Theable;
@@ -47,7 +47,7 @@ import de.dante.util.GeneralException;
  * @version $Revision$
  */
 public class Ht extends NumberedBox implements Serializable, ExpandableCode, Theable,
-    CountConvertable, DimenConvertable {
+    CountConvertable, DimenConvertible {
 
     /**
      * Creates a new object.
@@ -115,7 +115,7 @@ public class Ht extends NumberedBox implements Serializable, ExpandableCode, The
     }
 
     /**
-     * @see de.dante.extex.interpreter.DimenConvertable#convertDimen(de.dante.extex.interpreter.context.Context,
+     * @see de.dante.extex.interpreter.DimenConvertible#convertDimen(de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource)
      */
     public long convertDimen(final Context context, final TokenSource source)
