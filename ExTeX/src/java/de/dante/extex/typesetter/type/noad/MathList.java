@@ -161,6 +161,6 @@ public class MathList extends AbstractNoad implements Noad {
      */
     public void visit(final NoadVisitor visitor) {
 
-        visitor.visitMathLst(this);
+        visitor.visitMathList(this);
     }
 }
