@@ -61,7 +61,8 @@ public class MacroParamToken extends AbstractToken implements Token {
      */
     public String toString() {
 
-        return getLocalizer().format("MacroParamToken.Text", getValue());
+        return getLocalizer().format("MacroParamToken.Text",
+                getChar().toString());
     }
 
     /**
@@ -73,7 +74,8 @@ public class MacroParamToken extends AbstractToken implements Token {
      */
     public void toString(final StringBuffer sb) {
 
-        sb.append(getLocalizer().format("MacroParamToken.Text", getValue()));
+        sb.append(getLocalizer().format("MacroParamToken.Text",
+                getChar().toString()));
     }
 
     /**

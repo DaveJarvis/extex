@@ -110,6 +110,14 @@ public class ActiveCharacterToken extends AbstractToken implements CodeToken {
     }
 
     /**
+     * @see de.dante.extex.scanner.CodeToken#getName()
+     */
+    public String getName() {
+
+        return getChar().toString();
+    }
+
+    /**
      * @see de.dante.extex.scanner.CodeToken#getNamespace()
      */
     public String getNamespace() {
@@ -132,7 +140,7 @@ public class ActiveCharacterToken extends AbstractToken implements CodeToken {
      */
     public String toString() {
 
-        return getLocalizer().format("ActiveCharacterToken.Text", getValue());
+        return getLocalizer().format("ActiveCharacterToken.Text", getName());
     }
 
     /**
@@ -144,7 +152,7 @@ public class ActiveCharacterToken extends AbstractToken implements CodeToken {
      */
     public void toString(final StringBuffer sb) {
 
-        sb.append(getLocalizer().format("ActiveCharacterToken.Text", getValue()));
+        sb.append(getLocalizer().format("ActiveCharacterToken.Text", getName()));
     }
 
     /**

@@ -95,13 +95,6 @@ public interface Token {
     UnicodeChar getChar();
 
     /**
-     * Getter for the value.
-     *
-     * @return the value
-     */
-    String getValue();
-
-    /**
      * Check if the current token has a specified catcode.
      *
      * @param cc the catcode to compare against
@@ -116,6 +109,16 @@ public interface Token {
      * @param sb the target string buffer
      */
     void toString(StringBuffer sb);
+
+    /**
+     * Return the printable representation of this token as it can be read back
+     * in.
+     *
+     * @param esc the escape character
+     *
+     * @return the printable representation
+     */
+    String toText(char esc);
 
     /**
      * This method returns the textual representation for the Token.

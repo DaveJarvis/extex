@@ -47,27 +47,6 @@ public abstract class AbstractToken implements Token, Serializable {
     private UnicodeChar uniCode = null;
 
     /**
-     * The field <tt>value</tt> contains the string value. In case that the
-     * token has a single character value only this may also be
-     * <code>null</code>
-     * or it is used to cache the string representation of the character.
-     */
-    private String value = null;
-
-    /**
-     * Creates a new object from the first character of a String.
-     * If the string is empty then a space character is used iun stead.
-     *
-     * @param s the string to extract the first character from
-     */
-    protected AbstractToken(final String s) {
-
-        super();
-        this.value = s;
-        this.uniCode = new UnicodeChar(s.length() > 0 ? s.charAt(0) : ' ');
-    }
-
-    /**
      * Creates a new object for a Unicode character.
      *
      * @param uc the value of the token
@@ -84,8 +63,7 @@ public abstract class AbstractToken implements Token, Serializable {
      */
     public boolean equals(final Catcode cc, final char c) {
 
-        return getCatcode() == cc && getValue().length() == 1
-                && value.charAt(0) == c;
+        return getCatcode() == cc && (char) uniCode.getCodePoint() == c;
     }
 
     /**
@@ -94,7 +72,7 @@ public abstract class AbstractToken implements Token, Serializable {
      */
     public boolean equals(final Catcode cc, final String s) {
 
-        return getCatcode() == cc && getValue().equals(s);
+        return false;
     }
 
     /**
@@ -102,7 +80,7 @@ public abstract class AbstractToken implements Token, Serializable {
      */
     public boolean equals(final char c) {
 
-        return value.length() == 1 && getValue().charAt(0) == c;
+        return (char) getChar().getCodePoint() == c;
     }
 
     /**
@@ -112,8 +90,8 @@ public abstract class AbstractToken implements Token, Serializable {
 
         return this == t
                 || (t instanceof Token
-                        && getCatcode() == ((Token) t).getCatcode() && getValue()
-                        .equals(((Token) t).getValue()));
+                        && getCatcode() == ((Token) t).getCatcode() && getChar()
+                        .equals(((Token) t).getChar()));
     }
 
     /**
@@ -139,17 +117,6 @@ public abstract class AbstractToken implements Token, Serializable {
     protected Localizer getLocalizer() {
 
         return LocalizerFactory.getLocalizer(Token.class.getName());
-    }
-
-    /**
-     * @see de.dante.extex.scanner.Token#getValue()
-     */
-    public String getValue() {
-
-        if (value == null) {
-            value = uniCode.toString();
-        }
-        return value;
     }
 
     /**
@@ -182,9 +149,15 @@ public abstract class AbstractToken implements Token, Serializable {
      */
     public String toText() {
 
-        if (value == null) {
-            value = uniCode.toString();
-        }
-        return value;
+        return uniCode.toString();
     }
+
+    /**
+     * @see de.dante.extex.scanner.Token#toText(char)
+     */
+    public String toText(final char esc) {
+
+        return uniCode.toString();
+    }
+
 }

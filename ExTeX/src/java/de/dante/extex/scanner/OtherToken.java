@@ -62,7 +62,7 @@ public class OtherToken extends AbstractToken implements Token {
      */
     public String toString() {
 
-        return getLocalizer().format("OtherToken.Text", getValue());
+        return getLocalizer().format("OtherToken.Text", getChar().toString());
     }
 
     /**
@@ -74,7 +74,8 @@ public class OtherToken extends AbstractToken implements Token {
      */
     public void toString(final StringBuffer sb) {
 
-        sb.append(getLocalizer().format("OtherToken.Text", getValue()));
+        sb.append(getLocalizer()
+                .format("OtherToken.Text", getChar().toString()));
     }
 
     /**

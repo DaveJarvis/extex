@@ -19,6 +19,7 @@
 
 package de.dante.extex.scanner;
 
+import de.dante.util.UnicodeChar;
 
 /**
  * This class represents a space token.
@@ -34,6 +35,11 @@ package de.dante.extex.scanner;
 public class SpaceToken extends AbstractToken implements Token {
 
     /**
+     * The Constant <tt>SPACE</tt> contains the space character.
+     */
+    private static final UnicodeChar SPACE = new UnicodeChar(' ');
+
+    /**
      * Creates a new object.
      *
      * @param value the actual value
@@ -42,7 +48,7 @@ public class SpaceToken extends AbstractToken implements Token {
      */
     protected SpaceToken(final String value) {
 
-        super(" ");
+        super(SPACE);
     }
 
     /**
@@ -62,7 +68,7 @@ public class SpaceToken extends AbstractToken implements Token {
      */
     public String toString() {
 
-        return getLocalizer().format("SpaceToken.Text", getValue());
+        return getLocalizer().format("SpaceToken.Text", getChar().toString());
     }
 
     /**
@@ -74,7 +80,8 @@ public class SpaceToken extends AbstractToken implements Token {
      */
     public void toString(final StringBuffer sb) {
 
-        sb.append(getLocalizer().format("SpaceToken.Text", getValue()));
+        sb.append(getLocalizer()
+                .format("SpaceToken.Text", getChar().toString()));
     }
 
     /**

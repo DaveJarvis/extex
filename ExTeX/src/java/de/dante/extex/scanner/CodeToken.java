@@ -16,8 +16,8 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  *
  */
-package de.dante.extex.scanner;
 
+package de.dante.extex.scanner;
 
 /**
  * The code token extends the {@link de.dante.extex.scanner.Token Token} with
@@ -52,5 +52,9 @@ public interface CodeToken extends Token {
      * @return the new token
      */
     CodeToken cloneInNamespace(final String namespace);
+
+    /**
+     */
+    public String getName();
 
 }

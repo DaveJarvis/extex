@@ -61,7 +61,7 @@ public class TabMarkToken extends AbstractToken implements Token {
      */
     public String toString() {
 
-        return getLocalizer().format("TabMarkToken.Text", getValue());
+        return getLocalizer().format("TabMarkToken.Text", getChar().toString());
     }
 
     /**
@@ -73,7 +73,8 @@ public class TabMarkToken extends AbstractToken implements Token {
      */
     public void toString(final StringBuffer sb) {
 
-        sb.append(getLocalizer().format("TabMarkToken.Text", getValue()));
+        sb.append(getLocalizer().format("TabMarkToken.Text",
+                getChar().toString()));
     }
 
     /**
