@@ -29,7 +29,7 @@ package de.dante.extex.typesetter.type.noad;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public abstract class AbstractNoad implements Noad {
+public abstract class AbstractNoad implements Noad, NSSNoad {
 
     /**
      * The field <tt>nucleus</tt> contains the nuclues noads.
