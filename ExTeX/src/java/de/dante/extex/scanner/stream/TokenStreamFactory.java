@@ -197,8 +197,7 @@ public class TokenStreamFactory extends AbstractFactory implements Observable {
      * @throws ConfigurationException in case of an error in the configuration
      */
     public TokenStreamFactory(final Configuration theConfiguration,
-            final String tag)
-            throws ConfigurationException {
+            final String tag) throws ConfigurationException {
 
         super();
         configure(theConfiguration);
@@ -358,7 +357,8 @@ public class TokenStreamFactory extends AbstractFactory implements Observable {
         } catch (IllegalAccessException e) {
             throw new ConfigurationInstantiationException(e);
         } catch (InvocationTargetException e) {
-            throw new ConfigurationInstantiationException(e);
+            throw new ConfigurationInstantiationException(e
+                    .getTargetException());
         }
 
         try {
