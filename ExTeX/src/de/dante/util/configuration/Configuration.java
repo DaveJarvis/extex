@@ -62,10 +62,8 @@ public interface Configuration {
      *
      * @return the value of the attribute or <code>null</code> if such an
      * attribute is not present
-     *
-     * @throws ConfigurationException in case of any kind of problem
      */
-    String getAttribute(String name) throws ConfigurationException;
+    String getAttribute(String name);
 
     /**
      * Extract a sub-configuration with a given name.

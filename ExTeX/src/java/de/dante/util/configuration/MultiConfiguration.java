@@ -184,7 +184,7 @@ public class MultiConfiguration implements Configuration {
     /**
      * @see de.dante.util.configuration.Configuration#getAttribute(java.lang.String)
      */
-    public String getAttribute(final String name) throws ConfigurationException {
+    public String getAttribute(final String name) {
 
         // todo unimplemented because not needed
         throw new RuntimeException("unimplemented");
