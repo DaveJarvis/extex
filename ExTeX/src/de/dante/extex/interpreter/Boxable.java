@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003  Gerd Neugebauer
+ * Copyright (C) 2004  Gerd Neugebauer
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -16,39 +16,31 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  *
  */
-package de.dante.extex.interpreter.type;
+package de.dante.extex.interpreter;
 
-import java.io.Serializable;
-
-import de.dante.extex.interpreter.type.node.AbstractNodeList;
-import de.dante.extex.typesetter.NodeList;
-import de.dante.extex.typesetter.NodeVisitor;
+import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.type.Box;
 import de.dante.util.GeneralException;
 
-/**
+/*
  * ...
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Box extends AbstractNodeList implements Serializable, NodeList {
-
-    public static final Box VOID = new Box();
+public interface Boxable {
     
     /**
-     * @see de.dante.extex.typesetter.Node#toString(java.lang.StringBuffer)
+     * ...
+     * 
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     *
+     * @return ...
+     *
+     * @throws GeneralException in case of an error
      */
-    public void toString(StringBuffer sb) {
-        // TODO Auto-generated method stub
-
-    }
-
-    /**
-     * @see de.dante.extex.typesetter.Node#visit(de.dante.extex.typesetter.NodeVisitor, java.lang.Object, java.lang.Object)
-     */
-    public Object visit(NodeVisitor visitor, Object value, Object value2)
-        throws GeneralException {
-            throw new GeneralException("unimplemented"); //TODO incomplete
-    }
+    public abstract Box getBox(Context context, TokenSource source)
+            throws GeneralException;
 
 }

@@ -22,7 +22,6 @@ import java.util.Calendar;
 import java.util.Iterator;
 
 import de.dante.extex.font.FontFactory;
-import de.dante.extex.font.FontFactoryImpl;
 import de.dante.extex.i18n.GeneralHelpingException;
 import de.dante.extex.i18n.GeneralPanicException;
 import de.dante.extex.i18n.GeneralTerminateException;

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003  Gerd Neugebauer
+ * Copyright (C) 2004  Gerd Neugebauer
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -16,39 +16,41 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  *
  */
-package de.dante.extex.interpreter.type;
+package de.dante.extex.interpreter.primitives.register;
 
 import java.io.Serializable;
 
-import de.dante.extex.interpreter.type.node.AbstractNodeList;
-import de.dante.extex.typesetter.NodeList;
-import de.dante.extex.typesetter.NodeVisitor;
+import de.dante.extex.interpreter.Code;
+import de.dante.extex.interpreter.TokenSource;
 import de.dante.util.GeneralException;
 
-/**
+/*
  * ...
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Box extends AbstractNodeList implements Serializable, NodeList {
+public class NumberedBox extends NamedBox implements Code, Serializable {
 
-    public static final Box VOID = new Box();
-    
     /**
-     * @see de.dante.extex.typesetter.Node#toString(java.lang.StringBuffer)
+     * Creates a new object.
+     * 
+     * @param name
      */
-    public void toString(StringBuffer sb) {
-        // TODO Auto-generated method stub
-
+    public NumberedBox(String name) {
+        super(name);
     }
 
     /**
-     * @see de.dante.extex.typesetter.Node#visit(de.dante.extex.typesetter.NodeVisitor, java.lang.Object, java.lang.Object)
+     * Return the key (the number) for the register.
+     *
+     * @param source the source for new tokens
+     *
+     * @return ...
+     *
+     * @throws GeneralException in case of an error
      */
-    public Object visit(NodeVisitor visitor, Object value, Object value2)
-        throws GeneralException {
-            throw new GeneralException("unimplemented"); //TODO incomplete
+    protected String getKey(TokenSource source) throws GeneralException {
+        return getName() + "#" + Long.toString(source.scanNumber());
     }
-
 }
