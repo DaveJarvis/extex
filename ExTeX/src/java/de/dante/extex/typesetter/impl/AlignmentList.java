@@ -18,6 +18,8 @@
  */
 package de.dante.extex.typesetter.impl;
 
+import de.dante.util.GeneralException;
+
 
 /**
  * ...
@@ -28,20 +30,33 @@ package de.dante.extex.typesetter.impl;
 public interface AlignmentList {
 
     /**
-     * ...
+     * The invocation of this method indicates that the pattern for the current
+     * cell should not be taken from the preamble but the defaut should be used
+     * instead.
      *
+     * @throws GeneralException in case of an error
      */
-    void omit();
+    void omit() throws GeneralException;
 
     /**
      * ...
      *
+     * @throws GeneralException in case of an error
      */
-    void cr();
+    void cr() throws GeneralException;
 
     /**
      * ...
      *
+     * @throws GeneralException in case of an error
      */
-    void crcr();
+    void crcr() throws GeneralException;
+
+    /**
+     * ...
+     *
+     * @throws GeneralException in case of an error
+     */
+    void span() throws GeneralException;
+
 }
