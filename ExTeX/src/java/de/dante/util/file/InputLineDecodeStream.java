@@ -110,9 +110,8 @@ public class InputLineDecodeStream implements InputLineDecoder {
                 // add '\r' for a tex-line
                 barr.add(new Byte((byte) '\r'));
                 break;
-            } else {
-                barr.add(new Byte((byte) ib));
             }
+            barr.add(new Byte((byte) ib));
         }
 
         if (barr.size() == 0) {

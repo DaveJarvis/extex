@@ -31,7 +31,6 @@ import de.dante.extex.interpreter.type.bool.Bool;
 import de.dante.extex.interpreter.type.bool.BoolConvertible;
 import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.GeneralException;
 
 /**
  * This class provides an implementation for the bool valued primitives.
