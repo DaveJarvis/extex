@@ -20,6 +20,7 @@
 package de.dante.extex.font.type.other;
 
 import de.dante.extex.font.Glyph;
+import de.dante.extex.font.type.BoundingBox;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.interpreter.type.glue.Glue;
@@ -158,6 +159,7 @@ public class NullFont implements Font {
 
         return null;
     }
+
     //    /**
     //     * @see de.dante.extex.interpreter.type.font.Font#setProperty(
     //     *      java.lang.String,
@@ -166,4 +168,20 @@ public class NullFont implements Font {
     //    public void setProperty(final String key, final String value) {
     //
     //    }
+
+    /**
+     * @see de.dante.extex.font.type.Fount#getCheckSum()
+     */
+    public int getCheckSum() {
+
+        return -1;
+    }
+
+    /**
+     * @see de.dante.extex.font.type.Fount#getBoundingBox()
+     */
+    public BoundingBox getBoundingBox() {
+
+        return null;
+    }
 }

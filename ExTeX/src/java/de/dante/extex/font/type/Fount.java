@@ -86,6 +86,20 @@ public interface Fount {
     String getFontName();
 
     /**
+     * Returns the checksum
+     *
+     * @return Returns the checksum
+     */
+    int getCheckSum();
+
+    /**
+     * Returns the BoundingBox
+     *
+     * @return Returns the BoundingBox, or <code>null</code>, if not exists.
+     */
+    BoundingBox getBoundingBox();
+
+    /**
      * Return the letterspacing
      * @return  the letterspacing
      */
