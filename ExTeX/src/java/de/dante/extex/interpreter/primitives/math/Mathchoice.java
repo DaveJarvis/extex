@@ -23,6 +23,9 @@ import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.typesetter.Typesetter;
+import de.dante.extex.typesetter.listMaker.NoadConsumer;
+import de.dante.extex.typesetter.type.noad.ChoiceNoad;
+import de.dante.extex.typesetter.type.noad.Noad;
 import de.dante.util.GeneralException;
 
 /**
@@ -42,7 +45,7 @@ import de.dante.util.GeneralException;
  * <p>
  *  Examples:
  *  <pre class="TeXSample">
- *    \mathchoice  </pre>
+ *    \mathchoice{d}{t}{s}{ss}  </pre>
  * </p>
  * </doc>
  *
@@ -72,9 +75,13 @@ public class Mathchoice extends AbstractMathCode {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        //TODO execute() unimplemented
-        throw new RuntimeException("unimplemented");
-        //return true;
+        NoadConsumer nc = getListMaker(typesetter);
+        Noad display = nc.scanNoad(context, source);
+        Noad text = nc.scanNoad(context, source);
+        Noad script = nc.scanNoad(context, source);
+        Noad scriptScript = nc.scanNoad(context, source);
+        nc.add(new ChoiceNoad(display, text, script, scriptScript));
+        return true;
     }
 
 }

@@ -29,6 +29,7 @@ import de.dante.extex.typesetter.ListMaker;
 import de.dante.extex.typesetter.Mode;
 import de.dante.extex.typesetter.Node;
 import de.dante.extex.typesetter.NodeList;
+import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.util.GeneralException;
 import de.dante.util.UnicodeChar;
 
@@ -94,9 +95,9 @@ public class VerticalListMaker extends AbstractListMaker {
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#close()
+     * @see de.dante.extex.typesetter.ListMaker#close(TypesetterOptions)
      */
-    public final NodeList close() {
+    public final NodeList close(TypesetterOptions context) {
 
         return nodes;
     }

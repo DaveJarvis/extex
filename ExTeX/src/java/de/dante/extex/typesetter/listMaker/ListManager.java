@@ -37,7 +37,8 @@ public interface ListManager {
 
     /**
      * Discart to top of the stack of list makers.
-     * @return TODO
+     *
+     * @return the list maker popped from the stack
      *
      * @throws GeneralException in case of an error
      */

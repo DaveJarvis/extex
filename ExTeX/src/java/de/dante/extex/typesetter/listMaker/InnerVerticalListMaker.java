@@ -19,7 +19,6 @@
 
 package de.dante.extex.typesetter.listMaker;
 
-import de.dante.extex.typesetter.ListMaker;
 import de.dante.extex.typesetter.Mode;
 
 /**

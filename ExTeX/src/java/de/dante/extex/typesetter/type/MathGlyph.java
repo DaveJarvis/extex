@@ -17,59 +17,88 @@
  *
  */
 
-package de.dante.extex.typesetter.type.noad;
+package de.dante.extex.typesetter.type;
 
 import de.dante.extex.typesetter.NodeList;
 import de.dante.extex.typesetter.TypesetterOptions;
+import de.dante.extex.typesetter.type.noad.Noad;
+import de.dante.extex.typesetter.type.noad.NoadVisitor;
 import de.dante.extex.typesetter.type.noad.util.MathContext;
+import de.dante.util.UnicodeChar;
 
 /**
- * This noad provides a switch construction depending on the current style.
- *
- * @see "TTP [689]"
+ * This class provides a container for a mathematical glyph.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class ChoiceNoad implements Noad {
+public class MathGlyph implements Noad {
 
     /**
-     * The field <tt>display</tt> contains the noads used in display style.
+     * The constant <tt>FAMILY_MASK</tt> contains the mask for the family in the
+     * TeX encoding.
      */
-    private Noad display;
+    private static final int FAMILY_MASK = 0xf;
 
     /**
-     * The field <tt>script</tt> contains the noads used in script style.
+     * The constan <tt>CHARACTER_MASK</tt> contains the mask for the character
+     * value in the TeX encoding.
      */
-    private Noad script;
+    private static final int CHARACTER_MASK = 0xff;
 
     /**
-     * The field <tt>scriptScript</tt> contains the noads used in scriptscript
-     * style.
+     * The field <tt>character</tt> contains the character of this glyph.
      */
-    private Noad scriptScript;
+    private UnicodeChar character;
 
     /**
-     * The field <tt>text</tt> contains the noads used in text style.
+     * The field <tt>family</tt> contains the math family.
      */
-    private Noad text;
+    private int family;
+
+    /**
+     * Creates a new object from a TeX encoded number.
+     *
+     * @param code the TeX code
+     */
+    public MathGlyph(final int code) {
+
+        this((code >> 8) & FAMILY_MASK, new UnicodeChar(
+                (int) (code & CHARACTER_MASK)));
+    }
 
     /**
      * Creates a new object.
      *
-     * @param displayMath the noads used in display style
-     * @param textMath the noads used in text style
-     * @param scriptMath the noads used in script style
-     * @param scriptscriptMath the noads used in scriptscript style
+     * @param family the math family of the glyph
+     * @param character the character in the font
      */
-    public ChoiceNoad(final Noad displayMath, final Noad textMath,
-            final Noad scriptMath, final Noad scriptscriptMath) {
+    public MathGlyph(final int family, final UnicodeChar character) {
 
         super();
-        display = displayMath;
-        text = textMath;
-        script = scriptMath;
-        scriptScript = scriptscriptMath;
+        this.family = family;
+        this.character = character;
+
+    }
+
+    /**
+     * Getter for character.
+     *
+     * @return the character.
+     */
+    public UnicodeChar getCharacter() {
+
+        return this.character;
+    }
+
+    /**
+     * Getter for family.
+     *
+     * @return the family.
+     */
+    public int getFamily() {
+
+        return this.family;
     }
 
     /**
@@ -90,46 +119,39 @@ public class ChoiceNoad implements Noad {
 
     /**
      * @see de.dante.extex.typesetter.type.noad.Noad#setSubscript(
-     *      de.dante.extex.typesetter.type.noad.Noad)
+     *       de.dante.extex.typesetter.type.noad.Noad)
      */
     public void setSubscript(final Noad subscript) {
 
+        throw new RuntimeException("error");
     }
 
     /**
      * @see de.dante.extex.typesetter.type.noad.Noad#setSuperscript(
-     *      de.dante.extex.typesetter.type.noad.Noad)
+     *       de.dante.extex.typesetter.type.noad.Noad)
      */
     public void setSuperscript(final Noad superscript) {
 
-    }
-
-    /**
-     * @see "TTP [695]"
-     * @see de.dante.extex.typesetter.type.noad.Noad#toString(java.lang.StringBuffer)
-     */
-    public void toString(final StringBuffer sb) {
-
-        sb.append("\\mathchoice");
-        sb.append(" D");
-        display.toString(sb);
-        sb.append(" T");
-        text.toString(sb);
-        sb.append(" S");
-        script.toString(sb);
-        sb.append(" s");
-        scriptScript.toString(sb);
-        // TODO Check
-
+        throw new RuntimeException("error");
     }
 
     /**
      * @see de.dante.extex.typesetter.type.noad.Noad#toString(
-     *      java.lang.StringBuffer, int)
+     *       java.lang.StringBuffer)
+     */
+    public void toString(final StringBuffer sb) {
+
+        toString(sb, 1);
+    }
+
+    /**
+     * @see de.dante.extex.typesetter.type.noad.Noad#toString(
+     *       java.lang.StringBuffer, int)
      */
     public void toString(final StringBuffer sb, final int depth) {
 
-        toString(sb);
+        // TODO gene: unimplemented
+        throw new RuntimeException("unimplemented");
     }
 
     /**
@@ -141,28 +163,22 @@ public class ChoiceNoad implements Noad {
     public void typeset(final NodeList list, final MathContext mathContext,
             final TypesetterOptions context) {
 
-        StyleNoad style = mathContext.getStyle();
-
-        if (style == StyleNoad.DISPLAYSTYLE) {
-            display.typeset(list, mathContext, context);
-        } else if (style == StyleNoad.TEXTSTYLE) {
-            text.typeset(list, mathContext, context);
-        } else if (style == StyleNoad.SCRIPTSTYLE) {
-            script.typeset(list, mathContext, context);
-        } else if (style == StyleNoad.SCRIPTSCRIPTSTYLE) {
-            scriptScript.typeset(list, mathContext, context);
-        } else {
-            //TODO gene: impossible
-            throw new RuntimeException("this should not happen");
-        }
+        //TODO gene: unimplemented
+        throw new RuntimeException("unimplemented");
     }
 
     /**
+     * This is the entry point for the visitor pattern.
+     *
+     * @param visitor the visitor to invoke
+     *
      * @see de.dante.extex.typesetter.type.noad.Noad#visit(
-     *      de.dante.extex.typesetter.type.noad.NoadVisitor)
+     *       de.dante.extex.typesetter.type.noad.NoadVisitor)
      */
     public void visit(final NoadVisitor visitor) {
 
-        visitor.visitChoice(this);
+        //TODO gene: unimplemented
+        throw new RuntimeException("unimplemented");
     }
+
 }

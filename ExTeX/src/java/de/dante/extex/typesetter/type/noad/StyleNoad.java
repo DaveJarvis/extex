@@ -20,6 +20,7 @@
 package de.dante.extex.typesetter.type.noad;
 
 import de.dante.extex.typesetter.NodeList;
+import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.typesetter.type.noad.util.MathContext;
 
 /**
@@ -35,54 +36,125 @@ public final class StyleNoad implements Noad {
      * The constant <tt>DISPLAYSTYLE</tt> contains the value for the display
      * style.
      */
-    public static final StyleNoad DISPLAYSTYLE = new StyleNoad();
+    public static final StyleNoad DISPLAYSTYLE = new StyleNoad("textstyle");
 
     /**
      * The constant <tt>SCRIPTSCRIPTSTYLE</tt> contains the value for the
      * scriptscript style.
      */
-    public static final StyleNoad SCRIPTSCRIPTSTYLE = new StyleNoad();
+    public static final StyleNoad SCRIPTSCRIPTSTYLE = new StyleNoad(
+            "scriptscriptstyle");
 
     /**
      * The constant <tt>SCRIPTSTYLE</tt> contains the value for the script
      * style.
      */
-    public static final StyleNoad SCRIPTSTYLE = new StyleNoad();
+    public static final StyleNoad SCRIPTSTYLE = new StyleNoad("scriptstlye");
 
     /**
      * The constant <tt>TEXTSTYLE</tt> contains the value for the text
      * style.
      */
-    public static final StyleNoad TEXTSTYLE = new StyleNoad();
+    public static final StyleNoad TEXTSTYLE = new StyleNoad("textstyle");
+
+    /**
+     * The field <tt>style</tt> contains the ...
+     */
+    private String style;
 
     /**
      * Creates a new object.
      * This constructor is private since nobody is supposed to use it to create
      * new instances. The constants defined in this class should be usesd
      * instead.
+     *
+     * @param style the style
      */
-    private StyleNoad() {
+    private StyleNoad(final String style) {
 
         super();
+        this.style = style;
+    }
+
+    /**
+     * Getter for style.
+     *
+     * @return the style
+     */
+    public String getStyleName() {
+
+        return this.style;
+    }
+
+    /**
+     * @see de.dante.extex.typesetter.type.noad.Noad#getSubscript()
+     */
+    public Noad getSubscript() {
+
+        return null;
+    }
+
+    /**
+     * @see de.dante.extex.typesetter.type.noad.Noad#getSuperscript()
+     */
+    public Noad getSuperscript() {
+
+        return null;
+    }
+
+    /**
+     * @see de.dante.extex.typesetter.type.noad.Noad#setSubscript(
+     *      de.dante.extex.typesetter.type.noad.Noad)
+     */
+    public void setSubscript(final Noad subscript) {
+
+    }
+
+    /**
+     * @see de.dante.extex.typesetter.type.noad.Noad#setSuperscript(
+     *      de.dante.extex.typesetter.type.noad.Noad)
+     */
+    public void setSuperscript(final Noad superscript) {
+
     }
 
     /**
      * @see "TTP [694]"
-     * @see de.dante.extex.typesetter.type.noad.Noad#toString(java.lang.StringBuffer)
+     * @see de.dante.extex.typesetter.type.noad.Noad#toString(
+     *      java.lang.StringBuffer)
      */
     public void toString(final StringBuffer sb) {
 
-        // TODO unimplemented
-
+        //TODO gene: unimplemented
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.noad.Noad#typeset(MathContext)
+     * @see de.dante.extex.typesetter.type.noad.Noad#toString(
+     *       java.lang.StringBuffer, int)
      */
-    public NodeList typeset(final MathContext mathContext) {
+    public void toString(final StringBuffer sb, final int depth) {
 
-        mathContext.setStyle(this);
-        return null;
+        toString(sb);
     }
 
+    /**
+     * @see de.dante.extex.typesetter.type.noad.Noad#typeset(
+     *      de.dante.extex.typesetter.NodeList,
+     *      de.dante.extex.typesetter.type.noad.util.MathContext,
+     *      de.dante.extex.typesetter.TypesetterOptions)
+     */
+    public void typeset(final NodeList list, final MathContext mathContext,
+            final TypesetterOptions context) {
+
+        mathContext.setStyle(this);
+    }
+
+    /**
+     * @see de.dante.extex.typesetter.type.noad.Noad#visit(
+     *      de.dante.extex.typesetter.type.noad.NoadVisitor)
+     */
+    public void visit(final NoadVisitor visitor) {
+
+        visitor.visitStyle(this);
+    }
 }

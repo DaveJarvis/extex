@@ -73,7 +73,6 @@ import de.dante.extex.main.exception.MainUnknownOptionException;
 import de.dante.extex.main.observer.FileCloseObserver;
 import de.dante.extex.main.observer.FileOpenObserver;
 import de.dante.extex.main.observer.InteractionObserver;
-import de.dante.extex.main.observer.LogMessageObserver;
 import de.dante.extex.main.observer.MessageObserver;
 import de.dante.extex.main.observer.TokenObserver;
 import de.dante.extex.main.observer.TokenPushObserver;
@@ -1464,7 +1463,7 @@ public class ExTeX {
         //TODO: if weak references are used then the instances have to be kept in some variables:-(
 
         interpreter.registerObserver("close", new FileCloseObserver(logger));
-        interpreter.registerObserver("message", new MessageObserver(logger));
+        //interpreter.registerObserver("message", new MessageObserver(logger));
         //interpreter.registerObserver("log", new LogMessageObserver(logger));
         if (Boolean.valueOf(properties.getProperty(PROP_TRACE_TOKENIZER))
                 .booleanValue()) {

@@ -22,7 +22,8 @@ import de.dante.extex.typesetter.type.noad.StyleNoad;
 
 
 /**
- * ...
+ * This class provides a container for the information on the current
+ * mathematical appearance.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

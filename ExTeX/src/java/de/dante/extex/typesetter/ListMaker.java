@@ -74,12 +74,13 @@ public interface ListMaker {
 
     /**
      * Close the node list.
+     * @param context TODO
      *
      * @return the node list enclosed in this instance.
      *
      * @throws GeneralException in case of an error
      */
-    NodeList close() throws GeneralException;
+    NodeList close(TypesetterOptions context) throws GeneralException;
 
     /**
      * Access the last node on the list.

@@ -33,6 +33,7 @@ import de.dante.extex.scanner.Catcode;
 import de.dante.extex.scanner.Token;
 import de.dante.extex.typesetter.NodeList;
 import de.dante.extex.typesetter.Typesetter;
+import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.typesetter.listMaker.InnerVerticalListMaker;
 import de.dante.extex.typesetter.listMaker.RestrictedHorizontalListMaker;
 import de.dante.util.GeneralException;
@@ -102,7 +103,7 @@ public class Box implements Serializable {
         }
 
         source.executeGroup();
-        nodes = typesetter.close();
+        nodes = typesetter.close((TypesetterOptions) context);
     }
 
     /**

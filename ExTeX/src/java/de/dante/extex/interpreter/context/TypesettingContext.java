@@ -79,7 +79,7 @@ public interface TypesettingContext extends Serializable {
      *
      * @return the hyphenation table
      */
-    HyphenationTable getLanguage();
+    HyphenationTable getHyphenation();
 
     /**
      * Setter for the color.

@@ -23,6 +23,9 @@ import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.typesetter.Typesetter;
+import de.dante.extex.typesetter.listMaker.NoadConsumer;
+import de.dante.extex.typesetter.type.noad.Noad;
+import de.dante.extex.typesetter.type.noad.PunctationNoad;
 import de.dante.util.GeneralException;
 
 /**
@@ -72,9 +75,10 @@ public class Mathpunct extends AbstractMathCode {
             final TokenSource source, final Typesetter typesetter)
             throws GeneralException {
 
-        //TODO execute() unimplemented
-        throw new RuntimeException("unimplemented");
-        //return true;
+        NoadConsumer nc = getListMaker(typesetter);
+        Noad noad = nc.scanNoad(context, source);
+        nc.add(new PunctationNoad(noad));
+        return true;
     }
 
 }

@@ -144,9 +144,9 @@ public class HorizontalListMaker extends AbstractListMaker {
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#close()
+     * @see de.dante.extex.typesetter.ListMaker#close(TypesetterOptions)
      */
-    public NodeList close() throws GeneralException {
+    public NodeList close(TypesetterOptions context) throws GeneralException {
 
         ListManager manager = getManager();
         manager.getLigatureBuilder().insertLigatures(nodes);
