@@ -21,7 +21,8 @@ package de.dante.extex.hyphenation.exception;
 
 
 /**
- * TODO gene: missing JavaDoc.
+ * This exception signals that a hyphenation pattern has been given more than
+ * once.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
