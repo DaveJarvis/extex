@@ -22,7 +22,7 @@ package de.dante.extex.interpreter.primitives.register.count;
 import de.dante.extex.i18n.GeneralHelpingException;
 import de.dante.extex.interpreter.AbstractAssignment;
 import de.dante.extex.interpreter.Advanceable;
-import de.dante.extex.interpreter.CountConvertable;
+import de.dante.extex.interpreter.CountConvertible;
 import de.dante.extex.interpreter.Divideable;
 import de.dante.extex.interpreter.ExpandableCode;
 import de.dante.extex.interpreter.Flags;
@@ -53,7 +53,7 @@ import de.dante.util.GeneralException;
  * @version $Revision$
  */
 public class NamedCount extends AbstractAssignment implements ExpandableCode,
-        Advanceable, Multiplyable, Divideable, Theable, CountConvertable {
+        Advanceable, Multiplyable, Divideable, Theable, CountConvertible {
 
     /**
      * Creates a new object.
@@ -114,7 +114,7 @@ public class NamedCount extends AbstractAssignment implements ExpandableCode,
     }
 
     /**
-     * @see de.dante.extex.interpreter.CountConvertable#convertCount(de.dante.extex.interpreter.context.Context,
+     * @see de.dante.extex.interpreter.CountConvertible#convertCount(de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource)
      */
     public long convertCount(final Context context, final TokenSource source)

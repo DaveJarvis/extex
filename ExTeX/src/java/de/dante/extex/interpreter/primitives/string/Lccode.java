@@ -19,7 +19,7 @@
 package de.dante.extex.interpreter.primitives.string;
 
 import de.dante.extex.interpreter.AbstractAssignment;
-import de.dante.extex.interpreter.CountConvertable;
+import de.dante.extex.interpreter.CountConvertible;
 import de.dante.extex.interpreter.DimenConvertible;
 import de.dante.extex.interpreter.ExpandableCode;
 import de.dante.extex.interpreter.Flags;
@@ -38,7 +38,7 @@ import de.dante.util.UnicodeChar;
  * @version $Revision$
  */
 public class Lccode extends AbstractAssignment implements ExpandableCode,
-        Theable, CountConvertable, DimenConvertible {
+        Theable, CountConvertible, DimenConvertible {
 
     /**
      * Creates a new object.
@@ -90,7 +90,7 @@ public class Lccode extends AbstractAssignment implements ExpandableCode,
     }
 
     /**
-     * @see de.dante.extex.interpreter.CountConvertable#convertCount(de.dante.extex.interpreter.context.Context,
+     * @see de.dante.extex.interpreter.CountConvertible#convertCount(de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource)
      */
     public long convertCount(final Context context, final TokenSource source)

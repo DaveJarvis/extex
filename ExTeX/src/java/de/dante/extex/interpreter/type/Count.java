@@ -22,7 +22,7 @@ import java.io.Serializable;
 
 import de.dante.extex.i18n.GeneralHelpingException;
 import de.dante.extex.interpreter.Code;
-import de.dante.extex.interpreter.CountConvertable;
+import de.dante.extex.interpreter.CountConvertible;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.scanner.Token;
@@ -102,8 +102,8 @@ public class Count implements Serializable {
         }
 
         Code code = context.getCode(t);
-        if (code != null && code instanceof CountConvertable) {
-            return ((CountConvertable) code).convertCount(context, source);
+        if (code != null && code instanceof CountConvertible) {
+            return ((CountConvertible) code).convertCount(context, source);
         }
 
         source.push(t);
