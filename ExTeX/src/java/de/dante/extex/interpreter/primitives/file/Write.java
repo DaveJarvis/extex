@@ -19,6 +19,8 @@
 
 package de.dante.extex.interpreter.primitives.file;
 
+import java.io.IOException;
+
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
@@ -107,7 +109,11 @@ public class Write extends AbstractCode {
         if (file == null || !file.isOpen()) {
             source.update("message", toks.toText());
         } else {
-            file.write(toks);
+            try {
+                file.write(toks);
+            } catch (IOException e) {
+                throw new GeneralException(e);
+            }
         }
     }
 
