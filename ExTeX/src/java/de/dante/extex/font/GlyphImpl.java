@@ -335,8 +335,10 @@ public class GlyphImpl implements Glyph {
             try {
                 Ligature lig = (Ligature) ligature.get(String.valueOf(uc
                         .getCodePoint()));
-                int i = Integer.parseInt(lig.getLigid());
-                liguc = new UnicodeChar(i);
+                if (lig != null) {
+                    int i = Integer.parseInt(lig.getLigid());
+                    liguc = new UnicodeChar(i);
+                }
             } catch (Exception e) {
                 // use default
                 liguc = null;
