@@ -473,7 +473,13 @@ public class GroupImpl implements Group, Tokenizer, Serializable {
      */
     public Interaction getInteraction() {
 
-        return interaction;
+        if (null != interaction) {
+            return interaction;
+        }
+
+        return (next != null
+                ? next.getInteraction()
+                : Interaction.ERRORSTOPMODE);
     }
 
     /**
