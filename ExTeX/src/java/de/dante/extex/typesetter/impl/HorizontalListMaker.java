@@ -199,6 +199,14 @@ public class HorizontalListMaker extends AbstractListMaker implements ListMaker 
     }
 
     /**
+     * @see de.dante.extex.typesetter.ListMaker#removeLastNode()
+     */
+    public void removeLastNode() {
+
+        nodes.remove(nodes.size() - 1);
+    }
+
+    /**
      * @see de.dante.extex.typesetter.ListMaker#setSpacefactor(
      *      de.dante.extex.interpreter.type.count.Count)
      */

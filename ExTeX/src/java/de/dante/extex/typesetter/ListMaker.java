@@ -113,6 +113,12 @@ public interface ListMaker {
     void par() throws GeneralException;
 
     /**
+     * Removes the last node from the list.
+     * If the list is empty then nothing is done.
+     */
+    void removeLastNode();
+
+    /**
      * Setter for the previous depth parameter.
      *
      * @param pd the prec depth parameter

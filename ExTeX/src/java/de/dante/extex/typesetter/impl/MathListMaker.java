@@ -131,6 +131,14 @@ public class MathListMaker extends AbstractListMaker implements ListMaker {
     }
 
     /**
+     * @see de.dante.extex.typesetter.ListMaker#removeLastNode()
+     */
+    public void removeLastNode() {
+
+        nodes.remove(nodes.size() - 1);
+    }
+
+    /**
      * @see de.dante.extex.typesetter.ListMaker#toggleDisplaymath()
      */
     public void toggleDisplaymath() throws GeneralException {

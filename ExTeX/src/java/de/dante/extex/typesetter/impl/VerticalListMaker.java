@@ -140,6 +140,14 @@ public class VerticalListMaker extends AbstractListMaker implements ListMaker {
     }
 
     /**
+     * @see de.dante.extex.typesetter.ListMaker#removeLastNode()
+     */
+    public void removeLastNode() {
+
+        nodes.remove(nodes.size() - 1);
+    }
+
+    /**
      * @see de.dante.extex.typesetter.ListMaker#setPrevDepth(
      *      de.dante.extex.interpreter.type.dimen.Dimen)
      */
