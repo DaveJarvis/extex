@@ -120,7 +120,7 @@ public class ErrorHandlerImpl implements ErrorHandler {
                             count = count*10 + line.charAt(1)-'0';
                         }
                         while (count-->0) {
-                            source.getNextToken();
+                            source.getToken();
                         }
                         firstHelp = false;
                         e = new GeneralHelpingException("");

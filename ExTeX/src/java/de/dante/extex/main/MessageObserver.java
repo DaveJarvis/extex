@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2004 Gerd Neugebauer
+ * Copyright (C) 2004  Gerd Neugebauer
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -19,18 +19,16 @@
 package de.dante.extex.main;
 
 import de.dante.extex.logging.Logger;
-import de.dante.extex.scanner.stream.TokenStream;
 import de.dante.util.Observable;
 import de.dante.util.Observer;
 
-/**
- * This observer waits for update events when files are closed. According to the
- * reference in TeX a closing parenthesis is written to the log file.
+/*
+ * ...
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class FileCloseObserver implements Observer {
+public class MessageObserver implements Observer {
     /** The logger for output */
     private Logger logger;
 
@@ -39,7 +37,7 @@ public class FileCloseObserver implements Observer {
      *
      * @param logger the logger for potential output
      */
-    public FileCloseObserver(Logger logger) {
+    public MessageObserver(Logger logger) {
         super();
         this.logger = logger;
     }
@@ -48,10 +46,7 @@ public class FileCloseObserver implements Observer {
      * @see de.dante.util.Observer#update(de.dante.util.Observable, java.lang.Object)
      */
     public void update(Observable observable, Object item) {
-        TokenStream stream = (TokenStream) item;
-
-        if (stream.isFileStream()) {
-            logger.info(")");
-        }
+        logger.info("> "+item.toString()+".\n");
     }
+
 }
