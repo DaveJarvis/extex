@@ -158,6 +158,7 @@ public class BufferLogger implements Logger {
      * @see de.dante.extex.logging.Logger#config(java.lang.String)
      */
     public void config(String arg0) {
+        // nothing to do
     }
 
     /**

@@ -33,6 +33,7 @@ public class ConfigurationFactory {
      * @throws ConfigException in case that something went wrong
      */
     public ConfigurationFactory() throws ConfigurationException {
+        super();
     }
 
     /**

@@ -72,7 +72,7 @@ public class OtherTokenTest extends TestCase {
     public void testEqualsToken1() {
         Token t1 = new OtherToken(new UnicodeChar(' '));
         Token t2 = new SpaceToken(" ");
-        assertFalse(t.equals(t2));
+        assertFalse(t1.equals(t2));
     }
 
     /*
