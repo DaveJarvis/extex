@@ -77,7 +77,8 @@ public interface FixedGlue {
     String toString();
 
     /**
-     * ...
+     * Determine the printable representation of the object and return it as a
+     * list of Tokens.
      *
      * @param factory the token factory ton get new tokens from
      *

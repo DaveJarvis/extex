@@ -24,7 +24,6 @@ import java.util.ArrayList;
 
 import de.dante.extex.documentWriter.DocumentWriter;
 import de.dante.extex.i18n.GeneralPanicException;
-import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.context.TypesettingContext;
 import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.interpreter.type.dimen.Dimen;

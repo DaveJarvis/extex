@@ -38,7 +38,7 @@ public class LetterTokenTest extends TestCase {
     }
 
     /**
-     * The field <tt>t</tt> contains the ...
+     * The field <tt>t</tt> contains the reference token.
      */
     private static Token t = new LetterToken(new UnicodeChar('x'));
 

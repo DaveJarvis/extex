@@ -22,7 +22,7 @@ import java.io.FileNotFoundException;
 import java.io.OutputStreamWriter;
 
 /**
- * ...
+ * This interface describes a factory for out files.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -30,17 +30,17 @@ import java.io.OutputStreamWriter;
 public interface OutFileFactory {
 
     /**
-     * ...
+     * Create a new instance of a output stream writer.
      *
-     * @param name ...
-     * @param type ...
+     * @param name the name of the file to open
+     * @param type the type of the file
      *
-     * @return ...
+     * @return the new writer or <code>null</code> if none count be found
      *
      * @throws FileNotFoundException in case that the outpout file coud not be
      *             opened
      */
     OutputStreamWriter newInstance(String name, String type)
-        throws FileNotFoundException;
+            throws FileNotFoundException;
 
 }

@@ -41,6 +41,13 @@ public interface FixedGlueComponent {
     long getValue();
 
     /**
+     * Getter for order.
+     *
+     * @return the order.
+     */
+    int getOrder();
+
+    /**
      * Create a copy of this instance with the same order and value.
      *
      * @return a new copy of this instance

@@ -38,7 +38,7 @@ public class LeftBraceTokenTest extends TestCase {
     }
 
     /**
-     * The field <tt>t</tt> contains the ...
+     * The field <tt>t</tt> contains the reference token.
      */
     private static Token t = new LeftBraceToken(new UnicodeChar('<'));
 

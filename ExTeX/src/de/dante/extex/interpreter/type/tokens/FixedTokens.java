@@ -52,10 +52,11 @@ public interface FixedTokens {
     int length();
 
     /**
-     * ...
+     * Determine the printable representation of the object and append it to a
+     * list of Tokens.
      *
      * @param context  the processor context
-     * @param toks ...
+     * @param toks the tokens to add to
      *
      * @throws GeneralException in case of an error
      */

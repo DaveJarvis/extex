@@ -31,7 +31,7 @@ public class RelaxTest extends ExTeXLauncher {
     /**
      * Constructor for RelaxTest.
      *
-     * @param arg ...
+     * @param arg the name
      */
     public RelaxTest(final String arg) {
         super(arg);
