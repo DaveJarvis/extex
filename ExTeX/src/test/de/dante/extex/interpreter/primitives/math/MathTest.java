@@ -49,9 +49,9 @@ public class MathTest extends ExTeXLauncher {
                 "\\catcode`$=3 "
                 + "$a$",
                 //--- log message ---
-                "?", //TODO gene: check
+                "",
                 //--- output channel ---
-                null);
+                "a\n");
     }
 
     /**
@@ -66,9 +66,9 @@ public class MathTest extends ExTeXLauncher {
                 + "\\catcode`$=3 "
                 + "${a \\over b}$",
                 //--- log message ---
-                "?",
+                "",
                 //--- output channel ---
-                null);
+                "???"); //TODO gene: check
     }
 
 }
