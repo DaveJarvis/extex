@@ -375,6 +375,15 @@ public class ContextImpl
     }
 
     /**
+     * @see de.dante.extex.interpreter.context.Context#esc(de.dante.extex.scanner.Token)
+     */
+    public String esc(final Token token) {
+
+        char esc = (char) (getCount("escapechar").getValue());
+        return token.toText(esc);
+    }
+
+    /**
      * @see de.dante.extex.interpreter.context.Context#expand(
      *      de.dante.extex.interpreter.type.tokens.Tokens, Typesetter)
      */
@@ -402,7 +411,7 @@ public class ContextImpl
 
          return result;
          */
-        // TODO expand() unimplemented
+        // TODO gene: expand() unimplemented
         throw new RuntimeException("unimplemented");
     }
 

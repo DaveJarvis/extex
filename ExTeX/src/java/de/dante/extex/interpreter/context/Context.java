@@ -76,6 +76,16 @@ public interface Context
     String esc(String name);
 
     /**
+     * This method is meant to produce a printable version of a control
+     * sequence for error messages.
+     *
+     * @param token the token
+     *
+     * @return the control sequence including the escape character
+     */
+    String esc(Token token);
+
+    /**
      * Expand some tokens.
      *
      * @param tokens the tokens to expand
