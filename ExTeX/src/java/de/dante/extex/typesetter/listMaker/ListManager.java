@@ -37,10 +37,11 @@ public interface ListManager {
 
     /**
      * Discart to top of the stack of list makers.
+     * @return TODO
      *
      * @throws GeneralException in case of an error
      */
-    void pop() throws GeneralException;
+    ListMaker pop() throws GeneralException;
 
     /**
      * Push a new element to the stack of list makers.
