@@ -45,7 +45,7 @@ public class NoadFactory {
          */
         public Object visitBinary(final Object arg) {
 
-            return new BinNoad((Noad) arg);
+            return new BinaryNoad((Noad) arg);
         }
 
         /**
@@ -101,7 +101,7 @@ public class NoadFactory {
          */
         public Object visitRelation(final Object arg) {
 
-            return new RelNoad((Noad) arg);
+            return new RelationNoad((Noad) arg);
         }
 
         /**
