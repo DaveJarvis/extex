@@ -19,6 +19,8 @@
 
 package de.dante.extex.scanner;
 
+import java.io.Serializable;
+
 import de.dante.util.UnicodeChar;
 
 /**
@@ -28,7 +30,7 @@ import de.dante.util.UnicodeChar;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public abstract class AbstractToken implements Token {
+public abstract class AbstractToken implements Serializable, Token {
 
     /**
      * The constant <tt>HASH_FACTOR</tt> contains the factor used to construct
