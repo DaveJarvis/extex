@@ -18,7 +18,6 @@
  */
 package de.dante.extex.scanner;
 
-import de.dante.util.GeneralException;
 
 
 /**
@@ -185,7 +184,7 @@ public abstract class Catcode {
      * @return some return value form the visit
      */
     public abstract Object visit(CatcodeVisitor visitor, Object value,
-                                 Object value2) throws GeneralException;
+                                 Object value2) throws Exception;
 
     /**
      * This inner class represents an active catcode.
@@ -213,7 +212,7 @@ public abstract class Catcode {
          * @return some return value form the visit
          */
         public Object visit(CatcodeVisitor visitor, Object value,
-                            Object value2) throws GeneralException {
+                            Object value2) throws Exception {
             return visitor.visitActive(value, value2);
         }
     }
@@ -245,7 +244,7 @@ public abstract class Catcode {
          * @return some return value form the visit
          */
         public Object visit(CatcodeVisitor visitor, Object arg1,
-                            Object arg2) throws GeneralException {
+                            Object arg2) throws Exception {
             return visitor.visitComment(arg1, arg2);
         }
     }
@@ -276,7 +275,7 @@ public abstract class Catcode {
          * @return some return value form the visit
          */
         public Object visit(CatcodeVisitor visitor, Object arg1,
-                            Object arg2) throws GeneralException {
+                            Object arg2) throws Exception {
             return visitor.visitCr(arg1, arg2);
         }
     }
@@ -307,7 +306,7 @@ public abstract class Catcode {
          * @return some return value form the visit
          */
         public Object visit(CatcodeVisitor visitor, Object arg1,
-                            Object arg2) throws GeneralException {
+                            Object arg2) throws Exception {
             return visitor.visitEscape(arg1, arg2);
         }
     }
@@ -338,7 +337,7 @@ public abstract class Catcode {
          * @return some return value form the visit
          */
         public Object visit(CatcodeVisitor visitor, Object arg1,
-                            Object arg2) throws GeneralException {
+                            Object arg2) throws Exception {
             return visitor.visitIgnore(arg1, arg2);
         }
     }
@@ -369,7 +368,7 @@ public abstract class Catcode {
          * @return some return value form the visit
          */
         public Object visit(CatcodeVisitor visitor, Object arg1,
-                            Object arg2) throws GeneralException {
+                            Object arg2) throws Exception {
             return visitor.visitInvalid(arg1, arg2);
         }
     }
@@ -401,7 +400,7 @@ public abstract class Catcode {
          * @return some return value form the visit
          */
         public Object visit(CatcodeVisitor visitor, Object arg1,
-                            Object arg2) throws GeneralException {
+                            Object arg2) throws Exception {
             return visitor.visitLeftBrace(arg1, arg2);
         }
     }
@@ -432,7 +431,7 @@ public abstract class Catcode {
          * @return some return value form the visit
          */
         public Object visit(CatcodeVisitor visitor, Object arg1,
-                            Object arg2) throws GeneralException {
+                            Object arg2) throws Exception {
             return visitor.visitLetter(arg1, arg2);
         }
     }
@@ -464,7 +463,7 @@ public abstract class Catcode {
          * @return some return value form the visit
          */
         public Object visit(CatcodeVisitor visitor, Object arg1,
-                            Object arg2) throws GeneralException {
+                            Object arg2) throws Exception {
             return visitor.visitMacroParam(arg1, arg2);
         }
     }
@@ -496,7 +495,7 @@ public abstract class Catcode {
          * @return some return value form the visit
          */
         public Object visit(CatcodeVisitor visitor, Object arg1,
-                            Object arg2) throws GeneralException {
+                            Object arg2) throws Exception {
             return visitor.visitMathShift(arg1, arg2);
         }
     }
@@ -527,7 +526,7 @@ public abstract class Catcode {
          * @return some return value form the visit
          */
         public Object visit(CatcodeVisitor visitor, Object arg1,
-                            Object arg2) throws GeneralException {
+                            Object arg2) throws Exception {
             return visitor.visitOther(arg1, arg2);
         }
     }
@@ -559,7 +558,7 @@ public abstract class Catcode {
          * @return some return value form the visit
          */
         public Object visit(CatcodeVisitor visitor, Object arg1,
-                            Object arg2) throws GeneralException {
+                            Object arg2) throws Exception {
             return visitor.visitRightBrace(arg1, arg2);
         }
     }
@@ -590,7 +589,7 @@ public abstract class Catcode {
          * @return some return value form the visit
          */
         public Object visit(CatcodeVisitor visitor, Object arg1,
-                            Object arg2) throws GeneralException {
+                            Object arg2) throws Exception {
             return visitor.visitSpace(arg1, arg2);
         }
     }
@@ -621,7 +620,7 @@ public abstract class Catcode {
          * @return some return value form the visit
          */
         public Object visit(CatcodeVisitor visitor, Object arg1,
-                            Object arg2) throws GeneralException {
+                            Object arg2) throws Exception {
             return visitor.visitSubMark(arg1, arg2);
         }
     }
@@ -652,7 +651,7 @@ public abstract class Catcode {
          * @return some return value form the visit
          */
         public Object visit(CatcodeVisitor visitor, Object arg1,
-                            Object arg2)  throws GeneralException {
+                            Object arg2)  throws Exception {
             return visitor.visitSupMark(arg1, arg2);
         }
     }
@@ -683,7 +682,7 @@ public abstract class Catcode {
          * @return some return value form the visit
          */
         public Object visit(CatcodeVisitor visitor, Object arg1,
-                            Object arg2)  throws GeneralException {
+                            Object arg2)  throws Exception {
             return visitor.visitTabMark(arg1, arg2);
         }
     }

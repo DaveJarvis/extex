@@ -18,6 +18,7 @@
  */
 package de.dante.extex.scanner;
 
+import de.dante.util.UnicodeChar;
 import junit.framework.TestCase;
 
 /*
@@ -70,7 +71,7 @@ public class ControlSequenceTokenTest extends TestCase {
      */
     public void testEqualsToken1() {
         Token t1 = new ControlSequenceToken(" ");
-        Token t2 = new OtherToken(" ");
+        Token t2 = new OtherToken(new UnicodeChar(' '));
         assertFalse(t1.equals(t2));
     }
 

@@ -35,6 +35,7 @@ import de.dante.extex.typesetter.NodeList;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.test.logging.NullLogger;
 import de.dante.util.GeneralException;
+import de.dante.util.UnicodeChar;
 import de.dante.util.configuration.Configuration;
 import de.dante.util.configuration.ConfigurationException;
 import de.dante.util.configuration.ConfigurationFactory;
@@ -121,7 +122,7 @@ public class Max1 extends TestCase {
 
         interpreter.setTypesetter(typesetter);
 
-        TokenStream stream = new TokenStreamBufferImpl(in);
+        TokenStream stream = new TokenStreamBufferImpl(in,"ISO-8859-1");
         interpreter.run(stream);
         return typesetter.toString();
     }
@@ -214,7 +215,7 @@ public class Max1 extends TestCase {
          * @see de.dante.extex.typesetter.Typesetter#add(de.dante.extex.interpreter.type.Font,
          *      java.lang.String)
          */
-        public void add(TypesettingContext font, String symbol) {
+        public void add(TypesettingContext font, UnicodeChar symbol) {
         }
 
         /**

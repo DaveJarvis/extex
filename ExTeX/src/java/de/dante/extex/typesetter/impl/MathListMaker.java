@@ -28,6 +28,7 @@ import de.dante.extex.typesetter.Mode;
 import de.dante.extex.typesetter.Node;
 import de.dante.extex.typesetter.NodeList;
 import de.dante.util.GeneralException;
+import de.dante.util.UnicodeChar;
 
 /**
  * ...
@@ -58,7 +59,7 @@ public class MathListMaker extends AbstractListMaker implements ListMaker {
     /**
      * @see de.dante.extex.typesetter.ListMaker#add(de.dante.extex.interpreter.type.Font, java.lang.String)
      */
-    public void add(TypesettingContext font, String symbol) throws GeneralException {
+    public void add(TypesettingContext font, UnicodeChar symbol) throws GeneralException {
         nodes.add(manager.getCharNodeFactory().newInstance(font,symbol));
     }
 

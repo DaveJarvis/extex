@@ -32,6 +32,7 @@ import de.dante.extex.typesetter.Node;
 import de.dante.extex.typesetter.NodeList;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.GeneralException;
+import de.dante.util.UnicodeChar;
 import de.dante.util.configuration.Configuration;
 import de.dante.util.configuration.ConfigurationException;
 
@@ -107,7 +108,7 @@ public class TypesetterImpl implements Typesetter, Manager {
      * @param symbol
      * @throws GeneralException
      */
-    public void add(TypesettingContext font, String symbol) throws GeneralException {
+    public void add(TypesettingContext font, UnicodeChar symbol) throws GeneralException {
         listMaker.add(font, symbol);
     }
 

@@ -57,7 +57,7 @@ public class CrToken extends AbstractToken implements Token {
      * @see "TeX -- The Program [298]"
      */
     public String toString() {
-        return Messages.format("CrToken.Text",value);
+        return Messages.format("CrToken.Text",getValue());
     }
     
     /**

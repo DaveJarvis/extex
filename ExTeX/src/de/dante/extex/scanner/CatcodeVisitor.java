@@ -18,7 +18,6 @@
  */
 package de.dante.extex.scanner;
 
-import de.dante.util.GeneralException;
 
 /**
  * This interface describes the capabilities for a visitor class on the category
@@ -30,36 +29,36 @@ import de.dante.util.GeneralException;
  */
 public interface CatcodeVisitor {
 
-    public abstract Object visitEscape(Object arg1, Object arg2) throws GeneralException;
+    public abstract Object visitEscape(Object arg1, Object arg2) throws Exception;
 
-    public abstract Object visitLeftBrace(Object arg1, Object arg2) throws GeneralException;
+    public abstract Object visitLeftBrace(Object arg1, Object arg2) throws Exception;
 
-    public abstract Object visitRightBrace(Object arg1, Object arg2) throws GeneralException;
+    public abstract Object visitRightBrace(Object arg1, Object arg2) throws Exception;
 
-    public abstract Object visitMathShift(Object arg1, Object arg2) throws GeneralException;
+    public abstract Object visitMathShift(Object arg1, Object arg2) throws Exception;
 
-    public abstract Object visitTabMark(Object arg1, Object arg2) throws GeneralException;
+    public abstract Object visitTabMark(Object arg1, Object arg2) throws Exception;
 
-    public abstract Object visitCr(Object arg1, Object arg2) throws GeneralException;
+    public abstract Object visitCr(Object arg1, Object arg2) throws Exception;
 
-    public abstract Object visitMacroParam(Object arg1, Object arg2) throws GeneralException;
+    public abstract Object visitMacroParam(Object arg1, Object arg2) throws Exception;
 
-    public abstract Object visitSupMark(Object arg1, Object arg2) throws GeneralException;
+    public abstract Object visitSupMark(Object arg1, Object arg2) throws Exception;
 
-    public abstract Object visitSubMark(Object arg1, Object arg2) throws GeneralException;
+    public abstract Object visitSubMark(Object arg1, Object arg2) throws Exception;
 
-    public abstract Object visitIgnore(Object arg1, Object arg2) throws GeneralException;
+    public abstract Object visitIgnore(Object arg1, Object arg2) throws Exception;
 
-    public abstract Object visitSpace(Object arg1, Object arg2) throws GeneralException;
+    public abstract Object visitSpace(Object arg1, Object arg2) throws Exception;
 
-    public abstract Object visitLetter(Object arg1, Object arg2) throws GeneralException;
+    public abstract Object visitLetter(Object arg1, Object arg2) throws Exception;
 
-    public abstract Object visitOther(Object arg1, Object arg2) throws GeneralException;
+    public abstract Object visitOther(Object arg1, Object arg2) throws Exception;
 
-    public abstract Object visitActive(Object arg1, Object arg2) throws GeneralException;
+    public abstract Object visitActive(Object arg1, Object arg2) throws Exception;
 
-    public abstract Object visitComment(Object arg1, Object arg2) throws GeneralException;
+    public abstract Object visitComment(Object arg1, Object arg2) throws Exception;
 
-    public abstract Object visitInvalid(Object arg1, Object arg2) throws GeneralException;
+    public abstract Object visitInvalid(Object arg1, Object arg2) throws Exception;
 
 }

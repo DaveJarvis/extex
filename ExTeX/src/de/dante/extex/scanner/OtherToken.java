@@ -19,6 +19,7 @@
 package de.dante.extex.scanner;
 
 import de.dante.extex.i18n.Messages;
+import de.dante.util.UnicodeChar;
 
 
 /**
@@ -37,10 +38,10 @@ public class OtherToken extends AbstractToken implements Token {
     /**
      * Creates a new object.
      *
-     * @param value the actual value
+     * @param uc the actual value
      */
-    protected OtherToken(String value) {
-        super(value);
+    protected OtherToken(UnicodeChar uc) {
+        super(uc);
     }
 
     /**
@@ -58,6 +59,6 @@ public class OtherToken extends AbstractToken implements Token {
      * @see "TeX -- The Program [298]"
      */
     public String toString() {
-        return Messages.format("OtherToken.Text",value);
+        return Messages.format("OtherToken.Text",getValue());
     }
 }

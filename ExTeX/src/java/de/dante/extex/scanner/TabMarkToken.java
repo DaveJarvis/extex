@@ -19,6 +19,7 @@
 package de.dante.extex.scanner;
 
 import de.dante.extex.i18n.Messages;
+import de.dante.util.UnicodeChar;
 
 
 /**
@@ -36,10 +37,10 @@ public class TabMarkToken extends AbstractToken implements Token {
     /**
      * Creates a new object.
      *
-     * @param value the actual value
+     * @param uc the actual value
      */
-    protected TabMarkToken(String value) {
-        super(value);
+    protected TabMarkToken(UnicodeChar uc) {
+        super(uc);
     }
 
     /**
@@ -57,6 +58,6 @@ public class TabMarkToken extends AbstractToken implements Token {
      * @see "TeX -- The Program [298]"
      */
     public String toString() {
-        return Messages.format("TabMarkToken.Text",value);
+        return Messages.format("TabMarkToken.Text",getValue());
     }
 }

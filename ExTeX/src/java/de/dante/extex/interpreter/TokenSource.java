@@ -27,6 +27,7 @@ import de.dante.extex.scanner.stream.TokenStreamFactory;
 import de.dante.util.GeneralException;
 import de.dante.util.Locator;
 import de.dante.util.NotObservableException;
+import de.dante.util.UnicodeChar;
 
 /**
  * This interface describes a class to acquire
@@ -145,7 +146,7 @@ public interface TokenSource {
      *                 in case that the end of file has been reached before an
      *                 integer could be acquired
      */
-    public abstract long scanCharacterCode() throws GeneralException;
+    public abstract UnicodeChar scanCharacterCode() throws GeneralException;
 
     /**
      * ...

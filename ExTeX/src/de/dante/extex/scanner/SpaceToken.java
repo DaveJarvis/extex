@@ -59,6 +59,6 @@ public class SpaceToken extends AbstractToken implements Token {
      * @see "TeX -- The Program [298]"
      */
     public String toString() {
-        return Messages.format("SpaceToken.Text",value);
+        return Messages.format("SpaceToken.Text",getValue());
     }
 }

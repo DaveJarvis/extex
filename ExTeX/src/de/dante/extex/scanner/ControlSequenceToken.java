@@ -56,6 +56,6 @@ public class ControlSequenceToken extends AbstractToken implements Token {
      * @return the string representation
      */
     public String toString() {
-        return Messages.format("ControlSequenceToken.Text", value);
+        return Messages.format("ControlSequenceToken.Text", getValue());
     }
 }

@@ -18,6 +18,8 @@
  */
 package de.dante.extex.scanner;
 
+import de.dante.util.UnicodeChar;
+
 
 /**
  * This is the interface for a token. A token is a pair of catcode and value.
@@ -53,8 +55,7 @@ public interface Token {
      * 
      * @return the value
      */
-    //public abstract UnicodeChar getCharValue();
-    // TODO use UnicodeChar for letter ans other
+    public abstract UnicodeChar getChar();
     
     /**
      * Compare the current token to another token. They are the same if the

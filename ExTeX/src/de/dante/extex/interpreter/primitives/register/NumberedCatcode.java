@@ -27,6 +27,7 @@ import de.dante.extex.scanner.Catcode;
 import de.dante.extex.scanner.CatcodeException;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.GeneralException;
+import de.dante.util.UnicodeChar;
 
 /**
  * This class provides an implementation for the primitive <code>\catcode</code>.
@@ -55,12 +56,12 @@ public class NumberedCatcode extends AbstractCode {
      */
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws GeneralException {
-        long charCode = source.scanCharacterCode();
+        UnicodeChar charCode = source.scanCharacterCode();
         source.scanOptionalEquals();
         long ccNumber = source.scanNumber();
 
         try {
-            context.setCatcode((char) charCode, Catcode
+            context.setCatcode(charCode, Catcode
                     .toCatcode((int) ccNumber), prefix.isGlobal());
         } catch (CatcodeException e) {
             throw new GeneralHelpingException("TTP.CodeOutOfRange", Long

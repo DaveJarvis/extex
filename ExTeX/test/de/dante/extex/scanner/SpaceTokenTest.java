@@ -18,6 +18,7 @@
  */
 package de.dante.extex.scanner;
 
+import de.dante.util.UnicodeChar;
 import junit.framework.TestCase;
 
 /*
@@ -69,7 +70,7 @@ public class SpaceTokenTest extends TestCase {
     /*
      */
     public void testEqualsToken1() {
-        Token t2 = new ActiveCharacterToken(" ");
+        Token t2 = new ActiveCharacterToken(new UnicodeChar(' '));
         assertFalse(t.equals(t2));
     }
 

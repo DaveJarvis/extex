@@ -24,6 +24,7 @@ import de.dante.extex.interpreter.type.Count;
 import de.dante.extex.interpreter.type.Dimen;
 import de.dante.extex.interpreter.type.Glue;
 import de.dante.util.GeneralException;
+import de.dante.util.UnicodeChar;
 
 /**
  * ...
@@ -37,7 +38,7 @@ public interface ListMaker {
     
     public abstract void add(Node node) throws GeneralException;
 
-    public abstract void add(TypesettingContext typesettingContext, String symbol) throws GeneralException;
+    public abstract void add(TypesettingContext typesettingContext, UnicodeChar symbol) throws GeneralException;
 
     public abstract void addSpace(TypesettingContext typesettingContext, Count spacefactor) throws GeneralException;
 

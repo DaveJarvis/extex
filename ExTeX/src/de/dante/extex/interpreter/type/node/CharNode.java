@@ -23,6 +23,7 @@ import de.dante.extex.typesetter.Node;
 import de.dante.extex.typesetter.NodeVisitor;
 
 import de.dante.util.GeneralException;
+import de.dante.util.UnicodeChar;
 
 /**
  * ...
@@ -33,7 +34,7 @@ import de.dante.util.GeneralException;
  */
 public class CharNode extends AbstractNode implements Node {
     /** ... */
-    private String character; //TODO use UnicodeCharacter instead
+    private UnicodeChar character;
 
     /** ... */
     private TypesettingContext typesettingContext;
@@ -41,7 +42,7 @@ public class CharNode extends AbstractNode implements Node {
     /**
      * Creates a new object.
      */
-    public CharNode(TypesettingContext typesettingContext, String c) {
+    public CharNode(TypesettingContext typesettingContext, UnicodeChar c) {
         super();
         this.typesettingContext = typesettingContext;
         this.character          = c;
@@ -60,17 +61,14 @@ public class CharNode extends AbstractNode implements Node {
      * @see de.dante.extex.typesetter.Node#toString(java.lang.StringBuffer)
      */
     public void toString(StringBuffer sb) {
-        sb.append(character);
-
-        //TODO  incomplete
+        sb.append(character.toString());
     }
 
     /**
      * @see java.lang.Object#toString()
      */
     public String toString() {
-        //TODO incomplete
-        return character;
+        return character.toString();
     }
 
     /**

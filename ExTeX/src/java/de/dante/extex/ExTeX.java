@@ -236,10 +236,10 @@ public class ExTeX {
             ExTeX extex = new ExTeX(System.getProperties());
             status = extex.run(args);
         } catch (MainException e) {
-            System.err.println(e.getMessage() + "\n");
+            System.err.println("*** "+e.getMessage() + "\n");
             status = e.getCode();
         } catch (Throwable e) {
-            System.err.println(e.getMessage() + "\n");
+            System.err.println("*** "+e.getMessage() + "\n");
             status = EXIT_INTERNAL_ERROR;
         }
 
@@ -442,12 +442,18 @@ public class ExTeX {
                     : pages == 1 ? "ExTeX.Page" : "ExTeX.Pages"), Integer
                     .toString(pages)));
         } catch (ConfigurationException e) {
+            e.printStackTrace();
+            logger.throwing("de.dante.extex.ExTeX","run",e);
             throw new MainConfigurationException(e);
         } catch (CharacterCodingException e) {
+            logger.throwing("de.dante.extex.ExTeX","run",e);
             throw new MainCodingException(e);
         } catch (IOException e) {
+            logger.throwing("de.dante.extex.ExTeX","run",e);
             throw new MainIOException(e);
         } catch (GeneralException e) {
+            e.printStackTrace();
+            logger.throwing("de.dante.extex.ExTeX","run",e);
             throw new MainException(e);
         }
 

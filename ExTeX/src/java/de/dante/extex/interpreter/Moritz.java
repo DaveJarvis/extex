@@ -35,6 +35,7 @@ import de.dante.util.NotObservableException;
 import de.dante.util.Observable;
 import de.dante.util.Observer;
 import de.dante.util.ObserverList;
+import de.dante.util.UnicodeChar;
 import de.dante.util.configuration.Configuration;
 
 /**
@@ -342,14 +343,14 @@ public abstract class Moritz implements TokenSource, Observable {
 	/**
 	 * @see de.dante.extex.interpreter.TokenSource#scanCharacterCode()
 	 */
-	public long scanCharacterCode() throws GeneralException {
+	public UnicodeChar scanCharacterCode() throws GeneralException {
 		long cc = scanNumber();
 
 		if (cc < 0 || cc > MAX_CHAR_CODE) {
 			throw new GeneralHelpingException("TTP.BadCharCode", Long.toString(cc), "0", Long.toString(MAX_CHAR_CODE));
 		}
 
-		return cc;
+		return new UnicodeChar((int)cc);
 	}
 
 	/**
