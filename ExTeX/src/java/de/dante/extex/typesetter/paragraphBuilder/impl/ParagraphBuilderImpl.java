@@ -613,7 +613,7 @@ public class ParagraphBuilderImpl implements ParagraphBuilder, LogEnabled {
     private void prepareParshape() {
 
         parshape = options.getParshape();
-        
+
         if (parshape == null) {
             int hangafter = (int) options.getCountOption("hangafter")
                     .getValue();
