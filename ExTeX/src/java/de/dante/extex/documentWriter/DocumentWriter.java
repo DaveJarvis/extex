@@ -78,4 +78,11 @@ public interface DocumentWriter {
      */
     void close() throws GeneralException, IOException;
 
+    /**
+     * ...
+     *
+     * @param name ...
+     * @param value ...
+     */
+    void setParameter(String name, String value);
 }
