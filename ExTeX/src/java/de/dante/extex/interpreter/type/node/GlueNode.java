@@ -125,7 +125,7 @@ public class GlueNode extends AbstractNode implements Node, Discartable {
      */
     public void toString(final StringBuffer sb, final String prefix) {
 
-        sb.append("\\skip ");
+        sb.append("\\glue ");
         sb.append(this.size.toString());
         if (DEVELOP && !getWidth().eq(size.getLength())) {
             sb.append(" [");
