@@ -28,7 +28,6 @@ import de.dante.extex.documentWriter.DocumentWriter;
 import de.dante.extex.documentWriter.DocumentWriterOptions;
 import de.dante.extex.documentWriter.NoOutputStreamException;
 import de.dante.extex.documentWriter.SingleDocumentStream;
-import de.dante.extex.i18n.PanicException;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.count.FixedCount;
