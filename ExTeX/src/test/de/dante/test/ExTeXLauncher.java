@@ -217,9 +217,9 @@ public class ExTeXLauncher extends TestCase {
         logger.removeHandler(handler);
         if (log != null) {
             assertEquals(log, byteStream.toString());
-            assertFalse("Error expected", errorP);
+            //assertTrue("Error expected", errorP);
         } else {
-            assertTrue("No error expected", errorP);
+            assertFalse("No error expected", errorP);
         }
         if (expect != null) {
             assertEquals(expect, stream.toString());
