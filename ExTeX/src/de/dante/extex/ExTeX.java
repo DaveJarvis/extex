@@ -283,12 +283,11 @@ public class ExTeX {
 
     /**
      * This class provides access to the whole functionality of ExTeX on the
-     * command line. The exception is that this method does not call
-     * <code>{@link System#exit(int) System.exit()}</code>
+     * command line. The exception is that this method does not call <code>{@link System#exit(int) System.exit()}</code>
      * but returns the exit status as result.
-     *
+     * 
      * @param args the list of command line arguments
-     *
+     * 
      * @return the exit status
      */
     public int run(final String[] args) {
@@ -321,8 +320,8 @@ public class ExTeX {
                     } else if ("-fmt".startsWith(arg)) {
                         useArg(PROP_FMT, args, ++i);
                     } else if (arg.startsWith("-fmt=")) {
-                        properties.setProperty(PROP_FMT, arg
-                            .substring("-fmt=".length()));
+                        properties.setProperty(PROP_FMT, arg.substring("-fmt="
+                            .length()));
                     } else if ("-halt-on-error".startsWith(arg)) {
                         properties.setProperty("halt-on-error", "true");
                     } else if ("-interaction".startsWith(arg)) {
@@ -348,8 +347,7 @@ public class ExTeX {
                                 .getProperty(PROP_PROGNAME), VERSION,
                                     properties.getProperty("java.version")));
                         onceMore = false;
-                    } else if ("-texinputs".startsWith(arg)
-                               && arg.length() > 4) {
+                    } else if ("-texinputs".startsWith(arg) && arg.length() > 4) {
                         useArg(PROP_TEXINPUTS, args, ++i);
                     } else if ("-texoutputs".startsWith(arg)
                                && arg.length() > 4) {
