@@ -165,7 +165,7 @@ public class DviDocumentWriterTest extends TestCase {
      * @exception Exception if an error occurs
      */
     public void testMarkNode() throws Exception {
-        checkException(new MarkNode(Tokens.EMPTY), PanicException.class);
+        checkException(new MarkNode(Tokens.EMPTY, 0), PanicException.class);
     }
 
 
