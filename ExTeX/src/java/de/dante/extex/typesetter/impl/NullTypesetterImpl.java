@@ -29,6 +29,7 @@ import de.dante.extex.interpreter.type.glue.Glue;
 import de.dante.extex.scanner.type.Token;
 import de.dante.extex.typesetter.ListMaker;
 import de.dante.extex.typesetter.Mode;
+import de.dante.extex.typesetter.OutputRoutine;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.typesetter.exception.TypesetterException;
@@ -241,6 +242,14 @@ public class NullTypesetterImpl implements Typesetter {
      *      de.dante.extex.typesetter.TypesetterOptions)
      */
     public void setOptions(final TypesetterOptions options) {
+
+    }
+
+    /**
+     * @see de.dante.extex.typesetter.Typesetter#setOutputRoutine(
+     *      de.dante.extex.typesetter.OutputRoutine)
+     */
+    public void setOutputRoutine(final OutputRoutine output) {
 
     }
 

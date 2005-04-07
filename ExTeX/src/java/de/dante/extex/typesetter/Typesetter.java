@@ -20,7 +20,6 @@
 package de.dante.extex.typesetter;
 
 import de.dante.extex.documentWriter.DocumentWriter;
-import de.dante.extex.language.ligature.LigatureBuilder;
 import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.listMaker.ListManager;
 import de.dante.extex.typesetter.pageBuilder.PageBuilder;
@@ -118,6 +117,13 @@ public interface Typesetter extends ListMaker {
      * @param options the options to use
      */
     void setOptions(TypesetterOptions options);
+
+    /**
+     * Setter for the output routine.
+     *
+     * @param output the output routine
+     */
+    void setOutputRoutine(OutputRoutine output);
 
     /**
      * Setter for the page builder.
