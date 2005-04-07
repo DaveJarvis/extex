@@ -37,6 +37,7 @@ public interface VirtualFount {
      * @param uc        the character
      * @return Returns the virt. char node.
      */
-    VirtualCharNode getVirtualCharNode(TypesettingContext context, UnicodeChar uc);
+    VirtualCharNode getVirtualCharNode(TypesettingContext context,
+            UnicodeChar uc);
 
 }
