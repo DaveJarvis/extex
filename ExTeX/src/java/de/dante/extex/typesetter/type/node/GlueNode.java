@@ -145,7 +145,7 @@ public class GlueNode extends AbstractNode implements Node, Discartable {
      */
     public String toText() {
 
-        return " "; //TODO gene: toText() incomplete
+        return " ";
     }
 
     /**
