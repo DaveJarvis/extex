@@ -535,13 +535,15 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
     }
 
     /**
-     * Setter for the value in terms of the internal representation.
+     * Setter for the value in terms of the internal representation. The order
+     * is reset to 0.
      *
      * @param theValue the new value
      */
     public void set(final long theValue) {
 
         this.value = theValue;
+        this.order = 0;
     }
 
     /**
