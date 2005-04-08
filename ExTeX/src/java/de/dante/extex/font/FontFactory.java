@@ -573,9 +573,7 @@ public class FontFactory implements Serializable {
                         if (afmfile != null) {
 
                             try {
-                                AfmFont afmreader = new AfmFont(afmfile,
-                                        name
-                                        /*+ ".pfb"*/, "10");
+                                AfmFont afmreader = new AfmFont(afmfile, name);
 
                                 doc = new Document(afmreader.getFontMetric());
                             } catch (IOException e) {

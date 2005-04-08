@@ -18,6 +18,9 @@
 
 package de.dante.util;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.glue.GlueComponent;
 
@@ -98,7 +101,21 @@ public final class Unit {
      */
     public static String getDimenAsPTString(final Dimen value) {
 
-        return String.valueOf(round(getDimenAsPT(value), 2));
+        return getDimenAsPTString(value, 2);
+    }
+
+    /**
+     * Return the <code>Dimen</code>-value (round) as PT (point) as  String.
+     * @param value the <code>Dimen</code>
+     * @param round the round position
+     * @return Returns the <code>Dimen</code>-value (round) as PT as String
+     */
+    public static String getDimenAsPTString(final Dimen value, final int round) {
+
+        NumberFormat nf = NumberFormat.getInstance(Locale.ENGLISH);
+        nf.setGroupingUsed(false);
+        nf.setMinimumFractionDigits(round);
+        return nf.format(getDimenAsPT(value));
     }
 
     /**
