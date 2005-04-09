@@ -159,6 +159,16 @@ public final class Unit {
     }
 
     /**
+     * Set the <code>Dimen</code>-value from a BP-value
+     * @param d     the dimen
+     * @param bp    the bp-value
+     */
+    public static void setDimenFromCM(final Dimen d, final float bp) {
+
+        d.setValue((long) ((bp * (DEN << SHIFT)) / MULBP));
+    }
+
+    /**
      * Round the double-value to a number of decimals.
      * @param value the double-value
      * @param round the number of decimals to round (not round: negative value)
