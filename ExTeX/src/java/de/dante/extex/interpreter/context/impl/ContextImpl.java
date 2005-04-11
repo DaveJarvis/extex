@@ -768,6 +768,14 @@ public class ContextImpl
     }
 
     /**
+     * @see de.dante.extex.documentWriter.DocumentWriterOptions#getTokensOption(java.lang.String)
+     */
+    public Tokens getTokensOption(final String name) {
+
+        return group.getToks(name);
+    }
+
+    /**
      * @see de.dante.extex.scanner.stream.TokenStreamOptions#getToksOption(
      *      java.lang.String)
      */

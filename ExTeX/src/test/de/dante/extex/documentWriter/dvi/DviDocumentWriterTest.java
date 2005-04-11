@@ -255,6 +255,13 @@ public class DviDocumentWriterTest extends TestCase {
     }
 
     private class MockDocumentWriterOptions implements DocumentWriterOptions {
+        /**
+         * @see de.dante.extex.documentWriter.DocumentWriterOptions#getTokensOption(java.lang.String)
+         */
+        public Tokens getTokensOption(String name) {
+
+            return null;
+        }
         long magnification = 1000;
 
         public MockDocumentWriterOptions() {
