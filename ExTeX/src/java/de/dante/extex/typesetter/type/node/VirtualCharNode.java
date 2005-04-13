@@ -323,4 +323,15 @@ public class VirtualCharNode extends CharNode implements NodeList {
 
         this.nodes.spread(width, sum);
     }
+
+    /**
+     * @see de.dante.extex.typesetter.type.Node#visit(
+     *      de.dante.extex.typesetter.NodeVisitor,
+     *      java.lang.Object)
+     */
+    public Object visit(final NodeVisitor visitor, final Object value)
+            throws GeneralException {
+
+        return visitor.visitVirtualChar(this, value);
+    }
 }
