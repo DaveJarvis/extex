@@ -31,7 +31,7 @@ import de.dante.util.GeneralException;
 public class DocumentWriterException extends GeneralException {
 
     /**
-     * Creates a new object.
+     * Creates a new object. 
      *
      * @param message the error message
      */
