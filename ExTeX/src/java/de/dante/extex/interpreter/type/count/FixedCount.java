@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -34,11 +34,71 @@ import de.dante.extex.interpreter.type.tokens.Tokens;
 public interface FixedCount {
 
     /**
+     * Compare the value for equality.
+     *
+     * @param count the count to compare to
+     *
+     * @return <code>true</code> iff count has an equal value to the current
+     *  one
+     */
+    boolean eq(FixedCount count);
+
+    /**
+     * Compare the value for a greater or equal value.
+     *
+     * @param count the count to compare to
+     *
+     * @return <code>true</code> iff count has an value greater or equal to the
+     *  current one
+     */
+    boolean ge(FixedCount count);
+
+    /**
      * Getter for the value
      *
      * @return the value
      */
     long getValue();
+
+    /**
+     * Compare the value for a greater value.
+     *
+     * @param count the count to compare to
+     *
+     * @return <code>true</code> iff count has an value greater than the
+     *  current one
+     */
+    boolean gt(FixedCount count);
+
+    /**
+     * Compare the value for a less or equal value.
+     *
+     * @param count the count to compare to
+     *
+     * @return <code>true</code> iff count has an value less or equal to the
+     *  current one
+     */
+    boolean le(FixedCount count);
+
+    /**
+     * Compare the value for a lesser value.
+     *
+     * @param count the count to compare to
+     *
+     * @return <code>true</code> iff count has an value less than the
+     *  current one
+     */
+    boolean lt(FixedCount count);
+
+    /**
+     * Compare the value for non-equality.
+     *
+     * @param count the count to compare to
+     *
+     * @return <code>true</code> iff count has an value not equal to the
+     *  current one
+     */
+    boolean ne(FixedCount count);
 
     /**
      * Determine the printable representation of the object.
@@ -70,9 +130,8 @@ public interface FixedCount {
      * @param context the interpreter context
      *
      * @return the printable respresentation as tokens
-     * @throws InterpreterException TODO
+     *
+     * @throws InterpreterException in case of an error
      */
-    Tokens toToks(final Context context)
-            throws InterpreterException;
-
+    Tokens toToks(final Context context) throws InterpreterException;
 }
