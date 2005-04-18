@@ -245,6 +245,55 @@ public class DviDocumentWriterTest extends TestCase {
             return value;
         }
 
+        /**
+         * @see de.dante.extex.interpreter.type.count.FixedCount#eq(de.dante.extex.interpreter.type.count.FixedCount)
+         */
+        public boolean eq(final FixedCount count) {
+
+            // TODO eq unimplemented
+            return false;
+        }
+        /**
+         * @see de.dante.extex.interpreter.type.count.FixedCount#ge(de.dante.extex.interpreter.type.count.FixedCount)
+         */
+        public boolean ge(final FixedCount count) {
+
+            // TODO ge unimplemented
+            return false;
+        }
+        /**
+         * @see de.dante.extex.interpreter.type.count.FixedCount#gt(de.dante.extex.interpreter.type.count.FixedCount)
+         */
+        public boolean gt(final FixedCount count) {
+
+            // TODO gt unimplemented
+            return false;
+        }
+        /**
+         * @see de.dante.extex.interpreter.type.count.FixedCount#le(de.dante.extex.interpreter.type.count.FixedCount)
+         */
+        public boolean le(final FixedCount count) {
+
+            // TODO le unimplemented
+            return false;
+        }
+        /**
+         * @see de.dante.extex.interpreter.type.count.FixedCount#lt(de.dante.extex.interpreter.type.count.FixedCount)
+         */
+        public boolean lt(final FixedCount count) {
+
+            // TODO lt unimplemented
+            return false;
+        }
+        /**
+         * @see de.dante.extex.interpreter.type.count.FixedCount#ne(de.dante.extex.interpreter.type.count.FixedCount)
+         */
+        public boolean ne(final FixedCount count) {
+
+            // TODO ne unimplemented
+            return false;
+        }
+
         public void toString(final StringBuffer buffer) {
             buffer.append(toString());
         }
