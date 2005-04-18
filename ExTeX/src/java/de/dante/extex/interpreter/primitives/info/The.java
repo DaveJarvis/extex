@@ -33,7 +33,6 @@ import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.scanner.type.CodeToken;
 import de.dante.extex.scanner.type.Token;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.GeneralException;
 
 /**
  * This class provides an implementation for the primitive <code>\the</code>.
