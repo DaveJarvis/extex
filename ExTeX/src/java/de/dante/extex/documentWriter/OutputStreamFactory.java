@@ -42,10 +42,10 @@ public interface OutputStreamFactory {
      * Getter for a new OutputStream of the default type.
      *
      * @return the new OutputStream
-     *
      * @throws DocumentWriterException in case of an error
      */
-    OutputStream getOutputStream() throws DocumentWriterException;
+    OutputStream getOutputStream()
+            throws DocumentWriterException;
 
     /**
      * Getter for a new OutputStream.
@@ -54,10 +54,10 @@ public interface OutputStreamFactory {
      *  correspond to the extension of a file of this type
      *
      * @return the new OutputStream
-     *
      * @throws DocumentWriterException in case of an error
      */
-    OutputStream getOutputStream(String type) throws DocumentWriterException;
+    OutputStream getOutputStream(String type)
+            throws DocumentWriterException;
 
     /**
      * Getter for a new OutputStream.
@@ -69,7 +69,6 @@ public interface OutputStreamFactory {
      *  correspond to the extension of a file of this type
      *
      * @return the new OutputStream
-     *
      * @throws DocumentWriterException in case of an error
      */
     OutputStream getOutputStream(String name, String type)
