@@ -76,6 +76,11 @@ public interface NodeList extends Node {
     void addSkip(FixedGlue glue);
 
     /**
+     * Remove all nodes from the list. The list is empty afterwards.
+     */
+    void clear();
+
+    /**
      * Getter for a node at a given posotion.
      *
      * @param index the position

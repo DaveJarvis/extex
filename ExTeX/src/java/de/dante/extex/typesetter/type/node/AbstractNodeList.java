@@ -28,7 +28,7 @@ import de.dante.extex.typesetter.type.NodeIterator;
 import de.dante.extex.typesetter.type.NodeList;
 
 /**
- * Abstract class for all <code>NodeList</code>s.
+ * Abstract base class for all <code>NodeList</code>s.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
@@ -108,6 +108,14 @@ public abstract class AbstractNodeList extends AbstractNode implements NodeList 
 
         list.add(node);
         updateDimensions(node);
+    }
+
+    /**
+     * @see de.dante.extex.typesetter.type.NodeList#clear()
+     */
+    public void clear() {
+
+        list.clear();
     }
 
     /**

@@ -174,6 +174,14 @@ public class VirtualCharNode extends CharNode implements NodeList {
     }
 
     /**
+     * @see de.dante.extex.typesetter.type.NodeList#clear()
+     */
+    public void clear() {
+
+        this.nodes.clear();
+    }
+
+    /**
      * @see de.dante.extex.typesetter.type.node.CharNode#countChars()
      */
     public int countChars() {
