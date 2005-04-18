@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.main.inputHandler_;
+package de.dante.extex.main.inputHandler;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
