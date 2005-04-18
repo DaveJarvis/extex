@@ -18,6 +18,10 @@
  */
 package de.dante.extex.typesetter;
 
+import de.dante.extex.documentWriter.DocumentWriter;
+import de.dante.extex.typesetter.type.NodeList;
+import de.dante.util.GeneralException;
+
 
 /**
  * TODO gene: missing JavaDoc.
@@ -27,4 +31,12 @@ package de.dante.extex.typesetter;
  */
 public interface OutputRoutine {
 
+    /**
+     * TODO gene: missing JavaDoc
+     * @param vlist the nodes to put onto the page
+     * @param documentWriter TODO
+     *
+     * @throws GeneralException in case of an error
+     */
+    void output(NodeList vlist, DocumentWriter documentWriter) throws GeneralException;
 }
