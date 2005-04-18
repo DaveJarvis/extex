@@ -529,7 +529,9 @@ public class Max extends Moritz
             }
             throw new LoaderException(e);
         }
+        //FontFactory fontFactory = newContext.getFontFactory();
         newContext.setFontFactory(context.getFontFactory());
+        //TODO gene: restore configuration and ResourceFinder
         newContext.setTokenFactory(context.getTokenFactory());
         // TODO gene: loadFormat() incomplete ???
         context = newContext;
