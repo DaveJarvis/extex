@@ -87,12 +87,12 @@ public class FontFactory implements Serializable {
     /**
      * the file finder
      */
-    private ResourceFinder finder;
+    private transient ResourceFinder finder;
 
     /**
      * Configuration for <tt>Type</tt>
      */
-    private Configuration cfgType;
+    private transient Configuration cfgType;
 
     /**
      * Creates a new object.
