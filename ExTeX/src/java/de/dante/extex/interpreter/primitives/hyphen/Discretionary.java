@@ -77,12 +77,15 @@ public class Discretionary extends AbstractCode {
     private class Manager implements ListManager {
 
         /**
-         * The field <tt>charNodeFactory</tt> contains the ...
+         * The field <tt>charNodeFactory</tt> contains the factory for new
+         * characters.
          */
         private CharNodeFactory charNodeFactory;
 
         /**
          * Creates a new object.
+         *
+         * @param cnf the char node factor to use
          */
         public Manager(final CharNodeFactory cnf) {
 
@@ -91,7 +94,8 @@ public class Discretionary extends AbstractCode {
         }
 
         /**
-         * @see de.dante.extex.typesetter.listMaker.ListManager#buildParagraph(de.dante.extex.typesetter.type.node.HorizontalListNode)
+         * @see de.dante.extex.typesetter.listMaker.ListManager#buildParagraph(
+         *      de.dante.extex.typesetter.type.node.HorizontalListNode)
          */
         public NodeList buildParagraph(final HorizontalListNode nodes) {
 
@@ -105,7 +109,6 @@ public class Discretionary extends AbstractCode {
         public void endParagraph() throws TypesetterException {
 
             // TODO gene: endParagraph unimplemented
-
         }
 
         /**
@@ -150,12 +153,12 @@ public class Discretionary extends AbstractCode {
         }
 
         /**
-         * @see de.dante.extex.typesetter.listMaker.ListManager#push(de.dante.extex.typesetter.ListMaker)
+         * @see de.dante.extex.typesetter.listMaker.ListManager#push(
+         *      de.dante.extex.typesetter.ListMaker)
          */
         public void push(final ListMaker listMaker) throws TypesetterException {
 
             // TODO gene: push unimplemented
-
         }
     }
 

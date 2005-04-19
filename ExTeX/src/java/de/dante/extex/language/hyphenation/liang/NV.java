@@ -373,7 +373,7 @@ class NV implements NodeVisitor {
     }
 
     /**
-     * Hyphenate subsequent char nodes from e ligature.
+     * Hyphenate subsequent char nodes from a ligature.
      *
      * <p>
      *  Note that TeX only consideres the first hyphenation point in a ligature.
@@ -387,7 +387,8 @@ class NV implements NodeVisitor {
      * @param ligatureBuilder the ligature builder to use
      *
      * @return the hyphenated node list
-     * @throws HyphenationException
+     *
+     * @throws HyphenationException in case of an error
      */
     private NodeList hyphenate(final NodeList list, final int index,
             final LigatureBuilder ligatureBuilder) throws HyphenationException {
