@@ -108,12 +108,13 @@ public class RuleNode extends AbstractNode implements Node {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#toText(java.lang.StringBuffer, java.lang.String)
+     * @see de.dante.extex.typesetter.type.Node#toText(
+     *      java.lang.StringBuffer,
+     *      java.lang.String)
      */
-    public void toText(StringBuffer sb, String prefix) {
+    public void toText(final StringBuffer sb, final String prefix) {
 
         // TODO gene: toText unimplemented
-
     }
 
     /**
