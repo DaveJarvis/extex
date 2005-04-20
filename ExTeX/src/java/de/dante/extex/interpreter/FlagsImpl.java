@@ -21,7 +21,7 @@ package de.dante.extex.interpreter;
 
 /**
  * This class implements a set of flags.
- * This is needed to pass controling information to primitives.
+ * This is needed to pass controlling information to primitives.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
