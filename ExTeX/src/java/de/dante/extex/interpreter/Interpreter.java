@@ -74,7 +74,7 @@ public interface Interpreter extends TokenSource, Observable {
      * Load the format from an external source.
      *
      * @param stream stream to read from
-     * @param fmt the nam eof the format to be loaded
+     * @param fmt the name of the format to be loaded
      *
      * @throws IOException in case of an IO error
      * @throws LoaderException in case of an error during loading
@@ -166,7 +166,7 @@ public interface Interpreter extends TokenSource, Observable {
 
     /**
      * Setter for the token stream factory.
-     * During the processing of the input several occations might come up
+     * During the processing of the input several occasions might come up
      * where new token streams are needed. In this case the factory can be used
      * to acquire them.
      *
