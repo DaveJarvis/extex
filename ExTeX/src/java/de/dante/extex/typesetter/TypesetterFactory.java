@@ -19,9 +19,7 @@
 
 package de.dante.extex.typesetter;
 
-import de.dante.extex.interpreter.Interpreter;
 import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.max.Max;
 import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.hyphenator.Hyphenator;
 import de.dante.extex.typesetter.pageBuilder.PageBuilder;
@@ -34,7 +32,7 @@ import de.dante.util.framework.AbstractFactory;
  * This is the factory for instances of
  * {@link de.dante.extex.typesetter.Typesetter Typesetter}.
  *
- * @TODO documenation incomplete
+ * @TODO documentation incomplete
  *
  * <pre>
  *  &lt;Typesetter default="someType"&gt;
