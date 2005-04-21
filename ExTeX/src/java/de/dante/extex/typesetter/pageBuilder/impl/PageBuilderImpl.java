@@ -53,12 +53,6 @@ public class PageBuilderImpl implements PageBuilder {
     private DocumentWriter documentWriter = null;
 
     /**
-     * The field <tt>interpreter</tt> contains the interpreter to be used for
-     * running the output routine.
-     */
-    private Interpreter interpreter;
-
-    /**
      * The field <tt>options</tt> contains the options to control the behaviour.
      */
     private TypesetterOptions options = null;
@@ -165,15 +159,6 @@ public class PageBuilderImpl implements PageBuilder {
     }
 
     /**
-     * @see de.dante.extex.typesetter.pageBuilder.PageBuilder#setInterpreter(
-     *      de.dante.extex.interpreter.Interpreter)
-     */
-    public void setInterpreter(final Interpreter interpreter) {
-
-        this.interpreter = interpreter;
-    }
-
-    /**
      * Setter for options.
      *
      * @param options the options to set
@@ -191,4 +176,5 @@ public class PageBuilderImpl implements PageBuilder {
 
         this.outputRoutine = output;
     }
+
 }

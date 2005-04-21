@@ -149,14 +149,6 @@ public class TrivialPageBuilder implements PageBuilder {
     }
 
     /**
-     * @see de.dante.extex.typesetter.pageBuilder.PageBuilder#setInterpreter(
-     *      de.dante.extex.interpreter.Interpreter)
-     */
-    public void setInterpreter(final Interpreter interpreter) {
-
-    }
-
-    /**
      * Setter for options.
      *
      * @param options the options to set
