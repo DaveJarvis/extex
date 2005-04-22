@@ -29,7 +29,7 @@ import de.dante.util.configuration.ConfigurationException;
  * <h2>Configuration</h2>
  *
  * This instance is configurable. The configuration is used to select the
- * appropriate classs and optional parameters for a requested instance. In this
+ * appropriate class and optional parameters for a requested instance. In this
  * respect this class makes best use of the infrastructure of the
  * {@link de.dante.util.framework.AbstractFactory AbstractFactory}.
  *
