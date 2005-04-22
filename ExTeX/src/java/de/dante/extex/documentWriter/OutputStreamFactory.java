@@ -34,7 +34,7 @@ public interface OutputStreamFactory {
     /**
      * Getter for the destination.
      *
-     * @return the name of the dastination
+     * @return the name of the destination
      */
     String getDestination();
 
