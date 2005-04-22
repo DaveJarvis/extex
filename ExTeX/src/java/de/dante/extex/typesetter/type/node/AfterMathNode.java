@@ -20,7 +20,7 @@
 package de.dante.extex.typesetter.type.node;
 
 import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.typesetter.Discartable;
+import de.dante.extex.typesetter.Discardable;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeVisitor;
 import de.dante.util.GeneralException;
@@ -38,7 +38,7 @@ import de.dante.util.GeneralException;
  * @author <a href="m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class AfterMathNode extends AbstractNode implements Node, Discartable {
+public class AfterMathNode extends AbstractNode implements Node, Discardable {
     /**
      * Creates a new object.
      */

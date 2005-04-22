@@ -20,7 +20,7 @@
 package de.dante.extex.typesetter.type.node;
 
 import de.dante.extex.interpreter.type.count.Count;
-import de.dante.extex.typesetter.Discartable;
+import de.dante.extex.typesetter.Discardable;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeVisitor;
 import de.dante.util.GeneralException;
@@ -36,7 +36,7 @@ import de.dante.util.GeneralException;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class PenaltyNode extends AbstractNode implements Node, Discartable {
+public class PenaltyNode extends AbstractNode implements Node, Discardable {
     /**
      * The field <tt>penalty</tt> contains the penalty value of this node.
      */

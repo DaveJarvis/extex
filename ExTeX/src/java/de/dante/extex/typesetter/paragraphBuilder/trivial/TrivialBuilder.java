@@ -30,7 +30,7 @@ import de.dante.extex.interpreter.type.glue.FixedGlue;
 import de.dante.extex.interpreter.type.glue.FixedGlueComponent;
 import de.dante.extex.interpreter.type.glue.Glue;
 import de.dante.extex.main.logging.LogFormatter;
-import de.dante.extex.typesetter.Discartable;
+import de.dante.extex.typesetter.Discardable;
 import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.typesetter.paragraphBuilder.FixedParagraphShape;
 import de.dante.extex.typesetter.paragraphBuilder.HangingParagraphShape;
@@ -296,7 +296,7 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
             final NodeList nodes) {
 
         int i = start;
-        while (i < len && nodes.get(i) instanceof Discartable) {
+        while (i < len && nodes.get(i) instanceof Discardable) {
             i++;
         }
         return i;
@@ -329,7 +329,7 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
         int len = nodes.size();
         int i = start;
 
-        while (i < len && nodes.get(i) instanceof Discartable) {
+        while (i < len && nodes.get(i) instanceof Discardable) {
             nodes.get(i).addWidthTo(width);
             i++;
         }
@@ -341,7 +341,7 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
                 //node.addWidthTo(width);
                 //continue;
             } else if (node instanceof GlueNode
-                    && !(nodes.get(i - 1) instanceof Discartable)) {
+                    && !(nodes.get(i - 1) instanceof Discardable)) {
 
                 return i;
             } else if (node instanceof KernNode && !math
