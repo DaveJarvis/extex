@@ -408,7 +408,7 @@ public interface TokenSource {
      * <pre class="syntax">
      *   &lang;8-bit number&rang; </pre>
      * <p>
-     *  A number consists of a non-empty sequence of digits with catcode
+     *  A number consists of a non-empty sequence of digits with category code
      *  {@link de.dante.extex.scanner.type.Catcode#OTHER OTHER}.
      *  The check for a maximal value of 255 is not performed in ExTeX.
      * </p>
