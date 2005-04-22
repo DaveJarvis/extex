@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -54,7 +54,7 @@ public interface DocumentWriterOptions {
     /**
      * Getter for the magnification of the document.
      *
-     * @return the magnifactikon in sp.
+     * @return the magnification in scaled points.
      */
     long getMagnification();
 
