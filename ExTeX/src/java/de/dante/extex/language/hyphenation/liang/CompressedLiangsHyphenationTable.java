@@ -26,7 +26,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 /**
- * This class implements Liangs algorithm for hyphenation with a compressed
+ * This class implements Liang's algorithm for hyphenation with a compressed
  * hyphenation tree. Th hyphenation tree is compressed when the object is
  * serialized. Afterwards no more patterns can be added.
  *
