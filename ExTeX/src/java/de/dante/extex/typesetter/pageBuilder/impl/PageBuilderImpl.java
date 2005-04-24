@@ -22,7 +22,6 @@ package de.dante.extex.typesetter.pageBuilder.impl;
 import java.io.IOException;
 
 import de.dante.extex.documentWriter.DocumentWriter;
-import de.dante.extex.interpreter.Interpreter;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.typesetter.OutputRoutine;
