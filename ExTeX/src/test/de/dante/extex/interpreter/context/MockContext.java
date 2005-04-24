@@ -171,7 +171,7 @@ public class MockContext implements Context, TypesetterOptions {
      */
     public Code getCode(final CodeToken t) throws InterpreterException {
 
-        throw new RuntimeException("unimplemented");
+        return null;
     }
 
     /**
