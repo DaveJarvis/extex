@@ -318,7 +318,7 @@ public class ContextImpl
 
     /**
      * @see de.dante.extex.interpreter.context.Context#afterGroup(
-     *      de.dante.extex.scanner.Token)
+     *      de.dante.extex.scanner.type.Token)
      */
     public void afterGroup(final Token t) {
 
@@ -431,7 +431,7 @@ public class ContextImpl
 
     /**
      * @see de.dante.extex.interpreter.context.Context#esc(
-     *      de.dante.extex.scanner.Token)
+     *      de.dante.extex.scanner.type.Token)
      */
     public String esc(final Token token) {
 
@@ -1087,7 +1087,7 @@ public class ContextImpl
 
     /**
      * @see de.dante.extex.interpreter.context.Context#setAfterassignment(
-     *      de.dante.extex.scanner.Token)
+     *      de.dante.extex.scanner.type.Token)
      */
     public void setAfterassignment(final Token token) {
 
@@ -1398,7 +1398,7 @@ public class ContextImpl
      * @param factory the new value of the factory
      *
      * @see de.dante.extex.interpreter.context.Context#setTokenFactory(
-     *      de.dante.extex.scanner.TokenFactory)
+     *      de.dante.extex.scanner.type.TokenFactory)
      */
     public void setTokenFactory(final TokenFactory factory) {
 

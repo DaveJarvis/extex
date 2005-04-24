@@ -41,7 +41,7 @@ import de.dante.extex.typesetter.Typesetter;
  *  <pre class="syntax">
  *    &lang;meaning&rang;
  *      &rarr; <tt>\meaning</tt> {@linkplain
- *        de.dante.extex.interpreter.TokenSource#getToken()
+ *        de.dante.extex.interpreter.TokenSource#getToken(Context)
  *        &lang;token&rang;} </pre>
  * </p>
  * <p>

@@ -51,7 +51,7 @@ import de.dante.extex.typesetter.Typesetter;
  *      &rarr; <tt>\count</tt> {@linkplain
  *        de.dante.extex.interpreter.TokenSource#scanNumber()
  *        &lang;8-bit&nbsp;number&rang;} {@linkplain
- *        de.dante.extex.interpreter.TokenSource#getOptionalEquals()
+ *        de.dante.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
  *        de.dante.extex.interpreter.TokenSource#scanInteger(Context)
  *        &lang;number&rang;}</pre>

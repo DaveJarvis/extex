@@ -55,7 +55,7 @@ public abstract class AbstractKernNode extends AbstractNode implements KernNode 
 
     /**
      * @see de.dante.extex.typesetter.type.Node#visit(
-     *      de.dante.extex.typesetter.NodeVisitor,
+     *      de.dante.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)
      */
     public Object visit(final NodeVisitor visitor, final Object value)

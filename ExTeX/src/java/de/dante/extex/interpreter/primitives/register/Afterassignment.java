@@ -43,7 +43,7 @@ import de.dante.extex.typesetter.Typesetter;
  *  <pre class="syntax">
  *    &lang;afterassignment&rang;
  *      &rarr; <tt>\afterassignment</tt> {@linkplain
- *         de.dante.extex.interpreter.TokenSource#getToken()
+ *         de.dante.extex.interpreter.TokenSource#getToken(Context)
  *         &lang;token&rang;} </pre>
  * </p>
  * <p>

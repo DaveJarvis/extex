@@ -477,9 +477,8 @@ public class MultiDumpDocumentWriter
     }
 
     /**
-     * @throws DocumentWriterException
      * @see de.dante.extex.documentWriter.DocumentWriter#shipout(
-     *      de.dante.extex.typesetter.NodeList)
+     *      de.dante.extex.typesetter.type.NodeList)
      */
     public void shipout(final NodeList nodes) throws DocumentWriterException {
 

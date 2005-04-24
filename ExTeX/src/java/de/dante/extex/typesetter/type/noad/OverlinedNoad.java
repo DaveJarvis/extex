@@ -54,7 +54,7 @@ public class OverlinedNoad extends AbstractNucleusNoad {
     /**
      * @see "TTP [705,734]"
      * @see de.dante.extex.typesetter.type.noad.Noad#typeset(
-     *      de.dante.extex.typesetter.NodeList,
+     *      de.dante.extex.typesetter.type.NodeList,
      *      de.dante.extex.typesetter.type.noad.util.MathContext,
      *      de.dante.extex.typesetter.TypesetterOptions)
      */

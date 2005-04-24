@@ -34,7 +34,6 @@ import de.dante.extex.scanner.type.CatcodeException;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.node.KernNode;
-import de.dante.util.GeneralException;
 
 /**
  * This class provides an implementation for the primitive

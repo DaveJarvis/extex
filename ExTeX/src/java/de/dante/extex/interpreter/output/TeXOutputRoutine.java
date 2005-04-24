@@ -86,7 +86,8 @@ public class TeXOutputRoutine implements OutputRoutine {
 
     /**
      * @see de.dante.extex.typesetter.OutputRoutine#output(
-     *      de.dante.extex.typesetter.type.node.VerticalListNode, DocumentWriter)
+     *      de.dante.extex.typesetter.type.NodeList,
+     *      de.dante.extex.documentWriter.DocumentWriter)
      */
     public void output(final NodeList vlist, final DocumentWriter documentWriter)
             throws GeneralException {

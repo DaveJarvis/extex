@@ -62,9 +62,9 @@ import de.dante.util.GeneralException;
  *      &rarr; <tt>\let</tt> {@linkplain
  *        de.dante.extex.interpreter.TokenSource#getControlSequence(Context)
  *        &lang;control sequence&rang;} {@linkplain
- *      de.dante.extex.interpreter.TokenSource#getOptionalEquals()
+ *      de.dante.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *      &lang;equals&rang;} {@linkplain
- *       de.dante.extex.interpreter.TokenSource#getToken()
+ *       de.dante.extex.interpreter.TokenSource#getToken(Context)
  *       &lang;token&rang;}  </pre>
  * </p>
  * <p>

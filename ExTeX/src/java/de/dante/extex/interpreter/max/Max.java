@@ -377,7 +377,7 @@ public class Max extends Moritz
 
     /**
      * @see de.dante.extex.interpreter.TokenSource#execute(
-     *      de.dante.extex.scanner.Token, Context, Typesetter)
+     *      de.dante.extex.scanner.type.Token, Context, Typesetter)
      */
     public void execute(final Token token, final Context theContext,
             final Typesetter theTypesetter) throws InterpreterException {
@@ -413,7 +413,7 @@ public class Max extends Moritz
 
     /**
      * @see de.dante.extex.interpreter.max.Moritz#expand(
-     *      de.dante.extex.scanner.Token)
+     *      de.dante.extex.scanner.type.Token)
      */
     protected Token expand(final Token token) throws InterpreterException {
 

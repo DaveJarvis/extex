@@ -47,7 +47,7 @@ public class DumpTypesetter extends TypesetterImpl {
 
     /**
      * @see de.dante.extex.typesetter.ListMaker#add(
-     *      de.dante.extex.typesetter.Node)
+     *      de.dante.extex.typesetter.type.Node)
      */
     public void add(final Node node) throws TypesetterException {
 

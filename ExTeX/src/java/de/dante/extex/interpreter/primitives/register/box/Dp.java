@@ -59,7 +59,7 @@ import de.dante.util.GeneralException;
  *      &rarr; &lang;optional prefix&rang; <tt>\dp</tt> {@linkplain
  *        de.dante.extex.interpreter.TokenSource#scanNumber()
  *        &lang;8-bit&nbsp;number&rang;} {@linkplain
- *        de.dante.extex.interpreter.TokenSource#getOptionalEquals()
+ *        de.dante.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
  *        de.dante.extex.interpreter.type.dimen#Dimen(
  *          de.dante.extex.interpreter.context.Context,

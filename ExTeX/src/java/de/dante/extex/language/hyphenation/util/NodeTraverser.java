@@ -343,7 +343,7 @@ public class NodeTraverser implements NodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeVisitor#visitChar(
+     * @see de.dante.extex.typesetter.type.NodeVisitor#visitVirtualChar(
      *      de.dante.extex.typesetter.type.node.VirtualCharNode,
      *      java.lang.Object)
      */

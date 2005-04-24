@@ -40,14 +40,14 @@ import de.dante.extex.typesetter.Typesetter;
  *  <pre class="syntax">
  *    &lang;if&rang;
  *     &rarr; <tt>\if</tt> {@linkplain
- *       de.dante.extex.interpreter.TokenSource#getToken()
+ *       de.dante.extex.interpreter.TokenSource#getToken(Context)
  *       &lang;token<sub>1</sub>&rang;} {@linkplain
- *       de.dante.extex.interpreter.TokenSource#getToken()
+ *       de.dante.extex.interpreter.TokenSource#getToken(Context)
  *       &lang;token<sub>2</sub>&rang;} &lang;true text&rang; <tt>\fi</tt>
  *     | <tt>\if</tt> {@linkplain
- *       de.dante.extex.interpreter.TokenSource#getToken()
+ *       de.dante.extex.interpreter.TokenSource#getToken(Context)
  *       &lang;token<sub>1</sub>&rang;} {@linkplain
- *       de.dante.extex.interpreter.TokenSource#getToken()
+ *       de.dante.extex.interpreter.TokenSource#getToken(Context)
  *       &lang;token<sub>2</sub>&rang;} &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt> </pre>
  * </p>
  * <p>

@@ -92,7 +92,7 @@ public class VerticalListNode extends AbstractNodeList implements NodeList {
 
     /**
      * @see de.dante.extex.typesetter.type.Node#visit(
-     *      de.dante.extex.typesetter.NodeVisitor,
+     *      de.dante.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)
      */
     public Object visit(final NodeVisitor visitor, final Object value)
@@ -103,7 +103,7 @@ public class VerticalListNode extends AbstractNodeList implements NodeList {
 
     /**
      * @see de.dante.extex.typesetter.type.node.AbstractNodeList#updateDimensions(
-     *      de.dante.extex.typesetter.Node)
+     *      de.dante.extex.typesetter.type.Node)
      */
     protected void updateDimensions(final Node node) {
 

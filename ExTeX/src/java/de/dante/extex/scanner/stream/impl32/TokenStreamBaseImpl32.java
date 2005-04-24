@@ -253,7 +253,7 @@ public abstract class TokenStreamBaseImpl32
 
     /**
      * @see de.dante.extex.scanner.stream.impl32.TokenStreamBaseImpl#getNext(
-     *      de.dante.extex.scanner.TokenFactory,de.dante.extex.interpreter.Tokenizer)
+     *      de.dante.extex.scanner.type.TokenFactory,de.dante.extex.interpreter.Tokenizer)
      */
     public Token getNext(final TokenFactory factory, final Tokenizer tokenizer)
             throws ScannerException {

@@ -43,7 +43,7 @@ import de.dante.extex.typesetter.Typesetter;
  *      &rarr; <tt>\futurelet</tt> {@linkplain
  *        de.dante.extex.interpreter.TokenSource#getControlSequence(Context)
  *        &lang;control sequence&rang;} {@linkplain
- *       de.dante.extex.interpreter.TokenSource#getToken()
+ *       de.dante.extex.interpreter.TokenSource#getToken(Context)
  *       &lang;token&rang;} ...  </pre>
  * </p>
  * <p>

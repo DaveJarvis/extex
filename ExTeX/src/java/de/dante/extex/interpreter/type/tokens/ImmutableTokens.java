@@ -43,7 +43,7 @@ public class ImmutableTokens extends Tokens {
 
     /**
      * @see de.dante.extex.interpreter.type.tokens.Tokens#add(
-     *      de.dante.extex.scanner.Token)
+     *      de.dante.extex.scanner.type.Token)
      */
     public void add(final Token t) {
 

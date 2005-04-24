@@ -167,9 +167,10 @@ public class BaseHyphenationTable implements ModifiableLanguage {
     }
 
     /**
-     * @see de.dante.extex.language.Language#hyphenate(
-     *      de.dante.extex.interpreter.type.node.HorizontalListNode,
-     *      de.dante.extex.interpreter.context.Context, UnicodeChar)
+     * @see de.dante.extex.language.hyphenation.Hyphenator#hyphenate(
+     *      de.dante.extex.typesetter.type.node.HorizontalListNode,
+     *      de.dante.extex.typesetter.TypesetterOptions,
+     *      de.dante.util.UnicodeChar)
      */
     public HorizontalListNode hyphenate(final HorizontalListNode nodelist,
             final TypesetterOptions context, final UnicodeChar hyphen)

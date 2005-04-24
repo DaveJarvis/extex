@@ -86,7 +86,7 @@ public class SpaceToken extends AbstractToken implements Token {
 
     /**
      * @see de.dante.extex.scanner.type.Token#visit(
-     *      de.dante.extex.scanner.TokenVisitor,
+     *      de.dante.extex.scanner.type.TokenVisitor,
      *      java.lang.Object)
      */
     public Object visit(final TokenVisitor visitor, final Object arg1)

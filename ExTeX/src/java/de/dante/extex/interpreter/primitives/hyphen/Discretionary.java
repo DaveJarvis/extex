@@ -148,8 +148,7 @@ public class Discretionary extends AbstractCode {
          */
         public ListMaker pop() throws TypesetterException {
 
-            // TODO gene: pop unimplemented
-            return null;
+            throw new RuntimeException("unimplemented");
         }
 
         /**
@@ -158,7 +157,7 @@ public class Discretionary extends AbstractCode {
          */
         public void push(final ListMaker listMaker) throws TypesetterException {
 
-            // TODO gene: push unimplemented
+            throw new RuntimeException("unimplemented");
         }
     }
 

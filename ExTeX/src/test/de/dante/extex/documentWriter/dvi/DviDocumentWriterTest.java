@@ -129,7 +129,7 @@ public class DviDocumentWriterTest extends TestCase {
      * NoOutputStreamException},
      * if there is no OutputStream set before {@link
      *   de.dante.extex.documentWriter.DocumentWriter#shipout(
-     *   de.dante.extex.typesetter.NodeList) shipout()}.
+     *   de.dante.extex.typesetter.type.NodeList) shipout()}.
      *
      * @exception Exception if an error occurs
      */

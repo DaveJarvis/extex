@@ -52,7 +52,7 @@ public class LigatureBuilderImpl implements LigatureBuilder {
 
     /**
      * @see de.dante.extex.language.ligature.LigatureBuilder#insertLigatures(
-     *      de.dante.extex.typesetter.NodeList, int)
+     *      de.dante.extex.typesetter.type.NodeList, int)
      */
     public int insertLigatures(final NodeList list, final int start)
             throws HyphenationException {

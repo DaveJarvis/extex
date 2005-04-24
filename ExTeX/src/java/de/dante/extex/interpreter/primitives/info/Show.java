@@ -49,7 +49,7 @@ import de.dante.util.framework.logger.LogEnabled;
  *  <pre class="syntax">
  *    &lang;show&rang;
  *       &rarr; <tt>\show</tt> {@linkplain
- *           de.dante.extex.interpreter.TokenSource#getToken()
+ *           de.dante.extex.interpreter.TokenSource#getToken(Context)
  *           &lang;token&rang;} </pre>
  * </p>
  * <p>

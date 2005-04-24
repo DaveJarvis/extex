@@ -462,7 +462,7 @@ public class DumpDocumentWriter
     }
 
     /**
-     * @see de.dante.extex.documentWriter.DocumentWriter#setOutputStream(
+     * @see de.dante.extex.documentWriter.SingleDocumentStream#setOutputStream(
      *      java.io.OutputStream)
      */
     public void setOutputStream(final OutputStream outStream) {
@@ -480,7 +480,7 @@ public class DumpDocumentWriter
 
     /**
      * @see de.dante.extex.documentWriter.DocumentWriter#shipout(
-     *      de.dante.extex.typesetter.NodeList)
+     *     de.dante.extex.typesetter.type.NodeList)
      */
     public void shipout(final NodeList nodes) throws DocumentWriterException {
 

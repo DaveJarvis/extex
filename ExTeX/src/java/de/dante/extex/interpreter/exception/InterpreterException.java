@@ -66,7 +66,7 @@ public class InterpreterException extends GeneralException {
     /**
      * Creates a new object.
      *
-     * @param cause the root of all evil
+     * @param localizer the localizer
      */
     public InterpreterException(final Localizer localizer) {
 
