@@ -343,7 +343,7 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
     /**
      * @see de.dante.extex.typesetter.ListMaker#tab(
      *      Context,
-     *      TokenSource, de.dante.extex.scanner.Token)
+     *      TokenSource, de.dante.extex.scanner.type.Token)
      */
     public void tab(final Context context, final TokenSource source,
             final Token token) throws TypesetterException {

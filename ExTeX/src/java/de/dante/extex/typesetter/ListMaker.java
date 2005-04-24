@@ -75,6 +75,13 @@ public interface ListMaker {
             throws TypesetterException;
 
     /**
+     * TODO gene: missing JavaDoc
+     *
+     * @param observer ...
+     */
+    void afterParagraph(ParagraphObserver observer);
+
+    /**
      * Close the node list. This means that everything is done to ship the
      * closed node list to the document writer. Nevertheless the invoking
      * application might decide not to modify the node list and continue

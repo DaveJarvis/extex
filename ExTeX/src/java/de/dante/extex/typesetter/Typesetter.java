@@ -98,7 +98,8 @@ public interface Typesetter extends ListMaker {
      * box.
      *
      * @param listMaker the list maker
-     * @throws TypesetterException TODO
+     *
+     * @throws TypesetterException in case of an error
      */
     void push(ListMaker listMaker) throws TypesetterException;
 

@@ -98,7 +98,7 @@ public abstract class AbstractListMaker implements ListMaker {
 
     /**
      * @see de.dante.extex.typesetter.ListMaker#mathShift(
-     *      Context, TokenSource, de.dante.extex.scanner.Token)
+     *      Context, TokenSource, de.dante.extex.scanner.type.Token)
      */
     public void mathShift(final Context context, final TokenSource source,
             final Token t) throws TypesetterException {
@@ -147,7 +147,7 @@ public abstract class AbstractListMaker implements ListMaker {
      * @see de.dante.extex.typesetter.ListMaker#subscriptMark(
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource,
-     *      de.dante.extex.scanner.Token)
+     *      de.dante.extex.scanner.type.Token)
      */
     public void subscriptMark(final Context context, final TokenSource source,
             final Token token) throws TypesetterException {
@@ -159,7 +159,7 @@ public abstract class AbstractListMaker implements ListMaker {
      * @see de.dante.extex.typesetter.ListMaker#superscriptMark(
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource,
-     *      de.dante.extex.scanner.Token)
+     *      de.dante.extex.scanner.type.Token)
      */
     public void superscriptMark(final Context context,
             final TokenSource source, final Token token)
@@ -172,7 +172,7 @@ public abstract class AbstractListMaker implements ListMaker {
      * @see de.dante.extex.typesetter.ListMaker#tab(
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource,
-     *      de.dante.extex.scanner.Token)
+     *      de.dante.extex.scanner.type.Token)
      */
     public void tab(final Context context, final TokenSource source,
             final Token token) throws TypesetterException {
