@@ -75,9 +75,9 @@ public interface ListMaker {
             throws TypesetterException;
 
     /**
-     * TODO gene: missing JavaDoc
+     * Register an observer to be invoked at the end of the paragraph.
      *
-     * @param observer ...
+     * @param observer the observer to register
      */
     void afterParagraph(ParagraphObserver observer);
 
