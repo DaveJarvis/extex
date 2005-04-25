@@ -484,7 +484,7 @@ public class ParagraphBuilderImpl
      * @param breakPoint the list of possible break points
      * @param line the starting line number
      * @param threshold the threshold for the penalties of a single line
-     * @param depth TODO gene: doc
+     * @param depth ...
      * @param pointIndex the index of the point
      * @param leftskip the skip for the left side
      * @param rightskip the skip for the right side
