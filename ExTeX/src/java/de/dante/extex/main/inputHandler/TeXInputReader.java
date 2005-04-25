@@ -114,16 +114,16 @@ public class TeXInputReader extends Reader {
     /**
      * @see java.io.Reader#read(char[], int, int)
      */
-    public int read(final char[] arg0, final int arg1, final int arg2)
+    public int read(final char[] buffer, final int startIndex, final int arg2)
             throws IOException {
 
         if (showPrompt) {
             logger.severe(prompt);
             showPrompt = false;
         }
-        int ret = reader.read(arg0, arg1, arg2);
+        int ret = reader.read(buffer, startIndex, arg2);
         for (int i = 0; i < ret; i++) {
-            char c = arg0[arg1 + i];
+            char c = buffer[startIndex + i];
             logger.fine(Character.toString(c));
             if (c == '\n') {
                 showPrompt = true;
@@ -151,7 +151,7 @@ public class TeXInputReader extends Reader {
     /**
      * @see java.io.Reader#skip(long)
      */
-    public long skip(long arg0) throws IOException {
+    public long skip(final long arg0) throws IOException {
 
         return this.reader.skip(arg0);
     }
