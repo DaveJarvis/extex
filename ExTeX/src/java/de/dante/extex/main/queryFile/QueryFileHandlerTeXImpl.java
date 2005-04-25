@@ -54,10 +54,10 @@ public class QueryFileHandlerTeXImpl implements QueryFileHandler {
                 .getLocalizer(QueryFileHandlerTeXImpl.class.getName());
         String file;
         try {
-            file = promptAndReadLine(localizer, logger, "CLI.PromptFile");
+            file = promptAndReadLine(localizer, logger, "TTP.PromptFile");
 
             while (file == null || "".equals(file)) {
-                file = promptAndReadLine(localizer, logger, "TTP.Prompt2");
+                file = promptAndReadLine(localizer, logger, "TTP.PromptFile2");
             }
 
         } catch (HelpingException e) {
