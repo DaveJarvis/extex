@@ -97,7 +97,7 @@ public class NodeNoad implements Noad {
      */
     public void toString(final StringBuffer sb, final int depth) {
 
-        node.toString(sb, ""); //TODO gene: toString() incomplete
+        node.toString(sb, "");
     }
 
     /**
