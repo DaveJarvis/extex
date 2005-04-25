@@ -98,6 +98,23 @@ public interface Localizer extends Serializable {
     String format(String fmt, Object a, Object b, Object c, Object d);
 
     /**
+     * Apply the given argument to the format string stored in the resource
+     * bundle under the given key. The argument object's value of toString()
+     * replaces the substring <tt>'{0}'</tt>,<tt>'{1}'</tt>,<tt>'{2}'</tt>,
+     * and <tt>'{3}'</tt> in the format.
+     *
+     * @param fmt the key in the resource bundle to search for
+     * @param a the Object used for the substring <tt>{0}</tt>
+     * @param b the Object used for the substring <tt>{1}</tt>
+     * @param c the Object used for the substring <tt>{2}</tt>
+     * @param d the Object used for the substring <tt>{3}</tt>
+     * @param e the Object used for the substring <tt>{4}</tt>
+     *
+     * @return the expanded format string
+     */
+    String format(String fmt, Object a, Object b, Object c, Object d, Object e);
+
+    /**
      * Getter for the value of a format string associated to a given key.
      *
      * @param key the key in the resource bundle to search for
