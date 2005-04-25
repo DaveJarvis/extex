@@ -24,6 +24,7 @@ import java.util.List;
 
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.context.TypesettingContext;
+import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.interpreter.type.glue.FixedGlue;
 import de.dante.extex.interpreter.type.glue.Glue;
@@ -250,11 +251,15 @@ public class HorizontalListMaker extends AbstractListMaker {
      */
     public void par() throws TypesetterException {
 
-        // Note: the observers have to be runn in reverse order to restore
-        // the language properly.
-        for (int i = afterParagraphObservers.size() - 1; i >= 0; i--) {
-            ((ParagraphObserver) afterParagraphObservers.get(i))
-                    .atParagraph(nodes);
+        try {
+            // Note: the observers have to be run in reverse order to restore
+            // the language properly.
+            for (int i = afterParagraphObservers.size() - 1; i >= 0; i--) {
+                ((ParagraphObserver) afterParagraphObservers.get(i))
+                        .atParagraph(nodes);
+            }
+        } catch (InterpreterException e) {
+            throw new TypesetterException(e);
         }
         getManager().endParagraph();
     }
