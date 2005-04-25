@@ -27,6 +27,7 @@ import de.dante.extex.interpreter.exception.helping.HelpingException;
 import de.dante.extex.interpreter.primitives.register.box.AbstractBox;
 import de.dante.extex.interpreter.type.box.Box;
 import de.dante.extex.typesetter.Typesetter;
+import de.dante.extex.typesetter.type.node.InsertionNode;
 
 /**
  * This class provides an implementation for the primitive
@@ -82,8 +83,7 @@ public class Insert extends AbstractBox {
         long index = source.scanNumber(context);
         Box b = new Box(context, source, typesetter, false, null);
 
-        //TODO gene: execute() unimplemented
-        throw new RuntimeException("unimplemented");
+        typesetter.add(new InsertionNode(index, b.getNodes()));
     }
 
 }
