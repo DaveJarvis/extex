@@ -27,9 +27,10 @@ import java.io.Serializable;
 
 /**
  * This class provides a type-save enumeration of the interactions styles of
- * ExTeX. It provides constants for the supported interaction modes.
- * In addition it supports the visitor pattern to react on them.
+ * <logo>ExTeX</logo>. It provides constants for the supported interaction
+ * modes. In addition it supports the visitor pattern to react on them.
  *
+ * @see "TeX -- The Program [73]"
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -57,6 +58,7 @@ public abstract class Interaction implements Serializable {
         }
 
         /**
+         * @see "TeX -- The Program [73]"
          * @see de.dante.extex.interpreter.Interaction#getIndex()
          */
         public String getIndex() {
@@ -100,6 +102,7 @@ public abstract class Interaction implements Serializable {
         }
 
         /**
+         * @see "TeX -- The Program [73]"
          * @see de.dante.extex.interpreter.Interaction#getIndex()
          */
         public String getIndex() {
@@ -143,6 +146,7 @@ public abstract class Interaction implements Serializable {
         }
 
         /**
+         * @see "TeX -- The Program [73]"
          * @see de.dante.extex.interpreter.Interaction#getIndex()
          */
         public String getIndex() {
@@ -186,6 +190,7 @@ public abstract class Interaction implements Serializable {
         }
 
         /**
+         * @see "TeX -- The Program [73]"
          * @see de.dante.extex.interpreter.Interaction#getIndex()
          */
         public String getIndex() {
@@ -232,6 +237,8 @@ public abstract class Interaction implements Serializable {
     /**
      * The field <tt>MODE_MAP</tt> contains the list for mapping integers to
      * modes.
+     *
+     * @see "TeX -- The Program [73]"
      */
     private static final Interaction[] MODE_MAP = //
     {BATCHMODE, NONSTOPMODE, SCROLLMODE, ERRORSTOPMODE};
