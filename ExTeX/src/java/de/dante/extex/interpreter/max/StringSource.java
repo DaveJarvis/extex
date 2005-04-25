@@ -77,7 +77,7 @@ public class StringSource extends Moritz {
      */
     public void executeGroup() throws InterpreterException {
 
-        // TODO gene: unimplemented
+        // TODO gene: executeGroup() unimplemented
         throw new RuntimeException("unimplemented");
     }
 
@@ -88,7 +88,7 @@ public class StringSource extends Moritz {
     public void execute(final Token token, final Context context,
             final Typesetter typesetter) throws InterpreterException {
 
-        // TODO gene: unimplemented
+        // TODO gene: execute() unimplemented
         throw new RuntimeException("unimplemented");
     }
 
