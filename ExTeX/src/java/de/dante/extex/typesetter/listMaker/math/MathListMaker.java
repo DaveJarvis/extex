@@ -396,7 +396,9 @@ public class MathListMaker extends AbstractListMaker implements NoadConsumer {
 
     /**
      * Emitting a new paragraph is not supported in math mode.
-     * Thus an exception is thrwon.
+     * Thus an exception is thrown.
+     *
+     * @throws TypesetterException in case of an error
      *
      * @see de.dante.extex.typesetter.ListMaker#par()
      * @see "TeX -- The Program [1047]"
@@ -405,7 +407,6 @@ public class MathListMaker extends AbstractListMaker implements NoadConsumer {
 
         getManager().endParagraph();
         throw new TypesetterException(new MissingMathException("\\par"));
-        //TODO gene: other string?
     }
 
     /**
