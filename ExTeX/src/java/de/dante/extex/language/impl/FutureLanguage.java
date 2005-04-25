@@ -123,7 +123,7 @@ public class FutureLanguage implements Language {
     /**
      * @see de.dante.extex.language.hyphenation.Hyphenator#hyphenate(
      *      de.dante.extex.typesetter.type.node.HorizontalListNode,
-     *      de.dante.extex.interpreter.context.Context,
+     *      de.dante.extex.typesetter.TypesetterOptions,
      *      de.dante.util.UnicodeChar)
      */
     public HorizontalListNode hyphenate(final HorizontalListNode nodelist,
