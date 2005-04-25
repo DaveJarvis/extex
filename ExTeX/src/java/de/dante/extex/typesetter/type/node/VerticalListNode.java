@@ -66,7 +66,7 @@ public class VerticalListNode extends AbstractNodeList implements NodeList {
      */
     public void spread(final FixedDimen size) {
 
-        //TODO gene: unimplemented
+        //TODO gene: spread() unimplemented
         throw new RuntimeException("unimplemented");
     }
 

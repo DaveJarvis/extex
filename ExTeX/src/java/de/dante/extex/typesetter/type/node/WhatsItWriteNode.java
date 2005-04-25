@@ -66,7 +66,7 @@ public class WhatsItWriteNode extends WhatsItNode {
     }
 
     /**
-     * This method performs any action which are required to be executed at the
+     * This method performs any actions which are required to be executed at the
      * time of shipping the node to the DocumentWriter. In the case od this node
      * this means that the tokens are expanded and written to an output writer.
      *

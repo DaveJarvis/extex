@@ -55,7 +55,8 @@ public class ExplicitKernNode extends AbstractKernNode implements Discardable {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#toString(java.lang.StringBuffer,
+     * @see de.dante.extex.typesetter.type.Node#toString(
+     *      java.lang.StringBuffer,
      *      java.lang.String)
      */
     public void toString(final StringBuffer sb, final String prefix) {
@@ -72,9 +73,10 @@ public class ExplicitKernNode extends AbstractKernNode implements Discardable {
      * @param sb the output string buffer
      * @param prefix the prefix string inserted at the beginning of each line
      *
-     * @see de.dante.extex.typesetter.type.Node#toText(java.lang.StringBuffer,
-     *      java.lang.String)
      * @see "TeX -- The Program [191]"
+     * @see de.dante.extex.typesetter.type.Node#toText(
+     *      java.lang.StringBuffer,
+     *      java.lang.String)
      */
     public void toText(final StringBuffer sb, final String prefix) {
 

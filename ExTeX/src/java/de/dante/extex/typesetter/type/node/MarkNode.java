@@ -37,6 +37,7 @@ import de.dante.util.GeneralException;
  * @version $Revision$
  */
 public class MarkNode extends AbstractNode implements Node {
+
     /**
      * The field <tt>index</tt> contains the index of the mark node for eTeX.
      * The index 0 corresponds to the original mark of TeX.
@@ -87,33 +88,27 @@ public class MarkNode extends AbstractNode implements Node {
      * This is meant to produce a exhaustive form as it is used in tracing
      * output to the log file.
      *
-     * @return the printable representation
+     * @param sb the output string buffer
+     * @param prefix the prefix string inserted at the beginning of each line
      *
      * @see "TeX -- The Program [196]"
-     */
-    public String toString() {
-
-        StringBuffer sb = new StringBuffer();
-        toString(sb, "");
-        return sb.toString();
-    }
-
-    /**
-     * @see de.dante.extex.typesetter.type.Node#toString(java.lang.StringBuffer,
+     * @see de.dante.extex.typesetter.type.Node#toString(
+     *      java.lang.StringBuffer,
      *      java.lang.String)
      */
     public void toString(final StringBuffer sb, final String prefix) {
 
-        sb.append(getLocalizer().format("MarkNode.Text", mark.toString()));
+        sb.append(getLocalizer().format("String.Format", mark.toString()));
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#toText(java.lang.StringBuffer, java.lang.String)
+     * @see de.dante.extex.typesetter.type.Node#toText(
+     *      java.lang.StringBuffer,
+     *      java.lang.String)
      */
-    public void toText(StringBuffer sb, String prefix) {
+    public void toText(final StringBuffer sb, final String prefix) {
 
-        // TODO gene: toText unimplemented
-
+        sb.append(getLocalizer().format("Text.Format", mark.toString()));
     }
 
     /**
@@ -128,4 +123,3 @@ public class MarkNode extends AbstractNode implements Node {
     }
 
 }
-
