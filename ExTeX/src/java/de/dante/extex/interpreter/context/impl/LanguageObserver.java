@@ -31,7 +31,7 @@ import de.dante.util.configuration.ConfigurationException;
  * with the registers <tt>\language</tt> and <tt>\lang</tt>.
  * <p>
  *  The toks register <tt>\lang</tt> is considered first. Only if this register
- *  is not set or it is empty then the cont register <tt>\language</tt> is
+ *  is not set or it is empty then the count register <tt>\language</tt> is
  *  taken into accout.
  * </p>
  *
@@ -50,7 +50,7 @@ public class LanguageObserver implements CountObserver, TokensObserver {
 
     /**
      * @see de.dante.extex.interpreter.context.observer.CountObserver#receiveCountChange(
-     *      de.dante.extex.interpreter.context.Context,
+     *      de.dante.extex.interpreter.context.ContextInternals,
      *      java.lang.String,
      *      de.dante.extex.interpreter.type.count.Count)
      */
@@ -68,7 +68,7 @@ public class LanguageObserver implements CountObserver, TokensObserver {
 
     /**
      * @see de.dante.extex.interpreter.context.observer.TokensObserver#receiveTokensChange(
-     *      de.dante.extex.interpreter.context.Context,
+     *      de.dante.extex.interpreter.context.ContextInternals,
      *      java.lang.String,
      *      de.dante.extex.interpreter.type.tokens.Tokens)
      */
