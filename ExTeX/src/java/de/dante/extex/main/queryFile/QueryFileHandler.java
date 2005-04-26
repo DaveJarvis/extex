@@ -33,6 +33,8 @@ public interface QueryFileHandler {
     /**
      * Query the name of a input file.
      *
+     * @param logger the logger stream for output messages
+     *
      * @return the file name or <code>null</code> if none has been given
      */
     String query(Logger logger);
