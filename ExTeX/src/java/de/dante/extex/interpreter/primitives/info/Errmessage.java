@@ -33,13 +33,16 @@ import de.dante.extex.typesetter.Typesetter;
  * <doc name="errmessage">
  * <h3>The Primitive <tt>\errmessage</tt></h3>
  * <p>
- *  TODO missing documentation
+ *  The primitive <tt>\errmessage</tt> takes one argument. This argument is an
+ *  expanded list of tokens. Those tokens are presented as error message
  * </p>
  * <p>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;eqno&rang;
- *       &rarr; <tt>\errmessage ...</tt>  </pre>
+ *       &rarr; <tt>\errmessage {@linkplain
+ *        de.dante.extex.interpreter.TokenSource#scanTokens(Context)
+ *        &lang;tokens&rang;}</tt>  </pre>
  * </p>
  * <p>
  *  Examples:
@@ -65,7 +68,8 @@ public class Errmessage extends AbstractCode {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.Code#execute(de.dante.extex.interpreter.Flags,
+     * @see de.dante.extex.interpreter.type.Code#execute(
+     *      de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
