@@ -42,7 +42,7 @@
  '(jde-db-read-app-args t)
 
  ;; run
- '(jde-run-application-class "de.dante.extex.ExTeX")
+ '(jde-run-application-class "de.dante.extex.main.TeX")
  '(jde-run-working-directory ".")
  '(jde-run-read-app-args t)
 
