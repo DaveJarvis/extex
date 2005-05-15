@@ -88,7 +88,6 @@ public class TypesetterFactory extends AbstractFactory {
         PageBuilder pageBuilder = (PageBuilder) createInstanceForConfiguration(
                 cfg, PageBuilder.class);
         pageBuilder.setContext(context);
-        //TODO gene: pageBuilder.setTypesetter(typesetter);
         return pageBuilder;
     }
 
