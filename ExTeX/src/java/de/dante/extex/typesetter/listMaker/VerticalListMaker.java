@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2005 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -111,6 +111,17 @@ public class VerticalListMaker extends AbstractListMaker {
             throws TypesetterException {
 
         return nodes;
+    }
+
+    /**
+     * @see de.dante.extex.typesetter.ListMaker#cr(
+     *      de.dante.extex.interpreter.context.Context,
+     *      de.dante.extex.interpreter.context.TypesettingContext,
+     *      de.dante.util.UnicodeChar)
+     */
+    public void cr(final Context context, final TypesettingContext tc,
+            final UnicodeChar uc) throws TypesetterException {
+
     }
 
     /**

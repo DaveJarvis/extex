@@ -99,6 +99,18 @@ public interface ListMaker {
     NodeList complete(TypesetterOptions context) throws TypesetterException;
 
     /**
+     * Process a carriage return.
+     *
+     * @param context the interpreter context
+     * @param tc the typesetting context
+     * @param uc the character
+     *
+     * @throws TypesetterException in case of an error
+     */
+    void cr(Context context, TypesettingContext tc, UnicodeChar uc)
+            throws TypesetterException;
+
+    /**
      * Access the last node on the list.
      *
      * @return the last node in the current list or <code>null</code> if the

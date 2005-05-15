@@ -277,6 +277,17 @@ public class MathListMaker extends AbstractListMaker implements NoadConsumer {
     }
 
     /**
+     * @see de.dante.extex.typesetter.ListMaker#cr(
+     *      de.dante.extex.interpreter.context.Context,
+     *      de.dante.extex.interpreter.context.TypesettingContext,
+     *      de.dante.util.UnicodeChar)
+     */
+    public void cr(final Context context, final TypesettingContext tc,
+            final UnicodeChar uc) throws TypesetterException {
+
+    }
+
+    /**
      * Getter for the contents of the insertion point. If the insertion point
      * does not contain an element then <code>null</code> is returned. If it
      * contains only one element then this element is returned. Otherwiese the
