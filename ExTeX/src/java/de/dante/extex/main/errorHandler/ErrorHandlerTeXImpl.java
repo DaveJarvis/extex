@@ -47,7 +47,7 @@ public class ErrorHandlerTeXImpl extends ErrorHandlerImpl {
     protected void showErrorLine(final Logger logger, final String message,
             final Locator locator) {
 
-        String file = locator.getFilename();
+        String file = locator.getResourceName();
         String line = locator.getLine();
         int pointer = locator.getLinePointer();
         StringBuffer sb = new StringBuffer();
