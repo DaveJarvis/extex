@@ -148,7 +148,7 @@ public class Write extends AbstractCode
             Tokens toks = source.getTokens(context);
 
             try {
-                typesetter.add(new WhatsItWriteNode(key, toks, this));
+                typesetter.add(new WhatsItWriteNode(key, toks, source, this));
             } catch (TypesetterException e) {
                 throw new InterpreterException(e);
             }
