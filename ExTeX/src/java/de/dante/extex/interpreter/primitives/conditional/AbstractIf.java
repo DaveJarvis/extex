@@ -140,7 +140,8 @@ public abstract class AbstractIf extends AbstractCode implements ExpandableCode 
 
         if (conditional(context, source, typesetter)
                 || skipToElseOrFi(context, source)) {
-            context.pushConditional(source.getLocator(), true);
+            context.pushConditional(source.getLocator(), true,
+                    printableControlSequence(context));
         }
     }
 
@@ -153,11 +154,12 @@ public abstract class AbstractIf extends AbstractCode implements ExpandableCode 
      */
     public void expand(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-    throws InterpreterException {
+            throws InterpreterException {
 
         if (conditional(context, source, typesetter)
                 || skipToElseOrFi(context, source)) {
-            context.pushConditional(source.getLocator(), true);
+            context.pushConditional(source.getLocator(), true,
+                    printableControlSequence(context));
         }
     }
 

@@ -99,18 +99,6 @@ public interface Context
     char escapechar();
 
     /**
-     * Expand some tokens.
-     *
-     * @param tokens the tokens to expand
-     * @param typesetter the typesetter to use
-     *
-     * @return the expanded tokens
-     *
-     * @throws GeneralException in case of an error
-     */
-    Tokens expand(Tokens tokens, Typesetter typesetter) throws GeneralException;
-
-    /**
      * Getter for the afterassignment token.
      *
      * @return the afterassignment token.
@@ -276,11 +264,11 @@ public interface Context
 
     /**
      * Put a value onto the conditional stack.
-     *
      * @param locator the locator for the start of the if statement
      * @param value the value to push
+     * @param primitive TODO
      */
-    void pushConditional(Locator locator, boolean value);
+    void pushConditional(Locator locator, boolean value, String primitive);
 
     /**
      * Setter for the afterassignment token.

@@ -89,7 +89,8 @@ public class Ifcase extends AbstractIf {
         long val = source.scanInteger(context);
         if (val < 0) {
             if (skipToElseOrFi(context, source)) {
-                context.pushConditional(source.getLocator(), true);
+                context.pushConditional(source.getLocator(), true,
+                        printableControlSequence(context));
             }
             return;
         }
@@ -99,7 +100,8 @@ public class Ifcase extends AbstractIf {
             if (tag == OR) {
                 val--;
             } else if (tag == ELSE) {
-                context.pushConditional(source.getLocator(), true);
+                context.pushConditional(source.getLocator(), true,
+                        printableControlSequence(context));
                 return;
 
             } else if (tag == FI) {
@@ -110,7 +112,8 @@ public class Ifcase extends AbstractIf {
 
             }
         }
-        context.pushConditional(source.getLocator(), true);
+        context.pushConditional(source.getLocator(), true,
+                printableControlSequence(context));
     }
 
     /**
