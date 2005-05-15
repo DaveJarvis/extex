@@ -67,7 +67,7 @@ public class ResourceFinderImpl
      *
      * @param theConfiguration the configuration to use
      *
-     * @throws ConfigurationException in case of an errorin the configuration
+     * @throws ConfigurationException in case of an error in the configuration
      */
     public ResourceFinderImpl(final Configuration theConfiguration)
             throws ConfigurationException {
