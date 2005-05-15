@@ -23,6 +23,7 @@ import java.io.Serializable;
 
 import de.dante.extex.language.hyphenation.Hyphenator;
 import de.dante.extex.language.ligature.LigatureBuilder;
+import de.dante.extex.language.word.WordTokenizer;
 
 /**
  * This interface describes a container for all language-dependant information.
@@ -34,6 +35,11 @@ import de.dante.extex.language.ligature.LigatureBuilder;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface Language extends Hyphenator, LigatureBuilder, Serializable {
+public interface Language
+        extends
+            Hyphenator,
+            LigatureBuilder,
+            WordTokenizer,
+            Serializable {
 
 }

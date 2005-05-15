@@ -152,6 +152,20 @@ public class FutureLanguage implements Language {
     }
 
     /**
+     * @see de.dante.extex.language.word.WordTokenizer#skipNonWord(de.dante.extex.typesetter.type.NodeList, int)
+     */
+    public int skipNonWord(final NodeList list, final int start) throws HyphenationException {
+
+        return load().skipNonWord(list, start);
+    }
+    /**
+     * @see de.dante.extex.language.word.WordTokenizer#skipWord(de.dante.extex.typesetter.type.NodeList, int)
+     */
+    public int skipWord(final NodeList list, final int start) throws HyphenationException {
+
+        return load().skipWord(list, start);
+    }
+    /**
      * Load or create a new instance if required.
      *
      * @return the new instance
