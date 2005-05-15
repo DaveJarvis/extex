@@ -440,9 +440,9 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#pushConditional(de.dante.util.Locator, boolean)
+     * @see de.dante.extex.interpreter.context.Context#pushConditional(de.dante.util.Locator, boolean, String)
      */
-    public void pushConditional(final Locator locator, final boolean value) {
+    public void pushConditional(final Locator locator, final boolean value, String primitive) {
 
         throw new RuntimeException("unimplemented");
     }
