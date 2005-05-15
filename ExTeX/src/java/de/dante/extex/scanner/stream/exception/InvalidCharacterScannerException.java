@@ -31,6 +31,11 @@ import de.dante.util.UnicodeChar;
 public class InvalidCharacterScannerException extends ScannerException {
 
     /**
+     * The field <tt>invalid</tt> contains the invalid character.
+     */
+    private UnicodeChar invalid;
+
+    /**
      * Creates a new object.
      *
      * @param invalid the invalid character
@@ -38,7 +43,7 @@ public class InvalidCharacterScannerException extends ScannerException {
     public InvalidCharacterScannerException(final UnicodeChar invalid) {
 
         super();
-        //TODO gene: incomplete
+        this.invalid = invalid;
     }
 
 }
