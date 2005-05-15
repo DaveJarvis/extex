@@ -137,6 +137,17 @@ public class Max1 extends TestCase {
         }
 
         /**
+         * @see de.dante.extex.typesetter.ListMaker#cr(
+         *      de.dante.extex.interpreter.context.Context,
+         *      de.dante.extex.interpreter.context.TypesettingContext,
+         *      de.dante.util.UnicodeChar)
+         */
+        public void cr(final Context context, final TypesettingContext tc,
+                final UnicodeChar uc) throws TypesetterException {
+
+        }
+
+        /**
          * @see de.dante.extex.typesetter.Typesetter#finish()
          */
         public void finish() {
