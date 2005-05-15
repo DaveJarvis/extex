@@ -83,7 +83,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
          */
         protected void updateDimensions(final Node n) {
 
-            //TODO gene: unimplemented; this should not be needed
+            // This should not be needed
             throw new RuntimeException("unimplemented");
         }
 
