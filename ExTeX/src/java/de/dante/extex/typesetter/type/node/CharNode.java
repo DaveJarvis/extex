@@ -139,6 +139,7 @@ public class CharNode extends AbstractNode implements Node {
     }
 
     /**
+     * @see "TeX -- The Program [174]"
      * @see de.dante.extex.typesetter.type.Node#toString(
      *      java.lang.StringBuffer,
      *      java.lang.String)
@@ -161,6 +162,7 @@ public class CharNode extends AbstractNode implements Node {
     }
 
     /**
+     * @see "TeX -- The Program [174]"
      * @see de.dante.extex.typesetter.type.Node#toText(
      *      java.lang.StringBuffer,
      *      java.lang.String)
