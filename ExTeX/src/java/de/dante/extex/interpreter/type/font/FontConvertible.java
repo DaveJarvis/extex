@@ -28,7 +28,7 @@ import de.dante.extex.interpreter.exception.InterpreterException;
  *
  * <doc type="syntax" name="font">
  * <p>
- *  TODO missing documentation
+ *  TODO gene: missing documentation
  * </p>
  * <p>
  *  The formal description is the following:

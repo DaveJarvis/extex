@@ -128,7 +128,8 @@ public class OutputFactory extends AbstractFactory
     private OutputStream defaultStream = null;
 
     /**
-     * The field <tt>destination</tt> contains the ...
+     * The field <tt>destination</tt> contains the name of the destination. This
+     * is usally the file name &ndash; or at least the base without extension.
      */
     private String destination;
 
