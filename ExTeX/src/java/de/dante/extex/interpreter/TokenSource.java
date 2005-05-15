@@ -31,6 +31,7 @@ import de.dante.extex.scanner.stream.TokenStreamFactory;
 import de.dante.extex.scanner.type.CodeToken;
 import de.dante.extex.scanner.type.Token;
 import de.dante.extex.typesetter.Typesetter;
+import de.dante.util.GeneralException;
 import de.dante.util.Locator;
 import de.dante.util.UnicodeChar;
 import de.dante.util.observer.NotObservableException;
@@ -102,6 +103,18 @@ public interface TokenSource {
      * @throws ErrorLimitException in case that the error limit has been reached
      */
     void executeGroup() throws InterpreterException, ErrorLimitException;
+
+    /**
+     * Expand some tokens.
+     *
+     * @param tokens the tokens to expand
+     * @param typesetter the typesetter to use
+     *
+     * @return the expanded tokens
+     *
+     * @throws GeneralException in case of an error
+     */
+    Tokens expand(Tokens tokens, Typesetter typesetter) throws GeneralException;
 
     /**
      * Parse the specification of a box.

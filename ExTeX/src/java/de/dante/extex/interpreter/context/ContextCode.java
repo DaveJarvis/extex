@@ -39,18 +39,6 @@ import de.dante.util.GeneralException;
 public interface ContextCode {
 
     /**
-     * Expand some tokens.
-     *
-     * @param tokens the tokens to expand
-     * @param typesetter the typesetter to use
-     *
-     * @return the expanded tokens
-     *
-     * @throws GeneralException in case of an error
-     */
-    Tokens expand(Tokens tokens, Typesetter typesetter) throws GeneralException;
-
-    /**
      * Convenience method to get the code assigned to a Token.
      * If the Token is a ControlSequenceToken then the macro is returned.
      * If the Token is a ActiveCharacterToken then the active value is returned.
