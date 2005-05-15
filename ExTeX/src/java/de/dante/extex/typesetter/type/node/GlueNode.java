@@ -74,6 +74,15 @@ public class GlueNode extends AbstractNode implements Node, Discardable {
     }
 
     /**
+     * @see de.dante.extex.typesetter.type.Node#addHeightTo(
+     *      de.dante.extex.interpreter.type.glue.Glue)
+     */
+    public void addHeightTo(final Glue glue) {
+
+        glue.add(this.size);
+    }
+
+    /**
      * Getter for size.
      *
      * @return the size

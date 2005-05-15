@@ -46,6 +46,13 @@ import de.dante.util.GeneralException;
 public interface Node extends Knot {
 
     /**
+     * Add the flexible height of the current node to the given glue.
+     *
+     * @param glue the glue to add to.
+     */
+    void addHeightTo(Glue glue);
+
+    /**
      * Add the flexible width of the current node to the given glue.
      *
      * @param glue the glue to add to.
@@ -161,7 +168,7 @@ public interface Node extends Knot {
      * Adjust the width of a flexible node. This method is a noop for any but
      * the flexible nodes.
      *
-     * @param width the desired with
+     * @param width the desired width
      * @param sum the total sum of the glues
      */
     void spread(FixedDimen width, FixedGlueComponent sum);
