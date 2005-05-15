@@ -36,6 +36,7 @@ import de.dante.extex.scanner.type.CatcodeException;
 import de.dante.extex.scanner.type.CodeToken;
 import de.dante.extex.scanner.type.Token;
 import de.dante.extex.typesetter.Typesetter;
+import de.dante.util.GeneralException;
 import de.dante.util.Locator;
 import de.dante.util.UnicodeChar;
 import de.dante.util.observer.NotObservableException;
@@ -74,6 +75,16 @@ public class GlueTest extends TestCase {
      */
     private class MockTokenSource implements TokenSource {
 
+        /**
+         * @see de.dante.extex.interpreter.TokenSource#expand(
+         *      de.dante.extex.interpreter.type.tokens.Tokens,
+         *      de.dante.extex.typesetter.Typesetter)
+         */
+        public Tokens expand(final Tokens tokens, final Typesetter typesetter)
+                throws GeneralException {
+
+            throw new RuntimeException("unimplemented");
+        }
         /**
          * @see de.dante.extex.interpreter.TokenSource#addStream(de.dante.extex.scanner.stream.TokenStream)
          */
