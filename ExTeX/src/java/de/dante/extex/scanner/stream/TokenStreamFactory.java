@@ -298,7 +298,7 @@ public class TokenStreamFactory extends AbstractFactory implements Observable {
         TokenStream stream;
         try {
             stream = (TokenStream) stringConstructor.newInstance(//
-                    new Object[]{configuration, options, line, "#"});
+                    new Object[]{configuration, options, line, ""});
 
             openStringObservers.update(this, line);
 
