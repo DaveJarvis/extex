@@ -38,7 +38,7 @@ import de.dante.util.observer.Observable;
  * This interface represents the outside view on an interpreter. It contains
  * everything needed to set it up and make it run.
  *
- * @see "TeX -- The Program [1029]"
+ * @see "<logo>TeX</logo> &ndash; The Program [1029]"
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
