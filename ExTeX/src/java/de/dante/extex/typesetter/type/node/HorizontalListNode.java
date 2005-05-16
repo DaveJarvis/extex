@@ -29,7 +29,7 @@ import de.dante.util.GeneralException;
  * This class provides a container for nodes which is interpreted as horizontal
  * list.
  *
- * @see "TeX -- The Program [135]"
+ * @see "<logo>TeX</logo> &ndash; The Program [135]"
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
@@ -40,7 +40,7 @@ public class HorizontalListNode extends AbstractNodeList implements NodeList {
     /**
      * Creates a new object.
      *
-     * @see "TeX -- The Program [136]"
+     * @see "<logo>TeX</logo> &ndash; The Program [136]"
      */
     public HorizontalListNode() {
 

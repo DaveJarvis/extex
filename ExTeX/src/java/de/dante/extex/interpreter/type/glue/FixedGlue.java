@@ -72,7 +72,7 @@ public interface FixedGlue {
      * Provide a string representation of this instance.
      *
      * @return the string representation of this glue
-     * @see "TeX -- The Program [178,177]"
+     * @see "<logo>TeX</logo> &ndash; The Program [178,177]"
      */
     String toString();
 
@@ -86,7 +86,7 @@ public interface FixedGlue {
      *
      * @throws GeneralException in case of an error
      *
-     * @see "TeX -- The Program [178,177]"
+     * @see "<logo>TeX</logo> &ndash; The Program [178,177]"
      */
     Tokens toToks(TokenFactory factory)
             throws GeneralException;

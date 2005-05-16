@@ -101,7 +101,7 @@ import de.dante.extex.typesetter.Typesetter;
  *
  *     <b>public</b> MyPrimitive(<b>final</b> String name) {
  *       super(name);
- *       <i>// initialization code -- if required</i>
+ *       <i>// initialization code &ndash; if required</i>
  *     }
  *
  *     <b>public boolean</b> execute(<b>final</b> Flags prefix,

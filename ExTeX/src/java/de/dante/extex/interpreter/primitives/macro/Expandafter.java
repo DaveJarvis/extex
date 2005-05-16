@@ -38,11 +38,12 @@ import de.dante.extex.typesetter.Typesetter;
  *  TODO missing documentation
  * </p>
  * <p class="TeXbook">
- * TeX first reads the token that comes immediately after <tt>\expandafter</tt>,
- * without expanding it; let's call this token <i>t</i>. Then TeX reads the
- * token that comes after <i>t</i> (and possibly more tokens, if that token has
- * an argument), replacing it by its expansion. Finally TeX puts <i>t</i> back
- * in front of that expansion.
+ *  <logo>TeX</logo> first reads the token that comes immediately after
+ *  <tt>\expandafter</tt>, without expanding it; let's call this token <i>t</i>.
+ *  Then <logo>TeX</logo> reads the token that comes after <i>t</i> (and
+ *  possibly more tokens, if that token has an argument), replacing it by its
+ *  expansion. Finally <logo>TeX</logo> puts <i>t</i> back in front of that
+ *  expansion.
  * </p>
  * <p>
  *  The formal description of this primitive is the following:

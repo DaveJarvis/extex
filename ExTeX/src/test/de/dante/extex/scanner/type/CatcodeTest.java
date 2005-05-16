@@ -88,7 +88,7 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
 
     /**
      * The field <tt>CAT_HASH</tt> contains the numerical value for hash
-     * mark characters -- used for macro parameters.
+     * mark characters &ndash; used for macro parameters.
      */
     private static final int CAT_HASH = 6;
 

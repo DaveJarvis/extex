@@ -80,7 +80,7 @@ public class NamedFont extends AbstractAssignment implements FontConvertible {
     /**
      * Return the key (the number) for the font register.
      * @param context the interpreter context to use
-     * @param source the source for the next tokens -- if required
+     * @param source the source for the next tokens &ndash; if required
      *
      * @return the key for the font register
      *

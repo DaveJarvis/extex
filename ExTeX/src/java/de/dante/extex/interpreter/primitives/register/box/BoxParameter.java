@@ -70,7 +70,7 @@ public class BoxParameter extends AbstractCode implements Code, Serializable {
     /**
      * Return the key (the name of the primitive) for the register.
      *
-     * @param source the source for new tokens -- if required
+     * @param source the source for new tokens &ndash; if required
      * @param context the interpreter context to use
      *
      * @return the key for the box register

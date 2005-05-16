@@ -32,7 +32,7 @@ import de.dante.util.GeneralException;
  * the distance to add.
  * </p>
  *
- * @see "TeX -- The Program [147]"
+ * @see "<logo>TeX</logo> &ndash; The Program [147]"
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="m.g.n@gmx.de">Michael Niedermair</a>
@@ -56,7 +56,7 @@ public class BeforeMathNode extends AbstractNode implements Node, Discardable {
      * @param sb the output string buffer
      * @param prefix the prefix string inserted at the beginning of each line
      *
-     * @see "TeX -- The Program [192]"
+     * @see "<logo>TeX</logo> &ndash; The Program [192]"
      * @see de.dante.extex.typesetter.type.Node#toString(java.lang.StringBuffer,
      *      java.lang.String)
      */

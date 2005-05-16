@@ -20,7 +20,6 @@
 package de.dante.extex.interpreter.primitives.math;
 
 import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.exception.helping.MissingMathException;
 import de.dante.extex.interpreter.type.AbstractCode;
 import de.dante.extex.typesetter.ListMaker;
@@ -55,10 +54,11 @@ public abstract class AbstractMathCode extends AbstractCode {
      *
      * @return the current list maker
      *
-     * @throws InterpreterException in case of an error
+     * @throws MissingMathException in case that the current mode is not a
+     *  math mode
      */
     protected NoadConsumer getListMaker(final Context context,
-            final Typesetter typesetter) throws InterpreterException {
+            final Typesetter typesetter) throws MissingMathException {
 
         ListMaker lm = typesetter.getListMaker();
         if (!(lm instanceof NoadConsumer)) {

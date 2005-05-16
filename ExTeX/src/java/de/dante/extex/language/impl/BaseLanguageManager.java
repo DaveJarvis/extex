@@ -93,9 +93,9 @@ public class BaseLanguageManager extends AbstractFactory
      *  a new one is created.
      * </p>
      * <p>
-     *  The index in TeX is the language number as <code>String</code>. This
-     *  implementation does not have this restriction. The name can be any
-     *  string.
+     *  The index in <logo>TeX</logo> is the language number as
+     *  <code>String</code>. This implementation does not have this restriction.
+     *  The name can be any string.
      * </p>
      * <p>
      *  The proposal is to use a natural number for backward compatibility and

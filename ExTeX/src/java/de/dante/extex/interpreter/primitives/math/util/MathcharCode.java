@@ -66,7 +66,7 @@ public class MathcharCode extends Mathchar implements CountConvertible {
             throws InterpreterException {
 
         NoadConsumer nc = getListMaker(context, typesetter);
-        insert(nc, mathchar);
+        insert(nc, mathchar.getValue());
     }
 
     /**

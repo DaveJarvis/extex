@@ -719,7 +719,8 @@ public class GroupImpl implements Group, Tokenizer, Serializable {
     /**
      * @see de.dante.extex.interpreter.context.impl.Group#setCatcode(
      *      de.dante.util.UnicodeChar,
-     *      de.dante.extex.scanner.Catcode, boolean)
+     *      de.dante.extex.scanner.type.Catcode,
+     *      boolean)
      */
     public void setCatcode(final UnicodeChar uc, final Catcode code,
             final boolean global) {

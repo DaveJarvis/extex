@@ -32,7 +32,7 @@ import de.dante.util.Locator;
  * further reading.
  * <p>
  * Nevertheless you should be aware that characters once coined into tokens are
- * not changed -- even if the tokenizer might produce another result in the
+ * not changed &ndash; even if the tokenizer might produce another result in the
  * meantime.
  * </p>
  *
@@ -104,7 +104,7 @@ public interface TokenStream {
      * </p>
      *
      * @param token the token to push back
-     * @see "TeX -- The Program [325]"
+     * @see "<logo>TeX</logo> &ndash; The Program [325]"
      */
     void put(Token token);
 

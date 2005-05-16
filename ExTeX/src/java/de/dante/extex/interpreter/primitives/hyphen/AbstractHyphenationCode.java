@@ -33,7 +33,7 @@ import de.dante.extex.language.Language;
  * <h2>Determining the Current Language</h2>
  *
  * <p>
- *  In TeX the language is determined by the count register named
+ *  In <logo>TeX</logo> the language is determined by the count register named
  *  <tt>language</tt>. This has the disadvantage that the language is named
  *  anonymously by an integer.
  * </p>

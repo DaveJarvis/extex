@@ -36,8 +36,9 @@ public interface ContextCount {
     /**
      * Getter for the {@link de.dante.extex.interpreter.type.count.Count count}
      * register. Count registers are named, either with a number or an
-     * arbitrary string. The numbered registers where limited to 256 in TeX.
-     * This restriction does not longer hold for ExTeX.
+     * arbitrary string. The numbered registers where limited to 256 in
+     * <logo>TeX</logo>.
+     * This restriction does not longer hold for <logo>ExTeX</logo>.
      *
      * @param name the name or number of the count register
      *
@@ -66,7 +67,8 @@ public interface ContextCount {
      * Setter for the {@link de.dante.extex.interpreter.type.count.Count count}
      * register in all requested groups. Count registers are named, either with
      * a number or an arbitrary string. The numbered registers where limited to
-     * 256 in TeX. This restriction does no longer hold for ExTeX.
+     * 256 in <logo>TeX</logo>. This restriction does no longer hold for
+     * <logo>ExTeX</logo>.
      *
      * @param name the name or the number of the register
      * @param value the new value of the register

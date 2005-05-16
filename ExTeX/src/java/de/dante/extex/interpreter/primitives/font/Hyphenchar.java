@@ -61,8 +61,9 @@ import de.dante.util.UnicodeChar;
  * <h4>Incompatibility</h4>
  * <p>
  *  The TeXbook gives no indication ow the primitive should react for negative
- *  values -- except -1. The implementation of TeX allows to store and retrieve
- *  arbirary negative values. This behaviour of TeX is not preserved in ExTeX.
+ *  values &ndash; except -1. The implementation of <logo>TeX</logo> allows to store
+ *  and retrieve arbirary negative values. This behaviour of <logo>TeX</logo>
+ *  is not preserved in  <logo>ExTeX</logo>.
  * </p>
  * </doc>
  *

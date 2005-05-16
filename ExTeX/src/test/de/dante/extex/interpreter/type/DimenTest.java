@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -470,7 +470,7 @@ public class DimenTest extends ExTeXLauncher {
 
     /**
      * The field <tt>STRING</tt> contains the mapping from scaled points to
-     * the printed representation in pt as computed by TeX.
+     * the printed representation in pt as computed by <logo>TeX</logo>.
      */
     private static final String[] STRING = {//
             /* 0 */ "0.0pt",

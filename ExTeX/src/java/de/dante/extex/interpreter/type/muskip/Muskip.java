@@ -217,7 +217,7 @@ public class Muskip implements Serializable {
      * Return the string representation of the instance.
      *
      * @return the string representation of this glue
-     * @see "TeX -- The Program [???]"
+     * @see "<logo>TeX</logo> &ndash; The Program [???]"
      */
     public String toString() {
 

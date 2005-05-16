@@ -34,7 +34,7 @@ import de.dante.util.GeneralException;
 /**
  * This class provides an implementation for a vertical list.
  *
- * @see "TeX -- The Program [137]"
+ * @see "<logo>TeX</logo> &ndash; The Program [137]"
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
@@ -45,7 +45,7 @@ public class VerticalListNode extends AbstractNodeList implements NodeList {
     /**
      * Creates a new object.
      *
-     * @see "TeX -- The Program [136]"
+     * @see "<logo>TeX</logo> &ndash; The Program [136]"
      */
     public VerticalListNode() {
 

@@ -57,7 +57,7 @@ public class TabMarkToken extends AbstractToken implements Token {
      *
      * @return the string representation
      *
-     * @see "TeX -- The Program [298]"
+     * @see "<logo>TeX</logo> &ndash; The Program [298]"
      */
     public String toString() {
 

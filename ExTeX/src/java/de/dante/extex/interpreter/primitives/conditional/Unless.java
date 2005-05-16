@@ -35,15 +35,16 @@ import de.dante.util.framework.i18n.Localizer;
  * <h3>The Primitive <tt>&#x005c;unless</tt></h3>
  * <p><strong>Copied of the eTeX reference</strong>.</p>
  * <p>
- * TeX has, by design, a rather sparse set of conditional primitives:
- * \ifeof, \ifodd, \ifvoid, etc., have no complementary
- * counterparts. Whilst this normally poses no problems since each
- * accepts both a \then (implicit) and an \else (explicit) part, they
- * fall down when used as the final \if... of a \loop ... \if
- * ... \repeat construct, since no \else is allowed after the final
- * \if.... &#x005c;unless allows the sense of all Boolean conditionals to be
- * inverted, and thus (for example) &#x005c;unless \ifeof yields true iff
- * end-of-file has not yet been reached.
+ *  <logo>TeX</logo> has, by design, a rather sparse set of conditional
+ *  primitives:
+ *  \ifeof, \ifodd, \ifvoid, etc., have no complementary
+ *  counterparts. Whilst this normally poses no problems since each
+ *  accepts both a \then (implicit) and an \else (explicit) part, they
+ *  fall down when used as the final \if... of a \loop ... \if
+ *  ... \repeat construct, since no \else is allowed after the final
+ *  \if.... &#x005c;unless allows the sense of all Boolean conditionals to be
+ *  inverted, and thus (for example) &#x005c;unless \ifeof yields true iff
+ *  end-of-file has not yet been reached.
  * </p>
  * <p>
  *  The formal description of this primitive is the following:

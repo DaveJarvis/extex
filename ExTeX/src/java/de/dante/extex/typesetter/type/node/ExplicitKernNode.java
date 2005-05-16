@@ -35,7 +35,7 @@ import de.dante.extex.typesetter.Discardable;
  *  vertical direction.
  * </p>
  *
- * @see "TeX -- The Program [155]"
+ * @see "<logo>TeX</logo> &ndash; The Program [155]"
  * @see de.dante.extex.typesetter.type.node.ImplicitKernNode
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -47,7 +47,7 @@ public class ExplicitKernNode extends AbstractKernNode implements Discardable {
     /**
      * Creates a new object.
      *
-     * @see "TeX -- The Program [156]"
+     * @see "<logo>TeX</logo> &ndash; The Program [156]"
      */
     public ExplicitKernNode(final Dimen kern) {
 
@@ -73,7 +73,7 @@ public class ExplicitKernNode extends AbstractKernNode implements Discardable {
      * @param sb the output string buffer
      * @param prefix the prefix string inserted at the beginning of each line
      *
-     * @see "TeX -- The Program [191]"
+     * @see "<logo>TeX</logo> &ndash; The Program [191]"
      * @see de.dante.extex.typesetter.type.Node#toText(
      *      java.lang.StringBuffer,
      *      java.lang.String)

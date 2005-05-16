@@ -89,6 +89,6 @@ public interface ContextCode {
      * active character token.
      * @param observer the observer to receive the events
      */
-    void unregisterCodeChangeObserver(Token name, CodeObserver observer);
+    void unregisterCodeObserver(Token name, CodeObserver observer);
 
 }

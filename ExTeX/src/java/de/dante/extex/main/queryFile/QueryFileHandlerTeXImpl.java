@@ -27,7 +27,7 @@ import de.dante.util.framework.i18n.Localizer;
 import de.dante.util.framework.i18n.LocalizerFactory;
 
 /**
- * This class implements the TeX version of a query file handler.
+ * This class implements the <logo>TeX</logo> version of a query file handler.
  * It presents a prompt to the user (**) and reads a file name from the console.
  * The value <tt>\relax</tt> is interpreted as no file name.
  *

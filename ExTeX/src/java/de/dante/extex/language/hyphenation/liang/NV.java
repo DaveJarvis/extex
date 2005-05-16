@@ -376,10 +376,10 @@ class NV implements NodeVisitor {
      * Hyphenate subsequent char nodes from a ligature.
      *
      * <p>
-     *  Note that TeX only consideres the first hyphenation point in a ligature.
-     *  The others are ignored. Nevertheless the ligature builder is applied
-     *  to the remaining characters. This might lead to other ligatures than
-     *  the ones encoded in the ligature node.
+     *  Note that <logo>TeX</logo> only consideres the first hyphenation point
+     *  in a ligature. The others are ignored. Nevertheless the ligature builder
+     *  is applied to the remaining characters. This might lead to other
+     *  ligatures than the ones encoded in the ligature node.
      * </p>
      *
      * @param list the node list to hyphenate

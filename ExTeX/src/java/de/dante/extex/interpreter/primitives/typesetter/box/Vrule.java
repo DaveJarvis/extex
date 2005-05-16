@@ -113,7 +113,7 @@ public class Vrule extends AbstractCode implements RuleConvertible {
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
-     * @see "TeX -- The Program [463]"
+     * @see "<logo>TeX</logo> &ndash; The Program [463]"
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)

@@ -56,7 +56,7 @@ public class MuskipParameter extends AbstractAssignment {
     /**
      * Return the key (the number) for the skip register.
      * @param context the interpreter context to use
-     * @param source the source for the next tokens -- if required
+     * @param source the source for the next tokens &ndash; if required
      *
      * @return the key for the skip register
      *

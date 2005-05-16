@@ -26,8 +26,8 @@ import de.dante.extex.interpreter.type.AbstractCode;
  * <doc name="relax">
  * <h3>The Primitive <tt>\relax</tt></h3>
  * <p>
- *  This primitive simply does nothing. It acts as a no-op for the TeX macro
- *  language.
+ *  This primitive simply does nothing. It acts as a no-op for the
+ *  <logo>TeX</logo> macro language.
  * </p>
  * <p>
  *  The formal description of this primitive is the following:

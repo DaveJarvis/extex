@@ -41,7 +41,7 @@ import de.dante.util.framework.logger.LogEnabled;
 
 /**
  * This is a simple implementation of the error handler interacting with the
- * user on the command line like TeX does.
+ * user on the command line like <logo>TeX</logo> does.
  * <p>
  * The {@link HelpingException HelpingException} is capable of carrying a name
  * and two arguments for the error message. This class can be queried to

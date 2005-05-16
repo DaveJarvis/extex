@@ -283,7 +283,7 @@ public class UnicodeChar implements Serializable {
     /**
      * Returns the lowercase character of this object.
      * <p>
-     * (this method does not use the TeX lccode!)
+     * (this method does not use the <logo>TeX</logo> lccode!)
      * </p>
      *
      * @return character in lowercase
@@ -306,7 +306,7 @@ public class UnicodeChar implements Serializable {
     /**
      * Returns the uppercase character of this object.
      * <p>
-     * (this method does not use the TeX uccode!)
+     * (this method does not use the <logo>TeX</logo> uccode!)
      * </p>
      *
      * @return character in uppercase
