@@ -134,7 +134,7 @@ public interface MathClassVisitor {
      *
      * @return the result
      */
-    Object visitclosing(Object arg);
+    Object visitClosing(Object arg);
 
     /**
      * Invoke the visitor method for a large operator.
