@@ -16,13 +16,13 @@
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
+
 package de.dante.extex.typesetter.type.noad;
 
 import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.typesetter.type.MathDelimiter;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.noad.util.MathContext;
-
 
 /**
  * This Noad carries a delimiter which is set in the middle between math
@@ -35,19 +35,30 @@ import de.dante.extex.typesetter.type.noad.util.MathContext;
 public class MiddleNoad extends AbstractNoad {
 
     /**
-     * The field <tt>middle</tt> contains the middle delimiter.
+     * The field <tt>delimiter</tt> contains the middle delimiter.
      */
-    private MathDelimiter middle;
+    private MathDelimiter delimiter;
 
     /**
      * Creates a new object.
      *
-     * @param left the glue
+     * @param delimiter the delimiter
      */
-    public MiddleNoad(final MathDelimiter left) {
+    public MiddleNoad(final MathDelimiter delimiter) {
 
         super();
-        this.middle = left;
+        this.delimiter = delimiter;
+    }
+
+    /**
+     * @see de.dante.extex.typesetter.type.noad.AbstractNoad#toStringAdd(
+     *      java.lang.StringBuffer,
+     *      int)
+     */
+    public void toStringAdd(final StringBuffer sb, final int depth) {
+
+        sb.append("middle");
+        delimiter.toString(sb);
     }
 
     /**
@@ -60,7 +71,7 @@ public class MiddleNoad extends AbstractNoad {
     public void typeset(final NodeList list, final MathContext mathContext,
             final TypesetterOptions context) {
 
-        middle.typeset(list, mathContext, context);
+        delimiter.typeset(list, mathContext, context);
     }
 
 }

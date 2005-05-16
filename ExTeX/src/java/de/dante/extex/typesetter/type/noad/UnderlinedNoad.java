@@ -44,11 +44,14 @@ public class UnderlinedNoad extends AbstractNucleusNoad {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.noad.AbstractNoad#stringName()
+     * @see "TTP [696]"
+     * @see de.dante.extex.typesetter.type.noad.Noad#toStringAdd(
+     *      java.lang.StringBuffer,
+     *      int)
      */
-    protected String stringName() {
+    protected void toStringAdd(final StringBuffer sb, final int depth) {
 
-        return "underline";
+        sb.append("underline");
     }
 
     /**
@@ -61,7 +64,7 @@ public class UnderlinedNoad extends AbstractNucleusNoad {
     public void typeset(final NodeList list, final MathContext mathContext,
             final TypesetterOptions context) {
 
-        //TODO gene: unimplemented
+        //TODO gene: typeset() unimplemented
         throw new RuntimeException("unimplemented");
     }
 

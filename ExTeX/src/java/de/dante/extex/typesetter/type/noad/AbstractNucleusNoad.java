@@ -64,19 +64,10 @@ public abstract class AbstractNucleusNoad extends AbstractNoad {
             sb.append(" {}");
         } else {
             sb.append('\\');
-            sb.append(stringName());
-            if (nucleus != null) {
-                sb.append('.');
-                nucleus.toString(sb, depth - 1);
-            }
-            if (getSuperscript() != null) {
-                sb.append('^');
-                getSuperscript().toString(sb, depth - 1);
-            }
-            if (getSubscript() != null) {
-                sb.append('_');
-                getSubscript().toString(sb, depth - 1);
-            }
+            toStringAdd(sb, depth);
+            toStringSubsidiaray(sb, nucleus, depth, ".");
+            toStringSubsidiaray(sb, getSuperscript(), depth, "^");
+            toStringSubsidiaray(sb, getSubscript(), depth, "_");
         }
     }
 
