@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -17,45 +17,50 @@
  *
  */
 
-package de.dante.extex.main.observer;
+package de.dante.extex.interpreter.context.observer.afterGroup;
 
-import java.util.logging.Logger;
-
-import de.dante.extex.interpreter.observer.expand.ExpandObserver;
-import de.dante.extex.scanner.type.Token;
+import de.dante.util.Switch;
 
 /**
- * Observer for tracing macros. The macro is written to the log file preceeded
- * by a <tt>&gt;</tt> mark and a space character.
+ * This class provides an observer which sets a
+ * {@link de.dante.util.Switch Switch} when an event is received.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class TraceObserver implements ExpandObserver {
+public class SwitchObserver implements AfterGroupObserver {
 
     /**
-     * The field <tt>logger</tt> contains the logger for output
+     * The field <tt>target</tt> contains the target Switch to set upon the
+     * event.
      */
-    private Logger logger;
+    private Switch target;
+
+    /**
+     * The field <tt>value</tt> contains the new value for the switch upon the
+     * event.
+     */
+    private boolean value;
 
     /**
      * Creates a new object.
      *
-     * @param theLogger the logger for potential output
+     * @param theTarget the target switch
+     * @param theValue the new value
      */
-    public TraceObserver(final Logger theLogger) {
+    public SwitchObserver(final Switch theTarget, final boolean theValue) {
 
         super();
-        this.logger = theLogger;
+        this.target = theTarget;
+        this.value = theValue;
     }
 
     /**
-     * This method is meant to be invoked just before a token is expanded.
-     *
-     * @param token the token to be expanded
+     * @see de.dante.extex.interpreter.context.observer.afterGroup.AfterGroupObserver#update()
      */
-    public void update(final Token token) {
+    public void update() {
 
-        logger.fine("> " + token.toString() + ".\n");
+        target.set(value);
     }
+
 }

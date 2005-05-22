@@ -21,8 +21,8 @@ package de.dante.extex.main.observer;
 
 import java.util.logging.Logger;
 
-import de.dante.util.observer.Observable;
-import de.dante.util.observer.Observer;
+import de.dante.extex.interpreter.observer.push.PushObserver;
+import de.dante.extex.scanner.type.Token;
 
 /**
  * Observer for the operation of pushing a token to the token stream.
@@ -30,7 +30,7 @@ import de.dante.util.observer.Observer;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class TokenPushObserver implements Observer {
+public class TokenPushObserver implements PushObserver {
 
     /**
      * The field <tt>logger</tt> contains the logger for output
@@ -49,12 +49,11 @@ public class TokenPushObserver implements Observer {
     }
 
     /**
-     * @see de.dante.util.observer.Observer#update(
-     *      de.dante.util.observer.Observable, java.lang.Object)
+     * @see de.dante.extex.interpreter.observer.push.PushObserver#update(
+     *      de.dante.extex.scanner.type.Token)
      */
-    public void update(final Observable observable, final Object item) {
+    public void update(final Token token) {
 
-        logger.fine(">>> " + item.toString() + "\n");
+        logger.fine(">>> " + token.toString() + "\n");
     }
-
 }
