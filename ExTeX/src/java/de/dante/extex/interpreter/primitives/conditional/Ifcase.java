@@ -85,7 +85,7 @@ public class Ifcase extends AbstractIf {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        prefix.clear();
+        //prefix.clear(); //TODO gene most probably not needed
         long val = source.scanInteger(context);
         if (val < 0) {
             if (skipToElseOrFi(context, source)) {
