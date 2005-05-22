@@ -91,6 +91,29 @@ public class Wd extends Setbox
     }
 
     /**
+     * @see de.dante.extex.interpreter.type.count.CountConvertible#convertCount(
+     *      de.dante.extex.interpreter.context.Context,
+     *      de.dante.extex.interpreter.TokenSource, Typesetter)
+     */
+    public long convertCount(final Context context, final TokenSource source,
+            final Typesetter typesetter) throws InterpreterException {
+
+        return convertDimen(context, source, typesetter);
+    }
+
+    /**
+     * @see de.dante.extex.interpreter.type.dimen.DimenConvertible#convertDimen(
+     *      de.dante.extex.interpreter.context.Context,
+     *      de.dante.extex.interpreter.TokenSource, Typesetter)
+     */
+    public long convertDimen(final Context context, final TokenSource source,
+            final Typesetter typesetter) throws InterpreterException {
+
+        Box b = context.getBox(getKey(context, source));
+        return (b == null ? 0 : b.getWidth().getValue());
+    }
+
+    /**
      * @see de.dante.extex.interpreter.type.Code#execute(
      *      de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
@@ -139,29 +162,6 @@ public class Wd extends Setbox
         } catch (GeneralException e) {
             throw new InterpreterException(e);
         }
-    }
-
-    /**
-     * @see de.dante.extex.interpreter.type.count.CountConvertible#convertCount(
-     *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource, Typesetter)
-     */
-    public long convertCount(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
-
-        return convertDimen(context, source, typesetter);
-    }
-
-    /**
-     * @see de.dante.extex.interpreter.type.dimen.DimenConvertible#convertDimen(
-     *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource, Typesetter)
-     */
-    public long convertDimen(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
-
-        Box b = context.getBox(getKey(context, source));
-        return (b == null ? 0 : b.getWidth().getValue());
     }
 
 }
