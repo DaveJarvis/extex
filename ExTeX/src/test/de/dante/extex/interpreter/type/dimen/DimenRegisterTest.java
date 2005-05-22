@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.register;
+package de.dante.extex.interpreter.type.dimen;
 
 import junit.framework.TestCase;
 import de.dante.extex.interpreter.Interpreter;
