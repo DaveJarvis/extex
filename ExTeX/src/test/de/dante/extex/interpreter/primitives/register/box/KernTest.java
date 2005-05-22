@@ -17,50 +17,66 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.box;
+package de.dante.extex.interpreter.primitives.register.box;
 
 import java.util.Properties;
 
 import de.dante.test.ExTeXLauncher;
 
 /**
- * This is a test suite for the primitive <tt>\hrule</tt>.
+ * This is a test suite for the primitive <tt>\kern</tt>.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class HruleTest extends ExTeXLauncher {
+public class KernTest extends ExTeXLauncher {
 
     /**
-     * Constructor for HruleTest.
+     * Constructor for KernTest.
      *
      * @param arg the name
      */
-    public HruleTest(final String arg) {
+    public KernTest(final String arg) {
 
         super(arg);
     }
 
     /**
-     * Test case checking that a \hrule can stand by itself.
+     * Test case checking that a correct value is produced.
      *
      * @throws Exception in case of an error
      */
-    public void testMissingBrace1() throws Exception {
+    public void testKern1() throws Exception {
 
         Properties properties = System.getProperties();
         properties.setProperty("extex.output", "dump");
 
         runCode(properties,
                 //--- input code ---
-                "\\hsize=123pt "
-                + "\\hrule"
+                "x\\kern 123pt"
                 + "\\end ",
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "\\vbox(0.4pt+0.0pt)x0.0pt\n.\\rule(0.4pt+0.0pt)x0.0pt\n");
-        //TODO is this correct?
+                "\\vbox(0.0pt+0.0pt)x123.0pt\n"
+                + ".\\hbox(0.0pt+0.0pt)x123.0pt\n"
+                + "..\\nullFont x\n"
+                + "..[]\n"); //TODO correct?
+    }
+
+    /**
+     * Test case checking that a missing dimen leads to an error.
+     *
+     * @throws Exception in case of an error
+     */
+    public void testEof1() throws Exception {
+
+        runCode(//--- input code ---
+                "x\\kern ",
+                //--- log message ---
+                "Illegal unit of measure (pt inserted)",
+                //--- output channel ---
+                "");
     }
 
 }
