@@ -32,7 +32,6 @@ import de.dante.extex.scanner.stream.TokenStreamFactory;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.GeneralException;
 import de.dante.util.configuration.ConfigurationException;
-import de.dante.util.observer.Observable;
 
 /**
  * This interface represents the outside view on an interpreter. It contains
@@ -44,7 +43,7 @@ import de.dante.util.observer.Observable;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public interface Interpreter extends TokenSource, Observable {
+public interface Interpreter extends TokenSource {
 
     /**
      * Getter for the context
