@@ -178,9 +178,11 @@ public class ExTeXLauncher extends TestCase {
      * @param log the expected output on the log stream
      * @param expect the expected output on the output stream
      *
+     * @return TODO
+     *
      * @throws MainException in case of an error
      */
-    public void runCode(final Properties properties, final String code,
+    public ExTeX runCode(final Properties properties, final String code,
             final String log, final String expect) throws MainException {
 
         boolean errorP = false;
@@ -225,6 +227,7 @@ public class ExTeXLauncher extends TestCase {
         if (expect != null) {
             assertEquals(expect, stream.toString());
         }
+        return extex;
     }
 
     /**
