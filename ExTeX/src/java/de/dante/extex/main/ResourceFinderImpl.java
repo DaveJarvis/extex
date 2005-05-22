@@ -127,17 +127,12 @@ public class ResourceFinderImpl
             logger.severe(localizer.format("CLI.PromptFile"));
             line = readLine();
 
-            if (line == null || line.equals("")) {
+            if (line == null) {
                 return null;
             }
-            if (line.charAt(0) == '\\') {
-                //TODO gene: make use of the line read
-                throw new RuntimeException("unimplemented");
-            } else {
-                InputStream stream = parent.findResource(line, type);
-                if (stream != null) {
-                    return stream;
-                }
+            InputStream stream = parent.findResource(line, type);
+            if (stream != null) {
+                return stream;
             }
         }
     }
