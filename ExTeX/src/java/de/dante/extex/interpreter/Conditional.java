@@ -21,12 +21,12 @@ package de.dante.extex.interpreter;
 
 import java.io.Serializable;
 
-import de.dante.extex.scanner.type.Token;
 import de.dante.util.Locator;
 
 /**
  * This class represents a conditional for a normal <tt>\if \else \fi</tt>
- * construct.
+ * construct. It records which <tt>\if</tt> has initiated it and where this has
+ * happened.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -40,7 +40,8 @@ public class Conditional implements Serializable {
     private Locator locator;
 
     /**
-     * The field <tt>primitive</tt> contains the ...
+     * The field <tt>primitive</tt> contains the name of the primitive which
+     * has lead to this conditional.
      */
     private String primitive;
 
@@ -89,4 +90,13 @@ public class Conditional implements Serializable {
 
         return true;
     }
+
+    /**
+     * @see java.lang.Object#toString()
+     */
+    public String toString() {
+
+        return primitive + "[" + locator.toString() + "]";
+    }
+
 }
