@@ -60,7 +60,7 @@ public class Switch {
      *
      * @param on the value to set.
      */
-    public void setOn(final boolean on) {
+    public void set(final boolean on) {
 
         this.value = on;
     }
