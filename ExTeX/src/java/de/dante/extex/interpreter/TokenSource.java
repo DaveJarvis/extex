@@ -85,6 +85,7 @@ public interface TokenSource {
 
     /**
      * Tries to execute a token.
+     *
      * @param token the Token to execute
      * @param context the interpreter context
      * @param typesetter the typesetter
