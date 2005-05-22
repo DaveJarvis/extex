@@ -19,6 +19,7 @@
 
 package de.dante.extex.interpreter.primitives.register;
 
+import de.dante.extex.interpreter.type.dimen.DimenRegisterTest;
 import de.dante.test.ExTeXLauncher;
 
 /**
