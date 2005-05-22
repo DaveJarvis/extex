@@ -44,6 +44,7 @@ import de.dante.extex.interpreter.context.observer.CountObserver;
 import de.dante.extex.interpreter.context.observer.DimenObserver;
 import de.dante.extex.interpreter.context.observer.InteractionObserver;
 import de.dante.extex.interpreter.context.observer.TokensObserver;
+import de.dante.extex.interpreter.context.observer.afterGroup.AfterGroupObserver;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.exception.helping.HelpingException;
 import de.dante.extex.interpreter.type.Code;
@@ -128,7 +129,6 @@ public class ContextImpl
             DocumentWriterOptions,
             TypesetterOptions,
             TokenStreamOptions,
-            Observable,
             Localizable,
             Configurable,
             Serializable {
@@ -310,9 +310,9 @@ public class ContextImpl
 
     /**
      * @see de.dante.extex.interpreter.context.Context#afterGroup(
-     *      de.dante.util.observer.Observer)
+     *      AfterGroupObserver)
      */
-    public void afterGroup(final Observer observer) {
+    public void afterGroup(final AfterGroupObserver observer) {
 
         group.afterGroup(observer);
     }
@@ -352,7 +352,7 @@ public class ContextImpl
             }
         }
 
-        group.runAfterGroup(this, typesetter);
+        group.runAfterGroup();
 
         Tokens toks = group.getAfterGroup();
         group = next;
@@ -924,17 +924,6 @@ public class ContextImpl
     public void registerInteractionObserver(final InteractionObserver observer) {
 
         changeInteractionObservers.add(observer);
-    }
-
-    /**
-     * @see de.dante.util.observer.Observable#registerObserver(
-     *      java.lang.String,
-     *      de.dante.util.observer.Observer)
-     */
-    public void registerObserver(final String name, final Observer observer)
-            throws NotObservableException {
-
-        throw new NotObservableException(name);
     }
 
     /**
