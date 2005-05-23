@@ -76,7 +76,7 @@ public class Middle extends AbstractMathCode {
             throws InterpreterException {
 
         NoadConsumer nc = getListMaker(context, typesetter);
-        MathDelimiter del = new MathDelimiter(context, source);
+        MathDelimiter del = MathDelimiter.parse(context, source);
         nc.left(del);
     }
 

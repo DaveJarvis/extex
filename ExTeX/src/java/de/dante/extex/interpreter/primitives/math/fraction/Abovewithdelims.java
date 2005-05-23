@@ -77,8 +77,8 @@ public class Abovewithdelims extends AbstractMathCode {
             throws InterpreterException {
 
         NoadConsumer nc = getListMaker(context, typesetter);
-        MathDelimiter del1 = new MathDelimiter(context, source);
-        MathDelimiter del2 = new MathDelimiter(context, source);
+        MathDelimiter del1 = MathDelimiter.parse(context, source);
+        MathDelimiter del2 = MathDelimiter.parse(context, source);
         Dimen d = new Dimen(context, source);
         nc.switchToFraction(del1, del2, d);
     }

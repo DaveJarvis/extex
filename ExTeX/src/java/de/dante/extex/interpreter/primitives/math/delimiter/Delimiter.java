@@ -46,7 +46,7 @@ import de.dante.extex.typesetter.type.MathDelimiter;
  * <p>
  *  Examples:
  *  <pre class="TeXSample">
- *    \delimiter  </pre>
+ *    \delimiter "426830A </pre>
  * </p>
  * </doc>
  *
@@ -77,10 +77,8 @@ public class Delimiter extends AbstractMathCode {
             throws InterpreterException {
 
         NoadConsumer nc = getListMaker(context, typesetter);
-        MathDelimiter del = new MathDelimiter(context, source);
-
-        //TODO gene: execute() unimplemented
-        throw new RuntimeException("unimplemented");
+        MathDelimiter del = MathDelimiter.parse(context, source);
+        nc.add(del);
     }
 
 }
