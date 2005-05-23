@@ -51,6 +51,15 @@ public interface NoadConsumer extends ListMaker {
     void add(MathClass mclass, MathGlyph mg) throws TypesetterException;
 
     /**
+     * Add a mathematical delimiter.
+     *
+     * @param del the delimiter
+     *
+     * @throws TypesetterException in case of an error
+     */
+    void add(MathDelimiter del) throws TypesetterException;
+
+    /**
      * Add some math glue Noad to the internal list.
      *
      * @param glue the glue to add

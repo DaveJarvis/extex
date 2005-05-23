@@ -182,6 +182,16 @@ public class MathListMaker extends AbstractListMaker implements NoadConsumer {
 
     /**
      * @see de.dante.extex.typesetter.listMaker.math.NoadConsumer#add(
+     *      de.dante.extex.typesetter.type.MathDelimiter)
+     */
+    public void add(final MathDelimiter del) throws TypesetterException {
+
+        //TODO gene: unimplemented
+        throw new RuntimeException("unimplemented");
+    }
+
+    /**
+     * @see de.dante.extex.typesetter.listMaker.math.NoadConsumer#add(
      *      de.dante.extex.interpreter.type.muskip.Mudimen)
      */
     public void add(final Mudimen skip) throws TypesetterException {
