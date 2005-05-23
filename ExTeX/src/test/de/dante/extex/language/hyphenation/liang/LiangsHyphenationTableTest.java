@@ -61,7 +61,7 @@ public class LiangsHyphenationTableTest extends TestCase {
         Tokens tokens = new Tokens();
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
-            if (Character.isSpace(c)) {
+            if (c == ' ') {
                 tokens.add(factory.createToken(Catcode.SPACE, ' ',
                         Namespace.DEFAULT_NAMESPACE));
             } else if (Character.isLetter(c) || c == '.') {
