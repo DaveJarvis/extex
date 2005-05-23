@@ -20,6 +20,7 @@
 package de.dante.extex.interpreter.primitives.register.font;
 
 import de.dante.extex.font.FontFactory;
+import de.dante.extex.font.FountKey;
 import de.dante.extex.font.exception.FontException;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
@@ -148,8 +149,8 @@ public class FontPrimitive extends AbstractAssignment
         FontFactory factory = context.getFontFactory();
         Font font;
         try {
-            font = factory.getInstance(fontname, fontSize, scale, letterspaced,
-                    ligatures, kerning);
+            font = factory.getInstance(new FountKey(fontname, fontSize, scale,
+                    letterspaced, ligatures, kerning));
         } catch (FontException e) {
             throw new HelpingException(getLocalizer(), "TTP.TFMnotFound", //
                     context.esc(fontId), fontname);
