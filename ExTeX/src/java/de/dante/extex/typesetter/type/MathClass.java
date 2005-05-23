@@ -19,6 +19,8 @@
 
 package de.dante.extex.typesetter.type;
 
+import java.io.Serializable;
+
 
 /**
  * This class provides the classification of mathematical characters.
@@ -27,7 +29,7 @@ package de.dante.extex.typesetter.type;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public abstract class MathClass {
+public abstract class MathClass implements Serializable {
 
     /**
      * This is a inner class for a binary operator.
