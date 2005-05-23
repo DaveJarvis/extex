@@ -24,7 +24,6 @@ import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.AbstractAssignment;
-import de.dante.util.GeneralException;
 
 /**
  * This abstract base class provides the methods to compute the keys for
@@ -60,14 +59,7 @@ public abstract class AbstractToks extends AbstractAssignment {
     protected String getKey(final TokenSource source, final Context context)
             throws InterpreterException {
 
-        String name;
-        try {
-            name = source.scanRegisterName(context);
-        } catch (InterpreterException e) {
-            throw e;
-        } catch (GeneralException e) {
-            throw new InterpreterException(e);
-        }
+        String name = source.scanRegisterName(context);
 
         if (Namespace.SUPPORT_NAMESPACE_TOKS) {
             return context.getNamespace() + "toks#" + name;
