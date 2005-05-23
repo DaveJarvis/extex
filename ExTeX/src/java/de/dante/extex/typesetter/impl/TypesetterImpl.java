@@ -283,8 +283,8 @@ public class TypesetterImpl
 
         par();
         pageBuilder.flush(listMaker.complete(options));
-        if (saveStack != null) {
-            //TODO gene: test that nothing is left behind
+        if (saveStack != null && saveStack.size() != 0) {
+            throw new InternalError("typesetter.saveStack.notEmpty");
         }
         pageBuilder.close();
     }
