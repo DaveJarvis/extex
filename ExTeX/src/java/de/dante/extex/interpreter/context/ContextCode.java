@@ -22,11 +22,8 @@ package de.dante.extex.interpreter.context;
 import de.dante.extex.interpreter.context.observer.CodeObserver;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.Code;
-import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.scanner.type.CodeToken;
 import de.dante.extex.scanner.type.Token;
-import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.GeneralException;
 
 /**
  * This interface describes the container for all data of an interpreter
