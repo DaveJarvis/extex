@@ -446,11 +446,12 @@ public class TFMFont
 
             // encoding
 
-            if (psfenc != null && !"".equals(psfenc.getEncfile())) {
-                enctable = encfactory.getEncodingTable(psfenc.getEncfile());
-
+            if (psfenc != null) {
+                if (!"".equals(psfenc.getEncfile())) {
+                    enctable = encfactory.getEncodingTable(psfenc.getEncfile());
+                }
                 // filename
-                if (psfenc != null && psfenc.getPfbfile() != null) {
+                if (psfenc.getPfbfile() != null) {
                     pfbfilename = filenameWithoutPath(psfenc.getPfbfile());
                 }
                 // glyphname

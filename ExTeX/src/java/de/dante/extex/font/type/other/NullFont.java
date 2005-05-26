@@ -23,6 +23,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+import de.dante.extex.font.FountKey;
 import de.dante.extex.font.Glyph;
 import de.dante.extex.font.type.BoundingBox;
 import de.dante.extex.interpreter.type.dimen.Dimen;
@@ -217,5 +218,13 @@ public class NullFont implements Font, Serializable {
     public HorizontalListNode getNodeList(final UnicodeChar uc) {
 
         return null;
+    }
+
+    /**
+     * @see de.dante.extex.font.type.Fount#getFontKey()
+     */
+    public FountKey getFontKey() {
+
+        return new FountKey("nullfont");
     }
 }

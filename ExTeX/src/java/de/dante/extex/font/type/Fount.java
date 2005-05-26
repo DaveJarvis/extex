@@ -19,6 +19,7 @@
 
 package de.dante.extex.font.type;
 
+import de.dante.extex.font.FountKey;
 import de.dante.extex.font.Glyph;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.glue.Glue;
@@ -116,4 +117,9 @@ public interface Fount {
      * @return Returns the actual size.
      */
     Dimen getActualSize();
+
+    /**
+     * Returns the key for the font.
+     */
+    FountKey getFontKey();
 }

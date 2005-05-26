@@ -77,7 +77,7 @@ public class GlyphImpl implements Glyph, Serializable {
     /**
      * The external fontfile or null, if no exists
      */
-    private FontFile externalfile = null;
+    private FontStream externalfile = null;
 
     /**
      * The left space in a glyph
@@ -423,7 +423,7 @@ public class GlyphImpl implements Glyph, Serializable {
     /**
      * @return Returns the externalfile.
      */
-    public FontFile getExternalFile() {
+    public FontStream getExternalFile() {
 
         return externalfile;
     }
@@ -431,7 +431,7 @@ public class GlyphImpl implements Glyph, Serializable {
     /**
      * @param file The externalfile to set.
      */
-    public void setExternalFile(final FontFile file) {
+    public void setExternalFile(final FontStream file) {
 
         externalfile = file;
     }

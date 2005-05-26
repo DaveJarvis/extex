@@ -21,6 +21,7 @@ package de.dante.extex.interpreter.type.font;
 
 import java.io.Serializable;
 
+import de.dante.extex.font.FountKey;
 import de.dante.extex.font.Glyph;
 import de.dante.extex.font.type.BoundingBox;
 import de.dante.extex.font.type.ModifiableFount;
@@ -203,8 +204,16 @@ public class FontImpl implements Font, Serializable {
      * Returns the fount.
      * @return Returns the fount.
      */
-    protected ModifiableFount getFount() {
+    public ModifiableFount getFount() {
 
         return fount;
+    }
+
+    /**
+     * @see de.dante.extex.font.type.Fount#getFontKey()
+     */
+    public FountKey getFontKey() {
+
+        return fount.getFontKey();
     }
 }

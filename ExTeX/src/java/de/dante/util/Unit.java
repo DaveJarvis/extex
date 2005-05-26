@@ -79,9 +79,9 @@ public final class Unit {
      * @param value the <code>Dimen</code>
      * @return Returns the <code>Dimen</code>-value as BP
      */
-    public static double getDimenAsBP(final Dimen value) {
+    public static float getDimenAsBP(final Dimen value) {
 
-        return ((double) value.getValue() * MULBP) / (DEN << SHIFT);
+        return ((float) value.getValue() * MULBP) / (DEN << SHIFT);
     }
 
     /**

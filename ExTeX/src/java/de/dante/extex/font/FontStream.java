@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -19,53 +19,29 @@
 
 package de.dante.extex.font;
 
-import java.io.File;
-import java.io.Serializable;
+import java.io.InputStream;
+
+import de.dante.extex.font.exception.FontException;
+import de.dante.util.file.random.RandomAccessR;
 
 /**
- * Abstract class for a Font-file.
+ * Interface for the fontfile (e.g. the pfb-file).
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public abstract class AbstractFontFile implements FontFile, Serializable {
+public interface FontStream {
 
     /**
-     * Create a new object
-     * @param file  the external file
+     * Returns the <code>InputStream</code> for the external fontfile.
+     * @return Returns the <code>InputStream</code> for the external fontfile.
      */
-    AbstractFontFile(final File file) {
-
-        super();
-        externalfile = file;
-    }
+    InputStream getStream();
 
     /**
-     * the external file
+     * Returns the <code>RandomAccessR</code> fpr the external fontfile.
+     * @throws FontException in case of a font error.
+     * @return Returns the <code>RandomAccessR</code> fpr the external fontfile.
      */
-    private File externalfile;
-
-    /**
-     * Return the <code>File</code> for the external fontfile
-     * @return  the external font-file
-     */
-    public File getFile() {
-
-        return externalfile;
-    }
-
-    /**
-     * @param file The externalfile to set.
-     */
-    public void setFile(final File file) {
-
-        externalfile = file;
-    }
-
-    /**
-     * Return the String for the class
-     * @return the string for the class
-     */
-    public abstract String toString();
-
+    RandomAccessR getRandomAccessRead() throws FontException;
 }

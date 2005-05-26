@@ -23,7 +23,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import junit.framework.TestCase;
-import de.dante.extex.font.FontFile;
+import de.dante.extex.font.FontStream;
+import de.dante.extex.font.FountKey;
 import de.dante.extex.font.Glyph;
 import de.dante.extex.font.Kerning;
 import de.dante.extex.font.Ligature;
@@ -238,6 +239,14 @@ public class NVTest extends TestCase {
         public void setSkewChar(final UnicodeChar skew) {
 
         }
+
+        /**
+         * @see de.dante.extex.font.type.Fount#getFontKey()
+         */
+        public FountKey getFontKey() {
+
+            return new FountKey("mockfont");// add by mgn
+        }
     }
 
     /**
@@ -289,7 +298,7 @@ public class NVTest extends TestCase {
         /**
          * @see de.dante.extex.font.Glyph#getExternalFile()
          */
-        public FontFile getExternalFile() {
+        public FontStream getExternalFile() {
 
             return null;
         }
@@ -402,7 +411,7 @@ public class NVTest extends TestCase {
         /**
          * @see de.dante.extex.font.Glyph#setExternalFile(de.dante.extex.font.FontFile)
          */
-        public void setExternalFile(final FontFile file) {
+        public void setExternalFile(final FontStream file) {
 
         }
 

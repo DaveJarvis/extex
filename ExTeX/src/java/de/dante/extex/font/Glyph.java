@@ -180,12 +180,12 @@ public interface Glyph {
      * @return Returns the externalfile.
      * MGN change FontFile
      */
-    FontFile getExternalFile();
+    FontStream getExternalFile();
 
     /**
      * @param file The externalfile to set.
      */
-    void setExternalFile(FontFile file);
+    void setExternalFile(FontStream file);
 
     /**
      * @return Returns the leftSpace.

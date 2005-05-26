@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import junit.framework.TestCase;
-import de.dante.extex.font.FontFile;
+import de.dante.extex.font.FontStream;
 import de.dante.extex.font.Glyph;
 import de.dante.extex.font.Kerning;
 import de.dante.extex.font.Ligature;
@@ -184,7 +184,7 @@ public class LigatureBuilderImplTest extends TestCase {
         /**
          * @see de.dante.extex.interpreter.type.font.Glyph#getExternalFile()
          */
-        public FontFile getExternalFile() {
+        public FontStream getExternalFile() {
 
             return null;
         }
@@ -294,7 +294,7 @@ public class LigatureBuilderImplTest extends TestCase {
         /**
          * @see de.dante.extex.interpreter.type.font.Glyph#setExternalFile(de.dante.extex.interpreter.type.font.FontFile)
          */
-        public void setExternalFile(final FontFile file) {
+        public void setExternalFile(final FontStream file) {
 
         }
 

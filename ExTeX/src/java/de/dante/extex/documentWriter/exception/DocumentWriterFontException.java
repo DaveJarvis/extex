@@ -17,31 +17,45 @@
  *
  */
 
-package de.dante.extex.font.exception;
+package de.dante.extex.documentWriter.exception;
 
 /**
- * Font- IOException.
+ * DocumentWriter: FontException.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-
-public class FontIOException extends FontException {
+public class DocumentWriterFontException extends DocumentWriterException {
 
     /**
-     * Create a new object.
+     * Creates a new object.
+     *
+     * @param message the error message
      */
-    public FontIOException() {
+    public DocumentWriterFontException(final String message) {
 
-        super();
+        super(message);
     }
 
     /**
-     * Create a new object.
-     * @param message   the message
+     * Creates a new object.
+     *
+     * @param message the message
+     * @param cause the cause
      */
-    public FontIOException(final String message) {
+    public DocumentWriterFontException(final String message,
+            final Throwable cause) {
 
-        super(message);
+        super(message, cause);
+    }
+
+    /**
+     * Creates a new object.
+     *
+     * @param cause the cause
+     */
+    public DocumentWriterFontException(final Throwable cause) {
+
+        super(cause);
     }
 }

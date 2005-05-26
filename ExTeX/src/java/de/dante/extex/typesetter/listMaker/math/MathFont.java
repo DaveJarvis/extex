@@ -19,6 +19,7 @@
 
 package de.dante.extex.typesetter.listMaker.math;
 
+import de.dante.extex.font.FountKey;
 import de.dante.extex.font.Glyph;
 import de.dante.extex.font.type.BoundingBox;
 import de.dante.extex.interpreter.type.dimen.Dimen;
@@ -196,5 +197,13 @@ public class MathFont implements Font {
     public String toString() {
 
         return this.font.toString();
+    }
+
+    /**
+     * @see de.dante.extex.font.type.Fount#getFontKey()
+     */
+    public FountKey getFontKey() {
+
+        return this.font.getFontKey(); // add by mgn
     }
 }
