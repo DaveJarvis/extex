@@ -49,7 +49,7 @@ public class EncFactory implements Serializable {
     /**
      * Resourcefinder
      */
-    private ResourceFinder finder;
+    private transient ResourceFinder finder;
 
     /**
      * Map
