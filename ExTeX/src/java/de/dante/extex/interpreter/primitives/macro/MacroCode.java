@@ -22,6 +22,7 @@ package de.dante.extex.interpreter.primitives.macro;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.exception.ImpossibleException;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.exception.helping.HelpingException;
 import de.dante.extex.interpreter.type.AbstractCode;
@@ -136,11 +137,11 @@ public class MacroCode extends AbstractCode
                 } else if (t instanceof OtherToken && t.getChar().isDigit()) {
                     no = t.getChar().getCodePoint() - '0';
                     if (args[no] == null) {
-                        throw new InterpreterException("internal error");//TODO gene:
+                        throw new ImpossibleException("MacroCode:NullArg");
                     }
                     toks.add(args[no]);
                 } else {
-                    throw new InterpreterException("internal error");//TODO gene:
+                    throw new ImpossibleException("MacroCode:IllegalArg");
                 }
             } else {
                 toks.add(t);
