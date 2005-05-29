@@ -169,7 +169,7 @@ public class AbstractCode implements Code, Localizable, Serializable {
     public Object readResolve() throws ObjectStreamException {
 
         //System.err.println(this.getClass().getName());
-        //TODO gene: unimplemented
+        //TODO gene: readResolve() unimplemented
         return this;
     }
 
