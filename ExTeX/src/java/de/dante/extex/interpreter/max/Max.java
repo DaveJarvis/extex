@@ -1029,7 +1029,7 @@ public class Max extends Moritz
     public Object visitSubMark(final SubMarkToken token, final Object ignore)
             throws GeneralException {
 
-        typesetter.subscriptMark(context, this, token);
+        typesetter.subscriptMark(context, this, typesetter, token);
         return null;
     }
 
@@ -1050,7 +1050,7 @@ public class Max extends Moritz
     public Object visitSupMark(final SupMarkToken token, final Object ignore)
             throws GeneralException {
 
-        typesetter.superscriptMark(context, this, token);
+        typesetter.superscriptMark(context, this, typesetter, token);
         return null;
     }
 

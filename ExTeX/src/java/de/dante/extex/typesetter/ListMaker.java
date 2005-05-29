@@ -201,26 +201,26 @@ public interface ListMaker {
 
     /**
      * Treat a subscript mark. This might be meaningful in math mode only.
-     *
      * @param context the interpreter context
      * @param source the source for new tokens
+     * @param typesetter TODO
      * @param t the actual sub mark token
      *
      * @throws TypesetterException in case of an error
      */
-    void subscriptMark(Context context, TokenSource source, Token t)
+    void subscriptMark(Context context, TokenSource source, Typesetter typesetter, Token t)
             throws TypesetterException;
 
     /**
      * Treat a superscript mark. This might be meaningful in math mode only.
-     *
      * @param context the interpreter context
      * @param source the source for new tokens
+     * @param typesetter TODO
      * @param t the actual super mark token
      *
      * @throws TypesetterException in case of an error
      */
-    void superscriptMark(Context context, TokenSource source, Token t)
+    void superscriptMark(Context context, TokenSource source, Typesetter typesetter, Token t)
             throws TypesetterException;
 
     /**

@@ -95,8 +95,6 @@ public class NullTypesetterImpl implements Typesetter {
      */
     public void afterParagraph(final ParagraphObserver observer) {
 
-        // TODO gene: afterParagraph unimplemented
-
     }
 
     /**
@@ -332,20 +330,20 @@ public class NullTypesetterImpl implements Typesetter {
     /**
      * @see de.dante.extex.typesetter.Typesetter#subscriptMark(
      *      de.dante.extex.interpreter.context.Context,
-     *      TokenSource, de.dante.extex.scanner.type.Token)
+     *      TokenSource, Typesetter, de.dante.extex.scanner.type.Token)
      */
     public void subscriptMark(final Context context, final TokenSource source,
-            final Token t) throws TypesetterException {
+            Typesetter typesetter, final Token t) throws TypesetterException {
 
     }
 
     /**
      * @see de.dante.extex.typesetter.Typesetter#superscriptMark(
      *      de.dante.extex.interpreter.context.Context,
-     *      TokenSource, de.dante.extex.scanner.type.Token)
+     *      TokenSource, Typesetter, de.dante.extex.scanner.type.Token)
      */
     public void superscriptMark(final Context context,
-            final TokenSource source, final Token t) throws TypesetterException {
+            final TokenSource source, Typesetter typesetter, final Token t) throws TypesetterException {
 
     }
 
