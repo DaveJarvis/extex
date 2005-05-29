@@ -20,8 +20,8 @@
 package de.dante.extex.typesetter.type.noad;
 
 import de.dante.extex.typesetter.TypesetterOptions;
-import de.dante.extex.typesetter.type.MathDelimiter;
 import de.dante.extex.typesetter.type.NodeList;
+import de.dante.extex.typesetter.type.math.MathDelimiter;
 import de.dante.extex.typesetter.type.noad.util.MathContext;
 
 /**
