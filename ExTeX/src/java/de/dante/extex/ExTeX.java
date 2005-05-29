@@ -612,7 +612,7 @@ public class ExTeX {
         propertyDefault(PROP_OUTPUTDIR, ".");
         propertyDefault(PROP_OUTPUTDIR_FALLBACK, ".");
         propertyDefault(PROP_PROGNAME, "ExTeX");
-        propertyDefault(PROP_TEXINPUTS, "");
+        propertyDefault(PROP_TEXINPUTS, null);
         propertyDefault(PROP_TOKEN_STREAM, "base");
         propertyDefault(PROP_TRACE_INPUT_FILES, "");
         propertyDefault(PROP_TRACE_FONT_FILES, "");
@@ -897,6 +897,7 @@ public class ExTeX {
 
     /**
      * Log a Throwable including its stack trace to the logger.
+     *
      * @param e the Throwable to log
      */
     protected void logInternalError(final Throwable e) {
@@ -1196,7 +1197,7 @@ public class ExTeX {
      */
     protected void propertyDefault(final String name, final String value) {
 
-        if (!properties.containsKey(name)) {
+        if (!properties.containsKey(name) && value != null) {
             properties.setProperty(name, value);
         }
     }
