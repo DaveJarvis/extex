@@ -44,7 +44,7 @@ import de.dante.extex.typesetter.listMaker.math.NoadConsumer;
  * <p>
  *  Examples:
  *  <pre class="TeXSample">
- *    \over  </pre>
+ *    a \over b  </pre>
  * </p>
  * </doc>
  *

@@ -23,10 +23,9 @@ import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.primitives.math.AbstractMathCode;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.listMaker.math.NoadConsumer;
-import de.dante.extex.typesetter.type.MathDelimiter;
+import de.dante.extex.typesetter.type.math.MathDelimiter;
 
 /**
  * This class provides an implementation for the primitive <code>\left</code>.
@@ -52,7 +51,7 @@ import de.dante.extex.typesetter.type.MathDelimiter;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Left extends AbstractMathCode {
+public class Left extends AbstractTeXDelimter {
 
     /**
      * Creates a new object.
@@ -76,7 +75,7 @@ public class Left extends AbstractMathCode {
             throws InterpreterException {
 
         NoadConsumer nc = getListMaker(context, typesetter);
-        MathDelimiter del = MathDelimiter.parse(context, source);
+        MathDelimiter del = parseDelimiter(context, source);
         nc.left(del);
     }
 
