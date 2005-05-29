@@ -77,10 +77,10 @@ public class Mathchoice extends AbstractMathCode {
             throws InterpreterException {
 
         NoadConsumer nc = getListMaker(context, typesetter);
-        Noad display = nc.scanNoad(context, source);
-        Noad text = nc.scanNoad(context, source);
-        Noad script = nc.scanNoad(context, source);
-        Noad scriptScript = nc.scanNoad(context, source);
+        Noad display = nc.scanNoad(context, source, typesetter);
+        Noad text = nc.scanNoad(context, source, typesetter);
+        Noad script = nc.scanNoad(context, source, typesetter);
+        Noad scriptScript = nc.scanNoad(context, source, typesetter);
         nc.add(new ChoiceNoad(display, text, script, scriptScript));
     }
 

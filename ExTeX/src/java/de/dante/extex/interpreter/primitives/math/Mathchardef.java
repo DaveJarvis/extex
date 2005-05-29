@@ -78,9 +78,9 @@ public class Mathchardef extends AbstractAssignment {
 
         CodeToken cs = source.getControlSequence(context);
         source.getOptionalEquals(context);
-        Count mathchar = new Count(context, source);
-        context.setCode(cs, new MathcharCode(cs.toString(), mathchar),
-                prefix.isGlobal());
+        Count mathchar = Count.parse(context, source, typesetter);
+        context.setCode(cs, new MathcharCode(cs.toString(), mathchar), prefix
+                .isGlobal());
     }
 
 }

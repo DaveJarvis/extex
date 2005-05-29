@@ -76,7 +76,7 @@ public class Mathclose extends AbstractMathCode {
             throws InterpreterException {
 
         NoadConsumer nc = getListMaker(context, typesetter);
-        Noad noad = nc.scanNoad(context, source);
+        Noad noad = nc.scanNoad(context, source, typesetter);
         nc.add(new CloseNoad(noad));
     }
 
