@@ -169,13 +169,13 @@ public class FontPrimitive extends AbstractAssignment
                     letterspaced, ligatures, kerning));
         } catch (FontException e) {
             if (logger != null) {
-                logger.log(Level.WARNING, "FontPrimitive", e);
+                logger.log(Level.FINE, "FontPrimitive", e);
             }
             throw new HelpingException(getLocalizer(), "TTP.TFMnotFound", //
                     context.esc(fontId), fontname);
         } catch (ConfigurationIOException e) {
             if (logger != null) {
-                logger.log(Level.WARNING, "FontPrimitive", e);
+                logger.log(Level.FINE, "FontPrimitive", e);
             }
             throw new HelpingException(getLocalizer(), "TTP.TFMnotFound", //
                     context.esc(fontId), fontname);
