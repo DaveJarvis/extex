@@ -19,6 +19,7 @@
 
 package de.dante.extex.interpreter.primitives.register.font;
 
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import de.dante.extex.font.FontFactory;
@@ -168,13 +169,13 @@ public class FontPrimitive extends AbstractAssignment
                     letterspaced, ligatures, kerning));
         } catch (FontException e) {
             if (logger != null) {
-                logger.throwing("FontPrimitive", "assign", e);
+                logger.log(Level.WARNING, "FontPrimitive", e);
             }
             throw new HelpingException(getLocalizer(), "TTP.TFMnotFound", //
                     context.esc(fontId), fontname);
         } catch (ConfigurationIOException e) {
             if (logger != null) {
-                logger.throwing("FontPrimitive", "assign", e);
+                logger.log(Level.WARNING, "FontPrimitive", e);
             }
             throw new HelpingException(getLocalizer(), "TTP.TFMnotFound", //
                     context.esc(fontId), fontname);
