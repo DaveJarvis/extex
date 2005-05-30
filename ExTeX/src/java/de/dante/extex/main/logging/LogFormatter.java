@@ -81,7 +81,7 @@ public class LogFormatter extends Formatter {
             t.printStackTrace(writer);
             writer.write("\n");
             writer.flush();
-            msg.append(os);
+            out.append(os);
             col = 0;
         }
 
