@@ -21,6 +21,11 @@
 \def\setVersion$#1: #2.#3${\gdef\Version{0.#3}}
 \setVersion$Revision$
 
+\providecommand\indexGroup[1]{\vskip 12pt plus 4pt minus 2pt
+  \textbf{\sffamily\normalsize #1}%
+  \vskip 6pt plus 3pt minus 1pt
+  \nopagebreak
+}
 \makeindex
 
 \usepackage{ragged2e}
