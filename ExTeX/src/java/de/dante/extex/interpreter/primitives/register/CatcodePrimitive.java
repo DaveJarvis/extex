@@ -41,7 +41,7 @@ import de.dante.util.UnicodeChar;
  * </p>
  * <p>
  *  The assignment is controlled by the modifier <tt>\global</tt> and the
- *  parameter <tt>\globaldefs</tt>. Usually the assignment is acting on the
+ *  count parameter <tt>\globaldefs</tt>. Usually the assignment is acting on the
  *  current group only. if the integer parameter <tt>\globaldefs</tt> is not
  *  0 or the modifier <tt>\global</tt> is given then the assignment is applied
  *  to all groups.

@@ -52,7 +52,7 @@ import de.dante.util.UnicodeChar;
  *  When <logo>TeX</logo> expands <tt>\csname</tt> it reads to the matching
  *  <tt>\endcsname</tt>, expanding tokens as it goes;
  *  only character tokens should remain after this expansion has taken place.
- *  Then the ``expansion'' of the entire <tt>\csname...\endcsname</tt> text
+ *  Then the ``expansion'' of the entire <tt>\csname</tt>...<tt>\endcsname</tt> text
  *  will be a single control sequence token, defined to be like <tt>\relax</tt>
  *  if its meaning is currently undefined.
  * </p>
