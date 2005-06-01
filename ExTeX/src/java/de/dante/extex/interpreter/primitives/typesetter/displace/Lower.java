@@ -45,7 +45,7 @@ import de.dante.util.GeneralException;
  *      &rarr; <tt>\lower</tt> {@linkplain
  *        de.dante.extex.interpreter.type.dimen#Dimen(Context,TokenSource)
  *        &lang;dimen&rang;} {@linkplain
- *        de.dante.extex.interpreter.TokenSource#getBox(Context, de.dante.extex.typesetter.Typesetter)
+ *        de.dante.extex.interpreter.TokenSource#getBox(Context,de.dante.extex.typesetter.Typesetter)
  *        &lang;box&rang;} </pre>
  * </p>
  * <p>

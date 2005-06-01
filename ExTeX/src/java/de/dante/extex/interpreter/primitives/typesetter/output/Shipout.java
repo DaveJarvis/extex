@@ -47,7 +47,7 @@ import de.dante.util.GeneralException;
  *  <pre class="syntax">
  *    &lang;shipout&rang;
  *      &rarr; <tt>\shipout</tt> {@linkplain
- *        de.dante.extex.interpreter.TokenSource#getBox(Context, Typesetter)
+ *        de.dante.extex.interpreter.TokenSource#getBox(Context,Typesetter)
  *        &lang;box&rang;}  </pre>
  * </p>
  * <p>
