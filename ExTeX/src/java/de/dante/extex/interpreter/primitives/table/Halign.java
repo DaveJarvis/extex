@@ -57,7 +57,7 @@ import de.dante.util.configuration.ConfigurationException;
  *    &lang;box specification&rang;
  *        &rarr;
  *         | <tt>to</tt> &lang;rule dimension&rang;
- *         | <tt>spread</tt> &lang;rule dimension&rang;  </pre>
+ *         | <tt>spread</tt> &lang;rule dimension&rang;
  *
  *    &lang;rows&rang;
  *       &rarr;
