@@ -20,5 +20,10 @@ all: extex-users.pdf
 %.toc:%.tex
 	pdflatex $*
 
+Configurations/configurations.tex cfg:
+	perl Configurations/analyzeConfig ../../src/java/config/*.xml > Configurations/configurations.tex
+
+clean:
+	rm *.ilg *.out *.toc *.aux *.ilg *.log *.dvi *.ind
 
 #
