@@ -12,6 +12,7 @@ extex-users.pdf: cfg extex-users.tex
 %.pdf: %.toc %.ind
 	@pdflatex $*
 	@pdflatex $*
+	@rm $*.out
 
 %.ind: %.idx
 	@makeindex -s doc.ist $*
