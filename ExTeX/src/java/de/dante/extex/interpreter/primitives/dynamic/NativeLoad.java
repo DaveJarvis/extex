@@ -49,7 +49,7 @@ import de.dante.util.framework.logger.LogEnabled;
  *  The general form of this primitive is
  * <pre class="syntax">
  *   &lang;nativeload&rang;
- *       &rarr; \nativeload &lang;<i>type</i>&rang; &lang;<i>tokens</i>&rang; </pre>
+ *       &rarr; <tt>\nativeload</tt> &lang;<i>type</i>&rang; &lang;<i>tokens</i>&rang; </pre>
  * </p>
  * </doc>
  *
