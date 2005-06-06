@@ -48,12 +48,13 @@ import de.dante.util.UnicodeChar;
  * <p>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    <tt>\fontchardp</tt>    </pre>
+ *    &lang;fontchardp&rang;
+ *      &rarr; <tt>\fontchardp</tt> &lang;font&rang; &lang;number&rang;  </pre>
  * </p>
  * <p>
  *  Examples:
  *  <pre class="TeXSample">
- *    \fontchardp\tenrm `a  </pre>
+ *    \dimen0 = \fontchardp\tenrm `a  </pre>
  * </p>
  * </doc>
  *
