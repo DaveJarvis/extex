@@ -26,7 +26,7 @@ import de.dante.extex.interpreter.exception.InterpreterException;
  * This is an interface which describes the feature to be convertibe into a
  * font.
  *
- * <doc type="syntax" name="font">
+ * <doc type="interface" name="font">
  * <p>
  *  TODO gene: missing documentation
  * </p>
