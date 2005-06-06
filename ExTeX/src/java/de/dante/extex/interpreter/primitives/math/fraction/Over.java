@@ -30,7 +30,7 @@ import de.dante.extex.typesetter.listMaker.math.NoadConsumer;
 /**
  * This class provides an implementation for the primitive <code>\over</code>.
  *
- * <doc name="span">
+ * <doc name="over">
  * <h3>The Primitive <tt>\over</tt></h3>
  * <p>
  *  TODO missing documentation

@@ -34,7 +34,7 @@ import de.dante.util.GeneralException;
  * This class provides an implementation for the primitive
  * <code>&#x5c;unhcopy</code>.
  *
- * <doc name="&#x5c;unhcopy">
+ * <doc name="unhcopy">
  * <h3>The Primitive <tt>&#x5c;unhcopy</tt></h3>
  * <p>
  *  TODO missing documentation

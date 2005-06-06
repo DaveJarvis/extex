@@ -29,10 +29,11 @@ import de.dante.extex.typesetter.type.noad.Noad;
 import de.dante.extex.typesetter.type.noad.VCenterNoad;
 
 /**
- * This class provides an implementation for the primitive <code>\\</code>.
+ * This class provides an implementation for the primitive
+ * <code>\vcenter</code>.
  *
- * <doc name="\\">
- * <h3>The Primitive <tt>\\</tt></h3>
+ * <doc name="vcenter">
+ * <h3>The Primitive <tt>\vcenter</tt></h3>
  * <p>
  *  TODO missing documentation
  * </p>
@@ -40,12 +41,12 @@ import de.dante.extex.typesetter.type.noad.VCenterNoad;
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;vcenter&rang;
- *       &rarr; <tt>\\</tt>  </pre>
+ *       &rarr; <tt>\vcenter</tt>  </pre>
  * </p>
  * <p>
  *  Examples:
  *  <pre class="TeXSample">
- *    \\  </pre>
+ *    \vcenter  </pre>
  * </p>
  * </doc>
  *

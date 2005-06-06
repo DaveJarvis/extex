@@ -41,7 +41,7 @@ import de.dante.util.framework.logger.LogEnabled;
 /**
  * This class provides an implementation for the primitive <code>\vsplit</code>.
  *
- * <doc name="\vsplit">
+ * <doc name="vsplit">
  * <h3>The Primitive <tt>\vsplit</tt></h3>
  * <p>
  *  TODO missing documentation

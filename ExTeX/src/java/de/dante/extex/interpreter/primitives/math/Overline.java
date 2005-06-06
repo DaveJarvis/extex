@@ -29,9 +29,10 @@ import de.dante.extex.typesetter.type.noad.Noad;
 import de.dante.extex.typesetter.type.noad.OverlinedNoad;
 
 /**
- * This class provides an implementation for the primitive <code>\overline</code>.
+ * This class provides an implementation for the primitive
+ * <code>\overline</code>.
  *
- * <doc name="span">
+ * <doc name="overline">
  * <h3>The Primitive <tt>\overline</tt></h3>
  * <p>
  *  TODO missing documentation

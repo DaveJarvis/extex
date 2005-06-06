@@ -32,7 +32,7 @@ import de.dante.extex.typesetter.type.node.KernNode;
  * This class provides an implementation for the primitive
  * <code>&#x5c;unkern</code>.
  *
- * <doc name="penalty">
+ * <doc name="unkern">
  * <h3>The Primitive <tt>&#x5c;unkern</tt></h3>
  * <p>
  * </p>

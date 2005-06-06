@@ -32,7 +32,7 @@ import de.dante.extex.typesetter.listMaker.math.EqConsumer;
 /**
  * This class provides an implementation for the primitive <code>\leqno</code>.
  *
- * <doc name="span">
+ * <doc name="leqno">
  * <h3>The Primitive <tt>\leqno</tt></h3>
  * <p>
  *  TODO missing documentation

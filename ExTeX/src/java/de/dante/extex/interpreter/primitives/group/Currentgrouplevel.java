@@ -41,7 +41,7 @@ import de.dante.extex.typesetter.Typesetter;
  * This class provides an implementation for the primitive
  * <code>\currentgrouplevel</code>.
  *
- * <doc name="begingroup">
+ * <doc name="currentgrouplevel">
  * <h3>The Primitive <tt>\currentgrouplevel</tt></h3>
  * <p>
  *  ...

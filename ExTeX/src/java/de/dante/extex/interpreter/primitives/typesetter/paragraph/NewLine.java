@@ -29,7 +29,7 @@ import de.dante.extex.typesetter.Typesetter;
 /**
  * This class provides an implementation for the primitive <code>\\</code>.
  *
- * <doc name="\\">
+ * <doc name="\">
  * <h3>The Primitive <tt>\\</tt></h3>
  * <p>
  *  TODO missing documentation

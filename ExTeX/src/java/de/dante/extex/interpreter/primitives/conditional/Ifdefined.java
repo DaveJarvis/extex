@@ -29,7 +29,7 @@ import de.dante.extex.typesetter.Typesetter;
 /**
  * This class provides an implementation for the primitive <code>\if</code>.
  *
- * <doc name="unless">
+ * <doc name="ifdefined">
  * <h3>The Primitive <tt>&#x005c;unless</tt></h3>
  * <p><strong>Copied of the eTeX reference</strong>.</p>
  * <p>

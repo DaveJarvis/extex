@@ -32,7 +32,7 @@ import de.dante.util.GeneralException;
 /**
  * This class provides an implementation for the primitive <code>\vfilneg</code>.
  *
- * <doc name="vfil">
+ * <doc name="vfilneg">
  * <h3>The Primitive <tt>\vfilneg</tt></h3>
  * <p>
  *  TODO missing documentation

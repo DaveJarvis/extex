@@ -34,7 +34,7 @@ import de.dante.util.GeneralException;
  * This class provides an implementation for the primitive
  * <code>&#x5c;unhbox</code>.
  *
- * <doc name="&#x5c;unhbox">
+ * <doc name="unhbox">
  * <h3>The Primitive <tt>&#x5c;unhbox</tt></h3>
  * <p>
  *  TODO missing documentation

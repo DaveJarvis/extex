@@ -167,7 +167,7 @@ public interface TokenSource {
     /**
      * Parse the specification of a font.
      *
-     * <doc type="syntax" name="box">
+     * <doc type="syntax" name="font">
      * This method parses the following syntactic entity:
      * <pre class="syntax">
      *   &lang;font&rang; </pre>

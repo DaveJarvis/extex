@@ -29,7 +29,7 @@ import de.dante.extex.typesetter.Typesetter;
 /**
  * This class provides an implementation for the primitive <code>\indent</code>.
  *
- * <doc name="\indent">
+ * <doc name="indent">
  * <h3>The Primitive <tt>\indent</tt></h3>
  * <p>
  *  TODO missing documentation
