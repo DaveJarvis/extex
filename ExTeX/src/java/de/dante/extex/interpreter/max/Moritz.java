@@ -202,6 +202,9 @@ public abstract class Moritz
      * new stream before resorting to the previous streams.
      *
      * @param theStream the new stream to read from
+     *
+     * @see de.dante.extex.interpreter.TokenSource#addStream(
+     *      de.dante.extex.scanner.stream.TokenStream)
      */
     public void addStream(final TokenStream theStream) {
 
@@ -686,7 +689,7 @@ public abstract class Moritz
      * could be read. If all stream are at the end then <code>null</code> is
      * returned.
      * <p>
-     * Whenever a file stream is closed then the tokens from the
+     * Whenever a file stream is closed then the tokens from the ...
      * </p>
      *
      * @param context the interpreter context
