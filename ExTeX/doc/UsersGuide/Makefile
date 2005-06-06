@@ -27,10 +27,10 @@ extex-users.pdf: cfg $(MANUAL).tex
 	@pdflatex $*
 
 Configurations/configurations.tex cfg:
-	@perl Configurations/analyzeConfig			\
-		-cp $(SRCDIR)					\
-		-out  Configurations/configurations.tex		\
-		-prim Configurations/primitives.tex		\
+	@perl bin/analyzeConfig				\
+		-cp   $(SRCDIR)					\
+		-out  tmp/configurations.tex	\
+		-prim tmp/primitives.tex		\
 		$(SRCDIR)/config/*.xml 
 
 deploy: $(MANUAL).pdf
