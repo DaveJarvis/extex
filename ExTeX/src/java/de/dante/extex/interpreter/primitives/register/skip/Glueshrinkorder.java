@@ -50,7 +50,7 @@ import de.dante.extex.typesetter.Typesetter;
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;glueshrinkorder&rang;
- *      &rarr; <tt>\glueshrinkorder</tt> ... </pre>
+ *      &rarr; <tt>\glueshrinkorder</tt> &lang;glue&rang; </pre>
  * </p>
  * <h4>Examples</h4>
  * <pre class="TeXSample">
