@@ -266,7 +266,7 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
 
     /**
      * Setter for the value.
-     * The order of the arument is ignored.
+     * The order of the argument is ignored.
      *
      * @param d the new value
      */
