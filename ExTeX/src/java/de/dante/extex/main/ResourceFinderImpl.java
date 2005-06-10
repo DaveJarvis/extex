@@ -109,8 +109,14 @@ public class ResourceFinderImpl
     public InputStream findResource(final String name, final String type)
             throws ConfigurationException {
 
-        String skip = configuration.findConfiguration(type)
-                .getAttribute("skip");
+        Configuration cfg = configuration.findConfiguration(type);
+        if (cfg == null) {
+            cfg = configuration.findConfiguration("default");
+            if (cfg == null) {
+                return null;
+            }
+        }
+        String skip = cfg.getAttribute("skip");
         if (skip != null && Boolean.valueOf(skip).booleanValue()) {
             return null;
         }
