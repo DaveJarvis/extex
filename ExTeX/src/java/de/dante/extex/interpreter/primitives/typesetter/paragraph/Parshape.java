@@ -117,7 +117,7 @@ public class Parshape extends AbstractCode implements CountConvertible, Theable 
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        long n = source.scanInteger(context);
+        long n = source.scanInteger(context, typesetter);
         if (n <= 0) {
             context.setParshape(null);
         } else {

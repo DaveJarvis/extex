@@ -90,7 +90,7 @@ public class Penalty extends AbstractCode {
 
         long penalty = 0;
         try {
-            penalty = source.scanInteger(context);
+            penalty = source.scanInteger(context, typesetter);
             typesetter.add(new PenaltyNode(penalty));
         } catch (GeneralException e) {
             throw new InterpreterException(e);

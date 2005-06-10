@@ -53,7 +53,7 @@ import de.dante.extex.typesetter.Typesetter;
  *        &lang;8-bit&nbsp;number&rang;} {@linkplain
  *        de.dante.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        de.dante.extex.interpreter.TokenSource#scanInteger(Context)
+ *        de.dante.extex.interpreter.TokenSource#scanInteger(Context, Typesetter)
  *        &lang;number&rang;}</pre>
  * </p>
  * <p>

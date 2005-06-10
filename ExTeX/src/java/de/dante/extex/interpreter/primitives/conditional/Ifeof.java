@@ -40,10 +40,10 @@ import de.dante.extex.typesetter.Typesetter;
  *  <pre class="syntax">
  *    &lang;ifeof&rang;
  *      &rarr; <tt>\ifeof</tt> {@linkplain
- *        de.dante.extex.interpreter.TokenSource#scanInteger(Context)
+ *        de.dante.extex.interpreter.TokenSource#scanInteger(Context, Typesetter)
  *        &lang;number&rang;} &lang;true text&rang; <tt>\fi</tt>
  *      | <tt>\ifeof</tt> {@linkplain
- *        de.dante.extex.interpreter.TokenSource#scanInteger(Context)
+ *        de.dante.extex.interpreter.TokenSource#scanInteger(Context, Typesetter)
  *        &lang;number&rang;} &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt> </pre>
  * </p>
  * <p>
@@ -78,7 +78,7 @@ public class Ifeof extends AbstractIf {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        String key = AbstractFileCode.scanInFileKey(context, source);
+        String key = AbstractFileCode.scanInFileKey(context, source, typesetter);
         InFile file = context.getInFile(key);
         return (file == null || file.isEof());
     }

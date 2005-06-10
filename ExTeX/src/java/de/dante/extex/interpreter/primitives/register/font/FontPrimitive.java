@@ -86,7 +86,7 @@ import de.dante.util.framework.logger.LogEnabled;
  *
  *    &lang;option&rang;
  *      &rarr; [scaled] {@linkplain
- *        de.dante.extex.interpreter.TokenSource#scanInteger(Context)
+ *        de.dante.extex.interpreter.TokenSource#scanInteger(Context, Typesetter)
  *        &lang;number&rang;}
  *       | [at] &lang;size...&rang;
  *       | [noligatures]
@@ -187,7 +187,7 @@ public class FontPrimitive extends AbstractAssignment
             }
 
         } else if (source.getKeyword(context, "scaled")) {
-            long s = source.scanInteger(context);
+            long s = source.scanInteger(context, typesetter);
             if (s <= 0) {
                 throw new HelpingException(getLocalizer(), "TTP.IllegalMag",
                         Long.toString(s), "32768"); //TODO gene: max ok?

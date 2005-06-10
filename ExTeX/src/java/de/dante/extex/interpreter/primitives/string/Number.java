@@ -77,7 +77,7 @@ public class Number extends AbstractCode implements ExpandableCode {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        long n = source.scanInteger(context);
+        long n = source.scanInteger(context, typesetter);
         source.push(new Tokens(context, Long.toString(n)));
     }
 
@@ -92,7 +92,7 @@ public class Number extends AbstractCode implements ExpandableCode {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        long n = source.scanInteger(context);
+        long n = source.scanInteger(context, typesetter);
         source.push(new Tokens(context, Long.toString(n)));
     }
 }

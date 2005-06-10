@@ -80,7 +80,7 @@ public class Read extends AbstractCode {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        String key = AbstractFileCode.scanInFileKey(context, source);
+        String key = AbstractFileCode.scanInFileKey(context, source, typesetter);
 
         if (!source.getKeyword(context, "to")) {
             throw new HelpingException(getLocalizer(), "TTP.MissingToForRead");

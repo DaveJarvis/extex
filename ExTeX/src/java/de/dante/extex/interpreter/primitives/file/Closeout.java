@@ -47,7 +47,7 @@ import de.dante.util.framework.logger.LogEnabled;
  *  <pre class="syntax">
  *    &lang;closeout&rang;
  *       &rarr; <tt>\closeout</tt> {@linkplain
- *       de.dante.extex.interpreter.TokenSource#scanInteger(Context)
+ *       de.dante.extex.interpreter.TokenSource#scanInteger(Context, Typesetter)
  *       &lang;number&rang;} </pre>
  * </p>
  * <p>
@@ -108,7 +108,7 @@ public class Closeout extends AbstractCode implements LogEnabled {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        String key = AbstractFileCode.scanOutFileKey(context, source);
+        String key = AbstractFileCode.scanOutFileKey(context, source, typesetter);
 
         if (prefix.isImmediate()) {
             OutFile file = context.getOutFile(key);

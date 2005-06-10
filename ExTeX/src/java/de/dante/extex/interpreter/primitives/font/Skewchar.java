@@ -100,7 +100,7 @@ public class Skewchar extends AbstractAssignment
         try {
             Font font = source.getFont(context);
             source.getOptionalEquals(context);
-            long c = source.scanInteger(context);
+            long c = source.scanInteger(context, typesetter);
             if (c < 0) {
                 font.setSkewChar(null);
             } else {

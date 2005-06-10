@@ -111,7 +111,7 @@ public class Count implements Serializable, FixedCount {
         }
         source.push(t);
 
-        return source.scanInteger(context);
+        return source.scanInteger(context, typesetter);
     }
 
     /**

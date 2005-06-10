@@ -139,7 +139,7 @@ public class Setlanguage extends AbstractBox {
             Tokens tokens = source.getTokens(context);
             context.setToks("lang", tokens, false);
         } else {
-            long no = source.scanInteger(context);
+            long no = source.scanInteger(context, typesetter);
             context.setCount("language", no, false);
             context.setToks("lang", Tokens.EMPTY, false);
         }

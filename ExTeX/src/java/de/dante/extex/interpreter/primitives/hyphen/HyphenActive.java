@@ -74,7 +74,7 @@ public class HyphenActive extends AbstractHyphenationCode implements Theable {
 
         Language table = getHyphenationTable(context);
         source.getOptionalEquals(context);
-        boolean active = (source.scanInteger(context) == 0);
+        boolean active = (source.scanInteger(context, typesetter) == 0);
         try {
             table.setHyphenActive(active);
         } catch (HyphenationException e) {

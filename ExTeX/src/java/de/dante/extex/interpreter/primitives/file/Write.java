@@ -136,7 +136,7 @@ public class Write extends AbstractCode
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        String key = AbstractFileCode.scanOutFileKey(context, source);
+        String key = AbstractFileCode.scanOutFileKey(context, source, typesetter);
 
         if (prefix.isImmediate()) {
 

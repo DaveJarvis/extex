@@ -46,7 +46,7 @@ import de.dante.extex.typesetter.Typesetter;
  *  <pre class="syntax">
  *    &lang;romannumeral&rang;
  *        &rarr; <tt>\romannumeral</tt> {@linkplain
- *           de.dante.extex.interpreter.TokenSource#scanInteger(Context)
+ *           de.dante.extex.interpreter.TokenSource#scanInteger(Context, Typesetter)
  *           &lang;number&rang;} </pre>
  * </p>
  * <p>
@@ -101,7 +101,7 @@ public class Romannumeral extends AbstractCode implements ExpandableCode {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        long n = source.scanInteger(context);
+        long n = source.scanInteger(context, typesetter);
         Tokens toks = new Tokens();
         TokenFactory factory = context.getTokenFactory();
         char[] magic = {'m', '2', 'd', '5', 'c', '2', 'l', '5', 'x', '2', 'v',

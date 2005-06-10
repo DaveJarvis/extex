@@ -72,7 +72,7 @@ public class Openout extends AbstractFileCode {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        String key = AbstractFileCode.scanOutFileKey(context, source);
+        String key = AbstractFileCode.scanOutFileKey(context, source, typesetter);
 
         source.getOptionalEquals(context);
         String name = scanFileName(context, source);

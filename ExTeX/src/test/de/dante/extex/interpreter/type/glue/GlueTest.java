@@ -259,9 +259,9 @@ public class GlueTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.TokenSource#scanInteger(de.dante.extex.interpreter.context.Context)
+         * @see de.dante.extex.interpreter.TokenSource#scanInteger(de.dante.extex.interpreter.context.Context, Typesetter)
          */
-        public long scanInteger(final Context context)
+        public long scanInteger(final Context context, Typesetter typesetter)
                 throws InterpreterException,
                     MissingNumberException {
 

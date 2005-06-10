@@ -41,10 +41,10 @@ import de.dante.extex.typesetter.Typesetter;
  *  <pre class="syntax">
  *    &lang;ifhbox&rang;
  *      &rarr; <tt>\ifhbox</tt> {@linkplain
- *        de.dante.extex.interpreter.TokenSource#scanInteger(Context)
+ *        de.dante.extex.interpreter.TokenSource#scanInteger(Context, Typesetter)
  *        &lang;number&rang;} &lang;true text&rang; <tt>\fi</tt>
  *      | <tt>\ifhbox</tt> {@linkplain
- *        de.dante.extex.interpreter.TokenSource#scanInteger(Context)
+ *        de.dante.extex.interpreter.TokenSource#scanInteger(Context, Typesetter)
  *        &lang;number&rang;} &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt> </pre>
  * </p>
  * <p>

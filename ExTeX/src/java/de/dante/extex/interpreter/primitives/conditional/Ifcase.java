@@ -86,7 +86,7 @@ public class Ifcase extends AbstractIf {
             throws InterpreterException {
 
         //prefix.clear(); //TODO gene most probably not needed
-        long val = source.scanInteger(context);
+        long val = source.scanInteger(context, typesetter);
         if (val < 0) {
             if (skipToElseOrFi(context, source)) {
                 context.pushConditional(source.getLocator(), true,
