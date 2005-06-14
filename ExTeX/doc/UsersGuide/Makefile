@@ -26,10 +26,10 @@ extex-users.pdf: cfg $(MANUAL).tex
 %.toc: %.tex
 	@pdflatex $*
 
-Configurations/configurations.tex cfg:
-	@perl bin/analyzeConfig				\
-		-cp   $(SRCDIR)					\
-		-out  tmp/configurations.tex	\
+Configurations/configurations.tex cfg: bin/analyzeConfig
+	perl bin/analyzeConfig				\
+		-cp   $(SRCDIR)				\
+		-out  tmp/configurations.tex		\
 		-prim tmp/primitives.tex		\
 		$(SRCDIR)/config/*.xml 
 
