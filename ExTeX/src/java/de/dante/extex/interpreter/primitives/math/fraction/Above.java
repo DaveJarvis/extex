@@ -76,7 +76,7 @@ public class Above extends AbstractMathCode {
             throws InterpreterException {
 
         NoadConsumer nc = getListMaker(context, typesetter);
-        Dimen d = new Dimen(context, source);
+        Dimen d = new Dimen(context, source, typesetter);
 
         nc.switchToFraction(null, null, d);
     }

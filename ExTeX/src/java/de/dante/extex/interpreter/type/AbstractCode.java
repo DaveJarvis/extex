@@ -180,4 +180,12 @@ public class AbstractCode implements Code, Localizable, Serializable {
 
         this.name = theName;
     }
+
+    /**
+     * @see java.lang.Object#toString()
+     */
+    public String toString() {
+
+        return "\\" + name;
+    }
 }

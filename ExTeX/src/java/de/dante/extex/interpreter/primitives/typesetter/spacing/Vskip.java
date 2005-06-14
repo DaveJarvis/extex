@@ -84,7 +84,7 @@ public class Vskip extends AbstractVerticalCode implements VerticalSkip {
 
         ensureVerticalMode(typesetter);
         try {
-            typesetter.addGlue(new Glue(source, context));
+            typesetter.addGlue(new Glue(source, context, typesetter));
         } catch (GeneralException e) {
             throw new InterpreterException(e);
         }
@@ -93,12 +93,13 @@ public class Vskip extends AbstractVerticalCode implements VerticalSkip {
     /**
      * @see de.dante.extex.interpreter.primitives.typesetter.spacing.VerticalSkip#verticalSkip(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource)
+     *      de.dante.extex.interpreter.TokenSource,
+     *      de.dante.extex.typesetter.Typesetter)
      */
-    public Glue verticalSkip(final Context context, final TokenSource source)
-            throws InterpreterException {
+    public Glue verticalSkip(final Context context, final TokenSource source,
+            final Typesetter typesetter) throws InterpreterException {
 
-        return new Glue(source, context);
+        return new Glue(source, context, typesetter);
     }
 
 }

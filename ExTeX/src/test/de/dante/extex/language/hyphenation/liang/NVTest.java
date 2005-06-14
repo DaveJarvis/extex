@@ -31,6 +31,7 @@ import de.dante.extex.font.Ligature;
 import de.dante.extex.font.type.BoundingBox;
 import de.dante.extex.font.type.tfm.TFMFixWord;
 import de.dante.extex.interpreter.Namespace;
+import de.dante.extex.interpreter.context.ModifiableTypesettingContext;
 import de.dante.extex.interpreter.context.TypesettingContext;
 import de.dante.extex.interpreter.context.TypesettingContextImpl;
 import de.dante.extex.interpreter.type.count.Count;
@@ -570,7 +571,7 @@ public class NVTest extends TestCase {
         tc = new TypesettingContextImpl(font);
         ModifiableLanguage lang = new BaseHyphenationTable();
         lang.setLigatureBuilder(new LigatureBuilderImpl());
-        tc.setLanguage(lang);
+        ((ModifiableTypesettingContext)tc).setLanguage(lang);
     }
 
     /**

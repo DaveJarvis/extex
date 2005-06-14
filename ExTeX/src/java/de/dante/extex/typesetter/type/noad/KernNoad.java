@@ -24,6 +24,7 @@ import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.noad.util.MathContext;
 import de.dante.extex.typesetter.type.node.ExplicitKernNode;
+import de.dante.util.configuration.ConfigurationException;
 
 /**
  * This Noad carries a kern value in math units.
@@ -60,7 +61,7 @@ public class KernNoad extends AbstractNoad {
      *      de.dante.extex.typesetter.TypesetterOptions)
      */
     public void typeset(final NodeList list, final MathContext mathContext,
-            final TypesetterOptions context) {
+            final TypesetterOptions context) throws ConfigurationException {
 
         list.add(new ExplicitKernNode(mathContext.convert(kern)));
     }

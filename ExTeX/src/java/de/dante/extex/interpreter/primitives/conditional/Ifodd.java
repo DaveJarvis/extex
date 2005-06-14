@@ -37,10 +37,10 @@ import de.dante.extex.typesetter.Typesetter;
  *  <pre class="syntax">
  *    &lang;ifodd&rang;
  *      &rarr; <tt>\ifodd</tt> {@linkplain
- *        de.dante.extex.interpreter.TokenSource#scanInteger(Context, Typesetter)
+ *        de.dante.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
  *        &lang;number&rang;} &lang;true text&rang; <tt>\fi</tt>
  *      | <tt>\ifodd</tt> {@linkplain
- *        de.dante.extex.interpreter.TokenSource#scanInteger(Context, Typesetter)
+ *        de.dante.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
  *        &lang;number&rang;} &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt> </pre>
  * </p>
  * <p>

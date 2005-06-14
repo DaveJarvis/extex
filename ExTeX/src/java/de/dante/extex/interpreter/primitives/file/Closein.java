@@ -42,7 +42,7 @@ import de.dante.extex.typesetter.Typesetter;
  *  <pre class="syntax">
  *    &lang;closein&rang;
  *       &rarr; <tt>\closein</tt> {@linkplain
- *       de.dante.extex.interpreter.TokenSource#scanInteger(Context, Typesetter)
+ *       de.dante.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
  *       &lang;number&rang;} </pre>
  * </p>
  * <p>

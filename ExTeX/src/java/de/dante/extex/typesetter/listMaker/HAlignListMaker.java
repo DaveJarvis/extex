@@ -39,6 +39,7 @@ import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.node.HorizontalListNode;
 import de.dante.extex.typesetter.type.node.VerticalListNode;
+import de.dante.util.configuration.ConfigurationException;
 
 /**
  * This class provides a list maker for horizontal alignments.
@@ -211,7 +212,8 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
      * @see de.dante.extex.typesetter.ListMaker#complete(TypesetterOptions)
      */
     public NodeList complete(final TypesetterOptions context)
-            throws TypesetterException {
+            throws TypesetterException,
+                ConfigurationException {
 
         NodeList result = new VerticalListNode();
         NodeList nl;
@@ -342,11 +344,14 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
 
     /**
      * @see de.dante.extex.typesetter.ListMaker#tab(
-     *      Context,
-     *      TokenSource, de.dante.extex.scanner.type.Token)
+     *      de.dante.extex.interpreter.context.Context,
+     *      de.dante.extex.interpreter.TokenSource,
+     *      de.dante.extex.scanner.type.Token)
      */
     public void tab(final Context context, final TokenSource source,
-            final Token token) throws TypesetterException {
+            final Token token)
+            throws TypesetterException,
+                ConfigurationException {
 
         if (col >= line.length) {
             new HelpingException(getLocalizer(), "TTP.ExtraAlignTab", token

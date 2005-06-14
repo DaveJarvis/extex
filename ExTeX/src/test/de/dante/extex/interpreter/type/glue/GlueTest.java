@@ -50,7 +50,7 @@ import de.dante.util.observer.NotObservableException;
 public class GlueTest extends TestCase {
 
     /**
-     * TODO gene: missing JavaDoc.
+     * This is a mock implementation of a Context for these tests.
      *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision$
@@ -68,7 +68,7 @@ public class GlueTest extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc.
+     * This is a mock implementation of a TokenSource for these tests.
      *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision$
@@ -373,6 +373,6 @@ public class GlueTest extends TestCase {
 
         TokenSource source = new MockTokenSource();
         Context context = new MContext();
-        new Glue(source, context);
+        new Glue(source, context, null);
     }
 }

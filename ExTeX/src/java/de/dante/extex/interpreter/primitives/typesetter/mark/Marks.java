@@ -28,6 +28,7 @@ import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.type.node.MarkNode;
 import de.dante.util.GeneralException;
+import de.dante.util.configuration.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive
@@ -81,6 +82,8 @@ public class Marks extends AbstractCode {
         try {
             typesetter.add(new MarkNode(toks, index));
         } catch (GeneralException e) {
+            throw new InterpreterException(e);
+        } catch (ConfigurationException e) {
             throw new InterpreterException(e);
         }
     }

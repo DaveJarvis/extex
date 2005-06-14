@@ -74,7 +74,7 @@ public class Prevdepth extends AbstractCode {
             throws InterpreterException {
 
         source.getOptionalEquals(context);
-        Dimen pd = new Dimen(context, source);
+        Dimen pd = new Dimen(context, source, typesetter);
         try {
             typesetter.setPrevDepth(pd);
         } catch (GeneralException e) {

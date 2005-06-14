@@ -102,7 +102,7 @@ public class Valign extends AbstractAlign {
         Dimen height = null;
 
         if (source.getKeyword(context, "to")) {
-            height = new Dimen(context, source);
+            height = new Dimen(context, source, typesetter);
         }
         Token t = source.getToken(context);
         if (t == null) {

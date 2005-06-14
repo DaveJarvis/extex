@@ -84,7 +84,7 @@ public class Ifdim extends AbstractIf {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        long x = new Dimen(context, source).getValue();
+        long x = new Dimen(context, source, typesetter).getValue();
         Token rel = source.getToken(context);
         if (rel == null) {
             throw new EofException(printableControlSequence(context));
@@ -92,11 +92,11 @@ public class Ifdim extends AbstractIf {
         if (rel.getCatcode() == Catcode.OTHER) {
             switch (rel.getChar().getCodePoint()) {
                 case '<':
-                    return (x < new Dimen(context, source).getValue());
+                    return (x < new Dimen(context, source, typesetter).getValue());
                 case '=':
-                    return (x == new Dimen(context, source).getValue());
+                    return (x == new Dimen(context, source, typesetter).getValue());
                 case '>':
-                    return (x > new Dimen(context, source).getValue());
+                    return (x > new Dimen(context, source, typesetter).getValue());
                 default:
             // Fal through to error handling
             }

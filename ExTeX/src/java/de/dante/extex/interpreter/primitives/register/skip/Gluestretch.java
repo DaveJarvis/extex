@@ -78,7 +78,7 @@ public class Gluestretch extends AbstractCode
     public long convertDimen(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
 
-        Glue glue = new Glue(source, context);
+        Glue glue = new Glue(source, context, typesetter);
         return glue.getStretch().getValue();
     }
 

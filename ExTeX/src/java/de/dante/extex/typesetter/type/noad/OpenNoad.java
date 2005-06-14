@@ -22,6 +22,7 @@ package de.dante.extex.typesetter.type.noad;
 import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.noad.util.MathContext;
+import de.dante.util.configuration.ConfigurationException;
 
 /**
  * This Noad represents an open delimiter.
@@ -61,7 +62,7 @@ public class OpenNoad extends AbstractNucleusNoad {
      *      de.dante.extex.typesetter.TypesetterOptions)
      */
     public void typeset(final NodeList list, final MathContext mathContext,
-            final TypesetterOptions context) {
+            final TypesetterOptions context) throws ConfigurationException {
 
         //TODO gene: typeset() unimplemented
         throw new RuntimeException("unimplemented");

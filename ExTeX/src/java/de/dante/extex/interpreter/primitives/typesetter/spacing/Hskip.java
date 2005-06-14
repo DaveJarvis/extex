@@ -77,7 +77,7 @@ public class Hskip extends AbstractHorizontalCode {
             throws InterpreterException {
 
         ensureHorizontalMode(typesetter);
-        Glue g = new Glue(source, context);
+        Glue g = new Glue(source, context, typesetter);
         try {
             typesetter.addGlue(g);
         } catch (GeneralException e) {

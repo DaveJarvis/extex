@@ -35,6 +35,7 @@ import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.util.GeneralException;
+import de.dante.util.configuration.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive <code>\vbox</code>.
@@ -110,6 +111,8 @@ public class Vbox extends AbstractCode implements Boxable {
             typesetter.add(b.getNodes());
         } catch (GeneralException e) {
             throw new InterpreterException(e);
+        } catch (ConfigurationException e) {
+            throw new InterpreterException(e);
         }
     }
 
@@ -125,11 +128,11 @@ public class Vbox extends AbstractCode implements Boxable {
         Box box;
         try {
             if (source.getKeyword(context, "to")) {
-                Dimen d = new Dimen(context, source);
+                Dimen d = new Dimen(context, source, typesetter);
                 box = constructBox(context, source, typesetter);
                 box.setHeight(d);
             } else if (source.getKeyword(context, "spread")) {
-                Dimen d = new Dimen(context, source);
+                Dimen d = new Dimen(context, source, typesetter);
                 box = constructBox(context, source, typesetter);
                 box.spreadHeight(d);
             } else {

@@ -22,6 +22,7 @@ import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.noad.util.MathContext;
+import de.dante.util.configuration.ConfigurationException;
 
 
 /**
@@ -107,7 +108,7 @@ public class NodeNoad implements Noad {
      *      de.dante.extex.typesetter.TypesetterOptions)
      */
     public void typeset(final NodeList list, final MathContext mathContext,
-            final TypesetterOptions context) {
+            final TypesetterOptions context) throws ConfigurationException {
 
         list.add(node);
     }

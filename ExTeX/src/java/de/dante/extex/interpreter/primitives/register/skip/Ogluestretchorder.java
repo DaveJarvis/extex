@@ -64,7 +64,7 @@ public class Ogluestretchorder extends AbstractCode
     public long convertCount(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
 
-        Glue glue = new Glue(source, context);
+        Glue glue = new Glue(source, context, typesetter);
         return glue.getStretch().getOrder();
     }
 

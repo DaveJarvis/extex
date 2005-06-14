@@ -26,6 +26,7 @@ import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.AbstractCode;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.GeneralException;
+import de.dante.util.configuration.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive <code>\par</code>.
@@ -77,6 +78,8 @@ public class Par extends AbstractCode {
         try {
             typesetter.par();
         } catch (GeneralException e) {
+            throw new InterpreterException(e);
+        } catch (ConfigurationException e) {
             throw new InterpreterException(e);
         }
     }

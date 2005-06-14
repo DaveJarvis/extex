@@ -23,6 +23,7 @@ import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.glue.Glue;
+import de.dante.extex.typesetter.Typesetter;
 
 /**
  * This interfac describes macros which produce a vertical glue.
@@ -34,15 +35,15 @@ public interface VerticalSkip {
 
     /**
      * This method acquires a vertical glue.
-     *
      * @param context the interpreter context
      * @param source the source for new tokens
+     * @param typesetter TODO
      *
      * @return the amount of vertical skip
      *
      * @throws InterpreterException in case of an error
      */
-    Glue verticalSkip(Context context, TokenSource source)
+    Glue verticalSkip(Context context, TokenSource source, Typesetter typesetter)
             throws InterpreterException;
 
 }

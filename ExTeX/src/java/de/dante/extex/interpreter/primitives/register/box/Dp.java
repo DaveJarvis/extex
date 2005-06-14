@@ -141,7 +141,7 @@ public class Dp extends Setbox
 
         Box box = context.getBox(getKey(context, source));
         source.getOptionalEquals(context);
-        Dimen d = new Dimen(context, source);
+        Dimen d = new Dimen(context, source, typesetter);
 
         if (box != null) {
             box.setDepth(d);

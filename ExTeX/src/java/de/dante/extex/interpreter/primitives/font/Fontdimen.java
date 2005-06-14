@@ -111,7 +111,7 @@ public class Fontdimen extends AbstractAssignment
         source.skipSpace();
         Font font = source.getFont(context);
         source.getOptionalEquals(context);
-        Dimen size = new Dimen(context, source);
+        Dimen size = new Dimen(context, source, typesetter);
         font.setFontDimen(key, size);
     }
 

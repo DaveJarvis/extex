@@ -36,6 +36,7 @@ import de.dante.extex.scanner.type.Catcode;
 import de.dante.extex.scanner.type.Token;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.TypesetterOptions;
+import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.listMaker.InnerVerticalListMaker;
 import de.dante.extex.typesetter.listMaker.RestrictedHorizontalListMaker;
 import de.dante.extex.typesetter.type.NodeList;
@@ -109,7 +110,11 @@ public class Box implements BoxOrRule, Serializable {
 
         source.push(insert);
         source.executeGroup();
-        nodes = typesetter.complete((TypesetterOptions) context);
+        try {
+            nodes = typesetter.complete((TypesetterOptions) context);
+        } catch (ConfigurationException e) {
+            throw new InterpreterException(e);
+        }
     }
 
     /**

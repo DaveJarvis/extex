@@ -80,7 +80,7 @@ public class Abovewithdelims extends AbstractTeXDelimter {
         NoadConsumer nc = getListMaker(context, typesetter);
         MathDelimiter del1 = parseDelimiter(context, source);
         MathDelimiter del2 = parseDelimiter(context, source);
-        Dimen d = new Dimen(context, source);
+        Dimen d = new Dimen(context, source, typesetter);
         nc.switchToFraction(del1, del2, d);
     }
 

@@ -29,6 +29,7 @@ import de.dante.extex.interpreter.type.box.Box;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.util.GeneralException;
+import de.dante.util.configuration.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive
@@ -93,6 +94,8 @@ public class Unhbox extends AbstractBox {
                 try {
                     typesetter.add(nl.get(i));
                 } catch (GeneralException e) {
+                    throw new InterpreterException(e);
+                } catch (ConfigurationException e) {
                     throw new InterpreterException(e);
                 }
             }

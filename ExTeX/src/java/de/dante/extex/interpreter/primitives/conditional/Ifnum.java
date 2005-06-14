@@ -41,14 +41,14 @@ import de.dante.extex.typesetter.Typesetter;
  *  <pre class="syntax">
  *    &lang;ifnum&rang;
  *      &rarr; <tt>\ifnum</tt> {@linkplain
- *        de.dante.extex.interpreter.TokenSource#scanInteger(Context, Typesetter)
+ *        de.dante.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
  *        &lang;number&rang;} &lang;op&rang; {@linkplain
- *        de.dante.extex.interpreter.TokenSource#scanInteger(Context, Typesetter)
+ *        de.dante.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
  *        &lang;number&rang;} &lang;true text&rang; <tt>\fi</tt>
  *      | <tt>\ifodd</tt> {@linkplain
- *        de.dante.extex.interpreter.TokenSource#scanInteger(Context, Typesetter)
+ *        de.dante.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
  *        &lang;number&rang;} &lang;op&rang; {@linkplain
- *        de.dante.extex.interpreter.TokenSource#scanInteger(Context, Typesetter)
+ *        de.dante.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
  *        &lang;number&rang;} &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt>
  *
  *    &lang;op&rang;

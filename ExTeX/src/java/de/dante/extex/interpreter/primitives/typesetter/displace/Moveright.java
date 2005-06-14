@@ -29,6 +29,7 @@ import de.dante.extex.interpreter.type.box.Boxable;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.GeneralException;
+import de.dante.util.configuration.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive <code>\moveright</code>.
@@ -95,6 +96,8 @@ public class Moveright extends AbstractCode implements Boxable {
             typesetter.add(box.getNodes());
         } catch (GeneralException e) {
             throw new InterpreterException(e);
+        } catch (ConfigurationException e) {
+            throw new InterpreterException(e);
         }
     }
 
@@ -107,7 +110,7 @@ public class Moveright extends AbstractCode implements Boxable {
     public Box getBox(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
 
-        Dimen move = new Dimen(context, source);
+        Dimen move = new Dimen(context, source, typesetter);
         Box box = source.getBox(context, typesetter);
         move.add(box.getMove());
         box.setMove(move);

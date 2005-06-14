@@ -151,6 +151,8 @@ public class Write extends AbstractCode
                 typesetter.add(new WhatsItWriteNode(key, toks, source, this));
             } catch (TypesetterException e) {
                 throw new InterpreterException(e);
+            } catch (ConfigurationException e) {
+                throw new InterpreterException(e);
             }
         }
     }

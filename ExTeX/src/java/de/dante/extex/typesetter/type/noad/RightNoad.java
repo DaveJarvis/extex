@@ -23,6 +23,7 @@ import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.math.MathDelimiter;
 import de.dante.extex.typesetter.type.noad.util.MathContext;
+import de.dante.util.configuration.ConfigurationException;
 
 /**
  * This Noad carries a delimiter which is set on the right side of the math
@@ -73,7 +74,7 @@ public class RightNoad extends AbstractNoad {
      *      de.dante.extex.typesetter.TypesetterOptions)
      */
     public void typeset(final NodeList list, final MathContext mathContext,
-            final TypesetterOptions context) {
+            final TypesetterOptions context) throws ConfigurationException {
 
         delimiter.typeset(list, mathContext, context);
     }
