@@ -1102,7 +1102,7 @@ public class ExTeX {
         }
         context.setTypesettingContext(makeDefaultFont(fontConfiguration,
                 fontFactory));
-        context.getTypesettingContext().setLanguage(context.getLanguage("0"));
+        context.setTypesettingContext(context.getLanguage("0"));
 
         initializeStreams(interpreter, properties);
 
