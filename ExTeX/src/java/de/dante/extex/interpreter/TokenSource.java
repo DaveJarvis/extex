@@ -368,7 +368,7 @@ public interface TokenSource {
      * </p>
      * </doc>
      * @param context the interpreter context
-     * @param typesetter TODO
+     * @param typesetter the typesetter
      *
      * @return the value of the integer scanned
      *
