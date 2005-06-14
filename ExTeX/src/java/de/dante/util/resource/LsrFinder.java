@@ -372,7 +372,7 @@ public class LsrFinder
      *
      * @param path  the path for the ls-R file
      *
-     * @throws ConfigurationException if an error occured
+     * @throws ConfigurationException if an error occurred
      */
     private void load(final String path) throws ConfigurationException {
 
