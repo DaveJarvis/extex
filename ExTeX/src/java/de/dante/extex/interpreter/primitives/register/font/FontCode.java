@@ -69,7 +69,7 @@ public class FontCode extends AbstractCode implements FontConvertible, Theable {
             throws InterpreterException {
 
         try {
-            context.setTypesettingContext(font);
+            context.set(font);
         } catch (ConfigurationException e) {
             throw new InterpreterException(e);
         }
