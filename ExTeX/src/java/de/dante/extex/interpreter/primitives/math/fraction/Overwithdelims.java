@@ -41,7 +41,7 @@ import de.dante.extex.typesetter.type.math.MathDelimiter;
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;overwithdelims&rang;
- *       &rarr; <tt>\overwithdelims</tt>  </pre>
+ *       &rarr; ... <tt>\overwithdelims</tt> ...  </pre>
  * </p>
  * <p>
  *  Examples:

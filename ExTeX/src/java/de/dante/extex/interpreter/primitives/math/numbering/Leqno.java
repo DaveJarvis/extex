@@ -33,21 +33,21 @@ import de.dante.extex.typesetter.listMaker.math.EqConsumer;
  * This class provides an implementation for the primitive <code>\leqno</code>.
  *
  * <doc name="leqno">
- * <h3>The Primitive <tt>\leqno</tt></h3>
+ * <h3>The Math Primitive <tt>\leqno</tt></h3>
  * <p>
  *  TODO missing documentation
  * </p>
- * <p>
+ *
+ * <h4>Syntax</h4>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;span&rang;
  *       &rarr; <tt>\leqno</tt>  </pre>
- * </p>
- * <p>
- *  Examples:
+ *
+ * <h4>Examples</h4>
  *  <pre class="TeXSample">
  *    \leqno  </pre>
- * </p>
+ *
  * </doc>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>

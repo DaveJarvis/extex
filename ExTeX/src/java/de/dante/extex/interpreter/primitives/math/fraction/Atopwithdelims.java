@@ -35,21 +35,21 @@ import de.dante.extex.typesetter.type.math.MathDelimiter;
  * <code>\atopwithdelims</code>.
  *
  * <doc name="atopwithdelims">
- * <h3>The Primitive <tt>\atopwithdelims</tt></h3>
+ * <h3>The Math Primitive <tt>\atopwithdelims</tt></h3>
  * <p>
  *  TODO missing documentation
  * </p>
- * <p>
+ *
+ * <h4>Syntax</h4>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;atopwithdelims&rang;
- *       &rarr; <tt>\atopwithdelims</tt>  </pre>
- * </p>
- * <p>
- *  Examples:
+ *       &rarr; ... <tt>\atopwithdelims</tt> ...  </pre>
+ *
+ * <h4>Examples</h4>
  *  <pre class="TeXSample">
  *    \atopwithdelims  </pre>
- * </p>
+ *
  * </doc>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
