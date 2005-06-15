@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
@@ -80,9 +80,9 @@ public class ComponentFactory {
      * Especially the following Exceptions are thrown:
      * <ul>
      *  <li> ConfigurationMissingAttributeException in case that a needed
-     *  attribute was not proveided.</li>
+     *  attribute was not provided.</li>
      *  <li> ConfigurationInvalidResourceException in case that the given
-     *  resource name is nullor empty.</li>
+     *  resource name is null or empty.</li>
      *  <li> ConfigurationNotFoundException in case that the named path does
      *  not lead to a resource.</li>
      *  <li> ConfigurationSyntaxException in case that the resource contains
