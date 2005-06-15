@@ -16,23 +16,19 @@
 \newcommand\File[1]{\texttt{#1}\index{#1@\textsf{#1}}}
 \newcommand\Prog[1]{\texttt{#1}\index{#1}}
 \newcommand\Mode[1]{\texttt{#1}\index{#1}}
-\newcommand\macro[1]{\texttt{\char`\\#1}\index{#1@\texttt{\char`\\#1}}}
-\newcommand\Macro[1]{\texttt{\char`\\#1}}
+\newcommand\macro[1]{\texttt{\char`\\ #1}\index{#1@\texttt{\char`\\ #1}}}
+\newcommand\Macro[1]{\texttt{\char`\\ #1}}
 \newcommand\tag[1]{\(\langle\)\textit{#1}\(\rangle\)}
 
 \newenvironment{syntax}{%
   \begin{tabbing}\kern2em\=\kern2em\=\kill
   }{%
   \end{tabbing}}
-%\newenvironment{syntax}{%
-%  \par\hangindent2m\hangafter=1
-%  }{%
-%  \par}
 \newcommand\SyntaxDef{\>\(\rightarrow\)\>}
 \newcommand\SyntaxOr{\>\(|\)\>}
 
 
-\def\setVersion$#1: #2.#3${\gdef\Version{0.0 (Revision #2.#3)}}
+\def\setVersion$#1: #2.#3 ${\gdef\Version{0.0 (Revision #2.#3)}}
 \setVersion$Revision$
 
 \providecommand\indexGroup[1]{\vskip 12pt plus 4pt minus 2pt
@@ -1029,11 +1025,11 @@ for communicating with another program.
 \section{Primitives of \ExTeX}
 \ExTeX\ defines a lot of primitives. Those primitives are described below.
 
-\InputIfFileExists{tmp/primitives}{}
-
 \section{Basic Syntactic Entities of \ExTeX}
 
-\INCOMPLETE
+\InputIfFileExists{tmp/syntax}{\INCOMPLETE}
+
+\InputIfFileExists{tmp/primitives}{\INCOMPLETE}
 
 
 %------------------------------------------------------------------------------

@@ -26,8 +26,8 @@ extex-users.pdf: cfg $(MANUAL).tex
 %.toc: %.tex
 	@pdflatex $*
 
-Configurations/configurations.tex cfg: bin/analyzeConfig
-	perl bin/analyzeConfig				\
+Configurations/configurations.tex cfg: bin/primitives.pl
+	perl bin/primitives.pl				\
 		-cp   $(SRCDIR)				\
 		-out  tmp/configurations.tex		\
 		-prim tmp/primitives.tex		\
