@@ -1100,9 +1100,9 @@ public class ExTeX {
         if (fontConfiguration == null) {
             throw new ConfigurationMissingException(TAG_FONT, config.toString());
         }
-        context.setTypesettingContext(makeDefaultFont(fontConfiguration,
+        context.set(makeDefaultFont(fontConfiguration,
                 fontFactory));
-        context.setTypesettingContext(context.getLanguage("0"));
+        context.set(context.getLanguage("0"));
 
         initializeStreams(interpreter, properties);
 
