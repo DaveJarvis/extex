@@ -50,12 +50,15 @@ import de.dante.util.framework.logger.LogEnabled;
  * <p>
  *  TODO missing documentation
  * </p>
+ * <h4>Syntax</h4>
+ *
+ * <h4>Examples</h4>
+ * <pre class="TeXSample">
+ * \immediate\openout3= abc.def
+ * \write3{Hi there!}
+ * \closeout3 </pre>
  * </doc>
  *
- * Example
- * <pre>
- * \write3{abc \def}
- * </pre>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

@@ -68,7 +68,8 @@ import de.dante.extex.typesetter.Typesetter;
  *  The primitive <tt>\numexpr</tt> can be used in any place where a number is
  *  required. This includes assignments to count registers and comparisons.
  * </p>
- * <p>
+ *
+ * <h4>Syntax</h4>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;numexpr&rang;
@@ -78,16 +79,16 @@ import de.dante.extex.typesetter.Typesetter;
  *    &lang;expr&rang;
  *      &rarr; &lang;number&rang;
  *      |   &lang;operand&rang;
- *      |   &lang;operand&rang; <tt>+</tt> &lang;operand&rang;
- *      |   &lang;operand&rang; <tt>-</tt> &lang;operand&rang;
- *      |   &lang;operand&rang; <tt>*</tt> &lang;operand&rang;
- *      |   &lang;operand&rang; <tt>/</tt> &lang;operand&rang;
+ *      |   &lang;expr&rang; <tt>+</tt> &lang;expr&rang;
+ *      |   &lang;expr&rang; <tt>-</tt> &lang;expr&rang;
+ *      |   &lang;expr&rang; <tt>*</tt> &lang;expr&rang;
+ *      |   &lang;expr&rang; <tt>/</tt> &lang;expr&rang;
  *
  *    &lang;operand&rang;
  *      &rarr; &lang;number&rang;
  *      |   <tt>-</tt> &lang;expr&rang;
  *      |   <tt>(</tt> &lang;expr&rang; <tt>)</tt>   </pre>
- * </p>
+ *
  * <h4>Examples</h4>
  * <pre class="TeXSample">
  *   \count1=\numexpr 23 \relax </pre>

@@ -39,14 +39,15 @@ import de.dante.util.configuration.ConfigurationException;
  * <p>
  *  TODO missing documentation
  * </p>
- * <p>
+ *
+ * <h4>Syntax</h4>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;input&rang;
  *       &rarr; <tt>\input</tt> &lang;filename&rang; </pre>
- * </p>
+ *
+ * <h4>Examples</h4>
  * <p>
- *  Examples:<br/>
  *  The traditional version of the file name parsing allows the following
  *  syntax:
  *  <pre class="TeXSample">

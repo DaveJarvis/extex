@@ -42,12 +42,13 @@ import de.dante.extex.typesetter.Typesetter;
  *  used to assign the value to variables or after <tt>\the</tt> to translate
  *  it to tokens.
  * </p>
- * <p>
+ *
+ * <h4>Syntax</h4>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;inputlineno&rang;
  *      &rarr; <tt>\inputlineno</tt>  </pre>
- * </p>
+ *
  * <h4>Examples</h4>
  *  <pre class="TeXSample">
  *    \count1=\inputlineno  </pre>

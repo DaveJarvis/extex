@@ -45,18 +45,20 @@ import de.dante.util.UnicodeChar;
  * <p>
  *  TODO missing documentation
  * </p>
- * <p>
+ *
+ * <h4>Syntax</h4>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;readline&rang;
  *       &rarr; <tt>\readline</tt> &lang;read&rang; <tt>to</tt> &lang;control sequence&rang;</pre>
- * </p>
+ *
+ * <h4>Examples</h4>
+ * <pre class="TeXSample">
+ * \openin3= abc.def
+ * \readline3 to \line
+ * \closein3 </pre>
  * </doc>
  *
- * Example
- * <pre>
- * \readline3 to \abc
- * </pre>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

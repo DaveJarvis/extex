@@ -39,11 +39,12 @@ import de.dante.extex.typesetter.Typesetter;
  * <p>
  *  TODO missing documentation
  * </p>
- * <p>
- *  Examples:
+ *
+ * <h4>Syntax</h4>
+ *
+ * <h4>Examples</h4>
  *  <pre class="TeXSample">
  *    \inputfilename  </pre>
- * </p>
  * </doc>
  *
  *
