@@ -506,8 +506,8 @@ public class ParagraphBuilderImpl
         }
         Breaks b = null;
         int pen = 0;
-        Glue lineWidth = new Glue(parshape.getRight(line));
-        lineWidth.subtract(parshape.getLeft(line));
+        Glue lineWidth = new Glue(parshape.getLength(line));
+        lineWidth.subtract(parshape.getIndent(line));
 
         for (int i = pointIndex; i < breakPoint.length; i++) {
             breakPoint[i].setActive();
