@@ -71,7 +71,7 @@ public abstract class EFMFount implements ModifiableFount, Serializable {
     /**
      * the external fontfile
      */
-    private FontStream externalstream;
+    private transient FontStream externalstream;
 
     /**
      * The glue for letterspace
@@ -116,7 +116,7 @@ public abstract class EFMFount implements ModifiableFount, Serializable {
     /**
      * the font factroy
      */
-    private FontFactory fontfactory;
+    private transient FontFactory fontfactory;
 
     /**
      * the fount key

@@ -77,7 +77,7 @@ public class GlyphImpl implements Glyph, Serializable {
     /**
      * The external fontfile or null, if no exists
      */
-    private FontStream externalfile = null;
+    private transient FontStream externalfile = null;
 
     /**
      * The left space in a glyph
