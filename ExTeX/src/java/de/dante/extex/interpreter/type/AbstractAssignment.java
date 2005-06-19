@@ -32,8 +32,8 @@ import de.dante.extex.typesetter.Typesetter;
  * method <tt>assign</tt> is used instead of the method <tt>execute</tt>.
  *
  * <p>
- * This abstract class takes care of the treatment of the \afterassign token
- * and the \globaldefs declaration.
+ *  This abstract class takes care of the treatment of the <tt>\afterassign</tt>
+ *  token and the <tt>\globaldefs</tt> declaration.
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>

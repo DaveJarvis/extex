@@ -169,16 +169,9 @@ public class AbstractCode implements Code, Localizable, Serializable {
      *
      * @throws ObjectStreamException in case of an error
      */
-    public Object readResolve() throws ObjectStreamException {
+    protected Object readResolve() throws ObjectStreamException {
 
-        try {
-            Registrar.reconnect(this);
-        } catch (RegistrarException e) {
-            new RuntimeException(e);
-        } catch (ConfigurationException e) {
-            new RuntimeException(e);
-        }
-        return this;
+        return Registrar.reconnect(this);
     }
 
     /**

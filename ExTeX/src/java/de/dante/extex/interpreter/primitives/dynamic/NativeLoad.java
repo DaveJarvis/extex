@@ -45,12 +45,13 @@ import de.dante.util.framework.logger.LogEnabled;
  * <p>
  *  TODO missing documentation
  * </p>
- * <p>
+ *
+ * <h4>Syntax</h4>
  *  The general form of this primitive is
  * <pre class="syntax">
  *   &lang;nativeload&rang;
- *       &rarr; <tt>\nativeload</tt> &lang;<i>type</i>&rang; &lang;<i>tokens</i>&rang; </pre>
- * </p>
+ *       &rarr; <tt>\nativeload</tt> <i>&lang;type&rang;</i> <i>&lang;tokens&rang;</i> </pre>
+ *
  * </doc>
  *
  *
