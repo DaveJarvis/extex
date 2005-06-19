@@ -19,7 +19,6 @@
 
 package de.dante.extex.interpreter.primitives.register;
 
-import de.dante.extex.interpreter.type.dimen.DimenRegisterTest;
 import de.dante.test.ExTeXLauncher;
 
 /**
@@ -36,7 +35,7 @@ public class ChardefTest extends ExTeXLauncher {
      */
     public static void main(final String[] args) {
 
-        junit.textui.TestRunner.run(DimenRegisterTest.class);
+        junit.textui.TestRunner.run(ChardefTest.class);
     }
 
     /**
