@@ -613,11 +613,17 @@ public abstract class AbstractFactory
     /**
      * @see de.dante.util.framework.RegistrarObserver#reconnect(java.lang.Object)
      */
-    public void reconnect(final Object instance) throws ConfigurationException {
+    public Object reconnect(final Object instance) throws RegistrarException {
 
-        enableLogging(instance, getLogger());
-        configure(instance, configuration);
-        enableLocalization(instance, instance.getClass().getName());
+        try {
+            enableLogging(instance, getLogger());
+            configure(instance, configuration);
+            enableLocalization(instance, instance.getClass().getName());
+        } catch (ConfigurationException e) {
+            throw new RegistrarException(e);
+        }
+
+        return instance;
     }
 
     /**
