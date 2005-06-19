@@ -7,13 +7,13 @@
 
 =head1 NAME
 
-collect.pl - ...
+syntax.pl - ...
 
 =head1 SYNOPSIS
 
-collect.pl [-v|--verbose] 
+syntax.pl [-v|--verbose] 
 
-collect.pl [-h|-help]
+syntax.pl [-h|-help]
 
 =head1 DESCRIPTION
 
@@ -54,15 +54,24 @@ sub usage
 # Variable:	$verbose
 # Description:	
 #
-my $verbose = 0;
+my $verbose   = 0;
+my $classpath = '.';
+my $outfile   = undef;
 
 use Getopt::Long;
-GetOptions("h|help"	=> \&usage,
+GetOptions("cp=s"	=> \$classpath,
+	   "h|help"	=> \&usage,
+	   "out=s"	=> \$outfile,
 	   "v|verbose"	=> \$verbose,
 	  );
 
-my $info = new Info('../../src/java');
-$info->dump(\*STDOUT, 'syntax');
+my $info = new Info($classpath);
+
+my $fd 	 = (defined $outfile ? new FileHandle($outfile, 'w') : \*STDOUT);
+$info->dump($fd, 'syntax');
+if (defined $outfile) {
+  $fd->close();
+}
 
 
 #------------------------------------------------------------------------------
@@ -78,10 +87,12 @@ sub new
 { my ($class, $spec, $package, $val) = @_;
   my $name = ($spec =~ m|name="([^\"]*)"| ? $1: '');
   my $type = ($spec =~ m|type="([^\"]*)"| ? $1: '');
-  my $self     = { 'name'    => $name,
-		   'type'    => $type,
-		   'package' => $package,
-		   'value'   => $val,
+  $val 	   =~ s|\@linkplain\s+\S+\s+||smg;
+  $val 	   =~ s|\@link\s+\S+\s+||smg;
+  my $self = { 'name'    => $name,
+	       'type'    => $type,
+	       'package' => $package,
+	       'value'   => $val,
 		 };
   return bless $self,$class;
 }
@@ -117,12 +128,14 @@ package Info;
 use File::Find;
 use Cwd;
 
+use lib ".";
+use lib "./bin";
+use xml2tex;
+
 my %info = ();
 
 #------------------------------------------------------------------------------
 # Function:	new
-# Description:	
-# Returns:	
 #
 sub new
 { my ($class, $basedir) = @_;
@@ -132,14 +145,19 @@ sub new
   return bless $self,$class;
 }
 
+#------------------------------------------------------------------------------
+# Method:	dump
+#
 sub dump {
   my ($self, $fd, $type) = @_;
+  local $_;
 
-  foreach (sort keys %info) {
-    $_ = $info{$_};
-    if ($_->getType() eq $type) {
-      print $fd $_->getValue()."\n" 
-
+  foreach my $in (sort keys %info) {
+    $in = $info{$in};
+    if ($in->getType() eq $type) {
+      print $fd "\n\\subsection*{The Syntactic Entity \\protect\\Tag{",
+      $in->getName(), "}}\n\n";
+      print $fd $in->getValue(),"\n";
     }
   }
 }
@@ -159,6 +177,9 @@ sub collect {
   chdir $cwd;
 }
 
+#------------------------------------------------------------------------------
+# Method:	analyze
+#
 sub analyze {
 
   if ( $_ eq 'CVS' ) {
@@ -168,25 +189,25 @@ sub analyze {
   }
 }
 
+#------------------------------------------------------------------------------
+# Method:	analyzeJava
+#
 sub analyzeJava {
   my ($file) = @_;
 
 #  print STDERR "$file\n" if $verbose;
   my $package = $file;
   my $fd      = new FileHandle($file, 'r') || die "$file: $!\n";
-  while(<$fd>) {
+  while (<$fd>) {
     if (m|^package\s+(.*);|) {
       $package = $1;
     } elsif (m/<doc/) {
-      my $spec = $_;
-      my $val  = '';
-      while(<$fd>) {
-	last if m|</doc>|;
-	s|^\s*\* ?||;
-	$val .= $_;
-      }
-      $_      = new InfoItem ($spec, $package, $val);
-      my $key = $_->getKey();
+      $_ = new InfoItem ($_,
+			 $package,
+			 processDocTag((m/name="([^\"])*"/ ? $1 : ''),
+				       $fd,
+				       ''));
+      my $key  = $_->getKey();
       print STDERR "--- Double key $key\n" if defined $info{$key};
       $info{$key} = $_;
 
