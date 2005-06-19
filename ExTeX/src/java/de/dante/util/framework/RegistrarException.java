@@ -16,10 +16,10 @@
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
+
 package de.dante.util.framework;
 
-import de.dante.extex.interpreter.exception.InterpreterException;
-
+import java.io.ObjectStreamException;
 
 /**
  * This exception is used when the loader detects some problem.
@@ -27,7 +27,7 @@ import de.dante.extex.interpreter.exception.InterpreterException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class RegistrarException extends InterpreterException {
+public class RegistrarException extends ObjectStreamException {
 
     /**
      * Creates a new object.
@@ -54,7 +54,7 @@ public class RegistrarException extends InterpreterException {
      */
     public RegistrarException(final Throwable cause) {
 
-        super(cause);
+        super(cause.getMessage());
     }
 
 }
