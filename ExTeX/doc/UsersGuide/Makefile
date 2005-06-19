@@ -10,7 +10,7 @@ SRCDIR = ../../src/java
 
 all: $(MANUAL).pdf
 
-extex-users.pdf: cfg $(MANUAL).tex
+extex-users.pdf: cfg syntax $(MANUAL).tex
 
 %.pdf: %.toc %.ind
 	@pdflatex $*
@@ -26,12 +26,17 @@ extex-users.pdf: cfg $(MANUAL).tex
 %.toc: %.tex
 	@pdflatex $*
 
-Configurations/configurations.tex cfg: bin/primitives.pl
+tmp/configurations.tex cfg: bin/primitives.pl
 	perl bin/primitives.pl				\
 		-cp   $(SRCDIR)				\
 		-out  tmp/configurations.tex		\
 		-prim tmp/primitives.tex		\
 		$(SRCDIR)/config/*.xml 
+
+tmp/syntax.tex syntax: bin/syntax.pl
+	perl bin/syntax.pl				\
+		-cp   $(SRCDIR)				\
+		-out  tmp/syntax.tex
 
 deploy: $(MANUAL).pdf
 	mkdir -p $(DEPLOYDIR)
