@@ -22,7 +22,7 @@ package de.dante.extex.interpreter.primitives.conditional;
 import de.dante.test.ExTeXLauncher;
 
 /**
- * This is a test suite for the primitive <tt>\relax</tt>.
+ * This is a test suite for the primitive <tt>\ifcase</tt>.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

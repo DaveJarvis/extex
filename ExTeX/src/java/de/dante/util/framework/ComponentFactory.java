@@ -70,7 +70,7 @@ public class ComponentFactory {
     }
 
     /**
-     * Get an instance of a typesetter.
+     * Get an instance of a component.
      *
      * @param type the tag to use for the selection of the sub-configuration
      *
