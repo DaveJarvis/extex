@@ -29,7 +29,7 @@ extex-users.pdf: cfg syntax $(MANUAL).tex
 tmp/configurations.tex cfg: bin/primitives.pl
 	perl bin/primitives.pl				\
 		-cp   $(SRCDIR)				\
-		-out  tmp/configurations.tex		\
+		-sets tmp/configurations.tex		\
 		-prim tmp/primitives.tex		\
 		$(SRCDIR)/config/*.xml 
 
