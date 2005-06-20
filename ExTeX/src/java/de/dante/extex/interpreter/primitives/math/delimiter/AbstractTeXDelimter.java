@@ -286,7 +286,7 @@ public class AbstractTeXDelimter extends AbstractMathCode {
         if (t == null) {
             throw new EofException("???");
         }
-        if ((t instanceof CodeToken)) {
+        if (t instanceof CodeToken) {
             Code code = context.getCode((CodeToken) t);
             if (code instanceof Delimiter) {
                 return newMathDelimiter(source.scanNumber(context));
