@@ -115,9 +115,9 @@ public interface TypesetterOptions {
     TypesettingContext getTypesettingContext();
 
     /**
-     * TODO gene: missing JavaDoc
+     * Getter for the typesetting context factory.
      *
-     * @return ...
+     * @return the typesetting context factory
      */
     TypesettingContextFactory getTypesettingContextFactory();
 

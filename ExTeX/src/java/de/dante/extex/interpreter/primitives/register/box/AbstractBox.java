@@ -41,10 +41,25 @@ public abstract class AbstractBox extends AbstractCode implements Serializable {
      *
      *
      * <doc type="syntax" name="box register name">
-     * <pre class="syntax">
-     *   &lang;box register name&rang; </pre>
      * <p>
-     *  A box register name ...
+     *  A box register name determines under which key a box register can be
+     *  addressed. In <logo>TeX</logo> this used to be a positive number only.
+     *  This has been extended to allow also a token list in braces.
+     * </p>
+     *
+     * <h4>Syntax</h4>
+     * <pre class="syntax">
+     *   &lang;box register name&rang;
+     *       &rarr; {@linkplain
+     *        de.dante.extex.interpreter.TokenSource#scanTokens(Context)
+     *        &lang;tokens&rang;}
+     *        | {@linkplain de.dante.extex.interpreter.TokenSource#scanNumber()
+     *        &lang;number&rang;}  </pre>
+     *
+     * <h4>Examples</h4>
+     * <p>
+     *  123
+     *  {abc}
      * </p>
      * </doc>
      * TODO gene: doc incomplete
