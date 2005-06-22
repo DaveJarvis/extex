@@ -48,16 +48,15 @@ public abstract class AbstractDimen extends AbstractAssignment {
     /**
      * Return the key (the name of the primitive) for the numbered dimen
      * register.
-     *
-     * @param source the source for new tokens
      * @param context the interpreter context to use
+     * @param source the source for new tokens
      *
      * @return the key for the current register
      *
      * @throws InterpreterException in case that a derived class need to throw an
      *             Exception this on e is declared.
      */
-    protected String getKey(final TokenSource source, final Context context)
+    protected String getKey(final Context context, final TokenSource source)
             throws InterpreterException {
 
         String name;
