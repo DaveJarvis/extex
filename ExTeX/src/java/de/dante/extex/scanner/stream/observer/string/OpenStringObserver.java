@@ -35,5 +35,5 @@ public interface OpenStringObserver {
      *
      * @param string the contents to be processed
      */
-    void update(String string);
+    void update(CharSequence string);
 }
