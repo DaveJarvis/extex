@@ -60,7 +60,7 @@ public class CharNode extends AbstractNode implements Node {
      * Creates a new object.
      *
      * @param context the typesetting context
-     * @param uc the unicode character
+     * @param uc the Unicode character
      */
     public CharNode(final TypesettingContext context, final UnicodeChar uc) {
 
@@ -119,7 +119,7 @@ public class CharNode extends AbstractNode implements Node {
     }
 
     /**
-     * Getter for the space factor
+     * Getter for the space factor.
      *
      * @return the space factor
      */
