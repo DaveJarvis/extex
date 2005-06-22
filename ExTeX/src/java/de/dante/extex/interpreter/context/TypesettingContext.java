@@ -33,13 +33,6 @@ import de.dante.extex.language.Language;
 public interface TypesettingContext extends Serializable {
 
     /**
-     * Copy the current instance.
-     *
-     * @return a copy of this instance
-     */
-    TypesettingContext copy();
-
-    /**
      * Getter for the color.
      *
      * @return the current color

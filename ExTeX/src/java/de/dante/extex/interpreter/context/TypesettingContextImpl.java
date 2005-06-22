@@ -113,14 +113,6 @@ public class TypesettingContextImpl implements ModifiableTypesettingContext {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.TypesettingContext#copy()
-     */
-    public TypesettingContext copy() {
-
-        return new TypesettingContextImpl(this);
-    }
-
-    /**
      * @see de.dante.extex.interpreter.context.TypesettingContext#getColor()
      */
     public Color getColor() {
