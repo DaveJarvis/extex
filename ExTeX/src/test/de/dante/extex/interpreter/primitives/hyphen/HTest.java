@@ -22,7 +22,7 @@ package de.dante.extex.interpreter.primitives.hyphen;
 import de.dante.test.ExTeXLauncher;
 
 /**
- * This is a test suite for the primitive <tt>\cr</tt>.
+ * This is a test suite for the hyphenation.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -55,7 +55,7 @@ public class HTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "a xxxabcyyy\n\na xxxabcyyy\n\n"); //TODO gene: why double?
+                "a xxxabcyyy\n\n");
     }
 
     /**
@@ -74,7 +74,7 @@ public class HTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "a xxxabcyyy\n\na xxxabcyyy\n\n"); //TODO gene: why double?
+                "a xxxabcyyy\n\n");
     }
 
 }
