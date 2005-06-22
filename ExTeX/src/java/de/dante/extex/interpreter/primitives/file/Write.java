@@ -163,9 +163,9 @@ public class Write extends AbstractCode
     /**
      * @see de.dante.extex.interpreter.type.InitializableCode#init(
      *      de.dante.extex.interpreter.context.Context,
-     *      java.lang.String)
+     *      TokenSource, Typesetter)
      */
-    public void init(final Context context, final String value)
+    public void init(final Context context, final TokenSource value, Typesetter typesetter)
             throws InterpreterException {
 
         context.setOutFile(LOG_FILE, new LogFile(logger), true);
