@@ -17,39 +17,48 @@
  *
  */
 
-package de.dante.extex.format.pdf.exception;
+package de.dante.extex.documentWriter.pdf.exception;
+
 
 /**
- * Exception for all pdf errors.
+ * Exception for the ColorAdapter.
+ * It is use, if a error occurs, when the color is set in the pdf content.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class PdfException extends Exception {
+
+public class DocumentWriterPdfBoxColorException
+        extends
+            DocumentWriterPdfException {
 
     /**
      * Create a new object.
+     * @param message The message.
      */
-    public PdfException() {
-
-        super();
-    }
-
-    /**
-     * Create a new object.
-     * @param message   the message
-     */
-    public PdfException(final String message) {
+    public DocumentWriterPdfBoxColorException(final String message) {
 
         super(message);
     }
 
     /**
      * Create a new object.
-     * @param e the exception
+     * @param message   The message.
+     * @param cause     The cuase.
      */
-    public PdfException(final Exception e) {
+    public DocumentWriterPdfBoxColorException(final String message,
+            final Throwable cause) {
 
-        super(e);
+        super(message, cause);
     }
+
+    /**
+     * Create a new object.
+     * @param cause The cause.
+     */
+    public DocumentWriterPdfBoxColorException(final Throwable cause) {
+
+        super(cause);
+    }
+
 }
