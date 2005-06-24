@@ -108,6 +108,20 @@ public class CmykColor implements Color {
     }
 
     /**
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
+    public boolean equals(final Object obj) {
+
+        if (!(obj instanceof CmykColor)) {
+            return false;
+        }
+        CmykColor other = (CmykColor) obj;
+        return cyan == other.getCyan() && magenta == other.getMagenta()
+                && yellow == other.getYellow() && black == other.getBlack()
+                && alpha == other.getAlpha();
+    }
+
+    /**
      * @see de.dante.extex.interpreter.context.Color#getAlpha()
      */
     public int getAlpha() {

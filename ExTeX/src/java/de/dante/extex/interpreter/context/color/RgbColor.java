@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -84,12 +84,28 @@ public class RgbColor implements Color {
 
         super();
         this.red = (theRed < 0 ? 0 : theRed < MAX_VALUE ? theRed : MAX_VALUE);
-        this.green = (theGreen < 0 ? 0 : theGreen < MAX_VALUE ? theGreen
+        this.green = (theGreen < 0 ? 0 : theGreen < MAX_VALUE
+                ? theGreen
                 : MAX_VALUE);
-        this.blue = (theBlue < 0 ? 0 : theBlue < MAX_VALUE ? theBlue
+        this.blue = (theBlue < 0 ? 0 : theBlue < MAX_VALUE
+                ? theBlue
                 : MAX_VALUE);
-        this.alpha = (theAlpha < 0 ? 0 : theAlpha < MAX_VALUE ? theAlpha
+        this.alpha = (theAlpha < 0 ? 0 : theAlpha < MAX_VALUE
+                ? theAlpha
                 : MAX_VALUE);
+    }
+
+    /**
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
+    public boolean equals(final Object obj) {
+
+        if (!(obj instanceof RgbColor)) {
+            return false;
+        }
+        RgbColor other = (RgbColor) obj;
+        return red == other.getRed() && green == other.getGreen()
+                && blue == other.getBlue() && alpha == other.getAlpha();
     }
 
     /**
