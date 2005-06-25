@@ -21,13 +21,13 @@ package de.dante.extex.documentWriter.pdf.pdfbox;
 
 import org.pdfbox.pdmodel.edit.PDPageContentStream;
 
+import de.dante.extex.color.model.CmykColor;
+import de.dante.extex.color.model.GrayscaleColor;
+import de.dante.extex.color.model.RgbColor;
 import de.dante.extex.documentWriter.pdf.exception.DocumentWriterPdfBoxColorException;
 import de.dante.extex.documentWriter.pdf.exception.DocumentWriterPdfException;
 import de.dante.extex.documentWriter.pdf.exception.DocumentWriterPdfNotSupportedColorException;
 import de.dante.extex.interpreter.context.Color;
-import de.dante.extex.interpreter.context.color.CmykColor;
-import de.dante.extex.interpreter.context.color.GrayscaleColor;
-import de.dante.extex.interpreter.context.color.RgbColor;
 
 /**
  * Coloradapter for PDFBox.
