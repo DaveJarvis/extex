@@ -540,13 +540,6 @@ public interface Group extends Tokenizer, Serializable {
     void setToks(String name, Tokens value, boolean global);
 
     /**
-     * Setter for the typesetting context in the current group.
-     *
-     * @param context the new typesetting context
-     */
-    void setTypesettingContext(TypesettingContext context);
-
-    /**
      * Setter for the typesetting context in the specified groups.
      *
      * @param context the new typesetting context

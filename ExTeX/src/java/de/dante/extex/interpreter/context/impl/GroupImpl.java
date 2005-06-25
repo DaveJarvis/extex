@@ -965,15 +965,6 @@ public class GroupImpl implements Group, Tokenizer, Serializable {
 
     /**
      * @see de.dante.extex.interpreter.context.impl.Group#setTypesettingContext(
-     *      de.dante.extex.interpreter.context.TypesettingContext)
-     */
-    public void setTypesettingContext(final TypesettingContext context) {
-
-        typesettingContext = context;
-    }
-
-    /**
-     * @see de.dante.extex.interpreter.context.impl.Group#setTypesettingContext(
      *      de.dante.extex.interpreter.context.TypesettingContext,
      *      boolean)
      */
