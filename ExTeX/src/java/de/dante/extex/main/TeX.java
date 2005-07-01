@@ -311,12 +311,6 @@ import de.dante.util.framework.i18n.LocalizerFactory;
  * </p>
  *
  *
- * <a name="fileSearch"/><h3>Searching Files</h3>
- *
- * TODO gene: doc incomplete
- *
- *
- *
  * <a name="settings"/><h3>Settings and Command Line Parameters</h3>
  *
  * <p>
