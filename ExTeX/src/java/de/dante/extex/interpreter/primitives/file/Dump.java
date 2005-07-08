@@ -53,7 +53,7 @@ import de.dante.util.framework.logger.LogEnabled;
  * <p>
  *  TODO missing documentation
  * </p>
- * 
+ *
  * <h4>Syntax</h4>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
