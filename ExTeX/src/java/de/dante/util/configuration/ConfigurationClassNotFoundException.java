@@ -19,6 +19,7 @@
 
 package de.dante.util.configuration;
 
+
 /**
  * This exception is thrown when a dynamically loaded class could not be found.
  *

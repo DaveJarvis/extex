@@ -83,7 +83,8 @@ public interface Noad extends Knot {
      * @param list the list to add the nodes to
      * @param mathContext the context to consider
      * @param context the interpreter context
-     * @throws ConfigurationException TODO
+     *
+     * @throws ConfigurationException in case of a configuration problem
      */
     void typeset(NodeList list, MathContext mathContext,
             TypesetterOptions context) throws ConfigurationException;
