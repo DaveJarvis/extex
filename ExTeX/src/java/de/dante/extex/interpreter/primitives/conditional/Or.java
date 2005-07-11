@@ -39,7 +39,8 @@ import de.dante.extex.typesetter.Typesetter;
  *  <pre class="syntax">
  *    &lang;or&rang;
  *     &rarr; <tt>\ifcase</tt> ... <tt>\or</tt> ... <tt>\fi</tt> </pre>
- </doc>
+ * </doc>
+ *
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
