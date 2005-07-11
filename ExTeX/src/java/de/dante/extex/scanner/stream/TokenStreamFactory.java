@@ -140,7 +140,7 @@ public class TokenStreamFactory extends AbstractFactory
     /**
      * The field <tt>bufferSize</tt> contains the desired size for the input
      * buffer. Negative values mean that the default size should be used. If the
-     * vakue is zero then no buffer at all should be used.
+     * value is zero then no buffer at all should be used.
      */
     //private int bufferSize = -1;
     /**
