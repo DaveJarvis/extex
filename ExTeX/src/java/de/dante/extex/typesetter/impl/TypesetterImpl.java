@@ -238,6 +238,14 @@ public class TypesetterImpl
     }
 
     /**
+     * @see de.dante.extex.typesetter.ListMaker#dump(java.util.logging.Logger, long, long)
+     */
+    public void dump(final Logger logger, final long width, final long depth) {
+
+        listMaker.dump(logger, width, depth);
+    }
+
+    /**
      * Setter for the localizer.
      *
      * @param theLocalizer the new localizer

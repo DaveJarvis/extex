@@ -19,6 +19,8 @@
 
 package de.dante.extex.typesetter.impl;
 
+import java.util.logging.Logger;
+
 import de.dante.extex.documentWriter.DocumentWriter;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
@@ -61,7 +63,6 @@ public class NullTypesetterImpl implements Typesetter {
 
         super();
     }
-
     /**
      * @see de.dante.extex.typesetter.ListMaker#add(
      *     de.dante.extex.typesetter.type.Node)
@@ -131,6 +132,13 @@ public class NullTypesetterImpl implements Typesetter {
      */
     public void cr(final Context context, final TypesettingContext tc,
             final UnicodeChar uc) throws TypesetterException {
+
+    }
+
+    /**
+     * @see de.dante.extex.typesetter.ListMaker#dump(java.util.logging.Logger, long, long)
+     */
+    public void dump(final Logger logger, final long width, final long depth) {
 
     }
 
