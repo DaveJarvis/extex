@@ -93,5 +93,5 @@ public abstract class AbstractAssignment extends AbstractCode {
     public abstract void assign(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException;
-    //todo gene: maybe the typesetter argument can be deleted.
+
 }
