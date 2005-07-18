@@ -62,14 +62,11 @@ public interface ContextInteraction {
      * Setter for the interaction in all requested groups. The interaction
      * determines how verbose the actions are reported and how the interaction
      * with the user is performed in case of an error.
-     *
      * @param interaction the new value of the interaction
-     * @param global the indicator for the scope; <code>true</code> means all
-     *            groups; otherwise the current group is affected only
      *
      * @throws InterpreterException in case of an error
      */
-    void setInteraction(Interaction interaction, boolean global)
+    void setInteraction(Interaction interaction)
             throws InterpreterException;
 
     /**
