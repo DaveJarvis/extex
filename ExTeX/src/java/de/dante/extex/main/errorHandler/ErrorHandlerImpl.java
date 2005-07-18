@@ -316,8 +316,7 @@ public class ErrorHandlerImpl
                                     && editHandler.edit(localizer, //
                                             source.getLocator())) {
 
-                                context.setInteraction(Interaction.SCROLLMODE,
-                                        true);
+                                context.setInteraction(Interaction.SCROLLMODE);
                                 logger.info(localizer
                                         .format("ErrorHandler.scrollmode")
                                         + NL);
@@ -345,15 +344,14 @@ public class ErrorHandlerImpl
                             break;
                         case 'q':
                         case 'Q':
-                            context.setInteraction(Interaction.BATCHMODE, true);
+                            context.setInteraction(Interaction.BATCHMODE);
                             logger.info(localizer
                                     .format("ErrorHandler.batchmode")
                                     + NL);
                             return true;
                         case 'r':
                         case 'R':
-                            context.setInteraction(Interaction.NONSTOPMODE,
-                                    true);
+                            context.setInteraction(Interaction.NONSTOPMODE);
                             logger.info(localizer
                                     .format("ErrorHandler.nonstopmode")
                                     + NL);
@@ -361,8 +359,7 @@ public class ErrorHandlerImpl
                         case 's':
                         case 'S':
                             context
-                                    .setInteraction(Interaction.SCROLLMODE,
-                                            true);
+                                    .setInteraction(Interaction.SCROLLMODE);
                             logger.info(localizer
                                     .format("ErrorHandler.scrollmode")
                                     + NL);

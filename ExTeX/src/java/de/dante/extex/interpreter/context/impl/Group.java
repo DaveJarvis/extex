@@ -21,7 +21,6 @@ package de.dante.extex.interpreter.context.impl;
 
 import java.io.Serializable;
 
-import de.dante.extex.interpreter.Interaction;
 import de.dante.extex.interpreter.Tokenizer;
 import de.dante.extex.interpreter.context.TypesettingContext;
 import de.dante.extex.interpreter.context.observer.afterGroup.AfterGroupObserver;
@@ -186,13 +185,6 @@ public interface Group extends Tokenizer, Serializable {
     InFile getInFile(String name);
 
     /**
-     * Getter for the current interaction mode.
-     *
-     * @return the interaction mode
-     */
-    Interaction getInteraction();
-
-    /**
      * Getter for the lccode mapping of upper case characters to their
      * lower case equivalent.
      *
@@ -348,8 +340,7 @@ public interface Group extends Tokenizer, Serializable {
      *
      * @throws InterpreterException in case of an error
      */
-    void runAfterGroup()
-            throws InterpreterException;
+    void runAfterGroup() throws InterpreterException;
 
     /**
      * Setter for the {@link de.dante.extex.interpreter.type.box.Box box}
@@ -445,15 +436,6 @@ public interface Group extends Tokenizer, Serializable {
      *            groups; otherwise the current group is affected only
      */
     void setInFile(String name, InFile file, boolean global);
-
-    /**
-     * Setter for the interaction mode in the requested groups.
-     *
-     * @param interaction the new interaction mode
-     * @param global the indicator for the scope; <code>true</code> means all
-     *            groups; otherwise the current group is affected only
-     */
-    void setInteraction(Interaction interaction, boolean global);
 
     /**
      * Declare the translation from an upper case character to a lower case

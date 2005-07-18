@@ -889,7 +889,7 @@ public abstract class Max
     public void setInteraction(final Interaction interaction)
             throws GeneralException {
 
-        context.setInteraction(interaction, true);
+        context.setInteraction(interaction);
     }
 
     /**
