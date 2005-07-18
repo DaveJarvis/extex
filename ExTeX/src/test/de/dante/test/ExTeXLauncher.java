@@ -34,6 +34,7 @@ import de.dante.extex.ExTeX;
 import de.dante.extex.interpreter.ErrorHandler;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.main.errorHandler.editHandler.EditHandler;
 import de.dante.extex.main.exception.MainException;
 import de.dante.extex.main.logging.LogFormatter;
@@ -178,12 +179,12 @@ public class ExTeXLauncher extends TestCase {
      * @param log the expected output on the log stream
      * @param expect the expected output on the output stream
      *
-     * @return TODO
+     * @return a new instance of the ExTeX class
      *
      * @throws MainException in case of an error
      */
     public ExTeX runCode(final Properties properties, final String code,
-            final String log, final String expect) throws MainException {
+            final String log, final String expect) throws InterpreterException {
 
         boolean errorP = false;
 
