@@ -47,8 +47,8 @@ import de.dante.util.configuration.ConfigurationException;
  *     &rarr; <tt>\lefthyphenmin</tt> = ... </pre>
  *
  * <h4>Example:</h4>
- * <pre>
- * \lefthyphenmin=3 </pre>
+ *  <pre class="TeXSample">
+ *   \lefthyphenmin=3 </pre>
  *
  * </doc>
  *

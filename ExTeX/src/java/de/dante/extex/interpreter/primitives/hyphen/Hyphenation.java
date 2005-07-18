@@ -58,8 +58,8 @@ import de.dante.util.UnicodeChar;
  *     &rarr; <tt>\hyphenation</tt> {...} </pre>
  *
  * <h4>Example:</h4>
- * <pre>
- * \hyphenation{as-so-ciate as-so-ciates}  </pre>
+ *  <pre class="TeXSample">
+ *   \hyphenation{as-so-ciate as-so-ciates}  </pre>
  *
  * </doc>
  *
