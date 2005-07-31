@@ -54,6 +54,6 @@ public class TokenPushObserver implements PushObserver {
      */
     public void update(final Token token) {
 
-        logger.fine(">>> " + token.toString() + "\n");
+        logger.fine(": push " + token.toString() + "\n");
     }
 }
