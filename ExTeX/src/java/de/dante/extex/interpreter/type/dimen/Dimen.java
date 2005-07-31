@@ -56,6 +56,12 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
     public static final ImmutableDimen ONE_PT = new ImmutableDimen(ONE);
 
     /**
+     * The constant <tt>ONE_SP</tt> contains the immutable dimen register
+     * representing the length of 1&nbsp;scaled point.
+     */
+    public static final ImmutableDimen ONE_SP = new ImmutableDimen(1);
+
+    /**
      * The constant <tt>ZERO_PT</tt> contains the immutable dimen register
      * representing the length of 0&nbsp;pt.
      */
