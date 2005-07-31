@@ -24,7 +24,7 @@ import java.io.Serializable;
 
 /**
  * The localizer is a convenience class which joins the features of a resource
- * bundle with the features of a message formatter..
+ * bundle with the features of a message formatter.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
