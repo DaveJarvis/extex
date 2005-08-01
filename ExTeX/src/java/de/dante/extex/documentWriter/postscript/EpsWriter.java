@@ -131,8 +131,7 @@ public class EpsWriter extends AbstractPostscriptWriter
             init = false;
 
             headerManager.reset();
-            converter = makeConverter();
-            converter.init(headerManager);
+            converter = makeConverter(headerManager);
         }
 
         OutputStream stream = writerFactory.getOutputStream();

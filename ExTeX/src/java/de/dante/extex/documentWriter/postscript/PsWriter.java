@@ -186,8 +186,7 @@ public class PsWriter extends AbstractPostscriptWriter
             init = false;
 
             headerManager.reset();
-            converter = makeConverter();
-            converter.init(headerManager);
+            converter = makeConverter(headerManager);
         }
 
         page
