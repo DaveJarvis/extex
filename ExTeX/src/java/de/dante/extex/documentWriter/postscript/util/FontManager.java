@@ -90,7 +90,7 @@ public class FontManager {
             fnt.append("/F");
             fnt.append(n);
             fnt.append("{/Times-Roman findfont "); //TODO use the correct font
-            Unit.toPoint(font.getActualSize(), fnt, false);
+            PsUnit.toPoint(font.getActualSize(), fnt, false);
             fnt.append(" scalefont setfont}def\n");
 
             return "F" + n + " ";
