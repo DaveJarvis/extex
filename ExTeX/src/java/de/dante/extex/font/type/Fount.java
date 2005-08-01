@@ -120,6 +120,14 @@ public interface Fount {
 
     /**
      * Returns the key for the font.
+     * @return Returns the key for the font.
      */
     FountKey getFontKey();
+
+    //    /**
+    //     * Check, if the font is a virtual font.
+    //     * @return Returns <code>true</code>, if the font is a virtual font
+    //     */
+    //    boolean isVirtual();
+
 }

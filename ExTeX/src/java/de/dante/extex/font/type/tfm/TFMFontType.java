@@ -19,6 +19,8 @@
 
 package de.dante.extex.font.type.tfm;
 
+import java.io.Serializable;
+
 /**
  * Font type.
  *
@@ -29,7 +31,7 @@ package de.dante.extex.font.type.tfm;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class TFMFontType {
+public class TFMFontType implements Serializable {
 
     /**
      * Normal TeX font metric
@@ -70,7 +72,7 @@ public class TFMFontType {
     /**
      * Type (type-safe class)
      */
-    private static final class Type {
+    private static final class Type implements Serializable {
 
         /**
          * Creates a new object.

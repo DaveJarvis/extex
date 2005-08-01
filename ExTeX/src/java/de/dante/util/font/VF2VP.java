@@ -81,7 +81,7 @@ public final class VF2VP {
         Configuration config = new ConfigurationFactory()
                 .newInstance("config/extex.xml");
 
-        Configuration cfgfonts = config.getConfiguration("Fonts");
+        // Configuration cfgfonts = config.getConfiguration("Fonts");
 
         Properties prop = new Properties();
         try {
@@ -92,7 +92,7 @@ public final class VF2VP {
         }
 
         ResourceFinder finder = (new ResourceFinderFactory())
-                .createResourceFinder(cfgfonts.getConfiguration("Resource"),
+                .createResourceFinder(config.getConfiguration("Resource"),
                         null, prop);
 
         // EncFactory ef = new EncFactory(finder);

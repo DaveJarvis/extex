@@ -21,11 +21,10 @@ package de.dante.extex.font.type.vf.command;
 
 import java.io.IOException;
 
-import org.jdom.Element;
-
 import de.dante.extex.font.exception.FontException;
 import de.dante.extex.font.type.vf.exception.VFWrongCodeException;
 import de.dante.util.file.random.RandomAccessR;
+import de.dante.util.xml.XMLStreamWriter;
 
 /**
  * VFCommand: post
@@ -55,11 +54,11 @@ public class VFCommandPost extends VFCommand {
     }
 
     /**
-     * @see de.dante.util.XMLConvertible#toXML()
+     * @see de.dante.util.XMLWriterConvertible#writeXML(de.dante.util.xml.XMLStreamWriter)
      */
-    public Element toXML() {
+    public void writeXML(final XMLStreamWriter writer) throws IOException {
 
-        Element element = new Element("post");
-        return element;
+        writer.writeStartElement("post");
+        writer.writeEndElement();
     }
 }

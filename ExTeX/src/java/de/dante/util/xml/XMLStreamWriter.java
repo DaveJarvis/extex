@@ -141,6 +141,32 @@ public class XMLStreamWriter {
     }
 
     /**
+     * Write a cdata string.
+     * @param text  The cdata string.
+     * @throws IOException if an error occurs.
+     */
+    public void writeCDATA(final String text) throws IOException {
+
+        closeElement();
+        stack.setAppend();
+        printIndent();
+        out.write("<![CDATA[\n");
+        out.write(text);
+        out.write("\n]]>");
+        printNewLine();
+    }
+
+    /**
+     * Write a cdata string.
+     * @param text  The cdata as array.
+     * @throws IOException if an error occurs.
+     */
+    public void writeCDATA(final byte[] array) throws IOException {
+
+        writeCDATA(new String(array));
+    }
+
+    /**
      * Print a newline, if beauty is set.
      * @throws IOException if an error occurs.
      */

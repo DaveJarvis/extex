@@ -76,10 +76,10 @@ public final class TTF2EFM {
         Configuration config = new ConfigurationFactory()
                 .newInstance("config/extex.xml");
 
-        Configuration cfgfonts = config.getConfiguration("Fonts");
+        //Configuration cfgfonts = config.getConfiguration("Fonts");
 
         ResourceFinder finder = (new ResourceFinderFactory())
-                .createResourceFinder(cfgfonts.getConfiguration("Resource"),
+                .createResourceFinder(config.getConfiguration("Resource"),
                         null, System.getProperties());
 
         // ttf-file

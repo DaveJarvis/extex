@@ -266,9 +266,11 @@ public class XMLDocumentWriter
 
         if (out != null) {
             try {
-                writer.writeEndElement();
-                writer.writeEndDocument();
-                writer.close();
+                if (writer != null) {
+                    writer.writeEndElement();
+                    writer.writeEndDocument();
+                    writer.close();
+                }
                 out.close();
             } catch (IOException e) {
                 throw new DocumentWriterIOException(e);

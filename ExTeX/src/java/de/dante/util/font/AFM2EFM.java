@@ -75,7 +75,7 @@ public final class AFM2EFM {
         Configuration config = new ConfigurationFactory()
                 .newInstance("config/extex.xml");
 
-        Configuration cfgfonts = config.getConfiguration("Fonts");
+        //Configuration cfgfonts = config.getConfiguration("Fonts");
 
         Properties prop = new Properties();
         try {
@@ -86,7 +86,7 @@ public final class AFM2EFM {
         }
 
         ResourceFinder finder = (new ResourceFinderFactory())
-                .createResourceFinder(cfgfonts.getConfiguration("Resource"),
+                .createResourceFinder(config.getConfiguration("Resource"),
                         null, prop);
 
         // afm-file

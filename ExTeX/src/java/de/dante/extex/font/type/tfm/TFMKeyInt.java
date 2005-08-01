@@ -19,6 +19,8 @@
 
 package de.dante.extex.font.type.tfm;
 
+import java.io.Serializable;
+
 /**
  * TFM: key-value-container
  *
@@ -26,7 +28,7 @@ package de.dante.extex.font.type.tfm;
  * @version $Revision$
  */
 
-public class TFMKeyInt {
+public class TFMKeyInt implements Serializable {
 
     /**
      * key

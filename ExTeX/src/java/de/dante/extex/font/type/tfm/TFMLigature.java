@@ -19,6 +19,7 @@
 
 package de.dante.extex.font.type.tfm;
 
+import java.io.Serializable;
 
 /**
  * TFM-Ligature
@@ -29,7 +30,7 @@ package de.dante.extex.font.type.tfm;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class TFMLigature extends TFMLigKern {
+public class TFMLigature extends TFMLigKern implements Serializable {
 
     /**
      * Create a new object

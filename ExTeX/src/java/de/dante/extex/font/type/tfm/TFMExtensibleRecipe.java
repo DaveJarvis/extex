@@ -20,11 +20,11 @@
 package de.dante.extex.font.type.tfm;
 
 import java.io.IOException;
+import java.io.Serializable;
 
-import org.jdom.Element;
-
-import de.dante.util.XMLConvertible;
+import de.dante.util.XMLWriterConvertible;
 import de.dante.util.file.random.RandomAccessR;
+import de.dante.util.xml.XMLStreamWriter;
 
 /**
  * Class for extensible recipe.
@@ -46,7 +46,7 @@ import de.dante.util.file.random.RandomAccessR;
  * @version $Revision$
  */
 
-public class TFMExtensibleRecipe implements XMLConvertible {
+public class TFMExtensibleRecipe implements XMLWriterConvertible, Serializable {
 
     /**
      * the id
@@ -126,16 +126,16 @@ public class TFMExtensibleRecipe implements XMLConvertible {
     }
 
     /**
-     * @see de.dante.util.XMLConvertible#toXML()
+     * @see de.dante.util.XMLWriterConvertible#writeXML(de.dante.util.xml.XMLStreamWriter)
      */
-    public Element toXML() {
+    public void writeXML(final XMLStreamWriter writer) throws IOException {
 
-        Element element = new Element("extensiblerecipe");
-        element.setAttribute("id", String.valueOf(etid));
-        element.setAttribute("top", String.valueOf(top));
-        element.setAttribute("mid", String.valueOf(mid));
-        element.setAttribute("bot", String.valueOf(bot));
-        element.setAttribute("rep", String.valueOf(rep));
-        return element;
+        writer.writeStartElement("extensiblerecipe");
+        writer.writeAttribute("id", String.valueOf(etid));
+        writer.writeAttribute("top", String.valueOf(top));
+        writer.writeAttribute("mid", String.valueOf(mid));
+        writer.writeAttribute("bot", String.valueOf(bot));
+        writer.writeAttribute("rep", String.valueOf(rep));
+        writer.writeEndElement();
     }
 }

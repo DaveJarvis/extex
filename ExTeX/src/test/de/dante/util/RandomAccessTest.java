@@ -162,7 +162,7 @@ public class RandomAccessTest extends TestCase {
         byte[] b2 = new byte[1000];
 
         rar.readFully(b1);
-        rar.readFully(b2);
+        raf.readFully(b2);
         for (int i = 0; i < b1.length; i++) {
             assertEquals(b1[i], b2[i]);
         }
