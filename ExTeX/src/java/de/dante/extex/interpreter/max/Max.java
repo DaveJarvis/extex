@@ -296,7 +296,7 @@ public abstract class Max
         try {
             while (iterator.hasNext()) {
                 primitiveFactory.define((Configuration) iterator.next(),
-                        tokenFactory, context, logger);
+                        tokenFactory, context, logger, null); //TODO gene: provide OutputStreamFactory
             }
         } catch (GeneralException e) {
             throw new ConfigurationWrapperException(e);
