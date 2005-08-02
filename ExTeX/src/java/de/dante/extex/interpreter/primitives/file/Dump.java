@@ -148,7 +148,6 @@ public class Dump extends AbstractCode implements LogEnabled {
         } catch (FileNotFoundException e) {
             throw new InterpreterException(e);
         } catch (IOException e) {
-            //e.printStackTrace();
             throw new InterpreterException(e);
         } finally {
             if (stream != null) {
