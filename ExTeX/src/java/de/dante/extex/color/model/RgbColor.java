@@ -19,7 +19,9 @@
 
 package de.dante.extex.color.model;
 
+import de.dante.extex.color.ColorVisitor;
 import de.dante.extex.interpreter.context.Color;
+import de.dante.util.GeneralException;
 
 /**
  * This class implements a color specification in RGB mode with an alpha
@@ -144,4 +146,16 @@ public class RgbColor implements Color {
                 + Integer.toHexString(blue) + " alpha=" + (float) alpha
                 / Color.MAX_VALUE + " >";
     }
+
+    /**
+     * @see de.dante.extex.interpreter.context.Color#visit(
+     *      de.dante.extex.color.ColorVisitor,
+     *      java.lang.Object)
+     */
+    public Object visit(final ColorVisitor visitor, final Object value)
+            throws GeneralException {
+
+        return visitor.visitRgb(this, value);
+    }
+
 }
