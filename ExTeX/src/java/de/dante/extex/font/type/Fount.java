@@ -130,4 +130,10 @@ public interface Fount {
     //     */
     //    boolean isVirtual();
 
+    //    /**
+    //     * Returns the scale factor for the font.
+    //     * @return Returns the scale factor for the font.
+    //     */
+    //    float getScaleFactor();
+
 }

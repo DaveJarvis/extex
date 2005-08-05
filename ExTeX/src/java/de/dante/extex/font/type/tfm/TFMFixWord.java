@@ -200,7 +200,9 @@ public class TFMFixWord implements Serializable {
      */
     public double toDouble() {
 
-        return (double) value * TFMConstants.CONST_1000 / FIXWORDDENOMINATOR;
+        // mgn check!
+        return (double) value /*  * TFMConstants.CONST_1000*/
+                / FIXWORDDENOMINATOR;
     }
 
     /**
