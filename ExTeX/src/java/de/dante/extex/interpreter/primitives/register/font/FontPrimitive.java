@@ -260,7 +260,7 @@ public class FontPrimitive extends AbstractAssignment
     }
 
     /**
-     * scan the filename until a <code>SpaceToken</code>.
+     * Scan the file name until a <code>SpaceToken</code> is found.
      *
      * @param context the interpreter context
      * @param source the source for new tokens
