@@ -161,7 +161,7 @@ public class ExTeXLauncher extends TestCase {
                     FileInputStream inputStream = new FileInputStream(file);
                     props.load(inputStream);
                     inputStream.close();
-                //} catch (FileNotFoundException e) {
+                    //} catch (FileNotFoundException e) {
                     // ignored on purpose
                 } catch (IOException e) {
                     // ignored on purpose
@@ -181,7 +181,7 @@ public class ExTeXLauncher extends TestCase {
      *
      * @return a new instance of the ExTeX class
      *
-     * @throws MainException in case of an error
+     * @throws InterpreterException in case of an error
      */
     public ExTeX runCode(final Properties properties, final String code,
             final String log, final String expect) throws InterpreterException {
@@ -221,7 +221,6 @@ public class ExTeXLauncher extends TestCase {
         logger.removeHandler(handler);
         if (log != null) {
             assertEquals(log, byteStream.toString());
-            //assertTrue("Error expected", errorP);
         } else {
             assertFalse("No error expected", errorP);
         }
