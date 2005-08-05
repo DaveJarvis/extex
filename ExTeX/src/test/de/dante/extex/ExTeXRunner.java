@@ -140,7 +140,8 @@ public class ExTeXRunner extends TestCase {
         public FontFactory getFontFactory() throws ConfigurationException {
 
             if (fontFactory == null) {
-                fontFactory = makeFontFactory(config, getResourceFinder());
+                fontFactory = makeFontFactory(config.getConfiguration("Fonts"),
+                        getResourceFinder());
             }
             return fontFactory;
         }
