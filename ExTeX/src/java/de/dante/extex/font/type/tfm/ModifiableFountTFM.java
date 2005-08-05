@@ -238,20 +238,34 @@ public class ModifiableFountTFM implements ModifiableFount, Serializable {
 
     /**
      * convert the fixword value to a dimen value
-     * @param fw    the fixword value
-     * @return  Returns the Dimen value.
+     *
+     * the simple calculation
+     *     fw.getValue() * actualsize.getValue() /
+     *     TFMFixWord.FIXWORDDENOMINATOR
+     * leads to different rounding than in TeX due to
+     * a limitation to 4 byte integer precission. Note
+     * that fw.getValue() * actualsize.getValue() might
+     * exceed the 4 byte range.
+     * Hence TTP 571 cancels actualsize.getValue() and
+     * TFMFixWord.FIXWORDDENOMINATOR to allow for a
+     * bytewise calculation. We do not need this bytewise
+     * calculation since we have long integers, but we
+     * need to be precise in perfoming the same rounding.
+     *
+     * @param fw
+     *            the fixword value
+     * @return Returns the Dimen value.
      */
     private Dimen convertFixWordToDimen(final TFMFixWord fw) {
 
         Dimen rt = new Dimen(0);
-        try {
-            long l = fw.getValue() * actualsize.getValue()
-                    / TFMFixWord.FIXWORDDENOMINATOR;
-            rt = new Dimen(l);
-        } catch (Exception e) {
-            // use default
-            rt = new Dimen(0);
+        int shift = 20;
+        long z = actualsize.getValue();
+        while (z >= 8388608) {
+            z >>= 1;
+            shift -= 1;
         }
+        rt = new Dimen(z*fw.getValue() >> shift);
         return rt;
     }
 
