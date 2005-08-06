@@ -172,7 +172,7 @@ public class PsWriter extends AbstractPostscriptWriter
      *      de.dante.extex.interpreter.type.dimen.Dimen,
      *      de.dante.extex.interpreter.type.dimen.Dimen)
      */
-    public boolean shipout(final NodeList nodes, final Dimen width,
+    public int shipout(final NodeList nodes, final Dimen width,
             final Dimen height) throws GeneralException, IOException {
 
         if (init) {
@@ -185,7 +185,7 @@ public class PsWriter extends AbstractPostscriptWriter
         page
                 .add(converter.nodesToPostScript(nodes, fontManager,
                         headerManager));
-        return true;
+        return 1;
     }
 
     /**
