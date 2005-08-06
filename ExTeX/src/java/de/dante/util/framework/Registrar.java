@@ -46,7 +46,7 @@ import java.util.List;
  *
  *      <b>return</b> Registrar.reconnect(this);
  *  }
- * <pre>
+ * </pre>
  *
  * <p>
  *  Any factory which  wants to participate in the reconnection mechanism should
