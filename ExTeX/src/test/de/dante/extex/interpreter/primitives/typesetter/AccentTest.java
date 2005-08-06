@@ -30,6 +30,15 @@ import de.dante.test.ExTeXLauncher;
 public class AccentTest extends ExTeXLauncher {
 
     /**
+     * Command line interface.
+     * @param args the arguments
+     */
+    public static void main(final String[] args) {
+
+        junit.textui.TestRunner.run(AccentTest.class);
+    }
+
+    /**
      * Constructor for MathaccentTest.
      *
      * @param arg the name
