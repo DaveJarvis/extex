@@ -89,7 +89,7 @@ public class ColorPrimitive extends AbstractAssignment
     private static final int CMYK = 2;
 
     /**
-     * The constant <tt>GRAY</tt> contains the indictor for the grayscale color
+     * The constant <tt>GRAY</tt> contains the indicator for the grayscale color
      * model.
      */
     private static final int GRAY = 3;

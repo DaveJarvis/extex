@@ -108,7 +108,7 @@ import de.dante.extex.typesetter.Typesetter;
  *                            <b>final</b> TokenSource source,
  *                            <b>final</b> Typesetter typesetter
  *                           ) {
- *       <i>// implement the execution behaviour here</i>
+ *       <i>// implement the execution behavior here</i>
  *       <b>return</b> <b>true</b>;
  *     }
  *   } </pre>
