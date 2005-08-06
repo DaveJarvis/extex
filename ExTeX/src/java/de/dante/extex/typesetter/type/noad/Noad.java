@@ -80,7 +80,8 @@ public interface Noad extends Knot {
     /**
      * Translate a Noad into a NodeList.
      *
-     * @param list the list to add the nodes to
+     * @param list the list to add the nodes to. This list contains the Nodes
+     *  previously typeset. Thus it can be used to look back
      * @param mathContext the context to consider
      * @param context the interpreter context
      *
