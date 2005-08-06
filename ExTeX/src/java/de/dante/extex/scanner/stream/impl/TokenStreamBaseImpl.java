@@ -51,7 +51,7 @@ public class TokenStreamBaseImpl implements TokenStream {
     private boolean skipSpaces = false;
 
     /**
-     * The field <tt>stack</tt> contains the Token stack for the pushback
+     * The field <tt>stack</tt> contains the Token stack for the push-back
      * operation.
      */
     private Tokens stack = new Tokens();
