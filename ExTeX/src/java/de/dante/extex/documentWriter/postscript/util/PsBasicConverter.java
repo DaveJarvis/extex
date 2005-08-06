@@ -488,8 +488,10 @@ public class PsBasicConverter
                         break;
                     case 'l':
                         if (text.equals("landscape")) {
-                            //TODO gene: unimplemented
-                            throw new RuntimeException("unimplemented");
+                            Dimen[] paper = (Dimen[]) coordinates;
+                            Dimen x = paper[0];
+                            paper[0].set(paper[1]);
+                            paper[1].set(x);
                         }
                         break;
                     default:
