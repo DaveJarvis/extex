@@ -79,9 +79,9 @@ public class VirtualCharNode extends CharNode implements NodeList {
 
         /**
          * @see de.dante.extex.typesetter.type.node.AbstractNodeList#updateDimensions(
-         *      de.dante.extex.typesetter.type.Node)
+         *      de.dante.extex.typesetter.type.Node, boolean)
          */
-        protected void updateDimensions(final Node n) {
+        protected void updateDimensions(final Node n, boolean first) {
 
             // This should not be needed
             throw new RuntimeException("unimplemented");

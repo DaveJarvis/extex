@@ -104,9 +104,9 @@ public class HorizontalListNode extends AbstractNodeList implements NodeList {
 
     /**
      * @see de.dante.extex.typesetter.type.node.AbstractNodeList#updateDimensions(
-     *      de.dante.extex.typesetter.type.Node)
+     *      de.dante.extex.typesetter.type.Node, boolean)
      */
-    protected void updateDimensions(final Node node) {
+    protected void updateDimensions(final Node node, boolean first) {
 
         getWidth().add(node.getWidth());
         getHeight().max(node.getHeight());

@@ -87,7 +87,7 @@ public abstract class AbstractNodeList extends AbstractNode implements NodeList 
     public void add(final int index, final Node node) {
 
         list.add(index, node);
-        updateDimensions(node);
+        updateDimensions(node, list.size() == 1);
     }
 
     /**
@@ -97,7 +97,7 @@ public abstract class AbstractNodeList extends AbstractNode implements NodeList 
     public void add(final Node node) {
 
         list.add(node);
-        updateDimensions(node);
+        updateDimensions(node, list.size() == 1);
     }
 
     /**
@@ -107,7 +107,7 @@ public abstract class AbstractNodeList extends AbstractNode implements NodeList 
     public void addGlyph(final CharNode node) {
 
         list.add(node);
-        updateDimensions(node);
+        updateDimensions(node, list.size() == 1);
     }
 
     /**
@@ -361,6 +361,7 @@ public abstract class AbstractNodeList extends AbstractNode implements NodeList 
      * Recompute the dimensions of the given node.
      *
      * @param node the node to update
+     * @param first indicator that this is the first node in the list
      */
-    protected abstract void updateDimensions(final Node node);
+    protected abstract void updateDimensions(final Node node, boolean first);
 }
