@@ -145,8 +145,8 @@ public class VirtualFontImpl extends FontImpl implements VirtualFount {
         shift.subtract(v);
 
         // set move / shift
-        node.setMove(move);
-        node.setShift(shift);
+        //TODO MGN: node.setMove(move);
+        //TODO MGN: node.setShift(shift);
         cnode.add(node);
 
         // calculate new refpoint

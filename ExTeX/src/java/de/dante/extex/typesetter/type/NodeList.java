@@ -81,7 +81,7 @@ public interface NodeList extends Node {
     void clear();
 
     /**
-     * Getter for a node at a given posotion.
+     * Getter for a node at a given position.
      *
      * @param index the position
      *
