@@ -20,7 +20,7 @@
 package de.dante.extex.language.hyphenation.impl;
 
 import junit.framework.TestCase;
-import de.dante.extex.font.FontStream;
+import de.dante.extex.font.FontByteArray;
 import de.dante.extex.font.FountKey;
 import de.dante.extex.font.Glyph;
 import de.dante.extex.font.Kerning;
@@ -211,7 +211,15 @@ public class BaseHyphenationTableTest extends TestCase {
          */
         public FountKey getFontKey() {
 
-            return new FountKey("mockfont");// add by mgn
+            return new FountKey("mockfont"); // add by mgn
+        }
+        
+        /**
+         * @see de.dante.extex.font.type.Fount#getFontByteArray()
+         */
+        public FontByteArray getFontByteArray() {
+        
+            return null; // add by mgn
         }
 
     }
@@ -243,7 +251,7 @@ public class BaseHyphenationTableTest extends TestCase {
             return null;
         }
 
-        public FontStream getExternalFile() {
+        public FontByteArray getExternalFile() {
 
             return null;
         }
@@ -305,7 +313,7 @@ public class BaseHyphenationTableTest extends TestCase {
 
         }
 
-        public void setExternalFile(FontStream file) {
+        public void setExternalFile(FontByteArray file) {
 
         }
 

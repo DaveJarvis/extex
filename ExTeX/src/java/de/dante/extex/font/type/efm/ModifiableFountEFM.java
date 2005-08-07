@@ -23,6 +23,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import de.dante.extex.font.FontByteArray;
 import de.dante.extex.font.FountKey;
 import de.dante.extex.font.Glyph;
 import de.dante.extex.font.GlyphImpl;
@@ -394,4 +395,11 @@ public class ModifiableFountEFM implements ModifiableFount, Serializable {
         return fountkey;
     }
 
+    /**
+     * @see de.dante.extex.font.type.Fount#getFontByteArray()
+     */
+    public FontByteArray getFontByteArray() {
+
+        return null;
+    }
 }

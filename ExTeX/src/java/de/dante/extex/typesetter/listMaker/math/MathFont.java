@@ -19,6 +19,7 @@
 
 package de.dante.extex.typesetter.listMaker.math;
 
+import de.dante.extex.font.FontByteArray;
 import de.dante.extex.font.FountKey;
 import de.dante.extex.font.Glyph;
 import de.dante.extex.font.type.BoundingBox;
@@ -205,5 +206,13 @@ public class MathFont implements Font {
     public FountKey getFontKey() {
 
         return this.font.getFontKey(); // add by mgn
+    }
+    
+    /**
+     * @see de.dante.extex.font.type.Fount#getFontByteArray()
+     */
+    public FontByteArray getFontByteArray() {
+
+        return this.font.getFontByteArray(); // add by mgn
     }
 }

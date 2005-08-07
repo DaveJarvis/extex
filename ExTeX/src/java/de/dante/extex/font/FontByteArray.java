@@ -19,31 +19,18 @@
 
 package de.dante.extex.font;
 
-import java.io.InputStream;
-
 /**
- * Class for a pfb-font-file.
+ * Interface for the font file (e.g. the pfb-file).
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class PfbFontStream extends AbstractFontStream implements FontStream {
+public interface FontByteArray {
 
     /**
-     * Create a new object
-     * @param in  the external stream
+     * Returns the bytes array for the external fontfile.
+     * @return Returns the bytes array for the external fontfile.
      */
-    public PfbFontStream(final InputStream in) {
+    byte[] getBytes();
 
-        super(in);
-    }
-
-    /**
-     * Returns the String for the class
-     * @return Returns the string for the class
-     */
-    public String toString() {
-
-        return "PFB";
-    }
 }

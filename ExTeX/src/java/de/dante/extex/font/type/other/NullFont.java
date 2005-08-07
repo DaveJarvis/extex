@@ -23,6 +23,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+import de.dante.extex.font.FontByteArray;
 import de.dante.extex.font.FountKey;
 import de.dante.extex.font.Glyph;
 import de.dante.extex.font.type.BoundingBox;
@@ -226,5 +227,13 @@ public class NullFont implements Font, Serializable {
     public FountKey getFontKey() {
 
         return new FountKey("nullfont");
+    }
+
+    /**
+     * @see de.dante.extex.font.type.Fount#getFontByteArray()
+     */
+    public FontByteArray getFontByteArray() {
+
+        return null;
     }
 }
