@@ -41,7 +41,7 @@ public final class T2StandardStrings {
     /**
      * Standard Strings
      */
-    public static final String DATA[] = {".notdef", // 0
+    public static final String[] DATA = {".notdef", // 0
             "space", // 1
             "exclam", // 2
             "quotedbl", // 3
