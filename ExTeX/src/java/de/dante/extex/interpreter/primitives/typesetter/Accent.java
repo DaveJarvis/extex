@@ -40,7 +40,7 @@ import de.dante.extex.typesetter.type.node.AccentKernNode;
 import de.dante.extex.typesetter.type.node.HorizontalListNode;
 import de.dante.util.GeneralException;
 import de.dante.util.UnicodeChar;
-import de.dante.util.configuration.ConfigurationException;
+import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive <code>\accent</code>.

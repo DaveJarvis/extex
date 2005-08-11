@@ -30,9 +30,9 @@ import de.dante.extex.scanner.type.SpaceToken;
 import de.dante.extex.scanner.type.Token;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.GeneralException;
-import de.dante.util.configuration.Configuration;
-import de.dante.util.configuration.ConfigurationException;
 import de.dante.util.framework.configuration.Configurable;
+import de.dante.util.framework.configuration.Configuration;
+import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This abstract class provides some common methods for primitives dealing with

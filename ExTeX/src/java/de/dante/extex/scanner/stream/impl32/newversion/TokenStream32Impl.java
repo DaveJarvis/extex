@@ -41,13 +41,13 @@ import de.dante.extex.scanner.type.TokenFactory;
 import de.dante.util.GeneralException;
 import de.dante.util.Locator;
 import de.dante.util.UnicodeChar;
-import de.dante.util.configuration.Configuration;
-import de.dante.util.configuration.ConfigurationException;
-import de.dante.util.configuration.ConfigurationSyntaxException;
 import de.dante.util.file.InputLineDecodeReader;
 import de.dante.util.file.InputLineDecodeStream;
 import de.dante.util.file.InputLineDecodeString;
 import de.dante.util.file.InputLineDecoder;
+import de.dante.util.framework.configuration.Configuration;
+import de.dante.util.framework.configuration.exception.ConfigurationException;
+import de.dante.util.framework.configuration.exception.ConfigurationSyntaxException;
 
 /**
  * This class implements a 32 bit token stream.

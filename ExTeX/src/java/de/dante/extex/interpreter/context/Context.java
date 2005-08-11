@@ -40,7 +40,7 @@ import de.dante.extex.typesetter.paragraphBuilder.ParagraphShape;
 import de.dante.extex.typesetter.type.math.MathDelimiter;
 import de.dante.util.Locator;
 import de.dante.util.UnicodeChar;
-import de.dante.util.configuration.ConfigurationException;
+import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This interface describes the container for all data of an interpreter

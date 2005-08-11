@@ -33,7 +33,7 @@ import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.NodeVisitor;
 import de.dante.util.GeneralException;
 import de.dante.util.Unit;
-import de.dante.util.configuration.Configuration;
+import de.dante.util.framework.configuration.Configuration;
 
 /**
  * Implementation of a pdf document writer.

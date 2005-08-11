@@ -25,7 +25,7 @@ import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.node.CharNodeFactory;
 import de.dante.extex.typesetter.type.node.HorizontalListNode;
-import de.dante.util.configuration.ConfigurationException;
+import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * Interface for the Manager of a list maker.

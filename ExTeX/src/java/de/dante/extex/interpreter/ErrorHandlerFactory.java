@@ -20,9 +20,9 @@
 package de.dante.extex.interpreter;
 
 import de.dante.extex.main.errorHandler.editHandler.EditHandler;
-import de.dante.util.configuration.Configuration;
-import de.dante.util.configuration.ConfigurationException;
 import de.dante.util.framework.AbstractFactory;
+import de.dante.util.framework.configuration.Configuration;
+import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This is the factory for instances of

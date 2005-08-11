@@ -19,8 +19,8 @@
 
 package de.dante.extex.language;
 
-import de.dante.util.configuration.ConfigurationException;
 import de.dante.util.framework.AbstractFactory;
+import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides a factory for a

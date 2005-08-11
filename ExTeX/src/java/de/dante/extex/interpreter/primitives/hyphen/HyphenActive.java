@@ -28,7 +28,7 @@ import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.language.Language;
 import de.dante.extex.language.hyphenation.exception.HyphenationException;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.configuration.ConfigurationException;
+import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive <code>\hyphenactive</code>.

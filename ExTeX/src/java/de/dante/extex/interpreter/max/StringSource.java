@@ -31,7 +31,7 @@ import de.dante.extex.scanner.type.Token;
 import de.dante.extex.scanner.type.TokenFactory;
 import de.dante.util.Locator;
 import de.dante.util.UnicodeChar;
-import de.dante.util.configuration.ConfigurationException;
+import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides a token source which is fed from a sting.

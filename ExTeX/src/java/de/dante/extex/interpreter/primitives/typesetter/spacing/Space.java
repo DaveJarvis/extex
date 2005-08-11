@@ -28,7 +28,7 @@ import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.interpreter.type.count.ImmutableCount;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.GeneralException;
-import de.dante.util.configuration.ConfigurationException;
+import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive <code>\ </code>.

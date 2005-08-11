@@ -28,9 +28,9 @@ import java.util.Properties;
 import java.util.logging.Logger;
 
 import de.dante.util.StringListIterator;
-import de.dante.util.configuration.Configuration;
-import de.dante.util.configuration.ConfigurationException;
-import de.dante.util.configuration.ConfigurationMissingAttributeException;
+import de.dante.util.framework.configuration.Configuration;
+import de.dante.util.framework.configuration.exception.ConfigurationException;
+import de.dante.util.framework.configuration.exception.ConfigurationMissingAttributeException;
 import de.dante.util.framework.logger.LogEnabled;
 
 /**

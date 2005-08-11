@@ -42,8 +42,8 @@ import de.dante.extex.scanner.type.ControlSequenceToken;
 import de.dante.extex.scanner.type.SpaceToken;
 import de.dante.extex.scanner.type.Token;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.configuration.ConfigurationException;
-import de.dante.util.configuration.ConfigurationIOException;
+import de.dante.util.framework.configuration.exception.ConfigurationException;
+import de.dante.util.framework.configuration.exception.ConfigurationIOException;
 import de.dante.util.framework.logger.LogEnabled;
 
 /**

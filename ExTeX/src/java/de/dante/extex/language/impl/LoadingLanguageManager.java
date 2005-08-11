@@ -30,7 +30,7 @@ import java.util.Map;
 
 import de.dante.extex.language.Language;
 import de.dante.extex.language.hyphenation.exception.HyphenationException;
-import de.dante.util.configuration.ConfigurationException;
+import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class manages the <code>Language</code>s. It is a container

@@ -27,9 +27,9 @@ import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.scanner.stream.TokenStreamFactory;
 import de.dante.extex.scanner.stream.impl32.TokenStreamStringImpl;
 import de.dante.util.GeneralException;
-import de.dante.util.configuration.Configuration;
-import de.dante.util.configuration.ConfigurationException;
-import de.dante.util.configuration.ConfigurationFactory;
+import de.dante.util.framework.configuration.Configuration;
+import de.dante.util.framework.configuration.ConfigurationFactory;
+import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * Test cases for dimen registers.

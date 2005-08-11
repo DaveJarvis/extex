@@ -44,7 +44,7 @@ import de.dante.extex.typesetter.type.node.InsertionNode;
 import de.dante.extex.typesetter.type.node.MarkNode;
 import de.dante.extex.typesetter.type.node.VerticalListNode;
 import de.dante.util.GeneralException;
-import de.dante.util.configuration.Configuration;
+import de.dante.util.framework.configuration.Configuration;
 
 /**
  * JUnit tests for class <code>DviDocumentWriter</code>.

@@ -76,10 +76,10 @@ import de.dante.extex.typesetter.type.math.MathDelimiter;
 import de.dante.util.GeneralException;
 import de.dante.util.Locator;
 import de.dante.util.UnicodeChar;
-import de.dante.util.configuration.Configuration;
-import de.dante.util.configuration.ConfigurationException;
-import de.dante.util.configuration.ConfigurationMissingException;
 import de.dante.util.framework.configuration.Configurable;
+import de.dante.util.framework.configuration.Configuration;
+import de.dante.util.framework.configuration.exception.ConfigurationException;
+import de.dante.util.framework.configuration.exception.ConfigurationMissingException;
 import de.dante.util.framework.i18n.Localizable;
 import de.dante.util.framework.i18n.Localizer;
 

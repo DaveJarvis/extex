@@ -18,8 +18,8 @@
  */
 package de.dante.util.framework.configuration;
 
-import de.dante.util.configuration.Configuration;
-import de.dante.util.configuration.ConfigurationException;
+import de.dante.util.framework.configuration.exception.ConfigurationException;
+
 
 /**
  * This interface describes the possibilities to configure an object.

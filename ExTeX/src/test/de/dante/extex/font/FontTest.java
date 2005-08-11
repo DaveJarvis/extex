@@ -27,8 +27,8 @@ import junit.framework.TestCase;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.interpreter.type.glue.GlueComponent;
-import de.dante.util.configuration.Configuration;
-import de.dante.util.configuration.ConfigurationFactory;
+import de.dante.util.framework.configuration.Configuration;
+import de.dante.util.framework.configuration.ConfigurationFactory;
 import de.dante.util.resource.ResourceFinder;
 import de.dante.util.resource.ResourceFinderFactory;
 

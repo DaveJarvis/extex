@@ -68,7 +68,7 @@ import de.dante.extex.typesetter.type.node.GlueNode;
 import de.dante.extex.typesetter.type.node.HorizontalListNode;
 import de.dante.extex.typesetter.type.node.ImplicitKernNode;
 import de.dante.util.UnicodeChar;
-import de.dante.util.configuration.ConfigurationException;
+import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This is the list maker for the inline math formulae.

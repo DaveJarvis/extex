@@ -44,8 +44,8 @@ import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.node.CharNodeFactory;
 import de.dante.util.GeneralException;
 import de.dante.util.UnicodeChar;
-import de.dante.util.configuration.Configuration;
-import de.dante.util.configuration.ConfigurationException;
+import de.dante.util.framework.configuration.Configuration;
+import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * The dummy typesetter which does nothing but provide the appropriate

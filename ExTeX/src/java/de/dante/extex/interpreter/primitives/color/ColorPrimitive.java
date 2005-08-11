@@ -36,7 +36,7 @@ import de.dante.extex.scanner.type.LetterToken;
 import de.dante.extex.scanner.type.RightBraceToken;
 import de.dante.extex.scanner.type.Token;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.configuration.ConfigurationException;
+import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive <code>\color</code>.

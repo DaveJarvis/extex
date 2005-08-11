@@ -31,8 +31,8 @@ import de.dante.extex.interpreter.type.pair.Pair;
 import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.transform.Transform;
 import de.dante.util.GeneralException;
-import de.dante.util.configuration.Configuration;
-import de.dante.util.configuration.ConfigurationException;
+import de.dante.util.framework.configuration.Configuration;
+import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This is a reference implementation for an interpreter context with

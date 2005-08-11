@@ -29,7 +29,7 @@ import de.dante.extex.typesetter.type.noad.MathList;
 import de.dante.extex.typesetter.type.noad.StyleNoad;
 import de.dante.extex.typesetter.type.noad.util.MathContext;
 import de.dante.extex.typesetter.type.node.HorizontalListNode;
-import de.dante.util.configuration.ConfigurationException;
+import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This is the list maker for the display math formulae.

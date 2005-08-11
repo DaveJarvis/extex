@@ -30,10 +30,10 @@ import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.AbstractCode;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.configuration.Configuration;
-import de.dante.util.configuration.ConfigurationException;
 import de.dante.util.framework.AbstractFactory;
 import de.dante.util.framework.configuration.Configurable;
+import de.dante.util.framework.configuration.Configuration;
+import de.dante.util.framework.configuration.exception.ConfigurationException;
 import de.dante.util.framework.logger.LogEnabled;
 
 /**

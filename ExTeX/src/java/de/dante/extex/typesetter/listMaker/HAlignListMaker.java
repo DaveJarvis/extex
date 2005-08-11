@@ -39,7 +39,7 @@ import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.node.HorizontalListNode;
 import de.dante.extex.typesetter.type.node.VerticalListNode;
-import de.dante.util.configuration.ConfigurationException;
+import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides a list maker for horizontal alignments.

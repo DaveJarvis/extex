@@ -46,7 +46,7 @@ import de.dante.extex.typesetter.type.node.HorizontalListNode;
 import de.dante.extex.typesetter.type.node.ImplicitKernNode;
 import de.dante.extex.typesetter.type.node.SpaceNode;
 import de.dante.util.UnicodeChar;
-import de.dante.util.configuration.ConfigurationException;
+import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * Maker for a horizontal list.

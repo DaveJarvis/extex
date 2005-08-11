@@ -17,41 +17,54 @@
  *
  */
 
-package de.dante.util.configuration;
+package de.dante.util.framework.configuration.exception;
 
 /**
- * This exception is thrown when a dynamicaly loaded class has signaled an
- * illegal access.
+ * This Exception is thrown when a configuration tries to use an unsupported
+ * encoding.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class ConfigurationIllegalAccessException extends ConfigurationException {
+public class ConfigurationUnsupportedEncodingException
+        extends
+            ConfigurationException {
+
+    /**
+     * Create a new object.
+     *
+     * @param message the message string
+     * @param source the the name of the file for which this exception occurred
+     */
+    public ConfigurationUnsupportedEncodingException(final String message,
+            final String source) {
+
+        super(message, source);
+    }
 
     /**
      * Creates a new object.
      *
+     * @param message message the message string
      * @param cause the next Throwable in the list
      */
-    public ConfigurationIllegalAccessException(final Throwable cause) {
+    public ConfigurationUnsupportedEncodingException(final String message,
+            final Throwable cause) {
 
-        super(null, cause);
+        super(message, cause);
     }
 
     /**
      * Getter for the text prefix of this ConfigException.
      * The text is taken from the resource bundle <tt>ConfigurationEception</tt>
-     * under the key <tt>ConfigurationIllegalAccessException.Text</tt>. The
-     * argument {0} is replaced by the message of the embedded cause as passed
-     * to the constructor.
+     * under the key <tt>ConfigurationUnsupportedEncodingException.Text</tt>.
      *
      * @return the text
      */
-    protected String getMesssage() {
+    protected String getText() {
 
         return getLocalizer().format(
-                "ConfigurationIllegalAccessException.Text",
-                getCause().getLocalizedMessage());
+                "ConfigurationUnsupportedEncodingException.Text");
     }
 
 }

@@ -23,9 +23,9 @@ import java.util.Properties;
 
 import junit.framework.TestCase;
 import de.dante.extex.font.FontFactory;
-import de.dante.util.configuration.Configuration;
-import de.dante.util.configuration.ConfigurationException;
-import de.dante.util.configuration.ConfigurationFactory;
+import de.dante.util.framework.configuration.Configuration;
+import de.dante.util.framework.configuration.ConfigurationFactory;
+import de.dante.util.framework.configuration.exception.ConfigurationException;
 import de.dante.util.resource.ResourceFinder;
 
 /**

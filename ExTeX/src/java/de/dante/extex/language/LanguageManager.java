@@ -19,7 +19,7 @@
 
 package de.dante.extex.language;
 
-import de.dante.util.configuration.ConfigurationException;
+import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class manages the <code>HyphenationTable</code>s. It is a container

@@ -21,7 +21,7 @@ package de.dante.extex.format.dvi.command;
 
 import de.dante.extex.font.exception.FontException;
 import de.dante.extex.format.dvi.exception.DviException;
-import de.dante.util.configuration.ConfigurationException;
+import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * Interface for a DVI command to execute.

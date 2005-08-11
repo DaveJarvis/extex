@@ -21,7 +21,7 @@ package de.dante.util.resource;
 
 import java.io.InputStream;
 
-import de.dante.util.configuration.ConfigurationException;
+import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This interface describes a class which is able to find files or other

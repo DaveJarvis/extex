@@ -51,7 +51,7 @@ import de.dante.extex.typesetter.type.node.InsertionNode;
 import de.dante.extex.typesetter.type.node.PenaltyNode;
 import de.dante.extex.typesetter.type.node.VerticalListNode;
 import de.dante.util.UnicodeChar;
-import de.dante.util.configuration.ConfigurationException;
+import de.dante.util.framework.configuration.exception.ConfigurationException;
 import de.dante.util.framework.i18n.Localizable;
 import de.dante.util.framework.i18n.Localizer;
 import de.dante.util.framework.logger.LogEnabled;

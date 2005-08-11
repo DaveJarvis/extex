@@ -29,7 +29,7 @@ import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.interpreter.type.font.FontConvertible;
 import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.configuration.ConfigurationException;
+import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for a font primitive.

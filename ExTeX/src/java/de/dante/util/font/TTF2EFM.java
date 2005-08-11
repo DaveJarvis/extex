@@ -28,8 +28,8 @@ import org.jdom.Document;
 import org.jdom.output.XMLOutputter;
 
 import de.dante.extex.font.type.ttf.TTFReader;
-import de.dante.util.configuration.Configuration;
-import de.dante.util.configuration.ConfigurationFactory;
+import de.dante.util.framework.configuration.Configuration;
+import de.dante.util.framework.configuration.ConfigurationFactory;
 import de.dante.util.resource.ResourceFinder;
 import de.dante.util.resource.ResourceFinderFactory;
 

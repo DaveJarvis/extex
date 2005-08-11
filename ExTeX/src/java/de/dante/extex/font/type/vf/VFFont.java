@@ -37,8 +37,8 @@ import de.dante.extex.font.type.vf.command.VFCommandCharacterPackets;
 import de.dante.extex.font.type.vf.command.VFCommandFontDef;
 import de.dante.extex.font.type.vf.exception.VFMasterTFMNotFoundException;
 import de.dante.util.XMLWriterConvertible;
-import de.dante.util.configuration.ConfigurationException;
 import de.dante.util.file.random.RandomAccessR;
+import de.dante.util.framework.configuration.exception.ConfigurationException;
 import de.dante.util.xml.XMLStreamWriter;
 
 /**

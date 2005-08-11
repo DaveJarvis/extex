@@ -16,7 +16,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  *
  */
-package de.dante.util.configuration;
+package de.dante.util.framework.configuration.exception;
 
 /**
  * This exception is thrown when some other kind of Exception has been

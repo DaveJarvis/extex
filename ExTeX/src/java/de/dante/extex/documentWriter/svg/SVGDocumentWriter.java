@@ -64,7 +64,7 @@ import de.dante.extex.typesetter.type.node.WhatsItNode;
 import de.dante.util.GeneralException;
 import de.dante.util.UnicodeChar;
 import de.dante.util.Unit;
-import de.dante.util.configuration.Configuration;
+import de.dante.util.framework.configuration.Configuration;
 
 /**
  * This is a svg implementation of a document writer.

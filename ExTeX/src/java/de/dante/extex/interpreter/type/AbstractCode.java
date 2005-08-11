@@ -29,9 +29,9 @@ import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.scanner.type.ControlSequenceToken;
 import de.dante.extex.scanner.type.Token;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.configuration.ConfigurationException;
 import de.dante.util.framework.Registrar;
 import de.dante.util.framework.RegistrarException;
+import de.dante.util.framework.configuration.exception.ConfigurationException;
 import de.dante.util.framework.i18n.Localizable;
 import de.dante.util.framework.i18n.Localizer;
 

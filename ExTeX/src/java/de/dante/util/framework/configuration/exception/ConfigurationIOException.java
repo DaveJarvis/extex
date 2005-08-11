@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.util.configuration;
+package de.dante.util.framework.configuration.exception;
 
 /**
  * This Exception is thrown when a configuration is requested with the path

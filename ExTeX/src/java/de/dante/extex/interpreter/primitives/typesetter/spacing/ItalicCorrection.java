@@ -33,7 +33,7 @@ import de.dante.extex.typesetter.type.node.CharNode;
 import de.dante.extex.typesetter.type.node.ExplicitKernNode;
 import de.dante.util.GeneralException;
 import de.dante.util.UnicodeChar;
-import de.dante.util.configuration.ConfigurationException;
+import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive <code>\ </code>.

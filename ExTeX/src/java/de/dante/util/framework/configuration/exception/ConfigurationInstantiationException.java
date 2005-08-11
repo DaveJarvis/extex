@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2004 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,39 +17,54 @@
  *
  */
 
-package de.dante.util.configuration;
+package de.dante.util.framework.configuration.exception;
+
 
 /**
- * This Exception is thrown when a configuration is requested with the path
- * <code>null</code>> or the empty string.
+ * This exception is thrown when a dynamically loaded class signals an
+ * instantiation exception.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class ConfigurationInvalidResourceException
-        extends
-            ConfigurationException {
+public class ConfigurationInstantiationException extends ConfigurationException {
 
     /**
-     * Create a new object.
+     * Creates a new object.
      *
+     * @param message the message text
+     * @param cause the next Throwable in the list
      */
-    public ConfigurationInvalidResourceException() {
+    public ConfigurationInstantiationException(final String message,
+            final Throwable cause) {
 
-        super("", (String) null);
+        super(message, cause);
+    }
+
+    /**
+     * Creates a new object.
+     *
+     * @param cause the next Throwable in the list
+     */
+    public ConfigurationInstantiationException(final Throwable cause) {
+
+        super("", cause);
     }
 
     /**
      * Getter for the text prefix of this ConfigException.
      * The text is taken from the resource bundle <tt>ConfigurationEception</tt>
-     * under the key <tt>ConfigurationInvalidResourceException.Text</tt>.
+     * under the key <tt>ConfigurationInstantiationException.Text</tt>. The
+     * argument {0} is replaced by the message of the embedded cause as passed
+     * to the constructor.
      *
      * @return the text
      */
     protected String getText() {
 
         return getLocalizer().format(
-                "ConfigurationInvalidResourceException.Text");
+                "ConfigurationInstantiationException.Text",
+                getCause().getLocalizedMessage());
     }
 
 }

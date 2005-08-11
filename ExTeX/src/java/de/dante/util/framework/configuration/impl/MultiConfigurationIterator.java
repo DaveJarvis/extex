@@ -16,9 +16,12 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  *
  */
-package de.dante.util.configuration;
+package de.dante.util.framework.configuration.impl;
 
 import java.util.Iterator;
+
+import de.dante.util.framework.configuration.Configuration;
+import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an Iterator over multiple Configurations.

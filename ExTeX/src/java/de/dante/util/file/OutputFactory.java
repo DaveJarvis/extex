@@ -32,10 +32,10 @@ import java.util.Map;
 import de.dante.extex.documentWriter.OutputStreamFactory;
 import de.dante.extex.documentWriter.exception.DocumentWriterException;
 import de.dante.extex.documentWriter.exception.OutputStreamOpenException;
-import de.dante.util.configuration.Configuration;
-import de.dante.util.configuration.ConfigurationException;
-import de.dante.util.configuration.ConfigurationMissingException;
 import de.dante.util.framework.AbstractFactory;
+import de.dante.util.framework.configuration.Configuration;
+import de.dante.util.framework.configuration.exception.ConfigurationException;
+import de.dante.util.framework.configuration.exception.ConfigurationMissingException;
 
 /**
  * This factory creates an output stream from a specification in the

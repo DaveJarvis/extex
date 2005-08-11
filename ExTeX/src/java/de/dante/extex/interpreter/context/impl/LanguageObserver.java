@@ -24,7 +24,7 @@ import de.dante.extex.interpreter.context.observer.CountObserver;
 import de.dante.extex.interpreter.context.observer.TokensObserver;
 import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.interpreter.type.tokens.Tokens;
-import de.dante.util.configuration.ConfigurationException;
+import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This observer is meant for keeping the current typesetting context in sync

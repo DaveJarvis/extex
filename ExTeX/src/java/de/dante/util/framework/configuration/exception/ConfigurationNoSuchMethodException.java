@@ -17,7 +17,9 @@
  *
  */
 
-package de.dante.util.configuration;
+package de.dante.util.framework.configuration.exception;
+
+import de.dante.util.framework.configuration.Configuration;
 
 /**
  * This exception is thrown when a dynamically loaded class does not provide

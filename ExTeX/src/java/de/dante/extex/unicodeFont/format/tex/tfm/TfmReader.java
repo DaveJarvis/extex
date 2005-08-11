@@ -32,8 +32,8 @@ import de.dante.extex.font.type.tfm.psfontsmap.PSFontEncoding;
 import de.dante.extex.font.type.tfm.psfontsmap.PSFontsMapReader;
 import de.dante.util.EFMWriterConvertible;
 import de.dante.util.XMLWriterConvertible;
-import de.dante.util.configuration.ConfigurationException;
 import de.dante.util.file.random.RandomAccessR;
+import de.dante.util.framework.configuration.exception.ConfigurationException;
 import de.dante.util.xml.XMLStreamWriter;
 
 /**

@@ -19,8 +19,8 @@
 
 package de.dante.extex.color;
 
-import de.dante.util.configuration.ConfigurationException;
 import de.dante.util.framework.AbstractFactory;
+import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This is the factory to provide an instance of a color converter.

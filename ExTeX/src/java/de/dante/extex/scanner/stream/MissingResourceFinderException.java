@@ -19,7 +19,7 @@
 
 package de.dante.extex.scanner.stream;
 
-import de.dante.util.configuration.ConfigurationException;
+import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This Exception is thrown when no file finder has been provided before it is

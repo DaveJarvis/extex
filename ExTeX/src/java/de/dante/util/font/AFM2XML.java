@@ -25,7 +25,7 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 
 import de.dante.extex.font.type.afm.AfmFont;
-import de.dante.util.configuration.ConfigurationException;
+import de.dante.util.framework.configuration.exception.ConfigurationException;
 import de.dante.util.xml.XMLStreamWriter;
 
 /**

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,54 +17,39 @@
  *
  */
 
-package de.dante.util.configuration;
+package de.dante.util.framework.configuration.exception;
 
 /**
- * This Exception is thrown when a configuration tries to use an unsupported
- * encoding.
+ * This Exception is thrown when a configuration is requested with the path
+ * <code>null</code>> or the empty string.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class ConfigurationUnsupportedEncodingException
+public class ConfigurationInvalidResourceException
         extends
             ConfigurationException {
 
     /**
      * Create a new object.
      *
-     * @param message the message string
-     * @param source the the name of the file for which this exception occurred
      */
-    public ConfigurationUnsupportedEncodingException(final String message,
-            final String source) {
+    public ConfigurationInvalidResourceException() {
 
-        super(message, source);
-    }
-
-    /**
-     * Creates a new object.
-     *
-     * @param message message the message string
-     * @param cause the next Throwable in the list
-     */
-    public ConfigurationUnsupportedEncodingException(final String message,
-            final Throwable cause) {
-
-        super(message, cause);
+        super("", (String) null);
     }
 
     /**
      * Getter for the text prefix of this ConfigException.
      * The text is taken from the resource bundle <tt>ConfigurationEception</tt>
-     * under the key <tt>ConfigurationUnsupportedEncodingException.Text</tt>.
+     * under the key <tt>ConfigurationInvalidResourceException.Text</tt>.
      *
      * @return the text
      */
     protected String getText() {
 
         return getLocalizer().format(
-                "ConfigurationUnsupportedEncodingException.Text");
+                "ConfigurationInvalidResourceException.Text");
     }
 
 }

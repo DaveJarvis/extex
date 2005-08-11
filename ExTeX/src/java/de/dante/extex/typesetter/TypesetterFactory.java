@@ -24,9 +24,9 @@ import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.hyphenator.Hyphenator;
 import de.dante.extex.typesetter.pageBuilder.PageBuilder;
 import de.dante.extex.typesetter.paragraphBuilder.ParagraphBuilder;
-import de.dante.util.configuration.Configuration;
-import de.dante.util.configuration.ConfigurationException;
 import de.dante.util.framework.AbstractFactory;
+import de.dante.util.framework.configuration.Configuration;
+import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This is the factory for instances of
