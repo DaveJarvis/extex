@@ -30,7 +30,7 @@ import de.dante.extex.interpreter.primitives.dynamic.Definer;
 import de.dante.extex.interpreter.type.AbstractCode;
 import de.dante.extex.interpreter.type.Code;
 import de.dante.extex.interpreter.type.tokens.Tokens;
-import de.dante.extex.scanner.type.CodeToken;
+import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.typesetter.Typesetter;
 
 /**

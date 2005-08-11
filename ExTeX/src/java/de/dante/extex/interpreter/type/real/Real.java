@@ -31,8 +31,8 @@ import de.dante.extex.interpreter.type.Code;
 import de.dante.extex.interpreter.type.count.CountConvertible;
 import de.dante.extex.interpreter.type.dimen.DimenConvertible;
 import de.dante.extex.scanner.type.Catcode;
-import de.dante.extex.scanner.type.ControlSequenceToken;
-import de.dante.extex.scanner.type.Token;
+import de.dante.extex.scanner.type.token.ControlSequenceToken;
+import de.dante.extex.scanner.type.token.Token;
 
 /**
  * Real (with a double value)

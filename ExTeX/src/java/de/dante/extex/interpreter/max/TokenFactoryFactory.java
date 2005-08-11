@@ -18,7 +18,7 @@
  */
 package de.dante.extex.interpreter.max;
 
-import de.dante.extex.scanner.type.TokenFactory;
+import de.dante.extex.scanner.type.token.TokenFactory;
 import de.dante.util.framework.AbstractFactory;
 import de.dante.util.framework.configuration.Configuration;
 import de.dante.util.framework.configuration.exception.ConfigurationException;

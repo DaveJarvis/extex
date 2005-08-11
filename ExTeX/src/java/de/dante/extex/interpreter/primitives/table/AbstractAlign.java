@@ -31,8 +31,8 @@ import de.dante.extex.interpreter.type.AbstractCode;
 import de.dante.extex.interpreter.type.Code;
 import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.scanner.type.Catcode;
-import de.dante.extex.scanner.type.CodeToken;
-import de.dante.extex.scanner.type.Token;
+import de.dante.extex.scanner.type.token.CodeToken;
+import de.dante.extex.scanner.type.token.Token;
 import de.dante.util.framework.i18n.Localizer;
 import de.dante.util.framework.i18n.LocalizerFactory;
 

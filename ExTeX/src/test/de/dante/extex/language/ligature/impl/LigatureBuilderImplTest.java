@@ -37,7 +37,7 @@ import de.dante.extex.interpreter.type.glue.Glue;
 import de.dante.extex.language.hyphenation.exception.HyphenationException;
 import de.dante.extex.language.ligature.LigatureBuilder;
 import de.dante.extex.language.ligature.impl.LigatureBuilderImpl;
-import de.dante.extex.scanner.type.ActiveCharacterTokenTest;
+import de.dante.extex.scanner.type.token.ActiveCharacterTokenTest;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.node.CharNode;

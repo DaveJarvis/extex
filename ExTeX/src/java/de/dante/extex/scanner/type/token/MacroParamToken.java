@@ -17,46 +17,40 @@
  *
  */
 
-package de.dante.extex.scanner.type;
+package de.dante.extex.scanner.type.token;
 
+import de.dante.extex.scanner.type.Catcode;
 import de.dante.util.UnicodeChar;
 
 /**
- * This class represents a space token.
+ * This class represents a macro parameter token.
  * <p>
  * This class has a protected constructor only. Use the factory
- * {@link de.dante.extex.scanner.type.TokenFactory TokenFactory}
+ * {@link de.dante.extex.scanner.type.token.TokenFactory TokenFactory}
  * to get an instance of this class.
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class SpaceToken extends AbstractToken implements Token {
-
-    /**
-     * The Constant <tt>SPACE</tt> contains the space character.
-     */
-    private static final UnicodeChar SPACE = new UnicodeChar(' ');
+public class MacroParamToken extends AbstractToken implements Token {
 
     /**
      * Creates a new object.
      *
-     * @param value the actual value
-     *
-     * @see "The TeXbook [Chapter 8; p.47]"
+     * @param uc the actual value
      */
-    protected SpaceToken(final String value) {
+    protected MacroParamToken(final UnicodeChar uc) {
 
-        super(SPACE);
+        super(uc);
     }
 
     /**
-     * @see de.dante.extex.scanner.type.Token#getCatcode()
+     * @see de.dante.extex.scanner.type.token.Token#getCatcode()
      */
     public Catcode getCatcode() {
 
-        return Catcode.SPACE;
+        return Catcode.MACROPARAM;
     }
 
     /**
@@ -68,7 +62,8 @@ public class SpaceToken extends AbstractToken implements Token {
      */
     public String toString() {
 
-        return getLocalizer().format("SpaceToken.Text", getChar().toString());
+        return getLocalizer().format("MacroParamToken.Text",
+                getChar().toString());
     }
 
     /**
@@ -76,23 +71,23 @@ public class SpaceToken extends AbstractToken implements Token {
      *
      * @param sb the target string buffer
      *
-     * @see de.dante.extex.scanner.type.Token#toString(java.lang.StringBuffer)
+     * @see de.dante.extex.scanner.type.token.Token#toString(java.lang.StringBuffer)
      */
     public void toString(final StringBuffer sb) {
 
-        sb.append(getLocalizer()
-                .format("SpaceToken.Text", getChar().toString()));
+        sb.append(getLocalizer().format("MacroParamToken.Text",
+                getChar().toString()));
     }
 
     /**
-     * @see de.dante.extex.scanner.type.Token#visit(
+     * @see de.dante.extex.scanner.type.token.Token#visit(
      *      de.dante.extex.scanner.type.TokenVisitor,
      *      java.lang.Object)
      */
     public Object visit(final TokenVisitor visitor, final Object arg1)
             throws Exception {
 
-        return visitor.visitSpace(this, arg1);
+        return visitor.visitMacroParam(this, arg1);
     }
 
 }

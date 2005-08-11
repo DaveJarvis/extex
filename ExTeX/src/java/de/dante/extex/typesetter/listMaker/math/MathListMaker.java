@@ -36,7 +36,7 @@ import de.dante.extex.interpreter.type.glue.Glue;
 import de.dante.extex.interpreter.type.muskip.Mudimen;
 import de.dante.extex.interpreter.type.muskip.Muskip;
 import de.dante.extex.scanner.type.Catcode;
-import de.dante.extex.scanner.type.Token;
+import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Mode;
 import de.dante.extex.typesetter.ParagraphObserver;
 import de.dante.extex.typesetter.Typesetter;

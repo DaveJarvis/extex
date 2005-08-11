@@ -29,8 +29,8 @@ import de.dante.extex.interpreter.type.bool.exception.InterpreterNoBoolValueExce
 import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.interpreter.type.count.CountConvertible;
 import de.dante.extex.interpreter.type.real.RealConvertible;
-import de.dante.extex.scanner.type.ControlSequenceToken;
-import de.dante.extex.scanner.type.Token;
+import de.dante.extex.scanner.type.token.ControlSequenceToken;
+import de.dante.extex.scanner.type.token.Token;
 
 /**
  * Bool

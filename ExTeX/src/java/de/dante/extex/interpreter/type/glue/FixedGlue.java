@@ -21,7 +21,7 @@ package de.dante.extex.interpreter.type.glue;
 
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.tokens.Tokens;
-import de.dante.extex.scanner.type.TokenFactory;
+import de.dante.extex.scanner.type.token.TokenFactory;
 import de.dante.util.exception.GeneralException;
 
 /**

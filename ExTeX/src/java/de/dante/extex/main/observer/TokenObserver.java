@@ -22,7 +22,7 @@ package de.dante.extex.main.observer;
 import java.util.logging.Logger;
 
 import de.dante.extex.interpreter.observer.pop.PopObserver;
-import de.dante.extex.scanner.type.Token;
+import de.dante.extex.scanner.type.token.Token;
 
 /**
  * Observer for tokens which are read from the token stream.

@@ -32,7 +32,7 @@ import de.dante.extex.interpreter.type.arithmetic.Multiplyable;
 import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.interpreter.type.count.CountConvertible;
 import de.dante.extex.interpreter.type.tokens.Tokens;
-import de.dante.extex.scanner.type.Token;
+import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.type.math.MathDelimiter;
 import de.dante.util.UnicodeChar;

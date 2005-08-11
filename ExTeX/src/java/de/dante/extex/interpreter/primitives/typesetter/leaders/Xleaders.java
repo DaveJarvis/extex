@@ -32,7 +32,7 @@ import de.dante.extex.interpreter.type.box.Box;
 import de.dante.extex.interpreter.type.box.Boxable;
 import de.dante.extex.interpreter.type.box.RuleConvertible;
 import de.dante.extex.interpreter.type.glue.Glue;
-import de.dante.extex.scanner.type.CodeToken;
+import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.type.Node;

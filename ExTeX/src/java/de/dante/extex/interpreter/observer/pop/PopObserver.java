@@ -18,7 +18,7 @@
  */
 package de.dante.extex.interpreter.observer.pop;
 
-import de.dante.extex.scanner.type.Token;
+import de.dante.extex.scanner.type.token.Token;
 
 
 /**

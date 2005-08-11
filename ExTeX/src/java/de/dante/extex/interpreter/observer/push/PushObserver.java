@@ -18,7 +18,7 @@
  */
 package de.dante.extex.interpreter.observer.push;
 
-import de.dante.extex.scanner.type.Token;
+import de.dante.extex.scanner.type.token.Token;
 
 
 /**

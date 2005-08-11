@@ -17,13 +17,18 @@
  *
  */
 
-package de.dante.extex.scanner.type;
+package de.dante.extex.scanner.type.token;
 
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
 
 import de.dante.extex.interpreter.Namespace;
+import de.dante.extex.scanner.type.Catcode;
+import de.dante.extex.scanner.type.CatcodeException;
+import de.dante.extex.scanner.type.CatcodeVisitor;
+import de.dante.extex.scanner.type.CatcodeVisitorException;
+import de.dante.extex.scanner.type.CatcodeWrongLengthException;
 import de.dante.util.UnicodeChar;
 
 /**
@@ -138,7 +143,7 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.TokenFactory#createToken(
+     * @see de.dante.extex.scanner.type.token.TokenFactory#createToken(
      *      de.dante.extex.scanner.Catcode, char, java.lang.String)
      */
     public Token createToken(final Catcode code, final char c,
@@ -158,7 +163,7 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     }
 
     /**
-     * Create a new {@link de.dante.extex.scanner.type.Token Token} of the
+     * Create a new {@link de.dante.extex.scanner.type.token.Token Token} of the
      * appropriate kind. Tokens are immutable (no setters) thus the factory
      * pattern can be applied.
      *
@@ -178,7 +183,7 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.TokenFactory#createToken(
+     * @see de.dante.extex.scanner.type.token.TokenFactory#createToken(
      *      de.dante.extex.scanner.Catcode,
      *      java.lang.String,
      *      java.lang.String)
@@ -190,7 +195,7 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.TokenFactory#createToken(
+     * @see de.dante.extex.scanner.type.token.TokenFactory#createToken(
      *      de.dante.extex.scanner.Catcode,
      *      de.dante.util.UnicodeChar,
      *      java.lang.String,
@@ -212,7 +217,7 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.TokenFactory#createToken(
+     * @see de.dante.extex.scanner.type.token.TokenFactory#createToken(
      *      de.dante.extex.scanner.Catcode,
      *      de.dante.util.UnicodeChar)
      *
@@ -225,7 +230,7 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.TokenFactory#createToken(
+     * @see de.dante.extex.scanner.type.token.TokenFactory#createToken(
      *      de.dante.extex.scanner.Catcode,
      *      de.dante.util.UnicodeChar,
      *      java.lang.String)

@@ -17,8 +17,9 @@
  *
  */
 
-package de.dante.extex.scanner.type;
+package de.dante.extex.scanner.type.token;
 
+import de.dante.extex.scanner.type.Catcode;
 import de.dante.util.UnicodeChar;
 
 /**

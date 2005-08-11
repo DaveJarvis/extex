@@ -20,7 +20,7 @@
 package de.dante.extex.interpreter.type.tokens;
 
 import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.scanner.type.Token;
+import de.dante.extex.scanner.type.token.Token;
 import de.dante.util.exception.GeneralException;
 
 /**

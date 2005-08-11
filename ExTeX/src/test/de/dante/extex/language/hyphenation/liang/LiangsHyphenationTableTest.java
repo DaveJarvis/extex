@@ -24,8 +24,8 @@ import de.dante.extex.interpreter.Namespace;
 import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.scanner.type.Catcode;
 import de.dante.extex.scanner.type.CatcodeException;
-import de.dante.extex.scanner.type.TokenFactory;
-import de.dante.extex.scanner.type.TokenFactoryImpl;
+import de.dante.extex.scanner.type.token.TokenFactory;
+import de.dante.extex.scanner.type.token.TokenFactoryImpl;
 
 /**
  * This class contains soem test cases fro liang's hyphenation table.

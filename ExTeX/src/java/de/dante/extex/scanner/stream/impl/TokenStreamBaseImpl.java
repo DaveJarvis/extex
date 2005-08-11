@@ -23,9 +23,9 @@ import de.dante.extex.interpreter.Tokenizer;
 import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.scanner.exception.ScannerException;
 import de.dante.extex.scanner.stream.TokenStream;
-import de.dante.extex.scanner.type.SpaceToken;
-import de.dante.extex.scanner.type.Token;
-import de.dante.extex.scanner.type.TokenFactory;
+import de.dante.extex.scanner.type.token.SpaceToken;
+import de.dante.extex.scanner.type.token.Token;
+import de.dante.extex.scanner.type.token.TokenFactory;
 import de.dante.util.Locator;
 
 /**

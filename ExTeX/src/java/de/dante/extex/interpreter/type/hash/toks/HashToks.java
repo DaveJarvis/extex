@@ -32,7 +32,7 @@ import de.dante.extex.interpreter.type.hash.toks.exception.InterpreterMissingLef
 import de.dante.extex.interpreter.type.hash.toks.exception.InterpreterMissingRightBraceException;
 import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.scanner.type.Catcode;
-import de.dante.extex.scanner.type.Token;
+import de.dante.extex.scanner.type.token.Token;
 
 /**
  * A Hash for Tokens.

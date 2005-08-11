@@ -27,9 +27,9 @@ import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.scanner.exception.ScannerException;
 import de.dante.extex.scanner.stream.TokenStream;
-import de.dante.extex.scanner.type.CrToken;
-import de.dante.extex.scanner.type.Token;
-import de.dante.extex.scanner.type.TokenFactory;
+import de.dante.extex.scanner.type.token.CrToken;
+import de.dante.extex.scanner.type.token.Token;
+import de.dante.extex.scanner.type.token.TokenFactory;
 
 /**
  * This class holds an input file from which tokens can be read.

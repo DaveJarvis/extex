@@ -17,39 +17,40 @@
  *
  */
 
-package de.dante.extex.scanner.type;
+package de.dante.extex.scanner.type.token;
 
+import de.dante.extex.scanner.type.Catcode;
 import de.dante.util.UnicodeChar;
 
 /**
- * This class represents a macro parameter token.
+ * This class represents a tab mark token.
  * <p>
  * This class has a protected constructor only. Use the factory
- * {@link de.dante.extex.scanner.type.TokenFactory TokenFactory}
+ * {@link de.dante.extex.scanner.type.token.TokenFactory TokenFactory}
  * to get an instance of this class.
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class MacroParamToken extends AbstractToken implements Token {
+public class TabMarkToken extends AbstractToken implements Token {
 
     /**
      * Creates a new object.
      *
      * @param uc the actual value
      */
-    protected MacroParamToken(final UnicodeChar uc) {
+    protected TabMarkToken(final UnicodeChar uc) {
 
         super(uc);
     }
 
     /**
-     * @see de.dante.extex.scanner.type.Token#getCatcode()
+     * @see de.dante.extex.scanner.type.token.Token#getCatcode()
      */
     public Catcode getCatcode() {
 
-        return Catcode.MACROPARAM;
+        return Catcode.TABMARK;
     }
 
     /**
@@ -61,8 +62,7 @@ public class MacroParamToken extends AbstractToken implements Token {
      */
     public String toString() {
 
-        return getLocalizer().format("MacroParamToken.Text",
-                getChar().toString());
+        return getLocalizer().format("TabMarkToken.Text", getChar().toString());
     }
 
     /**
@@ -70,23 +70,23 @@ public class MacroParamToken extends AbstractToken implements Token {
      *
      * @param sb the target string buffer
      *
-     * @see de.dante.extex.scanner.type.Token#toString(java.lang.StringBuffer)
+     * @see de.dante.extex.scanner.type.token.Token#toString(java.lang.StringBuffer)
      */
     public void toString(final StringBuffer sb) {
 
-        sb.append(getLocalizer().format("MacroParamToken.Text",
+        sb.append(getLocalizer().format("TabMarkToken.Text",
                 getChar().toString()));
     }
 
     /**
-     * @see de.dante.extex.scanner.type.Token#visit(
+     * @see de.dante.extex.scanner.type.token.Token#visit(
      *      de.dante.extex.scanner.type.TokenVisitor,
      *      java.lang.Object)
      */
     public Object visit(final TokenVisitor visitor, final Object arg1)
             throws Exception {
 
-        return visitor.visitMacroParam(this, arg1);
+        return visitor.visitTabMark(this, arg1);
     }
 
 }

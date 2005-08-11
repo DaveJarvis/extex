@@ -22,7 +22,7 @@ package de.dante.extex.main.observer;
 import java.util.logging.Logger;
 
 import de.dante.extex.interpreter.observer.expand.ExpandObserver;
-import de.dante.extex.scanner.type.Token;
+import de.dante.extex.scanner.type.token.Token;
 
 /**
  * Observer for tracing macros. The macro is written to the log file preceeded

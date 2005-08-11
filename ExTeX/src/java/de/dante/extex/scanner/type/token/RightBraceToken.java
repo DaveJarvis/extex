@@ -17,40 +17,40 @@
  *
  */
 
-package de.dante.extex.scanner.type;
+package de.dante.extex.scanner.type.token;
 
+import de.dante.extex.scanner.type.Catcode;
 import de.dante.util.UnicodeChar;
 
 /**
- * This class represents an other token, i.e. one not covered by the other
- * token classes.
+ * This class represents a right brace token.
  * <p>
  * This class has a protected constructor only. Use the factory
- * {@link de.dante.extex.scanner.type.TokenFactory TokenFactory}
+ * {@link de.dante.extex.scanner.type.token.TokenFactory TokenFactory}
  * to get an instance of this class.
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class OtherToken extends AbstractToken implements Token {
+public class RightBraceToken extends AbstractToken implements Token {
 
     /**
      * Creates a new object.
      *
      * @param uc the actual value
      */
-    protected OtherToken(final UnicodeChar uc) {
+    protected RightBraceToken(final UnicodeChar uc) {
 
         super(uc);
     }
 
     /**
-     * @see de.dante.extex.scanner.type.Token#getCatcode()
+     * @see de.dante.extex.scanner.type.token.Token#getCatcode()
      */
     public Catcode getCatcode() {
 
-        return Catcode.OTHER;
+        return Catcode.RIGHTBRACE;
     }
 
     /**
@@ -62,7 +62,8 @@ public class OtherToken extends AbstractToken implements Token {
      */
     public String toString() {
 
-        return getLocalizer().format("OtherToken.Text", getChar().toString());
+        return getLocalizer().format("RightBraceToken.Text",
+                getChar().toString());
     }
 
     /**
@@ -70,23 +71,23 @@ public class OtherToken extends AbstractToken implements Token {
      *
      * @param sb the target string buffer
      *
-     * @see de.dante.extex.scanner.type.Token#toString(java.lang.StringBuffer)
+     * @see de.dante.extex.scanner.type.token.Token#toString(java.lang.StringBuffer)
      */
     public void toString(final StringBuffer sb) {
 
-        sb.append(getLocalizer()
-                .format("OtherToken.Text", getChar().toString()));
+        sb.append(getLocalizer().format("RightBraceToken.Text",
+                getChar().toString()));
     }
 
     /**
-     * @see de.dante.extex.scanner.type.Token#visit(
+     * @see de.dante.extex.scanner.type.token.Token#visit(
      *      de.dante.extex.scanner.type.TokenVisitor,
      *      java.lang.Object)
      */
     public Object visit(final TokenVisitor visitor, final Object arg1)
             throws Exception {
 
-        return visitor.visitOther(this, arg1);
+        return visitor.visitRightBrace(this, arg1);
     }
 
 }

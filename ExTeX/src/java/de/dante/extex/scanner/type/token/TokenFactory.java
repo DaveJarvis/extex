@@ -17,8 +17,10 @@
  *
  */
 
-package de.dante.extex.scanner.type;
+package de.dante.extex.scanner.type.token;
 
+import de.dante.extex.scanner.type.Catcode;
+import de.dante.extex.scanner.type.CatcodeException;
 import de.dante.util.UnicodeChar;
 
 /**
@@ -80,7 +82,7 @@ public interface TokenFactory {
             String namespace) throws CatcodeException;
 
     /**
-     * Create a new {@link de.dante.extex.scanner.type.Token Token} of the
+     * Create a new {@link de.dante.extex.scanner.type.token.Token Token} of the
      * appropriate kind. Tokens are immutable (no setters) thus the factory
      * pattern can be applied.
      *

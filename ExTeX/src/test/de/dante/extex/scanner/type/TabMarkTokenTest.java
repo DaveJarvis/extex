@@ -19,9 +19,9 @@
 package de.dante.extex.scanner.type;
 
 import de.dante.extex.scanner.type.Catcode;
-import de.dante.extex.scanner.type.SpaceToken;
-import de.dante.extex.scanner.type.TabMarkToken;
-import de.dante.extex.scanner.type.Token;
+import de.dante.extex.scanner.type.token.SpaceToken;
+import de.dante.extex.scanner.type.token.TabMarkToken;
+import de.dante.extex.scanner.type.token.Token;
 import de.dante.util.UnicodeChar;
 import junit.framework.TestCase;
 

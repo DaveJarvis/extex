@@ -29,7 +29,7 @@ import de.dante.extex.language.hyphenation.exception.DuplicateHyphenationExcepti
 import de.dante.extex.language.hyphenation.liang.LiangsHyphenationTable;
 import de.dante.extex.scanner.type.Catcode;
 import de.dante.extex.scanner.type.CatcodeException;
-import de.dante.extex.scanner.type.TokenFactory;
+import de.dante.extex.scanner.type.token.TokenFactory;
 
 /**
  * TODO gene: missing JavaDoc.

@@ -22,7 +22,7 @@ package de.dante.extex.main.observer;
 import java.util.logging.Logger;
 
 import de.dante.extex.interpreter.observer.push.PushObserver;
-import de.dante.extex.scanner.type.Token;
+import de.dante.extex.scanner.type.token.Token;
 
 /**
  * Observer for the operation of pushing a token to the token stream.
