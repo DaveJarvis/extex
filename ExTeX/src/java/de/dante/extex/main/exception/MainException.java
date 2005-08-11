@@ -19,7 +19,7 @@
 
 package de.dante.extex.main.exception;
 
-import de.dante.util.GeneralException;
+import de.dante.util.exception.GeneralException;
 
 /**
  * This is the base class for all exceptions of the main class. In addition to

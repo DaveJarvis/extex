@@ -64,7 +64,7 @@ public class FixedHelpingException extends HelpingException {
     }
 
     /**
-     * @see de.dante.util.GeneralException#getHelp()
+     * @see de.dante.util.exception.GeneralException#getHelp()
      */
     public String getHelp() {
 

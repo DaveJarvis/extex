@@ -20,7 +20,7 @@ package de.dante.extex.interpreter.primitives.dynamic.java;
 
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.GeneralException;
+import de.dante.util.exception.GeneralException;
 
 
 /**

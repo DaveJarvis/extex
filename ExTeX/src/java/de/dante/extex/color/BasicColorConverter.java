@@ -26,7 +26,7 @@ import de.dante.extex.color.model.HsvColor;
 import de.dante.extex.color.model.RgbColor;
 import de.dante.extex.interpreter.context.Color;
 import de.dante.extex.interpreter.exception.ImpossibleException;
-import de.dante.util.GeneralException;
+import de.dante.util.exception.GeneralException;
 
 /**
  * This implementation of a color converter is based on the formulas in the

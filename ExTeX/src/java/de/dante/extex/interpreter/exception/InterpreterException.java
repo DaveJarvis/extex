@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter.exception;
 
-import de.dante.util.GeneralException;
+import de.dante.util.exception.GeneralException;
 import de.dante.util.framework.i18n.Localizer;
 
 /**

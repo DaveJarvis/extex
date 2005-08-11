@@ -23,7 +23,7 @@ import de.dante.extex.color.model.CmykColor;
 import de.dante.extex.color.model.GrayscaleColor;
 import de.dante.extex.color.model.HsvColor;
 import de.dante.extex.color.model.RgbColor;
-import de.dante.util.GeneralException;
+import de.dante.util.exception.GeneralException;
 
 /**
  * This interface implements part of the visitor pattern for colors.

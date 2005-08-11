@@ -45,7 +45,7 @@ import de.dante.extex.scanner.type.TabMarkToken;
 import de.dante.extex.scanner.type.Token;
 import de.dante.extex.scanner.type.TokenVisitor;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.GeneralException;
+import de.dante.util.exception.GeneralException;
 
 /**
  * This class provides an implementation for the primitive <code>\let</code>.

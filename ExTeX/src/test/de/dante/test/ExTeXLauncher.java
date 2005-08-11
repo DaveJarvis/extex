@@ -39,7 +39,7 @@ import de.dante.extex.main.errorHandler.editHandler.EditHandler;
 import de.dante.extex.main.exception.MainException;
 import de.dante.extex.main.logging.LogFormatter;
 import de.dante.extex.scanner.type.Token;
-import de.dante.util.GeneralException;
+import de.dante.util.exception.GeneralException;
 
 /**
  * This base class for test cases handles all the nitty gritty details of

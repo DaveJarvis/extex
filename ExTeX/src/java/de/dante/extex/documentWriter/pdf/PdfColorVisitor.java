@@ -27,7 +27,7 @@ import de.dante.extex.color.model.GrayscaleColor;
 import de.dante.extex.color.model.HsvColor;
 import de.dante.extex.color.model.RgbColor;
 import de.dante.extex.documentWriter.pdf.exception.DocumentWriterPdfBoxColorException;
-import de.dante.util.GeneralException;
+import de.dante.util.exception.GeneralException;
 
 /**
  * Color visitor for pdf.

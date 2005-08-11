@@ -18,7 +18,7 @@
  */
 package de.dante.extex.interpreter.type.count;
 
-import de.dante.util.GeneralException;
+import de.dante.util.exception.GeneralException;
 
 
 /**

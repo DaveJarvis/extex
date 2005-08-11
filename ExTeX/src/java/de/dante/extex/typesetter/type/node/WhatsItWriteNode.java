@@ -24,7 +24,7 @@ import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.type.TokensWriter;
 import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.GeneralException;
+import de.dante.util.exception.GeneralException;
 
 /**
  * This WhatsIt node writes some expanded tokens to an out file on shipping.

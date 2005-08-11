@@ -18,7 +18,7 @@
  */
 package de.dante.extex.documentWriter;
 
-import de.dante.util.GeneralException;
+import de.dante.util.exception.GeneralException;
 
 
 /**

@@ -18,7 +18,7 @@
  */
 package de.dante.util.observer;
 
-import de.dante.util.GeneralException;
+import de.dante.util.exception.GeneralException;
 
 
 /**

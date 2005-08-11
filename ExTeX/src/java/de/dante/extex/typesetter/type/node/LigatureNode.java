@@ -22,8 +22,8 @@ package de.dante.extex.typesetter.type.node;
 import de.dante.extex.interpreter.context.TypesettingContext;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeVisitor;
-import de.dante.util.GeneralException;
 import de.dante.util.UnicodeChar;
+import de.dante.util.exception.GeneralException;
 
 /**
  * The ligature node represents a ligature of several characters.

@@ -36,7 +36,7 @@ import de.dante.extex.scanner.type.MacroParamToken;
 import de.dante.extex.scanner.type.OtherToken;
 import de.dante.extex.scanner.type.Token;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.GeneralException;
+import de.dante.util.exception.GeneralException;
 import de.dante.util.framework.i18n.Localizer;
 import de.dante.util.framework.i18n.LocalizerFactory;
 

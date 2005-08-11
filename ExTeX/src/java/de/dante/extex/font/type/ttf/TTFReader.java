@@ -29,7 +29,7 @@ import org.jdom.Element;
 import de.dante.extex.font.Kerning;
 import de.dante.extex.font.type.FontMetric;
 import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.util.GeneralException;
+import de.dante.util.exception.GeneralException;
 import de.dante.util.file.random.RandomAccessInputStream;
 
 /**

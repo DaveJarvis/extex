@@ -22,7 +22,7 @@ package de.dante.extex.interpreter.context;
 import java.io.Serializable;
 
 import de.dante.extex.color.ColorVisitor;
-import de.dante.util.GeneralException;
+import de.dante.util.exception.GeneralException;
 
 /**
  * This interface declares some methods to access the color with an alpha

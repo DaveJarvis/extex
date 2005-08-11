@@ -21,7 +21,7 @@ package de.dante.extex.color.model;
 
 import de.dante.extex.color.ColorVisitor;
 import de.dante.extex.interpreter.context.Color;
-import de.dante.util.GeneralException;
+import de.dante.util.exception.GeneralException;
 
 /**
  * This class implements a color specification in grayscale mode with an alpha

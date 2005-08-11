@@ -23,7 +23,8 @@ package de.dante.extex.documentWriter.dvi;
 
 
 
-import de.dante.util.GeneralException;
+import de.dante.util.exception.GeneralException;
+
 import java.io.IOException;
 import java.io.OutputStream;
 

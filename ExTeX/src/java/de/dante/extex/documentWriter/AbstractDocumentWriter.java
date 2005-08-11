@@ -27,7 +27,7 @@ import java.util.Map;
 import de.dante.extex.documentWriter.exception.DocumentWriterException;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.typesetter.type.NodeList;
-import de.dante.util.GeneralException;
+import de.dante.util.exception.GeneralException;
 
 /**
  * This is a abstract base class for DocumentWriters.

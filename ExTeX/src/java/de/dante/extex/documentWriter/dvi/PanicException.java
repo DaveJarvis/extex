@@ -26,7 +26,7 @@
 
 package de.dante.extex.documentWriter.dvi;
 
-import de.dante.util.GeneralException;
+import de.dante.util.exception.GeneralException;
 
 public class PanicException extends GeneralException {
 

@@ -27,7 +27,7 @@ import de.dante.extex.documentWriter.MultipleDocumentStream;
 import de.dante.extex.documentWriter.OutputStreamFactory;
 import de.dante.extex.documentWriter.exception.DocumentWriterException;
 import de.dante.extex.typesetter.type.NodeList;
-import de.dante.util.GeneralException;
+import de.dante.util.exception.GeneralException;
 import de.dante.util.framework.configuration.Configurable;
 import de.dante.util.framework.configuration.Configuration;
 import de.dante.util.framework.configuration.exception.ConfigurationException;

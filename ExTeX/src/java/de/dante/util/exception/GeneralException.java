@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.util;
+package de.dante.util.exception;
 
 import de.dante.util.framework.i18n.Localizer;
 import de.dante.util.framework.i18n.LocalizerFactory;

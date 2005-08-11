@@ -31,8 +31,8 @@ import de.dante.extex.documentWriter.exception.DocumentWriterIOException;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.NodeVisitor;
-import de.dante.util.GeneralException;
 import de.dante.util.Unit;
+import de.dante.util.exception.GeneralException;
 import de.dante.util.framework.configuration.Configuration;
 
 /**

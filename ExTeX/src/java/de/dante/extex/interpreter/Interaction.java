@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter;
 
-import de.dante.util.GeneralException;
+import de.dante.util.exception.GeneralException;
 
 import java.io.ObjectStreamException;
 import java.io.Serializable;

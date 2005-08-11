@@ -19,7 +19,7 @@
 
 package de.dante.util.observer;
 
-import de.dante.util.GeneralException;
+import de.dante.util.exception.GeneralException;
 
 /**
  * This Exception is thrown when an Observer for a non-observable action is
