@@ -39,6 +39,11 @@ import de.dante.util.exception.GeneralException;
 public class MarkNode extends AbstractNode implements Node {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>index</tt> contains the index of the mark node for eTeX.
      * The index 0 corresponds to the original mark of <logo>TeX</logo>.
      * I.e. \marks0 == \mark

@@ -81,6 +81,11 @@ import de.dante.util.exception.GeneralException;
 public class Let extends AbstractAssignment {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>VISITOR</tt> contains the anonymous inner class of the
      * token visitor for the let command.
      */

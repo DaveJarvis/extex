@@ -97,6 +97,11 @@ import de.dante.extex.typesetter.Typesetter;
 public class JavaLoad extends AbstractCode implements Loader {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Creates a new object.
      *
      * @param codeName the name for debugging

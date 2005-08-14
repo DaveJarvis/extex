@@ -66,6 +66,11 @@ import de.dante.util.UnicodeChar;
 public class Readline extends AbstractCode {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * This class implements a tokenizer which returns only OTHER and SPACE.
      *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>

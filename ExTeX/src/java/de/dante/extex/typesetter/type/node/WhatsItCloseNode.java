@@ -37,6 +37,11 @@ import de.dante.util.framework.logger.LogEnabled;
 public class WhatsItCloseNode extends WhatsItNode implements LogEnabled {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>key</tt> contains the key of the outfile to close.
      */
     private String key;

@@ -55,6 +55,11 @@ public class NullfontPrimitive extends AbstractCode
         implements FontConvertible {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>nullFont</tt> contains the font encapsulated in this
      * primitive.
      */

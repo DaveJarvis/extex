@@ -59,8 +59,8 @@ public class ConfigurationPropertyImpl implements Configuration {
     /**
      * Creates a new object.
      *
-     * @param properties
-     * @param base
+     * @param properties ...
+     * @param base ...
      */
     private ConfigurationPropertyImpl(final Properties properties,
             final String base) {

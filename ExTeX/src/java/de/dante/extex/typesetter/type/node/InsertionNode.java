@@ -35,6 +35,11 @@ import de.dante.util.exception.GeneralException;
 public class InsertionNode extends AbstractNode implements Node {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>nodes</tt> contains the vertical list to be inserted.
      *
      * @see "<logo>TeX</logo> &ndash; The Program [140]"

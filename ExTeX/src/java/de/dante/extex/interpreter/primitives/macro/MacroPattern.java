@@ -30,6 +30,11 @@ import de.dante.extex.interpreter.type.tokens.Tokens;
 public class MacroPattern extends Tokens {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The constant <tt>EMPTY</tt> contains the empty macro pattern. This can
      * be used in a poor man's factory.
      */

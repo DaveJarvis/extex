@@ -31,6 +31,11 @@ public class ConfigurationInvalidResourceException
             ConfigurationException {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Create a new object.
      *
      */

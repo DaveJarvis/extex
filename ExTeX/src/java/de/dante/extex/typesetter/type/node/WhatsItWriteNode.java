@@ -35,6 +35,11 @@ import de.dante.util.exception.GeneralException;
 public class WhatsItWriteNode extends WhatsItNode {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>key</tt> contains the key of the outfile to write to.
      */
     private String key;

@@ -31,6 +31,11 @@ import de.dante.extex.typesetter.type.Node;
 public class SpecialNode extends WhatsItNode implements Node {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>text</tt> contains the text to pass to the backend driver.
      */
     private String text;

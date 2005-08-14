@@ -69,6 +69,11 @@ import de.dante.util.UnicodeChar;
 public class Mathchar extends AbstractMathCode {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The constant <tt>GLYPH_MASK</tt> contains the mask for a math glyph.
      */
     private static final int GLYPH_MASK = 0xfff;

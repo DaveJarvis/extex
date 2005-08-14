@@ -34,6 +34,11 @@ import de.dante.util.framework.i18n.LocalizerFactory;
 public class AbstractHorizontalCode extends AbstractCode {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Creates a new object.
      *
      * @param codeName the name of the code

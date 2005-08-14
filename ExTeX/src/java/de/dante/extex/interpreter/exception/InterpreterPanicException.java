@@ -31,6 +31,11 @@ import de.dante.util.framework.i18n.Localizer;
 public class InterpreterPanicException extends InterpreterException {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>arg</tt> contains the ...
      */
     private String arg;

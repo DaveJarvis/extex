@@ -28,6 +28,11 @@ package de.dante.extex.documentWriter.exception;
 public class OutputStreamOpenException extends DocumentWriterException {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Creates a new object.
      *
      * @param message the error message

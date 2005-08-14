@@ -57,6 +57,11 @@ import de.dante.util.exception.GeneralException;
 public class Vfill extends AbstractVerticalCode implements VerticalSkip {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>FILL</tt> contains the amount of 1 fill.
      */
     private static final Glue FILL = new Glue(GlueComponent.ZERO,

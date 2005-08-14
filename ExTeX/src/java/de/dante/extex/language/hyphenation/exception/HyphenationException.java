@@ -32,6 +32,11 @@ import de.dante.extex.typesetter.exception.TypesetterException;
 public class HyphenationException extends TypesetterException {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Creates a new object.
      *
      * @param message the message

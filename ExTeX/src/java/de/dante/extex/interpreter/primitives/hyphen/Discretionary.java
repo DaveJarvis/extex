@@ -33,9 +33,7 @@ import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.listMaker.ListManager;
 import de.dante.extex.typesetter.listMaker.RestrictedHorizontalListMaker;
 import de.dante.extex.typesetter.type.NodeList;
-import de.dante.extex.typesetter.type.node.CharNodeFactory;
 import de.dante.extex.typesetter.type.node.DiscretionaryNode;
-import de.dante.extex.typesetter.type.node.HorizontalListNode;
 import de.dante.util.exception.GeneralException;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
 
@@ -81,6 +79,11 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
 public class Discretionary extends AbstractCode {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Creates a new object.
      *
      * @param name the name for debugging
@@ -104,7 +107,7 @@ public class Discretionary extends AbstractCode {
         Tokens pre = source.getTokens(context);
         Tokens post = source.getTokens(context);
         Tokens nobreak = source.getTokens(context);
-        CharNodeFactory cnf = new CharNodeFactory();
+        //CharNodeFactory cnf = new CharNodeFactory();
         TypesettingContext tc = context.getTypesettingContext();
 
         try {
@@ -143,7 +146,7 @@ public class Discretionary extends AbstractCode {
 
         ListManager man = typesetter.getManager();
         ListMaker hlist = new RestrictedHorizontalListMaker(man);
-        NodeList nodes = new HorizontalListNode();
+        //NodeList nodes = new HorizontalListNode();
 
         for (int i = 0; i < tokens.length(); i++) {
             hlist.letter(context, tc, tokens.get(i).getChar());

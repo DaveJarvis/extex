@@ -62,6 +62,11 @@ public class MacroCode extends AbstractCode
             Showable {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>body</tt> contains the tokens of the macro expansion text.
      */
     private Tokens body;

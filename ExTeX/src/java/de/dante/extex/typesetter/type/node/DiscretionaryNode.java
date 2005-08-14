@@ -36,6 +36,11 @@ import de.dante.util.exception.GeneralException;
 public class DiscretionaryNode extends AbstractNode implements Node {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>noBreak</tt> contains the Tokens to be inserted in case
      * of no line breaking at this position.
      */

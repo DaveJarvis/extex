@@ -36,6 +36,11 @@ import de.dante.util.exception.GeneralException;
 public class AdjustNode extends AbstractNode implements Node {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>nodes</tt> contains the ...
      */
     private NodeList nodes;

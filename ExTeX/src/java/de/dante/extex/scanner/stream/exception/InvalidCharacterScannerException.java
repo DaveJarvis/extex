@@ -31,6 +31,11 @@ import de.dante.util.UnicodeChar;
 public class InvalidCharacterScannerException extends ScannerException {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>invalid</tt> contains the invalid character.
      */
     private UnicodeChar invalid;
@@ -44,6 +49,17 @@ public class InvalidCharacterScannerException extends ScannerException {
 
         super();
         this.invalid = invalid;
+    }
+
+    
+    /**
+     * Getter for the invalid character.
+     *
+     * @return the invalid character
+     */
+    public UnicodeChar getInvalid() {
+    
+        return this.invalid;
     }
 
 }

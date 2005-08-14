@@ -57,6 +57,11 @@ import de.dante.util.framework.logger.LogEnabled;
 public class Showlists extends AbstractBox implements LogEnabled {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>logger</tt> contains the logger to send information to.
      */
     private transient Logger logger;

@@ -50,6 +50,11 @@ import de.dante.util.framework.i18n.LocalizerFactory;
 public class Ifcase extends AbstractIf {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The constant <tt>OR</tt> contains the value indicating an \or.
      */
     protected static final Tag OR = new Tag();

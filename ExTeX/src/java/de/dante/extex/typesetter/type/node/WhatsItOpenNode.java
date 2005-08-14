@@ -33,6 +33,11 @@ import de.dante.util.exception.GeneralException;
 public class WhatsItOpenNode extends WhatsItNode {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>file</tt> contains the output file.
      */
     private OutFile file;

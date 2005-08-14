@@ -72,6 +72,11 @@ import de.dante.util.framework.logger.LogEnabled;
 public class Dump extends AbstractCode implements LogEnabled {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The constant <tt>FORMAT_EXTENSION</tt> contains the extension for the
      * format file.
      */

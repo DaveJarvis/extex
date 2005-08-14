@@ -35,6 +35,11 @@ import de.dante.util.framework.i18n.LocalizerFactory;
 public class CantUseInException extends HelpingException {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Creates a new object.
      *
      * @param macro the name of the macro in which the eof has been encoutered

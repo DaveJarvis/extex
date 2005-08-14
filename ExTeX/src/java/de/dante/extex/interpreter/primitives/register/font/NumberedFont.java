@@ -35,6 +35,11 @@ import de.dante.extex.typesetter.TypesetterOptions;
 public class NumberedFont extends NamedFont {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Construct the reference key for a numbered font.
      *
      * @param context the interpreter context

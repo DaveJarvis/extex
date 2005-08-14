@@ -36,6 +36,11 @@ import de.dante.util.exception.GeneralException;
 public class AlignedLeadersNode extends GlueNode implements Node {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>node</tt> contains the node to reapeat or expand.
      */
     private Node node;

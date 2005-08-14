@@ -30,6 +30,11 @@ import de.dante.util.Locator;
 public class ConditionalSwitch extends Conditional {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Creates a new object.
      *
      * @param locator the locator

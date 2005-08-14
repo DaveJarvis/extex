@@ -39,6 +39,11 @@ import de.dante.util.exception.GeneralException;
 public class PenaltyNode extends AbstractNode implements Node, Discardable {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>penalty</tt> contains the penalty value of this node.
      */
     private long penalty = 0;

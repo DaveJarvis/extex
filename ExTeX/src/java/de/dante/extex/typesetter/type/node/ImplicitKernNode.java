@@ -33,6 +33,11 @@ import de.dante.extex.interpreter.type.dimen.Dimen;
 public class ImplicitKernNode extends AbstractKernNode {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Creates a new object.
      *
      * @param kern the natural size

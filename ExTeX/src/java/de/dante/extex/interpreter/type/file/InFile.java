@@ -40,6 +40,11 @@ import de.dante.extex.scanner.type.token.TokenFactory;
 public class InFile implements Serializable {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>file</tt> contains name of the underlying file.
      */
     private File file;

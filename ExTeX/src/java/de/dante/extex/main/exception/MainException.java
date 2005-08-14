@@ -32,6 +32,11 @@ import de.dante.util.exception.GeneralException;
 public class MainException extends GeneralException {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>message</tt> contains the message for this exception.
      */
     private String message = null;

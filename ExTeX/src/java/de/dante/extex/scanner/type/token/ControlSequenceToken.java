@@ -44,6 +44,11 @@ import de.dante.util.UnicodeChar;
 public class ControlSequenceToken extends AbstractToken implements CodeToken {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The constant <tt>HASH_FACTOR</tt> contains the factor used to construct
      * the hash code.
      */

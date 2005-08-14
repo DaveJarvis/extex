@@ -48,6 +48,11 @@ import de.dante.extex.typesetter.Typesetter;
 public class Or extends AbstractCode {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Creates a new object.
      *
      * @param name the name for debugging

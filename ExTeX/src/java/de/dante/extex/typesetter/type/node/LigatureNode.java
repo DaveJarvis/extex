@@ -41,6 +41,11 @@ import de.dante.util.exception.GeneralException;
 public class LigatureNode extends CharNode implements Node {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>chars</tt> contains the cache of the list of plain char
      * nodes contained.
      */

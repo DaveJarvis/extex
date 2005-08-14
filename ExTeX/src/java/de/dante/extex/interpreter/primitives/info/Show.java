@@ -66,6 +66,11 @@ import de.dante.util.framework.logger.LogEnabled;
 public class Show extends AbstractCode implements LogEnabled {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>logger</tt> contains the target channel for the message.
      */
     private transient Logger logger = null;

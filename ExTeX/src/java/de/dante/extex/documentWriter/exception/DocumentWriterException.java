@@ -31,6 +31,11 @@ import de.dante.util.exception.GeneralException;
 public class DocumentWriterException extends GeneralException {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Creates a new object. 
      *
      * @param message the error message

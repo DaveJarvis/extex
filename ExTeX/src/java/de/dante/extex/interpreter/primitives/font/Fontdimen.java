@@ -55,7 +55,7 @@ import de.dante.util.exception.GeneralException;
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    <tt>\fontdimen</tt> {@linkplain
- *      de.dante.extex.interpreter.TokenSource#scanNumber()
+ *      de.dante.extex.interpreter.TokenSource#scanNumber(Context)
  *      &lang;8-bit&nbsp;number&rang;} {@linkplain
  *      de.dante.extex.interpreter.TokenSource#getFont()
  *      &lang;font&rang;} {@linkplain
@@ -85,6 +85,11 @@ public class Fontdimen extends AbstractAssignment
         implements
             ExpandableCode,
             Theable {
+
+    /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
 
     /**
      * Creates a new object.

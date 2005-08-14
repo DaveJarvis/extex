@@ -33,6 +33,11 @@ import de.dante.extex.typesetter.type.Node;
 public class ExtensionNode extends WhatsItNode implements Node {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>extension</tt> contains the extension object.
      */
     private Extension extension;

@@ -16,6 +16,7 @@
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
+
 package de.dante.extex.interpreter.primitives.conditional;
 
 import de.dante.extex.interpreter.TokenSource;
@@ -58,12 +59,19 @@ import de.dante.extex.typesetter.Typesetter;
  * @version $Revision$
  */
 public class Ifvoid extends AbstractIf {
+
+    /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
     /**
      * Creates a new object.
      *
      * @param name the name for debugging
      */
     public Ifvoid(final String name) {
+
         super(name);
     }
 

@@ -31,6 +31,11 @@ public class ConfigurationUnsupportedEncodingException
             ConfigurationException {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Create a new object.
      *
      * @param message the message string

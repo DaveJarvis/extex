@@ -57,6 +57,11 @@ import de.dante.util.exception.GeneralException;
 public class Hfi extends AbstractHorizontalCode {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>FIL</tt> contains the glue to insert for this primitive.
      */
     private static final Glue FI = new Glue(GlueComponent.ZERO,

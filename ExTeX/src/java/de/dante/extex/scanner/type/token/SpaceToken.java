@@ -36,6 +36,11 @@ import de.dante.util.UnicodeChar;
 public class SpaceToken extends AbstractToken implements Token {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The Constant <tt>SPACE</tt> contains the space character.
      */
     private static final UnicodeChar SPACE = new UnicodeChar(' ');

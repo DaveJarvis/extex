@@ -31,6 +31,11 @@ import de.dante.extex.interpreter.exception.InterpreterException;
 public class InteractionUnknownException extends InterpreterException {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Creates a new object.
      *
      * @param message the name of the missing argument

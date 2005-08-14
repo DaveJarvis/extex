@@ -34,6 +34,11 @@ import de.dante.util.Locator;
 public class Conditional implements Serializable {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>locator</tt> contains the locator to the position of the
      * opening <tt>\if</tt>.
      */

@@ -31,6 +31,11 @@ import de.dante.util.framework.configuration.Configuration;
 public class ConfigurationInvalidClassException extends ConfigurationException {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>classname</tt> contains the name of the class which
      * could not be found.
      */

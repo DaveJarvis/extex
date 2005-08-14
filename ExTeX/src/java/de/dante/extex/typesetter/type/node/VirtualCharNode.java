@@ -44,6 +44,11 @@ import de.dante.util.exception.GeneralException;
 public class VirtualCharNode extends CharNode implements NodeList {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * This inner class provides the means to store nodes in a list.
      * It is here to compensate the missing multiple inheritance of Java.
      *
@@ -51,6 +56,11 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * @version $Revision$
      */
     private class NL extends AbstractNodeList {
+
+        /**
+         * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+         */
+        private static final long serialVersionUID = 1L;
 
         /**
          * The field <tt>node</tt> contains the parent node.

@@ -52,7 +52,7 @@ public abstract class AbstractBox extends AbstractCode implements Serializable {
      *       &rarr; {@linkplain
      *        de.dante.extex.interpreter.TokenSource#scanTokens(Context)
      *        &lang;tokens&rang;}
-     *        | {@linkplain de.dante.extex.interpreter.TokenSource#scanNumber()
+     *        | {@linkplain de.dante.extex.interpreter.TokenSource#scanNumber(Context)
      *        &lang;number&rang;}  </pre>
      *
      * TODO gene: doc incomplete

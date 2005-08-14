@@ -108,6 +108,11 @@ import de.dante.extex.typesetter.Typesetter;
 public class Numexpr extends AbstractCode implements CountConvertible, Theable {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * This interface describes a binary operation on two longs.
      *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>

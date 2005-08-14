@@ -64,7 +64,7 @@ import de.dante.extex.typesetter.paragraphBuilder.ParagraphShape;
  *  <pre class="syntax">
  *    &lang;parshape&rang;
  *        &rarr; <tt>\parshape</tt> {@linkplain
- *        de.dante.extex.interpreter.TokenSource#scanNumber()
+ *        de.dante.extex.interpreter.TokenSource#scanNumber(Context)
  *        &lang;8-bit&nbsp;number&rang;} ... </pre>
  *
  * <h4>Examples</h4>
@@ -91,6 +91,11 @@ import de.dante.extex.typesetter.paragraphBuilder.ParagraphShape;
  * @version $Revision$
  */
 public class Parshape extends AbstractCode implements CountConvertible, Theable {
+
+    /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
 
     /**
      * @see de.dante.extex.interpreter.type.Theable#the(

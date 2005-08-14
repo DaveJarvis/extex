@@ -48,6 +48,11 @@ import de.dante.util.exception.GeneralException;
 public class GlueNode extends AbstractNode implements Node, Discardable {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>size</tt> contains the glue specification for this node.
      * The natural size of the glue is the initial width of this node.
      */

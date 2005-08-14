@@ -31,6 +31,11 @@ import de.dante.util.framework.i18n.LocalizerFactory;
 public class ErrorLimitException extends InterpreterException {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>limit</tt> contains the maximal allowed number of errors.
      */
     private int limit;

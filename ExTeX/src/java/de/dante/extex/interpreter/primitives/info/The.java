@@ -62,6 +62,11 @@ import de.dante.extex.typesetter.Typesetter;
 public class The extends AbstractCode implements ExpandableCode {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Creates a new object.
      *
      * @param name the name for tracing and debugging

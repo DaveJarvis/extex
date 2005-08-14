@@ -28,7 +28,6 @@ import de.dante.extex.interpreter.type.box.RuleConvertible;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.typesetter.Mode;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.type.node.RuleNode;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
 
@@ -85,6 +84,11 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
  * @version $Revision$
  */
 public class Hrule extends AbstractCode implements RuleConvertible {
+
+    /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
 
     /**
      * The constant <tt>DEFAULT_RULE</tt> contains the equivalent to 0.4pt.

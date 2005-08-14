@@ -28,6 +28,11 @@ package de.dante.util.framework.configuration.exception;
 public class ConfigurationNotFoundException extends ConfigurationException {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>configName</tt> contains the name of the missing
      * configuration.
      */

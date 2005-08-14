@@ -19,10 +19,10 @@
 
 package de.dante.extex.interpreter;
 
-import de.dante.util.exception.GeneralException;
-
 import java.io.ObjectStreamException;
 import java.io.Serializable;
+
+import de.dante.util.exception.GeneralException;
 
 /**
  * This class provides a type-save enumeration of the interactions styles of
@@ -42,6 +42,11 @@ public abstract class Interaction implements Serializable {
      * @version $Revision$
      */
     private static class BatchMode extends Interaction {
+
+        /**
+         * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+         */
+        private static final long serialVersionUID = 1L;
 
         /**
          * Return the singleton constant object after the serialized instance
@@ -88,6 +93,11 @@ public abstract class Interaction implements Serializable {
     private static class ErrorstopMode extends Interaction {
 
         /**
+         * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+         */
+        private static final long serialVersionUID = 1L;
+
+        /**
          * Return the singleton constant object after the serialized instance
          * has been read back in.
          *
@@ -132,6 +142,11 @@ public abstract class Interaction implements Serializable {
     private static class NonstopMode extends Interaction {
 
         /**
+         * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+         */
+        private static final long serialVersionUID = 1L;
+
+        /**
          * Return the singleton constant object after the serialized instance
          * has been read back in.
          *
@@ -174,6 +189,11 @@ public abstract class Interaction implements Serializable {
      * @version $Revision$
      */
     private static class ScrollMode extends Interaction {
+
+        /**
+         * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+         */
+        private static final long serialVersionUID = 1L;
 
         /**
          * Return the singleton constant object after the serialized instance

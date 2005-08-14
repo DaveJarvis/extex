@@ -49,6 +49,11 @@ import de.dante.util.framework.i18n.LocalizerFactory;
 public class AbstractTeXDelimter extends AbstractMathCode {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The constant <tt>CHAR_MASK</tt> contains the character mask.
      */
     private static final int CHAR_MASK = 0xff;

@@ -46,7 +46,7 @@ import de.dante.extex.typesetter.paragraphBuilder.ParagraphShape;
  *  <pre class="syntax">
  *    &lang;parshapedimen&rang;
  *        &rarr; <tt>\parshapedimen</tt> {@linkplain
- *        de.dante.extex.interpreter.TokenSource#scanNumber()
+ *        de.dante.extex.interpreter.TokenSource#scanNumber(Context)
  *        &lang;8-bit&nbsp;number&rang;} </pre>
  *
  * <h4>Examples</h4>
@@ -65,6 +65,11 @@ public class Parshapedimen extends AbstractCode
             CountConvertible,
             DimenConvertible,
             Theable {
+
+    /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
 
     /**
      * Creates a new object.

@@ -77,6 +77,11 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
 public class Input extends AbstractFileCode {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>FILE_TYPE</tt> contains the file type to create an input
      * stream for.
      */

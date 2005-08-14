@@ -35,6 +35,11 @@ import de.dante.extex.interpreter.type.tokens.Tokens;
 public class UserAndLogFile extends OutFile {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>logger</tt> contains the encapsulated logger.
      */
     private transient Logger logger;

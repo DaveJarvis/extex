@@ -39,6 +39,11 @@ import de.dante.extex.typesetter.Typesetter;
 public class NamedFont extends AbstractAssignment implements FontConvertible {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Creates a new object.
      *
      * @param name the name for debugging

@@ -31,6 +31,11 @@ import de.dante.util.exception.GeneralException;
 public class ImmutableCount extends Count {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Creates a new object.
      *
      * @param value the value to be stored

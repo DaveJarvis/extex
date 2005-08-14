@@ -37,6 +37,11 @@ import de.dante.util.framework.i18n.LocalizerFactory;
 public class ExecuteFile extends OutFile {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>logger</tt> contains the logger for tracing and error
      * messages.
      */

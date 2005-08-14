@@ -45,6 +45,11 @@ import de.dante.extex.typesetter.Discardable;
 public class ExplicitKernNode extends AbstractKernNode implements Discardable {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Creates a new object.
      *
      * @see "<logo>TeX</logo> &ndash; The Program [156]"

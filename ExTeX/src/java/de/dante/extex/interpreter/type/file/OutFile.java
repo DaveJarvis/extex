@@ -53,6 +53,11 @@ import de.dante.extex.scanner.type.token.TokenVisitor;
 public class OutFile implements Serializable {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * This anonymous inner class is used with the visitor pattern to map the
      * tokens to appropriate print strings.
      */

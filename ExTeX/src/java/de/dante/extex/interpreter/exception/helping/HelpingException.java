@@ -85,6 +85,11 @@ import de.dante.util.framework.i18n.LocalizerFactory;
 public class HelpingException extends InterpreterException {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The constant <tt>DEFAULT_TAG</tt> contains the tag to be used if none
      * is given.
      */

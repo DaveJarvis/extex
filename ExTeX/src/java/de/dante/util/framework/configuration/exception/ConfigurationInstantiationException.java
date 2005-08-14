@@ -30,6 +30,11 @@ package de.dante.util.framework.configuration.exception;
 public class ConfigurationInstantiationException extends ConfigurationException {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Creates a new object.
      *
      * @param message the message text

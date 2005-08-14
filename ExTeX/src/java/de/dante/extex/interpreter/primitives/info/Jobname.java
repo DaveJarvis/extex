@@ -58,6 +58,11 @@ import de.dante.extex.typesetter.Typesetter;
 public class Jobname extends AbstractCode implements ExpandableCode {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The constant <tt>JOBNAME</tt> contains the name of the token register to
      * carry the job name.
      */

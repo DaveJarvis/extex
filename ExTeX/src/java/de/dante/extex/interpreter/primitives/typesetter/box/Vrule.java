@@ -85,6 +85,11 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
 public class Vrule extends AbstractCode implements RuleConvertible {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The constant <tt>DEFAULT_RULE</tt> contains the equivalent to 0.4pt.
      */
     private static final long DEFAULT_RULE = 26214;

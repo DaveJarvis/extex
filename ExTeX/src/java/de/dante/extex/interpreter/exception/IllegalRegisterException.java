@@ -33,6 +33,11 @@ import de.dante.util.framework.i18n.LocalizerFactory;
 public class IllegalRegisterException extends InterpreterException {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Create a new object.
      *
      * @param message the message

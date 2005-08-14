@@ -45,7 +45,7 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
  *  <pre class="syntax">
  *    &lang;unhcopy&rang;
  *       &rarr; <tt>&#x5c;unhcopy</tt> {@linkplain
- *          de.dante.extex.interpreter.TokenSource#scanNumber()
+ *          de.dante.extex.interpreter.TokenSource#scanNumber(Context)
  *          &lang;8-bit&nbsp;number&rang;} </pre>
  * </p>
  * <p>
@@ -59,6 +59,11 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
  * @version $Revision$
  */
 public class Unhcopy extends AbstractBox {
+
+    /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
 
     /**
      * Creates a new object.

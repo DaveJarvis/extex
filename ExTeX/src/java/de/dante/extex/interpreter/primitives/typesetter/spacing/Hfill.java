@@ -57,6 +57,11 @@ import de.dante.util.exception.GeneralException;
 public class Hfill extends AbstractHorizontalCode {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>FILL</tt> contains the glue to insert for this primitive.
      */
     private static final Glue FILL = new Glue(GlueComponent.ZERO,

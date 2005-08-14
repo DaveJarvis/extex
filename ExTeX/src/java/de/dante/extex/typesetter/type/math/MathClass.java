@@ -40,6 +40,11 @@ public abstract class MathClass implements Serializable {
     private static final class BinaryMathClass extends MathClass {
 
         /**
+         * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+         */
+        private static final long serialVersionUID = 1L;
+
+        /**
          * Return the singleton constant object after the serialized instance
          * has been read back in.
          *
@@ -80,6 +85,11 @@ public abstract class MathClass implements Serializable {
      * @version $Revision$
      */
     private static final class ClosingMathClass extends MathClass {
+
+        /**
+         * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+         */
+        private static final long serialVersionUID = 1L;
 
         /**
          * Return the singleton constant object after the serialized instance
@@ -124,6 +134,11 @@ public abstract class MathClass implements Serializable {
     private static final class LargeMathClass extends MathClass {
 
         /**
+         * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+         */
+        private static final long serialVersionUID = 1L;
+
+        /**
          * Return the singleton constant object after the serialized instance
          * has been read back in.
          *
@@ -164,6 +179,11 @@ public abstract class MathClass implements Serializable {
      * @version $Revision$
      */
     private static final class OpeningMathClass extends MathClass {
+
+        /**
+         * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+         */
+        private static final long serialVersionUID = 1L;
 
         /**
          * Return the singleton constant object after the serialized instance
@@ -208,6 +228,11 @@ public abstract class MathClass implements Serializable {
     private static final class OrdinaryMathClass extends MathClass {
 
         /**
+         * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+         */
+        private static final long serialVersionUID = 1L;
+
+        /**
          * Return the singleton constant object after the serialized instance
          * has been read back in.
          *
@@ -248,6 +273,11 @@ public abstract class MathClass implements Serializable {
      * @version $Revision$
      */
     private static final class PunctationMathClass extends MathClass {
+
+        /**
+         * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+         */
+        private static final long serialVersionUID = 1L;
 
         /**
          * Return the singleton constant object after the serialized instance
@@ -292,6 +322,11 @@ public abstract class MathClass implements Serializable {
     private static final class RelationMathClass extends MathClass {
 
         /**
+         * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+         */
+        private static final long serialVersionUID = 1L;
+
+        /**
          * Return the singleton constant object after the serialized instance
          * has been read back in.
          *
@@ -332,6 +367,11 @@ public abstract class MathClass implements Serializable {
      * @version $Revision$
      */
     private static final class VariableMathClass extends MathClass {
+
+        /**
+         * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+         */
+        private static final long serialVersionUID = 1L;
 
         /**
          * Return the singleton constant object after the serialized instance

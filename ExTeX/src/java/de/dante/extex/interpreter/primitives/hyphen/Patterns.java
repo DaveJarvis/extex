@@ -81,6 +81,11 @@ import de.dante.util.UnicodeChar;
 public class Patterns extends AbstractHyphenationCode {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * This class provides the token visitor which processes all tokens in the
      * argument of the <tt>\pattern</tt> macro.
      *

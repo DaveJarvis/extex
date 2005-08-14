@@ -34,6 +34,11 @@ import de.dante.util.exception.GeneralException;
 public class SpaceNode extends GlueNode implements Node {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>DEVELOP</tt> contains the indicator that part of the code
      * is used in the development version.
      */

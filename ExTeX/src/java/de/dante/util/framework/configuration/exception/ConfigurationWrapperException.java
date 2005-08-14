@@ -29,6 +29,11 @@ package de.dante.util.framework.configuration.exception;
 public class ConfigurationWrapperException extends ConfigurationException {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Creates a new object.
      *
      * @param cause the Exception causing the error

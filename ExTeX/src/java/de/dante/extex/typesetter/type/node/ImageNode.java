@@ -32,6 +32,11 @@ import de.dante.extex.typesetter.type.Node;
 public class ImageNode extends WhatsItNode implements Node {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>image</tt> contains the image to pass to the backend
      * driver.
      */

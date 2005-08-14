@@ -71,6 +71,11 @@ public class Write extends AbstractCode
             InitializableCode {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The constant <tt>LOG_FILE</tt> contains the key for the log file.
      */
     private static final String LOG_FILE = "-1";

@@ -142,6 +142,11 @@ public class FontPrimitive extends AbstractAssignment
             LogEnabled {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>DEBUG</tt> contains the indicator that debug output is
      * desirable.
      */

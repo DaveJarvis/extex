@@ -46,6 +46,11 @@ import de.dante.util.framework.i18n.LocalizerFactory;
 public class Count implements Serializable, FixedCount {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The constant <tt>ONE</tt> contains the count register with the value 1.
      * This count register is in fact immutable.
      */
