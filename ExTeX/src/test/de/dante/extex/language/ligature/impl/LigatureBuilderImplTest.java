@@ -62,6 +62,14 @@ public class LigatureBuilderImplTest extends TestCase {
      */
     private class MockFont extends NullFont {
 
+        /**
+         * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+         */
+        private static final long serialVersionUID = 1L;
+
+        /**
+         * The field <tt>cache</tt> contains the ...
+         */
         private Map cache = new HashMap();
 
         /**

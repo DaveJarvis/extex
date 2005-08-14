@@ -51,6 +51,11 @@ import de.dante.util.UnicodeChar;
 public class BaseHyphenationTable implements ModifiableLanguage {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>exceptionMap</tt> contains the exception words for
      * hyphenation.
      */

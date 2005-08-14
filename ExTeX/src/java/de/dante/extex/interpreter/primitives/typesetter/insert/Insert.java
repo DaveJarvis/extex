@@ -27,7 +27,6 @@ import de.dante.extex.interpreter.exception.helping.HelpingException;
 import de.dante.extex.interpreter.primitives.register.box.AbstractBox;
 import de.dante.extex.interpreter.type.box.Box;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.type.node.InsertionNode;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
 
@@ -57,6 +56,11 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
  * @version $Revision$
  */
 public class Insert extends AbstractBox {
+
+    /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
 
     /**
      * Creates a new object.

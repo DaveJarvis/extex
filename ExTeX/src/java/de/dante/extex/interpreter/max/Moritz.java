@@ -1024,7 +1024,7 @@ public class Moritz extends Max
      * @throws InterpreterException in case that no number is found or the
      *  end of file has been reached before an integer could be acquired
      *
-     * @see de.dante.extex.interpreter.TokenSource#scanNumber()
+     * @see de.dante.extex.interpreter.TokenSource#scanNumber(Context)
      */
     public long scanNumber(final Context context) throws InterpreterException {
 

@@ -27,7 +27,6 @@ import de.dante.extex.interpreter.type.InitializableCode;
 import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.exception.GeneralException;
 
 /**
  * This class provides an implementation for the primitive <code>\toks</code>.
@@ -44,6 +43,11 @@ import de.dante.util.exception.GeneralException;
  * @version $Revision$
  */
 public class ToksParameter extends ToksPrimitive implements InitializableCode {
+
+    /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
 
     /**
      * Return the key for a named toks register.

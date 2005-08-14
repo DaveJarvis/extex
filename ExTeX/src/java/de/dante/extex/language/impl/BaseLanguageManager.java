@@ -55,6 +55,11 @@ public class BaseLanguageManager extends AbstractFactory
             Serializable {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>tables</tt> contains the mapping from index to
      * hyphenation table.
      */

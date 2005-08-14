@@ -33,6 +33,11 @@ import de.dante.util.exception.GeneralException;
 public class HsvColor implements Color {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>hue</tt> contains the hue value of the color.
      * It has a value in the range from 0 to {@link #MAX_VALUE MAX_VALUE}.
      */

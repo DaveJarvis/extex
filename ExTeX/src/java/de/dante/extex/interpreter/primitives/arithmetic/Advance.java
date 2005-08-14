@@ -55,7 +55,7 @@ import de.dante.extex.typesetter.Typesetter;
  *
  *   &lang;advancable&rang;
  *     &rarr; &lang;integer variable&rang; &lang;optional <tt>by</tt>&rang; {@linkplain
- *      de.dante.extex.interpreter.TokenSource#scanNumber()
+ *      de.dante.extex.interpreter.TokenSource#scanNumber(Context)
  *      &lang;number&rang;}
  *      |  &lang;dimen variable&rang; &lang;optional <tt>by</tt>&rang; {@linkplain
  *        de.dante.extex.interpreter.type.dimen#Dimen(Context,TokenSource)
@@ -83,6 +83,11 @@ import de.dante.extex.typesetter.Typesetter;
  * @version $Revision$
  */
 public class Advance extends AbstractAssignment {
+
+    /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
 
     /**
      * Creates a new object.

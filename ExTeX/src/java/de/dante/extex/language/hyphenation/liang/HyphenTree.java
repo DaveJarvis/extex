@@ -59,6 +59,11 @@ import de.dante.util.UnicodeChar;
 class HyphenTree implements Serializable {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Superimpose two hyphenation code arrays.
      * The target array is modified. It is considered from a starting position
      * onwards. The target array has to be long enough such that the source

@@ -75,6 +75,11 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
 public class MockContext implements Context, TypesetterOptions {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>tokenFactory</tt> contains the token factory.
      */
     private TokenFactory tokenFactory = new TokenFactoryImpl();

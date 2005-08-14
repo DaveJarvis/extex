@@ -65,6 +65,11 @@ import de.dante.util.framework.i18n.LocalizerFactory;
 public class GlueComponent implements Serializable, FixedGlueComponent {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The constant <tt>BP100_PER_IN</tt> contains the number of 100 big points
      * per inch.
      */

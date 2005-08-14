@@ -19,8 +19,6 @@
 
 package de.dante.extex.color.model;
 
-import java.util.WeakHashMap;
-
 import de.dante.extex.interpreter.context.Color;
 
 /**

@@ -47,6 +47,11 @@ public class LiangsHyphenationTableTest extends TestCase {
      */
     private class MyMockContext extends MockContext {
 
+        /**
+         * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+         */
+        private static final long serialVersionUID = 1L;
+
     }
 
     /**

@@ -38,6 +38,11 @@ import de.dante.extex.interpreter.exception.helping.HelpingException;
 public class FixedHelpingException extends HelpingException {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>help</tt> contains the string which is shown if further
      * help is requested.
      */

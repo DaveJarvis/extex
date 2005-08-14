@@ -53,6 +53,11 @@ import de.dante.util.framework.configuration.exception.ConfigurationSyntaxExcept
 public class ConfigurationXMLImpl implements Configuration, Serializable {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>ext</tt> contains extensions to use when searching for
      * configuration files.
      */

@@ -43,6 +43,11 @@ import de.dante.util.framework.i18n.LocalizerFactory;
 public class Dimen extends GlueComponent implements Serializable, FixedDimen {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The constant <tt>ONE_INCH</tt> contains the immutable dimen register
      * representing the length of 1&nbsp;in.
      */

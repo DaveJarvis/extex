@@ -52,6 +52,11 @@ import de.dante.util.framework.i18n.LocalizerFactory;
 public class GeneralException extends Exception {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>exitCode</tt> contains the exit code.
      */
     private int exitCode = -1;

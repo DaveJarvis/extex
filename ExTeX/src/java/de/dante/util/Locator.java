@@ -32,6 +32,11 @@ import java.io.Serializable;
 public class Locator implements Serializable {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>resource</tt> contains the name of the resource.
      */
     private String resource;

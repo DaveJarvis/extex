@@ -19,7 +19,6 @@
 
 package de.dante.extex.typesetter.type;
 
-import java.io.Serializable;
 
 /**
  * This is a super-interface for all types of nodes used in the typesetter.
@@ -27,6 +26,6 @@ import java.io.Serializable;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface Knot extends Serializable {
+public interface Knot {
 
 }

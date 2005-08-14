@@ -36,6 +36,11 @@ import java.util.Map;
 public class CompressedLiangsHyphenationTable extends LiangsHyphenationTable {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * This method compresses the table upon dumping. It is one of the magic
      * methods invoked during serialization.
      *

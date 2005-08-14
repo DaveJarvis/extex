@@ -379,6 +379,11 @@ public class BaseHyphenationTableTest extends TestCase {
     private class MyMockContext extends MockContext {
 
         /**
+         * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+         */
+        private static final long serialVersionUID = 1L;
+
+        /**
          * @see de.dante.extex.interpreter.context.Context#getLccode(de.dante.util.UnicodeChar)
          */
         public UnicodeChar getLccode(final UnicodeChar uc) {

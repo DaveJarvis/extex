@@ -33,6 +33,11 @@ import java.io.Serializable;
 public final class Direction implements Serializable {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The constant <tt>LR</tt> contains the direction for left-to-right
      * languages.
      */

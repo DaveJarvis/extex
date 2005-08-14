@@ -46,6 +46,11 @@ import de.dante.util.exception.GeneralException;
 public class Glue implements Serializable, FixedGlue {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>length</tt> contains the natural length of the glue.
      */
     private GlueComponent length = new GlueComponent(0);

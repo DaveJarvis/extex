@@ -38,6 +38,11 @@ import de.dante.util.UnicodeChar;
 public class FutureLanguage implements Language {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>creator</tt> contains the creator which should be contacted
      * to perform the real task.
      */

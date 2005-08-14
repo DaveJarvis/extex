@@ -119,6 +119,11 @@ import de.dante.util.exception.GeneralException;
 public class LiangsHyphenationTable extends BaseHyphenationTable {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>BORDER</tt> contains the Unicode character internally used
      * as a marker for the beginning and the end of the word.
      */

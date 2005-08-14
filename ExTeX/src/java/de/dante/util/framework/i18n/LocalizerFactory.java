@@ -44,6 +44,11 @@ public final class LocalizerFactory {
     private static class BasicLocalizer implements Localizer {
 
         /**
+         * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+         */
+        private static final long serialVersionUID = 1L;
+
+        /**
          * The field <tt>bundle</tt> contains the resource bundle for this
          * instance or <code>null</code> if none has been loaded yet.
          */

@@ -37,6 +37,11 @@ import de.dante.extex.typesetter.listMaker.math.NoadConsumer;
 public class MathcharCode extends Mathchar implements CountConvertible {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>mathchar</tt> contains the actual character in the form
      * of a Count which can immediately be passed to the typesetter.
      */

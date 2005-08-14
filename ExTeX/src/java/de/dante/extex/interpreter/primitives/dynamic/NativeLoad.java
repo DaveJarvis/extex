@@ -64,6 +64,11 @@ public class NativeLoad extends AbstractCode
             LogEnabled {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * This inner class provides access to the functionality of an abstract
      * factory. It is here to overcome the deficiency of a missing multiple
      * inheritance in Java.

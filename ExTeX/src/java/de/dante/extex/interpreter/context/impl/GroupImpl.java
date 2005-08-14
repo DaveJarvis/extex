@@ -62,6 +62,11 @@ import de.dante.util.framework.configuration.exception.ConfigurationInstantiatio
 public class GroupImpl implements Group, Tokenizer, Serializable {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The constant <tt>INVALID_CHAR_CODE</tt> contains the code for an
      * invalid character.
      */

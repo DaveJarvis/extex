@@ -52,6 +52,11 @@ public class CharCode extends AbstractCode
             Theable {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>character</tt> contains the encapsulated Unicode character.
      */
     private UnicodeChar character;

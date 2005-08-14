@@ -30,8 +30,6 @@ import de.dante.extex.scanner.type.token.ControlSequenceToken;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.framework.Registrar;
-import de.dante.util.framework.RegistrarException;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 import de.dante.util.framework.i18n.Localizable;
 import de.dante.util.framework.i18n.Localizer;
 
@@ -45,6 +43,11 @@ import de.dante.util.framework.i18n.Localizer;
  * @version $Revision$
  */
 public class AbstractCode implements Code, Localizable, Serializable {
+
+    /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
 
     /**
      * The field <tt>localizer</tt> contains the localizer or <code>null</code>

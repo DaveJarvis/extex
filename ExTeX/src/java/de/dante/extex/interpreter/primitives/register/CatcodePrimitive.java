@@ -80,11 +80,11 @@ import de.dante.util.UnicodeChar;
  *  <pre class="syntax">
  *    &lang;catcode&rang;
  *      &rarr; &lang;prefix&rang; <tt>\catcode</tt> {@linkplain
- *          de.dante.extex.interpreter.TokenSource#scanNumber()
+ *          de.dante.extex.interpreter.TokenSource#scanNumber(Context)
  *          &lang;8-bit&nbsp;number&rang;} {@linkplain
  *          de.dante.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *          &lang;equals&rang;} {@linkplain
- *          de.dante.extex.interpreter.TokenSource#scanNumber()
+ *          de.dante.extex.interpreter.TokenSource#scanNumber(Context)
  *          &lang;4-bit&nbsp;number&rang;}
  *
  *    &lang;prefix&rang;
@@ -115,6 +115,11 @@ public class CatcodePrimitive extends AbstractAssignment
         implements
             CountConvertible,
             Theable {
+
+    /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
 
     /**
      * Creates a new object.

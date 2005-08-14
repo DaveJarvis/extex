@@ -35,6 +35,11 @@ import java.util.List;
 public class StringList extends ArrayList implements List {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Create a new object.
      * Initially the StringList is empty.
      */

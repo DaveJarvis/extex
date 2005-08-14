@@ -84,6 +84,11 @@ public class ColorPrimitive extends AbstractAssignment
             ColorConvertible {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The constant <tt>CMYK</tt> contains the indicator for the CMYK color model.
      */
     private static final int CMYK = 2;

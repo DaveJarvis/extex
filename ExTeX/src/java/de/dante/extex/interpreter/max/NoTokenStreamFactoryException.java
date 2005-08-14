@@ -31,6 +31,11 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
 public class NoTokenStreamFactoryException extends ConfigurationException {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The field <tt>message</tt> contains the message of this exception.
      */
     private String message;

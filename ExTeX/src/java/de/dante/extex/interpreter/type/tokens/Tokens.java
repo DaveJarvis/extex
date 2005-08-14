@@ -44,6 +44,11 @@ import de.dante.extex.scanner.type.token.TokenFactory;
 public class Tokens implements Serializable, FixedTokens {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * This constant is the empty toks register.
      */
     public static final Tokens EMPTY = new ImmutableTokens();

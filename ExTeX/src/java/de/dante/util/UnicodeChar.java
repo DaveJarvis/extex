@@ -40,6 +40,11 @@ import com.ibm.icu.text.UTF16;
 public class UnicodeChar implements Serializable {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The constant <tt>NULL</tt> contains the Unicode character with the
      * code point 0.
      */
