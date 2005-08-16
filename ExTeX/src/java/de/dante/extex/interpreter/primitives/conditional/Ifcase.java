@@ -193,7 +193,7 @@ public class Ifcase extends AbstractIf {
     }
 
     /**
-     * This is an internal class for typesafe values.
+     * This is an internal class for type-safe values.
      *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision$

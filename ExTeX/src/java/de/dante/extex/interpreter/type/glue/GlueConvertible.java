@@ -25,7 +25,7 @@ import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.typesetter.Typesetter;
 
 /**
- * This is an interface which describes the feature to be convertibe into a
+ * This is an interface which describes the feature to be convertible into a
  * glue value.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>

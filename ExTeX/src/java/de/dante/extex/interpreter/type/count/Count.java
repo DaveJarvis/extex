@@ -286,7 +286,7 @@ public class Count implements Serializable, FixedCount {
 
     /**
      * Determine the printable representation of the object.
-     * The value returned is exactely the string which would be produced by
+     * The value returned is exactly the string which would be produced by
      * <logo>TeX</logo> to print the Count.
      *
      * @return the printable representation
@@ -300,7 +300,7 @@ public class Count implements Serializable, FixedCount {
 
     /**
      * Determine the printable representation of the object.
-     * The value returned is exactely the string which would be produced by
+     * The value returned is exactly the string which would be produced by
      * <logo>TeX</logo> to print the Count.
      *
      * @param sb the target string buffer
@@ -314,7 +314,7 @@ public class Count implements Serializable, FixedCount {
 
     /**
      * Determine the printable representation of the object.
-     * The value returned is exactely the string which would be produced by
+     * The value returned is exactly the string which would be produced by
      * <logo>TeX</logo> to print the Count.
      *
      * @param context the interpreter context

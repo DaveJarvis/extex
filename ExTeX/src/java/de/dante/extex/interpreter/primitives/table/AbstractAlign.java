@@ -37,7 +37,7 @@ import de.dante.util.framework.i18n.Localizer;
 import de.dante.util.framework.i18n.LocalizerFactory;
 
 /**
- * This is the abstract base class for alinments.
+ * This is the abstract base class for alignments.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

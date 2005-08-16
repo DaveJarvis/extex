@@ -63,7 +63,7 @@ import de.dante.util.UnicodeChar;
  * <p>
  * Possible extension
  * <ul>
- * <li>Take a group and interpret it as unicode name.</li>
+ * <li>Take a group and interpret it as Unicode name.</li>
  * </ul>
  * </p>
  *

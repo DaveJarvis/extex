@@ -77,7 +77,7 @@ public interface FixedGlueComponent {
     /**
      * Determine the printable representation of the object and return it as a
      * list of Tokens.
-     * The value returned is exactely the string which would be produced by
+     * The value returned is exactly the string which would be produced by
      * <logo>TeX</logo> to print the Dimen. This means the result is expressed
      * in pt and properly rounded to be read back in again without loss of
      * information.
@@ -99,7 +99,7 @@ public interface FixedGlueComponent {
     /**
      * Determine the printable representation of the object and return it as a
      * list of Tokens.
-     * The value returned is exactely the string which would be produced by
+     * The value returned is exactly the string which would be produced by
      * <logo>TeX</logo> to print the Dimen. This means the result is expressed
      * in pt and properly rounded to be read back in again without loss of
      * information.

@@ -16,13 +16,13 @@
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
+
 package de.dante.extex.interpreter.type;
 
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.typesetter.Typesetter;
-
 
 /**
  * This interface describes the ability to be initialized
@@ -37,10 +37,11 @@ public interface InitializableCode {
      * Initialize the Code with some value coming from a String.
      * @param context the interpreter context
      * @param source the source of information for the initialization
-     * @param typesetter TODO
+     * @param typesetter the typesetter
      *
      * @throws InterpreterException in case of an error
      */
-    void init(Context context, TokenSource source, Typesetter typesetter) throws InterpreterException;
+    void init(Context context, TokenSource source, Typesetter typesetter)
+            throws InterpreterException;
 
 }

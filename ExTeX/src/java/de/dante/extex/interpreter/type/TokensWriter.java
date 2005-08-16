@@ -25,7 +25,7 @@ import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.tokens.Tokens;
 
 /**
- * This interface describes the ability to write some tokens to a outfile
+ * This interface describes the ability to write some tokens to a output file
  * register.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
