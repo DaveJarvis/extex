@@ -45,7 +45,7 @@ public class HeaderManager {
     }
 
     /**
-     * Add the contents read from a stream to te headers.
+     * Add the contents read from a stream to the headers.
      *
      * @param stream the stream to read from
      * @param name the name of the stream

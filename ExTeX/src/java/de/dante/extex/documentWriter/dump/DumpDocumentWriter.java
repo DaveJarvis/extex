@@ -398,7 +398,7 @@ public class DumpDocumentWriter
     };
 
     /**
-     * The field <tt>out</tt> contains the outut stream to use.
+     * The field <tt>out</tt> contains the output stream to use.
      */
     private OutputStream out = null;
 
