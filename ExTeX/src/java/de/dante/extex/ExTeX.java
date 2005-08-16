@@ -791,7 +791,7 @@ public class ExTeX {
      *
      * @return the properties
      */
-    protected Properties getProperties() {
+    public Properties getProperties() {
 
         return this.properties;
     }
