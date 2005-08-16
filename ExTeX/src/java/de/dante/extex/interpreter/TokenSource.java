@@ -392,11 +392,6 @@ public interface TokenSource {
     public Token scanNonSpace(Context context) throws InterpreterException;
 
     /**
-     * @deprecated use scanNumber(Context) instead
-     */
-    long scanNumber() throws InterpreterException;
-
-    /**
      * Scan the input stream for tokens making up a number, this is a sequence
      * of digits with category code <tt>OTHER</tt>. The number can be preceded
      * by optional white space. Alternate representations for an integer exist.
