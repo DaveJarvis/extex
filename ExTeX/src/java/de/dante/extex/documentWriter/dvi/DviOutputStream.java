@@ -76,6 +76,11 @@ public class DviOutputStream {
     private int streamPosition = 0;
 
 
+    public void close() throws GeneralException, IOException {
+        outputStream.close();
+        outputStream = null;
+    }
+
     /**
      * Get the StreamPosition value.
      * @return the StreamPosition value.
