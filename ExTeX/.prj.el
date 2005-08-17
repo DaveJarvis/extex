@@ -15,7 +15,7 @@
    (quote
     ("./target/classes"
     "./lib"
-    "./lib.develop")))
+    "./develop/lib")))
 
  ;; ant
  '(jde-ant-use-global-classpath t)
@@ -24,8 +24,8 @@
  ;; checkstyle
  '(jde-checkstyle-classpath
    (quote
-    ("./lib.develop/checkstyle-all-3.4.jar"
-     "./lib.develop/checkstyle-optional-3.4.jar")))
+    ("./develop/lib/checkstyle-all-3.4.jar"
+     "./develop/lib/checkstyle-optional-3.4.jar")))
  '(jde-checkstyle-style "./.checkstyle.cfg")
 
  ;; compile
