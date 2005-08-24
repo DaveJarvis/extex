@@ -312,9 +312,7 @@ public class TFMHeaderLengths implements XMLWriterConvertible, Serializable {
         writer.writeAttribute("ni", String.valueOf(ni));
         writer.writeAttribute("nl", String.valueOf(nl));
         writer.writeAttribute("nk", String.valueOf(nk));
-        writer.writeAttribute("lf", String.valueOf(lf));
         writer.writeAttribute("ne", String.valueOf(ne));
-        writer.writeAttribute("lf", String.valueOf(lf));
         writer.writeAttribute("np", String.valueOf(np));
         writer.writeAttribute("cc", String.valueOf(cc));
         writer.writeEndElement();
