@@ -33,7 +33,7 @@ import de.dante.util.framework.configuration.Configuration;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This document writer can be used to combine several components.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -44,6 +44,9 @@ public class DocumentNodePipe
             MultipleDocumentStream,
             Configurable {
 
+    /**
+     * The field <tt>pipe</tt> contains the ...
+     */
     private NodePipe[] pipe;
 
     /**

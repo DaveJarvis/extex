@@ -23,7 +23,8 @@ import de.dante.extex.documentWriter.exception.DocumentWriterException;
 import de.dante.extex.typesetter.type.NodeList;
 
 /**
- * TODO gene: missing JavaDoc.
+ * A node pipe describes the ability to process a node list &ndash; resulting
+ * in a new node list.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
