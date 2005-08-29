@@ -55,7 +55,7 @@ import de.dante.util.framework.logger.LogEnabled;
 /**
  * This class provides a paragraph builder.
  *
- * TODO gene: missing JavaDoc.
+ * TODO gene: documentation incomplete.
  *
  * <doc name="emergencystretch" type="register">
  * <h3>The Parameter <tt>\emergencystretch</tt></h3>
