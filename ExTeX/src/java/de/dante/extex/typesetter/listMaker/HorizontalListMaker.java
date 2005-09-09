@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
+import de.dante.extex.font.Glyph;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.context.TypesettingContext;
 import de.dante.extex.interpreter.exception.InterpreterException;
@@ -274,10 +275,12 @@ public class HorizontalListMaker extends AbstractListMaker {
                 Font f = tc.getFont();
                 CharNode cn = ((CharNode) n);
                 if (cn.getTypesettingContext().getFont().equals(f)) {
-                    Dimen kerning = f.getGlyph(cn.getCharacter()).getKerning(
-                            symbol);
-                    if (kerning.ne(Dimen.ZERO_PT)) {
-                        nodes.add(new ImplicitKernNode(kerning));
+                    Glyph glyph = f.getGlyph(cn.getCharacter());
+                    if (glyph != null) {
+                        Dimen kerning = glyph.getKerning(symbol);
+                        if (kerning.ne(Dimen.ZERO_PT)) {
+                            nodes.add(new ImplicitKernNode(kerning));
+                        }
                     }
                 }
             }
