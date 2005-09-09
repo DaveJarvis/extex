@@ -80,6 +80,7 @@ public class PrimitiveFactory extends AbstractFactory {
 
     /**
      * Scan a configuration and define the primitives found.
+     *
      * @param configuration the configuration to scan
      * @param tokenFactory the token factory to use
      * @param context the interpreter context to register the primitive in
