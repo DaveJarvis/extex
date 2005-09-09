@@ -48,7 +48,6 @@ import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.type.math.MathDelimiter;
 import de.dante.util.UnicodeChar;
-import de.dante.util.framework.configuration.exception.ConfigurationInstantiationException;
 
 /**
  * This is a simple implementation for a group. The whole stack of groups is
