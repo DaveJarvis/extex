@@ -83,12 +83,12 @@ import de.dante.util.framework.logger.LogEnabled;
  *  attribute. Otherwise the value of the tag is taken as path. The value taken
  *  from the property can contain several paths. They are separated by the
  *  separator specified for the platform. For instance on windows the separator
- *  <tt>;</tt> is used and on Unix the seprator <tt>:</tt> is used.
+ *  <tt>;</tt> is used and on Unix the separator <tt>:</tt> is used.
  * </p>
  * <p>
  *  To find a resource its type is used to find the appropriate
  *  parameters for the search. If the sub-configuration with the name of the
- *  type exists then this subconfiguration is used. For instance if the
+ *  type exists then this sub-configuration is used. For instance if the
  *  resource <tt>tex</tt> with the type <tt>fmt</tt> is sought then the
  *  sub-configuration <tt>fmt</tt> determines how to find this file.
  * </p>
@@ -205,7 +205,7 @@ public class LsrFinder
 
     /**
      * The field <tt>initialCapacity</tt> contains the initial capacity of the
-     * cache. If the value is less than 1 then the default of the unerling
+     * cache. If the value is less than 1 then the default of the underling
      * implementation is used.
      */
     private int initialCapacity = -1;
