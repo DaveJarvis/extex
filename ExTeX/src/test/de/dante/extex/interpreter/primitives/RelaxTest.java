@@ -75,7 +75,7 @@ public class RelaxTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "abcdef \n");
+                "abcdef \n\n");
     }
 
     /**
