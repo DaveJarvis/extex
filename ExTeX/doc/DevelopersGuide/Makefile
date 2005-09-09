@@ -10,7 +10,7 @@ SRCDIR = ../../src/java
 
 all: $(MANUAL).pdf
 
-$(MANUAL).pdf:  $(MANUAL).tex $(MANUAL).toc howto
+$(MANUAL).pdf:  $(MANUAL).tex howto $(MANUAL).toc
 	@pdflatex $(MANUAL)
 
 %.pdf: %.toc %.ind
@@ -33,6 +33,7 @@ deploy: $(MANUAL).pdf
 	mv $(MANUAL).pdf $(DEPLOYDIR)
 
 howto tmp/howto.tex:
+	mkdir -p tmp
 	perl bin/howto.pl -cp ../../src/java -out tmp/howto.tex
 
 clean:
