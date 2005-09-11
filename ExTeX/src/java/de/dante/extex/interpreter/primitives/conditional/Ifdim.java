@@ -103,7 +103,7 @@ public class Ifdim extends AbstractIf {
                 case '>':
                     return (x > new Dimen(context, source, typesetter).getValue());
                 default:
-            // Fal through to error handling
+            // Fall through to error handling
             }
         }
 
