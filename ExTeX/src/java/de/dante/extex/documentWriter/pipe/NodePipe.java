@@ -19,6 +19,7 @@
 
 package de.dante.extex.documentWriter.pipe;
 
+import de.dante.extex.documentWriter.DocumentWriter;
 import de.dante.extex.documentWriter.exception.DocumentWriterException;
 import de.dante.extex.typesetter.type.NodeList;
 
@@ -29,7 +30,7 @@ import de.dante.extex.typesetter.type.NodeList;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface NodePipe {
+public interface NodePipe extends DocumentWriter {
 
     /**
      * This is the entry point for the document writer. Here it receives a
