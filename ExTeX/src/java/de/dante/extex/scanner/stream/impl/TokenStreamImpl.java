@@ -650,11 +650,13 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
      */
     protected UnicodeChar getRawChar() {
 
-        if (pointer < line.length()) {
+        if (line != null && pointer < line.length()) {
             return new UnicodeChar(line.charAt(pointer++));
         }
 
-        return (pointer++ > line.length() ? null : CR);
+        //return (pointer++ > line.length() ? null : CR);
+        //TODO: gene: check		
+        return null;
     }
 
     /**
