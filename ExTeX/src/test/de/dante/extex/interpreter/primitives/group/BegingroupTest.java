@@ -17,17 +17,17 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.conditional;
+package de.dante.extex.interpreter.primitives.group;
 
 import de.dante.test.ExTeXLauncher;
 
 /**
- * This is a test suite for the primitive <tt>\ifodd</tt>.
+ * This is a test suite for the primitive <tt>\begingroup</tt>.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class IfoddTest extends ExTeXLauncher {
+public class BegingroupTest extends ExTeXLauncher {
 
     /**
      * Method for running the tests standalone.
@@ -36,7 +36,7 @@ public class IfoddTest extends ExTeXLauncher {
      */
     public static void main(final String[] args) {
 
-        junit.textui.TestRunner.run(IfoddTest.class);
+        junit.textui.TestRunner.run(BegingroupTest.class);
     }
 
     /**
@@ -44,117 +44,103 @@ public class IfoddTest extends ExTeXLauncher {
      *
      * @param arg the name
      */
-    public IfoddTest(final String arg) {
+    public BegingroupTest(final String arg) {
 
         super(arg);
     }
 
     /**
-     * <testcase primitive="\ifodd">
-     *  Test case checking that <tt>\ifodd</tt> with a constant 1
-     *  selects the then branch.
+     * <testcase primitive="\begingroup">
+     *  Test case checking that a lonely <tt>\begingroup</tt> leads to an error.
      * </testcase>
      *
      * @throws Exception in case of an error
      */
-    public void test1() throws Exception {
+    public void testUnbalanced1() throws Exception {
 
         runCode(//--- input code ---
-                "\\ifodd 1 a\\else b\\fi",
+                "\\begingroup",
                 //--- log message ---
-                "",
+                "(\\end occurred inside a group at level 1)",
                 //--- output channel ---
-                "a\n\n");
+                "");
     }
 
     /**
-     * <testcase primitive="\ifodd">
-     *  Test case checking that <tt>\ifodd</tt> with a constant 1
-     *  selects nothing if the else branch is missing.
+     * <testcase primitive="\begingroup">
+     *  Test case checking that a group is ok.
      * </testcase>
      *
      * @throws Exception in case of an error
      */
-    public void test2() throws Exception {
+    public void testGroup1() throws Exception {
 
         runCode(//--- input code ---
-                "x\\ifodd 1 a\\fi x",
+                "\\begingroup abc\\endgroup",
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "xax\n\n");
+                "abc\n\n");
     }
 
     /**
-     * <testcase primitive="\ifodd">
-     *  Test case checking that <tt>\ifodd</tt> with a constant -1
-     *  selects the then branch.
+     * <testcase primitive="\begingroup">
+     *  Test case checking that a group does not destroy a count register.
      * </testcase>
      *
      * @throws Exception in case of an error
      */
-    public void test3() throws Exception {
+    public void testGroup2() throws Exception {
 
         runCode(//--- input code ---
-                "\\ifodd -1 a\\else b\\fi",
+                "\\count0=123 \\begingroup \\the\\count0\\endgroup",
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "a\n\n");
+                "123\n\n");
     }
 
     /**
-     * <testcase primitive="\ifodd">
-     *  Test case checking that <tt>\ifodd</tt> with a constant 1
-     *  selects nothing if the else branch is missing.
+     * <testcase primitive="\begingroup">
+     *  Test case checking that a group does restore a count register after
+     *  the end.
      * </testcase>
      *
      * @throws Exception in case of an error
      */
-    public void test4() throws Exception {
+    public void testGroup3() throws Exception {
 
-        runCode(//--- input code ---
-                "x\\ifodd -1 a\\fi x",
+        runCode(
+        //--- input code ---
+                "\\count0=123 "
+                        + "\\begingroup \\count0=456 \\the\\count0\\endgroup "
+                        + "-\\the\\count0",
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "xax\n\n");
+                "456-123\n\n");
     }
 
     /**
-     * <testcase primitive="\ifodd">
-     *  Test case checking that <tt>\ifodd</tt> with a constant 0
-     *  selects the else branch.
+     * <testcase primitive="\begingroup">
+     *  Test case checking that a group does restore a count register after
+     *  the end &ndash; across two levels of grouping.
      * </testcase>
      *
      * @throws Exception in case of an error
      */
-    public void test5() throws Exception {
+    public void testGroup4() throws Exception {
 
-        runCode(//--- input code ---
-                "\\ifodd 0 a\\else b\\fi",
+        runCode(
+        //--- input code ---
+                "\\count0=123 "
+                        + "\\begingroup \\count0=456 \\the\\count0 "
+                        + "\\begingroup \\count0=789 -\\the\\count0\\endgroup "
+                        + "-\\the\\count0\\endgroup"
+                        + "-\\the\\count0",
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "b\n\n");
+                "456-789-456-123\n\n");
     }
-
-    /**
-     * <testcase primitive="\ifodd">
-     *  Test case checking that <tt>\ifodd</tt> with a constant 0
-     *  selects nothing if the else branch is missing.
-     * </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void test6() throws Exception {
-
-        runCode(//--- input code ---
-                "x\\ifodd 0 a\\fi x",
-                //--- log message ---
-                "",
-                //--- output channel ---
-                "xx\n\n");
-    }
-
 }

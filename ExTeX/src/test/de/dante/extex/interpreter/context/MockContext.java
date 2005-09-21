@@ -130,7 +130,7 @@ public class MockContext implements Context, TypesetterOptions {
      */
     public String esc(final Token token) {
 
-        return token.toText('\\');
+        return token.toText();
     }
 
     /**

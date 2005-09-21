@@ -26,9 +26,12 @@ import java.util.Iterator;
 import junit.framework.TestCase;
 import de.dante.extex.interpreter.Tokenizer;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.context.TypesettingContextImpl;
 import de.dante.extex.interpreter.context.impl.ContextImpl;
+import de.dante.extex.interpreter.context.impl.GroupImpl;
 import de.dante.extex.scanner.stream.TokenStream;
 import de.dante.extex.scanner.type.Catcode;
+import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.scanner.type.token.TokenFactory;
 import de.dante.extex.scanner.type.token.TokenFactoryImpl;
 import de.dante.util.StringList;
@@ -61,10 +64,11 @@ public class TokenStreamStringImplTest extends TestCase {
             // TODO unimplemented
 
         }
+
         /**
          * The field <tt>classname</tt> contains the name of the class to use.
          */
-        private String classname = "de.dante.extex.interpreter.context.impl.ContextImpl";
+        private String classname = ContextImpl.class.getName();
 
         /**
          * Creates a new object.
@@ -119,8 +123,14 @@ public class TokenStreamStringImplTest extends TestCase {
          */
         public Configuration getConfiguration(final String key) {
 
-            return new MockConfiguration(
-                    "de.dante.extex.interpreter.context.impl.GroupImpl");
+            if ("Group".equals(key)) {
+                return new MockConfiguration(GroupImpl.class.getName());
+            }
+            if ("TypesettingContext".equals(key)) {
+                return new MockConfiguration(TypesettingContextImpl.class
+                        .getName());
+            }
+            return null;
         }
 
         /**
@@ -237,7 +247,7 @@ public class TokenStreamStringImplTest extends TestCase {
         ContextImpl contextImpl = new ContextImpl();
         contextImpl.configure(new MockConfiguration());
         context = contextImpl;
-        
+
         tokenizer = context.getTokenizer();
     }
 
@@ -257,7 +267,8 @@ public class TokenStreamStringImplTest extends TestCase {
 
         TokenStream stream = makeStream("1");
         assertEquals("the character 1", stream.get(fac, tokenizer).toString());
-        assertNull(stream.get(fac, tokenizer));
+        Token token = stream.get(fac, tokenizer);
+        assertNull(token);
     }
 
     /**

@@ -80,7 +80,7 @@ public class IfvmodeTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "xbx \n\n");
+                "xbx\n\n");
     }
 
     /**

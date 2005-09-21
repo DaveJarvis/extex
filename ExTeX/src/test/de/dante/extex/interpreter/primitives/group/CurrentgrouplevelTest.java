@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,58 +17,55 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.namespace;
-
-import java.util.Properties;
+package de.dante.extex.interpreter.primitives.group;
 
 import de.dante.test.ExTeXLauncher;
 
 /**
- * This is a test suite for the primitive <tt>\namespace</tt>.
+ * This is a test suite for the primitive <tt>\currentgrouplevel</tt>.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class NamespaceTest extends ExTeXLauncher {
+public class CurrentgrouplevelTest extends ExTeXLauncher {
 
     /**
-     * Constructor for NamespaceTest.
+     * Method for running the tests standalone.
+     *
+     * @param args command line parameter
+     */
+    public static void main(final String[] args) {
+
+        junit.textui.TestRunner.run(CurrentgrouplevelTest.class);
+    }
+
+    /**
+     * Creates a new object.
      *
      * @param arg the name
      */
-    public NamespaceTest(final String arg) {
+    public CurrentgrouplevelTest(final String arg) {
 
         super(arg);
     }
 
     /**
-     * Test case checking that ...
+     * <testcase primitive="\currentgrouplevel">
+     *  Test case checking that a lonely <tt>\currentgrouplevel</tt> leads to an error.
+     * </testcase>
      *
      * @throws Exception in case of an error
      */
     public void test1() throws Exception {
 
-        Properties properties = System.getProperties();
-        properties.setProperty("extex.config", "nextex");
-
-        runCode(properties,
-                //--- input code ---
-                "\\catcode`{=1"
-                + "\\catcode`}=2"
-                + "\\escapechar=`\\\\"
-                + "\\namespace{TeX}"
-                + ""
-                + "\\count1=123"
-                + "\\showthe\\count1"
-                + "\\namespace{abc}"
-                + "\\showthe\namespace"
-                + "\\showthe\\count1"
-                + ""
-                + "\\end ",
+        runCode(//--- input code ---
+                "\\catcode`{=1 "
+                + "\\catcode`}=2 "
+                +"\\currentgrouplevel",
                 //--- log message ---
-                "",
+                "\\the\\currentgrouplevel",
                 //--- output channel ---
-                "\n");
+                "");
     }
 
 }

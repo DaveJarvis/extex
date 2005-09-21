@@ -66,7 +66,7 @@ public class AftergroupTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "abdxe \n\n");
+                "abdxe\n\n");
     }
     /**
      * <testcase primitive="\aftergroup">
@@ -86,7 +86,7 @@ public class AftergroupTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "abdttte \n\n");
+                "abdttte\n\n");
     }
 
 

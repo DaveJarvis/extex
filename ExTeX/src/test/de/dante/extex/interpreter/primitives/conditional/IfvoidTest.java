@@ -82,7 +82,7 @@ public class IfvoidTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "xax \n\n");
+                "xax\n\n");
     }
 
     /**
