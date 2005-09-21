@@ -62,6 +62,8 @@ public abstract class AbstractDimen extends AbstractAssignment {
         String name;
         try {
             name = source.scanRegisterName(context);
+        } catch (InterpreterException e) {
+            throw e;
         } catch (GeneralException e) {
             throw new InterpreterException(e);
         }

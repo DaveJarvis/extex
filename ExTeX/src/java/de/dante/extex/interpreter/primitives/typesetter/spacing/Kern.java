@@ -101,8 +101,8 @@ public class Kern extends AbstractCode {
         try {
             kern.set(context, source, typesetter);
             typesetter.add(new ExplicitKernNode(kern));
-        } catch (GeneralException e) {
-            throw new InterpreterException(e);
+        } catch (InterpreterException e) {
+            throw e;
         } catch (ConfigurationException e) {
             throw new InterpreterException(e);
         }
