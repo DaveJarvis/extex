@@ -26,14 +26,14 @@
  </tr>
  <tr>
   <td class="tabOff"><img src="{$top}/image/tab.gif" align="top" /></td>
-  <td class="tabOFF"><a class="nav" href="development/index.html">Development</a></td>
+  <td class="tabOFF"><a class="nav" href="{$top}/development/index.html">Development</a></td>
   <td> </td>
 
   <td class="tabOff"><img src="{$top}/image/tabOff.gif" align="top" /></td>
-  <td class="tabOFF"><a class="nav" href="documentation/index.html">Documentation</a></td>
+  <td class="tabOFF"><a class="nav" href="{$top}/documentation/index.html">Documentation</a></td>
   <td> </td>
   <td class="tabOff"><img src="{$top}/image/tabOff.gif" align="top" /></td>
-  <td class="tabOFF"><a class="nav" href="sources/index.html">Download</a></td>
+  <td class="tabOFF"><a class="nav" href="{$top}/sources/index.html">Download</a></td>
   <td width="90%"> </td>
  </tr>
 
