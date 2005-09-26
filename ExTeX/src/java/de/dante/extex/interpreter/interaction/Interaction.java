@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.interpreter;
+package de.dante.extex.interpreter.interaction;
 
 import java.io.ObjectStreamException;
 import java.io.Serializable;

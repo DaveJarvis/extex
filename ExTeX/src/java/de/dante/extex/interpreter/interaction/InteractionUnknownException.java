@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.interpreter;
+package de.dante.extex.interpreter.interaction;
 
 import de.dante.extex.interpreter.exception.InterpreterException;
 

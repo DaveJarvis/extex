@@ -19,9 +19,9 @@
 
 package de.dante.extex.interpreter.context;
 
-import de.dante.extex.interpreter.Interaction;
 import de.dante.extex.interpreter.context.observer.InteractionObserver;
 import de.dante.extex.interpreter.exception.InterpreterException;
+import de.dante.extex.interpreter.interaction.Interaction;
 
 /**
  * This interface describes the container for all data of an interpreter
