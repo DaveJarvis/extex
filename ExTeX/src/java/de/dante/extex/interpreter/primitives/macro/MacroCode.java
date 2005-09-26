@@ -271,7 +271,7 @@ public class MacroCode extends AbstractCode
             } else {
                 args[no] = scanTo(context, source, pattern.get(pi));
             }
-            return pi - 1;
+            return pi;
         }
 
         throw new HelpingException(getLocalizer(), "TTP.UseDoesntMatch",
