@@ -117,7 +117,7 @@ public class Advance extends AbstractAssignment {
 
             if (code instanceof Advanceable) {
 
-                ((Advanceable) code).advance(prefix, context, source);
+                ((Advanceable) code).advance(prefix, context, source, typesetter);
                 return;
 
             } else if (code == null) {
