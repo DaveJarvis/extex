@@ -20,14 +20,16 @@
 package de.dante.extex.interpreter.primitives.interaction;
 
 import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.Interaction;
-import de.dante.extex.interpreter.InteractionUnknownException;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.ImpossibleException;
 import de.dante.extex.interpreter.exception.InterpreterException;
+import de.dante.extex.interpreter.interaction.Interaction;
+import de.dante.extex.interpreter.interaction.InteractionUnknownException;
 import de.dante.extex.interpreter.type.AbstractAssignment;
+import de.dante.extex.interpreter.type.Theable;
 import de.dante.extex.interpreter.type.count.CountConvertible;
+import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.typesetter.Typesetter;
 
 /**
@@ -59,7 +61,8 @@ import de.dante.extex.typesetter.Typesetter;
  */
 public class Interactionmode extends AbstractAssignment
         implements
-            CountConvertible {
+            CountConvertible,
+            Theable {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
@@ -89,11 +92,7 @@ public class Interactionmode extends AbstractAssignment
 
         source.getOptionalEquals(context);
         long mode = source.scanNumber(context);
-        try {
-            context.setInteraction(Interaction.get((int) mode));
-        } catch (InteractionUnknownException e) {
-            throw new InterpreterException(e);
-        }
+        context.setInteraction(Interaction.get((int) mode));
     }
 
     /**
@@ -110,6 +109,18 @@ public class Interactionmode extends AbstractAssignment
         } catch (InteractionUnknownException e) {
             throw new ImpossibleException("unknown interaction");
         }
+    }
+
+    /**
+     * @see de.dante.extex.interpreter.type.Theable#the(
+     *      de.dante.extex.interpreter.context.Context,
+     *      de.dante.extex.interpreter.TokenSource,
+     *      de.dante.extex.typesetter.Typesetter)
+     */
+    public Tokens the(final Context context, final TokenSource source,
+            final Typesetter typesetter) throws InterpreterException {
+
+        return new Tokens(context, context.getInteraction().getIndex());
     }
 
 }
