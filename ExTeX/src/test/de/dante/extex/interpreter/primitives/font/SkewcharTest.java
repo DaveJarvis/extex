@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter.primitives.font;
 
-import de.dante.test.ExTeXLauncher;
+import de.dante.test.NoFlagsPrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>\skewchar</tt>.
@@ -27,7 +27,7 @@ import de.dante.test.ExTeXLauncher;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class SkewcharTest extends ExTeXLauncher {
+public class SkewcharTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for SkewcharTest.
@@ -36,7 +36,7 @@ public class SkewcharTest extends ExTeXLauncher {
      */
     public SkewcharTest(final String arg) {
 
-        super(arg);
+        super(arg, "skewchar", "\\nullfont=123 ");
     }
 
     /**
@@ -102,7 +102,7 @@ public class SkewcharTest extends ExTeXLauncher {
         runCode(//--- input code ---
                 "\\skewchar \\x",
                 //--- log message ---
-                "Undefined control sequence",
+                "Undefined control sequence the control sequence \\x",
                 //--- output channel ---
                 "");
     }

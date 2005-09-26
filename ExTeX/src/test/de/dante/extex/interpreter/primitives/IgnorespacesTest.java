@@ -17,17 +17,17 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.group;
+package de.dante.extex.interpreter.primitives;
 
-import de.dante.test.ExTeXLauncher;
+import de.dante.test.NoFlagsPrimitiveTester;
 
 /**
- * This is a test suite for the primitive <tt>\endgroup</tt>.
+ * This is a test suite for the primitive <tt>\ignorespaces</tt>.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class EndgroupTest extends ExTeXLauncher {
+public class IgnorespacesTest extends NoFlagsPrimitiveTester {
 
     /**
      * Method for running the tests standalone.
@@ -36,47 +36,17 @@ public class EndgroupTest extends ExTeXLauncher {
      */
     public static void main(final String[] args) {
 
-        junit.textui.TestRunner.run(EndgroupTest.class);
+        junit.textui.TestRunner.run(IgnorespacesTest.class);
     }
 
     /**
-     * Creates a new object.
+     * Constructor for RelaxTest.
      *
      * @param arg the name
      */
-    public EndgroupTest(final String arg) {
+    public IgnorespacesTest(final String arg) {
 
-        super(arg);
-    }
-
-    /**
-     * <testcase primitive="\endgroup">
-     *  Test case checking that a lonely <tt>\endgroup</tt> leads to an error.
-     * </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void test1() throws Exception {
-
-        runFailureCode(//--- input code ---
-                "\\endgroup",
-                //--- log message ---
-                "Too many }'s");
-    }
-
-    /**
-     * <testcase primitive="\endgroup">
-     *  Test case checking that <tt>\endgroup</tt> works.
-     * </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void test2() throws Exception {
-
-        runCode(//--- input code ---
-                "\\begingroup \\endgroup",
-                //--- output channel ---
-                "");
+        super(arg, "ignorespaces", "");
     }
 
 }

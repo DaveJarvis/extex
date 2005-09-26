@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,66 +17,43 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.group;
+package de.dante.extex.interpreter.primitives.info;
 
 import de.dante.test.ExTeXLauncher;
 
 /**
- * This is a test suite for the primitive <tt>\endgroup</tt>.
+ * This is a test suite for the primitive <tt>\errmessage</tt>.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class EndgroupTest extends ExTeXLauncher {
+public class ErrmessageTest extends ExTeXLauncher {
 
     /**
-     * Method for running the tests standalone.
-     *
-     * @param args command line parameter
-     */
-    public static void main(final String[] args) {
-
-        junit.textui.TestRunner.run(EndgroupTest.class);
-    }
-
-    /**
-     * Creates a new object.
+     * Constructor for JobnameTest.
      *
      * @param arg the name
      */
-    public EndgroupTest(final String arg) {
+    public ErrmessageTest(final String arg) {
 
         super(arg);
     }
 
     /**
-     * <testcase primitive="\endgroup">
-     *  Test case checking that a lonely <tt>\endgroup</tt> leads to an error.
+     * <testcase primitive="\errmessage">
+     *  Test case checking that \errmessage delivers a decent value.
      * </testcase>
      *
      * @throws Exception in case of an error
      */
-    public void test1() throws Exception {
+    public void testJobname1() throws Exception {
 
         runFailureCode(//--- input code ---
-                "\\endgroup",
+                "\\catcode`{=1"
+                + "\\catcode`}=2"
+                + "\\errmessage{abc}",
                 //--- log message ---
-                "Too many }'s");
-    }
-
-    /**
-     * <testcase primitive="\endgroup">
-     *  Test case checking that <tt>\endgroup</tt> works.
-     * </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void test2() throws Exception {
-
-        runCode(//--- input code ---
-                "\\begingroup \\endgroup",
-                //--- output channel ---
-                "");
+                "abc");
     }
 
 }

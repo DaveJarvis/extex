@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter.primitives.font;
 
-import de.dante.test.ExTeXLauncher;
+import de.dante.test.NoFlagsPrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>\hyphenchar</tt>.
@@ -27,7 +27,7 @@ import de.dante.test.ExTeXLauncher;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class HyphencharTest extends ExTeXLauncher {
+public class HyphencharTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for HyphencharTest.
@@ -36,7 +36,7 @@ public class HyphencharTest extends ExTeXLauncher {
      */
     public HyphencharTest(final String arg) {
 
-        super(arg);
+        super(arg, "hyphenchar", "\\nullfont=123 ");
     }
 
     /**
@@ -102,7 +102,7 @@ public class HyphencharTest extends ExTeXLauncher {
         runCode(//--- input code ---
                 "\\hyphenchar \\x",
                 //--- log message ---
-                "Undefined control sequence",
+                "Undefined control sequence the control sequence \\x",
                 //--- output channel ---
                 "");
     }

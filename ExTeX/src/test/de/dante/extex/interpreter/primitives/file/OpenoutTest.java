@@ -17,17 +17,17 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.group;
+package de.dante.extex.interpreter.primitives.file;
 
-import de.dante.test.ExTeXLauncher;
+import de.dante.test.NoFlagsButGlobalAndImmediatePrimitiveTester;
 
 /**
- * This is a test suite for the primitive <tt>\endgroup</tt>.
+ * This is a test suite for the primitive <tt>\openout</tt>.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class EndgroupTest extends ExTeXLauncher {
+public class OpenoutTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
 
     /**
      * Method for running the tests standalone.
@@ -36,7 +36,7 @@ public class EndgroupTest extends ExTeXLauncher {
      */
     public static void main(final String[] args) {
 
-        junit.textui.TestRunner.run(EndgroupTest.class);
+        junit.textui.TestRunner.run(OpenoutTest.class);
     }
 
     /**
@@ -44,37 +44,42 @@ public class EndgroupTest extends ExTeXLauncher {
      *
      * @param arg the name
      */
-    public EndgroupTest(final String arg) {
+    public OpenoutTest(final String arg) {
 
-        super(arg);
+        super(arg, "openout", "1 texput.test");
     }
 
     /**
-     * <testcase primitive="\endgroup">
-     *  Test case checking that a lonely <tt>\endgroup</tt> leads to an error.
+     * <testcase primitive="\openout">
+     *  Test case checking that a lonely <tt>\openout</tt> leads to an error.
      * </testcase>
      *
      * @throws Exception in case of an error
      */
-    public void test1() throws Exception {
-
-        runFailureCode(//--- input code ---
-                "\\endgroup",
-                //--- log message ---
-                "Too many }'s");
-    }
-
-    /**
-     * <testcase primitive="\endgroup">
-     *  Test case checking that <tt>\endgroup</tt> works.
-     * </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void test2() throws Exception {
+    public void testEof1() throws Exception {
 
         runCode(//--- input code ---
-                "\\begingroup \\endgroup",
+                "\\openout ",
+                //--- log message ---
+                "Missing number, treated as zero",
+                //--- output channel ---
+                "");
+    }
+
+    /**
+     * <testcase primitive="\openout">
+     *  Test case checking that a lonely <tt>\openout</tt> with an index
+     *  leads to an error.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testEof2() throws Exception {
+
+        runCode(//--- input code ---
+                "\\openout 2",
+                //--- log message ---
+                "Unexpected end of file while processing \\openout",
                 //--- output channel ---
                 "");
     }

@@ -17,17 +17,16 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.color;
+package de.dante.extex.interpreter.primitives.prefix;
 
-import de.dante.test.ExTeXLauncher;
 
 /**
- * This is a test suite for the primitive <tt>\color</tt>.
+ * This is a test suite for the primitive <tt>\global</tt>.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class ColorTest extends ExTeXLauncher {
+public class GlobalTest extends PrefixTester {
 
     /**
      * Method for running the tests standalone.
@@ -36,17 +35,17 @@ public class ColorTest extends ExTeXLauncher {
      */
     public static void main(final String[] args) {
 
-        junit.textui.TestRunner.run(ColorTest.class);
+        junit.textui.TestRunner.run(GlobalTest.class);
     }
 
     /**
-     * Creates a new object.
+     * Constructor for RelaxTest.
      *
      * @param arg the name
      */
-    public ColorTest(final String arg) {
+    public GlobalTest(final String arg) {
 
-        super(arg);
+        super(arg, "global");
     }
 
 }

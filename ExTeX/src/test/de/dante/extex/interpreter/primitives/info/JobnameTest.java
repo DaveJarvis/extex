@@ -21,7 +21,7 @@ package de.dante.extex.interpreter.primitives.info;
 
 import java.util.Properties;
 
-import de.dante.test.ExTeXLauncher;
+import de.dante.test.NoFlagsPrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>\jobname</tt>.
@@ -29,7 +29,7 @@ import de.dante.test.ExTeXLauncher;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class JobnameTest extends ExTeXLauncher {
+public class JobnameTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for JobnameTest.
@@ -38,7 +38,7 @@ public class JobnameTest extends ExTeXLauncher {
      */
     public JobnameTest(final String arg) {
 
-        super(arg);
+        super(arg, "jobname", "");
     }
 
     /**

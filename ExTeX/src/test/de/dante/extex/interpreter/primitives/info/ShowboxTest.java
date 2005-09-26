@@ -17,64 +17,42 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.group;
+package de.dante.extex.interpreter.primitives.info;
 
-import de.dante.test.ExTeXLauncher;
+import de.dante.test.NoFlagsButGlobalPrimitiveTester;
 
 /**
- * This is a test suite for the primitive <tt>\endgroup</tt>.
+ * This is a test suite for the primitive <tt>\showbox</tt>.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class EndgroupTest extends ExTeXLauncher {
+public class ShowboxTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
-     * Method for running the tests standalone.
-     *
-     * @param args command line parameter
-     */
-    public static void main(final String[] args) {
-
-        junit.textui.TestRunner.run(EndgroupTest.class);
-    }
-
-    /**
-     * Creates a new object.
+     * Constructor for JobnameTest.
      *
      * @param arg the name
      */
-    public EndgroupTest(final String arg) {
+    public ShowboxTest(final String arg) {
 
-        super(arg);
+        super(arg, "showbox", "1 ");
     }
 
     /**
-     * <testcase primitive="\endgroup">
-     *  Test case checking that a lonely <tt>\endgroup</tt> leads to an error.
+     * <testcase primitive="\showbox">
+     *  Test case checking that the <tt>\showbox</tt> of a void register works.
      * </testcase>
      *
      * @throws Exception in case of an error
      */
-    public void test1() throws Exception {
+    public void _____________testVoid1() throws Exception {
 
-        runFailureCode(//--- input code ---
-                "\\endgroup",
-                //--- log message ---
-                "Too many }'s");
-    }
-
-    /**
-     * <testcase primitive="\endgroup">
-     *  Test case checking that <tt>\endgroup</tt> works.
-     * </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void test2() throws Exception {
-
+        //TODO other test runner needed
         runCode(//--- input code ---
-                "\\begingroup \\endgroup",
+                "\\showbox 1 ",
+                //--- error channel ---
+                "",
                 //--- output channel ---
                 "");
     }

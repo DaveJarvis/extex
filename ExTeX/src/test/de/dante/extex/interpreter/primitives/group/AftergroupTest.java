@@ -19,7 +19,8 @@
 
 package de.dante.extex.interpreter.primitives.group;
 
-import de.dante.test.ExTeXLauncher;
+import de.dante.test.NoFlagsPrimitiveTester;
+
 
 /**
  * This is a test suite for the primitive <tt>\aftergroup</tt>.
@@ -27,7 +28,7 @@ import de.dante.test.ExTeXLauncher;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class AftergroupTest extends ExTeXLauncher {
+public class AftergroupTest extends NoFlagsPrimitiveTester {
 
     /**
      * Method for running the tests standalone.
@@ -46,7 +47,7 @@ public class AftergroupTest extends ExTeXLauncher {
      */
     public AftergroupTest(final String arg) {
 
-        super(arg);
+        super(arg, "aftergroup", " x");
     }
 
     /**
@@ -63,11 +64,10 @@ public class AftergroupTest extends ExTeXLauncher {
                 "\\catcode`{=1"
                 + "\\catcode`}=2"
                 + "a{b\\aftergroup xd}e",
-                //--- log message ---
-                "",
                 //--- output channel ---
                 "abdxe\n\n");
     }
+
     /**
      * <testcase primitive="\aftergroup">
      *  Test case checking that a <tt>\aftergroup</tt> token of type control
@@ -83,8 +83,6 @@ public class AftergroupTest extends ExTeXLauncher {
                 + "\\catcode`}=2"
                 + "\\def\\x{ttt}"
                 + "a{b\\aftergroup\\x d}e",
-                //--- log message ---
-                "",
                 //--- output channel ---
                 "abdttte\n\n");
     }

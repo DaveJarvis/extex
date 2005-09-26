@@ -61,9 +61,9 @@ public class CurrentgrouplevelTest extends ExTeXLauncher {
         runCode(//--- input code ---
                 "\\catcode`{=1 "
                 + "\\catcode`}=2 "
-                +"\\currentgrouplevel",
+                + "\\the\\currentgrouplevel",
                 //--- log message ---
-                "\\the\\currentgrouplevel",
+                "0\n\n",
                 //--- output channel ---
                 "");
     }

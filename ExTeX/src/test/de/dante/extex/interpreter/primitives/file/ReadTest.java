@@ -17,17 +17,17 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.group;
+package de.dante.extex.interpreter.primitives.file;
 
 import de.dante.test.ExTeXLauncher;
 
 /**
- * This is a test suite for the primitive <tt>\endgroup</tt>.
+ * This is a test suite for the primitive <tt>\read</tt>.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class EndgroupTest extends ExTeXLauncher {
+public class ReadTest extends ExTeXLauncher {
 
     /**
      * Method for running the tests standalone.
@@ -36,7 +36,7 @@ public class EndgroupTest extends ExTeXLauncher {
      */
     public static void main(final String[] args) {
 
-        junit.textui.TestRunner.run(EndgroupTest.class);
+        junit.textui.TestRunner.run(ReadTest.class);
     }
 
     /**
@@ -44,14 +44,31 @@ public class EndgroupTest extends ExTeXLauncher {
      *
      * @param arg the name
      */
-    public EndgroupTest(final String arg) {
+    public ReadTest(final String arg) {
 
         super(arg);
     }
 
     /**
-     * <testcase primitive="\endgroup">
-     *  Test case checking that a lonely <tt>\endgroup</tt> leads to an error.
+     * <testcase primitive="\read">
+     *  Test case checking that a <tt>\read</tt> works on unopened file
+     *  handles.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test0() throws Exception {
+
+        runFailureCode(//--- input code ---
+                "\\read 1",
+                //--- error channel ---
+                "Missing `to' inserted");
+    }
+
+    /**
+     * <testcase primitive="\read">
+     *  Test case checking that a <tt>\read</tt> works on unopened file
+     *  handles.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -59,24 +76,9 @@ public class EndgroupTest extends ExTeXLauncher {
     public void test1() throws Exception {
 
         runFailureCode(//--- input code ---
-                "\\endgroup",
-                //--- log message ---
-                "Too many }'s");
-    }
-
-    /**
-     * <testcase primitive="\endgroup">
-     *  Test case checking that <tt>\endgroup</tt> works.
-     * </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void test2() throws Exception {
-
-        runCode(//--- input code ---
-                "\\begingroup \\endgroup",
-                //--- output channel ---
-                "");
+                "\\read 1 to ",
+                //--- error channel ---
+                "Missing control sequence inserted");
     }
 
 }

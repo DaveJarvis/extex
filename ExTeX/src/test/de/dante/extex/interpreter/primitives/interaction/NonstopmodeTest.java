@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,17 +17,17 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.group;
+package de.dante.extex.interpreter.primitives.interaction;
 
-import de.dante.test.ExTeXLauncher;
+import de.dante.test.NoFlagsPrimitiveTester;
 
 /**
- * This is a test suite for the primitive <tt>\endgroup</tt>.
+ * This is a test suite for the primitive <tt>\nonstopmode</tt>.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class EndgroupTest extends ExTeXLauncher {
+public class NonstopmodeTest extends NoFlagsPrimitiveTester {
 
     /**
      * Method for running the tests standalone.
@@ -36,47 +36,49 @@ public class EndgroupTest extends ExTeXLauncher {
      */
     public static void main(final String[] args) {
 
-        junit.textui.TestRunner.run(EndgroupTest.class);
+        junit.textui.TestRunner.run(NonstopmodeTest.class);
     }
 
     /**
-     * Creates a new object.
+     * Constructor for RelaxTest.
      *
      * @param arg the name
      */
-    public EndgroupTest(final String arg) {
+    public NonstopmodeTest(final String arg) {
 
-        super(arg);
+        super(arg, "nonstopmode", "");
     }
 
     /**
-     * <testcase primitive="\endgroup">
-     *  Test case checking that a lonely <tt>\endgroup</tt> leads to an error.
+     * <testcase primitive="\nonstopmode">
+     *  Test case checking that nonstop mode is reported as 0.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test0() throws Exception {
+
+        runCode(//--- input code ---
+                "\\nonstopmode"
+                + " \\the\\interactionmode \\end",
+                //--- output channel ---
+                "1\n\n");
+    }
+
+    /**
+     * <testcase primitive="\nonstopmode">
+     *  Test case checking that nonstop mode is always global.
      * </testcase>
      *
      * @throws Exception in case of an error
      */
     public void test1() throws Exception {
 
-        runFailureCode(//--- input code ---
-                "\\endgroup",
-                //--- log message ---
-                "Too many }'s");
-    }
-
-    /**
-     * <testcase primitive="\endgroup">
-     *  Test case checking that <tt>\endgroup</tt> works.
-     * </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void test2() throws Exception {
-
         runCode(//--- input code ---
-                "\\begingroup \\endgroup",
+                "\\errorstopmode\\begingroup\\nonstopmode\\endgroup"
+                + " \\the\\interactionmode \\end",
                 //--- output channel ---
-                "");
+                "1\n\n");
     }
 
 }
