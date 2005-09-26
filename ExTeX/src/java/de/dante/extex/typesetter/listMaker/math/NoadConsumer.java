@@ -135,7 +135,7 @@ public interface NoadConsumer extends ListMaker {
      *
      * @throws TypesetterException in case of an error
      */
-    Noad scanNoad(Context context, TokenSource source, Typesetter typesetter)
+    Noad scanNoad(Context context, TokenSource source, Typesetter typesetter, String primitive)
             throws TypesetterException;
 
     /**

@@ -80,7 +80,7 @@ public class Left extends AbstractTeXDelimter {
             throws InterpreterException {
 
         NoadConsumer nc = getListMaker(context, typesetter);
-        MathDelimiter del = parseDelimiter(context, source);
+        MathDelimiter del = parseDelimiter(context, source, getName());
         nc.left(del);
     }
 

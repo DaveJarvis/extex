@@ -200,7 +200,7 @@ public abstract class AbstractFileCode extends AbstractCode
             // Fall through to error
         } else if (strictTeX && t.isa(Catcode.LEFTBRACE)) {
             source.push(t);
-            String name = source.scanTokensAsString(context);
+            String name = source.scanTokensAsString(context, getName());
             if (name != null) {
                 return name;
             }

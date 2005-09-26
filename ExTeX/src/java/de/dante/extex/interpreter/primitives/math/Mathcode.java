@@ -80,9 +80,10 @@ public class Mathcode extends AbstractAssignment {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        UnicodeChar charCode = source.scanCharacterCode(context);
+        UnicodeChar charCode = source.scanCharacterCode(context, getName());
         source.getOptionalEquals(context);
         Count mathCode = new Count(source.scanNumber(context));
         context.setMathcode(charCode, mathCode, prefix.isGlobal());
+        prefix.clearGlobal();
     }
 }

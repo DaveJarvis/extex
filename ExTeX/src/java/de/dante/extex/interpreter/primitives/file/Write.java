@@ -149,7 +149,7 @@ public class Write extends AbstractCode
 
         if (prefix.isImmediate()) {
 
-            Tokens toks = source.scanTokens(context);
+            Tokens toks = source.scanTokens(context, getName());
             write(key, toks, context);
 
         } else {

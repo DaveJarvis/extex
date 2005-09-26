@@ -84,9 +84,8 @@ public class Errmessage extends AbstractCode {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        String message = source.scanTokens(context).toText();
+        String message = source.scanTokens(context, getName()).toText();
         String help = context.getToks("errhelp").toText();
-        prefix.clear();
         throw new FixedHelpingException(message, help);
     }
 }

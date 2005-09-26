@@ -102,7 +102,7 @@ public class Fontname extends AbstractCode implements ExpandableCode {
         source.skipSpace();
         Font font;
         try {
-            font = source.getFont(context);
+            font = source.getFont(context, getName());
         } catch (EofException e) {
             throw new EofException(printableControlSequence(context));
         }

@@ -79,7 +79,7 @@ public class HashToks implements Serializable {
         }
 
         while (true) {
-            String key = source.scanTokensAsString(context);
+            String key = source.scanTokensAsString(context, "???");
             if (key.trim().length() == 0) {
                 throw new InterpreterMissingHashKeyException();
             }

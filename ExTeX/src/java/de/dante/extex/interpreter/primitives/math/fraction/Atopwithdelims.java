@@ -83,8 +83,8 @@ public class Atopwithdelims extends AbstractTeXDelimter {
             throws InterpreterException {
 
         NoadConsumer nc = getListMaker(context, typesetter);
-        MathDelimiter del1 = parseDelimiter(context, source);
-        MathDelimiter del2 = parseDelimiter(context, source);
+        MathDelimiter del1 = parseDelimiter(context, source, getName());
+        MathDelimiter del2 = parseDelimiter(context, source, getName());
 
         nc.switchToFraction(del1, del2, Dimen.ZERO_PT);
     }

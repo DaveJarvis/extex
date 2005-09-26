@@ -97,7 +97,7 @@ public class MathExpression extends AbstractMath
         Real real = new Real(0);
 
         // \mathexpr{7+5+3}
-        String expr = source.scanTokensAsString(context);
+        String expr = source.scanTokensAsString(context, getName());
 
         // compile
         CompiledExpression compileexpr = null;

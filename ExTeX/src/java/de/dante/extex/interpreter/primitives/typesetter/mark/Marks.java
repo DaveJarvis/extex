@@ -83,7 +83,7 @@ public class Marks extends AbstractCode {
             throws InterpreterException {
 
         long index = source.scanNumber(context);
-        Tokens toks = source.scanTokens(context);
+        Tokens toks = source.scanTokens(context, getName());
         try {
             typesetter.add(new MarkNode(toks, index));
         } catch (GeneralException e) {

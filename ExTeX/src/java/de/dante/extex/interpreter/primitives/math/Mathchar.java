@@ -138,7 +138,7 @@ public class Mathchar extends AbstractMathCode {
             throw new EofException(printableControlSequence(context));
         } else if (t.isa(Catcode.LEFTBRACE)) {
             source.push(t);
-            String mclass = source.scanTokensAsString(context);
+            String mclass = source.scanTokensAsString(context, getName());
             MathClass mc = (MathClass) (mathClassMap.get(mclass));
             if (mc == null) {
                 throw new HelpingException(getLocalizer(), "MathClass", mclass);

@@ -84,8 +84,8 @@ public class Radical extends AbstractTeXDelimter {
             throws InterpreterException {
 
         NoadConsumer nc = getListMaker(context, typesetter);
-        MathDelimiter delcode = parseDelimiter(context, source);
-        Noad noad = nc.scanNoad(context, source, typesetter);
+        MathDelimiter delcode = parseDelimiter(context, source, getName());
+        Noad noad = nc.scanNoad(context, source, typesetter, getName());
         nc.add(new RadicalNoad(delcode, noad));
     }
 

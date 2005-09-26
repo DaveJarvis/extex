@@ -61,7 +61,7 @@ public abstract class AbstractCount extends AbstractAssignment {
 
         String name;
         try {
-            name = source.scanRegisterName(context);
+            name = source.scanRegisterName(context, getName());
         } catch (GeneralException e) {
             throw new InterpreterException(e);
         }

@@ -82,7 +82,7 @@ public class Mathbin extends AbstractMathCode {
             throws InterpreterException {
 
         NoadConsumer nc = getListMaker(context, typesetter);
-        Noad noad = nc.scanNoad(context, source, typesetter);
+        Noad noad = nc.scanNoad(context, source, typesetter, getName());
         nc.add(new BinaryNoad(noad));
     }
 

@@ -71,7 +71,7 @@ public class InputFileEncoding extends InputFile {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        String encoding = source.scanTokensAsString(context);
+        String encoding = source.scanTokensAsString(context, getName());
         String name = scanFileName(context, source);
         TokenStreamFactory factory = source.getTokenStreamFactory();
 

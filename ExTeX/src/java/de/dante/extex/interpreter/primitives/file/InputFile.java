@@ -64,6 +64,6 @@ public class InputFile extends Input {
     protected String scanFileName(final Context context,
             final TokenSource source) throws InterpreterException {
 
-        return source.scanTokensAsString(context);
+        return source.scanTokensAsString(context, getName());
     }
 }

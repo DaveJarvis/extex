@@ -91,7 +91,7 @@ public class PrintFormat extends AbstractCode implements Theable {
 
         // \the\printformat{pattern}\real7
 
-        String pattern = source.scanTokensAsString(context);
+        String pattern = source.scanTokensAsString(context, getName());
 
         if (pattern == null || pattern.trim().length() == 0) {
             pattern = "0.00";

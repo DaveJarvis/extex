@@ -80,11 +80,12 @@ public class Sfcode extends AbstractAssignment {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        UnicodeChar charCode = source.scanCharacterCode(context);
+        UnicodeChar charCode = source.scanCharacterCode(context, getName());
         source.getOptionalEquals(context);
         Count sfCode = new Count(source.scanNumber(context));
 
         context.setSfcode(charCode, sfCode, prefix.isGlobal());
+        prefix.clearGlobal();
     }
 
 }

@@ -86,6 +86,7 @@ public class Mathchardef extends AbstractAssignment {
         Count mathchar = Count.parse(context, source, typesetter);
         context.setCode(cs, new MathcharCode(cs.toString(), mathchar), prefix
                 .isGlobal());
+        prefix.clearGlobal();
     }
 
 }

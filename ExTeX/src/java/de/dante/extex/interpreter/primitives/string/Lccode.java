@@ -91,9 +91,9 @@ public class Lccode extends AbstractAssignment
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        UnicodeChar ucCode = source.scanCharacterCode(context);
+        UnicodeChar ucCode = source.scanCharacterCode(context, getName());
         source.getOptionalEquals(context);
-        UnicodeChar lcCode = source.scanCharacterCode(context);
+        UnicodeChar lcCode = source.scanCharacterCode(context, getName());
         context.setLccode(ucCode, lcCode);
     }
 
@@ -131,7 +131,7 @@ public class Lccode extends AbstractAssignment
             final Typesetter typesetter) throws InterpreterException {
 
         try {
-            UnicodeChar ucCode = source.scanCharacterCode(context);
+            UnicodeChar ucCode = source.scanCharacterCode(context, getName());
             return context.getLccode(ucCode).getCodePoint();
         } catch (GeneralException e) {
             throw new InterpreterException(e);

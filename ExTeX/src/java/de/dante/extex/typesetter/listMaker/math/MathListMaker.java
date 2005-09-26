@@ -491,15 +491,18 @@ public class MathListMaker extends AbstractListMaker implements NoadConsumer {
     /**
      * @see de.dante.extex.typesetter.listMaker.math.NoadConsumer#scanNoad(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource, Typesetter)
+     *      de.dante.extex.interpreter.TokenSource,
+     *      de.dante.extex.typesetter.Typesetter,
+     *      java.lang.String)
      */
     public Noad scanNoad(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws TypesetterException {
+            final Typesetter typesetter, final String primitive)
+            throws TypesetterException {
 
         try {
             Token t = source.getToken(context);
             if (t == null) {
-                throw new EofException(null);
+                throw new EofException(primitive);
             }
             getManager().push(new MathListMaker(getManager()));
             if (t.isa(Catcode.LEFTBRACE)) {
@@ -535,7 +538,7 @@ public class MathListMaker extends AbstractListMaker implements NoadConsumer {
             final Typesetter typesetter, final Token token)
             throws TypesetterException {
 
-        Noad sub = scanNoad(context, source, typesetter);
+        Noad sub = scanNoad(context, source, typesetter, token.toString());
         if (insertionPoint.size() == 0) {
             add(new MathList());
         }
@@ -558,7 +561,7 @@ public class MathListMaker extends AbstractListMaker implements NoadConsumer {
             final TokenSource source, final Typesetter typesetter,
             final Token token) throws TypesetterException {
 
-        Noad sup = scanNoad(context, source, typesetter);
+        Noad sup = scanNoad(context, source, typesetter, token.toString());
         if (insertionPoint.size() == 0) {
             add(new MathList());
         }

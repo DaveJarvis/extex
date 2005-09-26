@@ -59,7 +59,7 @@ public abstract class AbstractMuskip extends AbstractAssignment {
     protected String getKey(final TokenSource source, final Context context)
             throws InterpreterException {
 
-        String name = source.scanRegisterName(context);
+        String name = source.scanRegisterName(context, getName());
 
         if (Namespace.SUPPORT_NAMESPACE_SKIP) {
             return context.getNamespace() + "muskip#" + name;
