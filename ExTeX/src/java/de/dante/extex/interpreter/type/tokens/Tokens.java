@@ -279,8 +279,8 @@ public class Tokens implements Serializable, FixedTokens {
                 }
                 toks.add(factory, t.toString());
             } else if (t instanceof MacroParamToken) {
-                toks.add(factory.createToken(Catcode.OTHER, '#',
-                        Namespace.DEFAULT_NAMESPACE));
+                //toks.add(factory.createToken(Catcode.OTHER, '#',
+                //        Namespace.DEFAULT_NAMESPACE));
                 toks.add(factory.createToken(Catcode.OTHER, t.getChar(),
                         Namespace.DEFAULT_NAMESPACE));
             } else {
