@@ -237,6 +237,7 @@ public class ColorPrimitive extends AbstractAssignment
         } catch (ConfigurationException e) {
             throw new InterpreterException(e);
         }
+        prefix.setGlobal(false);
     }
 
     /**

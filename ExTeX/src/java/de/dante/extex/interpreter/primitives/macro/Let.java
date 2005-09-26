@@ -380,6 +380,7 @@ public class Let extends AbstractAssignment {
             throw new InterpreterException(e);
         }
         context.setCode(cs, code, prefix.isGlobal());
+        prefix.clearGlobal();
     }
 
 }

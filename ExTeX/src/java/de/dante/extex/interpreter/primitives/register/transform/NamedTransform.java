@@ -74,6 +74,7 @@ public class NamedTransform extends AbstractAssignment implements Theable {
             source.getOptionalEquals(context);
             Transform value = new Transform(context, source);
             contextextex.setTransform(key, value, prefix.isGlobal());
+            prefix.clearGlobal();
 
         } else {
             throw new InterpreterExtensionException();

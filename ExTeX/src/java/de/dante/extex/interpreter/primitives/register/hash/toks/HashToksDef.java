@@ -67,5 +67,6 @@ public class HashToksDef extends AbstractAssignment {
         String key = "hashtoks#"
                 + Long.toString(Count.scanCount(context, source, typesetter));
         context.setCode(tok, new NamedHashToks(key), prefix.isGlobal());
+        prefix.clearGlobal();
     }
 }

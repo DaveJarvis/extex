@@ -112,12 +112,14 @@ public class Openin extends AbstractFileCode {
         try {
             file = new InFile(source.getTokenStreamFactory().newInstance(name,
                     "tex", "iso-8859-1")); //TODO gene: encoding?
-            context.setInFile(key, file, prefix.isGlobal());
         } catch (FileNotFoundException e) {
+            file = null;
             //ignored on purpose
         } catch (ConfigurationException e) {
             throw new InterpreterException(e);
         }
+        context.setInFile(key, file, prefix.isGlobal());
+        prefix.setGlobal(false);
     }
 
 }

@@ -84,6 +84,7 @@ public class NamedBool extends AbstractAssignment
             source.getOptionalEquals(context);
             Bool value = new Bool(context, source);
             contextextex.setBool(key, value, prefix.isGlobal());
+            prefix.clearGlobal();
 
         } else {
             throw new InterpreterExtensionException();

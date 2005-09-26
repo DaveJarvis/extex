@@ -78,6 +78,7 @@ public class NamedPair extends AbstractAssignment
             source.getOptionalEquals(context);
             Pair value = new Pair(context, source);
             contextextex.setPair(key, value, prefix.isGlobal());
+            prefix.clearGlobal();
 
         } else {
             throw new InterpreterExtensionException();

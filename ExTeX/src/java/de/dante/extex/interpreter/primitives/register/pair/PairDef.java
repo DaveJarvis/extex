@@ -66,5 +66,6 @@ public class PairDef extends AbstractAssignment {
         String key = "pair#"
                 + Long.toString(Count.scanCount(context, source, typesetter));
         context.setCode(tok, new NamedPair(key), prefix.isGlobal());
+        prefix.clearGlobal();
     }
 }

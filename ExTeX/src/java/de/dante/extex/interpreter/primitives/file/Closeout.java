@@ -124,6 +124,7 @@ public class Closeout extends AbstractCode implements LogEnabled {
                     logger.info(e.getLocalizedMessage() + "\n");
                 }
             }
+            prefix.clearImmediate();
         } else {
             try {
                 typesetter.add(new WhatsItCloseNode(key));

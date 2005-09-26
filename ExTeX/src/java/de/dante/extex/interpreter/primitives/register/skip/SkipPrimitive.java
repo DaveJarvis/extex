@@ -78,6 +78,7 @@ public class SkipPrimitive extends AbstractSkip
         source.getOptionalEquals(context);
         Glue g = new Glue(source, context, typesetter);
         context.setGlue(key, g, prefix.isGlobal());
+        prefix.clearGlobal();
     }
 
     /**

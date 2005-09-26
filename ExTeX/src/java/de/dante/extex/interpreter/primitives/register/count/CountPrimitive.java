@@ -104,7 +104,7 @@ public class CountPrimitive extends AbstractCount
      *      de.dante.extex.interpreter.TokenSource)
      */
     public void advance(final Flags prefix, final Context context,
-            final TokenSource source) throws InterpreterException {
+            final TokenSource source, Typesetter typesetter) throws InterpreterException {
 
         String key = getKey(context, source);
         source.getKeyword(context, "by");
@@ -113,6 +113,7 @@ public class CountPrimitive extends AbstractCount
         value += context.getCount(key).getValue();
 
         context.setCount(key, value, prefix.isGlobal());
+        prefix.clearGlobal();
     }
 
     /**
@@ -131,6 +132,7 @@ public class CountPrimitive extends AbstractCount
 
         long value = Count.scanCount(context, source, typesetter);
         context.setCount(key, value, prefix.isGlobal());
+        prefix.clearGlobal();
     }
 
     /**
@@ -182,6 +184,7 @@ public class CountPrimitive extends AbstractCount
 
         value = context.getCount(key).getValue() / value;
         context.setCount(key, value, prefix.isGlobal());
+        prefix.clearGlobal();
     }
 
     /**
@@ -199,6 +202,7 @@ public class CountPrimitive extends AbstractCount
         long value = Count.scanCount(context, source, null);
         value *= context.getCount(key).getValue();
         context.setCount(key, value, prefix.isGlobal());
+        prefix.clearGlobal();
     }
 
     /**

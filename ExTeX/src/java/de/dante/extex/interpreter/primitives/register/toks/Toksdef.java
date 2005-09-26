@@ -102,6 +102,7 @@ public class Toksdef extends AbstractToks {
         source.getOptionalEquals(context);
         String key = getKey(source, context);
         context.setCode(cs, new ToksParameter(key), prefix.isGlobal());
+        prefix.clearGlobal();
     }
 
 }

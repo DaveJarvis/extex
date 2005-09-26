@@ -75,6 +75,7 @@ public class ToksPrimitive extends AbstractToks implements Theable {
         source.getOptionalEquals(context);
         Tokens toks = source.getTokens(context);
         context.setToks(key, toks, prefix.isGlobal());
+        prefix.clearGlobal();
     }
 
     /**

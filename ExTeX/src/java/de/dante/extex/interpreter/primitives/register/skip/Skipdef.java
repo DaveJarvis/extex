@@ -102,6 +102,6 @@ public class Skipdef extends AbstractSkip {
         source.getOptionalEquals(context);
         String key = getKey(source, context);
         context.setCode(cs, new SkipParameter(key), prefix.isGlobal());
-
+        prefix.clearGlobal();
     }
 }

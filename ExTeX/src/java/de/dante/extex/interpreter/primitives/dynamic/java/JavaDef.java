@@ -194,5 +194,6 @@ public class JavaDef extends AbstractCode implements Definer {
                     classname);
         }
         context.setCode(cs, code, prefix.isGlobal());
+        prefix.setGlobal(false);
     }
 }

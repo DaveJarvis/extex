@@ -96,6 +96,7 @@ public class BoxPrimitive extends AbstractBox implements Boxable, Serializable {
                 throw new InterpreterException(e);
             }
             context.setBox(key, null, prefix.isGlobal());
+            prefix.clearGlobal();
         }
     }
 

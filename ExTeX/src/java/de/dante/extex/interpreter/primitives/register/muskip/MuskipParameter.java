@@ -92,6 +92,7 @@ public class MuskipParameter extends AbstractAssignment {
         source.getOptionalEquals(context);
         Muskip skip = new Muskip(context, source);
         context.setMuskip(key, skip, prefix.isGlobal());
+        prefix.clearGlobal();
     }
 
 }

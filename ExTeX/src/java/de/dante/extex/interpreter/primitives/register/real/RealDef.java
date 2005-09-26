@@ -68,5 +68,6 @@ public class RealDef extends AbstractAssignment {
         String key = "real#"
                 + Long.toString(Count.scanCount(context, source, typesetter));
         context.setCode(tok, new NamedReal(key), prefix.isGlobal());
+        prefix.clearGlobal();
     }
 }

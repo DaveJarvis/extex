@@ -91,6 +91,7 @@ public class Namespace extends AbstractAssignment
 
         Tokens toks = source.getTokens(context);
         context.setNamespace(toks.toText(), prefix.isGlobal());
+        prefix.clearGlobal();
     }
 
     /**

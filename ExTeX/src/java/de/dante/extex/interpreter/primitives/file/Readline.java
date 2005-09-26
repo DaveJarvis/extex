@@ -20,13 +20,13 @@
 package de.dante.extex.interpreter.primitives.file;
 
 import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.Interaction;
 import de.dante.extex.interpreter.Namespace;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.Tokenizer;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.exception.helping.HelpingException;
+import de.dante.extex.interpreter.interaction.Interaction;
 import de.dante.extex.interpreter.primitives.macro.MacroCode;
 import de.dante.extex.interpreter.primitives.macro.MacroPattern;
 import de.dante.extex.interpreter.type.AbstractCode;
@@ -142,5 +142,6 @@ public class Readline extends AbstractCode {
         }
         context.setCode(cs, new MacroCode(cs.getName(), prefix,
                 MacroPattern.EMPTY, toks), prefix.isGlobal());
+        prefix.clearGlobal();
     }
 }

@@ -82,8 +82,8 @@ public class Iffontchar extends AbstractIf {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        Font font = source.getFont(context);
-        UnicodeChar uc = source.scanCharacterCode(context);
+        Font font = source.getFont(context, getName());
+        UnicodeChar uc = source.scanCharacterCode(context, getName());
         return (font.getGlyph(uc) != null);
     }
 }

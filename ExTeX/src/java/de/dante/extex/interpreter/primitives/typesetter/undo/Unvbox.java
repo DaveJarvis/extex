@@ -105,6 +105,7 @@ public class Unvbox extends AbstractBox {
                 }
             }
         }
+        prefix.clearGlobal();
     }
 
 }

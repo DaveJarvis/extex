@@ -66,5 +66,6 @@ public class TransformDef extends AbstractAssignment {
         String key = "transform#"
                 + Long.toString(Count.scanCount(context, source, typesetter));
         context.setCode(tok, new NamedTransform(key), prefix.isGlobal());
+        prefix.clearGlobal();
     }
 }

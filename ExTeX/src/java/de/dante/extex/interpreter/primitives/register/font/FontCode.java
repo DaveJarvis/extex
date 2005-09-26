@@ -75,6 +75,7 @@ public class FontCode extends AbstractCode implements FontConvertible, Theable {
 
         try {
             context.set(font, prefix.isGlobal());
+            prefix.clearGlobal();
         } catch (ConfigurationException e) {
             throw new InterpreterException(e);
         }
