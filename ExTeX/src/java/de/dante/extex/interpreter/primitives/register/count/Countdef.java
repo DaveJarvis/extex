@@ -74,7 +74,7 @@ import de.dante.extex.typesetter.Typesetter;
  * \countdef\abc={xyz\the\count0}
  * \countdef\abc {def}
  * </pre>
- * To protect the buildin registers one might consider to use the key
+ * To protect the built-in registers one might consider to use the key
  * "#<i>name</i>" or "count#<i>name</i>".
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -112,6 +112,7 @@ public class Countdef extends AbstractCount {
         source.getOptionalEquals(context);
         String key = getKey(context, source);
         context.setCode(cs, new IntegerParameter(key), prefix.isGlobal());
+        prefix.clearGlobal();
     }
 
 }
