@@ -58,7 +58,7 @@ public abstract class AbstractBox extends AbstractCode implements Serializable {
      * TODO gene: doc incomplete
      *
      * <h4>Examples</h4>
-     * <pre>
+     * <pre class="TeXSample">
      *  123
      *  {abc}
      * </pre>
