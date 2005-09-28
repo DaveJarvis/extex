@@ -40,7 +40,7 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
 /**
  * This class provides an implementation for the primitive <code>\color</code>.
  *
- * <doc name="csname">
+ * <doc name="color">
  * <h3>The Primitive <tt>\color</tt></h3>
  * <p>
  *  TODO missing documentation
