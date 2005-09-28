@@ -187,7 +187,7 @@ sub analyzeJava {
     } elsif (m/<doc/) {
       $_ = new InfoItem ($_,
 			 $package,
-			 processDocTag((m/name="([^\"])*"/ ? $1 : ''),
+			 processDocTag((m/name="([^\"]*)"/ ? $1 : ''),
 				       $fd,
 				       ''));
       my $key  = $_->getKey();
