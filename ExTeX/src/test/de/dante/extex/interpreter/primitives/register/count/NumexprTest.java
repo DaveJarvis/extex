@@ -39,7 +39,7 @@ public class NumexprTest extends ExTeXLauncher {
     }
 
     /**
-     * Constructor for NumexprTest.
+     * Creates a new object.
      *
      * @param arg the name
      */
