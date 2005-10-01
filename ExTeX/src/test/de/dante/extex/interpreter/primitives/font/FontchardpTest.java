@@ -30,7 +30,7 @@ import de.dante.test.ExTeXLauncher;
 public class FontchardpTest extends ExTeXLauncher {
 
     /**
-     * Constructor for FontnameTest.
+     * Creates a new object.
      *
      * @param arg the name
      */
