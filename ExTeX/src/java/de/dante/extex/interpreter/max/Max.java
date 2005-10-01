@@ -767,7 +767,7 @@ public abstract class Max
             throws InterpreterException {
 
         context.setCount("day", calendar.get(Calendar.DAY_OF_MONTH), true);
-        context.setCount("month", calendar.get(Calendar.MONTH), true);
+        context.setCount("month", calendar.get(Calendar.MONTH) + 1, true);
         context.setCount("year", calendar.get(Calendar.YEAR), true);
         context.setCount("time", calendar.get(Calendar.HOUR_OF_DAY)
                 * MINUTES_PER_HOUR + calendar.get(Calendar.MINUTE), true);
