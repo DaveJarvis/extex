@@ -19,7 +19,6 @@
 
 package de.dante.extex.interpreter.primitives.register.count;
 
-import de.dante.test.IntegerParameterTester;
 
 /**
  * This is a test suite for the primitive <tt>\defaulthyphenchar</tt>.
@@ -27,7 +26,7 @@ import de.dante.test.IntegerParameterTester;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class DefaulthyphencharTest extends IntegerParameterTester {
+public class DefaulthyphencharTest extends AbstractCountRegisterTester {
 
     /**
      * Command line interface.

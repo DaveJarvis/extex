@@ -19,7 +19,6 @@
 
 package de.dante.extex.interpreter.primitives.register.count;
 
-import de.dante.test.IntegerParameterTester;
 
 /**
  * This is a test suite for the primitive <tt>\hyphenpenalty</tt>.
@@ -27,7 +26,7 @@ import de.dante.test.IntegerParameterTester;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class HyphenpenaltyTest extends IntegerParameterTester {
+public class HyphenpenaltyTest extends AbstractCountRegisterTester {
 
     /**
      * Command line interface.

@@ -19,7 +19,6 @@
 
 package de.dante.extex.interpreter.primitives.register.count;
 
-import de.dante.test.IntegerParameterTester;
 
 /**
  * This is a test suite for the primitive <tt>\errorcontextlines</tt>.
@@ -27,7 +26,7 @@ import de.dante.test.IntegerParameterTester;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class ErrorcontextlinesTest extends IntegerParameterTester {
+public class ErrorcontextlinesTest extends AbstractCountRegisterTester {
 
     /**
      * Command line interface.
