@@ -34,7 +34,7 @@ import de.dante.util.framework.i18n.LocalizerFactory;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class AbstractVerticalCode extends AbstractCode {
+public abstract class AbstractVerticalCode extends AbstractCode {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
