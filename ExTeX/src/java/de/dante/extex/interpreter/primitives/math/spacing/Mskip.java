@@ -81,7 +81,7 @@ public class Mskip extends AbstractMathCode {
             throws InterpreterException {
 
         NoadConsumer nc = getListMaker(context, typesetter);
-        Muskip glue = new Muskip(context, source);
+        Muskip glue = new Muskip(context, source, typesetter);
         nc.add(glue);
     }
 
