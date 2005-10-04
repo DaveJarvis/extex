@@ -101,6 +101,13 @@ public class ExTeXLauncher extends TestCase {
      * The constant <tt>DEFINE_CATCODES</tt> contains the definition of the
      * usual catcodes.
      */
+    public static final String DEFINE_BRACES = "\\catcode`\\{=1 "
+            + "\\catcode`\\}=2 ";
+
+    /**
+     * The constant <tt>DEFINE_CATCODES</tt> contains the definition of the
+     * usual catcodes.
+     */
     public static final String DEFINE_CATCODES = "\\catcode`\\{=1 "
             + "\\catcode`\\}=2 " + "\\catcode`\\$=3 " + "\\catcode`\\&=4 "
             + "\\catcode`\\#=6 " + "\\catcode`\\^=7 " + "\\catcode`\\_=8 "
