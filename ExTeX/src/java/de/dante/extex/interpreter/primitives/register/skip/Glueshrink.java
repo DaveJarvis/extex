@@ -19,11 +19,14 @@
 
 package de.dante.extex.interpreter.primitives.register.skip;
 
+import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
+import de.dante.extex.interpreter.exception.helping.CantUseInException;
 import de.dante.extex.interpreter.type.AbstractCode;
 import de.dante.extex.interpreter.type.Theable;
+import de.dante.extex.interpreter.type.count.CountConvertible;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.dimen.DimenConvertible;
 import de.dante.extex.interpreter.type.glue.Glue;
@@ -65,6 +68,7 @@ import de.dante.extex.typesetter.Typesetter;
  */
 public class Glueshrink extends AbstractCode
         implements
+            CountConvertible,
             DimenConvertible,
             Theable {
 
@@ -81,6 +85,19 @@ public class Glueshrink extends AbstractCode
     public Glueshrink(final String name) {
 
         super(name);
+    }
+
+    /**
+     * @see de.dante.extex.interpreter.type.count.CountConvertible#convertCount(
+     *      de.dante.extex.interpreter.context.Context,
+     *      de.dante.extex.interpreter.TokenSource,
+     *      de.dante.extex.typesetter.Typesetter)
+     */
+    public long convertCount(final Context context, final TokenSource source,
+            final Typesetter typesetter) throws InterpreterException {
+
+        Glue glue = new Glue(source, context, typesetter);
+        return glue.getShrink().getValue();
     }
 
     /**
