@@ -71,7 +71,7 @@ public class SkipParameter extends SkipPrimitive {
      *
      * @throws GeneralException in case oif an error
      */
-    protected String getKey(final TokenSource source, final Context context) {
+    protected String getKey(final Context context, final TokenSource source) {
 
         if (Namespace.SUPPORT_NAMESPACE_SKIP) {
             return context.getNamespace() + "\b" + getName();

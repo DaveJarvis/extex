@@ -100,7 +100,7 @@ public class Skipdef extends AbstractSkip {
 
         CodeToken cs = source.getControlSequence(context);
         source.getOptionalEquals(context);
-        String key = getKey(source, context);
+        String key = getKey(context, source);
         context.setCode(cs, new SkipParameter(key), prefix.isGlobal());
         prefix.clearGlobal();
     }

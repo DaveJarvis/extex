@@ -56,7 +56,7 @@ public abstract class AbstractSkip extends AbstractAssignment {
      * @throws InterpreterException in case that a derived class needs to
      *  throw an Exception this one is declared.
      */
-    protected String getKey(final TokenSource source, final Context context)
+    protected String getKey(final Context context, final TokenSource source)
             throws InterpreterException {
 
         String name = source.scanRegisterName(context, getName());
