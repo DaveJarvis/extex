@@ -82,21 +82,19 @@ public class Eqno extends AbstractMathCode {
             throws CantUseInException, InterpreterException {
 
         ListMaker lm = typesetter.getListMaker();
-        if (!(lm instanceof EqConsumer)) {
-            throw new CantUseInException(
-                    printableControlSequence(context), //
-                    typesetter.getMode().toString());
-        }
 
         try {
 
-            ((EqConsumer) lm).switchToNumber(false);
+            if (lm instanceof EqConsumer) {
+                ((EqConsumer) lm).switchToNumber(true);
+                return;
+            }
 
         } catch (CantUseInException e) {
-            throw new CantUseInException(
-                    printableControlSequence(context), //
-                    typesetter.getMode().toString());
+            // fall trough to exception
         }
+        throw new CantUseInException(printableControlSequence(context), //
+                typesetter.getMode().toString());
     }
 
 }
