@@ -104,7 +104,8 @@ public class CountPrimitive extends AbstractCount
      *      de.dante.extex.interpreter.TokenSource)
      */
     public void advance(final Flags prefix, final Context context,
-            final TokenSource source, Typesetter typesetter) throws InterpreterException {
+            final TokenSource source, Typesetter typesetter)
+            throws InterpreterException {
 
         String key = getKey(context, source);
         source.getKeyword(context, "by");
