@@ -36,12 +36,13 @@ public abstract class AbstractCountRegisterTester extends ExTeXLauncher {
     private String primitive;
 
     /**
-     * The field <tt>invocation</tt> contains the ...
+     * The field <tt>invocation</tt> contains the concatenation of primitive
+     * name and arguments.
      */
     private String invocation;
 
     /**
-     * The field <tt>init</tt> contains the ...
+     * The field <tt>init</tt> contains the default value.
      */
     private String init;
 
