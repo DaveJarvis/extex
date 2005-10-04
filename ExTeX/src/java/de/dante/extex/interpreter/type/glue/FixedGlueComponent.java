@@ -114,6 +114,6 @@ public interface FixedGlueComponent {
      * @see #toString()
      * @see #toString(StringBuffer)
      */
-    void toToks(final Tokens toks, final TokenFactory factory)
+    void toToks(final Tokens toks, final TokenFactory factory, char c1, char c2)
             throws GeneralException;
 }
