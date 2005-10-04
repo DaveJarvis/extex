@@ -253,4 +253,19 @@ public class FlagsImpl implements Flags {
         protectedP = true;
     }
 
+    /**
+     * @see java.lang.Object#toString()
+     */
+    public String toString() {
+
+        StringBuffer sb = new StringBuffer();
+        sb.append(globalP ? 'G' : '_');
+        sb.append(longP ? 'L' : '_');
+        sb.append(outerP ? 'O' : '_');
+        sb.append(immediateP ? 'I' : '_');
+        sb.append(protectedP ? 'P' : '_');
+        sb.append(expandedP ? 'X' : '_');
+        return sb.toString();
+    }
+
 }
