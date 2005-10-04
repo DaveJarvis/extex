@@ -63,7 +63,7 @@ public class IffalseTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "b\n\n");
+                "b" + TERM);
     }
 
     /**
@@ -81,7 +81,7 @@ public class IffalseTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "xx\n\n");
+                "xx" + TERM);
     }
 
 }

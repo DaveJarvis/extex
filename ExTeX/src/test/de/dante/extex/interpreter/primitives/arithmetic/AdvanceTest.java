@@ -128,7 +128,7 @@ public class AdvanceTest extends NoFlagsButGlobalPrimitiveTester {
                 + "\\advance \\count1 123 "
                 + "\\the\\count1 \\end",
                 //--- output channel ---
-                "128\n\n");
+                "128" + TERM);
     }
 
     /**
@@ -146,7 +146,7 @@ public class AdvanceTest extends NoFlagsButGlobalPrimitiveTester {
                 + "\\begingroup\\global\\advance \\count1 123 \\endgroup "
                 + "\\the\\count1 \\end",
                 //--- output channel ---
-                "128\n\n");
+                "128" + TERM);
     }
 
     /**
@@ -164,7 +164,7 @@ public class AdvanceTest extends NoFlagsButGlobalPrimitiveTester {
                 + "\\advance \\dimen1 123pt "
                 + "\\the\\dimen1 \\end",
                 //--- output channel ---
-                "128.0pt\n\n");
+                "128.0pt" + TERM);
     }
 
     /**
@@ -182,7 +182,7 @@ public class AdvanceTest extends NoFlagsButGlobalPrimitiveTester {
                 + "\\begingroup\\global\\advance \\dimen1 123pt \\endgroup "
                 + "\\the\\dimen1 \\end",
                 //--- output channel ---
-                "128.0pt\n\n");
+                "128.0pt" + TERM);
     }
 
 }

@@ -61,7 +61,7 @@ public class InputlinenoTest extends ExTeXLauncher {
         runCode(//--- input code ---
                 "\\the\\inputlineno ",
                 //--- output channel ---
-                "1\n\n");
+                "1" + TERM);
     }
 
 }

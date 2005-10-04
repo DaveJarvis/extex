@@ -64,7 +64,7 @@ public class IfoddTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "a\n\n");
+                "a" + TERM);
     }
 
     /**
@@ -82,7 +82,7 @@ public class IfoddTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "xax\n\n");
+                "xax" + TERM);
     }
 
     /**
@@ -100,7 +100,7 @@ public class IfoddTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "a\n\n");
+                "a" + TERM);
     }
 
     /**
@@ -118,7 +118,7 @@ public class IfoddTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "xax\n\n");
+                "xax" + TERM);
     }
 
     /**
@@ -136,7 +136,7 @@ public class IfoddTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "b\n\n");
+                "b" + TERM);
     }
 
     /**
@@ -154,7 +154,7 @@ public class IfoddTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "xx\n\n");
+                "xx" + TERM);
     }
 
 }

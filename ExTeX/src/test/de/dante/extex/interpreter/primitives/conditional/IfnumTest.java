@@ -64,7 +64,7 @@ public class IfnumTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "xax\n\n");
+                "xax" + TERM);
     }
 
     /**
@@ -82,7 +82,7 @@ public class IfnumTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "xbx\n\n");
+                "xbx" + TERM);
     }
 
     /**
@@ -100,7 +100,7 @@ public class IfnumTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "xbx\n\n");
+                "xbx" + TERM);
     }
 
     /**
@@ -118,7 +118,7 @@ public class IfnumTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "xbx\n\n");
+                "xbx" + TERM);
     }
 
     /**
@@ -136,7 +136,7 @@ public class IfnumTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "xax\n\n");
+                "xax" + TERM);
     }
 
     /**
@@ -154,7 +154,7 @@ public class IfnumTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "xbx\n\n");
+                "xbx" + TERM);
     }
 
     /**
@@ -172,7 +172,7 @@ public class IfnumTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "xbx\n\n");
+                "xbx" + TERM);
     }
 
     /**
@@ -190,7 +190,7 @@ public class IfnumTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "xbx\n\n");
+                "xbx" + TERM);
     }
 
     /**
@@ -208,7 +208,7 @@ public class IfnumTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "xax\n\n");
+                "xax" + TERM);
     }
 
 }

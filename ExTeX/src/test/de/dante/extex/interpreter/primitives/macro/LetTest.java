@@ -53,7 +53,7 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
                 + "\\let\\a A"
                 + "--\\a--",
                 //--- output message ---
-                "--A--\n\n");
+                "--A--" + TERM);
     }
 
     /**
@@ -71,7 +71,7 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
                 + "\\begingroup \\let\\a B\\endgroup"
                 + "--\\a--",
                 //--- output message ---
-                "--A--\n\n");
+                "--A--" + TERM);
     }
 
     /**
@@ -89,7 +89,7 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
                 + "\\begingroup \\global\\let\\a B\\endgroup"
                 + "--\\a--",
                 //--- output message ---
-                "--B--\n\n");
+                "--B--" + TERM);
     }
 
     /**
@@ -106,7 +106,7 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
                 + "\\let\\a 1"
                 + "--\\a--",
                 //--- output message ---
-                "--1--\n\n");
+                "--1--" + TERM);
     }
 
     /**
@@ -141,7 +141,7 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
                 + "\\begingroup \\let\\a 2\\endgroup"
                 + "--\\a--",
                 //--- output message ---
-                "--1--\n\n");
+                "--1--" + TERM);
     }
 
     /**
@@ -159,7 +159,7 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
                 + "\\begingroup \\global\\let\\a 2\\endgroup"
                 + "--\\a--",
                 //--- output message ---
-                "--2--\n\n");
+                "--2--" + TERM);
     }
 
     /**
@@ -177,7 +177,7 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
                 + "\\let\\a \\x"
                 + "--\\a--",
                 //--- output message ---
-                "--1--\n\n");
+                "--1--" + TERM);
     }
 
 
@@ -197,7 +197,7 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
                 + "\\begingroup \\let\\a \\a\\endgroup"
                 + "--\\a--",
                 //--- output message ---
-                "--1--\n\n");
+                "--1--" + TERM);
     }
 
     /**
@@ -216,7 +216,7 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
                 + "\\begingroup \\global\\let\\a \\x\\endgroup"
                 + "--\\a--",
                 //--- output message ---
-                "--2--\n\n");
+                "--2--" + TERM);
     }
 
 }

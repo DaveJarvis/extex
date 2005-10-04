@@ -121,7 +121,7 @@ public class SetboxTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "0 \n\n");
+                "0 " + TERM);
     }
 
 }

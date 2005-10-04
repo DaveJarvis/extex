@@ -69,7 +69,7 @@ public class DefTest extends ExTeXLauncher {
                 + "\\def\\aaa{AAA}"
                 + "--\\aaa--",
                 //--- output message ---
-                "--AAA--\n\n");
+                "--AAA--" + TERM);
     }
 
     /**
@@ -87,7 +87,7 @@ public class DefTest extends ExTeXLauncher {
                 + "{\\global\\def\\aaa{BBB}}"
                 + "--\\aaa--",
                 //--- output message ---
-                "--BBB--\n\n");
+                "--BBB--" + TERM);
     }
 
     /**
@@ -104,7 +104,7 @@ public class DefTest extends ExTeXLauncher {
                 + "\\long\\def\\aaa{AAA}"
                 + "--\\aaa--",
                 //--- output message ---
-                "--AAA--\n\n");
+                "--AAA--" + TERM);
     }
 
     /**
@@ -121,7 +121,7 @@ public class DefTest extends ExTeXLauncher {
                 + "\\def\\aaa#1{A#1A}"
                 + "--\\aaa 1--",
                 //--- output message ---
-                "--A1A--\n\n");
+                "--A1A--" + TERM);
     }
 
     /**
@@ -141,7 +141,7 @@ public class DefTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "--2--\n\n");
+                "--2--" + TERM);
     }
 
 

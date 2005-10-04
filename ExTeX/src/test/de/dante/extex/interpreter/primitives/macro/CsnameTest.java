@@ -57,7 +57,7 @@ public class CsnameTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "-a-b-c-\n\n");
+                "-a-b-c-" + TERM);
     }
 
     /**
@@ -78,7 +78,7 @@ public class CsnameTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "-a-b-c-\n\n");
+                "-a-b-c-" + TERM);
     }
 
     /**
@@ -99,7 +99,7 @@ public class CsnameTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "-a-b-c-\n\n");
+                "-a-b-c-" + TERM);
     }
 
     /**

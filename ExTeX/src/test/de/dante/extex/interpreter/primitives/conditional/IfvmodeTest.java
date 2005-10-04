@@ -63,7 +63,7 @@ public class IfvmodeTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "a\n\n");
+                "a" + TERM);
     }
 
     /**
@@ -80,7 +80,7 @@ public class IfvmodeTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "xbx\n\n");
+                "xbx" + TERM);
     }
 
     /**
@@ -99,7 +99,7 @@ public class IfvmodeTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "a\n\n");
+                "a" + TERM);
     }
 
     /**
@@ -118,7 +118,7 @@ public class IfvmodeTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "b\n\n");
+                "b" + TERM);
     }
 
 }

@@ -62,7 +62,7 @@ public class BatchmodeTest extends NoFlagsPrimitiveTester {
                 "\\batchmode"
                 + " \\the\\interactionmode \\end",
                 //--- output channel ---
-                "0\n\n");
+                "0" + TERM);
     }
 
     /**
@@ -78,7 +78,7 @@ public class BatchmodeTest extends NoFlagsPrimitiveTester {
                 "\\errorstopmode\\begingroup\\batchmode\\endgroup"
                 + " \\the\\interactionmode \\end",
                 //--- output channel ---
-                "0\n\n");
+                "0" + TERM);
     }
 
 }

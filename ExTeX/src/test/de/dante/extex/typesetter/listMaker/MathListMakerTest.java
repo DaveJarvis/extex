@@ -54,7 +54,7 @@ public class MathListMakerTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "\n\n");
+                "" + TERM);
     }
 
     /**

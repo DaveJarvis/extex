@@ -84,7 +84,7 @@ public class EveryhboxTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "37.05002pt \n\n"); // checked wih TeX
+                "37.05002pt " + TERM); // checked wih TeX
     }
 
     /**
@@ -112,7 +112,7 @@ public class EveryhboxTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "55.57503pt \n\n"); // checked wih TeX
+                "55.57503pt " + TERM); // checked wih TeX
     }
 
 }

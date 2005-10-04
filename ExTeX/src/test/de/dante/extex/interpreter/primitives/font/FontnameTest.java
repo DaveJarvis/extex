@@ -105,7 +105,7 @@ public class FontnameTest extends NoFlagsPrimitiveTester {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "nullfont\n\n");
+                "nullfont" + TERM);
     }
 
     /**
@@ -125,7 +125,7 @@ public class FontnameTest extends NoFlagsPrimitiveTester {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "cmtt12\n\n");
+                "cmtt12" + TERM);
     }
 
     /**
@@ -145,7 +145,7 @@ public class FontnameTest extends NoFlagsPrimitiveTester {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "cmmi10\n\n");
+                "cmmi10" + TERM);
     }
 
     /**
@@ -165,7 +165,7 @@ public class FontnameTest extends NoFlagsPrimitiveTester {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "cmtt12\n\n");
+                "cmtt12" + TERM);
     }
 
     /**
@@ -185,7 +185,7 @@ public class FontnameTest extends NoFlagsPrimitiveTester {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "cmtt12 at 24.0pt\n\n");
+                "cmtt12 at 24.0pt" + TERM);
     }
 
 }

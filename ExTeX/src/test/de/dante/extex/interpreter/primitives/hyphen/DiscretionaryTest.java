@@ -56,7 +56,7 @@ public class DiscretionaryTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "--\n\n");//TODO check
+                "--" + TERM);//TODO check
     }
 
     /**

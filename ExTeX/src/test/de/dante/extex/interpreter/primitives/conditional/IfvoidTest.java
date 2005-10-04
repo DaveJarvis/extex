@@ -64,7 +64,7 @@ public class IfvoidTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "a\n\n");
+                "a" + TERM);
     }
 
     /**
@@ -82,7 +82,7 @@ public class IfvoidTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "xax\n\n");
+                "xax" + TERM);
     }
 
     /**
@@ -103,7 +103,7 @@ public class IfvoidTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "b\n\n");
+                "b" + TERM);
     }
 
     /**
@@ -124,7 +124,7 @@ public class IfvoidTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "b\n\n");
+                "b" + TERM);
     }
 
 

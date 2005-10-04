@@ -64,7 +64,7 @@ public class NamespaceTest extends ExTeXLauncher {
                 ":\\the\\namespace:"
                 + "\\end ",
                 //--- output channel ---
-                "::\n\n");
+                "::" + TERM);
     }
 
     /**
@@ -82,7 +82,7 @@ public class NamespaceTest extends ExTeXLauncher {
                 + ":\\the\\namespace:"
                 + "\\end ",
                 //--- output channel ---
-                ":TeX:\n\n");
+                ":TeX:" + TERM);
     }
 
     /**
@@ -103,7 +103,7 @@ public class NamespaceTest extends ExTeXLauncher {
                 + ".\\x."
                 + "\\end ",
                 //--- output channel ---
-                ".b.abc:.a.\n\n");
+                ".b.abc:.a." + TERM);
     }
 
 }

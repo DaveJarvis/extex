@@ -81,7 +81,7 @@ public class RelaxTest extends NoFlagsPrimitiveTester {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "abcdef\n\n");
+                "abcdef" + TERM);
     }
 
     /**

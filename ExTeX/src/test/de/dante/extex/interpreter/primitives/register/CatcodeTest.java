@@ -150,7 +150,7 @@ public class CatcodeTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "10\n\n");
+                "10" + TERM);
     }
 
     /**
@@ -168,7 +168,7 @@ public class CatcodeTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "10\n\n");
+                "10" + TERM);
     }
 
 

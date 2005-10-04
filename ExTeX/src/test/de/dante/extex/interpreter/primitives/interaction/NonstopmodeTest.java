@@ -62,7 +62,7 @@ public class NonstopmodeTest extends NoFlagsPrimitiveTester {
                 "\\nonstopmode"
                 + " \\the\\interactionmode \\end",
                 //--- output channel ---
-                "1\n\n");
+                "1" + TERM);
     }
 
     /**
@@ -78,7 +78,7 @@ public class NonstopmodeTest extends NoFlagsPrimitiveTester {
                 "\\errorstopmode\\begingroup\\nonstopmode\\endgroup"
                 + " \\the\\interactionmode \\end",
                 //--- output channel ---
-                "1\n\n");
+                "1" + TERM);
     }
 
 }

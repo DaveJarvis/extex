@@ -62,7 +62,7 @@ public class ScrollmodeTest extends NoFlagsPrimitiveTester {
                 "\\scrollmode"
                 + " \\the\\interactionmode \\end",
                 //--- output channel ---
-                "2\n\n");
+                "2" + TERM);
     }
 
     /**
@@ -78,7 +78,7 @@ public class ScrollmodeTest extends NoFlagsPrimitiveTester {
                 "\\errorstopmode\\begingroup\\scrollmode\\endgroup"
                 + " \\the\\interactionmode \\end",
                 //--- output channel ---
-                "2\n\n");
+                "2" + TERM);
     }
 
 }

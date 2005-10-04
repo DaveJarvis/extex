@@ -62,7 +62,7 @@ public class ErrorstopmodeTest extends NoFlagsPrimitiveTester {
                 "\\errorstopmode"
                 + " \\the\\interactionmode \\end",
                 //--- output channel ---
-                "3\n\n");
+                "3" + TERM);
     }
 
     /**
@@ -78,7 +78,7 @@ public class ErrorstopmodeTest extends NoFlagsPrimitiveTester {
                 "\\batchmode\\begingroup\\errorstopmode\\endgroup"
                 + " \\the\\interactionmode \\end",
                 //--- output channel ---
-                "3\n\n");
+                "3" + TERM);
     }
 
 }

@@ -51,7 +51,7 @@ public class ExpandafterTest extends ExTeXLauncher {
         runCode(//--- input code ---
                 DEFINE_CATCODES + "\\expandafter ab" + "\\end",
                 //--- output message ---
-                "ba\n\n");
+                "ba" + TERM);
     }
 
 }

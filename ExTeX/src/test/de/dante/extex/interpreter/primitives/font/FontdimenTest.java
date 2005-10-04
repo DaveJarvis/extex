@@ -54,7 +54,7 @@ public class FontdimenTest extends NoFlagsPrimitiveTester {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "0.0pt\n\n");
+                "0.0pt" + TERM);
     }
 
     /**
@@ -72,7 +72,7 @@ public class FontdimenTest extends NoFlagsPrimitiveTester {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "0.0pt\n\n");
+                "0.0pt" + TERM);
     }
 
     /**
@@ -91,7 +91,7 @@ public class FontdimenTest extends NoFlagsPrimitiveTester {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "42.0pt\n\n");
+                "42.0pt" + TERM);
     }
 
     /**
@@ -111,7 +111,7 @@ public class FontdimenTest extends NoFlagsPrimitiveTester {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "42.0pt\n\n");
+                "42.0pt" + TERM);
     }
 
 }

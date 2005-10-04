@@ -133,7 +133,7 @@ public class ChardefTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "65\n\n");
+                "65" + TERM);
     }
 
     /**
@@ -151,7 +151,7 @@ public class ChardefTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "65\n\n");
+                "65" + TERM);
     }
 
 

@@ -123,7 +123,7 @@ public class HboxTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "abc\n\n");
+                "abc" + TERM);
     }
 
     /**
@@ -144,7 +144,7 @@ public class HboxTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "\n\n");
+                "" + TERM);
     }
 
     /**
@@ -168,7 +168,7 @@ public class HboxTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "18.52501pt \n\n"); // checked wih TeX
+                "18.52501pt " + TERM); // checked wih TeX
     }
 
 

@@ -65,7 +65,7 @@ public class AftergroupTest extends NoFlagsPrimitiveTester {
                 + "\\catcode`}=2"
                 + "a{b\\aftergroup xd}e",
                 //--- output channel ---
-                "abdxe\n\n");
+                "abdxe" + TERM);
     }
 
     /**
@@ -84,7 +84,7 @@ public class AftergroupTest extends NoFlagsPrimitiveTester {
                 + "\\def\\x{ttt}"
                 + "a{b\\aftergroup\\x d}e",
                 //--- output channel ---
-                "abdttte\n\n");
+                "abdttte" + TERM);
     }
 
 

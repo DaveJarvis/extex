@@ -55,7 +55,7 @@ public class HTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "a xxxabcyyy\n\n");
+                "a xxxabcyyy" + TERM);
     }
 
     /**
@@ -74,7 +74,7 @@ public class HTest extends ExTeXLauncher {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "a xxxabcyyy\n\n");
+                "a xxxabcyyy" + TERM);
     }
 
 }

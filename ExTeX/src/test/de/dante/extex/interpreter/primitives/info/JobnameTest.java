@@ -58,7 +58,7 @@ public class JobnameTest extends NoFlagsPrimitiveTester {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "texput\n\n");
+                "texput" + TERM);
     }
 
     /**
@@ -82,6 +82,6 @@ public class JobnameTest extends NoFlagsPrimitiveTester {
                 //--- log message ---
                 "",
                 //--- output channel ---
-                "job\n\n");
+                "job" + TERM);
     }
 }
