@@ -22,7 +22,7 @@ package de.dante.extex.interpreter.exception.helping;
 import de.dante.util.framework.i18n.LocalizerFactory;
 
 /**
- * This exception is raised when a macro is encouterend in a mode for which it
+ * This exception is raised when a macro is encountered in a mode for which it
  * is not meant.
  * <p>
  *  The localization format is taken from the Localizer under the key
@@ -42,7 +42,7 @@ public class CantUseInException extends HelpingException {
     /**
      * Creates a new object.
      *
-     * @param macro the name of the macro in which the eof has been encoutered
+     * @param macro the name of the macro in which the eof has been encountered
      * @param mode the current mode
      */
     public CantUseInException(final String macro, final String mode) {

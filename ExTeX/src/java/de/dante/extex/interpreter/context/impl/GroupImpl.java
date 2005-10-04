@@ -846,7 +846,7 @@ public class GroupImpl implements Group, Tokenizer, Serializable {
     }
 
     /**
-     * Setter for the namespace.
+     * Setter for the name space.
      *
      * @param theNamespace the new value for the namespace
      * @param global the scoping of the assignment
