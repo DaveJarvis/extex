@@ -116,7 +116,7 @@ public class Divide extends AbstractAssignment {
 
             if (code instanceof Divideable) {
 
-                ((Divideable) code).divide(prefix, context, source);
+                ((Divideable) code).divide(prefix, context, source, typesetter);
                 return;
 
             } else if (code == null) {

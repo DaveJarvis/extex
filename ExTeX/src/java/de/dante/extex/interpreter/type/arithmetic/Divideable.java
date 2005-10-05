@@ -16,12 +16,14 @@
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
+
 package de.dante.extex.interpreter.type.arithmetic;
 
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
+import de.dante.extex.typesetter.Typesetter;
 
 /**
  * This is a interface to mark those classes which are able to divide something.
@@ -57,10 +59,11 @@ public interface Divideable {
      * @param prefix the prefix for the command
      * @param context the processor context
      * @param source the token source to parse
+     * @param typesetter the typesetter
      *
      * @throws InterpreterException in case of an error
      */
-    void divide(Flags prefix, Context context, TokenSource source)
-            throws InterpreterException;
+    void divide(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException;
 
 }

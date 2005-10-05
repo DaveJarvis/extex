@@ -156,7 +156,8 @@ public class Mag extends AbstractCount
      *      de.dante.extex.interpreter.TokenSource)
      */
     public void divide(final Flags prefix, final Context context,
-            final TokenSource source) throws InterpreterException {
+            final TokenSource source, final Typesetter typesetter)
+            throws InterpreterException {
 
         source.getKeyword(context, "by");
 
@@ -178,7 +179,8 @@ public class Mag extends AbstractCount
      *      de.dante.extex.interpreter.TokenSource)
      */
     public void multiply(final Flags prefix, final Context context,
-            final TokenSource source) throws InterpreterException {
+            final TokenSource source, final Typesetter typesetter)
+            throws InterpreterException {
 
         source.getKeyword(context, "by");
 

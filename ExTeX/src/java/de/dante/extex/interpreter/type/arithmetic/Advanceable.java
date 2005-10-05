@@ -16,6 +16,7 @@
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
+
 package de.dante.extex.interpreter.type.arithmetic;
 
 import de.dante.extex.interpreter.Flags;
@@ -52,6 +53,7 @@ import de.dante.extex.typesetter.Typesetter;
  * @version $Revision$
  */
 public interface Advanceable {
+
     /**
      * This method is called when the macro <tt>\advance</tt> has been seen.
      * It performs the remaining tasks for the expansion.
@@ -59,9 +61,10 @@ public interface Advanceable {
      * @param prefix the prefix for the command
      * @param context the processor context
      * @param source the token source to parse
+     * @param typesetter the typesetter
      *
      * @throws InterpreterException in case of an error
      */
-    void advance(Flags prefix, Context context, TokenSource source, Typesetter typesetter)
-            throws InterpreterException;
+    void advance(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException;
 }

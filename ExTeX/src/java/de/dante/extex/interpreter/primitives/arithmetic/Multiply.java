@@ -117,7 +117,7 @@ public class Multiply extends AbstractAssignment {
 
             if (code instanceof Multiplyable) {
 
-                ((Multiplyable) code).multiply(prefix, context, source);
+                ((Multiplyable) code).multiply(prefix, context, source, typesetter);
                 return;
 
             } else if (code == null) {
