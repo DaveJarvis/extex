@@ -70,7 +70,7 @@ public class WhatsItOpenNode extends WhatsItNode {
      * @see de.dante.extex.typesetter.type.Node#atShipping(
      *      de.dante.extex.interpreter.context.Context, Typesetter)
      */
-    public void atShipping(final Context context, Typesetter typesetter) throws GeneralException {
+    public void atShipping(final Context context, final Typesetter typesetter) throws GeneralException {
 
         file.open();
         context.setOutFile(key, file, false);

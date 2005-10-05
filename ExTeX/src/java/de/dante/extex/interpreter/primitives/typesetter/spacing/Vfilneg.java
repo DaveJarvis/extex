@@ -101,7 +101,7 @@ public class Vfilneg extends AbstractVerticalCode implements VerticalSkip {
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource, Typesetter)
      */
-    public Glue verticalSkip(final Context context, final TokenSource source, Typesetter typesetter) {
+    public Glue verticalSkip(final Context context, final TokenSource source, final Typesetter typesetter) {
 
         return FIL_NEG;
     }

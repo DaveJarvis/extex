@@ -164,7 +164,7 @@ public abstract class AbstractListMaker implements ListMaker {
      *      Typesetter, de.dante.extex.scanner.type.Token)
      */
     public void superscriptMark(final Context context,
-            final TokenSource source, Typesetter typesetter, final Token token)
+            final TokenSource source, final Typesetter typesetter, final Token token)
             throws TypesetterException {
 
         throw new TypesetterException(new MissingMathException(token.toString()));

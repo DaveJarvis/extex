@@ -100,7 +100,7 @@ public class ImmutableDimen extends Dimen implements Serializable {
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource, Typesetter)
      */
-    public void set(final Context context, final TokenSource source, Typesetter typesetter)
+    public void set(final Context context, final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
         throw new RuntimeException("Unable to set an immutable object");

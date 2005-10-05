@@ -570,7 +570,7 @@ public class TypesetterImpl
      *      Typesetter, de.dante.extex.scanner.type.Token)
      */
     public void superscriptMark(final Context context,
-            final TokenSource source, Typesetter typesetter, final Token t)
+            final TokenSource source, final Typesetter typesetter, final Token t)
             throws TypesetterException {
 
         listMaker.superscriptMark(context, source, typesetter, t);
