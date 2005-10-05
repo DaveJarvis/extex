@@ -369,6 +369,7 @@ public interface TokenSource {
      *  Tokens are expanded while gathering the requested values.
      * </p>
      * </doc>
+     *
      * @param context the interpreter context
      * @param typesetter the typesetter
      *

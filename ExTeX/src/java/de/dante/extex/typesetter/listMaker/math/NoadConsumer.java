@@ -129,14 +129,14 @@ public interface NoadConsumer extends ListMaker {
      * Noad or a list of Noades resulting from the processing of a block.
      * @param context the interpreter context
      * @param source the source for new tokens
-     * @param typesetter TODO
+     * @param typesetter the typesetter
      *
      * @return the Noad read or <code>null</code> if none could be gathered
      *
      * @throws TypesetterException in case of an error
      */
-    Noad scanNoad(Context context, TokenSource source, Typesetter typesetter, String primitive)
-            throws TypesetterException;
+    Noad scanNoad(Context context, TokenSource source, Typesetter typesetter,
+            String primitive) throws TypesetterException;
 
     /**
      * This method instructs the implementing class to use a fraction

@@ -52,6 +52,7 @@ public abstract class AbstractCountRegisterTester extends ExTeXLauncher {
      * @param arg the name of the test suite
      * @param primitive the name of the integer register to test
      * @param args ...
+     * @param init ...
      */
     public AbstractCountRegisterTester(final String arg, final String primitive,
             final String args, final String init) {
