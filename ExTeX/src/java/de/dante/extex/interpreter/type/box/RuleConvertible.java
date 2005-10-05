@@ -16,6 +16,7 @@
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
+
 package de.dante.extex.interpreter.type.box;
 
 import de.dante.extex.interpreter.TokenSource;
@@ -23,7 +24,6 @@ import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.type.node.RuleNode;
-
 
 /**
  * This interface describes the possibility to provide a rule as result of the

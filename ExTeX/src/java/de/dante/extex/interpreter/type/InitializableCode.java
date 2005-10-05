@@ -35,6 +35,7 @@ public interface InitializableCode {
 
     /**
      * Initialize the Code with some value coming from a String.
+     *
      * @param context the interpreter context
      * @param source the source of information for the initialization
      * @param typesetter the typesetter

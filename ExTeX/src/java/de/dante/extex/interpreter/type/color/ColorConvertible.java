@@ -48,7 +48,7 @@ public interface ColorConvertible {
      *
      * @throws InterpreterException in case of an error
      */
-    Color convertColor(Context context, TokenSource source, Typesetter typesetter)
-            throws InterpreterException;
+    Color convertColor(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException;
 
 }

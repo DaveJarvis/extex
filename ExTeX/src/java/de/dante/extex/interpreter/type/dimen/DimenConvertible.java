@@ -41,6 +41,7 @@ public interface DimenConvertible {
      * this case the additional arguments Context and TokenSource can be used.
      *
      * The return value is the length in scaled points.
+     *
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter to use for conversion
