@@ -53,8 +53,6 @@ public class DiscretionaryTest extends ExTeXLauncher {
                 + "\\hsize=123pt "
                 + "\\discretionary{a}{b}{c}"
                 + "\\end ",
-                //--- log message ---
-                "",
                 //--- output channel ---
                 "--" + TERM);//TODO check
     }
