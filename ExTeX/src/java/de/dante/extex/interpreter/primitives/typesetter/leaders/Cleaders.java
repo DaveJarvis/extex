@@ -96,8 +96,7 @@ public class Cleaders extends AbstractCode {
         Code code = context.getCode(cs);
 
         if (code == null) {
-            throw new UndefinedControlSequenceException(//
-                    context.esc(cs.getName()));
+            throw new UndefinedControlSequenceException(printable(context, cs));
         }
 
         Node node = null;

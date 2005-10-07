@@ -85,7 +85,7 @@ public class FontnameTest extends NoFlagsPrimitiveTester {
         runCode(//--- input code ---
                 "\\fontname \\x",
                 //--- log message ---
-                "Undefined control sequence the control sequence \\x",
+                "Undefined control sequence \\x",
                 //--- output channel ---
                 null);
     }

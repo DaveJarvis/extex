@@ -123,7 +123,7 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
                 + "\\let\\a\\a"
                 + "\\a",
                 //--- err message ---
-                "Undefined control sequence the control sequence \\a");
+                "Undefined control sequence \\a");
     }
 
     /**

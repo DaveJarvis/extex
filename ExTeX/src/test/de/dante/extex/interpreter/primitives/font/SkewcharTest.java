@@ -102,7 +102,7 @@ public class SkewcharTest extends NoFlagsPrimitiveTester {
         runCode(//--- input code ---
                 "\\skewchar \\x",
                 //--- log message ---
-                "Undefined control sequence the control sequence \\x",
+                "Undefined control sequence \\x",
                 //--- output channel ---
                 "");
     }

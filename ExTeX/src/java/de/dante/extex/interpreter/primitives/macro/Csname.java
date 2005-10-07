@@ -209,7 +209,8 @@ public class Csname extends AbstractCode implements ExpandableCode {
 
                 } else if (code == null) {
 
-                    throw new UndefinedControlSequenceException(context.esc(t));
+                    throw new UndefinedControlSequenceException(printable(
+                            context, t));
 
                 } else if (!(code instanceof Relax)) {
 

@@ -102,7 +102,7 @@ public class JavadefTest extends NoFlagsButGlobalPrimitiveTester {
                         + "\\begingroup\\javadef\\t{de.dante.extex.interpreter.primitives.info.The}\\endgroup"
                         + "\\t\\count42" + " \\end",
                 //--- log message ---
-                "Undefined control sequence the control sequence \\t");
+                "Undefined control sequence \\t");
     }
 
 }

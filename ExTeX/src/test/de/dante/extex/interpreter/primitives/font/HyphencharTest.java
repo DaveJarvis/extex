@@ -102,7 +102,7 @@ public class HyphencharTest extends NoFlagsPrimitiveTester {
         runCode(//--- input code ---
                 "\\hyphenchar \\x",
                 //--- log message ---
-                "Undefined control sequence the control sequence \\x",
+                "Undefined control sequence \\x",
                 //--- output channel ---
                 "");
     }
