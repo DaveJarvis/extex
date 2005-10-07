@@ -40,6 +40,11 @@ public abstract class NoFlagsButGlobalPrimitiveTester extends ExTeXLauncher {
     private String args;
 
     /**
+     * The field <tt>prepare</tt> contains the ...
+     */
+    private String prepare = "";
+
+    /**
      * Creates a new object.
      *
      * @param arg the name of the test case
@@ -54,53 +59,77 @@ public abstract class NoFlagsButGlobalPrimitiveTester extends ExTeXLauncher {
     }
 
     /**
+     * Creates a new object.
+     *
+     * @param arg the name of the test case
+     * @param primitive the name of the primitive
+     */
+    public NoFlagsButGlobalPrimitiveTester(final String arg,
+            final String primitive, final String args, final String prepare) {
+
+        this(arg, primitive, args);
+        this.prepare = DEFINE_BRACES + prepare;
+    }
+
+    /**
+     * <testcase>
+     *  ...
+     * </testcase>
      *
      * @throws Exception in case of an error
      */
     public void testNoImmediateFlag() throws Exception {
 
         runFailureCode(//--- input code ---
-                DEFINE_BRACES + "\\catcode`{=1 " + "\\catcode`}=2 "
-                        + "\\immediate\\" + primitive + args,
+                prepare + "\\immediate\\" + primitive + args,
                 //--- log message ---
                 "You can\'t use the prefix `\\immediate\' with the control sequence \\"
                         + primitive);
     }
 
     /**
+     * <testcase>
+     *  ...
+     * </testcase>
      *
      * @throws Exception in case of an error
      */
     public void testNoLongFlag() throws Exception {
 
         runFailureCode(//--- input code ---
-                DEFINE_BRACES + "\\long\\" + primitive + args,
+                prepare + "\\long\\" + primitive + args,
                 //--- log message ---
                 "You can\'t use the prefix `\\long\' with the control sequence \\"
                         + primitive);
     }
 
     /**
+     * <testcase>
+     *  ...
+     * </testcase>
      *
      * @throws Exception in case of an error
      */
     public void testNoOuterFlag() throws Exception {
 
         runFailureCode(//--- input code ---
-                DEFINE_BRACES + "\\outer\\" + primitive + args,
+                prepare + "\\outer\\" + primitive + args,
                 //--- log message ---
                 "You can\'t use the prefix `\\outer\' with the control sequence \\"
                         + primitive);
     }
 
     /**
+     * <testcase>
+     *  ...
+     * </testcase>
      *
      * @throws Exception in case of an error
      */
     public void testNoProtectedFlag() throws Exception {
 
         runFailureCode(//--- input code ---
-                DEFINE_BRACES + "\\protected\\" + primitive + args,
+                prepare + "\\protected\\" + primitive + args,
                 //--- log message ---
                 "You can\'t use the prefix `\\protected\' with the control sequence \\"
                         + primitive);
