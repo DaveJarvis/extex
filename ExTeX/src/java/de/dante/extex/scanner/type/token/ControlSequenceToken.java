@@ -60,7 +60,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
     private String name;
 
     /**
-     * The field <tt>namespace</tt> contains the namespace for this token.
+     * The field <tt>namespace</tt> contains the name space for this token.
      */
     private String namespace;
 
@@ -71,7 +71,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      * @param esc the escape character
      * @param name the name of the control sequence &ndash; without the leading
      *  escape character token
-     * @param namespace the namespace
+     * @param namespace the name space
      */
     protected ControlSequenceToken(final UnicodeChar esc, final String name,
             final String namespace) {
