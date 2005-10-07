@@ -54,7 +54,7 @@ public class PdfvoriginTest extends AbstractDimenRegisterTester {
      */
     public PdfvoriginTest(final String arg) {
 
-        super(arg, "pdfvorigin", "", "0.0pt");
+        super(arg, "pdfvorigin", "", "72.26999pt");
     }
 
     //TODO implement the primitive specific test cases
