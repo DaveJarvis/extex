@@ -100,7 +100,6 @@ public abstract class AbstractCode implements Code, Localizable, Serializable {
                 typesetter.getMode().toString());
     }
 
-
     /**
      * Getter for localizer.
      *
@@ -143,11 +142,10 @@ public abstract class AbstractCode implements Code, Localizable, Serializable {
      *
      * @return the control sequence including the escape character
      */
-    protected String printable(final Context context, final Token token) {
+    public static String printable(final Context context, final Token token) {
 
         if (token instanceof ControlSequenceToken) {
-            return context.esc("")
-                    + ((ControlSequenceToken) token).getChar().getCodePoint();
+            return context.esc("") + ((ControlSequenceToken) token).getName();
         }
         return token.getChar().toString();
     }
