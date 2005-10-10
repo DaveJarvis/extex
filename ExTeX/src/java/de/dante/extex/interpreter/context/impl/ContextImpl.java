@@ -1297,11 +1297,13 @@ public class ContextImpl
     /**
      * @see de.dante.extex.interpreter.context.Context#setLccode(
      *      de.dante.util.UnicodeChar,
-     *      de.dante.util.UnicodeChar)
+     *      de.dante.util.UnicodeChar,
+     *      boolean)
      */
-    public void setLccode(final UnicodeChar uc, final UnicodeChar lc) {
+    public void setLccode(final UnicodeChar uc, final UnicodeChar lc,
+            final boolean global) {
 
-        group.setLccode(uc, lc);
+        group.setLccode(uc, lc, global);
     }
 
     /**
@@ -1439,11 +1441,13 @@ public class ContextImpl
     /**
      * @see de.dante.extex.interpreter.context.Context#setUccode(
      *      de.dante.util.UnicodeChar,
-     *      de.dante.util.UnicodeChar)
+     *      de.dante.util.UnicodeChar,
+     *      boolean)
      */
-    public void setUccode(final UnicodeChar lc, final UnicodeChar uc) {
+    public void setUccode(final UnicodeChar lc, final UnicodeChar uc,
+            final boolean global) {
 
-        group.setUccode(lc, uc);
+        group.setUccode(lc, uc, global);
     }
 
     /**

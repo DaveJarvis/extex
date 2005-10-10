@@ -808,11 +808,17 @@ public class GroupImpl implements Group, Tokenizer, Serializable {
     /**
      * @see de.dante.extex.interpreter.context.impl.Group#setLccode(
      *      de.dante.util.UnicodeChar,
-     *      de.dante.util.UnicodeChar)
+     *      de.dante.util.UnicodeChar,
+     *      boolean)
      */
-    public void setLccode(final UnicodeChar lc, final UnicodeChar uc) {
+    public void setLccode(final UnicodeChar lc, final UnicodeChar uc,
+            final boolean global) {
 
         lccodeMap.put(lc, uc);
+
+        if (global && next != null) {
+            next.setLccode(lc, uc, global);
+        }
     }
 
     /**
@@ -949,10 +955,17 @@ public class GroupImpl implements Group, Tokenizer, Serializable {
     /**
      * @see de.dante.extex.interpreter.context.impl.Group#setUccode(
      *      de.dante.util.UnicodeChar,
-     *      de.dante.util.UnicodeChar)
+     *      de.dante.util.UnicodeChar,
+     *      boolean)
      */
-    public void setUccode(final UnicodeChar uc, final UnicodeChar lc) {
+    public void setUccode(final UnicodeChar uc, final UnicodeChar lc,
+            final boolean global) {
 
         uccodeMap.put(uc, lc);
+
+        if (global && next != null) {
+            next.setUccode(uc, lc, global);
+        }
     }
+
 }
