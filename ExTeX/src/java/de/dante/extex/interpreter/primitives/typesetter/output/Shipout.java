@@ -89,13 +89,15 @@ public class Shipout extends AbstractCode {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
+        Flags flags = prefix.copy();
+        prefix.clear();
         Box box = source.getBox(context, typesetter);
-        try {
+
+        if (box != null) {
             typesetter.shipout(box.getNodes());
-        } catch (GeneralException e) {
-            throw new InterpreterException(e);
+            context.getCount("deadcyles").set(0);
         }
-        context.getCount("deadcyles").set(0);
+        prefix.set(flags);
     }
 
 }
