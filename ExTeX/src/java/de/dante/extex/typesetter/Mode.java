@@ -135,7 +135,7 @@ public abstract class Mode {
      * the typesetter.
      */
     public static final Mode INNER_VERTICAL = new VerticalMode(
-            "Mode.VerticalMode");
+            "Mode.InnerVerticalMode");
 
     /**
      * The constant <tt>MATH</tt> contains the math mode of the typesetter.
@@ -147,7 +147,7 @@ public abstract class Mode {
      * horizontal mode of the typesetter.
      */
     public static final Mode RESTRICTED_HORIZONTAL = new HorizontalMode(
-            "Mode.HorizontalMode");
+            "Mode.RestrictedHorizontalMode");
 
     /**
      * The constant <tt>VERTICAL</tt> contains the vertical mode of the
