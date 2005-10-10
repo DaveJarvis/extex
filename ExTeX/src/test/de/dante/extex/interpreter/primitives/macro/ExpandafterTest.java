@@ -40,7 +40,7 @@ public class ExpandafterTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase primitive="expandafter">
+     * <testcase primitive="\expandafter">
      *  Test case checking that <tt>\expandafter</tt> exchanges two letters.
      * </testcase>
      *
@@ -48,7 +48,7 @@ public class ExpandafterTest extends ExTeXLauncher {
      */
     public void testExpandafterLetterLetter1() throws Exception {
 
-        runCode(//--- input code ---
+        assertSuccess(//--- input code ---
                 DEFINE_CATCODES + "\\expandafter ab" + "\\end",
                 //--- output message ---
                 "ba" + TERM);

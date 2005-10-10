@@ -57,7 +57,7 @@ public class SetboxTest extends ExTeXLauncher {
      */
     public void testEOF1() throws Exception {
 
-        runFailureCode(//--- input code ---
+        assertFailure(//--- input code ---
                 "\\setbox",
                 //--- log message ---
                 "Missing number, treated as zero");
@@ -72,7 +72,7 @@ public class SetboxTest extends ExTeXLauncher {
      */
     public void testEOF2() throws Exception {
 
-        runFailureCode(//--- input code ---
+        assertFailure(//--- input code ---
                 "\\setbox33",
                 //--- log message ---
                 "A <box> was supposed to be here");
@@ -104,7 +104,7 @@ public class SetboxTest extends ExTeXLauncher {
      */
     public void testNonBox1() throws Exception {
 
-        runFailureCode(//--- input code ---
+        assertFailure(//--- input code ---
                 "\\setbox33=123",
                 //--- log message ---
                 "A <box> was supposed to be here");
@@ -119,7 +119,7 @@ public class SetboxTest extends ExTeXLauncher {
      */
     public void testOK1() throws Exception {
 
-        runCode(//--- input code ---
+        assertSuccess(//--- input code ---
                 DEFINE_BRACES
                 + "\\setbox 12=\\hbox{abc}"
                 + "\\count0=\\wd12 "

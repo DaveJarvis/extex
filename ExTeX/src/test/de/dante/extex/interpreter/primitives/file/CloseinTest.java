@@ -59,7 +59,7 @@ public class CloseinTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
      */
     public void test0() throws Exception {
 
-        runCode(//--- input code ---
+        assertSuccess(//--- input code ---
                 "\\closein 1",
                 //--- output channel ---
                 "");

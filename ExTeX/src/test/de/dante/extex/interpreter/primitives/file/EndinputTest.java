@@ -58,7 +58,7 @@ public class EndinputTest extends NoFlagsPrimitiveTester {
      */
     public void test0() throws Exception {
 
-        runCode(//--- input code ---
+        assertSuccess(//--- input code ---
                 "\\endinput abc",
                 //--- output channel ---
                 "");

@@ -48,7 +48,7 @@ public class ErrmessageTest extends ExTeXLauncher {
      */
     public void testJobname1() throws Exception {
 
-        runFailureCode(//--- input code ---
+        assertFailure(//--- input code ---
                 "\\catcode`{=1"
                 + "\\catcode`}=2"
                 + "\\errmessage{abc}",

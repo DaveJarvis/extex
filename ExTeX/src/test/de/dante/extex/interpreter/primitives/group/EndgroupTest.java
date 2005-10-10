@@ -58,7 +58,7 @@ public class EndgroupTest extends ExTeXLauncher {
      */
     public void test1() throws Exception {
 
-        runFailureCode(//--- input code ---
+        assertFailure(//--- input code ---
                 "\\endgroup",
                 //--- log message ---
                 "Too many }'s");
@@ -73,7 +73,7 @@ public class EndgroupTest extends ExTeXLauncher {
      */
     public void test2() throws Exception {
 
-        runCode(//--- input code ---
+        assertSuccess(//--- input code ---
                 "\\begingroup \\endgroup",
                 //--- output channel ---
                 "");

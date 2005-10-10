@@ -46,7 +46,7 @@ public class DiscretionaryTest extends ExTeXLauncher {
      */
     public void testDisc1() throws Exception {
 
-        runCode(//--- input code ---
+        assertSuccess(//--- input code ---
                 "\\catcode`{=1 "
                 + "\\catcode`}=2 "
                 + "\\catcode`$=3 "

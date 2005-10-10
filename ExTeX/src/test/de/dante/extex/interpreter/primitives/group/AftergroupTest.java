@@ -60,7 +60,7 @@ public class AftergroupTest extends NoFlagsPrimitiveTester {
      */
     public void test1() throws Exception {
 
-        runCode(//--- input code ---
+        assertSuccess(//--- input code ---
                 "\\catcode`{=1"
                 + "\\catcode`}=2"
                 + "a{b\\aftergroup xd}e",
@@ -78,7 +78,7 @@ public class AftergroupTest extends NoFlagsPrimitiveTester {
      */
     public void test2() throws Exception {
 
-        runCode(//--- input code ---
+        assertSuccess(//--- input code ---
                 "\\catcode`{=1"
                 + "\\catcode`}=2"
                 + "\\def\\x{ttt}"

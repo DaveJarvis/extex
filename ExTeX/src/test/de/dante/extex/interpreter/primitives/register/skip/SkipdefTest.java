@@ -57,7 +57,7 @@ public class SkipdefTest extends AbstractSkipRegisterTester {
      */
     public void test1() throws Exception {
 
-        runCode(//--- input code ---
+        assertSuccess(//--- input code ---
                 "\\skipdef\\x=42 " + "\\skip42=123pt "
                         + "\\the\\skip42 \\end",
                 //--- output channel ---
@@ -73,7 +73,7 @@ public class SkipdefTest extends AbstractSkipRegisterTester {
      */
     public void testGlobal1() throws Exception {
 
-        runFailureCode(//--- input code ---
+        assertFailure(//--- input code ---
                 "\\begingroup\\skipdef\\x=42 \\endgroup" + "\\the\\x \\end",
                 //--- error channel ---
                 "You can't use `the control sequence \\x' after \\the");
@@ -88,7 +88,7 @@ public class SkipdefTest extends AbstractSkipRegisterTester {
      */
     public void testGlobal2() throws Exception {
 
-        runCode(//--- input code ---
+        assertSuccess(//--- input code ---
                 "\\begingroup\\global\\skipdef\\x=42 \\endgroup"
                         + "\\the\\x \\end",
                 //--- output channel ---

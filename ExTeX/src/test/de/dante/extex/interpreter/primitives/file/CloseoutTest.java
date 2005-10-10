@@ -59,7 +59,7 @@ public class CloseoutTest extends NoFlagsButImmediatePrimitiveTester {
      */
     public void test0() throws Exception {
 
-        runCode(//--- input code ---
+        assertSuccess(//--- input code ---
                 "\\closeout1",
                 //--- output channel ---
                 "\n");
@@ -75,7 +75,7 @@ public class CloseoutTest extends NoFlagsButImmediatePrimitiveTester {
      */
     public void test1() throws Exception {
 
-        runCode(//--- input code ---
+        assertSuccess(//--- input code ---
                 "\\immediate\\closeout1",
                 //--- output channel ---
                 "");

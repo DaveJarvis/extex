@@ -58,7 +58,7 @@ public class ErrorstopmodeTest extends NoFlagsPrimitiveTester {
      */
     public void test0() throws Exception {
 
-        runCode(//--- input code ---
+        assertSuccess(//--- input code ---
                 "\\errorstopmode"
                 + " \\the\\interactionmode \\end",
                 //--- output channel ---
@@ -74,7 +74,7 @@ public class ErrorstopmodeTest extends NoFlagsPrimitiveTester {
      */
     public void test1() throws Exception {
 
-        runCode(//--- input code ---
+        assertSuccess(//--- input code ---
                 "\\batchmode\\begingroup\\errorstopmode\\endgroup"
                 + " \\the\\interactionmode \\end",
                 //--- output channel ---

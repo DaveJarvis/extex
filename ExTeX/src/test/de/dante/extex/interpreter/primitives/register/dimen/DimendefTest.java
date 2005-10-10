@@ -56,7 +56,7 @@ public class DimendefTest extends AbstractDimenRegisterTester {
      */
     public void test1() throws Exception {
 
-        runCode(//--- input code ---
+        assertSuccess(//--- input code ---
                 "\\dimendef\\x=42 " + "\\dimen42=123pt "
                         + "\\the\\dimen42 \\end",
                 //--- output channel ---
@@ -72,7 +72,7 @@ public class DimendefTest extends AbstractDimenRegisterTester {
      */
     public void testGlobal1() throws Exception {
 
-        runFailureCode(//--- input code ---
+        assertFailure(//--- input code ---
                 "\\begingroup\\dimendef\\x=42 \\endgroup" + "\\the\\x \\end",
                 //--- error channel ---
                 "You can't use `the control sequence \\x' after \\the");
@@ -87,7 +87,7 @@ public class DimendefTest extends AbstractDimenRegisterTester {
      */
     public void testGlobal2() throws Exception {
 
-        runCode(//--- input code ---
+        assertSuccess(//--- input code ---
                 "\\begingroup\\global\\dimendef\\x=42 \\endgroup"
                         + "\\the\\x \\end",
                 //--- output channel ---

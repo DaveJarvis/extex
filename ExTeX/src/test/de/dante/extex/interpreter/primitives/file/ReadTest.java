@@ -59,7 +59,7 @@ public class ReadTest extends ExTeXLauncher {
      */
     public void test0() throws Exception {
 
-        runFailureCode(//--- input code ---
+        assertFailure(//--- input code ---
                 "\\read 1",
                 //--- error channel ---
                 "Missing `to' inserted");
@@ -75,7 +75,7 @@ public class ReadTest extends ExTeXLauncher {
      */
     public void test1() throws Exception {
 
-        runFailureCode(//--- input code ---
+        assertFailure(//--- input code ---
                 "\\read 1 to ",
                 //--- error channel ---
                 "Missing control sequence inserted");

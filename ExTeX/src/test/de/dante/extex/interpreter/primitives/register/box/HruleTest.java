@@ -42,7 +42,7 @@ public class HruleTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase primitive="hbox">
+     * <testcase primitive="\hbox">
      *   Test case checking that a <tt>\hrule</tt> can stand by itself.
      * </testcase>
      *

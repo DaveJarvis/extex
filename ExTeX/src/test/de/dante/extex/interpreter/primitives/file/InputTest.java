@@ -58,7 +58,7 @@ public class InputTest extends NoFlagsPrimitiveTester {
      */
     public void test0() throws Exception {
 
-        runCode(//--- input code ---
+        assertSuccess(//--- input code ---
                 "\\input src/test/data/empty.tex",
                 //--- output channel ---
                 "");
@@ -73,7 +73,7 @@ public class InputTest extends NoFlagsPrimitiveTester {
      */
     public void ________________________testErr0() throws Exception {
 
-        runCode(//--- input code ---
+        assertSuccess(//--- input code ---
                 "\\input src/test/data/DoesNotExist",
                 //--- output channel ---
                 "");

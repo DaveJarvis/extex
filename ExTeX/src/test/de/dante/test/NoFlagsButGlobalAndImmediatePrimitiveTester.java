@@ -61,7 +61,7 @@ public abstract class NoFlagsButGlobalAndImmediatePrimitiveTester
      */
     public void testNoLongFlag() throws Exception {
 
-        runFailureCode(//--- input code ---
+        assertFailure(//--- input code ---
                 DEFINE_CATCODES + "\\long\\" + primitive + args,
                 //--- log message ---
                 "You can\'t use the prefix `\\long\' with the control sequence \\"
@@ -74,7 +74,7 @@ public abstract class NoFlagsButGlobalAndImmediatePrimitiveTester
      */
     public void testNoOuterFlag() throws Exception {
 
-        runFailureCode(//--- input code ---
+        assertFailure(//--- input code ---
                 DEFINE_CATCODES + "\\outer\\" + primitive + args,
                 //--- log message ---
                 "You can\'t use the prefix `\\outer\' with the control sequence \\"
@@ -87,7 +87,7 @@ public abstract class NoFlagsButGlobalAndImmediatePrimitiveTester
      */
     public void testNoProtectedFlag() throws Exception {
 
-        runFailureCode(//--- input code ---
+        assertFailure(//--- input code ---
                 DEFINE_CATCODES + "\\protected\\" + primitive + args,
                 //--- log message ---
                 "You can\'t use the prefix `\\protected\' with the control sequence \\"

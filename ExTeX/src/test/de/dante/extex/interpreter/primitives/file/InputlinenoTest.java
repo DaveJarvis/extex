@@ -58,7 +58,7 @@ public class InputlinenoTest extends ExTeXLauncher {
      */
     public void test0() throws Exception {
 
-        runCode(//--- input code ---
+        assertSuccess(//--- input code ---
                 "\\the\\inputlineno ",
                 //--- output channel ---
                 "1" + TERM);

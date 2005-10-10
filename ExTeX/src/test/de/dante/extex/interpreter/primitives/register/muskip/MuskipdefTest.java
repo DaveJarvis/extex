@@ -56,7 +56,7 @@ public class MuskipdefTest extends AbstractMuskipRegisterTester {
      */
     public void test1() throws Exception {
 
-        runCode(
+        assertSuccess(
         //--- input code ---
                 "\\muskipdef\\x=42 " + "\\muskip42=123mu "
                         + "\\the\\muskip42 \\end",
@@ -73,7 +73,7 @@ public class MuskipdefTest extends AbstractMuskipRegisterTester {
      */
     public void testGlobal1() throws Exception {
 
-        runFailureCode(//--- input code ---
+        assertFailure(//--- input code ---
                 "\\begingroup\\muskipdef\\x=42 \\endgroup" + "\\the\\x \\end",
                 //--- error channel ---
                 "You can't use `the control sequence \\x' after \\the");
@@ -88,7 +88,7 @@ public class MuskipdefTest extends AbstractMuskipRegisterTester {
      */
     public void testGlobal2() throws Exception {
 
-        runCode(//--- input code ---
+        assertSuccess(//--- input code ---
                 "\\begingroup\\global\\muskipdef\\x=42 \\endgroup"
                         + "\\the\\x \\end",
                 //--- output channel ---

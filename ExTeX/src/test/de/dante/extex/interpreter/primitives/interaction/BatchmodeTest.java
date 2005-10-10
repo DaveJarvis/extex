@@ -58,7 +58,7 @@ public class BatchmodeTest extends NoFlagsPrimitiveTester {
      */
     public void test0() throws Exception {
 
-        runCode(//--- input code ---
+        assertSuccess(//--- input code ---
                 "\\batchmode"
                 + " \\the\\interactionmode \\end",
                 //--- output channel ---
@@ -74,7 +74,7 @@ public class BatchmodeTest extends NoFlagsPrimitiveTester {
      */
     public void test1() throws Exception {
 
-        runCode(//--- input code ---
+        assertSuccess(//--- input code ---
                 "\\errorstopmode\\begingroup\\batchmode\\endgroup"
                 + " \\the\\interactionmode \\end",
                 //--- output channel ---

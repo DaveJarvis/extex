@@ -288,7 +288,7 @@ public class ExTeXLauncher extends TestCase {
      *
      * @throws Exception in case of an error
      */
-    public ExTeX runCode(final String code, final String expect)
+    public ExTeX assertSuccess(final String code, final String expect)
             throws Exception {
 
         return runCode(getProps(), code, "", expect);
@@ -317,7 +317,7 @@ public class ExTeXLauncher extends TestCase {
      *
      * @throws Exception in case of an error
      */
-    public ExTeX runFailureCode(final String code, final String log)
+    public ExTeX assertFailure(final String code, final String log)
             throws Exception {
 
         return runCode(getProps(), code, log, "");
