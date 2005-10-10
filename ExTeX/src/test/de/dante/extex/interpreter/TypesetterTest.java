@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.typesetter;
+package de.dante.extex.interpreter;
 
 import java.util.Properties;
 
@@ -42,7 +42,7 @@ public class TypesetterTest extends ExTeXLauncher {
     }
 
     /**
-     * Test case checking that \accent does not work in math mode.
+     * Test case checking that <tt>\accent</tt> does not work in math mode.
      *
      * @throws Exception in case of an error
      */
@@ -54,8 +54,7 @@ public class TypesetterTest extends ExTeXLauncher {
 
         runCode(properties,
                 //--- input code ---
-                "\\catcode`{=1\n" //
-                + "\\catcode`}=2\n" //
+                DEFINE_BRACES //
                 + "\\font\\fnt=cmtt12\\fnt\n" //
                 + "\\hsize=800pt\n" //
                 + "\\vsize=500pt\n" //
