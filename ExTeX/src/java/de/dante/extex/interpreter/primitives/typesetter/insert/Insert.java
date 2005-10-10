@@ -84,7 +84,7 @@ public class Insert extends AbstractBox {
             throws InterpreterException {
 
         if (!typesetter.getMode().isVmode()) {
-            throw new HelpingException(getLocalizer(), "???");
+            throw new HelpingException(getLocalizer(), "TTP.MisplacedInsert");
         }
         long index = source.scanNumber(context);
         Box b = new Box(context, source, typesetter, false, null);
