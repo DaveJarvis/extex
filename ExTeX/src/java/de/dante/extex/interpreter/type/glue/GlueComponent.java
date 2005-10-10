@@ -476,7 +476,7 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
 
         Token t;
         for (;;) {
-            t = source.scanNonSpace(context);
+            t = source.getNonSpace(context);
             if (t == null) {
                 throw new HelpingException(getMyLocalizer(), "TTP.IllegalUnit");
             } else if (t instanceof CodeToken) {
