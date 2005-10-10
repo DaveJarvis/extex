@@ -367,7 +367,7 @@ public class TypesetterImpl
     }
 
     /**
-     * Notification method to deal the case that a left brace hs been
+     * Notification method to deal the case that a left brace has been
      * encountered.
      */
     public void leftBrace() {
