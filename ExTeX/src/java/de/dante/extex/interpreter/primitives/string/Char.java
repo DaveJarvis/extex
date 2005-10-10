@@ -112,7 +112,7 @@ public class Char extends AbstractCode implements ExpandableCode {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        UnicodeChar uc = source.scanCharacterCode(context, getName());
+        UnicodeChar uc = source.scanCharacterCode(context, typesetter, getName());
         try {
             Token t = context.getTokenFactory().createToken(Catcode.OTHER, uc,
                     context.getNamespace());

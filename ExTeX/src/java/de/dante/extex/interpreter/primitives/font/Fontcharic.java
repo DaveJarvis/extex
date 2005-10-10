@@ -142,7 +142,7 @@ public class Fontcharic extends AbstractCode
 
         try {
             Font fnt = source.getFont(context, getName());
-            UnicodeChar uc = source.scanCharacterCode(context, null);
+            UnicodeChar uc = source.scanCharacterCode(context, typesetter, null);
             Glyph glyph = fnt.getGlyph(uc);
             Dimen ic = (glyph != null ? glyph.getItalicCorrection() : null);
             return (ic != null ? ic : Dimen.ZERO_PT);

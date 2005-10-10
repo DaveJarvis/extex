@@ -141,7 +141,7 @@ public class Fontcharht extends AbstractCode
 
         try {
             Font fnt = source.getFont(context, getName());
-            UnicodeChar uc = source.scanCharacterCode(context, null);
+            UnicodeChar uc = source.scanCharacterCode(context, typesetter, null);
             Glyph glyph = fnt.getGlyph(uc);
             Dimen height = (glyph != null ? glyph.getHeight() : null);
             return (height != null ? height : Dimen.ZERO_PT);

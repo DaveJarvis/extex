@@ -116,7 +116,7 @@ public class Accent extends AbstractCode {
                     "TTP.AccentInMathMode", printableControlSequence(context),
                     context.esc("mathaccent"));
         }
-        UnicodeChar accent = source.scanCharacterCode(context, getName());
+        UnicodeChar accent = source.scanCharacterCode(context, typesetter, getName());
         Token token = source.getToken(context);
         TypesettingContext tc = context.getTypesettingContext();
         Font currentFont = tc.getFont();

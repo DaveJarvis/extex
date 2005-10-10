@@ -82,8 +82,8 @@ public class Overwithdelims extends AbstractTeXDelimter {
             throws InterpreterException {
 
         NoadConsumer nc = getListMaker(context, typesetter);
-        MathDelimiter del1 = parseDelimiter(context, source, getName());
-        MathDelimiter del2 = parseDelimiter(context, source, getName());
+        MathDelimiter del1 = parseDelimiter(context, source, typesetter, getName());
+        MathDelimiter del2 = parseDelimiter(context, source, typesetter, getName());
 
         nc.switchToFraction(del1, del2, null);
     }

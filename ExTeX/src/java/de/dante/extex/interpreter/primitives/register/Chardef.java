@@ -93,7 +93,7 @@ public class Chardef extends AbstractAssignment {
 
         CodeToken cs = source.getControlSequence(context);
         source.getOptionalEquals(context);
-        UnicodeChar uc = source.scanCharacterCode(context, getName());
+        UnicodeChar uc = source.scanCharacterCode(context, typesetter, getName());
         context.setCode(cs, new CharCode("", uc), prefix.isGlobal());
         prefix.clearGlobal();
     }

@@ -141,7 +141,7 @@ public class Fontcharwd extends AbstractCode
 
         try {
             Font fnt = source.getFont(context, getName());
-            UnicodeChar uc = source.scanCharacterCode(context, null);
+            UnicodeChar uc = source.scanCharacterCode(context, typesetter, null);
             Glyph glyph = fnt.getGlyph(uc);
             Dimen width = (glyph != null ? glyph.getWidth() : null);
             return (width != null ? width : Dimen.ZERO_PT);

@@ -86,7 +86,7 @@ public class Delimiter extends AbstractMathCode {
             throws InterpreterException {
 
         NoadConsumer nc = getListMaker(context, typesetter);
-        MathDelimiter del = AbstractTeXDelimter.parseDelimiter(context, source, getName());
+        MathDelimiter del = AbstractTeXDelimter.parseDelimiter(context, source, typesetter, getName());
         nc.add(del);
     }
 
