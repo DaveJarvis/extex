@@ -98,18 +98,6 @@ public class Parshape extends AbstractCode implements CountConvertible, Theable 
     private static final long serialVersionUID = 1L;
 
     /**
-     * @see de.dante.extex.interpreter.type.Theable#the(
-     *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource, Typesetter)
-     */
-    public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
-
-        return new Tokens(context, Long.toString(context.getParshape()
-                .getSize()));
-    }
-
-    /**
      * Creates a new object.
      *
      * @param name the name for debugging
@@ -127,7 +115,8 @@ public class Parshape extends AbstractCode implements CountConvertible, Theable 
     public long convertCount(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
 
-        return context.getParshape().getSize();
+        ParagraphShape parshape = context.getParshape();
+        return (parshape != null ? parshape.getSize() : 0);
     }
 
     /**
@@ -146,12 +135,25 @@ public class Parshape extends AbstractCode implements CountConvertible, Theable 
             context.setParshape(null);
         } else {
             ParagraphShape parshape = new ParagraphShape();
-            while (n >= 0) {
+            while (n-- > 0) {
                 Dimen left = new Dimen(context, source, typesetter);
                 Dimen right = new Dimen(context, source, typesetter);
                 parshape.add(left, right);
             }
             context.setParshape(parshape);
         }
+    }
+
+    /**
+     * @see de.dante.extex.interpreter.type.Theable#the(
+     *      de.dante.extex.interpreter.context.Context,
+     *      de.dante.extex.interpreter.TokenSource, Typesetter)
+     */
+    public Tokens the(final Context context, final TokenSource source,
+            final Typesetter typesetter) throws InterpreterException {
+
+        ParagraphShape parshape = context.getParshape();
+        return new Tokens(context, parshape != null ? Long.toString(parshape
+                .getSize()) : "0");
     }
 }
