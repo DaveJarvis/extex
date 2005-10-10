@@ -75,7 +75,7 @@ public class ParagraphShape {
         if (index < 0) {
             return Dimen.ZERO_PT;
         }
-        int i = points.size() / 2;
+        int i = (points.size() - 1) / 2;
         return (FixedDimen) points.get((index > i ? i : index) * 2);
     }
 
@@ -94,7 +94,7 @@ public class ParagraphShape {
         if (index < 0) {
             return Dimen.ZERO_PT;
         }
-        int i = points.size() / 2;
+        int i = (points.size() - 1) / 2;
         return (FixedDimen) points.get((index > i ? i : index) * 2 + 1);
     }
 
