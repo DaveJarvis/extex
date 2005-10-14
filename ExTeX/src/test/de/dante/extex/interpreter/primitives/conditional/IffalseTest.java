@@ -58,10 +58,8 @@ public class IffalseTest extends ExTeXLauncher {
      */
     public void test1() throws Exception {
 
-        runCode(//--- input code ---
+        assertSuccess(//--- input code ---
                 "\\iffalse a\\else b\\fi",
-                //--- log message ---
-                "",
                 //--- output channel ---
                 "b" + TERM);
     }
@@ -76,10 +74,8 @@ public class IffalseTest extends ExTeXLauncher {
      */
     public void test2() throws Exception {
 
-        runCode(//--- input code ---
+        assertSuccess(//--- input code ---
                 "x\\iffalse a\\fi x",
-                //--- log message ---
-                "",
                 //--- output channel ---
                 "xx" + TERM);
     }

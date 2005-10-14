@@ -58,12 +58,10 @@ public class OpeninTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
      */
     public void testEof1() throws Exception {
 
-        runCode(//--- input code ---
+        assertFailure(//--- input code ---
                 "\\openin ",
                 //--- log message ---
-                "Missing number, treated as zero",
-                //--- output channel ---
-                "");
+                "Missing number, treated as zero");
     }
 
     /**
@@ -76,12 +74,10 @@ public class OpeninTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
      */
     public void testEof2() throws Exception {
 
-        runCode(//--- input code ---
+        assertFailure(//--- input code ---
                 "\\openin 2",
                 //--- log message ---
-                "Unexpected end of file while processing \\openin",
-                //--- output channel ---
-                "");
+                "Unexpected end of file while processing \\openin");
     }
 
     /**
@@ -94,12 +90,10 @@ public class OpeninTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
      */
     public void ________________________test0() throws Exception {
 
-        runCode(//--- input code ---
+        assertFailure(//--- input code ---
                 "\\openin 2 src/test/data/VeryUnlikelyToExist",
                 //--- log message ---
-                "Unexpected end of file while processing \\openin",
-                //--- output channel ---
-                "");
+                "Unexpected end of file while processing \\openin");
     }
 
 }

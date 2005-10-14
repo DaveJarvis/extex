@@ -48,11 +48,9 @@ public class FontdimenTest extends NoFlagsPrimitiveTester {
      */
     public void testUnset1() throws Exception {
 
-        runCode(//--- input code ---
+        assertSuccess(//--- input code ---
                 "\\the\\fontdimen0\\nullfont "
                 + "\\end",
-                //--- log message ---
-                "",
                 //--- output channel ---
                 "0.0pt" + TERM);
     }
@@ -66,11 +64,9 @@ public class FontdimenTest extends NoFlagsPrimitiveTester {
      */
     public void testUnset2() throws Exception {
 
-        runCode(//--- input code ---
+        assertSuccess(//--- input code ---
                 "\\the\\fontdimen65000\\nullfont "
                 + "\\end",
-                //--- log message ---
-                "",
                 //--- output channel ---
                 "0.0pt" + TERM);
     }
@@ -84,12 +80,10 @@ public class FontdimenTest extends NoFlagsPrimitiveTester {
      */
     public void testSet1() throws Exception {
 
-        runCode(//--- input code ---
+        assertSuccess(//--- input code ---
                 "\\fontdimen65000\\nullfont=42pt "
                 + "\\the\\fontdimen65000\\nullfont "
                 + "\\end",
-                //--- log message ---
-                "",
                 //--- output channel ---
                 "42.0pt" + TERM);
     }
@@ -103,13 +97,11 @@ public class FontdimenTest extends NoFlagsPrimitiveTester {
      */
     public void testSet2() throws Exception {
 
-        runCode(//--- input code ---
+        assertSuccess(//--- input code ---
                 "\\font\\fnt=cmtt12\\relax "
                 + "\\fontdimen65000\\fnt=42pt "
                 + "\\the\\fontdimen65000\\fnt "
                 + "\\end",
-                //--- log message ---
-                "",
                 //--- output channel ---
                 "42.0pt" + TERM);
     }

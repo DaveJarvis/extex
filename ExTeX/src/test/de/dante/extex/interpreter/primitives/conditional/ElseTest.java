@@ -58,12 +58,10 @@ public class ElseTest extends ExTeXLauncher {
      */
     public void testConst0() throws Exception {
 
-        runCode(//--- input code ---
+        assertFailure(//--- input code ---
                 "\\else",
                 //--- log message ---
-                "Extra \\else",
-                //--- output channel ---
-                "");
+                "Extra \\else");
     }
 
 }

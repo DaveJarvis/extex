@@ -46,13 +46,11 @@ public class MathListMakerTest extends ExTeXLauncher {
      */
     public void testEmpty1() throws Exception {
 
-        runCode(//--- input code ---
+        assertSuccess(//--- input code ---
                 "\\catcode`\\$=3 \\relax"
                 + ""
                 + "$ $"
                 + "\\end ",
-                //--- log message ---
-                "",
                 //--- output channel ---
                 "" + TERM);
     }
@@ -64,13 +62,11 @@ public class MathListMakerTest extends ExTeXLauncher {
      */
     public void test1() throws Exception {
 
-        runCode(//--- input code ---
+        assertSuccess(//--- input code ---
                 "\\catcode`\\$=3 \\relax"
                 + ""
                 + "$a$"
                 + "\\end ",
-                //--- log message ---
-                "",
                 //--- output channel ---
                 "\n\\nullfont a\n");
     }
