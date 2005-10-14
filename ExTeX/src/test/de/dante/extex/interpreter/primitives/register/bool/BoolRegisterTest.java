@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.register;
+package de.dante.extex.interpreter.primitives.register.bool;
 
 import de.dante.extex.interpreter.Interpreter;
 import de.dante.extex.interpreter.context.Context;

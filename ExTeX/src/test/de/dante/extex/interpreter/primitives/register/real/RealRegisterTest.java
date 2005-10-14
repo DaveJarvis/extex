@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.register;
+package de.dante.extex.interpreter.primitives.register.real;
 
 import junit.framework.TestCase;
 import de.dante.extex.interpreter.Interpreter;
