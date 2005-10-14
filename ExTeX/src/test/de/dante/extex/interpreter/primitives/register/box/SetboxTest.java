@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter.primitives.register.box;
 
-import de.dante.test.ExTeXLauncher;
+import de.dante.test.NoFlagsButGlobalPrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>\setbox</tt>.
@@ -27,7 +27,7 @@ import de.dante.test.ExTeXLauncher;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class SetboxTest extends ExTeXLauncher {
+public class SetboxTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Command line interface.
@@ -45,7 +45,7 @@ public class SetboxTest extends ExTeXLauncher {
      */
     public SetboxTest(final String arg) {
 
-        super(arg);
+        super(arg, "setbox", "2\\hbox{}", DEFINE_BRACES);
     }
 
     /**
