@@ -19,7 +19,6 @@
 
 package de.dante.extex.interpreter.primitives.parameter;
 
-import de.dante.extex.interpreter.primitives.register.box.WdTest;
 import de.dante.extex.interpreter.primitives.string.AbstractCharMapTester;
 
 /**
@@ -36,7 +35,7 @@ public class SfcodeTest extends AbstractCharMapTester {
      */
     public static void main(final String[] args) {
 
-        junit.textui.TestRunner.run(WdTest.class);
+        junit.textui.TestRunner.run(SfcodeTest.class);
     }
 
     /**
