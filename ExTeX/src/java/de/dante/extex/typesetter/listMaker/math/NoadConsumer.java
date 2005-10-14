@@ -19,6 +19,7 @@
 
 package de.dante.extex.typesetter.listMaker.math;
 
+import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.type.dimen.Dimen;
@@ -135,8 +136,8 @@ public interface NoadConsumer extends ListMaker {
      *
      * @throws TypesetterException in case of an error
      */
-    Noad scanNoad(Context context, TokenSource source, Typesetter typesetter,
-            String primitive) throws TypesetterException;
+    Noad scanNoad(Flags flags, Context context, TokenSource source,
+            Typesetter typesetter, String primitive) throws TypesetterException;
 
     /**
      * This method instructs the implementing class to use a fraction

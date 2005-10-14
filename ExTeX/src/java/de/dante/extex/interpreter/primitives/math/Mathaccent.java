@@ -95,7 +95,7 @@ public class Mathaccent extends AbstractMathCode {
             throw new HelpingException(getLocalizer(), "TTP.BadMathCharCode",
                     Long.toHexString(accent));
         }
-        Noad noad = nc.scanNoad(context, source, typesetter, getName());
+        Noad noad = nc.scanNoad(prefix, context, source, typesetter, getName());
         nc.add(new AccentNoad(new MathGlyph((int) accent), noad));
     }
 
