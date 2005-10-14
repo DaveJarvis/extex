@@ -86,8 +86,11 @@ public class Setbox extends AbstractBox implements Code, Serializable {
 
         String key = getKey(context, source);
         source.getOptionalEquals(context);
+        Flags flags = prefix.copy();
+        prefix.clear();
         Box box = source.getBox(context, typesetter);
         context.setBox(key, box, prefix.isGlobal());
+        prefix.set(flags);
         prefix.clearGlobal();
     }
 
