@@ -19,6 +19,7 @@
 
 package de.dante.extex.interpreter.primitives.parameter;
 
+import de.dante.extex.interpreter.primitives.register.box.WdTest;
 import de.dante.test.ExTeXLauncher;
 
 /**
@@ -28,6 +29,15 @@ import de.dante.test.ExTeXLauncher;
  * @version $Revision$
  */
 public class SpacefactorTest extends ExTeXLauncher {
+
+    /**
+     * Command line interface.
+     * @param args the arguments
+     */
+    public static void main(final String[] args) {
+
+        junit.textui.TestRunner.run(WdTest.class);
+    }
 
     /**
      * Creates a new object.
