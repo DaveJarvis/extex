@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter.primitives.math.style;
 
-import de.dante.test.ExTeXLauncher;
+import de.dante.extex.interpreter.primitives.math.AbstractMathTester;
 
 /**
  * This is a test suite for the primitive <tt>\displaystyle</tt>.
@@ -27,7 +27,7 @@ import de.dante.test.ExTeXLauncher;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class DisplaystyleTest extends ExTeXLauncher {
+public class DisplaystyleTest extends AbstractMathTester {
 
     /**
      * Constructor for DisplaystyleTest.
@@ -36,21 +36,7 @@ public class DisplaystyleTest extends ExTeXLauncher {
      */
     public DisplaystyleTest(final String arg) {
 
-        super(arg);
-    }
-
-    /**
-     * Test case checking that \displaystyle needs the math mode.
-     * @throws Exception in case of an error
-     */
-    public void testNonMathMode() throws Exception {
-
-        runCode(//--- input code ---
-                "\\displaystyle \\end",
-                //--- log message ---
-                "Missing $ inserted",
-                //--- output channel ---
-                "");
+        super(arg, "displaystyle", "");
     }
 
 }

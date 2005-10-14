@@ -22,7 +22,7 @@ package de.dante.extex.interpreter.primitives.math;
 import de.dante.test.ExTeXLauncher;
 
 /**
- * This is a test suite for the primitive <tt>\mathaccent</tt>.
+ * This is a test suite for math.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -45,11 +45,9 @@ public class MathTest extends ExTeXLauncher {
      */
     public void testMath1() throws Exception {
 
-        runCode(//--- input code ---
+        assertSuccess(//--- input code ---
                 "\\catcode`$=3 "
-                + "$a$",
-                //--- log message ---
-                "",
+                + "$a$ \\end",
                 //--- output channel ---
                 "a\n");
     }
@@ -60,13 +58,11 @@ public class MathTest extends ExTeXLauncher {
      */
     public void testMath2() throws Exception {
 
-        runCode(//--- input code ---
+        assertSuccess(//--- input code ---
                 "\\catcode`\\{=1 "
                 + "\\catcode`\\}=2 "
                 + "\\catcode`$=3 "
-                + "${a \\over b}$",
-                //--- log message ---
-                "",
+                + "${a \\over b}$ \\end",
                 //--- output channel ---
                 "???"); //TODO gene: check
     }

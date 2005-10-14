@@ -19,7 +19,6 @@
 
 package de.dante.extex.interpreter.primitives.math;
 
-import de.dante.test.ExTeXLauncher;
 
 /**
  * This is a test suite for the primitive <tt>\mathchar</tt>.
@@ -27,7 +26,7 @@ import de.dante.test.ExTeXLauncher;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class MathcharTest extends ExTeXLauncher {
+public class MathcharTest extends AbstractMathTester {
 
     /**
      * Constructor for MathcharTest.
@@ -36,21 +35,7 @@ public class MathcharTest extends ExTeXLauncher {
      */
     public MathcharTest(final String arg) {
 
-        super(arg);
-    }
-
-    /**
-     * Test case checking that \mathchar needs the math mode.
-     * @throws Exception in case of an error
-     */
-    public void testNonMathMode() throws Exception {
-
-        runCode(//--- input code ---
-                "\\mathchar \\end",
-                //--- log message ---
-                "Missing $ inserted",
-                //--- output channel ---
-                "");
+        super(arg, "mathchar", "123 ");
     }
 
 }

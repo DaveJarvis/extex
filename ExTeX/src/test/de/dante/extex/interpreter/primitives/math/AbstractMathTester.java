@@ -20,23 +20,49 @@
 package de.dante.extex.interpreter.primitives.math;
 
 import de.dante.test.ExTeXLauncher;
+import de.dante.test.NoFlagsPrimitiveTester;
 
 /**
- * This is a test suite for the primitive <tt>\mathcharcode</tt>.
+ * This is an abstract base class for testing math primitives.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class MathcharCodeTest extends ExTeXLauncher {
+public class AbstractMathTester extends NoFlagsPrimitiveTester {
 
     /**
-     * Constructor for MathcharcodeTest.
+     * The field <tt>primitive</tt> contains the name of the primitive to test.
+     */
+    private String primitive;
+
+    /**
+     * The field <tt>arguments</tt> contains the ...
+     */
+    private String arguments;
+
+    /**
+     * Constructor for MathaccentTest.
      *
      * @param arg the name
      */
-    public MathcharCodeTest(final String arg) {
+    public AbstractMathTester(final String arg, final String primitive,
+            final String arguments) {
 
-        super(arg);
+        super(arg, primitive, arguments, DEFINE_CATCODES +"$");
+        this.primitive = primitive;
+        this.arguments = arguments;
+    }
+
+    /**
+     * Test case checking that \mathaccent needs the math mode.
+     * @throws Exception in case of an error
+     */
+    public void testNonMathMode() throws Exception {
+
+        assertFailure(//--- input code ---
+                "\\" + primitive + arguments + " ",
+                //--- log message ---
+                "Missing $ inserted");
     }
 
 }

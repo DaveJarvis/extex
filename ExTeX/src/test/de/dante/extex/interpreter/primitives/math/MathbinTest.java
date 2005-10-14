@@ -19,7 +19,6 @@
 
 package de.dante.extex.interpreter.primitives.math;
 
-import de.dante.test.ExTeXLauncher;
 
 /**
  * This is a test suite for the primitive <tt>\mathbin</tt>.
@@ -27,7 +26,7 @@ import de.dante.test.ExTeXLauncher;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class MathbinTest extends ExTeXLauncher {
+public class MathbinTest extends AbstractMathTester {
 
     /**
      * Constructor for MathbinTest.
@@ -36,21 +35,9 @@ public class MathbinTest extends ExTeXLauncher {
      */
     public MathbinTest(final String arg) {
 
-        super(arg);
+        super(arg, "mathbin", " x");
     }
 
-    /**
-     * Test case checking that \mathbin needs the math mode.
-     * @throws Exception in case of an error
-     */
-    public void testNonMathMode() throws Exception {
-
-        runCode(//--- input code ---
-                "\\mathbin \\end",
-                //--- log message ---
-                "Missing $ inserted",
-                //--- output channel ---
-                "");
-    }
+    //TODO implement the primitive specific test cases
 
 }

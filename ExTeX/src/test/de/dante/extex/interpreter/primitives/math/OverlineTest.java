@@ -27,7 +27,7 @@ import de.dante.test.ExTeXLauncher;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class OverlineTest extends ExTeXLauncher {
+public class OverlineTest extends AbstractMathTester {
 
     /**
      * Constructor for OverlineTest.
@@ -36,21 +36,7 @@ public class OverlineTest extends ExTeXLauncher {
      */
     public OverlineTest(final String arg) {
 
-        super(arg);
-    }
-
-    /**
-     * Test case checking that \overline needs the math mode.
-     * @throws Exception in case of an error
-     */
-    public void testNonMathMode() throws Exception {
-
-        runCode(//--- input code ---
-                "\\overline \\end",
-                //--- log message ---
-                "Missing $ inserted",
-                //--- output channel ---
-                "");
+        super(arg, "overline", " x");
     }
 
 }
