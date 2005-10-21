@@ -111,7 +111,7 @@ public class Xleaders extends AbstractCode {
         }
 
         CodeToken vskip = source.getControlSequence(context);
-        code = context.getCode(cs);
+        code = context.getCode(vskip);
 
         if (code == null) {
             throw new UndefinedControlSequenceException(//
