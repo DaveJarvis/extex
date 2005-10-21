@@ -17,22 +17,23 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.math;
+package de.dante.extex.interpreter.primitives.math.symbol;
 
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
+import de.dante.extex.interpreter.primitives.math.AbstractMathCode;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.listMaker.math.NoadConsumer;
 import de.dante.extex.typesetter.type.noad.Noad;
-import de.dante.extex.typesetter.type.noad.OpenNoad;
+import de.dante.extex.typesetter.type.noad.OrdinaryNoad;
 
 /**
- * This class provides an implementation for the primitive <code>\mathopen</code>.
+ * This class provides an implementation for the primitive <code>\mathord</code>.
  *
- * <doc name="mathopen">
- * <h3>The Math Primitive <tt>\mathopen</tt></h3>
+ * <doc name="mathord">
+ * <h3>The Math Primitive <tt>\mathord</tt></h3>
  * <p>
  *  TODO missing documentation
  * </p>
@@ -40,19 +41,19 @@ import de.dante.extex.typesetter.type.noad.OpenNoad;
  * <h4>Syntax</h4>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    &lang;mathopen&rang;
- *       &rarr; <tt>\mathopen</tt>  </pre>
+ *    &lang;mathord&rang;
+ *       &rarr; <tt>\mathord</tt>  </pre>
  *
  * <h4>Examples</h4>
  *  <pre class="TeXSample">
- *    \mathopen  </pre>
+ *    \mathord  </pre>
  *
  * </doc>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Mathopen extends AbstractMathCode {
+public class Mathord extends AbstractMathCode {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
@@ -64,7 +65,7 @@ public class Mathopen extends AbstractMathCode {
      *
      * @param name the name for tracing and debugging
      */
-    public Mathopen(final String name) {
+    public Mathord(final String name) {
 
         super(name);
     }
@@ -82,7 +83,7 @@ public class Mathopen extends AbstractMathCode {
 
         NoadConsumer nc = getListMaker(context, typesetter);
         Noad noad = nc.scanNoad(prefix, context, source, typesetter, getName());
-        nc.add(new OpenNoad(noad));
+        nc.add(new OrdinaryNoad(noad));
     }
 
 }
