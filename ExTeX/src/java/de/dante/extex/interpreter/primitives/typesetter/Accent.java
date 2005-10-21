@@ -116,7 +116,8 @@ public class Accent extends AbstractCode {
                     "TTP.AccentInMathMode", printableControlSequence(context),
                     context.esc("mathaccent"));
         }
-        UnicodeChar accent = source.scanCharacterCode(context, typesetter, getName());
+        UnicodeChar accent = source.scanCharacterCode(context, typesetter,
+                getName());
         Token token = source.getToken(context);
         TypesettingContext tc = context.getTypesettingContext();
         Font currentFont = tc.getFont();
@@ -140,7 +141,8 @@ public class Accent extends AbstractCode {
             if (glyph != null) {
                 if (g == null) {
                     try {
-                        typesetter.letter(context, tc, accent);
+                        typesetter.letter(context, tc, accent, source
+                                .getLocator());
                     } catch (GeneralException e) {
                         throw new InterpreterException(e);
                     }
@@ -164,7 +166,7 @@ public class Accent extends AbstractCode {
                         typesetter.add(node);
                         d.set(-a - delta);
                         typesetter.add(new AccentKernNode(d));
-                        typesetter.letter(context, tc, c);
+                        typesetter.letter(context, tc, c, source.getLocator());
                     } catch (GeneralException e) {
                         throw new InterpreterException(e);
                     } catch (ConfigurationException e) {
@@ -173,7 +175,7 @@ public class Accent extends AbstractCode {
                 }
             } else if (g != null) {
                 try {
-                    typesetter.letter(context, tc, c);
+                    typesetter.letter(context, tc, c, source.getLocator());
                 } catch (GeneralException e) {
                     throw new InterpreterException(e);
                 }
