@@ -103,6 +103,16 @@ public class JavaLoad extends AbstractCode implements Loader {
 
     /**
      * Creates a new object.
+     * This method is needed for the nativeload wrapper.
+     *
+     */
+    public JavaLoad() {
+
+        super("");
+    }
+
+    /**
+     * Creates a new object.
      *
      * @param codeName the name for debugging
      */
