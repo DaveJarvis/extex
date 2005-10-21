@@ -252,9 +252,7 @@ public class ColorPrimitive extends AbstractAssignment
         int alpha = 0;
         ColorMode mode = RGB_MODE;
 
-        Token t = source.getNonSpace(context);
-        while (t instanceof LetterToken) {
-            source.push(t);
+        for(;;) {
             if (source.getKeyword(context, "alpha")) {
                 alpha = scanColorComponent(context, source, getName());
             } else if (source.getKeyword(context, "rgb")) {
@@ -265,9 +263,11 @@ public class ColorPrimitive extends AbstractAssignment
                 mode = HSV_MODE;
             } else if (source.getKeyword(context, "cmyk")) {
                 mode = CMYK_MODE;
+            } else {
+                break;
             }
-            t = source.getToken(context);
         }
+        Token t = source.getNonSpace(context);
         if (t == null) {
             throw new EofException(getName());
         } else if (!(t instanceof LeftBraceToken)) {
