@@ -1523,4 +1523,12 @@ public class ContextImpl
             }
         }
     }
+
+    /**
+     * @see de.dante.extex.interpreter.context.Context#getIfLevel()
+     */
+    public long getIfLevel() {
+
+        return conditionalStack.size();
+    }
 }
