@@ -23,7 +23,7 @@ import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.primitives.math.delimiter.AbstractTeXDelimter;
+import de.dante.extex.interpreter.primitives.math.delimiter.AbstractTeXDelimiter;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.listMaker.math.NoadConsumer;
@@ -54,7 +54,7 @@ import de.dante.extex.typesetter.type.math.MathDelimiter;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Abovewithdelims extends AbstractTeXDelimter {
+public class Abovewithdelims extends AbstractTeXDelimiter {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.

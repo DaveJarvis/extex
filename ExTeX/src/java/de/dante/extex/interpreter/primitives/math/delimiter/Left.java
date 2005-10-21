@@ -51,7 +51,7 @@ import de.dante.extex.typesetter.type.math.MathDelimiter;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Left extends AbstractTeXDelimter {
+public class Left extends AbstractTeXDelimiter {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
