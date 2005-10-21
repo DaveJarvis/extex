@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter.primitives.typesetter.undo;
 
-import de.dante.test.ExTeXLauncher;
+import de.dante.test.NoFlagsPrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>&#x5c;unvbox</tt>.
@@ -27,7 +27,7 @@ import de.dante.test.ExTeXLauncher;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class UnvboxTest extends ExTeXLauncher {
+public class UnvboxTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
@@ -45,7 +45,7 @@ public class UnvboxTest extends ExTeXLauncher {
      */
     public UnvboxTest(final String arg) {
 
-        super(arg);
+        super(arg, "unvbox", "42 ");
     }
 
     //TODO implement primitive specific test cases

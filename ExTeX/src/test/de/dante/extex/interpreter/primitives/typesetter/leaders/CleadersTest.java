@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter.primitives.typesetter.leaders;
 
-import de.dante.test.ExTeXLauncher;
+import de.dante.test.NoFlagsPrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>\cleaders</tt>.
@@ -27,7 +27,7 @@ import de.dante.test.ExTeXLauncher;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class CleadersTest extends ExTeXLauncher {
+public class CleadersTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
@@ -45,7 +45,7 @@ public class CleadersTest extends ExTeXLauncher {
      */
     public CleadersTest(final String arg) {
 
-        super(arg);
+        super(arg, "cleaders", "\\vrule\\vfill");
     }
 
     //TODO implement primitive specific test cases

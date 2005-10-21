@@ -36,7 +36,7 @@ public class ShowboxTest extends NoFlagsButGlobalPrimitiveTester {
      */
     public ShowboxTest(final String arg) {
 
-        super(arg, "showbox", "1 ");
+        super(arg, "showbox", "1 ", "", "\\box#1=void\nOK\n");
     }
 
     /**
@@ -49,12 +49,12 @@ public class ShowboxTest extends NoFlagsButGlobalPrimitiveTester {
     public void _____________testVoid1() throws Exception {
 
         //TODO other test runner needed
-        runCode(//--- input code ---
+        assertFailure(//--- input code ---
                 "\\showbox 1 ",
                 //--- error channel ---
-                "",
-                //--- output channel ---
                 "");
     }
+
+    //TODO implement the primitive specific test cases
 
 }

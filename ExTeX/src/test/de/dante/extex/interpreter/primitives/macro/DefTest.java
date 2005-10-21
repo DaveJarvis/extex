@@ -133,13 +133,11 @@ public class DefTest extends ExTeXLauncher {
      */
     public void testPattern1() throws Exception {
 
-        runCode(//--- input code ---
+        assertSuccess(//--- input code ---
                 DEFINE_CATCODES
                 + "\\def\\aaa#1.{--#1--}"
                 + "\\aaa 2."
                 + "\\end ",
-                //--- log message ---
-                "",
                 //--- output channel ---
                 "--2--" + TERM);
     }

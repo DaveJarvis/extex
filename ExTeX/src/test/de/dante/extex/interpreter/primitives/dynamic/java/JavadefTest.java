@@ -19,9 +19,6 @@
 
 package de.dante.extex.interpreter.primitives.dynamic.java;
 
-import javax.naming.NoPermissionException;
-
-import de.dante.test.ExTeXLauncher;
 import de.dante.test.NoFlagsButGlobalPrimitiveTester;
 
 /**
@@ -33,7 +30,7 @@ import de.dante.test.NoFlagsButGlobalPrimitiveTester;
 public class JavadefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
-     * Constructor for SkewcharTest.
+     * Creates a new object.
      *
      * @param arg the name
      */
@@ -81,15 +78,16 @@ public class JavadefTest extends NoFlagsButGlobalPrimitiveTester {
         assertSuccess(
                 //--- input code ---
                 DEFINE_BRACES
-                        + "\\begingroup\\global\\javadef\\t{de.dante.extex.interpreter.primitives.info.The}\\endgroup"
-                        + "\\t\\count42" + " \\end",
+                        + "\\begingroup"
+                        + "\\global\\javadef\\t{de.dante.extex.interpreter.primitives.info.The}"
+                        + "\\endgroup" + "\\t\\count42" + " \\end",
                 //--- log message ---
                 "0" + TERM);
     }
 
     /**
      * <testcase primitive="\javadef">
-     *  Test case checking that <tt>\javadef</tt> respects the global keyword.
+     *  Test case checking that <tt>\javadef</tt> respects the \global keyword.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -99,10 +97,51 @@ public class JavadefTest extends NoFlagsButGlobalPrimitiveTester {
         assertFailure(
                 //--- input code ---
                 DEFINE_BRACES
-                        + "\\begingroup\\javadef\\t{de.dante.extex.interpreter.primitives.info.The}\\endgroup"
-                        + "\\t\\count42" + " \\end",
+                        + "\\begingroup"
+                        + "\\javadef\\t{de.dante.extex.interpreter.primitives.info.The}"
+                        + "\\endgroup" + "\\t\\count42" + " \\end",
                 //--- log message ---
                 "Undefined control sequence \\t");
+    }
+
+    /**
+     * <testcase primitive="\javadef">
+     *  Test case checking that <tt>\javadef</tt> respects \globaldefs.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testGlobal3() throws Exception {
+
+        assertSuccess(
+                //--- input code ---
+                DEFINE_BRACES
+                        + "\\globaldefs=1 "
+                        + "\\begingroup"
+                        + "\\javadef\\t{de.dante.extex.interpreter.primitives.info.The}"
+                        + "\\endgroup" + "\\t\\count42" + " \\end",
+                //--- log message ---
+                "0" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\javadef">
+     *  Test case checking that <tt>\javadef</tt> respects \afterassignment.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testAfterassignment1() throws Exception {
+
+        assertFailure(
+                //--- input code ---
+                DEFINE_BRACES
+                        + "\\afterassignment\\x "
+                        + "\\begingroup"
+                        + "\\javadef\\t{de.dante.extex.interpreter.primitives.info.The}"
+                        + "\\endgroup",
+                //--- log message ---
+                "Undefined control sequence \\x");
     }
 
 }

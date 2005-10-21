@@ -50,13 +50,11 @@ public class JobnameTest extends NoFlagsPrimitiveTester {
      */
     public void testJobname1() throws Exception {
 
-        runCode(//--- input code ---
+        assertSuccess(//--- input code ---
                 "\\catcode`{=1"
                 + "\\catcode`}=2"
                 + "\\jobname"
                 + "\\end ",
-                //--- log message ---
-                "",
                 //--- output channel ---
                 "texput" + TERM);
     }
@@ -73,14 +71,12 @@ public class JobnameTest extends NoFlagsPrimitiveTester {
         Properties properties = System.getProperties();
         properties.setProperty("extex.jobname", "job");
 
-        runCode(properties,
+        assertSuccess(properties,
                 //--- input code ---
                 "\\catcode`{=1"
                 + "\\catcode`}=2"
                 + "\\jobname"
                 + "\\end ",
-                //--- log message ---
-                "",
                 //--- output channel ---
                 "job" + TERM);
     }

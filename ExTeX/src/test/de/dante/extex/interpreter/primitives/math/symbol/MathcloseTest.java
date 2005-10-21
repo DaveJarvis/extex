@@ -17,25 +17,26 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.math;
+package de.dante.extex.interpreter.primitives.math.symbol;
 
+import de.dante.extex.interpreter.primitives.math.AbstractMathTester;
 
 /**
- * This is a test suite for the primitive <tt>\mathchar</tt>.
+ * This is a test suite for the primitive <tt>\mathclose</tt>.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class MathcharTest extends AbstractMathTester {
+public class MathcloseTest extends AbstractMathTester {
 
     /**
-     * Constructor for MathcharTest.
+     * Constructor for MathcloseTest.
      *
      * @param arg the name
      */
-    public MathcharTest(final String arg) {
+    public MathcloseTest(final String arg) {
 
-        super(arg, "mathchar", "123 ");
+        super(arg, "mathclose", "1234 ");
     }
 
 }

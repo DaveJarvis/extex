@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter.primitives.typesetter.undo;
 
-import de.dante.test.ExTeXLauncher;
+import de.dante.test.NoFlagsPrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>&#x5c;unpenalty</tt>.
@@ -27,7 +27,7 @@ import de.dante.test.ExTeXLauncher;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class UnpenaltyTest extends ExTeXLauncher {
+public class UnpenaltyTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
@@ -45,7 +45,7 @@ public class UnpenaltyTest extends ExTeXLauncher {
      */
     public UnpenaltyTest(final String arg) {
 
-        super(arg);
+        super(arg, "unpenalty", "42");
     }
 
     //TODO implement primitive specific test cases

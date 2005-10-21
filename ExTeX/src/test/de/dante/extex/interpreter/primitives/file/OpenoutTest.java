@@ -58,12 +58,10 @@ public class OpenoutTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
      */
     public void testEof1() throws Exception {
 
-        runCode(//--- input code ---
+        assertFailure(//--- input code ---
                 "\\openout ",
                 //--- log message ---
-                "Missing number, treated as zero",
-                //--- output channel ---
-                "");
+                "Missing number, treated as zero");
     }
 
     /**
@@ -76,12 +74,10 @@ public class OpenoutTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
      */
     public void testEof2() throws Exception {
 
-        runCode(//--- input code ---
+        assertFailure(//--- input code ---
                 "\\openout 2",
                 //--- log message ---
-                "Unexpected end of file while processing \\openout",
-                //--- output channel ---
-                "");
+                "Unexpected end of file while processing \\openout");
     }
 
 }

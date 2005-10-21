@@ -19,7 +19,6 @@
 
 package de.dante.extex.interpreter.primitives.prefix;
 
-
 /**
  * This is a test suite for the primitive <tt>\long</tt>.
  *

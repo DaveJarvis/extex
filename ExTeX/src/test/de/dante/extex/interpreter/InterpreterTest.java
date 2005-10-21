@@ -46,13 +46,11 @@ public class InterpreterTest extends ExTeXLauncher {
      */
     public void testOpenBlock() throws Exception {
 
-        runCode(//--- input code ---
+        assertFailure(//--- input code ---
                 "\\begingroup"
                 + "\\end ",
                 //--- log message ---
-                "(\\end occurred inside a group at level 1)",
-                //--- output channel ---
-                "");
+                "(\\end occurred inside a group at level 1)");
     }
 
     /**
@@ -62,14 +60,12 @@ public class InterpreterTest extends ExTeXLauncher {
      */
     public void testOpenBlock2() throws Exception {
 
-        runCode(//--- input code ---
+        assertFailure(//--- input code ---
                 "\\begingroup"
                 + "\\begingroup"
                 + "\\end ",
                 //--- log message ---
-                "(\\end occurred inside a group at level 2)",
-                //--- output channel ---
-                "");
+                "(\\end occurred inside a group at level 2)");
     }
 
     /**
@@ -79,13 +75,11 @@ public class InterpreterTest extends ExTeXLauncher {
      */
     public void testOpenIf() throws Exception {
 
-        runCode(//--- input code ---
+        assertFailure(//--- input code ---
                 "\\iftrue"
                 + "\\end ",
                 //--- log message ---
-                "(\\end occurred when \\iftrue was incomplete)",
-                //--- output channel ---
-                "");
+                "(\\end occurred when \\iftrue was incomplete)");
     }
 
 }

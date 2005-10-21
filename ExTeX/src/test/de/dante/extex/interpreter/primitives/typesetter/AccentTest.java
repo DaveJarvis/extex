@@ -54,12 +54,10 @@ public class AccentTest extends ExTeXLauncher {
      */
     public void testAccentInMathMode() throws Exception {
 
-        runCode(//--- input code ---
+        assertFailure(//--- input code ---
                 "\\catcode`$=3 \\relax"
                 + "$\\accent $\\end",
                 //--- log message ---
-                "?",
-                //--- output channel ---
                 "?");
     }
 

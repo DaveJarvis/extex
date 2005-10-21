@@ -46,7 +46,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
      */
     public DumpTest(final String arg) {
 
-        super(arg, "dump", "");
+        super(arg, "dump", "", "", "Beginning to dump on file texput.fmt\n");
     }
 
 }

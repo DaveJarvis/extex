@@ -36,7 +36,7 @@ public class MiddleTest extends AbstractMathTester {
      */
     public MiddleTest(final String arg) {
 
-        super(arg, "middle", "(");
+        super(arg, "middle", "123 ");
     }
 
 }

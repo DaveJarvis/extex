@@ -176,13 +176,11 @@ public class HalignTest extends ExTeXLauncher {
         Properties properties = System.getProperties();
         properties.setProperty("extex.output", "dump");
 
-        runCode(properties,
+        assertSuccess(properties,
                 //--- input code ---
                 DEFINE_CATCODES
                 + "\\halign{a#b&c#d\\cr1&2\\cr}"
                 + "\\end ",
-                //--- log message ---
-                "",
                 //--- output channel ---
                 "???"); //TODO gene: check
     }

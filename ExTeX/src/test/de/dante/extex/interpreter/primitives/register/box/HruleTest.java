@@ -53,13 +53,11 @@ public class HruleTest extends ExTeXLauncher {
         Properties properties = System.getProperties();
         properties.setProperty("extex.output", "dump");
 
-        runCode(properties,
+        assertSuccess(properties,
                 //--- input code ---
                 "\\hsize=123pt "
                 + "\\hrule"
                 + "\\end ",
-                //--- log message ---
-                "",
                 //--- output channel ---
                 "\\vbox(0.4pt+0.0pt)x0.0pt\n.\\rule0.4pt+0.0ptx0.0pt\n");
         //TODO gene: is this correct?

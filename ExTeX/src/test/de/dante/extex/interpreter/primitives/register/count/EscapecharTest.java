@@ -47,6 +47,40 @@ public class EscapecharTest extends AbstractCountRegisterTester {
         super(arg, "escapechar", "", "92");
     }
 
+    /**
+     * <testcase primitive="\escapechar">
+     *  Test case checking that <tt>\escapechar</tt> works with
+     *  <tt>\meaning</tt>.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test1() throws Exception {
+
+        assertSuccess(//--- input code ---
+                "\\escapechar=`\\:\\meaning\\relax"
+                        + "\\end",
+                //--- output channel ---
+                ":relax=:relax" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\escapechar">
+     *  Test case checking that <tt>\escapechar</tt> works with
+     *  <tt>\string</tt>.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test2() throws Exception {
+
+        assertSuccess(//--- input code ---
+                "\\escapechar=`\\:\\string\\relax"
+                        + "\\end",
+                //--- output channel ---
+                ":relax" + TERM);
+    }
+
     //TODO implement the primitive specific test cases
 
 }

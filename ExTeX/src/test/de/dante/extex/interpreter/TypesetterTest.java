@@ -52,7 +52,7 @@ public class TypesetterTest extends ExTeXLauncher {
         properties.setProperty("extex.typesetter", "devel");
         properties.setProperty("extex.output", "out");
 
-        runCode(properties,
+        assertSuccess(properties,
                 //--- input code ---
                 DEFINE_BRACES //
                 + "\\font\\fnt=cmtt12\\fnt\n" //
@@ -156,8 +156,6 @@ public class TypesetterTest extends ExTeXLauncher {
                 + "sollemnes in futurum. \n" //
                 + "\n" //
                 + "\\end\n",
-                //--- log message ---
-                "",
                 //--- output channel ---
                 "?");
     }

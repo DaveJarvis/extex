@@ -36,7 +36,7 @@ public class LeftTest extends AbstractMathTester {
      */
     public LeftTest(final String arg) {
 
-        super(arg, "left", "(");
+        super(arg, "left", "123 ");
     }
 
 }

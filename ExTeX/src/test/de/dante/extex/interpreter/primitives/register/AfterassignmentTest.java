@@ -57,12 +57,10 @@ public class AfterassignmentTest extends ExTeXLauncher {
      */
     public void testEOF1() throws Exception {
 
-        runCode(//--- input code ---
+        assertFailure(//--- input code ---
                 "\\afterassignment",
                 //--- log message ---
-                "Unexpected end of file while processing \\afterassignment",
-                //--- output channel ---
-                "");
+                "Unexpected end of file while processing \\afterassignment");
     }
 
     /**

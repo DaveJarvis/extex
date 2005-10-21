@@ -301,6 +301,14 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * @see de.dante.extex.interpreter.context.Context#getIfLevel()
+     */
+    public long getIfLevel() {
+
+        return 0;
+    }
+
+    /**
      * @see de.dante.extex.interpreter.context.ContextFile#getInFile(java.lang.String)
      */
     public InFile getInFile(final String name) {

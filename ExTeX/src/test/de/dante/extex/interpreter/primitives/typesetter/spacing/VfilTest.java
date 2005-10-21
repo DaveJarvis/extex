@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter.primitives.typesetter.spacing;
 
-import de.dante.test.ExTeXLauncher;
+import de.dante.test.NoFlagsPrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>\vfil</tt>.
@@ -27,7 +27,7 @@ import de.dante.test.ExTeXLauncher;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class VfilTest extends ExTeXLauncher {
+public class VfilTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
@@ -45,7 +45,7 @@ public class VfilTest extends ExTeXLauncher {
      */
     public VfilTest(final String arg) {
 
-        super(arg);
+        super(arg, "vfil", "");
     }
 
     //TODO implement primitive specific test cases

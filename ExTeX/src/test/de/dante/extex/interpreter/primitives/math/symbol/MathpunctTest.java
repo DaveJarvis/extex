@@ -17,24 +17,26 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.math;
+package de.dante.extex.interpreter.primitives.math.symbol;
+
+import de.dante.extex.interpreter.primitives.math.AbstractMathTester;
 
 /**
- * This is a test suite for the primitive <tt>\mathop</tt>.
+ * This is a test suite for the primitive <tt>\mathpunct</tt>.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class MathopTest extends AbstractMathTester {
+public class MathpunctTest extends AbstractMathTester {
 
     /**
-     * Constructor for MathopTest.
+     * Constructor for MathpunctTest.
      *
      * @param arg the name
      */
-    public MathopTest(final String arg) {
+    public MathpunctTest(final String arg) {
 
-        super(arg, "mathop", " x");
+        super(arg, "mathpunct", " x");
     }
 
 }

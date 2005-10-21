@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter.primitives.table;
 
-import de.dante.test.ExTeXLauncher;
+import de.dante.test.NoFlagsPrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>\noalign</tt>.
@@ -27,7 +27,7 @@ import de.dante.test.ExTeXLauncher;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class NoalignTest extends ExTeXLauncher {
+public class NoalignTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
@@ -45,7 +45,7 @@ public class NoalignTest extends ExTeXLauncher {
      */
     public NoalignTest(final String arg) {
 
-        super(arg);
+        super(arg, "noalign", "}", "\\halign{#\\");
     }
 
 }

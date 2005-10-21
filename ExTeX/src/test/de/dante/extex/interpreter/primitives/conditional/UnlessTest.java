@@ -49,4 +49,38 @@ public class UnlessTest extends ExTeXLauncher {
         super(arg);
     }
 
+    /**
+     * <testcase primitive="\u005cnless">
+     *  Test case checking that <tt>\u005cnless</tt> ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test1() throws Exception {
+
+        assertSuccess(
+                //--- input code ---
+                DEFINE_BRACES + "\\unless\\ifnum1=1 a\\else b\\fi \\end",
+                //--- output channel ---
+                "b" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\u005cnless">
+     *  Test case checking that <tt>\u005cnless</tt> ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test2() throws Exception {
+
+        assertSuccess(
+                //--- input code ---
+                DEFINE_BRACES + "\\unless\\ifnum1=3 a\\else b\\fi \\end",
+                //--- output channel ---
+                "a" + TERM);
+    }
+
+    //TODO implement the primitive specific test cases
+
 }

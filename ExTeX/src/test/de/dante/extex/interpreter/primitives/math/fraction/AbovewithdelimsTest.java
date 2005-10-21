@@ -45,12 +45,10 @@ public class AbovewithdelimsTest extends ExTeXLauncher {
      */
     public void testNonMathMode() throws Exception {
 
-        runCode(//--- input code ---
+        assertFailure(//--- input code ---
                 "\\abovewithdelims \\end",
                 //--- log message ---
-                "Missing $ inserted",
-                //--- output channel ---
-                "");
+                "Missing $ inserted");
     }
 
 }

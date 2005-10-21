@@ -17,17 +17,17 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.group;
+package de.dante.extex.interpreter.primitives.conditional.analyze;
 
 import de.dante.test.ExTeXLauncher;
 
 /**
- * This is a test suite for the primitive <tt>\currentgrouplevel</tt>.
+ * This is a test suite for the primitive <tt>\currentiflevel</tt>.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class CurrentgrouplevelTest extends ExTeXLauncher {
+public class CurrentiflevelTest extends ExTeXLauncher {
 
     /**
      * Method for running the tests standalone.
@@ -36,7 +36,7 @@ public class CurrentgrouplevelTest extends ExTeXLauncher {
      */
     public static void main(final String[] args) {
 
-        junit.textui.TestRunner.run(CurrentgrouplevelTest.class);
+        junit.textui.TestRunner.run(CurrentiflevelTest.class);
     }
 
     /**
@@ -44,90 +44,67 @@ public class CurrentgrouplevelTest extends ExTeXLauncher {
      *
      * @param arg the name
      */
-    public CurrentgrouplevelTest(final String arg) {
+    public CurrentiflevelTest(final String arg) {
 
         super(arg);
     }
 
     /**
-     * <testcase primitive="\currentgrouplevel">
-     *  Test case checking that a lonely <tt>\currentgrouplevel</tt>
-     *  leads to an error.
+     * <testcase primitive="\currentiflevel">
+     *  Test case checking that <tt>\currentiflevel</tt>...
      * </testcase>
      *
      * @throws Exception in case of an error
      */
-    public void testError1() throws Exception {
+    public void testErr1() throws Exception {
 
         assertFailure(//--- input code ---
-                "\\currentgrouplevel ",
-                //--- error message ---
-                "You can't use `\\currentgrouplevel' in vertical mode");
+                "\\currentiflevel ",
+                //--- log message ---
+                "You can't use `\\currentiflevel' in vertical mode");
     }
-
+    
     /**
-     * <testcase primitive="\currentgrouplevel">
-     *  Test case checking that <tt>\currentgrouplevel</tt> outside any group
-     *  returns 0.
+     * <testcase primitive="\currentiflevel">
+     *  Test case checking that <tt>\currentiflevel</tt>...
      * </testcase>
      *
      * @throws Exception in case of an error
      */
-    public void testLevel0() throws Exception {
+    public void test0() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\the\\currentgrouplevel \\end",
+                "\\the\\currentiflevel \\end",
                 //--- log message ---
                 "0" + TERM);
     }
 
     /**
-     * <testcase primitive="\currentgrouplevel">
-     *  Test case checking that <tt>\currentgrouplevel</tt> inside a group
-     *  returns 1.
+     * <testcase primitive="\currentiflevel">
+     *  Test case checking that <tt>\currentiflevel</tt>...
      * </testcase>
      *
      * @throws Exception in case of an error
      */
-    public void testLevel1() throws Exception {
+    public void test1() throws Exception {
 
         assertSuccess(//--- input code ---
-                DEFINE_BRACES
-                + "{\\the\\currentgrouplevel}\\end",
+                "\\iftrue\\the\\currentiflevel \\fi\\end",
                 //--- log message ---
                 "1" + TERM);
     }
 
     /**
-     * <testcase primitive="\currentgrouplevel">
-     *  Test case checking that <tt>\currentgrouplevel</tt> inside a group
-     *  in a group returns 2.
+     * <testcase primitive="\currentiflevel">
+     *  Test case checking that <tt>\currentiflevel</tt>...
      * </testcase>
      *
      * @throws Exception in case of an error
      */
-    public void testLevel2() throws Exception {
+    public void test2() throws Exception {
 
         assertSuccess(//--- input code ---
-                DEFINE_BRACES
-                + "{{\\the\\currentgrouplevel}}\\end",
-                //--- log message ---
-                "2" + TERM);
-    }
-
-    /**
-     * <testcase primitive="\currentgrouplevel">
-     *  Test case checking that <tt>\currentgrouplevel</tt> is count
-     *  convertible.
-     * </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void testConvertible1() throws Exception {
-
-        assertSuccess(//--- input code ---
-                DEFINE_BRACES
-                + "{{\\count0=\\currentgrouplevel \\the\\count0}}\\end",
+                "\\iftrue\\iftrue\\the\\currentiflevel \\fi\\fi\\end",
                 //--- log message ---
                 "2" + TERM);
     }

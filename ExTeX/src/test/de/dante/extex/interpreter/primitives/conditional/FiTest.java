@@ -58,12 +58,10 @@ public class FiTest extends ExTeXLauncher {
      */
     public void testConst0() throws Exception {
 
-        runCode(//--- input code ---
+        assertFailure(//--- input code ---
                 "\\fi",
                 //--- log message ---
-                "Extra \\fi",
-                //--- output channel ---
-                "");
+                "Extra \\fi");
     }
 
 }

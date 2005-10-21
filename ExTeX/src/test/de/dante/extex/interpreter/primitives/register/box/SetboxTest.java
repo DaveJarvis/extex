@@ -87,12 +87,10 @@ public class SetboxTest extends NoFlagsButGlobalPrimitiveTester {
      */
     public void testEOF3() throws Exception {
 
-        runCode(//--- input code ---
+        assertFailure(//--- input code ---
                 "\\setbox33=",
                 //--- log message ---
-                "A <box> was supposed to be here",
-                //--- output channel ---
-                "");
+                "A <box> was supposed to be here");
     }
 
     /**

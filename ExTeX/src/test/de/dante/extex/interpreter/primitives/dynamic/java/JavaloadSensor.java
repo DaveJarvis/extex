@@ -19,53 +19,62 @@
 
 package de.dante.extex.interpreter.primitives.dynamic.java;
 
-import de.dante.test.NoFlagsPrimitiveTester;
+import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.typesetter.Typesetter;
+import de.dante.util.exception.GeneralException;
 
 /**
- * This is a test suite for the primitive <tt>\javaload</tt>.
+ * TODO gene: missing JavaDoc.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class JavaloadTest extends NoFlagsPrimitiveTester {
+public class JavaloadSensor implements Loadable {
 
     /**
-     * @see de.dante.test.ExTeXLauncher#getConfig()
+     * The field <tt>kilroy</tt> contains the ...
      */
-    protected String getConfig() {
+    private static boolean kilroy = false;
 
-        return "extex-jx.xml";
+    /**
+     * Getter for kilroy.
+     *
+     * @return the kilroy
+     */
+    public static boolean isKilroy() {
+
+        return kilroy;
+    }
+
+    /**
+     * Setter for kilroy.
+     *
+     * @param kilroy the kilroy to set
+     */
+    public static void setKilroy(boolean kilroy) {
+
+        JavaloadSensor.kilroy = kilroy;
     }
 
     /**
      * Creates a new object.
      *
-     * @param arg the name
      */
-    public JavaloadTest(final String arg) {
+    public JavaloadSensor() {
 
-        super(arg, "javaload",
-                "{de.dante.extex.interpreter.primitives.dynamic.java.JavaloadSensor}");
+        super();
+        kilroy = false;
     }
 
     /**
-     * <testcase primitive="\javaload">
-     *  Test case checking that <tt>\javaload</tt> ...
-     * </testcase>
-     *
-     * @throws Exception in case of an error
+     * @see de.dante.extex.interpreter.primitives.dynamic.java.Loadable#init(
+     *      de.dante.extex.interpreter.context.Context,
+     *      de.dante.extex.typesetter.Typesetter)
      */
-    public void test1() throws Exception {
+    public void init(final Context context, final Typesetter typesetter)
+            throws GeneralException {
 
-        assertSuccess(
-                //--- input code ---
-                DEFINE_BRACES
-                        + "\\javaload"
-                        + "{de.dante.extex.interpreter.primitives.dynamic.java.JavaloadSensor}"
-                        + " \\end",
-                //--- log message ---
-                "");
-        assertTrue(JavaloadSensor.isKilroy());
+        kilroy = true;
     }
 
 }

@@ -42,6 +42,20 @@ public class FlagsImplTest extends TestCase {
      */
     public void testClear() {
 
+        Flags f = new FlagsImpl();
+        f.setExpanded();
+        f.setGlobal();
+        f.setImmediate();
+        f.setLong();
+        f.setOuter();
+        f.setProtected();
+        f.clear();
+        assertFalse(f.isExpanded());
+        assertFalse(f.isGlobal());
+        assertFalse(f.isImmediate());
+        assertFalse(f.isLong());
+        assertFalse(f.isOuter());
+        assertFalse(f.isProtected());
     }
 
     /*

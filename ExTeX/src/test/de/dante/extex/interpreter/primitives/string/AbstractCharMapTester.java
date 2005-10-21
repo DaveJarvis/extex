@@ -293,6 +293,22 @@ public abstract class AbstractCharMapTester extends ExTeXLauncher {
 
     /**
      * <testcase>
+     *  Test case showing that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testCountRegisterGlobalAssign3() throws Exception {
+
+        assertSuccess(//--- input code ---
+                prepare + "\\globaldefs=1 \\begingroup\\" + invocation
+                        + " 123 \\endgroup" + "\\the\\" + invocation + "\\end",
+                //--- output channel ---
+                "123" + TERM);
+    }
+
+    /**
+     * <testcase>
      *  Test case showing that the value is dimen convertible.
      * </testcase>
      *
@@ -337,6 +353,22 @@ public abstract class AbstractCharMapTester extends ExTeXLauncher {
                         + "\\the\\" + primitive + "65 " + "\\end",
                 //--- output channel ---
                 "97" + TERM);
+    }
+
+    /**
+     * <testcase>
+     *  Test case showing that an assignment triggers \afterassignment.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testAfterassignment1() throws Exception {
+
+        assertFailure(//--- input code ---
+                prepare + "\\afterassignment\\xx\\" + primitive
+                        + "`A=`a \\end",
+                //--- output channel ---
+                "Undefined control sequence \\xx");
     }
 
 }

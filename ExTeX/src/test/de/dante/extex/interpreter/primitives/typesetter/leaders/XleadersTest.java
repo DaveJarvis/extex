@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter.primitives.typesetter.leaders;
 
-import de.dante.test.ExTeXLauncher;
+import de.dante.test.NoFlagsPrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>\xleaders</tt>.
@@ -27,7 +27,7 @@ import de.dante.test.ExTeXLauncher;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class XleadersTest extends ExTeXLauncher {
+public class XleadersTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
@@ -45,7 +45,7 @@ public class XleadersTest extends ExTeXLauncher {
      */
     public XleadersTest(final String arg) {
 
-        super(arg);
+        super(arg, "xleaders", "\\vrule\\vfill");
     }
 
     //TODO implement primitive specific test cases

@@ -68,6 +68,6 @@ public class MathListMakerTest extends ExTeXLauncher {
                 + "$a$"
                 + "\\end ",
                 //--- output channel ---
-                "\n\\nullfont a\n");
+                "a" + TERM);
     }
 }

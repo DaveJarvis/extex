@@ -64,15 +64,13 @@ public class DiscretionaryTest extends ExTeXLauncher {
      */
     public void testMath1() throws Exception {
 
-        runCode(//--- input code ---
+        assertSuccess(//--- input code ---
                 "\\catcode`{=1 "
                 + "\\catcode`}=2 "
                 + "\\catcode`$=3 "
                 + "\\hsize=123pt "
                 + "$\\discretionary{a}{b}{c}$"
                 + "\\end ",
-                //--- log message ---
-                "",
                 //--- output channel ---
                 "");//TODO check
     }

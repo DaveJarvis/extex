@@ -36,7 +36,7 @@ public class RightTest extends AbstractMathTester {
      */
     public RightTest(final String arg) {
 
-        super(arg, "right", "(");
+        super(arg, "right", "123 ");
     }
 
 }

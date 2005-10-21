@@ -36,7 +36,7 @@ public class NolimitsTest extends AbstractMathTester {
      */
     public NolimitsTest(final String arg) {
 
-        super(arg, "nolimitis", "");
+        super(arg, "nolimits", "", "\\mathop 123");
     }
 
 }
