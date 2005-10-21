@@ -153,4 +153,13 @@ public interface Typesetter extends ListMaker {
      * @see #clearShipoutMark()
      */
     void shipout(NodeList nodes) throws TypesetterException;
+
+    /**
+     * TODO gene: missing JavaDoc
+     *
+     * @param sb
+     * @param l
+     * @param m
+     */
+    void showlists(StringBuffer sb, long l, long m);
 }

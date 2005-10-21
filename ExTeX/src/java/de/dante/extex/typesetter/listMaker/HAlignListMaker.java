@@ -179,7 +179,7 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
             final FixedDimen theWidth, final boolean theSpread)
             throws InterpreterException {
 
-        super(manager);
+        super(manager, source.getLocator());
         preamble = thePreamble;
         width = theWidth;
         spread = theSpread;

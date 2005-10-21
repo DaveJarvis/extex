@@ -30,7 +30,7 @@ import de.dante.extex.typesetter.type.NodeList;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
- * This class implements the typeetter interface but simply records the events
+ * This class implements the typesetter interface but simply records the events
  * received.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -50,7 +50,9 @@ public class DumpTypesetter extends TypesetterImpl {
      * @see de.dante.extex.typesetter.ListMaker#add(
      *      de.dante.extex.typesetter.type.Node)
      */
-    public void add(final Node node) throws TypesetterException, ConfigurationException {
+    public void add(final Node node)
+            throws TypesetterException,
+                ConfigurationException {
 
         super.add(node);
     }
@@ -70,7 +72,9 @@ public class DumpTypesetter extends TypesetterImpl {
      *      de.dante.extex.interpreter.type.count.Count)
      */
     public void addSpace(final TypesettingContext typesettingContext,
-            final Count spacefactor) throws TypesetterException, ConfigurationException {
+            final Count spacefactor)
+            throws TypesetterException,
+                ConfigurationException {
 
         super.addSpace(typesettingContext, spacefactor);
     }
@@ -79,7 +83,8 @@ public class DumpTypesetter extends TypesetterImpl {
      * @see de.dante.extex.typesetter.ListMaker#complete(TypesetterOptions)
      */
     public NodeList complete(TypesetterOptions context)
-            throws TypesetterException, ConfigurationException {
+            throws TypesetterException,
+                ConfigurationException {
 
         return super.complete(context);
     }
