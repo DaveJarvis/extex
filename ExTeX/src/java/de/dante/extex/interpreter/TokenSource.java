@@ -135,7 +135,7 @@ public interface TokenSource {
      *
      * @throws InterpreterException in case of an error
      */
-    Box getBox(Context context, Typesetter typesetter)
+    Box getBox(Flags flags, Context context, Typesetter typesetter)
             throws InterpreterException;
 
     /**

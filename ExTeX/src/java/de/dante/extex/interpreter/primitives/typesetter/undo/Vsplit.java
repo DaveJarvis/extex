@@ -56,7 +56,7 @@ import de.dante.util.framework.logger.LogEnabled;
  * <p>
  *  Examples:
  *  <pre class="TeXSample">
- *    \vsplit ...  </pre>
+ *    \vsplit 2 to 123pt  </pre>
  * </p>
  * </doc>
  *

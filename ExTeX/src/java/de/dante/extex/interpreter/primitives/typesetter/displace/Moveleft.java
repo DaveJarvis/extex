@@ -92,7 +92,7 @@ public class Moveleft extends AbstractBoxPrimitive {
             final Typesetter typesetter) throws InterpreterException {
 
         Dimen move = new Dimen(context, source, typesetter);
-        Box box = source.getBox(context, typesetter);
+        Box box = source.getBox(null, context, typesetter);
         if (box != null) {
             move.negate();
             move.add(box.getMove());

@@ -99,7 +99,7 @@ public class Lower extends AbstractBoxPrimitive {
             final Typesetter typesetter) throws InterpreterException {
 
         Dimen amount = new Dimen(context, source, typesetter);
-        Box box = source.getBox(context, typesetter);
+        Box box = source.getBox(null, context, typesetter);
         if (box != null) {
             amount.add(box.getShift());
             box.setShift(amount);

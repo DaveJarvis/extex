@@ -88,7 +88,7 @@ public class Unvcopy extends AbstractBox {
 
         String key = getKey(context, source);
         Box b = context.getBox(key);
-        if (b.isVoid()) {
+        if (b == null || b.isVoid()) {
             // nothing to do
         } else if (!b.isVbox()) {
             throw new HelpingException(getLocalizer(), "TTP.IncompatibleUnbox");
