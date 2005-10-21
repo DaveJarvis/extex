@@ -26,7 +26,7 @@ import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.primitives.typesetter.AbstractHorizontalCode;
 import de.dante.extex.interpreter.type.glue.Glue;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.exception.GeneralException;
+import de.dante.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive <code>\hskip</code>.
@@ -85,7 +85,7 @@ public class Hskip extends AbstractHorizontalCode {
         Glue g = new Glue(source, context, typesetter);
         try {
             typesetter.addGlue(g);
-        } catch (GeneralException e) {
+        } catch (TypesetterException e) {
             throw new InterpreterException(e);
         }
     }
