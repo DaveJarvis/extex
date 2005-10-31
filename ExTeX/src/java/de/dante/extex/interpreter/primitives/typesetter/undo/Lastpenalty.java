@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.register.dimen;
+package de.dante.extex.interpreter.primitives.typesetter.undo;
 
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
@@ -25,27 +25,25 @@ import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.AbstractCode;
 import de.dante.extex.interpreter.type.Theable;
 import de.dante.extex.interpreter.type.count.CountConvertible;
-import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.dimen.DimenConvertible;
 import de.dante.extex.interpreter.type.tokens.Tokens;
-import de.dante.extex.scanner.type.CatcodeException;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.type.Node;
-import de.dante.extex.typesetter.type.node.KernNode;
+import de.dante.extex.typesetter.type.node.PenaltyNode;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\lastkern</code>.
+ * <code>\lastpenalty</code>.
  *
- * <doc name="lastkern">
- * <h3>The Primitive <tt>\lastkern</tt></h3>
+ * <doc name="lastpenalty">
+ * <h3>The Primitive <tt>\lastpenalty</tt></h3>
  * <p>
  *  TODO missing documentation
  * </p>
  * <p>
  *  Examples:
  *  <pre class="TeXSample">
- *    \dimen1=\lastkern  </pre>
+ *    \count1=\lastpenalty  </pre>
  * </p>
  * </doc>
  *
@@ -53,7 +51,7 @@ import de.dante.extex.typesetter.type.node.KernNode;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Lastkern extends AbstractCode
+public class Lastpenalty extends AbstractCode
         implements
             CountConvertible,
             DimenConvertible,
@@ -69,7 +67,7 @@ public class Lastkern extends AbstractCode
      *
      * @param name the name for debugging
      */
-    public Lastkern(final String name) {
+    public Lastpenalty(final String name) {
 
         super(name);
     }
@@ -77,14 +75,16 @@ public class Lastkern extends AbstractCode
     /**
      * @see de.dante.extex.interpreter.type.count.CountConvertible#convertCount(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource, Typesetter)
+     *      de.dante.extex.interpreter.TokenSource,
+     *      de.dante.extex.typesetter.Typesetter)
      */
     public long convertCount(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
 
         Node node = typesetter.getLastNode();
-        return (node instanceof KernNode ? ((KernNode) node).getWidth()
-                .getValue() : 0);
+        return (node instanceof PenaltyNode
+                ? ((PenaltyNode) node).getPenalty()
+                : 0);
     }
 
     /**
@@ -97,27 +97,24 @@ public class Lastkern extends AbstractCode
             final Typesetter typesetter) throws InterpreterException {
 
         Node node = typesetter.getLastNode();
-        return (node instanceof KernNode ? ((KernNode) node).getWidth()
-                .getValue() : 0);
+        return (node instanceof PenaltyNode
+                ? ((PenaltyNode) node).getPenalty()
+                : 0);
     }
 
     /**
      * @see de.dante.extex.interpreter.type.Theable#the(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource, Typesetter)
+     *      de.dante.extex.interpreter.TokenSource,
+     *      de.dante.extex.typesetter.Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
 
         Node node = typesetter.getLastNode();
-        Dimen pen = (node instanceof KernNode
-                ? ((KernNode) node).getWidth()
-                : Dimen.ZERO_PT);
-        try {
-            return pen.toToks(context.getTokenFactory());
-        } catch (CatcodeException e) {
-            throw new InterpreterException(e);
-        }
+        long pen = (node instanceof PenaltyNode ? ((PenaltyNode) node)
+                .getPenalty() : 0);
+        return new Tokens(context, Long.toString(pen));
     }
 
 }
