@@ -23,6 +23,7 @@ import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
+import de.dante.extex.typesetter.Typesetter;
 
 /**
  * This interface describes the capabilities needed for the NativeDef to
@@ -44,7 +45,7 @@ public interface Definer {
      *
      * @throws InterpreterException in case of an error
      */
-    void define(Flags prefix, Context context, TokenSource source)
+    void define(Flags prefix, Context context, TokenSource source, Typesetter typesetter)
             throws InterpreterException;
 
 }
