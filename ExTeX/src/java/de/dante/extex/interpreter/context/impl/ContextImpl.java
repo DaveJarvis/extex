@@ -38,6 +38,8 @@ import de.dante.extex.interpreter.context.ContextInternals;
 import de.dante.extex.interpreter.context.Direction;
 import de.dante.extex.interpreter.context.TypesettingContext;
 import de.dante.extex.interpreter.context.TypesettingContextFactory;
+import de.dante.extex.interpreter.context.extension.ContextExtensionPoint;
+import de.dante.extex.interpreter.context.extension.ExtensionPoint;
 import de.dante.extex.interpreter.context.observer.CodeObserver;
 import de.dante.extex.interpreter.context.observer.CountObserver;
 import de.dante.extex.interpreter.context.observer.DimenObserver;
@@ -123,6 +125,7 @@ import de.dante.util.framework.i18n.Localizer;
 public class ContextImpl
         implements
             ContextInternals,
+            ContextExtensionPoint,
             Tokenizer,
             DocumentWriterOptions,
             TypesetterOptions,
@@ -1530,5 +1533,42 @@ public class ContextImpl
     public long getIfLevel() {
 
         return conditionalStack.size();
+    }
+
+    /**
+     * The field <tt>extensionMap</tt> contains the registered extension points
+     * for this context.
+     */
+    private Map extensionMap = new HashMap();
+
+    /**
+     * @see de.dante.extex.interpreter.context.extension.ContextExtensionPoint#getExtension(
+     *      java.lang.Class)
+     */
+    public ExtensionPoint getExtension(final Class c) {
+
+        ExtensionPoint ep = (ExtensionPoint) extensionMap.get(c);
+        if (ep != null) {
+            return ep;
+        }
+
+        if (! c.isAssignableFrom(ExtensionPoint.class)) {
+            // TODO gene: error handling unimplemented
+            throw new RuntimeException("invalid class");
+        }
+
+        try {
+            ep = (ExtensionPoint) c.newInstance();
+            ep.init();
+            extensionMap.put(c, ep);
+        } catch (InstantiationException e) {
+            // TODO gene: error handling unimplemented
+            throw new RuntimeException(e);
+        } catch (IllegalAccessException e) {
+            // TODO gene: error handling unimplemented
+            throw new RuntimeException(e);
+        }
+        
+        return ep;
     }
 }
