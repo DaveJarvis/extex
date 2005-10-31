@@ -263,7 +263,7 @@ public class HorizontalListMaker extends AbstractListMaker {
      * @see "The TeXbook [p.76]"
      */
     public void letter(final Context context, final TypesettingContext tc,
-            final UnicodeChar symbol, Locator locator) {
+            final UnicodeChar symbol, final Locator locator) {
 
         int size = nodes.size();
         if (size > 0) {

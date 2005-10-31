@@ -495,14 +495,17 @@ public class MathListMaker extends AbstractListMaker implements NoadConsumer {
             f = flags.copy();
             flags.clear();
         }
+        ListManager man = getManager();
         try {
             Token t = source.getToken(context);
             if (t == null) {
                 throw new EofException(primitive);
             }
-            getManager().push(
-                    new MathListMaker(getManager(), source.getLocator()));
+            MathListMaker lm = new MathListMaker(man, source.getLocator());
+            man.push(lm);
             if (t.isa(Catcode.LEFTBRACE)) {
+                lm.leftBrace();
+                context.openGroup();
                 source.executeGroup();
             } else {
                 source.execute(t, context, typesetter);
@@ -511,11 +514,13 @@ public class MathListMaker extends AbstractListMaker implements NoadConsumer {
             throw e;
         } catch (InterpreterException e) {
             throw new TypesetterException(e);
+        } catch (ConfigurationException e) {
+            throw new TypesetterException(e);
         }
         if (flags != null) {
             flags.set(f);
         }
-        return (((MathListMaker) getManager().pop())).getInsertionPoint();
+        return (((MathListMaker) man.pop())).getInsertionPoint();
     }
 
     /**
