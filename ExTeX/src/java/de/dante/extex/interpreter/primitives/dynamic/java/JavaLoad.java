@@ -145,7 +145,7 @@ public class JavaLoad extends AbstractCode implements Loader {
             final Typesetter typesetter)
             throws InterpreterException {
 
-        Tokens name = source.getTokens(context);
+        Tokens name = source.getTokens(context, source, typesetter);
         String classname = name.toText();
         if ("".equals(classname)) {
             throw new HelpingException(getLocalizer(), "ClassNotFound",

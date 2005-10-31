@@ -37,19 +37,19 @@ import de.dante.extex.typesetter.Typesetter;
  *  for an associated <tt>\import</tt>. The tokens in the list are either
  *  control sequence tokens or active characters. All other tokens are ignored.
  * </p>
- * <p>
+ *
+ * <h4>Syntax</h4>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;export&rang;
  *      &rarr; <tt>\export</tt> {@linkplain
  *      de.dante.extex.interpreter.TokenSource#getTokens()
  *      &lang;replacement text&rang;}  </pre>
- * </p>
- * <p>
- *  Examples:
+ *
+ * <h4>Examples</h4>
  *  <pre class="TeXSample">
  *    \export{\a\b}  </pre>
- * </p>
+ *
  * </doc>
  *
  *
@@ -87,7 +87,7 @@ public class Export extends AbstractAssignment {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        Tokens export = source.getTokens(context);
+        Tokens export = source.getTokens(context, source, typesetter);
         context.setToks(context.getNamespace() + "\bexport", export, true);
     }
 

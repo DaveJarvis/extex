@@ -105,9 +105,9 @@ public class Discretionary extends AbstractCode {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        Tokens pre = source.getTokens(context);
-        Tokens post = source.getTokens(context);
-        Tokens nobreak = source.getTokens(context);
+        Tokens pre = source.getTokens(context, source, typesetter);
+        Tokens post = source.getTokens(context, source, typesetter);
+        Tokens nobreak = source.getTokens(context, source, typesetter);
         //CharNodeFactory cnf = new CharNodeFactory();
         TypesettingContext tc = context.getTypesettingContext();
         Locator locator = source.getLocator();

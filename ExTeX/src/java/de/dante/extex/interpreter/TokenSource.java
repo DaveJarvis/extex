@@ -22,8 +22,6 @@ package de.dante.extex.interpreter;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.ErrorLimitException;
 import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.exception.helping.EofException;
-import de.dante.extex.interpreter.exception.helping.InvalidCharacterException;
 import de.dante.extex.interpreter.exception.helping.MissingNumberException;
 import de.dante.extex.interpreter.type.box.Box;
 import de.dante.extex.interpreter.type.font.Font;
@@ -296,7 +294,7 @@ public interface TokenSource {
      *
      * @throws InterpreterException in case of an error
      */
-    Tokens getTokens(Context context) throws InterpreterException;
+    Tokens getTokens(Context context, TokenSource source, Typesetter typesetter) throws InterpreterException;
 
     /**
      * Getter for the token stream factory.

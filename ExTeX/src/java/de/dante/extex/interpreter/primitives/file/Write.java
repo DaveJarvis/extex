@@ -154,7 +154,7 @@ public class Write extends AbstractCode
 
         } else {
 
-            Tokens toks = source.getTokens(context);
+            Tokens toks = source.getTokens(context, source, typesetter);
 
             try {
                 typesetter.add(new WhatsItWriteNode(key, toks, source, this));

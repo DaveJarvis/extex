@@ -147,7 +147,7 @@ public class NativeLoad extends AbstractCode
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        String name = source.getTokens(context).toText();
+        String name = source.getTokens(context, source, typesetter).toText();
         Configuration cfg = (Configuration) map.get(name);
         if (cfg == null) {
             throw new InterpreterException(getLocalizer().format("UnknownType",
