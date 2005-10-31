@@ -47,7 +47,6 @@ import de.dante.extex.typesetter.Typesetter;
  *  are <i>other</i> tokens except of the spaces. Ths means that even the
  *  letters are of category <i>other</i>.
  * </p>
- * </doc>
  *
  * <h4>Example</h4>
  * <pre>
