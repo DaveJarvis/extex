@@ -19,8 +19,6 @@
 
 package de.dante.extex.interpreter.primitives.register.box;
 
-import java.io.Serializable;
-
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
@@ -84,10 +82,13 @@ public class Setbox extends AbstractBox implements Code {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
+        Flags f = prefix.copy();
+        prefix.clear();
         String key = getKey(context, source);
         source.getOptionalEquals(context);
         Box box = source.getBox(prefix, context, typesetter);
         context.setBox(key, box, prefix.isGlobal());
+        prefix.set(f);
         prefix.clearGlobal();
     }
 

@@ -81,12 +81,18 @@ public class Mathchoice extends AbstractMathCode {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
+        Flags f = prefix.copy();
+        prefix.clear();
         NoadConsumer nc = getListMaker(context, typesetter);
-        Noad display = nc.scanNoad(prefix, context, source, typesetter, getName());
+        Noad display = nc.scanNoad(prefix, context, source, typesetter,
+                getName());
         Noad text = nc.scanNoad(prefix, context, source, typesetter, getName());
-        Noad script = nc.scanNoad(prefix, context, source, typesetter, getName());
-        Noad scriptScript = nc.scanNoad(prefix, context, source, typesetter, getName());
+        Noad script = nc.scanNoad(prefix, context, source, typesetter,
+                getName());
+        Noad scriptScript = nc.scanNoad(prefix, context, source, typesetter,
+                getName());
         nc.add(new ChoiceNoad(display, text, script, scriptScript));
+        prefix.set(f);
     }
 
 }
