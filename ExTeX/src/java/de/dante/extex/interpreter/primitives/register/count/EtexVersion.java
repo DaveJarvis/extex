@@ -22,7 +22,6 @@ package de.dante.extex.interpreter.primitives.register.count;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.type.Theable;
 import de.dante.extex.typesetter.Typesetter;
 
 

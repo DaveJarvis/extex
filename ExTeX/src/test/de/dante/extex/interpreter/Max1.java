@@ -19,8 +19,6 @@
 
 package de.dante.extex.interpreter;
 
-import java.util.logging.Logger;
-
 import junit.framework.TestCase;
 import de.dante.extex.documentWriter.DocumentWriter;
 import de.dante.extex.interpreter.context.Context;

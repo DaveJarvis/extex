@@ -26,7 +26,6 @@ import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.AbstractCode;
 import de.dante.extex.interpreter.type.box.Box;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.exception.GeneralException;
 
 /**
  * This class provides an implementation for the primitive <code>\shipout</code>.
