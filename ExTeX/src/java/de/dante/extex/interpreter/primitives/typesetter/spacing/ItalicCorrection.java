@@ -43,17 +43,17 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
  * <p>
  *  TODO missing documentation
  * </p>
- * <p>
+ *
+ * <h4>Syntax</h4>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;italic correction&rang;
  *        &rarr; <tt>\/</tt>  </pre>
- * </p>
- * <p>
- *  Examples:
+ *
+ * <h4>Examples</h4>
  *  <pre class="TeXSample">
  *    123\/456  </pre>
- * </p>
+ *
  * </doc>
  *
  *

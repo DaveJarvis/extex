@@ -35,19 +35,19 @@ import de.dante.util.exception.GeneralException;
  * <doc name="hfill">
  * <h3>The Primitive <tt>\hfill</tt></h3>
  * <p>
- *  TODO missing documentation
+ *  TODO gene: missing documentation
  * </p>
- * <p>
+ *
+ * <h4>Syntax</h4>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;hfill&rang;
  *        &rarr; <tt>\hfill</tt>  </pre>
- * </p>
- * <p>
- *  Examples:
+ *
+ * <h4>Examples</h4>
  *  <pre class="TeXSample">
  *    \hfill  </pre>
- * </p>
+ *
  * </doc>
  *
  *

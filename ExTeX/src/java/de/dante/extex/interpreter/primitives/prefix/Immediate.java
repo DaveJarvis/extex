@@ -36,7 +36,7 @@ import de.dante.extex.typesetter.Typesetter;
  * <doc name="immediate">
  * <h3>The Prefix Primitive <tt>\immediate</tt></h3>
  * <p>
- *  TODO missing documentation
+ *  TODO gene: missing documentation
  * </p>
  * <p>
  *  The formal description of this primitive is the following:

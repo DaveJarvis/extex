@@ -34,7 +34,7 @@ import de.dante.extex.typesetter.listMaker.math.NoadConsumer;
  * <doc name="atop">
  * <h3>The Math Primitive <tt>\atop</tt></h3>
  * <p>
- *  TODO missing documentation
+ *  TODO gene: missing documentation
  * </p>
  *
  * <h4>Syntax</h4>

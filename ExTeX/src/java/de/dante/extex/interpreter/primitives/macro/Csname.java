@@ -44,7 +44,7 @@ import de.dante.util.UnicodeChar;
  * <doc name="csname">
  * <h3>The Primitive <tt>\csname</tt></h3>
  * <p>
- *  TODO missing documentation
+ *  TODO gene: missing documentation
  * </p>
  * <p class="TeXbook">
  *  When <logo>TeX</logo> expands <tt>\csname</tt> it reads to the matching

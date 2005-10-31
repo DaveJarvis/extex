@@ -42,7 +42,7 @@ import de.dante.extex.typesetter.Typesetter;
  * <doc name="count">
  * <h3>The Primitive <tt>\count</tt></h3>
  * <p>
- *  TODO missing documentation
+ *  TODO gene: missing documentation
  * </p>
  *
  * <h4>Syntax</h4>

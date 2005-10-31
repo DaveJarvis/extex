@@ -31,7 +31,6 @@ import de.dante.extex.interpreter.type.AbstractAssignment;
 import de.dante.extex.interpreter.type.color.ColorConvertible;
 import de.dante.extex.interpreter.type.glue.GlueComponent;
 import de.dante.extex.scanner.type.token.LeftBraceToken;
-import de.dante.extex.scanner.type.token.LetterToken;
 import de.dante.extex.scanner.type.token.RightBraceToken;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
@@ -43,7 +42,7 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
  * <doc name="color">
  * <h3>The Primitive <tt>\color</tt></h3>
  * <p>
- *  TODO missing documentation
+ *  TODO gene: missing documentation
  * </p>
  *
  * <h4>Syntax</h4>

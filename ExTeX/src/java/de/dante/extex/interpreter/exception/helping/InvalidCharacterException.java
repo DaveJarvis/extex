@@ -41,7 +41,7 @@ public class InvalidCharacterException extends HelpingException {
     private static final long serialVersionUID = 1L;
 
     /**
-     * The field <tt>cc</tt> contains the ...
+     * The field <tt>cc</tt> contains the invalid character.
      */
     private String cc;
 

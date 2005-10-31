@@ -60,17 +60,17 @@ import de.dante.util.UnicodeChar;
  * <p>
  *  TODO missing documentation
  * </p>
- * <p>
+ *
+ * <h4>Syntax</h4>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;patterns&rang;
  *      &rarr; <tt>\patterns</tt> { &lang;patterns&rang; } </pre>
- * </p>
- * <p>
- *  Examples:
+ *
+ * <h4>Examples</h4>
  *  <pre class="TeXSample">
  *    \patterns{.ach4 .ad4der .af1t}  </pre>
- * </p>
+ *
  * </doc>
  *
  *

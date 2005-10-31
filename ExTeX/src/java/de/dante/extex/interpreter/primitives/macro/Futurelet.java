@@ -34,9 +34,10 @@ import de.dante.extex.typesetter.Typesetter;
  * <doc name="futurelet">
  * <h3>The Primitive <tt>\futurelet</tt></h3>
  * <p>
- *  TODO missing documentation
+ *  TODO gene: missing documentation
  * </p>
- * <p>
+ *
+ * <h4>Syntax</h4>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;futurelet&rang;
@@ -45,12 +46,11 @@ import de.dante.extex.typesetter.Typesetter;
  *        &lang;control sequence&rang;} {@linkplain
  *       de.dante.extex.interpreter.TokenSource#getToken(Context)
  *       &lang;token&rang;} ...  </pre>
- * </p>
- * <p>
- *  Examples:
+ *
+ * <h4>Examples</h4>
  *  <pre class="TeXSample">
  *    \futurelet ...  </pre>
- * </p>
+ *
  * </doc>
  *
  *

@@ -42,17 +42,17 @@ import de.dante.extex.typesetter.Typesetter;
  *  Otherwise it is a single character token containing the character code of
  *  the token.
  * </p>
- * <p>
+ *
+ * <h4>Syntax</h4>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;string&rang;
  *        &rarr; <tt>\string</tt> &lang;token&rang; </pre>
- * </p>
- * <p>
- *  Examples:
+ *
+ * <h4>Examples</h4>
  *  <pre class="TeXSample">
  *    \string ...  </pre>
- * </p>
+ *
  * </doc>
  *
  *

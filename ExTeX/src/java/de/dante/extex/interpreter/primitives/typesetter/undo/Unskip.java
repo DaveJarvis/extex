@@ -36,17 +36,17 @@ import de.dante.extex.typesetter.type.node.GlueNode;
  * <h3>The Primitive <tt>&#x5c;unskip</tt></h3>
  * <p>
  * </p>
- * <p>
+ *
+ * <h4>Syntax</h4>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;unskip&rang;
  *        &rarr; <tt>&#x5c;unskip</tt>  </pre>
- * </p>
- * <p>
- *  Examples:
+ *
+ * <h4>Examples</h4>
  *  <pre class="TeXSample">
  *    &#x5c;unskip  </pre>
- * </p>
+ *
  * </doc>
  *
  *

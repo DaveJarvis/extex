@@ -37,7 +37,7 @@ import de.dante.extex.typesetter.type.noad.OperatorNoad;
  * <doc name="displaylimits">
  * <h3>The Math Primitive <tt>\displaylimits</tt></h3>
  * <p>
- *  TODO missing documentation
+ *  TODO gene: missing documentation
  * </p>
  *
  * <h4>Syntax</h4>

@@ -34,7 +34,8 @@ import de.dante.extex.typesetter.Typesetter;
  * <p>
  *  TODO missing documentation
  * </p>
- * <p>
+ *
+ * <h4>Syntax</h4>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    <tt>\toksdef</tt> {@linkplain
@@ -44,14 +45,13 @@ import de.dante.extex.typesetter.Typesetter;
  *    &lang;equals&rang;} {@linkplain
  *      de.dante.extex.interpreter.TokenSource#scanNumber(Context)
  *      &lang;8-bit&nbsp;number&rang;} </pre>
- * </p>
- * <p>
- *  Examples:
+ *
+ * <h4>Examples</h4>
  *  <pre class="TeXSample">
  *    \toksdef\abc=45  </pre>
  *  <pre class="TeXSample">
  *    \toksdef\abc 33  </pre>
- * </p>
+ *
  * </doc>
  *
  *

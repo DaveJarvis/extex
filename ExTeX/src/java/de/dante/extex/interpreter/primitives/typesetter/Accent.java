@@ -48,19 +48,19 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
  * <doc name="accent">
  * <h3>The Primitive <tt>\accent</tt></h3>
  * <p>
- *  TODO missing documentation
+ *  TODO gene: missing documentation
  * </p>
- * <p>
+ *
+ * <h4>Syntax</h4>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;accent&rang;
  *    &rarr; <tt>\accent</tt> ... </pre>
- * </p>
- * <p>
- *  Examples:
+ *
+ * <h4>Examples</h4>
  *  <pre class="TeXSample">
  *    \accent 13 a  </pre>
- * </p>
+ *
  * </doc>
  *
  * @see "TTP [1123]"

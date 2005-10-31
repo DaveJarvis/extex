@@ -43,23 +43,23 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
  *  A penalty of 10000 or more will inhibit a break at this position. A penalty
  *  of -10000 or less will force a break at this position.
  * </p>
- * <p>
+ *
+ * <h4>Syntax</h4>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;penalty&rang;
  *        &rarr; <tt>\penalty</tt> {@linkplain
  *    de.dante.extex.interpreter.TokenSource#scanNumber(Context)
  *    &lang;8-bit&nbsp;number&rang;}  </pre>
- * </p>
- * <p>
- *  Examples:
+ *
+ * <h4>Examples</h4>
  *  <pre class="TeXSample">
  *    \penalty 123  </pre>
  *  <pre class="TeXSample">
  *    \penalty -456  </pre>
  *  <pre class="TeXSample">
  *    \penalty -\count254  </pre>
- * </p>
+ *
  * </doc>
  *
  *

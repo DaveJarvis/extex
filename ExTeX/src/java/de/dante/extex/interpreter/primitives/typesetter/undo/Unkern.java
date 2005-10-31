@@ -36,17 +36,17 @@ import de.dante.extex.typesetter.type.node.KernNode;
  * <h3>The Primitive <tt>&#x5c;unkern</tt></h3>
  * <p>
  * </p>
- * <p>
+ *
+ * <h4>Syntax</h4>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;unkern&rang;
  *        &rarr; <tt>&#x5c;unkern</tt>  </pre>
- * </p>
- * <p>
- *  Examples:
+ *
+ * <h4>Examples</h4>
  *  <pre class="TeXSample">
  *    &#x5c;unkern  </pre>
- * </p>
+ *
  * </doc>
  *
  *

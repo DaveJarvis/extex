@@ -97,12 +97,12 @@ import de.dante.util.exception.GeneralException;
  *
  * <h4>Conversion to a Count</h4>
  * <p>
- *  TODO missing documentation
+ *  TODO gene: missing documentation
  * </p>
  *
  * <h4>Interaction with <tt>\the</tt></h4>
  * <p>
- *  TODO missing documentation
+ *  TODO gene: missing documentation
  * </p>
  * </doc>
  *

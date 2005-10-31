@@ -35,7 +35,7 @@ import de.dante.extex.typesetter.type.noad.StyleNoad;
  * <doc name="displaystyle">
  * <h3>The Math Primitive <tt>\displaystyle</tt></h3>
  * <p>
- *  TODO missing documentation
+ *  TODO gene: missing documentation
  * </p>
  *
  * <h4>Syntax</h4>

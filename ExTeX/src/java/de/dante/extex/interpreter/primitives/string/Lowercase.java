@@ -44,17 +44,17 @@ import de.dante.util.UnicodeChar;
  * <p>
  *  TODO missing documentation
  * </p>
- * <p>
+ *
+ * <h4>Syntax</h4>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;lowercase&rang;
  *        &rarr; <tt>\lowercase</tt> &lang;...&rang; </pre>
- * </p>
- * <p>
- *  Examples:
+ *
+ * <h4>Examples</h4>
  *  <pre class="TeXSample">
  *    \lowercase ...  </pre>
- * </p>
+ *
  * </doc>
  *
  *
@@ -103,7 +103,7 @@ public class Lowercase extends AbstractCode implements ExpandableCode {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        Tokens toks = source.getTokens(context);
+        Tokens toks = source.getTokens(context, source, typesetter);
 
         if (toks == null) {
             throw new EofException(printableControlSequence(context));

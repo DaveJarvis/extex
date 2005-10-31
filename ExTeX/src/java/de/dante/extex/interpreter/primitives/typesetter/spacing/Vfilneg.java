@@ -37,17 +37,17 @@ import de.dante.util.exception.GeneralException;
  * <p>
  *  TODO missing documentation
  * </p>
- * <p>
+ *
+ * <h4>Syntax</h4>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;vfilneg&rang;
  *        &rarr; <tt>\vfilneg</tt>  </pre>
- * </p>
- * <p>
- *  Examples:
+ *
+ * <h4>Examples</h4>
  *  <pre class="TeXSample">
  *    \vfilneg  </pre>
- * </p>
+ *
  * </doc>
  *
  *

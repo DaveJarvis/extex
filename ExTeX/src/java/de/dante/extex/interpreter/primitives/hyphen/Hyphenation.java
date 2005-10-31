@@ -49,7 +49,7 @@ import de.dante.util.UnicodeChar;
  * <doc name="hyphenation">
  * <h3>The Primitive <tt>\hyphenation</tt></h3>
  * <p>
- *  TODO missing documentation
+ *  TODO gene: missing documentation
  * </p>
  *
  * <h4>Syntax</h4>

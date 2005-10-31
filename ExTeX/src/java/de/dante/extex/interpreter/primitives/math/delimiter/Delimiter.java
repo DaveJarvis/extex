@@ -39,7 +39,7 @@ import de.dante.extex.typesetter.type.math.MathDelimiter;
  *  Thus it is possible to bypass the definition of the delimiter code as
  *  assigned to single characters.
  * </p>
- *  TODO missing documentation
+ *  TODO gene: missing documentation
  *
  * <h4>Syntax</h4>
  * The formal description of this primitive is the following:
@@ -86,7 +86,8 @@ public class Delimiter extends AbstractMathCode {
             throws InterpreterException {
 
         NoadConsumer nc = getListMaker(context, typesetter);
-        MathDelimiter del = AbstractTeXDelimiter.parseDelimiter(context, source, typesetter, getName());
+        MathDelimiter del = AbstractTeXDelimiter.parseDelimiter(context,
+                source, typesetter, getName());
         nc.add(del);
     }
 

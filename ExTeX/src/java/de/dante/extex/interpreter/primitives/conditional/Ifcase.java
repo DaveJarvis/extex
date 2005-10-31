@@ -37,7 +37,7 @@ import de.dante.util.framework.i18n.LocalizerFactory;
  * <doc name="ifcase">
  * <h3>The Primitive <tt>\ifcase</tt></h3>
  * <p>
- *  TODO missing documentation
+ *  TODO gene: missing documentation
  * </p>
  *  <pre class="syntax">
  *    &lang;ifcase&rang;
@@ -90,7 +90,7 @@ public class Ifcase extends AbstractIf {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        //prefix.clear(); //TODO gene most probably not needed
+        //prefix.clear(); //TODO gene: most probably not needed
         long val = source.scanInteger(context, typesetter);
         if (val < 0) {
             if (skipToElseOrFi(context, source)) {

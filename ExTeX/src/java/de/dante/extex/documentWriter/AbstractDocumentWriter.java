@@ -51,7 +51,7 @@ public abstract class AbstractDocumentWriter
     protected Map parameter = new HashMap();
 
     /**
-     * The field <tt>writerFactory</tt> contains the ...
+     * The field <tt>writerFactory</tt> contains the output stream factory.
      */
     private OutputStreamFactory writerFactory;
 
