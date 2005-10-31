@@ -52,7 +52,7 @@ import de.dante.util.UnicodeChar;
 public class BaseHyphenationTableTest extends TestCase {
 
     /**
-     * TODO gene: missing JavaDoc.
+     * Mock implementation of a font.
      *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision$

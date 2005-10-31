@@ -365,9 +365,11 @@ public class TokenStreamStringImplTest extends TestCase {
      */
     public void testCr2() throws Exception {
 
-        TokenStream stream = makeStream("\n\n"); // mgn: changed
-        assertEquals("the control sequence \\par", stream.get(fac, tokenizer)
-                .toString());
+        TokenStream stream = makeStream("x\n\n");
+        assertEquals("the letter x", stream.get(fac, tokenizer).toString());
+        Token t = stream.get(fac, tokenizer);
+        assertNotNull(t);
+        assertEquals("the control sequence \\par", t.toString());
         assertNull(stream.get(fac, tokenizer));
     }
 

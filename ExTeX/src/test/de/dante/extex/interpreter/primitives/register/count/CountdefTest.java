@@ -37,11 +37,6 @@ public class CountdefTest extends AbstractCountRegisterTester {
     }
 
     /**
-     * The field <tt>prepare</tt> contains the ...
-     */
-    private String prepare = "";
-
-    /**
      * Creates a new object.
      *
      * @param arg the name

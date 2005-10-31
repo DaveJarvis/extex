@@ -64,4 +64,19 @@ public class InputlinenoTest extends ExTeXLauncher {
                 "1" + TERM);
     }
 
+    /**
+     * <testcase primitive="\inputlineno">
+     *  Test case checking that a <tt>\inputlineno</tt> works.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test1() throws Exception {
+
+        assertFailure(//--- input code ---
+                "\\inputlineno=123 ",
+                //--- error channel ---
+                "You can't use `\\inputlineno' in vertical mode");
+    }
+
 }

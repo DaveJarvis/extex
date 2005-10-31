@@ -21,7 +21,7 @@ package de.dante.extex.interpreter.primitives.table;
 
 import java.util.Properties;
 
-import de.dante.test.ExTeXLauncher;
+import de.dante.test.NoFlagsPrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>\halign</tt>.
@@ -29,7 +29,7 @@ import de.dante.test.ExTeXLauncher;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class HalignTest extends ExTeXLauncher {
+public class HalignTest extends NoFlagsPrimitiveTester {
 
     /**
      * Creates a new object.
@@ -38,7 +38,7 @@ public class HalignTest extends ExTeXLauncher {
      */
     public HalignTest(final String arg) {
 
-        super(arg);
+        super(arg, "halign", "{#\\cr}", DEFINE_HASH);
     }
 
     /**

@@ -19,7 +19,6 @@
 
 package de.dante.extex.interpreter.primitives.dynamic;
 
-import de.dante.extex.interpreter.primitives.dynamic.java.JavaloadSensor;
 import de.dante.test.NoFlagsPrimitiveTester;
 
 /**

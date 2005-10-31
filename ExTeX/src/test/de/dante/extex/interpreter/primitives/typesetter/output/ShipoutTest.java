@@ -45,7 +45,7 @@ public class ShipoutTest extends NoFlagsPrimitiveTester {
      */
     public ShipoutTest(final String arg) {
 
-        super(arg, "shipout", "\\hbox{}");
+        super(arg, "shipout", "\\box0");
     }
 
     /**

@@ -17,42 +17,27 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.table;
+package de.dante.extex.interpreter.primitives.macro;
 
-import de.dante.test.NoFlagsPrimitiveTester;
+import de.dante.test.NoFlagsButGlobalPrimitiveTester;
 
 /**
- * This is a test suite for the primitive <tt>\cr</tt>.
+ * This is a test suite for the primitive <tt>\futurelet</tt>.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class CrTest extends NoFlagsPrimitiveTester {
+public class FutureletTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Creates a new object.
      *
      * @param arg the name
      */
-    public CrTest(final String arg) {
+    public FutureletTest(final String arg) {
 
-        super(arg, "cr", "}", DEFINE_HASH + "\\halign{#\\cr");
+        super(arg, "futurelet", "\\relax\\relax\\relax");
     }
 
-    /**
-     * <testcase primitive="\cr">
-     *  Test case checking that <tt>\cr</tt> outside of an alignment context
-     *  produces an error.
-     * </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void testLonelyCr() throws Exception {
-
-        assertFailure(//--- input code ---
-                "\\cr" + "\\end ",
-                //--- log message ---
-                "Misplaced \\cr");
-    }
 
 }

@@ -49,4 +49,36 @@ public class IfxTest extends ExTeXLauncher {
         super(arg);
     }
 
+    /**
+     * <testcase primitive="\ifx">
+     *  Test case checking that <tt>\ifx</tt> ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test1() throws Exception {
+
+        assertSuccess(//--- input code ---
+                "\\ifx aa true\\else false\\fi",
+                //--- output channel ---
+                "true" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\ifx">
+     *  Test case checking that <tt>\ifx</tt> ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test2() throws Exception {
+
+        assertSuccess(//--- input code ---
+                "\\ifx ab true\\else false\\fi",
+                //--- output channel ---
+                "false" + TERM);
+    }
+
+    //TODO implement the primitive specific test cases
+
 }

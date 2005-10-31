@@ -19,7 +19,6 @@
 
 package de.dante.extex.interpreter.primitives.typesetter.box;
 
-import de.dante.test.ExTeXLauncher;
 import de.dante.test.NoFlagsPrimitiveTester;
 
 /**

@@ -19,7 +19,6 @@
 
 package de.dante.extex.interpreter.primitives.math;
 
-import de.dante.test.ExTeXLauncher;
 
 /**
  * This is a test suite for the primitive <tt>\overline</tt>.

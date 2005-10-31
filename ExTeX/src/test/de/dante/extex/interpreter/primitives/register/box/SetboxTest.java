@@ -45,7 +45,7 @@ public class SetboxTest extends NoFlagsButGlobalPrimitiveTester {
      */
     public SetboxTest(final String arg) {
 
-        super(arg, "setbox", "2\\hbox{}", DEFINE_BRACES);
+        super(arg, "setbox", "2\\hbox{}");
     }
 
     /**

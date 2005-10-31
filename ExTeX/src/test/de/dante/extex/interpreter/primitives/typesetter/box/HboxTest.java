@@ -178,11 +178,11 @@ public class HboxTest extends NoFlagsPrimitiveTester {
      */
     public void testHbox4() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertSuccess(//--- input code ---
                 DEFINE_BRACES + "\\font\\fnt cmtt12 \\fnt"
                         + "\\setbox1=\\hbox{abc} " + "\\the\\wd1 " + "\\end",
                 //--- output channel ---
-                "18.52501pt " + TERM); // checked wih TeX
+                "18.52501pt" + TERM); // checked wih TeX
     }
 
     //TODO implement primitive specific test cases

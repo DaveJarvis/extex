@@ -46,4 +46,21 @@ public class ToksTest extends AbstractToksRegisterTester {
         super(arg, "toks", "42", "");
     }
 
+    /**
+     * <testcase primitive="\toks">
+     *   Test case checking that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testAssign1() throws Exception {
+
+        assertSuccess(//--- input code ---
+                "\\toks12=\\toks23 "
+                + "\\end",
+                //--- output channel ---
+                "");
+    }
+
+
 }

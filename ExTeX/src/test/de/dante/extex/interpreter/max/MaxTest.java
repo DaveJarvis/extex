@@ -579,4 +579,18 @@ public class MaxTest extends ExTeXLauncher {
         tryFlag("protected", "}", Catcode.RIGHTBRACE, "end-group character }");
     }
 
+    /**
+     * <testcase>
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testEndgroup1() throws Exception {
+
+        assertFailure( //
+                DEFINE_BRACES + "}",
+                //
+                "Too many }'s");
+    }
+
 }

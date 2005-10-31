@@ -45,7 +45,7 @@ public class SpecialTest extends NoFlagsPrimitiveTester {
      */
     public SpecialTest(final String arg) {
 
-        super(arg, "\\special", "{}");
+        super(arg, "special", "{}");
     }
 
 }
