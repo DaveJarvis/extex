@@ -24,24 +24,23 @@
 package de.dante.extex.documentWriter.dvi;
 
 
-import de.dante.extex.documentWriter.DocumentWriterOptions;
-import de.dante.extex.font.Glyph;
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
-import de.dante.extex.interpreter.type.font.Font;
-import de.dante.extex.typesetter.Mode;
-import de.dante.extex.typesetter.type.node.CharNode;
-import de.dante.extex.typesetter.type.node.GlueNode;
-import de.dante.extex.typesetter.type.node.RuleNode;
-import de.dante.extex.typesetter.type.node.WhatsItNode;
-import de.dante.util.UnicodeChar;
-import de.dante.util.exception.GeneralException;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.EmptyStackException;
 import java.util.Enumeration;
 import java.util.Stack;
 import java.util.Vector;
+
+import de.dante.extex.documentWriter.DocumentWriterOptions;
+import de.dante.extex.font.Glyph;
+import de.dante.extex.interpreter.type.dimen.FixedDimen;
+import de.dante.extex.interpreter.type.font.Font;
+import de.dante.extex.typesetter.Mode;
+import de.dante.extex.typesetter.type.node.CharNode;
+import de.dante.extex.typesetter.type.node.RuleNode;
+import de.dante.extex.typesetter.type.node.WhatsItNode;
+import de.dante.util.UnicodeChar;
+import de.dante.util.exception.GeneralException;
 
 
 /**
