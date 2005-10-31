@@ -31,6 +31,11 @@ import de.dante.util.exception.GeneralException;
 public class PanicException extends GeneralException {
 
     /**
+     * The field <tt>serialVersionUID</tt> contains the ...
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Creates a new <code>PanicException</code> instance.
      *
      */
