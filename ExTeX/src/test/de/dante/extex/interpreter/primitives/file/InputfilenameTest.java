@@ -40,13 +40,22 @@ public class InputfilenameTest extends NoFlagsPrimitiveTester {
     }
 
     /**
+     * @see de.dante.test.ExTeXLauncher#getConfig()
+     */
+    protected String getConfig() {
+
+        return "extex-jx.xml";
+    }
+
+    /**
      * Creates a new object.
      *
      * @param arg the name
      */
     public InputfilenameTest(final String arg) {
 
-        super(arg, "inputfilename", "");
+        super(arg, "inputfilename", "", "\\javadef\\inputfilename{"
+                + Inputfilename.class.getName() + "}");
     }
 
 }
