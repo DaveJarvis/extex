@@ -20,7 +20,7 @@
 package de.dante.extex.interpreter.context;
 
 import de.dante.extex.interpreter.TokenSource;
-import de.dante.extex.interpreter.context.observer.afterGroup.AfterGroupObserver;
+import de.dante.extex.interpreter.context.observer.group.AfterGroupObserver;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
@@ -86,6 +86,6 @@ public interface ContextGroup {
      * @throws ConfigurationException in case of an error in the configuration,
      *             e.g. the class for the group can not be determined.
      */
-    void openGroup() throws ConfigurationException;
+    void openGroup() throws ConfigurationException, InterpreterException;
 
 }
