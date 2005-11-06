@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.interpreter.context.observer.afterGroup;
+package de.dante.extex.interpreter.context.observer.group;
 
 import de.dante.util.Switch;
 

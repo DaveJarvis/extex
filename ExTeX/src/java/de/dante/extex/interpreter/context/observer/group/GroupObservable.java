@@ -17,29 +17,35 @@
  *
  */
 
-package de.dante.extex.interpreter.context.observer;
-
-import de.dante.extex.interpreter.context.ContextInternals;
-import de.dante.extex.interpreter.interaction.Interaction;
+package de.dante.extex.interpreter.context.observer.group;
 
 /**
- * This interface describes the ability to receive a notification about the
- * change of the interaction mode.
+ * This interface describes the possibility to register an observer for an
+ * group event.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface InteractionObserver {
+public interface GroupObservable {
 
     /**
-     * Receive a notification on a count change.
+     * Register an observer for group change events.
+     * Group change events are triggered when a group is opened or closed.
+     * In this case the appropriate method in the observer is invoked.
      *
-     * @param context the interpreter context
-     * @param mode the new interaction mode.
-     *
-     * @throws Exception in case of a problem
+     * @param name the name or the number of the register
+     * @param observer the observer to receive the events
      */
-    void receiveInteractionChange(ContextInternals context, Interaction mode)
-            throws Exception;
+    void registerGroupObserver(GroupObserver observer);
+
+    /**
+     * Remove a registered observer for group change events.
+     * Group change events are triggered when a group is opened or closed.
+     * In this case the appropriate method in the observer is invoked.
+     *
+     * @param name the name or the number of the register
+     * @param observer the observer to receive the events
+     */
+    void unregisterGroupObserver(GroupObserver observer);
 
 }

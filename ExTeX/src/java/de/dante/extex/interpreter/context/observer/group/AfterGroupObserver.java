@@ -17,22 +17,19 @@
  *
  */
 
-package de.dante.extex.interpreter.context.observer.afterGroup;
+package de.dante.extex.interpreter.context.observer.group;
 
 /**
- * This interface describes the possibility to register an observer for an
- * expansion event.
+ * This interface describes the ability to receive a notification just after
+ * a a group has been closed.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface AfterGroupObservable {
+public interface AfterGroupObserver {
 
     /**
-     * Register an expand observer for later use.
-     *
-     * @param observer the observer to be registered
+     * This method is meant to be invoked just after a group has been closed.
      */
-    void registerObserver(AfterGroupObserver observer);
-
+    void update();
 }

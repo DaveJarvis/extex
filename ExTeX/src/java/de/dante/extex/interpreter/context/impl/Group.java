@@ -23,7 +23,7 @@ import java.io.Serializable;
 
 import de.dante.extex.interpreter.Tokenizer;
 import de.dante.extex.interpreter.context.TypesettingContext;
-import de.dante.extex.interpreter.context.observer.afterGroup.AfterGroupObserver;
+import de.dante.extex.interpreter.context.observer.group.AfterGroupObserver;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.Code;
 import de.dante.extex.interpreter.type.box.Box;
