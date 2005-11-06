@@ -110,7 +110,7 @@ public class CountPrimitive extends AbstractCount
         String key = getKey(context, source);
         source.getKeyword(context, "by");
 
-        long value = Count.scanCount(context, source, null);
+        long value = Count.scanCount(context, source, typesetter);
         value += context.getCount(key).getValue();
 
         context.setCount(key, value, prefix.isGlobal());
@@ -177,7 +177,7 @@ public class CountPrimitive extends AbstractCount
         String key = getKey(context, source);
         source.getKeyword(context, "by");
 
-        long value = Count.scanCount(context, source, null);
+        long value = Count.scanCount(context, source, typesetter);
 
         if (value == 0) {
             throw new ArithmeticOverflowException(
@@ -202,7 +202,7 @@ public class CountPrimitive extends AbstractCount
         String key = getKey(context, source);
         source.getKeyword(context, "by");
 
-        long value = Count.scanCount(context, source, null);
+        long value = Count.scanCount(context, source, typesetter);
         value *= context.getCount(key).getValue();
         context.setCount(key, value, prefix.isGlobal());
         prefix.clearGlobal();
