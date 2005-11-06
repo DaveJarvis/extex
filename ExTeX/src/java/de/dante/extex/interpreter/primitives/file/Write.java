@@ -151,6 +151,7 @@ public class Write extends AbstractCode
 
             Tokens toks = source.scanTokens(context, getName());
             write(key, toks, context);
+            prefix.clearImmediate();
 
         } else {
 
