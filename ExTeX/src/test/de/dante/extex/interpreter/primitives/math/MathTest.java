@@ -49,7 +49,7 @@ public class MathTest extends ExTeXLauncher {
                 "\\catcode`$=3 "
                 + "$a$ \\end",
                 //--- output channel ---
-                "a\n");
+                "a" + TERM);
     }
 
     /**
