@@ -23,7 +23,7 @@ import java.util.logging.Handler;
 import java.util.logging.Level;
 
 import de.dante.extex.interpreter.context.ContextInternals;
-import de.dante.extex.interpreter.context.observer.InteractionObserver;
+import de.dante.extex.interpreter.context.observer.interaction.InteractionObserver;
 import de.dante.extex.interpreter.interaction.Interaction;
 
 /**
