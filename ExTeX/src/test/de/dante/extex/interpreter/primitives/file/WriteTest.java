@@ -113,4 +113,19 @@ public class WriteTest extends NoFlagsButImmediatePrimitiveTester {
                 );
     }
 
+    /**
+     * <testcase primitive="\write">
+     *  Test case checking that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testImmediate1() throws Exception {
+
+        assertOutput(//--- input code ---
+                DEFINE_BRACES + "\\immediate\\write 2{abc} \\end",
+                //--- log message ---
+                "abc", "");
+    }
+
 }
