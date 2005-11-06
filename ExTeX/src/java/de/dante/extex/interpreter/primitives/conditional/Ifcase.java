@@ -91,22 +91,20 @@ public class Ifcase extends AbstractIf {
             throws InterpreterException {
 
         //prefix.clear(); //TODO gene: most probably not needed
-        long val = source.scanInteger(context, typesetter);
-        if (val < 0) {
+        long branch = source.scanInteger(context, typesetter);
+        if (branch < 0) {
             if (skipToElseOrFi(context, source)) {
-                context.pushConditional(source.getLocator(), true,
-                        printableControlSequence(context));
+                context.pushConditional(source.getLocator(), true, this, branch);
             }
             return;
         }
 
-        while (val > 0) {
+        while (branch > 0) {
             Tag tag = skipToOrOrElseOrFi(context, source);
             if (tag == OR) {
-                val--;
+                branch--;
             } else if (tag == ELSE) {
-                context.pushConditional(source.getLocator(), true,
-                        printableControlSequence(context));
+                context.pushConditional(source.getLocator(), true, this, branch);
                 return;
 
             } else if (tag == FI) {
@@ -117,8 +115,7 @@ public class Ifcase extends AbstractIf {
 
             }
         }
-        context.pushConditional(source.getLocator(), true,
-                printableControlSequence(context));
+        context.pushConditional(source.getLocator(), true, this, branch);
     }
 
     /**
