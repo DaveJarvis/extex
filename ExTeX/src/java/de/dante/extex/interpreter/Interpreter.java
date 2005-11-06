@@ -24,6 +24,7 @@ import java.io.InputStream;
 
 import de.dante.extex.font.FontFactory;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.context.observer.count.CountObserver;
 import de.dante.extex.interpreter.exception.ErrorLimitException;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.interaction.Interaction;
