@@ -217,7 +217,8 @@ public class Moritz extends Max
     }
 
     /**
-     * @see de.dante.extex.interpreter.TokenSource#closeAllStreams(Context)
+     * @see de.dante.extex.interpreter.TokenSource#closeAllStreams(
+     *      de.dante.extex.interpreter.context.Context)
      */
     public void closeAllStreams(final Context context)
             throws InterpreterException {
@@ -228,7 +229,8 @@ public class Moritz extends Max
     }
 
     /**
-     * @see de.dante.extex.interpreter.TokenSource#closeNextFileStream(Context)
+     * @see de.dante.extex.interpreter.TokenSource#closeNextFileStream(
+     *      de.dante.extex.interpreter.context.Context)
      */
     public void closeNextFileStream(final Context context)
             throws InterpreterException {
@@ -1159,8 +1161,8 @@ public class Moritz extends Max
                     case '9':
                         n = c - '0';
 
-                        for (t = scanToken(context); t instanceof OtherToken
-                                && t.getChar().isDigit(); t = scanToken(context)) {
+                        for (t = getToken(context); t instanceof OtherToken
+                                && t.getChar().isDigit(); t = getToken(context)) {
                             n = n * 10 + t.getChar().getCodePoint() - '0';
                         }
 
