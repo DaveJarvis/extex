@@ -63,7 +63,7 @@ public class AftergroupTest extends NoFlagsPrimitiveTester {
         assertSuccess(//--- input code ---
                 "\\catcode`{=1"
                 + "\\catcode`}=2"
-                + "a{b\\aftergroup xd}e",
+                + "a{b\\aftergroup xd}e\\end",
                 //--- output channel ---
                 "abdxe" + TERM);
     }
@@ -82,10 +82,9 @@ public class AftergroupTest extends NoFlagsPrimitiveTester {
                 "\\catcode`{=1"
                 + "\\catcode`}=2"
                 + "\\def\\x{ttt}"
-                + "a{b\\aftergroup\\x d}e",
+                + "a{b\\aftergroup\\x d}e\\end",
                 //--- output channel ---
                 "abdttte" + TERM);
     }
-
 
 }

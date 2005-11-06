@@ -59,7 +59,7 @@ public class IfvmodeTest extends ExTeXLauncher {
     public void test1() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\ifvmode a\\else b\\fi",
+                "\\ifvmode a\\else b\\fi\\end",
                 //--- output channel ---
                 "a" + TERM);
     }
@@ -74,7 +74,7 @@ public class IfvmodeTest extends ExTeXLauncher {
     public void test2() throws Exception {
 
         assertSuccess(//--- input code ---
-                "x\\ifvmode a\\else b\\fi x",
+                "x\\ifvmode a\\else b\\fi x\\end",
                 //--- output channel ---
                 "xbx" + TERM);
     }
@@ -91,7 +91,7 @@ public class IfvmodeTest extends ExTeXLauncher {
         assertSuccess(//--- input code ---
                 "\\catcode`{=1 "
                 + "\\catcode`}=2 "
-                + "\\vbox{\\ifvmode a\\else b\\fi}",
+                + "\\vbox{\\ifvmode a\\else b\\fi}\\end",
                 //--- output channel ---
                 "a\n" + TERM);
     }
@@ -108,7 +108,7 @@ public class IfvmodeTest extends ExTeXLauncher {
         assertSuccess(//--- input code ---
                 "\\catcode`{=1 "
                 + "\\catcode`}=2 "
-                + "\\hbox{\\ifvmode a\\else b\\fi}",
+                + "\\hbox{\\ifvmode a\\else b\\fi}\\end",
                 //--- output channel ---
                 "b" + TERM);
     }
