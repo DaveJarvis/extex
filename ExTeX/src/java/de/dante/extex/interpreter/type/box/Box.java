@@ -362,7 +362,7 @@ public class Box implements BoxOrRule, Serializable {
             throw new OperationNotSupportedException("vsplit");
         }
 
-        return ((VerticalListNode) nodes).split(height, logger, logger); //TODO gene:
+        return ((VerticalListNode) nodes).split(height, logger, logger);
     }
 
 }
