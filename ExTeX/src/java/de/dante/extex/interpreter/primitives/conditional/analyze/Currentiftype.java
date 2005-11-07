@@ -140,8 +140,8 @@ public class Currentiftype extends AbstractCode
             return 0;
         }
         Long l = (Long) map.get(conditional.getPrimitive().getClass());
-        //TODO gene: treat \ unless
-        return (l == null ? 0 : l.longValue());
+        return (l == null ? 0 : //
+                conditional.isNeg() ? -l.longValue() : l.longValue());
     }
 
     /**

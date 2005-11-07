@@ -41,11 +41,12 @@ public class ConditionalSwitch extends Conditional {
      * @param locator the locator
      * @param primitive the primitive which started this conditional
      * @param branch <code>true</code> iff the then branch is taken
+     * @param neg indicator that the conditional has been negated
      */
     public ConditionalSwitch(final Locator locator, final Code primitive,
-            final long branch) {
+            final long branch, final boolean neg) {
 
-        super(locator, primitive, branch);
+        super(locator, primitive, branch, neg);
     }
 
     /**

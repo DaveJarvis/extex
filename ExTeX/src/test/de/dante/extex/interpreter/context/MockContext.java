@@ -492,7 +492,7 @@ public class MockContext implements Context, TypesetterOptions {
      * @see de.dante.extex.interpreter.context.Context#pushConditional(de.dante.util.Locator, boolean, String)
      */
     public void pushConditional(final Locator locator, final boolean value,
-            Code primitive, long branch) {
+            Code primitive, long branch, boolean neg) {
 
         throw new RuntimeException("unimplemented");
     }
@@ -631,7 +631,7 @@ public class MockContext implements Context, TypesetterOptions {
      * @see de.dante.extex.interpreter.context.Context#setGlue(java.lang.String, de.dante.extex.interpreter.type.glue.Glue, boolean)
      */
     public void setGlue(final String name, final Glue value,
-            final boolean global) {
+            final boolean global) throws InterpreterException {
 
         throw new RuntimeException("unimplemented");
     }

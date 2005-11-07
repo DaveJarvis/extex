@@ -94,7 +94,7 @@ public class Ifcase extends AbstractIf {
         long branch = source.scanInteger(context, typesetter);
         if (branch < 0) {
             if (skipToElseOrFi(context, source)) {
-                context.pushConditional(source.getLocator(), true, this, branch);
+                context.pushConditional(source.getLocator(), true, this, branch, false);
             }
             return;
         }
@@ -104,7 +104,7 @@ public class Ifcase extends AbstractIf {
             if (tag == OR) {
                 branch--;
             } else if (tag == ELSE) {
-                context.pushConditional(source.getLocator(), true, this, branch);
+                context.pushConditional(source.getLocator(), true, this, branch, false);
                 return;
 
             } else if (tag == FI) {
@@ -115,7 +115,7 @@ public class Ifcase extends AbstractIf {
 
             }
         }
-        context.pushConditional(source.getLocator(), true, this, branch);
+        context.pushConditional(source.getLocator(), true, this, branch, false);
     }
 
     /**

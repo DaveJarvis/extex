@@ -56,7 +56,7 @@ public abstract class AbstractIf extends AbstractCode implements ExpandableCode 
      * counting the intermediate <tt>\if</tt>s and <tt>\fi</tt>s.
      *
      * <p>
-     *  This method implements to the absorbtion of tokens at high speed.
+     *  This method implements to the absorption of tokens at high speed.
      * </p>
      *
      * @param context the interpreter context
@@ -139,9 +139,9 @@ public abstract class AbstractIf extends AbstractCode implements ExpandableCode 
             throws InterpreterException {
 
         if (conditional(context, source, typesetter)) {
-            context.pushConditional(source.getLocator(), true, this, 1);
+            context.pushConditional(source.getLocator(), true, this, 1, false);
         } else if (skipToElseOrFi(context, source)) {
-            context.pushConditional(source.getLocator(), true, this, -1);
+            context.pushConditional(source.getLocator(), true, this, -1, false);
         }
     }
 
@@ -157,9 +157,9 @@ public abstract class AbstractIf extends AbstractCode implements ExpandableCode 
             throws InterpreterException {
 
         if (conditional(context, source, typesetter)) {
-            context.pushConditional(source.getLocator(), true, this, 1);
+            context.pushConditional(source.getLocator(), true, this, 1, false);
         } else if (skipToElseOrFi(context, source)) {
-            context.pushConditional(source.getLocator(), true, this, -1);
+            context.pushConditional(source.getLocator(), true, this, -1, false);
         }
     }
 
