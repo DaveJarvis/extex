@@ -35,7 +35,7 @@ public interface DimenObservable {
      * observer is invoked.
      * <p>
      *  A single dimen register can be observed by giving a name of the dimen
-     *  register to observe. Only changes to this register tigger the
+     *  register to observe. Only changes to this register trigger the
      *  notification. If this name is <code>null</code> the changes to all
      *  registers are reported to the observer.
      * </p>
