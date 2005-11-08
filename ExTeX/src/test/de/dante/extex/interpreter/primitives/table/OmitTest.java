@@ -48,4 +48,20 @@ public class OmitTest extends ExTeXLauncher {
         super(arg);
     }
 
+    /**
+     * <testcase primitive="\omit">
+     *  Test case checking that <tt>\omit</tt> needs to be used in a
+     *  tabuling context.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testLonelyCr() throws Exception {
+
+        assertFailure(//--- input code ---
+                "\\omit" + "\\end ",
+                //--- log message ---
+                "Misplaced \\omit");
+    }
+
 }

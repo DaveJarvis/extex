@@ -48,4 +48,20 @@ public class SpanTest extends ExTeXLauncher {
         super(arg);
     }
 
+    /**
+     * <testcase primitive="\span">
+     *  Test case checking that <tt>\span</tt> needs to be used in a
+     *  tabuling context.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testLonelyCr() throws Exception {
+
+        assertFailure(//--- input code ---
+                "\\span" + "\\end ",
+                //--- log message ---
+                "Misplaced \\span");
+    }
+
 }
