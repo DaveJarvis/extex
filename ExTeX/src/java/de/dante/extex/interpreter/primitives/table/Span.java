@@ -85,7 +85,7 @@ public class Span extends AbstractCode {
         if (maker instanceof AlignmentList) {
             ((AlignmentList) maker).cr(context, source);
         } else {
-            throw new HelpingException(getLocalizer(), "TTP.MisplacedCrSpan",
+            throw new HelpingException(getLocalizer(), "TTP.MisplacedSpan",
                     printableControlSequence(context));
         }
     }
