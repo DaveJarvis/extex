@@ -24,8 +24,8 @@ import java.io.OutputStream;
 
 import de.dante.extex.documentWriter.DocumentWriter;
 import de.dante.extex.documentWriter.DocumentWriterOptions;
-import de.dante.extex.documentWriter.NoOutputStreamException;
 import de.dante.extex.documentWriter.SingleDocumentStream;
+import de.dante.extex.documentWriter.exception.NoOutputStreamException;
 import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.typesetter.Mode;
 import de.dante.extex.typesetter.type.InspectableNodeVisitor;
