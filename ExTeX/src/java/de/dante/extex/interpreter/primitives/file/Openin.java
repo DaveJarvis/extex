@@ -118,8 +118,7 @@ public class Openin extends AbstractFileCode {
         } catch (ConfigurationException e) {
             throw new InterpreterException(e);
         }
-        context.setInFile(key, file, prefix.isGlobal());
-        prefix.setGlobal(false);
+        context.setInFile(key, file, true);
     }
 
 }
