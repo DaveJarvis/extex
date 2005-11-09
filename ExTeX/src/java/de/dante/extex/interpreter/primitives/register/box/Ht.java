@@ -42,7 +42,8 @@ import de.dante.util.exception.GeneralException;
  * <doc name="ht">
  * <h3>The Primitive <tt>\ht</tt></h3>
  * <p>
- *  TODO gene: missing documentation
+ *  The primitive <tt>\ht</tt> refers to the height of a box register.
+ *  It can be used in various contexts.
  * </p>
  * <p>
  *  The formal description of this primitive is the following:
@@ -56,17 +57,18 @@ import de.dante.util.exception.GeneralException;
  *        de.dante.extex.interpreter.type.dimen#Dimen(Context,TokenSource)
  *        &lang;dimen&rang;}   </pre>
  * </p>
+ *
+ * <h4>Examples</h4>
  * <p>
- *  Examples:
  *  <pre class="TeXSample">
  *    \ht42  </pre>
+ *  <pre class="TeXSample">
+ *   \advance\dimen12 \ht0
+ *   \ht12=123pt
+ *  </pre>
  * </p>
  * </doc>
  *
- * <pre>
- *  \advance\dimen12 \ht0
- *  \ht12=123pt
- * </pre>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
