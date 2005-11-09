@@ -299,8 +299,7 @@ public class GroupImpl implements Group, Tokenizer, Serializable {
                 return Catcode.SPACE;
             case '\\':
                 return Catcode.ESCAPE;
-            case '\r':
-            case '\n':
+            case 13:
                 return Catcode.CR;
             case '%':
                 return Catcode.COMMENT;
