@@ -186,4 +186,12 @@ public class TokenStreamBaseImpl implements TokenStream {
         this.skipSpaces = true;
     }
 
+    /**
+     * @see de.dante.extex.scanner.stream.TokenStream#isEol()
+     */
+    public boolean isEol() throws ScannerException {
+
+        return (stack.length() == 0);
+    }
+
 }

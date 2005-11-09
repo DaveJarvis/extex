@@ -203,4 +203,14 @@ public abstract class AbstractTokenStreamImpl implements TokenStream {
         // TODO mgn incomplete
         return false;
     }
+
+    /**
+     * @see de.dante.extex.scanner.stream.TokenStream#isEol()
+     */
+    public boolean isEol() {
+
+        // TODO mgn incomplete
+        return false;
+    }
+
 }

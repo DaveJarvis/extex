@@ -128,4 +128,14 @@ public class TokenStreamBaseImpl implements TokenStream {
 
         return false;
     }
+
+    /**
+     * @see de.dante.extex.scanner.stream.TokenStream#isEol()
+     */
+    public boolean isEol() {
+
+        // TODO mgn incomplete
+        return false;
+    }
+
 }

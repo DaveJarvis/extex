@@ -865,4 +865,14 @@ public abstract class TokenStreamBaseImpl32
         // TODO mgn incomplete
         return false;
     }
+
+    /**
+     * @see de.dante.extex.scanner.stream.TokenStream#isEol()
+     */
+    public boolean isEol() {
+
+        // TODO mgn incomplete
+        return false;
+    }
+
 }
