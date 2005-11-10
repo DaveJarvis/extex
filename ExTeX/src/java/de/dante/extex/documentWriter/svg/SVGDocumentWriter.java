@@ -61,6 +61,7 @@ import de.dante.extex.typesetter.type.node.SpaceNode;
 import de.dante.extex.typesetter.type.node.VerticalListNode;
 import de.dante.extex.typesetter.type.node.VirtualCharNode;
 import de.dante.extex.typesetter.type.node.WhatsItNode;
+import de.dante.extex.typesetter.type.page.Page;
 import de.dante.util.UnicodeChar;
 import de.dante.util.Unit;
 import de.dante.util.exception.GeneralException;
@@ -267,9 +268,11 @@ public class SVGDocumentWriter
      * @see de.dante.extex.documentWriter.DocumentWriter#shipout(
      *      de.dante.extex.typesetter.type.NodeList)
      */
-    public void shipout(final NodeList nodes)
+    public int shipout(final Page page)
             throws DocumentWriterException,
                 GeneralException {
+
+        NodeList nodes = page.getNodes();
 
         if (shippedPages == 0) {
             // TeX primitives should set the papersize in any way:
@@ -306,6 +309,7 @@ public class SVGDocumentWriter
             }
             shippedPages++;
         }
+        return 1;
     }
 
     // ----------------------------------------------

@@ -52,6 +52,8 @@ import de.dante.extex.typesetter.type.node.HorizontalListNode;
 import de.dante.extex.typesetter.type.node.InsertionNode;
 import de.dante.extex.typesetter.type.node.PenaltyNode;
 import de.dante.extex.typesetter.type.node.VerticalListNode;
+import de.dante.extex.typesetter.type.page.Page;
+import de.dante.extex.typesetter.type.page.PageFactory;
 import de.dante.util.Locator;
 import de.dante.util.UnicodeChar;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
@@ -114,9 +116,19 @@ public class TypesetterImpl
     private OutputRoutine outputRoutine = null;
 
     /**
+     * The field <tt>page</tt> contains the ...
+     */
+    private Page page = null;
+
+    /**
      * The field <tt>pageBuilder</tt> contains the current page builder.
      */
     private PageBuilder pageBuilder = null;
+
+    /**
+     * The field <tt>pageFactory</tt> contains the ...
+     */
+    private PageFactory pageFactory = new PageFactory();
 
     /**
      * The field <tt>paragraphBuilder</tt> contains the current paragraph

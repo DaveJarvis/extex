@@ -58,6 +58,7 @@ import de.dante.extex.typesetter.type.node.SpaceNode;
 import de.dante.extex.typesetter.type.node.VerticalListNode;
 import de.dante.extex.typesetter.type.node.VirtualCharNode;
 import de.dante.extex.typesetter.type.node.WhatsItNode;
+import de.dante.extex.typesetter.type.page.Page;
 import de.dante.util.UnicodeChar;
 import de.dante.util.Unit;
 import de.dante.util.exception.GeneralException;
@@ -392,7 +393,9 @@ public class XMLDocumentWriter
      * @see de.dante.extex.documentWriter.DocumentWriter#shipout(
      *      de.dante.extex.typesetter.type.NodeList)
      */
-    public void shipout(final NodeList nodes) throws GeneralException {
+    public int shipout(final Page page) throws GeneralException {
+
+        NodeList nodes = page.getNodes();
 
         try {
             if (writer == null) {
@@ -443,6 +446,7 @@ public class XMLDocumentWriter
         } catch (IOException e) {
             throw new DocumentWriterIOException(e);
         }
+        return 1;
     }
 
     // ----------------------------------------------

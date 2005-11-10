@@ -17,33 +17,35 @@
  *
  */
 
-package de.dante.extex.typesetter;
+package de.dante.extex.typesetter.type.page;
 
-import de.dante.extex.documentWriter.DocumentWriter;
-import de.dante.extex.typesetter.type.page.Page;
-import de.dante.util.exception.GeneralException;
+import de.dante.extex.typesetter.type.NodeList;
 
 /**
- * This interface describes the functionality provided by an output routine.
- * A output routine is not necessarily implemented by a program in the macro
- * language. Instead might as well be implemented in Java or some other
- * extension language.
+ * This class provides a factory for page instances.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface OutputRoutine {
+public class PageFactory {
 
     /**
-     * The output function is invoked to process a vertical list and put the
-     * material on the page. In fact it should find its way to the document
-     * writer &ndash; either immediately or later on.
+     * Creates a new object.
      *
-     * @param page the nodes to put onto the page
-     * @param documentWriter the document writer to target the nodes to
-     *
-     * @throws GeneralException in case of an error
      */
-    void output(Page page, DocumentWriter documentWriter)
-            throws GeneralException;
+    public PageFactory() {
+
+        super();
+    }
+
+    /**
+     * Get a new instance of a page.
+     *
+     * @param nodes the nodes contained
+     * @return the new instance
+     */
+    public Page newInstance(final NodeList nodes) {
+
+        return new PageImpl(nodes);
+    }
 }

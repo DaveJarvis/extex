@@ -22,7 +22,7 @@ package de.dante.extex.documentWriter;
 import java.io.IOException;
 
 import de.dante.extex.documentWriter.exception.DocumentWriterException;
-import de.dante.extex.typesetter.type.NodeList;
+import de.dante.extex.typesetter.type.page.Page;
 import de.dante.util.exception.GeneralException;
 
 /**
@@ -58,11 +58,13 @@ public interface DocumentWriter {
      * properly filled. Thus all information should be present to place the
      * ink on the paper.
      *
-     * @param nodes the nodes to send
+     * @param page the page to send
+     *
+     * @return returns the number pf pages shipped
      *
      * @throws DocumentWriterException in case of an error
      */
-    void shipout(NodeList nodes)
+    int shipout(Page page)
             throws DocumentWriterException,
                 GeneralException,
                 IOException;

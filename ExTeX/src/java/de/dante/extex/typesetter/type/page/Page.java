@@ -16,34 +16,40 @@
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
+package de.dante.extex.typesetter.type.page;
 
-package de.dante.extex.typesetter;
+import de.dante.extex.interpreter.type.dimen.Dimen;
+import de.dante.extex.typesetter.type.NodeList;
 
-import de.dante.extex.documentWriter.DocumentWriter;
-import de.dante.extex.typesetter.type.page.Page;
-import de.dante.util.exception.GeneralException;
 
 /**
- * This interface describes the functionality provided by an output routine.
- * A output routine is not necessarily implemented by a program in the macro
- * language. Instead might as well be implemented in Java or some other
- * extension language.
+ * TODO gene: missing JavaDoc.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface OutputRoutine {
+public interface Page {
 
     /**
-     * The output function is invoked to process a vertical list and put the
-     * material on the page. In fact it should find its way to the document
-     * writer &ndash; either immediately or later on.
+     * Getter for the nde list.
      *
-     * @param page the nodes to put onto the page
-     * @param documentWriter the document writer to target the nodes to
-     *
-     * @throws GeneralException in case of an error
+     * @return the node list
      */
-    void output(Page page, DocumentWriter documentWriter)
-            throws GeneralException;
+    NodeList getNodes();
+    
+    /**
+     * TODO gene: missing JavaDoc
+     *
+     * @return
+     */
+    Dimen getMediaWidth();
+    
+    /**
+     * TODO gene: missing JavaDoc
+     *
+     * @return
+     */
+    Dimen getMediaHeight();
+
+
 }
