@@ -84,7 +84,7 @@ public class Setbox extends AbstractBox implements Code {
 
         Flags f = prefix.copy();
         prefix.clear();
-        String key = getKey(context, source);
+        String key = getKey(context, source, getName());
         source.getOptionalEquals(context);
         Box box = source.getBox(prefix, context, typesetter);
         context.setBox(key, box, prefix.isGlobal());

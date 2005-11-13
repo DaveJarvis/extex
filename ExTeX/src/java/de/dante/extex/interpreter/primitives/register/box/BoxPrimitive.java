@@ -85,7 +85,7 @@ public class BoxPrimitive extends AbstractBox implements Boxable, Serializable {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        String key = getKey(context, source);
+        String key = getKey(context, source, getName());
         Box box = context.getBox(key);
         if (box != null) {
             try {
@@ -109,7 +109,7 @@ public class BoxPrimitive extends AbstractBox implements Boxable, Serializable {
     public Box getBox(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
 
-        String key = getKey(context, source);
+        String key = getKey(context, source, getName());
         return context.getBox(key);
     }
 

@@ -86,7 +86,7 @@ public class Unvbox extends AbstractBox {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        String key = getKey(context, source);
+        String key = getKey(context, source, getName());
         Box b = context.getBox(key);
         if (b == null || b.isVoid()) {
             // nothing to do

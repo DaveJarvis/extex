@@ -107,7 +107,7 @@ public class Ht extends Setbox
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        Box box = context.getBox(getKey(context, source));
+        Box box = context.getBox(getKey(context, source, getName()));
         source.getOptionalEquals(context);
         Dimen d = new Dimen(context, source, typesetter);
 
@@ -138,7 +138,7 @@ public class Ht extends Setbox
     public Tokens the(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
 
-        Box box = context.getBox(getKey(context, source));
+        Box box = context.getBox(getKey(context, source, getName()));
         FixedDimen d = (box == null ? Dimen.ZERO_PT : box.getHeight());
         try {
             return d.toToks(context.getTokenFactory());
@@ -166,7 +166,7 @@ public class Ht extends Setbox
     public long convertDimen(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
 
-        Box b = context.getBox(getKey(context, source));
+        Box b = context.getBox(getKey(context, source, getName()));
         return (b == null ? 0 : b.getHeight().getValue());
     }
 
