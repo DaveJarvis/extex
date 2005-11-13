@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.typesetter.undo;
+package de.dante.extex.interpreter.primitives.typesetter.box;
 
 import java.util.logging.Logger;
 
@@ -142,7 +142,7 @@ public class Vsplit extends AbstractBox implements Boxable, LogEnabled {
     private NodeList vsplit(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
 
-        String key = getKey(context, source);
+        String key = getKey(context, source, getName());
         if (!source.getKeyword(context, "to")) {
             throw new HelpingException(getLocalizer(), "TTP.MissingToForVsplit");
         }
@@ -152,6 +152,7 @@ public class Vsplit extends AbstractBox implements Boxable, LogEnabled {
             throw new HelpingException(getLocalizer(), "TTP.SplittingNonVbox",
                     printableControlSequence(context), context.esc("vbox"));
         }
+        // TODO gene: set splitmark ...
         try {
             return b.vsplit(ht, //
                     (Count.ONE.le(context.getCount("tracingpages"))
