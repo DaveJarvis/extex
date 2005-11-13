@@ -19,36 +19,37 @@
 
 package de.dante.extex.interpreter.primitives.typesetter.mark;
 
-import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.typesetter.Typesetter;
+import de.dante.extex.interpreter.type.tokens.Tokens;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\splitbotmark</code>.
+ * <code>\botmarks</code>.
  *
- * <doc name="splitbotmark">
- * <h3>The Primitive <tt>\splitbotmark</tt></h3>
+ * <doc name="botmarks">
+ * <h3>The Primitive <tt>\botmarks</tt></h3>
  * <p>
- *  TODO missing documentation
+ *  TODO gene: missing documentation
  * </p>
  *
  * <h4>Syntax</h4>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    <tt>\splitbotmark</tt>  </pre>
+ *    <tt>\botmarks</tt> ...  </pre>
  *
  * <h4>Examples</h4>
  *  <pre class="TeXSample">
- *    \splitbotmark </pre>
+ *    \botmarks42  </pre>
+ *  <pre class="TeXSample">
+ *    \botmarks\count0  </pre>
  *
  * </doc>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Splitbotmark extends Splitbotmarks {
+public class Botmarks extends AbstractMarksCode {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
@@ -60,21 +61,20 @@ public class Splitbotmark extends Splitbotmarks {
      *
      * @param name the name for debugging
      */
-    public Splitbotmark(final String name) {
+    public Botmarks(final String name) {
 
         super(name);
     }
 
     /**
-     * @see de.dante.extex.interpreter.primitives.typesetter.mark.AbstractMarkCode#getKey(
+     * @see de.dante.extex.interpreter.primitives.typesetter.mark.AbstractMarkCode#getValue(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      java.lang.String)
      */
-    protected String getKey(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    protected Tokens getValue(final Context context, final String key)
+            throws InterpreterException {
 
-        return "0";
+        return context.getBottomMark(key);
     }
 
 }
