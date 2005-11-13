@@ -24,7 +24,6 @@ import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.typesetter.Typesetter;
 
-
 /**
  * This abstract base class provides the methods an read only count
  * primitive.
@@ -35,6 +34,12 @@ import de.dante.extex.typesetter.Typesetter;
 
 public class EtexVersion extends AbstractReadonlyCount {
     // TODO: this is the same as in eTeX, put this in etex.xml (TE)
+
+    /**
+     * The field <tt>serialVersionUID</tt> contains the ...
+     */
+    private static final long serialVersionUID = 1L;
+
     /**
      * The eTeX version this class returns.
      *
@@ -51,8 +56,7 @@ public class EtexVersion extends AbstractReadonlyCount {
         super(name);
     }
 
-
-   /**
+    /**
      * @see de.dante.extex.interpreter.type.count.CountConvertible#convertCount(
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource, Typesetter)

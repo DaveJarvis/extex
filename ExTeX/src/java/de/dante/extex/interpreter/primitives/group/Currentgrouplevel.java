@@ -32,10 +32,9 @@ import de.dante.extex.typesetter.Typesetter;
  * TODO:
  * - getCounter does not work???
  * (TE)
- *
+ */
 
-
- /**
+/**
  * This class provides an implementation for the primitive
  * <code>\currentgrouplevel</code>.
  *
@@ -64,6 +63,11 @@ public class Currentgrouplevel extends AbstractCode
         implements
             CountConvertible,
             Theable {
+
+    /**
+     * The field <tt>serialVersionUID</tt> contains the ...
+     */
+    private static final long serialVersionUID = 1L;
 
     /**
      * Creates a new object.

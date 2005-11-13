@@ -70,6 +70,11 @@ import de.dante.util.exception.GeneralException;
 public class Lastnodetype extends AbstractReadonlyCount {
 
     /**
+     * The field <tt>serialVersionUID</tt> contains the ...
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Class for getting the type of a node.
      *
      */
