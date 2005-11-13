@@ -19,9 +19,6 @@
 
 package de.dante.extex.typesetter.type.page;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.typesetter.type.NodeList;
 
@@ -33,11 +30,6 @@ import de.dante.extex.typesetter.type.NodeList;
  * @version $Revision$
  */
 public class PageImpl implements Page {
-
-    /**
-     * The field <tt>marks</tt> contains the ...
-     */
-    private Map marks = new HashMap();
 
     /**
      * The field <tt>mediaHeight</tt> contains the ...
