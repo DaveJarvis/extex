@@ -19,7 +19,10 @@
 
 package de.dante.extex.typesetter.type.page;
 
+import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeList;
+import de.dante.extex.typesetter.type.node.MarkNode;
 
 /**
  * This class provides a factory for page instances.
@@ -42,10 +45,20 @@ public class PageFactory {
      * Get a new instance of a page.
      *
      * @param nodes the nodes contained
+     * @param context the interpreter context
+     *
      * @return the new instance
      */
-    public Page newInstance(final NodeList nodes) {
+    public Page newInstance(final NodeList nodes, final Context context) {
 
-        return new PageImpl(nodes);
+        PageImpl page = new PageImpl(nodes);
+        int size = nodes.size();
+        for (int i=0;i<size;i++) {
+            Node node = nodes.get(i);
+            if ( node instanceof MarkNode) {
+                
+            }
+        }
+        return page;
     }
 }
