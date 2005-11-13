@@ -92,7 +92,7 @@ public class Shipout extends AbstractCode {
 
         if (box != null) {
             typesetter.shipout(box.getNodes());
-            context.getCount("deadcyles").set(0);
+            context.setCount("deadcyles", 0, true);
         }
     }
 
