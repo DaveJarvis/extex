@@ -86,6 +86,17 @@ public class InterpreterException extends GeneralException {
     }
 
     /**
+     * Creates a new object.
+     *
+     * @param message the message field
+     * @param cause the root of all evil
+     */
+    public InterpreterException(final String message, final Throwable cause) {
+
+        super(message, cause);
+    }
+
+    /**
      * Getter for localizer.
      * If no localizer is stored within the current instance than the localizer
      * is created with the class name as key.
