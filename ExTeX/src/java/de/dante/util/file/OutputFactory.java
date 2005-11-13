@@ -29,9 +29,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import de.dante.extex.documentWriter.OutputStreamFactory;
-import de.dante.extex.documentWriter.exception.DocumentWriterException;
-import de.dante.extex.documentWriter.exception.OutputStreamOpenException;
+import de.dante.extex.backend.documentWriter.OutputStreamFactory;
+import de.dante.extex.backend.documentWriter.exception.DocumentWriterException;
+import de.dante.extex.backend.documentWriter.exception.OutputStreamOpenException;
 import de.dante.util.framework.AbstractFactory;
 import de.dante.util.framework.configuration.Configuration;
 import de.dante.util.framework.configuration.exception.ConfigurationException;

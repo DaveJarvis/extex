@@ -20,7 +20,7 @@
 package de.dante.extex.interpreter;
 
 import junit.framework.TestCase;
-import de.dante.extex.documentWriter.DocumentWriter;
+import de.dante.extex.backend.documentWriter.DocumentWriter;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.context.TypesettingContext;
 import de.dante.extex.interpreter.type.count.Count;

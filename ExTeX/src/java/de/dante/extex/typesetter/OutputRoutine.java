@@ -19,7 +19,7 @@
 
 package de.dante.extex.typesetter;
 
-import de.dante.extex.documentWriter.DocumentWriter;
+import de.dante.extex.backend.documentWriter.DocumentWriter;
 import de.dante.extex.typesetter.type.page.Page;
 import de.dante.util.exception.GeneralException;
 

@@ -25,10 +25,12 @@ import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 
 import junit.framework.TestCase;
-import de.dante.extex.documentWriter.DocumentWriter;
-import de.dante.extex.documentWriter.DocumentWriterOptions;
-import de.dante.extex.documentWriter.SingleDocumentStream;
-import de.dante.extex.documentWriter.exception.NoOutputStreamException;
+import de.dante.extex.backend.documentWriter.DocumentWriter;
+import de.dante.extex.backend.documentWriter.DocumentWriterOptions;
+import de.dante.extex.backend.documentWriter.SingleDocumentStream;
+import de.dante.extex.backend.documentWriter.dvi.DviDocumentWriter;
+import de.dante.extex.backend.documentWriter.dvi.PanicException;
+import de.dante.extex.backend.documentWriter.exception.NoOutputStreamException;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.count.FixedCount;
@@ -178,7 +180,7 @@ public class DviDocumentWriterTest extends TestCase {
      */
     public void testMarkNode() throws Exception {
 
-        checkException(new MarkNode(Tokens.EMPTY, 0), PanicException.class);
+        checkException(new MarkNode(Tokens.EMPTY, "0"), PanicException.class);
     }
 
     /**

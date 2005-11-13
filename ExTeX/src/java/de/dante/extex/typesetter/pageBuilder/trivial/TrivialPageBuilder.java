@@ -21,7 +21,7 @@ package de.dante.extex.typesetter.pageBuilder.trivial;
 
 import java.io.IOException;
 
-import de.dante.extex.documentWriter.DocumentWriter;
+import de.dante.extex.backend.documentWriter.DocumentWriter;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.typesetter.OutputRoutine;
@@ -40,6 +40,11 @@ import de.dante.util.exception.GeneralException;
  * @version $Revision$
  */
 public class TrivialPageBuilder implements PageBuilder {
+
+    /**
+     * The field <tt>context</tt> contains the interpreter context.
+     */
+    private Context context = null;
 
     /**
      * The field <tt>documentWriter</tt> contains the document writer to receive
@@ -98,7 +103,7 @@ public class TrivialPageBuilder implements PageBuilder {
 
         if (nodes.size() > 0) {
             try {
-                documentWriter.shipout(pageFactory.newInstance(nodes));
+                documentWriter.shipout(pageFactory.newInstance(nodes, context));
                 nodes.clear();
             } catch (IOException e) {
                 throw new TypesetterException(e);
@@ -137,6 +142,7 @@ public class TrivialPageBuilder implements PageBuilder {
      */
     public void setContext(final Context context) {
 
+        this.context = context;
     }
 
     /**

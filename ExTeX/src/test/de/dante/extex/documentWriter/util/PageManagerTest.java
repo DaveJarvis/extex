@@ -20,6 +20,7 @@
 package de.dante.extex.documentWriter.util;
 
 import junit.framework.TestCase;
+import de.dante.extex.backend.documentWriter.util.PageManager;
 
 /**
  * TODO gene: missing JavaDoc.
