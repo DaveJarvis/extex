@@ -404,13 +404,10 @@ public class MultiDumpDocumentWriter
      */
     private OutputStream out = null;
 
-    private OutputStreamFactory outputStreamFactory;
-
     /**
-     * The field <tt>shippedPages</tt> contains the number of pages already
-     * shipped out.
+     * The field <tt>outputStreamFactory</tt> contains the ...
      */
-    private int shippedPages = 0;
+    private OutputStreamFactory outputStreamFactory;
 
     /**
      * The field <tt>tree</tt> contains the indicator whether to use the tree
@@ -451,14 +448,6 @@ public class MultiDumpDocumentWriter
     public String getExtension() {
 
         return "out";
-    }
-
-    /**
-     * @see de.dante.extex.documentWriter.DocumentWriter#getPages()
-     */
-    public int getPages() {
-
-        return shippedPages;
     }
 
     /**
@@ -506,7 +495,6 @@ public class MultiDumpDocumentWriter
                     ? (DocumentWriterException) ex //
                     : new DocumentWriterException(e.getLocalizedMessage()));
         }
-        shippedPages++;
         out = null;
         return 1;
     }
