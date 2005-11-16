@@ -45,13 +45,6 @@ public interface DocumentWriter {
     String getExtension();
 
     /**
-     * Getter for the number of pages already produced.
-     *
-     * @return the number of pages already shipped out
-     */
-    int getPages();
-
-    /**
      * This is the entry point for the document writer. Here it receives a
      * complete node list to be sent to the output writer. It can be assumed
      * that all values for width, height, and depth of the node lists are
