@@ -148,6 +148,8 @@ public class ExTeXLauncher extends TestCase {
         provide(properties, "extex.output", "out");
         provide(properties, "extex.interaction", "batchmode");
         provide(properties, "extex.fonts", "src/font");
+        provide(properties, "extex.nobanner", "true");
+
     }
 
     /**
