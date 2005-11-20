@@ -120,7 +120,7 @@ public class CrToken extends AbstractToken implements Token {
 
     /**
      * @see de.dante.extex.scanner.type.token.Token#visit(
-     *      de.dante.extex.scanner.type.TokenVisitor,
+     *      de.dante.extex.scanner.type.token.TokenVisitor,
      *      java.lang.Object)
      */
     public Object visit(final TokenVisitor visitor, final Object arg1)

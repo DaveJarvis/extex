@@ -29,7 +29,7 @@ import java.util.List;
  *
  * <p>
  *  Whenever an object is deserialized Java tries to invoke the method
- *  {@link readResolve() readResolve()}. This method can be used to get a hand
+ *  <tt>readResolve()</tt>. This method can be used to get a hand
  *  on the object which has just been reconstructed. Here the object can be
  *  replaced by another one or some other action can be applied.
  * </p>

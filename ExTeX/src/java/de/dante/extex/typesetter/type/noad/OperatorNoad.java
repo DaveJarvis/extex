@@ -73,7 +73,7 @@ public class OperatorNoad extends AbstractNucleusNoad {
 
     /**
      * @see "TTP [696]"
-     * @see de.dante.extex.typesetter.type.noad.Noad#toStringAdd(
+     * @see de.dante.extex.typesetter.type.noad.AbstractNoad#toStringAdd(
      *      java.lang.StringBuffer,
      *      int)
      */

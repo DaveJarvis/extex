@@ -50,7 +50,7 @@ public class TokenObserver implements PopObserver {
 
     /**
      * @see de.dante.extex.interpreter.observer.pop.PopObserver#update(
-     *      de.dante.extex.scanner.type.Token)
+     *      de.dante.extex.scanner.type.token.Token)
      */
     public void update(final Token token) {
 

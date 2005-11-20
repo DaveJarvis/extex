@@ -81,7 +81,7 @@ public class ExTeXLauncher extends TestCase {
         /**
          * @see de.dante.extex.interpreter.ErrorHandler#handleError(
          *      de.dante.util.GeneralException,
-         *      de.dante.extex.scanner.type.Token,
+         *      de.dante.extex.scanner.type.token.Token,
          *      de.dante.extex.interpreter.TokenSource,
          *      de.dante.extex.interpreter.context.Context)
          */

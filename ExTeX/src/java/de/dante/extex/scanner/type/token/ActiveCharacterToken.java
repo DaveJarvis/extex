@@ -166,7 +166,7 @@ public class ActiveCharacterToken extends AbstractToken implements CodeToken {
 
     /**
      * @see de.dante.extex.scanner.type.token.Token#visit(
-     *      de.dante.extex.scanner.type.TokenVisitor,
+     *      de.dante.extex.scanner.type.token.TokenVisitor,
      *      java.lang.Object)
      */
     public Object visit(final TokenVisitor visitor, final Object arg1)

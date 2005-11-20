@@ -228,7 +228,7 @@ public class TokenStreamTeXImpl extends AbstractTokenStreamImpl
 
     /**
      * @see de.dante.extex.scanner.stream.impl.TokenStreamBaseImpl#getNext(
-     *      de.dante.extex.scanner.type.TokenFactory,
+     *      de.dante.extex.scanner.type.token.TokenFactory,
      *      de.dante.extex.interpreter.Tokenizer)
      */
     protected Token getNext(final TokenFactory factory,

@@ -134,7 +134,7 @@ public abstract class AbstractTokenStreamImpl extends TokenStreamBaseImpl
     }
 
     /**
-     * @see de.dante.extex.scanner.stream.impl32.TokenStreamBaseImpl#getNext(de.dante.extex.scanner.type.TokenFactory,
+     * @see de.dante.extex.scanner.stream.impl32.TokenStreamBaseImpl#getNext(de.dante.extex.scanner.type.token.TokenFactory,
      *      de.dante.extex.interpreter.Tokenizer)
      */
     public Token getNext(final TokenFactory factory, final Tokenizer tokenizer)

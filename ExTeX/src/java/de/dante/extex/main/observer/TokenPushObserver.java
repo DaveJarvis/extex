@@ -50,7 +50,7 @@ public class TokenPushObserver implements PushObserver {
 
     /**
      * @see de.dante.extex.interpreter.observer.push.PushObserver#update(
-     *      de.dante.extex.scanner.type.Token)
+     *      de.dante.extex.scanner.type.token.Token)
      */
     public void update(final Token token) {
 
