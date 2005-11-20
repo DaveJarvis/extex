@@ -74,7 +74,7 @@ public class Valign extends AbstractAlign {
     }
 
     /**
-     * TODO gene: missing JavaDoc.
+     * Use the preamble to assemble a new line.
      *
      * @param preamble the list of preamble items to use
      * @param height the target height or <code>null</code> for the natural

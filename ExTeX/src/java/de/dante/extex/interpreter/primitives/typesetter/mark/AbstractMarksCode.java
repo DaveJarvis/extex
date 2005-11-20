@@ -119,11 +119,10 @@ public abstract class AbstractMarksCode extends AbstractCode
     }
 
     /**
-     * Get the key for this mark.
+     * Get the value for this mark.
      *
      * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
+     * @param key the key
      *
      * @return the value
      *
