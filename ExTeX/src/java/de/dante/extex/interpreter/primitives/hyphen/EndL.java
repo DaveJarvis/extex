@@ -83,7 +83,7 @@ public class EndL extends AbstractCode {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        if (context.getCount("TeXXetstate").le(Count.ZERO)) {
+        if (context.getCount("TeXXeTstate").le(Count.ZERO)) {
             throw new ExtensionDisabledException(
                     printableControlSequence(context));
         }
