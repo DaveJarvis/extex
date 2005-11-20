@@ -21,7 +21,7 @@ package de.dante.extex.interpreter.observer.expand;
 
 /**
  * This interface describes the possibility to register an observer for an
- * expansion event.
+ * execution event.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

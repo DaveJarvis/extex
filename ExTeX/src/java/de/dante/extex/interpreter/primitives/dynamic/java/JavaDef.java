@@ -99,7 +99,7 @@ import de.dante.extex.typesetter.Typesetter;
  * <pre class="JavaSample">
  *   <b>package</b> my.package;
  *
- *   <b>import</b> de.dante.extex.interpreter.AbstractCode;
+ *   <b>import</b> de.dante.extex.interpreter.type.AbstractCode;
  *   <b>import</b> de.dante.extex.interpreter.contect.Context;
  *   <b>import</b> de.dante.extex.interpreter.Flags;
  *   <b>import</b> de.dante.extex.interpreter.TokenSource;
