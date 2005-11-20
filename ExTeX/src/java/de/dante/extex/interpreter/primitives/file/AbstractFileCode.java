@@ -128,7 +128,7 @@ public abstract class AbstractFileCode extends AbstractCode
      * @throws ConfigurationException in case of an error
      *
      * @see de.dante.util.framework.configuration.Configurable#configure(
-     *      de.dante.util.configuration.Configuration)
+     *      de.dante.util.framework.configuration.Configuration)
      */
     public void configure(final Configuration config)
             throws ConfigurationException {

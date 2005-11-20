@@ -82,7 +82,7 @@ public class TypesettingContextFactory extends AbstractFactory {
      * </ul>
      *
      * @see de.dante.util.framework.configuration.Configurable#configure(
-     *      de.dante.util.configuration.Configuration)
+     *      de.dante.util.framework.configuration.Configuration)
      */
     public void configure(final Configuration configuration)
             throws ConfigurationException {

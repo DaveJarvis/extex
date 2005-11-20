@@ -23,7 +23,7 @@ package de.dante.extex.backend.documentWriter;
  * This interface describes the ability of a DocumentWriter to produce a single
  * output document.
  *
- * @see de.dante.extex.documentWriter.SingleDocumentStream
+ * @see de.dante.extex.backend.documentWriter.SingleDocumentStream
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

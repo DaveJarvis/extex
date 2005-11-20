@@ -78,7 +78,7 @@ public final class ExpandMacroObserverList implements ExpandMacroObserver {
 
     /**
      * @see de.dante.extex.interpreter.observer.expandMacro.ExpandMacroObserver#update(
-     *      de.dante.extex.scanner.type.Token,
+     *      de.dante.extex.scanner.type.token.Token,
      *      de.dante.extex.interpreter.type.Code)
      */
     public void update(final Token token, final Code code) {

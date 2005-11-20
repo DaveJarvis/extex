@@ -86,7 +86,7 @@ public class StringSource extends Moritz {
 
         /**
          * @see de.dante.extex.scanner.stream.TokenStream#get(
-         *      de.dante.extex.scanner.type.TokenFactory,
+         *      de.dante.extex.scanner.type.token.TokenFactory,
          *      de.dante.extex.interpreter.Tokenizer)
          */
         public Token get(final TokenFactory factory, final Tokenizer tokenizer)
@@ -142,7 +142,7 @@ public class StringSource extends Moritz {
 
         /**
          * @see de.dante.extex.scanner.stream.TokenStream#put(
-         *      de.dante.extex.scanner.type.Token)
+         *      de.dante.extex.scanner.type.token.Token)
          */
         public void put(final Token token) {
 

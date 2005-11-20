@@ -25,7 +25,6 @@ import java.io.InputStream;
 
 import de.dante.extex.backend.documentWriter.exception.DocumentWriterException;
 import de.dante.extex.backend.documentWriter.exception.DocumentWriterIOException;
-import de.dante.extex.interpreter.context.Color;
 import de.dante.extex.interpreter.context.TypesettingContext;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.font.Font;
@@ -64,12 +63,6 @@ import de.dante.util.exception.GeneralException;
  * @version $Revision$
  */
 public class PsBoxConverter implements PsConverter, NodeVisitor {
-
-    /**
-     * The field <tt>currentColor</tt> contains the current color to keep track
-     * of the color changing commands.
-     */
-    private Color currentColor = null;
 
     /**
      * The field <tt>fm</tt> contains the font manager.
@@ -301,7 +294,6 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
         drawBox(node, out, "box");
 
         TypesettingContext tc = node.getTypesettingContext();
-        //Color color = tc.getColor();
 
         if (showChars) {
             PsUnit.toPoint(x, out, false);
