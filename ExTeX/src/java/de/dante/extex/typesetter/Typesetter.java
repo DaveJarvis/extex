@@ -155,11 +155,12 @@ public interface Typesetter extends ListMaker {
     void shipout(NodeList nodes) throws TypesetterException;
 
     /**
-     * TODO gene: missing JavaDoc
+     * This method produces a diagnostic representation of the current lists in
+     * a StringBuffer.
      *
-     * @param sb
-     * @param l
-     * @param m
+     * @param sb the target string buffer
+     * @param l ...
+     * @param m ...
      */
     void showlists(StringBuffer sb, long l, long m);
 }
