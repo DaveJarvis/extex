@@ -80,7 +80,7 @@ public class WhatsItWriteNode extends WhatsItNode {
 
     /**
      * This method performs any actions which are required to be executed at the
-     * time of shipping the node to the DocumentWriter. In the case od this node
+     * time of shipping the node to the DocumentWriter. In the case of this node
      * this means that the tokens are expanded and written to an output writer.
      *
      * @param context the interpreter context
