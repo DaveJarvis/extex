@@ -24,9 +24,9 @@ import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.exception.helping.HelpingException;
-import de.dante.extex.interpreter.primitives.dynamic.Loader;
 import de.dante.extex.interpreter.type.AbstractCode;
 import de.dante.extex.interpreter.type.tokens.Tokens;
+import de.dante.extex.interpreter.unit.Loader;
 import de.dante.extex.typesetter.Typesetter;
 
 /**
