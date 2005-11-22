@@ -32,13 +32,25 @@ import de.dante.extex.typesetter.type.NodeList;
 public interface Page {
 
     /**
-     * Getter for the node list.
-     * The node list describes where on the page to put characters from fonts
-     * or other graphical symbols like rules.
+     * Getter for the height of the media.
      *
-     * @return the node list
+     * @return the height of the media
      */
-    NodeList getNodes();
+    Dimen getMediaHeight();
+
+    /**
+     * Getter for the horizontal offset of the media.
+     *
+     * @return the horizontal offset of the media
+     */
+    Dimen getMediaHOffset();
+
+    /**
+     * Getter for the vertical offset of the media.
+     *
+     * @return the vertical offset of the media
+     */
+    Dimen getMediaVOffset();
 
     /**
      * Getter for the width of the media.
@@ -48,11 +60,34 @@ public interface Page {
     Dimen getMediaWidth();
 
     /**
-     * Getter for the height of the media.
+     * Getter for the node list.
+     * The node list describes where on the page to put characters from fonts
+     * or other graphical symbols like rules.
      *
-     * @return the height of the media
+     * @return the node list
      */
-    Dimen getMediaHeight();
+    NodeList getNodes();
+
+    /**
+     * Setter for the height of the media.
+     *
+     * @param height the media height
+     */
+    void setMediaHeight(Dimen height);
+
+    /**
+     * Setter for the horizontal offset of the media.
+     *
+     * @param offset the media horizontal offset
+     */
+    void setMediaHOffset(Dimen offset);
+
+    /**
+     * Setter for the vertical offset of the media.
+     *
+     * @param offset the media vertical offset
+     */
+    void setMediaVOffset(Dimen offset);
 
     /**
      * Setter for the width of the media.
@@ -61,10 +96,4 @@ public interface Page {
      */
     void setMediaWidth(Dimen width);
 
-    /**
-     * Setter for the height of the media.
-     *
-     * @param height the media height
-     */
-    void setMediaHeight(Dimen  height);
 }
