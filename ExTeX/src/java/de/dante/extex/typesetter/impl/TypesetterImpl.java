@@ -523,13 +523,13 @@ public class TypesetterImpl
     }
 
     /**
-     * Setter for paragraphBuilder.
+     * Setter for paragraph builder.
      *
-     * @param theParagraphBuilder the paragraphBuilder to set.
+     * @param parBuilder the paragraph builder to set.
      */
-    public void setParagraphBuilder(final ParagraphBuilder theParagraphBuilder) {
+    public void setParagraphBuilder(final ParagraphBuilder parBuilder) {
 
-        paragraphBuilder = theParagraphBuilder;
+        paragraphBuilder = parBuilder;
         if (paragraphBuilder instanceof LogEnabled) {
             ((LogEnabled) paragraphBuilder).enableLogging(logger);
         }
