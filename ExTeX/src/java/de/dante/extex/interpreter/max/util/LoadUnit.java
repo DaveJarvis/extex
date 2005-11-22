@@ -157,6 +157,7 @@ public class LoadUnit extends AbstractFactory {
             throws GeneralException,
                 ConfigurationException {
 
+        enableLogging(outputLogger);
         UnicodeChar esc = new UnicodeChar('\\');
         Iterator iterator = configuration.iterator(DEFINE_TAG);
 
@@ -174,9 +175,6 @@ public class LoadUnit extends AbstractFactory {
 
             context.setCode((CodeToken) tokenFactory.createToken(
                     Catcode.ESCAPE, esc, name, namespace), code, true);
-            if (code instanceof LogEnabled) {
-                ((LogEnabled) code).enableLogging(outputLogger);
-            }
             if (code instanceof InitializableCode) {
 
                 String value = cfg.getValue();
