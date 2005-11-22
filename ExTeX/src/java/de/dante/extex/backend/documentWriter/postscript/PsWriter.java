@@ -35,7 +35,7 @@ import de.dante.extex.backend.documentWriter.postscript.util.HeaderManager;
 import de.dante.extex.backend.documentWriter.postscript.util.PsConverter;
 import de.dante.extex.backend.documentWriter.postscript.util.PsUnit;
 import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.typesetter.type.NodeList;
+import de.dante.extex.typesetter.type.page.Page;
 import de.dante.util.exception.GeneralException;
 import de.dante.util.framework.configuration.Configurable;
 
@@ -167,24 +167,19 @@ public class PsWriter extends AbstractPostscriptWriter
     }
 
     /**
-     * @see de.dante.extex.backend.documentWriter.postscript.AbstractPostscriptWriter#shipout(
-     *      de.dante.extex.typesetter.type.NodeList,
-     *      de.dante.extex.interpreter.type.dimen.Dimen,
-     *      de.dante.extex.interpreter.type.dimen.Dimen)
+     * @see de.dante.extex.backend.documentWriter.DocumentWriter#shipout(
+     *      de.dante.extex.typesetter.type.page.Page)
      */
-    public int shipout(final NodeList nodes, final Dimen width,
-            final Dimen height) throws GeneralException, IOException {
+    public int shipout(final Page p) throws GeneralException, IOException {
 
         if (init) {
-            init = false;
-
             headerManager.reset();
             converter = makeConverter(headerManager);
+            init = false;
         }
 
-        page
-                .add(converter.nodesToPostScript(nodes, fontManager,
-                        headerManager));
+        page.add(converter.toPostScript(p, fontManager,
+                headerManager));
         return 1;
     }
 
