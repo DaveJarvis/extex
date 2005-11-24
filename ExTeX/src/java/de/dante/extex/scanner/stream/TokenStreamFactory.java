@@ -423,4 +423,14 @@ public class TokenStreamFactory extends AbstractFactory
 
         this.resourceFinder = finder;
     }
+
+    /**
+     * Returns the file finder.
+     *
+     * @return Returns the file finder.
+     */
+    public ResourceFinder getResourceFinder() {
+        return this.resourceFinder;
+    }
+
 }
