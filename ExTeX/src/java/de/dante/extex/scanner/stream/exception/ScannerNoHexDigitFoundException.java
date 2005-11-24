@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,38 +17,25 @@
  *
  */
 
-package de.dante.util.file;
+package de.dante.extex.scanner.stream.exception;
 
-import java.io.IOException;
-import java.nio.CharBuffer;
+import de.dante.extex.scanner.exception.ScannerException;
 
 /**
- * Interface for all InputLines.
+ * ScannerException, if no hex digit are not found after '^^^^'.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
 
-public interface InputLineDecoder {
+public class ScannerNoHexDigitFoundException extends ScannerException {
 
     /**
-     * Read a line from a input.
-     *
-     * @param   encoding    the encoding for this line.
-     * @return  the line in a <code>CharBuffer</code>
-     * @throws  java.io.IOException if an IO-error occurs
+     * Create a new Object
      */
-    CharBuffer readLine(final String encoding) throws IOException;
+    public ScannerNoHexDigitFoundException() {
 
-    /**
-     * Close the inputline.
-     * @throws IOException if an IO-error occurs
-     */
-    void close() throws IOException;
+        super();
+    }
 
-    /**
-     * Returns the linenumber.
-     * @return Returns the linenumber.
-     */
-    int getLineNumber();
 }

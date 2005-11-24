@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,48 +17,33 @@
  *
  */
 
-package de.dante.extex.scanner.stream.impl32;
+package de.dante.extex.scanner.stream.exception;
 
-import de.dante.extex.scanner.stream.TokenStream;
-import de.dante.extex.scanner.type.CatcodeVisitor;
+import de.dante.extex.scanner.exception.ScannerException;
 
 /**
- * This class contains an implementation of a token stream which is fed from a
- * String. It use 32 bit characters.
+ * ScannerException, if a wrong Unicode name is given.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class TokenStreamStringImpl32 extends TokenStreamBaseImpl32
-        implements
-            TokenStream,
-            CatcodeVisitor {
+
+public class ScannerNoUnicodeNameException extends ScannerException {
 
     /**
-     * the line
+     * Create a new Object
      */
-    private String line;
-
-    /**
-     * Creates a new object.
-     * @param   l    the line for the tokenizer
-     */
-    public TokenStreamStringImpl32(final String l) {
+    public ScannerNoUnicodeNameException() {
 
         super();
-        if (l != null) {
-            line = l;
-        } else {
-            line = "";
-        }
-        setBuffer(line);
     }
 
     /**
-     * @see java.lang.Object#toString()
+     * Create a new Object.
+     * @param wrongUnicodeName   The wrong name.
      */
-    public String toString() {
+    public ScannerNoUnicodeNameException(final String wrongUnicodeName) {
 
-        return line;
+        super(wrongUnicodeName);
     }
 }
