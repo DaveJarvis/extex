@@ -152,7 +152,7 @@ public class Vsplit extends AbstractBox implements Boxable, LogEnabled {
             throw new HelpingException(getLocalizer(), "TTP.SplittingNonVbox",
                     printableControlSequence(context), context.esc("vbox"));
         }
-        // TODO gene: set splitmark ...
+        // TODO gene: set splitmark etc
         try {
             return b.vsplit(ht, //
                     (Count.ONE.le(context.getCount("tracingpages"))
