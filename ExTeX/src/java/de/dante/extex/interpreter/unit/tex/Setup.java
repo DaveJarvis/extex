@@ -82,7 +82,8 @@ import de.dante.util.framework.logger.LogEnabled;
 public class Setup implements Loader, LoadedObserver, LogEnabled {
 
     /**
-     * The field <tt>TRACING_COMMANDS</tt> contains the ...
+     * The field <tt>TRACING_COMMANDS</tt> contains the name of the count
+     * register controlling the activation of command tracing.
      */
     private static final String TRACING_COMMANDS = "tracingcommands";
 

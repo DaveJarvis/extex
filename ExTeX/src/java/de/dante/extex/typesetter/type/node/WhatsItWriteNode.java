@@ -40,7 +40,7 @@ public class WhatsItWriteNode extends WhatsItNode {
     private static final long serialVersionUID = 1L;
 
     /**
-     * The field <tt>key</tt> contains the key of the outfile to write to.
+     * The field <tt>key</tt> contains the key of the output file to write to.
      */
     private String key;
 
@@ -56,7 +56,7 @@ public class WhatsItWriteNode extends WhatsItNode {
     private TokensWriter writer;
 
     /**
-     * The field <tt>interpreter</tt> contains the ...
+     * The field <tt>interpreter</tt> contains the token source for expansion.
      */
     private TokenSource source;
 

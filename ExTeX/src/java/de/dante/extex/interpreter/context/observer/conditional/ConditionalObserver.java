@@ -35,7 +35,7 @@ public interface ConditionalObserver {
      * Receive a notification on a start event.
      *
      * @param context the interpreter context
-     * @param conditional ...
+     * @param conditional the current conditional
      *
      * @throws Exception in case of a problem
      */
@@ -46,7 +46,7 @@ public interface ConditionalObserver {
      * Receive a notification on a end event.
      *
      * @param context the interpreter context
-     * @param conditional ...
+     * @param conditional the current conditional
      *
      * @throws Exception in case of a problem
      */

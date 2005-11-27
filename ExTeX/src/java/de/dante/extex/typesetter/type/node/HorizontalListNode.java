@@ -43,7 +43,7 @@ public class HorizontalListNode extends AbstractNodeList implements NodeList {
     private static final long serialVersionUID = 1L;
 
     /**
-     * Creates a new object.
+     * Creates a new object. The list is empty initially.
      *
      * @see "<logo>TeX</logo> &ndash; The Program [136]"
      */
@@ -53,7 +53,7 @@ public class HorizontalListNode extends AbstractNodeList implements NodeList {
     }
 
     /**
-     * Creates a new object.
+     * Creates a new object. The list is filled with the node given.
      *
      * @param node the initial node to add
      */

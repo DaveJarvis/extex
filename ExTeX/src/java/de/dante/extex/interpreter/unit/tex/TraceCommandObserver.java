@@ -49,7 +49,9 @@ public class TraceCommandObserver implements CommandObserver {
     private Context context;
 
     /**
-     * The field <tt>prefix</tt> contains the ...
+     * The field <tt>prefix</tt> contains the indicator that the last token
+     * encountered has been a prefix primitive. This is used to suppress the
+     * following trace output in <logo>TeX</logo> compatibility mode.
      */
     private boolean prefix = false;
 

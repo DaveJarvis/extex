@@ -67,7 +67,8 @@ public class Sfcode extends AbstractAssignment
             Theable {
 
     /**
-     * The field <tt>MAX_SF_CODE</tt> contains the ...
+     * The field <tt>MAX_SF_CODE</tt> contains the maximal value for a space
+     * factor code.
      */
     private static final int MAX_SF_CODE = 32767;
 
