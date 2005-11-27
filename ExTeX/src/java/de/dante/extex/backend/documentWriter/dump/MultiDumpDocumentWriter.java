@@ -57,8 +57,11 @@ import de.dante.util.framework.configuration.Configuration;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
- * This is an implementation of a document writer which can act both as sample
- * and as tool for testing.
+ * This is an implementation of a document writer which puts of each page into
+ * a new output stream.
+ * <p>
+ *  It can act both as sample and as tool for testing.
+ * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -405,7 +408,8 @@ public class MultiDumpDocumentWriter
     private OutputStream out = null;
 
     /**
-     * The field <tt>outputStreamFactory</tt> contains the ...
+     * The field <tt>outputStreamFactory</tt> contains the factory for output
+     * streams.
      */
     private OutputStreamFactory outputStreamFactory;
 
