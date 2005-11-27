@@ -239,7 +239,7 @@ public class TokenStreamImpl32 extends TokenStreamImpl {
      */
     private char hex2char(final int c) {
 
-        char ch = (char) Character.toLowerCase(c);
+        char ch = (char) Character.toLowerCase((char)c);
 
         if ('0' <= ch && ch <= '9' || 'a' <= ch && ch <= 'f') {
             return ch;
