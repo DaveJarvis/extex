@@ -40,7 +40,8 @@ import de.dante.util.exception.GeneralException;
  * <doc name="parshapelength">
  * <h3>The Primitive <tt>\parshapelength</tt></h3>
  * <p>
- *  The primitive <tt>\parshapelength</tt> ...
+ *  The primitive <tt>\parshapelength</tt>
+ *  TODO gene: missing documentation
  * </p>
  *
  * <h4>Syntax</h4>

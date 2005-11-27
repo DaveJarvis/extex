@@ -40,7 +40,8 @@ import de.dante.util.exception.GeneralException;
  * <doc name="parshapeindent">
  * <h3>The Primitive <tt>\parshapeindent</tt></h3>
  * <p>
- *  The primitive <tt>\parshapeindent</tt> ...
+ *  The primitive <tt>\parshapeindent</tt>
+ *  TODO gene: missing documentation
  * </p>
  *
  * <h4>Syntax</h4>
