@@ -26,7 +26,7 @@ import de.dante.extex.typesetter.type.page.Page;
 import de.dante.util.exception.GeneralException;
 
 /**
- * This is the interface to the backend of the system. The document has to be
+ * This is the interface to the back-end of the system. The document has to be
  * written to an output stream. Certain information can be acquired before and
  * after the production of the output.
  *
