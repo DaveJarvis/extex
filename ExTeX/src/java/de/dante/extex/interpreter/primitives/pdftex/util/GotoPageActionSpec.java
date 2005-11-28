@@ -17,44 +17,78 @@
  *
  */
 
-package de.dante.extex.typesetter.type.node.pdftex;
-
-import de.dante.extex.typesetter.type.node.WhatsItNode;
+package de.dante.extex.interpreter.primitives.pdftex.util;
 
 /**
- * This node signals the end of a link.
- * This node type represents the extension node from the perspective of
- * <logo>TeX</logo>.
- *
+ * TODO gene: missing JavaDoc.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class PdfLiteral extends WhatsItNode {
+public class GotoPageActionSpec extends GotoActionSpec {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The field <tt>file</tt> contains the ...
      */
-    private static final long serialVersionUID = 1L;
+    private String file;
 
     /**
-     * The field <tt>direct</tt> contains the direct indicator.
+     * The field <tt>newWin</tt> contains the ...
      */
-    private boolean direct;
+    private Boolean newWin;
 
     /**
-     * The field <tt>text</tt> contains the text to pass to the back-end driver.
+     * The field <tt>page</tt> contains the ...
+     */
+    private long page;
+
+    /**
+     * The field <tt>text</tt> contains the ...
      */
     private String text;
 
     /**
      * Creates a new object.
+     *
      */
-    public PdfLiteral(final String text, final boolean direct) {
+    public GotoPageActionSpec(final String file, final long page,
+            final String text, final Boolean newwin) {
 
         super();
+        this.file = file;
+        this.page = page;
         this.text = text;
-        this.direct = direct;
+        this.newWin = newwin;
+    }
+
+    /**
+     * Getter for file.
+     *
+     * @return the file
+     */
+    protected String getFile() {
+
+        return this.file;
+    }
+
+    /**
+     * Getter for newWin.
+     *
+     * @return the newWin
+     */
+    protected Boolean getNewWin() {
+
+        return this.newWin;
+    }
+
+    /**
+     * Getter for page.
+     *
+     * @return the page
+     */
+    protected long getPage() {
+
+        return this.page;
     }
 
     /**
@@ -62,28 +96,9 @@ public class PdfLiteral extends WhatsItNode {
      *
      * @return the text
      */
-    public String getText() {
+    protected String getText() {
 
         return this.text;
-    }
-
-    /**
-     * Getter for direct.
-     *
-     * @return the direct
-     */
-    public boolean isDirect() {
-
-        return this.direct;
-    }
-
-    /**
-     * @see de.dante.extex.typesetter.type.Node#toString(java.lang.StringBuffer,
-     *      java.lang.String)
-     */
-    public void toString(final StringBuffer sb, final String prefix) {
-
-        sb.append("(pdfliteral " + (direct ? "direct " : "") + text + ")");
     }
 
 }
