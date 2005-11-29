@@ -425,7 +425,7 @@ public class XsltTransformXhtmlTest extends ExTeXLauncher {
                 //--- input code ---
                 DEFINE_BRACES
                         + "\\javadef\\t{"
-                        + "de.dante.extex.interpreter.primitives.dynamic.ReadTokenUntilNull}"
+                        + "de.dante.extex.interpreter.primitives.file.xslt.ReadTokenUntilNull}"
                         + "\\t " + out.toString(),
                 //--- log message ---
                 result.toString());
@@ -463,7 +463,7 @@ public class XsltTransformXhtmlTest extends ExTeXLauncher {
                 //--- input code ---
                 DEFINE_BRACES
                         + "\\javadef\\t{"
-                        + "de.dante.extex.interpreter.primitives.dynamic.ReadTokenUntilNull}"
+                        + "de.dante.extex.interpreter.primitives.file.xslt.ReadTokenUntilNull}"
                         + "\\t " + out.toString(),
                 //--- log message ---
                 result.toString());
@@ -501,7 +501,7 @@ public class XsltTransformXhtmlTest extends ExTeXLauncher {
                 //--- input code ---
                 DEFINE_BRACES
                         + "\\javadef\\t{"
-                        + "de.dante.extex.interpreter.primitives.dynamic.ReadTokenUntilNull}"
+                        + "de.dante.extex.interpreter.primitives.file.xslt.ReadTokenUntilNull}"
                         + "\\t " + out.toString(),
                 //--- log message ---
                 result.toString());
