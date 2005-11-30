@@ -116,7 +116,7 @@ public class InputXslt extends AbstractFileCode {
             ByteArrayOutputStream out = new ByteArrayOutputStream();
 
             Transform.transform(new StreamSource(xmlin),
-                    new StreamSource(xslin), out);
+                    new StreamSource(xslin), null, out);
 
             Reader reader = new InputStreamReader(new ByteArrayInputStream(out
                     .toByteArray()));
