@@ -17,10 +17,10 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.pdftex.util;
+package de.dante.extex.interpreter.primitives.pdftex.util.destination;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class carries a destination type ZOOM as used in PDF nodes.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -28,14 +28,14 @@ package de.dante.extex.interpreter.primitives.pdftex.util;
 public class ZoomDestType extends DestType {
 
     /**
-     * The field <tt>zoom</tt> contains the ...
+     * The field <tt>zoom</tt> contains the zoom value.
      */
     private long zoom;
 
-    
     /**
      * Creates a new object.
      *
+     * @param zoom the zoom value
      */
     public ZoomDestType(final long zoom) {
 
@@ -49,8 +49,17 @@ public class ZoomDestType extends DestType {
      * @return the zoom
      */
     public long getZoom() {
-    
+
         return this.zoom;
+    }
+
+    /**
+     * @see de.dante.extex.interpreter.primitives.pdftex.util.destType.DestType#visit(
+     *      de.dante.extex.interpreter.primitives.pdftex.util.destType.DestTypeVisitor)
+     */
+    public Object visit(final DestinationVisitor visitor) {
+
+        return visitor.visitZoom(this);
     }
 
 }

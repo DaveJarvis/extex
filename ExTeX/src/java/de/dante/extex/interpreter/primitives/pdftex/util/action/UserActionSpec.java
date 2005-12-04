@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.pdftex.util;
+package de.dante.extex.interpreter.primitives.pdftex.util.action;
 
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
@@ -30,10 +30,10 @@ import de.dante.extex.typesetter.Typesetter;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public abstract class ActionSpec {
+public class UserActionSpec extends ActionSpec {
 
     /**
-     * TODO gene: missing JavaDoc
+     * Parse a user action spec.
      *
      * @param context the interpreter context
      * @param source the source for new tokens
@@ -47,19 +47,44 @@ public abstract class ActionSpec {
             final TokenSource source, final Typesetter typesetter,
             final String name) throws InterpreterException {
 
-        if (source.getKeyword(context, "user")) {
-            return UserActionSpec.parseActionSpec(context, source, typesetter,
-                    name);
-        } else if (source.getKeyword(context, "goto")) {
-            return GotoActionSpec.parseActionSpec(context, source, typesetter,
-                    name);
-        } else if (source.getKeyword(context, "thread")) {
-            return ThreadActionSpec.parseActionSpec(context, source, typesetter,
-                    name);
-        }
+        String user = source.scanTokensAsString(context, name);
+        return new UserActionSpec(user);
+    }
 
-        //TODO gene: error unimplemented
-        throw new RuntimeException("unimplemented");
+    /**
+     * The field <tt>user</tt> contains the name of the user.
+     */
+    private String user;
+
+    /**
+     * Creates a new object.
+     *
+     */
+    public UserActionSpec(final String user) {
+
+        super();
+        this.user = user;
+    }
+
+    
+    /**
+     * Getter for user.
+     *
+     * @return the user
+     */
+    protected String getUser() {
+    
+        return this.user;
+    }
+
+
+    /**
+     * @see de.dante.extex.interpreter.primitives.pdftex.util.action.ActionSpec#visit(
+     *      de.dante.extex.interpreter.primitives.pdftex.util.action.ActionVisitor)
+     */
+    public Object visit(final ActionVisitor visitor) {
+
+        return visitor.visitUser(this);
     }
 
 }

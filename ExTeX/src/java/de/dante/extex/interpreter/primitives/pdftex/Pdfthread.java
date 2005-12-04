@@ -23,6 +23,7 @@ import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
+import de.dante.extex.interpreter.exception.InterpreterPdftexIdentifierTypeException;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.exception.TypesetterException;
@@ -110,8 +111,8 @@ public class Pdfthread extends AbstractPdftexCode {
         } else if (source.getKeyword(context, "name")) {
             id = source.scanTokensAsString(context, getName());
         } else {
-            //TODO gene: error unimplemented
-            throw new RuntimeException("unimplemented");
+            throw new InterpreterPdftexIdentifierTypeException(
+                    printableControlSequence(context));
         }
 
         PdfThread thread = new PdfThread(new RuleNode(width, height, depth,

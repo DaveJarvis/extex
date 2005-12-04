@@ -17,10 +17,10 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.pdftex.util;
+package de.dante.extex.interpreter.primitives.pdftex.util.action;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents the action to address a certain page.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -28,28 +28,35 @@ package de.dante.extex.interpreter.primitives.pdftex.util;
 public class GotoPageActionSpec extends GotoActionSpec {
 
     /**
-     * The field <tt>file</tt> contains the ...
+     * The field <tt>file</tt> contains the file name.
+     * The value can also be <code>null</code>.
      */
     private String file;
 
     /**
-     * The field <tt>newWin</tt> contains the ...
+     * The field <tt>newWin</tt> contains the indicator for the the new window.
+     * The value can also be <code>null</code>.
      */
     private Boolean newWin;
 
     /**
-     * The field <tt>page</tt> contains the ...
+     * The field <tt>page</tt> contains the page number with 0 as default.
      */
     private long page;
 
     /**
-     * The field <tt>text</tt> contains the ...
+     * The field <tt>text</tt> contains the plain text.
+     * The value can also be <code>null</code>.
      */
     private String text;
 
     /**
      * Creates a new object.
      *
+     * @param file the file name
+     * @param page the page number
+     * @param text the plain text
+     * @param newwin the window indicator
      */
     public GotoPageActionSpec(final String file, final long page,
             final String text, final Boolean newwin) {
@@ -99,6 +106,15 @@ public class GotoPageActionSpec extends GotoActionSpec {
     protected String getText() {
 
         return this.text;
+    }
+
+    /**
+     * @see de.dante.extex.interpreter.primitives.pdftex.util.action.ActionSpec#visit(
+     *      de.dante.extex.interpreter.primitives.pdftex.util.action.ActionVisitor)
+     */
+    public Object visit(final ActionVisitor visitor) {
+
+        return visitor.visitGotoPage(this);
     }
 
 }

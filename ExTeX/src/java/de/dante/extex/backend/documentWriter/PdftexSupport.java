@@ -20,7 +20,7 @@
 package de.dante.extex.backend.documentWriter;
 
 import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.primitives.pdftex.util.ActionSpec;
+import de.dante.extex.interpreter.primitives.pdftex.util.action.ActionSpec;
 import de.dante.extex.interpreter.type.box.Box;
 import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.typesetter.type.node.RuleNode;

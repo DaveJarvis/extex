@@ -23,7 +23,7 @@ import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.primitives.pdftex.util.DestType;
+import de.dante.extex.interpreter.primitives.pdftex.util.destination.DestType;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.type.node.pdftex.PdfDest;

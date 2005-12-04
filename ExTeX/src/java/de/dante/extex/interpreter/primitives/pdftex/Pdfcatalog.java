@@ -24,7 +24,7 @@ import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.primitives.pdftex.util.ActionSpec;
+import de.dante.extex.interpreter.primitives.pdftex.util.action.ActionSpec;
 import de.dante.extex.typesetter.Typesetter;
 
 /**

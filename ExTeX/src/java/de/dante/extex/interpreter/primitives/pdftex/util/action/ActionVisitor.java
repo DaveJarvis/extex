@@ -17,41 +17,50 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.pdftex.util;
-
-import de.dante.extex.typesetter.type.node.RuleNode;
+package de.dante.extex.interpreter.primitives.pdftex.util.action;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This interface describes a visitor for actions as used on PDF nodes.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class FitrDestType extends DestType {
+public interface ActionVisitor {
 
     /**
-     * The field <tt>rule</tt> contains the ...
-     */
-    private RuleNode rule;
-
-    /**
-     * Creates a new object.
+     * Visit a User action.
      *
+     * @param spec the specification
+     *
+     * @return any Object
      */
-    public FitrDestType(RuleNode rule) {
-
-        super();
-        this.rule = rule;
-    }
+    Object visitUser(UserActionSpec spec);
 
     /**
-     * Getter for rule.
+     * Visit a Thread action.
      *
-     * @return the rule
+     * @param spec the specification
+     *
+     * @return any Object
      */
-    public RuleNode getRule() {
+    Object visitThread(ThreadActionSpec spec);
 
-        return this.rule;
-    }
+    /**
+     * Visit a Goto action with id.
+     *
+     * @param spec the specification
+     *
+     * @return any Object
+     */
+    Object visitGotoId(GotoIdActionSpec spec);
+
+    /**
+     * Visit a GotoPage action
+     *
+     * @param spec the specification
+     *
+     * @return any Object
+     */
+    Object visitGotoPage(GotoPageActionSpec spec);
 
 }

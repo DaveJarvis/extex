@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.pdftex.util;
+package de.dante.extex.interpreter.primitives.pdftex.util.action;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -83,6 +83,15 @@ public class GotoIdActionSpec extends GotoActionSpec {
     protected String getId() {
 
         return this.id;
+    }
+
+    /**
+     * @see de.dante.extex.interpreter.primitives.pdftex.util.action.ActionSpec#visit(
+     *      de.dante.extex.interpreter.primitives.pdftex.util.action.ActionVisitor)
+     */
+    public Object visit(final ActionVisitor visitor) {
+
+        return visitor.visitGotoId(this);
     }
 
 }
