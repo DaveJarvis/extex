@@ -56,7 +56,7 @@ public class SpaceNode extends GlueNode implements Node {
      */
     public SpaceNode(final Glue theWidth) {
 
-        super(theWidth);
+        super(theWidth, true);
         this.size = theWidth;
     }
 

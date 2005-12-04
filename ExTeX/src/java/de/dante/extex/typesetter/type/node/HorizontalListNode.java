@@ -82,7 +82,7 @@ public class HorizontalListNode extends AbstractNodeList implements NodeList {
      */
     public void addSkip(final FixedGlue glue) {
 
-        Node gNode = new GlueNode(glue);
+        Node gNode = new GlueNode(glue, true);
         gNode.setWidth(glue.getLength());
         add(gNode);
     }

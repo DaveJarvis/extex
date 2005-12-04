@@ -63,7 +63,7 @@ public class VerticalListNode extends AbstractNodeList implements NodeList {
      */
     public void addSkip(final FixedGlue glue) {
 
-        Node gNode = new GlueNode(glue);
+        Node gNode = new GlueNode(glue, false);
         gNode.setHeight(glue.getLength());
         add(gNode);
     }

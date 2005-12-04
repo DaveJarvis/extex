@@ -248,7 +248,7 @@ public class MathListMaker extends AbstractListMaker implements NoadConsumer {
      */
     public void addGlue(final Glue g) throws TypesetterException {
 
-        insertionPoint.add(new NodeNoad(new GlueNode(g)));
+        insertionPoint.add(new NodeNoad(new GlueNode(g, true)));
     }
 
     /**

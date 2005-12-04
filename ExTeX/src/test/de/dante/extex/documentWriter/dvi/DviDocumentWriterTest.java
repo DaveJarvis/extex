@@ -202,7 +202,7 @@ public class DviDocumentWriterTest extends TestCase {
 
         // TODO: nodeList.add(new CharNode()); (TE)
         nodeList.add(new ExplicitKernNode(new Dimen(12346)));
-        nodeList.add(new GlueNode(new Glue(1234)));
+        nodeList.add(new GlueNode(new Glue(1234), true));
         // TODO: nodeList.add(new LigatureNode()); (TE)
         // TODO: nodeList.add(new SpecialNode("Test")); (TE)
         //nodeList.add(new WhatsItNode("Test"));

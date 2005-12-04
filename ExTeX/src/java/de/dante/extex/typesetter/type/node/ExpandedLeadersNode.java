@@ -53,7 +53,7 @@ public class ExpandedLeadersNode extends GlueNode implements Node {
      */
     public ExpandedLeadersNode(final Node node, final Glue glue) {
 
-        super(glue);
+        super(glue, true);
         this.node = node;
     }
 

@@ -313,7 +313,7 @@ public class ParagraphBuilderImpl
 
         // [TTB p100]
         nodes.add(new PenaltyNode(INF_PENALTY));
-        nodes.add(new GlueNode(options.getGlueOption("parfillskip")));
+        nodes.add(new GlueNode(options.getGlueOption("parfillskip"), true));
         nodes.add(new PenaltyNode(EJECT_PENALTY));
 
         NodeList nl;
