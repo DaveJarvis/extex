@@ -46,4 +46,23 @@ public class HssTest extends AbstractHfillTester {
         super(arg, "hss", "");
     }
 
+    /**
+     * <testcase primitive="\hss">
+     *  Test case checking that <tt>\hss</tt> switches to vertical mode and
+     *  inserts a glue node with 1fill.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test1() throws Exception {
+
+        assertSuccess(showNodesProperties(),
+        //--- input code ---
+                "\\hss\\end ",
+                //--- output channel ---
+                "\\vbox(0.0pt+0.0pt)x0.0pt\n" + //
+                ".\\hbox(0.0pt+0.0pt)x0.0pt\n" + //
+                "..\\glue0.0pt plus 1.0fil minus 1.0fil\n");
+    }
+
 }
