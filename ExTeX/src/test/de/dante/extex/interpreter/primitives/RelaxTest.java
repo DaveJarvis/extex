@@ -42,11 +42,11 @@ public class RelaxTest extends NoFlagsPrimitiveTester {
     /**
      * Constructor for RelaxTest.
      *
-     * @param arg the name
+     * @param name the name
      */
-    public RelaxTest(final String arg) {
+    public RelaxTest(final String name) {
 
-        super(arg, "relax", "");
+        super(name, "relax", "");
     }
 
     /**
