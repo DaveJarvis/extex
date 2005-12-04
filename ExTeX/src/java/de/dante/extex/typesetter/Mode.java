@@ -153,7 +153,7 @@ public abstract class Mode {
      * The constant <tt>VERTICAL</tt> contains the vertical mode of the
      * typesetter.
      */
-    public static final Mode VERTICAL = new HorizontalMode("Mode.VerticalMode");
+    public static final Mode VERTICAL = new VerticalMode("Mode.VerticalMode");
 
     /**
      * The field <tt>localizer</tt> contains the localizer.
