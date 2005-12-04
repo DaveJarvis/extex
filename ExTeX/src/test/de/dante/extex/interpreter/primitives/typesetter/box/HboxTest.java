@@ -52,6 +52,8 @@ public class HboxTest extends NoFlagsPrimitiveTester {
      * <testcase primitive="\hbox">
      *  Test case checking that <tt>\hbox</tt> on the empty box works.
      * </testcase>
+     *
+     * @throws Exception in case of an error
      */
     public void testEmpty1() throws Exception {
 
@@ -64,6 +66,8 @@ public class HboxTest extends NoFlagsPrimitiveTester {
      * <testcase primitive="\hbox">
      *  Test case checking that <tt>\hbox</tt> on a non-empty box works.
      * </testcase>
+     *
+     * @throws Exception in case of an error
      */
     public void test1() throws Exception {
 
