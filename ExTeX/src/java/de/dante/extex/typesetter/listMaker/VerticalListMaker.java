@@ -75,6 +75,7 @@ public class VerticalListMaker extends AbstractListMaker {
      * Creates a new object.
      *
      * @param manager the manager to ask for global changes
+     * @param locator the locator
      */
     public VerticalListMaker(final ListManager manager, final Locator locator) {
 
@@ -173,7 +174,7 @@ public class VerticalListMaker extends AbstractListMaker {
      *      de.dante.util.UnicodeChar)
      */
     public void letter(final Context context, final TypesettingContext font,
-            final UnicodeChar symbol, Locator locator)
+            final UnicodeChar symbol, final Locator locator)
             throws TypesetterException {
 
         ListManager man = getManager();

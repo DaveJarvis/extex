@@ -34,6 +34,7 @@ public class InnerVerticalListMaker extends VerticalListMaker {
      * Creates a new object.
      *
      * @param manager the manager to ask for global changes
+     * @param locator the locator
      */
     public InnerVerticalListMaker(final ListManager manager,
             final Locator locator) {

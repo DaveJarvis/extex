@@ -34,6 +34,7 @@ public class RestrictedHorizontalListMaker extends HorizontalListMaker {
      * Creates a new object.
      *
      * @param manager the manager to ask for global changes
+     * @param locator the locator
      */
     public RestrictedHorizontalListMaker(final ListManager manager,
             final Locator locator) {
