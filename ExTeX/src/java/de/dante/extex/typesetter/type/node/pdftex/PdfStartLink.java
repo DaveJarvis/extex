@@ -19,7 +19,7 @@
 
 package de.dante.extex.typesetter.type.node.pdftex;
 
-import de.dante.extex.interpreter.primitives.pdftex.util.ActionSpec;
+import de.dante.extex.interpreter.primitives.pdftex.util.action.ActionSpec;
 import de.dante.extex.typesetter.type.node.RuleNode;
 import de.dante.extex.typesetter.type.node.WhatsItNode;
 

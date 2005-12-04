@@ -19,7 +19,7 @@
 
 package de.dante.extex.typesetter.type.node.pdftex;
 
-import de.dante.extex.interpreter.primitives.pdftex.util.DestType;
+import de.dante.extex.interpreter.primitives.pdftex.util.destination.DestType;
 import de.dante.extex.typesetter.type.node.WhatsItNode;
 
 /**
