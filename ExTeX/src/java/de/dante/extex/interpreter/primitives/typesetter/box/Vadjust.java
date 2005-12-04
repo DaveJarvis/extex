@@ -61,7 +61,7 @@ public class Vadjust extends AbstractBox {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    private static final long serialVersionUID = 1L;
+    protected static final long serialVersionUID = 1L;
 
     /**
      * Creates a new object.

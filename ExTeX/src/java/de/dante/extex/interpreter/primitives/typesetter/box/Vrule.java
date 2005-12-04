@@ -87,7 +87,7 @@ public class Vrule extends AbstractCode implements RuleConvertible {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    private static final long serialVersionUID = 1L;
+    protected static final long serialVersionUID = 1L;
 
     /**
      * The constant <tt>DEFAULT_RULE</tt> contains the equivalent to 0.4pt.

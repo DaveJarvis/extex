@@ -68,7 +68,7 @@ public class Vsplit extends AbstractBox implements Boxable, LogEnabled {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    private static final long serialVersionUID = 1L;
+    protected static final long serialVersionUID = 1L;
 
     /**
      * The field <tt>logger</tt> contains the target channel for the message.
