@@ -81,7 +81,7 @@ public class Hskip extends AbstractHorizontalCode {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        ensureHorizontalMode(typesetter);
+        switchToHorizontalMode(typesetter);
         Glue g = new Glue(source, context, typesetter);
         try {
             typesetter.addGlue(g);

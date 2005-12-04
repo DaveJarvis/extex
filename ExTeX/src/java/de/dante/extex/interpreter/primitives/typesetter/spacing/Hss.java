@@ -23,7 +23,7 @@ import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.type.AbstractCode;
+import de.dante.extex.interpreter.primitives.typesetter.AbstractHorizontalCode;
 import de.dante.extex.interpreter.type.glue.Glue;
 import de.dante.extex.interpreter.type.glue.GlueComponent;
 import de.dante.extex.typesetter.Typesetter;
@@ -54,7 +54,7 @@ import de.dante.util.exception.GeneralException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Hss extends AbstractCode {
+public class Hss extends AbstractHorizontalCode {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
@@ -88,6 +88,7 @@ public class Hss extends AbstractCode {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
+        switchToHorizontalMode(typesetter);
         try {
             typesetter.addGlue(HSS);
         } catch (GeneralException e) {
