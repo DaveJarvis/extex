@@ -48,4 +48,21 @@ public class PenaltyTest extends NoFlagsPrimitiveTester {
         super(arg, "penalty", "12");
     }
 
+    /**
+     * <testcase primitive="\penalty">
+     *  Test case checking that <tt>\penalty</tt> inserts a penalty node.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test1() throws Exception {
+
+        assertSuccess(showNodesProperties(),
+        //--- input code ---
+                "\\penalty -12\\end ",
+                //--- output channel ---
+                "\\vbox(0.0pt+0.0pt)x0.0pt\n" + //
+                ".\\penalty -12\n");
+    }
+
 }

@@ -48,4 +48,21 @@ public class SpecialTest extends NoFlagsPrimitiveTester {
         super(arg, "special", "{}");
     }
 
+    /**
+     * <testcase primitive="\special">
+     *  Test case checking that <tt>\special</tt> inserts a special node.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test1() throws Exception {
+
+        assertSuccess(showNodesProperties(),
+        //--- input code ---
+                DEFINE_BRACES + "\\special{abc}\\end ",
+                //--- output channel ---
+                "\\vbox(0.0pt+0.0pt)x0.0pt\n" + //
+                ".\\special{abc}\n");
+    }
+
 }
