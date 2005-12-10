@@ -20,21 +20,42 @@
 package de.dante.extex.interpreter.primitives.macro;
 
 /**
- * This is a test suite for the primitive <tt>\xdef</tt>.
+ * This is a test suite for xdef primitives.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class XdefTest extends AbstractXdefTester {
+public abstract class AbstractXdefTester extends AbstractDefTester {
 
     /**
      * Creates a new object.
      *
-     * @param arg the name
+     * @param name the name
+     * @param def the name of the primitive
      */
-    public XdefTest(final String arg) {
+    public AbstractXdefTester(final String name, final String def) {
 
-        super(arg, "xdef");
+        super(name, def);
     }
+
+    /**
+     * <testcase>
+     *  Test case checking that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testExpand1() throws Exception {
+
+        assertSuccess(//--- input code ---
+                DEFINE_BRACES 
+                + "\\def\\a{A}"
+                + "\\" + def + "\\aaa{X\\a X}"
+                + "\\def\\a{B}"
+                + "--\\aaa--\\end",
+                //--- output message ---
+                "--XAX--" + TERM);
+    }
+
 
 }

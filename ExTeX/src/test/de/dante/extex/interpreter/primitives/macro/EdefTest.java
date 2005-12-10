@@ -19,15 +19,13 @@
 
 package de.dante.extex.interpreter.primitives.macro;
 
-import de.dante.test.ExTeXLauncher;
-
 /**
  * This is a test suite for the primitive <tt>\edef</tt>.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class EdefTest extends ExTeXLauncher {
+public class EdefTest extends AbstractXdefTester {
 
     /**
      * Creates a new object.
@@ -36,23 +34,7 @@ public class EdefTest extends ExTeXLauncher {
      */
     public EdefTest(final String arg) {
 
-        super(arg);
-    }
-
-    /**
-     * <testcase primitive="\edef">
-     *  Test case checking that ...
-     * </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void testImmediate1() throws Exception {
-
-        assertFailure(//--- input code ---
-                DEFINE_CATCODES
-                + "\\immediate\\edef\\aaa{}",
-                //--- log message ---
-                "You can't use the prefix `\\immediate' with the control sequence \\edef");
+        super(arg, "edef");
     }
 
 }
