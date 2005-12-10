@@ -22,7 +22,7 @@ package de.dante.extex.interpreter.primitives.pdftex.util.action;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.exception.InterpreterPdftexIdentifierTypeException;
+import de.dante.extex.interpreter.exception.pdftex.InterpreterPdftexIdentifierTypeException;
 import de.dante.extex.typesetter.Typesetter;
 
 /**
@@ -39,6 +39,7 @@ public class ThreadActionSpec extends ActionSpec {
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
+     * @param name the name of the primitive
      *
      * @return the action spec found
      *
