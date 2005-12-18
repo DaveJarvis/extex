@@ -25,7 +25,7 @@ import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.dimen.FixedDimen;
 import de.dante.extex.interpreter.type.glue.FixedGlueComponent;
-import de.dante.extex.interpreter.type.glue.Glue;
+import de.dante.extex.interpreter.type.glue.WideGlue;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.type.node.CharNode;
 import de.dante.util.exception.GeneralException;
@@ -52,14 +52,14 @@ public interface Node extends Knot, Serializable {
      *
      * @param glue the glue to add to.
      */
-    void addHeightTo(Glue glue);
+    void addHeightTo(WideGlue glue);
 
     /**
      * Add the flexible width of the current node to the given glue.
      *
      * @param glue the glue to add to.
      */
-    void addWidthTo(Glue glue);
+    void addWidthTo(WideGlue glue);
 
     /**
      * This method performs any action which are required to executed at the
