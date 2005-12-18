@@ -54,6 +54,14 @@ public class ZoomDestType extends DestType {
     }
 
     /**
+     * @see java.lang.Object#toString()
+     */
+    public String toString() {
+
+        return "zoom " + Long.toString(zoom);
+    }
+
+    /**
      * @see de.dante.extex.interpreter.primitives.pdftex.util.destType.DestType#visit(
      *      de.dante.extex.interpreter.primitives.pdftex.util.destType.DestTypeVisitor)
      */

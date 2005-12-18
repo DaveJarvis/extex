@@ -79,6 +79,14 @@ public class UserActionSpec extends ActionSpec {
     }
 
     /**
+     * @see java.lang.Object#toString()
+     */
+    public String toString() {
+
+        return "user " + user;
+    }
+
+    /**
      * @see de.dante.extex.interpreter.primitives.pdftex.util.action.ActionSpec#visit(
      *      de.dante.extex.interpreter.primitives.pdftex.util.action.ActionVisitor)
      */
