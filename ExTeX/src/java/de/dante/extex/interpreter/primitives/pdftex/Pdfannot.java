@@ -43,7 +43,7 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
  * <h4>Syntax</h4>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    &lang;span&rang;
+ *    &lang;pdfannot&rang;
  *       &rarr; <tt>\pdfannot</tt> ... </pre>
  *
  * <h4>Examples</h4>

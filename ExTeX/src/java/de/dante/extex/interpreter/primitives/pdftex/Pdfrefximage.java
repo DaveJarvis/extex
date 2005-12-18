@@ -40,8 +40,10 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
  * <h4>Syntax</h4>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    &lang;span&rang;
- *       &rarr; <tt>\pdfrefximage</tt> ... </pre>
+ *    &lang;pdfrefximage&rang;
+ *       &rarr; <tt>\pdfrefximage</tt> {@linkplain
+ *          de.dante.extex.interpreter.TokenSource#scanNumber(Context, Token)
+ *          &lang;number&rang;} </pre>
  *
  * <h4>Examples</h4>
  *  <pre class="TeXSample">

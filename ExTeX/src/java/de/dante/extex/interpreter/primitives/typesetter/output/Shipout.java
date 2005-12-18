@@ -47,7 +47,7 @@ import de.dante.extex.typesetter.Typesetter;
  *  <pre class="syntax">
  *    &lang;shipout&rang;
  *      &rarr; <tt>\shipout</tt> {@linkplain
- *        de.dante.extex.interpreter.TokenSource#getBox(Flags, Context, Typesetter)
+ *        de.dante.extex.interpreter.TokenSource#getBox(Flags,Context,Typesetter)
  *        &lang;box&rang;}  </pre>
  * </p>
  *

@@ -35,14 +35,14 @@ import de.dante.extex.typesetter.Typesetter;
  * <doc name="pdflastxform">
  * <h3>The PDF Primitive <tt>\pdflastxform</tt></h3>
  * <p>
- *  This primitive provides a read-only count register containing...
- *  TODO missing documentation
+ *  This primitive provides a read-only count register containing the number of
+ *  the last xform. If none is present then 0 is returned.
  * </p>
  *
  * <h4>Syntax</h4>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    &lang;span&rang;
+ *    &lang;pdflastxform&rang;
  *       &rarr; <tt>\pdflastxform</tt>  </pre>
  *
  * <h4>Examples</h4>

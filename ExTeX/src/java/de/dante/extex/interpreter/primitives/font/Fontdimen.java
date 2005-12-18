@@ -55,15 +55,16 @@ import de.dante.extex.typesetter.Typesetter;
  * <h4>Syntax</h4>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    <tt>\fontdimen</tt> {@linkplain
- *      de.dante.extex.interpreter.TokenSource#scanNumber(Context)
- *      &lang;8-bit&nbsp;number&rang;} {@linkplain
- *      de.dante.extex.interpreter.TokenSource#getFont()
- *      &lang;font&rang;} {@linkplain
- *      de.dante.extex.interpreter.TokenSource#getOptionalEquals(Context)
- *      &lang;equals&rang;} {@linkplain
- *      de.dante.extex.interpreter.type.dimen#Dimen(Context,TokenSource)
- *      &lang;dimen&rang;}   </pre>
+ *    &lang;fontdimen&rang;
+ *       &rarr; <tt>\fontdimen</tt> {@linkplain
+ *          de.dante.extex.interpreter.TokenSource#scanNumber(Context)
+ *          &lang;8-bit&nbsp;number&rang;} {@linkplain
+ *          de.dante.extex.interpreter.TokenSource#getFont()
+ *          &lang;font&rang;} {@linkplain
+ *          de.dante.extex.interpreter.TokenSource#getOptionalEquals(Context)
+ *          &lang;equals&rang;} {@linkplain
+ *          de.dante.extex.interpreter.type.dimen#Dimen(Context,TokenSource)
+ *          &lang;dimen&rang;}   </pre>
  *  TODO gene: document Extension
  *
  * <h4>Examples</h4>

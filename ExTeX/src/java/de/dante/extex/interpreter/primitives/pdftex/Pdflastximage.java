@@ -35,14 +35,14 @@ import de.dante.extex.typesetter.Typesetter;
  * <doc name="pdflastximage">
  * <h3>The PDF Primitive <tt>\pdflastximage</tt></h3>
  * <p>
- *  This primitive provides a read-only count register containing...
- *  TODO missing documentation
+ *  This primitive provides a read-only count register containing the number of
+ *  the last ximage. If none is present then 0 is returned.
  * </p>
  *
  * <h4>Syntax</h4>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    &lang;span&rang;
+ *    &lang;pdflastximage&rang;
  *       &rarr; <tt>\pdflastximage</tt>  </pre>
  *
  * <h4>Examples</h4>

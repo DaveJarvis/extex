@@ -339,6 +339,17 @@ public interface TokenSource {
      * preceded by optional white space. Alternate representations for an
      * character code exist.
      *
+     * <doc type="syntax" name="character">
+     * <pre class="syntax">
+     *   &lang;character code&rang; </pre>
+     * <p>
+     *  A character is a positive number.
+     * </p>
+     * <p>
+     *  Tokens are expanded while gathering the requested values.
+     * </p>
+     * </doc>
+     *
      * @param context the interpreter context
      * @param typesetter the typesetter
      * @param primitive the name of the invoking primitive for error handling

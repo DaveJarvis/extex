@@ -32,15 +32,16 @@ import de.dante.extex.typesetter.Typesetter;
  * <doc name="pdfnames">
  * <h3>The PDF Primitive <tt>\pdfnames</tt></h3>
  * <p>
- *  This primitive inserts text to <tt>/Names</tt> array.
- *  TODO missing documentation
+ *  This primitive inserts text into the PDF <tt>/Names</tt> array.
  * </p>
  *
  * <h4>Syntax</h4>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    &lang;span&rang;
- *       &rarr; <tt>\pdfnames</tt> {...} </pre>
+ *    &lang;pdfnames&rang;
+ *       &rarr; <tt>\pdfnames</tt> {@linkplain
+ *          de.dante.extex.interpreter.TokenSource#scanTokens(Context, String)
+ *          &lang;general text&rang;} </pre>
  *
  * <h4>Examples</h4>
  *  <pre class="TeXSample">
@@ -81,7 +82,7 @@ public class Pdfnames extends AbstractPdftexCode {
 
         PdftexSupport writer = ensurePdftex(context, typesetter);
 
-        String text = source.scanTokens(context, getName()).toText();
+        String text = source.scanTokensAsString(context, getName());
 
         writer.pdfnames(text);
     }
