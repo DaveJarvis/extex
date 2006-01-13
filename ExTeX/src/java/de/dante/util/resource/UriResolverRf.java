@@ -59,6 +59,9 @@ public class UriResolverRf implements URIResolver {
     public Source resolve(final String href, final String base)
             throws TransformerException {
 
+        System.out.print("href = '" + href + "'");
+        System.out.println("   base = '" + base + "'");
+
         StreamSource source = null;
         try {
             InputStream in = finder.findResource(href, "");

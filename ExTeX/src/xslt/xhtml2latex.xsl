@@ -9,7 +9,7 @@
     xmlns:html="http://www.w3.org/1999/xhtml">
     
     <!-- output -->
-    <xsl:output method="text" encoding="iso-8859-1" indent="no"/>
+    <xsl:output method="text" encoding="utf-8" indent="no"/>
     
     <!-- root -->
     <xsl:template match="/">
@@ -482,7 +482,7 @@
                 <xsl:when test="$SS = '}'">
                     <xsl:text>\}</xsl:text>
                 </xsl:when>
-                <xsl:when test="$SS = '^'">
+               <xsl:when test="$SS = '^'">
                     <xsl:text>\textasciicaron{}</xsl:text>
                 </xsl:when>
                 <xsl:when test="$SS = '$'">
