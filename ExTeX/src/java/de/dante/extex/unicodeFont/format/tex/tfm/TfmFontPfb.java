@@ -19,10 +19,13 @@
 
 package de.dante.extex.unicodeFont.format.tex.tfm;
 
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 
 import de.dante.extex.unicodeFont.exception.FontException;
 import de.dante.extex.unicodeFont.format.pfb.PfbParser;
+import de.dante.extex.unicodeFont.type.FontPfa;
 import de.dante.extex.unicodeFont.type.FontPfb;
 
 /**
@@ -32,7 +35,7 @@ import de.dante.extex.unicodeFont.type.FontPfb;
  * @version $Revision$
  */
 
-public class TfmFontPfb extends TfmFont implements FontPfb {
+public class TfmFontPfb extends TfmFont implements FontPfb, FontPfa {
 
     /**
      * Create a new object.
@@ -45,14 +48,14 @@ public class TfmFontPfb extends TfmFont implements FontPfb {
     /**
      * The pdf parser.
      */
-    private PfbParser pdfParser;
+    private PfbParser pfbParser;
 
     /**
      * @see de.dante.extex.unicodeFont.type.FontPfb#getPfb()
      */
     public PfbParser getPfb() {
 
-        return pdfParser;
+        return pfbParser;
     }
 
     /**
@@ -60,7 +63,16 @@ public class TfmFontPfb extends TfmFont implements FontPfb {
      */
     public void setPfb(final InputStream in) throws FontException {
 
-        pdfParser = new PfbParser(in);
+        pfbParser = new PfbParser(in);
     }
 
+    /**
+     * @see de.dante.extex.unicodeFont.type.FontPfa#writePfa(java.io.OutputStream)
+     */
+    public void writePfa(final OutputStream out) throws IOException {
+
+        if (pfbParser != null) {
+            pfbParser.toPfa(out);
+        }
+    }
 }
