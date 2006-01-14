@@ -61,7 +61,7 @@ public class TFMParamArray
     /**
      * the font type
      */
-    private TFMFontType fonttpye;
+    private TfmFontType fonttpye;
 
     /**
      * Create a new object
@@ -71,7 +71,7 @@ public class TFMParamArray
      * @throws IOException if an IO-error occurs.
      */
     public TFMParamArray(final RandomAccessR rar, final int size,
-            final TFMFontType ft) throws IOException {
+            final TfmFontType ft) throws IOException {
 
         fonttpye = ft;
 
@@ -124,9 +124,9 @@ public class TFMParamArray
 
         String label = "";
         String[] labels = null;
-        if (fonttpye.getType() == TFMFontType.MATHEX) {
+        if (fonttpye.getType() == TfmFontType.MATHEX) {
             labels = LABEL_MATHEX;
-        } else if (fonttpye.getType() == TFMFontType.MATHSY) {
+        } else if (fonttpye.getType() == TfmFontType.MATHSY) {
             labels = LABEL_MATHSY;
         } else {
             labels = LABEL_VANILLA;

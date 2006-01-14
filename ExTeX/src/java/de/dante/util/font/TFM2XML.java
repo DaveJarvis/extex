@@ -25,10 +25,10 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 
 import de.dante.extex.font.exception.FontMapNotFoundException;
-import de.dante.extex.font.type.pfb.PfbParser;
 import de.dante.extex.font.type.tfm.TFMFont;
 import de.dante.extex.font.type.tfm.enc.EncFactory;
 import de.dante.extex.font.type.tfm.psfontsmap.PSFontsMapReader;
+import de.dante.extex.unicodeFont.format.pfb.PfbParser;
 import de.dante.util.file.random.RandomAccessInputStream;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
 import de.dante.util.xml.XMLStreamWriter;
