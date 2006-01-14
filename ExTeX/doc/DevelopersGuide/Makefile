@@ -37,7 +37,7 @@ howto tmp/howto.tex:
 	perl bin/howto.pl -cp ../../src/java -out tmp/howto.tex
 
 clean:
-	rm -f *.ilg *.out *.toc *.aux *.ilg *.log *.dvi *.ind *~
+	rm -f *.ilg *.out *.toc *.aux *.ilg *.log *.dvi *.ind *~ *backup
 
 veryclean distclean: clean
 	rm -f $(MANUAL).pdf
