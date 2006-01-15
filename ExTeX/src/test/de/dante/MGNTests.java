@@ -23,6 +23,7 @@ import junit.framework.Test;
 import junit.framework.TestSuite;
 import de.dante.extex.scanner.stream.impl.TokenStreamStringImplTest;
 import de.dante.extex.scanner.stream.impl32.TokenStreamStringImpl32Test;
+import de.dante.extex.unicodeFont.AfmParserTest;
 import de.dante.extex.unicodeFont.EncFactoryTest;
 import de.dante.extex.unicodeFont.FontFactoryTest;
 import de.dante.extex.unicodeFont.PfbParserTest;
@@ -44,6 +45,7 @@ import de.dante.util.xslt.XsltTransformXhtmlTest;
  *  <li>EncFactoryTest</li>
  *  <li>FontFactoryTest</li>
  *  <li>PfbParserTest</li>
+ *  <li>AfmParserTest</li>
  * </ul>
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
@@ -70,6 +72,7 @@ public class MGNTests {
         suite.addTestSuite(EncFactoryTest.class);
         suite.addTestSuite(FontFactoryTest.class);
         suite.addTestSuite(PfbParserTest.class);
+        suite.addTestSuite(AfmParserTest.class);
         //$JUnit-END$
 
         return suite;
