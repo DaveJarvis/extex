@@ -30,6 +30,19 @@ import de.dante.test.NoFlagsPrimitiveTester;
 public class AbstractMathTester extends NoFlagsPrimitiveTester {
 
     /**
+     * The field <tt>DEFINE_MATH_FONTS</tt> contains the ...
+     */
+    public static final String DEFINE_MATH_FONTS =
+        "\\font\\f cmsy10 \\textfont2=\\f"
+        + "\\font\\f cmsy7 \\scriptfont2=\\f"
+        + "\\font\\f cmsy5 \\scriptscriptfont2=\\f"
+        + "\\font\\f cmex10 \\textfont3=\\f"
+        + "\\scriptfont3=\\f"
+        + "\\scriptscriptfont3=\\f"
+        + "\\font\\f cmmi10 \\textfont1=\\f ";
+
+
+    /**
      * The field <tt>primitive</tt> contains the name of the primitive to test.
      */
     private String primitive;
