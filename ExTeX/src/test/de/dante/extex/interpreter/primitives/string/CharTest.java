@@ -48,6 +48,20 @@ public class CharTest extends NoFlagsPrimitiveTester {
         super(arg, "char", "65");
     }
 
-    //TODO implement primitive specific test cases
+    /**
+     * <testcase primitive="\char">
+     *  Test case checking that <tt>\char</tt> of 65 produces an A.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test1() throws Exception {
+
+        assertSuccess(//--- input code ---
+                DEFINE_BRACES + "\\char 65\\end",
+                //--- output channel ---
+                "A" + "\n");
+    }
+
 
 }

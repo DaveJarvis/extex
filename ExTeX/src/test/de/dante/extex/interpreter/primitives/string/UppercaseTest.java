@@ -49,7 +49,7 @@ public class UppercaseTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode">
+     * <testcase primitive="&#x5c;uppercase">
      *  Test case checking that <tt>&#x5c;uppercase</tt> throws an error on eof.
      * </testcase>
      *
@@ -64,7 +64,7 @@ public class UppercaseTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode">
+     * <testcase primitive="&#x5c;uppercase">
      *  Test case checking that <tt>&#x5c;uppercase</tt> is invariant on
      *  uppercase letters.
      * </testcase>
@@ -80,8 +80,8 @@ public class UppercaseTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode">
-     *  Test case checking that <tt>&#x5c;uppercase</tt> is translates
+     * <testcase primitive="&#x5c;uppercase">
+     *  Test case checking that <tt>&#x5c;uppercase</tt> translates
      *  lowercase letters.
      * </testcase>
      *
@@ -96,8 +96,8 @@ public class UppercaseTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode">
-     *  Test case checking that <tt>&#x5c;uppercase</tt> is translates
+     * <testcase primitive="&#x5c;uppercase">
+     *  Test case checking that <tt>&#x5c;uppercase</tt> translates
      *  mixed letters.
      * </testcase>
      *
@@ -112,7 +112,7 @@ public class UppercaseTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\catcode">
+     * <testcase primitive="&#x5c;uppercase">
      *  Test case checking that <tt>&#x5c;uppercase</tt> respects uccode.
      * </testcase>
      *

@@ -39,4 +39,22 @@ public class MathordTest extends AbstractMathTester {
         super(arg, "mathord", " x");
     }
 
+    /**
+     * <testcase>
+     *  Test case checking that a single math character works.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testLetter1() throws Exception {
+
+        assertSuccess(showNodesProperties(),
+                //--- input code ---
+                DEFINE_MATH + DEFINE_MATH_FONTS
+                + "$\\mathord a$"
+                + "\\end ",
+                //--- output channel ---
+                "a" + TERM);
+    }
+
 }
