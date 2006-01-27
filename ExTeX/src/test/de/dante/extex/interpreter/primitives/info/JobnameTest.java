@@ -43,7 +43,8 @@ public class JobnameTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\jobname">
-     *  Test case checking that \jobname delivers a decent default value.
+     *  Test case checking that <tt>\jobname</tt> delivers a decent default
+     *  value.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -51,9 +52,7 @@ public class JobnameTest extends NoFlagsPrimitiveTester {
     public void testJobname1() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\catcode`{=1"
-                + "\\catcode`}=2"
-                + "\\jobname"
+                "\\jobname"
                 + "\\end ",
                 //--- output channel ---
                 "texput" + TERM);
@@ -61,7 +60,7 @@ public class JobnameTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\jobname">
-     *  Test case checking that \jobname can be set properly.
+     *  Test case checking that <tt>\jobname</tt> can be set properly.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -73,11 +72,10 @@ public class JobnameTest extends NoFlagsPrimitiveTester {
 
         assertSuccess(properties,
                 //--- input code ---
-                "\\catcode`{=1"
-                + "\\catcode`}=2"
-                + "\\jobname"
+                "\\jobname"
                 + "\\end ",
                 //--- output channel ---
                 "job" + TERM);
     }
+
 }
