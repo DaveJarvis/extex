@@ -32,7 +32,7 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     /**
      * The field <tt>primitive</tt> contains the name of the def.
      */
-    protected String def;
+    private String def;
 
     /**
      * Creates a new object.
@@ -266,5 +266,16 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
                 + "\\"+ def + "\\a{--##--}\\a ",
                 //--- output channel ---
                 "You can't use `macro parameter character #' in horizontal mode");
+    }
+
+    
+    /**
+     * Getter for def.
+     *
+     * @return the def
+     */
+    public String getDef() {
+    
+        return this.def;
     }
 }
