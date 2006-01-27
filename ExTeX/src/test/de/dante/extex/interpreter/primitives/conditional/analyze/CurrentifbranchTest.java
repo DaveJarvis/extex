@@ -63,7 +63,7 @@ public class CurrentifbranchTest extends ExTeXLauncher {
                 //--- log message ---
                 "You can't use `\\currentifbranch' in vertical mode");
     }
-    
+
     /**
      * <testcase primitive="\currentifbranch">
      *  Test case checking that <tt>\currentifbranch</tt>...
