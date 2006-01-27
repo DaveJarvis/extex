@@ -64,4 +64,19 @@ public class EndTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
                 "");
     }
 
+    /**
+     * <testcase primitive="\end">
+     *  Test case checking that any tokens after <tt>\end</tt> are ignored.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test1() throws Exception {
+
+        assertSuccess(//--- input code ---
+                "\\end abc",
+                //--- output channel ---
+                "");
+    }
+
 }
