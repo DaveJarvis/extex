@@ -102,7 +102,7 @@ public class Showthe extends The implements LogEnabled {
 
             if (code != null && code instanceof Theable) {
                 Tokens toks = ((Theable) code).the(context, source, typesetter);
-                logger.info(toks.toText());
+                logger.info(getLocalizer().format("TTP.Format", toks.toText()));
                 return;
             }
         }
