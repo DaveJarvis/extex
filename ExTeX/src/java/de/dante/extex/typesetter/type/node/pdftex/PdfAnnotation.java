@@ -67,7 +67,7 @@ public class PdfAnnotation extends WhatsItNode {
      * @see de.dante.extex.typesetter.type.Node#toString(java.lang.StringBuffer,
      *      java.lang.String)
      */
-    public void toString(final StringBuffer sb, final String prefix) {
+    public void toString(final StringBuffer sb, final String prefix, int breadth, int depth) {
 
         sb.append("(pdfannot " + text + ")");
     }
