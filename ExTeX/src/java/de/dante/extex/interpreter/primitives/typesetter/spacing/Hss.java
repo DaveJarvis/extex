@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -35,7 +35,8 @@ import de.dante.util.exception.GeneralException;
  * <doc name="hss">
  * <h3>The Primitive <tt>\hss</tt></h3>
  * <p>
- *  TODO gene: missing documentation
+ *  The primitive <tt>\hss</tt> inserts glue at the current position which is
+ *  stretchable and shrinkable horizontally. The order of the glue is 1.
  * </p>
  *
  * <h4>Syntax</h4>
