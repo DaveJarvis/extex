@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -84,7 +84,8 @@ public class Errmessage extends AbstractCode {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        String message = source.scanTokens(context, getName()).toText();
+        String message = source.scanTokens(context, false, false, getName())
+                .toText();
         String help = context.getToks("errhelp").toText();
         throw new FixedHelpingException(message, help);
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -26,6 +26,7 @@ import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.AbstractCode;
+import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.framework.logger.LogEnabled;
 
@@ -102,6 +103,7 @@ public class Message extends AbstractCode implements LogEnabled {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        logger.severe(" " + source.scanTokens(context, getName()).toText());
+        Tokens toks = source.scanTokens(context, true, false, getName());
+        logger.severe(" " + toks.toText());
     }
 }
