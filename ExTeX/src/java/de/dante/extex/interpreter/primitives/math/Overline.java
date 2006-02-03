@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -83,7 +83,7 @@ public class Overline extends AbstractMathCode {
 
         NoadConsumer nc = getListMaker(context, typesetter);
         Noad noad = nc.scanNoad(prefix, context, source, typesetter, getName());
-        nc.add(new OverlinedNoad(noad));
+        nc.add(new OverlinedNoad(noad, context.getTypesettingContext()));
     }
 
 }
