@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -145,4 +145,76 @@ public class MessageTest extends NoFlagsPrimitiveTester {
                 "Hello world!");
     }
 
+    /**
+     * <testcase primitive="\message">
+     *  Test case checking that \message ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testMessageErr1() throws Exception {
+
+        assertFailure(//--- input code ---
+                "\\scrollmode"
+                + DEFINE_BRACES
+                + "\\message{\\x}"
+                + "\\end ",
+                //--- log message ---
+                "Undefined control sequence the control sequence \\x");
+    }
+
+    /**
+     * <testcase primitive="\message">
+     *  Test case checking that \message ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testMessageErr2() throws Exception {
+
+        assertFailure(//--- input code ---
+                "\\scrollmode"
+                + DEFINE_BRACES
+                + "\\message{a\\x b}"
+                + "\\end ",
+                //--- log message ---
+                "Undefined control sequence the control sequence \\x");
+    }
+
+    /**
+     * <testcase primitive="\message">
+     *  Test case checking that \message ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testMessageErr3() throws Exception {
+
+        assertFailure(//--- input code ---
+                "\\scrollmode"
+                + DEFINE_BRACES
+                + "\\message{a\\hfill b}"
+                + "\\end ",
+                //--- log message ---
+                "a\\hfill b");
+    }
+
+    /**
+     * <testcase primitive="\message">
+     *  Test case checking that \message ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testMessage10() throws Exception {
+
+        assertFailure(//--- input code ---
+                "\\scrollmode"
+                + DEFINE_BRACES
+                + "\\def\\x{abc}"
+                + "\\message{\\x}"
+                + "\\end ",
+                //--- log message ---
+                "abc");
+    }
 }
