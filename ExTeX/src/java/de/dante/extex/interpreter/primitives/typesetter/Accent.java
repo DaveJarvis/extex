@@ -149,6 +149,10 @@ public class Accent extends AbstractCode {
                 } else {
                     Node node = typesetter.getCharNodeFactory().newInstance(tc,
                             accent);
+                    if (node == null) {
+                        //TODO gene: undefined character
+                        return;
+                    }
                     long w = g.getWidth().getValue();
                     long h = g.getHeight().getValue();
                     Dimen d = new Dimen();
