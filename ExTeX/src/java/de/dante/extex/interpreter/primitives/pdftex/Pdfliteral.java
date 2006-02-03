@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -91,7 +91,7 @@ public class Pdfliteral extends AbstractPdftexCode {
         ensurePdftex(context, typesetter);
 
         boolean direct = source.getKeyword(context, "direct");
-        String text = source.scanTokens(context, getName()).toText();
+        String text = source.scanTokens(context, false, false, getName()).toText();
 
         try {
             typesetter.add(new PdfLiteral(text, direct));
