@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -283,15 +283,19 @@ public class HorizontalListMaker extends AbstractListMaker {
                 }
             }
         }
-        CharNode c = getManager().getCharNodeFactory().newInstance(tc, symbol);
-        nodes.add(c);
+        CharNode charNode = getManager().getCharNodeFactory().newInstance(tc,
+                symbol);
+        if (charNode != null) {
 
-        int f = c.getSpaceFactor();
+            nodes.add(charNode);
 
-        if (f != 0) {
-            spaceFactor = (spaceFactor < DEFAULT_SPACEFACTOR
-                    && f > DEFAULT_SPACEFACTOR //
-            ? DEFAULT_SPACEFACTOR : f);
+            int f = charNode.getSpaceFactor();
+
+            if (f != 0) {
+                spaceFactor = (spaceFactor < DEFAULT_SPACEFACTOR
+                        && f > DEFAULT_SPACEFACTOR //
+                ? DEFAULT_SPACEFACTOR : f);
+            }
         }
     }
 
