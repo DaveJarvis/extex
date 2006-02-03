@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -294,7 +294,8 @@ public interface TokenSource {
      *
      * @throws InterpreterException in case of an error
      */
-    Tokens getTokens(Context context, TokenSource source, Typesetter typesetter) throws InterpreterException;
+    Tokens getTokens(Context context, TokenSource source, Typesetter typesetter)
+            throws InterpreterException;
 
     /**
      * Getter for the token stream factory.
@@ -497,12 +498,18 @@ public interface TokenSource {
      *
      * @param context the interpreter context
      * @param primitive the name of the invoking primitive for error handling
+     * @param reportUndefined indicator that an undefined control sequence
+     *  leads to an exception. This parameter is effective only if
+     *  ignoreUndefined is <code>false</code>
+     * @param ignoreUndefined indicator that an undefined control sequence
+     *  should be treated as <tt>\relax</tt>
      *
      * @return the next tokens or <code>null</code>
      *
      * @throws InterpreterException in case of an error
      */
-    Tokens scanTokens(Context context, String primitive)
+    Tokens scanTokens(Context context, boolean reportUndefined,
+            boolean ignoreUndefined, String primitive)
             throws InterpreterException;
 
     /**
