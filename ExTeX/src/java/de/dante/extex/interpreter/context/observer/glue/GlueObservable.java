@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -52,7 +52,7 @@ public interface GlueObservable {
      * observer is invoked.
      * <p>
      *  A single glue register can be observed by giving a name of the glue
-     *  register to observe. The deregistration removes all instances of the
+     *  register to observe. The de-registration removes all instances of the
      *  observer for this register. If none is registered then nothing happens.
      * </p>
      * <p>

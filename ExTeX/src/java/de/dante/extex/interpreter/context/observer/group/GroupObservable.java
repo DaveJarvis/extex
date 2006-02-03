@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -33,7 +33,6 @@ public interface GroupObservable {
      * Group change events are triggered when a group is opened or closed.
      * In this case the appropriate method in the observer is invoked.
      *
-     * @param name the name or the number of the register
      * @param observer the observer to receive the events
      */
     void registerGroupObserver(GroupObserver observer);
@@ -43,7 +42,6 @@ public interface GroupObservable {
      * Group change events are triggered when a group is opened or closed.
      * In this case the appropriate method in the observer is invoked.
      *
-     * @param name the name or the number of the register
      * @param observer the observer to receive the events
      */
     void unregisterGroupObserver(GroupObserver observer);
