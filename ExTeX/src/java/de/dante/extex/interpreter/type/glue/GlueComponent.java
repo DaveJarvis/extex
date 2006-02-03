@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -540,6 +540,17 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
                         value = value * POINT_PER_100_IN / CM100_PER_IN;
                     } else if (t.equals(Catcode.LETTER, 'c')) {
                         value = value * 14856 / 1157;
+                    } else {
+                        break;
+                    }
+                    if (mag != 1000) {
+                        value = value * mag / 1000;
+                    }
+                    source.skipSpace();
+                    return;
+                case 'k':
+                    if (t.equals(Catcode.LETTER, 'm')) {
+                        value = value * POINT_PER_100_IN / CM100_PER_IN / 100000;
                     } else {
                         break;
                     }
