@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -18,6 +18,9 @@
  */
 
 package de.dante.extex.typesetter.type.noad;
+
+import de.dante.util.framework.i18n.Localizer;
+import de.dante.util.framework.i18n.LocalizerFactory;
 
 /**
  * This is the abstract base class for Noads.
@@ -68,6 +71,16 @@ public abstract class AbstractNoad implements Noad {
     public AbstractNoad() {
 
         super();
+    }
+
+    /**
+     * Getter for the localizer.
+     *
+     * @return the localizer
+     */
+    public Localizer getLocalizer() {
+
+        return LocalizerFactory.getLocalizer(getClass().getName());
     }
 
     /**
