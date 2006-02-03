@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -99,7 +99,7 @@ public class Special extends AbstractCode {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        String text = source.scanTokens(context, getName()).toText();
+        String text = source.scanTokens(context, true, false, getName()).toText();
         try {
             typesetter.add(new SpecialNode(text));
         } catch (TypesetterException e) {
