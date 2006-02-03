@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -322,8 +322,13 @@ public class Tokens implements Serializable, FixedTokens {
 
         StringBuffer sb = new StringBuffer();
 
-        for (int i = 0; i < tokens.size(); i++) {
-            sb.append(((Token) tokens.get(i)).toText());
+        int size = tokens.size();
+        for (int i = 0; i < size; i++) {
+            Token t = (Token) tokens.get(i);
+            sb.append(t.toText());
+            if (t instanceof ControlSequenceToken && i == size - 1) {
+                sb.append(' ');
+            }
         }
 
         return sb.toString();
