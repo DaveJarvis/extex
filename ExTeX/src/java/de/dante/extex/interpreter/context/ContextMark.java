@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -82,7 +82,7 @@ public interface ContextMark {
 
     /**
      * Setter for a mark.
-     * The information for first mark and top mark are updated is necessary.
+     * The information for first mark and top mark are updated if necessary.
      *
      * @param name the name of the mark
      * @param mark the vale of the mark
