@@ -138,9 +138,9 @@ public class LigatureNode extends CharNode implements Node {
      *      java.lang.StringBuffer,
      *      java.lang.String)
      */
-    public void toString(final StringBuffer sb, final String prefix) {
+    public void toString(final StringBuffer sb, final String prefix, int breadth, int depth) {
 
-        super.toString(sb, prefix);
+        super.toString(sb, prefix, breadth, depth);
         sb.append(getLocalizer().format("String.Format", left.toString(),
                 right.toString()));
     }

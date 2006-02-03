@@ -85,7 +85,7 @@ public class RuleNode extends AbstractNode implements Node {
      * @see de.dante.extex.typesetter.type.Node#toString(java.lang.StringBuffer,
      *      java.lang.String)
      */
-    public void toString(final StringBuffer sb, final String prefix) {
+    public void toString(final StringBuffer sb, final String prefix, int breadth, int depth) {
 
         Dimen x = getHeight();
         String h = (x == null ? "*" : x.toString());

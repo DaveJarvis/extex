@@ -65,7 +65,7 @@ public class SpaceNode extends GlueNode implements Node {
      *      java.lang.StringBuffer,
      *      java.lang.String)
      */
-    public void toString(final StringBuffer sb, final String prefix) {
+    public void toString(final StringBuffer sb, final String prefix, int breadth, int depth) {
 
         if (!DEVELOP || getWidth().eq(size.getLength())) {
             sb.append(getLocalizer().format("String.Format", //

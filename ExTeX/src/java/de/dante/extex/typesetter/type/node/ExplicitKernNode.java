@@ -64,7 +64,7 @@ public class ExplicitKernNode extends AbstractKernNode implements Discardable {
      *      java.lang.StringBuffer,
      *      java.lang.String)
      */
-    public void toString(final StringBuffer sb, final String prefix) {
+    public void toString(final StringBuffer sb, final String prefix, int breadth, int depth) {
 
         sb.append(getLocalizer().format("String.Format",
                 getWidth().toString()));
