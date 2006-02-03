@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -36,6 +36,7 @@ import de.dante.extex.scanner.type.token.OtherToken;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.typesetter.type.Node;
+import de.dante.extex.typesetter.type.node.CharNode;
 import de.dante.extex.typesetter.type.node.CharNodeFactory;
 import de.dante.extex.typesetter.type.node.DiscretionaryNode;
 import de.dante.extex.typesetter.type.node.HorizontalListNode;
@@ -308,10 +309,13 @@ public class LiangsHyphenationTable extends BaseHyphenationTable {
                     break;
                 case 1:
                     if (isHyph[(int) index.getValue()]) {
-                        nodes.add(new DiscretionaryNode(null,
-                                new HorizontalListNode(cnf.newInstance(//
-                                        tc, //
-                                        hyphen)), null));
+                        CharNode hyphenNode = cnf.newInstance(tc, hyphen);
+                        if (hyphenNode == null) {
+                            nodes.add(new DiscretionaryNode(null, null, null));
+                        } else {
+                            nodes.add(new DiscretionaryNode(null,
+                                    new HorizontalListNode(hyphenNode), null));
+                        }
                     }
                     nodes.add(node);
                     index.add(1);
