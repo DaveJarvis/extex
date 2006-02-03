@@ -243,7 +243,7 @@ public class ErrorHandlerImpl
             sb.append('_');
         }
         theLogger.severe(NL + NL + (file == null ? "" : file) + ":"
-                + Integer.toString(locator.getLineno()) + ": " + message + NL
+                + Integer.toString(locator.getLineNumber()) + ": " + message + NL
                 + NL + locator.getLine() + NL + sb.toString() + "^" + NL);
     }
 

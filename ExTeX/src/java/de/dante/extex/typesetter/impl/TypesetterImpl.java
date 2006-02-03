@@ -600,7 +600,7 @@ public class TypesetterImpl
 
         sb.append(localizer.format("Showlist.Format", listMaker.getMode()
                 .toString(), Integer.toString(listMaker.getLocator()
-                .getLineno())));
+                .getLineNumber())));
         listMaker.showlist(sb, depth, breadth);
 
         for (int i = saveStack.size() - 1; i >= 0; i--) {
@@ -608,7 +608,7 @@ public class TypesetterImpl
             sb
                     .append(localizer.format("Showlist.Format", lm.getMode()
                             .toString(), Integer.toString(lm.getLocator()
-                            .getLineno())));
+                            .getLineNumber())));
             lm.showlist(sb, depth, breadth);
         }
     }
@@ -617,10 +617,11 @@ public class TypesetterImpl
      * @see de.dante.extex.typesetter.ListMaker#subscriptMark(
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource,
-     *      Typesetter, de.dante.extex.scanner.type.token.Token)
+     *      de.dante.extex.typesetter.Typesetter,
+     *      de.dante.extex.scanner.type.token.Token)
      */
     public void subscriptMark(final Context context, final TokenSource source,
-            Typesetter typesetter, final Token t) throws TypesetterException {
+            final Typesetter typesetter, final Token t) throws TypesetterException {
 
         listMaker.subscriptMark(context, source, typesetter, t);
     }

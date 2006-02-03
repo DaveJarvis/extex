@@ -47,7 +47,7 @@ public class EditHandlerTeXImpl implements EditHandler {
     public boolean edit(final Localizer localizer, final Locator locator) {
 
         System.err.println(localizer.format("EditHandler.edit", locator
-                .getResourceName(), Integer.toString(locator.getLineno())));
+                .getResourceName(), Integer.toString(locator.getLineNumber())));
         return false;
     }
 }

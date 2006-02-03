@@ -60,7 +60,7 @@ public class ErrorHandlerTeXImpl extends ErrorHandlerImpl {
         logger.severe(NL + "!" + message + NL + file
                       + line.substring(0, pointer - 1) + NL + sb.toString()
                       + line.substring(pointer) + "l."
-                      + Integer.toString(locator.getLineno()) + NL);
+                      + Integer.toString(locator.getLineNumber()) + NL);
     }
 
 }
