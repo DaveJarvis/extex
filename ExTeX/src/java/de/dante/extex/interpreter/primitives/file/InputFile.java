@@ -33,7 +33,7 @@ import de.dante.extex.interpreter.exception.InterpreterException;
  * \inputfile{file.name}
  * </pre>
  *
- * @author <a href="m.g.n@gmx.de">Michael Niedermair</a>
+ * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
 public class InputFile extends Input {
