@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -46,40 +46,40 @@ import de.dante.util.xml.XMLStreamWriter;
  * @version $Revision$
  */
 
-public class TFMExtensibleRecipe implements XMLWriterConvertible, Serializable {
+public class TfmExtensibleRecipe implements XMLWriterConvertible, Serializable {
 
     /**
-     * the id
+     * the id.
      */
     private int etid;
 
     /**
-     * top
+     * top.
      */
     private short top;
 
     /**
-     * mid
+     * mid.
      */
     private short mid;
 
     /**
-     * bot
+     * bot.
      */
     private short bot;
 
     /**
-     * rep
+     * rep.
      */
     private short rep;
 
     /**
-     * Create a new object
+     * Create a new object.
      * @param rar   the input
      * @param id    the id
      * @throws IOException if an IO-error occurs.
      */
-    public TFMExtensibleRecipe(final RandomAccessR rar, final int id)
+    public TfmExtensibleRecipe(final RandomAccessR rar, final int id)
             throws IOException {
 
         etid = id;

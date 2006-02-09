@@ -34,22 +34,22 @@ import java.io.Serializable;
 public class TfmFontType implements Serializable {
 
     /**
-     * Normal TeX font metric
+     * Normal TeX font metric.
      */
     public static final Type VANILLA = new Type();
 
     /**
-     * TeX Math Symbols font metric
+     * TeX Math Symbols font metric.
      */
     public static final Type MATHSY = new Type();
 
     /**
-     * TeX Math Extension font metric
+     * TeX Math Extension font metric.
      */
     public static final Type MATHEX = new Type();
 
     /**
-     * the type
+     * the type.
      */
     private Type type;
 
@@ -70,7 +70,7 @@ public class TfmFontType implements Serializable {
     }
 
     /**
-     * Type (type-safe class)
+     * Type (type-safe class).
      */
     private static final class Type implements Serializable {
 

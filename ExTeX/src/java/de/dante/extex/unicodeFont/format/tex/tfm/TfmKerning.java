@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -22,7 +22,7 @@ package de.dante.extex.unicodeFont.format.tex.tfm;
 import java.io.Serializable;
 
 /**
- * TFM-Kerning
+ * TFM-Kerning.
  * <p>
  * Kerning instruction
  * </p>
@@ -30,31 +30,31 @@ import java.io.Serializable;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class TFMKerning extends TFMLigKern implements Serializable {
+public class TfmKerning extends TfmLigKern implements Serializable {
 
     /**
-     * Create a new object
+     * Create a new object.
      *
      * @param skip  the skip amount to the next instruction.
      * @param next  the code of the next character.
      * @param k     the amount of kerning between the current and
      *              the next characters.
      */
-    public TFMKerning(final int skip, final short next, final TFMFixWord k) {
+    public TfmKerning(final int skip, final short next, final TfmFixWord k) {
 
         super(skip, next);
         kern = k;
     }
 
     /**
-     * The amount of kerning
+     * The amount of kerning.
      */
-    private TFMFixWord kern;
+    private TfmFixWord kern;
 
     /**
      * @see de.dante.extex.font.type.tfm.TFMLigKern#getKern()
      */
-    public TFMFixWord getKern() {
+    public TfmFixWord getKern() {
 
         return kern;
     }

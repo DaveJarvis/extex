@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -22,37 +22,38 @@ package de.dante.extex.unicodeFont.format.tex.tfm;
 import java.io.Serializable;
 
 /**
- * TFM: key-value-container
+ * TFM: key-value-container.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
 
-public class TFMKeyInt implements Serializable {
+public class TfmKeyInt implements Serializable {
 
     /**
-     * key
+     * key.
      */
     private int key;
 
     /**
-     * int-value
+     * int-value.
      */
     private int val;
 
     /**
-     * Create a new object
+     * Create a new object.
      *
      * @param k the key
      * @param v the value
      */
-    TFMKeyInt(final int k, final int v) {
+    TfmKeyInt(final int k, final int v) {
 
         key = k;
         val = v;
     }
 
     /**
+     * Returns the key.
      * @return Returns the key.
      */
     public int getKey() {
@@ -61,6 +62,7 @@ public class TFMKeyInt implements Serializable {
     }
 
     /**
+     * Returns the val.
      * @return Returns the val.
      */
     public int getVal() {

@@ -25,8 +25,8 @@ import java.util.Properties;
 
 import junit.framework.TestCase;
 import de.dante.extex.ExTeX;
-import de.dante.extex.unicodeFont.format.tex.psfontmap.PSFontEncoding;
-import de.dante.extex.unicodeFont.format.tex.psfontmap.PSFontsMapReader;
+import de.dante.extex.unicodeFont.format.tex.psfontmap.PsFontEncoding;
+import de.dante.extex.unicodeFont.format.tex.psfontmap.PsFontsMapReader;
 import de.dante.util.framework.configuration.Configuration;
 import de.dante.util.framework.configuration.ConfigurationFactory;
 import de.dante.util.framework.configuration.exception.ConfigurationClassNotFoundException;
@@ -59,7 +59,7 @@ public class PsFontsMapReaderTest extends TestCase {
     /**
      * The Reader.
      */
-    private PSFontsMapReader reader;
+    private PsFontsMapReader reader;
 
     /**
      * @see junit.framework.TestCase#setUp()
@@ -72,7 +72,7 @@ public class PsFontsMapReaderTest extends TestCase {
             InputStream in = extex.getResourceFinder().findResource(
                     "psfonts.map", "");
 
-            reader = new PSFontsMapReader(in);
+            reader = new PsFontsMapReader(in);
         }
     }
 
@@ -92,7 +92,7 @@ public class PsFontsMapReaderTest extends TestCase {
      */
     public void test02() throws Exception {
 
-        PSFontEncoding entry = reader.getPSFontEncoding("cmr12");
+        PsFontEncoding entry = reader.getPSFontEncoding("cmr12");
         assertEquals("cmr12", entry.getFilename());
         assertEquals("CMR12", entry.getFontname());
         assertEquals("cmr12.pfb", entry.getFontfile());
@@ -108,7 +108,7 @@ public class PsFontsMapReaderTest extends TestCase {
      */
     public void test03() throws Exception {
 
-        PSFontEncoding entry = reader.getPSFontEncoding("hlcrin8r");
+        PsFontEncoding entry = reader.getPSFontEncoding("hlcrin8r");
         assertEquals("hlcrin8r", entry.getFilename());
         assertEquals("LucidaCasual-Italic", entry.getFontname());
         assertEquals("TeXBase1Encoding ReEncodeFont", entry.getEncodingtxt());
