@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -64,7 +64,7 @@ public class PdfBoxType1Font extends PDType1Font {
     }
 
     /**
-     * the map for the fonts
+     * the map for the fonts.
      */
     private static Map map = new HashMap();
 
@@ -172,12 +172,12 @@ public class PdfBoxType1Font extends PDType1Font {
     }
 
     /**
-     * The font descriptor
+     * The font descriptor.
      */
     private PDFontDescriptorDictionary fd;
 
     /**
-     * the font metric
+     * the font metric.
      */
     private FontMetric metric;
 
