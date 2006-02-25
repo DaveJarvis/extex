@@ -176,7 +176,7 @@ public class CharNode extends AbstractNode implements Node {
 
         Font font = typesettingContext.getFont();
         sb.append(getLocalizer()
-                .format("String.Format",
+                .format("Text.Format",
                         (font == null ? "*" : font.getFontName()),
                         character.toString()));
     }
