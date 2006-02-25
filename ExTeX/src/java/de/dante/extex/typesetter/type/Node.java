@@ -182,6 +182,8 @@ public interface Node extends Knot, Serializable {
      *
      * @param sb the output string buffer
      * @param prefix the prefix string inserted at the beginning of each line
+     * @param breadth the breadt of the nodes to display
+     * @param depth the depth of the nodes to display
      */
     void toString(StringBuffer sb, String prefix, int breadth, int depth);
 
