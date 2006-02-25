@@ -301,7 +301,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * @see de.dante.extex.typesetter.type.NodeList#setMove(
      *      de.dante.extex.interpreter.type.dimen.Dimen)
      */
-    public void setMove(final Dimen d) {
+    public void setMove(final FixedDimen d) {
 
         this.nodes.setMove(d);
     }
@@ -310,7 +310,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * @see de.dante.extex.typesetter.type.NodeList#setShift(
      *      de.dante.extex.interpreter.type.dimen.Dimen)
      */
-    public void setShift(final Dimen d) {
+    public void setShift(final FixedDimen d) {
 
         this.nodes.setShift(d);
     }

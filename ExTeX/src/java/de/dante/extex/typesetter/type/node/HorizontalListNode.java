@@ -103,6 +103,8 @@ public class HorizontalListNode extends AbstractNodeList {
      */
     public void toText(final StringBuffer sb, final String prefix) {
 
+        sb.append("\n");
+        sb.append(prefix);
         sb.append("(hlist ");
         super.toText(sb, prefix);
     }
