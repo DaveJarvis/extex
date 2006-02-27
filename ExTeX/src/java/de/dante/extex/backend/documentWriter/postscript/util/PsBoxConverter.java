@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -94,9 +94,6 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
 
     /**
      * Creates a new object.
-     *
-     * @param width the width of the paper
-     * @param height the height of the paper
      */
     public PsBoxConverter() {
 
@@ -514,7 +511,7 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
 
         x.set(saveX);
         y.set(saveY);
-        
+
         return null;
     }
 
@@ -550,4 +547,5 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
         }
         return null;
     }
+
 }

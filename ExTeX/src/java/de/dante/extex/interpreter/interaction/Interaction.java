@@ -46,7 +46,7 @@ public abstract class Interaction implements Serializable {
         /**
          * The constant <tt>serialVersionUID</tt> contains the id for serialization.
          */
-        private static final long serialVersionUID = 1L;
+        protected static final long serialVersionUID = 1L;
 
         /**
          * Return the singleton constant object after the serialized instance
@@ -62,7 +62,6 @@ public abstract class Interaction implements Serializable {
         }
 
         /**
-         * @see "<logo>TeX</logo> &ndash; The Program [73]"
          * @see de.dante.extex.interpreter.Interaction#getIndex()
          */
         public String getIndex() {
@@ -96,7 +95,7 @@ public abstract class Interaction implements Serializable {
          * The constant <tt>serialVersionUID</tt> contains the id for
          * serialization.
          */
-        private static final long serialVersionUID = 1L;
+        protected static final long serialVersionUID = 1L;
 
         /**
          * Return the singleton constant object after the serialized instance
@@ -112,7 +111,6 @@ public abstract class Interaction implements Serializable {
         }
 
         /**
-         * @see "<logo>TeX</logo> &ndash; The Program [73]"
          * @see de.dante.extex.interpreter.Interaction#getIndex()
          */
         public String getIndex() {
@@ -145,7 +143,7 @@ public abstract class Interaction implements Serializable {
         /**
          * The constant <tt>serialVersionUID</tt> contains the id for serialization.
          */
-        private static final long serialVersionUID = 1L;
+        protected static final long serialVersionUID = 1L;
 
         /**
          * Return the singleton constant object after the serialized instance
@@ -161,7 +159,6 @@ public abstract class Interaction implements Serializable {
         }
 
         /**
-         * @see "<logo>TeX</logo> &ndash; The Program [73]"
          * @see de.dante.extex.interpreter.Interaction#getIndex()
          */
         public String getIndex() {
@@ -194,7 +191,7 @@ public abstract class Interaction implements Serializable {
         /**
          * The constant <tt>serialVersionUID</tt> contains the id for serialization.
          */
-        private static final long serialVersionUID = 1L;
+        protected static final long serialVersionUID = 1L;
 
         /**
          * Return the singleton constant object after the serialized instance
@@ -210,7 +207,6 @@ public abstract class Interaction implements Serializable {
         }
 
         /**
-         * @see "<logo>TeX</logo> &ndash; The Program [73]"
          * @see de.dante.extex.interpreter.Interaction#getIndex()
          */
         public String getIndex() {
