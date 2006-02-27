@@ -135,7 +135,7 @@ public interface TypesetterOptions {
      * @param name the name of the register
      * @param value the value
      *
-     * @return the content of the count register
+     * @throws GeneralException in case of an error
      */
     void setCountOption(String name, long value) throws GeneralException;
 

@@ -133,9 +133,12 @@ public interface NoadConsumer extends ListMaker {
     /**
      * Process the input until a Noad is completed. A Noad is either a single
      * Noad or a list of Noades resulting from the processing of a block.
+     *
+     * @param flags the flags to restore after processing
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
+     * @param primitive te name of the primitive for error messages
      *
      * @return the Noad read or <code>null</code> if none could be gathered
      *

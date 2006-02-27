@@ -43,6 +43,8 @@ public interface ParagraphBuilder {
      * @return the
      *   {@link de.dante.extex.typesetter.type.node.VerticalListNode
      *   VerticalListNode} containing the hboxes of the lines
+     *
+     * @throws TypesetterException in case of an error
      */
     NodeList build(HorizontalListNode nodes) throws TypesetterException;
 
