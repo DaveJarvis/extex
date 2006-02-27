@@ -67,7 +67,7 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    private static final long serialVersionUID = 1L;
+    protected static final long serialVersionUID = 1L;
 
     /**
      * The constant <tt>BP100_PER_IN</tt> contains the number of 100 big points
@@ -231,7 +231,7 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
      * @throws InterpreterException in case of an error
      */
     public GlueComponent(final Context context, final TokenSource source,
-            Typesetter typesetter, final boolean fixed)
+            final Typesetter typesetter, final boolean fixed)
             throws InterpreterException {
 
         super();
