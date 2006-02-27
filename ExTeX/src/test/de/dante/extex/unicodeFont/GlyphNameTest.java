@@ -19,8 +19,8 @@
 
 package de.dante.extex.unicodeFont;
 
-import de.dante.extex.unicodeFont.glyphname.GlyphName;
 import junit.framework.TestCase;
+import de.dante.extex.unicodeFont.glyphname.GlyphName;
 
 /**
  * Test the class <code>GlyphName</code>.
@@ -32,7 +32,8 @@ import junit.framework.TestCase;
 public class GlyphNameTest extends TestCase {
 
     /**
-     * test 01.
+     * test 01. initial okay
+     *
      * @throws Exception if an error occurred.
      */
     public void test01() throws Exception {
@@ -41,7 +42,7 @@ public class GlyphNameTest extends TestCase {
     }
 
     /**
-     * test 02.
+     * test 02. right key value
      * @throws Exception if an error occurred.
      */
     public void test02() throws Exception {
@@ -60,7 +61,7 @@ public class GlyphNameTest extends TestCase {
     }
 
     /**
-     * test 03.
+     * test 03. no existing glyph
      * @throws Exception if an error occurred.
      */
     public void test03() throws Exception {
