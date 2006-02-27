@@ -892,7 +892,7 @@ public class TeX extends ExTeX {
          final ContextInternals context, final String name,
          final Count value) throws Exception {
 
-         System.err.println("change " + name + " to "
+         S ystem.err.println("change " + name + " to "
          + value.toString());
          }
          });
