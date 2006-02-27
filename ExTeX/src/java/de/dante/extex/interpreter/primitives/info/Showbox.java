@@ -61,7 +61,7 @@ public class Showbox extends AbstractBox implements LogEnabled {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    private static final long serialVersionUID = 1L;
+    protected static final long serialVersionUID = 2005L;
 
     /**
      * The field <tt>logger</tt> contains the target channel for the message.

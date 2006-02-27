@@ -27,7 +27,6 @@ import de.dante.extex.interpreter.primitives.register.box.AbstractBox;
 import de.dante.extex.interpreter.type.glue.Glue;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.exception.TypesetterException;
-import de.dante.extex.typesetter.type.noad.GlueNoad;
 import de.dante.extex.typesetter.type.node.GlueNode;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
 
@@ -60,7 +59,7 @@ public class Noindent extends AbstractBox {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    private static final long serialVersionUID = 1L;
+    protected static final long serialVersionUID = 2005L;
 
     /**
      * Creates a new object.

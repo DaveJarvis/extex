@@ -87,8 +87,9 @@ public abstract class AbstractMarksCode extends AbstractCode
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
-    public void expand(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+    public void expand(final Flags prefix, final Context context,
+            final TokenSource source, final Typesetter typesetter)
+            throws InterpreterException {
 
         source.push(getValue(context, getKey(context, source, typesetter)));
     }
@@ -128,7 +129,7 @@ public abstract class AbstractMarksCode extends AbstractCode
      *
      * @throws InterpreterException in case of an exception
      */
-    protected abstract Tokens getValue(Context context, String key)
+    protected abstract Tokens getValue(final Context context, final String key)
             throws InterpreterException;
 
 }

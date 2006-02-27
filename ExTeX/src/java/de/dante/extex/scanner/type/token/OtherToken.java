@@ -39,7 +39,7 @@ public class OtherToken extends AbstractToken implements Token {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    private static final long serialVersionUID = 1L;
+    protected static final long serialVersionUID = 2005L;
 
     /**
      * Creates a new object.
@@ -80,8 +80,8 @@ public class OtherToken extends AbstractToken implements Token {
      */
     public void toString(final StringBuffer sb) {
 
-        sb.append(getLocalizer()
-                .format("OtherToken.Text", getChar().toString()));
+        sb.append(getLocalizer().format("OtherToken.Text", //
+                getChar().toString()));
     }
 
     /**

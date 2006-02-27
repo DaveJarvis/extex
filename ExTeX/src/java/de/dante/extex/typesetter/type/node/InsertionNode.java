@@ -37,7 +37,7 @@ public class InsertionNode extends AbstractNode implements Node {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    private static final long serialVersionUID = 1L;
+    protected static final long serialVersionUID = 2005L;
 
     /**
      * The field <tt>nodes</tt> contains the vertical list to be inserted.
@@ -87,6 +87,8 @@ public class InsertionNode extends AbstractNode implements Node {
      *
      * @param sb the output string buffer
      * @param prefix the prefix string inserted at the beginning of each line
+     * @param breadth the breadth
+     * @param depth the depth
      *
      * @see "<logo>TeX</logo> &ndash; The Program [188]"
      * @see de.dante.extex.typesetter.type.Node#toString(

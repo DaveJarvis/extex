@@ -76,7 +76,7 @@ public class Ifcase extends AbstractIf {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    private static final long serialVersionUID = 1L;
+    protected static final long serialVersionUID = 2005L;
 
     /**
      * The constant <tt>OR</tt> contains the value indicating an \or.

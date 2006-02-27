@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -42,10 +42,11 @@ public interface Definer {
      * @param prefix the flags
      * @param context the interpreter context
      * @param source the source for new tokens
+     * @param typesetter the typesetter
      *
      * @throws InterpreterException in case of an error
      */
-    void define(Flags prefix, Context context, TokenSource source, Typesetter typesetter)
-            throws InterpreterException;
+    void define(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException;
 
 }

@@ -38,7 +38,7 @@ public class AlignedLeadersNode extends GlueNode implements Node {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    private static final long serialVersionUID = 1L;
+    protected static final long serialVersionUID = 2005L;
 
     /**
      * The field <tt>node</tt> contains the node to reapeat or expand.
@@ -74,6 +74,8 @@ public class AlignedLeadersNode extends GlueNode implements Node {
      *
      * @param sb the output string buffer
      * @param prefix the prefix string inserted at the beginning of each line
+     * @param breadth the breadth
+     * @param depth the depth
      *
      * @see "<logo>TeX</logo> &ndash; The Program [190]"
      * @see de.dante.extex.typesetter.type.Node#toString(java.lang.StringBuffer,

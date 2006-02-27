@@ -39,7 +39,7 @@ public class HorizontalListNode extends AbstractNodeList {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    private static final long serialVersionUID = 1L;
+    protected static final long serialVersionUID = 2005L;
 
     /**
      * Creates a new object. The list is empty initially.
@@ -113,7 +113,7 @@ public class HorizontalListNode extends AbstractNodeList {
      * @see de.dante.extex.typesetter.type.node.AbstractNodeList#updateDimensions(
      *      de.dante.extex.typesetter.type.Node, boolean)
      */
-    protected void updateDimensions(final Node node, boolean first) {
+    protected void updateDimensions(final Node node, final boolean first) {
 
         getWidth().add(node.getWidth());
         getHeight().max(node.getHeight());

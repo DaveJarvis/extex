@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -38,7 +38,7 @@ public class InvalidCharacterException extends HelpingException {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    private static final long serialVersionUID = 1L;
+    protected static final long serialVersionUID = 1L;
 
     /**
      * The field <tt>cc</tt> contains the invalid character.
@@ -74,14 +74,14 @@ public class InvalidCharacterException extends HelpingException {
     /**
      * Creates a new object.
      *
-     * @param theLocalizer
-     * @param messageTag
-     * @param a1
+     * @param localizer the localizer
+     * @param messageTag the message tag
+     * @param arg the argument
      */
     public InvalidCharacterException(final Localizer localizer,
-            final String messageTag, final String a1) {
+            final String messageTag, final String arg) {
 
-        super(localizer, messageTag, a1);
+        super(localizer, messageTag, arg);
     }
 
     /**

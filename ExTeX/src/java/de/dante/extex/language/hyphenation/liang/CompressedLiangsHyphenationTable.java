@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -38,24 +38,7 @@ public class CompressedLiangsHyphenationTable extends LiangsHyphenationTable {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    private static final long serialVersionUID = 1L;
-
-    /**
-     * This method compresses the table upon dumping. It is one of the magic
-     * methods invoked during serialization.
-     *
-     * @param out the output stream
-     *
-     * @throws IOException in case of an IO error
-     */
-    protected void writeObject(final ObjectOutputStream out) throws IOException {
-
-        if (!isCompressed()) {
-            compress(getPatterns(), new HashMap());
-            setCompressed();
-        }
-        out.defaultWriteObject();
-    }
+    protected static final long serialVersionUID = 2005L;
 
     /**
      * This compression method traverses the hyphenation tree and makes
@@ -79,6 +62,23 @@ public class CompressedLiangsHyphenationTable extends LiangsHyphenationTable {
             compress((HyphenTree) iter.next(), map);
         }
 
+    }
+
+    /**
+     * This method compresses the table upon dumping. It is one of the magic
+     * methods invoked during serialization.
+     *
+     * @param out the output stream
+     *
+     * @throws IOException in case of an IO error
+     */
+    protected void writeObject(final ObjectOutputStream out) throws IOException {
+
+        if (!isCompressed()) {
+            compress(getPatterns(), new HashMap());
+            setCompressed();
+        }
+        out.defaultWriteObject();
     }
 
 }

@@ -43,7 +43,7 @@ public class MathDelimiter implements Noad, Serializable {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    private static final long serialVersionUID = 1L;
+    protected static final long serialVersionUID = 2005L;
 
     /**
      * The field <tt>largeChar</tt> contains the code of the large character.

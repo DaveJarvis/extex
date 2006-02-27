@@ -60,7 +60,7 @@ public class Hss extends AbstractHorizontalCode {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    private static final long serialVersionUID = 1L;
+    protected static final long serialVersionUID = 2005L;
 
     /**
      * The field <tt>HSS</tt> contains the glue to insert for this primitive.

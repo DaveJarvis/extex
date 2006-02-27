@@ -189,7 +189,7 @@ public class ContextImpl
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    private static final long serialVersionUID = 1L;
+    protected static final long serialVersionUID = 1L;
 
     /**
      * The field <tt>topmarks</tt> contains the top marks.

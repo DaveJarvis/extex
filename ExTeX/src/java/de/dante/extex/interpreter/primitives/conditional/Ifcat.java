@@ -65,7 +65,7 @@ public class Ifcat extends AbstractIf {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    private static final long serialVersionUID = 1L;
+    protected static final long serialVersionUID = 2005L;
 
     /**
      * Creates a new object.
@@ -94,4 +94,5 @@ public class Ifcat extends AbstractIf {
         }
         return t1.getCatcode() == t2.getCatcode();
     }
+
 }

@@ -42,7 +42,7 @@ public abstract class MathClass implements Serializable {
         /**
          * The constant <tt>serialVersionUID</tt> contains the id for serialization.
          */
-        private static final long serialVersionUID = 1L;
+        protected static final long serialVersionUID = 2005L;
 
         /**
          * Return the singleton constant object after the serialized instance
@@ -90,7 +90,7 @@ public abstract class MathClass implements Serializable {
         /**
          * The constant <tt>serialVersionUID</tt> contains the id for serialization.
          */
-        private static final long serialVersionUID = 1L;
+        protected static final long serialVersionUID = 2005L;
 
         /**
          * Return the singleton constant object after the serialized instance
@@ -138,7 +138,7 @@ public abstract class MathClass implements Serializable {
         /**
          * The constant <tt>serialVersionUID</tt> contains the id for serialization.
          */
-        private static final long serialVersionUID = 1L;
+        protected static final long serialVersionUID = 2005L;
 
         /**
          * Return the singleton constant object after the serialized instance
@@ -186,7 +186,7 @@ public abstract class MathClass implements Serializable {
         /**
          * The constant <tt>serialVersionUID</tt> contains the id for serialization.
          */
-        private static final long serialVersionUID = 1L;
+        protected static final long serialVersionUID = 2005L;
 
         /**
          * Return the singleton constant object after the serialized instance
@@ -234,7 +234,7 @@ public abstract class MathClass implements Serializable {
         /**
          * The constant <tt>serialVersionUID</tt> contains the id for serialization.
          */
-        private static final long serialVersionUID = 1L;
+        protected static final long serialVersionUID = 2005L;
 
         /**
          * Return the singleton constant object after the serialized instance
@@ -282,7 +282,7 @@ public abstract class MathClass implements Serializable {
         /**
          * The constant <tt>serialVersionUID</tt> contains the id for serialization.
          */
-        private static final long serialVersionUID = 1L;
+        protected static final long serialVersionUID = 2005L;
 
         /**
          * Return the singleton constant object after the serialized instance
@@ -330,7 +330,7 @@ public abstract class MathClass implements Serializable {
         /**
          * The constant <tt>serialVersionUID</tt> contains the id for serialization.
          */
-        private static final long serialVersionUID = 1L;
+        protected static final long serialVersionUID = 2005L;
 
         /**
          * Return the singleton constant object after the serialized instance
@@ -378,7 +378,7 @@ public abstract class MathClass implements Serializable {
         /**
          * The constant <tt>serialVersionUID</tt> contains the id for serialization.
          */
-        private static final long serialVersionUID = 1L;
+        protected static final long serialVersionUID = 2005L;
 
         /**
          * Return the singleton constant object after the serialized instance
