@@ -78,7 +78,7 @@ public abstract class AbstractPostscriptWriter
     /**
      * The field <tt>parameter</tt> contains the map for parameters.
      */
-    protected Map parameter = new HashMap();
+    private Map parameter = new HashMap();
 
     /**
      * The field <tt>writerFactory</tt> contains the output stream factory.
