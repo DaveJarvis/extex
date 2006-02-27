@@ -136,7 +136,7 @@ public interface Node extends Knot, Serializable {
      *
      * @return the vertical size
      */
-    Dimen getVerticalSize();
+    FixedDimen getVerticalSize();
 
     /**
      * Getter for the width of the node.
@@ -150,14 +150,14 @@ public interface Node extends Knot, Serializable {
      *
      * @param depth the nde depth
      */
-    void setDepth(Dimen depth);
+    void setDepth(FixedDimen depth);
 
     /**
      * Setter for the heigth of the node.
      *
      * @param height the new height
      */
-    void setHeight(Dimen height);
+    void setHeight(FixedDimen height);
 
     /**
      * Setter for the width of the node.
