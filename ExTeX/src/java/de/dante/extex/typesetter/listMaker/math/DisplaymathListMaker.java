@@ -58,6 +58,7 @@ public class DisplaymathListMaker extends MathListMaker implements EqConsumer {
      * Creates a new object.
      *
      * @param manager the manager to ask for global changes
+     * @param locator the locator
      */
     public DisplaymathListMaker(final ListManager manager, final Locator locator) {
 
