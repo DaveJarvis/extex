@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -21,7 +21,6 @@ package de.dante.extex.backend.documentWriter;
 
 import java.io.IOException;
 
-import de.dante.extex.backend.documentWriter.exception.DocumentWriterException;
 import de.dante.extex.typesetter.type.page.Page;
 import de.dante.util.exception.GeneralException;
 
@@ -55,19 +54,22 @@ public interface DocumentWriter {
      *
      * @return returns the number of pages shipped
      *
-     * @throws DocumentWriterException in case of an error
+     * @throws GeneralException in case of a general exception<br>
+     *  especially<br>
+     *  DocumentWriterException in case of an error
+     * @throws IOException in case of an IO exception
      */
-    int shipout(Page page)
-            throws DocumentWriterException,
-                GeneralException,
-                IOException;
+    int shipout(Page page) throws GeneralException, IOException;
 
     /**
      * This method is invoked upon the end of the processing.
      *
-     * @throws DocumentWriterException in case of an error
+     * @throws GeneralException in case of a general exception<br>
+     *  especially<br>
+     *  DocumentWriterException in case of an error
+     * @throws IOException in case of an IO exception
      */
-    void close() throws DocumentWriterException, GeneralException, IOException;
+    void close() throws GeneralException, IOException;
 
     /**
      * Setter for a named parameter.
