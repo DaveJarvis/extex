@@ -53,14 +53,13 @@ public abstract class AbstractNucleusNoad extends AbstractNoad {
         this.color = tc.getColor();
     }
 
-    
     /**
      * Getter for color.
      *
      * @return the color
      */
     public Color getColor() {
-    
+
         return this.color;
     }
 

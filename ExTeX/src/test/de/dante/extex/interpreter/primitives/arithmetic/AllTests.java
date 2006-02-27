@@ -30,7 +30,7 @@ import junit.framework.TestSuite;
  */
 public class AllTests {
 
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 
     }
 
