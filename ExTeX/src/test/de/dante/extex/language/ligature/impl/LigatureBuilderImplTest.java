@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -83,7 +83,7 @@ public class LigatureBuilderImplTest extends TestCase {
         /**
          * @see de.dante.extex.interpreter.type.font.Font#getGlyph(de.dante.util.UnicodeChar)
          */
-        public Glyph getGlyph(UnicodeChar c) {
+        public Glyph getGlyph(final UnicodeChar c) {
 
             Glyph g = (Glyph) cache.get(c);
             if (g == null) {

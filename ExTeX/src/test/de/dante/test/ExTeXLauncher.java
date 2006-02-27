@@ -415,7 +415,7 @@ public class ExTeXLauncher extends TestCase {
                                 return Dimen.ZERO_PT;
                             }
 
-                            public void setRightSpace(Dimen rs) {
+                            public void setRightSpace(final Dimen rs) {
 
                             }};
                     }
