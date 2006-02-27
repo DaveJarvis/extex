@@ -137,6 +137,8 @@ public class LogFormatter extends Formatter {
      *
      * @param out the target buffer
      * @param msg the message to process
+     *
+     * @return the message
      */
     private CharSequence breakLine(final StringBuffer out,
             final CharSequence msg) {
