@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -20,7 +20,9 @@
 package de.dante.test;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This abstract base class for tests contains some tests which check that
+ * all flag primitives but <tt>\global</tt> and <tt>\immediate</tt> lead to
+ * an error.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
