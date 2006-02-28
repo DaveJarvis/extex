@@ -48,9 +48,9 @@ public class NullFont implements Font, Serializable {
     private UnicodeChar hyphen = new UnicodeChar('-');
 
     /**
-     * The field <tt>skew</tt> contains the skew char for this font
+     * The field <tt>skew</tt> contains the skew char for this font.
      */
-    private UnicodeChar skew = new UnicodeChar(-1);
+    private UnicodeChar skew = null;
 
     /**
      * Creates a new object.
