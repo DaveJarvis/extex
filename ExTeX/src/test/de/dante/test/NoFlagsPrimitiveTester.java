@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -86,6 +86,7 @@ public abstract class NoFlagsPrimitiveTester extends ExTeXLauncher {
      * @param primitive the name of the integer register to test
      * @param arguments the parameters for the invocation
      * @param prepare the preparation code
+     * @param out prefix of the output message
      */
     public NoFlagsPrimitiveTester(final String arg, final String primitive,
             final String arguments, final String prepare, final String out) {
