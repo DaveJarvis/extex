@@ -19,6 +19,8 @@
 
 package de.dante.extex.language;
 
+import de.dante.util.framework.configuration.exception.ConfigurationException;
+
 
 /**
  * This interface describes the ability to carry a hyphenation factory.
@@ -33,5 +35,5 @@ public interface LanguageManagerCarrier {
      *
      * @param hyphenationFactory the hyphenation factory to carry
      */
-    void setLanguageManager(LanguageManager hyphenationFactory);
+    void setLanguageManager(LanguageManager hyphenationFactory) throws ConfigurationException;
 }
