@@ -63,7 +63,7 @@ public interface TokenFactory {
      *
      * @throws CatcodeException in case of an error
      */
-    Token createToken(Catcode code, char c, String namespace)
+    Token createToken(Catcode code, int c, String namespace)
             throws CatcodeException;
 
     /**
