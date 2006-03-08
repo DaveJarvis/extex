@@ -413,7 +413,7 @@ public interface Context
      *
      * @param manager the hyphenatin manager
      */
-    void setLanguageManager(LanguageManager manager);
+    void setLanguageManager(LanguageManager manager) throws ConfigurationException;
 
     /**
      * Declare the translation from an upper case character to a lower case
