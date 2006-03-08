@@ -200,6 +200,8 @@ public class HorizontalListMaker extends AbstractListMaker {
             CharNode node = (CharNode) nodes.get(ptr);
             HorizontalListNode word = new HorizontalListNode();
             ptr = parseWord(ptr, word, size);
+
+            /*
             Language lang = node.getTypesettingContext().getLanguage();
             UnicodeChar hyphen = node.getTypesettingContext().getFont()
                     .getHyphenChar();
@@ -207,7 +209,9 @@ public class HorizontalListMaker extends AbstractListMaker {
                 lang.hyphenate(word, context, hyphen, 0, true, getManager()
                         .getNodeFactory());
             }
-            for (int i = 0; i < word.size(); i++) {
+            */
+            int len = word.size();
+            for (int i = 0; i < len; i++) {
                 list.add(word.get(i));
             }
         }
