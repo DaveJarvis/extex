@@ -20,6 +20,7 @@
 package de.dante.extex.typesetter.type.node;
 
 import de.dante.extex.interpreter.context.TypesettingContext;
+import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeVisitor;
 import de.dante.util.UnicodeChar;
@@ -143,9 +144,10 @@ public class LigatureNode extends CharNode implements Node {
     public void toString(final StringBuffer sb, final String prefix,
             final int breadth, final int depth) {
 
-        super.toString(sb, prefix, breadth, depth);
-        sb.append(getLocalizer().format("String.Format", left.toString(),
-                right.toString()));
+        Font font = getTypesettingContext().getFont();
+        sb.append(getLocalizer().format("String.Format",
+                (font == null ? "*" : font.getFontName()),
+                getCharacter().toString(), left.toString(), right.toString()));
     }
 
     /**
