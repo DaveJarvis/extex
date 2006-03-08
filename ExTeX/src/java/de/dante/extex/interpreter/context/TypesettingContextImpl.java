@@ -20,6 +20,7 @@
 package de.dante.extex.interpreter.context;
 
 import de.dante.extex.color.model.ColorFactory;
+import de.dante.extex.font.type.other.NullFont;
 import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.language.Language;
 
@@ -74,7 +75,7 @@ public class TypesettingContextImpl implements ModifiableTypesettingContext {
     public TypesettingContextImpl() {
 
         super();
-        this.font = null;
+        this.font = new NullFont();
         this.color = ColorFactory.BLACK;
         this.direction = Direction.LR;
         this.language = null;
@@ -104,7 +105,7 @@ public class TypesettingContextImpl implements ModifiableTypesettingContext {
 
         super();
         if (tc == null) {
-            this.font = null;
+            this.font = new NullFont();
             this.color = ColorFactory.BLACK;
             this.direction = Direction.LR;
             this.language = null;
@@ -149,9 +150,6 @@ public class TypesettingContextImpl implements ModifiableTypesettingContext {
      */
     public Language getLanguage() {
 
-        if (this.font == null) {
-            throw new IllegalStateException("language undefined");
-        }
         return this.language;
     }
 
