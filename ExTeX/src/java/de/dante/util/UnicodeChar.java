@@ -40,15 +40,15 @@ import com.ibm.icu.text.UTF16;
 public class UnicodeChar implements Serializable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 1L;
-
-    /**
      * The constant <tt>NULL</tt> contains the Unicode character with the
      * code point 0.
      */
     public static final UnicodeChar NULL = new UnicodeChar(0);
+
+    /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    protected static final long serialVersionUID = 1L;
 
     /**
      * The field <tt>code</tt> contains the code point of the Unicode character
@@ -255,6 +255,20 @@ public class UnicodeChar implements Serializable {
     public boolean isPrintable() {
 
         return UCharacter.isPrintable(this.code);
+    }
+
+    /**
+     * Returns the lowercase character of this object.
+     * <p>
+     * (this method does not use the <logo>TeX</logo> lccode!)
+     * </p>
+     *
+     * @return character in lowercase
+     */
+    public UnicodeChar lower() {
+
+        int lc = UCharacter.toLowerCase(this.code);
+        return (lc == code ? this : new UnicodeChar(lc));
     }
 
     /**
