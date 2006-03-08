@@ -46,6 +46,7 @@ import de.dante.extex.typesetter.type.node.SpaceNode;
 import de.dante.extex.typesetter.type.node.factory.CachingNodeFactory;
 import de.dante.extex.typesetter.type.node.factory.NodeFactory;
 import de.dante.util.UnicodeChar;
+import de.dante.util.UnicodeCharList;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -477,8 +478,27 @@ public class BaseHyphenationTableTest extends TestCase {
         context = new MyMockContext();
         Context c = new MockContext();
         language = makeLanguage();
-        language.addHyphenation(new Tokens(c, "abc-def"), context);
-        language.addHyphenation(new Tokens(c, "d-e-f"), context);
+        language.addHyphenation(makeList("abc-def"), context);
+        language.addHyphenation(makeList("d-e-f"), context);
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     *
+     * @param s ...
+     * @return ...
+     */
+    private UnicodeCharList makeList(final CharSequence s) {
+
+        UnicodeCharList list = new UnicodeCharList();
+        for (int i = 0; i < s.length(); i++) {
+            int c = s.charAt(i);
+            if (c == '-') {
+                c = 0xad;
+            }
+            list.add(new UnicodeChar(c));
+        }
+        return list;
     }
 
     /**
