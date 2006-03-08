@@ -125,9 +125,10 @@ public class BaseLanguageManager extends AbstractFactory
     public Language getLanguage(final String name)
             throws ConfigurationException {
 
-        Language table = (ModifiableLanguage) tables.get(name);
+        Language table = (Language) tables.get(name);
         if (table == null) {
             table = createLanguage(name);
+            tables.put(name, table);
         }
         return table;
     }
