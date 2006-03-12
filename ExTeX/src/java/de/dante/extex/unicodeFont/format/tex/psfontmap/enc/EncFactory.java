@@ -84,4 +84,26 @@ public class EncFactory implements Serializable {
         }
         return table;
     }
+
+    /**
+     * Returns the encoding table (without a slash in the name).
+     * @param filename  the file name.
+     * @return Returns the encoding table.
+     * @throws FontException if an font-erorr occurred.
+     * @throws ConfigurationException from the resource finder.
+     */
+    public String[] getEncodingTableWithoutSlash(final String filename)
+            throws FontException, ConfigurationException {
+
+        String[] table = getEncodingTable(filename);
+
+        if (table != null) {
+            for (int i = 0; i < table.length; i++) {
+                if (table[i].startsWith("/")) {
+                    table[i] = table[i].substring(1);
+                }
+            }
+        }
+        return table;
+    }
 }

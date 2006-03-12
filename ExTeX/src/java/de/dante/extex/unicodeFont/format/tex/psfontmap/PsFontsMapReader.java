@@ -151,4 +151,14 @@ public class PsFontsMapReader implements Serializable {
 
         return (PsFontEncoding) data.get(filename);
     }
+
+    /**
+     * Returns the map with all PSFontEncodings.
+     *
+     * @return Returns the map with all PSFontEncodings.
+     */
+    public Map getPsFontEncodingMap() {
+
+        return data;
+    }
 }
