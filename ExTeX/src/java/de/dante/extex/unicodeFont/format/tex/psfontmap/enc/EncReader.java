@@ -25,8 +25,9 @@ import java.io.InputStreamReader;
 import java.io.Serializable;
 
 import de.dante.extex.unicodeFont.exception.FontException;
-import de.dante.extex.unicodeFont.format.tex.psfontmap.enc.exception.FontEncodingIOException;
-import de.dante.extex.unicodeFont.format.tex.psfontmap.enc.exception.FontEncodingWrongRangeException;
+import de.dante.extex.unicodeFont.exception.FontIOException;
+import de.dante.util.framework.i18n.Localizer;
+import de.dante.util.framework.i18n.LocalizerFactory;
 
 /**
  * Reader for encoding-files.
@@ -43,6 +44,13 @@ public class EncReader implements Serializable {
      * serialVersionUID.
      */
     private static final long serialVersionUID = 4119582362704393554L;
+
+    /**
+     * The field <tt>localizer</tt> contains the localizer. It is initiated
+     * with a localizer for the name of this class.
+     */
+    private transient Localizer localizer = LocalizerFactory
+            .getLocalizer(EncReader.class.getName());
 
     /**
      * Create a new object.
@@ -75,13 +83,15 @@ public class EncReader implements Serializable {
             int first = buf.indexOf("[");
             int last = buf.lastIndexOf("]");
             if (first < 0 || last < 0) {
-                throw new FontEncodingWrongRangeException();
+                throw new FontException(localizer
+                        .format("EncReader.WrongRange"));
+
             }
             String tablestring = buf.substring(first + 1, last).trim();
             table = tablestring.split("\\s");
 
         } catch (IOException e) {
-            throw new FontEncodingIOException(e.getMessage());
+            throw new FontIOException(e.getMessage());
         }
     }
 
