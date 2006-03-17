@@ -208,7 +208,7 @@ public class BackendDriverImpl
     }
 
     /**
-     * @see de.dante.extex.backend.documentWriter.DocumentWriter#getPages()
+     * @see de.dante.extex.backend.BackendDriver#getPages()
      */
     public int getPages() {
 
