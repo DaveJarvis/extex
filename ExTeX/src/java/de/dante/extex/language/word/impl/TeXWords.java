@@ -161,7 +161,7 @@ public class TeXWords extends ExTeXWords implements WordTokenizer {
         for (int i = 0; i < size; i++) {
             uc = word.get(i);
             c = options.getLccode(uc);
-            list.add(c == UnicodeChar.NULL ? uc : c);
+            list.add(c == null ? uc : c);
         }
 
         return list;
