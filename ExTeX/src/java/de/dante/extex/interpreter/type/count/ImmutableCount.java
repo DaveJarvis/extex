@@ -46,6 +46,16 @@ public class ImmutableCount extends Count {
     }
 
     /**
+     * Creates a new object.
+     *
+     * @param value the value to be stored
+     */
+    public ImmutableCount(final FixedCount value) {
+
+        super(value);
+    }
+
+    /**
      * @see de.dante.extex.interpreter.type.count.Count#add(long)
      */
     public void add(final long val) {
