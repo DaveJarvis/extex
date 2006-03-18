@@ -35,9 +35,7 @@ import de.dante.extex.scanner.type.Catcode;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.type.Node;
-import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.node.AccentKernNode;
-import de.dante.extex.typesetter.type.node.HorizontalListNode;
 import de.dante.util.UnicodeChar;
 import de.dante.util.exception.GeneralException;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
@@ -156,12 +154,12 @@ public class Accent extends AbstractCode {
                     long w = g.getWidth().getValue();
                     long h = g.getHeight().getValue();
                     Dimen d = new Dimen();
-                    if (h != x) {
-                        NodeList n = new HorizontalListNode(node);
-                        d.set(x - h);
-                        n.setShift(d);
-                        node = n;
-                    }
+//                    if (h != x) {
+//                        NodeList n = new HorizontalListNode(node);
+//                        d.set(x - h);
+//                        n.setShift(d);
+//                        node = n;
+//                    }
                     // compute delta TTP [1125]
                     long delta = (w - a) / 2 + (h - x) * s / UNIT;
                     d.set(delta);
