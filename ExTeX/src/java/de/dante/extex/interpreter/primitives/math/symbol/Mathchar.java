@@ -147,7 +147,7 @@ public class Mathchar extends AbstractMathCode {
             }
             int fam = (int) source.scanNumber(context);
             int code = (int) source.scanNumber(context);
-            MathGlyph mg = new MathGlyph(fam, new UnicodeChar(code));
+            MathGlyph mg = new MathGlyph(fam, UnicodeChar.get(code));
             nc.add(mc, mg, context.getTypesettingContext());
         } else {
             source.push(t);

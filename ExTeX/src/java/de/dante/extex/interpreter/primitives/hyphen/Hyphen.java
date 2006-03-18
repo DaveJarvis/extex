@@ -63,7 +63,7 @@ public class Hyphen extends AbstractCode {
     /**
      * The field <tt>HYPHEN</tt> contains the Unicode character for the hyphen.
      */
-    private static final UnicodeChar HYPHEN = new UnicodeChar('-');
+    private static final UnicodeChar HYPHEN = UnicodeChar.get('-');
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.

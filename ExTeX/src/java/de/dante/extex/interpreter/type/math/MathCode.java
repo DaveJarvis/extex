@@ -88,7 +88,7 @@ public class MathCode {
         super();
         mathClass = (int) (code >> CLASS_SHIFT);
         mathFamily = (int) (code >> 8) & FAMILY_MASK;
-        mathChar = new UnicodeChar((int) (code & CHAR_MASK));
+        mathChar = UnicodeChar.get((int) (code & CHAR_MASK));
     }
 
     /**

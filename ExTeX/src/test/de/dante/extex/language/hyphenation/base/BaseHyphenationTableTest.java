@@ -34,9 +34,7 @@ import de.dante.extex.interpreter.context.TypesettingContextImpl;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.interpreter.type.glue.Glue;
-import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.language.Language;
-import de.dante.extex.language.hyphenation.base.BaseHyphenationTable;
 import de.dante.extex.language.word.impl.TeXWords;
 import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.typesetter.type.node.CharNode;
@@ -49,7 +47,7 @@ import de.dante.util.UnicodeChar;
 import de.dante.util.UnicodeCharList;
 
 /**
- * TODO gene: missing JavaDoc.
+ * Test suite for the base hyphenation table.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -65,12 +63,12 @@ public class BaseHyphenationTableTest extends TestCase {
     private class MockFont implements Font {
 
         /**
-         * The field <tt>hyphen</tt> contains the ...
+         * The field <tt>hyphen</tt> contains the hyphenation character.
          */
-        private UnicodeChar hyphen = new UnicodeChar('-');
+        private UnicodeChar hyphen = UnicodeChar.get('-');
 
         /**
-         * The field <tt>hyphenGlyph</tt> contains the ...
+         * The field <tt>hyphenGlyph</tt> contains the hyphen glyph.
          */
         private Glyph hyphenGlyph = new MockGlyph();
 
@@ -414,7 +412,7 @@ public class BaseHyphenationTableTest extends TestCase {
     /**
      * The field <tt>HYPHEN</tt> contains the yphen character.
      */
-    private static final UnicodeChar HYPHEN = new UnicodeChar('-');
+    private static final UnicodeChar HYPHEN = UnicodeChar.get('-');
 
     /**
      * The command line interface.
@@ -437,7 +435,7 @@ public class BaseHyphenationTableTest extends TestCase {
     private Language language;
 
     /**
-     * TODO gene: missing JavaDoc
+     * Create a hlist from a string.
      *
      * @param s the string with the characters to encode
      *
@@ -452,7 +450,7 @@ public class BaseHyphenationTableTest extends TestCase {
             if (c == ' ') {
                 n.add(new SpaceNode(tc.getFont().getSpace()));
             } else {
-                n.add(new CharNode(tc, new UnicodeChar(c)));
+                n.add(new CharNode(tc, UnicodeChar.get(c)));
             }
         }
         return n;
@@ -496,7 +494,7 @@ public class BaseHyphenationTableTest extends TestCase {
             if (c == '-') {
                 c = 0xad;
             }
-            list.add(new UnicodeChar(c));
+            list.add(UnicodeChar.get(c));
         }
         return list;
     }

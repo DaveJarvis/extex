@@ -44,7 +44,7 @@ public class RightBraceTokenTest extends TestCase {
     /**
      * The field <tt>t</tt> contains the reference token.
      */
-    private static Token t = new RightBraceToken(new UnicodeChar('>'));
+    private static Token t = new RightBraceToken(UnicodeChar.get('>'));
 
     /**
      */
@@ -80,7 +80,7 @@ public class RightBraceTokenTest extends TestCase {
     /**
      */
     public void testEqualsToken1() {
-        Token t1 = new RightBraceToken(new UnicodeChar(' '));
+        Token t1 = new RightBraceToken(UnicodeChar.get(' '));
         Token t2 = new SpaceToken(" ");
         assertFalse(t1.equals(t2));
     }

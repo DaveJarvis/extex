@@ -44,7 +44,7 @@ public class SupMarkTokenTest extends TestCase {
     /**
      * The field <tt>t</tt> contains the reference token.
      */
-    private static Token t = new SupMarkToken(new UnicodeChar('*'));
+    private static Token t = new SupMarkToken(UnicodeChar.get('*'));
 
     /**
      */
@@ -80,7 +80,7 @@ public class SupMarkTokenTest extends TestCase {
     /**
      */
     public void testEqualsToken1() {
-        Token t1 = new SupMarkToken(new UnicodeChar(' '));
+        Token t1 = new SupMarkToken(UnicodeChar.get(' '));
         Token t2 = new SpaceToken(" ");
         assertFalse(t1.equals(t2));
     }

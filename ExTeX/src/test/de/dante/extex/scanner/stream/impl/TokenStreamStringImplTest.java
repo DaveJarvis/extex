@@ -294,7 +294,7 @@ public class TokenStreamStringImplTest extends TestCase {
      */
     public void testCaret1() throws Exception {
 
-        context.setCatcode(new UnicodeChar('^'), Catcode.SUPMARK, true);
+        context.setCatcode(UnicodeChar.get('^'), Catcode.SUPMARK, true);
         TokenStream stream = makeStream("^1");
         assertEquals("superscript character ^", stream.get(fac, tokenizer)
                 .toString());
@@ -311,7 +311,7 @@ public class TokenStreamStringImplTest extends TestCase {
      */
     public void testCaretA() throws Exception {
 
-        context.setCatcode(new UnicodeChar('^'), Catcode.SUPMARK, true);
+        context.setCatcode(UnicodeChar.get('^'), Catcode.SUPMARK, true);
         TokenStream stream = makeStream("^^41");
         assertEquals("the letter A", stream.get(fac, tokenizer).toString());
         Token token = stream.get(fac, tokenizer);
@@ -326,7 +326,7 @@ public class TokenStreamStringImplTest extends TestCase {
      */
     public void testCaretA2() throws Exception {
 
-        context.setCatcode(new UnicodeChar('^'), Catcode.SUPMARK, true);
+        context.setCatcode(UnicodeChar.get('^'), Catcode.SUPMARK, true);
         TokenStream stream = makeStream("^^A");
         assertEquals("the character \1", stream.get(fac, tokenizer).toString());
         Token token = stream.get(fac, tokenizer);
@@ -341,7 +341,7 @@ public class TokenStreamStringImplTest extends TestCase {
      */
     public void testCaretA3() throws Exception {
 
-        context.setCatcode(new UnicodeChar('^'), Catcode.SUPMARK, true);
+        context.setCatcode(UnicodeChar.get('^'), Catcode.SUPMARK, true);
         TokenStream stream = makeStream("^^A;");
         assertEquals("the character \1", stream.get(fac, tokenizer).toString());
         assertEquals("the character ;", stream.get(fac, tokenizer).toString());
@@ -357,7 +357,7 @@ public class TokenStreamStringImplTest extends TestCase {
      */
     public void testCaretEnd() throws Exception {
 
-        context.setCatcode(new UnicodeChar('^'), Catcode.SUPMARK, true);
+        context.setCatcode(UnicodeChar.get('^'), Catcode.SUPMARK, true);
         TokenStream stream = makeStream("^");
         assertEquals("superscript character ^", stream.get(fac, tokenizer)
                 .toString());

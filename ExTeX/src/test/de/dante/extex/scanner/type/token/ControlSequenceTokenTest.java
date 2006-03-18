@@ -19,13 +19,10 @@
 
 package de.dante.extex.scanner.type.token;
 
+import junit.framework.TestCase;
 import de.dante.extex.interpreter.Namespace;
 import de.dante.extex.scanner.type.Catcode;
-import de.dante.extex.scanner.type.token.ControlSequenceToken;
-import de.dante.extex.scanner.type.token.OtherToken;
-import de.dante.extex.scanner.type.token.Token;
 import de.dante.util.UnicodeChar;
-import junit.framework.TestCase;
 
 /**
  * Test cases for control sequence tokens.
@@ -48,7 +45,7 @@ public class ControlSequenceTokenTest extends TestCase {
      * The field <tt>t</tt> contains the reference token.
      */
     private static ControlSequenceToken t = new ControlSequenceToken(
-            new UnicodeChar('\\'), "x", Namespace.DEFAULT_NAMESPACE);
+            UnicodeChar.get('\\'), "x", Namespace.DEFAULT_NAMESPACE);
 
     /**
      */
@@ -112,8 +109,8 @@ public class ControlSequenceTokenTest extends TestCase {
      */
     public void testEqualsToken1() {
 
-        Token t1 = new ControlSequenceToken(new UnicodeChar('\\'), " ", "");
-        Token t2 = new OtherToken(new UnicodeChar(' '));
+        Token t1 = new ControlSequenceToken(UnicodeChar.get('\\'), " ", "");
+        Token t2 = new OtherToken(UnicodeChar.get(' '));
         assertFalse(t1.equals(t2));
     }
 

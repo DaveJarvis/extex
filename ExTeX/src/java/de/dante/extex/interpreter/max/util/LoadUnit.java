@@ -161,7 +161,7 @@ public final class LoadUnit extends AbstractFactory {
                 ConfigurationException {
 
         enableLogging(outputLogger);
-        UnicodeChar esc = new UnicodeChar('\\');
+        UnicodeChar esc = UnicodeChar.get('\\');
         Iterator iterator = configuration.iterator(DEFINE_TAG);
 
         while (iterator.hasNext()) {

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -97,7 +97,7 @@ public class StringSource extends Moritz {
                 return (Token) stack.remove(size - 1);
             }
             if (next < cs.length()) {
-                UnicodeChar c = new UnicodeChar(cs.charAt(next++));
+                UnicodeChar c = UnicodeChar.get(cs.charAt(next++));
                 try {
                     return factory.createToken(tokenizer.getCatcode(c), c,
                             Namespace.DEFAULT_NAMESPACE);

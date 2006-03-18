@@ -44,7 +44,7 @@ public class ActiveCharacterTokenTest extends TestCase {
     /**
      * The field <tt>t</tt> contains the reference token
      */
-    private static Token t = new ActiveCharacterToken(new UnicodeChar('x'), "");
+    private static Token t = new ActiveCharacterToken(UnicodeChar.get('x'), "");
 
     /**
      */
@@ -79,8 +79,8 @@ public class ActiveCharacterTokenTest extends TestCase {
     /**
      */
     public void testEqualsToken1() {
-        Token t1 = new ActiveCharacterToken(new UnicodeChar(' '), "");
-        Token t2 = new OtherToken(new UnicodeChar(' '));
+        Token t1 = new ActiveCharacterToken(UnicodeChar.get(' '), "");
+        Token t2 = new OtherToken(UnicodeChar.get(' '));
         assertFalse(t1.equals(t2));
     }
 

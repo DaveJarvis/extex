@@ -398,7 +398,7 @@ public class Moritz extends Max
         }
         try {
             push(context.getTokenFactory().createToken(Catcode.ESCAPE,
-                    new UnicodeChar(context.esc("")), "inaccessible ",
+                    context.escapechar(), "inaccessible ",
                     context.getNamespace()));
         } catch (InterpreterException e) {
             throw e;
@@ -1031,7 +1031,7 @@ public class Moritz extends Max
             }
         }
 
-        return new UnicodeChar((int) cc);
+        return UnicodeChar.get((int) cc);
     }
 
     /**

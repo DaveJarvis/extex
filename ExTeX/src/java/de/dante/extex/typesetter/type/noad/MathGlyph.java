@@ -78,7 +78,7 @@ public class MathGlyph implements Noad, Serializable {
     public MathGlyph(final int code) {
 
         this((code >> FAMILY_OFFSET) & FAMILY_MASK, //
-                new UnicodeChar((int) (code & CHARACTER_MASK)));
+                UnicodeChar.get((int) (code & CHARACTER_MASK)));
     }
 
     /**

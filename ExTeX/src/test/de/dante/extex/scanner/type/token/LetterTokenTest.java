@@ -44,7 +44,7 @@ public class LetterTokenTest extends TestCase {
     /**
      * The field <tt>t</tt> contains the reference token.
      */
-    private static Token t = new LetterToken(new UnicodeChar('x'));
+    private static Token t = new LetterToken(UnicodeChar.get('x'));
 
     /**
      */
@@ -80,8 +80,8 @@ public class LetterTokenTest extends TestCase {
     /**
      */
     public void testEqualsToken1() {
-        Token t1 = new LetterToken(new UnicodeChar(' '));
-        Token t2 = new OtherToken(new UnicodeChar(' '));
+        Token t1 = new LetterToken(UnicodeChar.get(' '));
+        Token t2 = new OtherToken(UnicodeChar.get(' '));
         assertFalse(t1.equals(t2));
     }
 
