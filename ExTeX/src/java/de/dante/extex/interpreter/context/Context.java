@@ -97,7 +97,7 @@ public interface Context
      *
      * @return the escape character
      */
-    char escapechar();
+    UnicodeChar escapechar();
 
     /**
      * Getter for the afterassignment token.
