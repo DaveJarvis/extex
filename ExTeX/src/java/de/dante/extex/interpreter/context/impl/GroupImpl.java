@@ -474,12 +474,12 @@ public class GroupImpl implements Group, Tokenizer, Serializable {
 
         // Fallback for predefined lccodes
         if (lc.isLetter()) {
-            value = new UnicodeChar(lc.toLowerCase());
+            value = lc.lower();
             // the value is stored to avoid constructing UnicodeChars again
             lccodeMap.put(lc, value);
             return value;
         }
-        return UnicodeChar.NULL;
+        return null;
     }
 
     /**
@@ -648,17 +648,17 @@ public class GroupImpl implements Group, Tokenizer, Serializable {
         if (value != null) {
             return value;
         } else if (next != null) {
-            return next.getLccode(uc);
+            return next.getUccode(uc);
         }
 
-        // Fallback for predefined lccodes
+        // Fallback for predefined uc codes
         if (uc.isLetter()) {
-            value = new UnicodeChar(uc.toUpperCase());
+            value = uc.upper();
             // the value is stored to avoid constructing UnicodeChars again
-            lccodeMap.put(uc, value);
+            uccodeMap.put(uc, value);
             return value;
         }
-        return UnicodeChar.NULL;
+        return null;
     }
 
     /**
