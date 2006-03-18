@@ -102,20 +102,24 @@ public class PageBuilderImpl implements PageBuilder {
     public void flush(final NodeList nodes, final Typesetter typesetter)
             throws TypesetterException {
 
-        if (nodes.size() > 0) {
-            try {
-                Page page = pageFactory.newInstance(nodes, context, typesetter);
-
-                if (this.outputRoutine != null) {
-                    this.outputRoutine.output(page, backendDriver);
-                } else {
-                    backendDriver.shipout(page);
-                }
-                nodes.clear();
-            } catch (GeneralException e) {
-                throw new TypesetterException(e);
-            }
+        if (nodes.size() <= 0) {
+            return;
         }
+
+        try {
+            Page page = pageFactory.newInstance(nodes, context, typesetter);
+
+            if (page == null) {
+                // fall through
+            } else if (this.outputRoutine != null) {
+                this.outputRoutine.output(page, backendDriver);
+            } else {
+                backendDriver.shipout(page);
+            }
+        } catch (GeneralException e) {
+            throw new TypesetterException(e);
+        }
+        nodes.clear();
     }
 
     /**

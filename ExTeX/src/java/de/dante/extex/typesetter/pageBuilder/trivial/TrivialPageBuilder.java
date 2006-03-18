@@ -29,6 +29,7 @@ import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.pageBuilder.PageBuilder;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.node.VerticalListNode;
+import de.dante.extex.typesetter.type.page.Page;
 import de.dante.extex.typesetter.type.page.PageFactory;
 import de.dante.util.exception.GeneralException;
 
@@ -96,15 +97,19 @@ public class TrivialPageBuilder implements PageBuilder {
     public void flush(final NodeList nodes, final Typesetter typesetter)
             throws TypesetterException {
 
-        if (nodes.size() > 0) {
-            try {
-                backend.shipout(pageFactory.newInstance(nodes, context,
-                        typesetter));
-                nodes.clear();
-            } catch (GeneralException e) {
-                throw new TypesetterException(e);
-            }
+        if (nodes.size() <= 0) {
+            return;
         }
+        try {
+            Page page = pageFactory.newInstance(nodes, context, typesetter);
+            if (page != null) {
+                backend.shipout(page);
+            }
+            nodes.clear();
+        } catch (GeneralException e) {
+            throw new TypesetterException(e);
+        }
+
     }
 
     /**
