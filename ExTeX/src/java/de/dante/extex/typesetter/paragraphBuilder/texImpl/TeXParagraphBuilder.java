@@ -4003,8 +4003,6 @@ public class TeXParagraphBuilder
     }
 
     /**
-     * TODO gene: missing JavaDoc
-     *
      * «Initialize for hyphenating a paragraph 891»;
      */
     private void initializeForHyphenatingAParagraph() {
