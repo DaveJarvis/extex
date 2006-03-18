@@ -19,7 +19,6 @@
 
 package de.dante.extex.interpreter.context;
 
-import de.dante.extex.font.type.other.NullFont;
 import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.language.Language;
 import de.dante.extex.language.LanguageManager;
@@ -247,9 +246,9 @@ public class TypesettingContextFactory extends AbstractFactory {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Getter for the initial instance.
      *
-     * @return
+     * @return the initial instance
      *
      * @throws ConfigurationException in case of an error
      */
