@@ -119,7 +119,7 @@ public interface Token {
      *
      * @return the printable representation
      */
-    String toText(char esc);
+    String toText(UnicodeChar esc);
 
     /**
      * This method returns the textual representation for the Token.

@@ -227,10 +227,10 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
     /**
      * @see de.dante.extex.scanner.type.token.Token#toText(char)
      */
-    public String toText(final char esc) {
+    public String toText(final UnicodeChar esc) {
 
-        if (esc != '\0') {
-            return esc + name;
+        if (esc != null) {
+            return esc.toString() + name;
         }
 
         return name;

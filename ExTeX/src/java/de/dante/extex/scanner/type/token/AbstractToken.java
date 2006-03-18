@@ -159,7 +159,7 @@ public abstract class AbstractToken implements Token, Serializable {
     /**
      * @see de.dante.extex.scanner.type.token.Token#toText(char)
      */
-    public String toText(final char esc) {
+    public String toText(final UnicodeChar esc) {
 
         return uniCode.toString();
     }
