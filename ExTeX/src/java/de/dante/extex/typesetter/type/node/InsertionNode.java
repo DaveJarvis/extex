@@ -93,7 +93,9 @@ public class InsertionNode extends AbstractNode implements Node {
      * @see "<logo>TeX</logo> &ndash; The Program [188]"
      * @see de.dante.extex.typesetter.type.Node#toString(
      *      java.lang.StringBuffer,
-     *      java.lang.String)
+     *      java.lang.String,
+     *      int,
+     *      int)
      */
     public void toString(final StringBuffer sb, final String prefix,
             final int breadth, final int depth) {

@@ -19,7 +19,9 @@
 
 package de.dante.extex.typesetter.type.node;
 
+import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.type.glue.Glue;
+import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeVisitor;
 import de.dante.util.exception.GeneralException;
@@ -78,8 +80,11 @@ public class AlignedLeadersNode extends GlueNode implements Node {
      * @param depth the depth
      *
      * @see "<logo>TeX</logo> &ndash; The Program [190]"
-     * @see de.dante.extex.typesetter.type.Node#toString(java.lang.StringBuffer,
-     *      java.lang.String)
+     * @see de.dante.extex.typesetter.type.Node#toString(
+     *      java.lang.StringBuffer,
+     *      java.lang.String,
+     *      int,
+     *      int)
      */
     public void toString(final StringBuffer sb, final String prefix,
             final int breadth, final int depth) {

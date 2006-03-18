@@ -41,7 +41,7 @@ public class CenteredLeadersNode extends GlueNode implements Node {
     protected static final long serialVersionUID = 2005L;
 
     /**
-     * The field <tt>node</tt> contains the node to reapeat or expand.
+     * The field <tt>node</tt> contains the node to repeat or expand.
      */
     private Node node;
 
@@ -78,8 +78,11 @@ public class CenteredLeadersNode extends GlueNode implements Node {
      * @param depth the depth
      *
      * @see "<logo>TeX</logo> &ndash; The Program [190]"
-     * @see de.dante.extex.typesetter.type.Node#toString(java.lang.StringBuffer,
-     *      java.lang.String)
+     * @see de.dante.extex.typesetter.type.Node#toString(
+     *      java.lang.StringBuffer,
+     *      java.lang.String,
+     *      int,
+     *      int)
      */
     public void toString(final StringBuffer sb, final String prefix,
             final int breadth, final int depth) {

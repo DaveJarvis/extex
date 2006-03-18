@@ -109,7 +109,7 @@ public class DiscretionaryNode extends AbstractNode implements Node {
 
     /**
      * This method returns the printable representation.
-     * This is meant to produce a exaustive form as it is used in tracing
+     * This is meant to produce a exhaustive form as it is used in tracing
      * output to the log file.
      *
      * @param sb the target buffer
@@ -120,7 +120,9 @@ public class DiscretionaryNode extends AbstractNode implements Node {
      * @see "<logo>TeX</logo> &ndash; The Program [195]"
      * @see de.dante.extex.typesetter.type.Node#toString(
      *      java.lang.StringBuffer,
-     *      java.lang.String)
+     *      java.lang.String,
+     *      int,
+     *      int)
      */
     public void toString(final StringBuffer sb, final String prefix,
             final int breadth, final int depth) {
