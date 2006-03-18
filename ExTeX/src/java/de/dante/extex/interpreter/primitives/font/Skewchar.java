@@ -19,6 +19,8 @@
 
 package de.dante.extex.interpreter.primitives.font;
 
+import com.ibm.icu.lang.UCharacter;
+
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
@@ -47,7 +49,7 @@ import de.dante.util.exception.GeneralException;
  * <h4>Syntax</h4>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    &lang;hyphenchar&rang;
+ *    &lang;skewchar&rang;
  *       &rarr; <tt>\skewchar</tt> &lang;font&rang; {@linkplain
  *          de.dante.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *          &lang;equals&rang;} {@linkplain
@@ -61,9 +63,9 @@ import de.dante.util.exception.GeneralException;
  * <h4>Incompatibility</h4>
  * <p>
  *  The TeXbook gives no indication ow the primitive should react for negative
- *  values &ndash; except -1. The implementation of <logo>TeX</logo> allows to store
- *  and retrieve arbirary negative values. This behaviour of <logo>TeX</logo>
- *  is not preserved in <logo>ExTeX</logo>.
+ *  values &ndash; except -1. The implementation of <logo>TeX</logo> allows to
+ *  store and retrieve arbitrary negative values. This behavior of
+ *  <logo>TeX</logo> is not preserved in <logo>ExTeX</logo>.
  * </p>
  * </doc>
  *
@@ -108,8 +110,10 @@ public class Skewchar extends AbstractAssignment
             long c = source.scanInteger(context, typesetter);
             if (c < 0) {
                 font.setSkewChar(null);
+            } else if (c < UCharacter.MIN_VALUE || c > UCharacter.MAX_VALUE) {
+                font.setSkewChar(null);
             } else {
-                font.setSkewChar(new UnicodeChar((int) c));
+                font.setSkewChar(UnicodeChar.get((int) c));
             }
         } catch (EofException e) {
             throw new EofException(printableControlSequence(context));
