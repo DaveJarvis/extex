@@ -120,7 +120,7 @@ public class Cleaders extends AbstractCode {
             throw new HelpingException(getLocalizer(),
                     "TTP.BadGlueAfterLeaders");
         }
-        Glue skip = ((VerticalSkip) code).verticalSkip(context, source, typesetter);
+        Glue skip = ((VerticalSkip) code).getGlue(context, source, typesetter);
 
         try {
             typesetter.add(new CenteredLeadersNode(node, skip));

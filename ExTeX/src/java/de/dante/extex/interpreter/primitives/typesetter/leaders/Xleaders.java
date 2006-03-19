@@ -120,7 +120,7 @@ public class Xleaders extends AbstractCode {
             throw new HelpingException(getLocalizer(),
                     "TTP.BadGlueAfterLeaders");
         }
-        Glue skip = ((VerticalSkip) code).verticalSkip(context, source,
+        Glue skip = ((VerticalSkip) code).getGlue(context, source,
                 typesetter);
 
         try {
