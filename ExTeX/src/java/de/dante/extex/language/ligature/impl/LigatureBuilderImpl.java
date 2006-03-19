@@ -56,6 +56,19 @@ public class LigatureBuilderImpl implements LigatureBuilder {
     }
 
     /**
+     * @see de.dante.extex.language.ligature.LigatureBuilder#getLigature(
+     *      de.dante.util.UnicodeChar,
+     *      de.dante.util.UnicodeChar,
+     *      de.dante.extex.interpreter.type.font.Font)
+     */
+    public UnicodeChar getLigature(final UnicodeChar c1, final UnicodeChar c2,
+            final Font f) throws HyphenationException {
+
+        Glyph glyph = f.getGlyph(c1);
+        return (glyph != null ? glyph.getLigature(c2) : null);
+    }
+
+    /**
      * @see de.dante.extex.language.ligature.LigatureBuilder#insertLigatures(
      *      de.dante.extex.typesetter.type.NodeList, int)
      */
