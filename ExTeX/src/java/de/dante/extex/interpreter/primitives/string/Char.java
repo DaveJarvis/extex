@@ -114,22 +114,10 @@ public class Char extends AbstractCode implements ExpandableCode {
 
         UnicodeChar uc = source.scanCharacterCode(context, typesetter,
                 getName());
-        /*
-         try {
-         Token t = context.getTokenFactory().createToken(Catcode.OTHER, uc,
-         context.getNamespace());
-         source.push(t);
-         } catch (CatcodeException e) {
-         throw new InterpreterException(e);
-         }
-         */
-        Node node = typesetter.getNodeFactory().getNode(
-                context.getTypesettingContext(), uc);
         try {
-            typesetter.add(node);
+            typesetter.letter(context, context.getTypesettingContext(), uc,
+                    source.getLocator());
         } catch (TypesetterException e) {
-            throw new InterpreterException(e);
-        } catch (ConfigurationException e) {
             throw new InterpreterException(e);
         }
     }
