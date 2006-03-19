@@ -53,7 +53,7 @@ public class AlignedLeadersNode extends GlueNode implements Node {
      * @param node the node or node list to stretch or repeat
      * @param glue the desired size
      */
-    public AlignedLeadersNode(final Node node, final Glue glue) {
+    public AlignedLeadersNode(final Node node, final Glue glue, boolean horizontal) {
 
         super(glue, true);
         this.node = node;
