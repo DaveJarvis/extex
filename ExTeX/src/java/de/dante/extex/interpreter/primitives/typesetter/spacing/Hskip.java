@@ -53,7 +53,7 @@ import de.dante.extex.typesetter.exception.TypesetterException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Hskip extends AbstractHorizontalCode {
+public class Hskip extends AbstractHorizontalCode implements HorizontalSkip {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
@@ -84,10 +84,22 @@ public class Hskip extends AbstractHorizontalCode {
         switchToHorizontalMode(typesetter);
         Glue g = new Glue(source, context, typesetter);
         try {
-            typesetter.addGlue(g);
+            typesetter.add(g);
         } catch (TypesetterException e) {
             throw new InterpreterException(e);
         }
+    }
+
+    /**
+     * @see de.dante.extex.interpreter.primitives.typesetter.spacing.HorizontalSkip#getGlue(
+     *      de.dante.extex.interpreter.context.Context,
+     *      de.dante.extex.interpreter.TokenSource,
+     *      de.dante.extex.typesetter.Typesetter)
+     */
+    public Glue getGlue(final Context context, final TokenSource source,
+            final Typesetter typesetter) throws InterpreterException {
+
+        return new Glue(source, context, typesetter);
     }
 
 }
