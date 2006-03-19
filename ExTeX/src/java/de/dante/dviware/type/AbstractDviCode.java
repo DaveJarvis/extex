@@ -144,6 +144,25 @@ public abstract class AbstractDviCode implements DviCode {
     /**
      * TODO gene: missing JavaDoc
      *
+     * @param value
+     * @return
+     */
+    protected String variant(final int value) {
+
+        if (value <= 0xff) {
+            return "1";
+        } else if (value <= 0xffff) {
+            return "2";
+        } else if (value <= 0xffffff) {
+            return "3";
+        }
+
+        return "4";
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     *
      * @param baseOpcode
      * @param value
      * @param stream the output stream to write to
