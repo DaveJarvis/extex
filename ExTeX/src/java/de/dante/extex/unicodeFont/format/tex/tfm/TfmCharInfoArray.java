@@ -342,8 +342,8 @@ public class TfmCharInfoArray
      */
     public void setEncodingTable(final String[] et) {
 
-        enctable = et;
-        if (enctable != null) {
+        if (et != null) {
+            enctable = et;
             for (int i = 0; i < charinfoword.length; i++) {
                 if (i < enctable.length) {
                     charinfoword[i].setGlyphname(enctable[i]);
@@ -425,5 +425,14 @@ public class TfmCharInfoArray
     public TfmWidthArray getWidth() {
 
         return width;
+    }
+
+    /**
+     * Returns the bc.
+     * @return Returns the bc.
+     */
+    public short getBc() {
+
+        return bc;
     }
 }

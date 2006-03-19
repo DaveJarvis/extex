@@ -580,4 +580,14 @@ public class TfmFont
         calculateSize();
         setFontDimenValues();
     }
+
+    
+    /**
+     * Returns the tfmReader.
+     * @return Returns the tfmReader.
+     */
+    public TfmReader getTfmReader() {
+    
+        return tfmReader;
+    }
 }
