@@ -316,8 +316,24 @@ public class XMLStreamWriter {
     public void writeAttribute(final String name, final String value)
             throws IOException {
 
+        writeAttribute(null, name, value);
+    }
+
+    /**
+     * Write a attribute (with name space) to the element.
+     * @param ns        The name space.
+     * @param name      The name of the attribute.
+     * @param value     The value of the attribute.
+     * @throws IOException if an error occurs.
+     */
+    public void writeAttribute(final String ns, final String name,
+            final String value) throws IOException {
+
         if (elementopen) {
             out.write(" ");
+            if (ns != null && ns.length() > 0) {
+                out.write(ns + ":");
+            }
             out.write(name.trim());
             out.write("=\"");
             out.write(createEntity(value));

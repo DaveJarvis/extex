@@ -19,7 +19,10 @@
 
 package de.dante.extex.unicodeFont.format.efm;
 
+import java.io.IOException;
+
 import de.dante.util.UnicodeChar;
+import de.dante.util.xml.XMLStreamWriter;
 
 /**
  * Interface for the efm kerning.
@@ -41,4 +44,13 @@ public interface EfmKerning {
      * @param uc    The unicode char.
      */
     void setUnicodeChar(UnicodeChar uc);
+
+    /**
+     * Write the data to the xml file.
+     *
+     * @param writer    The writer.
+     * @throws IOException if an IO-error occurred.
+     */
+    void write(XMLStreamWriter writer) throws IOException;
+
 }

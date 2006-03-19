@@ -28,7 +28,7 @@ import de.dante.util.UnicodeChar;
  * @version $Revision$
  */
 
-public class EfmAbstractKerning implements EfmKerning {
+public abstract class EfmAbstractKerning implements EfmKerning {
 
     /**
      * The unicode char.
