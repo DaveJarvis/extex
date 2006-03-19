@@ -251,7 +251,8 @@ public abstract class DestType {
                 }
             }
 
-            return new FitrDestType(new RuleNode(width, height, depth, null));
+            return new FitrDestType(new RuleNode(width, height, depth, null,
+                    true));
 
         } else if (source.getKeyword(context, "zoom")) {
             long zoom = source.scanInteger(context, typesetter);

@@ -110,7 +110,7 @@ public class Pdfximage extends AbstractPdftexCode {
         String resource = source.scanTokensAsString(context, getName());
 
         PdfRefXImage image = writer.getXImage(resource, new RuleNode(width,
-                height, depth, null), attr, page, prefix.isImmediate());
+                height, depth, null, true), attr, page, prefix.isImmediate());
 
         try {
             typesetter.add(image);

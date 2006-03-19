@@ -108,7 +108,7 @@ public class Pdfstartlink extends AbstractPdftexCode {
 
         try {
             typesetter.add(new PdfStartLink(new RuleNode(width, height, depth,
-                    null), attr, action));
+                    null, true), attr, action));
         } catch (TypesetterException e) {
             throw new InterpreterException(e);
         } catch (ConfigurationException e) {

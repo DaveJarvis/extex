@@ -104,7 +104,7 @@ public class Pdfannot extends AbstractPdftexCode {
         String annotation = source.scanTokensAsString(context, getName());
 
         PdfAnnotation a = writer.getAnnotation(new RuleNode(width, height,
-                depth, null), annotation);
+                depth, null, true), annotation);
 
         try {
             typesetter.add(a);
