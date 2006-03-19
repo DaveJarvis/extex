@@ -110,7 +110,7 @@ public class Prevdepth extends AbstractAssignment
 
         source.getOptionalEquals(context);
         Dimen pd = new Dimen(context, source, typesetter);
-        if (pd.getValue() == IGNORE) {
+        if (pd.getValue() < IGNORE) {
             pd = null;
         }
         try {
