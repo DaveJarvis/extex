@@ -630,7 +630,7 @@ public class PsBasicConverter
         StringBuffer out = (StringBuffer) oOut;
         buffer.clear(out);
 
-        TypesettingContext tc = node.getContext();
+        TypesettingContext tc = node.getTypesettingContext();
         Color color = tc.getColor();
         if (color != currentColor) {
             switchColors(color, out);
