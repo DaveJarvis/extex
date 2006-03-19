@@ -90,7 +90,7 @@ public class Vfi extends AbstractVerticalCode implements VerticalSkip {
 
         ensureVerticalMode(typesetter);
         try {
-            typesetter.addGlue(FI);
+            typesetter.add(FI);
         } catch (GeneralException e) {
             throw new InterpreterException(e);
         }
@@ -101,7 +101,7 @@ public class Vfi extends AbstractVerticalCode implements VerticalSkip {
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource, Typesetter)
      */
-    public Glue verticalSkip(final Context context, final TokenSource source,
+    public Glue getGlue(final Context context, final TokenSource source,
             final Typesetter typesetter) {
 
         return FI;

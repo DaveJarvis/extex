@@ -90,7 +90,7 @@ public class Vfill extends AbstractVerticalCode implements VerticalSkip {
 
         ensureVerticalMode(typesetter);
         try {
-            typesetter.addGlue(FILL);
+            typesetter.add(FILL);
         } catch (GeneralException e) {
             throw new InterpreterException(e);
         }
@@ -102,7 +102,7 @@ public class Vfill extends AbstractVerticalCode implements VerticalSkip {
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
-    public Glue verticalSkip(final Context context, final TokenSource source,
+    public Glue getGlue(final Context context, final TokenSource source,
             final Typesetter typesetter) {
 
         return FILL;
