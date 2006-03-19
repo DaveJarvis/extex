@@ -101,7 +101,7 @@ public class Par extends AbstractCode {
         try {
             typesetter.par();
             typesetter.add(new GlueNode(parskip, false));
-            typesetter.addGlue(new Glue(parindent));
+            typesetter.add(new Glue(parindent));
         } catch (GeneralException e) {
             throw new InterpreterException(e);
         } catch (ConfigurationException e) {
