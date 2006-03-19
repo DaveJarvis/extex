@@ -25,7 +25,7 @@ import java.io.OutputStream;
 import de.dante.dviware.Dvi;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents the DVI instruction <tt>put_char</tt>.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -46,6 +46,14 @@ public class DviPutChar extends AbstractDviCode {
 
         super();
         this.codePoint = codePoint;
+    }
+
+    /**
+     * @see de.dante.dviware.type.DviCode#getName()
+     */
+    public String getName() {
+
+        return "put_char" + variant(codePoint);
     }
 
     /**
