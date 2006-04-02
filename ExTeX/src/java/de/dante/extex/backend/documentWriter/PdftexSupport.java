@@ -138,7 +138,7 @@ public interface PdftexSupport {
     void pdfincludechars(Font font, String text);
 
     /**
-     * This method inserts the text to te info section.
+     * This method inserts the text to the info section.
      *
      * @param text the text to add
      */
