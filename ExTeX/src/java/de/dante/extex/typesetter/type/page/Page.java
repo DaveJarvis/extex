@@ -87,7 +87,7 @@ public interface Page {
     /**
      * Setter for the background color.
      *
-     * @param background te background color
+     * @param background the background color
      */
     void setColor(Color background);
 

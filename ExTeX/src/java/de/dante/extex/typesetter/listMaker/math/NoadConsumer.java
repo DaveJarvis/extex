@@ -138,7 +138,7 @@ public interface NoadConsumer extends ListMaker {
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     * @param primitive te name of the primitive for error messages
+     * @param primitive the name of the primitive for error messages
      *
      * @return the Noad read or <code>null</code> if none could be gathered
      *

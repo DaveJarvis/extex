@@ -52,7 +52,7 @@ public class Efcode extends AbstractCode
     /**
      * Creates a new object.
      *
-     * @param codeName te name of the primitive
+     * @param codeName the name of the primitive
      */
     public Efcode(final String codeName) {
 
