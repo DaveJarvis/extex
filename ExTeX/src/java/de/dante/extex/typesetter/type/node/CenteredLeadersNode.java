@@ -33,12 +33,14 @@ import de.dante.util.exception.GeneralException;
  * @author <a href="m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class CenteredLeadersNode extends GlueNode implements Node {
+public class CenteredLeadersNode extends AbstractExpandableNode
+        implements
+            SkipNode {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 20060402L;
 
     /**
      * The field <tt>node</tt> contains the node to repeat or expand.
@@ -50,10 +52,12 @@ public class CenteredLeadersNode extends GlueNode implements Node {
      *
      * @param node the node or node list to stretch or repeat
      * @param glue the desired size
+     * @param horizontal the indicator for the stretchability mode
      */
-    public CenteredLeadersNode(final Node node, final Glue glue) {
+    public CenteredLeadersNode(final Node node, final Glue glue,
+            final boolean horizontal) {
 
-        super(glue, true);
+        super(glue, horizontal);
         this.node = node;
     }
 
