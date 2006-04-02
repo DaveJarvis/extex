@@ -1033,6 +1033,7 @@ public class ExTeX {
         }
         docWriter.setParameter("Creator", "ExTeX " + EXTEX_VERSION.toString());
         docWriter.setParameter("Title", "");
+        docWriter.setParameter("Author", System.getProperty("user.name"));
         docWriter.setParameter("Paper", "A4");
         docWriter.setParameter("Orientation", "Portrait");
         docWriter.setParameter("Pages", "*");
