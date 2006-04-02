@@ -23,7 +23,7 @@ import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.exception.helping.MissingMathException;
-import de.dante.extex.interpreter.type.count.Count;
+import de.dante.extex.interpreter.type.count.FixedCount;
 import de.dante.extex.interpreter.type.dimen.FixedDimen;
 import de.dante.extex.scanner.type.Catcode;
 import de.dante.extex.scanner.type.token.Token;
@@ -193,7 +193,7 @@ public abstract class AbstractListMaker implements ListMaker {
      * @see de.dante.extex.typesetter.ListMaker#setSpacefactor(
      *      de.dante.extex.interpreter.type.count.Count)
      */
-    public void setSpacefactor(final Count f)
+    public void setSpacefactor(final FixedCount f)
             throws TypesetterUnsupportedException,
                 InvalidSpacefactorException {
 
