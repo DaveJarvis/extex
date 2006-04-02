@@ -37,7 +37,7 @@ import de.dante.util.exception.GeneralException;
  * @author <a href="m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class CharNode extends AbstractNode implements Node {
+public class CharNode extends AbstractNode {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.

@@ -25,6 +25,7 @@ import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.dimen.FixedDimen;
 import de.dante.extex.interpreter.type.glue.FixedGlue;
+import de.dante.extex.interpreter.type.glue.FixedGlueComponent;
 import de.dante.extex.interpreter.type.glue.WideGlue;
 import de.dante.extex.typesetter.Badness;
 import de.dante.extex.typesetter.Typesetter;
@@ -102,6 +103,34 @@ public class VerticalListNode extends AbstractNodeList implements NodeList {
     }
 
     /**
+     * @see de.dante.extex.typesetter.type.Node#spreadHeight(
+     *      de.dante.extex.interpreter.type.dimen.FixedDimen,
+     *      de.dante.extex.interpreter.type.glue.FixedGlueComponent)
+     */
+    public void spreadHeight(final FixedDimen w, final FixedGlueComponent sum) {
+
+        int size = size();
+        FixedGlueComponent s;
+
+        if (sum == null) {
+            WideGlue sx = new WideGlue();
+
+            for (int i = 0; i < size; i++) {
+                get(i).addWidthTo(sx);
+            }
+            s = (sx.getLength().ge(w) ? sx.getShrink() : sx.getStretch());
+        } else {
+            s = sum;
+        }
+
+        for (int i = 0; i < size; i++) {
+            get(i).spreadHeight(w, s);
+        }
+
+        getHeight().add(w);
+    }
+
+    /**
      * Split off material from a vertical list of a desired height. The
      * splitting is performed at a position with minimal penalty. The list is
      * stretched to the desired height.
@@ -167,7 +196,7 @@ public class VerticalListNode extends AbstractNodeList implements NodeList {
 
         FixedDimen length = ht.getLength();
         for (int i = 0; i < size; i++) {
-            get(i).spread(height, length);
+            get(i).spreadWidth(height, length);
         }
 
         return Badness.badness(height.getValue(), length.getValue());

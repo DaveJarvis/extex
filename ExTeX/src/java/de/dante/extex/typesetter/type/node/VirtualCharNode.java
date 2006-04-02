@@ -349,9 +349,9 @@ public class VirtualCharNode extends CharNode implements NodeList {
      *      de.dante.extex.interpreter.type.dimen.FixedDimen,
      *      de.dante.extex.interpreter.type.glue.FixedGlueComponent)
      */
-    public void spread(final FixedDimen width, final FixedGlueComponent sum) {
+    public void spreadWidth(final FixedDimen width, final FixedGlueComponent sum) {
 
-        this.nodes.spread(width, sum);
+        this.nodes.spreadWidth(width, sum);
     }
 
     /**

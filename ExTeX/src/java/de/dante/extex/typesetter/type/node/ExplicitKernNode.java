@@ -23,7 +23,7 @@ import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.typesetter.Discardable;
 
 /**
- * This class reresents an explicit kern node for the typesetter.
+ * This class represents an explicit kerning node for the typesetter.
  *
  * From The TeXbook
  * <p>
