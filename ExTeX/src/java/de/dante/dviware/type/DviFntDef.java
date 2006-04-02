@@ -34,7 +34,7 @@ import de.dante.extex.interpreter.type.font.Font;
 public class DviFntDef extends AbstractDviCode {
 
     /**
-     * The field <tt>font</tt> contains the ...
+     * The field <tt>font</tt> contains the associated font.
      */
     private Font font;
 
@@ -72,7 +72,7 @@ public class DviFntDef extends AbstractDviCode {
 
         int n = opcode(Dvi.FNT_DEF1, index, stream);
         write4(stream, font.getCheckSum());
-        write4(stream, (int) font.getDesignSize().getValue()); // TODO gene: scale factor??? 
+        write4(stream, (int) font.getActualSize().getValue());
         write4(stream, (int) font.getDesignSize().getValue());
         stream.write(0); // no directory part; just the name
         byte[] bytes = font.getFontName().getBytes();
