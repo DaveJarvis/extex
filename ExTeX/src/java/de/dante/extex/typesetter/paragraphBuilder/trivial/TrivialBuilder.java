@@ -476,7 +476,7 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
         Dimen wd = new Dimen(targetWidth.getValue() - width.getValue());
         NodeIterator it = hlist.iterator();
         while (it.hasNext()) {
-            it.next().spread(wd, component);
+            it.next().spreadWidth(wd, component);
         }
 
         hlist.setWidth(targetWidth);
