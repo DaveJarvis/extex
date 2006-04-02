@@ -226,7 +226,7 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
                 Cell cell = line[i];
                 if (cell != null) {
                     nl = cell.getList();
-                    nl.spread(maxWidth[i], maxWidth[i]); //TODO gene: check
+                    nl.spreadWidth(maxWidth[i], maxWidth[i]); //TODO gene: check
                     row.add(nl);
                 }
             }
