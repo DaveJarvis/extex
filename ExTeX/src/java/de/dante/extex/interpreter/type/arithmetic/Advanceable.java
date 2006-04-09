@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -43,8 +43,7 @@ import de.dante.extex.typesetter.Typesetter;
  * <p>
  *  With this interface the functionality is in fact tied to the implementing
  *  code and not to the primitive <tt>\advance</tt>. Each primitive can be
- *  made aware for advancing without touchíng the code for
- *  <tt>\advance</tt>.
+ *  made aware for advancing without touchíng the code for <tt>\advance</tt>.
  * </p>
  * </doc>
  *
@@ -67,4 +66,5 @@ public interface Advanceable {
      */
     void advance(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws InterpreterException;
+
 }
