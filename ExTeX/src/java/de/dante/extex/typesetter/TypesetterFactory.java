@@ -35,7 +35,7 @@ import de.dante.util.framework.logger.LogEnabled;
  * This is the factory for instances of
  * {@link de.dante.extex.typesetter.Typesetter Typesetter}.
  *
- * @TODO documentation incomplete
+ * TODO gene: documentation incomplete
  *
  * <pre>
  *  &lt;Typesetter default="someType"&gt;
