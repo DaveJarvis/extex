@@ -27,6 +27,7 @@ import de.dante.extex.typesetter.pageBuilder.PageBuilder;
 import de.dante.extex.typesetter.paragraphBuilder.ParagraphBuilder;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.node.factory.NodeFactory;
+import de.dante.util.Locator;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
@@ -49,6 +50,18 @@ public interface Typesetter extends ListMaker {
      * @see #isShipoutMark()
      */
     void clearShipoutMark();
+
+    /**
+     * Switch to horizontal mode if necessary.
+     * If the current mode is a horizontal mode then nothing is done.
+     *
+     * @param locator the locator
+     *
+     * @return the horizontal list maker
+     *
+     * @throws TypesetterException in case of an error
+     */
+    ListMaker ensureHorizontalMode(Locator locator) throws TypesetterException;
 
     /**
      * Instructs the typesetter to perform any actions necessary for cleaning up
