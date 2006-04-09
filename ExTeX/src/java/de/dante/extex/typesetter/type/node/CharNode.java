@@ -130,7 +130,7 @@ public class CharNode extends AbstractNode {
      */
     public int getSpaceFactor() {
 
-        return 0; //TODO gene: getSpaceFactor() incomplete
+        return 1000; //TODO gene: getSpaceFactor() incomplete
     }
 
     /**
