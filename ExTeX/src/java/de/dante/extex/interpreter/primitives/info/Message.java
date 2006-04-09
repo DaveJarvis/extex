@@ -62,7 +62,7 @@ public class Message extends AbstractCode implements LogEnabled {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 20060406L;
 
     /**
      * The field <tt>logger</tt> contains the target channel for the message.
@@ -103,7 +103,8 @@ public class Message extends AbstractCode implements LogEnabled {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        Tokens toks = source.scanTokens(context, true, false, getName());
+        Tokens toks = source.scanUnprotectedTokens(context, true, false,
+                getName());
         logger.severe(" " + toks.toText());
     }
 
