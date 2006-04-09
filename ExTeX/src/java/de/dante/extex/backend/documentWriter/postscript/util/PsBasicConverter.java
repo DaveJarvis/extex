@@ -274,7 +274,7 @@ public class PsBasicConverter
      *
      * @throws DocumentWriterException in case of an error
      *
-     * @see de.dante.extex.backend.documentWriter.postscript.util.PsConverter#nodesToPostScript(
+     * @see de.dante.extex.backend.documentWriter.postscript.util.PsConverter#toPostScript(
      *      de.dante.extex.typesetter.type.page.Page,
      *      de.dante.extex.backend.documentWriter.postscript.util.FontManager,
      *      de.dante.extex.backend.documentWriter.postscript.util.HeaderManager)

@@ -148,7 +148,7 @@ public class BackendDriverImpl
 
     /**
      * @see de.dante.extex.backend.BackendDriver#add(
-     *      de.dante.extex.backend.nodeFilter.NodePipe)
+     *      de.dante.extex.backend.pageFilter.PagePipe)
      */
     public void add(final PagePipe processor) {
 
