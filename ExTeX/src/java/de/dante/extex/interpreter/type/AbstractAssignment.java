@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -52,6 +52,24 @@ public abstract class AbstractAssignment extends AbstractCode {
     }
 
     /**
+     * The method <tt>assign</tt> is the core of the functionality of
+     * {@link #execute(Flags, Context, TokenSource, Typesetter) execute()}.
+     * This method is preferable to <tt>execute()</tt> since the
+     * <tt>execute()</tt> method provided in this class takes care of
+     * <tt>\afterassignment</tt> and <tt>\globaldefs</tt> as well.
+     *
+     * @param prefix the prefix controlling the execution
+     * @param context the interpreter context
+     * @param source the token source
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     */
+    public abstract void assign(final Flags prefix, final Context context,
+            final TokenSource source, final Typesetter typesetter)
+            throws InterpreterException;
+
+    /**
      * @see de.dante.extex.interpreter.type.Code#execute(
      *      de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
@@ -75,23 +93,5 @@ public abstract class AbstractAssignment extends AbstractCode {
             source.push(afterassignment);
         }
     }
-
-    /**
-     * The method <tt>assign</tt> is the core of the functionality of
-     * <tt>{@link #execute(Flags, Context, TokenSource, Typesetter) execute()}</tt>.
-     * This method is preferable to <tt>execute()</tt> since the
-     * <tt>execute()</tt> method provided in this class takes care of
-     * afterassignment and globaldefs as well.
-     *
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     */
-    public abstract void assign(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
-            throws InterpreterException;
 
 }
