@@ -59,7 +59,8 @@ public abstract class AbstractToken implements Token, Serializable {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.token.Token#equals(de.dante.extex.scanner.Catcode,
+     * @see de.dante.extex.scanner.type.token.Token#equals(
+     *      de.dante.extex.scanner.type.Catcode,
      *      char)
      */
     public boolean equals(final Catcode cc, final char c) {
@@ -69,7 +70,8 @@ public abstract class AbstractToken implements Token, Serializable {
 
     /**
      * @see de.dante.extex.scanner.type.token.Token#equals(
-     *      de.dante.extex.scanner.Catcode, java.lang.String)
+     *      de.dante.extex.scanner.type.Catcode,
+     *      java.lang.String)
      */
     public boolean equals(final Catcode cc, final String s) {
 
@@ -132,7 +134,8 @@ public abstract class AbstractToken implements Token, Serializable {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.token.Token#isa(de.dante.extex.scanner.Catcode)
+     * @see de.dante.extex.scanner.type.token.Token#isa(
+     *      de.dante.extex.scanner.type.Catcode)
      */
     public boolean isa(final Catcode cc) {
 
@@ -157,7 +160,8 @@ public abstract class AbstractToken implements Token, Serializable {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.token.Token#toText(char)
+     * @see de.dante.extex.scanner.type.token.Token#toText(
+     *      de.dante.util.UnicodeChar)
      */
     public String toText(final UnicodeChar esc) {
 

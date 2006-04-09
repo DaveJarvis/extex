@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -147,9 +147,10 @@ public interface FixedGlueComponent {
      * @throws GeneralException in case of an error
      *
      * @see "<logo>TeX</logo> &ndash; The Program [103]"
-     * @see #toToks(Tokens, TokenFactory)
+     * @see #toToks(de.dante.extex.interpreter.type.tokens.Tokens,
+     *              de.dante.extex.scanner.type.token.TokenFactory)
      * @see #toString()
-     * @see #toString(StringBuffer)
+     * @see #toString(java.util.StringBuffer)
      */
     Tokens toToks(TokenFactory factory) throws GeneralException;
 

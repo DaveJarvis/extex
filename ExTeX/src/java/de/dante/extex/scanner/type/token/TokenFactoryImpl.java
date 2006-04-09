@@ -143,7 +143,9 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
 
     /**
      * @see de.dante.extex.scanner.type.token.TokenFactory#createToken(
-     *      de.dante.extex.scanner.Catcode, char, java.lang.String)
+     *      de.dante.extex.scanner.type.Catcode,
+     *      int,
+     *      java.lang.String)
      */
     public Token createToken(final Catcode code, final int c,
             final String namespace) throws CatcodeException {
@@ -163,19 +165,7 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
 
     /**
      * @see de.dante.extex.scanner.type.token.TokenFactory#createToken(
-     *      de.dante.extex.scanner.Catcode,
-     *      java.lang.String,
-     *      java.lang.String)
-     */
-    public Token createToken(final Catcode code, final String value,
-            final String namespace) throws CatcodeException {
-
-        return createToken(code, null, value, namespace);
-    }
-
-    /**
-     * @see de.dante.extex.scanner.type.token.TokenFactory#createToken(
-     *      de.dante.extex.scanner.Catcode,
+     *      de.dante.extex.scanner.type.Catcode,
      *      de.dante.util.UnicodeChar,
      *      java.lang.String,
      *      java.lang.String)
@@ -197,7 +187,7 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
 
     /**
      * @see de.dante.extex.scanner.type.token.TokenFactory#createToken(
-     *      de.dante.extex.scanner.Catcode,
+     *      de.dante.extex.scanner.type.Catcode,
      *      de.dante.util.UnicodeChar,
      *      java.lang.String)
      */

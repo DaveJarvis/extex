@@ -127,7 +127,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
 
     /**
      * @see de.dante.extex.scanner.type.token.Token#equals(
-     *      de.dante.extex.scanner.Catcode, java.lang.String)
+     *      de.dante.extex.scanner.type.Catcode, java.lang.String)
      */
     public boolean equals(final Catcode cc, final String s) {
 
@@ -225,7 +225,8 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.token.Token#toText(char)
+     * @see de.dante.extex.scanner.type.token.Token#toText(
+     *      de.dante.util.UnicodeChar)
      */
     public String toText(final UnicodeChar esc) {
 

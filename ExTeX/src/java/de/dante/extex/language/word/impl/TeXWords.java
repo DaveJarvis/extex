@@ -123,7 +123,9 @@ public class TeXWords extends ExTeXWords implements WordTokenizer {
 
     /**
      * @see de.dante.extex.language.word.WordTokenizer#findWord(
-     *      de.dante.extex.typesetter.type.NodeList, int, java.util.List)
+     *      de.dante.extex.typesetter.type.NodeList,
+     *      int,
+     *      de.dante.util.UnicodeCharList)
      */
     public int findWord(final NodeList nodes, final int start,
             final UnicodeCharList word) throws HyphenationException {
