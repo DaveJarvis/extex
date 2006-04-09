@@ -110,7 +110,7 @@ public abstract class AbstractExpandableNode extends AbstractNode {
 
     /**
      * @see de.dante.extex.typesetter.type.Node#addHeightTo(
-     *      de.dante.extex.interpreter.type.glue.Glue)
+     *      de.dante.extex.interpreter.type.glue.WideGlue)
      */
     public void addHeightTo(final WideGlue glue) {
 
@@ -124,7 +124,7 @@ public abstract class AbstractExpandableNode extends AbstractNode {
 
     /**
      * @see de.dante.extex.typesetter.type.Node#addWidthTo(
-     *      de.dante.extex.interpreter.type.glue.Glue)
+     *      de.dante.extex.interpreter.type.glue.WideGlue)
      */
     public void addWidthTo(final WideGlue glue) {
 
