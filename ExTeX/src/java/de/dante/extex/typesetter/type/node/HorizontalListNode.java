@@ -23,7 +23,6 @@ import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.type.dimen.FixedDimen;
 import de.dante.extex.interpreter.type.glue.FixedGlue;
 import de.dante.extex.interpreter.type.glue.FixedGlueComponent;
-import de.dante.extex.interpreter.type.glue.GlueComponent;
 import de.dante.extex.interpreter.type.glue.WideGlue;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.type.Node;
@@ -55,6 +54,17 @@ public class HorizontalListNode extends AbstractNodeList {
     public HorizontalListNode() {
 
         super();
+    }
+
+    /**
+     * Creates a new object. The list is filled with the node given.
+     *
+     * @param width the width of the box
+     */
+    public HorizontalListNode(final FixedDimen width) {
+
+        super();
+        setWidth(width);
     }
 
     /**
