@@ -25,6 +25,7 @@ import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.node.HorizontalListNode;
 import de.dante.extex.typesetter.type.node.factory.NodeFactory;
+import de.dante.util.Locator;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
@@ -55,6 +56,18 @@ public interface ListManager {
      * @throws ConfigurationException in case of an configuration problem
      */
     void endParagraph() throws TypesetterException, ConfigurationException;
+
+    /**
+     * Switch to horizontal mode if necessary.
+     * If the current mode is a horizontal mode then nothing is done.
+     *
+     * @param locator the locator
+     *
+     * @return the horizontal list maker
+     *
+     * @throws TypesetterException in case of an error
+     */
+    ListMaker ensureHorizontalMode(Locator locator) throws TypesetterException;
 
     /**
      * Getter for the char node factory.
