@@ -97,7 +97,7 @@ public class Vfill extends AbstractVerticalCode implements VerticalSkip {
     }
 
     /**
-     * @see de.dante.extex.interpreter.primitives.typesetter.spacing.VerticalSkip#verticalSkip(
+     * @see de.dante.extex.interpreter.primitives.typesetter.spacing.VerticalSkip#getGlue(
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)

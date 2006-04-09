@@ -86,7 +86,7 @@ public class TeXOutputRoutine implements OutputRoutine {
     /**
      * @see de.dante.extex.typesetter.OutputRoutine#output(
      *      de.dante.extex.typesetter.type.page.Page,
-     *      de.dante.extex.backend.documentWriter.DocumentWriter)
+     *      de.dante.extex.backend.BackendDriver)
      */
     public void output(final Page page, final BackendDriver backend)
             throws GeneralException {

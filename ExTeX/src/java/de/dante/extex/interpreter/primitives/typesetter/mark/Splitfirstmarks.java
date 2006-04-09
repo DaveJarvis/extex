@@ -67,7 +67,7 @@ public class Splitfirstmarks extends AbstractMarksCode {
     }
 
     /**
-     * @see de.dante.extex.interpreter.primitives.typesetter.mark.AbstractMarkCode#getValue(
+     * @see de.dante.extex.interpreter.primitives.typesetter.mark.AbstractMarksCode#getValue(
      *      de.dante.extex.interpreter.context.Context,
      *      java.lang.String)
      */
