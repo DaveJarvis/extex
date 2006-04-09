@@ -162,8 +162,8 @@ public class PageBuilderImpl implements PageBuilder {
      *
      * @param backend the new document writer to use
      *
-     * @see de.dante.extex.typesetter.pageBuilder.PageBuilder#setDocumentWriter(
-     *      de.dante.extex.backend.documentWriter.DocumentWriter)
+     * @see de.dante.extex.typesetter.Typesetter#setBackend(
+     *      de.dante.extex.backend.BackendDriver)
      */
     public void setBackend(final BackendDriver backend) {
 
