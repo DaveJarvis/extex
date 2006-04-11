@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -21,7 +21,7 @@ package de.dante.extex.scanner.stream.observer.reader;
 
 /**
  * This interface describes the possibility to register an observer for an
- * open string event.
+ * open reader event.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -29,7 +29,7 @@ package de.dante.extex.scanner.stream.observer.reader;
 public interface OpenReaderObservable {
 
     /**
-     * Register an expand observer for later use.
+     * Register an open reader observer for later use.
      *
      * @param observer the observer to be registered
      */
