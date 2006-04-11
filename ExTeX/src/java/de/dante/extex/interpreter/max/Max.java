@@ -906,6 +906,7 @@ public abstract class Max
         }
         newContext.setFontFactory(context.getFontFactory());
         newContext.setTokenFactory(context.getTokenFactory());
+        newContext.setStandardTokenStream(context.getStandardTokenStream());
         context = newContext;
 
         if (context instanceof LoadedObservable) {
