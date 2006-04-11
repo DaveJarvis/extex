@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -28,24 +28,6 @@ package de.dante.extex.interpreter.primitives.pdftex.util.action;
 public interface ActionVisitor {
 
     /**
-     * Visit a User action.
-     *
-     * @param spec the specification
-     *
-     * @return any Object
-     */
-    Object visitUser(UserActionSpec spec);
-
-    /**
-     * Visit a Thread action.
-     *
-     * @param spec the specification
-     *
-     * @return any Object
-     */
-    Object visitThread(ThreadActionSpec spec);
-
-    /**
      * Visit a Goto action with id.
      *
      * @param spec the specification
@@ -62,5 +44,23 @@ public interface ActionVisitor {
      * @return any Object
      */
     Object visitGotoPage(GotoPageActionSpec spec);
+
+    /**
+     * Visit a Thread action.
+     *
+     * @param spec the specification
+     *
+     * @return any Object
+     */
+    Object visitThread(ThreadActionSpec spec);
+
+    /**
+     * Visit a User action.
+     *
+     * @param spec the specification
+     *
+     * @return any Object
+     */
+    Object visitUser(UserActionSpec spec);
 
 }

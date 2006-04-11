@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -73,8 +73,7 @@ public class HeaderManager {
      *
      * @throws IOException in case of an error during the writing
      */
-    public void add(final String value, final String name)
-            throws IOException {
+    public void add(final String value, final String name) throws IOException {
 
         header.append("%%BeginProcSet: ");
         header.append(name);

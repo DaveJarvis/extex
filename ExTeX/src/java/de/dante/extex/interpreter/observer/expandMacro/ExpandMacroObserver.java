@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -16,11 +16,11 @@
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
+
 package de.dante.extex.interpreter.observer.expandMacro;
 
 import de.dante.extex.interpreter.type.Code;
 import de.dante.extex.scanner.type.token.Token;
-
 
 /**
  * This interface describes the ability to receive a notification just before
@@ -39,4 +39,5 @@ public interface ExpandMacroObserver {
      *  <code>null</code> for undefined macros
      */
     void update(Token token, Code code);
+
 }

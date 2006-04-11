@@ -87,4 +87,5 @@ public final class OpenFileObserverList implements OpenFileObserver {
             ((OpenFileObserver) list.get(i)).update(filename, filetype);
         }
     }
+
 }

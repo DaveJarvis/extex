@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -16,9 +16,8 @@
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
+
 package de.dante.extex.scanner.stream.observer.file;
-
-
 
 /**
  * This interface describes the ability to receive a notification just after
@@ -34,7 +33,9 @@ public interface OpenFileObserver {
      * been opened.
      *
      * @param filename the name of the file to be opened
-     * @param filetype the type of the file to be opened
+     * @param filetype the type of the file to be opened. The type is resolved
+     *  via the configuration to a file name pattern
      */
     void update(String filename, String filetype);
+
 }

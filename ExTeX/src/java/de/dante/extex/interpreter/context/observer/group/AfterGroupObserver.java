@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -21,7 +21,7 @@ package de.dante.extex.interpreter.context.observer.group;
 
 /**
  * This interface describes the ability to receive a notification just after
- * a a group has been closed.
+ * a group has been closed.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -32,4 +32,5 @@ public interface AfterGroupObserver {
      * This method is meant to be invoked just after a group has been closed.
      */
     void update();
+
 }

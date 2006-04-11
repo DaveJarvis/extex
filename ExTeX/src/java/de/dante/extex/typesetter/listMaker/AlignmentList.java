@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -32,15 +32,6 @@ import de.dante.extex.typesetter.exception.TypesetterException;
 public interface AlignmentList {
 
     /**
-     * The invocation of this method indicates that the pattern for the current
-     * cell should not be taken from the preamble but the defaut should be used
-     * instead.
-     *
-     * @throws TypesetterException in case of an error
-     */
-    void omit() throws TypesetterException;
-
-    /**
      * This method is invoked when a row in the alignment is complete and the
      * cells can be integrated. If some cells are not filled jet then they
      * are treated as empty.
@@ -66,6 +57,15 @@ public interface AlignmentList {
      * @throws TypesetterException in case of an error
      */
     void crcr(Context context, TokenSource source) throws TypesetterException;
+
+    /**
+     * The invocation of this method indicates that the pattern for the current
+     * cell should not be taken from the preamble but the default should be used
+     * instead.
+     *
+     * @throws TypesetterException in case of an error
+     */
+    void omit() throws TypesetterException;
 
     /**
      * This method is invoked when a cell is complete which should be

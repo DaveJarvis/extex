@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -21,7 +21,6 @@ package de.dante.extex.language;
 
 import de.dante.util.framework.configuration.exception.ConfigurationException;
 
-
 /**
  * This interface describes the ability to carry a hyphenation factory.
  *
@@ -35,5 +34,7 @@ public interface LanguageManagerCarrier {
      *
      * @param hyphenationFactory the hyphenation factory to carry
      */
-    void setLanguageManager(LanguageManager hyphenationFactory) throws ConfigurationException;
+    void setLanguageManager(LanguageManager hyphenationFactory)
+            throws ConfigurationException;
+
 }
