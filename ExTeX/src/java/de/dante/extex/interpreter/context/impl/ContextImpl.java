@@ -932,6 +932,14 @@ public class ContextImpl
     }
 
     /**
+     * @see de.dante.extex.interpreter.context.Context#getStandardTokenStream()
+     */
+    public TokenStream getStandardTokenStream() {
+
+        return group.getStandardTokenStream();
+    }
+
+    /**
      * Getter for the token factory.
      *
      * @return the token factory

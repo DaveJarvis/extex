@@ -284,6 +284,13 @@ public interface Group extends Tokenizer, Serializable {
     Glue getSkip(String name);
 
     /**
+     * Getter for standardTokenStream.
+     *
+     * @return the standardTokenStream
+     */
+    TokenStream getStandardTokenStream();
+
+    /**
      * Getter for the named toks register in the current group. The name can
      * either be a string representing a number or an arbitrary string. In the
      * first case the behavior of the numbered toks registers is emulated. The
