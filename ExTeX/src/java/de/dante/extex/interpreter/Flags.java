@@ -69,8 +69,8 @@ package de.dante.extex.interpreter;
  *  <tr>
  *   <td><b>protected</b></td>
  *   <td><tt>\protected</tt></td>
- *   <td>The protected flag controls
- *       TODO gene: describe \protected
+ *   <td>The protected flag controls the expansion of the macro when the
+ *    arguments for <tt>\edef</tt> and friends i expanded.
  *   </td>
  *  </tr>
  * </table>
