@@ -113,7 +113,8 @@ public class IntegerParameter extends CountPrimitive
         if (source != null) {
             Token t = source.getToken(context);
             if (t != null) {
-                long value = source.scanNumber(context, t);
+                source.push(t);
+                long value = source.scanInteger(context, typesetter);
                 context.setCount(getKey(context, null), value, true);
             }
         }
