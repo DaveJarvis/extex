@@ -1359,15 +1359,6 @@ public abstract class Max
      * In <logo>TeX</logo> this normally is a <tt>$</tt>.
      *
      *
-     * <doc name="everymath" type="register">
-     * <h3>The Parameter <tt>\everymath</tt></h3>
-     *
-     * <p>
-     *
-     * </p>
-     * </doc>
-     *
-     *
      * @param token the first argument to pass is the token to expand.
      * @param ignore the second argument is ignored
      *
