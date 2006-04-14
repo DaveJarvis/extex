@@ -34,7 +34,9 @@ import de.dante.extex.typesetter.exception.TypesetterException;
  * <doc name="hskip">
  * <h3>The Primitive <tt>\hskip</tt></h3>
  * <p>
- *  TODO gene: missing documentation
+ *  The primitive <tt>\hskip</tt> inserts the given amount of glue into the
+ *  typesetter. If the typesetter is not in a horizontal mode then it is
+ *  switched to horizontal mode first.
  * </p>
  *
  * <h4>Syntax</h4>

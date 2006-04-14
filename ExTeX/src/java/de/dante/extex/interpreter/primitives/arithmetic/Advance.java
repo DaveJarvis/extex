@@ -43,6 +43,10 @@ import de.dante.extex.typesetter.Typesetter;
  *  This primitive implements an assignment. The variable given as next tokens
  *  is incremented by the quantity given after the optional <tt>by</tt>.
  * </p>
+ * <p>
+ *  The exact operation of <tt>\advance</tt> is determined by the quantity
+ *  following the <tt>\advance</tt> keyword.
+ * </p>
  *
  * <h4>Syntax</h4>
  *  The formal description of this primitive is the following:
