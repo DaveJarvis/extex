@@ -37,15 +37,15 @@ import de.dante.util.exception.GeneralException;
  * <doc name="toks">
  * <h3>The Primitive <tt>\toks</tt></h3>
  * <p>
- *  TODO missing documentation
+ *  TODO gene: missing documentation
  * </p>
  *
  * <h4>Syntax</h4>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    <tt>\toks</tt> {@linkplain
- *      de.dante.extex.interpreter.TokenSource#scanNumber(Context)
- *      &lang;8-bit&nbsp;number&rang;} {@linkplain
+ *        de.dante.extex.interpreter.TokenSource#scanRegisterName(Context,String)
+ *        &lang;register name&rang;} {@linkplain
  *    de.dante.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *    &lang;equals&rang;} ... </pre>
  *

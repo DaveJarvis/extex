@@ -50,14 +50,15 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
  *  <pre class="syntax">
  *    &lang;box&rang;
  *      &rarr; <tt>\box</tt> {@linkplain
- *          de.dante.extex.interpreter.TokenSource#scanNumber(Context)
- *          &lang;8-bit&nbsp;number&rang;} </pre>
+ *        de.dante.extex.interpreter.TokenSource#scanRegisterName(Context,String)
+ *        &lang;register name&rang;} </pre>
  *
  * <h4>Examples</h4>
  *  <pre class="TeXSample">
  *    \box42  </pre>
  *
  * </doc>
+ *
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

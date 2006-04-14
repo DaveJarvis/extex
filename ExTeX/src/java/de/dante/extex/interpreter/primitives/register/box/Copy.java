@@ -51,8 +51,8 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
  *  <pre class="syntax">
  *    &lang;copy&rang;
  *      &rarr; <tt>\copy</tt> {@linkplain
- *        de.dante.extex.interpreter.TokenSource#scanNumber(Context)
- *        &lang;8-bit&nbsp;number&rang;} </pre>
+ *        de.dante.extex.interpreter.TokenSource#scanRegisterName(Context,String)
+ *        &lang;register name&rang;} </pre>
  *
  * <h4>Examples</h4>
  *  <pre class="TeXSample">
