@@ -121,6 +121,15 @@ public class Glue implements Serializable, FixedGlue {
     /**
      * Creates a new object by parsing a token source.
      *
+     * <doc type="syntax" name="glue">
+     * <pre class="syntax">
+     *   &lang;glue&rang; </pre>
+     * <p>
+     *  TODO gene: documentation incomplete
+     * </p>
+     * </doc>
+     *
+     *
      * @param source the source to read new tokens from
      * @param context the processing context
      * @param typesetter the typesetter
