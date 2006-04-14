@@ -24,6 +24,7 @@ import java.util.List;
 
 import de.dante.extex.interpreter.Namespace;
 import de.dante.extex.interpreter.Tokenizer;
+import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.scanner.exception.ScannerException;
 import de.dante.extex.scanner.stream.TokenStream;
 import de.dante.extex.scanner.type.CatcodeException;
@@ -152,6 +153,14 @@ public class StringSource extends Moritz {
 
     /**
      * Creates a new object.
+     */
+    public StringSource() throws ConfigurationException {
+
+        super();
+    }
+
+    /**
+     * Creates a new object.
      *
      * @param cs the character sequence to read from
      *
@@ -160,6 +169,19 @@ public class StringSource extends Moritz {
     public StringSource(final CharSequence cs) throws ConfigurationException {
 
         super();
+        addStream(new TStream(cs));
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     *
+     * @param cs the character sequence to read from
+     *
+     * @throws InterpreterException
+     */
+    public void reset(final CharSequence cs) throws InterpreterException {
+
+        closeAllStreams(getContext());
         addStream(new TStream(cs));
     }
 
