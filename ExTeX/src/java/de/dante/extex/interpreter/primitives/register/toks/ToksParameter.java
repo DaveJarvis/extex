@@ -85,6 +85,7 @@ public class ToksParameter extends ToksPrimitive
     public ToksParameter(final String name) {
 
         super(name);
+        key = name;
     }
 
     /**
