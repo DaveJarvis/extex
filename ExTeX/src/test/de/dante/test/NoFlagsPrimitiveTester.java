@@ -185,4 +185,15 @@ public abstract class NoFlagsPrimitiveTester extends ExTeXLauncher {
                         + primitive);
     }
 
+    
+    /**
+     * Getter for primitive.
+     *
+     * @return the primitive
+     */
+    protected String getPrimitive() {
+    
+        return this.primitive;
+    }
+
 }
