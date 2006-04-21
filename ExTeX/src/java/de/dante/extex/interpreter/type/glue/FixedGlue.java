@@ -41,10 +41,16 @@ public interface FixedGlue {
     int NORMAL_ORDER = 0;
 
     /**
-     * The constant <tt>ZERO</tt> contains the value of widt 0pt without any
-     * stretcablity or shrinkability.
+     * The constant <tt>ZERO</tt> contains the value of width 0pt without any
+     * stretchablity or shrinkability.
      */
     FixedGlue ZERO = new Glue(0);
+
+    /**
+     * The constant <tt>SS</tt> contains the glue to insert for this primitive.
+     */
+    FixedGlue S_S = new Glue(GlueComponent.ZERO, GlueComponent.ONE_FIL,
+            GlueComponent.ONE_FIL);
 
     /**
      * Make a copy of this object.
