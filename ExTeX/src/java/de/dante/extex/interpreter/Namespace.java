@@ -16,8 +16,8 @@
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
-package de.dante.extex.interpreter;
 
+package de.dante.extex.interpreter;
 
 /**
  * This class contains the definitions for name spaces. It is not a class which
@@ -64,28 +64,28 @@ public final class Namespace {
 
     /**
      * The constant <tt>SUPPORT_NAMESPACE_FONT</tt> contains the flag
-     * indicating whether or not the name space should be used for toks
+     * indicating whether or not the name space should be used for font
      * registers.
      */
     public static final boolean SUPPORT_NAMESPACE_FONT = false;
 
     /**
      * The constant <tt>SUPPORT_NAMESPACE_MUSKIP</tt> contains the flag
-     * indicating whether or not the name space should be used for toks
+     * indicating whether or not the name space should be used for muskip
      * registers.
      */
     public static final boolean SUPPORT_NAMESPACE_MUSKIP = false;
 
     /**
      * The constant <tt>SUPPORT_NAMESPACE_SKIP</tt> contains the flag
-     * indicating whether or not the name space should be used for toks
+     * indicating whether or not the name space should be used for skip
      * registers.
      */
     public static final boolean SUPPORT_NAMESPACE_SKIP = false;
 
     /**
      * The constant <tt>SUPPORT_NAMESPACE_TOKS</tt> contains the flag
-     * indicating whether or not the name space should be used for toks
+     * indicating whether or not the name space should be used for tokens
      * registers.
      */
     public static final boolean SUPPORT_NAMESPACE_TOKS = false;
