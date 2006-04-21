@@ -45,7 +45,7 @@ import de.dante.util.exception.GeneralException;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public interface Node extends Knot, Serializable {
+public interface Node extends Serializable {
 
     /**
      * Add the flexible height of the current node to the given glue.
