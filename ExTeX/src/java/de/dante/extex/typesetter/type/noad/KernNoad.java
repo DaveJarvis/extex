@@ -71,7 +71,7 @@ public class KernNoad extends AbstractNoad {
             throws TypesetterException,
                 ConfigurationException {
 
-        list.add(new ExplicitKernNode(mathContext.convert(kern)));
+        list.add(new ExplicitKernNode(mathContext.convert(kern), true));
         return index + 1;
     }
 
