@@ -206,6 +206,24 @@ public class MessageTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    public void testMessageErr4() throws Exception {
+
+        assertFailure(//--- input code ---
+                "\\scrollmode"
+                + DEFINE_BRACES
+                + "\\message{a\\par b}"
+                + "\\end ",
+                //--- log message ---
+                "a\\par b");
+    }
+
+    /**
+     * <testcase primitive="\message">
+     *  Test case checking that \message ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
     public void testMessage10() throws Exception {
 
         assertFailure(//--- input code ---
