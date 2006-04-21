@@ -31,14 +31,14 @@ import de.dante.extex.interpreter.context.TypesettingContext;
 public abstract class AbstractNucleusNoad extends AbstractNoad {
 
     /**
-     * The field <tt>color</tt> contains the color.
-     */
-    private Color color;
-
-    /**
      * The field <tt>nucleus</tt> contains the nucleus.
      */
     private Noad nucleus;
+
+    /**
+     * The field <tt>tc</tt> contains the typesetting context.
+     */
+    private TypesettingContext tc;
 
     /**
      * Creates a new object.
@@ -50,7 +50,7 @@ public abstract class AbstractNucleusNoad extends AbstractNoad {
 
         super();
         this.nucleus = nucleus;
-        this.color = tc.getColor();
+        this.tc = tc;
     }
 
     /**
@@ -60,7 +60,7 @@ public abstract class AbstractNucleusNoad extends AbstractNoad {
      */
     public Color getColor() {
 
-        return this.color;
+        return this.tc.getColor();
     }
 
     /**
@@ -71,6 +71,16 @@ public abstract class AbstractNucleusNoad extends AbstractNoad {
     public Noad getNucleus() {
 
         return this.nucleus;
+    }
+
+    /**
+     * Getter for the typesetting context.
+     *
+     * @return the typesetting context
+     */
+    protected TypesettingContext getTypesettingContext() {
+
+        return this.tc;
     }
 
     /**
