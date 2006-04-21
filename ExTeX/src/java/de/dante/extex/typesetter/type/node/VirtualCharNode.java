@@ -50,7 +50,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision$
      */
-    private class NL extends AbstractNodeList {
+    private class NL extends GenericNodeList {
 
         /**
          * The constant <tt>serialVersionUID</tt> contains the id for serialization.
@@ -143,15 +143,6 @@ public class VirtualCharNode extends CharNode implements NodeList {
     public void add(final Node node) {
 
         this.nodes.add(node);
-    }
-
-    /**
-     * @see de.dante.extex.typesetter.type.NodeList#addGlyph(
-     *      de.dante.extex.typesetter.type.node.CharNode)
-     */
-    public void addGlyph(final CharNode node) {
-
-        this.nodes.addGlyph(node);
     }
 
     /**
