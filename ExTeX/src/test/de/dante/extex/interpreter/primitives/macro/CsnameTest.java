@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -75,23 +75,6 @@ public class CsnameTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\csname">
-     *  Test case checking that the normal operation is performed on letter
-     *  inputs only and white-space and \relax is ignored.
-     * </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void testLetters3() throws Exception {
-
-        assertSuccess(//--- input code ---
-                DEFINE_BRACES + "\\def\\abc{-a-b-c-}"
-                        + "\\csname a b \\relax c\\endcsname\\end",
-                //--- output channel ---
-                "-a-b-c-" + TERM);
-    }
-
-    /**
-     * <testcase primitive="\csname">
      *  Test case checking that the primitive \string can be used to insert
      *  special characters.
      * </testcase>
@@ -161,6 +144,22 @@ public class CsnameTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\csname">
+     *  Test case checking that the normal operation is performed on letter
+     *  and digit inputs only.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testError2() throws Exception {
+
+        assertFailure(//--- input code ---
+                "\\csname abc \\relax\\endcsname\\end",
+                //--- log message ---
+                "Missing \\endcsname inserted");
+    }
+
+    /**
+     * <testcase primitive="\csname">
      *  Test case checking that eof is recognized.
      * </testcase>
      *
@@ -173,5 +172,25 @@ public class CsnameTest extends ExTeXLauncher {
                 //--- log message ---
                 "Unexpected end of file while processing \\meaning");
     }
+
+    /**
+     * <testcase primitive="\csname">
+     *  Test case checking that <tt>\csname</tt> returns something equivalent
+     *  to <tt>\relax</tt> if nor defned otherwise.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testMessageErr5() throws Exception {
+
+        assertFailure(//--- input code ---
+                "\\scrollmode"
+                + DEFINE_BRACES
+                + "\\message{a\\csname xyz \\endcsname b}"
+                + "\\end ",
+                //--- log message ---
+                "a\\xyz b");
+    }
+
 
 }

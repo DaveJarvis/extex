@@ -54,4 +54,37 @@ public class ExpandafterTest extends ExTeXLauncher {
                 "ba" + TERM);
     }
 
+    /**
+     * <testcase primitive="\expandafter">
+     *  Test case checking that <tt>\expandafter</tt> passes on <tt>\global</tt>.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testGlobal1() throws Exception {
+
+        assertSuccess(//--- input code ---
+                DEFINE_CATCODES + "\\global\\expandafter A\\count0=123 B"
+                        + "\\end",
+                //--- output message ---
+                "AB" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\expandafter">
+     *  Test case checking that <tt>\expandafter</tt> can expand the second
+     *  token.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test1() throws Exception {
+
+        assertSuccess(//--- input code ---
+                DEFINE_CATCODES + "\\let\\x=X \\let\\y=Y"
+                        + "\\expandafter\\x\\y A" + "\\end",
+                //--- output message ---
+                "XYA" + TERM);
+    }
+
 }

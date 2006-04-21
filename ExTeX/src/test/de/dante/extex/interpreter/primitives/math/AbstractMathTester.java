@@ -82,13 +82,33 @@ public class AbstractMathTester extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * Test case checking that \mathaccent needs the math mode.
+     * <testcase>
+     *  Test case checking that the primitive needs the math mode.
+     *  Vertical mode is not enough.
+     * </testcase>
+     *
      * @throws Exception in case of an error
      */
-    public void testNonMathMode() throws Exception {
+    public void testNonMathMode1() throws Exception {
 
         assertFailure(//--- input code ---
                 "\\" + primitive + arguments + " ",
+                //--- log message ---
+                "Missing $ inserted");
+    }
+
+    /**
+     * <testcase>
+     *  Test case checking that the primitive needs the math mode.
+     *  Horizontal mode is not enough.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testNonMathMode2() throws Exception {
+
+        assertFailure(//--- input code ---
+                "a\\" + primitive + arguments + " ",
                 //--- log message ---
                 "Missing $ inserted");
     }

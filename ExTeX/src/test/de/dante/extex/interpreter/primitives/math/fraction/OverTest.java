@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -37,6 +37,36 @@ public class OverTest extends AbstractMathTester {
     public OverTest(final String arg) {
 
         super(arg, "over", " b$", "a ");
+    }
+
+    /**
+     * <testcase primitive="\over">
+     *  ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testError1() throws Exception {
+
+        assertFailure(//--- input code ---
+                DEFINE_MATH_FONTS + DEFINE_MATH + "$a\\over b \\over c$ \\end",
+                //--- error stream ---
+                "Ambiguous; you need another { and }");
+    }
+
+    /**
+     * <testcase primitive="\over">
+     *  ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testMathMode1() throws Exception {
+
+        assertSuccess(//--- input code ---
+                DEFINE_MATH_FONTS + DEFINE_MATH + "$a\\over b$ \\end",
+                //--- output stream ---
+                "???");
     }
 
 }
