@@ -200,7 +200,7 @@ public class DviDocumentWriterTest extends TestCase {
     public void testValidNodes() throws Exception {
 
         // TODO: nodeList.add(new CharNode()); (TE)
-        nodeList.add(new ExplicitKernNode(new Dimen(12346)));
+        nodeList.add(new ExplicitKernNode(new Dimen(12346), true));
         nodeList.add(new GlueNode(new Glue(1234), true));
         // TODO: nodeList.add(new LigatureNode()); (TE)
         // TODO: nodeList.add(new SpecialNode("Test")); (TE)

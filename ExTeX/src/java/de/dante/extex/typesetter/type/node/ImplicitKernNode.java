@@ -19,7 +19,7 @@
 
 package de.dante.extex.typesetter.type.node;
 
-import de.dante.extex.interpreter.type.dimen.Dimen;
+import de.dante.extex.interpreter.type.dimen.FixedDimen;
 
 /**
  * This class provides the same functionality as
@@ -35,16 +35,17 @@ public class ImplicitKernNode extends AbstractKernNode {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 20060417L;
 
     /**
      * Creates a new object.
      *
      * @param kern the natural size
+     * @param horizontal the indicator that the kern works horizontally
      */
-    public ImplicitKernNode(final Dimen kern) {
+    public ImplicitKernNode(final FixedDimen kern, final boolean horizontal) {
 
-        super(kern);
+        super(kern, horizontal);
     }
 
 }

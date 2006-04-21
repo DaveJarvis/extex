@@ -46,7 +46,7 @@ public class AccentKernNode extends AbstractKernNode {
      */
     public AccentKernNode(final Dimen kern) {
 
-        super(kern);
+        super(kern, true);
     }
 
 }
