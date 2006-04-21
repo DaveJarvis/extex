@@ -25,7 +25,7 @@ import de.dante.extex.interpreter.type.tokens.Tokens;
 
 /**
  * This class is identical to the super class MacroCode but in addition it
- * implements the marker interface ProtectedCode..
+ * implements the marker interface ProtectedCode.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
