@@ -23,7 +23,6 @@ import java.util.logging.Logger;
 
 import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.typesetter.exception.TypesetterException;
-import de.dante.extex.typesetter.type.Knot;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.noad.util.MathContext;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
@@ -35,7 +34,7 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface Noad extends Knot {
+public interface Noad {
 
     /**
      * Getter for the subscript.
