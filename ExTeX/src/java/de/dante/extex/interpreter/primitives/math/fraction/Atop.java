@@ -57,7 +57,7 @@ public class Atop extends AbstractMathCode {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 20060417L;
 
     /**
      * Creates a new object.
@@ -82,7 +82,8 @@ public class Atop extends AbstractMathCode {
 
         NoadConsumer nc = getListMaker(context, typesetter);
 
-        nc.switchToFraction(null, null, Dimen.ZERO_PT);
+        nc.switchToFraction(null, null, Dimen.ZERO_PT, context
+                .getTypesettingContext());
     }
 
 }

@@ -57,7 +57,7 @@ public class Above extends AbstractMathCode {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 20060417L;
 
     /**
      * Creates a new object.
@@ -83,7 +83,7 @@ public class Above extends AbstractMathCode {
         NoadConsumer nc = getListMaker(context, typesetter);
         Dimen d = new Dimen(context, source, typesetter);
 
-        nc.switchToFraction(null, null, d);
+        nc.switchToFraction(null, null, d, context.getTypesettingContext());
     }
 
 }

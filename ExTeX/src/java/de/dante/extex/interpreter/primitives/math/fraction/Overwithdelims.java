@@ -58,7 +58,7 @@ public class Overwithdelims extends AbstractTeXDelimiter {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 20060417L;
 
     /**
      * Creates a new object.
@@ -85,7 +85,7 @@ public class Overwithdelims extends AbstractTeXDelimiter {
         MathDelimiter del1 = parseDelimiter(context, source, typesetter, getName());
         MathDelimiter del2 = parseDelimiter(context, source, typesetter, getName());
 
-        nc.switchToFraction(del1, del2, null);
+        nc.switchToFraction(del1, del2, null, context.getTypesettingContext());
     }
 
 }
