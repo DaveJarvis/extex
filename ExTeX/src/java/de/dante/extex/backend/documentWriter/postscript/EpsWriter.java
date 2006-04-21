@@ -41,11 +41,6 @@ import de.dante.util.exception.GeneralException;
 public class EpsWriter extends AbstractPostscriptWriter {
 
     /**
-     * The field <tt>converter</tt> contains the converter to use.
-     */
-    private PsConverter converter;
-
-    /**
      * The field <tt>fontManager</tt> contains the font manager.
      */
     private FontManager fontManager;
@@ -54,12 +49,6 @@ public class EpsWriter extends AbstractPostscriptWriter {
      * The field <tt>headerManager</tt> contains the header manager.
      */
     private HeaderManager headerManager = new HeaderManager();
-
-    /**
-     * The field <tt>init</tt> contains the indicator whether the initialization
-     * is still required.
-     */
-    private boolean init = true;
 
     /**
      * Creates a new object.
@@ -93,11 +82,7 @@ public class EpsWriter extends AbstractPostscriptWriter {
      */
     public int shipout(final Page p) throws GeneralException, IOException {
 
-        if (init) {
-            headerManager.reset();
-            converter = makeConverter(headerManager);
-            init = false;
-        }
+        PsConverter converter = getConverter(headerManager);
 
         OutputStream stream = newOutputStream("eps");
 
