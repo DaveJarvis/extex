@@ -30,7 +30,7 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This Noad carries a delimiter which is set on the right side of the math
- * material following it. This delmitier adjusts its height to the height of the
+ * material following it. This delimiter adjusts its height to the height of the
  * following material.
  *
  * @see "TTP [687]"
@@ -46,13 +46,20 @@ public class RightNoad extends AbstractNoad {
     private MathDelimiter delimiter;
 
     /**
+     * The field <tt>noad</tt> contains the noad(s) on the left side.
+     */
+    private Noad noad;
+
+    /**
      * Creates a new object.
      *
+     * @param noad the preceding noad
      * @param delimiter the glue
      */
-    public RightNoad(final MathDelimiter delimiter) {
+    public RightNoad(final Noad noad, final MathDelimiter delimiter) {
 
         super();
+        this.noad = noad;
         this.delimiter = delimiter;
     }
 

@@ -44,14 +44,20 @@ public class MiddleNoad extends AbstractNoad {
     private MathDelimiter delimiter;
 
     /**
+     * The field <tt>noad</tt> contains the ...
+     */
+    private Noad noad;
+
+    /**
      * Creates a new object.
      *
      * @param delimiter the delimiter
      */
-    public MiddleNoad(final MathDelimiter delimiter) {
+    public MiddleNoad(final Noad noad, final MathDelimiter delimiter) {
 
         super();
         this.delimiter = delimiter;
+        this.noad = noad;
     }
 
     /**
