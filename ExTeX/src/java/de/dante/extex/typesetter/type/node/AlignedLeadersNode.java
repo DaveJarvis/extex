@@ -20,7 +20,7 @@
 package de.dante.extex.typesetter.type.node;
 
 import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.type.glue.Glue;
+import de.dante.extex.interpreter.type.glue.FixedGlue;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeVisitor;
@@ -56,7 +56,7 @@ public class AlignedLeadersNode extends AbstractExpandableNode
      * @param glue the desired size
      * @param horizontal the indicator for the stretchability mode
      */
-    public AlignedLeadersNode(final Node node, final Glue glue,
+    public AlignedLeadersNode(final Node node, final FixedGlue glue,
             final boolean horizontal) {
 
         super(glue, horizontal);
