@@ -97,8 +97,6 @@ public class Hyphen extends AbstractCode {
 
         try {
             typesetter.add(new DiscretionaryNode(hyphen, null, null));
-        } catch (GeneralException e) {
-            throw new InterpreterException(e);
         } catch (ConfigurationException e) {
             throw new InterpreterException(e);
         }
