@@ -76,15 +76,15 @@ public class DviXxx extends AbstractDviCode {
         int len;
         if (content.length < 1) {
             return 0;
-        } else if (content.length < 256) {
+        } else if (content.length <= 0xff) {
             len = 2;
             stream.write(Dvi.XXX1);
             stream.write(content.length);
-        } else if (content.length < 0xffff) {
+        } else if (content.length <= 0xffff) {
             len = 3;
             stream.write(Dvi.XXX2);
             write2(stream, content.length);
-        } else if (content.length < 0xffffff) {
+        } else if (content.length <= 0xffffff) {
             len = 4;
             stream.write(Dvi.XXX2);
             write3(stream, content.length);
