@@ -19,9 +19,12 @@
 
 package de.dante.extex.typesetter.listMaker;
 
+import de.dante.extex.interpreter.type.count.FixedCount;
 import de.dante.extex.typesetter.ListMaker;
 import de.dante.extex.typesetter.TypesetterOptions;
+import de.dante.extex.typesetter.exception.InvalidSpacefactorException;
 import de.dante.extex.typesetter.exception.TypesetterException;
+import de.dante.extex.typesetter.exception.TypesetterUnsupportedException;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.node.HorizontalListNode;
 import de.dante.extex.typesetter.type.node.factory.NodeFactory;
@@ -100,5 +103,17 @@ public interface ListManager {
      * @throws TypesetterException in case of an error
      */
     void push(ListMaker listMaker) throws TypesetterException;
+
+    /**
+     * Setter for the space factor
+     *
+     * @param spaceFactor the space factor
+     *
+     * @throws TypesetterUnsupportedException in case of an error
+     * @throws InvalidSpacefactorException in case of an invalid space factor
+     */
+    void setSpacefactor(FixedCount spaceFactor)
+            throws TypesetterUnsupportedException,
+                InvalidSpacefactorException;
 
 }
