@@ -282,7 +282,7 @@ public class HorizontalListMaker extends AbstractListMaker {
                         if (glyph != null) {
                             Dimen kerning = glyph.getKerning(symbol);
                             if (kerning.ne(Dimen.ZERO_PT)) {
-                                nodes.add(new ImplicitKernNode(kerning));
+                                nodes.add(new ImplicitKernNode(kerning, true));
                             }
                         }
                     }

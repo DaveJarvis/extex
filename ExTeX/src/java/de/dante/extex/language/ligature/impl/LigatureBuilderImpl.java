@@ -111,7 +111,7 @@ public class LigatureBuilderImpl implements LigatureBuilder {
                 } else {
                     Dimen kern = gc.getKerning(cni.getCharacter());
                     if (kern != null && kern.ne(Dimen.ZERO)) {
-                        list.add(i, new ImplicitKernNode(kern));
+                        list.add(i, new ImplicitKernNode(kern, true));
                         i++;
                     }
                     charNode = cni;

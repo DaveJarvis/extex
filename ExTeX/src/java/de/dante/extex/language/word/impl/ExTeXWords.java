@@ -295,7 +295,7 @@ public class ExTeXWords implements WordTokenizer {
                         Dimen kern = g.getKerning(hyphen);
                         if (kern != null && kern.ne(Dimen.ZERO_PT)) {
                             post = new HorizontalListNode(new ImplicitKernNode(
-                                    kern));
+                                    kern, true));
                         } else {
                             post = new HorizontalListNode();
                         }
