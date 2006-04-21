@@ -74,7 +74,7 @@ public class DviSetRule extends AbstractDviCode {
         stream.write(Dvi.SET_RULE);
         write4(stream, a);
         write4(stream, b);
-        return 9;
+        return 1 + 4 + 4;
     }
 
 }
