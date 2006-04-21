@@ -102,6 +102,19 @@ public class Mudimen implements Serializable {
     /**
      * Creates a new object and fills it from a token stream.
      *
+     * <doc type="syntax" name="mudimen">
+     * This method parses the following syntactic entity:
+     *
+     *  <pre class="syntax">
+     *    &lang;mudimen&rang;
+     *      &rarr; &lang;float&rang; <tt>mu</tt>
+     *       |  &lang;mudimen variable&lang;
+     * </pre>
+     *  The value of &lang;mudimen&rang; is either a floating point number
+     *  followed by the unit <tt>mu</tt> or a variable value resulting in a
+     *  mudimen value.
+     * </doc>
+     *
      * @param context the processor context
      * @param source the source for new tokens
      *
