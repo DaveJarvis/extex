@@ -149,12 +149,13 @@ public class StringSource extends Moritz {
 
             stack.add(token);
         }
+
     }
 
     /**
      * Creates a new object.
      */
-    public StringSource() throws ConfigurationException {
+    public StringSource() {
 
         super();
     }
@@ -173,16 +174,18 @@ public class StringSource extends Moritz {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Reset the input to come from a new source. Any state information is
+     * reset to initial values.
      *
      * @param cs the character sequence to read from
      *
-     * @throws InterpreterException
+     * @throws InterpreterException in case of an error
      */
     public void reset(final CharSequence cs) throws InterpreterException {
 
         closeAllStreams(getContext());
         addStream(new TStream(cs));
+        skipSpace();
     }
 
 }
