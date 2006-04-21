@@ -78,9 +78,10 @@ public class DviPostamble extends AbstractDviCode {
     private int numberOfPages = 0;
 
     /**
-     * The field <tt>offset</tt> contains the ...
+     * The field <tt>bopOffset</tt> contains the index of the last BOP
+     * instruction in the output stream.
      */
-    private int offset;
+    private int bopOffset;
 
     /**
      * The field <tt>stackDepth</tt> contains the stack depth needed to process
@@ -178,7 +179,7 @@ public class DviPostamble extends AbstractDviCode {
      */
     public void setOffset(final int pointer) {
 
-        this.offset = pointer;
+        this.bopOffset = pointer;
     }
 
     /**
@@ -202,7 +203,7 @@ public class DviPostamble extends AbstractDviCode {
         }
 
         stream.write(Dvi.POST_POST);
-        write4(stream, offset);
+        write4(stream, bopOffset);
         stream.write(Dvi.DVI_ID);
 
         stream.write(Dvi.PADDING_BYTE);
