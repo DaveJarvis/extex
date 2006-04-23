@@ -91,7 +91,7 @@ public class VCenterNoad extends AbstractNucleusNoad {
         } catch (HelpingException e) {
             throw new ImpossibleException(e);
         }
-        h.add(axisHeight(mathContext.getStyle(), context));
+        h.add(symbolValue(AXIS_HEIGHT, mathContext.getStyle(), context));
         hlist.setHeight(h);
         d.subtract(h);
         hlist.setDepth(d);
