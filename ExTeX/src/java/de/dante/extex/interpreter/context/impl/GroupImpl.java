@@ -381,6 +381,11 @@ public class GroupImpl implements Group, Tokenizer, Serializable {
         }
 
         // Fallback for predefined delimiter codes
+        if (c.getCodePoint() == '.') {
+            MathDelimiter del = new MathDelimiter(null, null, null);
+            delcodeMap.put(UnicodeChar.get('.'), del);
+            return del;
+        }
         return null;
 
     }
