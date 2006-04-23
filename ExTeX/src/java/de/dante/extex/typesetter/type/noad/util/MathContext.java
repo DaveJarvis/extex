@@ -161,6 +161,16 @@ public class MathContext {
     }
 
     /**
+     * Getter for the options.
+     *
+     * @return the options
+     */
+    public TypesetterOptions getOptions() {
+
+        return this.context;
+    }
+
+    /**
      * Getter for style.
      *
      * @return the style.
