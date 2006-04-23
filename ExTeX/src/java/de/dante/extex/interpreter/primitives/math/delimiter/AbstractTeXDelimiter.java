@@ -250,8 +250,8 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
         MathClass mathClass = MathClass.getMathClass(classCode);
         MathGlyph smallChar = new MathGlyph(
                 (int) ((delcode >> SMALL_CLASS_OFFSET) & CLASS_MASK),
-                UnicodeChar.get(
-                        (int) ((delcode >> SMALL_CHAR_OFFSET) & CHAR_MASK)));
+                UnicodeChar
+                        .get((int) ((delcode >> SMALL_CHAR_OFFSET) & CHAR_MASK)));
         MathGlyph largeChar = new MathGlyph(
                 (int) ((delcode >> LARGE_CLASS_OFFSET) & CLASS_MASK),
                 UnicodeChar.get((int) (delcode & CHAR_MASK)));
