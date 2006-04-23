@@ -172,7 +172,6 @@ public class MathList extends AbstractNoad {
             i = nucleus.get(i).typeset(nucleus, i, list, mathContext, context,
                     logger);
         }
-        //TODO gene: subscript and superscript unimplemented ???
         return index + 1;
     }
 
