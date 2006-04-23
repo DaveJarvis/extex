@@ -300,12 +300,13 @@ public class TypesetterImpl
         pop();
         if (list instanceof VerticalListNode) {
             listMaker.addAndAdjust(list, options);
-            //            int size = list.size();
-            //            for (int i = 0; i < size; i++) {
-            //                listMaker.add(list.get(i));
-            //            }
-        } else {
+        } else if (list instanceof HorizontalListNode) {
             listMaker.add(list);
+        } else {
+            int size = list.size();
+            for (int i = 0; i < size; i++) {
+                listMaker.add(list.get(i));
+            }
         }
     }
 
@@ -459,6 +460,7 @@ public class TypesetterImpl
     public void mathShift(final Context context, final TokenSource source,
             final Token t) throws TypesetterException, ConfigurationException {
 
+        ensureHorizontalMode(source.getLocator());
         listMaker.mathShift(context, source, t);
     }
 
