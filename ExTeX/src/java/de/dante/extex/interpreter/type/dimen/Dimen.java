@@ -131,6 +131,17 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
     }
 
     /**
+     * Set the value of this dimen to the absolute value of a given value.
+     *
+     * @param d the given value
+     */
+    public void abs(final FixedDimen d) {
+
+        long v = d.getValue();
+        setValue(v < 0 ? -v : v);
+    }
+
+    /**
      * Add the value of the argument to the current value.
      * This operation modifies the instance.
      *
