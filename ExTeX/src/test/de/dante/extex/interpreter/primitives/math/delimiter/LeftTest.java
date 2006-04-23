@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -37,6 +37,74 @@ public class LeftTest extends AbstractMathTester {
     public LeftTest(final String arg) {
 
         super(arg, "left", "123 ");
+    }
+
+    /**
+     * <testcase>
+     *  Test case checking that <tt>\left</tt> needs a delimiter.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testErr1() throws Exception {
+
+        assertFailure(
+                //--- input code ---
+                DEFINE_MATH +
+                "$\\left $\\end",
+                //--- output channel ---
+                "Missing delimiter (. inserted)");
+    }
+
+    /**
+     * <testcase>
+     *  Test case checking that <tt>\left</tt> needs closing <tt>\right</tt>.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testErr2() throws Exception {
+
+        assertFailure(
+                //--- input code ---
+                DEFINE_MATH +
+                "$\\left. $\\end",
+                //--- output channel ---
+                "Missing \\right. inserted");
+    }
+
+    /**
+     * <testcase>
+     *  Test case checking that <tt>\left</tt> needs closing <tt>\right</tt>.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testErr3() throws Exception {
+
+        assertFailure(
+                //--- input code ---
+                DEFINE_BRACES + DEFINE_MATH +
+                "$\\left. } $\\end",
+                //--- output channel ---
+                "Too many }'s");
+    }
+
+    /**
+     * <testcase>
+     *  Test case checking that <tt>\left</tt> needs closing <tt>\right</tt>.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test1() throws Exception {
+
+        assertSuccess(
+                //--- input code ---
+                DEFINE_BRACES + DEFINE_MATH + DEFINE_MATH_FONTS +
+                "$\\left. A \\right. $\\end",
+                //--- output channel ---
+                "A" + TERM);
     }
 
 }
