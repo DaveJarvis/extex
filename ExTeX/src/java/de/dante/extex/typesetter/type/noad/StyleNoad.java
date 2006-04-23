@@ -305,6 +305,19 @@ public final class StyleNoad implements Noad {
     }
 
     /**
+     * Ordering on the styles.
+     *
+     * @param other the style to compare to
+     *
+     * @return <code>true</code> iff the current style is less than the other
+     *  according to the list in the description of StyleNoad.
+     */
+    public boolean less(final StyleNoad other) {
+
+        return no < other.no;
+    }
+
+    /**
      * Get the num style for this one.
      *
      * @return the num style
@@ -335,6 +348,7 @@ public final class StyleNoad implements Noad {
      */
     public void setSubscript(final Noad subscript) {
 
+        throw new UnsupportedOperationException("subscript in style");
     }
 
     /**
@@ -343,6 +357,7 @@ public final class StyleNoad implements Noad {
      */
     public void setSuperscript(final Noad superscript) {
 
+        throw new UnsupportedOperationException("superscript in style");
     }
 
     /**
