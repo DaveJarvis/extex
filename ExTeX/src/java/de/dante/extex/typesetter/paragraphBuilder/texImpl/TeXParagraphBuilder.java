@@ -2827,7 +2827,7 @@ public class TeXParagraphBuilder
 
             // disc_node: «Try to break after a discretionary fragment, then
             // goto done5 869»;
-            NodeList nodes = (HorizontalListNode) value;
+            NodeList nodes = (NodeList) value;
             /** 869.
 
              The following code knows that discretionary texts contain
@@ -2905,7 +2905,7 @@ public class TeXParagraphBuilder
             // glue_node: begin «If node cur_p is a legal breakpoint,
             // call try_break; then update the active widths by
             // including the glue in glue_ptr(cur_p) 868»;
-            NodeList nodes = (HorizontalListNode) value;
+            NodeList nodes = (NodeList) value;
             /** 868.
              *
              * When node cur_p is a glue node, we look at prev_p to
