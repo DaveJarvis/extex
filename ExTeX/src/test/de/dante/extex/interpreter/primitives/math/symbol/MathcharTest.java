@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -21,7 +21,6 @@ package de.dante.extex.interpreter.primitives.math.symbol;
 
 import de.dante.extex.interpreter.primitives.math.AbstractMathTester;
 
-
 /**
  * This is a test suite for the primitive <tt>\mathchar</tt>.
  *
@@ -39,5 +38,6 @@ public class MathcharTest extends AbstractMathTester {
 
         super(arg, "mathchar", "123 ");
     }
+
 
 }
