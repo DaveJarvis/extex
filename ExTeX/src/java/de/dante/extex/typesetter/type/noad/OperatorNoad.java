@@ -26,6 +26,7 @@ import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.noad.util.MathContext;
+import de.dante.extex.typesetter.type.noad.util.MathSpacing;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
@@ -54,6 +55,7 @@ public class OperatorNoad extends AbstractNucleusNoad implements SimpleNoad {
     public OperatorNoad(final Noad nucleus, final TypesettingContext tc) {
 
         super(nucleus, tc);
+        setSpacingClass(MathSpacing.OP);
     }
 
     /**
