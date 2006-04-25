@@ -206,6 +206,16 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
     }
 
     /**
+     * Test for a value of zero.
+     *
+     * @return <code>true</code> iff the value is 0
+     */
+    public boolean isZero() {
+    
+        return getValue() == 0;
+    }
+
+    /**
      * Sets the value of the dimen to the maximum of the value already stored
      * and a given argument.
      *
