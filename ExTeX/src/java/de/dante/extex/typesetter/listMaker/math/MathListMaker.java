@@ -454,7 +454,7 @@ public class MathListMaker extends HorizontalListMaker
         // see [TTP 1196]
         list.add(new BeforeMathNode(mathsurround));
         noads.typeset(null, 0, list, new MathContext(StyleNoad.TEXTSTYLE,
-                context), context, logger);
+                context), logger);
         // see [TTP 1196]
         list.add(new AfterMathNode(mathsurround));
         // see [TTP 1196]
