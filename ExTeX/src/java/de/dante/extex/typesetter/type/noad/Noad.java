@@ -93,7 +93,7 @@ public interface Noad {
      * @throws TypesetterException in case of a problem
      * @throws ConfigurationException in case of a configuration problem
      */
-    int typeset(NoadList noads, int index, NodeList list,
+    void typeset(NoadList noads, int index, NodeList list,
             MathContext mathContext, Logger logger)
             throws TypesetterException,
                 ConfigurationException;

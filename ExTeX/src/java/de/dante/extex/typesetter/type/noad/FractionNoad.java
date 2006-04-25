@@ -144,7 +144,7 @@ public class FractionNoad extends AbstractNoad {
      *      de.dante.extex.typesetter.type.noad.util.MathContext,
      *      java.util.logging.Logger)
      */
-    public int typeset(final NoadList noads, final int index,
+    public void typeset(final NoadList noads, final int index,
             final NodeList list, final MathContext mathContext,
             final Logger logger)
             throws TypesetterException,
@@ -205,8 +205,6 @@ public class FractionNoad extends AbstractNoad {
             rightDelimiter.typeset(list, mathContext, vlist.getHeight(), vlist
                     .getDepth());
         }
-
-        return index + 1;
     }
 
 }

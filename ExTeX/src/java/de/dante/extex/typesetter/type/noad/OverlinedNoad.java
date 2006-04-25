@@ -95,7 +95,7 @@ public class OverlinedNoad extends AbstractNucleusNoad {
      *      de.dante.extex.typesetter.TypesetterOptions,
      *      java.util.logging.Logger)
      */
-    public int typeset(final NoadList noads, final int index,
+    public void typeset(final NoadList noads, final int index,
             final NodeList list, final MathContext mathContext,
             final Logger logger)
             throws TypesetterException,
@@ -124,7 +124,5 @@ public class OverlinedNoad extends AbstractNucleusNoad {
         vlist.setDepth(d);
         h.subtract(d);
         vlist.setHeight(h);
-
-        return index + 1;
     }
 }

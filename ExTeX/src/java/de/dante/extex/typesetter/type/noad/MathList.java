@@ -160,16 +160,15 @@ public class MathList extends AbstractNoad {
      *      de.dante.extex.typesetter.type.noad.util.MathContext,
      *      java.util.logging.Logger)
      */
-    public int typeset(final NoadList noads, final int index,
+    public void typeset(final NoadList noads, final int index,
             final NodeList list, final MathContext mathContext,
             final Logger logger)
             throws TypesetterException,
                 ConfigurationException {
 
-        for (int i = 0; i < nucleus.size();) {
-            i = nucleus.get(i).typeset(nucleus, i, list, mathContext, logger);
+        for (int i = 0; i < nucleus.size(); i++) {
+            nucleus.get(i).typeset(nucleus, i, list, mathContext, logger);
         }
-        return index + 1;
     }
 
 }

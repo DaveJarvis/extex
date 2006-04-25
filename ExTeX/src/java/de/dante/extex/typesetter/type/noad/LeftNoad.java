@@ -85,7 +85,7 @@ public class LeftNoad extends AbstractNoad {
      *      de.dante.extex.typesetter.TypesetterOptions,
      *      java.util.logging.Logger)
      */
-    public int typeset(final NoadList noads, final int index,
+    public void typeset(final NoadList noads, final int index,
             final NodeList list, final MathContext mathContext,
             final Logger logger)
             throws TypesetterException,

@@ -144,7 +144,7 @@ public class ChoiceNoad implements Noad {
      *      de.dante.extex.typesetter.type.noad.util.MathContext,
      *      java.util.logging.Logger)
      */
-    public int typeset(final NoadList noads, final int index,
+    public void typeset(final NoadList noads, final int index,
             final NodeList list, final MathContext mathContext,
             final Logger logger)
             throws TypesetterException,
@@ -163,7 +163,6 @@ public class ChoiceNoad implements Noad {
         } else {
             throw new ImpossibleException("illegal style");
         }
-        return index + 1;
     }
 
 }
