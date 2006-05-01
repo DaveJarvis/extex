@@ -233,13 +233,18 @@ sub includeFile
   my $in = findFile($fromdir,$from);
 
   while ( <$in> ) {
-    s/\&top;/$top/g;
-    s/\&year;/$year/g;
-    s/\&month;/$month/g;
-    s/\&day;/$day/g;
-    s/\&TeX;/TeX/g;
-    s/\&LaTeX;/LaTeX/g;
-    s/\&ExTeX;/ExTeX/g;
+    s|\&top;|$top|g;
+    s|\&year;|$year|g;
+    s|\&month;|$month|g;
+    s|\&day;|$day|g;
+#    s|\&eTeX;|&epsilon;-T<span style="vertical-align:-20%;">E</span>X|g;
+#    s|\&pdfTeX;|pdfT<span style="vertical-align:-20%;">E</span>X|g;
+#    s|\&TeX;|T<span style="vertical-align:-20%;">E</span>X|g;
+    s|\&eTeX;|&epsilon;-TeX|g;
+    s|\&pdfTeX;|pdfTeX|g;
+    s|\&TeX;|TeX|g;
+    s|\&LaTeX;|LaTeX|g;
+    s|\&ExTeX;|ExTeX|g;
     if ( m|</head>|i ) {
       includeFile($fromdir,".headEnd",$out,$top,$fromdir);
       print $out $_;
