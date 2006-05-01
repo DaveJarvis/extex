@@ -95,6 +95,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
 
     /**
      * Creates a new object.
+     * The list is filled with the node given.
      *
      * @param node the node to add initially
      */
@@ -119,7 +120,9 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      */
     public void add(final Node node) {
 
-        list.add(node);
+        if (node != null) {
+            list.add(node);
+        }
     }
 
     /**
