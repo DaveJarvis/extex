@@ -64,23 +64,28 @@ public class OrdinaryNoad extends AbstractNucleusNoad implements SimpleNoad {
     /**
      * @see "TTP [752]"
      * @see de.dante.extex.typesetter.type.noad.Noad#typeset(
+     *      de.dante.extex.typesetter.type.noad.Noad,
      *      de.dante.extex.typesetter.type.noad.NoadList,
      *      int,
      *      de.dante.extex.typesetter.type.NodeList,
      *      de.dante.extex.typesetter.type.noad.util.MathContext,
      *      java.util.logging.Logger)
      */
-    public void typeset(final NoadList noads, final int index,
-            final NodeList list, final MathContext mathContext,
-            final Logger logger)
+    public void typeset(final Noad previousNoad, final NoadList noads,
+            final int index, final NodeList list,
+            final MathContext mathContext, final Logger logger)
             throws TypesetterException,
                 ConfigurationException {
 
-        getNucleus().typeset(noads, index, list, mathContext, logger);
+        getSpacingClass().addClearance(
+                (previousNoad != null ? previousNoad.getSpacingClass() : null),
+                list, mathContext);
+
+        getNucleus().typeset(previousNoad, noads, index, list, mathContext,
+                logger);
 
         //TODO gene: typeset() unimplemented
         throw new RuntimeException("unimplemented");
-        //return index + 1;
     }
 
     /**
