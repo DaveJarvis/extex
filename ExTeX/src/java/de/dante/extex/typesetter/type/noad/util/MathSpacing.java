@@ -33,24 +33,24 @@ import de.dante.extex.typesetter.type.node.GlueNode;
  * <doc name="thinmuskip" type="register">
  * <h3>The Muskip Parameter <tt>\thinmuskip</tt></h3>
  * <p>
- *  The muskip parameter <tt>\thinmuskip</tt>
- *  TODO gene: documentation missing
+ *  The muskip parameter <tt>\thinmuskip</tt> determines the amount of spacing
+ *  to be inserted where a thin skip is required.
  * </p>
  * </doc>
  *
  * <doc name="medmuskip" type="register">
  * <h3>The Muskip Parameter <tt>\medmuskip</tt></h3>
  * <p>
- *  The muskip parameter <tt>\medmuskip</tt>
- *  TODO gene: documentation missing
+ *  The muskip parameter <tt>\medmuskip</tt> determines the amount of spacing
+ *  to be inserted where a medium skip is required.
  * </p>
  * </doc>
  *
  * <doc name="thickmuskip" type="register">
  * <h3>The Muskip Parameter <tt>\thickmuskip</tt></h3>
  * <p>
- *  The muskip parameter <tt>\thickmuskip</tt>
- *  TODO gene: documentation missing
+ *  The muskip parameter <tt>\thickmuskip</tt> determines the amount of spacing
+ *  to be inserted where a thick skip is required.
  * </p>
  * </doc>
  *
