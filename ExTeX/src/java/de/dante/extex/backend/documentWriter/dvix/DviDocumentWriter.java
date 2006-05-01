@@ -455,8 +455,8 @@ public class DviDocumentWriter
             boolean save = horizontal;
             horizontal = true;
             List list = (List) value;
-            right(list, node.getShift().getValue());
-            down(list, node.getMove().getValue());
+            down(list, node.getShift().getValue());
+            right(list, node.getMove().getValue());
             int size = node.size();
             int v0 = dviV;
 
@@ -574,8 +574,8 @@ public class DviDocumentWriter
             List list = (List) value;
             boolean save = horizontal;
             horizontal = false;
-            right(list, node.getShift().getValue());
-            down(list, node.getMove().getValue());
+            down(list, node.getShift().getValue());
+            right(list, node.getMove().getValue());
             int size = node.size();
             int h0 = dviH;
 
