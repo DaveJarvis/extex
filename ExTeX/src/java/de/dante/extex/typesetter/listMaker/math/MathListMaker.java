@@ -453,8 +453,8 @@ public class MathListMaker extends HorizontalListMaker
         final FixedDimen mathsurround = context.getDimenOption("mathsurround");
         // see [TTP 1196]
         list.add(new BeforeMathNode(mathsurround));
-        noads.typeset(null, 0, list, new MathContext(StyleNoad.TEXTSTYLE,
-                context), logger);
+        noads.typeset(null, null, 0, list, new MathContext(StyleNoad.TEXTSTYLE,
+                        context), logger);
         // see [TTP 1196]
         list.add(new AfterMathNode(mathsurround));
         // see [TTP 1196]
@@ -830,7 +830,7 @@ public class MathListMaker extends HorizontalListMaker
                     "TTP.DoubleSuperscript"));
         }
 
-        noad.setSubscript(sup);
+        noad.setSuperscript(sup);
     }
 
     /**
