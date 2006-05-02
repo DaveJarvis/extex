@@ -150,8 +150,11 @@ public class CharNoad extends AbstractNoad {
         font.getGlyph(c).getItalicCorrection();
         Dimen delta = font.getGlyph(c).getItalicCorrection();
         Node scripts = makeScripts(charNode, mathContext, delta, logger);
+
         if (scripts != null) {
             nodes.add(scripts);
+        } else {
+            nodes.add(charNode);
         }
 
         //see "TTP [755]"
