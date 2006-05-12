@@ -112,8 +112,7 @@ public class MathDelimiter implements Noad, Serializable {
      */
     public MathSpacing getSpacingClass() {
 
-        //TODO gene: unimplemented
-        throw new RuntimeException("unimplemented");
+        return MathSpacing.UNDEF; // gene: correct?
     }
 
     /**
