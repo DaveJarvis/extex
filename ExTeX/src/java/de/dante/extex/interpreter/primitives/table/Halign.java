@@ -164,7 +164,7 @@ public class Halign extends AbstractAlign implements Boxable {
         }
 
         try {
-            context.openGroup();
+            context.openGroup(999); //TODO gene: provide correct value
         } catch (ConfigurationException e) {
             throw new InterpreterException(e);
         }

@@ -111,7 +111,7 @@ public class Box implements BoxOrRule, Serializable {
         typesetter.push(lm);
 
         try {
-            context.openGroup();
+            context.openGroup(999); //TODO gene: provide correct value
         } catch (ConfigurationException e) {
             throw new InterpreterException(e);
         }
