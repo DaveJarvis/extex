@@ -282,7 +282,7 @@ public interface TokenSource {
      * Get the next tokens form the input streams between <code>{</code> and
      * <code>}</code>. If the current input stream is at its end then the
      * next one on the streamStack is used until a token could be read. If all
-     * streams are at the end then <code>null</code> is returned.
+     * streams are at the end then an exception is thrown.
      *
      * <doc type="syntax" name="replacement text">
      * <p>
