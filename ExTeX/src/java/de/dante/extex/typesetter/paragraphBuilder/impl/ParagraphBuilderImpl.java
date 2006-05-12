@@ -497,9 +497,11 @@ public class ParagraphBuilderImpl implements ParagraphBuilder, LogEnabled {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Hyphenate all words of an hlist.
      *
      * @param nodes the node list to hyphenate
+     *
+     * @throws HyphenationException in case of an error
      */
     private void hyphenate(final HorizontalListNode nodes)
             throws HyphenationException {
@@ -678,9 +680,9 @@ public class ParagraphBuilderImpl implements ParagraphBuilder, LogEnabled {
      * @see de.dante.extex.typesetter.paragraphBuilder.ParagraphBuilder#setNodefactory(
      *      de.dante.extex.typesetter.type.node.factory.NodeFactory)
      */
-    public void setNodefactory(final NodeFactory nodeFactory) {
+    public void setNodefactory(final NodeFactory factory) {
 
-        this.nodeFactory = nodeFactory;
+        this.nodeFactory = factory;
     }
 
     /**

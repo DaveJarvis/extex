@@ -29,12 +29,23 @@ import de.dante.extex.typesetter.listMaker.math.NoadConsumer;
 import de.dante.extex.typesetter.type.noad.StyleNoad;
 
 /**
- * This class provides an implementation for the primitive <code>\textstyle</code>.
+ * This class provides an implementation for the primitive
+ * <code>\textstyle</code>.
  *
  * <doc name="textstyle">
  * <h3>The Math Primitive <tt>\textstyle</tt></h3>
  * <p>
- *  TODO missing documentation
+ *  The math primitive <tt>\textstyle</tt> arranges that the following
+ *  material in the current math group is typeset in text style regardless
+ *  of the style determined so far. This mean that for instance a subscript
+ *  can be forced to be typeset in text style.
+ * </p>
+ * <p>
+ *  The math style influences the size and placement of glyphs as well an the
+ *  spacing between them.
+ * </p>
+ * <p>
+ *  If used outside of math mode an error is raised.
  * </p>
  *
  * <h4>Syntax</h4>

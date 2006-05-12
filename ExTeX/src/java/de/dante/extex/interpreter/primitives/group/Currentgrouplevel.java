@@ -35,7 +35,10 @@ import de.dante.extex.typesetter.Typesetter;
  * <doc name="currentgrouplevel">
  * <h3>The Primitive <tt>\currentgrouplevel</tt></h3>
  * <p>
- *  TODO gene: missing documentation
+ *  The primitive <tt>\currentgrouplevel</tt> provides reading access to an
+ *  internal integer value containing the number of groups currently open.
+ *  Outside of any group 0 is returned. For each opened group the value is
+ *  incremented by 1.
  * </p>
  *
  * <h4>Syntax</h4>

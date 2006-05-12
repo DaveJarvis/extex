@@ -96,11 +96,11 @@ public class LeftNoad extends AbstractNoad {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Translate a Noad into a NodeList.
      *
-     * @param previousNoad ...
-     * @param noads ...
-     * @param index ...
+     * @param previousNoad the previous noad
+     * @param noads the list of noads currently processed
+     * @param index the index of the current node in the list
      * @param list the list to add the nodes to. This list contains the Nodes
      *  previously typeset. Thus it can be used to look back
      * @param mathContext the context to consider

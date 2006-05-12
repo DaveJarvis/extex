@@ -44,7 +44,7 @@ import de.dante.extex.typesetter.Typesetter;
  * <h4>Syntax</h4>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    &lang;if&rang;
+ *    &lang;currentiflevel&rang;
  *     &rarr; <tt>\currentiflevel</tt> </pre>
  * </p>
  *

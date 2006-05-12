@@ -62,7 +62,7 @@ import de.dante.extex.typesetter.Typesetter;
  * <p>
  *  The primitive <tt>\currentiftype</tt> is an internal count register.
  *  It returns an indication of the conditional currently in use.
- *  If no conditional is active then 0 is returned.
+ *  If no conditional is active then <tt>0</tt> is returned.
  *  The following table lists the return values for the different types of
  *  conditionals:
  * </p>
@@ -96,7 +96,7 @@ import de.dante.extex.typesetter.Typesetter;
  * <h4>Syntax</h4>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    &lang;if&rang;
+ *    &lang;currentiftype&rang;
  *     &rarr; <tt>\currentiftype</tt> </pre>
  * </p>
  *
