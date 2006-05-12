@@ -71,6 +71,13 @@ public interface ContextGroup {
     long getGroupLevel();
 
     /**
+     * Getter for the group type.
+     *
+     * @return the group type
+     */
+    int getGroupType();
+
+    /**
      * Test whether this group is the first one, which means that there is no
      * group before and closing this group would fail.
      *
@@ -87,6 +94,6 @@ public interface ContextGroup {
      *             e.g. the class for the group can not be determined.
      * @throws InterpreterException in case of an error
      */
-    void openGroup() throws ConfigurationException, InterpreterException;
+    void openGroup(int id) throws ConfigurationException, InterpreterException;
 
 }

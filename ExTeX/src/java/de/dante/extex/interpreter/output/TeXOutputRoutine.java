@@ -118,7 +118,7 @@ public class TeXOutputRoutine implements OutputRoutine {
         interpreter.push(rightBrace);
         interpreter.push(output);
         try {
-            context.openGroup();
+            context.openGroup(8);
         } catch (ConfigurationException e) {
             throw new GeneralException(e);
         }

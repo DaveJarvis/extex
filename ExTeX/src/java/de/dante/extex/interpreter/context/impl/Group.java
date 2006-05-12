@@ -326,6 +326,13 @@ public interface Group extends Tokenizer, Serializable {
     Tokens getToksOrNull(String name);
 
     /**
+     * Getter for the group type.
+     *
+     * @return the group type
+     */
+    int getType();
+
+    /**
      * Getter for the typesetting context.
      *
      * @return the typesetting context
@@ -529,6 +536,13 @@ public interface Group extends Tokenizer, Serializable {
      *  groups; otherwise the current group is affected only
      */
     void setToks(String name, Tokens value, boolean global);
+
+    /**
+     * Setter for the type.
+     *
+     * @param type the type of the group
+     */
+    void setType(int type);
 
     /**
      * Setter for the typesetting context in the specified groups.

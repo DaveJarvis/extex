@@ -87,7 +87,7 @@ public class Begingroup extends AbstractCode {
             throws InterpreterException {
 
         try {
-            context.openGroup();
+            context.openGroup(14);
         } catch (ConfigurationException e) {
             throw new InterpreterException(e);
         }

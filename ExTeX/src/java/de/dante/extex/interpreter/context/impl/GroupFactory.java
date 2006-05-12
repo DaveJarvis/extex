@@ -92,17 +92,20 @@ public class GroupFactory {
      * {@link de.dante.extex.interpreter.context.impl.Group Group}.
      *
      * @param next the next group
+     * @param type the group type
      *
      * @return a new instance for the interface Group
      *
      * @throws ConfigurationException in case of an error in the configuration.
      */
-    public Group newInstance(final Group next) throws ConfigurationException {
+    public Group newInstance(final Group next, final int type)
+            throws ConfigurationException {
 
         Group group;
 
         try {
             group = (Group) constructor.newInstance(new Object[]{next});
+            group.setType(type);
         } catch (IllegalArgumentException e) {
             throw new ConfigurationInstantiationException(e);
         } catch (InstantiationException e) {
