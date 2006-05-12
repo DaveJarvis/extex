@@ -102,10 +102,15 @@ public class DisplaymathListMaker extends MathListMaker implements EqConsumer {
 
         HorizontalListNode list = new HorizontalListNode();
 
+        if (eqno != null && leq) {
+            //TODO gene: leqno unimplemented
+            throw new RuntimeException("unimplemented");
+        }
+
         getNoads().typeset(null, null, 0, list,
                 new MathContext(StyleNoad.DISPLAYSTYLE, context), getLogger());
 
-        if (eqno != null) {
+        if (eqno != null && !leq) {
             //TODO gene: eqno unimplemented
             throw new RuntimeException("unimplemented");
         }
