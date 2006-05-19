@@ -80,7 +80,7 @@ public class DimenRegisterTest extends TestCase {
         Interpreter source = interpreterFactory.newInstance();
         source.addStream(fac.newInstance(spec));
         source.setTokenStreamFactory(fac);
-        return new Dimen(new MockContext(), source, null).getValue();
+        return Dimen.parse(new MockContext(), source, null).getValue();
     }
 
     /**

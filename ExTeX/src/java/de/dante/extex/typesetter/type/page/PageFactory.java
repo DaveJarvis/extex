@@ -376,9 +376,9 @@ public class PageFactory implements LogEnabled {
                     Matcher m = sizePattern.matcher(text);
                     if (m.matches()) {
                         try {
-                            Dimen width = new Dimen(context, //
+                            Dimen width = Dimen.parse(context, //
                                     new StringSource(m.group(1)), typesetter);
-                            Dimen height = new Dimen(context, //
+                            Dimen height = Dimen.parse(context, //
                                     new StringSource(m.group(2)), typesetter);
                             page.setMediaWidth(width);
                             page.setMediaHeight(height);
