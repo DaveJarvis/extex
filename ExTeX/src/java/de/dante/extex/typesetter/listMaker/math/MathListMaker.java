@@ -242,7 +242,7 @@ public class MathListMaker extends HorizontalListMaker
      *
      * @param options the options
      *
-     * @return <code>true</code> iff the the symbol fonts have needed font
+     * @return <code>true</code> iff the symbol fonts have the needed font
      *  dimens
      *
      * @see "[TTP 1195]"
