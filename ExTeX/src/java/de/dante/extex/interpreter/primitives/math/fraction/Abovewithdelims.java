@@ -103,7 +103,7 @@ public class Abovewithdelims extends AbstractTeXDelimiter {
                 getName());
         MathDelimiter del2 = parseDelimiter(context, source, typesetter,
                 getName());
-        Dimen d = new Dimen(context, source, typesetter);
+        Dimen d = Dimen.parse(context, source, typesetter);
         nc.switchToFraction(del1, del2, d, context.getTypesettingContext());
     }
 

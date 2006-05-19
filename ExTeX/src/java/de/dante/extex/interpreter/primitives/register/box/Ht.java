@@ -109,7 +109,7 @@ public class Ht extends Setbox
 
         Box box = context.getBox(getKey(context, source, getName()));
         source.getOptionalEquals(context);
-        Dimen d = new Dimen(context, source, typesetter);
+        Dimen d = Dimen.parse(context, source, typesetter);
 
         if (box != null) {
             box.setHeight(d);

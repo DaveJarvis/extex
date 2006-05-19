@@ -146,7 +146,7 @@ public class Vsplit extends AbstractBox implements Boxable, LogEnabled {
         if (!source.getKeyword(context, "to")) {
             throw new HelpingException(getLocalizer(), "TTP.MissingToForVsplit");
         }
-        Dimen ht = new Dimen(context, source, typesetter);
+        Dimen ht = Dimen.parse(context, source, typesetter);
         Box b = context.getBox(key);
         if (b == null || !b.isVbox()) {
             throw new HelpingException(getLocalizer(), "TTP.SplittingNonVbox",

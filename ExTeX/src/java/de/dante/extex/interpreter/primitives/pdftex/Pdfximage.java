@@ -93,11 +93,11 @@ public class Pdfximage extends AbstractPdftexCode {
 
         for (;;) {
             if (source.getKeyword(context, "width")) {
-                width = new Dimen(context, source, typesetter);
+                width = Dimen.parse(context, source, typesetter);
             } else if (source.getKeyword(context, "height")) {
-                height = new Dimen(context, source, typesetter);
+                height = Dimen.parse(context, source, typesetter);
             } else if (source.getKeyword(context, "depth")) {
-                depth = new Dimen(context, source, typesetter);
+                depth = Dimen.parse(context, source, typesetter);
             } else if (source.getKeyword(context, "attr")) {
                 attr = source.scanTokensAsString(context, getName());
             } else if (source.getKeyword(context, "page")) {

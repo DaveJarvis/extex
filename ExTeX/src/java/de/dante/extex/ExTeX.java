@@ -1286,8 +1286,8 @@ public class ExTeX {
                     "ExTeX.InvalidPageSize", page));
         }
         try {
-            Dimen width = new Dimen(context, new StringSource(w), null);
-            Dimen height = new Dimen(context, new StringSource(h), null);
+            Dimen width = Dimen.parse(context, new StringSource(w), null);
+            Dimen height = Dimen.parse(context, new StringSource(h), null);
 
             context.setDimen("mediawidth", width, true);
             context.setDimen("mediaheight", height, true);

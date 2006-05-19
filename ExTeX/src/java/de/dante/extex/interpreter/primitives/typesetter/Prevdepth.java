@@ -111,7 +111,7 @@ public class Prevdepth extends AbstractAssignment
             throws InterpreterException {
 
         source.getOptionalEquals(context);
-        Dimen pd = new Dimen(context, source, typesetter);
+        Dimen pd = Dimen.parse(context, source, typesetter);
         if (pd.getValue() < IGNORE) {
             pd = null;
         }

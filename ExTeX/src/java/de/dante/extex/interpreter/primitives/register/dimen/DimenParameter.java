@@ -122,7 +122,7 @@ public class DimenParameter extends DimenPrimitive
             return;
         }
         source.push(t);
-        Dimen d = new Dimen(context, source, typesetter);
+        Dimen d = Dimen.parse(context, source, typesetter);
         context.setDimen(getKey(context, null), d, true);
     }
 
