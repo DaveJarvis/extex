@@ -65,7 +65,6 @@ import de.dante.util.UnicodeChar;
  *        &lang;equals&rang;} {@linkplain
  *        de.dante.extex.interpreter.TokenSource#scanNumber(Context)
  *        &lang;number&rang;}  </pre>
- * </p>
  *
  * <h4>Examples</h4>
  *  <pre class="TeXSample">
