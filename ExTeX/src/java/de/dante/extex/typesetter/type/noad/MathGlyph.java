@@ -211,8 +211,7 @@ public class MathGlyph implements Noad, Serializable {
      */
     public MathSpacing getSpacingClass() {
 
-        // TODO gene: getSpacingClass unimplemented
-        return null;
+        return MathSpacing.ORD; // gene: correct?
     }
 
 }
