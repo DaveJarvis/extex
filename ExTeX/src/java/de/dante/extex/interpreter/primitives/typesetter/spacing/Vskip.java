@@ -88,7 +88,7 @@ public class Vskip extends AbstractVerticalCode implements VerticalSkip {
 
         ensureVerticalMode(typesetter);
         try {
-            typesetter.add(new Glue(source, context, typesetter));
+            typesetter.add(Glue.parse(source, context, typesetter));
         } catch (GeneralException e) {
             throw new InterpreterException(e);
         }
@@ -103,7 +103,7 @@ public class Vskip extends AbstractVerticalCode implements VerticalSkip {
     public FixedGlue getGlue(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
 
-        return new Glue(source, context, typesetter);
+        return Glue.parse(source, context, typesetter);
     }
 
 }

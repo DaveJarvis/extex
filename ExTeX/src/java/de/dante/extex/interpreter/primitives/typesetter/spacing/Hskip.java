@@ -85,7 +85,7 @@ public class Hskip extends AbstractHorizontalCode implements HorizontalSkip {
             throws InterpreterException {
 
         switchToHorizontalMode(typesetter);
-        Glue g = new Glue(source, context, typesetter);
+        Glue g = Glue.parse(source, context, typesetter);
         try {
             typesetter.add(g);
         } catch (TypesetterException e) {
@@ -102,7 +102,7 @@ public class Hskip extends AbstractHorizontalCode implements HorizontalSkip {
     public FixedGlue getGlue(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
 
-        return new Glue(source, context, typesetter);
+        return Glue.parse(source, context, typesetter);
     }
 
 }

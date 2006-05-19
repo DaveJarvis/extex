@@ -95,7 +95,7 @@ public class Kern extends AbstractCode {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        Dimen kern = new Dimen(context, source, typesetter);
+        Dimen kern = Dimen.parse(context, source, typesetter);
         try {
             typesetter.add(new ExplicitKernNode(kern, true));
         } catch (ConfigurationException e) {

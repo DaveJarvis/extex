@@ -58,7 +58,7 @@ import de.dante.util.exception.GeneralException;
  *        &lang;register name&rang;} {@linkplain
  *        de.dante.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@link
- *        de.dante.extex.interpreter.type.glue.Glue#Glue(TokenSource,Context,Typesetter)
+ *        de.dante.extex.interpreter.type.glue.Glue#parse(TokenSource,Context,Typesetter)
  *        &lang;glue&rang;}  </pre>
  *
  * <h4>Examples</h4>
@@ -107,7 +107,7 @@ public class SkipPrimitive extends AbstractSkip
 
         String key = getKey(context, source);
         source.getKeyword(context, "by");
-        Glue g = new Glue(source, context, typesetter);
+        Glue g = Glue.parse(source, context, typesetter);
         g.add(context.getGlue(key));
         context.setGlue(key, g, prefix.isGlobal());
         prefix.clearGlobal();
@@ -126,7 +126,7 @@ public class SkipPrimitive extends AbstractSkip
 
         String key = getKey(context, source);
         source.getOptionalEquals(context);
-        Glue g = new Glue(source, context, typesetter);
+        Glue g = Glue.parse(source, context, typesetter);
         context.setGlue(key, g, prefix.isGlobal());
         prefix.clearGlobal();
     }
