@@ -120,6 +120,11 @@ public final class LoadUnit extends AbstractFactory {
             primitiveFactory.define((Configuration) iterator.next(),
                     tokenFactory, context, typesetter, logger, outputFactory);
         }
+
+        String imp = configuration.getAttribute("import");
+        if (imp != null) {
+            //TODO gene: do import
+        }
     }
 
     /**
