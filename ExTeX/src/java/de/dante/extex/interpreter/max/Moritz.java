@@ -254,6 +254,20 @@ public class Moritz extends Max
      * If the closed stream has been a file stream then the tokens from the
      * tokens register <tt>everyeof</tt> are inserted into the token stream.
      *
+     * <doc name="everyeof" type="register">
+     * <h3>The Tokens Parameter <tt>\everyeof</tt></h3>
+     * <p>
+     *  The tokens parameter <tt>\everyeof</tt> is used whenever a file is
+     *  closed. in this case the tokens contained in this parameter are inserted
+     *  into the current input stream. Thus thus tokens are processed before
+     *  the expansion continues to look for any other tokens from other sources.
+     * </p>
+     *
+     * <h4>Examples</h4>
+     *  <pre class="TeXSample">
+     *    \everyeof={\message{bye bye}}  </pre>
+     * </doc>
+     *
      * @param context the interpreter context
      *
      * @return <code>true</code> iff the closed file has been a file stream

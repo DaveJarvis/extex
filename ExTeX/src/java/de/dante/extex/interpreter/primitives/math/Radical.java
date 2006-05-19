@@ -48,7 +48,7 @@ import de.dante.extex.typesetter.type.noad.RadicalNoad;
  *
  * <h4>Examples</h4>
  *  <pre class="TeXSample">
- *    \radical{a^2 + b^2}  </pre>
+ *    \radical\delimiter"123456{a^2 + b^2}  </pre>
  *
  * </doc>
  *

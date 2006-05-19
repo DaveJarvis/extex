@@ -41,14 +41,15 @@ import de.dante.extex.typesetter.type.noad.OverlinedNoad;
  * <h4>Syntax</h4>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    &lang;span&rang;
- *       &rarr; <tt>\overline</tt> ...  </pre>
+ *    &lang;overline&rang;
+ *       &rarr; <tt>\overline</tt> &lang;math group&rang;  </pre>
  *
  * <h4>Examples</h4>
  *  <pre class="TeXSample">
  *    \overline{abc} </pre>
  *
  * </doc>
+ *
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

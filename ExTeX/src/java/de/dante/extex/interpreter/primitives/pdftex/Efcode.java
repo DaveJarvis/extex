@@ -39,6 +39,7 @@ import de.dante.util.UnicodeChar;
  * <h3>The PDF Primitive <tt>\efcode</tt></h3>
  * <p>
  *  This primitive ...
+ *  TODO gene: missing documentation
  * </p>
  *
  * <h4>Syntax</h4>
@@ -49,7 +50,7 @@ import de.dante.util.UnicodeChar;
  *
  * <h4>Examples</h4>
  *  <pre class="TeXSample">
- *    \pdfnames {...}  </pre>
+ *    \efcode {...}  </pre>
  *
  * </doc>
  *
