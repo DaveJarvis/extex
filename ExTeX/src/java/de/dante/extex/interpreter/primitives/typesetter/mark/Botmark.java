@@ -37,7 +37,8 @@ import de.dante.extex.typesetter.Typesetter;
  * <h4>Syntax</h4>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    <tt>\botmark</tt>  </pre>
+ *    &lang;botmark&rang;
+ *      &rarr; <tt>\botmark</tt>  </pre>
  *
  * <h4>Examples</h4>
  *  <pre class="TeXSample">

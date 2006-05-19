@@ -56,11 +56,11 @@ import de.dante.util.framework.logger.LogEnabled;
  * </p>
  *
  * <doc name="tracingonline" type="register">
- * <h3>The Parameter <tt>\tracingonline</tt></h3>
+ * <h3>The Count Parameter <tt>\tracingonline</tt></h3>
  * <p>
- *  This count register determines whether the tracing should go into
- *  the log file only or put on the standard output stream as well. If
- *  the value is less than 1 then the tracing goes to the log file
+ *  This count register <tt>\tracingonline</tt> determines whether the tracing
+ *  should go into the log file only or put on the standard output stream
+ *  as well. If the value is less than 1 then the tracing goes to the log file
  *  only. Otherwise logging is duplicated to the console as well.
  * </p>
  * </doc>

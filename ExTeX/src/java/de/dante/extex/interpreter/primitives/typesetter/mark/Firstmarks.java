@@ -36,7 +36,10 @@ import de.dante.extex.interpreter.type.tokens.Tokens;
  * <h4>Syntax</h4>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    <tt>\firstmarks</tt> ...  </pre>
+ *    &lang;firstmarks&rang;
+ *      &rarr; <tt>\firstmarks</tt> {@linkplain
+ *        de.dante.extex.interpreter.TokenSource#scanRegisterName(Context,String)
+ *        &lang;mark name&rang;}  </pre>
  *
  * <h4>Examples</h4>
  *  <pre class="TeXSample">
