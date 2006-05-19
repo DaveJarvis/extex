@@ -41,7 +41,7 @@ import de.dante.extex.typesetter.Typesetter;
  *  same name are overwritten.
  * </p>
  * <p>
- *  The definitions are usually performed local to the cureent group. If the
+ *  The definitions are usually performed local to the current group. If the
  *  prefix <tt>\global</tt> is given then the definition is made globally.
  * </p>
  *
