@@ -111,7 +111,7 @@ public class Box implements BoxOrRule, Serializable {
         typesetter.push(lm);
 
         try {
-            context.openGroup(999); //TODO gene: provide correct value
+            context.openGroup(isHorizontal ? 2 : 4); //gene: correct value?
         } catch (ConfigurationException e) {
             throw new InterpreterException(e);
         }
