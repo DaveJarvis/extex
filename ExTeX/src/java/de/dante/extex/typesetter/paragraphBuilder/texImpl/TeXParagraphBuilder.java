@@ -2016,7 +2016,7 @@ public class TeXParagraphBuilder
 
         // if (cur_active_width[3] != 0) || (cur_active_width[4] != 0) || (
         // cur_active_width[5] != 0) then
-        GlueComponent stretch = curActiveWidth.getStretch();
+        FixedGlueComponent stretch = curActiveWidth.getStretch();
         int badness;
         if (stretch.getOrder() > 0) {
             // begin b <-- 0;
