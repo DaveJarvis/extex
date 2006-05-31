@@ -69,4 +69,11 @@ public interface Color extends Serializable {
      */
     Object visit(ColorVisitor visitor, Object value) throws GeneralException;
 
+    /**
+     * Provide the string representation for the color.
+     *
+     * @return the string representation
+     */
+    String toString();
+
 }
