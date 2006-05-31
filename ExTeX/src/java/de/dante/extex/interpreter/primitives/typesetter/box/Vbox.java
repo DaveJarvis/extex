@@ -69,7 +69,7 @@ import de.dante.extex.typesetter.type.NodeList;
  * <doc type="parameter" name="everyvbox">
  * <h3>The Tokens Parameter <tt>\everyvbox</tt></h3>
  * <p>
- *  The tokens parameter is used in <tt>/vbox</tt>. The tokens contained are
+ *  The tokens parameter is used in <tt>\vbox</tt>. The tokens contained are
  *  inserted at the beginning of the vertical material of the vbox.
  * </p>
  * </doc>

@@ -114,6 +114,8 @@ public class Vrule extends AbstractCode implements RuleConvertible {
      * @param source the token source
      * @param typesetter the typesetter
      *
+     * @throws InterpreterException in case of an error
+     *
      * @see de.dante.extex.interpreter.type.Code#execute(
      *      de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
@@ -157,11 +159,11 @@ public class Vrule extends AbstractCode implements RuleConvertible {
 
         for (;;) {
             if (source.getKeyword(context, "width")) {
-                width.set(context, source, typesetter);
+                width = Dimen.parse(context, source, typesetter);
             } else if (source.getKeyword(context, "height")) {
-                height.set(context, source, typesetter);
+                height = Dimen.parse(context, source, typesetter);
             } else if (source.getKeyword(context, "depth")) {
-                depth.set(context, source, typesetter);
+                depth = Dimen.parse(context, source, typesetter);
             } else {
                 break;
             }
