@@ -21,6 +21,8 @@ package de.dante.extex.interpreter.context.extension;
 
 import java.io.Serializable;
 
+import de.dante.extex.interpreter.context.Context;
+
 /**
  * This interface describes the callbacks used for an extension point.
  *
@@ -32,17 +34,23 @@ public interface ExtensionPoint extends Serializable {
     /**
      * This method is invoked upon initialization to prepare everything for
      * proper operation.
+     *
+     * @param context the interpreter context
      */
-    void init();
+    void init(Context context);
 
     /**
      * This method is invoked when a group is opened.
+     *
+     * @param context the interpreter context
      */
-    void beginGroup();
+    void beginGroup(Context context);
 
     /**
      * This method is invoked when a group is closed.
+     *
+     * @param context the interpreter context
      */
-    void endGroup();
+    void endGroup(Context context);
 
 }
