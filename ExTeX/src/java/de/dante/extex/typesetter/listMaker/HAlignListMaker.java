@@ -26,6 +26,7 @@ import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.exception.helping.HelpingException;
+import de.dante.extex.interpreter.primitives.table.Noalign;
 import de.dante.extex.interpreter.primitives.table.Omit;
 import de.dante.extex.interpreter.primitives.table.util.PreambleItem;
 import de.dante.extex.interpreter.type.Code;
@@ -269,8 +270,19 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
             throws TypesetterException {
 
         if (col > 0) {
-            boolean noalign = false; //TODO gene: provide noalign?
-            cr(context, source, noalign );
+            boolean noalign = false;
+            try {
+                Token t = source.getToken(context);
+                if (t instanceof CodeToken
+                        && context.getCode((CodeToken) t) instanceof Noalign) {
+                    noalign = true;
+                } else {
+                    source.push(t);
+                }
+            } catch (InterpreterException e) {
+                throw new TypesetterException(e);
+            }
+            cr(context, source, noalign);
         }
     }
 
