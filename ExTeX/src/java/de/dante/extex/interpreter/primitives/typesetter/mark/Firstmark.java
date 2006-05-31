@@ -31,7 +31,14 @@ import de.dante.extex.typesetter.Typesetter;
  * <doc name="firstmark">
  * <h3>The Primitive <tt>\firstmark</tt></h3>
  * <p>
- *  TODO gene: missing documentation
+ *  The primitive <tt>\firstmark</tt> expands to the first mark on the current
+ *  page. If no mark has been encountered on the current page then it
+ *  expands to the last mark on the previous page. If no mark has been
+ *  placed ever then the primitive expands to the empty token list.
+ * </p>
+ * <p>
+ *  See the documentation of the primitive <tt>\mark</tt> for further
+ *  explanation of marks.
  * </p>
  *
  * <h4>Syntax</h4>

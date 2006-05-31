@@ -55,11 +55,24 @@ public class Glue implements Serializable, FixedGlue {
      * Creates a new object by parsing a token source.
      *
      * <doc type="syntax" name="glue">
+     *
      * <pre class="syntax">
-     *   &lang;glue&rang; </pre>
+     *   &lang;glue&rang;
+     *     &rarr; &lang;component&rang;
+     *      |  &lang;component&rang; plus &lang;component&rang;
+     *      |  &lang;component&rang; minus &lang;component&rang;
+     *      |  &lang;component&rang; plus &lang;component&rang; minus &lang;component&rang;
+     *
+     *   &lang;component&rang;
+     *     &rarr; &lang;dimen;&rang;
+     *       |  &lang;float&rang; &lang;unit&rang;
+     *
+     *   &lang;unit&rang;
+     *     &rarr; fi | fil | fill | filll    </pre>
      * <p>
      *  TODO gene: documentation incomplete
      * </p>
+     *
      * </doc>
      *
      *
