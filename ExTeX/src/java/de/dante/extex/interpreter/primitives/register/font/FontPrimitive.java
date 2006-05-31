@@ -240,8 +240,7 @@ public class FontPrimitive extends AbstractAssignment
         }
 
         Code code = new FontCode(fontId.getName(), font);
-        context.setCode(fontId, code, prefix.isGlobal());
-        prefix.clearGlobal();
+        context.setCode(fontId, code, prefix.clearGlobal());
     }
 
     /**

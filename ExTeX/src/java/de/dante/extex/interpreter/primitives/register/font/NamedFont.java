@@ -68,8 +68,7 @@ public class NamedFont extends AbstractAssignment implements FontConvertible {
         source.getOptionalEquals(context);
 
         Font font = source.getFont(context, getName());
-        context.setFont(key, font, prefix.isGlobal());
-        prefix.clearGlobal();
+        context.setFont(key, font, prefix.clearGlobal());
     }
 
     /**

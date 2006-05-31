@@ -83,49 +83,61 @@ public class FlagsImpl implements Flags {
     /**
      * @see de.dante.extex.interpreter.Flags#clearExpanded()
      */
-    public void clearExpanded() {
+    public boolean clearExpanded() {
 
+        boolean flag = expandedP;
         expandedP = false;
+        return flag;
     }
 
     /**
      * @see de.dante.extex.interpreter.Flags#clearGlobal()
      */
-    public void clearGlobal() {
+    public boolean clearGlobal() {
 
+        boolean flag = globalP;
         globalP = false;
+        return flag;
     }
 
     /**
      * @see de.dante.extex.interpreter.Flags#clearImmediate()
      */
-    public void clearImmediate() {
+    public boolean clearImmediate() {
 
+        boolean flag = immediateP;
         immediateP = false;
+        return flag;
     }
 
     /**
      * @see de.dante.extex.interpreter.Flags#clearLong()
      */
-    public void clearLong() {
+    public boolean clearLong() {
 
+        boolean flag = longP;
         longP = false;
+        return flag;
     }
 
     /**
      * @see de.dante.extex.interpreter.Flags#clearOuter()
      */
-    public void clearOuter() {
+    public boolean clearOuter() {
 
+        boolean flag = outerP;
         outerP = false;
+        return flag;
     }
 
     /**
      * @see de.dante.extex.interpreter.Flags#clearProtected()
      */
-    public void clearProtected() {
+    public boolean clearProtected() {
 
+        boolean flag = protectedP;
         protectedP = false;
+        return flag;
     }
 
     /**

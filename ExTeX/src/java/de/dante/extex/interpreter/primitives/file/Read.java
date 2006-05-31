@@ -146,8 +146,7 @@ public class Read extends AbstractAssignment implements LogEnabled {
                     printableControlSequence(context));
         }
         context.setCode(cs, new MacroCode(cs.getName(), prefix,
-                MacroPattern.EMPTY, toks), prefix.isGlobal());
-        prefix.clearGlobal();
+                MacroPattern.EMPTY, toks), prefix.clearGlobal());
     }
 
     /**

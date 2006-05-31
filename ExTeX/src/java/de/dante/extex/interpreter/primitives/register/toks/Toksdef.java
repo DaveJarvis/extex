@@ -128,8 +128,7 @@ public class Toksdef extends AbstractToks {
         CodeToken cs = source.getControlSequence(context);
         source.getOptionalEquals(context);
         String key = getKey(source, context);
-        context.setCode(cs, new ToksParameter(key), prefix.isGlobal());
-        prefix.clearGlobal();
+        context.setCode(cs, new ToksParameter(key), prefix.clearGlobal());
     }
 
 }

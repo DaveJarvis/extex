@@ -89,8 +89,7 @@ public class NullfontPrimitive extends AbstractCode implements FontConvertible {
             throws InterpreterException {
 
         try {
-            context.set(nullFont, prefix.isGlobal());
-            prefix.clearGlobal();
+            context.set(nullFont, prefix.clearGlobal());
         } catch (ConfigurationException e) {
             throw new InterpreterException(e);
         }

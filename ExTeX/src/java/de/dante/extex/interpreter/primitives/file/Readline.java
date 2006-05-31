@@ -163,8 +163,7 @@ public class Readline extends AbstractAssignment implements LogEnabled {
         }
 
         context.setCode(cs, new MacroCode(cs.getName(), prefix,
-                MacroPattern.EMPTY, toks), prefix.isGlobal());
-        prefix.clearGlobal();
+                MacroPattern.EMPTY, toks), prefix.clearGlobal());
     }
 
     /**

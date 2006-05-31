@@ -108,8 +108,7 @@ public class Sfcode extends AbstractAssignment
                     Integer.toString(MAX_SF_CODE));
         }
 
-        context.setSfcode(charCode, sfCode, prefix.isGlobal());
-        prefix.clearGlobal();
+        context.setSfcode(charCode, sfCode, prefix.clearGlobal());
     }
 
     /**

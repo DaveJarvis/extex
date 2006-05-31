@@ -214,8 +214,7 @@ public class JavaDef extends AbstractAssignment implements Definer {
             throw new HelpingException(getLocalizer(), "ClassNotFound",
                     classname);
         }
-        context.setCode(cs, code, prefix.isGlobal());
-        prefix.setGlobal(false);
+        context.setCode(cs, code, prefix.clearGlobal());
     }
 
 }

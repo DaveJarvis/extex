@@ -115,7 +115,7 @@ public class Closeout extends AbstractCode implements LogEnabled {
         String key = AbstractFileCode.scanOutFileKey(context, source,
                 typesetter);
 
-        if (prefix.isImmediate()) {
+        if (prefix.clearImmediate()) {
             OutFile file = context.getOutFile(key);
             if (file != null) {
                 try {
@@ -124,7 +124,6 @@ public class Closeout extends AbstractCode implements LogEnabled {
                     logger.info(e.getLocalizedMessage() + "\n");
                 }
             }
-            prefix.clearImmediate();
         } else {
             try {
                 typesetter.add(new WhatsItCloseNode(key));

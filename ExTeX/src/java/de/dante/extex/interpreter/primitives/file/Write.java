@@ -157,12 +157,11 @@ public class Write extends AbstractCode
         String key = AbstractFileCode.scanOutFileKey(context, source,
                 typesetter);
 
-        if (prefix.isImmediate()) {
+        if (prefix.clearImmediate()) {
 
             Tokens toks = source.scanUnprotectedTokens(context, false, false,
                     getName());
             write(key, toks, context);
-            prefix.clearImmediate();
 
         } else {
 

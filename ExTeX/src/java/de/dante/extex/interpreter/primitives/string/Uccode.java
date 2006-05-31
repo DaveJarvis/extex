@@ -101,8 +101,7 @@ public class Uccode extends AbstractAssignment
         try {
             UnicodeChar lcCode = source.scanCharacterCode(context, typesetter,
                     getName());
-            context.setUccode(ucCode, lcCode, prefix.isGlobal());
-            prefix.clearGlobal();
+            context.setUccode(ucCode, lcCode, prefix.clearGlobal());
         } catch (InvalidCharacterException e) {
             throw new InvalidCodeException(e.getChar(), Integer
                     .toString(UCharacter.MAX_VALUE));

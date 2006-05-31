@@ -108,10 +108,9 @@ public class Openout extends AbstractFileCode {
 
         OutFile file = new OutFile(new File(name));
 
-        if (prefix.isImmediate()) {
+        if (prefix.clearImmediate()) {
             file.open();
-            context.setOutFile(key, file, prefix.isGlobal());
-            prefix.clearImmediate();
+            context.setOutFile(key, file, prefix.clearGlobal());
         } else {
             try {
                 typesetter.add(new WhatsItOpenNode(key, file));

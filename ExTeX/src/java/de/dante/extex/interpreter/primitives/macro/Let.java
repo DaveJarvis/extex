@@ -391,8 +391,7 @@ public class Let extends AbstractAssignment {
         } catch (Exception e) {
             throw new InterpreterException(e);
         }
-        context.setCode(cs, code, prefix.isGlobal());
-        prefix.clearGlobal();
+        context.setCode(cs, code, prefix.clearGlobal());
     }
 
 }

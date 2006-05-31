@@ -128,8 +128,7 @@ public class Dimendef extends AbstractDimen {
         CodeToken cs = source.getControlSequence(context);
         source.getOptionalEquals(context);
         String key = getKey(context, source);
-        context.setCode(cs, new DimenParameter(key), prefix.isGlobal());
-        prefix.clearGlobal();
+        context.setCode(cs, new DimenParameter(key), prefix.clearGlobal());
     }
 
 }

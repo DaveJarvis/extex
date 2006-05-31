@@ -90,8 +90,7 @@ public class Namespace extends AbstractAssignment
             throws InterpreterException {
 
         Tokens toks = source.getTokens(context, source, typesetter);
-        context.setNamespace(toks.toText(), prefix.isGlobal());
-        prefix.clearGlobal();
+        context.setNamespace(toks.toText(), prefix.clearGlobal());
     }
 
     /**

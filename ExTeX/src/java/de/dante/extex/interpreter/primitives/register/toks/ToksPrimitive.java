@@ -118,8 +118,7 @@ public class ToksPrimitive extends AbstractToks
         String key = getKey(source, context);
         source.getOptionalEquals(context);
         Tokens toks = source.getTokens(context, source, typesetter);
-        context.setToks(key, toks, prefix.isGlobal());
-        prefix.clearGlobal();
+        context.setToks(key, toks, prefix.clearGlobal());
     }
 
     /**
@@ -155,8 +154,7 @@ public class ToksPrimitive extends AbstractToks
             final String key) throws GeneralException {
 
         Tokens toks = source.getTokens(context, source, typesetter);
-        context.setToks(key, toks, prefix.isGlobal());
-        prefix.clear();
+        context.setToks(key, toks, prefix.clearGlobal());
     }
 
     /**

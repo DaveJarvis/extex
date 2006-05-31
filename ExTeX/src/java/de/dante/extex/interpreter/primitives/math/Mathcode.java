@@ -84,8 +84,7 @@ public class Mathcode extends AbstractAssignment {
                 getName());
         source.getOptionalEquals(context);
         Count mathCode = new Count(source.scanNumber(context));
-        context.setMathcode(charCode, mathCode, prefix.isGlobal());
-        prefix.clearGlobal();
+        context.setMathcode(charCode, mathCode, prefix.clearGlobal());
     }
 
 }

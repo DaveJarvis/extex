@@ -104,22 +104,19 @@ public class Def extends AbstractAssignment {
 
         CodeToken cs = source.getControlSequence(context);
         MacroPattern pattern = getPattern(context, source);
-        Tokens body = (!prefix.isExpanded()
+        Tokens body = (!prefix.clearExpanded()
                 ? source.getTokens(context, source, typesetter) //
                 : source
                         .scanUnprotectedTokens(context, false, false, getName()));
         //TODO gene: maybe the treatment of # is incorrect
 
-        MacroCode macroCode = (prefix.isProtected() //
+        MacroCode macroCode = (prefix.clearProtected() //
                 ? new ProtectedMacroCode(cs.getName(), prefix, pattern, body) //
                 : new MacroCode(cs.getName(), prefix, pattern, body));
 
-        context.setCode(cs, macroCode, prefix.isGlobal());
-        prefix.clearGlobal();
-        prefix.clearExpanded();
+        context.setCode(cs, macroCode, prefix.clearGlobal());
         prefix.clearLong();
         prefix.clearOuter();
-        prefix.clearProtected();
     }
 
     /**

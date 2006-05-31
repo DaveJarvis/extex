@@ -129,8 +129,7 @@ public class Countdef extends AbstractCount {
         CodeToken cs = source.getControlSequence(context);
         source.getOptionalEquals(context);
         String key = getKey(context, source, typesetter);
-        context.setCode(cs, new IntegerParameter(key), prefix.isGlobal());
-        prefix.clearGlobal();
+        context.setCode(cs, new IntegerParameter(key), prefix.clearGlobal());
     }
 
 }

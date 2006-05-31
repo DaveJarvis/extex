@@ -69,8 +69,7 @@ public class BoxParameter extends AbstractCode implements Code, Serializable {
         String key = getKey(source, context);
         source.getOptionalEquals(context);
         Box box = source.getBox(prefix, context, typesetter);
-        context.setBox(key, box, prefix.isGlobal());
-        prefix.clearGlobal();
+        context.setBox(key, box, prefix.clearGlobal());
     }
 
     /**

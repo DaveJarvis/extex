@@ -128,8 +128,7 @@ public class Muskipdef extends AbstractMuskip {
         CodeToken cs = source.getControlSequence(context);
         source.getOptionalEquals(context);
         String key = getKey(source, context);
-        context.setCode(cs, new MuskipParameter(key), prefix.isGlobal());
-        prefix.clearGlobal();
+        context.setCode(cs, new MuskipParameter(key), prefix.clearGlobal());
     }
 
 }
