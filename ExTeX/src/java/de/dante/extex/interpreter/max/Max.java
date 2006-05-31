@@ -207,13 +207,6 @@ public abstract class Max
     private ErrorHandler errorHandler = null;
 
     /**
-     * The field <tt>everyRun</tt> contains the String to be inserted at the
-     * beginning of each run. It can be <code>null</code> to denote that
-     * nothing should be inserted.
-     */
-    private String everyRun = null;
-
-    /**
      * The field <tt>localizer</tt> contains the localizer to use.
      */
     private transient Localizer localizer = null;
@@ -496,12 +489,6 @@ public abstract class Max
         makeContext(config);
         context.setTokenFactory(tokenFactory);
         configureHyhenation(config);
-
-        Configuration everyRunConfig = config.findConfiguration("everyjob");
-        if (everyRunConfig != null) {
-            everyRun = everyRunConfig.getValue();
-        }
-
     }
 
     /**
@@ -1181,10 +1168,6 @@ public abstract class Max
 
         if (observersStart != null) {
             observersStart.update(this);
-        }
-
-        if (everyRun != null && everyRun.length() > 0) {
-            addStream(getTokenStreamFactory().newInstance(everyRun));
         }
 
         push(context.getToks("everyjob"));
