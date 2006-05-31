@@ -977,10 +977,10 @@ public class Moritz extends Max
 
     /**
      * This method scans a character code.
-     * <doc type="extension">
+     * <p>
      *  The character code is either a number &ndash; after expansion &ndash; or
      *  the name of a Unicode character in braces.
-     * </doc>
+     * </p>
      *
      * @see de.dante.extex.interpreter.TokenSource#scanCharacterCode(
      *      de.dante.extex.interpreter.context.Context,
