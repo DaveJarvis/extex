@@ -824,7 +824,7 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
                     Namespace.DEFAULT_NAMESPACE));
             Token l = factory.createToken(Catcode.LETTER, 'l',
                     Namespace.DEFAULT_NAMESPACE);
-            for (int i = order; i > 0; i--) {
+            for (int i = order; i > 1; i--) {
                 toks.add(l);
             }
         } else {
