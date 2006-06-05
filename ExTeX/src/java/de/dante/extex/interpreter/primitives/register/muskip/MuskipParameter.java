@@ -32,6 +32,7 @@ import de.dante.extex.interpreter.type.arithmetic.Divideable;
 import de.dante.extex.interpreter.type.arithmetic.Multiplyable;
 import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.interpreter.type.muskip.Muskip;
+import de.dante.extex.interpreter.type.muskip.MuskipConvertible;
 import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.exception.GeneralException;
@@ -51,6 +52,7 @@ import de.dante.util.exception.GeneralException;
  */
 public class MuskipParameter extends AbstractAssignment
         implements
+            MuskipConvertible,
             Advanceable,
             Multiplyable,
             Divideable,
@@ -84,7 +86,7 @@ public class MuskipParameter extends AbstractAssignment
 
         String key = getKey(context, source);
         source.getKeyword(context, "by");
-        Muskip ms = new Muskip(context, source, typesetter);
+        Muskip ms = Muskip.parse(context, source, typesetter);
         ms.add(context.getMuskip(key));
         context.setMuskip(key, ms, prefix.clearGlobal());
     }
@@ -102,8 +104,22 @@ public class MuskipParameter extends AbstractAssignment
 
         String key = getKey(context, source);
         source.getOptionalEquals(context);
-        Muskip skip = new Muskip(context, source, typesetter);
+        Muskip skip = Muskip.parse(context, source, typesetter);
         context.setMuskip(key, skip, prefix.clearGlobal());
+    }
+
+    /**
+     * @see de.dante.extex.interpreter.type.muskip.MuskipConvertible#convertMuskip(
+     *      de.dante.extex.interpreter.context.Context,
+     *      de.dante.extex.interpreter.TokenSource,
+     *      de.dante.extex.typesetter.Typesetter)
+     */
+    public Muskip convertMuskip(final Context context,
+            final TokenSource source, final Typesetter typesetter)
+            throws InterpreterException {
+
+        String key = getKey(context, source);
+        return context.getMuskip(key);
     }
 
     /**
