@@ -26,8 +26,11 @@ import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.exception.helping.EofException;
 import de.dante.extex.interpreter.exception.helping.HelpingException;
+import de.dante.extex.interpreter.type.Code;
+import de.dante.extex.interpreter.type.color.ColorConvertible;
 import de.dante.extex.interpreter.type.glue.GlueComponent;
 import de.dante.extex.interpreter.type.scaled.ScaledNumber;
+import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.scanner.type.token.LeftBraceToken;
 import de.dante.extex.scanner.type.token.RightBraceToken;
 import de.dante.extex.scanner.type.token.Token;
@@ -163,6 +166,44 @@ public final class ColorParser {
      * @throws InterpreterException in case of an error
      */
     public static Color parseColor(final Context context,
+            final TokenSource source, final Typesetter typesetter,
+            final String name) throws InterpreterException {
+
+        Token t = source.getNonSpace(context);
+        Color color = null;
+        if (t instanceof CodeToken) {
+            Code code = context.getCode((CodeToken) t);
+            if (code instanceof ColorConvertible) {
+                color = ((ColorConvertible) code).convertColor(context, source,
+                        typesetter);
+            }
+        } else {
+            source.push(t);
+            color = ColorParser.parseColorConstant(context, source, typesetter,
+                    name);
+        }
+        if (color == null) {
+            throw new HelpingException(LocalizerFactory
+                    .getLocalizer(ColorParser.class.getName()), "MissingColor");
+        }
+
+        return color;
+    }
+
+    /**
+     * Parse a color specification made up of a color constant for one of the
+     * supported color models.
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter
+     * @param name the name of the invoking primitive
+     *
+     * @return the color found
+     *
+     * @throws InterpreterException in case of an error
+     */
+    public static Color parseColorConstant(final Context context,
             final TokenSource source, final Typesetter typesetter,
             final String name) throws InterpreterException {
 
