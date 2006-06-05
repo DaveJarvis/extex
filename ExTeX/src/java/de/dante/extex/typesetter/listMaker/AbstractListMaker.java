@@ -163,7 +163,7 @@ public abstract class AbstractListMaker implements ListMaker {
                         .getLocator()));
                 source.push(context.getToks("everydisplay"));
             }
-            //TODO gene: ??? context.setCount("fam", -1, false);
+            context.setCount("fam", -1, false);
 
         } catch (TypesetterException e) {
             throw e;
