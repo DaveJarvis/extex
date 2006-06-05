@@ -34,7 +34,7 @@ import de.dante.extex.typesetter.Typesetter;
  * <h3>The Primitive <tt>\ignorespaces</tt></h3>
  * <p>
  *  The primitive <tt>\ignorespaces</tt> arranges that the scanner discards
- *  following whitespace.
+ *  following white-space.
  * </p>
  *
  * <h4>Syntax</h4>
