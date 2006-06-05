@@ -144,7 +144,7 @@ public class MathContext {
      */
     public Dimen convert(final Mudimen mudimen) throws TypesetterException {
 
-        Dimen length = new Dimen(mudimen.getLength());
+        Dimen length = new Dimen(mudimen.getLength().getValue());
         length.multiply(mathParameter(MathFontParameter.MATH_QUAD, style)
                 .getValue(), MU_UNIT);
 
