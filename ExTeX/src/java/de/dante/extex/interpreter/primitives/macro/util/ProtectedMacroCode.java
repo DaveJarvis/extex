@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.macro;
+package de.dante.extex.interpreter.primitives.macro.util;
 
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.type.ProtectedCode;
