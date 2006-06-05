@@ -82,7 +82,7 @@ public class Mskip extends AbstractMathCode {
             throws InterpreterException {
 
         NoadConsumer nc = getListMaker(context, typesetter);
-        nc.add(new Muskip(context, source, typesetter));
+        nc.add(Muskip.parse(context, source, typesetter));
     }
 
 }
