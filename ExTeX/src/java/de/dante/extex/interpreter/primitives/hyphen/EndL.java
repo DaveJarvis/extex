@@ -37,7 +37,14 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
  * <doc name="endL">
  * <h3>The Primitive <tt>\endL</tt></h3>
  * <p>
- *  TODO gene: missing documentation
+ *  The primitive <tt>\endL</tt> indicates that the following text is typeset
+ *  in the way it was before the matching
+ *  {@link de.dante.extex.interpreter.primitives.hyphen.BeginL \beginL}
+ *  has been encountered.
+ * </p>
+ * <p>
+ *  This primitive is deactivated unless the count register <tt>\TeXXeTstate</tt>
+ *  has a positive value.
  * </p>
  *
  * <h4>Syntax</h4>
@@ -47,7 +54,7 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
  *
  * <h4>Example:</h4>
  *  <pre class="TeXSample">
- *   \endL  </pre>
+ *   \beginL ... \endL  </pre>
  *
  * </doc>
  *
