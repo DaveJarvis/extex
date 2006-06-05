@@ -38,7 +38,7 @@ import de.dante.extex.interpreter.type.tokens.Tokens;
  *  <pre class="syntax">
  *    &lang;splitfirstmarks&rang;
  *      &rarr; <tt>\splitfirstmarks</tt> {@linkplain
- *        de.dante.extex.interpreter.TokenSource#scanRegisterName(Context,String)
+ *        de.dante.extex.interpreter.primitives.typesetter.mark.AbstractMarksCode#getKey(Context,TokenSource,Typesetter)
  *        &lang;mark name&rang;}  </pre>
  *
  * <h4>Examples</h4>

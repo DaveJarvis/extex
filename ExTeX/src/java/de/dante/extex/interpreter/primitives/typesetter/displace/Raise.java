@@ -33,7 +33,13 @@ import de.dante.extex.typesetter.Typesetter;
  * <doc name="raise">
  * <h3>The Primitive <tt>\raise</tt></h3>
  * <p>
- *  TODO missing documentation
+ *  The primitive <tt>\raise</tt> takes a box and a length and shifts up the
+ *  amount specified by the length. If the length is negative then the shift
+ *  is done downwards.
+ * </p>
+ * <p>
+ *  The primitive <tt>\lower</tt> is the counterpart to
+ *  {@link de.dante.extex.interpreter.primitives.typesetter.displace.Lower \lower}.
  * </p>
  *
  * <h4>Syntax</h4>
@@ -55,6 +61,7 @@ import de.dante.extex.typesetter.Typesetter;
  *    \raise 2mm \hbox spread 12pt {abc}  </pre>
  *
  * </doc>
+ *
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

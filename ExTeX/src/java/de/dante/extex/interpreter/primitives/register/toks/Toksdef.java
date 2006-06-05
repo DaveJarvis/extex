@@ -50,7 +50,7 @@ import de.dante.extex.typesetter.Typesetter;
  * The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;toksdef&rang;
- *      &rarr; &lang;modifier&rang; <tt>\toksdef</tt> {@linkplain
+ *      &rarr; &lang;optional prefix&rang; <tt>\toksdef</tt> {@linkplain
  *        de.dante.extex.interpreter.TokenSource#getControlSequence(Context)
  *        &lang;control sequence&rang;} {@linkplain
  *        de.dante.extex.interpreter.TokenSource#getOptionalEquals(Context)
@@ -58,9 +58,9 @@ import de.dante.extex.typesetter.Typesetter;
  *        de.dante.extex.interpreter.TokenSource#scanRegisterName(Context,String)
  *        &lang;register name&rang;}
  *
- *    &lang;modifier&rang;
+ *    &lang;optional prefix&rang;
  *      &rarr;
- *       |  <tt>\global</tt>  </pre>
+ *       |  <tt>\global</tt> &lang;optional prefix&rang;  </pre>
  *
  * <h4>Examples</h4>
  *  <pre class="TeXSample">

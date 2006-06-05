@@ -33,7 +33,13 @@ import de.dante.extex.typesetter.Typesetter;
  * <doc name="moveright">
  * <h3>The Primitive <tt>\moveright</tt></h3>
  * <p>
- *  TODO missing documentation
+ *  The primitive <tt>\moderight</tt> takes a box and a length and moves it
+ *  rightwards by the amount specified by the length.
+ *  If the length is negative then the move is done leftwards.
+ * </p>
+ * <p>
+ *  The primitive <tt>\moveright</tt> is the counterpart to
+ *  {@link de.dante.extex.interpreter.primitives.typesetter.displace.Moveleft \moveleft}.
  * </p>
  *
  * <h4>Syntax</h4>

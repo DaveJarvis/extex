@@ -50,8 +50,8 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
  *  <pre class="syntax">
  *    &lang;box&rang;
  *      &rarr; <tt>\box</tt> {@linkplain
- *        de.dante.extex.interpreter.TokenSource#scanRegisterName(Context,String)
- *        &lang;register name&rang;} </pre>
+ *        de.dante.extex.interpreter.primitives.register.box.AbstractBox#getKey(Context,Source,String)
+ *        &lang;box register name&rang;} </pre>
  *
  * <h4>Examples</h4>
  *  <pre class="TeXSample">

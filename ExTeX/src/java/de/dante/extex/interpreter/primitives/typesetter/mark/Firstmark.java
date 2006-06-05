@@ -37,8 +37,9 @@ import de.dante.extex.typesetter.Typesetter;
  *  placed ever then the primitive expands to the empty token list.
  * </p>
  * <p>
- *  See the documentation of the primitive <tt>\mark</tt> for further
- *  explanation of marks.
+ *  See the documentation of the primitive
+ *  {@link de.dante.extex.interpreter.primitives.typesetter.mark.Mark \mark}
+ *  for further explanation of marks.
  * </p>
  *
  * <h4>Syntax</h4>
@@ -52,6 +53,7 @@ import de.dante.extex.typesetter.Typesetter;
  *    \firstmark  </pre>
  *
  * </doc>
+ *
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
