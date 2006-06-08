@@ -392,7 +392,7 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
                 }
             }
         }
-        throw new EofException("???");
+        throw new EofException();
     }
 
     /**

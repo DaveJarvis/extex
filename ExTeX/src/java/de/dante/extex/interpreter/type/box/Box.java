@@ -94,7 +94,7 @@ public class Box implements BoxOrRule, Serializable {
         Token t = source.getToken(context);
 
         if (t == null) {
-            throw new EofException(null);
+            throw new EofException();
         } else if (!t.isa(Catcode.LEFTBRACE)) {
             throw new MissingLeftBraceException(null);
         }

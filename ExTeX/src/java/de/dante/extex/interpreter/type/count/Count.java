@@ -102,7 +102,7 @@ public class Count implements Serializable, FixedCount {
         Token t = source.getNonSpace(context);
 
         if (t == null) {
-            throw new EofException(null);
+            throw new EofException();
         }
 
         source.push(t);
