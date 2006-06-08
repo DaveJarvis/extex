@@ -64,8 +64,8 @@ import de.dante.util.framework.logger.LogEnabled;
  *  <pre class="syntax">
  *    &lang;read&rang;
  *      &rarr; &lang;optional prefix&rang;<tt>\read</tt> {@linkplain
- *        de.dante.extex.interpreter.TokenSource#scanNumber(Context)
- *        &lang;8-bit&nbsp;number&rang;} <tt>to</tt> {@linkplain
+ *        de.dante.extex.interpreter.primitives.file.AbstractFileCode#scanInFileKey(Context,TokenSource,Typesetter)
+ *        &lang;infile&nbsp;name&rang;} <tt>to</tt> {@linkplain
  *        de.dante.extex.interpreter.TokenSource#getControlSequence(Context)
  *        &lang;control sequence&rang;}
  *

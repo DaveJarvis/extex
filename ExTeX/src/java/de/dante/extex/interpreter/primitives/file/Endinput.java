@@ -47,7 +47,7 @@ import de.dante.extex.typesetter.Typesetter;
  *
  * <h4>Examples</h4>
  *  <pre class="TeXSample">
- *    \endinput  ... and some ignored text</pre>
+ *    \endinput   and some ignored text</pre>
  * </doc>
  *
  *

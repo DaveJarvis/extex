@@ -53,8 +53,8 @@ import de.dante.util.framework.logger.LogEnabled;
  *  <pre class="syntax">
  *    &lang;closeout&rang;
  *       &rarr; <tt>\closeout</tt> {@linkplain
- *       de.dante.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
- *       &lang;number&rang;} </pre>
+ *        de.dante.extex.interpreter.primitives.file.AbstractFileCode#scanOutFileKey(Context,TokenSource,Typesetter)
+ *        &lang;outfile&nbsp;name&rang;} </pre>
  * </p>
  *
  * <h4>Examples</h4>

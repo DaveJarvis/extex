@@ -65,11 +65,11 @@ import de.dante.extex.typesetter.Typesetter;
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;colordef&rang;
- *      &rarr; &lang;prefix&rang; <tt>\colordef</tt> {@linkplain
+ *      &rarr; &lang;optional prefix&rang; <tt>\colordef</tt> {@linkplain
  *       de.dante.extex.interpreter.TokenSource#getControlSequence(Context)
  *       &lang;control sequence&rang;} &lang;color&rang;
  *
- *    &lang;prefix&rang;
+ *    &lang;optional prefix&rang;
  *      &rarr;
  *       |  <tt>\global</tt>   </pre>
  *

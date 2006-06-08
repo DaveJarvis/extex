@@ -51,7 +51,7 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
  *    &lang;rule specification&rang;
  *        &rarr; {@linkplain
  *            de.dante.extex.interpreter.TokenSource#skipSpace()
- *            &lang;optional spaces&rang;}
+ *            &lang;optional&nbsp;spaces&rang;}
  *         |  &lang;rule dimension&rang; &lang;rule specification&rang;
  *
  *    &lang;rule dimension&rang;

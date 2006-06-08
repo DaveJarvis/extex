@@ -54,13 +54,17 @@ import de.dante.extex.typesetter.Typesetter;
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;dimen&rang;
- *      &rarr; &lang;prefix&rang; <tt>\dimen</tt> {@linkplain
+ *      &rarr; &lang;optional prefix&rang; <tt>\dimen</tt> {@linkplain
  *        de.dante.extex.interpreter.TokenSource#scanRegisterName(Context,String)
  *        &lang;register name&rang;} {@linkplain
  *        de.dante.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@link
  *        de.dante.extex.interpreter.type.dimen.Dimen#parse(Context,TokenSource,Typesetter)
- *        &lang;dimen value&rang;}  </pre>
+ *        &lang;dimen value&rang;}
+ *
+ *   &lang;optional prefix&rang;
+ *     &rarr;
+ *      |  <tt>\global</tt> &lang;optional prefix&rang;  </pre>
  *
  * <h4>Examples</h4>
  * <pre class="TeXSample">
