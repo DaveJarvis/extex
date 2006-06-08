@@ -19,6 +19,8 @@
 
 package de.dante.extex.interpreter.primitives.register.count;
 
+import java.lang.Integer;
+
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
