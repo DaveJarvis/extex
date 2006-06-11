@@ -34,7 +34,7 @@ import de.dante.extex.typesetter.type.node.HorizontalListNode;
 import de.dante.extex.typesetter.type.node.LigatureNode;
 import de.dante.extex.typesetter.type.node.factory.NodeFactory;
 import de.dante.extex.typesetter.type.node.factory.SimpleNodeFactory;
-import de.dante.test.CMR10;
+import de.dante.test.font.CMR10;
 import de.dante.util.UnicodeChar;
 
 /**
