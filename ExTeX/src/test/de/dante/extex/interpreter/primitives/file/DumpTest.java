@@ -71,6 +71,21 @@ public class DumpTest extends NoFlagsPrimitiveTester {
     public void test1() throws Exception {
 
         assertOutput(//--- input code ---
+                "\\dump \\end",
+                //--- log message ---
+                "Beginning to dump on file texput.fmt\n", "");
+    }
+
+    /**
+     * <testcase primitive="\dump">
+     *  Test case checking that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test2() throws Exception {
+
+        assertOutput(//--- input code ---
                 "\\font\\x= cmr10 \\count1=123 \\dump \\end",
                 //--- log message ---
                 "Beginning to dump on file texput.fmt\n", "");
