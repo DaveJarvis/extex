@@ -46,7 +46,7 @@ public class InputTest extends NoFlagsPrimitiveTester {
      */
     public InputTest(final String arg) {
 
-        super(arg, "input", " src/test/data/empty.tex ", "\\nonstopmode");
+        super(arg, "input", " develop/test/data/empty.tex ", "\\nonstopmode");
     }
 
     /**
@@ -59,7 +59,7 @@ public class InputTest extends NoFlagsPrimitiveTester {
     public void test0() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\input src/test/data/empty.tex",
+                "\\input develop/test/data/empty.tex",
                 //--- output channel ---
                 "");
     }
@@ -74,7 +74,7 @@ public class InputTest extends NoFlagsPrimitiveTester {
     public void ________________________testErr0() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\input src/test/data/DoesNotExist",
+                "\\input develop/test/data/DoesNotExist",
                 //--- output channel ---
                 "");
     }

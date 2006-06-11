@@ -46,7 +46,7 @@ public class OpeninTest extends NoFlagsPrimitiveTester {
      */
     public OpeninTest(final String arg) {
 
-        super(arg, "openin", "1 src/test/data/empty.tex ");
+        super(arg, "openin", "1 develop/test/data/empty.tex ");
     }
 
     /**

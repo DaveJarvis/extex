@@ -72,9 +72,10 @@ public final class TestTeX {
     }
 
     /**
-     * Run ExTeX with a special File and compare the output with a output-test-file.
-     * @param texfile   the tx-file
-     * @param outfile   the output-test-file
+     * Run ExTeX with a special file and compare the output with a output test file.
+     *
+     * @param texfile   the tex file
+     * @param outfile   the output test file
      * @exception Exception iff an error occurs; iff the two files are
      *     not equals AssertionFailedError
      */
@@ -115,7 +116,7 @@ public final class TestTeX {
 
     public static void test(final String basename) throws Exception {
 
-        test(basename, "src/test/data/" + basename + ".testtxt");
+        test(basename, "develop/test/data/" + basename + ".testtxt");
     }
 
     /**
