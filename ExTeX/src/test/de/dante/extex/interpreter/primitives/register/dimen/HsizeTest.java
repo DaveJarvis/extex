@@ -45,6 +45,7 @@ public class HsizeTest extends AbstractDimenRegisterTester {
     public HsizeTest(final String arg) {
 
         super(arg, "hsize", "", "0.0pt");
+        setHsize(false);
     }
 
     //TODO implement the primitive specific test cases
