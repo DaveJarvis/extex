@@ -150,7 +150,7 @@ public class Showbox extends AbstractBox implements LogEnabled {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        String key = getKey(context, source, getName());
+        String key = getKey(context, source, typesetter, getName());
         Box b = context.getBox(key);
 
         if (b == null) {

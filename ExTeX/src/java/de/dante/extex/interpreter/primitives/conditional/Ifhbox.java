@@ -86,7 +86,7 @@ public class Ifhbox extends AbstractIf {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        String key = AbstractBox.getKey(context, source, getName());
+        String key = AbstractBox.getKey(context, source, typesetter, getName());
         Box box = context.getBox(key);
         return (box != null && box.isHbox());
     }

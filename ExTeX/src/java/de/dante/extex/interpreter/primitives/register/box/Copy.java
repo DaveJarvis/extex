@@ -92,7 +92,7 @@ public class Copy extends BoxPrimitive implements Boxable, Serializable {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        String key = getKey(context, source, getName());
+        String key = getKey(context, source, typesetter, getName());
         Box box = context.getBox(key);
         if (box != null) {
             try {

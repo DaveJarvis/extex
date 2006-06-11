@@ -153,7 +153,7 @@ public class Dp extends Setbox
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        Box box = context.getBox(getKey(context, source, getName()));
+        Box box = context.getBox(getKey(context, source, typesetter, getName()));
         source.getOptionalEquals(context);
         Dimen d = Dimen.parse(context, source, typesetter);
 
@@ -185,7 +185,7 @@ public class Dp extends Setbox
             final Typesetter typesetter) throws InterpreterException {
 
         try {
-            Box box = context.getBox(getKey(context, source, getName()));
+            Box box = context.getBox(getKey(context, source, typesetter, getName()));
             FixedDimen d = (box == null ? Dimen.ZERO_PT : box.getDepth());
             return d.toToks(context.getTokenFactory());
         } catch (GeneralException e) {
@@ -212,7 +212,7 @@ public class Dp extends Setbox
     public long convertDimen(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
 
-        Box b = context.getBox(getKey(context, source, getName()));
+        Box b = context.getBox(getKey(context, source, typesetter, getName()));
         return (b == null ? 0 : b.getDepth().getValue());
     }
 
