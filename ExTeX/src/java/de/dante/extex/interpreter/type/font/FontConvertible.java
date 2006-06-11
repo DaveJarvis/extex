@@ -21,6 +21,7 @@ package de.dante.extex.interpreter.type.font;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
+import de.dante.extex.typesetter.Typesetter;
 
 /**
  * This is an interface which describes the feature to be convertible into a
@@ -60,12 +61,13 @@ public interface FontConvertible {
      *
      * @param context the interpreter context
      * @param source the source for new tokens
+     * @param typesetter the typesetter
      *
      * @return the converted value
      *
      * @throws InterpreterException In case of an error
      */
-    Font convertFont(Context context, TokenSource source)
+    Font convertFont(Context context, TokenSource source, Typesetter typesetter)
             throws InterpreterException;
 
 }
