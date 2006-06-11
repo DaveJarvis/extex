@@ -475,12 +475,13 @@ public interface Context
      * as values. A maximal value can be enforced by an implementation.
      *
      * @param mag the new magnification factor
+     * @param lock lock the new value. Thus it can not be alterd afterwards.
      *
      * @throws HelpingException in case that the magnification factor is
      *  not in the allowed range or that the magnification has been
      *  set to a different value earlier.
      */
-    void setMagnification(long mag) throws HelpingException;
+    void setMagnification(long mag, boolean lock) throws HelpingException;
 
     /**
      * Setter for the mathcode of a character

@@ -1756,16 +1756,18 @@ public class ContextImpl
      * <tt>maximalMaginification</tt>.
      * The default value for the maximal magnification is 32768.
      *
-     * @see de.dante.extex.interpreter.context.Context#setMagnification(long)
+     * @see de.dante.extex.interpreter.context.Context#setMagnification(long, boolean)
      */
-    public void setMagnification(final long mag) throws HelpingException {
+    public void setMagnification(final long mag, final boolean lock)
+            throws HelpingException {
+
 
         if (magnificationLock && this.magnification != mag) {
             throw new HelpingException(localizer, "TTP.IncompatibleMag", //
                     Long.toString(mag), Long.toString(magnification));
         }
 
-        magnificationLock = true;
+        magnificationLock |= lock;
 
         if (mag < 1 || mag > magnificationMax) {
             throw new HelpingException(localizer, "TTP.IllegalMag", //
