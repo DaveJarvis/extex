@@ -88,9 +88,11 @@ public final class TFM2XML extends AbstractFontUtil {
             // pfb file
             InputStream pfbin = getFinder().findResource(pfbfile, "");
             if (pfbin == null) {
-                throw new FileNotFoundException(pfbfile);
+                // throw new FileNotFoundException(pfbfile);
+                System.err.println("Warning: file " + pfbfile + " not found!");
+            } else {
+                font.setPfbParser(new PfbParser(pfbin));
             }
-            font.setPfbParser(new PfbParser(pfbin));
         }
 
         // write to xml-file
