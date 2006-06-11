@@ -152,7 +152,7 @@ public class Fontcharht extends AbstractCode
             return (height != null ? height : Dimen.ZERO_PT);
 
         } catch (EofException e) {
-            throw new EofException(context.esc(getName()));
+            throw new EofException(printableControlSequence(context));
         }
     }
 

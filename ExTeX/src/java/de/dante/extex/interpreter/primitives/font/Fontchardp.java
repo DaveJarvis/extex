@@ -152,7 +152,7 @@ public class Fontchardp extends AbstractCode
             return (depth != null ? depth : Dimen.ZERO_PT);
 
         } catch (EofException e) {
-            throw new EofException(context.esc(getName()));
+            throw new EofException(printableControlSequence(context));
         }
     }
 

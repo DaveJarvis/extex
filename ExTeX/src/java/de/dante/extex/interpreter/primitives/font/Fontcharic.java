@@ -154,7 +154,7 @@ public class Fontcharic extends AbstractCode
             return (ic != null ? ic : Dimen.ZERO_PT);
 
         } catch (EofException e) {
-            throw new EofException(context.esc(getName()));
+            throw new EofException(printableControlSequence(context));
         }
     }
 

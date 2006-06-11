@@ -153,7 +153,7 @@ public class Fontcharwd extends AbstractCode
             return (width != null ? width : Dimen.ZERO_PT);
 
         } catch (EofException e) {
-            throw new EofException(context.esc(getName()));
+            throw new EofException(printableControlSequence(context));
         }
     }
 
