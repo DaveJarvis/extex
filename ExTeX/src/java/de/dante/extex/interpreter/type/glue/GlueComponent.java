@@ -180,7 +180,7 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
             }
         }
 
-        value = ScaledNumber.scanFloat(context, source, t);
+        value = ScaledNumber.scanFloat(context, source, typesetter, t);
 
         long mag = 1000;
         if (source.getKeyword(context, "true")) { // cf. TTP[453], TTP[457]
