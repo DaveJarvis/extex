@@ -124,7 +124,7 @@ public class RelaxTest extends NoFlagsPrimitiveTester {
         assertSuccess(//--- input code ---
                 "\\relax %1234 \n\r\\end",
                 //--- output channel ---
-                "\n");
+                "");
     }
 
 }
