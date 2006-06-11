@@ -60,7 +60,7 @@ public class UppercaseTest extends NoFlagsPrimitiveTester {
         assertFailure(//--- input code ---
                 "\\uppercase",
                 //--- log message ---
-                "Unexpected end of file while processing tokens");
+                "Unexpected end of file while processing \\uppercase");
     }
 
     /**
