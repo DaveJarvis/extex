@@ -94,7 +94,7 @@ public class DimenParameter extends DimenPrimitive
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource)
      */
-    protected String getKey(final Context context, final TokenSource source) {
+    protected String getKey(final Context context, final TokenSource source, Typesetter typesetter) {
 
         return key;
     }
@@ -123,7 +123,7 @@ public class DimenParameter extends DimenPrimitive
         }
         source.push(t);
         Dimen d = Dimen.parse(context, source, typesetter);
-        context.setDimen(getKey(context, null), d, true);
+        context.setDimen(getKey(context, null, typesetter), d, true);
     }
 
 }

@@ -142,7 +142,7 @@ public class Vsplit extends AbstractBox implements Boxable, LogEnabled {
     private NodeList vsplit(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
 
-        String key = getKey(context, source, getName());
+        String key = getKey(context, source, typesetter, getName());
         if (!source.getKeyword(context, "to")) {
             throw new HelpingException(getLocalizer(), "TTP.MissingToForVsplit");
         }

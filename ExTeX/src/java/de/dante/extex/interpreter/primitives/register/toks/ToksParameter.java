@@ -109,7 +109,7 @@ public class ToksParameter extends ToksPrimitive
      *
      * @return the key for the tokens register
      */
-    protected String getKey(final TokenSource source, final Context context) {
+    protected String getKey(final Context context, final TokenSource source, Typesetter typesetter) {
 
         if (Namespace.SUPPORT_NAMESPACE_TOKS) {
             return context.getNamespace() + "\b" + key;
@@ -132,7 +132,7 @@ public class ToksParameter extends ToksPrimitive
                     .getToken(context)) {
                 toks.add(t);
             }
-            context.setToks(getKey((TokenSource) null, context), toks, true);
+            context.setToks(getKey(context, (TokenSource) null, typesetter), toks, true);
         }
     }
 

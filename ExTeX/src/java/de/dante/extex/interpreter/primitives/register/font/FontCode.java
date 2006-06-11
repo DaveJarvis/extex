@@ -94,10 +94,11 @@ public class FontCode extends AbstractCode implements FontConvertible, Theable {
     /**
      * @see de.dante.extex.interpreter.type.font.FontConvertible#convertFont(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource)
+     *      de.dante.extex.interpreter.TokenSource,
+     *      de.dante.extex.typesetter.Typesetter)
      */
-    public Font convertFont(final Context context, final TokenSource source)
-            throws InterpreterException {
+    public Font convertFont(final Context context, final TokenSource source,
+            final Typesetter typesetter) throws InterpreterException {
 
         return font;
     }
