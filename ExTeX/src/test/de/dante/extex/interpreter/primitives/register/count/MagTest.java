@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter.primitives.register.count;
 
-import de.dante.test.ExTeXLauncher;
+import de.dante.test.NoFlagsButGlobalAndImmediatePrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>\mag</tt>.
@@ -27,7 +27,7 @@ import de.dante.test.ExTeXLauncher;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class MagTest extends ExTeXLauncher {
+public class MagTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
 
     /**
      * Command line interface.
@@ -45,7 +45,7 @@ public class MagTest extends ExTeXLauncher {
      */
     public MagTest(final String arg) {
 
-        super(arg);
+        super(arg, "mag", "=999");
     }
 
     /**
