@@ -365,8 +365,7 @@ public class ScanNumberTest extends ExTeXLauncher {
     public void testscanNumber40() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\catcode`{=1"
-                + "\\catcode`}=2"
+                DEFINE_BRACES
                 + "\\def\\mac{}"
                 + "\\escapechar=\\mac-456\\relax"
                 + "\\the\\escapechar"
@@ -385,8 +384,7 @@ public class ScanNumberTest extends ExTeXLauncher {
     public void testscanNumber41() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\catcode`{=1"
-                + "\\catcode`}=2"
+                DEFINE_BRACES
                 + "\\def\\mac{-}"
                 + "\\escapechar=\\mac-456\\relax"
                 + "\\the\\escapechar"
@@ -405,8 +403,7 @@ public class ScanNumberTest extends ExTeXLauncher {
     public void testscanNumber42() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\catcode`{=1"
-                + "\\catcode`}=2"
+                DEFINE_BRACES
                 + "\\def\\mac{}"
                 + "\\escapechar=-\\mac456\\relax"
                 + "\\the\\escapechar"
@@ -425,8 +422,7 @@ public class ScanNumberTest extends ExTeXLauncher {
     public void testscanNumber43() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\catcode`{=1"
-                + "\\catcode`}=2"
+                DEFINE_BRACES
                 + "\\def\\mac{-}"
                 + "\\escapechar=-\\mac456\\relax"
                 + "\\the\\escapechar"
@@ -445,8 +441,7 @@ public class ScanNumberTest extends ExTeXLauncher {
     public void testscanNumber44() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\catcode`{=1"
-                + "\\catcode`}=2"
+                DEFINE_BRACES
                 + "\\def\\mac{-1}"
                 + "\\escapechar=-\\mac456\\relax"
                 + "\\the\\escapechar"
@@ -465,8 +460,7 @@ public class ScanNumberTest extends ExTeXLauncher {
     public void testscanNumber45() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\catcode`{=1"
-                + "\\catcode`}=2"
+                DEFINE_BRACES
                 + "\\def\\mac{1}"
                 + "\\escapechar=-\\mac45\\mac6\\relax"
                 + "\\the\\escapechar"
