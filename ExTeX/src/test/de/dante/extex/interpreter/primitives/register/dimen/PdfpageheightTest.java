@@ -54,7 +54,7 @@ public class PdfpageheightTest extends AbstractDimenRegisterTester {
      */
     public PdfpageheightTest(final String arg) {
 
-        super(arg, "pdfpageheight", "", "0.0pt");
+        super(arg, "pdfpageheight", "", "845.04684pt");
     }
 
     //TODO implement the primitive specific test cases

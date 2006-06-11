@@ -54,7 +54,7 @@ public class PdfpkresolutionTest extends AbstractCountRegisterTester {
      */
     public PdfpkresolutionTest(final String arg) {
 
-        super(arg, "pdfpkresolution", "", "0");
+        super(arg, "pdfpkresolution", "", "600");
     }
 
     //TODO implement the primitive specific test cases
