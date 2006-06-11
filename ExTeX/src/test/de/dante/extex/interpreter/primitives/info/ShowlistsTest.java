@@ -55,7 +55,8 @@ public class ShowlistsTest extends NoFlagsPrimitiveTester {
         assertFailure(p, //--- input code ---
                 "\\showlists\\end ",
                 //--- error channel ---
-                "### vertical mode entered at line 0\n" + "prevdepth ignored\n");
+                "### vertical mode entered at line 0\n" + "prevdepth ignored\n"
+                + "No pages of output.\nTranscript written on .\\texput.log.\n");
     }
 
     /**
@@ -75,15 +76,16 @@ public class ShowlistsTest extends NoFlagsPrimitiveTester {
                 "### restricted horizontal mode entered at line 1\n"
                         + "spacefactor 1000\n"
                         + "### vertical mode entered at line 0\n"
-                        + "prevdepth ignored\n",
+                        + "prevdepth ignored\n"
+                        + "No pages of output.\nTranscript written on .\\texput.log.\n",
                 //
-                TERM);
+                "");
     }
 
     /**
-     * Prepar the properties to use a fine log level.
+     * Prepare the properties to use a fine log level.
      *
-     * @return te properties to use
+     * @return the properties to use
      */
     private Properties prepare() {
 
