@@ -16,10 +16,10 @@
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
+
 package de.dante.extex.interpreter.observer.streamClose;
 
 import de.dante.extex.scanner.stream.TokenStream;
-
 
 /**
  * This interface describes the ability to receive a notification just before
