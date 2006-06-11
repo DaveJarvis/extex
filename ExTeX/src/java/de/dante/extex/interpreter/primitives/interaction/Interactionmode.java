@@ -28,6 +28,7 @@ import de.dante.extex.interpreter.interaction.Interaction;
 import de.dante.extex.interpreter.interaction.InteractionUnknownException;
 import de.dante.extex.interpreter.type.AbstractAssignment;
 import de.dante.extex.interpreter.type.Theable;
+import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.interpreter.type.count.CountConvertible;
 import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.typesetter.Typesetter;
@@ -91,7 +92,7 @@ public class Interactionmode extends AbstractAssignment
             throws InterpreterException {
 
         source.getOptionalEquals(context);
-        long mode = source.scanNumber(context);
+        long mode = Count.scanNumber(context, source, typesetter);
         context.setInteraction(Interaction.get((int) mode));
     }
 

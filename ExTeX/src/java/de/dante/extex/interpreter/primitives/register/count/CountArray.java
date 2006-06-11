@@ -22,6 +22,7 @@ package de.dante.extex.interpreter.primitives.register.count;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
+import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.typesetter.Typesetter;
 
 /**
@@ -51,12 +52,13 @@ public class CountArray extends CountPrimitive {
     /**
      * @see de.dante.extex.interpreter.primitives.register.count.AbstractCount#getKey(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource)
+     *      de.dante.extex.interpreter.TokenSource,
+     *      de.dante.extex.typesetter.Typesetter)
      */
     protected String getKey(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
 
-        long no = source.scanInteger(context, typesetter);
+        long no = Count.scanInteger(context, source, typesetter);
         return getName() + Long.toString(no);
     }
 

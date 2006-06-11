@@ -26,6 +26,7 @@ import de.dante.extex.interpreter.exception.ImpossibleException;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.exception.helping.HelpingException;
 import de.dante.extex.interpreter.type.Code;
+import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
@@ -114,7 +115,7 @@ public class Ifcase extends AbstractIf {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        long branch = source.scanInteger(context, typesetter);
+        long branch = Count.scanInteger(context, source, typesetter);
         if (branch < 0) {
             if (skipToElseOrFi(context, source)) {
                 context.pushConditional(source.getLocator(), true, this, -1,

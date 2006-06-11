@@ -83,7 +83,7 @@ public class Mathcode extends AbstractAssignment {
         UnicodeChar charCode = source.scanCharacterCode(context, typesetter,
                 getName());
         source.getOptionalEquals(context);
-        Count mathCode = new Count(source.scanNumber(context));
+        Count mathCode = Count.parse(context, source, typesetter);
         context.setMathcode(charCode, mathCode, prefix.clearGlobal());
     }
 

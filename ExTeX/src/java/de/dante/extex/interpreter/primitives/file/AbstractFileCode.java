@@ -25,6 +25,7 @@ import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.exception.helping.BadFileNumberException;
 import de.dante.extex.interpreter.exception.helping.EofException;
 import de.dante.extex.interpreter.type.AbstractCode;
+import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.scanner.type.Catcode;
 import de.dante.extex.scanner.type.token.SpaceToken;
 import de.dante.extex.scanner.type.token.Token;
@@ -96,7 +97,7 @@ public abstract class AbstractFileCode extends AbstractCode
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        long no = source.scanInteger(context, typesetter);
+        long no = Count.scanNumber(context, source, typesetter);
         String key = Long.toString(no);
 
         if (no < 0 || no > MAX_IN_FILE_NO) {
@@ -140,7 +141,7 @@ public abstract class AbstractFileCode extends AbstractCode
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        long no = source.scanInteger(context, typesetter);
+        long no = Count.scanNumber(context, source, typesetter);
         return Long.toString(no);
     }
 

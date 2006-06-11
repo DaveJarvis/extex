@@ -29,6 +29,7 @@ import de.dante.extex.interpreter.exception.helping.EofException;
 import de.dante.extex.interpreter.type.AbstractAssignment;
 import de.dante.extex.interpreter.type.ExpandableCode;
 import de.dante.extex.interpreter.type.Theable;
+import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.interpreter.type.count.CountConvertible;
 import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.interpreter.type.tokens.Tokens;
@@ -112,7 +113,7 @@ public class Hyphenchar extends AbstractAssignment
         try {
             Font font = source.getFont(context, getName());
             source.getOptionalEquals(context);
-            long c = source.scanInteger(context, typesetter);
+            long c = Count.scanInteger(context, source, typesetter);
             if (c < 0) {
                 font.setHyphenChar(null);
             } else if (c < UCharacter.MIN_VALUE || c > UCharacter.MAX_VALUE) {

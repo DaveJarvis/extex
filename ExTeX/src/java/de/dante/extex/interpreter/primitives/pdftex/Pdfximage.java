@@ -24,6 +24,7 @@ import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
+import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.exception.TypesetterException;
@@ -101,7 +102,7 @@ public class Pdfximage extends AbstractPdftexCode {
             } else if (source.getKeyword(context, "attr")) {
                 attr = source.scanTokensAsString(context, getName());
             } else if (source.getKeyword(context, "page")) {
-                page = source.scanInteger(context, typesetter);
+                page = Count.scanInteger(context, source, typesetter);
             } else {
                 break;
             }

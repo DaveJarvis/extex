@@ -24,6 +24,7 @@ import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.Theable;
+import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.language.Language;
 import de.dante.extex.language.hyphenation.exception.HyphenationException;
@@ -79,7 +80,7 @@ public class HyphenActive extends AbstractHyphenationCode implements Theable {
 
         Language table = getHyphenationTable(context);
         source.getOptionalEquals(context);
-        boolean active = (source.scanInteger(context, typesetter) == 0);
+        boolean active = (Count.scanInteger(context, source, typesetter) == 0);
         try {
             table.setHyphenActive(active);
         } catch (HyphenationException e) {

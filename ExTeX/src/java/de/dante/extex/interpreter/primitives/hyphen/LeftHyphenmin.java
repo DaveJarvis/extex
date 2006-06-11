@@ -28,6 +28,7 @@ import de.dante.extex.interpreter.type.Theable;
 import de.dante.extex.interpreter.type.arithmetic.Advanceable;
 import de.dante.extex.interpreter.type.arithmetic.Divideable;
 import de.dante.extex.interpreter.type.arithmetic.Multiplyable;
+import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.interpreter.type.count.CountConvertible;
 import de.dante.extex.interpreter.type.dimen.DimenConvertible;
 import de.dante.extex.interpreter.type.tokens.Tokens;
@@ -116,7 +117,7 @@ public class LeftHyphenmin extends AbstractHyphenationCode
         Language table = getHyphenationTable(context);
         source.getKeyword(context, "by");
         long lefthyphenmin = table.getLeftHyphenmin();
-        lefthyphenmin += source.scanInteger(context, typesetter);
+        lefthyphenmin += Count.scanInteger(context, source, typesetter);
 
         try {
             table.setLeftHyphenmin(lefthyphenmin);
@@ -178,7 +179,7 @@ public class LeftHyphenmin extends AbstractHyphenationCode
         Language table = getHyphenationTable(context);
         source.getKeyword(context, "by");
         long lefthyphenmin = table.getLeftHyphenmin();
-        long arg = source.scanInteger(context, typesetter);
+        long arg = Count.scanInteger(context, source, typesetter);
         if (arg == 0) {
             throw new ArithmeticOverflowException(
                     printableControlSequence(context));
@@ -223,7 +224,7 @@ public class LeftHyphenmin extends AbstractHyphenationCode
 
         Language table = getHyphenationTable(context);
         source.getOptionalEquals(context);
-        long lefthyphenmin = source.scanInteger(context, typesetter);
+        long lefthyphenmin = Count.scanInteger(context, source, typesetter);
 
         try {
             table.setLeftHyphenmin(lefthyphenmin);
@@ -261,7 +262,7 @@ public class LeftHyphenmin extends AbstractHyphenationCode
         Language table = getHyphenationTable(context);
         source.getKeyword(context, "by");
         long lefthyphenmin = table.getLeftHyphenmin();
-        lefthyphenmin *= source.scanInteger(context, typesetter);
+        lefthyphenmin *= Count.scanInteger(context, source, typesetter);
 
         try {
             table.setLeftHyphenmin(lefthyphenmin);

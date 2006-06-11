@@ -66,7 +66,7 @@ public class BoolDef extends AbstractAssignment {
         CodeToken token = source.getControlSequence(context);
         source.getOptionalEquals(context);
         String key = "bool#"
-                + Long.toString(Count.scanCount(context, source, typesetter));
+                + Long.toString(Count.scanInteger(context, source, typesetter));
         context.setCode(token, new NamedBool(key), prefix.isGlobal());
     }
 }

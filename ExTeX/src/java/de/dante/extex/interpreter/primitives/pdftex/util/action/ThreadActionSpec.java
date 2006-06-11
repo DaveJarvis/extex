@@ -54,7 +54,7 @@ public class ThreadActionSpec extends ActionSpec {
             file = source.scanTokensAsString(context, name);
         }
 
-        IdSpec id = IdSpec.parseIdSpec(source, context, name);
+        IdSpec id = IdSpec.parseIdSpec(context, source, typesetter, name);
 
         return new ThreadActionSpec(file, id);
     }

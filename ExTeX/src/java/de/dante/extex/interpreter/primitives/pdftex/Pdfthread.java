@@ -103,7 +103,7 @@ public class Pdfthread extends AbstractPdftexCode {
             }
         }
 
-        IdSpec id = IdSpec.parseIdSpec(source, context, getName());
+        IdSpec id = IdSpec.parseIdSpec(context, source, typesetter, getName());
 
         PdfThread thread = new PdfThread(new RuleNode(width, height, depth,
                 null, true), attr, id);

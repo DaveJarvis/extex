@@ -23,6 +23,7 @@ import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
+import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.type.node.pdftex.PdfRefObj;
@@ -84,7 +85,7 @@ public class Pdfrefobj extends AbstractPdftexCode {
 
         ensurePdftex(context, typesetter);
 
-        long no = source.scanNumber(context);
+        long no = Count.scanNumber(context, source, typesetter);
 
         try {
             typesetter.add(new PdfRefObj(no));

@@ -28,6 +28,7 @@ import de.dante.extex.interpreter.exception.helping.HelpingException;
 import de.dante.extex.interpreter.primitives.Relax;
 import de.dante.extex.interpreter.type.AbstractCode;
 import de.dante.extex.interpreter.type.Theable;
+import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.interpreter.type.count.CountConvertible;
 import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.scanner.type.Catcode;
@@ -312,7 +313,7 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
         }
 
         source.push(t);
-        return source.scanNumber(context);
+        return Count.scanNumber(context, source, typesetter);
     }
 
     /**

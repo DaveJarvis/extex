@@ -22,6 +22,7 @@ package de.dante.extex.interpreter.primitives.conditional;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
+import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.typesetter.Typesetter;
 
 /**
@@ -81,7 +82,7 @@ public class Ifodd extends AbstractIf {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        return ((source.scanInteger(context, typesetter) & 1) == 1);
+        return ((Count.scanInteger(context, source, typesetter) & 1) == 1);
     }
 
 }

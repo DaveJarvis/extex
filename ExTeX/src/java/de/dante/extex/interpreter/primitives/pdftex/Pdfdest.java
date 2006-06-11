@@ -84,7 +84,7 @@ public class Pdfdest extends AbstractPdftexCode {
 
         ensurePdftex(context, typesetter);
 
-        IdSpec id = IdSpec.parseIdSpec(source, context, getName());
+        IdSpec id = IdSpec.parseIdSpec(context, source, typesetter, getName());
         DestType type = DestType.parseDestType(context, source, typesetter,
                 getName());
 

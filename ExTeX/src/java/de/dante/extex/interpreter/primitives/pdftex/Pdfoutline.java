@@ -25,6 +25,7 @@ import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.primitives.pdftex.util.action.ActionSpec;
+import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.typesetter.Typesetter;
 
 /**
@@ -87,7 +88,7 @@ public class Pdfoutline extends AbstractPdftexCode {
                 typesetter, getName());
         long count = 0;
         if (source.getKeyword(context, "count")) {
-            count = source.scanInteger(context, typesetter);
+            count = Count.scanInteger(context, source, typesetter);
         }
 
         String text = source.scanTokensAsString(context, getName());
