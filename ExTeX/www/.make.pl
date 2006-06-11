@@ -270,6 +270,8 @@ sub includeFile
       includeFile($fromdir,".info",$out,$top,$fromdir);
     } elsif ( m|<tabs[ ]*/>|i ) {
       includeFile($fromdir,".tabs",$out,$top,$fromdir);
+    } elsif ( m|<include[ ]*src="(.*)"/>|i ) {
+      includeFile($fromdir,$1,$out,$top,$fromdir);
     } elsif ( m|<directory[ ]*/>|i ) {
 
       print $out "  <table>\n";
