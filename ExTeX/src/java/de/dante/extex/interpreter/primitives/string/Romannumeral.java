@@ -26,6 +26,7 @@ import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.AbstractCode;
 import de.dante.extex.interpreter.type.ExpandableCode;
+import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.scanner.type.Catcode;
 import de.dante.extex.scanner.type.CatcodeException;
@@ -115,7 +116,7 @@ public class Romannumeral extends AbstractCode implements ExpandableCode {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        long n = source.scanInteger(context, typesetter);
+        long n = Count.scanInteger(context, source, typesetter);
         Tokens toks = new Tokens();
         TokenFactory factory = context.getTokenFactory();
         int j = 0;

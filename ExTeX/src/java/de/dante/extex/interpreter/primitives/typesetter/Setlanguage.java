@@ -24,6 +24,7 @@ import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.primitives.register.box.AbstractBox;
+import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.scanner.type.token.LeftBraceToken;
 import de.dante.extex.scanner.type.token.Token;
@@ -144,7 +145,7 @@ public class Setlanguage extends AbstractBox {
             Tokens tokens = source.getTokens(context, source, typesetter);
             context.setToks("lang", tokens, false);
         } else {
-            long no = source.scanInteger(context, typesetter);
+            long no = Count.scanInteger(context, source, typesetter);
             context.setCount("language", no, false);
             context.setToks("lang", Tokens.EMPTY, false);
         }

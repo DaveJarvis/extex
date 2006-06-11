@@ -107,7 +107,7 @@ public class Bool implements Serializable {
 
         source.push(tok);
         if (tok.getChar().isDigit()) {
-            return (new Bool(Count.scanCount(context, source, null)))
+            return (new Bool(Count.scanInteger(context, source, null)))
                     .getValue();
         }
 

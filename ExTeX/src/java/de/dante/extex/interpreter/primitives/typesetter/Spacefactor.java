@@ -115,7 +115,7 @@ public class Spacefactor extends AbstractCode
             throws InterpreterException {
 
         source.getOptionalEquals(context);
-        long factor = source.scanInteger(context, typesetter);
+        long factor = Count.scanInteger(context, source, typesetter);
 
         try {
             typesetter.setSpacefactor(new Count(factor));

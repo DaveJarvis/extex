@@ -165,7 +165,7 @@ public abstract class AbstractMarksCode extends AbstractCode
             final Typesetter typesetter) throws InterpreterException {
 
         return source.scanRegisterName(context,
-                printableControlSequence(context));
+                source, typesetter, printableControlSequence(context));
     }
 
     /**

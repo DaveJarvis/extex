@@ -64,7 +64,7 @@ public class TransformDef extends AbstractAssignment {
         CodeToken tok = source.getControlSequence(context);
         source.getOptionalEquals(context);
         String key = "transform#"
-                + Long.toString(Count.scanCount(context, source, typesetter));
+                + Long.toString(Count.scanInteger(context, source, typesetter));
         context.setCode(tok, new NamedTransform(key), prefix.isGlobal());
         prefix.clearGlobal();
     }

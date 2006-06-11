@@ -101,7 +101,7 @@ public class Sfcode extends AbstractAssignment
         UnicodeChar charCode = source.scanCharacterCode(context, typesetter,
                 getName());
         source.getOptionalEquals(context);
-        Count sfCode = new Count(source.scanInteger(context, typesetter));
+        Count sfCode = Count.parse(context, source, typesetter);
 
         if (sfCode.lt(Count.ZERO) || sfCode.getValue() > MAX_SF_CODE) {
             throw new InvalidCodeException(sfCode.toString(), //
