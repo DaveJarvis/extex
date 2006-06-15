@@ -36,7 +36,7 @@ import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.typesetter.Typesetter;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class provides an object which acts like a count register.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
