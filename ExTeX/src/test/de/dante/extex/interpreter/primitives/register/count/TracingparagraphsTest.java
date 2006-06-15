@@ -45,6 +45,7 @@ public class TracingparagraphsTest extends AbstractCountRegisterTester {
     public TracingparagraphsTest(final String arg) {
 
         super(arg, "tracingparagraphs", "", "0");
+        setDefaultLog(null); // ignore log output in some inherited test cases
     }
 
     //TODO implement the primitive specific test cases
