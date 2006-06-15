@@ -97,6 +97,16 @@ public abstract class NoFlagsPrimitiveTester extends ExTeXLauncher {
     }
 
     /**
+     * Add some code to the end of the preparation code.
+     *
+     * @param add addition
+     */
+    public void appendToPrepare(final String add) {
+
+        this.prepare = this.prepare + add;
+    }
+
+    /**
      * <testcase>
      *  Test case checking that the prefix <tt>\global</tt> leads to the
      *  expected error message
