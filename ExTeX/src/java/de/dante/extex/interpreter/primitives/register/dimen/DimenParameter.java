@@ -92,9 +92,11 @@ public class DimenParameter extends DimenPrimitive
      *
      * @see de.dante.extex.interpreter.primitives.register.dimen.AbstractDimen#getKey(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource)
+     *      de.dante.extex.interpreter.TokenSource,
+     *      de.dante.extex.typesetter.Typesetter)
      */
-    protected String getKey(final Context context, final TokenSource source, Typesetter typesetter) {
+    protected String getKey(final Context context, final TokenSource source,
+            final Typesetter typesetter) {
 
         return key;
     }

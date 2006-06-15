@@ -38,7 +38,7 @@ import de.dante.extex.interpreter.type.tokens.Tokens;
  * </p>
  * <p>
  *  See the documentation of the primitive
- *  {@link de.dante.extex.interpreter.primitives.typesetter.mark.Marks \marks}
+ *  {@link de.dante.extex.interpreter.primitives.typesetter.mark.Marks <tt>\marks</tt>}
  *  for further explanation of marks.
  * </p>
  *

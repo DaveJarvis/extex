@@ -47,7 +47,7 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
  *  <logo>TeX</logo> has another mechanism for describing conditional text
  *  insertions when line breaking appears at a certain place. Those are
  *  associated with the primitive
- *  {@link de.dante.extex.interpreter.primitives.hyphen.Discretionary \discretionary}.
+ *  {@link de.dante.extex.interpreter.primitives.hyphen.Discretionary <tt>\discretionary</tt>}.
  *  In this context the primitive <tt>\-</tt> is an abbreviation for
  *  <tt>\discretionary{-}{}{}</tt>.
  * </p>

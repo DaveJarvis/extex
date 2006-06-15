@@ -72,7 +72,8 @@ public class Prevgraf extends CountPrimitive {
     /**
      * @see de.dante.extex.interpreter.primitives.register.count.AbstractCount#getKey(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource)
+     *      de.dante.extex.interpreter.TokenSource,
+     *      de.dante.extex.typesetter.Typesetter)
      */
     protected String getKey(final Context context, final TokenSource source,
             final Typesetter typesetter) {

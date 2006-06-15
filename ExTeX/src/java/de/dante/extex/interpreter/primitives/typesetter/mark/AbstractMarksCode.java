@@ -130,9 +130,9 @@ public abstract class AbstractMarksCode extends AbstractCode
      *  Thus it can normally not be entered easily since the catcode of the
      *  period is OTHER but needs to be LETTER. Thus you have to use a
      *  temporarily reassigned category code (see
-     *  {@link de.dante.extex.interpreter.primitives.register.CatcodePrimitive \catcode})
+     *  {@link de.dante.extex.interpreter.primitives.register.CatcodePrimitive <tt>\catcode</tt>)
      *   or use
-     *  {@link de.dante.extex.interpreter.primitives.macro.Csname \csname}.
+     *  {@link de.dante.extex.interpreter.primitives.macro.Csname <tt>\csname</tt>}.
      * </p>
      *
      * <h4>Syntax</h4>

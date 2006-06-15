@@ -39,7 +39,7 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
  * <p>
  *  The primitive <tt>\endL</tt> indicates that the following text is typeset
  *  in the way it was before the matching
- *  {@link de.dante.extex.interpreter.primitives.hyphen.BeginL \beginL}
+ *  {@link de.dante.extex.interpreter.primitives.hyphen.BeginL <tt>\beginL</tt>}
  *  has been encountered.
  * </p>
  * <p>

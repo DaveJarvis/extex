@@ -36,7 +36,7 @@ import de.dante.extex.typesetter.Typesetter;
  *  The primitive <tt>\endgroup</tt> closes the current group all properties are
  *  reset to the values they had before the group had been entered. A group is
  *  usually opened with 
- *  {@link de.dante.extex.interpreter.primitives.group.Begingroup \begingroup}.
+ *  {@link de.dante.extex.interpreter.primitives.group.Begingroup <tt>\begingroup</tt>}.
  * </p>
  * <p>
  *  If no group has been opened then an error is raised.

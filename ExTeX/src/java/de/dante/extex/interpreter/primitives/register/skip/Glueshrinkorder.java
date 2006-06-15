@@ -52,7 +52,7 @@ import de.dante.extex.typesetter.Typesetter;
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;glueshrinkorder&rang;
- *      &rarr; <tt>\glueshrinkorder</tt> {@link
+ *      &rarr; <tt>\glueshrinkorder</tt> {@linkplain
  *        de.dante.extex.interpreter.type.glue.Glue#parse(TokenSource,Context,Typesetter)
  *        &lang;glue&rang;} </pre>
  *

@@ -45,7 +45,7 @@ import de.dante.util.framework.i18n.Localizer;
  * <h3>The Primitive <tt>\csname</tt></h3>
  * <p>
  *  The primitive <tt>\csname</tt> absorbs further tokens until a matching
- *  {@link de.dante.extex.interpreter.primitives.macro.Endcsname \endcsname}
+ *  {@link de.dante.extex.interpreter.primitives.macro.Endcsname <tt>\endcsname</tt>}
  *  is found. The tokens found are expanded. Spaces are ignored. The expansion
  *  should lead to character tokens only. A new token is constructed from the
  *  characters. The escape character is the current escape character.

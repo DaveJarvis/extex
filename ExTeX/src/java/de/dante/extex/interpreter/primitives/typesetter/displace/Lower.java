@@ -39,7 +39,7 @@ import de.dante.extex.typesetter.Typesetter;
  * </p>
  * <p>
  *  The primitive <tt>\lower</tt> is the counterpart to
- *  {@link de.dante.extex.interpreter.primitives.typesetter.displace.Raise \raise}.
+ *  {@link de.dante.extex.interpreter.primitives.typesetter.displace.Raise <tt>\raise</tt>}.
  * </p>
  *
  * <h4>Syntax</h4>

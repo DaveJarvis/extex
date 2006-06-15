@@ -50,7 +50,7 @@ import de.dante.util.framework.logger.LogEnabled;
  *  the end of line is encountered. The characters are translated to tokens
  *  with the category code OTHER except the white-space characters which receive
  *  the category code SPACE. This mapping is performed ignoring the setting
- *  of {@linkplain de.dante.extex.interpreter.primitives.register.CatcodePrimitive \catcode}.
+ *  of {@linkplain de.dante.extex.interpreter.primitives.register.CatcodePrimitive <tt>\catcode</tt>}.
  *  The resulting token list is bound to the control sequence given.
  * </p>
  *
