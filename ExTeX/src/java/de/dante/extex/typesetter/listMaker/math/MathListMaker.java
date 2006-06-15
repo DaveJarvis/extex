@@ -620,9 +620,11 @@ public class MathListMaker extends HorizontalListMaker
      * @param symbol the symbol to add
      * @param locator the locator
      *
-     * @see de.dante.extex.typesetter.ListMaker#add(
+     * @see de.dante.extex.typesetter.ListMaker#letter(
+     *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.context.TypesettingContext,
-     *      de.dante.util.UnicodeChar)
+     *      de.dante.util.UnicodeChar,
+     *      de.dante.util.Locator)
      */
     public void letter(final Context context, final TypesettingContext tc,
             final UnicodeChar symbol, final Locator locator) {

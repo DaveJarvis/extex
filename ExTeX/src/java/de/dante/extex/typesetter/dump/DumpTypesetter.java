@@ -58,7 +58,7 @@ public class DumpTypesetter extends TypesetterImpl {
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#addGlue(
+     * @see de.dante.extex.typesetter.ListMaker#add(
      *      de.dante.extex.interpreter.type.glue.FixedGlue)
      */
     public void add(final FixedGlue g) throws TypesetterException {
@@ -80,7 +80,8 @@ public class DumpTypesetter extends TypesetterImpl {
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#complete(TypesetterOptions)
+     * @see de.dante.extex.typesetter.ListMaker#complete(
+     *      de.dante.extex.typesetter.TypesetterOptions)
      */
     public NodeList complete(final TypesetterOptions context)
             throws TypesetterException,

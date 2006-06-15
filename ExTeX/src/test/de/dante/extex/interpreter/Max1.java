@@ -274,9 +274,10 @@ public class Max1 extends TestCase {
 
         /**
          * @see de.dante.extex.typesetter.ListMaker#letter(
-         *      Context,
+         *      de.dante.extex.interpreter.context.Context,
          *      de.dante.extex.interpreter.context.TypesettingContext,
-         *      de.dante.util.UnicodeChar)
+         *      de.dante.util.UnicodeChar,
+         *      de.dante.util.Locator)
          */
         public void letter(final Context context, final TypesettingContext tc,
                 final UnicodeChar uc, final Locator locator)
@@ -286,7 +287,9 @@ public class Max1 extends TestCase {
 
         /**
          * @see de.dante.extex.typesetter.ListMaker#mathShift(
-         *      Context, TokenSource, de.dante.extex.scanner.type.token.Token)
+         *      de.dante.extex.interpreter.context.Context,
+         *      de.dante.extex.interpreter.TokenSource,
+         *      de.dante.extex.scanner.type.token.Token)
          */
         public void mathShift(final Context context, final TokenSource source,
                 final Token t)
