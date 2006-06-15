@@ -108,7 +108,7 @@ public class Mudimen implements Serializable {
      *  <pre class="syntax">
      *    &lang;mudimen&rang;
      *      &rarr; &lang;float&rang; <tt>mu</tt>
-     *       |  &lang;mudimen variable&lang;
+     *       |  &lang;mudimen variable&rang;
      * </pre>
      *  The value of &lang;mudimen&rang; is either a floating point number
      *  followed by the unit <tt>mu</tt> or a variable value resulting in a
