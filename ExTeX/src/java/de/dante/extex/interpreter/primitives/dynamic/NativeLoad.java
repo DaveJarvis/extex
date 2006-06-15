@@ -121,7 +121,7 @@ import de.dante.util.framework.logger.LogEnabled;
  *  be added easily.
  * </p>
  *
- * <pre>
+ * <pre class="Configuration">
  *  &lt;define name="nativeload"
  *          class="de.dante.extex.interpreter.primitives.dynamic.NativeLoad"&gt;
  *    &lt;load name="java"
