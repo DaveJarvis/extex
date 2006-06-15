@@ -722,11 +722,15 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
             return false;
         }
 
-        do {
-            if (pointer < line.length()) {
-                return false;
-            }
-        } while (refill());
+        try {
+            do {
+                if (pointer < line.length()) {
+                    return false;
+                }
+            } while (refill());
+        } catch (ScannerException e) {
+            return true;
+        }
 
         return true;
     }
