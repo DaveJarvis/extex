@@ -264,6 +264,17 @@ public class Moritz extends Max
      *  the expansion continues to look for any other tokens from other sources.
      * </p>
      *
+     *
+     * <h4>Syntax</h4>
+     *  The formal description of this primitive is the following:
+     *  <pre class="syntax">
+     *    &lang;everyveof&rang;
+     *      &rarr; <tt>\everyeof</tt> {@linkplain
+     *        de.dante.extex.interpreter.TokenSource#getOptionalEquals(Context)
+     *        &lang;equals&rang;} {@linkplain
+     *        de.dante.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
+     *        &lang;tokens&rang;}  </pre>
+     *
      * <h4>Examples</h4>
      *  <pre class="TeXSample">
      *    \everyeof={\message{bye bye}}  </pre>

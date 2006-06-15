@@ -49,9 +49,8 @@ import de.dante.extex.typesetter.Typesetter;
  *       |  <tt>\ifcsname</tt> ... <tt>\endcsname</tt> &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt>  </pre>
  *
  * <h4>Examples</h4>
- *  <pre class="syntax">
- *    &lang;ifcsname&rang;
- *     &rarr; <tt>\ifcsname</tt>def\endcsname ok\fi</pre>
+ *  <pre class="TeXSample">
+ *     \ifcsname def\endcsname ok\fi  </pre>
  * </doc>
  *
  *
