@@ -93,7 +93,7 @@ public class IfvmodeTest extends ExTeXLauncher {
                 + "\\catcode`}=2 "
                 + "\\vbox{\\ifvmode a\\else b\\fi}\\end",
                 //--- output channel ---
-                "a\n" + TERM);
+                "a\n\n" + TERM);
     }
 
     /**

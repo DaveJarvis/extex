@@ -76,7 +76,7 @@ public class BoxTest extends NoFlagsPrimitiveTester {
         assertSuccess(//--- input code ---
                 DEFINE_BRACES + "\\setbox1\\hbox{A}\\box1\\end",
                 //--- output channel ---
-                "A\n" + TERM);
+                "A" + TERM);
     }
 
     /**
@@ -91,7 +91,7 @@ public class BoxTest extends NoFlagsPrimitiveTester {
         assertSuccess(//--- input code ---
                 DEFINE_BRACES + "\\setbox1\\hbox{A}\\box1\\box1\\end",
                 //--- output channel ---
-                "A\n" + TERM);
+                "A" + TERM);
     }
 
 }

@@ -117,14 +117,15 @@ public class SetboxTest extends NoFlagsButGlobalPrimitiveTester {
      */
     public void testOK1() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertOutput(//--- input code ---
                 DEFINE_BRACES
+                + "\\font\\f cmr10 \\f"
                 + "\\setbox 12=\\hbox{abc}"
-                + "\\count0=\\wd12 "
-                + "\\the\\count0 "
+                + "\\showthe\\wd12 "
                 + "\\end",
+                "> 15.27782pt.\n", // gene: value computed by TeX
                 //--- output channel ---
-                "0" + TERM);
+                "");
     }
 
 }

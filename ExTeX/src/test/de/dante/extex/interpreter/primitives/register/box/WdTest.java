@@ -76,7 +76,7 @@ public class WdTest extends NoFlagsPrimitiveTester {
         assertFailure(//--- input code ---
                 "\\wd 12 ",
                 //--- log message ---
-                "Illegal unit of measure (pt inserted)");
+                "Missing number, treated as zero");
     }
 
     /**

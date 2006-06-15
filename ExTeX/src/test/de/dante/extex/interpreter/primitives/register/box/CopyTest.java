@@ -76,7 +76,7 @@ public class CopyTest extends NoFlagsPrimitiveTester {
         assertSuccess(//--- input code ---
                 DEFINE_BRACES + "\\setbox1\\hbox{A}\\copy1\\end",
                 //--- output channel ---
-                "A\n" + TERM);
+                "A" + TERM);
     }
 
     /**
