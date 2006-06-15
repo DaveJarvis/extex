@@ -59,7 +59,7 @@ import de.dante.util.UnicodeChar;
  *  The following table contains the category codes with their meaning and the
  *  mapping to numerical values.
  * </p>
- * <table format="lrl">
+ * <table format="lrp{.6\textwidth}">
  *  <tr><td>ESCAPE</td><td>0</td>
  *   <td>This character code signals the beginning of an escape sequence.
  *    The following letters are absorbed into the name. If the following token
