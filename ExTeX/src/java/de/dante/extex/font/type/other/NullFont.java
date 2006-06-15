@@ -30,7 +30,6 @@ import de.dante.extex.font.type.BoundingBox;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.interpreter.type.glue.Glue;
-import de.dante.extex.typesetter.type.node.HorizontalListNode;
 import de.dante.util.UnicodeChar;
 
 /**
@@ -211,14 +210,6 @@ public class NullFont implements Font, Serializable {
     public boolean isVirtualFont() {
 
         return false;
-    }
-
-    /**
-     * @see de.dante.extex.font.type.Fount#getNodeList(de.dante.util.UnicodeChar)
-     */
-    public HorizontalListNode getNodeList(final UnicodeChar uc) {
-
-        return null;
     }
 
     /**
