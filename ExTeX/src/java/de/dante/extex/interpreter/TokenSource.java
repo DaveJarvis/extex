@@ -250,6 +250,14 @@ public interface TokenSource {
             throws InterpreterException;
 
     /**
+     * Getter for the token just previously read from the token source.
+     * This is something like a look-back function.
+     *
+     * @return the last token or <code>null</code> if not available
+     */
+    Token getLastToken();
+
+    /**
      * Getter for the locator.
      * The locator provides a means to get the information where something is
      * coming from. Usually it points to a line in a file.
@@ -680,6 +688,24 @@ public interface TokenSource {
             throws InterpreterException;
 
     /**
+     * Get the next expanded token form the input streams between a left brace
+     * character (usually <code>{</code>) and a right brace character
+     * (usually <code>}</code>) and convert it to a <code>String</code>. If the
+     * current input stream is at its end then the next one on the streamStack
+     * is used until a token could be read. If all stream are at the end then
+     * <code>null</code> is returned.
+     *
+     * @param context the interpreter context
+     * @param primitive the name of the invoking primitive for error handling
+     *
+     * @return the next tokens as <code>String</code> or <code>null</code>
+     *
+     * @throws InterpreterException in case of an error
+     */
+    String scanTokensAsString(Context context, String primitive)
+            throws InterpreterException;
+
+    /**
      * Get the next expanded token form the input streams between <code>{</code>
      * and <code>}</code>. If the current input stream is at its end then the
      * next one on the streamStack is used until a token could be read. If all
@@ -703,24 +729,6 @@ public interface TokenSource {
      */
     Tokens scanUnprotectedTokens(Context context, boolean reportUndefined,
             boolean ignoreUndefined, String primitive)
-            throws InterpreterException;
-
-    /**
-     * Get the next expanded token form the input streams between a left brace
-     * character (usually <code>{</code>) and a right brace character
-     * (usually <code>}</code>) and convert it to a <code>String</code>. If the
-     * current input stream is at its end then the next one on the streamStack
-     * is used until a token could be read. If all stream are at the end then
-     * <code>null</code> is returned.
-     *
-     * @param context the interpreter context
-     * @param primitive the name of the invoking primitive for error handling
-     *
-     * @return the next tokens as <code>String</code> or <code>null</code>
-     *
-     * @throws InterpreterException in case of an error
-     */
-    String scanTokensAsString(Context context, String primitive)
             throws InterpreterException;
 
     /**

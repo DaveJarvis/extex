@@ -22,6 +22,7 @@ package de.dante.extex.interpreter.primitives.typesetter.box;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.context.group.GroupType;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.exception.helping.CantUseInException;
 import de.dante.extex.interpreter.primitives.register.box.AbstractBox;
@@ -91,7 +92,8 @@ public class Vadjust extends AbstractBox {
         }
         Flags flags = prefix.copy();
         prefix.clear();
-        Box b = new Box(context, source, typesetter, false, null);
+        Box b = new Box(context, source, typesetter, false, null,
+                GroupType.VBOX_GROUP, source.getLastToken());
 
         try {
             typesetter.add(new AdjustNode(b.getNodes()));

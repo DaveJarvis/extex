@@ -23,6 +23,7 @@ import de.dante.extex.backend.BackendDriver;
 import de.dante.extex.interpreter.Interpreter;
 import de.dante.extex.interpreter.Namespace;
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.context.group.GroupType;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.exception.helping.HelpingException;
 import de.dante.extex.interpreter.type.box.Box;
@@ -224,7 +225,7 @@ public class TeXOutputRoutine implements OutputRoutine {
         interpreter.push(rightBrace);
         interpreter.push(output);
         try {
-            context.openGroup(8);
+            context.openGroup(GroupType.OUTPUT_GROUP, null, null); //TODO gene: provide reasonable values
         } catch (ConfigurationException e) {
             throw new GeneralException(e);
         }
