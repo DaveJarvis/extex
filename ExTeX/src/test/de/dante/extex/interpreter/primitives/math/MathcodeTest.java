@@ -51,9 +51,9 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
         assertSuccess(
                 //--- input code ---
                 AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH
-                        + "\\mathcode`. \"0201" + "$a.b$\\end",
+                        + "\\mathcode`. \"10041" + "$a.b$\\end",
                 //--- output message ---
-                "a?b" + TERM); //TODO gene: check for the correct result
+                "aAb" + TERM); //TODO gene: check for the correct result
     }
 
     //TODO implement more primitive specific test cases
