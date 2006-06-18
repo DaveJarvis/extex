@@ -150,6 +150,10 @@ public final class MathSpacing {
             return;
         }
 
+        if (previous.id < 0) { //TODO gene: correct?
+            return;
+        }
+
         Muskip x = null;
 
         switch (spec.charAt(previous.id)) {
