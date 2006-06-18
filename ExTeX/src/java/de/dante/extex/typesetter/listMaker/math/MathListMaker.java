@@ -774,8 +774,7 @@ public class MathListMaker extends HorizontalListMaker
             man.push(lm);
             if (t.isa(Catcode.LEFTBRACE)) {
                 lm.leftBrace();
-                context.openGroup(GroupType.MATH_GROUP, source.getLocator(),
-                        null); //TODO gene: provide correct value
+                context.openGroup(GroupType.MATH_GROUP, source.getLocator(), t);
                 source.executeGroup();
             } else {
                 source.execute(t, context, typesetter);
