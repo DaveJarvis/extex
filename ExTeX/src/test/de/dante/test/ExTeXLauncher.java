@@ -303,6 +303,7 @@ public class ExTeXLauncher extends TestCase {
                 context.set(new LancherFont(), true);
                 context.setStandardTokenStream(factory
                         .newInstance(new InputStreamReader(System.in)));
+                context.set(context.getLanguage("0"), true);
                 if (setHsize) {
                     context
                             .setDimen("hsize", new Dimen(Dimen.ONE * 3000),
