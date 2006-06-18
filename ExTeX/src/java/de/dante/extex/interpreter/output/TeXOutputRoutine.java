@@ -209,9 +209,10 @@ public class TeXOutputRoutine implements OutputRoutine {
         }
 
         deadcyles.add(1);
-        if (deadcyles.ge(context.getCount("maxdeadcycles"))) {
+        if (deadcyles.gt(context.getCount("maxdeadcycles"))) {
             throw new InterpreterException(LocalizerFactory.getLocalizer(
-                    TeXOutputRoutine.class.getName()).format("TTP.TooMuchDead"));
+                    TeXOutputRoutine.class.getName()).format("TTP.TooMuchDead",
+                    deadcyles.toString()));
         }
 
         Box box = context.getBox(OUTPUT_BOX);
