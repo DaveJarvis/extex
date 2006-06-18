@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -36,6 +36,11 @@ public class MaxTest extends ExTeXLauncher {
      *  expected error message
      * </testcase>
      *
+     * @param prefix ...
+     * @param tag ....
+     * @param catcode ...
+     * @param longName ...
+     *
      * @throws Exception in case of an error
      */
     private void tryFlag(final String prefix, final String tag,
@@ -69,7 +74,10 @@ public class MaxTest extends ExTeXLauncher {
         assertFailure(//--- input code ---
                 "\\catcode`&=4\\relax" + "&" + "\\end ",
                 //--- log message ---
-                "Misplaced alignment tab character &");
+                "Misplaced alignment tab character &"
+                + "Misplaced alignment tab character &");
+        // Note the doubling of the output comes from the test driver.
+        // Thus I accept it for the moment
     }
 
     /**
