@@ -112,7 +112,7 @@ public class CharNoad extends AbstractNoad {
         StyleNoad style = mathContext.getStyle();
         UnicodeChar c = glyph.getCharacter();
         Font font = context.getFont(NumberedFont.key(context, //
-                style.getName() + "font", Integer.toString(glyph.getFamily())));
+                style.getFontName(), Integer.toString(glyph.getFamily())));
         if (font instanceof NullFont) {
             throw new TypesetterException(new HelpingException(getLocalizer(),
                     "TTP.UndefinedFamily", style.getStyleName(), Integer
@@ -173,7 +173,7 @@ public class CharNoad extends AbstractNoad {
         StyleNoad style = mathContext.getStyle();
         UnicodeChar c = glyph.getCharacter();
         Font font = context.getFont(NumberedFont.key(context, //
-                style.getName() + "font", Integer.toString(glyph.getFamily())));
+                style.getFontName(), Integer.toString(glyph.getFamily())));
         if (font instanceof NullFont) {
             throw new TypesetterException(new HelpingException(getLocalizer(),
                     "TTP.UndefinedFamily", style.getStyleName(), Integer
