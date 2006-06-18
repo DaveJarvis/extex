@@ -70,8 +70,8 @@ mkdir dirname($target);
 
 my $out     = ($target eq '' ? \*STDERR : new FileHandle($target, 'w'));
 my $gendate = formatDate(localtime);
-@_ = localtime;
-my $year = $_[] + 1900;
+my @t = localtime;
+my $year = $t[5] + 1900;
 
 print $out <<__EOF__;
 <?xml version="1.0"?>
