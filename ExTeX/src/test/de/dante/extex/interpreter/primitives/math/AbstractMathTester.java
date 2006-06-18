@@ -41,6 +41,7 @@ public class AbstractMathTester extends NoFlagsPrimitiveTester {
         + "\\scriptfont3=\\f"
         + "\\scriptscriptfont3=\\f"
         + "\\font\\f cmmi10 \\textfont1=\\f "
+        + "\\textfont0=\\f " // additionally for testing
         + "\\font\\f cmmi7 \\scriptfont1=\\f "
         + "\\font\\f cmmi5 \\scriptscriptfont1=\\f ";
 
