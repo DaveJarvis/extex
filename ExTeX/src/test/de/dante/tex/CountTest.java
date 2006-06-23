@@ -45,7 +45,7 @@ public class CountTest extends TestCase {
     public void testCount01()
         throws Exception {
 
-        TestTeX.test("jucount01", "src/test/data/jucount01.testtxt");
+        TestTeX.test("jucount01");
     }
 
 }

@@ -44,7 +44,7 @@ public class GroupingTest extends TestCase {
     public void testGroup()
         throws Exception {
 
-        TestTeX.test("jugrouping", "src/test/data/jugrouping.testtxt");
+        TestTeX.test("jugrouping");
     }
 
 }
