@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,14 +19,13 @@
 
 package de.dante.extex.interpreter.primitives.register.count;
 
-
 /**
  * This is a test suite for the primitive <tt>\finalhyphendemerits</tt>.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class FinalyphendemeritsTest extends AbstractCountRegisterTester {
+public class FinalhyphendemeritsTest extends AbstractCountRegisterTester {
 
     /**
      * Command line interface.
@@ -34,7 +33,7 @@ public class FinalyphendemeritsTest extends AbstractCountRegisterTester {
      */
     public static void main(final String[] args) {
 
-        junit.textui.TestRunner.run(FinalyphendemeritsTest.class);
+        junit.textui.TestRunner.run(FinalhyphendemeritsTest.class);
     }
 
     /**
@@ -42,7 +41,7 @@ public class FinalyphendemeritsTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public FinalyphendemeritsTest(final String arg) {
+    public FinalhyphendemeritsTest(final String arg) {
 
         super(arg, "finalhyphendemerits", "", "0");
     }
