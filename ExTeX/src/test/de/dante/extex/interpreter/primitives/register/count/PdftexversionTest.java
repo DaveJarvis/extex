@@ -19,7 +19,6 @@
 
 package de.dante.extex.interpreter.primitives.register.count;
 
-
 /**
  * This is a test suite for the primitive <tt>\pdftexversion</tt>.
  *
@@ -38,16 +37,6 @@ public class PdftexversionTest extends AbstractCountRegisterTester {
     }
 
     /**
-     * Getter for the configuration name.
-     *
-     * @return the name of the configuration
-     */
-    protected String getConfig() {
-
-        return "pdftex-112.xml";
-    }
-
-    /**
      * Creates a new object.
      *
      * @param arg the name
@@ -55,6 +44,7 @@ public class PdftexversionTest extends AbstractCountRegisterTester {
     public PdftexversionTest(final String arg) {
 
         super(arg, "pdftexversion", "", "112");
+        setConfig("pdftex-112");
     }
 
     //TODO implement the primitive specific test cases

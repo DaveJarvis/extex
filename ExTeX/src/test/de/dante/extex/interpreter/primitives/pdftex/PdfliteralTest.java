@@ -37,14 +37,7 @@ public class PdfliteralTest extends NoFlagsButProtectedPrimitiveTester {
     public PdfliteralTest(final String arg) {
 
         super(arg, "pdfliteral", "{}", "");
-    }
-
-    /**
-     * @see de.dante.test.ExTeXLauncher#getConfig()
-     */
-    protected String getConfig() {
-
-        return "pdftex.xml";
+        setConfig("pdftex-112");
     }
 
     /**

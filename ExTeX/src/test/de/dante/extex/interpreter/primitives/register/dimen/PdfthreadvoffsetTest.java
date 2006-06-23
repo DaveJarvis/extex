@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,8 +19,6 @@
 
 package de.dante.extex.interpreter.primitives.register.dimen;
 
-
-
 /**
  * This is a test suite for the primitive <tt>\pdfthreadvoffset</tt>.
  *
@@ -39,16 +37,6 @@ public class PdfthreadvoffsetTest extends AbstractDimenRegisterTester {
     }
 
     /**
-     * Getter for the configuration name.
-     *
-     * @return the name of the configuration
-     */
-    protected String getConfig() {
-
-        return "pdftex.xml";
-    }
-
-    /**
      * Creates a new object.
      *
      * @param arg the name
@@ -56,6 +44,7 @@ public class PdfthreadvoffsetTest extends AbstractDimenRegisterTester {
     public PdfthreadvoffsetTest(final String arg) {
 
         super(arg, "pdfthreadvoffset", "", "0.0pt");
+        setConfig("pdftex-112");
     }
 
     //TODO implement the primitive specific test cases

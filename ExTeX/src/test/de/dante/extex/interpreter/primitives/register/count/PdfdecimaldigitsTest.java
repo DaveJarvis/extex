@@ -37,16 +37,6 @@ public class PdfdecimaldigitsTest extends AbstractCountRegisterTester {
     }
 
     /**
-     * Getter for the configuration name.
-     *
-     * @return the name of the configuration
-     */
-    protected String getConfig() {
-
-        return "pdftex-112.xml";
-    }
-
-    /**
      * Creates a new object.
      *
      * @param arg the name
@@ -54,6 +44,7 @@ public class PdfdecimaldigitsTest extends AbstractCountRegisterTester {
     public PdfdecimaldigitsTest(final String arg) {
 
         super(arg, "pdfdecimaldigits", "", "3");
+        setConfig("pdftex-112");
     }
 
     //TODO implement the primitive specific test cases

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -38,16 +38,6 @@ public class PdfhoriginTest extends AbstractDimenRegisterTester {
     }
 
     /**
-     * Getter for the configuration name.
-     *
-     * @return the name of the configuration
-     */
-    protected String getConfig() {
-
-        return "pdftex.xml";
-    }
-
-    /**
      * Creates a new object.
      *
      * @param arg the name
@@ -55,6 +45,7 @@ public class PdfhoriginTest extends AbstractDimenRegisterTester {
     public PdfhoriginTest(final String arg) {
 
         super(arg, "pdfhorigin", "", "0.0pt");
+        setConfig("pdftex-112");
     }
 
     //TODO implement the primitive specific test cases

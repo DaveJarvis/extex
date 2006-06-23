@@ -40,14 +40,7 @@ public class PdfannotTest
     public PdfannotTest(final String arg) {
 
         super(arg, "pdfannot", "{}");
-    }
-
-    /**
-     * @see de.dante.test.ExTeXLauncher#getConfig()
-     */
-    protected String getConfig() {
-
-        return "pdftex-112.xml";
+        setConfig("pdftex-112");
     }
 
     /**

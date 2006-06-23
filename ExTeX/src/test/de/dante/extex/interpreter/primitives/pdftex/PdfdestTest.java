@@ -37,14 +37,7 @@ public class PdfdestTest extends NoFlagsButProtectedPrimitiveTester {
     public PdfdestTest(final String arg) {
 
         super(arg, "pdfdest", " name {abc} fit", "a ");
-    }
-
-    /**
-     * @see de.dante.test.ExTeXLauncher#getConfig()
-     */
-    protected String getConfig() {
-
-        return "pdftex.xml";
+        setConfig("pdftex-112");
     }
 
     /**

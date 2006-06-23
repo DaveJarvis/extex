@@ -37,14 +37,7 @@ public class PdfincludecharsTest extends NoFlagsButProtectedPrimitiveTester {
     public PdfincludecharsTest(final String arg) {
 
         super(arg, "pdfincludechars", "\\f{}", "\\font\\f=cmr10 ");
-    }
-
-    /**
-     * @see de.dante.test.ExTeXLauncher#getConfig()
-     */
-    protected String getConfig() {
-
-        return "pdftex.xml";
+        setConfig("pdftex-112");
     }
 
     /**
