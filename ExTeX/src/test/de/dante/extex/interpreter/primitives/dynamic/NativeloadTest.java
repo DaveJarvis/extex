@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -38,14 +38,7 @@ public class NativeloadTest extends NoFlagsPrimitiveTester {
 
         super(arg, "nativeload",
                 "{java}{de.dante.extex.interpreter.primitives.dynamic.NativeloadSensor}");
-    }
-
-    /**
-     * @see de.dante.test.ExTeXLauncher#getConfig()
-     */
-    protected String getConfig() {
-
-        return "extex-native.xml";
+        setConfig("extex-native");
     }
 
     /**

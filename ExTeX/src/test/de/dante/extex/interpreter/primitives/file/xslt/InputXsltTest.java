@@ -48,15 +48,7 @@ public class InputXsltTest extends NoFlagsButGlobalPrimitiveTester {
 
         super(arg, "javadef",
                 "\\inputXSLT{de.dante.extex.interpreter.primitives.file.xslt.InputXslt}");
-
-    }
-
-    /**
-     * @see de.dante.test.ExTeXLauncher#getConfig()
-     */
-    protected String getConfig() {
-
-        return "extex-jx.xml";
+        setConfig("extex-jx");
     }
 
     /**

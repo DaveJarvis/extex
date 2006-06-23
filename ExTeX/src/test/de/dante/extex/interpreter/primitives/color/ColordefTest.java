@@ -40,14 +40,6 @@ public class ColordefTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * @see de.dante.test.ExTeXLauncher#getConfig()
-     */
-    protected String getConfig() {
-
-        return "colorextex";
-    }
-
-    /**
      * Creates a new object.
      *
      * @param arg the name
@@ -55,6 +47,7 @@ public class ColordefTest extends NoFlagsButGlobalPrimitiveTester {
     public ColordefTest(final String arg) {
 
         super(arg, "colordef", "\\x{.1 .2 .3}", "");
+        setConfig("colorextex");
     }
 
     /**

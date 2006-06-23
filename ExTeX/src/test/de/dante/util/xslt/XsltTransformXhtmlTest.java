@@ -42,7 +42,7 @@ import de.dante.util.resource.ResourceFinder;
 import de.dante.util.resource.UriResolverRf;
 
 /**
- * Testcase for the xslt transformer.
+ * Test case for the xslt transformer.
  * <p>sample xhtml2latex.xsl</p>
  *
  * <p>The test needs the VM parameter -Xms64m -Xmx128m</p>
@@ -54,21 +54,12 @@ import de.dante.util.resource.UriResolverRf;
 public class XsltTransformXhtmlTest extends ExTeXLauncher {
 
     /**
-     * Getter for the configuration name.
-     *
-     * @return the name of the configuration
-     */
-    protected String getConfig() {
-
-        return "extex-jx.xml";
-    }
-
-    /**
      * Create a new object.
      */
     public XsltTransformXhtmlTest() {
 
         super("XhtmlTest");
+        setConfig("extex-jx");
     }
 
     /**
