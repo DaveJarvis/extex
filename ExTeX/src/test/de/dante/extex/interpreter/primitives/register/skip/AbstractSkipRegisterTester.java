@@ -171,6 +171,22 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
 
     /**
      * <testcase>
+     *  Test case showing that the primitive is applicable to \showthe.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testSkipRegisterShowthe1() throws Exception {
+
+        assertOutput(//--- input code ---
+                prepare + "\\showthe\\" + invocation + "\\end",
+                //--- output channel ---
+                "> " + init + ".\n",
+                "");
+    }
+
+    /**
+     * <testcase>
      *  Test case showing that an assignment of a constant 12.3pt works when
      *  using an equal sign after the primitive name.
      * </testcase>
