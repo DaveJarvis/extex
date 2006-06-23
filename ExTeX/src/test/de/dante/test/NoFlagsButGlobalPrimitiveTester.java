@@ -110,7 +110,9 @@ public abstract class NoFlagsButGlobalPrimitiveTester extends ExTeXLauncher {
                 prepare + "\\immediate\\" + primitive + arguments,
                 //--- log message ---
                 out + "You can\'t use the prefix `\\immediate\' "
-                        + "with the control sequence \\" + primitive);
+                        + "with the control sequence"
+                        + (primitive.length() < 16 ? " " : "\n")
+                        + "\\" + primitive);
     }
 
     /**
@@ -161,7 +163,9 @@ public abstract class NoFlagsButGlobalPrimitiveTester extends ExTeXLauncher {
                 prepare + "\\protected\\" + primitive + arguments,
                 //--- log message ---
                 out + "You can\'t use the prefix `\\protected\' "
-                        + "with the control sequence \\" + primitive);
+                        + "with the control sequence"
+                        + (primitive.length() < 16 ? " " : "\n")
+                        + "\\" + primitive);
     }
 
 }
