@@ -20,6 +20,7 @@
 package de.dante.extex.interpreter.observer.load;
 
 import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.exception.InterpreterException;
 
 /**
  * This interface describes the ability to receive a notification just after
@@ -35,7 +36,9 @@ public interface LoadObserver {
      * occurred.
      *
      * @param context the new interpreter context
+     *
+     * @throws InterpreterException in case of an error
      */
-    void update(Context context);
+    void update(Context context) throws InterpreterException;
 
 }

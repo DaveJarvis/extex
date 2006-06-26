@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.dante.extex.interpreter.Interpreter;
+import de.dante.extex.interpreter.exception.InterpreterException;
 
 /**
  * This class provides a type-safe list of observers for the start event.
@@ -80,7 +81,8 @@ public final class StartObserverList implements StartObserver {
      * @see de.dante.extex.interpreter.observer.load.LoadObserver#update(
      *      de.dante.extex.interpreter.context.Context)
      */
-    public void update(final Interpreter interpreter) {
+    public void update(final Interpreter interpreter)
+            throws InterpreterException {
 
         int size = list.size();
         for (int i = 0; i < size; i++) {

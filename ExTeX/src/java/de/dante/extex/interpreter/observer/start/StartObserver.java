@@ -20,6 +20,7 @@
 package de.dante.extex.interpreter.observer.start;
 
 import de.dante.extex.interpreter.Interpreter;
+import de.dante.extex.interpreter.exception.InterpreterException;
 
 /**
  * This interface describes the ability to receive a notification just after
@@ -34,7 +35,9 @@ public interface StartObserver {
      * This method is meant to be invoked just after the start has occurred.
      *
      * @param interpreter the interpreter to be started
+     *
+     * @throws InterpreterException in case of an error
      */
-    void update(Interpreter interpreter);
+    void update(Interpreter interpreter) throws InterpreterException;
 
 }
