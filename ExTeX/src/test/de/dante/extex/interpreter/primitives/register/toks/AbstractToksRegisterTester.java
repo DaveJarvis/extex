@@ -161,7 +161,7 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
         assertOutput(//--- input code ---
                 prepare + "\\showthe\\" + invocation + "\\end",
                 //--- output channel ---
-                "> " + init + ".\n",
+                out(init),
                 "");
     }
 
