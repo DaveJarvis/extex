@@ -211,6 +211,7 @@ public class VFTest extends TestCase {
             throw new ConfigurationClassNotFoundException(fontClass);
         }
 
+        fontFactory.setProperties(getProps());
         return fontFactory;
     }
 
