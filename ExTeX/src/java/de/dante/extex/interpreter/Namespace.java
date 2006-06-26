@@ -35,6 +35,13 @@ public final class Namespace {
     public static final String DEFAULT_NAMESPACE = "";
 
     /**
+     * The constant <tt>SYSTEM_NAMESPACE</tt> contains the name of the system
+     * name space.
+     */
+    public static final String SYSTEM_NAMESPACE = "system";
+
+
+    /**
      * The constant <tt>SUPPORT_NAMESPACE_BOX</tt> contains the flag
      * indicating whether or not the name space should be used for box
      * registers.
