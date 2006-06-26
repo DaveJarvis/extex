@@ -410,6 +410,7 @@ public class ContextImpl
                 GeneralException {
 
         this();
+        init();
         configure(configuration);
     }
 
