@@ -103,15 +103,20 @@ public final class TestTeX {
         Reader stringReader = new StringReader(output.toString());
         BufferedReader intxt = new BufferedReader(stringReader);
 
-        String linetxt, linetesttxt;
-        while ((linetxt = intxt.readLine()) != null) {
-            linetesttxt = intesttxt.readLine().toString();
+        try {
+            String linetxt, linetesttxt;
+            while ((linetxt = intxt.readLine()) != null) {
+                linetesttxt = intesttxt.readLine();
 
-            Assert.assertEquals(linetesttxt, linetxt);
+                Assert.assertEquals(linetesttxt, linetxt);
+            }
+
+            Assert.assertTrue(!intesttxt.ready());
+
+        } finally { // gene: to assure that the resources are freed
+            intxt.close();
+            intesttxt.close();
         }
-        Assert.assertTrue(!intesttxt.ready());
-        intxt.close();
-        intesttxt.close();
     }
 
     public static void test(final String basename) throws Exception {
