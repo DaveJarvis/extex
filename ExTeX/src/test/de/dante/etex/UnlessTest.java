@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004  The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -32,7 +32,7 @@ public class UnlessTest extends TestCase {
 
     /**
      * Main entry function for running alone.
-     * @param  args commandlineargs
+     * @param args command line args
      */
     public static void main(final String[] args) {
 
@@ -42,6 +42,7 @@ public class UnlessTest extends TestCase {
     /**
      * Test the primitive <tt>\u005cnless</tt>.
      *
+     * @throws Exception ...
      */
     public void testUnless()
         throws Exception {
