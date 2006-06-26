@@ -21,6 +21,7 @@ package de.dante.extex.interpreter.type.tokens;
 
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.scanner.type.token.Token;
+import de.dante.util.UnicodeChar;
 import de.dante.util.exception.GeneralException;
 
 /**
@@ -75,5 +76,14 @@ public interface FixedTokens {
      * @return a String, which show all tokens (in text format) in the list
      */
     String toText();
+
+    /**
+     * Return a String, which shows all tokens (in text format) in the list.
+     *
+     * @param esc the escape character to use
+     *
+     * @return a String, which show all tokens (in text format) in the list
+     */
+    String toText(UnicodeChar esc);
 
 }
