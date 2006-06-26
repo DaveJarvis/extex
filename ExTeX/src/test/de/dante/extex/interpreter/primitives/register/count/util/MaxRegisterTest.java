@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,15 +17,17 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.register.count;
+package de.dante.extex.interpreter.primitives.register.count.util;
+
+import de.dante.extex.interpreter.primitives.register.count.AbstractNonGroupIntegerTester;
 
 /**
- * This is a test suite for the primitive <tt>\count</tt>.
+ * This is a test suite for the primitive <tt>\maxRegister</tt>.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class CountTest extends AbstractCountArrayTester {
+public class MaxRegisterTest extends AbstractNonGroupIntegerTester {
 
     /**
      * Command line interface.
@@ -33,7 +35,7 @@ public class CountTest extends AbstractCountArrayTester {
      */
     public static void main(final String[] args) {
 
-        junit.textui.TestRunner.run(CountTest.class);
+        junit.textui.TestRunner.run(MaxRegisterTest.class);
     }
 
     /**
@@ -41,9 +43,12 @@ public class CountTest extends AbstractCountArrayTester {
      *
      * @param arg the name
      */
-    public CountTest(final String arg) {
+    public MaxRegisterTest(final String arg) {
 
-        super(arg, "count", "255", "0");
+        super(arg, "maxRegister", "", "-1", DEFINE_BRACES
+                + "\\ensureloaded{namespace}\\namespace{system}");
     }
+
+    //TODO implement the primitive specific test cases
 
 }

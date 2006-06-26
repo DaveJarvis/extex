@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,15 +17,17 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.register.count;
+package de.dante.extex.interpreter.primitives.typesetter;
+
+import de.dante.test.NoFlagsPrimitiveTester;
 
 /**
- * This is a test suite for the primitive <tt>\count</tt>.
+ * This is a test suite for the primitive <tt>\spacefactor</tt>.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class CountTest extends AbstractCountArrayTester {
+public class SpacefactorTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
@@ -33,17 +35,19 @@ public class CountTest extends AbstractCountArrayTester {
      */
     public static void main(final String[] args) {
 
-        junit.textui.TestRunner.run(CountTest.class);
+        junit.textui.TestRunner.run(SpacefactorTest.class);
     }
 
     /**
-     * Creates a new object.
+     * Constructor for SpacefactorTest.
      *
      * @param arg the name
      */
-    public CountTest(final String arg) {
+    public SpacefactorTest(final String arg) {
 
-        super(arg, "count", "255", "0");
+        super(arg, "spacefactor", "42", "a");
     }
+
+    //TODO implement more primitive specific test cases
 
 }

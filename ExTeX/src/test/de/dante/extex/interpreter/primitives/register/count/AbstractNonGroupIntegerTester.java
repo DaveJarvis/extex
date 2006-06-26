@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -28,7 +28,7 @@ import de.dante.test.ExTeXLauncher;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher {
+public abstract class AbstractNonGroupIntegerTester extends ExTeXLauncher {
 
     /**
      * The field <tt>primitive</tt> contains the name of the primitive to test.
@@ -57,8 +57,9 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      * @param arg the name of the test suite
      * @param primitive the name of the integer register to test
      * @param args ...
+     * @param init the default value
      */
-    public AbstractNonGroupCountRegisterTester(final String arg,
+    public AbstractNonGroupIntegerTester(final String arg,
             final String primitive, final String args, final String init) {
 
         super(arg);
@@ -74,9 +75,10 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      * @param arg the name of the test suite
      * @param primitive the name of the integer register to test
      * @param args ...
+     * @param init the default value
      * @param prepare ...
      */
-    public AbstractNonGroupCountRegisterTester(final String arg,
+    public AbstractNonGroupIntegerTester(final String arg,
             final String primitive, final String args, final String init,
             final String prepare) {
 
@@ -94,7 +96,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      *
      * @throws Exception in case of an error
      */
-    public void testCountRegisterImmediatePrefix1() throws Exception {
+    public void testIntegerImmediatePrefix1() throws Exception {
 
         assertFailure(//--- input code ---
                 prepare + "\\immediate\\" + invocation + "=92 ",
@@ -111,7 +113,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      *
      * @throws Exception in case of an error
      */
-    public void testCountRegisterLongPrefix1() throws Exception {
+    public void testIntegerLongPrefix1() throws Exception {
 
         assertFailure(//--- input code ---
                 prepare + "\\long\\" + invocation + "=92 ",
@@ -128,7 +130,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      *
      * @throws Exception in case of an error
      */
-    public void testCountRegisterOuterPrefix1() throws Exception {
+    public void testIntegerOuterPrefix1() throws Exception {
 
         assertFailure(//--- input code ---
                 prepare + "\\outer\\" + invocation + "=92 ",
@@ -146,7 +148,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      *
      * @throws Exception in case of an error
      */
-    public void testCountRegisterDefault1() throws Exception {
+    public void testIntegerDefault1() throws Exception {
 
         assertSuccess(//--- input code ---
                 prepare + "\\the\\" + invocation + "\\end",
@@ -162,7 +164,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      *
      * @throws Exception in case of an error
      */
-    public void testCountRegisterAssign1() throws Exception {
+    public void testIntegerAssign1() throws Exception {
 
         assertSuccess(//--- input code ---
                 prepare + "\\" + invocation + "=123 \\the\\" + invocation
@@ -179,7 +181,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      *
      * @throws Exception in case of an error
      */
-    public void testCountRegisterAssign2() throws Exception {
+    public void testIntegerAssign2() throws Exception {
 
         assertSuccess(//--- input code ---
                 prepare + "\\" + invocation + " 123 \\the\\" + invocation
@@ -196,7 +198,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      *
      * @throws Exception in case of an error
      */
-    public void testCountRegisterAssign3() throws Exception {
+    public void testIntegerAssign3() throws Exception {
 
         assertSuccess(//--- input code ---
                 prepare + "\\" + invocation + "=-123 \\the\\" + invocation
@@ -213,28 +215,11 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      *
      * @throws Exception in case of an error
      */
-    public void testCountRegisterAssign4() throws Exception {
+    public void testIntegerAssign4() throws Exception {
 
         assertSuccess(//--- input code ---
                 prepare + "\\" + invocation + "-123 \\the\\" + invocation
                         + "\\end",
-                //--- output channel ---
-                "-123" + TERM);
-    }
-
-    /**
-     * <testcase>
-     *  Test case showing that an assignment of a constant -123 works when using
-     *  <tt>\globaldefs</tt>.
-     * </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void testCountRegisterAssign5() throws Exception {
-
-        assertSuccess(//--- input code ---
-                prepare + "\\globaldefs=1 " + "\\begingroup\\" + invocation
-                        + "-123 \\endgroup" + "\\the\\" + invocation + "\\end",
                 //--- output channel ---
                 "-123" + TERM);
     }
@@ -246,7 +231,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      *
      * @throws Exception in case of an error
      */
-    public void testCountRegisterAfterassignment1() throws Exception {
+    public void testIntegerAfterassignment1() throws Exception {
 
         assertSuccess(//--- input code ---
                 prepare + "\\afterassignment b a" + "\\" + invocation
@@ -262,7 +247,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      *
      * @throws Exception in case of an error
      */
-    public void testCountRegisterConvertible1() throws Exception {
+    public void testIntegerConvertible1() throws Exception {
 
         assertSuccess(//--- input code ---
                 prepare + "\\" + invocation + "-123 \\count0=\\" + invocation
@@ -273,46 +258,12 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
 
     /**
      * <testcase>
-     *  Test case showing that an assignment of a constant 123 works when using
-     *  an equal sign after the primitive name.
-     * </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void testCountRegisterGlobalAssign1() throws Exception {
-
-        assertSuccess(//--- input code ---
-                prepare + "\\begingroup\\global\\" + invocation
-                        + "=123 \\endgroup" + "\\the\\" + invocation + "\\end",
-                //--- output channel ---
-                "123" + TERM);
-    }
-
-    /**
-     * <testcase>
-     *  Test case showing that an assignment of a constant 123 works when using
-     *  no equal sign after the primitive name.
-     * </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void testCountRegisterGlobalAssign2() throws Exception {
-
-        assertSuccess(//--- input code ---
-                prepare + "\\begingroup\\global\\" + invocation
-                        + " 123 \\endgroup" + "\\the\\" + invocation + "\\end",
-                //--- output channel ---
-                "123" + TERM);
-    }
-
-    /**
-     * <testcase>
      *  Test case showing that an advancement by the constant 12 works.
      * </testcase>
      *
      * @throws Exception in case of an error
      */
-    public void testCountRegisterAdvance1() throws Exception {
+    public void testIntegerAdvance1() throws Exception {
 
         assertSuccess(//--- input code ---
                 prepare + "\\" + invocation + "=23 " + "\\advance\\"
@@ -330,7 +281,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      *
      * @throws Exception in case of an error
      */
-    public void testCountRegisterAdvance2() throws Exception {
+    public void testIntegerAdvance2() throws Exception {
 
         assertSuccess(//--- input code ---
                 prepare + "\\" + invocation + "=23 " + "\\advance\\"
@@ -347,7 +298,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      *
      * @throws Exception in case of an error
      */
-    public void testCountRegisterAdvance3() throws Exception {
+    public void testIntegerAdvance3() throws Exception {
 
         assertSuccess(//--- input code ---
                 prepare + "\\" + invocation + "=23 " + "\\advance\\"
@@ -365,7 +316,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      *
      * @throws Exception in case of an error
      */
-    public void testCountRegisterAdvance4() throws Exception {
+    public void testIntegerAdvance4() throws Exception {
 
         assertSuccess(//--- input code ---
                 prepare + "\\" + invocation + "=23 " + "\\advance\\"
@@ -377,29 +328,12 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
 
     /**
      * <testcase>
-     *  Test case showing that an advancement by the constant -123 works when using
-     *  <tt>\globaldefs</tt>.
-     * </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void testCountRegisterAdvance5() throws Exception {
-
-        assertSuccess(//--- input code ---
-                prepare + "\\globaldefs=1 " + "\\begingroup\\" + invocation
-                        + "-123 \\endgroup" + "\\the\\" + invocation + "\\end",
-                //--- output channel ---
-                "-123" + TERM);
-    }
-
-    /**
-     * <testcase>
      *  Test case showing that an assignment respects <tt>\\afterassignment</tt>.
      * </testcase>
      *
      * @throws Exception in case of an error
      */
-    public void testCountRegisterAfterassignment2() throws Exception {
+    public void testIntegerAfterassignment2() throws Exception {
 
         assertSuccess(//--- input code ---
                 prepare + "\\" + invocation + "=0 " + "\\afterassignment b a"
@@ -416,7 +350,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      *
      * @throws Exception in case of an error
      */
-    public void testCountRegisterMultiply0() throws Exception {
+    public void testIntegerMultiply0() throws Exception {
 
         assertSuccess(
                 //--- input code ---
@@ -433,7 +367,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      *
      * @throws Exception in case of an error
      */
-    public void testCountRegisterMultiply1() throws Exception {
+    public void testIntegerMultiply1() throws Exception {
 
         assertSuccess(//--- input code ---
                 prepare + "\\" + invocation + "=3 " + "\\multiply\\"
@@ -451,7 +385,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      *
      * @throws Exception in case of an error
      */
-    public void testCountRegisterMultiply2() throws Exception {
+    public void testIntegerMultiply2() throws Exception {
 
         assertSuccess(//--- input code ---
                 prepare + "\\" + invocation + "=3 " + "\\multiply\\"
@@ -468,7 +402,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      *
      * @throws Exception in case of an error
      */
-    public void testCountRegisterMultiply3() throws Exception {
+    public void testIntegerMultiply3() throws Exception {
 
         assertSuccess(//--- input code ---
                 prepare + "\\" + invocation + "=3 " + "\\multiply\\"
@@ -486,7 +420,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      *
      * @throws Exception in case of an error
      */
-    public void testCountRegisterMultiply4() throws Exception {
+    public void testIntegerMultiply4() throws Exception {
 
         assertSuccess(//--- input code ---
                 prepare + "\\" + invocation + "=3 " + "\\multiply\\"
@@ -498,30 +432,12 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
 
     /**
      * <testcase>
-     *  Test case showing that a multiplication by a constant -123 works when
-     *  using <tt>\globaldefs</tt>.
-     * </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void testCountRegisterMultiply5() throws Exception {
-
-        assertSuccess(//--- input code ---
-                prepare + "\\globaldefs=1 " + "\\" + invocation + "=12 "
-                        + "\\begingroup\\multiply\\" + invocation
-                        + " 3 \\endgroup" + "\\the\\" + invocation + "\\end",
-                //--- output channel ---
-                "36" + TERM);
-    }
-
-    /**
-     * <testcase>
      *  Test case showing that an assignment respects <tt>\\afterassignment</tt>.
      * </testcase>
      *
      * @throws Exception in case of an error
      */
-    public void testCountRegisterAfterassignment3() throws Exception {
+    public void testIntegerAfterassignment3() throws Exception {
 
         assertSuccess(//--- input code ---
                 prepare + "\\" + invocation + "=0 " + "\\afterassignment b a"
@@ -538,7 +454,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      *
      * @throws Exception in case of an error
      */
-    public void testCountRegisterDivide0() throws Exception {
+    public void testIntegerDivide0() throws Exception {
 
         assertFailure(
                 //--- input code ---
@@ -555,7 +471,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      *
      * @throws Exception in case of an error
      */
-    public void testCountRegisterDivide1() throws Exception {
+    public void testIntegerDivide1() throws Exception {
 
         assertSuccess(//--- input code ---
                 prepare + "\\" + invocation + "=36 " + "\\divide\\"
@@ -573,7 +489,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      *
      * @throws Exception in case of an error
      */
-    public void testCountRegisterDivide2() throws Exception {
+    public void testIntegerDivide2() throws Exception {
 
         assertSuccess(//--- input code ---
                 prepare + "\\" + invocation + "=36 " + "\\divide\\"
@@ -590,7 +506,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      *
      * @throws Exception in case of an error
      */
-    public void testCountRegisterDivide3() throws Exception {
+    public void testIntegerDivide3() throws Exception {
 
         assertSuccess(//--- input code ---
                 prepare + "\\" + invocation + "=36 " + "\\divide\\"
@@ -608,7 +524,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      *
      * @throws Exception in case of an error
      */
-    public void testCountRegisterDivide4() throws Exception {
+    public void testIntegerDivide4() throws Exception {
 
         assertSuccess(//--- input code ---
                 prepare + "\\" + invocation + "=36 " + "\\divide\\"
@@ -620,30 +536,12 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
 
     /**
      * <testcase>
-     *  Test case showing that a division by a constant -123 works when
-     *  using <tt>\globaldefs</tt>.
-     * </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void testCountRegisterDivide5() throws Exception {
-
-        assertSuccess(//--- input code ---
-                prepare + "\\globaldefs=1 " + "\\" + invocation + "=-246 "
-                        + "\\begingroup\\divide\\" + invocation
-                        + "-123 \\endgroup" + "\\the\\" + invocation + "\\end",
-                //--- output channel ---
-                "2" + TERM);
-    }
-
-    /**
-     * <testcase>
      *  Test case showing that an assignment respects <tt>\\afterassignment</tt>.
      * </testcase>
      *
      * @throws Exception in case of an error
      */
-    public void testCountRegisterAfterassignment4() throws Exception {
+    public void testIntegerAfterassignment4() throws Exception {
 
         assertSuccess(//--- input code ---
                 prepare + "\\afterassignment b a" + "\\divide\\" + invocation
@@ -660,7 +558,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      *
      * @throws Exception in case of an error
      */
-    public void testCountRegisterDivide6() throws Exception {
+    public void testIntegerDivide6() throws Exception {
 
         assertSuccess(//--- input code ---
                 prepare + "\\" + invocation + "=-36 " + "\\divide\\"
