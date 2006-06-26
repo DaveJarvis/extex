@@ -19,9 +19,6 @@
 
 package de.dante.extex.interpreter.exception;
 
-import de.dante.util.framework.i18n.Localizer;
-import de.dante.util.framework.i18n.LocalizerFactory;
-
 /**
  * This exception s thrown when the error count exceeds the given limit.
  *
@@ -38,14 +35,14 @@ public class ErrorLimitException extends InterpreterException {
     /**
      * The field <tt>limit</tt> contains the maximal allowed number of errors.
      */
-    private int limit;
+    private long limit;
 
     /**
      * Creates a new object.
      *
      * @param limit the maximal allowed number of errors
      */
-    public ErrorLimitException(final int limit) {
+    public ErrorLimitException(final long limit) {
 
         super();
         this.limit = limit;
@@ -56,9 +53,8 @@ public class ErrorLimitException extends InterpreterException {
      */
     public String getLocalizedMessage() {
 
-        Localizer l = LocalizerFactory.getLocalizer(ErrorLimitException.class
-                .getName());
-        return l.format("TTP.ErrorLimitReached", Integer.toString(limit));
+        return getLocalizer().format("TTP.ErrorLimitReached",
+                Long.toString(limit));
     }
 
     /**
