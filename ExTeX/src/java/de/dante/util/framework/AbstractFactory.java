@@ -30,6 +30,7 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
 import de.dante.util.framework.configuration.exception.ConfigurationIOException;
 import de.dante.util.framework.configuration.exception.ConfigurationInstantiationException;
 import de.dante.util.framework.configuration.exception.ConfigurationInvalidClassException;
+import de.dante.util.framework.configuration.exception.ConfigurationInvalidConstructorException;
 import de.dante.util.framework.configuration.exception.ConfigurationInvalidResourceException;
 import de.dante.util.framework.configuration.exception.ConfigurationMissingAttributeException;
 import de.dante.util.framework.configuration.exception.ConfigurationMissingException;
@@ -466,8 +467,7 @@ public abstract class AbstractFactory
             throw new ConfigurationInstantiationException(e);
         }
 
-        throw new ConfigurationInvalidClassException("", target.getName(),
-                config);
+        throw new ConfigurationInvalidConstructorException(className, config);
     }
 
     /**
