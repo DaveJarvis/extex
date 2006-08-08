@@ -47,6 +47,7 @@
  '(jde-run-read-app-args t)
 
  ;; style
+ '(require-final-newline nil)
  '(jde-import-auto-sort t)
  '(jde-gen-k&r t)
 
