@@ -628,7 +628,10 @@ public abstract class Max
                 }
 
             } catch (InterpreterException e) {
-
+                for (Throwable x = e.getCause();
+                	x instanceof InterpreterException; x = e.getCause()) {
+                    e = (InterpreterException) x;
+                }
                 handleException(token, context, e, typesetter);
 
             } catch (RuntimeException e) {
