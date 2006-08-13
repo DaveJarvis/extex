@@ -218,7 +218,7 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
             mag = context.getMagnification();
         }
 
-        t = source.scanNonSpace(context);
+        t = source.getNonSpace(context);
 
         // cf. TTP[458]
         if (t instanceof CodeToken) {

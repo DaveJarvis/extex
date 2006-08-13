@@ -312,8 +312,8 @@ public class ScaledNumber {
             // @see "TeX -- The Program [102]"
             int[] dig = new int[FLOAT_DIGITS];
             int k = 0;
-            for (t = source.scanToken(context); t instanceof OtherToken
-                    && t.getChar().isDigit(); t = source.scanToken(context)) {
+            for (t = source.getToken(context); t instanceof OtherToken
+                    && t.getChar().isDigit(); t = source.getToken(context)) {
                 if (k < FLOAT_DIGITS) {
                     dig[k++] = t.getChar().getCodePoint() - '0';
                 }
