@@ -879,7 +879,8 @@ public abstract class Max
             throws InterpreterException {
 
         if (e.isProcessed()) {
-            ts.getManager().pop();
+            // TODO gene: why???
+            //ts.getManager().pop();
             return;
         }
 
