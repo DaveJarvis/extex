@@ -335,6 +335,16 @@ public class Box implements BoxOrRule, Serializable {
     }
 
     /**
+     * @see java.lang.Object#toString()
+     */
+    public String toString() {
+        if (nodes == null) {
+            return "void";
+        }
+        return nodes.toString();
+    }
+
+    /**
      * Adjust the width of the box if it is not void.
      *
      * @param spread the length to add to the width
