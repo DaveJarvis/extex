@@ -883,6 +883,7 @@ public abstract class Max
             //ts.getManager().pop();
             return;
         }
+        e.setProcessed(true);
 
         if (observersError != null) {
             observersError.update(e);
@@ -894,7 +895,6 @@ public abstract class Max
                 errorHandler.handleError(e, token, this, cx)) {
             return;
         }
-        e.setProcessed(true);
         throw e;
     }
 
@@ -1261,7 +1261,7 @@ public abstract class Max
 
         execute(new Switch(true));
 
-        typesetter.finish();
+        typesetter.finish(context);
 
         // TTP [1335]
         long groupLevel = context.getGroupLevel();
