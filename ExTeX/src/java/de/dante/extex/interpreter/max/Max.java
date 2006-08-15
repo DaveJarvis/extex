@@ -1261,7 +1261,7 @@ public abstract class Max
 
         execute(new Switch(true));
 
-        typesetter.finish(context);
+        typesetter.finish();
 
         // TTP [1335]
         long groupLevel = context.getGroupLevel();
