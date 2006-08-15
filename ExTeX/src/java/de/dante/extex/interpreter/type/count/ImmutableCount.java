@@ -66,7 +66,7 @@ public class ImmutableCount extends Count {
     /**
      * @see de.dante.extex.interpreter.type.count.Count#divide(long)
      */
-    public void divide(final long val) throws GeneralException {
+    public void divide(final long val) {
 
         throw new RuntimeException("Unable to set an immutable object");
     }

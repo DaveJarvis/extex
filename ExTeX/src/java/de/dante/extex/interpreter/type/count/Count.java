@@ -544,9 +544,9 @@ public class Count implements Serializable, FixedCount {
      *
      * @param denom the denominator to divide by
      *
-     * @throws GeneralException in case of a division by zero
+     * @throws ArithmeticOverflowException in case of a division by zero
      */
-    public void divide(final long denom) throws GeneralException {
+    public void divide(final long denom) throws ArithmeticOverflowException {
 
         if (denom == 0) {
             throw new ArithmeticOverflowException("");
