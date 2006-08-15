@@ -44,7 +44,7 @@ public class MaxdeadcyclesTest extends AbstractCountRegisterTester {
      */
     public MaxdeadcyclesTest(final String arg) {
 
-        super(arg, "maxdeadcycles", "", "0");
+        super(arg, "maxdeadcycles", "", "25");
     }
 
     //TODO implement the primitive specific test cases
