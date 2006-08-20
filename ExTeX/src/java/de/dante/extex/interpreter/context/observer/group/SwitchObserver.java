@@ -56,7 +56,7 @@ public class SwitchObserver implements AfterGroupObserver {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.observer.afterGroup.AfterGroupObserver#update()
+     * @see de.dante.extex.interpreter.context.observer.group.AfterGroupObserver#update()
      */
     public void update() {
 
