@@ -49,7 +49,7 @@ import de.dante.extex.typesetter.Typesetter;
  * </p>
  * <p>
  *  The formal description of this primitive is the following:
- * TODO gene: doc missing
+ *  TODO gene: missing documentation
  * </p>
  * <p>
  *  Examples:

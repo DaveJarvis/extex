@@ -732,7 +732,8 @@ public class Moritz extends Max
      * could be read. If all stream are at the end then <code>null</code> is
      * returned.
      * <p>
-     * Whenever a file stream is closed then the tokens from the ...
+     * Whenever a file stream is closed then the tokens from the stream are
+     * discarted. This holds also for the tokens pushed back onto this stream.
      * </p>
      *
      * @param context the interpreter context
