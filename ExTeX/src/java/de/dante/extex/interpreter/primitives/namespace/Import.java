@@ -50,7 +50,7 @@ import de.dante.extex.typesetter.Typesetter;
  *  <pre class="syntax">
  *    &lang;import&rang;
  *      &rarr; &lang;prefix&rang; <tt>\import</tt> {@linkplain
- *      de.dante.extex.interpreter.TokenSource#getTokens()
+ *      de.dante.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
  *      &lang;name space&rang;}
  *
  *    &lang;prefix&rang;

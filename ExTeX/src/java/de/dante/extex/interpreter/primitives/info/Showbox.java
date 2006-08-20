@@ -47,7 +47,7 @@ import de.dante.util.framework.logger.LogEnabled;
  *  <pre class="syntax">
  *    &lang;showbox&rang;
  *      &rarr; <tt>\showbox</tt> {@linkplain
- *        de.dante.extex.interpreter.primitives.register.box.AbstractBox#getKey(Context,Source,String)
+ *        de.dante.extex.interpreter.primitives.register.box.AbstractBox#getKey(Context,Source,Typesetter,String)
  *        &lang;box&nbsp;register&nbsp;name&rang;}  </pre>
  *
  * <h4>Examples</h4>

@@ -43,7 +43,7 @@ import de.dante.extex.typesetter.Typesetter;
  *  <pre class="syntax">
  *    &lang;namespace&rang;
  *      &rarr; <tt>\namespace</tt> {@linkplain
- *      de.dante.extex.interpreter.TokenSource#getTokens()
+ *      de.dante.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
  *      &lang;replacement text&rang;}  </pre>
  *
  * <h4>Examples</h4>

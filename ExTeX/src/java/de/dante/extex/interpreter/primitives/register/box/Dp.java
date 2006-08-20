@@ -57,7 +57,7 @@ import de.dante.util.exception.GeneralException;
  *  <pre class="syntax">
  *    &lang;dp&rang;
  *      &rarr; &lang;optional prefix&rang; <tt>\dp</tt> {@linkplain
- *        de.dante.extex.interpreter.primitives.register.box.AbstractBox#getKey(Context,Source,String)
+ *        de.dante.extex.interpreter.primitives.register.box.AbstractBox#getKey(Context,Source,Typesetter,String)
  *        &lang;box register name&rang;} {@linkplain
  *        de.dante.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain

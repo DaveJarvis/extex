@@ -48,7 +48,7 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
  *  <pre class="syntax">
  *    &lang;special&rang;
  *        &rarr; <tt>\special</tt> {@linkplain
- *           de.dante.extex.interpreter.TokenSource#scanTokens(Context)
+ *           de.dante.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,String)
  *           &lang;general text&rang;}  </pre>
  *
  * <h4>Examples</h4>

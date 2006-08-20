@@ -44,7 +44,7 @@ import de.dante.extex.typesetter.Typesetter;
  *  <pre class="syntax">
  *    &lang;errmessage&rang;
  *       &rarr; <tt>\errmessage</tt> {@linkplain
- *        de.dante.extex.interpreter.TokenSource#scanTokens(Context)
+ *        de.dante.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,String)
  *        &lang;tokens&rang;}  </pre>
  *
  * <h4>Examples</h4>

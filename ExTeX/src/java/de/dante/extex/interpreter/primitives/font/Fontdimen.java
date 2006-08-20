@@ -60,7 +60,7 @@ import de.dante.extex.typesetter.Typesetter;
  *       &rarr; <tt>\fontdimen</tt> {@linkplain
  *          de.dante.extex.interpreter.TokenSource#scanNumber(Context)
  *          &lang;8-bit&nbsp;number&rang;} {@linkplain
- *          de.dante.extex.interpreter.TokenSource#getFont()
+ *          de.dante.extex.interpreter.TokenSource#getFont(Context,String)
  *          &lang;font&rang;} {@linkplain
  *          de.dante.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *          &lang;equals&rang;} {@linkplain

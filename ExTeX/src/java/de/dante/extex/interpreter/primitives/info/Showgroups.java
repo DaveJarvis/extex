@@ -83,7 +83,7 @@ public class Showgroups extends AbstractBox implements LogEnabled, Configurable 
      * The field <tt>gtv</tt> contains the group tpe visitor to map the group
      * types to keys for the localizer.
      */
-    private transient final GroupTypeVisitor gtv = new GroupTypeVisitor() {
+    private final transient GroupTypeVisitor gtv = new GroupTypeVisitor() {
 
         /**
          * @see de.dante.extex.interpreter.context.group.GroupTypeVisitor#visitAdjustedHboxGroup(java.lang.Object)
@@ -224,7 +224,8 @@ public class Showgroups extends AbstractBox implements LogEnabled, Configurable 
     };
 
     /**
-     * The field <tt>key</tt> contains the ...
+     * The field <tt>key</tt> contains the key to be appended to the format
+     * name.
      */
     private String key = "";
 

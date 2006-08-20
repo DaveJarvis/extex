@@ -61,7 +61,7 @@ import de.dante.extex.typesetter.Typesetter;
  *  <pre class="syntax">
  *    &lang;export&rang;
  *      &rarr; &lang;prefix&rang; <tt>\export</tt> {@linkplain
- *      de.dante.extex.interpreter.TokenSource#getTokens()
+ *      de.dante.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
  *      &lang;replacement text&rang;}
  *
  *    &lang;prefix&rang;
