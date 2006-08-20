@@ -28,7 +28,6 @@ import de.dante.extex.interpreter.type.glue.FixedGlue;
 import de.dante.extex.interpreter.type.glue.Glue;
 import de.dante.extex.interpreter.type.glue.GlueComponent;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.exception.GeneralException;
 
 /**
  * This class provides an implementation for the primitive <code>\hfi</code>.
@@ -97,11 +96,7 @@ public class Hfi extends AbstractHorizontalCode implements HorizontalSkip {
             throws InterpreterException {
 
         switchToHorizontalMode(typesetter);
-        try {
-            typesetter.add(FI);
-        } catch (GeneralException e) {
-            throw new InterpreterException(e);
-        }
+        typesetter.add(FI);
     }
 
     /**

@@ -377,6 +377,8 @@ public class MacroCode extends AbstractCode
             toks.add(context.getTokenFactory(), " ->");
             body.show(context, toks);
             return toks;
+        } catch (InterpreterException e) {
+            throw e;
         } catch (GeneralException e) {
             throw new InterpreterException(e);
         }

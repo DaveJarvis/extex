@@ -140,8 +140,6 @@ public class Skewchar extends AbstractAssignment
             }
         } catch (EofException e) {
             throw new EofException(printableControlSequence(context));
-        } catch (GeneralException e) {
-            throw new InterpreterException(e);
         }
     }
 
