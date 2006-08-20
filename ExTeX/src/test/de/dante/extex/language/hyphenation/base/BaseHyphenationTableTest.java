@@ -27,7 +27,6 @@ import de.dante.extex.font.Kerning;
 import de.dante.extex.font.Ligature;
 import de.dante.extex.font.type.BoundingBox;
 import de.dante.extex.font.type.tfm.TFMFixWord;
-import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.context.MockContext;
 import de.dante.extex.interpreter.context.TypesettingContext;
 import de.dante.extex.interpreter.context.TypesettingContextImpl;
@@ -474,7 +473,6 @@ public class BaseHyphenationTableTest extends TestCase {
     protected void setUp() throws Exception {
 
         context = new MyMockContext();
-        Context c = new MockContext();
         language = makeLanguage();
         language.addHyphenation(makeList("abc-def"), context);
         language.addHyphenation(makeList("d-e-f"), context);
