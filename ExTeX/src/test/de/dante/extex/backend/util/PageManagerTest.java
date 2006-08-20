@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.documentWriter.util;
+package de.dante.extex.backend.util;
 
 import junit.framework.TestCase;
 import de.dante.extex.backend.documentWriter.util.PageManager;

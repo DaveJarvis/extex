@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.documentWriter.dvi;
+package de.dante.extex.backend.dvi;
 
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
