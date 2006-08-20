@@ -19,7 +19,6 @@
 
 package de.dante.extex.interpreter.type.count;
 
-import de.dante.util.exception.GeneralException;
 
 /**
  * This class provides an implementation of a Count where all methods modifying
