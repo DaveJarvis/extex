@@ -227,7 +227,9 @@ public class TeXParagraphBuilder
      * <doc name="hyphenpenalty" type="register">
      * <h3>The Count Parameter <tt>\hyphenpenalty</tt></h3>
      *
-     * TODO gene: missing documentation
+     *  The parameter <tt>\hyphenpenalty</tt> contains the penalty inserted
+     *  whenever a hyphenation is applied. Thus paragraphs with less
+     *  hyphenations are preferred over those with more hyphenations.
      * </doc>
      */
     private long hyphenPenalty;
