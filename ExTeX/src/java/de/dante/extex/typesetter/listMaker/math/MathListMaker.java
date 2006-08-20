@@ -239,7 +239,7 @@ public class MathListMaker extends HorizontalListMaker
      *
      * @param options the options
      *
-     * @return <code>true</code> iff the needed font dimens are present
+     * @return <code>true</code> iff the needed font dimens are not present
      *
      * @see "[TTP 1195]"
      */
@@ -627,12 +627,13 @@ public class MathListMaker extends HorizontalListMaker
      *      de.dante.util.UnicodeChar,
      *      de.dante.util.Locator)
      */
-    public void letter(final Context context, final TypesettingContext tc,
+    public boolean letter(final Context context, final TypesettingContext tc,
             final UnicodeChar symbol, final Locator locator) {
 
         Count mcode = context.getMathcode(symbol);
         insertionPoint.add(NOAD_FACTORY.getNoad((mcode == null ? 0 : mcode
                 .getValue()), tc));
+        return false;
     }
 
     /**

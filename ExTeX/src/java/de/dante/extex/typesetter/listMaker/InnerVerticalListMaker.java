@@ -190,11 +190,11 @@ public class InnerVerticalListMaker extends AbstractListMaker {
      *      de.dante.util.UnicodeChar,
      *      de.dante.util.Locator)
      */
-    public void letter(final Context context, final TypesettingContext tc,
+    public boolean letter(final Context context, final TypesettingContext tc,
             final UnicodeChar symbol, final Locator locator)
             throws TypesetterException {
 
-        getManager().ensureHorizontalMode(locator).letter(context, tc,
+        return getManager().ensureHorizontalMode(locator).letter(context, tc,
                 symbol, locator);
     }
 

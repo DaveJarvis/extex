@@ -340,15 +340,14 @@ public class TokenStreamFactory extends AbstractFactory
      * @param fileType the type of the file to read
      * @param encoding the name of the encoding to use
      *
-     * @return the new instance
+     * @return the new instance or <code>null</code> if the resource could not
+     *   be located
      *
      * @throws ConfigurationException in case of an error in the configuration
-     * @throws FileNotFoundException in case that the file could not be opened
      */
     public TokenStream newInstance(final String fileName,
             final String fileType, final String encoding)
-            throws ConfigurationException,
-                FileNotFoundException {
+            throws ConfigurationException {
 
         if (resourceFinder == null) {
             throw new MissingResourceFinderException("");
@@ -356,12 +355,12 @@ public class TokenStreamFactory extends AbstractFactory
         InputStream stream = resourceFinder.findResource(fileName, fileType);
 
         if (stream == null) {
-            throw new FileNotFoundException(fileName);
+            return null;
         }
 
-        TokenStream tStream;
+        TokenStream tokenStream;
         try {
-            tStream = (TokenStream) streamConstructor.newInstance(//
+            tokenStream = (TokenStream) streamConstructor.newInstance(//
                     new Object[]{configuration, options, stream, fileName,
                             encoding});
 
@@ -381,7 +380,7 @@ public class TokenStreamFactory extends AbstractFactory
         }
 
         enableLogging(stream, getLogger());
-        return tStream;
+        return tokenStream;
     }
 
     /**

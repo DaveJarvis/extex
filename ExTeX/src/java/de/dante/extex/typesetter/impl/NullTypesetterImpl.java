@@ -273,10 +273,11 @@ public class NullTypesetterImpl implements Typesetter {
      *      de.dante.util.UnicodeChar,
      *      de.dante.util.Locator)
      */
-    public void letter(final Context context, final TypesettingContext tc,
+    public boolean letter(final Context context, final TypesettingContext tc,
             final UnicodeChar uc, final Locator locator)
             throws TypesetterException {
 
+        return false;
     }
 
     /**

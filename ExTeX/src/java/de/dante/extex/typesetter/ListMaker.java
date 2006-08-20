@@ -191,9 +191,12 @@ public interface ListMaker {
      * @param uc the character
      * @param locator the locator
      *
+     * @return <code>true</code> iff the character has been discarded because
+     *   it is not defined in the current font.
+     *
      * @throws TypesetterException in case of an error
      */
-    void letter(Context context, TypesettingContext tc, UnicodeChar uc,
+    boolean letter(Context context, TypesettingContext tc, UnicodeChar uc,
             Locator locator) throws TypesetterException;
 
     /**
