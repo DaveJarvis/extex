@@ -76,7 +76,7 @@ public class TeXInputReader extends Reader {
         reader = new InputStreamReader(System.in, charset);
         Localizer localizer = LocalizerFactory
                 .getLocalizer(TeXInputReader.class.getName());
-        prompt = localizer.format("CLI.PromptInput");
+        prompt = localizer.format("TTP.PromptInput");
     }
 
     /**
