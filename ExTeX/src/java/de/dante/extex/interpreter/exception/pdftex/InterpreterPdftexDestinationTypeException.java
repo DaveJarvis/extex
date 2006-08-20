@@ -20,7 +20,8 @@
 package de.dante.extex.interpreter.exception.pdftex;
 
 /**
- * This exception is raised when a <logo>pdfTeX</logo> ...
+ * This exception is raised when a <logo>pdfTeX</logo> encounters an invalid
+ * destination type.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
