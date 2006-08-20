@@ -44,12 +44,22 @@ import de.dante.util.UnicodeChar;
 public class CMR10 implements Font, Serializable {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    protected static final long serialVersionUID = 2006L;
+
+    /**
      * Private implementation of the glyph interface.
      *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision$
      */
     public class MyGlyph extends GlyphImpl implements Serializable {
+
+        /**
+         * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+         */
+        protected static final long serialVersionUID = 2006L;
 
         /**
          * Creates a new object.

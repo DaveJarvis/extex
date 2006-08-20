@@ -28,9 +28,10 @@ package de.dante.extex.interpreter.exception;
 public class InterpreterExtensionInvalidException extends InterpreterException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the ...
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
-    private static final long serialVersionUID = 1L;
+    protected static final long serialVersionUID = 1L;
 
     /**
      * Creates a new object.
