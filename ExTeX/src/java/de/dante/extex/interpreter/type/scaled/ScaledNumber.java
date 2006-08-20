@@ -580,7 +580,7 @@ public class ScaledNumber {
      * @return the printable representation
      *
      * @see #toString(StringBuffer)
-     * @see #toToks(TokenFactory)
+     * @see #toToks(Tokens,TokenFactory)
      */
     public String toString() {
 
