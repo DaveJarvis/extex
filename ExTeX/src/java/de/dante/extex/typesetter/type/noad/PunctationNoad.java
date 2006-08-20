@@ -26,7 +26,6 @@ import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.noad.util.MathContext;
 import de.dante.extex.typesetter.type.noad.util.MathSpacing;
-import de.dante.extex.typesetter.type.node.CharNode;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**

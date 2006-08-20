@@ -23,7 +23,6 @@ import de.dante.extex.font.Glyph;
 import de.dante.extex.interpreter.context.TypesettingContext;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.font.Font;
-import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeVisitor;
 import de.dante.util.UnicodeChar;
 import de.dante.util.exception.GeneralException;

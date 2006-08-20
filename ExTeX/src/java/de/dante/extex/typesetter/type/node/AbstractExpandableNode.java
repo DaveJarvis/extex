@@ -25,10 +25,6 @@ import de.dante.extex.interpreter.type.glue.FixedGlue;
 import de.dante.extex.interpreter.type.glue.FixedGlueComponent;
 import de.dante.extex.interpreter.type.glue.Glue;
 import de.dante.extex.interpreter.type.glue.WideGlue;
-import de.dante.extex.typesetter.Discardable;
-import de.dante.extex.typesetter.type.Node;
-import de.dante.extex.typesetter.type.NodeVisitor;
-import de.dante.util.exception.GeneralException;
 
 /**
  * This node represents a <logo>TeX</logo> "glue" node.

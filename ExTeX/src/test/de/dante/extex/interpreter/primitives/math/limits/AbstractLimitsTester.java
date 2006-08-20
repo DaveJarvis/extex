@@ -20,7 +20,6 @@
 package de.dante.extex.interpreter.primitives.math.limits;
 
 import de.dante.test.ExTeXLauncher;
-import de.dante.test.NoFlagsPrimitiveTester;
 
 /**
  * This is an abstract base class for testing math primitives.
