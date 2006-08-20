@@ -275,4 +275,13 @@ public class AfmCharMetric implements Serializable {
 
         wx = iwx;
     }
+
+    /**
+     * Return the name and the number of the glyph.
+     * @return Return the name and the number of the glyph.
+     */
+    public String toString() {
+
+        return n + " c=" + c;
+    }
 }
