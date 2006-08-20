@@ -34,7 +34,7 @@ public class NoadList {
      * The field <tt>list</tt> is the container for the elements of this node
      * list.
      */
-    private List list = new ArrayList();
+    private List list = new ArrayList(16);
 
     /**
      * Creates a new object containing no elements.
