@@ -93,7 +93,9 @@ import de.dante.util.framework.logger.LogEnabled;
  *      &rarr; [scaled] {@linkplain
  *        de.dante.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
  *        &lang;number&rang;}
- *       | [at] &lang;size...&rang;
+ *       | [at] {@linkplain
+ *           de.dante.extex.interpreter.type.dimen#Dimen(de.dante.extex.interpreter.context.Context,de.dante.extex.interpreter.TokenSource)
+ *           &lang;size&rang;}
  *       | [noligatures]
  *       | [nokerning]
  *       | [letterspaced]  </pre>
