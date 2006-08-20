@@ -49,6 +49,11 @@ import de.dante.util.UnicodeCharList;
 public class ExTeXWords implements WordTokenizer {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    protected static final long serialVersionUID = 2006L;
+
+    /**
      * Hyphenate subsequent char nodes from a ligature.
      *
      * <p>

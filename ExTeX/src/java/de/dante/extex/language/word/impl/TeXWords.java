@@ -44,6 +44,11 @@ import de.dante.util.UnicodeCharList;
 public class TeXWords extends ExTeXWords implements WordTokenizer {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    protected static final long serialVersionUID = 2006L;
+
+    /**
      * Creates a new object.
      */
     public TeXWords() {
