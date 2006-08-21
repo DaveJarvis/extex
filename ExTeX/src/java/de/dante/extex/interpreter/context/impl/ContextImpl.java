@@ -495,10 +495,12 @@ public class ContextImpl
 
         groupFactory = new GroupFactory(configuration
                 .getConfiguration(GROUP_TAG));
-        try {
-            openGroup(GroupType.BOTTOM_LEVEL_GROUP, null, null);
-        } catch (InterpreterException e) {
-            throw new ConfigurationWrapperException(e);
+        if (group == null) {
+            try {
+                openGroup(GroupType.BOTTOM_LEVEL_GROUP, null, null);
+            } catch (InterpreterException e) {
+                throw new ConfigurationWrapperException(e);
+            }
         }
 
         Configuration typesettingConfig = configuration
