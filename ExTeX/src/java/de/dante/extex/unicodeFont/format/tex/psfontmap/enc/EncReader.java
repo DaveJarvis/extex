@@ -80,20 +80,27 @@ public class EncReader implements Serializable {
             reader.close();
             in.close();
 
+            int fs = buf.indexOf("/");
             int first = buf.indexOf("[");
             int last = buf.lastIndexOf("]");
-            if (first < 0 || last < 0) {
+            if (fs < 0 || first < 0 || last < 0) {
                 throw new FontException(localizer
                         .format("EncReader.WrongRange"));
 
             }
             String tablestring = buf.substring(first + 1, last).trim();
             table = tablestring.split("\\s");
+            encname = buf.substring(fs + 1, first).trim();
 
         } catch (IOException e) {
             throw new FontIOException(e.getMessage());
         }
     }
+
+    /**
+     * The encoding name.
+     */
+    private String encname = "";
 
     /**
      * encoding table.
@@ -107,5 +114,14 @@ public class EncReader implements Serializable {
     public String[] getTable() {
 
         return table;
+    }
+
+    /**
+     * Returns the encname.
+     * @return Returns the encname.
+     */
+    public String getEncname() {
+
+        return encname;
     }
 }
