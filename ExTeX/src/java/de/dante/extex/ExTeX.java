@@ -847,7 +847,7 @@ public class ExTeX {
      *
      * @return the version number for this class
      */
-    public String getVersion() {
+    public static String getVersion() {
 
         return EXTEX_VERSION;
     }
