@@ -43,6 +43,7 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
 import de.dante.util.framework.configuration.exception.ConfigurationInstantiationException;
 import de.dante.util.framework.configuration.exception.ConfigurationMissingAttributeException;
 import de.dante.util.framework.configuration.exception.ConfigurationNoSuchMethodException;
+import de.dante.util.resource.PropertyConfigurable;
 import de.dante.util.resource.ResourceFinder;
 import de.dante.util.resource.ResourceFinderFactory;
 
@@ -174,7 +175,7 @@ public class DviXmlTest extends TestCase {
 
         FontFactory fontFactory = makeFontFactory(config
                 .getConfiguration("Fonts"), config.getConfiguration("Resource"));
-        fontFactory.setProperties(getProps());
+        ((PropertyConfigurable)fontFactory).setProperties(getProps());
 
         return fontFactory;
     }

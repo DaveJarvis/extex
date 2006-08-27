@@ -26,6 +26,7 @@ import java.util.logging.Logger;
 import junit.framework.TestCase;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.font.Font;
+import de.dante.extex.interpreter.type.glue.Glue;
 import de.dante.extex.interpreter.type.glue.GlueComponent;
 import de.dante.util.framework.configuration.Configuration;
 import de.dante.util.framework.configuration.ConfigurationFactory;
@@ -102,7 +103,8 @@ public class FontTest extends TestCase {
 
         FontFactory factory = makeFontFactory();
 
-        Font font = factory.getInstance("tfmcmr12", DIM12);
+        Font font = factory.getInstance(new FountKey("tfmcmr12", DIM12, null,
+                new Glue(0), false, false));
 
         assertEquals("tfmcmr12", font.getFontName());
         assertTrue(DIM12.eq(font.getEm()));
