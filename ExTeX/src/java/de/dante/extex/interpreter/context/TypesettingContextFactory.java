@@ -19,6 +19,7 @@
 
 package de.dante.extex.interpreter.context;
 
+import de.dante.extex.font.type.other.NullFont;
 import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.language.Language;
 import de.dante.extex.language.LanguageManager;
@@ -113,13 +114,14 @@ public class TypesettingContextFactory extends AbstractFactory {
      * @throws ConfigurationInstantiationException in case that the
      *             instantiation of the class failed.
      */
-    public ModifiableTypesettingContext newInstance()
+    protected ModifiableTypesettingContext newInstance()
             throws ConfigurationInstantiationException {
 
         ModifiableTypesettingContext context;
 
         try {
             context = (ModifiableTypesettingContext) (theClass.newInstance());
+            context.setFont(new NullFont());
         } catch (InstantiationException e) {
             throw new ConfigurationInstantiationException(e);
         } catch (IllegalAccessException e) {
@@ -255,7 +257,9 @@ public class TypesettingContextFactory extends AbstractFactory {
     public TypesettingContext initial() throws ConfigurationException {
 
         ModifiableTypesettingContext c = newInstance();
-        c.setLanguage(languageManager.getLanguage("0"));
+        if (languageManager != null) {
+            c.setLanguage(languageManager.getLanguage("0"));
+        }
         return c;
     }
 
