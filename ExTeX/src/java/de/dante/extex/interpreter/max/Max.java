@@ -535,8 +535,6 @@ public abstract class Max
         context.setTokenFactory(tokenFactory);
         configureHyhenation(config);
 
-    
-    
         OutputStreamFactory outputFactory = null; //TODO gene: provide OutputStreamFactory
 
         Context ctx = getContext();
@@ -562,7 +560,6 @@ public abstract class Max
             throw new ConfigurationWrapperException(e);
         }
 
-    
     }
 
     /**
