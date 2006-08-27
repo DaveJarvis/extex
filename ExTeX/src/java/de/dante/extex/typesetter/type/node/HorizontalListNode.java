@@ -101,9 +101,9 @@ public class HorizontalListNode extends GenericNodeList {
     public void add(final int index, final Node node) {
 
         super.add(index, node);
-        getWidth().add(node.getWidth());
-        getHeight().max(node.getHeight());
-        getDepth().max(node.getDepth());
+        advanceWidth(node.getWidth());
+        maxHeight(node.getHeight());
+        maxDepth(node.getDepth());
     }
 
     /**
@@ -113,9 +113,9 @@ public class HorizontalListNode extends GenericNodeList {
     public void add(final Node node) {
 
         super.add(node);
-        getWidth().add(node.getWidth());
-        getHeight().max(node.getHeight());
-        getDepth().max(node.getDepth());
+        advanceWidth(node.getWidth());
+        maxHeight(node.getHeight());
+        maxDepth(node.getDepth());
     }
 
     /**

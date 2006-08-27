@@ -23,6 +23,7 @@ import de.dante.extex.font.Glyph;
 import de.dante.extex.interpreter.context.TypesettingContext;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.font.Font;
+import de.dante.extex.interpreter.type.glue.FixedGlue;
 import de.dante.extex.typesetter.type.NodeVisitor;
 import de.dante.util.UnicodeChar;
 import de.dante.util.exception.GeneralException;
@@ -72,18 +73,13 @@ public class CharNode extends AbstractNode {
         typesettingContext = context;
         character = uc;
         Font font = context.getFont();
-        glyph = font.getGlyph(uc);
 
-        if (glyph != null) {
-            setWidth(glyph.getWidth());
-            setHeight(glyph.getHeight());
-            setDepth(glyph.getDepth());
-        } else {
-            setWidth(new Dimen(0));
-            setHeight(new Dimen(0));
-            setDepth(new Dimen(0));
-            //character = null;
-        }
+        FixedGlue x = font.getWidth(uc);
+        setWidth(x != null ? x.getLength() : Dimen.ZERO_PT);
+        x = font.getHeight(uc);
+        setHeight(x != null ? x.getLength() : Dimen.ZERO_PT);
+        x = font.getDepth(uc);
+        setDepth(x != null ? x.getLength() : Dimen.ZERO_PT);
     }
 
     /**

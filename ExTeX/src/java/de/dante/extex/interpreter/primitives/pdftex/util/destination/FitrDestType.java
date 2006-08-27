@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter.primitives.pdftex.util.destination;
 
-import de.dante.extex.interpreter.type.dimen.Dimen;
+import de.dante.extex.interpreter.type.dimen.FixedDimen;
 import de.dante.extex.typesetter.type.node.RuleNode;
 
 /**
@@ -64,7 +64,7 @@ public class FitrDestType extends DestType {
     public String toString() {
 
         StringBuffer sb = new StringBuffer("fitr ");
-        Dimen x = rule.getWidth();
+        FixedDimen x = rule.getWidth();
         if (x != null) {
             sb.append("width ");
             x.toString(sb);

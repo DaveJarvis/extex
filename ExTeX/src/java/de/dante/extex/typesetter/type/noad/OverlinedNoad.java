@@ -132,7 +132,7 @@ public class OverlinedNoad extends AbstractNucleusNoad {
 
         Dimen h = new Dimen(vlist.getHeight());
         h.add(vlist.getDepth());
-        Dimen d = hlist.getDepth();
+        Dimen d = new Dimen(hlist.getDepth());
         vlist.setDepth(d);
         h.subtract(d);
         vlist.setHeight(h);

@@ -106,7 +106,7 @@ public class MathContext {
 
         Font font = options.getFont(NumberedFont.key(options, //
                 actualStyle.getFontName(), p.inSymbol() ? "2" : "3"));
-        Dimen value;
+        FixedDimen value;
         if (font == null || (value = font.getFontDimen(p.getNo())) == null) {
             throw new TypesetterException(
                     //

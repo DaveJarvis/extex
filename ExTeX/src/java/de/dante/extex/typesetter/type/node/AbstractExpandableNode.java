@@ -165,7 +165,7 @@ public abstract class AbstractExpandableNode extends AbstractNode {
 
         long adjust = computeAdjustment(height.getValue(), this.size, sum);
         if (adjust != 0) {
-            getHeight().add(adjust);
+            advanceHeight(new Dimen(adjust));
         }
     }
 
@@ -187,7 +187,7 @@ public abstract class AbstractExpandableNode extends AbstractNode {
 
         long adjust = computeAdjustment(width.getValue(), this.size, sum);
         if (adjust != 0) {
-            getWidth().add(adjust);
+            advanceWidth(new Dimen(adjust));
         }
     }
 

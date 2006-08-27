@@ -27,6 +27,7 @@ import de.dante.extex.interpreter.exception.helping.EofException;
 import de.dante.extex.interpreter.exception.helping.MissingLeftBraceException;
 import de.dante.extex.interpreter.type.box.Box;
 import de.dante.extex.interpreter.type.dimen.Dimen;
+import de.dante.extex.interpreter.type.dimen.FixedDimen;
 import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
@@ -171,7 +172,7 @@ public class Vbox extends AbstractBoxPrimitive {
         int size = nodes.size();
         if (size > 0) {
             Node top = nodes.get(size - 1);
-            Dimen height = top.getHeight();
+            FixedDimen height = top.getHeight();
             box.setHeight(height);
             depth.subtract(height);
             box.setDepth(depth);

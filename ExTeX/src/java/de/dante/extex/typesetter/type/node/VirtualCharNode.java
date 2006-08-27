@@ -211,7 +211,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
     /**
      * @see de.dante.extex.typesetter.type.Node#getDepth()
      */
-    public Dimen getDepth() {
+    public FixedDimen getDepth() {
 
         return this.nodes.getDepth();
     }
@@ -219,7 +219,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
     /**
      * @see de.dante.extex.typesetter.type.Node#getHeight()
      */
-    public Dimen getHeight() {
+    public FixedDimen getHeight() {
 
         return this.nodes.getHeight();
     }
@@ -251,7 +251,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
     /**
      * @see de.dante.extex.typesetter.type.Node#getWidth()
      */
-    public Dimen getWidth() {
+    public FixedDimen getWidth() {
 
         return this.nodes.getWidth();
     }

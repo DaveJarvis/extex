@@ -344,7 +344,7 @@ public class MathListMaker extends HorizontalListMaker
      * @see de.dante.extex.typesetter.ListMaker#add(
      *      de.dante.extex.interpreter.type.glue.FixedGlue)
      */
-    public void add(final FixedGlue g) throws TypesetterException {
+    public void add(final FixedDimen g) throws TypesetterException {
 
         insertionPoint.add(new NodeNoad(new GlueNode(g, true)));
     }
