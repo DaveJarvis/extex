@@ -23,6 +23,7 @@ import java.io.Serializable;
 
 import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.interpreter.type.dimen.Dimen;
+import de.dante.extex.interpreter.type.glue.FixedGlue;
 import de.dante.extex.interpreter.type.glue.Glue;
 
 /**
@@ -138,10 +139,11 @@ public class FountKey implements Serializable {
     }
 
     /**
-     * Returns the letter spaced.
-     * @return Returns the letter spaced.
+     * Returns the letter spacing.
+     *
+     * @return Returns the letter spacing.
      */
-    public Glue getLetterspaced() {
+    public FixedGlue getLetterspaced() {
 
         return letterspaced;
     }
