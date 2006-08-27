@@ -216,7 +216,32 @@ public class Count implements Serializable, FixedCount {
     }
 
     /**
-     * Scan the input stream for an integer value.
+     * Scan the input stream for tokens making up an integer, this is a number
+     * optionally preceded by a sign (+ or -). The number can be preceded by
+     * optional white space. White space is also ignored between the sign and
+     * the number. All non-whitespace characters must have the category code
+     * OTHER.
+     *
+     * <p>
+     * This method parses the following syntactic entity:
+     * </p>
+     *
+     * <doc type="syntax" name="integer">
+     * <h3>A Number</h3>
+     *
+     * <pre class="syntax">
+     *   &lang;number&rang; </pre>
+     * <p>
+     *  A number consists of a non-empty sequence of digits with category code
+     *  {@link de.dante.extex.scanner.type.Catcode#OTHER OTHER}. The number is
+     *  optionally preceded by white space and a sign <tt>+</tt> or <tt>-</tt>.
+     * </p>
+     * <p>
+     *  Tokens are expanded while gathering the requested values.
+     * </p>
+     *
+     * </doc>
+     *
      *
      * @param context the processor context
      * @param source the source for new tokens
