@@ -70,7 +70,7 @@ public abstract class AbstractCode implements Code, Localizable, Serializable {
      * The field <tt>localizer</tt> contains the localizer or <code>null</code>
      * if none has been set yet.
      */
-    private Localizer localizer = null;
+    private transient Localizer localizer = null;
 
     /**
      * The field <tt>name</tt> contains the name of this code for debugging.
