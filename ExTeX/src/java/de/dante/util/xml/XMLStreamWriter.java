@@ -493,6 +493,38 @@ public class XMLStreamWriter {
     }
 
     /**
+     * Write a byte array as entries (hex).
+     *
+     * @param bytes The byte array.
+     * @throws IOException if an error occurs.
+     */
+    public void writeByteArrayAsEntries(final byte[] bytes) throws IOException {
+
+        for (int i = 0; i < bytes.length; i++) {
+            writeStartElement("entry");
+            writeAttribute("id", i);
+            writeAttribute("value", "0x" + toHexString(bytes[i], 2));
+            writeEndElement();
+        }
+    }
+
+    /**
+     * Write a int array as entries (hex).
+     *
+     * @param array The int array.
+     * @throws IOException if an error occurs.
+     */
+    public void writeIntArrayAsEntries(final int[] array) throws IOException {
+
+        for (int i = 0; i < array.length; i++) {
+            writeStartElement("entry");
+            writeAttribute("id", i);
+            writeAttribute("value", "0x" + toHexString(array[i], 8));
+            writeEndElement();
+        }
+    }
+
+    /**
      * Entries each line.
      */
     private static final int ENTRY_LINES = 8;

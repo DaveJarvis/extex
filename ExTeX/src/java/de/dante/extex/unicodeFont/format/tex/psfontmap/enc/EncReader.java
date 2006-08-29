@@ -117,6 +117,23 @@ public class EncReader implements Serializable {
     }
 
     /**
+     * Returns the position of the glyph in the table.
+     * @param name  The glyph name.
+     * @return Returns the position of the glyph in the table or -1 if not found.
+     */
+    public int getPosition(final String name) {
+
+        String n = "/" + name.replaceAll("/", "");
+
+        for (int i = 0; i < table.length; i++) {
+            if (table[i].equals(n)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    /**
      * Returns the encname.
      * @return Returns the encname.
      */

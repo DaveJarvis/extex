@@ -87,9 +87,33 @@ public class AfmCharMetric implements Serializable {
     }
 
     /**
+     * Check, if the char has a ligature.
+     * @return Return <code>true</code>, if the char has a ligature.
+     */
+    public boolean isLigatur() {
+
+        if (l == null) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
      * Kerning.
      */
     private ArrayList k = null;
+
+    /**
+     * Check, if the char has a kerning.
+     * @return Return <code>true</code>, if the char has a kerning.
+     */
+    public boolean isKerning() {
+
+        if (k == null) {
+            return false;
+        }
+        return true;
+    }
 
     /**
      * Add a kerning.
