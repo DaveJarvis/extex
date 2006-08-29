@@ -550,6 +550,23 @@ public class TtfTablePOST extends AbstractXtfTable
     }
 
     /**
+     * Returns the position of a glpyhname or -1 if not found.
+     * @param glypname The glpyh name.
+     * @return Returns the position of a glpyhname.
+     */
+    public int getGlyphNamePosition(final String glypname) {
+
+        if (glypname != null) {
+            for (int i = 0; i < numGlyphs; i++) {
+                if (glypname.equals(getGlyphName(i))) {
+                    return i;
+                }
+            }
+        }
+        return -1;
+    }
+
+    /**
      * Get the table type, as a table directory value.
      * @return The table type
      */
