@@ -1,0 +1,6 @@
+#!/bin/sh
+# author: Sebastian Waschik
+# created: 2006-08-22
+# RCS-ID: $Id$
+
+checklink -D 20 -s -l http://www.extex.org/ http://www.extex.org/
