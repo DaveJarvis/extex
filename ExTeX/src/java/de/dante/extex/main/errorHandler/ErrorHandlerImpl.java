@@ -101,7 +101,13 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
             final TokenSource source = (TokenSource) oSource;
             final Context context = (Context) oContext;
             final GeneralException ex = (GeneralException) oException;
-            showErrorLine(logger, ex.getLocalizedMessage(), source.getLocator());
+            if (ex.getCause() instanceof ConfigurationException) {
+                showErrorLine(logger, ex.getCause().getLocalizedMessage(), source
+                        .getLocator());
+            } else {
+                showErrorLine(logger, ex.getLocalizedMessage(), source
+                        .getLocator());
+            }
 
             try {
                 boolean firstHelp = true;
