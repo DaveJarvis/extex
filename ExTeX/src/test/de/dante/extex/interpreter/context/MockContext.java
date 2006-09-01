@@ -396,6 +396,14 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * @see de.dante.extex.interpreter.context.Context#getLanguageManager()
+     */
+    public LanguageManager getLanguageManager() {
+
+        throw new RuntimeException("unimplemented");
+    }
+
+    /**
      * @see de.dante.extex.interpreter.context.Context#getLccode(de.dante.util.UnicodeChar)
      */
     public UnicodeChar getLccode(final UnicodeChar uc) {

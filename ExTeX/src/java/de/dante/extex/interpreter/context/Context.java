@@ -447,19 +447,26 @@ public interface Context
 
     /**
      * Setter for the id string. The id string is the classification of the
-     * original source like given in the fmt file.
+     * original source like given in the format file.
      *
      * @param id the id string
      */
     void setId(String id);
 
     /**
-     * Setter for the hyphenation manager
+     * Setter for the language manager.
      *
-     * @param manager the hyphenatin manager
+     * @param manager the language manager
+     *
+     * @throws ConfigurationException in case of an configuration error
      */
     void setLanguageManager(LanguageManager manager)
             throws ConfigurationException;
+
+    /**
+     * Getter for the language manager.
+     */
+    LanguageManager getLanguageManager();
 
     /**
      * Declare the translation from an upper case character to a lower case
