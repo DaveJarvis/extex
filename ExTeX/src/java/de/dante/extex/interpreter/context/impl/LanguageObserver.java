@@ -77,8 +77,13 @@ public class LanguageObserver implements CountObserver, TokensObserver {
             throws ConfigurationException {
 
         if ("lang".equals(name)) { // this should never fail; just to be sure
+
+            String s = value.toText();
+            if (s.equals("")) {
+                s = "0";
+            }
             context.getTypesettingContextFactory().newInstance(
-                    context.getTypesettingContext(), value.toString());
+                    context.getTypesettingContext(), s);
         }
     }
 
