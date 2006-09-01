@@ -222,11 +222,11 @@ public class TeXOutputRoutine implements OutputRoutine {
                     "TTP.NonEmptyOutBox", context.esc("box"), OUTPUT_BOX);
         }
 
-        context.setBox(OUTPUT_BOX, new Box(page.getNodes()), false);
         interpreter.push(rightBrace);
         interpreter.push(output);
         try {
             context.openGroup(GroupType.OUTPUT_GROUP, null, null); //TODO gene: provide reasonable values
+            context.setBox(OUTPUT_BOX, new Box(page.getNodes()), false);
         } catch (ConfigurationException e) {
             throw new GeneralException(e);
         }
