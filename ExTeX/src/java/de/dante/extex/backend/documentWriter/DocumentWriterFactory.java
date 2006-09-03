@@ -20,6 +20,7 @@
 package de.dante.extex.backend.documentWriter;
 
 import de.dante.extex.backend.documentWriter.exception.DocumentWriterException;
+import de.dante.extex.backend.outputStream.OutputStreamFactory;
 import de.dante.util.framework.AbstractFactory;
 import de.dante.util.framework.configuration.Configuration;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
@@ -79,7 +80,7 @@ public class DocumentWriterFactory extends AbstractFactory {
 
         if (documentWriter instanceof SingleDocumentStream) {
             ((SingleDocumentStream) documentWriter).setOutputStream(outFactory
-                    .getOutputStream());
+                    .getOutputStream(null, null));
         }
         if (documentWriter instanceof MultipleDocumentStream) {
             ((MultipleDocumentStream) documentWriter)

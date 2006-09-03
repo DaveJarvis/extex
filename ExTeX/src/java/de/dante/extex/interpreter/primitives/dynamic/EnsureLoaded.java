@@ -21,7 +21,7 @@ package de.dante.extex.interpreter.primitives.dynamic;
 
 import java.util.logging.Logger;
 
-import de.dante.extex.backend.documentWriter.OutputStreamFactory;
+import de.dante.extex.backend.outputStream.OutputStreamFactory;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;

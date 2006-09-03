@@ -26,13 +26,13 @@ import java.util.Map;
 
 import de.dante.extex.backend.documentWriter.DocumentWriter;
 import de.dante.extex.backend.documentWriter.MultipleDocumentStream;
-import de.dante.extex.backend.documentWriter.OutputStreamFactory;
 import de.dante.extex.backend.documentWriter.exception.DocumentWriterException;
 import de.dante.extex.backend.documentWriter.postscript.util.FontManager;
 import de.dante.extex.backend.documentWriter.postscript.util.HeaderManager;
 import de.dante.extex.backend.documentWriter.postscript.util.PsBasicConverter;
 import de.dante.extex.backend.documentWriter.postscript.util.PsBoxConverter;
 import de.dante.extex.backend.documentWriter.postscript.util.PsConverter;
+import de.dante.extex.backend.outputStream.OutputStreamFactory;
 import de.dante.extex.color.ColorAware;
 import de.dante.extex.color.ColorConverter;
 import de.dante.extex.interpreter.type.font.Font;
@@ -169,7 +169,7 @@ public abstract class AbstractPostscriptWriter
     protected OutputStream newOutputStream(final String type)
             throws DocumentWriterException {
 
-        return writerFactory.getOutputStream(type);
+        return writerFactory.getOutputStream(null, type);
     }
 
     /**
@@ -183,7 +183,7 @@ public abstract class AbstractPostscriptWriter
 
     /**
      * @see de.dante.extex.backend.documentWriter.MultipleDocumentStream#setOutputStreamFactory(
-     *      de.dante.extex.backend.documentWriter.OutputStreamFactory)
+     *      de.dante.extex.backend.outputStream.OutputStreamFactory)
      */
     public void setOutputStreamFactory(final OutputStreamFactory factory) {
 

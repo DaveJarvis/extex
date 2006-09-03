@@ -26,7 +26,7 @@ import java.util.Calendar;
 import java.util.Iterator;
 import java.util.logging.Logger;
 
-import de.dante.extex.backend.documentWriter.OutputStreamFactory;
+import de.dante.extex.backend.outputStream.OutputStreamFactory;
 import de.dante.extex.font.FontFactory;
 import de.dante.extex.interpreter.Conditional;
 import de.dante.extex.interpreter.ErrorHandler;

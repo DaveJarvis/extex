@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.backend.documentWriter;
+package de.dante.extex.backend.outputStream;
 
 import java.io.OutputStream;
 
@@ -30,34 +30,6 @@ import de.dante.extex.backend.documentWriter.exception.DocumentWriterException;
  * @version $Revision$
  */
 public interface OutputStreamFactory {
-
-    /**
-     * Getter for the destination.
-     *
-     * @return the name of the destination
-     */
-    String getDestination();
-
-    /**
-     * Getter for a new OutputStream of the default type.
-     *
-     * @return the new OutputStream
-     * @throws DocumentWriterException in case of an error
-     */
-    OutputStream getOutputStream()
-            throws DocumentWriterException;
-
-    /**
-     * Getter for a new OutputStream.
-     *
-     * @param type the type of the stream to acquire. In general this should
-     *  correspond to the extension of a file of this type
-     *
-     * @return the new OutputStream
-     * @throws DocumentWriterException in case of an error
-     */
-    OutputStream getOutputStream(String type)
-            throws DocumentWriterException;
 
     /**
      * Getter for a new OutputStream.
@@ -75,7 +47,8 @@ public interface OutputStreamFactory {
             throws DocumentWriterException;
 
     /**
-     * Setter for the extension.
+     * Setter for the default extension.
+     * The default extension is used when the type specified is <code>null</code>.
      *
      * @param extension the default extension
      */

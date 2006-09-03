@@ -22,7 +22,7 @@ package de.dante.extex.interpreter.max.util;
 import java.util.Iterator;
 import java.util.logging.Logger;
 
-import de.dante.extex.backend.documentWriter.OutputStreamFactory;
+import de.dante.extex.backend.outputStream.OutputStreamFactory;
 import de.dante.extex.interpreter.Namespace;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
