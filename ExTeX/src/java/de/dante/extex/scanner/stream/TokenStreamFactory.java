@@ -19,7 +19,7 @@
 
 package de.dante.extex.scanner.stream;
 
-import java.io.FileNotFoundException;
+import java.io.BufferedInputStream;
 import java.io.InputStream;
 import java.io.Reader;
 import java.lang.reflect.Constructor;
@@ -357,6 +357,7 @@ public class TokenStreamFactory extends AbstractFactory
         if (stream == null) {
             return null;
         }
+        stream = new BufferedInputStream(stream);
 
         TokenStream tokenStream;
         try {
@@ -376,7 +377,7 @@ public class TokenStreamFactory extends AbstractFactory
         }
 
         if (openFileObservers != null) {
-            openFileObservers.update(fileName, fileType);
+            openFileObservers.update(fileName, fileType, stream);
         }
 
         enableLogging(stream, getLogger());
