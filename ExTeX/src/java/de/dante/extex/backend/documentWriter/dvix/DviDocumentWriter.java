@@ -396,7 +396,7 @@ public class DviDocumentWriter
             }
 
             if (horizontal) {
-                dviH += node.getGlyph().getWidth().getValue();
+                dviH += node.getWidth().getValue();
                 dviCode.add(new DviSetChar(node.getCharacter().getCodePoint()));
                 return Boolean.TRUE; // do not move any more
             } else {
