@@ -84,7 +84,7 @@ public class NamedOutputStream extends OutputStream {
      *
      * @return the name of the destination
      */
-    String getName() {
+    public String getName() {
 
         return name;
     }
