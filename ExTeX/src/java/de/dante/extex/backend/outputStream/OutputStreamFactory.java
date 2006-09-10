@@ -54,4 +54,11 @@ public interface OutputStreamFactory {
      */
     void setExtension(String extension);
 
+    /**
+     * TODO gene: missing JavaDoc
+     *
+     * @param observer the observers to register
+     */
+    public void register(final OutputStreamObserver observer);
+
 }
