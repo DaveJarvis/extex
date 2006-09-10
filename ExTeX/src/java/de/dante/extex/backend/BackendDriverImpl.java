@@ -35,7 +35,7 @@ import de.dante.util.framework.configuration.Configuration;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
- * This document writer can be used to combine several components.
+ * This back-end driver can be used to combine several components.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -228,11 +228,11 @@ public class BackendDriverImpl
      * @see de.dante.extex.backend.documentWriter.MultipleDocumentStream#setOutputStreamFactory(
      *      de.dante.extex.backend.outputStream.OutputStreamFactory)
      */
-    public void setOutputStreamFactory(final OutputStreamFactory writerFactory) {
+    public void setOutputStreamFactory(final OutputStreamFactory factory) {
 
         if (documentWriter instanceof MultipleDocumentStream) {
             ((MultipleDocumentStream) documentWriter)
-                    .setOutputStreamFactory(writerFactory);
+                    .setOutputStreamFactory(factory);
         }
     }
 
