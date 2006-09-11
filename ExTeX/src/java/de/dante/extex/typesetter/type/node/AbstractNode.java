@@ -111,9 +111,9 @@ public abstract class AbstractNode implements Node {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Advance the width by some length. The length can also be nagative.
      *
-     * @param x
+     * @param x the length to add
      */
     public void advanceWidth(final FixedDimen x) {
 
@@ -121,9 +121,9 @@ public abstract class AbstractNode implements Node {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Advance the height by some length. The length can also be nagative.
      *
-     * @param x
+     * @param x the length to add
      */
     public void advanceHeight(final FixedDimen x) {
 
@@ -131,9 +131,10 @@ public abstract class AbstractNode implements Node {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Assign the maximum of the current value and a comparison value to the
+     * height.
      *
-     * @param x
+     * @param x the length to compare to
      */
     public void maxHeight(final FixedDimen x) {
 
@@ -143,9 +144,10 @@ public abstract class AbstractNode implements Node {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Assign the maximum of the current value and a comparison value to the
+     * width.
      *
-     * @param x
+     * @param x the length to compare to
      */
     public void maxWidth(final FixedDimen x) {
 
@@ -155,9 +157,10 @@ public abstract class AbstractNode implements Node {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Assign the maximum of the current value and a comparison value to the
+     * depth.
      *
-     * @param x
+     * @param x the length to compare to
      */
     public void maxDepth(final FixedDimen x) {
 

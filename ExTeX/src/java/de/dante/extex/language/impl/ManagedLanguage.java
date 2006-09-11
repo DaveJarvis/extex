@@ -22,7 +22,8 @@ package de.dante.extex.language.impl;
 import de.dante.extex.language.Language;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This interface describes a {@link de.dante.extex.language.Language Language}
+ * which has a creator assigned.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
