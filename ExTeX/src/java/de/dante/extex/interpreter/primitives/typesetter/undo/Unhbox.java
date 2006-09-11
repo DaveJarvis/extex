@@ -87,14 +87,14 @@ public class Unhbox extends AbstractBox {
             throws InterpreterException {
 
         String key = getKey(context, source, typesetter, getName());
-        Box b = context.getBox(key);
-        if (b == null || b.isVoid()) {
+        Box box = context.getBox(key);
+        if (box == null || box.isVoid()) {
             // nothing to do
-        } else if (!b.isHbox()) {
+        } else if (!box.isHbox()) {
             throw new HelpingException(getLocalizer(), "TTP.IncompatibleUnbox");
         } else {
-            context.setBox(key, null, false);
-            NodeList nl = b.getNodes();
+            NodeList nl = box.getNodes();
+            box.clear();
             for (int i = 0; i < nl.size(); i++) {
                 try {
                     typesetter.add(nl.get(i));
