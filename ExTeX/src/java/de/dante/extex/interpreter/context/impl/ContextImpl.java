@@ -500,6 +500,7 @@ public class ContextImpl
         }
         typesettingContextFactory.configure(typesettingConfig);
         TypesettingContext tc;
+        TypesettingContext oldTc = getTypesettingContext();
 
         if (languageManager != null) {
             typesettingContextFactory.setLanguageManager(languageManager);
@@ -508,6 +509,9 @@ public class ContextImpl
                     .getLanguage("0"));
         } else {
             tc = typesettingContextFactory.initial();
+        }
+        if (oldTc != null) {
+            tc = typesettingContextFactory.newInstance(oldTc);
         }
         set(tc, true);
     }
