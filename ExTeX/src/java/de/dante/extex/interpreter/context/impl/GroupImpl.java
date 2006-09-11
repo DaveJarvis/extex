@@ -692,7 +692,7 @@ public class GroupImpl implements Group {
                 ? context //
                 : next != null
                         ? next.getTypesettingContext()
-                        : new TypesettingContextImpl();
+                        : null;
     }
 
     /**
