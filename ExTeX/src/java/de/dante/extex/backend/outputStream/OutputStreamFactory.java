@@ -47,18 +47,19 @@ public interface OutputStreamFactory {
             throws DocumentWriterException;
 
     /**
+     * Register an observer which is invoked to notify about any output
+     * stream requested via a call to getOututStream(),
+     *
+     * @param observer the observers to register
+     */
+    public void register(final OutputStreamObserver observer);
+
+    /**
      * Setter for the default extension.
      * The default extension is used when the type specified is <code>null</code>.
      *
      * @param extension the default extension
      */
     void setExtension(String extension);
-
-    /**
-     * TODO gene: missing JavaDoc
-     *
-     * @param observer the observers to register
-     */
-    public void register(final OutputStreamObserver observer);
 
 }

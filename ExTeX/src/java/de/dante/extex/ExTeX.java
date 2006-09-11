@@ -1095,7 +1095,8 @@ public class ExTeX {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * This method can be overwritten to provide logging functionality for the
+     * pages produced.
      *
      * @param backend the back-end driver
      */

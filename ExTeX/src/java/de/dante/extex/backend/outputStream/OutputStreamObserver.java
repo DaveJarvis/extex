@@ -22,7 +22,8 @@ package de.dante.extex.backend.outputStream;
 import java.io.OutputStream;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This interface provides the description of an observer waiting for a new
+ * output stream to be delivered.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -30,11 +31,11 @@ import java.io.OutputStream;
 public interface OutputStreamObserver {
 
     /**
-     * TODO gene: missing JavaDoc
+     * Recognize that a new output stream has been delivered.
      *
-     * @param name
-     * @param type
-     * @param stream
+     * @param name the name of the resource requested
+     * @param type the type of the resource
+     * @param stream the stream to be delivered
      */
     void update(String name, String type, OutputStream stream);
 
