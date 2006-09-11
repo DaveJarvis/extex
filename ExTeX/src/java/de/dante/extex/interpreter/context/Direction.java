@@ -82,4 +82,13 @@ public final class Direction implements Serializable {
         return (lr ? LR : RL);
     }
 
+    /**
+     * @see java.lang.Object#toString()
+     */
+    public String toString() {
+
+        return (lr ? "LR" : "RL");
+    }
+
+    
 }

@@ -190,4 +190,22 @@ public class TypesettingContextImpl implements ModifiableTypesettingContext {
         this.language = language;
     }
 
+    /**
+     * @see java.lang.Object#toString()
+     */
+    public String toString() {
+
+        StringBuffer sb = new StringBuffer("(");
+        sb.append(font.getFontKey().toString());
+        sb.append(' ');
+        sb.append(language.getName());
+        sb.append(' ');
+        sb.append(color.toString());
+        sb.append(' ');
+        sb.append(direction.toString());
+        sb.append(')');
+        return sb.toString();
+    }
+
+    
 }
