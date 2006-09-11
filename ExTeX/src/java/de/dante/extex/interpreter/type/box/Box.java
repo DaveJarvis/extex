@@ -145,6 +145,16 @@ public class Box implements BoxOrRule, Serializable {
     }
 
     /**
+     * Creates a new object.
+     *
+     * @param box the box to copy (shallow)
+     */
+    public Box(final Box box) {
+
+        nodes = (box == null ? null : box.getNodes());
+    }
+
+    /**
      * Clear the contents of the box. Afterwards the box is void.
      */
     public void clear() {
