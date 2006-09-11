@@ -141,9 +141,9 @@ public class BaseHyphenationTable implements ModifiableLanguage, Serializable {
     }
 
     /**
-     * @see de.dante.extex.language.Language#addHyphenation(
-     *      de.dante.extex.interpreter.type.tokens.Tokens,
-     *      TypesetterOptions)
+     * @see de.dante.extex.language.hyphenation.Hyphenator#addHyphenation(
+     *      de.dante.util.UnicodeCharList,
+     *      de.dante.extex.typesetter.TypesetterOptions)
      */
     public void addHyphenation(final UnicodeCharList word,
             final TypesetterOptions options) throws HyphenationException {

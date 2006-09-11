@@ -83,8 +83,8 @@ public class FutureLanguage implements ManagedLanguage, Serializable {
 
     /**
      * @see de.dante.extex.language.hyphenation.Hyphenator#addHyphenation(
-     *      de.dante.extex.interpreter.type.tokens.Tokens,
-     *      TypesetterOptions)
+     *      de.dante.util.UnicodeCharList,
+     *      de.dante.extex.typesetter.TypesetterOptions)
      */
     public void addHyphenation(final UnicodeCharList word,
             final TypesetterOptions context) throws HyphenationException {
