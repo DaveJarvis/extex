@@ -194,4 +194,12 @@ public class PageImpl implements Page {
         mediaWidth.set(width);
     }
 
+    /**
+     * @see java.lang.Object#toString()
+     */
+    public String toString() {
+
+        return nodes.toString();
+    }
+
 }
