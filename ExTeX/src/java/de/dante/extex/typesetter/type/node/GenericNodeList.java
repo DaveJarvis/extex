@@ -383,8 +383,11 @@ public class GenericNodeList extends AbstractNode implements NodeList {
 
         sb.append("(");
         sb.append(getHeight().toString());
-        sb.append("+");
-        sb.append(getDepth().toString());
+        FixedDimen d = getDepth();
+        if (d.ge(Dimen.ZERO)) {
+            sb.append("+");
+        }
+        sb.append(d.toString());
         sb.append(")x");
         sb.append(getWidth().toString());
 
