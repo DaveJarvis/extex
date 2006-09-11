@@ -594,6 +594,15 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
     }
 
     /**
+     * Negate the value. This is the same as multiplying with -1.
+     *
+     */
+    public void negate() {
+        
+        this.value = -this.value;
+    }
+
+    /**
      * Compares the current instance with another GlueComponent for equality.
      *
      * @param d the other GlueComponent to compare to. If this parameter is
