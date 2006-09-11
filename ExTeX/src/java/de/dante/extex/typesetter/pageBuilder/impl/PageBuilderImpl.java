@@ -198,4 +198,27 @@ public class PageBuilderImpl implements PageBuilder {
         pageFactory = factory;
     }
 
+    /**
+     * @see de.dante.extex.typesetter.pageBuilder.PageBuilder#shipout(
+     *      de.dante.extex.typesetter.type.NodeList,
+     *      de.dante.extex.typesetter.Typesetter)
+     */
+    public void shipout(final NodeList nodes, final Typesetter typesetter)
+            throws TypesetterException {
+
+        if (nodes.size() <= 0) {
+            return;
+        }
+        try {
+            Page page = pageFactory.newInstance(nodes, context, typesetter);
+            if (page != null) {
+                backendDriver.shipout(page);
+            }
+            nodes.clear();
+        } catch (GeneralException e) {
+            throw new TypesetterException(e);
+        }
+
+    }
+
 }

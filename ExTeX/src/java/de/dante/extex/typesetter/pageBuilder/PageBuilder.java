@@ -61,6 +61,21 @@ public interface PageBuilder {
             throws TypesetterException;
 
     /**
+     * This method is used when the page builder has received its last nodes.
+     * It indicates that now the pages should be written out.
+     * <p>
+     * Nevertheless some ship-outs might come afterwards.
+     * </p>
+     *
+     * @param nodes the nodes to send
+     * @param typesetter the typesetter
+     *
+     * @throws TypesetterException in case of an error
+     */
+    void shipout(NodeList nodes, Typesetter typesetter)
+            throws TypesetterException;
+
+    /**
      * This is the entry point for the page builder. Here it receives a
      * complete node list to be sent to the output writer. It can be assumed
      * that all values for width, height, and depth of the node lists are
