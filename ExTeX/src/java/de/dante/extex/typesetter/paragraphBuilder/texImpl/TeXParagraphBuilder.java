@@ -3482,9 +3482,8 @@ public class TeXParagraphBuilder
         // repeat
         do {
             line = new HorizontalListNode();
-
+            adjust = new HorizontalListNode();
             int theBreak = curP.getCurBreak();
-            adjust.clear();
             fillLine(nodes, idx, theBreak, line, lineGlue, adjust);
             idx = theBreak;
 
