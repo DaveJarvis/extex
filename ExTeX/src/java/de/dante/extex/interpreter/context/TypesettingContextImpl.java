@@ -20,7 +20,6 @@
 package de.dante.extex.interpreter.context;
 
 import de.dante.extex.color.model.ColorFactory;
-import de.dante.extex.font.type.other.NullFont;
 import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.language.Language;
 
