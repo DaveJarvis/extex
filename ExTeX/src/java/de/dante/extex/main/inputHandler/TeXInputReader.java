@@ -26,7 +26,6 @@ import java.io.UnsupportedEncodingException;
 import java.util.logging.Logger;
 
 import de.dante.extex.interpreter.Interpreter;
-import de.dante.extex.interpreter.interaction.Interaction;
 import de.dante.util.framework.i18n.Localizer;
 import de.dante.util.framework.i18n.LocalizerFactory;
 
