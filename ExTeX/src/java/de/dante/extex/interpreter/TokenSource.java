@@ -32,7 +32,7 @@ import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.Locator;
 import de.dante.util.UnicodeChar;
 import de.dante.util.exception.GeneralException;
-import de.dante.util.observer.NotObservableException;
+import de.dante.util.exception.NotObservableException;
 
 /**
  * This interface describes a class to acquire
