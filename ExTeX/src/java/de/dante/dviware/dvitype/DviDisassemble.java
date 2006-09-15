@@ -46,7 +46,7 @@ public class DviDisassemble implements DviProcessor {
 
     /**
      * The field <tt>condensed</tt> contains the indicator that sequences of
-     * put_car instructions should be condensed.
+     * put_char instructions should be condensed.
      */
     private static boolean condensed = true;
 
