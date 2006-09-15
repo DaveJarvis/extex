@@ -83,6 +83,15 @@ public interface Interpreter extends TokenSource {
                 IOException;
 
     /**
+     * Load a unit.
+     *
+     * @param name the name of the configuration
+     *
+     * @throws ConfigurationException in case of an error
+     */
+    void loadUnit(final String name) throws ConfigurationException;
+
+    /**
      * Process the current token streams by repeatedly reading a single token
      * and processing it until no token is left. The visitor pattern is used to
      * branch to the appropriate method for processing a single token.
