@@ -226,7 +226,7 @@ public abstract class PsUnit {
                 if (c == 't') {
                     return (length);
                 } else if (c == 'c') {
-                    return (length * 12);
+                    return (length * PT_PER_PC);
                 }
                 break;
             case 's':
