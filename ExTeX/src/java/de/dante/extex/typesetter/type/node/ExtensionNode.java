@@ -20,7 +20,6 @@
 package de.dante.extex.typesetter.type.node;
 
 import de.dante.extex.interpreter.type.dimen.FixedDimen;
-import de.dante.extex.interpreter.type.glue.FixedGlue;
 import de.dante.extex.typesetter.type.Node;
 
 /**
