@@ -176,12 +176,24 @@ public class ClasspathFinder implements LogEnabled, ResourceFinder {
                 return null;
             }
         }
+        String t = cfg.getAttribute("skip");
+        if (t != null && Boolean.valueOf(t).booleanValue()) {
+
+            if (trace) {
+                trace("Skipped", type, null);
+            }
+            return null;
+        }
+        String prefix = cfg.getAttribute("prefix");
+        if (prefix == null) {
+            prefix = "";
+        }
 
         StringListIterator extIt = cfg.getValues("extension").getIterator();
 
         while (extIt.hasNext()) {
-            String ext = extIt.next();
-            String fullName = name + ext;
+            String fullName = prefix + name + extIt.next();
+            fullName = fullName.replaceAll("\\{type\\}", type);
             if (trace) {
                 trace("Try", fullName, null);
             }
