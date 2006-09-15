@@ -42,19 +42,13 @@ public class CharNode extends AbstractNode {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2006L;
 
     /**
      * The field <tt>character</tt> contains the single character represented
      * by this node.
      */
     private UnicodeChar character;
-
-    /**
-     * The field <tt>glyph</tt> contains the glyph from the font associated to
-     * the Unicode character.
-     */
-    private Glyph glyph;
 
     /**
      * The field <tt>typesettingContext</tt> contains the typesetting context
@@ -111,11 +105,13 @@ public class CharNode extends AbstractNode {
     /**
      * Getter for glyph.
      *
-     * @return the glyph.
+     * @return the glyph
+     *
+     * @deprecated Try to avoid this method
      */
     public Glyph getGlyph() {
 
-        return this.glyph;
+        return this.typesettingContext.getFont().getGlyph(character);
     }
 
     /**
