@@ -105,7 +105,7 @@ public class TrivialPageBuilder implements PageBuilder {
             if (page != null) {
                 backend.shipout(page);
             }
-            nodes.clear();
+//            nodes.clear();
         } catch (GeneralException e) {
             throw new TypesetterException(e);
         }
@@ -206,7 +206,7 @@ public class TrivialPageBuilder implements PageBuilder {
             if (page != null) {
                 backend.shipout(page);
             }
-            nodes.clear();
+//            nodes.clear();
         } catch (GeneralException e) {
             throw new TypesetterException(e);
         }

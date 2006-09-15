@@ -119,7 +119,6 @@ public class PageBuilderImpl implements PageBuilder {
         } catch (GeneralException e) {
             throw new TypesetterException(e);
         }
-        nodes.clear();
     }
 
     /**
@@ -214,11 +213,10 @@ public class PageBuilderImpl implements PageBuilder {
             if (page != null) {
                 backendDriver.shipout(page);
             }
-            nodes.clear();
+
         } catch (GeneralException e) {
             throw new TypesetterException(e);
         }
-
     }
 
 }
