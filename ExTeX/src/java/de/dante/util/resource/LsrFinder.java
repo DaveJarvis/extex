@@ -279,12 +279,22 @@ public class LsrFinder
             }
             cfg = config.getConfiguration(t);
             if (cfg == null) {
+                if (verbose) {
+                    trace("DefaultNotFound", type, t, null);
+                }
                 return null;
             }
-
             if (verbose) {
                 trace("ConfigurationNotFound", type, t, null);
             }
+        }
+        String t = config.getAttribute("skip");
+        if (t != null && Boolean.valueOf(t).booleanValue()) {
+
+            if (verbose) {
+                trace("Skipped", type, null, null);
+            }
+            return null;
         }
 
         StringListIterator it = cfg.getValues(EXTENSION_TAG).getIterator();
