@@ -113,7 +113,7 @@ public class NullFont implements Font, Serializable {
      */
     public FixedGlue getDepth(final UnicodeChar uc) {
 
-        return null;
+        return Glue.ZERO;
     }
 
     /**
