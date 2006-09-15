@@ -150,7 +150,7 @@ public class BaseHyphenationTable implements ModifiableLanguage, Serializable {
 
         UnicodeCharList key = new UnicodeCharList();
         boolean[] vec = createHyphenation(word, options, key);
-        exceptionMap.put(wordTokenizer.normalize(word, options), vec);
+        exceptionMap.put(wordTokenizer.normalize(key, options), vec);
     }
 
     /**
