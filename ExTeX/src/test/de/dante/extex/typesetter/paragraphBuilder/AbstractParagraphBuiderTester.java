@@ -248,6 +248,11 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         {
             tc.setLanguage(new Language() {
 
+                /**
+                 * The field <tt>serialVersionUID</tt> contains the ...
+                 */
+                private static final long serialVersionUID = 1L;
+
                 public void addHyphenation(final UnicodeCharList word,
                         final TypesetterOptions context)
                         throws HyphenationException {

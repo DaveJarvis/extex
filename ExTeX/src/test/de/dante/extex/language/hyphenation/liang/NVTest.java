@@ -68,6 +68,11 @@ public class NVTest extends TestCase {
     private class MockFont extends NullFont {
 
         /**
+         * The field <tt>serialVersionUID</tt> contains the ...
+         */
+        private static final long serialVersionUID = 1L;
+
+        /**
          * The field <tt>FF</tt> contains the ligature character ff.
          */
         public static final char FF = 'F';
