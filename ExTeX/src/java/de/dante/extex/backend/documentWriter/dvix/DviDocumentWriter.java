@@ -839,7 +839,7 @@ public class DviDocumentWriter
     private void writePreamble() throws IOException {
 
         long time = options.getCountOption("time").getValue();
-        String comment = " TeX output "
+        String comment = " ExTeX output "
                 + two("year")
                 + "."
                 + two("month")
