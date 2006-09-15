@@ -94,12 +94,12 @@ public class Unvbox extends AbstractBox {
         } else {
             NodeList nl = box.getNodes();
             box.clear();
-            for (int i = 0; i < nl.size(); i++) {
-                try {
+            try {
+                for (int i = 0; i < nl.size(); i++) {
                     typesetter.add(nl.get(i));
-                } catch (ConfigurationException e) {
-                    throw new InterpreterException(e);
                 }
+            } catch (ConfigurationException e) {
+                throw new InterpreterException(e);
             }
         }
     }
