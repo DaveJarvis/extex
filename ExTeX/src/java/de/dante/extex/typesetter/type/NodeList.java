@@ -42,7 +42,7 @@ import de.dante.extex.interpreter.type.glue.FixedGlue;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface NodeList extends Node {
+public interface NodeList extends Node, Cloneable {
 
     /**
      * Add a node to the node list at a given position.
@@ -74,6 +74,13 @@ public interface NodeList extends Node {
      * In this case the target sizes are used.
      */
     void clear();
+
+    /**
+     * Clone the current object.
+     *
+     * @return the copy
+     */
+    NodeList copy();
 
     /**
      * Getter for a node at a given position.
