@@ -68,7 +68,7 @@ public class SerialLoader {
     /**
      * The field <tt>MAGIC_LINE</tt> contains the first line of a format file.
      */
-    private static final String MAGIC_LINE = "#!extex --run-format\n";
+    private static final String MAGIC_LINE = "#!extex -run-format\n";
 
     /**
      * The constant <tt>FORMAT_VERSION</tt> contains the version number of the
