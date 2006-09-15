@@ -19,8 +19,6 @@
 
 package de.dante.extex.interpreter.primitives.file;
 
-import java.io.FileNotFoundException;
-
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;

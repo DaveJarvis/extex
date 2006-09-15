@@ -22,7 +22,6 @@ package de.dante.extex.typesetter.listMaker;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.dante.extex.font.Glyph;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.context.TypesettingContext;
 import de.dante.extex.interpreter.exception.InterpreterException;

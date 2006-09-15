@@ -25,7 +25,6 @@ import java.util.Map;
 import de.dante.extex.font.type.other.NullFont;
 import de.dante.extex.interpreter.Namespace;
 import de.dante.extex.interpreter.context.TypesettingContext;
-import de.dante.extex.interpreter.context.TypesettingContextImpl;
 import de.dante.extex.interpreter.context.group.GroupType;
 import de.dante.extex.interpreter.context.observer.group.AfterGroupObserver;
 import de.dante.extex.interpreter.context.observer.group.AfterGroupObserverList;

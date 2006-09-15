@@ -55,7 +55,6 @@ import de.dante.extex.typesetter.type.node.PenaltyNode;
 import de.dante.extex.typesetter.type.node.VerticalListNode;
 import de.dante.extex.typesetter.type.node.factory.CachingNodeFactory;
 import de.dante.extex.typesetter.type.node.factory.NodeFactory;
-import de.dante.extex.typesetter.type.page.Page;
 import de.dante.util.Locator;
 import de.dante.util.UnicodeChar;
 import de.dante.util.framework.configuration.exception.ConfigurationException;

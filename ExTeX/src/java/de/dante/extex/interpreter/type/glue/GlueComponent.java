@@ -30,7 +30,6 @@ import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.exception.helping.HelpingException;
 import de.dante.extex.interpreter.type.Code;
 import de.dante.extex.interpreter.type.ExpandableCode;
-import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.dimen.DimenConvertible;
 import de.dante.extex.interpreter.type.dimen.FixedDimen;
 import de.dante.extex.interpreter.type.scaled.ScaledNumber;
