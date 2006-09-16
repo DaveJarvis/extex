@@ -127,9 +127,11 @@ public interface Interpreter extends TokenSource {
      * Setter for the context.
      * Use with care!
      *
+     * @return the old context
+     *
      * @param context the interpreter context
      */
-    void setContext(Context context);
+    Context setContext(Context context);
 
     /**
      * Setter for the error handler.
