@@ -1350,4 +1350,12 @@ public class CMR10 implements Font, Serializable {
         return null;
     }
 
+    /**
+     * @see de.dante.extex.interpreter.type.font.Font#hasGlyph(de.dante.util.UnicodeChar)
+     */
+    public boolean hasGlyph(UnicodeChar uc) {
+
+        return true;
+    }
+
 }

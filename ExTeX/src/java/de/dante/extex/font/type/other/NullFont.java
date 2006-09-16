@@ -282,6 +282,15 @@ public class NullFont implements Font, Serializable {
     }
 
     /**
+     * @see de.dante.extex.interpreter.type.font.Font#hasGlyph(
+     *      de.dante.util.UnicodeChar)
+     */
+    public boolean hasGlyph(final UnicodeChar uc) {
+
+        return false;
+    }
+
+    /**
      * @see de.dante.extex.font.type.Fount#isVirtualFont()
      */
     public boolean isVirtualFont() {

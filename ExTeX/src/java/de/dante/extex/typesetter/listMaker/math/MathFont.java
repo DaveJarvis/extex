@@ -248,6 +248,14 @@ public class MathFont implements Font {
     }
 
     /**
+     * @see de.dante.extex.interpreter.type.font.Font#hasGlyph(de.dante.util.UnicodeChar)
+     */
+    public boolean hasGlyph(final UnicodeChar uc) {
+
+        return font.hasGlyph(uc);
+    }
+
+    /**
      * @see de.dante.extex.interpreter.type.font.Font#setEfcode(
      *      de.dante.util.UnicodeChar, long)
      */

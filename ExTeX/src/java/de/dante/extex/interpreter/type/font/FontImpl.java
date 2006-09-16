@@ -112,6 +112,15 @@ public class FontImpl extends NullFont {
     }
 
     /**
+     * @see de.dante.extex.interpreter.type.font.Font#hasGlyph(
+     *      de.dante.util.UnicodeChar)
+     */
+    public boolean hasGlyph(final UnicodeChar uc) {
+
+        return getGlyph(uc) != null;
+    }
+
+    /**
      * @see de.dante.extex.font.type.Fount#getBoundingBox()
      */
     public BoundingBox getBoundingBox() {

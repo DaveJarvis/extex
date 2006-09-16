@@ -127,6 +127,15 @@ public interface Font extends Fount {
     FixedGlue getWidth(UnicodeChar uc);
 
     /**
+     * Determine whether the glyph for a given character is present in this font.
+     *
+     * @param uc the character
+     *
+     * @return <code>true</code> iff the glyph is present
+     */
+    boolean hasGlyph(UnicodeChar uc);
+
+    /**
      * Setter for the ef code.
      * The ef code influences the stretchability of characters. It has a
      * positive value. 1000 means "normal" stretchability.
