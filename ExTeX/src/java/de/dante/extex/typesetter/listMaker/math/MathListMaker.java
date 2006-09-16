@@ -719,7 +719,7 @@ public class MathListMaker extends HorizontalListMaker
         MathMemento memento = (MathMemento) stack.pop();
         if (memento.isBlock()) {
             throw new TypesetterHelpingException(getLocalizer(),
-                    "TTP.ExtraOrForgotten", "\\right.");
+                    "TTP.ExtraRigt", "\\right.");
         }
 
         LeftNoad n = (LeftNoad) noads;
