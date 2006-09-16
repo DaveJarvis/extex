@@ -139,7 +139,8 @@ public class CharNoad extends AbstractNoad {
 
         TypesettingContextFactory tcFactory = context
                 .getTypesettingContextFactory();
-        TypesettingContext tc = tcFactory.newInstance(context.getTypesettingContext(), font);
+        TypesettingContext tc = tcFactory.newInstance(context
+                .getTypesettingContext(), font);
         tc = tcFactory.newInstance(tc, color);
         CharNode charNode = new CharNode(tc, c);
         //font.getGlyph(c).getItalicCorrection();
@@ -177,7 +178,7 @@ public class CharNoad extends AbstractNoad {
                             .toString(glyph.getFamily()), c.toString()));
         }
 
-        if (font.getGlyph(c) == null) {
+        if (!font.hasGlyph(c)) {
             FontUtil.charWarning(logger, context, font, c);
             setSpacingClass(MathSpacing.UNDEF);
             return;
@@ -189,8 +190,7 @@ public class CharNoad extends AbstractNoad {
             if (n instanceof CharNode) {
                 CharNode cn = ((CharNode) n);
                 if (cn.getTypesettingContext().getFont().equals(font)) {
-                    Dimen kerning = font.getGlyph(cn.getCharacter())
-                            .getKerning(c);
+                    FixedDimen kerning = font.getKerning(cn.getCharacter(), c);
                     if (kerning.ne(Dimen.ZERO_PT)) {
                         nodes.add(new ImplicitKernNode(kerning, true));
                     }
