@@ -22,7 +22,6 @@ package de.dante.extex.backend;
 import java.io.IOException;
 
 import de.dante.extex.backend.documentWriter.DocumentWriter;
-import de.dante.extex.backend.documentWriter.DocumentWriterOptions;
 import de.dante.extex.backend.documentWriter.MultipleDocumentStream;
 import de.dante.extex.backend.documentWriter.exception.DocumentWriterException;
 import de.dante.extex.backend.exception.BackendException;
@@ -138,10 +137,8 @@ public class BackendDriverImpl
 
     /**
      * Creates a new object.
-     *
-     * @param options the options
      */
-    public BackendDriverImpl(final DocumentWriterOptions options) {
+    public BackendDriverImpl() {
 
         super();
     }
