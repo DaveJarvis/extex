@@ -136,12 +136,10 @@ public final class TestTeX {
 
         Configuration config = new ConfigurationFactory().newInstance("config/"
                 + configurationFile);
-        Configuration intcfg = config.getConfiguration("Interpreter");
-        InterpreterFactory intf = new InterpreterFactory();
+        InterpreterFactory intf = new InterpreterFactory(config
+                .getConfiguration("Interpreter"), null);
 
-        intf.configure(intcfg);
-
-        return intf.newInstance();
+        return intf.newInstance(null, null);
     }
 
     /**
