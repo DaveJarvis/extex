@@ -19,7 +19,10 @@
 
 package de.dante.extex.color;
 
+import java.util.logging.Logger;
+
 import de.dante.util.framework.AbstractFactory;
+import de.dante.util.framework.configuration.Configuration;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
@@ -32,10 +35,18 @@ public class ColorConverterFacory extends AbstractFactory {
 
     /**
      * Creates a new object.
+     *
+     * @param config the configuration
+     * @param logger the logger
+     *
+     * @throws ConfigurationException in case of an error
      */
-    public ColorConverterFacory() {
+    public ColorConverterFacory(final Configuration config, final Logger logger)
+            throws ConfigurationException {
 
         super();
+        enableLogging(logger);
+        configure(config);
     }
 
     /**

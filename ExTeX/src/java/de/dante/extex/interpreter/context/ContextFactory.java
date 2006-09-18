@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -18,6 +18,8 @@
  */
 
 package de.dante.extex.interpreter.context;
+
+import java.util.logging.Logger;
 
 import de.dante.util.framework.AbstractFactory;
 import de.dante.util.framework.configuration.Configuration;
@@ -42,13 +44,15 @@ public class ContextFactory extends AbstractFactory {
      * Creates a new object.
      *
      * @param configuration the configuration for this factory
+     * @param logger the logger
      *
      * @throws ConfigurationException in case of an error in the configuration.
      */
-    public ContextFactory(final Configuration configuration)
+    public ContextFactory(final Configuration configuration, final Logger logger)
             throws ConfigurationException {
 
         super();
+        enableLogging(logger);
         configure(configuration);
     }
 
