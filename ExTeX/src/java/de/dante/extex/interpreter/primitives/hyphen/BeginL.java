@@ -92,8 +92,7 @@ public class BeginL extends AbstractCode {
             throw new ExtensionDisabledException(
                     printableControlSequence(context));
         }
-        //context.getTypesettingContext().getDirection();
-        //TODO gene: check what eTeX does
+        context.pushDirection(context.getTypesettingContext().getDirection());
         try {
             context.set(Direction.LR, false);
         } catch (ConfigurationException e) {
