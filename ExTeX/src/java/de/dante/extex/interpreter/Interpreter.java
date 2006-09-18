@@ -70,6 +70,13 @@ public interface Interpreter extends TokenSource {
     Interaction getInteraction();
 
     /**
+     * Getter for the typesetter.
+     *
+     * @return the typesetter
+     */
+    Typesetter getTypesetter();
+
+    /**
      * Load the format from an external source.
      *
      * @param stream stream to read from
@@ -78,7 +85,7 @@ public interface Interpreter extends TokenSource {
      * @throws IOException in case of an IO error
      * @throws LoaderException in case of an error during loading
      */
-    void loadFormat(InputStream stream, String fmt)
+    void loadFormat(InputStream stream, String fmt, String contextType, String languageType)
             throws LoaderException,
                 IOException;
 
