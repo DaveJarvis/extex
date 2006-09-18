@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.typesetter;
+package de.dante.extex.typesetter.output;
 
 import de.dante.extex.backend.BackendDriver;
 import de.dante.extex.typesetter.type.page.Page;
