@@ -687,8 +687,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
     protected UnicodeChar getRawChar() {
 
         if (line != null && pointer < line.length()) {
-            UnicodeChar uc = UnicodeChar.get(line.charAt(pointer++));
-            return uc;
+            return UnicodeChar.get(line.charAt(pointer++));
         }
 
         return (pointer++ > line.length() ? null : CR);
