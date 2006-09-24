@@ -23,6 +23,8 @@ import java.io.Serializable;
 
 import de.dante.extex.interpreter.Conditional;
 import de.dante.extex.interpreter.Tokenizer;
+import de.dante.extex.interpreter.context.tc.Direction;
+import de.dante.extex.interpreter.context.tc.TypesettingContext;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.exception.helping.HelpingException;
 import de.dante.extex.interpreter.type.Code;
@@ -581,5 +583,9 @@ public interface Context
      *  groups; otherwise the current group is affected only
      */
     void setUccode(UnicodeChar lc, UnicodeChar uc, boolean global);
+
+    Object get(Object extension, Object key);
+
+    void set(Object extension, Object key, Object value, boolean global);
 
 }
