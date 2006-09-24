@@ -19,6 +19,7 @@
 
 package de.dante.extex.interpreter.context;
 
+import de.dante.extex.interpreter.context.tc.TypesettingContextFactory;
 import de.dante.extex.language.LanguageManagerCarrier;
 
 /**

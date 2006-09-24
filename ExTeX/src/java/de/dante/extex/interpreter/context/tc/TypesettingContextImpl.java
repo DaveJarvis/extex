@@ -17,9 +17,10 @@
  *
  */
 
-package de.dante.extex.interpreter.context;
+package de.dante.extex.interpreter.context.tc;
 
 import de.dante.extex.color.model.ColorFactory;
+import de.dante.extex.interpreter.context.Color;
 import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.language.Language;
 

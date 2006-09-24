@@ -16,8 +16,9 @@
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
-package de.dante.extex.interpreter.context;
+package de.dante.extex.interpreter.context.tc;
 
+import de.dante.extex.interpreter.context.Color;
 import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.language.Language;
 

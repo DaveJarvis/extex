@@ -30,7 +30,7 @@ import de.dante.extex.color.ColorConverter;
 import de.dante.extex.color.model.GrayscaleColor;
 import de.dante.extex.color.model.RgbColor;
 import de.dante.extex.interpreter.context.Color;
-import de.dante.extex.interpreter.context.TypesettingContext;
+import de.dante.extex.interpreter.context.tc.TypesettingContext;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.typesetter.type.Node;
