@@ -999,13 +999,15 @@ public class ExTeX {
     /**
      * Load a format if a non-empty name of a format is given.
      *
-     * @param fmt the name of the format to use or <code>null</code>
+     * @param fmt the name of the format to use or <code>null</code> or the
+     *   empty string to suppress loading
      * @param interpreter the interpreter to delegate the loading to
      * @param finder  the resource finder to use for locating the format file
      * @param jobname the name of the job
      * @param config the interpreter configuration
      * @param outFactory the output stream factory
-     * @param tokenFactory the token factory
+     * @param tokenFactory the token factory to assign to the context or
+     *   <code>null</code> if no assignment should be performed
      *
      * @return the context
      *
