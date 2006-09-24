@@ -38,7 +38,7 @@ import de.dante.extex.typesetter.Typesetter;
  *  The primitive <tt>\detokenize</tt> ...
  * </p>
  * <p>
- *  TODO gene: missing documentation
+ *  TODO missing documentation
  * </p>
  *
  * <h4>Syntax</h4>

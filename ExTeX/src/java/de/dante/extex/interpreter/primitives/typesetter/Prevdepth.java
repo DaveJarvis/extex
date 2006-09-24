@@ -44,7 +44,7 @@ import de.dante.util.exception.GeneralException;
  * <doc name="prevdepth">
  * <h3>The Primitive <tt>\prevdepth</tt></h3>
  * <p>
- *  TODO gene: missing documentation
+ *  TODO missing documentation
  * </p>
  *
  * <h4>Syntax</h4>

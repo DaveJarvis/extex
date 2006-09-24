@@ -48,7 +48,7 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
  * <doc name="cleaders">
  * <h3>The Primitive <tt>\cleaders</tt></h3>
  * <p>
- *  TODO gene: missing documentation
+ *  TODO missing documentation
  * </p>
  *
  * <h4>Syntax</h4>

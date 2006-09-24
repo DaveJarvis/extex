@@ -32,7 +32,7 @@ import de.dante.extex.typesetter.Typesetter;
  * <doc name="ifx">
  * <h3>The Primitive <tt>\ifx</tt></h3>
  * <p>
- *  TODO gene: missing documentation
+ *  TODO missing documentation
  * </p>
  *
  * <h4>Syntax</h4>

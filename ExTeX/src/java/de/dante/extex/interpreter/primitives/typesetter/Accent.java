@@ -22,7 +22,7 @@ package de.dante.extex.interpreter.primitives.typesetter;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.context.TypesettingContext;
+import de.dante.extex.interpreter.context.tc.TypesettingContext;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.exception.helping.EofException;
 import de.dante.extex.interpreter.exception.helping.HelpingException;
@@ -44,7 +44,7 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
  * <doc name="accent">
  * <h3>The Primitive <tt>\accent</tt></h3>
  * <p>
- *  TODO gene: missing documentation
+ *  TODO missing documentation
  * </p>
  *
  * <h4>Syntax</h4>

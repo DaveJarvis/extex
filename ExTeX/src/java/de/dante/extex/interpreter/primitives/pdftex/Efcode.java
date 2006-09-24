@@ -40,7 +40,7 @@ import de.dante.util.UnicodeChar;
  * <h3>The PDF Primitive <tt>\efcode</tt></h3>
  * <p>
  *  This primitive ...
- *  TODO gene: missing documentation
+ *  TODO missing documentation
  * </p>
  * <p>
  *  The default value is 1000.

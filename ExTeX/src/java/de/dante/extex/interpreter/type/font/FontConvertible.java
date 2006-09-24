@@ -29,7 +29,7 @@ import de.dante.extex.typesetter.Typesetter;
  *
  * <doc type="interface" name="font">
  * <p>
- *  TODO gene: missing documentation
+ *  TODO missing documentation
  * </p>
  * <p>
  *  The formal description is the following:

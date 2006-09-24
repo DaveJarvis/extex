@@ -30,7 +30,7 @@ import de.dante.extex.interpreter.type.tokens.Tokens;
  * <doc name="splitbotmarks">
  * <h3>The Primitive <tt>\splitbotmarks</tt></h3>
  * <p>
- *  TODO gene: missing documentation
+ *  TODO missing documentation
  * </p>
  *
  * <h4>Syntax</h4>

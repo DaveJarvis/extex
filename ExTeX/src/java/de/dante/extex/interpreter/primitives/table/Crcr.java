@@ -34,7 +34,7 @@ import de.dante.extex.typesetter.listMaker.AlignmentList;
  * <doc name="crcr">
  * <h3>The Primitive <tt>\crcr</tt></h3>
  * <p>
- *  TODO gene: missing documentation
+ *  TODO missing documentation
  * </p>
  *
  * <h4>Syntax</h4>

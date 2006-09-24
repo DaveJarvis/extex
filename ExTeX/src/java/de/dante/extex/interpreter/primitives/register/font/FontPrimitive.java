@@ -66,7 +66,7 @@ import de.dante.util.framework.logger.LogEnabled;
  *  given as number after the keyword <tt>scaled</tt>. The value given is 1000
  *  times the scale factor to be used.
  * </p>
- *  TODO gene: missing documentation of the extensions
+ *  TODO missing documentation of the extensions
  * <p>
  *  This primitive is an assignment.
  * </p>
