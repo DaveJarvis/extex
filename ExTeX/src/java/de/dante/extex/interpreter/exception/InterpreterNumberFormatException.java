@@ -21,7 +21,7 @@ package de.dante.extex.interpreter.exception;
 
 
 /**
- * InterprerterException, if a numberformat is wrong.
+ * InterprerterException, if a number format is wrong.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
@@ -30,7 +30,13 @@ package de.dante.extex.interpreter.exception;
 public class InterpreterNumberFormatException extends InterpreterException {
 
     /**
-     * Create a new obejct.
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
+     */
+    protected static final long serialVersionUID = 2005L;
+
+    /**
+     * Create a new object.
      */
     public InterpreterNumberFormatException() {
 
@@ -46,4 +52,5 @@ public class InterpreterNumberFormatException extends InterpreterException {
 
         super(message);
     }
+
 }
