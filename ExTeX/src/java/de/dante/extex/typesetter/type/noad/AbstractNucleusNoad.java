@@ -20,7 +20,7 @@
 package de.dante.extex.typesetter.type.noad;
 
 import de.dante.extex.interpreter.context.Color;
-import de.dante.extex.interpreter.context.TypesettingContext;
+import de.dante.extex.interpreter.context.tc.TypesettingContext;
 
 /**
  * This abstract noad represents a Noad with a nucleus.

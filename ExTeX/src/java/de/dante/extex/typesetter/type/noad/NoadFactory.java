@@ -19,7 +19,7 @@
 
 package de.dante.extex.typesetter.type.noad;
 
-import de.dante.extex.interpreter.context.TypesettingContext;
+import de.dante.extex.interpreter.context.tc.TypesettingContext;
 import de.dante.extex.typesetter.type.math.MathClass;
 import de.dante.extex.typesetter.type.math.MathClassVisitor;
 import de.dante.extex.typesetter.type.math.MathDelimiter;

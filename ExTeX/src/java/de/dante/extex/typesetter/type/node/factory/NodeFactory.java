@@ -19,7 +19,7 @@
 
 package de.dante.extex.typesetter.type.node.factory;
 
-import de.dante.extex.interpreter.context.TypesettingContext;
+import de.dante.extex.interpreter.context.tc.TypesettingContext;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.util.UnicodeChar;
 

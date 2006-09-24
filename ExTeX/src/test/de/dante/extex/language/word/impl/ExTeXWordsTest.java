@@ -20,8 +20,8 @@
 package de.dante.extex.language.word.impl;
 
 import junit.framework.TestCase;
-import de.dante.extex.interpreter.context.ModifiableTypesettingContext;
-import de.dante.extex.interpreter.context.TypesettingContextImpl;
+import de.dante.extex.interpreter.context.tc.ModifiableTypesettingContext;
+import de.dante.extex.interpreter.context.tc.TypesettingContextImpl;
 import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.language.hyphenation.base.BaseHyphenationTable;
 import de.dante.extex.language.hyphenation.exception.HyphenationException;
