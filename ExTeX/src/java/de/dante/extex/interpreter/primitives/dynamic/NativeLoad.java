@@ -154,12 +154,12 @@ public class NativeLoad extends AbstractCode
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2006L;
 
     /**
      * The field <tt>logger</tt> contains the logger to use.
      */
-    private Logger logger = null;
+    private transient Logger logger = null;
 
     /**
      * The field <tt>map</tt> contains the mapping from a symbolic name to a
