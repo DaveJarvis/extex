@@ -20,6 +20,7 @@
 package de.dante.extex.interpreter.primitives.omega.ocp.util;
 
 import java.io.InputStream;
+import java.io.Serializable;
 
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
@@ -36,7 +37,12 @@ import de.dante.util.resource.ResourceFinder;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Ocp implements Code {
+public class Ocp implements Code, Serializable {
+
+    /**
+     * The field <tt>serialVersionUID</tt> contains the ...
+     */
+    private static final long serialVersionUID = 2006;
 
     /**
      * This is a factory method for OCPs.
