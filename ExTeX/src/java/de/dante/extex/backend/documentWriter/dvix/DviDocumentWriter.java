@@ -202,6 +202,16 @@ public class DviDocumentWriter
     /**
      * The field <tt>visitor</tt> contains the visitor carrying the methods for
      * translating nodes to DVI instructions.
+     * <p>
+     *  Each node visited can assume that the reference point is positioned
+     *  properly. After the processing the current point should be on the
+     *  reference point again. The caller is responsible for modifying the
+     *  reference point.
+     * </p>
+     * <p>
+     *  If the return value is <code>null</code> then the processing has been
+     *  performed successfully. Otherwise the node should be ignored.
+     * </p>
      */
     private NodeVisitor visitor = new NodeVisitor() {
 
@@ -574,6 +584,8 @@ public class DviDocumentWriter
             List list = (List) value;
             boolean save = horizontal;
             horizontal = false;
+            int v0 = dviV;
+            down(list, -node.getHeight().getValue());
             down(list, node.getShift().getValue());
             right(list, node.getMove().getValue());
             int size = node.size();
@@ -587,6 +599,8 @@ public class DviDocumentWriter
                 }
                 right(list, h0 - dviH);
             }
+
+            down(list, v0 - dviV); // ???
             horizontal = save;
             return null;
         }
