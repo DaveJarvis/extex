@@ -118,8 +118,6 @@ public class GroupImpl implements Group {
      */
     private Map catcodeMap;
 
-    //TODO gene: USE LACY INITIALIZATION FOR PERFORMANCE
-
     /**
      * The field <tt>codeMap</tt> contains the map for the active characters and
      * macros. The key is a Token. The value is a Code.
