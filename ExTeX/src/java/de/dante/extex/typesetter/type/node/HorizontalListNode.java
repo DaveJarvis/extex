@@ -163,7 +163,7 @@ public class HorizontalListNode extends GenericNodeList {
         if (w != null && w.ne(wd)) {
             wd.subtract(w);
             wd.negate();
-            FixedGlueComponent s = (w.ge(Dimen.ZERO) //
+            FixedGlueComponent s = (w.le(Dimen.ZERO) //
                     ? wg.getShrink() //
                     : wg.getStretch());
             for (int i = 0; i < size; i++) {
