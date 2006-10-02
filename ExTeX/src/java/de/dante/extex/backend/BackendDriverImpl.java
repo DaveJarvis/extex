@@ -240,7 +240,9 @@ public class BackendDriverImpl
      */
     public void setParameter(final String name, final String value) {
 
-        // ignored
+        if (documentWriter != null) {
+            documentWriter.setParameter(name, value);
+        }
     }
 
     /**
