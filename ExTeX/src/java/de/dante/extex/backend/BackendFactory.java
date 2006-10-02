@@ -31,6 +31,7 @@ import de.dante.extex.backend.documentWriter.exception.DocumentWriterException;
 import de.dante.extex.backend.outputStream.OutputStreamFactory;
 import de.dante.extex.color.ColorAware;
 import de.dante.extex.color.ColorConverter;
+import de.dante.extex.font.FontFactory;
 import de.dante.util.framework.AbstractFactory;
 import de.dante.util.framework.configuration.Configuration;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
@@ -121,8 +122,8 @@ public class BackendFactory extends AbstractFactory {
      *
      * @return the new instance
      *
-     * @throws DocumentWriterException in case ...
-     * @throws ConfigurationException in case of an error
+     * @throws DocumentWriterException in case of an error
+     * @throws ConfigurationException in case of an error in the configuration
      */
     public BackendDriver newInstance(final String type,
             final DocumentWriterOptions options,
@@ -150,6 +151,10 @@ public class BackendFactory extends AbstractFactory {
         }
         if (docWriter instanceof ResourceConsumer) {
             ((ResourceConsumer) docWriter).setResourceFinder(finder);
+        }
+        if (docWriter instanceof FontFactoryConsumer) {
+            FontFactory fontFactory = null; //TODO gene: provide factory
+            ((FontFactoryConsumer) docWriter).setFontFactory(fontFactory );
         }
         docWriter.setParameter("Creator", creator);
 
