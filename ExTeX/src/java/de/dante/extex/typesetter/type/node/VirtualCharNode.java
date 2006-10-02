@@ -43,6 +43,7 @@ import de.dante.util.exception.GeneralException;
  * @version $Revision$
  */
 public class VirtualCharNode extends CharNode implements NodeList {
+
     /**
      * This inner class provides the means to store nodes in a list.
      * It is here to compensate the missing multiple inheritance of Java.
@@ -103,7 +104,6 @@ public class VirtualCharNode extends CharNode implements NodeList {
             return visitor.visitChar(node, value);
         }
     }
-
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
@@ -368,4 +368,5 @@ public class VirtualCharNode extends CharNode implements NodeList {
 
         return visitor.visitVirtualChar(this, value);
     }
+
 }
