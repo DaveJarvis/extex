@@ -23,6 +23,7 @@ import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
+import de.dante.extex.interpreter.interaction.Interaction;
 import de.dante.extex.interpreter.type.file.InFile;
 import de.dante.extex.scanner.stream.TokenStream;
 import de.dante.extex.typesetter.Typesetter;
@@ -108,7 +109,9 @@ public class Openin extends AbstractFileCode {
         String name = scanFileName(context, source);
 
         InFile file;
+        Interaction interaction = context.getInteraction();
         try {
+            context.setInteraction(Interaction.BATCHMODE);
             TokenStream stream = source.getTokenStreamFactory().newInstance(
                     name, "tex", getEncoding(context));
             if (stream != null) {
@@ -118,6 +121,8 @@ public class Openin extends AbstractFileCode {
             }
         } catch (ConfigurationException e) {
             throw new InterpreterException(e);
+        } finally {
+            context.setInteraction(interaction);
         }
         context.setInFile(key, file, true);
     }
