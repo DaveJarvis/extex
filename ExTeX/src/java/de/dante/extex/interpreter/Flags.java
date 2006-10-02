@@ -305,4 +305,11 @@ public interface Flags {
      */
     void setProtected();
 
+    /**
+     * Determine a printable representation of the flags set.
+     * The representation takes into account the current locale.
+     *
+     * @return the list
+     */
+    String toText();
 }

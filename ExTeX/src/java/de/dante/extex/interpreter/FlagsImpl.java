@@ -19,6 +19,7 @@
 
 package de.dante.extex.interpreter;
 
+import de.dante.util.framework.i18n.Localizer;
 import de.dante.util.framework.i18n.LocalizerFactory;
 
 /**
@@ -170,6 +171,40 @@ public class FlagsImpl implements Flags {
     }
 
     /**
+     * @see de.dante.extex.interpreter.Flags#get()
+     */
+    public String[] get() {
+
+        Localizer localizer = LocalizerFactory.getLocalizer(FlagsImpl.class);
+        String[] result = new String[((globalP ? 1 : 0) //
+                + (longP ? 1 : 0) //
+                + (outerP ? 1 : 0) //
+                + (immediateP ? 1 : 0) //
+                + (protectedP ? 1 : 0) //
+        + (expandedP ? 1 : 0))];
+        int i = 0;
+        if (globalP) {
+            result[i++] = localizer.format("global.text");
+        }
+        if (longP) {
+            result[i++] = localizer.format("long.text");
+        }
+        if (outerP) {
+            result[i++] = localizer.format("outer.text");
+        }
+        if (immediateP) {
+            result[i++] = localizer.format("immediate.text");
+        }
+        if (protectedP) {
+            result[i++] = localizer.format("protected.text");
+        }
+        if (expandedP) {
+            result[i++] = localizer.format("expanded.text");
+        }
+        return result;
+    }
+
+    /**
      * @see de.dante.extex.interpreter.Flags#isDirty()
      */
     public boolean isDirty() {
@@ -314,23 +349,23 @@ public class FlagsImpl implements Flags {
     public String toString() {
 
         StringBuffer sb = new StringBuffer();
-        sb.append(globalP ? 'G' : '_');
-        sb.append(longP ? 'L' : '_');
-        sb.append(outerP ? 'O' : '_');
-        sb.append(immediateP ? 'I' : '_');
-        sb.append(protectedP ? 'P' : '_');
-        sb.append(expandedP ? 'X' : '_');
+        sb.append(globalP ? 'G' : '-');
+        sb.append(longP ? 'L' : '-');
+        sb.append(outerP ? 'O' : '-');
+        sb.append(immediateP ? 'I' : '-');
+        sb.append(protectedP ? 'P' : '-');
+        sb.append(expandedP ? 'X' : '-');
         return sb.toString();
     }
 
     /**
-     * @see de.dante.extex.interpreter.Flags#get()
+     * @see de.dante.extex.interpreter.Flags#toText()
      */
-    public String[] get() {
+    public String toText() {
 
-        LocalizerFactory.getLocalizer(FlagsImpl.class);
-        // TODO gene: get unimplemented
-        return new String[]{};
+        String[] s = get();
+        return LocalizerFactory.getLocalizer(FlagsImpl.class).format(
+                "text." + Integer.toString(s.length), s);
     }
 
 }
