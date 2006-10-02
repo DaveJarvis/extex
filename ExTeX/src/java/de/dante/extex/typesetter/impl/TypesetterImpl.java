@@ -344,7 +344,7 @@ public class TypesetterImpl
      * @see de.dante.extex.typesetter.Typesetter#getBackendDriver()
      */
     public BackendDriver getBackendDriver() {
-    
+
         return this.backend;
     }
 
@@ -691,7 +691,6 @@ public class TypesetterImpl
         listMaker.superscriptMark(context, source, typesetter, t);
     }
 
-    
     /**
      * @see de.dante.extex.typesetter.Typesetter#tab(
      *      Context,
@@ -701,6 +700,14 @@ public class TypesetterImpl
             final Token t) throws TypesetterException, ConfigurationException {
 
         listMaker.tab(context, source, t);
+    }
+
+    /**
+     * @see java.lang.Object#toString()
+     */
+    public String toString() {
+
+        return "stackSize = " + saveStack.size() + "\n" + listMaker.toString();
     }
 
 }

@@ -245,4 +245,13 @@ public abstract class AbstractListMaker implements ListMaker {
                 "TTP.MisplacedTabMark", token.toString());
     }
 
+    /**
+     * @see java.lang.Object#toString()
+     */
+    public String toString() {
+
+        String name = getClass().getName();
+        return name.substring(name.lastIndexOf('.') + 1);
+    }
+
 }

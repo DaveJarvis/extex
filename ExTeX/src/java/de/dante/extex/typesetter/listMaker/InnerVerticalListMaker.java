@@ -254,4 +254,12 @@ public class InnerVerticalListMaker extends AbstractListMaker {
         sb.append('\n');
     }
 
+    /**
+     * @see java.lang.Object#toString()
+     */
+    public String toString() {
+
+        return super.toString() + "\n" + nodes.toString();
+    }
+
 }
