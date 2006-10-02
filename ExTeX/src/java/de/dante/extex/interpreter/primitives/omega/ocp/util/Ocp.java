@@ -27,6 +27,7 @@ import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.Code;
+import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
 import de.dante.util.resource.ResourceFinder;
@@ -40,7 +41,8 @@ import de.dante.util.resource.ResourceFinder;
 public class Ocp implements Code, Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the ...
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
     private static final long serialVersionUID = 2006;
 

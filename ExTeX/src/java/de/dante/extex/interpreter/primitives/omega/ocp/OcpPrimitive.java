@@ -46,7 +46,7 @@ import de.dante.util.resource.ResourceFinder;
  *
  * <h4>Examples</h4>
  * <pre class="TeXSample">
- * \ocp ... </pre>
+ * \ocp\abc=def </pre>
  * </doc>
  *
  *
@@ -62,7 +62,7 @@ public class OcpPrimitive extends AbstractFileCode implements ResourceConsumer {
     private static final long serialVersionUID = 2006L;
 
     /**
-     * The field <tt>finder</tt> contains the ...
+     * The field <tt>finder</tt> contains the resource finder.
      */
     private transient ResourceFinder finder;
 

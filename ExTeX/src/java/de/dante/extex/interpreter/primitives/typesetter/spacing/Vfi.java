@@ -35,7 +35,9 @@ import de.dante.extex.typesetter.Typesetter;
  * <doc name="vfi">
  * <h3>The Primitive <tt>\vfil</tt></h3>
  * <p>
- *  TODO missing documentation
+ *  The primitive <tt>\vfill</tt> inserts vertical glue into the current list.
+ *  It switches to vertical mode if necessary. The amount of glue inserted has
+ *  the natural height of 0pt and a stretchability of 1fi.
  * </p>
  *
  * <h4>Syntax</h4>
