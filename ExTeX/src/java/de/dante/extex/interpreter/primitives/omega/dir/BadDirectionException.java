@@ -43,8 +43,8 @@ public class BadDirectionException extends HelpingException {
      */
     public BadDirectionException() {
 
-        super(LocalizerFactory.getLocalizer(BadDirectionException.class
-                .getName()), "Omega.BadDirection");
+        super(LocalizerFactory.getLocalizer(BadDirectionException.class),
+                "Omega.BadDirection");
     }
 
 }

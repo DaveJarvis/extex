@@ -274,8 +274,7 @@ public abstract class AbstractNode implements Node {
     protected Localizer getLocalizer() {
 
         if (this.localizer == null) {
-            this.localizer = LocalizerFactory.getLocalizer(this.getClass()
-                    .getName());
+            this.localizer = LocalizerFactory.getLocalizer(this.getClass());
         }
         return this.localizer;
     }

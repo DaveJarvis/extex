@@ -122,7 +122,7 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 1L;
+    protected static final long serialVersionUID = 2006L;
 
     /**
      * The constant <tt>ZERO</tt> contains the non-stretchable and
@@ -138,7 +138,7 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
      */
     protected static Localizer getMyLocalizer() {
 
-        return LocalizerFactory.getLocalizer(GlueComponent.class.getName());
+        return LocalizerFactory.getLocalizer(GlueComponent.class);
     }
 
     /**

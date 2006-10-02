@@ -22,7 +22,7 @@ package de.dante.extex.interpreter.exception.helping;
 import de.dante.util.framework.i18n.LocalizerFactory;
 
 /**
- * This exception is raised when an arithmetic overflow has been encoutered.
+ * This exception is raised when an arithmetic overflow has been encountered.
  * <p>
  *  The localization format is taken from the Localizer under the key
  *  <tt>TTP.ArithmeticOverflow</tt>.
@@ -36,7 +36,7 @@ public class MissingLeftBraceException extends HelpingException {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2006L;
 
     /**
      * Creates a new object.
@@ -46,8 +46,7 @@ public class MissingLeftBraceException extends HelpingException {
     public MissingLeftBraceException(final String macro) {
 
         super(LocalizerFactory.getLocalizer(//
-                MissingLeftBraceException.class.getName()),
-                "TTP.MissingLeftBrace");
+                MissingLeftBraceException.class), "TTP.MissingLeftBrace");
     }
 
 }

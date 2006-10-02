@@ -19,7 +19,6 @@
 
 package de.dante.extex.interpreter.exception;
 
-import de.dante.util.framework.i18n.Localizer;
 import de.dante.util.framework.i18n.LocalizerFactory;
 
 /**
@@ -35,7 +34,7 @@ public class IllegalRegisterException extends InterpreterException {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 1L;
+    protected static final long serialVersionUID = 2006L;
 
     /**
      * Create a new object.
@@ -52,9 +51,8 @@ public class IllegalRegisterException extends InterpreterException {
      */
     public String getLocalizedMessage() {
 
-        Localizer localizer = LocalizerFactory
-                .getLocalizer(IllegalRegisterException.class.getName());
-        return localizer.format("TTP.BadRegister", super.getMessage());
+        return LocalizerFactory.getLocalizer(IllegalRegisterException.class)
+                .format("TTP.BadRegister", super.getMessage());
     }
 
     /**

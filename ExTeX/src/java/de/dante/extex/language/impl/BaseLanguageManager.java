@@ -154,7 +154,7 @@ public class BaseLanguageManager extends AbstractFactory
      */
     protected Localizer getLocalizer() {
 
-        return LocalizerFactory.getLocalizer(getClass().getName());
+        return LocalizerFactory.getLocalizer(getClass());
     }
 
     /**

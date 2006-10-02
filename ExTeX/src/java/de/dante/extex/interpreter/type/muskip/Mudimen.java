@@ -79,7 +79,7 @@ public class Mudimen implements Serializable {
         long value = ScaledNumber.scanFloat(context, source, typesetter, t);
         if (!source.getKeyword(context, "mu")) {
             throw new HelpingException(//
-                    LocalizerFactory.getLocalizer(Mudimen.class.getName()),
+                    LocalizerFactory.getLocalizer(Mudimen.class),
                     "TTP.IllegalMu");
         }
         return value;

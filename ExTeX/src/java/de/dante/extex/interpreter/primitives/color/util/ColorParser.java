@@ -209,7 +209,7 @@ public final class ColorParser {
         }
         if (color == null) {
             throw new HelpingException(LocalizerFactory
-                    .getLocalizer(ColorParser.class.getName()), "MissingColor");
+                    .getLocalizer(ColorParser.class), "MissingColor");
         }
 
         return color;
@@ -255,16 +255,14 @@ public final class ColorParser {
             throw new EofException(name);
         } else if (!(t instanceof LeftBraceToken)) {
             throw new HelpingException(LocalizerFactory
-                    .getLocalizer(ColorParser.class.getName()),
-                    "MissingLeftBrace");
+                    .getLocalizer(ColorParser.class), "MissingLeftBrace");
         }
 
         Color color = mode.parse(context, source, typesetter, alpha, name);
         t = source.getNonSpace(context);
         if (!(t instanceof RightBraceToken)) {
             throw new HelpingException(LocalizerFactory
-                    .getLocalizer(ColorParser.class.getName()),
-                    "MissingRightBrace");
+                    .getLocalizer(ColorParser.class), "MissingRightBrace");
         }
         return color;
     }
@@ -293,7 +291,7 @@ public final class ColorParser {
         }
         if (cc < 0 || cc > ScaledNumber.ONE) {
             throw new HelpingException(LocalizerFactory
-                    .getLocalizer(ColorParser.class.getName()), "IllegalValue",
+                    .getLocalizer(ColorParser.class), "IllegalValue", //
                     Long.toString(cc));
         }
         return (int) (cc * Color.MAX_VALUE / GlueComponent.ONE);

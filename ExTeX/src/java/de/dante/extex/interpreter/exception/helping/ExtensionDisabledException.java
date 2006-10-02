@@ -33,7 +33,7 @@ public class ExtensionDisabledException extends HelpingException {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2006L;
 
     /**
      * Creates a new object.
@@ -42,8 +42,7 @@ public class ExtensionDisabledException extends HelpingException {
      */
     public ExtensionDisabledException(final String macro) {
 
-        super(LocalizerFactory.getLocalizer(//
-                ExtensionDisabledException.class.getName()),
+        super(LocalizerFactory.getLocalizer(ExtensionDisabledException.class),
                 "ExtensionDisabled");
     }
 

@@ -39,7 +39,7 @@ public class ExecuteFile extends OutFile {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2006L;
 
     /**
      * The field <tt>logger</tt> contains the logger for tracing and error
@@ -86,8 +86,7 @@ public class ExecuteFile extends OutFile {
      */
     public void write(final Tokens toks) throws IOException {
 
-        Localizer localizer = LocalizerFactory.getLocalizer(ExecuteFile.class
-                .getName());
+        Localizer localizer = LocalizerFactory.getLocalizer(ExecuteFile.class);
         String command = toks.toText();
         logger.fine(localizer.format("Start.Message", command));
         Process process = Runtime.getRuntime().exec(command);

@@ -95,7 +95,7 @@ public class QueryFileHandlerTeXImpl implements QueryFileHandler {
     public String query(final Logger logger, final Properties properties) {
 
         Localizer localizer = LocalizerFactory
-                .getLocalizer(QueryFileHandlerTeXImpl.class.getName());
+                .getLocalizer(QueryFileHandlerTeXImpl.class);
         String file;
         try {
             file = promptAndReadLine(localizer, logger, "TTP.PromptFile");

@@ -36,7 +36,7 @@ public class MissingEndcsnameException extends InterpreterException {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 1L;
+    protected static final long serialVersionUID = 2006L;
 
     /**
      * Creates a new object.
@@ -46,9 +46,8 @@ public class MissingEndcsnameException extends InterpreterException {
      */
     public MissingEndcsnameException(final Context context, final Token t) {
 
-        super(LocalizerFactory.getLocalizer(
-                MissingEndcsnameException.class.getName()).format(
-                "TTP.MissingEndcsname"));
+        super(LocalizerFactory.getLocalizer(MissingEndcsnameException.class)
+                .format("TTP.MissingEndcsname"));
     }
 
     /**

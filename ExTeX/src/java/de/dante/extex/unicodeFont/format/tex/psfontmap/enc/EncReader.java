@@ -50,13 +50,13 @@ public class EncReader implements Serializable {
      * with a localizer for the name of this class.
      */
     private transient Localizer localizer = LocalizerFactory
-            .getLocalizer(EncReader.class.getName());
+            .getLocalizer(EncReader.class);
 
     /**
      * Create a new object.
      *
-     * @param in    inputstream for reading
-     * @throws FontException if an IO-error occured
+     * @param in    input stream for reading
+     * @throws FontException if an IO-error occurred
      */
     public EncReader(final InputStream in) throws FontException {
 

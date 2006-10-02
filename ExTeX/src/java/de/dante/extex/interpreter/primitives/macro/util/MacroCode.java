@@ -176,7 +176,7 @@ public class MacroCode extends AbstractCode
 
         Localizer localizer = super.getLocalizer();
         return (localizer != null ? localizer : LocalizerFactory
-                .getLocalizer(MacroCode.class.getName()));
+                .getLocalizer(MacroCode.class));
     }
 
     /**

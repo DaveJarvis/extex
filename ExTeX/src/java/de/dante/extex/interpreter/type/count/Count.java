@@ -268,7 +268,7 @@ public class Count implements Serializable, FixedCount {
                 }
 
                 throw new HelpingException(LocalizerFactory
-                        .getLocalizer(ScaledNumber.class.getName()),
+                        .getLocalizer(ScaledNumber.class),
                         "MissingParenthesis", (t == null ? "null" : t
                                 .toString()));
 
@@ -605,7 +605,7 @@ public class Count implements Serializable, FixedCount {
      */
     protected Localizer getLocalizer() {
 
-        return LocalizerFactory.getLocalizer(Count.class.getName());
+        return LocalizerFactory.getLocalizer(Count.class);
     }
 
     /**

@@ -140,7 +140,7 @@ public final class LoadUnit extends AbstractFactory {
                 if (t instanceof CodeToken) {
                     if (context.getCode((CodeToken) t) == null) {
                         throw new HelpingException(LocalizerFactory
-                                .getLocalizer(LoadUnit.class.getName()),
+                                .getLocalizer(LoadUnit.class),
                                 "Loader.Import.undef", t.toString());
                     } else {
                         Let.let(Flags.NONE, context, //

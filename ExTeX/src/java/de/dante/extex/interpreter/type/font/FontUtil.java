@@ -47,7 +47,7 @@ public final class FontUtil {
      * class.
      */
     private static final Localizer LOCALIZER = LocalizerFactory
-            .getLocalizer(FontUtil.class.getName());
+            .getLocalizer(FontUtil.class);
 
     /**
      * This method produces a log entry for lost characters if the count

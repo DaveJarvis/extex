@@ -697,7 +697,7 @@ public class ExTeX {
      * The field <tt>iProvider</tt> contains the bridge from the resource
      * finder to the context.
      */
-    MyInteractionProvider iProvider = new MyInteractionProvider() {
+    private MyInteractionProvider iProvider = new MyInteractionProvider() {
 
         /**
          * The field <tt>context</tt> contains the interpreter context.
@@ -726,8 +726,7 @@ public class ExTeX {
      * The field <tt>localizer</tt> contains the localizer. It is initiated
      * with a localizer for the name of this class.
      */
-    private Localizer localizer = LocalizerFactory.getLocalizer(ExTeX.class
-            .getName());
+    private Localizer localizer = LocalizerFactory.getLocalizer(ExTeX.class);
 
     /**
      * The field <tt>logger</tt> contains the logger currently in use.
@@ -904,15 +903,14 @@ public class ExTeX {
                         .substring(3, 4), lang.substring(6, 7)));
 
             } else {
-                localizer = LocalizerFactory
-                        .getLocalizer(ExTeX.class.getName());
+                localizer = LocalizerFactory.getLocalizer(ExTeX.class);
                 getLogger().warning(
                         localizer.format("ExTeX.locale.error", lang));
                 return;
             }
         }
 
-        localizer = LocalizerFactory.getLocalizer(ExTeX.class.getName());
+        localizer = LocalizerFactory.getLocalizer(ExTeX.class);
     }
 
     /**

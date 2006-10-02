@@ -215,7 +215,7 @@ public class ScaledNumber {
                     }
 
                     throw new HelpingException(LocalizerFactory
-                            .getLocalizer(ScaledNumber.class.getName()),
+                            .getLocalizer(ScaledNumber.class),
                             "MissingParenthesis", (t == null ? "null" : t
                                     .toString()));
 

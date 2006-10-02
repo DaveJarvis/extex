@@ -30,7 +30,6 @@ import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.framework.i18n.LocalizerFactory;
 
 /**
  * This class provides an implementation for the primitive <code>\ifcase</code>.
@@ -196,8 +195,7 @@ public class Ifcase extends AbstractIf {
             }
         }
 
-        throw new HelpingException(LocalizerFactory
-                .getLocalizer(AbstractIf.class.getName()), "TTP.EOFinSkipped");
+        throw new HelpingException(getLocalizer(), "TTP.EOFinSkipped");
     }
 
     /**

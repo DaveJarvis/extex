@@ -213,7 +213,7 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
      */
     protected Localizer getLocalizer() {
 
-        return LocalizerFactory.getLocalizer(Dimen.class.getName());
+        return LocalizerFactory.getLocalizer(Dimen.class);
     }
 
     /**

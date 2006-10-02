@@ -80,7 +80,7 @@ public abstract class AbstractListMaker implements ListMaker {
      */
     protected Localizer getLocalizer() {
 
-        return LocalizerFactory.getLocalizer(this.getClass().getName());
+        return LocalizerFactory.getLocalizer(this.getClass());
     }
 
     /**
@@ -113,7 +113,7 @@ public abstract class AbstractListMaker implements ListMaker {
      */
     protected Localizer getMyLocalizer() {
 
-        return LocalizerFactory.getLocalizer(AbstractListMaker.class.getName());
+        return LocalizerFactory.getLocalizer(AbstractListMaker.class);
     }
 
     /**

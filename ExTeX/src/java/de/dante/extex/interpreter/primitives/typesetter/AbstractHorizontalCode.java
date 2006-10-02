@@ -67,7 +67,7 @@ public abstract class AbstractHorizontalCode extends AbstractCode {
         Mode mode = typesetter.getMode();
         if (mode == Mode.VERTICAL || mode == Mode.INNER_VERTICAL) {
             throw new HelpingException(LocalizerFactory
-                    .getLocalizer(AbstractHorizontalCode.class.getName()),
+                    .getLocalizer(AbstractHorizontalCode.class),
                     "TTP.MissingInserted", "}");
         }
 

@@ -43,8 +43,8 @@ public class BadOutputModeException extends HelpingException {
      */
     public BadOutputModeException() {
 
-        super(LocalizerFactory.getLocalizer(BadOutputModeException.class
-                .getName()), "Omega.BadMode");
+        super(LocalizerFactory.getLocalizer(BadOutputModeException.class),
+                "Omega.BadMode");
     }
 
 }

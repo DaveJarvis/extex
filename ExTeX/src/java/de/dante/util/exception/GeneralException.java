@@ -138,6 +138,6 @@ public class GeneralException extends Exception {
      */
     protected Localizer getLocalizer() {
 
-        return LocalizerFactory.getLocalizer(this.getClass().getName());
+        return LocalizerFactory.getLocalizer(this.getClass());
     }
 }

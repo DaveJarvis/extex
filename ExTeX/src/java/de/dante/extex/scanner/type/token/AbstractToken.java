@@ -122,7 +122,7 @@ public abstract class AbstractToken implements Token, Serializable {
      */
     protected Localizer getLocalizer() {
 
-        return LocalizerFactory.getLocalizer(Token.class.getName());
+        return LocalizerFactory.getLocalizer(Token.class);
     }
 
     /**

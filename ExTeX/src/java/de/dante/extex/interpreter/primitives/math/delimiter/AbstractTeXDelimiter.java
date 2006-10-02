@@ -212,8 +212,7 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
      */
     protected static Localizer getMyLocalizer() {
 
-        return LocalizerFactory.getLocalizer(AbstractTeXDelimiter.class
-                .getName());
+        return LocalizerFactory.getLocalizer(AbstractTeXDelimiter.class);
     }
 
     /**

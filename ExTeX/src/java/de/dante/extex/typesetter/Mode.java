@@ -189,8 +189,7 @@ public abstract class Mode {
     protected Localizer getLocalizer() {
 
         if (this.localizer == null) {
-            this.localizer = LocalizerFactory
-                    .getLocalizer(Mode.class.getName());
+            this.localizer = LocalizerFactory.getLocalizer(Mode.class);
         }
         return this.localizer;
     }
@@ -233,8 +232,7 @@ public abstract class Mode {
     public String toString() {
 
         if (this.localizer == null) {
-            this.localizer = LocalizerFactory
-                    .getLocalizer(Mode.class.getName());
+            this.localizer = LocalizerFactory.getLocalizer(Mode.class);
         }
         return localizer.format(tag);
     }

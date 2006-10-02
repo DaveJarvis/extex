@@ -36,7 +36,7 @@ public class MissingNumberException extends HelpingException {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2006L;
 
     /**
      * Creates a new object.
@@ -44,8 +44,7 @@ public class MissingNumberException extends HelpingException {
     public MissingNumberException() {
 
         super(LocalizerFactory.getLocalizer(//
-                MissingNumberException.class.getName()),
-                "TTP.MissingNumber");
+                MissingNumberException.class), "TTP.MissingNumber");
     }
 
 }

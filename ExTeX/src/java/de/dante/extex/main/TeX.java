@@ -795,9 +795,8 @@ public class TeX extends ExTeX {
             consoleHandler.setLevel(Level.WARNING);
             logger.addHandler(consoleHandler);
 
-            logException(logger, LocalizerFactory.getLocalizer(
-                    TeX.class.getName()).format("ExTeX.SevereError",
-                    e.toString()), e);
+            logException(logger, LocalizerFactory.getLocalizer(TeX.class)
+                    .format("ExTeX.SevereError", e.toString()), e);
             status = EXIT_INTERNAL_ERROR;
         }
 
@@ -807,8 +806,7 @@ public class TeX extends ExTeX {
     /**
      * The field <tt>localizer</tt> contains the localizer.
      */
-    private Localizer localizer = LocalizerFactory.getLocalizer(TeX.class
-            .getName());;
+    private Localizer localizer = LocalizerFactory.getLocalizer(TeX.class);;
 
     /**
      * The field <tt>observers</tt> contains the observers.

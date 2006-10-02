@@ -38,7 +38,7 @@ public abstract class AbstractVerticalCode extends AbstractCode {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2006L;
 
     /**
      * Creates a new object.
@@ -74,7 +74,7 @@ public abstract class AbstractVerticalCode extends AbstractCode {
 
         if (!(mode == Mode.VERTICAL || mode == Mode.INNER_VERTICAL)) {
             throw new HelpingException(LocalizerFactory
-                    .getLocalizer(AbstractVerticalCode.class.getName()),
+                    .getLocalizer(AbstractVerticalCode.class),
                     "TTP.MissingInserted", "}");
         }
     }

@@ -139,7 +139,7 @@ public abstract class AbstractNoad implements Noad {
      */
     public Localizer getLocalizer() {
 
-        return LocalizerFactory.getLocalizer(getClass().getName());
+        return LocalizerFactory.getLocalizer(getClass());
     }
 
     /**

@@ -109,10 +109,9 @@ public class MathContext {
         FixedDimen value;
         if (font == null || (value = font.getFontDimen(p.getNo())) == null) {
             throw new TypesetterException(
-                    //
-                    new HelpingException(
-                            //
-                            LocalizerFactory.getLocalizer(getClass().getName()),
+            //
+                    new HelpingException(LocalizerFactory
+                            .getLocalizer(getClass()), //
                             p.inSymbol()
                                     ? "TTP.InsufficientSymbolFonts"
                                     : "TTP.InsufficientExtensionFonts"));

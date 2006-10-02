@@ -37,7 +37,7 @@ public class UnusedPrefixException extends HelpingException {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2006L;
 
     /**
      * Creates a new object.
@@ -47,9 +47,8 @@ public class UnusedPrefixException extends HelpingException {
      */
     public UnusedPrefixException(final String flag, final Token token) {
 
-        super(LocalizerFactory.getLocalizer(//
-                UnusedPrefixException.class.getName()), "UnusedPrefix", flag,
-                token.toString());
+        super(LocalizerFactory.getLocalizer(UnusedPrefixException.class),
+                "UnusedPrefix", flag, token.toString());
     }
 
 }

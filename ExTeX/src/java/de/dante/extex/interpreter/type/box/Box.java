@@ -189,7 +189,7 @@ public class Box implements BoxOrRule, Serializable {
      */
     protected Localizer getLocalizer() {
 
-        return LocalizerFactory.getLocalizer(Box.class.getName());
+        return LocalizerFactory.getLocalizer(Box.class);
     }
 
     /**

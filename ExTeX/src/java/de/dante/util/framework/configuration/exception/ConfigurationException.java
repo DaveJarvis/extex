@@ -83,7 +83,7 @@ public abstract class ConfigurationException extends Exception {
 
         if (this.localizer == null) {
             this.localizer = LocalizerFactory
-                    .getLocalizer(ConfigurationException.class.getName());
+                    .getLocalizer(ConfigurationException.class);
         }
         return this.localizer;
     }

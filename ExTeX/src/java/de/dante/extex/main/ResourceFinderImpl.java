@@ -132,7 +132,7 @@ public class ResourceFinderImpl
 
         String line = name;
         Localizer localizer = LocalizerFactory
-                .getLocalizer(ResourceFinderImpl.class.getName());
+                .getLocalizer(ResourceFinderImpl.class);
 
         if (provider != null) {
             Interaction interaction = provider.getInteraction();
@@ -140,8 +140,7 @@ public class ResourceFinderImpl
                 return null;
             }
         }
-        
-        
+
         if (!line.equals("")) {
             logger.severe("\n! "
                     + localizer.format("CLI.FileNotFound", name, type));
@@ -190,6 +189,7 @@ public class ResourceFinderImpl
 
         this.provider = provider;
     }
+
     /**
      * Setter for the parent resource finder.
      *

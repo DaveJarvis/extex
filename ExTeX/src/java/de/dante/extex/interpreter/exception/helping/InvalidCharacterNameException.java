@@ -36,7 +36,7 @@ public class InvalidCharacterNameException extends InvalidCharacterException {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2006L;
 
     /**
      * Creates a new object.
@@ -46,8 +46,7 @@ public class InvalidCharacterNameException extends InvalidCharacterException {
     public InvalidCharacterNameException(final String uc) {
 
         super(LocalizerFactory.getLocalizer(//
-                InvalidCharacterNameException.class.getName()), "InvalidChar",
-                uc);
+                InvalidCharacterNameException.class), "InvalidChar", uc);
     }
 
 }

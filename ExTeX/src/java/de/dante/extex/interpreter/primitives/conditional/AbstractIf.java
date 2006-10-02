@@ -55,7 +55,7 @@ public abstract class AbstractIf extends AbstractCode implements ExpandableCode 
      */
     protected static Localizer getMyLocalizer() {
 
-        return LocalizerFactory.getLocalizer(AbstractIf.class.getName());
+        return LocalizerFactory.getLocalizer(AbstractIf.class);
     }
 
     /**

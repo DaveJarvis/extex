@@ -47,7 +47,7 @@ public abstract class AbstractAlign extends AbstractCode {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2006L;
 
     /**
      * Creates a new object.
@@ -66,7 +66,7 @@ public abstract class AbstractAlign extends AbstractCode {
      */
     Localizer getMyLocalizer() {
 
-        return LocalizerFactory.getLocalizer(AbstractAlign.class.getName());
+        return LocalizerFactory.getLocalizer(AbstractAlign.class);
     }
 
     /**

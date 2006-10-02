@@ -37,20 +37,18 @@ public class CantUseAfterException extends HelpingException {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2006L;
 
     /**
      * Creates a new object.
      *
      * @param cause the name of the macro in which the condition has been
-     *  encoutered
-     * @param predecessor the preceeding token
+     *  encountered
+     * @param predecessor the preceding token
      */
-    public CantUseAfterException(final String cause,
-            final String predecessor) {
+    public CantUseAfterException(final String cause, final String predecessor) {
 
-        super(LocalizerFactory.getLocalizer(//
-                CantUseAfterException.class.getName()),
+        super(LocalizerFactory.getLocalizer(CantUseAfterException.class),
                 "TTP.CantUseAfter", cause, predecessor);
     }
 
