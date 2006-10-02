@@ -185,6 +185,22 @@ public final class LocalizerFactory {
         }
 
         /**
+         * Apply the given argument to the format string stored in the resource
+         * bundle under the given key. The argument object's value of toString()
+         * replaces the substring <tt>'{0}'</tt>,<tt>'{1}'</tt>,<tt>'{2}'</tt>,
+         * and so on in the format.
+         *
+         * @param fmt the key in the resource bundle to search for
+         * @param a the Object used for the substrings <tt>{<i>n</i>}</tt>
+         *
+         * @return the expanded format string
+         */
+        public String format(final String fmt, final Object[] a) {
+
+            return MessageFormat.format(format(fmt), a);
+        }
+
+        /**
          * Getter for the value of a format string associated to a given key.
          *
          * @param key the key in the resource bundle to search for
