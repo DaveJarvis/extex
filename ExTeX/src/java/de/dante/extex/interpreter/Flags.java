@@ -129,7 +129,7 @@ public interface Flags {
     /**
      * Setter for the protected flag.
      *
-     * @return the old value of the proteced flag
+     * @return the old value of the protected flag
      */
     boolean clearProtected();
 

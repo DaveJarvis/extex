@@ -38,7 +38,7 @@ public class UndefinedControlSequenceException extends HelpingException {
     /**
      * Creates a new object.
      *
-     * @param macro the name of the macro in which the eof has been encountered
+     * @param macro the name of the macro which is undefined
      */
     public UndefinedControlSequenceException(final String macro) {
 

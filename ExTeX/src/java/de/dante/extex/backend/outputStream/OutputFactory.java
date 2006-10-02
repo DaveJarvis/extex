@@ -334,7 +334,7 @@ public class OutputFactory extends AbstractFactory
 
     /**
      * Register a handler for creation of an output stream of a certain type.
-     * If not handler is registered then an appropriate file is opened.
+     * If no handler is registered then an appropriate file is opened.
      * <p>
      *  You can register a handler if you want to redirect certain output
      *  streams to different directions. For instance if you want to process
