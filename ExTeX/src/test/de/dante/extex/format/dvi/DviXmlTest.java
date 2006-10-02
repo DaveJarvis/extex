@@ -201,7 +201,7 @@ public class DviXmlTest extends TestCase {
         }
 
         ResourceFinder fontFinder = (new ResourceFinderFactory())
-                .createResourceFinder(finderCfg, null, getProps());
+                .createResourceFinder(finderCfg, null, getProps(), null);
         if (Boolean.valueOf(getProps().getProperty("extex.trace.font.files"))
                 .booleanValue()) {
             fontFinder.enableTracing(true);

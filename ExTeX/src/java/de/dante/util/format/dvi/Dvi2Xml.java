@@ -200,7 +200,7 @@ public final class Dvi2Xml {
 
         ResourceFinder fontFinder = (new ResourceFinderFactory())
                 .createResourceFinder(config.getConfiguration("Resource"),
-                        null, getProps());
+                        null, getProps(), null);
         if (Boolean.valueOf(getProps().getProperty("extex.trace.font.files"))
                 .booleanValue()) {
             fontFinder.enableTracing(true);

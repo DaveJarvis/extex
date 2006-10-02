@@ -86,7 +86,7 @@ public class FontTest extends TestCase {
         assertTrue(!fontClass.equals(""));
 
         fontFinder = (new ResourceFinderFactory()).createResourceFinder(
-                resource, Logger.global, properties);
+                resource, Logger.global, properties, null);
 
         fontFactory = (FontFactory) (Class.forName(fontClass).getConstructor(
                 new Class[]{Configuration.class, ResourceFinder.class})

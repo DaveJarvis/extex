@@ -215,7 +215,7 @@ public class DviTypeTest extends TestCase {
         props = getProps();
 
         finder = (new ResourceFinderFactory()).createResourceFinder(config
-                .getConfiguration("Resource"), null, props);
+                .getConfiguration("Resource"), null, props, null);
 
         FontFactory fontFactory = makeFontFactory(config
                 .getConfiguration("Fonts"));

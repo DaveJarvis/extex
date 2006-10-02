@@ -124,7 +124,7 @@ public abstract class AbstractFontUtil {
         }
 
         finder = (new ResourceFinderFactory()).createResourceFinder(config
-                .getConfiguration("Resource"), null, prop);
+                .getConfiguration("Resource"), null, prop, null);
 
     }
 

@@ -95,7 +95,7 @@ public final class TFM2PL {
 
         ResourceFinder finder = (new ResourceFinderFactory())
                 .createResourceFinder(config.getConfiguration("Resource"),
-                        null, prop);
+                        null, prop, null);
 
         EncFactory ef = new EncFactory(finder);
 

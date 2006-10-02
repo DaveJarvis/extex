@@ -147,7 +147,7 @@ public class TftoPlTest extends TestCase {
         }
 
         ResourceFinder finder = (new ResourceFinderFactory())
-                .createResourceFinder(resource, null, prop);
+                .createResourceFinder(resource, null, prop, null);
 
         EncFactory ef = new EncFactory(finder);
 

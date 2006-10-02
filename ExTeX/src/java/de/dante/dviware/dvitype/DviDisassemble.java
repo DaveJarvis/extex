@@ -115,7 +115,7 @@ public class DviDisassemble implements DviProcessor {
             config = new ConfigurationFactory().newInstance(properties
                     .getProperty(PROP_CONFIG));
             finder = new ResourceFinderFactory().createResourceFinder(config
-                    .getConfiguration("Resource"), logger, properties);
+                    .getConfiguration("Resource"), logger, properties, null);
             InputStream dvi = finder.findResource(arg, "dvi");
 
             if (dvi == null) {

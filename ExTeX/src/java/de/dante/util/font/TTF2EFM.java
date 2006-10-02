@@ -55,7 +55,7 @@ public final class TTF2EFM {
 
     /**
      * main
-     * @param args  the commandlinearguments
+     * @param args  the command line arguments
      * @throws Exception ...
      */
     public static void main(final String[] args) throws Exception {
@@ -75,7 +75,7 @@ public final class TTF2EFM {
 
         ResourceFinder finder = (new ResourceFinderFactory())
                 .createResourceFinder(config.getConfiguration("Resource"),
-                        null, System.getProperties());
+                        null, System.getProperties(), null);
 
         // ttf-file
         InputStream ttfin = finder.findResource(args[0], "");
