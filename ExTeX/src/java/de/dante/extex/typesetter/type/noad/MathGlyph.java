@@ -180,10 +180,15 @@ public class MathGlyph implements Noad, Serializable {
     public void toString(final StringBuffer sb, final int depth) {
 
         if (depth >= 0) {
-            sb.append("(");
+            sb.append("\\fam");
             sb.append(Integer.toHexString(family));
-            sb.append(')');
-            sb.append(Integer.toHexString(character.getCodePoint()));
+            sb.append(' ');
+            if (character.isPrintable()) {
+                sb.append(character.toString());
+            } else {
+                sb.append('"');
+                sb.append(Integer.toHexString(character.getCodePoint()));
+            }
         }
     }
 
