@@ -157,18 +157,20 @@ public class HorizontalListNode extends GenericNodeList {
             wd.add(node.getWidth());
             node.addWidthTo(wg);
         }
-        setWidth(wd);
 
-        Dimen w = getTargetWidth();
-        if (w != null && w.ne(wd)) {
-            wd.subtract(w);
+        Dimen target = getTargetWidth();
+        if (target != null && target.ne(wd)) {
+            wd.subtract(target);
             wd.negate();
-            FixedGlueComponent s = (w.le(Dimen.ZERO) //
+            FixedGlueComponent s = (wd.le(Dimen.ZERO) //
                     ? wg.getShrink() //
                     : wg.getStretch());
             for (int i = 0; i < size; i++) {
                 get(i).spreadWidth(wd, s);
             }
+            setWidth(target);
+        } else {
+            setWidth(wd);
         }
     }
 
