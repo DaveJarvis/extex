@@ -143,6 +143,7 @@ public class PageBuilderImpl implements PageBuilder {
         if (d.ge(options.getDimenOption("vsize"))) {
 
             flush(nodes, typesetter);
+            nodes.clear(); // TODO gene: split off the appropriate amount and leave the rest
         }
     }
 
