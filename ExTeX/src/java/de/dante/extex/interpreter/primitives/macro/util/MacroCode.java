@@ -30,6 +30,7 @@ import de.dante.extex.interpreter.primitives.typesetter.paragraph.Par;
 import de.dante.extex.interpreter.type.AbstractCode;
 import de.dante.extex.interpreter.type.Code;
 import de.dante.extex.interpreter.type.ExpandableCode;
+import de.dante.extex.interpreter.type.PrefixCode;
 import de.dante.extex.interpreter.type.Showable;
 import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.scanner.type.Catcode;
@@ -61,7 +62,7 @@ import de.dante.util.framework.i18n.LocalizerFactory;
  */
 public class MacroCode extends AbstractCode
         implements
-            Code,
+            PrefixCode,
             ExpandableCode,
             Showable {
 
