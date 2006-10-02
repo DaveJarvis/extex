@@ -94,7 +94,7 @@ public class BinaryNoad extends AbstractNucleusNoad implements SimpleNoad {
                 list, mathContext);
 
         //TODO gene: typeset() unimplemented
-        throw new RuntimeException("unimplemented");
+        //throw new RuntimeException("unimplemented");
     }
 
 }
