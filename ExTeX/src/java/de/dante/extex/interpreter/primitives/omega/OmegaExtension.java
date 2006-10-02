@@ -20,7 +20,8 @@
 package de.dante.extex.interpreter.primitives.omega;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This interface contains methods and constants for the context extension for
+ * Omega.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -28,7 +29,7 @@ package de.dante.extex.interpreter.primitives.omega;
 public interface OmegaExtension {
 
     /**
-     * The constant <tt>NAME</tt> contains the ...
+     * The constant <tt>NAME</tt> contains the name of the context extension.
      */
     String NAME = "org.extex.interpreter.omega";
 
