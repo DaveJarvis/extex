@@ -182,6 +182,9 @@ public class IntegerCode extends AbstractAssignment
     public void init(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
 
+        if (source == null) {
+            return;
+        }
         value = Count.scanInteger(context, source, typesetter);
     }
 

@@ -211,6 +211,9 @@ public class Mag extends AbstractCount
     public void init(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
 
+        if (source == null) {
+            return;
+        }
         Token t = source.getNonSpace(context);
         if (t == null) {
             return;
