@@ -1,4 +1,4 @@
-</*
+/*
  * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
