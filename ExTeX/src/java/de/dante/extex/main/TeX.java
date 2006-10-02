@@ -74,7 +74,6 @@ import de.dante.extex.main.queryFile.QueryFileHandler;
 import de.dante.extex.main.queryFile.QueryFileHandlerTeXImpl;
 import de.dante.extex.scanner.stream.TokenStreamFactory;
 import de.dante.extex.scanner.stream.observer.file.OpenFileObserver;
-import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.exception.GeneralException;
 import de.dante.util.exception.NotObservableException;
 import de.dante.util.framework.configuration.Configuration;
