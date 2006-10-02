@@ -36,7 +36,6 @@ import de.dante.extex.interpreter.primitives.register.font.NumberedFont;
 import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.interpreter.type.dimen.FixedDimen;
 import de.dante.extex.interpreter.type.font.Font;
-import de.dante.extex.interpreter.type.glue.FixedGlue;
 import de.dante.extex.interpreter.type.muskip.Mudimen;
 import de.dante.extex.interpreter.type.muskip.Muskip;
 import de.dante.extex.interpreter.type.tokens.Tokens;
@@ -248,19 +247,19 @@ public class MathListMaker extends HorizontalListMaker
 
         Font textfont3 = options.getFont(NumberedFont.key(options, "textfont",
                 "3"));
-        if (textfont3 instanceof NullFont) {
+        if (textfont3.getFontDimen("8") == null) {
             return true;
         }
 
         Font scriptfont3 = options.getFont(NumberedFont.key(options,
                 "scriptfont", "3"));
-        if (scriptfont3 instanceof NullFont) {
+        if (scriptfont3.getFontDimen("8") == null) {
             return true;
         }
 
         Font scriptscriptfont3 = options.getFont(NumberedFont.key(options,
                 "scriptscriptfont", "3"));
-        if (scriptscriptfont3 instanceof NullFont) {
+        if (scriptscriptfont3.getFontDimen("8") == null) {
             return true;
         }
         return false;
@@ -283,17 +282,17 @@ public class MathListMaker extends HorizontalListMaker
 
         Font textfont2 = options.getFont(NumberedFont.key(options, "textfont",
                 "2"));
-        if (textfont2 instanceof NullFont) {
+        if (textfont2.getFontDimen("8") == null) {
             return true;
         }
         Font scriptfont2 = options.getFont(NumberedFont.key(options,
                 "scriptfont", "2"));
-        if (scriptfont2 instanceof NullFont) {
+        if (scriptfont2.getFontDimen("8") == null) {
             return true;
         }
         Font scriptscriptfont2 = options.getFont(NumberedFont.key(options,
                 "scriptscriptfont", "2"));
-        if (scriptscriptfont2 instanceof NullFont) {
+        if (scriptscriptfont2.getFontDimen("8") == null) {
             return true;
         }
         return false;
