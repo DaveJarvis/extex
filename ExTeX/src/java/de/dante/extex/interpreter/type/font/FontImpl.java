@@ -179,6 +179,14 @@ public class FontImpl extends NullFont {
     }
 
     /**
+     * @see de.dante.extex.font.type.Fount#getFontDimen(java.lang.String)
+     */
+    public FixedDimen getFontDimen(final String key) {
+
+        return fount.getFontDimen(key);
+    }
+
+    /**
      * @see de.dante.extex.font.type.Fount#getFontKey()
      */
     public FountKey getFontKey() {
