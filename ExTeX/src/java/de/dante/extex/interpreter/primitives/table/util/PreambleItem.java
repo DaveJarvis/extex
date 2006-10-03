@@ -72,4 +72,12 @@ public class PreambleItem {
         return this.pre;
     }
 
+    /**
+     * @see java.lang.Object#toString()
+     */
+    public String toString() {
+
+        return "\npre = " + pre.toText() + "\npost = " + post.toText() + "\n";
+    }
+
 }
