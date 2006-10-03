@@ -112,8 +112,8 @@ public class BackendFactory extends AbstractFactory {
     /**
      * Acquire an instance of a back-end driver.
      *
-     * @param type ...
-     * @param options ...
+     * @param type the type of the document writer
+     * @param options the options
      * @param outFactory the output stream factory
      * @param finder the resource finder
      * @param properties the properties
