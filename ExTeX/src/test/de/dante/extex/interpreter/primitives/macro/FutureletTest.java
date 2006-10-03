@@ -66,7 +66,7 @@ public class FutureletTest extends NoFlagsButGlobalPrimitiveTester {
         assertSuccess(//--- input code ---
                 "\\futurelet \\x ab" + "\\end",
                 //--- output message ---
-                "a" + TERM);
+                "ab" + TERM);
     }
 
     /**
@@ -81,7 +81,7 @@ public class FutureletTest extends NoFlagsButGlobalPrimitiveTester {
         assertSuccess(//--- input code ---
                 "\\futurelet \\x 1b" + "\\end",
                 //--- output message ---
-                "1" + TERM);
+                "1b" + TERM);
     }
 
     /**
@@ -112,7 +112,7 @@ public class FutureletTest extends NoFlagsButGlobalPrimitiveTester {
         assertSuccess(//--- input code ---
                 DEFINE_BRACES + "{\\global\\futurelet \\x AB}-\\x-" + "\\end",
                 //--- output message ---
-                "A-B-" + TERM);
+                "AB-B-" + TERM);
     }
 
     /**
@@ -128,7 +128,7 @@ public class FutureletTest extends NoFlagsButGlobalPrimitiveTester {
                 //--- input code ---
                 DEFINE_BRACES + "\\def\\z{-\\x-}\\futurelet \\x\\z B" + "\\end",
                 //--- output message ---
-                "-B-" + TERM);
+                "-B-B" + TERM);
     }
 
 }
