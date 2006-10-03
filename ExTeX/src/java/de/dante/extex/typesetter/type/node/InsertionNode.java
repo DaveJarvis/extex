@@ -64,7 +64,7 @@ public class InsertionNode extends AbstractNode implements Node {
      * Creates a new object.
      *
      * @param subtype the register number for the associated registers
-     * @param nodes ...
+     * @param nodes the nodes to be inserted
      *
      * @see "<logo>TeX</logo> &ndash; The Program [140]"
      */

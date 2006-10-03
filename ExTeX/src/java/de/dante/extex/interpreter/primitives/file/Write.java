@@ -101,7 +101,8 @@ public class Write extends AbstractCode
     private static final String USER_AND_LOG = "17";
 
     /**
-     * The field <tt>init</tt> contains the ...
+     * The field <tt>init</tt> contains the indicator that the standard streams
+     * are initialized.
      */
     private transient boolean init = false;
 

@@ -161,8 +161,8 @@ public interface NodeList extends Node, Cloneable {
      *
      * @param sb the target string buffer
      * @param prefix the string inserted at the beginning of each line
-     * @param depth ...
-     * @param width ...
+     * @param depth the depth limit for the pretty printing
+     * @param width the width limit for the pretty printing
      */
     void toString(StringBuffer sb, String prefix, int depth, int width);
 

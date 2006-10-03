@@ -45,21 +45,21 @@ public class MiddleNoad extends LeftNoad {
     private MathDelimiter delimiter;
 
     /**
-     * The field <tt>noad</tt> contains the ...
+     * The field <tt>noad</tt> contains the material before this noad.
      */
     private LeftNoad noadPre;
 
     /**
-     * The field <tt>noadPost</tt> contains the ...
+     * The field <tt>noadPost</tt> contains the material after this noad.
      */
     private Noad noadPost;
 
     /**
      * Creates a new object.
      *
-     * @param noadPre ...
+     * @param noadPre the material before this noad
      * @param delimiter the delimiter
-     * @param noadPost ...
+     * @param noadPost the material after this noad
      */
     public MiddleNoad(final LeftNoad noadPre, final MathDelimiter delimiter,
             final Noad noadPost) {

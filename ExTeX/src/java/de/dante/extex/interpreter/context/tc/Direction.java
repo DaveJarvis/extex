@@ -237,17 +237,20 @@ public class Direction implements Serializable {
     };
 
     /**
-     * The field <tt>beginningOfLine</tt> contains the ...
+     * The field <tt>beginningOfLine</tt> contains the direction at the
+     * beginning of the line.
      */
     private Dir beginningOfLine;
 
     /**
-     * The field <tt>beginningOfPage</tt> contains the ...
+     * The field <tt>beginningOfPage</tt> contains the direction at the
+     * beginning of the page.
      */
     private Dir beginningOfPage;
 
     /**
-     * The field <tt>topOfLine</tt> contains the ...
+     * The field <tt>topOfLine</tt> contains the direction at the top of the
+     * line.
      */
     private Dir topOfLine;
 

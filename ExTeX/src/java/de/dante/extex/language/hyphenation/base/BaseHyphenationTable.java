@@ -116,7 +116,7 @@ public class BaseHyphenationTable implements ModifiableLanguage, Serializable {
     private LigatureBuilder ligatureBuilder = null;
 
     /**
-     * The field <tt>name</tt> contains the ...
+     * The field <tt>name</tt> contains the name.
      */
     private String name;
 

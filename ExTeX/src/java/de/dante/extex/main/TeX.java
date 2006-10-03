@@ -729,7 +729,8 @@ public class TeX extends ExTeX {
     protected static final int EXIT_OK = 0;
 
     /**
-     * The field <tt>PROP_PARSE_FIRST_LINE</tt> contains the ...
+     * The field <tt>PROP_PARSE_FIRST_LINE</tt> contains the name of the
+     * property to nable the parsing of the first line of the file.
      */
     private static final String PROP_PARSE_FIRST_LINE = "extex.parse.first.line";
 
