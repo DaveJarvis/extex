@@ -22,8 +22,6 @@ package de.dante.dviware.type;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
-
 /**
  * This is an abstract base class for DVI instructions.
  *
@@ -193,21 +191,6 @@ public abstract class AbstractDviCode implements DviCode {
         stream.write(value >> 16);
         stream.write(value >> 8);
         stream.write(value);
-    }
-
-    /**
-     * Write four bytes to the output stream.
-     *
-     * @param stream the output stream to write to
-     * @param value the value
-     *
-     * @throws IOException in case of an error
-     */
-    protected void write4(final OutputStream stream, final FixedDimen value)
-            throws IOException {
-
-        long val = value.getValue();
-        write4(stream, (int) val);
     }
 
     /**
