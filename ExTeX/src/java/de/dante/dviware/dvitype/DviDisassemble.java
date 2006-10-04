@@ -29,7 +29,6 @@ import java.util.logging.Logger;
 
 import de.dante.dviware.Dvi;
 import de.dante.dviware.DviProcessor;
-import de.dante.extex.main.TeX;
 import de.dante.extex.main.logging.LogFormatter;
 import de.dante.util.framework.configuration.Configuration;
 import de.dante.util.framework.configuration.ConfigurationFactory;
@@ -75,7 +74,7 @@ public class DviDisassemble implements DviProcessor {
      */
     public static void main(final String[] args) {
 
-        Logger logger = Logger.getLogger(TeX.class.getName());
+        Logger logger = Logger.getLogger(DviDisassemble.class.getName());
         logger.setUseParentHandlers(false);
         logger.setLevel(Level.ALL);
 
