@@ -16,8 +16,8 @@
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
-package de.dante.extex.interpreter.context;
 
+package de.dante.extex.interpreter.context;
 
 /**
  * This interface describes the capabilities of the context to store and
@@ -32,6 +32,8 @@ public interface ContextErrorCount {
      * Getter for the error count.
      *
      * @return the current value of the number of errors
+     *
+     * @see #incrementErrorCount()
      */
     int getErrorCount();
 
@@ -39,6 +41,8 @@ public interface ContextErrorCount {
      * Increment the error count by 1.
      *
      * @return the new value of the error count
+     *
+     * @see #getErrorCount()
      */
     int incrementErrorCount();
 
