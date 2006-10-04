@@ -21,6 +21,7 @@ package de.dante.extex.interpreter.type;
 
 /**
  * This is a marker interface for those primitives which deal with the prefix.
+ * For those primitives it is legal to leave the prefix flags uncleared.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

@@ -20,7 +20,8 @@
 package de.dante.util.resource;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This interface describes a class which is able to receive an interaction
+ * provider.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
