@@ -329,7 +329,7 @@ sub process_unit {
   foreach $_ (sort {return lc($$a[0]) cmp lc($$b[0])} @prim) {
     my @a = @$_;
     if ($a[3] eq '') {
-      print $fd "<a href=\"$a[2]\" target=\"infoFrame\">\\$a[0]</a><br />\n";
+      print $fd "<a href=\"$a[2].html\" target=\"infoFrame\">\\$a[0]</a><br />\n";
     } else {
       print $fd "<span class=\"undef\">\\$a[0]</span><br />\n";
     }
