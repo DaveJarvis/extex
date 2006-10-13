@@ -22,8 +22,6 @@ package de.dante.extex.interpreter.primitives.omega.mode;
 import java.io.ObjectStreamException;
 import java.io.Serializable;
 
-import de.dante.extex.scanner.type.Catcode;
-
 /**
  * This class contains th definitions of input modes in Omega. The definitions
  * are provides as constants defined in this class.

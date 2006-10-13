@@ -30,7 +30,7 @@ import de.dante.extex.typesetter.Typesetter;
  * This class provides an implementation for the primitive
  * <code>\noDefaultOutputMode</code>.
  *
- * <doc name="write">
+ * <doc name="noDefaultOutputMode">
  * <h3>The Primitive <tt>\write</tt></h3>
  * <p>
  *  TODO missing documentation
