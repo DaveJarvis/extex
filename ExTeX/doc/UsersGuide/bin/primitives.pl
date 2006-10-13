@@ -84,7 +84,7 @@ foreach my $file (@ARGV) {
   print STDERR "--- Got configuration $_ -> $file" if $verbose;
 }
 
-my $out = ($sfile ? new FileHandle($sfile, 'w'): \*STDOUT);
+my $out = ($sfile ? new FileHandle($sfile, 'w'): \*STDOUT) || die "$sfile: $!\n";
 
 print $out "\n\\subsection{Predefined Configurations}\n";
 
