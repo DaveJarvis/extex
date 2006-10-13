@@ -27,6 +27,7 @@ extex-users.pdf: cfg syntax $(MANUAL).tex
 	@pdflatex $*
 
 tmp/configurations.tex cfg: bin/primitives.pl
+	mkdir -p tmp
 	perl bin/primitives.pl				\
 		-cp   $(SRCDIR)				\
 		-sets tmp/configurations.tex		\
@@ -34,6 +35,7 @@ tmp/configurations.tex cfg: bin/primitives.pl
 		$(SRCDIR)/config/*.xml 
 
 tmp/syntax.tex syntax: bin/syntax.pl
+	mkdir -p tmp
 	perl bin/syntax.pl				\
 		-cp   $(SRCDIR)				\
 		-out  tmp/syntax.tex
