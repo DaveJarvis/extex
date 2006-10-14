@@ -112,7 +112,7 @@ public class CharNoad extends AbstractNoad {
         UnicodeChar c = glyph.getCharacter();
         Font font = context.getFont(NumberedFont.key(context, //
                 style.getFontName(), Integer.toString(glyph.getFamily())));
-        if (font instanceof NullFont) {
+        if (font.getActualSize().eq(Dimen.ZERO)) {
             throw new TypesetterException(new HelpingException(getLocalizer(),
                     "TTP.UndefinedFamily", style.getStyleName(), Integer
                             .toString(glyph.getFamily()), c.toString()));
