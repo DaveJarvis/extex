@@ -31,6 +31,7 @@ import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.ListMaker;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.listMaker.AlignmentList;
+import de.dante.extex.typesetter.type.NodeList;
 
 /**
  * This class provides an implementation for the primitive <code>\cr</code>.
@@ -84,14 +85,15 @@ public class Cr extends AbstractCode {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        boolean noalign = false;
+        NodeList noalign = null;
         ListMaker maker = typesetter.getListMaker();
         if (maker instanceof AlignmentList) {
             Token token = source.getToken(context); //TODO gene: respect protected
             if (token instanceof CodeToken) {
                 Code code = context.getCode((CodeToken) token);
                 if (code instanceof Noalign) {
-                    noalign = true;
+                    noalign = ((Noalign) code).exec(context, source,
+                            typesetter, token);
                 } else {
                     source.push(token);
                 }

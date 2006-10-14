@@ -82,7 +82,7 @@ public class Crcr extends Cr {
 
         ListMaker maker = typesetter.getListMaker();
         if (maker instanceof AlignmentList) {
-            ((AlignmentList) maker).crcr(context, source);
+            ((AlignmentList) maker).crcr(context, source, typesetter);
         } else {
             throw new HelpingException(getLocalizer(), "TTP.MisplacedCrSpan",
                     printableControlSequence(context));
