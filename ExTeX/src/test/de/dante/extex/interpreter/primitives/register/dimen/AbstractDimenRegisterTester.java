@@ -131,10 +131,10 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
     public void testDimenRegisterNoSkip1() throws Exception {
 
         assertSuccess(//--- input code ---
-                prepare + "\\" + invocation + "=123pt plus 1pt \\the\\"
+                prepare + "\\" + invocation + "=1230pt plus 1pt \\the\\"
                 + invocation + "\\end",
                 //--- output channel ---
-                "plus 1pt 123.0pt" + TERM);
+                "plus 1pt 1230.0pt" + TERM);
     }
 
     /**
