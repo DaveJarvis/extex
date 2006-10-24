@@ -113,7 +113,7 @@ public class The extends AbstractCode implements ExpandableCode, CodeExpander {
                 source.push(toks);
                 return;
             } else if (code == null) {
-                throw new UndefinedControlSequenceException(cs.toString());
+                throw new UndefinedControlSequenceException(cs.toText());
             }
         }
 
