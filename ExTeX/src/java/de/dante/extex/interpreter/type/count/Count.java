@@ -381,10 +381,21 @@ public class Count implements Serializable, FixedCount {
                     case '9':
                         n = c - '0';
 
-                        for (t = source.getToken(context); t instanceof OtherToken
-                                && t.getChar().isDigit(); t = source
-                                .getToken(context)) {
-                            n = n * 10 + t.getChar().getCodePoint() - '0';
+                        for (;;) {
+                            for (t = source.getToken(context); t instanceof OtherToken
+                                    && t.getChar().isDigit(); t = source
+                                    .getToken(context)) {
+                                n = n * 10 + t.getChar().getCodePoint() - '0';
+                            }
+                            if (t instanceof CodeToken) {
+                                Code code = context.getCode((CodeToken) t);
+                                if (code instanceof ExpandableCode) {
+                                    ((ExpandableCode) code).expand(Flags.NONE,
+                                            context, source, typesetter);
+                                    continue;
+                                }
+                            }
+                            break;
                         }
 
                         if (t instanceof SpaceToken) {
