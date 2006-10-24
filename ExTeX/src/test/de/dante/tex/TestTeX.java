@@ -86,7 +86,8 @@ public final class TestTeX {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         Properties pro = System.getProperties();
         ExTeX extex = new ExTeX(pro, ".extex");
-        pro.setProperty("extex.output", "dump");
+//        pro.setProperty("extex.output", "dump");
+        pro.setProperty("extex.output", "out"); // gene
         pro.setProperty("extex.file", texfile);
         pro.setProperty("extex.jobname", texfile);
         // BATCHMODE
@@ -111,7 +112,9 @@ public final class TestTeX {
                 Assert.assertEquals(linetesttxt, linetxt);
             }
 
-            Assert.assertTrue(!intesttxt.ready());
+            linetesttxt = intesttxt.readLine();
+
+            Assert.assertNotNull("Left-over: " + linetesttxt, linetesttxt);
 
         } finally { // gene: to assure that the resources are freed
             intxt.close();
