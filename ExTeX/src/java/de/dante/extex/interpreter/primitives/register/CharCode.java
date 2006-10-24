@@ -25,6 +25,7 @@ import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.AbstractCode;
 import de.dante.extex.interpreter.type.ExpandableCode;
+import de.dante.extex.interpreter.type.Showable;
 import de.dante.extex.interpreter.type.Theable;
 import de.dante.extex.interpreter.type.count.CountConvertible;
 import de.dante.extex.interpreter.type.tokens.Tokens;
@@ -49,6 +50,7 @@ public class CharCode extends AbstractCode
         implements
             ExpandableCode,
             CountConvertible,
+            Showable,
             Theable {
 
     /**
@@ -126,6 +128,18 @@ public class CharCode extends AbstractCode
     public UnicodeChar getCharacter() {
 
         return this.character;
+    }
+
+    /**
+     * @see de.dante.extex.interpreter.type.Showable#show(
+     *      de.dante.extex.interpreter.context.Context)
+     */
+    public Tokens show(final Context context) throws InterpreterException {
+
+        return new Tokens(context, context.esc("char")
+                + "\""
+                + Integer.toHexString(getCharacter().getCodePoint())
+                        .toUpperCase());
     }
 
     /**
