@@ -50,7 +50,7 @@ public abstract class AbstractMuskipRegisterTester extends ExTeXLauncher {
      * The field <tt>prepare</tt> contains the the preparation code inserted
      * before each test.
      */
-    private String prepare = "\\hsize=200pt";
+    private String prepare = "\\hsize=3000pt";
 
     /**
      * Creates a new object.
