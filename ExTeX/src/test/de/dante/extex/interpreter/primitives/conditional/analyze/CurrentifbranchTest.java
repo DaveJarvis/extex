@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -92,7 +92,7 @@ public class CurrentifbranchTest extends AbstractReadonlyCountRegisterTester {
     public void test3() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\ifcase0\\the\\currentifbranch \\fi\\end",
+                "\\ifcase0 \\the\\currentifbranch \\fi\\end",
                 //--- log message ---
                 "0" + TERM);
     }
