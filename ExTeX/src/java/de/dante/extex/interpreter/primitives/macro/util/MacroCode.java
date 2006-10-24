@@ -400,10 +400,24 @@ public class MacroCode extends AbstractCode
     public Tokens show(final Context context) throws InterpreterException {
 
         try {
-            Tokens toks = new Tokens(context, "macro:\n");
-
+            StringBuffer sb = new StringBuffer();
+            boolean sep = false;
+            if (!notLong) {
+                sb.append(context.esc("long"));
+                sep = true;
+            }
+            if (outerP) {
+                sb.append(context.esc("outer"));
+                sep = true;
+            }
+            if (sep) {
+                sb.append(" ");
+            }
+            sb.append(getLocalizer().format("TTP.macro"));
+            sb.append(":\n");
+            Tokens toks = new Tokens(context, sb);
             pattern.show(context, toks);
-            toks.add(context.getTokenFactory(), " ->");
+            toks.add(context.getTokenFactory(), "->");
             body.show(context, toks);
             return toks;
         } catch (InterpreterException e) {
