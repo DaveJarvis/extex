@@ -84,6 +84,11 @@ public class MockContext implements Context, TypesetterOptions {
     protected static final long serialVersionUID = 2006L;
 
     /**
+     * The field <tt>tc</tt> contains the ...
+     */
+    private TypesettingContext tc = new TypesettingContextImpl();
+
+    /**
      * The field <tt>tokenFactory</tt> contains the token factory.
      */
     private TokenFactory tokenFactory = new TokenFactoryImpl();
@@ -327,7 +332,7 @@ public class MockContext implements Context, TypesetterOptions {
      */
     public Font getFont(final String name) {
 
-        throw new RuntimeException("unimplemented");
+        return tc.getFont();
     }
 
     /**
@@ -561,7 +566,7 @@ public class MockContext implements Context, TypesetterOptions {
      */
     public TypesettingContext getTypesettingContext() {
 
-        return new TypesettingContextImpl();
+        return tc;
     }
 
     /**
@@ -671,7 +676,7 @@ public class MockContext implements Context, TypesetterOptions {
     public void set(final Font font, final boolean global)
             throws ConfigurationException {
 
-        throw new RuntimeException("unimplemented");
+        ((TypesettingContextImpl) tc).setFont(font);
     }
 
     /**
@@ -701,7 +706,7 @@ public class MockContext implements Context, TypesetterOptions {
      */
     public void set(final TypesettingContext context, final boolean global) {
 
-        throw new RuntimeException("unimplemented");
+        tc = context;
     }
 
     /**
@@ -969,7 +974,7 @@ public class MockContext implements Context, TypesetterOptions {
      */
     public void setTypesettingContext(final TypesettingContext context) {
 
-        throw new RuntimeException("unimplemented");
+        tc = context;
     }
 
     /**
