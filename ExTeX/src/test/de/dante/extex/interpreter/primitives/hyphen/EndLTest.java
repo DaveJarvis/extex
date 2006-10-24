@@ -36,7 +36,9 @@ public class EndLTest extends NoFlagsPrimitiveTester {
      */
     public EndLTest(final String arg) {
 
-        super(arg, "endL", "", "\\TeXXeTstate=1");
+        super(arg, "endL", "", "\\TeXXeTstate=1\\beginL");
     }
+
+    //TODO implement more primitive specific test cases
 
 }
