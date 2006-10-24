@@ -417,7 +417,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
 
         context.setCatcode(UnicodeChar.get('^'), Catcode.SUPMARK, true);
         TokenStream stream = makeStream("^^A");
-        assertEquals("the character \1", stream.get(fac, tokenizer).toString());
+        assertEquals("the character ^^1", stream.get(fac, tokenizer).toString());
         Token token = stream.get(fac, tokenizer);
         assertNotNull(token);
         assertEquals(C32, token.getChar().getCodePoint());
@@ -432,7 +432,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
 
         context.setCatcode(UnicodeChar.get('^'), Catcode.SUPMARK, true);
         TokenStream stream = makeStream("^^A;");
-        assertEquals("the character \1", stream.get(fac, tokenizer).toString());
+        assertEquals("the character ^^1", stream.get(fac, tokenizer).toString());
         assertEquals("the character ;", stream.get(fac, tokenizer).toString());
         Token token = stream.get(fac, tokenizer);
         assertNotNull(token);

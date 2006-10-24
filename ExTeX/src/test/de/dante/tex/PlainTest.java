@@ -19,6 +19,8 @@
 
 package de.dante.tex;
 
+import java.io.File;
+
 import de.dante.test.ExTeXLauncher;
 
 /**
@@ -58,11 +60,12 @@ public class PlainTest extends ExTeXLauncher {
      */
     public void testPlain() throws Exception {
 
-        assertOutput(
+        assertFailure(
                 "\\input develop/test/data/plain-dump \\end",
-                "",
                 "Preloading the plain format: codes, registers, parameters, fonts, more fonts,\n"
-                + "macros, math definitions, output routines, hyphenation");
+                        + "macros, math definitions, output routines, hyphenation\n"
+                        + "Beginning to dump on file "
+                        + new File(".", "texput.fmt").toString() +"\n");
     }
 
 }
