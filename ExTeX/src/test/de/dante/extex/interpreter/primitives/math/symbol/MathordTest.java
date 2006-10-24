@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -54,7 +54,9 @@ public class MathordTest extends AbstractMathTester {
                 + "$\\mathord a$"
                 + "\\end ",
                 //--- output channel ---
-                "a" + TERM);
+                "\\vbox(4.30554pt+0.0pt)x3000.0pt\n"
+                + ".\\hbox(4.30554pt+0.0pt)x3000.0pt\n"
+                + "..a\n");
     }
 
 }

@@ -140,7 +140,7 @@ public class WriteTest extends NoFlagsButImmediatePrimitiveTester {
         assertFailure(//--- input code ---
                 DEFINE_BRACES + "\\catcode`\\~=13" + "x\\write 2{a~c} \\end",
                 //--- log message ---
-                "Undefined control sequence ~");
+                "Undefined control sequence ~\n");
     }
 
     /**

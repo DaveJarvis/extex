@@ -59,7 +59,7 @@ public class TracinglostcharsTest extends AbstractCountRegisterTester {
         assertOutput(//--- input code ---
                 "\\nullfont\\tracinglostchars=1 a \\end",
                 //--- log message ---
-                "Missing character: There is no a in font nullfont!",
+                "Missing character: There is no a in font nullfont!\n",
                 //--- output stream ---
                 "");
     }
@@ -94,7 +94,7 @@ public class TracinglostcharsTest extends AbstractCountRegisterTester {
                 DEFINE_BRACES +
                 "\\nullfont\\tracinglostchars=1\\hbox{a}\\end",
                 //--- log message ---
-                "Missing character: There is no a in font nullfont!",
+                "Missing character: There is no a in font nullfont!\n",
                 //--- output stream ---
                 "");
     }

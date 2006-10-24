@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -56,7 +56,8 @@ public class ShowlistsTest extends NoFlagsPrimitiveTester {
                 "\\showlists\\end ",
                 //--- error channel ---
                 "### vertical mode entered at line 0\n" + "prevdepth ignored\n"
-                + "No pages of output.\nTranscript written on .\\texput.log.\n");
+                + "Transcript written on ."
+                + System.getProperty("file.separator") + "texput.log.\n");
     }
 
     /**
@@ -74,10 +75,11 @@ public class ShowlistsTest extends NoFlagsPrimitiveTester {
                 DEFINE_BRACES + "\\hbox{\\showlists}\\end ",
                 //--- error channel ---
                 "### restricted horizontal mode entered at line 1\n"
-                        + "spacefactor 1000\n"
-                        + "### vertical mode entered at line 0\n"
-                        + "prevdepth ignored\n"
-                        + "No pages of output.\nTranscript written on .\\texput.log.\n",
+                + "spacefactor 1000\n"
+                + "### vertical mode entered at line 0\n"
+                + "prevdepth ignored\n"
+                + "Transcript written on ."
+                + System.getProperty("file.separator") + "texput.log.\n",
                 //
                 "");
     }

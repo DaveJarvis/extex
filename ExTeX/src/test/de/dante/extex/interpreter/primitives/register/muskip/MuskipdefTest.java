@@ -76,7 +76,7 @@ public class MuskipdefTest extends AbstractMuskipRegisterTester {
         assertFailure(//--- input code ---
                 "\\begingroup\\muskipdef\\x=42 \\endgroup" + "\\the\\x \\end",
                 //--- error channel ---
-                "You can't use `the control sequence \\x' after \\the");
+                "Undefined control sequence \\x");
     }
 
     /**

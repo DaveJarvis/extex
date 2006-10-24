@@ -74,7 +74,7 @@ public class SkipdefTest extends AbstractSkipRegisterTester {
         assertFailure(//--- input code ---
                 "\\begingroup\\skipdef\\x=42 \\endgroup" + "\\the\\x \\end",
                 //--- error channel ---
-                "You can't use `the control sequence \\x' after \\the");
+                "Undefined control sequence \\x");
     }
 
     /**
