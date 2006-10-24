@@ -1234,7 +1234,9 @@ public class ExTeX {
             logger.fine(localizer.format("ExTeX.FormatDate", context.getId(),
                     time));
         } else if (ini) {
-            logger.fine(localizer.format("ExTeX.NoFormatDate", time));
+            if (!noBanner) {
+                logger.fine(localizer.format("ExTeX.NoFormatDate", time));
+            }
 
             Interaction mode = context.getInteraction();
             try {
