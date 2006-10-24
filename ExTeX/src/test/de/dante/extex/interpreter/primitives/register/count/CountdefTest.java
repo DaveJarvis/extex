@@ -75,7 +75,7 @@ public class CountdefTest extends AbstractCountRegisterTester {
         assertFailure(//--- input code ---
                 "\\begingroup\\countdef\\x=42 \\endgroup" + "\\the\\x \\end",
                 //--- error channel ---
-                "You can't use `the control sequence \\x' after \\the");
+                "Undefined control sequence \\x");
     }
 
     /**
