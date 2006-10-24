@@ -228,7 +228,12 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
                 Cell cell = line[i];
                 if (cell != null) {
                     nl = cell.getList();
-                    nl.spreadWidth(maxWidth[i], maxWidth[i]); //TODO gene: check
+                    if (nl instanceof HorizontalListNode) {
+                        ((HorizontalListNode) nl).hpack(new Dimen(maxWidth[i])); //TODO gene: check
+                    } else {
+                        //TODO gene: unimplemented
+                        throw new RuntimeException("unimplemented");
+                    }
                     row.add(nl);
                 }
             }
