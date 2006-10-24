@@ -73,4 +73,16 @@ public class KernNoad extends AbstractNoad {
         list.add(new ExplicitKernNode(mathContext.convert(kern), true));
     }
 
+    /**
+     * Add some information in the middle of the default toString method.
+     *
+     * @param sb the target string buffer
+     * @param depth the recursion depth
+     */
+    protected void toStringAdd(final StringBuffer sb, final int depth) {
+
+        sb.append("kern");
+        kern.toString(sb);
+    }
+
 }
