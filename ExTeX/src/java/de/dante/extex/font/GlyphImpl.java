@@ -366,15 +366,14 @@ public class GlyphImpl implements Glyph, Serializable {
      */
     public Dimen getKerning(final UnicodeChar uc) {
 
-        Dimen size = new Dimen(0); // default
         if (kerning != null) {
             Kerning kv = (Kerning) kerning.get(String
                     .valueOf(uc.getCodePoint()));
             if (kv != null) {
-                size = kv.getSize();
+                return kv.getSize();
             }
         }
-        return size;
+        return new Dimen(0);
     }
 
     /**
