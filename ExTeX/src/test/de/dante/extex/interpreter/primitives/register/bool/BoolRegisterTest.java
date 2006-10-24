@@ -22,7 +22,7 @@ package de.dante.extex.interpreter.primitives.register.bool;
 import junit.framework.TestCase;
 
 /**
- * A test for the bool-regsiter.
+ * A test for the bool register.
  *
  * <p>
  * use extex-extension
@@ -49,6 +49,11 @@ public class BoolRegisterTest extends TestCase {
     public static void main(final String[] args) {
 
         junit.textui.TestRunner.run(BoolRegisterTest.class);
+    }
+
+    public void test00000000() throws Exception {
+
+        //gene: just to silence JUnit. Remove it when real tests are present
     }
 
     /**

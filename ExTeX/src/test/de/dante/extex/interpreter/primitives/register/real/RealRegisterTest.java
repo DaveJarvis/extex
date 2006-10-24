@@ -51,6 +51,11 @@ public class RealRegisterTest extends TestCase {
         junit.textui.TestRunner.run(RealRegisterTest.class);
     }
 
+    public void test00000000() throws Exception {
+
+        //gene: just to silence JUnit. Remove it when real tests are present
+    }
+
     /**
      * ...
      * @throws Exception ...
