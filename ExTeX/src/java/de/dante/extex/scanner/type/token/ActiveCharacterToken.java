@@ -148,7 +148,7 @@ public class ActiveCharacterToken extends AbstractToken implements CodeToken {
     public String toString() {
 
         return getLocalizer().format("ActiveCharacterToken.Text",
-                getChar().toString());
+                super.toString());
     }
 
     /**
@@ -161,7 +161,7 @@ public class ActiveCharacterToken extends AbstractToken implements CodeToken {
     public void toString(final StringBuffer sb) {
 
         sb.append(getLocalizer().format("ActiveCharacterToken.Text", //
-                getName()));
+                super.toString()));
     }
 
     /**

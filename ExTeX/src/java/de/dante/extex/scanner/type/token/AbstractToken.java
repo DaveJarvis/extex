@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
@@ -147,7 +147,15 @@ public abstract class AbstractToken implements Token, Serializable {
      *
      * @return the printable representation
      */
-    public abstract String toString();
+    public String toString() {
+
+        if (character == null) {
+            return "";
+        } else if (character.isPrintable()) {
+            return character.toString();
+        }
+        return "^^" + Integer.toHexString(character.getCodePoint());
+    }
 
     /**
      * Return the text representation of this object.

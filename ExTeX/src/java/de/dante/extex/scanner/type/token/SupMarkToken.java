@@ -67,7 +67,7 @@ public class SupMarkToken extends AbstractToken implements Token {
      */
     public String toString() {
 
-        return getLocalizer().format("SupMarkToken.Text", getChar().toString());
+        return getLocalizer().format("SupMarkToken.Text", super.toString());
     }
 
     /**
@@ -79,8 +79,7 @@ public class SupMarkToken extends AbstractToken implements Token {
      */
     public void toString(final StringBuffer sb) {
 
-        sb.append(getLocalizer().format("SupMarkToken.Text",
-                getChar().toString()));
+        sb.append(getLocalizer().format("SupMarkToken.Text", super.toString()));
     }
 
     /**

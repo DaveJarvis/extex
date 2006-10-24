@@ -67,8 +67,7 @@ public class RightBraceToken extends AbstractToken implements Token {
      */
     public String toString() {
 
-        return getLocalizer().format("RightBraceToken.Text",
-                getChar().toString());
+        return getLocalizer().format("RightBraceToken.Text", super.toString());
     }
 
     /**
@@ -81,7 +80,7 @@ public class RightBraceToken extends AbstractToken implements Token {
     public void toString(final StringBuffer sb) {
 
         sb.append(getLocalizer().format("RightBraceToken.Text",
-                getChar().toString()));
+                super.toString()));
     }
 
     /**
