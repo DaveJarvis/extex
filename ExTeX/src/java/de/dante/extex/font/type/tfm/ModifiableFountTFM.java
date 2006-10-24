@@ -114,7 +114,7 @@ public class ModifiableFountTFM implements ModifiableFount, Serializable {
             String labelname = param.getLabelName(i);
             Dimen d = convertFixWordToDimen(fw[i]);
             fontdimen.put(labelname, d);
-            fontdimen.put(Integer.toString(i), d); // gene
+            fontdimen.put(Integer.toString(i + 1), d); // gene
         }
     }
 
