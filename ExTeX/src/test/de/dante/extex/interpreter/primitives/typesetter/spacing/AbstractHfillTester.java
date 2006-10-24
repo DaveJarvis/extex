@@ -64,9 +64,9 @@ public abstract class AbstractHfillTester extends NoFlagsPrimitiveTester {
     public void testVbox1() throws Exception {
 
         assertSuccess(//--- input code ---
-                prepare + "\\vbox{a\\" + invocation + " b} \\end",
+                prepare + "\\vbox to 12pt{a\\" + invocation + " b} \\end",
                 //--- error channel ---
-                "ab\n" + TERM);
+                "a b\n\n" + TERM);
     }
 
     /**
