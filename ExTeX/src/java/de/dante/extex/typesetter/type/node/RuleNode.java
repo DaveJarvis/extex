@@ -58,9 +58,9 @@ public class RuleNode extends AbstractNode implements Node {
      * @param width the width of the rule
      * @param height the height of the rule
      * @param depth the depth of the rule
+     * @param theContext the typesetting context
      * @param horizontal the indicator that this is a
      *  horizontal rule; otherwise it is a vertical rule
-     * @param theContext the typesetting context
      *
      * @see "<logo>TeX</logo> &ndash; The Program [139]"
      */
