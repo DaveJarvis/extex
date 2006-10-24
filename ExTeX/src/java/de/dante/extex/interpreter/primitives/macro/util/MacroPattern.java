@@ -30,21 +30,30 @@ import de.dante.extex.interpreter.type.tokens.Tokens;
 public class MacroPattern extends Tokens {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2005L;
-
-    /**
      * The constant <tt>EMPTY</tt> contains the empty macro pattern. This can
      * be used in a poor man's factory.
      */
     public static final MacroPattern EMPTY = new MacroPattern(Tokens.EMPTY, 0);
 
     /**
-     * The field <tt>arity</tt> contains the artiy, i.e. the number or
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    protected static final long serialVersionUID = 2005L;
+
+    /**
+     * The field <tt>arity</tt> contains the arity, i.e. the number or
      * parameters.
      */
     private int arity;
+
+    /**
+     * Creates a new object.
+     */
+    public MacroPattern() {
+
+        super();
+        this.arity = 0;
+    }
 
     /**
      * Creates a new object.
@@ -57,15 +66,6 @@ public class MacroPattern extends Tokens {
         super();
         add(tokens);
         this.arity = theArity;
-    }
-
-    /**
-     * Creates a new object.
-     */
-    public MacroPattern() {
-
-        super();
-        this.arity = 0;
     }
 
     /**
@@ -82,11 +82,11 @@ public class MacroPattern extends Tokens {
     /**
      * Setter for the arity.
      *
-     * @param theArity the new arity
+     * @param arity the new arity
      */
-    public void setArity(final int theArity) {
+    public void setArity(final int arity) {
 
-        this.arity = theArity;
+        this.arity = arity;
     }
 
 }
