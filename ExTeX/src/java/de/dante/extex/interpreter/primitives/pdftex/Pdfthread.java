@@ -103,10 +103,20 @@ public class Pdfthread extends AbstractPdftexCode {
             }
         }
 
+        if (width == null) {
+            width = Dimen.ONE_PT; //TODO gene:provide correct default
+        }
+        if (height == null) {
+            height = Dimen.ONE_PT; //TODO gene:provide correct default
+        }
+        if (depth == null) {
+            depth = Dimen.ONE_PT; //TODO gene:provide correct default
+        }
+
         IdSpec id = IdSpec.parseIdSpec(context, source, typesetter, getName());
 
         PdfThread thread = new PdfThread(new RuleNode(width, height, depth,
-                null, true), attr, id);
+                context.getTypesettingContext(), true), attr, id);
 
         try {
             typesetter.add(thread);

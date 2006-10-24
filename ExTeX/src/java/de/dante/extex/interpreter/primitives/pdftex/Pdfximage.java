@@ -108,10 +108,21 @@ public class Pdfximage extends AbstractPdftexCode {
             }
         }
 
+        if (width == null) {
+            width = Dimen.ONE_PT; //TODO gene:provide correct default
+        }
+        if (height == null) {
+            height = Dimen.ONE_PT; //TODO gene:provide correct default
+        }
+        if (depth == null) {
+            depth = Dimen.ONE_PT; //TODO gene:provide correct default
+        }
+
         String resource = source.scanTokensAsString(context, getName());
 
         PdfRefXImage image = writer.getXImage(resource, new RuleNode(width,
-                height, depth, null, true), attr, page, prefix.isImmediate());
+                height, depth, context.getTypesettingContext(), true), attr,
+                page, prefix.isImmediate());
 
         try {
             typesetter.add(image);

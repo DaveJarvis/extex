@@ -103,12 +103,22 @@ public class Pdfstartlink extends AbstractPdftexCode {
             }
         }
 
+        if (width == null) {
+            width = Dimen.ONE_PT; //TODO gene:provide correct default
+        }
+        if (height == null) {
+            height = Dimen.ONE_PT; //TODO gene:provide correct default
+        }
+        if (depth == null) {
+            depth = Dimen.ONE_PT; //TODO gene:provide correct default
+        }
+
         ActionSpec action = ActionSpec.parseActionSpec(context, source,
                 typesetter, getName());
 
         try {
             typesetter.add(new PdfStartLink(new RuleNode(width, height, depth,
-                    null, true), attr, action));
+                    context.getTypesettingContext(), true), attr, action));
         } catch (TypesetterException e) {
             throw new InterpreterException(e);
         } catch (ConfigurationException e) {
