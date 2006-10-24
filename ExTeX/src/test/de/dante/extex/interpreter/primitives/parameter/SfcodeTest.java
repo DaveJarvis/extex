@@ -48,4 +48,15 @@ public class SfcodeTest extends AbstractCharMapTester {
         super(arg, "sfcode", "65", "999", "32767");
     }
 
+    /**
+     * ...
+     *
+     * @return the message
+     */
+    protected String badCodeMessage() {
+
+        return "Invalid code (-123), should be in the range 0..32767";
+    }
+
+
 }
