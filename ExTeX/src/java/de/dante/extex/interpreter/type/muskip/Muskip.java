@@ -78,8 +78,8 @@ public class Muskip extends Mudimen implements Serializable {
             } else if (t instanceof CodeToken) {
                 Code code = context.getCode((CodeToken) t);
                 if (code instanceof MuskipConvertible) {
-                    return ((MuskipConvertible) code).convertMuskip(context,
-                            source, typesetter);
+                    return new Muskip(((MuskipConvertible) code).convertMuskip(
+                            context, source, typesetter));
                 } else if (code instanceof MudimenConvertible) {
                     long md = ((MudimenConvertible) code).convertMudimen(
                             context, source, typesetter);
@@ -111,6 +111,7 @@ public class Muskip extends Mudimen implements Serializable {
         if (source.getKeyword(context, "minus")) {
             ms.shrink = scanMuOrFill(context, source, typesetter);
         }
+        source.skipSpace();
         ms.kill = false;
         return ms;
     }
