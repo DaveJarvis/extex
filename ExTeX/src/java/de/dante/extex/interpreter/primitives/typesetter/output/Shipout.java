@@ -34,7 +34,8 @@ import de.dante.extex.typesetter.Typesetter;
  * <h3>The Primitive <tt>\shipout</tt></h3>
  * <p>
  *  The primitive <tt>\shipout</tt> takes a box and send the contents of the
- *  box to the document writer.
+ *  box to the back-end. If the box is void then this primitives ignores
+ *  it and does not contact the back-end.
  * </p>
  * <p>
  *  In addition the count register <tt>\deadcyles</tt> is reset to 0.
@@ -90,7 +91,7 @@ public class Shipout extends AbstractCode {
 
         Box box = source.getBox(prefix, context, typesetter);
 
-        if (box != null) {
+        if (box != null && !box.isVoid()) {
             typesetter.shipout(box.getNodes());
             context.setCount("deadcyles", 0, true);
         }

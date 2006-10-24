@@ -94,7 +94,7 @@ public class Lower extends AbstractBoxPrimitive {
 
         Dimen amount = Dimen.parse(context, source, typesetter);
         Box box = source.getBox(null, context, typesetter);
-        if (box != null) {
+        if (box != null && !box.isVoid()) {
             amount.add(box.getShift());
             box.setShift(amount);
         }

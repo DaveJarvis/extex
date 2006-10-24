@@ -94,7 +94,7 @@ public class Moveleft extends AbstractBoxPrimitive {
 
         Dimen move = Dimen.parse(context, source, typesetter);
         Box box = source.getBox(null, context, typesetter);
-        if (box != null) {
+        if (box != null && !box.isVoid()) {
             move.negate();
             move.add(box.getMove());
             box.setMove(move);
