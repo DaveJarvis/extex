@@ -45,7 +45,7 @@ public class MathContext {
     /**
      * The constant <tt>MU_UNIT</tt> contains the unit length for the math unit.
      */
-    private static final long MU_UNIT = 18 * 0xffff;
+    private static final long MU_UNIT = 18 * Dimen.ONE;
 
     /**
      * The field <tt>context</tt> contains the data object for options.
