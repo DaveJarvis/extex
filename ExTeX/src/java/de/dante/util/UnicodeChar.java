@@ -50,14 +50,6 @@ public class UnicodeChar implements Serializable {
     private static UnicodeChar[] cache = new UnicodeChar[CACHE_SIZE];
 
     /**
-     * The constant <tt>NULL</tt> contains the Unicode character with an invalid
-     * code point 0.
-     *
-     * @deprecated use null instead
-     */
-    public static final UnicodeChar NULL = null;
-
-    /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 1L;
@@ -95,7 +87,8 @@ public class UnicodeChar implements Serializable {
      */
     public static UnicodeChar get(final String unicodeName) {
 
-        return get(UCharacter.getCharFromName(unicodeName));
+        int c = UCharacter.getCharFromName(unicodeName);
+        return (c >= 0 ? get(c) : null);
     }
 
     /**
