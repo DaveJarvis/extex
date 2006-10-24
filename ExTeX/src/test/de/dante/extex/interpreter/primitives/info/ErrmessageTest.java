@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -30,7 +30,7 @@ import de.dante.test.ExTeXLauncher;
 public class ErrmessageTest extends ExTeXLauncher {
 
     /**
-     * Constructor for JobnameTest.
+     * Creates a new object.
      *
      * @param arg the name
      */
@@ -46,7 +46,7 @@ public class ErrmessageTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
-    public void testJobname1() throws Exception {
+    public void test1() throws Exception {
 
         assertFailure(//--- input code ---
                 DEFINE_BRACES + "\\errmessage{abc}",
