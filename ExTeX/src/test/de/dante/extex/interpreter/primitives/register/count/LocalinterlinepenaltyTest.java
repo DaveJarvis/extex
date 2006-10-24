@@ -44,6 +44,7 @@ public class LocalinterlinepenaltyTest extends AbstractCountRegisterTester {
     public LocalinterlinepenaltyTest(final String arg) {
 
         super(arg, "localinterlinepenalty", " ", "0");
+        setConfig("omega");
     }
 
     //TODO implement the primitive specific test cases
