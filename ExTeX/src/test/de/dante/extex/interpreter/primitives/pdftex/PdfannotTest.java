@@ -21,7 +21,6 @@ package de.dante.extex.interpreter.primitives.pdftex;
 
 import de.dante.test.NoFlagsButImmediateAndProtectedPrimitiveTester;
 
-
 /**
  * This is a test suite for the primitive <tt>\pdfannot</tt>.
  *
