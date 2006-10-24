@@ -156,8 +156,8 @@ sub processDocTag {
 #	s|\@linkplain\s+\\([^)]+\\)\s+||sg;
 #	s|\@linkplain\s+[^()]+\s+||sg;
       s|\@linkplain\s+[a-zA-Z0-9.\#(,)_]+\s+||sg;
-      s|\@link\s+[a-zA-Z0-9.\#_]+\\([^)]+\\)\s+||sg;
-      s|\@link\s+[^()]+\s+||sg;
+      s|\@link\s+[a-zA-Z0-9.\#_]+\\([^)]+\\)\s+|\\texttt|sg;
+      s|\@link\s+[^()]+\s+|\\texttt|sg;
       s/\n/\t\\\\\n/mg;
       $_ .= "\n\\end{syntax}\n";
 
