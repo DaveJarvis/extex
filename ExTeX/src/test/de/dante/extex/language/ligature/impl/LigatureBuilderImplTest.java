@@ -111,6 +111,39 @@ public class LigatureBuilderImplTest extends TestCase {
             }
             return g;
         }
+
+        /**
+         * @see de.dante.extex.font.type.other.NullFont#hasGlyph(de.dante.util.UnicodeChar)
+         */
+        public boolean hasGlyph(final UnicodeChar uc) {
+
+            return getGlyph(uc) != null;
+        }
+
+        /**
+         * @see de.dante.extex.font.type.other.NullFont#getLigature(de.dante.util.UnicodeChar, de.dante.util.UnicodeChar)
+         */
+        public UnicodeChar getLigature(final UnicodeChar uc1,
+                final UnicodeChar uc2) {
+
+            switch (uc1.getCodePoint()) {
+                case 'f':
+                    if (uc2.getCodePoint() == 'f') {
+                        return UnicodeChar.get(CC_FF);
+                    } else if (uc2.getCodePoint() == 'l') {
+                        return UnicodeChar.get(CC_FL);
+                    }
+                    break;
+                case CC_FF:
+                    if (uc2.getCodePoint() == 'l') {
+                        return UnicodeChar.get(CC_FFL);
+                    }
+                    break;
+            }
+
+            return null;
+        }
+
     }
 
     /**

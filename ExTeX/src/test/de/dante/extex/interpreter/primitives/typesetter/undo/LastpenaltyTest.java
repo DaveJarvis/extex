@@ -59,7 +59,7 @@ public class LastpenaltyTest extends AbstractReadonlyCountRegisterTester {
 
         assertOutput(
         //--- input code ---
-                "a\\penalty123\\showthe\\lastpenalty\\end",
+                "a\\penalty123 \\showthe\\lastpenalty\\end",
                 //--- output channel ---
                 "> 123.\n",
                 //
@@ -113,7 +113,7 @@ public class LastpenaltyTest extends AbstractReadonlyCountRegisterTester {
 
         assertOutput(
         //--- input code ---
-                "a\\penalty123\\count0=\\lastpenalty x\\showthe\\count0\\end",
+                "a\\penalty123 \\count0=\\lastpenalty x\\showthe\\count0\\end",
                 //--- output channel ---
                 "> 123.\n",
                 //
