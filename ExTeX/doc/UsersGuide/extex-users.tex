@@ -554,9 +554,9 @@ The following properties are used by \ExTeX:
 \end{lstlisting}
 
 \item[\Property{extex.ini}]\ \\
-  If set to \verb|true| then act as ini\TeX. This command line option
-  is defined for compatibility to \TeX\ only. In \ExTeX\ it has no
-  effect at all. Allowed values are \verb|true| and \verb|false|.
+  If set to \verb|true| then act as ini\TeX. In this case no format
+  has to be preloaded. All parameters are set to the "`factory
+  settings"'. Allowed values are \verb|true| and \verb|false|.
 
   Example:
 \begin{lstlisting}{}
@@ -866,9 +866,9 @@ This is ExTeX, Version 0.0 (TeX compatibility mode)
   standard output stream and terminates the program afterwards.
   
 \item[\CLI{ini}]\ \\
-  If set to true then act as ini\TeX.\index{initex@init\TeX} This
-  command line option is defined for compatibility to
-  \TeX\index{TeX@\TeX} only. In \ExTeX\ it has no effect at all.
+  If set to true then act as ini\TeX.\index{initex@ini\TeX} In this
+  case no format has to be preloaded. All parameters are set to the
+  "`factory settings"'.
 
   This command line argument sets the property \Property{extex.ini}.
 
