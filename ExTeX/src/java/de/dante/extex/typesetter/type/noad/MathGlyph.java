@@ -71,14 +71,29 @@ public class MathGlyph implements Noad, Serializable {
     private int family;
 
     /**
-     * Creates a new object from a <logo>TeX</logo> encoded number.
+     * TODO gene: missing JavaDoc
      *
-     * @param code the <logo>TeX</logo> code
+     * @param code the <logo>TeX</logo> encoded math glyph
+     *
+     * @return the new glyph
      */
-    public MathGlyph(final int code) {
+    public static final MathGlyph get8(final long code) {
 
-        this((code >> FAMILY_OFFSET) & FAMILY_MASK, //
+        return new MathGlyph((int) ((code >> 8) & FAMILY_MASK),
                 UnicodeChar.get((int) (code & CHARACTER_MASK)));
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     *
+     * @param code the <logo>TeX</logo> encoded math glyph
+     *
+     * @return the new glyph
+     */
+    public static final MathGlyph get16(final long code) {
+
+        return new MathGlyph((int) ((code >> 16) & FAMILY_MASK),
+                UnicodeChar.get((int) (code & 0xffff)));
     }
 
     /**

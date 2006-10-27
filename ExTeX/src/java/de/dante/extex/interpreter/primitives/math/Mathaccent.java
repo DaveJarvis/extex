@@ -97,7 +97,7 @@ public class Mathaccent extends AbstractMathCode {
                     Long.toHexString(accent));
         }
         Noad noad = nc.scanNoad(prefix, context, source, typesetter, getName());
-        nc.add(new AccentNoad(new MathGlyph((int) accent), noad, context
+        nc.add(new AccentNoad(MathGlyph.get8(accent), noad, context
                 .getTypesettingContext()));
     }
 
