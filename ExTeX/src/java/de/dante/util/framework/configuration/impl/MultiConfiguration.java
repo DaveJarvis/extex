@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -295,6 +295,14 @@ public class MultiConfiguration implements Configuration {
     public Iterator iterator(final String key) throws ConfigurationException {
 
         return new MultiConfigurationIterator(configs, key);
+    }
+
+    /**
+     * @see de.dante.util.framework.configuration.Configuration#iterator()
+     */
+    public Iterator iterator() throws ConfigurationException {
+
+        return new MultiConfigurationIterator(configs, null);
     }
 
 }
