@@ -188,6 +188,15 @@ public class TokenStreamStringImplTest extends TestCase {
 
             return null;
         }
+
+        /**
+         * @see de.dante.util.framework.configuration.Configuration#iterator()
+         */
+        public Iterator iterator() {
+
+            // TODO gene: iterator unimplemented
+            return null;
+        }
     }
 
     /**
