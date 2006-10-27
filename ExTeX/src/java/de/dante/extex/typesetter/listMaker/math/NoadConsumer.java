@@ -24,13 +24,13 @@ import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.context.tc.TypesettingContext;
 import de.dante.extex.interpreter.type.dimen.FixedDimen;
+import de.dante.extex.interpreter.type.math.MathClass;
+import de.dante.extex.interpreter.type.math.MathDelimiter;
 import de.dante.extex.interpreter.type.muskip.Mudimen;
 import de.dante.extex.interpreter.type.muskip.Muskip;
 import de.dante.extex.typesetter.ListMaker;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.exception.TypesetterException;
-import de.dante.extex.typesetter.type.math.MathClass;
-import de.dante.extex.typesetter.type.math.MathDelimiter;
 import de.dante.extex.typesetter.type.noad.MathGlyph;
 import de.dante.extex.typesetter.type.noad.Noad;
 

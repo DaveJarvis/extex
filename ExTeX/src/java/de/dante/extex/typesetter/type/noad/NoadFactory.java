@@ -20,9 +20,10 @@
 package de.dante.extex.typesetter.type.noad;
 
 import de.dante.extex.interpreter.context.tc.TypesettingContext;
-import de.dante.extex.typesetter.type.math.MathClass;
-import de.dante.extex.typesetter.type.math.MathClassVisitor;
-import de.dante.extex.typesetter.type.math.MathDelimiter;
+import de.dante.extex.interpreter.type.math.MathClass;
+import de.dante.extex.interpreter.type.math.MathClassVisitor;
+import de.dante.extex.interpreter.type.math.MathCode;
+import de.dante.extex.interpreter.type.math.MathDelimiter;
 
 /**
  * This class is a factory for CharNoades.
@@ -152,7 +153,23 @@ public class NoadFactory {
 
         return (Noad) MathClass.getMathClass(
                 (int) ((mc >> CLASS_SHIFT) & CLASS_MASK)).visit(VISITOR,
-                new MathGlyph((int) (mc & GLYPH_MASK)), tc);
+                MathGlyph.get8(mc & GLYPH_MASK), tc);
+
+    }
+
+    /**
+     * Provides an instance of a {@link Noad Noad} of the appropriate type.
+     *
+     * @param mc the code of the character to use
+     * @param tc the typesetting context
+     *
+     * @return an instance of a CharNoad
+     */
+    public Noad getNoad(final MathCode mc, final TypesettingContext tc) {
+
+        MathGlyph mathGlyph = new MathGlyph(mc.getMathFamily(), mc
+                .getMathChar());
+        return (Noad) mc.getMathClass().visit(VISITOR, mathGlyph, tc);
 
     }
 
