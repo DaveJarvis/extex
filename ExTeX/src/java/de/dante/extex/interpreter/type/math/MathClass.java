@@ -17,10 +17,11 @@
  *
  */
 
-package de.dante.extex.typesetter.type.math;
+package de.dante.extex.interpreter.type.math;
 
 import java.io.ObjectStreamException;
 import java.io.Serializable;
+
 
 /**
  * This class provides the classification of mathematical characters.
@@ -470,7 +471,7 @@ public abstract class MathClass implements Serializable {
      * @see MathClass#getMathClass(int)
      */
     private static final MathClass[] MC = {ORDINARY, LARGE, BINARY, RELATION,
-            OPENING, CLOSING, PUNCTUATION, VARIABLE};
+            OPENING, CLOSING, PUNCTUATION, VARIABLE, null};
 
     /**
      * Factory method for the math class which maps the <logo>TeX</logo>

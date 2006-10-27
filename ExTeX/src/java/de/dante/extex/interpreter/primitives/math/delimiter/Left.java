@@ -23,9 +23,9 @@ import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
+import de.dante.extex.interpreter.type.math.MathDelimiter;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.listMaker.math.NoadConsumer;
-import de.dante.extex.typesetter.type.math.MathDelimiter;
 
 /**
  * This class provides an implementation for the primitive <code>\left</code>.

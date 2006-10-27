@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.typesetter.type.math;
+package de.dante.extex.interpreter.type.math;
 
 import java.io.Serializable;
 import java.util.logging.Logger;

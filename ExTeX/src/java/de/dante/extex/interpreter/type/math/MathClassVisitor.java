@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.typesetter.type.math;
+package de.dante.extex.interpreter.type.math;
 
 /**
  * This interface implements part of the visitor pattern for the math class.
