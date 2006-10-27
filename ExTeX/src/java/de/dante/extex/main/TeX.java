@@ -47,6 +47,7 @@ import de.dante.extex.backend.documentWriter.exception.DocumentWriterException;
 import de.dante.extex.backend.outputStream.NamedOutputStream;
 import de.dante.extex.backend.outputStream.OutputStreamFactory;
 import de.dante.extex.backend.outputStream.OutputStreamObserver;
+import de.dante.extex.font.FontFactory;
 import de.dante.extex.font.exception.FontException;
 import de.dante.extex.interpreter.Interpreter;
 import de.dante.extex.interpreter.exception.InterpreterException;
@@ -1021,12 +1022,14 @@ public class TeX extends ExTeX {
      *      de.dante.extex.backend.outputStream.OutputStreamFactory,
      *      de.dante.extex.backend.documentWriter.DocumentWriterOptions,
      *      de.dante.util.framework.configuration.Configuration,
-     *      de.dante.util.resource.ResourceFinder)
+     *      de.dante.util.resource.ResourceFinder,
+     *      de.dante.extex.font.FontFactory)
      */
     protected BackendDriver makeBackend(final Configuration config,
             final OutputStreamFactory outFactory,
             final DocumentWriterOptions options,
-            final Configuration colorConfig, final ResourceFinder finder)
+            final Configuration colorConfig, final ResourceFinder finder,
+            final FontFactory fontFactory)
             throws DocumentWriterException,
                 ConfigurationException {
 
@@ -1052,7 +1055,7 @@ public class TeX extends ExTeX {
         });
 
         return super.makeBackend(config, outFactory, options, colorConfig,
-                finder);
+                finder, fontFactory);
     }
 
     /**
