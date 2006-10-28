@@ -7,13 +7,13 @@
 
 =head1 NAME
 
-.make.pl - Create a web site
+make.pl - Create a web site
 
 =head1 SYNOPSIS
 
-.make.pl [-v|--verbose] 
+make.pl [-v|--verbose] 
 
-.make.pl [-h|-help]
+make.pl [-h|-help]
 
 =head1 DESCRIPTION
 
