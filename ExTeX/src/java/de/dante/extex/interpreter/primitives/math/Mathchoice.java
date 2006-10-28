@@ -102,13 +102,11 @@ public class Mathchoice extends AbstractMathCode {
         Flags f = prefix.copy();
         prefix.clear();
         NoadConsumer nc = getListMaker(context, typesetter);
-        Noad display = nc.scanNoad(prefix, context, source, typesetter,
-                getName());
-        Noad text = nc.scanNoad(prefix, context, source, typesetter, getName());
-        Noad script = nc.scanNoad(prefix, context, source, typesetter,
-                getName());
-        Noad scriptScript = nc.scanNoad(prefix, context, source, typesetter,
-                getName());
+        String n = getName();
+        Noad display = nc.scanNoad(prefix, context, source, typesetter, n);
+        Noad text = nc.scanNoad(prefix, context, source, typesetter, n);
+        Noad script = nc.scanNoad(prefix, context, source, typesetter, n);
+        Noad scriptScript = nc.scanNoad(prefix, context, source, typesetter, n);
         nc.add(new ChoiceNoad(display, text, script, scriptScript));
         prefix.set(f);
     }
