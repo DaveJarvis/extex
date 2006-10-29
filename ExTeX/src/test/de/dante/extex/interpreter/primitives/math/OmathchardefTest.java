@@ -108,6 +108,60 @@ public class OmathchardefTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
+     * <testcase primitive="\mathchardef">
+     *  Test case checking that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test2() throws Exception {
+
+        assertSuccess(
+        //--- input code ---
+                "\\omathchardef\\alpha=\"010B " //
+                + "\\omathchardef\\beta=\\alpha " //
+                + "\\the\\beta\\end",
+                //--- output message ---
+                "267" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\mathchardef">
+     *  Test case checking that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testCross1() throws Exception {
+
+        assertSuccess(
+        //--- input code ---
+                "\\mathchardef\\alpha=\"010B " //
+                + "\\omathchardef\\beta=\\alpha " //
+                + "\\the\\beta\\end",
+                //--- output message ---
+                "267" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\mathchardef">
+     *  Test case checking that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testCross2() throws Exception {
+
+        assertSuccess(
+        //--- input code ---
+                "\\omathchardef\\alpha=\"010B " //
+                + "\\mathchardef\\beta=\\alpha " //
+                + "\\the\\beta\\end",
+                //--- output message ---
+                "267" + TERM);
+    }
+
+    /**
      * <testcase primitive="\omathchardef">
      *  Test case checking that ...
      * </testcase>
