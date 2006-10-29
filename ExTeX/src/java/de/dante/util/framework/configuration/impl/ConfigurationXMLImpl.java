@@ -53,7 +53,8 @@ import de.dante.util.framework.configuration.exception.ConfigurationSyntaxExcept
 public class ConfigurationXMLImpl implements Configuration, Serializable {
 
     /**
-     * TODO gene: missing JavaDoc.
+     * This inner class provides an iterator for all sub-configurations of a
+     * given node.
      *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision$
@@ -61,7 +62,7 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
     private class ConfigIterator implements Iterator {
 
         /**
-         * The field <tt>node</tt> contains the ...
+         * The field <tt>node</tt> contains the current node.
          */
         private Node node;
 
