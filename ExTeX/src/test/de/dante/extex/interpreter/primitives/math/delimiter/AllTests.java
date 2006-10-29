@@ -39,6 +39,7 @@ public class AllTests {
         suite.addTestSuite(DelimiterTest.class);
         suite.addTestSuite(LeftTest.class);
         suite.addTestSuite(MiddleTest.class);
+        suite.addTestSuite(RadicalTest.class);
         suite.addTestSuite(RightTest.class);
         //$JUnit-END$
         return suite;

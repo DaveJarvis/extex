@@ -19,6 +19,7 @@
 
 package de.dante.extex.interpreter.primitives.math;
 
+import de.dante.extex.interpreter.primitives.math.delimiter.RadicalTest;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
@@ -53,7 +54,6 @@ public class AllTests {
         //$JUnit-BEGIN$
         suite.addTestSuite(MathchoiceTest.class);
         suite.addTestSuite(MathchardefTest.class);
-        suite.addTestSuite(RadicalTest.class);
         suite.addTestSuite(MathcodeTest.class);
         suite.addTestSuite(OverlineTest.class);
         suite.addTestSuite(MathaccentTest.class);
