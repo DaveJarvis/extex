@@ -95,7 +95,7 @@ public class MathcodePrimitive extends AbstractAssignment
         UnicodeChar charCode = source.scanCharacterCode(context, typesetter,
                 getName());
         source.getOptionalEquals(context);
-        MathCode mathchar = AbstractMathCode.parseTeXMathCode(context, source,
+        MathCode mathchar = AbstractTeXMathCode.parseMathCode(context, source,
                 typesetter, getName());
         context.setMathcode(charCode, mathchar, prefix.clearGlobal());
     }
@@ -111,7 +111,7 @@ public class MathcodePrimitive extends AbstractAssignment
 
         UnicodeChar charCode = source.scanCharacterCode(context, typesetter,
                 getName());
-        return AbstractMathCode.mathCodeToTeX(context.getMathcode(charCode));
+        return AbstractTeXMathCode.mathCodeToLong(context.getMathcode(charCode));
     }
 
     /**
