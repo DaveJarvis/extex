@@ -407,7 +407,8 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
      *
      * @throws HelpingException in case of an error
      */
-    public static long toTeX(final MathDelimiter del) throws HelpingException {
+    public static long delimiterToLong(final MathDelimiter del)
+            throws HelpingException {
 
         if (del == null) {
             return -1;

@@ -23,7 +23,6 @@ import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.primitives.math.AbstractMathCode;
 import de.dante.extex.interpreter.type.math.MathDelimiter;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.listMaker.math.NoadConsumer;
@@ -57,12 +56,12 @@ import de.dante.extex.typesetter.listMaker.math.NoadConsumer;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Delimiter extends AbstractMathCode {
+public class Delimiter extends AbstractTeXDelimiter {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2006L;
 
     /**
      * Creates a new object.
@@ -86,8 +85,8 @@ public class Delimiter extends AbstractMathCode {
             throws InterpreterException {
 
         NoadConsumer nc = getListMaker(context, typesetter);
-        MathDelimiter del = AbstractTeXDelimiter.parseDelimiter(context,
-                source, typesetter, getName());
+        MathDelimiter del = parseDelimiter(context, source, typesetter,
+                getName());
         nc.add(del);
     }
 
