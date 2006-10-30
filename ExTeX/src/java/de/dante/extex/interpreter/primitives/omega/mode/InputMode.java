@@ -23,6 +23,7 @@ import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
+import de.dante.extex.interpreter.primitives.omega.OmegaExtension;
 import de.dante.extex.typesetter.Typesetter;
 
 /**
@@ -61,7 +62,7 @@ public class InputMode extends AbstractModeCode {
      * The field <tt>serialVersionUID</tt> contains the version number for
      * serialization.
      */
-    private static final long serialVersionUID = 2006L;
+    protected static final long serialVersionUID = 2006L;
 
     /**
      * Creates a new object.
@@ -84,8 +85,9 @@ public class InputMode extends AbstractModeCode {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        //TODO gene: unimplemented
-        throw new RuntimeException("unimplemented");
+        OmegaMode mode = scanInputMode(context, source);
+        context.set(OmegaExtension.NAME, INPUT_MODE, mode, //
+                prefix.clearGlobal());
     }
 
 }
