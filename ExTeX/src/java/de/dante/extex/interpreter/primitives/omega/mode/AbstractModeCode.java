@@ -36,6 +36,16 @@ public abstract class AbstractModeCode extends AbstractCode {
     /**
      * The constant <tt>INPUT_MODE</tt> contains the key for the input mode.
      */
+    protected static final String DEFAULT_INPUT_MODE = "defaultInputMode";
+
+    /**
+     * The constant <tt>OUTPUT_MODE</tt> contains the key for the output mode.
+     */
+    protected static final String DEFAULT_OUTPUT_MODE = "defaultOutputMode";
+
+    /**
+     * The constant <tt>INPUT_MODE</tt> contains the key for the input mode.
+     */
     protected static final String INPUT_MODE = "inputMode";
 
     /**
