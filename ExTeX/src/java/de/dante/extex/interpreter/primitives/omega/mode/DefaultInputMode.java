@@ -86,9 +86,8 @@ public class DefaultInputMode extends AbstractModeCode {
             throws InterpreterException {
 
         OmegaMode mode = scanInputMode(context, source);
-        context
-                .set(OmegaExtension.NAME, INPUT_MODE, mode, prefix
-                        .clearGlobal());
+        context.set(OmegaExtension.NAME, DEFAULT_INPUT_MODE, mode, //
+                prefix.clearGlobal());
     }
 
 }

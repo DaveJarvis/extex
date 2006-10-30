@@ -80,7 +80,7 @@ public class DefaultOutputMode extends AbstractModeCode {
             throws InterpreterException {
 
         OmegaMode mode = scanOutputMode(context, source);
-        context.set(OmegaExtension.NAME, OUTPUT_MODE, mode, prefix
+        context.set(OmegaExtension.NAME, DEFAULT_OUTPUT_MODE, mode, prefix
                 .clearGlobal());
     }
 
