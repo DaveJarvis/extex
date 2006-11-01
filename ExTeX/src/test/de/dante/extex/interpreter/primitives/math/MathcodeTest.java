@@ -356,6 +356,42 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
                 "aAb" + TERM);
     }
 
+    /**
+     * <testcase primitive="\mathcode">
+     *  Test case checking that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testActiveErr1() throws Exception {
+
+        assertFailure(
+        //--- input code ---
+                AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH + DEFINE_BRACES
+                + "\\mathcode`. \"8000" + "$a.b$\\end",
+                //--- output message ---
+                "Undefined control sequence .");
+    }
+
+    /**
+     * <testcase primitive="\mathcode">
+     *  Test case checking that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testActive1() throws Exception {
+
+        assertSuccess(
+        //--- input code ---
+                AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH + DEFINE_BRACES
+                + "\\catcode`\\.=13 \\def.{xxx}"
+                + "\\catcode`\\.=12 "
+                + "\\mathcode`. \"8000" + "$a.b$\\end",
+                //--- output message ---
+                "axxxb" + TERM);
+    }
+
     //TODO implement more primitive specific test cases
 
 }

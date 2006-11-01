@@ -357,6 +357,42 @@ public class OmathcodeTest extends NoFlagsButGlobalPrimitiveTester {
                 "aAb" + TERM);
     }
 
+    /**
+     * <testcase primitive="\omathcode">
+     *  Test case checking that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testActiveErr1() throws Exception {
+
+        assertFailure(
+        //--- input code ---
+                AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH + DEFINE_BRACES
+                + "\\omathcode`. \"8000000" + "$a.b$\\end",
+                //--- output message ---
+                "Undefined control sequence .");
+    }
+
+    /**
+     * <testcase primitive="\omathcode">
+     *  Test case checking that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testActive1() throws Exception {
+
+        assertSuccess(
+        //--- input code ---
+                AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH + DEFINE_BRACES
+                + "\\catcode`\\.=13 \\def.{xxx}"
+                + "\\catcode`\\.=12 "
+                + "\\omathcode`. \"8000000" + "$a.b$\\end",
+                //--- output message ---
+                "axxxb" + TERM);
+    }
+
     //TODO implement more primitive specific test cases
 
 }
