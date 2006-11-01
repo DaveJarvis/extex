@@ -449,11 +449,11 @@ public class TypesetterImpl
      *      de.dante.util.UnicodeChar,
      *      de.dante.util.Locator)
      */
-    public boolean letter(final Context context, final TypesettingContext tc,
-            final UnicodeChar uc, final Locator locator)
+    public boolean letter(final UnicodeChar uc, final TypesettingContext tc,
+            final Context context, TokenSource source, final Locator locator)
             throws TypesetterException {
 
-        return listMaker.letter(context, tc, uc, locator);
+        return listMaker.letter(uc, tc, context, source, locator);
     }
 
     /**

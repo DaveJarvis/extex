@@ -134,7 +134,7 @@ public class Accent extends AbstractCode {
 
             if (currentFont.hasGlyph(accent)) {
                 if (!currentFont.hasGlyph(c)) {
-                    typesetter.letter(context, tc, accent, source.getLocator());
+                    typesetter.letter(accent, tc, context, source, source.getLocator());
                 } else {
                     Node node = typesetter.getNodeFactory().getNode(tc, accent);
                     if (node == null) {
@@ -158,13 +158,13 @@ public class Accent extends AbstractCode {
                         typesetter.add(node);
                         d.set(-a - delta);
                         typesetter.add(new AccentKernNode(d));
-                        typesetter.letter(context, tc, c, source.getLocator());
+                        typesetter.letter(c, tc, context, source, source.getLocator());
                     } catch (ConfigurationException e) {
                         throw new InterpreterException(e);
                     }
                 }
             } else if (currentFont.hasGlyph(c)) {
-                typesetter.letter(context, tc, c, source.getLocator());
+                typesetter.letter(c, tc, context, source, source.getLocator());
             } else {
                 //TODO gene: letter and accent are undefined
                 throw new RuntimeException("unimplemented");

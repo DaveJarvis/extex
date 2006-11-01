@@ -113,8 +113,8 @@ public class Char extends AbstractCode implements ExpandableCode {
         UnicodeChar uc = source.scanCharacterCode(context, typesetter,
                 getName());
         try {
-            typesetter.letter(context, context.getTypesettingContext(), uc,
-                    source.getLocator());
+            typesetter.letter(uc, context.getTypesettingContext(), context,
+                    source, source.getLocator());
         } catch (TypesetterException e) {
             throw new InterpreterException(e);
         }
