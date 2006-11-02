@@ -59,7 +59,8 @@ public interface AlignmentList {
      *
      * @throws TypesetterException in case of an error
      */
-    void crcr(Context context, TokenSource source, Typesetter typesetter) throws TypesetterException;
+    void crcr(Context context, TokenSource source, Typesetter typesetter)
+            throws TypesetterException;
 
     /**
      * The invocation of this method indicates that the pattern for the current
