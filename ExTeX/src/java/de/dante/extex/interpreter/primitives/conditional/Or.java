@@ -39,6 +39,12 @@ import de.dante.extex.typesetter.Typesetter;
  *  error is raised.
  * </p>
  *
+ * <h4>Syntax</h4>
+ *  The formal description of this primitive is the following:
+ *  <pre class="syntax">
+ *    &lang;or&rang;
+ *      &rarr; <tt>\or</tt>  </pre>
+ *
  * <h4>Examples</h4>
  *  <pre class="TeXSample">
  *    \iffalse abc \or def \fi  </pre>
