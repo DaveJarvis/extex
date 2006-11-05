@@ -59,6 +59,14 @@ public class OmegaMode implements Serializable{
             
             return ONEBYTE;
         }
+
+        /**
+         * @see java.lang.Object#toString()
+         */
+        public String toString() {
+
+            return "onebyte";
+        }
     };
 
     /**
@@ -83,6 +91,14 @@ public class OmegaMode implements Serializable{
         protected Object readResolve() throws ObjectStreamException {
             
             return EBCDIC;
+        }
+
+        /**
+         * @see java.lang.Object#toString()
+         */
+        public String toString() {
+
+            return "ebcdic";
         }
     };
 
@@ -110,6 +126,14 @@ public class OmegaMode implements Serializable{
             
             return TWOBYTE;
         }
+
+        /**
+         * @see java.lang.Object#toString()
+         */
+        public String toString() {
+
+            return "twobyte";
+        }
     };
 
     /**
@@ -135,6 +159,14 @@ public class OmegaMode implements Serializable{
         protected Object readResolve() throws ObjectStreamException {
             
             return TWOBYTE_LE;
+        }
+
+        /**
+         * @see java.lang.Object#toString()
+         */
+        public String toString() {
+
+            return "twobyteLE";
         }
     };
 
