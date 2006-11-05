@@ -105,7 +105,7 @@ public class Noalign extends AbstractCode {
             throws InterpreterException {
 
         Box b = new Box(context, source, typesetter, false, null,
-                GroupType.VBOX_GROUP, start); // TODO gene: group type
+                GroupType.NO_ALIGN_GROUP, start);
 
         return b.getNodes();
     }
