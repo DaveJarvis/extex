@@ -49,7 +49,7 @@ import de.dante.extex.typesetter.Typesetter;
  *
  * <h4>Examples</h4>
  * <pre class="TeXSample">
- * \InputMode ...  </pre>
+ *   \InputMode onebyte  </pre>
  * </doc>
  *
  *
