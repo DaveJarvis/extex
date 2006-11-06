@@ -159,6 +159,12 @@ public abstract class AbstractModeCode extends AbstractCode {
         OmegaMode mode = scanMode(context, source);
 
         if (mode == null) {
+            Token token = source.getToken(context);
+            if (token == null) {
+                throw new EofException();
+            }
+            source.push(token);
+
             throw new BadOutputModeException();
         }
 
