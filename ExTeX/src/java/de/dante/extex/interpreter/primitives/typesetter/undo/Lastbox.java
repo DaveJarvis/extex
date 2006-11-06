@@ -88,12 +88,13 @@ public class Lastbox extends AbstractCode implements Boxable {
             throws InterpreterException {
 
         Mode mode = typesetter.getMode();
-        if (mode == Mode.MATH || mode == Mode.DISPLAYMATH) {
+        if (mode.isMath() || mode == Mode.VERTICAL) {
             throw new HelpingException(getLocalizer(), "TTP.LastBoxIn", //
                     context.esc(getName()), mode.toString());
         }
 
         //TODO gene: what's to do?
+        //throw new RuntimeException("unimplemented");
     }
 
     /**
@@ -106,7 +107,7 @@ public class Lastbox extends AbstractCode implements Boxable {
             final Typesetter typesetter) throws InterpreterException {
 
         Mode mode = typesetter.getMode();
-        if (mode == Mode.MATH || mode == Mode.DISPLAYMATH) {
+        if (mode.isMath() || mode == Mode.VERTICAL) {
             throw new HelpingException(getLocalizer(), "TTP.LastBoxIn", //
                     context.esc(getName()), mode.toString());
         }
