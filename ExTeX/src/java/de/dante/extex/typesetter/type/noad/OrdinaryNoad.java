@@ -85,8 +85,10 @@ public class OrdinaryNoad extends AbstractNucleusNoad implements SimpleNoad {
                 (previousNoad != null ? previousNoad.getSpacingClass() : null),
                 list, mathContext);
 
-        getNucleus().typeset(previousNoad, noads, index, list, mathContext,
-                logger);
+        Noad n = getNucleus();
+        if (n != null) {
+            n.typeset(previousNoad, noads, index, list, mathContext, logger);
+        }
 
         ImmutableDimen delta = Dimen.ZERO_PT; // TODO gene: determine delta
         Node node = makeScripts(new HorizontalListNode(), mathContext, delta,
