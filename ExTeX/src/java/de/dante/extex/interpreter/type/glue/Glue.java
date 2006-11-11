@@ -241,7 +241,7 @@ public class Glue implements Serializable, FixedGlue {
      *
      * @param glue the glue to compare with
      *
-     * @return <code>true</code> iff they are different
+     * @return <code>true</code> iff they are the same
      *
      * @see de.dante.extex.interpreter.type.glue.FixedGlue#eq(
      *      de.dante.extex.interpreter.type.glue.FixedGlue)
