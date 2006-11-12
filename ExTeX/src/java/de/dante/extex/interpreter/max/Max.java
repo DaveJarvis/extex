@@ -597,7 +597,6 @@ public abstract class Max
                 handleException(token, context, (InterpreterException) x,
                         typesetter);
                 e.setProcessed(true);
-                throw e;
 
             } catch (RuntimeException e) {
                 if (observersError != null) {
