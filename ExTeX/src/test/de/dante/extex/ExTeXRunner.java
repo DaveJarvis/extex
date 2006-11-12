@@ -122,13 +122,14 @@ public class ExTeXRunner extends TestCase {
         public ResourceFinder getResourceFinder() throws ConfigurationException {
 
             if (finder == null) {
-                finder = makeResourceFinder(config);
+                finder = makeResourceFinder(config
+                        .findConfiguration("Resource"));
             }
             return finder;
         }
 
         /**
-         * the font factroy
+         * the font factory
          */
         private FontFactory fontFactory;
 
