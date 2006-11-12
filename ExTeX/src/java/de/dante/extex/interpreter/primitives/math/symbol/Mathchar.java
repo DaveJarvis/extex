@@ -37,8 +37,10 @@ import de.dante.extex.typesetter.listMaker.math.NoadConsumer;
  * <h3>The Math Primitive <tt>\mathchar</tt></h3>
  * <p>
  *  The primitive <tt>\mathchar</tt> inserts a mathematical character consisting
- *  of a math class and a character code inti the current math list. This is
+ *  of a math class and a character code into the current math list. This is
  *  supposed to work in math mode only.
+ * </p>
+ * <p>
  *  TODO missing documentation
  * </p>
  *
