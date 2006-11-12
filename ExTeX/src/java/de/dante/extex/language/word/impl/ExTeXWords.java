@@ -313,7 +313,7 @@ public class ExTeXWords implements WordTokenizer {
                 } else {
                     post = new HorizontalListNode(hyphenNode);
                 }
-                nodes.add(insertion, //
+                nodes.add(insertion++, //
                         new DiscretionaryNode(post, null, nobreak));
                 nobreak = null;
             }
