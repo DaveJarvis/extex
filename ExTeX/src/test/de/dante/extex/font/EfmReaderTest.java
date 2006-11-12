@@ -53,7 +53,7 @@ public class EfmReaderTest extends TestCase {
      */
     protected void setUp() throws Exception {
 
-        reader = new EfmReader("develop/test/font/cmr12.efm");
+        reader = new EfmReader("develop/test/font/efm-cmr12.efm");
 
     }
 
