@@ -86,9 +86,7 @@ public class FontFactoryTest extends TestCase {
     public void test01() throws Exception {
 
         assertEquals("cmr12", font.getFontName());
-        if (font instanceof FontPfb) {
-            assertTrue(true);
-        }
+        assertTrue(font instanceof FontPfb);
     }
 
     // -----------------------------------------------------------
@@ -171,13 +169,13 @@ public class FontFactoryTest extends TestCase {
         public ResourceFinder getResourceFinder() throws ConfigurationException {
 
             if (finder == null) {
-                finder = makeResourceFinder(config);
+                finder = makeResourceFinder(config.getConfiguration("Resource"));
             }
             return finder;
         }
 
         /**
-         * the font factroy.
+         * the font factory.
          */
         private FontFactory fontFactory;
 
