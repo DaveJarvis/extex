@@ -227,7 +227,7 @@ public class BaseHyphenationTableTest extends TestCase {
         public void setEfcode(final UnicodeChar uc, final long code) {
 
             // TODO gene: setEfcode unimplemented
-            
+
         }
 
         /**
@@ -602,16 +602,22 @@ public class BaseHyphenationTableTest extends TestCase {
      *  Test case checking that ...
      * </testcase>
      *
-     *
      * @throws Exception in case of an error
      */
     public void test5() throws Exception {
 
         HorizontalListNode nodes = hlist("def");
         language.hyphenate(nodes, context, HYPHEN, 0, true, nodeFactory);
-        assertEquals(5, nodes.size());
-        assertTrue("xxx", nodes.get(1) instanceof DiscretionaryNode);
-        assertTrue("yyy", nodes.get(3) instanceof DiscretionaryNode);
+
+        assertEquals("\\hbox(0.0pt+0.0pt)x0.0pt\n"
+                + ".d\n"
+                + ".\\discretionary{\\hbox(0.0pt+0.0pt)x0.0pt\n"
+                + "...-}{}{}\n"
+                + ".e\n"
+                + ".\\discretionary{\\hbox(0.0pt+0.0pt)x0.0pt\n"
+                + "...-}{}{}\n"
+                + ".f", //
+                nodes.toString());
     }
 
 }
