@@ -31,9 +31,9 @@ import junit.framework.TestSuite;
 public class AllTests {
 
     /**
-     * TODO gene: missing JavaDoc
+     * This is the command line interface.
      *
-     * @param args
+     * @param args te command line arguments
      */
     public static void main(final String[] args) {
 
@@ -43,7 +43,7 @@ public class AllTests {
     /**
      * TODO gene: missing JavaDoc
      *
-     * @return
+     * @return the suite
      */
     public static Test suite() {
 
