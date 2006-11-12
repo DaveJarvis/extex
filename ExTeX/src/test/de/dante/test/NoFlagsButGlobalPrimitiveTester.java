@@ -130,7 +130,7 @@ public abstract class NoFlagsButGlobalPrimitiveTester extends ExTeXLauncher {
                 //--- log message ---
                 out + "You can\'t use the prefix `\\long\' "
                         + "with the control sequence"
-                        + (primitive.length() > 18 ? "\n" : " ") + "\\"
+                        + (primitive.length() > 19 ? "\n" : " ") + "\\"
                         + primitive);
     }
 

@@ -140,7 +140,7 @@ public class OmathchardefTest extends NoFlagsButGlobalPrimitiveTester {
                 + "\\omathchardef\\beta=\\alpha " //
                 + "\\the\\beta\\end",
                 //--- output message ---
-                "267" + TERM);
+                "65547" + TERM);
     }
 
     /**
@@ -154,7 +154,7 @@ public class OmathchardefTest extends NoFlagsButGlobalPrimitiveTester {
 
         assertSuccess(
         //--- input code ---
-                "\\omathchardef\\alpha=\"010B " //
+                "\\omathchardef\\alpha=\"01000B " //
                 + "\\mathchardef\\beta=\\alpha " //
                 + "\\the\\beta\\end",
                 //--- output message ---
