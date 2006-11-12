@@ -92,7 +92,12 @@ public class PSFontEncoding implements Serializable {
      */
     public void addEncodingtxt(final String s) {
 
-        encodingtxt += s + " ";
+        //gene: slight improvement
+        if (encodingtxt.equals("")) {
+            encodingtxt = s;
+        } else {
+            encodingtxt += " " + s;
+        }
     }
 
     /**
