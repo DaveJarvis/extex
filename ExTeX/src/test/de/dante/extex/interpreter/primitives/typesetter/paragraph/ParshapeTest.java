@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -73,11 +73,41 @@ public class ParshapeTest extends NoFlagsPrimitiveTester {
     public void test2() throws Exception {
 
         assertSuccess(//--- input code ---
+                "\\parshape1 1pt2pt \\the\\parshape \\end",
+                //--- output channel ---
+                "1" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\parshape">
+     *  Test case showing that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testCount1() throws Exception {
+
+        assertSuccess(//--- input code ---
                 "\\parshape0 \\count1=\\parshape \\the\\count1 \\end",
                 //--- output channel ---
                 "0" + TERM);
     }
 
-    //TODO implement primitive specific test cases
+    /**
+     * <testcase primitive="\parshape">
+     *  Test case showing that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testCount2() throws Exception {
+
+        assertSuccess(//--- input code ---
+                "\\parshape1 2pt3pt \\count1=\\parshape \\the\\count1 \\end",
+                //--- output channel ---
+                "1" + TERM);
+    }
+
+    //TODO implement more primitive specific test cases
 
 }

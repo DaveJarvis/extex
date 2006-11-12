@@ -47,4 +47,59 @@ public class OuterTest extends PrefixTester {
         super(arg, "outer");
     }
 
+    /**
+     * <testcase primitive="\outer">
+     *  Test case checking that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test10() throws Exception {
+
+        assertOutput(showPrefixProperties(),
+        //--- input code ---
+                "\\outer\\showprefix\\end",
+                //--- error channel ---
+                "outer\n",
+                //--- output channel ---
+                "");
+    }
+
+    /**
+     * <testcase primitive="\outer">
+     *  Test case checking that double <tt>\outer</tt> has the same effect as
+     *  one.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test11() throws Exception {
+
+        assertOutput(showPrefixProperties(),
+        //--- input code ---
+                "\\outer\\outer\\showprefix\\end",
+                //--- error channel ---
+                "outer\n",
+                //--- output channel ---
+                "");
+    }
+
+    /**
+     * <testcase primitive="\outer">
+     *  Test case checking that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test12() throws Exception {
+
+        assertOutput(showPrefixProperties(),
+        //--- input code ---
+                "\\outer\\long\\showprefix\\end",
+                //--- error channel ---
+                "long and outer\n",
+                //--- output channel ---
+                "");
+    }
+
 }
