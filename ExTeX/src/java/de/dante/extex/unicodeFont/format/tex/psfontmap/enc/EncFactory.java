@@ -73,38 +73,49 @@ public class EncFactory implements Serializable {
      * Returns the encoding table.
      * @param filename  the file name.
      * @return Returns the encoding table.
-     * @throws FontException if an font-erorr occurred.
+     * @throws FontException if an font-error occurred.
      * @throws ConfigurationException from the resource finder.
      */
     public String[] getEncodingTable(final String filename)
-            throws FontException,
-                ConfigurationException {
+            throws FontException, ConfigurationException {
 
-        String[] table = (String[]) data.get(filename);
+        EncReader encreader = getEncReader(filename);
+        return encreader.getTable();
+    }
 
-        if (table == null) {
+    /**
+     * Returns the encoding reader.
+     * @param filename  the file name.
+     * @return Returns the encoding reader.
+     * @throws FontException if an font-error occurred.
+     * @throws ConfigurationException from the resource finder.
+     */
+    public EncReader getEncReader(final String filename) throws FontException,
+            ConfigurationException {
+
+        EncReader encreader = (EncReader) data.get(filename);
+
+        if (encreader == null) {
             InputStream in = finder.findResource(filename, "enc");
             if (in == null) {
                 throw new FontException(localizer.format(
                         "EncFactory.FileNotFound", filename));
             }
-            EncReader er = new EncReader(in);
-            table = er.getTable();
-            data.put(filename, table);
+            encreader = new EncReader(in);
+            data.put(filename, encreader);
         }
-        return table;
+        return encreader;
     }
 
     /**
      * Returns the encoding table (without a slash in the name).
      * @param filename  the file name.
      * @return Returns the encoding table.
-     * @throws FontException if an font-erorr occurred.
+     * @throws FontException if an font-error occurred.
      * @throws ConfigurationException from the resource finder.
      */
     public String[] getEncodingTableWithoutSlash(final String filename)
-            throws FontException,
-                ConfigurationException {
+            throws FontException, ConfigurationException {
 
         String[] table = getEncodingTable(filename);
 

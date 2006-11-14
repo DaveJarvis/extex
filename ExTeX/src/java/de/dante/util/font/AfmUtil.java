@@ -19,6 +19,7 @@
 
 package de.dante.util.font;
 
+import java.io.BufferedOutputStream;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
@@ -39,6 +40,7 @@ import java.util.TreeMap;
 import de.dante.extex.ExTeX;
 import de.dante.extex.unicodeFont.exception.FontException;
 import de.dante.extex.unicodeFont.format.afm.AfmCharMetric;
+import de.dante.extex.unicodeFont.format.afm.AfmEncCheck;
 import de.dante.extex.unicodeFont.format.afm.AfmKernPairs;
 import de.dante.extex.unicodeFont.format.afm.AfmParser;
 import de.dante.extex.unicodeFont.format.pl.PlWriter;
@@ -73,6 +75,11 @@ public final class AfmUtil extends AbstractFontUtil {
      * Create a efm file.
      */
     private boolean toefm = false;
+
+    /**
+     * Check the encoding.
+     */
+    private boolean enccheck = false;
 
     /**
      * The efm file name.
@@ -167,6 +174,10 @@ public final class AfmUtil extends AbstractFontUtil {
 
         parser = new AfmParser(afmin);
 
+        if (enccheck) {
+            enccheck();
+        }
+
         if (toxml) {
             toXml();
         }
@@ -184,6 +195,28 @@ public final class AfmUtil extends AbstractFontUtil {
         }
         if (mapout != null) {
             mapout.close();
+        }
+    }
+
+    /**
+     * Check the encoding.
+     *
+     * @throws IOException if an IO-error occurred.
+     */
+    private void enccheck() throws IOException {
+
+        try {
+            AfmEncCheck check = new AfmEncCheck(parser, getFinder());
+
+            BufferedOutputStream out = new BufferedOutputStream(
+                    new FileOutputStream(outdir + File.separator
+                            + parser.getHeader().getFontname() + ".pdf"));
+            check.createPdfTable(out, enclist);
+
+            out.close();
+
+        } catch (Exception e) {
+            throw new IOException(e.getMessage());
         }
     }
 
@@ -720,6 +753,7 @@ public final class AfmUtil extends AbstractFontUtil {
         String encname = "";
         boolean tomap = false;
         boolean topl = false;
+        boolean enccheck = false;
         String outdir = ".";
         String file = "";
 
@@ -741,6 +775,8 @@ public final class AfmUtil extends AbstractFontUtil {
                     toenc = true;
                     encname = args[++i];
                 }
+            } else if ("--enccheck".equals(args[i])) {
+                enccheck = true;
             } else if ("-v".equals(args[i]) || "--encvector".equals(args[i])) {
                 if (i + 1 < args.length) {
                     enclist.add(args[++i]);
@@ -769,6 +805,7 @@ public final class AfmUtil extends AbstractFontUtil {
         afm.setOutdir(outdir);
         afm.setTomap(tomap);
         afm.setTopl(topl);
+        afm.setEnccheck(enccheck);
 
         afm.doIt(file);
     }
@@ -1051,6 +1088,24 @@ public final class AfmUtil extends AbstractFontUtil {
 
             return font;
         }
+    }
+
+    /**
+     * Returns the enccheck.
+     * @return Returns the enccheck.
+     */
+    public boolean isEnccheck() {
+
+        return enccheck;
+    }
+
+    /**
+     * Set the enccheck.
+     * @param check The enccheck to set.
+     */
+    public void setEnccheck(final boolean check) {
+
+        enccheck = check;
     }
 
 }
