@@ -33,13 +33,11 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.Element;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
-import com.lowagie.text.pdf.PdfCell;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 
 import de.dante.extex.unicodeFont.exception.FontException;
-import de.dante.extex.unicodeFont.format.tex.psfontmap.enc.EncFactory;
 import de.dante.extex.unicodeFont.format.tex.psfontmap.enc.EncReader;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
 import de.dante.util.resource.ResourceFinder;
