@@ -19,12 +19,15 @@
 
 package de.dante.extex.unicodeFont.format.afm;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -214,6 +217,48 @@ public class AfmEncCheck {
         }
 
         return encv;
+    }
+
+    public void printMissingGlyphs(final OutputStream out, final List enclist)
+            throws IOException, FontException, ConfigurationException {
+
+        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out,
+                "ISO8859-1"));
+
+        EncReader[] encv = getEncodingVectors(enclist);
+
+        // print header
+        writer.write("Font ");
+        writer.write(parser.getHeader().getFontname());
+        writer.newLine();
+        writer.write("-------------------------------------\n");
+        writer.newLine();
+
+        for (int ee = 0; ee < encv.length; ee++) {
+            writer.newLine();
+            writer.write("Encoding: ");
+            writer.write(encv[ee].getEncname());
+            writer.newLine();
+            writer.write("-------------------------------------\n");
+
+            String[] table = encv[ee].getTable();
+
+            for (int gg = 0; gg < table.length; gg++) {
+                String glyph = table[gg].replaceAll("/", "");
+                if (!glyph.equals(".notdef")) {
+                    AfmCharMetric cm = parser.getAfmCharMetric(glyph);
+                    if (cm == null) {
+                        writer.write(String.valueOf(gg));
+                        writer.write("  ");
+                        writer.write(glyph);
+                        writer.write(" missing\n");
+                    }
+                }
+            }
+
+        }
+
+        writer.flush();
     }
 
 }

@@ -82,6 +82,11 @@ public final class AfmUtil extends AbstractFontUtil {
     private boolean enccheck = false;
 
     /**
+     * Check, if for a encopdign vector some glpyhs are missing.
+     */
+    private boolean missingGlyph = false;
+
+    /**
      * The efm file name.
      */
     private String efmname = "";
@@ -178,6 +183,10 @@ public final class AfmUtil extends AbstractFontUtil {
             enccheck();
         }
 
+        if (missingGlyph) {
+            missingGlyph();
+        }
+
         if (toxml) {
             toXml();
         }
@@ -196,6 +205,29 @@ public final class AfmUtil extends AbstractFontUtil {
         if (mapout != null) {
             mapout.close();
         }
+    }
+
+    /**
+     * Print missing glyphs.
+     *
+     * @throws IOException if an IO-error occurred.
+     */
+    private void missingGlyph() throws IOException {
+
+        try {
+            AfmEncCheck check = new AfmEncCheck(parser, getFinder());
+
+            BufferedOutputStream out = new BufferedOutputStream(
+                    new FileOutputStream(outdir + File.separator
+                            + parser.getHeader().getFontname() + ".missing"));
+            check.printMissingGlyphs(out, enclist);
+
+            out.close();
+
+        } catch (Exception e) {
+            throw new IOException(e.getMessage());
+        }
+
     }
 
     /**
@@ -754,6 +786,7 @@ public final class AfmUtil extends AbstractFontUtil {
         boolean tomap = false;
         boolean topl = false;
         boolean enccheck = false;
+        boolean missingGlyph = false;
         String outdir = ".";
         String file = "";
 
@@ -777,6 +810,8 @@ public final class AfmUtil extends AbstractFontUtil {
                 }
             } else if ("--enccheck".equals(args[i])) {
                 enccheck = true;
+            } else if ("--missingglyph".equals(args[i])) {
+                missingGlyph = true;
             } else if ("-v".equals(args[i]) || "--encvector".equals(args[i])) {
                 if (i + 1 < args.length) {
                     enclist.add(args[++i]);
@@ -806,6 +841,7 @@ public final class AfmUtil extends AbstractFontUtil {
         afm.setTomap(tomap);
         afm.setTopl(topl);
         afm.setEnccheck(enccheck);
+        afm.setMissingGlyph(missingGlyph);
 
         afm.doIt(file);
     }
@@ -1106,6 +1142,24 @@ public final class AfmUtil extends AbstractFontUtil {
     public void setEnccheck(final boolean check) {
 
         enccheck = check;
+    }
+
+    /**
+     * Returns the missingGlyph.
+     * @return Returns the missingGlyph.
+     */
+    public boolean isMissingGlyph() {
+
+        return missingGlyph;
+    }
+
+    /**
+     * Set the missingGlyph.
+     * @param missingGlyph The missingGlyph to set.
+     */
+    public void setMissingGlyph(final boolean missingglyph) {
+
+        missingGlyph = missingglyph;
     }
 
 }
