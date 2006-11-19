@@ -173,7 +173,7 @@
       -  The section "DocumentWriter" contains the specification for the
       -  document writer
       -->
-    <DocumentWriter src="backend/documentWriter"/>
+    <DocumentWriter base="backend/"/>
 
     <parameter name="Title" value=""/>
     <parameter name="Author" property="user.name"/>
@@ -184,3 +184,4 @@
   </Backend>
 
 </ExTeX>
+v

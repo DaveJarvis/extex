@@ -19,26 +19,29 @@
 
 package de.dante.util.framework;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.MissingResourceException;
 import java.util.logging.Logger;
 
 import de.dante.util.framework.configuration.Configurable;
 import de.dante.util.framework.configuration.Configuration;
+import de.dante.util.framework.configuration.ConfigurationFactory;
 import de.dante.util.framework.configuration.exception.ConfigurationClassNotFoundException;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
-import de.dante.util.framework.configuration.exception.ConfigurationIOException;
 import de.dante.util.framework.configuration.exception.ConfigurationInstantiationException;
 import de.dante.util.framework.configuration.exception.ConfigurationInvalidClassException;
 import de.dante.util.framework.configuration.exception.ConfigurationInvalidConstructorException;
-import de.dante.util.framework.configuration.exception.ConfigurationInvalidResourceException;
 import de.dante.util.framework.configuration.exception.ConfigurationMissingAttributeException;
 import de.dante.util.framework.configuration.exception.ConfigurationMissingException;
-import de.dante.util.framework.configuration.exception.ConfigurationNotFoundException;
-import de.dante.util.framework.configuration.exception.ConfigurationSyntaxException;
+import de.dante.util.framework.configuration.exception.ConfigurationWrapperException;
 import de.dante.util.framework.i18n.Localizable;
 import de.dante.util.framework.i18n.LocalizerFactory;
 import de.dante.util.framework.logger.LogEnabled;
+import de.dante.util.resource.ResourceConsumer;
+import de.dante.util.resource.ResourceFinder;
 
 /**
  * This is the abstract base class for factories. It contains some common
@@ -73,7 +76,17 @@ public abstract class AbstractFactory
         implements
             Configurable,
             LogEnabled,
+            ResourceConsumer,
             RegistrarObserver {
+
+    /**
+     * @see de.dante.util.resource.ResourceConsumer#setResourceFinder(
+     *      de.dante.util.resource.ResourceFinder)
+     */
+    public void setResourceFinder(final ResourceFinder finder) {
+
+        this.resourceFinder = finder;
+    }
 
     /**
      * The constant <tt>CLASS_ATTRIBUTE</tt> contains the name of the attribute
@@ -147,6 +160,11 @@ public abstract class AbstractFactory
      * typesetters.
      */
     private transient Logger logger = null;
+
+    /**
+     * The field <tt>resourceFinder</tt> contains the ...
+     */
+    private transient ResourceFinder resourceFinder = null;
 
     /**
      * Creates a new factory object.
@@ -275,7 +293,7 @@ public abstract class AbstractFactory
                                 args[1]);
                         break;
                     default:
-                // Consider the next constructor
+                        // Consider the next constructor
                 }
                 if (instance != null) {
                     return instance;
@@ -634,30 +652,20 @@ public abstract class AbstractFactory
      *
      * @return the desired sub-configuration
      *
-     * @throws ConfigurationInvalidResourceException in case that the given
-     *  resource name is <code>null</code> or empty.
-     * @throws ConfigurationNotFoundException in case that the requested
-     *  configuration does not exist.
-     * @throws ConfigurationSyntaxException in case of a syntax error in the
-     *  configuration.
-     * @throws ConfigurationIOException in case that an IOException occurred
-     *  while reading the configuration.
-     * @throws ConfigurationMissingAttributeException in case that an attribute
-     *  is missing.
-     * @throws ConfigurationMissingException in case that the factory has not
-     *  been configured yet.
+     * @throws ConfigurationException in case of an error 
      */
     protected Configuration selectConfiguration(final String type)
-            throws ConfigurationInvalidResourceException,
-                ConfigurationNotFoundException,
-                ConfigurationSyntaxException,
-                ConfigurationIOException,
-                ConfigurationMissingAttributeException,
-                ConfigurationMissingException {
+            throws ConfigurationException {
 
-        if (configuration == null) {
+        if (this.configuration == null) {
             throw new ConfigurationMissingException(this.getClass().getName());
         }
+
+        String base = this.configuration.getAttribute("base");
+        if (base != null && resourceFinder != null) {
+            return new ConfigurationFactory().newInstance(base + type + ".xml");
+        }
+
         Configuration config = this.configuration.findConfiguration(type);
         if (config == null) {
             String fallback = this.configuration
@@ -674,5 +682,4 @@ public abstract class AbstractFactory
         }
         return config;
     }
-
 }

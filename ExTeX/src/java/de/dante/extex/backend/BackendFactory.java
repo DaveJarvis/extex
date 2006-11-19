@@ -129,8 +129,7 @@ public class BackendFactory extends AbstractFactory {
             final DocumentWriterOptions options,
             final OutputStreamFactory outFactory, final ResourceFinder finder,
             final Properties properties, final String creator,
-            final FontFactory fontFactory,
-            final ColorConverter colorConverter)
+            final FontFactory fontFactory, final ColorConverter colorConverter)
             throws DocumentWriterException,
                 ConfigurationException {
 
@@ -140,6 +139,7 @@ public class BackendFactory extends AbstractFactory {
         DocumentWriterFactory factory = new DocumentWriterFactory(
                 getConfiguration().getConfiguration("DocumentWriter"),
                 getLogger());
+        factory.setResourceFinder(finder);
         DocumentWriter docWriter = factory.newInstance(//
                 type, //
                 options, //
@@ -154,7 +154,7 @@ public class BackendFactory extends AbstractFactory {
             ((ResourceConsumer) docWriter).setResourceFinder(finder);
         }
         if (docWriter instanceof FontFactoryConsumer) {
-            ((FontFactoryConsumer) docWriter).setFontFactory(fontFactory );
+            ((FontFactoryConsumer) docWriter).setFontFactory(fontFactory);
         }
         docWriter.setParameter("Creator", creator);
 
