@@ -17,16 +17,17 @@
  *
  */
 
-package de.dante.extex.backend.documentWriter.postscript;
+package org.extex.backend.documentWriter.postscript;
 
 import java.io.IOException;
 import java.io.OutputStream;
 
+import org.extex.backend.documentWriter.postscript.util.FontManager;
+import org.extex.backend.documentWriter.postscript.util.HeaderManager;
+import org.extex.backend.documentWriter.postscript.util.PsConverter;
+import org.extex.backend.documentWriter.postscript.util.PsUnit;
+
 import de.dante.extex.backend.documentWriter.DocumentWriterOptions;
-import de.dante.extex.backend.documentWriter.postscript.util.FontManager;
-import de.dante.extex.backend.documentWriter.postscript.util.HeaderManager;
-import de.dante.extex.backend.documentWriter.postscript.util.PsConverter;
-import de.dante.extex.backend.documentWriter.postscript.util.PsUnit;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.page.Page;

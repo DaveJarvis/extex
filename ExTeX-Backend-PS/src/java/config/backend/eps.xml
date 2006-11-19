@@ -18,6 +18,6 @@
   -
   -->
 <!-- 
-  -  The section "DocumentWriter" contains the specification for the backend.
+  -  The section "DocumentWriter" contains the specification for the back-end.
   -->
-<DocumentWriter class="de.dante.extex.backend.documentWriter.postscript.EpsWriter"/>
+<DocumentWriter class="org.extex.backend.documentWriter.postscript.EpsWriter"/>

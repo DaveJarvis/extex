@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.backend.documentWriter.postscript.util;
+package org.extex.backend.documentWriter.postscript.util;
 
 import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.interpreter.type.dimen.Dimen;

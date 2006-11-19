@@ -17,21 +17,22 @@
  *
  */
 
-package de.dante.extex.backend.documentWriter.postscript;
+package org.extex.backend.documentWriter.postscript;
 
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.extex.backend.documentWriter.postscript.util.FontManager;
+import org.extex.backend.documentWriter.postscript.util.HeaderManager;
+import org.extex.backend.documentWriter.postscript.util.PsBasicConverter;
+import org.extex.backend.documentWriter.postscript.util.PsBoxConverter;
+import org.extex.backend.documentWriter.postscript.util.PsConverter;
+
 import de.dante.extex.backend.documentWriter.DocumentWriter;
 import de.dante.extex.backend.documentWriter.MultipleDocumentStream;
 import de.dante.extex.backend.documentWriter.exception.DocumentWriterException;
-import de.dante.extex.backend.documentWriter.postscript.util.FontManager;
-import de.dante.extex.backend.documentWriter.postscript.util.HeaderManager;
-import de.dante.extex.backend.documentWriter.postscript.util.PsBasicConverter;
-import de.dante.extex.backend.documentWriter.postscript.util.PsBoxConverter;
-import de.dante.extex.backend.documentWriter.postscript.util.PsConverter;
 import de.dante.extex.backend.outputStream.OutputStreamFactory;
 import de.dante.extex.color.ColorAware;
 import de.dante.extex.color.ColorConverter;
