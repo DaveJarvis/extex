@@ -7,7 +7,7 @@
 	<classpathentry kind="lib" path="lib/jdom.jar"/>
 	<classpathentry kind="lib" path="develop/lib/ant.jar"/>
 	<classpathentry kind="lib" path="develop/lib/junit.jar"/>
-	<classpathentry sourcepath="develop/src/icu4jsrc_3_2.jar" kind="lib" path="lib/icu4j_2_8.jar"/>
+	<classpathentry kind="lib" path="lib/icu4j_2_8.jar" sourcepath="develop/src/icu4jsrc_3_2.jar"/>
 	<classpathentry kind="lib" path="lib/avalon-framework-4.1.4.jar"/>
 	<classpathentry kind="lib" path="lib/jel.jar"/>
 	<classpathentry kind="lib" path="develop/lib/jaxen-full.jar"/>
@@ -15,5 +15,6 @@
 	<classpathentry kind="lib" path="lib/PDFBox.jar"/>
 	<classpathentry kind="lib" path="lib/log4j-1.2.9.jar"/>
 	<classpathentry kind="lib" path="lib/iText.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-core"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
