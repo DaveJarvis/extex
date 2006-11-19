@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.backend.documentWriter.rtf;
+package org.extex.backend.documentWriter.rtf;
 
 /**
  * This class provides a color with 8-bit RGB channels but without alpha

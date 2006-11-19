@@ -3,6 +3,7 @@
 	<name>ExTeX-Backend-RTF</name>
 	<comment></comment>
 	<projects>
+		<project>ExTeX</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

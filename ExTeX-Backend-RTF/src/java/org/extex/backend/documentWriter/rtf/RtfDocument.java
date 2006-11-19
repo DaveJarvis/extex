@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.backend.documentWriter.rtf;
+package org.extex.backend.documentWriter.rtf;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
