@@ -20,5 +20,5 @@
 <!-- 
   -  The section "DocumentWriter" contains the specification for the backend.
   -->
-<DocumentWriter class="de.dante.extex.backend.documentWriter.dump.MultiDumpDocumentWriter"
+<DocumentWriter class="org.extex.backend.documentWriter.dump.MultiDumpDocumentWriter"
                 tree="true"/>

@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.backend.documentWriter.dump;
+package org.extex.backend.documentWriter.dump;
 
 import java.io.IOException;
 import java.io.OutputStream;
