@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.dynamic;
+package org.extex.interpreter.primitives.dynamic;
 
 import java.util.HashMap;
 import java.util.Iterator;

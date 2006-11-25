@@ -20,9 +20,9 @@
 <unit name="jx">
   <primitives>
     <define name="javadef"
-            class="de.dante.extex.interpreter.primitives.dynamic.java.JavaDef"/>
+            class="org.extex.interpreter.primitives.dynamic.java.JavaDef"/>
     <define name="javaload"
-            class="de.dante.extex.interpreter.primitives.dynamic.java.JavaLoad"/>
+            class="org.extex.interpreter.primitives.dynamic.java.JavaLoad"/>
   </primitives>
  </unit>
  

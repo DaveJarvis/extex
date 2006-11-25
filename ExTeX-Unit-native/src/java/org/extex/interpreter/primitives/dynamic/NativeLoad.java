@@ -17,19 +17,20 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.dynamic;
+package org.extex.interpreter.primitives.dynamic;
 
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.logging.Logger;
 
+import org.extex.interpreter.primitives.dynamic.util.LoaderFactory;
+
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.exception.helping.HelpingException;
-import de.dante.extex.interpreter.primitives.dynamic.util.LoaderFactory;
 import de.dante.extex.interpreter.type.AbstractCode;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.framework.configuration.Configurable;
