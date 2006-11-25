@@ -25,6 +25,7 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.unit.LoaderFactory;
 
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.context.Context;
