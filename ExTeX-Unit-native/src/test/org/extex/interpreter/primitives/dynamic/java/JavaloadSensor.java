@@ -19,6 +19,7 @@
 
 package org.extex.interpreter.primitives.dynamic.java;
 
+
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.exception.GeneralException;
@@ -69,7 +70,7 @@ public class JavaloadSensor implements Loadable {
 
     /**
      * @see de.dante.extex.interpreter.primitives.dynamic.java.Loadable#init(
-     *      de.dante.extex.interpreter.context.Context,
+     *      org.extex.interpreter.context.Context,
      *      de.dante.extex.typesetter.Typesetter)
      */
     public void init(final Context context, final Typesetter typesetter)

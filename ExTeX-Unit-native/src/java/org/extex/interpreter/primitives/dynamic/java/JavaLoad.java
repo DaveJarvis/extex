@@ -19,8 +19,9 @@
 
 package org.extex.interpreter.primitives.dynamic.java;
 
+import org.extex.interpreter.TokenSource;
+
 import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.exception.helping.HelpingException;
@@ -124,8 +125,8 @@ public class JavaLoad extends AbstractCode implements Loader {
     /**
      * @see de.dante.extex.interpreter.type.Code#execute(
      *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
     public void execute(final Flags prefix, final Context context,
@@ -137,8 +138,8 @@ public class JavaLoad extends AbstractCode implements Loader {
 
     /**
      * @see de.dante.extex.interpreter.unit.Loader#load(
-     *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
     public void load(final Context context, final TokenSource source,

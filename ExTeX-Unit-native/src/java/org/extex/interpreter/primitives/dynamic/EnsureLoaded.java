@@ -21,9 +21,10 @@ package org.extex.interpreter.primitives.dynamic;
 
 import java.util.logging.Logger;
 
+import org.extex.interpreter.TokenSource;
+
 import de.dante.extex.backend.outputStream.OutputStreamFactory;
 import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.exception.helping.EofException;
@@ -59,7 +60,7 @@ import de.dante.util.framework.logger.LogEnabled;
  * <pre class="syntax">
  *   &lang;ensureloaded&rang;
  *       &rarr; <tt>\ensureloaded</tt> {@linkplain
- *        de.dante.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
+ *        org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
  *        &lang;tokens&rang;} </pre>
  *
  * <h4>Examples</h4>
@@ -122,8 +123,8 @@ public class EnsureLoaded extends AbstractCode
     /**
      * @see de.dante.extex.interpreter.type.Code#execute(
      *       de.dante.extex.interpreter.Flags,
-     *       de.dante.extex.interpreter.context.Context,
-     *       de.dante.extex.interpreter.TokenSource,
+     *       org.extex.interpreter.context.Context,
+     *       org.extex.interpreter.TokenSource,
      *       de.dante.extex.typesetter.Typesetter)
      */
     public void execute(final Flags prefix, final Context context,

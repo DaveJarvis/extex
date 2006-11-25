@@ -24,8 +24,9 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.logging.Logger;
 
+import org.extex.interpreter.TokenSource;
+
 import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.AbstractAssignment;
@@ -55,7 +56,7 @@ import de.dante.util.framework.logger.LogEnabled;
  * <pre class="syntax">
  *   &lang;nativedef&rang;
  *       &rarr; <tt>\nativedef</tt> &lang;type&rang; {@linkplain
- *       de.dante.extex.interpreter.TokenSource#getControlSequence(Context)
+ *       org.extex.interpreter.TokenSource#getControlSequence(Context)
  *       &lang;control sequence&rang;} &lang;name&rang;  </pre>
  * <p>
  *  The <tt>&lang;type&rang;</tt> is any specification of a list of
@@ -200,8 +201,8 @@ public class NativeDef extends AbstractAssignment
     /**
      * @see de.dante.extex.interpreter.type.AbstractAssignment#assign(
      *       de.dante.extex.interpreter.Flags,
-     *       de.dante.extex.interpreter.context.Context,
-     *       de.dante.extex.interpreter.TokenSource,
+     *       org.extex.interpreter.context.Context,
+     *       org.extex.interpreter.TokenSource,
      *       de.dante.extex.typesetter.Typesetter)
      */
     public void assign(final Flags prefix, final Context context,

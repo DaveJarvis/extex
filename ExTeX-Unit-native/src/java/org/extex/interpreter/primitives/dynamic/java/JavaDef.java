@@ -21,10 +21,10 @@ package org.extex.interpreter.primitives.dynamic.java;
 
 import java.lang.reflect.InvocationTargetException;
 
+import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.primitives.dynamic.Definer;
 
 import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.exception.helping.HelpingException;
@@ -52,7 +52,7 @@ import de.dante.extex.typesetter.Typesetter;
  * <pre class="syntax">
  *   &lang;javadef&rang;
  *       &rarr; <tt>\javadef</tt> {@linkplain
- *       de.dante.extex.interpreter.TokenSource#getControlSequence(Context)
+ *       org.extex.interpreter.TokenSource#getControlSequence(Context)
  *       &lang;control sequence&rang;} <i>&lang;tokens&rang;</i> </pre>
  * <p>
  * The <i>&lang;control sequence&rang;</i> is any macro or active
@@ -164,8 +164,8 @@ public class JavaDef extends AbstractAssignment implements Definer {
     /**
      * @see de.dante.extex.interpreter.type.AbstractAssignment#assign(
      *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
     public void assign(final Flags prefix, final Context context,
@@ -178,8 +178,8 @@ public class JavaDef extends AbstractAssignment implements Definer {
     /**
      * @see de.dante.extex.interpreter.primitives.dynamic.Definer#define(
      *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
     public void define(final Flags prefix, final Context context,
