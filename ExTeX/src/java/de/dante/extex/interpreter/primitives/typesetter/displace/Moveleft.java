@@ -19,7 +19,8 @@
 
 package de.dante.extex.interpreter.primitives.typesetter.displace;
 
-import de.dante.extex.interpreter.TokenSource;
+import org.extex.interpreter.TokenSource;
+
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.primitives.typesetter.box.AbstractBoxPrimitive;
@@ -49,7 +50,7 @@ import de.dante.extex.typesetter.Typesetter;
  *      &rarr; <tt>\moveleft</tt> {@linkplain
  *        de.dante.extex.interpreter.type.dimen#Dimen(Context,TokenSource)
  *        &lang;dimen&rang;} {@linkplain
- *        de.dante.extex.interpreter.TokenSource#getBox(Context,de.dante.extex.typesetter.Typesetter)
+ *        org.extex.interpreter.TokenSource#getBox(Context,de.dante.extex.typesetter.Typesetter)
  *        &lang;box&rang;}  </pre>
  *
  * <h4>Examples</h4>
@@ -86,7 +87,7 @@ public class Moveleft extends AbstractBoxPrimitive {
     /**
      * @see de.dante.extex.interpreter.type.box.Boxable#getBox(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
     public Box getBox(final Context context, final TokenSource source,

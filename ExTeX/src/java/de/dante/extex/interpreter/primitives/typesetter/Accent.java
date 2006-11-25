@@ -19,10 +19,10 @@
 
 package de.dante.extex.interpreter.primitives.typesetter;
 
+import org.extex.interpreter.TokenSource;
 import org.extex.type.UnicodeChar;
 
 import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.context.tc.TypesettingContext;
 import de.dante.extex.interpreter.exception.InterpreterException;
@@ -100,7 +100,7 @@ public class Accent extends AbstractCode {
      * @see de.dante.extex.interpreter.type.Code#execute(
      *      de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      * @see "TTP [1123,1124,1125]"
      */

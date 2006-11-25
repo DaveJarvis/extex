@@ -22,8 +22,9 @@ package de.dante.extex.interpreter.primitives.conditional.analyze;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.extex.interpreter.TokenSource;
+
 import de.dante.extex.interpreter.Conditional;
-import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.primitives.conditional.If;
@@ -160,7 +161,7 @@ public class Currentiftype extends AbstractCode
     /**
      * @see de.dante.extex.interpreter.type.count.CountConvertible#convertCount(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
     public long convertCount(final Context context, final TokenSource source,
@@ -178,7 +179,7 @@ public class Currentiftype extends AbstractCode
     /**
      * @see de.dante.extex.interpreter.type.Theable#the(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,

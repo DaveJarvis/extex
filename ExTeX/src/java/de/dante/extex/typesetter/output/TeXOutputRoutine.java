@@ -19,11 +19,11 @@
 
 package de.dante.extex.typesetter.output;
 
+import org.extex.interpreter.Namespace;
 import org.extex.type.UnicodeChar;
 
 import de.dante.extex.backend.BackendDriver;
 import de.dante.extex.interpreter.Interpreter;
-import de.dante.extex.interpreter.Namespace;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.context.group.GroupType;
 import de.dante.extex.interpreter.exception.InterpreterException;
@@ -83,9 +83,9 @@ import de.dante.util.framework.i18n.LocalizerFactory;
  *  <pre class="syntax">
  *    &lang;output&rang;
  *      &rarr; <tt>\output</tt> {@linkplain
- *        de.dante.extex.interpreter.TokenSource#getOptionalEquals(Context)
+ *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        de.dante.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
+ *        org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
  *        &lang;tokens&rang;}  </pre>
  *
  * <h4>Examples</h4>
@@ -112,9 +112,9 @@ import de.dante.util.framework.i18n.LocalizerFactory;
  *  <pre class="syntax">
  *    &lang;deadcycles&rang;
  *      &rarr; <tt>\deadcycles</tt> {@linkplain
- *        de.dante.extex.interpreter.TokenSource#getOptionalEquals(Context)
+ *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        de.dante.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
+ *        org.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
  *        &lang;number&rang;}  </pre>
  *
  * <h4>Examples</h4>
@@ -142,9 +142,9 @@ import de.dante.util.framework.i18n.LocalizerFactory;
  *  <pre class="syntax">
  *    &lang;maxdeadcycles&rang;
  *      &rarr; <tt>\maxdeadcycles</tt> {@linkplain
- *        de.dante.extex.interpreter.TokenSource#getOptionalEquals(Context)
+ *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        de.dante.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
+ *        org.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
  *        &lang;number&rang;}  </pre>
  *
  * <h4>Examples</h4>

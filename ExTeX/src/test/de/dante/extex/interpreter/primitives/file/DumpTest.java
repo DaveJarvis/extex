@@ -23,7 +23,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.Calendar;
 
-import de.dante.extex.interpreter.Namespace;
+import org.extex.interpreter.Namespace;
+
+
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.loader.SerialLoader;
 import de.dante.extex.interpreter.type.Code;

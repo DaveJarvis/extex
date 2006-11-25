@@ -19,7 +19,8 @@
 
 package de.dante.extex.main.errorHandler.editHandler;
 
-import de.dante.util.Locator;
+import org.extex.type.Locator;
+
 import de.dante.util.framework.i18n.Localizer;
 
 /**
@@ -42,7 +43,7 @@ public class EditHandlerTeXImpl implements EditHandler {
     /**
      * @see de.dante.extex.main.errorHandler.editHandler.EditHandler#edit(
      *      de.dante.util.framework.i18n.Localizer,
-     *      de.dante.util.Locator)
+     *      org.extex.type.Locator)
      */
     public boolean edit(final Localizer localizer, final Locator locator) {
 

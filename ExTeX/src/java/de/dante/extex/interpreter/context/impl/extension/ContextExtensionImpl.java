@@ -21,6 +21,7 @@ package de.dante.extex.interpreter.context.impl.extension;
 
 import java.io.Serializable;
 
+
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.context.ContextExtension;
 import de.dante.extex.interpreter.context.impl.ContextImpl;

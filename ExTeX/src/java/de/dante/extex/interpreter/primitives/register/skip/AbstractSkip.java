@@ -19,8 +19,9 @@
 
 package de.dante.extex.interpreter.primitives.register.skip;
 
-import de.dante.extex.interpreter.Namespace;
-import de.dante.extex.interpreter.TokenSource;
+import org.extex.interpreter.Namespace;
+import org.extex.interpreter.TokenSource;
+
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.AbstractAssignment;

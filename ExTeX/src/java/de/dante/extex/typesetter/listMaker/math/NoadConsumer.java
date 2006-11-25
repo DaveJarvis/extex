@@ -19,8 +19,9 @@
 
 package de.dante.extex.typesetter.listMaker.math;
 
+import org.extex.interpreter.TokenSource;
+
 import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.context.tc.TypesettingContext;
 import de.dante.extex.interpreter.type.dimen.FixedDimen;

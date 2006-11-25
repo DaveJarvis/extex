@@ -19,8 +19,9 @@
 
 package de.dante.extex.interpreter.primitives.pdftex;
 
+import org.extex.interpreter.TokenSource;
+
 import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.typesetter.Typesetter;
@@ -42,7 +43,7 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
  *  <pre class="syntax">
  *    &lang;pdfliteral&rang;
  *       &rarr; <tt>\pdfliteral</tt> &lang;optional direct&rang; {@linkplain
- *          de.dante.extex.interpreter.TokenSource#scanTokens(Context, String)
+ *          org.extex.interpreter.TokenSource#scanTokens(Context, String)
  *          &lang;general text&rang;}
  *
  *    &lang;optional direct&rang;
@@ -81,7 +82,7 @@ public class Pdfliteral extends AbstractPdftexCode {
      * @see de.dante.extex.interpreter.type.Code#execute(
      *      de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
     public void execute(final Flags prefix, final Context context,

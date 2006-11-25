@@ -19,6 +19,8 @@
 
 package de.dante.extex.interpreter;
 
+import org.extex.interpreter.TokenSource;
+import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
 
 import junit.framework.TestCase;
@@ -30,7 +32,7 @@ import de.dante.extex.interpreter.type.count.FixedCount;
 import de.dante.extex.interpreter.type.dimen.FixedDimen;
 import de.dante.extex.interpreter.type.glue.FixedGlue;
 import de.dante.extex.language.ligature.LigatureBuilder;
-import de.dante.extex.scanner.stream.TokenStream;
+import de.dante.extex.scanner.TokenStream;
 import de.dante.extex.scanner.stream.TokenStreamFactory;
 import de.dante.extex.scanner.stream.impl.TokenStreamImpl;
 import de.dante.extex.scanner.type.token.Token;
@@ -51,7 +53,6 @@ import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.noad.Noad;
 import de.dante.extex.typesetter.type.node.factory.NodeFactory;
-import de.dante.util.Locator;
 import de.dante.util.exception.GeneralException;
 import de.dante.util.framework.configuration.Configuration;
 import de.dante.util.framework.configuration.ConfigurationFactory;
@@ -170,7 +171,7 @@ public class Max1 extends TestCase {
 
         /**
          * @see de.dante.extex.typesetter.Typesetter#ensureHorizontalMode(
-         *      de.dante.util.Locator)
+         *      org.extex.type.Locator)
          */
         public ListMaker ensureHorizontalMode(Locator locator) {
 
@@ -277,7 +278,7 @@ public class Max1 extends TestCase {
          *      de.dante.extex.interpreter.context.Context,
          *      de.dante.extex.interpreter.context.TypesettingContext,
          *      org.extex.type.UnicodeChar,
-         *      de.dante.util.Locator)
+         *      org.extex.type.Locator)
          */
         public boolean letter(final UnicodeChar uc,
                 final TypesettingContext tc, final Context context,
@@ -289,7 +290,7 @@ public class Max1 extends TestCase {
         /**
          * @see de.dante.extex.typesetter.ListMaker#mathShift(
          *      de.dante.extex.interpreter.context.Context,
-         *      de.dante.extex.interpreter.TokenSource,
+         *      org.extex.interpreter.TokenSource,
          *      de.dante.extex.scanner.type.token.Token)
          */
         public void mathShift(final Context context, final TokenSource source,

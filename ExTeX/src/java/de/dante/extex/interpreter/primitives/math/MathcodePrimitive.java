@@ -19,10 +19,10 @@
 
 package de.dante.extex.interpreter.primitives.math;
 
+import org.extex.interpreter.TokenSource;
 import org.extex.type.UnicodeChar;
 
 import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.AbstractAssignment;
@@ -51,9 +51,9 @@ import de.dante.extex.typesetter.Typesetter;
  *  <pre class="syntax">
  *    &lang;mathcode&rang;
  *      &rarr; <tt>\mathcode</tt> {@link
- *        de.dante.extex.interpreter.TokenSource#scanCharacterCode(Context,Typesetter,String)
+ *        org.extex.interpreter.TokenSource#scanCharacterCode(Context,Typesetter,String)
  *        &lang;character code&rang;} {@linkplain
- *        de.dante.extex.interpreter.TokenSource#getOptionalEquals(Context)
+ *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} ...
  *        </pre>
  *
@@ -90,7 +90,7 @@ public class MathcodePrimitive extends AbstractAssignment
      * @see de.dante.extex.interpreter.type.Code#execute(
      *      de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
     public void assign(final Flags prefix, final Context context,
@@ -108,7 +108,7 @@ public class MathcodePrimitive extends AbstractAssignment
     /**
      * @see de.dante.extex.interpreter.type.count.CountConvertible#convertCount(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
     public long convertCount(final Context context, final TokenSource source,
@@ -122,7 +122,7 @@ public class MathcodePrimitive extends AbstractAssignment
     /**
      * @see de.dante.extex.interpreter.type.Theable#the(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,

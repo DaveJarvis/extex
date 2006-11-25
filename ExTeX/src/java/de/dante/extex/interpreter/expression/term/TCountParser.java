@@ -19,8 +19,9 @@
 
 package de.dante.extex.interpreter.expression.term;
 
+import org.extex.interpreter.TokenSource;
+
 import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.expression.EType;
@@ -61,7 +62,7 @@ public final class TCountParser implements ETypeParser {
      * @see de.dante.extex.interpreter.expression.EType#convert(
      *      de.dante.extex.interpreter.type.Code,
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
     public EType convert(final Code code, final Context context,
@@ -78,7 +79,7 @@ public final class TCountParser implements ETypeParser {
     /**
      * @see de.dante.extex.interpreter.expression.ETypeParser#parse(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
     public EType parse(final Context context, final TokenSource source,

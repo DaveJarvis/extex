@@ -19,7 +19,8 @@
 
 package de.dante.extex.interpreter.primitives.file;
 
-import de.dante.extex.interpreter.TokenSource;
+import org.extex.interpreter.TokenSource;
+
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 
@@ -59,7 +60,7 @@ public class InputFile extends Input {
      *
      * @see de.dante.extex.interpreter.primitives.file.AbstractFileCode#scanFileName(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource)
+     *      org.extex.interpreter.TokenSource)
      */
     protected String scanFileName(final Context context,
             final TokenSource source) throws InterpreterException {

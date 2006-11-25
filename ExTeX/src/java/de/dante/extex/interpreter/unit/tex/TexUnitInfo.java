@@ -21,7 +21,8 @@ package de.dante.extex.interpreter.unit.tex;
 
 import java.util.logging.Logger;
 
-import de.dante.extex.interpreter.TokenSource;
+import org.extex.interpreter.TokenSource;
+
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.context.ContextInternals;
 import de.dante.extex.interpreter.context.observer.count.CountObservable;
@@ -129,7 +130,7 @@ public class TexUnitInfo extends UnitInfo
     /**
      * @see de.dante.extex.interpreter.primitives.dynamic.Loader#load(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
     public void load(final Context context, final TokenSource source,
@@ -141,7 +142,7 @@ public class TexUnitInfo extends UnitInfo
     /**
      * @see de.dante.extex.interpreter.context.observer.load.LoadedObserver#receiveLoaded(
      *      de.dante.extex.interpreter.context.Context,
-     *       de.dante.extex.interpreter.TokenSource)
+     *       org.extex.interpreter.TokenSource)
      */
     public void receiveLoaded(final Context context, final TokenSource source)
             throws InterpreterException {

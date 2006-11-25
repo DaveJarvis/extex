@@ -22,7 +22,7 @@ package de.dante.extex.main.observer;
 import java.util.logging.Logger;
 
 import de.dante.extex.interpreter.observer.streamClose.StreamCloseObserver;
-import de.dante.extex.scanner.stream.TokenStream;
+import de.dante.extex.scanner.TokenStream;
 
 /**
  * This observer waits for update events when files are closed. According to the

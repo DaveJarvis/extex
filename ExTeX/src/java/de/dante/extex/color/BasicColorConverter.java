@@ -19,6 +19,7 @@
 
 package de.dante.extex.color;
 
+
 import de.dante.extex.color.model.CmykColor;
 import de.dante.extex.color.model.ColorFactory;
 import de.dante.extex.color.model.GrayscaleColor;

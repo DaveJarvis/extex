@@ -22,7 +22,8 @@ package de.dante.extex.interpreter.type.pair;
 import java.io.Serializable;
 import java.util.StringTokenizer;
 
-import de.dante.extex.interpreter.TokenSource;
+import org.extex.interpreter.TokenSource;
+
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.exception.InterpreterNumberFormatException;

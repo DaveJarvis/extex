@@ -21,6 +21,7 @@ package de.dante.extex.interpreter.context.impl;
 
 import java.io.Serializable;
 
+import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
 
 import de.dante.extex.interpreter.Tokenizer;
@@ -40,11 +41,10 @@ import de.dante.extex.interpreter.type.math.MathCode;
 import de.dante.extex.interpreter.type.math.MathDelimiter;
 import de.dante.extex.interpreter.type.muskip.Muskip;
 import de.dante.extex.interpreter.type.tokens.Tokens;
-import de.dante.extex.scanner.stream.TokenStream;
+import de.dante.extex.scanner.TokenStream;
 import de.dante.extex.scanner.type.Catcode;
 import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.scanner.type.token.Token;
-import de.dante.util.Locator;
 
 /**
  * This is the implementation of a group object. A group is the container for

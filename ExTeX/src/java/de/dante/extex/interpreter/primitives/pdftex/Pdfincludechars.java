@@ -19,9 +19,10 @@
 
 package de.dante.extex.interpreter.primitives.pdftex;
 
+import org.extex.interpreter.TokenSource;
+
 import de.dante.extex.backend.documentWriter.PdftexSupport;
 import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.font.Font;
@@ -44,9 +45,9 @@ import de.dante.extex.typesetter.Typesetter;
  *  <pre class="syntax">
  *    &lang;pdfincludechars&rang;
  *       &rarr; <tt>\pdfincludechars</tt> {@linkplain
- *          de.dante.extex.interpreter.TokenSource#getFont(Context, String)
+ *          org.extex.interpreter.TokenSource#getFont(Context, String)
  *          &lang;font&rang;} {@linkplain
- *          de.dante.extex.interpreter.TokenSource#scanTokens(Context, String)
+ *          org.extex.interpreter.TokenSource#scanTokens(Context, String)
  *          &lang;general text&rang;} </pre>
  *
  * <h4>Examples</h4>
@@ -80,7 +81,7 @@ public class Pdfincludechars extends AbstractPdftexCode {
      * @see de.dante.extex.interpreter.type.AbstractCode#execute(
      *      de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
     public void execute(final Flags prefix, final Context context,

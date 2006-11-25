@@ -19,8 +19,9 @@
 
 package de.dante.extex.interpreter.primitives.register.muskip;
 
-import de.dante.extex.interpreter.Namespace;
-import de.dante.extex.interpreter.TokenSource;
+import org.extex.interpreter.Namespace;
+import org.extex.interpreter.TokenSource;
+
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.count.Count;
@@ -50,9 +51,9 @@ import de.dante.extex.typesetter.Typesetter;
  *  <pre class="syntax">
  *    &lang;muskip&rang;
  *      &rarr; &lang;optional prefix&rang; <tt>\muskip</tt>  {@linkplain
- *        de.dante.extex.interpreter.TokenSource#scanRegisterName(Context,TokenSource,Typesetter,String)
+ *        org.extex.interpreter.TokenSource#scanRegisterName(Context,TokenSource,Typesetter,String)
  *        &lang;register name&rang;} {@linkplain
- *        de.dante.extex.interpreter.TokenSource#getOptionalEquals(Context)
+ *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
  *        de.dante.extex.interpreter.type.muskip.Muskip#parse(Context,TokenSource,Typesetter)
  *        &lang;muglue&rang;}

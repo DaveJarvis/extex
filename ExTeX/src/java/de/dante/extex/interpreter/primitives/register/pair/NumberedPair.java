@@ -19,7 +19,8 @@
 
 package de.dante.extex.interpreter.primitives.register.pair;
 
-import de.dante.extex.interpreter.TokenSource;
+import org.extex.interpreter.TokenSource;
+
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 
@@ -56,7 +57,7 @@ public class NumberedPair extends NamedPair {
 
     /**
      * Return the key (the number) for the register.
-     * @see de.dante.extex.interpreter.primitives.register.pair.NamedPair#getKey(de.dante.extex.interpreter.context.Context, de.dante.extex.interpreter.TokenSource)
+     * @see de.dante.extex.interpreter.primitives.register.pair.NamedPair#getKey(de.dante.extex.interpreter.context.Context, org.extex.interpreter.TokenSource)
      */
     protected String getKey(final Context context, final TokenSource source)
             throws InterpreterException {

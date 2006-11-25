@@ -22,6 +22,7 @@ package de.dante.extex.backend.dvi;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 
+
 import junit.framework.TestCase;
 import de.dante.extex.backend.documentWriter.DocumentWriter;
 import de.dante.extex.backend.documentWriter.DocumentWriterOptions;

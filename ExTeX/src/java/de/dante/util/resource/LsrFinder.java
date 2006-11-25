@@ -37,8 +37,9 @@ import java.util.Properties;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
-import de.dante.util.StringList;
-import de.dante.util.StringListIterator;
+import org.extex.type.StringList;
+import org.extex.type.StringListIterator;
+
 import de.dante.util.framework.configuration.Configuration;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
 import de.dante.util.framework.configuration.exception.ConfigurationIOException;

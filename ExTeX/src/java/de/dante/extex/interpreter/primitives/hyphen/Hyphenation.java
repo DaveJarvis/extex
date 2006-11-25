@@ -19,10 +19,10 @@
 
 package de.dante.extex.interpreter.primitives.hyphen;
 
+import org.extex.interpreter.TokenSource;
 import org.extex.type.UnicodeChar;
 import org.extex.type.UnicodeCharList;
 
-import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.primitives.register.CharCode;

@@ -23,7 +23,8 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import de.dante.extex.interpreter.TokenSource;
+import org.extex.interpreter.TokenSource;
+
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.hash.toks.exception.InterpreterMissingHashKeyException;

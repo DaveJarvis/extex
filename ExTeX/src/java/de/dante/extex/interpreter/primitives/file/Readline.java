@@ -21,11 +21,11 @@ package de.dante.extex.interpreter.primitives.file;
 
 import java.util.logging.Logger;
 
+import org.extex.interpreter.Namespace;
+import org.extex.interpreter.TokenSource;
 import org.extex.type.UnicodeChar;
 
 import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.Namespace;
-import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.Tokenizer;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
@@ -62,7 +62,7 @@ import de.dante.util.framework.logger.LogEnabled;
  *      &rarr; &lang;optional prefix&rang; <tt>\readline</tt> {@linkplain
  *        de.dante.extex.interpreter.primitives.file.AbstractFileCode#scanInFileKey(Context,TokenSource,Typesetter)
  *        &lang;infile&nbsp;name&rang;} <tt>to</tt> {@linkplain
- *        de.dante.extex.interpreter.TokenSource#getControlSequence(Context)
+ *        org.extex.interpreter.TokenSource#getControlSequence(Context)
  *        &lang;control sequence&rang;}
  *
  *    &lang;optional prefix&rang;
@@ -131,7 +131,7 @@ public class Readline extends AbstractAssignment implements LogEnabled {
      * @see de.dante.extex.interpreter.type.AbstractAssignment#assign(
      *      de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
     public void assign(final Flags prefix, final Context context,

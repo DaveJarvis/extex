@@ -19,8 +19,9 @@
 
 package de.dante.extex.interpreter.primitives.arithmetic;
 
+import org.extex.interpreter.TokenSource;
+
 import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.exception.helping.CantUseAfterException;
@@ -51,16 +52,16 @@ import de.dante.extex.typesetter.Typesetter;
  *
  *   &lang;dividable&rang;
  *     &rarr; &lang;integer variable&rang; &lang;optional <tt>by</tt>&rang; {@linkplain
- *      de.dante.extex.interpreter.TokenSource#scanNumber(Context)
+ *      org.extex.interpreter.TokenSource#scanNumber(Context)
  *      &lang;8-bit&nbsp;number&rang;}
  *      |  &lang;dimen variable&rang; &lang;optional <tt>by</tt>&rang; {@linkplain
- *      de.dante.extex.interpreter.TokenSource#scanNumber(Context)
+ *      org.extex.interpreter.TokenSource#scanNumber(Context)
  *      &lang;8-bit&nbsp;number&rang;}
  *      |  &lang;glue variable&rang; &lang;optional <tt>by</tt>&rang; {@linkplain
- *      de.dante.extex.interpreter.TokenSource#scanNumber(Context)
+ *      org.extex.interpreter.TokenSource#scanNumber(Context)
  *      &lang;8-bit&nbsp;number&rang;}
  *      |  &lang;muglue variable&rang; &lang;optional <tt>by</tt>&rang; {@linkplain
- *      de.dante.extex.interpreter.TokenSource#scanNumber(Context)
+ *      org.extex.interpreter.TokenSource#scanNumber(Context)
  *      &lang;8-bit&nbsp;number&rang;}
  *
  *   &lang;optional prefix&rang;
@@ -69,7 +70,7 @@ import de.dante.extex.typesetter.Typesetter;
  *
  *   &lang;optional <tt>by</tt>&rang;
  *     &rarr; [by]
- *      |  {@linkplain de.dante.extex.interpreter.TokenSource#skipSpace()
+ *      |  {@linkplain org.extex.interpreter.TokenSource#skipSpace()
 *            &lang;optional spaces&rang;}
  *   </pre>
  *
@@ -107,7 +108,7 @@ public class Divide extends AbstractAssignment {
      * @see de.dante.extex.interpreter.type.Code#execute(
      *      de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
     public void assign(final Flags prefix, final Context context,

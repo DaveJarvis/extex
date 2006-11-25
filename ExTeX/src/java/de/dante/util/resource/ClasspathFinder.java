@@ -24,7 +24,8 @@ import java.text.MessageFormat;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
-import de.dante.util.StringListIterator;
+import org.extex.type.StringListIterator;
+
 import de.dante.util.framework.configuration.Configuration;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
 import de.dante.util.framework.configuration.exception.ConfigurationMissingAttributeException;

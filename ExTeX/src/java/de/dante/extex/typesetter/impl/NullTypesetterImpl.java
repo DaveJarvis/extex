@@ -19,11 +19,12 @@
 
 package de.dante.extex.typesetter.impl;
 
+import org.extex.interpreter.TokenSource;
+import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
 
 import de.dante.extex.backend.BackendDriver;
 import de.dante.extex.backend.documentWriter.DocumentWriter;
-import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.context.tc.TypesettingContext;
 import de.dante.extex.interpreter.type.count.Count;
@@ -46,7 +47,6 @@ import de.dante.extex.typesetter.paragraphBuilder.ParagraphBuilder;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.node.factory.NodeFactory;
-import de.dante.util.Locator;
 import de.dante.util.framework.configuration.Configuration;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
 
@@ -162,7 +162,7 @@ public class NullTypesetterImpl implements Typesetter {
 
     /**
      * @see de.dante.extex.typesetter.Typesetter#ensureHorizontalMode(
-     *      de.dante.util.Locator)
+     *      org.extex.type.Locator)
      */
     public ListMaker ensureHorizontalMode(Locator locator) {
 
@@ -276,7 +276,7 @@ public class NullTypesetterImpl implements Typesetter {
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.context.TypesettingContext,
      *      org.extex.type.UnicodeChar,
-     *      de.dante.util.Locator)
+     *      org.extex.type.Locator)
      */
     public boolean letter(final UnicodeChar uc, final TypesettingContext tc,
             final Context context, TokenSource source, final Locator locator)
@@ -288,7 +288,7 @@ public class NullTypesetterImpl implements Typesetter {
     /**
      * @see de.dante.extex.typesetter.ListMaker#mathShift(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.scanner.type.token.Token)
      */
     public void mathShift(final Context context, final TokenSource source,
@@ -434,7 +434,7 @@ public class NullTypesetterImpl implements Typesetter {
     /**
      * @see de.dante.extex.typesetter.ListMaker#subscriptMark(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter,
      *      de.dante.extex.scanner.type.token.Token)
      */
@@ -447,7 +447,7 @@ public class NullTypesetterImpl implements Typesetter {
     /**
      * @see de.dante.extex.typesetter.Typesetter#superscriptMark(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter,
      *      de.dante.extex.scanner.type.token.Token)
      */
@@ -460,7 +460,7 @@ public class NullTypesetterImpl implements Typesetter {
     /**
      * @see de.dante.extex.typesetter.ListMaker#tab(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.scanner.type.token.Token)
      */
     public void tab(final Context context, final TokenSource source,

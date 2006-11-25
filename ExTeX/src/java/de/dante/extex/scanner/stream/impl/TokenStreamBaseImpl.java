@@ -19,14 +19,15 @@
 
 package de.dante.extex.scanner.stream.impl;
 
+import org.extex.type.Locator;
+
 import de.dante.extex.interpreter.Tokenizer;
 import de.dante.extex.interpreter.type.tokens.Tokens;
+import de.dante.extex.scanner.TokenStream;
 import de.dante.extex.scanner.exception.ScannerException;
-import de.dante.extex.scanner.stream.TokenStream;
 import de.dante.extex.scanner.type.token.SpaceToken;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.scanner.type.token.TokenFactory;
-import de.dante.util.Locator;
 
 /**
  * This is the base implementation of a token stream. It has an internal stack
@@ -86,7 +87,7 @@ public class TokenStreamBaseImpl implements TokenStream {
     }
 
     /**
-     * @see de.dante.extex.scanner.stream.TokenStream#closeFileStream()
+     * @see de.dante.extex.scanner.TokenStream#closeFileStream()
      */
     public boolean closeFileStream() {
 
@@ -95,7 +96,7 @@ public class TokenStreamBaseImpl implements TokenStream {
     }
 
     /**
-     * @see de.dante.extex.scanner.stream.TokenStream#get(
+     * @see de.dante.extex.scanner.TokenStream#get(
      *      de.dante.extex.scanner.type.token.TokenFactory,
      *      de.dante.extex.interpreter.Tokenizer)
      */
@@ -124,7 +125,7 @@ public class TokenStreamBaseImpl implements TokenStream {
     }
 
     /**
-     * @see de.dante.extex.scanner.stream.TokenStream#getLocator()
+     * @see de.dante.extex.scanner.TokenStream#getLocator()
      */
     public Locator getLocator() {
 
@@ -160,7 +161,7 @@ public class TokenStreamBaseImpl implements TokenStream {
     }
 
     /**
-     * @see de.dante.extex.scanner.stream.TokenStream#isEol()
+     * @see de.dante.extex.scanner.TokenStream#isEol()
      */
     public boolean isEol() throws ScannerException {
 
@@ -168,7 +169,7 @@ public class TokenStreamBaseImpl implements TokenStream {
     }
 
     /**
-     * @see de.dante.extex.scanner.stream.TokenStream#isFileStream()
+     * @see de.dante.extex.scanner.TokenStream#isFileStream()
      */
     public boolean isFileStream() {
 
@@ -176,7 +177,7 @@ public class TokenStreamBaseImpl implements TokenStream {
     }
 
     /**
-     * @see de.dante.extex.scanner.stream.TokenStream#put(
+     * @see de.dante.extex.scanner.TokenStream#put(
      *      de.dante.extex.scanner.type.token.Token)
      */
     public void put(final Token token) {

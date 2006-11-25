@@ -19,6 +19,7 @@
 
 package de.dante.extex.interpreter.primitives.hyphen;
 
+
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.AbstractCode;
@@ -57,9 +58,9 @@ import de.dante.extex.language.Language;
  *  <pre class="syntax">
  *    &lang;lang&rang;
  *      &rarr; <tt>\lang</tt> {@linkplain
- *        de.dante.extex.interpreter.TokenSource#getOptionalEquals(Context)
+ *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        de.dante.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
+ *        org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
  *        &lang;tokens&rang;}  </pre>
  *
  * <h4>Examples</h4>
@@ -82,9 +83,9 @@ import de.dante.extex.language.Language;
  *  <pre class="syntax">
  *    &lang;language&rang;
  *      &rarr; <tt>\language</tt> {@linkplain
- *        de.dante.extex.interpreter.TokenSource#getOptionalEquals(Context)
+ *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        de.dante.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
+ *        org.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
  *        &lang;number&rang;}  </pre>
  *
  * <h4>Examples</h4>

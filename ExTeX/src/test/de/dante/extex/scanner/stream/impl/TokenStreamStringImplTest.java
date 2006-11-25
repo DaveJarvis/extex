@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.util.Iterator;
 
+import org.extex.type.StringList;
 import org.extex.type.UnicodeChar;
 
 import junit.framework.TestCase;
@@ -31,12 +32,11 @@ import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.context.impl.ContextImpl;
 import de.dante.extex.interpreter.context.impl.GroupImpl;
 import de.dante.extex.interpreter.context.tc.TypesettingContextImpl;
-import de.dante.extex.scanner.stream.TokenStream;
+import de.dante.extex.scanner.TokenStream;
 import de.dante.extex.scanner.type.Catcode;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.scanner.type.token.TokenFactory;
 import de.dante.extex.scanner.type.token.TokenFactoryImpl;
-import de.dante.util.StringList;
 import de.dante.util.framework.configuration.Configuration;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
 
@@ -58,7 +58,7 @@ public class TokenStreamStringImplTest extends TestCase {
 
         /**
          * @see de.dante.util.framework.configuration.Configuration#getValues(
-         *      de.dante.util.StringList, java.lang.String)
+         *      org.extex.type.StringList, java.lang.String)
          */
         public void getValues(final StringList list, final String key) {
 

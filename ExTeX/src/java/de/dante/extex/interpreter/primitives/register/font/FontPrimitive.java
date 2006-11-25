@@ -22,11 +22,12 @@ package de.dante.extex.interpreter.primitives.register.font;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.extex.interpreter.TokenSource;
+
 import de.dante.extex.font.FontFactory;
 import de.dante.extex.font.FountKey;
 import de.dante.extex.font.exception.FontException;
 import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.exception.helping.HelpingException;
@@ -76,9 +77,9 @@ import de.dante.util.framework.logger.LogEnabled;
  *  <pre class="syntax">
  *    &lang;font&rang;
  *      &rarr; &lang;prefix&rang; <tt>\font</tt> {@linkplain
- *       de.dante.extex.interpreter.TokenSource#getControlSequence(Context)
+ *       org.extex.interpreter.TokenSource#getControlSequence(Context)
  *       &lang;control sequence&rang;} {@linkplain
- *        de.dante.extex.interpreter.TokenSource#getOptionalEquals(Context)
+ *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} &lang;font name&rang; &lang;options&rang;
  *
  *    &lang;prefix&rang;
@@ -91,10 +92,10 @@ import de.dante.util.framework.logger.LogEnabled;
  *
  *    &lang;option&rang;
  *      &rarr; [scaled] {@linkplain
- *        de.dante.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
+ *        org.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
  *        &lang;number&rang;}
  *       | [at] {@linkplain
- *           de.dante.extex.interpreter.type.dimen#Dimen(de.dante.extex.interpreter.context.Context,de.dante.extex.interpreter.TokenSource)
+ *           de.dante.extex.interpreter.type.dimen#Dimen(de.dante.extex.interpreter.context.Context,org.extex.interpreter.TokenSource)
  *           &lang;size&rang;}
  *       | [noligatures]
  *       | [nokerning]
@@ -178,7 +179,7 @@ public class FontPrimitive extends AbstractAssignment
      * @see de.dante.extex.interpreter.type.Code#execute(
      *      de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
     public void assign(final Flags prefix, final Context context,
@@ -252,7 +253,7 @@ public class FontPrimitive extends AbstractAssignment
     /**
      * @see de.dante.extex.interpreter.type.font.FontConvertible#convertFont(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
     public Font convertFont(final Context context, final TokenSource source,

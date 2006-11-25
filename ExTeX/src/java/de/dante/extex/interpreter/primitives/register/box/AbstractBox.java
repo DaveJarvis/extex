@@ -21,8 +21,9 @@ package de.dante.extex.interpreter.primitives.register.box;
 
 import java.io.Serializable;
 
-import de.dante.extex.interpreter.Namespace;
-import de.dante.extex.interpreter.TokenSource;
+import org.extex.interpreter.Namespace;
+import org.extex.interpreter.TokenSource;
+
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.AbstractCode;
@@ -84,9 +85,9 @@ public abstract class AbstractBox extends AbstractCode implements Serializable {
      * <pre class="syntax">
      *   &lang;box register name&rang;
      *       &rarr; {@linkplain
-     *        de.dante.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,String)
+     *        org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,String)
      *        &lang;tokens&rang;}
-     *        | {@linkplain de.dante.extex.interpreter.TokenSource#scanNumber(Context)
+     *        | {@linkplain org.extex.interpreter.TokenSource#scanNumber(Context)
      *        &lang;number&rang;}  </pre>
      *
      * <h4>Examples</h4>

@@ -21,13 +21,14 @@ package de.dante.extex.interpreter.context;
 
 import java.util.Iterator;
 
+import org.extex.interpreter.Namespace;
+import org.extex.interpreter.TokenSource;
+import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
 
 import de.dante.extex.color.ColorConverter;
 import de.dante.extex.font.FontFactory;
 import de.dante.extex.interpreter.Conditional;
-import de.dante.extex.interpreter.Namespace;
-import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.Tokenizer;
 import de.dante.extex.interpreter.context.group.GroupInfo;
 import de.dante.extex.interpreter.context.group.GroupType;
@@ -57,7 +58,7 @@ import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.interpreter.unit.UnitInfo;
 import de.dante.extex.language.Language;
 import de.dante.extex.language.LanguageManager;
-import de.dante.extex.scanner.stream.TokenStream;
+import de.dante.extex.scanner.TokenStream;
 import de.dante.extex.scanner.type.Catcode;
 import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.scanner.type.token.Token;
@@ -66,7 +67,6 @@ import de.dante.extex.scanner.type.token.TokenFactoryImpl;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.typesetter.paragraphBuilder.ParagraphShape;
-import de.dante.util.Locator;
 import de.dante.util.exception.GeneralException;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
 
@@ -139,7 +139,7 @@ public class MockContext implements Context, TypesetterOptions {
     /**
      * @see de.dante.extex.interpreter.context.ContextGroup#closeGroup(
      *      de.dante.extex.typesetter.Typesetter,
-     *      de.dante.extex.interpreter.TokenSource)
+     *      org.extex.interpreter.TokenSource)
      */
     public void closeGroup(final Typesetter typesetter, final TokenSource source)
             throws InterpreterException {
@@ -607,7 +607,7 @@ public class MockContext implements Context, TypesetterOptions {
     /**
      * @see de.dante.extex.interpreter.context.ContextGroup#openGroup(
      *      de.dante.extex.interpreter.context.group.GroupType,
-     *      de.dante.util.Locator,
+     *      org.extex.type.Locator,
      *      de.dante.extex.scanner.type.token.Token)
      */
     public void openGroup(GroupType id, Locator locator, Token start)
@@ -635,7 +635,7 @@ public class MockContext implements Context, TypesetterOptions {
 
     /**
      * @see de.dante.extex.interpreter.context.Context#pushConditional(
-     *      de.dante.util.Locator,
+     *      org.extex.type.Locator,
      *      boolean,
      *      de.dante.extex.interpreter.type.Code,
      *      long,
@@ -944,7 +944,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#setStandardTokenStream(de.dante.extex.scanner.stream.TokenStream)
+     * @see de.dante.extex.interpreter.context.Context#setStandardTokenStream(de.dante.extex.scanner.TokenStream)
      */
     public void setStandardTokenStream(final TokenStream standardTokenStream) {
 

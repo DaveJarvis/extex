@@ -31,13 +31,14 @@ import java.util.Stack;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.extex.interpreter.TokenSource;
+import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
 
 import de.dante.extex.backend.documentWriter.DocumentWriterOptions;
 import de.dante.extex.font.FontFactory;
 import de.dante.extex.interpreter.Conditional;
 import de.dante.extex.interpreter.ConditionalSwitch;
-import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.Tokenizer;
 import de.dante.extex.interpreter.context.Color;
 import de.dante.extex.interpreter.context.ContextInternals;
@@ -87,7 +88,7 @@ import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.interpreter.unit.UnitInfo;
 import de.dante.extex.language.Language;
 import de.dante.extex.language.LanguageManager;
-import de.dante.extex.scanner.stream.TokenStream;
+import de.dante.extex.scanner.TokenStream;
 import de.dante.extex.scanner.stream.TokenStreamOptions;
 import de.dante.extex.scanner.type.Catcode;
 import de.dante.extex.scanner.type.token.CodeToken;
@@ -96,7 +97,6 @@ import de.dante.extex.scanner.type.token.TokenFactory;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.typesetter.paragraphBuilder.ParagraphShape;
-import de.dante.util.Locator;
 import de.dante.util.exception.GeneralException;
 import de.dante.util.framework.Registrar;
 import de.dante.util.framework.configuration.Configurable;
@@ -442,7 +442,7 @@ public class ContextImpl
     /**
      * @see de.dante.extex.interpreter.context.Context#closeGroup(
      *      de.dante.extex.typesetter.Typesetter,
-     *     de.dante.extex.interpreter.TokenSource)
+     *     org.extex.interpreter.TokenSource)
      */
     public void closeGroup(final Typesetter typesetter, final TokenSource source)
             throws InterpreterException {
@@ -1084,7 +1084,7 @@ public class ContextImpl
     /**
      * @see de.dante.extex.interpreter.context.ContextGroup#openGroup(
      *      de.dante.extex.interpreter.context.group.GroupType,
-     *      de.dante.util.Locator,
+     *      org.extex.type.Locator,
      *      de.dante.extex.scanner.type.token.Token)
      */
     public void openGroup(final GroupType type, final Locator locator,
@@ -1144,7 +1144,7 @@ public class ContextImpl
 
     /**
      * @see de.dante.extex.interpreter.context.Context#pushConditional(
-     *      de.dante.util.Locator,
+     *      org.extex.type.Locator,
      *      boolean,
      *      de.dante.extex.interpreter.type.Code,
      *      long,
@@ -1198,7 +1198,7 @@ public class ContextImpl
 
     /**
      * @see de.dante.extex.interpreter.context.observer.load.LoadedObservable#receiveLoad(
-     *      de.dante.extex.interpreter.TokenSource)
+     *      org.extex.interpreter.TokenSource)
      */
     public void receiveLoad(final TokenSource source)
             throws InterpreterException {

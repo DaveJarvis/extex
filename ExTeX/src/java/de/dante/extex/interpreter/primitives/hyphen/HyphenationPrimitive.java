@@ -19,11 +19,11 @@
 
 package de.dante.extex.interpreter.primitives.hyphen;
 
+import org.extex.interpreter.TokenSource;
 import org.extex.type.UnicodeChar;
 import org.extex.type.UnicodeCharList;
 
 import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.exception.helping.MissingLeftBraceException;
@@ -153,7 +153,7 @@ public class HyphenationPrimitive extends AbstractHyphenationCode {
      * @see de.dante.extex.interpreter.type.Code#execute(
      *      de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
     public void execute(final Flags prefix, final Context context,

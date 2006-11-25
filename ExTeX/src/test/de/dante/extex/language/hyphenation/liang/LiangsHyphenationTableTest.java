@@ -19,8 +19,9 @@
 
 package de.dante.extex.language.hyphenation.liang;
 
+import org.extex.interpreter.Namespace;
+
 import junit.framework.TestCase;
-import de.dante.extex.interpreter.Namespace;
 import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.scanner.type.Catcode;
 import de.dante.extex.scanner.type.CatcodeException;

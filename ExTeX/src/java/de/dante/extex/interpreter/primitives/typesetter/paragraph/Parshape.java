@@ -19,8 +19,9 @@
 
 package de.dante.extex.interpreter.primitives.typesetter.paragraph;
 
+import org.extex.interpreter.TokenSource;
+
 import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.AbstractCode;
@@ -65,7 +66,7 @@ import de.dante.extex.typesetter.paragraphBuilder.ParagraphShape;
  *  <pre class="syntax">
  *    &lang;parshape&rang;
  *        &rarr; <tt>\parshape</tt> {@linkplain
- *        de.dante.extex.interpreter.TokenSource#scanNumber(Context)
+ *        org.extex.interpreter.TokenSource#scanNumber(Context)
  *        &lang;8-bit&nbsp;number&rang;} ... </pre>
  *
  * <h4>Examples</h4>
@@ -111,7 +112,7 @@ public class Parshape extends AbstractCode implements CountConvertible, Theable 
     /**
      * @see de.dante.extex.interpreter.type.count.CountConvertible#convertCount(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource, Typesetter)
+     *      org.extex.interpreter.TokenSource, Typesetter)
      */
     public long convertCount(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
@@ -124,7 +125,7 @@ public class Parshape extends AbstractCode implements CountConvertible, Theable 
      * @see de.dante.extex.interpreter.type.Code#execute(
      *      de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
     public void execute(final Flags prefix, final Context context,
@@ -148,7 +149,7 @@ public class Parshape extends AbstractCode implements CountConvertible, Theable 
     /**
      * @see de.dante.extex.interpreter.type.Theable#the(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource, Typesetter)
+     *      org.extex.interpreter.TokenSource, Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {

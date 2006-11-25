@@ -19,8 +19,9 @@
 
 package de.dante.extex.interpreter.primitives.typesetter.undo;
 
+import org.extex.interpreter.TokenSource;
+
 import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.exception.helping.HelpingException;
@@ -46,7 +47,7 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
  *  <pre class="syntax">
  *    &lang;unhbox&rang;
  *       &rarr; <tt>&#x5c;unhbox</tt> {@linkplain
- *          de.dante.extex.interpreter.TokenSource#scanNumber(Context)
+ *          org.extex.interpreter.TokenSource#scanNumber(Context)
  *          &lang;8-bit&nbsp;number&rang;} </pre>
  *
  * <h4>Examples</h4>
@@ -79,7 +80,7 @@ public class Unhbox extends AbstractBox {
      * @see de.dante.extex.interpreter.type.Code#execute(
      *      de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
     public void execute(final Flags prefix, final Context context,

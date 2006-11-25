@@ -26,6 +26,8 @@ import java.util.Calendar;
 import java.util.Iterator;
 import java.util.logging.Logger;
 
+import org.extex.interpreter.Namespace;
+import org.extex.interpreter.TokenSource;
 import org.extex.type.UnicodeChar;
 
 import de.dante.extex.backend.outputStream.OutputStreamFactory;
@@ -35,8 +37,6 @@ import de.dante.extex.interpreter.ErrorHandler;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.FlagsImpl;
 import de.dante.extex.interpreter.Interpreter;
-import de.dante.extex.interpreter.Namespace;
-import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.context.group.GroupType;
 import de.dante.extex.interpreter.context.observer.group.SwitchObserver;
@@ -85,7 +85,7 @@ import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.interpreter.unit.LoadUnit;
 import de.dante.extex.interpreter.unit.UnitInfo;
 import de.dante.extex.language.LanguageManager;
-import de.dante.extex.scanner.stream.TokenStream;
+import de.dante.extex.scanner.TokenStream;
 import de.dante.extex.scanner.type.Catcode;
 import de.dante.extex.scanner.type.CatcodeException;
 import de.dante.extex.scanner.type.token.ActiveCharacterToken;
@@ -143,9 +143,9 @@ import de.dante.util.framework.logger.LogEnabled;
  *  <pre class="syntax">
  *    &lang;ignorevoid&rang;
  *      &rarr; <tt>\ignorevoid</tt> {@linkplain
- *        de.dante.extex.interpreter.TokenSource#getOptionalEquals(Context)
+ *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        de.dante.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
+ *        org.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
  *        &lang;number&rang;}  </pre>
  *
  * <h4>Examples</h4>
@@ -166,7 +166,7 @@ import de.dante.util.framework.logger.LogEnabled;
  *  <pre class="syntax">
  *    &lang;everyjob&rang;
  *       &rarr; <tt>\everyjob</tt> {@linkplain
- *        de.dante.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
+ *        org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
  *        &lang;tokens&rang;}  </pre>
  *
  * <h4>Examples</h4>
@@ -619,7 +619,7 @@ public abstract class Max
     }
 
     /**
-     * @see de.dante.extex.interpreter.TokenSource#execute(
+     * @see org.extex.interpreter.TokenSource#execute(
      *      de.dante.extex.scanner.type.token.Token, Context, Typesetter)
      */
     public void execute(final Token token, final Context theContext,
@@ -652,7 +652,7 @@ public abstract class Max
     }
 
     /**
-     * @see de.dante.extex.interpreter.TokenSource#executeGroup()
+     * @see org.extex.interpreter.TokenSource#executeGroup()
      */
     public void executeGroup() throws InterpreterException {
 
@@ -886,9 +886,9 @@ public abstract class Max
      *  <pre class="syntax">
      *    &lang;day&rang;
      *      &rarr; <tt>\day</tt> {@linkplain
-     *        de.dante.extex.interpreter.TokenSource#getOptionalEquals(Context)
+     *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
      *        &lang;equals&rang;} {@linkplain
-     *        de.dante.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
+     *        org.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
      *        &lang;number&rang;}  </pre>
      *
      * <h4>Examples</h4>
@@ -918,9 +918,9 @@ public abstract class Max
      *  <pre class="syntax">
      *    &lang;month&rang;
      *      &rarr; <tt>\month</tt> {@linkplain
-     *        de.dante.extex.interpreter.TokenSource#getOptionalEquals(Context)
+     *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
      *        &lang;equals&rang;} {@linkplain
-     *        de.dante.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
+     *        org.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
      *        &lang;number&rang;}  </pre>
      *
      * <h4>Examples</h4>
@@ -949,9 +949,9 @@ public abstract class Max
      *  <pre class="syntax">
      *    &lang;year&rang;
      *      &rarr; <tt>\year</tt> {@linkplain
-     *        de.dante.extex.interpreter.TokenSource#getOptionalEquals(Context)
+     *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
      *        &lang;equals&rang;} {@linkplain
-     *        de.dante.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
+     *        org.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
      *        &lang;number&rang;}  </pre>
      *
      * <h4>Examples</h4>
@@ -982,9 +982,9 @@ public abstract class Max
      *  <pre class="syntax">
      *    &lang;time&rang;
      *      &rarr; <tt>\time</tt> {@linkplain
-     *        de.dante.extex.interpreter.TokenSource#getOptionalEquals(Context)
+     *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
      *        &lang;equals&rang;} {@linkplain
-     *        de.dante.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
+     *        org.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
      *        &lang;number&rang;}  </pre>
      *
      * <h4>Examples</h4>
@@ -1289,7 +1289,7 @@ public abstract class Max
 
     /**
      * @see de.dante.extex.interpreter.Interpreter#run(
-     *      de.dante.extex.scanner.stream.TokenStream)
+     *      de.dante.extex.scanner.TokenStream)
      */
     public void run(final TokenStream stream)
             throws ConfigurationException,

@@ -19,13 +19,14 @@
 
 package de.dante.extex.interpreter.primitives.color;
 
+import org.extex.interpreter.TokenSource;
+
 import de.dante.extex.color.ColorUtil;
 import de.dante.extex.color.ColorVisitor;
 import de.dante.extex.color.model.CmykColor;
 import de.dante.extex.color.model.GrayscaleColor;
 import de.dante.extex.color.model.HsvColor;
 import de.dante.extex.color.model.RgbColor;
-import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Color;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
@@ -165,7 +166,7 @@ public abstract class AbstractColor extends AbstractAssignment
     /**
      * @see de.dante.extex.interpreter.type.Theable#the(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,

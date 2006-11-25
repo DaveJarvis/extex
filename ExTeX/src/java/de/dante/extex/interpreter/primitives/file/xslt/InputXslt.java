@@ -30,8 +30,9 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactoryConfigurationError;
 import javax.xml.transform.stream.StreamSource;
 
+import org.extex.interpreter.TokenSource;
+
 import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.primitives.file.AbstractFileCode;
@@ -92,7 +93,7 @@ public class InputXslt extends AbstractFileCode {
      * @see de.dante.extex.interpreter.type.AbstractCode#execute(
      *      de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
     public void execute(final Flags prefix, final Context context,
@@ -147,7 +148,7 @@ public class InputXslt extends AbstractFileCode {
      *
      * @see de.dante.extex.interpreter.primitives.file.AbstractFileCode#scanFileName(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource)
+     *      org.extex.interpreter.TokenSource)
      */
     protected String scanFileName(final Context context,
             final TokenSource source) throws InterpreterException {

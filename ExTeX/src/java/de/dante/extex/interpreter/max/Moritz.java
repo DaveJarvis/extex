@@ -21,12 +21,13 @@ package de.dante.extex.interpreter.max;
 
 import java.util.ArrayList;
 
+import org.extex.interpreter.Namespace;
+import org.extex.interpreter.TokenSource;
+import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
 
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.Interpreter;
-import de.dante.extex.interpreter.Namespace;
-import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.Tokenizer;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.IllegalRegisterException;
@@ -64,8 +65,8 @@ import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.interpreter.type.font.FontConvertible;
 import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.interpreter.type.tokens.TokensConvertible;
+import de.dante.extex.scanner.TokenStream;
 import de.dante.extex.scanner.exception.ScannerException;
-import de.dante.extex.scanner.stream.TokenStream;
 import de.dante.extex.scanner.stream.TokenStreamFactory;
 import de.dante.extex.scanner.stream.observer.file.OpenFileObservable;
 import de.dante.extex.scanner.stream.observer.file.OpenFileObserver;
@@ -85,7 +86,6 @@ import de.dante.extex.scanner.type.token.SpaceToken;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.scanner.type.token.TokenFactory;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.Locator;
 import de.dante.util.exception.GeneralException;
 import de.dante.util.exception.NotObservableException;
 import de.dante.util.framework.configuration.Configurable;
@@ -268,8 +268,8 @@ public class Moritz extends Max
      *
      * @param theStream the new stream to read from
      *
-     * @see de.dante.extex.interpreter.TokenSource#addStream(
-     *      de.dante.extex.scanner.stream.TokenStream)
+     * @see org.extex.interpreter.TokenSource#addStream(
+     *      de.dante.extex.scanner.TokenStream)
      */
     public void addStream(final TokenStream theStream) {
 
@@ -278,7 +278,7 @@ public class Moritz extends Max
     }
 
     /**
-     * @see de.dante.extex.interpreter.TokenSource#closeAllStreams(
+     * @see org.extex.interpreter.TokenSource#closeAllStreams(
      *      de.dante.extex.interpreter.context.Context)
      */
     public void closeAllStreams(final Context context)
@@ -290,7 +290,7 @@ public class Moritz extends Max
     }
 
     /**
-     * @see de.dante.extex.interpreter.TokenSource#closeNextFileStream(
+     * @see org.extex.interpreter.TokenSource#closeNextFileStream(
      *      de.dante.extex.interpreter.context.Context)
      */
     public void closeNextFileStream(final Context context)
@@ -323,9 +323,9 @@ public class Moritz extends Max
      *  <pre class="syntax">
      *    &lang;everyveof&rang;
      *      &rarr; <tt>\everyeof</tt> {@linkplain
-     *        de.dante.extex.interpreter.TokenSource#getOptionalEquals(Context)
+     *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
      *        &lang;equals&rang;} {@linkplain
-     *        de.dante.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
+     *        org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
      *        &lang;tokens&rang;}  </pre>
      *
      * <h4>Examples</h4>
@@ -356,7 +356,7 @@ public class Moritz extends Max
     }
 
     /**
-     * @see de.dante.extex.interpreter.TokenSource#getBox(
+     * @see org.extex.interpreter.TokenSource#getBox(
      *      de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.typesetter.Typesetter)
@@ -423,7 +423,7 @@ public class Moritz extends Max
     }
 
     /**
-     * @see de.dante.extex.interpreter.TokenSource#getFont(
+     * @see org.extex.interpreter.TokenSource#getFont(
      *      de.dante.extex.interpreter.context.Context,
      *      java.lang.String)
      */
@@ -510,7 +510,7 @@ public class Moritz extends Max
     }
 
     /**
-     * @see de.dante.extex.interpreter.TokenSource#getLocator()
+     * @see org.extex.interpreter.TokenSource#getLocator()
      */
     public Locator getLocator() {
 
@@ -518,7 +518,7 @@ public class Moritz extends Max
     }
 
     /**
-     * @see de.dante.extex.interpreter.TokenSource#getNonSpace(
+     * @see org.extex.interpreter.TokenSource#getNonSpace(
      *      de.dante.extex.interpreter.context.Context)
      */
     public Token getNonSpace(final Context context) throws InterpreterException {
@@ -664,7 +664,7 @@ public class Moritz extends Max
      *
      * @throws InterpreterException in case of an error
      *
-     * @see de.dante.extex.interpreter.TokenSource#getOptionalEquals(Context)
+     * @see org.extex.interpreter.TokenSource#getOptionalEquals(Context)
      */
     public void getOptionalEquals(final Context context)
             throws InterpreterException {
@@ -695,7 +695,7 @@ public class Moritz extends Max
      *
      * @throws InterpreterException in case of an error
      *
-     * @see de.dante.extex.interpreter.TokenSource#getToken(
+     * @see org.extex.interpreter.TokenSource#getToken(
      *      de.dante.extex.interpreter.context.Context)
      */
     public Token getToken(final Context context) throws InterpreterException {
@@ -754,7 +754,7 @@ public class Moritz extends Max
     }
 
     /**
-     * @see de.dante.extex.interpreter.TokenSource#getLastToken()
+     * @see org.extex.interpreter.TokenSource#getLastToken()
      */
     public Token getLastToken() {
 
@@ -762,9 +762,9 @@ public class Moritz extends Max
     }
 
     /**
-     * @see de.dante.extex.interpreter.TokenSource#getTokens(
+     * @see org.extex.interpreter.TokenSource#getTokens(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
     public Tokens getTokens(final Context context, final TokenSource source,
@@ -820,7 +820,7 @@ public class Moritz extends Max
      *
      * @throws InterpreterException in case of an error
      *
-     * @see de.dante.extex.interpreter.TokenSource#push(
+     * @see org.extex.interpreter.TokenSource#push(
      *      de.dante.extex.scanner.type.token.Token)
      */
     public void push(final Token token) throws InterpreterException {
@@ -849,7 +849,7 @@ public class Moritz extends Max
      *
      * @throws InterpreterException in case of an error
      *
-     * @see de.dante.extex.interpreter.TokenSource#push(
+     * @see org.extex.interpreter.TokenSource#push(
      *      de.dante.extex.scanner.type.token.Token[])
      */
     public void push(final Token[] tokens) throws InterpreterException {
@@ -885,7 +885,7 @@ public class Moritz extends Max
      *
      * @throws InterpreterException in case of an error
      *
-     * @see de.dante.extex.interpreter.TokenSource#push(
+     * @see org.extex.interpreter.TokenSource#push(
      *      de.dante.extex.interpreter.type.tokens.Tokens)
      */
     public void push(final Tokens tokens) throws InterpreterException {
@@ -1023,7 +1023,7 @@ public class Moritz extends Max
      *  the name of a Unicode character in braces.
      * </p>
      *
-     * @see de.dante.extex.interpreter.TokenSource#scanCharacterCode(
+     * @see org.extex.interpreter.TokenSource#scanCharacterCode(
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.typesetter.Typesetter,
      *      java.lang.String)
@@ -1072,7 +1072,7 @@ public class Moritz extends Max
      * @throws InterpreterException
      *  in case of an error in {@link #scanToken(Context) scanToken()}
      *
-     * @see de.dante.extex.interpreter.TokenSource#scanNonSpace(
+     * @see org.extex.interpreter.TokenSource#scanNonSpace(
      *      de.dante.extex.interpreter.context.Context)
      */
     public Token scanNonSpace(final Context context)
@@ -1088,7 +1088,7 @@ public class Moritz extends Max
     }
 
     /**
-     * @see de.dante.extex.interpreter.TokenSource#scanNumber(Context)
+     * @see org.extex.interpreter.TokenSource#scanNumber(Context)
      */
     public long scanNumber(final Context context) throws InterpreterException {
 
@@ -1097,7 +1097,7 @@ public class Moritz extends Max
     }
 
     /**
-     * @see de.dante.extex.interpreter.TokenSource#scanNumber(
+     * @see org.extex.interpreter.TokenSource#scanNumber(
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.scanner.type.token.Token)
      */
@@ -1108,9 +1108,9 @@ public class Moritz extends Max
     }
 
     /**
-     * @see de.dante.extex.interpreter.TokenSource#scanRegisterName(
+     * @see org.extex.interpreter.TokenSource#scanRegisterName(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter, java.lang.String)
      */
     public String scanRegisterName(final Context context,
@@ -1150,7 +1150,7 @@ public class Moritz extends Max
      *
      * @throws InterpreterException in case of an error
      *
-     * @see de.dante.extex.interpreter.TokenSource#scanToken(
+     * @see org.extex.interpreter.TokenSource#scanToken(
      *      de.dante.extex.interpreter.context.Context)
      */
     public Token scanToken(final Context context) throws InterpreterException {
@@ -1159,7 +1159,7 @@ public class Moritz extends Max
     }
 
     /**
-     * @see de.dante.extex.interpreter.TokenSource#scanTokens(
+     * @see org.extex.interpreter.TokenSource#scanTokens(
      *      de.dante.extex.interpreter.context.Context,
      *      boolean,
      *      boolean,
@@ -1214,7 +1214,7 @@ public class Moritz extends Max
     }
 
     /**
-     * @see de.dante.extex.interpreter.TokenSource#scanTokensAsString(
+     * @see org.extex.interpreter.TokenSource#scanTokensAsString(
      *      de.dante.extex.interpreter.context.Context,
      *      java.lang.String)
      */
@@ -1225,7 +1225,7 @@ public class Moritz extends Max
     }
 
     /**
-     * @see de.dante.extex.interpreter.TokenSource#scanUnprotectedTokens(
+     * @see org.extex.interpreter.TokenSource#scanUnprotectedTokens(
      *      de.dante.extex.interpreter.context.Context,
      *      boolean,
      *      boolean,
@@ -1294,7 +1294,7 @@ public class Moritz extends Max
     }
 
     /**
-     * @see de.dante.extex.interpreter.TokenSource#skipSpace()
+     * @see org.extex.interpreter.TokenSource#skipSpace()
      */
     public void skipSpace() {
 
@@ -1302,7 +1302,7 @@ public class Moritz extends Max
     }
 
     /**
-     * @see de.dante.extex.interpreter.TokenSource#update(java.lang.String,
+     * @see org.extex.interpreter.TokenSource#update(java.lang.String,
      *      java.lang.String)
      */
     public void update(final String name, final String text)

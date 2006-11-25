@@ -39,6 +39,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.StreamHandler;
 
+
 import de.dante.extex.backend.BackendDriver;
 import de.dante.extex.backend.BackendFactory;
 import de.dante.extex.backend.documentWriter.DocumentWriterOptions;
@@ -73,7 +74,7 @@ import de.dante.extex.language.LanguageManager;
 import de.dante.extex.language.LanguageManagerFactory;
 import de.dante.extex.main.logging.LogFormatter;
 import de.dante.extex.main.observer.InteractionModeObserver;
-import de.dante.extex.scanner.stream.TokenStream;
+import de.dante.extex.scanner.TokenStream;
 import de.dante.extex.scanner.stream.TokenStreamFactory;
 import de.dante.extex.scanner.stream.TokenStreamOptions;
 import de.dante.extex.scanner.type.CatcodeException;

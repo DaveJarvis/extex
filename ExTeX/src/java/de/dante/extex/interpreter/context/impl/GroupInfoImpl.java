@@ -19,10 +19,11 @@
 
 package de.dante.extex.interpreter.context.impl;
 
+import org.extex.type.Locator;
+
 import de.dante.extex.interpreter.context.group.GroupInfo;
 import de.dante.extex.interpreter.context.group.GroupType;
 import de.dante.extex.scanner.type.token.Token;
-import de.dante.util.Locator;
 
 /**
  * This class provides a reference implementation for a

@@ -19,10 +19,10 @@
 
 package de.dante.extex.interpreter.primitives.register;
 
+import org.extex.interpreter.TokenSource;
 import org.extex.type.UnicodeChar;
 
 import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.exception.helping.InvalidCodeException;
@@ -115,11 +115,11 @@ import de.dante.extex.typesetter.Typesetter;
  *  <pre class="syntax">
  *    &lang;catcode&rang;
  *      &rarr; &lang;optional prefix&rang; <tt>\catcode</tt> {@linkplain
- *          de.dante.extex.interpreter.TokenSource#scanNumber(Context)
+ *          org.extex.interpreter.TokenSource#scanNumber(Context)
  *          &lang;8-bit&nbsp;number&rang;} {@linkplain
- *          de.dante.extex.interpreter.TokenSource#getOptionalEquals(Context)
+ *          org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *          &lang;equals&rang;} {@linkplain
- *          de.dante.extex.interpreter.TokenSource#scanNumber(Context)
+ *          org.extex.interpreter.TokenSource#scanNumber(Context)
  *          &lang;4-bit&nbsp;number&rang;}
  *
  *    &lang;optional prefix&rang;
@@ -170,7 +170,7 @@ public class CatcodePrimitive extends AbstractAssignment
      * @see de.dante.extex.interpreter.type.Code#execute(
      *      de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
     public void assign(final Flags prefix, final Context context,
@@ -195,7 +195,7 @@ public class CatcodePrimitive extends AbstractAssignment
     /**
      * @see de.dante.extex.interpreter.type.count.CountConvertible#convertCount(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
     public long convertCount(final Context context, final TokenSource source,
@@ -210,7 +210,7 @@ public class CatcodePrimitive extends AbstractAssignment
     /**
      * @see de.dante.extex.interpreter.type.Theable#the(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,

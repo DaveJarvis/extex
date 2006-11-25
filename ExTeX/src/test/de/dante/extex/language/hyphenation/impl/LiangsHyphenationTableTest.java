@@ -19,8 +19,10 @@
 
 package de.dante.extex.language.hyphenation.impl;
 
+
+import org.extex.interpreter.Namespace;
+
 import junit.framework.TestCase;
-import de.dante.extex.interpreter.Namespace;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.context.MockContext;
 import de.dante.extex.interpreter.type.tokens.Tokens;

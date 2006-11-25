@@ -19,8 +19,9 @@
 
 package de.dante.extex.interpreter.primitives.register.font;
 
-import de.dante.extex.interpreter.Namespace;
-import de.dante.extex.interpreter.TokenSource;
+import org.extex.interpreter.Namespace;
+import org.extex.interpreter.TokenSource;
+
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.count.Count;
@@ -103,7 +104,7 @@ public class NumberedFont extends NamedFont {
      *
      * @see de.dante.extex.interpreter.primitives.register.font.NamedFont#getKey(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
     protected String getKey(final Context context, final TokenSource source,

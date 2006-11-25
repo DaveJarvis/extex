@@ -21,8 +21,9 @@ package de.dante.extex.interpreter.primitives.register.box;
 
 import java.io.Serializable;
 
+import org.extex.interpreter.TokenSource;
+
 import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.box.Box;
@@ -83,7 +84,7 @@ public class BoxPrimitive extends AbstractBox implements Boxable, Serializable {
      * @see de.dante.extex.interpreter.type.Code#execute(
      *      de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
     public void execute(final Flags prefix, final Context context,
@@ -105,7 +106,7 @@ public class BoxPrimitive extends AbstractBox implements Boxable, Serializable {
     /**
      * @see de.dante.extex.interpreter.type.box.Boxable#getBox(
      *       de.dante.extex.interpreter.context.Context,
-     *       de.dante.extex.interpreter.TokenSource,
+     *       org.extex.interpreter.TokenSource,
      *       de.dante.extex.typesetter.Typesetter)
      */
     public Box getBox(final Context context, final TokenSource source,

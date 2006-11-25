@@ -19,7 +19,8 @@
 
 package de.dante.extex.interpreter.primitives.conditional;
 
-import de.dante.extex.interpreter.TokenSource;
+import org.extex.interpreter.TokenSource;
+
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.typesetter.Typesetter;
 
@@ -70,7 +71,7 @@ public class Iffalse extends AbstractIf {
     /**
      * @see de.dante.extex.interpreter.primitives.conditional.AbstractIf#conditional(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
     protected boolean conditional(final Context context,

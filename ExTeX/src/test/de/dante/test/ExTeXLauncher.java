@@ -33,13 +33,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.StreamHandler;
 
+import org.extex.interpreter.TokenSource;
+
 import junit.framework.TestCase;
 import de.dante.extex.ExTeX;
 import de.dante.extex.backend.outputStream.OutputStreamFactory;
 import de.dante.extex.font.exception.FontException;
 import de.dante.extex.interpreter.ErrorHandler;
 import de.dante.extex.interpreter.Interpreter;
-import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.dimen.Dimen;
@@ -89,7 +90,7 @@ public class ExTeXLauncher extends TestCase {
          * @see de.dante.extex.interpreter.ErrorHandler#handleError(
          *      de.dante.util.GeneralException,
          *      de.dante.extex.scanner.type.token.Token,
-         *      de.dante.extex.interpreter.TokenSource,
+         *      org.extex.interpreter.TokenSource,
          *      de.dante.extex.interpreter.context.Context)
          */
         public boolean handleError(final GeneralException e, final Token token,

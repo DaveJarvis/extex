@@ -19,8 +19,9 @@
 
 package de.dante.extex.interpreter.primitives.typesetter.box;
 
+import org.extex.interpreter.TokenSource;
+
 import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.AbstractCode;
@@ -49,7 +50,7 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
  *        &rarr; <tt>\vrule</tt>&lang;rule specification&rang;
  *
  *    &lang;rule specification&rang;
- *        &rarr; {@linkplain de.dante.extex.interpreter.TokenSource#skipSpace()
+ *        &rarr; {@linkplain org.extex.interpreter.TokenSource#skipSpace()
  *            &lang;optional&nbsp;spaces&rang;}
  *         |  &lang;rule dimension&rang; &lang;rule specification&rang;
  *
@@ -119,7 +120,7 @@ public class Vrule extends AbstractCode implements RuleConvertible {
      * @see de.dante.extex.interpreter.type.Code#execute(
      *      de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      * @see "<logo>TeX</logo> &ndash; The Program [463]"
      */
@@ -139,7 +140,7 @@ public class Vrule extends AbstractCode implements RuleConvertible {
     /**
      * @see de.dante.extex.interpreter.type.box.RuleConvertible#getRule(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
     public RuleNode getRule(final Context context, final TokenSource source,

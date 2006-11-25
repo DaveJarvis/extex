@@ -19,10 +19,10 @@
 
 package de.dante.extex.scanner.type.token;
 
+import org.extex.interpreter.Namespace;
 import org.extex.type.UnicodeChar;
 
 import junit.framework.TestCase;
-import de.dante.extex.interpreter.Namespace;
 import de.dante.extex.scanner.type.Catcode;
 
 /**

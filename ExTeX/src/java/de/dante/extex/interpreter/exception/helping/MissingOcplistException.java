@@ -19,6 +19,7 @@
 
 package de.dante.extex.interpreter.exception.helping;
 
+
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.scanner.type.token.Token;

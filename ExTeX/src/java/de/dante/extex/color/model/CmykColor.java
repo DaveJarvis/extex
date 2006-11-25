@@ -19,6 +19,7 @@
 
 package de.dante.extex.color.model;
 
+
 import de.dante.extex.color.ColorUtil;
 import de.dante.extex.color.ColorVisitor;
 import de.dante.extex.interpreter.context.Color;

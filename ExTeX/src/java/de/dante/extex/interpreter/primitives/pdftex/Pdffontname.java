@@ -19,9 +19,10 @@
 
 package de.dante.extex.interpreter.primitives.pdftex;
 
+import org.extex.interpreter.TokenSource;
+
 import de.dante.extex.backend.documentWriter.PdftexSupport;
 import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.ExpandableCode;
@@ -47,7 +48,7 @@ import de.dante.extex.typesetter.Typesetter;
  *  <pre class="syntax">
  *    &lang;pdffontname&rang;
  *       &rarr; <tt>\pdffontname</tt> {@linkplain
- *          de.dante.extex.interpreter.TokenSource#getFont(Context, String)
+ *          org.extex.interpreter.TokenSource#getFont(Context, String)
  *          &lang;font&rang;} </pre>
  *
  * <h4>Examples</h4>
@@ -84,7 +85,7 @@ public class Pdffontname extends AbstractPdftexCode
     /**
      * @see de.dante.extex.interpreter.type.tokens.TokensConvertible#convertTokens(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
     public Tokens convertTokens(final Context context,
@@ -103,7 +104,7 @@ public class Pdffontname extends AbstractPdftexCode
      * @see de.dante.extex.interpreter.type.Code#execute(
      *      de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
     public void execute(final Flags prefix, final Context context,
@@ -117,7 +118,7 @@ public class Pdffontname extends AbstractPdftexCode
      * @see de.dante.extex.interpreter.type.ExpandableCode#expand(
      *      de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
     public void expand(final Flags prefix, final Context context,
@@ -130,7 +131,7 @@ public class Pdffontname extends AbstractPdftexCode
     /**
      * @see de.dante.extex.interpreter.type.Theable#the(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,

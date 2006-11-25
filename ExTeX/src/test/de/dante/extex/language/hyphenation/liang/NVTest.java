@@ -22,6 +22,7 @@ package de.dante.extex.language.hyphenation.liang;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.extex.interpreter.Namespace;
 import org.extex.type.UnicodeChar;
 
 import junit.framework.TestCase;
@@ -33,7 +34,6 @@ import de.dante.extex.font.Ligature;
 import de.dante.extex.font.type.BoundingBox;
 import de.dante.extex.font.type.other.NullFont;
 import de.dante.extex.font.type.tfm.TFMFixWord;
-import de.dante.extex.interpreter.Namespace;
 import de.dante.extex.interpreter.context.tc.ModifiableTypesettingContext;
 import de.dante.extex.interpreter.context.tc.TypesettingContext;
 import de.dante.extex.interpreter.context.tc.TypesettingContextImpl;

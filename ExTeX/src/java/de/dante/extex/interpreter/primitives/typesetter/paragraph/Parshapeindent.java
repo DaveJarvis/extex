@@ -19,7 +19,8 @@
 
 package de.dante.extex.interpreter.primitives.typesetter.paragraph;
 
-import de.dante.extex.interpreter.TokenSource;
+import org.extex.interpreter.TokenSource;
+
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.AbstractCode;
@@ -53,7 +54,7 @@ import de.dante.util.exception.GeneralException;
  *  <pre class="syntax">
  *    &lang;parshapeindent&rang;
  *        &rarr; <tt>\parshapeindent</tt> {@linkplain
- *        de.dante.extex.interpreter.TokenSource#scanNumber(Context)
+ *        org.extex.interpreter.TokenSource#scanNumber(Context)
  *        &lang;8-bit&nbsp;number&rang;} </pre>
  *
  * <h4>Examples</h4>
@@ -91,7 +92,7 @@ public class Parshapeindent extends AbstractCode
     /**
      * @see de.dante.extex.interpreter.type.count.CountConvertible#convertCount(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource, Typesetter)
+     *      org.extex.interpreter.TokenSource, Typesetter)
      */
     public long convertCount(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
@@ -102,7 +103,7 @@ public class Parshapeindent extends AbstractCode
     /**
      * @see de.dante.extex.interpreter.type.count.DimenConvertible#convertDimen(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource, Typesetter)
+     *      org.extex.interpreter.TokenSource, Typesetter)
      */
     public long convertDimen(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
@@ -116,7 +117,7 @@ public class Parshapeindent extends AbstractCode
     /**
      * @see de.dante.extex.interpreter.type.Theable#the(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource, Typesetter)
+     *      org.extex.interpreter.TokenSource, Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {

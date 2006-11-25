@@ -19,8 +19,9 @@
 
 package de.dante.extex.interpreter.primitives.color.util;
 
+import org.extex.interpreter.TokenSource;
+
 import de.dante.extex.color.model.ColorFactory;
-import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Color;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
@@ -80,7 +81,7 @@ public final class ColorParser {
         /**
          * @see de.dante.extex.interpreter.primitives.color.util.ColorParser.ColorMode#parse(
          *      de.dante.extex.interpreter.context.Context,
-         *      de.dante.extex.interpreter.TokenSource,
+         *      org.extex.interpreter.TokenSource,
          *      de.dante.extex.typesetter.Typesetter,
          *      int,
          *      java.lang.String)
@@ -106,7 +107,7 @@ public final class ColorParser {
         /**
          * @see de.dante.extex.interpreter.primitives.color.util.ColorParser.ColorMode#parse(
          *      de.dante.extex.interpreter.context.Context,
-         *      de.dante.extex.interpreter.TokenSource,
+         *      org.extex.interpreter.TokenSource,
          *      de.dante.extex.typesetter.Typesetter,
          *      int,
          *      java.lang.String)
@@ -129,7 +130,7 @@ public final class ColorParser {
         /**
          * @see de.dante.extex.interpreter.primitives.color.util.ColorParser.ColorMode#parse(
          *      de.dante.extex.interpreter.context.Context,
-         *      de.dante.extex.interpreter.TokenSource,
+         *      org.extex.interpreter.TokenSource,
          *      de.dante.extex.typesetter.Typesetter,
          *      int,
          *      java.lang.String)
@@ -149,7 +150,7 @@ public final class ColorParser {
     /**
      * @see de.dante.extex.interpreter.primitives.color.util.ColorParser.ColorMode#parse(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter,
      *      int,
      *      java.lang.String)

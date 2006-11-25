@@ -19,8 +19,9 @@
 
 package de.dante.extex.interpreter.primitives.math.symbol;
 
+import org.extex.interpreter.TokenSource;
+
 import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.primitives.math.AbstractTeXMathCode;
@@ -83,7 +84,7 @@ public class Mathchar extends AbstractTeXMathCode
     /**
      * @see de.dante.extex.interpreter.primitives.math.util.MathCodeConvertible#convertMathCode(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
     public MathCode convertMathCode(final Context context,
@@ -98,7 +99,7 @@ public class Mathchar extends AbstractTeXMathCode
      * @see de.dante.extex.interpreter.type.Code#execute(
      *      de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
     public void execute(final Flags prefix, final Context context,

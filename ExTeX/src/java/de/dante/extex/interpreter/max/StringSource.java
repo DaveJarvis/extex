@@ -22,17 +22,17 @@ package de.dante.extex.interpreter.max;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.extex.interpreter.Namespace;
+import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
 
-import de.dante.extex.interpreter.Namespace;
 import de.dante.extex.interpreter.Tokenizer;
 import de.dante.extex.interpreter.exception.InterpreterException;
+import de.dante.extex.scanner.TokenStream;
 import de.dante.extex.scanner.exception.ScannerException;
-import de.dante.extex.scanner.stream.TokenStream;
 import de.dante.extex.scanner.type.CatcodeException;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.scanner.type.token.TokenFactory;
-import de.dante.util.Locator;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
@@ -78,7 +78,7 @@ public class StringSource extends Moritz {
         }
 
         /**
-         * @see de.dante.extex.scanner.stream.TokenStream#closeFileStream()
+         * @see de.dante.extex.scanner.TokenStream#closeFileStream()
          */
         public boolean closeFileStream() {
 
@@ -87,7 +87,7 @@ public class StringSource extends Moritz {
         }
 
         /**
-         * @see de.dante.extex.scanner.stream.TokenStream#get(
+         * @see de.dante.extex.scanner.TokenStream#get(
          *      de.dante.extex.scanner.type.token.TokenFactory,
          *      de.dante.extex.interpreter.Tokenizer)
          */
@@ -111,7 +111,7 @@ public class StringSource extends Moritz {
         }
 
         /**
-         * @see de.dante.extex.scanner.stream.TokenStream#getLocator()
+         * @see de.dante.extex.scanner.TokenStream#getLocator()
          */
         public Locator getLocator() {
 
@@ -119,7 +119,7 @@ public class StringSource extends Moritz {
         }
 
         /**
-         * @see de.dante.extex.scanner.stream.TokenStream#isEof()
+         * @see de.dante.extex.scanner.TokenStream#isEof()
          */
         public boolean isEof() throws ScannerException {
 
@@ -127,7 +127,7 @@ public class StringSource extends Moritz {
         }
 
         /**
-         * @see de.dante.extex.scanner.stream.TokenStream#isEol()
+         * @see de.dante.extex.scanner.TokenStream#isEol()
          */
         public boolean isEol() throws ScannerException {
 
@@ -135,7 +135,7 @@ public class StringSource extends Moritz {
         }
 
         /**
-         * @see de.dante.extex.scanner.stream.TokenStream#isFileStream()
+         * @see de.dante.extex.scanner.TokenStream#isFileStream()
          */
         public boolean isFileStream() {
 
@@ -143,7 +143,7 @@ public class StringSource extends Moritz {
         }
 
         /**
-         * @see de.dante.extex.scanner.stream.TokenStream#put(
+         * @see de.dante.extex.scanner.TokenStream#put(
          *      de.dante.extex.scanner.type.token.Token)
          */
         public void put(final Token token) {

@@ -26,12 +26,13 @@ import java.io.Reader;
 import java.io.StringReader;
 import java.util.Properties;
 
+import org.extex.interpreter.TokenSource;
+
 import junit.framework.Assert;
 import de.dante.extex.ExTeX;
 import de.dante.extex.interpreter.ErrorHandler;
 import de.dante.extex.interpreter.Interpreter;
 import de.dante.extex.interpreter.InterpreterFactory;
-import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.main.errorHandler.editHandler.EditHandler;
 import de.dante.extex.scanner.type.token.Token;

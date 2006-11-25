@@ -19,8 +19,9 @@
 
 package de.dante.extex.interpreter.primitives.register.count;
 
-import de.dante.extex.interpreter.Namespace;
-import de.dante.extex.interpreter.TokenSource;
+import org.extex.interpreter.Namespace;
+import org.extex.interpreter.TokenSource;
+
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.AbstractAssignment;
@@ -79,7 +80,7 @@ public abstract class AbstractCount extends AbstractAssignment
     /**
      * @see de.dante.extex.interpreter.type.InitializableCode#init(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
     public void init(final Context context, final TokenSource source,

@@ -22,11 +22,12 @@ package de.dante.extex.typesetter.impl;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
+import org.extex.interpreter.TokenSource;
+import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
 
 import de.dante.extex.backend.BackendDriver;
 import de.dante.extex.backend.documentWriter.DocumentWriter;
-import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.context.tc.TypesettingContext;
 import de.dante.extex.interpreter.exception.ImpossibleException;
@@ -57,7 +58,6 @@ import de.dante.extex.typesetter.type.node.PenaltyNode;
 import de.dante.extex.typesetter.type.node.VerticalListNode;
 import de.dante.extex.typesetter.type.node.factory.CachingNodeFactory;
 import de.dante.extex.typesetter.type.node.factory.NodeFactory;
-import de.dante.util.Locator;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
 import de.dante.util.framework.i18n.Localizable;
 import de.dante.util.framework.i18n.Localizer;
@@ -313,7 +313,7 @@ public class TypesetterImpl
 
     /**
      * @see de.dante.extex.typesetter.listMaker.ListManager#ensureHorizontalMode(
-     *      de.dante.util.Locator)
+     *      org.extex.type.Locator)
      */
     public ListMaker ensureHorizontalMode(final Locator locator)
             throws TypesetterException {
@@ -448,7 +448,7 @@ public class TypesetterImpl
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.context.TypesettingContext,
      *      org.extex.type.UnicodeChar,
-     *      de.dante.util.Locator)
+     *      org.extex.type.Locator)
      */
     public boolean letter(final UnicodeChar uc, final TypesettingContext tc,
             final Context context, TokenSource source, final Locator locator)
@@ -460,7 +460,7 @@ public class TypesetterImpl
     /**
      * @see de.dante.extex.typesetter.ListMaker#mathShift(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.scanner.type.token.Token)
      */
     public void mathShift(final Context context, final TokenSource source,
@@ -668,7 +668,7 @@ public class TypesetterImpl
     /**
      * @see de.dante.extex.typesetter.ListMaker#subscriptMark(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter,
      *      de.dante.extex.scanner.type.token.Token)
      */
@@ -682,7 +682,7 @@ public class TypesetterImpl
     /**
      * @see de.dante.extex.typesetter.Typesetter#superscriptMark(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      Typesetter, de.dante.extex.scanner.type.token.Token)
      */
     public void superscriptMark(final Context context,

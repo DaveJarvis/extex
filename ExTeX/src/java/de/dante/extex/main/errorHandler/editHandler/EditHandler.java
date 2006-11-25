@@ -19,7 +19,8 @@
 
 package de.dante.extex.main.errorHandler.editHandler;
 
-import de.dante.util.Locator;
+import org.extex.type.Locator;
+
 import de.dante.util.framework.i18n.Localizer;
 
 /**

@@ -19,7 +19,8 @@
 
 package de.dante.extex.interpreter.primitives.omega.dir;
 
-import de.dante.extex.interpreter.TokenSource;
+import org.extex.interpreter.TokenSource;
+
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.context.tc.Direction;
 import de.dante.extex.interpreter.context.tc.Direction.Dir;

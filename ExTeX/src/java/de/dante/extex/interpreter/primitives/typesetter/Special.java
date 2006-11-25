@@ -19,8 +19,9 @@
 
 package de.dante.extex.interpreter.primitives.typesetter;
 
+import org.extex.interpreter.TokenSource;
+
 import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.AbstractCode;
@@ -48,7 +49,7 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
  *  <pre class="syntax">
  *    &lang;special&rang;
  *        &rarr; <tt>\special</tt> {@linkplain
- *           de.dante.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,String)
+ *           org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,String)
  *           &lang;general text&rang;}  </pre>
  *
  * <h4>Examples</h4>
@@ -92,7 +93,7 @@ public class Special extends AbstractCode {
      * @see de.dante.extex.interpreter.type.Code#execute(
      *      de.dante.extex.interpreter.Flags,
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
     public void execute(final Flags prefix, final Context context,

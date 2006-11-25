@@ -19,6 +19,7 @@
 
 package de.dante.extex.interpreter.primitives.color;
 
+
 import de.dante.extex.color.model.GrayscaleColor;
 import de.dante.extex.color.model.RgbColor;
 import de.dante.extex.interpreter.Interpreter;

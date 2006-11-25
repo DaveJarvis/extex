@@ -27,20 +27,20 @@ import java.io.LineNumberReader;
 import java.io.Reader;
 import java.io.StringReader;
 
+import org.extex.interpreter.Namespace;
+import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
 
-import de.dante.extex.interpreter.Namespace;
 import de.dante.extex.interpreter.Tokenizer;
 import de.dante.extex.interpreter.exception.helping.InvalidCharacterException;
+import de.dante.extex.scanner.TokenStream;
 import de.dante.extex.scanner.exception.ScannerException;
-import de.dante.extex.scanner.stream.TokenStream;
 import de.dante.extex.scanner.stream.TokenStreamOptions;
 import de.dante.extex.scanner.type.Catcode;
 import de.dante.extex.scanner.type.CatcodeException;
 import de.dante.extex.scanner.type.CatcodeVisitor;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.scanner.type.token.TokenFactory;
-import de.dante.util.Locator;
 import de.dante.util.exception.GeneralException;
 import de.dante.util.framework.configuration.Configuration;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
@@ -645,7 +645,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
     }
 
     /**
-     * @see de.dante.extex.scanner.stream.TokenStream#getLocator()
+     * @see de.dante.extex.scanner.TokenStream#getLocator()
      */
     public Locator getLocator() {
 
@@ -718,7 +718,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
     }
 
     /**
-     * @see de.dante.extex.scanner.stream.TokenStream#isEof()
+     * @see de.dante.extex.scanner.TokenStream#isEof()
      */
     public boolean isEof() throws ScannerException {
 
@@ -740,7 +740,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
     }
 
     /**
-     * @see de.dante.extex.scanner.stream.TokenStream#isEol()
+     * @see de.dante.extex.scanner.TokenStream#isEol()
      */
     public boolean isEol() {
 

@@ -31,6 +31,7 @@ import java.util.zip.GZIPOutputStream;
 
 import de.dante.extex.interpreter.context.Context;
 
+
 /**
  * This class writes and reads format files.
  * <p>

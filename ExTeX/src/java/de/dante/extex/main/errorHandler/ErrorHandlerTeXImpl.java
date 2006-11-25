@@ -21,7 +21,8 @@ package de.dante.extex.main.errorHandler;
 
 import java.util.logging.Logger;
 
-import de.dante.util.Locator;
+import org.extex.type.Locator;
+
 
 /**
  * This is the error handler in <logo>TeX</logo> compatibility mode: the message
@@ -43,7 +44,7 @@ public class ErrorHandlerTeXImpl extends ErrorHandlerImpl {
 
     /**
      * @see de.dante.extex.main.errorHandler.ErrorHandlerImpl#showErrorLine(
-     *      java.util.logging.Logger, java.lang.String, de.dante.util.Locator)
+     *      java.util.logging.Logger, java.lang.String, org.extex.type.Locator)
      */
     protected void showErrorLine(final Logger logger, final String message,
             final Locator locator) {

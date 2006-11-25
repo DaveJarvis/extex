@@ -19,7 +19,8 @@
 
 package de.dante.extex.interpreter.primitives.file;
 
-import de.dante.extex.interpreter.TokenSource;
+import org.extex.interpreter.TokenSource;
+
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.exception.helping.BadFileNumberException;
@@ -80,7 +81,7 @@ public abstract class AbstractFileCode extends AbstractCode
      *  <pre class="syntax">
      *    &lang;infile&nbsp;name&rang;
      *      &rarr; {@linkplain
-     *        de.dante.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
+     *        org.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
      *        &lang;number&rang;} </pre>
      * </doc>
      *
@@ -124,7 +125,7 @@ public abstract class AbstractFileCode extends AbstractCode
      *  <pre class="syntax">
      *    &lang;infile&nbsp;name&rang;
      *      &rarr; {@linkplain
-     *        de.dante.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
+     *        org.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
      *        &lang;number&rang;} </pre>
      * </doc>
      *

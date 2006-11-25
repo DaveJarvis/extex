@@ -19,7 +19,8 @@
 
 package de.dante.extex.interpreter.expression.term;
 
-import de.dante.extex.interpreter.TokenSource;
+import org.extex.interpreter.TokenSource;
+
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.expression.Evaluator;
@@ -50,7 +51,7 @@ public final class TGlueParser implements ETypeParser {
      * @see de.dante.extex.interpreter.expression.ETypeParser#convert(
      *      de.dante.extex.interpreter.type.Code,
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
     public EType convert(final Code code, final Context context,
@@ -63,7 +64,7 @@ public final class TGlueParser implements ETypeParser {
     /**
      * @see de.dante.extex.interpreter.expression.TerminalParser#parse(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
     public EType parse(final Context context, final TokenSource source,

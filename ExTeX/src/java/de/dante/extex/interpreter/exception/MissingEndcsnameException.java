@@ -19,6 +19,7 @@
 
 package de.dante.extex.interpreter.exception;
 
+
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.util.framework.i18n.LocalizerFactory;

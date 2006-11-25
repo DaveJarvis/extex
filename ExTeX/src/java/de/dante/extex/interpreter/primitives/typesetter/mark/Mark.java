@@ -19,7 +19,8 @@
 
 package de.dante.extex.interpreter.primitives.typesetter.mark;
 
-import de.dante.extex.interpreter.TokenSource;
+import org.extex.interpreter.TokenSource;
+
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.typesetter.Typesetter;
@@ -128,7 +129,7 @@ public class Mark extends Marks {
     /**
      * @see de.dante.extex.interpreter.primitives.typesetter.mark.AbstractMarkCode#getKey(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter)
      */
     protected String getKey(final Context context, final TokenSource source,

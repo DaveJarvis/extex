@@ -19,7 +19,8 @@
 
 package de.dante.extex.interpreter.primitives.typesetter.box;
 
-import de.dante.extex.interpreter.TokenSource;
+import org.extex.interpreter.TokenSource;
+
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.context.group.GroupType;
 import de.dante.extex.interpreter.exception.InterpreterException;
@@ -88,7 +89,7 @@ public class Vtop extends Vbox {
     /**
      * @see de.dante.extex.interpreter.primitives.typesetter.box.Vbox#constructBox(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter,
      *      de.dante.extex.scanner.type.token.Token)
      */

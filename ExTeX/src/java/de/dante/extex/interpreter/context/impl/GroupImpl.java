@@ -22,10 +22,11 @@ package de.dante.extex.interpreter.context.impl;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.extex.interpreter.Namespace;
+import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
 
 import de.dante.extex.font.type.other.NullFont;
-import de.dante.extex.interpreter.Namespace;
 import de.dante.extex.interpreter.context.group.GroupType;
 import de.dante.extex.interpreter.context.observer.group.AfterGroupObserver;
 import de.dante.extex.interpreter.context.observer.group.AfterGroupObserverList;
@@ -45,12 +46,11 @@ import de.dante.extex.interpreter.type.math.MathCode;
 import de.dante.extex.interpreter.type.math.MathDelimiter;
 import de.dante.extex.interpreter.type.muskip.Muskip;
 import de.dante.extex.interpreter.type.tokens.Tokens;
-import de.dante.extex.scanner.stream.TokenStream;
+import de.dante.extex.scanner.TokenStream;
 import de.dante.extex.scanner.type.Catcode;
 import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.type.noad.MathGlyph;
-import de.dante.util.Locator;
 
 /**
  * This is a simple implementation for a group. The whole stack of groups is
@@ -1192,7 +1192,7 @@ public class GroupImpl implements Group {
 
     /**
      * @see de.dante.extex.interpreter.context.impl.Group#setStandardTokenStream(
-     *      de.dante.extex.scanner.stream.TokenStream)
+     *      de.dante.extex.scanner.TokenStream)
      */
     public void setStandardTokenStream(final TokenStream standardTokenStream) {
 

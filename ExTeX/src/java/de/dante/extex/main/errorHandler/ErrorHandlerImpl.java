@@ -22,8 +22,10 @@ package de.dante.extex.main.errorHandler;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+import org.extex.interpreter.TokenSource;
+import org.extex.type.Locator;
+
 import de.dante.extex.interpreter.ErrorHandler;
-import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.ImpossibleException;
 import de.dante.extex.interpreter.exception.InterpreterException;
@@ -32,7 +34,6 @@ import de.dante.extex.interpreter.interaction.Interaction;
 import de.dante.extex.interpreter.interaction.InteractionVisitor;
 import de.dante.extex.main.errorHandler.editHandler.EditHandler;
 import de.dante.extex.scanner.type.token.Token;
-import de.dante.util.Locator;
 import de.dante.util.exception.GeneralException;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
 import de.dante.util.framework.i18n.Localizable;
@@ -335,7 +336,7 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
      * @see de.dante.extex.interpreter.ErrorHandler#handleError(
      *      de.dante.util.exception.GeneralException,
      *      de.dante.extex.scanner.type.token.Token,
-     *      de.dante.extex.interpreter.TokenSource,
+     *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.interpreter.context.Context)
      */
     public boolean handleError(final GeneralException exception, final Token t,

@@ -19,7 +19,8 @@
 
 package de.dante.extex.interpreter.primitives.register.bool;
 
-import de.dante.extex.interpreter.TokenSource;
+import org.extex.interpreter.TokenSource;
+
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 
@@ -58,7 +59,7 @@ public class NumberedBool extends NamedBool {
     /**
      * @see de.dante.extex.interpreter.primitives.register.bool.NamedBool#getKey(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource)
+     *      org.extex.interpreter.TokenSource)
      */
     protected String getKey(final Context context, final TokenSource source)
             throws InterpreterException {

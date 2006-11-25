@@ -22,9 +22,10 @@ package de.dante.extex.interpreter.context.impl;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
+import org.extex.type.Locator;
+
 import de.dante.extex.interpreter.context.group.GroupType;
 import de.dante.extex.scanner.type.token.Token;
-import de.dante.util.Locator;
 import de.dante.util.framework.configuration.Configuration;
 import de.dante.util.framework.configuration.exception.ConfigurationClassNotFoundException;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
