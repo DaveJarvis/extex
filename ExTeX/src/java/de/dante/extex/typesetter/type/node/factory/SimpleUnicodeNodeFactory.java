@@ -19,12 +19,13 @@
 
 package de.dante.extex.typesetter.type.node.factory;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.interpreter.context.tc.TypesettingContext;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.node.DiscretionaryNode;
 import de.dante.extex.typesetter.type.node.HorizontalListNode;
 import de.dante.extex.unicode.Unicode;
-import de.dante.util.UnicodeChar;
 
 /**
  * This is the factory for
@@ -56,7 +57,7 @@ public class SimpleUnicodeNodeFactory extends SimpleNodeFactory {
      *
      * @see de.dante.extex.typesetter.type.node.factory.NodeFactory#getNode(
      *      de.dante.extex.interpreter.context.TypesettingContext,
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public Node getNode(final TypesettingContext typesettingContext,
             final UnicodeChar uc) {

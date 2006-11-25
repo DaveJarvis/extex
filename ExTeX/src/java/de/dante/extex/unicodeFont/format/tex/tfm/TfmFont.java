@@ -27,6 +27,8 @@ import java.util.HashMap;
 import java.util.Properties;
 import java.util.logging.Logger;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.glue.Glue;
@@ -37,7 +39,6 @@ import de.dante.extex.unicodeFont.type.ExtexFont;
 import de.dante.extex.unicodeFont.type.FontInit;
 import de.dante.extex.unicodeFont.type.InputStreamConfigurable;
 import de.dante.extex.unicodeFont.type.TexFont;
-import de.dante.util.UnicodeChar;
 import de.dante.util.file.random.RandomAccessInputStream;
 import de.dante.util.file.random.RandomAccessR;
 import de.dante.util.framework.Registrar;
@@ -192,7 +193,7 @@ public class TfmFont
 
     /**
      * @see de.dante.extex.unicodeFont.type.ExtexFont#getDepth(
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public Glue getDepth(final UnicodeChar uc) {
 
@@ -267,7 +268,7 @@ public class TfmFont
 
     /**
      * @see de.dante.extex.unicodeFont.type.ExtexFont#getHeight(
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public Glue getHeight(final UnicodeChar uc) {
 
@@ -284,7 +285,7 @@ public class TfmFont
 
     /**
      * @see de.dante.extex.unicodeFont.type.ExtexFont#getItalicCorrection(
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public Dimen getItalicCorrection(final UnicodeChar uc) {
 
@@ -301,7 +302,7 @@ public class TfmFont
 
     /**
      * @see de.dante.extex.unicodeFont.type.ExtexFont#getKerning(
-     *      de.dante.util.UnicodeChar, de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar, org.extex.type.UnicodeChar)
      */
     public Dimen getKerning(final UnicodeChar uc1, final UnicodeChar uc2) {
 
@@ -335,7 +336,7 @@ public class TfmFont
 
     /**
      * @see de.dante.extex.unicodeFont.type.ExtexFont#getLigature(
-     *      de.dante.util.UnicodeChar, de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar, org.extex.type.UnicodeChar)
      */
     public UnicodeChar getLigature(final UnicodeChar uc1, final UnicodeChar uc2) {
 
@@ -411,7 +412,7 @@ public class TfmFont
 
     /**
      * @see de.dante.extex.unicodeFont.type.ExtexFont#getWidth(
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public Glue getWidth(final UnicodeChar uc) {
 
@@ -483,7 +484,7 @@ public class TfmFont
 
     /**
      * @see de.dante.extex.unicodeFont.type.TexFont#setHyphenChar(
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public void setHyphenChar(final UnicodeChar uc) {
 
@@ -492,7 +493,7 @@ public class TfmFont
 
     /**
      * @see de.dante.extex.unicodeFont.type.TexFont#setSkewChar(
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public void setSkewChar(final UnicodeChar uc) {
 

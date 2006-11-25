@@ -19,8 +19,9 @@
 
 package de.dante.extex.scanner.type.token;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.scanner.type.Catcode;
-import de.dante.util.UnicodeChar;
 
 /**
  * This class represents a sub mark token.

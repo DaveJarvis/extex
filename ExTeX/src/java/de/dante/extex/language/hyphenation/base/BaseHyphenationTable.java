@@ -24,6 +24,9 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.extex.type.UnicodeChar;
+import org.extex.type.UnicodeCharList;
+
 import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.language.ModifiableLanguage;
@@ -35,8 +38,6 @@ import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.node.CharNode;
 import de.dante.extex.typesetter.type.node.factory.NodeFactory;
 import de.dante.extex.unicode.Unicode;
-import de.dante.util.UnicodeChar;
-import de.dante.util.UnicodeCharList;
 import de.dante.util.framework.Registrar;
 
 /**
@@ -141,7 +142,7 @@ public class BaseHyphenationTable implements ModifiableLanguage, Serializable {
 
     /**
      * @see de.dante.extex.language.hyphenation.Hyphenator#addHyphenation(
-     *      de.dante.util.UnicodeCharList,
+     *      org.extex.type.UnicodeCharList,
      *      de.dante.extex.typesetter.TypesetterOptions)
      */
     public void addHyphenation(final UnicodeCharList word,
@@ -164,7 +165,7 @@ public class BaseHyphenationTable implements ModifiableLanguage, Serializable {
      * @see de.dante.extex.language.word.WordTokenizer#findWord(
      *      de.dante.extex.typesetter.type.NodeList,
      *      int,
-     *      de.dante.util.UnicodeCharList)
+     *      org.extex.type.UnicodeCharList)
      */
     public int findWord(final NodeList nodes, final int start,
             final UnicodeCharList word) throws HyphenationException {
@@ -182,8 +183,8 @@ public class BaseHyphenationTable implements ModifiableLanguage, Serializable {
 
     /**
      * @see de.dante.extex.language.ligature.LigatureBuilder#getLigature(
-     *      de.dante.util.UnicodeChar,
-     *      de.dante.util.UnicodeChar,
+     *      org.extex.type.UnicodeChar,
+     *      org.extex.type.UnicodeChar,
      *      de.dante.extex.interpreter.type.font.Font)
      */
     public UnicodeChar getLigature(final UnicodeChar c1, final UnicodeChar c2,
@@ -212,7 +213,7 @@ public class BaseHyphenationTable implements ModifiableLanguage, Serializable {
      * @see de.dante.extex.language.hyphenation.Hyphenator#hyphenate(
      *      de.dante.extex.typesetter.type.NodeList,
      *      de.dante.extex.typesetter.TypesetterOptions,
-     *      de.dante.util.UnicodeChar,
+     *      org.extex.type.UnicodeChar,
      *      int,
      *      boolean,
      *      de.dante.extex.typesetter.type.node.factory.NodeFactory)
@@ -316,7 +317,7 @@ public class BaseHyphenationTable implements ModifiableLanguage, Serializable {
 
     /**
      * @see de.dante.extex.language.word.WordTokenizer#normalize(
-     *      de.dante.util.UnicodeCharList,
+     *      org.extex.type.UnicodeCharList,
      *      de.dante.extex.typesetter.TypesetterOptions)
      */
     public UnicodeCharList normalize(final UnicodeCharList word,

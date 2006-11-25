@@ -21,6 +21,8 @@ package de.dante.extex.interpreter.context.impl;
 
 import java.io.Serializable;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.interpreter.Tokenizer;
 import de.dante.extex.interpreter.context.group.GroupType;
 import de.dante.extex.interpreter.context.observer.group.AfterGroupObserver;
@@ -43,7 +45,6 @@ import de.dante.extex.scanner.type.Catcode;
 import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.util.Locator;
-import de.dante.util.UnicodeChar;
 
 /**
  * This is the implementation of a group object. A group is the container for

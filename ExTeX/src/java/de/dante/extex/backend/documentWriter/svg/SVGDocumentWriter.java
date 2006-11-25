@@ -26,6 +26,8 @@ import java.util.Iterator;
 import java.util.Locale;
 import java.util.Map;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.backend.documentWriter.DocumentWriter;
 import de.dante.extex.backend.documentWriter.DocumentWriterOptions;
 import de.dante.extex.backend.documentWriter.MultipleDocumentStream;
@@ -60,7 +62,6 @@ import de.dante.extex.typesetter.type.node.VerticalListNode;
 import de.dante.extex.typesetter.type.node.VirtualCharNode;
 import de.dante.extex.typesetter.type.node.WhatsItNode;
 import de.dante.extex.typesetter.type.page.Page;
-import de.dante.util.UnicodeChar;
 import de.dante.util.Unit;
 import de.dante.util.exception.GeneralException;
 import de.dante.util.framework.configuration.Configuration;

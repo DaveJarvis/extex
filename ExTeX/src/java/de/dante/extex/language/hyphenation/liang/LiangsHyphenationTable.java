@@ -21,6 +21,9 @@ package de.dante.extex.language.hyphenation.liang;
 
 import java.util.logging.Logger;
 
+import org.extex.type.UnicodeChar;
+import org.extex.type.UnicodeCharList;
+
 import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.language.hyphenation.base.BaseHyphenationTable;
 import de.dante.extex.language.hyphenation.exception.DuplicateHyphenationException;
@@ -36,8 +39,6 @@ import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.node.CharNode;
 import de.dante.extex.typesetter.type.node.factory.NodeFactory;
-import de.dante.util.UnicodeChar;
-import de.dante.util.UnicodeCharList;
 
 /**
  * This class stores the values for hyphenations and hyphenates words.
@@ -238,7 +239,7 @@ public class LiangsHyphenationTable extends BaseHyphenationTable {
      * @see de.dante.extex.language.hyphenation.Hyphenator#hyphenate(
      *      de.dante.extex.typesetter.type.NodeList,
      *      de.dante.extex.typesetter.TypesetterOptions,
-     *      de.dante.util.UnicodeChar,
+     *      org.extex.type.UnicodeChar,
      *      int,
      *      boolean,
      *      de.dante.extex.typesetter.type.node.factory.NodeFactory)
@@ -280,7 +281,7 @@ public class LiangsHyphenationTable extends BaseHyphenationTable {
      *      de.dante.extex.typesetter.type.NodeList,
      *      de.dante.extex.typesetter.TypesetterOptions,
      *      int,
-     *      de.dante.util.UnicodeCharList,
+     *      org.extex.type.UnicodeCharList,
      *      de.dante.extex.typesetter.type.node.CharNode)
      */
     public boolean hyphenateOne(final NodeList nodelist,

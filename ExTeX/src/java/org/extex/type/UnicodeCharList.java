@@ -16,10 +16,11 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  */
 
-package de.dante.util;
+package org.extex.type;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+
 
 /**
  * This class provides a list of <code>UnicodeChar</code>s.

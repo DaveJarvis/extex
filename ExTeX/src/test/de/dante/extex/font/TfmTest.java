@@ -19,13 +19,14 @@
 
 package de.dante.extex.font;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.ExTeXRunner;
 import de.dante.extex.font.type.tfm.TFMFont;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.dimen.FixedDimen;
 import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.interpreter.type.glue.Glue;
-import de.dante.util.UnicodeChar;
 
 /**
  * Test for the tfm class.

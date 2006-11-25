@@ -21,6 +21,8 @@ package de.dante.extex.typesetter.type.noad;
 
 import java.util.logging.Logger;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.font.type.other.NullFont;
 import de.dante.extex.interpreter.context.Color;
 import de.dante.extex.interpreter.context.tc.TypesettingContext;
@@ -39,7 +41,6 @@ import de.dante.extex.typesetter.type.noad.util.MathContext;
 import de.dante.extex.typesetter.type.noad.util.MathSpacing;
 import de.dante.extex.typesetter.type.node.CharNode;
 import de.dante.extex.typesetter.type.node.ImplicitKernNode;
-import de.dante.util.UnicodeChar;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**

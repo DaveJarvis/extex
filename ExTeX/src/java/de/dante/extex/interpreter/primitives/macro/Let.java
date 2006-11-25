@@ -19,6 +19,8 @@
 
 package de.dante.extex.interpreter.primitives.macro;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
@@ -45,7 +47,6 @@ import de.dante.extex.scanner.type.token.TabMarkToken;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.scanner.type.token.TokenVisitor;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.UnicodeChar;
 import de.dante.util.exception.GeneralException;
 
 /**

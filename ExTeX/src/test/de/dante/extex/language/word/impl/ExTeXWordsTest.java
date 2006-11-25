@@ -19,6 +19,8 @@
 
 package de.dante.extex.language.word.impl;
 
+import org.extex.type.UnicodeChar;
+
 import junit.framework.TestCase;
 import de.dante.extex.interpreter.context.tc.ModifiableTypesettingContext;
 import de.dante.extex.interpreter.context.tc.TypesettingContextImpl;
@@ -35,7 +37,6 @@ import de.dante.extex.typesetter.type.node.LigatureNode;
 import de.dante.extex.typesetter.type.node.factory.NodeFactory;
 import de.dante.extex.typesetter.type.node.factory.SimpleNodeFactory;
 import de.dante.test.font.CMR10;
-import de.dante.util.UnicodeChar;
 
 /**
  * TODO gene: missing JavaDoc.

@@ -23,6 +23,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.interpreter.Tokenizer;
 import de.dante.extex.scanner.exception.ScannerException;
 import de.dante.extex.scanner.stream.TokenStreamOptions;
@@ -30,7 +32,6 @@ import de.dante.extex.scanner.stream.exception.ScannerNoHexDigitFoundException;
 import de.dante.extex.scanner.stream.exception.ScannerNoUnicodeNameException;
 import de.dante.extex.scanner.stream.impl.TokenStreamImpl;
 import de.dante.extex.scanner.type.Catcode;
-import de.dante.util.UnicodeChar;
 import de.dante.util.framework.configuration.Configuration;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
 

@@ -31,6 +31,8 @@ import java.util.Stack;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.backend.documentWriter.DocumentWriterOptions;
 import de.dante.extex.font.FontFactory;
 import de.dante.extex.interpreter.Conditional;
@@ -95,7 +97,6 @@ import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.typesetter.paragraphBuilder.ParagraphShape;
 import de.dante.util.Locator;
-import de.dante.util.UnicodeChar;
 import de.dante.util.exception.GeneralException;
 import de.dante.util.framework.Registrar;
 import de.dante.util.framework.configuration.Configurable;
@@ -623,7 +624,7 @@ public class ContextImpl
      *
      * @return the catcode for the character
      *
-     * @see de.dante.extex.interpreter.Tokenizer#getCatcode(de.dante.util.UnicodeChar)
+     * @see de.dante.extex.interpreter.Tokenizer#getCatcode(org.extex.type.UnicodeChar)
      */
     public Catcode getCatcode(final UnicodeChar uc) {
 
@@ -670,7 +671,7 @@ public class ContextImpl
 
     /**
      * @see de.dante.extex.interpreter.context.Context#getDelcode(
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public MathDelimiter getDelcode(final UnicodeChar c) {
 
@@ -858,7 +859,7 @@ public class ContextImpl
 
     /**
      * @see de.dante.extex.interpreter.context.Context#getLccode(
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public UnicodeChar getLccode(final UnicodeChar uc) {
 
@@ -875,7 +876,7 @@ public class ContextImpl
 
     /**
      * @see de.dante.extex.interpreter.context.Context#getMathcode(
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public MathCode getMathcode(final UnicodeChar c) {
 
@@ -922,7 +923,7 @@ public class ContextImpl
 
     /**
      * @see de.dante.extex.interpreter.context.Context#getSfcode(
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public Count getSfcode(final UnicodeChar c) {
 
@@ -1039,7 +1040,7 @@ public class ContextImpl
 
     /**
      * @see de.dante.extex.interpreter.context.Context#getUccode(
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public UnicodeChar getUccode(final UnicodeChar lc) {
 
@@ -1556,7 +1557,7 @@ public class ContextImpl
 
     /**
      * @see de.dante.extex.interpreter.context.Context#setCatcode(
-     *      de.dante.util.UnicodeChar,
+     *      org.extex.type.UnicodeChar,
      *      de.dante.extex.scanner.type.Catcode, boolean)
      */
     public void setCatcode(final UnicodeChar c, final Catcode cc,
@@ -1619,7 +1620,7 @@ public class ContextImpl
 
     /**
      * @see de.dante.extex.interpreter.context.Context#setDelcode(
-     *      de.dante.util.UnicodeChar,
+     *      org.extex.type.UnicodeChar,
      *      de.dante.extex.typesetter.type.math.MathDelimiter,
      *      boolean)
      */
@@ -1760,8 +1761,8 @@ public class ContextImpl
 
     /**
      * @see de.dante.extex.interpreter.context.Context#setLccode(
-     *      de.dante.util.UnicodeChar,
-     *      de.dante.util.UnicodeChar,
+     *      org.extex.type.UnicodeChar,
+     *      org.extex.type.UnicodeChar,
      *      boolean)
      */
     public void setLccode(final UnicodeChar uc, final UnicodeChar lc,
@@ -1813,7 +1814,7 @@ public class ContextImpl
 
     /**
      * @see de.dante.extex.interpreter.context.Context#setMathcode(
-     *      de.dante.util.UnicodeChar,
+     *      org.extex.type.UnicodeChar,
      *      MathCode, boolean)
      */
     public void setMathcode(final UnicodeChar c, final MathCode code,
@@ -1864,7 +1865,7 @@ public class ContextImpl
 
     /**
      * @see de.dante.extex.interpreter.context.Context#setSfcode(
-     *      de.dante.util.UnicodeChar,
+     *      org.extex.type.UnicodeChar,
      *      de.dante.extex.interpreter.type.count.Count, boolean)
      */
     public void setSfcode(final UnicodeChar c, final Count code,
@@ -1931,8 +1932,8 @@ public class ContextImpl
 
     /**
      * @see de.dante.extex.interpreter.context.Context#setUccode(
-     *      de.dante.util.UnicodeChar,
-     *      de.dante.util.UnicodeChar,
+     *      org.extex.type.UnicodeChar,
+     *      org.extex.type.UnicodeChar,
      *      boolean)
      */
     public void setUccode(final UnicodeChar lc, final UnicodeChar uc,

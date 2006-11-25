@@ -19,6 +19,8 @@
 
 package de.dante.extex.typesetter.listMaker.math;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.font.FontByteArray;
 import de.dante.extex.font.FountKey;
 import de.dante.extex.font.Glyph;
@@ -27,7 +29,6 @@ import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.dimen.FixedDimen;
 import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.interpreter.type.glue.FixedGlue;
-import de.dante.util.UnicodeChar;
 
 /**
  * This class encapsulates a font and provides access to the font dimens with
@@ -83,7 +84,7 @@ public class MathFont implements Font {
 
     /**
      * @see de.dante.extex.interpreter.type.font.Font#getDepth(
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public FixedGlue getDepth(final UnicodeChar uc) {
 
@@ -164,7 +165,7 @@ public class MathFont implements Font {
 
     /**
      * @see de.dante.extex.interpreter.type.font.Font#getHeight(
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public FixedGlue getHeight(final UnicodeChar uc) {
 
@@ -181,7 +182,7 @@ public class MathFont implements Font {
 
     /**
      * @see de.dante.extex.interpreter.type.font.Font#getItalicCorrection(
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public FixedDimen getItalicCorrection(final UnicodeChar uc) {
 
@@ -190,7 +191,7 @@ public class MathFont implements Font {
 
     /**
      * @see de.dante.extex.interpreter.type.font.Font#getKerning(
-     *      de.dante.util.UnicodeChar, de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar, org.extex.type.UnicodeChar)
      */
     public FixedDimen getKerning(final UnicodeChar uc1, final UnicodeChar uc2) {
 
@@ -207,7 +208,7 @@ public class MathFont implements Font {
 
     /**
      * @see de.dante.extex.interpreter.type.font.Font#getLigature(
-     *      de.dante.util.UnicodeChar, de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar, org.extex.type.UnicodeChar)
      */
     public UnicodeChar getLigature(final UnicodeChar uc1, final UnicodeChar uc2) {
 
@@ -240,7 +241,7 @@ public class MathFont implements Font {
 
     /**
      * @see de.dante.extex.interpreter.type.font.Font#getWidth(
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public FixedGlue getWidth(final UnicodeChar uc) {
 
@@ -248,7 +249,7 @@ public class MathFont implements Font {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#hasGlyph(de.dante.util.UnicodeChar)
+     * @see de.dante.extex.interpreter.type.font.Font#hasGlyph(org.extex.type.UnicodeChar)
      */
     public boolean hasGlyph(final UnicodeChar uc) {
 
@@ -257,7 +258,7 @@ public class MathFont implements Font {
 
     /**
      * @see de.dante.extex.interpreter.type.font.Font#setEfcode(
-     *      de.dante.util.UnicodeChar, long)
+     *      org.extex.type.UnicodeChar, long)
      */
     public void setEfcode(final UnicodeChar uc, final long code) {
 

@@ -19,6 +19,9 @@
 
 package de.dante.extex.interpreter.primitives.hyphen;
 
+import org.extex.type.UnicodeChar;
+import org.extex.type.UnicodeCharList;
+
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
@@ -39,8 +42,6 @@ import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.unicode.Unicode;
-import de.dante.util.UnicodeChar;
-import de.dante.util.UnicodeCharList;
 
 /**
  * This class provides an implementation for the primitive

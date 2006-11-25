@@ -21,7 +21,8 @@ package de.dante.extex.unicodeFont.format.efm;
 
 import java.io.IOException;
 
-import de.dante.util.UnicodeChar;
+import org.extex.type.UnicodeChar;
+
 import de.dante.util.xml.XMLStreamWriter;
 
 /**

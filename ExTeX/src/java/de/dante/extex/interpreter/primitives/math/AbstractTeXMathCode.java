@@ -19,6 +19,8 @@
 
 package de.dante.extex.interpreter.primitives.math;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
@@ -36,7 +38,6 @@ import de.dante.extex.scanner.type.token.RightBraceToken;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.type.noad.MathGlyph;
-import de.dante.util.UnicodeChar;
 import de.dante.util.framework.i18n.LocalizerFactory;
 
 /**

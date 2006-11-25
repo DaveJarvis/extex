@@ -17,7 +17,8 @@
  *
  */
 
-package de.dante.util;
+package org.extex.type;
+
 
 /**
  * This class provides a Unicode character with some combing characters attached

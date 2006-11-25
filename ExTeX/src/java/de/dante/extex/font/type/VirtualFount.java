@@ -19,9 +19,10 @@
 
 package de.dante.extex.font.type;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.interpreter.context.tc.TypesettingContext;
 import de.dante.extex.typesetter.type.node.VirtualCharNode;
-import de.dante.util.UnicodeChar;
 
 /**
  * Virtual Fount Interface

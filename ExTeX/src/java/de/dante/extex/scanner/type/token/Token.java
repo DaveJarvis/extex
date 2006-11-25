@@ -19,8 +19,9 @@
 
 package de.dante.extex.scanner.type.token;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.scanner.type.Catcode;
-import de.dante.util.UnicodeChar;
 
 /**
  * This is the interface for a token. A token is a pair of catcode and value.

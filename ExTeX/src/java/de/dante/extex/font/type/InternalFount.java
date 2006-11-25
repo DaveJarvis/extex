@@ -18,8 +18,9 @@
 
 package de.dante.extex.font.type;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.font.Glyph;
-import de.dante.util.UnicodeChar;
 
 /**
  * Fount Interface (only getter)

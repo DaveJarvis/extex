@@ -27,6 +27,8 @@ import java.io.LineNumberReader;
 import java.io.Reader;
 import java.io.StringReader;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.interpreter.Namespace;
 import de.dante.extex.interpreter.Tokenizer;
 import de.dante.extex.interpreter.exception.helping.InvalidCharacterException;
@@ -39,7 +41,6 @@ import de.dante.extex.scanner.type.CatcodeVisitor;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.scanner.type.token.TokenFactory;
 import de.dante.util.Locator;
-import de.dante.util.UnicodeChar;
 import de.dante.util.exception.GeneralException;
 import de.dante.util.framework.configuration.Configuration;
 import de.dante.util.framework.configuration.exception.ConfigurationException;

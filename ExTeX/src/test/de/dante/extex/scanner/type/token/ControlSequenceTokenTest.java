@@ -19,10 +19,11 @@
 
 package de.dante.extex.scanner.type.token;
 
+import org.extex.type.UnicodeChar;
+
 import junit.framework.TestCase;
 import de.dante.extex.interpreter.Namespace;
 import de.dante.extex.scanner.type.Catcode;
-import de.dante.util.UnicodeChar;
 
 /**
  * Test cases for control sequence tokens.

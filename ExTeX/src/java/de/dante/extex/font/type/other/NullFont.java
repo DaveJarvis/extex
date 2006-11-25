@@ -23,6 +23,8 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.font.FontByteArray;
 import de.dante.extex.font.FountKey;
 import de.dante.extex.font.Glyph;
@@ -32,7 +34,6 @@ import de.dante.extex.interpreter.type.dimen.FixedDimen;
 import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.interpreter.type.glue.FixedGlue;
 import de.dante.extex.interpreter.type.glue.Glue;
-import de.dante.util.UnicodeChar;
 
 /**
  * This class implements a dummy font which does not contain any characters.
@@ -109,7 +110,7 @@ public class NullFont implements Font, Serializable {
 
     /**
      * @see de.dante.extex.interpreter.type.font.Font#getDepth(
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public FixedGlue getDepth(final UnicodeChar uc) {
 
@@ -187,7 +188,7 @@ public class NullFont implements Font, Serializable {
 
     /**
      * @see de.dante.extex.interpreter.type.font.Font#getGlyph(
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public Glyph getGlyph(final UnicodeChar c) {
 
@@ -196,7 +197,7 @@ public class NullFont implements Font, Serializable {
 
     /**
      * @see de.dante.extex.interpreter.type.font.Font#getHeight(
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public FixedGlue getHeight(final UnicodeChar uc) {
 
@@ -213,7 +214,7 @@ public class NullFont implements Font, Serializable {
 
     /**
      * @see de.dante.extex.interpreter.type.font.Font#getItalicCorrection(
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public FixedDimen getItalicCorrection(final UnicodeChar uc) {
 
@@ -222,7 +223,7 @@ public class NullFont implements Font, Serializable {
 
     /**
      * @see de.dante.extex.interpreter.type.font.Font#getKerning(
-     *      de.dante.util.UnicodeChar, de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar, org.extex.type.UnicodeChar)
      */
     public FixedDimen getKerning(final UnicodeChar uc1, final UnicodeChar uc2) {
 
@@ -239,8 +240,8 @@ public class NullFont implements Font, Serializable {
 
     /**
      * @see de.dante.extex.interpreter.type.font.Font#getLigature(
-     *      de.dante.util.UnicodeChar,
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar,
+     *      org.extex.type.UnicodeChar)
      */
     public UnicodeChar getLigature(final UnicodeChar uc1, final UnicodeChar uc2) {
 
@@ -274,7 +275,7 @@ public class NullFont implements Font, Serializable {
 
     /**
      * @see de.dante.extex.interpreter.type.font.Font#getWidth(
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public FixedGlue getWidth(final UnicodeChar uc) {
 
@@ -283,7 +284,7 @@ public class NullFont implements Font, Serializable {
 
     /**
      * @see de.dante.extex.interpreter.type.font.Font#hasGlyph(
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public boolean hasGlyph(final UnicodeChar uc) {
 
@@ -300,7 +301,7 @@ public class NullFont implements Font, Serializable {
 
     /**
      * @see de.dante.extex.interpreter.type.font.Font#setEfcode(
-     *      de.dante.util.UnicodeChar, long)
+     *      org.extex.type.UnicodeChar, long)
      */
     public void setEfcode(final UnicodeChar uc, final long code) {
 
@@ -324,7 +325,7 @@ public class NullFont implements Font, Serializable {
 
     /**
      * @see de.dante.extex.interpreter.type.font.Font#setHyphenChar(
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public void setHyphenChar(final UnicodeChar ahyphen) {
 
@@ -333,7 +334,7 @@ public class NullFont implements Font, Serializable {
 
     /**
      * @see de.dante.extex.interpreter.type.font.Font#setSkewChar(
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public void setSkewChar(final UnicodeChar askew) {
 

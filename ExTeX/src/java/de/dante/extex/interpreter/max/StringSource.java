@@ -22,6 +22,8 @@ package de.dante.extex.interpreter.max;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.interpreter.Namespace;
 import de.dante.extex.interpreter.Tokenizer;
 import de.dante.extex.interpreter.exception.InterpreterException;
@@ -31,7 +33,6 @@ import de.dante.extex.scanner.type.CatcodeException;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.scanner.type.token.TokenFactory;
 import de.dante.util.Locator;
-import de.dante.util.UnicodeChar;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**

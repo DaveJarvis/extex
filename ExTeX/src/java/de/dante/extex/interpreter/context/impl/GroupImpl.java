@@ -22,6 +22,8 @@ package de.dante.extex.interpreter.context.impl;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.font.type.other.NullFont;
 import de.dante.extex.interpreter.Namespace;
 import de.dante.extex.interpreter.context.group.GroupType;
@@ -49,7 +51,6 @@ import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.type.noad.MathGlyph;
 import de.dante.util.Locator;
-import de.dante.util.UnicodeChar;
 
 /**
  * This is a simple implementation for a group. The whole stack of groups is
@@ -351,7 +352,7 @@ public class GroupImpl implements Group {
 
     /**
      * @see de.dante.extex.interpreter.Tokenizer#getCatcode(
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public Catcode getCatcode(final UnicodeChar c) {
 
@@ -453,7 +454,7 @@ public class GroupImpl implements Group {
 
     /**
      * @see de.dante.extex.interpreter.context.impl.Group#getDelcode(
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public MathDelimiter getDelcode(final UnicodeChar c) {
 
@@ -565,7 +566,7 @@ public class GroupImpl implements Group {
 
     /**
      * @see de.dante.extex.interpreter.context.impl.Group#getLccode(
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public UnicodeChar getLccode(final UnicodeChar lc) {
 
@@ -617,7 +618,7 @@ public class GroupImpl implements Group {
 
     /**
      * @see de.dante.extex.interpreter.context.impl.Group#getMathcode(
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public MathCode getMathcode(final UnicodeChar c) {
 
@@ -706,7 +707,7 @@ public class GroupImpl implements Group {
 
     /**
      * @see de.dante.extex.interpreter.context.impl.Group#getSfcode(
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public Count getSfcode(final UnicodeChar c) {
 
@@ -814,7 +815,7 @@ public class GroupImpl implements Group {
 
     /**
      * @see de.dante.extex.interpreter.context.impl.Group#getUccode(
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public UnicodeChar getUccode(final UnicodeChar uc) {
 
@@ -897,7 +898,7 @@ public class GroupImpl implements Group {
 
     /**
      * @see de.dante.extex.interpreter.context.impl.Group#setCatcode(
-     *      de.dante.util.UnicodeChar,
+     *      org.extex.type.UnicodeChar,
      *      de.dante.extex.scanner.type.Catcode,
      *      boolean)
      */
@@ -955,7 +956,7 @@ public class GroupImpl implements Group {
 
     /**
      * @see de.dante.extex.interpreter.context.impl.Group#setDelcode(
-     *      de.dante.util.UnicodeChar,
+     *      org.extex.type.UnicodeChar,
      *      MathDelimiter, boolean)
      */
     public void setDelcode(final UnicodeChar c, final MathDelimiter code,
@@ -1048,8 +1049,8 @@ public class GroupImpl implements Group {
 
     /**
      * @see de.dante.extex.interpreter.context.impl.Group#setLccode(
-     *      de.dante.util.UnicodeChar,
-     *      de.dante.util.UnicodeChar,
+     *      org.extex.type.UnicodeChar,
+     *      org.extex.type.UnicodeChar,
      *      boolean)
      */
     public void setLccode(final UnicodeChar lc, final UnicodeChar uc,
@@ -1078,7 +1079,7 @@ public class GroupImpl implements Group {
 
     /**
      * @see de.dante.extex.interpreter.context.impl.Group#setMathcode(
-     *      de.dante.util.UnicodeChar,
+     *      org.extex.type.UnicodeChar,
      *      MathCode, boolean)
      */
     public void setMathcode(final UnicodeChar c, final MathCode code,
@@ -1153,7 +1154,7 @@ public class GroupImpl implements Group {
 
     /**
      * @see de.dante.extex.interpreter.context.impl.Group#setSfcode(
-     *      de.dante.util.UnicodeChar,
+     *      org.extex.type.UnicodeChar,
      *      de.dante.extex.interpreter.type.count.Count, boolean)
      */
     public void setSfcode(final UnicodeChar c, final Count code,
@@ -1253,8 +1254,8 @@ public class GroupImpl implements Group {
 
     /**
      * @see de.dante.extex.interpreter.context.impl.Group#setUccode(
-     *      de.dante.util.UnicodeChar,
-     *      de.dante.util.UnicodeChar,
+     *      org.extex.type.UnicodeChar,
+     *      org.extex.type.UnicodeChar,
      *      boolean)
      */
     public void setUccode(final UnicodeChar uc, final UnicodeChar lc,

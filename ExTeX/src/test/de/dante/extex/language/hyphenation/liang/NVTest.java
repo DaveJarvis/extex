@@ -22,6 +22,8 @@ package de.dante.extex.language.hyphenation.liang;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.extex.type.UnicodeChar;
+
 import junit.framework.TestCase;
 import de.dante.extex.font.FontByteArray;
 import de.dante.extex.font.FountKey;
@@ -49,7 +51,6 @@ import de.dante.extex.scanner.type.token.TokenFactoryImpl;
 import de.dante.extex.typesetter.type.node.CharNode;
 import de.dante.extex.typesetter.type.node.factory.CachingNodeFactory;
 import de.dante.extex.typesetter.type.node.factory.NodeFactory;
-import de.dante.util.UnicodeChar;
 
 /**
  * This is the test class for NV.
@@ -192,7 +193,7 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.Fount#getGlyph(de.dante.util.UnicodeChar)
+         * @see de.dante.extex.font.type.Fount#getGlyph(org.extex.type.UnicodeChar)
          */
         public Glyph getGlyph(final UnicodeChar c) {
 
@@ -247,7 +248,7 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Font#setHyphenChar(de.dante.util.UnicodeChar)
+         * @see de.dante.extex.interpreter.type.font.Font#setHyphenChar(org.extex.type.UnicodeChar)
          */
         public void setHyphenChar(final UnicodeChar hyphen) {
 
@@ -255,14 +256,14 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Font#setSkewChar(de.dante.util.UnicodeChar)
+         * @see de.dante.extex.interpreter.type.font.Font#setSkewChar(org.extex.type.UnicodeChar)
          */
         public void setSkewChar(final UnicodeChar skew) {
 
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Font#setEfcode(de.dante.util.UnicodeChar, long)
+         * @see de.dante.extex.interpreter.type.font.Font#setEfcode(org.extex.type.UnicodeChar, long)
          */
         public void setEfcode(UnicodeChar uc, long code) {
 
@@ -351,7 +352,7 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#getKerning(de.dante.util.UnicodeChar)
+         * @see de.dante.extex.font.Glyph#getKerning(org.extex.type.UnicodeChar)
          */
         public Dimen getKerning(final UnicodeChar uc) {
 
@@ -367,7 +368,7 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#getLigature(de.dante.util.UnicodeChar)
+         * @see de.dante.extex.font.Glyph#getLigature(org.extex.type.UnicodeChar)
          */
         public UnicodeChar getLigature(final UnicodeChar uc) {
 

@@ -19,9 +19,10 @@
 
 package de.dante.extex.scanner.type.token;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.interpreter.Namespace;
 import de.dante.extex.scanner.type.Catcode;
-import de.dante.util.UnicodeChar;
 
 /**
  * This class represents a control sequence token.
@@ -228,7 +229,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
 
     /**
      * @see de.dante.extex.scanner.type.token.Token#toText(
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public String toText(final UnicodeChar esc) {
 

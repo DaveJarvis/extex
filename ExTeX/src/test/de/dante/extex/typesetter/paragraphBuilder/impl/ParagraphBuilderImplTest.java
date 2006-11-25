@@ -19,6 +19,8 @@
 
 package de.dante.extex.typesetter.paragraphBuilder.impl;
 
+import org.extex.type.UnicodeChar;
+
 import junit.framework.TestCase;
 import de.dante.extex.interpreter.context.tc.TypesettingContext;
 import de.dante.extex.interpreter.context.tc.TypesettingContextFactory;
@@ -36,7 +38,6 @@ import de.dante.extex.typesetter.paragraphBuilder.ParagraphBuilder;
 import de.dante.extex.typesetter.paragraphBuilder.ParagraphShape;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.node.HorizontalListNode;
-import de.dante.util.UnicodeChar;
 import de.dante.util.exception.GeneralException;
 
 /**
@@ -109,7 +110,7 @@ public class ParagraphBuilderImplTest extends TestCase {
 
         /**
          * @see de.dante.extex.typesetter.TypesetterOptions#getLccode(
-         *      de.dante.util.UnicodeChar)
+         *      org.extex.type.UnicodeChar)
          */
         public UnicodeChar getLccode(final UnicodeChar uc) {
 

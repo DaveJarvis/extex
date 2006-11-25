@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.util;
+package org.extex.type;
 
 import java.io.Serializable;
 import java.nio.CharBuffer;

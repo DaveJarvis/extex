@@ -19,6 +19,8 @@
 
 package de.dante.extex.interpreter.type.font;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.font.Glyph;
 import de.dante.extex.font.type.InternalFount;
 import de.dante.extex.font.type.ModifiableFount;
@@ -28,7 +30,6 @@ import de.dante.extex.interpreter.context.tc.TypesettingContext;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.typesetter.type.node.AbstractNode;
 import de.dante.extex.typesetter.type.node.VirtualCharNode;
-import de.dante.util.UnicodeChar;
 
 /**
  * Implementation for a virtual font.
@@ -55,7 +56,7 @@ public class VirtualFontImpl extends FontImpl implements VirtualFount {
     /**
      * @see de.dante.extex.font.type.VirtualFount#getVirtualCharNode(
      *      de.dante.extex.interpreter.context.TypesettingContext,
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public VirtualCharNode getVirtualCharNode(final TypesettingContext context,
             final UnicodeChar uc) {

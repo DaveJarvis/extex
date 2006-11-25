@@ -19,7 +19,8 @@
 
 package de.dante.extex.interpreter.exception.helping;
 
-import de.dante.util.UnicodeChar;
+import org.extex.type.UnicodeChar;
+
 import de.dante.util.framework.i18n.Localizer;
 import de.dante.util.framework.i18n.LocalizerFactory;
 

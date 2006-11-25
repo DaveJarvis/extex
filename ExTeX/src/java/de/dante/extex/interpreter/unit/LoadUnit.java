@@ -22,6 +22,8 @@ package de.dante.extex.interpreter.unit;
 import java.util.Iterator;
 import java.util.logging.Logger;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.backend.outputStream.OutputStreamFactory;
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.Namespace;
@@ -40,7 +42,6 @@ import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.scanner.type.token.TokenFactory;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.UnicodeChar;
 import de.dante.util.exception.GeneralException;
 import de.dante.util.framework.AbstractFactory;
 import de.dante.util.framework.configuration.Configuration;

@@ -19,8 +19,9 @@
 
 package de.dante.extex.interpreter;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.scanner.type.Catcode;
-import de.dante.util.UnicodeChar;
 
 /**
  * A tokenizer is a class which is able to categorize characters according to

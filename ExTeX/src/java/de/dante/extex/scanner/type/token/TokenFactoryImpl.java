@@ -23,12 +23,13 @@ import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.scanner.type.Catcode;
 import de.dante.extex.scanner.type.CatcodeException;
 import de.dante.extex.scanner.type.CatcodeVisitor;
 import de.dante.extex.scanner.type.CatcodeVisitorException;
 import de.dante.extex.scanner.type.CatcodeWrongLengthException;
-import de.dante.util.UnicodeChar;
 
 /**
  * This is a implementation of a token factory. This means that the factory
@@ -166,7 +167,7 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     /**
      * @see de.dante.extex.scanner.type.token.TokenFactory#createToken(
      *      de.dante.extex.scanner.type.Catcode,
-     *      de.dante.util.UnicodeChar,
+     *      org.extex.type.UnicodeChar,
      *      java.lang.String,
      *      java.lang.String)
      */
@@ -188,7 +189,7 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     /**
      * @see de.dante.extex.scanner.type.token.TokenFactory#createToken(
      *      de.dante.extex.scanner.type.Catcode,
-     *      de.dante.util.UnicodeChar,
+     *      org.extex.type.UnicodeChar,
      *      java.lang.String)
      */
     public Token createToken(final Catcode code, final UnicodeChar c,

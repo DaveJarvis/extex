@@ -22,6 +22,8 @@ package de.dante.extex.typesetter.listMaker.math;
 import java.util.Stack;
 import java.util.logging.Logger;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.Namespace;
 import de.dante.extex.interpreter.TokenSource;
@@ -73,7 +75,6 @@ import de.dante.extex.typesetter.type.node.DiscretionaryNode;
 import de.dante.extex.typesetter.type.node.GenericNodeList;
 import de.dante.extex.typesetter.type.node.GlueNode;
 import de.dante.util.Locator;
-import de.dante.util.UnicodeChar;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
 import de.dante.util.framework.logger.LogEnabled;
 
@@ -498,7 +499,7 @@ public class MathListMaker extends HorizontalListMaker
      * @see de.dante.extex.typesetter.ListMaker#cr(
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.context.TypesettingContext,
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public void cr(final Context context, final TypesettingContext tc,
             final UnicodeChar uc) throws TypesetterException {
@@ -614,7 +615,7 @@ public class MathListMaker extends HorizontalListMaker
 
     /**
      * @see de.dante.extex.typesetter.ListMaker#letter(
-     *      de.dante.util.UnicodeChar,
+     *      org.extex.type.UnicodeChar,
      *      de.dante.extex.interpreter.context.tc.TypesettingContext,
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.TokenSource,

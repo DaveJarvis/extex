@@ -19,6 +19,8 @@
 
 package de.dante.extex.typesetter.output;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.backend.BackendDriver;
 import de.dante.extex.interpreter.Interpreter;
 import de.dante.extex.interpreter.Namespace;
@@ -34,7 +36,6 @@ import de.dante.extex.scanner.type.CatcodeException;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.scanner.type.token.TokenFactory;
 import de.dante.extex.typesetter.type.page.Page;
-import de.dante.util.UnicodeChar;
 import de.dante.util.exception.GeneralException;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
 import de.dante.util.framework.i18n.LocalizerFactory;

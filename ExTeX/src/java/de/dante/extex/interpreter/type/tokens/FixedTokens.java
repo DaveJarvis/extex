@@ -19,9 +19,10 @@
 
 package de.dante.extex.interpreter.type.tokens;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.scanner.type.token.Token;
-import de.dante.util.UnicodeChar;
 import de.dante.util.exception.GeneralException;
 
 /**

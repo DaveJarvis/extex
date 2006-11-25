@@ -19,6 +19,9 @@
 
 package de.dante.extex.language.hyphenation.base;
 
+import org.extex.type.UnicodeChar;
+import org.extex.type.UnicodeCharList;
+
 import junit.framework.TestCase;
 import de.dante.extex.font.FontByteArray;
 import de.dante.extex.font.FountKey;
@@ -43,8 +46,6 @@ import de.dante.extex.typesetter.type.node.HorizontalListNode;
 import de.dante.extex.typesetter.type.node.SpaceNode;
 import de.dante.extex.typesetter.type.node.factory.CachingNodeFactory;
 import de.dante.extex.typesetter.type.node.factory.NodeFactory;
-import de.dante.util.UnicodeChar;
-import de.dante.util.UnicodeCharList;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
@@ -163,7 +164,7 @@ public class BaseHyphenationTableTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.Fount#getGlyph(de.dante.util.UnicodeChar)
+         * @see de.dante.extex.font.type.Fount#getGlyph(org.extex.type.UnicodeChar)
          */
         public Glyph getGlyph(final UnicodeChar c) {
 
@@ -214,7 +215,7 @@ public class BaseHyphenationTableTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.other.NullFont#hasGlyph(de.dante.util.UnicodeChar)
+         * @see de.dante.extex.font.type.other.NullFont#hasGlyph(org.extex.type.UnicodeChar)
          */
         public boolean hasGlyph(final UnicodeChar uc) {
 
@@ -222,7 +223,7 @@ public class BaseHyphenationTableTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Font#setEfcode(de.dante.util.UnicodeChar, long)
+         * @see de.dante.extex.interpreter.type.font.Font#setEfcode(org.extex.type.UnicodeChar, long)
          */
         public void setEfcode(final UnicodeChar uc, final long code) {
 
@@ -240,7 +241,7 @@ public class BaseHyphenationTableTest extends TestCase {
 
         /**
          * @see de.dante.extex.interpreter.type.font.Font#setHyphenChar(
-         *      de.dante.util.UnicodeChar)
+         *      org.extex.type.UnicodeChar)
          */
         public void setHyphenChar(final UnicodeChar hyphen) {
 
@@ -249,7 +250,7 @@ public class BaseHyphenationTableTest extends TestCase {
 
         /**
          * @see de.dante.extex.interpreter.type.font.Font#setSkewChar(
-         *      de.dante.util.UnicodeChar)
+         *      org.extex.type.UnicodeChar)
          */
         public void setSkewChar(final UnicodeChar skew) {
 
@@ -436,7 +437,7 @@ public class BaseHyphenationTableTest extends TestCase {
 
         /**
          * @see de.dante.extex.interpreter.context.Context#getLccode(
-         *      de.dante.util.UnicodeChar)
+         *      org.extex.type.UnicodeChar)
          */
         public UnicodeChar getLccode(final UnicodeChar uc) {
 

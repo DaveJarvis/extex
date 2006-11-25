@@ -22,6 +22,8 @@ package de.dante.extex.interpreter.context;
 import java.io.Serializable;
 import java.util.Iterator;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.interpreter.Conditional;
 import de.dante.extex.interpreter.Tokenizer;
 import de.dante.extex.interpreter.context.tc.Direction;
@@ -45,7 +47,6 @@ import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.scanner.type.token.TokenFactory;
 import de.dante.extex.typesetter.paragraphBuilder.ParagraphShape;
 import de.dante.util.Locator;
-import de.dante.util.UnicodeChar;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**

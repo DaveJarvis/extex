@@ -19,6 +19,8 @@
 
 package de.dante.extex.interpreter.primitives.hyphen;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.Namespace;
 import de.dante.extex.interpreter.TokenSource;
@@ -50,7 +52,6 @@ import de.dante.extex.scanner.type.token.TabMarkToken;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.scanner.type.token.TokenVisitor;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.UnicodeChar;
 
 /**
  * This class provides an implementation for the primitive <code>\patterns</code>.

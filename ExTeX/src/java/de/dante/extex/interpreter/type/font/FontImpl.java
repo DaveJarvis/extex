@@ -20,6 +20,8 @@ package de.dante.extex.interpreter.type.font;
 
 import java.io.ObjectStreamException;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.font.FontByteArray;
 import de.dante.extex.font.FountKey;
 import de.dante.extex.font.Glyph;
@@ -30,7 +32,6 @@ import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.dimen.FixedDimen;
 import de.dante.extex.interpreter.type.glue.FixedGlue;
 import de.dante.extex.interpreter.type.glue.Glue;
-import de.dante.util.UnicodeChar;
 import de.dante.util.framework.Registrar;
 
 /**
@@ -129,7 +130,7 @@ public class FontImpl extends NullFont {
 
     /**
      * @see de.dante.extex.interpreter.type.font.Font#getDepth(
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public FixedGlue getDepth(final UnicodeChar uc) {
 
@@ -209,7 +210,7 @@ public class FontImpl extends NullFont {
 
     /**
      * @see de.dante.extex.interpreter.type.font.Font#getGlyph(
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public Glyph getGlyph(final UnicodeChar c) {
 
@@ -224,7 +225,7 @@ public class FontImpl extends NullFont {
 
     /**
      * @see de.dante.extex.interpreter.type.font.Font#getHeight(
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public FixedGlue getHeight(final UnicodeChar uc) {
 
@@ -234,7 +235,7 @@ public class FontImpl extends NullFont {
 
     /**
      * @see de.dante.extex.interpreter.type.font.Font#getItalicCorrection(
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public FixedDimen getItalicCorrection(final UnicodeChar uc) {
 
@@ -244,8 +245,8 @@ public class FontImpl extends NullFont {
 
     /**
      * @see de.dante.extex.interpreter.type.font.Font#getKerning(
-     *      de.dante.util.UnicodeChar,
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar,
+     *      org.extex.type.UnicodeChar)
      */
     public FixedDimen getKerning(final UnicodeChar uc1, final UnicodeChar uc2) {
 
@@ -263,8 +264,8 @@ public class FontImpl extends NullFont {
 
     /**
      * @see de.dante.extex.interpreter.type.font.Font#getLigature(
-     *      de.dante.util.UnicodeChar,
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar,
+     *      org.extex.type.UnicodeChar)
      */
     public UnicodeChar getLigature(final UnicodeChar uc1, final UnicodeChar uc2) {
 
@@ -290,7 +291,7 @@ public class FontImpl extends NullFont {
 
     /**
      * @see de.dante.extex.interpreter.type.font.Font#getWidth(
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public FixedGlue getWidth(final UnicodeChar uc) {
 
@@ -300,7 +301,7 @@ public class FontImpl extends NullFont {
 
     /**
      * @see de.dante.extex.interpreter.type.font.Font#hasGlyph(
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public boolean hasGlyph(final UnicodeChar uc) {
 

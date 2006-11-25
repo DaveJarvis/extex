@@ -27,6 +27,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.font.FontFactory;
 import de.dante.extex.font.FountKey;
 import de.dante.extex.font.Glyph;
@@ -59,7 +61,6 @@ import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.interpreter.type.glue.Glue;
-import de.dante.util.UnicodeChar;
 import de.dante.util.file.random.RandomAccessR;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
 

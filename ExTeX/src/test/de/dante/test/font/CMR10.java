@@ -23,6 +23,8 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.font.FontByteArray;
 import de.dante.extex.font.FountKey;
 import de.dante.extex.font.Glyph;
@@ -35,7 +37,6 @@ import de.dante.extex.interpreter.type.dimen.FixedDimen;
 import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.interpreter.type.glue.FixedGlue;
 import de.dante.extex.interpreter.type.glue.Glue;
-import de.dante.util.UnicodeChar;
 
 /**
  * This class encapsulates cmr10.tfm for testing purposes.
@@ -1166,7 +1167,7 @@ public class CMR10 implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.font.type.Fount#getGlyph(de.dante.util.UnicodeChar)
+     * @see de.dante.extex.font.type.Fount#getGlyph(org.extex.type.UnicodeChar)
      */
     public Glyph getGlyph(final UnicodeChar c) {
 
@@ -1262,7 +1263,7 @@ public class CMR10 implements Font, Serializable {
 
     /**
      * @see de.dante.extex.interpreter.type.font.Font#setHyphenChar(
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public void setHyphenChar(final UnicodeChar hyphen) {
 
@@ -1271,7 +1272,7 @@ public class CMR10 implements Font, Serializable {
 
     /**
      * @see de.dante.extex.interpreter.type.font.Font#setSkewChar(
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public void setSkewChar(final UnicodeChar skew) {
 
@@ -1279,7 +1280,7 @@ public class CMR10 implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#setEfcode(de.dante.util.UnicodeChar, long)
+     * @see de.dante.extex.interpreter.type.font.Font#setEfcode(org.extex.type.UnicodeChar, long)
      */
     public void setEfcode(UnicodeChar uc, long code) {
 
@@ -1297,7 +1298,7 @@ public class CMR10 implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#getDepth(de.dante.util.UnicodeChar)
+     * @see de.dante.extex.interpreter.type.font.Font#getDepth(org.extex.type.UnicodeChar)
      */
     public FixedGlue getDepth(UnicodeChar uc) {
 
@@ -1306,7 +1307,7 @@ public class CMR10 implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#getHeight(de.dante.util.UnicodeChar)
+     * @see de.dante.extex.interpreter.type.font.Font#getHeight(org.extex.type.UnicodeChar)
      */
     public FixedGlue getHeight(UnicodeChar uc) {
 
@@ -1315,7 +1316,7 @@ public class CMR10 implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#getItalicCorrection(de.dante.util.UnicodeChar)
+     * @see de.dante.extex.interpreter.type.font.Font#getItalicCorrection(org.extex.type.UnicodeChar)
      */
     public FixedDimen getItalicCorrection(UnicodeChar uc) {
 
@@ -1324,7 +1325,7 @@ public class CMR10 implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#getKerning(de.dante.util.UnicodeChar, de.dante.util.UnicodeChar)
+     * @see de.dante.extex.interpreter.type.font.Font#getKerning(org.extex.type.UnicodeChar, org.extex.type.UnicodeChar)
      */
     public FixedDimen getKerning(UnicodeChar uc1, UnicodeChar uc2) {
 
@@ -1333,7 +1334,7 @@ public class CMR10 implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#getLigature(de.dante.util.UnicodeChar, de.dante.util.UnicodeChar)
+     * @see de.dante.extex.interpreter.type.font.Font#getLigature(org.extex.type.UnicodeChar, org.extex.type.UnicodeChar)
      */
     public UnicodeChar getLigature(UnicodeChar uc1, UnicodeChar uc2) {
 
@@ -1342,7 +1343,7 @@ public class CMR10 implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#getWidth(de.dante.util.UnicodeChar)
+     * @see de.dante.extex.interpreter.type.font.Font#getWidth(org.extex.type.UnicodeChar)
      */
     public FixedGlue getWidth(UnicodeChar uc) {
 
@@ -1351,7 +1352,7 @@ public class CMR10 implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#hasGlyph(de.dante.util.UnicodeChar)
+     * @see de.dante.extex.interpreter.type.font.Font#hasGlyph(org.extex.type.UnicodeChar)
      */
     public boolean hasGlyph(UnicodeChar uc) {
 

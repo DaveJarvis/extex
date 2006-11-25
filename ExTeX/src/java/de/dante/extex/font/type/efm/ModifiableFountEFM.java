@@ -23,6 +23,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.font.FontByteArray;
 import de.dante.extex.font.FountKey;
 import de.dante.extex.font.Glyph;
@@ -37,7 +39,6 @@ import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.dimen.FixedDimen;
 import de.dante.extex.interpreter.type.glue.FixedGlue;
 import de.dante.extex.interpreter.type.glue.Glue;
-import de.dante.util.UnicodeChar;
 
 /**
  * ModifiableFount for EFM.
@@ -187,7 +188,7 @@ public class ModifiableFountEFM implements ModifiableFount, Serializable {
     private Map glyphmap = new HashMap();
 
     /**
-     * @see de.dante.extex.font.type.Fount#getGlyph(de.dante.util.UnicodeChar)
+     * @see de.dante.extex.font.type.Fount#getGlyph(org.extex.type.UnicodeChar)
      */
     public Glyph getGlyph(final UnicodeChar c) {
 

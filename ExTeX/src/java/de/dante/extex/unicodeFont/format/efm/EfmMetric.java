@@ -25,6 +25,8 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.unicode.Unicode;
 import de.dante.extex.unicodeFont.format.tex.tfm.TfmCharInfoArray;
 import de.dante.extex.unicodeFont.format.tex.tfm.TfmCharInfoWord;
@@ -34,7 +36,6 @@ import de.dante.extex.unicodeFont.format.tex.tfm.TfmLigKern;
 import de.dante.extex.unicodeFont.format.tex.tfm.TfmLigature;
 import de.dante.extex.unicodeFont.format.tex.tfm.TfmReader;
 import de.dante.extex.unicodeFont.glyphname.GlyphName;
-import de.dante.util.UnicodeChar;
 import de.dante.util.xml.XMLStreamWriter;
 
 /**

@@ -26,6 +26,8 @@ import java.util.Calendar;
 import java.util.Iterator;
 import java.util.logging.Logger;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.backend.outputStream.OutputStreamFactory;
 import de.dante.extex.font.FontFactory;
 import de.dante.extex.interpreter.Conditional;
@@ -105,7 +107,6 @@ import de.dante.extex.scanner.type.token.TokenVisitor;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.util.Switch;
-import de.dante.util.UnicodeChar;
 import de.dante.util.exception.GeneralException;
 import de.dante.util.framework.Registrar;
 import de.dante.util.framework.RegistrarObserver;

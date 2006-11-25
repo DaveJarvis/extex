@@ -21,13 +21,14 @@ package de.dante.extex.language.hyphenation;
 
 import java.io.Serializable;
 
+import org.extex.type.UnicodeChar;
+import org.extex.type.UnicodeCharList;
+
 import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.language.hyphenation.exception.HyphenationException;
 import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.node.factory.NodeFactory;
-import de.dante.util.UnicodeChar;
-import de.dante.util.UnicodeCharList;
 
 /**
  * Interface for the <code>HyphenationTable</code>.

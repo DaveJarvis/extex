@@ -22,6 +22,7 @@ package de.dante.extex.backend.documentWriter.pdf;
 import java.awt.Color;
 import java.io.IOException;
 
+import org.extex.type.UnicodeChar;
 import org.pdfbox.pdmodel.PDDocument;
 import org.pdfbox.pdmodel.edit.PDPageContentStream;
 import org.pdfbox.pdmodel.font.PDFont;
@@ -58,7 +59,6 @@ import de.dante.extex.typesetter.type.node.SpaceNode;
 import de.dante.extex.typesetter.type.node.VerticalListNode;
 import de.dante.extex.typesetter.type.node.VirtualCharNode;
 import de.dante.extex.typesetter.type.node.WhatsItNode;
-import de.dante.util.UnicodeChar;
 import de.dante.util.Unit;
 import de.dante.util.exception.GeneralException;
 

@@ -26,6 +26,8 @@ import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.interpreter.context.tc.TypesettingContext;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.dimen.FixedDimen;
@@ -53,7 +55,6 @@ import de.dante.extex.typesetter.type.node.KernNode;
 import de.dante.extex.typesetter.type.node.PenaltyNode;
 import de.dante.extex.typesetter.type.node.VerticalListNode;
 import de.dante.extex.typesetter.type.node.factory.NodeFactory;
-import de.dante.util.UnicodeChar;
 import de.dante.util.framework.logger.LogEnabled;
 
 /**

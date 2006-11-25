@@ -35,6 +35,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.zip.GZIPInputStream;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.interpreter.loader.LoaderException;
 import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.interpreter.type.dimen.Dimen;
@@ -48,7 +50,6 @@ import de.dante.extex.scanner.type.token.OtherToken;
 import de.dante.extex.scanner.type.token.RightBraceToken;
 import de.dante.extex.scanner.type.token.SpaceToken;
 import de.dante.extex.scanner.type.token.Token;
-import de.dante.util.UnicodeChar;
 
 /**
  * Load a format file and print it in a reasonable form.

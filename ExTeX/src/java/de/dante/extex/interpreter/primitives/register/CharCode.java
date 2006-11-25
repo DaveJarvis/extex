@@ -19,6 +19,8 @@
 
 package de.dante.extex.interpreter.primitives.register;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
@@ -33,7 +35,6 @@ import de.dante.extex.scanner.type.Catcode;
 import de.dante.extex.scanner.type.CatcodeException;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.UnicodeChar;
 
 /**
  * This class provides an implementation for a Code which represents a single

@@ -19,7 +19,7 @@
 
 package de.dante.extex.unicodeFont.format.efm;
 
-import de.dante.util.UnicodeChar;
+import org.extex.type.UnicodeChar;
 
 /**
  * Abstract class for e efm kerning.
@@ -53,7 +53,7 @@ public abstract class EfmAbstractKerning implements EfmKerning {
 
     /**
      * @see de.dante.extex.unicodeFont.format.efm.EfmKerning#setUnicodeChar(
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public void setUnicodeChar(final UnicodeChar auc) {
 

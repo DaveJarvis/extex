@@ -27,6 +27,8 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.io.Writer;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.scanner.type.token.ActiveCharacterToken;
@@ -43,7 +45,6 @@ import de.dante.extex.scanner.type.token.SubMarkToken;
 import de.dante.extex.scanner.type.token.SupMarkToken;
 import de.dante.extex.scanner.type.token.TabMarkToken;
 import de.dante.extex.scanner.type.token.TokenVisitor;
-import de.dante.util.UnicodeChar;
 
 /**
  * This class holds an output file onto which tokens can be wrtitten.

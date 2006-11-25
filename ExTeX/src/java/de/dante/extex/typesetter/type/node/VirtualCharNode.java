@@ -19,6 +19,8 @@
 
 package de.dante.extex.typesetter.type.node;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.context.tc.TypesettingContext;
 import de.dante.extex.interpreter.exception.ImpossibleException;
@@ -32,7 +34,6 @@ import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeIterator;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.NodeVisitor;
-import de.dante.util.UnicodeChar;
 import de.dante.util.exception.GeneralException;
 
 /**

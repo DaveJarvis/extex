@@ -19,7 +19,7 @@
 
 package de.dante.extex.unicode;
 
-import de.dante.util.UnicodeChar;
+import org.extex.type.UnicodeChar;
 
 /**
  * Central utility class for Unicode compatibility in <logo>ExTeX</logo>.

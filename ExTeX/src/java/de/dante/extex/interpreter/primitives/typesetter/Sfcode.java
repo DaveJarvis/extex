@@ -19,6 +19,8 @@
 
 package de.dante.extex.interpreter.primitives.typesetter;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
@@ -31,7 +33,6 @@ import de.dante.extex.interpreter.type.count.CountConvertible;
 import de.dante.extex.interpreter.type.dimen.DimenConvertible;
 import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.UnicodeChar;
 
 /**
  * This class provides an implementation for the primitive

@@ -19,6 +19,8 @@
 
 package de.dante.extex.typesetter;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.context.tc.TypesettingContext;
@@ -33,7 +35,6 @@ import de.dante.extex.typesetter.exception.TypesetterUnsupportedException;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.util.Locator;
-import de.dante.util.UnicodeChar;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**

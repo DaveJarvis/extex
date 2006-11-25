@@ -19,6 +19,8 @@
 
 package de.dante.extex.interpreter;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.type.box.Box;
@@ -30,7 +32,6 @@ import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.Locator;
-import de.dante.util.UnicodeChar;
 import de.dante.util.exception.GeneralException;
 import de.dante.util.exception.NotObservableException;
 

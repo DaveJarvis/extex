@@ -23,6 +23,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.interpreter.Namespace;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
@@ -32,7 +34,6 @@ import de.dante.extex.scanner.type.token.ControlSequenceToken;
 import de.dante.extex.scanner.type.token.MacroParamToken;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.scanner.type.token.TokenFactory;
-import de.dante.util.UnicodeChar;
 
 /**
  * This class is a container for a list of

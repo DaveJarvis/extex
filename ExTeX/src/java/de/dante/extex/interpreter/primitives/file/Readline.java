@@ -21,6 +21,8 @@ package de.dante.extex.interpreter.primitives.file;
 
 import java.util.logging.Logger;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.Namespace;
 import de.dante.extex.interpreter.TokenSource;
@@ -37,7 +39,6 @@ import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.scanner.type.Catcode;
 import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.UnicodeChar;
 import de.dante.util.framework.logger.LogEnabled;
 
 /**
@@ -94,7 +95,7 @@ public class Readline extends AbstractAssignment implements LogEnabled {
 
         /**
          * @see de.dante.extex.interpreter.Tokenizer#getCatcode(
-         *      de.dante.util.UnicodeChar)
+         *      org.extex.type.UnicodeChar)
          */
         public Catcode getCatcode(final UnicodeChar c) {
 

@@ -19,13 +19,14 @@
 
 package de.dante.extex.interpreter.primitives.conditional;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.exception.helping.EofException;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.UnicodeChar;
 
 /**
  * This class provides an implementation for the primitive <code>\if</code>.

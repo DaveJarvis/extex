@@ -18,11 +18,12 @@
  */
 package de.dante.extex.scanner.type.token;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.scanner.type.Catcode;
 import de.dante.extex.scanner.type.token.LetterToken;
 import de.dante.extex.scanner.type.token.OtherToken;
 import de.dante.extex.scanner.type.token.Token;
-import de.dante.util.UnicodeChar;
 import junit.framework.TestCase;
 
 /**

@@ -22,6 +22,8 @@ package de.dante.extex.typesetter.listMaker;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.context.tc.TypesettingContext;
@@ -39,7 +41,6 @@ import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.node.VerticalListNode;
 import de.dante.util.Locator;
-import de.dante.util.UnicodeChar;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
@@ -153,7 +154,7 @@ public class InnerVerticalListMaker extends AbstractListMaker {
      * @see de.dante.extex.typesetter.ListMaker#cr(
      *      de.dante.extex.interpreter.context.Context,
      *      de.dante.extex.interpreter.context.TypesettingContext,
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public void cr(final Context context, final TypesettingContext tc,
             final UnicodeChar uc) throws TypesetterException {

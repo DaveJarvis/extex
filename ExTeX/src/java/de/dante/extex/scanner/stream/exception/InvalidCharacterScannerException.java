@@ -19,8 +19,9 @@
 
 package de.dante.extex.scanner.stream.exception;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.scanner.exception.ScannerException;
-import de.dante.util.UnicodeChar;
 
 /**
  * This is thrown when an invalid character has been encountered.

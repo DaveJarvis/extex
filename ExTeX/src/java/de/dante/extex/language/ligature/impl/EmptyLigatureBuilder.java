@@ -19,12 +19,13 @@
 
 package de.dante.extex.language.ligature.impl;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.language.hyphenation.exception.HyphenationException;
 import de.dante.extex.language.ligature.LigatureBuilder;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.node.CharNode;
-import de.dante.util.UnicodeChar;
 
 /**
  * This class provides an implementation for a ligature builder.
@@ -71,8 +72,8 @@ public class EmptyLigatureBuilder implements LigatureBuilder {
 
     /**
      * @see de.dante.extex.language.ligature.LigatureBuilder#getLigature(
-     *      de.dante.util.UnicodeChar,
-     *      de.dante.util.UnicodeChar,
+     *      org.extex.type.UnicodeChar,
+     *      org.extex.type.UnicodeChar,
      *      de.dante.extex.interpreter.type.font.Font)
      */
     public UnicodeChar getLigature(final UnicodeChar c1, final UnicodeChar c2,

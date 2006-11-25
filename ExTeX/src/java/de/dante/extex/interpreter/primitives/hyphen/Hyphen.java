@@ -19,6 +19,8 @@
 
 package de.dante.extex.interpreter.primitives.hyphen;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
@@ -30,7 +32,6 @@ import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.node.CharNode;
 import de.dante.extex.typesetter.type.node.DiscretionaryNode;
 import de.dante.extex.typesetter.type.node.HorizontalListNode;
-import de.dante.util.UnicodeChar;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**

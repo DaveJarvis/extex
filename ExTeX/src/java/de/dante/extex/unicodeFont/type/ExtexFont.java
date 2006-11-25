@@ -19,10 +19,11 @@
 
 package de.dante.extex.unicodeFont.type;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.glue.Glue;
-import de.dante.util.UnicodeChar;
 
 /**
  * Interface for the extex font.

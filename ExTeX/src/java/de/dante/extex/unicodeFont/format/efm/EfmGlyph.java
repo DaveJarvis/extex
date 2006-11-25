@@ -22,7 +22,8 @@ package de.dante.extex.unicodeFont.format.efm;
 import java.util.HashMap;
 import java.util.Map;
 
-import de.dante.util.UnicodeChar;
+import org.extex.type.UnicodeChar;
+
 
 /**
  * Class for the efm glyph.

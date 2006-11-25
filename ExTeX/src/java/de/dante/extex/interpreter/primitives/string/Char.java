@@ -19,6 +19,8 @@
 
 package de.dante.extex.interpreter.primitives.string;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
@@ -27,7 +29,6 @@ import de.dante.extex.interpreter.type.AbstractCode;
 import de.dante.extex.interpreter.type.ExpandableCode;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.exception.TypesetterException;
-import de.dante.util.UnicodeChar;
 
 /**
  * This class provides an implementation for the primitive <code>\char</code>.

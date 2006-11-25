@@ -19,6 +19,8 @@
 
 package de.dante.extex.typesetter;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.interpreter.context.tc.TypesettingContext;
 import de.dante.extex.interpreter.context.tc.TypesettingContextFactory;
 import de.dante.extex.interpreter.type.count.FixedCount;
@@ -28,7 +30,6 @@ import de.dante.extex.interpreter.type.glue.FixedGlue;
 import de.dante.extex.interpreter.type.muskip.Muskip;
 import de.dante.extex.scanner.type.token.TokenFactory;
 import de.dante.extex.typesetter.paragraphBuilder.ParagraphShape;
-import de.dante.util.UnicodeChar;
 import de.dante.util.exception.GeneralException;
 
 /**

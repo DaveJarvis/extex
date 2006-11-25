@@ -19,8 +19,9 @@
 
 package de.dante.extex.font;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.util.UnicodeChar;
 
 /**
  * Interface for a Glyph

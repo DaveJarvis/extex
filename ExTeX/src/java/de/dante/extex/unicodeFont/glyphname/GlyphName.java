@@ -27,7 +27,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-import de.dante.util.UnicodeChar;
+import org.extex.type.UnicodeChar;
+
 
 /**
  * This class manage the correlation between the glyph name and

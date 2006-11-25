@@ -19,6 +19,9 @@
 
 package de.dante.extex.language.word.impl;
 
+import org.extex.type.UnicodeChar;
+import org.extex.type.UnicodeCharList;
+
 import de.dante.extex.font.Glyph;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.dimen.FixedDimen;
@@ -38,8 +41,6 @@ import de.dante.extex.typesetter.type.node.ImplicitKernNode;
 import de.dante.extex.typesetter.type.node.KernNode;
 import de.dante.extex.typesetter.type.node.LigatureNode;
 import de.dante.extex.typesetter.type.node.WhatsItNode;
-import de.dante.util.UnicodeChar;
-import de.dante.util.UnicodeCharList;
 
 /**
  * This class tokenizes a list of nodes according to the rules of
@@ -234,7 +235,7 @@ public class ExTeXWords implements WordTokenizer {
      * @see de.dante.extex.language.word.WordTokenizer#findWord(
      *      de.dante.extex.typesetter.type.NodeList,
      *      int,
-     *      de.dante.util.UnicodeCharList)
+     *      org.extex.type.UnicodeCharList)
      */
     public int findWord(final NodeList nodes, final int start,
             final UnicodeCharList word) throws HyphenationException {
@@ -335,7 +336,7 @@ public class ExTeXWords implements WordTokenizer {
 
     /**
      * @see de.dante.extex.language.word.WordTokenizer#normalize(
-     *      de.dante.util.UnicodeCharList,
+     *      org.extex.type.UnicodeCharList,
      *      de.dante.extex.typesetter.TypesetterOptions)
      */
     public UnicodeCharList normalize(final UnicodeCharList word,

@@ -22,6 +22,8 @@ package de.dante.extex.language.ligature.impl;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.extex.type.UnicodeChar;
+
 import junit.framework.TestCase;
 import de.dante.extex.font.FontByteArray;
 import de.dante.extex.font.Glyph;
@@ -44,7 +46,6 @@ import de.dante.extex.typesetter.type.node.CharNode;
 import de.dante.extex.typesetter.type.node.GlueNode;
 import de.dante.extex.typesetter.type.node.HorizontalListNode;
 import de.dante.extex.typesetter.type.node.LigatureNode;
-import de.dante.util.UnicodeChar;
 
 /**
  * This is a test suite for the <tt>LigatureBuilderImpl</tt>.
@@ -81,7 +82,7 @@ public class LigatureBuilderImplTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Font#getGlyph(de.dante.util.UnicodeChar)
+         * @see de.dante.extex.interpreter.type.font.Font#getGlyph(org.extex.type.UnicodeChar)
          */
         public Glyph getGlyph(final UnicodeChar c) {
 
@@ -113,7 +114,7 @@ public class LigatureBuilderImplTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.other.NullFont#hasGlyph(de.dante.util.UnicodeChar)
+         * @see de.dante.extex.font.type.other.NullFont#hasGlyph(org.extex.type.UnicodeChar)
          */
         public boolean hasGlyph(final UnicodeChar uc) {
 
@@ -121,7 +122,7 @@ public class LigatureBuilderImplTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.other.NullFont#getLigature(de.dante.util.UnicodeChar, de.dante.util.UnicodeChar)
+         * @see de.dante.extex.font.type.other.NullFont#getLigature(org.extex.type.UnicodeChar, org.extex.type.UnicodeChar)
          */
         public UnicodeChar getLigature(final UnicodeChar uc1,
                 final UnicodeChar uc2) {
@@ -248,7 +249,7 @@ public class LigatureBuilderImplTest extends TestCase {
 
         /**
          * @see de.dante.extex.interpreter.type.font.Glyph#getKerning(
-         *      de.dante.util.UnicodeChar)
+         *      org.extex.type.UnicodeChar)
          */
         public Dimen getKerning(final UnicodeChar uc) {
 
@@ -265,7 +266,7 @@ public class LigatureBuilderImplTest extends TestCase {
 
         /**
          * @see de.dante.extex.interpreter.type.font.Glyph#getLigature(
-         *      de.dante.util.UnicodeChar)
+         *      org.extex.type.UnicodeChar)
          */
         public UnicodeChar getLigature(final UnicodeChar uc) {
 

@@ -19,7 +19,7 @@
 
 package de.dante.extex.format.dvi.command;
 
-import de.dante.util.UnicodeChar;
+import org.extex.type.UnicodeChar;
 
 /**
  * DVI: xxx

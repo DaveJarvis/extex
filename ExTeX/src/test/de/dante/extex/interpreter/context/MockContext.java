@@ -21,6 +21,8 @@ package de.dante.extex.interpreter.context;
 
 import java.util.Iterator;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.color.ColorConverter;
 import de.dante.extex.font.FontFactory;
 import de.dante.extex.interpreter.Conditional;
@@ -65,7 +67,6 @@ import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.typesetter.paragraphBuilder.ParagraphShape;
 import de.dante.util.Locator;
-import de.dante.util.UnicodeChar;
 import de.dante.util.exception.GeneralException;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
 
@@ -219,7 +220,7 @@ public class MockContext implements Context, TypesetterOptions {
 
     /**
      * @see de.dante.extex.interpreter.Tokenizer#getCatcode(
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public Catcode getCatcode(final UnicodeChar c) {
 
@@ -285,7 +286,7 @@ public class MockContext implements Context, TypesetterOptions {
 
     /**
      * @see de.dante.extex.interpreter.context.Context#getDelcode(
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public MathDelimiter getDelcode(final UnicodeChar c) {
 
@@ -435,7 +436,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#getLccode(de.dante.util.UnicodeChar)
+     * @see de.dante.extex.interpreter.context.Context#getLccode(org.extex.type.UnicodeChar)
      */
     public UnicodeChar getLccode(final UnicodeChar uc) {
 
@@ -452,7 +453,7 @@ public class MockContext implements Context, TypesetterOptions {
 
     /**
      * @see de.dante.extex.interpreter.context.Context#getMathcode(
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar)
      */
     public MathCode getMathcode(final UnicodeChar uc) {
 
@@ -492,7 +493,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#getSfcode(de.dante.util.UnicodeChar)
+     * @see de.dante.extex.interpreter.context.Context#getSfcode(org.extex.type.UnicodeChar)
      */
     public Count getSfcode(final UnicodeChar uc) {
 
@@ -580,7 +581,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#getUccode(de.dante.util.UnicodeChar)
+     * @see de.dante.extex.interpreter.context.Context#getUccode(org.extex.type.UnicodeChar)
      */
     public UnicodeChar getUccode(final UnicodeChar lc) {
 
@@ -728,7 +729,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#setCatcode(de.dante.util.UnicodeChar, de.dante.extex.scanner.type.Catcode, boolean)
+     * @see de.dante.extex.interpreter.context.Context#setCatcode(org.extex.type.UnicodeChar, de.dante.extex.scanner.type.Catcode, boolean)
      */
     public void setCatcode(final UnicodeChar c, final Catcode cc,
             final boolean global) throws HelpingException {
@@ -765,7 +766,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#setDelcode(de.dante.util.UnicodeChar, MathDelimiter, boolean)
+     * @see de.dante.extex.interpreter.context.Context#setDelcode(org.extex.type.UnicodeChar, MathDelimiter, boolean)
      */
     public void setDelcode(final UnicodeChar c, final MathDelimiter delimiter,
             final boolean global) {
@@ -853,7 +854,7 @@ public class MockContext implements Context, TypesetterOptions {
 
     /**
      * @see de.dante.extex.interpreter.context.Context#setLccode(
-     *      de.dante.util.UnicodeChar, de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar, org.extex.type.UnicodeChar)
      */
     public void setLccode(final UnicodeChar uc, final UnicodeChar lc,
             final boolean global) {
@@ -882,7 +883,7 @@ public class MockContext implements Context, TypesetterOptions {
 
     /**
      * @see de.dante.extex.interpreter.context.Context#setMathcode(
-     *      de.dante.util.UnicodeChar,
+     *      org.extex.type.UnicodeChar,
      *      MathCode,
      *      boolean)
      */
@@ -927,7 +928,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#setSfcode(de.dante.util.UnicodeChar, de.dante.extex.interpreter.type.count.Count, boolean)
+     * @see de.dante.extex.interpreter.context.Context#setSfcode(org.extex.type.UnicodeChar, de.dante.extex.interpreter.type.count.Count, boolean)
      */
     public void setSfcode(final UnicodeChar uc, final Count code,
             final boolean global) {
@@ -981,8 +982,8 @@ public class MockContext implements Context, TypesetterOptions {
 
     /**
      * @see de.dante.extex.interpreter.context.Context#setUccode(
-     *      de.dante.util.UnicodeChar,
-     *      de.dante.util.UnicodeChar)
+     *      org.extex.type.UnicodeChar,
+     *      org.extex.type.UnicodeChar)
      */
     public void setUccode(final UnicodeChar lc, final UnicodeChar uc,
             final boolean global) {

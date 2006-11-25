@@ -26,6 +26,9 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.extex.type.UnicodeChar;
+import org.extex.type.UnicodeCharList;
+
 import junit.framework.TestCase;
 import de.dante.extex.font.FontByteArray;
 import de.dante.extex.font.FountKey;
@@ -61,8 +64,6 @@ import de.dante.extex.typesetter.type.node.RuleNode;
 import de.dante.extex.typesetter.type.node.SpaceNode;
 import de.dante.extex.typesetter.type.node.VerticalListNode;
 import de.dante.extex.typesetter.type.node.factory.NodeFactory;
-import de.dante.util.UnicodeChar;
-import de.dante.util.UnicodeCharList;
 import de.dante.util.exception.GeneralException;
 import de.dante.util.framework.logger.LogEnabled;
 
@@ -134,7 +135,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.TypesetterOptions#getLccode(de.dante.util.UnicodeChar)
+         * @see de.dante.extex.typesetter.TypesetterOptions#getLccode(org.extex.type.UnicodeChar)
          */
         public UnicodeChar getLccode(final UnicodeChar uc) {
 
@@ -279,7 +280,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
 
         /**
          * @see de.dante.extex.interpreter.type.font.Font#getDepth(
-         *      de.dante.util.UnicodeChar)
+         *      org.extex.type.UnicodeChar)
          */
         public FixedGlue getDepth(final UnicodeChar uc) {
 
@@ -348,7 +349,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.Fount#getGlyph(de.dante.util.UnicodeChar)
+         * @see de.dante.extex.font.type.Fount#getGlyph(org.extex.type.UnicodeChar)
          */
         public Glyph getGlyph(final UnicodeChar c) {
 
@@ -401,7 +402,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
                 }
 
                 /**
-                 * @see de.dante.extex.font.Glyph#getKerning(de.dante.util.UnicodeChar)
+                 * @see de.dante.extex.font.Glyph#getKerning(org.extex.type.UnicodeChar)
                  */
                 public Dimen getKerning(final UnicodeChar uc) {
 
@@ -417,7 +418,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
                 }
 
                 /**
-                 * @see de.dante.extex.font.Glyph#getLigature(de.dante.util.UnicodeChar)
+                 * @see de.dante.extex.font.Glyph#getLigature(org.extex.type.UnicodeChar)
                  */
                 public UnicodeChar getLigature(final UnicodeChar uc) {
 
@@ -522,7 +523,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Font#getHeight(de.dante.util.UnicodeChar)
+         * @see de.dante.extex.interpreter.type.font.Font#getHeight(org.extex.type.UnicodeChar)
          */
         public FixedGlue getHeight(final UnicodeChar uc) {
 
@@ -538,7 +539,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Font#getItalicCorrection(de.dante.util.UnicodeChar)
+         * @see de.dante.extex.interpreter.type.font.Font#getItalicCorrection(org.extex.type.UnicodeChar)
          */
         public FixedDimen getItalicCorrection(final UnicodeChar uc) {
 
@@ -546,7 +547,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Font#getKerning(de.dante.util.UnicodeChar, de.dante.util.UnicodeChar)
+         * @see de.dante.extex.interpreter.type.font.Font#getKerning(org.extex.type.UnicodeChar, org.extex.type.UnicodeChar)
          */
         public FixedDimen getKerning(final UnicodeChar uc1,
                 final UnicodeChar uc2) {
@@ -563,7 +564,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Font#getLigature(de.dante.util.UnicodeChar, de.dante.util.UnicodeChar)
+         * @see de.dante.extex.interpreter.type.font.Font#getLigature(org.extex.type.UnicodeChar, org.extex.type.UnicodeChar)
          */
         public UnicodeChar getLigature(final UnicodeChar uc1,
                 final UnicodeChar uc2) {
@@ -597,7 +598,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
 
         /**
          * @see de.dante.extex.interpreter.type.font.Font#getWidth(
-         *      de.dante.util.UnicodeChar)
+         *      org.extex.type.UnicodeChar)
          */
         public FixedGlue getWidth(final UnicodeChar uc) {
 
@@ -606,7 +607,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
 
         /**
          * @see de.dante.extex.interpreter.type.font.Font#hasGlyph(
-         *      de.dante.util.UnicodeChar)
+         *      org.extex.type.UnicodeChar)
          */
         public boolean hasGlyph(final UnicodeChar uc) {
 
@@ -615,7 +616,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
 
         /**
          * @see de.dante.extex.interpreter.type.font.Font#setEfcode(
-         *      de.dante.util.UnicodeChar, long)
+         *      org.extex.type.UnicodeChar, long)
          */
         public void setEfcode(final UnicodeChar uc, final long code) {
 
@@ -633,7 +634,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
 
         /**
          * @see de.dante.extex.interpreter.type.font.Font#setHyphenChar(
-         *      de.dante.util.UnicodeChar)
+         *      org.extex.type.UnicodeChar)
          */
         public void setHyphenChar(final UnicodeChar hyphen) {
 
@@ -641,7 +642,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Font#setSkewChar(de.dante.util.UnicodeChar)
+         * @see de.dante.extex.interpreter.type.font.Font#setSkewChar(org.extex.type.UnicodeChar)
          */
         public void setSkewChar(final UnicodeChar skew) {
 
