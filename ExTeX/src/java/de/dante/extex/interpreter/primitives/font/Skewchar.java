@@ -19,8 +19,6 @@
 
 package de.dante.extex.interpreter.primitives.font;
 
-import com.ibm.icu.lang.UCharacter;
-
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
@@ -109,13 +107,7 @@ public class Skewchar extends AbstractAssignment
         source.getOptionalEquals(context);
         try {
             long c = Count.scanInteger(context, source, typesetter);
-            if (c < 0) {
-                font.setSkewChar(null);
-            } else if (c < UCharacter.MIN_VALUE || c > UCharacter.MAX_VALUE) {
-                font.setSkewChar(null);
-            } else {
-                font.setSkewChar(UnicodeChar.get((int) c));
-            }
+            font.setSkewChar(UnicodeChar.get((int) c));
         } catch (EofException e) {
             throw new EofException(printableControlSequence(context));
         }

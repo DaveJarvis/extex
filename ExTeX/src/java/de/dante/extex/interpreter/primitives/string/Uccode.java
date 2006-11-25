@@ -19,8 +19,6 @@
 
 package de.dante.extex.interpreter.primitives.string;
 
-import com.ibm.icu.lang.UCharacter;
-
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
@@ -39,44 +37,49 @@ import de.dante.util.UnicodeChar;
 /**
  * This class provides an implementation for the primitive
  * <code>&#x5c;uccode</code>.
- *
+ * 
  * <doc name="uccode">
  * <h3>The Primitive <tt>&#x5c;uccode</tt></h3>
  * <p>
- *  TODO missing documentation
+ * TODO missing documentation
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
- *    &lang;uccode&rang;
- *        &rarr; <tt>&#x5c;uccode</tt> &lang;...&rang; </pre>
- *
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
+ *     &amp;languccode&amp;rang
+ *         &amp;rarr
+ * <tt>
+ *  &#x5c;uccode
+ * </tt>
+ *  &amp;lang...&amp;rang
+ * </pre>
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
- *    &#x5c;uccode ...  </pre>
- *
+ * 
+ * <pre class="TeXSample">
+ *      &#x5c;uccode ...
+ * </pre>
+ * 
  * </doc>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Uccode extends AbstractAssignment
-        implements
-            ExpandableCode,
-            Theable,
-            CountConvertible,
-            DimenConvertible {
+public class Uccode extends AbstractAssignment implements ExpandableCode,
+        Theable, CountConvertible, DimenConvertible {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for tracing and debugging
      */
     public Uccode(final String name) {
@@ -96,15 +99,15 @@ public class Uccode extends AbstractAssignment
             throws InterpreterException {
 
         UnicodeChar ucCode = source.scanCharacterCode(context, typesetter,
-                getName());
+                                                      getName());
         source.getOptionalEquals(context);
         try {
             UnicodeChar lcCode = source.scanCharacterCode(context, typesetter,
-                    getName());
+                                                          getName());
             context.setUccode(ucCode, lcCode, prefix.clearGlobal());
         } catch (InvalidCharacterException e) {
             throw new InvalidCodeException(e.getChar(), Integer
-                    .toString(UCharacter.MAX_VALUE));
+                    .toString(UnicodeChar.MAX_VALUE));
         }
     }
 
@@ -117,7 +120,7 @@ public class Uccode extends AbstractAssignment
             final Typesetter typesetter) throws InterpreterException {
 
         UnicodeChar ucCode = source.scanCharacterCode(context, typesetter,
-                getName());
+                                                      getName());
         return context.getUccode(ucCode).getCodePoint();
     }
 

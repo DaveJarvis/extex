@@ -19,31 +19,31 @@
 
 package de.dante.util;
 
-import com.ibm.icu.lang.UCharacter;
-
 /**
- * This class provides a Unicode character with some combing characters
- * attached to it.
- *
+ * This class provides a Unicode character with some combing characters attached
+ * to it.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public class ComposedUnicodeChar extends UnicodeChar {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 28022006L;
 
     /**
-     * The field <tt>combiningCodePoints</tt> contains the combining characters.
+     * The field <tt>combiningCodePoints</tt> contains the combining
+     * characters.
      */
     private int[] combiningCodePoints;
 
     /**
      * Creates a new object from an integer code point and some combining
      * characters.
-     *
+     * 
      * @param codePoint the 32-bit code point
      * @param combining the array of code points for the combining characters
      */
@@ -51,8 +51,7 @@ public class ComposedUnicodeChar extends UnicodeChar {
 
         super(codePoint);
         for (int i = 0; i < combining.length; i++) {
-            if (combining[i] < UCharacter.MIN_VALUE
-                    || combining[i] > UCharacter.MAX_VALUE) {
+            if (combining[i] < MIN_VALUE || combining[i] > MAX_VALUE) {
                 throw new IllegalArgumentException("Codepoint out of bounds");
             }
         }
@@ -61,7 +60,7 @@ public class ComposedUnicodeChar extends UnicodeChar {
 
     /**
      * Getter for combining character's code points.
-     *
+     * 
      * @return the combining character's code points
      */
     protected int[] getCombiningCodePoints() {
@@ -72,22 +71,23 @@ public class ComposedUnicodeChar extends UnicodeChar {
     /**
      * Compares a <code>UnicodeChar</code> character with the value of this
      * object. They are considered equal if the are both
-     * {@link ComposedUnicodeChar ComposedUnicodeChar}s and have the same codes.
+     * {@link ComposedUnicodeChar ComposedUnicodeChar}s and have the same
+     * codes.
      * <p>
      * The general signature for comparison to an arbitrary object is required
      * for the implementation of {@link java.util.HashMap HashMap} and friends.
      * </p>
-     *
+     * 
      * @param unicodeChar the character to compare
-     *
+     * 
      * @return <code>true</code> if the characters are equal, otherwise
      *         <code>false</code>
      */
     public boolean equals(final Object unicodeChar) {
 
         if (!(unicodeChar instanceof ComposedUnicodeChar)
-                || this.getCodePoint() != ((UnicodeChar) unicodeChar)
-                        .getCodePoint()) {
+            || this.getCodePoint() != ((UnicodeChar) unicodeChar)
+                    .getCodePoint()) {
             return false;
         }
         ComposedUnicodeChar uc = (ComposedUnicodeChar) unicodeChar;

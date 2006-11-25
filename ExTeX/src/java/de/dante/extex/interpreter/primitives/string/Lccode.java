@@ -19,8 +19,6 @@
 
 package de.dante.extex.interpreter.primitives.string;
 
-import com.ibm.icu.lang.UCharacter;
-
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
@@ -103,7 +101,7 @@ public class Lccode extends AbstractAssignment
             context.setLccode(ucCode, lcCode, prefix.clearGlobal());
         } catch (InvalidCharacterException e) {
             throw new InvalidCodeException(e.getChar(), Integer
-                    .toString(UCharacter.MAX_VALUE));
+                    .toString(UnicodeChar.MAX_VALUE));
         }
     }
 

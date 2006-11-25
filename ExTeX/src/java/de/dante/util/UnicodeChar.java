@@ -39,6 +39,10 @@ import com.ibm.icu.text.UTF16;
  */
 public class UnicodeChar implements Serializable {
 
+    public static final int MAX_VALUE = UCharacter.MAX_VALUE;
+
+    public static final int MIN_VALUE = UCharacter.MIN_VALUE;
+
     /**
      * The field <tt>CACHE_SIZE</tt> contains the size of lower cache segment.
      */
@@ -56,7 +60,8 @@ public class UnicodeChar implements Serializable {
 
     /**
      * Creates a new object from a integer code point.
-     * Factory method for Unicode characters.
+     * This is a factory method for Unicode characters.
+     * If the code point is out of range then <tt>null</tt> is returned.
      *
      * @param code the code point
      *
@@ -65,6 +70,9 @@ public class UnicodeChar implements Serializable {
     public static UnicodeChar get(final int code) {
 
         UnicodeChar uc;
+        if (code < UCharacter.MIN_VALUE || code > UCharacter.MAX_VALUE) {
+            return null;
+        }
         if (0 <= code && code < CACHE_SIZE) {
             uc = cache[code];
             if (uc == null) {

@@ -21,8 +21,6 @@ package de.dante.extex.interpreter.max;
 
 import java.util.ArrayList;
 
-import com.ibm.icu.lang.UCharacter;
-
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.Interpreter;
 import de.dante.extex.interpreter.Namespace;
@@ -1042,11 +1040,14 @@ public class Moritz extends Max
             if (name == null) {
                 throw new InvalidCharacterNameException("");
             }
-            cc = UCharacter.getCharFromName(name);
 
-            if (cc < 0 || cc > MAX_CHAR_CODE) {
+            UnicodeChar uc = UnicodeChar.get(name);
+            if (uc == null) {
                 throw new InvalidCharacterNameException(name);
             }
+
+            return uc;
+
         } else {
 
             push(t);
@@ -1055,9 +1056,9 @@ public class Moritz extends Max
             if (cc < 0 || cc > MAX_CHAR_CODE) {
                 throw new BadCharacterException(cc);
             }
+            return UnicodeChar.get((int) cc);
         }
 
-        return UnicodeChar.get((int) cc);
     }
 
     /**

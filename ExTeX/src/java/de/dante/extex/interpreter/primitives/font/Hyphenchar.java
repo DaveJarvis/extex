@@ -19,8 +19,6 @@
 
 package de.dante.extex.interpreter.primitives.font;
 
-import com.ibm.icu.lang.UCharacter;
-
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
@@ -40,58 +38,63 @@ import de.dante.util.exception.GeneralException;
 /**
  * This class provides an implementation for the primitive
  * <code>\hyphenchar</code>.
- *
+ * 
  * <doc name="hyphenchar">
  * <h3>The Primitive <tt>\hyphenchar</tt></h3>
  * <p>
- *  The primitive <tt>\hyphenchar</tt> can be used to set the hyphenation
- *  character for a given font. The undefined character &ndash; represented
- *  by a negative value &ndash; indicates that no hyphenation should be
- *  applied. Otherwise the given character will be used when hyphenating
- *  words.
+ * The primitive <tt>\hyphenchar</tt> can be used to set the hyphenation
+ * character for a given font. The undefined character &ndash; represented by a
+ * negative value &ndash; indicates that no hyphenation should be applied.
+ * Otherwise the given character will be used when hyphenating words.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
- *    &lang;hyphenchar&rang;
- *      &rarr; <tt>\hyphenchar</tt> &lang;font&rang; {@linkplain
- *        de.dante.extex.interpreter.TokenSource#getOptionalEquals(Context)
- *        &lang;equals&rang;} {@linkplain
- *        de.dante.extex.interpreter.TokenSource#scanNumber(Context)
- *        &lang;8-bit&nbsp;number&rang;} </pre>
- *
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
+ *     &amp;langhyphenchar&amp;rang
+ *       &amp;rarr
+ * <tt>
+ * \hyphenchar
+ * </tt>
+ *  &amp;langfont&amp;rang {@linkplain
+ *         de.dante.extex.interpreter.TokenSource#getOptionalEquals(Context)
+ *         &amp;langequals&amp;rang} {@linkplain
+ *         de.dante.extex.interpreter.TokenSource#scanNumber(Context)
+ *         &amp;lang8-bit number&amp;rang}
+ * </pre>
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
- *    \hyphenchar\font=132  </pre>
- *
+ * 
+ * <pre class="TeXSample">
+ *     \hyphenchar\font=132
+ * </pre>
+ * 
  * <h4>Incompatibility</h4>
  * <p>
- *  The TeXbook gives no indication ow the primitive should react for negative
- *  values &ndash; except -1. The implementation of <logo>TeX</logo> allows to store
- *  and retrieve arbitrary negative values. This behavior of <logo>TeX</logo>
- *  is not preserved in  <logo>ExTeX</logo>.
+ * The TeXbook gives no indication ow the primitive should react for negative
+ * values &ndash; except -1. The implementation of <logo>TeX</logo> allows to
+ * store and retrieve arbitrary negative values. This behavior of <logo>TeX</logo>
+ * is not preserved in <logo>ExTeX</logo>.
  * </p>
  * </doc>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Hyphenchar extends AbstractAssignment
-        implements
-            CountConvertible,
-            ExpandableCode,
-            Theable {
+public class Hyphenchar extends AbstractAssignment implements CountConvertible,
+        ExpandableCode, Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public Hyphenchar(final String name) {
@@ -101,10 +104,10 @@ public class Hyphenchar extends AbstractAssignment
 
     /**
      * @see de.dante.extex.interpreter.type.AbstractAssignment#assign(
-     *       de.dante.extex.interpreter.Flags,
-     *       de.dante.extex.interpreter.context.Context,
-     *       de.dante.extex.interpreter.TokenSource,
-     *       de.dante.extex.typesetter.Typesetter)
+     *      de.dante.extex.interpreter.Flags,
+     *      de.dante.extex.interpreter.context.Context,
+     *      de.dante.extex.interpreter.TokenSource,
+     *      de.dante.extex.typesetter.Typesetter)
      */
     public void assign(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
@@ -114,13 +117,7 @@ public class Hyphenchar extends AbstractAssignment
             Font font = source.getFont(context, getName());
             source.getOptionalEquals(context);
             long c = Count.scanInteger(context, source, typesetter);
-            if (c < 0) {
-                font.setHyphenChar(null);
-            } else if (c < UCharacter.MIN_VALUE || c > UCharacter.MAX_VALUE) {
-                font.setHyphenChar(null);
-            } else {
-                font.setHyphenChar(UnicodeChar.get((int) c));
-            }
+            font.setHyphenChar(UnicodeChar.get((int) c));
         } catch (EofException e) {
             throw new EofException(printableControlSequence(context));
         }
@@ -128,9 +125,9 @@ public class Hyphenchar extends AbstractAssignment
 
     /**
      * @see de.dante.extex.interpreter.type.count.CountConvertible#convertCount(
-     *       de.dante.extex.interpreter.context.Context,
-     *       de.dante.extex.interpreter.TokenSource,
-     *       de.dante.extex.typesetter.Typesetter)
+     *      de.dante.extex.interpreter.context.Context,
+     *      de.dante.extex.interpreter.TokenSource,
+     *      de.dante.extex.typesetter.Typesetter)
      */
     public long convertCount(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
