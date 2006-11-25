@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<!--
+  -  Copyright (C) 2004-2006 The ExTeX Group
+  -
+  -  This library is free software; you can redistribute it and/or modify it
+  -  under the terms of the GNU Lesser General Public License as published by
+  -  the Free Software Foundation; either version 2.1 of the License, or (at
+  -  your option) any later version.
+  -
+  -  This library is distributed in the <ope that it will be useful, but
+  -  WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+  -  or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
+  -  License for more details.
+  -
+  -  You should <ave received a copy of the GNU Lesser General Public License
+  -  along with this library; if not, write to the Free Software Foundation,
+  -  Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+  -
+  -->
+<unit name="pdftex">
+  <primitives>
+    <define name="efcode"
+            class="de.dante.extex.interpreter.primitives.pdftex.Efcode"/><!-- (integer) -->
+    <Define name="font"
+            class=""/><!-- [ <font spec> ] [ stretch <integer> ] [ shrink <integer> ] [ step <integer> ] -->
+    <define name="pdfadjustspacing"
+            class="de.dante.extex.interpreter.primitives.register.count.IntegerParameter"/>
+    <define name="pdfannot"
+            class="de.dante.extex.interpreter.primitives.pdftex.Pdfannot"/><!-- [ <rule spec> ] <general text> -->
+    <define name="pdfcatalog"
+            class="de.dante.extex.interpreter.primitives.pdftex.Pdfcatalog"/><!-- <general text> [ openaction <action spec> ] -->
+    <define name="pdfcompresslevel"
+            class="de.dante.extex.interpreter.primitives.register.count.IntegerParameter"
+            >9</define>
+    <define name="pdfdecimaldigits"
+            class="de.dante.extex.interpreter.primitives.register.count.IntegerParameter"
+            >3</define>
+    <define name="pdfdest"
+            class="de.dante.extex.interpreter.primitives.pdftex.Pdfdest"/><!-- <dest spec> -->
+    <define name="pdfendlink"
+            class="de.dante.extex.interpreter.primitives.pdftex.Pdfendlink"/><!-- -->
+    <define name="pdfendthread"
+            class="de.dante.extex.interpreter.primitives.pdftex.Pdfendthread"/>
+    <define name="pdffontname"
+            class="de.dante.extex.interpreter.primitives.pdftex.Pdffontname"/><!-- <font> (expandable) -->
+    <define name="pdffontobjnum"
+            class="de.dante.extex.interpreter.primitives.pdftex.Pdffontobjnum"/><!-- <font> (read-only integer) -->
+    <define name="pdfhorigin"
+          class="de.dante.extex.interpreter.primitives.register.dimen.DimenParameter"/>
+    <define name="pdfimageresolution"
+            class="de.dante.extex.interpreter.primitives.register.count.IntegerParameter">600</define>
+    <define name="pdfincludechars"
+            class="de.dante.extex.interpreter.primitives.pdftex.Pdfincludechars"/><!-- <font> <general text> -->
+    <define name="pdfinfo"
+            class="de.dante.extex.interpreter.primitives.pdftex.Pdfinfo"/><!-- <general text> -->
+    <define name="pdflastannot"
+            class="de.dante.extex.interpreter.primitives.pdftex.Pdflastannot"/><!-- (read-only integer) -->
+    <define name="pdflastobj"
+            class="de.dante.extex.interpreter.primitives.pdftex.Pdflastobj"/><!-- (read-only integer) -->
+    <define name="pdflastxform"
+            class="de.dante.extex.interpreter.primitives.pdftex.Pdflastxform"/><!-- (read-only integer) -->
+    <define name="pdflastximage"
+            class="de.dante.extex.interpreter.primitives.pdftex.Pdflastximage"/><!-- (read-only integer) -->
+    <define name="pdflinkmargin"
+            class="de.dante.extex.interpreter.primitives.register.dimen.DimenParameter"/>
+    <define name="pdfliteral"
+            class="de.dante.extex.interpreter.primitives.pdftex.Pdfliteral"/><!-- [ direct ] <general text> -->
+    <define name="pdfmovechars"
+            class="de.dante.extex.interpreter.primitives.register.count.IntegerParameter"/>
+    <define name="pdfnames"
+            class="de.dante.extex.interpreter.primitives.pdftex.Pdfnames"/><!-- <general text> -->
+    <define name="pdfobj"
+            class="de.dante.extex.interpreter.primitives.pdftex.Pdfobj"/><!-- [ <object type spec> ] <general text> -->
+    <define name="pdfoutline"
+            class="de.dante.extex.interpreter.primitives.pdftex.Pdfoutline"/><!-- <action spec> [ count <integer> ] <general text> -->
+    <define name="pdfoutput"
+            class="de.dante.extex.interpreter.primitives.register.count.IntegerParameter">1</define>
+    <define name="pdfpageattr"
+            class="de.dante.extex.interpreter.primitives.register.toks.ToksParameter"/><!-- (tokens) -->
+    <define name="pdfpageheight"
+            class="de.dante.extex.interpreter.primitives.register.dimen.DimenParameter"
+            key="mediaheight">297mm</define>
+    <define name="pdfpagesattr"
+            class="de.dante.extex.interpreter.primitives.register.toks.ToksParameter"/><!-- (tokens) -->
+    <define name="pdfpagewidth"
+            class="de.dante.extex.interpreter.primitives.register.dimen.DimenParameter"
+            key="mediawidth">210mm</define>
+    <define name="pdfpkresolution"
+            class="de.dante.extex.interpreter.primitives.register.count.IntegerParameter">600</define>
+    <define name="pdfrefobj"
+            class="de.dante.extex.interpreter.primitives.pdftex.Pdfrefobj"/><!-- <integer> -->
+    <define name="pdfrefxform"
+            class="de.dante.extex.interpreter.primitives.pdftex.Pdfrefxform"/><!-- <integer> -->
+    <define name="pdfrefximage"
+            class="de.dante.extex.interpreter.primitives.pdftex.Pdfrefximage"/><!-- <integer> -->
+    <define name="pdfstartlink"
+            class="de.dante.extex.interpreter.primitives.pdftex.Pdfstartlink"/><!-- [ <rule spec> ] [ <attr spec> ] <action spec> -->
+    <define name="pdftexrevision"
+            class="de.dante.extex.interpreter.primitives.register.toks.ToksParameter"
+            >r</define><!-- (expandable) -->
+    <define name="pdftexversion"
+            class="de.dante.extex.interpreter.primitives.register.count.IntegerParameter"
+            >112</define><!-- (read-only integer) -->
+    <define name="pdfthread"
+            class="de.dante.extex.interpreter.primitives.pdftex.Pdfthread"/><!-- <rule spec> [ <attr spec> ] <id spec> -->
+    <define name="pdfthreadhoffset"
+            class="de.dante.extex.interpreter.primitives.register.dimen.DimenParameter"/>
+    <define name="pdfthreadmargin"
+            class="de.dante.extex.interpreter.primitives.register.dimen.DimenParameter"/>
+    <define name="pdfthreadvoffset"
+            class="de.dante.extex.interpreter.primitives.register.dimen.DimenParameter"/>
+    <define name="pdfvorigin"
+            class="de.dante.extex.interpreter.primitives.register.dimen.DimenParameter"
+            >1in</define>
+    <define name="pdfxform"
+            class="de.dante.extex.interpreter.primitives.pdftex.Pdfxform"/><!-- [ <attr spec> ] [ <resources spec> ] <box number> -->
+    <define name="pdfximage"
+            class="de.dante.extex.interpreter.primitives.pdftex.Pdfximage"/><!-- [ <rule spec> ] [ <attr spec> ] [ <page spec> ] <file spec> -->
+  </primitives>
+ </unit>
+ 
