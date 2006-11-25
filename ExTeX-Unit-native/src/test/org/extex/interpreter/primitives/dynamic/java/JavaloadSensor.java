@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.dynamic.java;
+package org.extex.interpreter.primitives.dynamic.java;
 
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.typesetter.Typesetter;

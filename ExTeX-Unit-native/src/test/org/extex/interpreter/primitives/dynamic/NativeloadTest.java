@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.dynamic;
+package org.extex.interpreter.primitives.dynamic;
 
 import de.dante.test.NoFlagsPrimitiveTester;
 

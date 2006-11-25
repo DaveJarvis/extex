@@ -17,16 +17,17 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.dynamic.java;
+package org.extex.interpreter.primitives.dynamic.java;
 
 import java.lang.reflect.InvocationTargetException;
+
+import org.extex.interpreter.primitives.dynamic.Definer;
 
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.TokenSource;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.exception.helping.HelpingException;
-import de.dante.extex.interpreter.primitives.dynamic.Definer;
 import de.dante.extex.interpreter.type.AbstractAssignment;
 import de.dante.extex.interpreter.type.Code;
 import de.dante.extex.interpreter.type.tokens.Tokens;

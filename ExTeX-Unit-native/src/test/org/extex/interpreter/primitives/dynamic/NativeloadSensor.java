@@ -17,10 +17,11 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.dynamic;
+package org.extex.interpreter.primitives.dynamic;
+
+import org.extex.interpreter.primitives.dynamic.java.Loadable;
 
 import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.primitives.dynamic.java.Loadable;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.exception.GeneralException;
 
