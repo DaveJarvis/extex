@@ -7,7 +7,6 @@
 	<classpathentry kind="lib" path="lib/jdom.jar"/>
 	<classpathentry kind="lib" path="develop/lib/ant.jar"/>
 	<classpathentry kind="lib" path="develop/lib/junit.jar"/>
-	<classpathentry kind="lib" path="lib/icu4j_2_8.jar" sourcepath="develop/src/icu4jsrc_3_2.jar"/>
 	<classpathentry kind="lib" path="lib/avalon-framework-4.1.4.jar"/>
 	<classpathentry kind="lib" path="lib/jel.jar"/>
 	<classpathentry kind="lib" path="develop/lib/jaxen-full.jar"/>
