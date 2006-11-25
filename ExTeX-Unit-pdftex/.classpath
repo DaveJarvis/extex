@@ -4,7 +4,8 @@
 	<classpathentry kind="src" path="src/config"/>
 	<classpathentry kind="src" path="src/test"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3.8.1"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-base"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-core"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
