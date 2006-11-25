@@ -19,63 +19,65 @@
 
 package org.extex.interpreter.unit;
 
-import javax.naming.ConfigurationException;
-
-import de.dante.extex.interpreter.unit.Loader;
+import de.dante.util.framework.AbstractFactory;
+import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This is the factory for instances of
- * {@link de.dante.extex.interpreter.unit.Loader Loader}.
- * This factory inherits its properties from the
+ * {@link de.dante.extex.interpreter.unit.Loader Loader}. This factory inherits
+ * its properties from the
  * {@link de.dante.util.framework.AbstractFactory AbstractFactory}. Among them
  * the support for configuration and logging.
- *
+ * 
  * <h3>Configuration</h3>
- *
+ * 
  * <p>
- *  Mainly the configuration needs to specify which class to use for the
- *  ErrorHandler. The configuration provides a mapping from a type name to the
- *  sub-configuration to be used. The name of the class is given as the argument
- *  <tt>class</tt> of the sub-configuration as shown below.
- *  <pre>
- *   &lt;setup class="de.dante.extex.interpreter.unit.tex.Setup"/&gt;
- *  </pre>
+ * Mainly the configuration needs to specify which class to use for the
+ * ErrorHandler. The configuration provides a mapping from a type name to the
+ * sub-configuration to be used. The name of the class is given as the argument
+ * <tt>class</tt> of the sub-configuration as shown below.
+ * 
+ * <pre>
+ *    &lt;setup class=&quot;de.dante.extex.interpreter.unit.tex.Setup&quot;/&gt;
+ * </pre>
+ * 
  * </p>
  * <p>
- *  The named class need to implement the interface
- *  {@link de.dante.extex.interpreter.unit.Loader Loader}. If
- *  this interface is not implemented an error is raised.
+ * The named class need to implement the interface
+ * {@link de.dante.extex.interpreter.unit.Loader Loader}. If this interface is
+ * not implemented an error is raised.
  * </p>
  * <p>
- *  The configuration is passed down to the new instance if it implements the
- *  interface {@link de.dante.util.framework.configuration.Configurable Configurable}.
+ * The configuration is passed down to the new instance if it implements the
+ * interface
+ * {@link de.dante.util.framework.configuration.Configurable Configurable}.
  * </p>
  * <p>
- *  If the class implements the interface
- *  {@link de.dante.util.framework.logger.LogEnabled LogEnabled} then a logger
- *  is passed to the new instance. For this purpose the factory itself is
- *  log enabled to receive the logger.
+ * If the class implements the interface
+ * {@link de.dante.util.framework.logger.LogEnabled LogEnabled} then a logger is
+ * passed to the new instance. For this purpose the factory itself is log
+ * enabled to receive the logger.
  * </p>
- *
- *
- *
+ * 
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public class LoaderFactory extends AbstractFactory {
 
     /**
-     * Create a new instance of the class given by the attribute
-     * <tt>class</tt> of the configuration.
-     *
+     * Create a new instance of the class given by the attribute <tt>class</tt>
+     * of the configuration.
+     * 
      * @return the Code loaded
-     *
+     * 
      * @throws ConfigurationException in case of an error
      */
     public Loader createLoad() throws ConfigurationException {
 
         return (Loader) createInstanceForConfiguration(getConfiguration(),
-                Loader.class);
+                                                       Loader.class);
     }
 
 }
