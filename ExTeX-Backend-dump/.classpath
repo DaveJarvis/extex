@@ -6,7 +6,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-base"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-core"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Font-old"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Unit-pdftex"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Font"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
