@@ -36,7 +36,7 @@ import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
 
 import de.dante.extex.backend.documentWriter.DocumentWriterOptions;
-import de.dante.extex.font.FontFactory;
+import de.dante.extex.font.CoreFontFactory;
 import de.dante.extex.interpreter.Conditional;
 import de.dante.extex.interpreter.ConditionalSwitch;
 import de.dante.extex.interpreter.Tokenizer;
@@ -273,7 +273,7 @@ public class ContextImpl
     /**
      * The field <tt>fontFactory</tt> contains the font factory to use.
      */
-    private transient FontFactory fontFactory;
+    private transient CoreFontFactory fontFactory;
 
     /**
      * The field <tt>group</tt> contains the entry to the linked list of groups.
@@ -727,7 +727,7 @@ public class ContextImpl
     /**
      * @see de.dante.extex.interpreter.context.Context#getFontFactory()
      */
-    public FontFactory getFontFactory() {
+    public CoreFontFactory getFontFactory() {
 
         return fontFactory;
     }
@@ -1677,7 +1677,7 @@ public class ContextImpl
      * @see de.dante.extex.interpreter.context.Context#setFontFactory(
      *      de.dante.extex.font.FontFactory)
      */
-    public void setFontFactory(final FontFactory factory) {
+    public void setFontFactory(final CoreFontFactory factory) {
 
         this.fontFactory = factory;
     }
