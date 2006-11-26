@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.scanner.stream;
+package de.dante.extex.scanner.stream.exception;
 
 import de.dante.util.framework.configuration.exception.ConfigurationException;
 
