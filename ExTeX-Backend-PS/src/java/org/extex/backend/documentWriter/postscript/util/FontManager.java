@@ -25,8 +25,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.interpreter.type.font.Font;
-import de.dante.util.UnicodeChar;
 
 /**
  * The font manager keeps track of the fonts and characters used.

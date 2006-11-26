@@ -23,6 +23,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.backend.documentWriter.exception.DocumentWriterException;
 import de.dante.extex.backend.documentWriter.exception.DocumentWriterIOException;
 import de.dante.extex.interpreter.context.tc.TypesettingContext;
@@ -53,7 +55,6 @@ import de.dante.extex.typesetter.type.node.VerticalListNode;
 import de.dante.extex.typesetter.type.node.VirtualCharNode;
 import de.dante.extex.typesetter.type.node.WhatsItNode;
 import de.dante.extex.typesetter.type.page.Page;
-import de.dante.util.UnicodeChar;
 import de.dante.util.exception.GeneralException;
 
 /**
