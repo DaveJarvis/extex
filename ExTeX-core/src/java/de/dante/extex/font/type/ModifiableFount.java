@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -14,29 +14,34 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this library; if not, write to the Free Software Foundation,
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
  */
-package de.dante.extex.font;
 
-import de.dante.extex.font.exception.FontException;
-import de.dante.extex.interpreter.type.font.Font;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
+package de.dante.extex.font.type;
 
-public interface CoreFontFactory {
+import de.dante.extex.interpreter.type.dimen.Dimen;
+
+/**
+ * ModifiableFont Interface
+ *
+ * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
+ * @version $Revision$
+ */
+public interface ModifiableFount extends InternalFount {
 
     /**
-     * Return a new instance.
-     * 
-     * If the name is empty or null, then the <code>NullFont</code> are
-     * returned.
-     * 
-     * @param key the fount key
-     * 
-     * @return Returns the new font instance.
-     * 
-     * @throws ConfigurationException from the resource finder.
-     * @throws FontException if a font error occurred.
+     * Setter for the font-property
+     *
+     * @param key       the key
+     * @param value     the value for the key
      */
-    Font getInstance(FountKey key) throws ConfigurationException, FontException;
+    void setProperty(String key, String value);
+
+    /**
+     * Setter for the font dimen register.
+     *
+     * @param key       the key
+     * @param value     the value for the key
+     */
+    void setFontDimen(String key, Dimen value);
 
 }

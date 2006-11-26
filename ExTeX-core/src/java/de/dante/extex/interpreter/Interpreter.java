@@ -24,12 +24,11 @@ import java.io.InputStream;
 
 import org.extex.interpreter.TokenSource;
 
-import de.dante.extex.font.FontFactory;
+import de.dante.extex.font.CoreFontFactory;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.ErrorLimitException;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.interaction.Interaction;
-import de.dante.extex.interpreter.loader.LoaderException;
 import de.dante.extex.scanner.TokenStream;
 import de.dante.extex.scanner.stream.TokenStreamFactory;
 import de.dante.extex.typesetter.Typesetter;
@@ -169,7 +168,7 @@ public interface Interpreter extends TokenSource {
      *
      * @param fontFactory the new font factory
      */
-    void setFontFactory(FontFactory fontFactory);
+    void setFontFactory(CoreFontFactory fontFactory);
 
     /**
      * Setter for the interaction mode.

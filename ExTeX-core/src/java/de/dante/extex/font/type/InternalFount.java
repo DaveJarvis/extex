@@ -14,29 +14,30 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this library; if not, write to the Free Software Foundation,
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
  */
-package de.dante.extex.font;
 
-import de.dante.extex.font.exception.FontException;
-import de.dante.extex.interpreter.type.font.Font;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
+package de.dante.extex.font.type;
 
-public interface CoreFontFactory {
+import org.extex.type.UnicodeChar;
+
+import de.dante.extex.font.Glyph;
+
+/**
+ * Fount Interface (only getter)
+ *
+ * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * @version $Revision$
+ */
+public interface InternalFount extends Fount {
 
     /**
-     * Return a new instance.
-     * 
-     * If the name is empty or null, then the <code>NullFont</code> are
-     * returned.
-     * 
-     * @param key the fount key
-     * 
-     * @return Returns the new font instance.
-     * 
-     * @throws ConfigurationException from the resource finder.
-     * @throws FontException if a font error occurred.
+     * Return the Glyph of a <code>UnicodeChar</code>, or
+     * null, if the character is not defined.
+     *
+     * @param c the Unicode char
+     * @return the <code>Glyph</code>
      */
-    Font getInstance(FountKey key) throws ConfigurationException, FontException;
+    Glyph getGlyph(UnicodeChar c);
 
 }

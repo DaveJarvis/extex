@@ -27,7 +27,7 @@ import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
 
 import de.dante.extex.color.ColorConverter;
-import de.dante.extex.font.FontFactory;
+import de.dante.extex.font.CoreFontFactory;
 import de.dante.extex.interpreter.Conditional;
 import de.dante.extex.interpreter.Tokenizer;
 import de.dante.extex.interpreter.context.group.GroupInfo;
@@ -76,7 +76,7 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
  * classes.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4491 $
  */
 public class MockContext implements Context, TypesetterOptions {
 
@@ -340,7 +340,7 @@ public class MockContext implements Context, TypesetterOptions {
     /**
      * @see de.dante.extex.interpreter.context.ContextFont#getFontFactory()
      */
-    public FontFactory getFontFactory() {
+    public CoreFontFactory getFontFactory() {
 
         throw new RuntimeException("unimplemented");
     }
@@ -803,7 +803,7 @@ public class MockContext implements Context, TypesetterOptions {
     /**
      * @see de.dante.extex.interpreter.context.ContextFont#setFontFactory(de.dante.extex.font.FontFactory)
      */
-    public void setFontFactory(final FontFactory fontFactory) {
+    public void setFontFactory(final CoreFontFactory fontFactory) {
 
         throw new RuntimeException("unimplemented");
     }

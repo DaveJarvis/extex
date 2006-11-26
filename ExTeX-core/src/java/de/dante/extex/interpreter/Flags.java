@@ -84,7 +84,7 @@ public interface Flags {
      * The constant <tt>NONE</tt> contains an instance where no flags are set.
      * Beware of changing this instance!
      */
-    Flags NONE = new FlagsImpl() {
+    Flags NONE = new Flags() {
 
         /**
          * @see de.dante.extex.interpreter.Flags#set(de.dante.extex.interpreter.Flags)
@@ -148,6 +148,73 @@ public interface Flags {
         public void setProtected() {
 
             throw new UnsupportedOperationException();
+        }
+
+        public void clear() {
+        }
+
+        public boolean clearExpanded() {
+            return false;
+        }
+
+        public boolean clearGlobal() {
+            return false;
+        }
+
+        public boolean clearImmediate() {
+            return false;
+        }
+
+        public boolean clearLong() {
+            return false;
+        }
+
+        public boolean clearOuter() {
+            return false;
+        }
+
+        public boolean clearProtected() {
+            return false;
+        }
+
+        public Flags copy() {
+            return null;
+        }
+
+        public String[] get() {
+            return null;
+        }
+
+        public boolean isDirty() {
+            return false;
+        }
+
+        public boolean isExpanded() {
+            return false;
+        }
+
+        public boolean isGlobal() {
+            return false;
+        }
+
+        public boolean isImmediate() {
+            return false;
+        }
+
+        public boolean isLong() {
+            return false;
+        }
+
+        public boolean isOuter() {
+            return false;
+        }
+
+        public boolean isProtected() {
+            return false;
+        }
+
+        public String toText() {
+            return "";
         }
     };
 
