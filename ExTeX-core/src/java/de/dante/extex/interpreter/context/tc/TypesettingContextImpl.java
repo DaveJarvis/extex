@@ -19,9 +19,8 @@
 
 package de.dante.extex.interpreter.context.tc;
 
-import org.extex.interpreter.context.Color;
-
 import de.dante.extex.color.model.ColorFactory;
+import de.dante.extex.interpreter.context.Color;
 import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.language.Language;
 
@@ -31,7 +30,7 @@ import de.dante.extex.language.Language;
  * appearance of glyphs or other nodes.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4399 $
  */
 public class TypesettingContextImpl implements ModifiableTypesettingContext {
 

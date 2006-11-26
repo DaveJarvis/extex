@@ -28,7 +28,7 @@ import de.dante.extex.typesetter.pageBuilder.PageBuilder;
 import de.dante.extex.typesetter.paragraphBuilder.ParagraphBuilder;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.node.factory.NodeFactory;
-import de.dante.util.Locator;
+import org.extex.type.Locator;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**

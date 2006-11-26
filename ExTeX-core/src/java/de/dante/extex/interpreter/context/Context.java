@@ -22,6 +22,7 @@ package de.dante.extex.interpreter.context;
 import java.io.Serializable;
 import java.util.Iterator;
 
+import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
 
 import de.dante.extex.interpreter.Conditional;
@@ -41,12 +42,11 @@ import de.dante.extex.interpreter.type.muskip.Muskip;
 import de.dante.extex.interpreter.unit.UnitInfo;
 import de.dante.extex.language.Language;
 import de.dante.extex.language.LanguageManager;
-import de.dante.extex.scanner.stream.TokenStream;
+import de.dante.extex.scanner.TokenStream;
 import de.dante.extex.scanner.type.Catcode;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.scanner.type.token.TokenFactory;
 import de.dante.extex.typesetter.paragraphBuilder.ParagraphShape;
-import de.dante.util.Locator;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**

@@ -21,8 +21,7 @@ package de.dante.extex.interpreter.context.tc;
 
 import java.io.Serializable;
 
-import org.extex.interpreter.context.Color;
-
+import de.dante.extex.interpreter.context.Color;
 import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.language.Language;
 
@@ -35,7 +34,7 @@ import de.dante.extex.language.Language;
  * @see de.dante.extex.interpreter.context.tc.ModifiableTypesettingContext
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4399 $
  */
 public interface TypesettingContext extends Serializable {
 
