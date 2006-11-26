@@ -34,7 +34,7 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface FontFactory {
+public interface FontFactory extends CoreFontFactory {
 
     /**
      * AFM-Extension
