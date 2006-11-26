@@ -10,7 +10,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-core"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Font"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-base"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Font-old"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-CLI-TeX"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Unit-tex"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Scanner"/>
