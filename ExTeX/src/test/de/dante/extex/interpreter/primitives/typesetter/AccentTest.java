@@ -19,7 +19,6 @@
 
 package de.dante.extex.interpreter.primitives.typesetter;
 
-import de.dante.test.ExTeXLauncher;
 import de.dante.test.NoFlagsPrimitiveTester;
 
 /**
