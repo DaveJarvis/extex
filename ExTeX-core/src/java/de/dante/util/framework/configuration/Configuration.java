@@ -19,14 +19,15 @@
 
 package de.dante.util.framework.configuration;
 
-import de.dante.util.StringList;
+import java.util.Iterator;
+
+import org.extex.type.StringList;
+
 import de.dante.util.framework.configuration.exception.ConfigurationException;
 import de.dante.util.framework.configuration.exception.ConfigurationIOException;
 import de.dante.util.framework.configuration.exception.ConfigurationInvalidResourceException;
 import de.dante.util.framework.configuration.exception.ConfigurationNotFoundException;
 import de.dante.util.framework.configuration.exception.ConfigurationSyntaxException;
-
-import java.util.Iterator;
 
 /**
  * This is the interface for the configuration engine.
