@@ -17,41 +17,26 @@
  *
  */
 
-package de.dante.extex.interpreter.context.group;
+package de.dante.extex.backend.outputStream;
 
-import org.extex.type.Locator;
-
-import de.dante.extex.scanner.type.token.Token;
+import java.io.OutputStream;
 
 /**
- * This interface provides access to the info for some group.
+ * This interface provides the description of an observer waiting for a new
+ * output stream to be delivered.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface GroupInfo {
+public interface OutputStreamObserver {
 
     /**
-     * Getter for the starting token of the group.
-     * This value is null for the global group.
+     * Recognize that a new output stream has been delivered.
      *
-     * @return the token which started the group
+     * @param name the name of the resource requested
+     * @param type the type of the resource
+     * @param stream the stream to be delivered
      */
-    Token getGroupStart();
-
-    /**
-     * Getter for the group type.
-     *
-     * @return the group type
-     */
-    GroupType getGroupType();
-
-    /**
-     * Getter for the locator describing where the group started.
-     * This value can be null for the global group.
-     *
-     * @return the locator
-     */
-    Locator getLocator();
+    void update(String name, String type, OutputStream stream);
 
 }

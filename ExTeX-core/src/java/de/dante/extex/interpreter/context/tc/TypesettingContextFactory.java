@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter.context.tc;
 
-import org.extex.interpreter.context.Color;
+import de.dante.extex.interpreter.context.Color;
 
 import de.dante.extex.font.type.other.NullFont;
 import de.dante.extex.interpreter.type.font.Font;
@@ -38,7 +38,7 @@ import de.dante.util.framework.configuration.exception.ConfigurationMissingAttri
  *  TypesettingContext}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4399 $
  */
 public class TypesettingContextFactory extends AbstractFactory {
 

@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter.context;
 
-import de.dante.extex.font.FontFactory;
+import de.dante.extex.font.CoreFontFactory;
 import de.dante.extex.interpreter.type.font.Font;
 
 /**
@@ -49,7 +49,7 @@ public interface ContextFont {
      *
      * @see #setFontFactory(FontFactory)
      */
-    FontFactory getFontFactory();
+    CoreFontFactory getFontFactory();
 
     /**
      * Setter for font registers.
@@ -70,6 +70,6 @@ public interface ContextFont {
      *
      * @see #getFontFactory()
      */
-    void setFontFactory(FontFactory fontFactory);
+    void setFontFactory(CoreFontFactory fontFactory);
 
 }
