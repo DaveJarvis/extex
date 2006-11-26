@@ -4,9 +4,6 @@
 	<classpathentry kind="src" path="src/test"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3.8.1"/>
-	<classpathentry kind="lib" path="lib/jdom.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-core"/>
-	<classpathentry kind="lib" path="lib.test/jaxen-full.jar"/>
-	<classpathentry kind="lib" path="lib.test/saxpath.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
