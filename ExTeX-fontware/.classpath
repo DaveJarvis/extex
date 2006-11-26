@@ -7,8 +7,7 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Font"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-core"/>
 	<classpathentry kind="lib" path="/ExTeX-Font/lib/iText.jar"/>
-	<classpathentry kind="lib" path="/ExTeX-Font-old/lib/jdom.jar"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Font-old"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-base"/>
+	<classpathentry kind="lib" path="/ExTeX-Font/lib/jdom.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
