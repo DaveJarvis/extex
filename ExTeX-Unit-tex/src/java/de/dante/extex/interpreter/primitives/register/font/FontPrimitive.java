@@ -24,7 +24,7 @@ import java.util.logging.Logger;
 
 import org.extex.interpreter.TokenSource;
 
-import de.dante.extex.font.FontFactory;
+import de.dante.extex.font.CoreFontFactory;
 import de.dante.extex.font.FountKey;
 import de.dante.extex.font.exception.FontException;
 import de.dante.extex.interpreter.Flags;
@@ -142,7 +142,7 @@ import de.dante.util.framework.logger.LogEnabled;
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
+ * @version $Revision:4431 $
  */
 public class FontPrimitive extends AbstractAssignment
         implements
@@ -225,7 +225,7 @@ public class FontPrimitive extends AbstractAssignment
             }
         }
 
-        FontFactory factory = context.getFontFactory();
+        CoreFontFactory factory = context.getFontFactory();
         Font font;
         try {
             font = factory.getInstance(new FountKey(fontname, fontSize, scale,
