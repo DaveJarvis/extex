@@ -29,6 +29,7 @@ import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.ErrorLimitException;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.interaction.Interaction;
+import de.dante.extex.interpreter.loader.LoaderException;
 import de.dante.extex.scanner.TokenStream;
 import de.dante.extex.scanner.stream.TokenStreamFactory;
 import de.dante.extex.typesetter.Typesetter;
