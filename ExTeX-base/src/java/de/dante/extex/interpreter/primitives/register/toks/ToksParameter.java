@@ -1,0 +1,211 @@
+/*
+ * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ *
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+ *
+ */
+
+package de.dante.extex.interpreter.primitives.register.toks;
+
+import org.extex.interpreter.Namespace;
+import org.extex.interpreter.TokenSource;
+
+import de.dante.extex.interpreter.Flags;
+import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.interpreter.exception.InterpreterException;
+import de.dante.extex.interpreter.type.InitializableCode;
+import de.dante.extex.interpreter.type.Theable;
+import de.dante.extex.interpreter.type.tokens.Tokens;
+import de.dante.extex.interpreter.type.tokens.TokensConvertible;
+import de.dante.extex.scanner.type.token.Token;
+import de.dante.extex.typesetter.Typesetter;
+import de.dante.util.exception.GeneralException;
+import de.dante.util.framework.configuration.Configurable;
+import de.dante.util.framework.configuration.Configuration;
+import de.dante.util.framework.configuration.exception.ConfigurationException;
+
+/**
+ * This class provides an implementation for the primitive <code>\toks</code>.
+ * It sets the numbered toks register to the value given, and as a side effect
+ * all prefixes are zeroed.
+ * 
+ * Example:
+ * 
+ * <pre>
+ *     \toks12{123}
+ * </pre>
+ * 
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * @author <a href="mailto:mgn@gmx.de">Michael Niedermair</a>
+ * @version $Revision:4431 $
+ */
+public class ToksParameter extends AbstractToks implements TokensConvertible,
+        Theable, InitializableCode, Configurable {
+
+    /**
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
+     */
+    protected static final long serialVersionUID = 2005L;
+
+    /**
+     * Return the key for a named toks register.
+     * 
+     * @param name the name of the register
+     * @param context the interpreter context to use
+     * 
+     * @return the key for the toks register
+     */
+    public static String getKey(final String name, final Context context) {
+
+        if (Namespace.SUPPORT_NAMESPACE_TOKS) {
+            return context.getNamespace() + "\b" + name;
+        } else {
+            return name;
+        }
+    }
+
+    /**
+     * The field <tt>key</tt> contains the key.
+     */
+    private String key;
+
+    /**
+     * Creates a new object.
+     * 
+     * @param name the name for debugging
+     */
+    public ToksParameter(final String name) {
+
+        super(name);
+        key = name;
+    }
+
+    /**
+     * @see de.dante.util.framework.configuration.Configurable#configure(
+     *      de.dante.util.framework.configuration.Configuration)
+     */
+    public void configure(final Configuration config)
+            throws ConfigurationException {
+
+        String k = config.getAttribute("key");
+        if (k != null) {
+            key = k;
+        }
+    }
+
+    /**
+     * Return the key (the number) for the tokens register.
+     * 
+     * @param source the source for the next tokens &ndash; if required
+     * @param context the interpreter context to use
+     * 
+     * @return the key for the tokens register
+     */
+    protected String getKey(final Context context, final TokenSource source,
+            Typesetter typesetter) {
+
+        if (Namespace.SUPPORT_NAMESPACE_TOKS) {
+            return context.getNamespace() + "\b" + key;
+        } else {
+            return key;
+        }
+    }
+
+    /**
+     * @see de.dante.extex.interpreter.type.InitializableCode#init(
+     *      de.dante.extex.interpreter.context.Context, TokenSource, Typesetter)
+     */
+    public void init(final Context context, final TokenSource source,
+            final Typesetter typesetter) throws InterpreterException {
+
+        if (source != null) {
+            Tokens toks = new Tokens();
+            for (Token t = source.getToken(context); t != null; t = source
+                    .getToken(context)) {
+                toks.add(t);
+            }
+            context.setToks(getKey(context, (TokenSource) null, typesetter),
+                            toks, true);
+        }
+    }
+
+    /**
+     * @see de.dante.extex.interpreter.type.Code#execute(
+     *      de.dante.extex.interpreter.Flags,
+     *      de.dante.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource,
+     *      de.dante.extex.typesetter.Typesetter)
+     */
+    public void assign(final Flags prefix, final Context context,
+            final TokenSource source, final Typesetter typesetter)
+            throws InterpreterException {
+
+        String key = getKey(context, source, typesetter);
+        source.getOptionalEquals(context);
+        Tokens toks = source.getTokens(context, source, typesetter);
+        context.setToks(key, toks, prefix.clearGlobal());
+    }
+
+    /**
+     * @see de.dante.extex.interpreter.type.tokens.TokensConvertible#convertTokens(
+     *      de.dante.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource,
+     *      de.dante.extex.typesetter.Typesetter)
+     */
+    public Tokens convertTokens(final Context context,
+            final TokenSource source, final Typesetter typesetter)
+            throws InterpreterException {
+
+        String key = getKey(context, source, typesetter);
+        return context.getToks(key);
+    }
+
+    /**
+     * Expand
+     * <p>
+     * Scan the tokens between <code>{</code> and <code>}</code> and store
+     * them in the named tokens register.
+     *
+     * @param prefix the prefix flags
+     * @param context the interpreter context
+     * @param source the token source
+     * @param typesetter the typesetter
+     * @param key the key
+     *
+     * @throws GeneralException in case of an error
+     */
+    protected void expand(final Flags prefix, final Context context,
+            final TokenSource source, final Typesetter typesetter,
+            final String key) throws GeneralException {
+
+        Tokens toks = source.getTokens(context, source, typesetter);
+        context.setToks(key, toks, prefix.clearGlobal());
+    }
+
+    /**
+     * Return the register value as <code>Tokens</code> for <code>\the</code>.
+     *
+     * @see de.dante.extex.interpreter.type.Theable#the(
+     *      de.dante.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, Typesetter)
+     */
+    public Tokens the(final Context context, final TokenSource source,
+            final Typesetter typesetter) throws InterpreterException {
+
+        return context.getToks(getKey(context, source, typesetter));
+    }
+
+}

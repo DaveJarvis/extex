@@ -31,7 +31,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.type.UnicodeChar;
 
 import de.dante.extex.backend.outputStream.OutputStreamFactory;
-import de.dante.extex.font.FontFactory;
+import de.dante.extex.font.CoreFontFactory;
 import de.dante.extex.interpreter.Conditional;
 import de.dante.extex.interpreter.ErrorHandler;
 import de.dante.extex.interpreter.Flags;
@@ -1325,7 +1325,7 @@ public abstract class Max
      * @see de.dante.extex.interpreter.Interpreter#setFontFactory(
      *      de.dante.extex.font.FontFactory)
      */
-    public void setFontFactory(final FontFactory fontFactory) {
+    public void setFontFactory(final CoreFontFactory fontFactory) {
 
         context.setFontFactory(fontFactory);
     }
