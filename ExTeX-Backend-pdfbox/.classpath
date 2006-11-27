@@ -8,6 +8,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-base"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-core"/>
 	<classpathentry kind="lib" path="lib/PDFBox.jar"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Font-old"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Font"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
