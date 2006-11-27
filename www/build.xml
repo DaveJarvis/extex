@@ -34,7 +34,7 @@
   </target>
 
   <property name="target" location="../target" />
-  <property name="target.www" location="${target}/www" />
+  <property name="target.site" location="${target}/site" />
 
   <target name="all"
           description="Build everything"
@@ -42,7 +42,7 @@
 
   <target name="site"
           description="Create the web site">
-    <mkdir dir="${target.www}" />
+    <mkdir dir="${target.site}" />
     <exec executable="perl">
       <arg line="bin/make.pl" />
       <arg line="-verbose" />
