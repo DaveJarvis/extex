@@ -1,0 +1,37 @@
+   <div class="info">
+    CVS Browser
+    <div class="infoitems">
+    To browse the CVS repository online use
+    <a href="http://cvs.berlios.de/cgi-bin/viewcvs.cgi/extex/">ViewCVS</a>
+    </div>
+   </div>
+   <div class="info">
+    Current State
+    <div class="infoitems">
+    Currently the internal version 0.0 is in the CVS repository.
+    </div>
+   </div>
+   <div class="info">
+    Contact&nbsp;Address
+    <div class="infoitems">
+    <a href="mailto:extex@dante.de">extex@dante.de</a>
+    </div>
+   </div>
+   <div class="info">
+    Sponsored by
+    <div class="infoitems">
+    <a href="http://www.dante.de"
+       title="DANTE e.V."
+       ><img src="&top;image/DANTE-logo.png" border="0" alt="DANTE e.V." /></a>
+    </div>
+    Hosted by
+    <div class="infoitems">
+    <a href="http://developer.berlios.de"
+       title="BerliOS Developer"
+       ><img src="http://developer.berlios.de/bslogo.php?group_id=1915"
+             width="124px"
+             height="32px"
+             border="0"
+             alt="BerliOS"></a></div>
+   </div>
+   
