@@ -1,3 +1,0 @@
-# robots.txt for http://www.extex.org/
-User-agent: *
-Disallow: /reports/tests
