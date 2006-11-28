@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src/java"/>
 	<classpathentry kind="src" path="src/config"/>
-	<classpathentry kind="src" path="develop/reports"/>
-	<classpathentry kind="src" path="src/test"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="lib/jel.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3.8.1"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-core"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Font"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-base"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-CLI-TeX"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Unit-tex"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Scanner"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Scanner32"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
