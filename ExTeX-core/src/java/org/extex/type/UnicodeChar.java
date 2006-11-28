@@ -20,11 +20,8 @@
 package org.extex.type;
 
 import java.io.Serializable;
-import java.nio.CharBuffer;
 
-import com.ibm.icu.impl.UCharacterProperty;
 import com.ibm.icu.lang.UCharacter;
-import com.ibm.icu.text.UTF16;
 
 /**
  * This class represents a 32-bit Unicode character.
@@ -106,73 +103,11 @@ public class UnicodeChar implements Serializable {
     private int code;
 
     /**
-     * Create a new instance with a char32 from a <code>CharBuffer</code>
-     * at position index.
-     * <p>
-     *  This use the code from <code>UTF16.charAt(String,int)</code> and
-     *  change String to CharBuffer.
-     * </p>
-     *
-     * @param buffer the <code>CharBuffer</code>
-     * @param index the position in the char buffer
-     *
-     * @deprecated use Unicode.get(int) instead
-     */
-    private UnicodeChar(final CharBuffer buffer, final int index) {
-
-        super();
-
-        if (index < 0 || index >= buffer.length()) {
-            throw new StringIndexOutOfBoundsException(index);
-        }
-
-        char single = buffer.charAt(index);
-        if (single < UTF16.LEAD_SURROGATE_MIN_VALUE
-                || single > UTF16.TRAIL_SURROGATE_MAX_VALUE) {
-            this.code = single;
-        } else {
-
-            this.code = single;
-
-            // Convert the UTF-16 surrogate pair if necessary.
-            // For simplicity in usage, and because the frequency of pairs is
-            // low, look both directions.
-            if (single <= UTF16.LEAD_SURROGATE_MAX_VALUE) {
-                if (buffer.length() > (index + 1)) {
-                    char trail = buffer.charAt(index + 1);
-                    if (trail >= UTF16.TRAIL_SURROGATE_MIN_VALUE
-                            && trail <= UTF16.TRAIL_SURROGATE_MAX_VALUE) {
-                        this.code = UCharacterProperty.getRawSupplementary(
-                                single, trail);
-                    } else {
-                        throw new RuntimeException("This can't happen?");
-                    }
-                } else {
-                    throw new RuntimeException("This can't happen?");
-                }
-            } else if (index > 0) {
-                char lead = buffer.charAt(index - 1);
-                if (lead >= UTF16.LEAD_SURROGATE_MIN_VALUE
-                        && lead <= UTF16.LEAD_SURROGATE_MAX_VALUE) {
-                    this.code = UCharacterProperty.getRawSupplementary(lead,
-                            single);
-                } else {
-                    throw new RuntimeException("This can't happen?");
-                }
-            } else {
-                throw new RuntimeException("This can't happen?");
-            }
-        }
-    }
-
-    /**
      * Creates a new object from an integer code point.
      *
      * @param codePoint the 32-bit code point
-     *
-     * @deprecated use Unicode.get(int) instead
      */
-    public UnicodeChar(final int codePoint) {
+    protected UnicodeChar(final int codePoint) {
 
         super();
         if (codePoint < UCharacter.MIN_VALUE

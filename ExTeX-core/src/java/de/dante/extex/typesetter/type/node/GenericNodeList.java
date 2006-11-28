@@ -20,8 +20,6 @@
 package de.dante.extex.typesetter.type.node;
 
 import java.util.ArrayList;
-import java.util.List;
-
 
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.ImpossibleException;

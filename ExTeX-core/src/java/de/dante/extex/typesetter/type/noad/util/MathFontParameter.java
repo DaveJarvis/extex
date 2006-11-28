@@ -19,14 +19,58 @@
 
 package de.dante.extex.typesetter.type.noad.util;
 
-/***
- * This class provides symbolic constants for the font parameters used in
- * math mode.
- *
+import org.extex.interpreter.Namespace;
+
+import de.dante.extex.interpreter.context.Context;
+import de.dante.extex.typesetter.TypesetterOptions;
+
+/*******************************************************************************
+ * This class provides symbolic constants for the font parameters used in math
+ * mode.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public final class MathFontParameter {
+
+    /**
+     * Construct the reference key for a numbered font.
+     * 
+     * @param context the interpreter context
+     * @param theName the base name of the font
+     * @param theNumber the number of the font
+     * 
+     * @return the key
+     */
+    public static String key(final TypesetterOptions context,
+            final String theName, final String theNumber) {
+
+        if (Namespace.SUPPORT_NAMESPACE_FONT) {
+            return context.getNamespace() + "\b" + theName + "#" + theNumber;
+        } else {
+            return theName + "#" + theNumber;
+        }
+    }
+
+    /**
+     * Construct the reference key for a numbered font.
+     * 
+     * @param context the interpreter context
+     * @param theName the base name of the font
+     * @param theNumber the number of the font
+     * 
+     * @return the key
+     */
+    public static String key(final Context context,
+            final String theName, final String theNumber) {
+
+        if (Namespace.SUPPORT_NAMESPACE_FONT) {
+            return context.getNamespace() + "\b" + theName + "#" + theNumber;
+        } else {
+            return theName + "#" + theNumber;
+        }
+    }
+
 
     /**
      * The constant <tt>MATH_X_HEIGHT</tt> contains the height of `x'.
@@ -41,22 +85,22 @@ public final class MathFontParameter {
             true, "6");
 
     /**
-     * The constant <tt>NUM1</tt> contains the numerator shift-up in
-     * display styles.
+     * The constant <tt>NUM1</tt> contains the numerator shift-up in display
+     * styles.
      */
     public static final MathFontParameter NUM1 = new MathFontParameter(true,
             "8");
 
     /**
-     * The constant <tt>NUM2</tt> contains the numerator shift-up in non-display,
-     * non-\atop.
+     * The constant <tt>NUM2</tt> contains the numerator shift-up in
+     * non-display, non-\atop.
      */
     public static final MathFontParameter NUM2 = new MathFontParameter(true,
             "9");
 
     /**
-     * The constant <tt>NUM3</tt> contains the numerator shift-up in non-display
-     * \atop.
+     * The constant <tt>NUM3</tt> contains the numerator shift-up in
+     * non-display \atop.
      */
     public static final MathFontParameter NUM3 = new MathFontParameter(true,
             "10");
@@ -76,8 +120,8 @@ public final class MathFontParameter {
             "12");
 
     /**
-     * The constant <tt>SUP1</tt> contains the superscript shift-up in uncramped
-     * display style.
+     * The constant <tt>SUP1</tt> contains the superscript shift-up in
+     * uncramped display style.
      */
     public static final MathFontParameter SUP1 = new MathFontParameter(true,
             "13");
@@ -90,8 +134,8 @@ public final class MathFontParameter {
             "14");
 
     /**
-     * The constant <tt>SUP3</tt> contains the superscript shift-up in
-     * cramped styles.
+     * The constant <tt>SUP3</tt> contains the superscript shift-up in cramped
+     * styles.
      */
     public static final MathFontParameter SUP3 = new MathFontParameter(true,
             "15");
@@ -125,15 +169,15 @@ public final class MathFontParameter {
             true, "19");
 
     /**
-     * The constant <tt>DELIM1</tt> contains the size of <tt>\atopwithdelims</tt>
-     * delimiters in display styles.
+     * The constant <tt>DELIM1</tt> contains the size of
+     * <tt>\atopwithdelims</tt> delimiters in display styles.
      */
     public static final MathFontParameter DELIM1 = new MathFontParameter(true,
             "20");
 
     /**
-     * The constant <tt>DELIM2</tt> contains the size of <tt>\atopwithdelims</tt>
-     * delimiters in non-displays.
+     * The constant <tt>DELIM2</tt> contains the size of
+     * <tt>\atopwithdelims</tt> delimiters in non-displays.
      */
     public static final MathFontParameter DELIM2 = new MathFontParameter(true,
             "21");
@@ -195,15 +239,16 @@ public final class MathFontParameter {
     private boolean inSymbol;
 
     /**
-     * The field <tt>no</tt> contains the number of the font parameter as string.
+     * The field <tt>no</tt> contains the number of the font parameter as
+     * string.
      */
     private String no;
 
     /**
      * Creates a new object.
-     *
-     * @param inSymbol the indicator that the parameter should be taken from
-     *  the symbol font. Otherwise it is taken from the extension font.
+     * 
+     * @param inSymbol the indicator that the parameter should be taken from the
+     *            symbol font. Otherwise it is taken from the extension font.
      * @param no the number of the font parameter as string.
      */
     private MathFontParameter(final boolean inSymbol, final String no) {
@@ -215,7 +260,7 @@ public final class MathFontParameter {
 
     /**
      * Getter for inSymbol.
-     *
+     * 
      * @return the inSymbol indicator
      */
     public boolean inSymbol() {
@@ -225,7 +270,7 @@ public final class MathFontParameter {
 
     /**
      * Getter for no.
-     *
+     * 
      * @return the no
      */
     public String getNo() {

@@ -20,7 +20,6 @@
 package de.dante.extex.typesetter.type.noad.util;
 
 import de.dante.extex.interpreter.exception.helping.HelpingException;
-import de.dante.extex.interpreter.primitives.register.font.NumberedFont;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.dimen.FixedDimen;
 import de.dante.extex.interpreter.type.font.Font;
@@ -104,7 +103,7 @@ public class MathContext {
     public FixedDimen mathParameter(final MathFontParameter p,
             final StyleNoad actualStyle) throws TypesetterException {
 
-        Font font = options.getFont(NumberedFont.key(options, //
+        Font font = options.getFont(MathFontParameter.key(options, //
                 actualStyle.getFontName(), p.inSymbol() ? "2" : "3"));
         FixedDimen value;
         if (font == null || (value = font.getFontDimen(p.getNo())) == null) {

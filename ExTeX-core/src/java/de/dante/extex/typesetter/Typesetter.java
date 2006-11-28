@@ -19,8 +19,9 @@
 
 package de.dante.extex.typesetter;
 
+import org.extex.type.Locator;
+
 import de.dante.extex.backend.BackendDriver;
-import de.dante.extex.backend.documentWriter.DocumentWriter;
 import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.listMaker.ListManager;
 import de.dante.extex.typesetter.output.OutputRoutine;
@@ -28,7 +29,6 @@ import de.dante.extex.typesetter.pageBuilder.PageBuilder;
 import de.dante.extex.typesetter.paragraphBuilder.ParagraphBuilder;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.node.factory.NodeFactory;
-import org.extex.type.Locator;
 import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**

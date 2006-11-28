@@ -17,50 +17,49 @@
  *
  */
 
-package de.dante.extex.typesetter.type.node;
+package de.dante.extex.scanner.stream.exception;
 
-import de.dante.extex.interpreter.type.image.Image;
-import de.dante.extex.typesetter.type.Node;
+import org.extex.type.UnicodeChar;
+
+import de.dante.extex.scanner.exception.ScannerException;
 
 /**
- * This node contains an image which should be passed to the backend driver.
+ * This is thrown when an invalid character has been encountered.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class ImageNode extends WhatsItNode implements Node {
+public class InvalidCharacterScannerException extends ScannerException {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 1L;
 
     /**
-     * The field <tt>image</tt> contains the image to pass to the backend
-     * driver.
+     * The field <tt>invalid</tt> contains the invalid character.
      */
-    private Image image;
+    private UnicodeChar invalid;
 
     /**
      * Creates a new object.
      *
-     * @param theImage the image to pass to the backend driver
+     * @param invalid the invalid character
      */
-    public ImageNode(final Image theImage) {
+    public InvalidCharacterScannerException(final UnicodeChar invalid) {
 
         super();
-        this.image = theImage;
+        this.invalid = invalid;
     }
 
     /**
-     * Getter for image.
+     * Getter for the invalid character.
      *
-     * @return the image.
+     * @return the invalid character
      */
-    public Image getImage() {
+    public UnicodeChar getInvalid() {
 
-        return this.image;
+        return this.invalid;
     }
 
 }

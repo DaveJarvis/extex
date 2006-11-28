@@ -28,7 +28,6 @@ import de.dante.extex.interpreter.context.Color;
 import de.dante.extex.interpreter.context.tc.TypesettingContext;
 import de.dante.extex.interpreter.context.tc.TypesettingContextFactory;
 import de.dante.extex.interpreter.exception.helping.HelpingException;
-import de.dante.extex.interpreter.primitives.register.font.NumberedFont;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.dimen.FixedDimen;
 import de.dante.extex.interpreter.type.font.Font;
@@ -38,6 +37,7 @@ import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.noad.util.MathContext;
+import de.dante.extex.typesetter.type.noad.util.MathFontParameter;
 import de.dante.extex.typesetter.type.noad.util.MathSpacing;
 import de.dante.extex.typesetter.type.node.CharNode;
 import de.dante.extex.typesetter.type.node.ImplicitKernNode;
@@ -111,7 +111,7 @@ public class CharNoad extends AbstractNoad {
         TypesetterOptions context = mathContext.getOptions();
         StyleNoad style = mathContext.getStyle();
         UnicodeChar c = glyph.getCharacter();
-        Font font = context.getFont(NumberedFont.key(context, //
+        Font font = context.getFont(MathFontParameter.key(context, //
                 style.getFontName(), Integer.toString(glyph.getFamily())));
         if (font.getActualSize().eq(Dimen.ZERO)) {
             throw new TypesetterException(new HelpingException(getLocalizer(),
@@ -171,7 +171,7 @@ public class CharNoad extends AbstractNoad {
 
         StyleNoad style = mathContext.getStyle();
         UnicodeChar c = glyph.getCharacter();
-        Font font = context.getFont(NumberedFont.key(context, //
+        Font font = context.getFont(MathFontParameter.key(context, //
                 style.getFontName(), Integer.toString(glyph.getFamily())));
         if (font instanceof NullFont) {
             throw new TypesetterException(new HelpingException(getLocalizer(),

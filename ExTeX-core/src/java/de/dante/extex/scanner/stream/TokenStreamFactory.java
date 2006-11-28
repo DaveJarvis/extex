@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.dante.extex.scanner.TokenStream;
+import de.dante.extex.scanner.stream.exception.MissingResourceFinderException;
 import de.dante.extex.scanner.stream.observer.file.OpenFileObservable;
 import de.dante.extex.scanner.stream.observer.file.OpenFileObserver;
 import de.dante.extex.scanner.stream.observer.file.OpenFileObserverList;

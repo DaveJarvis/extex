@@ -19,11 +19,8 @@
 
 package de.dante.util.framework;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.util.MissingResourceException;
 import java.util.logging.Logger;
 
 import de.dante.util.framework.configuration.Configurable;
@@ -36,7 +33,6 @@ import de.dante.util.framework.configuration.exception.ConfigurationInvalidClass
 import de.dante.util.framework.configuration.exception.ConfigurationInvalidConstructorException;
 import de.dante.util.framework.configuration.exception.ConfigurationMissingAttributeException;
 import de.dante.util.framework.configuration.exception.ConfigurationMissingException;
-import de.dante.util.framework.configuration.exception.ConfigurationWrapperException;
 import de.dante.util.framework.i18n.Localizable;
 import de.dante.util.framework.i18n.LocalizerFactory;
 import de.dante.util.framework.logger.LogEnabled;
