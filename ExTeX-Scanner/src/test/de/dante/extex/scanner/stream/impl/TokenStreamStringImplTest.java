@@ -23,14 +23,14 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.util.Iterator;
 
+import junit.framework.TestCase;
+
 import org.extex.type.StringList;
 import org.extex.type.UnicodeChar;
 
-import junit.framework.TestCase;
 import de.dante.extex.interpreter.Tokenizer;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.context.impl.ContextImpl;
-import de.dante.extex.interpreter.context.impl.GroupImpl;
 import de.dante.extex.interpreter.context.tc.TypesettingContextImpl;
 import de.dante.extex.scanner.TokenStream;
 import de.dante.extex.scanner.type.Catcode;
@@ -69,7 +69,7 @@ public class TokenStreamStringImplTest extends TestCase {
         /**
          * The field <tt>classname</tt> contains the name of the class to use.
          */
-        private String classname = ContextImpl.class.getName();
+        private String classname = "de.dante.extex.interpreter.context.impl.ContextImpl";
 
         /**
          * Creates a new object.
@@ -125,7 +125,7 @@ public class TokenStreamStringImplTest extends TestCase {
         public Configuration getConfiguration(final String key) {
 
             if ("Group".equals(key)) {
-                return new MockConfiguration(GroupImpl.class.getName());
+                return new MockConfiguration("de.dante.extex.interpreter.context.impl.GroupImpl");
             }
             if ("TypesettingContext".equals(key)) {
                 return new MockConfiguration(TypesettingContextImpl.class

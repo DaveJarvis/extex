@@ -21,7 +21,6 @@ package de.dante.extex.interpreter.primitives.prefix;
 
 import java.util.Properties;
 
-import de.dante.extex.interpreter.Flags;
 import de.dante.test.ExTeXLauncher;
 
 /**

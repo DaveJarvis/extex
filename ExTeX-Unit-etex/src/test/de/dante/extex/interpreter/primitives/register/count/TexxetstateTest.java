@@ -17,33 +17,36 @@
  *
  */
 
-package de.dante.extex.scanner.stream.exception;
+package de.dante.extex.interpreter.primitives.register.count;
 
-import de.dante.extex.scanner.exception.ScannerException;
 
 /**
- * ScannerException, if a wrong Unicode name is given.
+ * This is a test suite for the primitive <tt>\TeXXeTstate</tt>.
  *
- * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-
-public class ScannerNoUnicodeNameException extends ScannerException {
+public class TexxetstateTest extends AbstractCountRegisterTester {
 
     /**
-     * Create a new Object
+     * Command line interface.
+     * @param args the arguments
      */
-    public ScannerNoUnicodeNameException() {
+    public static void main(final String[] args) {
 
-        super();
+        junit.textui.TestRunner.run(TexxetstateTest.class);
     }
 
     /**
-     * Create a new Object.
-     * @param wrongUnicodeName   The wrong name.
+     * Creates a new object.
+     *
+     * @param arg the name
      */
-    public ScannerNoUnicodeNameException(final String wrongUnicodeName) {
+    public TexxetstateTest(final String arg) {
 
-        super(wrongUnicodeName);
+        super(arg, "TeXXeTstate", "", "0");
     }
+
+    //TODO implement the primitive specific test cases
+
 }

@@ -17,25 +17,36 @@
  *
  */
 
-package de.dante.extex.scanner.stream.exception;
+package de.dante.extex.interpreter.primitives.register.count;
 
-import de.dante.extex.scanner.exception.ScannerException;
 
 /**
- * ScannerException, if no hex digit are not found after '^^^^'.
+ * This is a test suite for the primitive <tt>\insertpenalties</tt>.
  *
- * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-
-public class ScannerNoHexDigitFoundException extends ScannerException {
+public class InsertpenaltiesTest extends AbstractCountRegisterTester {
 
     /**
-     * Create a new Object
+     * Command line interface.
+     * @param args the arguments
      */
-    public ScannerNoHexDigitFoundException() {
+    public static void main(final String[] args) {
 
-        super();
+        junit.textui.TestRunner.run(InsertpenaltiesTest.class);
     }
+
+    /**
+     * Creates a new object.
+     *
+     * @param arg the name
+     */
+    public InsertpenaltiesTest(final String arg) {
+
+        super(arg, "insertpenalties", "", "0");
+    }
+
+    //TODO implement the primitive specific test cases
 
 }
