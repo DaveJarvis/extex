@@ -80,7 +80,7 @@ public final class GlyphName {
                     if (tmp[1].length() > 4) {
                         // TODO incomplete
                     } else {
-                        glyphmap.put(tmp[0], new UnicodeChar(Integer.parseInt(
+                        glyphmap.put(tmp[0], UnicodeChar.get(Integer.parseInt(
                                 tmp[1], HEX)));
                     }
                 }
