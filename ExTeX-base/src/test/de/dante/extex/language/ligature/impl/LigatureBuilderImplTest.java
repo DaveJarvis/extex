@@ -22,9 +22,10 @@ package de.dante.extex.language.ligature.impl;
 import java.util.HashMap;
 import java.util.Map;
 
+import junit.framework.TestCase;
+
 import org.extex.type.UnicodeChar;
 
-import junit.framework.TestCase;
 import de.dante.extex.font.FontByteArray;
 import de.dante.extex.font.Glyph;
 import de.dante.extex.font.Kerning;
@@ -36,10 +37,7 @@ import de.dante.extex.interpreter.context.tc.TypesettingContextImpl;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.dimen.FixedDimen;
 import de.dante.extex.interpreter.type.glue.Glue;
-import de.dante.extex.language.hyphenation.exception.HyphenationException;
 import de.dante.extex.language.ligature.LigatureBuilder;
-import de.dante.extex.language.ligature.impl.LigatureBuilderImpl;
-import de.dante.extex.scanner.type.token.ActiveCharacterTokenTest;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.node.CharNode;
@@ -51,7 +49,7 @@ import de.dante.extex.typesetter.type.node.LigatureNode;
  * This is a test suite for the <tt>LigatureBuilderImpl</tt>.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4527 $
  */
 public class LigatureBuilderImplTest extends TestCase {
 
@@ -59,7 +57,7 @@ public class LigatureBuilderImplTest extends TestCase {
      * This class provides a mock implementation for a font.
      *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision$
+     * @version $Revision:4527 $
      */
     private class MockFont extends NullFont {
 
@@ -151,7 +149,7 @@ public class LigatureBuilderImplTest extends TestCase {
      * This class provides a mock implementation for a glyph.
      *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision$
+     * @version $Revision:4527 $
      */
     private class MockGlyph implements Glyph {
 

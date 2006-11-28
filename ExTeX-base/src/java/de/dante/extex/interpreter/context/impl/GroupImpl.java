@@ -70,18 +70,6 @@ public class GroupImpl implements Group {
     private static final int INVALID_CHAR_CODE = 127;
 
     /**
-     * The constant <tt>MATHCODE_DIGIT_OFFSET</tt> contains the offset for
-     * non-letters when constructing a math code.
-     */
-    private static final int MATHCODE_DIGIT_OFFSET = 0x7000;
-
-    /**
-     * The constant <tt>MATHCODE_LETTER_OFFSET</tt> contains the offset for
-     * letters when constructing a math code.
-     */
-    private static final int MATHCODE_LETTER_OFFSET = 0x7100;
-
-    /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 20060512L;

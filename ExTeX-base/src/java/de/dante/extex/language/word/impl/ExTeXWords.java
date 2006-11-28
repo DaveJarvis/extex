@@ -22,7 +22,6 @@ package de.dante.extex.language.word.impl;
 import org.extex.type.UnicodeChar;
 import org.extex.type.UnicodeCharList;
 
-import de.dante.extex.font.Glyph;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.dimen.FixedDimen;
 import de.dante.extex.interpreter.type.font.Font;
