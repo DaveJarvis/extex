@@ -358,7 +358,7 @@ public class TfmFont
                         TfmLigature lig = (TfmLigature) lk;
 
                         if (uc2.getCodePoint() == lig.getNextChar()) {
-                            return new UnicodeChar(lig.getAddingChar());
+                            return UnicodeChar.get(lig.getAddingChar());
                         }
                     }
                 }
@@ -447,7 +447,7 @@ public class TfmFont
     /**
      * hyphen-char.
      */
-    private transient UnicodeChar hyphenchar = new UnicodeChar('-');
+    private transient UnicodeChar hyphenchar = UnicodeChar.get('-');
 
     /**
      * skew-char.
