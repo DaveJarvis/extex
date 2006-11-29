@@ -21,17 +21,12 @@ package de.dante.extex.scanner.stream.impl32;
 
 import java.io.IOException;
 import java.io.StringReader;
-import java.util.Iterator;
-
-import org.extex.type.StringList;
-import org.extex.type.UnicodeChar;
 
 import junit.framework.TestCase;
+
+import org.extex.type.UnicodeChar;
+
 import de.dante.extex.interpreter.Tokenizer;
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.context.impl.ContextImpl;
-import de.dante.extex.interpreter.context.impl.GroupImpl;
-import de.dante.extex.interpreter.context.tc.TypesettingContextImpl;
 import de.dante.extex.scanner.TokenStream;
 import de.dante.extex.scanner.stream.exception.ScannerNoUnicodeNameException;
 import de.dante.extex.scanner.type.Catcode;
@@ -39,8 +34,6 @@ import de.dante.extex.scanner.type.token.OtherToken;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.scanner.type.token.TokenFactory;
 import de.dante.extex.scanner.type.token.TokenFactoryImpl;
-import de.dante.util.framework.configuration.Configuration;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * Test cases for the string implementation of a token stream.
@@ -52,163 +45,9 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
 public class TokenStreamStringImpl32Test extends TestCase {
 
     /**
-     * Mock configuration class.
-     */
-    private static class MockConfiguration implements Configuration {
-
-        /**
-         * @see de.dante.util.framework.configuration.Configuration#getValues(
-         *      org.extex.type.StringList, java.lang.String)
-         */
-        public void getValues(final StringList list, final String key) {
-
-            // TODO unimplemented
-
-        }
-
-        /**
-         * The field <tt>classname</tt> contains the name of the class to use.
-         */
-        private String classname = ContextImpl.class.getName();
-
-        /**
-         * Creates a new object.
-         */
-        public MockConfiguration() {
-
-            super();
-        }
-
-        /**
-         * Creates a new object.
-         * @param cn the class name
-         */
-        public MockConfiguration(final String cn) {
-
-            super();
-            classname = cn;
-        }
-
-        /**
-         * @see de.dante.util.framework.configuration.Configuration#findConfiguration(
-         *      java.lang.String)
-         */
-        public Configuration findConfiguration(final String key) {
-
-            return null;
-        }
-
-        /**
-         * @see de.dante.util.framework.configuration.Configuration#findConfiguration(
-         *      java.lang.String,
-         *      java.lang.String)
-         */
-        public Configuration findConfiguration(final String key,
-                final String attribute) throws ConfigurationException {
-
-            return null;
-        }
-
-        /**
-         * @see de.dante.util.framework.configuration.Configuration#getAttribute(
-         *      java.lang.String)
-         */
-        public String getAttribute(final String name) {
-
-            return classname;
-        }
-
-        /**
-         * @see de.dante.util.framework.configuration.Configuration#getConfiguration(
-         *      java.lang.String)
-         */
-        public Configuration getConfiguration(final String key) {
-
-            if ("Group".equals(key)) {
-                return new MockConfiguration(GroupImpl.class.getName());
-            }
-            if ("TypesettingContext".equals(key)) {
-                return new MockConfiguration(TypesettingContextImpl.class
-                        .getName());
-            }
-            return null;
-        }
-
-        /**
-         * @see de.dante.util.framework.configuration.Configuration#getConfiguration(
-         *      java.lang.String,
-         *      java.lang.String)
-         */
-        public Configuration getConfiguration(final String key,
-                final String attribute) {
-
-            return null;
-        }
-
-        /**
-         * @see de.dante.util.framework.configuration.Configuration#getValue()
-         */
-        public String getValue() {
-
-            return null;
-        }
-
-        /**
-         * @see de.dante.util.framework.configuration.Configuration#getValue(
-         *      java.lang.String)
-         */
-        public String getValue(final String key) {
-
-            return null;
-        }
-
-        /**
-         * @see de.dante.util.framework.configuration.Configuration#getValueAsInteger(
-         *      java.lang.String,
-         *      int)
-         */
-        public int getValueAsInteger(final String key, final int defaultValue) {
-
-            return 0;
-        }
-
-        /**
-         * @see de.dante.util.framework.configuration.Configuration#getValues(
-         *      java.lang.String)
-         */
-        public StringList getValues(final String key) {
-
-            return null;
-        }
-
-        /**
-         * @see de.dante.util.framework.configuration.Configuration#iterator(
-         *      java.lang.String)
-         */
-        public Iterator iterator(final String key) {
-
-            return null;
-        }
-
-        /**
-         * @see de.dante.util.framework.configuration.Configuration#iterator()
-         */
-        public Iterator iterator() {
-
-            // TODO gene: iterator unimplemented
-            return null;
-        }
-    }
-
-    /**
      * const 32
      */
     private static final int C32 = 32;
-
-    /**
-     * The field <tt>context</tt> contains the context to use.
-     */
-    private static Context context;
 
     /**
      * The field <tt>fac</tt> contains the token factory to use.
@@ -259,11 +98,45 @@ public class TokenStreamStringImpl32Test extends TestCase {
 
         super.setUp();
         fac = new TokenFactoryImpl();
-        ContextImpl contextImpl = new ContextImpl();
-        contextImpl.configure(new MockConfiguration());
-        context = contextImpl;
+        tokenizer = new Tokenizer() {
 
-        tokenizer = context.getTokenizer();
+            public Catcode getCatcode(final UnicodeChar c) {
+                if (c.isLetter()) {
+                    return Catcode.LETTER;
+                }
+                switch (c.getCodePoint()) {
+                case '$':
+                    return Catcode.MATHSHIFT;
+                case '^':
+                    return Catcode.SUPMARK;
+                case '_':
+                    return Catcode.SUBMARK;
+                case '%':
+                    return Catcode.COMMENT;
+                case '&':
+                    return Catcode.TABMARK;
+                case '#':
+                    return Catcode.MACROPARAM;
+                case '{':
+                    return Catcode.LEFTBRACE;
+                case '}':
+                    return Catcode.RIGHTBRACE;
+                case '\t':
+                case '\r':
+                case '\n':
+                case ' ':
+                    return Catcode.SPACE;
+                case '\0':
+                    return Catcode.IGNORE;
+                }
+                return Catcode.OTHER;
+            }
+
+            public String getNamespace() {
+                return "";
+            }
+
+        };
     }
 
     /**
@@ -280,7 +153,6 @@ public class TokenStreamStringImpl32Test extends TestCase {
      */
     public void testHex1() throws Exception {
 
-        context.setCatcode(UnicodeChar.get('^'), Catcode.SUPMARK, true);
         TokenStream stream = makeStream("^^^^41 ");
         assertEquals("the letter A", stream.get(fac, tokenizer).toString());
         Token token = stream.get(fac, tokenizer);
@@ -296,7 +168,6 @@ public class TokenStreamStringImpl32Test extends TestCase {
      */
     public void testHex2() throws Exception {
 
-        context.setCatcode(UnicodeChar.get('^'), Catcode.SUPMARK, true);
         TokenStream stream = makeStream("^^^^fffe");
         Token t = stream.get(fac, tokenizer);
         if (t instanceof OtherToken) {
@@ -316,7 +187,6 @@ public class TokenStreamStringImpl32Test extends TestCase {
      */
     public void testUnicodeName1() throws Exception {
 
-        context.setCatcode(UnicodeChar.get('^'), Catcode.SUPMARK, true);
         TokenStream stream = makeStream("^^^LATIN SMALL LETTER A;");
         assertEquals("the letter a", stream.get(fac, tokenizer).toString());
         Token token = stream.get(fac, tokenizer);
@@ -332,7 +202,6 @@ public class TokenStreamStringImpl32Test extends TestCase {
      */
     public void testUnicodeName2() throws Exception {
 
-        context.setCatcode(UnicodeChar.get('^'), Catcode.SUPMARK, true);
         TokenStream stream = makeStream("^^^LATIN CAPITAL LETTER A;");
         assertEquals("the letter A", stream.get(fac, tokenizer).toString());
         Token token = stream.get(fac, tokenizer);
@@ -348,7 +217,6 @@ public class TokenStreamStringImpl32Test extends TestCase {
      */
     public void testUnicodeName3() throws Exception {
 
-        context.setCatcode(UnicodeChar.get('^'), Catcode.SUPMARK, true);
         TokenStream stream = makeStream("^^^LATIN ERROR LETTER A;");
         try {
             assertEquals("the letter A", stream.get(fac, tokenizer).toString());
@@ -393,7 +261,6 @@ public class TokenStreamStringImpl32Test extends TestCase {
      */
     public void testCaret1() throws Exception {
 
-        context.setCatcode(UnicodeChar.get('^'), Catcode.SUPMARK, true);
         TokenStream stream = makeStream("^1");
         assertEquals("superscript character ^", stream.get(fac, tokenizer)
                 .toString());
@@ -410,7 +277,6 @@ public class TokenStreamStringImpl32Test extends TestCase {
      */
     public void testCaretA() throws Exception {
 
-        context.setCatcode(UnicodeChar.get('^'), Catcode.SUPMARK, true);
         TokenStream stream = makeStream("^^41");
         assertEquals("the letter A", stream.get(fac, tokenizer).toString());
         Token token = stream.get(fac, tokenizer);
@@ -425,7 +291,6 @@ public class TokenStreamStringImpl32Test extends TestCase {
      */
     public void testCaretA2() throws Exception {
 
-        context.setCatcode(UnicodeChar.get('^'), Catcode.SUPMARK, true);
         TokenStream stream = makeStream("^^A");
         assertEquals("the character ^^1", stream.get(fac, tokenizer).toString());
         Token token = stream.get(fac, tokenizer);
@@ -440,7 +305,6 @@ public class TokenStreamStringImpl32Test extends TestCase {
      */
     public void testCaretA3() throws Exception {
 
-        context.setCatcode(UnicodeChar.get('^'), Catcode.SUPMARK, true);
         TokenStream stream = makeStream("^^A;");
         assertEquals("the character ^^1", stream.get(fac, tokenizer).toString());
         assertEquals("the character ;", stream.get(fac, tokenizer).toString());
@@ -456,7 +320,6 @@ public class TokenStreamStringImpl32Test extends TestCase {
      */
     public void testCaretEnd() throws Exception {
 
-        context.setCatcode(UnicodeChar.get('^'), Catcode.SUPMARK, true);
         TokenStream stream = makeStream("^");
         assertEquals("superscript character ^", stream.get(fac, tokenizer)
                 .toString());
