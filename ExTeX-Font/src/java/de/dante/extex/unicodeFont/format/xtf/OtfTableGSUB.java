@@ -21,9 +21,6 @@ package de.dante.extex.unicodeFont.format.xtf;
 
 import java.io.IOException;
 
-import org.jdom.Element;
-
-import de.dante.util.XMLConvertible;
 import de.dante.util.XMLWriterConvertible;
 import de.dante.util.file.random.RandomAccessR;
 import de.dante.util.xml.XMLStreamWriter;
