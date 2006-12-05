@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.main.inputHandler;
+package org.extex.tex.main.inputHandler;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -34,7 +34,7 @@ import de.dante.util.framework.i18n.LocalizerFactory;
  * prompt before each line of input.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4445 $
  */
 public class TeXInputReader extends Reader {
 

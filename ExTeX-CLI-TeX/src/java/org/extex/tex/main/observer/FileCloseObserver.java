@@ -17,49 +17,49 @@
  *
  */
 
-package de.dante.extex.main.observer;
+package org.extex.tex.main.observer;
 
-import java.io.InputStream;
 import java.util.logging.Logger;
 
-import de.dante.extex.scanner.stream.observer.file.OpenFileObserver;
+import de.dante.extex.interpreter.observer.streamClose.StreamCloseObserver;
+import de.dante.extex.scanner.TokenStream;
 
 /**
- * This observer reports that a certain file has been opened.
- * According to the behavior of <logo>TeX</logo> it logs an open brace and the
- * name of the file.
+ * This observer waits for update events when files are closed. According to the
+ * reference in <logo>TeX</logo> a closing parenthesis is written to the log
+ * file.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4445 $
  */
-public class FileOpenObserver implements OpenFileObserver {
+public class FileCloseObserver implements StreamCloseObserver {
 
     /**
-     * The field <tt>logger</tt> contains the current logger
+     * The field <tt>logger</tt> contains the logger for output
      */
     private Logger logger;
 
     /**
      * Creates a new object.
      *
-     * @param theLogger the logger to use
+     * @param theLogger the logger for potential output
      */
-    public FileOpenObserver(final Logger theLogger) {
+    public FileCloseObserver(final Logger theLogger) {
 
         super();
         this.logger = theLogger;
     }
 
     /**
-     * @see de.dante.extex.scanner.stream.observer.file.OpenFileObserver#update(
-     *      java.lang.String,
-     *      java.lang.String,
-     *      java.io.InputStream)
+     * This method is meant to be invoked just before a stream is closed.
+     *
+     * @param stream the stream to be closed
      */
-    public void update(final String filename, final String filetype,
-            final InputStream stream) {
+    public void update(final TokenStream stream) {
 
-        logger.info("(" + filename);
+        if (stream.isFileStream()) {
+            logger.info(")");
+        }
     }
 
 }

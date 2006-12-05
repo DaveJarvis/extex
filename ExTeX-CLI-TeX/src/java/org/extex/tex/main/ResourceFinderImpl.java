@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.main;
+package org.extex.tex.main;
 
 import java.io.IOException;
 import java.io.InputStream;

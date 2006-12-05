@@ -27,6 +27,8 @@ import java.io.PrintStream;
 import java.util.Calendar;
 import java.util.Properties;
 
+import org.extex.tex.main.TeX;
+
 import junit.framework.TestCase;
 import de.dante.extex.ExTeX;
 import de.dante.extex.interpreter.exception.InterpreterException;

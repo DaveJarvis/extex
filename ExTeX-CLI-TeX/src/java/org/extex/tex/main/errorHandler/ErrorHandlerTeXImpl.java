@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.main.errorHandler;
+package org.extex.tex.main.errorHandler;
 
 import java.util.logging.Logger;
 
@@ -43,7 +43,7 @@ public class ErrorHandlerTeXImpl extends ErrorHandlerImpl {
     }
 
     /**
-     * @see de.dante.extex.main.errorHandler.ErrorHandlerImpl#showErrorLine(
+     * @see org.extex.tex.main.errorHandler.ErrorHandlerImpl#showErrorLine(
      *      java.util.logging.Logger, java.lang.String, org.extex.type.Locator)
      */
     protected void showErrorLine(final Logger logger, final String message,

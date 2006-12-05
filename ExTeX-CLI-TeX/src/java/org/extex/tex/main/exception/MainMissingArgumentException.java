@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.main.exception;
+package org.extex.tex.main.exception;
 
 /**
  * This exception is thrown when the main program detects that an advertised

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,44 +17,44 @@
  *
  */
 
-package de.dante.extex.main.observer;
-
-import java.util.logging.Logger;
-
-import de.dante.extex.interpreter.observer.push.PushObserver;
-import de.dante.extex.scanner.type.token.Token;
+package org.extex.tex.main.exception;
 
 /**
- * Observer for the operation of pushing a token to the token stream.
+ * This exception is thrown when the main program tries to open an output file
+ * and is not able to perform this operation.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class TokenPushObserver implements PushObserver {
+public class MainOutputFileNotFoundException extends MainException {
 
     /**
-     * The field <tt>logger</tt> contains the logger for output
+     * The constant <tt>ERROR_CODE</tt> contains the return code.
      */
-    private Logger logger;
+    private static final int ERROR_CODE = -15;
+
+    /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    protected static final long serialVersionUID = 2005L;
 
     /**
      * Creates a new object.
      *
-     * @param theLogger the logger for potential output
+     * @param filename the name of the file to open
      */
-    public TokenPushObserver(final Logger theLogger) {
+    public MainOutputFileNotFoundException(final String filename) {
 
-        super();
-        this.logger = theLogger;
+        super(ERROR_CODE, filename);
     }
 
     /**
-     * @see de.dante.extex.interpreter.observer.push.PushObserver#update(
-     *      de.dante.extex.scanner.type.token.Token)
+     * @see java.lang.Throwable#getLocalizedMessage()
      */
-    public void update(final Token token) {
+    public String getLocalizedMessage() {
 
-        logger.fine(": push " + token.toString() + "\n");
+        return getLocalizer().format("MainOutputFileNotFoundException.Message",
+                super.getMessage());
     }
 
 }

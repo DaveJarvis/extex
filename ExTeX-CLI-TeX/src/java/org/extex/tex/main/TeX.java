@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.main;
+package org.extex.tex.main;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -40,6 +40,20 @@ import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.extex.tex.main.exception.MainCodingException;
+import org.extex.tex.main.exception.MainConfigurationException;
+import org.extex.tex.main.exception.MainException;
+import org.extex.tex.main.exception.MainIOException;
+import org.extex.tex.main.exception.MainMissingArgumentException;
+import org.extex.tex.main.exception.MainUnknownOptionException;
+import org.extex.tex.main.inputHandler.TeXInputReader;
+import org.extex.tex.main.observer.FileCloseObserver;
+import org.extex.tex.main.observer.FileOpenObserver;
+import org.extex.tex.main.observer.TokenObserver;
+import org.extex.tex.main.observer.TokenPushObserver;
+import org.extex.tex.main.queryFile.QueryFileHandler;
+import org.extex.tex.main.queryFile.QueryFileHandlerTeXImpl;
+
 import de.dante.extex.ExTeX;
 import de.dante.extex.backend.BackendDriver;
 import de.dante.extex.backend.documentWriter.DocumentWriterOptions;
@@ -59,20 +73,7 @@ import de.dante.extex.interpreter.observer.push.PushObservable;
 import de.dante.extex.interpreter.observer.push.PushObserver;
 import de.dante.extex.interpreter.observer.streamClose.StreamCloseObservable;
 import de.dante.extex.interpreter.observer.streamClose.StreamCloseObserver;
-import de.dante.extex.main.exception.MainCodingException;
-import de.dante.extex.main.exception.MainConfigurationException;
-import de.dante.extex.main.exception.MainException;
-import de.dante.extex.main.exception.MainIOException;
-import de.dante.extex.main.exception.MainMissingArgumentException;
-import de.dante.extex.main.exception.MainUnknownOptionException;
-import de.dante.extex.main.inputHandler.TeXInputReader;
 import de.dante.extex.main.logging.LogFormatter;
-import de.dante.extex.main.observer.FileCloseObserver;
-import de.dante.extex.main.observer.FileOpenObserver;
-import de.dante.extex.main.observer.TokenObserver;
-import de.dante.extex.main.observer.TokenPushObserver;
-import de.dante.extex.main.queryFile.QueryFileHandler;
-import de.dante.extex.main.queryFile.QueryFileHandlerTeXImpl;
 import de.dante.extex.scanner.stream.TokenStreamFactory;
 import de.dante.extex.scanner.stream.observer.file.OpenFileObserver;
 import de.dante.util.exception.GeneralException;

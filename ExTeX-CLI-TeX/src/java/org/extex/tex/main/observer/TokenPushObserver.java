@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,44 +17,44 @@
  *
  */
 
-package de.dante.extex.main.exception;
+package org.extex.tex.main.observer;
+
+import java.util.logging.Logger;
+
+import de.dante.extex.interpreter.observer.push.PushObserver;
+import de.dante.extex.scanner.type.token.Token;
 
 /**
- * This exception is a wrapper for the IOException. It converts this exception
- * into a MainException with an appropriate exit status.
+ * Observer for the operation of pushing a token to the token stream.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class MainIOException extends MainException {
+public class TokenPushObserver implements PushObserver {
 
     /**
-     * The constant <tt>ERROR_CODE</tt> contains the return code.
+     * The field <tt>logger</tt> contains the logger for output
      */
-    private static final int ERROR_CODE = -2;
-
-    /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2005L;
+    private Logger logger;
 
     /**
      * Creates a new object.
      *
-     * @param cause the root of all evil
+     * @param theLogger the logger for potential output
      */
-    public MainIOException(final Throwable cause) {
+    public TokenPushObserver(final Logger theLogger) {
 
-        super(ERROR_CODE, cause);
+        super();
+        this.logger = theLogger;
     }
 
     /**
-     * @see java.lang.Throwable#getLocalizedMessage()
+     * @see de.dante.extex.interpreter.observer.push.PushObserver#update(
+     *      de.dante.extex.scanner.type.token.Token)
      */
-    public String getLocalizedMessage() {
+    public void update(final Token token) {
 
-        return getLocalizer().format("MainIOException.Message",
-                super.getMessage());
+        logger.fine(": push " + token.toString() + "\n");
     }
 
 }

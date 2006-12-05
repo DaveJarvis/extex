@@ -17,21 +17,21 @@
  *
  */
 
-package de.dante.extex.main.exception;
+package org.extex.tex.main.exception;
 
 /**
- * This exception is thrown when the main program detects an configuration
- * error.
+ * This exception is thrown when the main program encounters an unknown
+ * commandline option.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class MainCodingException extends MainException {
+public class MainUnknownOptionException extends MainException {
 
     /**
      * The constant <tt>ERROR_CODE</tt> contains the return code.
      */
-    private static final int ERROR_CODE = -32;
+    private static final int ERROR_CODE = -12;
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
@@ -41,11 +41,11 @@ public class MainCodingException extends MainException {
     /**
      * Creates a new object.
      *
-     * @param cause the root of all evil
+     * @param message the name of the unknown option
      */
-    public MainCodingException(final Throwable cause) {
+    public MainUnknownOptionException(final String message) {
 
-        super(ERROR_CODE, cause);
+        super(ERROR_CODE, message);
     }
 
     /**
@@ -53,7 +53,7 @@ public class MainCodingException extends MainException {
      */
     public String getLocalizedMessage() {
 
-        return getLocalizer().format("MainCodingException.Message",
+        return getLocalizer().format("MainUnknownOptionException.Message",
                 super.getMessage());
     }
 

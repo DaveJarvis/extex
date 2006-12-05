@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.main.exception;
+package org.extex.tex.main.exception;
 
 import de.dante.util.exception.GeneralException;
 

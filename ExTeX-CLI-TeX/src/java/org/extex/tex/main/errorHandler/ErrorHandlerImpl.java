@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.main.errorHandler;
+package org.extex.tex.main.errorHandler;
 
 import java.io.IOException;
 import java.util.logging.Logger;

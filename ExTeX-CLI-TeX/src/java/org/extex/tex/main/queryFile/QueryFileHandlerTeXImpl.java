@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.main.queryFile;
+package org.extex.tex.main.queryFile;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -88,7 +88,7 @@ public class QueryFileHandlerTeXImpl implements QueryFileHandler {
     }
 
     /**
-     * @see de.dante.extex.main.queryFile.QueryFileHandler#query(
+     * @see org.extex.tex.main.queryFile.QueryFileHandler#query(
      *      java.util.logging.Logger,
      *      java.util.Properties)
      */

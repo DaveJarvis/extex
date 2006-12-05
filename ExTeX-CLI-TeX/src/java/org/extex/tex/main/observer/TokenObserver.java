@@ -17,39 +17,44 @@
  *
  */
 
-package de.dante.extex.main.errorHandler.editHandler;
+package org.extex.tex.main.observer;
 
-import org.extex.type.Locator;
+import java.util.logging.Logger;
 
-import de.dante.util.framework.i18n.Localizer;
+import de.dante.extex.interpreter.observer.pop.PopObserver;
+import de.dante.extex.scanner.type.token.Token;
 
 /**
- * This is a dummy implementation for an EditHandler which just prints the
- * location to the error stream.
+ * Observer for tokens which are read from the token stream.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class EditHandlerTeXImpl implements EditHandler {
+public class TokenObserver implements PopObserver {
+
+    /**
+     * The field <tt>logger</tt> contains the logger for output
+     */
+    private Logger logger;
 
     /**
      * Creates a new object.
+     *
+     * @param theLogger the logger for potential output
      */
-    public EditHandlerTeXImpl() {
+    public TokenObserver(final Logger theLogger) {
 
         super();
+        this.logger = theLogger;
     }
 
     /**
-     * @see de.dante.extex.main.errorHandler.editHandler.EditHandler#edit(
-     *      de.dante.util.framework.i18n.Localizer,
-     *      org.extex.type.Locator)
+     * @see de.dante.extex.interpreter.observer.pop.PopObserver#update(
+     *      de.dante.extex.scanner.type.token.Token)
      */
-    public boolean edit(final Localizer localizer, final Locator locator) {
+    public void update(final Token token) {
 
-        System.err.println(localizer.format("EditHandler.edit", locator
-                .getResourceName(), Integer.toString(locator.getLineNumber())));
-        return false;
+        logger.fine(token.toString() + "\n");
     }
 
 }

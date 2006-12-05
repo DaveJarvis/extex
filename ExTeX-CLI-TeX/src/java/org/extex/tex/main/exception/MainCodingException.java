@@ -17,21 +17,21 @@
  *
  */
 
-package de.dante.extex.main.exception;
+package org.extex.tex.main.exception;
 
 /**
- * This exception is thrown when the main program tries to open an output file
- * and is not able to perform this operation.
+ * This exception is thrown when the main program detects an configuration
+ * error.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class MainOutputFileNotFoundException extends MainException {
+public class MainCodingException extends MainException {
 
     /**
      * The constant <tt>ERROR_CODE</tt> contains the return code.
      */
-    private static final int ERROR_CODE = -15;
+    private static final int ERROR_CODE = -32;
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
@@ -41,11 +41,11 @@ public class MainOutputFileNotFoundException extends MainException {
     /**
      * Creates a new object.
      *
-     * @param filename the name of the file to open
+     * @param cause the root of all evil
      */
-    public MainOutputFileNotFoundException(final String filename) {
+    public MainCodingException(final Throwable cause) {
 
-        super(ERROR_CODE, filename);
+        super(ERROR_CODE, cause);
     }
 
     /**
@@ -53,7 +53,7 @@ public class MainOutputFileNotFoundException extends MainException {
      */
     public String getLocalizedMessage() {
 
-        return getLocalizer().format("MainOutputFileNotFoundException.Message",
+        return getLocalizer().format("MainCodingException.Message",
                 super.getMessage());
     }
 

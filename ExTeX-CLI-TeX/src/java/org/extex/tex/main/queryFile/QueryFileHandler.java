@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.main.queryFile;
+package org.extex.tex.main.queryFile;
 
 import java.util.Properties;
 import java.util.logging.Logger;

@@ -17,21 +17,21 @@
  *
  */
 
-package de.dante.extex.main.exception;
+package org.extex.tex.main.exception;
 
 /**
- * This exception is thrown when the main program detects an configuration
- * error.
+ * This exception is a wrapper for the IOException. It converts this exception
+ * into a MainException with an appropriate exit status.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class MainConfigurationException extends MainException {
+public class MainIOException extends MainException {
 
     /**
      * The constant <tt>ERROR_CODE</tt> contains the return code.
      */
-    private static final int ERROR_CODE = -1;
+    private static final int ERROR_CODE = -2;
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
@@ -43,7 +43,7 @@ public class MainConfigurationException extends MainException {
      *
      * @param cause the root of all evil
      */
-    public MainConfigurationException(final Throwable cause) {
+    public MainIOException(final Throwable cause) {
 
         super(ERROR_CODE, cause);
     }
@@ -53,11 +53,8 @@ public class MainConfigurationException extends MainException {
      */
     public String getLocalizedMessage() {
 
-        Throwable cause = getCause();
-        String message = (cause != null ? cause.getLocalizedMessage() : super
-                .getLocalizedMessage());
-        return getLocalizer().format("MainConfigurationException.Message",
-                (message != null ? message : ""));
+        return getLocalizer().format("MainIOException.Message",
+                super.getMessage());
     }
 
 }
