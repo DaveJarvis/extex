@@ -20,6 +20,6 @@
 <!-- 
   -  The section "DocumentWriter" contains the specification for the backend.
   -->
-<DocumentWriter class="de.dante.extex.backend.documentWriter.svg.SVGDocumentWriter"
+<DocumentWriter class="org.extex.backend.documentWriter.svg.SVGDocumentWriter"
                 encoding="ISO-8859-1"
                 debug="true"/>

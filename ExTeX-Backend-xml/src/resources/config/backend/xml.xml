@@ -20,7 +20,7 @@
 <!-- 
   -  The section "DocumentWriter" contains the specification for the backend.
   -->
-<DocumentWriter class="de.dante.extex.backend.documentWriter.xml.XMLDocumentWriter"
+<DocumentWriter class="org.extex.backend.documentWriter.xml.XMLDocumentWriter"
                 encoding="ISO-8859-1"
                 debug="false"
                 showvisible="true"

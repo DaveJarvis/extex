@@ -22,13 +22,14 @@ package de.dante.extex.backend.dvi;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 
+import org.extex.backend.documentWriter.dvi.DviDocumentWriter;
+import org.extex.backend.documentWriter.dvi.PanicException;
+
 
 import junit.framework.TestCase;
 import de.dante.extex.backend.documentWriter.DocumentWriter;
 import de.dante.extex.backend.documentWriter.DocumentWriterOptions;
 import de.dante.extex.backend.documentWriter.SingleDocumentStream;
-import de.dante.extex.backend.documentWriter.dvi.DviDocumentWriter;
-import de.dante.extex.backend.documentWriter.dvi.PanicException;
 import de.dante.extex.backend.documentWriter.exception.NoOutputStreamException;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
@@ -52,7 +53,7 @@ import de.dante.util.framework.configuration.Configuration;
  * JUnit tests for class <code>DviDocumentWriter</code>.
  *
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
- * @version $Revision$
+ * @version $Revision:4458 $
  */
 public class DviDocumentWriterTest extends TestCase {
 
@@ -132,7 +133,7 @@ public class DviDocumentWriterTest extends TestCase {
 
     /**
      * Test if {@link
-     *   de.dante.extex.backend.documentWriter.dvi.DviDocumentWriter
+     *   org.extex.backend.documentWriter.dvi.DviDocumentWriter
      *   DviDocumentWriter }
      * throws a {@link
      *   de.dante.extex.backend.documentWriter.NoOutputStreamException

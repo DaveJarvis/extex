@@ -20,4 +20,5 @@
 <!-- 
   -  The section "DocumentWriter" contains the specification for the backend.
   -->
-<DocumentWriter class="org.extex.backend.documentWriter.dvix.DviDocumentWriter"/>
+<DocumentWriter class="org.extex.backend.documentWriter.dump.DumpDocumentWriter"
+                tree="true"/>

@@ -20,4 +20,4 @@
 <!-- 
   -  The section "DocumentWriter" contains the specification for the backend.
   -->
-<DocumentWriter class="de.dante.extex.backend.documentWriter.dvi.DviDocumentWriter"/>
+<DocumentWriter class="org.extex.backend.documentWriter.dvi.DviDocumentWriter"/>
