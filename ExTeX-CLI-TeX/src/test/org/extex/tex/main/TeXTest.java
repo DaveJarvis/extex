@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.main;
+package org.extex.tex.main;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -38,7 +38,7 @@ import de.dante.extex.interpreter.exception.InterpreterException;
  * <logo>ExTeX</logo>.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 4708 $
  */
 public class TeXTest extends TestCase {
 
