@@ -21,6 +21,8 @@ package de.dante.extex.interpreter.type.dimen;
 
 import junit.framework.TestCase;
 
+import org.extex.interpreter.type.dimen.Dimen;
+
 /**
  * This is a test suite for the data type Dimen.
  *

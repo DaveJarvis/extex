@@ -20,11 +20,11 @@
 package de.dante.extex.typesetter.pageBuilder.impl;
 
 
+import org.extex.backend.BackendDriver;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.util.exception.GeneralException;
 
-import de.dante.extex.backend.BackendDriver;
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.typesetter.exception.TypesetterException;

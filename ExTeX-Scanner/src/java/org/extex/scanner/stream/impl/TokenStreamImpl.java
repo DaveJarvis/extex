@@ -28,6 +28,8 @@ import java.io.Reader;
 import java.io.StringReader;
 
 import org.extex.interpreter.Namespace;
+import org.extex.interpreter.Tokenizer;
+import org.extex.interpreter.exception.helping.InvalidCharacterException;
 import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
 import org.extex.util.exception.GeneralException;
@@ -35,8 +37,6 @@ import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.framework.configuration.exception.ConfigurationSyntaxException;
 
-import de.dante.extex.interpreter.Tokenizer;
-import de.dante.extex.interpreter.exception.helping.InvalidCharacterException;
 import de.dante.extex.scanner.TokenStream;
 import de.dante.extex.scanner.exception.ScannerException;
 import de.dante.extex.scanner.stream.TokenStreamOptions;

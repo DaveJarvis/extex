@@ -29,7 +29,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.StringTokenizer;
 
-import de.dante.extex.font.exception.FontException;
+import org.extex.font.exception.FontException;
+
 import de.dante.extex.font.type.afm.exception.AfmMissingEndCharMetricsException;
 import de.dante.extex.font.type.afm.exception.AfmMissingEndFontMetricsException;
 import de.dante.extex.font.type.afm.exception.AfmMissingEndKernPairsException;

@@ -21,9 +21,9 @@ package de.dante.extex.format.dvi.command;
 
 import java.io.IOException;
 
+import org.extex.font.exception.FontException;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.font.exception.FontException;
 import de.dante.extex.format.dvi.exception.DviException;
 import de.dante.util.file.random.RandomAccessR;
 
@@ -48,4 +48,5 @@ public interface DviReadCommand {
      */
     DviCommand read(RandomAccessR rar, int opcode, int sp) throws IOException,
             DviException, FontException, ConfigurationException;
+
 }

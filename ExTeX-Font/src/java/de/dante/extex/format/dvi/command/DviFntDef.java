@@ -19,8 +19,8 @@
 
 package de.dante.extex.format.dvi.command;
 
-import de.dante.extex.interpreter.type.count.Count;
-import de.dante.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.count.Count;
+import org.extex.interpreter.type.dimen.Dimen;
 
 /**
  * DVI: fnt_def

@@ -27,7 +27,9 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.dante.extex.backend.documentWriter.exception.DocumentWriterException;
+import org.extex.backend.documentWriter.exception.DocumentWriterException;
+import org.extex.backend.outputStream.OutputStreamFactory;
+import org.extex.backend.outputStream.OutputStreamObserver;
 
 /**
  * The trivial output stream factory is not configurable. It just creates files

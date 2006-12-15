@@ -33,21 +33,22 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.StreamHandler;
 
+import junit.framework.TestCase;
+
+import org.extex.backend.outputStream.OutputStreamFactory;
+import org.extex.font.exception.FontException;
+import org.extex.interpreter.ErrorHandler;
+import org.extex.interpreter.Interpreter;
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.resource.ResourceFinder;
 
-import junit.framework.TestCase;
 import de.dante.extex.ExTeX;
-import de.dante.extex.backend.outputStream.OutputStreamFactory;
-import de.dante.extex.font.exception.FontException;
-import de.dante.extex.interpreter.ErrorHandler;
-import de.dante.extex.interpreter.Interpreter;
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.main.errorHandler.editHandler.EditHandler;
 import de.dante.extex.main.logging.LogFormatter;
 import de.dante.extex.scanner.type.token.Token;

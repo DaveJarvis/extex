@@ -19,9 +19,8 @@
 
 package de.dante.extex.unicodeFont.type;
 
+import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.type.UnicodeChar;
-
-import de.dante.extex.interpreter.type.dimen.Dimen;
 
 /**
  * Interface for the backend font.
@@ -45,4 +44,5 @@ public interface BackendFont extends Font {
      * @return Returns the width of the char.
      */
     Dimen getWidth(UnicodeChar uc);
+
 }

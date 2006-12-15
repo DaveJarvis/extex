@@ -22,16 +22,15 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.extex.font.FontByteArray;
+import org.extex.font.FountKey;
+import org.extex.font.Glyph;
+import org.extex.font.type.BoundingBox;
+import org.extex.font.type.ModifiableFount;
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.interpreter.type.glue.FixedGlue;
 import org.extex.type.UnicodeChar;
-
-import de.dante.extex.font.FontByteArray;
-import de.dante.extex.font.FountKey;
-import de.dante.extex.font.Glyph;
-import de.dante.extex.font.type.BoundingBox;
-import de.dante.extex.font.type.ModifiableFount;
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
-import de.dante.extex.interpreter.type.glue.FixedGlue;
 
 /**
  * ModifiableFount for AFM.

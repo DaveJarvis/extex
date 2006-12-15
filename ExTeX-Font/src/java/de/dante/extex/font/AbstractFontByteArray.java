@@ -19,6 +19,8 @@
 
 package de.dante.extex.font;
 
+import org.extex.font.FontByteArray;
+
 /**
  * Abstract class for a font byte array.
  *

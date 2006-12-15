@@ -20,16 +20,16 @@
 package de.dante.extex.interpreter.primitives.file;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.BadFileNumberException;
+import org.extex.interpreter.exception.helping.EofException;
+import org.extex.interpreter.type.AbstractCode;
+import org.extex.interpreter.type.count.Count;
 import org.extex.util.framework.configuration.Configurable;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.exception.helping.BadFileNumberException;
-import de.dante.extex.interpreter.exception.helping.EofException;
-import de.dante.extex.interpreter.type.AbstractCode;
-import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.scanner.type.Catcode;
 import de.dante.extex.scanner.type.token.SpaceToken;
 import de.dante.extex.scanner.type.token.Token;

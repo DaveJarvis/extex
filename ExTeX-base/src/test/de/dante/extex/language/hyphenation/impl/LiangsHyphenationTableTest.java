@@ -20,12 +20,13 @@
 package de.dante.extex.language.hyphenation.impl;
 
 
-import org.extex.interpreter.Namespace;
-
 import junit.framework.TestCase;
-import de.dante.extex.interpreter.context.Context;
+
+import org.extex.interpreter.Namespace;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.type.tokens.Tokens;
+
 import de.dante.extex.interpreter.context.MockContext;
-import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.language.Language;
 import de.dante.extex.language.hyphenation.exception.DuplicateHyphenationException;
 import de.dante.extex.language.hyphenation.liang.LiangsHyphenationTable;
@@ -37,7 +38,7 @@ import de.dante.extex.scanner.type.token.TokenFactory;
  * TODO gene: missing JavaDoc.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4527 $
  */
 public class LiangsHyphenationTableTest extends TestCase {
 
@@ -45,7 +46,7 @@ public class LiangsHyphenationTableTest extends TestCase {
      * This mock implementation is for test purposes only.
      *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision$
+     * @version $Revision:4527 $
      */
     private class MyMockContext extends MockContext {
 

@@ -19,9 +19,8 @@
 
 package de.dante.extex.font.type;
 
+import org.extex.font.exception.FontException;
 import org.jdom.Element;
-
-import de.dante.extex.font.exception.FontException;
 
 /**
  * This interface get the EFM-<code>Element</code>
@@ -38,4 +37,5 @@ public interface FontMetric {
      * @return the fontmetrix as XML-Element
      */
     Element getFontMetric() throws FontException;
+
 }

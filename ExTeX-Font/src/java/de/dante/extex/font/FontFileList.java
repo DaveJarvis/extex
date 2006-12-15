@@ -22,6 +22,8 @@ package de.dante.extex.font;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import org.extex.font.FontByteArray;
+
 /**
  * Class for a <code>FontFile</code>List.
  *

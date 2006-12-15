@@ -24,7 +24,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import de.dante.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.dimen.Dimen;
 
 /**
  * Class for a font key.

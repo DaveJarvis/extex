@@ -19,6 +19,8 @@
 
 package de.dante.extex.interpreter.exception;
 
+import org.extex.interpreter.exception.InterpreterException;
+
 
 /**
  * This exception is thrown when the main program use an

@@ -19,10 +19,11 @@
 
 package de.dante.extex.language.hyphenation.liang;
 
-import org.extex.interpreter.Namespace;
-
 import junit.framework.TestCase;
-import de.dante.extex.interpreter.type.tokens.Tokens;
+
+import org.extex.interpreter.Namespace;
+import org.extex.interpreter.type.tokens.Tokens;
+
 import de.dante.extex.scanner.type.Catcode;
 import de.dante.extex.scanner.type.CatcodeException;
 import de.dante.extex.scanner.type.token.TokenFactory;
@@ -32,7 +33,7 @@ import de.dante.extex.scanner.type.token.TokenFactoryImpl;
  * This class contains soem test cases fro liang's hyphenation table.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4527 $
  */
 public class LiangsHyphenationTableTest extends TestCase {
 

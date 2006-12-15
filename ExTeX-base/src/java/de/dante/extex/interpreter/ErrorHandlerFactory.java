@@ -19,6 +19,7 @@
 
 package de.dante.extex.interpreter;
 
+import org.extex.interpreter.ErrorHandler;
 import org.extex.util.framework.AbstractFactory;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.exception.ConfigurationException;

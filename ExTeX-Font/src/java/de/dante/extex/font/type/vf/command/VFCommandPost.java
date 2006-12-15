@@ -21,7 +21,8 @@ package de.dante.extex.font.type.vf.command;
 
 import java.io.IOException;
 
-import de.dante.extex.font.exception.FontException;
+import org.extex.font.exception.FontException;
+
 import de.dante.extex.font.type.vf.exception.VFWrongCodeException;
 import de.dante.util.file.random.RandomAccessR;
 import de.dante.util.xml.XMLStreamWriter;

@@ -27,11 +27,11 @@ import java.io.PrintStream;
 import java.util.Calendar;
 import java.util.Properties;
 
-import org.extex.tex.main.TeX;
-
 import junit.framework.TestCase;
+
+import org.extex.interpreter.exception.InterpreterException;
+
 import de.dante.extex.ExTeX;
-import de.dante.extex.interpreter.exception.InterpreterException;
 
 /**
  * This class contains test cases for the command line interface of

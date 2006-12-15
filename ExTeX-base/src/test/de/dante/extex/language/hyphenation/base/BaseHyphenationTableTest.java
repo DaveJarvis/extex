@@ -19,26 +19,27 @@
 
 package de.dante.extex.language.hyphenation.base;
 
+import junit.framework.TestCase;
+
+import org.extex.font.FontByteArray;
+import org.extex.font.FountKey;
+import org.extex.font.Glyph;
+import org.extex.font.Kerning;
+import org.extex.font.Ligature;
+import org.extex.font.type.BoundingBox;
+import org.extex.font.type.other.NullFont;
+import org.extex.interpreter.context.tc.TypesettingContext;
+import org.extex.interpreter.context.tc.TypesettingContextImpl;
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.interpreter.type.glue.FixedGlue;
+import org.extex.interpreter.type.glue.Glue;
 import org.extex.type.UnicodeChar;
 import org.extex.type.UnicodeCharList;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import junit.framework.TestCase;
-import de.dante.extex.font.FontByteArray;
-import de.dante.extex.font.FountKey;
-import de.dante.extex.font.Glyph;
-import de.dante.extex.font.Kerning;
-import de.dante.extex.font.Ligature;
-import de.dante.extex.font.type.BoundingBox;
-import de.dante.extex.font.type.other.NullFont;
 import de.dante.extex.font.type.tfm.TFMFixWord;
 import de.dante.extex.interpreter.context.MockContext;
-import de.dante.extex.interpreter.context.tc.TypesettingContext;
-import de.dante.extex.interpreter.context.tc.TypesettingContextImpl;
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
-import de.dante.extex.interpreter.type.glue.FixedGlue;
-import de.dante.extex.interpreter.type.glue.Glue;
 import de.dante.extex.language.Language;
 import de.dante.extex.language.word.impl.TeXWords;
 import de.dante.extex.typesetter.type.node.CharNode;
@@ -50,7 +51,7 @@ import de.dante.extex.typesetter.type.node.factory.NodeFactory;
 
 /**
  * Test suite for the base hyphenation table.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -58,7 +59,7 @@ public class BaseHyphenationTableTest extends TestCase {
 
     /**
      * Mock implementation of a font.
-     *
+     * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision$
      */
@@ -223,7 +224,8 @@ public class BaseHyphenationTableTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Font#setEfcode(org.extex.type.UnicodeChar, long)
+         * @see de.dante.extex.interpreter.type.font.Font#setEfcode(org.extex.type.UnicodeChar,
+         *      long)
          */
         public void setEfcode(final UnicodeChar uc, final long code) {
 
@@ -260,7 +262,7 @@ public class BaseHyphenationTableTest extends TestCase {
 
     /**
      * This is a mock implementation of a glyph.
-     *
+     * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision$
      */
@@ -410,7 +412,7 @@ public class BaseHyphenationTableTest extends TestCase {
 
     /**
      * This mock implementation is for test purposes only.
-     *
+     * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision$
      */
@@ -452,7 +454,7 @@ public class BaseHyphenationTableTest extends TestCase {
 
     /**
      * The command line interface.
-     *
+     * 
      * @param args the command line arguments
      */
     public static void main(final String[] args) {
@@ -462,9 +464,9 @@ public class BaseHyphenationTableTest extends TestCase {
 
     /**
      * TODO gene: missing JavaDoc
-     *
+     * 
      * @param s ...
-     *
+     * 
      * @return ...
      */
     private static UnicodeCharList makeList(final CharSequence s) {
@@ -497,9 +499,9 @@ public class BaseHyphenationTableTest extends TestCase {
 
     /**
      * Create a hlist from a string.
-     *
+     * 
      * @param s the string with the characters to encode
-     *
+     * 
      * @return a horizontal list
      */
     private HorizontalListNode hlist(final String s) {
@@ -519,7 +521,7 @@ public class BaseHyphenationTableTest extends TestCase {
 
     /**
      * Create a new object to test.
-     *
+     * 
      * @return the object to test
      */
     protected Language makeLanguage() {
@@ -541,10 +543,8 @@ public class BaseHyphenationTableTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test1() throws Exception {
@@ -555,10 +555,8 @@ public class BaseHyphenationTableTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test2() throws Exception {
@@ -569,10 +567,8 @@ public class BaseHyphenationTableTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test3() throws Exception {
@@ -584,11 +580,9 @@ public class BaseHyphenationTableTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
+     * 
      * @throws Exception in case of an error
      */
     public void test4() throws Exception {
@@ -599,10 +593,8 @@ public class BaseHyphenationTableTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test5() throws Exception {
@@ -610,15 +602,12 @@ public class BaseHyphenationTableTest extends TestCase {
         HorizontalListNode nodes = hlist("def");
         language.hyphenate(nodes, context, HYPHEN, 0, true, nodeFactory);
 
-        assertEquals("\\hbox(0.0pt+0.0pt)x0.0pt\n"
-                + ".d\n"
-                + ".\\discretionary{\\hbox(0.0pt+0.0pt)x0.0pt\n"
-                + "...-}{}{}\n"
-                + ".e\n"
-                + ".\\discretionary{\\hbox(0.0pt+0.0pt)x0.0pt\n"
-                + "...-}{}{}\n"
-                + ".f", //
-                nodes.toString());
+        assertEquals("\\hbox(0.0pt+0.0pt)x0.0pt\n" + ".d\n"
+                     + ".\\discretionary{\\hbox(0.0pt+0.0pt)x0.0pt\n"
+                     + "...-}{}{}\n" + ".e\n"
+                     + ".\\discretionary{\\hbox(0.0pt+0.0pt)x0.0pt\n"
+                     + "...-}{}{}\n" + ".f", //
+                     nodes.toString());
     }
 
 }

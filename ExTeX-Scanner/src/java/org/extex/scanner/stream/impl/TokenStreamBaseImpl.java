@@ -19,10 +19,10 @@
 
 package org.extex.scanner.stream.impl;
 
+import org.extex.interpreter.Tokenizer;
+import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.type.Locator;
 
-import de.dante.extex.interpreter.Tokenizer;
-import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.scanner.TokenStream;
 import de.dante.extex.scanner.exception.ScannerException;
 import de.dante.extex.scanner.type.token.SpaceToken;
@@ -35,7 +35,7 @@ import de.dante.extex.scanner.type.token.TokenFactory;
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
+ * @version $Revision:4725 $
  */
 public class TokenStreamBaseImpl implements TokenStream {
 

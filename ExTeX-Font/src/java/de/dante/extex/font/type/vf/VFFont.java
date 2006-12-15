@@ -24,11 +24,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.extex.font.exception.FontException;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.jdom.Element;
 
 import de.dante.extex.font.FontFactory;
-import de.dante.extex.font.exception.FontException;
 import de.dante.extex.font.type.FontMetric;
 import de.dante.extex.font.type.PlFormat;
 import de.dante.extex.font.type.PlWriter;

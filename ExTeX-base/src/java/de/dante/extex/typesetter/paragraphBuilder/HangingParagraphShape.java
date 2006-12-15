@@ -19,8 +19,8 @@
 
 package de.dante.extex.typesetter.paragraphBuilder;
 
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.dimen.FixedDimen;
 
 /**
  * This paragraph shape represents a block with hanging indentation.

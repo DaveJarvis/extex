@@ -20,9 +20,10 @@
 package de.dante.extex.typesetter.type.page;
 
 
-import de.dante.extex.interpreter.context.Color;
-import de.dante.extex.interpreter.type.count.FixedCount;
-import de.dante.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.context.Color;
+import org.extex.interpreter.type.count.FixedCount;
+import org.extex.interpreter.type.dimen.Dimen;
+
 import de.dante.extex.typesetter.type.NodeList;
 
 /**

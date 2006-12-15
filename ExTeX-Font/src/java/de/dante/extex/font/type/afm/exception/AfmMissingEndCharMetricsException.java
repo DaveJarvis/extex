@@ -19,7 +19,7 @@
 
 package de.dante.extex.font.type.afm.exception;
 
-import de.dante.extex.font.exception.FontException;
+import org.extex.font.exception.FontException;
 
 /**
  * AFM: missing EndCharMetrics command.

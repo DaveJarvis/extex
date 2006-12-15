@@ -24,12 +24,12 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.extex.interpreter.type.font.Font;
+import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.type.UnicodeChar;
 import org.extex.type.UnicodeCharList;
 import org.extex.util.framework.Registrar;
 
-import de.dante.extex.interpreter.type.font.Font;
-import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.language.ModifiableLanguage;
 import de.dante.extex.language.hyphenation.exception.HyphenationException;
 import de.dante.extex.language.ligature.LigatureBuilder;

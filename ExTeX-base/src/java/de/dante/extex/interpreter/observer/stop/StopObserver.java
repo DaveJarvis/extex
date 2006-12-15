@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter.observer.stop;
 
-import de.dante.extex.interpreter.Interpreter;
+import org.extex.interpreter.Interpreter;
 
 /**
  * This interface describes the ability to receive a notification just before

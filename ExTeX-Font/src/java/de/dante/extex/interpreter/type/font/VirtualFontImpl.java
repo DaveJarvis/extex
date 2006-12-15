@@ -19,15 +19,16 @@
 
 package de.dante.extex.interpreter.type.font;
 
+import org.extex.font.Glyph;
+import org.extex.font.type.InternalFount;
+import org.extex.font.type.ModifiableFount;
+import org.extex.font.type.VirtualFount;
+import org.extex.interpreter.context.tc.TypesettingContext;
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.font.FontImpl;
 import org.extex.type.UnicodeChar;
 
-import de.dante.extex.font.Glyph;
-import de.dante.extex.font.type.InternalFount;
-import de.dante.extex.font.type.ModifiableFount;
-import de.dante.extex.font.type.VirtualFount;
 import de.dante.extex.font.type.efm.commands.EfmHVW;
-import de.dante.extex.interpreter.context.tc.TypesettingContext;
-import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.typesetter.type.node.AbstractNode;
 import de.dante.extex.typesetter.type.node.VirtualCharNode;
 

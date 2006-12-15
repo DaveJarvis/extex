@@ -21,6 +21,8 @@ package de.dante.extex.interpreter;
 
 import junit.framework.TestCase;
 
+import org.extex.interpreter.Flags;
+
 /**
  * Test cases for the flags implementation.
  *

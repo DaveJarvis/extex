@@ -28,14 +28,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+import org.extex.font.exception.FontException;
+import org.extex.font.exception.FontMapNotFoundException;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.ConfigurationFactory;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.resource.ResourceFinder;
 import org.extex.util.resource.ResourceFinderFactory;
 
-import de.dante.extex.font.exception.FontException;
-import de.dante.extex.font.exception.FontMapNotFoundException;
 import de.dante.extex.font.type.PlWriter;
 import de.dante.extex.font.type.tfm.TFMFont;
 import de.dante.extex.font.type.tfm.enc.EncFactory;

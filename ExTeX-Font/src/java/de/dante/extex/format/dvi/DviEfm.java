@@ -22,14 +22,16 @@ package de.dante.extex.format.dvi;
 import java.io.IOException;
 import java.util.Map;
 
+import org.extex.font.Glyph;
+import org.extex.font.exception.FontException;
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.font.Font;
 import org.extex.type.UnicodeChar;
 import org.extex.util.Unit;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.jdom.Element;
 
 import de.dante.extex.font.FontFactory;
-import de.dante.extex.font.Glyph;
-import de.dante.extex.font.exception.FontException;
 import de.dante.extex.font.type.tfm.TFMFixWord;
 import de.dante.extex.format.dvi.command.DviBOP;
 import de.dante.extex.format.dvi.command.DviChar;
@@ -55,8 +57,6 @@ import de.dante.extex.format.dvi.command.DviZ;
 import de.dante.extex.format.dvi.exception.DviException;
 import de.dante.extex.format.dvi.exception.DviGlyphNotFoundException;
 import de.dante.extex.format.dvi.exception.DviMissingFontException;
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.font.Font;
 import de.dante.util.file.random.RandomAccessR;
 
 /**

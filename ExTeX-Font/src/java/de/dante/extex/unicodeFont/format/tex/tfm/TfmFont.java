@@ -27,14 +27,14 @@ import java.util.HashMap;
 import java.util.Properties;
 import java.util.logging.Logger;
 
+import org.extex.interpreter.type.count.Count;
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.glue.Glue;
 import org.extex.type.UnicodeChar;
 import org.extex.util.framework.Registrar;
 import org.extex.util.framework.logger.LogEnabled;
 import org.extex.util.resource.PropertyConfigurable;
 
-import de.dante.extex.interpreter.type.count.Count;
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.glue.Glue;
 import de.dante.extex.unicodeFont.exception.FontException;
 import de.dante.extex.unicodeFont.key.FontKey;
 import de.dante.extex.unicodeFont.key.FontKeyConfigurable;

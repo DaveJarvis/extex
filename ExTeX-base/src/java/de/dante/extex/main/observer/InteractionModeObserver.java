@@ -22,10 +22,9 @@ package de.dante.extex.main.observer;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 
-
-import de.dante.extex.interpreter.context.ContextInternals;
-import de.dante.extex.interpreter.context.observer.interaction.InteractionObserver;
-import de.dante.extex.interpreter.interaction.Interaction;
+import org.extex.interpreter.context.ContextInternals;
+import org.extex.interpreter.context.observer.interaction.InteractionObserver;
+import org.extex.interpreter.interaction.Interaction;
 
 /**
  * This observer is used to transport the interaction mode changes to the

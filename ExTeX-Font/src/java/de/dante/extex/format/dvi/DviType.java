@@ -27,13 +27,17 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import org.extex.font.FountKey;
+import org.extex.font.Glyph;
+import org.extex.font.exception.FontException;
+import org.extex.interpreter.type.count.Count;
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.font.Font;
+import org.extex.interpreter.type.glue.Glue;
 import org.extex.type.UnicodeChar;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.font.FontFactory;
-import de.dante.extex.font.FountKey;
-import de.dante.extex.font.Glyph;
-import de.dante.extex.font.exception.FontException;
 import de.dante.extex.format.dvi.command.DviBOP;
 import de.dante.extex.format.dvi.command.DviChar;
 import de.dante.extex.format.dvi.command.DviCommand;
@@ -58,10 +62,6 @@ import de.dante.extex.format.dvi.command.DviZ;
 import de.dante.extex.format.dvi.exception.DviException;
 import de.dante.extex.format.dvi.exception.DviFontNotFoundException;
 import de.dante.extex.format.dvi.exception.DviGlyphNotFoundException;
-import de.dante.extex.interpreter.type.count.Count;
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.font.Font;
-import de.dante.extex.interpreter.type.glue.Glue;
 import de.dante.util.file.random.RandomAccessR;
 
 /**

@@ -19,8 +19,8 @@
 
 package de.dante.extex.interpreter.observer.start;
 
-import de.dante.extex.interpreter.Interpreter;
-import de.dante.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.Interpreter;
+import org.extex.interpreter.exception.InterpreterException;
 
 /**
  * This interface describes the ability to receive a notification just after

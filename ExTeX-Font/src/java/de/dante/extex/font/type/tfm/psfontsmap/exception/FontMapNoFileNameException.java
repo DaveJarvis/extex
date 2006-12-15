@@ -18,7 +18,7 @@
 
 package de.dante.extex.font.type.tfm.psfontsmap.exception;
 
-import de.dante.extex.font.exception.FontException;
+import org.extex.font.exception.FontException;
 
 /**
  * Exception, if the psfontmap entry have no flie name.

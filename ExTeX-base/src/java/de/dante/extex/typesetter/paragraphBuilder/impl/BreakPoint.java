@@ -19,8 +19,8 @@
 
 package de.dante.extex.typesetter.paragraphBuilder.impl;
 
-import de.dante.extex.interpreter.type.glue.FixedGlue;
-import de.dante.extex.interpreter.type.glue.WideGlue;
+import org.extex.interpreter.type.glue.FixedGlue;
+import org.extex.interpreter.type.glue.WideGlue;
 
 /**
  * This class represents a break point for the paragraph breaking.

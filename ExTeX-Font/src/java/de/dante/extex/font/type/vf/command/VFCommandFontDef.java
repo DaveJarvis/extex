@@ -22,20 +22,21 @@ package de.dante.extex.font.type.vf.command;
 import java.io.IOException;
 import java.util.Map;
 
+import org.extex.font.FountKey;
+import org.extex.font.exception.FontException;
+import org.extex.font.exception.FontNotFoundException;
+import org.extex.interpreter.type.count.Count;
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.font.Font;
+import org.extex.interpreter.type.glue.Glue;
+
 import de.dante.extex.font.FontFactory;
-import de.dante.extex.font.FountKey;
-import de.dante.extex.font.exception.FontException;
-import de.dante.extex.font.exception.FontNotFoundException;
 import de.dante.extex.font.type.PlFormat;
 import de.dante.extex.font.type.PlWriter;
 import de.dante.extex.font.type.tfm.TFMFixWord;
 import de.dante.extex.font.type.tfm.TFMFont;
 import de.dante.extex.font.type.vf.VFFont;
 import de.dante.extex.font.type.vf.exception.VFWrongCodeException;
-import de.dante.extex.interpreter.type.count.Count;
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.font.Font;
-import de.dante.extex.interpreter.type.glue.Glue;
 import de.dante.util.file.random.RandomAccessR;
 import de.dante.util.xml.XMLStreamWriter;
 

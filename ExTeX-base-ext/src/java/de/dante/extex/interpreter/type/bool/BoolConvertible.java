@@ -20,9 +20,8 @@
 package de.dante.extex.interpreter.type.bool;
 
 import org.extex.interpreter.TokenSource;
-
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
 
 /**
  * This is an interface which describes the feature to be convertibe into a bool.

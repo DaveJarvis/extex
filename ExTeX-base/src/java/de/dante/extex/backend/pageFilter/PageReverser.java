@@ -22,9 +22,11 @@ package de.dante.extex.backend.pageFilter;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.dante.extex.backend.documentWriter.exception.DocumentWriterException;
-import de.dante.extex.backend.exception.BackendException;
-import de.dante.extex.backend.exception.BackendMissingTargetException;
+import org.extex.backend.documentWriter.exception.DocumentWriterException;
+import org.extex.backend.exception.BackendException;
+import org.extex.backend.exception.BackendMissingTargetException;
+import org.extex.backend.pageFilter.PagePipe;
+
 import de.dante.extex.typesetter.type.page.Page;
 
 /**

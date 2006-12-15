@@ -22,6 +22,7 @@ package de.dante.extex.interpreter.context.impl;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
+import org.extex.interpreter.context.group.GroupType;
 import org.extex.type.Locator;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.exception.ConfigurationClassNotFoundException;
@@ -29,7 +30,6 @@ import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.framework.configuration.exception.ConfigurationInstantiationException;
 import org.extex.util.framework.configuration.exception.ConfigurationMissingAttributeException;
 
-import de.dante.extex.interpreter.context.group.GroupType;
 import de.dante.extex.scanner.type.token.Token;
 
 /**

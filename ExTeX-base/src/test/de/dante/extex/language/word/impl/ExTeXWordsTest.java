@@ -19,12 +19,13 @@
 
 package de.dante.extex.language.word.impl;
 
+import junit.framework.TestCase;
+
+import org.extex.interpreter.context.tc.ModifiableTypesettingContext;
+import org.extex.interpreter.context.tc.TypesettingContextImpl;
+import org.extex.interpreter.type.font.Font;
 import org.extex.type.UnicodeChar;
 
-import junit.framework.TestCase;
-import de.dante.extex.interpreter.context.tc.ModifiableTypesettingContext;
-import de.dante.extex.interpreter.context.tc.TypesettingContextImpl;
-import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.language.hyphenation.base.BaseHyphenationTable;
 import de.dante.extex.language.hyphenation.exception.HyphenationException;
 import de.dante.extex.language.ligature.impl.LigatureBuilderImpl;

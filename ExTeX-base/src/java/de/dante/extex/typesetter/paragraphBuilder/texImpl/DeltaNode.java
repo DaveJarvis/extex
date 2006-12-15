@@ -19,7 +19,7 @@
 
 package de.dante.extex.typesetter.paragraphBuilder.texImpl;
 
-import de.dante.extex.interpreter.type.glue.WideGlue;
+import org.extex.interpreter.type.glue.WideGlue;
 
 /** 822.
  *

@@ -22,9 +22,12 @@ package de.dante.extex.font;
 import java.io.Serializable;
 import java.util.HashMap;
 
+import org.extex.font.FontByteArray;
+import org.extex.font.Glyph;
+import org.extex.font.Kerning;
+import org.extex.font.Ligature;
+import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.type.UnicodeChar;
-
-import de.dante.extex.interpreter.type.dimen.Dimen;
 
 /**
  * GlyphImplementation

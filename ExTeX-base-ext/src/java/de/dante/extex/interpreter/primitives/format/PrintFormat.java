@@ -21,19 +21,19 @@ package de.dante.extex.interpreter.primitives.format;
 
 import java.text.DecimalFormat;
 
+import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.CantUseAfterException;
+import org.extex.interpreter.exception.helping.UndefinedControlSequenceException;
+import org.extex.interpreter.type.AbstractCode;
+import org.extex.interpreter.type.Code;
+import org.extex.interpreter.type.Theable;
+import org.extex.interpreter.type.tokens.Tokens;
 
-import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.exception.helping.CantUseAfterException;
-import de.dante.extex.interpreter.exception.helping.UndefinedControlSequenceException;
-import de.dante.extex.interpreter.type.AbstractCode;
-import de.dante.extex.interpreter.type.Code;
-import de.dante.extex.interpreter.type.Theable;
 import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.real.RealConvertible;
-import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.scanner.type.token.ControlSequenceToken;
 import de.dante.extex.scanner.type.token.Token;

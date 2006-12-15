@@ -23,9 +23,9 @@ import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
 
+import org.extex.font.exception.FontException;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.font.exception.FontException;
 import de.dante.extex.font.type.PlFormat;
 import de.dante.extex.font.type.PlWriter;
 import de.dante.extex.font.type.tfm.enc.EncFactory;

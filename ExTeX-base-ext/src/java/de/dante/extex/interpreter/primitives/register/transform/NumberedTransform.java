@@ -20,9 +20,8 @@
 package de.dante.extex.interpreter.primitives.register.transform;
 
 import org.extex.interpreter.TokenSource;
-
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
 
 /**
  * This class provides an implementation for the primitive <code>\transform</code>.

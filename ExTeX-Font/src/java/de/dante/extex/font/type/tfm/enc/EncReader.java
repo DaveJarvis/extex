@@ -24,7 +24,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Serializable;
 
-import de.dante.extex.font.exception.FontException;
+import org.extex.font.exception.FontException;
+
 import de.dante.extex.font.type.tfm.enc.exception.FontEncodingIOException;
 import de.dante.extex.font.type.tfm.enc.exception.FontEncodingWrongRangeException;
 

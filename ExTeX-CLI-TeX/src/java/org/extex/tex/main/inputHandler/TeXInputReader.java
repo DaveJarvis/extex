@@ -25,10 +25,9 @@ import java.io.Reader;
 import java.io.UnsupportedEncodingException;
 import java.util.logging.Logger;
 
+import org.extex.interpreter.Interpreter;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.i18n.LocalizerFactory;
-
-import de.dante.extex.interpreter.Interpreter;
 
 /**
  * This Reader gets the characters from <tt>System.in</tt> but presents a

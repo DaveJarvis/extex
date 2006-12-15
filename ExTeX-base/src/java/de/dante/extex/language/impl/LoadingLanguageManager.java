@@ -32,15 +32,15 @@ import java.util.Map;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
+import org.extex.backend.documentWriter.exception.DocumentWriterException;
+import org.extex.backend.outputStream.OutputStreamFactory;
+import org.extex.interpreter.type.OutputStreamConsumer;
 import org.extex.util.framework.Registrar;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.resource.ResourceConsumer;
 import org.extex.util.resource.ResourceFinder;
 
-import de.dante.extex.backend.documentWriter.exception.DocumentWriterException;
 import de.dante.extex.backend.outputStream.NamedOutputStream;
-import de.dante.extex.backend.outputStream.OutputStreamFactory;
-import de.dante.extex.interpreter.type.OutputStreamConsumer;
 import de.dante.extex.language.Language;
 import de.dante.extex.language.hyphenation.exception.HyphenationException;
 

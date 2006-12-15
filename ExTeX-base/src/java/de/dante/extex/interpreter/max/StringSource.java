@@ -23,12 +23,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.extex.interpreter.Namespace;
+import org.extex.interpreter.Tokenizer;
+import org.extex.interpreter.exception.InterpreterException;
 import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.interpreter.Tokenizer;
-import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.scanner.TokenStream;
 import de.dante.extex.scanner.exception.ScannerException;
 import de.dante.extex.scanner.type.CatcodeException;

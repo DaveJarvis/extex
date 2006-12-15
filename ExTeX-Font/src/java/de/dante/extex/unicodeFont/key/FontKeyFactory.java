@@ -21,9 +21,8 @@ package de.dante.extex.unicodeFont.key;
 
 import java.util.Map;
 
+import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.util.framework.AbstractFactory;
-
-import de.dante.extex.interpreter.type.dimen.Dimen;
 
 /**
  * Factory for the font key.

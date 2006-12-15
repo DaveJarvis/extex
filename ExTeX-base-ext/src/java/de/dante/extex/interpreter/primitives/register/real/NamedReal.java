@@ -19,23 +19,23 @@
 
 package de.dante.extex.interpreter.primitives.register.real;
 
+import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.AbstractAssignment;
+import org.extex.interpreter.type.Theable;
+import org.extex.interpreter.type.arithmetic.Advanceable;
+import org.extex.interpreter.type.arithmetic.Divideable;
+import org.extex.interpreter.type.arithmetic.Multiplyable;
+import org.extex.interpreter.type.count.CountConvertible;
+import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.util.exception.GeneralException;
 
-import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.context.ContextExtension;
-import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.exception.InterpreterExtensionException;
-import de.dante.extex.interpreter.type.AbstractAssignment;
-import de.dante.extex.interpreter.type.Theable;
-import de.dante.extex.interpreter.type.arithmetic.Advanceable;
-import de.dante.extex.interpreter.type.arithmetic.Divideable;
-import de.dante.extex.interpreter.type.arithmetic.Multiplyable;
-import de.dante.extex.interpreter.type.count.CountConvertible;
 import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.real.RealConvertible;
-import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.typesetter.Typesetter;
 
 /**

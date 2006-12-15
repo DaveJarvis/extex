@@ -23,9 +23,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.extex.font.exception.FontException;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.font.exception.FontException;
 import de.dante.extex.format.dvi.exception.DviException;
 import de.dante.extex.format.dvi.exception.DviPostNotFoundException;
 import de.dante.extex.format.dvi.exception.DviPreNotFoundException;

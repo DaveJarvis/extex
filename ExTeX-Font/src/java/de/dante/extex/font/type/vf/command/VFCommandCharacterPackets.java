@@ -22,10 +22,10 @@ package de.dante.extex.font.type.vf.command;
 import java.io.IOException;
 import java.util.Map;
 
+import org.extex.font.exception.FontException;
 import org.jdom.Element;
 
 import de.dante.extex.font.FontFactory;
-import de.dante.extex.font.exception.FontException;
 import de.dante.extex.font.type.PlFormat;
 import de.dante.extex.font.type.PlWriter;
 import de.dante.extex.font.type.tfm.TFMCharInfoWord;

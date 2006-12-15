@@ -21,10 +21,10 @@ package de.dante.extex.language.hyphenation.liang;
 
 import java.util.logging.Logger;
 
+import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.type.UnicodeChar;
 import org.extex.type.UnicodeCharList;
 
-import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.language.hyphenation.base.BaseHyphenationTable;
 import de.dante.extex.language.hyphenation.exception.DuplicateHyphenationException;
 import de.dante.extex.language.hyphenation.exception.HyphenationException;

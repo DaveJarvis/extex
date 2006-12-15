@@ -21,12 +21,12 @@ package de.dante.extex.font.type.efm.commands;
 
 import java.io.Serializable;
 
+import org.extex.interpreter.type.dimen.Dimen;
 import org.jdom.Attribute;
 import org.jdom.Element;
 
 import de.dante.extex.font.type.efm.exception.FontAttributeException;
 import de.dante.extex.font.type.vf.VFFont;
-import de.dante.extex.interpreter.type.dimen.Dimen;
 
 /**
  * EFM char command.

@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.logging.Logger;
 
+import org.extex.interpreter.interaction.Interaction;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.framework.i18n.Localizer;
@@ -32,8 +33,6 @@ import org.extex.util.resource.InteractionAware;
 import org.extex.util.resource.InteractionProvider;
 import org.extex.util.resource.RecursiveFinder;
 import org.extex.util.resource.ResourceFinder;
-
-import de.dante.extex.interpreter.interaction.Interaction;
 
 /**
  * This ResourceFinder queries the user for the name of the file to use and

@@ -19,7 +19,7 @@
 
 package de.dante.extex.font.type.efm.commands;
 
-import de.dante.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.dimen.Dimen;
 
 /**
  * Interface for h, v and width.

@@ -19,7 +19,7 @@
 
 package de.dante.extex.font.type.vf.exception;
 
-import de.dante.extex.font.exception.FontException;
+import org.extex.font.exception.FontException;
 
 /**
  * VF-Font-Exception: pre command not found.

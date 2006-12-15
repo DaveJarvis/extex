@@ -19,14 +19,16 @@
 
 package de.dante.extex.interpreter.type.dimen;
 
+import junit.framework.TestCase;
+
+import org.extex.interpreter.Interpreter;
+import org.extex.interpreter.InterpreterFactory;
+import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.ConfigurationFactory;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import junit.framework.TestCase;
-import de.dante.extex.interpreter.Interpreter;
-import de.dante.extex.interpreter.InterpreterFactory;
 import de.dante.extex.interpreter.context.MockContext;
 import de.dante.extex.scanner.stream.TokenStreamFactory;
 

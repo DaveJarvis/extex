@@ -24,16 +24,16 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.type.count.FixedCount;
+import org.extex.interpreter.type.count.ImmutableCount;
+import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.framework.logger.LogEnabled;
 
-
-import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.max.StringSource;
-import de.dante.extex.interpreter.type.count.FixedCount;
-import de.dante.extex.interpreter.type.count.ImmutableCount;
-import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.node.AdjustNode;

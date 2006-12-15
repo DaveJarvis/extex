@@ -24,9 +24,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 
+import org.extex.font.exception.FontMapNotFoundException;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.font.exception.FontMapNotFoundException;
 import de.dante.extex.font.type.tfm.TFMFont;
 import de.dante.extex.font.type.tfm.enc.EncFactory;
 import de.dante.extex.font.type.tfm.psfontsmap.PSFontsMapReader;

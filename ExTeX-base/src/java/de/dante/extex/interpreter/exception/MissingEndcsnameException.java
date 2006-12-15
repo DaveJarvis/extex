@@ -19,10 +19,10 @@
 
 package de.dante.extex.interpreter.exception;
 
-
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
-import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.scanner.type.token.Token;
 
 /**

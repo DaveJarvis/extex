@@ -27,7 +27,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.StringTokenizer;
 
-import de.dante.extex.font.exception.FontException;
+import org.extex.font.exception.FontException;
+
 import de.dante.extex.font.type.tfm.psfontsmap.exception.FontMapIOException;
 import de.dante.extex.font.type.tfm.psfontsmap.exception.FontMapNoFileNameException;
 import de.dante.extex.font.type.tfm.psfontsmap.exception.FontMapNoFontNameException;

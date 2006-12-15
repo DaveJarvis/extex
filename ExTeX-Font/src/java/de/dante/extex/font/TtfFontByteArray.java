@@ -19,6 +19,8 @@
 
 package de.dante.extex.font;
 
+import org.extex.font.FontByteArray;
+
 /**
  * Class for a ttf-font-file.
  *
@@ -46,4 +48,5 @@ public class TtfFontByteArray extends AbstractFontByteArray
 
         return "TTF";
     }
+
 }

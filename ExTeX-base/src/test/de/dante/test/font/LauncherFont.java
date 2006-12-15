@@ -23,19 +23,18 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.extex.font.FontByteArray;
+import org.extex.font.FountKey;
+import org.extex.font.Glyph;
+import org.extex.font.Kerning;
+import org.extex.font.Ligature;
+import org.extex.font.type.BoundingBox;
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.interpreter.type.font.Font;
+import org.extex.interpreter.type.glue.FixedGlue;
+import org.extex.interpreter.type.glue.Glue;
 import org.extex.type.UnicodeChar;
-
-import de.dante.extex.font.FontByteArray;
-import de.dante.extex.font.FountKey;
-import de.dante.extex.font.Glyph;
-import de.dante.extex.font.Kerning;
-import de.dante.extex.font.Ligature;
-import de.dante.extex.font.type.BoundingBox;
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
-import de.dante.extex.interpreter.type.font.Font;
-import de.dante.extex.interpreter.type.glue.FixedGlue;
-import de.dante.extex.interpreter.type.glue.Glue;
 
 /**
  * This class provides a memory-only font for test cases. Since no external file

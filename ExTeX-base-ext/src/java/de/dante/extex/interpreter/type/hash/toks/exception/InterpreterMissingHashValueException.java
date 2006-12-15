@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter.type.hash.toks.exception;
 
-import de.dante.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.InterpreterException;
 
 /**
  * Exception, if the hash valuey is missing.

@@ -22,25 +22,26 @@ package de.dante.extex.language.hyphenation.liang;
 import java.util.HashMap;
 import java.util.Map;
 
+import junit.framework.TestCase;
+
+import org.extex.font.FontByteArray;
+import org.extex.font.FountKey;
+import org.extex.font.Glyph;
+import org.extex.font.Kerning;
+import org.extex.font.Ligature;
+import org.extex.font.type.BoundingBox;
+import org.extex.font.type.other.NullFont;
 import org.extex.interpreter.Namespace;
+import org.extex.interpreter.context.tc.ModifiableTypesettingContext;
+import org.extex.interpreter.context.tc.TypesettingContext;
+import org.extex.interpreter.context.tc.TypesettingContextImpl;
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.interpreter.type.font.Font;
+import org.extex.interpreter.type.glue.FixedGlue;
 import org.extex.type.UnicodeChar;
 
-import junit.framework.TestCase;
-import de.dante.extex.font.FontByteArray;
-import de.dante.extex.font.FountKey;
-import de.dante.extex.font.Glyph;
-import de.dante.extex.font.Kerning;
-import de.dante.extex.font.Ligature;
-import de.dante.extex.font.type.BoundingBox;
-import de.dante.extex.font.type.other.NullFont;
 import de.dante.extex.font.type.tfm.TFMFixWord;
-import de.dante.extex.interpreter.context.tc.ModifiableTypesettingContext;
-import de.dante.extex.interpreter.context.tc.TypesettingContext;
-import de.dante.extex.interpreter.context.tc.TypesettingContextImpl;
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
-import de.dante.extex.interpreter.type.font.Font;
-import de.dante.extex.interpreter.type.glue.FixedGlue;
 import de.dante.extex.language.ModifiableLanguage;
 import de.dante.extex.language.hyphenation.base.BaseHyphenationTable;
 import de.dante.extex.language.ligature.impl.LigatureBuilderImpl;
@@ -56,7 +57,7 @@ import de.dante.extex.typesetter.type.node.factory.NodeFactory;
  * This is the test class for NV.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4527 $
  */
 public class NVTest extends TestCase {
 
@@ -64,7 +65,7 @@ public class NVTest extends TestCase {
      * This is a mock implementation of a font.
      *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision$
+     * @version $Revision:4527 $
      */
     private class MockFont extends NullFont {
 
@@ -285,7 +286,7 @@ public class NVTest extends TestCase {
      * This is a mock implementation of a glyph.
      *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision$
+     * @version $Revision:4527 $
      */
     private class MockGlyph implements Glyph {
 

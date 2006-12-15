@@ -22,7 +22,8 @@ package de.dante.extex.interpreter.observer.expandMacro;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.dante.extex.interpreter.type.Code;
+import org.extex.interpreter.type.Code;
+
 import de.dante.extex.scanner.type.token.Token;
 
 /**

@@ -22,7 +22,14 @@ package org.extex.tex.main.errorHandler;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+import org.extex.interpreter.ErrorHandler;
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.ImpossibleException;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.interpreter.interaction.Interaction;
+import org.extex.interpreter.interaction.InteractionVisitor;
 import org.extex.type.Locator;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
@@ -30,13 +37,6 @@ import org.extex.util.framework.i18n.Localizable;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.logger.LogEnabled;
 
-import de.dante.extex.interpreter.ErrorHandler;
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.ImpossibleException;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.exception.helping.HelpingException;
-import de.dante.extex.interpreter.interaction.Interaction;
-import de.dante.extex.interpreter.interaction.InteractionVisitor;
 import de.dante.extex.main.errorHandler.editHandler.EditHandler;
 import de.dante.extex.scanner.type.token.Token;
 

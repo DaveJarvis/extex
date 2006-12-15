@@ -22,7 +22,7 @@ package de.dante.extex.interpreter.observer.stop;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.dante.extex.interpreter.Interpreter;
+import org.extex.interpreter.Interpreter;
 
 /**
  * This class provides a type-safe list of observers for the start event.

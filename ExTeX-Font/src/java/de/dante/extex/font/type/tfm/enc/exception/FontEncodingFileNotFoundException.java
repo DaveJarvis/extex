@@ -19,7 +19,7 @@
 
 package de.dante.extex.font.type.tfm.enc.exception;
 
-import de.dante.extex.font.exception.FontException;
+import org.extex.font.exception.FontException;
 
 /**
  * Exception, if encodingfile not found.

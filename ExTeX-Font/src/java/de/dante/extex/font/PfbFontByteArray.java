@@ -19,18 +19,21 @@
 
 package de.dante.extex.font;
 
+import org.extex.font.FontByteArray;
 
 /**
  * Class for a pfb-font-file.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class PfbFontByteArray extends AbstractFontByteArray implements FontByteArray {
+public class PfbFontByteArray extends AbstractFontByteArray implements
+        FontByteArray {
 
     /**
      * Create a new object
-     * @param b  the byte array
+     * 
+     * @param b the byte array
      */
     public PfbFontByteArray(final byte[] b) {
 
@@ -39,10 +42,12 @@ public class PfbFontByteArray extends AbstractFontByteArray implements FontByteA
 
     /**
      * Returns the String for the class
+     * 
      * @return Returns the string for the class
      */
     public String toString() {
 
         return "PFB";
     }
+
 }

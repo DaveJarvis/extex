@@ -21,11 +21,10 @@ package de.dante.extex.typesetter.output;
 
 import java.util.logging.Logger;
 
+import org.extex.interpreter.Interpreter;
 import org.extex.util.framework.AbstractFactory;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
-
-import de.dante.extex.interpreter.Interpreter;
 
 /**
  * This class provides a factory for the output routines.

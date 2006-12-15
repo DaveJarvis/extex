@@ -23,10 +23,10 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.extex.font.exception.FontException;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.font.FontFactory;
-import de.dante.extex.font.exception.FontException;
 import de.dante.extex.font.type.PlWriter;
 import de.dante.extex.font.type.tfm.TFMFixWord;
 import de.dante.extex.format.dvi.command.DviBOP;

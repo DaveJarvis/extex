@@ -19,6 +19,7 @@
 
 package de.dante.extex.interpreter;
 
+import org.extex.interpreter.Flags;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.i18n.LocalizerFactory;
 

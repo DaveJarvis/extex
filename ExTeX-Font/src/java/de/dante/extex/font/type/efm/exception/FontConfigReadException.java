@@ -19,7 +19,7 @@
 
 package de.dante.extex.font.type.efm.exception;
 
-import de.dante.extex.font.exception.FontException;
+import org.extex.font.exception.FontException;
 
 /**
  * Exception, if an error is thrown by reading the efm config file.

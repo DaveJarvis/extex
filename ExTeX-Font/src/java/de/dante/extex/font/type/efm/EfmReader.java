@@ -31,12 +31,12 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
+import org.extex.font.exception.FontException;
+import org.extex.font.exception.FontIOException;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import de.dante.extex.font.exception.FontException;
-import de.dante.extex.font.exception.FontIOException;
 import de.dante.extex.font.type.efm.exception.FontSAXException;
 
 /**

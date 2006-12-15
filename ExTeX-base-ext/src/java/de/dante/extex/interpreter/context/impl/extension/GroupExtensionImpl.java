@@ -23,9 +23,9 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.extex.interpreter.Tokenizer;
 import org.extex.util.exception.GeneralException;
 
-import de.dante.extex.interpreter.Tokenizer;
 import de.dante.extex.interpreter.context.impl.Group;
 import de.dante.extex.interpreter.context.impl.GroupImpl;
 import de.dante.extex.interpreter.exception.InterpreterExtensionException;
