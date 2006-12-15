@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,35 +17,26 @@
  *
  */
 
-package org.extex.interpreter.unit;
+package org.extex.interpreter.type.dimen.parser;
 
-import org.extex.interpreter.TokenSource;
-import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 
-import de.dante.extex.typesetter.Typesetter;
-
 /**
- * This interface describes the capabilities needed for NativeLoad to
- * work on the class.
- * This interface is meant to enable to integration of extensions
- * implemented in arbitrary programming languages.
+ * This interface describes a function object with a single argument.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface Loader {
+public interface Function1 {
 
     /**
-     * Perform a load operation.
+     * Compute the function value for the argument stored in the accumulator
+     * and return in the accumulator overwriting the value stored therein.
      *
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
+     * @param accumulator the accumulator to receive the result
      *
      * @throws InterpreterException in case of an error
      */
-    void load(Context context, TokenSource source, Typesetter typesetter)
-            throws InterpreterException;
+    void apply(Accumulator accumulator) throws InterpreterException;
 
 }

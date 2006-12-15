@@ -24,7 +24,7 @@ import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This is the factory for instances of
- * {@link de.dante.extex.interpreter.unit.Loader Loader}. This factory inherits
+ * {@link org.extex.interpreter.unit.Loader Loader}. This factory inherits
  * its properties from the
  * {@link org.extex.util.framework.AbstractFactory AbstractFactory}. Among them
  * the support for configuration and logging.
@@ -44,7 +44,7 @@ import org.extex.util.framework.configuration.exception.ConfigurationException;
  * </p>
  * <p>
  * The named class need to implement the interface
- * {@link de.dante.extex.interpreter.unit.Loader Loader}. If this interface is
+ * {@link org.extex.interpreter.unit.Loader Loader}. If this interface is
  * not implemented an error is raised.
  * </p>
  * <p>

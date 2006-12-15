@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,35 +17,39 @@
  *
  */
 
-package org.extex.interpreter.unit;
+package org.extex.interpreter.type;
 
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.tokens.Tokens;
 
 import de.dante.extex.typesetter.Typesetter;
 
 /**
- * This interface describes the capabilities needed for NativeLoad to
- * work on the class.
- * This interface is meant to enable to integration of extensions
- * implemented in arbitrary programming languages.
+ * This is an interface for those primitives which are protected during
+ * expansion of arguments of primitives like <tt>\edef</tt>,
+ *  <tt>\xdef</tt>, <tt>\message</tt>, and others..
+ *
+ * @see TokenSource#scanUnprotectedTokens(Context, boolean, boolean, String)
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface Loader {
+public interface CodeExpander {
 
     /**
-     * Perform a load operation.
+     * Expand the first token and place the result in a token list. During
+     * the expansion additional tokens might be used.
      *
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
+     * @param tokens the target token list
      *
      * @throws InterpreterException in case of an error
      */
-    void load(Context context, TokenSource source, Typesetter typesetter)
-            throws InterpreterException;
+    void expandCode(Context context, TokenSource source, Typesetter typesetter,
+            Tokens tokens) throws InterpreterException;
 
 }

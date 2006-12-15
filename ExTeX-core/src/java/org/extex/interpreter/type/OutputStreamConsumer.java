@@ -17,35 +17,23 @@
  *
  */
 
-package org.extex.interpreter.unit;
+package org.extex.interpreter.type;
 
-import org.extex.interpreter.TokenSource;
-import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
-
-import de.dante.extex.typesetter.Typesetter;
+import org.extex.backend.outputStream.OutputStreamFactory;
 
 /**
- * This interface describes the capabilities needed for NativeLoad to
- * work on the class.
- * This interface is meant to enable to integration of extensions
- * implemented in arbitrary programming languages.
+ * This interface describes a consumer of an output stream factory.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface Loader {
+public interface OutputStreamConsumer {
 
     /**
-     * Perform a load operation.
+     * This method takes an output stream factory for further use.
      *
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
+     * @param factory the output stream factory to use
      */
-    void load(Context context, TokenSource source, Typesetter typesetter)
-            throws InterpreterException;
+    void setOutputStreamFactory(OutputStreamFactory factory);
 
 }

@@ -17,35 +17,33 @@
  *
  */
 
-package org.extex.interpreter.unit;
-
-import org.extex.interpreter.TokenSource;
-import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
-
-import de.dante.extex.typesetter.Typesetter;
+package org.extex.interpreter.context.observer.group;
 
 /**
- * This interface describes the capabilities needed for NativeLoad to
- * work on the class.
- * This interface is meant to enable to integration of extensions
- * implemented in arbitrary programming languages.
+ * This interface describes the possibility to register an observer for an
+ * group event.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface Loader {
+public interface GroupObservable {
 
     /**
-     * Perform a load operation.
+     * Register an observer for group change events.
+     * Group change events are triggered when a group is opened or closed.
+     * In this case the appropriate method in the observer is invoked.
      *
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
+     * @param observer the observer to receive the events
      */
-    void load(Context context, TokenSource source, Typesetter typesetter)
-            throws InterpreterException;
+    void registerGroupObserver(GroupObserver observer);
+
+    /**
+     * Remove a registered observer for group change events.
+     * Group change events are triggered when a group is opened or closed.
+     * In this case the appropriate method in the observer is invoked.
+     *
+     * @param observer the observer to receive the events
+     */
+    void unregisterGroupObserver(GroupObserver observer);
 
 }

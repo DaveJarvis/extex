@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.interpreter.unit;
+package org.extex.interpreter.type;
 
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -26,26 +26,24 @@ import org.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.typesetter.Typesetter;
 
 /**
- * This interface describes the capabilities needed for NativeLoad to
- * work on the class.
- * This interface is meant to enable to integration of extensions
- * implemented in arbitrary programming languages.
+ * This interface describes the ability to be initialized
+ * This is a life-cycle feature.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface Loader {
+public interface InitializableCode {
 
     /**
-     * Perform a load operation.
+     * Initialize the Code with some value coming from a String.
      *
      * @param context the interpreter context
-     * @param source the source for new tokens
+     * @param source the source of information for the initialization
      * @param typesetter the typesetter
      *
      * @throws InterpreterException in case of an error
      */
-    void load(Context context, TokenSource source, Typesetter typesetter)
+    void init(Context context, TokenSource source, Typesetter typesetter)
             throws InterpreterException;
 
 }

@@ -17,35 +17,22 @@
  *
  */
 
-package org.extex.interpreter.unit;
-
-import org.extex.interpreter.TokenSource;
-import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
-
-import de.dante.extex.typesetter.Typesetter;
+package org.extex.interpreter.context.observer.group;
 
 /**
- * This interface describes the capabilities needed for NativeLoad to
- * work on the class.
- * This interface is meant to enable to integration of extensions
- * implemented in arbitrary programming languages.
+ * This interface describes the possibility to register an observer for an
+ * expansion event.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface Loader {
+public interface AfterGroupObservable {
 
     /**
-     * Perform a load operation.
+     * Register an expand observer for later use.
      *
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
+     * @param observer the observer to be registered
      */
-    void load(Context context, TokenSource source, Typesetter typesetter)
-            throws InterpreterException;
+    void registerObserver(AfterGroupObserver observer);
 
 }

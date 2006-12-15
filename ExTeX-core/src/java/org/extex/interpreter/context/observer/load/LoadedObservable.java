@@ -17,35 +17,43 @@
  *
  */
 
-package org.extex.interpreter.unit;
+package org.extex.interpreter.context.observer.load;
 
 import org.extex.interpreter.TokenSource;
-import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 
-import de.dante.extex.typesetter.Typesetter;
 
 /**
- * This interface describes the capabilities needed for NativeLoad to
- * work on the class.
- * This interface is meant to enable to integration of extensions
- * implemented in arbitrary programming languages.
+ * This interface describes the possibility to register an observer for an
+ * load event.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4399 $
  */
-public interface Loader {
+public interface LoadedObservable {
 
     /**
-     * Perform a load operation.
+     * Register an observer for load events.
+     * Code change events are triggered when the context is loaded.
      *
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
+     * @param observer the observer to receive the events
+     */
+    void registerLoadObserver(LoadedObserver observer);
+
+    /**
+     * Remove a registered observer for load events.
+     * Code change events are triggered when the context is loaded.
+     *
+     * @param observer the observer to receive the events
+     */
+    void unregisterLoadObserver(LoadedObserver observer);
+
+    /**
+     * Receive a notification about a load event.
+     *
+     * @param source the token source
      *
      * @throws InterpreterException in case of an error
      */
-    void load(Context context, TokenSource source, Typesetter typesetter)
-            throws InterpreterException;
-
+    void receiveLoad(TokenSource source) throws InterpreterException;
 }

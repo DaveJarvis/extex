@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,35 +17,36 @@
  *
  */
 
-package org.extex.interpreter.unit;
+package org.extex.interpreter.type;
 
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 
-import de.dante.extex.typesetter.Typesetter;
+import de.dante.extex.scanner.type.token.Token;
 
 /**
- * This interface describes the capabilities needed for NativeLoad to
- * work on the class.
- * This interface is meant to enable to integration of extensions
- * implemented in arbitrary programming languages.
+ * This is an interface which describes the feature to be convertible into a
+ * control sequence.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface Loader {
+public interface CsConvertible {
 
     /**
-     * Perform a load operation.
+     * This method converts into control sequence.
+     * It might be necessary to read further tokens to determine which value to
+     * use. For instance an additional register number might be required. In
+     * this case the additional arguments Context and TokenSource can be used.
      *
      * @param context the interpreter context
      * @param source the source for new tokens
-     * @param typesetter the typesetter
      *
+     * @return the converted value
      * @throws InterpreterException in case of an error
      */
-    void load(Context context, TokenSource source, Typesetter typesetter)
+    Token convertCs(Context context, TokenSource source)
             throws InterpreterException;
 
 }

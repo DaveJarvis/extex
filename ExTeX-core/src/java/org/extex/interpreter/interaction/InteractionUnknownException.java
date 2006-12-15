@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,35 +17,40 @@
  *
  */
 
-package org.extex.interpreter.unit;
+package org.extex.interpreter.interaction;
 
-import org.extex.interpreter.TokenSource;
-import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 
-import de.dante.extex.typesetter.Typesetter;
-
 /**
- * This interface describes the capabilities needed for NativeLoad to
- * work on the class.
- * This interface is meant to enable to integration of extensions
- * implemented in arbitrary programming languages.
+ * This exception is thrown when the user attempts to set the interaction mode
+ * but specifies an invalid value for the mode.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface Loader {
+public class InteractionUnknownException extends InterpreterException {
 
     /**
-     * Perform a load operation.
-     *
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    void load(Context context, TokenSource source, Typesetter typesetter)
-            throws InterpreterException;
+    protected static final long serialVersionUID = 1L;
 
+    /**
+     * Creates a new object.
+     *
+     * @param message the name of the missing argument
+     */
+    public InteractionUnknownException(final String message) {
+
+        super(message);
+    }
+
+    /**
+     * @see java.lang.Throwable#getLocalizedMessage()
+     */
+    public String getLocalizedMessage() {
+
+        return getLocalizer().format("InteractionUnknownException.Message",
+                super.getMessage());
+    }
 }

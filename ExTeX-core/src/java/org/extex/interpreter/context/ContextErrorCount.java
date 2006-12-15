@@ -17,35 +17,33 @@
  *
  */
 
-package org.extex.interpreter.unit;
-
-import org.extex.interpreter.TokenSource;
-import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
-
-import de.dante.extex.typesetter.Typesetter;
+package org.extex.interpreter.context;
 
 /**
- * This interface describes the capabilities needed for NativeLoad to
- * work on the class.
- * This interface is meant to enable to integration of extensions
- * implemented in arbitrary programming languages.
+ * This interface describes the capabilities of the context to store and
+ * retrieve the error count.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface Loader {
+public interface ContextErrorCount {
 
     /**
-     * Perform a load operation.
+     * Getter for the error count.
      *
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
+     * @return the current value of the number of errors
      *
-     * @throws InterpreterException in case of an error
+     * @see #incrementErrorCount()
      */
-    void load(Context context, TokenSource source, Typesetter typesetter)
-            throws InterpreterException;
+    int getErrorCount();
+
+    /**
+     * Increment the error count by 1.
+     *
+     * @return the new value of the error count
+     *
+     * @see #getErrorCount()
+     */
+    int incrementErrorCount();
 
 }

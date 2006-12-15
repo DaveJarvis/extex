@@ -19,17 +19,16 @@
 
 package org.extex.interpreter;
 
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.box.Box;
+import org.extex.interpreter.type.font.Font;
+import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.exception.NotObservableException;
 
-import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.type.box.Box;
-import de.dante.extex.interpreter.type.font.Font;
-import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.scanner.TokenStream;
 import de.dante.extex.scanner.stream.TokenStreamFactory;
 import de.dante.extex.scanner.type.token.CodeToken;
@@ -38,7 +37,7 @@ import de.dante.extex.typesetter.Typesetter;
 
 /**
  * This interface describes a class to acquire
- * {@link de.dante.extex.scanner.type.token.Token Token}s from. Beside the pure
+ * {@link org.extex.scanner.type.token.Token Token}s from. Beside the pure
  * getter for the next token some higher-level parsing methods are provided here
  * as well.
  * 
@@ -282,7 +281,7 @@ public interface TokenSource {
 
     /**
      * Get the next token which has not the category code
-     * {@link de.dante.extex.scanner.type.Catcode#SPACE SPACE}.
+     * {@link org.extex.scanner.type.Catcode#SPACE SPACE}.
      * 
      * @param context the interpreter context
      * 
@@ -527,7 +526,7 @@ public interface TokenSource {
      * 
      * <p>
      * A number consists of a non-empty sequence of digits with category code
-     * {@link de.dante.extex.scanner.type.Catcode#OTHER OTHER}.
+     * {@link org.extex.scanner.type.Catcode#OTHER OTHER}.
      * </p>
      * 
      * </doc>

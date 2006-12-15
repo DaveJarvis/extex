@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,35 +17,46 @@
  *
  */
 
-package org.extex.interpreter.unit;
+package org.extex.interpreter.exception.helping;
 
-import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.util.framework.i18n.LocalizerFactory;
 
-import de.dante.extex.typesetter.Typesetter;
+import de.dante.extex.scanner.type.token.Token;
 
 /**
- * This interface describes the capabilities needed for NativeLoad to
- * work on the class.
- * This interface is meant to enable to integration of extensions
- * implemented in arbitrary programming languages.
+ * This exception is raised when direction is needed but has not been found.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4408 $
  */
-public interface Loader {
+
+public class MissingOcplistException extends InterpreterException {
 
     /**
-     * Perform a load operation.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    protected static final long serialVersionUID = 2006L;
+
+    /**
+     * Creates a new object.
      *
      * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
+     * @param t the token encountered
      */
-    void load(Context context, TokenSource source, Typesetter typesetter)
-            throws InterpreterException;
+    public MissingOcplistException(final Context context, final Token t) {
+
+        super(LocalizerFactory.getLocalizer(MissingOcplistException.class)
+                .format("Omega.MissingOcplist"));
+    }
+
+    /**
+     * @see java.lang.Throwable#getLocalizedMessage()
+     */
+    public String getLocalizedMessage() {
+
+        return super.getMessage();
+    }
 
 }

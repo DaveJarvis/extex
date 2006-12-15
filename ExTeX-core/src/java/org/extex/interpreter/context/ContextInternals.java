@@ -17,35 +17,26 @@
  *
  */
 
-package org.extex.interpreter.unit;
+package org.extex.interpreter.context;
 
-import org.extex.interpreter.TokenSource;
-import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.context.tc.TypesettingContextFactory;
 
-import de.dante.extex.typesetter.Typesetter;
+import de.dante.extex.language.LanguageManagerCarrier;
 
 /**
- * This interface describes the capabilities needed for NativeLoad to
- * work on the class.
- * This interface is meant to enable to integration of extensions
- * implemented in arbitrary programming languages.
+ * This interface describes the abilities of a Context together with some
+ * internal methods.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface Loader {
+public interface ContextInternals extends Context, LanguageManagerCarrier {
 
     /**
-     * Perform a load operation.
+     * Getter for the typesetting context factory.
      *
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
+     * @return the typesetting context factory
      */
-    void load(Context context, TokenSource source, Typesetter typesetter)
-            throws InterpreterException;
+    TypesettingContextFactory getTypesettingContextFactory();
 
 }

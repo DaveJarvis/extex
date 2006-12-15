@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,8 +17,9 @@
  *
  */
 
-package org.extex.interpreter.unit;
+package org.extex.interpreter.type;
 
+import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
@@ -26,26 +27,28 @@ import org.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.typesetter.Typesetter;
 
 /**
- * This interface describes the capabilities needed for NativeLoad to
- * work on the class.
- * This interface is meant to enable to integration of extensions
- * implemented in arbitrary programming languages.
+ * This interface describes the feature of being expandable code.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface Loader {
+public interface ExpandableCode {
 
     /**
-     * Perform a load operation.
+     * This method takes the first token and expands it. The result is placed
+     * on the stack.
+     * This means that expandable code does one step of expansion and puts the
+     * result on the stack. To expand a token it might be necessary to consume
+     * further tokens.
      *
+     * @param prefix the prefix flags controlling the expansion
      * @param context the interpreter context
-     * @param source the source for new tokens
+     * @param source the token source
      * @param typesetter the typesetter
      *
      * @throws InterpreterException in case of an error
      */
-    void load(Context context, TokenSource source, Typesetter typesetter)
-            throws InterpreterException;
+    void expand(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException;
 
 }

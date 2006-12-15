@@ -17,35 +17,31 @@
  *
  */
 
-package org.extex.interpreter.unit;
+package org.extex.interpreter.type;
 
-import org.extex.interpreter.TokenSource;
+
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
-
-import de.dante.extex.typesetter.Typesetter;
+import org.extex.interpreter.type.tokens.Tokens;
 
 /**
- * This interface describes the capabilities needed for NativeLoad to
- * work on the class.
- * This interface is meant to enable to integration of extensions
- * implemented in arbitrary programming languages.
+ * This interface describes the ability to write some tokens to a output file
+ * register.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface Loader {
+public interface TokensWriter {
 
     /**
-     * Perform a load operation.
+     * Immediately write some tokens to a write register.
      *
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
+     * @param key the name (number) of the write register
+     * @param toks the tokens to write
+     * @param context the processing context
+     * @throws InterpreterException in case of another error
      */
-    void load(Context context, TokenSource source, Typesetter typesetter)
+    void write(String key, Tokens toks, Context context)
             throws InterpreterException;
 
 }

@@ -17,35 +17,30 @@
  *
  */
 
-package org.extex.interpreter.unit;
+package org.extex.interpreter.context.observer.interaction;
 
-import org.extex.interpreter.TokenSource;
-import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
 
-import de.dante.extex.typesetter.Typesetter;
+import org.extex.interpreter.context.ContextInternals;
+import org.extex.interpreter.interaction.Interaction;
 
 /**
- * This interface describes the capabilities needed for NativeLoad to
- * work on the class.
- * This interface is meant to enable to integration of extensions
- * implemented in arbitrary programming languages.
+ * This interface describes the ability to receive a notification about the
+ * change of the interaction mode.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4399 $
  */
-public interface Loader {
+public interface InteractionObserver {
 
     /**
-     * Perform a load operation.
+     * Receive a notification on a count change.
      *
      * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
+     * @param mode the new interaction mode.
      *
-     * @throws InterpreterException in case of an error
+     * @throws Exception in case of a problem
      */
-    void load(Context context, TokenSource source, Typesetter typesetter)
-            throws InterpreterException;
+    void receiveInteractionChange(ContextInternals context, Interaction mode)
+            throws Exception;
 
 }

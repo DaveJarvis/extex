@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,35 +17,35 @@
  *
  */
 
-package org.extex.interpreter.unit;
+package org.extex.interpreter;
 
-import org.extex.interpreter.TokenSource;
-import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.type.UnicodeChar;
 
-import de.dante.extex.typesetter.Typesetter;
+import de.dante.extex.scanner.type.Catcode;
 
 /**
- * This interface describes the capabilities needed for NativeLoad to
- * work on the class.
- * This interface is meant to enable to integration of extensions
- * implemented in arbitrary programming languages.
+ * A tokenizer is a class which is able to categorize characters according to
+ * the category codes.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface Loader {
+public interface Tokenizer {
 
     /**
-     * Perform a load operation.
+     * Getter for the category code of a character.
      *
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
+     * @param c the Unicode character to analyze
      *
-     * @throws InterpreterException in case of an error
+     * @return the category code of a character
      */
-    void load(Context context, TokenSource source, Typesetter typesetter)
-            throws InterpreterException;
+    Catcode getCatcode(UnicodeChar c);
+
+    /**
+     * Getter for the name space.
+     *
+     * @return the name space
+     */
+    String getNamespace();
 
 }

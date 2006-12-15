@@ -17,35 +17,35 @@
  *
  */
 
-package org.extex.interpreter.unit;
+package org.extex.interpreter.context.observer.group;
 
-import org.extex.interpreter.TokenSource;
-import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
-
-import de.dante.extex.typesetter.Typesetter;
+import org.extex.interpreter.context.ContextInternals;
 
 /**
- * This interface describes the capabilities needed for NativeLoad to
- * work on the class.
- * This interface is meant to enable to integration of extensions
- * implemented in arbitrary programming languages.
+ * This interface describes the ability to receive a notification about the
+ * opening and closing of groups.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface Loader {
+public interface GroupObserver {
 
     /**
-     * Perform a load operation.
+     * Receive a notification that a group has been closed.
      *
      * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
      *
-     * @throws InterpreterException in case of an error
+     * @throws Exception in case of an error
      */
-    void load(Context context, TokenSource source, Typesetter typesetter)
-            throws InterpreterException;
+    void receiveCloseGroup(ContextInternals context) throws Exception;
+
+    /**
+     * Receive a notification that a group has been opened.
+     *
+     * @param context the interpreter context
+     *
+     * @throws Exception in case of an error
+     */
+    void receiveOpenGroup(ContextInternals context) throws Exception;
 
 }

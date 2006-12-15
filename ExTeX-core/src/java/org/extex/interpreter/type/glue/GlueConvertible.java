@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.interpreter.unit;
+package org.extex.interpreter.type.glue;
 
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -26,26 +26,29 @@ import org.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.typesetter.Typesetter;
 
 /**
- * This interface describes the capabilities needed for NativeLoad to
- * work on the class.
- * This interface is meant to enable to integration of extensions
- * implemented in arbitrary programming languages.
+ * This is an interface which describes the feature to be convertible into a
+ * glue value.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4399 $
  */
-public interface Loader {
+public interface GlueConvertible {
 
     /**
-     * Perform a load operation.
+     * This method converts a register into a glue value.
+     * It might be necessary to read further tokens to determine which value to
+     * use. For instance an additional register number might be required. In
+     * this case the additional arguments Context and TokenSource can be used.
      *
      * @param context the interpreter context
      * @param source the source for new tokens
-     * @param typesetter the typesetter
+     * @param typesetter the typesetter to use for conversion
+     *
+     * @return the converted value
      *
      * @throws InterpreterException in case of an error
      */
-    void load(Context context, TokenSource source, Typesetter typesetter)
+    Glue convertGlue(Context context, TokenSource source, Typesetter typesetter)
             throws InterpreterException;
 
 }

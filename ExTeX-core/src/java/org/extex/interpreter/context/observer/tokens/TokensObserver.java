@@ -17,35 +17,32 @@
  *
  */
 
-package org.extex.interpreter.unit;
+package org.extex.interpreter.context.observer.tokens;
 
-import org.extex.interpreter.TokenSource;
-import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
 
-import de.dante.extex.typesetter.Typesetter;
+import org.extex.interpreter.context.ContextInternals;
+import org.extex.interpreter.type.tokens.Tokens;
 
 /**
- * This interface describes the capabilities needed for NativeLoad to
- * work on the class.
- * This interface is meant to enable to integration of extensions
- * implemented in arbitrary programming languages.
+ * This interface describes the ability to receive a notification about the
+ * change of a tokens register.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4399 $
  */
-public interface Loader {
+public interface TokensObserver {
 
     /**
-     * Perform a load operation.
+     * Receive a notification on a tokens change.
      *
      * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
+     * @param name the token containing the name of the changed tokens.
+     * @param value the new value assigned to the name. In case of
+     *  <code>null</code> the name is unbound.
      *
-     * @throws InterpreterException in case of an error
+     * @throws Exception in case of a problem
      */
-    void load(Context context, TokenSource source, Typesetter typesetter)
-            throws InterpreterException;
+    void receiveTokensChange(ContextInternals context, String name, Tokens value)
+            throws Exception;
 
 }

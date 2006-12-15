@@ -17,35 +17,15 @@
  *
  */
 
-package org.extex.interpreter.unit;
-
-import org.extex.interpreter.TokenSource;
-import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
-
-import de.dante.extex.typesetter.Typesetter;
+package org.extex.interpreter.type;
 
 /**
- * This interface describes the capabilities needed for NativeLoad to
- * work on the class.
- * This interface is meant to enable to integration of extensions
- * implemented in arbitrary programming languages.
+ * This is a marker interface for those primitives which deal with the prefix.
+ * For those primitives it is legal to leave the prefix flags uncleared.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface Loader {
-
-    /**
-     * Perform a load operation.
-     *
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     */
-    void load(Context context, TokenSource source, Typesetter typesetter)
-            throws InterpreterException;
+public interface PrefixCode {
 
 }

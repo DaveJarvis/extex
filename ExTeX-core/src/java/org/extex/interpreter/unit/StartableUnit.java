@@ -25,19 +25,18 @@ import org.extex.interpreter.exception.InterpreterException;
 
 import de.dante.extex.typesetter.Typesetter;
 
+
 /**
- * This interface describes the capabilities needed for NativeLoad to
- * work on the class.
- * This interface is meant to enable to integration of extensions
- * implemented in arbitrary programming languages.
+ * This interface describes a unit which needs to be started. The start method
+ * should be invoked at the end of the loading process.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface Loader {
+public interface StartableUnit {
 
     /**
-     * Perform a load operation.
+     * Perform a start operation.
      *
      * @param context the interpreter context
      * @param source the source for new tokens
@@ -45,7 +44,7 @@ public interface Loader {
      *
      * @throws InterpreterException in case of an error
      */
-    void load(Context context, TokenSource source, Typesetter typesetter)
+    void start(Context context, TokenSource source, Typesetter typesetter)
             throws InterpreterException;
 
 }

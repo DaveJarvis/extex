@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -16,36 +16,50 @@
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
+package org.extex.interpreter.loader;
 
-package org.extex.interpreter.unit;
-
-import org.extex.interpreter.TokenSource;
-import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 
-import de.dante.extex.typesetter.Typesetter;
 
 /**
- * This interface describes the capabilities needed for NativeLoad to
- * work on the class.
- * This interface is meant to enable to integration of extensions
- * implemented in arbitrary programming languages.
+ * This exception is used when the loader detects some problem.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 4592 $
  */
-public interface Loader {
+public class LoaderException extends InterpreterException {
 
     /**
-     * Perform a load operation.
-     *
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    void load(Context context, TokenSource source, Typesetter typesetter)
-            throws InterpreterException;
+    protected static final long serialVersionUID = 1L;
+
+    /**
+     * Creates a new object.
+     */
+    public LoaderException() {
+
+        super();
+    }
+
+    /**
+     * Creates a new object.
+     *
+     * @param message the message
+     */
+    public LoaderException(final String message) {
+
+        super(message);
+    }
+
+    /**
+     * Creates a new object.
+     *
+     * @param cause the cause
+     */
+    public LoaderException(final Throwable cause) {
+
+        super(cause);
+    }
 
 }
