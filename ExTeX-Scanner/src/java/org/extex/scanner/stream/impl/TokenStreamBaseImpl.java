@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.scanner.stream.impl;
+package org.extex.scanner.stream.impl;
 
 import org.extex.type.Locator;
 

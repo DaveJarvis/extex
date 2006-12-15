@@ -20,6 +20,7 @@
 package de.dante.extex.interpreter;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.scanner.stream.impl.TokenStreamImpl;
 import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
 
@@ -34,7 +35,6 @@ import de.dante.extex.interpreter.type.glue.FixedGlue;
 import de.dante.extex.language.ligature.LigatureBuilder;
 import de.dante.extex.scanner.TokenStream;
 import de.dante.extex.scanner.stream.TokenStreamFactory;
-import de.dante.extex.scanner.stream.impl.TokenStreamImpl;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.ListMaker;
 import de.dante.extex.typesetter.Mode;

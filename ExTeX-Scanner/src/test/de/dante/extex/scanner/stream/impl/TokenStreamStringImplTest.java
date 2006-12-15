@@ -24,6 +24,7 @@ import java.io.StringReader;
 
 import junit.framework.TestCase;
 
+import org.extex.scanner.stream.impl.TokenStreamImpl;
 import org.extex.type.UnicodeChar;
 
 import de.dante.extex.interpreter.Tokenizer;

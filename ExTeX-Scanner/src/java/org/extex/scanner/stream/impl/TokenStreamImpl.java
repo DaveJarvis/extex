@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.scanner.stream.impl;
+package org.extex.scanner.stream.impl;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -654,7 +654,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
     }
 
     /**
-     * @see de.dante.extex.scanner.stream.impl.TokenStreamBaseImpl#getNext(
+     * @see org.extex.scanner.stream.impl.TokenStreamBaseImpl#getNext(
      *      de.dante.extex.scanner.type.token.TokenFactory,
      *      de.dante.extex.interpreter.Tokenizer)
      */
