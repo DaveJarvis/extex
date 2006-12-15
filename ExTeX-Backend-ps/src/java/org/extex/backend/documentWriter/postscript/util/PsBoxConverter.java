@@ -23,15 +23,15 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
+import org.extex.backend.documentWriter.exception.DocumentWriterException;
+import org.extex.backend.documentWriter.exception.DocumentWriterIOException;
+import org.extex.interpreter.context.tc.TypesettingContext;
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.interpreter.type.font.Font;
 import org.extex.type.UnicodeChar;
 import org.extex.util.exception.GeneralException;
 
-import de.dante.extex.backend.documentWriter.exception.DocumentWriterException;
-import de.dante.extex.backend.documentWriter.exception.DocumentWriterIOException;
-import de.dante.extex.interpreter.context.tc.TypesettingContext;
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
-import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeVisitor;
 import de.dante.extex.typesetter.type.node.AdjustNode;
@@ -56,6 +56,7 @@ import de.dante.extex.typesetter.type.node.VerticalListNode;
 import de.dante.extex.typesetter.type.node.VirtualCharNode;
 import de.dante.extex.typesetter.type.node.WhatsItNode;
 import de.dante.extex.typesetter.type.page.Page;
+
 
 /**
  * This class provides a converter to PostScript code which shows mainly the
@@ -212,8 +213,8 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeVisitor#visitAdjust(
-     *      de.dante.extex.typesetter.type.node.AdjustNode,
+     * @see org.extex.typesetter.type.NodeVisitor#visitAdjust(
+     *      org.extex.typesetter.type.node.AdjustNode,
      *      java.lang.Object)
      */
     public Object visitAdjust(final AdjustNode node, final Object oOut)
@@ -224,8 +225,8 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeVisitor#visitAfterMath(
-     *      de.dante.extex.typesetter.type.node.AfterMathNode,
+     * @see org.extex.typesetter.type.NodeVisitor#visitAfterMath(
+     *      org.extex.typesetter.type.node.AfterMathNode,
      *      java.lang.Object)
      */
     public Object visitAfterMath(final AfterMathNode node, final Object oOut)
@@ -235,8 +236,8 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeVisitor#visitAlignedLeaders(
-     *      de.dante.extex.typesetter.type.node.AlignedLeadersNode,
+     * @see org.extex.typesetter.type.NodeVisitor#visitAlignedLeaders(
+     *      org.extex.typesetter.type.node.AlignedLeadersNode,
      *      java.lang.Object)
      */
     public Object visitAlignedLeaders(final AlignedLeadersNode node,
@@ -247,8 +248,8 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeVisitor#visitBeforeMath(
-     *      de.dante.extex.typesetter.type.node.BeforeMathNode,
+     * @see org.extex.typesetter.type.NodeVisitor#visitBeforeMath(
+     *      org.extex.typesetter.type.node.BeforeMathNode,
      *      java.lang.Object)
      */
     public Object visitBeforeMath(final BeforeMathNode node, final Object oOut)
@@ -258,8 +259,8 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeVisitor#visitCenteredLeaders(
-     *      de.dante.extex.typesetter.type.node.CenteredLeadersNode,
+     * @see org.extex.typesetter.type.NodeVisitor#visitCenteredLeaders(
+     *      org.extex.typesetter.type.node.CenteredLeadersNode,
      *      java.lang.Object)
      */
     public Object visitCenteredLeaders(final CenteredLeadersNode node,
@@ -270,8 +271,8 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeVisitor#visitChar(
-     *      de.dante.extex.typesetter.type.node.CharNode,
+     * @see org.extex.typesetter.type.NodeVisitor#visitChar(
+     *      org.extex.typesetter.type.node.CharNode,
      *      java.lang.Object)
      */
     public Object visitChar(final CharNode node, final Object oOut)
@@ -310,8 +311,8 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeVisitor#visitDiscretionary(
-     *      de.dante.extex.typesetter.type.node.DiscretionaryNode,
+     * @see org.extex.typesetter.type.NodeVisitor#visitDiscretionary(
+     *      org.extex.typesetter.type.node.DiscretionaryNode,
      *      java.lang.Object)
      */
     public Object visitDiscretionary(final DiscretionaryNode node,
@@ -328,8 +329,8 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeVisitor#visitExpandedLeaders(
-     *      de.dante.extex.typesetter.type.node.ExpandedLeadersNode,
+     * @see org.extex.typesetter.type.NodeVisitor#visitExpandedLeaders(
+     *      org.extex.typesetter.type.node.ExpandedLeadersNode,
      *      java.lang.Object)
      */
     public Object visitExpandedLeaders(final ExpandedLeadersNode node,
@@ -340,8 +341,8 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeVisitor#visitGlue(
-     *      de.dante.extex.typesetter.type.node.GlueNode,
+     * @see org.extex.typesetter.type.NodeVisitor#visitGlue(
+     *      org.extex.typesetter.type.node.GlueNode,
      *      java.lang.Object)
      */
     public Object visitGlue(final GlueNode node, final Object oOut)
@@ -352,8 +353,8 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeVisitor#visitHorizontalList(
-     *      de.dante.extex.typesetter.type.node.HorizontalListNode,
+     * @see org.extex.typesetter.type.NodeVisitor#visitHorizontalList(
+     *      org.extex.typesetter.type.node.HorizontalListNode,
      *      java.lang.Object)
      */
     public Object visitHorizontalList(final HorizontalListNode node,
@@ -381,8 +382,8 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeVisitor#visitInsertion(
-     *      de.dante.extex.typesetter.type.node.InsertionNode,
+     * @see org.extex.typesetter.type.NodeVisitor#visitInsertion(
+     *      org.extex.typesetter.type.node.InsertionNode,
      *      java.lang.Object)
      */
     public Object visitInsertion(final InsertionNode node, final Object oOut)
@@ -393,8 +394,8 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeVisitor#visitKern(
-     *      de.dante.extex.typesetter.type.node.KernNode,
+     * @see org.extex.typesetter.type.NodeVisitor#visitKern(
+     *      org.extex.typesetter.type.node.KernNode,
      *      java.lang.Object)
      */
     public Object visitKern(final KernNode node, final Object oOut)
@@ -411,8 +412,8 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeVisitor#visitLigature(
-     *      de.dante.extex.typesetter.type.node.LigatureNode,
+     * @see org.extex.typesetter.type.NodeVisitor#visitLigature(
+     *      org.extex.typesetter.type.node.LigatureNode,
      *      java.lang.Object)
      */
     public Object visitLigature(final LigatureNode node, final Object oOut)
@@ -422,8 +423,8 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeVisitor#visitMark(
-     *      de.dante.extex.typesetter.type.node.MarkNode,
+     * @see org.extex.typesetter.type.NodeVisitor#visitMark(
+     *      org.extex.typesetter.type.node.MarkNode,
      *      java.lang.Object)
      */
     public Object visitMark(final MarkNode node, final Object oOut)
@@ -440,8 +441,8 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeVisitor#visitPenalty(
-     *      de.dante.extex.typesetter.type.node.PenaltyNode,
+     * @see org.extex.typesetter.type.NodeVisitor#visitPenalty(
+     *      org.extex.typesetter.type.node.PenaltyNode,
      *      java.lang.Object)
      */
     public Object visitPenalty(final PenaltyNode node, final Object oOut)
@@ -458,8 +459,8 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeVisitor#visitRule(
-     *      de.dante.extex.typesetter.type.node.RuleNode,
+     * @see org.extex.typesetter.type.NodeVisitor#visitRule(
+     *      org.extex.typesetter.type.node.RuleNode,
      *      java.lang.Object)
      */
     public Object visitRule(final RuleNode node, final Object oOut)
@@ -470,8 +471,8 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeVisitor#visitSpace(
-     *      de.dante.extex.typesetter.type.node.SpaceNode,
+     * @see org.extex.typesetter.type.NodeVisitor#visitSpace(
+     *      org.extex.typesetter.type.node.SpaceNode,
      *      java.lang.Object)
      */
     public Object visitSpace(final SpaceNode node, final Object oOut)
@@ -488,8 +489,8 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeVisitor#visitVerticalList(
-     *      de.dante.extex.typesetter.type.node.VerticalListNode,
+     * @see org.extex.typesetter.type.NodeVisitor#visitVerticalList(
+     *      org.extex.typesetter.type.node.VerticalListNode,
      *      java.lang.Object)
      */
     public Object visitVerticalList(final VerticalListNode node,
@@ -518,8 +519,8 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeVisitor#visitVirtualChar(
-     *      de.dante.extex.typesetter.type.node.VirtualCharNode,
+     * @see org.extex.typesetter.type.NodeVisitor#visitVirtualChar(
+     *      org.extex.typesetter.type.node.VirtualCharNode,
      *      java.lang.Object)
      */
     public Object visitVirtualChar(final VirtualCharNode node, final Object oOut)
@@ -529,8 +530,8 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeVisitor#visitWhatsIt(
-     *      de.dante.extex.typesetter.type.node.WhatsItNode,
+     * @see org.extex.typesetter.type.NodeVisitor#visitWhatsIt(
+     *      org.extex.typesetter.type.node.WhatsItNode,
      *      java.lang.Object)
      */
     public Object visitWhatsIt(final WhatsItNode node, final Object oOut)

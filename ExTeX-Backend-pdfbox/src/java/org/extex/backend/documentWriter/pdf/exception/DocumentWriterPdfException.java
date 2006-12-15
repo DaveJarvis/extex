@@ -19,13 +19,13 @@
 
 package org.extex.backend.documentWriter.pdf.exception;
 
-import de.dante.extex.backend.documentWriter.exception.DocumentWriterException;
+import org.extex.backend.documentWriter.exception.DocumentWriterException;
 
 /**
  * DocumentWriter: Exception from the PDF-Document.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
+ * @version $Revision:4704 $
  */
 public class DocumentWriterPdfException extends DocumentWriterException {
 

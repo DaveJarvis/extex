@@ -22,7 +22,13 @@ package org.extex.backend.documentWriter.pdf;
 import java.awt.Color;
 import java.io.IOException;
 
+import org.extex.backend.documentWriter.exception.DocumentWriterException;
+import org.extex.backend.documentWriter.exception.DocumentWriterIOException;
 import org.extex.backend.documentWriter.pdf.pdfbox.PdfBoxType1Font;
+import org.extex.color.ColorVisitor;
+import org.extex.font.FountKey;
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.font.Font;
 import org.extex.type.UnicodeChar;
 import org.extex.util.Unit;
 import org.extex.util.exception.GeneralException;
@@ -32,12 +38,6 @@ import org.pdfbox.pdmodel.font.PDFont;
 import org.pdfbox.pdmodel.font.PDType1Font;
 import org.pdfbox.pdmodel.graphics.path.BasePath;
 
-import de.dante.extex.backend.documentWriter.exception.DocumentWriterException;
-import de.dante.extex.backend.documentWriter.exception.DocumentWriterIOException;
-import de.dante.extex.color.ColorVisitor;
-import de.dante.extex.font.FountKey;
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeIterator;
 import de.dante.extex.typesetter.type.NodeVisitor;
@@ -240,7 +240,7 @@ public class PdfNodeVisitor implements NodeVisitor {
     /**
      * the color from the character before.
      */
-    private de.dante.extex.interpreter.context.Color oldcolor = null;
+    private org.extex.interpreter.context.Color oldcolor = null;
 
     /**
      * the fount key from the character before.
@@ -263,7 +263,7 @@ public class PdfNodeVisitor implements NodeVisitor {
             UnicodeChar uc = node.getCharacter();
             Font newfont = node.getTypesettingContext().getFont();
             FountKey newfountkey = newfont.getFontKey();
-            de.dante.extex.interpreter.context.Color newcolor = node
+            org.extex.interpreter.context.Color newcolor = node
                     .getTypesettingContext().getColor();
 
             if (!newfountkey.eq(oldfountkey)) {

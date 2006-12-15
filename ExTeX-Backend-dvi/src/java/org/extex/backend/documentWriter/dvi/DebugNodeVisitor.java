@@ -21,9 +21,9 @@
 
 package org.extex.backend.documentWriter.dvi;
 
+import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.util.exception.GeneralException;
 
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
 import de.dante.extex.typesetter.type.InspectableNodeVisitor;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeVisitor;

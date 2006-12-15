@@ -23,14 +23,13 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import org.extex.dviware.Dvi;
-
-import de.dante.extex.interpreter.type.font.Font;
+import org.extex.interpreter.type.font.Font;
 
 /**
  * This class represents the DVI instruction <tt>fnt_def</tt>.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4704 $
  */
 public class DviFntDef extends AbstractDviCode {
 

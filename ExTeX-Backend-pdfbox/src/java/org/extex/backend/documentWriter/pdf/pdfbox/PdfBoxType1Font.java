@@ -23,6 +23,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.extex.font.FountKey;
+import org.extex.interpreter.type.font.Font;
 import org.pdfbox.afmtypes.FontMetric;
 import org.pdfbox.pdmodel.PDDocument;
 import org.pdfbox.pdmodel.font.PDFont;
@@ -30,14 +32,11 @@ import org.pdfbox.pdmodel.font.PDFontDescriptor;
 import org.pdfbox.pdmodel.font.PDFontDescriptorDictionary;
 import org.pdfbox.pdmodel.font.PDType1Font;
 
-import de.dante.extex.font.FountKey;
-import de.dante.extex.interpreter.type.font.Font;
-
 /**
  * Type1 font with ExTeX values.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
+ * @version $Revision:4704 $
  */
 
 public class PdfBoxType1Font extends PDType1Font {

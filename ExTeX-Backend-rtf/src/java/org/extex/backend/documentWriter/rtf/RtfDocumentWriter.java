@@ -24,19 +24,19 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.Stack;
 
+import org.extex.backend.documentWriter.DocumentWriter;
+import org.extex.backend.documentWriter.DocumentWriterOptions;
+import org.extex.backend.documentWriter.SingleDocumentStream;
+import org.extex.color.ColorAware;
+import org.extex.color.ColorConverter;
+import org.extex.color.model.RgbColor;
+import org.extex.interpreter.context.Color;
+import org.extex.interpreter.type.font.Font;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.configuration.Configurable;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.backend.documentWriter.DocumentWriter;
-import de.dante.extex.backend.documentWriter.DocumentWriterOptions;
-import de.dante.extex.backend.documentWriter.SingleDocumentStream;
-import de.dante.extex.color.ColorAware;
-import de.dante.extex.color.ColorConverter;
-import de.dante.extex.color.model.RgbColor;
-import de.dante.extex.interpreter.context.Color;
-import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.NodeVisitor;
@@ -295,8 +295,8 @@ public class RtfDocumentWriter extends RtfDocument
         }
 
         /**
-         * @see de.dante.extex.typesetter.type.NodeVisitor#visitAdjust(
-         *      de.dante.extex.typesetter.type.node.AdjustNode,
+         * @see org.extex.typesetter.type.NodeVisitor#visitAdjust(
+         *      org.extex.typesetter.type.node.AdjustNode,
          *      java.lang.Object)
          */
         public Object visitAdjust(final AdjustNode node, final Object value)
@@ -307,8 +307,8 @@ public class RtfDocumentWriter extends RtfDocument
         }
 
         /**
-         * @see de.dante.extex.typesetter.type.NodeVisitor#visitAfterMath(
-         *      de.dante.extex.typesetter.type.node.AfterMathNode,
+         * @see org.extex.typesetter.type.NodeVisitor#visitAfterMath(
+         *      org.extex.typesetter.type.node.AfterMathNode,
          *      java.lang.Object)
          */
         public Object visitAfterMath(final AfterMathNode node,
@@ -318,8 +318,8 @@ public class RtfDocumentWriter extends RtfDocument
         }
 
         /**
-         * @see de.dante.extex.typesetter.type.NodeVisitor#visitAlignedLeaders(
-         *      de.dante.extex.typesetter.type.node.AlignedLeadersNode,
+         * @see org.extex.typesetter.type.NodeVisitor#visitAlignedLeaders(
+         *      org.extex.typesetter.type.node.AlignedLeadersNode,
          *      java.lang.Object)
          */
         public Object visitAlignedLeaders(final AlignedLeadersNode node,
@@ -329,8 +329,8 @@ public class RtfDocumentWriter extends RtfDocument
         }
 
         /**
-         * @see de.dante.extex.typesetter.type.NodeVisitor#visitBeforeMath(
-         *      de.dante.extex.typesetter.type.node.BeforeMathNode,
+         * @see org.extex.typesetter.type.NodeVisitor#visitBeforeMath(
+         *      org.extex.typesetter.type.node.BeforeMathNode,
          *      java.lang.Object)
          */
         public Object visitBeforeMath(final BeforeMathNode node,
@@ -340,8 +340,8 @@ public class RtfDocumentWriter extends RtfDocument
         }
 
         /**
-         * @see de.dante.extex.typesetter.type.NodeVisitor#visitCenteredLeaders(
-         *      de.dante.extex.typesetter.type.node.CenteredLeadersNode,
+         * @see org.extex.typesetter.type.NodeVisitor#visitCenteredLeaders(
+         *      org.extex.typesetter.type.node.CenteredLeadersNode,
          *      java.lang.Object)
          */
         public Object visitCenteredLeaders(final CenteredLeadersNode node,
@@ -351,8 +351,8 @@ public class RtfDocumentWriter extends RtfDocument
         }
 
         /**
-         * @see de.dante.extex.typesetter.type.NodeVisitor#visitChar(
-         *      de.dante.extex.typesetter.type.node.CharNode,
+         * @see org.extex.typesetter.type.NodeVisitor#visitChar(
+         *      org.extex.typesetter.type.node.CharNode,
          *      java.lang.Object)
          */
         public Object visitChar(final CharNode node, final Object code)
@@ -407,8 +407,8 @@ public class RtfDocumentWriter extends RtfDocument
         }
 
         /**
-         * @see de.dante.extex.typesetter.type.NodeVisitor#visitDiscretionary(
-         *      de.dante.extex.typesetter.type.node.DiscretionaryNode,
+         * @see org.extex.typesetter.type.NodeVisitor#visitDiscretionary(
+         *      org.extex.typesetter.type.node.DiscretionaryNode,
          *      java.lang.Object)
          */
         public Object visitDiscretionary(final DiscretionaryNode node,
@@ -422,8 +422,8 @@ public class RtfDocumentWriter extends RtfDocument
         }
 
         /**
-         * @see de.dante.extex.typesetter.type.NodeVisitor#visitExpandedLeaders(
-         *      de.dante.extex.typesetter.type.node.ExpandedLeadersNode,
+         * @see org.extex.typesetter.type.NodeVisitor#visitExpandedLeaders(
+         *      org.extex.typesetter.type.node.ExpandedLeadersNode,
          *      java.lang.Object)
          */
         public Object visitExpandedLeaders(final ExpandedLeadersNode node,
@@ -433,8 +433,8 @@ public class RtfDocumentWriter extends RtfDocument
         }
 
         /**
-         * @see de.dante.extex.typesetter.type.NodeVisitor#visitGlue(
-         *      de.dante.extex.typesetter.type.node.GlueNode,
+         * @see org.extex.typesetter.type.NodeVisitor#visitGlue(
+         *      org.extex.typesetter.type.node.GlueNode,
          *      java.lang.Object)
          */
         public Object visitGlue(final GlueNode node, final Object value)
@@ -445,8 +445,8 @@ public class RtfDocumentWriter extends RtfDocument
 
         /**
          * @see "TTP [619]"
-         * @see de.dante.extex.typesetter.type.NodeVisitor#visitHorizontalList(
-         *      de.dante.extex.typesetter.type.node.HorizontalListNode,
+         * @see org.extex.typesetter.type.NodeVisitor#visitHorizontalList(
+         *      org.extex.typesetter.type.node.HorizontalListNode,
          *      java.lang.Object)
          */
         public Object visitHorizontalList(final HorizontalListNode node,
@@ -480,8 +480,8 @@ public class RtfDocumentWriter extends RtfDocument
         }
 
         /**
-         * @see de.dante.extex.typesetter.type.NodeVisitor#visitInsertion(
-         *      de.dante.extex.typesetter.type.node.InsertionNode,
+         * @see org.extex.typesetter.type.NodeVisitor#visitInsertion(
+         *      org.extex.typesetter.type.node.InsertionNode,
          *      java.lang.Object)
          */
         public Object visitInsertion(final InsertionNode node,
@@ -492,8 +492,8 @@ public class RtfDocumentWriter extends RtfDocument
         }
 
         /**
-         * @see de.dante.extex.typesetter.type.NodeVisitor#visitKern(
-         *      de.dante.extex.typesetter.type.node.KernNode,
+         * @see org.extex.typesetter.type.NodeVisitor#visitKern(
+         *      org.extex.typesetter.type.node.KernNode,
          *      java.lang.Object)
          */
         public Object visitKern(final KernNode node, final Object value)
@@ -503,8 +503,8 @@ public class RtfDocumentWriter extends RtfDocument
         }
 
         /**
-         * @see de.dante.extex.typesetter.type.NodeVisitor#visitLigature(
-         *      de.dante.extex.typesetter.type.node.LigatureNode,
+         * @see org.extex.typesetter.type.NodeVisitor#visitLigature(
+         *      org.extex.typesetter.type.node.LigatureNode,
          *      java.lang.Object)
          */
         public Object visitLigature(final LigatureNode node, final Object value)
@@ -514,8 +514,8 @@ public class RtfDocumentWriter extends RtfDocument
         }
 
         /**
-         * @see de.dante.extex.typesetter.type.NodeVisitor#visitMark(
-         *      de.dante.extex.typesetter.type.node.MarkNode,
+         * @see org.extex.typesetter.type.NodeVisitor#visitMark(
+         *      org.extex.typesetter.type.node.MarkNode,
          *      java.lang.Object)
          */
         public Object visitMark(final MarkNode node, final Object value)
@@ -526,8 +526,8 @@ public class RtfDocumentWriter extends RtfDocument
         }
 
         /**
-         * @see de.dante.extex.typesetter.type.NodeVisitor#visitPenalty(
-         *      de.dante.extex.typesetter.type.node.PenaltyNode,
+         * @see org.extex.typesetter.type.NodeVisitor#visitPenalty(
+         *      org.extex.typesetter.type.node.PenaltyNode,
          *      java.lang.Object)
          */
         public Object visitPenalty(final PenaltyNode node, final Object value)
@@ -538,8 +538,8 @@ public class RtfDocumentWriter extends RtfDocument
         }
 
         /**
-         * @see de.dante.extex.typesetter.type.NodeVisitor#visitRule(
-         *      de.dante.extex.typesetter.type.node.RuleNode,
+         * @see org.extex.typesetter.type.NodeVisitor#visitRule(
+         *      org.extex.typesetter.type.node.RuleNode,
          *      java.lang.Object)
          */
         public Object visitRule(final RuleNode node, final Object code)
@@ -585,8 +585,8 @@ public class RtfDocumentWriter extends RtfDocument
         }
 
         /**
-         * @see de.dante.extex.typesetter.type.NodeVisitor#visitSpace(
-         *      de.dante.extex.typesetter.type.node.SpaceNode,
+         * @see org.extex.typesetter.type.NodeVisitor#visitSpace(
+         *      org.extex.typesetter.type.node.SpaceNode,
          *      java.lang.Object)
          */
         public Object visitSpace(final SpaceNode node, final Object value)
@@ -605,8 +605,8 @@ public class RtfDocumentWriter extends RtfDocument
 
         /**
          * @see "TTP [618]"
-         * @see de.dante.extex.typesetter.type.NodeVisitor#visitVerticalList(
-         *      de.dante.extex.typesetter.type.node.VerticalListNode,
+         * @see org.extex.typesetter.type.NodeVisitor#visitVerticalList(
+         *      org.extex.typesetter.type.node.VerticalListNode,
          *      java.lang.Object)
          */
         public Object visitVerticalList(final VerticalListNode node,
@@ -639,8 +639,8 @@ public class RtfDocumentWriter extends RtfDocument
         }
 
         /**
-         * @see de.dante.extex.typesetter.type.NodeVisitor#visitVirtualChar(
-         *      de.dante.extex.typesetter.type.node.VirtualCharNode,
+         * @see org.extex.typesetter.type.NodeVisitor#visitVirtualChar(
+         *      org.extex.typesetter.type.node.VirtualCharNode,
          *      java.lang.Object)
          */
         public Object visitVirtualChar(final VirtualCharNode node,
@@ -650,8 +650,8 @@ public class RtfDocumentWriter extends RtfDocument
         }
 
         /**
-         * @see de.dante.extex.typesetter.type.NodeVisitor#visitWhatsIt(
-         *       de.dante.extex.typesetter.type.node.WhatsItNode,
+         * @see org.extex.typesetter.type.NodeVisitor#visitWhatsIt(
+         *       org.extex.typesetter.type.node.WhatsItNode,
          *       java.lang.Object)
          */
         public Object visitWhatsIt(final WhatsItNode node, final Object value)
@@ -685,7 +685,7 @@ public class RtfDocumentWriter extends RtfDocument
     }
 
     /**
-     * @see de.dante.extex.backend.documentWriter.DocumentWriter#close()
+     * @see org.extex.backend.documentWriter.DocumentWriter#close()
      */
     public void close() throws GeneralException, IOException {
 
@@ -703,7 +703,7 @@ public class RtfDocumentWriter extends RtfDocument
     }
 
     /**
-     * @see de.dante.extex.backend.documentWriter.DocumentWriter#getExtension()
+     * @see org.extex.backend.documentWriter.DocumentWriter#getExtension()
      */
     public String getExtension() {
 
@@ -720,8 +720,8 @@ public class RtfDocumentWriter extends RtfDocument
     }
 
     /**
-     * @see de.dante.extex.color.ColorAware#setColorConverter(
-     *      de.dante.extex.color.ColorConverter)
+     * @see org.extex.color.ColorAware#setColorConverter(
+     *      org.extex.color.ColorConverter)
      */
     public void setColorConverter(final ColorConverter converter) {
 
@@ -729,7 +729,7 @@ public class RtfDocumentWriter extends RtfDocument
     }
 
     /**
-     * @see de.dante.extex.backend.documentWriter.SingleDocumentStream#setOutputStream(
+     * @see org.extex.backend.documentWriter.SingleDocumentStream#setOutputStream(
      *      java.io.OutputStream)
      */
     public void setOutputStream(final OutputStream writer) {
@@ -738,7 +738,7 @@ public class RtfDocumentWriter extends RtfDocument
     }
 
     /**
-     * @see de.dante.extex.backend.documentWriter.DocumentWriter#setParameter(
+     * @see org.extex.backend.documentWriter.DocumentWriter#setParameter(
      *      java.lang.String,
      *      java.lang.String)
      */
@@ -754,8 +754,8 @@ public class RtfDocumentWriter extends RtfDocument
     }
 
     /**
-     * @see de.dante.extex.backend.documentWriter.DocumentWriter#shipout(
-     *      de.dante.extex.typesetter.type.page.Page)
+     * @see org.extex.backend.documentWriter.DocumentWriter#shipout(
+     *      org.extex.typesetter.type.page.Page)
      */
     public int shipout(final Page page) throws GeneralException, IOException {
 

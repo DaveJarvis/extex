@@ -22,16 +22,16 @@ package org.extex.backend.documentWriter.dvi;
 import java.io.IOException;
 import java.io.OutputStream;
 
+import org.extex.backend.documentWriter.DocumentWriter;
+import org.extex.backend.documentWriter.DocumentWriterOptions;
+import org.extex.backend.documentWriter.SingleDocumentStream;
+import org.extex.backend.documentWriter.exception.NoOutputStreamException;
+import org.extex.interpreter.type.font.Font;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.i18n.Localizable;
 import org.extex.util.framework.i18n.Localizer;
 
-import de.dante.extex.backend.documentWriter.DocumentWriter;
-import de.dante.extex.backend.documentWriter.DocumentWriterOptions;
-import de.dante.extex.backend.documentWriter.SingleDocumentStream;
-import de.dante.extex.backend.documentWriter.exception.NoOutputStreamException;
-import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.typesetter.Mode;
 import de.dante.extex.typesetter.type.InspectableNodeVisitor;
 import de.dante.extex.typesetter.type.Node;

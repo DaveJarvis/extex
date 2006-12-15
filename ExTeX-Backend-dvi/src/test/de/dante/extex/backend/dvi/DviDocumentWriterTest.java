@@ -24,22 +24,22 @@ import java.io.OutputStream;
 
 import junit.framework.TestCase;
 
+import org.extex.backend.documentWriter.DocumentWriter;
+import org.extex.backend.documentWriter.DocumentWriterOptions;
+import org.extex.backend.documentWriter.SingleDocumentStream;
 import org.extex.backend.documentWriter.dvi.DviDocumentWriter;
 import org.extex.backend.documentWriter.dvi.PanicException;
+import org.extex.backend.documentWriter.exception.NoOutputStreamException;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.count.FixedCount;
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.interpreter.type.glue.Glue;
+import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.configuration.Configuration;
 
-import de.dante.extex.backend.documentWriter.DocumentWriter;
-import de.dante.extex.backend.documentWriter.DocumentWriterOptions;
-import de.dante.extex.backend.documentWriter.SingleDocumentStream;
-import de.dante.extex.backend.documentWriter.exception.NoOutputStreamException;
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.type.count.FixedCount;
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
-import de.dante.extex.interpreter.type.glue.Glue;
-import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.node.ExplicitKernNode;

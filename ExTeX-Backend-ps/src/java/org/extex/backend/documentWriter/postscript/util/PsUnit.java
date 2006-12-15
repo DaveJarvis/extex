@@ -19,9 +19,9 @@
 
 package org.extex.backend.documentWriter.postscript.util;
 
-import de.dante.extex.interpreter.type.count.Count;
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.interpreter.type.count.Count;
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.dimen.FixedDimen;
 
 /**
  * This class contains some utility methods.

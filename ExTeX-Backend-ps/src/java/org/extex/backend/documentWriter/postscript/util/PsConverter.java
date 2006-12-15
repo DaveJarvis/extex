@@ -21,7 +21,8 @@ package org.extex.backend.documentWriter.postscript.util;
 
 import java.io.IOException;
 
-import de.dante.extex.backend.documentWriter.exception.DocumentWriterException;
+import org.extex.backend.documentWriter.exception.DocumentWriterException;
+
 import de.dante.extex.typesetter.type.page.Page;
 
 /**
@@ -55,4 +56,5 @@ public interface PsConverter {
      */
     byte[] toPostScript(Page page, FontManager fontManager,
             HeaderManager headerManager) throws DocumentWriterException;
+
 }

@@ -22,17 +22,17 @@ package org.extex.backend.documentWriter.pdf;
 import java.io.IOException;
 import java.io.OutputStream;
 
+import org.extex.backend.documentWriter.DocumentWriter;
+import org.extex.backend.documentWriter.DocumentWriterOptions;
+import org.extex.backend.documentWriter.MultipleDocumentStream;
+import org.extex.backend.documentWriter.exception.DocumentWriterException;
+import org.extex.backend.documentWriter.exception.DocumentWriterIOException;
+import org.extex.backend.outputStream.OutputStreamFactory;
+import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.util.Unit;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.configuration.Configuration;
 
-import de.dante.extex.backend.documentWriter.DocumentWriter;
-import de.dante.extex.backend.documentWriter.DocumentWriterOptions;
-import de.dante.extex.backend.documentWriter.MultipleDocumentStream;
-import de.dante.extex.backend.documentWriter.exception.DocumentWriterException;
-import de.dante.extex.backend.documentWriter.exception.DocumentWriterIOException;
-import de.dante.extex.backend.outputStream.OutputStreamFactory;
-import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.NodeVisitor;
 import de.dante.extex.typesetter.type.page.Page;

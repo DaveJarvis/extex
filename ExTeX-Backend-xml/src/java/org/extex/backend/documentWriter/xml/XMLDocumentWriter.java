@@ -27,6 +27,13 @@ import java.util.Iterator;
 import java.util.Locale;
 import java.util.Map;
 
+import org.extex.backend.documentWriter.DocumentWriter;
+import org.extex.backend.documentWriter.DocumentWriterOptions;
+import org.extex.backend.documentWriter.SingleDocumentStream;
+import org.extex.backend.documentWriter.exception.DocumentWriterClosedChannelException;
+import org.extex.backend.documentWriter.exception.DocumentWriterException;
+import org.extex.backend.documentWriter.exception.DocumentWriterIOException;
+import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.type.UnicodeChar;
 import org.extex.util.Unit;
 import org.extex.util.exception.GeneralException;
@@ -34,13 +41,6 @@ import org.extex.util.framework.configuration.Configurable;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.backend.documentWriter.DocumentWriter;
-import de.dante.extex.backend.documentWriter.DocumentWriterOptions;
-import de.dante.extex.backend.documentWriter.SingleDocumentStream;
-import de.dante.extex.backend.documentWriter.exception.DocumentWriterClosedChannelException;
-import de.dante.extex.backend.documentWriter.exception.DocumentWriterException;
-import de.dante.extex.backend.documentWriter.exception.DocumentWriterIOException;
-import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeIterator;
 import de.dante.extex.typesetter.type.NodeList;

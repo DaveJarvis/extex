@@ -27,17 +27,16 @@ import java.util.List;
 import java.util.Map;
 
 import org.extex.dviware.Dvi;
-
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
-import de.dante.extex.interpreter.type.font.Font;
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.interpreter.type.font.Font;
 
 /**
  * This class represents the DVI instruction <tt>post</tt> and the contents
  * up to the terminating <tt>post_post</tt>.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4704 $
  */
 public class DviPostamble extends AbstractDviCode {
 
