@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.unicode;
+package org.extex.unicode;
 
 import org.extex.type.UnicodeChar;
 
@@ -25,7 +25,7 @@ import org.extex.type.UnicodeChar;
  * Central utility class for Unicode compatibility in <logo>ExTeX</logo>.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 4388 $
  */
 public final class Unicode {
 
