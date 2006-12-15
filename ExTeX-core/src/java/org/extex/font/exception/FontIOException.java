@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.font.exception;
+package org.extex.font.exception;
 
 /**
  * Font- IOException.
