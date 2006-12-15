@@ -17,23 +17,23 @@
  *
  */
 
-package de.dante.extex.font.type.other;
+package org.extex.font.type.other;
 
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.extex.font.FontByteArray;
+import org.extex.font.FountKey;
+import org.extex.font.Glyph;
+import org.extex.font.type.BoundingBox;
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.interpreter.type.font.Font;
+import org.extex.interpreter.type.glue.FixedGlue;
+import org.extex.interpreter.type.glue.Glue;
 import org.extex.type.UnicodeChar;
 
-import de.dante.extex.font.FontByteArray;
-import de.dante.extex.font.FountKey;
-import de.dante.extex.font.Glyph;
-import de.dante.extex.font.type.BoundingBox;
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
-import de.dante.extex.interpreter.type.font.Font;
-import de.dante.extex.interpreter.type.glue.FixedGlue;
-import de.dante.extex.interpreter.type.glue.Glue;
 
 /**
  * This class implements a dummy font which does not contain any characters.
@@ -85,7 +85,7 @@ public class NullFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.font.type.Fount#getActualSize()
+     * @see org.extex.font.type.Fount#getActualSize()
      */
     public FixedDimen getActualSize() {
 
@@ -93,7 +93,7 @@ public class NullFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.font.type.Fount#getBoundingBox()
+     * @see org.extex.font.type.Fount#getBoundingBox()
      */
     public BoundingBox getBoundingBox() {
 
@@ -101,7 +101,7 @@ public class NullFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.font.type.Fount#getCheckSum()
+     * @see org.extex.font.type.Fount#getCheckSum()
      */
     public int getCheckSum() {
 
@@ -109,7 +109,7 @@ public class NullFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#getDepth(
+     * @see org.extex.interpreter.type.font.Font#getDepth(
      *      org.extex.type.UnicodeChar)
      */
     public FixedGlue getDepth(final UnicodeChar uc) {
@@ -118,7 +118,7 @@ public class NullFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.font.type.Fount#getDesignSize()
+     * @see org.extex.font.type.Fount#getDesignSize()
      */
     public FixedDimen getDesignSize() {
 
@@ -126,7 +126,7 @@ public class NullFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#getEfcode()
+     * @see org.extex.interpreter.type.font.Font#getEfcode()
      */
     public long getEfcode(final UnicodeChar uc) {
 
@@ -138,7 +138,7 @@ public class NullFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#getEm()
+     * @see org.extex.interpreter.type.font.Font#getEm()
      */
     public FixedDimen getEm() {
 
@@ -146,7 +146,7 @@ public class NullFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#getEx()
+     * @see org.extex.interpreter.type.font.Font#getEx()
      */
     public FixedDimen getEx() {
 
@@ -154,7 +154,7 @@ public class NullFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.font.type.Fount#getFontByteArray()
+     * @see org.extex.font.type.Fount#getFontByteArray()
      */
     public FontByteArray getFontByteArray() {
 
@@ -162,7 +162,7 @@ public class NullFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#getFontDimen(
+     * @see org.extex.interpreter.type.font.Font#getFontDimen(
      *      java.lang.String)
      */
     public FixedDimen getFontDimen(final String key) {
@@ -171,7 +171,7 @@ public class NullFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.font.type.Fount#getFontKey()
+     * @see org.extex.font.type.Fount#getFontKey()
      */
     public FountKey getFontKey() {
 
@@ -179,7 +179,7 @@ public class NullFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#getFontName()
+     * @see org.extex.interpreter.type.font.Font#getFontName()
      */
     public String getFontName() {
 
@@ -187,7 +187,7 @@ public class NullFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#getGlyph(
+     * @see org.extex.interpreter.type.font.Font#getGlyph(
      *      org.extex.type.UnicodeChar)
      */
     public Glyph getGlyph(final UnicodeChar c) {
@@ -196,7 +196,7 @@ public class NullFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#getHeight(
+     * @see org.extex.interpreter.type.font.Font#getHeight(
      *      org.extex.type.UnicodeChar)
      */
     public FixedGlue getHeight(final UnicodeChar uc) {
@@ -205,7 +205,7 @@ public class NullFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#getHyphenChar()
+     * @see org.extex.interpreter.type.font.Font#getHyphenChar()
      */
     public UnicodeChar getHyphenChar() {
 
@@ -213,7 +213,7 @@ public class NullFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#getItalicCorrection(
+     * @see org.extex.interpreter.type.font.Font#getItalicCorrection(
      *      org.extex.type.UnicodeChar)
      */
     public FixedDimen getItalicCorrection(final UnicodeChar uc) {
@@ -222,7 +222,7 @@ public class NullFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#getKerning(
+     * @see org.extex.interpreter.type.font.Font#getKerning(
      *      org.extex.type.UnicodeChar, org.extex.type.UnicodeChar)
      */
     public FixedDimen getKerning(final UnicodeChar uc1, final UnicodeChar uc2) {
@@ -231,7 +231,7 @@ public class NullFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#getLetterSpacing()
+     * @see org.extex.interpreter.type.font.Font#getLetterSpacing()
      */
     public FixedGlue getLetterSpacing() {
 
@@ -239,7 +239,7 @@ public class NullFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#getLigature(
+     * @see org.extex.interpreter.type.font.Font#getLigature(
      *      org.extex.type.UnicodeChar,
      *      org.extex.type.UnicodeChar)
      */
@@ -249,7 +249,7 @@ public class NullFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#getProperty(
+     * @see org.extex.interpreter.type.font.Font#getProperty(
      *      java.lang.String)
      */
     public String getProperty(final String key) {
@@ -258,7 +258,7 @@ public class NullFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#getSkewChar()
+     * @see org.extex.interpreter.type.font.Font#getSkewChar()
      */
     public UnicodeChar getSkewChar() {
 
@@ -266,7 +266,7 @@ public class NullFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#getSpace()
+     * @see org.extex.interpreter.type.font.Font#getSpace()
      */
     public FixedGlue getSpace() {
 
@@ -274,7 +274,7 @@ public class NullFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#getWidth(
+     * @see org.extex.interpreter.type.font.Font#getWidth(
      *      org.extex.type.UnicodeChar)
      */
     public FixedGlue getWidth(final UnicodeChar uc) {
@@ -283,7 +283,7 @@ public class NullFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#hasGlyph(
+     * @see org.extex.interpreter.type.font.Font#hasGlyph(
      *      org.extex.type.UnicodeChar)
      */
     public boolean hasGlyph(final UnicodeChar uc) {
@@ -292,7 +292,7 @@ public class NullFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.font.type.Fount#isVirtualFont()
+     * @see org.extex.font.type.Fount#isVirtualFont()
      */
     public boolean isVirtualFont() {
 
@@ -300,7 +300,7 @@ public class NullFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#setEfcode(
+     * @see org.extex.interpreter.type.font.Font#setEfcode(
      *      org.extex.type.UnicodeChar, long)
      */
     public void setEfcode(final UnicodeChar uc, final long code) {
@@ -312,8 +312,8 @@ public class NullFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#setFontDimen(
-     *      java.lang.String, de.dante.extex.interpreter.type.dimen.Dimen)
+     * @see org.extex.interpreter.type.font.Font#setFontDimen(
+     *      java.lang.String, org.extex.interpreter.type.dimen.Dimen)
      */
     public void setFontDimen(final String key, final Dimen value) {
 
@@ -324,7 +324,7 @@ public class NullFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#setHyphenChar(
+     * @see org.extex.interpreter.type.font.Font#setHyphenChar(
      *      org.extex.type.UnicodeChar)
      */
     public void setHyphenChar(final UnicodeChar ahyphen) {
@@ -333,7 +333,7 @@ public class NullFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#setSkewChar(
+     * @see org.extex.interpreter.type.font.Font#setSkewChar(
      *      org.extex.type.UnicodeChar)
      */
     public void setSkewChar(final UnicodeChar askew) {
