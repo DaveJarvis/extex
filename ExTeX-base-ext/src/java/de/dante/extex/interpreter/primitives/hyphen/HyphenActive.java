@@ -26,10 +26,10 @@ import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.count.Count;
 import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.language.Language;
+import org.extex.language.hyphenation.exception.HyphenationException;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.language.Language;
-import de.dante.extex.language.hyphenation.exception.HyphenationException;
 import de.dante.extex.typesetter.Typesetter;
 
 /**

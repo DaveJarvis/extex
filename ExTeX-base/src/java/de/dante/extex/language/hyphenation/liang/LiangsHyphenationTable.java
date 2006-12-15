@@ -22,15 +22,15 @@ package de.dante.extex.language.hyphenation.liang;
 import java.util.logging.Logger;
 
 import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.language.hyphenation.exception.DuplicateHyphenationException;
+import org.extex.language.hyphenation.exception.HyphenationException;
+import org.extex.language.hyphenation.exception.IllegalTokenHyphenationException;
+import org.extex.language.hyphenation.exception.IllegalValueHyphenationException;
+import org.extex.language.hyphenation.exception.ImmutableHyphenationException;
 import org.extex.type.UnicodeChar;
 import org.extex.type.UnicodeCharList;
 
 import de.dante.extex.language.hyphenation.base.BaseHyphenationTable;
-import de.dante.extex.language.hyphenation.exception.DuplicateHyphenationException;
-import de.dante.extex.language.hyphenation.exception.HyphenationException;
-import de.dante.extex.language.hyphenation.exception.IllegalTokenHyphenationException;
-import de.dante.extex.language.hyphenation.exception.IllegalValueHyphenationException;
-import de.dante.extex.language.hyphenation.exception.ImmutableHyphenationException;
 import de.dante.extex.scanner.type.token.LetterToken;
 import de.dante.extex.scanner.type.token.OtherToken;
 import de.dante.extex.scanner.type.token.Token;
@@ -163,7 +163,7 @@ public class LiangsHyphenationTable extends BaseHyphenationTable {
      * @throws ImmutableHyphenationException in case that the hyphenation
      *  table is immutable; i.e. the compressed flag is set
      *
-     * @see de.dante.extex.language.Language#addPattern(
+     * @see org.extex.language.Language#addPattern(
      *      Tokens)
      */
     public void addPattern(final Tokens pattern)
@@ -236,7 +236,7 @@ public class LiangsHyphenationTable extends BaseHyphenationTable {
     }
 
     /**
-     * @see de.dante.extex.language.hyphenation.Hyphenator#hyphenate(
+     * @see org.extex.language.hyphenation.Hyphenator#hyphenate(
      *      de.dante.extex.typesetter.type.NodeList,
      *      de.dante.extex.typesetter.TypesetterOptions,
      *      org.extex.type.UnicodeChar,

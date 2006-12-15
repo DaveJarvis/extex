@@ -34,13 +34,13 @@ import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.glue.FixedGlue;
 import org.extex.interpreter.type.glue.Glue;
+import org.extex.language.Language;
 import org.extex.type.UnicodeChar;
 import org.extex.type.UnicodeCharList;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.font.type.tfm.TFMFixWord;
 import de.dante.extex.interpreter.context.MockContext;
-import de.dante.extex.language.Language;
 import de.dante.extex.language.word.impl.TeXWords;
 import de.dante.extex.typesetter.type.node.CharNode;
 import de.dante.extex.typesetter.type.node.DiscretionaryNode;

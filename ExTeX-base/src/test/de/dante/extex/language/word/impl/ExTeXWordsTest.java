@@ -24,12 +24,12 @@ import junit.framework.TestCase;
 import org.extex.interpreter.context.tc.ModifiableTypesettingContext;
 import org.extex.interpreter.context.tc.TypesettingContextImpl;
 import org.extex.interpreter.type.font.Font;
+import org.extex.language.hyphenation.exception.HyphenationException;
+import org.extex.language.word.WordTokenizer;
 import org.extex.type.UnicodeChar;
 
 import de.dante.extex.language.hyphenation.base.BaseHyphenationTable;
-import de.dante.extex.language.hyphenation.exception.HyphenationException;
 import de.dante.extex.language.ligature.impl.LigatureBuilderImpl;
-import de.dante.extex.language.word.WordTokenizer;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.node.CharNode;
 import de.dante.extex.typesetter.type.node.DiscretionaryNode;

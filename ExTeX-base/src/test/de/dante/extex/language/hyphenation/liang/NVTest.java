@@ -39,10 +39,10 @@ import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.font.Font;
 import org.extex.interpreter.type.glue.FixedGlue;
+import org.extex.language.ModifiableLanguage;
 import org.extex.type.UnicodeChar;
 
 import de.dante.extex.font.type.tfm.TFMFixWord;
-import de.dante.extex.language.ModifiableLanguage;
 import de.dante.extex.language.hyphenation.base.BaseHyphenationTable;
 import de.dante.extex.language.ligature.impl.LigatureBuilderImpl;
 import de.dante.extex.scanner.type.Catcode;

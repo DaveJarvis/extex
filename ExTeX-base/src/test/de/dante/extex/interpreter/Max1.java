@@ -31,6 +31,7 @@ import org.extex.interpreter.type.count.Count;
 import org.extex.interpreter.type.count.FixedCount;
 import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.glue.FixedGlue;
+import org.extex.language.ligature.LigatureBuilder;
 import org.extex.scanner.stream.impl.TokenStreamImpl;
 import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
@@ -39,7 +40,6 @@ import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.ConfigurationFactory;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.language.ligature.LigatureBuilder;
 import de.dante.extex.scanner.TokenStream;
 import de.dante.extex.scanner.stream.TokenStreamFactory;
 import de.dante.extex.scanner.type.token.Token;

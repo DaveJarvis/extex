@@ -33,6 +33,8 @@ import org.extex.interpreter.type.glue.FixedGlueComponent;
 import org.extex.interpreter.type.glue.Glue;
 import org.extex.interpreter.type.glue.GlueComponent;
 import org.extex.interpreter.type.glue.WideGlue;
+import org.extex.language.Language;
+import org.extex.language.hyphenation.exception.HyphenationException;
 import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
 import org.extex.util.exception.GeneralException;
@@ -40,8 +42,6 @@ import org.extex.util.framework.i18n.Localizable;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.logger.LogEnabled;
 
-import de.dante.extex.language.Language;
-import de.dante.extex.language.hyphenation.exception.HyphenationException;
 import de.dante.extex.typesetter.Badness;
 import de.dante.extex.typesetter.Discardable;
 import de.dante.extex.typesetter.TypesetterOptions;

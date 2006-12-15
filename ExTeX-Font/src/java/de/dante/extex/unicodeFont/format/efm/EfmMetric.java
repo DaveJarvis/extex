@@ -26,8 +26,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.extex.type.UnicodeChar;
+import org.extex.unicode.Unicode;
 
-import de.dante.extex.unicode.Unicode;
 import de.dante.extex.unicodeFont.format.tex.tfm.TfmCharInfoArray;
 import de.dante.extex.unicodeFont.format.tex.tfm.TfmCharInfoWord;
 import de.dante.extex.unicodeFont.format.tex.tfm.TfmFixWord;

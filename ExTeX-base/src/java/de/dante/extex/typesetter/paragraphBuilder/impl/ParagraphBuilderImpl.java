@@ -32,10 +32,10 @@ import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.glue.FixedGlue;
 import org.extex.interpreter.type.glue.Glue;
 import org.extex.interpreter.type.glue.WideGlue;
+import org.extex.language.hyphenation.exception.HyphenationException;
 import org.extex.type.UnicodeChar;
 import org.extex.util.framework.logger.LogEnabled;
 
-import de.dante.extex.language.hyphenation.exception.HyphenationException;
 import de.dante.extex.main.logging.LogFormatter;
 import de.dante.extex.typesetter.Badness;
 import de.dante.extex.typesetter.Discardable;

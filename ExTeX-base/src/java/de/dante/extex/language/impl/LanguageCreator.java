@@ -19,8 +19,8 @@
 
 package de.dante.extex.language.impl;
 
-import de.dante.extex.language.Language;
-import de.dante.extex.language.hyphenation.exception.HyphenationException;
+import org.extex.language.Language;
+import org.extex.language.hyphenation.exception.HyphenationException;
 
 /**
  * This interface describes the features of an object which is able to provide

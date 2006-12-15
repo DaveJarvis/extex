@@ -30,6 +30,7 @@ import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.interaction.Interaction;
 import org.extex.interpreter.interaction.InteractionVisitor;
+import org.extex.main.errorHandler.editHandler.EditHandler;
 import org.extex.type.Locator;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
@@ -37,7 +38,6 @@ import org.extex.util.framework.i18n.Localizable;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.logger.LogEnabled;
 
-import de.dante.extex.main.errorHandler.editHandler.EditHandler;
 import de.dante.extex.scanner.type.token.Token;
 
 /**
@@ -395,7 +395,7 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
 
     /**
      * @see de.dante.extex.interpreter.ErrorHandler#setEditHandler(
-     *      de.dante.extex.main.errorHandler.editHandler.EditHandler)
+     *      org.extex.main.errorHandler.editHandler.EditHandler)
      */
     public void setEditHandler(final EditHandler editHandler) {
 

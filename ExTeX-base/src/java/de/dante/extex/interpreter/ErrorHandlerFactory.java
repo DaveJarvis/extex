@@ -20,11 +20,11 @@
 package de.dante.extex.interpreter;
 
 import org.extex.interpreter.ErrorHandler;
+import org.extex.main.errorHandler.editHandler.EditHandler;
 import org.extex.util.framework.AbstractFactory;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.main.errorHandler.editHandler.EditHandler;
 
 /**
  * This is the factory for instances of

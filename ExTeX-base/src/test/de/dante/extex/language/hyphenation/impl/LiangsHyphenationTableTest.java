@@ -25,10 +25,10 @@ import junit.framework.TestCase;
 import org.extex.interpreter.Namespace;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.language.Language;
+import org.extex.language.hyphenation.exception.DuplicateHyphenationException;
 
 import de.dante.extex.interpreter.context.MockContext;
-import de.dante.extex.language.Language;
-import de.dante.extex.language.hyphenation.exception.DuplicateHyphenationException;
 import de.dante.extex.language.hyphenation.liang.LiangsHyphenationTable;
 import de.dante.extex.scanner.type.Catcode;
 import de.dante.extex.scanner.type.CatcodeException;

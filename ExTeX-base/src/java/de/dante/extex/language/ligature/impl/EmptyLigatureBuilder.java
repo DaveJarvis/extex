@@ -20,10 +20,10 @@
 package de.dante.extex.language.ligature.impl;
 
 import org.extex.interpreter.type.font.Font;
+import org.extex.language.hyphenation.exception.HyphenationException;
+import org.extex.language.ligature.LigatureBuilder;
 import org.extex.type.UnicodeChar;
 
-import de.dante.extex.language.hyphenation.exception.HyphenationException;
-import de.dante.extex.language.ligature.LigatureBuilder;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.node.CharNode;
 
@@ -50,7 +50,7 @@ public class EmptyLigatureBuilder implements LigatureBuilder {
     }
 
     /**
-     * @see de.dante.extex.language.ligature.LigatureBuilder#insertLigatures(
+     * @see org.extex.language.ligature.LigatureBuilder#insertLigatures(
      *      de.dante.extex.typesetter.type.NodeList, int)
      */
     public int insertLigatures(final NodeList list, final int start)
@@ -71,7 +71,7 @@ public class EmptyLigatureBuilder implements LigatureBuilder {
     }
 
     /**
-     * @see de.dante.extex.language.ligature.LigatureBuilder#getLigature(
+     * @see org.extex.language.ligature.LigatureBuilder#getLigature(
      *      org.extex.type.UnicodeChar,
      *      org.extex.type.UnicodeChar,
      *      de.dante.extex.interpreter.type.font.Font)

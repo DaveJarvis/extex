@@ -22,13 +22,13 @@ package de.dante.extex.language.word.impl;
 import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.font.Font;
+import org.extex.language.Language;
+import org.extex.language.hyphenation.exception.HyphenationException;
+import org.extex.language.ligature.LigatureBuilder;
+import org.extex.language.word.WordTokenizer;
 import org.extex.type.UnicodeChar;
 import org.extex.type.UnicodeCharList;
 
-import de.dante.extex.language.Language;
-import de.dante.extex.language.hyphenation.exception.HyphenationException;
-import de.dante.extex.language.ligature.LigatureBuilder;
-import de.dante.extex.language.word.WordTokenizer;
 import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeList;
@@ -231,7 +231,7 @@ public class ExTeXWords implements WordTokenizer {
     }
 
     /**
-     * @see de.dante.extex.language.word.WordTokenizer#findWord(
+     * @see org.extex.language.word.WordTokenizer#findWord(
      *      de.dante.extex.typesetter.type.NodeList,
      *      int,
      *      org.extex.type.UnicodeCharList)
@@ -258,7 +258,7 @@ public class ExTeXWords implements WordTokenizer {
     }
 
     /**
-     * @see de.dante.extex.language.word.WordTokenizer#insertShy(
+     * @see org.extex.language.word.WordTokenizer#insertShy(
      *      de.dante.extex.typesetter.type.NodeList,
      *      int,
      *      boolean[],
@@ -334,7 +334,7 @@ public class ExTeXWords implements WordTokenizer {
     }
 
     /**
-     * @see de.dante.extex.language.word.WordTokenizer#normalize(
+     * @see org.extex.language.word.WordTokenizer#normalize(
      *      org.extex.type.UnicodeCharList,
      *      de.dante.extex.typesetter.TypesetterOptions)
      */

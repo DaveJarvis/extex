@@ -19,10 +19,10 @@
 
 package de.dante.extex.language.impl;
 
-import de.dante.extex.language.Language;
+import org.extex.language.Language;
 
 /**
- * This interface describes a {@link de.dante.extex.language.Language Language}
+ * This interface describes a {@link org.extex.language.Language Language}
  * which has a creator assigned.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>

@@ -24,6 +24,11 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.extex.language.Language;
+import org.extex.language.LanguageManager;
+import org.extex.language.ModifiableLanguage;
+import org.extex.language.ligature.LigatureBuilder;
+import org.extex.language.word.WordTokenizer;
 import org.extex.util.framework.AbstractFactory;
 import org.extex.util.framework.Registrar;
 import org.extex.util.framework.configuration.Configuration;
@@ -31,11 +36,6 @@ import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
-import de.dante.extex.language.Language;
-import de.dante.extex.language.LanguageManager;
-import de.dante.extex.language.ModifiableLanguage;
-import de.dante.extex.language.ligature.LigatureBuilder;
-import de.dante.extex.language.word.WordTokenizer;
 
 /**
  * This class manages the <code>HyphenationTable</code>s. It is a container
@@ -134,7 +134,7 @@ public class BaseLanguageManager extends AbstractFactory
      *
      * @throws ConfigurationException in case of an error in the configuration
      *
-     * @see de.dante.extex.language.LanguageManager#getLanguage(
+     * @see org.extex.language.LanguageManager#getLanguage(
      *      java.lang.String)
      */
     public Language getLanguage(final String name)
