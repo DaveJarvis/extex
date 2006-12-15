@@ -23,8 +23,8 @@ import java.io.Serializable;
 
 import org.extex.interpreter.context.Color;
 import org.extex.interpreter.type.font.Font;
+import org.extex.language.Language;
 
-import de.dante.extex.language.Language;
 
 /**
  * The typesetting context is a container for attributes describing the

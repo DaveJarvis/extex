@@ -20,8 +20,8 @@
 package org.extex.interpreter.context;
 
 import org.extex.interpreter.context.tc.TypesettingContextFactory;
+import org.extex.language.LanguageManagerCarrier;
 
-import de.dante.extex.language.LanguageManagerCarrier;
 
 /**
  * This interface describes the abilities of a Context together with some

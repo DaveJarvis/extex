@@ -21,9 +21,9 @@ package org.extex.interpreter;
 
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.main.errorHandler.editHandler.EditHandler;
 import org.extex.util.exception.GeneralException;
 
-import de.dante.extex.main.errorHandler.editHandler.EditHandler;
 import de.dante.extex.scanner.type.token.Token;
 
 /**

@@ -22,8 +22,8 @@ package org.extex.interpreter.context.tc;
 import org.extex.color.model.ColorFactory;
 import org.extex.interpreter.context.Color;
 import org.extex.interpreter.type.font.Font;
+import org.extex.language.Language;
 
-import de.dante.extex.language.Language;
 
 /**
  * This implementation of a typesetting context provides the required

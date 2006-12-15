@@ -22,6 +22,8 @@ package org.extex.interpreter.context.tc;
 import org.extex.font.type.other.NullFont;
 import org.extex.interpreter.context.Color;
 import org.extex.interpreter.type.font.Font;
+import org.extex.language.Language;
+import org.extex.language.LanguageManager;
 import org.extex.util.framework.AbstractFactory;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.exception.ConfigurationClassNotFoundException;
@@ -29,8 +31,6 @@ import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.framework.configuration.exception.ConfigurationInstantiationException;
 import org.extex.util.framework.configuration.exception.ConfigurationMissingAttributeException;
 
-import de.dante.extex.language.Language;
-import de.dante.extex.language.LanguageManager;
 
 
 
