@@ -24,9 +24,9 @@ import java.io.Serializable;
 import org.extex.interpreter.Tokenizer;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.TokenStream;
+import org.extex.scanner.exception.ScannerException;
 
-import de.dante.extex.scanner.TokenStream;
-import de.dante.extex.scanner.exception.ScannerException;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.scanner.type.token.TokenFactory;
 

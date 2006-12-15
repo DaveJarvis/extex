@@ -24,13 +24,13 @@ import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.box.Box;
 import org.extex.interpreter.type.font.Font;
 import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.TokenStream;
+import org.extex.scanner.stream.TokenStreamFactory;
 import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.exception.NotObservableException;
 
-import de.dante.extex.scanner.TokenStream;
-import de.dante.extex.scanner.stream.TokenStreamFactory;
 import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
