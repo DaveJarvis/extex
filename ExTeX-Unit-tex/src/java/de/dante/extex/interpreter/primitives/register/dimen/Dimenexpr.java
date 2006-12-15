@@ -19,25 +19,25 @@
 
 package de.dante.extex.interpreter.primitives.register.dimen;
 
+import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.ArithmeticOverflowException;
+import org.extex.interpreter.exception.helping.EofException;
+import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.interpreter.exception.helping.MissingNumberException;
+import org.extex.interpreter.type.AbstractCode;
+import org.extex.interpreter.type.Code;
+import org.extex.interpreter.type.ExpandableCode;
+import org.extex.interpreter.type.Theable;
+import org.extex.interpreter.type.count.Count;
+import org.extex.interpreter.type.count.CountConvertible;
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.dimen.DimenConvertible;
+import org.extex.interpreter.type.tokens.Tokens;
 
-import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.exception.helping.ArithmeticOverflowException;
-import de.dante.extex.interpreter.exception.helping.EofException;
-import de.dante.extex.interpreter.exception.helping.HelpingException;
-import de.dante.extex.interpreter.exception.helping.MissingNumberException;
 import de.dante.extex.interpreter.primitives.Relax;
-import de.dante.extex.interpreter.type.AbstractCode;
-import de.dante.extex.interpreter.type.Code;
-import de.dante.extex.interpreter.type.ExpandableCode;
-import de.dante.extex.interpreter.type.Theable;
-import de.dante.extex.interpreter.type.count.Count;
-import de.dante.extex.interpreter.type.count.CountConvertible;
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.dimen.DimenConvertible;
-import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.scanner.type.Catcode;
 import de.dante.extex.scanner.type.CatcodeException;
 import de.dante.extex.scanner.type.token.CodeToken;
@@ -139,10 +139,10 @@ public class Dimenexpr extends AbstractCode
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.count.CountConvertible#convertCount(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.count.CountConvertible#convertCount(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public long convertCount(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
@@ -157,10 +157,10 @@ public class Dimenexpr extends AbstractCode
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.dimen.DimenConvertible#convertDimen(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.dimen.DimenConvertible#convertDimen(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public long convertDimen(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
@@ -326,10 +326,10 @@ public class Dimenexpr extends AbstractCode
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.Theable#the(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Theable#the(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {

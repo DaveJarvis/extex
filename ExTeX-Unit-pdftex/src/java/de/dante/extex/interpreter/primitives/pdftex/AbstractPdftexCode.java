@@ -20,12 +20,13 @@
 package de.dante.extex.interpreter.primitives.pdftex;
 
 
-import de.dante.extex.backend.documentWriter.DocumentWriter;
+import org.extex.backend.documentWriter.DocumentWriter;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.type.AbstractCode;
+import org.extex.interpreter.type.count.Count;
+
 import de.dante.extex.backend.documentWriter.PdftexSupport;
-import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.pdftex.InterpreterPdftexException;
-import de.dante.extex.interpreter.type.AbstractCode;
-import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.typesetter.Typesetter;
 
 /**

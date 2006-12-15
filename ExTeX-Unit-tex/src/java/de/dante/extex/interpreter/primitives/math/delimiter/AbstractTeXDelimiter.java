@@ -19,37 +19,37 @@
 
 package de.dante.extex.interpreter.primitives.math.delimiter;
 
+import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.EofException;
+import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.interpreter.exception.helping.MissingNumberException;
+import org.extex.interpreter.type.Code;
+import org.extex.interpreter.type.ExpandableCode;
+import org.extex.interpreter.type.count.Count;
+import org.extex.interpreter.type.math.MathClass;
+import org.extex.interpreter.type.math.MathClassVisitor;
+import org.extex.interpreter.type.math.MathDelimiter;
 import org.extex.type.UnicodeChar;
+import org.extex.util.framework.i18n.Localizer;
+import org.extex.util.framework.i18n.LocalizerFactory;
 
-import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.exception.helping.EofException;
-import de.dante.extex.interpreter.exception.helping.HelpingException;
-import de.dante.extex.interpreter.exception.helping.MissingNumberException;
 import de.dante.extex.interpreter.primitives.math.AbstractMathCode;
-import de.dante.extex.interpreter.type.Code;
-import de.dante.extex.interpreter.type.ExpandableCode;
-import de.dante.extex.interpreter.type.count.Count;
-import de.dante.extex.interpreter.type.math.MathClass;
-import de.dante.extex.interpreter.type.math.MathClassVisitor;
-import de.dante.extex.interpreter.type.math.MathDelimiter;
 import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.scanner.type.token.OtherToken;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.type.noad.MathGlyph;
-import de.dante.util.framework.i18n.Localizer;
-import de.dante.util.framework.i18n.LocalizerFactory;
 
 /**
  * This abstract class adds the ability to translate
- * {@link de.dante.extex.typesetter.type.math.MathDelimiter MathDelimiter}s
+ * {@link org.extex.typesetter.type.math.MathDelimiter MathDelimiter}s
  * to and from their <logo>TeX</logo> encoding as numbers to abstract math code.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4431 $
  */
 public abstract class AbstractTeXDelimiter extends AbstractMathCode {
 
@@ -114,7 +114,7 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
     private static final MathClassVisitor MCV = new MathClassVisitor() {
 
         /**
-         * @see de.dante.extex.typesetter.type.math.MathClassVisitor#visitBinary(
+         * @see org.extex.typesetter.type.math.MathClassVisitor#visitBinary(
          *      java.lang.Object,
          *      java.lang.Object)
          */
@@ -124,7 +124,7 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
         }
 
         /**
-         * @see de.dante.extex.typesetter.type.math.MathClassVisitor#visitClosing(
+         * @see org.extex.typesetter.type.math.MathClassVisitor#visitClosing(
          *      java.lang.Object,
          *      java.lang.Object)
          */
@@ -134,7 +134,7 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
         }
 
         /**
-         * @see de.dante.extex.typesetter.type.math.MathClassVisitor#visitLarge(
+         * @see org.extex.typesetter.type.math.MathClassVisitor#visitLarge(
          *      java.lang.Object,
          *      java.lang.Object)
          */
@@ -144,7 +144,7 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
         }
 
         /**
-         * @see de.dante.extex.typesetter.type.math.MathClassVisitor#visitOpening(
+         * @see org.extex.typesetter.type.math.MathClassVisitor#visitOpening(
          *      java.lang.Object,
          *      java.lang.Object)
          */
@@ -154,7 +154,7 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
         }
 
         /**
-         * @see de.dante.extex.typesetter.type.math.MathClassVisitor#visitOrdinary(
+         * @see org.extex.typesetter.type.math.MathClassVisitor#visitOrdinary(
          *      java.lang.Object,
          *      java.lang.Object)
          */
@@ -164,7 +164,7 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
         }
 
         /**
-         * @see de.dante.extex.typesetter.type.math.MathClassVisitor#visitPunctation(
+         * @see org.extex.typesetter.type.math.MathClassVisitor#visitPunctation(
          *      java.lang.Object,
          *      java.lang.Object)
          */
@@ -174,7 +174,7 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
         }
 
         /**
-         * @see de.dante.extex.typesetter.type.math.MathClassVisitor#visitRelation(
+         * @see org.extex.typesetter.type.math.MathClassVisitor#visitRelation(
          *      java.lang.Object,
          *      java.lang.Object)
          */
@@ -184,7 +184,7 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
         }
 
         /**
-         * @see de.dante.extex.typesetter.type.math.MathClassVisitor#visitVariable(
+         * @see org.extex.typesetter.type.math.MathClassVisitor#visitVariable(
          *      java.lang.Object,
          *      java.lang.Object)
          */

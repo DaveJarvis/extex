@@ -20,21 +20,21 @@
 package de.dante.extex.interpreter.primitives.pdftex.util.action;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.count.Count;
 
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.exception.pdftex.InterpreterPdftexActionTypeException;
 import de.dante.extex.interpreter.exception.pdftex.InterpreterPdftexIdentifierTypeException;
 import de.dante.extex.interpreter.primitives.pdftex.util.id.NameIdSpec;
 import de.dante.extex.interpreter.primitives.pdftex.util.id.NumIdSpec;
-import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.typesetter.Typesetter;
 
 /**
  * This class provides an abstract base for goto actions in PDF.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4409 $
  */
 public abstract class GotoActionSpec extends ActionSpec {
 

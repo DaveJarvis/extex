@@ -19,15 +19,15 @@
 
 package de.dante.extex.interpreter.primitives.typesetter.spacing;
 
+import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.glue.FixedGlue;
+import org.extex.interpreter.type.glue.Glue;
+import org.extex.interpreter.type.glue.GlueComponent;
 
-import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.primitives.typesetter.AbstractHorizontalCode;
-import de.dante.extex.interpreter.type.glue.FixedGlue;
-import de.dante.extex.interpreter.type.glue.Glue;
-import de.dante.extex.interpreter.type.glue.GlueComponent;
 import de.dante.extex.typesetter.Typesetter;
 
 /**
@@ -54,7 +54,7 @@ import de.dante.extex.typesetter.Typesetter;
  *
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4431 $
  */
 public class Hfil extends AbstractHorizontalCode implements HorizontalSkip {
 
@@ -80,11 +80,11 @@ public class Hfil extends AbstractHorizontalCode implements HorizontalSkip {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.Code#execute(
-     *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Code#execute(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
@@ -96,9 +96,9 @@ public class Hfil extends AbstractHorizontalCode implements HorizontalSkip {
 
     /**
      * @see de.dante.extex.interpreter.primitives.typesetter.spacing.HorizontalSkip#getGlue(
-     *      de.dante.extex.interpreter.context.Context,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public FixedGlue getGlue(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {

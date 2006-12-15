@@ -20,20 +20,21 @@
 package de.dante.extex.interpreter.primitives.typesetter.box;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.context.group.GroupType;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.EofException;
+import org.extex.interpreter.exception.helping.MissingLeftBraceException;
+import org.extex.interpreter.type.box.Box;
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.interpreter.type.tokens.Tokens;
 
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.context.group.GroupType;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.exception.helping.EofException;
-import de.dante.extex.interpreter.exception.helping.MissingLeftBraceException;
-import de.dante.extex.interpreter.type.box.Box;
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
-import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeList;
+
 
 /**
  * This class provides an implementation for the primitive <code>\vbox</code>.
@@ -60,10 +61,10 @@ import de.dante.extex.typesetter.type.NodeList;
  *    &lang;box specification&rang;
  *      &rarr;
  *         | <tt>to</tt> {@linkplain
- *           de.dante.extex.interpreter.type.dimen.Dimen#parse(Context,TokenSource,Typesetter)
+ *           org.extex.interpreter.type.dimen.Dimen#parse(Context,TokenSource,Typesetter)
  *           &lang;rule dimension&rang;}
  *         | <tt>spread</tt> {@linkplain
- *           de.dante.extex.interpreter.type.dimen.Dimen#parse(Context,TokenSource,Typesetter)
+ *           org.extex.interpreter.type.dimen.Dimen#parse(Context,TokenSource,Typesetter)
  *           &lang;rule dimension&rang;}  </pre>
  *
  * <h4>Examples</h4>
@@ -120,10 +121,10 @@ public class Vbox extends AbstractBoxPrimitive {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.box.Boxable#getBox(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.box.Boxable#getBox(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public Box getBox(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {

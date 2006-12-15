@@ -19,15 +19,15 @@
 
 package org.extex.interpreter.primitives.dynamic.java;
 
+import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.interpreter.type.AbstractCode;
+import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.interpreter.unit.Loader;
 
-import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.exception.helping.HelpingException;
-import de.dante.extex.interpreter.type.AbstractCode;
-import de.dante.extex.interpreter.type.tokens.Tokens;
-import de.dante.extex.interpreter.unit.Loader;
 import de.dante.extex.typesetter.Typesetter;
 
 /**
@@ -54,7 +54,7 @@ import de.dante.extex.typesetter.Typesetter;
  *  The value of these tokens are taken and interpreted as the name of
  *  a Java class. This class is loaded if needed, instantiated, and its
  *  method
- *  {@link de.dante.extex.interpreter.primitives.dynamic.java.Loadable#init(de.dante.extex.interpreter.context.Context,de.dante.extex.typesetter.Typesetter) init()}
+ *  {@link org.extex.interpreter.primitives.dynamic.java.Loadable#init(org.extex.interpreter.context.Context,org.extex.typesetter.Typesetter) init()}
  *  is invoked. The instantiation requires the empty constructor to be visible.
  * </p>
  *
@@ -67,7 +67,7 @@ import de.dante.extex.typesetter.Typesetter;
  * <p>
  *  For the loading of the Java class it is necessary that this Java
  *  class implements the interface
- *  {@link de.dante.extex.interpreter.primitives.dynamic.java.Loadable Loadable}.
+ *  {@link org.extex.interpreter.primitives.dynamic.java.Loadable Loadable}.
  * <pre class="JavaSample">
  *   <b>package</b> my.package;
  *
@@ -123,11 +123,11 @@ public class JavaLoad extends AbstractCode implements Loader {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.Code#execute(
-     *      de.dante.extex.interpreter.Flags,
+     * @see org.extex.interpreter.type.Code#execute(
+     *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
@@ -137,10 +137,10 @@ public class JavaLoad extends AbstractCode implements Loader {
     }
 
     /**
-     * @see de.dante.extex.interpreter.unit.Loader#load(
+     * @see org.extex.interpreter.unit.Loader#load(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void load(final Context context, final TokenSource source,
             final Typesetter typesetter)

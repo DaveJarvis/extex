@@ -24,18 +24,18 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.logging.Logger;
 
+import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.AbstractAssignment;
+import org.extex.util.framework.AbstractFactory;
+import org.extex.util.framework.configuration.Configurable;
+import org.extex.util.framework.configuration.Configuration;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.framework.logger.LogEnabled;
 
-import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.type.AbstractAssignment;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.framework.AbstractFactory;
-import de.dante.util.framework.configuration.Configurable;
-import de.dante.util.framework.configuration.Configuration;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
-import de.dante.util.framework.logger.LogEnabled;
 
 /**
  * This primitive provides a binding of a macro or active character to
@@ -199,11 +199,11 @@ public class NativeDef extends AbstractAssignment
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.AbstractAssignment#assign(
-     *       de.dante.extex.interpreter.Flags,
+     * @see org.extex.interpreter.type.AbstractAssignment#assign(
+     *       org.extex.interpreter.Flags,
      *       org.extex.interpreter.context.Context,
      *       org.extex.interpreter.TokenSource,
-     *       de.dante.extex.typesetter.Typesetter)
+     *       org.extex.typesetter.Typesetter)
      */
     public void assign(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
@@ -227,8 +227,8 @@ public class NativeDef extends AbstractAssignment
     }
 
     /**
-     * @see de.dante.util.framework.configuration.Configurable#configure(
-     *      de.dante.util.framework.configuration.Configuration)
+     * @see org.extex.util.framework.configuration.Configurable#configure(
+     *      org.extex.util.framework.configuration.Configuration)
      */
     public void configure(final Configuration config)
             throws ConfigurationException {
@@ -241,7 +241,7 @@ public class NativeDef extends AbstractAssignment
     }
 
     /**
-     * @see de.dante.util.framework.logger.LogEnabled#enableLogging(
+     * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
     public void enableLogging(final Logger theLogger) {

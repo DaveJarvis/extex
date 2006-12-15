@@ -19,19 +19,20 @@
 
 package de.dante.extex.interpreter.primitives.typesetter.undo;
 
+import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.interpreter.type.AbstractCode;
+import org.extex.interpreter.type.box.Box;
+import org.extex.interpreter.type.box.Boxable;
 
-import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.exception.helping.HelpingException;
-import de.dante.extex.interpreter.type.AbstractCode;
-import de.dante.extex.interpreter.type.box.Box;
-import de.dante.extex.interpreter.type.box.Boxable;
 import de.dante.extex.typesetter.Mode;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeList;
+
 
 /**
  * This class provides an implementation for the primitive <code>\lastbox</code>.
@@ -58,7 +59,7 @@ import de.dante.extex.typesetter.type.NodeList;
  *
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4431 $
  */
 public class Lastbox extends AbstractCode implements Boxable {
 
@@ -78,11 +79,11 @@ public class Lastbox extends AbstractCode implements Boxable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.Code#execute(
-     *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Code#execute(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
@@ -99,10 +100,10 @@ public class Lastbox extends AbstractCode implements Boxable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.box.Boxable#getBox(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.box.Boxable#getBox(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public Box getBox(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {

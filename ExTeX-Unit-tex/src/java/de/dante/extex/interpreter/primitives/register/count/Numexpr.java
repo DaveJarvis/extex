@@ -20,18 +20,18 @@
 package de.dante.extex.interpreter.primitives.register.count;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.ArithmeticOverflowException;
+import org.extex.interpreter.exception.helping.EofException;
+import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.interpreter.type.AbstractCode;
+import org.extex.interpreter.type.Theable;
+import org.extex.interpreter.type.count.Count;
+import org.extex.interpreter.type.count.CountConvertible;
+import org.extex.interpreter.type.tokens.Tokens;
 
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.exception.helping.ArithmeticOverflowException;
-import de.dante.extex.interpreter.exception.helping.EofException;
-import de.dante.extex.interpreter.exception.helping.HelpingException;
 import de.dante.extex.interpreter.primitives.Relax;
-import de.dante.extex.interpreter.type.AbstractCode;
-import de.dante.extex.interpreter.type.Theable;
-import de.dante.extex.interpreter.type.count.Count;
-import de.dante.extex.interpreter.type.count.CountConvertible;
-import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.scanner.type.Catcode;
 import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.scanner.type.token.Token;
@@ -211,10 +211,10 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.count.CountConvertible#convertCount(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.count.CountConvertible#convertCount(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public long convertCount(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
@@ -318,10 +318,10 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.Theable#the(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Theable#the(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {

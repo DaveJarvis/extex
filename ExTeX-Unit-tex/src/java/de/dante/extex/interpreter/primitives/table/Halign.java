@@ -21,26 +21,26 @@ package de.dante.extex.interpreter.primitives.table;
 
 import java.util.List;
 
+import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.context.group.GroupType;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.EofException;
+import org.extex.interpreter.exception.helping.MissingLeftBraceException;
+import org.extex.interpreter.type.box.Box;
+import org.extex.interpreter.type.box.Boxable;
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.type.Locator;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.context.group.GroupType;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.exception.helping.EofException;
-import de.dante.extex.interpreter.exception.helping.MissingLeftBraceException;
-import de.dante.extex.interpreter.type.box.Box;
-import de.dante.extex.interpreter.type.box.Boxable;
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
 import de.dante.extex.scanner.type.Catcode;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.typesetter.listMaker.HAlignListMaker;
 import de.dante.extex.typesetter.type.NodeList;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive <code>\halign</code>.
@@ -96,11 +96,11 @@ public class Halign extends AbstractAlign implements Boxable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.Code#execute(
-     *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Code#execute(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
@@ -119,10 +119,10 @@ public class Halign extends AbstractAlign implements Boxable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.box.Boxable#getBox(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.box.Boxable#getBox(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public Box getBox(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {

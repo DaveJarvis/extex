@@ -19,17 +19,17 @@
 
 package de.dante.extex.interpreter.primitives.scanner;
 
+import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.Tokenizer;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.AbstractCode;
+import org.extex.interpreter.type.ExpandableCode;
+import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.type.Locator;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.Tokenizer;
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.type.AbstractCode;
-import de.dante.extex.interpreter.type.ExpandableCode;
-import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.scanner.TokenStream;
 import de.dante.extex.scanner.exception.ScannerException;
 import de.dante.extex.scanner.stream.TokenStreamFactory;

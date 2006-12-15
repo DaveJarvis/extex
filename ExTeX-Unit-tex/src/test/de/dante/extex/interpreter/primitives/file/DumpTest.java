@@ -24,11 +24,10 @@ import java.io.FileInputStream;
 import java.util.Calendar;
 
 import org.extex.interpreter.Namespace;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.loader.SerialLoader;
+import org.extex.interpreter.type.Code;
 
-
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.loader.SerialLoader;
-import de.dante.extex.interpreter.type.Code;
 import de.dante.extex.scanner.type.Catcode;
 import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.scanner.type.token.TokenFactoryImpl;

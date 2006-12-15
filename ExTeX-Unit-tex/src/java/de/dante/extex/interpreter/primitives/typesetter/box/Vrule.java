@@ -19,18 +19,19 @@
 
 package de.dante.extex.interpreter.primitives.typesetter.box;
 
+import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.AbstractCode;
+import org.extex.interpreter.type.box.RuleConvertible;
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.type.AbstractCode;
-import de.dante.extex.interpreter.type.box.RuleConvertible;
-import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.typesetter.Mode;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.type.node.RuleNode;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
+
 
 /**
  * This class provides an implementation for the primitive <code>\vrule</code>.
@@ -56,13 +57,13 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
  *
  *    &lang;rule dimension&rang;
  *        &rarr; <tt>width</tt> {@linkplain
- *        de.dante.extex.interpreter.type.dimen#Dimen(Context,TokenSource)
+ *        org.extex.interpreter.type.dimen#Dimen(Context,TokenSource)
  *        &lang;dimen&rang;}
  *         |  <tt>height</tt> {@linkplain
- *        de.dante.extex.interpreter.type.dimen#Dimen(Context,TokenSource)
+ *        org.extex.interpreter.type.dimen#Dimen(Context,TokenSource)
  *        &lang;dimen&rang;}
  *         |  <tt>depth</tt> {@linkplain
- *        de.dante.extex.interpreter.type.dimen#Dimen(Context,TokenSource)
+ *        org.extex.interpreter.type.dimen#Dimen(Context,TokenSource)
  *        &lang;dimen&rang;}   </pre>
  *
  * <p>
@@ -81,7 +82,7 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
  *
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4431 $
  */
 public class Vrule extends AbstractCode implements RuleConvertible {
 
@@ -117,11 +118,11 @@ public class Vrule extends AbstractCode implements RuleConvertible {
      *
      * @throws InterpreterException in case of an error
      *
-     * @see de.dante.extex.interpreter.type.Code#execute(
-     *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Code#execute(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      * @see "<logo>TeX</logo> &ndash; The Program [463]"
      */
     public void execute(final Flags prefix, final Context context,
@@ -138,10 +139,10 @@ public class Vrule extends AbstractCode implements RuleConvertible {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.box.RuleConvertible#getRule(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.box.RuleConvertible#getRule(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public RuleNode getRule(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {

@@ -19,25 +19,26 @@
 
 package de.dante.extex.interpreter.primitives.hyphen;
 
+import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.ArithmeticOverflowException;
+import org.extex.interpreter.type.Theable;
+import org.extex.interpreter.type.arithmetic.Advanceable;
+import org.extex.interpreter.type.arithmetic.Divideable;
+import org.extex.interpreter.type.arithmetic.Multiplyable;
+import org.extex.interpreter.type.count.Count;
+import org.extex.interpreter.type.count.CountConvertible;
+import org.extex.interpreter.type.dimen.DimenConvertible;
+import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.exception.helping.ArithmeticOverflowException;
-import de.dante.extex.interpreter.type.Theable;
-import de.dante.extex.interpreter.type.arithmetic.Advanceable;
-import de.dante.extex.interpreter.type.arithmetic.Divideable;
-import de.dante.extex.interpreter.type.arithmetic.Multiplyable;
-import de.dante.extex.interpreter.type.count.Count;
-import de.dante.extex.interpreter.type.count.CountConvertible;
-import de.dante.extex.interpreter.type.dimen.DimenConvertible;
-import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.language.Language;
 import de.dante.extex.language.hyphenation.exception.HyphenationException;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
+
 
 /**
  * This class provides an implementation for the primitive
@@ -100,11 +101,11 @@ public class RightHyphenmin extends AbstractHyphenationCode
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.arithmetic.Advanceable#advance(
-     *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.arithmetic.Advanceable#advance(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void advance(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
@@ -138,10 +139,10 @@ public class RightHyphenmin extends AbstractHyphenationCode
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.count.CountConvertible#convertCount(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.count.CountConvertible#convertCount(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public long convertCount(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
@@ -150,10 +151,10 @@ public class RightHyphenmin extends AbstractHyphenationCode
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.dimen.DimenConvertible#convertDimen(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.dimen.DimenConvertible#convertDimen(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public long convertDimen(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
@@ -162,11 +163,11 @@ public class RightHyphenmin extends AbstractHyphenationCode
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.arithmetic.Divideable#divide(
-     *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.arithmetic.Divideable#divide(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void divide(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
@@ -208,11 +209,11 @@ public class RightHyphenmin extends AbstractHyphenationCode
      * Scan for righthyphenmin value and store it in the
      * <code>HyphernationTable</code> with the language-number.
      *
-     * @see de.dante.extex.interpreter.type.Code#execute(
-     *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Code#execute(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
@@ -245,11 +246,11 @@ public class RightHyphenmin extends AbstractHyphenationCode
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.arithmetic.Multiplyable#multiply(
-     *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.arithmetic.Multiplyable#multiply(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void multiply(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
@@ -285,8 +286,8 @@ public class RightHyphenmin extends AbstractHyphenationCode
     /**
      * Return the <code>Tokens</code> to show the content with <code>\the</code>.
      *
-     * @see de.dante.extex.interpreter.type.Theable#the(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Theable#the(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,

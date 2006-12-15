@@ -24,19 +24,19 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.logging.Logger;
 
+import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.unit.LoaderFactory;
+import org.extex.util.framework.configuration.Configurable;
+import org.extex.util.framework.configuration.Configuration;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.framework.logger.LogEnabled;
 
-import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.exception.helping.HelpingException;
-import de.dante.extex.interpreter.type.AbstractCode;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.framework.configuration.Configurable;
-import de.dante.util.framework.configuration.Configuration;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
-import de.dante.util.framework.logger.LogEnabled;
 
 /**
  * This primitive initiates the loading of native code and implements the
@@ -73,9 +73,9 @@ import de.dante.util.framework.logger.LogEnabled;
  *  For the Java loader the value of these tokens are taken and interpreted as
  *  the name of a Java class. This class is loaded if needed, instantiated,
  *  and its method
- *  {@linkplain de.dante.extex.interpreter.primitives.dynamic.java.Loadable#init(
- *    de.dante.extex.interpreter.context.Context,
- *    de.dante.extex.typesetter.Typesetter) init()}
+ *  {@linkplain org.extex.interpreter.primitives.dynamic.java.Loadable#init(
+ *    org.extex.interpreter.context.Context,
+ *    org.extex.typesetter.Typesetter) init()}
  *  is invoked. The instantiation requires the empty constructor to be visible.
  * </p>
  *
@@ -88,7 +88,7 @@ import de.dante.util.framework.logger.LogEnabled;
  * <p>
  *  For the loading of the Java class it is necessary that this Java
  *  class implements the interface
- *  {@link de.dante.extex.interpreter.primitives.dynamic.java.Loadable Loadable}.
+ *  {@link org.extex.interpreter.primitives.dynamic.java.Loadable Loadable}.
  * <pre class="JavaSample">
  *   <b>package</b> my.package;
  *
@@ -179,8 +179,8 @@ public class NativeLoad extends AbstractCode
     }
 
     /**
-     * @see de.dante.util.framework.configuration.Configurable#configure(
-     *      de.dante.util.framework.configuration.Configuration)
+     * @see org.extex.util.framework.configuration.Configurable#configure(
+     *      org.extex.util.framework.configuration.Configuration)
      */
     public void configure(final Configuration config)
             throws ConfigurationException {
@@ -193,7 +193,7 @@ public class NativeLoad extends AbstractCode
     }
 
     /**
-     * @see de.dante.util.framework.logger.LogEnabled#enableLogging(
+     * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
     public void enableLogging(final Logger theLogger) {
@@ -202,11 +202,11 @@ public class NativeLoad extends AbstractCode
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.Code#execute(
-     *       de.dante.extex.interpreter.Flags,
+     * @see org.extex.interpreter.type.Code#execute(
+     *       org.extex.interpreter.Flags,
      *       org.extex.interpreter.context.Context,
      *       org.extex.interpreter.TokenSource,
-     *       de.dante.extex.typesetter.Typesetter)
+     *       org.extex.typesetter.Typesetter)
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)

@@ -22,21 +22,21 @@ package de.dante.extex.interpreter.primitives.omega.ocp.util;
 import java.io.InputStream;
 import java.io.Serializable;
 
+import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.Code;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.resource.ResourceFinder;
 
-import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.type.Code;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
-import de.dante.util.resource.ResourceFinder;
 
 /**
  * TODO gene: missing JavaDoc.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4411 $
  */
 public class Ocp implements Code, OcpConvertible, Serializable {
 
@@ -90,9 +90,9 @@ public class Ocp implements Code, OcpConvertible, Serializable {
 
     /**
      * @see de.dante.extex.interpreter.primitives.omega.ocp.util.OcpConvertible#convertOcp(
-     *      de.dante.extex.interpreter.context.Context,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public Ocp convertOcp(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
@@ -101,11 +101,11 @@ public class Ocp implements Code, OcpConvertible, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.Code#execute(
-     *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Code#execute(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
@@ -116,7 +116,7 @@ public class Ocp implements Code, OcpConvertible, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.Code#getName()
+     * @see org.extex.interpreter.type.Code#getName()
      */
     public String getName() {
 
@@ -124,7 +124,7 @@ public class Ocp implements Code, OcpConvertible, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.Code#isIf()
+     * @see org.extex.interpreter.type.Code#isIf()
      */
     public boolean isIf() {
 
@@ -132,7 +132,7 @@ public class Ocp implements Code, OcpConvertible, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.Code#isOuter()
+     * @see org.extex.interpreter.type.Code#isOuter()
      */
     public boolean isOuter() {
 
@@ -140,7 +140,7 @@ public class Ocp implements Code, OcpConvertible, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.Code#setName(java.lang.String)
+     * @see org.extex.interpreter.type.Code#setName(java.lang.String)
      */
     public void setName(final String name) {
 

@@ -20,21 +20,22 @@
 package de.dante.extex.interpreter.primitives.typesetter.mark;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.AbstractCode;
+import org.extex.interpreter.type.count.Count;
+import org.extex.interpreter.type.tokens.Tokens;
 
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.type.AbstractCode;
-import de.dante.extex.interpreter.type.count.Count;
-import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.scanner.type.token.LeftBraceToken;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
+
 
 /**
  * This abstract base class for mark primitives provides the common features.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4431 $
  */
 public abstract class AbstractMarkCode extends AbstractCode {
 

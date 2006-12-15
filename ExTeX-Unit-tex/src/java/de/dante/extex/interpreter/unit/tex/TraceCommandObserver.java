@@ -22,11 +22,11 @@ package de.dante.extex.interpreter.unit.tex;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.PrefixCode;
 
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.observer.command.CommandObserver;
-import de.dante.extex.interpreter.type.PrefixCode;
 import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.scanner.type.token.Token;
 
@@ -35,7 +35,7 @@ import de.dante.extex.scanner.type.token.Token;
  * log file enclosed in braces.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4431 $
  */
 public class TraceCommandObserver implements CommandObserver {
 

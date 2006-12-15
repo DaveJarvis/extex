@@ -19,16 +19,17 @@
 
 package de.dante.extex.interpreter.primitives.typesetter;
 
+import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.AbstractCode;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.type.AbstractCode;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.type.node.SpecialNode;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
+
 
 /**
  * This class provides an implementation for the primitive
@@ -40,7 +41,7 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
  *  This primitive sends a string to the back-end driver.
  *  The argument is a balanced block of text which is expanded and translated
  *  into a string.  The string is given in
- *  a {@link de.dante.extex.typesetter.type.node.SpecialNode SpecialNode} to
+ *  a {@link org.extex.typesetter.type.node.SpecialNode SpecialNode} to
  *  the typesetter for passing it down.
  * </p>
  *
@@ -90,11 +91,11 @@ public class Special extends AbstractCode {
      * Scan the next tokens (between braces) and send the value (as text) to the
      * typesetter for the back-end driver.
      *
-     * @see de.dante.extex.interpreter.type.Code#execute(
-     *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Code#execute(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)

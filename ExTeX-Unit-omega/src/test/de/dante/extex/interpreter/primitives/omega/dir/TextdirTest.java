@@ -19,7 +19,8 @@
 
 package de.dante.extex.interpreter.primitives.omega.dir;
 
-import de.dante.extex.interpreter.Interpreter;
+import org.extex.interpreter.Interpreter;
+
 import de.dante.test.NoFlagsButGlobalPrimitiveTester;
 
 /**

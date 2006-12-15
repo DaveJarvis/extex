@@ -19,20 +19,20 @@
 
 package de.dante.extex.interpreter.primitives.register.count;
 
+import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.ArithmeticOverflowException;
+import org.extex.interpreter.type.ExpandableCode;
+import org.extex.interpreter.type.Theable;
+import org.extex.interpreter.type.arithmetic.Advanceable;
+import org.extex.interpreter.type.arithmetic.Divideable;
+import org.extex.interpreter.type.arithmetic.Multiplyable;
+import org.extex.interpreter.type.count.Count;
+import org.extex.interpreter.type.count.CountConvertible;
+import org.extex.interpreter.type.tokens.Tokens;
 
-import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.exception.helping.ArithmeticOverflowException;
-import de.dante.extex.interpreter.type.ExpandableCode;
-import de.dante.extex.interpreter.type.Theable;
-import de.dante.extex.interpreter.type.arithmetic.Advanceable;
-import de.dante.extex.interpreter.type.arithmetic.Divideable;
-import de.dante.extex.interpreter.type.arithmetic.Multiplyable;
-import de.dante.extex.interpreter.type.count.Count;
-import de.dante.extex.interpreter.type.count.CountConvertible;
-import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.typesetter.Typesetter;
 
 /**
@@ -69,10 +69,10 @@ import de.dante.extex.typesetter.Typesetter;
  * </doc>
  *
  *
- * @see de.dante.extex.interpreter.type.arithmetic.Advanceable
- * @see de.dante.extex.interpreter.type.arithmetic.Divideable
- * @see de.dante.extex.interpreter.type.arithmetic.Multiplyable
- * @see de.dante.extex.interpreter.type.Theable
+ * @see org.extex.interpreter.type.arithmetic.Advanceable
+ * @see org.extex.interpreter.type.arithmetic.Divideable
+ * @see org.extex.interpreter.type.arithmetic.Multiplyable
+ * @see org.extex.interpreter.type.Theable
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
@@ -103,11 +103,11 @@ public class CountPrimitive extends AbstractCount
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.arithmetic.Advanceable#advance(
-     *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.arithmetic.Advanceable#advance(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void advance(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
@@ -123,11 +123,11 @@ public class CountPrimitive extends AbstractCount
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.AbstractAssignment#assign(
-     *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractAssignment#assign(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void assign(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
@@ -141,8 +141,8 @@ public class CountPrimitive extends AbstractCount
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.count.CountConvertible#convertCount(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.count.CountConvertible#convertCount(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
     public long convertCount(final Context context, final TokenSource source,
@@ -154,11 +154,11 @@ public class CountPrimitive extends AbstractCount
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.arithmetic.Divideable#divide(
-     *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.arithmetic.Divideable#divide(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void divide(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
@@ -179,11 +179,11 @@ public class CountPrimitive extends AbstractCount
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.ExpandableCode#expand(
-     *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.ExpandableCode#expand(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void expand(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
@@ -194,11 +194,11 @@ public class CountPrimitive extends AbstractCount
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.arithmetic.Multiplyable#multiply(
-     *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.arithmetic.Multiplyable#multiply(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void multiply(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
@@ -213,8 +213,8 @@ public class CountPrimitive extends AbstractCount
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.Theable#the(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Theable#the(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,

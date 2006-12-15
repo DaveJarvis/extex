@@ -20,21 +20,22 @@
 package de.dante.extex.interpreter.primitives.typesetter.paragraph;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.AbstractCode;
+import org.extex.interpreter.type.Theable;
+import org.extex.interpreter.type.count.Count;
+import org.extex.interpreter.type.count.CountConvertible;
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.dimen.DimenConvertible;
+import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.util.exception.GeneralException;
 
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.type.AbstractCode;
-import de.dante.extex.interpreter.type.Theable;
-import de.dante.extex.interpreter.type.count.Count;
-import de.dante.extex.interpreter.type.count.CountConvertible;
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.dimen.DimenConvertible;
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
-import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.scanner.type.CatcodeException;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.paragraphBuilder.ParagraphShape;
-import de.dante.util.exception.GeneralException;
+
 
 /**
  * This class provides an implementation for the primitive <code>\relax</code>.
@@ -66,7 +67,7 @@ import de.dante.util.exception.GeneralException;
  * </doc>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4431 $
  */
 public class Parshapeindent extends AbstractCode
         implements
@@ -90,8 +91,8 @@ public class Parshapeindent extends AbstractCode
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.count.CountConvertible#convertCount(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.count.CountConvertible#convertCount(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
     public long convertCount(final Context context, final TokenSource source,
@@ -101,8 +102,8 @@ public class Parshapeindent extends AbstractCode
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.count.DimenConvertible#convertDimen(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.count.DimenConvertible#convertDimen(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
     public long convertDimen(final Context context, final TokenSource source,
@@ -115,8 +116,8 @@ public class Parshapeindent extends AbstractCode
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.Theable#the(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Theable#the(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,

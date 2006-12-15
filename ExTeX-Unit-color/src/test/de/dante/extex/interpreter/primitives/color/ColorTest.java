@@ -20,10 +20,11 @@
 package de.dante.extex.interpreter.primitives.color;
 
 
-import de.dante.extex.color.model.GrayscaleColor;
-import de.dante.extex.color.model.RgbColor;
-import de.dante.extex.interpreter.Interpreter;
-import de.dante.extex.interpreter.context.Color;
+import org.extex.color.model.GrayscaleColor;
+import org.extex.color.model.RgbColor;
+import org.extex.interpreter.Interpreter;
+import org.extex.interpreter.context.Color;
+
 import de.dante.test.NoFlagsButGlobalPrimitiveTester;
 
 /**

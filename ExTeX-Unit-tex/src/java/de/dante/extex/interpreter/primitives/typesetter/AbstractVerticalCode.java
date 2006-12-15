@@ -19,13 +19,14 @@
 
 package de.dante.extex.interpreter.primitives.typesetter;
 
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.exception.helping.HelpingException;
-import de.dante.extex.interpreter.type.AbstractCode;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.interpreter.type.AbstractCode;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.framework.i18n.LocalizerFactory;
+
 import de.dante.extex.typesetter.Mode;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
-import de.dante.util.framework.i18n.LocalizerFactory;
 
 /**
  * This an abstract base class for primitives in vertical mode.

@@ -19,16 +19,16 @@
 
 package de.dante.extex.interpreter.primitives.register.toks;
 
+import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.Theable;
+import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.interpreter.type.tokens.TokensConvertible;
+import org.extex.util.exception.GeneralException;
 
-import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.type.Theable;
-import de.dante.extex.interpreter.type.tokens.Tokens;
-import de.dante.extex.interpreter.type.tokens.TokensConvertible;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.exception.GeneralException;
 
 /**
  * This class provides an implementation for the primitive <code>\toks</code>.
@@ -86,7 +86,7 @@ import de.dante.util.exception.GeneralException;
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:mgn@gmx.de">Michael Niedermair</a>
- * @version $Revision$
+ * @version $Revision:4431 $
  */
 public class ToksPrimitive extends AbstractToks
         implements
@@ -109,11 +109,11 @@ public class ToksPrimitive extends AbstractToks
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.Code#execute(
-     *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Code#execute(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void assign(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
@@ -126,10 +126,10 @@ public class ToksPrimitive extends AbstractToks
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.tokens.TokensConvertible#convertTokens(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.tokens.TokensConvertible#convertTokens(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public Tokens convertTokens(final Context context,
             final TokenSource source, final Typesetter typesetter)
@@ -164,8 +164,8 @@ public class ToksPrimitive extends AbstractToks
     /**
      * Return the register value as <code>Tokens</code> for <code>\the</code>.
      *
-     * @see de.dante.extex.interpreter.type.Theable#the(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Theable#the(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,

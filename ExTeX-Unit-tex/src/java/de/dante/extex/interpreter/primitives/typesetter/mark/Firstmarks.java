@@ -20,9 +20,9 @@
 package de.dante.extex.interpreter.primitives.typesetter.mark;
 
 
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.type.tokens.Tokens;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.tokens.Tokens;
 
 /**
  * This class provides an implementation for the primitive
@@ -59,7 +59,7 @@ import de.dante.extex.interpreter.type.tokens.Tokens;
  * </doc>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4431 $
  */
 public class Firstmarks extends AbstractMarksCode {
 
@@ -80,7 +80,7 @@ public class Firstmarks extends AbstractMarksCode {
 
     /**
      * @see de.dante.extex.interpreter.primitives.typesetter.mark.AbstractMarksCode#getValue(
-     *      de.dante.extex.interpreter.context.Context,
+     *      org.extex.interpreter.context.Context,
      *      java.lang.String)
      */
     protected Tokens getValue(final Context context, final String key)

@@ -21,12 +21,12 @@ package de.dante.extex.interpreter.primitives.register.count;
 
 import org.extex.interpreter.Namespace;
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.AbstractAssignment;
+import org.extex.interpreter.type.InitializableCode;
+import org.extex.interpreter.type.count.Count;
 
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.type.AbstractAssignment;
-import de.dante.extex.interpreter.type.InitializableCode;
-import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
 
@@ -78,10 +78,10 @@ public abstract class AbstractCount extends AbstractAssignment
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.InitializableCode#init(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.InitializableCode#init(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void init(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {

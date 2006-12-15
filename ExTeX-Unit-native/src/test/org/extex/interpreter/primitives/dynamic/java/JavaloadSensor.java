@@ -19,10 +19,10 @@
 
 package org.extex.interpreter.primitives.dynamic.java;
 
+import org.extex.interpreter.context.Context;
+import org.extex.util.exception.GeneralException;
 
-import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.exception.GeneralException;
 
 /**
  * Dummy Loadable which just records that the load has ben requested.
@@ -69,9 +69,9 @@ public class JavaloadSensor implements Loadable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.primitives.dynamic.java.Loadable#init(
+     * @see org.extex.interpreter.primitives.dynamic.java.Loadable#init(
      *      org.extex.interpreter.context.Context,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void init(final Context context, final Typesetter typesetter)
             throws GeneralException {

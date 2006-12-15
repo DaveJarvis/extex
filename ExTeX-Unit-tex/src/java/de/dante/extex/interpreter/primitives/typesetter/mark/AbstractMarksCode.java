@@ -19,22 +19,22 @@
 
 package de.dante.extex.interpreter.primitives.typesetter.mark;
 
+import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.AbstractCode;
+import org.extex.interpreter.type.ExpandableCode;
+import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.interpreter.type.tokens.TokensConvertible;
 
-import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.type.AbstractCode;
-import de.dante.extex.interpreter.type.ExpandableCode;
-import de.dante.extex.interpreter.type.tokens.Tokens;
-import de.dante.extex.interpreter.type.tokens.TokensConvertible;
 import de.dante.extex.typesetter.Typesetter;
 
 /**
  * Thus abstract base class for marks primitives provides the common features.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4431 $
  */
 public abstract class AbstractMarksCode extends AbstractCode
         implements
@@ -52,10 +52,10 @@ public abstract class AbstractMarksCode extends AbstractCode
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.tokens.TokensConvertible#convertTokens(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.tokens.TokensConvertible#convertTokens(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public Tokens convertTokens(final Context context,
             final TokenSource source, final Typesetter typesetter)
@@ -66,11 +66,11 @@ public abstract class AbstractMarksCode extends AbstractCode
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.AbstractCode#execute(
-     *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
@@ -80,11 +80,11 @@ public abstract class AbstractMarksCode extends AbstractCode
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.ExpandableCode#expand(
-     *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.ExpandableCode#expand(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void expand(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)

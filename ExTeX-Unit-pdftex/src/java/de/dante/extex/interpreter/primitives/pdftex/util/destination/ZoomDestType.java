@@ -62,8 +62,8 @@ public class ZoomDestType extends DestType {
     }
 
     /**
-     * @see de.dante.extex.interpreter.primitives.pdftex.util.destType.DestType#visit(
-     *      de.dante.extex.interpreter.primitives.pdftex.util.destType.DestTypeVisitor)
+     * @see org.extex.interpreter.primitives.pdftex.util.destType.DestType#visit(
+     *      org.extex.interpreter.primitives.pdftex.util.destType.DestTypeVisitor)
      */
     public Object visit(final DestinationVisitor visitor) {
 

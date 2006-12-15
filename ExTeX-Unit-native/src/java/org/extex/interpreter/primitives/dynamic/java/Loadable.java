@@ -19,10 +19,10 @@
 
 package org.extex.interpreter.primitives.dynamic.java;
 
+import org.extex.interpreter.context.Context;
+import org.extex.util.exception.GeneralException;
 
-import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.exception.GeneralException;
 
 /**
  * This interface describes the initialization method which is invoked from

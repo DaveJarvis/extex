@@ -19,17 +19,17 @@
 
 package de.dante.extex.interpreter.primitives.math.util;
 
+import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.Showable;
+import org.extex.interpreter.type.Theable;
+import org.extex.interpreter.type.count.CountConvertible;
+import org.extex.interpreter.type.math.MathCode;
+import org.extex.interpreter.type.tokens.Tokens;
 
-import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.primitives.math.AbstractTeXMathCode;
-import de.dante.extex.interpreter.type.Showable;
-import de.dante.extex.interpreter.type.Theable;
-import de.dante.extex.interpreter.type.count.CountConvertible;
-import de.dante.extex.interpreter.type.math.MathCode;
-import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.listMaker.math.NoadConsumer;
 
@@ -38,7 +38,7 @@ import de.dante.extex.typesetter.listMaker.math.NoadConsumer;
  * TeX encoding into a count value.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4431 $
  */
 public class TeXMathcharCode extends AbstractTeXMathCode
         implements
@@ -71,10 +71,10 @@ public class TeXMathcharCode extends AbstractTeXMathCode
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.count.CountConvertible#convertCount(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.count.CountConvertible#convertCount(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public long convertCount(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
@@ -84,9 +84,9 @@ public class TeXMathcharCode extends AbstractTeXMathCode
 
     /**
      * @see de.dante.extex.interpreter.primitives.math.util.MathCodeConvertible#convertMathCode(
-     *      de.dante.extex.interpreter.context.Context,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public MathCode convertMathCode(final Context context,
             final TokenSource source, final Typesetter typesetter)
@@ -96,11 +96,11 @@ public class TeXMathcharCode extends AbstractTeXMathCode
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.Code#execute(
-     *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Code#execute(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
@@ -111,8 +111,8 @@ public class TeXMathcharCode extends AbstractTeXMathCode
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.Showable#show(
-     *      de.dante.extex.interpreter.context.Context)
+     * @see org.extex.interpreter.type.Showable#show(
+     *      org.extex.interpreter.context.Context)
      */
     public Tokens show(final Context context) throws InterpreterException {
 
@@ -121,10 +121,10 @@ public class TeXMathcharCode extends AbstractTeXMathCode
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.Theable#the(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Theable#the(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {

@@ -19,24 +19,24 @@
 
 package de.dante.extex.interpreter.primitives.register.muskip;
 
+import org.extex.interpreter.Flags;
 import org.extex.interpreter.Namespace;
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.ArithmeticOverflowException;
+import org.extex.interpreter.type.AbstractAssignment;
+import org.extex.interpreter.type.Theable;
+import org.extex.interpreter.type.arithmetic.Advanceable;
+import org.extex.interpreter.type.arithmetic.Divideable;
+import org.extex.interpreter.type.arithmetic.Multiplyable;
+import org.extex.interpreter.type.count.Count;
+import org.extex.interpreter.type.muskip.Muskip;
+import org.extex.interpreter.type.muskip.MuskipConvertible;
+import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.util.exception.GeneralException;
 
-import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.exception.helping.ArithmeticOverflowException;
-import de.dante.extex.interpreter.type.AbstractAssignment;
-import de.dante.extex.interpreter.type.Theable;
-import de.dante.extex.interpreter.type.arithmetic.Advanceable;
-import de.dante.extex.interpreter.type.arithmetic.Divideable;
-import de.dante.extex.interpreter.type.arithmetic.Multiplyable;
-import de.dante.extex.interpreter.type.count.Count;
-import de.dante.extex.interpreter.type.muskip.Muskip;
-import de.dante.extex.interpreter.type.muskip.MuskipConvertible;
-import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.exception.GeneralException;
 
 /**
  * This class provides an implementation for the primitive <code>\muskip</code>.
@@ -49,7 +49,7 @@ import de.dante.util.exception.GeneralException;
  * </pre>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4431 $
  */
 public class MuskipParameter extends AbstractAssignment
         implements
@@ -75,11 +75,11 @@ public class MuskipParameter extends AbstractAssignment
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.arithmetic.Advanceable#advance(
-     *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.arithmetic.Advanceable#advance(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void advance(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
@@ -93,11 +93,11 @@ public class MuskipParameter extends AbstractAssignment
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.Code#execute(
-     *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Code#execute(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void assign(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
@@ -110,10 +110,10 @@ public class MuskipParameter extends AbstractAssignment
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.muskip.MuskipConvertible#convertMuskip(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.muskip.MuskipConvertible#convertMuskip(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public Muskip convertMuskip(final Context context,
             final TokenSource source, final Typesetter typesetter)
@@ -124,11 +124,11 @@ public class MuskipParameter extends AbstractAssignment
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.arithmetic.Divideable#divide(
-     *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.arithmetic.Divideable#divide(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void divide(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
@@ -170,11 +170,11 @@ public class MuskipParameter extends AbstractAssignment
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.arithmetic.Multiplyable#multiply(
-     *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.arithmetic.Multiplyable#multiply(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void multiply(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
@@ -190,10 +190,10 @@ public class MuskipParameter extends AbstractAssignment
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.Theable#the(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Theable#the(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {

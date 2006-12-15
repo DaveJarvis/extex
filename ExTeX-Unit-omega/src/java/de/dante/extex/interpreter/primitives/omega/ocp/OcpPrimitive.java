@@ -19,17 +19,17 @@
 
 package de.dante.extex.interpreter.primitives.omega.ocp;
 
+import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.util.resource.ResourceConsumer;
+import org.extex.util.resource.ResourceFinder;
 
-import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.primitives.file.AbstractFileCode;
 import de.dante.extex.interpreter.primitives.omega.ocp.util.Ocp;
 import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.resource.ResourceConsumer;
-import de.dante.util.resource.ResourceFinder;
 
 /**
  * This class provides an implementation for the primitive <code>\ocp</code>.
@@ -78,11 +78,11 @@ public class OcpPrimitive extends AbstractFileCode implements ResourceConsumer {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.Code#execute(
-     *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Code#execute(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
@@ -95,8 +95,8 @@ public class OcpPrimitive extends AbstractFileCode implements ResourceConsumer {
     }
 
     /**
-     * @see de.dante.util.resource.ResourceConsumer#setResourceFinder(
-     *      de.dante.util.resource.ResourceFinder)
+     * @see org.extex.util.resource.ResourceConsumer#setResourceFinder(
+     *      org.extex.util.resource.ResourceFinder)
      */
     public void setResourceFinder(final ResourceFinder finder) {
 

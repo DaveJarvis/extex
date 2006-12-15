@@ -21,7 +21,6 @@ package de.dante.extex.typesetter.type.node;
 
 import de.dante.extex.interpreter.type.image.Image;
 import de.dante.extex.typesetter.type.Node;
-import de.dante.extex.typesetter.type.node.WhatsItNode;
 
 /**
  * This node contains an image which should be passed to the backend driver.

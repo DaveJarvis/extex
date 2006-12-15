@@ -19,23 +19,24 @@
 
 package de.dante.extex.interpreter.primitives.info;
 
+import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.EofException;
+import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.interpreter.exception.helping.UndefinedControlSequenceException;
+import org.extex.interpreter.type.AbstractCode;
+import org.extex.interpreter.type.Code;
+import org.extex.interpreter.type.CodeExpander;
+import org.extex.interpreter.type.ExpandableCode;
+import org.extex.interpreter.type.Theable;
+import org.extex.interpreter.type.tokens.Tokens;
 
-import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.exception.helping.EofException;
-import de.dante.extex.interpreter.exception.helping.HelpingException;
-import de.dante.extex.interpreter.exception.helping.UndefinedControlSequenceException;
-import de.dante.extex.interpreter.type.AbstractCode;
-import de.dante.extex.interpreter.type.Code;
-import de.dante.extex.interpreter.type.CodeExpander;
-import de.dante.extex.interpreter.type.ExpandableCode;
-import de.dante.extex.interpreter.type.Theable;
-import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
+
 
 /**
  * This class provides an implementation for the primitive <code>\the</code>.
@@ -90,11 +91,11 @@ public class The extends AbstractCode implements ExpandableCode, CodeExpander {
      * Get the next token (not expand) and if it <code>Theable</code>, then
      * call <code>the()</code> and put the result on the stack.
      *
-     * @see de.dante.extex.interpreter.type.Code#execute(
-     *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Code#execute(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
@@ -123,11 +124,11 @@ public class The extends AbstractCode implements ExpandableCode, CodeExpander {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.ExpandableCode#expand(
-     *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.ExpandableCode#expand(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void expand(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
@@ -137,11 +138,11 @@ public class The extends AbstractCode implements ExpandableCode, CodeExpander {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.CodeExpander#expandCode(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.CodeExpander#expandCode(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter,
-     *      de.dante.extex.interpreter.type.tokens.Tokens)
+     *      org.extex.typesetter.Typesetter,
+     *      org.extex.interpreter.type.tokens.Tokens)
      */
     public void expandCode(final Context context, final TokenSource source,
             final Typesetter typesetter, final Tokens tokens)

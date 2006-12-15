@@ -21,25 +21,25 @@ package org.extex.interpreter.primitives.dynamic;
 
 import java.util.logging.Logger;
 
+import org.extex.backend.outputStream.OutputStreamFactory;
+import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.EofException;
+import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.interpreter.type.AbstractCode;
+import org.extex.interpreter.type.OutputStreamConsumer;
+import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.util.exception.GeneralException;
+import org.extex.util.framework.configuration.Configuration;
+import org.extex.util.framework.configuration.ConfigurationFactory;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.framework.configuration.exception.ConfigurationNotFoundException;
+import org.extex.util.framework.logger.LogEnabled;
 
-import de.dante.extex.backend.outputStream.OutputStreamFactory;
-import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.exception.helping.EofException;
-import de.dante.extex.interpreter.exception.helping.HelpingException;
-import de.dante.extex.interpreter.type.AbstractCode;
-import de.dante.extex.interpreter.type.OutputStreamConsumer;
-import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.interpreter.unit.LoadUnit;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.exception.GeneralException;
-import de.dante.util.framework.configuration.Configuration;
-import de.dante.util.framework.configuration.ConfigurationFactory;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
-import de.dante.util.framework.configuration.exception.ConfigurationNotFoundException;
-import de.dante.util.framework.logger.LogEnabled;
 
 /**
  * This primitive initiates the loading of native code and implements the
@@ -112,7 +112,7 @@ public class EnsureLoaded extends AbstractCode
     }
 
     /**
-     * @see de.dante.util.framework.logger.LogEnabled#enableLogging(
+     * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
     public void enableLogging(final Logger theLogger) {
@@ -121,11 +121,11 @@ public class EnsureLoaded extends AbstractCode
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.Code#execute(
-     *       de.dante.extex.interpreter.Flags,
+     * @see org.extex.interpreter.type.Code#execute(
+     *       org.extex.interpreter.Flags,
      *       org.extex.interpreter.context.Context,
      *       org.extex.interpreter.TokenSource,
-     *       de.dante.extex.typesetter.Typesetter)
+     *       org.extex.typesetter.Typesetter)
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
@@ -165,8 +165,8 @@ public class EnsureLoaded extends AbstractCode
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.OutputStreamConsumer#setOutputStreamFactory(
-     *      de.dante.extex.backend.outputStream.OutputStreamFactory)
+     * @see org.extex.interpreter.type.OutputStreamConsumer#setOutputStreamFactory(
+     *      org.extex.backend.outputStream.OutputStreamFactory)
      */
     public void setOutputStreamFactory(final OutputStreamFactory factory) {
 

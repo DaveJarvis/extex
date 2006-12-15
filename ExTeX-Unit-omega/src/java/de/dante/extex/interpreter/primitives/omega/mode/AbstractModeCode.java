@@ -20,19 +20,20 @@
 package de.dante.extex.interpreter.primitives.omega.mode;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.EofException;
+import org.extex.interpreter.type.AbstractCode;
 
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.exception.helping.EofException;
-import de.dante.extex.interpreter.type.AbstractCode;
 import de.dante.extex.scanner.type.token.Token;
+
 
 /**
  * This is the abstract base class for primitives dealing with an input or
  * output mode as defined by Omega.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4411 $
  */
 public abstract class AbstractModeCode extends AbstractCode {
 

@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter.primitives.macro.util;
 
-import de.dante.extex.interpreter.type.tokens.Tokens;
+import org.extex.interpreter.type.tokens.Tokens;
 
 /**
  * This class provides a container for the pattern of a macro.

@@ -19,9 +19,9 @@
 
 package de.dante.extex.interpreter.primitives.macro.util;
 
-import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.type.ProtectedCode;
-import de.dante.extex.interpreter.type.tokens.Tokens;
+import org.extex.interpreter.Flags;
+import org.extex.interpreter.type.ProtectedCode;
+import org.extex.interpreter.type.tokens.Tokens;
 
 /**
  * This class is identical to the super class MacroCode but in addition it

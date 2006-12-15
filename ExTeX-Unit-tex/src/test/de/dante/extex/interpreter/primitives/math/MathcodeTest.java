@@ -19,11 +19,11 @@
 
 package de.dante.extex.interpreter.primitives.math;
 
+import org.extex.interpreter.Interpreter;
+import org.extex.interpreter.type.math.MathClass;
+import org.extex.interpreter.type.math.MathCode;
 import org.extex.type.UnicodeChar;
 
-import de.dante.extex.interpreter.Interpreter;
-import de.dante.extex.interpreter.type.math.MathClass;
-import de.dante.extex.interpreter.type.math.MathCode;
 import de.dante.test.NoFlagsButGlobalPrimitiveTester;
 
 /**

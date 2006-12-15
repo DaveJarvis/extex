@@ -22,19 +22,19 @@ package de.dante.extex.interpreter.unit.tex;
 import java.util.logging.Logger;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.context.ContextInternals;
+import org.extex.interpreter.context.observer.count.CountObservable;
+import org.extex.interpreter.context.observer.count.CountObserver;
+import org.extex.interpreter.context.observer.load.LoadedObserver;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.count.Count;
+import org.extex.interpreter.unit.Loader;
+import org.extex.interpreter.unit.UnitInfo;
+import org.extex.util.framework.logger.LogEnabled;
 
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.context.ContextInternals;
-import de.dante.extex.interpreter.context.observer.count.CountObservable;
-import de.dante.extex.interpreter.context.observer.count.CountObserver;
-import de.dante.extex.interpreter.context.observer.load.LoadedObserver;
-import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.observer.command.CommandObservable;
-import de.dante.extex.interpreter.type.count.Count;
-import de.dante.extex.interpreter.unit.Loader;
-import de.dante.extex.interpreter.unit.UnitInfo;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.framework.logger.LogEnabled;
 
 /**
  * This class provides the setup for the unit <b>tex</b>.
@@ -44,7 +44,7 @@ import de.dante.util.framework.logger.LogEnabled;
  *  Tracing is <logo>TeX</logo> is controlled by some count registers.
  *  The implementation in <logo>ExTeX</logo> is based on observers. In
  *  the first stage a {@link
- *  de.dante.extex.interpreter.context.observer.count.CountObserver
+ *  org.extex.interpreter.context.observer.count.CountObserver
  *  CountObserver} for the controlling count is registered. In this
  *  observer the observer for the real event is registered if this as
  *  not been done before and the value of the controlling count is
@@ -79,7 +79,7 @@ import de.dante.util.framework.logger.LogEnabled;
  *
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4431 $
  */
 public class TexUnitInfo extends UnitInfo
         implements
@@ -119,7 +119,7 @@ public class TexUnitInfo extends UnitInfo
     }
 
     /**
-     * @see de.dante.util.framework.logger.LogEnabled#enableLogging(
+     * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
     public void enableLogging(final Logger log) {
@@ -128,10 +128,10 @@ public class TexUnitInfo extends UnitInfo
     }
 
     /**
-     * @see de.dante.extex.interpreter.primitives.dynamic.Loader#load(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.primitives.dynamic.Loader#load(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void load(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
@@ -140,8 +140,8 @@ public class TexUnitInfo extends UnitInfo
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.observer.load.LoadedObserver#receiveLoaded(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.context.observer.load.LoadedObserver#receiveLoaded(
+     *      org.extex.interpreter.context.Context,
      *       org.extex.interpreter.TokenSource)
      */
     public void receiveLoaded(final Context context, final TokenSource source)
@@ -159,10 +159,10 @@ public class TexUnitInfo extends UnitInfo
                     new CountObserver() {
 
                         /**
-                         * @see de.dante.extex.interpreter.context.observer.count.CountObserver#receiveCountChange(
-                         *      de.dante.extex.interpreter.context.ContextInternals,
+                         * @see org.extex.interpreter.context.observer.count.CountObserver#receiveCountChange(
+                         *      org.extex.interpreter.context.ContextInternals,
                          *      java.lang.String,
-                         *      de.dante.extex.interpreter.type.count.Count)
+                         *      org.extex.interpreter.type.count.Count)
                          */
                         public void receiveCountChange(
                                 final ContextInternals context,

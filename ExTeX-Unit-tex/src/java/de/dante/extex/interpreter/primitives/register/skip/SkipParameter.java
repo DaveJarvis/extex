@@ -21,8 +21,8 @@ package de.dante.extex.interpreter.primitives.register.skip;
 
 import org.extex.interpreter.Namespace;
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
 
-import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.typesetter.Typesetter;
 
 /**
@@ -43,7 +43,7 @@ import de.dante.extex.typesetter.Typesetter;
  * </pre>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4431 $
  */
 public class SkipParameter extends SkipPrimitive {
 

@@ -22,17 +22,17 @@ package de.dante.extex.interpreter.primitives.file;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.AbstractCode;
+import org.extex.interpreter.type.file.OutFile;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.framework.logger.LogEnabled;
 
-import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.type.AbstractCode;
-import de.dante.extex.interpreter.type.file.OutFile;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.type.node.WhatsItCloseNode;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
-import de.dante.util.framework.logger.LogEnabled;
 
 /**
  * This class provides an implementation for the primitive
@@ -96,7 +96,7 @@ public class Closeout extends AbstractCode implements LogEnabled {
      *
      * @param theLogger the new logger
      *
-     * @see de.dante.util.framework.logger.LogEnabled#enableLogging(
+     * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
     public void enableLogging(final Logger theLogger) {
@@ -105,11 +105,11 @@ public class Closeout extends AbstractCode implements LogEnabled {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.Code#execute(
-     *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Code#execute(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)

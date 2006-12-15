@@ -20,11 +20,14 @@
 package de.dante.extex.interpreter.primitives.hyphen;
 
 
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.type.AbstractCode;
-import de.dante.extex.interpreter.type.tokens.Tokens;
+import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.AbstractCode;
+import org.extex.interpreter.type.tokens.Tokens;
+
 import de.dante.extex.language.Language;
+import de.dante.extex.typesetter.Typesetter;
 
 /**
  * This is the abstract base class for all hyphenation related primitives.

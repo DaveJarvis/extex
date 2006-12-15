@@ -21,15 +21,17 @@ package de.dante.extex.interpreter.primitives.register.box;
 
 import java.io.Serializable;
 
-import org.extex.interpreter.TokenSource;
+import javax.xml.transform.Source;
 
-import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.type.box.Box;
-import de.dante.extex.interpreter.type.box.Boxable;
+import org.extex.interpreter.Flags;
+import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.box.Box;
+import org.extex.interpreter.type.box.Boxable;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive <code>\copy</code>.
@@ -62,7 +64,7 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
  * </doc>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4431 $
  */
 public class Copy extends BoxPrimitive implements Boxable, Serializable {
 
@@ -82,11 +84,11 @@ public class Copy extends BoxPrimitive implements Boxable, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.Code#execute(
-     *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Code#execute(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)

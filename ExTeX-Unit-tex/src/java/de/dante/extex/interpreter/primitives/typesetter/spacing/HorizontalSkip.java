@@ -20,17 +20,17 @@
 package de.dante.extex.interpreter.primitives.typesetter.spacing;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.glue.FixedGlue;
 
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.type.glue.FixedGlue;
 import de.dante.extex.typesetter.Typesetter;
 
 /**
  * This interface describes macros which produces a horizontal glue.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4431 $
  */
 public interface HorizontalSkip {
 

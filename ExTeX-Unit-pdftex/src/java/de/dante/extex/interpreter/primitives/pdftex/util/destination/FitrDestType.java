@@ -19,7 +19,8 @@
 
 package de.dante.extex.interpreter.primitives.pdftex.util.destination;
 
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.interpreter.type.dimen.FixedDimen;
+
 import de.dante.extex.typesetter.type.node.RuleNode;
 
 /**
@@ -83,8 +84,8 @@ public class FitrDestType extends DestType {
     }
 
     /**
-     * @see de.dante.extex.interpreter.primitives.pdftex.util.destType.DestType#visit(
-     *      de.dante.extex.interpreter.primitives.pdftex.util.destType.DestTypeVisitor)
+     * @see org.extex.interpreter.primitives.pdftex.util.destType.DestType#visit(
+     *      org.extex.interpreter.primitives.pdftex.util.destType.DestTypeVisitor)
      */
     public Object visit(final DestinationVisitor visitor) {
 

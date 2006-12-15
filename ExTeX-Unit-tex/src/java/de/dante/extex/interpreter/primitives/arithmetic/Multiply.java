@@ -19,20 +19,21 @@
 
 package de.dante.extex.interpreter.primitives.arithmetic;
 
+import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.CantUseAfterException;
+import org.extex.interpreter.exception.helping.EofException;
+import org.extex.interpreter.exception.helping.UndefinedControlSequenceException;
+import org.extex.interpreter.type.AbstractAssignment;
+import org.extex.interpreter.type.Code;
+import org.extex.interpreter.type.arithmetic.Multiplyable;
 
-import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.exception.helping.CantUseAfterException;
-import de.dante.extex.interpreter.exception.helping.EofException;
-import de.dante.extex.interpreter.exception.helping.UndefinedControlSequenceException;
-import de.dante.extex.interpreter.type.AbstractAssignment;
-import de.dante.extex.interpreter.type.Code;
-import de.dante.extex.interpreter.type.arithmetic.Multiplyable;
 import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
+
 
 /**
  * This class provides an implementation for the primitive
@@ -84,7 +85,7 @@ import de.dante.extex.typesetter.Typesetter;
  * </doc>
  *
  *
- * @see de.dante.extex.interpreter.type.arithmetic.Multiplyable
+ * @see org.extex.interpreter.type.arithmetic.Multiplyable
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4408 $
  */
@@ -106,11 +107,11 @@ public class Multiply extends AbstractAssignment {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.Code#execute(
-     *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Code#execute(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void assign(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)

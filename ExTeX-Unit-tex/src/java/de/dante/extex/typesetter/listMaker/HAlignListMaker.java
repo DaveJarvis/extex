@@ -23,17 +23,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.interpreter.type.Code;
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.exception.helping.HelpingException;
 import de.dante.extex.interpreter.primitives.table.Noalign;
 import de.dante.extex.interpreter.primitives.table.Omit;
 import de.dante.extex.interpreter.primitives.table.util.PreambleItem;
-import de.dante.extex.interpreter.type.Code;
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
-import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
@@ -42,7 +43,6 @@ import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.node.HorizontalListNode;
 import de.dante.extex.typesetter.type.node.VerticalListNode;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides a list maker for horizontal alignments.
@@ -212,7 +212,7 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#complete(TypesetterOptions)
+     * @see org.extex.typesetter.ListMaker#complete(TypesetterOptions)
      */
     public NodeList complete(final TypesetterOptions context)
             throws TypesetterException,
@@ -257,10 +257,10 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
     }
 
     /**
-     * @see de.dante.extex.typesetter.listMaker.AlignmentList#cr(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.typesetter.listMaker.AlignmentList#cr(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.type.NodeList)
+     *      org.extex.typesetter.type.NodeList)
      */
     public void cr(final Context context, final TokenSource source,
             final NodeList noalign) throws TypesetterException {
@@ -273,10 +273,10 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
     }
 
     /**
-     * @see de.dante.extex.typesetter.listMaker.AlignmentList#crcr(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.typesetter.listMaker.AlignmentList#crcr(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void crcr(final Context context, final TokenSource source,
             final Typesetter typesetter) throws TypesetterException {
@@ -303,7 +303,7 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
     }
 
     /**
-     * @see de.dante.extex.typesetter.listMaker.AlignmentList#omit()
+     * @see org.extex.typesetter.listMaker.AlignmentList#omit()
      */
     public void omit() throws TypesetterException {
 
@@ -311,8 +311,8 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
     }
 
     /**
-     * @see de.dante.extex.typesetter.listMaker.AlignmentList#span(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.typesetter.listMaker.AlignmentList#span(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource)
      */
     public void span(final Context context, final TokenSource source)
@@ -373,10 +373,10 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#tab(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.typesetter.ListMaker#tab(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.scanner.type.token.Token)
+     *      org.extex.scanner.type.token.Token)
      */
     public void tab(final Context context, final TokenSource source,
             final Token token)

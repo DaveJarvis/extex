@@ -21,20 +21,21 @@ package de.dante.extex.interpreter.primitives.info;
 
 import java.util.logging.Logger;
 
+import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.CantUseAfterException;
+import org.extex.interpreter.type.AbstractCode;
+import org.extex.interpreter.type.Code;
+import org.extex.interpreter.type.Theable;
+import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.util.framework.logger.LogEnabled;
 
-import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.exception.helping.CantUseAfterException;
-import de.dante.extex.interpreter.type.AbstractCode;
-import de.dante.extex.interpreter.type.Code;
-import de.dante.extex.interpreter.type.Theable;
-import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.framework.logger.LogEnabled;
+
 
 /**
  * This class provides an implementation for the primitive
@@ -74,7 +75,7 @@ public class Showthe extends AbstractCode implements LogEnabled {
     }
 
     /**
-     * @see de.dante.util.framework.logger.LogEnabled#enableLogging(
+     * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
     public void enableLogging(final Logger theLogger) {
@@ -86,11 +87,11 @@ public class Showthe extends AbstractCode implements LogEnabled {
      * Get the next token (not expand) and  put the value (as text) into the
      * log.
      *
-     * @see de.dante.extex.interpreter.type.Code#execute(
-     *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Code#execute(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)

@@ -20,16 +20,16 @@
 package de.dante.extex.interpreter.primitives.register.skip;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.AbstractCode;
+import org.extex.interpreter.type.Theable;
+import org.extex.interpreter.type.count.CountConvertible;
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.dimen.DimenConvertible;
+import org.extex.interpreter.type.glue.Glue;
+import org.extex.interpreter.type.tokens.Tokens;
 
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.type.AbstractCode;
-import de.dante.extex.interpreter.type.Theable;
-import de.dante.extex.interpreter.type.count.CountConvertible;
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.dimen.DimenConvertible;
-import de.dante.extex.interpreter.type.glue.Glue;
-import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.typesetter.Typesetter;
 
 /**
@@ -54,7 +54,7 @@ import de.dante.extex.typesetter.Typesetter;
  *  <pre class="syntax">
  *    &lang;glueshrink&rang;
  *      &rarr; <tt>\glueshrink</tt> {@linkplain
- *        de.dante.extex.interpreter.type.glue.Glue#parse(TokenSource,Context,Typesetter)
+ *        org.extex.interpreter.type.glue.Glue#parse(TokenSource,Context,Typesetter)
  *        &lang;glue&rang;} </pre>
  *
  * <h4>Examples</h4>
@@ -65,7 +65,7 @@ import de.dante.extex.typesetter.Typesetter;
  *
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4431 $
  */
 public class Glueshrink extends AbstractCode
         implements
@@ -89,10 +89,10 @@ public class Glueshrink extends AbstractCode
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.count.CountConvertible#convertCount(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.count.CountConvertible#convertCount(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public long convertCount(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
@@ -102,10 +102,10 @@ public class Glueshrink extends AbstractCode
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.dimen.DimenConvertible#convertDimen(
-     *     de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.dimen.DimenConvertible#convertDimen(
+     *     org.extex.interpreter.context.Context,
      *     org.extex.interpreter.TokenSource,
-     *     de.dante.extex.typesetter.Typesetter)
+     *     org.extex.typesetter.Typesetter)
      */
     public long convertDimen(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
@@ -115,10 +115,10 @@ public class Glueshrink extends AbstractCode
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.Theable#the(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Theable#the(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {

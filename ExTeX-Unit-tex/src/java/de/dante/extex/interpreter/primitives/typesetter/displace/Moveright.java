@@ -20,12 +20,12 @@
 package de.dante.extex.interpreter.primitives.typesetter.displace;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.box.Box;
+import org.extex.interpreter.type.dimen.Dimen;
 
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.primitives.typesetter.box.AbstractBoxPrimitive;
-import de.dante.extex.interpreter.type.box.Box;
-import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.typesetter.Typesetter;
 
 /**
@@ -48,9 +48,9 @@ import de.dante.extex.typesetter.Typesetter;
  *  <pre class="syntax">
  *    &lang;moveright&rang;
  *      &rarr; <tt>\moveright</tt> {@linkplain
- *        de.dante.extex.interpreter.type.dimen#Dimen(Context,TokenSource)
+ *        org.extex.interpreter.type.dimen#Dimen(Context,TokenSource)
  *        &lang;dimen&rang;} {@linkplain
- *        org.extex.interpreter.TokenSource#getBox(Context,de.dante.extex.typesetter.Typesetter)
+ *        org.extex.interpreter.TokenSource#getBox(Context,org.extex.typesetter.Typesetter)
  *        &lang;box&rang;}  </pre>
  *
  * <p>
@@ -69,7 +69,7 @@ import de.dante.extex.typesetter.Typesetter;
  *
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4431 $
  */
 public class Moveright extends AbstractBoxPrimitive {
 
@@ -89,10 +89,10 @@ public class Moveright extends AbstractBoxPrimitive {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.box.Boxable#getBox(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.box.Boxable#getBox(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public Box getBox(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {

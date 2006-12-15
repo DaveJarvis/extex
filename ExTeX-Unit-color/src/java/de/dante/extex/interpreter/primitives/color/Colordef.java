@@ -19,14 +19,14 @@
 
 package de.dante.extex.interpreter.primitives.color;
 
+import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Color;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.AbstractAssignment;
 
-import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.context.Color;
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.primitives.color.util.ColorParser;
-import de.dante.extex.interpreter.type.AbstractAssignment;
 import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.typesetter.Typesetter;
 

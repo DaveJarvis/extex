@@ -20,15 +20,16 @@
 package de.dante.extex.interpreter.primitives.conditional;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.EofException;
+import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.interpreter.type.dimen.Dimen;
 
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.exception.helping.EofException;
-import de.dante.extex.interpreter.exception.helping.HelpingException;
-import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.scanner.type.Catcode;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
+
 
 /**
  * This class provides an implementation for the primitive <code>\ifdim</code>.
@@ -46,14 +47,14 @@ import de.dante.extex.typesetter.Typesetter;
  *  <pre class="syntax">
  *    &lang;ifdim&rang;
  *      &rarr; <tt>\ifdim</tt> {@linkplain
- *        de.dante.extex.interpreter.type.dimen#Dimen(Context,TokenSource)
+ *        org.extex.interpreter.type.dimen#Dimen(Context,TokenSource)
  *        &lang;dimen&rang;} &lang;op&rang; {@linkplain
- *        de.dante.extex.interpreter.type.dimen#Dimen(Context,TokenSource)
+ *        org.extex.interpreter.type.dimen#Dimen(Context,TokenSource)
  *        &lang;dimen&rang;} &lang;true text&rang; <tt>\fi</tt>
  *      | <tt>\ifdim</tt> {@linkplain
- *        de.dante.extex.interpreter.type.dimen#Dimen(Context,TokenSource)
+ *        org.extex.interpreter.type.dimen#Dimen(Context,TokenSource)
  *        &lang;dimen&rang;} &lang;op&rang; {@linkplain
- *        de.dante.extex.interpreter.type.dimen#Dimen(Context,TokenSource)
+ *        org.extex.interpreter.type.dimen#Dimen(Context,TokenSource)
  *        &lang;dimen&rang;} &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt>
  *
  *    &lang;op&rang;
@@ -85,9 +86,9 @@ public class Ifdim extends AbstractIf {
 
     /**
      * @see de.dante.extex.interpreter.primitives.conditional.AbstractIf#conditional(
-     *      de.dante.extex.interpreter.context.Context,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     protected boolean conditional(final Context context,
             final TokenSource source, final Typesetter typesetter)

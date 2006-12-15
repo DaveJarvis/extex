@@ -20,13 +20,13 @@
 package de.dante.extex.interpreter.primitives.register.skip;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.AbstractCode;
+import org.extex.interpreter.type.glue.Glue;
+import org.extex.interpreter.type.glue.GlueConvertible;
+import org.extex.interpreter.type.muskip.Muskip;
 
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.type.AbstractCode;
-import de.dante.extex.interpreter.type.glue.Glue;
-import de.dante.extex.interpreter.type.glue.GlueConvertible;
-import de.dante.extex.interpreter.type.muskip.Muskip;
 import de.dante.extex.typesetter.Typesetter;
 
 /**
@@ -57,7 +57,7 @@ import de.dante.extex.typesetter.Typesetter;
  *
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4431 $
  */
 public class Mutoglue extends AbstractCode implements GlueConvertible {
 
@@ -77,10 +77,10 @@ public class Mutoglue extends AbstractCode implements GlueConvertible {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.glue.GlueConvertible#convertGlue(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.glue.GlueConvertible#convertGlue(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public Glue convertGlue(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {

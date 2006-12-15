@@ -83,7 +83,7 @@ public class PdfDest extends WhatsItNode {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#toString(
+     * @see org.extex.typesetter.type.Node#toString(
      *      java.lang.StringBuffer,
      *      java.lang.String,
      *      int,

@@ -20,9 +20,10 @@
 package de.dante.extex.interpreter.primitives.math;
 
 
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.helping.MissingMathException;
-import de.dante.extex.interpreter.type.AbstractCode;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.helping.MissingMathException;
+import org.extex.interpreter.type.AbstractCode;
+
 import de.dante.extex.typesetter.ListMaker;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.listMaker.math.NoadConsumer;

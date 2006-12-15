@@ -20,25 +20,25 @@
 package de.dante.extex.interpreter.primitives.math;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.EofException;
+import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.interpreter.type.Code;
+import org.extex.interpreter.type.count.Count;
+import org.extex.interpreter.type.math.MathClass;
+import org.extex.interpreter.type.math.MathClassVisitor;
+import org.extex.interpreter.type.math.MathCode;
 import org.extex.type.UnicodeChar;
+import org.extex.util.framework.i18n.LocalizerFactory;
 
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.exception.helping.EofException;
-import de.dante.extex.interpreter.exception.helping.HelpingException;
 import de.dante.extex.interpreter.primitives.math.util.MathCodeConvertible;
-import de.dante.extex.interpreter.type.Code;
-import de.dante.extex.interpreter.type.count.Count;
-import de.dante.extex.interpreter.type.math.MathClass;
-import de.dante.extex.interpreter.type.math.MathClassVisitor;
-import de.dante.extex.interpreter.type.math.MathCode;
 import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.scanner.type.token.LeftBraceToken;
 import de.dante.extex.scanner.type.token.RightBraceToken;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.type.noad.MathGlyph;
-import de.dante.util.framework.i18n.LocalizerFactory;
 
 /**
  * This is the base class for all math primitives using the Omega encoding.
@@ -85,7 +85,7 @@ public abstract class AbstractOmegaMathCode extends AbstractMathCode {
     private static final MathClassVisitor VISITOR = new MathClassVisitor() {
 
         /**
-         * @see de.dante.extex.interpreter.type.math.MathClassVisitor#visitBinary(java.lang.Object, java.lang.Object)
+         * @see org.extex.interpreter.type.math.MathClassVisitor#visitBinary(java.lang.Object, java.lang.Object)
          */
         public Object visitBinary(final Object arg, final Object arg2) {
 
@@ -93,7 +93,7 @@ public abstract class AbstractOmegaMathCode extends AbstractMathCode {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.math.MathClassVisitor#visitClosing(java.lang.Object, java.lang.Object)
+         * @see org.extex.interpreter.type.math.MathClassVisitor#visitClosing(java.lang.Object, java.lang.Object)
          */
         public Object visitClosing(final Object arg, final Object arg2) {
 
@@ -101,7 +101,7 @@ public abstract class AbstractOmegaMathCode extends AbstractMathCode {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.math.MathClassVisitor#visitLarge(java.lang.Object, java.lang.Object)
+         * @see org.extex.interpreter.type.math.MathClassVisitor#visitLarge(java.lang.Object, java.lang.Object)
          */
         public Object visitLarge(final Object arg, final Object arg2) {
 
@@ -109,7 +109,7 @@ public abstract class AbstractOmegaMathCode extends AbstractMathCode {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.math.MathClassVisitor#visitOpening(java.lang.Object, java.lang.Object)
+         * @see org.extex.interpreter.type.math.MathClassVisitor#visitOpening(java.lang.Object, java.lang.Object)
          */
         public Object visitOpening(final Object arg, final Object arg2) {
 
@@ -117,7 +117,7 @@ public abstract class AbstractOmegaMathCode extends AbstractMathCode {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.math.MathClassVisitor#visitOrdinary(java.lang.Object, java.lang.Object)
+         * @see org.extex.interpreter.type.math.MathClassVisitor#visitOrdinary(java.lang.Object, java.lang.Object)
          */
         public Object visitOrdinary(final Object arg, final Object arg2) {
 
@@ -125,7 +125,7 @@ public abstract class AbstractOmegaMathCode extends AbstractMathCode {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.math.MathClassVisitor#visitPunctation(java.lang.Object, java.lang.Object)
+         * @see org.extex.interpreter.type.math.MathClassVisitor#visitPunctation(java.lang.Object, java.lang.Object)
          */
         public Object visitPunctation(final Object arg, final Object arg2) {
 
@@ -133,7 +133,7 @@ public abstract class AbstractOmegaMathCode extends AbstractMathCode {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.math.MathClassVisitor#visitRelation(java.lang.Object, java.lang.Object)
+         * @see org.extex.interpreter.type.math.MathClassVisitor#visitRelation(java.lang.Object, java.lang.Object)
          */
         public Object visitRelation(final Object arg, final Object arg2) {
 
@@ -141,7 +141,7 @@ public abstract class AbstractOmegaMathCode extends AbstractMathCode {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.math.MathClassVisitor#visitVariable(java.lang.Object, java.lang.Object)
+         * @see org.extex.interpreter.type.math.MathClassVisitor#visitVariable(java.lang.Object, java.lang.Object)
          */
         public Object visitVariable(final Object arg, final Object arg2) {
 

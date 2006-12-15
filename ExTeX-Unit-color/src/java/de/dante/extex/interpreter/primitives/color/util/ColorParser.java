@@ -19,19 +19,19 @@
 
 package de.dante.extex.interpreter.primitives.color.util;
 
+import org.extex.color.model.ColorFactory;
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Color;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.EofException;
+import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.interpreter.type.Code;
+import org.extex.interpreter.type.color.ColorConvertible;
+import org.extex.interpreter.type.glue.GlueComponent;
+import org.extex.interpreter.type.scaled.ScaledNumber;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
-import de.dante.extex.color.model.ColorFactory;
-import de.dante.extex.interpreter.context.Color;
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.exception.helping.EofException;
-import de.dante.extex.interpreter.exception.helping.HelpingException;
-import de.dante.extex.interpreter.type.Code;
-import de.dante.extex.interpreter.type.color.ColorConvertible;
-import de.dante.extex.interpreter.type.glue.GlueComponent;
-import de.dante.extex.interpreter.type.scaled.ScaledNumber;
 import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.scanner.type.token.LeftBraceToken;
 import de.dante.extex.scanner.type.token.RightBraceToken;

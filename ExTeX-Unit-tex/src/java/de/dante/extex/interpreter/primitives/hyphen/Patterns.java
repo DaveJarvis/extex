@@ -19,16 +19,16 @@
 
 package de.dante.extex.interpreter.primitives.hyphen;
 
+import org.extex.interpreter.Flags;
 import org.extex.interpreter.Namespace;
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.EofException;
+import org.extex.interpreter.exception.helping.MissingLeftBraceException;
+import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.type.UnicodeChar;
 
-import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.exception.helping.EofException;
-import de.dante.extex.interpreter.exception.helping.MissingLeftBraceException;
-import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.language.Language;
 import de.dante.extex.language.hyphenation.exception.DuplicateHyphenationException;
 import de.dante.extex.language.hyphenation.exception.IllegalTokenHyphenationException;
@@ -141,8 +141,8 @@ public class Patterns extends AbstractHyphenationCode {
         }
 
         /**
-         * @see de.dante.extex.scanner.type.token.TokenVisitor#visitActive(
-         *      de.dante.extex.scanner.type.ActiveCharacterToken,
+         * @see org.extex.scanner.type.token.TokenVisitor#visitActive(
+         *      org.extex.scanner.type.ActiveCharacterToken,
          *      java.lang.Object)
          */
         public Object visitActive(final ActiveCharacterToken token,
@@ -153,8 +153,8 @@ public class Patterns extends AbstractHyphenationCode {
         }
 
         /**
-         * @see de.dante.extex.scanner.type.token.TokenVisitor#visitCr(
-         *      de.dante.extex.scanner.type.CrToken,
+         * @see org.extex.scanner.type.token.TokenVisitor#visitCr(
+         *      org.extex.scanner.type.CrToken,
          *      java.lang.Object)
          */
         public Object visitCr(final CrToken token, final Object arg)
@@ -165,8 +165,8 @@ public class Patterns extends AbstractHyphenationCode {
         }
 
         /**
-         * @see de.dante.extex.scanner.type.token.TokenVisitor#visitEscape(
-         *      de.dante.extex.scanner.type.ControlSequenceToken,
+         * @see org.extex.scanner.type.token.TokenVisitor#visitEscape(
+         *      org.extex.scanner.type.ControlSequenceToken,
          *      java.lang.Object)
          */
         public Object visitEscape(final ControlSequenceToken token,
@@ -177,8 +177,8 @@ public class Patterns extends AbstractHyphenationCode {
         }
 
         /**
-         * @see de.dante.extex.scanner.type.token.TokenVisitor#visitLeftBrace(
-         *      de.dante.extex.scanner.type.LeftBraceToken,
+         * @see org.extex.scanner.type.token.TokenVisitor#visitLeftBrace(
+         *      org.extex.scanner.type.LeftBraceToken,
          *      java.lang.Object)
          */
         public Object visitLeftBrace(final LeftBraceToken token,
@@ -189,8 +189,8 @@ public class Patterns extends AbstractHyphenationCode {
         }
 
         /**
-         * @see de.dante.extex.scanner.type.token.TokenVisitor#visitLetter(
-         *      de.dante.extex.scanner.type.LetterToken,
+         * @see org.extex.scanner.type.token.TokenVisitor#visitLetter(
+         *      org.extex.scanner.type.LetterToken,
          *      java.lang.Object)
          */
         public Object visitLetter(final LetterToken token, final Object arg)
@@ -216,8 +216,8 @@ public class Patterns extends AbstractHyphenationCode {
         }
 
         /**
-         * @see de.dante.extex.scanner.type.token.TokenVisitor#visitMacroParam(
-         *      de.dante.extex.scanner.type.MacroParamToken,
+         * @see org.extex.scanner.type.token.TokenVisitor#visitMacroParam(
+         *      org.extex.scanner.type.MacroParamToken,
          *      java.lang.Object)
          */
         public Object visitMacroParam(final MacroParamToken token,
@@ -228,8 +228,8 @@ public class Patterns extends AbstractHyphenationCode {
         }
 
         /**
-         * @see de.dante.extex.scanner.type.token.TokenVisitor#visitMathShift(
-         *      de.dante.extex.scanner.type.MathShiftToken,
+         * @see org.extex.scanner.type.token.TokenVisitor#visitMathShift(
+         *      org.extex.scanner.type.MathShiftToken,
          *      java.lang.Object)
          */
         public Object visitMathShift(final MathShiftToken token,
@@ -240,8 +240,8 @@ public class Patterns extends AbstractHyphenationCode {
         }
 
         /**
-         * @see de.dante.extex.scanner.type.token.TokenVisitor#visitOther(
-         *      de.dante.extex.scanner.type.OtherToken,
+         * @see org.extex.scanner.type.token.TokenVisitor#visitOther(
+         *      org.extex.scanner.type.OtherToken,
          *      java.lang.Object)
          */
         public Object visitOther(final OtherToken token, final Object arg)
@@ -284,8 +284,8 @@ public class Patterns extends AbstractHyphenationCode {
          * This method returns a non-null value to indicate the end of
          * processing.
          *
-         * @see de.dante.extex.scanner.type.token.TokenVisitor#visitRightBrace(
-         *      de.dante.extex.scanner.type.RightBraceToken,
+         * @see org.extex.scanner.type.token.TokenVisitor#visitRightBrace(
+         *      org.extex.scanner.type.RightBraceToken,
          *      java.lang.Object)
          */
         public Object visitRightBrace(final RightBraceToken token,
@@ -300,8 +300,8 @@ public class Patterns extends AbstractHyphenationCode {
         }
 
         /**
-         * @see de.dante.extex.scanner.type.token.TokenVisitor#visitSpace(
-         *      de.dante.extex.scanner.type.SpaceToken,
+         * @see org.extex.scanner.type.token.TokenVisitor#visitSpace(
+         *      org.extex.scanner.type.SpaceToken,
          *      java.lang.Object)
          */
         public Object visitSpace(final SpaceToken token, final Object arg)
@@ -316,8 +316,8 @@ public class Patterns extends AbstractHyphenationCode {
         }
 
         /**
-         * @see de.dante.extex.scanner.type.token.TokenVisitor#visitSubMark(
-         *      de.dante.extex.scanner.type.SubMarkToken,
+         * @see org.extex.scanner.type.token.TokenVisitor#visitSubMark(
+         *      org.extex.scanner.type.SubMarkToken,
          *      java.lang.Object)
          */
         public Object visitSubMark(final SubMarkToken token, final Object arg)
@@ -328,8 +328,8 @@ public class Patterns extends AbstractHyphenationCode {
         }
 
         /**
-         * @see de.dante.extex.scanner.type.token.TokenVisitor#visitSupMark(
-         *      de.dante.extex.scanner.type.SupMarkToken,
+         * @see org.extex.scanner.type.token.TokenVisitor#visitSupMark(
+         *      org.extex.scanner.type.SupMarkToken,
          *      java.lang.Object)
          */
         public Object visitSupMark(final SupMarkToken token, final Object arg)
@@ -340,8 +340,8 @@ public class Patterns extends AbstractHyphenationCode {
         }
 
         /**
-         * @see de.dante.extex.scanner.type.token.TokenVisitor#visitTabMark(
-         *      de.dante.extex.scanner.type.TabMarkToken,
+         * @see org.extex.scanner.type.token.TokenVisitor#visitTabMark(
+         *      org.extex.scanner.type.TabMarkToken,
          *      java.lang.Object)
          */
         public Object visitTabMark(final TabMarkToken token, final Object arg)
@@ -368,11 +368,11 @@ public class Patterns extends AbstractHyphenationCode {
      * The <code>HyphernationTable</code> are based on the
      * value from <code>\language</code>.
      *
-     * @see de.dante.extex.interpreter.type.Code#execute(
-     *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Code#execute(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)

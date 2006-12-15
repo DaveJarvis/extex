@@ -19,23 +19,23 @@
 
 package de.dante.extex.interpreter.primitives.color;
 
+import org.extex.color.ColorUtil;
+import org.extex.color.ColorVisitor;
+import org.extex.color.model.CmykColor;
+import org.extex.color.model.GrayscaleColor;
+import org.extex.color.model.HsvColor;
+import org.extex.color.model.RgbColor;
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Color;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.AbstractAssignment;
+import org.extex.interpreter.type.Showable;
+import org.extex.interpreter.type.Theable;
+import org.extex.interpreter.type.color.ColorConvertible;
+import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.util.exception.GeneralException;
 
-import de.dante.extex.color.ColorUtil;
-import de.dante.extex.color.ColorVisitor;
-import de.dante.extex.color.model.CmykColor;
-import de.dante.extex.color.model.GrayscaleColor;
-import de.dante.extex.color.model.HsvColor;
-import de.dante.extex.color.model.RgbColor;
-import de.dante.extex.interpreter.context.Color;
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.type.AbstractAssignment;
-import de.dante.extex.interpreter.type.Showable;
-import de.dante.extex.interpreter.type.Theable;
-import de.dante.extex.interpreter.type.color.ColorConvertible;
-import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.typesetter.Typesetter;
 
 /**

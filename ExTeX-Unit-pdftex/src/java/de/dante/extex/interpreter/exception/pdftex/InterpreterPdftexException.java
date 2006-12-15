@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter.exception.pdftex;
 
-import de.dante.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.InterpreterException;
 
 
 /**

@@ -20,16 +20,16 @@
 package de.dante.extex.interpreter.primitives.register.count;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.InitializableCode;
+import org.extex.interpreter.type.count.Count;
+import org.extex.util.framework.configuration.Configurable;
+import org.extex.util.framework.configuration.Configuration;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.type.InitializableCode;
-import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.framework.configuration.Configurable;
-import de.dante.util.framework.configuration.Configuration;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the count valued primitives like
@@ -75,8 +75,8 @@ public class IntegerParameter extends CountPrimitive
     }
 
     /**
-     * @see de.dante.util.framework.configuration.Configurable#configure(
-     *      de.dante.util.framework.configuration.Configuration)
+     * @see org.extex.util.framework.configuration.Configurable#configure(
+     *      org.extex.util.framework.configuration.Configuration)
      */
     public void configure(final Configuration config)
             throws ConfigurationException {
@@ -89,9 +89,9 @@ public class IntegerParameter extends CountPrimitive
 
     /**
      * @see de.dante.extex.interpreter.primitives.register.count.AbstractCount#getKey(
-     *      de.dante.extex.interpreter.context.Context,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     protected String getKey(final Context context, final TokenSource source,
             final Typesetter typesetter) {
@@ -108,10 +108,10 @@ public class IntegerParameter extends CountPrimitive
      *
      * @throws InterpreterException in case of an error
      *
-     * @see de.dante.extex.interpreter.type.InitializableCode#init(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.InitializableCode#init(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void init(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {

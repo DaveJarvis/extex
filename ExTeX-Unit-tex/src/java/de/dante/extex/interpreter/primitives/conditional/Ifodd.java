@@ -20,10 +20,10 @@
 package de.dante.extex.interpreter.primitives.conditional;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.count.Count;
 
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.typesetter.Typesetter;
 
 /**
@@ -75,9 +75,9 @@ public class Ifodd extends AbstractIf {
 
     /**
      * @see de.dante.extex.interpreter.primitives.conditional.AbstractIf#conditional(
-     *      de.dante.extex.interpreter.context.Context,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     protected boolean conditional(final Context context,
             final TokenSource source, final Typesetter typesetter)

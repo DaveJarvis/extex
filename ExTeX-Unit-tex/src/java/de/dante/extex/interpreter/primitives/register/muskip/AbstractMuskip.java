@@ -21,10 +21,10 @@ package de.dante.extex.interpreter.primitives.register.muskip;
 
 import org.extex.interpreter.Namespace;
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.AbstractAssignment;
 
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.type.AbstractAssignment;
 import de.dante.extex.typesetter.Typesetter;
 
 /**
@@ -32,7 +32,7 @@ import de.dante.extex.typesetter.Typesetter;
  * numbered muskip registers.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4431 $
  */
 public abstract class AbstractMuskip extends AbstractAssignment {
 

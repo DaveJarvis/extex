@@ -19,11 +19,11 @@
 
 package org.extex.interpreter.primitives.dynamic;
 
+import org.extex.interpreter.context.Context;
 import org.extex.interpreter.primitives.dynamic.java.Loadable;
+import org.extex.util.exception.GeneralException;
 
-import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.exception.GeneralException;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -69,9 +69,9 @@ public class NativeloadSensor implements Loadable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.primitives.dynamic.java.Loadable#init(
+     * @see org.extex.interpreter.primitives.dynamic.java.Loadable#init(
      *      org.extex.interpreter.context.Context,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void init(final Context context, final Typesetter typesetter)
             throws GeneralException {

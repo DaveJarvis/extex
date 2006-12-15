@@ -20,12 +20,12 @@
 package de.dante.extex.interpreter.primitives.pdftex.util.destination;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.count.Count;
+import org.extex.interpreter.type.dimen.Dimen;
 
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.exception.pdftex.InterpreterPdftexDestinationTypeException;
-import de.dante.extex.interpreter.type.count.Count;
-import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.type.node.RuleNode;
 
@@ -33,7 +33,7 @@ import de.dante.extex.typesetter.type.node.RuleNode;
  * This is the abstract base class for destination types in PDF.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4409 $
  */
 public abstract class DestType {
 
@@ -43,8 +43,8 @@ public abstract class DestType {
     public static final DestType FIT = new DestType() {
 
         /**
-         * @see de.dante.extex.interpreter.primitives.pdftex.util.destType.DestType#visit(
-         *      de.dante.extex.interpreter.primitives.pdftex.util.destType.DestTypeVisitor)
+         * @see org.extex.interpreter.primitives.pdftex.util.destType.DestType#visit(
+         *      org.extex.interpreter.primitives.pdftex.util.destType.DestTypeVisitor)
          */
         public Object visit(final DestinationVisitor visitor) {
 
@@ -67,8 +67,8 @@ public abstract class DestType {
     public static final DestType FITB = new DestType() {
 
         /**
-         * @see de.dante.extex.interpreter.primitives.pdftex.util.destType.DestType#visit(
-         *      de.dante.extex.interpreter.primitives.pdftex.util.destType.DestTypeVisitor)
+         * @see org.extex.interpreter.primitives.pdftex.util.destType.DestType#visit(
+         *      org.extex.interpreter.primitives.pdftex.util.destType.DestTypeVisitor)
          */
         public Object visit(final DestinationVisitor visitor) {
 
@@ -91,8 +91,8 @@ public abstract class DestType {
     public static final DestType FITBH = new DestType() {
 
         /**
-         * @see de.dante.extex.interpreter.primitives.pdftex.util.destType.DestType#visit(
-         *      de.dante.extex.interpreter.primitives.pdftex.util.destType.DestTypeVisitor)
+         * @see org.extex.interpreter.primitives.pdftex.util.destType.DestType#visit(
+         *      org.extex.interpreter.primitives.pdftex.util.destType.DestTypeVisitor)
          */
         public Object visit(final DestinationVisitor visitor) {
 
@@ -115,8 +115,8 @@ public abstract class DestType {
     public static final DestType FITBV = new DestType() {
 
         /**
-         * @see de.dante.extex.interpreter.primitives.pdftex.util.destType.DestType#visit(
-         *      de.dante.extex.interpreter.primitives.pdftex.util.destType.DestTypeVisitor)
+         * @see org.extex.interpreter.primitives.pdftex.util.destType.DestType#visit(
+         *      org.extex.interpreter.primitives.pdftex.util.destType.DestTypeVisitor)
          */
         public Object visit(final DestinationVisitor visitor) {
 
@@ -139,8 +139,8 @@ public abstract class DestType {
     public static final DestType FITH = new DestType() {
 
         /**
-         * @see de.dante.extex.interpreter.primitives.pdftex.util.destType.DestType#visit(
-         *      de.dante.extex.interpreter.primitives.pdftex.util.destType.DestTypeVisitor)
+         * @see org.extex.interpreter.primitives.pdftex.util.destType.DestType#visit(
+         *      org.extex.interpreter.primitives.pdftex.util.destType.DestTypeVisitor)
          */
         public Object visit(final DestinationVisitor visitor) {
 
@@ -163,8 +163,8 @@ public abstract class DestType {
     public static final DestType FITV = new DestType() {
 
         /**
-         * @see de.dante.extex.interpreter.primitives.pdftex.util.destType.DestType#visit(
-         *      de.dante.extex.interpreter.primitives.pdftex.util.destType.DestTypeVisitor)
+         * @see org.extex.interpreter.primitives.pdftex.util.destType.DestType#visit(
+         *      org.extex.interpreter.primitives.pdftex.util.destType.DestTypeVisitor)
          */
         public Object visit(final DestinationVisitor visitor) {
 
@@ -187,8 +187,8 @@ public abstract class DestType {
     public static final DestType XYZ = new DestType() {
 
         /**
-         * @see de.dante.extex.interpreter.primitives.pdftex.util.destType.DestType#visit(
-         *      de.dante.extex.interpreter.primitives.pdftex.util.destType.DestTypeVisitor)
+         * @see org.extex.interpreter.primitives.pdftex.util.destType.DestType#visit(
+         *      org.extex.interpreter.primitives.pdftex.util.destType.DestTypeVisitor)
          */
         public Object visit(final DestinationVisitor visitor) {
 

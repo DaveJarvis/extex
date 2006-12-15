@@ -19,16 +19,16 @@
 
 package de.dante.extex.interpreter.primitives.hyphen;
 
+import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.MissingLeftBraceException;
+import org.extex.interpreter.type.Code;
 import org.extex.type.UnicodeChar;
 import org.extex.type.UnicodeCharList;
 
-import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.exception.helping.MissingLeftBraceException;
 import de.dante.extex.interpreter.primitives.register.CharCode;
-import de.dante.extex.interpreter.type.Code;
 import de.dante.extex.language.Language;
 import de.dante.extex.language.hyphenation.exception.HyphenationException;
 import de.dante.extex.scanner.type.Catcode;
@@ -150,11 +150,11 @@ public class HyphenationPrimitive extends AbstractHyphenationCode {
      * The index for the <code>HyphernationTable</code> is based on the
      * value from the count register <code>\language</code>.
      *
-     * @see de.dante.extex.interpreter.type.Code#execute(
-     *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Code#execute(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
