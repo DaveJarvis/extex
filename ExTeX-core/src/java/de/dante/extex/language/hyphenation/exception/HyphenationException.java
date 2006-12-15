@@ -21,13 +21,12 @@ package de.dante.extex.language.hyphenation.exception;
 
 import de.dante.extex.typesetter.exception.TypesetterException;
 
-
 /**
  * This class is the base class for all exceptions in the hyphenation
  * components.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4446 $
  */
 public class HyphenationException extends TypesetterException {
 

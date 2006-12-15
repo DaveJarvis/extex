@@ -21,9 +21,9 @@ package de.dante.extex.language.ligature;
 
 import java.io.Serializable;
 
+import org.extex.interpreter.type.font.Font;
 import org.extex.type.UnicodeChar;
 
-import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.language.hyphenation.exception.HyphenationException;
 import de.dante.extex.typesetter.type.NodeList;
 

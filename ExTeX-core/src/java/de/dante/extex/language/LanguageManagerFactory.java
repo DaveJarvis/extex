@@ -21,18 +21,18 @@ package de.dante.extex.language;
 
 import java.util.logging.Logger;
 
+import org.extex.backend.outputStream.OutputStreamFactory;
+import org.extex.interpreter.type.OutputStreamConsumer;
 import org.extex.util.framework.AbstractFactory;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.resource.ResourceConsumer;
 import org.extex.util.resource.ResourceFinder;
 
-import de.dante.extex.backend.outputStream.OutputStreamFactory;
-import de.dante.extex.interpreter.type.OutputStreamConsumer;
 
 /**
  * This class provides a factory for a
- * {@link de.dante.extex.language.LanguageManager LanguageManager}.
+ * {@link org.extex.language.LanguageManager LanguageManager}.
  *
  *
  * <pre>
@@ -92,10 +92,10 @@ import de.dante.extex.interpreter.type.OutputStreamConsumer;
  *   {@link org.extex.util.resource.ResourceFinder ResourceFinder}
  *   is passed in with the interface method.
  *  </dd>
- *  <dt>{@link de.dante.extex.interpreter.type.OutputStreamConsumer OutputStreamConsumer}</dt>
+ *  <dt>{@link org.extex.interpreter.type.OutputStreamConsumer OutputStreamConsumer}</dt>
  *  <dd>
  *   If this interface is implemented then a
- *   {@link de.dante.extex.backend.outputStream.OutputStreamFactory OutputStreamFactory}
+ *   {@link org.extex.backend.outputStream.OutputStreamFactory OutputStreamFactory}
  *   is passed in with the interface method.
  *  </dd>
  * </dl>
@@ -127,7 +127,7 @@ public class LanguageManagerFactory extends AbstractFactory {
 
     /**
      * Get an instance of a
-     * {@link de.dante.extex.language.LanguageManager LanguageManager}.
+     * {@link org.extex.language.LanguageManager LanguageManager}.
      * This method selects one of the entries in the configuration. The
      * selection is done with the help of a type String. If the type is
      * <code>null</code> or the empty string then the default from the

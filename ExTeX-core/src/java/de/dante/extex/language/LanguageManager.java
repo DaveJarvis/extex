@@ -63,7 +63,7 @@ public interface LanguageManager {
      *
      * @throws ConfigurationException in case of an error in the configuration
      *
-     * @see de.dante.extex.language.LanguageManager#getLanguage(
+     * @see org.extex.language.LanguageManager#getLanguage(
      *      java.lang.String)
      */
     Language getLanguage(String index) throws ConfigurationException;

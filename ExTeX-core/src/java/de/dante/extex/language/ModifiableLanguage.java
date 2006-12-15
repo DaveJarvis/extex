@@ -24,8 +24,8 @@ import de.dante.extex.language.word.WordTokenizer;
 
 /**
  * This interface extends the interface
- * {@link de.dante.extex.language.Language Language} with the ability to receive
- * a {@link de.dante.extex.language.ligature.LigatureBuilder LigatureBuilder}.
+ * {@link org.extex.language.Language Language} with the ability to receive
+ * a {@link org.extex.language.ligature.LigatureBuilder LigatureBuilder}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
