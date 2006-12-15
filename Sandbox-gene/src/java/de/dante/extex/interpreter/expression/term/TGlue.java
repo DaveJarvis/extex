@@ -19,13 +19,14 @@
 
 package de.dante.extex.interpreter.expression.term;
 
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.glue.Glue;
+import org.extex.interpreter.type.glue.WideGlue;
+import org.extex.util.framework.i18n.LocalizerFactory;
+
 import de.dante.extex.interpreter.expression.EType;
 import de.dante.extex.interpreter.expression.exception.CastException;
 import de.dante.extex.interpreter.expression.exception.UnsupportedException;
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.glue.Glue;
-import de.dante.extex.interpreter.type.glue.WideGlue;
-import de.dante.util.framework.i18n.LocalizerFactory;
 
 /**
  * This class encapsulates a glue value for the use in the expression

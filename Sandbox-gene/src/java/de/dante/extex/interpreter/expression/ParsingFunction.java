@@ -2,9 +2,9 @@
 package de.dante.extex.interpreter.expression;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
 
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.typesetter.Typesetter;
 
 /**

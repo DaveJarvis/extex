@@ -19,14 +19,14 @@
 
 package de.dante.extex.interpreter.primitives.register.scaled;
 
+import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.AbstractAssignment;
+import org.extex.interpreter.type.scaled.ScaledNumber;
 
-import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.primitives.register.scaled.util.ScaledCode;
-import de.dante.extex.interpreter.type.AbstractAssignment;
-import de.dante.extex.interpreter.type.scaled.ScaledNumber;
 import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.typesetter.Typesetter;
 
@@ -98,11 +98,11 @@ public class Scaled extends AbstractAssignment {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.AbstractAssignment#assign(
-     *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractAssignment#assign(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void assign(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)

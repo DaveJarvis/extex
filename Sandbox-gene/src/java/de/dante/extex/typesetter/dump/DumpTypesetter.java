@@ -19,15 +19,16 @@
 
 package de.dante.extex.typesetter.dump;
 
-import de.dante.extex.interpreter.context.tc.TypesettingContext;
-import de.dante.extex.interpreter.type.count.Count;
-import de.dante.extex.interpreter.type.glue.FixedGlue;
+import org.extex.interpreter.context.tc.TypesettingContext;
+import org.extex.interpreter.type.count.Count;
+import org.extex.interpreter.type.glue.FixedGlue;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+
 import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.impl.TypesetterImpl;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeList;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class implements the typesetter interface but simply records the events
@@ -47,8 +48,8 @@ public class DumpTypesetter extends TypesetterImpl {
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#add(
-     *      de.dante.extex.typesetter.type.Node)
+     * @see org.extex.typesetter.ListMaker#add(
+     *      org.extex.typesetter.type.Node)
      */
     public void add(final Node node)
             throws TypesetterException,
@@ -58,8 +59,8 @@ public class DumpTypesetter extends TypesetterImpl {
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#add(
-     *      de.dante.extex.interpreter.type.glue.FixedGlue)
+     * @see org.extex.typesetter.ListMaker#add(
+     *      org.extex.interpreter.type.glue.FixedGlue)
      */
     public void add(final FixedGlue g) throws TypesetterException {
 
@@ -67,9 +68,9 @@ public class DumpTypesetter extends TypesetterImpl {
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#addSpace(
-     *      de.dante.extex.interpreter.context.TypesettingContext,
-     *      de.dante.extex.interpreter.type.count.Count)
+     * @see org.extex.typesetter.ListMaker#addSpace(
+     *      org.extex.interpreter.context.TypesettingContext,
+     *      org.extex.interpreter.type.count.Count)
      */
     public void addSpace(final TypesettingContext typesettingContext,
             final Count spacefactor)
@@ -80,8 +81,8 @@ public class DumpTypesetter extends TypesetterImpl {
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#complete(
-     *      de.dante.extex.typesetter.TypesetterOptions)
+     * @see org.extex.typesetter.ListMaker#complete(
+     *      org.extex.typesetter.TypesetterOptions)
      */
     public NodeList complete(final TypesetterOptions context)
             throws TypesetterException,

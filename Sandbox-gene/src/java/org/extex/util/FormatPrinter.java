@@ -35,12 +35,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.zip.GZIPInputStream;
 
+import org.extex.interpreter.loader.LoaderException;
+import org.extex.interpreter.type.count.Count;
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.glue.Glue;
 import org.extex.type.UnicodeChar;
 
-import de.dante.extex.interpreter.loader.LoaderException;
-import de.dante.extex.interpreter.type.count.Count;
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.glue.Glue;
 import de.dante.extex.scanner.type.token.ControlSequenceToken;
 import de.dante.extex.scanner.type.token.LeftBraceToken;
 import de.dante.extex.scanner.type.token.LetterToken;
@@ -51,11 +51,12 @@ import de.dante.extex.scanner.type.token.RightBraceToken;
 import de.dante.extex.scanner.type.token.SpaceToken;
 import de.dante.extex.scanner.type.token.Token;
 
+
 /**
  * Load a format file and print it in a reasonable form.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4603 $
  */
 public final class FormatPrinter {
 
@@ -63,7 +64,7 @@ public final class FormatPrinter {
      * This interface describes a function object for printing a data type.
      *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision$
+     * @version $Revision:4603 $
      */
     protected interface PrintRoutine {
 

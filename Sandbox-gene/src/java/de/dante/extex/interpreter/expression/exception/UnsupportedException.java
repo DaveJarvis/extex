@@ -19,8 +19,9 @@
 
 package de.dante.extex.interpreter.expression.exception;
 
-import de.dante.extex.interpreter.exception.helping.HelpingException;
-import de.dante.util.framework.i18n.LocalizerFactory;
+import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.util.framework.i18n.LocalizerFactory;
+
 
 /**
  * This exception signals an unsupported operation in the evaluator.

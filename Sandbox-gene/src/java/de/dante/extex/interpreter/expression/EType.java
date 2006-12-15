@@ -19,7 +19,8 @@
 
 package de.dante.extex.interpreter.expression;
 
-import de.dante.extex.interpreter.exception.helping.ArithmeticOverflowException;
+import org.extex.interpreter.exception.helping.ArithmeticOverflowException;
+
 import de.dante.extex.interpreter.expression.exception.CastException;
 import de.dante.extex.interpreter.expression.exception.UnsupportedException;
 import de.dante.extex.interpreter.expression.term.TBoolean;

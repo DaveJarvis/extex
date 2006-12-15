@@ -19,7 +19,8 @@
 
 package de.dante.extex.interpreter.expression;
 
-import de.dante.extex.interpreter.exception.helping.MissingNumberException;
+import org.extex.interpreter.exception.helping.MissingNumberException;
+
 import de.dante.extex.interpreter.expression.term.Accumulator;
 import de.dante.extex.interpreter.expression.term.TBoolean;
 import de.dante.extex.interpreter.expression.term.TCount;

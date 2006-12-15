@@ -1,7 +1,7 @@
 
 package de.dante.extex.interpreter.expression;
 
-import de.dante.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.InterpreterException;
 
 /**
  * This interface describes an operation object without any arguments.

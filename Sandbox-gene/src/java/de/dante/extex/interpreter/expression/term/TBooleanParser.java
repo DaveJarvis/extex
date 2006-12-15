@@ -20,14 +20,14 @@
 package de.dante.extex.interpreter.expression.term;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.Code;
 
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.expression.EType;
 import de.dante.extex.interpreter.expression.ETypeParser;
 import de.dante.extex.interpreter.expression.Evaluator;
 import de.dante.extex.interpreter.expression.UnaryFunction;
-import de.dante.extex.interpreter.type.Code;
 import de.dante.extex.typesetter.Typesetter;
 
 /**
@@ -50,10 +50,10 @@ public final class TBooleanParser implements ETypeParser {
 
     /**
      * @see de.dante.extex.interpreter.expression.ETypeParser#convert(
-     *      de.dante.extex.interpreter.type.Code,
-     *      de.dante.extex.interpreter.context.Context,
+     *      org.extex.interpreter.type.Code,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public EType convert(final Code code, final Context context,
             final TokenSource source, final Typesetter typesetter) {
@@ -62,10 +62,10 @@ public final class TBooleanParser implements ETypeParser {
     }
 
     /**
-     * @see de.dante.extex.interpreter.expression.TerminalParser#parse(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.expression.TerminalParser#parse(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public EType parse(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
@@ -80,7 +80,7 @@ public final class TBooleanParser implements ETypeParser {
     }
 
     /**
-     * @see de.dante.extex.interpreter.expression.TerminalParser#registered(
+     * @see org.extex.interpreter.expression.TerminalParser#registered(
      *      de.dante.extex.interpreter.expression.Evaluator)
      */
     public void registered(final Evaluator evaluator) {
@@ -88,7 +88,7 @@ public final class TBooleanParser implements ETypeParser {
         evaluator.register("boolean", new UnaryFunction() {
 
             /**
-             * @see de.dante.extex.interpreter.expression.Function1#apply(
+             * @see org.extex.interpreter.expression.Function1#apply(
              *      de.dante.extex.interpreter.expression.EType)
              */
             public EType apply(final EType accumulator)

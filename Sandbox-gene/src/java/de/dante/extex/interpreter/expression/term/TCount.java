@@ -19,12 +19,13 @@
 
 package de.dante.extex.interpreter.expression.term;
 
-import de.dante.extex.interpreter.exception.helping.ArithmeticOverflowException;
+import org.extex.interpreter.exception.helping.ArithmeticOverflowException;
+import org.extex.interpreter.type.count.Count;
+import org.extex.util.framework.i18n.LocalizerFactory;
+
 import de.dante.extex.interpreter.expression.EType;
 import de.dante.extex.interpreter.expression.exception.CastException;
 import de.dante.extex.interpreter.expression.exception.UnsupportedException;
-import de.dante.extex.interpreter.type.count.Count;
-import de.dante.util.framework.i18n.LocalizerFactory;
 
 /**
  * This class encapsulates a long value for the use in the expression

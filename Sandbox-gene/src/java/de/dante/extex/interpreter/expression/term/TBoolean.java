@@ -19,10 +19,11 @@
 
 package de.dante.extex.interpreter.expression.term;
 
+import org.extex.util.framework.i18n.LocalizerFactory;
+
 import de.dante.extex.interpreter.expression.EType;
 import de.dante.extex.interpreter.expression.exception.CastException;
 import de.dante.extex.interpreter.expression.exception.UnsupportedException;
-import de.dante.util.framework.i18n.LocalizerFactory;
 
 /**
  * This class encapsulates a boolean value for the use in the expression

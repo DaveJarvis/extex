@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter.expression;
 
-import de.dante.extex.interpreter.exception.helping.HelpingException;
+import org.extex.interpreter.exception.helping.HelpingException;
 
 /**
  * This interface describes a binary operation.

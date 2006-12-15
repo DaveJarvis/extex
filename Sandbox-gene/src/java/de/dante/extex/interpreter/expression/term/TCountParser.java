@@ -19,19 +19,19 @@
 
 package de.dante.extex.interpreter.expression.term;
 
+import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.Code;
+import org.extex.interpreter.type.ExpandableCode;
+import org.extex.interpreter.type.count.CountConvertible;
+import org.extex.interpreter.type.tokens.Tokens;
 
-import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.expression.EType;
 import de.dante.extex.interpreter.expression.ETypeParser;
 import de.dante.extex.interpreter.expression.Evaluator;
 import de.dante.extex.interpreter.expression.UnaryFunction;
-import de.dante.extex.interpreter.type.Code;
-import de.dante.extex.interpreter.type.ExpandableCode;
-import de.dante.extex.interpreter.type.count.CountConvertible;
-import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.scanner.type.token.ControlSequenceToken;
 import de.dante.extex.scanner.type.token.LetterToken;
@@ -60,10 +60,10 @@ public final class TCountParser implements ETypeParser {
 
     /**
      * @see de.dante.extex.interpreter.expression.EType#convert(
-     *      de.dante.extex.interpreter.type.Code,
-     *      de.dante.extex.interpreter.context.Context,
+     *      org.extex.interpreter.type.Code,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public EType convert(final Code code, final Context context,
             final TokenSource source, final Typesetter typesetter)
@@ -78,9 +78,9 @@ public final class TCountParser implements ETypeParser {
 
     /**
      * @see de.dante.extex.interpreter.expression.ETypeParser#parse(
-     *      de.dante.extex.interpreter.context.Context,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public EType parse(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
@@ -253,7 +253,7 @@ public final class TCountParser implements ETypeParser {
         evaluator.register("int", new UnaryFunction() {
 
             /**
-             * @see de.dante.extex.interpreter.expression.Function1#apply(
+             * @see org.extex.interpreter.expression.Function1#apply(
              *      de.dante.extex.interpreter.expression.EType)
              */
             public EType apply(final EType accumulator)

@@ -24,27 +24,27 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.EofException;
+import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.interpreter.exception.helping.MissingNumberException;
+import org.extex.interpreter.type.Code;
+import org.extex.interpreter.type.ExpandableCode;
+import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.util.framework.i18n.LocalizerFactory;
 
-import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.exception.helping.EofException;
-import de.dante.extex.interpreter.exception.helping.HelpingException;
-import de.dante.extex.interpreter.exception.helping.MissingNumberException;
 import de.dante.extex.interpreter.expression.exception.CastException;
 import de.dante.extex.interpreter.expression.exception.UnsupportedException;
 import de.dante.extex.interpreter.expression.term.Accumulator;
-import de.dante.extex.interpreter.type.Code;
-import de.dante.extex.interpreter.type.ExpandableCode;
-import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.scanner.type.Catcode;
 import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.scanner.type.token.LetterToken;
 import de.dante.extex.scanner.type.token.OtherToken;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.framework.i18n.LocalizerFactory;
 
 /**
  * This class provides some static methods to parse an expression and return its
@@ -62,7 +62,7 @@ public class Evaluator {
     private static final BinaryFunction ASSIGN = new BinaryFunction() {
 
         /**
-         * @see de.dante.extex.interpreter.expression.Function2#apply(
+         * @see org.extex.interpreter.expression.Function2#apply(
          *      de.dante.extex.interpreter.expression.EType,
          *      de.dante.extex.interpreter.expression.EType)
          */
@@ -90,7 +90,7 @@ public class Evaluator {
     private static final BinaryFunction EQ = new BinaryFunction() {
 
         /**
-         * @see de.dante.extex.interpreter.expression.Function2#apply(
+         * @see org.extex.interpreter.expression.Function2#apply(
          *      de.dante.extex.interpreter.expression.EType,
          *      de.dante.extex.interpreter.expression.EType)
          */
@@ -118,7 +118,7 @@ public class Evaluator {
     private static final BinaryFunction GE = new BinaryFunction() {
 
         /**
-         * @see de.dante.extex.interpreter.expression.Function2#apply(
+         * @see org.extex.interpreter.expression.Function2#apply(
          *      de.dante.extex.interpreter.expression.EType,
          *      de.dante.extex.interpreter.expression.EType)
          */
@@ -146,7 +146,7 @@ public class Evaluator {
     private static final BinaryFunction GT = new BinaryFunction() {
 
         /**
-         * @see de.dante.extex.interpreter.expression.Function2#apply(
+         * @see org.extex.interpreter.expression.Function2#apply(
          *      de.dante.extex.interpreter.expression.EType,
          *      de.dante.extex.interpreter.expression.EType)
          */
@@ -174,7 +174,7 @@ public class Evaluator {
     private static final BinaryFunction LAND = new BinaryFunction() {
 
         /**
-         * @see de.dante.extex.interpreter.expression.Function2#apply(
+         * @see org.extex.interpreter.expression.Function2#apply(
          *      de.dante.extex.interpreter.expression.EType,
          *      de.dante.extex.interpreter.expression.EType)
          */
@@ -202,7 +202,7 @@ public class Evaluator {
     private static final BinaryFunction LE = new BinaryFunction() {
 
         /**
-         * @see de.dante.extex.interpreter.expression.Function2#apply(
+         * @see org.extex.interpreter.expression.Function2#apply(
          *      de.dante.extex.interpreter.expression.EType,
          *      de.dante.extex.interpreter.expression.EType)
          */
@@ -230,7 +230,7 @@ public class Evaluator {
     private static final BinaryFunction LOR = new BinaryFunction() {
 
         /**
-         * @see de.dante.extex.interpreter.expression.Function2#apply(
+         * @see org.extex.interpreter.expression.Function2#apply(
          *      de.dante.extex.interpreter.expression.EType,
          *      de.dante.extex.interpreter.expression.EType)
          */
@@ -258,7 +258,7 @@ public class Evaluator {
     private static final BinaryFunction LT = new BinaryFunction() {
 
         /**
-         * @see de.dante.extex.interpreter.expression.Function2#apply(
+         * @see org.extex.interpreter.expression.Function2#apply(
          *      de.dante.extex.interpreter.expression.EType,
          *      de.dante.extex.interpreter.expression.EType)
          */
@@ -285,7 +285,7 @@ public class Evaluator {
     private static final BinaryFunction MINUS = new BinaryFunction() {
 
         /**
-         * @see de.dante.extex.interpreter.expression.Function2#apply(
+         * @see org.extex.interpreter.expression.Function2#apply(
          *      de.dante.extex.interpreter.expression.EType,
          *      de.dante.extex.interpreter.expression.EType)
          */
@@ -312,7 +312,7 @@ public class Evaluator {
     private static final BinaryFunction NE = new BinaryFunction() {
 
         /**
-         * @see de.dante.extex.interpreter.expression.Function2#apply(
+         * @see org.extex.interpreter.expression.Function2#apply(
          *      de.dante.extex.interpreter.expression.EType,
          *      de.dante.extex.interpreter.expression.EType)
          */
@@ -339,7 +339,7 @@ public class Evaluator {
     private static final BinaryFunction PLUS = new BinaryFunction() {
 
         /**
-         * @see de.dante.extex.interpreter.expression.Function2#apply(
+         * @see org.extex.interpreter.expression.Function2#apply(
          *      de.dante.extex.interpreter.expression.EType,
          *      de.dante.extex.interpreter.expression.EType)
          */
