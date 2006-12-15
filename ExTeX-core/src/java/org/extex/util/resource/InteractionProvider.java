@@ -19,14 +19,14 @@
 
 package org.extex.util.resource;
 
-import de.dante.extex.interpreter.interaction.Interaction;
+import org.extex.interpreter.interaction.Interaction;
 
 /**
  * This interface describes a class which can be asked to provide the
  * current interaction mode..
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4726 $
  */
 public interface InteractionProvider {
 
