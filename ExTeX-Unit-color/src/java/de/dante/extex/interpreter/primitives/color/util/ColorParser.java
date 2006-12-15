@@ -30,12 +30,12 @@ import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.color.ColorConvertible;
 import org.extex.interpreter.type.glue.GlueComponent;
 import org.extex.interpreter.type.scaled.ScaledNumber;
+import org.extex.scanner.type.token.CodeToken;
+import org.extex.scanner.type.token.LeftBraceToken;
+import org.extex.scanner.type.token.RightBraceToken;
+import org.extex.scanner.type.token.Token;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
-import de.dante.extex.scanner.type.token.CodeToken;
-import de.dante.extex.scanner.type.token.LeftBraceToken;
-import de.dante.extex.scanner.type.token.RightBraceToken;
-import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
 
 /**

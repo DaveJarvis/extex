@@ -23,11 +23,11 @@ import org.extex.interpreter.Tokenizer;
 import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.TokenStream;
 import org.extex.scanner.exception.ScannerException;
+import org.extex.scanner.type.token.SpaceToken;
+import org.extex.scanner.type.token.Token;
+import org.extex.scanner.type.token.TokenFactory;
 import org.extex.type.Locator;
 
-import de.dante.extex.scanner.type.token.SpaceToken;
-import de.dante.extex.scanner.type.token.Token;
-import de.dante.extex.scanner.type.token.TokenFactory;
 
 /**
  * This is the base implementation of a token stream. It has an internal stack
@@ -97,7 +97,7 @@ public class TokenStreamBaseImpl implements TokenStream {
 
     /**
      * @see org.extex.scanner.TokenStream#get(
-     *      de.dante.extex.scanner.type.token.TokenFactory,
+     *      org.extex.scanner.type.token.TokenFactory,
      *      de.dante.extex.interpreter.Tokenizer)
      */
     public Token get(final TokenFactory factory, final Tokenizer tokenizer)
@@ -178,7 +178,7 @@ public class TokenStreamBaseImpl implements TokenStream {
 
     /**
      * @see org.extex.scanner.TokenStream#put(
-     *      de.dante.extex.scanner.type.token.Token)
+     *      org.extex.scanner.type.token.Token)
      */
     public void put(final Token token) {
 

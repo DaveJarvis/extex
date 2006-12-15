@@ -36,6 +36,10 @@ import org.extex.interpreter.unit.Loader;
 import org.extex.interpreter.unit.StartableUnit;
 import org.extex.interpreter.unit.UnitInfo;
 import org.extex.interpreter.unit.UnitInfoFactory;
+import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.token.CodeToken;
+import org.extex.scanner.type.token.Token;
+import org.extex.scanner.type.token.TokenFactory;
 import org.extex.type.UnicodeChar;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.AbstractFactory;
@@ -45,10 +49,6 @@ import org.extex.util.framework.i18n.LocalizerFactory;
 
 import de.dante.extex.interpreter.max.StringSource;
 import de.dante.extex.interpreter.primitives.macro.Let;
-import de.dante.extex.scanner.type.Catcode;
-import de.dante.extex.scanner.type.token.CodeToken;
-import de.dante.extex.scanner.type.token.Token;
-import de.dante.extex.scanner.type.token.TokenFactory;
 import de.dante.extex.typesetter.Typesetter;
 
 /**

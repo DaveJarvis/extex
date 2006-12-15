@@ -27,12 +27,12 @@ import junit.framework.TestCase;
 import org.extex.interpreter.Tokenizer;
 import org.extex.scanner.TokenStream;
 import org.extex.scanner.stream.impl.TokenStreamImpl;
+import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.token.Token;
+import org.extex.scanner.type.token.TokenFactory;
+import org.extex.scanner.type.token.TokenFactoryImpl;
 import org.extex.type.UnicodeChar;
 
-import de.dante.extex.scanner.type.Catcode;
-import de.dante.extex.scanner.type.token.Token;
-import de.dante.extex.scanner.type.token.TokenFactory;
-import de.dante.extex.scanner.type.token.TokenFactoryImpl;
 
 /**
  * Test cases for the string implementation of a token stream.

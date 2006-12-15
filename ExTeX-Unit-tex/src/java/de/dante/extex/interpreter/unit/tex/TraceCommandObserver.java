@@ -25,10 +25,10 @@ import java.util.logging.Logger;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.PrefixCode;
+import org.extex.scanner.type.token.CodeToken;
+import org.extex.scanner.type.token.Token;
 
 import de.dante.extex.interpreter.observer.command.CommandObserver;
-import de.dante.extex.scanner.type.token.CodeToken;
-import de.dante.extex.scanner.type.token.Token;
 
 /**
  * Observer for tracing the execution of tokens. The token is written to the

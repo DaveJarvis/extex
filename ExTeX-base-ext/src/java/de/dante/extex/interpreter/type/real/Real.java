@@ -27,13 +27,13 @@ import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.count.CountConvertible;
 import org.extex.interpreter.type.dimen.DimenConvertible;
+import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.token.ControlSequenceToken;
+import org.extex.scanner.type.token.Token;
 
 import de.dante.extex.interpreter.exception.InterpreterArithmeticException;
 import de.dante.extex.interpreter.exception.InterpreterMissingNumberException;
 import de.dante.extex.interpreter.exception.InterpreterNumberFormatException;
-import de.dante.extex.scanner.type.Catcode;
-import de.dante.extex.scanner.type.token.ControlSequenceToken;
-import de.dante.extex.scanner.type.token.Token;
 
 /**
  * Real (with a double value)

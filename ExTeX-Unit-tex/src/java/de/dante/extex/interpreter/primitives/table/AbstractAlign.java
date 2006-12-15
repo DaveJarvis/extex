@@ -29,13 +29,13 @@ import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.token.CodeToken;
+import org.extex.scanner.type.token.Token;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
 import de.dante.extex.interpreter.primitives.table.util.PreambleItem;
-import de.dante.extex.scanner.type.Catcode;
-import de.dante.extex.scanner.type.token.CodeToken;
-import de.dante.extex.scanner.type.token.Token;
 
 /**
  * This is the abstract base class for alignments.

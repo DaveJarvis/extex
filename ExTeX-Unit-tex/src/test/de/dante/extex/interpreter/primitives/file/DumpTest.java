@@ -27,10 +27,10 @@ import org.extex.interpreter.Namespace;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.loader.SerialLoader;
 import org.extex.interpreter.type.Code;
+import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.token.CodeToken;
+import org.extex.scanner.type.token.TokenFactoryImpl;
 
-import de.dante.extex.scanner.type.Catcode;
-import de.dante.extex.scanner.type.token.CodeToken;
-import de.dante.extex.scanner.type.token.TokenFactoryImpl;
 import de.dante.test.NoFlagsPrimitiveTester;
 
 /**

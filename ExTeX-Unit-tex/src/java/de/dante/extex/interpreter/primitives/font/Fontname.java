@@ -29,11 +29,10 @@ import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.font.Font;
 import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.token.TokenFactory;
 import org.extex.util.exception.GeneralException;
 
-import de.dante.extex.scanner.type.token.TokenFactory;
 import de.dante.extex.typesetter.Typesetter;
-
 
 /**
  * This class provides an implementation for the primitive

@@ -27,13 +27,13 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.token.Token;
 
 import de.dante.extex.interpreter.type.hash.toks.exception.InterpreterMissingHashKeyException;
 import de.dante.extex.interpreter.type.hash.toks.exception.InterpreterMissingHashValueException;
 import de.dante.extex.interpreter.type.hash.toks.exception.InterpreterMissingLeftBraceException;
 import de.dante.extex.interpreter.type.hash.toks.exception.InterpreterMissingRightBraceException;
-import de.dante.extex.scanner.type.Catcode;
-import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
 
 /**

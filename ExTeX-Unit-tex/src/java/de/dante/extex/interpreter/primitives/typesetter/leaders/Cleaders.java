@@ -31,11 +31,11 @@ import org.extex.interpreter.type.box.Box;
 import org.extex.interpreter.type.box.Boxable;
 import org.extex.interpreter.type.box.RuleConvertible;
 import org.extex.interpreter.type.glue.FixedGlue;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.interpreter.primitives.typesetter.spacing.HorizontalSkip;
 import de.dante.extex.interpreter.primitives.typesetter.spacing.VerticalSkip;
-import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.type.Node;

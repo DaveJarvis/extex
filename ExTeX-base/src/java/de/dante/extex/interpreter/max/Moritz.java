@@ -55,6 +55,17 @@ import org.extex.scanner.stream.observer.reader.OpenReaderObservable;
 import org.extex.scanner.stream.observer.reader.OpenReaderObserver;
 import org.extex.scanner.stream.observer.string.OpenStringObservable;
 import org.extex.scanner.stream.observer.string.OpenStringObserver;
+import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.CatcodeException;
+import org.extex.scanner.type.token.CodeToken;
+import org.extex.scanner.type.token.ControlSequenceToken;
+import org.extex.scanner.type.token.LeftBraceToken;
+import org.extex.scanner.type.token.LetterToken;
+import org.extex.scanner.type.token.OtherToken;
+import org.extex.scanner.type.token.RightBraceToken;
+import org.extex.scanner.type.token.SpaceToken;
+import org.extex.scanner.type.token.Token;
+import org.extex.scanner.type.token.TokenFactory;
 import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
 import org.extex.util.exception.GeneralException;
@@ -78,17 +89,6 @@ import de.dante.extex.interpreter.observer.streamClose.StreamCloseObserver;
 import de.dante.extex.interpreter.observer.streamClose.StreamCloseObserverList;
 import de.dante.extex.interpreter.primitives.register.count.util.IntegerCode;
 import de.dante.extex.interpreter.primitives.register.toks.ToksParameter;
-import de.dante.extex.scanner.type.Catcode;
-import de.dante.extex.scanner.type.CatcodeException;
-import de.dante.extex.scanner.type.token.CodeToken;
-import de.dante.extex.scanner.type.token.ControlSequenceToken;
-import de.dante.extex.scanner.type.token.LeftBraceToken;
-import de.dante.extex.scanner.type.token.LetterToken;
-import de.dante.extex.scanner.type.token.OtherToken;
-import de.dante.extex.scanner.type.token.RightBraceToken;
-import de.dante.extex.scanner.type.token.SpaceToken;
-import de.dante.extex.scanner.type.token.Token;
-import de.dante.extex.scanner.type.token.TokenFactory;
 import de.dante.extex.typesetter.Typesetter;
 
 /**
@@ -821,7 +821,7 @@ public class Moritz extends Max
      * @throws InterpreterException in case of an error
      *
      * @see org.extex.interpreter.TokenSource#push(
-     *      de.dante.extex.scanner.type.token.Token)
+     *      org.extex.scanner.type.token.Token)
      */
     public void push(final Token token) throws InterpreterException {
 
@@ -850,7 +850,7 @@ public class Moritz extends Max
      * @throws InterpreterException in case of an error
      *
      * @see org.extex.interpreter.TokenSource#push(
-     *      de.dante.extex.scanner.type.token.Token[])
+     *      org.extex.scanner.type.token.Token[])
      */
     public void push(final Token[] tokens) throws InterpreterException {
 
@@ -1099,7 +1099,7 @@ public class Moritz extends Max
     /**
      * @see org.extex.interpreter.TokenSource#scanNumber(
      *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.scanner.type.token.Token)
+     *      org.extex.scanner.type.token.Token)
      */
     public long scanNumber(final Context context, final Token token)
             throws InterpreterException {

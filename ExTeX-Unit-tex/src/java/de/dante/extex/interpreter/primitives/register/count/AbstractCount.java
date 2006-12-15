@@ -26,8 +26,8 @@ import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.InitializableCode;
 import org.extex.interpreter.type.count.Count;
+import org.extex.scanner.type.token.Token;
 
-import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
 
 /**

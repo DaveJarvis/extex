@@ -23,11 +23,10 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.EofException;
+import org.extex.scanner.type.token.Token;
 import org.extex.type.UnicodeChar;
 
-import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
-
 
 /**
  * This class provides an implementation for the primitive <code>\if</code>.

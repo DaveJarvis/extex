@@ -25,22 +25,22 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.scanner.stream.TokenStreamFactory;
+import org.extex.scanner.type.token.ActiveCharacterToken;
+import org.extex.scanner.type.token.ControlSequenceToken;
+import org.extex.scanner.type.token.CrToken;
+import org.extex.scanner.type.token.LeftBraceToken;
+import org.extex.scanner.type.token.LetterToken;
+import org.extex.scanner.type.token.MacroParamToken;
+import org.extex.scanner.type.token.MathShiftToken;
+import org.extex.scanner.type.token.OtherToken;
+import org.extex.scanner.type.token.RightBraceToken;
+import org.extex.scanner.type.token.SpaceToken;
+import org.extex.scanner.type.token.SubMarkToken;
+import org.extex.scanner.type.token.SupMarkToken;
+import org.extex.scanner.type.token.TabMarkToken;
+import org.extex.scanner.type.token.Token;
+import org.extex.scanner.type.token.TokenVisitor;
 
-import de.dante.extex.scanner.type.token.ActiveCharacterToken;
-import de.dante.extex.scanner.type.token.ControlSequenceToken;
-import de.dante.extex.scanner.type.token.CrToken;
-import de.dante.extex.scanner.type.token.LeftBraceToken;
-import de.dante.extex.scanner.type.token.LetterToken;
-import de.dante.extex.scanner.type.token.MacroParamToken;
-import de.dante.extex.scanner.type.token.MathShiftToken;
-import de.dante.extex.scanner.type.token.OtherToken;
-import de.dante.extex.scanner.type.token.RightBraceToken;
-import de.dante.extex.scanner.type.token.SpaceToken;
-import de.dante.extex.scanner.type.token.SubMarkToken;
-import de.dante.extex.scanner.type.token.SupMarkToken;
-import de.dante.extex.scanner.type.token.TabMarkToken;
-import de.dante.extex.scanner.type.token.Token;
-import de.dante.extex.scanner.type.token.TokenVisitor;
 import de.dante.extex.typesetter.Typesetter;
 
 /**
@@ -110,8 +110,8 @@ public class ReadTokenUntilNull extends AbstractCode {
     private class MyTokenVisitor implements TokenVisitor {
 
         /**
-         * @see de.dante.extex.scanner.type.token.TokenVisitor#visitActive(
-         *      de.dante.extex.scanner.type.token.ActiveCharacterToken,
+         * @see org.extex.scanner.type.token.TokenVisitor#visitActive(
+         *      org.extex.scanner.type.token.ActiveCharacterToken,
          *      java.lang.Object)
          */
         public Object visitActive(final ActiveCharacterToken token,
@@ -121,8 +121,8 @@ public class ReadTokenUntilNull extends AbstractCode {
         }
 
         /**
-         * @see de.dante.extex.scanner.type.token.TokenVisitor#visitCr(
-         *      de.dante.extex.scanner.type.token.CrToken,
+         * @see org.extex.scanner.type.token.TokenVisitor#visitCr(
+         *      org.extex.scanner.type.token.CrToken,
          *      java.lang.Object)
          */
         public Object visitCr(final CrToken token, final Object arg)
@@ -132,8 +132,8 @@ public class ReadTokenUntilNull extends AbstractCode {
         }
 
         /**
-         * @see de.dante.extex.scanner.type.token.TokenVisitor#visitEscape(
-         *      de.dante.extex.scanner.type.token.ControlSequenceToken,
+         * @see org.extex.scanner.type.token.TokenVisitor#visitEscape(
+         *      org.extex.scanner.type.token.ControlSequenceToken,
          *      java.lang.Object)
          */
         public Object visitEscape(final ControlSequenceToken token,
@@ -143,8 +143,8 @@ public class ReadTokenUntilNull extends AbstractCode {
         }
 
         /**
-         * @see de.dante.extex.scanner.type.token.TokenVisitor#visitLeftBrace(
-         *      de.dante.extex.scanner.type.token.LeftBraceToken,
+         * @see org.extex.scanner.type.token.TokenVisitor#visitLeftBrace(
+         *      org.extex.scanner.type.token.LeftBraceToken,
          *      java.lang.Object)
          */
         public Object visitLeftBrace(final LeftBraceToken token,
@@ -154,8 +154,8 @@ public class ReadTokenUntilNull extends AbstractCode {
         }
 
         /**
-         * @see de.dante.extex.scanner.type.token.TokenVisitor#visitLetter(
-         *      de.dante.extex.scanner.type.token.LetterToken,
+         * @see org.extex.scanner.type.token.TokenVisitor#visitLetter(
+         *      org.extex.scanner.type.token.LetterToken,
          *      java.lang.Object)
          */
         public Object visitLetter(final LetterToken token, final Object arg)
@@ -165,8 +165,8 @@ public class ReadTokenUntilNull extends AbstractCode {
         }
 
         /**
-         * @see de.dante.extex.scanner.type.token.TokenVisitor#visitMacroParam(
-         *      de.dante.extex.scanner.type.token.MacroParamToken,
+         * @see org.extex.scanner.type.token.TokenVisitor#visitMacroParam(
+         *      org.extex.scanner.type.token.MacroParamToken,
          *      java.lang.Object)
          */
         public Object visitMacroParam(final MacroParamToken token,
@@ -176,8 +176,8 @@ public class ReadTokenUntilNull extends AbstractCode {
         }
 
         /**
-         * @see de.dante.extex.scanner.type.token.TokenVisitor#visitMathShift(
-         *      de.dante.extex.scanner.type.token.MathShiftToken,
+         * @see org.extex.scanner.type.token.TokenVisitor#visitMathShift(
+         *      org.extex.scanner.type.token.MathShiftToken,
          *      java.lang.Object)
          */
         public Object visitMathShift(final MathShiftToken token,
@@ -187,8 +187,8 @@ public class ReadTokenUntilNull extends AbstractCode {
         }
 
         /**
-         * @see de.dante.extex.scanner.type.token.TokenVisitor#visitOther(
-         *      de.dante.extex.scanner.type.token.OtherToken,
+         * @see org.extex.scanner.type.token.TokenVisitor#visitOther(
+         *      org.extex.scanner.type.token.OtherToken,
          *      java.lang.Object)
          */
         public Object visitOther(final OtherToken token, final Object arg)
@@ -198,8 +198,8 @@ public class ReadTokenUntilNull extends AbstractCode {
         }
 
         /**
-         * @see de.dante.extex.scanner.type.token.TokenVisitor#visitRightBrace(
-         *      de.dante.extex.scanner.type.token.RightBraceToken,
+         * @see org.extex.scanner.type.token.TokenVisitor#visitRightBrace(
+         *      org.extex.scanner.type.token.RightBraceToken,
          *      java.lang.Object)
          */
         public Object visitRightBrace(final RightBraceToken token,
@@ -209,8 +209,8 @@ public class ReadTokenUntilNull extends AbstractCode {
         }
 
         /**
-         * @see de.dante.extex.scanner.type.token.TokenVisitor#visitSpace(
-         *      de.dante.extex.scanner.type.token.SpaceToken,
+         * @see org.extex.scanner.type.token.TokenVisitor#visitSpace(
+         *      org.extex.scanner.type.token.SpaceToken,
          *      java.lang.Object)
          */
         public Object visitSpace(final SpaceToken token, final Object arg)
@@ -220,8 +220,8 @@ public class ReadTokenUntilNull extends AbstractCode {
         }
 
         /**
-         * @see de.dante.extex.scanner.type.token.TokenVisitor#visitSubMark(
-         *      de.dante.extex.scanner.type.token.SubMarkToken,
+         * @see org.extex.scanner.type.token.TokenVisitor#visitSubMark(
+         *      org.extex.scanner.type.token.SubMarkToken,
          *      java.lang.Object)
          */
         public Object visitSubMark(final SubMarkToken token, final Object arg)
@@ -231,8 +231,8 @@ public class ReadTokenUntilNull extends AbstractCode {
         }
 
         /**
-         * @see de.dante.extex.scanner.type.token.TokenVisitor#visitSupMark(
-         *      de.dante.extex.scanner.type.token.SupMarkToken,
+         * @see org.extex.scanner.type.token.TokenVisitor#visitSupMark(
+         *      org.extex.scanner.type.token.SupMarkToken,
          *      java.lang.Object)
          */
         public Object visitSupMark(final SupMarkToken token, final Object arg)
@@ -242,8 +242,8 @@ public class ReadTokenUntilNull extends AbstractCode {
         }
 
         /**
-         * @see de.dante.extex.scanner.type.token.TokenVisitor#visitTabMark(
-         *      de.dante.extex.scanner.type.token.TabMarkToken,
+         * @see org.extex.scanner.type.token.TokenVisitor#visitTabMark(
+         *      org.extex.scanner.type.token.TabMarkToken,
          *      java.lang.Object)
          */
         public Object visitTabMark(final TabMarkToken token, final Object arg)

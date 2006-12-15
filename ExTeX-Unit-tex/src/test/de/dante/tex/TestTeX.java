@@ -34,12 +34,12 @@ import org.extex.interpreter.InterpreterFactory;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.main.errorHandler.editHandler.EditHandler;
+import org.extex.scanner.type.token.Token;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.ConfigurationFactory;
 
 import de.dante.extex.ExTeX;
-import de.dante.extex.scanner.type.token.Token;
 
 /**
  * Test for ExTeX.

@@ -21,9 +21,9 @@ package de.dante.extex.interpreter.context.impl;
 
 import org.extex.interpreter.context.group.GroupInfo;
 import org.extex.interpreter.context.group.GroupType;
+import org.extex.scanner.type.token.Token;
 import org.extex.type.Locator;
 
-import de.dante.extex.scanner.type.token.Token;
 
 /**
  * This class provides a reference implementation for a

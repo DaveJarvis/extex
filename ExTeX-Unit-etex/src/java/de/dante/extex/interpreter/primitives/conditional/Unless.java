@@ -26,8 +26,8 @@ import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.CantUseAfterException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Code;
+import org.extex.scanner.type.token.CodeToken;
 
-import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.typesetter.Typesetter;
 
 /**

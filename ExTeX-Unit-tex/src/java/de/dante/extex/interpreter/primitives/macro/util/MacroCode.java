@@ -33,18 +33,18 @@ import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.PrefixCode;
 import org.extex.interpreter.type.Showable;
 import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.token.CodeToken;
+import org.extex.scanner.type.token.LeftBraceToken;
+import org.extex.scanner.type.token.MacroParamToken;
+import org.extex.scanner.type.token.OtherToken;
+import org.extex.scanner.type.token.RightBraceToken;
+import org.extex.scanner.type.token.Token;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
 import de.dante.extex.interpreter.primitives.typesetter.paragraph.Par;
-import de.dante.extex.scanner.type.Catcode;
-import de.dante.extex.scanner.type.token.CodeToken;
-import de.dante.extex.scanner.type.token.LeftBraceToken;
-import de.dante.extex.scanner.type.token.MacroParamToken;
-import de.dante.extex.scanner.type.token.OtherToken;
-import de.dante.extex.scanner.type.token.RightBraceToken;
-import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
 
 /**

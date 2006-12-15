@@ -21,14 +21,15 @@ package org.extex.tex.main.observer;
 
 import java.util.logging.Logger;
 
+import org.extex.scanner.type.token.Token;
+
 import de.dante.extex.interpreter.observer.push.PushObserver;
-import de.dante.extex.scanner.type.token.Token;
 
 /**
  * Observer for the operation of pushing a token to the token stream.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4708 $
  */
 public class TokenPushObserver implements PushObserver {
 
@@ -50,7 +51,7 @@ public class TokenPushObserver implements PushObserver {
 
     /**
      * @see de.dante.extex.interpreter.observer.push.PushObserver#update(
-     *      de.dante.extex.scanner.type.token.Token)
+     *      org.extex.scanner.type.token.Token)
      */
     public void update(final Token token) {
 

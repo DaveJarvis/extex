@@ -23,11 +23,11 @@ import junit.framework.TestCase;
 
 import org.extex.interpreter.Namespace;
 import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.CatcodeException;
+import org.extex.scanner.type.token.TokenFactory;
+import org.extex.scanner.type.token.TokenFactoryImpl;
 
-import de.dante.extex.scanner.type.Catcode;
-import de.dante.extex.scanner.type.CatcodeException;
-import de.dante.extex.scanner.type.token.TokenFactory;
-import de.dante.extex.scanner.type.token.TokenFactoryImpl;
 
 /**
  * This class contains soem test cases fro liang's hyphenation table.

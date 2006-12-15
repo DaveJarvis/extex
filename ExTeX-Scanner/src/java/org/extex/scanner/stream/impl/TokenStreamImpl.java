@@ -33,6 +33,11 @@ import org.extex.interpreter.exception.helping.InvalidCharacterException;
 import org.extex.scanner.TokenStream;
 import org.extex.scanner.exception.ScannerException;
 import org.extex.scanner.stream.TokenStreamOptions;
+import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.CatcodeException;
+import org.extex.scanner.type.CatcodeVisitor;
+import org.extex.scanner.type.token.Token;
+import org.extex.scanner.type.token.TokenFactory;
 import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
 import org.extex.util.exception.GeneralException;
@@ -40,11 +45,6 @@ import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.framework.configuration.exception.ConfigurationSyntaxException;
 
-import de.dante.extex.scanner.type.Catcode;
-import de.dante.extex.scanner.type.CatcodeException;
-import de.dante.extex.scanner.type.CatcodeVisitor;
-import de.dante.extex.scanner.type.token.Token;
-import de.dante.extex.scanner.type.token.TokenFactory;
 
 /**
  * This class contains an implementation of a token stream which is fed from a
@@ -166,7 +166,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
     private CatcodeVisitor visitor = new CatcodeVisitor() {
 
         /**
-         * @see de.dante.extex.scanner.type.CatcodeVisitor#visitActive(
+         * @see org.extex.scanner.type.CatcodeVisitor#visitActive(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
         public Object visitActive(final Object oFactory,
@@ -182,7 +182,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
         }
 
         /**
-         * @see de.dante.extex.scanner.type.CatcodeVisitor#visitComment(
+         * @see org.extex.scanner.type.CatcodeVisitor#visitComment(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
         public Object visitComment(final Object oFactory,
@@ -194,7 +194,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
         }
 
         /**
-         * @see de.dante.extex.scanner.type.CatcodeVisitor#visitCr(
+         * @see org.extex.scanner.type.CatcodeVisitor#visitCr(
          *      java.lang.Object,
          *      java.lang.Object, java.lang.Object)
          */
@@ -220,7 +220,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
         }
 
         /**
-         * @see de.dante.extex.scanner.type.CatcodeVisitor#visitEscape(
+         * @see org.extex.scanner.type.CatcodeVisitor#visitEscape(
          *      java.lang.Object,
          *      java.lang.Object, java.lang.Object)
          */
@@ -269,7 +269,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
         }
 
         /**
-         * @see de.dante.extex.scanner.type.CatcodeVisitor#visitIgnore(
+         * @see org.extex.scanner.type.CatcodeVisitor#visitIgnore(
          *      java.lang.Object,
          *      java.lang.Object, java.lang.Object)
          */
@@ -281,7 +281,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
         }
 
         /**
-         * @see de.dante.extex.scanner.type.CatcodeVisitor#visitInvalid(
+         * @see org.extex.scanner.type.CatcodeVisitor#visitInvalid(
          *      java.lang.Object,
          *      java.lang.Object, java.lang.Object)
          */
@@ -295,7 +295,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
         }
 
         /**
-         * @see de.dante.extex.scanner.type.CatcodeVisitor#visitLeftBrace(
+         * @see org.extex.scanner.type.CatcodeVisitor#visitLeftBrace(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
         public Object visitLeftBrace(final Object oFactory,
@@ -310,7 +310,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
         }
 
         /**
-         * @see de.dante.extex.scanner.type.CatcodeVisitor#visitLetter(
+         * @see org.extex.scanner.type.CatcodeVisitor#visitLetter(
          *      java.lang.Object,
          *      java.lang.Object, java.lang.Object)
          */
@@ -326,7 +326,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
         }
 
         /**
-         * @see de.dante.extex.scanner.type.CatcodeVisitor#visitMacroParam(
+         * @see org.extex.scanner.type.CatcodeVisitor#visitMacroParam(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
         public Object visitMacroParam(final Object oFactory,
@@ -341,7 +341,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
         }
 
         /**
-         * @see de.dante.extex.scanner.type.CatcodeVisitor#visitMathShift(
+         * @see org.extex.scanner.type.CatcodeVisitor#visitMathShift(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
         public Object visitMathShift(final Object oFactory,
@@ -356,7 +356,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
         }
 
         /**
-         * @see de.dante.extex.scanner.type.CatcodeVisitor#visitOther(
+         * @see org.extex.scanner.type.CatcodeVisitor#visitOther(
          *      java.lang.Object,
          *      java.lang.Object, java.lang.Object)
          */
@@ -372,7 +372,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
         }
 
         /**
-         * @see de.dante.extex.scanner.type.CatcodeVisitor#visitRightBrace(
+         * @see org.extex.scanner.type.CatcodeVisitor#visitRightBrace(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
         public Object visitRightBrace(final Object oFactory,
@@ -397,7 +397,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
          *
          * @throws CatcodeException in case of an error
          *
-         * @see de.dante.extex.scanner.type.CatcodeVisitor#visitSpace(
+         * @see org.extex.scanner.type.CatcodeVisitor#visitSpace(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          * @see "The TeXbook [Chapter 8, page 47]"
          */
@@ -417,7 +417,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
         }
 
         /**
-         * @see de.dante.extex.scanner.type.CatcodeVisitor#visitSubMark(
+         * @see org.extex.scanner.type.CatcodeVisitor#visitSubMark(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
         public Object visitSubMark(final Object oFactory,
@@ -432,7 +432,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
         }
 
         /**
-         * @see de.dante.extex.scanner.type.CatcodeVisitor#visitSupMark(
+         * @see org.extex.scanner.type.CatcodeVisitor#visitSupMark(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
         public Object visitSupMark(final Object oFactory,
@@ -447,7 +447,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
         }
 
         /**
-         * @see de.dante.extex.scanner.type.CatcodeVisitor#visitTabMark(
+         * @see org.extex.scanner.type.CatcodeVisitor#visitTabMark(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
         public Object visitTabMark(final Object oFactory,
@@ -655,7 +655,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
 
     /**
      * @see org.extex.scanner.stream.impl.TokenStreamBaseImpl#getNext(
-     *      de.dante.extex.scanner.type.token.TokenFactory,
+     *      org.extex.scanner.type.token.TokenFactory,
      *      de.dante.extex.interpreter.Tokenizer)
      */
     protected Token getNext(final TokenFactory factory,

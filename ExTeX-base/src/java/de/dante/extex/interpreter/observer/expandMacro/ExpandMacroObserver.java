@@ -20,8 +20,8 @@
 package de.dante.extex.interpreter.observer.expandMacro;
 
 import org.extex.interpreter.type.Code;
+import org.extex.scanner.type.token.Token;
 
-import de.dante.extex.scanner.type.token.Token;
 
 /**
  * This interface describes the ability to receive a notification just before

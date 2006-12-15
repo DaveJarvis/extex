@@ -30,11 +30,11 @@ import org.extex.interpreter.interaction.Interaction;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.file.InFile;
 import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.util.framework.logger.LogEnabled;
 
 import de.dante.extex.interpreter.primitives.macro.util.MacroCode;
 import de.dante.extex.interpreter.primitives.macro.util.MacroPattern;
-import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.typesetter.Typesetter;
 
 /**

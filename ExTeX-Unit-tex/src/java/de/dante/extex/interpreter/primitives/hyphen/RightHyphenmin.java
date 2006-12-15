@@ -34,11 +34,10 @@ import org.extex.interpreter.type.dimen.DimenConvertible;
 import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.language.Language;
 import org.extex.language.hyphenation.exception.HyphenationException;
+import org.extex.scanner.type.token.Token;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
-
 
 /**
  * This class provides an implementation for the primitive

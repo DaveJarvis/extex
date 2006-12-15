@@ -44,13 +44,13 @@ import org.extex.interpreter.type.math.MathDelimiter;
 import org.extex.interpreter.type.muskip.Muskip;
 import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.TokenStream;
+import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.token.CodeToken;
+import org.extex.scanner.type.token.Token;
 import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
 import org.extex.util.framework.configuration.exception.ConfigurationInstantiationException;
 
-import de.dante.extex.scanner.type.Catcode;
-import de.dante.extex.scanner.type.token.CodeToken;
-import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.type.noad.MathGlyph;
 
 /**
@@ -279,7 +279,7 @@ public class GroupImpl implements Group {
 
     /**
      * @see de.dante.extex.interpreter.context.impl.Group#afterGroup(
-     *      de.dante.extex.scanner.type.token.Token)
+     *      org.extex.scanner.type.token.Token)
      */
     public void afterGroup(final Token t) {
 
@@ -888,7 +888,7 @@ public class GroupImpl implements Group {
     /**
      * @see de.dante.extex.interpreter.context.impl.Group#setCatcode(
      *      org.extex.type.UnicodeChar,
-     *      de.dante.extex.scanner.type.Catcode,
+     *      org.extex.scanner.type.Catcode,
      *      boolean)
      */
     public void setCatcode(final UnicodeChar uc, final Catcode code,
@@ -907,7 +907,7 @@ public class GroupImpl implements Group {
 
     /**
      * @see de.dante.extex.interpreter.context.impl.Group#setCode(
-     *      de.dante.extex.scanner.type.token.Token,
+     *      org.extex.scanner.type.token.Token,
      *      de.dante.extex.interpreter.type.Code, boolean)
      */
     public void setCode(final Token token, final Code code, final boolean global) {

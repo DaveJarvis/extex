@@ -29,11 +29,11 @@ import org.extex.scanner.stream.TokenStreamOptions;
 import org.extex.scanner.stream.exception.ScannerNoHexDigitFoundException;
 import org.extex.scanner.stream.exception.ScannerNoUnicodeNameException;
 import org.extex.scanner.stream.impl.TokenStreamImpl;
+import org.extex.scanner.type.Catcode;
 import org.extex.type.UnicodeChar;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.scanner.type.Catcode;
 
 /**
  * This class contains an implementation of a token stream which is fed from a

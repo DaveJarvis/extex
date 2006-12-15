@@ -31,6 +31,7 @@ import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.interaction.Interaction;
 import org.extex.interpreter.interaction.InteractionVisitor;
 import org.extex.main.errorHandler.editHandler.EditHandler;
+import org.extex.scanner.type.token.Token;
 import org.extex.type.Locator;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
@@ -38,7 +39,6 @@ import org.extex.util.framework.i18n.Localizable;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.logger.LogEnabled;
 
-import de.dante.extex.scanner.type.token.Token;
 
 /**
  * This is a simple implementation of the error handler interacting with the
@@ -335,7 +335,7 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
     /**
      * @see de.dante.extex.interpreter.ErrorHandler#handleError(
      *      org.extex.util.exception.GeneralException,
-     *      de.dante.extex.scanner.type.token.Token,
+     *      org.extex.scanner.type.token.Token,
      *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.interpreter.context.Context)
      */

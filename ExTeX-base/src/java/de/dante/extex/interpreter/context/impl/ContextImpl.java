@@ -87,6 +87,10 @@ import org.extex.language.Language;
 import org.extex.language.LanguageManager;
 import org.extex.scanner.TokenStream;
 import org.extex.scanner.stream.TokenStreamOptions;
+import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.token.CodeToken;
+import org.extex.scanner.type.token.Token;
+import org.extex.scanner.type.token.TokenFactory;
 import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
 import org.extex.util.exception.GeneralException;
@@ -100,10 +104,6 @@ import org.extex.util.framework.i18n.Localizable;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.logger.LogEnabled;
 
-import de.dante.extex.scanner.type.Catcode;
-import de.dante.extex.scanner.type.token.CodeToken;
-import de.dante.extex.scanner.type.token.Token;
-import de.dante.extex.scanner.type.token.TokenFactory;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.typesetter.paragraphBuilder.ParagraphShape;
@@ -423,7 +423,7 @@ public class ContextImpl
 
     /**
      * @see de.dante.extex.interpreter.context.Context#afterGroup(
-     *      de.dante.extex.scanner.type.token.Token)
+     *      org.extex.scanner.type.token.Token)
      */
     public void afterGroup(final Token t) {
 
@@ -558,7 +558,7 @@ public class ContextImpl
 
     /**
      * @see de.dante.extex.interpreter.context.Context#esc(
-     *      de.dante.extex.scanner.type.token.Token)
+     *      org.extex.scanner.type.token.Token)
      */
     public String esc(final Token token) {
 
@@ -633,7 +633,7 @@ public class ContextImpl
 
     /**
      * @see de.dante.extex.interpreter.context.ContextCode#getCode(
-     *      de.dante.extex.scanner.type.token.CodeToken)
+     *      org.extex.scanner.type.token.CodeToken)
      */
     public Code getCode(final CodeToken t) throws InterpreterException {
 
@@ -1085,7 +1085,7 @@ public class ContextImpl
      * @see de.dante.extex.interpreter.context.ContextGroup#openGroup(
      *      de.dante.extex.interpreter.context.group.GroupType,
      *      org.extex.type.Locator,
-     *      de.dante.extex.scanner.type.token.Token)
+     *      org.extex.scanner.type.token.Token)
      */
     public void openGroup(final GroupType type, final Locator locator,
             final Token start)
@@ -1213,7 +1213,7 @@ public class ContextImpl
 
     /**
      * @see de.dante.extex.interpreter.context.observer.code.CodeObservable#registerCodeChangeObserver(
-     *      de.dante.extex.scanner.type.token.Token,
+     *      org.extex.scanner.type.token.Token,
      *      de.dante.extex.interpreter.context.observer.code.CodeObserver)
      */
     public synchronized void registerCodeChangeObserver(final Token name,
@@ -1539,7 +1539,7 @@ public class ContextImpl
 
     /**
      * @see de.dante.extex.interpreter.context.Context#setAfterassignment(
-     *      de.dante.extex.scanner.type.token.Token)
+     *      org.extex.scanner.type.token.Token)
      */
     public void setAfterassignment(final Token token) {
 
@@ -1558,7 +1558,7 @@ public class ContextImpl
     /**
      * @see de.dante.extex.interpreter.context.Context#setCatcode(
      *      org.extex.type.UnicodeChar,
-     *      de.dante.extex.scanner.type.Catcode, boolean)
+     *      org.extex.scanner.type.Catcode, boolean)
      */
     public void setCatcode(final UnicodeChar c, final Catcode cc,
             final boolean global) {
@@ -1568,7 +1568,7 @@ public class ContextImpl
 
     /**
      * @see de.dante.extex.interpreter.context.ContextCode#setCode(
-     *      de.dante.extex.scanner.type.token.CodeToken,
+     *      org.extex.scanner.type.token.CodeToken,
      *      de.dante.extex.interpreter.type.Code, boolean)
      */
     public void setCode(final CodeToken t, final Code code, final boolean global)
@@ -1904,7 +1904,7 @@ public class ContextImpl
      * @param factory the new value of the factory
      *
      * @see de.dante.extex.interpreter.context.Context#setTokenFactory(
-     *      de.dante.extex.scanner.type.token.TokenFactory)
+     *      org.extex.scanner.type.token.TokenFactory)
      */
     public void setTokenFactory(final TokenFactory factory) {
 
@@ -1963,7 +1963,7 @@ public class ContextImpl
 
     /**
      * @see de.dante.extex.interpreter.context.observer.code.CodeObservable#unregisterCodeChangeObserver(
-     *      de.dante.extex.scanner.type.token.Token,
+     *      org.extex.scanner.type.token.Token,
      *      de.dante.extex.interpreter.context.observer.code.CodeObserver)
      */
     public synchronized void unregisterCodeChangeObserver(final Token name,

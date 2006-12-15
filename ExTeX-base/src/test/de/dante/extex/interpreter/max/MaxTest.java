@@ -19,7 +19,8 @@
 
 package de.dante.extex.interpreter.max;
 
-import de.dante.extex.scanner.type.Catcode;
+import org.extex.scanner.type.Catcode;
+
 import de.dante.test.ExTeXLauncher;
 
 /**

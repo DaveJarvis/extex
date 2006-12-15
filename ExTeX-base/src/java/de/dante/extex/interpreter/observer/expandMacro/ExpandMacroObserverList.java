@@ -23,8 +23,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.extex.interpreter.type.Code;
+import org.extex.scanner.type.token.Token;
 
-import de.dante.extex.scanner.type.token.Token;
 
 /**
  * This class provides a type-safe list of observers for the expand event.
@@ -78,7 +78,7 @@ public final class ExpandMacroObserverList implements ExpandMacroObserver {
 
     /**
      * @see de.dante.extex.interpreter.observer.expandMacro.ExpandMacroObserver#update(
-     *      de.dante.extex.scanner.type.token.Token,
+     *      org.extex.scanner.type.token.Token,
      *      de.dante.extex.interpreter.type.Code)
      */
     public void update(final Token token, final Code code) {

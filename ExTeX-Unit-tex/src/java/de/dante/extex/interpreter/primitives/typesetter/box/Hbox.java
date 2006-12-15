@@ -28,8 +28,8 @@ import org.extex.interpreter.exception.helping.MissingLeftBraceException;
 import org.extex.interpreter.type.box.Box;
 import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.token.Token;
 
-import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
 
 /**

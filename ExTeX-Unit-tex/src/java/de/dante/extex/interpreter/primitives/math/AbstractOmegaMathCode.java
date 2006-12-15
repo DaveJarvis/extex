@@ -29,14 +29,14 @@ import org.extex.interpreter.type.count.Count;
 import org.extex.interpreter.type.math.MathClass;
 import org.extex.interpreter.type.math.MathClassVisitor;
 import org.extex.interpreter.type.math.MathCode;
+import org.extex.scanner.type.token.CodeToken;
+import org.extex.scanner.type.token.LeftBraceToken;
+import org.extex.scanner.type.token.RightBraceToken;
+import org.extex.scanner.type.token.Token;
 import org.extex.type.UnicodeChar;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
 import de.dante.extex.interpreter.primitives.math.util.MathCodeConvertible;
-import de.dante.extex.scanner.type.token.CodeToken;
-import de.dante.extex.scanner.type.token.LeftBraceToken;
-import de.dante.extex.scanner.type.token.RightBraceToken;
-import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.type.noad.MathGlyph;
 

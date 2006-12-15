@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter.observer.pop;
 
-import de.dante.extex.scanner.type.token.Token;
+import org.extex.scanner.type.token.Token;
 
 /**
  * This interface describes the ability to receive a notification after a pop

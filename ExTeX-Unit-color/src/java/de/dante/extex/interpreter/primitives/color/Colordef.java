@@ -25,9 +25,9 @@ import org.extex.interpreter.context.Color;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.AbstractAssignment;
+import org.extex.scanner.type.token.CodeToken;
 
 import de.dante.extex.interpreter.primitives.color.util.ColorParser;
-import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.typesetter.Typesetter;
 
 /**

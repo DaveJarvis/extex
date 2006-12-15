@@ -26,10 +26,8 @@ import org.extex.interpreter.context.tc.Direction.Dir;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.type.AbstractCode;
-
-import de.dante.extex.scanner.type.Catcode;
-import de.dante.extex.scanner.type.token.Token;
-
+import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.token.Token;
 
 /**
  * This is the abstract base class for primitives acquiring a direction.

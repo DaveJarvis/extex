@@ -21,15 +21,15 @@ package de.dante.extex.interpreter.max;
 
 import java.util.logging.Logger;
 
+import org.extex.scanner.type.token.TokenFactory;
 import org.extex.util.framework.AbstractFactory;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.scanner.type.token.TokenFactory;
 
 /**
  * This class provides a factory for a
- * {@link de.dante.extex.scanner.type.token.TokenFactory TokenFactory}.
+ * {@link org.extex.scanner.type.token.TokenFactory TokenFactory}.
  * This factory inherits its properties from the
  * {@link org.extex.util.framework.AbstractFactory AbstractFactory}. Among them
  * the support for configuration and logging.
@@ -46,7 +46,7 @@ import de.dante.extex.scanner.type.token.TokenFactory;
  * </p>
  * <p>
  *  The named class needs to implement the interface
- *  {@link de.dante.extex.scanner.type.token.TokenFactory TokenFactory}. If
+ *  {@link org.extex.scanner.type.token.TokenFactory TokenFactory}. If
  *  this interface is not implemented an error is raised.
  * </p>
  * <p>

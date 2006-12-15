@@ -30,15 +30,14 @@ import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.count.Count;
 import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.interpreter.type.font.Font;
+import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.token.Token;
 import org.extex.type.UnicodeChar;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.scanner.type.Catcode;
-import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.node.AccentKernNode;
-
 
 /**
  * This class provides an implementation for the primitive <code>\accent</code>.

@@ -35,6 +35,7 @@ import org.extex.language.ligature.LigatureBuilder;
 import org.extex.scanner.TokenStream;
 import org.extex.scanner.stream.TokenStreamFactory;
 import org.extex.scanner.stream.impl.TokenStreamImpl;
+import org.extex.scanner.type.token.Token;
 import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
 import org.extex.util.exception.GeneralException;
@@ -42,7 +43,6 @@ import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.ConfigurationFactory;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.ListMaker;
 import de.dante.extex.typesetter.Mode;
 import de.dante.extex.typesetter.ParagraphObserver;
@@ -294,7 +294,7 @@ public class Max1 extends TestCase {
          * @see de.dante.extex.typesetter.ListMaker#mathShift(
          *      de.dante.extex.interpreter.context.Context,
          *      org.extex.interpreter.TokenSource,
-         *      de.dante.extex.scanner.type.token.Token)
+         *      org.extex.scanner.type.token.Token)
          */
         public void mathShift(final Context context, final TokenSource source,
                 final Token t)
@@ -457,7 +457,7 @@ public class Max1 extends TestCase {
         /**
          * @see de.dante.extex.typesetter.Typesetter#subscriptMark(
          *      Context,
-         *      TokenSource, Typesetter, de.dante.extex.scanner.type.token.Token)
+         *      TokenSource, Typesetter, org.extex.scanner.type.token.Token)
          */
         public void subscriptMark(final Context context,
                 final TokenSource source, final Typesetter typesetter,
@@ -468,7 +468,7 @@ public class Max1 extends TestCase {
         /**
          * @see de.dante.extex.typesetter.Typesetter#superscriptMark(
          *      Context,
-         *      TokenSource, Typesetter, de.dante.extex.scanner.type.token.Token)
+         *      TokenSource, Typesetter, org.extex.scanner.type.token.Token)
          */
         public void superscriptMark(final Context context,
                 final TokenSource source, final Typesetter typesetter,
@@ -479,7 +479,7 @@ public class Max1 extends TestCase {
         /**
          * @see de.dante.extex.typesetter.Typesetter#tab(
          *      Context,
-         *      TokenSource, de.dante.extex.scanner.type.token.Token)
+         *      TokenSource, org.extex.scanner.type.token.Token)
          */
         public void tab(final Context context, final TokenSource source,
                 final Token t)
@@ -516,7 +516,7 @@ public class Max1 extends TestCase {
          * @see de.dante.extex.typesetter.Typesetter#letter(
          *      Context,
          *      de.dante.extex.interpreter.context.TypesettingContext,
-         *      de.dante.extex.scanner.type.token.Token)
+         *      org.extex.scanner.type.token.Token)
          */
         public void treatLetter(final TypesettingContext context, final Token t)
                 throws GeneralException {

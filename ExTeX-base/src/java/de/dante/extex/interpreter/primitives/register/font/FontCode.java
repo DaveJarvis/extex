@@ -30,10 +30,10 @@ import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.font.Font;
 import org.extex.interpreter.type.font.FontConvertible;
 import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.token.CodeToken;
+import org.extex.scanner.type.token.Token;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.scanner.type.token.CodeToken;
-import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
 
 /**
@@ -73,7 +73,7 @@ public class FontCode extends AbstractCode
 
     /**
      * @see de.dante.extex.interpreter.type.ComparableCode#compare(
-     *      de.dante.extex.scanner.type.token.Token,
+     *      org.extex.scanner.type.token.Token,
      *      de.dante.extex.interpreter.context.Context)
      */
     public boolean compare(final Token token, final Context context)

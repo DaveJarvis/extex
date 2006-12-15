@@ -22,7 +22,8 @@ package de.dante.extex.interpreter.observer.push;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.dante.extex.scanner.type.token.Token;
+import org.extex.scanner.type.token.Token;
+
 
 /**
  * This class provides a type-safe list of observers for the push event.

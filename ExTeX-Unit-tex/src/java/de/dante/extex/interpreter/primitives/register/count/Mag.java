@@ -32,8 +32,8 @@ import org.extex.interpreter.type.arithmetic.Multiplyable;
 import org.extex.interpreter.type.count.Count;
 import org.extex.interpreter.type.count.CountConvertible;
 import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.token.Token;
 
-import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
 
 /**

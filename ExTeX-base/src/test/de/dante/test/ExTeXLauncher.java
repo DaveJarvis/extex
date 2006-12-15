@@ -44,6 +44,7 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.main.errorHandler.editHandler.EditHandler;
+import org.extex.scanner.type.token.Token;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
@@ -51,7 +52,6 @@ import org.extex.util.resource.ResourceFinder;
 
 import de.dante.extex.ExTeX;
 import de.dante.extex.main.logging.LogFormatter;
-import de.dante.extex.scanner.type.token.Token;
 import de.dante.test.font.LauncherFont;
 
 /**
@@ -90,7 +90,7 @@ public class ExTeXLauncher extends TestCase {
         /**
          * @see de.dante.extex.interpreter.ErrorHandler#handleError(
          *      org.extex.util.GeneralException,
-         *      de.dante.extex.scanner.type.token.Token,
+         *      org.extex.scanner.type.token.Token,
          *      org.extex.interpreter.TokenSource,
          *      de.dante.extex.interpreter.context.Context)
          */

@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter.observer.command;
 
-import de.dante.extex.scanner.type.token.Token;
+import org.extex.scanner.type.token.Token;
 
 /**
  * This interface describes the ability to receive a notification just before

@@ -27,12 +27,12 @@ import org.extex.interpreter.type.count.Count;
 import org.extex.interpreter.type.count.FixedCount;
 import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.glue.FixedGlue;
+import org.extex.scanner.type.token.Token;
 import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.ListMaker;
 import de.dante.extex.typesetter.Mode;
 import de.dante.extex.typesetter.ParagraphObserver;
@@ -288,7 +288,7 @@ public class NullTypesetterImpl implements Typesetter {
      * @see de.dante.extex.typesetter.ListMaker#mathShift(
      *      de.dante.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.scanner.type.token.Token)
+     *      org.extex.scanner.type.token.Token)
      */
     public void mathShift(final Context context, final TokenSource source,
             final Token t) throws TypesetterException, ConfigurationException {
@@ -435,7 +435,7 @@ public class NullTypesetterImpl implements Typesetter {
      *      de.dante.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter,
-     *      de.dante.extex.scanner.type.token.Token)
+     *      org.extex.scanner.type.token.Token)
      */
     public void subscriptMark(final Context context, final TokenSource source,
             final Typesetter typesetter, final Token t)
@@ -448,7 +448,7 @@ public class NullTypesetterImpl implements Typesetter {
      *      de.dante.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.typesetter.Typesetter,
-     *      de.dante.extex.scanner.type.token.Token)
+     *      org.extex.scanner.type.token.Token)
      */
     public void superscriptMark(final Context context,
             final TokenSource source, final Typesetter typesetter, final Token t)
@@ -460,7 +460,7 @@ public class NullTypesetterImpl implements Typesetter {
      * @see de.dante.extex.typesetter.ListMaker#tab(
      *      de.dante.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.scanner.type.token.Token)
+     *      org.extex.scanner.type.token.Token)
      */
     public void tab(final Context context, final TokenSource source,
             final Token t) throws TypesetterException, ConfigurationException {

@@ -27,12 +27,12 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.language.Language;
 import org.extex.language.hyphenation.exception.DuplicateHyphenationException;
+import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.CatcodeException;
+import org.extex.scanner.type.token.TokenFactory;
 
 import de.dante.extex.interpreter.context.MockContext;
 import de.dante.extex.language.hyphenation.liang.LiangsHyphenationTable;
-import de.dante.extex.scanner.type.Catcode;
-import de.dante.extex.scanner.type.CatcodeException;
-import de.dante.extex.scanner.type.token.TokenFactory;
 
 /**
  * TODO gene: missing JavaDoc.

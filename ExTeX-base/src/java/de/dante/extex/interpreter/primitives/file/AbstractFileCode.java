@@ -26,13 +26,13 @@ import org.extex.interpreter.exception.helping.BadFileNumberException;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.count.Count;
+import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.token.SpaceToken;
+import org.extex.scanner.type.token.Token;
 import org.extex.util.framework.configuration.Configurable;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.scanner.type.Catcode;
-import de.dante.extex.scanner.type.token.SpaceToken;
-import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
 
 /**

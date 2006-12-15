@@ -27,13 +27,13 @@ import org.extex.language.hyphenation.exception.HyphenationException;
 import org.extex.language.hyphenation.exception.IllegalTokenHyphenationException;
 import org.extex.language.hyphenation.exception.IllegalValueHyphenationException;
 import org.extex.language.hyphenation.exception.ImmutableHyphenationException;
+import org.extex.scanner.type.token.LetterToken;
+import org.extex.scanner.type.token.OtherToken;
+import org.extex.scanner.type.token.Token;
 import org.extex.type.UnicodeChar;
 import org.extex.type.UnicodeCharList;
 
 import de.dante.extex.language.hyphenation.base.BaseHyphenationTable;
-import de.dante.extex.scanner.type.token.LetterToken;
-import de.dante.extex.scanner.type.token.OtherToken;
-import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeList;

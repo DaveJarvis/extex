@@ -29,9 +29,9 @@ import org.extex.interpreter.exception.helping.UndefinedControlSequenceException
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.arithmetic.Advanceable;
+import org.extex.scanner.type.token.CodeToken;
+import org.extex.scanner.type.token.Token;
 
-import de.dante.extex.scanner.type.token.CodeToken;
-import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
 
 

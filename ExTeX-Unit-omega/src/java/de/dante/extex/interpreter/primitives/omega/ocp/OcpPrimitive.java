@@ -23,12 +23,12 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.util.resource.ResourceConsumer;
 import org.extex.util.resource.ResourceFinder;
 
 import de.dante.extex.interpreter.primitives.file.AbstractFileCode;
 import de.dante.extex.interpreter.primitives.omega.ocp.util.Ocp;
-import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.typesetter.Typesetter;
 
 /**

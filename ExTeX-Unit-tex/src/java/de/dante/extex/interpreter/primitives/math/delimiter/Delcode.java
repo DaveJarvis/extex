@@ -33,9 +33,9 @@ import org.extex.interpreter.type.count.Count;
 import org.extex.interpreter.type.count.CountConvertible;
 import org.extex.interpreter.type.math.MathDelimiter;
 import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.token.Token;
 import org.extex.type.UnicodeChar;
 
-import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
 
 /**

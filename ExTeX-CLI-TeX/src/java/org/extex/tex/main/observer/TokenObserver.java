@@ -21,14 +21,15 @@ package org.extex.tex.main.observer;
 
 import java.util.logging.Logger;
 
+import org.extex.scanner.type.token.Token;
+
 import de.dante.extex.interpreter.observer.pop.PopObserver;
-import de.dante.extex.scanner.type.token.Token;
 
 /**
  * Observer for tokens which are read from the token stream.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4708 $
  */
 public class TokenObserver implements PopObserver {
 
@@ -50,7 +51,7 @@ public class TokenObserver implements PopObserver {
 
     /**
      * @see de.dante.extex.interpreter.observer.pop.PopObserver#update(
-     *      de.dante.extex.scanner.type.token.Token)
+     *      org.extex.scanner.type.token.Token)
      */
     public void update(final Token token) {
 

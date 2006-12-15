@@ -27,13 +27,13 @@ import org.extex.interpreter.Tokenizer;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.scanner.TokenStream;
 import org.extex.scanner.exception.ScannerException;
+import org.extex.scanner.type.CatcodeException;
+import org.extex.scanner.type.token.Token;
+import org.extex.scanner.type.token.TokenFactory;
 import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.scanner.type.CatcodeException;
-import de.dante.extex.scanner.type.token.Token;
-import de.dante.extex.scanner.type.token.TokenFactory;
 
 /**
  * This class provides a token source which is fed from a string.
@@ -88,7 +88,7 @@ public class StringSource extends Moritz {
 
         /**
          * @see org.extex.scanner.TokenStream#get(
-         *      de.dante.extex.scanner.type.token.TokenFactory,
+         *      org.extex.scanner.type.token.TokenFactory,
          *      de.dante.extex.interpreter.Tokenizer)
          */
         public Token get(final TokenFactory factory, final Tokenizer tokenizer)
@@ -144,7 +144,7 @@ public class StringSource extends Moritz {
 
         /**
          * @see org.extex.scanner.TokenStream#put(
-         *      de.dante.extex.scanner.type.token.Token)
+         *      org.extex.scanner.type.token.Token)
          */
         public void put(final Token token) {
 
