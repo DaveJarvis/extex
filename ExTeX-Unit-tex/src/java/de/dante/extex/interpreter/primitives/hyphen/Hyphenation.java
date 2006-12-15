@@ -25,6 +25,7 @@ import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.Code;
 import org.extex.type.UnicodeChar;
 import org.extex.type.UnicodeCharList;
+import org.extex.unicode.Unicode;
 
 import de.dante.extex.interpreter.primitives.register.CharCode;
 import de.dante.extex.scanner.type.Catcode;
@@ -33,7 +34,6 @@ import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.scanner.type.token.LetterToken;
 import de.dante.extex.scanner.type.token.OtherToken;
 import de.dante.extex.scanner.type.token.Token;
-import de.dante.extex.unicode.Unicode;
 
 /**
  * This class provides an implementation for the primitive

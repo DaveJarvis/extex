@@ -85,6 +85,8 @@ import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.interpreter.unit.UnitInfo;
 import org.extex.language.Language;
 import org.extex.language.LanguageManager;
+import org.extex.scanner.TokenStream;
+import org.extex.scanner.stream.TokenStreamOptions;
 import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
 import org.extex.util.exception.GeneralException;
@@ -98,8 +100,6 @@ import org.extex.util.framework.i18n.Localizable;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.logger.LogEnabled;
 
-import de.dante.extex.scanner.TokenStream;
-import de.dante.extex.scanner.stream.TokenStreamOptions;
 import de.dante.extex.scanner.type.Catcode;
 import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.scanner.type.token.Token;
@@ -993,7 +993,7 @@ public class ContextImpl
     }
 
     /**
-     * @see de.dante.extex.scanner.stream.TokenStreamOptions#getToksOption(
+     * @see org.extex.scanner.stream.TokenStreamOptions#getToksOption(
      *      java.lang.String)
      */
     public FixedTokens getToksOption(final String name) {

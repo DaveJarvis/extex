@@ -21,10 +21,10 @@ package org.extex.scanner.stream.impl;
 
 import org.extex.interpreter.Tokenizer;
 import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.TokenStream;
+import org.extex.scanner.exception.ScannerException;
 import org.extex.type.Locator;
 
-import de.dante.extex.scanner.TokenStream;
-import de.dante.extex.scanner.exception.ScannerException;
 import de.dante.extex.scanner.type.token.SpaceToken;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.scanner.type.token.TokenFactory;
@@ -87,7 +87,7 @@ public class TokenStreamBaseImpl implements TokenStream {
     }
 
     /**
-     * @see de.dante.extex.scanner.TokenStream#closeFileStream()
+     * @see org.extex.scanner.TokenStream#closeFileStream()
      */
     public boolean closeFileStream() {
 
@@ -96,7 +96,7 @@ public class TokenStreamBaseImpl implements TokenStream {
     }
 
     /**
-     * @see de.dante.extex.scanner.TokenStream#get(
+     * @see org.extex.scanner.TokenStream#get(
      *      de.dante.extex.scanner.type.token.TokenFactory,
      *      de.dante.extex.interpreter.Tokenizer)
      */
@@ -125,7 +125,7 @@ public class TokenStreamBaseImpl implements TokenStream {
     }
 
     /**
-     * @see de.dante.extex.scanner.TokenStream#getLocator()
+     * @see org.extex.scanner.TokenStream#getLocator()
      */
     public Locator getLocator() {
 
@@ -161,7 +161,7 @@ public class TokenStreamBaseImpl implements TokenStream {
     }
 
     /**
-     * @see de.dante.extex.scanner.TokenStream#isEol()
+     * @see org.extex.scanner.TokenStream#isEol()
      */
     public boolean isEol() throws ScannerException {
 
@@ -169,7 +169,7 @@ public class TokenStreamBaseImpl implements TokenStream {
     }
 
     /**
-     * @see de.dante.extex.scanner.TokenStream#isFileStream()
+     * @see org.extex.scanner.TokenStream#isFileStream()
      */
     public boolean isFileStream() {
 
@@ -177,7 +177,7 @@ public class TokenStreamBaseImpl implements TokenStream {
     }
 
     /**
-     * @see de.dante.extex.scanner.TokenStream#put(
+     * @see org.extex.scanner.TokenStream#put(
      *      de.dante.extex.scanner.type.token.Token)
      */
     public void put(final Token token) {

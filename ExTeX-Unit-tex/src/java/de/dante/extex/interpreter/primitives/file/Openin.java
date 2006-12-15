@@ -25,11 +25,10 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.interaction.Interaction;
 import org.extex.interpreter.type.file.InFile;
+import org.extex.scanner.TokenStream;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.scanner.TokenStream;
 import de.dante.extex.typesetter.Typesetter;
-
 
 /**
  * This class provides an implementation for the primitive <code>\openin</code>.

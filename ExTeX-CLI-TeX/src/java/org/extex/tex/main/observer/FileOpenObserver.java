@@ -22,7 +22,8 @@ package org.extex.tex.main.observer;
 import java.io.InputStream;
 import java.util.logging.Logger;
 
-import de.dante.extex.scanner.stream.observer.file.OpenFileObserver;
+import org.extex.scanner.stream.observer.file.OpenFileObserver;
+
 
 /**
  * This observer reports that a certain file has been opened.
@@ -30,7 +31,7 @@ import de.dante.extex.scanner.stream.observer.file.OpenFileObserver;
  * name of the file.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4708 $
  */
 public class FileOpenObserver implements OpenFileObserver {
 
@@ -51,7 +52,7 @@ public class FileOpenObserver implements OpenFileObserver {
     }
 
     /**
-     * @see de.dante.extex.scanner.stream.observer.file.OpenFileObserver#update(
+     * @see org.extex.scanner.stream.observer.file.OpenFileObserver#update(
      *      java.lang.String,
      *      java.lang.String,
      *      java.io.InputStream)

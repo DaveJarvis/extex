@@ -46,6 +46,15 @@ import org.extex.interpreter.type.font.Font;
 import org.extex.interpreter.type.font.FontConvertible;
 import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.interpreter.type.tokens.TokensConvertible;
+import org.extex.scanner.TokenStream;
+import org.extex.scanner.exception.ScannerException;
+import org.extex.scanner.stream.TokenStreamFactory;
+import org.extex.scanner.stream.observer.file.OpenFileObservable;
+import org.extex.scanner.stream.observer.file.OpenFileObserver;
+import org.extex.scanner.stream.observer.reader.OpenReaderObservable;
+import org.extex.scanner.stream.observer.reader.OpenReaderObserver;
+import org.extex.scanner.stream.observer.string.OpenStringObservable;
+import org.extex.scanner.stream.observer.string.OpenStringObserver;
 import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
 import org.extex.util.exception.GeneralException;
@@ -69,15 +78,6 @@ import de.dante.extex.interpreter.observer.streamClose.StreamCloseObserver;
 import de.dante.extex.interpreter.observer.streamClose.StreamCloseObserverList;
 import de.dante.extex.interpreter.primitives.register.count.util.IntegerCode;
 import de.dante.extex.interpreter.primitives.register.toks.ToksParameter;
-import de.dante.extex.scanner.TokenStream;
-import de.dante.extex.scanner.exception.ScannerException;
-import de.dante.extex.scanner.stream.TokenStreamFactory;
-import de.dante.extex.scanner.stream.observer.file.OpenFileObservable;
-import de.dante.extex.scanner.stream.observer.file.OpenFileObserver;
-import de.dante.extex.scanner.stream.observer.reader.OpenReaderObservable;
-import de.dante.extex.scanner.stream.observer.reader.OpenReaderObserver;
-import de.dante.extex.scanner.stream.observer.string.OpenStringObservable;
-import de.dante.extex.scanner.stream.observer.string.OpenStringObserver;
 import de.dante.extex.scanner.type.Catcode;
 import de.dante.extex.scanner.type.CatcodeException;
 import de.dante.extex.scanner.type.token.CodeToken;
@@ -269,7 +269,7 @@ public class Moritz extends Max
      * @param theStream the new stream to read from
      *
      * @see org.extex.interpreter.TokenSource#addStream(
-     *      de.dante.extex.scanner.TokenStream)
+     *      org.extex.scanner.TokenStream)
      */
     public void addStream(final TokenStream theStream) {
 
@@ -948,7 +948,7 @@ public class Moritz extends Max
     }
 
     /**
-     * @see de.dante.extex.scanner.stream.observer.file.OpenFileObservable#registerObserver(de.dante.extex.scanner.stream.observer.file.OpenFileObserver)
+     * @see org.extex.scanner.stream.observer.file.OpenFileObservable#registerObserver(org.extex.scanner.stream.observer.file.OpenFileObserver)
      */
     public void registerObserver(final OpenFileObserver observer) {
 
@@ -959,7 +959,7 @@ public class Moritz extends Max
     }
 
     /**
-     * @see de.dante.extex.scanner.stream.observer.reader.OpenReaderObservable#registerObserver(de.dante.extex.scanner.stream.observer.reader.OpenReaderObserver)
+     * @see org.extex.scanner.stream.observer.reader.OpenReaderObservable#registerObserver(org.extex.scanner.stream.observer.reader.OpenReaderObserver)
      */
     public void registerObserver(final OpenReaderObserver observer) {
 
@@ -970,7 +970,7 @@ public class Moritz extends Max
     }
 
     /**
-     * @see de.dante.extex.scanner.stream.observer.string.OpenStringObservable#registerObserver(de.dante.extex.scanner.stream.observer.string.OpenStringObserver)
+     * @see org.extex.scanner.stream.observer.string.OpenStringObservable#registerObserver(org.extex.scanner.stream.observer.string.OpenStringObserver)
      */
     public void registerObserver(final OpenStringObserver observer) {
 

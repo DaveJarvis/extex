@@ -24,15 +24,15 @@ import java.io.InputStream;
 import java.io.Reader;
 
 import org.extex.interpreter.Tokenizer;
+import org.extex.scanner.exception.ScannerException;
+import org.extex.scanner.stream.TokenStreamOptions;
+import org.extex.scanner.stream.exception.ScannerNoHexDigitFoundException;
+import org.extex.scanner.stream.exception.ScannerNoUnicodeNameException;
 import org.extex.scanner.stream.impl.TokenStreamImpl;
 import org.extex.type.UnicodeChar;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.scanner.exception.ScannerException;
-import de.dante.extex.scanner.stream.TokenStreamOptions;
-import de.dante.extex.scanner.stream.exception.ScannerNoHexDigitFoundException;
-import de.dante.extex.scanner.stream.exception.ScannerNoUnicodeNameException;
 import de.dante.extex.scanner.type.Catcode;
 
 /**

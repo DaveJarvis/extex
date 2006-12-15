@@ -25,11 +25,11 @@ import java.io.StringReader;
 import junit.framework.TestCase;
 
 import org.extex.interpreter.Tokenizer;
+import org.extex.scanner.TokenStream;
+import org.extex.scanner.stream.exception.ScannerNoUnicodeNameException;
 import org.extex.scanner.stream.impl32.TokenStreamImpl32;
 import org.extex.type.UnicodeChar;
 
-import de.dante.extex.scanner.TokenStream;
-import de.dante.extex.scanner.stream.exception.ScannerNoUnicodeNameException;
 import de.dante.extex.scanner.type.Catcode;
 import de.dante.extex.scanner.type.token.OtherToken;
 import de.dante.extex.scanner.type.token.Token;

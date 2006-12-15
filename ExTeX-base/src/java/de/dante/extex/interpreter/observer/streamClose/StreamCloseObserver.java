@@ -19,14 +19,14 @@
 
 package de.dante.extex.interpreter.observer.streamClose;
 
-import de.dante.extex.scanner.TokenStream;
+import org.extex.scanner.TokenStream;
 
 /**
  * This interface describes the ability to receive a notification just before
  * a stream is closed.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4499 $
  */
 public interface StreamCloseObserver {
 

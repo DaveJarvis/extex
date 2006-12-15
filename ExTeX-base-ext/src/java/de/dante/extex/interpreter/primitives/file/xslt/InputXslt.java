@@ -34,11 +34,11 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.scanner.stream.TokenStreamFactory;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.resource.ResourceFinder;
 
 import de.dante.extex.interpreter.primitives.file.AbstractFileCode;
-import de.dante.extex.scanner.stream.TokenStreamFactory;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.util.xslt.Transform;
 

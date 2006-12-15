@@ -59,6 +59,7 @@ import org.extex.interpreter.type.count.Count;
 import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.interpreter.unit.UnitInfo;
 import org.extex.language.LanguageManager;
+import org.extex.scanner.TokenStream;
 import org.extex.type.UnicodeChar;
 import org.extex.util.Switch;
 import org.extex.util.exception.GeneralException;
@@ -99,7 +100,6 @@ import de.dante.extex.interpreter.observer.stop.StopObserver;
 import de.dante.extex.interpreter.observer.stop.StopObserverList;
 import de.dante.extex.interpreter.primitives.register.count.util.IntegerCode;
 import de.dante.extex.interpreter.unit.LoadUnit;
-import de.dante.extex.scanner.TokenStream;
 import de.dante.extex.scanner.type.Catcode;
 import de.dante.extex.scanner.type.CatcodeException;
 import de.dante.extex.scanner.type.token.ActiveCharacterToken;
@@ -1289,7 +1289,7 @@ public abstract class Max
 
     /**
      * @see de.dante.extex.interpreter.Interpreter#run(
-     *      de.dante.extex.scanner.TokenStream)
+     *      org.extex.scanner.TokenStream)
      */
     public void run(final TokenStream stream)
             throws ConfigurationException,

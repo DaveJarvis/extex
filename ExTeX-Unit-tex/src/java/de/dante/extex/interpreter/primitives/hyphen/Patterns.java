@@ -27,13 +27,13 @@ import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.MissingLeftBraceException;
 import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.language.Language;
+import org.extex.language.hyphenation.exception.DuplicateHyphenationException;
+import org.extex.language.hyphenation.exception.IllegalTokenHyphenationException;
+import org.extex.language.hyphenation.exception.IllegalValueHyphenationException;
+import org.extex.language.hyphenation.exception.ImmutableHyphenationException;
 import org.extex.type.UnicodeChar;
 
-import de.dante.extex.language.Language;
-import de.dante.extex.language.hyphenation.exception.DuplicateHyphenationException;
-import de.dante.extex.language.hyphenation.exception.IllegalTokenHyphenationException;
-import de.dante.extex.language.hyphenation.exception.IllegalValueHyphenationException;
-import de.dante.extex.language.hyphenation.exception.ImmutableHyphenationException;
 import de.dante.extex.scanner.type.Catcode;
 import de.dante.extex.scanner.type.CatcodeException;
 import de.dante.extex.scanner.type.token.ActiveCharacterToken;

@@ -50,6 +50,8 @@ import org.extex.interpreter.Interpreter;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.interaction.Interaction;
 import org.extex.interpreter.interaction.InteractionUnknownException;
+import org.extex.scanner.stream.TokenStreamFactory;
+import org.extex.scanner.stream.observer.file.OpenFileObserver;
 import org.extex.tex.main.exception.MainCodingException;
 import org.extex.tex.main.exception.MainConfigurationException;
 import org.extex.tex.main.exception.MainException;
@@ -83,8 +85,6 @@ import de.dante.extex.interpreter.observer.push.PushObserver;
 import de.dante.extex.interpreter.observer.streamClose.StreamCloseObservable;
 import de.dante.extex.interpreter.observer.streamClose.StreamCloseObserver;
 import de.dante.extex.main.logging.LogFormatter;
-import de.dante.extex.scanner.stream.TokenStreamFactory;
-import de.dante.extex.scanner.stream.observer.file.OpenFileObserver;
 
 /**
  * This is the command line interface to <logo>ExTeX</logo>.
@@ -1092,7 +1092,7 @@ public class TeX extends ExTeX {
                 boolean first = true;
 
                 /**
-                 * @see de.dante.extex.scanner.stream.observer.file.OpenFileObserver#update(
+                 * @see org.extex.scanner.stream.observer.file.OpenFileObserver#update(
                  *      java.lang.String,
                  *      java.lang.String,
                  *      java.io.InputStream)

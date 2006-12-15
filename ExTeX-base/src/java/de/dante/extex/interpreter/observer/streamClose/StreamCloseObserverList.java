@@ -22,13 +22,14 @@ package de.dante.extex.interpreter.observer.streamClose;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.dante.extex.scanner.TokenStream;
+import org.extex.scanner.TokenStream;
+
 
 /**
  * This class provides a type-safe list of observers for the stream close event.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4499 $
  */
 public final class StreamCloseObserverList implements StreamCloseObserver {
 
@@ -71,7 +72,7 @@ public final class StreamCloseObserverList implements StreamCloseObserver {
 
     /**
      * @see de.dante.extex.interpreter.observer.streamClose.StreamCloseObserver#update(
-     *      de.dante.extex.scanner.TokenStream)
+     *      org.extex.scanner.TokenStream)
      */
     public void update(final TokenStream stream) {
 

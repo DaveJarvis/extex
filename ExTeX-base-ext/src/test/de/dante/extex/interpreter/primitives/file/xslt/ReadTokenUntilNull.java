@@ -24,8 +24,8 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.AbstractCode;
+import org.extex.scanner.stream.TokenStreamFactory;
 
-import de.dante.extex.scanner.stream.TokenStreamFactory;
 import de.dante.extex.scanner.type.token.ActiveCharacterToken;
 import de.dante.extex.scanner.type.token.ControlSequenceToken;
 import de.dante.extex.scanner.type.token.CrToken;

@@ -38,10 +38,10 @@ import org.extex.interpreter.type.math.MathCode;
 import org.extex.interpreter.type.math.MathDelimiter;
 import org.extex.interpreter.type.muskip.Muskip;
 import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.TokenStream;
 import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
 
-import de.dante.extex.scanner.TokenStream;
 import de.dante.extex.scanner.type.Catcode;
 import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.scanner.type.token.Token;
