@@ -19,7 +19,7 @@
 
 package de.dante.extex.language;
 
-import de.dante.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This interface describes the ability to carry a hyphenation factory.

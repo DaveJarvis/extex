@@ -23,6 +23,14 @@ import java.util.Iterator;
 import java.util.Properties;
 import java.util.logging.Logger;
 
+import org.extex.util.framework.AbstractFactory;
+import org.extex.util.framework.configuration.Configuration;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.framework.configuration.exception.ConfigurationMissingAttributeException;
+import org.extex.util.resource.PropertyConfigurable;
+import org.extex.util.resource.ResourceConsumer;
+import org.extex.util.resource.ResourceFinder;
+
 import de.dante.extex.backend.documentWriter.DocumentWriter;
 import de.dante.extex.backend.documentWriter.DocumentWriterFactory;
 import de.dante.extex.backend.documentWriter.DocumentWriterOptions;
@@ -32,13 +40,6 @@ import de.dante.extex.backend.outputStream.OutputStreamFactory;
 import de.dante.extex.color.ColorAware;
 import de.dante.extex.color.ColorConverter;
 import de.dante.extex.font.FontFactory;
-import de.dante.util.framework.AbstractFactory;
-import de.dante.util.framework.configuration.Configuration;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
-import de.dante.util.framework.configuration.exception.ConfigurationMissingAttributeException;
-import de.dante.util.resource.PropertyConfigurable;
-import de.dante.util.resource.ResourceConsumer;
-import de.dante.util.resource.ResourceFinder;
 
 /**
  * This class provides a factory for the back-end.
@@ -49,31 +50,31 @@ import de.dante.util.resource.ResourceFinder;
  *  trigger special actions:
  * </p>
  * <dl>
- *  <dt>{@link de.dante.util.framework.configuration.Configurable Configurable}</dt>
+ *  <dt>{@link org.extex.util.framework.configuration.Configurable Configurable}</dt>
  *  <dd>
  *   If this interface is implemented then a
- *   {@link de.dante.util.framework.configuration.Configuration Configuration}
+ *   {@link org.extex.util.framework.configuration.Configuration Configuration}
  *   is passed in with the interface method.
  *  </dd>
- *  <dt>{@link de.dante.util.framework.logger.LogEnabled LogEnabled}</dt>
+ *  <dt>{@link org.extex.util.framework.logger.LogEnabled LogEnabled}</dt>
  *  <dd>
  *   If this interface is implemented then a
  *   {@link java.util.logging.Logger Logger}
  *   is passed in with the interface method.
  *  </dd>
- *  <dt>{@link de.dante.util.framework.i18n.Localizable Localizable}</dt>
+ *  <dt>{@link org.extex.util.framework.i18n.Localizable Localizable}</dt>
  *  <dd>
  *   If this interface is implemented then a
- *   {@link de.dante.util.framework.i18n.Localizer Localizer}
+ *   {@link org.extex.util.framework.i18n.Localizer Localizer}
  *   is passed in with the interface method.
  *  </dd>
- *  <dt>{@link de.dante.util.resource.ResourceConsumer ResourceConsumer}</dt>
+ *  <dt>{@link org.extex.util.resource.ResourceConsumer ResourceConsumer}</dt>
  *  <dd>
  *   If this interface is implemented then a
- *   {@link de.dante.util.resource.ResourceFinder ResourceFinder}
+ *   {@link org.extex.util.resource.ResourceFinder ResourceFinder}
  *   is passed in with the interface method.
  *  </dd>
- *  <dt>{@link de.dante.util.resource.PropertyConfigurable PropertyConfigurable}</dt>
+ *  <dt>{@link org.extex.util.resource.PropertyConfigurable PropertyConfigurable}</dt>
  *  <dd>
  *   If this interface is implemented then a
  *   {@link java.util.Properties Properties} instance

@@ -25,6 +25,7 @@ import java.util.List;
 import org.extex.interpreter.TokenSource;
 import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.context.tc.TypesettingContext;
@@ -41,7 +42,6 @@ import de.dante.extex.typesetter.exception.TypesetterUnsupportedException;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.node.VerticalListNode;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This is the derived class for a list maker in inner vertical list mode.

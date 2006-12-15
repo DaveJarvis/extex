@@ -20,6 +20,7 @@
 package de.dante.extex.interpreter.primitives.hyphen;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.context.Context;
@@ -30,7 +31,6 @@ import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.language.Language;
 import de.dante.extex.language.hyphenation.exception.HyphenationException;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive <code>\hyphenactive</code>.

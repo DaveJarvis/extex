@@ -19,15 +19,16 @@
 
 package de.dante.extex.interpreter.type.dimen;
 
+import org.extex.util.exception.GeneralException;
+import org.extex.util.framework.configuration.Configuration;
+import org.extex.util.framework.configuration.ConfigurationFactory;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+
 import junit.framework.TestCase;
 import de.dante.extex.interpreter.Interpreter;
 import de.dante.extex.interpreter.InterpreterFactory;
 import de.dante.extex.interpreter.context.MockContext;
 import de.dante.extex.scanner.stream.TokenStreamFactory;
-import de.dante.util.exception.GeneralException;
-import de.dante.util.framework.configuration.Configuration;
-import de.dante.util.framework.configuration.ConfigurationFactory;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * Test cases for dimen registers.

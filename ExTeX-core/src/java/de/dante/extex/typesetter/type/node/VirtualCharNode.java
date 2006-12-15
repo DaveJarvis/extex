@@ -20,6 +20,7 @@
 package de.dante.extex.typesetter.type.node;
 
 import org.extex.type.UnicodeChar;
+import org.extex.util.exception.GeneralException;
 
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.context.tc.TypesettingContext;
@@ -34,7 +35,6 @@ import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeIterator;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.NodeVisitor;
-import de.dante.util.exception.GeneralException;
 
 /**
  * This class exposes itself as character node but contains an hlist internally.

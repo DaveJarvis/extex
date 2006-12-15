@@ -22,11 +22,13 @@ package de.dante.extex.backend.dvi;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 
+import junit.framework.TestCase;
+
 import org.extex.backend.documentWriter.dvi.DviDocumentWriter;
 import org.extex.backend.documentWriter.dvi.PanicException;
+import org.extex.util.exception.GeneralException;
+import org.extex.util.framework.configuration.Configuration;
 
-
-import junit.framework.TestCase;
 import de.dante.extex.backend.documentWriter.DocumentWriter;
 import de.dante.extex.backend.documentWriter.DocumentWriterOptions;
 import de.dante.extex.backend.documentWriter.SingleDocumentStream;
@@ -46,8 +48,6 @@ import de.dante.extex.typesetter.type.node.InsertionNode;
 import de.dante.extex.typesetter.type.node.MarkNode;
 import de.dante.extex.typesetter.type.node.VerticalListNode;
 import de.dante.extex.typesetter.type.page.PageImpl;
-import de.dante.util.exception.GeneralException;
-import de.dante.util.framework.configuration.Configuration;
 
 /**
  * JUnit tests for class <code>DviDocumentWriter</code>.

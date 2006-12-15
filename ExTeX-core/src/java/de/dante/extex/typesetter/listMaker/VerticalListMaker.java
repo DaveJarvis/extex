@@ -20,6 +20,7 @@
 package de.dante.extex.typesetter.listMaker;
 
 import org.extex.type.Locator;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.interpreter.type.dimen.FixedDimen;
 import de.dante.extex.interpreter.type.glue.FixedGlue;
@@ -30,7 +31,6 @@ import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.node.HorizontalListNode;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides a maker for a vertical list.

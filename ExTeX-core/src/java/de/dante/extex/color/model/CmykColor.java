@@ -20,17 +20,18 @@
 package de.dante.extex.color.model;
 
 
+import org.extex.util.exception.GeneralException;
+
 import de.dante.extex.color.ColorUtil;
 import de.dante.extex.color.ColorVisitor;
 import de.dante.extex.interpreter.context.Color;
-import de.dante.util.exception.GeneralException;
 
 /**
  * This class implements a color specification in CMYK mode with an alpha
  * channel.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4446 $
  */
 public class CmykColor implements Color {
 

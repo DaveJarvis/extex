@@ -24,6 +24,10 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.extex.util.exception.GeneralException;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.framework.logger.LogEnabled;
+
 
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.max.StringSource;
@@ -53,9 +57,6 @@ import de.dante.extex.typesetter.type.node.SpecialNode;
 import de.dante.extex.typesetter.type.node.VerticalListNode;
 import de.dante.extex.typesetter.type.node.VirtualCharNode;
 import de.dante.extex.typesetter.type.node.WhatsItNode;
-import de.dante.util.exception.GeneralException;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
-import de.dante.util.framework.logger.LogEnabled;
 
 /**
  * This class provides a factory for page instances.
@@ -588,7 +589,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
     }
 
     /**
-     * @see de.dante.util.framework.logger.LogEnabled#enableLogging(
+     * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
     public void enableLogging(final Logger log) {

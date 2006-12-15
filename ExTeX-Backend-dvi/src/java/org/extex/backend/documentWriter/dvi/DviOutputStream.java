@@ -21,16 +21,16 @@
 
 package org.extex.backend.documentWriter.dvi;
 
-import de.dante.util.exception.GeneralException;
-
 import java.io.IOException;
 import java.io.OutputStream;
+
+import org.extex.util.exception.GeneralException;
 
 /**
  * This class provides the methods to write to the dvi-Stream.
  *
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
- * @version $Revision$
+ * @version $Revision:4704 $
  */
 public class DviOutputStream {
 

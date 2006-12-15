@@ -21,6 +21,7 @@ package de.dante.extex.language.hyphenation.base;
 
 import org.extex.type.UnicodeChar;
 import org.extex.type.UnicodeCharList;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import junit.framework.TestCase;
 import de.dante.extex.font.FontByteArray;
@@ -46,7 +47,6 @@ import de.dante.extex.typesetter.type.node.HorizontalListNode;
 import de.dante.extex.typesetter.type.node.SpaceNode;
 import de.dante.extex.typesetter.type.node.factory.CachingNodeFactory;
 import de.dante.extex.typesetter.type.node.factory.NodeFactory;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * Test suite for the base hyphenation table.

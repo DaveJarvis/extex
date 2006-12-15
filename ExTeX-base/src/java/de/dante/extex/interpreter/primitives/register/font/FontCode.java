@@ -20,6 +20,7 @@
 package de.dante.extex.interpreter.primitives.register.font;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.context.Context;
@@ -34,14 +35,13 @@ import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for a font primitive.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
+ * @version $Revision:4431 $
  */
 public class FontCode extends AbstractCode
         implements

@@ -20,12 +20,12 @@
 package de.dante.extex.typesetter.type.node;
 
 import org.extex.type.UnicodeChar;
+import org.extex.util.exception.GeneralException;
 
 import de.dante.extex.interpreter.context.tc.TypesettingContext;
 import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeVisitor;
-import de.dante.util.exception.GeneralException;
 
 /**
  * The ligature node represents a ligature of several characters.

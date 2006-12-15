@@ -19,11 +19,12 @@
 
 package de.dante.extex.typesetter.type.node;
 
+import org.extex.util.exception.GeneralException;
+
 import de.dante.extex.interpreter.context.tc.TypesettingContext;
 import de.dante.extex.interpreter.type.dimen.FixedDimen;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeVisitor;
-import de.dante.util.exception.GeneralException;
 
 /**
  * The rule node represents a rectangular area on the page filled with some

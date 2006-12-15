@@ -39,6 +39,27 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.StreamHandler;
 
+import org.extex.util.exception.GeneralException;
+import org.extex.util.exception.NotObservableException;
+import org.extex.util.framework.Registrar;
+import org.extex.util.framework.RegistrarException;
+import org.extex.util.framework.RegistrarObserver;
+import org.extex.util.framework.configuration.Configuration;
+import org.extex.util.framework.configuration.ConfigurationFactory;
+import org.extex.util.framework.configuration.exception.ConfigurationClassNotFoundException;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.framework.configuration.exception.ConfigurationInstantiationException;
+import org.extex.util.framework.configuration.exception.ConfigurationMissingAttributeException;
+import org.extex.util.framework.configuration.exception.ConfigurationNoSuchMethodException;
+import org.extex.util.framework.configuration.exception.ConfigurationSyntaxException;
+import org.extex.util.framework.i18n.Localizer;
+import org.extex.util.framework.i18n.LocalizerFactory;
+import org.extex.util.resource.InteractionProvider;
+import org.extex.util.resource.PropertyConfigurable;
+import org.extex.util.resource.ResourceConsumer;
+import org.extex.util.resource.ResourceFinder;
+import org.extex.util.resource.ResourceFinderFactory;
+
 
 import de.dante.extex.backend.BackendDriver;
 import de.dante.extex.backend.BackendFactory;
@@ -83,26 +104,6 @@ import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.TypesetterFactory;
 import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.output.OutputRoutineFactory;
-import de.dante.util.exception.GeneralException;
-import de.dante.util.exception.NotObservableException;
-import de.dante.util.framework.Registrar;
-import de.dante.util.framework.RegistrarException;
-import de.dante.util.framework.RegistrarObserver;
-import de.dante.util.framework.configuration.Configuration;
-import de.dante.util.framework.configuration.ConfigurationFactory;
-import de.dante.util.framework.configuration.exception.ConfigurationClassNotFoundException;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
-import de.dante.util.framework.configuration.exception.ConfigurationInstantiationException;
-import de.dante.util.framework.configuration.exception.ConfigurationMissingAttributeException;
-import de.dante.util.framework.configuration.exception.ConfigurationNoSuchMethodException;
-import de.dante.util.framework.configuration.exception.ConfigurationSyntaxException;
-import de.dante.util.framework.i18n.Localizer;
-import de.dante.util.framework.i18n.LocalizerFactory;
-import de.dante.util.resource.InteractionProvider;
-import de.dante.util.resource.PropertyConfigurable;
-import de.dante.util.resource.ResourceConsumer;
-import de.dante.util.resource.ResourceFinder;
-import de.dante.util.resource.ResourceFinderFactory;
 
 /**
  * This is the programmatic interface to the <logo>ExTeX</logo> functionality.
@@ -511,7 +512,7 @@ public class ExTeX {
         }
 
         /**
-         * @see de.dante.util.framework.RegistrarObserver#reconnect(java.lang.Object)
+         * @see org.extex.util.framework.RegistrarObserver#reconnect(java.lang.Object)
          */
         public Object reconnect(final Object object) throws RegistrarException {
 
@@ -833,7 +834,7 @@ public class ExTeX {
         private Context context;
 
         /**
-         * @see de.dante.util.resource.InteractionProvider#getInteraction()
+         * @see org.extex.util.resource.InteractionProvider#getInteraction()
          */
         public Interaction getInteraction() {
 

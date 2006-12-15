@@ -23,6 +23,8 @@ import java.io.IOException;
 import java.util.Map;
 
 import org.extex.type.UnicodeChar;
+import org.extex.util.Unit;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.jdom.Element;
 
 import de.dante.extex.font.FontFactory;
@@ -55,9 +57,7 @@ import de.dante.extex.format.dvi.exception.DviGlyphNotFoundException;
 import de.dante.extex.format.dvi.exception.DviMissingFontException;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.font.Font;
-import de.dante.util.Unit;
 import de.dante.util.file.random.RandomAccessR;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * DVI to EFM converter.

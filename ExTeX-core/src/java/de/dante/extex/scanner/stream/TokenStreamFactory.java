@@ -27,6 +27,15 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.extex.util.framework.AbstractFactory;
+import org.extex.util.framework.configuration.Configuration;
+import org.extex.util.framework.configuration.exception.ConfigurationClassNotFoundException;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.framework.configuration.exception.ConfigurationInstantiationException;
+import org.extex.util.framework.configuration.exception.ConfigurationMissingAttributeException;
+import org.extex.util.framework.configuration.exception.ConfigurationNoSuchMethodException;
+import org.extex.util.resource.ResourceFinder;
+
 import de.dante.extex.scanner.TokenStream;
 import de.dante.extex.scanner.stream.exception.MissingResourceFinderException;
 import de.dante.extex.scanner.stream.observer.file.OpenFileObservable;
@@ -38,14 +47,6 @@ import de.dante.extex.scanner.stream.observer.reader.OpenReaderObserverList;
 import de.dante.extex.scanner.stream.observer.string.OpenStringObservable;
 import de.dante.extex.scanner.stream.observer.string.OpenStringObserver;
 import de.dante.extex.scanner.stream.observer.string.OpenStringObserverList;
-import de.dante.util.framework.AbstractFactory;
-import de.dante.util.framework.configuration.Configuration;
-import de.dante.util.framework.configuration.exception.ConfigurationClassNotFoundException;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
-import de.dante.util.framework.configuration.exception.ConfigurationInstantiationException;
-import de.dante.util.framework.configuration.exception.ConfigurationMissingAttributeException;
-import de.dante.util.framework.configuration.exception.ConfigurationNoSuchMethodException;
-import de.dante.util.resource.ResourceFinder;
 
 /**
  * This is the factory to provide an instance of a
@@ -104,7 +105,7 @@ import de.dante.util.resource.ResourceFinder;
  *
  * <h3>Observable Events</h3>
  * <p>
- * {@link de.dante.util.observer.Observer Observer}s can be registered for
+ * {@link org.extex.util.observer.Observer Observer}s can be registered for
  * several events:
  * </p>
  * <dl>

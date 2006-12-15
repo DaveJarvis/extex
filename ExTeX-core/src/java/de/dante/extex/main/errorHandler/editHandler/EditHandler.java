@@ -20,8 +20,8 @@
 package de.dante.extex.main.errorHandler.editHandler;
 
 import org.extex.type.Locator;
+import org.extex.util.framework.i18n.Localizer;
 
-import de.dante.util.framework.i18n.Localizer;
 
 /**
  * This interface describes the possibility to edit a file at a certain

@@ -24,17 +24,18 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.extex.util.framework.AbstractFactory;
+import org.extex.util.framework.Registrar;
+import org.extex.util.framework.configuration.Configuration;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.framework.i18n.Localizer;
+import org.extex.util.framework.i18n.LocalizerFactory;
+
 import de.dante.extex.language.Language;
 import de.dante.extex.language.LanguageManager;
 import de.dante.extex.language.ModifiableLanguage;
 import de.dante.extex.language.ligature.LigatureBuilder;
 import de.dante.extex.language.word.WordTokenizer;
-import de.dante.util.framework.AbstractFactory;
-import de.dante.util.framework.Registrar;
-import de.dante.util.framework.configuration.Configuration;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
-import de.dante.util.framework.i18n.Localizer;
-import de.dante.util.framework.i18n.LocalizerFactory;
 
 /**
  * This class manages the <code>HyphenationTable</code>s. It is a container
@@ -46,7 +47,7 @@ import de.dante.util.framework.i18n.LocalizerFactory;
  * This instance is configurable. The configuration is used to select the
  * appropriate class and optional parameters for a requested instance. In this
  * respect this class makes best use of the infrastructure of the
- * {@link de.dante.util.framework.AbstractFactory AbstractFactory}.
+ * {@link org.extex.util.framework.AbstractFactory AbstractFactory}.
  *
  *
  *

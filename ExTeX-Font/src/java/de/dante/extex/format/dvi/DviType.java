@@ -28,6 +28,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import org.extex.type.UnicodeChar;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.font.FontFactory;
 import de.dante.extex.font.FountKey;
@@ -62,7 +63,6 @@ import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.interpreter.type.glue.Glue;
 import de.dante.util.file.random.RandomAccessR;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * DviType.

@@ -24,8 +24,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+
 import de.dante.extex.unicodeFont.format.pfb.PfbParser;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * Convert a PFB file to a PFA file.

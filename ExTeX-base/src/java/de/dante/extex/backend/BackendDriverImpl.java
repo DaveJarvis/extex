@@ -21,6 +21,11 @@ package de.dante.extex.backend;
 
 import java.io.IOException;
 
+import org.extex.util.exception.GeneralException;
+import org.extex.util.framework.configuration.Configurable;
+import org.extex.util.framework.configuration.Configuration;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+
 import de.dante.extex.backend.documentWriter.DocumentWriter;
 import de.dante.extex.backend.documentWriter.MultipleDocumentStream;
 import de.dante.extex.backend.documentWriter.exception.DocumentWriterException;
@@ -28,10 +33,6 @@ import de.dante.extex.backend.exception.BackendException;
 import de.dante.extex.backend.outputStream.OutputStreamFactory;
 import de.dante.extex.backend.pageFilter.PagePipe;
 import de.dante.extex.typesetter.type.page.Page;
-import de.dante.util.exception.GeneralException;
-import de.dante.util.framework.configuration.Configurable;
-import de.dante.util.framework.configuration.Configuration;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This back-end driver can be used to combine several components.
@@ -180,8 +181,8 @@ public class BackendDriverImpl
     }
 
     /**
-     * @see de.dante.util.framework.configuration.Configurable#configure(
-     *      de.dante.util.framework.configuration.Configuration)
+     * @see org.extex.util.framework.configuration.Configurable#configure(
+     *      org.extex.util.framework.configuration.Configuration)
      */
     public void configure(final Configuration config)
             throws ConfigurationException {

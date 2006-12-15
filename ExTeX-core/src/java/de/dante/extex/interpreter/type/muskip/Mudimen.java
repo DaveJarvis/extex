@@ -22,6 +22,7 @@ package de.dante.extex.interpreter.type.muskip;
 import java.io.Serializable;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.util.framework.i18n.LocalizerFactory;
 
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
@@ -36,14 +37,13 @@ import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.scanner.type.token.TokenFactory;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.framework.i18n.LocalizerFactory;
 
 /**
  * This class provides a dimen value with a length which is a multiple of
  * math units (mu).
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4399 $
  */
 public class Mudimen implements Serializable {
 

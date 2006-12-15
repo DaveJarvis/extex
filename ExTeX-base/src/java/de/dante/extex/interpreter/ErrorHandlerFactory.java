@@ -19,16 +19,17 @@
 
 package de.dante.extex.interpreter;
 
+import org.extex.util.framework.AbstractFactory;
+import org.extex.util.framework.configuration.Configuration;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+
 import de.dante.extex.main.errorHandler.editHandler.EditHandler;
-import de.dante.util.framework.AbstractFactory;
-import de.dante.util.framework.configuration.Configuration;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This is the factory for instances of
  * {@link de.dante.extex.interpreter.ErrorHandler ErrorHandler}.
  * This factory inherits its properties from the
- * {@link de.dante.util.framework.AbstractFactory AbstractFactory}. Among them
+ * {@link org.extex.util.framework.AbstractFactory AbstractFactory}. Among them
  * the support for configuration and logging.
  *
  * <h3>Configuration</h3>
@@ -58,11 +59,11 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
  * </p>
  * <p>
  *  The configuration is passed down to the new instance if it implements the
- *  interface {@link de.dante.util.framework.configuration.Configurable Configurable}.
+ *  interface {@link org.extex.util.framework.configuration.Configurable Configurable}.
  * </p>
  * <p>
  *  If the class implements the interface
- *  {@link de.dante.util.framework.logger.LogEnabled LogEnabled} then a logger
+ *  {@link org.extex.util.framework.logger.LogEnabled LogEnabled} then a logger
  *  is passed to the new instance. For this purpose the factory itself is
  *  log enabled to receive the logger.
  * </p>

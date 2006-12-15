@@ -31,11 +31,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.extex.util.framework.AbstractFactory;
+import org.extex.util.framework.configuration.Configuration;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+
 import de.dante.extex.backend.documentWriter.exception.DocumentWriterException;
 import de.dante.extex.backend.documentWriter.exception.OutputStreamOpenException;
-import de.dante.util.framework.AbstractFactory;
-import de.dante.util.framework.configuration.Configuration;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This factory creates an output stream from a specification in the

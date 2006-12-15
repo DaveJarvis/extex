@@ -22,6 +22,7 @@ package de.dante.extex.typesetter.type.noad;
 import java.util.logging.Logger;
 
 import org.extex.type.UnicodeChar;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.font.type.other.NullFont;
 import de.dante.extex.interpreter.context.Color;
@@ -41,7 +42,6 @@ import de.dante.extex.typesetter.type.noad.util.MathFontParameter;
 import de.dante.extex.typesetter.type.noad.util.MathSpacing;
 import de.dante.extex.typesetter.type.node.CharNode;
 import de.dante.extex.typesetter.type.node.ImplicitKernNode;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides a container for a mathematical character.

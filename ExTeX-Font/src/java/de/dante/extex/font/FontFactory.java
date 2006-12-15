@@ -18,6 +18,8 @@
 
 package de.dante.extex.font;
 
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+
 import de.dante.extex.font.exception.FontException;
 import de.dante.extex.font.type.afm.AfmFont;
 import de.dante.extex.font.type.efm.EfmReader;
@@ -25,7 +27,6 @@ import de.dante.extex.font.type.tfm.TFMFont;
 import de.dante.extex.font.type.tfm.psfontsmap.PSFontsMapReader;
 import de.dante.extex.font.type.vf.VFFont;
 import de.dante.extex.interpreter.type.font.Font;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This interface describes a factory to manage fonts.

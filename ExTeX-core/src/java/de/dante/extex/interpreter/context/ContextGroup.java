@@ -21,6 +21,7 @@ package de.dante.extex.interpreter.context;
 
 import org.extex.interpreter.TokenSource;
 import org.extex.type.Locator;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.interpreter.context.group.GroupInfo;
 import de.dante.extex.interpreter.context.group.GroupType;
@@ -28,7 +29,6 @@ import de.dante.extex.interpreter.context.observer.group.AfterGroupObserver;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This interface describes the container for group-related of an interpreter

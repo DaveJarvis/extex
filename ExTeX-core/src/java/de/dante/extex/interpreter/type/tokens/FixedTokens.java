@@ -20,10 +20,10 @@
 package de.dante.extex.interpreter.type.tokens;
 
 import org.extex.type.UnicodeChar;
+import org.extex.util.exception.GeneralException;
 
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.scanner.type.token.Token;
-import de.dante.util.exception.GeneralException;
 
 /**
  * This interface describes the features of a

@@ -23,16 +23,17 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.logging.Logger;
 
+import org.extex.util.framework.configuration.Configuration;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.framework.i18n.Localizer;
+import org.extex.util.framework.i18n.LocalizerFactory;
+import org.extex.util.framework.logger.LogEnabled;
+import org.extex.util.resource.InteractionAware;
+import org.extex.util.resource.InteractionProvider;
+import org.extex.util.resource.RecursiveFinder;
+import org.extex.util.resource.ResourceFinder;
+
 import de.dante.extex.interpreter.interaction.Interaction;
-import de.dante.util.framework.configuration.Configuration;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
-import de.dante.util.framework.i18n.Localizer;
-import de.dante.util.framework.i18n.LocalizerFactory;
-import de.dante.util.framework.logger.LogEnabled;
-import de.dante.util.resource.InteractionAware;
-import de.dante.util.resource.InteractionProvider;
-import de.dante.util.resource.RecursiveFinder;
-import de.dante.util.resource.ResourceFinder;
 
 /**
  * This ResourceFinder queries the user for the name of the file to use and
@@ -90,7 +91,7 @@ public class ResourceFinderImpl
      *
      * @param theLogger the logger to use
      *
-     * @see de.dante.util.framework.logger.LogEnabled#enableLogging(
+     * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
     public void enableLogging(final Logger theLogger) {
@@ -104,14 +105,14 @@ public class ResourceFinderImpl
      *
      * @param flag the trace flag
      *
-     * @see de.dante.util.resource.ResourceFinder#enableTracing(boolean)
+     * @see org.extex.util.resource.ResourceFinder#enableTracing(boolean)
      */
     public void enableTracing(final boolean flag) {
 
     }
 
     /**
-     * @see de.dante.util.resource.ResourceFinder#findResource(
+     * @see org.extex.util.resource.ResourceFinder#findResource(
      *      java.lang.String,
      *      java.lang.String)
      */
@@ -182,8 +183,8 @@ public class ResourceFinderImpl
     }
 
     /**
-     * @see de.dante.util.resource.InteractionAware#setInteractionProvider(
-     *      de.dante.util.resource.InteractionProvider)
+     * @see org.extex.util.resource.InteractionAware#setInteractionProvider(
+     *      org.extex.util.resource.InteractionProvider)
      */
     public void setInteractionProvider(final InteractionProvider provider) {
 
@@ -195,8 +196,8 @@ public class ResourceFinderImpl
      *
      * @param parent the parent resource finder
      *
-     * @see de.dante.util.resource.RecursiveFinder#setParent(
-     *      de.dante.util.resource.ResourceFinder)
+     * @see org.extex.util.resource.RecursiveFinder#setParent(
+     *      org.extex.util.resource.ResourceFinder)
      */
     public void setParent(final ResourceFinder parent) {
 

@@ -24,6 +24,7 @@ import java.io.Serializable;
 
 import org.extex.type.UnicodeChar;
 import org.extex.type.UnicodeCharList;
+import org.extex.util.framework.Registrar;
 
 import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.interpreter.type.tokens.Tokens;
@@ -33,7 +34,6 @@ import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.node.CharNode;
 import de.dante.extex.typesetter.type.node.factory.NodeFactory;
-import de.dante.util.framework.Registrar;
 
 /**
  * This class implements the future pattern for a language object. The real

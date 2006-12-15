@@ -20,6 +20,7 @@
 package org.extex.backend.documentWriter.pdf;
 
 import org.extex.backend.documentWriter.pdf.exception.DocumentWriterPdfBoxColorException;
+import org.extex.util.exception.GeneralException;
 import org.pdfbox.pdmodel.edit.PDPageContentStream;
 
 import de.dante.extex.color.ColorVisitor;
@@ -27,7 +28,6 @@ import de.dante.extex.color.model.CmykColor;
 import de.dante.extex.color.model.GrayscaleColor;
 import de.dante.extex.color.model.HsvColor;
 import de.dante.extex.color.model.RgbColor;
-import de.dante.util.exception.GeneralException;
 
 /**
  * Color visitor for pdf.

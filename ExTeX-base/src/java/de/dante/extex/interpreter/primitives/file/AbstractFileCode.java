@@ -20,6 +20,9 @@
 package de.dante.extex.interpreter.primitives.file;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.util.framework.configuration.Configurable;
+import org.extex.util.framework.configuration.Configuration;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
@@ -31,9 +34,6 @@ import de.dante.extex.scanner.type.Catcode;
 import de.dante.extex.scanner.type.token.SpaceToken;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.framework.configuration.Configurable;
-import de.dante.util.framework.configuration.Configuration;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This abstract class provides some common methods for primitives dealing with
@@ -170,8 +170,8 @@ public abstract class AbstractFileCode extends AbstractCode
      *
      * @throws ConfigurationException in case of an error
      *
-     * @see de.dante.util.framework.configuration.Configurable#configure(
-     *      de.dante.util.framework.configuration.Configuration)
+     * @see org.extex.util.framework.configuration.Configurable#configure(
+     *      org.extex.util.framework.configuration.Configuration)
      */
     public void configure(final Configuration config)
             throws ConfigurationException {

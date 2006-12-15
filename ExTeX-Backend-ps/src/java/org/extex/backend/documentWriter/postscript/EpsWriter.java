@@ -26,12 +26,12 @@ import org.extex.backend.documentWriter.postscript.util.FontManager;
 import org.extex.backend.documentWriter.postscript.util.HeaderManager;
 import org.extex.backend.documentWriter.postscript.util.PsConverter;
 import org.extex.backend.documentWriter.postscript.util.PsUnit;
+import org.extex.util.exception.GeneralException;
 
 import de.dante.extex.backend.documentWriter.DocumentWriterOptions;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.page.Page;
-import de.dante.util.exception.GeneralException;
 
 /**
  * This document writer produces Encapsulated Postscript documents.

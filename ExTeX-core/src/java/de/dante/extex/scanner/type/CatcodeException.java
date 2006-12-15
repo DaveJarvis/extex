@@ -19,7 +19,7 @@
 
 package de.dante.extex.scanner.type;
 
-import de.dante.util.exception.GeneralException;
+import org.extex.util.exception.GeneralException;
 
 /**
  * This exception is thrown when something in the context of catcode creation or

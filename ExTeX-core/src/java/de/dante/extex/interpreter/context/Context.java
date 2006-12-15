@@ -24,6 +24,7 @@ import java.util.Iterator;
 
 import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.interpreter.Conditional;
 import de.dante.extex.interpreter.Tokenizer;
@@ -47,7 +48,6 @@ import de.dante.extex.scanner.type.Catcode;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.scanner.type.token.TokenFactory;
 import de.dante.extex.typesetter.paragraphBuilder.ParagraphShape;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This interface describes the container for all data of an interpreter

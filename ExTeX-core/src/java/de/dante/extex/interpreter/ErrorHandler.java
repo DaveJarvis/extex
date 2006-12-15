@@ -20,12 +20,12 @@
 package de.dante.extex.interpreter;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.util.exception.GeneralException;
 
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.main.errorHandler.editHandler.EditHandler;
 import de.dante.extex.scanner.type.token.Token;
-import de.dante.util.exception.GeneralException;
 
 /**
  * This interface defines the capabilities of an error handler. The error

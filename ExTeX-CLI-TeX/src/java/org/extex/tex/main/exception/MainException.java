@@ -19,7 +19,7 @@
 
 package org.extex.tex.main.exception;
 
-import de.dante.util.exception.GeneralException;
+import org.extex.util.exception.GeneralException;
 
 /**
  * This is the base class for all exceptions of the main class. In addition to
@@ -27,7 +27,7 @@ import de.dante.util.exception.GeneralException;
  * which is meant to be used as exit status for the main program.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4708 $
  */
 public class MainException extends GeneralException {
 

@@ -21,6 +21,10 @@ package de.dante.extex.typesetter.type.noad;
 
 import java.util.logging.Logger;
 
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.framework.i18n.Localizer;
+import org.extex.util.framework.i18n.LocalizerFactory;
+
 import de.dante.extex.interpreter.exception.ImpossibleException;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.dimen.FixedDimen;
@@ -36,9 +40,6 @@ import de.dante.extex.typesetter.type.node.GlueNode;
 import de.dante.extex.typesetter.type.node.HorizontalListNode;
 import de.dante.extex.typesetter.type.node.ImplicitKernNode;
 import de.dante.extex.typesetter.type.node.VerticalListNode;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
-import de.dante.util.framework.i18n.Localizer;
-import de.dante.util.framework.i18n.LocalizerFactory;
 
 /**
  * This is the abstract base class for Noads.

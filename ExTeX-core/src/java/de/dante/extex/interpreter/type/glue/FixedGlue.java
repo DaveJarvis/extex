@@ -19,10 +19,11 @@
 
 package de.dante.extex.interpreter.type.glue;
 
+import org.extex.util.exception.GeneralException;
+
 import de.dante.extex.interpreter.type.dimen.FixedDimen;
 import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.scanner.type.token.TokenFactory;
-import de.dante.util.exception.GeneralException;
 
 /**
  * This interface describes the features of a

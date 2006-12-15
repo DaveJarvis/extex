@@ -21,6 +21,8 @@ package org.extex.interpreter;
 
 import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
+import org.extex.util.exception.GeneralException;
+import org.extex.util.exception.NotObservableException;
 
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.context.Context;
@@ -33,8 +35,6 @@ import de.dante.extex.scanner.stream.TokenStreamFactory;
 import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.exception.GeneralException;
-import de.dante.util.exception.NotObservableException;
 
 /**
  * This interface describes a class to acquire

@@ -23,12 +23,12 @@ import java.io.Serializable;
 import java.util.logging.Logger;
 
 import org.extex.type.UnicodeChar;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.noad.util.MathContext;
 import de.dante.extex.typesetter.type.noad.util.MathSpacing;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides a container for a mathematical glyph.

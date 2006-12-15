@@ -20,6 +20,7 @@
 package de.dante.extex.interpreter.primitives.color;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.context.Color;
@@ -27,7 +28,6 @@ import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.primitives.color.util.ColorParser;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive <code>\color</code>.

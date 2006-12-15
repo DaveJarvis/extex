@@ -23,6 +23,9 @@ import java.io.ObjectStreamException;
 import java.io.Serializable;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.util.framework.Registrar;
+import org.extex.util.framework.i18n.Localizable;
+import org.extex.util.framework.i18n.Localizer;
 
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.context.Context;
@@ -31,9 +34,6 @@ import de.dante.extex.interpreter.exception.helping.CantUseInException;
 import de.dante.extex.scanner.type.token.ControlSequenceToken;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.framework.Registrar;
-import de.dante.util.framework.i18n.Localizable;
-import de.dante.util.framework.i18n.Localizer;
 
 /**
  * This is the abstract base class which can be used for all classes
@@ -94,8 +94,8 @@ public abstract class AbstractCode implements Code, Localizable, Serializable {
      *
      * @param theLocalizer the new value for the localizer
      *
-     * @see de.dante.util.framework.i18n.Localizable#enableLocalization(
-     *      de.dante.util.framework.i18n.Localizer)
+     * @see org.extex.util.framework.i18n.Localizable#enableLocalization(
+     *      org.extex.util.framework.i18n.Localizer)
      */
     public void enableLocalization(final Localizer theLocalizer) {
 

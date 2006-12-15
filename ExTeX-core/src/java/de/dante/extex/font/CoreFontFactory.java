@@ -18,9 +18,10 @@
  */
 package de.dante.extex.font;
 
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+
 import de.dante.extex.font.exception.FontException;
 import de.dante.extex.interpreter.type.font.Font;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 public interface CoreFontFactory {
 

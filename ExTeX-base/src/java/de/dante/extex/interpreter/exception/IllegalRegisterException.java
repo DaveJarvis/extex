@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter.exception;
 
-import de.dante.util.framework.i18n.LocalizerFactory;
+import org.extex.util.framework.i18n.LocalizerFactory;
 
 /**
  * This exception signals that a register name or number has been found which

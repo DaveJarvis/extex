@@ -22,12 +22,13 @@ package de.dante.extex.interpreter;
 import java.util.Properties;
 import java.util.logging.Logger;
 
+import org.extex.util.framework.AbstractFactory;
+import org.extex.util.framework.configuration.Configuration;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.resource.PropertyConfigurable;
+
 import de.dante.extex.backend.outputStream.OutputStreamFactory;
 import de.dante.extex.interpreter.type.OutputStreamConsumer;
-import de.dante.util.framework.AbstractFactory;
-import de.dante.util.framework.configuration.Configuration;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
-import de.dante.util.resource.PropertyConfigurable;
 
 /**
  * This class provides a factory for

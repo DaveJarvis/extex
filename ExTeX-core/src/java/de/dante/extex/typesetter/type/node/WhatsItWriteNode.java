@@ -20,6 +20,7 @@
 package de.dante.extex.typesetter.type.node;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.util.exception.GeneralException;
 
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.type.TokensWriter;
@@ -27,7 +28,6 @@ import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeVisitor;
-import de.dante.util.exception.GeneralException;
 
 /**
  * This WhatsIt node writes some expanded tokens to an out file on shipping.

@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.jdom.Element;
 
 import de.dante.extex.font.FontFactory;
@@ -38,7 +39,6 @@ import de.dante.extex.font.type.vf.command.VFCommandFontDef;
 import de.dante.extex.font.type.vf.exception.VFMasterTFMNotFoundException;
 import de.dante.util.XMLWriterConvertible;
 import de.dante.util.file.random.RandomAccessR;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 import de.dante.util.xml.XMLStreamWriter;
 
 /**

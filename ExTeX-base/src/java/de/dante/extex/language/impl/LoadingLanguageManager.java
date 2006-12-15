@@ -32,16 +32,17 @@ import java.util.Map;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
+import org.extex.util.framework.Registrar;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.resource.ResourceConsumer;
+import org.extex.util.resource.ResourceFinder;
+
 import de.dante.extex.backend.documentWriter.exception.DocumentWriterException;
 import de.dante.extex.backend.outputStream.NamedOutputStream;
 import de.dante.extex.backend.outputStream.OutputStreamFactory;
 import de.dante.extex.interpreter.type.OutputStreamConsumer;
 import de.dante.extex.language.Language;
 import de.dante.extex.language.hyphenation.exception.HyphenationException;
-import de.dante.util.framework.Registrar;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
-import de.dante.util.resource.ResourceConsumer;
-import de.dante.util.resource.ResourceFinder;
 
 /**
  * This class manages the <code>Language</code>s. It is a container
@@ -65,7 +66,7 @@ import de.dante.util.resource.ResourceFinder;
  * This instance is configurable. The configuration is used to select the
  * appropriate class and optional parameters for a requested instance. In this
  * respect this class makes best use of the infrastructure of the
- * {@link de.dante.util.framework.AbstractFactory AbstractFactory}.
+ * {@link org.extex.util.framework.AbstractFactory AbstractFactory}.
  *
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -293,8 +294,8 @@ public class LoadingLanguageManager extends BaseLanguageManager
     }
 
     /**
-     * @see de.dante.util.resource.ResourceConsumer#setResourceFinder(
-     *      de.dante.util.resource.ResourceFinder)
+     * @see org.extex.util.resource.ResourceConsumer#setResourceFinder(
+     *      org.extex.util.resource.ResourceFinder)
      */
     public void setResourceFinder(final ResourceFinder finder) {
 

@@ -19,11 +19,11 @@
 
 package de.dante.extex.interpreter.context.observer.group;
 
-import de.dante.util.Switch;
+import org.extex.util.Switch;
 
 /**
  * This class provides an observer which sets a
- * {@link de.dante.util.Switch Switch} when an event is received.
+ * {@link org.extex.util.Switch Switch} when an event is received.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

@@ -19,10 +19,11 @@
 
 package de.dante.extex.typesetter.type.page;
 
+import org.extex.util.exception.GeneralException;
+
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.type.NodeList;
-import de.dante.util.exception.GeneralException;
 
 /**
  * This class provides a factory for page instances.

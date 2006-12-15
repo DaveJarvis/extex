@@ -34,6 +34,16 @@ import java.util.logging.Logger;
 import org.extex.interpreter.TokenSource;
 import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
+import org.extex.util.exception.GeneralException;
+import org.extex.util.framework.Registrar;
+import org.extex.util.framework.configuration.Configurable;
+import org.extex.util.framework.configuration.Configuration;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.framework.configuration.exception.ConfigurationMissingException;
+import org.extex.util.framework.configuration.exception.ConfigurationWrapperException;
+import org.extex.util.framework.i18n.Localizable;
+import org.extex.util.framework.i18n.Localizer;
+import org.extex.util.framework.logger.LogEnabled;
 
 import de.dante.extex.backend.documentWriter.DocumentWriterOptions;
 import de.dante.extex.font.CoreFontFactory;
@@ -97,16 +107,6 @@ import de.dante.extex.scanner.type.token.TokenFactory;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.typesetter.paragraphBuilder.ParagraphShape;
-import de.dante.util.exception.GeneralException;
-import de.dante.util.framework.Registrar;
-import de.dante.util.framework.configuration.Configurable;
-import de.dante.util.framework.configuration.Configuration;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
-import de.dante.util.framework.configuration.exception.ConfigurationMissingException;
-import de.dante.util.framework.configuration.exception.ConfigurationWrapperException;
-import de.dante.util.framework.i18n.Localizable;
-import de.dante.util.framework.i18n.Localizer;
-import de.dante.util.framework.logger.LogEnabled;
 
 /**
  * This is a reference implementation for an interpreter context.
@@ -478,8 +478,8 @@ public class ContextImpl
     }
 
     /**
-     * @see de.dante.util.framework.configuration.Configurable#configure(
-     *      de.dante.util.framework.configuration.Configuration)
+     * @see org.extex.util.framework.configuration.Configurable#configure(
+     *      org.extex.util.framework.configuration.Configuration)
      */
     public void configure(final Configuration configuration)
             throws ConfigurationException {
@@ -530,8 +530,8 @@ public class ContextImpl
      *
      * @param theLocalizer the localizer to use
      *
-     * @see de.dante.util.framework.i18n.Localizable#enableLocalization(
-     *      de.dante.util.framework.i18n.Localizer)
+     * @see org.extex.util.framework.i18n.Localizable#enableLocalization(
+     *      org.extex.util.framework.i18n.Localizer)
      */
     public void enableLocalization(final Localizer theLocalizer) {
 
@@ -539,7 +539,7 @@ public class ContextImpl
     }
 
     /**
-     * @see de.dante.util.framework.logger.LogEnabled#enableLogging(
+     * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
     public void enableLogging(final Logger theLogger) {

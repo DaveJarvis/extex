@@ -20,6 +20,8 @@
 package de.dante.extex.typesetter.pageBuilder.impl;
 
 
+import org.extex.util.exception.GeneralException;
+
 import de.dante.extex.backend.BackendDriver;
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.type.dimen.FixedDimen;
@@ -32,7 +34,6 @@ import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.node.VerticalListNode;
 import de.dante.extex.typesetter.type.page.Page;
 import de.dante.extex.typesetter.type.page.PageFactory;
-import de.dante.util.exception.GeneralException;
 
 /**
  * This is a first reference implementation of a page builder.

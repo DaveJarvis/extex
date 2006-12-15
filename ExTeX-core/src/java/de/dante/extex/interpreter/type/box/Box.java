@@ -25,6 +25,9 @@ import java.util.logging.Logger;
 import javax.naming.OperationNotSupportedException;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.framework.i18n.Localizer;
+import org.extex.util.framework.i18n.LocalizerFactory;
 
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.context.group.GroupType;
@@ -44,9 +47,6 @@ import de.dante.extex.typesetter.listMaker.RestrictedHorizontalListMaker;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.node.HorizontalListNode;
 import de.dante.extex.typesetter.type.node.VerticalListNode;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
-import de.dante.util.framework.i18n.Localizer;
-import de.dante.util.framework.i18n.LocalizerFactory;
 
 /**
  * This class is used to represent box registers.
@@ -54,7 +54,7 @@ import de.dante.util.framework.i18n.LocalizerFactory;
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
+ * @version $Revision:4399 $
  */
 public class Box implements BoxOrRule, Serializable {
 

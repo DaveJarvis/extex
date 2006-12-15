@@ -25,6 +25,8 @@ import org.extex.interpreter.Namespace;
 import org.extex.interpreter.TokenSource;
 import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
+import org.extex.util.exception.GeneralException;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.color.ColorConverter;
 import de.dante.extex.font.CoreFontFactory;
@@ -67,8 +69,6 @@ import de.dante.extex.scanner.type.token.TokenFactoryImpl;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.typesetter.paragraphBuilder.ParagraphShape;
-import de.dante.util.exception.GeneralException;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This mock implementation of a context does nothing useful but provide dummy

@@ -20,12 +20,12 @@
 package de.dante.extex.typesetter.listMaker;
 
 import org.extex.type.Locator;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.typesetter.Mode;
 import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.type.NodeList;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This is the derived class for a list maker in restricted horizontal mode.

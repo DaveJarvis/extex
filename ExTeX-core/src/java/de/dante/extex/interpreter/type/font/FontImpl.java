@@ -21,6 +21,7 @@ package de.dante.extex.interpreter.type.font;
 import java.io.ObjectStreamException;
 
 import org.extex.type.UnicodeChar;
+import org.extex.util.framework.Registrar;
 
 import de.dante.extex.font.FontByteArray;
 import de.dante.extex.font.FountKey;
@@ -32,7 +33,6 @@ import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.dimen.FixedDimen;
 import de.dante.extex.interpreter.type.glue.FixedGlue;
 import de.dante.extex.interpreter.type.glue.Glue;
-import de.dante.util.framework.Registrar;
 
 /**
  * This class constitutes a wrapper for a font. Here all information is stored

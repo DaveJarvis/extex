@@ -22,6 +22,10 @@ package org.extex.backend.documentWriter.pdf;
 import java.io.IOException;
 import java.io.OutputStream;
 
+import org.extex.util.Unit;
+import org.extex.util.exception.GeneralException;
+import org.extex.util.framework.configuration.Configuration;
+
 import de.dante.extex.backend.documentWriter.DocumentWriter;
 import de.dante.extex.backend.documentWriter.DocumentWriterOptions;
 import de.dante.extex.backend.documentWriter.MultipleDocumentStream;
@@ -32,9 +36,6 @@ import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.NodeVisitor;
 import de.dante.extex.typesetter.type.page.Page;
-import de.dante.util.Unit;
-import de.dante.util.exception.GeneralException;
-import de.dante.util.framework.configuration.Configuration;
 
 /**
  * Implementation of a pdf document writer.

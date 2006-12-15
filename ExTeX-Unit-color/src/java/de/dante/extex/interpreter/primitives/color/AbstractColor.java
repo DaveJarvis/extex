@@ -20,6 +20,7 @@
 package de.dante.extex.interpreter.primitives.color;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.util.exception.GeneralException;
 
 import de.dante.extex.color.ColorUtil;
 import de.dante.extex.color.ColorVisitor;
@@ -36,7 +37,6 @@ import de.dante.extex.interpreter.type.Theable;
 import de.dante.extex.interpreter.type.color.ColorConvertible;
 import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.exception.GeneralException;
 
 /**
  * This class is a abstract base class for color primitives.

@@ -19,11 +19,12 @@
 
 package de.dante.extex.typesetter.type.node;
 
+import org.extex.util.exception.GeneralException;
+
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.dimen.FixedDimen;
 import de.dante.extex.typesetter.Discardable;
 import de.dante.extex.typesetter.type.NodeVisitor;
-import de.dante.util.exception.GeneralException;
 
 /**
  * This node represents a <logo>TeX</logo> "math" node with the subtype "before".

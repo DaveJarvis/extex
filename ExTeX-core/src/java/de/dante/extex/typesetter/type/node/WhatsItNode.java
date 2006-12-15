@@ -19,8 +19,9 @@
 
 package de.dante.extex.typesetter.type.node;
 
+import org.extex.util.exception.GeneralException;
+
 import de.dante.extex.typesetter.type.NodeVisitor;
-import de.dante.util.exception.GeneralException;
 
 /**
  * This node type represents the extension node from the perspective of

@@ -20,12 +20,13 @@
 package de.dante.extex.typesetter.type.node;
 
 
+import org.extex.util.exception.GeneralException;
+
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeVisitor;
-import de.dante.util.exception.GeneralException;
 
 /**
  * A mark node carries some tokens which can be extracted after the page has

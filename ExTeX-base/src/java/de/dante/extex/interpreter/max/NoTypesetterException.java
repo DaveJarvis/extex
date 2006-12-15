@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter.max;
 
-import de.dante.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This Exception is thrown when a configuration is requested with the path

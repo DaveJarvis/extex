@@ -25,6 +25,7 @@ import java.util.List;
 import org.extex.interpreter.Namespace;
 import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.interpreter.Tokenizer;
 import de.dante.extex.interpreter.exception.InterpreterException;
@@ -33,13 +34,12 @@ import de.dante.extex.scanner.exception.ScannerException;
 import de.dante.extex.scanner.type.CatcodeException;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.scanner.type.token.TokenFactory;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides a token source which is fed from a string.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4408 $
  */
 public class StringSource extends Moritz {
 
@@ -47,7 +47,7 @@ public class StringSource extends Moritz {
      * This Token stream is fed from a CharSequence.
      *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision$
+     * @version $Revision:4408 $
      */
     private class TStream implements TokenStream {
 

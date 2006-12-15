@@ -26,7 +26,9 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.URIResolver;
 import javax.xml.transform.stream.StreamSource;
 
-import de.dante.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.resource.ResourceFinder;
+
 
 /**
  * URIResolver, which get the stream from a ResourceFinder.

@@ -21,6 +21,7 @@ package de.dante.extex.interpreter.type.scaled;
 
 import org.extex.interpreter.Namespace;
 import org.extex.interpreter.TokenSource;
+import org.extex.util.framework.i18n.LocalizerFactory;
 
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.context.Context;
@@ -42,7 +43,6 @@ import de.dante.extex.scanner.type.token.OtherToken;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.scanner.type.token.TokenFactory;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.framework.i18n.LocalizerFactory;
 
 /**
  * This class provides a fixed point number.

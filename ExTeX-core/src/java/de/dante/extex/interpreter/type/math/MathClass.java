@@ -23,6 +23,7 @@ import java.io.ObjectStreamException;
 import java.io.Serializable;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.util.framework.i18n.LocalizerFactory;
 
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
@@ -34,14 +35,13 @@ import de.dante.extex.scanner.type.token.LetterToken;
 import de.dante.extex.scanner.type.token.OtherToken;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.framework.i18n.LocalizerFactory;
 
 /**
  * This class provides the classification of mathematical characters.
  * In fact it is a finite enumeration which exposes the values as constants.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4399 $
  */
 public abstract class MathClass implements Serializable {
 
@@ -49,7 +49,7 @@ public abstract class MathClass implements Serializable {
      * This is a inner class for a binary operator.
      *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision$
+     * @version $Revision:4399 $
      */
     private static final class BinaryMathClass extends MathClass {
 
@@ -97,7 +97,7 @@ public abstract class MathClass implements Serializable {
      * This is a inner class for closing.
      *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision$
+     * @version $Revision:4399 $
      */
     private static final class ClosingMathClass extends MathClass {
 
@@ -145,7 +145,7 @@ public abstract class MathClass implements Serializable {
      * This is a inner class for large operators.
      *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision$
+     * @version $Revision:4399 $
      */
     private static final class LargeMathClass extends MathClass {
 
@@ -193,7 +193,7 @@ public abstract class MathClass implements Serializable {
      * This is a inner class for opening.
      *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision$
+     * @version $Revision:4399 $
      */
     private static final class OpeningMathClass extends MathClass {
 
@@ -241,7 +241,7 @@ public abstract class MathClass implements Serializable {
      * This is a inner class for ordinary characters.
      *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision$
+     * @version $Revision:4399 $
      */
     private static final class OrdinaryMathClass extends MathClass {
 
@@ -289,7 +289,7 @@ public abstract class MathClass implements Serializable {
      * This is a inner class for punctation marks.
      *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision$
+     * @version $Revision:4399 $
      */
     private static final class PunctationMathClass extends MathClass {
 
@@ -337,7 +337,7 @@ public abstract class MathClass implements Serializable {
      * This is a inner class for relation symbols.
      *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision$
+     * @version $Revision:4399 $
      */
     private static final class RelationMathClass extends MathClass {
 
@@ -385,7 +385,7 @@ public abstract class MathClass implements Serializable {
      * This is a inner class for variable width characters.
      *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision$
+     * @version $Revision:4399 $
      */
     private static final class VariableMathClass extends MathClass {
 

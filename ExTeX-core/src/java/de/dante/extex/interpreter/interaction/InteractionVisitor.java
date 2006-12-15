@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter.interaction;
 
-import de.dante.util.exception.GeneralException;
+import org.extex.util.exception.GeneralException;
 
 /**
  * This interface describes a visitor for interaction modes.

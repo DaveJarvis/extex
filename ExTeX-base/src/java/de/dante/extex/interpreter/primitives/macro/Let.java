@@ -21,6 +21,7 @@ package de.dante.extex.interpreter.primitives.macro;
 
 import org.extex.interpreter.TokenSource;
 import org.extex.type.UnicodeChar;
+import org.extex.util.exception.GeneralException;
 
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.context.Context;
@@ -47,7 +48,6 @@ import de.dante.extex.scanner.type.token.TabMarkToken;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.scanner.type.token.TokenVisitor;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.exception.GeneralException;
 
 /**
  * This class provides an implementation for the primitive <code>\let</code>.

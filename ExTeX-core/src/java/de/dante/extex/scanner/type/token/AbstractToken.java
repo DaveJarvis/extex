@@ -22,10 +22,10 @@ package de.dante.extex.scanner.type.token;
 import java.io.Serializable;
 
 import org.extex.type.UnicodeChar;
+import org.extex.util.framework.i18n.Localizer;
+import org.extex.util.framework.i18n.LocalizerFactory;
 
 import de.dante.extex.scanner.type.Catcode;
-import de.dante.util.framework.i18n.Localizer;
-import de.dante.util.framework.i18n.LocalizerFactory;
 
 /**
  * This is the abstract base class for all Tokens.

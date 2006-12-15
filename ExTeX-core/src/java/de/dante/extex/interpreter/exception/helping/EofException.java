@@ -19,8 +19,8 @@
 
 package de.dante.extex.interpreter.exception.helping;
 
-import de.dante.util.framework.i18n.Localizer;
-import de.dante.util.framework.i18n.LocalizerFactory;
+import org.extex.util.framework.i18n.Localizer;
+import org.extex.util.framework.i18n.LocalizerFactory;
 
 /**
  * This exception is raised when an unexpected end of file is encountered.

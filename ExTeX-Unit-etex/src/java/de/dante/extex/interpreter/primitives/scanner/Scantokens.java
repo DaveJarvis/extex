@@ -21,6 +21,7 @@ package de.dante.extex.interpreter.primitives.scanner;
 
 import org.extex.interpreter.TokenSource;
 import org.extex.type.Locator;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.Tokenizer;
@@ -35,7 +36,6 @@ import de.dante.extex.scanner.stream.TokenStreamFactory;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.scanner.type.token.TokenFactory;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive
@@ -70,7 +70,7 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
  *
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4435 $
  */
 public class Scantokens extends AbstractCode implements ExpandableCode {
 
@@ -79,7 +79,7 @@ public class Scantokens extends AbstractCode implements ExpandableCode {
      * stream.
      *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision$
+     * @version $Revision:4435 $
      */
     private class TokenStreamProxy implements TokenStream {
 

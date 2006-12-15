@@ -21,13 +21,14 @@ package de.dante.extex.typesetter.type.noad;
 
 import java.util.logging.Logger;
 
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+
 import de.dante.extex.interpreter.type.glue.Glue;
 import de.dante.extex.interpreter.type.muskip.Muskip;
 import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.noad.util.MathContext;
 import de.dante.extex.typesetter.type.node.GlueNode;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This Noad carries a muglue value. This value is translated into a GlueNode

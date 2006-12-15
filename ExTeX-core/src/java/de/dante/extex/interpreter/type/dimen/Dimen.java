@@ -22,6 +22,8 @@ package de.dante.extex.interpreter.type.dimen;
 import java.io.Serializable;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.util.framework.i18n.Localizer;
+import org.extex.util.framework.i18n.LocalizerFactory;
 
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
@@ -30,8 +32,6 @@ import de.dante.extex.interpreter.type.dimen.parser.LengthParser;
 import de.dante.extex.interpreter.type.glue.FixedGlueComponent;
 import de.dante.extex.interpreter.type.glue.GlueComponent;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.framework.i18n.Localizer;
-import de.dante.util.framework.i18n.LocalizerFactory;
 
 /**
  * This class implements the dimen value. This is a length with fixed point

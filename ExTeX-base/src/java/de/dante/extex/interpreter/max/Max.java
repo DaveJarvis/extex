@@ -29,6 +29,20 @@ import java.util.logging.Logger;
 import org.extex.interpreter.Namespace;
 import org.extex.interpreter.TokenSource;
 import org.extex.type.UnicodeChar;
+import org.extex.util.Switch;
+import org.extex.util.exception.GeneralException;
+import org.extex.util.framework.Registrar;
+import org.extex.util.framework.RegistrarObserver;
+import org.extex.util.framework.configuration.Configurable;
+import org.extex.util.framework.configuration.Configuration;
+import org.extex.util.framework.configuration.ConfigurationFactory;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.framework.configuration.exception.ConfigurationMissingException;
+import org.extex.util.framework.configuration.exception.ConfigurationWrapperException;
+import org.extex.util.framework.i18n.Localizable;
+import org.extex.util.framework.i18n.Localizer;
+import org.extex.util.framework.i18n.LocalizerFactory;
+import org.extex.util.framework.logger.LogEnabled;
 
 import de.dante.extex.backend.outputStream.OutputStreamFactory;
 import de.dante.extex.font.CoreFontFactory;
@@ -106,20 +120,6 @@ import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.scanner.type.token.TokenVisitor;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.exception.TypesetterException;
-import de.dante.util.Switch;
-import de.dante.util.exception.GeneralException;
-import de.dante.util.framework.Registrar;
-import de.dante.util.framework.RegistrarObserver;
-import de.dante.util.framework.configuration.Configurable;
-import de.dante.util.framework.configuration.Configuration;
-import de.dante.util.framework.configuration.ConfigurationFactory;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
-import de.dante.util.framework.configuration.exception.ConfigurationMissingException;
-import de.dante.util.framework.configuration.exception.ConfigurationWrapperException;
-import de.dante.util.framework.i18n.Localizable;
-import de.dante.util.framework.i18n.Localizer;
-import de.dante.util.framework.i18n.LocalizerFactory;
-import de.dante.util.framework.logger.LogEnabled;
 
 /**
  * This is a reference implementation for a <b>MA</b>cro e<b>X</b>pander. The
@@ -546,8 +546,8 @@ public abstract class Max
      *
      * @param theLocalizer the getLocalizer() to use
      *
-     * @see de.dante.util.framework.i18n.Localizable#enableLocalization(
-     *      de.dante.util.framework.i18n.Localizer)
+     * @see org.extex.util.framework.i18n.Localizable#enableLocalization(
+     *      org.extex.util.framework.i18n.Localizer)
      */
     public void enableLocalization(final Localizer theLocalizer) {
 
@@ -559,7 +559,7 @@ public abstract class Max
      *
      * @param theLogger the new logger
      *
-     * @see de.dante.util.framework.logger.LogEnabled#enableLogging(
+     * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
      *         java.util.logging.Logger)
      */
     public void enableLogging(final Logger theLogger) {
@@ -1039,7 +1039,7 @@ public abstract class Max
         Object ref1 = Registrar.register(new RegistrarObserver() {
 
             /**
-             * @see de.dante.util.framework.RegistrarObserver#reconnect(
+             * @see org.extex.util.framework.RegistrarObserver#reconnect(
              *      java.lang.Object)
              */
             public Object reconnect(final Object object) {
@@ -1052,7 +1052,7 @@ public abstract class Max
         Object ref2 = Registrar.register(new RegistrarObserver() {
 
             /**
-             * @see de.dante.util.framework.RegistrarObserver#reconnect(
+             * @see org.extex.util.framework.RegistrarObserver#reconnect(
              *      java.lang.Object)
              */
             public Object reconnect(final Object object) {

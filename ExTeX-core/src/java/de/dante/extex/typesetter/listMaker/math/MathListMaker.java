@@ -26,6 +26,8 @@ import org.extex.interpreter.Namespace;
 import org.extex.interpreter.TokenSource;
 import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.framework.logger.LogEnabled;
 
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.context.Context;
@@ -75,8 +77,6 @@ import de.dante.extex.typesetter.type.node.BeforeMathNode;
 import de.dante.extex.typesetter.type.node.DiscretionaryNode;
 import de.dante.extex.typesetter.type.node.GenericNodeList;
 import de.dante.extex.typesetter.type.node.GlueNode;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
-import de.dante.util.framework.logger.LogEnabled;
 
 /**
  * This is the list maker for the inline math formulae.
@@ -520,7 +520,7 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
     }
 
     /**
-     * @see de.dante.util.framework.logger.LogEnabled#enableLogging(
+     * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
     public void enableLogging(final Logger log) {

@@ -19,7 +19,7 @@
 
 package de.dante.extex.backend.exception;
 
-import de.dante.util.exception.GeneralException;
+import org.extex.util.exception.GeneralException;
 
 /**
  * This exception signals that something went wrong in the back-end.

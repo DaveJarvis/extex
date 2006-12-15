@@ -19,18 +19,19 @@
 
 package de.dante.extex.interpreter.context.tc;
 
+import org.extex.util.framework.AbstractFactory;
+import org.extex.util.framework.configuration.Configuration;
+import org.extex.util.framework.configuration.exception.ConfigurationClassNotFoundException;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.framework.configuration.exception.ConfigurationInstantiationException;
+import org.extex.util.framework.configuration.exception.ConfigurationMissingAttributeException;
+
 import de.dante.extex.interpreter.context.Color;
 
 import de.dante.extex.font.type.other.NullFont;
 import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.language.Language;
 import de.dante.extex.language.LanguageManager;
-import de.dante.util.framework.AbstractFactory;
-import de.dante.util.framework.configuration.Configuration;
-import de.dante.util.framework.configuration.exception.ConfigurationClassNotFoundException;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
-import de.dante.util.framework.configuration.exception.ConfigurationInstantiationException;
-import de.dante.util.framework.configuration.exception.ConfigurationMissingAttributeException;
 
 /**
  * This class provides a factory for a
@@ -84,8 +85,8 @@ public class TypesettingContextFactory extends AbstractFactory {
      *      could not be loaded.</li>
      * </ul>
      *
-     * @see de.dante.util.framework.configuration.Configurable#configure(
-     *      de.dante.util.framework.configuration.Configuration)
+     * @see org.extex.util.framework.configuration.Configurable#configure(
+     *      org.extex.util.framework.configuration.Configuration)
      */
     public void configure(final Configuration configuration)
             throws ConfigurationException {

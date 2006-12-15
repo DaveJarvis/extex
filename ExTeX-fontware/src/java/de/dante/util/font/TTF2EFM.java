@@ -22,11 +22,12 @@ package de.dante.util.font;
 import java.io.File;
 import java.io.InputStream;
 
+import org.extex.util.framework.configuration.Configuration;
+import org.extex.util.framework.configuration.ConfigurationFactory;
+import org.extex.util.resource.ResourceFinder;
+import org.extex.util.resource.ResourceFinderFactory;
+
 import de.dante.extex.unicodeFont.format.xtf.XtfReader;
-import de.dante.util.framework.configuration.Configuration;
-import de.dante.util.framework.configuration.ConfigurationFactory;
-import de.dante.util.resource.ResourceFinder;
-import de.dante.util.resource.ResourceFinderFactory;
 
 /**
  * Convert a TTF-file to a EFM-file

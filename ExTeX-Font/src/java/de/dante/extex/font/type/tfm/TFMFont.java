@@ -23,6 +23,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
 
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+
 import de.dante.extex.font.exception.FontException;
 import de.dante.extex.font.type.PlFormat;
 import de.dante.extex.font.type.PlWriter;
@@ -33,7 +35,6 @@ import de.dante.extex.unicodeFont.format.pfb.PfbParser;
 import de.dante.util.EFMWriterConvertible;
 import de.dante.util.XMLWriterConvertible;
 import de.dante.util.file.random.RandomAccessR;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 import de.dante.util.xml.XMLStreamWriter;
 
 /**

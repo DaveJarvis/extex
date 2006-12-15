@@ -20,6 +20,7 @@
 package de.dante.extex.interpreter.primitives.register.font;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.font.type.other.NullFont;
 import de.dante.extex.interpreter.Flags;
@@ -32,7 +33,6 @@ import de.dante.extex.interpreter.type.font.FontConvertible;
 import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive

@@ -24,6 +24,10 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import org.extex.type.UnicodeChar;
+import org.extex.util.exception.GeneralException;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.resource.ResourceConsumer;
+import org.extex.util.resource.ResourceFinder;
 
 import de.dante.extex.backend.documentWriter.exception.DocumentWriterException;
 import de.dante.extex.backend.documentWriter.exception.DocumentWriterIOException;
@@ -59,10 +63,6 @@ import de.dante.extex.typesetter.type.node.VerticalListNode;
 import de.dante.extex.typesetter.type.node.VirtualCharNode;
 import de.dante.extex.typesetter.type.node.WhatsItNode;
 import de.dante.extex.typesetter.type.page.Page;
-import de.dante.util.exception.GeneralException;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
-import de.dante.util.resource.ResourceConsumer;
-import de.dante.util.resource.ResourceFinder;
 
 /**
  * This class provides a converter to PostScript code.
@@ -318,8 +318,8 @@ public class PsBasicConverter
     }
 
     /**
-     * @see de.dante.util.resource.ResourceConsumer#setResourceFinder(
-     *      de.dante.util.resource.ResourceFinder)
+     * @see org.extex.util.resource.ResourceConsumer#setResourceFinder(
+     *      org.extex.util.resource.ResourceFinder)
      */
     public void setResourceFinder(final ResourceFinder resourceFinder) {
 

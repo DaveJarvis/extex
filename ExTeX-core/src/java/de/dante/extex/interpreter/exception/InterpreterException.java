@@ -19,8 +19,8 @@
 
 package de.dante.extex.interpreter.exception;
 
-import de.dante.util.exception.GeneralException;
-import de.dante.util.framework.i18n.Localizer;
+import org.extex.util.exception.GeneralException;
+import org.extex.util.framework.i18n.Localizer;
 
 /**
  * This is the base class for all exceptions of the interpreter.

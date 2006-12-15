@@ -31,11 +31,12 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.resource.ResourceFinder;
 import org.xml.sax.EntityResolver;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * EntityResolver, which get the stream from a ResourceFinder.

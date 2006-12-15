@@ -20,12 +20,13 @@
 package de.dante.extex.typesetter.type.node;
 
 
+import org.extex.util.exception.GeneralException;
+
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.type.glue.FixedGlue;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeVisitor;
-import de.dante.util.exception.GeneralException;
 
 /**
  * This node represents an aligned leaders node as used by the primitive

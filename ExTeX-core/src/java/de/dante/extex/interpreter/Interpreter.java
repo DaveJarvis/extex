@@ -23,6 +23,8 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.util.exception.GeneralException;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.font.CoreFontFactory;
 import de.dante.extex.interpreter.context.Context;
@@ -33,8 +35,6 @@ import de.dante.extex.interpreter.loader.LoaderException;
 import de.dante.extex.scanner.TokenStream;
 import de.dante.extex.scanner.stream.TokenStreamFactory;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.exception.GeneralException;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This interface represents the outside view on an interpreter. It contains

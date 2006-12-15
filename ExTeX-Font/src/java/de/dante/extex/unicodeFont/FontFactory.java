@@ -19,10 +19,11 @@
 
 package de.dante.extex.unicodeFont;
 
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+
 import de.dante.extex.unicodeFont.exception.FontException;
 import de.dante.extex.unicodeFont.key.FontKey;
 import de.dante.extex.unicodeFont.type.TexFont;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * Interface for the Factory for the font system.

@@ -20,6 +20,7 @@
 package de.dante.extex.typesetter.type.node;
 
 import org.extex.type.UnicodeChar;
+import org.extex.util.exception.GeneralException;
 
 import de.dante.extex.font.Glyph;
 import de.dante.extex.interpreter.context.tc.TypesettingContext;
@@ -27,7 +28,6 @@ import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.interpreter.type.glue.FixedGlue;
 import de.dante.extex.typesetter.type.NodeVisitor;
-import de.dante.util.exception.GeneralException;
 
 /**
  * This is the Node which carries a single character.

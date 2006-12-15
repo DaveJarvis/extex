@@ -20,9 +20,9 @@
 package org.extex.tex.main.errorHandler.editHandler;
 
 import org.extex.type.Locator;
+import org.extex.util.framework.i18n.Localizer;
 
 import de.dante.extex.main.errorHandler.editHandler.EditHandler;
-import de.dante.util.framework.i18n.Localizer;
 
 /**
  * This is a dummy implementation for an EditHandler which just prints the
@@ -43,7 +43,7 @@ public class EditHandlerTeXImpl implements EditHandler {
 
     /**
      * @see de.dante.extex.main.errorHandler.editHandler.EditHandler#edit(
-     *      de.dante.util.framework.i18n.Localizer,
+     *      org.extex.util.framework.i18n.Localizer,
      *      org.extex.type.Locator)
      */
     public boolean edit(final Localizer localizer, final Locator locator) {

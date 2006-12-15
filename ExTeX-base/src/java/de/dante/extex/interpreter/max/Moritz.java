@@ -25,6 +25,10 @@ import org.extex.interpreter.Namespace;
 import org.extex.interpreter.TokenSource;
 import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
+import org.extex.util.exception.GeneralException;
+import org.extex.util.exception.NotObservableException;
+import org.extex.util.framework.configuration.Configurable;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.Interpreter;
@@ -86,10 +90,6 @@ import de.dante.extex.scanner.type.token.SpaceToken;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.scanner.type.token.TokenFactory;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.exception.GeneralException;
-import de.dante.util.exception.NotObservableException;
-import de.dante.util.framework.configuration.Configurable;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides the layer above the input streams and the tokenizer. It

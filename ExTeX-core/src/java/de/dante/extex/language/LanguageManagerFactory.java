@@ -21,13 +21,14 @@ package de.dante.extex.language;
 
 import java.util.logging.Logger;
 
+import org.extex.util.framework.AbstractFactory;
+import org.extex.util.framework.configuration.Configuration;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.resource.ResourceConsumer;
+import org.extex.util.resource.ResourceFinder;
+
 import de.dante.extex.backend.outputStream.OutputStreamFactory;
 import de.dante.extex.interpreter.type.OutputStreamConsumer;
-import de.dante.util.framework.AbstractFactory;
-import de.dante.util.framework.configuration.Configuration;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
-import de.dante.util.resource.ResourceConsumer;
-import de.dante.util.resource.ResourceFinder;
 
 /**
  * This class provides a factory for a
@@ -67,28 +68,28 @@ import de.dante.util.resource.ResourceFinder;
  *  trigger special actions:
  * </p>
  * <dl>
- *  <dt>{@link de.dante.util.framework.configuration.Configurable Configurable}</dt>
+ *  <dt>{@link org.extex.util.framework.configuration.Configurable Configurable}</dt>
  *  <dd>
  *   If this interface is implemented then a
- *   {@link de.dante.util.framework.configuration.Configuration Configuration}
+ *   {@link org.extex.util.framework.configuration.Configuration Configuration}
  *   is passed in with the interface method.
  *  </dd>
- *  <dt>{@link de.dante.util.framework.logger.LogEnabled LogEnabled}</dt>
+ *  <dt>{@link org.extex.util.framework.logger.LogEnabled LogEnabled}</dt>
  *  <dd>
  *   If this interface is implemented then a
  *   {@link java.util.logging.Logger Logger}
  *   is passed in with the interface method.
  *  </dd>
- *  <dt>{@link de.dante.util.framework.i18n.Localizable Localizable}</dt>
+ *  <dt>{@link org.extex.util.framework.i18n.Localizable Localizable}</dt>
  *  <dd>
  *   If this interface is implemented then a
- *   {@link de.dante.util.framework.i18n.Localizer Localizer}
+ *   {@link org.extex.util.framework.i18n.Localizer Localizer}
  *   is passed in with the interface method.
  *  </dd>
- *  <dt>{@link de.dante.util.resource.ResourceConsumer ResourceConsumer}</dt>
+ *  <dt>{@link org.extex.util.resource.ResourceConsumer ResourceConsumer}</dt>
  *  <dd>
  *   If this interface is implemented then a
- *   {@link de.dante.util.resource.ResourceFinder ResourceFinder}
+ *   {@link org.extex.util.resource.ResourceFinder ResourceFinder}
  *   is passed in with the interface method.
  *  </dd>
  *  <dt>{@link de.dante.extex.interpreter.type.OutputStreamConsumer OutputStreamConsumer}</dt>
@@ -101,7 +102,7 @@ import de.dante.util.resource.ResourceFinder;
  *
  *
  *
- * @see de.dante.util.framework.AbstractFactory
+ * @see org.extex.util.framework.AbstractFactory
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

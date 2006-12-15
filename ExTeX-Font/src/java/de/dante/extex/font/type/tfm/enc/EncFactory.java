@@ -23,10 +23,11 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.resource.ResourceFinder;
+
 import de.dante.extex.font.exception.FontException;
 import de.dante.extex.font.type.tfm.enc.exception.FontEncodingFileNotFoundException;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
-import de.dante.util.resource.ResourceFinder;
 
 /**
  * Factory for enc-files.

@@ -19,6 +19,8 @@
 
 package de.dante.extex.typesetter.type.noad.util;
 
+import org.extex.util.framework.i18n.LocalizerFactory;
+
 import de.dante.extex.interpreter.exception.helping.HelpingException;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.dimen.FixedDimen;
@@ -30,7 +32,6 @@ import de.dante.extex.interpreter.type.muskip.Muskip;
 import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.type.noad.StyleNoad;
-import de.dante.util.framework.i18n.LocalizerFactory;
 
 /**
  * This class provides a container for the information on the current

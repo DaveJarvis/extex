@@ -21,6 +21,9 @@ package de.dante.extex.typesetter.output;
 
 import org.extex.interpreter.Namespace;
 import org.extex.type.UnicodeChar;
+import org.extex.util.exception.GeneralException;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.framework.i18n.LocalizerFactory;
 
 import de.dante.extex.backend.BackendDriver;
 import de.dante.extex.interpreter.Interpreter;
@@ -36,9 +39,6 @@ import de.dante.extex.scanner.type.CatcodeException;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.scanner.type.token.TokenFactory;
 import de.dante.extex.typesetter.type.page.Page;
-import de.dante.util.exception.GeneralException;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
-import de.dante.util.framework.i18n.LocalizerFactory;
 
 /**
  * This class provides a link between the typesetter and the interpreter for the
@@ -155,7 +155,7 @@ import de.dante.util.framework.i18n.LocalizerFactory;
  *
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4483 $
  */
 public class TeXOutputRoutine implements OutputRoutine {
 

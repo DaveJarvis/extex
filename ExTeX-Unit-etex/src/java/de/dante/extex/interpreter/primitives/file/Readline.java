@@ -24,6 +24,7 @@ import java.util.logging.Logger;
 import org.extex.interpreter.Namespace;
 import org.extex.interpreter.TokenSource;
 import org.extex.type.UnicodeChar;
+import org.extex.util.framework.logger.LogEnabled;
 
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.Tokenizer;
@@ -39,7 +40,6 @@ import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.scanner.type.Catcode;
 import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.framework.logger.LogEnabled;
 
 /**
  * This class provides an implementation for the primitive <code>\readline</code>.
@@ -179,7 +179,7 @@ public class Readline extends AbstractAssignment implements LogEnabled {
     }
 
     /**
-     * @see de.dante.util.framework.logger.LogEnabled#enableLogging(
+     * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
     public void enableLogging(final Logger theLogger) {

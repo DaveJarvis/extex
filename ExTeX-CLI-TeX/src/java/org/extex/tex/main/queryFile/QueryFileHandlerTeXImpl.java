@@ -23,9 +23,10 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.logging.Logger;
 
+import org.extex.util.framework.i18n.Localizer;
+import org.extex.util.framework.i18n.LocalizerFactory;
+
 import de.dante.extex.interpreter.exception.helping.HelpingException;
-import de.dante.util.framework.i18n.Localizer;
-import de.dante.util.framework.i18n.LocalizerFactory;
 
 /**
  * This class implements the <logo>TeX</logo> version of a query file handler.
@@ -36,7 +37,7 @@ import de.dante.util.framework.i18n.LocalizerFactory;
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4708 $
  */
 public class QueryFileHandlerTeXImpl implements QueryFileHandler {
 

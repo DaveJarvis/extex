@@ -29,6 +29,11 @@ import org.extex.backend.documentWriter.postscript.util.HeaderManager;
 import org.extex.backend.documentWriter.postscript.util.PsBasicConverter;
 import org.extex.backend.documentWriter.postscript.util.PsBoxConverter;
 import org.extex.backend.documentWriter.postscript.util.PsConverter;
+import org.extex.util.framework.configuration.Configurable;
+import org.extex.util.framework.configuration.Configuration;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.resource.ResourceConsumer;
+import org.extex.util.resource.ResourceFinder;
 
 import de.dante.extex.backend.documentWriter.DocumentWriter;
 import de.dante.extex.backend.documentWriter.MultipleDocumentStream;
@@ -37,11 +42,6 @@ import de.dante.extex.backend.outputStream.OutputStreamFactory;
 import de.dante.extex.color.ColorAware;
 import de.dante.extex.color.ColorConverter;
 import de.dante.extex.interpreter.type.font.Font;
-import de.dante.util.framework.configuration.Configurable;
-import de.dante.util.framework.configuration.Configuration;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
-import de.dante.util.resource.ResourceConsumer;
-import de.dante.util.resource.ResourceFinder;
 
 /**
  * This is the abstract base class for document writers producing PostScript
@@ -98,8 +98,8 @@ public abstract class AbstractPostscriptWriter
     }
 
     /**
-     * @see de.dante.util.framework.configuration.Configurable#configure(
-     *      de.dante.util.framework.configuration.Configuration)
+     * @see org.extex.util.framework.configuration.Configurable#configure(
+     *      org.extex.util.framework.configuration.Configuration)
      */
     public void configure(final Configuration config)
             throws ConfigurationException {
@@ -202,8 +202,8 @@ public abstract class AbstractPostscriptWriter
     }
 
     /**
-     * @see de.dante.util.resource.ResourceConsumer#setResourceFinder(
-     *      de.dante.util.resource.ResourceFinder)
+     * @see org.extex.util.resource.ResourceConsumer#setResourceFinder(
+     *      org.extex.util.resource.ResourceFinder)
      */
     public void setResourceFinder(final ResourceFinder resourceFinder) {
 

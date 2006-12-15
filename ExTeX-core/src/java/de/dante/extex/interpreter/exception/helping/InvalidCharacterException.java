@@ -20,9 +20,9 @@
 package de.dante.extex.interpreter.exception.helping;
 
 import org.extex.type.UnicodeChar;
+import org.extex.util.framework.i18n.Localizer;
+import org.extex.util.framework.i18n.LocalizerFactory;
 
-import de.dante.util.framework.i18n.Localizer;
-import de.dante.util.framework.i18n.LocalizerFactory;
 
 /**
  * This exception is raised when an unexpected character code is encountered.

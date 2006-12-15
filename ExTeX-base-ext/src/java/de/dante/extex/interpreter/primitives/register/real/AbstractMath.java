@@ -20,6 +20,7 @@
 package de.dante.extex.interpreter.primitives.register.real;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.util.exception.GeneralException;
 
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.context.Context;
@@ -31,7 +32,6 @@ import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.real.RealConvertible;
 import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.exception.GeneralException;
 
 /**
  * Abstract class for math primitives.

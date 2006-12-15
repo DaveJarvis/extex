@@ -28,6 +28,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+import org.extex.util.framework.configuration.Configuration;
+import org.extex.util.framework.configuration.ConfigurationFactory;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.resource.ResourceFinder;
+import org.extex.util.resource.ResourceFinderFactory;
+
 import de.dante.extex.font.exception.FontException;
 import de.dante.extex.font.exception.FontMapNotFoundException;
 import de.dante.extex.font.type.PlWriter;
@@ -35,11 +41,6 @@ import de.dante.extex.font.type.tfm.TFMFont;
 import de.dante.extex.font.type.tfm.enc.EncFactory;
 import de.dante.extex.font.type.tfm.psfontsmap.PSFontsMapReader;
 import de.dante.util.file.random.RandomAccessInputStream;
-import de.dante.util.framework.configuration.Configuration;
-import de.dante.util.framework.configuration.ConfigurationFactory;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
-import de.dante.util.resource.ResourceFinder;
-import de.dante.util.resource.ResourceFinderFactory;
 
 /**
  * Convert a TFM-file to a PL-file

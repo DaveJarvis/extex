@@ -37,6 +37,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Properties;
 
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Element;
@@ -55,7 +57,6 @@ import de.dante.extex.unicodeFont.format.xtf.TtfTableNAME;
 import de.dante.extex.unicodeFont.format.xtf.TtfTablePOST;
 import de.dante.extex.unicodeFont.format.xtf.XtfReader;
 import de.dante.extex.unicodeFont.format.xtf.TtfTableCMAP.IndexEntry;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * Print information about a ttf/otf file.

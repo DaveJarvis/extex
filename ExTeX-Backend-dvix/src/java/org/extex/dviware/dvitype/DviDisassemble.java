@@ -29,18 +29,18 @@ import java.util.logging.Logger;
 
 import org.extex.dviware.Dvi;
 import org.extex.dviware.DviProcessor;
+import org.extex.util.framework.configuration.Configuration;
+import org.extex.util.framework.configuration.ConfigurationFactory;
+import org.extex.util.resource.ResourceFinder;
+import org.extex.util.resource.ResourceFinderFactory;
 
 import de.dante.extex.main.logging.LogFormatter;
-import de.dante.util.framework.configuration.Configuration;
-import de.dante.util.framework.configuration.ConfigurationFactory;
-import de.dante.util.resource.ResourceFinder;
-import de.dante.util.resource.ResourceFinderFactory;
 
 /**
  * This class provides a command line tool to disassemble a DVI file.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4704 $
  */
 public class DviDisassemble implements DviProcessor {
 

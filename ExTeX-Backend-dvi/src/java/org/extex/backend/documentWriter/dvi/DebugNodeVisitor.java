@@ -21,6 +21,8 @@
 
 package org.extex.backend.documentWriter.dvi;
 
+import org.extex.util.exception.GeneralException;
+
 import de.dante.extex.interpreter.type.dimen.FixedDimen;
 import de.dante.extex.typesetter.type.InspectableNodeVisitor;
 import de.dante.extex.typesetter.type.Node;
@@ -45,13 +47,12 @@ import de.dante.extex.typesetter.type.node.SpaceNode;
 import de.dante.extex.typesetter.type.node.VerticalListNode;
 import de.dante.extex.typesetter.type.node.VirtualCharNode;
 import de.dante.extex.typesetter.type.node.WhatsItNode;
-import de.dante.util.exception.GeneralException;
 
 /**
  * This is a implementation of a NodeVisitor for debugging.
  *
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
- * @version $Revision$
+ * @version $Revision:4704 $
  */
 public class DebugNodeVisitor implements InspectableNodeVisitor {
 

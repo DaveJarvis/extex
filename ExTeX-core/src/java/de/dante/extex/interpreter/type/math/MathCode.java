@@ -22,11 +22,11 @@ package de.dante.extex.interpreter.type.math;
 import java.io.Serializable;
 
 import org.extex.type.UnicodeChar;
+import org.extex.util.framework.i18n.LocalizerFactory;
 
 import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.exception.helping.HelpingException;
 import de.dante.extex.typesetter.type.noad.MathGlyph;
-import de.dante.util.framework.i18n.LocalizerFactory;
 
 /**
  * This class represents a mathematical character. It consists of a class, a

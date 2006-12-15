@@ -19,7 +19,7 @@
 
 package de.dante.extex.scanner.exception;
 
-import de.dante.util.exception.GeneralException;
+import org.extex.util.exception.GeneralException;
 
 /**
  * This is the base class for all exceptions thrown by the scanner.

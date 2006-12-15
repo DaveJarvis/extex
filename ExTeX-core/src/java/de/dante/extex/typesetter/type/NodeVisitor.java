@@ -19,6 +19,8 @@
 
 package de.dante.extex.typesetter.type;
 
+import org.extex.util.exception.GeneralException;
+
 import de.dante.extex.typesetter.type.node.AdjustNode;
 import de.dante.extex.typesetter.type.node.AfterMathNode;
 import de.dante.extex.typesetter.type.node.AlignedLeadersNode;
@@ -39,7 +41,6 @@ import de.dante.extex.typesetter.type.node.SpaceNode;
 import de.dante.extex.typesetter.type.node.VerticalListNode;
 import de.dante.extex.typesetter.type.node.VirtualCharNode;
 import de.dante.extex.typesetter.type.node.WhatsItNode;
-import de.dante.util.exception.GeneralException;
 
 /**
  * This interface implements part of the visitor pattern for nodes.

@@ -23,13 +23,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+
 import de.dante.extex.font.exception.FontException;
 import de.dante.extex.format.dvi.exception.DviException;
 import de.dante.extex.format.dvi.exception.DviPostNotFoundException;
 import de.dante.extex.format.dvi.exception.DviPreNotFoundException;
 import de.dante.extex.format.dvi.exception.DviUndefinedOpcodeException;
 import de.dante.util.file.random.RandomAccessR;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * Abstract class for all DVI commands.

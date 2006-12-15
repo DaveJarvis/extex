@@ -19,8 +19,8 @@
 
 package de.dante.extex.typesetter;
 
-import de.dante.util.framework.i18n.Localizer;
-import de.dante.util.framework.i18n.LocalizerFactory;
+import org.extex.util.framework.i18n.Localizer;
+import org.extex.util.framework.i18n.LocalizerFactory;
 
 /**
  * This class provides type-safe constants for the modes of a typesetter.

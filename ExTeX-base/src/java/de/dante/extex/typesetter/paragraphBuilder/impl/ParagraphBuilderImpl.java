@@ -27,6 +27,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.extex.type.UnicodeChar;
+import org.extex.util.framework.logger.LogEnabled;
 
 import de.dante.extex.interpreter.context.tc.TypesettingContext;
 import de.dante.extex.interpreter.type.dimen.Dimen;
@@ -55,7 +56,6 @@ import de.dante.extex.typesetter.type.node.KernNode;
 import de.dante.extex.typesetter.type.node.PenaltyNode;
 import de.dante.extex.typesetter.type.node.VerticalListNode;
 import de.dante.extex.typesetter.type.node.factory.NodeFactory;
-import de.dante.util.framework.logger.LogEnabled;
 
 /**
  * This class provides a paragraph builder.
@@ -436,7 +436,7 @@ public class ParagraphBuilderImpl implements ParagraphBuilder, LogEnabled {
     }
 
     /**
-     * @see de.dante.util.framework.logger.LogEnabled#enableLogging(
+     * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
     public void enableLogging(final Logger theLogger) {

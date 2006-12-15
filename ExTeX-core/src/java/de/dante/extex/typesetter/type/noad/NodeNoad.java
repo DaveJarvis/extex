@@ -21,6 +21,8 @@ package de.dante.extex.typesetter.type.noad;
 
 import java.util.logging.Logger;
 
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+
 import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeList;
@@ -28,7 +30,6 @@ import de.dante.extex.typesetter.type.noad.util.MathContext;
 import de.dante.extex.typesetter.type.noad.util.MathSpacing;
 import de.dante.extex.typesetter.type.node.GlueNode;
 import de.dante.extex.typesetter.type.node.KernNode;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This noad contains a node which is passed through the math apparatus.

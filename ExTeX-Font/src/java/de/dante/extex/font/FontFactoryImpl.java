@@ -26,6 +26,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
+import org.extex.util.framework.Registrar;
+import org.extex.util.framework.RegistrarException;
+import org.extex.util.framework.RegistrarObserver;
+import org.extex.util.framework.configuration.Configuration;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.resource.PropertyConfigurable;
+import org.extex.util.resource.ResourceFinder;
+
 import de.dante.extex.font.exception.FontException;
 import de.dante.extex.font.exception.FontIOException;
 import de.dante.extex.font.exception.FontMapNotFoundException;
@@ -45,13 +53,6 @@ import de.dante.extex.interpreter.type.font.FontImpl;
 import de.dante.extex.interpreter.type.font.VirtualFontImpl;
 import de.dante.extex.unicodeFont.format.pfb.PfbParser;
 import de.dante.util.file.random.RandomAccessInputStream;
-import de.dante.util.framework.Registrar;
-import de.dante.util.framework.RegistrarException;
-import de.dante.util.framework.RegistrarObserver;
-import de.dante.util.framework.configuration.Configuration;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
-import de.dante.util.resource.PropertyConfigurable;
-import de.dante.util.resource.ResourceFinder;
 import de.dante.util.xml.XMLStreamWriter;
 
 /**

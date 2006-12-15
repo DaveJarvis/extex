@@ -22,6 +22,8 @@ package de.dante.extex.typesetter.impl;
 import org.extex.interpreter.TokenSource;
 import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
+import org.extex.util.framework.configuration.Configuration;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.backend.BackendDriver;
 import de.dante.extex.interpreter.context.Context;
@@ -46,15 +48,13 @@ import de.dante.extex.typesetter.paragraphBuilder.ParagraphBuilder;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.node.factory.NodeFactory;
-import de.dante.util.framework.configuration.Configuration;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * The dummy typesetter which does nothing but provide the appropriate
  * interface.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4526 $
  */
 public class NullTypesetterImpl implements Typesetter {
 
@@ -140,8 +140,8 @@ public class NullTypesetterImpl implements Typesetter {
     }
 
     /**
-     * @see de.dante.util.framework.configuration.Configurable#configure(
-     *     de.dante.util.framework.configuration.Configuration)
+     * @see org.extex.util.framework.configuration.Configurable#configure(
+     *     org.extex.util.framework.configuration.Configuration)
      */
     public void configure(final Configuration config) {
 

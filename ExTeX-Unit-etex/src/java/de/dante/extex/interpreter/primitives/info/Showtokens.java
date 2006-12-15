@@ -22,6 +22,7 @@ package de.dante.extex.interpreter.primitives.info;
 import java.util.logging.Logger;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.util.framework.logger.LogEnabled;
 
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.context.Context;
@@ -39,7 +40,6 @@ import de.dante.extex.scanner.type.token.LeftBraceToken;
 import de.dante.extex.scanner.type.token.RightBraceToken;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.framework.logger.LogEnabled;
 
 /**
  * This class provides an implementation for the primitive <code>\showtokens</code>.
@@ -90,7 +90,7 @@ public class Showtokens extends AbstractCode implements LogEnabled {
     }
 
     /**
-     * @see de.dante.util.framework.logger.LogEnabled#enableLogging(
+     * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
     public void enableLogging(final Logger theLogger) {

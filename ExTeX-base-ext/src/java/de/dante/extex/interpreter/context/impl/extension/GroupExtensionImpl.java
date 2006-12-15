@@ -23,6 +23,8 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.extex.util.exception.GeneralException;
+
 import de.dante.extex.interpreter.Tokenizer;
 import de.dante.extex.interpreter.context.impl.Group;
 import de.dante.extex.interpreter.context.impl.GroupImpl;
@@ -32,7 +34,6 @@ import de.dante.extex.interpreter.type.hash.toks.HashToks;
 import de.dante.extex.interpreter.type.pair.Pair;
 import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.transform.Transform;
-import de.dante.util.exception.GeneralException;
 
 /**
  * This is a simple implementation for a group with ExTeX-functions.

@@ -20,6 +20,8 @@
 package de.dante.extex.color;
 
 
+import org.extex.util.exception.GeneralException;
+
 import de.dante.extex.color.model.CmykColor;
 import de.dante.extex.color.model.ColorFactory;
 import de.dante.extex.color.model.GrayscaleColor;
@@ -27,7 +29,6 @@ import de.dante.extex.color.model.HsvColor;
 import de.dante.extex.color.model.RgbColor;
 import de.dante.extex.interpreter.context.Color;
 import de.dante.extex.interpreter.exception.ImpossibleException;
-import de.dante.util.exception.GeneralException;
 
 /**
  * This implementation of a color converter is based on the formulas in the

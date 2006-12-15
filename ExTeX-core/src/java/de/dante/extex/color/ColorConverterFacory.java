@@ -21,9 +21,10 @@ package de.dante.extex.color;
 
 import java.util.logging.Logger;
 
-import de.dante.util.framework.AbstractFactory;
-import de.dante.util.framework.configuration.Configuration;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.framework.AbstractFactory;
+import org.extex.util.framework.configuration.Configuration;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+
 
 /**
  * This is the factory to provide an instance of a color converter.

@@ -19,7 +19,7 @@
 
 package de.dante.extex.language;
 
-import de.dante.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class manages the <code>HyphenationTable</code>s. It is a container
@@ -31,7 +31,7 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
  * This instance is configurable. The configuration is used to select the
  * appropriate class and optional parameters for a requested instance. In this
  * respect this class makes best use of the infrastructure of the
- * {@link de.dante.util.framework.AbstractFactory AbstractFactory}.
+ * {@link org.extex.util.framework.AbstractFactory AbstractFactory}.
  *
  *
  *

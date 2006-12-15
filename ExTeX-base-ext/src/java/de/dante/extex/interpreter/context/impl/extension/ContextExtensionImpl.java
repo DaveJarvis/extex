@@ -21,6 +21,10 @@ package de.dante.extex.interpreter.context.impl.extension;
 
 import java.io.Serializable;
 
+import org.extex.util.exception.GeneralException;
+import org.extex.util.framework.configuration.Configuration;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+
 
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.context.ContextExtension;
@@ -31,9 +35,6 @@ import de.dante.extex.interpreter.type.hash.toks.HashToks;
 import de.dante.extex.interpreter.type.pair.Pair;
 import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.transform.Transform;
-import de.dante.util.exception.GeneralException;
-import de.dante.util.framework.configuration.Configuration;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This is a reference implementation for an interpreter context with

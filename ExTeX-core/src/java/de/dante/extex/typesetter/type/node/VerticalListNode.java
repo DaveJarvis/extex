@@ -21,6 +21,8 @@ package de.dante.extex.typesetter.type.node;
 
 import java.util.logging.Logger;
 
+import org.extex.util.exception.GeneralException;
+
 
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.type.dimen.Dimen;
@@ -33,7 +35,6 @@ import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.NodeVisitor;
-import de.dante.util.exception.GeneralException;
 
 /**
  * This class provides an implementation for a vertical list.

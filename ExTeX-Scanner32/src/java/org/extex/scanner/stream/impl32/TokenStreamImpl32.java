@@ -25,6 +25,8 @@ import java.io.Reader;
 
 import org.extex.scanner.stream.impl.TokenStreamImpl;
 import org.extex.type.UnicodeChar;
+import org.extex.util.framework.configuration.Configuration;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.interpreter.Tokenizer;
 import de.dante.extex.scanner.exception.ScannerException;
@@ -32,8 +34,6 @@ import de.dante.extex.scanner.stream.TokenStreamOptions;
 import de.dante.extex.scanner.stream.exception.ScannerNoHexDigitFoundException;
 import de.dante.extex.scanner.stream.exception.ScannerNoUnicodeNameException;
 import de.dante.extex.scanner.type.Catcode;
-import de.dante.util.framework.configuration.Configuration;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class contains an implementation of a token stream which is fed from a
@@ -49,7 +49,7 @@ import de.dante.util.framework.configuration.exception.ConfigurationException;
  *
  * @see org.extex.scanner.stream.impl.TokenStreamImpl
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
+ * @version $Revision:4725 $
  */
 
 public class TokenStreamImpl32 extends TokenStreamImpl {

@@ -20,6 +20,7 @@
 package de.dante.extex.interpreter.primitives.register.real;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.util.exception.GeneralException;
 
 import gnu.jel.CompilationException;
 import gnu.jel.CompiledExpression;
@@ -32,7 +33,6 @@ import de.dante.extex.interpreter.type.Theable;
 import de.dante.extex.interpreter.type.count.CountConvertible;
 import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.real.RealConvertible;
-import de.dante.util.exception.GeneralException;
 
 /**
  * Math. Expressions to get a real-value.

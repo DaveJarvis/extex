@@ -22,14 +22,15 @@ package de.dante.extex.typesetter.type.node;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+import org.extex.util.exception.GeneralException;
+import org.extex.util.framework.logger.LogEnabled;
+
 
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.type.file.OutFile;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeVisitor;
-import de.dante.util.exception.GeneralException;
-import de.dante.util.framework.logger.LogEnabled;
 
 /**
  * This WhatsIt node closes an out file on shipping.
@@ -101,7 +102,7 @@ public class WhatsItCloseNode extends WhatsItNode implements LogEnabled {
      *
      * @param theLogger the new logger
      *
-     * @see de.dante.util.framework.logger.LogEnabled#enableLogging(
+     * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
     public void enableLogging(final Logger theLogger) {

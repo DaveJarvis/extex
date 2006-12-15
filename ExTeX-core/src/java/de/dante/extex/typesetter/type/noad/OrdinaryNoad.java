@@ -21,6 +21,8 @@ package de.dante.extex.typesetter.type.noad;
 
 import java.util.logging.Logger;
 
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+
 import de.dante.extex.interpreter.context.tc.TypesettingContext;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.dimen.ImmutableDimen;
@@ -30,7 +32,6 @@ import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.noad.util.MathContext;
 import de.dante.extex.typesetter.type.noad.util.MathSpacing;
 import de.dante.extex.typesetter.type.node.HorizontalListNode;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This Noad represents an ordinary character.

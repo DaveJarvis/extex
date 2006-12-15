@@ -21,12 +21,13 @@ package de.dante.extex;
 
 import java.util.Properties;
 
+import org.extex.util.framework.configuration.Configuration;
+import org.extex.util.framework.configuration.ConfigurationFactory;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.resource.ResourceFinder;
+
 import junit.framework.TestCase;
 import de.dante.extex.font.FontFactory;
-import de.dante.util.framework.configuration.Configuration;
-import de.dante.util.framework.configuration.ConfigurationFactory;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
-import de.dante.util.resource.ResourceFinder;
 
 /**
  * ExTeX-TestRunner.

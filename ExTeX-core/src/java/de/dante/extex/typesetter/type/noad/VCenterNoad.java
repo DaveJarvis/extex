@@ -21,6 +21,8 @@ package de.dante.extex.typesetter.type.noad;
 
 import java.util.logging.Logger;
 
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+
 import de.dante.extex.interpreter.context.tc.TypesettingContext;
 import de.dante.extex.interpreter.exception.ImpossibleException;
 import de.dante.extex.interpreter.exception.helping.HelpingException;
@@ -30,7 +32,6 @@ import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.noad.util.MathContext;
 import de.dante.extex.typesetter.type.noad.util.MathFontParameter;
 import de.dante.extex.typesetter.type.node.HorizontalListNode;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class represents a Noad with vertically centered material.

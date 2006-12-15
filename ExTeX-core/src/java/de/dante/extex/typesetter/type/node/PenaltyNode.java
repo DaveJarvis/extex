@@ -19,11 +19,12 @@
 
 package de.dante.extex.typesetter.type.node;
 
+import org.extex.util.exception.GeneralException;
+
 import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.typesetter.Discardable;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeVisitor;
-import de.dante.util.exception.GeneralException;
 
 /**
  * This class represents a Node which holds a penalty value. It is used during

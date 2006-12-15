@@ -22,6 +22,9 @@ package org.extex.backend.documentWriter.text;
 import java.io.IOException;
 import java.io.OutputStream;
 
+import org.extex.util.exception.GeneralException;
+import org.extex.util.framework.configuration.Configuration;
+
 import de.dante.extex.backend.documentWriter.DocumentWriter;
 import de.dante.extex.backend.documentWriter.DocumentWriterOptions;
 import de.dante.extex.backend.documentWriter.SingleDocumentStream;
@@ -53,14 +56,12 @@ import de.dante.extex.typesetter.type.node.VerticalListNode;
 import de.dante.extex.typesetter.type.node.VirtualCharNode;
 import de.dante.extex.typesetter.type.node.WhatsItNode;
 import de.dante.extex.typesetter.type.page.Page;
-import de.dante.util.exception.GeneralException;
-import de.dante.util.framework.configuration.Configuration;
 
 /**
  * This is a text dummy implementation of a document writer (very simple).
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
+ * @version $Revision:4704 $
  */
 public class TextDocumentWriter
         implements

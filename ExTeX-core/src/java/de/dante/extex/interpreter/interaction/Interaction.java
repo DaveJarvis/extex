@@ -22,7 +22,8 @@ package de.dante.extex.interpreter.interaction;
 import java.io.ObjectStreamException;
 import java.io.Serializable;
 
-import de.dante.util.exception.GeneralException;
+import org.extex.util.exception.GeneralException;
+
 
 /**
  * This class provides a type-save enumeration of the interactions styles of

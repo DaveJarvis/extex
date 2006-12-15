@@ -53,6 +53,15 @@ import org.extex.tex.main.observer.TokenObserver;
 import org.extex.tex.main.observer.TokenPushObserver;
 import org.extex.tex.main.queryFile.QueryFileHandler;
 import org.extex.tex.main.queryFile.QueryFileHandlerTeXImpl;
+import org.extex.util.exception.GeneralException;
+import org.extex.util.exception.NotObservableException;
+import org.extex.util.framework.configuration.Configuration;
+import org.extex.util.framework.configuration.ConfigurationFactory;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.framework.configuration.exception.ConfigurationUnsupportedEncodingException;
+import org.extex.util.framework.i18n.Localizer;
+import org.extex.util.framework.i18n.LocalizerFactory;
+import org.extex.util.resource.ResourceFinder;
 
 import de.dante.extex.ExTeX;
 import de.dante.extex.backend.BackendDriver;
@@ -76,15 +85,6 @@ import de.dante.extex.interpreter.observer.streamClose.StreamCloseObserver;
 import de.dante.extex.main.logging.LogFormatter;
 import de.dante.extex.scanner.stream.TokenStreamFactory;
 import de.dante.extex.scanner.stream.observer.file.OpenFileObserver;
-import de.dante.util.exception.GeneralException;
-import de.dante.util.exception.NotObservableException;
-import de.dante.util.framework.configuration.Configuration;
-import de.dante.util.framework.configuration.ConfigurationFactory;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
-import de.dante.util.framework.configuration.exception.ConfigurationUnsupportedEncodingException;
-import de.dante.util.framework.i18n.Localizer;
-import de.dante.util.framework.i18n.LocalizerFactory;
-import de.dante.util.resource.ResourceFinder;
 
 /**
  * This is the command line interface to <logo>ExTeX</logo>.
@@ -966,9 +966,9 @@ public class TeX extends ExTeX {
 
     /**
      * @see de.dante.extex.ExTeX#makeInterpreter(
-     *      de.dante.util.framework.configuration.Configuration,
+     *      org.extex.util.framework.configuration.Configuration,
      *      de.dante.extex.backend.outputStream.OutputStreamFactory,
-     *      de.dante.util.resource.ResourceFinder,
+     *      org.extex.util.resource.ResourceFinder,
      *      java.lang.String)
      */
     protected Interpreter makeInterpreter(final Configuration config,
@@ -1019,11 +1019,11 @@ public class TeX extends ExTeX {
 
     /**
      * @see de.dante.extex.ExTeX#makeBackend(
-     *      de.dante.util.framework.configuration.Configuration,
+     *      org.extex.util.framework.configuration.Configuration,
      *      de.dante.extex.backend.outputStream.OutputStreamFactory,
      *      de.dante.extex.backend.documentWriter.DocumentWriterOptions,
-     *      de.dante.util.framework.configuration.Configuration,
-     *      de.dante.util.resource.ResourceFinder,
+     *      org.extex.util.framework.configuration.Configuration,
+     *      org.extex.util.resource.ResourceFinder,
      *      de.dante.extex.font.FontFactory)
      */
     protected BackendDriver makeBackend(final Configuration config,

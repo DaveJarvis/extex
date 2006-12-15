@@ -21,6 +21,9 @@ package de.dante.extex.typesetter.listMaker;
 
 import org.extex.interpreter.TokenSource;
 import org.extex.type.Locator;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.framework.i18n.Localizer;
+import org.extex.util.framework.i18n.LocalizerFactory;
 
 import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.interpreter.exception.InterpreterException;
@@ -38,9 +41,6 @@ import de.dante.extex.typesetter.exception.TypesetterHelpingException;
 import de.dante.extex.typesetter.exception.TypesetterUnsupportedException;
 import de.dante.extex.typesetter.listMaker.math.DisplaymathListMaker;
 import de.dante.extex.typesetter.listMaker.math.MathListMaker;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
-import de.dante.util.framework.i18n.Localizer;
-import de.dante.util.framework.i18n.LocalizerFactory;
 
 /**
  * This abstract class provides some methods common to all ListMakers.

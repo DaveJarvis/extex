@@ -27,6 +27,9 @@ import java.util.Locale;
 import java.util.Map;
 
 import org.extex.type.UnicodeChar;
+import org.extex.util.Unit;
+import org.extex.util.exception.GeneralException;
+import org.extex.util.framework.configuration.Configuration;
 
 import de.dante.extex.backend.documentWriter.DocumentWriter;
 import de.dante.extex.backend.documentWriter.DocumentWriterOptions;
@@ -62,9 +65,6 @@ import de.dante.extex.typesetter.type.node.VerticalListNode;
 import de.dante.extex.typesetter.type.node.VirtualCharNode;
 import de.dante.extex.typesetter.type.node.WhatsItNode;
 import de.dante.extex.typesetter.type.page.Page;
-import de.dante.util.Unit;
-import de.dante.util.exception.GeneralException;
-import de.dante.util.framework.configuration.Configuration;
 import de.dante.util.xml.XMLStreamWriter;
 
 /**
@@ -73,7 +73,7 @@ import de.dante.util.xml.XMLStreamWriter;
  * TODO incomplete !!!
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
+ * @version $Revision:4704 $
  */
 public class SVGDocumentWriter
         implements

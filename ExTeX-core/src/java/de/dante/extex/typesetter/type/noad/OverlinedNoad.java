@@ -21,6 +21,8 @@ package de.dante.extex.typesetter.type.noad;
 
 import java.util.logging.Logger;
 
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+
 import de.dante.extex.interpreter.context.tc.TypesettingContext;
 import de.dante.extex.interpreter.type.dimen.Dimen;
 import de.dante.extex.interpreter.type.dimen.FixedDimen;
@@ -32,7 +34,6 @@ import de.dante.extex.typesetter.type.node.ExplicitKernNode;
 import de.dante.extex.typesetter.type.node.HorizontalListNode;
 import de.dante.extex.typesetter.type.node.RuleNode;
 import de.dante.extex.typesetter.type.node.VerticalListNode;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an over-lining for the nucleus.

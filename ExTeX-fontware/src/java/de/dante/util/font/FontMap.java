@@ -36,6 +36,7 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
 import org.extex.type.UnicodeChar;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -50,7 +51,6 @@ import de.dante.extex.unicodeFont.format.tex.psfontmap.enc.EncFactory;
 import de.dante.extex.unicodeFont.format.tex.tfm.TfmReader;
 import de.dante.extex.unicodeFont.glyphname.GlyphName;
 import de.dante.extex.unicodeFont.key.FontKeyFactory;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 import de.dante.util.xml.XMLStreamWriter;
 
 /**

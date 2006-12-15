@@ -30,6 +30,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.extex.type.UnicodeChar;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.unicodeFont.exception.FontException;
 import de.dante.extex.unicodeFont.format.afm.AfmCharMetric;
@@ -37,7 +38,6 @@ import de.dante.extex.unicodeFont.format.afm.AfmKernPairs;
 import de.dante.extex.unicodeFont.format.afm.AfmParser;
 import de.dante.extex.unicodeFont.format.tex.psfontmap.enc.EncReader;
 import de.dante.extex.unicodeFont.glyphname.GlyphName;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * Print information about a afm file.

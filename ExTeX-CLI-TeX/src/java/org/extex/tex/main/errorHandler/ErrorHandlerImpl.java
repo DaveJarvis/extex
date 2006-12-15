@@ -24,6 +24,11 @@ import java.util.logging.Logger;
 
 import org.extex.interpreter.TokenSource;
 import org.extex.type.Locator;
+import org.extex.util.exception.GeneralException;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.framework.i18n.Localizable;
+import org.extex.util.framework.i18n.Localizer;
+import org.extex.util.framework.logger.LogEnabled;
 
 import de.dante.extex.interpreter.ErrorHandler;
 import de.dante.extex.interpreter.context.Context;
@@ -34,11 +39,6 @@ import de.dante.extex.interpreter.interaction.Interaction;
 import de.dante.extex.interpreter.interaction.InteractionVisitor;
 import de.dante.extex.main.errorHandler.editHandler.EditHandler;
 import de.dante.extex.scanner.type.token.Token;
-import de.dante.util.exception.GeneralException;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
-import de.dante.util.framework.i18n.Localizable;
-import de.dante.util.framework.i18n.Localizer;
-import de.dante.util.framework.logger.LogEnabled;
 
 /**
  * This is a simple implementation of the error handler interacting with the
@@ -273,8 +273,8 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
      *
      * @param theLocalizer the new localizer
      *
-     * @see de.dante.util.framework.i18n.Localizable#enableLocalization(
-     *      de.dante.util.framework.i18n.Localizer)
+     * @see org.extex.util.framework.i18n.Localizable#enableLocalization(
+     *      org.extex.util.framework.i18n.Localizer)
      */
     public void enableLocalization(final Localizer theLocalizer) {
 
@@ -282,7 +282,7 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
     }
 
     /**
-     * @see de.dante.util.framework.logger.LogEnabled#enableLogging(
+     * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
     public void enableLogging(final Logger theLogger) {
@@ -334,7 +334,7 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
 
     /**
      * @see de.dante.extex.interpreter.ErrorHandler#handleError(
-     *      de.dante.util.exception.GeneralException,
+     *      org.extex.util.exception.GeneralException,
      *      de.dante.extex.scanner.type.token.Token,
      *      org.extex.interpreter.TokenSource,
      *      de.dante.extex.interpreter.context.Context)

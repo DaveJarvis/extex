@@ -23,6 +23,10 @@ import org.extex.interpreter.TokenSource;
 import org.extex.scanner.stream.impl.TokenStreamImpl;
 import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
+import org.extex.util.exception.GeneralException;
+import org.extex.util.framework.configuration.Configuration;
+import org.extex.util.framework.configuration.ConfigurationFactory;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import junit.framework.TestCase;
 import de.dante.extex.backend.BackendDriver;
@@ -53,10 +57,6 @@ import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.noad.Noad;
 import de.dante.extex.typesetter.type.node.factory.NodeFactory;
-import de.dante.util.exception.GeneralException;
-import de.dante.util.framework.configuration.Configuration;
-import de.dante.util.framework.configuration.ConfigurationFactory;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -150,8 +150,8 @@ public class Max1 extends TestCase {
         }
 
         /**
-         * @see de.dante.util.framework.configuration.Configurable#configure(
-         *      de.dante.util.framework.configuration.Configuration)
+         * @see org.extex.util.framework.configuration.Configurable#configure(
+         *      org.extex.util.framework.configuration.Configuration)
          */
         public void configure(final Configuration config) {
 

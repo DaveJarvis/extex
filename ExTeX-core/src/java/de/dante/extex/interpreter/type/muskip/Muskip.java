@@ -22,6 +22,8 @@ package de.dante.extex.interpreter.type.muskip;
 import java.io.Serializable;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.util.exception.GeneralException;
+import org.extex.util.framework.i18n.LocalizerFactory;
 
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.context.Context;
@@ -40,15 +42,13 @@ import de.dante.extex.scanner.type.token.CodeToken;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.scanner.type.token.TokenFactory;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.exception.GeneralException;
-import de.dante.util.framework.i18n.LocalizerFactory;
 
 /**
  * This class provides a skip value with a variable length of order 0.
  * The actual length is a multiple of math units (mu).
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4399 $
  */
 public class Muskip extends Mudimen implements Serializable {
 

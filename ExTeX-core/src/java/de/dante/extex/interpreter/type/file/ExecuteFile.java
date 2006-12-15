@@ -22,9 +22,10 @@ package de.dante.extex.interpreter.type.file;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+import org.extex.util.framework.i18n.Localizer;
+import org.extex.util.framework.i18n.LocalizerFactory;
+
 import de.dante.extex.interpreter.type.tokens.Tokens;
-import de.dante.util.framework.i18n.Localizer;
-import de.dante.util.framework.i18n.LocalizerFactory;
 
 /**
  * This is a class presenting itself as an OutFile which sends the tokens

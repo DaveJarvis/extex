@@ -25,6 +25,10 @@ import java.util.logging.Logger;
 
 import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
+import org.extex.util.exception.GeneralException;
+import org.extex.util.framework.i18n.Localizable;
+import org.extex.util.framework.i18n.Localizer;
+import org.extex.util.framework.logger.LogEnabled;
 
 import de.dante.extex.interpreter.context.tc.TypesettingContext;
 import de.dante.extex.interpreter.exception.helping.HelpingException;
@@ -72,10 +76,6 @@ import de.dante.extex.typesetter.type.node.VerticalListNode;
 import de.dante.extex.typesetter.type.node.VirtualCharNode;
 import de.dante.extex.typesetter.type.node.WhatsItNode;
 import de.dante.extex.typesetter.type.node.factory.NodeFactory;
-import de.dante.util.exception.GeneralException;
-import de.dante.util.framework.i18n.Localizable;
-import de.dante.util.framework.i18n.Localizer;
-import de.dante.util.framework.logger.LogEnabled;
 
 /**
  * This class implements the paragraph breaking algorithm as used in
@@ -120,7 +120,7 @@ import de.dante.util.framework.logger.LogEnabled;
  * </i>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4483 $
  */
 public class TeXParagraphBuilder
         implements
@@ -503,7 +503,7 @@ public class TeXParagraphBuilder
     }
 
     /**
-     * @see de.dante.util.framework.logger.LogEnabled#enableLogging(
+     * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
      *   java.util.logging.Logger)
      */
     public void enableLogging(final Logger theLogger) {
@@ -516,8 +516,8 @@ public class TeXParagraphBuilder
      *
      * @param theLocalizer the new value for the localizer
      *
-     * @see de.dante.util.framework.i18n.Localizable#enableLocalization(
-     *   de.dante.util.framework.i18n.Localizer)
+     * @see org.extex.util.framework.i18n.Localizable#enableLocalization(
+     *   org.extex.util.framework.i18n.Localizer)
      */
     public void enableLocalization(final Localizer theLocalizer) {
 

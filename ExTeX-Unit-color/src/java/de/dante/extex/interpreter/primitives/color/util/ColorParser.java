@@ -20,6 +20,7 @@
 package de.dante.extex.interpreter.primitives.color.util;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.util.framework.i18n.LocalizerFactory;
 
 import de.dante.extex.color.model.ColorFactory;
 import de.dante.extex.interpreter.context.Color;
@@ -36,7 +37,6 @@ import de.dante.extex.scanner.type.token.LeftBraceToken;
 import de.dante.extex.scanner.type.token.RightBraceToken;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.framework.i18n.LocalizerFactory;
 
 /**
  * This class provides a parser for color specifications.

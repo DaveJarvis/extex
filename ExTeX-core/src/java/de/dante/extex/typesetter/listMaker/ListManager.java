@@ -20,6 +20,7 @@
 package de.dante.extex.typesetter.listMaker;
 
 import org.extex.type.Locator;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.interpreter.type.count.FixedCount;
 import de.dante.extex.typesetter.ListMaker;
@@ -30,7 +31,6 @@ import de.dante.extex.typesetter.exception.TypesetterUnsupportedException;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.node.HorizontalListNode;
 import de.dante.extex.typesetter.type.node.factory.NodeFactory;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * Interface for the Manager of a list maker.

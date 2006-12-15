@@ -28,6 +28,9 @@ import java.util.Properties;
 import java.util.logging.Logger;
 
 import org.extex.type.UnicodeChar;
+import org.extex.util.framework.Registrar;
+import org.extex.util.framework.logger.LogEnabled;
+import org.extex.util.resource.PropertyConfigurable;
 
 import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.interpreter.type.dimen.Dimen;
@@ -41,9 +44,6 @@ import de.dante.extex.unicodeFont.type.InputStreamConfigurable;
 import de.dante.extex.unicodeFont.type.TexFont;
 import de.dante.util.file.random.RandomAccessInputStream;
 import de.dante.util.file.random.RandomAccessR;
-import de.dante.util.framework.Registrar;
-import de.dante.util.framework.logger.LogEnabled;
-import de.dante.util.resource.PropertyConfigurable;
 
 /**
  * A font from a tfm file.

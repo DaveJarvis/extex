@@ -22,11 +22,12 @@ package de.dante.extex.typesetter.type.noad;
 import java.io.ObjectStreamException;
 import java.util.logging.Logger;
 
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+
 import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.noad.util.MathContext;
 import de.dante.extex.typesetter.type.noad.util.MathSpacing;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This Noad indicates a change in the style to be used for the further

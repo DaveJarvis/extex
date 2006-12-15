@@ -22,6 +22,7 @@ package de.dante.extex.interpreter.primitives.info;
 import java.util.logging.Logger;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.util.framework.logger.LogEnabled;
 
 import de.dante.extex.interpreter.Flags;
 import de.dante.extex.interpreter.context.Context;
@@ -29,7 +30,6 @@ import de.dante.extex.interpreter.exception.InterpreterException;
 import de.dante.extex.interpreter.primitives.register.box.AbstractBox;
 import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.typesetter.Typesetter;
-import de.dante.util.framework.logger.LogEnabled;
 
 /**
  * This class provides an implementation for the primitive <code>\showlists</code>.
@@ -78,7 +78,7 @@ public class Showlists extends AbstractBox implements LogEnabled {
     }
 
     /**
-     * @see de.dante.util.framework.logger.LogEnabled#enableLogging(
+     * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
     public void enableLogging(final Logger log) {

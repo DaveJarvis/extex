@@ -34,6 +34,10 @@ import java.util.logging.Logger;
 import java.util.logging.StreamHandler;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.util.exception.GeneralException;
+import org.extex.util.framework.configuration.Configuration;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.resource.ResourceFinder;
 
 import junit.framework.TestCase;
 import de.dante.extex.ExTeX;
@@ -48,10 +52,6 @@ import de.dante.extex.main.errorHandler.editHandler.EditHandler;
 import de.dante.extex.main.logging.LogFormatter;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.test.font.LauncherFont;
-import de.dante.util.exception.GeneralException;
-import de.dante.util.framework.configuration.Configuration;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
-import de.dante.util.resource.ResourceFinder;
 
 /**
  * This base class for test cases handles all the nifty gritty details of
@@ -88,7 +88,7 @@ public class ExTeXLauncher extends TestCase {
 
         /**
          * @see de.dante.extex.interpreter.ErrorHandler#handleError(
-         *      de.dante.util.GeneralException,
+         *      org.extex.util.GeneralException,
          *      de.dante.extex.scanner.type.token.Token,
          *      org.extex.interpreter.TokenSource,
          *      de.dante.extex.interpreter.context.Context)
@@ -290,9 +290,9 @@ public class ExTeXLauncher extends TestCase {
 
             /**
              * @see de.dante.extex.ExTeX#makeInterpreter(
-             *      de.dante.util.framework.configuration.Configuration,
+             *      org.extex.util.framework.configuration.Configuration,
              *      de.dante.extex.backend.outputStream.OutputStreamFactory,
-             *      de.dante.util.resource.ResourceFinder,
+             *      org.extex.util.resource.ResourceFinder,
              *      java.lang.String)
              */
             protected Interpreter makeInterpreter(final Configuration config,
