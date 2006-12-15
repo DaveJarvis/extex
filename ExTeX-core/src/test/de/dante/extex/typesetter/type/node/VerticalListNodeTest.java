@@ -20,8 +20,9 @@
 package de.dante.extex.typesetter.type.node;
 
 import junit.framework.TestCase;
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.glue.Glue;
+
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.glue.Glue;
 
 /**
  * This file contains test cases for the vertical list node.

@@ -19,11 +19,8 @@
 
 package de.dante.extex.scanner.type.token;
 
-import de.dante.extex.scanner.type.Catcode;
-import de.dante.extex.scanner.type.token.CrToken;
-import de.dante.extex.scanner.type.token.SpaceToken;
-import de.dante.extex.scanner.type.token.Token;
 import junit.framework.TestCase;
+import de.dante.extex.scanner.type.Catcode;
 
 /**
  * Test cases for CR tokens.

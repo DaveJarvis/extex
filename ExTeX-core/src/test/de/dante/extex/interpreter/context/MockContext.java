@@ -21,43 +21,45 @@ package de.dante.extex.interpreter.context;
 
 import java.util.Iterator;
 
+import org.extex.color.ColorConverter;
+import org.extex.font.CoreFontFactory;
+import org.extex.interpreter.Conditional;
 import org.extex.interpreter.Namespace;
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.Tokenizer;
+import org.extex.interpreter.context.Color;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.context.group.GroupInfo;
+import org.extex.interpreter.context.group.GroupType;
+import org.extex.interpreter.context.observer.group.AfterGroupObserver;
+import org.extex.interpreter.context.tc.Direction;
+import org.extex.interpreter.context.tc.TypesettingContext;
+import org.extex.interpreter.context.tc.TypesettingContextFactory;
+import org.extex.interpreter.context.tc.TypesettingContextImpl;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.interpreter.interaction.Interaction;
+import org.extex.interpreter.type.Code;
+import org.extex.interpreter.type.box.Box;
+import org.extex.interpreter.type.count.Count;
+import org.extex.interpreter.type.count.FixedCount;
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.interpreter.type.file.InFile;
+import org.extex.interpreter.type.file.OutFile;
+import org.extex.interpreter.type.font.Font;
+import org.extex.interpreter.type.glue.FixedGlue;
+import org.extex.interpreter.type.glue.Glue;
+import org.extex.interpreter.type.math.MathCode;
+import org.extex.interpreter.type.math.MathDelimiter;
+import org.extex.interpreter.type.muskip.Muskip;
+import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.interpreter.unit.UnitInfo;
 import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.color.ColorConverter;
-import de.dante.extex.font.CoreFontFactory;
-import de.dante.extex.interpreter.Conditional;
-import de.dante.extex.interpreter.Tokenizer;
-import de.dante.extex.interpreter.context.group.GroupInfo;
-import de.dante.extex.interpreter.context.group.GroupType;
-import de.dante.extex.interpreter.context.observer.group.AfterGroupObserver;
-import de.dante.extex.interpreter.context.tc.Direction;
-import de.dante.extex.interpreter.context.tc.TypesettingContext;
-import de.dante.extex.interpreter.context.tc.TypesettingContextFactory;
-import de.dante.extex.interpreter.context.tc.TypesettingContextImpl;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.exception.helping.HelpingException;
-import de.dante.extex.interpreter.interaction.Interaction;
-import de.dante.extex.interpreter.type.Code;
-import de.dante.extex.interpreter.type.box.Box;
-import de.dante.extex.interpreter.type.count.Count;
-import de.dante.extex.interpreter.type.count.FixedCount;
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
-import de.dante.extex.interpreter.type.file.InFile;
-import de.dante.extex.interpreter.type.file.OutFile;
-import de.dante.extex.interpreter.type.font.Font;
-import de.dante.extex.interpreter.type.glue.FixedGlue;
-import de.dante.extex.interpreter.type.glue.Glue;
-import de.dante.extex.interpreter.type.math.MathCode;
-import de.dante.extex.interpreter.type.math.MathDelimiter;
-import de.dante.extex.interpreter.type.muskip.Muskip;
-import de.dante.extex.interpreter.type.tokens.Tokens;
-import de.dante.extex.interpreter.unit.UnitInfo;
 import de.dante.extex.language.Language;
 import de.dante.extex.language.LanguageManager;
 import de.dante.extex.scanner.TokenStream;
@@ -69,6 +71,7 @@ import de.dante.extex.scanner.type.token.TokenFactoryImpl;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.typesetter.paragraphBuilder.ParagraphShape;
+
 
 /**
  * This mock implementation of a context does nothing useful but provide dummy
@@ -104,16 +107,16 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#addUnit(
-     *      de.dante.extex.interpreter.unit.UnitInfo)
+     * @see org.extex.interpreter.context.Context#addUnit(
+     *      org.extex.interpreter.unit.UnitInfo)
      */
     public void addUnit(UnitInfo info) {
 
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.ContextGroup#afterGroup(
-     *      de.dante.extex.interpreter.context.observer.group.AfterGroupObserver)
+     * @see org.extex.interpreter.context.ContextGroup#afterGroup(
+     *      org.extex.interpreter.context.observer.group.AfterGroupObserver)
      */
     public void afterGroup(final AfterGroupObserver observer) {
 
@@ -121,8 +124,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.ContextGroup#afterGroup(
-     *      de.dante.extex.scanner.type.token.Token)
+     * @see org.extex.interpreter.context.ContextGroup#afterGroup(
+     *      org.extex.scanner.type.token.Token)
      */
     public void afterGroup(final Token t) throws InterpreterException {
 
@@ -130,15 +133,15 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.ContextMark#clearSplitMarks()
+     * @see org.extex.interpreter.context.ContextMark#clearSplitMarks()
      */
     public void clearSplitMarks() {
 
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.ContextGroup#closeGroup(
-     *      de.dante.extex.typesetter.Typesetter,
+     * @see org.extex.interpreter.context.ContextGroup#closeGroup(
+     *      org.extex.typesetter.Typesetter,
      *      org.extex.interpreter.TokenSource)
      */
     public void closeGroup(final Typesetter typesetter, final TokenSource source)
@@ -148,7 +151,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#esc(java.lang.String)
+     * @see org.extex.interpreter.context.Context#esc(java.lang.String)
      */
     public String esc(final String name) {
 
@@ -156,8 +159,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#esc(
-     *      de.dante.extex.scanner.type.token.Token)
+     * @see org.extex.interpreter.context.Context#esc(
+     *      org.extex.scanner.type.token.Token)
      */
     public String esc(final Token token) {
 
@@ -165,7 +168,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#escapechar()
+     * @see org.extex.interpreter.context.Context#escapechar()
      */
     public UnicodeChar escapechar() {
 
@@ -173,9 +176,9 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.ContextCode#expand(
-     *      de.dante.extex.interpreter.type.tokens.Tokens,
-     *      de.dante.extex.typesetter.Typesetter)
+     * @see org.extex.interpreter.context.ContextCode#expand(
+     *      org.extex.interpreter.type.tokens.Tokens,
+     *      org.extex.typesetter.Typesetter)
      */
     public Tokens expand(final Tokens tokens, final Typesetter typesetter)
             throws GeneralException {
@@ -184,7 +187,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#get(
+     * @see org.extex.interpreter.context.Context#get(
      *      java.lang.Object,
      *      java.lang.Object)
      */
@@ -194,7 +197,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#getAfterassignment()
+     * @see org.extex.interpreter.context.Context#getAfterassignment()
      */
     public Token getAfterassignment() {
 
@@ -202,7 +205,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.ContextMark#getBottomMark(
+     * @see org.extex.interpreter.context.ContextMark#getBottomMark(
      *      java.lang.String)
      */
     public Tokens getBottomMark(final Object name) {
@@ -211,7 +214,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#getBox(java.lang.String)
+     * @see org.extex.interpreter.context.Context#getBox(java.lang.String)
      */
     public Box getBox(final String name) {
 
@@ -219,7 +222,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.Tokenizer#getCatcode(
+     * @see org.extex.interpreter.Tokenizer#getCatcode(
      *      org.extex.type.UnicodeChar)
      */
     public Catcode getCatcode(final UnicodeChar c) {
@@ -242,8 +245,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.ContextCode#getCode(
-     *      de.dante.extex.scanner.type.CodeToken)
+     * @see org.extex.interpreter.context.ContextCode#getCode(
+     *      org.extex.scanner.type.CodeToken)
      */
     public Code getCode(final CodeToken t) throws InterpreterException {
 
@@ -251,7 +254,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.ContextColor#getColorConverter()
+     * @see org.extex.interpreter.context.ContextColor#getColorConverter()
      */
     public ColorConverter getColorConverter() {
 
@@ -259,7 +262,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#getConditional()
+     * @see org.extex.interpreter.context.Context#getConditional()
      */
     public Conditional getConditional() {
 
@@ -267,7 +270,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.ContextCount#getCount(
+     * @see org.extex.interpreter.context.ContextCount#getCount(
      *      java.lang.String)
      */
     public Count getCount(final String name) {
@@ -276,7 +279,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.typesetter.TypesetterOptions#getCountOption(
+     * @see org.extex.typesetter.TypesetterOptions#getCountOption(
      *      java.lang.String)
      */
     public FixedCount getCountOption(final String name) {
@@ -285,7 +288,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#getDelcode(
+     * @see org.extex.interpreter.context.Context#getDelcode(
      *      org.extex.type.UnicodeChar)
      */
     public MathDelimiter getDelcode(final UnicodeChar c) {
@@ -294,7 +297,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.ContextDimen#getDimen(
+     * @see org.extex.interpreter.context.ContextDimen#getDimen(
      *      java.lang.String)
      */
     public Dimen getDimen(final String name) {
@@ -303,7 +306,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.typesetter.TypesetterOptions#getDimenOption(
+     * @see org.extex.typesetter.TypesetterOptions#getDimenOption(
      *      java.lang.String)
      */
     public FixedDimen getDimenOption(final String name) {
@@ -312,7 +315,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.ContextErrorCount#getErrorCount()
+     * @see org.extex.interpreter.context.ContextErrorCount#getErrorCount()
      */
     public int getErrorCount() {
 
@@ -320,7 +323,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.ContextMark#getFirstMark(
+     * @see org.extex.interpreter.context.ContextMark#getFirstMark(
      *      java.lang.String)
      */
     public Tokens getFirstMark(final Object name) {
@@ -329,7 +332,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.ContextFont#getFont(
+     * @see org.extex.interpreter.context.ContextFont#getFont(
      *      java.lang.String)
      */
     public Font getFont(final String name) {
@@ -338,7 +341,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.ContextFont#getFontFactory()
+     * @see org.extex.interpreter.context.ContextFont#getFontFactory()
      */
     public CoreFontFactory getFontFactory() {
 
@@ -346,7 +349,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#getGlue(java.lang.String)
+     * @see org.extex.interpreter.context.Context#getGlue(java.lang.String)
      */
     public Glue getGlue(final String name) {
 
@@ -354,7 +357,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.typesetter.TypesetterOptions#getGlueOption(
+     * @see org.extex.typesetter.TypesetterOptions#getGlueOption(
      *      java.lang.String)
      */
     public FixedGlue getGlueOption(final String name) {
@@ -363,7 +366,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.ContextGroup#getGroupInfos()
+     * @see org.extex.interpreter.context.ContextGroup#getGroupInfos()
      */
     public GroupInfo[] getGroupInfos() {
 
@@ -371,7 +374,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.ContextGroup#getGroupLevel()
+     * @see org.extex.interpreter.context.ContextGroup#getGroupLevel()
      */
     public long getGroupLevel() {
 
@@ -379,7 +382,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.ContextGroup#getGroupType()
+     * @see org.extex.interpreter.context.ContextGroup#getGroupType()
      */
     public GroupType getGroupType() {
 
@@ -387,7 +390,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#getId()
+     * @see org.extex.interpreter.context.Context#getId()
      */
     public String getId() {
 
@@ -395,7 +398,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#getIfLevel()
+     * @see org.extex.interpreter.context.Context#getIfLevel()
      */
     public long getIfLevel() {
 
@@ -403,7 +406,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.ContextFile#getInFile(java.lang.String)
+     * @see org.extex.interpreter.context.ContextFile#getInFile(java.lang.String)
      */
     public InFile getInFile(final String name) {
 
@@ -411,7 +414,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#getInteraction()
+     * @see org.extex.interpreter.context.Context#getInteraction()
      */
     public Interaction getInteraction() {
 
@@ -419,7 +422,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#getLanguage(java.lang.String)
+     * @see org.extex.interpreter.context.Context#getLanguage(java.lang.String)
      */
     public Language getLanguage(final String language)
             throws InterpreterException {
@@ -428,7 +431,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#getLanguageManager()
+     * @see org.extex.interpreter.context.Context#getLanguageManager()
      */
     public LanguageManager getLanguageManager() {
 
@@ -436,7 +439,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#getLccode(org.extex.type.UnicodeChar)
+     * @see org.extex.interpreter.context.Context#getLccode(org.extex.type.UnicodeChar)
      */
     public UnicodeChar getLccode(final UnicodeChar uc) {
 
@@ -444,7 +447,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#getMagnification()
+     * @see org.extex.interpreter.context.Context#getMagnification()
      */
     public long getMagnification() {
 
@@ -452,7 +455,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#getMathcode(
+     * @see org.extex.interpreter.context.Context#getMathcode(
      *      org.extex.type.UnicodeChar)
      */
     public MathCode getMathcode(final UnicodeChar uc) {
@@ -461,7 +464,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#getMuskip(java.lang.String)
+     * @see org.extex.interpreter.context.Context#getMuskip(java.lang.String)
      */
     public Muskip getMuskip(final String name) {
 
@@ -469,7 +472,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.Tokenizer#getNamespace()
+     * @see org.extex.interpreter.Tokenizer#getNamespace()
      */
     public String getNamespace() {
 
@@ -477,7 +480,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.ContextFile#getOutFile(java.lang.String)
+     * @see org.extex.interpreter.context.ContextFile#getOutFile(java.lang.String)
      */
     public OutFile getOutFile(final String name) {
 
@@ -485,7 +488,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#getParshape()
+     * @see org.extex.interpreter.context.Context#getParshape()
      */
     public ParagraphShape getParshape() {
 
@@ -493,7 +496,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#getSfcode(org.extex.type.UnicodeChar)
+     * @see org.extex.interpreter.context.Context#getSfcode(org.extex.type.UnicodeChar)
      */
     public Count getSfcode(final UnicodeChar uc) {
 
@@ -501,7 +504,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.ContextMark#getSplitBottomMark(java.lang.String)
+     * @see org.extex.interpreter.context.ContextMark#getSplitBottomMark(java.lang.String)
      */
     public Tokens getSplitBottomMark(final Object name) {
 
@@ -509,7 +512,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.ContextMark#getSplitFirstMark(java.lang.String)
+     * @see org.extex.interpreter.context.ContextMark#getSplitFirstMark(java.lang.String)
      */
     public Tokens getSplitFirstMark(final Object name) {
 
@@ -517,7 +520,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#getStandardTokenStream()
+     * @see org.extex.interpreter.context.Context#getStandardTokenStream()
      */
     public TokenStream getStandardTokenStream() {
 
@@ -525,7 +528,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#getTokenFactory()
+     * @see org.extex.interpreter.context.Context#getTokenFactory()
      */
     public TokenFactory getTokenFactory() {
 
@@ -533,7 +536,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#getTokenizer()
+     * @see org.extex.interpreter.context.Context#getTokenizer()
      */
     public Tokenizer getTokenizer() {
 
@@ -541,7 +544,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.ContextTokens#getToks(java.lang.String)
+     * @see org.extex.interpreter.context.ContextTokens#getToks(java.lang.String)
      */
     public Tokens getToks(final String name) {
 
@@ -549,7 +552,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.ContextTokens#getToksOrNull(java.lang.String)
+     * @see org.extex.interpreter.context.ContextTokens#getToksOrNull(java.lang.String)
      */
     public Tokens getToksOrNull(final String name) {
 
@@ -557,7 +560,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.ContextMark#getTopMark(java.lang.String)
+     * @see org.extex.interpreter.context.ContextMark#getTopMark(java.lang.String)
      */
     public Tokens getTopMark(final Object name) {
 
@@ -565,7 +568,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#getTypesettingContext()
+     * @see org.extex.interpreter.context.Context#getTypesettingContext()
      */
     public TypesettingContext getTypesettingContext() {
 
@@ -573,7 +576,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.typesetter.TypesetterOptions#getTypesettingContextFactory()
+     * @see org.extex.typesetter.TypesetterOptions#getTypesettingContextFactory()
      */
     public TypesettingContextFactory getTypesettingContextFactory() {
 
@@ -581,7 +584,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#getUccode(org.extex.type.UnicodeChar)
+     * @see org.extex.interpreter.context.Context#getUccode(org.extex.type.UnicodeChar)
      */
     public UnicodeChar getUccode(final UnicodeChar lc) {
 
@@ -589,7 +592,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.ContextErrorCount#incrementErrorCount()
+     * @see org.extex.interpreter.context.ContextErrorCount#incrementErrorCount()
      */
     public int incrementErrorCount() {
 
@@ -597,7 +600,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.ContextGroup#isGlobalGroup()
+     * @see org.extex.interpreter.context.ContextGroup#isGlobalGroup()
      */
     public boolean isGlobalGroup() {
 
@@ -605,10 +608,10 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.ContextGroup#openGroup(
-     *      de.dante.extex.interpreter.context.group.GroupType,
+     * @see org.extex.interpreter.context.ContextGroup#openGroup(
+     *      org.extex.interpreter.context.group.GroupType,
      *      org.extex.type.Locator,
-     *      de.dante.extex.scanner.type.token.Token)
+     *      org.extex.scanner.type.token.Token)
      */
     public void openGroup(GroupType id, Locator locator, Token start)
             throws ConfigurationException,
@@ -618,7 +621,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#popConditional()
+     * @see org.extex.interpreter.context.Context#popConditional()
      */
     public Conditional popConditional() throws InterpreterException {
 
@@ -626,7 +629,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#popDirection()
+     * @see org.extex.interpreter.context.Context#popDirection()
      */
     public Direction popDirection() {
 
@@ -634,10 +637,10 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#pushConditional(
+     * @see org.extex.interpreter.context.Context#pushConditional(
      *      org.extex.type.Locator,
      *      boolean,
-     *      de.dante.extex.interpreter.type.Code,
+     *      org.extex.interpreter.type.Code,
      *      long,
      *      boolean)
      */
@@ -648,7 +651,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#pushDirection(de.dante.extex.interpreter.context.Direction)
+     * @see org.extex.interpreter.context.Context#pushDirection(org.extex.interpreter.context.Direction)
      */
     public void pushDirection(final Direction dir) {
 
@@ -656,7 +659,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#set(de.dante.extex.interpreter.context.Color)
+     * @see org.extex.interpreter.context.Context#set(org.extex.interpreter.context.Color)
      */
     public void set(final Color color, final boolean global)
             throws ConfigurationException {
@@ -665,7 +668,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#set(de.dante.extex.interpreter.context.Direction)
+     * @see org.extex.interpreter.context.Context#set(org.extex.interpreter.context.Direction)
      */
     public void set(final Direction direction, final boolean global)
             throws ConfigurationException {
@@ -674,7 +677,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#set(de.dante.extex.interpreter.type.font.Font)
+     * @see org.extex.interpreter.context.Context#set(org.extex.interpreter.type.font.Font)
      */
     public void set(final Font font, final boolean global)
             throws ConfigurationException {
@@ -683,7 +686,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#set(de.dante.extex.language.Language)
+     * @see org.extex.interpreter.context.Context#set(org.extex.language.Language)
      */
     public void set(final Language language, final boolean global)
             throws ConfigurationException {
@@ -692,7 +695,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#set(
+     * @see org.extex.interpreter.context.Context#set(
      *      java.lang.Object,
      *      java.lang.Object,
      *      java.lang.Object,
@@ -705,7 +708,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#set(de.dante.extex.interpreter.context.TypesettingContext, boolean)
+     * @see org.extex.interpreter.context.Context#set(org.extex.interpreter.context.TypesettingContext, boolean)
      */
     public void set(final TypesettingContext context, final boolean global) {
 
@@ -713,7 +716,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#setAfterassignment(de.dante.extex.scanner.type.token.Token)
+     * @see org.extex.interpreter.context.Context#setAfterassignment(org.extex.scanner.type.token.Token)
      */
     public void setAfterassignment(final Token token) {
 
@@ -721,7 +724,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#setBox(java.lang.String, de.dante.extex.interpreter.type.box.Box, boolean)
+     * @see org.extex.interpreter.context.Context#setBox(java.lang.String, org.extex.interpreter.type.box.Box, boolean)
      */
     public void setBox(final String name, final Box value, final boolean global) {
 
@@ -729,7 +732,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#setCatcode(org.extex.type.UnicodeChar, de.dante.extex.scanner.type.Catcode, boolean)
+     * @see org.extex.interpreter.context.Context#setCatcode(org.extex.type.UnicodeChar, org.extex.scanner.type.Catcode, boolean)
      */
     public void setCatcode(final UnicodeChar c, final Catcode cc,
             final boolean global) throws HelpingException {
@@ -738,7 +741,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.ContextCode#setCode(de.dante.extex.scanner.type.CodeToken, de.dante.extex.interpreter.type.Code, boolean)
+     * @see org.extex.interpreter.context.ContextCode#setCode(org.extex.scanner.type.CodeToken, org.extex.interpreter.type.Code, boolean)
      */
     public void setCode(final CodeToken t, final Code code, final boolean global)
             throws InterpreterException {
@@ -747,7 +750,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.ContextCount#setCount(java.lang.String, long, boolean)
+     * @see org.extex.interpreter.context.ContextCount#setCount(java.lang.String, long, boolean)
      */
     public void setCount(final String name, final long value,
             final boolean global) throws InterpreterException {
@@ -756,9 +759,9 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.typesetter.TypesetterOptions#setCountOption(
+     * @see org.extex.typesetter.TypesetterOptions#setCountOption(
      *       java.lang.String,
-     *       de.dante.extex.interpreter.type.count.FixedCount)
+     *       org.extex.interpreter.type.count.FixedCount)
      */
     public void setCountOption(final String name, final long value)
             throws GeneralException {
@@ -766,7 +769,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#setDelcode(org.extex.type.UnicodeChar, MathDelimiter, boolean)
+     * @see org.extex.interpreter.context.Context#setDelcode(org.extex.type.UnicodeChar, MathDelimiter, boolean)
      */
     public void setDelcode(final UnicodeChar c, final MathDelimiter delimiter,
             final boolean global) {
@@ -775,7 +778,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.ContextDimen#setDimen(java.lang.String, de.dante.extex.interpreter.type.dimen.Dimen, boolean)
+     * @see org.extex.interpreter.context.ContextDimen#setDimen(java.lang.String, org.extex.interpreter.type.dimen.Dimen, boolean)
      */
     public void setDimen(final String name, final Dimen value,
             final boolean global) throws InterpreterException {
@@ -784,7 +787,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.ContextDimen#setDimen(java.lang.String, long, boolean)
+     * @see org.extex.interpreter.context.ContextDimen#setDimen(java.lang.String, long, boolean)
      */
     public void setDimen(final String name, final long value,
             final boolean global) {
@@ -793,7 +796,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.ContextFont#setFont(java.lang.String, de.dante.extex.interpreter.type.font.Font, boolean)
+     * @see org.extex.interpreter.context.ContextFont#setFont(java.lang.String, org.extex.interpreter.type.font.Font, boolean)
      */
     public void setFont(final String name, final Font font, final boolean global) {
 
@@ -801,7 +804,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.ContextFont#setFontFactory(de.dante.extex.font.FontFactory)
+     * @see org.extex.interpreter.context.ContextFont#setFontFactory(org.extex.font.FontFactory)
      */
     public void setFontFactory(final CoreFontFactory fontFactory) {
 
@@ -809,7 +812,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#setGlue(java.lang.String, de.dante.extex.interpreter.type.glue.Glue, boolean)
+     * @see org.extex.interpreter.context.Context#setGlue(java.lang.String, org.extex.interpreter.type.glue.Glue, boolean)
      */
     public void setGlue(final String name, final Glue value,
             final boolean global) throws InterpreterException {
@@ -818,7 +821,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#setId(java.lang.String)
+     * @see org.extex.interpreter.context.Context#setId(java.lang.String)
      */
     public void setId(final String id) {
 
@@ -826,7 +829,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.ContextFile#setInFile(java.lang.String, de.dante.extex.interpreter.type.file.InFile, boolean)
+     * @see org.extex.interpreter.context.ContextFile#setInFile(java.lang.String, org.extex.interpreter.type.file.InFile, boolean)
      */
     public void setInFile(final String name, final InFile file,
             final boolean global) {
@@ -835,7 +838,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#setInteraction(de.dante.extex.interpreter.Interaction)
+     * @see org.extex.interpreter.context.Context#setInteraction(org.extex.interpreter.Interaction)
      */
     public void setInteraction(final Interaction interaction)
             throws InterpreterException {
@@ -844,8 +847,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#setLanguageManager(
-     *      de.dante.extex.hyphenation.HyphenationManager)
+     * @see org.extex.interpreter.context.Context#setLanguageManager(
+     *      org.extex.hyphenation.HyphenationManager)
      */
     public void setLanguageManager(final LanguageManager manager) {
 
@@ -853,7 +856,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#setLccode(
+     * @see org.extex.interpreter.context.Context#setLccode(
      *      org.extex.type.UnicodeChar, org.extex.type.UnicodeChar)
      */
     public void setLccode(final UnicodeChar uc, final UnicodeChar lc,
@@ -863,7 +866,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#setMagnification(long)
+     * @see org.extex.interpreter.context.Context#setMagnification(long)
      */
     public void setMagnification(final long mag, boolean lock)
             throws HelpingException {
@@ -872,9 +875,9 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.ContextMark#setMark(
+     * @see org.extex.interpreter.context.ContextMark#setMark(
      *      java.lang.Object,
-     *      de.dante.extex.interpreter.type.tokens.Tokens)
+     *      org.extex.interpreter.type.tokens.Tokens)
      */
     public void setMark(final Object name, final Tokens mark) {
 
@@ -882,7 +885,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#setMathcode(
+     * @see org.extex.interpreter.context.Context#setMathcode(
      *      org.extex.type.UnicodeChar,
      *      MathCode,
      *      boolean)
@@ -894,7 +897,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#setMuskip(java.lang.String, de.dante.extex.interpreter.type.muskip.Muskip, boolean)
+     * @see org.extex.interpreter.context.Context#setMuskip(java.lang.String, org.extex.interpreter.type.muskip.Muskip, boolean)
      */
     public void setMuskip(final String name, final Muskip value,
             final boolean global) {
@@ -903,7 +906,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#setNamespace(java.lang.String, boolean)
+     * @see org.extex.interpreter.context.Context#setNamespace(java.lang.String, boolean)
      */
     public void setNamespace(final String namespace, final boolean global) {
 
@@ -911,7 +914,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.ContextFile#setOutFile(java.lang.String, de.dante.extex.interpreter.type.file.OutFile, boolean)
+     * @see org.extex.interpreter.context.ContextFile#setOutFile(java.lang.String, org.extex.interpreter.type.file.OutFile, boolean)
      */
     public void setOutFile(final String name, final OutFile file,
             final boolean global) {
@@ -920,7 +923,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#setParshape(de.dante.extex.typesetter.paragraphBuilder.ParagraphShape)
+     * @see org.extex.interpreter.context.Context#setParshape(org.extex.typesetter.paragraphBuilder.ParagraphShape)
      */
     public void setParshape(final ParagraphShape shape) {
 
@@ -928,7 +931,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#setSfcode(org.extex.type.UnicodeChar, de.dante.extex.interpreter.type.count.Count, boolean)
+     * @see org.extex.interpreter.context.Context#setSfcode(org.extex.type.UnicodeChar, org.extex.interpreter.type.count.Count, boolean)
      */
     public void setSfcode(final UnicodeChar uc, final Count code,
             final boolean global) {
@@ -937,14 +940,14 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.ContextMark#setSplitMark(java.lang.String, de.dante.extex.interpreter.type.tokens.Tokens)
+     * @see org.extex.interpreter.context.ContextMark#setSplitMark(java.lang.String, org.extex.interpreter.type.tokens.Tokens)
      */
     public void setSplitMark(final Object name, final Tokens mark) {
 
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#setStandardTokenStream(de.dante.extex.scanner.TokenStream)
+     * @see org.extex.interpreter.context.Context#setStandardTokenStream(org.extex.scanner.TokenStream)
      */
     public void setStandardTokenStream(final TokenStream standardTokenStream) {
 
@@ -952,8 +955,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#setTokenFactory(
-     *      de.dante.extex.scanner.type.token.TokenFactory)
+     * @see org.extex.interpreter.context.Context#setTokenFactory(
+     *      org.extex.scanner.type.token.TokenFactory)
      */
     public void setTokenFactory(final TokenFactory factory) {
 
@@ -961,9 +964,9 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.ContextTokens#setToks(
+     * @see org.extex.interpreter.context.ContextTokens#setToks(
      *      java.lang.String,
-     *      de.dante.extex.interpreter.type.tokens.Tokens, boolean)
+     *      org.extex.interpreter.type.tokens.Tokens, boolean)
      */
     public void setToks(final String name, final Tokens toks,
             final boolean global) throws InterpreterException {
@@ -972,8 +975,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#setTypesettingContext(
-     *       de.dante.extex.interpreter.context.TypesettingContext)
+     * @see org.extex.interpreter.context.Context#setTypesettingContext(
+     *       org.extex.interpreter.context.TypesettingContext)
      */
     public void setTypesettingContext(final TypesettingContext context) {
 
@@ -981,7 +984,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#setUccode(
+     * @see org.extex.interpreter.context.Context#setUccode(
      *      org.extex.type.UnicodeChar,
      *      org.extex.type.UnicodeChar)
      */
@@ -992,7 +995,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#startMarks()
+     * @see org.extex.interpreter.context.Context#startMarks()
      */
     public void startMarks() {
 
@@ -1000,7 +1003,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see de.dante.extex.interpreter.context.Context#unitIterator()
+     * @see org.extex.interpreter.context.Context#unitIterator()
      */
     public Iterator unitIterator() {
 

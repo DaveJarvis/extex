@@ -18,13 +18,11 @@
  */
 package de.dante.extex.scanner.type.token;
 
+import junit.framework.TestCase;
+
 import org.extex.type.UnicodeChar;
 
 import de.dante.extex.scanner.type.Catcode;
-import de.dante.extex.scanner.type.token.LetterToken;
-import de.dante.extex.scanner.type.token.OtherToken;
-import de.dante.extex.scanner.type.token.Token;
-import junit.framework.TestCase;
 
 /**
  * This class provides the test cases for the letter tokens.

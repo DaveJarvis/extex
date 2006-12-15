@@ -19,9 +19,6 @@
 
 package de.dante.extex.scanner.type;
 
-import de.dante.extex.scanner.type.Catcode;
-import de.dante.extex.scanner.type.CatcodeException;
-import de.dante.extex.scanner.type.CatcodeVisitor;
 import junit.framework.TestCase;
 
 /**
@@ -576,7 +573,7 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.CatcodeVisitor#visitActive(
+     * @see org.extex.scanner.type.CatcodeVisitor#visitActive(
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      */

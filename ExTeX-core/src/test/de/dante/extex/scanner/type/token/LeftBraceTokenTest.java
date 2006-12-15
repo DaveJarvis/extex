@@ -19,13 +19,11 @@
 
 package de.dante.extex.scanner.type.token;
 
+import junit.framework.TestCase;
+
 import org.extex.type.UnicodeChar;
 
 import de.dante.extex.scanner.type.Catcode;
-import de.dante.extex.scanner.type.token.LeftBraceToken;
-import de.dante.extex.scanner.type.token.SpaceToken;
-import de.dante.extex.scanner.type.token.Token;
-import junit.framework.TestCase;
 
 /**
  * This class contains the test cases for left brace tokens.

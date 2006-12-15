@@ -19,13 +19,11 @@
 
 package de.dante.extex.scanner.type.token;
 
+import junit.framework.TestCase;
+
 import org.extex.type.UnicodeChar;
 
 import de.dante.extex.scanner.type.Catcode;
-import de.dante.extex.scanner.type.token.SpaceToken;
-import de.dante.extex.scanner.type.token.TabMarkToken;
-import de.dante.extex.scanner.type.token.Token;
-import junit.framework.TestCase;
 
 /**
  * Test cases for tab mark tokens.
