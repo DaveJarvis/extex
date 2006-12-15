@@ -1,6 +1,6 @@
 <!--
   ############################################################################
-  # This is the Ant build file for ExTeX-Backend-dvix
+  # This is the Ant build file for a sub-project
   ############################################################################
   # Copyright (C) 2006 The ExTeX Group
   #
@@ -20,11 +20,11 @@
   #
   ######################################################################### -->
 
-<project name="ExTeX-Backend-dvix" basedir=".">
+<project name="ExTeX-core" basedir=".">
 
   <description>
-    The sub project ExTeX Backend dvix contains the set of classes and interfaces
-    for the shipping of dvi code including dvips specials.
+    The ExTeX core contains the set of classes and interfaces on which the
+    ExTeX system is based.
   </description>
 
   <import file="../build/common-build.xml"/>
@@ -32,7 +32,6 @@
   <!-- ==================================================================== -->
   <target name="_dependencies_"
           description="Resolve the dependencies">
-    <dependency project="ExTeX-base"/>
   </target>
 
 </project>
