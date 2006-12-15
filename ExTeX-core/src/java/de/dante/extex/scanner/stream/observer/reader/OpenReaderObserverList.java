@@ -77,7 +77,7 @@ public final class OpenReaderObserverList implements OpenReaderObserver {
      * Invoke all observers on the list to inform them of the reader which has
      * been opened.
      *
-     * @see de.dante.extex.scanner.stream.observer.reader.OpenReaderObserver#update(
+     * @see org.extex.scanner.stream.observer.reader.OpenReaderObserver#update(
      *      java.io.Reader)
      */
     public void update(final Reader reader) {

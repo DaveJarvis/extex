@@ -18,8 +18,8 @@
  */
 package de.dante.extex.scanner.stream;
 
-import de.dante.extex.interpreter.type.count.FixedCount;
-import de.dante.extex.interpreter.type.tokens.FixedTokens;
+import org.extex.interpreter.type.count.FixedCount;
+import org.extex.interpreter.type.tokens.FixedTokens;
 
 
 /**

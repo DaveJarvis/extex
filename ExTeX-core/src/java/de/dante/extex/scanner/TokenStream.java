@@ -19,16 +19,17 @@
 
 package de.dante.extex.scanner;
 
+import org.extex.interpreter.Tokenizer;
 import org.extex.type.Locator;
 
-import de.dante.extex.interpreter.Tokenizer;
 import de.dante.extex.scanner.exception.ScannerException;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.scanner.type.token.TokenFactory;
 
+
 /**
  * This interface describes the features of a stream capable of delivering
- * {@link de.dante.extex.scanner.type.token.Token Token}s. In fact it is a push-back
+ * {@link org.extex.scanner.type.token.Token Token}s. In fact it is a push-back
  * stream since Tokens already read can be pushed back onto the stream for
  * further reading.
  * <p>

@@ -31,6 +31,7 @@ import de.dante.extex.scanner.type.CatcodeVisitor;
 import de.dante.extex.scanner.type.CatcodeVisitorException;
 import de.dante.extex.scanner.type.CatcodeWrongLengthException;
 
+
 /**
  * This is a implementation of a token factory. This means that the factory
  * pattern is applied here. This pattern opens the possibility to cache the
@@ -143,8 +144,8 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.token.TokenFactory#createToken(
-     *      de.dante.extex.scanner.type.Catcode,
+     * @see org.extex.scanner.type.token.TokenFactory#createToken(
+     *      org.extex.scanner.type.Catcode,
      *      int,
      *      java.lang.String)
      */
@@ -165,8 +166,8 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.token.TokenFactory#createToken(
-     *      de.dante.extex.scanner.type.Catcode,
+     * @see org.extex.scanner.type.token.TokenFactory#createToken(
+     *      org.extex.scanner.type.Catcode,
      *      org.extex.type.UnicodeChar,
      *      java.lang.String,
      *      java.lang.String)
@@ -187,8 +188,8 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.token.TokenFactory#createToken(
-     *      de.dante.extex.scanner.type.Catcode,
+     * @see org.extex.scanner.type.token.TokenFactory#createToken(
+     *      org.extex.scanner.type.Catcode,
      *      org.extex.type.UnicodeChar,
      *      java.lang.String)
      */
@@ -211,7 +212,7 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
      * Active characters are cached. Thus a lookup in the cache precedes the
      * creation of a new token.
      *
-     * @see de.dante.extex.scanner.type.CatcodeVisitor#visitActive(
+     * @see org.extex.scanner.type.CatcodeVisitor#visitActive(
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      */
@@ -255,7 +256,7 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     /**
      * Comments are ignored thus <code>null</code> is returned in any case.
      *
-     * @see de.dante.extex.scanner.type.CatcodeVisitor#visitComment(
+     * @see org.extex.scanner.type.CatcodeVisitor#visitComment(
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      */
@@ -268,7 +269,7 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     /**
      * There is only one CrToken.
      *
-     * @see de.dante.extex.scanner.type.CatcodeVisitor#visitCr(java.lang.Object,
+     * @see org.extex.scanner.type.CatcodeVisitor#visitCr(java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      */
     public Object visitCr(final Object oValue, final Object oChar,
@@ -278,7 +279,7 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.CatcodeVisitor#visitEscape(
+     * @see org.extex.scanner.type.CatcodeVisitor#visitEscape(
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      */
@@ -325,7 +326,7 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
      *
      * @return <code>null</code>
      *
-     * @see de.dante.extex.scanner.type.CatcodeVisitor#visitIgnore(
+     * @see org.extex.scanner.type.CatcodeVisitor#visitIgnore(
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      */
@@ -344,7 +345,7 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
      *
      * @return <code>null</code>
      *
-     * @see de.dante.extex.scanner.type.CatcodeVisitor#visitInvalid(
+     * @see org.extex.scanner.type.CatcodeVisitor#visitInvalid(
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      */
@@ -357,7 +358,7 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     /**
      * A left brace token is expected to take a single character only.
      *
-     * @see de.dante.extex.scanner.type.CatcodeVisitor#visitLeftBrace(
+     * @see org.extex.scanner.type.CatcodeVisitor#visitLeftBrace(
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      */
@@ -393,7 +394,7 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     /**
      * A letter token is expected to take a single character only.
      *
-     * @see de.dante.extex.scanner.type.CatcodeVisitor#visitLetter(
+     * @see org.extex.scanner.type.CatcodeVisitor#visitLetter(
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      */
@@ -427,7 +428,7 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.CatcodeVisitor#visitMacroParam(
+     * @see org.extex.scanner.type.CatcodeVisitor#visitMacroParam(
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      */
@@ -461,7 +462,7 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.CatcodeVisitor#visitMathShift(
+     * @see org.extex.scanner.type.CatcodeVisitor#visitMathShift(
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      */
@@ -495,7 +496,7 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.CatcodeVisitor#visitOther(
+     * @see org.extex.scanner.type.CatcodeVisitor#visitOther(
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      */
@@ -529,7 +530,7 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.CatcodeVisitor#visitRightBrace(
+     * @see org.extex.scanner.type.CatcodeVisitor#visitRightBrace(
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      */
@@ -571,7 +572,7 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
      *
      * @return the space token.
      *
-     * @see de.dante.extex.scanner.type.CatcodeVisitor#visitSpace(
+     * @see org.extex.scanner.type.CatcodeVisitor#visitSpace(
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      * @see "The TeXbook [Chapter 8, p. 47]"
@@ -583,7 +584,7 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.CatcodeVisitor#visitSubMark(
+     * @see org.extex.scanner.type.CatcodeVisitor#visitSubMark(
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      */
@@ -617,7 +618,7 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.CatcodeVisitor#visitSupMark(
+     * @see org.extex.scanner.type.CatcodeVisitor#visitSupMark(
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      */
@@ -651,7 +652,7 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.CatcodeVisitor#visitTabMark(
+     * @see org.extex.scanner.type.CatcodeVisitor#visitTabMark(
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      */

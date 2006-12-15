@@ -20,7 +20,7 @@
 package de.dante.extex.scanner.type.token;
 
 /**
- * The code token extends the {@link de.dante.extex.scanner.type.token.Token Token}
+ * The code token extends the {@link org.extex.scanner.type.token.Token Token}
  * with the ability to retrieve a namespace.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>

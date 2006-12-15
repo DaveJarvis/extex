@@ -27,7 +27,7 @@ import de.dante.extex.scanner.type.Catcode;
  * This class represents a letter token.
  * <p>
  * This class has a protected constructor only. Use the factory
- * {@link de.dante.extex.scanner.type.token.TokenFactory TokenFactory}
+ * {@link org.extex.scanner.type.token.TokenFactory TokenFactory}
  * to get an instance of this class.
  * </p>
  *
@@ -52,7 +52,7 @@ public class LetterToken extends AbstractToken implements Token {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.token.Token#getCatcode()
+     * @see org.extex.scanner.type.token.Token#getCatcode()
      */
     public Catcode getCatcode() {
 
@@ -76,7 +76,7 @@ public class LetterToken extends AbstractToken implements Token {
      *
      * @param sb the target string buffer
      *
-     * @see de.dante.extex.scanner.type.token.Token#toString(java.lang.StringBuffer)
+     * @see org.extex.scanner.type.token.Token#toString(java.lang.StringBuffer)
      */
     public void toString(final StringBuffer sb) {
 
@@ -84,8 +84,8 @@ public class LetterToken extends AbstractToken implements Token {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.token.Token#visit(
-     *      de.dante.extex.scanner.type.token.TokenVisitor,
+     * @see org.extex.scanner.type.token.Token#visit(
+     *      org.extex.scanner.type.token.TokenVisitor,
      *      java.lang.Object)
      */
     public Object visit(final TokenVisitor visitor, final Object arg1)

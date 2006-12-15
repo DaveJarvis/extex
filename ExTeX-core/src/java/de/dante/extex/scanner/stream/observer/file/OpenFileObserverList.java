@@ -77,7 +77,7 @@ public final class OpenFileObserverList implements OpenFileObserver {
      * Invoke all observers on the list to inform them of the file which has
      * been opened.
      *
-     * @see de.dante.extex.scanner.stream.observer.file.OpenFileObserver#update(
+     * @see org.extex.scanner.stream.observer.file.OpenFileObserver#update(
      *      java.lang.String,
      *      java.lang.String,
      *      java.io.InputStream)

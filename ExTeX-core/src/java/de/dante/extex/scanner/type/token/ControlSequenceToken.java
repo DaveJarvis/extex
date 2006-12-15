@@ -24,11 +24,12 @@ import org.extex.type.UnicodeChar;
 
 import de.dante.extex.scanner.type.Catcode;
 
+
 /**
  * This class represents a control sequence token.
  * <p>
  * This class has a protected constructor only. Use the factory
- * {@link de.dante.extex.scanner.type.token.TokenFactory TokenFactory}
+ * {@link org.extex.scanner.type.token.TokenFactory TokenFactory}
  * to get an instance of this class.
  * </p>
  *
@@ -40,7 +41,7 @@ import de.dante.extex.scanner.type.Catcode;
  *
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4399 $
  */
 public class ControlSequenceToken extends AbstractToken implements CodeToken {
 
@@ -88,7 +89,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      *
      * @return the new token
      *
-     * @see de.dante.extex.scanner.type.token.CodeToken#cloneInDefaultNamespace()
+     * @see org.extex.scanner.type.token.CodeToken#cloneInDefaultNamespace()
      */
     public CodeToken cloneInDefaultNamespace() {
 
@@ -107,7 +108,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      *
      * @return the new token
      *
-     * @see de.dante.extex.scanner.type.token.CodeToken#cloneInNamespace(
+     * @see org.extex.scanner.type.token.CodeToken#cloneInNamespace(
      *      java.lang.String)
      */
     public CodeToken cloneInNamespace(final String theNamespace) {
@@ -119,8 +120,8 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.token.AbstractToken#equals(
-     *      de.dante.extex.scanner.type.Catcode, char)
+     * @see org.extex.scanner.type.token.AbstractToken#equals(
+     *      org.extex.scanner.type.Catcode, char)
      */
     public boolean equals(final Catcode cc, final char c) {
 
@@ -128,8 +129,8 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.token.Token#equals(
-     *      de.dante.extex.scanner.type.Catcode, java.lang.String)
+     * @see org.extex.scanner.type.token.Token#equals(
+     *      org.extex.scanner.type.Catcode, java.lang.String)
      */
     public boolean equals(final Catcode cc, final String s) {
 
@@ -137,7 +138,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.token.AbstractToken#equals(char)
+     * @see org.extex.scanner.type.token.AbstractToken#equals(char)
      */
     public boolean equals(final char c) {
 
@@ -158,7 +159,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.token.Token#getCatcode()
+     * @see org.extex.scanner.type.token.Token#getCatcode()
      */
     public Catcode getCatcode() {
 
@@ -166,7 +167,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.token.CodeToken#getName()
+     * @see org.extex.scanner.type.token.CodeToken#getName()
      */
     public String getName() {
 
@@ -174,7 +175,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.token.CodeToken#getNamespace()
+     * @see org.extex.scanner.type.token.CodeToken#getNamespace()
      */
     public String getNamespace() {
 
@@ -206,7 +207,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      *
      * @param sb the target string buffer
      *
-     * @see de.dante.extex.scanner.type.token.Token#toString(java.lang.StringBuffer)
+     * @see org.extex.scanner.type.token.Token#toString(java.lang.StringBuffer)
      */
     public void toString(final StringBuffer sb) {
 
@@ -215,7 +216,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.token.AbstractToken#toText()
+     * @see org.extex.scanner.type.token.AbstractToken#toText()
      */
     public String toText() {
 
@@ -228,7 +229,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.token.Token#toText(
+     * @see org.extex.scanner.type.token.Token#toText(
      *      org.extex.type.UnicodeChar)
      */
     public String toText(final UnicodeChar esc) {
@@ -241,8 +242,8 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.token.Token#visit(
-     *      de.dante.extex.scanner.type.token.TokenVisitor,
+     * @see org.extex.scanner.type.token.Token#visit(
+     *      org.extex.scanner.type.token.TokenVisitor,
      *      java.lang.Object)
      */
     public Object visit(final TokenVisitor visitor, final Object arg1)

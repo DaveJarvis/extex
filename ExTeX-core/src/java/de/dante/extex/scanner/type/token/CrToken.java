@@ -23,11 +23,12 @@ import org.extex.type.UnicodeChar;
 
 import de.dante.extex.scanner.type.Catcode;
 
+
 /**
  * This class represents a cr token.
  * <p>
  * This class has a protected constructor only. Use the factory
- * {@link de.dante.extex.scanner.type.token.TokenFactory TokenFactory}
+ * {@link org.extex.scanner.type.token.TokenFactory TokenFactory}
  * to get an instance of this class.
  * </p>
  *
@@ -52,7 +53,7 @@ public class CrToken extends AbstractToken implements Token {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.token.AbstractToken#equals(de.dante.extex.scanner.type.Catcode, char)
+     * @see org.extex.scanner.type.token.AbstractToken#equals(org.extex.scanner.type.Catcode, char)
      */
     public boolean equals(final Catcode cc, final char c) {
 
@@ -60,7 +61,7 @@ public class CrToken extends AbstractToken implements Token {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.token.AbstractToken#equals(de.dante.extex.scanner.type.Catcode, java.lang.String)
+     * @see org.extex.scanner.type.token.AbstractToken#equals(org.extex.scanner.type.Catcode, java.lang.String)
      */
     public boolean equals(final Catcode cc, final String s) {
 
@@ -68,7 +69,7 @@ public class CrToken extends AbstractToken implements Token {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.token.AbstractToken#equals(char)
+     * @see org.extex.scanner.type.token.AbstractToken#equals(char)
      */
     public boolean equals(final char c) {
 
@@ -76,7 +77,7 @@ public class CrToken extends AbstractToken implements Token {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.token.Token#getCatcode()
+     * @see org.extex.scanner.type.token.Token#getCatcode()
      */
     public Catcode getCatcode() {
 
@@ -100,7 +101,7 @@ public class CrToken extends AbstractToken implements Token {
      *
      * @param sb the target string buffer
      *
-     * @see de.dante.extex.scanner.type.token.Token#toString(java.lang.StringBuffer)
+     * @see org.extex.scanner.type.token.Token#toString(java.lang.StringBuffer)
      */
     public void toString(final StringBuffer sb) {
 
@@ -108,7 +109,7 @@ public class CrToken extends AbstractToken implements Token {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.token.Token#toText()
+     * @see org.extex.scanner.type.token.Token#toText()
      */
     public String toText() {
 
@@ -116,8 +117,8 @@ public class CrToken extends AbstractToken implements Token {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.token.Token#visit(
-     *      de.dante.extex.scanner.type.token.TokenVisitor,
+     * @see org.extex.scanner.type.token.Token#visit(
+     *      org.extex.scanner.type.token.TokenVisitor,
      *      java.lang.Object)
      */
     public Object visit(final TokenVisitor visitor, final Object arg1)

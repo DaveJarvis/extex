@@ -27,6 +27,7 @@ import org.extex.util.framework.i18n.LocalizerFactory;
 
 import de.dante.extex.scanner.type.Catcode;
 
+
 /**
  * This is the abstract base class for all Tokens.
  *
@@ -60,8 +61,8 @@ public abstract class AbstractToken implements Token, Serializable {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.token.Token#equals(
-     *      de.dante.extex.scanner.type.Catcode,
+     * @see org.extex.scanner.type.token.Token#equals(
+     *      org.extex.scanner.type.Catcode,
      *      char)
      */
     public boolean equals(final Catcode cc, final char c) {
@@ -70,8 +71,8 @@ public abstract class AbstractToken implements Token, Serializable {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.token.Token#equals(
-     *      de.dante.extex.scanner.type.Catcode,
+     * @see org.extex.scanner.type.token.Token#equals(
+     *      org.extex.scanner.type.Catcode,
      *      java.lang.String)
      */
     public boolean equals(final Catcode cc, final String s) {
@@ -81,7 +82,7 @@ public abstract class AbstractToken implements Token, Serializable {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.token.Token#equals(char)
+     * @see org.extex.scanner.type.token.Token#equals(char)
      */
     public boolean equals(final char c) {
 
@@ -104,12 +105,12 @@ public abstract class AbstractToken implements Token, Serializable {
     /**
      * This is the getter for the catcode of this token.
      *
-     * @see de.dante.extex.scanner.type.token.Token#getCatcode()
+     * @see org.extex.scanner.type.token.Token#getCatcode()
      */
     public abstract Catcode getCatcode();
 
     /**
-     * @see de.dante.extex.scanner.type.token.Token#getChar()
+     * @see org.extex.scanner.type.token.Token#getChar()
      */
     public final UnicodeChar getChar() {
 
@@ -135,8 +136,8 @@ public abstract class AbstractToken implements Token, Serializable {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.token.Token#isa(
-     *      de.dante.extex.scanner.type.Catcode)
+     * @see org.extex.scanner.type.token.Token#isa(
+     *      org.extex.scanner.type.Catcode)
      */
     public boolean isa(final Catcode cc) {
 
@@ -169,7 +170,7 @@ public abstract class AbstractToken implements Token, Serializable {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.token.Token#toText(
+     * @see org.extex.scanner.type.token.Token#toText(
      *      org.extex.type.UnicodeChar)
      */
     public String toText(final UnicodeChar esc) {

@@ -76,7 +76,7 @@ public final class OpenStringObserverList implements OpenStringObserver {
      * Invoke all observers on the list to inform them of the character sequence
      * which has been opened.
      *
-     * @see de.dante.extex.scanner.stream.observer.string.OpenStringObserver#update(
+     * @see org.extex.scanner.stream.observer.string.OpenStringObserver#update(
      *      java.lang.CharSequence)
      */
     public void update(final CharSequence string) {

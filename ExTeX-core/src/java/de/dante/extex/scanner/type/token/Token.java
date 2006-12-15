@@ -23,6 +23,7 @@ import org.extex.type.UnicodeChar;
 
 import de.dante.extex.scanner.type.Catcode;
 
+
 /**
  * This is the interface for a token. A token is a pair of catcode and value.
  * In most cases the value is a single character. Nevertheless it is also

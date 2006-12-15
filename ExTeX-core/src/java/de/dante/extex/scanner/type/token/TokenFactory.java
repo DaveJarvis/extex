@@ -52,7 +52,7 @@ public interface TokenFactory {
             String namespace) throws CatcodeException;
 
     /**
-     * Create a new {@link de.dante.extex.scanner.type.token.Token Token} of the
+     * Create a new {@link org.extex.scanner.type.token.Token Token} of the
      * appropriate kind. Tokens are immutable (no setters) thus the factory
      * pattern can be applied.
      *

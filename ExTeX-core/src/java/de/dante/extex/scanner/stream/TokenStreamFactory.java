@@ -48,9 +48,10 @@ import de.dante.extex.scanner.stream.observer.string.OpenStringObservable;
 import de.dante.extex.scanner.stream.observer.string.OpenStringObserver;
 import de.dante.extex.scanner.stream.observer.string.OpenStringObserverList;
 
+
 /**
  * This is the factory to provide an instance of a
- * {@link de.dante.extex.scanner.TokenStream TokenStream}.
+ * {@link org.extex.scanner.TokenStream TokenStream}.
  * Like any good factory it is controlled by its configuration.
  *
  * <h3>Configuration</h3>
@@ -65,7 +66,7 @@ import de.dante.extex.scanner.stream.observer.string.OpenStringObserverList;
  * </p>
  * <p>
  * The class given must implement the interface
- * {@link de.dante.extex.scanner.TokenStream TokenStream}. In addition
+ * {@link org.extex.scanner.TokenStream TokenStream}. In addition
  * an appropriate constructor is required:
  * <pre>
  *     public TheClass(Configuration config, Reader reader, Boolean isFile,
@@ -416,8 +417,8 @@ public class TokenStreamFactory extends AbstractFactory
     }
 
     /**
-     * @see de.dante.extex.scanner.stream.observer.file.OpenFileObservable#registerObserver(
-     *      de.dante.extex.scanner.stream.observer.file.OpenFileObserver)
+     * @see org.extex.scanner.stream.observer.file.OpenFileObservable#registerObserver(
+     *      org.extex.scanner.stream.observer.file.OpenFileObserver)
      */
     public void registerObserver(final OpenFileObserver observer) {
 
@@ -426,8 +427,8 @@ public class TokenStreamFactory extends AbstractFactory
     }
 
     /**
-     * @see de.dante.extex.scanner.stream.observer.reader.OpenReaderObservable#registerObserver(
-     *      de.dante.extex.scanner.stream.observer.reader.OpenReaderObserver)
+     * @see org.extex.scanner.stream.observer.reader.OpenReaderObservable#registerObserver(
+     *      org.extex.scanner.stream.observer.reader.OpenReaderObserver)
      */
     public void registerObserver(final OpenReaderObserver observer) {
 
@@ -436,8 +437,8 @@ public class TokenStreamFactory extends AbstractFactory
     }
 
     /**
-     * @see de.dante.extex.scanner.stream.observer.string.OpenStringObservable#registerObserver(
-     *      de.dante.extex.scanner.stream.observer.string.OpenStringObserver)
+     * @see org.extex.scanner.stream.observer.string.OpenStringObservable#registerObserver(
+     *      org.extex.scanner.stream.observer.string.OpenStringObserver)
      */
     public void registerObserver(final OpenStringObserver observer) {
 

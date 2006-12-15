@@ -24,18 +24,19 @@ import org.extex.type.UnicodeChar;
 
 import de.dante.extex.scanner.type.Catcode;
 
+
 /**
  * This class represents an active character token.
  * The active character token is characterized by its name.
  * This name is a single letter string.
  * <p>
  * This class has a protected constructor only. Use the factory
- * {@link de.dante.extex.scanner.type.token.TokenFactory TokenFactory}
+ * {@link org.extex.scanner.type.token.TokenFactory TokenFactory}
  * to get an instance of this class.
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4399 $
  */
 public class ActiveCharacterToken extends AbstractToken implements CodeToken {
 
@@ -69,7 +70,7 @@ public class ActiveCharacterToken extends AbstractToken implements CodeToken {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.token.CodeToken#cloneInDefaultNamespace()
+     * @see org.extex.scanner.type.token.CodeToken#cloneInDefaultNamespace()
      */
     public CodeToken cloneInDefaultNamespace() {
 
@@ -86,7 +87,7 @@ public class ActiveCharacterToken extends AbstractToken implements CodeToken {
      *
      * @return the new token
      *
-     * @see de.dante.extex.scanner.type.token.CodeToken#cloneInNamespace(
+     * @see org.extex.scanner.type.token.CodeToken#cloneInNamespace(
      *      java.lang.String)
      */
     public CodeToken cloneInNamespace(final String theNamespace) {
@@ -110,7 +111,7 @@ public class ActiveCharacterToken extends AbstractToken implements CodeToken {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.token.Token#getCatcode()
+     * @see org.extex.scanner.type.token.Token#getCatcode()
      */
     public Catcode getCatcode() {
 
@@ -118,7 +119,7 @@ public class ActiveCharacterToken extends AbstractToken implements CodeToken {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.token.CodeToken#getName()
+     * @see org.extex.scanner.type.token.CodeToken#getName()
      */
     public String getName() {
 
@@ -126,7 +127,7 @@ public class ActiveCharacterToken extends AbstractToken implements CodeToken {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.token.CodeToken#getNamespace()
+     * @see org.extex.scanner.type.token.CodeToken#getNamespace()
      */
     public String getNamespace() {
 
@@ -157,7 +158,7 @@ public class ActiveCharacterToken extends AbstractToken implements CodeToken {
      *
      * @param sb the target string buffer
      *
-     * @see de.dante.extex.scanner.type.token.Token#toString(java.lang.StringBuffer)
+     * @see org.extex.scanner.type.token.Token#toString(java.lang.StringBuffer)
      */
     public void toString(final StringBuffer sb) {
 
@@ -166,8 +167,8 @@ public class ActiveCharacterToken extends AbstractToken implements CodeToken {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.token.Token#visit(
-     *      de.dante.extex.scanner.type.token.TokenVisitor,
+     * @see org.extex.scanner.type.token.Token#visit(
+     *      org.extex.scanner.type.token.TokenVisitor,
      *      java.lang.Object)
      */
     public Object visit(final TokenVisitor visitor, final Object arg1)
