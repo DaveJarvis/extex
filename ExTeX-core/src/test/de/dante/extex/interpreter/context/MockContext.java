@@ -55,13 +55,13 @@ import org.extex.interpreter.type.math.MathDelimiter;
 import org.extex.interpreter.type.muskip.Muskip;
 import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.interpreter.unit.UnitInfo;
+import org.extex.language.Language;
+import org.extex.language.LanguageManager;
 import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.language.Language;
-import de.dante.extex.language.LanguageManager;
 import de.dante.extex.scanner.TokenStream;
 import de.dante.extex.scanner.type.Catcode;
 import de.dante.extex.scanner.type.token.CodeToken;
