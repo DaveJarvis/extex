@@ -19,16 +19,16 @@
 
 package de.dante.extex.typesetter.type.noad.util;
 
+import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.interpreter.type.font.Font;
+import org.extex.interpreter.type.glue.Glue;
+import org.extex.interpreter.type.glue.GlueComponent;
+import org.extex.interpreter.type.muskip.Mudimen;
+import org.extex.interpreter.type.muskip.Muskip;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
-import de.dante.extex.interpreter.exception.helping.HelpingException;
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
-import de.dante.extex.interpreter.type.font.Font;
-import de.dante.extex.interpreter.type.glue.Glue;
-import de.dante.extex.interpreter.type.glue.GlueComponent;
-import de.dante.extex.interpreter.type.muskip.Mudimen;
-import de.dante.extex.interpreter.type.muskip.Muskip;
 import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.type.noad.StyleNoad;

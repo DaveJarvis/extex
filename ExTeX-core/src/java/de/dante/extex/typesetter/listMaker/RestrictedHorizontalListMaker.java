@@ -48,7 +48,7 @@ public class RestrictedHorizontalListMaker extends HorizontalListMaker {
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#getMode()
+     * @see org.extex.typesetter.ListMaker#getMode()
      */
     public Mode getMode() {
 
@@ -56,7 +56,7 @@ public class RestrictedHorizontalListMaker extends HorizontalListMaker {
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#complete(TypesetterOptions)
+     * @see org.extex.typesetter.ListMaker#complete(TypesetterOptions)
      */
     public NodeList complete(final TypesetterOptions context)
             throws TypesetterException,

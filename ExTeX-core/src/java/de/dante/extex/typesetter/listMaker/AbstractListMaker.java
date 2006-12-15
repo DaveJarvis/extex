@@ -20,16 +20,16 @@
 package de.dante.extex.typesetter.listMaker;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.MissingMathException;
+import org.extex.interpreter.type.count.FixedCount;
+import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.type.Locator;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.exception.helping.MissingMathException;
-import de.dante.extex.interpreter.type.count.FixedCount;
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
 import de.dante.extex.scanner.type.Catcode;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.ListMaker;
@@ -41,6 +41,7 @@ import de.dante.extex.typesetter.exception.TypesetterHelpingException;
 import de.dante.extex.typesetter.exception.TypesetterUnsupportedException;
 import de.dante.extex.typesetter.listMaker.math.DisplaymathListMaker;
 import de.dante.extex.typesetter.listMaker.math.MathListMaker;
+
 
 /**
  * This abstract class provides some methods common to all ListMakers.
@@ -85,7 +86,7 @@ public abstract class AbstractListMaker implements ListMaker {
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#getLocator()
+     * @see org.extex.typesetter.ListMaker#getLocator()
      */
     public Locator getLocator() {
 
@@ -103,7 +104,7 @@ public abstract class AbstractListMaker implements ListMaker {
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#getMode()
+     * @see org.extex.typesetter.ListMaker#getMode()
      */
     public abstract Mode getMode();
 
@@ -118,7 +119,7 @@ public abstract class AbstractListMaker implements ListMaker {
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#getPrevDepth()
+     * @see org.extex.typesetter.ListMaker#getPrevDepth()
      */
     public FixedDimen getPrevDepth() throws TypesetterUnsupportedException {
 
@@ -126,7 +127,7 @@ public abstract class AbstractListMaker implements ListMaker {
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#getSpacefactor()
+     * @see org.extex.typesetter.ListMaker#getSpacefactor()
      */
     public long getSpacefactor() throws TypesetterUnsupportedException {
 
@@ -134,17 +135,17 @@ public abstract class AbstractListMaker implements ListMaker {
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#leftBrace()
+     * @see org.extex.typesetter.ListMaker#leftBrace()
      */
     public void leftBrace() {
 
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#mathShift(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.typesetter.ListMaker#mathShift(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.scanner.type.token.Token)
+     *      org.extex.scanner.type.token.Token)
      */
     public void mathShift(final Context context, final TokenSource source,
             final Token t) throws TypesetterException, ConfigurationException {
@@ -174,15 +175,15 @@ public abstract class AbstractListMaker implements ListMaker {
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#rightBrace()
+     * @see org.extex.typesetter.ListMaker#rightBrace()
      */
     public void rightBrace() throws TypesetterException {
 
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#setPrevDepth(
-     *      de.dante.extex.interpreter.type.dimen.FixedDimen)
+     * @see org.extex.typesetter.ListMaker#setPrevDepth(
+     *      org.extex.interpreter.type.dimen.FixedDimen)
      */
     public void setPrevDepth(final FixedDimen pd)
             throws TypesetterUnsupportedException {
@@ -191,8 +192,8 @@ public abstract class AbstractListMaker implements ListMaker {
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#setSpacefactor(
-     *      de.dante.extex.interpreter.type.count.FixedCount)
+     * @see org.extex.typesetter.ListMaker#setSpacefactor(
+     *      org.extex.interpreter.type.count.FixedCount)
      */
     public void setSpacefactor(final FixedCount f)
             throws TypesetterUnsupportedException,
@@ -202,11 +203,11 @@ public abstract class AbstractListMaker implements ListMaker {
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#subscriptMark(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.typesetter.ListMaker#subscriptMark(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter,
-     *      de.dante.extex.scanner.type.token.Token)
+     *      org.extex.typesetter.Typesetter,
+     *      org.extex.scanner.type.token.Token)
      */
     public void subscriptMark(final Context context, final TokenSource source,
             final Typesetter typesetter, final Token token)
@@ -217,11 +218,11 @@ public abstract class AbstractListMaker implements ListMaker {
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#superscriptMark(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.typesetter.ListMaker#superscriptMark(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter,
-     *      de.dante.extex.scanner.type.token.Token)
+     *      org.extex.typesetter.Typesetter,
+     *      org.extex.scanner.type.token.Token)
      */
     public void superscriptMark(final Context context,
             final TokenSource source, final Typesetter typesetter,
@@ -232,10 +233,10 @@ public abstract class AbstractListMaker implements ListMaker {
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#tab(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.typesetter.ListMaker#tab(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.scanner.type.token.Token)
+     *      org.extex.scanner.type.token.Token)
      */
     public void tab(final Context context, final TokenSource source,
             final Token token)

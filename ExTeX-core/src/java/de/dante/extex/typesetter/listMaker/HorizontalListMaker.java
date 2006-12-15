@@ -23,20 +23,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.context.tc.TypesettingContext;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.count.Count;
+import org.extex.interpreter.type.count.FixedCount;
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.interpreter.type.font.Font;
+import org.extex.interpreter.type.glue.FixedGlue;
+import org.extex.interpreter.type.glue.Glue;
 import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.context.tc.TypesettingContext;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.type.count.Count;
-import de.dante.extex.interpreter.type.count.FixedCount;
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
-import de.dante.extex.interpreter.type.font.Font;
-import de.dante.extex.interpreter.type.glue.FixedGlue;
-import de.dante.extex.interpreter.type.glue.Glue;
 import de.dante.extex.typesetter.Mode;
 import de.dante.extex.typesetter.ParagraphObserver;
 import de.dante.extex.typesetter.TypesetterOptions;
@@ -51,6 +51,7 @@ import de.dante.extex.typesetter.type.node.CharNode;
 import de.dante.extex.typesetter.type.node.HorizontalListNode;
 import de.dante.extex.typesetter.type.node.ImplicitKernNode;
 import de.dante.extex.typesetter.type.node.SpaceNode;
+
 
 /**
  * Maker for a horizontal list.
@@ -108,8 +109,8 @@ public class HorizontalListMaker extends AbstractListMaker {
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#add(
-     *      de.dante.extex.typesetter.type.Node)
+     * @see org.extex.typesetter.ListMaker#add(
+     *      org.extex.typesetter.type.Node)
      */
     public void add(final Node c)
             throws TypesetterException,
@@ -120,9 +121,9 @@ public class HorizontalListMaker extends AbstractListMaker {
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#addAndAdjust(
-     *      de.dante.extex.typesetter.type.NodeList,
-     *      de.dante.extex.typesetter.TypesetterOptions)
+     * @see org.extex.typesetter.ListMaker#addAndAdjust(
+     *      org.extex.typesetter.type.NodeList,
+     *      org.extex.typesetter.TypesetterOptions)
      */
     public void addAndAdjust(final NodeList list,
             final TypesetterOptions options) throws TypesetterException {
@@ -131,8 +132,8 @@ public class HorizontalListMaker extends AbstractListMaker {
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#add(
-     *      de.dante.extex.interpreter.type.glue.FixedGlue)
+     * @see org.extex.typesetter.ListMaker#add(
+     *      org.extex.interpreter.type.glue.FixedGlue)
      */
     public void add(final FixedGlue g) throws TypesetterException {
 
@@ -141,9 +142,9 @@ public class HorizontalListMaker extends AbstractListMaker {
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#addSpace(
-     *      de.dante.extex.interpreter.context.TypesettingContext,
-     *      de.dante.extex.interpreter.type.count.Count)
+     * @see org.extex.typesetter.ListMaker#addSpace(
+     *      org.extex.interpreter.context.TypesettingContext,
+     *      org.extex.interpreter.type.count.Count)
      */
     public void addSpace(final TypesettingContext context, final Count sfCount)
             throws TypesetterException,
@@ -183,8 +184,8 @@ public class HorizontalListMaker extends AbstractListMaker {
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#afterParagraph(
-     *      de.dante.extex.typesetter.ParagraphObserver)
+     * @see org.extex.typesetter.ListMaker#afterParagraph(
+     *      org.extex.typesetter.ParagraphObserver)
      */
     public void afterParagraph(final ParagraphObserver observer) {
 
@@ -192,7 +193,7 @@ public class HorizontalListMaker extends AbstractListMaker {
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#complete(TypesetterOptions)
+     * @see org.extex.typesetter.ListMaker#complete(TypesetterOptions)
      */
     public NodeList complete(final TypesetterOptions context)
             throws TypesetterException,
@@ -202,9 +203,9 @@ public class HorizontalListMaker extends AbstractListMaker {
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#cr(
-     *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.context.TypesettingContext,
+     * @see org.extex.typesetter.ListMaker#cr(
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.context.TypesettingContext,
      *      org.extex.type.UnicodeChar)
      */
     public void cr(final Context context, final TypesettingContext tc,
@@ -213,7 +214,7 @@ public class HorizontalListMaker extends AbstractListMaker {
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#getLastNode()
+     * @see org.extex.typesetter.ListMaker#getLastNode()
      */
     public Node getLastNode() {
 
@@ -221,7 +222,7 @@ public class HorizontalListMaker extends AbstractListMaker {
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#getMode()
+     * @see org.extex.typesetter.ListMaker#getMode()
      */
     public Mode getMode() {
 
@@ -239,7 +240,7 @@ public class HorizontalListMaker extends AbstractListMaker {
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#getSpacefactor()
+     * @see org.extex.typesetter.ListMaker#getSpacefactor()
      */
     public long getSpacefactor() {
 
@@ -312,7 +313,7 @@ public class HorizontalListMaker extends AbstractListMaker {
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#par()
+     * @see org.extex.typesetter.ListMaker#par()
      */
     public void par() throws TypesetterException, ConfigurationException {
 
@@ -362,7 +363,7 @@ public class HorizontalListMaker extends AbstractListMaker {
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#removeLastNode()
+     * @see org.extex.typesetter.ListMaker#removeLastNode()
      */
     public void removeLastNode() {
 
@@ -380,8 +381,8 @@ public class HorizontalListMaker extends AbstractListMaker {
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#setSpacefactor(
-     *      de.dante.extex.interpreter.type.count.FixedCount)
+     * @see org.extex.typesetter.ListMaker#setSpacefactor(
+     *      org.extex.interpreter.type.count.FixedCount)
      */
     public void setSpacefactor(final FixedCount f)
             throws TypesetterUnsupportedException,
@@ -395,7 +396,7 @@ public class HorizontalListMaker extends AbstractListMaker {
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#showlist(
+     * @see org.extex.typesetter.ListMaker#showlist(
      *      java.lang.StringBuffer, long, long)
      */
     public void showlist(final StringBuffer sb, final long l, final long m) {

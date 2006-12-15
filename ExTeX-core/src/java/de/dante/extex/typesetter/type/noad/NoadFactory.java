@@ -19,11 +19,11 @@
 
 package de.dante.extex.typesetter.type.noad;
 
-import de.dante.extex.interpreter.context.tc.TypesettingContext;
-import de.dante.extex.interpreter.type.math.MathClass;
-import de.dante.extex.interpreter.type.math.MathClassVisitor;
-import de.dante.extex.interpreter.type.math.MathCode;
-import de.dante.extex.interpreter.type.math.MathDelimiter;
+import org.extex.interpreter.context.tc.TypesettingContext;
+import org.extex.interpreter.type.math.MathClass;
+import org.extex.interpreter.type.math.MathClassVisitor;
+import org.extex.interpreter.type.math.MathCode;
+import org.extex.interpreter.type.math.MathDelimiter;
 
 /**
  * This class is a factory for CharNoades.
@@ -39,7 +39,7 @@ public class NoadFactory {
     private static final MathClassVisitor VISITOR = new MathClassVisitor() {
 
         /**
-         * @see de.dante.extex.typesetter.type.math.MathClassVisitor#visitBinary(
+         * @see org.extex.typesetter.type.math.MathClassVisitor#visitBinary(
          *      java.lang.Object, java.lang.Object)
          */
         public Object visitBinary(final Object noad, final Object arg) {
@@ -48,7 +48,7 @@ public class NoadFactory {
         }
 
         /**
-         * @see de.dante.extex.typesetter.type.math.MathClassVisitor#visitClosing(
+         * @see org.extex.typesetter.type.math.MathClassVisitor#visitClosing(
          *      java.lang.Object, java.lang.Object)
          */
         public Object visitClosing(final Object noad, final Object arg) {
@@ -57,7 +57,7 @@ public class NoadFactory {
         }
 
         /**
-         * @see de.dante.extex.typesetter.type.math.MathClassVisitor#visitLarge(
+         * @see org.extex.typesetter.type.math.MathClassVisitor#visitLarge(
          *      java.lang.Object, java.lang.Object)
          */
         public Object visitLarge(final Object noad, final Object arg) {
@@ -71,7 +71,7 @@ public class NoadFactory {
         }
 
         /**
-         * @see de.dante.extex.typesetter.type.math.MathClassVisitor#visitOpening(
+         * @see org.extex.typesetter.type.math.MathClassVisitor#visitOpening(
          *      java.lang.Object, java.lang.Object)
          */
         public Object visitOpening(final Object noad, final Object arg) {
@@ -80,7 +80,7 @@ public class NoadFactory {
         }
 
         /**
-         * @see de.dante.extex.typesetter.type.math.MathClassVisitor#visitOrdinary(
+         * @see org.extex.typesetter.type.math.MathClassVisitor#visitOrdinary(
          *      java.lang.Object, java.lang.Object)
          */
         public Object visitOrdinary(final Object noad, final Object arg) {
@@ -89,7 +89,7 @@ public class NoadFactory {
         }
 
         /**
-         * @see de.dante.extex.typesetter.type.math.MathClassVisitor#visitPunctation(
+         * @see org.extex.typesetter.type.math.MathClassVisitor#visitPunctation(
          *      java.lang.Object, java.lang.Object)
          */
         public Object visitPunctation(final Object noad, final Object arg) {
@@ -98,7 +98,7 @@ public class NoadFactory {
         }
 
         /**
-         * @see de.dante.extex.typesetter.type.math.MathClassVisitor#visitRelation(
+         * @see org.extex.typesetter.type.math.MathClassVisitor#visitRelation(
          *      java.lang.Object, java.lang.Object)
          */
         public Object visitRelation(final Object noad, final Object arg) {
@@ -107,7 +107,7 @@ public class NoadFactory {
         }
 
         /**
-         * @see de.dante.extex.typesetter.type.math.MathClassVisitor#visitVariable(
+         * @see org.extex.typesetter.type.math.MathClassVisitor#visitVariable(
          *      java.lang.Object, java.lang.Object)
          */
         public Object visitVariable(final Object noad, final Object arg) {

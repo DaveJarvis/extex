@@ -19,9 +19,9 @@
 
 package de.dante.extex.typesetter.type.page;
 
+import org.extex.interpreter.context.Context;
 import org.extex.util.exception.GeneralException;
 
-import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.type.NodeList;
 

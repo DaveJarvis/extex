@@ -19,12 +19,12 @@
 
 package de.dante.extex.typesetter.type.node;
 
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
-import de.dante.extex.interpreter.type.glue.FixedGlue;
-import de.dante.extex.interpreter.type.glue.FixedGlueComponent;
-import de.dante.extex.interpreter.type.glue.Glue;
-import de.dante.extex.interpreter.type.glue.WideGlue;
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.interpreter.type.glue.FixedGlue;
+import org.extex.interpreter.type.glue.FixedGlueComponent;
+import org.extex.interpreter.type.glue.Glue;
+import org.extex.interpreter.type.glue.WideGlue;
 
 /**
  * This node represents a <logo>TeX</logo> "glue" node.
@@ -107,8 +107,8 @@ public abstract class AbstractExpandableNode extends AbstractNode {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#addDepthTo(
-     *      de.dante.extex.interpreter.type.glue.WideGlue)
+     * @see org.extex.typesetter.type.Node#addDepthTo(
+     *      org.extex.interpreter.type.glue.WideGlue)
      */
     public void addDepthTo(final WideGlue glue) {
 
@@ -120,8 +120,8 @@ public abstract class AbstractExpandableNode extends AbstractNode {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#addHeightTo(
-     *      de.dante.extex.interpreter.type.glue.WideGlue)
+     * @see org.extex.typesetter.type.Node#addHeightTo(
+     *      org.extex.interpreter.type.glue.WideGlue)
      */
     public void addHeightTo(final WideGlue glue) {
 
@@ -133,8 +133,8 @@ public abstract class AbstractExpandableNode extends AbstractNode {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#addWidthTo(
-     *      de.dante.extex.interpreter.type.glue.WideGlue)
+     * @see org.extex.typesetter.type.Node#addWidthTo(
+     *      org.extex.interpreter.type.glue.WideGlue)
      */
     public void addWidthTo(final WideGlue glue) {
 
@@ -166,9 +166,9 @@ public abstract class AbstractExpandableNode extends AbstractNode {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.node.AbstractNode#spreadHeight(
-     *      de.dante.extex.interpreter.type.dimen.FixedDimen,
-     *      de.dante.extex.interpreter.type.glue.FixedGlueComponent)
+     * @see org.extex.typesetter.type.node.AbstractNode#spreadHeight(
+     *      org.extex.interpreter.type.dimen.FixedDimen,
+     *      org.extex.interpreter.type.glue.FixedGlueComponent)
      */
     public void spreadHeight(final FixedDimen height,
             final FixedGlueComponent sum) {
@@ -189,9 +189,9 @@ public abstract class AbstractExpandableNode extends AbstractNode {
      * @param width the desired with
      * @param sum the total sum of the glues
      *
-     * @see de.dante.extex.typesetter.type.Node#spreadWidth(
-     *      de.dante.extex.interpreter.type.dimen.FixedDimen,
-     *      de.dante.extex.interpreter.type.glue.FixedGlueComponent)
+     * @see org.extex.typesetter.type.Node#spreadWidth(
+     *      org.extex.interpreter.type.dimen.FixedDimen,
+     *      org.extex.interpreter.type.glue.FixedGlueComponent)
      */
     public void spreadWidth(final FixedDimen width, final FixedGlueComponent sum) {
 

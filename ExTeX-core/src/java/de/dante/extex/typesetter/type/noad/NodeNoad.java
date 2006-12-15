@@ -31,6 +31,7 @@ import de.dante.extex.typesetter.type.noad.util.MathSpacing;
 import de.dante.extex.typesetter.type.node.GlueNode;
 import de.dante.extex.typesetter.type.node.KernNode;
 
+
 /**
  * This noad contains a node which is passed through the math apparatus.
  *
@@ -56,7 +57,7 @@ public class NodeNoad implements Noad {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.noad.Noad#getSpacingClass()
+     * @see org.extex.typesetter.type.noad.Noad#getSpacingClass()
      */
     public MathSpacing getSpacingClass() {
 
@@ -64,7 +65,7 @@ public class NodeNoad implements Noad {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.noad.Noad#getSubscript()
+     * @see org.extex.typesetter.type.noad.Noad#getSubscript()
      */
     public Noad getSubscript() {
 
@@ -72,7 +73,7 @@ public class NodeNoad implements Noad {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.noad.Noad#getSuperscript()
+     * @see org.extex.typesetter.type.noad.Noad#getSuperscript()
      */
     public Noad getSuperscript() {
 
@@ -80,8 +81,8 @@ public class NodeNoad implements Noad {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.noad.Noad#setSubscript(
-     *      de.dante.extex.typesetter.type.noad.Noad)
+     * @see org.extex.typesetter.type.noad.Noad#setSubscript(
+     *      org.extex.typesetter.type.noad.Noad)
      */
     public void setSubscript(final Noad subscript) {
 
@@ -89,8 +90,8 @@ public class NodeNoad implements Noad {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.noad.Noad#setSuperscript(
-     *      de.dante.extex.typesetter.type.noad.Noad)
+     * @see org.extex.typesetter.type.noad.Noad#setSuperscript(
+     *      org.extex.typesetter.type.noad.Noad)
      */
     public void setSuperscript(final Noad superscript) {
 
@@ -98,7 +99,7 @@ public class NodeNoad implements Noad {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.noad.Noad#toString(
+     * @see org.extex.typesetter.type.noad.Noad#toString(
      *      java.lang.StringBuffer)
      */
     public void toString(final StringBuffer sb) {
@@ -107,7 +108,7 @@ public class NodeNoad implements Noad {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.noad.Noad#toString(
+     * @see org.extex.typesetter.type.noad.Noad#toString(
      *      java.lang.StringBuffer, int)
      */
     public void toString(final StringBuffer sb, final int depth) {
@@ -116,12 +117,12 @@ public class NodeNoad implements Noad {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.noad.Noad#typeset(
-     *      de.dante.extex.typesetter.type.noad.Noad,
-     *      de.dante.extex.typesetter.type.noad.NoadList,
+     * @see org.extex.typesetter.type.noad.Noad#typeset(
+     *      org.extex.typesetter.type.noad.Noad,
+     *      org.extex.typesetter.type.noad.NoadList,
      *      int,
-     *      de.dante.extex.typesetter.type.NodeList,
-     *      de.dante.extex.typesetter.type.noad.util.MathContext,
+     *      org.extex.typesetter.type.NodeList,
+     *      org.extex.typesetter.type.noad.util.MathContext,
      *      java.util.logging.Logger)
      */
     public void typeset(final Noad previousNoad, final NoadList noads,

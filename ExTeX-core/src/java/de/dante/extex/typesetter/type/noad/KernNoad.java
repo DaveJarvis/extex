@@ -21,13 +21,14 @@ package de.dante.extex.typesetter.type.noad;
 
 import java.util.logging.Logger;
 
+import org.extex.interpreter.type.muskip.Mudimen;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.interpreter.type.muskip.Mudimen;
 import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.noad.util.MathContext;
 import de.dante.extex.typesetter.type.node.ExplicitKernNode;
+
 
 /**
  * This Noad carries a kerning value in math units.
@@ -57,12 +58,12 @@ public class KernNoad extends AbstractNoad {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.noad.Noad#typeset(
-     *      de.dante.extex.typesetter.type.noad.Noad,
-     *      de.dante.extex.typesetter.type.noad.NoadList,
+     * @see org.extex.typesetter.type.noad.Noad#typeset(
+     *      org.extex.typesetter.type.noad.Noad,
+     *      org.extex.typesetter.type.noad.NoadList,
      *      int,
-     *      de.dante.extex.typesetter.type.NodeList,
-     *      de.dante.extex.typesetter.type.noad.util.MathContext,
+     *      org.extex.typesetter.type.NodeList,
+     *      org.extex.typesetter.type.noad.util.MathContext,
      *      java.util.logging.Logger)
      */
     public void typeset(final Noad previousNoad, final NoadList noads,

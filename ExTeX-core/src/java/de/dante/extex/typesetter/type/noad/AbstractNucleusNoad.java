@@ -20,8 +20,8 @@
 package de.dante.extex.typesetter.type.noad;
 
 
-import de.dante.extex.interpreter.context.Color;
-import de.dante.extex.interpreter.context.tc.TypesettingContext;
+import org.extex.interpreter.context.Color;
+import org.extex.interpreter.context.tc.TypesettingContext;
 
 /**
  * This abstract noad represents a Noad with a nucleus.
@@ -86,7 +86,7 @@ public abstract class AbstractNucleusNoad extends AbstractNoad {
 
     /**
      * @see "TTP [696]"
-     * @see de.dante.extex.typesetter.type.noad.Noad#toString(
+     * @see org.extex.typesetter.type.noad.Noad#toString(
      *      java.lang.StringBuffer, int)
      */
     public void toString(final StringBuffer sb, final int depth) {

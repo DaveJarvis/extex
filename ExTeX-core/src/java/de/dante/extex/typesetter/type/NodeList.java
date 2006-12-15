@@ -19,9 +19,9 @@
 
 package de.dante.extex.typesetter.type;
 
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
-import de.dante.extex.interpreter.type.glue.FixedGlue;
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.interpreter.type.glue.FixedGlue;
 
 /**
  * This interface describes the features of a linear collection of nodes.
@@ -37,7 +37,7 @@ import de.dante.extex.interpreter.type.glue.FixedGlue;
  * height, or depth.
  * </p>
  *
- * @see de.dante.extex.interpreter.type.box.Box
+ * @see org.extex.interpreter.type.box.Box
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

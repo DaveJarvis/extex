@@ -19,11 +19,12 @@
 
 package de.dante.extex.typesetter.type.node;
 
+import org.extex.interpreter.type.glue.FixedGlue;
 import org.extex.util.exception.GeneralException;
 
-import de.dante.extex.interpreter.type.glue.FixedGlue;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeVisitor;
+
 
 /**
  * A space node represents a simple space character.
@@ -62,7 +63,7 @@ public class SpaceNode extends GlueNode implements Node {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#toString(
+     * @see org.extex.typesetter.type.Node#toString(
      *      java.lang.StringBuffer,
      *      java.lang.String,
      *      int,
@@ -81,7 +82,7 @@ public class SpaceNode extends GlueNode implements Node {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#toText(
+     * @see org.extex.typesetter.type.Node#toText(
      *      java.lang.StringBuffer,
      *      java.lang.String)
      */
@@ -91,8 +92,8 @@ public class SpaceNode extends GlueNode implements Node {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#visit(
-     *      de.dante.extex.typesetter.type.NodeVisitor,
+     * @see org.extex.typesetter.type.Node#visit(
+     *      org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)
      */
     public Object visit(final NodeVisitor visitor, final Object value)

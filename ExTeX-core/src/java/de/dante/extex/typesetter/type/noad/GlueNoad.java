@@ -21,14 +21,15 @@ package de.dante.extex.typesetter.type.noad;
 
 import java.util.logging.Logger;
 
+import org.extex.interpreter.type.glue.Glue;
+import org.extex.interpreter.type.muskip.Muskip;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.interpreter.type.glue.Glue;
-import de.dante.extex.interpreter.type.muskip.Muskip;
 import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.noad.util.MathContext;
 import de.dante.extex.typesetter.type.node.GlueNode;
+
 
 /**
  * This Noad carries a muglue value. This value is translated into a GlueNode
@@ -66,7 +67,7 @@ public class GlueNoad extends AbstractNoad {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.muskip.Muskip#isKill()
+     * @see org.extex.interpreter.type.muskip.Muskip#isKill()
      */
     public boolean isKill() {
 
@@ -74,12 +75,12 @@ public class GlueNoad extends AbstractNoad {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.noad.Noad#typeset(
-     *      de.dante.extex.typesetter.type.noad.Noad,
-     *      de.dante.extex.typesetter.type.noad.NoadList,
+     * @see org.extex.typesetter.type.noad.Noad#typeset(
+     *      org.extex.typesetter.type.noad.Noad,
+     *      org.extex.typesetter.type.noad.NoadList,
      *      int,
-     *      de.dante.extex.typesetter.type.NodeList,
-     *      de.dante.extex.typesetter.type.noad.util.MathContext,
+     *      org.extex.typesetter.type.NodeList,
+     *      org.extex.typesetter.type.noad.util.MathContext,
      *      java.util.logging.Logger)
      */
     public void typeset(final Noad previousNoad, final NoadList noads,

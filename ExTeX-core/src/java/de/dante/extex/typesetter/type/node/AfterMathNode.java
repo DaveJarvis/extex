@@ -19,12 +19,13 @@
 
 package de.dante.extex.typesetter.type.node;
 
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.util.exception.GeneralException;
 
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
 import de.dante.extex.typesetter.Discardable;
 import de.dante.extex.typesetter.type.NodeVisitor;
+
 
 /**
  * This node represents a <logo>TeX</logo> "math" node with the subtype "after".
@@ -67,7 +68,7 @@ public class AfterMathNode extends AbstractNode implements Discardable {
      * @param depth the depth
      *
      * @see "<logo>TeX</logo> &ndash; The Program [192]"
-     * @see de.dante.extex.typesetter.type.Node#toString(
+     * @see org.extex.typesetter.type.Node#toString(
      *      java.lang.StringBuffer,
      *      java.lang.String,
      *      int,
@@ -87,8 +88,8 @@ public class AfterMathNode extends AbstractNode implements Discardable {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#visit(
-     *      de.dante.extex.typesetter.type.NodeVisitor,
+     * @see org.extex.typesetter.type.Node#visit(
+     *      org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)
      */
     public Object visit(final NodeVisitor visitor, final Object value)

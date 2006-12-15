@@ -21,18 +21,18 @@ package de.dante.extex.typesetter.type.noad;
 
 import java.util.logging.Logger;
 
+import org.extex.font.type.other.NullFont;
+import org.extex.interpreter.context.Color;
+import org.extex.interpreter.context.tc.TypesettingContext;
+import org.extex.interpreter.context.tc.TypesettingContextFactory;
+import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.interpreter.type.font.Font;
+import org.extex.interpreter.type.font.FontUtil;
 import org.extex.type.UnicodeChar;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.font.type.other.NullFont;
-import de.dante.extex.interpreter.context.Color;
-import de.dante.extex.interpreter.context.tc.TypesettingContext;
-import de.dante.extex.interpreter.context.tc.TypesettingContextFactory;
-import de.dante.extex.interpreter.exception.helping.HelpingException;
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
-import de.dante.extex.interpreter.type.font.Font;
-import de.dante.extex.interpreter.type.font.FontUtil;
 import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.type.Node;
@@ -85,7 +85,7 @@ public class CharNoad extends AbstractNoad {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.noad.Noad#toString(
+     * @see org.extex.typesetter.type.noad.Noad#toString(
      *      java.lang.StringBuffer)
      */
     public void toString(final StringBuffer sb) {
@@ -94,12 +94,12 @@ public class CharNoad extends AbstractNoad {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.noad.Noad#typeset(
-     *      de.dante.extex.typesetter.type.noad.Noad,
-     *      de.dante.extex.typesetter.type.noad.NoadList,
+     * @see org.extex.typesetter.type.noad.Noad#typeset(
+     *      org.extex.typesetter.type.noad.Noad,
+     *      org.extex.typesetter.type.noad.NoadList,
      *      int,
-     *      de.dante.extex.typesetter.type.NodeList,
-     *      de.dante.extex.typesetter.type.noad.util.MathContext,
+     *      org.extex.typesetter.type.NodeList,
+     *      org.extex.typesetter.type.noad.util.MathContext,
      *      java.util.logging.Logger)
      */
     public void typeset(final Noad previousNoad, final NoadList noads,
@@ -159,10 +159,10 @@ public class CharNoad extends AbstractNoad {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.noad.Noad#typeset(
-     *      de.dante.extex.typesetter.type.NodeList,
-     *      de.dante.extex.typesetter.type.noad.util.MathContext,
-     *      de.dante.extex.typesetter.TypesetterOptions)
+     * @see org.extex.typesetter.type.noad.Noad#typeset(
+     *      org.extex.typesetter.type.NodeList,
+     *      org.extex.typesetter.type.noad.util.MathContext,
+     *      org.extex.typesetter.TypesetterOptions)
      */
     public void typeset(final NodeList nodes, final MathContext mathContext,
             final TypesetterOptions context, final Logger logger)

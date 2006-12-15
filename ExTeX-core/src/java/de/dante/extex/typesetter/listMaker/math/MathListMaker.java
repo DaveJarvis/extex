@@ -22,29 +22,29 @@ package de.dante.extex.typesetter.listMaker.math;
 import java.util.Stack;
 import java.util.logging.Logger;
 
+import org.extex.interpreter.Flags;
 import org.extex.interpreter.Namespace;
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.context.group.GroupType;
+import org.extex.interpreter.context.tc.TypesettingContext;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.EofException;
+import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.interpreter.exception.helping.MissingMathException;
+import org.extex.interpreter.type.count.Count;
+import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.interpreter.type.font.Font;
+import org.extex.interpreter.type.math.MathCode;
+import org.extex.interpreter.type.math.MathDelimiter;
+import org.extex.interpreter.type.muskip.Mudimen;
+import org.extex.interpreter.type.muskip.Muskip;
+import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.framework.logger.LogEnabled;
 
-import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.context.group.GroupType;
-import de.dante.extex.interpreter.context.tc.TypesettingContext;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.exception.helping.EofException;
-import de.dante.extex.interpreter.exception.helping.HelpingException;
-import de.dante.extex.interpreter.exception.helping.MissingMathException;
-import de.dante.extex.interpreter.type.count.Count;
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
-import de.dante.extex.interpreter.type.font.Font;
-import de.dante.extex.interpreter.type.math.MathCode;
-import de.dante.extex.interpreter.type.math.MathDelimiter;
-import de.dante.extex.interpreter.type.muskip.Mudimen;
-import de.dante.extex.interpreter.type.muskip.Muskip;
-import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.scanner.type.Catcode;
 import de.dante.extex.scanner.type.CatcodeException;
 import de.dante.extex.scanner.type.token.ActiveCharacterToken;
@@ -77,6 +77,7 @@ import de.dante.extex.typesetter.type.node.BeforeMathNode;
 import de.dante.extex.typesetter.type.node.DiscretionaryNode;
 import de.dante.extex.typesetter.type.node.GenericNodeList;
 import de.dante.extex.typesetter.type.node.GlueNode;
+
 
 /**
  * This is the list maker for the inline math formulae.
@@ -360,8 +361,8 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#add(
-     *      de.dante.extex.interpreter.type.glue.FixedGlue)
+     * @see org.extex.typesetter.ListMaker#add(
+     *      org.extex.interpreter.type.glue.FixedGlue)
      */
     public void add(final FixedDimen g) throws TypesetterException {
 
@@ -369,9 +370,9 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
     }
 
     /**
-     * @see de.dante.extex.typesetter.listMaker.math.NoadConsumer#add(
-     *      de.dante.extex.interpreter.type.math.MathCode,
-     *      de.dante.extex.interpreter.context.tc.TypesettingContext)
+     * @see org.extex.typesetter.listMaker.math.NoadConsumer#add(
+     *      org.extex.interpreter.type.math.MathCode,
+     *      org.extex.interpreter.context.tc.TypesettingContext)
      */
     public void add(final MathCode mc, final TypesettingContext tc)
             throws TypesetterException {
@@ -380,9 +381,9 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
     }
 
     /**
-     * @see de.dante.extex.typesetter.listMaker.math.NoadConsumer#add(
-     *      de.dante.extex.typesetter.type.math.MathDelimiter,
-     *      de.dante.extex.interpreter.context.TypesettingContext)
+     * @see org.extex.typesetter.listMaker.math.NoadConsumer#add(
+     *      org.extex.typesetter.type.math.MathDelimiter,
+     *      org.extex.interpreter.context.TypesettingContext)
      */
     public void add(final MathDelimiter delimiter, final TypesettingContext tc)
             throws TypesetterException {
@@ -393,8 +394,8 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
     }
 
     /**
-     * @see de.dante.extex.typesetter.listMaker.math.NoadConsumer#add(
-     *      de.dante.extex.interpreter.type.muskip.Mudimen)
+     * @see org.extex.typesetter.listMaker.math.NoadConsumer#add(
+     *      org.extex.interpreter.type.muskip.Mudimen)
      */
     public void add(final Mudimen skip) throws TypesetterException {
 
@@ -402,8 +403,8 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
     }
 
     /**
-     * @see de.dante.extex.typesetter.listMaker.math.NoadConsumer#add(
-     *      de.dante.extex.interpreter.type.muskip.Muskip)
+     * @see org.extex.typesetter.listMaker.math.NoadConsumer#add(
+     *      org.extex.interpreter.type.muskip.Muskip)
      */
     public void add(final Muskip glue) throws TypesetterException {
 
@@ -411,8 +412,8 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
     }
 
     /**
-     * @see de.dante.extex.typesetter.listMaker.math.NoadConsumer#add(
-     *      de.dante.extex.typesetter.type.noad.Noad)
+     * @see org.extex.typesetter.listMaker.math.NoadConsumer#add(
+     *      org.extex.typesetter.type.noad.Noad)
      */
     public void add(final Noad noad) throws TypesetterException {
 
@@ -420,8 +421,8 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#add(
-     *      de.dante.extex.typesetter.type.Node)
+     * @see org.extex.typesetter.ListMaker#add(
+     *      org.extex.typesetter.type.Node)
      */
     public void add(final Node node) throws TypesetterException,
             ConfigurationException {
@@ -449,9 +450,9 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
      * @throws TypesetterException in case of an error
      * @throws ConfigurationException in case of a configuration error
      * 
-     * @see de.dante.extex.typesetter.ListMaker#addSpace(
-     *      de.dante.extex.interpreter.context.TypesettingContext,
-     *      de.dante.extex.interpreter.type.count.Count)
+     * @see org.extex.typesetter.ListMaker#addSpace(
+     *      org.extex.interpreter.context.TypesettingContext,
+     *      org.extex.interpreter.type.count.Count)
      */
     public void addSpace(final TypesettingContext typesettingContext,
             final Count spacefactor) throws TypesetterException,
@@ -470,7 +471,7 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
      * @throws TypesetterException in case of an error
      * @throws ConfigurationException in case of a configuration error
      * 
-     * @see de.dante.extex.typesetter.ListMaker#complete(TypesetterOptions)
+     * @see org.extex.typesetter.ListMaker#complete(TypesetterOptions)
      * @see "<logo>TeX</logo> &ndash; The Program [719]"
      */
     public NodeList complete(final TypesetterOptions context)
@@ -509,9 +510,9 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#cr(
-     *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.context.TypesettingContext,
+     * @see org.extex.typesetter.ListMaker#cr(
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.context.TypesettingContext,
      *      org.extex.type.UnicodeChar)
      */
     public void cr(final Context context, final TypesettingContext tc,
@@ -549,7 +550,7 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
     }
 
     /**
-     * @see de.dante.extex.typesetter.listMaker.math.NoadConsumer#getLastNoad()
+     * @see org.extex.typesetter.listMaker.math.NoadConsumer#getLastNoad()
      */
     public Noad getLastNoad() throws TypesetterException {
 
@@ -557,7 +558,7 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#getLastNode()
+     * @see org.extex.typesetter.ListMaker#getLastNode()
      */
     public Node getLastNode() {
 
@@ -575,7 +576,7 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#getMode()
+     * @see org.extex.typesetter.ListMaker#getMode()
      */
     public Mode getMode() {
 
@@ -603,8 +604,8 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
     }
 
     /**
-     * @see de.dante.extex.typesetter.listMaker.math.NoadConsumer#left(
-     *      de.dante.extex.typesetter.type.math.MathDelimiter)
+     * @see org.extex.typesetter.listMaker.math.NoadConsumer#left(
+     *      org.extex.typesetter.type.math.MathDelimiter)
      */
     public void left(final MathDelimiter delimiter) throws TypesetterException {
 
@@ -617,7 +618,7 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
      * Notification method to deal the case that a left brace has been
      * encountered.
      * 
-     * @see de.dante.extex.typesetter.ListMaker#leftBrace()
+     * @see org.extex.typesetter.ListMaker#leftBrace()
      */
     public void leftBrace() {
 
@@ -627,10 +628,10 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#letter(
+     * @see org.extex.typesetter.ListMaker#letter(
      *      org.extex.type.UnicodeChar,
-     *      de.dante.extex.interpreter.context.tc.TypesettingContext,
-     *      de.dante.extex.interpreter.context.Context,
+     *      org.extex.interpreter.context.tc.TypesettingContext,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.type.Locator)
      */
     public boolean letter(final UnicodeChar symbol,
@@ -662,10 +663,10 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#mathShift(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.typesetter.ListMaker#mathShift(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.scanner.type.token.Token)
+     *      org.extex.scanner.type.token.Token)
      */
     public void mathShift(final Context context, final TokenSource source,
             final Token t) throws TypesetterException, ConfigurationException {
@@ -687,8 +688,8 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
     }
 
     /**
-     * @see de.dante.extex.typesetter.listMaker.math.NoadConsumer#middle(
-     *      de.dante.extex.typesetter.type.math.MathDelimiter)
+     * @see org.extex.typesetter.listMaker.math.NoadConsumer#middle(
+     *      org.extex.typesetter.type.math.MathDelimiter)
      */
     public void middle(final MathDelimiter delimiter)
             throws TypesetterException {
@@ -714,7 +715,7 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
      * @throws TypesetterException in case of an error
      * @throws ConfigurationException in case of an configuration error
      * 
-     * @see de.dante.extex.typesetter.ListMaker#par()
+     * @see org.extex.typesetter.ListMaker#par()
      * @see "<logo>TeX</logo> &ndash; The Program [1047]"
      */
     public void par() throws TypesetterException, ConfigurationException {
@@ -724,7 +725,7 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#removeLastNode()
+     * @see org.extex.typesetter.ListMaker#removeLastNode()
      */
     public void removeLastNode() {
 
@@ -732,8 +733,8 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
     }
 
     /**
-     * @see de.dante.extex.typesetter.listMaker.math.NoadConsumer#right(
-     *      de.dante.extex.typesetter.type.math.MathDelimiter)
+     * @see org.extex.typesetter.listMaker.math.NoadConsumer#right(
+     *      org.extex.typesetter.type.math.MathDelimiter)
      */
     public void right(final MathDelimiter delimiter) throws TypesetterException {
 
@@ -754,7 +755,7 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#rightBrace()
+     * @see org.extex.typesetter.ListMaker#rightBrace()
      */
     public void rightBrace() throws TypesetterException {
 
@@ -774,11 +775,11 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
     }
 
     /**
-     * @see de.dante.extex.typesetter.listMaker.math.NoadConsumer#scanNoad(
-     *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.typesetter.listMaker.math.NoadConsumer#scanNoad(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter, java.lang.String)
+     *      org.extex.typesetter.Typesetter, java.lang.String)
      */
     public Noad scanNoad(final Flags flags, final Context context,
             final TokenSource source, final Typesetter typesetter,
@@ -838,7 +839,7 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#showlist(
+     * @see org.extex.typesetter.ListMaker#showlist(
      *      java.lang.StringBuffer, long, long)
      */
     public void showlist(final StringBuffer sb, final long l, final long m) {
@@ -846,10 +847,10 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#subscriptMark(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.typesetter.ListMaker#subscriptMark(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter,
-     *      de.dante.extex.scanner.type.token.Token)
+     *      org.extex.scanner.type.token.Token)
      */
     public void subscriptMark(final Context context, final TokenSource source,
             final Typesetter typesetter, final Token token)
@@ -869,10 +870,10 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#superscriptMark(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.typesetter.ListMaker#superscriptMark(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter,
-     *      de.dante.extex.scanner.type.token.Token)
+     *      org.extex.scanner.type.token.Token)
      */
     public void superscriptMark(final Context context,
             final TokenSource source, final Typesetter typesetter,
@@ -892,11 +893,11 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
     }
 
     /**
-     * @see de.dante.extex.typesetter.listMaker.math.NoadConsumer#switchToFraction(
-     *      de.dante.extex.typesetter.type.math.MathDelimiter,
-     *      de.dante.extex.typesetter.type.math.MathDelimiter,
-     *      de.dante.extex.interpreter.type.dimen.FixedDimen,
-     *      de.dante.extex.interpreter.context.TypesettingContext)
+     * @see org.extex.typesetter.listMaker.math.NoadConsumer#switchToFraction(
+     *      org.extex.typesetter.type.math.MathDelimiter,
+     *      org.extex.typesetter.type.math.MathDelimiter,
+     *      org.extex.interpreter.type.dimen.FixedDimen,
+     *      org.extex.interpreter.context.TypesettingContext)
      */
     public void switchToFraction(final MathDelimiter leftDelimiter,
             final MathDelimiter rightDelimiter, final FixedDimen ruleWidth,

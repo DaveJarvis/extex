@@ -19,16 +19,16 @@
 
 package de.dante.extex.typesetter.listMaker.math;
 
+import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.context.tc.TypesettingContext;
+import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.interpreter.type.math.MathCode;
+import org.extex.interpreter.type.math.MathDelimiter;
+import org.extex.interpreter.type.muskip.Mudimen;
+import org.extex.interpreter.type.muskip.Muskip;
 
-import de.dante.extex.interpreter.Flags;
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.context.tc.TypesettingContext;
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
-import de.dante.extex.interpreter.type.math.MathCode;
-import de.dante.extex.interpreter.type.math.MathDelimiter;
-import de.dante.extex.interpreter.type.muskip.Mudimen;
-import de.dante.extex.interpreter.type.muskip.Muskip;
 import de.dante.extex.typesetter.ListMaker;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.exception.TypesetterException;
@@ -39,7 +39,7 @@ import de.dante.extex.typesetter.type.noad.Noad;
  * This is usually the case for math list makers.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4496 $
  */
 public interface NoadConsumer extends ListMaker {
 

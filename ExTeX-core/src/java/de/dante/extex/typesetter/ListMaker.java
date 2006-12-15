@@ -20,22 +20,23 @@
 package de.dante.extex.typesetter;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.context.tc.TypesettingContext;
+import org.extex.interpreter.type.count.Count;
+import org.extex.interpreter.type.count.FixedCount;
+import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.interpreter.type.glue.FixedGlue;
 import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.context.tc.TypesettingContext;
-import de.dante.extex.interpreter.type.count.Count;
-import de.dante.extex.interpreter.type.count.FixedCount;
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
-import de.dante.extex.interpreter.type.glue.FixedGlue;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.exception.InvalidSpacefactorException;
 import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.exception.TypesetterUnsupportedException;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeList;
+
 
 /**
  * This interface describes the capabilities of a list maker.
@@ -155,7 +156,7 @@ public interface ListMaker {
      * Getter for the current mode.
      *
      * @return the mode which is one of the values defined in
-     * {@link de.dante.extex.typesetter.Mode Mode}.
+     * {@link org.extex.typesetter.Mode Mode}.
      */
     Mode getMode();
 

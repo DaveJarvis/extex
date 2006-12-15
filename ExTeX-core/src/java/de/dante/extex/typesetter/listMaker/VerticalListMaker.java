@@ -19,18 +19,19 @@
 
 package de.dante.extex.typesetter.listMaker;
 
+import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.interpreter.type.glue.FixedGlue;
+import org.extex.interpreter.type.glue.Glue;
 import org.extex.type.Locator;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
-import de.dante.extex.interpreter.type.glue.FixedGlue;
-import de.dante.extex.interpreter.type.glue.Glue;
 import de.dante.extex.typesetter.Mode;
 import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.node.HorizontalListNode;
+
 
 /**
  * This class provides a maker for a vertical list.
@@ -112,9 +113,9 @@ public class VerticalListMaker extends InnerVerticalListMaker {
      * </i>
      *
      *
-     * @see de.dante.extex.typesetter.ListMaker#addAndAdjust(
-     *      de.dante.extex.typesetter.type.NodeList,
-     *      de.dante.extex.typesetter.TypesetterOptions)
+     * @see org.extex.typesetter.ListMaker#addAndAdjust(
+     *      org.extex.typesetter.type.NodeList,
+     *      org.extex.typesetter.TypesetterOptions)
      */
     public void addAndAdjust(final NodeList nodes,
             final TypesetterOptions context)
@@ -150,7 +151,7 @@ public class VerticalListMaker extends InnerVerticalListMaker {
     }
 
     /**
-     * @see de.dante.extex.typesetter.listMaker.InnerVerticalListMaker#getMode()
+     * @see org.extex.typesetter.listMaker.InnerVerticalListMaker#getMode()
      */
     public Mode getMode() {
 

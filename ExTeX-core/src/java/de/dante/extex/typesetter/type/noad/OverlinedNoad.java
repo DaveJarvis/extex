@@ -21,11 +21,11 @@ package de.dante.extex.typesetter.type.noad;
 
 import java.util.logging.Logger;
 
+import org.extex.interpreter.context.tc.TypesettingContext;
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.interpreter.context.tc.TypesettingContext;
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
 import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.noad.util.MathContext;
@@ -34,6 +34,7 @@ import de.dante.extex.typesetter.type.node.ExplicitKernNode;
 import de.dante.extex.typesetter.type.node.HorizontalListNode;
 import de.dante.extex.typesetter.type.node.RuleNode;
 import de.dante.extex.typesetter.type.node.VerticalListNode;
+
 
 /**
  * This class provides an over-lining for the nucleus.
@@ -63,7 +64,7 @@ public class OverlinedNoad extends AbstractNucleusNoad {
      * @param depth the recursion depth
      *
      * @see "TTP [696]"
-     * @see de.dante.extex.typesetter.type.noad.AbstractNoad#toStringAdd(
+     * @see org.extex.typesetter.type.noad.AbstractNoad#toStringAdd(
      *      java.lang.StringBuffer,
      *      int)
      */
@@ -89,12 +90,12 @@ public class OverlinedNoad extends AbstractNucleusNoad {
      *
      * @see "TTP [705,734]"
      *
-     * @see de.dante.extex.typesetter.type.noad.Noad#typeset(
-     *      de.dante.extex.typesetter.type.noad.Noad,
-     *      de.dante.extex.typesetter.type.noad.NoadList,
+     * @see org.extex.typesetter.type.noad.Noad#typeset(
+     *      org.extex.typesetter.type.noad.Noad,
+     *      org.extex.typesetter.type.noad.NoadList,
      *      int,
-     *      de.dante.extex.typesetter.type.NodeList,
-     *      de.dante.extex.typesetter.type.noad.util.MathContext,
+     *      org.extex.typesetter.type.NodeList,
+     *      org.extex.typesetter.type.noad.util.MathContext,
      *      java.util.logging.Logger)
      */
     public void typeset(final Noad previousNoad, final NoadList noads,

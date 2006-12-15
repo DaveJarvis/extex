@@ -19,12 +19,13 @@
 
 package de.dante.extex.typesetter.type.node;
 
+import org.extex.interpreter.context.tc.TypesettingContext;
+import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.util.exception.GeneralException;
 
-import de.dante.extex.interpreter.context.tc.TypesettingContext;
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeVisitor;
+
 
 /**
  * The rule node represents a rectangular area on the page filled with some
@@ -105,7 +106,7 @@ public class RuleNode extends AbstractNode implements Node {
      * @param depth the depth
      *
      * @see "<logo>TeX</logo> &ndash; The Program [187]"
-     * @see de.dante.extex.typesetter.type.Node#toString(
+     * @see org.extex.typesetter.type.Node#toString(
      *      java.lang.StringBuffer,
      *      java.lang.String,
      *      int,
@@ -124,7 +125,7 @@ public class RuleNode extends AbstractNode implements Node {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#toText(
+     * @see org.extex.typesetter.type.Node#toText(
      *      java.lang.StringBuffer,
      *      java.lang.String)
      */
@@ -140,8 +141,8 @@ public class RuleNode extends AbstractNode implements Node {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#visit(
-     *      de.dante.extex.typesetter.type.NodeVisitor,
+     * @see org.extex.typesetter.type.Node#visit(
+     *      org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)
      */
     public Object visit(final NodeVisitor visitor, final Object value)

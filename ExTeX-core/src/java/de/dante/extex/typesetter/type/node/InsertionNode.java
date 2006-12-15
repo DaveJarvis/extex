@@ -25,6 +25,7 @@ import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.NodeVisitor;
 
+
 /**
  * This node is meant to record an insertion.
  *
@@ -92,7 +93,7 @@ public class InsertionNode extends AbstractNode implements Node {
      * @param depth the depth
      *
      * @see "<logo>TeX</logo> &ndash; The Program [188]"
-     * @see de.dante.extex.typesetter.type.Node#toString(
+     * @see org.extex.typesetter.type.Node#toString(
      *      java.lang.StringBuffer,
      *      java.lang.String,
      *      int,
@@ -111,8 +112,8 @@ public class InsertionNode extends AbstractNode implements Node {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#visit(
-     *      de.dante.extex.typesetter.type.NodeVisitor,
+     * @see org.extex.typesetter.type.Node#visit(
+     *      org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)
      */
     public Object visit(final NodeVisitor visitor, final Object value)

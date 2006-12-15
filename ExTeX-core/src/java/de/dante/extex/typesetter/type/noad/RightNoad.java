@@ -21,13 +21,14 @@ package de.dante.extex.typesetter.type.noad;
 
 import java.util.logging.Logger;
 
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.math.MathDelimiter;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.math.MathDelimiter;
 import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.noad.util.MathContext;
+
 
 /**
  * This Noad carries a delimiter which is set on the right side of the math
@@ -66,7 +67,7 @@ public class RightNoad extends AbstractNoad {
 
     /**
      * @see "TTP [696]"
-     * @see de.dante.extex.typesetter.type.noad.AbstractNoad#toStringAdd(
+     * @see org.extex.typesetter.type.noad.AbstractNoad#toStringAdd(
      *      java.lang.StringBuffer,
      *      int)
      */
@@ -79,12 +80,12 @@ public class RightNoad extends AbstractNoad {
     /**
      *
      * @see "TTP [762]"
-     * @see de.dante.extex.typesetter.type.noad.Noad#typeset(
-     *      de.dante.extex.typesetter.type.noad.Noad,
-     *      de.dante.extex.typesetter.type.noad.NoadList,
+     * @see org.extex.typesetter.type.noad.Noad#typeset(
+     *      org.extex.typesetter.type.noad.Noad,
+     *      org.extex.typesetter.type.noad.NoadList,
      *      int,
-     *      de.dante.extex.typesetter.type.NodeList,
-     *      de.dante.extex.typesetter.type.noad.util.MathContext,
+     *      org.extex.typesetter.type.NodeList,
+     *      org.extex.typesetter.type.noad.util.MathContext,
      *      java.util.logging.Logger)
      */
     public void typeset(final Noad previousNoad, final NoadList noads,

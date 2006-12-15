@@ -20,18 +20,19 @@
 package de.dante.extex.typesetter.listMaker.math;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.CantUseInException;
+import org.extex.interpreter.exception.helping.EofException;
+import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.interpreter.type.count.Count;
+import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.type.Locator;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.InterpreterException;
-import de.dante.extex.interpreter.exception.helping.CantUseInException;
-import de.dante.extex.interpreter.exception.helping.EofException;
-import de.dante.extex.interpreter.exception.helping.HelpingException;
-import de.dante.extex.interpreter.type.count.Count;
-import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Mode;
+import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.listMaker.ListManager;
@@ -40,6 +41,7 @@ import de.dante.extex.typesetter.type.noad.MathList;
 import de.dante.extex.typesetter.type.noad.StyleNoad;
 import de.dante.extex.typesetter.type.noad.util.MathContext;
 import de.dante.extex.typesetter.type.node.HorizontalListNode;
+
 
 /**
  * This is the list maker for the display math formulae.
@@ -123,7 +125,7 @@ public class DisplaymathListMaker extends MathListMaker implements EqConsumer {
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#complete(TypesetterOptions)
+     * @see org.extex.typesetter.ListMaker#complete(TypesetterOptions)
      */
     public NodeList complete(final TypesetterOptions context)
             throws TypesetterException,
@@ -163,7 +165,7 @@ public class DisplaymathListMaker extends MathListMaker implements EqConsumer {
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#getMode()
+     * @see org.extex.typesetter.ListMaker#getMode()
      */
     public Mode getMode() {
 
@@ -171,10 +173,10 @@ public class DisplaymathListMaker extends MathListMaker implements EqConsumer {
     }
 
     /**
-     * @see de.dante.extex.typesetter.ListMaker#mathShift(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.typesetter.ListMaker#mathShift(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.scanner.type.token.Token)
+     *      org.extex.scanner.type.token.Token)
      */
     public void mathShift(final Context context, final TokenSource source,
             final Token t) throws TypesetterException, ConfigurationException {
@@ -219,7 +221,7 @@ public class DisplaymathListMaker extends MathListMaker implements EqConsumer {
      * @throws CantUseInException in case that the eq number has already been
      *  started
      *
-     * @see de.dante.extex.typesetter.listMaker.math.EqConsumer#switchToNumber(boolean)
+     * @see org.extex.typesetter.listMaker.math.EqConsumer#switchToNumber(boolean)
      */
     public void switchToNumber(final boolean left) throws CantUseInException {
 

@@ -19,17 +19,18 @@
 
 package de.dante.extex.typesetter.type.node.factory;
 
+import org.extex.font.type.VirtualFount;
+import org.extex.interpreter.context.tc.TypesettingContext;
+import org.extex.interpreter.type.font.Font;
 import org.extex.type.UnicodeChar;
 
-import de.dante.extex.font.type.VirtualFount;
-import de.dante.extex.interpreter.context.tc.TypesettingContext;
-import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.node.CharNode;
 
+
 /**
  * This is a factory for
- * {@link de.dante.extex.typesetter.type.node.CharNode CharNode}s
+ * {@link org.extex.typesetter.type.node.CharNode CharNode}s
  * and virtual chars.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -56,8 +57,8 @@ public class SimpleNodeFactory implements NodeFactory {
      *
      * @return the new character node
      *
-     * @see de.dante.extex.typesetter.type.node.factory.NodeFactory#getNode(
-     *      de.dante.extex.interpreter.context.TypesettingContext,
+     * @see org.extex.typesetter.type.node.factory.NodeFactory#getNode(
+     *      org.extex.interpreter.context.TypesettingContext,
      *      org.extex.type.UnicodeChar)
      */
     public Node getNode(final TypesettingContext typesettingContext,

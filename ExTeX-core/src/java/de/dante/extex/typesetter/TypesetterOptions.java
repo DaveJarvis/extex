@@ -19,18 +19,19 @@
 
 package de.dante.extex.typesetter;
 
+import org.extex.interpreter.context.tc.TypesettingContext;
+import org.extex.interpreter.context.tc.TypesettingContextFactory;
+import org.extex.interpreter.type.count.FixedCount;
+import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.interpreter.type.font.Font;
+import org.extex.interpreter.type.glue.FixedGlue;
+import org.extex.interpreter.type.muskip.Muskip;
 import org.extex.type.UnicodeChar;
 import org.extex.util.exception.GeneralException;
 
-import de.dante.extex.interpreter.context.tc.TypesettingContext;
-import de.dante.extex.interpreter.context.tc.TypesettingContextFactory;
-import de.dante.extex.interpreter.type.count.FixedCount;
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
-import de.dante.extex.interpreter.type.font.Font;
-import de.dante.extex.interpreter.type.glue.FixedGlue;
-import de.dante.extex.interpreter.type.muskip.Muskip;
 import de.dante.extex.scanner.type.token.TokenFactory;
 import de.dante.extex.typesetter.paragraphBuilder.ParagraphShape;
+
 
 /**
  * This interface describes the possibilities of the typesetter to access its

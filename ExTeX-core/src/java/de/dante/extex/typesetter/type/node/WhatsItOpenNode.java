@@ -20,13 +20,14 @@
 package de.dante.extex.typesetter.type.node;
 
 
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.type.file.OutFile;
 import org.extex.util.exception.GeneralException;
 
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.type.file.OutFile;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeVisitor;
+
 
 /**
  * This WhatsIt node which opens an out file at shipping.
@@ -78,10 +79,10 @@ public class WhatsItOpenNode extends WhatsItNode {
      *
      * @throws GeneralException in case of an error
      *
-     * @see de.dante.extex.typesetter.type.Node#atShipping(
-     *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.typesetter.Typesetter,
-     *      de.dante.extex.typesetter.type.NodeVisitor,
+     * @see org.extex.typesetter.type.Node#atShipping(
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.typesetter.Typesetter,
+     *      org.extex.typesetter.type.NodeVisitor,
      *      boolean)
      */
     public Node atShipping(final Context context, final Typesetter typesetter,

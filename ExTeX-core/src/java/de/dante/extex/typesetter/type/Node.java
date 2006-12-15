@@ -21,15 +21,16 @@ package de.dante.extex.typesetter.type;
 
 import java.io.Serializable;
 
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.interpreter.type.glue.FixedGlueComponent;
+import org.extex.interpreter.type.glue.WideGlue;
 import org.extex.util.exception.GeneralException;
 
-
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
-import de.dante.extex.interpreter.type.glue.FixedGlueComponent;
-import de.dante.extex.interpreter.type.glue.WideGlue;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.type.node.CharNode;
+
+
 
 /**
  * A node is the basic data structure for the typesetter. It has a reference

@@ -19,15 +19,16 @@
 
 package de.dante.extex.typesetter.type.node;
 
+import org.extex.font.Glyph;
+import org.extex.interpreter.context.tc.TypesettingContext;
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.font.Font;
+import org.extex.interpreter.type.glue.FixedGlue;
 import org.extex.type.UnicodeChar;
 import org.extex.util.exception.GeneralException;
 
-import de.dante.extex.font.Glyph;
-import de.dante.extex.interpreter.context.tc.TypesettingContext;
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.font.Font;
-import de.dante.extex.interpreter.type.glue.FixedGlue;
 import de.dante.extex.typesetter.type.NodeVisitor;
+
 
 /**
  * This is the Node which carries a single character.
@@ -78,7 +79,7 @@ public class CharNode extends AbstractNode {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#countChars()
+     * @see org.extex.typesetter.type.Node#countChars()
      */
     public int countChars() {
 
@@ -96,7 +97,7 @@ public class CharNode extends AbstractNode {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#getChars()
+     * @see org.extex.typesetter.type.Node#getChars()
      */
     public CharNode[] getChars() {
 
@@ -137,7 +138,7 @@ public class CharNode extends AbstractNode {
 
     /**
      * @see "<logo>TeX</logo> &ndash; The Program [174]"
-     * @see de.dante.extex.typesetter.type.Node#toString(
+     * @see org.extex.typesetter.type.Node#toString(
      *      java.lang.StringBuffer,
      *      java.lang.String,
      *      int,
@@ -163,7 +164,7 @@ public class CharNode extends AbstractNode {
 
     /**
      * @see "<logo>TeX</logo> &ndash; The Program [174]"
-     * @see de.dante.extex.typesetter.type.Node#toText(
+     * @see org.extex.typesetter.type.Node#toText(
      *      java.lang.StringBuffer,
      *      java.lang.String)
      */
@@ -177,8 +178,8 @@ public class CharNode extends AbstractNode {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#visit(
-     *      de.dante.extex.typesetter.type.NodeVisitor,
+     * @see org.extex.typesetter.type.Node#visit(
+     *      org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)
      */
     public Object visit(final NodeVisitor visitor, final Object value)

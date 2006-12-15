@@ -19,7 +19,8 @@
 
 package de.dante.extex.typesetter.type.node;
 
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.interpreter.type.dimen.FixedDimen;
+
 import de.dante.extex.typesetter.type.Node;
 
 /**
@@ -53,7 +54,7 @@ public class ExtensionNode extends WhatsItNode implements Node {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.node.AbstractNode#getDepth()
+     * @see org.extex.typesetter.type.node.AbstractNode#getDepth()
      */
     public FixedDimen getDepth() {
 
@@ -61,7 +62,7 @@ public class ExtensionNode extends WhatsItNode implements Node {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.node.AbstractNode#getHeight()
+     * @see org.extex.typesetter.type.node.AbstractNode#getHeight()
      */
     public FixedDimen getHeight() {
 
@@ -69,7 +70,7 @@ public class ExtensionNode extends WhatsItNode implements Node {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.node.AbstractNode#getWidth()
+     * @see org.extex.typesetter.type.node.AbstractNode#getWidth()
      */
     public FixedDimen getWidth() {
 
@@ -77,8 +78,8 @@ public class ExtensionNode extends WhatsItNode implements Node {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#setDepth(
-     *      de.dante.extex.interpreter.type.dimen.FixedDimen)
+     * @see org.extex.typesetter.type.Node#setDepth(
+     *      org.extex.interpreter.type.dimen.FixedDimen)
      */
     public void setDepth(final FixedDimen depth) {
 
@@ -86,8 +87,8 @@ public class ExtensionNode extends WhatsItNode implements Node {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#setHeight(
-     *      de.dante.extex.interpreter.type.dimen.FixedDimen)
+     * @see org.extex.typesetter.type.Node#setHeight(
+     *      org.extex.interpreter.type.dimen.FixedDimen)
      */
     public void setHeight(final FixedDimen height) {
 
@@ -95,8 +96,8 @@ public class ExtensionNode extends WhatsItNode implements Node {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#setWidth(
-     *      de.dante.extex.interpreter.type.dimen.FixedDimen)
+     * @see org.extex.typesetter.type.Node#setWidth(
+     *      org.extex.interpreter.type.dimen.FixedDimen)
      */
     public void setWidth(final FixedDimen width) {
 

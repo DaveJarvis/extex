@@ -19,8 +19,9 @@
 
 package de.dante.extex.typesetter.type.noad.util;
 
-import de.dante.extex.interpreter.exception.ImpossibleException;
-import de.dante.extex.interpreter.type.muskip.Muskip;
+import org.extex.interpreter.exception.ImpossibleException;
+import org.extex.interpreter.type.muskip.Muskip;
+
 import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.noad.StyleNoad;

@@ -19,12 +19,13 @@
 
 package de.dante.extex.typesetter.type.node;
 
+import org.extex.interpreter.type.count.Count;
 import org.extex.util.exception.GeneralException;
 
-import de.dante.extex.interpreter.type.count.Count;
 import de.dante.extex.typesetter.Discardable;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeVisitor;
+
 
 /**
  * This class represents a Node which holds a penalty value. It is used during
@@ -93,7 +94,7 @@ public class PenaltyNode extends AbstractNode implements Node, Discardable {
      * @param depth the depth
      *
      * @see "<logo>TeX</logo> &ndash; The Program [194]"
-     * @see de.dante.extex.typesetter.type.Node#toString(
+     * @see org.extex.typesetter.type.Node#toString(
      *      java.lang.StringBuffer,
      *      java.lang.String,
      *      int,
@@ -107,7 +108,7 @@ public class PenaltyNode extends AbstractNode implements Node, Discardable {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#toText(
+     * @see org.extex.typesetter.type.Node#toText(
      *      java.lang.StringBuffer,
      *      java.lang.String)
      */
@@ -117,8 +118,8 @@ public class PenaltyNode extends AbstractNode implements Node, Discardable {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#visit(
-     *      de.dante.extex.typesetter.type.NodeVisitor,
+     * @see org.extex.typesetter.type.Node#visit(
+     *      org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)
      */
     public Object visit(final NodeVisitor visitor, final Object value)

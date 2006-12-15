@@ -20,9 +20,10 @@
 package de.dante.extex.typesetter.type.noad.util;
 
 import org.extex.interpreter.Namespace;
+import org.extex.interpreter.context.Context;
 
-import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.typesetter.TypesetterOptions;
+
 
 /*******************************************************************************
  * This class provides symbolic constants for the font parameters used in math

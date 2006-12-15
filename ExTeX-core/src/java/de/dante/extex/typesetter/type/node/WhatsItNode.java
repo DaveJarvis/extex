@@ -23,6 +23,7 @@ import org.extex.util.exception.GeneralException;
 
 import de.dante.extex.typesetter.type.NodeVisitor;
 
+
 /**
  * This node type represents the extension node from the perspective of
  * <logo>TeX</logo>.
@@ -49,7 +50,7 @@ public class WhatsItNode extends AbstractNode {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#toString(
+     * @see org.extex.typesetter.type.Node#toString(
      *      java.lang.StringBuffer,
      *      java.lang.String,
      *      int,
@@ -62,8 +63,8 @@ public class WhatsItNode extends AbstractNode {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#visit(
-     *      de.dante.extex.typesetter.type.NodeVisitor,
+     * @see org.extex.typesetter.type.Node#visit(
+     *      org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)
      */
     public Object visit(final NodeVisitor visitor, final Object value)

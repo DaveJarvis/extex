@@ -19,7 +19,8 @@
 
 package de.dante.extex.typesetter.type.node;
 
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.interpreter.type.dimen.FixedDimen;
+
 import de.dante.extex.typesetter.Discardable;
 
 /**
@@ -36,7 +37,7 @@ import de.dante.extex.typesetter.Discardable;
  * </p>
  *
  * @see "<logo>TeX</logo> &ndash; The Program [155]"
- * @see de.dante.extex.typesetter.type.node.ImplicitKernNode
+ * @see org.extex.typesetter.type.node.ImplicitKernNode
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
@@ -63,7 +64,7 @@ public class ExplicitKernNode extends AbstractKernNode implements Discardable {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#toString(
+     * @see org.extex.typesetter.type.Node#toString(
      *      java.lang.StringBuffer,
      *      java.lang.String,
      *      int,
@@ -85,7 +86,7 @@ public class ExplicitKernNode extends AbstractKernNode implements Discardable {
      * @param prefix the prefix string inserted at the beginning of each line
      *
      * @see "<logo>TeX</logo> &ndash; The Program [191]"
-     * @see de.dante.extex.typesetter.type.Node#toText(
+     * @see org.extex.typesetter.type.Node#toText(
      *      java.lang.StringBuffer,
      *      java.lang.String)
      */

@@ -21,14 +21,14 @@ package de.dante.extex.typesetter.type.noad;
 
 import java.util.logging.Logger;
 
+import org.extex.interpreter.exception.ImpossibleException;
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.interpreter.type.glue.Glue;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
-import de.dante.extex.interpreter.exception.ImpossibleException;
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
-import de.dante.extex.interpreter.type.glue.Glue;
 import de.dante.extex.typesetter.TypesetterOptions;
 import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.type.Node;
@@ -41,11 +41,12 @@ import de.dante.extex.typesetter.type.node.HorizontalListNode;
 import de.dante.extex.typesetter.type.node.ImplicitKernNode;
 import de.dante.extex.typesetter.type.node.VerticalListNode;
 
+
 /**
  * This is the abstract base class for Noads.
- * A {@link de.dante.extex.typesetter.type.noad.Noad Noad} is the intermediate
+ * A {@link org.extex.typesetter.type.noad.Noad Noad} is the intermediate
  * data structure which is used for processing mathematical material. Finally
- * Noads are translated into {@link de.dante.extex.typesetter.type.Node Node}s.
+ * Noads are translated into {@link org.extex.typesetter.type.Node Node}s.
  * Thus Noad will never arrive at the DocumentWriter.
  *
  *
@@ -364,7 +365,7 @@ public abstract class AbstractNoad implements Noad {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.noad.Noad#toString(
+     * @see org.extex.typesetter.type.noad.Noad#toString(
      *      java.lang.StringBuffer)
      */
     public void toString(final StringBuffer sb) {
@@ -374,7 +375,7 @@ public abstract class AbstractNoad implements Noad {
 
     /**
      * @see "TTP [696]"
-     * @see de.dante.extex.typesetter.type.noad.Noad#toString(
+     * @see org.extex.typesetter.type.noad.Noad#toString(
      *      java.lang.StringBuffer, int)
      */
     public void toString(final StringBuffer sb, final int depth) {

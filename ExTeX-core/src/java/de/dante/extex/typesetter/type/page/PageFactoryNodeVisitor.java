@@ -1,17 +1,17 @@
 
 package de.dante.extex.typesetter.type.page;
 
+import org.extex.interpreter.context.Context;
 
-import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.type.NodeVisitor;
 
 /**
  * This interface describes a
- * {@link de.dante.extex.typesetter.type.NodeVisitor NodeVisitor} which is able
- * to take a {@link de.dante.extex.typesetter.type.page.Page Page},
- * a {@link de.dante.extex.interpreter.context.Context Context},
- * and a  {@link de.dante.extex.typesetter.Typesetter Typesetter}.
+ * {@link org.extex.typesetter.type.NodeVisitor NodeVisitor} which is able
+ * to take a {@link org.extex.typesetter.type.page.Page Page},
+ * a {@link org.extex.interpreter.context.Context Context},
+ * and a  {@link org.extex.typesetter.Typesetter Typesetter}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

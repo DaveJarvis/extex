@@ -19,18 +19,17 @@
 
 package de.dante.extex.typesetter.type.node;
 
-
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.interpreter.type.glue.FixedGlue;
+import org.extex.interpreter.type.glue.FixedGlueComponent;
+import org.extex.interpreter.type.glue.Glue;
+import org.extex.interpreter.type.glue.WideGlue;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
-import de.dante.extex.interpreter.type.glue.FixedGlue;
-import de.dante.extex.interpreter.type.glue.FixedGlueComponent;
-import de.dante.extex.interpreter.type.glue.Glue;
-import de.dante.extex.interpreter.type.glue.WideGlue;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeVisitor;
@@ -113,8 +112,8 @@ public abstract class AbstractNode implements Node {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#addDepthTo(
-     *      de.dante.extex.interpreter.type.glue.WideGlue)
+     * @see org.extex.typesetter.type.Node#addDepthTo(
+     *      org.extex.interpreter.type.glue.WideGlue)
      */
     public void addDepthTo(final WideGlue glue) {
 
@@ -122,8 +121,8 @@ public abstract class AbstractNode implements Node {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#addHeightTo(
-     *      de.dante.extex.interpreter.type.glue.WideGlue)
+     * @see org.extex.typesetter.type.Node#addHeightTo(
+     *      org.extex.interpreter.type.glue.WideGlue)
      */
     public void addHeightTo(final WideGlue glue) {
 
@@ -131,8 +130,8 @@ public abstract class AbstractNode implements Node {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#addWidthTo(
-     *      de.dante.extex.interpreter.type.glue.WideGlue)
+     * @see org.extex.typesetter.type.Node#addWidthTo(
+     *      org.extex.interpreter.type.glue.WideGlue)
      */
     public void addWidthTo(final WideGlue glue) {
 
@@ -189,10 +188,10 @@ public abstract class AbstractNode implements Node {
      *
      * @throws GeneralException in case of an error
      *
-     * @see de.dante.extex.typesetter.type.Node#atShipping(
-     *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.typesetter.Typesetter,
-     *      de.dante.extex.typesetter.type.NodeVisitor,
+     * @see org.extex.typesetter.type.Node#atShipping(
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.typesetter.Typesetter,
+     *      org.extex.typesetter.type.NodeVisitor,
      *      boolean)
      */
     public Node atShipping(final Context context, final Typesetter typesetter,
@@ -237,7 +236,7 @@ public abstract class AbstractNode implements Node {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#countChars()
+     * @see org.extex.typesetter.type.Node#countChars()
      */
     public int countChars() {
 
@@ -245,7 +244,7 @@ public abstract class AbstractNode implements Node {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#getChars()
+     * @see org.extex.typesetter.type.Node#getChars()
      */
     public CharNode[] getChars() {
 
@@ -253,7 +252,7 @@ public abstract class AbstractNode implements Node {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#getDepth()
+     * @see org.extex.typesetter.type.Node#getDepth()
      */
     public FixedDimen getDepth() {
 
@@ -261,7 +260,7 @@ public abstract class AbstractNode implements Node {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#getHeight()
+     * @see org.extex.typesetter.type.Node#getHeight()
      */
     public FixedDimen getHeight() {
 
@@ -282,7 +281,7 @@ public abstract class AbstractNode implements Node {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#getVerticalSize()
+     * @see org.extex.typesetter.type.Node#getVerticalSize()
      */
     public FixedDimen getVerticalSize() {
 
@@ -310,7 +309,7 @@ public abstract class AbstractNode implements Node {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#getWidth()
+     * @see org.extex.typesetter.type.Node#getWidth()
      */
     public FixedDimen getWidth() {
 
@@ -357,8 +356,8 @@ public abstract class AbstractNode implements Node {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#setDepth(
-     *      de.dante.extex.interpreter.type.dimen.FixedDimen)
+     * @see org.extex.typesetter.type.Node#setDepth(
+     *      org.extex.interpreter.type.dimen.FixedDimen)
      */
     public void setDepth(final FixedDimen glue) {
 
@@ -366,8 +365,8 @@ public abstract class AbstractNode implements Node {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#setHeight(
-     *      de.dante.extex.interpreter.type.dimen.FixedDimen)
+     * @see org.extex.typesetter.type.Node#setHeight(
+     *      org.extex.interpreter.type.dimen.FixedDimen)
      */
     public void setHeight(final FixedDimen glue) {
 
@@ -375,8 +374,8 @@ public abstract class AbstractNode implements Node {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#setWidth(
-     *      de.dante.extex.interpreter.type.dimen.FixedDimen)
+     * @see org.extex.typesetter.type.Node#setWidth(
+     *      org.extex.interpreter.type.dimen.FixedDimen)
      */
     public void setWidth(final FixedDimen glue) {
 
@@ -390,9 +389,9 @@ public abstract class AbstractNode implements Node {
      * @param h the desired height
      * @param sum the total sum of the glues
      *
-     * @see de.dante.extex.typesetter.type.Node#spreadHeight(
-     *      de.dante.extex.interpreter.type.dimen.FixedDimen,
-     *      de.dante.extex.interpreter.type.glue.FixedGlueComponent)
+     * @see org.extex.typesetter.type.Node#spreadHeight(
+     *      org.extex.interpreter.type.dimen.FixedDimen,
+     *      org.extex.interpreter.type.glue.FixedGlueComponent)
      */
     public void spreadHeight(final FixedDimen h, final FixedGlueComponent sum) {
 
@@ -405,9 +404,9 @@ public abstract class AbstractNode implements Node {
      * @param w the desired width
      * @param sum the total sum of the glues
      *
-     * @see de.dante.extex.typesetter.type.Node#spreadWidth(
-     *      de.dante.extex.interpreter.type.dimen.FixedDimen,
-     *      de.dante.extex.interpreter.type.glue.FixedGlueComponent)
+     * @see org.extex.typesetter.type.Node#spreadWidth(
+     *      org.extex.interpreter.type.dimen.FixedDimen,
+     *      org.extex.interpreter.type.glue.FixedGlueComponent)
      */
     public void spreadWidth(final FixedDimen w, final FixedGlueComponent sum) {
 
@@ -428,7 +427,7 @@ public abstract class AbstractNode implements Node {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#toString(
+     * @see org.extex.typesetter.type.Node#toString(
      *      java.lang.StringBuffer,
      *      java.lang.String,
      *      int,
@@ -460,7 +459,7 @@ public abstract class AbstractNode implements Node {
      * @param sb the output string buffer
      * @param prefix the string prepended to each line of the resulting text
      *
-     * @see de.dante.extex.typesetter.type.Node#toText(java.lang.StringBuffer,
+     * @see org.extex.typesetter.type.Node#toText(java.lang.StringBuffer,
      *      java.lang.String)
      */
     public void toText(final StringBuffer sb, final String prefix) {

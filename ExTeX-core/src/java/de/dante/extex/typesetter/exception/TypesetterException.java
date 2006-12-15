@@ -19,7 +19,7 @@
 
 package de.dante.extex.typesetter.exception;
 
-import de.dante.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.InterpreterException;
 
 /**
  * This is the base class for all exceptions thrown by the typesetter.

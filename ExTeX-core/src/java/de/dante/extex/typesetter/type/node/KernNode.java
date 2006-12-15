@@ -36,7 +36,7 @@ import de.dante.extex.typesetter.type.Node;
  * </p>
  *
  * @see "<logo>TeX</logo> &ndash; The Program [155]"
- * @see de.dante.extex.typesetter.type.node.ImplicitKernNode
+ * @see org.extex.typesetter.type.node.ImplicitKernNode
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

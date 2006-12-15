@@ -19,7 +19,8 @@
 
 package de.dante.extex.typesetter;
 
-import de.dante.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.InterpreterException;
+
 import de.dante.extex.typesetter.type.NodeList;
 
 /**

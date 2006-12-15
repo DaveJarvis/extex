@@ -20,14 +20,15 @@
 package de.dante.extex.typesetter.type.node;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.type.TokensWriter;
+import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.util.exception.GeneralException;
 
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.type.TokensWriter;
-import de.dante.extex.interpreter.type.tokens.Tokens;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeVisitor;
+
 
 /**
  * This WhatsIt node writes some expanded tokens to an out file on shipping.
@@ -98,10 +99,10 @@ public class WhatsItWriteNode extends WhatsItNode {
      *
      * @throws GeneralException in case of an IO error
      *
-     * @see de.dante.extex.typesetter.type.Node#atShipping(
-     *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.typesetter.Typesetter,
-     *      de.dante.extex.typesetter.type.NodeVisitor,
+     * @see org.extex.typesetter.type.Node#atShipping(
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.typesetter.Typesetter,
+     *      org.extex.typesetter.type.NodeVisitor,
      *      boolean)
      */
     public Node atShipping(final Context context, final Typesetter typesetter,

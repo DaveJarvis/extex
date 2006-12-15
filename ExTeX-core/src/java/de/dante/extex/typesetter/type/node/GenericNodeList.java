@@ -21,13 +21,13 @@ package de.dante.extex.typesetter.type.node;
 
 import java.util.ArrayList;
 
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.ImpossibleException;
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.interpreter.type.glue.FixedGlue;
 import org.extex.util.exception.GeneralException;
 
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.exception.ImpossibleException;
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
-import de.dante.extex.interpreter.type.glue.FixedGlue;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeIterator;
@@ -106,8 +106,8 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeList#add(int,
-     *      de.dante.extex.typesetter.type.Node)
+     * @see org.extex.typesetter.type.NodeList#add(int,
+     *      org.extex.typesetter.type.Node)
      */
     public void add(final int index, final Node node) {
 
@@ -115,8 +115,8 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeList#add(
-     *      de.dante.extex.typesetter.type.Node)
+     * @see org.extex.typesetter.type.NodeList#add(
+     *      org.extex.typesetter.type.Node)
      */
     public void add(final Node node) {
 
@@ -126,8 +126,8 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeList#addSkip(
-     *      de.dante.extex.interpreter.type.glue.FixedGlue)
+     * @see org.extex.typesetter.type.NodeList#addSkip(
+     *      org.extex.interpreter.type.glue.FixedGlue)
      */
     public void addSkip(final FixedGlue glue) {
 
@@ -136,10 +136,10 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#atShipping(
-     *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.typesetter.Typesetter,
-     *      de.dante.extex.typesetter.type.NodeVisitor,
+     * @see org.extex.typesetter.type.Node#atShipping(
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.typesetter.Typesetter,
+     *      org.extex.typesetter.type.NodeVisitor,
      *      boolean)
      */
     public Node atShipping(final Context context, final Typesetter typesetter,
@@ -168,7 +168,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeList#clear()
+     * @see org.extex.typesetter.type.NodeList#clear()
      */
     public void clear() {
 
@@ -179,7 +179,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeList#copy()
+     * @see org.extex.typesetter.type.NodeList#copy()
      */
     public NodeList copy() {
 
@@ -193,7 +193,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#countChars()
+     * @see org.extex.typesetter.type.Node#countChars()
      */
     public int countChars() {
 
@@ -216,7 +216,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeList#get(int)
+     * @see org.extex.typesetter.type.NodeList#get(int)
      */
     public Node get(final int index) {
 
@@ -224,7 +224,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#getChars()
+     * @see org.extex.typesetter.type.Node#getChars()
      */
     public CharNode[] getChars() {
 
@@ -245,7 +245,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeList#getMove()
+     * @see org.extex.typesetter.type.NodeList#getMove()
      */
     public Dimen getMove() {
 
@@ -253,7 +253,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeList#getShift()
+     * @see org.extex.typesetter.type.NodeList#getShift()
      */
     public Dimen getShift() {
 
@@ -292,7 +292,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeList#iterator()
+     * @see org.extex.typesetter.type.NodeList#iterator()
      */
     public NodeIterator iterator() {
 
@@ -300,7 +300,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeList#remove(int)
+     * @see org.extex.typesetter.type.NodeList#remove(int)
      */
     public Node remove(final int index) {
 
@@ -309,8 +309,8 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeList#setMove(
-     *      de.dante.extex.interpreter.type.dimen.FixedDimen)
+     * @see org.extex.typesetter.type.NodeList#setMove(
+     *      org.extex.interpreter.type.dimen.FixedDimen)
      */
     public void setMove(final FixedDimen d) {
 
@@ -318,8 +318,8 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeList#setShift(
-     *      de.dante.extex.interpreter.type.dimen.FixedDimen)
+     * @see org.extex.typesetter.type.NodeList#setShift(
+     *      org.extex.interpreter.type.dimen.FixedDimen)
      */
     public void setShift(final FixedDimen d) {
 
@@ -389,7 +389,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#toString(java.lang.StringBuffer,
+     * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuffer,
      *      java.lang.String, int, int)
      */
     public void toString(final StringBuffer sb, final String prefix,
@@ -439,7 +439,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#toText(java.lang.StringBuffer,
+     * @see org.extex.typesetter.type.Node#toText(java.lang.StringBuffer,
      *      java.lang.String)
      */
     public void toText(final StringBuffer sb, final String prefix) {
@@ -454,8 +454,8 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#visit(
-     *      de.dante.extex.typesetter.type.NodeVisitor,
+     * @see org.extex.typesetter.type.Node#visit(
+     *      org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)
      */
     public Object visit(final NodeVisitor visitor, final Object value)

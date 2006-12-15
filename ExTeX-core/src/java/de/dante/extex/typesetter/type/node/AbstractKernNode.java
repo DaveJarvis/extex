@@ -19,18 +19,17 @@
 
 package de.dante.extex.typesetter.type.node;
 
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.util.exception.GeneralException;
 
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
 import de.dante.extex.typesetter.type.NodeVisitor;
 
 /**
  * This class provides the same functionality as
- * {@link de.dante.extex.typesetter.type.node.KernNode KernNode} but is
- * distinguishable for the sake of some fine differentiations in
- * <logo>TeX</logo>.
- *
+ * {@link org.extex.typesetter.type.node.KernNode KernNode} but is
+ * distinguishable for the sake of some fine differentiations in <logo>TeX</logo>.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -38,7 +37,7 @@ public abstract class AbstractKernNode extends AbstractNode implements KernNode 
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param kern the natural size
      * @param horizontal the indicator that the kern works horizontally
      */
@@ -53,28 +52,25 @@ public abstract class AbstractKernNode extends AbstractNode implements KernNode 
      * This method puts the printable representation into the string buffer.
      * This is meant to produce a short form only as it is used in error
      * messages to the user.
-     *
+     * 
      * @param sb the output string buffer
      * @param prefix the prefix string inserted at the beginning of each line
      * @param breadth the breadth
      * @param depth the depth
-     *
+     * 
      * @see "<logo>TeX</logo> &ndash; The Program [191]"
-     * @see de.dante.extex.typesetter.type.Node#toString(
-     *      java.lang.StringBuffer,
-     *      java.lang.String,
-     *      int,
-     *      int)
+     * @see org.extex.typesetter.type.Node#toString( java.lang.StringBuffer,
+     *      java.lang.String, int, int)
      */
     public void toString(final StringBuffer sb, final String prefix,
             final int breadth, final int depth) {
 
         sb.append(getLocalizer().format("String.Format", //
-                getWidth().toString()));
+                                        getWidth().toString()));
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#toText(java.lang.StringBuffer,
+     * @see org.extex.typesetter.type.Node#toText(java.lang.StringBuffer,
      *      java.lang.String)
      */
     public void toText(final StringBuffer sb, final String prefix) {
@@ -83,9 +79,8 @@ public abstract class AbstractKernNode extends AbstractNode implements KernNode 
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#visit(
-     *      de.dante.extex.typesetter.type.NodeVisitor,
-     *      java.lang.Object)
+     * @see org.extex.typesetter.type.Node#visit(
+     *      org.extex.typesetter.type.NodeVisitor, java.lang.Object)
      */
     public Object visit(final NodeVisitor visitor, final Object value)
             throws GeneralException {

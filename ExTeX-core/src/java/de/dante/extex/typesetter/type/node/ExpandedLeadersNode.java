@@ -19,11 +19,12 @@
 
 package de.dante.extex.typesetter.type.node;
 
+import org.extex.interpreter.type.glue.FixedGlue;
 import org.extex.util.exception.GeneralException;
 
-import de.dante.extex.interpreter.type.glue.FixedGlue;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeVisitor;
+
 
 /**
  * This node represents an expandable leaders node as used by the primitive
@@ -83,7 +84,7 @@ public class ExpandedLeadersNode extends AbstractExpandableNode
      * @param depth the depth
      *
      * @see "<logo>TeX</logo> &ndash; The Program [190]"
-     * @see de.dante.extex.typesetter.type.Node#toString(
+     * @see org.extex.typesetter.type.Node#toString(
      *      java.lang.StringBuffer,
      *      java.lang.String,
      *      int,
@@ -97,8 +98,8 @@ public class ExpandedLeadersNode extends AbstractExpandableNode
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#visit(
-     *      de.dante.extex.typesetter.type.NodeVisitor,
+     * @see org.extex.typesetter.type.Node#visit(
+     *      org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)
      */
     public Object visit(final NodeVisitor visitor, final Object value)

@@ -28,6 +28,7 @@ import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.noad.util.MathContext;
 import de.dante.extex.typesetter.type.noad.util.MathSpacing;
 
+
 /**
  * The interface Noad is a type of data structure which represents mathematical
  * constructions.

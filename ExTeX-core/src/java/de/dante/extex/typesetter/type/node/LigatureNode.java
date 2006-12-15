@@ -19,13 +19,14 @@
 
 package de.dante.extex.typesetter.type.node;
 
+import org.extex.interpreter.context.tc.TypesettingContext;
+import org.extex.interpreter.type.font.Font;
 import org.extex.type.UnicodeChar;
 import org.extex.util.exception.GeneralException;
 
-import de.dante.extex.interpreter.context.tc.TypesettingContext;
-import de.dante.extex.interpreter.type.font.Font;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeVisitor;
+
 
 /**
  * The ligature node represents a ligature of several characters.
@@ -92,7 +93,7 @@ public class LigatureNode extends CharNode implements Node {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#countChars()
+     * @see org.extex.typesetter.type.Node#countChars()
      */
     public int countChars() {
 
@@ -100,7 +101,7 @@ public class LigatureNode extends CharNode implements Node {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#getChars()
+     * @see org.extex.typesetter.type.Node#getChars()
      */
     public CharNode[] getChars() {
 
@@ -138,7 +139,7 @@ public class LigatureNode extends CharNode implements Node {
      * @param depth the depth
      *
      * @see "<logo>TeX</logo> &ndash; The Program [193]"
-     * @see de.dante.extex.typesetter.type.Node#toString(
+     * @see org.extex.typesetter.type.Node#toString(
      *      java.lang.StringBuffer,
      *      java.lang.String,
      *      int,
@@ -154,8 +155,8 @@ public class LigatureNode extends CharNode implements Node {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#visit(
-     *      de.dante.extex.typesetter.type.NodeVisitor,
+     * @see org.extex.typesetter.type.Node#visit(
+     *      org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)
      */
     public Object visit(final NodeVisitor visitor, final Object value)

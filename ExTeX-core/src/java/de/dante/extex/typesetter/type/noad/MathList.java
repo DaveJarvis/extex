@@ -27,6 +27,7 @@ import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.noad.util.MathContext;
 
+
 /**
  * This class provides a container for Noads and Nodes.
  *
@@ -128,7 +129,7 @@ public class MathList extends AbstractNoad {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.noad.Noad#toString(
+     * @see org.extex.typesetter.type.noad.Noad#toString(
      *      java.lang.StringBuffer)
      */
     public void toString(final StringBuffer sb) {
@@ -139,7 +140,7 @@ public class MathList extends AbstractNoad {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.noad.Noad#toString(
+     * @see org.extex.typesetter.type.noad.Noad#toString(
      *      java.lang.StringBuffer, int)
      */
     public void toString(final StringBuffer sb, final int depth) {
@@ -154,12 +155,12 @@ public class MathList extends AbstractNoad {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.noad.Noad#typeset(
-     *      de.dante.extex.typesetter.type.noad.Noad,
-     *      de.dante.extex.typesetter.type.noad.NoadList,
+     * @see org.extex.typesetter.type.noad.Noad#typeset(
+     *      org.extex.typesetter.type.noad.Noad,
+     *      org.extex.typesetter.type.noad.NoadList,
      *      int,
-     *      de.dante.extex.typesetter.type.NodeList,
-     *      de.dante.extex.typesetter.type.noad.util.MathContext,
+     *      org.extex.typesetter.type.NodeList,
+     *      org.extex.typesetter.type.noad.util.MathContext,
      *      java.util.logging.Logger)
      */
     public void typeset(final Noad previousNoad, final NoadList noads,

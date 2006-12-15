@@ -20,13 +20,14 @@
 package de.dante.extex.typesetter.type.node;
 
 
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.type.glue.FixedGlue;
 import org.extex.util.exception.GeneralException;
 
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.type.glue.FixedGlue;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeVisitor;
+
 
 /**
  * This node represents an aligned leaders node as used by the primitive
@@ -76,10 +77,10 @@ public class AlignedLeadersNode extends AbstractExpandableNode
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.node.AbstractNode#atShipping(
-     *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.typesetter.Typesetter,
-     *      de.dante.extex.typesetter.type.NodeVisitor,
+     * @see org.extex.typesetter.type.node.AbstractNode#atShipping(
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.typesetter.Typesetter,
+     *      org.extex.typesetter.type.NodeVisitor,
      *      boolean)
      */
     public Node atShipping(final Context context, final Typesetter typesetter,
@@ -110,7 +111,7 @@ public class AlignedLeadersNode extends AbstractExpandableNode
      * @param depth the depth
      *
      * @see "<logo>TeX</logo> &ndash; The Program [190]"
-     * @see de.dante.extex.typesetter.type.Node#toString(
+     * @see org.extex.typesetter.type.Node#toString(
      *      java.lang.StringBuffer,
      *      java.lang.String,
      *      int,
@@ -124,8 +125,8 @@ public class AlignedLeadersNode extends AbstractExpandableNode
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#visit(
-     *      de.dante.extex.typesetter.type.NodeVisitor,
+     * @see org.extex.typesetter.type.Node#visit(
+     *      org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)
      */
     public Object visit(final NodeVisitor visitor, final Object value)

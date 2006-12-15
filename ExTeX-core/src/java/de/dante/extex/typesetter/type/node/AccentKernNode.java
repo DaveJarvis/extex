@@ -19,11 +19,11 @@
 
 package de.dante.extex.typesetter.type.node;
 
-import de.dante.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.dimen.Dimen;
 
 /**
  * This class provides the same functionality as
- * {@link de.dante.extex.typesetter.type.node.KernNode KernNode} but is
+ * {@link org.extex.typesetter.type.node.KernNode KernNode} but is
  * distinguishable for the sake of some fine differentiations in
  * <logo>TeX</logo>.
  *

@@ -19,7 +19,7 @@
 
 package de.dante.extex.typesetter.listMaker.math;
 
-import de.dante.extex.interpreter.exception.helping.CantUseInException;
+import org.extex.interpreter.exception.helping.CantUseInException;
 
 /**
  * This interface describes the functionality to activate the typesetting of an

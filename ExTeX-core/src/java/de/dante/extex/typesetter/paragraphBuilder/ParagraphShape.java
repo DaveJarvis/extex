@@ -22,8 +22,9 @@ package de.dante.extex.typesetter.paragraphBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.dimen.FixedDimen;
+
 
 /**
  * This class defines an arbitrary paragraph shape.

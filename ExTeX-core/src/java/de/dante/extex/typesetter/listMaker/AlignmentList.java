@@ -20,11 +20,12 @@
 package de.dante.extex.typesetter.listMaker;
 
 import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
 
-import de.dante.extex.interpreter.context.Context;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.type.NodeList;
+
 
 /**
  * This interface describes a list for alignments with the associated methods.

@@ -21,20 +21,21 @@ package de.dante.extex.typesetter.type.node;
 
 import java.util.logging.Logger;
 
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.interpreter.type.glue.FixedGlue;
+import org.extex.interpreter.type.glue.FixedGlueComponent;
+import org.extex.interpreter.type.glue.WideGlue;
 import org.extex.util.exception.GeneralException;
 
-
-import de.dante.extex.interpreter.context.Context;
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
-import de.dante.extex.interpreter.type.glue.FixedGlue;
-import de.dante.extex.interpreter.type.glue.FixedGlueComponent;
-import de.dante.extex.interpreter.type.glue.WideGlue;
 import de.dante.extex.typesetter.Badness;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.type.Node;
 import de.dante.extex.typesetter.type.NodeList;
 import de.dante.extex.typesetter.type.NodeVisitor;
+
+
 
 /**
  * This class provides an implementation for a vertical list.
@@ -71,9 +72,9 @@ public class VerticalListNode extends GenericNodeList implements NodeList {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.node.AbstractNodeList#add(
+     * @see org.extex.typesetter.type.node.AbstractNodeList#add(
      *      int,
-     *      de.dante.extex.typesetter.type.Node)
+     *      org.extex.typesetter.type.Node)
      */
     public void add(final int index, final Node node) {
 
@@ -104,8 +105,8 @@ public class VerticalListNode extends GenericNodeList implements NodeList {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.node.AbstractNodeList#add(
-     *      de.dante.extex.typesetter.type.Node)
+     * @see org.extex.typesetter.type.node.AbstractNodeList#add(
+     *      org.extex.typesetter.type.Node)
      */
     public void add(final Node node) {
 
@@ -126,8 +127,8 @@ public class VerticalListNode extends GenericNodeList implements NodeList {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeList#addSkip(
-     *      de.dante.extex.interpreter.type.glue.FixedGlue)
+     * @see org.extex.typesetter.type.NodeList#addSkip(
+     *      org.extex.interpreter.type.glue.FixedGlue)
      */
     public void addSkip(final FixedGlue glue) {
 
@@ -135,10 +136,10 @@ public class VerticalListNode extends GenericNodeList implements NodeList {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.node.AbstractNodeList#atShipping(
-     *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.typesetter.Typesetter,
-     *      de.dante.extex.typesetter.type.NodeVisitor,
+     * @see org.extex.typesetter.type.node.AbstractNodeList#atShipping(
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.typesetter.Typesetter,
+     *      org.extex.typesetter.type.NodeVisitor,
      *      boolean)
      */
     public Node atShipping(final Context context, final Typesetter typesetter,
@@ -264,16 +265,16 @@ public class VerticalListNode extends GenericNodeList implements NodeList {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#spreadHeight(
-     *      de.dante.extex.interpreter.type.dimen.FixedDimen,
-     *      de.dante.extex.interpreter.type.glue.FixedGlueComponent)
+     * @see org.extex.typesetter.type.Node#spreadHeight(
+     *      org.extex.interpreter.type.dimen.FixedDimen,
+     *      org.extex.interpreter.type.glue.FixedGlueComponent)
      */
     public void spreadHeight(final FixedDimen w, final FixedGlueComponent sum) {
 
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#toString(
+     * @see org.extex.typesetter.type.Node#toString(
      *      java.lang.StringBuffer,
      *      java.lang.String, int, int)
      */
@@ -285,7 +286,7 @@ public class VerticalListNode extends GenericNodeList implements NodeList {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#toText(java.lang.StringBuffer,
+     * @see org.extex.typesetter.type.Node#toText(java.lang.StringBuffer,
      *      java.lang.String)
      */
     public void toText(final StringBuffer sb, final String prefix) {
@@ -295,8 +296,8 @@ public class VerticalListNode extends GenericNodeList implements NodeList {
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.Node#visit(
-     *      de.dante.extex.typesetter.type.NodeVisitor,
+     * @see org.extex.typesetter.type.Node#visit(
+     *      org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)
      */
     public Object visit(final NodeVisitor visitor, final Object value)
