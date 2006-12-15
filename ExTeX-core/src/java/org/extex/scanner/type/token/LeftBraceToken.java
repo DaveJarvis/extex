@@ -17,16 +17,15 @@
  *
  */
 
-package de.dante.extex.scanner.type.token;
+package org.extex.scanner.type.token;
 
+import org.extex.scanner.type.Catcode;
 import org.extex.type.UnicodeChar;
 
-import de.dante.extex.scanner.type.Catcode;
 
 
 /**
- * This class represents an other token, i.e. one not covered by the other
- * token classes.
+ * This class represents a left brace token.
  * <p>
  * This class has a protected constructor only. Use the factory
  * {@link org.extex.scanner.type.token.TokenFactory TokenFactory}
@@ -34,9 +33,9 @@ import de.dante.extex.scanner.type.Catcode;
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 4738 $
  */
-public class OtherToken extends AbstractToken implements Token {
+public class LeftBraceToken extends AbstractToken implements Token {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
@@ -48,7 +47,7 @@ public class OtherToken extends AbstractToken implements Token {
      *
      * @param uc the actual value
      */
-    protected OtherToken(final UnicodeChar uc) {
+    protected LeftBraceToken(final UnicodeChar uc) {
 
         super(uc);
     }
@@ -58,7 +57,7 @@ public class OtherToken extends AbstractToken implements Token {
      */
     public Catcode getCatcode() {
 
-        return Catcode.OTHER;
+        return Catcode.LEFTBRACE;
     }
 
     /**
@@ -70,7 +69,7 @@ public class OtherToken extends AbstractToken implements Token {
      */
     public String toString() {
 
-        return getLocalizer().format("OtherToken.Text", super.toString());
+        return getLocalizer().format("LeftBraceToken.Text", super.toString());
     }
 
     /**
@@ -82,7 +81,8 @@ public class OtherToken extends AbstractToken implements Token {
      */
     public void toString(final StringBuffer sb) {
 
-        sb.append(getLocalizer().format("OtherToken.Text", super.toString()));
+        sb.append(getLocalizer()
+                .format("LeftBraceToken.Text", super.toString()));
     }
 
     /**
@@ -93,7 +93,7 @@ public class OtherToken extends AbstractToken implements Token {
     public Object visit(final TokenVisitor visitor, final Object arg1)
             throws Exception {
 
-        return visitor.visitOther(this, arg1);
+        return visitor.visitLeftBrace(this, arg1);
     }
 
 }

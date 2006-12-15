@@ -25,13 +25,13 @@ import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.MissingMathException;
 import org.extex.interpreter.type.count.FixedCount;
 import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.token.Token;
 import org.extex.type.Locator;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
-import de.dante.extex.scanner.type.Catcode;
-import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.ListMaker;
 import de.dante.extex.typesetter.Mode;
 import de.dante.extex.typesetter.Typesetter;

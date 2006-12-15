@@ -17,12 +17,12 @@
  *
  */
 
-package de.dante.extex.scanner.type.token;
+package org.extex.scanner.type.token;
 
+import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.CatcodeException;
 import org.extex.type.UnicodeChar;
 
-import de.dante.extex.scanner.type.Catcode;
-import de.dante.extex.scanner.type.CatcodeException;
 
 /**
  * This is the interface for the token factory.
@@ -31,7 +31,7 @@ import de.dante.extex.scanner.type.CatcodeException;
  * cache some of them and deliver the same token several times.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 4738 $
  */
 public interface TokenFactory {
 

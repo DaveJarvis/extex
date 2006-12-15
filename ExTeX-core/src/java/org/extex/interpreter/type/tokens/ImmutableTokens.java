@@ -19,7 +19,7 @@
 
 package org.extex.interpreter.type.tokens;
 
-import de.dante.extex.scanner.type.token.Token;
+import org.extex.scanner.type.token.Token;
 
 /**
  * This class presents a

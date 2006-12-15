@@ -27,10 +27,10 @@ import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.count.Count;
 import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.token.Token;
 import org.extex.type.Locator;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Mode;
 import de.dante.extex.typesetter.Typesetter;
 import de.dante.extex.typesetter.TypesetterOptions;

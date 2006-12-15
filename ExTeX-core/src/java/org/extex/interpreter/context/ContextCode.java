@@ -21,8 +21,8 @@ package org.extex.interpreter.context;
 
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.Code;
+import org.extex.scanner.type.token.CodeToken;
 
-import de.dante.extex.scanner.type.token.CodeToken;
 
 /**
  * This interface describes the container for code of an interpreter

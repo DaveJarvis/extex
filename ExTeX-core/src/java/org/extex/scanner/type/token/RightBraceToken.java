@@ -17,15 +17,15 @@
  *
  */
 
-package de.dante.extex.scanner.type.token;
+package org.extex.scanner.type.token;
 
+import org.extex.scanner.type.Catcode;
 import org.extex.type.UnicodeChar;
 
-import de.dante.extex.scanner.type.Catcode;
 
 
 /**
- * This class represents a tab mark token.
+ * This class represents a right brace token.
  * <p>
  * This class has a protected constructor only. Use the factory
  * {@link org.extex.scanner.type.token.TokenFactory TokenFactory}
@@ -33,9 +33,9 @@ import de.dante.extex.scanner.type.Catcode;
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 4738 $
  */
-public class TabMarkToken extends AbstractToken implements Token {
+public class RightBraceToken extends AbstractToken implements Token {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
@@ -47,7 +47,7 @@ public class TabMarkToken extends AbstractToken implements Token {
      *
      * @param uc the actual value
      */
-    protected TabMarkToken(final UnicodeChar uc) {
+    protected RightBraceToken(final UnicodeChar uc) {
 
         super(uc);
     }
@@ -57,7 +57,7 @@ public class TabMarkToken extends AbstractToken implements Token {
      */
     public Catcode getCatcode() {
 
-        return Catcode.TABMARK;
+        return Catcode.RIGHTBRACE;
     }
 
     /**
@@ -69,7 +69,7 @@ public class TabMarkToken extends AbstractToken implements Token {
      */
     public String toString() {
 
-        return getLocalizer().format("TabMarkToken.Text", super.toString());
+        return getLocalizer().format("RightBraceToken.Text", super.toString());
     }
 
     /**
@@ -81,7 +81,8 @@ public class TabMarkToken extends AbstractToken implements Token {
      */
     public void toString(final StringBuffer sb) {
 
-        sb.append(getLocalizer().format("TabMarkToken.Text", super.toString()));
+        sb.append(getLocalizer().format("RightBraceToken.Text",
+                super.toString()));
     }
 
     /**
@@ -92,7 +93,7 @@ public class TabMarkToken extends AbstractToken implements Token {
     public Object visit(final TokenVisitor visitor, final Object arg1)
             throws Exception {
 
-        return visitor.visitTabMark(this, arg1);
+        return visitor.visitRightBrace(this, arg1);
     }
 
 }

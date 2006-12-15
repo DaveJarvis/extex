@@ -19,7 +19,7 @@
 
 package org.extex.interpreter.context.observer.code;
 
-import de.dante.extex.scanner.type.token.Token;
+import org.extex.scanner.type.token.Token;
 
 /**
  * This interface describes the possibility to register an observer for an

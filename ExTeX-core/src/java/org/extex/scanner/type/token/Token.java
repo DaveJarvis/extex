@@ -17,11 +17,11 @@
  *
  */
 
-package de.dante.extex.scanner.type.token;
+package org.extex.scanner.type.token;
 
+import org.extex.scanner.type.Catcode;
 import org.extex.type.UnicodeChar;
 
-import de.dante.extex.scanner.type.Catcode;
 
 
 /**
@@ -35,7 +35,7 @@ import de.dante.extex.scanner.type.Catcode;
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
+ * @version $Revision: 4738 $
  */
 public interface Token {
 

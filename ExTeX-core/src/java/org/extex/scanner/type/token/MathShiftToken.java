@@ -17,14 +17,15 @@
  *
  */
 
-package de.dante.extex.scanner.type.token;
+package org.extex.scanner.type.token;
 
+import org.extex.scanner.type.Catcode;
 import org.extex.type.UnicodeChar;
 
-import de.dante.extex.scanner.type.Catcode;
+
 
 /**
- * This class represents a letter token.
+ * This class represents a math shift token.
  * <p>
  * This class has a protected constructor only. Use the factory
  * {@link org.extex.scanner.type.token.TokenFactory TokenFactory}
@@ -32,9 +33,9 @@ import de.dante.extex.scanner.type.Catcode;
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 4738 $
  */
-public class LetterToken extends AbstractToken implements Token {
+public class MathShiftToken extends AbstractToken implements Token {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
@@ -44,9 +45,9 @@ public class LetterToken extends AbstractToken implements Token {
     /**
      * Creates a new object.
      *
-     * @param uc the letter as a single character string
+     * @param uc the actual value
      */
-    protected LetterToken(final UnicodeChar uc) {
+    protected MathShiftToken(final UnicodeChar uc) {
 
         super(uc);
     }
@@ -56,7 +57,7 @@ public class LetterToken extends AbstractToken implements Token {
      */
     public Catcode getCatcode() {
 
-        return Catcode.LETTER;
+        return Catcode.MATHSHIFT;
     }
 
     /**
@@ -68,7 +69,7 @@ public class LetterToken extends AbstractToken implements Token {
      */
     public String toString() {
 
-        return getLocalizer().format("LetterToken.Text", super.toString());
+        return getLocalizer().format("MathShiftToken.Text", super.toString());
     }
 
     /**
@@ -80,7 +81,8 @@ public class LetterToken extends AbstractToken implements Token {
      */
     public void toString(final StringBuffer sb) {
 
-        sb.append(getLocalizer().format("LetterToken.Text", super.toString()));
+        sb.append(getLocalizer()
+                .format("MathShiftToken.Text", super.toString()));
     }
 
     /**
@@ -91,7 +93,7 @@ public class LetterToken extends AbstractToken implements Token {
     public Object visit(final TokenVisitor visitor, final Object arg1)
             throws Exception {
 
-        return visitor.visitLetter(this, arg1);
+        return visitor.visitMathShift(this, arg1);
     }
 
 }

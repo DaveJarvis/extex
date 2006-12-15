@@ -29,22 +29,22 @@ import java.io.Writer;
 
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.token.ActiveCharacterToken;
+import org.extex.scanner.type.token.ControlSequenceToken;
+import org.extex.scanner.type.token.CrToken;
+import org.extex.scanner.type.token.LeftBraceToken;
+import org.extex.scanner.type.token.LetterToken;
+import org.extex.scanner.type.token.MacroParamToken;
+import org.extex.scanner.type.token.MathShiftToken;
+import org.extex.scanner.type.token.OtherToken;
+import org.extex.scanner.type.token.RightBraceToken;
+import org.extex.scanner.type.token.SpaceToken;
+import org.extex.scanner.type.token.SubMarkToken;
+import org.extex.scanner.type.token.SupMarkToken;
+import org.extex.scanner.type.token.TabMarkToken;
+import org.extex.scanner.type.token.TokenVisitor;
 import org.extex.type.UnicodeChar;
 
-import de.dante.extex.scanner.type.token.ActiveCharacterToken;
-import de.dante.extex.scanner.type.token.ControlSequenceToken;
-import de.dante.extex.scanner.type.token.CrToken;
-import de.dante.extex.scanner.type.token.LeftBraceToken;
-import de.dante.extex.scanner.type.token.LetterToken;
-import de.dante.extex.scanner.type.token.MacroParamToken;
-import de.dante.extex.scanner.type.token.MathShiftToken;
-import de.dante.extex.scanner.type.token.OtherToken;
-import de.dante.extex.scanner.type.token.RightBraceToken;
-import de.dante.extex.scanner.type.token.SpaceToken;
-import de.dante.extex.scanner.type.token.SubMarkToken;
-import de.dante.extex.scanner.type.token.SupMarkToken;
-import de.dante.extex.scanner.type.token.TabMarkToken;
-import de.dante.extex.scanner.type.token.TokenVisitor;
 
 /**
  * This class holds an output file onto which tokens can be wrtitten.

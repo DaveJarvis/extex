@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.scanner.type;
+package org.extex.scanner.type;
 
 /**
  * This interface describes the capabilities for a visitor class on the category

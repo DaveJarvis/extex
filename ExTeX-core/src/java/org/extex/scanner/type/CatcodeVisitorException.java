@@ -17,16 +17,16 @@
  *
  */
 
-package de.dante.extex.scanner.type;
+package org.extex.scanner.type;
 
 /**
- * This exception is thrown when a value is encountered which has the wrong
- * number of characters in it.
+ * This exception is thrown when something in the context of catcode creation or
+ * access goes wrong.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class CatcodeWrongLengthException extends CatcodeException {
+public class CatcodeVisitorException extends CatcodeException {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
@@ -35,12 +35,10 @@ public class CatcodeWrongLengthException extends CatcodeException {
 
     /**
      * Creates a new object.
-     *
-     * @param message the message of the exception
      */
-    public CatcodeWrongLengthException(final String message) {
+    public CatcodeVisitorException() {
 
-        super(message);
+        super();
     }
 
     /**
@@ -48,7 +46,7 @@ public class CatcodeWrongLengthException extends CatcodeException {
      */
     public String getLocalizedMessage() {
 
-        return getLocalizer().format("CatcodeWrongLengthException.Text", //
+        return getLocalizer().format("CatcodeVisitorException.Text", //
                 super.getMessage());
     }
 

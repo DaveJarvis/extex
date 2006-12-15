@@ -26,14 +26,14 @@ import java.util.List;
 import org.extex.interpreter.Namespace;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.CatcodeException;
+import org.extex.scanner.type.token.ControlSequenceToken;
+import org.extex.scanner.type.token.MacroParamToken;
+import org.extex.scanner.type.token.Token;
+import org.extex.scanner.type.token.TokenFactory;
 import org.extex.type.UnicodeChar;
 
-import de.dante.extex.scanner.type.Catcode;
-import de.dante.extex.scanner.type.CatcodeException;
-import de.dante.extex.scanner.type.token.ControlSequenceToken;
-import de.dante.extex.scanner.type.token.MacroParamToken;
-import de.dante.extex.scanner.type.token.Token;
-import de.dante.extex.scanner.type.token.TokenFactory;
 
 
 /**

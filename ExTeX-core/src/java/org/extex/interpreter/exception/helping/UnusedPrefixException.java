@@ -19,9 +19,9 @@
 
 package org.extex.interpreter.exception.helping;
 
+import org.extex.scanner.type.token.Token;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
-import de.dante.extex.scanner.type.token.Token;
 
 /**
  * This exception is raised when an unused prefix flag has been encountered.

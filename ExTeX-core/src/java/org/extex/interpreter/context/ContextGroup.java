@@ -24,10 +24,10 @@ import org.extex.interpreter.context.group.GroupInfo;
 import org.extex.interpreter.context.group.GroupType;
 import org.extex.interpreter.context.observer.group.AfterGroupObserver;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.scanner.type.token.Token;
 import org.extex.type.Locator;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
 
 

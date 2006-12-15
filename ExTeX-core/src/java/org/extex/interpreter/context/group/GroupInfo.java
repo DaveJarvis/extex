@@ -19,9 +19,9 @@
 
 package org.extex.interpreter.context.group;
 
+import org.extex.scanner.type.token.Token;
 import org.extex.type.Locator;
 
-import de.dante.extex.scanner.type.token.Token;
 
 /**
  * This interface provides access to the info for some group.

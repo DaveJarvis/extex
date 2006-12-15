@@ -21,9 +21,9 @@ package org.extex.interpreter.type.glue;
 
 import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.token.TokenFactory;
 import org.extex.util.exception.GeneralException;
 
-import de.dante.extex.scanner.type.token.TokenFactory;
 
 /**
  * This interface describes the features of a

@@ -17,11 +17,11 @@
  *
  */
 
-package de.dante.extex.scanner.type.token;
+package org.extex.scanner.type.token;
 
+import org.extex.scanner.type.Catcode;
 import org.extex.type.UnicodeChar;
 
-import de.dante.extex.scanner.type.Catcode;
 
 
 /**
@@ -33,7 +33,7 @@ import de.dante.extex.scanner.type.Catcode;
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 4738 $
  */
 public class CrToken extends AbstractToken implements Token {
 

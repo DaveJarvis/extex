@@ -34,15 +34,15 @@ import org.extex.interpreter.type.dimen.DimenConvertible;
 import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.scaled.ScaledNumber;
 import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.CatcodeException;
+import org.extex.scanner.type.token.CodeToken;
+import org.extex.scanner.type.token.LetterToken;
+import org.extex.scanner.type.token.Token;
+import org.extex.scanner.type.token.TokenFactory;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
-import de.dante.extex.scanner.type.Catcode;
-import de.dante.extex.scanner.type.CatcodeException;
-import de.dante.extex.scanner.type.token.CodeToken;
-import de.dante.extex.scanner.type.token.LetterToken;
-import de.dante.extex.scanner.type.token.Token;
-import de.dante.extex.scanner.type.token.TokenFactory;
 import de.dante.extex.typesetter.Typesetter;
 
 /**

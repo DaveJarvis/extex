@@ -39,13 +39,13 @@ import org.extex.interpreter.type.glue.GlueComponent;
 import org.extex.interpreter.type.scaled.ScaledConvertible;
 import org.extex.interpreter.type.scaled.ScaledNumber;
 import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.token.CodeToken;
+import org.extex.scanner.type.token.LetterToken;
+import org.extex.scanner.type.token.OtherToken;
+import org.extex.scanner.type.token.Token;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
-import de.dante.extex.scanner.type.Catcode;
-import de.dante.extex.scanner.type.token.CodeToken;
-import de.dante.extex.scanner.type.token.LetterToken;
-import de.dante.extex.scanner.type.token.OtherToken;
-import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
 
 /**

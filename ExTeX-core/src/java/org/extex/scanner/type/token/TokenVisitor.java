@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.scanner.type.token;
+package org.extex.scanner.type.token;
 
 /**
  * This interface describes the capabilities for a visitor class on the token

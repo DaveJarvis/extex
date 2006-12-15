@@ -31,16 +31,16 @@ import org.extex.interpreter.exception.helping.MissingNumberException;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.token.CodeToken;
+import org.extex.scanner.type.token.ControlSequenceToken;
+import org.extex.scanner.type.token.LetterToken;
+import org.extex.scanner.type.token.OtherToken;
+import org.extex.scanner.type.token.SpaceToken;
+import org.extex.scanner.type.token.Token;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
-import de.dante.extex.scanner.type.Catcode;
-import de.dante.extex.scanner.type.token.CodeToken;
-import de.dante.extex.scanner.type.token.ControlSequenceToken;
-import de.dante.extex.scanner.type.token.LetterToken;
-import de.dante.extex.scanner.type.token.OtherToken;
-import de.dante.extex.scanner.type.token.SpaceToken;
-import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
 
 

@@ -17,14 +17,14 @@
  *
  */
 
-package de.dante.extex.scanner.type.token;
+package org.extex.scanner.type.token;
 
+import org.extex.scanner.type.Catcode;
 import org.extex.type.UnicodeChar;
 
-import de.dante.extex.scanner.type.Catcode;
 
 /**
- * This class represents a super mark token.
+ * This class represents a letter token.
  * <p>
  * This class has a protected constructor only. Use the factory
  * {@link org.extex.scanner.type.token.TokenFactory TokenFactory}
@@ -32,9 +32,9 @@ import de.dante.extex.scanner.type.Catcode;
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 4738 $
  */
-public class SupMarkToken extends AbstractToken implements Token {
+public class LetterToken extends AbstractToken implements Token {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
@@ -44,9 +44,9 @@ public class SupMarkToken extends AbstractToken implements Token {
     /**
      * Creates a new object.
      *
-     * @param uc the actual value
+     * @param uc the letter as a single character string
      */
-    protected SupMarkToken(final UnicodeChar uc) {
+    protected LetterToken(final UnicodeChar uc) {
 
         super(uc);
     }
@@ -56,7 +56,7 @@ public class SupMarkToken extends AbstractToken implements Token {
      */
     public Catcode getCatcode() {
 
-        return Catcode.SUPMARK;
+        return Catcode.LETTER;
     }
 
     /**
@@ -68,7 +68,7 @@ public class SupMarkToken extends AbstractToken implements Token {
      */
     public String toString() {
 
-        return getLocalizer().format("SupMarkToken.Text", super.toString());
+        return getLocalizer().format("LetterToken.Text", super.toString());
     }
 
     /**
@@ -80,7 +80,7 @@ public class SupMarkToken extends AbstractToken implements Token {
      */
     public void toString(final StringBuffer sb) {
 
-        sb.append(getLocalizer().format("SupMarkToken.Text", super.toString()));
+        sb.append(getLocalizer().format("LetterToken.Text", super.toString()));
     }
 
     /**
@@ -91,7 +91,7 @@ public class SupMarkToken extends AbstractToken implements Token {
     public Object visit(final TokenVisitor visitor, final Object arg1)
             throws Exception {
 
-        return visitor.visitSupMark(this, arg1);
+        return visitor.visitLetter(this, arg1);
     }
 
 }

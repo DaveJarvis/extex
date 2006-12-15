@@ -17,15 +17,16 @@
  *
  */
 
-package de.dante.extex.scanner.type.token;
+package org.extex.scanner.type.token;
 
+import org.extex.scanner.type.Catcode;
 import org.extex.type.UnicodeChar;
 
-import de.dante.extex.scanner.type.Catcode;
 
 
 /**
- * This class represents a sub mark token.
+ * This class represents an other token, i.e. one not covered by the other
+ * token classes.
  * <p>
  * This class has a protected constructor only. Use the factory
  * {@link org.extex.scanner.type.token.TokenFactory TokenFactory}
@@ -33,9 +34,9 @@ import de.dante.extex.scanner.type.Catcode;
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 4738 $
  */
-public class SubMarkToken extends AbstractToken implements Token {
+public class OtherToken extends AbstractToken implements Token {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
@@ -47,7 +48,7 @@ public class SubMarkToken extends AbstractToken implements Token {
      *
      * @param uc the actual value
      */
-    protected SubMarkToken(final UnicodeChar uc) {
+    protected OtherToken(final UnicodeChar uc) {
 
         super(uc);
     }
@@ -57,7 +58,7 @@ public class SubMarkToken extends AbstractToken implements Token {
      */
     public Catcode getCatcode() {
 
-        return Catcode.SUBMARK;
+        return Catcode.OTHER;
     }
 
     /**
@@ -69,7 +70,7 @@ public class SubMarkToken extends AbstractToken implements Token {
      */
     public String toString() {
 
-        return getLocalizer().format("SubMarkToken.Text", super.toString());
+        return getLocalizer().format("OtherToken.Text", super.toString());
     }
 
     /**
@@ -81,7 +82,7 @@ public class SubMarkToken extends AbstractToken implements Token {
      */
     public void toString(final StringBuffer sb) {
 
-        sb.append(getLocalizer().format("SubMarkToken.Text", super.toString()));
+        sb.append(getLocalizer().format("OtherToken.Text", super.toString()));
     }
 
     /**
@@ -92,7 +93,7 @@ public class SubMarkToken extends AbstractToken implements Token {
     public Object visit(final TokenVisitor visitor, final Object arg1)
             throws Exception {
 
-        return visitor.visitSubMark(this, arg1);
+        return visitor.visitOther(this, arg1);
     }
 
 }

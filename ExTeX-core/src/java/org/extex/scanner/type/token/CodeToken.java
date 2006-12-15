@@ -17,14 +17,14 @@
  *
  */
 
-package de.dante.extex.scanner.type.token;
+package org.extex.scanner.type.token;
 
 /**
  * The code token extends the {@link org.extex.scanner.type.token.Token Token}
  * with the ability to retrieve a namespace.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 4738 $
  */
 public interface CodeToken extends Token {
 

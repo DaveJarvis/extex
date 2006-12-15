@@ -30,11 +30,11 @@ import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.token.CodeToken;
+import org.extex.scanner.type.token.Token;
+import org.extex.scanner.type.token.TokenFactory;
 import org.extex.util.exception.GeneralException;
 
-import de.dante.extex.scanner.type.token.CodeToken;
-import de.dante.extex.scanner.type.token.Token;
-import de.dante.extex.scanner.type.token.TokenFactory;
 import de.dante.extex.typesetter.Typesetter;
 
 

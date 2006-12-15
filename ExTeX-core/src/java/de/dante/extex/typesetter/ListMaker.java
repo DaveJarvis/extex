@@ -26,11 +26,11 @@ import org.extex.interpreter.type.count.Count;
 import org.extex.interpreter.type.count.FixedCount;
 import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.glue.FixedGlue;
+import org.extex.scanner.type.token.Token;
 import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.exception.InvalidSpacefactorException;
 import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.exception.TypesetterUnsupportedException;

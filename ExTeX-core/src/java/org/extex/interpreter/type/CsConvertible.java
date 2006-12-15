@@ -22,8 +22,8 @@ package org.extex.interpreter.type;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.scanner.type.token.Token;
 
-import de.dante.extex.scanner.type.token.Token;
 
 /**
  * This is an interface which describes the feature to be convertible into a

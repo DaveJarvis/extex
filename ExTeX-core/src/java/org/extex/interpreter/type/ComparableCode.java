@@ -21,8 +21,8 @@ package org.extex.interpreter.type;
 
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.scanner.type.token.Token;
 
-import de.dante.extex.scanner.type.token.Token;
 
 /**
  * This interface descries the ability to compare the current code to some

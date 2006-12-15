@@ -17,15 +17,15 @@
  *
  */
 
-package de.dante.extex.scanner.type.token;
+package org.extex.scanner.type.token;
 
 import java.io.Serializable;
 
+import org.extex.scanner.type.Catcode;
 import org.extex.type.UnicodeChar;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
-import de.dante.extex.scanner.type.Catcode;
 
 
 /**
@@ -33,7 +33,7 @@ import de.dante.extex.scanner.type.Catcode;
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
+ * @version $Revision: 4738 $
  */
 public abstract class AbstractToken implements Token, Serializable {
 

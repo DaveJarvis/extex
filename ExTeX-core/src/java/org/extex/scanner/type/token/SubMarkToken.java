@@ -17,15 +17,15 @@
  *
  */
 
-package de.dante.extex.scanner.type.token;
+package org.extex.scanner.type.token;
 
+import org.extex.scanner.type.Catcode;
 import org.extex.type.UnicodeChar;
 
-import de.dante.extex.scanner.type.Catcode;
 
 
 /**
- * This class represents a space token.
+ * This class represents a sub mark token.
  * <p>
  * This class has a protected constructor only. Use the factory
  * {@link org.extex.scanner.type.token.TokenFactory TokenFactory}
@@ -33,9 +33,9 @@ import de.dante.extex.scanner.type.Catcode;
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 4738 $
  */
-public class SpaceToken extends AbstractToken implements Token {
+public class SubMarkToken extends AbstractToken implements Token {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
@@ -43,20 +43,13 @@ public class SpaceToken extends AbstractToken implements Token {
     protected static final long serialVersionUID = 2005L;
 
     /**
-     * The Constant <tt>SPACE</tt> contains the space character.
-     */
-    private static final UnicodeChar SPACE = UnicodeChar.get(' ');
-
-    /**
      * Creates a new object.
      *
-     * @param value the actual value
-     *
-     * @see "The TeXbook [Chapter 8; p.47]"
+     * @param uc the actual value
      */
-    protected SpaceToken(final String value) {
+    protected SubMarkToken(final UnicodeChar uc) {
 
-        super(SPACE);
+        super(uc);
     }
 
     /**
@@ -64,7 +57,7 @@ public class SpaceToken extends AbstractToken implements Token {
      */
     public Catcode getCatcode() {
 
-        return Catcode.SPACE;
+        return Catcode.SUBMARK;
     }
 
     /**
@@ -76,7 +69,7 @@ public class SpaceToken extends AbstractToken implements Token {
      */
     public String toString() {
 
-        return getLocalizer().format("SpaceToken.Text", super.toString());
+        return getLocalizer().format("SubMarkToken.Text", super.toString());
     }
 
     /**
@@ -88,7 +81,7 @@ public class SpaceToken extends AbstractToken implements Token {
      */
     public void toString(final StringBuffer sb) {
 
-        sb.append(getLocalizer().format("SpaceToken.Text", super.toString()));
+        sb.append(getLocalizer().format("SubMarkToken.Text", super.toString()));
     }
 
     /**
@@ -99,7 +92,7 @@ public class SpaceToken extends AbstractToken implements Token {
     public Object visit(final TokenVisitor visitor, final Object arg1)
             throws Exception {
 
-        return visitor.visitSpace(this, arg1);
+        return visitor.visitSubMark(this, arg1);
     }
 
 }

@@ -26,10 +26,10 @@ import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.font.Font;
 import org.extex.interpreter.type.glue.FixedGlue;
 import org.extex.interpreter.type.muskip.Muskip;
+import org.extex.scanner.type.token.TokenFactory;
 import org.extex.type.UnicodeChar;
 import org.extex.util.exception.GeneralException;
 
-import de.dante.extex.scanner.type.token.TokenFactory;
 import de.dante.extex.typesetter.paragraphBuilder.ParagraphShape;
 
 

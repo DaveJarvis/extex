@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.scanner.type;
+package org.extex.scanner.type;
 
 import java.io.ObjectStreamException;
 import java.io.Serializable;

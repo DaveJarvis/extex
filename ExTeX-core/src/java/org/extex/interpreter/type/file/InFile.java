@@ -26,9 +26,9 @@ import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.TokenStream;
 import org.extex.scanner.exception.ScannerException;
+import org.extex.scanner.type.token.Token;
+import org.extex.scanner.type.token.TokenFactory;
 
-import de.dante.extex.scanner.type.token.Token;
-import de.dante.extex.scanner.type.token.TokenFactory;
 
 
 /**

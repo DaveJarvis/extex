@@ -29,11 +29,11 @@ import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.exception.helping.MissingNumberException;
 import org.extex.interpreter.type.count.Count;
+import org.extex.scanner.type.token.LetterToken;
+import org.extex.scanner.type.token.OtherToken;
+import org.extex.scanner.type.token.Token;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
-import de.dante.extex.scanner.type.token.LetterToken;
-import de.dante.extex.scanner.type.token.OtherToken;
-import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
 
 

@@ -21,9 +21,9 @@ package org.extex.interpreter.exception.helping;
 
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.scanner.type.token.Token;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
-import de.dante.extex.scanner.type.token.Token;
 
 /**
  * This exception is raised when direction is needed but has not been found.

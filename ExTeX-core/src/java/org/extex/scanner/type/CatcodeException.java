@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,7 +17,9 @@
  *
  */
 
-package de.dante.extex.scanner.type;
+package org.extex.scanner.type;
+
+import org.extex.util.exception.GeneralException;
 
 /**
  * This exception is thrown when something in the context of catcode creation or
@@ -26,7 +28,7 @@ package de.dante.extex.scanner.type;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class CatcodeVisitorException extends CatcodeException {
+public class CatcodeException extends GeneralException {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
@@ -36,18 +38,40 @@ public class CatcodeVisitorException extends CatcodeException {
     /**
      * Creates a new object.
      */
-    public CatcodeVisitorException() {
+    public CatcodeException() {
 
         super();
     }
 
     /**
-     * @see java.lang.Throwable#getLocalizedMessage()
+     * Creates a new object.
+     *
+     * @param message the message of the exception
      */
-    public String getLocalizedMessage() {
+    public CatcodeException(final String message) {
 
-        return getLocalizer().format("CatcodeVisitorException.Text", //
-                super.getMessage());
+        super(message);
+    }
+
+    /**
+     * Creates a new object.
+     *
+     * @param message the message of the exception
+     * @param cause the cause of the exception in a chained exception
+     */
+    public CatcodeException(final String message, final Throwable cause) {
+
+        super(message, cause);
+    }
+
+    /**
+     * Creates a new object.
+     *
+     * @param cause the cause of the exception in a chained exception
+     */
+    public CatcodeException(final Throwable cause) {
+
+        super(cause);
     }
 
 }

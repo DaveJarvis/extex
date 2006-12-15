@@ -21,10 +21,10 @@ package org.extex.scanner;
 
 import org.extex.interpreter.Tokenizer;
 import org.extex.scanner.exception.ScannerException;
+import org.extex.scanner.type.token.Token;
+import org.extex.scanner.type.token.TokenFactory;
 import org.extex.type.Locator;
 
-import de.dante.extex.scanner.type.token.Token;
-import de.dante.extex.scanner.type.token.TokenFactory;
 
 
 /**

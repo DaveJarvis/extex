@@ -27,12 +27,12 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.CantUseInException;
+import org.extex.scanner.type.token.ControlSequenceToken;
+import org.extex.scanner.type.token.Token;
 import org.extex.util.framework.Registrar;
 import org.extex.util.framework.i18n.Localizable;
 import org.extex.util.framework.i18n.Localizer;
 
-import de.dante.extex.scanner.type.token.ControlSequenceToken;
-import de.dante.extex.scanner.type.token.Token;
 import de.dante.extex.typesetter.Typesetter;
 
 

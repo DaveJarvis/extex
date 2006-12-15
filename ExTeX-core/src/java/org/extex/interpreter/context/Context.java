@@ -40,13 +40,13 @@ import org.extex.interpreter.unit.UnitInfo;
 import org.extex.language.Language;
 import org.extex.language.LanguageManager;
 import org.extex.scanner.TokenStream;
+import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.token.Token;
+import org.extex.scanner.type.token.TokenFactory;
 import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.scanner.type.Catcode;
-import de.dante.extex.scanner.type.token.Token;
-import de.dante.extex.scanner.type.token.TokenFactory;
 import de.dante.extex.typesetter.paragraphBuilder.ParagraphShape;
 
 

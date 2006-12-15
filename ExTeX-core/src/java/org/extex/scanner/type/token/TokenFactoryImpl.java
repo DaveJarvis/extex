@@ -17,19 +17,19 @@
  *
  */
 
-package de.dante.extex.scanner.type.token;
+package org.extex.scanner.type.token;
 
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.CatcodeException;
+import org.extex.scanner.type.CatcodeVisitor;
+import org.extex.scanner.type.CatcodeVisitorException;
+import org.extex.scanner.type.CatcodeWrongLengthException;
 import org.extex.type.UnicodeChar;
 
-import de.dante.extex.scanner.type.Catcode;
-import de.dante.extex.scanner.type.CatcodeException;
-import de.dante.extex.scanner.type.CatcodeVisitor;
-import de.dante.extex.scanner.type.CatcodeVisitorException;
-import de.dante.extex.scanner.type.CatcodeWrongLengthException;
 
 
 /**
@@ -58,7 +58,7 @@ import de.dante.extex.scanner.type.CatcodeWrongLengthException;
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 4738 $
  */
 public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
 
