@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.language.impl;
+package org.extex.language.impl;
 
 import org.extex.language.Language;
 import org.extex.language.hyphenation.exception.HyphenationException;
@@ -28,7 +28,7 @@ import org.extex.language.hyphenation.exception.HyphenationException;
  * creating a new one.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 4757 $
  */
 public interface LanguageCreator {
 

@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.language.ligature.impl;
+package org.extex.language.ligature.impl;
 
 import org.extex.interpreter.type.font.Font;
 import org.extex.language.hyphenation.exception.HyphenationException;
@@ -32,7 +32,7 @@ import org.extex.typesetter.type.node.CharNode;
  * Nothing is inserted. This is just a noop.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 4784 $
  */
 public class EmptyLigatureBuilder implements LigatureBuilder {
 

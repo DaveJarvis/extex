@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.language.hyphenation.liang;
+package org.extex.language.hyphenation.liang;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -55,7 +55,7 @@ import org.extex.type.UnicodeChar;
  * or right word boundary.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 4757 $
  */
 class HyphenTree implements Serializable {
 

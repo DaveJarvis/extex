@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.language.hyphenation.liang;
+package org.extex.language.hyphenation.liang;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;

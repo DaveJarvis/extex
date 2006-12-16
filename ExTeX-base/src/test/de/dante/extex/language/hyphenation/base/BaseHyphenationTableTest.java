@@ -36,6 +36,8 @@ import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.glue.FixedGlue;
 import org.extex.interpreter.type.glue.Glue;
 import org.extex.language.Language;
+import org.extex.language.hyphenation.base.BaseHyphenationTable;
+import org.extex.language.word.impl.TeXWords;
 import org.extex.type.UnicodeChar;
 import org.extex.type.UnicodeCharList;
 import org.extex.typesetter.type.node.CharNode;
@@ -47,7 +49,6 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.interpreter.context.MockContext;
-import de.dante.extex.language.word.impl.TeXWords;
 
 /**
  * Test suite for the base hyphenation table.

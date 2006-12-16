@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.language.hyphenation.base;
+package org.extex.language.hyphenation.base;
 
 import java.io.ObjectStreamException;
 import java.io.Serializable;

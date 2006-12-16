@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.language.impl;
+package org.extex.language.impl;
 
 import java.io.ObjectStreamException;
 import java.io.Serializable;
@@ -41,7 +41,7 @@ import org.extex.util.framework.Registrar;
  * loading or the creation should be performed.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 4784 $
  */
 public class FutureLanguage implements ManagedLanguage, Serializable {
 
@@ -257,7 +257,7 @@ public class FutureLanguage implements ManagedLanguage, Serializable {
     }
 
     /**
-     * @see de.dante.extex.language.impl.ManagedLanguage#setCreator(
+     * @see org.extex.language.impl.ManagedLanguage#setCreator(
      *      org.extex.language.LanguageManager)
      */
     public void setCreator(final LanguageCreator creator) {

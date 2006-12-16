@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.language.word.impl;
+package org.extex.language.word.impl;
 
 import org.extex.language.Language;
 import org.extex.language.hyphenation.exception.HyphenationException;
@@ -40,7 +40,7 @@ import org.extex.typesetter.type.node.WhatsItNode;
  * <logo>TeX</logo>.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 4784 $
  */
 public class TeXWords extends ExTeXWords implements WordTokenizer {
 

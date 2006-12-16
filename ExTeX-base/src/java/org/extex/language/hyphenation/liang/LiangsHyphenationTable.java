@@ -17,11 +17,12 @@
  *
  */
 
-package de.dante.extex.language.hyphenation.liang;
+package org.extex.language.hyphenation.liang;
 
 import java.util.logging.Logger;
 
 import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.language.hyphenation.base.BaseHyphenationTable;
 import org.extex.language.hyphenation.exception.DuplicateHyphenationException;
 import org.extex.language.hyphenation.exception.HyphenationException;
 import org.extex.language.hyphenation.exception.IllegalTokenHyphenationException;
@@ -38,7 +39,6 @@ import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.node.CharNode;
 import org.extex.typesetter.type.node.factory.NodeFactory;
 
-import de.dante.extex.language.hyphenation.base.BaseHyphenationTable;
 
 /**
  * This class stores the values for hyphenations and hyphenates words.
@@ -112,7 +112,7 @@ import de.dante.extex.language.hyphenation.base.BaseHyphenationTable;
  *
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 4784 $
  */
 public class LiangsHyphenationTable extends BaseHyphenationTable {
 
@@ -277,7 +277,7 @@ public class LiangsHyphenationTable extends BaseHyphenationTable {
     }
 
     /**
-     * @see de.dante.extex.language.hyphenation.base.BaseHyphenationTable#hyphenateOne(
+     * @see org.extex.language.hyphenation.base.BaseHyphenationTable#hyphenateOne(
      *      org.extex.typesetter.type.NodeList,
      *      org.extex.typesetter.TypesetterOptions,
      *      int,

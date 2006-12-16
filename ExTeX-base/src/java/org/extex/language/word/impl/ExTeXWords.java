@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.language.word.impl;
+package org.extex.language.word.impl;
 
 import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.interpreter.type.dimen.FixedDimen;
@@ -46,7 +46,7 @@ import org.extex.typesetter.type.node.WhatsItNode;
  * <logo>ExTeX</logo>.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 4784 $
  */
 public class ExTeXWords implements WordTokenizer {
 

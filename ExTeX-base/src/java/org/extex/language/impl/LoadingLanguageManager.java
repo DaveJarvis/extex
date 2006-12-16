@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.language.impl;
+package org.extex.language.impl;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -70,7 +70,7 @@ import org.extex.util.resource.ResourceFinder;
  *
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 4784 $
  */
 public class LoadingLanguageManager extends BaseLanguageManager
         implements
@@ -122,7 +122,7 @@ public class LoadingLanguageManager extends BaseLanguageManager
     }
 
     /**
-     * @see de.dante.extex.language.impl.BaseLanguageManager#createLanguage(
+     * @see org.extex.language.impl.BaseLanguageManager#createLanguage(
      *      java.lang.String)
      */
     protected Language createLanguage(final String name) {
@@ -131,7 +131,7 @@ public class LoadingLanguageManager extends BaseLanguageManager
     }
 
     /**
-     * @see de.dante.extex.language.impl.LanguageCreator#createLanguageInstance(
+     * @see org.extex.language.impl.LanguageCreator#createLanguageInstance(
      *      java.lang.String)
      */
     public Language createLanguageInstance(final String name)
@@ -149,7 +149,7 @@ public class LoadingLanguageManager extends BaseLanguageManager
     }
 
     /**
-     * @see de.dante.extex.language.impl.LanguageCreator#loadLanguageInstance(
+     * @see org.extex.language.impl.LanguageCreator#loadLanguageInstance(
      *      java.lang.String)
      */
     public Language loadLanguageInstance(final String name)

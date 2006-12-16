@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.language.impl;
+package org.extex.language.impl;
 
 import java.io.ObjectStreamException;
 import java.io.Serializable;
@@ -53,7 +53,7 @@ import org.extex.util.framework.i18n.LocalizerFactory;
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
+ * @version $Revision: 4757 $
  */
 public class BaseLanguageManager extends AbstractFactory
         implements

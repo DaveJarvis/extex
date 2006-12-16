@@ -41,6 +41,8 @@ import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.font.Font;
 import org.extex.interpreter.type.glue.FixedGlue;
 import org.extex.language.ModifiableLanguage;
+import org.extex.language.hyphenation.base.BaseHyphenationTable;
+import org.extex.language.ligature.impl.LigatureBuilderImpl;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
@@ -50,8 +52,6 @@ import org.extex.typesetter.type.node.CharNode;
 import org.extex.typesetter.type.node.factory.CachingNodeFactory;
 import org.extex.typesetter.type.node.factory.NodeFactory;
 
-import de.dante.extex.language.hyphenation.base.BaseHyphenationTable;
-import de.dante.extex.language.ligature.impl.LigatureBuilderImpl;
 
 /**
  * This is the test class for NV.

@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.language.ligature.impl;
+package org.extex.language.ligature.impl;
 
 import org.extex.interpreter.context.tc.TypesettingContext;
 import org.extex.interpreter.type.dimen.Dimen;
@@ -39,7 +39,7 @@ import org.extex.typesetter.type.node.LigatureNode;
  * font.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 4784 $
  */
 public class LigatureBuilderImpl implements LigatureBuilder {
 

@@ -24,8 +24,11 @@ import junit.framework.TestCase;
 import org.extex.interpreter.context.tc.ModifiableTypesettingContext;
 import org.extex.interpreter.context.tc.TypesettingContextImpl;
 import org.extex.interpreter.type.font.Font;
+import org.extex.language.hyphenation.base.BaseHyphenationTable;
 import org.extex.language.hyphenation.exception.HyphenationException;
+import org.extex.language.ligature.impl.LigatureBuilderImpl;
 import org.extex.language.word.WordTokenizer;
+import org.extex.language.word.impl.ExTeXWords;
 import org.extex.type.UnicodeChar;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.node.CharNode;
@@ -35,8 +38,6 @@ import org.extex.typesetter.type.node.LigatureNode;
 import org.extex.typesetter.type.node.factory.NodeFactory;
 import org.extex.typesetter.type.node.factory.SimpleNodeFactory;
 
-import de.dante.extex.language.hyphenation.base.BaseHyphenationTable;
-import de.dante.extex.language.ligature.impl.LigatureBuilderImpl;
 import de.dante.test.font.CMR10;
 
 /**

@@ -36,6 +36,7 @@ import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.glue.Glue;
 import org.extex.language.ligature.LigatureBuilder;
+import org.extex.language.ligature.impl.LigatureBuilderImpl;
 import org.extex.type.UnicodeChar;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
