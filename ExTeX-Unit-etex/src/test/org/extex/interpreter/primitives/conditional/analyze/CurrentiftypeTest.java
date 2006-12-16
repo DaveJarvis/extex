@@ -19,9 +19,9 @@
 
 package org.extex.interpreter.primitives.conditional.analyze;
 
+import org.extex.interpreter.primitives.math.AbstractMathTester;
 import org.extex.interpreter.primitives.register.count.AbstractReadonlyCountRegisterTester;
 
-import de.dante.extex.interpreter.primitives.math.AbstractMathTester;
 
 /**
  * This is a test suite for the primitive <tt>\currentiftype</tt>.

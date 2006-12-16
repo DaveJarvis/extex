@@ -19,6 +19,8 @@
 
 package de.dante.extex.interpreter.primitives.register.dimen;
 
+import org.extex.interpreter.primitives.register.dimen.AbstractDimenRegisterTester;
+
 /**
  * This is a test suite for the primitive <tt>\pdfthreadhoffset</tt>.
  *

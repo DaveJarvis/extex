@@ -19,9 +19,9 @@
 
 package org.extex.interpreter.primitives.conditional;
 
+import org.extex.interpreter.primitives.math.AbstractMathTester;
 import org.extex.test.ExTeXLauncher;
 
-import de.dante.extex.interpreter.primitives.math.AbstractMathTester;
 
 /**
  * This is a test suite for the primitive <tt>\u005cnless</tt>.
