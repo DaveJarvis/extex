@@ -22,8 +22,8 @@ package org.extex.interpreter.type.box;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.typesetter.Typesetter;
 
-import de.dante.extex.typesetter.Typesetter;
 
 /**
  * This interface describes the capability to deliver a Box. Usually this box

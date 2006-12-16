@@ -24,9 +24,9 @@ import java.io.Serializable;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.type.UnicodeChar;
+import org.extex.typesetter.type.noad.MathGlyph;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
-import de.dante.extex.typesetter.type.noad.MathGlyph;
 
 
 /**

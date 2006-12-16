@@ -23,10 +23,10 @@ import java.util.logging.Logger;
 
 import org.extex.interpreter.type.count.Count;
 import org.extex.type.UnicodeChar;
+import org.extex.typesetter.TypesetterOptions;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
-import de.dante.extex.typesetter.TypesetterOptions;
 
 
 /**

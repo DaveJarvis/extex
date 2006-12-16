@@ -44,9 +44,9 @@ import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.LetterToken;
 import org.extex.scanner.type.token.OtherToken;
 import org.extex.scanner.type.token.Token;
+import org.extex.typesetter.Typesetter;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
-import de.dante.extex.typesetter.Typesetter;
 
 /**
  * This class provides some static methods to parse an expression and return its

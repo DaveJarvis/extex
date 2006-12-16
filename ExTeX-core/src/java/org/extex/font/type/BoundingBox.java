@@ -33,6 +33,11 @@ import org.extex.interpreter.type.dimen.Dimen;
 public class BoundingBox implements Serializable {
 
     /**
+     * The field <tt>serialVersionUID</tt> ...
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * llx
      */
     private Dimen llx;

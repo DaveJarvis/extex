@@ -30,10 +30,10 @@ import org.extex.interpreter.interaction.Interaction;
 import org.extex.interpreter.loader.LoaderException;
 import org.extex.scanner.TokenStream;
 import org.extex.scanner.stream.TokenStreamFactory;
+import org.extex.typesetter.Typesetter;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.typesetter.Typesetter;
 
 
 /**

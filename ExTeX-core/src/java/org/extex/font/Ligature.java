@@ -30,6 +30,11 @@ import java.io.Serializable;
 public class Ligature implements Serializable {
 
     /**
+     * The field <tt>serialVersionUID</tt> ...
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The letter
      */
     private String letter = "";

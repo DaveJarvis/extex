@@ -39,15 +39,6 @@ public interface Fount {
     FixedDimen getActualSize();
 
     /**
-     * Returns the BoundingBox.
-     *
-     * @return the BoundingBox, or <code>null</code>, if it does not exists
-     *
-     * @deprecated not needed
-     */
-    BoundingBox getBoundingBox();
-
-    /**
      * Returns the check sum.
      *
      * @return the check sum

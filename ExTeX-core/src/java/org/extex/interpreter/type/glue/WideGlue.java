@@ -57,13 +57,6 @@ public class WideGlue {
     private long[] stretch = new long[SIZE];
 
     /**
-     * The field <tt>UNIT</tt> contains the printable representation for the
-     * unit of the orders.
-     */
-    private static final String[] UNIT = {"sp", "fi", "fil", "fill", "filll",
-            "fillll"};
-
-    /**
      * Creates a new object.
      *
      */

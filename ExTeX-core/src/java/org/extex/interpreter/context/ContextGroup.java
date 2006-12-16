@@ -26,9 +26,9 @@ import org.extex.interpreter.context.observer.group.AfterGroupObserver;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.scanner.type.token.Token;
 import org.extex.type.Locator;
+import org.extex.typesetter.Typesetter;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.typesetter.Typesetter;
 
 
 /**

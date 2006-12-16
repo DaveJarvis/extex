@@ -30,10 +30,10 @@ import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
+import org.extex.typesetter.Typesetter;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.exception.NotObservableException;
 
-import de.dante.extex.typesetter.Typesetter;
 
 /**
  * This interface describes a class to acquire

@@ -23,7 +23,6 @@ import java.io.ObjectStreamException;
 import org.extex.font.FontByteArray;
 import org.extex.font.FountKey;
 import org.extex.font.Glyph;
-import org.extex.font.type.BoundingBox;
 import org.extex.font.type.InternalFount;
 import org.extex.font.type.other.NullFont;
 import org.extex.interpreter.type.dimen.Dimen;
@@ -32,7 +31,6 @@ import org.extex.interpreter.type.glue.FixedGlue;
 import org.extex.interpreter.type.glue.Glue;
 import org.extex.type.UnicodeChar;
 import org.extex.util.framework.Registrar;
-
 
 /**
  * This class constitutes a wrapper for a font. Here all information is stored
@@ -110,14 +108,6 @@ public class FontImpl extends NullFont {
     public FixedDimen getActualSize() {
 
         return fount.getActualSize();
-    }
-
-    /**
-     * @see org.extex.font.type.Fount#getBoundingBox()
-     */
-    public BoundingBox getBoundingBox() {
-
-        return fount.getBoundingBox();
     }
 
     /**
@@ -209,10 +199,9 @@ public class FontImpl extends NullFont {
     }
 
     /**
-     * @see org.extex.interpreter.type.font.Font#getGlyph(
-     *      org.extex.type.UnicodeChar)
+     * ...
      */
-    public Glyph getGlyph(final UnicodeChar c) {
+    private Glyph getGlyph(final UnicodeChar c) {
 
         if (cacheChar != null && cacheChar.equals(c)) {
             return cacheGlyph;

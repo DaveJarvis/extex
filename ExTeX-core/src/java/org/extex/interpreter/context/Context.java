@@ -45,9 +45,9 @@ import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
 import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
+import org.extex.typesetter.paragraphBuilder.ParagraphShape;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.typesetter.paragraphBuilder.ParagraphShape;
 
 
 /**

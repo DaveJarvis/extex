@@ -30,6 +30,11 @@ public class DocumentWriterClosedChannelException
             DocumentWriterIOException {
 
     /**
+     * The field <tt>serialVersionUID</tt> ...
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Creates a new object.
      *
      * @param message the error message

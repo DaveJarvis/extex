@@ -25,10 +25,10 @@ import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.language.hyphenation.exception.HyphenationException;
 import org.extex.type.UnicodeChar;
 import org.extex.type.UnicodeCharList;
+import org.extex.typesetter.TypesetterOptions;
+import org.extex.typesetter.type.NodeList;
+import org.extex.typesetter.type.node.factory.NodeFactory;
 
-import de.dante.extex.typesetter.TypesetterOptions;
-import de.dante.extex.typesetter.type.NodeList;
-import de.dante.extex.typesetter.type.node.factory.NodeFactory;
 
 
 /**

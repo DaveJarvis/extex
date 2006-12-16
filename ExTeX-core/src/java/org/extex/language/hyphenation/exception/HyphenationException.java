@@ -19,7 +19,7 @@
 
 package org.extex.language.hyphenation.exception;
 
-import de.dante.extex.typesetter.exception.TypesetterException;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class is the base class for all exceptions in the hyphenation

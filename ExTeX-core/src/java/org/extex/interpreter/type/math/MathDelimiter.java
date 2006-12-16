@@ -23,15 +23,15 @@ import java.io.Serializable;
 import java.util.logging.Logger;
 
 import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.typesetter.exception.TypesetterException;
+import org.extex.typesetter.type.NodeList;
+import org.extex.typesetter.type.noad.MathGlyph;
+import org.extex.typesetter.type.noad.Noad;
+import org.extex.typesetter.type.noad.NoadList;
+import org.extex.typesetter.type.noad.util.MathContext;
+import org.extex.typesetter.type.noad.util.MathSpacing;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.typesetter.exception.TypesetterException;
-import de.dante.extex.typesetter.type.NodeList;
-import de.dante.extex.typesetter.type.noad.MathGlyph;
-import de.dante.extex.typesetter.type.noad.Noad;
-import de.dante.extex.typesetter.type.noad.NoadList;
-import de.dante.extex.typesetter.type.noad.util.MathContext;
-import de.dante.extex.typesetter.type.noad.util.MathSpacing;
 
 
 /**

@@ -20,8 +20,8 @@
 package org.extex.backend.pageFilter;
 
 import org.extex.backend.exception.BackendException;
+import org.extex.typesetter.type.page.Page;
 
-import de.dante.extex.typesetter.type.page.Page;
 
 /**
  * A page pipe describes the ability to process a node list &ndash; resulting

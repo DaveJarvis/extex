@@ -65,12 +65,12 @@ import org.extex.scanner.type.token.TokenFactory;
 import org.extex.scanner.type.token.TokenFactoryImpl;
 import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
+import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.TypesetterOptions;
+import org.extex.typesetter.paragraphBuilder.ParagraphShape;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.typesetter.Typesetter;
-import de.dante.extex.typesetter.TypesetterOptions;
-import de.dante.extex.typesetter.paragraphBuilder.ParagraphShape;
 
 
 /**

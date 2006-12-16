@@ -32,9 +32,9 @@ import org.extex.interpreter.type.count.Count;
 import org.extex.scanner.type.token.LetterToken;
 import org.extex.scanner.type.token.OtherToken;
 import org.extex.scanner.type.token.Token;
+import org.extex.typesetter.Typesetter;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
-import de.dante.extex.typesetter.Typesetter;
 
 
 /**

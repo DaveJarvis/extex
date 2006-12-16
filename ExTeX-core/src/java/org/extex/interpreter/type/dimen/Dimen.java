@@ -28,10 +28,10 @@ import org.extex.interpreter.exception.helping.ArithmeticOverflowException;
 import org.extex.interpreter.type.dimen.parser.LengthParser;
 import org.extex.interpreter.type.glue.FixedGlueComponent;
 import org.extex.interpreter.type.glue.GlueComponent;
+import org.extex.typesetter.Typesetter;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
-import de.dante.extex.typesetter.Typesetter;
 
 
 /**

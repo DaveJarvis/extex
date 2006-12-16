@@ -93,14 +93,6 @@ public class NullFont implements Font, Serializable {
     }
 
     /**
-     * @see org.extex.font.type.Fount#getBoundingBox()
-     */
-    public BoundingBox getBoundingBox() {
-
-        return null;
-    }
-
-    /**
      * @see org.extex.font.type.Fount#getCheckSum()
      */
     public int getCheckSum() {
@@ -184,15 +176,6 @@ public class NullFont implements Font, Serializable {
     public String getFontName() {
 
         return "nullfont";
-    }
-
-    /**
-     * @see org.extex.interpreter.type.font.Font#getGlyph(
-     *      org.extex.type.UnicodeChar)
-     */
-    public Glyph getGlyph(final UnicodeChar c) {
-
-        return null;
     }
 
     /**

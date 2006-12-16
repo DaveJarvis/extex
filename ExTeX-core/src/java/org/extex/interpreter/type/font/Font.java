@@ -54,19 +54,6 @@ public interface Font extends Fount {
     long getEfcode(UnicodeChar uc);
 
     /**
-     * Return the Glyph of a <code>UnicodeChar</code>, or
-     * null, if the character is not defined.
-     *
-     * @param uc the Unicode char
-     *
-     * @return the glyph
-     *
-     * @deprecated the use should be avoided in favor of the direct access
-     *   methods
-     */
-    Glyph getGlyph(UnicodeChar uc);
-
-    /**
      * Returns the height of the char.
      *
      * @param uc the Unicode char

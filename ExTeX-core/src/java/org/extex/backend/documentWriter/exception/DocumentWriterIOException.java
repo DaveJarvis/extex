@@ -19,7 +19,6 @@
 
 package org.extex.backend.documentWriter.exception;
 
-
 /**
  * DocumentWriter: IOException.
  *
@@ -27,6 +26,11 @@ package org.extex.backend.documentWriter.exception;
  * @version $Revision$
  */
 public class DocumentWriterIOException extends DocumentWriterException {
+
+    /**
+     * The field <tt>serialVersionUID</tt> ...
+     */
+    private static final long serialVersionUID = 1L;
 
     /**
      * Creates a new object.

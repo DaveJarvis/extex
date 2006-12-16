@@ -29,6 +29,11 @@ package org.extex.font.exception;
 public class FontMapNotFoundException extends FontException {
 
     /**
+     * The field <tt>serialVersionUID</tt> ...
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Create a new object.
      */
     public FontMapNotFoundException() {

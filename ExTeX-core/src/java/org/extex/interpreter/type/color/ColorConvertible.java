@@ -23,8 +23,8 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Color;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.typesetter.Typesetter;
 
-import de.dante.extex.typesetter.Typesetter;
 
 /**
  * This is an interface which describes the feature to be convertible into a

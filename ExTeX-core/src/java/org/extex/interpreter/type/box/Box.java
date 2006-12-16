@@ -35,18 +35,18 @@ import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.Token;
+import org.extex.typesetter.ListMaker;
+import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.TypesetterOptions;
+import org.extex.typesetter.listMaker.InnerVerticalListMaker;
+import org.extex.typesetter.listMaker.RestrictedHorizontalListMaker;
+import org.extex.typesetter.type.NodeList;
+import org.extex.typesetter.type.node.HorizontalListNode;
+import org.extex.typesetter.type.node.VerticalListNode;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
-import de.dante.extex.typesetter.ListMaker;
-import de.dante.extex.typesetter.Typesetter;
-import de.dante.extex.typesetter.TypesetterOptions;
-import de.dante.extex.typesetter.listMaker.InnerVerticalListMaker;
-import de.dante.extex.typesetter.listMaker.RestrictedHorizontalListMaker;
-import de.dante.extex.typesetter.type.NodeList;
-import de.dante.extex.typesetter.type.node.HorizontalListNode;
-import de.dante.extex.typesetter.type.node.VerticalListNode;
 
 
 /**

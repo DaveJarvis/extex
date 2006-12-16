@@ -21,9 +21,9 @@ package org.extex.backend.documentWriter;
 
 import java.io.IOException;
 
+import org.extex.typesetter.type.page.Page;
 import org.extex.util.exception.GeneralException;
 
-import de.dante.extex.typesetter.type.page.Page;
 
 
 /**

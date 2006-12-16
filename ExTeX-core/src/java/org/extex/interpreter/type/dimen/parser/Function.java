@@ -4,8 +4,8 @@ package org.extex.interpreter.type.dimen.parser;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.typesetter.Typesetter;
 
-import de.dante.extex.typesetter.Typesetter;
 
 /**
  * This interface describes a function object which is able to parse its

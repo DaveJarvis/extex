@@ -24,8 +24,8 @@ import java.io.Serializable;
 import org.extex.interpreter.type.font.Font;
 import org.extex.language.hyphenation.exception.HyphenationException;
 import org.extex.type.UnicodeChar;
+import org.extex.typesetter.type.NodeList;
 
-import de.dante.extex.typesetter.type.NodeList;
 
 /**
  * This interface describes the capability of a ligature builder.

@@ -23,10 +23,10 @@ import java.io.Serializable;
 
 import org.extex.language.hyphenation.exception.HyphenationException;
 import org.extex.type.UnicodeCharList;
+import org.extex.typesetter.TypesetterOptions;
+import org.extex.typesetter.type.NodeList;
+import org.extex.typesetter.type.node.CharNode;
 
-import de.dante.extex.typesetter.TypesetterOptions;
-import de.dante.extex.typesetter.type.NodeList;
-import de.dante.extex.typesetter.type.node.CharNode;
 
 /**
  * This interface describes the contract for a tokenizer which is able to split

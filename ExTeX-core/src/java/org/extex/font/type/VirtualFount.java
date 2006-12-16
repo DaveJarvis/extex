@@ -21,8 +21,8 @@ package org.extex.font.type;
 
 import org.extex.interpreter.context.tc.TypesettingContext;
 import org.extex.type.UnicodeChar;
+import org.extex.typesetter.type.node.VirtualCharNode;
 
-import de.dante.extex.typesetter.type.node.VirtualCharNode;
 
 /**
  * Virtual Fount Interface

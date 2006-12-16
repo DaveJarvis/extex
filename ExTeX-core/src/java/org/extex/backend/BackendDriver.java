@@ -22,8 +22,8 @@ package org.extex.backend;
 import org.extex.backend.documentWriter.DocumentWriter;
 import org.extex.backend.exception.BackendException;
 import org.extex.backend.pageFilter.PagePipe;
+import org.extex.typesetter.type.page.Page;
 
-import de.dante.extex.typesetter.type.page.Page;
 
 /**
  * This interface describes a back-end as extension to a DocumentWriter.
