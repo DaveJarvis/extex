@@ -20,9 +20,9 @@
 <unit name="color">
   <primitives>
     <define name="color"
-            class="de.dante.extex.interpreter.primitives.color.ColorPrimitive"/>
+            class="org.extex.interpreter.primitives.color.ColorPrimitive"/>
     <define name="colordef"
-            class="de.dante.extex.interpreter.primitives.color.Colordef"/>
+            class="org.extex.interpreter.primitives.color.Colordef"/>
   </primitives>
 </unit>
  

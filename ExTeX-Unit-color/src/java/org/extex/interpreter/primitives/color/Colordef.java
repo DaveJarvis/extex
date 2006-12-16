@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.color;
+package org.extex.interpreter.primitives.color;
 
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
@@ -26,9 +26,9 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.scanner.type.token.CodeToken;
+import org.extex.typesetter.Typesetter;
 
 import de.dante.extex.interpreter.primitives.color.util.ColorParser;
-import de.dante.extex.typesetter.Typesetter;
 
 /**
  * This class provides an implementation for the primitive <code>\colordef</code>.
@@ -123,11 +123,11 @@ public class Colordef extends AbstractAssignment {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.AbstractAssignment#assign(
-         *      de.dante.extex.interpreter.Flags,
-         *      de.dante.extex.interpreter.context.Context,
+         * @see org.extex.interpreter.type.AbstractAssignment#assign(
+         *      org.extex.interpreter.Flags,
+         *      org.extex.interpreter.context.Context,
          *      org.extex.interpreter.TokenSource,
-         *      de.dante.extex.typesetter.Typesetter)
+         *      org.extex.typesetter.Typesetter)
          */
         public void assign(final Flags prefix, final Context context,
                 final TokenSource source, final Typesetter typesetter)
@@ -138,10 +138,10 @@ public class Colordef extends AbstractAssignment {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.color.ColorConvertible#convertColor(
-         *      de.dante.extex.interpreter.context.Context,
+         * @see org.extex.interpreter.type.color.ColorConvertible#convertColor(
+         *      org.extex.interpreter.context.Context,
          *      org.extex.interpreter.TokenSource,
-         *      de.dante.extex.typesetter.Typesetter)
+         *      org.extex.typesetter.Typesetter)
          */
         public Color convertColor(final Context context,
                 final TokenSource source, final Typesetter typesetter)
@@ -169,11 +169,11 @@ public class Colordef extends AbstractAssignment {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.AbstractAssignment#assign(
-     *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractAssignment#assign(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void assign(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)

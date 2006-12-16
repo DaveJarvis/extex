@@ -34,9 +34,9 @@ import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.LeftBraceToken;
 import org.extex.scanner.type.token.RightBraceToken;
 import org.extex.scanner.type.token.Token;
+import org.extex.typesetter.Typesetter;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
-import de.dante.extex.typesetter.Typesetter;
 
 /**
  * This class provides a parser for color specifications.
@@ -80,9 +80,9 @@ public final class ColorParser {
 
         /**
          * @see de.dante.extex.interpreter.primitives.color.util.ColorParser.ColorMode#parse(
-         *      de.dante.extex.interpreter.context.Context,
+         *      org.extex.interpreter.context.Context,
          *      org.extex.interpreter.TokenSource,
-         *      de.dante.extex.typesetter.Typesetter,
+         *      org.extex.typesetter.Typesetter,
          *      int,
          *      java.lang.String)
          */
@@ -106,9 +106,9 @@ public final class ColorParser {
 
         /**
          * @see de.dante.extex.interpreter.primitives.color.util.ColorParser.ColorMode#parse(
-         *      de.dante.extex.interpreter.context.Context,
+         *      org.extex.interpreter.context.Context,
          *      org.extex.interpreter.TokenSource,
-         *      de.dante.extex.typesetter.Typesetter,
+         *      org.extex.typesetter.Typesetter,
          *      int,
          *      java.lang.String)
          */
@@ -129,9 +129,9 @@ public final class ColorParser {
 
         /**
          * @see de.dante.extex.interpreter.primitives.color.util.ColorParser.ColorMode#parse(
-         *      de.dante.extex.interpreter.context.Context,
+         *      org.extex.interpreter.context.Context,
          *      org.extex.interpreter.TokenSource,
-         *      de.dante.extex.typesetter.Typesetter,
+         *      org.extex.typesetter.Typesetter,
          *      int,
          *      java.lang.String)
          */
@@ -149,16 +149,16 @@ public final class ColorParser {
 
     /**
      * @see de.dante.extex.interpreter.primitives.color.util.ColorParser.ColorMode#parse(
-     *      de.dante.extex.interpreter.context.Context,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter,
+     *      org.extex.typesetter.Typesetter,
      *      int,
      *      java.lang.String)
      */
     private static final ColorMode RGB_MODE = new ColorMode() {
 
         /**
-         * @see de.dante.extex.interpreter.primitives.color.ColorPrimitive.ColorMode#parse()
+         * @see org.extex.interpreter.primitives.color.ColorPrimitive.ColorMode#parse()
          */
         public Color parse(final Context context, final TokenSource source,
                 final Typesetter typesetter, final int alpha, final String name)

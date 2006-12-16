@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.color;
+package org.extex.interpreter.primitives.color;
 
 import de.dante.test.NoFlagsButGlobalPrimitiveTester;
 

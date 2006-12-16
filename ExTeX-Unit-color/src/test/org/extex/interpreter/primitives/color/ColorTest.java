@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.color;
+package org.extex.interpreter.primitives.color;
 
 
 import org.extex.color.model.GrayscaleColor;
@@ -31,7 +31,7 @@ import de.dante.test.NoFlagsButGlobalPrimitiveTester;
  * This is a test suite for the primitive <tt>\color</tt>.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 4732 $
  */
 public class ColorTest extends NoFlagsButGlobalPrimitiveTester {
 

@@ -45,8 +45,8 @@
     -  color converter.
     -->
   <ColorConverter default="basic">
-    <basic class="de.dante.extex.color.BasicColorConverter"/>
-    <no class="de.dante.extex.color.NoColorConverter"/>
+    <basic class="org.extex.color.BasicColorConverter"/>
+    <no class="org.extex.color.NoColorConverter"/>
   </ColorConverter>
 
   <!-- 
@@ -54,9 +54,9 @@
     -  token stream.
     -->
   <Scanner default="base">
-    <base class="de.dante.extex.scanner.stream.impl.TokenStreamImpl"
+    <base class="org.extex.scanner.stream.impl.TokenStreamImpl"
           buffersize=""/>
-    <base32 class="de.dante.extex.scanner.stream.impl32.TokenStreamImpl"
+    <base32 class="org.extex.scanner.stream.impl32.TokenStreamImpl"
             buffersize=""/>
   </Scanner>
 
@@ -72,7 +72,7 @@
 
     <!-- The configuration of the token factory.
       -->
-    <TokenFactory class="de.dante.extex.scanner.type.token.TokenFactoryImpl"/>
+    <TokenFactory class="org.extex.scanner.type.token.TokenFactoryImpl"/>
 
     <!-- The configuration of the context implementation to use.
       -->

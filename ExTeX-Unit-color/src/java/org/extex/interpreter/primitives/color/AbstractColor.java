@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.color;
+package org.extex.interpreter.primitives.color;
 
 import org.extex.color.ColorUtil;
 import org.extex.color.ColorVisitor;
@@ -34,9 +34,9 @@ import org.extex.interpreter.type.Showable;
 import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.color.ColorConvertible;
 import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.typesetter.Typesetter;
 import org.extex.util.exception.GeneralException;
 
-import de.dante.extex.typesetter.Typesetter;
 
 /**
  * This class is a abstract base class for color primitives.
@@ -57,8 +57,8 @@ public abstract class AbstractColor extends AbstractAssignment
     private static ColorVisitor theVisitor = new ColorVisitor() {
 
         /**
-         * @see de.dante.extex.color.ColorVisitor#visitCmyk(
-         *       de.dante.extex.color.model.CmykColor,
+         * @see org.extex.color.ColorVisitor#visitCmyk(
+         *       org.extex.color.model.CmykColor,
          *       java.lang.Object)
          */
         public Object visitCmyk(final CmykColor color, final Object c)
@@ -79,8 +79,8 @@ public abstract class AbstractColor extends AbstractAssignment
         }
 
         /**
-         * @see de.dante.extex.color.ColorVisitor#visitGray(
-         *      de.dante.extex.color.model.GrayscaleColor,
+         * @see org.extex.color.ColorVisitor#visitGray(
+         *      org.extex.color.model.GrayscaleColor,
          *      java.lang.Object)
          */
         public Object visitGray(final GrayscaleColor color, final Object c)
@@ -95,8 +95,8 @@ public abstract class AbstractColor extends AbstractAssignment
         }
 
         /**
-         * @see de.dante.extex.color.ColorVisitor#visitHsv(
-         *      de.dante.extex.color.model.HsvColor,
+         * @see org.extex.color.ColorVisitor#visitHsv(
+         *      org.extex.color.model.HsvColor,
          *      java.lang.Object)
          */
         public Object visitHsv(final HsvColor color, final Object c)
@@ -115,8 +115,8 @@ public abstract class AbstractColor extends AbstractAssignment
         }
 
         /**
-         * @see de.dante.extex.color.ColorVisitor#visitRgb(
-         *      de.dante.extex.color.model.RgbColor,
+         * @see org.extex.color.ColorVisitor#visitRgb(
+         *      org.extex.color.model.RgbColor,
          *      java.lang.Object)
          */
         public Object visitRgb(final RgbColor color, final Object c)
@@ -147,8 +147,8 @@ public abstract class AbstractColor extends AbstractAssignment
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.Showable#show(
-     *      de.dante.extex.interpreter.context.Context)
+     * @see org.extex.interpreter.type.Showable#show(
+     *      org.extex.interpreter.context.Context)
      */
     public Tokens show(final Context context) throws InterpreterException {
 
@@ -164,10 +164,10 @@ public abstract class AbstractColor extends AbstractAssignment
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.Theable#the(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Theable#the(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
