@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.interpreter.context;
+package org.extex.interpreter.context;
 
 import java.util.Iterator;
 

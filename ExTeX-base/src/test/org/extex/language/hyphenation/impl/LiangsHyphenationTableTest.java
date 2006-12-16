@@ -24,6 +24,7 @@ import junit.framework.TestCase;
 
 import org.extex.interpreter.Namespace;
 import org.extex.interpreter.context.Context;
+import org.extex.interpreter.context.MockContext;
 import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.language.Language;
 import org.extex.language.hyphenation.exception.DuplicateHyphenationException;
@@ -32,7 +33,6 @@ import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.CatcodeException;
 import org.extex.scanner.type.token.TokenFactory;
 
-import de.dante.extex.interpreter.context.MockContext;
 
 /**
  * TODO gene: missing JavaDoc.

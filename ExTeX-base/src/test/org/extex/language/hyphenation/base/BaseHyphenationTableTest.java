@@ -29,6 +29,7 @@ import org.extex.font.Ligature;
 import org.extex.font.type.BoundingBox;
 import org.extex.font.type.other.NullFont;
 import org.extex.font.type.tfm.TFMFixWord;
+import org.extex.interpreter.context.MockContext;
 import org.extex.interpreter.context.tc.TypesettingContext;
 import org.extex.interpreter.context.tc.TypesettingContextImpl;
 import org.extex.interpreter.type.dimen.Dimen;
@@ -48,7 +49,6 @@ import org.extex.typesetter.type.node.factory.CachingNodeFactory;
 import org.extex.typesetter.type.node.factory.NodeFactory;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.interpreter.context.MockContext;
 
 /**
  * Test suite for the base hyphenation table.

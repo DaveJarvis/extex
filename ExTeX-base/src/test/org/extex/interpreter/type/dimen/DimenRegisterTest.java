@@ -23,6 +23,7 @@ import junit.framework.TestCase;
 
 import org.extex.interpreter.Interpreter;
 import org.extex.interpreter.InterpreterFactory;
+import org.extex.interpreter.context.MockContext;
 import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.scanner.stream.TokenStreamFactory;
 import org.extex.util.exception.GeneralException;
@@ -30,7 +31,6 @@ import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.ConfigurationFactory;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.interpreter.context.MockContext;
 
 /**
  * Test cases for dimen registers.
