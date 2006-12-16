@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,40 +17,43 @@
  *
  */
 
-package org.extex.interpreter.primitives.file;
+package org.extex.interpreter.expression.exception;
 
-import org.extex.interpreter.primitives.file.Inputfilename;
+import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.util.framework.i18n.LocalizerFactory;
 
-import de.dante.test.NoFlagsPrimitiveTester;
 
 /**
- * This is a test suite for the primitive <tt>\inputfilename</tt>.
+ * This exception signals that the attempt to cast a value has failed.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 4733 $
  */
-public class InputfilenameTest extends NoFlagsPrimitiveTester {
+public class CastException extends HelpingException {
 
     /**
-     * Method for running the tests standalone.
-     *
-     * @param args command line parameter
+     * The field <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    public static void main(final String[] args) {
+    protected static final long serialVersionUID = 20060628L;
 
-        junit.textui.TestRunner.run(InputfilenameTest.class);
+    /**
+     * Creates a new object.
+     */
+    public CastException() {
+
+        super();
     }
 
     /**
      * Creates a new object.
      *
-     * @param arg the name
+     * @param a1 the first argument
+     * @param a2 the second argument
      */
-    public InputfilenameTest(final String arg) {
+    public CastException(final String a1, final String a2) {
 
-        super(arg, "inputfilename", "", "\\javadef\\inputfilename{"
-                + Inputfilename.class.getName() + "}");
-        setConfig("extex-jx");
+        super(LocalizerFactory.getLocalizer(CastException.class),
+                "CastException", a1, a2);
     }
 
 }

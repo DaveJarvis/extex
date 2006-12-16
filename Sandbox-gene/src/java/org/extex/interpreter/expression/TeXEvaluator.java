@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,40 +17,27 @@
  *
  */
 
-package org.extex.interpreter.primitives.file;
+package org.extex.interpreter.expression;
 
-import org.extex.interpreter.primitives.file.Inputfilename;
-
-import de.dante.test.NoFlagsPrimitiveTester;
+import org.extex.interpreter.expression.term.TCountParser;
+import org.extex.interpreter.expression.term.TGlueParser;
 
 /**
- * This is a test suite for the primitive <tt>\inputfilename</tt>.
+ * This evaluator registers the data types known in <logo>TeX</logo>.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 4533 $
  */
-public class InputfilenameTest extends NoFlagsPrimitiveTester {
-
-    /**
-     * Method for running the tests standalone.
-     *
-     * @param args command line parameter
-     */
-    public static void main(final String[] args) {
-
-        junit.textui.TestRunner.run(InputfilenameTest.class);
-    }
+public class TeXEvaluator extends Evaluator {
 
     /**
      * Creates a new object.
-     *
-     * @param arg the name
      */
-    public InputfilenameTest(final String arg) {
+    public TeXEvaluator() {
 
-        super(arg, "inputfilename", "", "\\javadef\\inputfilename{"
-                + Inputfilename.class.getName() + "}");
-        setConfig("extex-jx");
+        super();
+        register(new TGlueParser());
+        register(new TCountParser());
     }
 
 }

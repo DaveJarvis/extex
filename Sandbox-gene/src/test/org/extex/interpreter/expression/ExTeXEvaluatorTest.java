@@ -20,13 +20,13 @@
 package org.extex.interpreter.expression;
 
 import org.extex.interpreter.exception.helping.MissingNumberException;
+import org.extex.interpreter.expression.Evaluator;
+import org.extex.interpreter.expression.ExTeXEvaluator;
+import org.extex.interpreter.expression.term.Accumulator;
+import org.extex.interpreter.expression.term.TBoolean;
+import org.extex.interpreter.expression.term.TCount;
+import org.extex.interpreter.expression.term.TDouble;
 
-import de.dante.extex.interpreter.expression.Evaluator;
-import de.dante.extex.interpreter.expression.ExTeXEvaluator;
-import de.dante.extex.interpreter.expression.term.Accumulator;
-import de.dante.extex.interpreter.expression.term.TBoolean;
-import de.dante.extex.interpreter.expression.term.TCount;
-import de.dante.extex.interpreter.expression.term.TDouble;
 
 /**
  * This class is a test suite for the expression evaluator.

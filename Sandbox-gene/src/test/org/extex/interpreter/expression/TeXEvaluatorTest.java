@@ -24,15 +24,15 @@ import junit.framework.TestCase;
 import org.extex.interpreter.context.impl.ContextImpl;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.MissingNumberException;
+import org.extex.interpreter.expression.Evaluator;
+import org.extex.interpreter.expression.TeXEvaluator;
+import org.extex.interpreter.expression.term.Accumulator;
 import org.extex.interpreter.max.StringSource;
 import org.extex.interpreter.type.count.Count;
 import org.extex.scanner.type.token.TokenFactoryImpl;
 import org.extex.util.framework.configuration.ConfigurationFactory;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.interpreter.expression.Evaluator;
-import de.dante.extex.interpreter.expression.TeXEvaluator;
-import de.dante.extex.interpreter.expression.term.Accumulator;
 
 /**
  * This class is a test suite for the expression evaluator.
