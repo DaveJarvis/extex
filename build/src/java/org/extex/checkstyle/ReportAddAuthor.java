@@ -30,11 +30,11 @@ import java.io.PrintStream;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
+import org.extex.util.xml.XMLStreamWriter;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import de.dante.util.xml.XMLStreamWriter;
 
 /**
  * Add the author to the checkstyle xml report.
