@@ -39,17 +39,17 @@ import org.extex.interpreter.loader.LoaderException;
 import org.extex.interpreter.type.count.Count;
 import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.interpreter.type.glue.Glue;
+import org.extex.scanner.type.token.ControlSequenceToken;
+import org.extex.scanner.type.token.LeftBraceToken;
+import org.extex.scanner.type.token.LetterToken;
+import org.extex.scanner.type.token.MacroParamToken;
+import org.extex.scanner.type.token.MathShiftToken;
+import org.extex.scanner.type.token.OtherToken;
+import org.extex.scanner.type.token.RightBraceToken;
+import org.extex.scanner.type.token.SpaceToken;
+import org.extex.scanner.type.token.Token;
 import org.extex.type.UnicodeChar;
 
-import de.dante.extex.scanner.type.token.ControlSequenceToken;
-import de.dante.extex.scanner.type.token.LeftBraceToken;
-import de.dante.extex.scanner.type.token.LetterToken;
-import de.dante.extex.scanner.type.token.MacroParamToken;
-import de.dante.extex.scanner.type.token.MathShiftToken;
-import de.dante.extex.scanner.type.token.OtherToken;
-import de.dante.extex.scanner.type.token.RightBraceToken;
-import de.dante.extex.scanner.type.token.SpaceToken;
-import de.dante.extex.scanner.type.token.Token;
 
 
 /**

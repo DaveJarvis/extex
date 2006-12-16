@@ -32,9 +32,9 @@ import org.extex.interpreter.type.arithmetic.Multiplyable;
 import org.extex.interpreter.type.scaled.ScaledConvertible;
 import org.extex.interpreter.type.scaled.ScaledNumber;
 import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.CatcodeException;
+import org.extex.typesetter.Typesetter;
 
-import de.dante.extex.scanner.type.CatcodeException;
-import de.dante.extex.typesetter.Typesetter;
 
 /**
  * This class provides a object usable as Code carrying a scaled number.

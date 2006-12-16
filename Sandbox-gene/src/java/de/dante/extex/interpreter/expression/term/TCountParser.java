@@ -27,18 +27,18 @@ import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.count.CountConvertible;
 import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.token.CodeToken;
+import org.extex.scanner.type.token.ControlSequenceToken;
+import org.extex.scanner.type.token.LetterToken;
+import org.extex.scanner.type.token.OtherToken;
+import org.extex.scanner.type.token.SpaceToken;
+import org.extex.scanner.type.token.Token;
+import org.extex.typesetter.Typesetter;
 
 import de.dante.extex.interpreter.expression.EType;
 import de.dante.extex.interpreter.expression.ETypeParser;
 import de.dante.extex.interpreter.expression.Evaluator;
 import de.dante.extex.interpreter.expression.UnaryFunction;
-import de.dante.extex.scanner.type.token.CodeToken;
-import de.dante.extex.scanner.type.token.ControlSequenceToken;
-import de.dante.extex.scanner.type.token.LetterToken;
-import de.dante.extex.scanner.type.token.OtherToken;
-import de.dante.extex.scanner.type.token.SpaceToken;
-import de.dante.extex.scanner.type.token.Token;
-import de.dante.extex.typesetter.Typesetter;
 
 /**
  * This class implements the supporting functions for the date type

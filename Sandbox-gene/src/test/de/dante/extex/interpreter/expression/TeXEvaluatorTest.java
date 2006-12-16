@@ -21,16 +21,16 @@ package de.dante.extex.interpreter.expression;
 
 import junit.framework.TestCase;
 
+import org.extex.interpreter.context.impl.ContextImpl;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.MissingNumberException;
+import org.extex.interpreter.max.StringSource;
 import org.extex.interpreter.type.count.Count;
+import org.extex.scanner.type.token.TokenFactoryImpl;
 import org.extex.util.framework.configuration.ConfigurationFactory;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.interpreter.context.impl.ContextImpl;
 import de.dante.extex.interpreter.expression.term.Accumulator;
-import de.dante.extex.interpreter.max.StringSource;
-import de.dante.extex.scanner.type.token.TokenFactoryImpl;
 
 /**
  * This class is a test suite for the expression evaluator.

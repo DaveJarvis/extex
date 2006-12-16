@@ -27,8 +27,8 @@ import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.typesetter.Typesetter;
 
-import de.dante.extex.typesetter.Typesetter;
 
 /**
  * This class provides an implementation for the primitive

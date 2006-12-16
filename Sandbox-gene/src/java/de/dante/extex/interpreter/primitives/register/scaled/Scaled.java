@@ -25,10 +25,10 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.scaled.ScaledNumber;
+import org.extex.scanner.type.token.CodeToken;
+import org.extex.typesetter.Typesetter;
 
 import de.dante.extex.interpreter.primitives.register.scaled.util.ScaledCode;
-import de.dante.extex.scanner.type.token.CodeToken;
-import de.dante.extex.typesetter.Typesetter;
 
 /**
  * This class provides an implementation for the primitive

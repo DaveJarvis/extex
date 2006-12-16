@@ -22,13 +22,13 @@ package de.dante.extex.typesetter.dump;
 import org.extex.interpreter.context.tc.TypesettingContext;
 import org.extex.interpreter.type.count.Count;
 import org.extex.interpreter.type.glue.FixedGlue;
+import org.extex.typesetter.TypesetterOptions;
+import org.extex.typesetter.exception.TypesetterException;
+import org.extex.typesetter.impl.TypesetterImpl;
+import org.extex.typesetter.type.Node;
+import org.extex.typesetter.type.NodeList;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.typesetter.TypesetterOptions;
-import de.dante.extex.typesetter.exception.TypesetterException;
-import de.dante.extex.typesetter.impl.TypesetterImpl;
-import de.dante.extex.typesetter.type.Node;
-import de.dante.extex.typesetter.type.NodeList;
 
 /**
  * This class implements the typesetter interface but simply records the events

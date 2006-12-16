@@ -23,12 +23,12 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.Code;
+import org.extex.typesetter.Typesetter;
 
 import de.dante.extex.interpreter.expression.EType;
 import de.dante.extex.interpreter.expression.ETypeParser;
 import de.dante.extex.interpreter.expression.Evaluator;
 import de.dante.extex.interpreter.expression.UnaryFunction;
-import de.dante.extex.typesetter.Typesetter;
 
 /**
  * This class implements the supporting functions for the date type

@@ -24,11 +24,12 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.interpreter.primitives.conditional.AbstractIf;
 import org.extex.interpreter.type.scaled.ScaledNumber;
+import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.token.Token;
+import org.extex.typesetter.Typesetter;
 
-import de.dante.extex.scanner.type.Catcode;
-import de.dante.extex.scanner.type.token.Token;
-import de.dante.extex.typesetter.Typesetter;
 
 
 /**
@@ -90,7 +91,7 @@ public class Ifscaled extends AbstractIf {
     }
 
     /**
-     * @see de.dante.extex.interpreter.primitives.conditional.AbstractIf#conditional(
+     * @see org.extex.interpreter.primitives.conditional.AbstractIf#conditional(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
