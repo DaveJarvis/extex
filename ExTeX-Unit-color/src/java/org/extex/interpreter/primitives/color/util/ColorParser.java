@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.color.util;
+package org.extex.interpreter.primitives.color.util;
 
 import org.extex.color.model.ColorFactory;
 import org.extex.interpreter.TokenSource;
@@ -43,7 +43,7 @@ import org.extex.util.framework.i18n.LocalizerFactory;
  * Several color models are supported.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 4781 $
  */
 public final class ColorParser {
 
@@ -52,7 +52,7 @@ public final class ColorParser {
      * color models.
      *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision$
+     * @version $Revision: 4781 $
      */
     private interface ColorMode {
 
@@ -79,7 +79,7 @@ public final class ColorParser {
     private static final ColorMode CMYK_MODE = new ColorMode() {
 
         /**
-         * @see de.dante.extex.interpreter.primitives.color.util.ColorParser.ColorMode#parse(
+         * @see org.extex.interpreter.primitives.color.util.ColorParser.ColorMode#parse(
          *      org.extex.interpreter.context.Context,
          *      org.extex.interpreter.TokenSource,
          *      org.extex.typesetter.Typesetter,
@@ -105,7 +105,7 @@ public final class ColorParser {
     private static final ColorMode GRAY_MODE = new ColorMode() {
 
         /**
-         * @see de.dante.extex.interpreter.primitives.color.util.ColorParser.ColorMode#parse(
+         * @see org.extex.interpreter.primitives.color.util.ColorParser.ColorMode#parse(
          *      org.extex.interpreter.context.Context,
          *      org.extex.interpreter.TokenSource,
          *      org.extex.typesetter.Typesetter,
@@ -128,7 +128,7 @@ public final class ColorParser {
     private static final ColorMode HSV_MODE = new ColorMode() {
 
         /**
-         * @see de.dante.extex.interpreter.primitives.color.util.ColorParser.ColorMode#parse(
+         * @see org.extex.interpreter.primitives.color.util.ColorParser.ColorMode#parse(
          *      org.extex.interpreter.context.Context,
          *      org.extex.interpreter.TokenSource,
          *      org.extex.typesetter.Typesetter,
@@ -148,7 +148,7 @@ public final class ColorParser {
     };
 
     /**
-     * @see de.dante.extex.interpreter.primitives.color.util.ColorParser.ColorMode#parse(
+     * @see org.extex.interpreter.primitives.color.util.ColorParser.ColorMode#parse(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter,
