@@ -47,7 +47,7 @@ public class PdfColorVisitor implements ColorVisitor {
     private static final double DIVD = 0xffff;
 
     /**
-     * @see de.dante.extex.color.ColorVisitor#visitCmyk(de.dante.extex.color.model.CmykColor, java.lang.Object)
+     * @see org.extex.color.ColorVisitor#visitCmyk(org.extex.color.model.CmykColor, java.lang.Object)
      */
     public Object visitCmyk(final CmykColor color, final Object value)
             throws GeneralException {
@@ -66,8 +66,8 @@ public class PdfColorVisitor implements ColorVisitor {
     }
 
     /**
-     * @see de.dante.extex.color.ColorVisitor#visitGray(
-     *      de.dante.extex.color.model.GrayscaleColor, java.lang.Object)
+     * @see org.extex.color.ColorVisitor#visitGray(
+     *      org.extex.color.model.GrayscaleColor, java.lang.Object)
      */
     public Object visitGray(final GrayscaleColor color, final Object value)
             throws GeneralException {
@@ -84,8 +84,8 @@ public class PdfColorVisitor implements ColorVisitor {
     }
 
     /**
-     * @see de.dante.extex.color.ColorVisitor#visitHsv(
-     *      de.dante.extex.color.model.HsvColor, java.lang.Object)
+     * @see org.extex.color.ColorVisitor#visitHsv(
+     *      org.extex.color.model.HsvColor, java.lang.Object)
      */
     public Object visitHsv(final HsvColor color, final Object value)
             throws GeneralException {
@@ -94,8 +94,8 @@ public class PdfColorVisitor implements ColorVisitor {
     }
 
     /**
-     * @see de.dante.extex.color.ColorVisitor#visitRgb(
-     *      de.dante.extex.color.model.RgbColor, java.lang.Object)
+     * @see org.extex.color.ColorVisitor#visitRgb(
+     *      org.extex.color.model.RgbColor, java.lang.Object)
      */
     public Object visitRgb(final RgbColor color, final Object value)
             throws GeneralException {

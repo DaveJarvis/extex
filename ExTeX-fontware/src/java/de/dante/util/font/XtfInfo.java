@@ -37,6 +37,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Properties;
 
+import org.extex.ExTeX;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import com.lowagie.text.Document;
@@ -49,7 +50,6 @@ import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 
-import de.dante.extex.ExTeX;
 import de.dante.extex.unicodeFont.exception.FontException;
 import de.dante.extex.unicodeFont.format.xtf.TtfTableCMAP;
 import de.dante.extex.unicodeFont.format.xtf.TtfTableHMTX;

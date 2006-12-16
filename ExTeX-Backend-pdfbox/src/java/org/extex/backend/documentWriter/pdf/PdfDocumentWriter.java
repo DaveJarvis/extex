@@ -32,6 +32,9 @@ import org.extex.backend.documentWriter.exception.DocumentWriterException;
 import org.extex.backend.documentWriter.exception.DocumentWriterIOException;
 import org.extex.backend.documentWriter.pdf.exception.DocumentWriterPdfException;
 import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.typesetter.type.NodeList;
+import org.extex.typesetter.type.NodeVisitor;
+import org.extex.typesetter.type.page.Page;
 import org.extex.util.Unit;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.configuration.Configuration;
@@ -41,9 +44,6 @@ import org.pdfbox.pdmodel.PDPage;
 import org.pdfbox.pdmodel.common.PDRectangle;
 import org.pdfbox.pdmodel.edit.PDPageContentStream;
 
-import de.dante.extex.typesetter.type.NodeList;
-import de.dante.extex.typesetter.type.NodeVisitor;
-import de.dante.extex.typesetter.type.page.Page;
 
 /**
  * Implementation of a pdf document writer.
@@ -104,7 +104,7 @@ public class PdfDocumentWriter implements DocumentWriter, SingleDocumentStream {
     private PDDocument document = null;
 
     /**
-     * @see de.dante.extex.backend.documentWriter.DocumentWriter#close()
+     * @see org.extex.backend.documentWriter.DocumentWriter#close()
      */
     public void close() throws DocumentWriterException {
 
@@ -128,7 +128,7 @@ public class PdfDocumentWriter implements DocumentWriter, SingleDocumentStream {
     }
 
     /**
-     * @see de.dante.extex.backend.documentWriter.DocumentWriter#getExtension()
+     * @see org.extex.backend.documentWriter.DocumentWriter#getExtension()
      */
     public String getExtension() {
 
@@ -136,7 +136,7 @@ public class PdfDocumentWriter implements DocumentWriter, SingleDocumentStream {
     }
 
     /**
-     * @see de.dante.extex.backend.documentWriter.DocumentWriter#getPages()
+     * @see org.extex.backend.documentWriter.DocumentWriter#getPages()
      */
     public int getPages() {
 
@@ -144,7 +144,7 @@ public class PdfDocumentWriter implements DocumentWriter, SingleDocumentStream {
     }
 
     /**
-     * @see de.dante.extex.backend.documentWriter.DocumentWriter#setOutputStream(java.io.OutputStream)
+     * @see org.extex.backend.documentWriter.DocumentWriter#setOutputStream(java.io.OutputStream)
      */
     public void setOutputStream(final OutputStream outStream) {
 
@@ -157,7 +157,7 @@ public class PdfDocumentWriter implements DocumentWriter, SingleDocumentStream {
     private Map param = new HashMap();
 
     /**
-     * @see de.dante.extex.backend.documentWriter.DocumentWriter#setParameter(
+     * @see org.extex.backend.documentWriter.DocumentWriter#setParameter(
      *      java.lang.String,
      *      java.lang.String)
      */
@@ -197,8 +197,8 @@ public class PdfDocumentWriter implements DocumentWriter, SingleDocumentStream {
     private NodeVisitor nodeVisitor;
 
     /**
-     * @see de.dante.extex.backend.documentWriter.DocumentWriter#shipout(
-     *      de.dante.extex.typesetter.type.NodeList)
+     * @see org.extex.backend.documentWriter.DocumentWriter#shipout(
+     *      org.extex.typesetter.type.NodeList)
      */
     public int shipout(final Page p) throws DocumentWriterException {
 

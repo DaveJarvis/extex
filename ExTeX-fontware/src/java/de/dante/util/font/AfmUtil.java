@@ -37,9 +37,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import org.extex.ExTeX;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.xml.XMLStreamWriter;
 
-import de.dante.extex.ExTeX;
 import de.dante.extex.unicodeFont.exception.FontException;
 import de.dante.extex.unicodeFont.format.afm.AfmCharMetric;
 import de.dante.extex.unicodeFont.format.afm.AfmEncCheck;
@@ -47,7 +48,6 @@ import de.dante.extex.unicodeFont.format.afm.AfmKernPairs;
 import de.dante.extex.unicodeFont.format.afm.AfmParser;
 import de.dante.extex.unicodeFont.format.pl.PlWriter;
 import de.dante.extex.unicodeFont.format.tex.psfontmap.enc.EncReader;
-import de.dante.util.xml.XMLStreamWriter;
 
 /**
  * Utilities for a afm file.

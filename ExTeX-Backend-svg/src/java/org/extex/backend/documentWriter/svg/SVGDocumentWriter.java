@@ -36,36 +36,36 @@ import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.font.Font;
 import org.extex.type.UnicodeChar;
+import org.extex.typesetter.type.Node;
+import org.extex.typesetter.type.NodeIterator;
+import org.extex.typesetter.type.NodeList;
+import org.extex.typesetter.type.NodeVisitor;
+import org.extex.typesetter.type.node.AdjustNode;
+import org.extex.typesetter.type.node.AfterMathNode;
+import org.extex.typesetter.type.node.AlignedLeadersNode;
+import org.extex.typesetter.type.node.BeforeMathNode;
+import org.extex.typesetter.type.node.CenteredLeadersNode;
+import org.extex.typesetter.type.node.CharNode;
+import org.extex.typesetter.type.node.DiscretionaryNode;
+import org.extex.typesetter.type.node.ExpandedLeadersNode;
+import org.extex.typesetter.type.node.GlueNode;
+import org.extex.typesetter.type.node.HorizontalListNode;
+import org.extex.typesetter.type.node.InsertionNode;
+import org.extex.typesetter.type.node.KernNode;
+import org.extex.typesetter.type.node.LigatureNode;
+import org.extex.typesetter.type.node.MarkNode;
+import org.extex.typesetter.type.node.PenaltyNode;
+import org.extex.typesetter.type.node.RuleNode;
+import org.extex.typesetter.type.node.SpaceNode;
+import org.extex.typesetter.type.node.VerticalListNode;
+import org.extex.typesetter.type.node.VirtualCharNode;
+import org.extex.typesetter.type.node.WhatsItNode;
+import org.extex.typesetter.type.page.Page;
 import org.extex.util.Unit;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.configuration.Configuration;
+import org.extex.util.xml.XMLStreamWriter;
 
-import de.dante.extex.typesetter.type.Node;
-import de.dante.extex.typesetter.type.NodeIterator;
-import de.dante.extex.typesetter.type.NodeList;
-import de.dante.extex.typesetter.type.NodeVisitor;
-import de.dante.extex.typesetter.type.node.AdjustNode;
-import de.dante.extex.typesetter.type.node.AfterMathNode;
-import de.dante.extex.typesetter.type.node.AlignedLeadersNode;
-import de.dante.extex.typesetter.type.node.BeforeMathNode;
-import de.dante.extex.typesetter.type.node.CenteredLeadersNode;
-import de.dante.extex.typesetter.type.node.CharNode;
-import de.dante.extex.typesetter.type.node.DiscretionaryNode;
-import de.dante.extex.typesetter.type.node.ExpandedLeadersNode;
-import de.dante.extex.typesetter.type.node.GlueNode;
-import de.dante.extex.typesetter.type.node.HorizontalListNode;
-import de.dante.extex.typesetter.type.node.InsertionNode;
-import de.dante.extex.typesetter.type.node.KernNode;
-import de.dante.extex.typesetter.type.node.LigatureNode;
-import de.dante.extex.typesetter.type.node.MarkNode;
-import de.dante.extex.typesetter.type.node.PenaltyNode;
-import de.dante.extex.typesetter.type.node.RuleNode;
-import de.dante.extex.typesetter.type.node.SpaceNode;
-import de.dante.extex.typesetter.type.node.VerticalListNode;
-import de.dante.extex.typesetter.type.node.VirtualCharNode;
-import de.dante.extex.typesetter.type.node.WhatsItNode;
-import de.dante.extex.typesetter.type.page.Page;
-import de.dante.util.xml.XMLStreamWriter;
 
 /**
  * This is a svg implementation of a document writer.
@@ -162,7 +162,7 @@ public class SVGDocumentWriter
     }
 
     /**
-     * @see de.dante.extex.backend.documentWriter.DocumentWriter#close()
+     * @see org.extex.backend.documentWriter.DocumentWriter#close()
      */
     public void close() throws DocumentWriterException {
 
@@ -170,7 +170,7 @@ public class SVGDocumentWriter
     }
 
     /**
-     * @see de.dante.extex.backend.documentWriter.DocumentWriter#getExtension()
+     * @see org.extex.backend.documentWriter.DocumentWriter#getExtension()
      */
     public String getExtension() {
 
@@ -178,7 +178,7 @@ public class SVGDocumentWriter
     }
 
     /**
-     * @see de.dante.extex.backend.documentWriter.DocumentWriter#getPages()
+     * @see org.extex.backend.documentWriter.DocumentWriter#getPages()
      */
     public int getPages() {
 
@@ -215,8 +215,8 @@ public class SVGDocumentWriter
     private OutputStreamFactory writerFactory;
 
     /**
-     * @see de.dante.extex.backend.documentWriter.MultipleDocumentStream#setOutputStreamFactory(
-     *      de.dante.extex.backend.outputStream.OutputStreamFactory)
+     * @see org.extex.backend.documentWriter.MultipleDocumentStream#setOutputStreamFactory(
+     *      org.extex.backend.outputStream.OutputStreamFactory)
      */
     public void setOutputStreamFactory(final OutputStreamFactory writerfactory) {
 
@@ -229,7 +229,7 @@ public class SVGDocumentWriter
     private Map param = new HashMap();
 
     /**
-     * @see de.dante.extex.backend.documentWriter.DocumentWriter#setParameter(
+     * @see org.extex.backend.documentWriter.DocumentWriter#setParameter(
      *      java.lang.String,
      *      java.lang.String)
      */
@@ -239,8 +239,8 @@ public class SVGDocumentWriter
     }
 
     /**
-     * @see de.dante.extex.backend.documentWriter.DocumentWriter#shipout(
-     *      de.dante.extex.typesetter.type.NodeList)
+     * @see org.extex.backend.documentWriter.DocumentWriter#shipout(
+     *      org.extex.typesetter.type.NodeList)
      */
     public int shipout(final Page page) throws DocumentWriterException,
             GeneralException {
@@ -353,7 +353,7 @@ public class SVGDocumentWriter
     // ----------------------------------------------
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeVisitor#visitAdjust(AdjustNode,
+     * @see org.extex.typesetter.type.NodeVisitor#visitAdjust(AdjustNode,
      * java.lang.Object)
      */
     public Object visitAdjust(final AdjustNode value, final Object value2) {
@@ -364,7 +364,7 @@ public class SVGDocumentWriter
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeVisitor#visitAfterMath(AfterMathNode,
+     * @see org.extex.typesetter.type.NodeVisitor#visitAfterMath(AfterMathNode,
      * java.lang.Object)
      */
     public Object visitAfterMath(final AfterMathNode value, final Object value2) {
@@ -375,7 +375,7 @@ public class SVGDocumentWriter
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeVisitor#visitAlignedLeaders(AlignedLeadersNode,
+     * @see org.extex.typesetter.type.NodeVisitor#visitAlignedLeaders(AlignedLeadersNode,
      * java.lang.Object)
      */
     public Object visitAlignedLeaders(final AlignedLeadersNode value,
@@ -387,7 +387,7 @@ public class SVGDocumentWriter
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeVisitor#visitBeforeMath(BeforeMathNode,
+     * @see org.extex.typesetter.type.NodeVisitor#visitBeforeMath(BeforeMathNode,
      * java.lang.Object)
      */
     public Object visitBeforeMath(final BeforeMathNode node, final Object value2) {
@@ -398,7 +398,7 @@ public class SVGDocumentWriter
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeVisitor#visitCenteredLeaders(CenteredLeadersNode,
+     * @see org.extex.typesetter.type.NodeVisitor#visitCenteredLeaders(CenteredLeadersNode,
      * java.lang.Object)
      */
     public Object visitCenteredLeaders(final CenteredLeadersNode node,
@@ -410,7 +410,7 @@ public class SVGDocumentWriter
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeVisitor#visitChar(CharNode,
+     * @see org.extex.typesetter.type.NodeVisitor#visitChar(CharNode,
      * java.lang.Object)
      */
     public Object visitChar(final CharNode node, final Object value)
@@ -455,7 +455,7 @@ public class SVGDocumentWriter
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeVisitor#visitDiscretionary(DiscretionaryNode,
+     * @see org.extex.typesetter.type.NodeVisitor#visitDiscretionary(DiscretionaryNode,
      * java.lang.Object)
      */
     public Object visitDiscretionary(final DiscretionaryNode node,
@@ -467,7 +467,7 @@ public class SVGDocumentWriter
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeVisitor#visitExpandedLeaders(ExpandedLeadersNode,
+     * @see org.extex.typesetter.type.NodeVisitor#visitExpandedLeaders(ExpandedLeadersNode,
      * java.lang.Object)
      */
     public Object visitExpandedLeaders(final ExpandedLeadersNode node,
@@ -479,7 +479,7 @@ public class SVGDocumentWriter
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeVisitor#visitGlue(GlueNode,
+     * @see org.extex.typesetter.type.NodeVisitor#visitGlue(GlueNode,
      * java.lang.Object)
      */
     public Object visitGlue(final GlueNode node, final Object value) {
@@ -493,7 +493,7 @@ public class SVGDocumentWriter
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeVisitor#visitHorizontalList(HorizontalListNode,
+     * @see org.extex.typesetter.type.NodeVisitor#visitHorizontalList(HorizontalListNode,
      * java.lang.Object)
      */
     public Object visitHorizontalList(final HorizontalListNode node,
@@ -555,7 +555,7 @@ public class SVGDocumentWriter
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeVisitor#visitInsertion(InsertionNode,
+     * @see org.extex.typesetter.type.NodeVisitor#visitInsertion(InsertionNode,
      * java.lang.Object)
      */
     public Object visitInsertion(final InsertionNode node, final Object value) {
@@ -566,7 +566,7 @@ public class SVGDocumentWriter
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeVisitor#visitKern(KernNode,
+     * @see org.extex.typesetter.type.NodeVisitor#visitKern(KernNode,
      * java.lang.Object)
      */
     public Object visitKern(final KernNode node, final Object value) {
@@ -577,7 +577,7 @@ public class SVGDocumentWriter
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeVisitor#visitLigature(LigatureNode,
+     * @see org.extex.typesetter.type.NodeVisitor#visitLigature(LigatureNode,
      * java.lang.Object)
      */
     public Object visitLigature(final LigatureNode node, final Object value) {
@@ -602,7 +602,7 @@ public class SVGDocumentWriter
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeVisitor#visitMark(MarkNode,
+     * @see org.extex.typesetter.type.NodeVisitor#visitMark(MarkNode,
      * java.lang.Object)
      */
     public Object visitMark(final MarkNode node, final Object value) {
@@ -613,7 +613,7 @@ public class SVGDocumentWriter
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeVisitor#visitPenalty(PenaltyNode,
+     * @see org.extex.typesetter.type.NodeVisitor#visitPenalty(PenaltyNode,
      * java.lang.Object)
      */
     public Object visitPenalty(final PenaltyNode node, final Object value) {
@@ -625,7 +625,7 @@ public class SVGDocumentWriter
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeVisitor#visitRule(RuleNode,
+     * @see org.extex.typesetter.type.NodeVisitor#visitRule(RuleNode,
      * java.lang.Object)
      */
     public Object visitRule(final RuleNode node, final Object value) {
@@ -636,7 +636,7 @@ public class SVGDocumentWriter
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeVisitor#visitSpace(SpaceNode,
+     * @see org.extex.typesetter.type.NodeVisitor#visitSpace(SpaceNode,
      * java.lang.Object)
      */
     public Object visitSpace(final SpaceNode node, final Object value)
@@ -663,7 +663,7 @@ public class SVGDocumentWriter
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeVisitor#visitVerticalList(VerticalListNode,
+     * @see org.extex.typesetter.type.NodeVisitor#visitVerticalList(VerticalListNode,
      * java.lang.Object)
      */
     public Object visitVerticalList(final VerticalListNode node,
@@ -704,7 +704,7 @@ public class SVGDocumentWriter
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeVisitor#visitVirtualChar(de.dante.extex.typesetter.type.node.VirtualCharNode, java.lang.Object)
+     * @see org.extex.typesetter.type.NodeVisitor#visitVirtualChar(org.extex.typesetter.type.node.VirtualCharNode, java.lang.Object)
      */
     public Object visitVirtualChar(final VirtualCharNode node,
             final Object value) throws GeneralException {
@@ -714,7 +714,7 @@ public class SVGDocumentWriter
     }
 
     /**
-     * @see de.dante.extex.typesetter.type.NodeVisitor#visitWhatsIt(WhatsItNode,
+     * @see org.extex.typesetter.type.NodeVisitor#visitWhatsIt(WhatsItNode,
      * java.lang.Object)
      */
     public Object visitWhatsIt(final WhatsItNode nde, final Object value) {

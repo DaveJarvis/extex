@@ -22,8 +22,8 @@ package org.extex.backend.documentWriter.postscript.util;
 import java.io.IOException;
 
 import org.extex.backend.documentWriter.exception.DocumentWriterException;
+import org.extex.typesetter.type.page.Page;
 
-import de.dante.extex.typesetter.type.page.Page;
 
 /**
  * This interface describes the ability to translate some nodes into

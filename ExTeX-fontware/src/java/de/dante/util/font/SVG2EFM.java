@@ -25,11 +25,11 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import org.extex.font.type.svg.SVGReader;
 import org.jdom.Document;
 import org.jdom.JDOMException;
 import org.jdom.output.XMLOutputter;
 
-import de.dante.extex.font.type.svg.SVGReader;
 
 /**
  * Convert a SVG-file to a EFM-file.

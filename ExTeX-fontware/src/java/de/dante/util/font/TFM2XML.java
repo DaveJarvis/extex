@@ -25,14 +25,14 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 
 import org.extex.font.exception.FontMapNotFoundException;
+import org.extex.font.type.tfm.TFMFont;
+import org.extex.font.type.tfm.enc.EncFactory;
+import org.extex.font.type.tfm.psfontsmap.PSFontsMapReader;
+import org.extex.util.file.random.RandomAccessInputStream;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.xml.XMLStreamWriter;
 
-import de.dante.extex.font.type.tfm.TFMFont;
-import de.dante.extex.font.type.tfm.enc.EncFactory;
-import de.dante.extex.font.type.tfm.psfontsmap.PSFontsMapReader;
 import de.dante.extex.unicodeFont.format.pfb.PfbParser;
-import de.dante.util.file.random.RandomAccessInputStream;
-import de.dante.util.xml.XMLStreamWriter;
 
 /**
  * Convert a TFM-file to a XML-file.

@@ -27,38 +27,37 @@ import org.extex.backend.documentWriter.DocumentWriterOptions;
 import org.extex.backend.documentWriter.SingleDocumentStream;
 import org.extex.backend.documentWriter.exception.NoOutputStreamException;
 import org.extex.interpreter.type.font.Font;
+import org.extex.typesetter.Mode;
+import org.extex.typesetter.type.InspectableNodeVisitor;
+import org.extex.typesetter.type.Node;
+import org.extex.typesetter.type.NodeIterator;
+import org.extex.typesetter.type.NodeList;
+import org.extex.typesetter.type.NodeVisitor;
+import org.extex.typesetter.type.node.AdjustNode;
+import org.extex.typesetter.type.node.AfterMathNode;
+import org.extex.typesetter.type.node.AlignedLeadersNode;
+import org.extex.typesetter.type.node.BeforeMathNode;
+import org.extex.typesetter.type.node.CenteredLeadersNode;
+import org.extex.typesetter.type.node.CharNode;
+import org.extex.typesetter.type.node.DiscretionaryNode;
+import org.extex.typesetter.type.node.ExpandedLeadersNode;
+import org.extex.typesetter.type.node.GlueNode;
+import org.extex.typesetter.type.node.HorizontalListNode;
+import org.extex.typesetter.type.node.InsertionNode;
+import org.extex.typesetter.type.node.KernNode;
+import org.extex.typesetter.type.node.LigatureNode;
+import org.extex.typesetter.type.node.MarkNode;
+import org.extex.typesetter.type.node.PenaltyNode;
+import org.extex.typesetter.type.node.RuleNode;
+import org.extex.typesetter.type.node.SpaceNode;
+import org.extex.typesetter.type.node.VerticalListNode;
+import org.extex.typesetter.type.node.VirtualCharNode;
+import org.extex.typesetter.type.node.WhatsItNode;
+import org.extex.typesetter.type.page.Page;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.i18n.Localizable;
 import org.extex.util.framework.i18n.Localizer;
-
-import de.dante.extex.typesetter.Mode;
-import de.dante.extex.typesetter.type.InspectableNodeVisitor;
-import de.dante.extex.typesetter.type.Node;
-import de.dante.extex.typesetter.type.NodeIterator;
-import de.dante.extex.typesetter.type.NodeList;
-import de.dante.extex.typesetter.type.NodeVisitor;
-import de.dante.extex.typesetter.type.node.AdjustNode;
-import de.dante.extex.typesetter.type.node.AfterMathNode;
-import de.dante.extex.typesetter.type.node.AlignedLeadersNode;
-import de.dante.extex.typesetter.type.node.BeforeMathNode;
-import de.dante.extex.typesetter.type.node.CenteredLeadersNode;
-import de.dante.extex.typesetter.type.node.CharNode;
-import de.dante.extex.typesetter.type.node.DiscretionaryNode;
-import de.dante.extex.typesetter.type.node.ExpandedLeadersNode;
-import de.dante.extex.typesetter.type.node.GlueNode;
-import de.dante.extex.typesetter.type.node.HorizontalListNode;
-import de.dante.extex.typesetter.type.node.InsertionNode;
-import de.dante.extex.typesetter.type.node.KernNode;
-import de.dante.extex.typesetter.type.node.LigatureNode;
-import de.dante.extex.typesetter.type.node.MarkNode;
-import de.dante.extex.typesetter.type.node.PenaltyNode;
-import de.dante.extex.typesetter.type.node.RuleNode;
-import de.dante.extex.typesetter.type.node.SpaceNode;
-import de.dante.extex.typesetter.type.node.VerticalListNode;
-import de.dante.extex.typesetter.type.node.VirtualCharNode;
-import de.dante.extex.typesetter.type.node.WhatsItNode;
-import de.dante.extex.typesetter.type.page.Page;
 
 /**
  * This is a implementation of a dvi document writer.
@@ -116,18 +115,16 @@ public class DviDocumentWriter
         private GeneralException confusion(final String node)
                 throws GeneralException {
 
-            final String argument;
-
-            if (localizer == null) {
-                argument = "ExTeX.DocumentWriterWrongNode: " + node;
-            } else {
-                argument = localizer.format("ExTeX.DocumentWriterWrongNode",
-                        node);
-            }
+//            String argument;
+//            if (localizer == null) {
+//                argument = "ExTeX.DocumentWriterWrongNode: " + node;
+//            } else {
+//                argument = localizer.format("ExTeX.DocumentWriterWrongNode",
+//                        node);
+//            }
 
             // TODO: return new PanicException(localizer, "TTP.Confusion", argument); (TE)
             return new PanicException();
-
         }
 
         /**
@@ -150,7 +147,7 @@ public class DviDocumentWriter
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
-         * @see de.dante.extex.typesetter.type.NodeVisitor#visitAdjust(AdjustNode,
+         * @see org.extex.typesetter.type.NodeVisitor#visitAdjust(AdjustNode,
          *     java.lang.Object)
          */
         public Object visitAdjust(final AdjustNode node, final Object value)
@@ -167,7 +164,7 @@ public class DviDocumentWriter
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
-         * @see de.dante.extex.typesetter.type.NodeVisitor#visitAfterMath(AfterMathNode,
+         * @see org.extex.typesetter.type.NodeVisitor#visitAfterMath(AfterMathNode,
          *     java.lang.Object)
          */
         public Object visitAfterMath(final AfterMathNode node,
@@ -184,7 +181,7 @@ public class DviDocumentWriter
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
-         * @see de.dante.extex.typesetter.type.NodeVisitor#visitAlignedLeaders(AlignedLeadersNode,
+         * @see org.extex.typesetter.type.NodeVisitor#visitAlignedLeaders(AlignedLeadersNode,
          *     java.lang.Object)
          */
         public Object visitAlignedLeaders(final AlignedLeadersNode node,
@@ -201,7 +198,7 @@ public class DviDocumentWriter
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
-         * @see de.dante.extex.typesetter.type.NodeVisitor#visitBeforeMath(BeforeMathNode,
+         * @see org.extex.typesetter.type.NodeVisitor#visitBeforeMath(BeforeMathNode,
          *     java.lang.Object)
          */
         public Object visitBeforeMath(final BeforeMathNode node,
@@ -219,7 +216,7 @@ public class DviDocumentWriter
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
-         * @see de.dante.extex.typesetter.type.NodeVisitor#visitCenteredLeaders(CenteredLeadersNode,
+         * @see org.extex.typesetter.type.NodeVisitor#visitCenteredLeaders(CenteredLeadersNode,
          *     java.lang.Object)
          */
         public Object visitCenteredLeaders(final CenteredLeadersNode node,
@@ -236,7 +233,7 @@ public class DviDocumentWriter
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
-         * @see de.dante.extex.typesetter.type.NodeVisitor#visitChar(AfterMathNode,
+         * @see org.extex.typesetter.type.NodeVisitor#visitChar(AfterMathNode,
          *     java.lang.Object)
          */
         public Object visitChar(final CharNode node, final Object value)
@@ -262,7 +259,7 @@ public class DviDocumentWriter
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
-         * @see de.dante.extex.typesetter.type.NodeVisitor#visitDiscretionary(DiscretionaryNode,
+         * @see org.extex.typesetter.type.NodeVisitor#visitDiscretionary(DiscretionaryNode,
          *     java.lang.Object)
          */
         public Object visitDiscretionary(final DiscretionaryNode node,
@@ -280,7 +277,7 @@ public class DviDocumentWriter
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
-         * @see de.dante.extex.typesetter.type.NodeVisitor#visitExpandedLeaders(ExpandedLeadersNode,
+         * @see org.extex.typesetter.type.NodeVisitor#visitExpandedLeaders(ExpandedLeadersNode,
          *     java.lang.Object)
          */
         public Object visitExpandedLeaders(final ExpandedLeadersNode node,
@@ -298,7 +295,7 @@ public class DviDocumentWriter
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
-         * @see de.dante.extex.typesetter.type.NodeVisitor#visitGlue(GlueNode,
+         * @see org.extex.typesetter.type.NodeVisitor#visitGlue(GlueNode,
          *     java.lang.Object)
          */
         public Object visitGlue(final GlueNode node, final Object value)
@@ -317,7 +314,7 @@ public class DviDocumentWriter
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
-         * @see de.dante.extex.typesetter.type.NodeVisitor#visitHorizontalList(HorizontalListNode,
+         * @see org.extex.typesetter.type.NodeVisitor#visitHorizontalList(HorizontalListNode,
          *     java.lang.Object)
          */
         public Object visitHorizontalList(final HorizontalListNode nodes,
@@ -341,7 +338,7 @@ public class DviDocumentWriter
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
-         * @see de.dante.extex.typesetter.type.NodeVisitor#visitInsertion(InsertionNode,
+         * @see org.extex.typesetter.type.NodeVisitor#visitInsertion(InsertionNode,
          *     java.lang.Object)
          */
         public Object visitInsertion(final InsertionNode node,
@@ -358,7 +355,7 @@ public class DviDocumentWriter
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
-         * @see de.dante.extex.typesetter.type.NodeVisitor#visitKern(KernNode,
+         * @see org.extex.typesetter.type.NodeVisitor#visitKern(KernNode,
          *     java.lang.Object)
          */
         public Object visitKern(final KernNode node, final Object value)
@@ -377,7 +374,7 @@ public class DviDocumentWriter
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
-         * @see de.dante.extex.typesetter.type.NodeVisitor#visitLigature(LigatureNode,
+         * @see org.extex.typesetter.type.NodeVisitor#visitLigature(LigatureNode,
          *     java.lang.Object)
          */
         public Object visitLigature(final LigatureNode node, final Object value)
@@ -396,7 +393,7 @@ public class DviDocumentWriter
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
-         * @see de.dante.extex.typesetter.type.NodeVisitor#visitMark(MarkNode,
+         * @see org.extex.typesetter.type.NodeVisitor#visitMark(MarkNode,
          *     java.lang.Object)
          */
         public Object visitMark(final MarkNode node, final Object value)
@@ -413,7 +410,7 @@ public class DviDocumentWriter
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
-         * @see de.dante.extex.typesetter.type.NodeVisitor#visitPenalty(PenaltyNode,
+         * @see org.extex.typesetter.type.NodeVisitor#visitPenalty(PenaltyNode,
          *     java.lang.Object)
          */
         public Object visitPenalty(final PenaltyNode node, final Object value)
@@ -430,7 +427,7 @@ public class DviDocumentWriter
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
-         * @see de.dante.extex.typesetter.type.NodeVisitor#visitRule(RuleNode,
+         * @see org.extex.typesetter.type.NodeVisitor#visitRule(RuleNode,
          *     java.lang.Object)
          */
         public Object visitRule(final RuleNode node, final Object value)
@@ -449,7 +446,7 @@ public class DviDocumentWriter
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
-         * @see de.dante.extex.typesetter.type.NodeVisitor#visitSpace(SpaceNode,
+         * @see org.extex.typesetter.type.NodeVisitor#visitSpace(SpaceNode,
          *     java.lang.Object)
          */
         public Object visitSpace(final SpaceNode node, final Object value)
@@ -468,7 +465,7 @@ public class DviDocumentWriter
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
-         * @see de.dante.extex.typesetter.type.NodeVisitor#visitVerticalList(VerticalListNode,
+         * @see org.extex.typesetter.type.NodeVisitor#visitVerticalList(VerticalListNode,
          *     java.lang.Object)
          */
         public Object visitVerticalList(final VerticalListNode nodes,
@@ -486,7 +483,7 @@ public class DviDocumentWriter
 
 
         /**
-         * @see de.dante.extex.typesetter.type.NodeVisitor#visitVirtualChar(de.dante.extex.typesetter.type.node.VirtualCharNode, java.lang.Object)
+         * @see org.extex.typesetter.type.NodeVisitor#visitVirtualChar(org.extex.typesetter.type.node.VirtualCharNode, java.lang.Object)
          */
         public Object visitVirtualChar(final VirtualCharNode node,
                 final Object value) throws GeneralException {
@@ -502,7 +499,7 @@ public class DviDocumentWriter
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
-         * @see de.dante.extex.typesetter.type.NodeVisitor#visitWhatsIt(WhatsItNode,
+         * @see org.extex.typesetter.type.NodeVisitor#visitWhatsIt(WhatsItNode,
          *     java.lang.Object)
          */
         public Object visitWhatsIt(final WhatsItNode node, final Object value)
@@ -592,8 +589,8 @@ public class DviDocumentWriter
 
     /**
      * Current mode (<code>{@link
-     * de.dante.extex.typesetter.Mode#VERTICAL Mode.VERTICAL}</code>
-     * or <code>{@link de.dante.extex.typesetter.Mode#HORIZONTAL
+     * org.extex.typesetter.Mode#VERTICAL Mode.VERTICAL}</code>
+     * or <code>{@link org.extex.typesetter.Mode#HORIZONTAL
      * Mode.HORIZONTAL}</code>).
      *
      */
@@ -666,7 +663,7 @@ public class DviDocumentWriter
     /**
      * Setter for the output stream.  This method throws no exception.
      * If somethings goes wrong {@link
-     * #shipout(de.dante.extex.typesetter.type.NodeList) shipout(NodeList)}
+     * #shipout(org.extex.typesetter.type.NodeList) shipout(NodeList)}
      * informs the caller.
      *
      * @param writer an <code>OutputStream</code> value

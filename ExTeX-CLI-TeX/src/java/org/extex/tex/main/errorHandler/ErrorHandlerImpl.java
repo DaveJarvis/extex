@@ -80,7 +80,7 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
     private InteractionVisitor iv = new InteractionVisitor() {
 
         /**
-         * @see de.dante.extex.interpreter.InteractionVisitor#visitBatchmode(
+         * @see org.extex.interpreter.InteractionVisitor#visitBatchmode(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
         public boolean visitBatchmode(final Object arg1, final Object arg2,
@@ -92,7 +92,7 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
         /**
          * Interact with the user in case of an error.
          *
-         * @see de.dante.extex.interpreter.InteractionVisitor#visitErrorstopmode(
+         * @see org.extex.interpreter.InteractionVisitor#visitErrorstopmode(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
         public boolean visitErrorstopmode(final Object oSource,
@@ -225,7 +225,7 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
         }
 
         /**
-         * @see de.dante.extex.interpreter.InteractionVisitor#visitNonstopmode(
+         * @see org.extex.interpreter.InteractionVisitor#visitNonstopmode(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
         public boolean visitNonstopmode(final Object arg1, final Object arg2,
@@ -235,7 +235,7 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
         }
 
         /**
-         * @see de.dante.extex.interpreter.InteractionVisitor#visitScrollmode(
+         * @see org.extex.interpreter.InteractionVisitor#visitScrollmode(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
         public boolean visitScrollmode(final Object oSource,
@@ -333,11 +333,11 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.ErrorHandler#handleError(
+     * @see org.extex.interpreter.ErrorHandler#handleError(
      *      org.extex.util.exception.GeneralException,
      *      org.extex.scanner.type.token.Token,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.interpreter.context.Context)
+     *      org.extex.interpreter.context.Context)
      */
     public boolean handleError(final GeneralException exception, final Token t,
             final TokenSource source, final Context context)
@@ -394,7 +394,7 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.ErrorHandler#setEditHandler(
+     * @see org.extex.interpreter.ErrorHandler#setEditHandler(
      *      org.extex.main.errorHandler.editHandler.EditHandler)
      */
     public void setEditHandler(final EditHandler editHandler) {

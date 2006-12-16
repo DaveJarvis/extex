@@ -37,17 +37,17 @@ import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.glue.Glue;
 import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.typesetter.type.Node;
+import org.extex.typesetter.type.NodeList;
+import org.extex.typesetter.type.node.ExplicitKernNode;
+import org.extex.typesetter.type.node.GlueNode;
+import org.extex.typesetter.type.node.InsertionNode;
+import org.extex.typesetter.type.node.MarkNode;
+import org.extex.typesetter.type.node.VerticalListNode;
+import org.extex.typesetter.type.page.PageImpl;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.configuration.Configuration;
 
-import de.dante.extex.typesetter.type.Node;
-import de.dante.extex.typesetter.type.NodeList;
-import de.dante.extex.typesetter.type.node.ExplicitKernNode;
-import de.dante.extex.typesetter.type.node.GlueNode;
-import de.dante.extex.typesetter.type.node.InsertionNode;
-import de.dante.extex.typesetter.type.node.MarkNode;
-import de.dante.extex.typesetter.type.node.VerticalListNode;
-import de.dante.extex.typesetter.type.page.PageImpl;
 
 /**
  * JUnit tests for class <code>DviDocumentWriter</code>.
@@ -136,11 +136,11 @@ public class DviDocumentWriterTest extends TestCase {
      *   org.extex.backend.documentWriter.dvi.DviDocumentWriter
      *   DviDocumentWriter }
      * throws a {@link
-     *   de.dante.extex.backend.documentWriter.NoOutputStreamException
+     *   org.extex.backend.documentWriter.NoOutputStreamException
      * NoOutputStreamException},
      * if there is no OutputStream set before {@link
-     *   de.dante.extex.backend.documentWriter.DocumentWriter#shipout(
-     *   de.dante.extex.typesetter.type.NodeList) shipout()}.
+     *   org.extex.backend.documentWriter.DocumentWriter#shipout(
+     *   org.extex.typesetter.type.NodeList) shipout()}.
      *
      * @throws Exception if an error occurs
      */
@@ -267,7 +267,7 @@ public class DviDocumentWriterTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.count.FixedCount#eq(de.dante.extex.interpreter.type.count.FixedCount)
+         * @see org.extex.interpreter.type.count.FixedCount#eq(org.extex.interpreter.type.count.FixedCount)
          */
         public boolean eq(final FixedCount count) {
 
@@ -276,7 +276,7 @@ public class DviDocumentWriterTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.count.FixedCount#ge(de.dante.extex.interpreter.type.count.FixedCount)
+         * @see org.extex.interpreter.type.count.FixedCount#ge(org.extex.interpreter.type.count.FixedCount)
          */
         public boolean ge(final FixedCount count) {
 
@@ -285,7 +285,7 @@ public class DviDocumentWriterTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.count.FixedCount#gt(de.dante.extex.interpreter.type.count.FixedCount)
+         * @see org.extex.interpreter.type.count.FixedCount#gt(org.extex.interpreter.type.count.FixedCount)
          */
         public boolean gt(final FixedCount count) {
 
@@ -294,7 +294,7 @@ public class DviDocumentWriterTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.count.FixedCount#le(de.dante.extex.interpreter.type.count.FixedCount)
+         * @see org.extex.interpreter.type.count.FixedCount#le(org.extex.interpreter.type.count.FixedCount)
          */
         public boolean le(final FixedCount count) {
 
@@ -303,7 +303,7 @@ public class DviDocumentWriterTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.count.FixedCount#lt(de.dante.extex.interpreter.type.count.FixedCount)
+         * @see org.extex.interpreter.type.count.FixedCount#lt(org.extex.interpreter.type.count.FixedCount)
          */
         public boolean lt(final FixedCount count) {
 
@@ -312,7 +312,7 @@ public class DviDocumentWriterTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.count.FixedCount#ne(de.dante.extex.interpreter.type.count.FixedCount)
+         * @see org.extex.interpreter.type.count.FixedCount#ne(org.extex.interpreter.type.count.FixedCount)
          */
         public boolean ne(final FixedCount count) {
 
@@ -334,7 +334,7 @@ public class DviDocumentWriterTest extends TestCase {
     private class MockDocumentWriterOptions implements DocumentWriterOptions {
 
         /**
-         * @see de.dante.extex.backend.documentWriter.DocumentWriterOptions#getTokensOption(java.lang.String)
+         * @see org.extex.backend.documentWriter.DocumentWriterOptions#getTokensOption(java.lang.String)
          */
         public Tokens getTokensOption(String name) {
 

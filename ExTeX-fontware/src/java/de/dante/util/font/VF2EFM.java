@@ -28,6 +28,9 @@ import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Properties;
 
+import org.extex.font.FontFactory;
+import org.extex.font.type.vf.VFFont;
+import org.extex.util.file.random.RandomAccessInputStream;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.ConfigurationFactory;
 import org.extex.util.framework.configuration.exception.ConfigurationClassNotFoundException;
@@ -40,9 +43,6 @@ import org.extex.util.resource.ResourceFinderFactory;
 import org.jdom.Document;
 import org.jdom.output.XMLOutputter;
 
-import de.dante.extex.font.FontFactory;
-import de.dante.extex.font.type.vf.VFFont;
-import de.dante.util.file.random.RandomAccessInputStream;
 
 /**
  * Convert a VF-file to a EFM-file

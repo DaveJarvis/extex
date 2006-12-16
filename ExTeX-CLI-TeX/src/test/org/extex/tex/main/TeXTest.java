@@ -29,9 +29,9 @@ import java.util.Properties;
 
 import junit.framework.TestCase;
 
+import org.extex.ExTeX;
 import org.extex.interpreter.exception.InterpreterException;
 
-import de.dante.extex.ExTeX;
 
 /**
  * This class contains test cases for the command line interface of

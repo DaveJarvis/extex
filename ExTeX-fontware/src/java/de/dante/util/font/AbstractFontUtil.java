@@ -27,6 +27,7 @@ import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.extex.main.logging.LogFormatter;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.ConfigurationFactory;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
@@ -35,7 +36,6 @@ import org.extex.util.framework.i18n.LocalizerFactory;
 import org.extex.util.resource.ResourceFinder;
 import org.extex.util.resource.ResourceFinderFactory;
 
-import de.dante.extex.main.logging.LogFormatter;
 
 /**
  * Abstract class for all font utilities.

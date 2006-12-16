@@ -35,10 +35,10 @@ import org.extex.backend.documentWriter.postscript.util.HeaderManager;
 import org.extex.backend.documentWriter.postscript.util.PsConverter;
 import org.extex.backend.documentWriter.postscript.util.PsUnit;
 import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.typesetter.type.page.Page;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.configuration.Configurable;
 
-import de.dante.extex.typesetter.type.page.Page;
 
 /**
  * This document writer produces multi-page PostScript documents.

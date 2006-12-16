@@ -40,16 +40,26 @@ import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.extex.ExTeX;
 import org.extex.backend.BackendDriver;
 import org.extex.backend.documentWriter.DocumentWriterOptions;
 import org.extex.backend.documentWriter.exception.DocumentWriterException;
+import org.extex.backend.outputStream.NamedOutputStream;
 import org.extex.backend.outputStream.OutputStreamFactory;
 import org.extex.backend.outputStream.OutputStreamObserver;
+import org.extex.font.FontFactory;
 import org.extex.font.exception.FontException;
 import org.extex.interpreter.Interpreter;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.interaction.Interaction;
 import org.extex.interpreter.interaction.InteractionUnknownException;
+import org.extex.interpreter.observer.pop.PopObservable;
+import org.extex.interpreter.observer.pop.PopObserver;
+import org.extex.interpreter.observer.push.PushObservable;
+import org.extex.interpreter.observer.push.PushObserver;
+import org.extex.interpreter.observer.streamClose.StreamCloseObservable;
+import org.extex.interpreter.observer.streamClose.StreamCloseObserver;
+import org.extex.main.logging.LogFormatter;
 import org.extex.scanner.stream.TokenStreamFactory;
 import org.extex.scanner.stream.observer.file.OpenFileObserver;
 import org.extex.tex.main.exception.MainCodingException;
@@ -75,16 +85,6 @@ import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.i18n.LocalizerFactory;
 import org.extex.util.resource.ResourceFinder;
 
-import de.dante.extex.ExTeX;
-import de.dante.extex.backend.outputStream.NamedOutputStream;
-import de.dante.extex.font.FontFactory;
-import de.dante.extex.interpreter.observer.pop.PopObservable;
-import de.dante.extex.interpreter.observer.pop.PopObserver;
-import de.dante.extex.interpreter.observer.push.PushObservable;
-import de.dante.extex.interpreter.observer.push.PushObserver;
-import de.dante.extex.interpreter.observer.streamClose.StreamCloseObservable;
-import de.dante.extex.interpreter.observer.streamClose.StreamCloseObserver;
-import de.dante.extex.main.logging.LogFormatter;
 
 /**
  * This is the command line interface to <logo>ExTeX</logo>.
@@ -850,7 +850,7 @@ public class TeX extends ExTeX {
      * @throws IOException in case of an IO Error during the reading of the
      *             properties file
      *
-     * @see de.dante.extex.ExTeX#ExTeX(java.util.Properties, java.lang.String)
+     * @see org.extex.ExTeX#ExTeX(java.util.Properties, java.lang.String)
      */
     public TeX(final Properties theProperties, final String dotFile)
             throws InterpreterException,
@@ -939,8 +939,8 @@ public class TeX extends ExTeX {
      *
      * @throws ConfigurationException in case of a configuration error
      *
-     * @see de.dante.extex.ExTeX#initializeStreams(
-     *      de.dante.extex.interpreter.Interpreter,
+     * @see org.extex.ExTeX#initializeStreams(
+     *      org.extex.interpreter.Interpreter,
      *      java.util.Properties)
      */
     protected boolean initializeStreams(final Interpreter interpreter,
@@ -965,9 +965,9 @@ public class TeX extends ExTeX {
     }
 
     /**
-     * @see de.dante.extex.ExTeX#makeInterpreter(
+     * @see org.extex.ExTeX#makeInterpreter(
      *      org.extex.util.framework.configuration.Configuration,
-     *      de.dante.extex.backend.outputStream.OutputStreamFactory,
+     *      org.extex.backend.outputStream.OutputStreamFactory,
      *      org.extex.util.resource.ResourceFinder,
      *      java.lang.String)
      */
@@ -1018,13 +1018,13 @@ public class TeX extends ExTeX {
     private String primaryFile = null;
 
     /**
-     * @see de.dante.extex.ExTeX#makeBackend(
+     * @see org.extex.ExTeX#makeBackend(
      *      org.extex.util.framework.configuration.Configuration,
-     *      de.dante.extex.backend.outputStream.OutputStreamFactory,
-     *      de.dante.extex.backend.documentWriter.DocumentWriterOptions,
+     *      org.extex.backend.outputStream.OutputStreamFactory,
+     *      org.extex.backend.documentWriter.DocumentWriterOptions,
      *      org.extex.util.framework.configuration.Configuration,
      *      org.extex.util.resource.ResourceFinder,
-     *      de.dante.extex.font.FontFactory)
+     *      org.extex.font.FontFactory)
      */
     protected BackendDriver makeBackend(final Configuration config,
             final OutputStreamFactory outFactory,
@@ -1037,7 +1037,7 @@ public class TeX extends ExTeX {
         outFactory.register(new OutputStreamObserver() {
 
             /**
-             * @see de.dante.extex.backend.outputStream.OutputStreamObserver#update(
+             * @see org.extex.backend.outputStream.OutputStreamObserver#update(
              *      java.lang.String,
              *      java.lang.String,
              *      java.io.OutputStream)
@@ -1155,7 +1155,7 @@ public class TeX extends ExTeX {
      *
      * @param backend the back-end driver
      *
-     * @see de.dante.extex.ExTeX#logPages(de.dante.extex.backend.BackendDriver)
+     * @see org.extex.ExTeX#logPages(org.extex.backend.BackendDriver)
      */
     protected void logPages(final BackendDriver backend) {
 

@@ -21,9 +21,9 @@ package org.extex.tex.main.observer;
 
 import java.util.logging.Logger;
 
+import org.extex.interpreter.observer.streamClose.StreamCloseObserver;
 import org.extex.scanner.TokenStream;
 
-import de.dante.extex.interpreter.observer.streamClose.StreamCloseObserver;
 
 /**
  * This observer waits for update events when files are closed. According to the
