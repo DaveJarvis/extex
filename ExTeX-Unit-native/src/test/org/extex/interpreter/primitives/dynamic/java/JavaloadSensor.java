@@ -20,9 +20,8 @@
 package org.extex.interpreter.primitives.dynamic.java;
 
 import org.extex.interpreter.context.Context;
+import org.extex.typesetter.Typesetter;
 import org.extex.util.exception.GeneralException;
-
-import de.dante.extex.typesetter.Typesetter;
 
 /**
  * Dummy Loadable which just records that the load has ben requested.

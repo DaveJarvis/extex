@@ -31,9 +31,7 @@ import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.type.token.CodeToken;
-
-import de.dante.extex.typesetter.Typesetter;
-
+import org.extex.typesetter.Typesetter;
 
 /**
  * This primitive provides a binding of a macro or active character to

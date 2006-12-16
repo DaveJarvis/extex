@@ -27,8 +27,7 @@ import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.interpreter.unit.Loader;
-
-import de.dante.extex.typesetter.Typesetter;
+import org.extex.typesetter.Typesetter;
 
 /**
  * This primitive initiates the loading of Java code and implements the

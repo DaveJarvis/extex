@@ -21,9 +21,8 @@ package org.extex.interpreter.primitives.dynamic;
 
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.primitives.dynamic.java.Loadable;
+import org.extex.typesetter.Typesetter;
 import org.extex.util.exception.GeneralException;
-
-import de.dante.extex.typesetter.Typesetter;
 
 /**
  * TODO gene: missing JavaDoc.

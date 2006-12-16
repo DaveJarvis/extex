@@ -31,12 +31,11 @@ import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.unit.LoaderFactory;
+import org.extex.typesetter.Typesetter;
 import org.extex.util.framework.configuration.Configurable;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.framework.logger.LogEnabled;
-
-import de.dante.extex.typesetter.Typesetter;
 
 /**
  * This primitive initiates the loading of native code and implements the
