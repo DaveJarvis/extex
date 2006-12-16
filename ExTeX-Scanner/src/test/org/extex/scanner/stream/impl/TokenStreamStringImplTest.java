@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.scanner.stream.impl;
+package org.extex.scanner.stream.impl;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -38,7 +38,7 @@ import org.extex.type.UnicodeChar;
  * Test cases for the string implementation of a token stream.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 4770 $
  */
 public class TokenStreamStringImplTest extends TestCase {
 
