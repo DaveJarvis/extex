@@ -29,12 +29,12 @@ import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.Token;
+import org.extex.typesetter.Typesetter;
 
 import de.dante.extex.interpreter.type.hash.toks.exception.InterpreterMissingHashKeyException;
 import de.dante.extex.interpreter.type.hash.toks.exception.InterpreterMissingHashValueException;
 import de.dante.extex.interpreter.type.hash.toks.exception.InterpreterMissingLeftBraceException;
 import de.dante.extex.interpreter.type.hash.toks.exception.InterpreterMissingRightBraceException;
-import de.dante.extex.typesetter.Typesetter;
 
 /**
  * A Hash for Tokens.
@@ -43,6 +43,11 @@ import de.dante.extex.typesetter.Typesetter;
  * @version $Revision$
  */
 public class HashToks implements Serializable {
+
+    /**
+     * The field <tt>serialVersionUID</tt> ...
+     */
+    private static final long serialVersionUID = 1L;
 
     /**
      * The hash

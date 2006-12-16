@@ -34,10 +34,10 @@ import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.ControlSequenceToken;
 import org.extex.scanner.type.token.Token;
+import org.extex.typesetter.Typesetter;
 
 import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.real.RealConvertible;
-import de.dante.extex.typesetter.Typesetter;
 
 /**
  * This class provides an implementation for the primitive <code>\printformat</code>.
@@ -74,11 +74,11 @@ public class PrintFormat extends AbstractCode implements Theable {
     /**
      * Get the next token (not expand) and print it with some format.
      *
-     * @see de.dante.extex.interpreter.type.Code#execute(
-     *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Code#execute(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
@@ -88,8 +88,8 @@ public class PrintFormat extends AbstractCode implements Theable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.Theable#the(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Theable#the(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,

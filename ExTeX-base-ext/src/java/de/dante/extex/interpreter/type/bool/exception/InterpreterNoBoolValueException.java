@@ -31,6 +31,11 @@ import org.extex.interpreter.exception.InterpreterException;
 public class InterpreterNoBoolValueException extends InterpreterException {
 
     /**
+     * The field <tt>serialVersionUID</tt> ...
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Create a new object.
      */
     public InterpreterNoBoolValueException() {

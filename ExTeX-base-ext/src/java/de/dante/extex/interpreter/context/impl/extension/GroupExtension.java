@@ -22,8 +22,8 @@ package de.dante.extex.interpreter.context.impl.extension;
 import java.io.Serializable;
 
 import org.extex.interpreter.Tokenizer;
+import org.extex.interpreter.context.impl.Group;
 
-import de.dante.extex.interpreter.context.impl.Group;
 import de.dante.extex.interpreter.type.bool.Bool;
 import de.dante.extex.interpreter.type.hash.toks.HashToks;
 import de.dante.extex.interpreter.type.pair.Pair;

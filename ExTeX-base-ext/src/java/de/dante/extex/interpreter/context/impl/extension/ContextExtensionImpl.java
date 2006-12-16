@@ -22,13 +22,13 @@ package de.dante.extex.interpreter.context.impl.extension;
 import java.io.Serializable;
 
 import org.extex.interpreter.context.Context;
+import org.extex.interpreter.context.impl.ContextImpl;
+import org.extex.interpreter.exception.InterpreterExtensionException;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.interpreter.context.ContextExtension;
-import de.dante.extex.interpreter.context.impl.ContextImpl;
-import de.dante.extex.interpreter.exception.InterpreterExtensionException;
 import de.dante.extex.interpreter.type.bool.Bool;
 import de.dante.extex.interpreter.type.hash.toks.HashToks;
 import de.dante.extex.interpreter.type.pair.Pair;

@@ -40,8 +40,8 @@ import org.extex.scanner.type.token.SupMarkToken;
 import org.extex.scanner.type.token.TabMarkToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenVisitor;
+import org.extex.typesetter.Typesetter;
 
-import de.dante.extex.typesetter.Typesetter;
 
 /**
  * This class reads token until a null token
@@ -53,6 +53,11 @@ import de.dante.extex.typesetter.Typesetter;
  */
 
 public class ReadTokenUntilNull extends AbstractCode {
+
+    /**
+     * The field <tt>serialVersionUID</tt> ...
+     */
+    private static final long serialVersionUID = 1L;
 
     /**
      * Create a new object.
@@ -69,11 +74,11 @@ public class ReadTokenUntilNull extends AbstractCode {
     private static final int INITSIZE = 1024;
 
     /**
-     * @see de.dante.extex.interpreter.type.AbstractCode#execute(
-     *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)

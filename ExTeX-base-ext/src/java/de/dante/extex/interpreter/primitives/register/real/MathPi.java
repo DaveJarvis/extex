@@ -48,6 +48,11 @@ public class MathPi extends AbstractMath
             CountConvertible {
 
     /**
+     * The field <tt>serialVersionUID</tt> ...
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Creates a new object.
      *
      * @param name the name for debugging

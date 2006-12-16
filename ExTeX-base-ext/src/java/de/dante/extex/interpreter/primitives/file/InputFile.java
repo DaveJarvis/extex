@@ -22,6 +22,7 @@ package de.dante.extex.interpreter.primitives.file;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.primitives.file.Input;
 
 /**
  * This class provides an implementation for the primitive
@@ -37,6 +38,11 @@ import org.extex.interpreter.exception.InterpreterException;
  * @version $Revision$
  */
 public class InputFile extends Input {
+
+    /**
+     * The field <tt>serialVersionUID</tt> ...
+     */
+    private static final long serialVersionUID = 1L;
 
     /**
      * Creates a new object.
@@ -57,8 +63,8 @@ public class InputFile extends Input {
      *
      * @throws InterpreterException in case of an error
      *
-     * @see de.dante.extex.interpreter.primitives.file.AbstractFileCode#scanFileName(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.primitives.file.AbstractFileCode#scanFileName(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource)
      */
     protected String scanFileName(final Context context,

@@ -27,9 +27,9 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.scanner.TokenStream;
 import org.extex.scanner.stream.TokenStreamFactory;
+import org.extex.typesetter.Typesetter;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.typesetter.Typesetter;
 
 /**
  * This class provides an implementation for the
@@ -69,11 +69,11 @@ public class InputFileEncoding extends InputFile {
      * Scan the encoding and file name and open the file in the tokenizer
      * stream.
      *
-     * @see de.dante.extex.interpreter.type.Code#execute(
-     *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Code#execute(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)

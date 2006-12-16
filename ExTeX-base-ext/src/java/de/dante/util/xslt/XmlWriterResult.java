@@ -20,11 +20,11 @@ package de.dante.util.xslt;
 
 import javax.xml.transform.sax.SAXResult;
 
+import org.extex.util.xml.XMLStreamWriter;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import de.dante.util.xml.XMLStreamWriter;
 
 /**
  * Transformer result, which use the <code>XMLStreamWriter</code>.

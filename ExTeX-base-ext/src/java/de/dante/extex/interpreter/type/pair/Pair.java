@@ -25,8 +25,8 @@ import java.util.StringTokenizer;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.InterpreterNumberFormatException;
 
-import de.dante.extex.interpreter.exception.InterpreterNumberFormatException;
 import de.dante.extex.interpreter.type.real.Real;
 
 /**
@@ -38,6 +38,11 @@ import de.dante.extex.interpreter.type.real.Real;
  * @version $Revision$
  */
 public class Pair implements Serializable {
+
+    /**
+     * The field <tt>serialVersionUID</tt> ...
+     */
+    private static final long serialVersionUID = 1L;
 
     /**
      * The value x

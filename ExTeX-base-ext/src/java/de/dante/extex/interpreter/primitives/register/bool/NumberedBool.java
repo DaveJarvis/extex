@@ -46,6 +46,11 @@ import org.extex.interpreter.exception.InterpreterException;
 public class NumberedBool extends NamedBool {
 
     /**
+     * The field <tt>serialVersionUID</tt> ...
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Creates a new object.
      *
      * @param name the name for debugging
@@ -57,7 +62,7 @@ public class NumberedBool extends NamedBool {
 
     /**
      * @see de.dante.extex.interpreter.primitives.register.bool.NamedBool#getKey(
-     *      de.dante.extex.interpreter.context.Context,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource)
      */
     protected String getKey(final Context context, final TokenSource source)

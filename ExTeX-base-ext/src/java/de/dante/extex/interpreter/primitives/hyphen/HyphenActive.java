@@ -23,14 +23,15 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.primitives.hyphen.AbstractHyphenationCode;
 import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.count.Count;
 import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.language.Language;
 import org.extex.language.hyphenation.exception.HyphenationException;
+import org.extex.typesetter.Typesetter;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.typesetter.Typesetter;
 
 /**
  * This class provides an implementation for the primitive <code>\hyphenactive</code>.
@@ -70,10 +71,10 @@ public class HyphenActive extends AbstractHyphenationCode implements Theable {
      * Scan for hyphenactive-value and stored it in the
      * <code>HyphernationTable</code> with the language-number.
      *
-     * @see de.dante.extex.interpreter.type.Code#execute(de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Code#execute(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
@@ -95,8 +96,8 @@ public class HyphenActive extends AbstractHyphenationCode implements Theable {
     /**
      * Return the <code>Tokens</code> to show the content with <code>\the</code>.
      *
-     * @see de.dante.extex.interpreter.type.Theable#the(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Theable#the(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,

@@ -27,28 +27,24 @@ import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.count.CountConvertible;
 import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.typesetter.Typesetter;
 import org.extex.util.exception.GeneralException;
 
 import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.real.RealConvertible;
-import de.dante.extex.typesetter.Typesetter;
 
 /**
- * Abstract class for math primitives.
- * e.g. sin, cos, ...
- *
+ * Abstract class for math primitives. e.g. sin, cos, ...
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public abstract class AbstractMath extends AbstractCode
-        implements
-            Theable,
-            RealConvertible,
-            CountConvertible {
+public abstract class AbstractMath extends AbstractCode implements Theable,
+        RealConvertible, CountConvertible {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      * @throws GeneralException ...
      */
@@ -60,12 +56,10 @@ public abstract class AbstractMath extends AbstractCode
 
     /**
      * execute
-     *
-     * @see de.dante.extex.interpreter.type.Code#execute(
-     *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     * 
+     * @see org.extex.interpreter.type.Code#execute(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
@@ -76,62 +70,45 @@ public abstract class AbstractMath extends AbstractCode
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.Theable#the(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Theable#the(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter)
-            throws InterpreterException {
+            final Typesetter typesetter) throws InterpreterException {
 
-        try {
-            Real real = calculate(context, source);
-            return new Tokens(context, real.toString());
-        } catch (GeneralException e) {
-            throw new InterpreterException(e);
-        }
+        Real real = calculate(context, source);
+        return new Tokens(context, real.toString());
     }
 
     /**
      * @see de.dante.extex.interpreter.type.real.RealConvertible#convertReal(
-     *      de.dante.extex.interpreter.context.Context,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource)
      */
     public Real convertReal(final Context context, final TokenSource source)
             throws InterpreterException {
 
-        try {
-            return calculate(context, source);
-        } catch (InterpreterException e) {
-            throw e;
-        } catch (GeneralException e) {
-            throw new InterpreterException(e);
-        }
+        return calculate(context, source);
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.count.CountConvertible#convertCount(
-     *      de.dante.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     * @see org.extex.interpreter.type.count.CountConvertible#convertCount(
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
 
-        try {
-            return calculate(context, source).getLong();
-        } catch (InterpreterException e) {
-            throw e;
-        } catch (GeneralException e) {
-            throw new InterpreterException(e);
-        }
+        return calculate(context, source).getLong();
     }
 
     /**
      * Calculate
-     * @param context   the context
-     * @param source    the tokensource
-     * @return  the real-value
+     * 
+     * @param context the context
+     * @param source the tokensource
+     * @return the real-value
      * @throws GeneralException if a error occoured
      */
     protected abstract Real calculate(final Context context,

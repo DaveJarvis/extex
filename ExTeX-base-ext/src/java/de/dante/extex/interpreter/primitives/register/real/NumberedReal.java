@@ -47,6 +47,11 @@ import org.extex.interpreter.exception.InterpreterException;
 public class NumberedReal extends NamedReal {
 
     /**
+     * The field <tt>serialVersionUID</tt> ...
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Creates a new object.
      *
      * @param name the name for debugging
@@ -59,7 +64,7 @@ public class NumberedReal extends NamedReal {
     /**
      * Return the key (the number) for the register.
      * @see de.dante.extex.interpreter.primitives.register.real.NamedReal#getKey(
-     *      de.dante.extex.interpreter.context.Context,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource)
      */
     protected String getKey(final Context context, final TokenSource source)

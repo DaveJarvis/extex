@@ -23,14 +23,14 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.InterpreterExtensionException;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.typesetter.Typesetter;
 
 import de.dante.extex.interpreter.context.ContextExtension;
-import de.dante.extex.interpreter.exception.InterpreterExtensionException;
 import de.dante.extex.interpreter.type.transform.Transform;
-import de.dante.extex.typesetter.Typesetter;
 
 /**
  * This class provides an implementation for the tranform valued primitives.
@@ -48,6 +48,11 @@ import de.dante.extex.typesetter.Typesetter;
 public class NamedTransform extends AbstractAssignment implements Theable {
 
     /**
+     * The field <tt>serialVersionUID</tt> ...
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Creates a new object.
      * @param name the name for debugging
      */
@@ -57,11 +62,11 @@ public class NamedTransform extends AbstractAssignment implements Theable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.AbstractAssignment#assign(
-     *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractAssignment#assign(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void assign(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
@@ -119,8 +124,8 @@ public class NamedTransform extends AbstractAssignment implements Theable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.Theable#the(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Theable#the(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,

@@ -29,6 +29,11 @@ package de.dante.extex.interpreter.type.real;
 public class ImmutableReal extends Real {
 
     /**
+     * The field <tt>serialVersionUID</tt> ...
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Creates a new object.
      *
      * @param val    init with double-value

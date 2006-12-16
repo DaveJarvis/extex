@@ -42,6 +42,11 @@ import de.dante.extex.interpreter.type.real.RealConvertible;
 public class Bool implements Serializable {
 
     /**
+     * The field <tt>serialVersionUID</tt> ...
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The value
      */
     private boolean value = false;

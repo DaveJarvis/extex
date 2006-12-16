@@ -24,11 +24,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.extex.interpreter.Tokenizer;
+import org.extex.interpreter.context.impl.Group;
+import org.extex.interpreter.context.impl.GroupImpl;
+import org.extex.interpreter.exception.InterpreterExtensionException;
 import org.extex.util.exception.GeneralException;
 
-import de.dante.extex.interpreter.context.impl.Group;
-import de.dante.extex.interpreter.context.impl.GroupImpl;
-import de.dante.extex.interpreter.exception.InterpreterExtensionException;
 import de.dante.extex.interpreter.type.bool.Bool;
 import de.dante.extex.interpreter.type.hash.toks.HashToks;
 import de.dante.extex.interpreter.type.pair.Pair;
@@ -47,6 +47,11 @@ public class GroupExtensionImpl extends GroupImpl
             Group,
             GroupExtension,
             Serializable {
+
+    /**
+     * The field <tt>serialVersionUID</tt> ...
+     */
+    private static final long serialVersionUID = 1L;
 
     /**
      * The map for the real registers

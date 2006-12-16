@@ -23,6 +23,7 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.InterpreterExtensionException;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.arithmetic.Advanceable;
@@ -30,13 +31,12 @@ import org.extex.interpreter.type.arithmetic.Divideable;
 import org.extex.interpreter.type.arithmetic.Multiplyable;
 import org.extex.interpreter.type.count.CountConvertible;
 import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.typesetter.Typesetter;
 import org.extex.util.exception.GeneralException;
 
 import de.dante.extex.interpreter.context.ContextExtension;
-import de.dante.extex.interpreter.exception.InterpreterExtensionException;
 import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.real.RealConvertible;
-import de.dante.extex.typesetter.Typesetter;
 
 /**
  * This class provides an implementation for the real valued primitives.
@@ -61,6 +61,11 @@ public class NamedReal extends AbstractAssignment
             CountConvertible {
 
     /**
+     * The field <tt>serialVersionUID</tt> ...
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Creates a new object.
      *
      * @param name the name for debugging
@@ -71,11 +76,11 @@ public class NamedReal extends AbstractAssignment
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.AbstractAssignment#assign(
-     *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractAssignment#assign(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public void assign(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
@@ -133,8 +138,8 @@ public class NamedReal extends AbstractAssignment
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.Theable#the(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Theable#the(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,
@@ -164,9 +169,9 @@ public class NamedReal extends AbstractAssignment
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.arithmetic.Advanceable#advance(
-     *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.arithmetic.Advanceable#advance(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource)
      */
     public void advance(final Flags prefix, final Context context,
@@ -190,9 +195,9 @@ public class NamedReal extends AbstractAssignment
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.arithmetic.Multiplyable#multiply(
-     *      de.dante.extex.interpreter.Flags,
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.arithmetic.Multiplyable#multiply(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource)
      */
     public void multiply(final Flags prefix, final Context context,
@@ -216,9 +221,9 @@ public class NamedReal extends AbstractAssignment
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.arithmetic.Divideable#divide(
-     *       de.dante.extex.interpreter.Flags,
-     *       de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.arithmetic.Divideable#divide(
+     *       org.extex.interpreter.Flags,
+     *       org.extex.interpreter.context.Context,
      *       org.extex.interpreter.TokenSource)
      */
     public void divide(final Flags prefix, final Context context,
@@ -242,7 +247,7 @@ public class NamedReal extends AbstractAssignment
 
     /**
      * @see de.dante.extex.interpreter.type.real.RealConvertible#convertReal(
-     *      de.dante.extex.interpreter.context.Context,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource)
      */
     public Real convertReal(final Context context, final TokenSource source)
@@ -258,10 +263,10 @@ public class NamedReal extends AbstractAssignment
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.count.CountConvertible#convertCount(
-     *      de.dante.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.count.CountConvertible#convertCount(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      de.dante.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter)
      */
     public long convertCount(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
