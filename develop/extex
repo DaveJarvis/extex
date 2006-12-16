@@ -41,7 +41,7 @@ case "`uname`" in
     for i in `ls $EXTEX_HOME/ExTeX-*/target/classes` ; do
       LOCALCLASSPATH=$LOCALCLASSPATH$sep`cygpath --unix "$i"`
     done
-    for i in `ls $EXTEX_HOME/ExTeX-*/target/lib/*.jar` ; do
+    for i in `ls $EXTEX_HOME/ExTeX-*/lib/*.jar` ; do
       LOCALCLASSPATH=$LOCALCLASSPATH$sep`cygpath --unix "$i"`
     done
     ;;
@@ -51,11 +51,13 @@ case "`uname`" in
     for i in `ls $EXTEX_HOME/ExTeX-*/target/classes` ; do
       LOCALCLASSPATH=$LOCALCLASSPATH$sep$i
     done
-    for i in `ls $EXTEX_HOME/ExTeX-*/target/lib/*.jar` ; do
+    for i in `ls $EXTEX_HOME/ExTeX-*/lib/*.jar` ; do
       LOCALCLASSPATH=$LOCALCLASSPATH$sep$i
     done
     ;;
 esac
+
+# echo $LOCALCLASSPATH
 
 exec java $EXTEX_JAVA_OPTS -classpath "$LOCALCLASSPATH" \
     org.extex.tex.main.TeX -progname=`basename $0` $*

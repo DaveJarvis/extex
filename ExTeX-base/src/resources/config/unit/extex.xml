@@ -32,8 +32,6 @@
             class="org.extex.interpreter.primitives.register.toks.ToksParameter"/>
     <define name="hyphenation"
             class="org.extex.interpreter.primitives.hyphen.Hyphenation"/>
-    <define name="ifscaled"
-            class="org.extex.interpreter.primitives.conditional.Ifscaled"/>
     <define name="ignorevoid"
             class="org.extex.interpreter.primitives.register.count.IntegerParameter"/>
     <define name="integer"
@@ -44,8 +42,6 @@
             class="org.extex.interpreter.primitives.register.dimen.DimenParameter"/>
     <define name="mediawidth"
             class="org.extex.interpreter.primitives.register.dimen.DimenParameter"/>
-    <define name="scaled"
-            class="org.extex.interpreter.primitives.register.scaled.Scaled"/>
  </primitives>
  </unit>
  

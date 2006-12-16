@@ -18,7 +18,7 @@
   -
   -->
 <Resource>
-  <Finder class="de.dante.util.resource.FileFinder"
+  <Finder class="org.extex.util.resource.FileFinder"
           default="default">
     <tex>
       <path property="extex.texinputs"/>
@@ -90,7 +90,7 @@
     </default>
   </Finder>
 
-  <Finder class="de.dante.util.resource.ClasspathFinder"
+  <Finder class="org.extex.util.resource.ClasspathFinder"
           trace="false"
           default="default">
     <fmt prefix="texmf/">
@@ -99,7 +99,7 @@
     <default skip="true"/>
   </Finder>
 
-  <Finder class="de.dante.util.resource.LsrFinder"
+  <Finder class="org.extex.util.resource.LsrFinder"
           trace="false"
           capacity="88888"
           default="default">
@@ -120,7 +120,7 @@
     <default><extension/></default>
   </Finder>
 
-  <Finder class="de.dante.extex.main.ResourceFinderImpl" default="default">
+  <Finder class="org.extex.tex.main.ResourceFinderImpl" default="default">
     <tex/>
     <fmt skip="true"/>
     <default skip="true"/>
