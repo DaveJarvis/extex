@@ -50,8 +50,6 @@ import org.extex.scanner.type.token.SpaceToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.type.UnicodeChar;
 
-
-
 /**
  * Load a format file and print it in a reasonable form.
  *

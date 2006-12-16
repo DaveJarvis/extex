@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.register.scaled.util;
+package org.extex.interpreter.primitives.register.scaled.util;
 
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
@@ -40,7 +40,7 @@ import org.extex.typesetter.Typesetter;
  * This class provides a object usable as Code carrying a scaled number.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 4787 $
  */
 public class ScaledCode extends AbstractAssignment
         implements
