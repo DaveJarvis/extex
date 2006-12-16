@@ -22,9 +22,9 @@ package de.dante.extex.interpreter.primitives.pdftex.util.action;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.typesetter.Typesetter;
 
 import de.dante.extex.interpreter.exception.pdftex.InterpreterPdftexActionTypeException;
-import de.dante.extex.typesetter.Typesetter;
 
 /**
  * This is the abstract base class for actions in PDF.

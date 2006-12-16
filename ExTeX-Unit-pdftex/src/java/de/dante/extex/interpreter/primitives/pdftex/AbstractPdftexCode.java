@@ -19,15 +19,14 @@
 
 package de.dante.extex.interpreter.primitives.pdftex;
 
-
 import org.extex.backend.documentWriter.DocumentWriter;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.count.Count;
+import org.extex.typesetter.Typesetter;
 
 import de.dante.extex.backend.documentWriter.PdftexSupport;
 import de.dante.extex.interpreter.exception.pdftex.InterpreterPdftexException;
-import de.dante.extex.typesetter.Typesetter;
 
 /**
  * This class provides a base class for pdf<logo>TeX</logo> primitives.

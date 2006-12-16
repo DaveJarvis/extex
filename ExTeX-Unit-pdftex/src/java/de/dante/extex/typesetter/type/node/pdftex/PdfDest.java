@@ -19,9 +19,10 @@
 
 package de.dante.extex.typesetter.type.node.pdftex;
 
+import org.extex.typesetter.type.node.WhatsItNode;
+
 import de.dante.extex.interpreter.primitives.pdftex.util.destination.DestType;
 import de.dante.extex.interpreter.primitives.pdftex.util.id.IdSpec;
-import de.dante.extex.typesetter.type.node.WhatsItNode;
 
 /**
  * This node marks the target for a link.

@@ -23,9 +23,9 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.count.Count;
+import org.extex.typesetter.Typesetter;
 
 import de.dante.extex.interpreter.exception.pdftex.InterpreterPdftexIdentifierTypeException;
-import de.dante.extex.typesetter.Typesetter;
 
 /**
  * This is the abstract base class for ids.

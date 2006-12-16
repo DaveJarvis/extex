@@ -25,10 +25,10 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.count.Count;
 import org.extex.scanner.type.token.Token;
+import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.typesetter.Typesetter;
-import de.dante.extex.typesetter.exception.TypesetterException;
 import de.dante.extex.typesetter.type.node.pdftex.PdfRefXImage;
 
 /**

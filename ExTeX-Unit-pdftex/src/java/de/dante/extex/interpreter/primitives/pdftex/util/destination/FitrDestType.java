@@ -20,8 +20,7 @@
 package de.dante.extex.interpreter.primitives.pdftex.util.destination;
 
 import org.extex.interpreter.type.dimen.FixedDimen;
-
-import de.dante.extex.typesetter.type.node.RuleNode;
+import org.extex.typesetter.type.node.RuleNode;
 
 /**
  * This is the fitr destination type for PDF.

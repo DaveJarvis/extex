@@ -23,12 +23,12 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.count.Count;
+import org.extex.typesetter.Typesetter;
 
 import de.dante.extex.interpreter.exception.pdftex.InterpreterPdftexActionTypeException;
 import de.dante.extex.interpreter.exception.pdftex.InterpreterPdftexIdentifierTypeException;
 import de.dante.extex.interpreter.primitives.pdftex.util.id.NameIdSpec;
 import de.dante.extex.interpreter.primitives.pdftex.util.id.NumIdSpec;
-import de.dante.extex.typesetter.Typesetter;
 
 /**
  * This class provides an abstract base for goto actions in PDF.

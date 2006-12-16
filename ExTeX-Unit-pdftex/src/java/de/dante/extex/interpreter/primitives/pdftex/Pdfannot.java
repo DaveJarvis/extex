@@ -24,12 +24,12 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
+import org.extex.typesetter.type.node.RuleNode;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.backend.documentWriter.PdftexSupport;
-import de.dante.extex.typesetter.Typesetter;
-import de.dante.extex.typesetter.exception.TypesetterException;
-import de.dante.extex.typesetter.type.node.RuleNode;
 import de.dante.extex.typesetter.type.node.pdftex.PdfAnnotation;
 
 /**

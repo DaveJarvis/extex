@@ -19,8 +19,8 @@
 
 package de.dante.extex.typesetter.type.node.pdftex;
 
-import de.dante.extex.typesetter.type.NodeList;
-import de.dante.extex.typesetter.type.node.WhatsItNode;
+import org.extex.typesetter.type.NodeList;
+import org.extex.typesetter.type.node.WhatsItNode;
 
 /**
  * This node contains an X Form.

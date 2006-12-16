@@ -24,10 +24,10 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.count.Count;
 import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.type.node.RuleNode;
 
 import de.dante.extex.interpreter.exception.pdftex.InterpreterPdftexDestinationTypeException;
-import de.dante.extex.typesetter.Typesetter;
-import de.dante.extex.typesetter.type.node.RuleNode;
 
 /**
  * This is the abstract base class for destination types in PDF.

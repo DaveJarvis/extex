@@ -19,9 +19,10 @@
 
 package de.dante.extex.typesetter.type.node.pdftex;
 
+import org.extex.typesetter.type.node.RuleNode;
+import org.extex.typesetter.type.node.WhatsItNode;
+
 import de.dante.extex.interpreter.primitives.pdftex.util.action.ActionSpec;
-import de.dante.extex.typesetter.type.node.RuleNode;
-import de.dante.extex.typesetter.type.node.WhatsItNode;
 
 /**
  * This node signals the start of a link.

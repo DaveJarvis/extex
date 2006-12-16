@@ -4,9 +4,9 @@ package de.dante.extex.backend.documentWriter;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.box.Box;
 import org.extex.interpreter.type.font.Font;
+import org.extex.typesetter.type.node.RuleNode;
 
 import de.dante.extex.interpreter.primitives.pdftex.util.action.ActionSpec;
-import de.dante.extex.typesetter.type.node.RuleNode;
 import de.dante.extex.typesetter.type.node.pdftex.PdfAnnotation;
 import de.dante.extex.typesetter.type.node.pdftex.PdfObject;
 import de.dante.extex.typesetter.type.node.pdftex.PdfRefXImage;

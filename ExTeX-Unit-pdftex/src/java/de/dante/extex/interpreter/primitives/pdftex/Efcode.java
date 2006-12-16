@@ -31,8 +31,7 @@ import org.extex.interpreter.type.count.CountConvertible;
 import org.extex.interpreter.type.font.Font;
 import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.type.UnicodeChar;
-
-import de.dante.extex.typesetter.Typesetter;
+import org.extex.typesetter.Typesetter;
 
 /**
  * This class provides an implementation for the primitive <code>\efcode</code>.

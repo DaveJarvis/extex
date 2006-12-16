@@ -22,8 +22,7 @@ package de.dante.extex.interpreter.primitives.pdftex.util.action;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
-
-import de.dante.extex.typesetter.Typesetter;
+import org.extex.typesetter.Typesetter;
 
 /**
  * This class represents a user action of PDF.

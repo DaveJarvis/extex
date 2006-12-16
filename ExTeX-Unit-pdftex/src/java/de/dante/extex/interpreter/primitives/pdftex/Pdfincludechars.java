@@ -24,9 +24,9 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.font.Font;
+import org.extex.typesetter.Typesetter;
 
 import de.dante.extex.backend.documentWriter.PdftexSupport;
-import de.dante.extex.typesetter.Typesetter;
 
 /**
  * This class provides an implementation for the primitive

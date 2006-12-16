@@ -19,7 +19,7 @@
 
 package de.dante.extex.typesetter.type.node.pdftex;
 
-import de.dante.extex.typesetter.type.node.WhatsItNode;
+import org.extex.typesetter.type.node.WhatsItNode;
 
 /**
  * This node carries an annotation for PDF.

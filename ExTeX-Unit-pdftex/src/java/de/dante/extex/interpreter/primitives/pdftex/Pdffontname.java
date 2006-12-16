@@ -28,9 +28,9 @@ import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.font.Font;
 import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.interpreter.type.tokens.TokensConvertible;
+import org.extex.typesetter.Typesetter;
 
 import de.dante.extex.backend.documentWriter.PdftexSupport;
-import de.dante.extex.typesetter.Typesetter;
 
 /**
  * This class provides an implementation for the primitive <code>\pdffontname</code>.
