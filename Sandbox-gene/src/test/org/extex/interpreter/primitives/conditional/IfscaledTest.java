@@ -1,7 +1,7 @@
 package org.extex.interpreter.primitives.conditional;
 
 
-import de.dante.test.ExTeXLauncher;
+import org.extex.test.ExTeXLauncher;
 
 /**
  * This is a test suite for the primitive <tt>\ifscaled</tt>.

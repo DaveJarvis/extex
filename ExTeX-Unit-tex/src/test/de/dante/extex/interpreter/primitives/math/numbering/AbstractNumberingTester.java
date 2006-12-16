@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter.primitives.math.numbering;
 
-import de.dante.test.NoFlagsPrimitiveTester;
+import org.extex.test.NoFlagsPrimitiveTester;
 
 /**
  * This is an abstract base class for numbering primitives.

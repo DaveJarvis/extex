@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter.primitives.register.muskip;
 
-import de.dante.test.NonExecuteTester;
+import org.extex.test.NonExecuteTester;
 
 /**
  * This is a test suite for the primitive <tt>\gluetomu</tt>.

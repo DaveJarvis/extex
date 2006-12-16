@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter.primitives.scanner;
 
-import de.dante.test.NoFlagsPrimitiveTester;
+import org.extex.test.NoFlagsPrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>\detokenize</tt>.

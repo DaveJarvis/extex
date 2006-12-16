@@ -19,6 +19,8 @@
 
 package de.dante.extex.interpreter.primitives.register.count;
 
+import org.extex.interpreter.primitives.register.count.AbstractCountRegisterTester;
+
 
 /**
  * This is a test suite for the primitive <tt>\newlinechar</tt>.

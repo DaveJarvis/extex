@@ -19,7 +19,7 @@
 
 package org.extex.interpreter.primitives.namespace;
 
-import de.dante.test.NoFlagsButGlobalPrimitiveTester;
+import org.extex.test.NoFlagsButGlobalPrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>\namespace</tt>.

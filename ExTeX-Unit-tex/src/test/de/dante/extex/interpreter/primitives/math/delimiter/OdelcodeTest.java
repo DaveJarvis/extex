@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter.primitives.math.delimiter;
 
-import de.dante.test.NoFlagsButGlobalPrimitiveTester;
+import org.extex.test.NoFlagsButGlobalPrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>\odelcode</tt>.

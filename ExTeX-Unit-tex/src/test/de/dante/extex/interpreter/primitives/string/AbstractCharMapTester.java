@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter.primitives.string;
 
-import de.dante.test.ExTeXLauncher;
+import org.extex.test.ExTeXLauncher;
 
 /**
  * This is a base test class containing tests for array of counts.

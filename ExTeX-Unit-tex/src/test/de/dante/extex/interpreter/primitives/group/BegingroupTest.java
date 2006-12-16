@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter.primitives.group;
 
-import de.dante.test.NoFlagsPrimitiveTester;
+import org.extex.test.NoFlagsPrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>\begingroup</tt>.

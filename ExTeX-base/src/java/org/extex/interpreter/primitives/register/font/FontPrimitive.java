@@ -95,7 +95,7 @@ import org.extex.util.framework.logger.LogEnabled;
  *        org.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
  *        &lang;number&rang;}
  *       | [at] {@linkplain
- *           de.dante.extex.interpreter.type.dimen#Dimen(org.extex.interpreter.context.Context,org.extex.interpreter.TokenSource)
+ *           org.extex.interpreter.type.dimen#Dimen(org.extex.interpreter.context.Context,org.extex.interpreter.TokenSource)
  *           &lang;size&rang;}
  *       | [noligatures]
  *       | [nokerning]

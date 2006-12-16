@@ -20,8 +20,8 @@
 package org.extex.interpreter.primitives.file;
 
 import org.extex.interpreter.primitives.file.Inputfilename;
+import org.extex.test.NoFlagsPrimitiveTester;
 
-import de.dante.test.NoFlagsPrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>\inputfilename</tt>.

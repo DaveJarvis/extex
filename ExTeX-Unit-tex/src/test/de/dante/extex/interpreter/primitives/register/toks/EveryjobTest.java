@@ -19,6 +19,8 @@
 
 package de.dante.extex.interpreter.primitives.register.toks;
 
+import org.extex.interpreter.primitives.register.toks.AbstractToksRegisterTester;
+
 /**
  * This is a test suite for the primitive <tt>\everyjob</tt>.
  *

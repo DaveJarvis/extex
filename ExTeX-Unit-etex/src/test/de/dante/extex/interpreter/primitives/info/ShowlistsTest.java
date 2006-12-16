@@ -21,7 +21,8 @@ package de.dante.extex.interpreter.primitives.info;
 
 import java.util.Properties;
 
-import de.dante.test.NoFlagsPrimitiveTester;
+import org.extex.test.NoFlagsPrimitiveTester;
+
 
 /**
  * This is a test suite for the primitive <tt>\showlists</tt>.

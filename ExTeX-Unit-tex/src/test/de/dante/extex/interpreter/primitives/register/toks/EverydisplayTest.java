@@ -19,6 +19,8 @@
 
 package de.dante.extex.interpreter.primitives.register.toks;
 
+import org.extex.interpreter.primitives.register.toks.AbstractToksRegisterTester;
+
 import de.dante.extex.interpreter.primitives.math.AbstractMathTester;
 
 /**

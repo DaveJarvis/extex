@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter.primitives.register.skip;
 
-import de.dante.extex.interpreter.primitives.register.count.AbstractReadonlyCountRegisterTester;
+import org.extex.interpreter.primitives.register.count.AbstractReadonlyCountRegisterTester;
 
 /**
  * This is a test suite for the primitive <tt>\gluestretchorder</tt>.

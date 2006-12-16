@@ -19,13 +19,13 @@
 
 package org.extex.interpreter.primitives.register.toks;
 
-import de.dante.extex.interpreter.primitives.register.toks.AbstractToksRegisterTester;
+import org.extex.interpreter.primitives.register.toks.AbstractToksRegisterTester;
 
 /**
  * This is a test suite for the primitive <tt>\everymathend</tt>.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4697 $
  */
 public class EverymathendTest extends AbstractToksRegisterTester {
 

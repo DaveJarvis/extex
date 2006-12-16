@@ -22,6 +22,8 @@ package de.dante.extex.interpreter.primitives.register.count;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.extex.interpreter.primitives.register.count.AbstractCountRegisterTester;
+
 
 /**
  * This is a test suite for the primitive <tt>\day</tt>.

@@ -21,7 +21,8 @@ package de.dante.tex;
 
 import java.io.File;
 
-import de.dante.test.ExTeXLauncher;
+import org.extex.test.ExTeXLauncher;
+
 
 /**
  * This is the test suite for plain.

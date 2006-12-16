@@ -19,8 +19,9 @@
 
 package de.dante.extex.interpreter.primitives.conditional;
 
+import org.extex.test.ExTeXLauncher;
+
 import de.dante.extex.interpreter.primitives.math.AbstractMathTester;
-import de.dante.test.ExTeXLauncher;
 
 /**
  * This is a test suite for the primitive <tt>\ifmmode</tt>.

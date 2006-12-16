@@ -22,6 +22,8 @@ package de.dante.extex.interpreter.primitives.register.count;
 import java.util.Calendar;
 import java.lang.Integer;
 
+import org.extex.interpreter.primitives.register.count.AbstractCountRegisterTester;
+
 /**
  * This is a test suite for the primitive <tt>\time</tt>.
  *

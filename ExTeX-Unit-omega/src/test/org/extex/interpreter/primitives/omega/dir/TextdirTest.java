@@ -20,8 +20,8 @@
 package org.extex.interpreter.primitives.omega.dir;
 
 import org.extex.interpreter.Interpreter;
+import org.extex.test.NoFlagsButGlobalPrimitiveTester;
 
-import de.dante.test.NoFlagsButGlobalPrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>textdir</tt>.

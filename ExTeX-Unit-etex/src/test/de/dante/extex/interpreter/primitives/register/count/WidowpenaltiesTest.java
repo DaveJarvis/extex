@@ -19,6 +19,8 @@
 
 package de.dante.extex.interpreter.primitives.register.count;
 
+import org.extex.interpreter.primitives.register.count.AbstractCountArrayTester;
+
 /**
  * This is a test suite for the primitive <tt>\widowpenalties</tt>.
  *

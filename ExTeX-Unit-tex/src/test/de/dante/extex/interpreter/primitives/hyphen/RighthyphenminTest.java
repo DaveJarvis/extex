@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter.primitives.hyphen;
 
-import de.dante.extex.interpreter.primitives.register.count.AbstractNonGroupCountRegisterTester;
+import org.extex.interpreter.primitives.register.count.AbstractNonGroupCountRegisterTester;
 
 /**
  * This is a test suite for the primitive <tt>\righthyphenmin</tt>.

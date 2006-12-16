@@ -28,6 +28,7 @@ import java.util.Properties;
 import javax.xml.transform.stream.StreamSource;
 
 import org.extex.ExTeX;
+import org.extex.test.ExTeXLauncher;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.ConfigurationFactory;
 import org.extex.util.framework.configuration.exception.ConfigurationClassNotFoundException;
@@ -39,7 +40,6 @@ import org.extex.util.resource.PropertyConfigurable;
 import org.extex.util.resource.ResourceFinder;
 
 import de.dante.extex.unicodeFont.FontFactory;
-import de.dante.test.ExTeXLauncher;
 import de.dante.util.resource.UriResolverRf;
 
 /**

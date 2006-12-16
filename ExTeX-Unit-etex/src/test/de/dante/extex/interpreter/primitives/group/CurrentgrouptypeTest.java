@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter.primitives.group;
 
-import de.dante.extex.interpreter.primitives.register.count.AbstractReadonlyCountRegisterTester;
+import org.extex.interpreter.primitives.register.count.AbstractReadonlyCountRegisterTester;
 
 /**
  * This is a test suite for the primitive <tt>\currentgrouptype</tt>.

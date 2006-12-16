@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter.primitives.pdftex;
 
-import de.dante.test.NoFlagsButProtectedPrimitiveTester;
+import org.extex.test.NoFlagsButProtectedPrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>\pdfendthread</tt>.

@@ -18,7 +18,7 @@
  */
 package de.dante.extex.interpreter.primitives.register.count;
 
-import de.dante.test.ExTeXLauncher;
+import org.extex.test.ExTeXLauncher;
 
 
 /**

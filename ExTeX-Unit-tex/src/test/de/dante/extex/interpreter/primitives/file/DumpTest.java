@@ -30,8 +30,8 @@ import org.extex.interpreter.type.Code;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.TokenFactoryImpl;
+import org.extex.test.NoFlagsPrimitiveTester;
 
-import de.dante.test.NoFlagsPrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>\dump</tt>.

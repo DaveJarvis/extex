@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter.primitives.typesetter.paragraph;
 
-import de.dante.test.NonExecuteTester;
+import org.extex.test.NonExecuteTester;
 
 /**
  * This is a test suite for the primitive <tt>\parshapeindent</tt>.

@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter.primitives.file;
 
-import de.dante.test.NoFlagsButGlobalAndImmediatePrimitiveTester;
+import org.extex.test.NoFlagsButGlobalAndImmediatePrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>\openout</tt>.

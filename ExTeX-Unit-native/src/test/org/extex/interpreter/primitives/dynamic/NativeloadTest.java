@@ -19,7 +19,7 @@
 
 package org.extex.interpreter.primitives.dynamic;
 
-import de.dante.test.NoFlagsPrimitiveTester;
+import org.extex.test.NoFlagsPrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>\nativeload</tt>.

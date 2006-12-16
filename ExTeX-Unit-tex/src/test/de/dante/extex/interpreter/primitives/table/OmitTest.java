@@ -19,7 +19,7 @@
 
 package de.dante.extex.interpreter.primitives.table;
 
-import de.dante.test.ExTeXLauncher;
+import org.extex.test.ExTeXLauncher;
 
 /**
  * This is a test suite for the primitive <tt>\omit</tt>.

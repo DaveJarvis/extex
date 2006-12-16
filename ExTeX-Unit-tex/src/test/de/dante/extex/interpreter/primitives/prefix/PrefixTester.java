@@ -21,7 +21,8 @@ package de.dante.extex.interpreter.primitives.prefix;
 
 import java.util.Properties;
 
-import de.dante.test.ExTeXLauncher;
+import org.extex.test.ExTeXLauncher;
+
 
 /**
  * This is a test suite for the prefix primitives.
