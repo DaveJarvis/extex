@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.namespace;
+package org.extex.interpreter.primitives.namespace;
 
 import de.dante.test.NoFlagsButGlobalPrimitiveTester;
 

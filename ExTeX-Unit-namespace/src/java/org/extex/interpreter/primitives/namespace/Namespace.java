@@ -17,61 +17,51 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.namespace;
+package org.extex.interpreter.primitives.namespace;
 
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
-import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.interpreter.type.AbstractAssignment;
+import org.extex.interpreter.type.ExpandableCode;
+import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.tokens.Tokens;
-import org.extex.scanner.type.token.CodeToken;
-import org.extex.scanner.type.token.Token;
-
-import de.dante.extex.interpreter.primitives.macro.Let;
-import de.dante.extex.typesetter.Typesetter;
+import org.extex.typesetter.Typesetter;
 
 /**
- * This class provides an implementation for the primitive <code>\import</code>.
+ * This class provides an implementation for the primitive <code>\namespace</code>.
  *
- * <doc name="import">
- * <h3>The Primitive <tt>\import</tt></h3>
+ * <doc name="namespace">
+ * <h3>The Primitive <tt>\namespace</tt></h3>
  * <p>
- *  The primitive <tt>\import</tt> defines all control sequences exported from
- *  the given name space into the current name space. Any definitions with the
- *  same name are overwritten.
- * </p>
- * <p>
- *  The definitions are usually performed local to the current group. If the
- *  prefix <tt>\global</tt> is given then the definition is made globally.
+ *  TODO missing documentation
  * </p>
  *
  * <h4>Syntax</h4>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    &lang;import&rang;
- *      &rarr; &lang;prefix&rang; <tt>\import</tt> {@linkplain
+ *    &lang;namespace&rang;
+ *      &rarr; <tt>\namespace</tt> {@linkplain
  *      org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
- *      &lang;name space&rang;}
- *
- *    &lang;prefix&rang;
- *      &rarr;
- *      | <tt>\global</tt>  </pre>
+ *      &lang;replacement text&rang;}  </pre>
  *
  * <h4>Examples</h4>
  *  <pre class="TeXSample">
- *    \import{de.dante.dtk}  </pre>
+ *    \namespace{org.dante.dtk}  </pre>
  *
  * </doc>
  *
- *
- * @see de.dante.extex.interpreter.primitives.namespace.Export
- * @see de.dante.extex.interpreter.primitives.namespace.Namespace
+ * @see org.extex.interpreter.primitives.namespace.Export
+ * @see org.extex.interpreter.primitives.namespace.Import
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 4732 $
  */
-public class Import extends Let {
+public class Namespace extends AbstractAssignment
+        implements
+            Theable,
+            ExpandableCode {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
@@ -83,7 +73,7 @@ public class Import extends Let {
      *
      * @param name the name for debugging
      */
-    public Import(final String name) {
+    public Namespace(final String name) {
 
         super(name);
     }
@@ -99,23 +89,34 @@ public class Import extends Let {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        String ns = source.getTokens(context, source, typesetter).toText();
-        Tokens export = context.getToks(ns + "\bexport");
-        String namespace = context.getNamespace();
-        int length = export.length();
+        Tokens toks = source.getTokens(context, source, typesetter);
+        context.setNamespace(toks.toText(), prefix.clearGlobal());
+    }
 
-        for (int i = 0; i < length; i++) {
-            Token t = export.get(i);
-            if (t instanceof CodeToken) {
-                if (context.getCode((CodeToken) t) == null) {
-                    throw new HelpingException(getLocalizer(),
-                            "Namespace.Import.undef", t.toString());
-                } else {
-                    let(prefix, context, //
-                            ((CodeToken) t).cloneInNamespace(namespace), t);
-                }
-            }
-        }
+    /**
+     * @see org.extex.interpreter.type.ExpandableCode#expand(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource,
+     *      org.extex.typesetter.Typesetter)
+     */
+    public void expand(final Flags prefix, final Context context,
+            final TokenSource source, final Typesetter typesetter)
+            throws InterpreterException {
+
+        source.push(new Tokens(context, context.getNamespace()));
+    }
+
+    /**
+     * @see org.extex.interpreter.type.Theable#the(
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource,
+     *      org.extex.typesetter.Typesetter)
+     */
+    public Tokens the(final Context context, final TokenSource source,
+            final Typesetter typesetter) throws InterpreterException {
+
+        return new Tokens(context, context.getNamespace());
     }
 
 }

@@ -17,17 +17,17 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.namespace;
+package org.extex.interpreter.primitives.namespace;
 
 import de.dante.test.NoFlagsPrimitiveTester;
 
 /**
- * This is a test suite for the primitive <tt>\export</tt>.
+ * This is a test suite for the primitive <tt>\import</tt>.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class ExportTest extends NoFlagsPrimitiveTester {
+public class ImportTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
@@ -35,7 +35,7 @@ public class ExportTest extends NoFlagsPrimitiveTester {
      */
     public static void main(final String[] args) {
 
-        junit.textui.TestRunner.run(ExportTest.class);
+        junit.textui.TestRunner.run(ImportTest.class);
     }
 
     /**
@@ -43,9 +43,9 @@ public class ExportTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public ExportTest(final String arg) {
+    public ImportTest(final String arg) {
 
-        super(arg, "export", "{\\a}", DEFINE_BRACES);
+        super(arg, "import", "{a.b.c}", DEFINE_BRACES);
         setConfig("nextex");
     }
 

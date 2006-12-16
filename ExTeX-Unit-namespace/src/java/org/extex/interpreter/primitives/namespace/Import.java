@@ -17,72 +17,61 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.namespace;
+package org.extex.interpreter.primitives.namespace;
 
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
-import org.extex.interpreter.type.AbstractAssignment;
+import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.interpreter.primitives.macro.Let;
 import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.token.CodeToken;
+import org.extex.scanner.type.token.Token;
+import org.extex.typesetter.Typesetter;
 
-import de.dante.extex.typesetter.Typesetter;
 
 /**
- * This class provides an implementation for the primitive <code>\export</code>.
+ * This class provides an implementation for the primitive <code>\import</code>.
  *
- * <doc name="export">
- * <h3>The Primitive <tt>\export</tt></h3>
+ * <doc name="import">
+ * <h3>The Primitive <tt>\import</tt></h3>
  * <p>
- *  The primitive <tt>\export</tt> takes a list of tokens and saves them away
- *  for an associated <tt>\import</tt>. The tokens in the list are either
- *  control sequence tokens or active characters. All other tokens are ignored.
- * </p>
- * <p>
- *  The expansion text is empty. The primitive is an assignment. Thus
- *  <tt>\afterassignment</tt> interacts with the primitive in the expected way.
+ *  The primitive <tt>\import</tt> defines all control sequences exported from
+ *  the given name space into the current name space. Any definitions with the
+ *  same name are overwritten.
  * </p>
  * <p>
  *  The definitions are usually performed local to the current group. If the
- *  prefix <tt>\global</tt> is given or the count register <tt>\globaldefs</tt>
- *  has a positive value then the definition is made globally.
- *  Usually you want to define the export as global. This is the case if the
- *  <tt>\export</tt> primitive is invoked at group level 0. Interesting special
- *  effects can be achieved when using the export statement in groups and
- *  together with a local scope definition.
- * </p>
- * <p>
- *  This primitive is one building block for the use of name spaces in
- *  <logo>ExTeX</logo>. The central primitive for this purpose is
- *  <tt>\namespace</tt>.
+ *  prefix <tt>\global</tt> is given then the definition is made globally.
  * </p>
  *
  * <h4>Syntax</h4>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    &lang;export&rang;
- *      &rarr; &lang;prefix&rang; <tt>\export</tt> {@linkplain
+ *    &lang;import&rang;
+ *      &rarr; &lang;prefix&rang; <tt>\import</tt> {@linkplain
  *      org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
- *      &lang;replacement text&rang;}
+ *      &lang;name space&rang;}
  *
  *    &lang;prefix&rang;
  *      &rarr;
- *       |  <tt>\global</tt>  </pre>
+ *      | <tt>\global</tt>  </pre>
  *
  * <h4>Examples</h4>
  *  <pre class="TeXSample">
- *    \export{\a\b}  </pre>
+ *    \import{de.dante.dtk}  </pre>
  *
  * </doc>
  *
  *
- * @see de.dante.extex.interpreter.primitives.namespace.Namespace
- * @see de.dante.extex.interpreter.primitives.namespace.Import
+ * @see org.extex.interpreter.primitives.namespace.Export
+ * @see org.extex.interpreter.primitives.namespace.Namespace
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 4770 $
  */
-public class Export extends AbstractAssignment {
+public class Import extends Let {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
@@ -94,7 +83,7 @@ public class Export extends AbstractAssignment {
      *
      * @param name the name for debugging
      */
-    public Export(final String name) {
+    public Import(final String name) {
 
         super(name);
     }
@@ -110,8 +99,23 @@ public class Export extends AbstractAssignment {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        Tokens export = source.getTokens(context, source, typesetter);
-        context.setToks(context.getNamespace() + "\bexport", export, true);
+        String ns = source.getTokens(context, source, typesetter).toText();
+        Tokens export = context.getToks(ns + "\bexport");
+        String namespace = context.getNamespace();
+        int length = export.length();
+
+        for (int i = 0; i < length; i++) {
+            Token t = export.get(i);
+            if (t instanceof CodeToken) {
+                if (context.getCode((CodeToken) t) == null) {
+                    throw new HelpingException(getLocalizer(),
+                            "Namespace.Import.undef", t.toString());
+                } else {
+                    let(prefix, context, //
+                            ((CodeToken) t).cloneInNamespace(namespace), t);
+                }
+            }
+        }
     }
 
 }

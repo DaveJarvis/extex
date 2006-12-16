@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -16,15 +16,39 @@
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
-package de.dante.extex.interpreter.type.image;
 
+package org.extex.interpreter.primitives.namespace;
+
+import de.dante.test.NoFlagsPrimitiveTester;
 
 /**
- * This interface describes the capabilities of an image.
+ * This is a test suite for the primitive <tt>\export</tt>.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface Image {
+public class ExportTest extends NoFlagsPrimitiveTester {
+
+    /**
+     * Command line interface.
+     * @param args the arguments
+     */
+    public static void main(final String[] args) {
+
+        junit.textui.TestRunner.run(ExportTest.class);
+    }
+
+    /**
+     * Constructor for NamespaceTest.
+     *
+     * @param arg the name
+     */
+    public ExportTest(final String arg) {
+
+        super(arg, "export", "{\\a}", DEFINE_BRACES);
+        setConfig("nextex");
+    }
+
+    //TODO implement more primitive specific test cases
 
 }

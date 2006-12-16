@@ -20,11 +20,11 @@
 <unit name="namespace">
   <primitives>
     <define name="export"
-            class="de.dante.extex.interpreter.primitives.namespace.Export"/>
+            class="org.extex.interpreter.primitives.namespace.Export"/>
     <define name="import"
-            class="de.dante.extex.interpreter.primitives.namespace.Import"/>
+            class="org.extex.interpreter.primitives.namespace.Import"/>
     <define name="namespace"
-            class="de.dante.extex.interpreter.primitives.namespace.Namespace"/>
+            class="org.extex.interpreter.primitives.namespace.Namespace"/>
   </primitives>
  </unit>
  
