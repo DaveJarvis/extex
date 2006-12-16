@@ -30,13 +30,13 @@
     -  Note that font files are also sought in TEXINPUTS but NOT requested from
     -  the user.
     -->
-  <Fonts class="de.dante.extex.font.FontFactoryImpl">
+  <Fonts class="org.extex.font.FontFactoryImpl">
     <Type default="type1">
-      <type1 class="de.dante.extex.font.type.efm.EFMType1AFMFount"/>        
-      <ttf class="de.dante.extex.font.type.efm.EFMTTFFount"/>        
-      <tfm-mathsyml class="de.dante.extex.font.type.efm.EFMType1TFMMathsymlFount"/>        
-      <tfm-mathext class="de.dante.extex.font.type.efm.EFMType1TFMMathextFount"/>
-      <tfm-normal class="de.dante.extex.font.type.efm.EFMType1TFMNOFount"/>
+      <type1 class="org.extex.font.type.efm.EFMType1AFMFount"/>        
+      <ttf class="org.extex.font.type.efm.EFMTTFFount"/>        
+      <tfm-mathsyml class="org.extex.font.type.efm.EFMType1TFMMathsymlFount"/>        
+      <tfm-mathext class="org.extex.font.type.efm.EFMType1TFMMathextFount"/>
+      <tfm-normal class="org.extex.font.type.efm.EFMType1TFMNOFount"/>
     </Type>
   </Fonts>
 
@@ -45,8 +45,8 @@
     -  color converter.
     -->
   <ColorConverter default="basic">
-    <basic class="de.dante.extex.color.BasicColorConverter"/>
-    <no class="de.dante.extex.color.NoColorConverter"/>
+    <basic class="org.extex.color.BasicColorConverter"/>
+    <no class="org.extex.color.NoColorConverter"/>
   </ColorConverter>
 
   <!-- 
@@ -64,7 +64,7 @@
     -  The section "Interpreter" contains the specification for the core
     -  interpreter.
     -->
-  <Interpreter class="de.dante.extex.interpreter.max.Moritz">
+  <Interpreter class="org.extex.interpreter.max.Moritz">
 
     <!-- The configuration for the language manager.
       -->
@@ -77,28 +77,28 @@
     <!-- The configuration of the context implementation to use.
       -->
     <Context default="ExTeX">
-      <ExTeX class="de.dante.extex.interpreter.context.impl.ContextImpl">
+      <ExTeX class="org.extex.interpreter.context.impl.ContextImpl">
         <!-- The implementation of the group to use.
           -->
-        <Group class="de.dante.extex.interpreter.context.impl.GroupImpl"/>
+        <Group class="org.extex.interpreter.context.impl.GroupImpl"/>
 
         <!-- The implementation of the typesetting context to use.
           -->
-        <TypesettingContext class="de.dante.extex.interpreter.context.tc.TypesettingContextImpl"/>
+        <TypesettingContext class="org.extex.interpreter.context.tc.TypesettingContextImpl"/>
       </ExTeX>
     </Context>
 
     <!-- The implementation of the error handler to use.
       -->
     <ErrorHandler default="ExTeX">
-     <ExTeX class="de.dante.extex.main.errorHandler.ErrorHandlerImpl">
-       <EditHandler class="de.dante.extex.main.errorHandler.editHandler.EditHandlerTeXImpl"/>
+     <ExTeX class="org.extex.main.errorHandler.ErrorHandlerImpl">
+       <EditHandler class="org.extex.main.errorHandler.editHandler.EditHandlerTeXImpl"/>
      </ExTeX>
-     <TeX class="de.dante.extex.main.errorHandler.ErrorHandlerTeXImpl">
-       <EditHandler class="de.dante.extex.main.errorHandler.editHandler.EditHandlerTeXImpl"/>
+     <TeX class="org.extex.main.errorHandler.ErrorHandlerTeXImpl">
+       <EditHandler class="org.extex.main.errorHandler.editHandler.EditHandlerTeXImpl"/>
      </TeX>
-     <extex class="de.dante.extex.main.errorHandler.ErrorHandlerImpl"/>
-     <tex class="de.dante.extex.main.errorHandler.ErrorHandlerTeXImpl"/>
+     <extex class="org.extex.main.errorHandler.ErrorHandlerImpl"/>
+     <tex class="org.extex.main.errorHandler.ErrorHandlerTeXImpl"/>
     </ErrorHandler>
 
     <unit src="unit/tex.xml"/>
@@ -115,7 +115,7 @@
     -  Currently only the TeX output routine is present. In the future this might
     -  be a nice place to experiment with.
     -->
-  <OutputRoutine class="de.dante.extex.typesetter.output.TeXOutputRoutine"/>
+  <OutputRoutine class="org.extex.typesetter.output.TeXOutputRoutine"/>
 
   <!-- 
     -  The section "Typesetter" contains the specification for the typesetter.
@@ -123,25 +123,25 @@
     -  one of several typesetters programatically.
     -->
   <Typesetter default="TeX">
-    <TeX class="de.dante.extex.typesetter.impl.TypesetterImpl"
+    <TeX class="org.extex.typesetter.impl.TypesetterImpl"
          direction="lr">
-      <PageBuilder class="de.dante.extex.typesetter.pageBuilder.impl.PageBuilderImpl"/>
-      <ParagraphBuilder class="de.dante.extex.typesetter.paragraphBuilder.texImpl.TeXParagraphBuilder">
-        <Hyphenator class="de.dante.extex.typesetter.paragraphBuilder.texImpl.TeXParagraphBuilder"/>
+      <PageBuilder class="org.extex.typesetter.pageBuilder.impl.PageBuilderImpl"/>
+      <ParagraphBuilder class="org.extex.typesetter.paragraphBuilder.texImpl.TeXParagraphBuilder">
+        <Hyphenator class="org.extex.typesetter.paragraphBuilder.texImpl.TeXParagraphBuilder"/>
       </ParagraphBuilder>
-      <NodeFactory class="de.dante.extex.typesetter.type.node.factory.CachingNodeFactory"/>
+      <NodeFactory class="org.extex.typesetter.type.node.factory.CachingNodeFactory"/>
     </TeX>
-    <experimental class="de.dante.extex.typesetter.impl.TypesetterImpl"
+    <experimental class="org.extex.typesetter.impl.TypesetterImpl"
          direction="lr">
-      <PageBuilder class="de.dante.extex.typesetter.pageBuilder.impl.PageBuilderImpl"/>
-      <ParagraphBuilder class="de.dante.extex.typesetter.paragraphBuilder.impl.ParagraphBuilderImpl"/>
-      <NodeFactory class="de.dante.extex.typesetter.type.node.factory.CachingUnicodeNodeFactory"/>
+      <PageBuilder class="org.extex.typesetter.pageBuilder.impl.PageBuilderImpl"/>
+      <ParagraphBuilder class="org.extex.typesetter.paragraphBuilder.impl.ParagraphBuilderImpl"/>
+      <NodeFactory class="org.extex.typesetter.type.node.factory.CachingUnicodeNodeFactory"/>
     </experimental>
-    <devel class="de.dante.extex.typesetter.impl.TypesetterImpl"
+    <devel class="org.extex.typesetter.impl.TypesetterImpl"
            direction="lr">
-      <PageBuilder class="de.dante.extex.typesetter.pageBuilder.impl.PageBuilderImpl"/>
-      <ParagraphBuilder class="de.dante.extex.typesetter.paragraphBuilder.trivial.TrivialBuilder"/>
-      <NodeFactory class="de.dante.extex.typesetter.type.node.factory.CachingUnicodeNodeFactory"/>
+      <PageBuilder class="org.extex.typesetter.pageBuilder.impl.PageBuilderImpl"/>
+      <ParagraphBuilder class="org.extex.typesetter.paragraphBuilder.trivial.TrivialBuilder"/>
+      <NodeFactory class="org.extex.typesetter.type.node.factory.CachingUnicodeNodeFactory"/>
     </devel>
   </Typesetter>
 
@@ -172,7 +172,7 @@
   <!-- 
     -  The section "Backend" contains the specification for the backend.
     -->
-  <Backend class="de.dante.extex.backend.BackendDriverImpl">
+  <Backend class="org.extex.backend.BackendDriverImpl">
     <!-- 
       -  The section "DocumentWriter" contains the specification for the
       -  document writer

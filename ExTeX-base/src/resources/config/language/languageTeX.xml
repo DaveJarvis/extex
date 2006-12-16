@@ -19,25 +19,25 @@
   -->
 <Language default="TeX">
 
-  <TeX class="de.dante.extex.language.impl.BaseLanguageManager"
+  <TeX class="org.extex.language.impl.BaseLanguageManager"
        default="default">
     <default
-      class="de.dante.extex.language.hyphenation.liang.LiangsHyphenationTable">
+      class="org.extex.language.hyphenation.liang.LiangsHyphenationTable">
       <LigatureBuilder
-        class="de.dante.extex.language.ligature.impl.LigatureBuilderImpl"/>
+        class="org.extex.language.ligature.impl.LigatureBuilderImpl"/>
       <WordTokenizer
-        class="de.dante.extex.language.word.impl.TeXWords"/>
+        class="org.extex.language.word.impl.TeXWords"/>
     </default>
   </TeX>
 
-  <ExTeX class="de.dante.extex.language.impl.LoadingLanguageManager"
+  <ExTeX class="org.extex.language.impl.LoadingLanguageManager"
          default="default">
     <default
-      class="de.dante.extex.language.hyphenation.liang.LiangsHyphenationTable">
+      class="org.extex.language.hyphenation.liang.LiangsHyphenationTable">
       <LigatureBuilder
-        class="de.dante.extex.language.ligature.impl.LigatureBuilderImpl"/>
+        class="org.extex.language.ligature.impl.LigatureBuilderImpl"/>
       <WordTokenizer
-        class="de.dante.extex.language.word.impl.TeXWords"/>
+        class="org.extex.language.word.impl.TeXWords"/>
     </default>
   </ExTeX>
 

@@ -20,7 +20,7 @@
 <unit name="ensureloaded">
   <primitives>
     <define name="ensureloaded"
-            class="de.dante.extex.interpreter.primitives.dynamic.EnsureLoaded"/>
+            class="org.extex.interpreter.primitives.dynamic.EnsureLoaded"/>
   </primitives>
  </unit>
  

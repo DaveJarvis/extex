@@ -20,6 +20,6 @@
 <unit name="showprefix">
   <primitives>
     <define name="showprefix"
-            class="de.dante.extex.interpreter.primitives.prefix.Showprefix"/>
+            class="org.extex.interpreter.primitives.prefix.Showprefix"/>
   </primitives>
 </unit>
