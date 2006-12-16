@@ -30,6 +30,11 @@ import de.dante.extex.unicodeFont.exception.FontException;
 public class PfbException extends FontException {
 
     /**
+     * The field <tt>serialVersionUID</tt> ...
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Create a new object.
      */
     public PfbException() {

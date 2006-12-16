@@ -31,6 +31,11 @@ import java.io.Serializable;
 public class TfmKeyInt implements Serializable {
 
     /**
+     * The field <tt>serialVersionUID</tt> ...
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * key.
      */
     private int key;

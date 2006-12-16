@@ -21,9 +21,10 @@ package de.dante.extex.unicodeFont.format.pfm;
 import java.io.IOException;
 import java.io.InputStream;
 
+import org.extex.util.file.random.RandomAccessInputStream;
+import org.extex.util.file.random.RandomAccessR;
+
 import de.dante.extex.unicodeFont.format.afm.AfmParser;
-import de.dante.util.file.random.RandomAccessInputStream;
-import de.dante.util.file.random.RandomAccessR;
 
 /**
  * Reader for a PFM-Font file.

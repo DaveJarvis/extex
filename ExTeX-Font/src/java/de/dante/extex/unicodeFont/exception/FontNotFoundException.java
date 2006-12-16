@@ -29,6 +29,11 @@ package de.dante.extex.unicodeFont.exception;
 public class FontNotFoundException extends FontException {
 
     /**
+     * The field <tt>serialVersionUID</tt> ...
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Create a new object.
      */
     public FontNotFoundException() {

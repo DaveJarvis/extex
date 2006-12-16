@@ -27,12 +27,13 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Date;
 
+import org.extex.util.XMLWriterConvertible;
+import org.extex.util.file.random.RandomAccessInputFile;
+import org.extex.util.file.random.RandomAccessInputStream;
+import org.extex.util.file.random.RandomAccessR;
+import org.extex.util.xml.XMLStreamWriter;
+
 import de.dante.extex.unicodeFont.format.xtf.TtfTableCMAP.Format;
-import de.dante.util.XMLWriterConvertible;
-import de.dante.util.file.random.RandomAccessInputFile;
-import de.dante.util.file.random.RandomAccessInputStream;
-import de.dante.util.file.random.RandomAccessR;
-import de.dante.util.xml.XMLStreamWriter;
 
 /**
  * Reader for a TrueType / OpenType font.
@@ -1028,8 +1029,8 @@ public class XtfReader implements XMLWriterConvertible {
     }
 
     /**
-     * @see de.dante.util.XMLWriterConvertible#writeXML(
-     *      de.dante.util.xml.XMLStreamWriter)
+     * @see org.extex.util.XMLWriterConvertible#writeXML(
+     *      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(final XMLStreamWriter writer) throws IOException {
 

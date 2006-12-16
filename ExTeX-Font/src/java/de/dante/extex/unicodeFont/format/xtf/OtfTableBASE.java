@@ -21,12 +21,12 @@ package de.dante.extex.unicodeFont.format.xtf;
 
 import java.io.IOException;
 
+import org.extex.util.XMLWriterConvertible;
+import org.extex.util.file.random.RandomAccessR;
+import org.extex.util.xml.XMLStreamWriter;
 import org.jdom.Comment;
 import org.jdom.Element;
 
-import de.dante.util.XMLWriterConvertible;
-import de.dante.util.file.random.RandomAccessR;
-import de.dante.util.xml.XMLStreamWriter;
 
 /**
  * The Baseline table (BASE) provides information used to
@@ -128,7 +128,7 @@ public class OtfTableBASE extends AbstractXtfTable
     }
 
     /**
-     * @see de.dante.util.XMLConvertible#toXML()
+     * @see org.extex.util.XMLConvertible#toXML()
      */
     public Element toXML() {
 
@@ -224,8 +224,8 @@ public class OtfTableBASE extends AbstractXtfTable
         private int baseScriptListOffset;
 
         /**
-         * @see de.dante.util.XMLWriterConvertible#writeXML(
-         *      de.dante.util.xml.XMLStreamWriter)
+         * @see org.extex.util.XMLWriterConvertible#writeXML(
+         *      org.extex.util.xml.XMLStreamWriter)
          */
         public void writeXML(final XMLStreamWriter writer) throws IOException {
 
@@ -294,8 +294,8 @@ public class OtfTableBASE extends AbstractXtfTable
         }
 
         /**
-         * @see de.dante.util.XMLWriterConvertible#writeXML(
-         *      de.dante.util.xml.XMLStreamWriter)
+         * @see org.extex.util.XMLWriterConvertible#writeXML(
+         *      org.extex.util.xml.XMLStreamWriter)
          */
         public void writeXML(final XMLStreamWriter writer) throws IOException {
 
@@ -308,8 +308,8 @@ public class OtfTableBASE extends AbstractXtfTable
     }
 
     /**
-     * @see de.dante.util.XMLWriterConvertible#writeXML(
-     *      de.dante.util.xml.XMLStreamWriter)
+     * @see org.extex.util.XMLWriterConvertible#writeXML(
+     *      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(final XMLStreamWriter writer) throws IOException {
 

@@ -34,6 +34,11 @@ import java.util.List;
 public class AfmCharMetric implements Serializable {
 
     /**
+     * The field <tt>serialVersionUID</tt> ...
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * C.
      */
     private int c = -1;

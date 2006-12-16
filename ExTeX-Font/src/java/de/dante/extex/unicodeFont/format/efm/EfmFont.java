@@ -22,8 +22,9 @@ package de.dante.extex.unicodeFont.format.efm;
 import java.io.IOException;
 import java.io.OutputStream;
 
+import org.extex.util.xml.XMLStreamWriter;
+
 import de.dante.extex.unicodeFont.format.tex.tfm.TfmReader;
-import de.dante.util.xml.XMLStreamWriter;
 
 /**
  * Class to handle efm font metrics.

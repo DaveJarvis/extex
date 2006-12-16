@@ -22,7 +22,8 @@ package de.dante.extex.unicodeFont.format.xtf.cff;
 import java.io.IOException;
 import java.util.List;
 
-import de.dante.util.xml.XMLStreamWriter;
+import org.extex.util.xml.XMLStreamWriter;
+
 
 /**
  * UniqueID
@@ -45,7 +46,7 @@ public class T2TDOUniqueID extends T2TDONumber {
     }
 
     /**
-     * @see de.dante.extex.font.type.ttf.cff.T2Operator#getName()
+     * @see org.extex.font.type.ttf.cff.T2Operator#getName()
      */
     public String getName() {
 
@@ -53,8 +54,8 @@ public class T2TDOUniqueID extends T2TDONumber {
     }
 
     /**
-     * @see de.dante.util.XMLWriterConvertible#writeXML(
-     *      de.dante.util.xml.XMLStreamWriter)
+     * @see org.extex.util.XMLWriterConvertible#writeXML(
+     *      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(final XMLStreamWriter writer) throws IOException {
 

@@ -21,7 +21,8 @@ package de.dante.extex.unicodeFont.format.xtf;
 
 import java.io.IOException;
 
-import de.dante.util.file.random.RandomAccessR;
+import org.extex.util.file.random.RandomAccessR;
+
 
 /**
  * Abstract class for all coverage
@@ -126,7 +127,7 @@ public abstract class XtfCoverage {
         }
 
         /**
-         * @see de.dante.extex.font.type.ttf.Coverage#findGlyph(int)
+         * @see org.extex.font.type.ttf.Coverage#findGlyph(int)
          */
         public int findGlyph(final int glyphId) {
 
@@ -173,7 +174,7 @@ public abstract class XtfCoverage {
         }
 
         /**
-         * @see de.dante.extex.font.type.ttf.Coverage#findGlyph(int)
+         * @see org.extex.font.type.ttf.Coverage#findGlyph(int)
          */
         public int findGlyph(final int glyphId) {
 

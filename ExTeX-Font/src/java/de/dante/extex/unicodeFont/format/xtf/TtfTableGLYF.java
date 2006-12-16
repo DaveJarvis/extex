@@ -23,9 +23,10 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.Vector;
 
-import de.dante.util.XMLWriterConvertible;
-import de.dante.util.file.random.RandomAccessR;
-import de.dante.util.xml.XMLStreamWriter;
+import org.extex.util.XMLWriterConvertible;
+import org.extex.util.file.random.RandomAccessR;
+import org.extex.util.xml.XMLStreamWriter;
+
 
 /**
  * The 'glyf' table contains the data that defines the appearance
@@ -86,7 +87,7 @@ public class TtfTableGLYF extends AbstractXtfTable
     }
 
     /**
-     * @see de.dante.extex.font.type.ttf.TTFTable#getInitOrder()
+     * @see org.extex.font.type.ttf.TTFTable#getInitOrder()
      */
     public int getInitOrder() {
 
@@ -94,7 +95,7 @@ public class TtfTableGLYF extends AbstractXtfTable
     }
 
     /**
-     * @see de.dante.extex.font.type.ttf.TTFTable#init()
+     * @see org.extex.font.type.ttf.TTFTable#init()
      */
     public void init() {
 
@@ -170,7 +171,7 @@ public class TtfTableGLYF extends AbstractXtfTable
     }
 
     /**
-     * @see de.dante.util.XMLWriterConvertible#writeXML(de.dante.util.xml.XMLStreamWriter)
+     * @see org.extex.util.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(final XMLStreamWriter writer) throws IOException {
 
@@ -475,8 +476,8 @@ public class TtfTableGLYF extends AbstractXtfTable
         }
 
         /**
-         * @see de.dante.util.XMLWriterConvertible#writeXML(
-         *      de.dante.util.xml.XMLStreamWriter)
+         * @see org.extex.util.XMLWriterConvertible#writeXML(
+         *      org.extex.util.xml.XMLStreamWriter)
          */
         public void writeXML(final XMLStreamWriter writer) throws IOException {
 
@@ -600,7 +601,7 @@ public class TtfTableGLYF extends AbstractXtfTable
         }
 
         /**
-         * @see de.dante.extex.font.type.ttf.TTFTableGLYF.Descript#getEndPtOfContours(int)
+         * @see org.extex.font.type.ttf.TTFTableGLYF.Descript#getEndPtOfContours(int)
          */
         public int getEndPtOfContours(final int i) {
 
@@ -614,7 +615,7 @@ public class TtfTableGLYF extends AbstractXtfTable
         }
 
         /**
-         * @see de.dante.extex.font.type.ttf.TTFTableGLYF.Descript#getFlags(int)
+         * @see org.extex.font.type.ttf.TTFTableGLYF.Descript#getFlags(int)
          */
         public byte getFlags(final int i) {
 
@@ -627,7 +628,7 @@ public class TtfTableGLYF extends AbstractXtfTable
         }
 
         /**
-         * @see de.dante.extex.font.type.ttf.TTFTableGLYF.Descript#getXCoordinate(int)
+         * @see org.extex.font.type.ttf.TTFTableGLYF.Descript#getXCoordinate(int)
          */
         public short getXCoordinate(final int i) {
 
@@ -645,7 +646,7 @@ public class TtfTableGLYF extends AbstractXtfTable
         }
 
         /**
-         * @see de.dante.extex.font.type.ttf.TTFTableGLYF.Descript#getYCoordinate(int)
+         * @see org.extex.font.type.ttf.TTFTableGLYF.Descript#getYCoordinate(int)
          */
         public short getYCoordinate(final int i) {
 
@@ -663,7 +664,7 @@ public class TtfTableGLYF extends AbstractXtfTable
         }
 
         /**
-         * @see de.dante.extex.font.type.ttf.TTFTableGLYF.Descript#isComposite()
+         * @see org.extex.font.type.ttf.TTFTableGLYF.Descript#isComposite()
          */
         public boolean isComposite() {
 
@@ -671,7 +672,7 @@ public class TtfTableGLYF extends AbstractXtfTable
         }
 
         /**
-         * @see de.dante.extex.font.type.ttf.TTFTableGLYF.Descript#getPointCount()
+         * @see org.extex.font.type.ttf.TTFTableGLYF.Descript#getPointCount()
          */
         public int getPointCount() {
 
@@ -683,7 +684,7 @@ public class TtfTableGLYF extends AbstractXtfTable
         }
 
         /**
-         * @see de.dante.extex.font.type.ttf.TTFTableGLYF.Descript#getContourCount()
+         * @see org.extex.font.type.ttf.TTFTableGLYF.Descript#getContourCount()
          */
         public int getContourCount() {
 
@@ -890,7 +891,7 @@ public class TtfTableGLYF extends AbstractXtfTable
         }
 
         /**
-         * @see de.dante.extex.font.type.ttf.TTFTableGLYF.Descript#getEndPtOfContours(int)
+         * @see org.extex.font.type.ttf.TTFTableGLYF.Descript#getEndPtOfContours(int)
          */
         public int getEndPtOfContours(final int i) {
 
@@ -898,7 +899,7 @@ public class TtfTableGLYF extends AbstractXtfTable
         }
 
         /**
-         * @see de.dante.extex.font.type.ttf.TTFTableGLYF.Descript#getFlags(int)
+         * @see org.extex.font.type.ttf.TTFTableGLYF.Descript#getFlags(int)
          */
         public byte getFlags(final int i) {
 
@@ -906,7 +907,7 @@ public class TtfTableGLYF extends AbstractXtfTable
         }
 
         /**
-         * @see de.dante.extex.font.type.ttf.TTFTableGLYF.Descript#getXCoordinate(int)
+         * @see org.extex.font.type.ttf.TTFTableGLYF.Descript#getXCoordinate(int)
          */
         public short getXCoordinate(final int i) {
 
@@ -914,7 +915,7 @@ public class TtfTableGLYF extends AbstractXtfTable
         }
 
         /**
-         * @see de.dante.extex.font.type.ttf.TTFTableGLYF.Descript#getYCoordinate(int)
+         * @see org.extex.font.type.ttf.TTFTableGLYF.Descript#getYCoordinate(int)
          */
         public short getYCoordinate(final int i) {
 
@@ -922,7 +923,7 @@ public class TtfTableGLYF extends AbstractXtfTable
         }
 
         /**
-         * @see de.dante.extex.font.type.ttf.TTFTableGLYF.Descript#isComposite()
+         * @see org.extex.font.type.ttf.TTFTableGLYF.Descript#isComposite()
          */
         public boolean isComposite() {
 
@@ -930,7 +931,7 @@ public class TtfTableGLYF extends AbstractXtfTable
         }
 
         /**
-         * @see de.dante.extex.font.type.ttf.TTFTableGLYF.Descript#getPointCount()
+         * @see org.extex.font.type.ttf.TTFTableGLYF.Descript#getPointCount()
          */
         public int getPointCount() {
 
@@ -938,7 +939,7 @@ public class TtfTableGLYF extends AbstractXtfTable
         }
 
         /**
-         * @see de.dante.extex.font.type.ttf.TTFTableGLYF.Descript#getContourCount()
+         * @see org.extex.font.type.ttf.TTFTableGLYF.Descript#getContourCount()
          */
         public int getContourCount() {
 

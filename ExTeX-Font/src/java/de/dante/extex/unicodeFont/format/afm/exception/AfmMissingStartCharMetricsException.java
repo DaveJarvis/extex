@@ -31,6 +31,11 @@ import de.dante.extex.unicodeFont.exception.FontException;
 public class AfmMissingStartCharMetricsException extends FontException {
 
     /**
+     * The field <tt>serialVersionUID</tt> ...
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Create a new object.
      */
     public AfmMissingStartCharMetricsException() {

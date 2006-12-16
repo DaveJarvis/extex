@@ -21,8 +21,9 @@ package de.dante.extex.unicodeFont.format.xtf.cff;
 
 import java.io.IOException;
 
+import org.extex.util.file.random.RandomAccessR;
+
 import de.dante.extex.unicodeFont.format.xtf.XtfConstants;
-import de.dante.util.file.random.RandomAccessR;
 
 /**
  * SID.
@@ -56,7 +57,7 @@ public class T2SID extends T2Number {
     private int value;
 
     /**
-     * @see de.dante.extex.font.type.ttf.cff.T2CharString#getBytes()
+     * @see org.extex.font.type.ttf.cff.T2CharString#getBytes()
      */
     public short[] getBytes() {
 
@@ -67,7 +68,7 @@ public class T2SID extends T2Number {
     }
 
     /**
-     * @see de.dante.extex.font.type.ttf.cff.T2CharString#isInteger()
+     * @see org.extex.font.type.ttf.cff.T2CharString#isInteger()
      */
     public boolean isInteger() {
 
@@ -75,7 +76,7 @@ public class T2SID extends T2Number {
     }
 
     /**
-     * @see de.dante.extex.font.type.ttf.cff.T2Number#getDouble()
+     * @see org.extex.font.type.ttf.cff.T2Number#getDouble()
      */
     public double getDouble() {
 
@@ -83,7 +84,7 @@ public class T2SID extends T2Number {
     }
 
     /**
-     * @see de.dante.extex.font.type.ttf.cff.T2Number#getInteger()
+     * @see org.extex.font.type.ttf.cff.T2Number#getInteger()
      */
     public int getInteger() {
 

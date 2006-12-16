@@ -23,9 +23,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.extex.util.file.random.RandomAccessR;
 import org.jdom.Element;
 
-import de.dante.util.file.random.RandomAccessR;
 
 /**
  * Top DICT Operator.
@@ -81,7 +81,7 @@ public abstract class T2TopDICTOperator extends T2Operator {
     }
 
     /**
-     * @see de.dante.extex.font.type.ttf.cff.T2CharString#isTopDICTOperator()
+     * @see org.extex.font.type.ttf.cff.T2CharString#isTopDICTOperator()
      */
     public boolean isTopDICTOperator() {
 
@@ -283,7 +283,7 @@ public abstract class T2TopDICTOperator extends T2Operator {
     }
 
     /**
-     * @see de.dante.util.XMLConvertible#toXML()
+     * @see org.extex.util.XMLConvertible#toXML()
      */
     public Element toXML() {
 

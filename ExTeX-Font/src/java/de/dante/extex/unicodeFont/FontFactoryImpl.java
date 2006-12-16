@@ -247,8 +247,8 @@ public class FontFactoryImpl extends AbstractFactory
     private ResourceFinder finder;
 
     /**
-     * @see de.dante.util.resource.ResourceConsumer#setResourceFinder(
-     *      de.dante.util.resource.ResourceFinder)
+     * @see org.extex.util.resource.ResourceConsumer#setResourceFinder(
+     *      org.extex.util.resource.ResourceFinder)
      */
     public void setResourceFinder(final ResourceFinder theFinder) {
 
@@ -256,7 +256,7 @@ public class FontFactoryImpl extends AbstractFactory
     }
 
     /**
-     * @see de.dante.util.framework.AbstractFactory#reconnect(java.lang.Object)
+     * @see org.extex.util.framework.AbstractFactory#reconnect(java.lang.Object)
      */
     public Object reconnect(final Object instance) throws RegistrarException {
 
@@ -282,7 +282,7 @@ public class FontFactoryImpl extends AbstractFactory
     private Properties properties;
 
     /**
-     * @see de.dante.util.resource.PropertyConfigurable#setProperties(
+     * @see org.extex.util.resource.PropertyConfigurable#setProperties(
      *      java.util.Properties)
      */
     public void setProperties(final Properties theProperties) {

@@ -31,6 +31,8 @@ import org.extex.interpreter.type.count.Count;
 import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.interpreter.type.glue.Glue;
 import org.extex.type.UnicodeChar;
+import org.extex.util.file.random.RandomAccessInputStream;
+import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.framework.Registrar;
 import org.extex.util.framework.logger.LogEnabled;
 import org.extex.util.resource.PropertyConfigurable;
@@ -42,8 +44,6 @@ import de.dante.extex.unicodeFont.type.ExtexFont;
 import de.dante.extex.unicodeFont.type.FontInit;
 import de.dante.extex.unicodeFont.type.InputStreamConfigurable;
 import de.dante.extex.unicodeFont.type.TexFont;
-import de.dante.util.file.random.RandomAccessInputStream;
-import de.dante.util.file.random.RandomAccessR;
 
 /**
  * A font from a tfm file.
@@ -64,6 +64,11 @@ public class TfmFont
             InputStreamConfigurable,
             FontKeyConfigurable,
             FontInit {
+
+    /**
+     * The field <tt>serialVersionUID</tt> ...
+     */
+    private static final long serialVersionUID = 1L;
 
     /**
      * Default units per em.
@@ -521,7 +526,7 @@ public class TfmFont
     private transient Logger logger;
 
     /**
-     * @see de.dante.util.framework.logger.LogEnabled#enableLogging(
+     * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
     public void enableLogging(final Logger theLogger) {
@@ -535,7 +540,7 @@ public class TfmFont
     private transient Properties properties;
 
     /**
-     * @see de.dante.util.resource.PropertyConfigurable#setProperties(
+     * @see org.extex.util.resource.PropertyConfigurable#setProperties(
      *      java.util.Properties)
      */
     public void setProperties(final Properties theProperties) {

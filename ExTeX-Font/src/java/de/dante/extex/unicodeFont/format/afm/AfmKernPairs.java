@@ -31,6 +31,11 @@ import java.io.Serializable;
 public class AfmKernPairs implements Serializable {
 
     /**
+     * The field <tt>serialVersionUID</tt> ...
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * pre.
      */
     private String charpre;

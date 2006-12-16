@@ -22,17 +22,17 @@ package de.dante.extex.unicodeFont.format.xtf;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import org.extex.util.XMLConvertible;
+import org.extex.util.XMLWriterConvertible;
+import org.extex.util.file.random.RandomAccessInputArray;
+import org.extex.util.file.random.RandomAccessR;
+import org.extex.util.xml.XMLStreamWriter;
 import org.jdom.Comment;
 import org.jdom.Element;
 
 import de.dante.extex.unicodeFont.format.xtf.cff.T2CharString;
 import de.dante.extex.unicodeFont.format.xtf.cff.T2Operator;
 import de.dante.extex.unicodeFont.format.xtf.cff.T2StandardStrings;
-import de.dante.util.XMLConvertible;
-import de.dante.util.XMLWriterConvertible;
-import de.dante.util.file.random.RandomAccessInputArray;
-import de.dante.util.file.random.RandomAccessR;
-import de.dante.util.xml.XMLStreamWriter;
 
 /**
  * The 'CFF' - PostScript font program.
@@ -178,7 +178,7 @@ public class OtfTableCFF extends AbstractXtfTable
     }
 
     /**
-     * @see de.dante.util.XMLConvertible#toXML()
+     * @see org.extex.util.XMLConvertible#toXML()
      */
     public Element toXML() {
 
@@ -418,7 +418,7 @@ public class OtfTableCFF extends AbstractXtfTable
         }
 
         /**
-         * @see de.dante.util.XMLConvertible#toXML()
+         * @see org.extex.util.XMLConvertible#toXML()
          */
         public Element toXML() {
 
@@ -490,7 +490,7 @@ public class OtfTableCFF extends AbstractXtfTable
         }
 
         /**
-         * @see de.dante.util.XMLConvertible#toXML()
+         * @see org.extex.util.XMLConvertible#toXML()
          */
         public Element toXML() {
 
@@ -607,7 +607,7 @@ public class OtfTableCFF extends AbstractXtfTable
         }
 
         /**
-         * @see de.dante.util.XMLConvertible#toXML()
+         * @see org.extex.util.XMLConvertible#toXML()
          */
         public Element toXML() {
 
@@ -636,8 +636,8 @@ public class OtfTableCFF extends AbstractXtfTable
     }
 
     /**
-     * @see de.dante.util.XMLWriterConvertible#writeXML(
-     *      de.dante.util.xml.XMLStreamWriter)
+     * @see org.extex.util.XMLWriterConvertible#writeXML(
+     *      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(final XMLStreamWriter writer) throws IOException {
 

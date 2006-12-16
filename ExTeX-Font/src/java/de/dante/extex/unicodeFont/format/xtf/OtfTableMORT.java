@@ -21,9 +21,10 @@ package de.dante.extex.unicodeFont.format.xtf;
 
 import java.io.IOException;
 
-import de.dante.util.XMLWriterConvertible;
-import de.dante.util.file.random.RandomAccessR;
-import de.dante.util.xml.XMLStreamWriter;
+import org.extex.util.XMLWriterConvertible;
+import org.extex.util.file.random.RandomAccessR;
+import org.extex.util.xml.XMLStreamWriter;
+
 
 /**
  * The 'MORT' ... TODO incomplete
@@ -70,8 +71,8 @@ public class OtfTableMORT extends AbstractXtfTable
     }
 
     /**
-     * @see de.dante.util.XMLWriterConvertible#writeXML(
-     *      de.dante.util.xml.XMLStreamWriter)
+     * @see org.extex.util.XMLWriterConvertible#writeXML(
+     *      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(final XMLStreamWriter writer) throws IOException {
 

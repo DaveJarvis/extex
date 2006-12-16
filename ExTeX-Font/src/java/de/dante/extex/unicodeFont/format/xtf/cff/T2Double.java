@@ -21,7 +21,8 @@ package de.dante.extex.unicodeFont.format.xtf.cff;
 
 import java.io.IOException;
 
-import de.dante.util.file.random.RandomAccessR;
+import org.extex.util.file.random.RandomAccessR;
+
 
 /**
  * Double.
@@ -115,7 +116,7 @@ public class T2Double extends T2Number {
     private short[] bytes;
 
     /**
-     * @see de.dante.extex.font.type.ttf.cff.T2CharString#getBytes()
+     * @see org.extex.font.type.ttf.cff.T2CharString#getBytes()
      */
     public short[] getBytes() {
 
@@ -128,7 +129,7 @@ public class T2Double extends T2Number {
     private double value;
 
     /**
-     * @see de.dante.extex.font.type.ttf.cff.T2CharString#isDouble()
+     * @see org.extex.font.type.ttf.cff.T2CharString#isDouble()
      */
     public boolean isDouble() {
 
@@ -136,7 +137,7 @@ public class T2Double extends T2Number {
     }
 
     /**
-     * @see de.dante.extex.font.type.ttf.cff.T2Number#getDouble()
+     * @see org.extex.font.type.ttf.cff.T2Number#getDouble()
      */
     public double getDouble() {
 
@@ -144,7 +145,7 @@ public class T2Double extends T2Number {
     }
 
     /**
-     * @see de.dante.extex.font.type.ttf.cff.T2Number#getInteger()
+     * @see org.extex.font.type.ttf.cff.T2Number#getInteger()
      */
     public int getInteger() {
 

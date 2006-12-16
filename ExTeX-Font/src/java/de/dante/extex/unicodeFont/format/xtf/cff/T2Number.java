@@ -21,7 +21,8 @@ package de.dante.extex.unicodeFont.format.xtf.cff;
 
 import java.io.IOException;
 
-import de.dante.util.file.random.RandomAccessR;
+import org.extex.util.file.random.RandomAccessR;
+
 
 /**
  * Number.

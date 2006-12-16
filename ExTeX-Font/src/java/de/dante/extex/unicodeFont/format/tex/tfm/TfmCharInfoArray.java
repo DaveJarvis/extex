@@ -22,12 +22,13 @@ package de.dante.extex.unicodeFont.format.tex.tfm;
 import java.io.IOException;
 import java.io.Serializable;
 
+import org.extex.util.EFMWriterConvertible;
+import org.extex.util.XMLWriterConvertible;
+import org.extex.util.file.random.RandomAccessR;
+import org.extex.util.xml.XMLStreamWriter;
+
 import de.dante.extex.unicodeFont.format.pl.PlFormat;
 import de.dante.extex.unicodeFont.format.pl.PlWriter;
-import de.dante.util.EFMWriterConvertible;
-import de.dante.util.XMLWriterConvertible;
-import de.dante.util.file.random.RandomAccessR;
-import de.dante.util.xml.XMLStreamWriter;
 
 /**
  * Class for TFM char info.
@@ -64,6 +65,11 @@ public class TfmCharInfoArray
             EFMWriterConvertible,
             PlFormat,
             Serializable {
+
+    /**
+     * The field <tt>serialVersionUID</tt> ...
+     */
+    private static final long serialVersionUID = 1L;
 
     /**
      * the char info.
@@ -246,7 +252,7 @@ public class TfmCharInfoArray
     }
 
     /**
-     * @see de.dante.util.EFMWriterConvertible#writeEFM(de.dante.util.xml.XMLStreamWriter)
+     * @see org.extex.util.EFMWriterConvertible#writeEFM(org.extex.util.xml.XMLStreamWriter)
      */
     public void writeEFM(final XMLStreamWriter writer) throws IOException {
 
@@ -366,7 +372,7 @@ public class TfmCharInfoArray
     }
 
     /**
-     * @see de.dante.extex.font.type.PlFormat#toPL(de.dante.extex.font.type.PlWriter)
+     * @see org.extex.font.type.PlFormat#toPL(org.extex.font.type.PlWriter)
      */
     public void toPL(final PlWriter out) throws IOException {
 
@@ -380,7 +386,7 @@ public class TfmCharInfoArray
     }
 
     /**
-     * @see de.dante.util.XMLWriterConvertible#writeXML(de.dante.util.xml.XMLStreamWriter)
+     * @see org.extex.util.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
 

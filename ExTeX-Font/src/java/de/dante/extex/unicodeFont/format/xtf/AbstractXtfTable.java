@@ -21,7 +21,8 @@ package de.dante.extex.unicodeFont.format.xtf;
 
 import java.io.IOException;
 
-import de.dante.util.xml.XMLStreamWriter;
+import org.extex.util.xml.XMLStreamWriter;
+
 
 /**
  * Abstract class for all TTF/OTF tables.
@@ -48,7 +49,7 @@ public abstract class AbstractXtfTable implements XtfTable {
     }
 
     /**
-     * @see de.dante.extex.font.type.ttf.TTFTable#getTableMap()
+     * @see org.extex.font.type.ttf.TTFTable#getTableMap()
      */
     public XtfTableMap getTableMap() {
 
@@ -56,7 +57,7 @@ public abstract class AbstractXtfTable implements XtfTable {
     }
 
     /**
-     * @see de.dante.extex.font.type.ttf.TTFTable#getInitOrder()
+     * @see org.extex.font.type.ttf.TTFTable#getInitOrder()
      */
     public int getInitOrder() {
 
@@ -64,7 +65,7 @@ public abstract class AbstractXtfTable implements XtfTable {
     }
 
     /**
-     * @see de.dante.extex.font.type.ttf.TTFTable#init()
+     * @see org.extex.font.type.ttf.TTFTable#init()
      */
     public void init() throws IOException {
 

@@ -24,10 +24,11 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import org.extex.util.xml.XMLStreamWriter;
+
 import de.dante.extex.unicodeFont.format.tex.tfm.TfmFixWord;
 import de.dante.extex.unicodeFont.format.tex.tfm.TfmParamArray;
 import de.dante.extex.unicodeFont.format.tex.tfm.TfmReader;
-import de.dante.util.xml.XMLStreamWriter;
 
 /**
  * Data values for the efm font.
@@ -107,7 +108,7 @@ public class EfmDataValues {
 
         /**
          * @see de.dante.extex.unicodeFont.format.efm.EfmData#write(
-         *      de.dante.util.xml.XMLStreamWriter)
+         *      org.extex.util.xml.XMLStreamWriter)
          */
         public void write(final XMLStreamWriter writer) throws IOException {
 

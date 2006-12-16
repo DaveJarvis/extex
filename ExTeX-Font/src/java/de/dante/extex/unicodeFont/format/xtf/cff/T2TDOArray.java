@@ -64,7 +64,7 @@ public abstract class T2TDOArray extends T2TopDICTOperator {
     private T2Number[] value;
 
     /**
-     * @see de.dante.extex.font.type.ttf.cff.T2CharString#getBytes()
+     * @see org.extex.font.type.ttf.cff.T2CharString#getBytes()
      */
     public short[] getBytes() {
 

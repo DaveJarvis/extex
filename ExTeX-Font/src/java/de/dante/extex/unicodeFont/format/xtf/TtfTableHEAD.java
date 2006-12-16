@@ -22,10 +22,11 @@ package de.dante.extex.unicodeFont.format.xtf;
 import java.io.IOException;
 import java.text.DateFormat;
 
-import de.dante.extex.font.type.Fixed32;
-import de.dante.util.XMLWriterConvertible;
-import de.dante.util.file.random.RandomAccessR;
-import de.dante.util.xml.XMLStreamWriter;
+import org.extex.font.type.Fixed32;
+import org.extex.util.XMLWriterConvertible;
+import org.extex.util.file.random.RandomAccessR;
+import org.extex.util.xml.XMLStreamWriter;
+
 
 /**
  * The 'head' table contains global information about the font.
@@ -383,8 +384,8 @@ public class TtfTableHEAD extends AbstractXtfTable
     }
 
     /**
-     * @see de.dante.util.XMLWriterConvertible#writeXML(
-     *      de.dante.util.xml.XMLStreamWriter)
+     * @see org.extex.util.XMLWriterConvertible#writeXML(
+     *      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(final XMLStreamWriter writer) throws IOException {
 

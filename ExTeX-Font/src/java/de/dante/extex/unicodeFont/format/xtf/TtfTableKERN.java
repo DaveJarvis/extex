@@ -21,9 +21,10 @@ package de.dante.extex.unicodeFont.format.xtf;
 
 import java.io.IOException;
 
-import de.dante.util.XMLWriterConvertible;
-import de.dante.util.file.random.RandomAccessR;
-import de.dante.util.xml.XMLStreamWriter;
+import org.extex.util.XMLWriterConvertible;
+import org.extex.util.file.random.RandomAccessR;
+import org.extex.util.xml.XMLStreamWriter;
+
 
 /**
  * The 'kern' table contains the values that adjust the
@@ -122,8 +123,8 @@ public class TtfTableKERN extends AbstractXtfTable
     }
 
     /**
-     * @see de.dante.util.XMLWriterConvertible#writeXML(
-     *      de.dante.util.xml.XMLStreamWriter)
+     * @see org.extex.util.XMLWriterConvertible#writeXML(
+     *      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(final XMLStreamWriter writer) throws IOException {
 
@@ -294,7 +295,7 @@ public class TtfTableKERN extends AbstractXtfTable
         }
 
         /**
-         * @see de.dante.extex.font.type.ttf.TTFTableKERN.KernSubtable#getKerningCount()
+         * @see org.extex.font.type.ttf.TTFTableKERN.KernSubtable#getKerningCount()
          */
         public int getKerningCount() {
 
@@ -302,7 +303,7 @@ public class TtfTableKERN extends AbstractXtfTable
         }
 
         /**
-         * @see de.dante.extex.font.type.ttf.TTFTableKERN.KernSubtable#getKerning(int)
+         * @see org.extex.font.type.ttf.TTFTableKERN.KernSubtable#getKerning(int)
          */
         public KerningPair getKerning(final int i) {
 
@@ -337,8 +338,8 @@ public class TtfTableKERN extends AbstractXtfTable
         }
 
         /**
-         * @see de.dante.util.XMLWriterConvertible#writeXML(
-         *      de.dante.util.xml.XMLStreamWriter)
+         * @see org.extex.util.XMLWriterConvertible#writeXML(
+         *      org.extex.util.xml.XMLStreamWriter)
          */
         public void writeXML(final XMLStreamWriter writer) throws IOException {
 
@@ -423,7 +424,7 @@ public class TtfTableKERN extends AbstractXtfTable
         }
 
         /**
-         * @see de.dante.extex.font.type.ttf.TTFTableKERN.KernSubtable#getKerningCount()
+         * @see org.extex.font.type.ttf.TTFTableKERN.KernSubtable#getKerningCount()
          */
         public int getKerningCount() {
 
@@ -431,7 +432,7 @@ public class TtfTableKERN extends AbstractXtfTable
         }
 
         /**
-         * @see de.dante.extex.font.type.ttf.TTFTableKERN.KernSubtable#getKerning(int)
+         * @see org.extex.font.type.ttf.TTFTableKERN.KernSubtable#getKerning(int)
          */
         public KerningPair getKerning(final int i) {
 
@@ -475,8 +476,8 @@ public class TtfTableKERN extends AbstractXtfTable
         }
 
         /**
-         * @see de.dante.util.XMLWriterConvertible#writeXML(
-         *      de.dante.util.xml.XMLStreamWriter)
+         * @see org.extex.util.XMLWriterConvertible#writeXML(
+         *      org.extex.util.xml.XMLStreamWriter)
          */
         public void writeXML(final XMLStreamWriter writer) throws IOException {
 
@@ -550,8 +551,8 @@ public class TtfTableKERN extends AbstractXtfTable
         }
 
         /**
-         * @see de.dante.util.XMLWriterConvertible#writeXML(
-         *      de.dante.util.xml.XMLStreamWriter)
+         * @see org.extex.util.XMLWriterConvertible#writeXML(
+         *      org.extex.util.xml.XMLStreamWriter)
          */
         public void writeXML(final XMLStreamWriter writer) throws IOException {
 

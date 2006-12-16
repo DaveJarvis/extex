@@ -28,6 +28,11 @@ package de.dante.extex.unicodeFont.format.pfb.exception;
 public class PfbStartMarkerMissingException extends PfbException {
 
     /**
+     * The field <tt>serialVersionUID</tt> ...
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Create a new object.
      */
     public PfbStartMarkerMissingException() {

@@ -27,6 +27,7 @@ import java.util.Map;
 
 import org.extex.type.UnicodeChar;
 import org.extex.unicode.Unicode;
+import org.extex.util.xml.XMLStreamWriter;
 
 import de.dante.extex.unicodeFont.format.tex.tfm.TfmCharInfoArray;
 import de.dante.extex.unicodeFont.format.tex.tfm.TfmCharInfoWord;
@@ -36,7 +37,6 @@ import de.dante.extex.unicodeFont.format.tex.tfm.TfmLigKern;
 import de.dante.extex.unicodeFont.format.tex.tfm.TfmLigature;
 import de.dante.extex.unicodeFont.format.tex.tfm.TfmReader;
 import de.dante.extex.unicodeFont.glyphname.GlyphName;
-import de.dante.util.xml.XMLStreamWriter;
 
 /**
  * Class for the efm metric.
@@ -225,7 +225,7 @@ public class EfmMetric {
 
         /**
          * @see de.dante.extex.unicodeFont.format.efm.EfmKerning#write(
-         *      de.dante.util.xml.XMLStreamWriter)
+         *      org.extex.util.xml.XMLStreamWriter)
          */
         public void write(final XMLStreamWriter writer) throws IOException {
 
@@ -311,7 +311,7 @@ public class EfmMetric {
 
         /**
          * @see de.dante.extex.unicodeFont.format.efm.EfmWHDI#write(
-         *      de.dante.util.xml.XMLStreamWriter)
+         *      org.extex.util.xml.XMLStreamWriter)
          */
         public void write(final XMLStreamWriter writer) throws IOException {
 

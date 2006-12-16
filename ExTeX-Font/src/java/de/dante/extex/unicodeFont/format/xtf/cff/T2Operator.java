@@ -22,8 +22,9 @@ package de.dante.extex.unicodeFont.format.xtf.cff;
 import java.io.IOException;
 import java.util.List;
 
-import de.dante.util.XMLWriterConvertible;
-import de.dante.util.file.random.RandomAccessR;
+import org.extex.util.XMLWriterConvertible;
+import org.extex.util.file.random.RandomAccessR;
+
 
 /**
  * Operator.
@@ -133,7 +134,7 @@ public abstract class T2Operator extends T2CharString implements XMLWriterConver
     }
 
     /**
-     * @see de.dante.extex.font.type.ttf.cff.T2CharString#isOperator()
+     * @see org.extex.font.type.ttf.cff.T2CharString#isOperator()
      */
     public boolean isOperator() {
 

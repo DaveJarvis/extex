@@ -34,6 +34,11 @@ import java.util.ArrayList;
 public class TfmIndexMultimap implements Serializable {
 
     /**
+     * The field <tt>serialVersionUID</tt> ...
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Create a new object.
      */
     public TfmIndexMultimap() {
@@ -136,6 +141,11 @@ public class TfmIndexMultimap implements Serializable {
      * associated to particular key.
      */
     public final class Enum implements Serializable {
+
+        /**
+         * The field <tt>serialVersionUID</tt> ...
+         */
+        private static final long serialVersionUID = 1L;
 
         /**
          * Create a new object.

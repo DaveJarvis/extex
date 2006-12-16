@@ -21,7 +21,8 @@ package de.dante.extex.unicodeFont.format.efm;
 
 import java.io.IOException;
 
-import de.dante.util.xml.XMLStreamWriter;
+import org.extex.util.xml.XMLStreamWriter;
+
 
 /**
  * Interface for a efm data.

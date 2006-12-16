@@ -25,15 +25,16 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Serializable;
 
+import org.extex.util.XMLWriterConvertible;
+import org.extex.util.file.random.RandomAccessInputFile;
+import org.extex.util.file.random.RandomAccessInputStream;
+import org.extex.util.file.random.RandomAccessR;
+import org.extex.util.xml.XMLStreamWriter;
+
 import de.dante.extex.unicodeFont.exception.FontException;
 import de.dante.extex.unicodeFont.exception.FontIOException;
 import de.dante.extex.unicodeFont.format.pfb.exception.PfbIncorrectRecordTypeException;
 import de.dante.extex.unicodeFont.format.pfb.exception.PfbStartMarkerMissingException;
-import de.dante.util.XMLWriterConvertible;
-import de.dante.util.file.random.RandomAccessInputFile;
-import de.dante.util.file.random.RandomAccessInputStream;
-import de.dante.util.file.random.RandomAccessR;
-import de.dante.util.xml.XMLStreamWriter;
 
 /**
  * Parser for a pfb-file.
@@ -46,6 +47,11 @@ import de.dante.util.xml.XMLStreamWriter;
  * @version $Revision$
  */
 public class PfbParser implements XMLWriterConvertible, Serializable {
+
+    /**
+     * The field <tt>serialVersionUID</tt> ...
+     */
+    private static final long serialVersionUID = 1L;
 
     /**
      * Create a new object.
@@ -288,7 +294,7 @@ public class PfbParser implements XMLWriterConvertible, Serializable {
     }
 
     /**
-     * @see de.dante.util.XMLWriterConvertible#writeXML(de.dante.util.xml.XMLStreamWriter)
+     * @see org.extex.util.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(final XMLStreamWriter writer) throws IOException {
 

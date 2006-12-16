@@ -36,6 +36,11 @@ import java.util.Locale;
 public class TfmFixWord implements Serializable {
 
     /**
+     * The field <tt>serialVersionUID</tt> ...
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * NULL.
      */
     public static final TfmFixWord NULL = null;

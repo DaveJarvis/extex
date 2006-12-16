@@ -22,9 +22,10 @@ package de.dante.extex.unicodeFont.format.xtf;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
-import de.dante.util.XMLWriterConvertible;
-import de.dante.util.file.random.RandomAccessR;
-import de.dante.util.xml.XMLStreamWriter;
+import org.extex.util.XMLWriterConvertible;
+import org.extex.util.file.random.RandomAccessR;
+import org.extex.util.xml.XMLStreamWriter;
+
 
 /**
  * The 'hmtx' table contains metric information for the
@@ -104,7 +105,7 @@ public class TtfTableHMTX extends AbstractXtfTable
     private int lsblength;
 
     /**
-     * @see de.dante.extex.font.type.ttf.TTFTable#getInitOrder()
+     * @see org.extex.font.type.ttf.TTFTable#getInitOrder()
      */
     public int getInitOrder() {
 
@@ -112,7 +113,7 @@ public class TtfTableHMTX extends AbstractXtfTable
     }
 
     /**
-     * @see de.dante.extex.font.type.ttf.TTFTable#init()
+     * @see org.extex.font.type.ttf.TTFTable#init()
      */
     public void init() {
 
@@ -201,8 +202,8 @@ public class TtfTableHMTX extends AbstractXtfTable
     }
 
     /**
-     * @see de.dante.util.XMLWriterConvertible#writeXML(
-     *      de.dante.util.xml.XMLStreamWriter)
+     * @see org.extex.util.XMLWriterConvertible#writeXML(
+     *      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(final XMLStreamWriter writer) throws IOException {
 

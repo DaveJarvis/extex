@@ -38,6 +38,11 @@ import de.dante.extex.unicodeFont.type.FontPfb;
 public class TfmFontPfb extends TfmFont implements FontPfb, FontPfa {
 
     /**
+     * The field <tt>serialVersionUID</tt> ...
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Create a new object.
      */
     public TfmFontPfb() {

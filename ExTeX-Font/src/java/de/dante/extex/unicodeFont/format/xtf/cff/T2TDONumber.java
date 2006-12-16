@@ -62,7 +62,7 @@ public abstract class T2TDONumber extends T2TopDICTOperator {
     private T2Number value;
 
     /**
-     * @see de.dante.extex.font.type.ttf.cff.T2CharString#getBytes()
+     * @see org.extex.font.type.ttf.cff.T2CharString#getBytes()
      */
     public short[] getBytes() {
 
@@ -88,7 +88,7 @@ public abstract class T2TDONumber extends T2TopDICTOperator {
     }
 
     /**
-     * @see de.dante.extex.font.type.ttf.cff.T2Number#getDouble()
+     * @see org.extex.font.type.ttf.cff.T2Number#getDouble()
      */
     public double getDouble() {
 
@@ -96,7 +96,7 @@ public abstract class T2TDONumber extends T2TopDICTOperator {
     }
 
     /**
-     * @see de.dante.extex.font.type.ttf.cff.T2Number#getInteger()
+     * @see org.extex.font.type.ttf.cff.T2Number#getInteger()
      */
     public int getInteger() {
 

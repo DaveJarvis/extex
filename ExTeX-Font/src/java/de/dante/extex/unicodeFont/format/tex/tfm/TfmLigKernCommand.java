@@ -22,9 +22,10 @@ package de.dante.extex.unicodeFont.format.tex.tfm;
 import java.io.IOException;
 import java.io.Serializable;
 
-import de.dante.util.XMLWriterConvertible;
-import de.dante.util.file.random.RandomAccessR;
-import de.dante.util.xml.XMLStreamWriter;
+import org.extex.util.XMLWriterConvertible;
+import org.extex.util.file.random.RandomAccessR;
+import org.extex.util.xml.XMLStreamWriter;
+
 
 /**
  * Class for a lig_kern_command.
@@ -56,6 +57,11 @@ import de.dante.util.xml.XMLStreamWriter;
  */
 
 public class TfmLigKernCommand implements XMLWriterConvertible, Serializable {
+
+    /**
+     * The field <tt>serialVersionUID</tt> ...
+     */
+    private static final long serialVersionUID = 1L;
 
     /**
      * the skipbyte.
@@ -357,6 +363,11 @@ public class TfmLigKernCommand implements XMLWriterConvertible, Serializable {
     public static final class Activity implements Serializable {
 
         /**
+         * The field <tt>serialVersionUID</tt> ...
+         */
+        private static final long serialVersionUID = 1L;
+
+        /**
          * Creates a new object.
          */
         public Activity() {
@@ -411,7 +422,7 @@ public class TfmLigKernCommand implements XMLWriterConvertible, Serializable {
     }
 
     /**
-     * @see de.dante.util.XMLWriterConvertible#writeXML(de.dante.util.xml.XMLStreamWriter)
+     * @see org.extex.util.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(final XMLStreamWriter writer) throws IOException {
 

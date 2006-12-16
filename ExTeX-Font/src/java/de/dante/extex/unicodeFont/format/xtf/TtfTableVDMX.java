@@ -21,11 +21,11 @@ package de.dante.extex.unicodeFont.format.xtf;
 
 import java.io.IOException;
 
+import org.extex.util.XMLConvertible;
+import org.extex.util.file.random.RandomAccessR;
 import org.jdom.Comment;
 import org.jdom.Element;
 
-import de.dante.util.XMLConvertible;
-import de.dante.util.file.random.RandomAccessR;
 
 /**
  * The 'VDMX' ... TODO incomplete
@@ -72,7 +72,7 @@ public class TtfTableVDMX extends AbstractXtfTable
     }
 
     /**
-     * @see de.dante.util.XMLConvertible#toXML()
+     * @see org.extex.util.XMLConvertible#toXML()
      */
     public Element toXML() {
 

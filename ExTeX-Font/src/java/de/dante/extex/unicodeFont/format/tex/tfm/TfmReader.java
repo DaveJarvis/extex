@@ -24,7 +24,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
 
+import org.extex.util.EFMWriterConvertible;
+import org.extex.util.XMLWriterConvertible;
+import org.extex.util.file.random.RandomAccessInputStream;
+import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.xml.XMLStreamWriter;
 
 import de.dante.extex.unicodeFont.exception.FontException;
 import de.dante.extex.unicodeFont.format.pfb.PfbParser;
@@ -33,11 +38,6 @@ import de.dante.extex.unicodeFont.format.pl.PlWriter;
 import de.dante.extex.unicodeFont.format.tex.psfontmap.PsFontEncoding;
 import de.dante.extex.unicodeFont.format.tex.psfontmap.PsFontsMapReader;
 import de.dante.extex.unicodeFont.format.tex.psfontmap.enc.EncFactory;
-import de.dante.util.EFMWriterConvertible;
-import de.dante.util.XMLWriterConvertible;
-import de.dante.util.file.random.RandomAccessInputStream;
-import de.dante.util.file.random.RandomAccessR;
-import de.dante.util.xml.XMLStreamWriter;
 
 /**
  * This class read a TFM-file.
@@ -53,6 +53,11 @@ public class TfmReader
             PlFormat,
             EFMWriterConvertible,
             Serializable {
+
+    /**
+     * The field <tt>serialVersionUID</tt> ...
+     */
+    private static final long serialVersionUID = 1L;
 
     /**
      * The font name.
@@ -502,7 +507,7 @@ public class TfmReader
     }
 
     /**
-     * @see de.dante.extex.font.type.PlFormat#toPL(de.dante.extex.font.type.PlWriter)
+     * @see org.extex.font.type.PlFormat#toPL(org.extex.font.type.PlWriter)
      */
     public void toPL(final PlWriter out) throws IOException {
 
@@ -513,7 +518,7 @@ public class TfmReader
     }
 
     /**
-     * @see de.dante.util.XMLWriterConvertible#writeXML(de.dante.util.xml.XMLStreamWriter)
+     * @see org.extex.util.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(final XMLStreamWriter writer) throws IOException {
 
@@ -537,7 +542,7 @@ public class TfmReader
     }
 
     /**
-     * @see de.dante.util.EFMWriterConvertible#writeEFM(de.dante.util.xml.XMLStreamWriter)
+     * @see org.extex.util.EFMWriterConvertible#writeEFM(org.extex.util.xml.XMLStreamWriter)
      */
     public void writeEFM(final XMLStreamWriter writer) throws IOException {
 

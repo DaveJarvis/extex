@@ -25,6 +25,7 @@ import java.util.Map;
 import org.extex.font.FontByteArray;
 import org.extex.font.FountKey;
 import org.extex.font.Glyph;
+import org.extex.font.GlyphImpl;
 import org.extex.font.Kerning;
 import org.extex.font.Ligature;
 import org.extex.font.type.BoundingBox;
@@ -36,7 +37,6 @@ import org.extex.interpreter.type.glue.FixedGlue;
 import org.extex.interpreter.type.glue.Glue;
 import org.extex.type.UnicodeChar;
 
-import de.dante.extex.font.GlyphImpl;
 
 /**
  * Adapter for a ModifiableFount for TFM.
@@ -45,6 +45,11 @@ import de.dante.extex.font.GlyphImpl;
  * @version $Revision$
  */
 public class ModifiableFountTFM implements ModifiableFount, Serializable {
+
+    /**
+     * The field <tt>serialVersionUID</tt> ...
+     */
+    private static final long serialVersionUID = 1L;
 
     /**
      * Default unitsperem
@@ -134,7 +139,7 @@ public class ModifiableFountTFM implements ModifiableFount, Serializable {
     private Map property = new HashMap();
 
     /**
-     * @see de.dante.extex.font.type.ModifiableFount#setProperty(java.lang.String, java.lang.String)
+     * @see org.extex.font.type.ModifiableFount#setProperty(java.lang.String, java.lang.String)
      */
     public void setProperty(final String key, final String value) {
 
@@ -147,7 +152,7 @@ public class ModifiableFountTFM implements ModifiableFount, Serializable {
     private HashMap fontdimen = new HashMap();
 
     /**
-     * @see de.dante.extex.font.type.ModifiableFount#setFontDimen(java.lang.String, de.dante.extex.interpreter.type.dimen.Dimen)
+     * @see org.extex.font.type.ModifiableFount#setFontDimen(java.lang.String, de.dante.extex.interpreter.type.dimen.Dimen)
      */
     public void setFontDimen(final String key, final Dimen value) {
 
@@ -160,7 +165,7 @@ public class ModifiableFountTFM implements ModifiableFount, Serializable {
     private Map glyphmap = new HashMap();
 
     /**
-     * @see de.dante.extex.font.type.Fount#getGlyph(org.extex.type.UnicodeChar)
+     * @see org.extex.font.type.Fount#getGlyph(org.extex.type.UnicodeChar)
      */
     public Glyph getGlyph(final UnicodeChar c) {
 
@@ -270,7 +275,7 @@ public class ModifiableFountTFM implements ModifiableFount, Serializable {
     }
 
     /**
-     * @see de.dante.extex.font.type.Fount#getSpace()
+     * @see org.extex.font.type.Fount#getSpace()
      */
     public FixedGlue getSpace() {
 
@@ -285,7 +290,7 @@ public class ModifiableFountTFM implements ModifiableFount, Serializable {
     }
 
     /**
-     * @see de.dante.extex.font.type.Fount#getEm()
+     * @see org.extex.font.type.Fount#getEm()
      */
     public FixedDimen getEm() {
 
@@ -293,7 +298,7 @@ public class ModifiableFountTFM implements ModifiableFount, Serializable {
     }
 
     /**
-     * @see de.dante.extex.font.type.Fount#getEx()
+     * @see org.extex.font.type.Fount#getEx()
      */
     public FixedDimen getEx() {
 
@@ -306,7 +311,7 @@ public class ModifiableFountTFM implements ModifiableFount, Serializable {
     }
 
     /**
-     * @see de.dante.extex.font.type.Fount#getFontDimen(java.lang.String)
+     * @see org.extex.font.type.Fount#getFontDimen(java.lang.String)
      */
     public FixedDimen getFontDimen(final String key) {
 
@@ -318,7 +323,7 @@ public class ModifiableFountTFM implements ModifiableFount, Serializable {
     }
 
     /**
-     * @see de.dante.extex.font.type.Fount#getProperty(java.lang.String)
+     * @see org.extex.font.type.Fount#getProperty(java.lang.String)
      */
     public String getProperty(final String key) {
 
@@ -326,7 +331,7 @@ public class ModifiableFountTFM implements ModifiableFount, Serializable {
     }
 
     /**
-     * @see de.dante.extex.font.type.Fount#getFontName()
+     * @see org.extex.font.type.Fount#getFontName()
      */
     public String getFontName() {
 
@@ -334,7 +339,7 @@ public class ModifiableFountTFM implements ModifiableFount, Serializable {
     }
 
     /**
-     * @see de.dante.extex.font.type.Fount#getCheckSum()
+     * @see org.extex.font.type.Fount#getCheckSum()
      */
     public int getCheckSum() {
 
@@ -342,7 +347,7 @@ public class ModifiableFountTFM implements ModifiableFount, Serializable {
     }
 
     /**
-     * @see de.dante.extex.font.type.Fount#getBoundingBox()
+     * @see org.extex.font.type.Fount#getBoundingBox()
      */
     public BoundingBox getBoundingBox() {
 
@@ -351,7 +356,7 @@ public class ModifiableFountTFM implements ModifiableFount, Serializable {
     }
 
     /**
-     * @see de.dante.extex.font.type.Fount#getLetterSpacing()
+     * @see org.extex.font.type.Fount#getLetterSpacing()
      */
     public FixedGlue getLetterSpacing() {
 
@@ -359,7 +364,7 @@ public class ModifiableFountTFM implements ModifiableFount, Serializable {
     }
 
     /**
-     * @see de.dante.extex.font.type.Fount#getDesignSize()
+     * @see org.extex.font.type.Fount#getDesignSize()
      */
     public FixedDimen getDesignSize() {
 
@@ -367,7 +372,7 @@ public class ModifiableFountTFM implements ModifiableFount, Serializable {
     }
 
     /**
-     * @see de.dante.extex.font.type.Fount#getActualSize()
+     * @see org.extex.font.type.Fount#getActualSize()
      */
     public FixedDimen getActualSize() {
 
@@ -375,7 +380,7 @@ public class ModifiableFountTFM implements ModifiableFount, Serializable {
     }
 
     /**
-     * @see de.dante.extex.font.type.Fount#getFontKey()
+     * @see org.extex.font.type.Fount#getFontKey()
      */
     public FountKey getFontKey() {
 
@@ -383,7 +388,7 @@ public class ModifiableFountTFM implements ModifiableFount, Serializable {
     }
 
     /**
-     * @see de.dante.extex.font.type.Fount#getFontByteArray()
+     * @see org.extex.font.type.Fount#getFontByteArray()
      */
     public FontByteArray getFontByteArray() {
 

@@ -36,6 +36,11 @@ import org.extex.interpreter.type.dimen.Dimen;
 public class FontKey implements Serializable {
 
     /**
+     * The field <tt>serialVersionUID</tt> ...
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * The name of the font.
      */
     private String name;

@@ -29,15 +29,16 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.StringTokenizer;
 
+import org.extex.util.EFMWriterConvertible;
+import org.extex.util.XMLWriterConvertible;
+import org.extex.util.xml.XMLStreamWriter;
+
 import de.dante.extex.unicodeFont.exception.FontException;
 import de.dante.extex.unicodeFont.exception.FontIOException;
 import de.dante.extex.unicodeFont.format.afm.exception.AfmMissingEndCharMetricsException;
 import de.dante.extex.unicodeFont.format.afm.exception.AfmMissingEndFontMetricsException;
 import de.dante.extex.unicodeFont.format.afm.exception.AfmMissingEndKernPairsException;
 import de.dante.extex.unicodeFont.format.afm.exception.AfmMissingStartCharMetricsException;
-import de.dante.util.EFMWriterConvertible;
-import de.dante.util.XMLWriterConvertible;
-import de.dante.util.xml.XMLStreamWriter;
 
 /**
  * Parse a afm file.
@@ -51,6 +52,11 @@ public class AfmParser
             Serializable,
             XMLWriterConvertible,
             EFMWriterConvertible {
+
+    /**
+     * The field <tt>serialVersionUID</tt> ...
+     */
+    private static final long serialVersionUID = 1L;
 
     /**
      * Create a new object.
@@ -440,7 +446,7 @@ public class AfmParser
     }
 
     /**
-     * @see de.dante.util.XMLWriterConvertible#writeXML(de.dante.util.xml.XMLStreamWriter)
+     * @see org.extex.util.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(final XMLStreamWriter writer) throws IOException {
 
@@ -531,7 +537,7 @@ public class AfmParser
     }
 
     /**
-     * @see de.dante.util.EFMWriterConvertible#writeEFM(de.dante.util.xml.XMLStreamWriter)
+     * @see org.extex.util.EFMWriterConvertible#writeEFM(org.extex.util.xml.XMLStreamWriter)
      */
     public void writeEFM(final XMLStreamWriter writer) throws IOException {
 

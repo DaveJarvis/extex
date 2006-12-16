@@ -34,6 +34,11 @@ import java.io.Serializable;
 public class TfmFontType implements Serializable {
 
     /**
+     * The field <tt>serialVersionUID</tt> ...
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Normal TeX font metric.
      */
     public static final Type VANILLA = new Type();
@@ -73,6 +78,11 @@ public class TfmFontType implements Serializable {
      * Type (type-safe class).
      */
     private static final class Type implements Serializable {
+
+        /**
+         * The field <tt>serialVersionUID</tt> ...
+         */
+        private static final long serialVersionUID = 1L;
 
         /**
          * Creates a new object.

@@ -22,8 +22,8 @@ package de.dante.extex.unicodeFont.format.efm;
 import java.io.IOException;
 
 import org.extex.type.UnicodeChar;
+import org.extex.util.xml.XMLStreamWriter;
 
-import de.dante.util.xml.XMLStreamWriter;
 
 /**
  * Interface for the efm kerning.

@@ -33,6 +33,11 @@ import java.io.Serializable;
 public class TfmLigature extends TfmLigKern implements Serializable {
 
     /**
+     * The field <tt>serialVersionUID</tt> ...
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Create a new object.
      *
      * @param skip  the skip amount to the next instruction.

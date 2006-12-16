@@ -22,10 +22,11 @@ package de.dante.extex.unicodeFont.format.tex.tfm;
 import java.io.IOException;
 import java.io.Serializable;
 
-import de.dante.extex.font.type.tfm.exception.TFMReadFileException;
-import de.dante.util.XMLWriterConvertible;
-import de.dante.util.file.random.RandomAccessR;
-import de.dante.util.xml.XMLStreamWriter;
+import org.extex.font.type.tfm.exception.TFMReadFileException;
+import org.extex.util.XMLWriterConvertible;
+import org.extex.util.file.random.RandomAccessR;
+import org.extex.util.xml.XMLStreamWriter;
+
 
 /**
  * Class for TFM header length table.
@@ -64,6 +65,11 @@ import de.dante.util.xml.XMLStreamWriter;
  * @version $Revision$
  */
 public class TfmHeaderLengths implements XMLWriterConvertible, Serializable {
+
+    /**
+     * The field <tt>serialVersionUID</tt> ...
+     */
+    private static final long serialVersionUID = 1L;
 
     /**
      * max chars.
@@ -298,7 +304,7 @@ public class TfmHeaderLengths implements XMLWriterConvertible, Serializable {
     }
 
     /**
-     * @see de.dante.util.XMLWriterConvertible#writeXML(de.dante.util.xml.XMLStreamWriter)
+     * @see org.extex.util.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(final XMLStreamWriter writer) throws IOException {
 

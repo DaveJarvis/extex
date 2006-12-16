@@ -21,8 +21,9 @@ package de.dante.extex.unicodeFont.format.afm;
 
 import java.io.IOException;
 
-import de.dante.util.XMLWriterConvertible;
-import de.dante.util.xml.XMLStreamWriter;
+import org.extex.util.XMLWriterConvertible;
+import org.extex.util.xml.XMLStreamWriter;
+
 
 /**
  * AFM-Header.
@@ -511,8 +512,8 @@ public class AfmHeader implements XMLWriterConvertible {
     }
 
     /**
-     * @see de.dante.util.XMLWriterConvertible#writeXML(
-     *      de.dante.util.xml.XMLStreamWriter)
+     * @see org.extex.util.XMLWriterConvertible#writeXML(
+     *      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(final XMLStreamWriter writer) throws IOException {
 

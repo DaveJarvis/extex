@@ -22,13 +22,13 @@ package de.dante.extex.unicodeFont.format.tex.tfm;
 import java.io.IOException;
 import java.io.Serializable;
 
+import org.extex.util.XMLWriterConvertible;
+import org.extex.util.file.random.RandomAccessR;
+import org.extex.util.xml.XMLStreamWriter;
 import org.jdom.Element;
 
 import de.dante.extex.unicodeFont.format.pl.PlFormat;
 import de.dante.extex.unicodeFont.format.pl.PlWriter;
-import de.dante.util.XMLWriterConvertible;
-import de.dante.util.file.random.RandomAccessR;
-import de.dante.util.xml.XMLStreamWriter;
 
 /**
  * Class for TFM char info word.
@@ -88,6 +88,11 @@ public class TfmCharInfoWord
             XMLWriterConvertible,
             PlFormat,
             Serializable {
+
+    /**
+     * The field <tt>serialVersionUID</tt> ...
+     */
+    private static final long serialVersionUID = 1L;
 
     /**
      * no_tag: vanilla character.
@@ -278,6 +283,11 @@ public class TfmCharInfoWord
      * Tag (type-safe class).
      */
     private static final class Tag implements Serializable {
+
+        /**
+         * The field <tt>serialVersionUID</tt> ...
+         */
+        private static final long serialVersionUID = 1L;
 
         /**
          * Creates a new object.
@@ -607,7 +617,7 @@ public class TfmCharInfoWord
     }
 
     /**
-     * @see de.dante.extex.font.type.PlFormat#toPL(de.dante.extex.font.type.PlWriter)
+     * @see org.extex.font.type.PlFormat#toPL(org.extex.font.type.PlWriter)
      */
     public void toPL(final PlWriter out) throws IOException {
 
@@ -767,7 +777,7 @@ public class TfmCharInfoWord
     }
 
     /**
-     * @see de.dante.util.XMLWriterConvertible#writeXML(de.dante.util.xml.XMLStreamWriter)
+     * @see org.extex.util.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(final XMLStreamWriter writer) throws IOException {
 
