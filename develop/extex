@@ -28,8 +28,7 @@ if [ "$JAVA_HOME" = "" ] ; then
   exit 1
 fi
 
-EXTEX_HOME=`dirname $0`
-LIBDIR="$EXTEX_HOME/lib"
+EXTEX_HOME=`dirname $0`/..
 
 # OS specific support.
 case "`uname`" in
@@ -38,27 +37,29 @@ case "`uname`" in
     [ -n "$JAVA_HOME" ] &&
         JAVA_HOME=`cygpath --unix "$JAVA_HOME"`
     sep=';'
-    LOCALCLASSPATH=.$sep$EXTEX_HOME/config$sep$EXTEX_HOME/target/classes
-    for i in $LIBDIR/*.jar ; do
+    LOCALCLASSPATH=.
+    for i in `ls $EXTEX_HOME/ExTeX-*/target/classes` ; do
       LOCALCLASSPATH=$LOCALCLASSPATH$sep`cygpath --unix "$i"`
     done
-    for i in $EXTEX_HOME/target/lib/*.jar ; do
+    for i in `ls $EXTEX_HOME/ExTeX-*/target/lib/*.jar` ; do
       LOCALCLASSPATH=$LOCALCLASSPATH$sep`cygpath --unix "$i"`
     done
     ;;
   *)
     sep=':'
-    LOCALCLASSPATH=.$sep$EXTEX_HOME/config$sep$EXTEX_HOME/target/classes
-    for i in $LIBDIR/*.jar ; do
+    LOCALCLASSPATH=.
+    for i in `ls $EXTEX_HOME/ExTeX-*/target/classes` ; do
       LOCALCLASSPATH=$LOCALCLASSPATH$sep$i
     done
-    for i in $EXTEX_HOME/target/lib/*.jar ; do
+    for i in `ls $EXTEX_HOME/ExTeX-*/target/lib/*.jar` ; do
       LOCALCLASSPATH=$LOCALCLASSPATH$sep$i
     done
     ;;
 esac
 
+echo $LOCALCLASSPATH
+
 exec java $EXTEX_JAVA_OPTS -classpath "$LOCALCLASSPATH" \
-    de.dante.extex.main.TeX -progname=`basename $0` $*
+    org.extex.tex.main.TeX -progname=`basename $0` $*
 
 #
