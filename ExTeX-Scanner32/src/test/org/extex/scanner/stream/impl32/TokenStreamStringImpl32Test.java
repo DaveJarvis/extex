@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.scanner.stream.impl32;
+package org.extex.scanner.stream.impl32;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -41,7 +41,7 @@ import org.extex.type.UnicodeChar;
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 4770 $
  */
 public class TokenStreamStringImpl32Test extends TestCase {
 
