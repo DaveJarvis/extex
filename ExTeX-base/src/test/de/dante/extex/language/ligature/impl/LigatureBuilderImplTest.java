@@ -29,6 +29,7 @@ import org.extex.font.Glyph;
 import org.extex.font.Kerning;
 import org.extex.font.Ligature;
 import org.extex.font.type.other.NullFont;
+import org.extex.font.type.tfm.TFMFixWord;
 import org.extex.interpreter.context.tc.TypesettingContext;
 import org.extex.interpreter.context.tc.TypesettingContextImpl;
 import org.extex.interpreter.type.dimen.Dimen;
@@ -36,14 +37,13 @@ import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.glue.Glue;
 import org.extex.language.ligature.LigatureBuilder;
 import org.extex.type.UnicodeChar;
+import org.extex.typesetter.type.Node;
+import org.extex.typesetter.type.NodeList;
+import org.extex.typesetter.type.node.CharNode;
+import org.extex.typesetter.type.node.GlueNode;
+import org.extex.typesetter.type.node.HorizontalListNode;
+import org.extex.typesetter.type.node.LigatureNode;
 
-import de.dante.extex.font.type.tfm.TFMFixWord;
-import de.dante.extex.typesetter.type.Node;
-import de.dante.extex.typesetter.type.NodeList;
-import de.dante.extex.typesetter.type.node.CharNode;
-import de.dante.extex.typesetter.type.node.GlueNode;
-import de.dante.extex.typesetter.type.node.HorizontalListNode;
-import de.dante.extex.typesetter.type.node.LigatureNode;
 
 /**
  * This is a test suite for the <tt>LigatureBuilderImpl</tt>.
@@ -80,9 +80,9 @@ public class LigatureBuilderImplTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Font#getGlyph(org.extex.type.UnicodeChar)
+         * ...
          */
-        public Glyph getGlyph(final UnicodeChar c) {
+        private Glyph getGlyph(final UnicodeChar c) {
 
             Glyph g = (Glyph) cache.get(c);
             if (g == null) {
@@ -112,7 +112,7 @@ public class LigatureBuilderImplTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.other.NullFont#hasGlyph(org.extex.type.UnicodeChar)
+         * @see org.extex.font.type.other.NullFont#hasGlyph(org.extex.type.UnicodeChar)
          */
         public boolean hasGlyph(final UnicodeChar uc) {
 
@@ -120,7 +120,7 @@ public class LigatureBuilderImplTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.other.NullFont#getLigature(org.extex.type.UnicodeChar, org.extex.type.UnicodeChar)
+         * @see org.extex.font.type.other.NullFont#getLigature(org.extex.type.UnicodeChar, org.extex.type.UnicodeChar)
          */
         public UnicodeChar getLigature(final UnicodeChar uc1,
                 final UnicodeChar uc2) {
@@ -154,28 +154,28 @@ public class LigatureBuilderImplTest extends TestCase {
     private class MockGlyph implements Glyph {
 
         /**
-         * @see de.dante.extex.font.Glyph#setDepth(de.dante.extex.font.type.tfm.TFMFixWord, de.dante.extex.interpreter.type.dimen.Dimen)
+         * @see org.extex.font.Glyph#setDepth(org.extex.font.type.tfm.TFMFixWord, org.extex.interpreter.type.dimen.Dimen)
          */
         public void setDepth(final TFMFixWord size, final Dimen em) {
 
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#setHeight(de.dante.extex.font.type.tfm.TFMFixWord, de.dante.extex.interpreter.type.dimen.Dimen)
+         * @see org.extex.font.Glyph#setHeight(org.extex.font.type.tfm.TFMFixWord, org.extex.interpreter.type.dimen.Dimen)
          */
         public void setHeight(final TFMFixWord size, final Dimen em) {
 
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#setItalicCorrection(de.dante.extex.font.type.tfm.TFMFixWord, de.dante.extex.interpreter.type.dimen.Dimen)
+         * @see org.extex.font.Glyph#setItalicCorrection(org.extex.font.type.tfm.TFMFixWord, org.extex.interpreter.type.dimen.Dimen)
          */
         public void setItalicCorrection(final TFMFixWord size, final Dimen em) {
 
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#setWidth(de.dante.extex.font.type.tfm.TFMFixWord, de.dante.extex.interpreter.type.dimen.Dimen)
+         * @see org.extex.font.Glyph#setWidth(org.extex.font.type.tfm.TFMFixWord, org.extex.interpreter.type.dimen.Dimen)
          */
         public void setWidth(final TFMFixWord size, final Dimen em) {
 
@@ -198,23 +198,23 @@ public class LigatureBuilderImplTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Glyph#addKerning(
-         *      de.dante.extex.interpreter.type.font.Kerning)
+         * @see org.extex.interpreter.type.font.Glyph#addKerning(
+         *      org.extex.interpreter.type.font.Kerning)
          */
         public void addKerning(final Kerning kern) {
 
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Glyph#addLigature(
-         *      de.dante.extex.interpreter.type.font.Ligature)
+         * @see org.extex.interpreter.type.font.Glyph#addLigature(
+         *      org.extex.interpreter.type.font.Ligature)
          */
         public void addLigature(final Ligature lig) {
 
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Glyph#getDepth()
+         * @see org.extex.interpreter.type.font.Glyph#getDepth()
          */
         public Dimen getDepth() {
 
@@ -222,7 +222,7 @@ public class LigatureBuilderImplTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Glyph#getExternalFile()
+         * @see org.extex.interpreter.type.font.Glyph#getExternalFile()
          */
         public FontByteArray getExternalFile() {
 
@@ -230,7 +230,7 @@ public class LigatureBuilderImplTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Glyph#getHeight()
+         * @see org.extex.interpreter.type.font.Glyph#getHeight()
          */
         public Dimen getHeight() {
 
@@ -238,7 +238,7 @@ public class LigatureBuilderImplTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Glyph#getItalicCorrection()
+         * @see org.extex.interpreter.type.font.Glyph#getItalicCorrection()
          */
         public Dimen getItalicCorrection() {
 
@@ -246,7 +246,7 @@ public class LigatureBuilderImplTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Glyph#getKerning(
+         * @see org.extex.interpreter.type.font.Glyph#getKerning(
          *      org.extex.type.UnicodeChar)
          */
         public Dimen getKerning(final UnicodeChar uc) {
@@ -255,7 +255,7 @@ public class LigatureBuilderImplTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Glyph#getLeftSpace()
+         * @see org.extex.interpreter.type.font.Glyph#getLeftSpace()
          */
         public Dimen getLeftSpace() {
 
@@ -263,7 +263,7 @@ public class LigatureBuilderImplTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Glyph#getLigature(
+         * @see org.extex.interpreter.type.font.Glyph#getLigature(
          *      org.extex.type.UnicodeChar)
          */
         public UnicodeChar getLigature(final UnicodeChar uc) {
@@ -285,7 +285,7 @@ public class LigatureBuilderImplTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Glyph#getName()
+         * @see org.extex.interpreter.type.font.Glyph#getName()
          */
         public String getName() {
 
@@ -293,7 +293,7 @@ public class LigatureBuilderImplTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Glyph#getNumber()
+         * @see org.extex.interpreter.type.font.Glyph#getNumber()
          */
         public String getNumber() {
 
@@ -301,7 +301,7 @@ public class LigatureBuilderImplTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Glyph#getRightSpace()
+         * @see org.extex.interpreter.type.font.Glyph#getRightSpace()
          */
         public Dimen getRightSpace() {
 
@@ -309,7 +309,7 @@ public class LigatureBuilderImplTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Glyph#getWidth()
+         * @see org.extex.interpreter.type.font.Glyph#getWidth()
          */
         public Dimen getWidth() {
 
@@ -317,14 +317,14 @@ public class LigatureBuilderImplTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Glyph#setDepth(de.dante.extex.interpreter.type.dimen.Dimen)
+         * @see org.extex.interpreter.type.font.Glyph#setDepth(org.extex.interpreter.type.dimen.Dimen)
          */
         public void setDepth(final Dimen d) {
 
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Glyph#setDepth(java.lang.String, de.dante.extex.interpreter.type.dimen.Dimen, int)
+         * @see org.extex.interpreter.type.font.Glyph#setDepth(java.lang.String, org.extex.interpreter.type.dimen.Dimen, int)
          */
         public void setDepth(final String gsize, final Dimen em,
                 final int unitsperem) {
@@ -332,21 +332,21 @@ public class LigatureBuilderImplTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Glyph#setExternalFile(de.dante.extex.interpreter.type.font.FontFile)
+         * @see org.extex.interpreter.type.font.Glyph#setExternalFile(org.extex.interpreter.type.font.FontFile)
          */
         public void setExternalFile(final FontByteArray file) {
 
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Glyph#setHeight(de.dante.extex.interpreter.type.dimen.Dimen)
+         * @see org.extex.interpreter.type.font.Glyph#setHeight(org.extex.interpreter.type.dimen.Dimen)
          */
         public void setHeight(final Dimen h) {
 
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Glyph#setHeight(java.lang.String, de.dante.extex.interpreter.type.dimen.Dimen, int)
+         * @see org.extex.interpreter.type.font.Glyph#setHeight(java.lang.String, org.extex.interpreter.type.dimen.Dimen, int)
          */
         public void setHeight(final String gsize, final Dimen em,
                 final int unitsperem) {
@@ -354,14 +354,14 @@ public class LigatureBuilderImplTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Glyph#setItalicCorrection(de.dante.extex.interpreter.type.dimen.Dimen)
+         * @see org.extex.interpreter.type.font.Glyph#setItalicCorrection(org.extex.interpreter.type.dimen.Dimen)
          */
         public void setItalicCorrection(final Dimen d) {
 
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Glyph#setItalicCorrection(java.lang.String, de.dante.extex.interpreter.type.dimen.Dimen, int)
+         * @see org.extex.interpreter.type.font.Glyph#setItalicCorrection(java.lang.String, org.extex.interpreter.type.dimen.Dimen, int)
          */
         public void setItalicCorrection(final String gsize, final Dimen em,
                 final int unitsperem) {
@@ -369,21 +369,21 @@ public class LigatureBuilderImplTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Glyph#setLeftSpace(de.dante.extex.interpreter.type.dimen.Dimen)
+         * @see org.extex.interpreter.type.font.Glyph#setLeftSpace(org.extex.interpreter.type.dimen.Dimen)
          */
         public void setLeftSpace(final Dimen ls) {
 
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Glyph#setName(java.lang.String)
+         * @see org.extex.interpreter.type.font.Glyph#setName(java.lang.String)
          */
         public void setName(final String n) {
 
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Glyph#setNumber(
+         * @see org.extex.interpreter.type.font.Glyph#setNumber(
          *      java.lang.String)
          */
         public void setNumber(final String nr) {
@@ -391,32 +391,32 @@ public class LigatureBuilderImplTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Glyph#setRightSpace(
-         *      de.dante.extex.interpreter.type.dimen.Dimen)
+         * @see org.extex.interpreter.type.font.Glyph#setRightSpace(
+         *      org.extex.interpreter.type.dimen.Dimen)
          */
         public void setRightSpace(final Dimen rs) {
 
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#setWidth(
-         *      de.dante.extex.interpreter.type.dimen.Dimen)
+         * @see org.extex.font.Glyph#setWidth(
+         *      org.extex.interpreter.type.dimen.Dimen)
          */
         public void setWidth(final Dimen w) {
 
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Glyph#setWidth(FixedDimen)
+         * @see org.extex.interpreter.type.font.Glyph#setWidth(FixedDimen)
          */
         public void setWidth(final FixedDimen w) {
 
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Glyph#setWidth(
+         * @see org.extex.interpreter.type.font.Glyph#setWidth(
          *      java.lang.String,
-         *      de.dante.extex.interpreter.type.dimen.Dimen, int)
+         *      org.extex.interpreter.type.dimen.Dimen, int)
          */
         public void setWidth(final String gsize, final Dimen em,
                 final int unitsperem) {

@@ -19,8 +19,9 @@
 
 package de.dante.extex.backend.util;
 
+import org.extex.backend.documentWriter.util.PageManager;
+
 import junit.framework.TestCase;
-import de.dante.extex.backend.documentWriter.util.PageManager;
 
 /**
  * This class contains a test suite for the PageManager.

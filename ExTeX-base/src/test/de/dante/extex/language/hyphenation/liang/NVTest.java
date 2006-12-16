@@ -31,6 +31,7 @@ import org.extex.font.Kerning;
 import org.extex.font.Ligature;
 import org.extex.font.type.BoundingBox;
 import org.extex.font.type.other.NullFont;
+import org.extex.font.type.tfm.TFMFixWord;
 import org.extex.interpreter.Namespace;
 import org.extex.interpreter.context.tc.ModifiableTypesettingContext;
 import org.extex.interpreter.context.tc.TypesettingContext;
@@ -45,13 +46,12 @@ import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
 import org.extex.scanner.type.token.TokenFactoryImpl;
 import org.extex.type.UnicodeChar;
+import org.extex.typesetter.type.node.CharNode;
+import org.extex.typesetter.type.node.factory.CachingNodeFactory;
+import org.extex.typesetter.type.node.factory.NodeFactory;
 
-import de.dante.extex.font.type.tfm.TFMFixWord;
 import de.dante.extex.language.hyphenation.base.BaseHyphenationTable;
 import de.dante.extex.language.ligature.impl.LigatureBuilderImpl;
-import de.dante.extex.typesetter.type.node.CharNode;
-import de.dante.extex.typesetter.type.node.factory.CachingNodeFactory;
-import de.dante.extex.typesetter.type.node.factory.NodeFactory;
 
 /**
  * This is the test class for NV.
@@ -114,7 +114,7 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.Fount#getActualSize()
+         * @see org.extex.font.type.Fount#getActualSize()
          */
         public FixedDimen getActualSize() {
 
@@ -122,7 +122,7 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.Fount#getBoundingBox()
+         * @see org.extex.font.type.Fount#getBoundingBox()
          */
         public BoundingBox getBoundingBox() {
 
@@ -130,7 +130,7 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.Fount#getCheckSum()
+         * @see org.extex.font.type.Fount#getCheckSum()
          */
         public int getCheckSum() {
 
@@ -138,7 +138,7 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.Fount#getDesignSize()
+         * @see org.extex.font.type.Fount#getDesignSize()
          */
         public FixedDimen getDesignSize() {
 
@@ -146,7 +146,7 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.Fount#getEm()
+         * @see org.extex.font.type.Fount#getEm()
          */
         public FixedDimen getEm() {
 
@@ -154,7 +154,7 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.Fount#getEx()
+         * @see org.extex.font.type.Fount#getEx()
          */
         public FixedDimen getEx() {
 
@@ -162,7 +162,7 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.Fount#getFontByteArray()
+         * @see org.extex.font.type.Fount#getFontByteArray()
          */
         public FontByteArray getFontByteArray() {
 
@@ -170,7 +170,7 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.Fount#getFontDimen(java.lang.String)
+         * @see org.extex.font.type.Fount#getFontDimen(java.lang.String)
          */
         public FixedDimen getFontDimen(final String key) {
 
@@ -178,7 +178,7 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.Fount#getFontKey()
+         * @see org.extex.font.type.Fount#getFontKey()
          */
         public FountKey getFontKey() {
 
@@ -186,7 +186,7 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.Fount#getFontName()
+         * @see org.extex.font.type.Fount#getFontName()
          */
         public String getFontName() {
 
@@ -194,7 +194,7 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.Fount#getGlyph(org.extex.type.UnicodeChar)
+         * @see org.extex.font.type.Fount#getGlyph(org.extex.type.UnicodeChar)
          */
         public Glyph getGlyph(final UnicodeChar c) {
 
@@ -202,7 +202,7 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Font#getHyphenChar()
+         * @see org.extex.interpreter.type.font.Font#getHyphenChar()
          */
         public UnicodeChar getHyphenChar() {
 
@@ -210,7 +210,7 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.Fount#getLetterSpacing()
+         * @see org.extex.font.type.Fount#getLetterSpacing()
          */
         public FixedGlue getLetterSpacing() {
 
@@ -218,7 +218,7 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.Fount#getProperty(java.lang.String)
+         * @see org.extex.font.type.Fount#getProperty(java.lang.String)
          */
         public String getProperty(final String key) {
 
@@ -226,7 +226,7 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Font#getSkewChar()
+         * @see org.extex.interpreter.type.font.Font#getSkewChar()
          */
         public UnicodeChar getSkewChar() {
 
@@ -234,7 +234,7 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.Fount#getSpace()
+         * @see org.extex.font.type.Fount#getSpace()
          */
         public FixedGlue getSpace() {
 
@@ -242,14 +242,14 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Font#setFontDimen(java.lang.String, de.dante.extex.interpreter.type.dimen.Dimen)
+         * @see org.extex.interpreter.type.font.Font#setFontDimen(java.lang.String, org.extex.interpreter.type.dimen.Dimen)
          */
         public void setFontDimen(final String key, final Dimen value) {
 
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Font#setHyphenChar(org.extex.type.UnicodeChar)
+         * @see org.extex.interpreter.type.font.Font#setHyphenChar(org.extex.type.UnicodeChar)
          */
         public void setHyphenChar(final UnicodeChar hyphen) {
 
@@ -257,14 +257,14 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Font#setSkewChar(org.extex.type.UnicodeChar)
+         * @see org.extex.interpreter.type.font.Font#setSkewChar(org.extex.type.UnicodeChar)
          */
         public void setSkewChar(final UnicodeChar skew) {
 
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Font#setEfcode(org.extex.type.UnicodeChar, long)
+         * @see org.extex.interpreter.type.font.Font#setEfcode(org.extex.type.UnicodeChar, long)
          */
         public void setEfcode(UnicodeChar uc, long code) {
 
@@ -273,7 +273,7 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Font#getEfcode()
+         * @see org.extex.interpreter.type.font.Font#getEfcode()
          */
         public long getEfcode(UnicodeChar uc) {
 
@@ -307,21 +307,21 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#addKerning(de.dante.extex.font.Kerning)
+         * @see org.extex.font.Glyph#addKerning(org.extex.font.Kerning)
          */
         public void addKerning(final Kerning kern) {
 
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#addLigature(de.dante.extex.font.Ligature)
+         * @see org.extex.font.Glyph#addLigature(org.extex.font.Ligature)
          */
         public void addLigature(final Ligature lig) {
 
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#getDepth()
+         * @see org.extex.font.Glyph#getDepth()
          */
         public Dimen getDepth() {
 
@@ -329,7 +329,7 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#getExternalFile()
+         * @see org.extex.font.Glyph#getExternalFile()
          */
         public FontByteArray getExternalFile() {
 
@@ -337,7 +337,7 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#getHeight()
+         * @see org.extex.font.Glyph#getHeight()
          */
         public Dimen getHeight() {
 
@@ -345,7 +345,7 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#getItalicCorrection()
+         * @see org.extex.font.Glyph#getItalicCorrection()
          */
         public Dimen getItalicCorrection() {
 
@@ -353,7 +353,7 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#getKerning(org.extex.type.UnicodeChar)
+         * @see org.extex.font.Glyph#getKerning(org.extex.type.UnicodeChar)
          */
         public Dimen getKerning(final UnicodeChar uc) {
 
@@ -361,7 +361,7 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#getLeftSpace()
+         * @see org.extex.font.Glyph#getLeftSpace()
          */
         public Dimen getLeftSpace() {
 
@@ -369,7 +369,7 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#getLigature(org.extex.type.UnicodeChar)
+         * @see org.extex.font.Glyph#getLigature(org.extex.type.UnicodeChar)
          */
         public UnicodeChar getLigature(final UnicodeChar uc) {
 
@@ -388,7 +388,7 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#getName()
+         * @see org.extex.font.Glyph#getName()
          */
         public String getName() {
 
@@ -396,7 +396,7 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#getNumber()
+         * @see org.extex.font.Glyph#getNumber()
          */
         public String getNumber() {
 
@@ -404,7 +404,7 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#getRightSpace()
+         * @see org.extex.font.Glyph#getRightSpace()
          */
         public Dimen getRightSpace() {
 
@@ -412,7 +412,7 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#getWidth()
+         * @see org.extex.font.Glyph#getWidth()
          */
         public Dimen getWidth() {
 
@@ -420,14 +420,14 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#setDepth(de.dante.extex.interpreter.type.dimen.Dimen)
+         * @see org.extex.font.Glyph#setDepth(org.extex.interpreter.type.dimen.Dimen)
          */
         public void setDepth(final Dimen d) {
 
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#setDepth(java.lang.String, de.dante.extex.interpreter.type.dimen.Dimen, int)
+         * @see org.extex.font.Glyph#setDepth(java.lang.String, org.extex.interpreter.type.dimen.Dimen, int)
          */
         public void setDepth(final String gsize, final Dimen em,
                 final int unitsperem) {
@@ -435,28 +435,28 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#setDepth(de.dante.extex.font.type.tfm.TFMFixWord, de.dante.extex.interpreter.type.dimen.Dimen)
+         * @see org.extex.font.Glyph#setDepth(org.extex.font.type.tfm.TFMFixWord, org.extex.interpreter.type.dimen.Dimen)
          */
         public void setDepth(final TFMFixWord size, final Dimen em) {
 
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#setExternalFile(de.dante.extex.font.FontFile)
+         * @see org.extex.font.Glyph#setExternalFile(org.extex.font.FontFile)
          */
         public void setExternalFile(final FontByteArray file) {
 
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#setHeight(de.dante.extex.interpreter.type.dimen.Dimen)
+         * @see org.extex.font.Glyph#setHeight(org.extex.interpreter.type.dimen.Dimen)
          */
         public void setHeight(final Dimen h) {
 
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#setHeight(java.lang.String, de.dante.extex.interpreter.type.dimen.Dimen, int)
+         * @see org.extex.font.Glyph#setHeight(java.lang.String, org.extex.interpreter.type.dimen.Dimen, int)
          */
         public void setHeight(final String gsize, final Dimen em,
                 final int unitsperem) {
@@ -464,21 +464,21 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#setHeight(de.dante.extex.font.type.tfm.TFMFixWord, de.dante.extex.interpreter.type.dimen.Dimen)
+         * @see org.extex.font.Glyph#setHeight(org.extex.font.type.tfm.TFMFixWord, org.extex.interpreter.type.dimen.Dimen)
          */
         public void setHeight(final TFMFixWord size, final Dimen em) {
 
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#setItalicCorrection(de.dante.extex.interpreter.type.dimen.Dimen)
+         * @see org.extex.font.Glyph#setItalicCorrection(org.extex.interpreter.type.dimen.Dimen)
          */
         public void setItalicCorrection(final Dimen d) {
 
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#setItalicCorrection(java.lang.String, de.dante.extex.interpreter.type.dimen.Dimen, int)
+         * @see org.extex.font.Glyph#setItalicCorrection(java.lang.String, org.extex.interpreter.type.dimen.Dimen, int)
          */
         public void setItalicCorrection(final String gsize, final Dimen em,
                 final int unitsperem) {
@@ -486,49 +486,49 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#setItalicCorrection(de.dante.extex.font.type.tfm.TFMFixWord, de.dante.extex.interpreter.type.dimen.Dimen)
+         * @see org.extex.font.Glyph#setItalicCorrection(org.extex.font.type.tfm.TFMFixWord, org.extex.interpreter.type.dimen.Dimen)
          */
         public void setItalicCorrection(final TFMFixWord size, final Dimen em) {
 
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#setLeftSpace(de.dante.extex.interpreter.type.dimen.Dimen)
+         * @see org.extex.font.Glyph#setLeftSpace(org.extex.interpreter.type.dimen.Dimen)
          */
         public void setLeftSpace(final Dimen ls) {
 
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#setName(java.lang.String)
+         * @see org.extex.font.Glyph#setName(java.lang.String)
          */
         public void setName(final String n) {
 
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#setNumber(java.lang.String)
+         * @see org.extex.font.Glyph#setNumber(java.lang.String)
          */
         public void setNumber(final String nr) {
 
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#setRightSpace(de.dante.extex.interpreter.type.dimen.Dimen)
+         * @see org.extex.font.Glyph#setRightSpace(org.extex.interpreter.type.dimen.Dimen)
          */
         public void setRightSpace(final Dimen rs) {
 
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#setWidth(de.dante.extex.interpreter.type.dimen.Dimen)
+         * @see org.extex.font.Glyph#setWidth(org.extex.interpreter.type.dimen.Dimen)
          */
         public void setWidth(final Dimen w) {
 
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#setWidth(java.lang.String, de.dante.extex.interpreter.type.dimen.Dimen, int)
+         * @see org.extex.font.Glyph#setWidth(java.lang.String, org.extex.interpreter.type.dimen.Dimen, int)
          */
         public void setWidth(final String gsize, final Dimen em,
                 final int unitsperem) {
@@ -536,7 +536,7 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#setWidth(de.dante.extex.font.type.tfm.TFMFixWord, de.dante.extex.interpreter.type.dimen.Dimen)
+         * @see org.extex.font.Glyph#setWidth(org.extex.font.type.tfm.TFMFixWord, org.extex.interpreter.type.dimen.Dimen)
          */
         public void setWidth(final TFMFixWord size, final Dimen em) {
 

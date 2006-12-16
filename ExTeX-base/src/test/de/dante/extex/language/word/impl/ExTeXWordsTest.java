@@ -27,16 +27,16 @@ import org.extex.interpreter.type.font.Font;
 import org.extex.language.hyphenation.exception.HyphenationException;
 import org.extex.language.word.WordTokenizer;
 import org.extex.type.UnicodeChar;
+import org.extex.typesetter.type.NodeList;
+import org.extex.typesetter.type.node.CharNode;
+import org.extex.typesetter.type.node.DiscretionaryNode;
+import org.extex.typesetter.type.node.HorizontalListNode;
+import org.extex.typesetter.type.node.LigatureNode;
+import org.extex.typesetter.type.node.factory.NodeFactory;
+import org.extex.typesetter.type.node.factory.SimpleNodeFactory;
 
 import de.dante.extex.language.hyphenation.base.BaseHyphenationTable;
 import de.dante.extex.language.ligature.impl.LigatureBuilderImpl;
-import de.dante.extex.typesetter.type.NodeList;
-import de.dante.extex.typesetter.type.node.CharNode;
-import de.dante.extex.typesetter.type.node.DiscretionaryNode;
-import de.dante.extex.typesetter.type.node.HorizontalListNode;
-import de.dante.extex.typesetter.type.node.LigatureNode;
-import de.dante.extex.typesetter.type.node.factory.NodeFactory;
-import de.dante.extex.typesetter.type.node.factory.SimpleNodeFactory;
 import de.dante.test.font.CMR10;
 
 /**

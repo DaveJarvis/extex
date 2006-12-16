@@ -23,9 +23,9 @@ import org.extex.interpreter.type.font.Font;
 import org.extex.language.hyphenation.exception.HyphenationException;
 import org.extex.language.ligature.LigatureBuilder;
 import org.extex.type.UnicodeChar;
+import org.extex.typesetter.type.NodeList;
+import org.extex.typesetter.type.node.CharNode;
 
-import de.dante.extex.typesetter.type.NodeList;
-import de.dante.extex.typesetter.type.node.CharNode;
 
 /**
  * This class provides an implementation for a ligature builder.
@@ -51,7 +51,7 @@ public class EmptyLigatureBuilder implements LigatureBuilder {
 
     /**
      * @see org.extex.language.ligature.LigatureBuilder#insertLigatures(
-     *      de.dante.extex.typesetter.type.NodeList, int)
+     *      org.extex.typesetter.type.NodeList, int)
      */
     public int insertLigatures(final NodeList list, final int start)
             throws HyphenationException {
@@ -74,7 +74,7 @@ public class EmptyLigatureBuilder implements LigatureBuilder {
      * @see org.extex.language.ligature.LigatureBuilder#getLigature(
      *      org.extex.type.UnicodeChar,
      *      org.extex.type.UnicodeChar,
-     *      de.dante.extex.interpreter.type.font.Font)
+     *      org.extex.interpreter.type.font.Font)
      */
     public UnicodeChar getLigature(final UnicodeChar c1, final UnicodeChar c2,
             final Font f) {

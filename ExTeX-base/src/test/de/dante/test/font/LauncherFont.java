@@ -76,21 +76,21 @@ public class LauncherFont implements Font, Serializable {
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#addKerning(de.dante.extex.font.Kerning)
+         * @see org.extex.font.Glyph#addKerning(org.extex.font.Kerning)
          */
         public void addKerning(final Kerning kern) {
 
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#addLigature(de.dante.extex.font.Ligature)
+         * @see org.extex.font.Glyph#addLigature(org.extex.font.Ligature)
          */
         public void addLigature(final Ligature lig) {
 
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#getDepth()
+         * @see org.extex.font.Glyph#getDepth()
          */
         public Dimen getDepth() {
 
@@ -113,7 +113,7 @@ public class LauncherFont implements Font, Serializable {
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#getExternalFile()
+         * @see org.extex.font.Glyph#getExternalFile()
          */
         public FontByteArray getExternalFile() {
 
@@ -121,7 +121,7 @@ public class LauncherFont implements Font, Serializable {
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#getHeight()
+         * @see org.extex.font.Glyph#getHeight()
          */
         public Dimen getHeight() {
 
@@ -129,7 +129,7 @@ public class LauncherFont implements Font, Serializable {
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#getItalicCorrection()
+         * @see org.extex.font.Glyph#getItalicCorrection()
          */
         public Dimen getItalicCorrection() {
 
@@ -137,7 +137,7 @@ public class LauncherFont implements Font, Serializable {
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#getKerning(org.extex.type.UnicodeChar)
+         * @see org.extex.font.Glyph#getKerning(org.extex.type.UnicodeChar)
          */
         public Dimen getKerning(final UnicodeChar uc) {
 
@@ -145,7 +145,7 @@ public class LauncherFont implements Font, Serializable {
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#getLeftSpace()
+         * @see org.extex.font.Glyph#getLeftSpace()
          */
         public Dimen getLeftSpace() {
 
@@ -153,7 +153,7 @@ public class LauncherFont implements Font, Serializable {
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#getLigature(org.extex.type.UnicodeChar)
+         * @see org.extex.font.Glyph#getLigature(org.extex.type.UnicodeChar)
          */
         public UnicodeChar getLigature(final UnicodeChar uc) {
 
@@ -166,7 +166,7 @@ public class LauncherFont implements Font, Serializable {
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#getName()
+         * @see org.extex.font.Glyph#getName()
          */
         public String getName() {
 
@@ -174,7 +174,7 @@ public class LauncherFont implements Font, Serializable {
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#getNumber()
+         * @see org.extex.font.Glyph#getNumber()
          */
         public String getNumber() {
 
@@ -182,7 +182,7 @@ public class LauncherFont implements Font, Serializable {
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#getRightSpace()
+         * @see org.extex.font.Glyph#getRightSpace()
          */
         public Dimen getRightSpace() {
 
@@ -190,7 +190,7 @@ public class LauncherFont implements Font, Serializable {
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#getWidth()
+         * @see org.extex.font.Glyph#getWidth()
          */
         public Dimen getWidth() {
 
@@ -198,63 +198,63 @@ public class LauncherFont implements Font, Serializable {
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#setDepth(de.dante.extex.interpreter.type.dimen.Dimen)
+         * @see org.extex.font.Glyph#setDepth(org.extex.interpreter.type.dimen.Dimen)
          */
         public void setDepth(final Dimen d) {
 
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#setExternalFile(de.dante.extex.font.FontByteArray)
+         * @see org.extex.font.Glyph#setExternalFile(org.extex.font.FontByteArray)
          */
         public void setExternalFile(final FontByteArray file) {
 
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#setHeight(de.dante.extex.interpreter.type.dimen.Dimen)
+         * @see org.extex.font.Glyph#setHeight(org.extex.interpreter.type.dimen.Dimen)
          */
         public void setHeight(final Dimen h) {
 
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#setItalicCorrection(de.dante.extex.interpreter.type.dimen.Dimen)
+         * @see org.extex.font.Glyph#setItalicCorrection(org.extex.interpreter.type.dimen.Dimen)
          */
         public void setItalicCorrection(final Dimen d) {
 
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#setLeftSpace(de.dante.extex.interpreter.type.dimen.Dimen)
+         * @see org.extex.font.Glyph#setLeftSpace(org.extex.interpreter.type.dimen.Dimen)
          */
         public void setLeftSpace(final Dimen ls) {
 
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#setName(java.lang.String)
+         * @see org.extex.font.Glyph#setName(java.lang.String)
          */
         public void setName(final String n) {
 
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#setNumber(java.lang.String)
+         * @see org.extex.font.Glyph#setNumber(java.lang.String)
          */
         public void setNumber(final String nr) {
 
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#setRightSpace(de.dante.extex.interpreter.type.dimen.Dimen)
+         * @see org.extex.font.Glyph#setRightSpace(org.extex.interpreter.type.dimen.Dimen)
          */
         public void setRightSpace(final Dimen rs) {
 
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#setWidth(de.dante.extex.interpreter.type.dimen.Dimen)
+         * @see org.extex.font.Glyph#setWidth(org.extex.interpreter.type.dimen.Dimen)
          */
         public void setWidth(final Dimen w) {
 
@@ -283,7 +283,7 @@ public class LauncherFont implements Font, Serializable {
     private Map fontdimen = new HashMap();
 
     /**
-     * @see de.dante.extex.font.type.Fount#getActualSize()
+     * @see org.extex.font.type.Fount#getActualSize()
      */
     public FixedDimen getActualSize() {
 
@@ -291,7 +291,7 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.font.type.Fount#getBoundingBox()
+     * @see org.extex.font.type.Fount#getBoundingBox()
      */
     public BoundingBox getBoundingBox() {
 
@@ -299,7 +299,7 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.font.type.Fount#getCheckSum()
+     * @see org.extex.font.type.Fount#getCheckSum()
      */
     public int getCheckSum() {
 
@@ -307,7 +307,7 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#getDepth(
+     * @see org.extex.interpreter.type.font.Font#getDepth(
      *      org.extex.type.UnicodeChar)
      */
     public FixedGlue getDepth(final UnicodeChar uc) {
@@ -316,7 +316,7 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.font.type.Fount#getDesignSize()
+     * @see org.extex.font.type.Fount#getDesignSize()
      */
     public FixedDimen getDesignSize() {
 
@@ -324,7 +324,7 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#getEfcode()
+     * @see org.extex.interpreter.type.font.Font#getEfcode()
      */
     public long getEfcode(final UnicodeChar uc) {
 
@@ -332,7 +332,7 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.font.type.Fount#getEm()
+     * @see org.extex.font.type.Fount#getEm()
      */
     public FixedDimen getEm() {
 
@@ -340,7 +340,7 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.font.type.Fount#getEx()
+     * @see org.extex.font.type.Fount#getEx()
      */
     public FixedDimen getEx() {
 
@@ -348,7 +348,7 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.font.type.Fount#getFontByteArray()
+     * @see org.extex.font.type.Fount#getFontByteArray()
      */
     public FontByteArray getFontByteArray() {
 
@@ -356,7 +356,7 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.font.type.Fount#getFontDimen(java.lang.String)
+     * @see org.extex.font.type.Fount#getFontDimen(java.lang.String)
      */
     public FixedDimen getFontDimen(final String key) {
 
@@ -364,7 +364,7 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.font.type.Fount#getFontKey()
+     * @see org.extex.font.type.Fount#getFontKey()
      */
     public FountKey getFontKey() {
 
@@ -372,7 +372,7 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.font.type.Fount#getFontName()
+     * @see org.extex.font.type.Fount#getFontName()
      */
     public String getFontName() {
 
@@ -380,16 +380,15 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.font.type.Fount#getGlyph(
-     *      org.extex.type.UnicodeChar)
+     * ...
      */
-    public Glyph getGlyph(final UnicodeChar c) {
+    private Glyph getGlyph(final UnicodeChar c) {
 
         return new LauncherGlyph(c);
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#getHeight(
+     * @see org.extex.interpreter.type.font.Font#getHeight(
      *      org.extex.type.UnicodeChar)
      */
     public FixedGlue getHeight(final UnicodeChar uc) {
@@ -398,7 +397,7 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#getHyphenChar()
+     * @see org.extex.interpreter.type.font.Font#getHyphenChar()
      */
     public UnicodeChar getHyphenChar() {
 
@@ -406,7 +405,7 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#getItalicCorrection(
+     * @see org.extex.interpreter.type.font.Font#getItalicCorrection(
      *      org.extex.type.UnicodeChar)
      */
     public FixedDimen getItalicCorrection(final UnicodeChar uc) {
@@ -415,7 +414,7 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#getKerning(
+     * @see org.extex.interpreter.type.font.Font#getKerning(
      *      org.extex.type.UnicodeChar,
      *      org.extex.type.UnicodeChar)
      */
@@ -425,7 +424,7 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.font.type.Fount#getLetterSpacing()
+     * @see org.extex.font.type.Fount#getLetterSpacing()
      */
     public FixedGlue getLetterSpacing() {
 
@@ -433,7 +432,7 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#getLigature(
+     * @see org.extex.interpreter.type.font.Font#getLigature(
      *      org.extex.type.UnicodeChar, org.extex.type.UnicodeChar)
      */
     public UnicodeChar getLigature(final UnicodeChar uc1, final UnicodeChar uc2) {
@@ -442,7 +441,7 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.font.type.Fount#getProperty(java.lang.String)
+     * @see org.extex.font.type.Fount#getProperty(java.lang.String)
      */
     public String getProperty(final String key) {
 
@@ -450,7 +449,7 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#getSkewChar()
+     * @see org.extex.interpreter.type.font.Font#getSkewChar()
      */
     public UnicodeChar getSkewChar() {
 
@@ -458,7 +457,7 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.font.type.Fount#getSpace()
+     * @see org.extex.font.type.Fount#getSpace()
      */
     public FixedGlue getSpace() {
 
@@ -466,7 +465,7 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#getWidth(
+     * @see org.extex.interpreter.type.font.Font#getWidth(
      *      org.extex.type.UnicodeChar)
      */
     public FixedGlue getWidth(final UnicodeChar uc) {
@@ -475,7 +474,7 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#hasGlyph(
+     * @see org.extex.interpreter.type.font.Font#hasGlyph(
      *      org.extex.type.UnicodeChar)
      */
     public boolean hasGlyph(final UnicodeChar uc) {
@@ -484,7 +483,7 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#setEfcode(org.extex.type.UnicodeChar, long)
+     * @see org.extex.interpreter.type.font.Font#setEfcode(org.extex.type.UnicodeChar, long)
      */
     public void setEfcode(final UnicodeChar uc, final long code) {
 
@@ -493,9 +492,9 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#setFontDimen(
+     * @see org.extex.interpreter.type.font.Font#setFontDimen(
      *      java.lang.String,
-     *      de.dante.extex.interpreter.type.dimen.Dimen)
+     *      org.extex.interpreter.type.dimen.Dimen)
      */
     public void setFontDimen(final String key, final Dimen value) {
 
@@ -503,7 +502,7 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#setHyphenChar(
+     * @see org.extex.interpreter.type.font.Font#setHyphenChar(
      *      org.extex.type.UnicodeChar)
      */
     public void setHyphenChar(final UnicodeChar hyphen) {
@@ -512,7 +511,7 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
-     * @see de.dante.extex.interpreter.type.font.Font#setSkewChar(
+     * @see org.extex.interpreter.type.font.Font#setSkewChar(
      *      org.extex.type.UnicodeChar)
      */
     public void setSkewChar(final UnicodeChar skew) {

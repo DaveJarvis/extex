@@ -28,6 +28,7 @@ import org.extex.font.Kerning;
 import org.extex.font.Ligature;
 import org.extex.font.type.BoundingBox;
 import org.extex.font.type.other.NullFont;
+import org.extex.font.type.tfm.TFMFixWord;
 import org.extex.interpreter.context.tc.TypesettingContext;
 import org.extex.interpreter.context.tc.TypesettingContextImpl;
 import org.extex.interpreter.type.dimen.Dimen;
@@ -37,17 +38,16 @@ import org.extex.interpreter.type.glue.Glue;
 import org.extex.language.Language;
 import org.extex.type.UnicodeChar;
 import org.extex.type.UnicodeCharList;
+import org.extex.typesetter.type.node.CharNode;
+import org.extex.typesetter.type.node.DiscretionaryNode;
+import org.extex.typesetter.type.node.HorizontalListNode;
+import org.extex.typesetter.type.node.SpaceNode;
+import org.extex.typesetter.type.node.factory.CachingNodeFactory;
+import org.extex.typesetter.type.node.factory.NodeFactory;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.font.type.tfm.TFMFixWord;
 import de.dante.extex.interpreter.context.MockContext;
 import de.dante.extex.language.word.impl.TeXWords;
-import de.dante.extex.typesetter.type.node.CharNode;
-import de.dante.extex.typesetter.type.node.DiscretionaryNode;
-import de.dante.extex.typesetter.type.node.HorizontalListNode;
-import de.dante.extex.typesetter.type.node.SpaceNode;
-import de.dante.extex.typesetter.type.node.factory.CachingNodeFactory;
-import de.dante.extex.typesetter.type.node.factory.NodeFactory;
 
 /**
  * Test suite for the base hyphenation table.
@@ -66,6 +66,11 @@ public class BaseHyphenationTableTest extends TestCase {
     private class MockFont extends NullFont {
 
         /**
+         * The field <tt>serialVersionUID</tt> ...
+         */
+        private static final long serialVersionUID = 1L;
+
+        /**
          * The field <tt>hyphen</tt> contains the hyphenation character.
          */
         private UnicodeChar hyphen = UnicodeChar.get('-');
@@ -76,7 +81,7 @@ public class BaseHyphenationTableTest extends TestCase {
         private Glyph hyphenGlyph = new MockGlyph();
 
         /**
-         * @see de.dante.extex.font.type.Fount#getActualSize()
+         * @see org.extex.font.type.Fount#getActualSize()
          */
         public FixedDimen getActualSize() {
 
@@ -84,7 +89,7 @@ public class BaseHyphenationTableTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.Fount#getBoundingBox()
+         * @see org.extex.font.type.Fount#getBoundingBox()
          */
         public BoundingBox getBoundingBox() {
 
@@ -92,7 +97,7 @@ public class BaseHyphenationTableTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.Fount#getCheckSum()
+         * @see org.extex.font.type.Fount#getCheckSum()
          */
         public int getCheckSum() {
 
@@ -100,7 +105,7 @@ public class BaseHyphenationTableTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.Fount#getDesignSize()
+         * @see org.extex.font.type.Fount#getDesignSize()
          */
         public FixedDimen getDesignSize() {
 
@@ -108,7 +113,7 @@ public class BaseHyphenationTableTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Font#getEfcode()
+         * @see org.extex.interpreter.type.font.Font#getEfcode()
          */
         public long getEfcode(UnicodeChar uc) {
 
@@ -117,7 +122,7 @@ public class BaseHyphenationTableTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.Fount#getEm()
+         * @see org.extex.font.type.Fount#getEm()
          */
         public FixedDimen getEm() {
 
@@ -125,7 +130,7 @@ public class BaseHyphenationTableTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.Fount#getEx()
+         * @see org.extex.font.type.Fount#getEx()
          */
         public FixedDimen getEx() {
 
@@ -133,7 +138,7 @@ public class BaseHyphenationTableTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.Fount#getFontByteArray()
+         * @see org.extex.font.type.Fount#getFontByteArray()
          */
         public FontByteArray getFontByteArray() {
 
@@ -141,7 +146,7 @@ public class BaseHyphenationTableTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.Fount#getFontDimen(java.lang.String)
+         * @see org.extex.font.type.Fount#getFontDimen(java.lang.String)
          */
         public FixedDimen getFontDimen(final String key) {
 
@@ -149,7 +154,7 @@ public class BaseHyphenationTableTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.Fount#getFontKey()
+         * @see org.extex.font.type.Fount#getFontKey()
          */
         public FountKey getFontKey() {
 
@@ -157,7 +162,7 @@ public class BaseHyphenationTableTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.Fount#getFontName()
+         * @see org.extex.font.type.Fount#getFontName()
          */
         public String getFontName() {
 
@@ -165,7 +170,7 @@ public class BaseHyphenationTableTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.Fount#getGlyph(org.extex.type.UnicodeChar)
+         * @see org.extex.font.type.Fount#getGlyph(org.extex.type.UnicodeChar)
          */
         public Glyph getGlyph(final UnicodeChar c) {
 
@@ -176,7 +181,7 @@ public class BaseHyphenationTableTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Font#getHyphenChar()
+         * @see org.extex.interpreter.type.font.Font#getHyphenChar()
          */
         public UnicodeChar getHyphenChar() {
 
@@ -184,7 +189,7 @@ public class BaseHyphenationTableTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.Fount#getLetterSpacing()
+         * @see org.extex.font.type.Fount#getLetterSpacing()
          */
         public FixedGlue getLetterSpacing() {
 
@@ -192,7 +197,7 @@ public class BaseHyphenationTableTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.Fount#getProperty(java.lang.String)
+         * @see org.extex.font.type.Fount#getProperty(java.lang.String)
          */
         public String getProperty(final String key) {
 
@@ -200,7 +205,7 @@ public class BaseHyphenationTableTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Font#getSkewChar()
+         * @see org.extex.interpreter.type.font.Font#getSkewChar()
          */
         public UnicodeChar getSkewChar() {
 
@@ -208,7 +213,7 @@ public class BaseHyphenationTableTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.Fount#getSpace()
+         * @see org.extex.font.type.Fount#getSpace()
          */
         public FixedGlue getSpace() {
 
@@ -216,7 +221,7 @@ public class BaseHyphenationTableTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.other.NullFont#hasGlyph(org.extex.type.UnicodeChar)
+         * @see org.extex.font.type.other.NullFont#hasGlyph(org.extex.type.UnicodeChar)
          */
         public boolean hasGlyph(final UnicodeChar uc) {
 
@@ -224,7 +229,7 @@ public class BaseHyphenationTableTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Font#setEfcode(org.extex.type.UnicodeChar,
+         * @see org.extex.interpreter.type.font.Font#setEfcode(org.extex.type.UnicodeChar,
          *      long)
          */
         public void setEfcode(final UnicodeChar uc, final long code) {
@@ -234,15 +239,15 @@ public class BaseHyphenationTableTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Font#setFontDimen(
-         *      java.lang.String, de.dante.extex.interpreter.type.dimen.Dimen)
+         * @see org.extex.interpreter.type.font.Font#setFontDimen(
+         *      java.lang.String, org.extex.interpreter.type.dimen.Dimen)
          */
         public void setFontDimen(final String key, final Dimen value) {
 
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Font#setHyphenChar(
+         * @see org.extex.interpreter.type.font.Font#setHyphenChar(
          *      org.extex.type.UnicodeChar)
          */
         public void setHyphenChar(final UnicodeChar hyphen) {
@@ -251,7 +256,7 @@ public class BaseHyphenationTableTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Font#setSkewChar(
+         * @see org.extex.interpreter.type.font.Font#setSkewChar(
          *      org.extex.type.UnicodeChar)
          */
         public void setSkewChar(final UnicodeChar skew) {
@@ -269,14 +274,14 @@ public class BaseHyphenationTableTest extends TestCase {
     private class MockGlyph implements Glyph {
 
         /**
-         * @see de.dante.extex.font.Glyph#addKerning(de.dante.extex.font.Kerning)
+         * @see org.extex.font.Glyph#addKerning(org.extex.font.Kerning)
          */
         public void addKerning(final Kerning kern) {
 
         }
 
         /**
-         * @see de.dante.extex.font.Glyph#addLigature(de.dante.extex.font.Ligature)
+         * @see org.extex.font.Glyph#addLigature(org.extex.font.Ligature)
          */
         public void addLigature(final Ligature lig) {
 
@@ -438,7 +443,7 @@ public class BaseHyphenationTableTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.context.Context#getLccode(
+         * @see org.extex.interpreter.context.Context#getLccode(
          *      org.extex.type.UnicodeChar)
          */
         public UnicodeChar getLccode(final UnicodeChar uc) {

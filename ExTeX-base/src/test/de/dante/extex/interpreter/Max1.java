@@ -38,28 +38,28 @@ import org.extex.scanner.stream.impl.TokenStreamImpl;
 import org.extex.scanner.type.token.Token;
 import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
+import org.extex.typesetter.ListMaker;
+import org.extex.typesetter.Mode;
+import org.extex.typesetter.ParagraphObserver;
+import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.TypesetterOptions;
+import org.extex.typesetter.exception.InvalidSpacefactorException;
+import org.extex.typesetter.exception.TypesetterException;
+import org.extex.typesetter.exception.TypesetterUnsupportedException;
+import org.extex.typesetter.listMaker.ListManager;
+import org.extex.typesetter.output.OutputRoutine;
+import org.extex.typesetter.pageBuilder.PageBuilder;
+import org.extex.typesetter.paragraphBuilder.ParagraphBuilder;
+import org.extex.typesetter.paragraphBuilder.ParagraphShape;
+import org.extex.typesetter.type.Node;
+import org.extex.typesetter.type.NodeList;
+import org.extex.typesetter.type.noad.Noad;
+import org.extex.typesetter.type.node.factory.NodeFactory;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.ConfigurationFactory;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-import de.dante.extex.typesetter.ListMaker;
-import de.dante.extex.typesetter.Mode;
-import de.dante.extex.typesetter.ParagraphObserver;
-import de.dante.extex.typesetter.Typesetter;
-import de.dante.extex.typesetter.TypesetterOptions;
-import de.dante.extex.typesetter.exception.InvalidSpacefactorException;
-import de.dante.extex.typesetter.exception.TypesetterException;
-import de.dante.extex.typesetter.exception.TypesetterUnsupportedException;
-import de.dante.extex.typesetter.listMaker.ListManager;
-import de.dante.extex.typesetter.output.OutputRoutine;
-import de.dante.extex.typesetter.pageBuilder.PageBuilder;
-import de.dante.extex.typesetter.paragraphBuilder.ParagraphBuilder;
-import de.dante.extex.typesetter.paragraphBuilder.ParagraphShape;
-import de.dante.extex.typesetter.type.Node;
-import de.dante.extex.typesetter.type.NodeList;
-import de.dante.extex.typesetter.type.noad.Noad;
-import de.dante.extex.typesetter.type.node.factory.NodeFactory;
 
 /**
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -77,8 +77,8 @@ public class Max1 extends TestCase {
         private StringBuffer sb = new StringBuffer();
 
         /**
-         * @see de.dante.extex.typesetter.ListMaker#addGlue(
-         *      de.dante.extex.interpreter.type.glue.Glue)
+         * @see org.extex.typesetter.ListMaker#addGlue(
+         *      org.extex.interpreter.type.glue.Glue)
          */
         public void add(final FixedGlue g) throws TypesetterException {
 
@@ -86,8 +86,8 @@ public class Max1 extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.ListMaker#add(
-         *      de.dante.extex.typesetter.type.noad.Noad)
+         * @see org.extex.typesetter.ListMaker#add(
+         *      org.extex.typesetter.type.noad.Noad)
          */
         public void add(final Noad noad) {
 
@@ -95,8 +95,8 @@ public class Max1 extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.Typesetter#add(
-         *      de.dante.extex.interpreter.type.node.CharNode)
+         * @see org.extex.typesetter.Typesetter#add(
+         *      org.extex.interpreter.type.node.CharNode)
          */
         public void add(final Node c)
                 throws TypesetterException,
@@ -106,9 +106,9 @@ public class Max1 extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.ListMaker#addAndAdjust(
-         *      de.dante.extex.typesetter.type.NodeList,
-         *      de.dante.extex.typesetter.TypesetterOptions)
+         * @see org.extex.typesetter.ListMaker#addAndAdjust(
+         *      org.extex.typesetter.type.NodeList,
+         *      org.extex.typesetter.TypesetterOptions)
          */
         public void addAndAdjust(final NodeList list,
                 final TypesetterOptions options) throws TypesetterException {
@@ -116,9 +116,9 @@ public class Max1 extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.ListMaker#addSpace(
-         *      de.dante.extex.interpreter.context.TypesettingContext,
-         *      de.dante.extex.interpreter.type.count.Count)
+         * @see org.extex.typesetter.ListMaker#addSpace(
+         *      org.extex.interpreter.context.TypesettingContext,
+         *      org.extex.interpreter.type.count.Count)
          */
         public void addSpace(final TypesettingContext typesettingContext,
                 final Count spacefactor)
@@ -129,21 +129,21 @@ public class Max1 extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.ListMaker#afterParagraph(ParagraphObserver)
+         * @see org.extex.typesetter.ListMaker#afterParagraph(ParagraphObserver)
          */
         public void afterParagraph(final ParagraphObserver observer) {
 
         }
 
         /**
-         * @see de.dante.extex.typesetter.Typesetter#clearShipoutMark()
+         * @see org.extex.typesetter.Typesetter#clearShipoutMark()
          */
         public void clearShipoutMark() {
 
         }
 
         /**
-         * @see de.dante.extex.typesetter.Typesetter#complete(TypesetterOptions)
+         * @see org.extex.typesetter.Typesetter#complete(TypesetterOptions)
          */
         public NodeList complete(final TypesetterOptions context)
                 throws TypesetterException,
@@ -162,9 +162,9 @@ public class Max1 extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.ListMaker#cr(
-         *      de.dante.extex.interpreter.context.Context,
-         *      de.dante.extex.interpreter.context.TypesettingContext,
+         * @see org.extex.typesetter.ListMaker#cr(
+         *      org.extex.interpreter.context.Context,
+         *      org.extex.interpreter.context.TypesettingContext,
          *      org.extex.type.UnicodeChar)
          */
         public void cr(final Context context, final TypesettingContext tc,
@@ -173,7 +173,7 @@ public class Max1 extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.Typesetter#ensureHorizontalMode(
+         * @see org.extex.typesetter.Typesetter#ensureHorizontalMode(
          *      org.extex.type.Locator)
          */
         public ListMaker ensureHorizontalMode(Locator locator) {
@@ -182,7 +182,7 @@ public class Max1 extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.Typesetter#finish()
+         * @see org.extex.typesetter.Typesetter#finish()
          */
         public void finish() throws ConfigurationException {
 
@@ -190,7 +190,7 @@ public class Max1 extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.Typesetter#getBackendDriver()
+         * @see org.extex.typesetter.Typesetter#getBackendDriver()
          */
         public BackendDriver getBackendDriver() {
 
@@ -198,7 +198,7 @@ public class Max1 extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.ListMaker#getLastNode()
+         * @see org.extex.typesetter.ListMaker#getLastNode()
          */
         public Node getLastNode() {
 
@@ -206,7 +206,7 @@ public class Max1 extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.Typesetter#getListMaker()
+         * @see org.extex.typesetter.Typesetter#getListMaker()
          */
         public ListMaker getListMaker() {
 
@@ -214,7 +214,7 @@ public class Max1 extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.ListMaker#getLocator()
+         * @see org.extex.typesetter.ListMaker#getLocator()
          */
         public Locator getLocator() {
 
@@ -222,7 +222,7 @@ public class Max1 extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.Typesetter#getManager()
+         * @see org.extex.typesetter.Typesetter#getManager()
          */
         public ListManager getManager() {
 
@@ -230,7 +230,7 @@ public class Max1 extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.Typesetter#getMode()
+         * @see org.extex.typesetter.Typesetter#getMode()
          */
         public Mode getMode() {
 
@@ -238,7 +238,7 @@ public class Max1 extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.Typesetter#getCharNodeFactory()
+         * @see org.extex.typesetter.Typesetter#getCharNodeFactory()
          */
         public NodeFactory getNodeFactory() {
 
@@ -246,7 +246,7 @@ public class Max1 extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.ListMaker#getPrevDepth()
+         * @see org.extex.typesetter.ListMaker#getPrevDepth()
          */
         public FixedDimen getPrevDepth() throws TypesetterUnsupportedException {
 
@@ -254,7 +254,7 @@ public class Max1 extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.ListMaker#getSpacefactor()
+         * @see org.extex.typesetter.ListMaker#getSpacefactor()
          */
         public long getSpacefactor() throws TypesetterUnsupportedException {
 
@@ -262,7 +262,7 @@ public class Max1 extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.Typesetter#isShipoutMark()
+         * @see org.extex.typesetter.Typesetter#isShipoutMark()
          */
         public boolean isShipoutMark() {
 
@@ -270,16 +270,16 @@ public class Max1 extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.ListMaker#leftBrace()
+         * @see org.extex.typesetter.ListMaker#leftBrace()
          */
         public void leftBrace() {
 
         }
 
         /**
-         * @see de.dante.extex.typesetter.ListMaker#letter(
-         *      de.dante.extex.interpreter.context.Context,
-         *      de.dante.extex.interpreter.context.TypesettingContext,
+         * @see org.extex.typesetter.ListMaker#letter(
+         *      org.extex.interpreter.context.Context,
+         *      org.extex.interpreter.context.TypesettingContext,
          *      org.extex.type.UnicodeChar,
          *      org.extex.type.Locator)
          */
@@ -291,8 +291,8 @@ public class Max1 extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.ListMaker#mathShift(
-         *      de.dante.extex.interpreter.context.Context,
+         * @see org.extex.typesetter.ListMaker#mathShift(
+         *      org.extex.interpreter.context.Context,
          *      org.extex.interpreter.TokenSource,
          *      org.extex.scanner.type.token.Token)
          */
@@ -304,7 +304,7 @@ public class Max1 extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.Typesetter#open()
+         * @see org.extex.typesetter.Typesetter#open()
          */
         public void open() {
 
@@ -312,7 +312,7 @@ public class Max1 extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.ListMaker#par()
+         * @see org.extex.typesetter.ListMaker#par()
          */
         public void par() throws TypesetterException, ConfigurationException {
 
@@ -320,15 +320,15 @@ public class Max1 extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.Typesetter#push(
-         *      de.dante.extex.typesetter.ListMaker)
+         * @see org.extex.typesetter.Typesetter#push(
+         *      org.extex.typesetter.ListMaker)
          */
         public void push(final ListMaker listMaker) throws TypesetterException {
 
         }
 
         /**
-         * @see de.dante.extex.typesetter.ListMaker#removeLastNode()
+         * @see org.extex.typesetter.ListMaker#removeLastNode()
          */
         public void removeLastNode() {
 
@@ -336,15 +336,15 @@ public class Max1 extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.ListMaker#rightBrace()
+         * @see org.extex.typesetter.ListMaker#rightBrace()
          */
         public void rightBrace() throws TypesetterException {
 
         }
 
         /**
-         * @see de.dante.extex.typesetter.Typesetter#setDocumentWriter(
-         *      de.dante.extex.backend.documentWriter.DocumentWriter)
+         * @see org.extex.typesetter.Typesetter#setDocumentWriter(
+         *      org.extex.backend.documentWriter.DocumentWriter)
          */
         public void setBackend(final BackendDriver doc) {
 
@@ -352,8 +352,8 @@ public class Max1 extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.Typesetter#setLigatureBuilder(
-         *      de.dante.extex.typesetter.ligatureBuilder.LigatureBuilder)
+         * @see org.extex.typesetter.Typesetter#setLigatureBuilder(
+         *      org.extex.typesetter.ligatureBuilder.LigatureBuilder)
          */
         public void setLigatureBuilder(final LigatureBuilder ligatureBuilder) {
 
@@ -361,32 +361,32 @@ public class Max1 extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.Typesetter#setNodeFactory(
-         *      de.dante.extex.typesetter.type.node.factory.NodeFactory)
+         * @see org.extex.typesetter.Typesetter#setNodeFactory(
+         *      org.extex.typesetter.type.node.factory.NodeFactory)
          */
         public void setNodeFactory(final NodeFactory nodeFactory) {
 
         }
 
         /**
-         * @see de.dante.extex.typesetter.Typesetter#setOptions(
-         *      de.dante.extex.typesetter.TypesetterOptions)
+         * @see org.extex.typesetter.Typesetter#setOptions(
+         *      org.extex.typesetter.TypesetterOptions)
          */
         public void setOptions(final TypesetterOptions options) {
 
         }
 
         /**
-         * @see de.dante.extex.typesetter.Typesetter#setOutputRoutine(
-         *      de.dante.extex.typesetter.OutputRoutine)
+         * @see org.extex.typesetter.Typesetter#setOutputRoutine(
+         *      org.extex.typesetter.OutputRoutine)
          */
         public void setOutputRoutine(final OutputRoutine output) {
 
         }
 
         /**
-         * @see de.dante.extex.typesetter.Typesetter#setPageBuilder(
-         *      de.dante.extex.typesetter.pageBuilder.PageBuilder)
+         * @see org.extex.typesetter.Typesetter#setPageBuilder(
+         *      org.extex.typesetter.pageBuilder.PageBuilder)
          */
         public void setPageBuilder(final PageBuilder pageBuilder) {
 
@@ -394,8 +394,8 @@ public class Max1 extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.Typesetter#setParagraphBuilder(
-         *      de.dante.extex.typesetter.paragraphBuilder.ParagraphBuilder)
+         * @see org.extex.typesetter.Typesetter#setParagraphBuilder(
+         *      org.extex.typesetter.paragraphBuilder.ParagraphBuilder)
          */
         public void setParagraphBuilder(final ParagraphBuilder paragraphBuilder) {
 
@@ -403,8 +403,8 @@ public class Max1 extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.Typesetter#setParshape(
-         *      de.dante.extex.typesetter.paragraphBuilder.ParagraphShape)
+         * @see org.extex.typesetter.Typesetter#setParshape(
+         *      org.extex.typesetter.paragraphBuilder.ParagraphShape)
          */
         public void setParshape(final ParagraphShape parshape) {
 
@@ -412,8 +412,8 @@ public class Max1 extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.ListMaker#setPrevDepth(
-         *      de.dante.extex.interpreter.type.dimen.Dimen)
+         * @see org.extex.typesetter.ListMaker#setPrevDepth(
+         *      org.extex.interpreter.type.dimen.Dimen)
          */
         public void setPrevDepth(final FixedDimen pd) {
 
@@ -421,7 +421,7 @@ public class Max1 extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.ListMaker#setSpacefactor(int)
+         * @see org.extex.typesetter.ListMaker#setSpacefactor(int)
          */
         public void setSpacefactor(final FixedCount f)
                 throws InvalidSpacefactorException {
@@ -430,8 +430,8 @@ public class Max1 extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.Typesetter#shipout(
-         *      de.dante.extex.typesetter.type.NodeList)
+         * @see org.extex.typesetter.Typesetter#shipout(
+         *      org.extex.typesetter.type.NodeList)
          */
         public void shipout(final NodeList nodes) {
 
@@ -439,7 +439,7 @@ public class Max1 extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.ListMaker#showlist(
+         * @see org.extex.typesetter.ListMaker#showlist(
          *      java.lang.StringBuffer, long, long)
          */
         public void showlist(final StringBuffer sb, final long l, final long m) {
@@ -447,7 +447,7 @@ public class Max1 extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.Typesetter#showlists(
+         * @see org.extex.typesetter.Typesetter#showlists(
          *      java.lang.StringBuffer, long, long)
          */
         public void showlists(final StringBuffer sb, final long l, final long m) {
@@ -455,7 +455,7 @@ public class Max1 extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.Typesetter#subscriptMark(
+         * @see org.extex.typesetter.Typesetter#subscriptMark(
          *      Context,
          *      TokenSource, Typesetter, org.extex.scanner.type.token.Token)
          */
@@ -466,7 +466,7 @@ public class Max1 extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.Typesetter#superscriptMark(
+         * @see org.extex.typesetter.Typesetter#superscriptMark(
          *      Context,
          *      TokenSource, Typesetter, org.extex.scanner.type.token.Token)
          */
@@ -477,7 +477,7 @@ public class Max1 extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.Typesetter#tab(
+         * @see org.extex.typesetter.Typesetter#tab(
          *      Context,
          *      TokenSource, org.extex.scanner.type.token.Token)
          */
@@ -489,7 +489,7 @@ public class Max1 extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.ListMaker#toggleDisplaymath()
+         * @see org.extex.typesetter.ListMaker#toggleDisplaymath()
          */
         public void toggleDisplaymath() {
 
@@ -497,7 +497,7 @@ public class Max1 extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.ListMaker#toggleMath()
+         * @see org.extex.typesetter.ListMaker#toggleMath()
          */
         public void toggleMath() {
 
@@ -513,9 +513,9 @@ public class Max1 extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.Typesetter#letter(
+         * @see org.extex.typesetter.Typesetter#letter(
          *      Context,
-         *      de.dante.extex.interpreter.context.TypesettingContext,
+         *      org.extex.interpreter.context.TypesettingContext,
          *      org.extex.scanner.type.token.Token)
          */
         public void treatLetter(final TypesettingContext context, final Token t)

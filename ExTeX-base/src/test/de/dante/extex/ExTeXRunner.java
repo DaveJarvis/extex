@@ -21,13 +21,14 @@ package de.dante.extex;
 
 import java.util.Properties;
 
+import org.extex.ExTeX;
+import org.extex.font.FontFactory;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.ConfigurationFactory;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.resource.ResourceFinder;
 
 import junit.framework.TestCase;
-import de.dante.extex.font.FontFactory;
 
 /**
  * ExTeX-TestRunner.

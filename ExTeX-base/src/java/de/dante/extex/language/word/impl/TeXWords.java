@@ -24,16 +24,16 @@ import org.extex.language.hyphenation.exception.HyphenationException;
 import org.extex.language.word.WordTokenizer;
 import org.extex.type.UnicodeChar;
 import org.extex.type.UnicodeCharList;
+import org.extex.typesetter.TypesetterOptions;
+import org.extex.typesetter.type.Node;
+import org.extex.typesetter.type.NodeList;
+import org.extex.typesetter.type.node.CharNode;
+import org.extex.typesetter.type.node.DiscretionaryNode;
+import org.extex.typesetter.type.node.ExplicitKernNode;
+import org.extex.typesetter.type.node.KernNode;
+import org.extex.typesetter.type.node.LigatureNode;
+import org.extex.typesetter.type.node.WhatsItNode;
 
-import de.dante.extex.typesetter.TypesetterOptions;
-import de.dante.extex.typesetter.type.Node;
-import de.dante.extex.typesetter.type.NodeList;
-import de.dante.extex.typesetter.type.node.CharNode;
-import de.dante.extex.typesetter.type.node.DiscretionaryNode;
-import de.dante.extex.typesetter.type.node.ExplicitKernNode;
-import de.dante.extex.typesetter.type.node.KernNode;
-import de.dante.extex.typesetter.type.node.LigatureNode;
-import de.dante.extex.typesetter.type.node.WhatsItNode;
 
 /**
  * This class tokenizes a list of nodes according to the rules of
@@ -129,7 +129,7 @@ public class TeXWords extends ExTeXWords implements WordTokenizer {
 
     /**
      * @see org.extex.language.word.WordTokenizer#findWord(
-     *      de.dante.extex.typesetter.type.NodeList,
+     *      org.extex.typesetter.type.NodeList,
      *      int,
      *      org.extex.type.UnicodeCharList)
      */
@@ -157,7 +157,7 @@ public class TeXWords extends ExTeXWords implements WordTokenizer {
     /**
      * @see org.extex.language.word.WordTokenizer#normalize(
      *      org.extex.type.UnicodeCharList,
-     *      de.dante.extex.typesetter.TypesetterOptions)
+     *      org.extex.typesetter.TypesetterOptions)
      */
     public UnicodeCharList normalize(final UnicodeCharList word,
             final TypesetterOptions options) throws HyphenationException {

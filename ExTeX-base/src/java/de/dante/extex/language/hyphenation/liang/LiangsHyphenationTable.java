@@ -32,13 +32,13 @@ import org.extex.scanner.type.token.OtherToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.type.UnicodeChar;
 import org.extex.type.UnicodeCharList;
+import org.extex.typesetter.TypesetterOptions;
+import org.extex.typesetter.type.Node;
+import org.extex.typesetter.type.NodeList;
+import org.extex.typesetter.type.node.CharNode;
+import org.extex.typesetter.type.node.factory.NodeFactory;
 
 import de.dante.extex.language.hyphenation.base.BaseHyphenationTable;
-import de.dante.extex.typesetter.TypesetterOptions;
-import de.dante.extex.typesetter.type.Node;
-import de.dante.extex.typesetter.type.NodeList;
-import de.dante.extex.typesetter.type.node.CharNode;
-import de.dante.extex.typesetter.type.node.factory.NodeFactory;
 
 /**
  * This class stores the values for hyphenations and hyphenates words.
@@ -237,12 +237,12 @@ public class LiangsHyphenationTable extends BaseHyphenationTable {
 
     /**
      * @see org.extex.language.hyphenation.Hyphenator#hyphenate(
-     *      de.dante.extex.typesetter.type.NodeList,
-     *      de.dante.extex.typesetter.TypesetterOptions,
+     *      org.extex.typesetter.type.NodeList,
+     *      org.extex.typesetter.TypesetterOptions,
      *      org.extex.type.UnicodeChar,
      *      int,
      *      boolean,
-     *      de.dante.extex.typesetter.type.node.factory.NodeFactory)
+     *      org.extex.typesetter.type.node.factory.NodeFactory)
      */
     public boolean hyphenate(final NodeList nodelist,
             final TypesetterOptions context, final UnicodeChar hyphen,
@@ -278,11 +278,11 @@ public class LiangsHyphenationTable extends BaseHyphenationTable {
 
     /**
      * @see de.dante.extex.language.hyphenation.base.BaseHyphenationTable#hyphenateOne(
-     *      de.dante.extex.typesetter.type.NodeList,
-     *      de.dante.extex.typesetter.TypesetterOptions,
+     *      org.extex.typesetter.type.NodeList,
+     *      org.extex.typesetter.TypesetterOptions,
      *      int,
      *      org.extex.type.UnicodeCharList,
-     *      de.dante.extex.typesetter.type.node.CharNode)
+     *      org.extex.typesetter.type.node.CharNode)
      */
     public boolean hyphenateOne(final NodeList nodelist,
             final TypesetterOptions context, final int start,

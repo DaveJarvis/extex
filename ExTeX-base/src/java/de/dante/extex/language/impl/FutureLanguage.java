@@ -28,12 +28,12 @@ import org.extex.language.Language;
 import org.extex.language.hyphenation.exception.HyphenationException;
 import org.extex.type.UnicodeChar;
 import org.extex.type.UnicodeCharList;
+import org.extex.typesetter.TypesetterOptions;
+import org.extex.typesetter.type.NodeList;
+import org.extex.typesetter.type.node.CharNode;
+import org.extex.typesetter.type.node.factory.NodeFactory;
 import org.extex.util.framework.Registrar;
 
-import de.dante.extex.typesetter.TypesetterOptions;
-import de.dante.extex.typesetter.type.NodeList;
-import de.dante.extex.typesetter.type.node.CharNode;
-import de.dante.extex.typesetter.type.node.factory.NodeFactory;
 
 /**
  * This class implements the future pattern for a language object. The real
@@ -85,7 +85,7 @@ public class FutureLanguage implements ManagedLanguage, Serializable {
     /**
      * @see org.extex.language.hyphenation.Hyphenator#addHyphenation(
      *      org.extex.type.UnicodeCharList,
-     *      de.dante.extex.typesetter.TypesetterOptions)
+     *      org.extex.typesetter.TypesetterOptions)
      */
     public void addHyphenation(final UnicodeCharList word,
             final TypesetterOptions context) throws HyphenationException {
@@ -98,7 +98,7 @@ public class FutureLanguage implements ManagedLanguage, Serializable {
 
     /**
      * @see org.extex.language.hyphenation.Hyphenator#addPattern(
-     *      de.dante.extex.interpreter.type.tokens.Tokens)
+     *      org.extex.interpreter.type.tokens.Tokens)
      */
     public void addPattern(final Tokens pattern) throws HyphenationException {
 
@@ -110,7 +110,7 @@ public class FutureLanguage implements ManagedLanguage, Serializable {
 
     /**
      * @see org.extex.language.word.WordTokenizer#findWord(
-     *      de.dante.extex.typesetter.type.NodeList,
+     *      org.extex.typesetter.type.NodeList,
      *      int,
      *      org.extex.type.UnicodeCharList)
      */
@@ -138,7 +138,7 @@ public class FutureLanguage implements ManagedLanguage, Serializable {
      * @see org.extex.language.ligature.LigatureBuilder#getLigature(
      *      org.extex.type.UnicodeChar,
      *      org.extex.type.UnicodeChar,
-     *      de.dante.extex.interpreter.type.font.Font)
+     *      org.extex.interpreter.type.font.Font)
      */
     public UnicodeChar getLigature(final UnicodeChar c1, final UnicodeChar c2,
             final Font f) throws HyphenationException {
@@ -170,12 +170,12 @@ public class FutureLanguage implements ManagedLanguage, Serializable {
 
     /**
      * @see org.extex.language.hyphenation.Hyphenator#hyphenate(
-     *      de.dante.extex.typesetter.type.NodeList,
-     *      de.dante.extex.typesetter.TypesetterOptions,
+     *      org.extex.typesetter.type.NodeList,
+     *      org.extex.typesetter.TypesetterOptions,
      *      org.extex.type.UnicodeChar,
      *      int,
      *      boolean,
-     *      de.dante.extex.typesetter.type.node.factory.NodeFactory)
+     *      org.extex.typesetter.type.node.factory.NodeFactory)
      */
     public boolean hyphenate(final NodeList nodelist,
             final TypesetterOptions context, final UnicodeChar hyphen,
@@ -191,7 +191,7 @@ public class FutureLanguage implements ManagedLanguage, Serializable {
 
     /**
      * @see org.extex.language.ligature.LigatureBuilder#insertLigatures(
-     *      de.dante.extex.typesetter.type.NodeList, int)
+     *      org.extex.typesetter.type.NodeList, int)
      */
     public int insertLigatures(final NodeList list, final int start)
             throws HyphenationException {
@@ -204,10 +204,10 @@ public class FutureLanguage implements ManagedLanguage, Serializable {
 
     /**
      * @see org.extex.language.word.WordTokenizer#insertShy(
-     *      de.dante.extex.typesetter.type.NodeList,
+     *      org.extex.typesetter.type.NodeList,
      *      int,
      *      boolean[],
-     *      de.dante.extex.typesetter.type.node.CharNode)
+     *      org.extex.typesetter.type.node.CharNode)
      */
     public void insertShy(final NodeList nodes, final int insertionPoint,
             final boolean[] spec, final CharNode hyphenNode)
@@ -233,7 +233,7 @@ public class FutureLanguage implements ManagedLanguage, Serializable {
     /**
      * @see org.extex.language.word.WordTokenizer#normalize(
      *      org.extex.type.UnicodeCharList,
-     *      de.dante.extex.typesetter.TypesetterOptions)
+     *      org.extex.typesetter.TypesetterOptions)
      */
     public UnicodeCharList normalize(final UnicodeCharList word,
             final TypesetterOptions options) throws HyphenationException {

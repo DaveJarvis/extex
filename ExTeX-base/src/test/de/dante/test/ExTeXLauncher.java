@@ -35,6 +35,7 @@ import java.util.logging.StreamHandler;
 
 import junit.framework.TestCase;
 
+import org.extex.ExTeX;
 import org.extex.backend.outputStream.OutputStreamFactory;
 import org.extex.font.exception.FontException;
 import org.extex.interpreter.ErrorHandler;
@@ -44,14 +45,13 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.main.errorHandler.editHandler.EditHandler;
+import org.extex.main.logging.LogFormatter;
 import org.extex.scanner.type.token.Token;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.resource.ResourceFinder;
 
-import de.dante.extex.ExTeX;
-import de.dante.extex.main.logging.LogFormatter;
 import de.dante.test.font.LauncherFont;
 
 /**
@@ -88,11 +88,11 @@ public class ExTeXLauncher extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.ErrorHandler#handleError(
+         * @see org.extex.interpreter.ErrorHandler#handleError(
          *      org.extex.util.GeneralException,
          *      org.extex.scanner.type.token.Token,
          *      org.extex.interpreter.TokenSource,
-         *      de.dante.extex.interpreter.context.Context)
+         *      org.extex.interpreter.context.Context)
          */
         public boolean handleError(final GeneralException e, final Token token,
                 final TokenSource source, final Context context) {
@@ -102,7 +102,7 @@ public class ExTeXLauncher extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.ErrorHandler#setEditHandler(
+         * @see org.extex.interpreter.ErrorHandler#setEditHandler(
          *       org.extex.main.errorHandler.editHandler.EditHandler)
          */
         public void setEditHandler(final EditHandler editHandler) {
@@ -290,9 +290,9 @@ public class ExTeXLauncher extends TestCase {
         ExTeX extex = new ExTeX(properties) {
 
             /**
-             * @see de.dante.extex.ExTeX#makeInterpreter(
+             * @see org.extex.ExTeX#makeInterpreter(
              *      org.extex.util.framework.configuration.Configuration,
-             *      de.dante.extex.backend.outputStream.OutputStreamFactory,
+             *      org.extex.backend.outputStream.OutputStreamFactory,
              *      org.extex.util.resource.ResourceFinder,
              *      java.lang.String)
              */

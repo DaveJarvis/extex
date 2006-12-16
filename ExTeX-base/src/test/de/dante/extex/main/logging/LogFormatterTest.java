@@ -22,6 +22,8 @@ package de.dante.extex.main.logging;
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
 
+import org.extex.main.logging.LogFormatter;
+
 import junit.framework.TestCase;
 
 /**
