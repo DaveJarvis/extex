@@ -17,8 +17,9 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.file;
+package org.extex.interpreter.primitives.file;
 
+import de.dante.extex.interpreter.primitives.file.Inputfilename;
 import de.dante.test.NoFlagsPrimitiveTester;
 
 /**

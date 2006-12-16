@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.register.scaled;
+package org.extex.interpreter.primitives.register.scaled;
 
 import de.dante.test.NoFlagsButGlobalPrimitiveTester;
 

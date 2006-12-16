@@ -1,4 +1,4 @@
-package de.dante.extex.interpreter.primitives.conditional;
+package org.extex.interpreter.primitives.conditional;
 
 
 import de.dante.test.ExTeXLauncher;

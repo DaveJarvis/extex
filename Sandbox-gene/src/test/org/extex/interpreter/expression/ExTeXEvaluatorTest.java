@@ -17,10 +17,12 @@
  *
  */
 
-package de.dante.extex.interpreter.expression;
+package org.extex.interpreter.expression;
 
 import org.extex.interpreter.exception.helping.MissingNumberException;
 
+import de.dante.extex.interpreter.expression.Evaluator;
+import de.dante.extex.interpreter.expression.ExTeXEvaluator;
 import de.dante.extex.interpreter.expression.term.Accumulator;
 import de.dante.extex.interpreter.expression.term.TBoolean;
 import de.dante.extex.interpreter.expression.term.TCount;
@@ -30,7 +32,7 @@ import de.dante.extex.interpreter.expression.term.TDouble;
  * This class is a test suite for the expression evaluator.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 4733 $
  */
 public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
 
@@ -45,7 +47,7 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
     }
 
     /**
-     * @see de.dante.extex.interpreter.expression.TeXEvaluatorTest#getInstanceForTest()
+     * @see org.extex.interpreter.expression.TeXEvaluatorTest#getInstanceForTest()
      */
     protected Evaluator getInstanceForTest() {
 
