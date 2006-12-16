@@ -1352,8 +1352,9 @@ public class ExTeX {
             throws DocumentWriterException,
                 ConfigurationException {
 
+        String outputType = properties.getProperty(PROP_OUTPUT_TYPE);
         return new BackendFactory(config, logger).newInstance(//
-                properties.getProperty(PROP_OUTPUT_TYPE), //
+                outputType, //
                 options, //
                 outFactory, //
                 finder, //
