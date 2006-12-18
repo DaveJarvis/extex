@@ -1,6 +1,6 @@
 #!/bin/sh
 #------------------------------------------------------------------------------
-# Copyright (C) 2004-2005 The ExTeX Group
+# Copyright (C) 2004-2006 The ExTeX Group
 #
 # This library is free software; you can redistribute it and/or modify it under
 # the terms of the GNU Lesser General Public License as published by the Free
@@ -69,13 +69,13 @@ LOCALCLASSPATH=$JAVA_HOME/lib/tools.jar
 LOCALCLASSPATH=$LOCALCLASSPATH:$JAVA_HOME/lib/classes.zip
 
 # jar-Dateien
-for i in develop/lib/*.jar ; do
+for i in $LIBDIR/*.jar ; do
     LOCALCLASSPATH=$LOCALCLASSPATH:$i
 done
 
 # antRun must be executable (can't do this in build.xml because Ant uses antRun
 # to do the chmod)
-chmod +rx util/antRun
+#chmod +rx util/antRun
 
 ANT_HOME=$LIBDIR
 

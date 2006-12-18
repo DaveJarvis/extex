@@ -22,7 +22,11 @@
 
 <project name="common" default="all" basedir=".">
 
-  <description>ExTeX build file</description>
+  <description>
+    ExTeX aims at the development of a high quality typesetting system.
+    This typesetting system is based on components and units to make
+    it flexible and configurable to specific needs.
+  </description>
 
   <property name="javac.deprecation" value="off" />
   <property name="src" location="src/java" />
@@ -61,7 +65,7 @@
         <include name="*.out" />
       </fileset>
     </delete>
-    <delete dir="${target.lib}" />
+    <delete dir="${target}/lib" />
     <delete file="${target}/${ant.project.name}.jar" />
   </target>
 
@@ -122,7 +126,7 @@
           depends="compile"
           description="Create the ExTeX jar file containing all compiled classes
                        except test cases.">
-    <mkdir dir="${target.lib}" />
+    <mkdir dir="${target}/lib" />
     <!-- make a jar from the classes not matching magic testcase identifiers-->
     <jar jarfile="${target}/${ant.project.name}.jar">
       <fileset dir="${classes}">

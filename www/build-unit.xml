@@ -1,6 +1,6 @@
 <!--
   ############################################################################
-  # This is the Ant build file for the ExTeX web site
+  # This is the Ant build file for the ExTeX unit summary
   ############################################################################
   # Copyright (C) 2006 The ExTeX Group
   #
@@ -20,49 +20,24 @@
   #
   ######################################################################### -->
 
-<project name="ExTeX site" basedir=".">
+<project name="ExTeX unit summary" basedir=".">
 
   <description>
-    The ExTeX site is build from a set of templates.
+    The ExTeX can be configured with the help of units.
+    These units are documented in the form of HTML pages.
   </description>
 
   <property name="target" location="target" />
   <property name="site" location="target/site" />
-  <property name="verbose" value="false" />
-
-  <import file="build-unit.xml"/>
 
   <!-- ==================================================================== -->
-  <target name="all"
-          description="Build everything"
-          depends="rss,unit,site" />
-
-  <!-- ==================================================================== -->
-  <target name="rss"
-          description="Create the RSS pages">
-    <exec executable="perl"
-          failonerror="true">
-      <arg line="bin/make-rss.pl" />
-      <arg line="-out=${site}/rss/2.0/ExTeX.rss" />
-    </exec>
-  </target>
-
-  <!-- ==================================================================== -->
-  <target name="site"
-          description="Create the web site">
+  <target name="unit"
+          description="Create the HTML pages">
     <mkdir dir="${site}" />
     <exec executable="perl"
           failonerror="true">
-      <arg line="bin/make.pl" />
-      <arg line="-src=src/site" />
-      <arg line="-dest=${site}" />
+      <arg line="bin/make-unit-summary.pl" />
     </exec>
-  </target>
-
-  <!-- ==================================================================== -->
-  <target name="clean"
-          description="Remove generated files and directories.">
-    <delete dir="${site}" />
   </target>
 
 </project>

@@ -50,7 +50,7 @@ sub usage
   Pod::Text->new()->parse_from_filehandle(new FileHandle($0,'r'),\*STDERR);
 }
 
-my $target = "../target/www/rss/2.0/ExTeX.rss";
+my $target = "../target/site/rss/2.0/ExTeX.rss";
 my $MAX    = 8;
 
 #------------------------------------------------------------------------------

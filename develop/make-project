@@ -1,5 +1,6 @@
+#!/bin/sh
 #------------------------------------------------------------------------------
-# Copyright (C) 2004-2006 The ExTeX Group and individaul authors listed below
+# Copyright (C) 2006 The ExTeX Group
 #
 # This library is free software; you can redistribute it and/or modify it under
 # the terms of the GNU Lesser General Public License as published by the Free
@@ -15,30 +16,39 @@
 # along with this library; if not, write to the Free Software Foundation, Inc.,
 # 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 #
-#******************************************************************************
-# Author: Gerd Neugebauer
-#==============================================================================
-
-DEST = ../target/site
-FLAGS = -verbose -src=src/site -dest=$(DEST)
-UFLAGS = -verbose
-
-all: test-summary site rss units
-
-site:
-	@perl bin/make.pl $(FLAGS)
-
-units:
-	@perl bin/unit-summary.pl $(UFLAGS)
-
-rss:
-	@perl bin/make-rss.pl
-
-test-summary:
-	@perl bin/make-test-summary.pl
-
-
-clean:
-	$(RM) -rf www
-
 #------------------------------------------------------------------------------
+# THIS FILE SHOULD BE EXECUTABLE.
+#------------------------------------------------------------------------------
+
+name=$1
+template=`dirname $0`/SubProject-Template.tgz
+
+if [ "$name" = "" ] ; then
+    echo "Usage:"
+    echo "        $0 <projectname>"
+    exit 1
+fi
+
+if [ -e $name ] ; then
+    echo "$name: file exists"
+    exit 1
+fi
+
+gunzip < $template | tar -xf - 
+mv SubProject-Template $name
+cd $name
+
+for f in .??* * ; do
+    if [ -f $f ] ; then
+	/bin/mv $f xxx
+	/bin/sed -e "s/xXx/$name/" xxx > $f
+	/bin/rm xxx
+    fi
+done
+
+(cd ..; svn add -q $name)
+
+mkdir target target/classes
+svn propset -q svn:ignore 'target' .
+
+#
