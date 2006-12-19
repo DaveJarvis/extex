@@ -52,81 +52,26 @@
   </path>
 
   <path id="application.source.path">
-    <pathelement path="../ExTeX-core/src/java"/>
-    <pathelement path="../ExTeX-Font/src/java"/>
-    <pathelement path="../ExTeX-base/src/java"/>
-    <pathelement path="../ExTeX-Scanner/src/java"/>
-    <pathelement path="../ExTeX-Scanner32/src/java"/>
-    <pathelement path="../ExTeX-Backend-dvi/src/java"/>
-    <pathelement path="../ExTeX-Backend-dvix/src/java"/>
-    <pathelement path="../ExTeX-Backend-pdfbox/src/java"/>
-    <pathelement path="../ExTeX-Backend-ps/src/java"/>
-    <pathelement path="../ExTeX-Backend-rtf/src/java"/>
-    <pathelement path="../ExTeX-Unit-color/src/java"/>
-    <pathelement path="../ExTeX-Unit-etex/src/java"/>
-    <pathelement path="../ExTeX-Unit-extex/src/java"/>
-    <pathelement path="../ExTeX-Unit-namespace/src/java"/>
-    <pathelement path="../ExTeX-Unit-native/src/java"/>
-    <pathelement path="../ExTeX-Unit-omega/src/java"/>
-    <pathelement path="../ExTeX-Unit-pdftex/src/java"/>
-    <pathelement path="../ExTeX-Unit-tex/src/java"/>
-  </path>
-
-  <path id="application.source.files">
-    <fileset dir="../ExTeX-core/src/java">
-      <include name="**/*.java"/>
-    </fileset>
-    <fileset dir="../ExTeX-Font/src/java">
-      <include name="**/*.java"/>
-    </fileset>
-    <fileset dir="../ExTeX-base/src/java">
-      <include name="**/*.java"/>
-    </fileset>
-    <fileset dir="../ExTeX-Scanner/src/java">
-      <include name="**/*.java"/>
-    </fileset>
-    <fileset dir="../ExTeX-Scanner32/src/java">
-      <include name="**/*.java"/>
-    </fileset>
-    <fileset dir="../ExTeX-Backend-dvi/src/java">
-      <include name="**/*.java"/>
-    </fileset>
-    <fileset dir="../ExTeX-Backend-dvix/src/java">
-      <include name="**/*.java"/>
-    </fileset>
-    <fileset dir="../ExTeX-Backend-pdfbox/src/java">
-      <include name="**/*.java"/>
-    </fileset>
-    <fileset dir="../ExTeX-Backend-ps/src/java">
-      <include name="**/*.java"/>
-    </fileset>
-    <fileset dir="../ExTeX-Backend-rtf/src/java">
-      <include name="**/*.java"/>
-    </fileset>
-    <fileset dir="../ExTeX-Unit-color/src/java">
-      <include name="**/*.java"/>
-    </fileset>
-    <fileset dir="../ExTeX-Unit-etex/src/java">
-      <include name="**/*.java"/>
-    </fileset>
-    <fileset dir="../ExTeX-Unit-extex/src/java">
-      <include name="**/*.java"/>
-    </fileset>
-    <fileset dir="../ExTeX-Unit-namespace/src/java">
-      <include name="**/*.java"/>
-    </fileset>
-    <fileset dir="../ExTeX-Unit-native/src/java">
-      <include name="**/*.java"/>
-    </fileset>
-    <fileset dir="../ExTeX-Unit-omega/src/java">
-      <include name="**/*.java"/>
-    </fileset>
-    <fileset dir="../ExTeX-Unit-pdftex/src/java">
-      <include name="**/*.java"/>
-    </fileset>
-    <fileset dir="../ExTeX-Unit-tex/src/java">
-      <include name="**/*.java"/>
-    </fileset>
+    <dirset dir="..">
+      <include name="ExTeX-core/src/java"/>
+      <include name="ExTeX-Font/src/java"/>
+      <include name="ExTeX-base/src/java"/>
+      <include name="ExTeX-Scanner/src/java"/>
+      <include name="ExTeX-Scanner32/src/java"/>
+      <include name="ExTeX-Backend-dvi/src/java"/>
+      <include name="ExTeX-Backend-dvix/src/java"/>
+      <include name="ExTeX-Backend-pdfbox/src/java"/>
+      <include name="ExTeX-Backend-ps/src/java"/>
+      <include name="ExTeX-Backend-rtf/src/java"/>
+      <include name="ExTeX-Unit-color/src/java"/>
+      <include name="ExTeX-Unit-etex/src/java"/>
+      <include name="ExTeX-Unit-extex/src/java"/>
+      <include name="ExTeX-Unit-namespace/src/java"/>
+      <include name="ExTeX-Unit-native/src/java"/>
+      <include name="ExTeX-Unit-omega/src/java"/>
+      <include name="ExTeX-Unit-pdftex/src/java"/>
+      <include name="ExTeX-Unit-tex/src/java"/>
+    </dirset>
   </path>
 
   <path id="develop.class.path">
@@ -170,6 +115,8 @@
           description="Create JavaDoc HTML pages.">
     <mkdir dir="${javadoc}" />
     <javadoc destdir="${javadoc}"
+             sourcepathref="application.source.path"
+             packagenames="org.extex.*"
              overview="${src}/overview.html"
              stylesheetfile="src/javadoc/stylesheet.css"
              author="true"
@@ -181,14 +128,16 @@
              noindex="false"
              nodeprecatedlist="false"
              nodeprecated="false">
-      <fileset refid="${application.source.files}"/>
+      <classpath refid="application.class.path"/>
     </javadoc>
+    <!--
     <copy todir="${javadoc}">
       <fileset dir="${application.source.path}">
         <include name="**/*.gif" />
         <include name="**/*.png" />
       </fileset>
     </copy>
+    -->
   </target>
     
   <!-- ==================================================================== -->
@@ -263,17 +212,6 @@
   <!-- ==================================================================== -->
   <!-- ==================================================================== -->
   <!-- ==================================================================== -->
-  <taskdef resource="checkstyletask.properties">
-    <classpath>
-      <pathelement location="develop/lib/checkstyle-all-3.4.jar" />
-      <pathelement location="develop/lib/checkstyle-optional-3.4.jar" />
-    </classpath>
-  </taskdef>
-
-  <!-- ==================================================================== -->
-  <taskdef name="izpack"
-           classpath="../util/Installer/IzPack/lib/compiler.jar"
-           classname="com.izforge.izpack.ant.IzPackTask" />
 
   <!-- ==================================================================== -->
   <target name="formats"
