@@ -7,10 +7,5 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-core"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Font"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3.8.1"/>
-	<classpathentry kind="lib" path="lib/ant.jar"/>
-	<classpathentry kind="lib" path="lib/ant-junit.jar"/>
-	<classpathentry kind="lib" path="lib/ant-launcher.jar"/>
-	<classpathentry kind="lib" path="lib/ant-trax.jar"/>
-	<classpathentry kind="lib" path="lib/ant-xalan1.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
