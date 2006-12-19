@@ -128,8 +128,8 @@ public final class TDoubleParser implements ETypeParser {
         //            /**
         //             * Compute the cos value.
         //             *
-        //             * @see de.dante.extex.interpreter.type.dimen.parser.Function1#apply(
-        //             *      de.dante.extex.interpreter.type.dimen.parser.Accumulator)
+        //             * @see org.extex.interpreter.type.dimen.parser.Function1#apply(
+        //             *      org.extex.interpreter.type.dimen.parser.Accumulator)
         //             */
         //            public void apply(final Terminal accumulator)
         //                    throws InterpreterException {
@@ -149,8 +149,8 @@ public final class TDoubleParser implements ETypeParser {
         //            /**
         //             * Compute the sin value.
         //             *
-        //             * @see de.dante.extex.interpreter.type.dimen.parser.Function1#apply(
-        //             *      de.dante.extex.interpreter.type.dimen.parser.Accumulator)
+        //             * @see org.extex.interpreter.type.dimen.parser.Function1#apply(
+        //             *      org.extex.interpreter.type.dimen.parser.Accumulator)
         //             */
         //            public void apply(final Terminal accumulator)
         //                    throws InterpreterException {
@@ -170,8 +170,8 @@ public final class TDoubleParser implements ETypeParser {
         //            /**
         //             * Compute the tan value.
         //             *
-        //             * @see de.dante.extex.interpreter.type.dimen.parser.Function1#apply(
-        //             *      de.dante.extex.interpreter.type.dimen.parser.Accumulator)
+        //             * @see org.extex.interpreter.type.dimen.parser.Function1#apply(
+        //             *      org.extex.interpreter.type.dimen.parser.Accumulator)
         //             */
         //            public void apply(final Terminal accumulator)
         //                    throws InterpreterException {

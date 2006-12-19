@@ -39,8 +39,8 @@ public class ExTeXEvaluator extends Evaluator {
     //            /**
     //             * Compute the absolute value by eliminating the sign if present.
     //             *
-    //             * @see de.dante.extex.interpreter.type.dimen.parser.Function1#apply(
-    //             *      de.dante.extex.interpreter.type.dimen.parser.Accumulator)
+    //             * @see org.extex.interpreter.type.dimen.parser.Function1#apply(
+    //             *      org.extex.interpreter.type.dimen.parser.Accumulator)
     //             */
     //            public void apply(final Terminal accumulator)
     //                    throws InterpreterException {
@@ -131,8 +131,8 @@ public class ExTeXEvaluator extends Evaluator {
     //             * Compute the sign i.e. return 1 for positive values, 0 for zero
     //             * values and -1 for negative values.
     //             *
-    //             * @see de.dante.extex.interpreter.type.dimen.parser.Function1#apply(
-    //             *      de.dante.extex.interpreter.type.dimen.parser.Accumulator)
+    //             * @see org.extex.interpreter.type.dimen.parser.Function1#apply(
+    //             *      org.extex.interpreter.type.dimen.parser.Accumulator)
     //             */
     //            public void apply(final Terminal accumulator)
     //                    throws InterpreterException {

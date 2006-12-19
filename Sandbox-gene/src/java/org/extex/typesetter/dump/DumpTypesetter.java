@@ -69,7 +69,7 @@ public class DumpTypesetter extends TypesetterImpl {
 
     /**
      * @see org.extex.typesetter.ListMaker#addSpace(
-     *      org.extex.interpreter.context.TypesettingContext,
+     *      org.extex.interpreter.context.tc.TypesettingContext,
      *      org.extex.interpreter.type.count.Count)
      */
     public void addSpace(final TypesettingContext typesettingContext,
