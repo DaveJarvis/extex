@@ -21,6 +21,7 @@
 #------------------------------------------------------------------------------
 
 verbose=0
+html=1
 if [ "$1" = "-v" ] ; then
     shift
     verbose=1
@@ -28,6 +29,10 @@ fi
 if [ "$1" = "-q" ] ; then
     shift
     verbose=0
+fi
+if [ "$1" = "-n" ] ; then
+    shift
+    html=0
 fi
 
 if [ $verbose = 1 ] ; then
@@ -62,22 +67,25 @@ if [ ! -e $JAVA_HOME/lib/tools.jar ] ; then
     exit 1
 fi
 
+if [ -z "$ANT_HOME" ] ; then
+    echo
+    echo "Please, set the ANT_HOME variable in your environment to match the"
+    echo "location of the Ant installation you want to use."
+    exit 1
+fi
+
 LIBDIR=lib
 
 LOCALCLASSPATH=.
 LOCALCLASSPATH=$JAVA_HOME/lib/tools.jar
 LOCALCLASSPATH=$LOCALCLASSPATH:$JAVA_HOME/lib/classes.zip
 
-# jar-Dateien
+for i in $ANT_HOME/lib/*.jar ; do
+    LOCALCLASSPATH=$LOCALCLASSPATH:$i
+done
 for i in $LIBDIR/*.jar ; do
     LOCALCLASSPATH=$LOCALCLASSPATH:$i
 done
-
-# antRun must be executable (can't do this in build.xml because Ant uses antRun
-# to do the chmod)
-#chmod +rx util/antRun
-
-ANT_HOME=$LIBDIR
 
 # For Cygwin, switch paths to Windows format before running java
 if $cygwin; then
@@ -93,4 +101,37 @@ if [ $verbose = 1 ] ; then
     echo
 fi
 
-$JAVA_HOME/bin/java -Dant.home=$ANT_HOME -classpath "$LOCALCLASSPATH" org.apache.tools.ant.Main $*
+if [ $html = 0 ] ; then
+
+   $JAVA_HOME/bin/java					\
+	-Dant.home=$ANT_HOME				\
+	-Dant.XmlLogger.stylesheet.uri=lib/ant/log.xsl	\
+	-classpath "$LOCALCLASSPATH"			\
+	org.apache.tools.ant.Main			\
+	$*
+
+else
+
+    $JAVA_HOME/bin/java					\
+	-Dant.home=$ANT_HOME				\
+	-Dant.XmlLogger.stylesheet.uri=lib/ant/log.xsl	\
+	-classpath "$LOCALCLASSPATH"			\
+	org.apache.tools.ant.Main			\
+	-quiet						\
+	-logger org.apache.tools.ant.XmlLogger		\
+	-logfile target/build.log			\
+	$*
+
+
+    # The second pass translates the log file into a HTML file
+
+   $JAVA_HOME/bin/java				\
+	-Dant.home=$ANT_HOME			\
+	-classpath "$LOCALCLASSPATH"		\
+	org.apache.tools.ant.Main		\
+	-logfile target/build-html.log		\
+	-quiet					\
+	build.html
+fi
+
+#

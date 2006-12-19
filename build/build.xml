@@ -206,6 +206,18 @@
   
   
   
+
+  <!-- ==================================================================== -->
+  <target name="build.html"
+          description="Translate the build log into a HTML page">
+    <xslt in="target/build.log"
+          out="target/build.html"
+          style="src/ant/log.xsl"
+          />
+  </target>
+
+
+  
   
   
   <!-- ==================================================================== -->
