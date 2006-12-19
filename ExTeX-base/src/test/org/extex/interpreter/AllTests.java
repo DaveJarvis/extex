@@ -47,7 +47,7 @@ public final class AllTests {
      */
     public static Test suite() {
 
-        TestSuite suite = new TestSuite("Test for de.dante.extex.interpreter");
+        TestSuite suite = new TestSuite("Test for org.extex.interpreter");
         //$JUnit-BEGIN$
         suite.addTestSuite(KerningTest.class);
         suite.addTestSuite(TypesetterTest.class);

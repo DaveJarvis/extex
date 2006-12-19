@@ -36,7 +36,6 @@ import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
-
 /**
  * This class manages the <code>HyphenationTable</code>s. It is a container
  * which can be asked to provide an appropriate instance. This instance is

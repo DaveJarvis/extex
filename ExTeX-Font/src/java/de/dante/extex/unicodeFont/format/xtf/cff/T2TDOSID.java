@@ -61,7 +61,7 @@ public abstract class T2TDOSID extends T2TopDICTOperator {
     private int value;
 
     /**
-     * @see org.extex.font.type.ttf.cff.T2CharString#getBytes()
+     * @see de.dante.extex.unicodeFont.format.xtf.cff.T2CharString#getBytes()
      */
     public short[] getBytes() {
 

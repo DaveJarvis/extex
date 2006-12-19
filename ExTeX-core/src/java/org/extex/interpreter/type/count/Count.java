@@ -42,8 +42,6 @@ import org.extex.typesetter.Typesetter;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
-
-
 /**
  * This class represents a long integer value. It is used for instance as count
  * register.
@@ -305,9 +303,9 @@ public class Count implements Serializable, FixedCount {
     }
 
     /**
-     * Scan the input stream for tokens making up a number, i.e. a sequence of
-     * digits with category code OTHER. The number can be preceded by optional
-     * white space.
+     * Scan the input stream for tokens making up a number. A number is a
+     * sequence of digits with category code OTHER. The number can be preceded
+     * by optional white space.
      * <p>
      * This method implements the generalization of several syntactic
      * definitions from <logo>TeX</logo>:

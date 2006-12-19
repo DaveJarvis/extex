@@ -114,7 +114,7 @@ public class TokenStreamImpl32 extends TokenStreamImpl {
 
     /**
      * @see org.extex.scanner.stream.impl.TokenStreamImpl#getChar(
-     *      de.dante.extex.interpreter.Tokenizer)
+     *      org.extex.interpreter.Tokenizer)
      */
     protected UnicodeChar getChar(final Tokenizer tokenizer)
             throws ScannerException {

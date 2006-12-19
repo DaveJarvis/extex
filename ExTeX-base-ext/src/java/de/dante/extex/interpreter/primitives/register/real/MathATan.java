@@ -30,7 +30,7 @@ import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.real.RealConvertible;
 
 /**
- * Math. the arc tangent of an angle, in the range of -pi/2 through pi/2.
+ * Math. The arc tangent of an angle, in the range of -pi/2 through pi/2.
  *
  * <p>Example</p>
  * <pre>

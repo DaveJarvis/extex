@@ -37,7 +37,7 @@ public class T2Escape extends T2CharString {
     }
 
     /**
-     * @see org.extex.font.type.ttf.cff.T2CharString#isEscape()
+     * @see de.dante.extex.unicodeFont.format.xtf.cff.T2CharString#isEscape()
      */
     public boolean isEscape() {
 
@@ -45,7 +45,7 @@ public class T2Escape extends T2CharString {
     }
 
     /**
-     * @see org.extex.font.type.ttf.cff.T2CharString#getBytes()
+     * @see de.dante.extex.unicodeFont.format.xtf.cff.T2CharString#getBytes()
      */
     public short[] getBytes() {
 

@@ -48,7 +48,7 @@ public class AllTests {
     public static Test suite() {
 
         TestSuite suite = new TestSuite(
-                "Test for de.dante.extex.interpreter.primitives.math");
+                "Test for org.extex.interpreter.primitives.math");
         // $JUnit-BEGIN$
         suite.addTestSuite(MathchoiceTest.class);
         suite.addTestSuite(MathchardefTest.class);

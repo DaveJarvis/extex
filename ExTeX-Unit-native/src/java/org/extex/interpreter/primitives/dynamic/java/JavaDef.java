@@ -68,7 +68,7 @@ import org.extex.typesetter.Typesetter;
  * <p>
  * The following example illustrates the use of this primitive:
  * <pre class="TeXSample">
- *   \javadef\abc{de.dante.extex.interpreter.primitive.Relax} </pre>
+ *   \javadef\abc{org.extex.interpreter.primitive.Relax} </pre>
  * </p>
  * <p>
  * The primitive <tt>\javadef</tt> is local to the enclosing group as
@@ -77,7 +77,7 @@ import org.extex.typesetter.Typesetter;
  * instead of the current group only. This is shown in the following
  * example:
  * <pre class="TeXSample">
- *   \global\javadef\abc{de.dante.extex.interpreter.primitive.Relax}
+ *   \global\javadef\abc{org.extex.interpreter.primitive.Relax}
  * </pre>
  * </p>
  * <p>
@@ -99,11 +99,11 @@ import org.extex.typesetter.Typesetter;
  * <pre class="JavaSample">
  *   <b>package</b> my.package;
  *
- *   <b>import</b> de.dante.extex.interpreter.type.AbstractCode;
- *   <b>import</b> de.dante.extex.interpreter.contect.Context;
- *   <b>import</b> de.dante.extex.interpreter.Flags;
- *   <b>import</b> de.dante.extex.interpreter.TokenSource;
- *   <b>import</b> de.dante.extex.typesetter.Typesetter;
+ *   <b>import</b> org.extex.interpreter.type.AbstractCode;
+ *   <b>import</b> org.extex.interpreter.contect.Context;
+ *   <b>import</b> org.extex.interpreter.Flags;
+ *   <b>import</b> org.extex.interpreter.TokenSource;
+ *   <b>import</b> org.extex.typesetter.Typesetter;
  *   <b>import</b> de.dante.util.GeneralException;
  *
  *   <b>class</b> MyPrimitive <b>extends</b> AbstractCode {
@@ -126,7 +126,7 @@ import org.extex.typesetter.Typesetter;
  * <p>
  * There is more to say about primitives like how to write expandable
  * primitives or ifs. Those details can be found in section
- * {@linkplain de.dante.extex.interpreter.primitives Primitives}.
+ * {@linkplain org.extex.interpreter.primitives Primitives}.
  * </p>
  * </doc>
  *

@@ -41,7 +41,7 @@ import org.extex.util.framework.configuration.exception.ConfigurationException;
  *  TokenFactory. The name of the class is given as the argument <tt>class</tt>
  *  as shown below.
  *  <pre>
- *   &lt;TokenFactory class="de.dante.extex.scanner.type.token.TokenFactoryImpl"/&gt;
+ *   &lt;TokenFactory class="org.extex.scanner.type.token.TokenFactoryImpl"/&gt;
  *  </pre>
  * </p>
  * <p>
@@ -79,7 +79,7 @@ public class TokenFactoryFactory extends AbstractFactory {
      *  TokenFactory. The name of the class is given as the argument <tt>class</tt>
      *  as shown below.
      *  <pre>
-     *   &lt;TokenFactory class="de.dante.extex.scanner.type.token.TokenFactoryImpl"/&gt;
+     *   &lt;TokenFactory class="org.extex.scanner.type.token.TokenFactoryImpl"/&gt;
      *  </pre>
      * </p>
      *

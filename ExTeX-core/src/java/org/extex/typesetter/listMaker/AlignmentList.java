@@ -25,8 +25,6 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.NodeList;
 
-
-
 /**
  * This interface describes a list for alignments with the associated methods.
  *
@@ -53,7 +51,7 @@ public interface AlignmentList {
      * This method is invoked when a row in the alignment is complete and the
      * cells can be integrated. If some cells are not filled jet then they
      * are treated as empty.
-     * In contrast to the method {@link #cr(Context, TokenSource, boolean) cr()}
+     * In contrast to the method {@link #cr(org.extex.interpreter.context.Context,org.extex.typesetter.Typesetter, boolean) cr()}
      * this method is a noop when the alignment is at the beginning of a row.
      *
      * @param context the interpreter context

@@ -35,7 +35,6 @@ import org.extex.util.framework.configuration.Configurable;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-
 /**
  * This class provides an implementation for the primitive <code>\toks</code>.
  * It sets the numbered toks register to the value given, and as a side effect
@@ -174,8 +173,6 @@ public class ToksParameter extends AbstractToks implements TokensConvertible,
     }
 
     /**
-     * Expand
-     * <p>
      * Scan the tokens between <code>{</code> and <code>}</code> and store
      * them in the named tokens register.
      *

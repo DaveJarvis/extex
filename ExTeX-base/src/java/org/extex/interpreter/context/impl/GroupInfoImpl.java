@@ -111,7 +111,7 @@ public class GroupInfoImpl implements GroupInfo {
     /**
      * Setter for groupType.
      *
-     * @param groupType the groupType to set
+     * @param type the groupType to set
      */
     public void setGroupType(final GroupType type) {
 

@@ -90,7 +90,7 @@ public class MathFont implements Font {
     }
 
     /**
-     * @see org.extex.interpreter.type.font.Font#getEfcode()
+     * @see org.extex.interpreter.type.font.Font#getEfcode(org.extex.type.UnicodeChar)
      */
     public long getEfcode(final UnicodeChar uc) {
 

@@ -39,7 +39,6 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
 import org.extex.unicode.Unicode;
 import org.extex.util.framework.Registrar;
 
-
 /**
  * This class stores the values for hyphenations and hyphenates words.
  *
@@ -142,7 +141,7 @@ public class BaseHyphenationTable implements ModifiableLanguage, Serializable {
 
     /**
      * @see org.extex.language.hyphenation.Hyphenator#addHyphenation(
-     *      org.extex.util.UnicodeCharList,
+     *      org.extex.type.UnicodeCharList,
      *      org.extex.typesetter.TypesetterOptions)
      */
     public void addHyphenation(final UnicodeCharList word,
@@ -165,7 +164,7 @@ public class BaseHyphenationTable implements ModifiableLanguage, Serializable {
      * @see org.extex.language.word.WordTokenizer#findWord(
      *      org.extex.typesetter.type.NodeList,
      *      int,
-     *      org.extex.util.UnicodeCharList)
+     *      org.extex.type.UnicodeCharList)
      */
     public int findWord(final NodeList nodes, final int start,
             final UnicodeCharList word) throws HyphenationException {
@@ -183,8 +182,8 @@ public class BaseHyphenationTable implements ModifiableLanguage, Serializable {
 
     /**
      * @see org.extex.language.ligature.LigatureBuilder#getLigature(
-     *      org.extex.util.UnicodeChar,
-     *      org.extex.util.UnicodeChar,
+     *      org.extex.type.UnicodeChar,
+     *      org.extex.type.UnicodeChar,
      *      org.extex.interpreter.type.font.Font)
      */
     public UnicodeChar getLigature(final UnicodeChar c1, final UnicodeChar c2,
@@ -213,7 +212,7 @@ public class BaseHyphenationTable implements ModifiableLanguage, Serializable {
      * @see org.extex.language.hyphenation.Hyphenator#hyphenate(
      *      org.extex.typesetter.type.NodeList,
      *      org.extex.typesetter.TypesetterOptions,
-     *      org.extex.util.UnicodeChar,
+     *      org.extex.type.UnicodeChar,
      *      int,
      *      boolean,
      *      org.extex.typesetter.type.node.factory.NodeFactory)
@@ -317,7 +316,7 @@ public class BaseHyphenationTable implements ModifiableLanguage, Serializable {
 
     /**
      * @see org.extex.language.word.WordTokenizer#normalize(
-     *      org.extex.util.UnicodeCharList,
+     *      org.extex.type.UnicodeCharList,
      *      org.extex.typesetter.TypesetterOptions)
      */
     public UnicodeCharList normalize(final UnicodeCharList word,

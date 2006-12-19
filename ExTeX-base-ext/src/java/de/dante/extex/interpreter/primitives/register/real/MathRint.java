@@ -30,7 +30,7 @@ import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.real.RealConvertible;
 
 /**
- * Math. the double value that is closest in value to the argument
+ * Math. The double value that is closest in value to the argument
  * and is equal to a mathematical integer.
  *
  * <p>Example</p>

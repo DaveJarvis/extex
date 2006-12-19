@@ -42,7 +42,6 @@ import org.extex.typesetter.type.node.CharNode;
 import org.extex.typesetter.type.node.ImplicitKernNode;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-
 /**
  * This class provides a container for a mathematical character.
  *
@@ -156,52 +155,6 @@ public class CharNoad extends AbstractNoad {
 
         //see "TTP [755]"
         //TODO gene: insert kern for italic correction if required
-    }
-
-    /**
-     * @see org.extex.typesetter.type.noad.Noad#typeset(
-     *      org.extex.typesetter.type.NodeList,
-     *      org.extex.typesetter.type.noad.util.MathContext,
-     *      org.extex.typesetter.TypesetterOptions)
-     */
-    public void typeset(final NodeList nodes, final MathContext mathContext,
-            final TypesetterOptions context, final Logger logger)
-            throws ConfigurationException,
-                TypesetterException {
-
-        StyleNoad style = mathContext.getStyle();
-        UnicodeChar c = glyph.getCharacter();
-        Font font = context.getFont(MathFontParameter.key(context, //
-                style.getFontName(), Integer.toString(glyph.getFamily())));
-        if (font instanceof NullFont) {
-            throw new TypesetterException(new HelpingException(getLocalizer(),
-                    "TTP.UndefinedFamily", style.getStyleName(), Integer
-                            .toString(glyph.getFamily()), c.toString()));
-        }
-
-        if (!font.hasGlyph(c)) {
-            FontUtil.charWarning(logger, context, font, c);
-            setSpacingClass(MathSpacing.UNDEF);
-            return;
-        }
-
-        int size = nodes.size();
-        if (size > 0) {
-            Node n = nodes.get(size - 1);
-            if (n instanceof CharNode) {
-                CharNode cn = ((CharNode) n);
-                if (cn.getTypesettingContext().getFont().equals(font)) {
-                    FixedDimen kerning = font.getKerning(cn.getCharacter(), c);
-                    if (kerning.ne(Dimen.ZERO_PT)) {
-                        nodes.add(new ImplicitKernNode(kerning, true));
-                    }
-                }
-            }
-        }
-
-        TypesettingContext tc = context.getTypesettingContextFactory()
-                .newInstance(context.getTypesettingContext(), font);
-        nodes.add(new CharNode(tc, c));
     }
 
 }

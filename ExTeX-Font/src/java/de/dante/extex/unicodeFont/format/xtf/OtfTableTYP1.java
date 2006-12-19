@@ -63,7 +63,7 @@ public class OtfTableTYP1 extends AbstractXtfTable
         return XtfReader.TYP1;
     }
     /**
-     * @see de.dante.extex.unicodeFont.format.xtf.XtfTable#getShortcur()
+     * @see de.dante.extex.unicodeFont.format.xtf.XtfTable#getShortcut()
      */
     public String getShortcut() {
 

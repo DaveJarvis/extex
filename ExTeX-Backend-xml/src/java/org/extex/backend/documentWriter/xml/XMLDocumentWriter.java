@@ -295,14 +295,6 @@ public class XMLDocumentWriter
     }
 
     /**
-     * @see org.extex.backend.documentWriter.DocumentWriter#getPages()
-     */
-    public int getPages() {
-
-        return shippedPages;
-    }
-
-    /**
      * Set the Attribute for an element with sp, bp, mm.
      * @param name      the attribute-name
      * @param dimen     the dimen
@@ -329,7 +321,7 @@ public class XMLDocumentWriter
     }
 
     /**
-     * @see org.extex.backend.documentWriter.DocumentWriter#setOutputStream(
+     * @see org.extex.backend.documentWriter.SingleDocumentStream#setOutputStream(
      *      java.io.OutputStream)
      */
     public void setOutputStream(final OutputStream outStream) {
@@ -395,7 +387,7 @@ public class XMLDocumentWriter
 
     /**
      * @see org.extex.backend.documentWriter.DocumentWriter#shipout(
-     *      org.extex.typesetter.type.NodeList)
+     *      org.extex.typesetter.type.page.Page)
      */
     public int shipout(final Page page) throws GeneralException {
 

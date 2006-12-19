@@ -34,7 +34,7 @@ import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.real.RealConvertible;
 
 /**
- * Abstract class for math primitives. e.g. sin, cos, ...
+ * Abstract class for math primitives. E.g. sin, cos, ...
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$

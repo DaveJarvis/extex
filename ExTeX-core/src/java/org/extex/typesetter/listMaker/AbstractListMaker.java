@@ -41,8 +41,6 @@ import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
-
-
 /**
  * This abstract class provides some methods common to all ListMakers.
  *

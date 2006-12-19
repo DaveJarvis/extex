@@ -34,7 +34,6 @@ import org.extex.typesetter.type.node.CharNode;
 import org.extex.typesetter.type.node.factory.NodeFactory;
 import org.extex.util.framework.Registrar;
 
-
 /**
  * This class implements the future pattern for a language object. The real
  * object creation or loading is delayed until it is clear whether the
@@ -258,7 +257,7 @@ public class FutureLanguage implements ManagedLanguage, Serializable {
 
     /**
      * @see org.extex.language.impl.ManagedLanguage#setCreator(
-     *      org.extex.language.LanguageManager)
+     *      org.extex.language.impl.LanguageCreator)
      */
     public void setCreator(final LanguageCreator creator) {
 

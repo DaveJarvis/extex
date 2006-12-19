@@ -47,7 +47,7 @@ public interface ContextFont {
      *
      * @return the fontFactory.
      *
-     * @see #setFontFactory(FontFactory)
+     * @see #setFontFactory(CoreFontFactory)
      */
     CoreFontFactory getFontFactory();
 

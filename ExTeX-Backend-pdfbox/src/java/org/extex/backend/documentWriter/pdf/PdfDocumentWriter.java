@@ -136,15 +136,8 @@ public class PdfDocumentWriter implements DocumentWriter, SingleDocumentStream {
     }
 
     /**
-     * @see org.extex.backend.documentWriter.DocumentWriter#getPages()
-     */
-    public int getPages() {
-
-        return shippedPages;
-    }
-
-    /**
-     * @see org.extex.backend.documentWriter.DocumentWriter#setOutputStream(java.io.OutputStream)
+     * @see org.extex.backend.documentWriter.SingleDocumentStream#setOutputStream(
+     *      java.io.OutputStream)
      */
     public void setOutputStream(final OutputStream outStream) {
 
@@ -198,7 +191,7 @@ public class PdfDocumentWriter implements DocumentWriter, SingleDocumentStream {
 
     /**
      * @see org.extex.backend.documentWriter.DocumentWriter#shipout(
-     *      org.extex.typesetter.type.NodeList)
+     *      org.extex.typesetter.type.page.Page)
      */
     public int shipout(final Page p) throws DocumentWriterException {
 

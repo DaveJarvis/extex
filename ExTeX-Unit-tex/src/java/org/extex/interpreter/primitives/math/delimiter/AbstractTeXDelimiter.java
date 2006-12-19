@@ -42,10 +42,9 @@ import org.extex.typesetter.type.noad.MathGlyph;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
-
 /**
  * This abstract class adds the ability to translate
- * {@link org.extex.typesetter.type.math.MathDelimiter MathDelimiter}s
+ * {@link org.extex.interpreter.type.math.MathDelimiter MathDelimiter}s
  * to and from their <logo>TeX</logo> encoding as numbers to abstract math code.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>

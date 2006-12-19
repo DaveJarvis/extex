@@ -23,7 +23,6 @@ import org.extex.interpreter.context.tc.TypesettingContext;
 import org.extex.type.UnicodeChar;
 import org.extex.typesetter.type.node.VirtualCharNode;
 
-
 /**
  * Virtual Fount Interface
  *
@@ -33,7 +32,8 @@ import org.extex.typesetter.type.node.VirtualCharNode;
 public interface VirtualFount {
 
     /**
-     * Returns the virt. char node.
+     * Returns the virtual char node.
+     *
      * @param context   the typesetting context
      * @param uc        the character
      * @return Returns the virt. char node.

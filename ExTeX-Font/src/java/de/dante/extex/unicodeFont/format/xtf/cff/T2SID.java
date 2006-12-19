@@ -52,12 +52,12 @@ public class T2SID extends T2Number {
     }
 
     /**
-     * the value
+     * the value.
      */
     private int value;
 
     /**
-     * @see org.extex.font.type.ttf.cff.T2CharString#getBytes()
+     * @see de.dante.extex.unicodeFont.format.xtf.cff.T2CharString#getBytes()
      */
     public short[] getBytes() {
 
@@ -68,7 +68,7 @@ public class T2SID extends T2Number {
     }
 
     /**
-     * @see org.extex.font.type.ttf.cff.T2CharString#isInteger()
+     * @see de.dante.extex.unicodeFont.format.xtf.cff.T2CharString#isInteger()
      */
     public boolean isInteger() {
 
@@ -76,7 +76,7 @@ public class T2SID extends T2Number {
     }
 
     /**
-     * @see org.extex.font.type.ttf.cff.T2Number#getDouble()
+     * @see de.dante.extex.unicodeFont.format.xtf.cff.T2Number#getDouble()
      */
     public double getDouble() {
 
@@ -84,7 +84,7 @@ public class T2SID extends T2Number {
     }
 
     /**
-     * @see org.extex.font.type.ttf.cff.T2Number#getInteger()
+     * @see de.dante.extex.unicodeFont.format.xtf.cff.T2Number#getInteger()
      */
     public int getInteger() {
 

@@ -30,7 +30,7 @@ import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.real.RealConvertible;
 
 /**
- * Math. the trigonometric cosine of an angle.
+ * Math. The trigonometric cosine of an angle.
  *
  * <p>Example</p>
  * <pre>

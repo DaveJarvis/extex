@@ -38,7 +38,7 @@ public final class AllTests {
     public static Test suite() {
 
         TestSuite suite = new TestSuite(
-                "Test for de.dante.extex.interpreter.primitives.interaction");
+                "Test for org.extex.interpreter.primitives.interaction");
         //$JUnit-BEGIN$
         suite.addTestSuite(InteractionmodeTest.class);
         suite.addTestSuite(ErrorstopmodeTest.class);

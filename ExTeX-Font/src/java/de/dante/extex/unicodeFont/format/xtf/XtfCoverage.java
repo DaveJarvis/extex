@@ -127,7 +127,7 @@ public abstract class XtfCoverage {
         }
 
         /**
-         * @see org.extex.font.type.ttf.Coverage#findGlyph(int)
+         * @see de.dante.extex.unicodeFont.format.xtf.XtfCoverage#findGlyph(int)
          */
         public int findGlyph(final int glyphId) {
 
@@ -174,7 +174,7 @@ public abstract class XtfCoverage {
         }
 
         /**
-         * @see org.extex.font.type.ttf.Coverage#findGlyph(int)
+         * @see de.dante.extex.unicodeFont.format.xtf.XtfCoverage#findGlyph(int)
          */
         public int findGlyph(final int glyphId) {
 

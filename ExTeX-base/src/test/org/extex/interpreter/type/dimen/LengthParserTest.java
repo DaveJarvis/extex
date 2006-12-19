@@ -167,7 +167,7 @@ public class LengthParserTest extends ExTeXLauncher {
 
     /**
      * <testcase>
-     *  Test case showing that a dimen variable... by a fraction
+     *  Test case showing that a dimen variable incremented by a fraction
      *  is parsed.
      * </testcase>
      *
@@ -185,7 +185,7 @@ public class LengthParserTest extends ExTeXLauncher {
 
     /**
      * <testcase>
-     *  Test case showing that a dimen variable... by a fraction
+     *  Test case showing that a dimen variable subtracted by a fraction
      *  is parsed.
      * </testcase>
      *

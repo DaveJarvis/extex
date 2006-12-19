@@ -62,7 +62,7 @@ public class OtfTableMMFX extends AbstractXtfTable
         return XtfReader.MMFX;
     }
     /**
-     * @see de.dante.extex.unicodeFont.format.xtf.XtfTable#getShortcur()
+     * @see de.dante.extex.unicodeFont.format.xtf.XtfTable#getShortcut()
      */
     public String getShortcut() {
 

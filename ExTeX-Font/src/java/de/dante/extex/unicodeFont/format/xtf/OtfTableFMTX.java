@@ -63,7 +63,7 @@ public class OtfTableFMTX extends AbstractXtfTable
         return XtfReader.FMTX;
     }
     /**
-     * @see de.dante.extex.unicodeFont.format.xtf.XtfTable#getShortcur()
+     * @see de.dante.extex.unicodeFont.format.xtf.XtfTable#getShortcut()
      */
     public String getShortcut() {
 

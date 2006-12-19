@@ -56,7 +56,7 @@ public class VirtualFontImpl extends FontImpl implements VirtualFount {
 
     /**
      * @see org.extex.font.type.VirtualFount#getVirtualCharNode(
-     *      org.extex.interpreter.context.TypesettingContext,
+     *      org.extex.interpreter.context.tc.TypesettingContext,
      *      org.extex.type.UnicodeChar)
      */
     public VirtualCharNode getVirtualCharNode(final TypesettingContext context,

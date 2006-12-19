@@ -52,19 +52,19 @@ import org.extex.util.framework.logger.LogEnabled;
  *  <tt>class</tt> of the sub-configuration as shown below.
  *  <pre>
  *   &lt;Typesetter default="TeX"&gt;
- *     &lt;TeX class="de.dante.extex.typesetter.impl.TypesetterImpl"
+ *     &lt;TeX class="org.extex.typesetter.impl.TypesetterImpl"
  *          direction="lr"&gt;
- *       &lt;PageBuilder class="de.dante.extex.typesetter.pageBuilder.impl.PageBuilderImpl"/&gt;
- *       &lt;ParagraphBuilder class="de.dante.extex.typesetter.paragraphBuilder.texImpl.TeXParagraphBuilder"&gt;
- *         &lt;Hyphenator class="de.dante.extex.typesetter.paragraphBuilder.texImpl.TeXParagraphBuilder"/&gt;
+ *       &lt;PageBuilder class="org.extex.typesetter.pageBuilder.impl.PageBuilderImpl"/&gt;
+ *       &lt;ParagraphBuilder class="org.extex.typesetter.paragraphBuilder.texImpl.TeXParagraphBuilder"&gt;
+ *         &lt;Hyphenator class="org.extex.typesetter.paragraphBuilder.texImpl.TeXParagraphBuilder"/&gt;
  *       &lt;/ParagraphBuilder&gt;
- *       &lt;NodeFactory class="de.dante.extex.typesetter.type.node.factory.CachingNodeFactory"/&gt;
+ *       &lt;NodeFactory class="org.extex.typesetter.type.node.factory.CachingNodeFactory"/&gt;
  *     &lt;/TeX&gt;
- *     &lt;develop class="de.dante.extex.typesetter.impl.TypesetterImpl"
+ *     &lt;develop class="org.extex.typesetter.impl.TypesetterImpl"
  *            direction="lr"&gt;
- *       &lt;PageBuilder class="de.dante.extex.typesetter.pageBuilder.impl.PageBuilderImpl"/&gt;
- *       &lt;ParagraphBuilder class="de.dante.extex.typesetter.paragraphBuilder.trivial.TrivialBuilder"/&gt;
- *       &lt;NodeFactory class="de.dante.extex.typesetter.type.node.factory.CachingUnicodeNodeFactory"/&gt;
+ *       &lt;PageBuilder class="org.extex.typesetter.pageBuilder.impl.PageBuilderImpl"/&gt;
+ *       &lt;ParagraphBuilder class="org.extex.typesetter.paragraphBuilder.trivial.TrivialBuilder"/&gt;
+ *       &lt;NodeFactory class="org.extex.typesetter.type.node.factory.CachingUnicodeNodeFactory"/&gt;
  *     &lt;/develop&gt;
  *   &lt;/Typesetter&gt;
  *  </pre>

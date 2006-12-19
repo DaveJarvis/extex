@@ -24,7 +24,7 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 /**
- * TFM-FixWord
+ * TFM-FixWord.
  * <p>
  * The dimensions are represented in the same way as in tfm files. Higher
  * 12 bits is the whole part and lower 20 bits is the fractional part.

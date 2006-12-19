@@ -33,13 +33,12 @@ import org.extex.typesetter.Typesetter;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
-
 /**
  * This is the abstract base class for all ifs.
  * <p>
  *  If you want to implement an if-like primitive you should derive it from
  *  this class. All you have to do is to implement the method
- *  {@link #conditional(Context, TokenSource, Typesetter) conditional()}. Here
+ *  {@link #conditional(org.extex.interpreter.context.Context,org.extex.interpreter.TokenSource,org.extex.typesetter.Typesetter) conditional()}. Here
  *  you define the expression evaluated to determine whether the if or the else
  *  branch should be taken.
  * </p>

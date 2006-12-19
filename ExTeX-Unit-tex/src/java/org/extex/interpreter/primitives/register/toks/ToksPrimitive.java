@@ -140,8 +140,6 @@ public class ToksPrimitive extends AbstractToks
     }
 
     /**
-     * Expand
-     * <p>
      * Scan the tokens between <code>{</code> and <code>}</code> and store
      * them in the named tokens register.
      *

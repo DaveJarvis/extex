@@ -139,7 +139,7 @@ public class HorizontalListMaker extends AbstractListMaker {
 
     /**
      * @see org.extex.typesetter.ListMaker#addSpace(
-     *      org.extex.interpreter.context.TypesettingContext,
+     *      org.extex.interpreter.context.tc.TypesettingContext,
      *      org.extex.interpreter.type.count.Count)
      */
     public void addSpace(final TypesettingContext context, final Count sfCount)
@@ -201,7 +201,7 @@ public class HorizontalListMaker extends AbstractListMaker {
     /**
      * @see org.extex.typesetter.ListMaker#cr(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.context.TypesettingContext,
+     *      org.extex.interpreter.context.tc.TypesettingContext,
      *      org.extex.type.UnicodeChar)
      */
     public void cr(final Context context, final TypesettingContext tc,
@@ -252,12 +252,12 @@ public class HorizontalListMaker extends AbstractListMaker {
      * @param source the source of new tokens
      * @param locator the locator
      *
-     * @see de.dante.extex.typesetter.ListMaker#letter(
-     *      de.dante.util.UnicodeChar,
-     *      de.dante.extex.interpreter.context.TypesettingContext,
-     *      de.dante.extex.interpreter.context.Context,
-     *      de.dante.extex.interpreter.TokenSource;
-     *      de.dante.util.Locator)
+     * @see org.extex.typesetter.ListMaker#letter(
+     *      org.extex.type.UnicodeChar,
+     *      org.extex.interpreter.context.tc.TypesettingContext,
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource,
+     *      org.extex.type.Locator)
      * @see "The TeXbook [p.76]"
      */
     public boolean letter(final UnicodeChar symbol,

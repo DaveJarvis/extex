@@ -67,7 +67,7 @@ public interface Fount {
     FixedDimen getEx();
 
     /**
-     * Returns the byte array for the external file e.g. cmr12.pfb.
+     * Returns the byte array for the external file. E.g. cmr12.pfb.
      *
      * @return Returns the byte array for the external file e.g. cmr12.pfb
      *

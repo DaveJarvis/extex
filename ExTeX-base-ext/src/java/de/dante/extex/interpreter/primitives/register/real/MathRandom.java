@@ -30,7 +30,7 @@ import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.real.RealConvertible;
 
 /**
- * Math. a real value with a positive sign, greater
+ * Math. A real value with a positive sign, greater
  * than or equal to 0.0 and less than 1.0.
  *
  * <p>Example</p>

@@ -98,7 +98,7 @@ public class TokenStreamBaseImpl implements TokenStream {
     /**
      * @see org.extex.scanner.TokenStream#get(
      *      org.extex.scanner.type.token.TokenFactory,
-     *      de.dante.extex.interpreter.Tokenizer)
+     *      org.extex.interpreter.Tokenizer)
      */
     public Token get(final TokenFactory factory, final Tokenizer tokenizer)
             throws ScannerException {

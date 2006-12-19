@@ -31,8 +31,6 @@ import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.node.HorizontalListNode;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-
-
 /**
  * This class provides a maker for a vertical list.
  *
@@ -90,6 +88,8 @@ public class VerticalListMaker extends InnerVerticalListMaker {
     }
 
     /**
+     * Add a node list to the current list maker and adjust the spacing between
+     * the elements of the list.
      *
      * <i>
      *  <p>

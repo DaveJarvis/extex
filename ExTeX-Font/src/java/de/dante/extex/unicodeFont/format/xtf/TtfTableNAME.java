@@ -205,7 +205,7 @@ public class TtfTableNAME extends AbstractXtfTable
     }
 
     /**
-     * @see de.dante.extex.unicodeFont.format.xtf.XtfTable#getShortcur()
+     * @see de.dante.extex.unicodeFont.format.xtf.XtfTable#getShortcut()
      */
     public String getShortcut() {
 
@@ -369,7 +369,7 @@ public class TtfTableNAME extends AbstractXtfTable
     // ----------------------------------------
 
     /**
-     * NameRecord
+     * NameRecord.
      *
      * <table BORDER="1">
      *   <tbody>

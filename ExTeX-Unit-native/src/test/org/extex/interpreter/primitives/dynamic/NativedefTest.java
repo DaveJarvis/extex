@@ -37,7 +37,7 @@ public class NativedefTest extends NoFlagsButGlobalPrimitiveTester {
     public NativedefTest(final String arg) {
 
         super(arg, "nativedef",
-                "{java}\\t{de.dante.extex.interpreter.primitives.Relax}");
+                "{java}\\t{org.extex.interpreter.primitives.Relax}");
         setConfig("extex-native");
     }
 
@@ -53,7 +53,7 @@ public class NativedefTest extends NoFlagsButGlobalPrimitiveTester {
         assertSuccess(
         //--- input code ---
                 DEFINE_BRACES + "\\nativedef{java}"
-                        + "\\t{de.dante.extex.interpreter.primitives.info.The}"
+                        + "\\t{org.extex.interpreter.primitives.info.The}"
                         + "\\t\\count42" + " \\end",
                 //--- log message ---
                 "0" + TERM);
@@ -71,7 +71,7 @@ public class NativedefTest extends NoFlagsButGlobalPrimitiveTester {
         assertSuccess(
         //--- input code ---
                 DEFINE_BRACES + "\\begingroup" + "\\global\\nativedef{java}"
-                        + "\\t{de.dante.extex.interpreter.primitives.info.The}"
+                        + "\\t{org.extex.interpreter.primitives.info.The}"
                         + "\\endgroup" + "\\t\\count42" + " \\end",
                 //--- log message ---
                 "0" + TERM);
@@ -89,7 +89,7 @@ public class NativedefTest extends NoFlagsButGlobalPrimitiveTester {
         assertFailure(
         //--- input code ---
                 DEFINE_BRACES + "\\begingroup" + "\\nativedef{java}"
-                        + "\\t{de.dante.extex.interpreter.primitives.info.The}"
+                        + "\\t{org.extex.interpreter.primitives.info.The}"
                         + "\\endgroup" + "\\t\\count42" + " \\end",
                 //--- log message ---
                 "Undefined control sequence \\t");
@@ -108,7 +108,7 @@ public class NativedefTest extends NoFlagsButGlobalPrimitiveTester {
         //--- input code ---
                 DEFINE_BRACES + "\\globaldefs=1 " + "\\begingroup"
                         + "\\nativedef{java}"
-                        + "\\t{de.dante.extex.interpreter.primitives.info.The}"
+                        + "\\t{org.extex.interpreter.primitives.info.The}"
                         + "\\endgroup" + "\\t\\count42" + " \\end",
                 //--- log message ---
                 "0" + TERM);
@@ -127,7 +127,7 @@ public class NativedefTest extends NoFlagsButGlobalPrimitiveTester {
         //--- input code ---
                 DEFINE_BRACES + "\\afterassignment\\x " + "\\begingroup"
                         + "\\nativedef{java}"
-                        + "\\t{de.dante.extex.interpreter.primitives.info.The}"
+                        + "\\t{org.extex.interpreter.primitives.info.The}"
                         + "\\endgroup",
                 //--- log message ---
                 "Undefined control sequence \\x");

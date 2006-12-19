@@ -61,7 +61,6 @@ import org.extex.util.framework.i18n.Localizable;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.logger.LogEnabled;
 
-
 /**
  * This is a reference implementation of the
  * {@link org.extex.typesetter.Typesetter Typesetter} interface.
@@ -199,8 +198,8 @@ public class TypesetterImpl
 
     /**
      * @see org.extex.typesetter.ListMaker#addSpace(
-     *     org.extex.interpreter.context.TypesettingContext,
-     *     org.extex.interpreter.type.count.Count)
+     *      org.extex.interpreter.context.tc.TypesettingContext,
+     *      org.extex.interpreter.type.count.Count)
      */
     public void addSpace(final TypesettingContext typesettingContext,
             final Count spacefactor)
@@ -252,7 +251,7 @@ public class TypesetterImpl
     /**
      * @see org.extex.typesetter.ListMaker#cr(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.context.TypesettingContext,
+     *      org.extex.interpreter.context.tc.TypesettingContext,
      *      org.extex.type.UnicodeChar)
      */
     public void cr(final Context context, final TypesettingContext tc,
@@ -444,9 +443,10 @@ public class TypesetterImpl
 
     /**
      * @see org.extex.typesetter.ListMaker#letter(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.context.TypesettingContext,
      *      org.extex.type.UnicodeChar,
+     *      org.extex.interpreter.context.tc.TypesettingContext,
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource,
      *      org.extex.type.Locator)
      */
     public boolean letter(final UnicodeChar uc, final TypesettingContext tc,
@@ -554,7 +554,7 @@ public class TypesetterImpl
 
     /**
      * @see org.extex.typesetter.Typesetter#setOutputRoutine(
-     *      org.extex.typesetter.OutputRoutine)
+     *      org.extex.typesetter.output.OutputRoutine)
      */
     public void setOutputRoutine(final OutputRoutine output) {
 

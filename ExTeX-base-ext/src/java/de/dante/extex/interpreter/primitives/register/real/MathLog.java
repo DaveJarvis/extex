@@ -30,7 +30,7 @@ import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.real.RealConvertible;
 
 /**
- * Math. the natural logarithm (base e) of a real value.
+ * Math. The natural logarithm (base e) of a real value.
  *
  * <p>Example</p>
  * <pre>

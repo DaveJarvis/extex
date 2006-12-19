@@ -30,7 +30,7 @@ import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.real.RealConvertible;
 
 /**
- * Math. the largest (closest to positive infinity) double value
+ * Math. The largest (closest to positive infinity) double value
  * that is not greater than the argument and is equal to a mathematical integer.
  *
  * <p>Example</p>

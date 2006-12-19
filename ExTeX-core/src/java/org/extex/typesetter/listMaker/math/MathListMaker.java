@@ -382,8 +382,8 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
 
     /**
      * @see org.extex.typesetter.listMaker.math.NoadConsumer#add(
-     *      org.extex.typesetter.type.math.MathDelimiter,
-     *      org.extex.interpreter.context.TypesettingContext)
+     *      org.extex.interpreter.type.math.MathDelimiter,
+     *      org.extex.interpreter.context.tc.TypesettingContext)
      */
     public void add(final MathDelimiter delimiter, final TypesettingContext tc)
             throws TypesetterException {
@@ -451,7 +451,7 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
      * @throws ConfigurationException in case of a configuration error
      * 
      * @see org.extex.typesetter.ListMaker#addSpace(
-     *      org.extex.interpreter.context.TypesettingContext,
+     *      org.extex.interpreter.context.tc.TypesettingContext,
      *      org.extex.interpreter.type.count.Count)
      */
     public void addSpace(final TypesettingContext typesettingContext,
@@ -512,7 +512,7 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
     /**
      * @see org.extex.typesetter.ListMaker#cr(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.context.TypesettingContext,
+     *      org.extex.interpreter.context.tc.TypesettingContext,
      *      org.extex.type.UnicodeChar)
      */
     public void cr(final Context context, final TypesettingContext tc,
@@ -605,7 +605,7 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
 
     /**
      * @see org.extex.typesetter.listMaker.math.NoadConsumer#left(
-     *      org.extex.typesetter.type.math.MathDelimiter)
+     *      org.extex.interpreter.type.math.MathDelimiter)
      */
     public void left(final MathDelimiter delimiter) throws TypesetterException {
 
@@ -689,7 +689,7 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
 
     /**
      * @see org.extex.typesetter.listMaker.math.NoadConsumer#middle(
-     *      org.extex.typesetter.type.math.MathDelimiter)
+     *      org.extex.interpreter.type.math.MathDelimiter)
      */
     public void middle(final MathDelimiter delimiter)
             throws TypesetterException {
@@ -734,7 +734,7 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
 
     /**
      * @see org.extex.typesetter.listMaker.math.NoadConsumer#right(
-     *      org.extex.typesetter.type.math.MathDelimiter)
+     *      org.extex.interpreter.type.math.MathDelimiter)
      */
     public void right(final MathDelimiter delimiter) throws TypesetterException {
 
@@ -894,10 +894,10 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
 
     /**
      * @see org.extex.typesetter.listMaker.math.NoadConsumer#switchToFraction(
-     *      org.extex.typesetter.type.math.MathDelimiter,
-     *      org.extex.typesetter.type.math.MathDelimiter,
+     *      org.extex.interpreter.type.math.MathDelimiter,
+     *      org.extex.interpreter.type.math.MathDelimiter,
      *      org.extex.interpreter.type.dimen.FixedDimen,
-     *      org.extex.interpreter.context.TypesettingContext)
+     *      org.extex.interpreter.context.tc.TypesettingContext)
      */
     public void switchToFraction(final MathDelimiter leftDelimiter,
             final MathDelimiter rightDelimiter, final FixedDimen ruleWidth,

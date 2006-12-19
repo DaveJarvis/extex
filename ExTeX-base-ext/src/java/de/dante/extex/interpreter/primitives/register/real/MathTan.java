@@ -30,7 +30,7 @@ import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.real.RealConvertible;
 
 /**
- * Math. the trigonometric tangent of an angle.
+ * Math. The trigonometric tangent of an angle.
  *
  * <p>Example</p>
  * <pre>

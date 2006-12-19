@@ -22,7 +22,7 @@ package org.extex.font.type.tfm;
 import java.io.Serializable;
 
 /**
- * TFM-Kerning
+ * TFM-Kerning.
  * <p>
  * Kerning instruction
  * </p>

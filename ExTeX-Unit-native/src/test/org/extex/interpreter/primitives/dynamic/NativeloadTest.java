@@ -37,7 +37,7 @@ public class NativeloadTest extends NoFlagsPrimitiveTester {
     public NativeloadTest(final String arg) {
 
         super(arg, "nativeload",
-                "{java}{de.dante.extex.interpreter.primitives.dynamic.NativeloadSensor}");
+                "{java}{org.extex.interpreter.primitives.dynamic.NativeloadSensor}");
         setConfig("extex-native");
     }
 
@@ -55,7 +55,7 @@ public class NativeloadTest extends NoFlagsPrimitiveTester {
                 //--- input code ---
                 DEFINE_BRACES
                         + "\\nativeload{undefined type}"
-                        + "{de.dante.extex.interpreter.primitives.dynamic.NativeloadSensor}"
+                        + "{org.extex.interpreter.primitives.dynamic.NativeloadSensor}"
                         + " \\end",
                 //--- error message ---
                 "I don't know how to load native type `undefined type'");
@@ -96,7 +96,7 @@ public class NativeloadTest extends NoFlagsPrimitiveTester {
                         + " \\end",
                 //--- error message ---
                 "The class java.lang.String does not implement\n"
-                        + "the required interface de.dante.extex.interpreter.unit.Loader.");
+                        + "the required interface org.extex.interpreter.unit.Loader.");
     }
 
     /**
@@ -113,7 +113,7 @@ public class NativeloadTest extends NoFlagsPrimitiveTester {
                 //--- input code ---
                 DEFINE_BRACES
                         + "\\nativeload{java}"
-                        + "{de.dante.extex.interpreter.primitives.dynamic.NativeloadSensor}"
+                        + "{org.extex.interpreter.primitives.dynamic.NativeloadSensor}"
                         + " \\end",
                 //--- log message ---
                 "");

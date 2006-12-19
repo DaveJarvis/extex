@@ -38,7 +38,7 @@ public class AllTests {
     public static Test suite() {
 
         TestSuite suite = new TestSuite(
-                "Test for de.dante.extex.interpreter.primitives.arithmetic");
+                "Test for org.extex.interpreter.primitives.arithmetic");
         //$JUnit-BEGIN$
         suite.addTestSuite(AdvanceTest.class);
         suite.addTestSuite(DivideTest.class);

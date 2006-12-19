@@ -30,7 +30,7 @@ import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.real.RealConvertible;
 
 /**
- * Math. the smaller of two real values.
+ * Math. The smaller of two real values.
  *
  * <p>Example</p>
  * <pre>

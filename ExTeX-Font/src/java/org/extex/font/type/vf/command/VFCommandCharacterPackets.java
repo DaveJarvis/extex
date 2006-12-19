@@ -38,9 +38,8 @@ import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 import org.jdom.Element;
 
-
 /**
- * VFCommand: character packets
+ * VFCommand: character packets.
  *
  * <p>
  * The preamble is followed by zero or more character packets, where each
@@ -102,41 +101,40 @@ import org.jdom.Element;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-
 public class VFCommandCharacterPackets extends VFCommand implements PlFormat {
 
     /**
-     * the packet length (pl)
+     * the packet length (pl).
      */
     private int packetlength;
 
     /**
-     * the character code (cc)
+     * the character code (cc).
      */
     private int charactercode;
 
     /**
-     * the character width (from tfm file)   (tfm)
+     * the character width (from tfm file)   (tfm).
      */
     private TFMFixWord width;
 
     /**
-     * the dvi commands
+     * the dvi commands.
      */
     private byte[] dvi;
 
     /**
-     * the font factory
+     * the font factory.
      */
     private FontFactory fontfactory;
 
     /**
-     * the font map
+     * the font map.
      */
     private Map fontmap;
 
     /**
-     * the master tfm-file
+     * the master tfm-file.
      */
     private TFMFont mastertfm;
 

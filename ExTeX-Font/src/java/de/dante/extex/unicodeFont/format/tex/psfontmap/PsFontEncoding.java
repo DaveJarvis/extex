@@ -167,7 +167,8 @@ public class PsFontEncoding implements Serializable {
     }
 
     /**
-     * Returns the font file extension, e.g. pfb, ttf
+     * Returns the font file extension. E.g. pfb, ttf
+     *
      * @return Returns the font file extension, e.g. pfb, ttf
      */
     public String getFontfileExtension() {

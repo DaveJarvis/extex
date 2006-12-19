@@ -24,8 +24,6 @@ import java.io.IOException;
 import org.extex.typesetter.type.page.Page;
 import org.extex.util.exception.GeneralException;
 
-
-
 /**
  * This is the interface to the back-end of the system. The document has to be
  * written to an output stream. Certain information can be acquired before and

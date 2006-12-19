@@ -105,7 +105,7 @@ public class TtfTableHMTX extends AbstractXtfTable
     private int lsblength;
 
     /**
-     * @see org.extex.font.type.ttf.TTFTable#getInitOrder()
+     * @see de.dante.extex.unicodeFont.format.xtf.AbstractXtfTable#getInitOrder()
      */
     public int getInitOrder() {
 
@@ -113,7 +113,7 @@ public class TtfTableHMTX extends AbstractXtfTable
     }
 
     /**
-     * @see org.extex.font.type.ttf.TTFTable#init()
+     * @see de.dante.extex.unicodeFont.format.xtf.AbstractXtfTable#init()
      */
     public void init() {
 
@@ -194,7 +194,7 @@ public class TtfTableHMTX extends AbstractXtfTable
     }
 
     /**
-     * @see de.dante.extex.unicodeFont.format.xtf.XtfTable#getShortcur()
+     * @see de.dante.extex.unicodeFont.format.xtf.XtfTable#getShortcut()
      */
     public String getShortcut() {
 

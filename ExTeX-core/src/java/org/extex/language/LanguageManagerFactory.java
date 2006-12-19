@@ -38,25 +38,25 @@ import org.extex.util.resource.ResourceFinder;
  * <pre>
  * &lt;Language default="ExTeX"&gt;
  *
- *   &lt;TeX class="de.dante.extex.language.impl.BaseLanguageManager"
+ *   &lt;TeX class="org.extex.language.impl.BaseLanguageManager"
  *        default="default"&gt;
  *     &lt;default
- *       class="de.dante.extex.language.hyphenation.liang.LiangsHyphenationTable"&gt;
+ *       class="org.extex.language.hyphenation.liang.LiangsHyphenationTable"&gt;
  *       &lt;LigatureBuilder
- *         class="de.dante.extex.language.ligature.impl.LigatureBuilderImpl"/&gt;
+ *         class="org.extex.language.ligature.impl.LigatureBuilderImpl"/&gt;
  *       &lt;WordTokenizer
- *         class="de.dante.extex.language.word.impl.TeXWords"/&gt;
+ *         class="org.extex.language.word.impl.TeXWords"/&gt;
  *     &lt;/default&gt;
  *   &lt;/TeX&gt;
  *
- *   &lt;ExTeX class="de.dante.extex.language.impl.LoadingLanguageManager"
+ *   &lt;ExTeX class="org.extex.language.impl.LoadingLanguageManager"
  *          default="default"&gt;
  *     &lt;default
- *       class="de.dante.extex.language.hyphenation.liang.LiangsHyphenationTable"&gt;
+ *       class="org.extex.language.hyphenation.liang.LiangsHyphenationTable"&gt;
  *       &lt;LigatureBuilder
- *         class="de.dante.extex.language.ligature.impl.LigatureBuilderImpl"/&gt;
+ *         class="org.extex.language.ligature.impl.LigatureBuilderImpl"/&gt;
  *       &lt;WordTokenizer
- *         class="de.dante.extex.language.word.impl.ExTeXWords"/&gt;
+ *         class="org.extex.language.word.impl.ExTeXWords"/&gt;
  *     &lt;/default&gt;
  *   &lt;/ExTeX&gt;
  *

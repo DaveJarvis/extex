@@ -34,8 +34,6 @@ import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
 import org.extex.type.UnicodeChar;
 
-
-
 /**
  * This class is a container for a list of
  * {@link org.extex.scanner.type.token.Token Token}s.
@@ -70,10 +68,11 @@ public class Tokens implements Serializable, FixedTokens {
     }
 
     /**
-     * Creates a new object
+     * Creates a new object.
      * <p>
      * Each character is converted into a <code>OtherToken</code>
      * and added to the internal list.
+     * </p>
      *
      * @param context the interpreter context
      * @param num the number to add
@@ -87,11 +86,12 @@ public class Tokens implements Serializable, FixedTokens {
     }
 
     /**
-     * Creates a new object
+     * Creates a new object.
      * <p>
      * Each character of the string is converted into a <code>OtherToken</code>
      * and added to the internal list. An exception is made for spaces which
      * are converted into a <code>SpaceToken</code>.
+     * </p>
      *
      * @param context the interpreter context
      * @param s the characters to add in a CharSequence

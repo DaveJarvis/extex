@@ -291,14 +291,6 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
-     * @see org.extex.font.type.Fount#getBoundingBox()
-     */
-    public BoundingBox getBoundingBox() {
-
-        return null;
-    }
-
-    /**
      * @see org.extex.font.type.Fount#getCheckSum()
      */
     public int getCheckSum() {
@@ -324,7 +316,7 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
-     * @see org.extex.interpreter.type.font.Font#getEfcode()
+     * @see org.extex.interpreter.type.font.Font#getEfcode(org.extex.type.UnicodeChar)
      */
     public long getEfcode(final UnicodeChar uc) {
 

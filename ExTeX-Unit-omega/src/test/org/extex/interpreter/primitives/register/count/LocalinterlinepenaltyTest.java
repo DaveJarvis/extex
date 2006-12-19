@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.register.count;
+package org.extex.interpreter.primitives.register.count;
 
 /**
  * This is a test suite for the primitive <tt>\localinterlinepenalty</tt>.

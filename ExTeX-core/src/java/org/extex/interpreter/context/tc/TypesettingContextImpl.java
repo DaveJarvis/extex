@@ -24,7 +24,6 @@ import org.extex.interpreter.context.Color;
 import org.extex.interpreter.type.font.Font;
 import org.extex.language.Language;
 
-
 /**
  * This implementation of a typesetting context provides the required
  * functionality for the container or attributes describing the
@@ -107,7 +106,7 @@ public class TypesettingContextImpl implements ModifiableTypesettingContext {
     }
 
     /**
-     * @see org.extex.interpreter.context.TypesettingContext#getColor()
+     * @see org.extex.interpreter.context.tc.TypesettingContext#getColor()
      */
     public Color getColor() {
 
@@ -115,7 +114,7 @@ public class TypesettingContextImpl implements ModifiableTypesettingContext {
     }
 
     /**
-     * @see org.extex.interpreter.context.TypesettingContext#getDirection()
+     * @see org.extex.interpreter.context.tc.TypesettingContext#getDirection()
      */
     public Direction getDirection() {
 
@@ -123,7 +122,7 @@ public class TypesettingContextImpl implements ModifiableTypesettingContext {
     }
 
     /**
-     * @see org.extex.interpreter.context.TypesettingContext#getFont()
+     * @see org.extex.interpreter.context.tc.TypesettingContext#getFont()
      */
     public Font getFont() {
 
@@ -134,7 +133,7 @@ public class TypesettingContextImpl implements ModifiableTypesettingContext {
     }
 
     /**
-     * @see org.extex.interpreter.context.TypesettingContext#getLanguage()
+     * @see org.extex.interpreter.context.tc.TypesettingContext#getLanguage()
      */
     public Language getLanguage() {
 
@@ -142,8 +141,8 @@ public class TypesettingContextImpl implements ModifiableTypesettingContext {
     }
 
     /**
-     * @see org.extex.interpreter.context.ModifiableTypesettingContext#set(
-     *      org.extex.interpreter.context.TypesettingContext)
+     * @see org.extex.interpreter.context.tc.ModifiableTypesettingContext#set(
+     *      org.extex.interpreter.context.tc.TypesettingContext)
      */
     public void set(final TypesettingContext context) {
 
@@ -156,7 +155,7 @@ public class TypesettingContextImpl implements ModifiableTypesettingContext {
     }
 
     /**
-     * @see org.extex.interpreter.context.ModifiableTypesettingContext#setColor(
+     * @see org.extex.interpreter.context.tc.ModifiableTypesettingContext#setColor(
      *      org.extex.interpreter.context.Color)
      */
     public void setColor(final Color theColor) {
@@ -165,8 +164,8 @@ public class TypesettingContextImpl implements ModifiableTypesettingContext {
     }
 
     /**
-     * @see org.extex.interpreter.context.ModifiableTypesettingContext#setDirection(
-     *      org.extex.interpreter.context.Direction)
+     * @see org.extex.interpreter.context.tc.ModifiableTypesettingContext#setDirection(
+     *      org.extex.interpreter.context.tc.Direction)
      */
     public void setDirection(final Direction theDirection) {
 
@@ -174,7 +173,7 @@ public class TypesettingContextImpl implements ModifiableTypesettingContext {
     }
 
     /**
-     * @see org.extex.interpreter.context.ModifiableTypesettingContext#setFont(
+     * @see org.extex.interpreter.context.tc.ModifiableTypesettingContext#setFont(
      *      org.extex.interpreter.type.font.Font)
      */
     public void setFont(final Font theFont) {
@@ -183,7 +182,7 @@ public class TypesettingContextImpl implements ModifiableTypesettingContext {
     }
 
     /**
-     * @see org.extex.interpreter.context.ModifiableTypesettingContext#setLanguage(
+     * @see org.extex.interpreter.context.tc.ModifiableTypesettingContext#setLanguage(
      *      org.extex.language.Language)
      */
     public void setLanguage(final Language language) {

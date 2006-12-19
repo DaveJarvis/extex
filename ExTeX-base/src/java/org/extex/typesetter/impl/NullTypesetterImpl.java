@@ -48,7 +48,6 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-
 /**
  * The dummy typesetter which does nothing but provide the appropriate
  * interface.
@@ -104,8 +103,8 @@ public class NullTypesetterImpl implements Typesetter {
 
     /**
      * @see org.extex.typesetter.ListMaker#addSpace(
-     *     org.extex.interpreter.context.TypesettingContext,
-     *     org.extex.interpreter.type.count.Count)
+     *      org.extex.interpreter.context.tc.TypesettingContext,
+     *      org.extex.interpreter.type.count.Count)
      */
     public void addSpace(final TypesettingContext typesettingContext,
             final Count spacefactor)
@@ -151,7 +150,7 @@ public class NullTypesetterImpl implements Typesetter {
     /**
      * @see org.extex.typesetter.ListMaker#cr(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.context.TypesettingContext,
+     *      org.extex.interpreter.context.tc.TypesettingContext,
      *      org.extex.type.UnicodeChar)
      */
     public void cr(final Context context, final TypesettingContext tc,
@@ -272,9 +271,10 @@ public class NullTypesetterImpl implements Typesetter {
 
     /**
      * @see org.extex.typesetter.ListMaker#letter(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.context.TypesettingContext,
      *      org.extex.type.UnicodeChar,
+     *      org.extex.interpreter.context.tc.TypesettingContext,
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource,
      *      org.extex.type.Locator)
      */
     public boolean letter(final UnicodeChar uc, final TypesettingContext tc,
@@ -352,7 +352,7 @@ public class NullTypesetterImpl implements Typesetter {
 
     /**
      * @see org.extex.typesetter.Typesetter#setOutputRoutine(
-     *      org.extex.typesetter.OutputRoutine)
+     *      org.extex.typesetter.output.OutputRoutine)
      */
     public void setOutputRoutine(final OutputRoutine output) {
 

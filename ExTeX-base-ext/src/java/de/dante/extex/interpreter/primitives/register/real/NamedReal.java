@@ -172,7 +172,8 @@ public class NamedReal extends AbstractAssignment
      * @see org.extex.interpreter.type.arithmetic.Advanceable#advance(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource)
+     *      org.extex.interpreter.TokenSource,
+     *      org.extex.typesetter.Typesetter)
      */
     public void advance(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
@@ -198,7 +199,8 @@ public class NamedReal extends AbstractAssignment
      * @see org.extex.interpreter.type.arithmetic.Multiplyable#multiply(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource)
+     *      org.extex.interpreter.TokenSource,
+     *      org.extex.typesetter.Typesetter)
      */
     public void multiply(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
@@ -224,7 +226,8 @@ public class NamedReal extends AbstractAssignment
      * @see org.extex.interpreter.type.arithmetic.Divideable#divide(
      *       org.extex.interpreter.Flags,
      *       org.extex.interpreter.context.Context,
-     *       org.extex.interpreter.TokenSource)
+     *      org.extex.interpreter.TokenSource,
+     *      org.extex.typesetter.Typesetter)
      */
     public void divide(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)

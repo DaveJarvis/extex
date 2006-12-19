@@ -87,7 +87,7 @@ public class TtfTableGLYF extends AbstractXtfTable
     }
 
     /**
-     * @see org.extex.font.type.ttf.TTFTable#getInitOrder()
+     * @see de.dante.extex.unicodeFont.format.xtf.AbstractXtfTable#getInitOrder()
      */
     public int getInitOrder() {
 
@@ -95,7 +95,7 @@ public class TtfTableGLYF extends AbstractXtfTable
     }
 
     /**
-     * @see org.extex.font.type.ttf.TTFTable#init()
+     * @see de.dante.extex.unicodeFont.format.xtf.AbstractXtfTable#init()
      */
     public void init() {
 
@@ -163,7 +163,7 @@ public class TtfTableGLYF extends AbstractXtfTable
     }
 
     /**
-     * @see de.dante.extex.unicodeFont.format.xtf.XtfTable#getShortcur()
+     * @see de.dante.extex.unicodeFont.format.xtf.XtfTable#getShortcut()
      */
     public String getShortcut() {
 
@@ -601,7 +601,7 @@ public class TtfTableGLYF extends AbstractXtfTable
         }
 
         /**
-         * @see org.extex.font.type.ttf.TTFTableGLYF.Descript#getEndPtOfContours(int)
+         * @see de.dante.extex.unicodeFont.format.xtf.TtfTableGLYF.Descript#getEndPtOfContours(int)
          */
         public int getEndPtOfContours(final int i) {
 
@@ -615,7 +615,7 @@ public class TtfTableGLYF extends AbstractXtfTable
         }
 
         /**
-         * @see org.extex.font.type.ttf.TTFTableGLYF.Descript#getFlags(int)
+         * @see de.dante.extex.unicodeFont.format.xtf.TtfTableGLYF.Descript#getFlags(int)
          */
         public byte getFlags(final int i) {
 
@@ -628,7 +628,7 @@ public class TtfTableGLYF extends AbstractXtfTable
         }
 
         /**
-         * @see org.extex.font.type.ttf.TTFTableGLYF.Descript#getXCoordinate(int)
+         * @see de.dante.extex.unicodeFont.format.xtf.TtfTableGLYF.Descript#getXCoordinate(int)
          */
         public short getXCoordinate(final int i) {
 
@@ -646,7 +646,7 @@ public class TtfTableGLYF extends AbstractXtfTable
         }
 
         /**
-         * @see org.extex.font.type.ttf.TTFTableGLYF.Descript#getYCoordinate(int)
+         * @see de.dante.extex.unicodeFont.format.xtf.TtfTableGLYF.Descript#getYCoordinate(int)
          */
         public short getYCoordinate(final int i) {
 
@@ -664,7 +664,7 @@ public class TtfTableGLYF extends AbstractXtfTable
         }
 
         /**
-         * @see org.extex.font.type.ttf.TTFTableGLYF.Descript#isComposite()
+         * @see de.dante.extex.unicodeFont.format.xtf.TtfTableGLYF.Descript#isComposite()
          */
         public boolean isComposite() {
 
@@ -672,7 +672,7 @@ public class TtfTableGLYF extends AbstractXtfTable
         }
 
         /**
-         * @see org.extex.font.type.ttf.TTFTableGLYF.Descript#getPointCount()
+         * @see de.dante.extex.unicodeFont.format.xtf.TtfTableGLYF.Descript#getPointCount()
          */
         public int getPointCount() {
 
@@ -684,7 +684,7 @@ public class TtfTableGLYF extends AbstractXtfTable
         }
 
         /**
-         * @see org.extex.font.type.ttf.TTFTableGLYF.Descript#getContourCount()
+         * @see de.dante.extex.unicodeFont.format.xtf.TtfTableGLYF.Descript#getContourCount()
          */
         public int getContourCount() {
 
@@ -891,7 +891,7 @@ public class TtfTableGLYF extends AbstractXtfTable
         }
 
         /**
-         * @see org.extex.font.type.ttf.TTFTableGLYF.Descript#getEndPtOfContours(int)
+         * @see de.dante.extex.unicodeFont.format.xtf.TtfTableGLYF.Descript#getEndPtOfContours(int)
          */
         public int getEndPtOfContours(final int i) {
 
@@ -899,7 +899,7 @@ public class TtfTableGLYF extends AbstractXtfTable
         }
 
         /**
-         * @see org.extex.font.type.ttf.TTFTableGLYF.Descript#getFlags(int)
+         * @see de.dante.extex.unicodeFont.format.xtf.TtfTableGLYF.Descript#getFlags(int)
          */
         public byte getFlags(final int i) {
 
@@ -907,7 +907,7 @@ public class TtfTableGLYF extends AbstractXtfTable
         }
 
         /**
-         * @see org.extex.font.type.ttf.TTFTableGLYF.Descript#getXCoordinate(int)
+         * @see de.dante.extex.unicodeFont.format.xtf.TtfTableGLYF.Descript#getXCoordinate(int)
          */
         public short getXCoordinate(final int i) {
 
@@ -915,7 +915,7 @@ public class TtfTableGLYF extends AbstractXtfTable
         }
 
         /**
-         * @see org.extex.font.type.ttf.TTFTableGLYF.Descript#getYCoordinate(int)
+         * @see de.dante.extex.unicodeFont.format.xtf.TtfTableGLYF.Descript#getYCoordinate(int)
          */
         public short getYCoordinate(final int i) {
 
@@ -923,7 +923,7 @@ public class TtfTableGLYF extends AbstractXtfTable
         }
 
         /**
-         * @see org.extex.font.type.ttf.TTFTableGLYF.Descript#isComposite()
+         * @see de.dante.extex.unicodeFont.format.xtf.TtfTableGLYF.Descript#isComposite()
          */
         public boolean isComposite() {
 
@@ -931,7 +931,7 @@ public class TtfTableGLYF extends AbstractXtfTable
         }
 
         /**
-         * @see org.extex.font.type.ttf.TTFTableGLYF.Descript#getPointCount()
+         * @see de.dante.extex.unicodeFont.format.xtf.TtfTableGLYF.Descript#getPointCount()
          */
         public int getPointCount() {
 
@@ -939,7 +939,7 @@ public class TtfTableGLYF extends AbstractXtfTable
         }
 
         /**
-         * @see org.extex.font.type.ttf.TTFTableGLYF.Descript#getContourCount()
+         * @see de.dante.extex.unicodeFont.format.xtf.TtfTableGLYF.Descript#getContourCount()
          */
         public int getContourCount() {
 

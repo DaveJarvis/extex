@@ -30,7 +30,7 @@ import org.extex.interpreter.exception.InterpreterNumberFormatException;
 import de.dante.extex.interpreter.type.real.Real;
 
 /**
- * Pair (tow real-values)
+ * Pair (tow real-values).
  *
  * <p>[x-real] [y-real]</p>
  *
@@ -45,12 +45,12 @@ public class Pair implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
-     * The value x
+     * The value x.
      */
     private Real xval;
 
     /**
-     * The value y
+     * The value y.
      */
     private Real yval;
 

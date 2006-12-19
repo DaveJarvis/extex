@@ -35,8 +35,6 @@ import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
-
-
 /**
  * This class provides the classification of mathematical characters.
  * In fact it is a finite enumeration which exposes the values as constants.
@@ -494,35 +492,35 @@ public abstract class MathClass implements Serializable {
      * <table>
      *  <tr>
      *   <td>0</td>
-     *   <td>{@link org.extex.typesetter.type.math.MathClass#ORDINARY ORDINARY}</td>
+     *   <td>{@link org.extex.interpreter.type.math.MathClass#ORDINARY ORDINARY}</td>
      *  </tr>
      *  <tr>
      *   <td>1</td>
-     *   <td>{@link org.extex.typesetter.type.math.MathClass#LARGE LARGE}</td>
+     *   <td>{@link org.extex.interpreter.type.math.MathClass#LARGE LARGE}</td>
      *  </tr>
      *  <tr>
      *   <td>2</td>
-     *   <td>{@link org.extex.typesetter.type.math.MathClass#BINARY BINARY}</td>
+     *   <td>{@link org.extex.interpreter.type.math.MathClass#BINARY BINARY}</td>
      *  </tr>
      *  <tr>
      *   <td>3</td>
-     *   <td>{@link org.extex.typesetter.type.math.MathClass#RELATION RELATION}</td>
+     *   <td>{@link org.extex.interpreter.type.math.MathClass#RELATION RELATION}</td>
      *  </tr>
      *  <tr>
      *   <td>4</td>
-     *   <td>{@link org.extex.typesetter.type.math.MathClass#OPENING OPENING}</td>
+     *   <td>{@link org.extex.interpreter.type.math.MathClass#OPENING OPENING}</td>
      *  </tr>
      *  <tr>
      *   <td>5</td>
-     *   <td>{@link org.extex.typesetter.type.math.MathClass#CLOSING CLOSING}</td>
+     *   <td>{@link org.extex.interpreter.type.math.MathClass#CLOSING CLOSING}</td>
      *  </tr>
      *  <tr>
      *   <td>6</td>
-     *   <td>{@link org.extex.typesetter.type.math.MathClass#PUNCTATION PUNCTATION}</td>
+     *   <td>{@link org.extex.interpreter.type.math.MathClass#PUNCTATION PUNCTATION}</td>
      *  </tr>
      *  <tr>
      *   <td>7</td>
-     *   <td>{@link org.extex.typesetter.type.math.MathClass#VARIABLE VARIABLE}</td>
+     *   <td>{@link org.extex.interpreter.type.math.MathClass#VARIABLE VARIABLE}</td>
      *  </tr>
      * </table>
      *

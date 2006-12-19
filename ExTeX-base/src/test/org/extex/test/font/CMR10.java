@@ -1094,14 +1094,6 @@ public class CMR10 implements Font, Serializable {
     }
 
     /**
-     * @see org.extex.font.type.Fount#getBoundingBox()
-     */
-    public BoundingBox getBoundingBox() {
-
-        return null;
-    }
-
-    /**
      * @see org.extex.font.type.Fount#getCheckSum()
      */
     public int getCheckSum() {
@@ -1164,14 +1156,6 @@ public class CMR10 implements Font, Serializable {
     public String getFontName() {
 
         return "CMR10";
-    }
-
-    /**
-     * @see org.extex.font.type.Fount#getGlyph(org.extex.type.UnicodeChar)
-     */
-    public Glyph getGlyph(final UnicodeChar c) {
-
-        return (Glyph) glyphs.get(c);
     }
 
     /**
@@ -1289,7 +1273,7 @@ public class CMR10 implements Font, Serializable {
     }
 
     /**
-     * @see org.extex.interpreter.type.font.Font#getEfcode()
+     * @see org.extex.interpreter.type.font.Font#getEfcode(org.extex.type.UnicodeChar)
      */
     public long getEfcode(UnicodeChar uc) {
 

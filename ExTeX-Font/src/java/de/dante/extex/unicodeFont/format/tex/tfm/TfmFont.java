@@ -256,7 +256,7 @@ public class TfmFont
 
     /**
      * @see de.dante.extex.unicodeFont.type.TexFont#setActualsize(
-     *      de.dante.extex.interpreter.type.dimen.Dimen)
+     *      org.extex.interpreter.type.dimen.Dimen)
      */
     public void setActualsize(final Dimen size) {
 
@@ -391,7 +391,7 @@ public class TfmFont
 
     /**
      * @see de.dante.extex.unicodeFont.type.TexFont#setScalefactor(
-     *      de.dante.extex.interpreter.type.count.Count)
+     *      org.extex.interpreter.type.count.Count)
      */
     public void setScalefactor(final Count scaleFactor) {
 
@@ -477,7 +477,8 @@ public class TfmFont
 
     /**
      * @see de.dante.extex.unicodeFont.type.TexFont#setFontDimen(
-     *      java.lang.String, de.dante.extex.interpreter.type.dimen.Dimen)
+     *      java.lang.String,
+     *      org.extex.interpreter.type.dimen.Dimen)
      */
     public void setFontDimen(final String name, final Dimen value) {
 

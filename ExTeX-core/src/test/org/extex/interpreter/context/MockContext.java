@@ -21,14 +21,11 @@ package org.extex.interpreter.context;
 
 import java.util.Iterator;
 
-import org.extex.color.ColorConverter;
 import org.extex.font.CoreFontFactory;
 import org.extex.interpreter.Conditional;
 import org.extex.interpreter.Namespace;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.Tokenizer;
-import org.extex.interpreter.context.Color;
-import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.group.GroupInfo;
 import org.extex.interpreter.context.group.GroupType;
 import org.extex.interpreter.context.observer.group.AfterGroupObserver;
@@ -206,7 +203,7 @@ public class MockContext implements Context, TypesetterOptions {
 
     /**
      * @see org.extex.interpreter.context.ContextMark#getBottomMark(
-     *      java.lang.String)
+     *      java.lang.Object)
      */
     public Tokens getBottomMark(final Object name) {
 
@@ -246,17 +243,9 @@ public class MockContext implements Context, TypesetterOptions {
 
     /**
      * @see org.extex.interpreter.context.ContextCode#getCode(
-     *      org.extex.scanner.type.CodeToken)
+     *      org.extex.scanner.type.token.CodeToken)
      */
     public Code getCode(final CodeToken t) throws InterpreterException {
-
-        return null;
-    }
-
-    /**
-     * @see org.extex.interpreter.context.ContextColor#getColorConverter()
-     */
-    public ColorConverter getColorConverter() {
 
         return null;
     }
@@ -323,8 +312,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see org.extex.interpreter.context.ContextMark#getFirstMark(
-     *      java.lang.String)
+     * @see org.extex.interpreter.context.ContextMark#getFirstMark(java.lang.Object)
      */
     public Tokens getFirstMark(final Object name) {
 
@@ -504,7 +492,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see org.extex.interpreter.context.ContextMark#getSplitBottomMark(java.lang.String)
+     * @see org.extex.interpreter.context.ContextMark#getSplitBottomMark(java.lang.Object)
      */
     public Tokens getSplitBottomMark(final Object name) {
 
@@ -512,7 +500,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see org.extex.interpreter.context.ContextMark#getSplitFirstMark(java.lang.String)
+     * @see org.extex.interpreter.context.ContextMark#getSplitFirstMark(java.lang.Object)
      */
     public Tokens getSplitFirstMark(final Object name) {
 
@@ -560,7 +548,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see org.extex.interpreter.context.ContextMark#getTopMark(java.lang.String)
+     * @see org.extex.interpreter.context.ContextMark#getTopMark(java.lang.Object)
      */
     public Tokens getTopMark(final Object name) {
 
@@ -651,7 +639,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see org.extex.interpreter.context.Context#pushDirection(org.extex.interpreter.context.Direction)
+     * @see org.extex.interpreter.context.Context#pushDirection(org.extex.interpreter.context.tc.Direction)
      */
     public void pushDirection(final Direction dir) {
 
@@ -659,7 +647,9 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see org.extex.interpreter.context.Context#set(org.extex.interpreter.context.Color)
+     * @see org.extex.interpreter.context.Context#set(
+     *      org.extex.interpreter.context.Color,
+     *      boolean)
      */
     public void set(final Color color, final boolean global)
             throws ConfigurationException {
@@ -668,7 +658,9 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see org.extex.interpreter.context.Context#set(org.extex.interpreter.context.Direction)
+     * @see org.extex.interpreter.context.Context#set(
+     *      org.extex.interpreter.context.tc.Direction,
+     *      boolean)
      */
     public void set(final Direction direction, final boolean global)
             throws ConfigurationException {
@@ -677,7 +669,9 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see org.extex.interpreter.context.Context#set(org.extex.interpreter.type.font.Font)
+     * @see org.extex.interpreter.context.Context#set(
+     *      org.extex.interpreter.type.font.Font,
+     *      boolean)
      */
     public void set(final Font font, final boolean global)
             throws ConfigurationException {
@@ -686,7 +680,9 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see org.extex.interpreter.context.Context#set(org.extex.language.Language)
+     * @see org.extex.interpreter.context.Context#set(
+     *      org.extex.language.Language,
+     *      boolean)
      */
     public void set(final Language language, final boolean global)
             throws ConfigurationException {
@@ -708,7 +704,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see org.extex.interpreter.context.Context#set(org.extex.interpreter.context.TypesettingContext, boolean)
+     * @see org.extex.interpreter.context.Context#set(org.extex.interpreter.context.tc.TypesettingContext, boolean)
      */
     public void set(final TypesettingContext context, final boolean global) {
 
@@ -741,7 +737,10 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see org.extex.interpreter.context.ContextCode#setCode(org.extex.scanner.type.CodeToken, org.extex.interpreter.type.Code, boolean)
+     * @see org.extex.interpreter.context.ContextCode#setCode(
+     *      org.extex.scanner.type.token.CodeToken,
+     *      org.extex.interpreter.type.Code,
+     *      boolean)
      */
     public void setCode(final CodeToken t, final Code code, final boolean global)
             throws InterpreterException {
@@ -760,8 +759,8 @@ public class MockContext implements Context, TypesetterOptions {
 
     /**
      * @see org.extex.typesetter.TypesetterOptions#setCountOption(
-     *       java.lang.String,
-     *       org.extex.interpreter.type.count.FixedCount)
+     *      java.lang.String,
+     *      long)
      */
     public void setCountOption(final String name, final long value)
             throws GeneralException {
@@ -804,7 +803,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see org.extex.interpreter.context.ContextFont#setFontFactory(org.extex.font.FontFactory)
+     * @see org.extex.interpreter.context.ContextFont#setFontFactory(
+     *      org.extex.font.CoreFontFactory)
      */
     public void setFontFactory(final CoreFontFactory fontFactory) {
 
@@ -838,7 +838,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see org.extex.interpreter.context.Context#setInteraction(org.extex.interpreter.Interaction)
+     * @see org.extex.interpreter.context.ContextInteraction#setInteraction(
+     *      org.extex.interpreter.interaction.Interaction)
      */
     public void setInteraction(final Interaction interaction)
             throws InterpreterException {
@@ -848,7 +849,7 @@ public class MockContext implements Context, TypesetterOptions {
 
     /**
      * @see org.extex.interpreter.context.Context#setLanguageManager(
-     *      org.extex.hyphenation.HyphenationManager)
+     *      org.extex.language.LanguageManager)
      */
     public void setLanguageManager(final LanguageManager manager) {
 
@@ -857,7 +858,9 @@ public class MockContext implements Context, TypesetterOptions {
 
     /**
      * @see org.extex.interpreter.context.Context#setLccode(
-     *      org.extex.type.UnicodeChar, org.extex.type.UnicodeChar)
+     *      org.extex.type.UnicodeChar,
+     *      org.extex.type.UnicodeChar,
+     *      boolean)
      */
     public void setLccode(final UnicodeChar uc, final UnicodeChar lc,
             final boolean global) {
@@ -866,7 +869,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see org.extex.interpreter.context.Context#setMagnification(long)
+     * @see org.extex.interpreter.context.Context#setMagnification(long, boolean)
      */
     public void setMagnification(final long mag, boolean lock)
             throws HelpingException {
@@ -940,7 +943,9 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see org.extex.interpreter.context.ContextMark#setSplitMark(java.lang.String, org.extex.interpreter.type.tokens.Tokens)
+     * @see org.extex.interpreter.context.ContextMark#setSplitMark(
+     *      java.lang.Object,
+     *      org.extex.interpreter.type.tokens.Tokens)
      */
     public void setSplitMark(final Object name, final Tokens mark) {
 
@@ -976,7 +981,7 @@ public class MockContext implements Context, TypesetterOptions {
 
     /**
      * @see org.extex.interpreter.context.Context#setTypesettingContext(
-     *       org.extex.interpreter.context.TypesettingContext)
+     *       org.extex.interpreter.context.tc.TypesettingContext)
      */
     public void setTypesettingContext(final TypesettingContext context) {
 
@@ -986,7 +991,8 @@ public class MockContext implements Context, TypesetterOptions {
     /**
      * @see org.extex.interpreter.context.Context#setUccode(
      *      org.extex.type.UnicodeChar,
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.type.UnicodeChar,
+     *      boolean)
      */
     public void setUccode(final UnicodeChar lc, final UnicodeChar uc,
             final boolean global) {

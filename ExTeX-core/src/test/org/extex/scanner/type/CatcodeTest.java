@@ -591,7 +591,7 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.CatcodeVisitor#visitComment(
+     * @see org.extex.scanner.type.CatcodeVisitor#visitComment(
      *      java.lang.final Object,
      *      java.lang.Object, java.lang.final Object)
      */
@@ -605,7 +605,7 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.CatcodeVisitor#visitCr(
+     * @see org.extex.scanner.type.CatcodeVisitor#visitCr(
      *      java.lang.final Object,
      *      java.lang.Object, java.lang.final Object)
      */
@@ -619,7 +619,7 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.CatcodeVisitor#visitEscape(
+     * @see org.extex.scanner.type.CatcodeVisitor#visitEscape(
      *      java.lang.final Object,
      *      java.lang.Object, java.lang.final Object)
      */
@@ -633,7 +633,7 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.CatcodeVisitor#visitIgnore(
+     * @see org.extex.scanner.type.CatcodeVisitor#visitIgnore(
      *      java.lang.final Object,
      *      java.lang.Object, java.lang.final Object)
      */
@@ -647,7 +647,7 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.CatcodeVisitor#visitInvalid(
+     * @see org.extex.scanner.type.CatcodeVisitor#visitInvalid(
      *      java.lang.final Object,
      *      java.lang.Object, java.lang.final Object)
      */
@@ -661,7 +661,7 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.CatcodeVisitor#visitLeftBrace(
+     * @see org.extex.scanner.type.CatcodeVisitor#visitLeftBrace(
      *      java.lang.final Object,
      *      java.lang.Object, java.lang.final Object)
      */
@@ -675,7 +675,7 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.CatcodeVisitor#visitLetter(
+     * @see org.extex.scanner.type.CatcodeVisitor#visitLetter(
      *      java.lang.final Object,
      *      java.lang.Object, java.lang.final Object)
      */
@@ -689,7 +689,7 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.CatcodeVisitor#visitMacroParam(
+     * @see org.extex.scanner.type.CatcodeVisitor#visitMacroParam(
      *      java.lang.final Object,
      *      java.lang.Object, java.lang.final Object)
      */
@@ -703,7 +703,7 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.CatcodeVisitor#visitMathShift(
+     * @see org.extex.scanner.type.CatcodeVisitor#visitMathShift(
      *      java.lang.final Object,
      *      java.lang.Object, java.lang.final Object)
      */
@@ -717,7 +717,7 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.CatcodeVisitor#visitOther(
+     * @see org.extex.scanner.type.CatcodeVisitor#visitOther(
      *      java.lang.final Object,
      *      java.lang.Object, java.lang.final Object)
      */
@@ -731,7 +731,7 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.CatcodeVisitor#visitRightBrace(
+     * @see org.extex.scanner.type.CatcodeVisitor#visitRightBrace(
      *      java.lang.final Object,
      *      java.lang.Object, java.lang.final Object)
      */
@@ -745,7 +745,7 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.CatcodeVisitor#visitSpace(
+     * @see org.extex.scanner.type.CatcodeVisitor#visitSpace(
      *      java.lang.final Object,
      *      java.lang.Object, java.lang.final Object)
      */
@@ -759,7 +759,7 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.CatcodeVisitor#visitSubMark(
+     * @see org.extex.scanner.type.CatcodeVisitor#visitSubMark(
      *      java.lang.final Object,
      *      java.lang.Object, java.lang.final Object)
      */
@@ -773,7 +773,7 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.CatcodeVisitor#visitSupMark(
+     * @see org.extex.scanner.type.CatcodeVisitor#visitSupMark(
      *      java.lang.final Object,
      *      java.lang.Object, java.lang.final Object)
      */
@@ -787,9 +787,8 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     }
 
     /**
-     * @see de.dante.extex.scanner.type.CatcodeVisitor#visitTabMark(
-     *      java.lang.final Object,
-     *      java.lang.Object, java.lang.final Object)
+     * @see org.extex.scanner.type.CatcodeVisitor#visitTabMark(
+     *      java.lang.Object, java.lang.Object, java.lang.Object)
      */
     public final Object visitTabMark(final Object arg1, final Object arg2,
             final Object uc) {

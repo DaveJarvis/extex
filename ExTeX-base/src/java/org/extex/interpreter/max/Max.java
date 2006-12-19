@@ -120,7 +120,6 @@ import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.i18n.LocalizerFactory;
 import org.extex.util.framework.logger.LogEnabled;
 
-
 /**
  * This is a reference implementation for a <b>MA</b>cro e<b>X</b>pander. The
  * macro expander is the core engine driving <logo>ExTeX</logo>.
@@ -1028,7 +1027,10 @@ public abstract class Max
      *  of the format
      *
      * @see org.extex.interpreter.Interpreter#loadFormat(
-     *      java.io.InputStream, java.lang.String)
+     *      java.io.InputStream,
+     *      java.lang.String,
+     *      java.lang.String,
+     *      java.lang.String)
      */
     public void loadFormat(final InputStream stream, final String fmt,
             final String contextType, final String languageType)
@@ -1323,7 +1325,7 @@ public abstract class Max
 
     /**
      * @see org.extex.interpreter.Interpreter#setFontFactory(
-     *      org.extex.font.FontFactory)
+     *      org.extex.font.CoreFontFactory)
      */
     public void setFontFactory(final CoreFontFactory fontFactory) {
 

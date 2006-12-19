@@ -810,7 +810,7 @@ public class TtfTableCMAP extends AbstractXtfTable
     }
 
     /**
-     * @see de.dante.extex.unicodeFont.format.xtf.XtfTable#getShortcur()
+     * @see de.dante.extex.unicodeFont.format.xtf.XtfTable#getShortcut()
      */
     public String getShortcut() {
 
@@ -885,7 +885,7 @@ public class TtfTableCMAP extends AbstractXtfTable
     // --------------------------------------------------
 
     /**
-     * cmap index entry
+     * cmap index entry.
      *
      * <table BORDER="1">
      *   <tbody>
@@ -1303,7 +1303,7 @@ public class TtfTableCMAP extends AbstractXtfTable
         }
 
         /**
-         * @see org.extex.font.type.ttf.TTFTableCMAP.Format#mapCharCode(int)
+         * @see de.dante.extex.unicodeFont.format.xtf.TtfTableCMAP.Format#mapCharCode(int)
          */
         public int mapCharCode(final int charCode) {
 
@@ -1416,7 +1416,7 @@ public class TtfTableCMAP extends AbstractXtfTable
         }
 
         /**
-         * @see org.extex.font.type.ttf.TTFTableCMAP.Format#mapCharCode(int)
+         * @see de.dante.extex.unicodeFont.format.xtf.TtfTableCMAP.Format#mapCharCode(int)
          */
         public int mapCharCode(final int charCode) {
 
@@ -1577,7 +1577,7 @@ public class TtfTableCMAP extends AbstractXtfTable
         }
 
         /**
-         * @see org.extex.font.type.ttf.TTFTableCMAP.Format#mapCharCode(int)
+         * @see de.dante.extex.unicodeFont.format.xtf.TtfTableCMAP.Format#mapCharCode(int)
          */
         public int mapCharCode(final int charCode) {
 
@@ -1821,7 +1821,7 @@ public class TtfTableCMAP extends AbstractXtfTable
         }
 
         /**
-         * @see org.extex.font.type.ttf.TTFTableCMAP.Format#mapCharCode(int)
+         * @see de.dante.extex.unicodeFont.format.xtf.TtfTableCMAP.Format#mapCharCode(int)
          */
         public int mapCharCode(final int charCode) {
 
@@ -1892,7 +1892,7 @@ public class TtfTableCMAP extends AbstractXtfTable
         }
 
         /**
-         * @see org.extex.font.type.ttf.TTFTableCMAP.Format#mapCharCode(int)
+         * @see de.dante.extex.unicodeFont.format.xtf.TtfTableCMAP.Format#mapCharCode(int)
          */
         public int mapCharCode(final int charCode) {
 
@@ -1950,7 +1950,7 @@ public class TtfTableCMAP extends AbstractXtfTable
         }
 
         /**
-         * @see org.extex.font.type.ttf.TTFTableCMAP.Format#mapCharCode(int)
+         * @see de.dante.extex.unicodeFont.format.xtf.TtfTableCMAP.Format#mapCharCode(int)
          */
         public int mapCharCode(final int charCode) {
 
@@ -2004,7 +2004,7 @@ public class TtfTableCMAP extends AbstractXtfTable
         }
 
         /**
-         * @see org.extex.font.type.ttf.TTFTableCMAP.Format#mapCharCode(int)
+         * @see de.dante.extex.unicodeFont.format.xtf.TtfTableCMAP.Format#mapCharCode(int)
          */
         public int mapCharCode(final int charCode) {
 

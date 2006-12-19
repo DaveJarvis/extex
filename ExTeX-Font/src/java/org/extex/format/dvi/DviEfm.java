@@ -153,7 +153,7 @@ public class DviEfm implements DviInterpreter, DviExecuteCommand {
     }
 
     /**
-     * @see org.extex.format.dvi.DVIInterpreter#interpret(
+     * @see org.extex.format.dvi.DviInterpreter#interpret(
      *      org.extex.util.file.random.RandomAccessR)
      */
     public void interpret(final RandomAccessR rar) throws IOException,

@@ -63,7 +63,7 @@ public class OtfTableMMSD extends AbstractXtfTable
         return XtfReader.MMSD;
     }
     /**
-     * @see de.dante.extex.unicodeFont.format.xtf.XtfTable#getShortcur()
+     * @see de.dante.extex.unicodeFont.format.xtf.XtfTable#getShortcut()
      */
     public String getShortcut() {
 

@@ -691,7 +691,7 @@ import org.extex.util.resource.ResourceFinder;
  *  above:
  * </p>
  * <pre class="CLIsyntax">
- *   java de.dante.extex.ExTeX &lang;options&rang; &lang;file&rang; </pre>
+ *   java org.extex.ExTeX &lang;options&rang; &lang;file&rang; </pre>
  * <p>
  *  The result should be the same as the invocation of the wrapper.
  * </p>

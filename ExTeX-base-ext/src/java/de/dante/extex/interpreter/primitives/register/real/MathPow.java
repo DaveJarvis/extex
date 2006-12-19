@@ -30,7 +30,7 @@ import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.real.RealConvertible;
 
 /**
- * Math. the value of the first argument raised
+ * Math. The value of the first argument raised
  * to the power of the second argument.
  *
  * <p>Example</p>

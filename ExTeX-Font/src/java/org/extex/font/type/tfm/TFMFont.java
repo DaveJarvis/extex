@@ -353,7 +353,7 @@ public class TFMFont
     }
 
     //    /**
-    //     * @see de.dante.extex.font.type.FontMetric#getFontMetric()
+    //     * @see org.extex.font.type.FontMetric#getFontMetric()
     //     */
     //    public Element getFontMetric() {
     //

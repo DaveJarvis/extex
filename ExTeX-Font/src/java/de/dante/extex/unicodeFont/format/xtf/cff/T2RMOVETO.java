@@ -54,7 +54,7 @@ public class T2RMOVETO extends T2PathConstruction {
     }
 
     /**
-     * @see org.extex.font.type.ttf.cff.T2CharString#getBytes()
+     * @see de.dante.extex.unicodeFont.format.xtf.cff.T2CharString#getBytes()
      */
     public short[] getBytes() {
 
@@ -62,7 +62,7 @@ public class T2RMOVETO extends T2PathConstruction {
     }
 
     /**
-     * @see org.extex.font.type.ttf.cff.T2Operator#getName()
+     * @see de.dante.extex.unicodeFont.format.xtf.cff.T2Operator#getName()
      */
     public String getName() {
 

@@ -31,7 +31,7 @@ import org.extex.typesetter.Typesetter;
 
 /**
  * This primitive initiates the loading of Java code and implements the
- * primitive <tt>\javaload</tt>
+ * primitive <tt>\javaload</tt>.
  *
  * <doc name="javaload">
  * <h3>The Primitive <tt>\javaload</tt></h3>
@@ -61,7 +61,7 @@ import org.extex.typesetter.Typesetter;
  * <p>
  *  The following example illustrates the use of this primitive:
  * <pre class="TeXSample">
- *   \javaload{de.dante.extex.extensions.Basic} </pre>
+ *   \javaload{org.extex.extensions.Basic} </pre>
  * </p>
  * <p>
  *  For the loading of the Java class it is necessary that this Java
@@ -70,10 +70,10 @@ import org.extex.typesetter.Typesetter;
  * <pre class="JavaSample">
  *   <b>package</b> my.package;
  *
- *   <b>import</b> de.dante.extex.interpreter.contect.Context;
- *   <b>import</b> de.dante.extex.interpreter.primitives.dynamic.java.Loadable;
- *   <b>import</b> de.dante.extex.typesetter.Typesetter;
- *   <b>import</b> de.dante.util.GeneralException;
+ *   <b>import</b> org.extex.interpreter.contect.Context;
+ *   <b>import</b> org.extex.interpreter.primitives.dynamic.java.Loadable;
+ *   <b>import</b> org.extex.typesetter.Typesetter;
+ *   <b>import</b> org.extex.util.exception.GeneralException;
  *
  *   <b>class</b> MyModule <b>implements</b> Loadable {
  *

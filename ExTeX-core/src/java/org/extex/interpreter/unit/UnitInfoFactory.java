@@ -37,7 +37,7 @@ import org.extex.util.framework.configuration.exception.ConfigurationException;
  *  sub-configuration to be used. The name of the class is given as the argument
  *  <tt>class</tt> of the sub-configuration as shown below.
  *  <pre>
- *   &lt;unit class="de.dante.extex.interpreter.unit.tex.Setup"&gt;
+ *   &lt;unit class="org.extex.interpreter.unit.tex.Setup"&gt;
  *   ...
  *  </pre>
  * </p>

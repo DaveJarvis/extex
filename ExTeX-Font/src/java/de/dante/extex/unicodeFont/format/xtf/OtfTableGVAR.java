@@ -63,7 +63,7 @@ public class OtfTableGVAR extends AbstractXtfTable
         return XtfReader.GVAR;
     }
     /**
-     * @see de.dante.extex.unicodeFont.format.xtf.XtfTable#getShortcur()
+     * @see de.dante.extex.unicodeFont.format.xtf.XtfTable#getShortcut()
      */
     public String getShortcut() {
 

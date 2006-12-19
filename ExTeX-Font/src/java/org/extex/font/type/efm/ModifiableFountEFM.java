@@ -82,7 +82,7 @@ public class ModifiableFountEFM implements ModifiableFount, Serializable {
      * Create a new object.
      *
      * @param fk        the fount key
-     * @param tfmfont   the tfm font
+     * @param efmfont   the efm font
      */
     public ModifiableFountEFM(final FountKey fk, final EfmReader efmfont) {
 
@@ -180,7 +180,7 @@ public class ModifiableFountEFM implements ModifiableFount, Serializable {
     private HashMap fontdimen = new HashMap();
 
     /**
-     * @see org.extex.font.type.ModifiableFount#setFontDimen(java.lang.String, de.dante.extex.interpreter.type.dimen.Dimen)
+     * @see org.extex.font.type.ModifiableFount#setFontDimen(java.lang.String, org.extex.interpreter.type.dimen.Dimen)
      */
     public void setFontDimen(final String key, final Dimen value) {
 
@@ -193,7 +193,7 @@ public class ModifiableFountEFM implements ModifiableFount, Serializable {
     private Map glyphmap = new HashMap();
 
     /**
-     * @see org.extex.font.type.Fount#getGlyph(org.extex.type.UnicodeChar)
+     * @see org.extex.font.type.InternalFount#getGlyph(org.extex.type.UnicodeChar)
      */
     public Glyph getGlyph(final UnicodeChar c) {
 
@@ -360,15 +360,6 @@ public class ModifiableFountEFM implements ModifiableFount, Serializable {
     public int getCheckSum() {
 
         return font.getChecksum();
-    }
-
-    /**
-     * @see org.extex.font.type.Fount#getBoundingBox()
-     */
-    public BoundingBox getBoundingBox() {
-
-        //      TODO incomplete
-        return null;
     }
 
     /**

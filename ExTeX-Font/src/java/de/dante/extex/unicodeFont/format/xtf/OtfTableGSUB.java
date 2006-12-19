@@ -96,7 +96,7 @@ public class OtfTableGSUB extends AbstractXtfTable
         return XtfReader.GSUB;
     }
     /**
-     * @see de.dante.extex.unicodeFont.format.xtf.XtfTable#getShortcur()
+     * @see de.dante.extex.unicodeFont.format.xtf.XtfTable#getShortcut()
      */
     public String getShortcut() {
 

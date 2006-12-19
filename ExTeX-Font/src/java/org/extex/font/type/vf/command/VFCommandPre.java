@@ -27,9 +27,8 @@ import org.extex.font.type.vf.exception.VFWrongCodeException;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 
-
 /**
- * VFCommand: pre
+ * VFCommand: pre.
  *
  * <p>
  * A preamble appears at the beginning, followed by a sequence of character
@@ -51,26 +50,25 @@ import org.extex.util.xml.XMLStreamWriter;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-
 public class VFCommandPre extends VFCommand {
 
     /**
-     * the identification
+     * the identification.
      */
     private int identification;
 
     /**
-     * the comment
+     * the comment.
      */
     private String comment;
 
     /**
-     * the checksum
+     * the checksum.
      */
     private int checksum;
 
     /**
-     * the designsize
+     * the designsize.
      */
     private TFMFixWord designsize;
 

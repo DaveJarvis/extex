@@ -95,7 +95,7 @@ public class TtfTableFPGM extends AbstractXtfTable
     }
 
     /**
-     * @see de.dante.extex.unicodeFont.format.xtf.XtfTable#getShortcur()
+     * @see de.dante.extex.unicodeFont.format.xtf.XtfTable#getShortcut()
      */
     public String getShortcut() {
 

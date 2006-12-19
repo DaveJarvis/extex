@@ -26,7 +26,6 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.NodeList;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-
 /**
  * This is the derived class for a list maker in restricted horizontal mode.
  *
@@ -64,6 +63,5 @@ public class RestrictedHorizontalListMaker extends HorizontalListMaker {
 
         return getNodes(); //TODO gene: correct?
     }
-
 
 }

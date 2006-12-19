@@ -42,7 +42,6 @@ import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
-
 /**
  * This class provides a link between the typesetter and the interpreter for the
  * output routine. In <logo>TeX</logo> the output routine is implemented in
@@ -204,7 +203,7 @@ public class TeXOutputRoutine implements OutputRoutine {
     }
 
     /**
-     * @see org.extex.typesetter.OutputRoutine#output(
+     * @see org.extex.typesetter.output.OutputRoutine#output(
      *      org.extex.typesetter.type.page.Page,
      *      org.extex.backend.BackendDriver)
      */

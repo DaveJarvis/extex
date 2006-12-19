@@ -1228,7 +1228,7 @@ public class GroupImpl implements Group {
 
     /**
      * @see org.extex.interpreter.context.impl.Group#setTypesettingContext(
-     *      org.extex.interpreter.context.TypesettingContext,
+     *      org.extex.interpreter.context.tc.TypesettingContext,
      *      boolean)
      */
     public void setTypesettingContext(final TypesettingContext context,

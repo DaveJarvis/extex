@@ -49,7 +49,7 @@ public abstract class AbstractXtfTable implements XtfTable {
     }
 
     /**
-     * @see org.extex.font.type.ttf.TTFTable#getTableMap()
+     * @see de.dante.extex.unicodeFont.format.xtf.XtfTable#getTableMap()
      */
     public XtfTableMap getTableMap() {
 
@@ -57,7 +57,7 @@ public abstract class AbstractXtfTable implements XtfTable {
     }
 
     /**
-     * @see org.extex.font.type.ttf.TTFTable#getInitOrder()
+     * @see de.dante.extex.unicodeFont.format.xtf.XtfTable#getInitOrder()
      */
     public int getInitOrder() {
 
@@ -65,7 +65,7 @@ public abstract class AbstractXtfTable implements XtfTable {
     }
 
     /**
-     * @see org.extex.font.type.ttf.TTFTable#init()
+     * @see de.dante.extex.unicodeFont.format.xtf.XtfTable#init()
      */
     public void init() throws IOException {
 

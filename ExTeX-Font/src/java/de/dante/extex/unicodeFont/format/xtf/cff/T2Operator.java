@@ -134,7 +134,7 @@ public abstract class T2Operator extends T2CharString implements XMLWriterConver
     }
 
     /**
-     * @see org.extex.font.type.ttf.cff.T2CharString#isOperator()
+     * @see de.dante.extex.unicodeFont.format.xtf.cff.T2CharString#isOperator()
      */
     public boolean isOperator() {
 

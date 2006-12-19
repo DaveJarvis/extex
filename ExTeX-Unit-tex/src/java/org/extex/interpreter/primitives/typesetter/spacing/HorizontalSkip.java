@@ -34,7 +34,7 @@ import org.extex.typesetter.Typesetter;
 public interface HorizontalSkip {
 
     /**
-     * This method acquires horizontal glue.´
+     * This method acquires horizontal glue.
      *
      * @param context the interpreter context
      * @param source the source for new tokens

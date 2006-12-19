@@ -37,7 +37,7 @@ public class JavaloadTest extends NoFlagsPrimitiveTester {
     public JavaloadTest(final String arg) {
 
         super(arg, "javaload",
-                "{de.dante.extex.interpreter.primitives.dynamic.java.JavaloadSensor}");
+                "{org.extex.interpreter.primitives.dynamic.java.JavaloadSensor}");
         setConfig("extex-jx");
     }
 
@@ -54,7 +54,7 @@ public class JavaloadTest extends NoFlagsPrimitiveTester {
                 //--- input code ---
                 DEFINE_BRACES
                         + "\\javaload"
-                        + "{de.dante.extex.interpreter.primitives.dynamic.java.JavaloadSensor}"
+                        + "{org.extex.interpreter.primitives.dynamic.java.JavaloadSensor}"
                         + " \\end",
                 //--- log message ---
                 "");

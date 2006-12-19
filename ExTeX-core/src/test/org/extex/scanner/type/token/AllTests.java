@@ -21,7 +21,6 @@ package org.extex.scanner.type.token;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
-
 /**
  * Test suite for token types.
  *
@@ -33,7 +32,7 @@ public class AllTests {
     public static Test suite() {
 
         TestSuite suite = new TestSuite(
-                "Test for de.dante.extex.scanner.type.token");
+                "Test for org.extex.scanner.type.token");
         //$JUnit-BEGIN$
         suite.addTestSuite(MathShiftTokenTest.class);
         suite.addTestSuite(RightBraceTokenTest.class);

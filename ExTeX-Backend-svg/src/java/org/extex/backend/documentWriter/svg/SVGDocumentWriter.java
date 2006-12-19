@@ -178,14 +178,6 @@ public class SVGDocumentWriter
     }
 
     /**
-     * @see org.extex.backend.documentWriter.DocumentWriter#getPages()
-     */
-    public int getPages() {
-
-        return shippedPages;
-    }
-
-    /**
      * Set the Attribute for an element with sp, bp, mm.
      * @param name      the attribute-name
      * @param dimen     the dimen
@@ -202,7 +194,7 @@ public class SVGDocumentWriter
     }
 
     //    /**
-    //     * @see de.dante.extex.backend.documentWriter.DocumentWriter#setOutputStream(java.io.OutputStream)
+    //     * @see org.extex.backend.documentWriter.DocumentWriter#setOutputStream(java.io.OutputStream)
     //     */
     //    public void setOutputStream(final OutputStream outStream) {
     //
@@ -240,7 +232,7 @@ public class SVGDocumentWriter
 
     /**
      * @see org.extex.backend.documentWriter.DocumentWriter#shipout(
-     *      org.extex.typesetter.type.NodeList)
+     *      org.extex.typesetter.type.page.Page)
      */
     public int shipout(final Page page) throws DocumentWriterException,
             GeneralException {

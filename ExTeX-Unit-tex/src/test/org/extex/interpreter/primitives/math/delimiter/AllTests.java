@@ -33,7 +33,7 @@ public class AllTests {
     public static Test suite() {
 
         TestSuite suite = new TestSuite(
-                "Test for de.dante.extex.interpreter.primitives.math.delimiter");
+                "Test for org.extex.interpreter.primitives.math.delimiter");
         //$JUnit-BEGIN$
         suite.addTestSuite(DelcodeTest.class);
         suite.addTestSuite(DelimiterTest.class);

@@ -31,8 +31,6 @@ import org.extex.typesetter.type.node.HorizontalListNode;
 import org.extex.typesetter.type.node.factory.NodeFactory;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-
-
 /**
  * Interface for the Manager of a list maker.
  *

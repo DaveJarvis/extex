@@ -275,7 +275,7 @@ public class TFMHeaderArray
     }
 
     /**
-     * @see org.extex.font.type.PlFormat#toPL(java.io.OutputStream)
+     * @see org.extex.font.type.PlFormat#toPL(org.extex.font.type.PlWriter)
      */
     public void toPL(final PlWriter out) throws IOException {
 

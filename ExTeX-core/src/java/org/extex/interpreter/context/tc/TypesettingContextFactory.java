@@ -36,7 +36,7 @@ import org.extex.util.framework.configuration.exception.ConfigurationMissingAttr
 
 /**
  * This class provides a factory for a
- * {@link org.extex.interpreter.context.TypesettingContext
+ * {@link org.extex.interpreter.context.tc.TypesettingContext
  *  TypesettingContext}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>

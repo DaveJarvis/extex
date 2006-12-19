@@ -103,7 +103,7 @@ public interface ContextExtension extends Serializable {
 
     /**
      * Setter for the {@link de.dante.extex.interpreter.type.pair.Pair pair}
-     * register in the current group. pair registers are named, either with a
+     * register in the current group. Pair registers are named, either with a
      * number or an arbitrary string.
      *
      * @param name the name or the number of the register
@@ -135,7 +135,7 @@ public interface ContextExtension extends Serializable {
 
     /**
      * Setter for the {@link de.dante.extex.interpreter.type.transform.Transform transform}
-     * register in the current group. transform registers are named, either with a
+     * register in the current group. Transform registers are named, either with a
      * number or an arbitrary string.
      *
      * @param name the name or the number of the register

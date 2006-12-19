@@ -76,7 +76,7 @@ public abstract class T2TDOBoolean extends T2TopDICTOperator {
     private boolean value;
 
     /**
-     * @see org.extex.font.type.ttf.cff.T2CharString#getBytes()
+     * @see de.dante.extex.unicodeFont.format.xtf.cff.T2CharString#getBytes()
      */
     public short[] getBytes() {
 

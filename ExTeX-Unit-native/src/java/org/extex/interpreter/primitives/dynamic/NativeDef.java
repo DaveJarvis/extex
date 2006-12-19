@@ -119,9 +119,9 @@ import org.extex.util.framework.logger.LogEnabled;
  *
  * <pre class="Configuration">
  *  &lt;define name="nativedef"
- *          class="de.dante.extex.interpreter.primitives.dynamic.NativeDef"&gt;
+ *          class="org.extex.interpreter.primitives.dynamic.NativeDef"&gt;
  *    &lt;load name="java"
- *          class="de.dante.extex.interpreter.primitives.dynamic.java.JavaDef"/&gt;
+ *          class="org.extex.interpreter.primitives.dynamic.java.JavaDef"/&gt;
  *  &lt;/define&gt;
  * </pre>
  *

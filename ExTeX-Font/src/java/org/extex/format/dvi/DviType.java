@@ -63,7 +63,6 @@ import org.extex.type.UnicodeChar;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-
 /**
  * DviType.
  *
@@ -196,7 +195,7 @@ public class DviType implements DviInterpreter, DviExecuteCommand {
     private double conv;
 
     /**
-     * @see org.extex.format.dvi.DVIInterpreter#interpret(
+     * @see org.extex.format.dvi.DviInterpreter#interpret(
      *      org.extex.util.file.random.RandomAccessR)
      */
     public void interpret(final RandomAccessR rar) throws IOException,

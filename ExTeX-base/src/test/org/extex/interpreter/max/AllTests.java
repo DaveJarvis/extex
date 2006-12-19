@@ -38,7 +38,7 @@ public class AllTests {
     public static Test suite() {
 
         TestSuite suite = new TestSuite(
-                "Test for de.dante.extex.interpreter.max");
+                "Test for org.extex.interpreter.max");
         //$JUnit-BEGIN$
         suite.addTestSuite(MaxTest.class);
         suite.addTestSuite(ScanDimenTest.class);

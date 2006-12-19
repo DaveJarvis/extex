@@ -30,7 +30,7 @@ import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.real.RealConvertible;
 
 /**
- * Math. the correctly rounded positive square root
+ * Math. The correctly rounded positive square root
  * of a real value.
  *
  * <p>Example</p>

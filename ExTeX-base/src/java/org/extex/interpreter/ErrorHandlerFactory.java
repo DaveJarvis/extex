@@ -42,14 +42,14 @@ import org.extex.util.framework.configuration.exception.ConfigurationException;
  *  <tt>class</tt> of the sub-configuration as shown below.
  *  <pre>
  *   &lt;ErrorHandler default="ExTeX"&gt;
- *     &lt;ExTeX class="de.dante.extex.main.errorHandler.ErrorHandlerImpl"&gt;
- *       &lt;EditHandler class="de.dante.extex.main.errorHandler.editHandler.EditHandlerTeXImpl"/&gt;
+ *     &lt;ExTeX class="org.extex.main.errorHandler.ErrorHandlerImpl"&gt;
+ *       &lt;EditHandler class="org.extex.main.errorHandler.editHandler.EditHandlerTeXImpl"/&gt;
  *     &lt;/ExTeX&gt;
- *     &lt;TeX class="de.dante.extex.main.errorHandler.ErrorHandlerTeXImpl"&gt;
- *       &lt;EditHandler class="de.dante.extex.main.errorHandler.editHandler.EditHandlerTeXImpl"/&gt;
+ *     &lt;TeX class="org.extex.main.errorHandler.ErrorHandlerTeXImpl"&gt;
+ *       &lt;EditHandler class="org.extex.main.errorHandler.editHandler.EditHandlerTeXImpl"/&gt;
  *     &lt;/TeX&gt;
- *     &lt;extex class="de.dante.extex.main.errorHandler.ErrorHandlerImpl"/&gt;
- *     &lt;tex class="de.dante.extex.main.errorHandler.ErrorHandlerTeXImpl"/&gt;
+ *     &lt;extex class="org.extex.main.errorHandler.ErrorHandlerImpl"/&gt;
+ *     &lt;tex class="org.extex.main.errorHandler.ErrorHandlerTeXImpl"/&gt;
  *    &lt;/ErrorHandler&gt;
  *  </pre>
  * </p>

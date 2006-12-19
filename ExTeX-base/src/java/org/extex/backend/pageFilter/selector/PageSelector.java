@@ -27,7 +27,6 @@ import org.extex.backend.exception.BackendMissingTargetException;
 import org.extex.backend.pageFilter.PagePipe;
 import org.extex.typesetter.type.page.Page;
 
-
 /**
  * This page filter selects some pages to be shipped out.
  *
@@ -126,8 +125,8 @@ public class PageSelector implements PagePipe {
     }
 
     /**
-     * @see org.extex.backend.nodeFilter.PagePipe#setOutput(
-     *      org.extex.backend.nodeFilter.PagePipe)
+     * @see org.extex.backend.pageFilter.PagePipe#setOutput(
+     *      org.extex.backend.pageFilter.PagePipe)
      */
     public void setOutput(final PagePipe pipe) {
 
@@ -135,15 +134,16 @@ public class PageSelector implements PagePipe {
     }
 
     /**
-     * @see org.extex.backend.nodeFilter.PagePipe#setParameter(
-     *      java.lang.String, java.lang.String)
+     * @see org.extex.backend.pageFilter.PagePipe#setParameter(
+     *      java.lang.String,
+     *      java.lang.String)
      */
     public void setParameter(final String name, final String value) {
 
     }
 
     /**
-     * @see org.extex.backend.nodeFilter.PagePipe#shipout(
+     * @see org.extex.backend.pageFilter.PagePipe#shipout(
      *      org.extex.typesetter.type.page.Page)
      */
     public void shipout(final Page page) throws BackendException {

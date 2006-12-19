@@ -115,7 +115,7 @@ public class TtfTableKERN extends AbstractXtfTable
     }
 
     /**
-     * @see de.dante.extex.unicodeFont.format.xtf.XtfTable#getShortcur()
+     * @see de.dante.extex.unicodeFont.format.xtf.XtfTable#getShortcut()
      */
     public String getShortcut() {
 
@@ -200,7 +200,7 @@ public class TtfTableKERN extends AbstractXtfTable
     }
 
     /**
-     * Format 0
+     * Format 0.
      * <p>This is the only format that will be properly
      *    interpreted by Windows and OS/2.</p>
      *
@@ -295,7 +295,7 @@ public class TtfTableKERN extends AbstractXtfTable
         }
 
         /**
-         * @see org.extex.font.type.ttf.TTFTableKERN.KernSubtable#getKerningCount()
+         * @see de.dante.extex.unicodeFont.format.xtf.TtfTableKERN.KernSubtable#getKerningCount()
          */
         public int getKerningCount() {
 
@@ -303,7 +303,7 @@ public class TtfTableKERN extends AbstractXtfTable
         }
 
         /**
-         * @see org.extex.font.type.ttf.TTFTableKERN.KernSubtable#getKerning(int)
+         * @see de.dante.extex.unicodeFont.format.xtf.TtfTableKERN.KernSubtable#getKerning(int)
          */
         public KerningPair getKerning(final int i) {
 
@@ -356,7 +356,7 @@ public class TtfTableKERN extends AbstractXtfTable
     }
 
     /**
-     * Format 2
+     * Format 2.
      *
      * <p>This subtable is a two-dimensional array of kerning values.</p>
      *
@@ -424,7 +424,7 @@ public class TtfTableKERN extends AbstractXtfTable
         }
 
         /**
-         * @see org.extex.font.type.ttf.TTFTableKERN.KernSubtable#getKerningCount()
+         * @see de.dante.extex.unicodeFont.format.xtf.TtfTableKERN.KernSubtable#getKerningCount()
          */
         public int getKerningCount() {
 
@@ -432,7 +432,7 @@ public class TtfTableKERN extends AbstractXtfTable
         }
 
         /**
-         * @see org.extex.font.type.ttf.TTFTableKERN.KernSubtable#getKerning(int)
+         * @see de.dante.extex.unicodeFont.format.xtf.TtfTableKERN.KernSubtable#getKerning(int)
          */
         public KerningPair getKerning(final int i) {
 

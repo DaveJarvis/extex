@@ -30,7 +30,7 @@ import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.real.RealConvertible;
 
 /**
- * Math. the closest long to the argument, returned as real.
+ * Math. The closest long to the argument, returned as real.
  *
  * <p>Example</p>
  * <pre>

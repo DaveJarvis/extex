@@ -1156,11 +1156,12 @@ public final class AfmUtil extends AbstractFontUtil {
 
     /**
      * Set the missingGlyph.
+     *
      * @param missingGlyph The missingGlyph to set.
      */
-    public void setMissingGlyph(final boolean missingglyph) {
+    public void setMissingGlyph(final boolean missingGlyph) {
 
-        missingGlyph = missingglyph;
+        this.missingGlyph = missingGlyph;
     }
 
 }

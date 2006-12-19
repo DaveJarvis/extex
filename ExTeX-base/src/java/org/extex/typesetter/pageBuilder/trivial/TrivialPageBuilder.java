@@ -33,7 +33,6 @@ import org.extex.typesetter.type.page.Page;
 import org.extex.typesetter.type.page.PageFactory;
 import org.extex.util.exception.GeneralException;
 
-
 /**
  * This is a first reference implementation of a page builder.
  *
@@ -176,7 +175,7 @@ public class TrivialPageBuilder implements PageBuilder {
 
     /**
      * @see org.extex.typesetter.pageBuilder.PageBuilder#setOutputRoutine(
-     *      org.extex.typesetter.OutputRoutine)
+     *      org.extex.typesetter.output.OutputRoutine)
      */
     public void setOutputRoutine(final OutputRoutine output) {
 
@@ -184,7 +183,7 @@ public class TrivialPageBuilder implements PageBuilder {
 
     /**
      * @see org.extex.typesetter.pageBuilder.PageBuilder#setPageFactory(
-     *      org.extex.typesetter.type.page.PageFactoryImpl)
+     *      org.extex.typesetter.type.page.PageFactory)
      */
     public void setPageFactory(final PageFactory factory) {
 

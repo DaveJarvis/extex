@@ -19,7 +19,6 @@
 
 package org.extex.typesetter.pageBuilder.impl;
 
-
 import org.extex.backend.BackendDriver;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.dimen.FixedDimen;
@@ -33,7 +32,6 @@ import org.extex.typesetter.type.node.VerticalListNode;
 import org.extex.typesetter.type.page.Page;
 import org.extex.typesetter.type.page.PageFactory;
 import org.extex.util.exception.GeneralException;
-
 
 /**
  * This is a first reference implementation of a page builder.
@@ -184,7 +182,7 @@ public class PageBuilderImpl implements PageBuilder {
 
     /**
      * @see org.extex.typesetter.pageBuilder.PageBuilder#setOutputRoutine(
-     *      org.extex.typesetter.OutputRoutine)
+     *      org.extex.typesetter.output.OutputRoutine)
      */
     public void setOutputRoutine(final OutputRoutine output) {
 
@@ -193,7 +191,7 @@ public class PageBuilderImpl implements PageBuilder {
 
     /**
      * @see org.extex.typesetter.pageBuilder.PageBuilder#setPageFactory(
-     *      org.extex.typesetter.type.page.PageFactoryImpl)
+     *      org.extex.typesetter.type.page.PageFactory)
      */
     public void setPageFactory(final PageFactory factory) {
 

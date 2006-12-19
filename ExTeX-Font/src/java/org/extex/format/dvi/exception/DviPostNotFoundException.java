@@ -41,7 +41,7 @@ public class DviPostNotFoundException extends DviException {
     }
 
     /**
-     * Create a new opject.#
+     * Create a new object.
      *
      * @param message   the message
      */

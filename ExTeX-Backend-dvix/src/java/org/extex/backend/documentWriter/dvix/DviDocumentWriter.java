@@ -710,8 +710,8 @@ public class DviDocumentWriter
     }
 
     /**
-     * @see de.dante.util.framework.configuration.Configurable#configure(
-     *      de.dante.util.framework.configuration.Configuration)
+     * @see org.extex.util.framework.configuration.Configurable#configure(
+     *      org.extex.util.framework.configuration.Configuration)
      */
     public void configure(final Configuration config)
             throws ConfigurationException {

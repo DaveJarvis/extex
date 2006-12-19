@@ -275,7 +275,8 @@ public class TfmHeaderArray
     }
 
     /**
-     * @see org.extex.font.type.PlFormat#toPL(java.io.OutputStream)
+     * @see de.dante.extex.unicodeFont.format.pl.PlFormat#toPL(
+     *      de.dante.extex.unicodeFont.format.pl.PlWriter)
      */
     public void toPL(final PlWriter out) throws IOException {
 

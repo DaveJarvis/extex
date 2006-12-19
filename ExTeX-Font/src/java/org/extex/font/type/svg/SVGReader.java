@@ -93,7 +93,7 @@ public class SVGReader implements FontMetric {
     private Element efmelement;
 
     /**
-     * @see org.extex.util.font.type.FontMetric#getFontMetric()
+     * @see org.extex.font.type.FontMetric#getFontMetric()
      */
     public Element getFontMetric() {
 

@@ -30,7 +30,7 @@ import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.real.RealConvertible;
 
 /**
- * Math. the arc cosine of an angle, in the range of 0.0 through pi.
+ * Math. The arc cosine of an angle, in the range of 0.0 through pi.
  *
  * <p>Example</p>
  * <pre>

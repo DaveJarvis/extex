@@ -119,14 +119,6 @@ public class PdfSinglePageDocumentWriter
     }
 
     /**
-     * @see org.extex.backend.documentWriter.DocumentWriter#getPages()
-     */
-    public int getPages() {
-
-        return shippedPages;
-    }
-
-    /**
      * @see org.extex.backend.documentWriter.MultipleDocumentStream#setOutputStreamFactory(
      *      org.extex.backend.outputStream.OutputStreamFactory)
      */
@@ -171,7 +163,7 @@ public class PdfSinglePageDocumentWriter
 
     /**
      * @see org.extex.backend.documentWriter.DocumentWriter#shipout(
-     *      org.extex.typesetter.type.NodeList)
+     *      org.extex.typesetter.type.page.Page)
      */
     public int shipout(final Page page) throws DocumentWriterException {
 

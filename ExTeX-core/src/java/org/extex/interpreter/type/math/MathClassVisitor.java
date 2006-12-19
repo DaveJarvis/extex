@@ -26,7 +26,7 @@ package org.extex.interpreter.type.math;
  * react on the type of some object. Consider a tree composed of different
  * types of nodes all implementing a same base interface and some of them
  * having extensions of the interface. This is the situation for
- * {@link org.extex.typesetter.type.math.MathClass Mathclass}es for which
+ * {@link org.extex.interpreter.type.math.MathClass MathClass}es for which
  * several types exist.
  * </p>
  * <p>

@@ -39,7 +39,7 @@ import org.extex.util.framework.logger.LogEnabled;
 
 /**
  * This primitive initiates the loading of native code and implements the
- * primitive <tt>\nativeload</tt>
+ * primitive <tt>\nativeload</tt>.
  *
  * <doc name="nativeload">
  * <h3>The Primitive <tt>\nativeload</tt></h3>
@@ -91,10 +91,10 @@ import org.extex.util.framework.logger.LogEnabled;
  * <pre class="JavaSample">
  *   <b>package</b> my.package;
  *
- *   <b>import</b> de.dante.extex.interpreter.contect.Context;
- *   <b>import</b> de.dante.extex.interpreter.primitives.dynamic.java.Loadable;
- *   <b>import</b> de.dante.extex.typesetter.Typesetter;
- *   <b>import</b> de.dante.util.GeneralException;
+ *   <b>import</b> org.extex.interpreter.contect.Context;
+ *   <b>import</b> org.extex.interpreter.primitives.dynamic.java.Loadable;
+ *   <b>import</b> org.extex.typesetter.Typesetter;
+ *   <b>import</b> org.extex.util.exception.GeneralException;
  *
  *   <b>class</b> MyModule <b>implements</b> Loadable {
  *
@@ -123,9 +123,9 @@ import org.extex.util.framework.logger.LogEnabled;
  *
  * <pre class="Configuration">
  *  &lt;define name="nativeload"
- *          class="de.dante.extex.interpreter.primitives.dynamic.NativeLoad"&gt;
+ *          class="org.extex.interpreter.primitives.dynamic.NativeLoad"&gt;
  *    &lt;load name="java"
- *          class="de.dante.extex.interpreter.primitives.dynamic.java.JavaLoad"/&gt;
+ *          class="org.extex.interpreter.primitives.dynamic.java.JavaLoad"/&gt;
  *  &lt;/define&gt;
  * </pre>
  *

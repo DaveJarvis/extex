@@ -97,9 +97,9 @@ public class HorizontalListNode extends GenericNodeList {
     }
 
     /**
-     * @see org.extex.typesetter.type.node.AbstractNodeList#add(
-     *      int,
-     *      org.extex.typesetter.type.Node)
+     * @see org.extex.typesetter.type.node.GenericNodeList#add(
+     *     int,
+     *     org.extex.typesetter.type.Node)
      */
     public void add(final int index, final Node node) {
 
@@ -110,7 +110,7 @@ public class HorizontalListNode extends GenericNodeList {
     }
 
     /**
-     * @see org.extex.typesetter.type.node.AbstractNodeList#add(
+     * @see org.extex.typesetter.type.node.GenericNodeList#add(
      *      org.extex.typesetter.type.Node)
      */
     public void add(final Node node) {
@@ -133,7 +133,7 @@ public class HorizontalListNode extends GenericNodeList {
     }
 
     /**
-     * @see org.extex.typesetter.type.node.AbstractNodeList#atShipping(
+     * @see org.extex.typesetter.type.node.GenericNodeList#atShipping(
      *      org.extex.interpreter.context.Context,
      *      org.extex.typesetter.Typesetter,
      *      org.extex.typesetter.type.NodeVisitor,

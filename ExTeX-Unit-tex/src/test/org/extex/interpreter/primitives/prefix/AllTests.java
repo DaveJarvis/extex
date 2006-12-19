@@ -33,7 +33,7 @@ public class AllTests {
     public static Test suite() {
 
         TestSuite suite = new TestSuite(
-                "Test for de.dante.extex.interpreter.primitives.prefix");
+                "Test for org.extex.interpreter.primitives.prefix");
         //$JUnit-BEGIN$
         suite.addTestSuite(GlobalTest.class);
         suite.addTestSuite(ImmediateTest.class);

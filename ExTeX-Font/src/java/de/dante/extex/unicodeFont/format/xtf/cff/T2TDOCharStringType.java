@@ -46,7 +46,7 @@ public class T2TDOCharStringType extends T2TDONumber {
     }
 
     /**
-     * @see org.extex.font.type.ttf.cff.T2Operator#getName()
+     * @see de.dante.extex.unicodeFont.format.xtf.cff.T2Operator#getName()
      */
     public String getName() {
 

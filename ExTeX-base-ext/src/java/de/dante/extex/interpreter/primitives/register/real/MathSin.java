@@ -30,7 +30,7 @@ import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.real.RealConvertible;
 
 /**
- * Math. sinus.
+ * Math. Sinus.
  *
  * <p>Example</p>
  * <pre>

@@ -30,7 +30,7 @@ import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.real.RealConvertible;
 
 /**
- * Math. the smallest (closest to negative infinity) double value
+ * Math. The smallest (closest to negative infinity) double value
  * that is not less than the argument and is equal to a mathematical integer.
  *
  * <p>Example</p>

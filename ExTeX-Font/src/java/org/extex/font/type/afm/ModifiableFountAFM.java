@@ -59,7 +59,7 @@ public class ModifiableFountAFM implements ModifiableFount, Serializable {
      * Create a new object.
      *
      * @param fk        the fount key
-     * @param tfmfont   the tfm font
+     * @param afmfont   the afm font
      */
     public ModifiableFountAFM(final FountKey fk, final AfmFont afmfont) {
 
@@ -127,14 +127,14 @@ public class ModifiableFountAFM implements ModifiableFount, Serializable {
     }
 
     /**
-     * @see org.extex.font.type.ModifiableFount#setFontDimen(java.lang.String, de.dante.extex.interpreter.type.dimen.Dimen)
+     * @see org.extex.font.type.ModifiableFount#setFontDimen(java.lang.String, org.extex.interpreter.type.dimen.Dimen)
      */
     public void setFontDimen(final String key, final Dimen value) {
 
     }
 
     /**
-     * @see org.extex.font.type.Fount#getGlyph(org.extex.type.UnicodeChar)
+     * @see org.extex.font.type.InternalFount#getGlyph(org.extex.type.UnicodeChar)
      */
     public Glyph getGlyph(final UnicodeChar c) {
 
@@ -195,14 +195,6 @@ public class ModifiableFountAFM implements ModifiableFount, Serializable {
     public int getCheckSum() {
 
         return 0;
-    }
-
-    /**
-     * @see org.extex.font.type.Fount#getBoundingBox()
-     */
-    public BoundingBox getBoundingBox() {
-
-        return null;
     }
 
     /**

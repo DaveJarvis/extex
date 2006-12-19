@@ -117,7 +117,7 @@ public class Max1 extends TestCase {
 
         /**
          * @see org.extex.typesetter.ListMaker#addSpace(
-         *      org.extex.interpreter.context.TypesettingContext,
+         *      org.extex.interpreter.context.tc.TypesettingContext,
          *      org.extex.interpreter.type.count.Count)
          */
         public void addSpace(final TypesettingContext typesettingContext,
@@ -164,7 +164,7 @@ public class Max1 extends TestCase {
         /**
          * @see org.extex.typesetter.ListMaker#cr(
          *      org.extex.interpreter.context.Context,
-         *      org.extex.interpreter.context.TypesettingContext,
+         *      org.extex.interpreter.context.tc.TypesettingContext,
          *      org.extex.type.UnicodeChar)
          */
         public void cr(final Context context, final TypesettingContext tc,
@@ -279,7 +279,7 @@ public class Max1 extends TestCase {
         /**
          * @see org.extex.typesetter.ListMaker#letter(
          *      org.extex.interpreter.context.Context,
-         *      org.extex.interpreter.context.TypesettingContext,
+         *      org.extex.interpreter.context.tc.TypesettingContext,
          *      org.extex.type.UnicodeChar,
          *      org.extex.type.Locator)
          */
@@ -515,7 +515,7 @@ public class Max1 extends TestCase {
         /**
          * @see org.extex.typesetter.Typesetter#letter(
          *      Context,
-         *      org.extex.interpreter.context.TypesettingContext,
+         *      org.extex.interpreter.context.tc.TypesettingContext,
          *      org.extex.scanner.type.token.Token)
          */
         public void treatLetter(final TypesettingContext context, final Token t)

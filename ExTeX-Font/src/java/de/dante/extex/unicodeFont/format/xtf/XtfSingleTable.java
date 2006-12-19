@@ -117,7 +117,7 @@ public abstract class XtfSingleTable extends XtfLookupTable {
         }
 
         /**
-         * @see org.extex.font.type.ttf.SingleTable#substitute(int)
+         * @see de.dante.extex.unicodeFont.format.xtf.XtfSingleTable#substitute(int)
          */
         public int substitute(final int glyphId) {
 
@@ -175,7 +175,7 @@ public abstract class XtfSingleTable extends XtfLookupTable {
         }
 
         /**
-         * @see org.extex.font.type.ttf.SingleTable#substitute(int)
+         * @see de.dante.extex.unicodeFont.format.xtf.XtfSingleTable#substitute(int)
          */
         public int substitute(final int glyphId) {
 

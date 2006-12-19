@@ -47,8 +47,6 @@ import org.extex.util.framework.configuration.exception.ConfigurationMissingAttr
 import org.extex.util.framework.configuration.exception.ConfigurationNoSuchMethodException;
 import org.extex.util.resource.ResourceFinder;
 
-
-
 /**
  * This is the factory to provide an instance of a
  * {@link org.extex.scanner.TokenStream TokenStream}.
@@ -106,8 +104,7 @@ import org.extex.util.resource.ResourceFinder;
  *
  * <h3>Observable Events</h3>
  * <p>
- * {@link org.extex.util.observer.Observer Observer}s can be registered for
- * several events:
+ * Observers can be registered for several events:
  * </p>
  * <dl>
  *  <dt><tt>file</tt></dt>

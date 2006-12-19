@@ -53,9 +53,9 @@ public class InteractionModeObserver implements InteractionObserver {
     }
 
     /**
-     * @see org.extex.interpreter.context.observer.InteractionObserver#receiveInteractionChange(
+     * @see org.extex.interpreter.context.observer.interaction.InteractionObserver#receiveInteractionChange(
      *      org.extex.interpreter.context.ContextInternals,
-     *      org.extex.interpreter.Interaction)
+     *      org.extex.interpreter.interaction.Interaction)
      */
     public void receiveInteractionChange(final ContextInternals context,
             final Interaction mode) throws Exception {

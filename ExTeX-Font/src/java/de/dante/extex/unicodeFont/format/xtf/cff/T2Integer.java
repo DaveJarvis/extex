@@ -134,7 +134,7 @@ public class T2Integer extends T2Number {
     private short[] bytes;
 
     /**
-     * @see org.extex.font.type.ttf.cff.T2CharString#getBytes()
+     * @see de.dante.extex.unicodeFont.format.xtf.cff.T2CharString#getBytes()
      */
     public short[] getBytes() {
 
@@ -142,7 +142,7 @@ public class T2Integer extends T2Number {
     }
 
     /**
-     * @see org.extex.font.type.ttf.cff.T2CharString#isInteger()
+     * @see de.dante.extex.unicodeFont.format.xtf.cff.T2CharString#isInteger()
      */
     public boolean isInteger() {
 

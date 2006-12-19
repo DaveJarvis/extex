@@ -107,7 +107,6 @@ import org.extex.util.framework.i18n.Localizable;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.logger.LogEnabled;
 
-
 /**
  * This is a reference implementation for an interpreter context.
  *
@@ -1174,7 +1173,8 @@ public class ContextImpl
     }
 
     /**
-     * @see org.extex.interpreter.context.Context#pushDirection(org.extex.interpreter.context.Direction)
+     * @see org.extex.interpreter.context.Context#pushDirection(
+     *      org.extex.interpreter.context.tc.Direction)
      */
     public void pushDirection(final Direction dir) {
 
@@ -1301,8 +1301,8 @@ public class ContextImpl
     }
 
     /**
-     * @see org.extex.interpreter.context.ContextInteraction#registerInteractionObserver(
-     *      org.extex.interpreter.context.observer.InteractionObserver)
+     * @see org.extex.interpreter.context.observer.interaction.InteractionObservable#registerInteractionObserver(
+     *      org.extex.interpreter.context.observer.interaction.InteractionObserver)
      */
     public synchronized void registerInteractionObserver(
             final InteractionObserver observer) {
@@ -1478,7 +1478,7 @@ public class ContextImpl
 
     /**
      * @see org.extex.interpreter.context.Context#set(
-     *      org.extex.interpreter.context.Direction,
+     *      org.extex.interpreter.context.tc.Direction,
      *      boolean)
      */
     public void set(final Direction direction, final boolean global)
@@ -1621,7 +1621,7 @@ public class ContextImpl
     /**
      * @see org.extex.interpreter.context.Context#setDelcode(
      *      org.extex.type.UnicodeChar,
-     *      org.extex.typesetter.type.math.MathDelimiter,
+     *      org.extex.interpreter.type.math.MathDelimiter,
      *      boolean)
      */
     public void setDelcode(final UnicodeChar c, final MathDelimiter delimiter,
@@ -1675,7 +1675,7 @@ public class ContextImpl
 
     /**
      * @see org.extex.interpreter.context.Context#setFontFactory(
-     *      org.extex.font.FontFactory)
+     *      org.extex.font.CoreFontFactory)
      */
     public void setFontFactory(final CoreFontFactory factory) {
 

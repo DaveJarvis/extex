@@ -509,7 +509,7 @@ public interface TokenSource {
     long scanNumber(Context context) throws InterpreterException;
 
     /**
-     * Scan the input stream for tokens making up a number, i.e. a sequence of
+     * Scan the input stream for tokens making up a number, this is a sequence of
      * digits with category code OTHER. The number can be preceded by optional
      * white space.
      * <p>

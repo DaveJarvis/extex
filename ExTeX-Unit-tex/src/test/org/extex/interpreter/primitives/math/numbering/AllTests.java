@@ -49,7 +49,7 @@ public class AllTests {
     public static Test suite() {
 
         TestSuite suite = new TestSuite(
-                "Test for de.dante.extex.interpreter.primitives.math.numbering");
+                "Test for org.extex.interpreter.primitives.math.numbering");
         //$JUnit-BEGIN$
         suite.addTestSuite(LeqnoTest.class);
         suite.addTestSuite(EqnoTest.class);

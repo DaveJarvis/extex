@@ -42,7 +42,7 @@ import org.extex.util.framework.logger.LogEnabled;
 
 /**
  * This primitive initiates the loading of native code and implements the
- * primitive <tt>\ensureloaded</tt>
+ * primitive <tt>\ensureloaded</tt>.
  *
  * <doc name="ensureloaded">
  * <h3>The Primitive <tt>\ensureloaded</tt></h3>

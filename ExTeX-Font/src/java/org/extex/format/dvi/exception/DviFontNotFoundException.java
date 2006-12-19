@@ -33,7 +33,7 @@ public class DviFontNotFoundException extends DviException {
     private static final long serialVersionUID = 1L;
 
     /**
-     * Create anew object.
+     * Create a new object.
      */
     public DviFontNotFoundException() {
 
@@ -41,7 +41,7 @@ public class DviFontNotFoundException extends DviException {
     }
 
     /**
-     * Create a new opject.#
+     * Create a new object.
      *
      * @param message   the message
      */

@@ -22,7 +22,7 @@ package de.dante.extex.unicodeFont.format.tex.tfm;
 import java.io.Serializable;
 
 /**
- * TFM-LigKern
+ * TFM-LigKern.
  * <p>
  * Base class for <code>Ligature</code> and <code>Kerning</code> instructions.
  * It handles the skip amount to the next instruction in the

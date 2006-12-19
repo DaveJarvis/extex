@@ -58,7 +58,7 @@ public class SimpleNodeFactory implements NodeFactory {
      * @return the new character node
      *
      * @see org.extex.typesetter.type.node.factory.NodeFactory#getNode(
-     *      org.extex.interpreter.context.TypesettingContext,
+     *      org.extex.interpreter.context.tc.TypesettingContext,
      *      org.extex.type.UnicodeChar)
      */
     public Node getNode(final TypesettingContext typesettingContext,

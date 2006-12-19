@@ -30,7 +30,7 @@ import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.real.RealConvertible;
 
 /**
- * Math. pi (3.1415...).
+ * Math. The value of pi (3.1415...).
  *
  * <p>Example</p>
  * <pre>
