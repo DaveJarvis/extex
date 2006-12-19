@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -632,8 +632,9 @@ public class DviDocumentWriter
      * Set the <code>Localizer</code> method here.
      *
      * @param theLocalizer a <code>Localizer</code> value
-     * @see de.dante.util.framework.i18n.Localizable#enableLocalization(
-     *      de.dante.util.framework.i18n.Localizer)
+     *
+     * @see org.extex.util.framework.i18n.Localizable#enableLocalization(
+     *      org.extex.util.framework.i18n.Localizer)
      */
     public void enableLocalization(final Localizer theLocalizer) {
 
@@ -663,7 +664,7 @@ public class DviDocumentWriter
     /**
      * Setter for the output stream.  This method throws no exception.
      * If somethings goes wrong {@link
-     * #shipout(org.extex.typesetter.type.NodeList) shipout(NodeList)}
+     * #shipout(Page) shipout(Page)}
      * informs the caller.
      *
      * @param writer an <code>OutputStream</code> value

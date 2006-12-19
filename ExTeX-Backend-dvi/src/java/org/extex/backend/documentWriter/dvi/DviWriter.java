@@ -582,8 +582,8 @@ public class DviWriter {
     }
 
     /**
-     * <code>beginPage</code> starts a new page in the dvi file. to start a
-     * new page. Each page must be terminated with a call of
+     * <code>beginPage</code> starts a new page in the dvi file.
+     * Each page must be terminated with a call of
      * <code>{@link #endPage() endPage()}</code>.
      * 
      * @exception GeneralException if an error occurs
