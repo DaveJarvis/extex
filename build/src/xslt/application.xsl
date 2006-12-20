@@ -34,26 +34,44 @@
 <xsl:template match="application">
 <project>
 
-  <path id="application.source.path">
-    <dirset dir="..">
-      <xsl:apply-templates select="component" mode="source"/>
-    </dirset>
+  <path id="application.class.path">
+    <xsl:apply-templates select="component" mode="classpath"/>
   </path>
 
   <fileset dir=".." id="application.resource.files">
     <xsl:apply-templates select="component" mode="resource"/>
   </fileset>
 
-  <path id="application.class.path">
-    <xsl:apply-templates select="component" mode="classpath"/>
+  <path id="application.source.path">
+    <dirset dir="..">
+      <xsl:apply-templates select="component" mode="source"/>
+    </dirset>
   </path>
+
+  <path id="test.class.path">
+    <fileset dir="..">
+      <xsl:apply-templates select="component" mode="testpath"/>
+    </fileset>
+  </path>
+
+  <path id="test.source.path">
+    <dirset dir="..">
+      <xsl:apply-templates select="component" mode="test"/>
+    </dirset>
+  </path>
+
+  <fileset id="test.source.files" dir="..">
+    <xsl:apply-templates select="component" mode="testfiles"/>
+  </fileset>
 
 </project>
 </xsl:template>
 
  <!-- ===================================================================== -->
-<xsl:template match="component" mode="source">
-  <include name="{@name}/src/java"/>
+<xsl:template match="component" mode="classpath">
+  <fileset dir="../{@name}">
+    <include name="lib/*.jar" />
+  </fileset>
 </xsl:template>
 
  <!-- ===================================================================== -->
@@ -65,10 +83,24 @@
 </xsl:template>
 
  <!-- ===================================================================== -->
-<xsl:template match="component" mode="classpath">
-  <fileset dir="../{@name}">
-    <include name="lib/*.jar" />
-  </fileset>
+<xsl:template match="component" mode="source">
+  <include name="{@name}/src/java"/>
+</xsl:template>
+
+ <!-- ===================================================================== -->
+<xsl:template match="component" mode="test">
+  <include name="{@name}/src/test"/>
+</xsl:template>
+
+ <!-- ===================================================================== -->
+<xsl:template match="component" mode="testfiles">
+  <include name="{@name}/src/test/**/*Test.java"/>
+</xsl:template>
+
+ <!-- ===================================================================== -->
+<xsl:template match="component" mode="testpath">
+  <include name="{@name}/lib/*.jar"/>
+  <include name="{@name}/lib.test/*.jar"/>
 </xsl:template>
 
 </xsl:stylesheet>

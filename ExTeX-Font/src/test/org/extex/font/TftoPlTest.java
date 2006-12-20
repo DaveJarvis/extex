@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.font;
+package org.extex.font;
 
 import java.io.BufferedOutputStream;
 import java.io.FileInputStream;
@@ -30,18 +30,19 @@ import java.util.List;
 import java.util.Properties;
 
 import junit.framework.TestCase;
-import de.dante.extex.font.exception.FontMapNotFoundException;
-import de.dante.extex.font.type.PlWriter;
-import de.dante.extex.font.type.tfm.TFMFont;
-import de.dante.extex.font.type.tfm.enc.EncFactory;
-import de.dante.extex.font.type.tfm.psfontsmap.PSFontsMapReader;
-import de.dante.util.file.random.RandomAccessInputFile;
-import de.dante.util.file.random.RandomAccessInputStream;
-import de.dante.util.file.random.RandomAccessR;
-import de.dante.util.framework.configuration.Configuration;
-import de.dante.util.framework.configuration.ConfigurationFactory;
-import de.dante.util.resource.ResourceFinder;
-import de.dante.util.resource.ResourceFinderFactory;
+
+import org.extex.font.exception.FontMapNotFoundException;
+import org.extex.font.type.PlWriter;
+import org.extex.font.type.tfm.TFMFont;
+import org.extex.font.type.tfm.enc.EncFactory;
+import org.extex.font.type.tfm.psfontsmap.PSFontsMapReader;
+import org.extex.util.file.random.RandomAccessInputFile;
+import org.extex.util.file.random.RandomAccessInputStream;
+import org.extex.util.file.random.RandomAccessR;
+import org.extex.util.framework.configuration.Configuration;
+import org.extex.util.framework.configuration.ConfigurationFactory;
+import org.extex.util.resource.ResourceFinder;
+import org.extex.util.resource.ResourceFinderFactory;
 
 /**
  * Test the tftopl class.

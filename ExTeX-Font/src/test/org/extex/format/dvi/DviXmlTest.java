@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.format.dvi;
+package org.extex.format.dvi;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -29,23 +29,23 @@ import java.util.Properties;
 
 import junit.framework.TestCase;
 
+import org.extex.font.FontFactory;
+import org.extex.format.dvi.DviXml;
+import org.extex.util.file.random.RandomAccessInputFile;
+import org.extex.util.framework.configuration.Configuration;
+import org.extex.util.framework.configuration.ConfigurationFactory;
+import org.extex.util.framework.configuration.exception.ConfigurationClassNotFoundException;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.framework.configuration.exception.ConfigurationInstantiationException;
+import org.extex.util.framework.configuration.exception.ConfigurationMissingAttributeException;
+import org.extex.util.framework.configuration.exception.ConfigurationNoSuchMethodException;
+import org.extex.util.resource.PropertyConfigurable;
+import org.extex.util.resource.ResourceFinder;
+import org.extex.util.resource.ResourceFinderFactory;
 import org.jaxen.jdom.JDOMXPath;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.output.XMLOutputter;
-
-import de.dante.extex.font.FontFactory;
-import de.dante.util.file.random.RandomAccessInputFile;
-import de.dante.util.framework.configuration.Configuration;
-import de.dante.util.framework.configuration.ConfigurationFactory;
-import de.dante.util.framework.configuration.exception.ConfigurationClassNotFoundException;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
-import de.dante.util.framework.configuration.exception.ConfigurationInstantiationException;
-import de.dante.util.framework.configuration.exception.ConfigurationMissingAttributeException;
-import de.dante.util.framework.configuration.exception.ConfigurationNoSuchMethodException;
-import de.dante.util.resource.PropertyConfigurable;
-import de.dante.util.resource.ResourceFinder;
-import de.dante.util.resource.ResourceFinderFactory;
 
 /**
  * Test the DviXml class.

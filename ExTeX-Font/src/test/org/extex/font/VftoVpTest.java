@@ -17,8 +17,9 @@
  *
  */
 
-package de.dante.extex.font;
+package org.extex.font;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -26,34 +27,36 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import junit.framework.TestCase;
-import de.dante.extex.font.type.vf.VFFont;
-import de.dante.util.file.random.RandomAccessInputStream;
-import de.dante.util.framework.configuration.Configuration;
-import de.dante.util.framework.configuration.ConfigurationFactory;
-import de.dante.util.framework.configuration.exception.ConfigurationClassNotFoundException;
-import de.dante.util.framework.configuration.exception.ConfigurationException;
-import de.dante.util.framework.configuration.exception.ConfigurationInstantiationException;
-import de.dante.util.framework.configuration.exception.ConfigurationMissingAttributeException;
-import de.dante.util.framework.configuration.exception.ConfigurationNoSuchMethodException;
-import de.dante.util.resource.PropertyConfigurable;
-import de.dante.util.resource.ResourceFinder;
-import de.dante.util.resource.ResourceFinderFactory;
-import de.dante.util.xml.XMLStreamWriter;
+
+import org.extex.font.type.PlWriter;
+import org.extex.font.type.vf.VFFont;
+import org.extex.util.file.random.RandomAccessInputFile;
+import org.extex.util.file.random.RandomAccessInputStream;
+import org.extex.util.file.random.RandomAccessR;
+import org.extex.util.framework.configuration.Configuration;
+import org.extex.util.framework.configuration.ConfigurationFactory;
+import org.extex.util.framework.configuration.exception.ConfigurationClassNotFoundException;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.framework.configuration.exception.ConfigurationInstantiationException;
+import org.extex.util.framework.configuration.exception.ConfigurationMissingAttributeException;
+import org.extex.util.framework.configuration.exception.ConfigurationNoSuchMethodException;
+import org.extex.util.resource.PropertyConfigurable;
+import org.extex.util.resource.ResourceFinder;
+import org.extex.util.resource.ResourceFinderFactory;
 
 /**
- * Test the VFFont class.
- * <p>
- * needs -Xms64m -Xmx127m
- * </p>
+ * Test the vftovp class.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
 
-public class VFTest extends TestCase {
+public class VftoVpTest extends TestCase {
 
     /**
      * path
@@ -63,7 +66,25 @@ public class VFTest extends TestCase {
     /**
      * files
      */
-    private static final String[] FILES = {"aer12"};
+    private static final String[] FILES = {"aer12", "tyxi"};
+
+    /**
+     * test aer12
+     * @throws IOException if an IO-error occurs
+     */
+    public void testaer12() throws IOException {
+
+        fontTest(0);
+    }
+
+    /**
+     * test tyxi
+     * @throws IOException if an IO-error occurs
+     */
+    public void testtyxi() throws IOException {
+
+        fontTest(1);
+    }
 
     /**
      * @see junit.framework.TestCase#setUp()
@@ -88,15 +109,15 @@ public class VFTest extends TestCase {
         ResourceFinder finder = (new ResourceFinderFactory())
                 .createResourceFinder(resource, null, prop, null);
 
-        //       EncFactory ef = new EncFactory(finder);
+        //        EncFactory ef = new EncFactory(finder);
 
         // create pl-files
         for (int i = 0; i < FILES.length; i++) {
 
-            // vf-file
-            InputStream vfin = finder.findResource(FILES[i], "vf");
+            // tfm-file
+            InputStream tfmin = finder.findResource(FILES[i], "vf");
 
-            if (vfin == null) {
+            if (tfmin == null) {
                 throw new FileNotFoundException(FILES[i]);
             }
 
@@ -108,30 +129,115 @@ public class VFTest extends TestCase {
             //            }
             //            PSFontsMapReader psfm = new PSFontsMapReader(psin);
 
-            VFFont font = new VFFont(new RandomAccessInputStream(vfin),
+            VFFont font = new VFFont(new RandomAccessInputStream(tfmin),
                     FILES[i], makeFontFactory());
 
-            //           font.setFontMapEncoding(psfm, ef);
+            //font.setFontMapEncoding(psfm, ef);
 
-            // write to xml-file
-            XMLStreamWriter writer = new XMLStreamWriter(new FileOutputStream(
-                    PATH + FILES[i] + ".xml.tmp"), "ISO-8859-1");
-            writer.setBeauty(true);
-            writer.writeStartDocument();
-            font.writeXML(writer);
-            writer.writeEndDocument();
-            writer.close();
+            PlWriter out = new PlWriter(new BufferedOutputStream(
+                    new FileOutputStream(PATH + FILES[i] + ".vf.pl")));
+            out.printZeroWidth(true);
+            font.toPL(out);
+            out.close();
         }
 
     }
 
     /**
-     * test the dviXml interpreter
+     * test the Font
+     * @param   nr  the font nr
      * @throws IOException if a IO-error occurs
      */
-    public void testaer12() throws IOException {
+    private void fontTest(final int nr) throws IOException {
 
-        assertTrue(true);
+        RandomAccessR rarorg = new RandomAccessInputFile(PATH + FILES[nr]
+                + ".vftovp");
+        RandomAccessR rarnew = new RandomAccessInputFile(PATH + FILES[nr]
+                + ".vf.pl");
+
+        assertEquals(readPL(rarorg, "FAMILY"), readPL(rarnew, "FAMILY"));
+        assertEquals(readPL(rarorg, "DESIGNSIZE"), readPL(rarnew, "DESIGNSIZE"));
+
+        List list = readAllPl(rarorg, "MAPFONT");
+        for (int i = 0; i < list.size(); i++) {
+            String cmd = (String) list.get(i);
+            String l1 = readPL(rarorg, cmd);
+            assertEquals(l1, readPL(rarnew, cmd));
+        }
+
+        list = readAllPl(rarorg, "CHARACTER");
+        for (int i = 0; i < list.size(); i++) {
+            String cmd = (String) list.get(i);
+            String l1 = readPL(rarorg, cmd);
+            assertEquals(l1, readPL(rarnew, cmd));
+        }
+
+        rarorg.close();
+        rarnew.close();
+    }
+
+    /**
+     * read all commands
+     * @param rar   the input
+     * @param command   the command
+     * @return the list
+     * @throws IOException if an IO-error occurs
+     */
+    private List readAllPl(final RandomAccessR rar, final String command)
+            throws IOException {
+
+        List list = new ArrayList();
+        rar.seek(0);
+        String line;
+        while ((line = rar.readLine()) != null) {
+            if (line.trim().startsWith("(" + command)) {
+                list.add(line.trim().substring(1));
+            }
+        }
+        return list;
+    }
+
+    /**
+     * read the command
+     * from '(command .... )'
+     * @param rar   the input
+     * @param command   the command
+     * @return the line
+     * @throws IOException if an IO-error occurs
+     */
+    private String readPL(final RandomAccessR rar, final String command)
+            throws IOException {
+
+        rar.seek(0);
+        StringBuffer buf = new StringBuffer();
+        String line;
+        long pointer = rar.getPointer();
+        while ((line = rar.readLine()) != null) {
+            if (line.trim().startsWith("(" + command)) {
+                rar.seek(pointer);
+                int level = 0;
+                boolean kf = true;
+                char c;
+                while (kf || level != 0) {
+                    c = (char) rar.readByteAsInt();
+                    if (c == '(') {
+                        level++;
+                        kf = false;
+                    } else if (c == ')') {
+                        level--;
+                    }
+                    if (c == '\n') {
+                        c = ' ';
+                    }
+                    if (c != '\r') {
+                        buf.append(c);
+                    }
+                }
+                break;
+            }
+            pointer = rar.getPointer();
+        }
+        return buf.toString().trim();
     }
 
     // --------------------------------------
@@ -176,13 +282,13 @@ public class VFTest extends TestCase {
 
         FontFactory fontFactory;
         String fontClass = config.getAttribute("class");
-        Configuration resource = new ConfigurationFactory()
-                .newInstance("config/path/fileFinder.xml");
 
         if (fontClass == null || fontClass.equals("")) {
             throw new ConfigurationMissingAttributeException("class", config);
         }
 
+        Configuration resource = new ConfigurationFactory()
+                .newInstance("config/path/fileFinder.xml");
         ResourceFinder fontFinder = (new ResourceFinderFactory())
                 .createResourceFinder(resource, null, getProps(), null);
         if (Boolean.valueOf(getProps().getProperty("extex.trace.font.files"))
@@ -247,6 +353,7 @@ public class VFTest extends TestCase {
      */
     public static void main(final String[] args) {
 
-        junit.textui.TestRunner.run(VFTest.class);
+        junit.textui.TestRunner.run(VftoVpTest.class);
     }
+
 }

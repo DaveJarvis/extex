@@ -36,9 +36,8 @@ public class GroupingTest extends TestCase {
         junit.textui.TestRunner.run(GroupingTest.class);
     }
 
-
     /**
-     * Test the primitive <tt>\u005cunless</tt>.
+     * Test the primitive <tt>&#x5c;unless</tt>.
      * @exception Exception iff test failed
      */
     public void testGroup()

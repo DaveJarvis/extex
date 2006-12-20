@@ -17,12 +17,14 @@
  *
  */
 
-package de.dante.util.xml;
+package org.extex.util.xml;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 import junit.framework.TestCase;
+
+import org.extex.util.xml.XMLStreamWriter;
 
 /**
  * Test for XMLStreamWriter.
@@ -30,7 +32,6 @@ import junit.framework.TestCase;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-
 public class XMLStreamWriterTest extends TestCase {
 
     /**

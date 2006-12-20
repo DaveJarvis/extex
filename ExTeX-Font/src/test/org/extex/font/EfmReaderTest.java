@@ -17,10 +17,11 @@
  *
  */
 
-package de.dante.extex.font;
+package org.extex.font;
+
+import org.extex.font.type.efm.EfmReader;
 
 import junit.framework.TestCase;
-import de.dante.extex.font.type.efm.EfmReader;
 
 /**
  * Test the EfmReader class.

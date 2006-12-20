@@ -17,10 +17,11 @@
  *
  */
 
-package de.dante.util;
+package org.extex.util;
+
+import org.extex.font.type.Fixed32;
 
 import junit.framework.TestCase;
-import de.dante.extex.font.type.Fixed32;
 
 /**
  * Test for a fixed point format.

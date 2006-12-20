@@ -58,30 +58,17 @@
   
   <import file="build-sub-projects.xml"/>
 
-  <property name="tests.haltonfailure" value="no" />
   <property name="javac.deprecation" value="off" />
   <property name="extex.jar.file" value="extex" />
-  <property name="src.tests" location="src/test" />
   <property name="classes" location="target/application/classes" />
   <property name="javadoc" location="target/javadoc" />
   <property name="installer.dir" location="util/Installer" />
   <property name="target.lib" location="target/lib" />
-  <property name="target.test" location="target/test" />
 
-  <path id="develop.class.path">
-    <fileset dir="develop/lib">
-      <include name="*.jar" />
-    </fileset>
-  </path>
-  <path id="test.class.path">
-    <fileset dir="lib">
-      <include name="*.jar" />
-    </fileset>
-    <fileset dir="develop/lib">
-      <include name="*.jar" />
-      <exclude name="ant.jar" />
-    </fileset>
-  </path>
+  <property name="tests.haltonfailure" value="no" />
+  <property name="test.classes" location="target/test/classes" />
+  <property name="test.results" location="target/test/results" />
+  <property name="test.results.html" location="target/www/reports/tests" />
 
   <!-- ==================================================================== -->
   <target name="all"
@@ -93,6 +80,47 @@
           description="Remove unneccesary files and directories.">
     <iterate target="clean"/>
     <delete dir="${classes}" />
+  </target>
+
+  <!-- ==================================================================== -->
+  <target name="compile" description="Compile the production Java files">
+
+    <mkdir dir="${classes}" />
+    <javac destdir="${classes}"
+           debug="on"
+           deprecation="${javac.deprecation}">
+      <classpath refid="application.class.path" />
+      <src refid="application.source.path"/>
+    </javac>
+    <copy todir="${classes}">
+      <mapper type="regexp" from="^[a-zA-Z-]*/src/[a-z]*/(.*)$$" to="\1"/>
+      <fileset refid="application.resource.files" />
+    </copy>
+  </target>
+
+  <!-- ==================================================================== -->
+  <target name="jar"
+          depends="compile"
+          description="Create the ExTeX jar file containing all compiled classes
+                       except test cases.">
+    <mkdir dir="${target}/${configuration}" />
+    <jar jarfile="${target}/${configuration}/${extex.jar.file}.jar">
+      <fileset dir="${classes}">
+        <patternset>
+          <exclude name="**/*Test.class" />
+          <exclude name="**/*Tests.class" />
+        </patternset>
+      </fileset>
+      <fileset dir=".">
+        <patternset>
+          <include name="LICENSE.txt" />
+        </patternset>
+      </fileset>
+      <manifest>
+        <attribute name="Built-By" value="${user.name}" />
+        <attribute name="Main-Class" value="org.extex.tex.main.TeX" />
+      </manifest>
+    </jar>
   </target>
 
   <!-- ==================================================================== -->
@@ -118,47 +146,6 @@
   </target>
     
   <!-- ==================================================================== -->
-  <target name="compile" description="Compile the production Java files">
-
-    <mkdir dir="${classes}" />
-    <javac destdir="${classes}"
-           debug="on"
-           deprecation="${javac.deprecation}">
-      <classpath refid="application.class.path" />
-      <src refid="application.source.path"/>
-    </javac>
-    <copy todir="${classes}">
-      <mapper type="regexp" from="^[a-zA-Z-]*/src/[a-z]*/(.*)$$" to="\1"/>
-      <fileset refid="application.resource.files" />
-    </copy>
-  </target>
-
-  <!-- ==================================================================== -->
-  <target name="jar"
-          depends="compile"
-          description="Create the ExTeX jar file containing all compiled classes
-                       except test cases.">
-    <mkdir dir="${target}/lib" />
-    <jar jarfile="${target}/lib/${extex.jar.file}.jar">
-      <fileset dir="${classes}">
-        <patternset>
-          <exclude name="**/*Test.class" />
-          <exclude name="**/*Tests.class" />
-        </patternset>
-      </fileset>
-      <fileset dir=".">
-        <patternset>
-          <include name="LICENSE.txt" />
-        </patternset>
-      </fileset>
-      <manifest>
-        <attribute name="Built-By" value="${user.name}" />
-        <attribute name="Main-Class" value="org.extex.tex.main.TeX" />
-      </manifest>
-    </jar>
-  </target>
-
-  <!-- ==================================================================== -->
   <target name="site"
           description="Build the site">
     <subant antfile="../www/build.xml"
@@ -168,31 +155,54 @@
 
   <!-- ==================================================================== -->
   <target name="test"
-          depends="jar,jar.tests"
+          depends="jar"
           description="Run JUnit tests and produce a HTML test report">
-    <delete dir="${target.test}" />
-    <mkdir dir="${target.test}" />
+
+    <delete dir="${test.results}" />
+    <mkdir dir="${test.results}" />
+
+    <mkdir dir="${test.classes}" />
+    <javac destdir="${test.classes}"
+           debug="on"
+           deprecation="${javac.deprecation}">
+      <classpath>
+        <pathelement path="${target}/${configuration}/${extex.jar.file}.jar" />
+      </classpath>
+      <classpath refid="test.class.path" />
+      <src refid="test.source.path"/>
+    </javac>
+
+    <copy todir="${test.classes}">
+      <mapper type="regexp" from="^[a-zA-Z-]*/src/[a-z]*/(.*)$$" to="\1"/>
+      <fileset dir=".." >
+        <exclude name="**/*.java"/>
+      </fileset>
+    </copy>
+
     <junit printsummary="on" haltonfailure="no">
       <jvmarg value="-Xms128m"/>
       <jvmarg value="-Xmx512m"/>
       <classpath>
-        <pathelement path="${classes}" />
+        <pathelement path="${test.classes}" />
+        <pathelement path="${target}/${configuration}/${extex.jar.file}.jar" />
       </classpath>
       <classpath refid="test.class.path" />
       <formatter type="xml"/>
-      <batchtest fork="yes" todir="${target.test}">
-        <fileset dir="${src.tests}">
-          <include name="${cases}" />
+      <batchtest fork="yes" todir="${test.results}">
+        <fileset dir="${test.classes}">
+          <include name="**/*Test.class"/>
         </fileset>
       </batchtest>
     </junit>
-    <junitreport todir="${target.test}">
-      <fileset dir="${target.test}">
+
+    <delete dir="${test.results.html}" />
+    <junitreport todir="${test.results}">
+      <fileset dir="${test.results}">
         <include name="TEST-*.xml"/>
       </fileset>
       <report format="frames"
-              styledir="develop/reports"
-         todir="${target}/www/reports/tests"/>
+              styledir="src/xslt"
+              todir="${test.results.html}"/>
     </junitreport>
   </target>
 
@@ -246,26 +256,6 @@
         <include name="**/ExTeX-PL" />
       </fileset>
     </copy>
-  </target>
-
-
-  <property name="testsuitejarfile" value="testsuite" />
-  <!-- ==================================================================== -->
-  <target name="jar.tests"
-          depends="compile.tests"
-          description="Create test suite jar file">
-    <mkdir dir="${target.lib}" />
-    <jar jarfile="${target.lib}/${testsuitejarfile}.jar">
-      <fileset dir="${classes}">
-        <patternset>
-          <include name="**/*Test.class" />
-          <include name="**/AllTests.class" />
-        </patternset>
-      </fileset>
-      <manifest>
-        <attribute name="Built-By" value="${user.name}" />
-      </manifest>
-    </jar>
   </target>
 
   <!-- ==================================================================== -->

@@ -17,16 +17,18 @@
  *
  */
 
-package de.dante.extex.font;
+package org.extex.font;
 
+import junit.framework.TestCase;
+
+import org.extex.font.type.tfm.TFMFont;
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.interpreter.type.font.Font;
+import org.extex.interpreter.type.glue.Glue;
 import org.extex.type.UnicodeChar;
 
-import de.dante.extex.ExTeXRunner;
-import de.dante.extex.font.type.tfm.TFMFont;
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
-import de.dante.extex.interpreter.type.font.Font;
-import de.dante.extex.interpreter.type.glue.Glue;
+import de.dante.extex.unicodeFont.Util;
 
 /**
  * Test for the tfm class.
@@ -35,7 +37,7 @@ import de.dante.extex.interpreter.type.glue.Glue;
  * @version $Revision: 4388 $
  */
 
-public class TfmTest extends ExTeXRunner {
+public class TfmTest extends TestCase {
 
     /**
      * size 12
@@ -53,7 +55,7 @@ public class TfmTest extends ExTeXRunner {
     protected void setUp() throws Exception {
 
         super.setUp();
-        fontFactory = extex.getFontFactory();
+        fontFactory = Util.makeFontFactory();
     }
 
     /**

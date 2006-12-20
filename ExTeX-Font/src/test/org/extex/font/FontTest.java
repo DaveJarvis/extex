@@ -17,21 +17,22 @@
  *
  */
 
-package de.dante.extex.font;
+package org.extex.font;
 
 import java.io.FileInputStream;
 import java.util.Properties;
 import java.util.logging.Logger;
 
 import junit.framework.TestCase;
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.font.Font;
-import de.dante.extex.interpreter.type.glue.Glue;
-import de.dante.extex.interpreter.type.glue.GlueComponent;
-import de.dante.util.framework.configuration.Configuration;
-import de.dante.util.framework.configuration.ConfigurationFactory;
-import de.dante.util.resource.ResourceFinder;
-import de.dante.util.resource.ResourceFinderFactory;
+
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.font.Font;
+import org.extex.interpreter.type.glue.Glue;
+import org.extex.interpreter.type.glue.GlueComponent;
+import org.extex.util.framework.configuration.Configuration;
+import org.extex.util.framework.configuration.ConfigurationFactory;
+import org.extex.util.resource.ResourceFinder;
+import org.extex.util.resource.ResourceFinderFactory;
 
 /**
  * Test the font-system

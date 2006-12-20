@@ -17,13 +17,14 @@
  *
  */
 
-package de.dante.util;
+package org.extex.util;
 
 import java.io.FileInputStream;
 import java.io.RandomAccessFile;
 
 import junit.framework.TestCase;
-import de.dante.util.file.random.RandomAccessInputStream;
+
+import org.extex.util.file.random.RandomAccessInputStream;
 
 /**
  * Test cases for RandomAccessInputStream
