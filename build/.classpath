@@ -4,8 +4,38 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/checkstyle-all-4.2.jar"/>
 	<classpathentry kind="lib" path="lib/checkstyle-optional-4.2.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3.8.1"/>
+	<classpathentry kind="var" path="ANT_HOME/lib/ant.jar"/>
+	<classpathentry kind="var" path="ANT_HOME/lib/ant-antlr.jar"/>
+	<classpathentry kind="var" path="ANT_HOME/lib/ant-apache-bcel.jar"/>
+	<classpathentry kind="var" path="ANT_HOME/lib/ant-apache-bsf.jar"/>
+	<classpathentry kind="var" path="ANT_HOME/lib/ant-apache-log4j.jar"/>
+	<classpathentry kind="var" path="ANT_HOME/lib/ant-apache-oro.jar"/>
+	<classpathentry kind="var" path="ANT_HOME/lib/ant-apache-regexp.jar"/>
+	<classpathentry kind="var" path="ANT_HOME/lib/ant-apache-resolver.jar"/>
+	<classpathentry kind="var" path="ANT_HOME/lib/ant-commons-logging.jar"/>
+	<classpathentry kind="var" path="ANT_HOME/lib/ant-commons-net.jar"/>
+	<classpathentry kind="var" path="ANT_HOME/lib/ant-icontract.jar"/>
+	<classpathentry kind="var" path="ANT_HOME/lib/ant-jai.jar"/>
+	<classpathentry kind="var" path="ANT_HOME/lib/ant-javamail.jar"/>
+	<classpathentry kind="var" path="ANT_HOME/lib/ant-jdepend.jar"/>
+	<classpathentry kind="var" path="ANT_HOME/lib/ant-jmf.jar"/>
+	<classpathentry kind="var" path="ANT_HOME/lib/ant-jsch.jar"/>
+	<classpathentry kind="var" path="ANT_HOME/lib/ant-junit.jar"/>
+	<classpathentry kind="var" path="ANT_HOME/lib/ant-launcher.jar"/>
+	<classpathentry kind="var" path="ANT_HOME/lib/ant-netrexx.jar"/>
+	<classpathentry kind="var" path="ANT_HOME/lib/ant-nodeps.jar"/>
+	<classpathentry kind="var" path="ANT_HOME/lib/ant-starteam.jar"/>
+	<classpathentry kind="var" path="ANT_HOME/lib/ant-stylebook.jar"/>
+	<classpathentry kind="var" path="ANT_HOME/lib/ant-swing.jar"/>
+	<classpathentry kind="var" path="ANT_HOME/lib/ant-trax.jar"/>
+	<classpathentry kind="var" path="ANT_HOME/lib/ant-vaj.jar"/>
+	<classpathentry kind="var" path="ANT_HOME/lib/ant-weblogic.jar"/>
+	<classpathentry kind="var" path="ANT_HOME/lib/ant-xalan1.jar"/>
+	<classpathentry kind="var" path="ANT_HOME/lib/ant-xslp.jar"/>
+	<classpathentry kind="var" path="ANT_HOME/lib/xercesImpl.jar"/>
+	<classpathentry kind="var" path="ANT_HOME/lib/xml-apis.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-core"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Font"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3.8.1"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

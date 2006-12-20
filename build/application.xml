@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application>
+  <component name="ExTeX-core"/>
+  <component name="ExTeX-Font"/>
+  <component name="ExTeX-base"/>
+  <component name="ExTeX-Scanner"/>
+  <component name="ExTeX-Scanner32"/>
+  <component name="ExTeX-Backend-dvi"/>
+  <component name="ExTeX-Backend-dvix"/>
+  <component name="ExTeX-Backend-pdfbox"/>
+  <component name="ExTeX-Backend-ps"/>
+  <component name="ExTeX-Backend-rtf"/>
+  <component name="ExTeX-Unit-color"/>
+  <component name="ExTeX-Unit-etex"/>
+  <component name="ExTeX-Unit-extex"/>
+  <component name="ExTeX-Unit-namespace"/>
+  <component name="ExTeX-Unit-native"/>
+  <component name="ExTeX-Unit-omega"/>
+  <component name="ExTeX-Unit-pdftex"/>
+  <component name="ExTeX-Unit-tex"/>
+</application>
