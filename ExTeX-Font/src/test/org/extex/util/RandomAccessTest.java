@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -35,6 +35,11 @@ import org.extex.util.file.random.RandomAccessInputStream;
 public class RandomAccessTest extends TestCase {
 
     /**
+     * The field <tt>SRC_FONT</tt> ...
+     */
+    private static final String SRC_FONT = "src/test/font/Gara.ttf";
+
+    /**
      * Creates a new object.
      * @param arg0 the name
      */
@@ -60,8 +65,8 @@ public class RandomAccessTest extends TestCase {
     public void test0() throws Exception {
 
         RandomAccessInputStream rar = new RandomAccessInputStream(
-                new FileInputStream("src/font/Gara.ttf"));
-        RandomAccessFile raf = new RandomAccessFile("src/font/Gara.ttf", "r");
+                new FileInputStream(SRC_FONT));
+        RandomAccessFile raf = new RandomAccessFile(SRC_FONT, "r");
 
         assertEquals(rar.length(), raf.length());
 
@@ -79,8 +84,8 @@ public class RandomAccessTest extends TestCase {
     public void test1() throws Exception {
 
         RandomAccessInputStream rar = new RandomAccessInputStream(
-                new FileInputStream("src/font/Gara.ttf"));
-        RandomAccessFile raf = new RandomAccessFile("src/font/Gara.ttf", "r");
+                new FileInputStream(SRC_FONT));
+        RandomAccessFile raf = new RandomAccessFile(SRC_FONT, "r");
 
         assertEquals(rar.length(), raf.length());
 
@@ -98,8 +103,8 @@ public class RandomAccessTest extends TestCase {
     public void test2() throws Exception {
 
         RandomAccessInputStream rar = new RandomAccessInputStream(
-                new FileInputStream("src/font/Gara.ttf"));
-        RandomAccessFile raf = new RandomAccessFile("src/font/Gara.ttf", "r");
+                new FileInputStream(SRC_FONT));
+        RandomAccessFile raf = new RandomAccessFile(SRC_FONT, "r");
 
         assertEquals(rar.length(), raf.length());
 
@@ -129,8 +134,8 @@ public class RandomAccessTest extends TestCase {
     public void test3() throws Exception {
 
         RandomAccessInputStream rar = new RandomAccessInputStream(
-                new FileInputStream("src/font/Gara.ttf"));
-        RandomAccessFile raf = new RandomAccessFile("src/font/Gara.ttf", "r");
+                new FileInputStream(SRC_FONT));
+        RandomAccessFile raf = new RandomAccessFile(SRC_FONT, "r");
 
         assertEquals(rar.length(), raf.length());
 
@@ -151,8 +156,8 @@ public class RandomAccessTest extends TestCase {
     public void test4() throws Exception {
 
         RandomAccessInputStream rar = new RandomAccessInputStream(
-                new FileInputStream("src/font/Gara.ttf"));
-        RandomAccessFile raf = new RandomAccessFile("src/font/Gara.ttf", "r");
+                new FileInputStream(SRC_FONT));
+        RandomAccessFile raf = new RandomAccessFile(SRC_FONT, "r");
 
         assertEquals(rar.length(), raf.length());
 
@@ -177,8 +182,8 @@ public class RandomAccessTest extends TestCase {
     public void test5() throws Exception {
 
         RandomAccessInputStream rar = new RandomAccessInputStream(
-                new FileInputStream("src/font/Gara.ttf"));
-        RandomAccessFile raf = new RandomAccessFile("src/font/Gara.ttf", "r");
+                new FileInputStream(SRC_FONT));
+        RandomAccessFile raf = new RandomAccessFile(SRC_FONT, "r");
 
         //System.out.println("length " + rar.length() + " : " + raf.length());
         assertEquals(rar.length(), raf.length());
