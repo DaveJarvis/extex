@@ -175,6 +175,7 @@
     <copy todir="${test.classes}">
       <mapper type="regexp" from="^ExTeX-[^/]*/src/[a-z]*/(.*)$$" to="\1"/>
       <fileset dir=".." >
+        <include name="ExTeX-*/**"/>
         <exclude name="**/*.java"/>
       </fileset>
     </copy>
