@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.typesetter.paragraphBuilder;
+package org.extex.typesetter.paragraphBuilder;
 
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Handler;
@@ -26,46 +26,46 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import junit.framework.TestCase;
+
+import org.extex.font.FontByteArray;
+import org.extex.font.FountKey;
+import org.extex.font.Glyph;
+import org.extex.font.Kerning;
+import org.extex.font.Ligature;
+import org.extex.font.type.BoundingBox;
+import org.extex.interpreter.context.tc.TypesettingContext;
+import org.extex.interpreter.context.tc.TypesettingContextFactory;
+import org.extex.interpreter.context.tc.TypesettingContextImpl;
+import org.extex.interpreter.type.count.Count;
+import org.extex.interpreter.type.count.FixedCount;
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.interpreter.type.font.Font;
+import org.extex.interpreter.type.glue.FixedGlue;
+import org.extex.interpreter.type.glue.Glue;
+import org.extex.interpreter.type.muskip.Muskip;
+import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.language.Language;
+import org.extex.language.hyphenation.exception.HyphenationException;
+import org.extex.main.logging.LogFormatter;
+import org.extex.scanner.type.token.TokenFactory;
 import org.extex.type.UnicodeChar;
 import org.extex.type.UnicodeCharList;
-
-import junit.framework.TestCase;
-import de.dante.extex.font.FontByteArray;
-import de.dante.extex.font.FountKey;
-import de.dante.extex.font.Glyph;
-import de.dante.extex.font.Kerning;
-import de.dante.extex.font.Ligature;
-import de.dante.extex.font.type.BoundingBox;
-import de.dante.extex.interpreter.context.tc.TypesettingContext;
-import de.dante.extex.interpreter.context.tc.TypesettingContextFactory;
-import de.dante.extex.interpreter.context.tc.TypesettingContextImpl;
-import de.dante.extex.interpreter.type.count.Count;
-import de.dante.extex.interpreter.type.count.FixedCount;
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
-import de.dante.extex.interpreter.type.font.Font;
-import de.dante.extex.interpreter.type.glue.FixedGlue;
-import de.dante.extex.interpreter.type.glue.Glue;
-import de.dante.extex.interpreter.type.muskip.Muskip;
-import de.dante.extex.interpreter.type.tokens.Tokens;
-import de.dante.extex.language.Language;
-import de.dante.extex.language.hyphenation.exception.HyphenationException;
-import de.dante.extex.main.logging.LogFormatter;
-import de.dante.extex.scanner.type.token.TokenFactory;
-import de.dante.extex.typesetter.TypesetterOptions;
-import de.dante.extex.typesetter.type.Node;
-import de.dante.extex.typesetter.type.NodeList;
-import de.dante.extex.typesetter.type.node.CharNode;
-import de.dante.extex.typesetter.type.node.DiscretionaryNode;
-import de.dante.extex.typesetter.type.node.GlueNode;
-import de.dante.extex.typesetter.type.node.HorizontalListNode;
-import de.dante.extex.typesetter.type.node.PenaltyNode;
-import de.dante.extex.typesetter.type.node.RuleNode;
-import de.dante.extex.typesetter.type.node.SpaceNode;
-import de.dante.extex.typesetter.type.node.VerticalListNode;
-import de.dante.extex.typesetter.type.node.factory.NodeFactory;
-import de.dante.util.exception.GeneralException;
-import de.dante.util.framework.logger.LogEnabled;
+import org.extex.typesetter.TypesetterOptions;
+import org.extex.typesetter.type.Node;
+import org.extex.typesetter.type.NodeList;
+import org.extex.typesetter.type.node.CharNode;
+import org.extex.typesetter.type.node.DiscretionaryNode;
+import org.extex.typesetter.type.node.GlueNode;
+import org.extex.typesetter.type.node.HorizontalListNode;
+import org.extex.typesetter.type.node.PenaltyNode;
+import org.extex.typesetter.type.node.RuleNode;
+import org.extex.typesetter.type.node.SpaceNode;
+import org.extex.typesetter.type.node.VerticalListNode;
+import org.extex.typesetter.type.node.factory.NodeFactory;
+import org.extex.util.exception.GeneralException;
+import org.extex.util.framework.logger.LogEnabled;
 
 /**
  * This is the abstract base class to test a paragraph builder.

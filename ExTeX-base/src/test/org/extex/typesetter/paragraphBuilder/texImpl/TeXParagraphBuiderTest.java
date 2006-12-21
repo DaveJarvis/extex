@@ -17,10 +17,10 @@
  *
  */
 
-package de.dante.extex.typesetter.paragraphBuilder.texImpl;
+package org.extex.typesetter.paragraphBuilder.texImpl;
 
-import de.dante.extex.typesetter.paragraphBuilder.AbstractParagraphBuiderTester;
-import de.dante.extex.typesetter.paragraphBuilder.ParagraphBuilder;
+import org.extex.typesetter.paragraphBuilder.AbstractParagraphBuiderTester;
+import org.extex.typesetter.paragraphBuilder.ParagraphBuilder;
 
 /**
  * This is the test class for the TeX paragraph builder.

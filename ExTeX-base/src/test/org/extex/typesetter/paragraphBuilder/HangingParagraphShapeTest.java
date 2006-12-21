@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,10 +17,11 @@
  *
  */
 
-package de.dante.extex.typesetter.paragraphBuilder;
+package org.extex.typesetter.paragraphBuilder;
 
 import junit.framework.TestCase;
-import de.dante.extex.interpreter.type.dimen.Dimen;
+
+import org.extex.interpreter.type.dimen.Dimen;
 
 /**
  * Test cases for the class HangingParagraphShape.

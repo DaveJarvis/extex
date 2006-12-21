@@ -17,28 +17,28 @@
  *
  */
 
-package de.dante.extex.typesetter.paragraphBuilder.impl;
-
-import org.extex.type.UnicodeChar;
+package org.extex.typesetter.paragraphBuilder.impl;
 
 import junit.framework.TestCase;
-import de.dante.extex.interpreter.context.tc.TypesettingContext;
-import de.dante.extex.interpreter.context.tc.TypesettingContextFactory;
-import de.dante.extex.interpreter.type.count.Count;
-import de.dante.extex.interpreter.type.count.FixedCount;
-import de.dante.extex.interpreter.type.dimen.Dimen;
-import de.dante.extex.interpreter.type.dimen.FixedDimen;
-import de.dante.extex.interpreter.type.font.Font;
-import de.dante.extex.interpreter.type.glue.FixedGlue;
-import de.dante.extex.interpreter.type.glue.Glue;
-import de.dante.extex.interpreter.type.muskip.Muskip;
-import de.dante.extex.scanner.type.token.TokenFactory;
-import de.dante.extex.typesetter.TypesetterOptions;
-import de.dante.extex.typesetter.paragraphBuilder.ParagraphBuilder;
-import de.dante.extex.typesetter.paragraphBuilder.ParagraphShape;
-import de.dante.extex.typesetter.type.NodeList;
-import de.dante.extex.typesetter.type.node.HorizontalListNode;
-import de.dante.util.exception.GeneralException;
+
+import org.extex.interpreter.context.tc.TypesettingContext;
+import org.extex.interpreter.context.tc.TypesettingContextFactory;
+import org.extex.interpreter.type.count.Count;
+import org.extex.interpreter.type.count.FixedCount;
+import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.interpreter.type.font.Font;
+import org.extex.interpreter.type.glue.FixedGlue;
+import org.extex.interpreter.type.glue.Glue;
+import org.extex.interpreter.type.muskip.Muskip;
+import org.extex.scanner.type.token.TokenFactory;
+import org.extex.type.UnicodeChar;
+import org.extex.typesetter.TypesetterOptions;
+import org.extex.typesetter.paragraphBuilder.ParagraphBuilder;
+import org.extex.typesetter.paragraphBuilder.ParagraphShape;
+import org.extex.typesetter.type.NodeList;
+import org.extex.typesetter.type.node.HorizontalListNode;
+import org.extex.util.exception.GeneralException;
 
 /**
  * ...
