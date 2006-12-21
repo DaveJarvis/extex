@@ -66,8 +66,8 @@
   <property name="target.lib" location="target/lib" />
 
   <property name="tests.haltonfailure" value="no" />
-  <property name="test.classes" location="target/test/classes" />
-  <property name="test.results" location="target/test/results" />
+  <property name="test.classes" location="target/${configuration}/test/classes" />
+  <property name="test.results" location="target/${configuration}/test/results" />
   <property name="test.results.html" location="target/www/reports/tests" />
 
   <!-- ==================================================================== -->
@@ -173,7 +173,7 @@
     </javac>
 
     <copy todir="${test.classes}">
-      <mapper type="regexp" from="^[a-zA-Z-]*/src/[a-z]*/(.*)$$" to="\1"/>
+      <mapper type="regexp" from="^ExTeX-[^/]*/src/[a-z]*/(.*)$$" to="\1"/>
       <fileset dir=".." >
         <exclude name="**/*.java"/>
       </fileset>

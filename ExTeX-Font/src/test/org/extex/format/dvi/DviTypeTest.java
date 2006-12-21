@@ -64,7 +64,7 @@ public class DviTypeTest extends TestCase {
     /**
      * path.
      */
-    private static final String PATH = "develop/test/data/dvi/";
+    private static final String PATH = "../ExTeX-Font/src/dvi/";
 
     /**
      * files.
