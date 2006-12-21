@@ -18,6 +18,7 @@
  */
 package de.dante.extex.unicodeFont;
 
+import java.util.Properties;
 import java.util.logging.Logger;
 
 import org.extex.font.FontFactory;
@@ -55,10 +56,12 @@ public final class Util {
 
         Logger logger = Logger.getLogger(Util.class.getName());
         Configuration config = new ConfigurationFactory()
-                .newInstance("config/path/fileFinder.xml");
+                .newInstance("config/path/fontTestFileFinder.xml");
+        Properties properties = System.getProperties();
+        properties.setProperty("extex.fonts", "../ExTeX-Font/src/font");
 
         ResourceFinder finder = new ResourceFinderFactory()
-                .createResourceFinder(config, logger, System.getProperties(),
+                .createResourceFinder(config, logger, properties,
                                       new InteractionProvider() {
                                           public Interaction getInteraction() {
                                               return Interaction.BATCHMODE;
@@ -68,8 +71,23 @@ public final class Util {
         return finder;
     }
 
-    public static FontFactory makeFontFactory() {
-        // TODO gene unimplemented
-        return null;
+    /**
+     * ...
+     * 
+     * @return ...
+     *
+     * @throws Exception ... 
+     */
+    public static FontFactory makeFontFactory() throws Exception {
+
+        Configuration config = new ConfigurationFactory()
+                .newInstance("config/extex-font.xml").getConfiguration("Fonts");
+        String fontClass = config.getAttribute("class");
+
+        return (FontFactory) (Class.forName(fontClass)
+                .getConstructor(new Class[]{Configuration.class, //
+                        ResourceFinder.class}).newInstance(new Object[]{config,
+                makeResourceFinder()}));
+
     }
 }

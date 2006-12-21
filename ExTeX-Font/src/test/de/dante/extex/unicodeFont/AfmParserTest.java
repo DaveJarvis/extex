@@ -45,7 +45,7 @@ public class AfmParserTest extends TestCase {
     private static final String CONFIG_EXTEX = "config/extex-font.xml";
 
     /**
-     * my extex.
+     * my extex.t
      */
 //    private MyExTeX extex;
 

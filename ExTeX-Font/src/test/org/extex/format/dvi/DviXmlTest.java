@@ -62,7 +62,7 @@ public class DviXmlTest extends TestCase {
     /**
      * path.
      */
-    private static final String PATH = "develop/test/data/dvi/";
+    private static final String PATH = "../ExTeX-Font/src/dvi/";
 
     /**
      * files.
@@ -171,7 +171,7 @@ public class DviXmlTest extends TestCase {
     private FontFactory makeFontFactory() throws Exception {
 
         Configuration config = new ConfigurationFactory()
-                .newInstance("config/extex.xml");
+                .newInstance("config/extex-test-font.xml");
 
         FontFactory fontFactory = makeFontFactory(config
                 .getConfiguration("Fonts"), config.getConfiguration("Resource"));

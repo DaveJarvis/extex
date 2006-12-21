@@ -212,7 +212,7 @@ public class DviTypeTest extends TestCase {
     private FontFactory makeFontFactory() throws Exception {
 
         Configuration config = new ConfigurationFactory()
-                .newInstance("config/extex.xml");
+                .newInstance("config/extex-test-font.xml");
 
         props = getProps();
 
