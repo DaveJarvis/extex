@@ -23,14 +23,11 @@
 	<classpathentry kind="var" path="ANT_HOME/lib/ant-jsch.jar"/>
 	<classpathentry kind="var" path="ANT_HOME/lib/ant-junit.jar"/>
 	<classpathentry kind="var" path="ANT_HOME/lib/ant-launcher.jar"/>
-	<classpathentry kind="var" path="ANT_HOME/lib/ant-netrexx.jar"/>
 	<classpathentry kind="var" path="ANT_HOME/lib/ant-nodeps.jar"/>
-	<classpathentry kind="var" path="ANT_HOME/lib/ant-starteam.jar"/>
 	<classpathentry kind="var" path="ANT_HOME/lib/ant-stylebook.jar"/>
 	<classpathentry kind="var" path="ANT_HOME/lib/ant-swing.jar"/>
 	<classpathentry kind="var" path="ANT_HOME/lib/ant-trax.jar"/>
 	<classpathentry kind="var" path="ANT_HOME/lib/ant-vaj.jar"/>
-	<classpathentry kind="var" path="ANT_HOME/lib/ant-weblogic.jar"/>
 	<classpathentry kind="var" path="ANT_HOME/lib/ant-xalan1.jar"/>
 	<classpathentry kind="var" path="ANT_HOME/lib/ant-xslp.jar"/>
 	<classpathentry kind="var" path="ANT_HOME/lib/xercesImpl.jar"/>
