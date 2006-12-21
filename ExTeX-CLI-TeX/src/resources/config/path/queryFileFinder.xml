@@ -120,4 +120,9 @@
     <default><extension/></default>
   </Finder>
 
+  <Finder class="org.extex.tex.main.ResourceFinderImpl" default="default">
+    <tex/>
+    <fmt skip="true"/>
+    <default skip="true"/>
+  </Finder>
 </Resource>

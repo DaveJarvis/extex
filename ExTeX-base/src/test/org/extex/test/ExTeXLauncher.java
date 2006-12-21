@@ -53,11 +53,10 @@ import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.resource.ResourceFinder;
 
-
 /**
  * This base class for test cases handles all the nifty gritty details of
  * running an instance of <logo>ExTeX</logo>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -65,7 +64,7 @@ public class ExTeXLauncher extends TestCase {
 
     /**
      * Inner class for the error handler.
-     *
+     * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision$
      */
@@ -78,7 +77,7 @@ public class ExTeXLauncher extends TestCase {
 
         /**
          * Creates a new object.
-         *
+         * 
          * @param theLogger the target logger
          */
         public EHandler(final Logger theLogger) {
@@ -103,7 +102,7 @@ public class ExTeXLauncher extends TestCase {
 
         /**
          * @see org.extex.interpreter.ErrorHandler#setEditHandler(
-         *       org.extex.main.errorHandler.editHandler.EditHandler)
+         *      org.extex.main.errorHandler.editHandler.EditHandler)
          */
         public void setEditHandler(final EditHandler editHandler) {
 
@@ -115,16 +114,20 @@ public class ExTeXLauncher extends TestCase {
      * usual category codes for braces { and }.
      */
     public static final String DEFINE_BRACES = "\\catcode`\\{=1 "
-            + "\\catcode`\\}=2 ";
+                                               + "\\catcode`\\}=2 ";
 
     /**
      * The constant <tt>DEFINE_CATCODES</tt> contains the definition of the
      * usual category codes for {, }, $, &, #, ^, _, and ^^10.
      */
     public static final String DEFINE_CATCODES = "\\catcode`\\{=1 "
-            + "\\catcode`\\}=2 " + "\\catcode`\\$=3 " + "\\catcode`\\&=4 "
-            + "\\catcode`\\#=6 " + "\\catcode`\\^=7 " + "\\catcode`\\_=8 "
-            + "\\catcode`\\^^I=10 ";
+                                                 + "\\catcode`\\}=2 "
+                                                 + "\\catcode`\\$=3 "
+                                                 + "\\catcode`\\&=4 "
+                                                 + "\\catcode`\\#=6 "
+                                                 + "\\catcode`\\^=7 "
+                                                 + "\\catcode`\\_=8 "
+                                                 + "\\catcode`\\^^I=10 ";
 
     /**
      * The constant <tt>DEFINE_HASH</tt> contains the definition of the
@@ -161,16 +164,19 @@ public class ExTeXLauncher extends TestCase {
     /**
      * Set some properties to default values. The properties set are:
      * <dl>
-     * <dt><tt>extex.output</tt></dt><dd>Preset to <tt>out</tt></dd>
-     * <dt><tt>extex.interaction</tt></dt><dd>Preset to <tt>batchmode</tt></dd>
-     * <dt><tt>extex.fonts</tt></dt><dd>Preset to <tt>src/fonts</tt></dd>
+     * <dt><tt>extex.output</tt></dt>
+     * <dd>Preset to <tt>out</tt></dd>
+     * <dt><tt>extex.interaction</tt></dt>
+     * <dd>Preset to <tt>batchmode</tt></dd>
+     * <dt><tt>extex.fonts</tt></dt>
+     * <dd>Preset to <tt>src/fonts</tt></dd>
      * </dl>
-     *
+     * 
      * @param properties the properties to adapt
      */
     private static void prepareProperties(final Properties properties) {
 
-        provide(properties, "extex.output", "out");
+        provide(properties, "extex.output", "test-plain");
         provide(properties, "extex.interaction", "batchmode");
         provide(properties, "extex.fonts", "src/font");
         provide(properties, "extex.nobanner", "true");
@@ -179,7 +185,7 @@ public class ExTeXLauncher extends TestCase {
 
     /**
      * Set a property if it has not been set yet.
-     *
+     * 
      * @param properties the properties to modify
      * @param name the name of the property
      * @param value the new value
@@ -193,9 +199,10 @@ public class ExTeXLauncher extends TestCase {
     }
 
     /**
-     * The field <tt>config</tt> contains the name of the configuration to use.
+     * The field <tt>config</tt> contains the name of the configuration to
+     * use.
      */
-    private String config = "extex.xml";
+    private String config = "extex-lib.xml";
 
     /**
      * The field <tt>defaultLog</tt> contains the default log output unless
@@ -204,19 +211,20 @@ public class ExTeXLauncher extends TestCase {
     private String defaultLog = "";
 
     /**
-     * The field <tt>props</tt> contains the merged properties from the
-     * system properties and the properties loaded from <tt>.extex-test</tt>.
+     * The field <tt>props</tt> contains the merged properties from the system
+     * properties and the properties loaded from <tt>.extex-test</tt>.
      */
     private Properties props = null;
 
     /**
-     * The field <tt>setHsize</tt> contains the indicator to use a wider hsize.
+     * The field <tt>setHsize</tt> contains the indicator to use a wider
+     * hsize.
      */
     private boolean setHsize = true;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public ExTeXLauncher(final String arg) {
@@ -226,15 +234,15 @@ public class ExTeXLauncher extends TestCase {
 
     /**
      * Run some code through <tt>Interpreter</tt> which is expected to fail.
-     *
+     * 
      * @param properties the properties to modify
      * @param code the code to expand
      * @param log the expected output on the log stream
-     *
+     * 
      * @return a new instance of the <tt>Interpreter</tt> class which has been
-     *  used for the test run. This object can be inspected in additional
-     *  asserts.
-     *
+     *         used for the test run. This object can be inspected in additional
+     *         asserts.
+     * 
      * @throws Exception in case of an error
      */
     public Interpreter assertFailure(final Properties properties,
@@ -245,14 +253,14 @@ public class ExTeXLauncher extends TestCase {
 
     /**
      * Run some code through <tt>Interpreter</tt> which is expected to fail.
-     *
+     * 
      * @param code the code to expand
      * @param log the expected output on the log stream
-     *
+     * 
      * @return a new instance of the <tt>Interpreter</tt> class which has been
-     *  used for the test run. This object can be inspected in additional
-     *  asserts.
-     *
+     *         used for the test run. This object can be inspected in additional
+     *         asserts.
+     * 
      * @throws Exception in case of an error
      */
     public Interpreter assertFailure(final String code, final String log)
@@ -263,16 +271,16 @@ public class ExTeXLauncher extends TestCase {
 
     /**
      * Run some code through <logo>ExTeX</logo>.
-     *
+     * 
      * @param properties the properties to start with
      * @param code the code to expand
      * @param log the expected output on the log stream
      * @param expect the expected output on the output stream
-     *
+     * 
      * @return a new instance of the <tt>Interpreter</tt> class which has been
-     *  used for the test run. This object can be inspected in additional
-     *  asserts.
-     *
+     *         used for the test run. This object can be inspected in additional
+     *         asserts.
+     * 
      * @throws InterpreterException in case of an error
      */
     public Interpreter assertOutput(final Properties properties,
@@ -293,32 +301,51 @@ public class ExTeXLauncher extends TestCase {
              * @see org.extex.ExTeX#makeInterpreter(
              *      org.extex.util.framework.configuration.Configuration,
              *      org.extex.backend.outputStream.OutputStreamFactory,
-             *      org.extex.util.resource.ResourceFinder,
-             *      java.lang.String)
+             *      org.extex.util.resource.ResourceFinder, java.lang.String)
              */
             protected Interpreter makeInterpreter(final Configuration config,
                     final OutputStreamFactory outFatory,
                     final ResourceFinder finder, final String jobname)
-                    throws ConfigurationException,
-                        GeneralException,
-                        FontException,
-                        IOException {
+                    throws ConfigurationException, GeneralException,
+                    FontException, IOException {
 
-                Interpreter interpreter = super.makeInterpreter(config,
-                        outFatory, finder, jobname);
+                Interpreter interpreter = super
+                        .makeInterpreter(config, outFatory, finder, jobname);
                 Context context = interpreter.getContext();
                 context.set(new LauncherFont(), true);
                 context.setStandardTokenStream(interpreter
-                        .getTokenStreamFactory().newInstance(
-                                new InputStreamReader(System.in)));
+                        .getTokenStreamFactory()
+                        .newInstance(new InputStreamReader(System.in)));
                 context.set(context.getLanguage("0"), true);
                 if (setHsize) {
-                    context
-                            .setDimen("hsize", new Dimen(Dimen.ONE * 3000),
-                                    true);
+                    context.setDimen("hsize", new Dimen(Dimen.ONE * 3000), //
+                                     true);
                 }
                 return interpreter;
             }
+            //
+            // /**
+            // * @see org.extex.ExTeX#makeBackend(
+            // * org.extex.util.framework.configuration.Configuration,
+            // * org.extex.backend.outputStream.OutputStreamFactory,
+            // * org.extex.backend.documentWriter.DocumentWriterOptions,
+            // * org.extex.util.framework.configuration.Configuration,
+            // * org.extex.util.resource.ResourceFinder,
+            // * org.extex.font.FontFactory)
+            // */
+            // protected BackendDriver makeBackend(final Configuration config,
+            // final OutputStreamFactory outFactory,
+            // final DocumentWriterOptions options,
+            // final Configuration colorConfig,
+            // final ResourceFinder finder, final FontFactory fontFactory)
+            // throws DocumentWriterException, ConfigurationException {
+            //
+            // BackendDriver backend = super.makeBackend(config, outFactory,
+            // options, colorConfig,
+            // finder, fontFactory);
+            // backend.setDocumentWriter(docWriter);
+            // return backend;
+            // }
 
         };
 
@@ -337,11 +364,10 @@ public class ExTeXLauncher extends TestCase {
         extex.setErrorHandler(new EHandler(logger));
         extex.setLogger(logger);
 
-        if (Boolean.valueOf(
-                properties.getProperty("extex.launcher.verbose", "false"))
-                .booleanValue()) {
-            Logger.getLogger(ExTeXLauncher.class.getName()).info(
-                    "Running:\n" + code + "\n");
+        if (Boolean.valueOf(properties.getProperty("extex.launcher.verbose", //
+                                                   "false")).booleanValue()) {
+            Logger.getLogger(ExTeXLauncher.class.getName())
+                    .info("Running:\n" + code + "\n");
         }
 
         init(extex);
@@ -353,6 +379,7 @@ public class ExTeXLauncher extends TestCase {
             errorP = true;
         } catch (ConfigurationException e) {
             errorP = true;
+            e.printStackTrace();
         } catch (IOException e) {
             errorP = true;
         } catch (GeneralException e) {
@@ -377,15 +404,15 @@ public class ExTeXLauncher extends TestCase {
 
     /**
      * Run some code through <logo>ExTeX</logo>.
-     *
+     * 
      * @param code the code to expand
      * @param log the expected output on the log stream
      * @param expect the expected output on the output stream
-     *
+     * 
      * @return a new instance of the <tt>Interpreter</tt> class which has been
-     *  used for the test run. This object can be inspected in additional
-     *  asserts.
-     *
+     *         used for the test run. This object can be inspected in additional
+     *         asserts.
+     * 
      * @throws Exception in case of an error
      */
     public Interpreter assertOutput(final String code, final String log,
@@ -396,15 +423,15 @@ public class ExTeXLauncher extends TestCase {
 
     /**
      * Run some code through <logo>ExTeX</logo>.
-     *
+     * 
      * @param properties the properties to modify
      * @param code the code to expand
      * @param expect the expected output on the output stream
-     *
+     * 
      * @return a new instance of the <tt>Interpreter</tt> class which has been
-     *  used for the test run. This object can be inspected in additional
-     *  asserts.
-     *
+     *         used for the test run. This object can be inspected in additional
+     *         asserts.
+     * 
      * @throws Exception in case of an error
      */
     public Interpreter assertSuccess(final Properties properties,
@@ -415,14 +442,14 @@ public class ExTeXLauncher extends TestCase {
 
     /**
      * Run some code through <logo>ExTeX</logo>.
-     *
+     * 
      * @param code the code to expand
      * @param expect the expected output on the output stream
-     *
+     * 
      * @return a new instance of the <tt>Interpreter</tt> class which has been
-     *  used for the test run. This object can be inspected in additional
-     *  asserts.
-     *
+     *         used for the test run. This object can be inspected in additional
+     *         asserts.
+     * 
      * @throws Exception in case of an error
      */
     public Interpreter assertSuccess(final String code, final String expect)
@@ -433,7 +460,7 @@ public class ExTeXLauncher extends TestCase {
 
     /**
      * Getter for config.
-     *
+     * 
      * @return the config
      */
     protected String getConfig() {
@@ -443,7 +470,7 @@ public class ExTeXLauncher extends TestCase {
 
     /**
      * Getter for defaultLog.
-     *
+     * 
      * @return the defaultLog
      */
     protected String getDefaultLog() {
@@ -453,22 +480,22 @@ public class ExTeXLauncher extends TestCase {
 
     /**
      * Determine the log level.
-     *
+     * 
      * @param properties the properties
-     *
+     * 
      * @return the log level
      */
     private Level getLogLevel(final Properties properties) {
 
-        Level level = (Level) LEVEL_MAP.get(properties.getProperty(
-                "extex.launcher.loglevel", "info"));
+        Level level = (Level) LEVEL_MAP.get(properties
+                .getProperty("extex.launcher.loglevel", "info"));
 
         return level == null ? Level.INFO : level;
     }
 
     /**
      * Getter for properties.
-     *
+     * 
      * @return the properties
      */
     public Properties getProps() {
@@ -492,7 +519,7 @@ public class ExTeXLauncher extends TestCase {
 
     /**
      * Initialize the ExTeX object just before the code is run.
-     *
+     * 
      * @param extex the ExTeX object
      */
     protected void init(final ExTeX extex) {
@@ -501,7 +528,7 @@ public class ExTeXLauncher extends TestCase {
 
     /**
      * Getter for setHsize.
-     *
+     * 
      * @return the setHsize
      */
     protected boolean isSetHsize() {
@@ -513,9 +540,9 @@ public class ExTeXLauncher extends TestCase {
      * Format a log messages properly. This emulates the way <logo>TeX</logo>
      * does it; i.e. prefix and postfix are appended and line breaking is
      * applied.
-     *
+     * 
      * @param message the message to format
-     *
+     * 
      * @return the formatted message according to the log channel rules
      */
     public String out(final String message) {
@@ -525,11 +552,11 @@ public class ExTeXLauncher extends TestCase {
 
     /**
      * Run <logo>ExTeX</logo> on a file.
-     *
+     * 
      * @param file the name of the file to read from
-     *
+     * 
      * @return the contents of the log file
-     *
+     * 
      * @throws Exception in case of an error
      */
     public String runFile(final String file) throws Exception {
@@ -539,12 +566,12 @@ public class ExTeXLauncher extends TestCase {
 
     /**
      * Run <logo>ExTeX</logo> on a file.
-     *
+     * 
      * @param file the name of the file to read from
      * @param properties properties to start with
-     *
+     * 
      * @return the contents of the log file
-     *
+     * 
      * @throws Exception in case of an error
      */
     public String runFile(final String file, final Properties properties)
@@ -580,7 +607,7 @@ public class ExTeXLauncher extends TestCase {
 
     /**
      * Setter for config.
-     *
+     * 
      * @param config the config to set
      */
     public void setConfig(final String config) {
@@ -590,7 +617,7 @@ public class ExTeXLauncher extends TestCase {
 
     /**
      * Setter for defaultLog.
-     *
+     * 
      * @param defaultLog the defaultLog to set
      */
     protected void setDefaultLog(final String defaultLog) {
@@ -600,7 +627,7 @@ public class ExTeXLauncher extends TestCase {
 
     /**
      * Setter for setHsize.
-     *
+     * 
      * @param setHsize the setHsize to set
      */
     protected void setHsize(final boolean setHsize) {
@@ -610,13 +637,13 @@ public class ExTeXLauncher extends TestCase {
 
     /**
      * Getter for properties.
-     *
+     * 
      * @return the properties
      */
     public Properties showNodesProperties() {
 
         Properties p = getProps();
-        p.put("extex.output", "dump");
+        p.put("extex.output", "test-tree");
         return p;
     }
 

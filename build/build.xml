@@ -60,7 +60,7 @@
 
   <property name="javac.deprecation" value="off" />
   <property name="extex.jar.file" value="extex" />
-  <property name="classes" location="target/application/classes" />
+  <property name="classes" location="target/${configuration}/classes" />
   <property name="javadoc" location="target/javadoc" />
   <property name="installer.dir" location="util/Installer" />
   <property name="target.lib" location="target/lib" />

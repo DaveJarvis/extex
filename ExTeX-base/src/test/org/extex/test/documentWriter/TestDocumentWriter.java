@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.backend.documentWriter.dump;
+package org.extex.test.documentWriter;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -60,9 +60,9 @@ import org.extex.util.framework.configuration.exception.ConfigurationException;
  * and as tool for testing.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 4823 $
  */
-public class DumpDocumentWriter
+public class TestDocumentWriter
         implements
             DocumentWriter,
             SingleDocumentStream,
@@ -418,7 +418,7 @@ public class DumpDocumentWriter
      *
      * @param opts the dynamic access to the context
      */
-    public DumpDocumentWriter(final DocumentWriterOptions opts) {
+    public TestDocumentWriter(final DocumentWriterOptions opts) {
 
         super();
     }
