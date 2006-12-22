@@ -20,23 +20,9 @@
   #
   ######################################################################### -->
 
-<project name="ExTeX formats" default="help" basedir=".">
+<project name="texmf" basedir=".">
 
   <description>ExTeX build file</description>
-
-  <!-- ==================================================================== -->
-  <target name="help" description="Displays usage information">
-    <echo>Usage: ant &lt;target&gt;
-          The following targets are supported:
-          all
-              Build nearly everything
-          compile
-              Compile all files needed for format making.
-          formats
-              Create the format files.
-          clean
-        </echo>
-  </target>
 
   <property name="target.lib" location="../target/lib" />
 
@@ -48,8 +34,16 @@
   <!-- ==================================================================== -->
   <target name="extex-jar"
           description="Compile the Java files">
-    <ant dir=".." 
+    <ant dir="../build" 
          target="jar" />
+  </target>
+
+  <!-- ==================================================================== -->
+  <target name="texmf"
+          description="Pack the texmf tree into a jar archive">
+    <jar jarfile="target/extex-texmf.jar"
+         basedir="src/texmf"
+    />
   </target>
 
   <!-- ==================================================================== -->
@@ -61,8 +55,8 @@
     <exec executable="sh">
       <arg line="../extex -ini -config=extex -jobname=extex \input plain.tex \dump\end"/>
     </exec>
-    <jar jarfile="../target/lib/extex-formats.jar"
-         basedir=".."
+    <jar jarfile="target/extex-formats.jar"
+         basedir="target"
          includes="texmf/*.fmt,texmf/*.log"
     />
   </target>
