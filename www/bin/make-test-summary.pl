@@ -50,8 +50,7 @@ sub usage
   Pod::Text->new()->parse_from_filehandle(new FileHandle($0,'r'),\*STDERR);
 }
 
-my $target = dirname($0) . "/../../target/www/reports/test-summary.html";
-#my $target = '';
+my $target = "target/www/reports/test-summary.html";
 
 #------------------------------------------------------------------------------
 # Variable:	$verbose
@@ -79,7 +78,7 @@ my $o	 = 0;
 my $r 	 = $w;
 
 { local $/=undef;
-  my $file = dirname($0) . "/../../target/www/reports/tests/overview-summary.html";
+  my $file = "../build/target/www/reports/tests/overview-summary.html";
   my $fd = new FileHandle($file, 'r');
   if (defined $fd) {
     $_ = <$fd>;
@@ -106,7 +105,7 @@ my $r 	 = $w;
     print STDERR <<__EOF__
 *** $file not found.
 *** Run
-***	../build junitreport
+***	../build/build junitreport
 *** to generate it.
 __EOF__
   }

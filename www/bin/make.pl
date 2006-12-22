@@ -62,7 +62,7 @@ my $srcdir = "src";
 
 #------------------------------------------------------------------------------
 #
-my $destdir = "www";
+my $destdir = "target/www";
 
 #------------------------------------------------------------------------------
 #
@@ -92,7 +92,7 @@ GetOptions("h|help"	=> \&usage,
 	   "v|verbose"  => \$verbose,
 	   "trace"      => \$trace,
 	   "force"      => \$force,
-	   "src=s"	=> \$srcdir,
+	   "src=s"      => \$srcdir,
 	   "destdir=s"  => \$destdir,
 	  );
 use File::Basename;

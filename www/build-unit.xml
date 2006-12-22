@@ -36,7 +36,8 @@
     <mkdir dir="${site}" />
     <exec executable="perl"
           failonerror="true">
-      <arg line="bin/make-unit-summary.pl" />
+      <arg line="bin/unit-summary.pl" />
+      <arg line="-v" />
     </exec>
   </target>
 

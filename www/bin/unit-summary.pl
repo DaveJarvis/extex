@@ -79,16 +79,18 @@ my %syntax;
 my @units;
 my @primitives;
 my @configurations;
-my $targetdir  = $BASEDIR . "target/www/unit";
+my $targetdir  = "target/www/unit";
 
 mkdir $targetdir if not -e $targetdir;
 
 chdir dirname($0);
 chdir '..';
 
-print STDERR "Scanning sources [${BASEDIR}src/java]..." if $verbose;
-find({no_chdir => 1, wanted => \&analyze}, $BASEDIR . 'src/java');
-print STDERR "\n" if $verbose;
+foreach $_ (glob '../ExTeX-*/src/java') {
+    print STDERR "Scanning sources [$_]..." if $verbose;
+    find({no_chdir => 1, wanted => \&analyze}, $_);
+    print STDERR "\n" if $verbose;
+}
 
 foreach $_ (keys %syntax) {
   process_syntax(makeReference($_), $syntax{$_});

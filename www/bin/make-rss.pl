@@ -50,7 +50,7 @@ sub usage
   Pod::Text->new()->parse_from_filehandle(new FileHandle($0,'r'),\*STDERR);
 }
 
-my $target = "../target/site/rss/2.0/ExTeX.rss";
+my $target = "target/site/rss/2.0/ExTeX.rss";
 my $MAX    = 8;
 
 #------------------------------------------------------------------------------
@@ -68,10 +68,11 @@ GetOptions("h|help"	=> \&usage,
 
 mkdir dirname($target);
 
-my $out     = ($target eq '' ? \*STDERR : new FileHandle($target, 'w'));
 my $gendate = formatDate(localtime);
 my @t = localtime;
 my $year = $t[5] + 1900;
+my $out     = ($target eq '' ? \*STDERR : new FileHandle($target, 'w'));
+die "$target: $!\n" if not $out;
 
 print $out <<__EOF__;
 <?xml version="1.0"?>

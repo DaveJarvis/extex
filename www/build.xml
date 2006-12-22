@@ -20,7 +20,7 @@
   #
   ######################################################################### -->
 
-<project name="ExTeX site" basedir=".">
+<project name="ExTeX site" default="all" basedir=".">
 
   <description>
     The ExTeX site is build from a set of templates.
@@ -35,11 +35,12 @@
   <!-- ==================================================================== -->
   <target name="all"
           description="Build everything"
-          depends="rss,unit,site" />
+          depends="site,rss,unit" />
 
   <!-- ==================================================================== -->
   <target name="rss"
           description="Create the RSS pages">
+    <mkdir dir="${site}/rss/2.0"/>
     <exec executable="perl"
           failonerror="true">
       <arg line="bin/make-rss.pl" />
@@ -49,13 +50,24 @@
 
   <!-- ==================================================================== -->
   <target name="site"
-          description="Create the web site">
-    <mkdir dir="${site}" />
+          description="Create the web site"
+          depends="test-summary">
     <exec executable="perl"
           failonerror="true">
       <arg line="bin/make.pl" />
       <arg line="-src=src/site" />
       <arg line="-dest=${site}" />
+    </exec>
+  </target>
+
+  <!-- ==================================================================== -->
+  <target name="test-summary"
+          description="Create the RSS pages">
+    <mkdir dir="${site}/reports"/>
+    <exec executable="perl"
+          failonerror="true">
+      <arg line="bin/make-test-summary.pl" />
+      <arg line="-out=${site}/reports/test-summary.html" />
     </exec>
   </target>
 
