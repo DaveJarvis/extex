@@ -96,13 +96,13 @@ public abstract class NoFlagsButGlobalAndImmediatePrimitiveTester
      *
      * @throws Exception in case of an error
      */
-    public void testNoProtectedFlag() throws Exception {
-
-        assertFailure(//--- input code ---
-                DEFINE_CATCODES + "\\protected\\" + primitive + args,
-                //--- log message ---
-                "You can\'t use the prefix `\\protected\' with the control sequence \\"
-                        + primitive);
-    }
+//    public void testNoProtectedFlag() throws Exception {
+//
+//        assertFailure(//--- input code ---
+//                DEFINE_CATCODES + "\\protected\\" + primitive + args,
+//                //--- log message ---
+//                "You can\'t use the prefix `\\protected\' with the control sequence \\"
+//                        + primitive);
+//    }
 
 }

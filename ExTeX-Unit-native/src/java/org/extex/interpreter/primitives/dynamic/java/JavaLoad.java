@@ -142,8 +142,7 @@ public class JavaLoad extends AbstractCode implements Loader {
      *      org.extex.typesetter.Typesetter)
      */
     public void load(final Context context, final TokenSource source,
-            final Typesetter typesetter)
-            throws InterpreterException {
+            final Typesetter typesetter) throws InterpreterException {
 
         Tokens name = source.getTokens(context, source, typesetter);
         String classname = name.toText();
@@ -163,7 +162,7 @@ public class JavaLoad extends AbstractCode implements Loader {
             throw e;
         } catch (ClassCastException e) {
             throw new HelpingException(getLocalizer(), "ClassCast", classname,
-                    getName());
+                    Loadable.class.getName(), getName());
         } catch (Exception e) {
             throw new InterpreterException(e);
         }

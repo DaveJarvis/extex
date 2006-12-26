@@ -37,7 +37,7 @@ public class PdfxformTest extends NoFlagsButImmediateAndProtectedPrimitiveTester
     public PdfxformTest(final String arg) {
 
         super(arg, "pdfxform", "0");
-        setConfig("pdftex-112");
+        setConfig("pdftex-test");
     }
 
     /**

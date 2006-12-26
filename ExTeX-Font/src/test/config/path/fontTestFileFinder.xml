@@ -24,6 +24,7 @@
       <path property="extex.texinputs"/>
       <path property="texinputs"/>
       <path>.</path>
+      <path>../texmf/src/texmf/tex/plain/base</path>
       <extension></extension>
       <extension>.tex</extension>
     </tex>
@@ -71,6 +72,8 @@
     </vf>
     <tfm>
       <extension>.tfm</extension>
+      <path>../texmf/src/texmf/fonts/tfm/public/cm</path>
+      <path>../texmf/src/texmf/fonts/tfm/public/misc</path>
       <path>.</path>
       <path property="extex.fonts"/>
       <path property="texinputs"/>
@@ -81,6 +84,13 @@
       <path property="extex.fonts"/>
       <path property="texinputs"/>
     </enc>
+    <map>
+      <extension>.enc</extension>
+      <path>../ExTeX-Font/src/font</path>
+      <path>.</path>
+      <path property="extex.fonts"/>
+      <path property="texinputs"/>
+    </map>
     <default>
       <path property="extex.texinputs"/>
       <path property="texinputs"/>

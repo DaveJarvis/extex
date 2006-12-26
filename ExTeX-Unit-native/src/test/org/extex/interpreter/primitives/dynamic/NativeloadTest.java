@@ -38,7 +38,7 @@ public class NativeloadTest extends NoFlagsPrimitiveTester {
 
         super(arg, "nativeload",
                 "{java}{org.extex.interpreter.primitives.dynamic.NativeloadSensor}");
-        setConfig("extex-native");
+        setConfig("native-test");
     }
 
     /**
@@ -96,7 +96,7 @@ public class NativeloadTest extends NoFlagsPrimitiveTester {
                         + " \\end",
                 //--- error message ---
                 "The class java.lang.String does not implement\n"
-                        + "the required interface org.extex.interpreter.unit.Loader.");
+                        + "the required interface org.extex.interpreter.primitives.dynamic.java.Loadable.");
     }
 
     /**

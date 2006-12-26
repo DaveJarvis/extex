@@ -46,7 +46,7 @@ public class ExportTest extends NoFlagsPrimitiveTester {
     public ExportTest(final String arg) {
 
         super(arg, "export", "{\\a}", DEFINE_BRACES);
-        setConfig("nextex");
+        setConfig("namespace-test");
     }
 
     //TODO implement more primitive specific test cases

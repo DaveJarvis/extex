@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -20,7 +20,6 @@
 package org.extex.interpreter.primitives.register.count;
 
 import org.extex.interpreter.primitives.register.count.AbstractCountRegisterTester;
-
 
 /**
  * This is a test suite for the primitive <tt>\tracingnesting</tt>.
@@ -47,6 +46,7 @@ public class TracingnestingTest extends AbstractCountRegisterTester {
     public TracingnestingTest(final String arg) {
 
         super(arg, "tracingnesting", "", "0");
+        setConfig("etex-test");
     }
 
     //TODO implement the primitive specific test cases

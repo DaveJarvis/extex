@@ -46,6 +46,7 @@ public class PredisplaydirectionTest extends AbstractCountRegisterTester {
     public PredisplaydirectionTest(final String arg) {
 
         super(arg, "predisplaydirection", "", "0");
+        setConfig("etex-test");
     }
 
     //TODO implement the primitive specific test cases

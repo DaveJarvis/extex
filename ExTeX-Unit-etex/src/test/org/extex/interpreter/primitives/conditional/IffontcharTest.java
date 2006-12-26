@@ -47,6 +47,7 @@ public class IffontcharTest extends ExTeXLauncher {
     public IffontcharTest(final String arg) {
 
         super(arg);
+        setConfig("etex-test");
     }
 
     /**

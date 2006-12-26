@@ -47,6 +47,7 @@ public class CurrentgrouptypeTest extends AbstractReadonlyCountRegisterTester {
     public CurrentgrouptypeTest(final String arg) {
 
         super(arg, "currentgrouptype", "0");
+        setConfig("etex-test");
     }
 
     /**

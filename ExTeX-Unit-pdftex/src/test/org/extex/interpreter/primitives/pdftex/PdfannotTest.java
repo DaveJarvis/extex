@@ -39,7 +39,7 @@ public class PdfannotTest
     public PdfannotTest(final String arg) {
 
         super(arg, "pdfannot", "{}");
-        setConfig("pdftex-112");
+        setConfig("pdftex-test");
     }
 
     /**

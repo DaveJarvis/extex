@@ -46,7 +46,7 @@ public class PdfdecimaldigitsTest extends AbstractCountRegisterTester {
     public PdfdecimaldigitsTest(final String arg) {
 
         super(arg, "pdfdecimaldigits", "", "3");
-        setConfig("pdftex-112");
+        setConfig("pdftex-test");
     }
 
     //TODO implement the primitive specific test cases

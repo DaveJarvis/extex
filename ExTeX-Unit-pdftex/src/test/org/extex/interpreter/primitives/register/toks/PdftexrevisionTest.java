@@ -46,7 +46,7 @@ public class PdftexrevisionTest extends AbstractToksRegisterTester {
     public PdftexrevisionTest(final String arg) {
 
         super(arg, "pdftexrevision", "", "r");
-        setConfig("pdftex-112");
+        setConfig("pdftex-test");
     }
 
     //TODO implement the primitive specific test cases

@@ -31,7 +31,6 @@ import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.ConfigurationFactory;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-
 /**
  * Test cases for dimen registers.
  *
@@ -73,7 +72,7 @@ public class DimenRegisterTest extends TestCase {
                 GeneralException {
 
         Configuration config = new ConfigurationFactory()
-                .newInstance("config/extex.xml");
+                .newInstance("config/base-test.xml");
         TokenStreamFactory fac = new TokenStreamFactory(config
                 .getConfiguration("Scanner"), "base");
         Interpreter source = new InterpreterFactory(config

@@ -150,9 +150,9 @@ public class Readline extends AbstractAssignment implements LogEnabled {
 
         InFile file = context.getInFile(key);
 
-        if (!file.isOpen()) {
+        if (file == null || !file.isOpen()) {
             file = context.getInFile(null);
-            if (!file.isOpen()) {
+            if (file == null || !file.isOpen()) {
                 throw new HelpingException(getLocalizer(), "TTP.EOFinRead",
                         printableControlSequence(context));
             }

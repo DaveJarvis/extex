@@ -47,7 +47,7 @@ public class NoDefaultOutputTranslationTest extends NoFlagsButGlobalPrimitiveTes
     public NoDefaultOutputTranslationTest(final String arg) {
 
         super(arg, "noDefaultOutputTranslation", " onebyte ");
-        setConfig("omega");
+        setConfig("omega-test");
     }
 
     /**

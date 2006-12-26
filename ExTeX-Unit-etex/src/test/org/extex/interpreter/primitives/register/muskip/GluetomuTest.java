@@ -46,6 +46,7 @@ public class GluetomuTest extends NonExecuteTester {
     public GluetomuTest(final String arg) {
 
         super(arg, "gluetomu", "");
+        setConfig("etex-test");
     }
 
     /**

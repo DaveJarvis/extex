@@ -46,6 +46,7 @@ public class LastlinefitTest extends AbstractCountRegisterTester {
     public LastlinefitTest(final String arg) {
 
         super(arg, "lastlinefit", "", "0");
+        setConfig("etex-test");
     }
 
     //TODO implement the primitive specific test cases

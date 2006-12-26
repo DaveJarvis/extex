@@ -52,9 +52,9 @@
     -->
   <mkdir dir="${target}"/>
   <xslt in="${configuration}.xml"
-        out="${target}/def-${configuration}.xml"
+        out="${target}/${configuration}.cfg"
         style="src/xslt/application.xsl"/>
-  <import file="${target}/def-${configuration}.xml"/>
+  <import file="${target}/${configuration}.cfg"/>
   
   <import file="build-sub-projects.xml"/>
 
@@ -68,12 +68,36 @@
   <property name="tests.haltonfailure" value="no" />
   <property name="test.classes" location="target/${configuration}/test/classes" />
   <property name="test.results" location="target/${configuration}/test/results" />
-  <property name="test.results.html" location="target/www/reports/tests" />
+  <property name="test.results.html" location="target/site/reports/tests" />
+
+  <!-- ==================================================================== -->
+  <taskdef name="checkstyle"
+           classname="com.puppycrawl.tools.checkstyle.CheckStyleTask">
+    <classpath>
+      <pathelement location="lib/checkstyle-all-4.2.jar" />
+      <pathelement location="lib/checkstyle-optional-4.2.jar" />
+    </classpath>
+  </taskdef>
+
 
   <!-- ==================================================================== -->
   <target name="all"
           description="Build nearly everything"
           depends="installer,javadoc,checkstyle,test" />
+
+  <!-- ==================================================================== -->
+  <target name="checkstyle"
+          depends="jar"
+          description="Generates a report of violations of the coding conventions">
+    <checkstyle config="../develop/eclipse/extex_checkstyle.xml"
+                failureProperty="checkstyle.failure"
+                failOnViolation="false">
+      <classpath refid="application.class.path" />
+      <formatter type="plain" tofile="${target}/checkstyle.txt" />
+      <formatter type="xml" tofile="${target}/checkstyle.xml" />
+      <fileset refid="application.source.files" />
+    </checkstyle>
+  </target>
 
   <!-- ==================================================================== -->
   <target name="clean"
@@ -92,10 +116,20 @@
       <classpath refid="application.class.path" />
       <src refid="application.source.path"/>
     </javac>
+
     <copy todir="${classes}">
-      <mapper type="regexp" from="^[a-zA-Z-]*/src/[a-z]*/(.*)$$" to="\1"/>
+      <mapper type="regexp"
+              from="^[^/\\]*\${file.separator}src\${file.separator}[a-z]*\${file.separator}(.*)$$"
+              to="\1"/>
       <fileset refid="application.resource.files" />
     </copy>
+  </target>
+
+  <!-- ==================================================================== -->
+  <target name="formats"
+          description="Compile the format files">
+    <ant dir="texmf" 
+         target="formats" />
   </target>
 
   <!-- ==================================================================== -->
@@ -173,10 +207,12 @@
     </javac>
 
     <copy todir="${test.classes}">
-      <mapper type="regexp" from="^ExTeX-[^/]*/src/[a-z]*/(.*)$$" to="\1"/>
-      <fileset dir=".." >
-        <include name="ExTeX-*/**"/>
-        <exclude name="**/*.java"/>
+      <mapper type="regexp"
+              from="^[^/\\]*\${file.separator}src\${file.separator}[a-z]*\${file.separator}(.*)$$"
+              to="\1"/>
+      <fileset dir="..">
+        <include name="ExTeX-*/**/test/**/*.xml"/>
+        <include name="ExTeX-*/**/test/**/*.properties"/>
       </fileset>
     </copy>
 
@@ -207,7 +243,10 @@
     </junitreport>
   </target>
 
-
+  <!-- ==================================================================== -->
+  <target name="tests"
+          description="Alias for test"
+          depends="test"/>
   
   
   
@@ -219,7 +258,7 @@
           description="Translate the build log into a HTML page">
     <xslt in="target/build.log"
           out="target/build.html"
-          style="src/ant/log.xsl"
+          style="src/xslt/ant-log.xsl"
           />
   </target>
 
@@ -231,36 +270,10 @@
   <!-- ==================================================================== -->
   <!-- ==================================================================== -->
   <!-- ==================================================================== -->
+  <!-- ==================================================================== -->
 
   <!-- ==================================================================== -->
-  <target name="formats"
-          description="Compile the format files">
-    <ant dir="texmf" 
-         target="formats" />
-  </target>
-
-  <!-- ==================================================================== -->
-  <target name="compile.tests"
-          description="Compile the Java files (with tests)">
-    <mkdir dir="${classes}" />
-    <javac srcdir="${src.tests}" destdir="${classes}" debug="on">
-      <classpath refid="application.class.path" />
-      <classpath refid="develop.class.path" />
-      <classpath>
-       <pathelement path="${classes}"/>
-      </classpath>
-    </javac>
-    <copy todir="${classes}">
-      <fileset dir="src">
-        <include name="**/*.properties" />
-        <include name="**/*.xml" />
-        <include name="**/ExTeX-PL" />
-      </fileset>
-    </copy>
-  </target>
-
-  <!-- ==================================================================== -->
-  <target name="testreport" depends="compile-develop,jar,checkstyle41-xml" 
+  <target name="testreport" depends="compile-develop,jar,checkstyle" 
           description="Run Checkstyle and create a HTML report">
     <java fork="true"
           classname="org.extex.checkstyle.ReportAddAuthor" 
@@ -296,7 +309,7 @@
           description="">
     <java classname="org.extex.site.report.Summary"
           classpath="${target}/test/classes"
-    output="target/tests/index.xml">
+          output="target/tests/index.xml">
       <arg value="-dir"/>
       <arg value="target/tests"/>
     </java>
@@ -306,61 +319,6 @@
           style="develop/reports/junit.xsl">
       <classpath refid="develop.class.path" />
     </xslt>
-  </target>
-
-  <!-- ==================================================================== -->
-  <target name="checkstyle"
-          description="Generates a report of violations of the coding conventions.">
-    <checkstyle config="develop/eclipse/checkstyle.cfg"
-                failureProperty="checkstyle.failure"
-                failOnViolation="false">
-      <formatter type="plain" tofile="${target}/checkstyle.txt" />
-      <fileset dir="src" includes="**/*.java" />
-    </checkstyle>
-  </target>
-
-  <!-- ==================================================================== -->
-  <target name="checkstyle41"
-    description="Generates a report of violations of the coding conventions using version 4.1.">
-    <checkstyle config="develop/eclipse/extex_checkstyle.xml"
-                failureProperty="checkstyle.failure"
-          failOnViolation="false">
-      <classpath>
-        <pathelement location="develop/lib/checkstyle-all-4.1.jar" />
-        <pathelement location="develop/lib/checkstyle-optional-4.1.jar" />
-        </classpath>
-      <formatter type="plain" tofile="${target}/checkstyle.txt" />
-      <fileset dir="src" includes="**/*.java" />
-    </checkstyle>
-  </target>
-
-  <!-- ==================================================================== -->
-  <target name="checkstyle41-xml"
-    description="Generates a report of violations of the coding conventions using version 4.1. (only in src/java)">
-    <checkstyle config="develop/eclipse/extex_checkstyle.xml"
-          failureProperty="checkstyle.failure"
-          failOnViolation="false">
-      <classpath>
-        <pathelement location="develop/lib/checkstyle-all-4.1.jar" />
-        <pathelement location="develop/lib/checkstyle-optional-4.1.jar" />
-      </classpath>
-      <formatter type="plain" tofile="${target}/checkstyle.txt" />
-      <formatter type="xml" tofile="${target}/checkstyle.xml" />
-      <fileset dir="src/java" includes="**/*.java" />
-    </checkstyle>
-  </target>
-
-  <!-- ==================================================================== -->
-  <target name="checkstyle-xml"
-          description="Generates a report of violations of the coding conventions.">
-    <checkstyle config="develop/eclipse/checkstyle.cfg"
-                failureProperty="checkstyle.failure"
-                failOnViolation="false">
-      <formatter type="plain" tofile="${target}/checkstyle.txt" />
-      <formatter type="xml" tofile="${target}/checkstyle.xml" />
-      <fileset dir="src" includes="**/*.java" />
-      <classpath refid="develop.class.path" />
-    </checkstyle>
   </target>
 
   <!-- ==================================================================== -->

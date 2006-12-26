@@ -174,7 +174,8 @@
       -  The section "DocumentWriter" contains the specification for the
       -  document writer
       -->
-    <DocumentWriter base="backend/"/>
+    <DocumentWriter base="backend/"
+                    default="dvi"/>
 
     <parameter name="Title" value=""/>
     <parameter name="Author" property="user.name"/>

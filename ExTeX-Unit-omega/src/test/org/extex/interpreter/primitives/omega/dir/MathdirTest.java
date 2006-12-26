@@ -22,7 +22,6 @@ package org.extex.interpreter.primitives.omega.dir;
 import org.extex.interpreter.Interpreter;
 import org.extex.test.NoFlagsButGlobalPrimitiveTester;
 
-
 /**
  * This is a test suite for the primitive <tt>mathdir</tt>.
  *
@@ -49,7 +48,7 @@ public class MathdirTest extends NoFlagsButGlobalPrimitiveTester {
     public MathdirTest(final String arg) {
 
         super(arg, "mathdir", " LRL");
-        setConfig("omega");
+        setConfig("omega-test");
     }
 
     /**

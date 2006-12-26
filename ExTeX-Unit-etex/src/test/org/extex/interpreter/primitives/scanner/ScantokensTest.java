@@ -46,6 +46,7 @@ public class ScantokensTest extends NoFlagsPrimitiveTester {
     public ScantokensTest(final String arg) {
 
         super(arg, "scantokens", "{}");
+        setConfig("etex-test");
     }
 
     /**

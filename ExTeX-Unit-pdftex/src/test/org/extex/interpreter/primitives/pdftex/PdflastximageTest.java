@@ -37,7 +37,7 @@ public class PdflastximageTest extends AbstractReadonlyCountRegisterTester {
     public PdflastximageTest(final String arg) {
 
         super(arg, "pdflastximage", "0");
-        setConfig("pdftex-112");
+        setConfig("pdftex-test");
     }
 
     //TODO implement more primitive specific test cases

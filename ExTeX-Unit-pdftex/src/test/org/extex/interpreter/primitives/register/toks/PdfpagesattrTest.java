@@ -46,7 +46,7 @@ public class PdfpagesattrTest extends AbstractToksRegisterTester {
     public PdfpagesattrTest(final String arg) {
 
         super(arg, "pdfpagesattr", "", "");
-        setConfig("pdftex-112");
+        setConfig("pdftex-test");
     }
 
     //TODO implement the primitive specific test cases

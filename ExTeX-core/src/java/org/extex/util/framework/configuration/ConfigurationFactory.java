@@ -27,13 +27,11 @@ import org.extex.util.framework.configuration.exception.ConfigurationInstantiati
 import org.extex.util.framework.configuration.exception.ConfigurationInvalidNameException;
 import org.extex.util.framework.configuration.impl.ConfigurationXMLImpl;
 
-
-
 /**
  * This is the factory for configurations.
  * <p>
  * The class to be used for the configuration can be set with the
- * <tt>System.property</tt> named <tt>Util.Configuarion.class</tt>.
+ * <tt>System.property</tt> named <tt>Util.Configuration.class</tt>.
  * If this property is not set then the fallback class
  * {@link org.extex.util.framework.configuration.impl.ConfigurationXMLImpl ConfigurationXMLImpl}
  * is used instead.

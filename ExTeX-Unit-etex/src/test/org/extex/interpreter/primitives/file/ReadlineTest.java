@@ -48,6 +48,7 @@ public class ReadlineTest extends NoFlagsButGlobalPrimitiveTester {
 
         super(arg, "readline", "1 to \\x",
                 "\\openin1 develop/test/data/read_data.tex ");
+        setConfig("etex-test");
     }
 
 }

@@ -251,7 +251,7 @@ public interface Configuration {
 
     /**
      * Retrieve a value from the configuration as <i>String</i>.
-     * If the value could not be determined then <code>null</code> is
+     * If the value could not be determined then the empty string is
      * returned.
      * <p>
      * Consider the following example with the configuration currently rooted
@@ -303,10 +303,13 @@ public interface Configuration {
 
     /**
      * Get the list of all values with the given tag name in the current
-     * configuration and append them to a given StringList.
+     * configuration and append them to a given {@link StringList StringList}.
      *
-     * @param key the name of the tags
+     * @param key the name of the tags. A value of <code>null</code> is legal.
+     *  I this case nothing is appended.
      * @param list the list to append the values to
+     *
+     * @throws IllegalArgumentException in case that list is null
      */
     void getValues(StringList list, String key);
 

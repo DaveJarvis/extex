@@ -46,7 +46,7 @@ public class PdftexversionTest extends AbstractCountRegisterTester {
     public PdftexversionTest(final String arg) {
 
         super(arg, "pdftexversion", "", "112");
-        setConfig("pdftex-112");
+        setConfig("pdftex-test");
     }
 
     //TODO implement the primitive specific test cases

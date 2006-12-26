@@ -160,16 +160,16 @@ public abstract class NoFlagsButGlobalPrimitiveTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
-    public void testNoProtectedFlag() throws Exception {
-
-        assertFailure(
-        //--- input code ---
-                prepare + "\\protected\\" + primitive + arguments,
-                //--- log message ---
-                out + "You can\'t use the prefix `\\protected\' "
-                        + "with the control sequence"
-                        + (primitive.length() < 16 ? " " : "\n") + "\\"
-                        + primitive);
-    }
+//    public void testNoProtectedFlag() throws Exception {
+//
+//        assertFailure(
+//        //--- input code ---
+//                prepare + "\\protected\\" + primitive + arguments,
+//                //--- log message ---
+//                out + "You can\'t use the prefix `\\protected\' "
+//                        + "with the control sequence"
+//                        + (primitive.length() < 16 ? " " : "\n") + "\\"
+//                        + primitive);
+//    }
 
 }

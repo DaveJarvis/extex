@@ -47,7 +47,7 @@ public class DefaultInputModeTest extends NoFlagsButGlobalPrimitiveTester {
     public DefaultInputModeTest(final String arg) {
 
         super(arg, "DefaultInputMode", " onebyte ");
-        setConfig("omega");
+        setConfig("omega-test");
     }
 
     /**

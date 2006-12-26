@@ -20,7 +20,6 @@ package org.extex.util.framework.configuration;
 
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-
 /**
  * This interface describes the possibilities to configure an object.
  * <p>

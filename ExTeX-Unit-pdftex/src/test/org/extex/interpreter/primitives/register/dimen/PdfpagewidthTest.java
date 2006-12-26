@@ -46,7 +46,7 @@ public class PdfpagewidthTest extends AbstractDimenRegisterTester {
     public PdfpagewidthTest(final String arg) {
 
         super(arg, "pdfpagewidth", "", "597.50787pt");
-        setConfig("pdftex-112");
+        setConfig("pdftex-test");
     }
 
     //TODO implement the primitive specific test cases

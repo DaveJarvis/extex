@@ -98,7 +98,7 @@ print $out <<__EOF__;
 __EOF__
 
   my $no = 0;
-  foreach my $f (reverse sort glob(dirname($0)."/src/news/*.xml") ) {
+  foreach my $f (reverse sort glob(dirname($0)."/../src/news/*.xml") ) {
     last if $no++ >= $MAX;
     include($no, $f);
   }

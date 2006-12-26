@@ -46,7 +46,7 @@ public class PdfadjustspacingTest extends AbstractCountRegisterTester {
     public PdfadjustspacingTest(final String arg) {
 
         super(arg, "pdfadjustspacing", "", "0");
-        setConfig("pdftex-112");
+        setConfig("pdftex-test");
     }
 
     //TODO implement the primitive specific test cases

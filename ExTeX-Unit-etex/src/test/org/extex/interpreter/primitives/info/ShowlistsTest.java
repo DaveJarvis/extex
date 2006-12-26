@@ -23,7 +23,6 @@ import java.util.Properties;
 
 import org.extex.test.NoFlagsPrimitiveTester;
 
-
 /**
  * This is a test suite for the primitive <tt>\showlists</tt>.
  *
@@ -33,13 +32,14 @@ import org.extex.test.NoFlagsPrimitiveTester;
 public class ShowlistsTest extends NoFlagsPrimitiveTester {
 
     /**
-     * Constructor for JobnameTest.
+     * Creates a new object.
      *
      * @param arg the name
      */
     public ShowlistsTest(final String arg) {
 
         super(arg, "showlists", "");
+        setConfig("etex-test");
     }
 
     /**

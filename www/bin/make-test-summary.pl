@@ -50,7 +50,7 @@ sub usage
   Pod::Text->new()->parse_from_filehandle(new FileHandle($0,'r'),\*STDERR);
 }
 
-my $target = "target/www/reports/test-summary.html";
+my $target = "target/site/reports/test-summary.html";
 
 #------------------------------------------------------------------------------
 # Variable:	$verbose
@@ -112,6 +112,8 @@ __EOF__
 }
 
 my $out = ($target eq '' ? \*STDERR : new FileHandle($target, 'w'));
+
+die "$target: $!\n" if  not defined $out;
 
 print $out <<__EOF__;
 <div>Number of tests: $no</div>

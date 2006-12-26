@@ -103,7 +103,6 @@ import org.extex.util.resource.ResourceConsumer;
 import org.extex.util.resource.ResourceFinder;
 import org.extex.util.resource.ResourceFinderFactory;
 
-
 /**
  * This is the programmatic interface to the <logo>ExTeX</logo> functionality.
  * A program may use this functionality to perform all necessary actions without

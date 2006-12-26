@@ -46,6 +46,7 @@ public class InterlinepenaltiesTest extends AbstractCountArrayTester {
     public InterlinepenaltiesTest(final String arg) {
 
         super(arg, "interlinepenalties", "255", "0");
+        setConfig("etex-test");
     }
 
     //TODO implement more primitive specific test cases

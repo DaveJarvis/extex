@@ -38,7 +38,7 @@ public class NativedefTest extends NoFlagsButGlobalPrimitiveTester {
 
         super(arg, "nativedef",
                 "{java}\\t{org.extex.interpreter.primitives.Relax}");
-        setConfig("extex-native");
+        setConfig("native-test");
     }
 
     /**

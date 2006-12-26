@@ -46,6 +46,7 @@ public class DetokenizeTest extends NoFlagsPrimitiveTester {
     public DetokenizeTest(final String arg) {
 
         super(arg, "detokenize", "{}");
+        setConfig("etex-test");
     }
 
     /**

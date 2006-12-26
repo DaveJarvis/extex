@@ -46,7 +46,7 @@ public class PdfmovecharsTest extends AbstractCountRegisterTester {
     public PdfmovecharsTest(final String arg) {
 
         super(arg, "pdfmovechars", "", "0");
-        setConfig("pdftex-112");
+        setConfig("pdftex-test");
     }
 
     //TODO implement the primitive specific test cases

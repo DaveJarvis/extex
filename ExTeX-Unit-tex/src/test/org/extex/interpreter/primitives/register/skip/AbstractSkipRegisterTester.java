@@ -109,15 +109,15 @@ public abstract class AbstractSkipRegisterTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
-    public void testSkipRegisterProtectedPrefix1() throws Exception {
-
-        assertFailure(//--- input code ---
-                prepare + "\\protected\\" + invocation + "= 2pt ",
-                //--- error channel ---
-                "You can't use the prefix `\\protected' with the control sequence"
-                        + (primitive.length() > 14 ? "\n" : " ") + "\\"
-                        + primitive);
-    }
+//    public void testSkipRegisterProtectedPrefix1() throws Exception {
+//
+//        assertFailure(//--- input code ---
+//                prepare + "\\protected\\" + invocation + "= 2pt ",
+//                //--- error channel ---
+//                "You can't use the prefix `\\protected' with the control sequence"
+//                        + (primitive.length() > 14 ? "\n" : " ") + "\\"
+//                        + primitive);
+//    }
 
     /**
      * <testcase>

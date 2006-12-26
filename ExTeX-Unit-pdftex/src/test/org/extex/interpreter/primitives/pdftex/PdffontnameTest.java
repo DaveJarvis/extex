@@ -37,7 +37,7 @@ public class PdffontnameTest extends NoFlagsButProtectedPrimitiveTester {
     public PdffontnameTest(final String arg) {
 
         super(arg, "pdffontname", "\\f{}", "\\font\\f=cmr10 ");
-        setConfig("pdftex-112");
+        setConfig("pdftex-test");
     }
 
     /**

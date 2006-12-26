@@ -37,7 +37,7 @@ public class PdfstartlinkTest extends NoFlagsButProtectedPrimitiveTester {
     public PdfstartlinkTest(final String arg) {
 
         super(arg, "pdfstartlink", " user{u}", "a ");
-        setConfig("pdftex-112");
+        setConfig("pdftex-test");
     }
 
     /**

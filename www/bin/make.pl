@@ -150,7 +150,8 @@ sub process
     my $top   = $name;
     $top      =~ s|[^/]+|..|g;
     $top      =~ s|\.\.$||;
-    my $out   = new FileHandle("$destdir/$name","w");
+    my $out   = new FileHandle("$destdir/$name","w")
+	        || die "$destdir/$name: $!\n";
     my @t     = localtime((stat $_)[9]);
     $modday   = $t[3];
     $modmonth = $mon[$t[4]];

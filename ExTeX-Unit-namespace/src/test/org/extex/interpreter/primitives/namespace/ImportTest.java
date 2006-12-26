@@ -46,7 +46,7 @@ public class ImportTest extends NoFlagsPrimitiveTester {
     public ImportTest(final String arg) {
 
         super(arg, "import", "{a.b.c}", DEFINE_BRACES);
-        setConfig("nextex");
+        setConfig("namespace-test");
     }
 
     //TODO implement more primitive specific test cases

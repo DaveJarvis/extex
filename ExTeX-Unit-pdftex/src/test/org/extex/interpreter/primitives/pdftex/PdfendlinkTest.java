@@ -37,7 +37,7 @@ public class PdfendlinkTest extends NoFlagsButProtectedPrimitiveTester {
     public PdfendlinkTest(final String arg) {
 
         super(arg, "pdfendlink", "");
-        setConfig("pdftex-112");
+        setConfig("pdftex-test");
     }
 
     //TODO implement more primitive specific test cases

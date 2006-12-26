@@ -46,6 +46,7 @@ public class WidowpenaltiesTest extends AbstractCountArrayTester {
     public WidowpenaltiesTest(final String arg) {
 
         super(arg, "widowpenalties", "255", "0");
+        setConfig("etex-test");
     }
 
     //TODO implement more primitive specific test cases

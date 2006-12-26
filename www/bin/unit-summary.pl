@@ -79,7 +79,7 @@ my %syntax;
 my @units;
 my @primitives;
 my @configurations;
-my $targetdir  = "target/www/unit";
+my $targetdir  = "target/site/unit";
 
 mkdir $targetdir if not -e $targetdir;
 
@@ -96,17 +96,17 @@ foreach $_ (keys %syntax) {
   process_syntax(makeReference($_), $syntax{$_});
 }
 
-foreach $_ (glob 'unit-summary/*') {
-  next if m/CVS/;
+foreach $_ (glob dirname($0) . '/../src/unit-summary/*') {
+  next if m/CVS/ or m/.svn/ or m/~$/;
   my $f = $targetdir . "/" . basename($_);
-  copy($_, $f) if not m/~$/;
+  copy($_, $f);
 }
 
-foreach $_ (glob $BASEDIR . 'src/java/config/unit/*.xml') {
+foreach $_ (glob $BASEDIR . '/ExTeX-*/src/resources/config/unit/*.xml') {
   process_unit($_);
 }
 
-foreach $_ (glob $BASEDIR . 'src/java/config/*.xml') {
+foreach $_ (glob $BASEDIR . '/ExTeX-*/src/resources/config/*.xml') {
   process_cfg($_);
 }
 
@@ -302,7 +302,7 @@ sub process_unit {
 
   push @units, $unit;
 
-  my $fd = new FileHandle($file, 'r') || die "$file: $!\n";;
+  my $fd = new FileHandle($file, 'r') || die "$file: $!\n";
 
   while (<$fd>) {
     $see   = $1 if m/<unit.*src=\"([^"]*)\"/; #"
@@ -404,6 +404,8 @@ sub make_info_page {
   my ($file, $doc, $headline, $title, $author, $incomplete) = @_;
   local $_;
 
+  mkdir dirname($file);
+
   if ($doc eq '') {
     $incomplete = 1;
     $doc	= <<__EOF__;
@@ -493,7 +495,7 @@ sub HTML_start {
   my $t	     = $title;
   $t 	     =~ s|\\|\\\\|g;
   $t 	     =~ s|['"]||g; #'
-  my $fd     = new FileHandle($file, 'w') || die "$file: $!\n";;
+  my $fd     = new FileHandle($file, 'w') || die "$file: $!\n";
   
   $author = "\n  <meta name=\"Author\" content=\"$author\">" if $author ne '';
 

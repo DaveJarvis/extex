@@ -47,7 +47,7 @@ public class PdfhoriginTest extends AbstractDimenRegisterTester {
     public PdfhoriginTest(final String arg) {
 
         super(arg, "pdfhorigin", "", "0.0pt");
-        setConfig("pdftex-112");
+        setConfig("pdftex-test");
     }
 
     //TODO implement the primitive specific test cases

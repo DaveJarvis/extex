@@ -37,7 +37,7 @@ public class PdfendthreadTest extends NoFlagsButProtectedPrimitiveTester {
     public PdfendthreadTest(final String arg) {
 
         super(arg, "pdfendthread", "");
-        setConfig("pdftex-112");
+        setConfig("pdftex-test");
     }
 
     //TODO implement more primitive specific test cases

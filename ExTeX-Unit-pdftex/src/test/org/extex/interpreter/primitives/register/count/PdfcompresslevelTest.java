@@ -46,7 +46,7 @@ public class PdfcompresslevelTest extends AbstractCountRegisterTester {
     public PdfcompresslevelTest(final String arg) {
 
         super(arg, "pdfcompresslevel", "", "9");
-        setConfig("pdftex-112");
+        setConfig("pdftex-test");
     }
 
     //TODO implement the primitive specific test cases

@@ -47,7 +47,7 @@ public class NoDefaultInputTranslationTest extends NoFlagsButGlobalPrimitiveTest
     public NoDefaultInputTranslationTest(final String arg) {
 
         super(arg, "noDefaultInputTranslation", " onebyte ");
-        setConfig("omega");
+        setConfig("omega-test");
     }
 
     /**

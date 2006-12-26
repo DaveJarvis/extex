@@ -22,7 +22,6 @@ package org.extex.interpreter.primitives.conditional;
 import org.extex.interpreter.primitives.math.AbstractMathTester;
 import org.extex.test.ExTeXLauncher;
 
-
 /**
  * This is a test suite for the primitive <tt>\u005cnless</tt>.
  *
@@ -49,6 +48,7 @@ public class UnlessTest extends ExTeXLauncher {
     public UnlessTest(final String arg) {
 
         super(arg);
+        setConfig("etex-test");
     }
 
     /**

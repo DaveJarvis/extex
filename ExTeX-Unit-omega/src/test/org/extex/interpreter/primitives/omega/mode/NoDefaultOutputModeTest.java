@@ -47,7 +47,7 @@ public class NoDefaultOutputModeTest extends NoFlagsButGlobalPrimitiveTester {
     public NoDefaultOutputModeTest(final String arg) {
 
         super(arg, "noDefaultOutputMode", "");
-        setConfig("omega");
+        setConfig("omega-test");
     }
 
     //TODO implement more primitive specific test cases

@@ -21,6 +21,7 @@ package de.dante.tex;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileReader;
 import java.io.Reader;
 import java.io.StringReader;
@@ -86,9 +87,10 @@ public final class TestTeX {
         // run ExTeX
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         Properties pro = System.getProperties();
-        ExTeX extex = new ExTeX(pro, ".extex");
+        ExTeX extex = new ExTeX(pro, ".extex-test");
 //        pro.setProperty("extex.output", "dump");
         pro.setProperty("extex.output", "out"); // gene
+        pro.setProperty("extex.config", "tex.xml"); // gene
         pro.setProperty("extex.file", texfile);
         pro.setProperty("extex.jobname", texfile);
         // BATCHMODE
@@ -120,6 +122,7 @@ public final class TestTeX {
         } finally { // gene: to assure that the resources are freed
             intxt.close();
             intesttxt.close();
+            new File(outfile).delete();
         }
     }
 

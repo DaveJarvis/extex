@@ -47,6 +47,7 @@ public class CurrentiflevelTest extends AbstractReadonlyCountRegisterTester {
     public CurrentiflevelTest(final String arg) {
 
         super(arg, "currentiflevel", "0");
+        setConfig("etex-test");
     }
 
     /**

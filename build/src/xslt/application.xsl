@@ -48,6 +48,11 @@
     </dirset>
   </path>
 
+  <fileset dir=".."
+           id="application.source.files">
+    <xsl:apply-templates select="component" mode="sourceFiles"/>
+  </fileset>
+
   <path id="test.class.path">
     <fileset dir="..">
       <!-- for testing -->
@@ -88,6 +93,11 @@
  <!-- ===================================================================== -->
 <xsl:template match="component" mode="source">
   <include name="{@name}/src/java"/>
+</xsl:template>
+
+ <!-- ===================================================================== -->
+<xsl:template match="component" mode="sourceFiles">
+  <include name="{@name}/src/java/**/*.java"/>
 </xsl:template>
 
  <!-- ===================================================================== -->

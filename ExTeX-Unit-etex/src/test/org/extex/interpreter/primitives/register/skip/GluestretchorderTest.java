@@ -46,6 +46,7 @@ public class GluestretchorderTest extends AbstractReadonlyCountRegisterTester {
     public GluestretchorderTest(final String arg) {
 
         super(arg, "gluestretchorder", "\\skip0 ", "0");
+        setConfig("etex-test");
     }
 
     /**

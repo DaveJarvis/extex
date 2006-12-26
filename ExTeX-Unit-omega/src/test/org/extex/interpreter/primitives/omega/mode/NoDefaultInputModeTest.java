@@ -47,7 +47,7 @@ public class NoDefaultInputModeTest extends NoFlagsButGlobalPrimitiveTester {
     public NoDefaultInputModeTest(final String arg) {
 
         super(arg, "noDefaultInputMode", "");
-        setConfig("omega");
+        setConfig("omega-test");
     }
 
     //TODO implement more primitive specific test cases

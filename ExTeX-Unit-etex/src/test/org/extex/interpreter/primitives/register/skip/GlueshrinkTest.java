@@ -46,6 +46,7 @@ public class GlueshrinkTest extends ExTeXLauncher {
     public GlueshrinkTest(final String arg) {
 
         super(arg);
+        setConfig("etex-test");
     }
 
     /**

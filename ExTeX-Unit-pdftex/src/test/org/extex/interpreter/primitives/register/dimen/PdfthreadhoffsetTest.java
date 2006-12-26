@@ -46,7 +46,7 @@ public class PdfthreadhoffsetTest extends AbstractDimenRegisterTester {
     public PdfthreadhoffsetTest(final String arg) {
 
         super(arg, "pdfthreadhoffset", "", "0.0pt");
-        setConfig("pdftex-112");
+        setConfig("pdftex-test");
     }
 
     //TODO implement the primitive specific test cases

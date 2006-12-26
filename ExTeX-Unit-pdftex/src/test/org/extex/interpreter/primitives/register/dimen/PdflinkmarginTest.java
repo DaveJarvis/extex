@@ -46,7 +46,7 @@ public class PdflinkmarginTest extends AbstractDimenRegisterTester {
     public PdflinkmarginTest(final String arg) {
 
         super(arg, "pdflinkmargin", "", "0.0pt");
-        setConfig("pdftex-112");
+        setConfig("pdftex-test");
     }
 
     //TODO implement the primitive specific test cases

@@ -165,11 +165,11 @@ public class ExTeXLauncher extends TestCase {
      * Set some properties to default values. The properties set are:
      * <dl>
      * <dt><tt>extex.output</tt></dt>
-     * <dd>Preset to <tt>out</tt></dd>
+     * <dd>Preset to <tt>test-plain</tt></dd>
      * <dt><tt>extex.interaction</tt></dt>
      * <dd>Preset to <tt>batchmode</tt></dd>
      * <dt><tt>extex.fonts</tt></dt>
-     * <dd>Preset to <tt>src/fonts</tt></dd>
+     * <dd>Preset to <tt>src/font</tt></dd>
      * </dl>
      * 
      * @param properties the properties to adapt
@@ -178,9 +178,8 @@ public class ExTeXLauncher extends TestCase {
 
         provide(properties, "extex.output", "test-plain");
         provide(properties, "extex.interaction", "batchmode");
-        provide(properties, "extex.fonts", "src/font");
+        provide(properties, "extex.fonts", "../ExTeX-Font/src/font");
         provide(properties, "extex.nobanner", "true");
-
     }
 
     /**
@@ -202,7 +201,7 @@ public class ExTeXLauncher extends TestCase {
      * The field <tt>config</tt> contains the name of the configuration to
      * use.
      */
-    private String config = "extex-lib.xml";
+    private String config = "base-test.xml";
 
     /**
      * The field <tt>defaultLog</tt> contains the default log output unless
@@ -323,30 +322,6 @@ public class ExTeXLauncher extends TestCase {
                 }
                 return interpreter;
             }
-            //
-            // /**
-            // * @see org.extex.ExTeX#makeBackend(
-            // * org.extex.util.framework.configuration.Configuration,
-            // * org.extex.backend.outputStream.OutputStreamFactory,
-            // * org.extex.backend.documentWriter.DocumentWriterOptions,
-            // * org.extex.util.framework.configuration.Configuration,
-            // * org.extex.util.resource.ResourceFinder,
-            // * org.extex.font.FontFactory)
-            // */
-            // protected BackendDriver makeBackend(final Configuration config,
-            // final OutputStreamFactory outFactory,
-            // final DocumentWriterOptions options,
-            // final Configuration colorConfig,
-            // final ResourceFinder finder, final FontFactory fontFactory)
-            // throws DocumentWriterException, ConfigurationException {
-            //
-            // BackendDriver backend = super.makeBackend(config, outFactory,
-            // options, colorConfig,
-            // finder, fontFactory);
-            // backend.setDocumentWriter(docWriter);
-            // return backend;
-            // }
-
         };
 
         Level level = getLogLevel(properties);

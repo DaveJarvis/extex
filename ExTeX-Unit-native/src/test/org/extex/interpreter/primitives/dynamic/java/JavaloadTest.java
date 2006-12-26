@@ -38,7 +38,7 @@ public class JavaloadTest extends NoFlagsPrimitiveTester {
 
         super(arg, "javaload",
                 "{org.extex.interpreter.primitives.dynamic.java.JavaloadSensor}");
-        setConfig("extex-jx");
+        setConfig("native-test");
     }
 
     /**

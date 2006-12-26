@@ -46,6 +46,7 @@ public class ClubpenaltiesTest extends AbstractCountArrayTester {
     public ClubpenaltiesTest(final String arg) {
 
         super(arg, "clubpenalties", "255", "0");
+        setConfig("etex-test");
     }
 
     //TODO implement more primitive specific test cases

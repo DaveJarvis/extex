@@ -46,6 +46,7 @@ public class GlueshrinkorderTest extends AbstractReadonlyCountRegisterTester {
     public GlueshrinkorderTest(final String arg) {
 
         super(arg, "glueshrinkorder", "\\skip0 ", "0");
+        setConfig("etex-test");
     }
 
     /**

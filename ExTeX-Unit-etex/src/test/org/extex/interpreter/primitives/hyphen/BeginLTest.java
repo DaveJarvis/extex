@@ -37,6 +37,7 @@ public class BeginLTest extends NoFlagsPrimitiveTester {
     public BeginLTest(final String arg) {
 
         super(arg, "beginL", "", "\\TeXXeTstate=1");
+        setConfig("etex-test");
     }
 
 }

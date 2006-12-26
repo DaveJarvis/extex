@@ -46,6 +46,7 @@ public class PagediscardsTest extends AbstractCountArrayTester {
     public PagediscardsTest(final String arg) {
 
         super(arg, "pagediscards", "255", "0");
+        setConfig("etex-test");
     }
 
     //TODO implement more primitive specific test cases

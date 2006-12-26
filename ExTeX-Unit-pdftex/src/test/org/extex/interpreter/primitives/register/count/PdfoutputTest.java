@@ -46,7 +46,7 @@ public class PdfoutputTest extends AbstractCountRegisterTester {
     public PdfoutputTest(final String arg) {
 
         super(arg, "pdfoutput", "", "1");
-        setConfig("pdftex-112");
+        setConfig("pdftex-test");
     }
 
     //TODO implement the primitive specific test cases

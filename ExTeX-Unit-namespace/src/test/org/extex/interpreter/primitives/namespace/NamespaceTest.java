@@ -46,7 +46,7 @@ public class NamespaceTest extends NoFlagsButGlobalPrimitiveTester {
     public NamespaceTest(final String arg) {
 
         super(arg, "namespace", "{a}", DEFINE_BRACES);
-        setConfig("nextex");
+        setConfig("namespace-test");
     }
 
     /**

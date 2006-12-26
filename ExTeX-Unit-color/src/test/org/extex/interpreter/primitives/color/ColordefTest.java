@@ -47,7 +47,7 @@ public class ColordefTest extends NoFlagsButGlobalPrimitiveTester {
     public ColordefTest(final String arg) {
 
         super(arg, "colordef", "\\x{.1 .2 .3}", "");
-        setConfig("colorextex");
+        setConfig("colorextex-test");
     }
 
     /**

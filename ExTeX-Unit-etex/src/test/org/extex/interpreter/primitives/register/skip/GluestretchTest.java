@@ -46,6 +46,7 @@ public class GluestretchTest extends ExTeXLauncher {
     public GluestretchTest(final String arg) {
 
         super(arg);
+        setConfig("etex-test");
     }
 
     /**

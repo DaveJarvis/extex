@@ -46,7 +46,7 @@ public class PdfpkresolutionTest extends AbstractCountRegisterTester {
     public PdfpkresolutionTest(final String arg) {
 
         super(arg, "pdfpkresolution", "", "600");
-        setConfig("pdftex-112");
+        setConfig("pdftex-test");
     }
 
     //TODO implement the primitive specific test cases

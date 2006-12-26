@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -30,6 +30,11 @@ import org.extex.test.NoFlagsPrimitiveTester;
 public class InputTest extends NoFlagsPrimitiveTester {
 
     /**
+     * The field <tt>EMPTY_TEX</tt> contains the location of an empty file.
+     */
+    private static final String EMPTY_TEX = "../ExTeX-Unit-tex/src/test/tex/empty.tex";
+
+    /**
      * Method for running the tests standalone.
      *
      * @param args command line parameter
@@ -46,7 +51,7 @@ public class InputTest extends NoFlagsPrimitiveTester {
      */
     public InputTest(final String arg) {
 
-        super(arg, "input", " develop/test/data/empty.tex ", "\\nonstopmode");
+        super(arg, "input", " " + EMPTY_TEX + " ", "\\nonstopmode");
     }
 
     /**
@@ -59,7 +64,7 @@ public class InputTest extends NoFlagsPrimitiveTester {
     public void test0() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\input develop/test/data/empty.tex",
+                "\\input " + EMPTY_TEX,
                 //--- output channel ---
                 "");
     }

@@ -47,6 +47,7 @@ public class IfdefinedTest extends ExTeXLauncher {
     public IfdefinedTest(final String arg) {
 
         super(arg);
+        setConfig("etex-test");
     }
 
     /**

@@ -47,6 +47,7 @@ public class CurrentifbranchTest extends AbstractReadonlyCountRegisterTester {
     public CurrentifbranchTest(final String arg) {
 
         super(arg, "currentifbranch", "0");
+        setConfig("etex-test");
     }
 
     /**

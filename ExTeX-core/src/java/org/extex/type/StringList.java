@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -63,7 +63,7 @@ public class StringList extends ArrayList implements List {
      * Creates a new object and initiates it with some String value.
      *
      * @param s the initial String
-     * @param sepRegex the seprator regular expression
+     * @param sepRegex the separator regular expression
      */
     public StringList(final String s, final String sepRegex) {
 
@@ -117,4 +117,5 @@ public class StringList extends ArrayList implements List {
 
         super.add(s);
     }
+
 }

@@ -43,7 +43,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 
-
 /**
  * This class provides means to deal with configurations stored as XML files.
  *
@@ -82,7 +81,17 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
          */
         public boolean hasNext() {
 
-            return node.getNextSibling() != null;
+            if (node == null) {
+                return false;
+            }
+            for (;;) {
+                node = node.getNextSibling();
+                if (node == null) {
+                    return false;
+                } else if (node.getNodeType() == Node.ELEMENT_NODE) {
+                    return true;
+                }
+            }
         }
 
         /**
@@ -90,8 +99,17 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
          */
         public Object next() {
 
-            node = node.getNextSibling();
-            return node;
+            if (node == null) {
+                return null;
+            }
+            while (node.getNodeType() != Node.ELEMENT_NODE) {
+                node = node.getNextSibling();
+                if (node == null) {
+                    return null;
+                }
+            }
+
+            return new ConfigurationXMLImpl((Element) node, base, resource);
         }
 
         /**
@@ -267,9 +285,9 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
         int i = resource.lastIndexOf("/");
 
         readConfiguration(locateConfiguration(resource, //
-                getClass().getClassLoader()), //
-                resource, //
-                (i >= 0 ? resource.substring(0, i + 1) : ""));
+            getClass().getClassLoader()), //
+            resource, //
+            (i >= 0 ? resource.substring(0, i + 1) : ""));
     }
 
     /**
@@ -324,15 +342,15 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
                 ConfigurationSyntaxException,
                 ConfigurationIOException {
 
-        for (Node node = root.getFirstChild(); node != null; node = node
-                .getNextSibling()) {
+        for (Node node = root.getFirstChild(); node != null; node =
+                node.getNextSibling()) {
             if (node.getNodeName().equals(name)) {
 
                 String src = ((Element) node).getAttribute("src");
 
                 if (src == null || src.equals("")) {
                     return new ConfigurationXMLImpl((Element) node, base,
-                            resource);
+                        resource);
                 }
 
                 return new ConfigurationXMLImpl(base + src).src(name, node);
@@ -383,11 +401,14 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
     public Configuration findConfiguration(final String key,
             final String attribute) throws ConfigurationException {
 
-        for (Node node = root.getFirstChild(); node != null; node = node
-                .getNextSibling()) {
+        if (key == null || attribute == null) {
+            return null;
+        }
+
+        for (Node node = root.getFirstChild(); node != null; node =
+                node.getNextSibling()) {
             if (key.equals(node.getNodeName())
-                    && attribute.equals(((Element) node)
-                            .getAttribute(attribute))) {
+                    && attribute.equals(((Element) node).getAttribute("name"))) {
                 return new ConfigurationXMLImpl((Element) node, base, resource);
             }
         }
@@ -509,17 +530,13 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
             throws ConfigurationNotFoundException,
                 ConfigurationException {
 
-        for (Node node = root.getFirstChild(); node != null; node = node
-                .getNextSibling()) {
-            if (key.equals(node.getNodeName())
-                    && attribute.equals(((Element) node)
-                            .getAttribute(attribute))) {
-                return new ConfigurationXMLImpl((Element) node, base, resource);
-            }
-        }
+        Configuration cfg = findConfiguration(key, attribute);
 
-        throw new ConfigurationNotFoundException(null, //
-                key + "[" + attribute + "]");
+        if (cfg == null) {
+            throw new ConfigurationNotFoundException(null, //
+                key + "[name=" + attribute + "]");
+        }
+        return cfg;
     }
 
     /**
@@ -562,43 +579,6 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
      *   &lt;/cfg&gt;
      * </pre>
      * <p>
-     * Then <tt>getValue(cfgNode,"two")</tt> returns the String
-     * "the second value".
-     * </p>
-     *
-     * @param element the element node to start from
-     * @param tag the the tag in element
-     *
-     * @return the value of the tag in element or the empty string
-     */
-    public String getValue(final Element element, final String tag) {
-
-        for (Node node = element.getFirstChild(); node != null; node = node
-                .getNextSibling()) {
-            if (tag.equals(node.getNodeName())) {
-                return getNodeValue(node);
-            }
-        }
-
-        return "";
-    }
-
-    /**
-     * Get the text value of the first tag with a given name in the
-     * configuration. If none is found then the empty string is returned.
-     * <p>
-     * Consider the following example with the configuration currently rooted
-     * at cfg:
-     * </p>
-     * <pre>
-     *   &lt;cfg&gt;
-     *     . . .
-     *     &lt;one&gt;the first value&lt;/one&gt;
-     *     &lt;two&gt;the second value&lt;/two&gt;
-     *     . . .
-     *   &lt;/cfg&gt;
-     * </pre>
-     * <p>
      * Then <tt>getValue("two")</tt> returns the String "the second value".
      * </p>
      *
@@ -608,9 +588,9 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
      */
     public String getValue(final String tag) {
 
-        for (Node node = root.getFirstChild(); node != null; node = node
-                .getNextSibling()) {
-            if (tag.equals(node.getNodeName())) {
+        for (Node node = root.getFirstChild(); node != null; node =
+                node.getNextSibling()) {
+            if (node.getNodeName().equals(tag)) {
                 return getNodeValue(node);
             }
         }
@@ -626,9 +606,11 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
             throws ConfigurationException {
 
         String s = getValue(key);
-
-        if (s != null && s.matches("[0-9]+")) {
-            return Integer.parseInt(s);
+        if (s != null) {
+            s = s.trim();
+            if (s.matches("-?[0-9]+")) {
+                return Integer.parseInt(s);
+            }
         }
 
         return defaultValue;
@@ -663,9 +645,13 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
      */
     public void getValues(final StringList list, final String key) {
 
-        for (Node node = root.getFirstChild(); node != null; node = node
-                .getNextSibling()) {
-            if (key.equals(node.getNodeName())) {
+        if (list == null) {
+            throw new IllegalArgumentException("list");
+        }
+
+        for (Node node = root.getFirstChild(); node != null; node =
+                node.getNextSibling()) {
+            if (node.getNodeName().equals(key)) {
                 list.add(getNodeValue(node));
             }
         }
@@ -709,16 +695,16 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
 
         List list = new ArrayList();
 
-        for (Node node = root.getFirstChild(); node != null; node = node
-                .getNextSibling()) {
-            if (key.equals(node.getNodeName())) {
+        for (Node node = root.getFirstChild(); node != null; node =
+                node.getNextSibling()) {
+            if (node.getNodeName().equals(key)) {
                 String src = ((Element) node).getAttribute("src");
                 if (src == null || src.equals("")) {
                     list.add(new ConfigurationXMLImpl((Element) node, base,
-                            resource));
+                        resource));
                 } else {
                     list.add(new ConfigurationXMLImpl(base + src)
-                            .src(key, node));
+                        .src(key, node));
                 }
             }
         }
@@ -743,8 +729,9 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
 
         for (int pi = 0; pi < PATHS.length; pi++) {
             for (int ei = 0; ei < EXTENSIONS.length; ei++) {
-                InputStream stream = classLoader.getResourceAsStream(PATHS[pi]
-                        + name + EXTENSIONS[ei]);
+                InputStream stream =
+                        classLoader.getResourceAsStream(PATHS[pi] + name
+                                + EXTENSIONS[ei]);
 
                 if (stream != null) {
                     return stream;
@@ -781,20 +768,20 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
         this.base = theBase;
 
         try {
-            DocumentBuilder builder = DocumentBuilderFactory.newInstance()
-                    .newDocumentBuilder();
+            DocumentBuilder builder =
+                    DocumentBuilderFactory.newInstance().newDocumentBuilder();
             root = builder.parse(stream).getDocumentElement();
         } catch (IOException e) {
             throw new ConfigurationIOException(null, e);
         } catch (ParserConfigurationException e) {
             throw new ConfigurationSyntaxException(e.getLocalizedMessage(),
-                    theResource);
+                theResource);
         } catch (SAXException e) {
             throw new ConfigurationSyntaxException(e.getLocalizedMessage(),
-                    theResource);
+                theResource);
         } catch (FactoryConfigurationError e) {
             throw new ConfigurationSyntaxException(e.getLocalizedMessage(),
-                    theResource);
+                theResource);
         }
     }
 
@@ -824,8 +811,8 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
         if (src == null || src.equals("")) {
             return this;
         }
-        Configuration cfg = new ConfigurationXMLImpl(base + src)
-                .src(name, root);
+        Configuration cfg =
+                new ConfigurationXMLImpl(base + src).src(name, root);
         if (!((ConfigurationXMLImpl) cfg).root.getNodeName().equals(name)) {
             throw new ConfigurationNotFoundException(name, src);
         }
