@@ -23,7 +23,7 @@ import de.dante.tex.TestTeX;
 import junit.framework.TestCase;
 
 /**
- * Test for the primitive \u005cunless.
+ * Test for the primitive &#5c;unless.
  *
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
  * @version $Revision$
@@ -40,7 +40,7 @@ public class UnlessTest extends TestCase {
     }
 
     /**
-     * Test the primitive <tt>\u005cnless</tt>.
+     * Test the primitive <tt>&#5c;unless</tt>.
      *
      * @throws Exception ...
      */

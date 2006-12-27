@@ -20,7 +20,9 @@
   #
   ######################################################################### -->
 
-<project name="ExTeX build system" basedir=".">
+<project name="ExTeX build system"
+         default="all"
+         basedir=".">
 
   <description>
     ExTeX aims at the development of a high quality typesetting system. This
@@ -61,7 +63,7 @@
   <property name="javac.deprecation" value="off" />
   <property name="extex.jar.file" value="extex" />
   <property name="classes" location="target/${configuration}/classes" />
-  <property name="javadoc" location="target/javadoc" />
+  <property name="javadoc" location="target/${configuration}/html/javadoc" />
   <property name="installer.dir" location="util/Installer" />
   <property name="target.lib" location="target/lib" />
 
@@ -72,13 +74,8 @@
 
   <!-- ==================================================================== -->
   <taskdef name="checkstyle"
-           classname="com.puppycrawl.tools.checkstyle.CheckStyleTask">
-    <classpath>
-      <pathelement location="lib/checkstyle-all-4.2.jar" />
-      <pathelement location="lib/checkstyle-optional-4.2.jar" />
-    </classpath>
-  </taskdef>
-
+           classname="com.puppycrawl.tools.checkstyle.CheckStyleTask"
+           classpath="lib/checkstyle-all-4.2.jar"/>
 
   <!-- ==================================================================== -->
   <target name="all"
@@ -93,11 +90,20 @@
                 failureProperty="checkstyle.failure"
                 failOnViolation="false">
       <classpath refid="application.class.path" />
-      <formatter type="plain" tofile="${target}/checkstyle.txt" />
-      <formatter type="xml" tofile="${target}/checkstyle.xml" />
+      <formatter type="xml" tofile="${target}/${configuration}/checkstyle.xml" />
       <fileset refid="application.source.files" />
     </checkstyle>
   </target>
+
+  <!-- ==================================================================== -->
+  <target name="csr"
+          description="Remove unneccesary files and directories.">
+    <mkdir dir="${target}/${configuration}/html"/>
+    <xslt in="${target}/${configuration}/checkstyle.xml"
+          out="${target}/${configuration}/html/checkstyle/checkstyle.html"
+          style="/home/gene/checkstyle-frames.xsl"/>
+  </target>
+
 
   <!-- ==================================================================== -->
   <target name="clean"

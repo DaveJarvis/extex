@@ -1,0 +1,59 @@
+<!--
+  ############################################################################
+  # This is the Ant build file for the ExTeX nightly build
+  ############################################################################
+  # Copyright (C) 2006 The ExTeX Group
+  #
+  # This library is free software; you can redistribute it and/or modify it
+  # under the terms of the GNU Lesser General Public License as published by
+  # the Free Software Foundation; either version 2.1 of the License, or (at
+  # your option) any later version.
+  #
+  # This library is distributed in the hope that it will be useful, but
+  # WITHOUT ANY WARRANTY; without even the implied warranty of
+  # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser
+  # General Public License for more details.
+  #
+  # You should have received a copy of the GNU Lesser General Public License
+  # along with this library; if not, write to the Free Software Foundation,
+  # Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+  #
+  ######################################################################### -->
+
+<project name="ExTeX nightly build system" default="all" basedir=".">
+
+  <description>
+  </description>
+
+  <property name="log.dir" value="target" />
+  <property name="log.file" value="build.log" />
+  <property name="log.style" location="./src/xslt/ant-log.xsl" />
+
+  <property name="report.file" value="target/build.html" />
+
+  <!-- ==================================================================== -->
+  <target name="all"
+          description="Build nearly everything">
+
+    <mkdir dir="${log.dir}"/>
+    <java fork="true"
+          classname="org.apache.tools.ant.Main">
+      <classpath>
+        <fileset dir="${ant.home}/lib" includes="*.jar" />
+      </classpath>
+      <jvmarg value="-Dant.home=${ant.home}"/>
+      <arg value="-quiet"/>
+      <arg value="-logger"/>
+      <arg value="org.apache.tools.ant.XmlLogger"/>
+      <arg value="-logfile"/>
+      <arg value="${log.dir}/${log.file}"/>
+      <arg value="xxx"/>
+    </java>
+
+    <xslt in="${log.dir}/${log.file}"
+          out="${report.file}"
+          style="${log.style}"
+          />
+  </target>
+
+</project>

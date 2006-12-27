@@ -46,9 +46,9 @@ for f in .??* * ; do
     fi
 done
 
-(cd ..; svn add -q $name)
+#(cd ..; svn add -q $name)
 
 mkdir target target/classes
-svn propset -q svn:ignore 'target' .
+#svn propset -q svn:ignore 'target' .
 
 #
