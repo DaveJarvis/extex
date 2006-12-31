@@ -23,7 +23,7 @@
 
 <!--
 
-  Modified 2005 Gerd Neugebauer
+  Modified 2005-2006 Gerd Neugebauer
 
 -->
 
@@ -170,48 +170,64 @@
 <!-- this is the stylesheet css to use for nearly everything -->
 <xsl:template name="stylesheet.css">
 body {
-    font:normal 68% helvetica;
-    color:#000000;
+  font:normal 68% helvetica;
+  color:#000000;
 }
 table tr td, table tr th {
-    font-size: 68%;
+  font-size: 68%;
 }
 table.details tr th{
-    font-weight: bold;
-    text-align:left;
-    background:#a6caf0;
+  font-weight: bold;
+  text-align:left;
+  background:#a6caf0;
 }
 table.details tr td{
-    background:#eeeee0;
+  background:#eeeee0;
+}
+table.details tr.Error td{
+  background:#ffdddd;
+}
+table.details tr.Failure td{
+  background:#f5e4aa;
 }
 
 p {
-    line-height:1.5em;
-    margin-top:0.5em; margin-bottom:1.0em;
+  line-height:1.5em;
+  margin-top:0.5em;
+  margin-bottom:1.0em;
 }
 h1 {
-    margin: 0px 0px 5px; font: 165% helvetica
+  margin: 0px 0px 5px;
+  font: 165% helvetica
 }
 h2 {
-    margin-top: 1em; margin-bottom: 0.5em; font: bold 125% helvetica
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  font: bold 125% helvetica
 }
 h3 {
-    margin-bottom: 0.5em; font: bold 115% helvetica
+  margin-bottom: 0.5em;
+  font: bold 115% helvetica
 }
 h4 {
-    margin-bottom: 0.5em; font: bold 100% helvetica
+  margin-bottom: 0.5em;
+  font: bold 100% helvetica
 }
 h5 {
-    margin-bottom: 0.5em; font: bold 100% verdana,arial,helvetica
+  margin-bottom: 0.5em;
+  font: bold 100% helvetica
 }
 h6 {
-    margin-bottom: 0.5em; font: bold 100% helvetica
+  margin-bottom: 0.5em;
+  font: bold 100% helvetica
 }
 .Error {
-    font-weight:bold; color:red;
+  font-weight:bold;
+  color:red;
 }
 .Failure {
-    font-weight:bold; color:orange;
+  font-weight:bold;
+  color:#c96a00;
 }
 .Properties {
   text-align:right;
@@ -555,8 +571,8 @@ h6 {
         <table class="details" border="0" cellpadding="5" cellspacing="2" width="95%">
         <tr valign="top">
             <th>Tests</th>
-            <th>Failures</th>
             <th>Errors</th>
+            <th>Failures</th>
             <th>Success rate</th>
             <th>Time</th>
         </tr>
@@ -569,8 +585,8 @@ h6 {
                 </xsl:choose>
             </xsl:attribute>
             <td><a title="Display all tests" href="all-tests.html"><xsl:value-of select="$testCount"/></a></td>
-            <td><a title="Display all failures" href="alltests-fails.html"><xsl:value-of select="$failureCount"/></a></td>
             <td><a title="Display all errors" href="alltests-errors.html"><xsl:value-of select="$errorCount"/></a></td>
+            <td><a title="Display all failures" href="alltests-fails.html"><xsl:value-of select="$failureCount"/></a></td>
             <td>
                 <xsl:call-template name="display-percent">
                     <xsl:with-param name="value" select="$successRate"/>

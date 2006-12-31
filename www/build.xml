@@ -30,30 +30,39 @@
   <property name="site" location="target/site" />
   <property name="verbose" value="false" />
 
-  <import file="build-unit.xml"/>
+  <import file="build-unit.xml" />
 
   <!-- ==================================================================== -->
-  <target name="all"
-          description="Build everything"
-          depends="site,rss,unit" />
+  <target name="all" description="Build everything" depends="site,rss,unit" />
 
   <!-- ==================================================================== -->
-  <target name="rss"
-          description="Create the RSS pages">
-    <mkdir dir="${site}/rss/2.0"/>
-    <exec executable="perl"
-          failonerror="true">
+  <target name="init" description="Compile the build Java files">
+
+    <mkdir dir="target/classes" />
+    <javac srcdir="src/java"
+           destdir="target/classes"
+           classpath="${ant.library.dir}/ant.jar"
+           debug="on"
+           deprecation="false" />
+
+    <copy todir="target/classes">
+      <fileset dir="src/java" excludes="*.java" />
+    </copy>
+  </target>
+
+  <!-- ==================================================================== -->
+  <target name="rss" description="Create the RSS pages">
+    <mkdir dir="${site}/rss/2.0" />
+    <exec executable="perl" failonerror="true">
       <arg line="bin/make-rss.pl" />
       <arg line="-out=${site}/rss/2.0/ExTeX.rss" />
     </exec>
   </target>
 
   <!-- ==================================================================== -->
-  <target name="site"
-          description="Create the web site"
-          depends="test-summary">
-    <exec executable="perl"
-          failonerror="true">
+  <target name="site" description="Create the web site" depends="test-summary">
+
+    <exec executable="perl" failonerror="true">
       <arg line="bin/make.pl" />
       <arg line="-src=src/site" />
       <arg line="-dest=${site}" />
@@ -62,18 +71,19 @@
 
   <!-- ==================================================================== -->
   <target name="test-summary"
-          description="Create the RSS pages">
-    <mkdir dir="${site}/reports"/>
-    <exec executable="perl"
-          failonerror="true">
-      <arg line="bin/make-test-summary.pl" />
-      <arg line="-out=${site}/reports/test-summary.html" />
-    </exec>
+          description="Create test summary page fragment"
+          depends="init">
+
+    <mkdir dir="target" />
+    <taskdef name="testSummary"
+             classname="org.extex.site.TestSummary"
+             classpath="target/classes:${ant.project.name}.jar" />
+    <testSummary input="../build/target/application/html/reports/tests/overview-summary.html"
+                 output="target/test-summary.html" />
   </target>
 
   <!-- ==================================================================== -->
-  <target name="clean"
-          description="Remove generated files and directories.">
+  <target name="clean" description="Remove generated files and directories.">
     <delete dir="${site}" />
   </target>
 

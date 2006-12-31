@@ -26,8 +26,6 @@ import org.extex.interpreter.exception.InterpreterException;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 
-
-
 /**
  * This is the base class for assignments.
  * The assignments are implemented like any Code with the exception that the

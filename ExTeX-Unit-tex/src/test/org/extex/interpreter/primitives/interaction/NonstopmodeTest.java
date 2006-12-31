@@ -19,6 +19,8 @@
 
 package org.extex.interpreter.primitives.interaction;
 
+import org.extex.interpreter.Interpreter;
+import org.extex.interpreter.interaction.Interaction;
 import org.extex.test.NoFlagsPrimitiveTester;
 
 /**
@@ -58,11 +60,12 @@ public class NonstopmodeTest extends NoFlagsPrimitiveTester {
      */
     public void test0() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\nonstopmode"
-                + " \\the\\interactionmode \\end",
-                //--- output channel ---
-                "1" + TERM);
+        Interpreter interpreter = assertSuccess(//--- input code ---
+            "\\nonstopmode" + "\\end",
+            //--- output channel ---
+            "");
+        assertEquals(Interaction.NONSTOPMODE, //
+            interpreter.getContext().getInteraction());
     }
 
     /**
@@ -74,11 +77,12 @@ public class NonstopmodeTest extends NoFlagsPrimitiveTester {
      */
     public void test1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\errorstopmode\\begingroup\\nonstopmode\\endgroup"
-                + " \\the\\interactionmode \\end",
-                //--- output channel ---
-                "1" + TERM);
+        Interpreter interpreter = assertSuccess(//--- input code ---
+            "\\errorstopmode\\begingroup\\nonstopmode\\endgroup" + "\\end",
+            //--- output channel ---
+            "");
+        assertEquals(Interaction.NONSTOPMODE, //
+            interpreter.getContext().getInteraction());
     }
 
 }

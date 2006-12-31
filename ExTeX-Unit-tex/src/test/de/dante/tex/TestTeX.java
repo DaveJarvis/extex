@@ -78,24 +78,28 @@ public final class TestTeX {
      *
      * @param texfile   the tex file
      * @param outfile   the output test file
+     *
      * @exception Exception iff an error occurs; iff the two files are
      *     not equals AssertionFailedError
      */
-    public static void test(final String texfile, final String outfile)
-            throws Exception {
+    public static void testRun(final String texfile, final String outfile,
+            final String project) throws Exception {
 
         // run ExTeX
         ByteArrayOutputStream output = new ByteArrayOutputStream();
-        Properties pro = System.getProperties();
+        Properties pro = (Properties) System.getProperties().clone();
         ExTeX extex = new ExTeX(pro, ".extex-test");
-//        pro.setProperty("extex.output", "dump");
-        pro.setProperty("extex.output", "out"); // gene
+        //        pro.setProperty("extex.output", "dump");
+        pro.setProperty("extex.output", "test-plain"); // gene
         pro.setProperty("extex.config", "tex.xml"); // gene
+        pro.setProperty("extex.texinputs", //
+                        "../" + project + "src/test/data"); // gene
         pro.setProperty("extex.file", texfile);
         pro.setProperty("extex.jobname", texfile);
         // BATCHMODE
         // TODO: handle errors??? (TE)
         pro.setProperty("extex.interaction", "0");
+
         extex.setErrorHandler(errorHandler);
         extex.setOutStream(output);
 
@@ -119,16 +123,28 @@ public final class TestTeX {
 
             Assert.assertNotNull("Left-over: " + linetesttxt, linetesttxt);
 
+            new File(outfile).delete();
+            new File(texfile + ".log").delete();
+
         } finally { // gene: to assure that the resources are freed
             intxt.close();
             intesttxt.close();
-            new File(outfile).delete();
         }
     }
 
     public static void test(final String basename) throws Exception {
 
-        test(basename, "develop/test/data/" + basename + ".testtxt");
+        throw new RuntimeException("died");
+//        testRun(basename, "develop/test/data/" + basename + ".testtxt");
+    }
+
+    public static void test(final String basename, final String project)
+            throws Exception {
+
+        testRun(
+            basename, //
+            "../" + project + "/src/test/data/" + basename + ".testtxt",
+            project);
     }
 
     /**
@@ -141,10 +157,12 @@ public final class TestTeX {
     public static Interpreter makeInterpreter(String configurationFile)
             throws Exception {
 
-        Configuration config = new ConfigurationFactory().newInstance("config/"
-                + configurationFile);
-        InterpreterFactory intf = new InterpreterFactory(config
-                .getConfiguration("Interpreter"), null);
+        Configuration config =
+                new ConfigurationFactory().newInstance("config/"
+                        + configurationFile);
+        InterpreterFactory intf =
+                new InterpreterFactory(config.getConfiguration("Interpreter"),
+                    null);
 
         return intf.newInstance(null, null);
     }
@@ -157,6 +175,6 @@ public final class TestTeX {
      */
     public static Interpreter makeInterpreter() throws Exception {
 
-        return makeInterpreter("extex.xml");
+        return makeInterpreter("tex.xml");
     }
 }

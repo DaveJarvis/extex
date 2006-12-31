@@ -30,7 +30,7 @@ public class GroupingTest extends TestCase {
 
     /**
      * Main entry function for running alone.
-     * @param  args commandlineargs
+     * @param  args command line args
      */
     public static void main(String[] args) {
         junit.textui.TestRunner.run(GroupingTest.class);
@@ -43,7 +43,7 @@ public class GroupingTest extends TestCase {
     public void testGroup()
         throws Exception {
 
-        TestTeX.test("jugrouping");
+        TestTeX.test("jugrouping", "ExTeX-Unit-tex");
     }
 
 }

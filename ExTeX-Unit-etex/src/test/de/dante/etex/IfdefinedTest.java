@@ -23,7 +23,7 @@ import de.dante.tex.TestTeX;
 import junit.framework.TestCase;
 
 /**
- * Test for the primivite \currentgrouplevel.
+ * Test for the primitive \currentgrouplevel.
  *
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
  * @version $Revision$
@@ -32,7 +32,7 @@ public class IfdefinedTest extends TestCase {
 
     /**
      * main
-     * @param  args commandlineargs
+     * @param  args command line args
      */
     public static void main(final String[] args) {
 
@@ -46,7 +46,7 @@ public class IfdefinedTest extends TestCase {
     public void testIfdefined()
         throws Exception {
 
-        TestTeX.test("juifdefined");
+        TestTeX.test("juifdefined", "ExTeX-Unit-etex");
     }
 
 }

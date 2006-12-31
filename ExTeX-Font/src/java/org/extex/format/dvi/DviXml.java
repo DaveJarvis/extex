@@ -26,7 +26,6 @@ import java.util.Stack;
 
 import org.extex.font.FontFactory;
 import org.extex.font.FountKey;
-import org.extex.font.Glyph;
 import org.extex.font.exception.FontException;
 import org.extex.format.dvi.command.DviBOP;
 import org.extex.format.dvi.command.DviChar;
@@ -64,7 +63,6 @@ import org.extex.util.Unit;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.jdom.Element;
-
 
 /**
  * DVI to XML converter.
@@ -534,7 +532,7 @@ public class DviXml implements DviInterpreter, DviExecuteCommand {
             throw new DviFontNotFoundException(command.getName());
         }
         UnicodeChar uc = UnicodeChar.get(command.getCh());
-        if (f.hasGlyph(uc)) {
+        if (!f.hasGlyph(uc)) {
             throw new DviGlyphNotFoundException(String.valueOf(command.getCh()));
         }
         FixedDimen width = f.getWidth(uc).getLength();

@@ -23,7 +23,7 @@
   <!-- 
     -  The section "Resource" contains the search specification for input files.
     -->
-  <Resource src="path/fileFinder.xml"/>
+  <Resource src="path/fontTestFileFinder.xml"/>
 
   <!-- 
     -  The section "Fonts" contains the search specification for font files.

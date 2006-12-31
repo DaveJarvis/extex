@@ -59,7 +59,7 @@ public class VFTest extends TestCase {
     /**
      * path
      */
-    private static final String PATH = "develop/test/data/font/";
+    private static final String PATH = "../ExTeX-Font/src/font/";
 
     /**
      * files
@@ -72,9 +72,9 @@ public class VFTest extends TestCase {
     protected void setUp() throws Exception {
 
         Configuration config = new ConfigurationFactory()
-                .newInstance("config/extex.xml");
+                .newInstance("config/extex-font.xml");
         Configuration resource = new ConfigurationFactory()
-                .newInstance("config/path/fileFinder.xml");
+                .newInstance("config/path/fontTestFileFinder.xml");
 
         Configuration cfgfonts = config.getConfiguration("Fonts");
 
@@ -154,7 +154,7 @@ public class VFTest extends TestCase {
     private FontFactory makeFontFactory() throws Exception {
 
         Configuration config = new ConfigurationFactory()
-                .newInstance("config/extex.xml");
+                .newInstance("config/extex-test-font.xml");
 
         FontFactory fontFactory = makeFontFactory(config
                 .getConfiguration("Fonts"));

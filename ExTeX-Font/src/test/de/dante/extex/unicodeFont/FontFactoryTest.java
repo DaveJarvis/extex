@@ -19,21 +19,7 @@
 
 package de.dante.extex.unicodeFont;
 
-import java.lang.reflect.InvocationTargetException;
-import java.util.Properties;
-
 import junit.framework.TestCase;
-
-import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.configuration.ConfigurationFactory;
-import org.extex.util.framework.configuration.exception.ConfigurationClassNotFoundException;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-import org.extex.util.framework.configuration.exception.ConfigurationInstantiationException;
-import org.extex.util.framework.configuration.exception.ConfigurationMissingAttributeException;
-import org.extex.util.framework.configuration.exception.ConfigurationNoSuchMethodException;
-import org.extex.util.resource.PropertyConfigurable;
-import org.extex.util.resource.ResourceFinder;
-
 import de.dante.extex.unicodeFont.key.FontKey;
 import de.dante.extex.unicodeFont.key.FontKeyFactory;
 import de.dante.extex.unicodeFont.type.FontPfb;

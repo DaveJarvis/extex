@@ -260,14 +260,14 @@ public class MessageTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
-    public void testMessageProtected1() throws Exception {
-
-        assertFailure(//--- input code ---
-                DEFINE_BRACES
-                + "\\protected\\def\\x{abc}"
-                + "\\message{\\x}",
-                //--- log message ---
-                "\\x");
-    }
+//    public void testMessageProtected1() throws Exception {
+//
+//        assertFailure(//--- input code ---
+//                DEFINE_BRACES
+//                + "\\protected\\def\\x{abc}"
+//                + "\\message{\\x}",
+//                //--- log message ---
+//                "\\x");
+//    }
 
 }

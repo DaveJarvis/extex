@@ -19,6 +19,7 @@
 
 package org.extex.font;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.util.Properties;
 import java.util.logging.Logger;
@@ -69,8 +70,8 @@ public class FontTest extends TestCase {
 
         Properties properties = System.getProperties();
 
-        Configuration config = new ConfigurationFactory()
-                .newInstance("config/extex.xml");
+        Configuration config =
+                new ConfigurationFactory().newInstance("config/extex-test-font.xml");
 
         Configuration fontConfig = config.getConfiguration("Fonts");
         Configuration resource = config.getConfiguration("Resource");
@@ -78,18 +79,23 @@ public class FontTest extends TestCase {
         String fontClass = fontConfig.getAttribute("class");
 
         // load user properties
-        properties.load(new FileInputStream(".extex-test"));
+        File file = new File(".extex-test");
+        if (file.canRead()) {
+            properties.load(new FileInputStream(file));
+        }
 
         // test configuration
         assertNotNull(fontClass);
         assertTrue(!fontClass.equals(""));
 
-        fontFinder = (new ResourceFinderFactory()).createResourceFinder(
-                resource, Logger.global, properties, null);
+        fontFinder =
+                (new ResourceFinderFactory()).createResourceFinder(resource,
+                    Logger.global, properties, null);
 
-        fontFactory = (FontFactory) (Class.forName(fontClass).getConstructor(
-                new Class[]{Configuration.class, ResourceFinder.class})
-                .newInstance(new Object[]{fontConfig, fontFinder}));
+        fontFactory =
+                (FontFactory) (Class.forName(fontClass).getConstructor(
+                    new Class[]{Configuration.class, ResourceFinder.class})
+                    .newInstance(new Object[]{fontConfig, fontFinder}));
 
         return fontFactory;
     }
@@ -102,8 +108,9 @@ public class FontTest extends TestCase {
 
         FontFactory factory = makeFontFactory();
 
-        Font font = factory.getInstance(new FountKey("tfmcmr12", DIM12, null,
-                new Glue(0), false, false));
+        Font font =
+                factory.getInstance(new FountKey("tfmcmr12", DIM12, null,
+                    new Glue(0), false, false));
         assertNotNull("font not found", font);
         assertEquals("tfmcmr12", font.getFontName());
         assertTrue(DIM12.eq(font.getEm()));

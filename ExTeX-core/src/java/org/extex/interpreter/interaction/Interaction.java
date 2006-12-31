@@ -24,10 +24,9 @@ import java.io.Serializable;
 
 import org.extex.util.exception.GeneralException;
 
-
 /**
  * This class provides a type-save enumeration of the interactions styles of
- * <logo>ExTeX</logo>. It provides constants for the supported interaction
+ * <logo>ExTeX</logo>. It defined constants for the supported interaction
  * modes. In addition it supports the visitor pattern to react on them.
  *
  * @see "<logo>TeX</logo> &ndash; The Program [73]"
@@ -37,12 +36,9 @@ import org.extex.util.exception.GeneralException;
 public abstract class Interaction implements Serializable {
 
     /**
-     * This inner class is used to represent the batch mode.
-     *
-     * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision: 4726 $
+     * The constant <tt>BATCHMODE</tt> contains the constant for batch mode.
      */
-    private static class BatchMode extends Interaction {
+    public static final Interaction BATCHMODE = new Interaction() {
 
         /**
          * The constant <tt>serialVersionUID</tt> contains the id for serialization.
@@ -89,16 +85,13 @@ public abstract class Interaction implements Serializable {
 
             return visitor.visitBatchmode(arg1, arg2, arg3);
         }
-
-    }
+    };
 
     /**
-     * This inner class is used to represent the error stop mode.
-     *
-     * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision: 4726 $
+     * The constant <tt>ERRORSTOPMODE</tt> contains the constant for error stop
+     * mode.
      */
-    private static class ErrorstopMode extends Interaction {
+    public static final Interaction ERRORSTOPMODE = new Interaction() {
 
         /**
          * The constant <tt>serialVersionUID</tt> contains the id for
@@ -147,15 +140,13 @@ public abstract class Interaction implements Serializable {
             return visitor.visitErrorstopmode(arg1, arg2, arg3);
         }
 
-    }
+    };
 
     /**
-     * This inner class is used to represent the nonstop mode.
-     *
-     * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision: 4726 $
+     * The constant <tt>NONSTOPMODE</tt> contains the constant for non-stop
+     * mode.
      */
-    private static class NonstopMode extends Interaction {
+    public static final Interaction NONSTOPMODE = new Interaction() {
 
         /**
          * The constant <tt>serialVersionUID</tt> contains the id for serialization.
@@ -203,15 +194,12 @@ public abstract class Interaction implements Serializable {
             return visitor.visitNonstopmode(arg1, arg2, arg3);
         }
 
-    }
+    };
 
     /**
-     * This inner class is used to represent the scroll mode.
-     *
-     * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision: 4726 $
+     * The constant <tt>SCROLLMODE</tt> contains the constant for scroll mode.
      */
-    private static class ScrollMode extends Interaction {
+    public static final Interaction SCROLLMODE = new Interaction() {
 
         /**
          * The constant <tt>serialVersionUID</tt> contains the id for serialization.
@@ -259,29 +247,7 @@ public abstract class Interaction implements Serializable {
             return visitor.visitScrollmode(arg1, arg2, arg3);
         }
 
-    }
-
-    /**
-     * The constant <tt>BATCHMODE</tt> contains the constant for batch mode.
-     */
-    public static final Interaction BATCHMODE = new BatchMode();
-
-    /**
-     * The constant <tt>ERRORSTOPMODE</tt> contains the constant for error stop
-     * mode.
-     */
-    public static final Interaction ERRORSTOPMODE = new ErrorstopMode();
-
-    /**
-     * The constant <tt>NONSTOPMODE</tt> contains the constant for non-stop
-     * mode.
-     */
-    public static final Interaction NONSTOPMODE = new NonstopMode();
-
-    /**
-     * The constant <tt>SCROLLMODE</tt> contains the constant for scroll mode.
-     */
-    public static final Interaction SCROLLMODE = new ScrollMode();
+    };
 
     /**
      * The constant <tt>MODE_MAP</tt> contains the list for mapping integers to
@@ -290,10 +256,10 @@ public abstract class Interaction implements Serializable {
      * @see "<logo>TeX</logo> &ndash; The Program [73]"
      */
     private static final Interaction[] MODE_MAP = //
-    {BATCHMODE, NONSTOPMODE, SCROLLMODE, ERRORSTOPMODE};
+            {BATCHMODE, NONSTOPMODE, SCROLLMODE, ERRORSTOPMODE};
 
     /**
-     * This is a factory method for interaction modes. It mapps numerical
+     * This is a factory method for interaction modes. It maps numerical
      * values to interaction mode instances. The instances are reused and may
      * be compared with ==.
      *
@@ -302,7 +268,7 @@ public abstract class Interaction implements Serializable {
      * @return the appropriate interaction mode constant
      *
      * @throws InteractionUnknownException in case that the numerical value
-     *             is out of range
+     *   is out of range and does not correspond to an interaction mode
      */
     public static Interaction get(final int mode)
             throws InteractionUnknownException {
@@ -332,7 +298,9 @@ public abstract class Interaction implements Serializable {
             }
         }
 
-        throw new InteractionUnknownException(mode.toString());
+        throw new InteractionUnknownException(mode == null //
+                ? ""
+                : mode.toString());
     }
 
     /**

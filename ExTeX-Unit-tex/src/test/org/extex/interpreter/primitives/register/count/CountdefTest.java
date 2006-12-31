@@ -112,36 +112,4 @@ public class CountdefTest extends AbstractCountRegisterTester {
                 "123" + TERM);
     }
 
-    /**
-     * <testcase primitive="\countdef">
-     *  Test case checking that <tt>\countdef</tt> can take a tokens name.
-     * </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void testExt1() throws Exception {
-
-        assertSuccess(//--- input code ---
-                DEFINE_BRACES + "\\countdef\\x={abc}" + "\\the\\x \\end",
-                //--- output channel ---
-                "0" + TERM);
-    }
-
-    /**
-     * <testcase primitive="\countdef">
-     *  Test case checking that <tt>\countdef</tt> respects
-     *  <tt>\afterassignment</tt>.
-     * </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void testAfterassign1() throws Exception {
-
-        assertSuccess(//--- input code ---
-                DEFINE_BRACES + "\\afterassignment XA\\countdef\\x={abc}"
-                        + "B \\end",
-                //--- output channel ---
-                "AXB" + TERM);
-    }
-
 }

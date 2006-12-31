@@ -24,7 +24,6 @@ import org.extex.scanner.type.token.Token;
 import org.extex.type.UnicodeChar;
 import org.extex.util.exception.GeneralException;
 
-
 /**
  * This interface describes the features of a
  * {@link org.extex.interpreter.type.tokens.Tokens Tokens}

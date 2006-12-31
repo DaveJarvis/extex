@@ -36,8 +36,6 @@ import org.extex.scanner.type.token.TokenFactory;
 import org.extex.typesetter.Typesetter;
 import org.extex.util.exception.GeneralException;
 
-
-
 /**
  * This class provides the basic data type of a stretchable and shrinkable
  * quantity of length.
@@ -239,7 +237,9 @@ public class Glue implements Serializable, FixedGlue {
     }
 
     /**
-     * Test that the given Glue is equal to a given one.
+     * Test that the given Glue is equal to a given one. This comparison
+     * involves the comparisons of the length, the stretch component, and
+     * the shrink component.
      *
      * @param glue the glue to compare with
      *

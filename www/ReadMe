@@ -10,12 +10,12 @@ This makes it very easy to adapt the appearance without touching the
 contents.
 
 The sources are kept in the subdirectory src.
-The generated files are put into the subdirectory www.
+The generated files are written into the subdirectory target/site.
 Both locations can be configured.
 
 To generate the Web site run the following command:
 
-	make
+	ant
 
 This command creates a complete directory hierarchy with all
 subdirectories in ../target/www. An exception are the directories
@@ -85,5 +85,5 @@ The Main Text Area contains the contents of the page. This is
 maintained by the site authors.
 
 
-January 2004
+December 2006
 	Gerd Neugebauer

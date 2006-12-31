@@ -50,7 +50,8 @@ sub usage
   Pod::Text->new()->parse_from_filehandle(new FileHandle($0,'r'),\*STDERR);
 }
 
-my $target = "target/site/reports/test-summary.html";
+my $target = "test-summary.html";
+my $file = "overview-summary.html";
 
 #------------------------------------------------------------------------------
 # Variable:	$verbose
@@ -65,6 +66,7 @@ my $w 	 = 512;
 use Getopt::Long;
 GetOptions("h|help"	=> \&usage,
 	   "output=s"   => \$target,
+	   "input=s"    => \$file,
 	   "v|verbose"	=> \$verbose,
 	  );
 
@@ -78,7 +80,6 @@ my $o	 = 0;
 my $r 	 = $w;
 
 { local $/=undef;
-  my $file = "../build/target/www/reports/tests/overview-summary.html";
   my $fd = new FileHandle($file, 'r');
   if (defined $fd) {
     $_ = <$fd>;
@@ -105,7 +106,7 @@ my $r 	 = $w;
     print STDERR <<__EOF__
 *** $file not found.
 *** Run
-***	../build/build junitreport
+***	cd ../build; ant test
 *** to generate it.
 __EOF__
   }

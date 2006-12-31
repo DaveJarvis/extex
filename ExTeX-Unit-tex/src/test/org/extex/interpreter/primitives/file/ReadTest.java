@@ -29,6 +29,9 @@ import org.extex.test.NoFlagsButGlobalPrimitiveTester;
  */
 public class ReadTest extends NoFlagsButGlobalPrimitiveTester {
 
+    private static final String DATA_FILE =
+            "../ExTeX-Unit-tex/src/test/data/read_data.tex";
+
     /**
      * Method for running the tests standalone.
      *
@@ -46,14 +49,13 @@ public class ReadTest extends NoFlagsButGlobalPrimitiveTester {
      */
     public ReadTest(final String arg) {
 
-        super(arg, "read", "1 to \\x",
-                "\\openin1 develop/test/data/read_data.tex ");
+        super(arg, "read", "1 to \\x", "\\openin1 " + DATA_FILE + " ");
     }
 
     /**
      * <testcase primitive="\read">
-     *  Test case checking that a <tt>\read</tt> works on unopened file
-     *  handles.
+     *  Test case checking that a <tt>\read</tt> from the terminal in batch mode
+     *  leads to an error.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -61,15 +63,46 @@ public class ReadTest extends NoFlagsButGlobalPrimitiveTester {
     public void testTerm0() throws Exception {
 
         assertFailure(//--- input code ---
-                "\\read 1 to \\x ",
-                //--- error channel ---
-                "*** (cannot \\read from terminal in nonstop modes)");
+            "\\batchmode\\read 1 to \\x ",
+            //--- error channel ---
+            "*** (cannot \\read from terminal in nonstop modes)");
     }
 
     /**
      * <testcase primitive="\read">
-     *  Test case checking that a <tt>\read</tt> works on unopened file
-     *  handles.
+     *  Test case checking that a <tt>\read</tt> from the terminal in batch mode
+     *  leads to an error.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testTerm1() throws Exception {
+
+        assertFailure(//--- input code ---
+            "\\scrollmode\\read 1 to \\x ",
+            //--- error channel ---
+            "*** (cannot \\read from terminal in nonstop modes)");
+    }
+
+    /**
+     * <testcase primitive="\read">
+     *  Test case checking that a <tt>\read</tt> from the terminal in batch mode
+     *  leads to an error.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testTerm2() throws Exception {
+
+        assertFailure(//--- input code ---
+            "\\nonstopmode\\read 1 to \\x ",
+            //--- error channel ---
+            "*** (cannot \\read from terminal in nonstop modes)");
+    }
+
+    /**
+     * <testcase primitive="\read">
+     *  Test case checking that a <tt>\read</tt> ...
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -77,15 +110,14 @@ public class ReadTest extends NoFlagsButGlobalPrimitiveTester {
     public void testErr0() throws Exception {
 
         assertFailure(//--- input code ---
-                "\\read 1",
-                //--- error channel ---
-                "Missing `to' inserted");
+            "\\read 1",
+            //--- error channel ---
+            "Missing `to' inserted");
     }
 
     /**
      * <testcase primitive="\read">
-     *  Test case checking that a <tt>\read</tt> works on unopened file
-     *  handles.
+     *  Test case checking that a <tt>\read</tt> ...
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -93,9 +125,9 @@ public class ReadTest extends NoFlagsButGlobalPrimitiveTester {
     public void testErr1() throws Exception {
 
         assertFailure(//--- input code ---
-                "\\read 1 to ",
-                //--- error channel ---
-                "Missing control sequence inserted");
+            "\\read 1 to ",
+            //--- error channel ---
+            "Missing control sequence inserted");
     }
 
     /**
@@ -109,10 +141,10 @@ public class ReadTest extends NoFlagsButGlobalPrimitiveTester {
     public void test1() throws Exception {
 
         assertSuccess(//--- input code ---
-                DEFINE_CATCODES + "\\openin1 develop/test/data/read_data.tex "
-                        + "\\read 1 to \\x " + "\\x" + "\\end",
-                //--- output channel ---
-                "123xyz" + TERM);
+            DEFINE_CATCODES + "\\openin1 " + DATA_FILE + " "
+                    + "\\read 1 to \\x " + "\\x" + "\\end",
+            //--- output channel ---
+            "123xyz" + TERM);
     }
 
     /**
@@ -126,10 +158,10 @@ public class ReadTest extends NoFlagsButGlobalPrimitiveTester {
     public void test2() throws Exception {
 
         assertSuccess(//--- input code ---
-                DEFINE_CATCODES + "\\openin1 develop/test/data/read_data.tex "
-                        + "{\\global\\read 1 to \\x}" + "\\x" + "\\end",
-                //--- output channel ---
-                "123xyz" + TERM);
+            DEFINE_CATCODES + "\\openin1 " + DATA_FILE + " "
+                    + "{\\global\\read 1 to \\x}" + "\\x" + "\\end",
+            //--- output channel ---
+            "123xyz" + TERM);
     }
 
     /**
@@ -143,10 +175,12 @@ public class ReadTest extends NoFlagsButGlobalPrimitiveTester {
     public void test3() throws Exception {
 
         assertFailure(//--- input code ---
-                DEFINE_CATCODES + "\\openin1 develop/test/data/read_data.tex "
-                        + "{\\read 1 to \\x}" + "\\x" + "\\end",
-                //--- output channel ---
-                "Undefined control sequence \\x");
+            DEFINE_CATCODES + "\\openin1 " + DATA_FILE + " "
+                    + "{\\read 1 to \\x}" + "\\x" + "\\end",
+            //--- output channel ---
+            "Undefined control sequence \\x");
     }
+
+    //TODO implement the primitive specific test cases
 
 }

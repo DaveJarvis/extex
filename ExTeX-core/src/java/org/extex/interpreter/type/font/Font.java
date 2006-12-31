@@ -18,13 +18,11 @@
 
 package org.extex.interpreter.type.font;
 
-import org.extex.font.Glyph;
 import org.extex.font.type.Fount;
 import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.glue.FixedGlue;
 import org.extex.type.UnicodeChar;
-
 
 /**
  * Font Interface

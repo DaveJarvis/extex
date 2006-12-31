@@ -285,7 +285,7 @@ public final class LocalizerFactory {
 
     /**
      * The field <tt>cache</tt> contains the map of localizers already
-     * constructed. The localizers are cache to minimize the overhead of
+     * constructed. The localizers are cached to minimize the overhead of
      * acquiring the same localizer several times.
      */
     private static final Map CACHE = new HashMap();

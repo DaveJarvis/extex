@@ -30,12 +30,12 @@ import org.extex.util.exception.GeneralException;
  * is forwarded to the appropriate <tt>visit</tt> method in the visitor.
  * </p>
  * <p>
- * Consider we have a mode constant at hand which is in fact a batchmode and
+ * Consider we have a mode constant at hand which is in fact a batch mode and
  * we invokes
  * <pre>
  *   boolean boo = mode.visit(visitor, a, b, c);
  * </pre>
- * then the following method in the object <tt>visitor</tt> is invoked:
+ * then the following method in the object <tt>visitor</tt> is used:
  * <pre>
  *   visitBatchmode(visitor, a, b, c)
  * </pre>

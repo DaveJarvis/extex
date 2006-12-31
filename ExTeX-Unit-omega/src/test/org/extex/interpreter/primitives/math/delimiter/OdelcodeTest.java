@@ -46,7 +46,7 @@ public class OdelcodeTest extends NoFlagsButGlobalPrimitiveTester {
     public OdelcodeTest(final String arg) {
 
         super(arg, "odelcode", "23 32");
-        setConfig("omega");
+        setConfig("omega-test");
     }
 
     //TODO implement more primitive specific test cases

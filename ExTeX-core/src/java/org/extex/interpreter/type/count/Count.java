@@ -56,7 +56,7 @@ public class Count implements Serializable, FixedCount {
      * The constant <tt>ONE</tt> contains the count register with the value 1.
      * This count register is in fact immutable.
      */
-    public static final Count ONE = new ImmutableCount(1);
+    public static final FixedCount ONE = new ImmutableCount(1);
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for
@@ -68,13 +68,13 @@ public class Count implements Serializable, FixedCount {
      * The constant <tt>THOUSAND</tt> contains the count register with the
      * value 1000. This count register is in fact immutable.
      */
-    public static final Count THOUSAND = new ImmutableCount(1000);
+    public static final FixedCount THOUSAND = new ImmutableCount(1000);
 
     /**
      * The constant <tt>ZERO</tt> contains the count register with the value
      * 0. This count register is in fact immutable.
      */
-    public static final Count ZERO = new ImmutableCount(0);
+    public static final FixedCount ZERO = new ImmutableCount(0);
 
     /**
      * This interface describes a binary operation on two longs.

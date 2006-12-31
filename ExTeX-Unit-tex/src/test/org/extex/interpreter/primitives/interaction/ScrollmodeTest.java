@@ -19,6 +19,8 @@
 
 package org.extex.interpreter.primitives.interaction;
 
+import org.extex.interpreter.Interpreter;
+import org.extex.interpreter.interaction.Interaction;
 import org.extex.test.NoFlagsPrimitiveTester;
 
 /**
@@ -58,11 +60,12 @@ public class ScrollmodeTest extends NoFlagsPrimitiveTester {
      */
     public void test0() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\scrollmode"
-                + " \\the\\interactionmode \\end",
-                //--- output channel ---
-                "2" + TERM);
+        Interpreter interpreter = assertSuccess(//--- input code ---
+            "\\scrollmode" + "\\end",
+            //--- output channel ---
+            "");
+        assertEquals(Interaction.SCROLLMODE, //
+            interpreter.getContext().getInteraction());
     }
 
     /**
@@ -74,11 +77,12 @@ public class ScrollmodeTest extends NoFlagsPrimitiveTester {
      */
     public void test1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\errorstopmode\\begingroup\\scrollmode\\endgroup"
-                + " \\the\\interactionmode \\end",
-                //--- output channel ---
-                "2" + TERM);
+        Interpreter interpreter = assertSuccess(//--- input code ---
+            "\\errorstopmode\\begingroup\\scrollmode\\endgroup" + "\\end",
+            //--- output channel ---
+            "");
+        assertEquals(Interaction.SCROLLMODE, //
+            interpreter.getContext().getInteraction());
     }
 
 }

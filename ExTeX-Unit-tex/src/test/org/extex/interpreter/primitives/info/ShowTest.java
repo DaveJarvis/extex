@@ -463,26 +463,6 @@ public class ShowTest extends NoFlagsPrimitiveTester {
                 "> \\x=\\mathchar\"7B.\n");
     }
 
-    /**
-     * <testcase primitive="\show">
-     *  Test case checking that <tt>\show</tt> works with
-     *  a defined math character.
-     * </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void testOmathchardef1() throws Exception {
-
-        setConfig("omega");
-        assertFailure(//--- input code ---
-                "\\omathchardef\\x=123 \\show\\x"
-                + "\\end",
-                //--- output channel ---
-                "> \\x=\\omathchar\"7B.\n");
-        setConfig("extex");
-    }
-
-
     //TODO implement more primitive specific test cases
 
 }

@@ -22,7 +22,6 @@ package org.extex.interpreter.max;
 import org.extex.scanner.type.Catcode;
 import org.extex.test.ExTeXLauncher;
 
-
 /**
  * This is a test suite for the interpreter Max.
  *
@@ -194,17 +193,6 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
-    public void testTabNoProtectedFlag() throws Exception {
-
-        tryFlag("protected", "&", Catcode.TABMARK, "alignment tab character &");
-    }
-
-    /**
-     * <testcase>
-     * </testcase>
-     *
-     * @throws Exception in case of an error
-     */
     public void testSubNoGlobalFlag() throws Exception {
 
         tryFlag("global", "_", Catcode.SUBMARK, "subscript character _");
@@ -241,17 +229,6 @@ public class MaxTest extends ExTeXLauncher {
     public void testSubNoOuterFlag() throws Exception {
 
         tryFlag("outer", "_", Catcode.SUBMARK, "subscript character _");
-    }
-
-    /**
-     * <testcase>
-     * </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void testSubNoProtectedFlag() throws Exception {
-
-        tryFlag("protected", "_", Catcode.SUBMARK, "subscript character _");
     }
 
     /**
@@ -304,17 +281,6 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
-    public void testSuperNoProtectedFlag() throws Exception {
-
-        tryFlag("protected", "^", Catcode.SUPMARK, "superscript character ^");
-    }
-
-    /**
-     * <testcase>
-     * </testcase>
-     *
-     * @throws Exception in case of an error
-     */
     public void testLetterNoGlobalFlag() throws Exception {
 
         tryFlag("global", "A", Catcode.LETTER, "the letter A");
@@ -351,17 +317,6 @@ public class MaxTest extends ExTeXLauncher {
     public void testLetterNoOuterFlag() throws Exception {
 
         tryFlag("outer", "A", Catcode.LETTER, "the letter A");
-    }
-
-    /**
-     * <testcase>
-     * </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void testLetterNoProtectedFlag() throws Exception {
-
-        tryFlag("protected", "A", Catcode.LETTER, "the letter A");
     }
 
     /**
@@ -414,17 +369,6 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
-    public void testOtherNoProtectedFlag() throws Exception {
-
-        tryFlag("protected", "1", Catcode.OTHER, "the character 1");
-    }
-
-    /**
-     * <testcase>
-     * </testcase>
-     *
-     * @throws Exception in case of an error
-     */
     public void testMathshiftNoGlobalFlag() throws Exception {
 
         tryFlag("global", "$", Catcode.MATHSHIFT, "math shift character $");
@@ -461,17 +405,6 @@ public class MaxTest extends ExTeXLauncher {
     public void testMathshiftNoOuterFlag() throws Exception {
 
         tryFlag("outer", "$", Catcode.MATHSHIFT, "math shift character $");
-    }
-
-    /**
-     * <testcase>
-     * </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void testMathshiftNoProtectedFlag() throws Exception {
-
-        tryFlag("protected", "$", Catcode.MATHSHIFT, "math shift character $");
     }
 
     /**
@@ -524,17 +457,6 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
-    public void testBegingroupNoProtectedFlag() throws Exception {
-
-        tryFlag("protected", "{", Catcode.LEFTBRACE, "begin-group character {");
-    }
-
-    /**
-     * <testcase>
-     * </testcase>
-     *
-     * @throws Exception in case of an error
-     */
     public void testEndgroupNoGlobalFlag() throws Exception {
 
         tryFlag("global", "}", Catcode.RIGHTBRACE, "end-group character }");
@@ -571,17 +493,6 @@ public class MaxTest extends ExTeXLauncher {
     public void testEndgroupNoOuterFlag() throws Exception {
 
         tryFlag("outer", "}", Catcode.RIGHTBRACE, "end-group character }");
-    }
-
-    /**
-     * <testcase>
-     * </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void testEndgroupNoProtectedFlag() throws Exception {
-
-        tryFlag("protected", "}", Catcode.RIGHTBRACE, "end-group character }");
     }
 
     /**

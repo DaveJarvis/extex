@@ -283,6 +283,24 @@ public class OmathchardefTest extends NoFlagsButGlobalPrimitiveTester {
                 "65601" + TERM);
     }
 
+    /**
+     * <testcase primitive="\show">
+     *  Test case checking that <tt>\show</tt> works with
+     *  a defined Omega math character.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testOmathchardef1() throws Exception {
+
+        assertFailure(//--- input code ---
+                "\\omathchardef\\x=123 \\show\\x"
+                + "\\end",
+                //--- output channel ---
+                "> \\x=\\omathchar\"7B.\n");
+    }
+
+
     //TODO implement more primitive specific test cases
 
 }

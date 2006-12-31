@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -37,6 +37,7 @@ public class MiddleTest extends AbstractMathTester {
     public MiddleTest(final String arg) {
 
         super(arg, "middle", "123 ");
+        setConfig("etex-test");
     }
 
 }

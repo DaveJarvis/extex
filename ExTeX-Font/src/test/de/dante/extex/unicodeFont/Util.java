@@ -81,7 +81,7 @@ public final class Util {
     public static FontFactory makeFontFactory() throws Exception {
 
         Configuration config = new ConfigurationFactory()
-                .newInstance("config/extex-font.xml").getConfiguration("Fonts");
+                .newInstance("config/extex-test-font.xml").getConfiguration("Fonts");
         String fontClass = config.getAttribute("class");
 
         return (FontFactory) (Class.forName(fontClass)

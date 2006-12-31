@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,6 +19,8 @@
 
 package org.extex.interpreter.primitives.interaction;
 
+import org.extex.interpreter.Interpreter;
+import org.extex.interpreter.interaction.Interaction;
 import org.extex.test.NoFlagsPrimitiveTester;
 
 /**
@@ -58,11 +60,12 @@ public class ErrorstopmodeTest extends NoFlagsPrimitiveTester {
      */
     public void test0() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\errorstopmode"
-                + " \\the\\interactionmode \\end",
-                //--- output channel ---
-                "3" + TERM);
+        Interpreter interpreter = assertSuccess(//--- input code ---
+            "\\errorstopmode" + "\\end",
+            //--- output channel ---
+            "");
+        assertEquals(Interaction.ERRORSTOPMODE, //
+            interpreter.getContext().getInteraction());
     }
 
     /**
@@ -74,11 +77,12 @@ public class ErrorstopmodeTest extends NoFlagsPrimitiveTester {
      */
     public void test1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\batchmode\\begingroup\\errorstopmode\\endgroup"
-                + " \\the\\interactionmode \\end",
-                //--- output channel ---
-                "3" + TERM);
+        Interpreter interpreter = assertSuccess(//--- input code ---
+            "\\batchmode\\begingroup\\errorstopmode\\endgroup" + "\\end",
+            //--- output channel ---
+            "");
+        assertEquals(Interaction.ERRORSTOPMODE, //
+            interpreter.getContext().getInteraction());
     }
 
 }

@@ -109,36 +109,4 @@ public class SkipdefTest extends AbstractSkipRegisterTester {
                 "123.0pt" + TERM);
     }
 
-    /**
-     * <testcase primitive="\skipdef">
-     *  Test case checking that <tt>\skipdef</tt> can take a tokens name.
-     * </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void testExt1() throws Exception {
-
-        assertSuccess(//--- input code ---
-                DEFINE_BRACES + "\\skipdef\\x={abc}" + "\\the\\x \\end",
-                //--- output channel ---
-                "0.0pt" + TERM);
-    }
-
-    /**
-     * <testcase primitive="\skipdef">
-     *  Test case checking that <tt>\skipdef</tt> respects
-     *  <tt>\afterassignment</tt>.
-     * </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void testAfterassign1() throws Exception {
-
-        assertSuccess(//--- input code ---
-                DEFINE_BRACES + "\\afterassignment XA\\skipdef\\x={abc}"
-                        + "B \\end",
-                //--- output channel ---
-                "AXB" + TERM);
-    }
-
 }

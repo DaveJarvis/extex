@@ -101,8 +101,8 @@
      <tex class="org.extex.main.errorHandler.ErrorHandlerTeXImpl"/>
     </ErrorHandler>
 
-    <unit src="unit/etex.xml"/>
     <unit src="unit/tex.xml"/>
+    <unit src="unit/etex.xml"/>
 
   </Interpreter>
 
@@ -168,10 +168,6 @@
     -  The section "Backend" contains the specification for the backend.
     -->
   <Backend class="org.extex.backend.BackendDriverImpl">
-    <!-- 
-      -  The section "DocumentWriter" contains the specification for the
-      -  document writer
-      -->
     <DocumentWriter base="backend/"
                     default="none"/>
 

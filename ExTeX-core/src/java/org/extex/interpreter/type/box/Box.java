@@ -47,8 +47,6 @@ import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
-
-
 /**
  * This class is used to represent box registers.
  * A box register can either be void or be a horizontal or vertical list.

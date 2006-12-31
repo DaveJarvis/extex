@@ -110,22 +110,6 @@ import org.extex.util.resource.ResourceFinder;
 public class LanguageManagerFactory extends AbstractFactory {
 
     /**
-     * Creates a new object.
-     *
-     * @param config the configuration
-     * @param logger the logger
-     *
-     * @throws ConfigurationException in case of an configuration error
-     */
-    public LanguageManagerFactory(final Configuration config,
-            final Logger logger) throws ConfigurationException {
-
-        super();
-        enableLogging(logger);
-        configure(config);
-    }
-
-    /**
      * Get an instance of a
      * {@link org.extex.language.LanguageManager LanguageManager}.
      * This method selects one of the entries in the configuration. The

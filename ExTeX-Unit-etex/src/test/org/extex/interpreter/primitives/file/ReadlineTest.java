@@ -22,12 +22,15 @@ package org.extex.interpreter.primitives.file;
 import org.extex.test.NoFlagsButGlobalPrimitiveTester;
 
 /**
- * This is a test suite for the primitive <tt>\realine</tt>.
+ * This is a test suite for the primitive <tt>\readline</tt>.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
 public class ReadlineTest extends NoFlagsButGlobalPrimitiveTester {
+
+    private static final String DATA_FILE =
+            "../ExTeX-Unit-tex/src/test/data/read_data.tex";
 
     /**
      * Method for running the tests standalone.
@@ -46,9 +49,10 @@ public class ReadlineTest extends NoFlagsButGlobalPrimitiveTester {
      */
     public ReadlineTest(final String arg) {
 
-        super(arg, "readline", "1 to \\x",
-                "\\openin1 develop/test/data/read_data.tex ");
+        super(arg, "readline", "1 to \\x", "\\openin1 " + DATA_FILE + " ");
         setConfig("etex-test");
     }
+
+    //TODO implement the primitive specific test cases
 
 }

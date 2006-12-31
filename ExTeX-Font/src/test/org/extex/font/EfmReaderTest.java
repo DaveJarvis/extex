@@ -54,8 +54,7 @@ public class EfmReaderTest extends TestCase {
      */
     protected void setUp() throws Exception {
 
-        reader = new EfmReader("develop/test/font/efm-cmr12.efm");
-
+        reader = new EfmReader("../ExTeX-Font/src/font/efm-cmr12.efm");
     }
 
     /**

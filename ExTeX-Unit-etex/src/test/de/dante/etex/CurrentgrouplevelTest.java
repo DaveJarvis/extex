@@ -31,8 +31,9 @@ import junit.framework.TestCase;
 public class CurrentgrouplevelTest extends TestCase {
 
     /**
-     * main
-     * @param  args commandlineargs
+     * main.
+     *
+     * @param  args command line args
      */
     public static void main(final String[] args) {
 
@@ -43,10 +44,9 @@ public class CurrentgrouplevelTest extends TestCase {
      * Test the primitive \currengrouplevel.
      *
      */
-    public void testCurrentgrouplevel()
-        throws Exception {
+    public void testCurrentgrouplevel() throws Exception {
 
-        TestTeX.test("jucurrentgrouplevel");
+        TestTeX.test("jucurrentgrouplevel", "ExTeX-Unit-etex");
     }
 
 }

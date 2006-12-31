@@ -73,7 +73,9 @@
     <tfm>
       <extension>.tfm</extension>
       <path>../texmf/src/texmf/fonts/tfm/public/cm</path>
+      <path>../texmf/src/texmf/fonts/tfm/public/latex</path>
       <path>../texmf/src/texmf/fonts/tfm/public/misc</path>
+      <path>../ExTeX-Font/src/font</path>
       <path>.</path>
       <path property="extex.fonts"/>
       <path property="texinputs"/>
@@ -95,6 +97,7 @@
       <path property="extex.texinputs"/>
       <path property="texinputs"/>
       <path property="extex.fonts"/>
+      <path>../ExTeX-Font/src/font</path>
       <path>.</path>
       <extension></extension>
     </default>

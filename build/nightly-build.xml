@@ -25,6 +25,8 @@
   <description>
   </description>
 
+  <property name="deploy.dir" location="target/site" />
+
   <property name="log.dir" value="target" />
   <property name="log.file" value="build.log" />
   <property name="log.style" location="./src/xslt/ant-log.xsl" />
@@ -33,27 +35,35 @@
 
   <!-- ==================================================================== -->
   <target name="all"
-          description="Build nearly everything">
+          description="Build nearly everything and translate the build log into a HTML page">
 
-    <mkdir dir="${log.dir}"/>
-    <java fork="true"
-          classname="org.apache.tools.ant.Main">
+    <mkdir dir="${log.dir}" />
+    <java fork="true" classname="org.apache.tools.ant.Main">
       <classpath>
         <fileset dir="${ant.home}/lib" includes="*.jar" />
       </classpath>
-      <jvmarg value="-Dant.home=${ant.home}"/>
-      <arg value="-quiet"/>
-      <arg value="-logger"/>
-      <arg value="org.apache.tools.ant.XmlLogger"/>
-      <arg value="-logfile"/>
-      <arg value="${log.dir}/${log.file}"/>
-      <arg value="xxx"/>
+      <jvmarg value="-Dant.home=${ant.home}" />
+      <arg value="-quiet" />
+      <arg value="-logger" />
+      <arg value="org.apache.tools.ant.XmlLogger" />
+      <arg value="-logfile" />
+      <arg value="${log.dir}/${log.file}" />
     </java>
 
     <xslt in="${log.dir}/${log.file}"
           out="${report.file}"
-          style="${log.style}"
-          />
+          style="${log.style}" />
+  </target>
+
+  <!-- ==================================================================== -->
+  <target name="deploy"
+          description="Create the site and deploy it to the destination"
+          depends="all">
+
+    <mkdir dir="${deploy.dir}" />
+    <move todir="${deploy.dir}">
+      <fileset dir="target/application/html"/>
+    </move>
   </target>
 
 </project>
