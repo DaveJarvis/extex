@@ -25,7 +25,7 @@
     <div class="navitems">
      <i>Current Stable Release</i><br />
      <a href="&top;snapshot/ExTeX-setup.jar">Installer (Snapshot)</a><br />
-     <a href="&top;sources/repository.html">Repository (CVS)</a><br />
+     <a href="&top;sources/repository.html">Repository (SVN)</a><br />
     </div>
    </div>
 

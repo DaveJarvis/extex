@@ -1,14 +1,15 @@
    <div class="info">
     CVS Browser
     <div class="infoitems">
-    To browse the CVS repository online use
-    <a href="http://cvs.berlios.de/cgi-bin/viewcvs.cgi/extex/">ViewCVS</a>
+     To browse the
+     <a href="http://svn.berlios.de/wsvn/extex/trunk/">repository online</a>
+     use WebSVN
     </div>
    </div>
    <div class="info">
     Current State
     <div class="infoitems">
-    Currently the internal version 0.0 is in the CVS repository.
+    Currently the internal version 0.0 is in the repository.
     </div>
    </div>
    <div class="info">
