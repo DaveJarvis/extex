@@ -47,7 +47,7 @@ import org.extex.backend.documentWriter.exception.DocumentWriterException;
 import org.extex.backend.outputStream.NamedOutputStream;
 import org.extex.backend.outputStream.OutputStreamFactory;
 import org.extex.backend.outputStream.OutputStreamObserver;
-import org.extex.font.FontFactory;
+import org.extex.font.CoreFontFactory;
 import org.extex.font.exception.FontException;
 import org.extex.interpreter.Interpreter;
 import org.extex.interpreter.exception.InterpreterException;
@@ -1024,13 +1024,13 @@ public class TeX extends ExTeX {
      *      org.extex.backend.documentWriter.DocumentWriterOptions,
      *      org.extex.util.framework.configuration.Configuration,
      *      org.extex.util.resource.ResourceFinder,
-     *      org.extex.font.FontFactory)
+     *      CoreFontFactory)
      */
     protected BackendDriver makeBackend(final Configuration config,
             final OutputStreamFactory outFactory,
             final DocumentWriterOptions options,
             final Configuration colorConfig, final ResourceFinder finder,
-            final FontFactory fontFactory)
+            final CoreFontFactory fontFactory)
             throws DocumentWriterException,
                 ConfigurationException {
 
