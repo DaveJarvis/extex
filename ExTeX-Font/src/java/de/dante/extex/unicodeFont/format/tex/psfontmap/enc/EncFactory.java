@@ -23,12 +23,12 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.extex.font.exception.FontException;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.i18n.LocalizerFactory;
 import org.extex.util.resource.ResourceFinder;
 
-import de.dante.extex.unicodeFont.exception.FontException;
 
 /**
  * Factory for enc-files.

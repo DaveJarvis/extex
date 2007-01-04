@@ -27,7 +27,7 @@ import org.extex.util.xml.XMLStreamWriter;
 
 
 /**
- * The table 'fpgm' (Font Program).
+ * The table 'fpgm' (BaseFont Program).
  *
  * <p>
  * This table is similar to the CVT Program, except that it is only run once,

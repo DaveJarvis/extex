@@ -19,7 +19,7 @@
 
 package de.dante.extex.unicodeFont.type;
 
-import de.dante.extex.unicodeFont.exception.FontException;
+import org.extex.font.exception.FontException;
 
 /**
  * Marker interface, to init a font.

@@ -19,6 +19,7 @@
 
 package de.dante.extex.unicodeFont.type;
 
+import org.extex.font.BaseFont;
 import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.type.UnicodeChar;
 
@@ -29,7 +30,7 @@ import org.extex.type.UnicodeChar;
  * @version $Revision$
  */
 
-public interface BackendFont extends Font {
+public interface BackendFont extends BaseFont {
 
     /**
      * Returns the postscript name of the font.

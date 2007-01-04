@@ -26,7 +26,8 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-import de.dante.extex.unicodeFont.exception.FontException;
+import org.extex.font.exception.FontException;
+
 
 /**
  * Reader for a psfonts.map-file.

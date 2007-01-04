@@ -25,7 +25,8 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.Writer;
 
-import de.dante.extex.unicodeFont.format.tex.tfm.TfmFixWord;
+import org.extex.font.format.tfm.TfmFixWord;
+
 
 /**
  * Writer for the PL-Format.

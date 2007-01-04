@@ -19,8 +19,9 @@
 
 package de.dante.extex.unicodeFont;
 
+import org.extex.font.unicode.GlyphName;
+
 import junit.framework.TestCase;
-import de.dante.extex.unicodeFont.glyphname.GlyphName;
 
 /**
  * Test the class <code>GlyphName</code>.

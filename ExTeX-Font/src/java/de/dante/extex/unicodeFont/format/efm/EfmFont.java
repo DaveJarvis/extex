@@ -22,9 +22,9 @@ package de.dante.extex.unicodeFont.format.efm;
 import java.io.IOException;
 import java.io.OutputStream;
 
+import org.extex.font.format.tfm.TfmReader;
 import org.extex.util.xml.XMLStreamWriter;
 
-import de.dante.extex.unicodeFont.format.tex.tfm.TfmReader;
 
 /**
  * Class to handle efm font metrics.
@@ -91,7 +91,8 @@ public class EfmFont {
         dataValues = new EfmDataValues(tfm);
         fontName = tfm.getFontname();
         exFontFile = tfm.getPfbfilename();
-        designSize = tfm.getDesignSizeAsDouble();
+        // mgn: umbauen
+        //designSize = tfm.getDesignSize();
     }
 
     /**

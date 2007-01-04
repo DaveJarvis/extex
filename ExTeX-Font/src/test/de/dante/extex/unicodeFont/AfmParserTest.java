@@ -20,11 +20,12 @@ package de.dante.extex.unicodeFont;
 
 import java.io.InputStream;
 
+import org.extex.font.format.afm.AfmCharMetric;
+import org.extex.font.format.afm.AfmHeader;
+import org.extex.font.format.afm.AfmKernPairs;
+import org.extex.font.format.afm.AfmParser;
+
 import junit.framework.TestCase;
-import de.dante.extex.unicodeFont.format.afm.AfmCharMetric;
-import de.dante.extex.unicodeFont.format.afm.AfmHeader;
-import de.dante.extex.unicodeFont.format.afm.AfmKernPairs;
-import de.dante.extex.unicodeFont.format.afm.AfmParser;
 
 /**
  * Test the afm parser.

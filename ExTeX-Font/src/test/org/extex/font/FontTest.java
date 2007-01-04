@@ -108,9 +108,10 @@ public class FontTest extends TestCase {
 
         FontFactory factory = makeFontFactory();
 
-        Font font =
-                factory.getInstance(new FountKey("tfmcmr12", DIM12, null,
-                    new Glue(0), false, false));
+        Font font = null;
+        // mgn: umbauen
+//                factory.getInstance(new FountKey("tfmcmr12", DIM12, null,
+//                    new Glue(0), false, false));
         assertNotNull("font not found", font);
         assertEquals("tfmcmr12", font.getFontName());
         assertTrue(DIM12.eq(font.getEm()));

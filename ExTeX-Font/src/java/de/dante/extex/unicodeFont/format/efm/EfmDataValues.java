@@ -24,11 +24,11 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import org.extex.font.format.tfm.TfmFixWord;
+import org.extex.font.format.tfm.TfmParamArray;
+import org.extex.font.format.tfm.TfmReader;
 import org.extex.util.xml.XMLStreamWriter;
 
-import de.dante.extex.unicodeFont.format.tex.tfm.TfmFixWord;
-import de.dante.extex.unicodeFont.format.tex.tfm.TfmParamArray;
-import de.dante.extex.unicodeFont.format.tex.tfm.TfmReader;
 
 /**
  * Data values for the efm font.
@@ -81,7 +81,7 @@ public class EfmDataValues {
 
         for (int i = 0, n = param.getLength(); i < n; i++) {
             String name = param.getLabelName(i);
-            EfmData data = new EfmDataTfm(param.getParam(i));
+            EfmData data = new EfmDataTfm(param.getParam(String.valueOf(i)));
             map.put(name, data);
         }
 

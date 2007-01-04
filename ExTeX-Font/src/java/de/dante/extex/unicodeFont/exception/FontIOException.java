@@ -19,8 +19,10 @@
 
 package de.dante.extex.unicodeFont.exception;
 
+import org.extex.font.exception.FontException;
+
 /**
- * Font- IOException.
+ * BaseFont- IOException.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$

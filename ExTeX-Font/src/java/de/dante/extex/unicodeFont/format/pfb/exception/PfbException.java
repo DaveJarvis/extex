@@ -18,7 +18,7 @@
 
 package de.dante.extex.unicodeFont.format.pfb.exception;
 
-import de.dante.extex.unicodeFont.exception.FontException;
+import org.extex.font.exception.FontException;
 
 /**
  * Exception for the pfb parser.

@@ -19,7 +19,7 @@
 package de.dante.extex.unicodeFont.format.pfm;
 
 /**
- * Class for a PFM-Font file.
+ * Class for a PFM-BaseFont file.
  * TODO: ...
  *
  * <p>School project</p>

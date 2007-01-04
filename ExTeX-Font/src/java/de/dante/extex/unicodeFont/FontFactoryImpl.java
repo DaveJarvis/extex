@@ -22,6 +22,8 @@ package de.dante.extex.unicodeFont;
 import java.io.InputStream;
 import java.util.Properties;
 
+import org.extex.font.FontKey;
+import org.extex.font.exception.FontException;
 import org.extex.util.framework.AbstractFactory;
 import org.extex.util.framework.Registrar;
 import org.extex.util.framework.RegistrarException;
@@ -32,11 +34,9 @@ import org.extex.util.resource.PropertyConfigurable;
 import org.extex.util.resource.ResourceConsumer;
 import org.extex.util.resource.ResourceFinder;
 
-import de.dante.extex.unicodeFont.exception.FontException;
 import de.dante.extex.unicodeFont.exception.FontNotFoundException;
 import de.dante.extex.unicodeFont.format.tex.psfontmap.PsFontEncoding;
 import de.dante.extex.unicodeFont.format.tex.psfontmap.PsFontsMapReader;
-import de.dante.extex.unicodeFont.key.FontKey;
 import de.dante.extex.unicodeFont.key.FontKeyConfigurable;
 import de.dante.extex.unicodeFont.type.FontInit;
 import de.dante.extex.unicodeFont.type.FontPfb;
@@ -89,7 +89,7 @@ public class FontFactoryImpl extends AbstractFactory
     // MGN cache!!!
 
     /**
-     * @see de.dante.extex.unicodeFont.FontFactory#newInstance(de.dante.extex.unicodeFont.key.FontKey)
+     * @see de.dante.extex.unicodeFont.FontFactory#newInstance(org.extex.font.FontKey)
      */
     public TexFont newInstance(final FontKey key)
             throws ConfigurationException, FontException {

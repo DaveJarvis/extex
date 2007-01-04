@@ -41,7 +41,7 @@ import de.dante.extex.unicodeFont.format.xtf.cff.T2StandardStrings;
  * This table contains a compact representation of a PostScript Type 1,
  * or CIDFont and is structured according to
  * <a href="http://partners.adobe.com/asn/developer/pdfs/tn/5176.CFF.pdf">
- * Adobe Technical Note #5176: " The Compact Font Format Specification"</a>
+ * Adobe Technical Note #5176: " The Compact BaseFont Format Specification"</a>
  * and
  * <a href="http://partners.adobe.com/asn/developer/pdfs/tn/5177.Type2.pdf">
  * Adobe Technical Note #5177: "Type 2 Charstring Format"</a>.
@@ -80,7 +80,7 @@ import de.dante.extex.unicodeFont.format.xtf.cff.T2StandardStrings;
  *   <tr><td>Charsets</td><td>-</td></tr>
  *   <tr><td>FDSelect</td><td>CIDFonts only</td></tr>
  *   <tr><td>CharStrings INDEX</td><td>per-font</td></tr>
- *   <tr><td>Font DICT INDEX</td><td>per-font, CIDFonts only</td></tr>
+ *   <tr><td>BaseFont DICT INDEX</td><td>per-font, CIDFonts only</td></tr>
  *   <tr><td>Private DICT</td><td>per-font</td></tr>
  *   <tr><td>Local Subr INDEX</td><td>per-font or per-Private
  *           DICT for CIDFonts</td></tr>

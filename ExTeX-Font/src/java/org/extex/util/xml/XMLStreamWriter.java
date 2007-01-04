@@ -24,7 +24,10 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.LinkedList;
+import java.util.Locale;
 
 /**
  * A writer, which write xml-elements, attributes and so on
@@ -83,6 +86,15 @@ public class XMLStreamWriter {
             throws IOException {
 
         super();
+        numberformat = NumberFormat.getInstance(Locale.US);
+        numberformat.setGroupingUsed(false);
+        numberformat.setMinimumFractionDigits(0);
+        numberformat.setMinimumFractionDigits(4);
+        if (numberformat instanceof DecimalFormat) {
+            DecimalFormat f = (DecimalFormat) numberformat;
+            f.applyLocalizedPattern("0.#");
+            f.setDecimalSeparatorAlwaysShown(false);
+        }
         out = new BufferedWriter(new OutputStreamWriter(sout, enc), BUFFERSIZE);
         encoding = enc;
 
@@ -410,6 +422,33 @@ public class XMLStreamWriter {
             throws IOException {
 
         writeAttribute(name, String.valueOf(value));
+    }
+
+    /**
+     * Write a attribute to the element and use the formatter.
+     * @param name      The name of the attribute.
+     * @param value     The value of the attribute.
+     * @throws IOException if an error occurs.
+     */
+    public void writeFormatAttribute(final String name, final double value)
+            throws IOException {
+
+        writeAttribute(name, numberformat.format(value));
+    }
+
+    /**
+     * Formatter for the double attribute value.
+     */
+    private NumberFormat numberformat;
+
+    /**
+     * Setter for numberformat.
+     *
+     * @param nformat The numberformat to set.
+     */
+    public void setNumberformat(NumberFormat nformat) {
+
+        numberformat = nformat;
     }
 
     /**

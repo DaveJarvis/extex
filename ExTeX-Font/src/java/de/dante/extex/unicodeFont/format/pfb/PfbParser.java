@@ -25,13 +25,13 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Serializable;
 
+import org.extex.font.exception.FontException;
 import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessInputFile;
 import org.extex.util.file.random.RandomAccessInputStream;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 
-import de.dante.extex.unicodeFont.exception.FontException;
 import de.dante.extex.unicodeFont.exception.FontIOException;
 import de.dante.extex.unicodeFont.format.pfb.exception.PfbIncorrectRecordTypeException;
 import de.dante.extex.unicodeFont.format.pfb.exception.PfbStartMarkerMissingException;
@@ -39,9 +39,9 @@ import de.dante.extex.unicodeFont.format.pfb.exception.PfbStartMarkerMissingExce
 /**
  * Parser for a pfb-file.
  *
- * <p>Adobe Type 1 Font Format</p>
- * <p>see 2.2 Font Dictionary</p>
- * <p>Type 1 Font Programm [ASCII - eexec encryption (Binary only) - ASCII]<p>
+ * <p>Adobe Type 1 BaseFont Format</p>
+ * <p>see 2.2 BaseFont Dictionary</p>
+ * <p>Type 1 BaseFont Programm [ASCII - eexec encryption (Binary only) - ASCII]<p>
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$

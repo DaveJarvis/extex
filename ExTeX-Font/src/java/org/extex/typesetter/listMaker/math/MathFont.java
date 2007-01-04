@@ -20,8 +20,9 @@
 package org.extex.typesetter.listMaker.math;
 
 import org.extex.font.FontByteArray;
-import org.extex.font.FountKey;
-import org.extex.font.Glyph;
+import org.extex.font.FontKey;
+import org.extex.interpreter.type.count.Count;
+import org.extex.interpreter.type.count.FixedCount;
 import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.font.Font;
@@ -56,20 +57,13 @@ public class MathFont implements Font {
         this.font = font;
     }
 
-    /**
-     * @see org.extex.font.type.Fount#getActualSize()
-     */
-    public FixedDimen getActualSize() {
-
-        return this.font.getActualSize();
-    }
-
+ 
     /**
      * @see org.extex.interpreter.type.font.Font#getCheckSum()
      */
     public int getCheckSum() {
 
-        return this.font.getCheckSum();
+        return 0; //this.font.getCheckSum();
     }
 
     /**
@@ -81,20 +75,13 @@ public class MathFont implements Font {
         return font.getDepth(uc);
     }
 
-    /**
-     * @see org.extex.font.type.Fount#getDesignSize()
-     */
-    public FixedDimen getDesignSize() {
-
-        return this.font.getDesignSize();
-    }
 
     /**
-     * @see org.extex.interpreter.type.font.Font#getEfcode(org.extex.type.UnicodeChar)
+     * @see org.extex.interpreter.type.font.Font#getEfCode(org.extex.type.UnicodeChar)
      */
-    public long getEfcode(final UnicodeChar uc) {
+    public long getEfCode(final UnicodeChar uc) {
 
-        return font.getEfcode(uc);
+        return font.getEfCode(uc);
     }
 
     /**
@@ -118,7 +105,7 @@ public class MathFont implements Font {
      */
     public FontByteArray getFontByteArray() {
 
-        return this.font.getFontByteArray(); // add by mgn
+        return null; //this.font.getFontByteArray(); // add by mgn
     }
 
     /**
@@ -132,9 +119,9 @@ public class MathFont implements Font {
     /**
      * @see org.extex.font.type.Fount#getFontKey()
      */
-    public FountKey getFontKey() {
+    public FontKey getFontKey() {
 
-        return this.font.getFontKey();
+        return null; //this.font.getFontKey();
     }
 
     /**
@@ -185,7 +172,7 @@ public class MathFont implements Font {
      */
     public FixedGlue getLetterSpacing() {
 
-        return this.font.getLetterSpacing();
+        return null; //this.font.getLetterSpacing();
     }
 
     /**
@@ -202,7 +189,7 @@ public class MathFont implements Font {
      */
     public String getProperty(final String key) {
 
-        return this.font.getProperty(key);
+        return null; //this.font.getProperty(key);
     }
 
     /**
@@ -239,12 +226,12 @@ public class MathFont implements Font {
     }
 
     /**
-     * @see org.extex.interpreter.type.font.Font#setEfcode(
+     * @see org.extex.interpreter.type.font.Font#setEfCode(
      *      org.extex.type.UnicodeChar, long)
      */
-    public void setEfcode(final UnicodeChar uc, final long code) {
+    public void setEfCode(final UnicodeChar uc, final long code) {
 
-        font.setEfcode(uc, code);
+        font.setEfCode(uc, code);
     }
 
     /**
@@ -277,6 +264,42 @@ public class MathFont implements Font {
     public String toString() {
 
         return this.font.toString();
+    }
+
+    public void setActualSize(Dimen size) {
+
+        // TODO mgn: setActualsize unimplemented
+        
+    }
+
+    public void setScaleFactor(Count scaleFactor) {
+
+        // TODO mgn: setScalefactor unimplemented
+        
+    }
+
+    public FixedDimen getActualSize() {
+
+        // TODO mgn: getActualsize unimplemented
+        return null;
+    }
+
+    public FixedDimen getDesignSize() {
+
+        // TODO mgn: getDesignsize unimplemented
+        return null;
+    }
+
+    public FixedCount getScaleFactor() {
+
+        // TODO mgn: getScalefactor unimplemented
+        return null;
+    }
+
+    public FontKey getActualFontKey() {
+
+        // TODO mgn: getActualFontKey unimplemented
+        return null;
     }
 
 }

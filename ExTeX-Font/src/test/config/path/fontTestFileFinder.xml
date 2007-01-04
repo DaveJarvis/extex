@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!--
-  -  Copyright (C) 2004-2006 The ExTeX Group
+  -  Copyright (C) 2004-2007 The ExTeX Group
   -
   -  This library is free software; you can redistribute it and/or modify it
   -  under the terms of the GNU Lesser General Public License as published by
@@ -20,6 +20,13 @@
 <Resource>
   <Finder class="org.extex.util.resource.FileFinder"
           default="default">
+    <u2t>
+      <extension>.u2t</extension>
+      <path>../ExTeX-Font/src/font</path>
+      <path>.</path>
+      <path property="extex.fonts"/>
+      <path property="texinputs"/>
+    </u2t>
     <tex>
       <path property="extex.texinputs"/>
       <path property="texinputs"/>

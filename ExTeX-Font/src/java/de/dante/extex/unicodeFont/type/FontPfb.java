@@ -21,7 +21,8 @@ package de.dante.extex.unicodeFont.type;
 
 import java.io.InputStream;
 
-import de.dante.extex.unicodeFont.exception.FontException;
+import org.extex.font.exception.FontException;
+
 import de.dante.extex.unicodeFont.format.pfb.PfbParser;
 
 /**

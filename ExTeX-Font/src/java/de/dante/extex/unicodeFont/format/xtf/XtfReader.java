@@ -52,7 +52,7 @@ public class XtfReader implements XMLWriterConvertible {
     public static final int CMAP = 0x636d6170;
 
     /**
-     * Font header. (TTF required)
+     * BaseFont header. (TTF required)
      * Table tag "head" in the Open Type Specification.
      */
     public static final int HEAD = 0x68656164;
@@ -178,13 +178,13 @@ public class XtfReader implements XMLWriterConvertible {
     public static final int DSIG = 0x44534947;
 
     /**
-     * Font program. (TTF optional)
+     * BaseFont program. (TTF optional)
      * Table tag "fpgm" in the Open Type Specification.
      */
     public static final int FPGM = 0x6670676d;
 
     /**
-     * Font variation.
+     * BaseFont variation.
      * Table tag "fvar" in the Open Type Specification.
      */
     public static final int FVAR = 0x66766172;
@@ -304,13 +304,13 @@ public class XtfReader implements XMLWriterConvertible {
     public static final int FEAT = 0x66656174;
 
     /**
-     * Font descriptors.
+     * BaseFont descriptors.
      * Table tag "fdsc" in the Open Type Specification.
      */
     public static final int FDSC = 0x66647363;
 
     /**
-     * Font metrics.
+     * BaseFont metrics.
      * Table tag "fmtx" in the Open Type Specification.
      */
     public static final int FMTX = 0x666d7478;
@@ -1015,7 +1015,7 @@ public class XtfReader implements XMLWriterConvertible {
     public static final Type OTF = new Type();
 
     /**
-     * Font-Type.
+     * BaseFont-Type.
      */
     private static class Type {
 

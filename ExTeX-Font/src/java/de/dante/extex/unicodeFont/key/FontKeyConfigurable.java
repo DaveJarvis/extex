@@ -19,6 +19,8 @@
 
 package de.dante.extex.unicodeFont.key;
 
+import org.extex.font.FontKey;
+
 /**
  * Marker interface, to set the font key.
  *

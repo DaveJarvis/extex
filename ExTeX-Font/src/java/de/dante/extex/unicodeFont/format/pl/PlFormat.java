@@ -27,7 +27,7 @@ import org.extex.font.exception.FontException;
  * Interface for the PL-Format.
  *
  * <p>
- * Convert a Font (e.g. tfm) to a PL-file (property-list).
+ * Convert a BaseFont (e.g. tfm) to a PL-file (property-list).
  * </p>
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>

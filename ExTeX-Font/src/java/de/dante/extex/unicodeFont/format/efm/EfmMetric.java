@@ -25,18 +25,18 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.extex.font.format.tfm.TfmCharInfoArray;
+import org.extex.font.format.tfm.TfmCharInfoWord;
+import org.extex.font.format.tfm.TfmFixWord;
+import org.extex.font.format.tfm.TfmKerning;
+import org.extex.font.format.tfm.TfmLigKern;
+import org.extex.font.format.tfm.TfmLigature;
+import org.extex.font.format.tfm.TfmReader;
+import org.extex.font.unicode.GlyphName;
 import org.extex.type.UnicodeChar;
 import org.extex.unicode.Unicode;
 import org.extex.util.xml.XMLStreamWriter;
 
-import de.dante.extex.unicodeFont.format.tex.tfm.TfmCharInfoArray;
-import de.dante.extex.unicodeFont.format.tex.tfm.TfmCharInfoWord;
-import de.dante.extex.unicodeFont.format.tex.tfm.TfmFixWord;
-import de.dante.extex.unicodeFont.format.tex.tfm.TfmKerning;
-import de.dante.extex.unicodeFont.format.tex.tfm.TfmLigKern;
-import de.dante.extex.unicodeFont.format.tex.tfm.TfmLigature;
-import de.dante.extex.unicodeFont.format.tex.tfm.TfmReader;
-import de.dante.extex.unicodeFont.glyphname.GlyphName;
 
 /**
  * Class for the efm metric.

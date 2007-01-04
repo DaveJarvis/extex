@@ -28,7 +28,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import org.extex.font.FontFactory;
-import org.extex.font.FountKey;
+import org.extex.font.FontKey;
 import org.extex.font.exception.FontException;
 import org.extex.format.dvi.command.DviBOP;
 import org.extex.format.dvi.command.DviChar;
@@ -150,10 +150,11 @@ public class DviType implements DviInterpreter, DviExecuteCommand {
             Count scale = command.getScaledAsCount(mag);
             String name = command.getFName();
 
-            //            Font f = fontfactory.getInstance(name, design size, scale, new Glue(
+            //            BaseFont f = fontfactory.getInstance(name, design size, scale, new Glue(
             //                    0), true, true);
-            Font f = fontfactory.getInstance(new FountKey(name, designsize,
-                    scale, new Glue(0), true, true));
+            // mgn: umbauen
+            Font f = null;//fontfactory.getInstance(new FontKey(name, designsize, 
+            //scale, new Glue(0), true, true));
             if (f == null) {
                 throw new DviFontNotFoundException(name);
             }
@@ -345,7 +346,7 @@ public class DviType implements DviInterpreter, DviExecuteCommand {
         for (int i = 0; i < fntdefs.size(); i++) {
             DviFntDef f = (DviFntDef) fntdefs.get(i);
 
-            w.print("Font ");
+            w.print("BaseFont ");
             w.print(f.getFont());
             w.print(": ");
             w.print(f.getFName());

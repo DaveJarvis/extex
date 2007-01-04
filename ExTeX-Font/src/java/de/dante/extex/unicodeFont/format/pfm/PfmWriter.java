@@ -22,7 +22,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 /**
- * Reader for a PFM-Font file.
+ * Reader for a PFM-BaseFont file.
  * TODO: ...
  *
  * <p>School project</p>

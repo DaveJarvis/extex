@@ -19,6 +19,8 @@
 
 package de.dante.extex.unicodeFont.exception;
 
+import org.extex.font.exception.FontException;
+
 /**
  * The font file is not found!
  *

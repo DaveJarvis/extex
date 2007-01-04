@@ -62,7 +62,7 @@ public class DviXmlTest extends TestCase {
     /**
      * path.
      */
-    private static final String PATH = "../ExTeX-Font/src/dvi/";
+    private static final String PATH = "../ExTeX-BaseFont/src/dvi/";
 
     /**
      * files.

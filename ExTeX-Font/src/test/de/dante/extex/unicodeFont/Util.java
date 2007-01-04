@@ -58,7 +58,7 @@ public final class Util {
         Configuration config = new ConfigurationFactory()
                 .newInstance("config/path/fontTestFileFinder.xml");
         Properties properties = System.getProperties();
-        properties.setProperty("extex.fonts", "../ExTeX-Font/src/font");
+        properties.setProperty("extex.fonts", "../ExTeX-BaseFont/src/font");
 
         ResourceFinder finder = new ResourceFinderFactory()
                 .createResourceFinder(config, logger, properties,

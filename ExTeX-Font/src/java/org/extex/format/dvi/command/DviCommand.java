@@ -1140,7 +1140,7 @@ public abstract class DviCommand {
 
     /**
      * fnt_num_0  171:
-     * Set <code>f = 0</code>. Font 0 must previously have been defined by a
+     * Set <code>f = 0</code>. BaseFont 0 must previously have been defined by a
      * <code>fnt_def</code> instruction.
      */
     new DviReadCommand() {

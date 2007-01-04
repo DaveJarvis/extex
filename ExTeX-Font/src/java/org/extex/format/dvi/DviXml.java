@@ -170,10 +170,11 @@ public class DviXml implements DviInterpreter, DviExecuteCommand {
         Count scale = command.getScaledAsCount(mag);
         String name = command.getFName();
 
-        //        Font f = fontfactory.getInstance(name, designsize, scale, new Glue(0),
+        //        BaseFont f = fontfactory.getInstance(name, designsize, scale, new Glue(0),
         //                true, true);
-        Font f = fontfactory.getInstance(new FountKey(name, designsize, scale,
-                new Glue(0), true, true));
+        // mgn: umbauen
+        Font f = null;// fontfactory.getInstance(new FountKey(name, designsize, scale,
+                //new Glue(0), true, true));
         if (f == null) {
             throw new DviFontNotFoundException(name);
         }
@@ -445,7 +446,7 @@ public class DviXml implements DviInterpreter, DviExecuteCommand {
     }
 
     /**
-     * Set the Font and Glyph-Info.
+     * Set the BaseFont and Glyph-Info.
      * @param opcode    the opcode (char-id)
      * @param element   the element
      * @throws DviMissingFontException  if the font is missinbg.

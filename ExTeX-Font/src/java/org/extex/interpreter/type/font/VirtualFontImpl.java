@@ -23,12 +23,9 @@ import org.extex.font.Glyph;
 import org.extex.font.type.InternalFount;
 import org.extex.font.type.ModifiableFount;
 import org.extex.font.type.VirtualFount;
-import org.extex.font.type.efm.commands.EfmHVW;
 import org.extex.interpreter.context.tc.TypesettingContext;
 import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.font.FontImpl;
 import org.extex.type.UnicodeChar;
-import org.extex.typesetter.type.node.AbstractNode;
 import org.extex.typesetter.type.node.VirtualCharNode;
 
 
@@ -38,7 +35,7 @@ import org.extex.typesetter.type.node.VirtualCharNode;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4728 $
  */
-public class VirtualFontImpl extends FontImpl implements VirtualFount {
+public class VirtualFontImpl implements VirtualFount {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the ...
@@ -51,7 +48,7 @@ public class VirtualFontImpl extends FontImpl implements VirtualFount {
      */
     public VirtualFontImpl(final ModifiableFount afount) {
 
-        super(afount);
+        //super(afount);
     }
 
     /**
@@ -62,15 +59,15 @@ public class VirtualFontImpl extends FontImpl implements VirtualFount {
     public VirtualCharNode getVirtualCharNode(final TypesettingContext context,
             final UnicodeChar uc) {
 
-        VirtualCharNode cnode = new VirtualCharNode(context, uc);
-
-        InternalFount fount = getFount();
-        Glyph vglyph = fount.getGlyph(uc);
-
-        // h and v position
-        Dimen h = new Dimen(0);
-        Dimen v = new Dimen(0);
-
+//        VirtualCharNode cnode = new VirtualCharNode(context, uc);
+//
+//        InternalFount fount = getFount();
+//        Glyph vglyph = fount.getGlyph(uc);
+//
+//        // h and v position
+//        Dimen h = new Dimen(0);
+//        Dimen v = new Dimen(0);
+//
         // get all commands
         //        if (fount instanceof EFMFount) {
         //            EFMFount efm = (EFMFount) fount;
@@ -82,12 +79,12 @@ public class VirtualFontImpl extends FontImpl implements VirtualFount {
         //                        EfmChar c = (EfmChar) o;
         //                        String fontname = c.getFont();
         //                        Dimen fontsize = c.getFontsize();
-        //                        Font nf = null;
+        //                        BaseFont nf = null;
         //                        try {
         //                            nf = efm.getFontfactory().getInstance(fontname,
         //                                    fontsize);
         //                        } catch (Exception e) {
-        //                            // eigentlich unmöglich, da Font schon
+        //                            // eigentlich unmöglich, da BaseFont schon
         //                            // geladen worden ist
         //                            e.printStackTrace();
         //                            // TODO: handle exception
@@ -117,50 +114,50 @@ public class VirtualFontImpl extends FontImpl implements VirtualFount {
         //            }
         //}
 
-        // set the dimension from the glyph to the nodelist
-        cnode.setHeight(vglyph.getHeight());
-        cnode.setDepth(vglyph.getDepth());
-        cnode.setWidth(vglyph.getWidth());
-
-        return cnode;
+//        // set the dimension from the glyph to the nodelist
+//        cnode.setHeight(vglyph.getHeight());
+//        cnode.setDepth(vglyph.getDepth());
+//        cnode.setWidth(vglyph.getWidth());
+// mgn: umbauen
+        return null;// cnode;
     }
 
-    /**
-     * Calculate move / shift
-     * @param v     the v position
-     * @param h     the h position
-     * @param hvw   the EfmHVW  (EfmChar, EfmRule )
-     * @param node  the Node (CharNode, RuleNode )
-     * @param cnode the VirtualCharNode
-     */
-    private void calculateMoveShift(final Dimen v, final Dimen h,
-            final EfmHVW hvw, final AbstractNode node,
-            final VirtualCharNode cnode) {
-
-        // calculate move and shift
-        // v goes down -> shift goes up
-        Dimen nodeh = hvw.getH();
-        Dimen nodev = hvw.getV();
-        nodev.negate();
-
-        // move = nodeh-h
-        Dimen move = new Dimen(nodeh);
-        move.subtract(h);
-
-        // shift = nodev-v
-        Dimen shift = new Dimen(nodev);
-        shift.subtract(v);
-
-        // set move / shift
-        //TODO MGN: node.setMove(move);
-        //TODO MGN: node.setShift(shift);
-        cnode.add(node);
-
-        // calculate new refpoint
-        // h = move + width
-        h.set(move);
-        h.add(node.getWidth());
-        // v = 0
-        v.set(0);
-    }
+//    /**
+//     * Calculate move / shift
+//     * @param v     the v position
+//     * @param h     the h position
+//     * @param hvw   the EfmHVW  (EfmChar, EfmRule )
+//     * @param node  the Node (CharNode, RuleNode )
+//     * @param cnode the VirtualCharNode
+//     */
+//    private void calculateMoveShift(final Dimen v, final Dimen h,
+//            final EfmHVW hvw, final AbstractNode node,
+//            final VirtualCharNode cnode) {
+//
+//        // calculate move and shift
+//        // v goes down -> shift goes up
+//        Dimen nodeh = hvw.getH();
+//        Dimen nodev = hvw.getV();
+//        nodev.negate();
+//
+//        // move = nodeh-h
+//        Dimen move = new Dimen(nodeh);
+//        move.subtract(h);
+//
+//        // shift = nodev-v
+//        Dimen shift = new Dimen(nodev);
+//        shift.subtract(v);
+//
+//        // set move / shift
+//        //TODO MGN: node.setMove(move);
+//        //TODO MGN: node.setShift(shift);
+//        cnode.add(node);
+//
+//        // calculate new refpoint
+//        // h = move + width
+//        h.set(move);
+//        h.add(node.getWidth());
+//        // v = 0
+//        v.set(0);
+//    }
 }

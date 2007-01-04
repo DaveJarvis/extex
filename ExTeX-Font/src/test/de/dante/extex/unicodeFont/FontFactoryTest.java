@@ -19,9 +19,10 @@
 
 package de.dante.extex.unicodeFont;
 
+import org.extex.font.FontKey;
+import org.extex.font.FontKeyFactory;
+
 import junit.framework.TestCase;
-import de.dante.extex.unicodeFont.key.FontKey;
-import de.dante.extex.unicodeFont.key.FontKeyFactory;
 import de.dante.extex.unicodeFont.type.FontPfb;
 import de.dante.extex.unicodeFont.type.TexFont;
 

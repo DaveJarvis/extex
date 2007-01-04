@@ -30,7 +30,6 @@ import java.util.Properties;
 
 import junit.framework.TestCase;
 
-import org.extex.font.type.vf.VFFont;
 import org.extex.util.file.random.RandomAccessInputStream;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.ConfigurationFactory;
@@ -59,7 +58,7 @@ public class VFTest extends TestCase {
     /**
      * path
      */
-    private static final String PATH = "../ExTeX-Font/src/font/";
+    private static final String PATH = "../ExTeX-BaseFont/src/font/";
 
     /**
      * files
@@ -109,19 +108,20 @@ public class VFTest extends TestCase {
             //            }
             //            PSFontsMapReader psfm = new PSFontsMapReader(psin);
 
-            VFFont font = new VFFont(new RandomAccessInputStream(vfin),
-                    FILES[i], makeFontFactory());
-
-            //           font.setFontMapEncoding(psfm, ef);
-
-            // write to xml-file
-            XMLStreamWriter writer = new XMLStreamWriter(new FileOutputStream(
-                    PATH + FILES[i] + ".xml.tmp"), "ISO-8859-1");
-            writer.setBeauty(true);
-            writer.writeStartDocument();
-            font.writeXML(writer);
-            writer.writeEndDocument();
-            writer.close();
+            // mgn: umbauen
+//            VFFont font = new VFFont(new RandomAccessInputStream(vfin),
+//                    FILES[i], makeFontFactory());
+//
+//            //           font.setFontMapEncoding(psfm, ef);
+//
+//            // write to xml-file
+//            XMLStreamWriter writer = new XMLStreamWriter(new FileOutputStream(
+//                    PATH + FILES[i] + ".xml.tmp"), "ISO-8859-1");
+//            writer.setBeauty(true);
+//            writer.writeStartDocument();
+//            font.writeXML(writer);
+//            writer.writeEndDocument();
+//            writer.close();
         }
 
     }

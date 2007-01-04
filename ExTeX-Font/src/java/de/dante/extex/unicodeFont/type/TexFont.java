@@ -19,13 +19,14 @@
 
 package de.dante.extex.unicodeFont.type;
 
+import org.extex.font.ExtexFont;
 import org.extex.interpreter.type.count.Count;
 import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.type.UnicodeChar;
 
 /**
  * Interface for the tex font.
- * <p>old version: Interface Font</p>
+ * <p>old version: Interface BaseFont</p>
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
