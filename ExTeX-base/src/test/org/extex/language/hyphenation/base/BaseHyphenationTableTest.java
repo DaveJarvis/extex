@@ -27,9 +27,9 @@ import org.extex.font.FontKeyFactory;
 import org.extex.font.Glyph;
 import org.extex.font.Kerning;
 import org.extex.font.Ligature;
+import org.extex.font.format.tfm.TfmFixWord;
 import org.extex.font.type.BoundingBox;
 import org.extex.font.type.other.NullFont;
-import org.extex.font.type.tfm.TFMFixWord;
 import org.extex.interpreter.context.MockContext;
 import org.extex.interpreter.context.tc.TypesettingContext;
 import org.extex.interpreter.context.tc.TypesettingContextImpl;
@@ -352,7 +352,7 @@ public class BaseHyphenationTableTest extends TestCase {
 
         }
 
-        public void setDepth(final TFMFixWord size, final Dimen em) {
+        public void setDepth(final TfmFixWord size, final Dimen em) {
 
         }
 
@@ -369,7 +369,7 @@ public class BaseHyphenationTableTest extends TestCase {
 
         }
 
-        public void setHeight(final TFMFixWord size, final Dimen em) {
+        public void setHeight(final TfmFixWord size, final Dimen em) {
 
         }
 
@@ -382,7 +382,7 @@ public class BaseHyphenationTableTest extends TestCase {
 
         }
 
-        public void setItalicCorrection(final TFMFixWord size, final Dimen em) {
+        public void setItalicCorrection(final TfmFixWord size, final Dimen em) {
 
         }
 
@@ -411,7 +411,7 @@ public class BaseHyphenationTableTest extends TestCase {
 
         }
 
-        public void setWidth(final TFMFixWord size, final Dimen em) {
+        public void setWidth(final TfmFixWord size, final Dimen em) {
 
         }
     }

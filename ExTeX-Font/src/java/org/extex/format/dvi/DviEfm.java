@@ -24,7 +24,7 @@ import java.util.Map;
 
 import org.extex.font.FontFactory;
 import org.extex.font.exception.FontException;
-import org.extex.font.type.tfm.TFMFixWord;
+import org.extex.font.format.tfm.TfmFixWord;
 import org.extex.format.dvi.command.DviBOP;
 import org.extex.format.dvi.command.DviChar;
 import org.extex.format.dvi.command.DviCommand;
@@ -142,8 +142,8 @@ public class DviEfm implements DviInterpreter, DviExecuteCommand {
      */
     private void addHV(final Element element) {
 
-        TFMFixWord h = new TFMFixWord();
-        TFMFixWord v = new TFMFixWord();
+        TfmFixWord h = new TfmFixWord();
+        TfmFixWord v = new TfmFixWord();
         h.setValue(val.getH());
         v.setValue(val.getV());
         element.setAttribute("h", h.toStringComma());
@@ -244,7 +244,7 @@ public class DviEfm implements DviInterpreter, DviExecuteCommand {
      * @param fw    the fixword value
      * @return Returns the new move element.
      */
-    private Element addMove(final String attr, final TFMFixWord fw) {
+    private Element addMove(final String attr, final TfmFixWord fw) {
 
         Element element = new Element("move");
 
@@ -285,7 +285,7 @@ public class DviEfm implements DviInterpreter, DviExecuteCommand {
         // TODO UWE stimmt dies mit der Breite???
         FixedDimen width = font.getWidth(uc).getLength();
         element.setAttribute("width", Unit.getDimenAsPTString(width,
-                TFMFixWord.FRACTIONDIGITS));
+                TfmFixWord.FRACTIONDIGITS));
         addHV(element);
         dvi.addContent(element);
         if (!command.isPut()) {
@@ -301,7 +301,7 @@ public class DviEfm implements DviInterpreter, DviExecuteCommand {
             FontException, ConfigurationException {
 
         if (SHOWALL) {
-            TFMFixWord fw = new TFMFixWord();
+            TfmFixWord fw = new TfmFixWord();
             fw.setValue(command.getValue());
             dvi.addContent(addMove("down", fw));
         }
@@ -425,7 +425,7 @@ public class DviEfm implements DviInterpreter, DviExecuteCommand {
             FontException, ConfigurationException {
 
         if (SHOWALL) {
-            TFMFixWord fw = new TFMFixWord();
+            TfmFixWord fw = new TfmFixWord();
             fw.setValue(command.getValue());
             dvi.addContent(addMove("right", fw));
         }
@@ -439,8 +439,8 @@ public class DviEfm implements DviInterpreter, DviExecuteCommand {
     public void execute(final DviRule command) throws DviException,
             FontException, ConfigurationException {
 
-        TFMFixWord w = new TFMFixWord();
-        TFMFixWord h = new TFMFixWord();
+        TfmFixWord w = new TfmFixWord();
+        TfmFixWord h = new TfmFixWord();
         w.setValue(command.getWidth());
         h.setValue(command.getHeight());
         Element element = new Element("rule");
@@ -463,7 +463,7 @@ public class DviEfm implements DviInterpreter, DviExecuteCommand {
             ConfigurationException {
 
         if (SHOWALL) {
-            TFMFixWord fw = new TFMFixWord();
+            TfmFixWord fw = new TfmFixWord();
             if (command.isW0()) {
                 fw.setValue(val.getW());
             } else {
@@ -487,7 +487,7 @@ public class DviEfm implements DviInterpreter, DviExecuteCommand {
             ConfigurationException {
 
         if (SHOWALL) {
-            TFMFixWord fw = new TFMFixWord();
+            TfmFixWord fw = new TfmFixWord();
             if (command.isX0()) {
                 fw.setValue(val.getX());
             } else {
@@ -522,7 +522,7 @@ public class DviEfm implements DviInterpreter, DviExecuteCommand {
             ConfigurationException {
 
         if (SHOWALL) {
-            TFMFixWord fw = new TFMFixWord();
+            TfmFixWord fw = new TfmFixWord();
             if (command.isY0()) {
                 fw.setValue(val.getY());
             } else {
@@ -545,7 +545,7 @@ public class DviEfm implements DviInterpreter, DviExecuteCommand {
             ConfigurationException {
 
         if (SHOWALL) {
-            TFMFixWord fw = new TFMFixWord();
+            TfmFixWord fw = new TfmFixWord();
             if (command.isZ0()) {
                 fw.setValue(val.getZ());
             } else {

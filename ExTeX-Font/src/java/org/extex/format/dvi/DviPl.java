@@ -25,8 +25,8 @@ import java.util.Map;
 
 import org.extex.font.FontFactory;
 import org.extex.font.exception.FontException;
+import org.extex.font.format.tfm.TfmFixWord;
 import org.extex.font.type.PlWriter;
-import org.extex.font.type.tfm.TFMFixWord;
 import org.extex.format.dvi.command.DviBOP;
 import org.extex.format.dvi.command.DviChar;
 import org.extex.format.dvi.command.DviCommand;
@@ -356,8 +356,8 @@ public class DviPl implements DviInterpreter, DviExecuteCommand {
         if (!command.isPut()) {
             val.addH(command.getWidth());
         }
-        TFMFixWord w = new TFMFixWord();
-        TFMFixWord h = new TFMFixWord();
+        TfmFixWord w = new TfmFixWord();
+        TfmFixWord h = new TfmFixWord();
         w.setValue(command.getWidth());
         h.setValue(command.getHeight());
 
@@ -378,7 +378,7 @@ public class DviPl implements DviInterpreter, DviExecuteCommand {
         }
         val.addH(val.getW());
 
-        TFMFixWord fw = new TFMFixWord();
+        TfmFixWord fw = new TfmFixWord();
         if (command.isW0()) {
             fw.setValue(val.getW());
         } else {
@@ -399,7 +399,7 @@ public class DviPl implements DviInterpreter, DviExecuteCommand {
         }
         val.addH(val.getX());
 
-        TFMFixWord fw = new TFMFixWord();
+        TfmFixWord fw = new TfmFixWord();
         if (command.isX0()) {
             fw.setValue(val.getX());
         } else {
@@ -431,7 +431,7 @@ public class DviPl implements DviInterpreter, DviExecuteCommand {
         }
         val.addV(val.getY());
 
-        TFMFixWord fw = new TFMFixWord();
+        TfmFixWord fw = new TfmFixWord();
         if (command.isY0()) {
             fw.setValue(val.getY());
         } else {
@@ -453,7 +453,7 @@ public class DviPl implements DviInterpreter, DviExecuteCommand {
         }
         val.addV(val.getZ());
 
-        TFMFixWord fw = new TFMFixWord();
+        TfmFixWord fw = new TfmFixWord();
         if (command.isZ0()) {
             fw.setValue(val.getZ());
         } else {

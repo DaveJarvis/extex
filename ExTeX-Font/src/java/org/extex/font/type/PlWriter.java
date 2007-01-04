@@ -25,7 +25,7 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.Writer;
 
-import org.extex.font.type.tfm.TFMFixWord;
+import org.extex.font.format.tfm.TfmFixWord;
 
 
 /**
@@ -266,7 +266,7 @@ public class PlWriter extends PrintWriter {
      * @param name  the name
      * @return Return this, reference for subsequent printing.
      */
-    public PlWriter addFixWord(final TFMFixWord fw, final String name) {
+    public PlWriter addFixWord(final TfmFixWord fw, final String name) {
 
         if (fw != null && fw.getValue() != 0) {
             plopen(name).addReal(fw).plclose();

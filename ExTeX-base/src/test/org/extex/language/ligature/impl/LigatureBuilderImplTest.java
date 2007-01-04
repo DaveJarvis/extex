@@ -28,15 +28,14 @@ import org.extex.font.FontByteArray;
 import org.extex.font.Glyph;
 import org.extex.font.Kerning;
 import org.extex.font.Ligature;
+import org.extex.font.format.tfm.TfmFixWord;
 import org.extex.font.type.other.NullFont;
-import org.extex.font.type.tfm.TFMFixWord;
 import org.extex.interpreter.context.tc.TypesettingContext;
 import org.extex.interpreter.context.tc.TypesettingContextImpl;
 import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.glue.Glue;
 import org.extex.language.ligature.LigatureBuilder;
-import org.extex.language.ligature.impl.LigatureBuilderImpl;
 import org.extex.type.UnicodeChar;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
@@ -157,28 +156,28 @@ public class LigatureBuilderImplTest extends TestCase {
         /**
          * @see org.extex.font.Glyph#setDepth(org.extex.font.type.tfm.TFMFixWord, org.extex.interpreter.type.dimen.Dimen)
          */
-        public void setDepth(final TFMFixWord size, final Dimen em) {
+        public void setDepth(final TfmFixWord size, final Dimen em) {
 
         }
 
         /**
          * @see org.extex.font.Glyph#setHeight(org.extex.font.type.tfm.TFMFixWord, org.extex.interpreter.type.dimen.Dimen)
          */
-        public void setHeight(final TFMFixWord size, final Dimen em) {
+        public void setHeight(final TfmFixWord size, final Dimen em) {
 
         }
 
         /**
          * @see org.extex.font.Glyph#setItalicCorrection(org.extex.font.type.tfm.TFMFixWord, org.extex.interpreter.type.dimen.Dimen)
          */
-        public void setItalicCorrection(final TFMFixWord size, final Dimen em) {
+        public void setItalicCorrection(final TfmFixWord size, final Dimen em) {
 
         }
 
         /**
          * @see org.extex.font.Glyph#setWidth(org.extex.font.type.tfm.TFMFixWord, org.extex.interpreter.type.dimen.Dimen)
          */
-        public void setWidth(final TFMFixWord size, final Dimen em) {
+        public void setWidth(final TfmFixWord size, final Dimen em) {
 
         }
 

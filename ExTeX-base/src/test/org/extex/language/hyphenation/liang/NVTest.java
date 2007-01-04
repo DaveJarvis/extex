@@ -30,9 +30,9 @@ import org.extex.font.FontKeyFactory;
 import org.extex.font.Glyph;
 import org.extex.font.Kerning;
 import org.extex.font.Ligature;
+import org.extex.font.format.tfm.TfmFixWord;
 import org.extex.font.type.BoundingBox;
 import org.extex.font.type.other.NullFont;
-import org.extex.font.type.tfm.TFMFixWord;
 import org.extex.interpreter.Namespace;
 import org.extex.interpreter.context.tc.ModifiableTypesettingContext;
 import org.extex.interpreter.context.tc.TypesettingContext;
@@ -438,7 +438,7 @@ public class NVTest extends TestCase {
         /**
          * @see org.extex.font.Glyph#setDepth(org.extex.font.type.tfm.TFMFixWord, org.extex.interpreter.type.dimen.Dimen)
          */
-        public void setDepth(final TFMFixWord size, final Dimen em) {
+        public void setDepth(final TfmFixWord size, final Dimen em) {
 
         }
 
@@ -467,7 +467,7 @@ public class NVTest extends TestCase {
         /**
          * @see org.extex.font.Glyph#setHeight(org.extex.font.type.tfm.TFMFixWord, org.extex.interpreter.type.dimen.Dimen)
          */
-        public void setHeight(final TFMFixWord size, final Dimen em) {
+        public void setHeight(final TfmFixWord size, final Dimen em) {
 
         }
 
@@ -489,7 +489,7 @@ public class NVTest extends TestCase {
         /**
          * @see org.extex.font.Glyph#setItalicCorrection(org.extex.font.type.tfm.TFMFixWord, org.extex.interpreter.type.dimen.Dimen)
          */
-        public void setItalicCorrection(final TFMFixWord size, final Dimen em) {
+        public void setItalicCorrection(final TfmFixWord size, final Dimen em) {
 
         }
 
@@ -539,7 +539,7 @@ public class NVTest extends TestCase {
         /**
          * @see org.extex.font.Glyph#setWidth(org.extex.font.type.tfm.TFMFixWord, org.extex.interpreter.type.dimen.Dimen)
          */
-        public void setWidth(final TFMFixWord size, final Dimen em) {
+        public void setWidth(final TfmFixWord size, final Dimen em) {
 
         }
     }
