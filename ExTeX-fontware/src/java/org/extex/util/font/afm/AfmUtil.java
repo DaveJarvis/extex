@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.util.font;
+package org.extex.util.font.afm;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedWriter;
@@ -38,29 +38,37 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import org.extex.ExTeX;
+import org.extex.font.exception.FontException;
+import org.extex.font.format.afm.AfmCharMetric;
+import org.extex.font.format.afm.AfmEncCheck;
+import org.extex.font.format.afm.AfmKernPairs;
+import org.extex.font.format.afm.AfmParser;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.xml.XMLStreamWriter;
 
-import de.dante.extex.unicodeFont.exception.FontException;
-import de.dante.extex.unicodeFont.format.afm.AfmCharMetric;
-import de.dante.extex.unicodeFont.format.afm.AfmEncCheck;
-import de.dante.extex.unicodeFont.format.afm.AfmKernPairs;
-import de.dante.extex.unicodeFont.format.afm.AfmParser;
 import de.dante.extex.unicodeFont.format.pl.PlWriter;
 import de.dante.extex.unicodeFont.format.tex.psfontmap.enc.EncReader;
+import de.dante.util.font.AbstractFontUtil;
 
 /**
- * Utilities for a afm file.
+ * Abstract class for utilities for a afm file.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public final class AfmUtil extends AbstractFontUtil {
+public abstract class AfmUtil extends AbstractFontUtil {
 
     /**
      * Number of glyphs.
      */
     private static final int NUMBEROFGLYPHS = 256;
+
+    /**
+     * The directory for the output.
+     */
+    private String outdir = ".";
+
+    // -----------------------------------------------
 
     /**
      * Create a xml file.
@@ -83,7 +91,7 @@ public final class AfmUtil extends AbstractFontUtil {
     private boolean enccheck = false;
 
     /**
-     * Check, if for a encopdign vector some glpyhs are missing.
+     * Check, if for a encoding vector some glyphs are missing.
      */
     private boolean missingGlyph = false;
 
@@ -108,11 +116,6 @@ public final class AfmUtil extends AbstractFontUtil {
     private String encname = "";
 
     /**
-     * The directory for the output.
-     */
-    private String outdir = ".";
-
-    /**
      * Create a map file.
      */
     private boolean tomap = false;
@@ -135,11 +138,12 @@ public final class AfmUtil extends AbstractFontUtil {
     /**
      * Create a new object.
      *
-     * @throws ConfigurationException if a config-error occurs.
+     * @param c The class for the logger.
+     * @throws ConfigurationException from the configuration system.
      */
-    private AfmUtil() throws ConfigurationException {
+    protected AfmUtil(final Class c) throws ConfigurationException {
 
-        super(AfmUtil.class);
+        super(c);
 
         glyphmap = new TreeMap();
     }
@@ -758,94 +762,94 @@ public final class AfmUtil extends AbstractFontUtil {
                 cal.getTime().toString());
     }
 
-    /**
-     * parameter.
-     */
-    private static final int PARAMETER = 1;
+    //    /**
+    //     * parameter.
+    //     */
+    //    private static final int PARAMETER = 1;
 
-    /**
-     * main.
-     * @param args the command line arguments.
-     * @throws Exception if a error occurs.
-     */
-    public static void main(final String[] args) throws Exception {
-
-        AfmUtil afm = new AfmUtil();
-
-        if (args.length < PARAMETER) {
-            afm.getLogger().severe(afm.getLocalizer().format("AfmUtil.Call"));
-            System.exit(1);
-        }
-
-        boolean toxml = false;
-        String xmlname = "";
-        boolean toefm = false;
-        String efmname = "";
-        ArrayList enclist = new ArrayList();
-        boolean toenc = false;
-        String encname = "";
-        boolean tomap = false;
-        boolean topl = false;
-        boolean enccheck = false;
-        boolean missingGlyph = false;
-        String outdir = ".";
-        String file = "";
-
-        int i = 0;
-        do {
-            if ("-x".equals(args[i]) || "--xml".equals(args[i])) {
-                if (i + 1 < args.length) {
-                    toxml = true;
-                    xmlname = args[++i];
-                }
-            } else if ("-e".equals(args[i]) || "--efm".equals(args[i])) {
-                if (i + 1 < args.length) {
-                    toefm = true;
-                    efmname = args[++i];
-                }
-
-            } else if ("-c".equals(args[i]) || "--createenc".equals(args[i])) {
-                if (i + 1 < args.length) {
-                    toenc = true;
-                    encname = args[++i];
-                }
-            } else if ("--enccheck".equals(args[i])) {
-                enccheck = true;
-            } else if ("--missingglyph".equals(args[i])) {
-                missingGlyph = true;
-            } else if ("-v".equals(args[i]) || "--encvector".equals(args[i])) {
-                if (i + 1 < args.length) {
-                    enclist.add(args[++i]);
-                }
-            } else if ("-o".equals(args[i]) || "--outdir".equals(args[i])) {
-                if (i + 1 < args.length) {
-                    outdir = args[++i];
-                }
-            } else if ("-m".equals(args[i]) || "--map".equals(args[i])) {
-                tomap = true;
-            } else if ("-p".equals(args[i]) || "--pl".equals(args[i])) {
-                topl = true;
-            } else {
-                file = args[i];
-            }
-            i++;
-        } while (i < args.length);
-
-        afm.setToxml(toxml);
-        afm.setXmlname(xmlname);
-        afm.setToefm(toefm);
-        afm.setEfmname(efmname);
-        afm.setEnclist(enclist);
-        afm.setToenc(toenc);
-        afm.setEncname(encname);
-        afm.setOutdir(outdir);
-        afm.setTomap(tomap);
-        afm.setTopl(topl);
-        afm.setEnccheck(enccheck);
-        afm.setMissingGlyph(missingGlyph);
-
-        afm.doIt(file);
-    }
+    //    /**
+    //     * main.
+    //     * @param args the command line arguments.
+    //     * @throws Exception if a error occurs.
+    //     */
+    //    public static void main(final String[] args) throws Exception {
+    //
+    //        AfmUtil afm = new AfmUtil();
+    //
+    //        if (args.length < PARAMETER) {
+    //            afm.getLogger().severe(afm.getLocalizer().format("AfmUtil.Call"));
+    //            System.exit(1);
+    //        }
+    //
+    //        boolean toxml = false;
+    //        String xmlname = "";
+    //        boolean toefm = false;
+    //        String efmname = "";
+    //        ArrayList enclist = new ArrayList();
+    //        boolean toenc = false;
+    //        String encname = "";
+    //        boolean tomap = false;
+    //        boolean topl = false;
+    //        boolean enccheck = false;
+    //        boolean missingGlyph = false;
+    //        String outdir = ".";
+    //        String file = "";
+    //
+    //        int i = 0;
+    //        do {
+    //            if ("-x".equals(args[i]) || "--xml".equals(args[i])) {
+    //                if (i + 1 < args.length) {
+    //                    toxml = true;
+    //                    xmlname = args[++i];
+    //                }
+    //            } else if ("-e".equals(args[i]) || "--efm".equals(args[i])) {
+    //                if (i + 1 < args.length) {
+    //                    toefm = true;
+    //                    efmname = args[++i];
+    //                }
+    //
+    //            } else if ("-c".equals(args[i]) || "--createenc".equals(args[i])) {
+    //                if (i + 1 < args.length) {
+    //                    toenc = true;
+    //                    encname = args[++i];
+    //                }
+    //            } else if ("--enccheck".equals(args[i])) {
+    //                enccheck = true;
+    //            } else if ("--missingglyph".equals(args[i])) {
+    //                missingGlyph = true;
+    //            } else if ("-v".equals(args[i]) || "--encvector".equals(args[i])) {
+    //                if (i + 1 < args.length) {
+    //                    enclist.add(args[++i]);
+    //                }
+    //            } else if ("-o".equals(args[i]) || "--outdir".equals(args[i])) {
+    //                if (i + 1 < args.length) {
+    //                    outdir = args[++i];
+    //                }
+    //            } else if ("-m".equals(args[i]) || "--map".equals(args[i])) {
+    //                tomap = true;
+    //            } else if ("-p".equals(args[i]) || "--pl".equals(args[i])) {
+    //                topl = true;
+    //            } else {
+    //                file = args[i];
+    //            }
+    //            i++;
+    //        } while (i < args.length);
+    //
+    //        afm.setToxml(toxml);
+    //        afm.setXmlname(xmlname);
+    //        afm.setToefm(toefm);
+    //        afm.setEfmname(efmname);
+    //        afm.setEnclist(enclist);
+    //        afm.setToenc(toenc);
+    //        afm.setEncname(encname);
+    //        afm.setOutdir(outdir);
+    //        afm.setTomap(tomap);
+    //        afm.setTopl(topl);
+    //        afm.setEnccheck(enccheck);
+    //        afm.setMissingGlyph(missingGlyph);
+    //
+    //        afm.doIt(file);
+    //    }
 
     /**
      * Returns the toxml.
@@ -971,24 +975,6 @@ public final class AfmUtil extends AbstractFontUtil {
     public void setToenc(final boolean enc) {
 
         toenc = enc;
-    }
-
-    /**
-     * Returns the outdir.
-     * @return Returns the outdir.
-     */
-    public String getOutdir() {
-
-        return outdir;
-    }
-
-    /**
-     * The outdir to set.
-     * @param out The outdir to set.
-     */
-    public void setOutdir(final String out) {
-
-        outdir = out;
     }
 
     /**
@@ -1157,11 +1143,35 @@ public final class AfmUtil extends AbstractFontUtil {
     /**
      * Set the missingGlyph.
      *
-     * @param missingGlyph The missingGlyph to set.
+     * @param missingglyph The missingGlyph to set.
      */
-    public void setMissingGlyph(final boolean missingGlyph) {
+    public void setMissingGlyph(final boolean missingglyph) {
 
-        this.missingGlyph = missingGlyph;
+        this.missingGlyph = missingglyph;
+    }
+
+    // ---------------------------------------------
+    // GETTER / SETTER
+    // ---------------------------------------------
+
+    /**
+     * Getter for outdir.
+     *
+     * @return Returns the outdir.
+     */
+    public String getOutdir() {
+
+        return outdir;
+    }
+
+    /**
+     * Setter for outdir.
+     *
+     * @param out The outdir to set.
+     */
+    public void setOutdir(final String out) {
+
+        outdir = out;
     }
 
 }

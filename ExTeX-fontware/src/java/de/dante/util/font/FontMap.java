@@ -35,6 +35,10 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
+import org.extex.font.FontKeyFactory;
+import org.extex.font.exception.FontException;
+import org.extex.font.format.tfm.TfmReader;
+import org.extex.font.unicode.GlyphName;
 import org.extex.type.UnicodeChar;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.xml.XMLStreamWriter;
@@ -42,16 +46,12 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import de.dante.extex.unicodeFont.exception.FontException;
 import de.dante.extex.unicodeFont.exception.FontIOException;
 import de.dante.extex.unicodeFont.format.efm.EfmFont;
 import de.dante.extex.unicodeFont.format.pfb.PfbParser;
 import de.dante.extex.unicodeFont.format.tex.psfontmap.PsFontEncoding;
 import de.dante.extex.unicodeFont.format.tex.psfontmap.PsFontsMapReader;
 import de.dante.extex.unicodeFont.format.tex.psfontmap.enc.EncFactory;
-import de.dante.extex.unicodeFont.format.tex.tfm.TfmReader;
-import de.dante.extex.unicodeFont.glyphname.GlyphName;
-import de.dante.extex.unicodeFont.key.FontKeyFactory;
 
 /**
  * This class manage the font map files.

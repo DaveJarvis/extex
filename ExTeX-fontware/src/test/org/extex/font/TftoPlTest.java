@@ -185,7 +185,7 @@ public class TftoPlTest extends TestCase {
     }
 
     /**
-     * test the Font
+     * test the BaseFont
      * @param   nr  the font nr
      * @throws IOException if a IO-error occurs
      */

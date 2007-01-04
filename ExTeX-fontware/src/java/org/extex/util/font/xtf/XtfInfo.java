@@ -293,13 +293,13 @@ public abstract class XtfInfo extends AbstractFontUtil {
     //                    + File.separator + pdfname + ".pdf"));
     //            document.open();
     //
-    //            Font hex = new Font(Font.HELVETICA, FONT_6);
+    //            BaseFont hex = new BaseFont(BaseFont.HELVETICA, FONT_6);
     //
     //            BaseFont basefont = BaseFont.createFont(xtffile.getAbsolutePath(),
     //                    BaseFont.IDENTITY_H, true);
     //
-    //            Font font = new Font(basefont, FONT_18, Font.NORMAL);
-    //            Font font12 = new Font(basefont, FONT_12, Font.NORMAL);
+    //            BaseFont font = new BaseFont(basefont, FONT_18, BaseFont.NORMAL);
+    //            BaseFont font12 = new BaseFont(basefont, FONT_12, BaseFont.NORMAL);
     //
     //            // first page
     //
