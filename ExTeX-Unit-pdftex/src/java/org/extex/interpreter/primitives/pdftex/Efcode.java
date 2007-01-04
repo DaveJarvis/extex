@@ -99,7 +99,7 @@ public class Efcode extends AbstractCode
                 getName());
         source.getOptionalEquals(context);
         long code = Count.scanInteger(context, source, typesetter);
-        font.setEfcode(uc, code);
+        font.setEfCode(uc, code);
     }
 
     /**
@@ -115,7 +115,7 @@ public class Efcode extends AbstractCode
         UnicodeChar uc = source.scanCharacterCode(context, typesetter,
                 getName());
 
-        return font.getEfcode(uc);
+        return font.getEfCode(uc);
     }
 
     /**
