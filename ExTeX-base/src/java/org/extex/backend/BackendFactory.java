@@ -32,7 +32,7 @@ import org.extex.backend.documentWriter.exception.DocumentWriterException;
 import org.extex.backend.outputStream.OutputStreamFactory;
 import org.extex.color.ColorAware;
 import org.extex.color.ColorConverter;
-import org.extex.font.FontFactory;
+import org.extex.font.CoreFontFactory;
 import org.extex.util.framework.AbstractFactory;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
@@ -131,7 +131,7 @@ public class BackendFactory extends AbstractFactory {
             final DocumentWriterOptions options,
             final OutputStreamFactory outFactory, final ResourceFinder finder,
             final Properties properties, final String creator,
-            final FontFactory fontFactory, final ColorConverter colorConverter)
+            final CoreFontFactory fontFactory, final ColorConverter colorConverter)
             throws DocumentWriterException,
                 ConfigurationException {
 

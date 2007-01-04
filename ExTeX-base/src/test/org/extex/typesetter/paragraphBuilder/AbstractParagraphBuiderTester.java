@@ -29,7 +29,7 @@ import java.util.regex.Pattern;
 import junit.framework.TestCase;
 
 import org.extex.font.FontByteArray;
-import org.extex.font.FountKey;
+import org.extex.font.FontKey;
 import org.extex.font.Glyph;
 import org.extex.font.Kerning;
 import org.extex.font.Ligature;
@@ -279,7 +279,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Font#getDepth(
+         * @see de.dante.extex.interpreter.type.font.BaseFont#getDepth(
          *      org.extex.type.UnicodeChar)
          */
         public FixedGlue getDepth(final UnicodeChar uc) {
@@ -295,7 +295,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
             return VPT;
         }
 
-        public long getEfcode(final UnicodeChar uc) {
+        public long getEfCode(final UnicodeChar uc) {
 
             return 1000;
         }
@@ -335,7 +335,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         /**
          * @see de.dante.extex.font.type.Fount#getFontKey()
          */
-        public FountKey getFontKey() {
+        public FontKey getFontKey() {
 
             return null;
         }
@@ -523,7 +523,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Font#getHeight(org.extex.type.UnicodeChar)
+         * @see de.dante.extex.interpreter.type.font.BaseFont#getHeight(org.extex.type.UnicodeChar)
          */
         public FixedGlue getHeight(final UnicodeChar uc) {
 
@@ -531,7 +531,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Font#getHyphenChar()
+         * @see de.dante.extex.interpreter.type.font.BaseFont#getHyphenChar()
          */
         public UnicodeChar getHyphenChar() {
 
@@ -539,7 +539,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Font#getItalicCorrection(org.extex.type.UnicodeChar)
+         * @see de.dante.extex.interpreter.type.font.BaseFont#getItalicCorrection(org.extex.type.UnicodeChar)
          */
         public FixedDimen getItalicCorrection(final UnicodeChar uc) {
 
@@ -547,7 +547,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Font#getKerning(org.extex.type.UnicodeChar, org.extex.type.UnicodeChar)
+         * @see de.dante.extex.interpreter.type.font.BaseFont#getKerning(org.extex.type.UnicodeChar, org.extex.type.UnicodeChar)
          */
         public FixedDimen getKerning(final UnicodeChar uc1,
                 final UnicodeChar uc2) {
@@ -564,7 +564,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Font#getLigature(org.extex.type.UnicodeChar, org.extex.type.UnicodeChar)
+         * @see de.dante.extex.interpreter.type.font.BaseFont#getLigature(org.extex.type.UnicodeChar, org.extex.type.UnicodeChar)
          */
         public UnicodeChar getLigature(final UnicodeChar uc1,
                 final UnicodeChar uc2) {
@@ -581,7 +581,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Font#getSkewChar()
+         * @see de.dante.extex.interpreter.type.font.BaseFont#getSkewChar()
          */
         public UnicodeChar getSkewChar() {
 
@@ -597,7 +597,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Font#getWidth(
+         * @see de.dante.extex.interpreter.type.font.BaseFont#getWidth(
          *      org.extex.type.UnicodeChar)
          */
         public FixedGlue getWidth(final UnicodeChar uc) {
@@ -606,7 +606,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Font#hasGlyph(
+         * @see de.dante.extex.interpreter.type.font.BaseFont#hasGlyph(
          *      org.extex.type.UnicodeChar)
          */
         public boolean hasGlyph(final UnicodeChar uc) {
@@ -615,17 +615,17 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Font#setEfcode(
+         * @see de.dante.extex.interpreter.type.font.BaseFont#setEfCode(
          *      org.extex.type.UnicodeChar, long)
          */
-        public void setEfcode(final UnicodeChar uc, final long code) {
+        public void setEfCode(final UnicodeChar uc, final long code) {
 
             // TODO gene: setEfcode unimplemented
 
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Font#setFontDimen(
+         * @see de.dante.extex.interpreter.type.font.BaseFont#setFontDimen(
          *      java.lang.String, de.dante.extex.interpreter.type.dimen.Dimen)
          */
         public void setFontDimen(final String key, final Dimen value) {
@@ -633,7 +633,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Font#setHyphenChar(
+         * @see de.dante.extex.interpreter.type.font.BaseFont#setHyphenChar(
          *      org.extex.type.UnicodeChar)
          */
         public void setHyphenChar(final UnicodeChar hyphen) {
@@ -642,12 +642,37 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.Font#setSkewChar(org.extex.type.UnicodeChar)
+         * @see de.dante.extex.interpreter.type.font.BaseFont#setSkewChar(org.extex.type.UnicodeChar)
          */
         public void setSkewChar(final UnicodeChar skew) {
 
             skewChar = skew;
         }
+
+        public void setActualSize(Dimen size) {
+
+            // TODO mgn: setActualSize unimplemented
+            
+        }
+
+        public void setScaleFactor(Count scaleFactor) {
+
+            // TODO mgn: setScaleFactor unimplemented
+            
+        }
+
+        public FixedCount getScaleFactor() {
+
+            // TODO mgn: getScaleFactor unimplemented
+            return null;
+        }
+
+        public FontKey getActualFontKey() {
+
+            // TODO mgn: getActualFontKey unimplemented
+            return null;
+        }
+
     });
     {
         tc.setLanguage(new Language() {

@@ -178,7 +178,7 @@ public class ExTeXLauncher extends TestCase {
 
         provide(properties, "extex.output", "test-plain");
         provide(properties, "extex.interaction", "batchmode");
-        provide(properties, "extex.fonts", "../ExTeX-Font/src/font");
+        provide(properties, "extex.fonts", "../ExTeX-BaseFont/src/font");
         provide(properties, "extex.nobanner", "true");
     }
 

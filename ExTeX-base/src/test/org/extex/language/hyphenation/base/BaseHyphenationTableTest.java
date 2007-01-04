@@ -22,7 +22,8 @@ package org.extex.language.hyphenation.base;
 import junit.framework.TestCase;
 
 import org.extex.font.FontByteArray;
-import org.extex.font.FountKey;
+import org.extex.font.FontKey;
+import org.extex.font.FontKeyFactory;
 import org.extex.font.Glyph;
 import org.extex.font.Kerning;
 import org.extex.font.Ligature;
@@ -37,7 +38,6 @@ import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.glue.FixedGlue;
 import org.extex.interpreter.type.glue.Glue;
 import org.extex.language.Language;
-import org.extex.language.hyphenation.base.BaseHyphenationTable;
 import org.extex.language.word.impl.TeXWords;
 import org.extex.type.UnicodeChar;
 import org.extex.type.UnicodeCharList;
@@ -116,7 +116,7 @@ public class BaseHyphenationTableTest extends TestCase {
         /**
          * @see org.extex.interpreter.type.font.Font#getEfcode()
          */
-        public long getEfcode(UnicodeChar uc) {
+        public long getEfCode(UnicodeChar uc) {
 
             // TODO gene: getEfcode unimplemented
             return 0;
@@ -157,9 +157,9 @@ public class BaseHyphenationTableTest extends TestCase {
         /**
          * @see org.extex.font.type.Fount#getFontKey()
          */
-        public FountKey getFontKey() {
+        public FontKey getFontKey() {
 
-            return new FountKey("mockfont"); // add by mgn
+            return (new FontKeyFactory()).newInstance("mockfont"); // add by mgn
         }
 
         /**
@@ -230,10 +230,10 @@ public class BaseHyphenationTableTest extends TestCase {
         }
 
         /**
-         * @see org.extex.interpreter.type.font.Font#setEfcode(org.extex.type.UnicodeChar,
+         * @see org.extex.interpreter.type.font.Font#setEfCode(org.extex.type.UnicodeChar,
          *      long)
          */
-        public void setEfcode(final UnicodeChar uc, final long code) {
+        public void setEfCode(final UnicodeChar uc, final long code) {
 
             // TODO gene: setEfcode unimplemented
 

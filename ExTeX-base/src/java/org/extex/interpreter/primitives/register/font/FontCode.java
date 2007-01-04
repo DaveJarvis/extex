@@ -55,7 +55,7 @@ public class FontCode extends AbstractCode
     protected static final long serialVersionUID = 2005L;
 
     /**
-     * The <code>Font</code>
+     * The <code>BaseFont</code>
      */
     private Font font;
 

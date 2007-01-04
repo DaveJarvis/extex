@@ -19,6 +19,8 @@
 
 package org.extex.interpreter.primitives.register.font;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -36,6 +38,7 @@ import org.extex.interpreter.type.count.Count;
 import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.interpreter.type.font.Font;
 import org.extex.interpreter.type.font.FontConvertible;
+import org.extex.interpreter.type.font.FontImpl;
 import org.extex.interpreter.type.glue.Glue;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.ControlSequenceToken;
@@ -45,7 +48,6 @@ import org.extex.typesetter.Typesetter;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.framework.configuration.exception.ConfigurationIOException;
 import org.extex.util.framework.logger.LogEnabled;
-
 
 /**
  * This class provides an implementation for the primitive <code>\font</code>.
@@ -228,8 +230,13 @@ public class FontPrimitive extends AbstractAssignment
         CoreFontFactory factory = context.getFontFactory();
         Font font;
         try {
-            font = factory.getInstance(new FountKey(fontname, fontSize, scale,
-                    letterspaced, ligatures, kerning));
+            Map fontKeyMap = new HashMap();
+            fontKeyMap.put("scale", scale);
+            fontKeyMap.put("letterspaced", letterspaced);
+            fontKeyMap.put("ligatures", new Boolean(ligatures));
+            fontKeyMap.put("kerning", new Boolean(kerning));
+            font = new FontImpl(factory.getInstance(factory.getFontKey(fontname, fontSize,
+                    fontKeyMap)));
         } catch (FontException e) {
             if (logger != null) {
                 logger.log(Level.FINE, "FontPrimitive", e);

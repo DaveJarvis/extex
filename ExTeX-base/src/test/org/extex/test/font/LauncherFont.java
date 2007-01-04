@@ -24,11 +24,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.extex.font.FontByteArray;
-import org.extex.font.FountKey;
+import org.extex.font.FontKey;
 import org.extex.font.Glyph;
 import org.extex.font.Kerning;
 import org.extex.font.Ligature;
-import org.extex.font.type.BoundingBox;
+import org.extex.interpreter.type.count.Count;
+import org.extex.interpreter.type.count.FixedCount;
 import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.font.Font;
@@ -316,9 +317,9 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
-     * @see org.extex.interpreter.type.font.Font#getEfcode(org.extex.type.UnicodeChar)
+     * @see org.extex.interpreter.type.font.Font#getEfCode(org.extex.type.UnicodeChar)
      */
-    public long getEfcode(final UnicodeChar uc) {
+    public long getEfCode(final UnicodeChar uc) {
 
         return 1000;
     }
@@ -358,7 +359,7 @@ public class LauncherFont implements Font, Serializable {
     /**
      * @see org.extex.font.type.Fount#getFontKey()
      */
-    public FountKey getFontKey() {
+    public FontKey getFontKey() {
 
         return null;
     }
@@ -475,9 +476,9 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
-     * @see org.extex.interpreter.type.font.Font#setEfcode(org.extex.type.UnicodeChar, long)
+     * @see org.extex.interpreter.type.font.Font#setEfCode(org.extex.type.UnicodeChar, long)
      */
-    public void setEfcode(final UnicodeChar uc, final long code) {
+    public void setEfCode(final UnicodeChar uc, final long code) {
 
         // TODO gene: setEfcode unimplemented
 
@@ -509,6 +510,30 @@ public class LauncherFont implements Font, Serializable {
     public void setSkewChar(final UnicodeChar skew) {
 
         this.skew = skew;
+    }
+
+    public void setActualSize(Dimen size) {
+
+        // TODO mgn: setActualSize unimplemented
+        
+    }
+
+    public void setScaleFactor(Count scaleFactor) {
+
+        // TODO mgn: setScaleFactor unimplemented
+        
+    }
+
+    public FixedCount getScaleFactor() {
+
+        // TODO mgn: getScalefactor unimplemented
+        return null;
+    }
+
+    public FontKey getActualFontKey() {
+
+        // TODO mgn: getActualFontKey unimplemented
+        return null;
     }
 
 }

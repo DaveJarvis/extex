@@ -22,6 +22,7 @@ package org.extex;
 import java.util.Properties;
 
 import org.extex.ExTeX;
+import org.extex.font.CoreFontFactory;
 import org.extex.font.FontFactory;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.ConfigurationFactory;
@@ -133,14 +134,14 @@ public class ExTeXRunner extends TestCase {
         /**
          * the font factory
          */
-        private FontFactory fontFactory;
+        private CoreFontFactory fontFactory;
 
         /**
          * Returns the font factory.
          * @return Returns the font factory.
          * @throws ConfigurationException if an error occurs
          */
-        public FontFactory getFontFactory() throws ConfigurationException {
+        public CoreFontFactory getFontFactory() throws ConfigurationException {
 
             if (fontFactory == null) {
                 fontFactory = makeFontFactory(config.getConfiguration("Fonts"),

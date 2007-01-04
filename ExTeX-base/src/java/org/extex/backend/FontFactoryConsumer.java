@@ -19,7 +19,7 @@
 
 package org.extex.backend;
 
-import org.extex.font.FontFactory;
+import org.extex.font.CoreFontFactory;
 
 /**
  * This interface describes the ability to receive a
@@ -35,6 +35,6 @@ public interface FontFactoryConsumer {
      *
      * @param factory the font factory
      */
-    void setFontFactory(FontFactory factory);
+    void setFontFactory(CoreFontFactory factory);
 
 }

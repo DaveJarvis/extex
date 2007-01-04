@@ -25,7 +25,8 @@ import java.util.Map;
 import junit.framework.TestCase;
 
 import org.extex.font.FontByteArray;
-import org.extex.font.FountKey;
+import org.extex.font.FontKey;
+import org.extex.font.FontKeyFactory;
 import org.extex.font.Glyph;
 import org.extex.font.Kerning;
 import org.extex.font.Ligature;
@@ -180,9 +181,9 @@ public class NVTest extends TestCase {
         /**
          * @see org.extex.font.type.Fount#getFontKey()
          */
-        public FountKey getFontKey() {
+        public FontKey getFontKey() {
 
-            return new FountKey("mockfont"); // add by mgn
+            return (new FontKeyFactory()).newInstance("mockfont"); // add by mgn
         }
 
         /**
@@ -264,9 +265,9 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see org.extex.interpreter.type.font.Font#setEfcode(org.extex.type.UnicodeChar, long)
+         * @see org.extex.interpreter.type.font.Font#setEfCode(org.extex.type.UnicodeChar, long)
          */
-        public void setEfcode(UnicodeChar uc, long code) {
+        public void setEfCode(UnicodeChar uc, long code) {
 
             // TODO gene: setEfcode unimplemented
 
@@ -275,7 +276,7 @@ public class NVTest extends TestCase {
         /**
          * @see org.extex.interpreter.type.font.Font#getEfcode()
          */
-        public long getEfcode(UnicodeChar uc) {
+        public long getEfCode(UnicodeChar uc) {
 
             // TODO gene: getEfcode unimplemented
             return 0;
