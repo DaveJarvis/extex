@@ -18,9 +18,9 @@
 
 package org.extex.font.type;
 
+import org.extex.font.ExtexFont;
 import org.extex.font.Glyph;
 import org.extex.type.UnicodeChar;
-
 
 /**
  * Fount Interface (only getter)
@@ -29,7 +29,7 @@ import org.extex.type.UnicodeChar;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface InternalFount extends Fount {
+public interface InternalFount extends ExtexFont {
 
     /**
      * Return the Glyph of a <code>UnicodeChar</code>, or

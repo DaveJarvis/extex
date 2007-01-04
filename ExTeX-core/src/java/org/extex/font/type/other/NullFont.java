@@ -24,16 +24,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.extex.font.FontByteArray;
+import org.extex.font.FontKey;
+import org.extex.font.FontKeyFactory;
 import org.extex.font.FountKey;
-import org.extex.font.Glyph;
-import org.extex.font.type.BoundingBox;
+import org.extex.interpreter.type.count.Count;
+import org.extex.interpreter.type.count.FixedCount;
 import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.font.Font;
 import org.extex.interpreter.type.glue.FixedGlue;
 import org.extex.interpreter.type.glue.Glue;
 import org.extex.type.UnicodeChar;
-
 
 /**
  * This class implements a dummy font which does not contain any characters.
@@ -118,9 +119,9 @@ public class NullFont implements Font, Serializable {
     }
 
     /**
-     * @see org.extex.interpreter.type.font.Font#getEfcode(org.extex.type.UnicodeChar)
+     * @see org.extex.interpreter.type.font.Font#getEfCode(org.extex.type.UnicodeChar)
      */
-    public long getEfcode(final UnicodeChar uc) {
+    public long getEfCode(final UnicodeChar uc) {
 
         if (efCode == null) {
             return DEFAULT_EF_CODE;
@@ -165,9 +166,9 @@ public class NullFont implements Font, Serializable {
     /**
      * @see org.extex.font.type.Fount#getFontKey()
      */
-    public FountKey getFontKey() {
+    public FontKey getFontKey() {
 
-        return new FountKey("nullfont");
+        return FontKeyFactory.NULL_KEY;
     }
 
     /**
@@ -283,10 +284,10 @@ public class NullFont implements Font, Serializable {
     }
 
     /**
-     * @see org.extex.interpreter.type.font.Font#setEfcode(
+     * @see org.extex.interpreter.type.font.Font#setEfCode(
      *      org.extex.type.UnicodeChar, long)
      */
-    public void setEfcode(final UnicodeChar uc, final long code) {
+    public void setEfCode(final UnicodeChar uc, final long code) {
 
         if (efCode == null) {
             efCode = new HashMap();
@@ -322,6 +323,30 @@ public class NullFont implements Font, Serializable {
     public void setSkewChar(final UnicodeChar askew) {
 
         this.skew = askew;
+    }
+
+    public void setActualSize(Dimen size) {
+
+        // TODO mgn: setActualSize unimplemented
+        
+    }
+
+    public void setScaleFactor(Count scaleFactor) {
+
+        // TODO mgn: setScaleFactor unimplemented
+        
+    }
+
+    public FixedCount getScaleFactor() {
+
+        // TODO mgn: getScaleFactor unimplemented
+        return null;
+    }
+
+    public FontKey getActualFontKey() {
+
+        // TODO mgn: getActualFontKey unimplemented
+        return null;
     }
 
 }

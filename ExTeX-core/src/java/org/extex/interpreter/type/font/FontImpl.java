@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -20,15 +20,13 @@ package org.extex.interpreter.type.font;
 
 import java.io.ObjectStreamException;
 
+import org.extex.font.ExtexFont;
 import org.extex.font.FontByteArray;
-import org.extex.font.FountKey;
+import org.extex.font.FontKey;
 import org.extex.font.Glyph;
-import org.extex.font.type.InternalFount;
 import org.extex.font.type.other.NullFont;
-import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.glue.FixedGlue;
-import org.extex.interpreter.type.glue.Glue;
 import org.extex.type.UnicodeChar;
 import org.extex.util.framework.Registrar;
 
@@ -68,15 +66,15 @@ public class FontImpl extends NullFont {
     private transient Glyph cacheGlyph = null;
 
     /**
-     * The fount.
+     * The font.
      */
-    private transient InternalFount fount;
+    private transient ExtexFont font;
 
     /**
      * The field <tt>key</tt> contains the font key. It is kept here since the
-     * fount is transient and will not make it into the format file.
+     * font is transient and will not make it into the format file.
      */
-    private FountKey key;
+    private FontKey key;
 
     /**
      * Create a new Object
@@ -85,21 +83,21 @@ public class FontImpl extends NullFont {
 
         super();
 
-        this.fount = null;
+        this.font = null;
         key = null;
     }
 
     /**
      * Create a new Object
      *
-     * @param fount the fount
+     * @param font the font
      */
-    public FontImpl(final InternalFount fount) {
+    public FontImpl(final ExtexFont font) {
 
         super();
 
-        this.fount = fount;
-        key = (fount != null ? fount.getFontKey() : null);
+        this.font = font;
+        key = (font != null ? font.getFontKey() : null);
     }
 
     /**
@@ -107,7 +105,7 @@ public class FontImpl extends NullFont {
      */
     public FixedDimen getActualSize() {
 
-        return fount.getActualSize();
+        return font.getActualSize();
     }
 
     /**
@@ -115,7 +113,8 @@ public class FontImpl extends NullFont {
      */
     public int getCheckSum() {
 
-        return fount.getCheckSum();
+        // mgn: umbauen
+        return 0;//font.getCheckSum();
     }
 
     /**
@@ -124,8 +123,7 @@ public class FontImpl extends NullFont {
      */
     public FixedGlue getDepth(final UnicodeChar uc) {
 
-        Glyph g = getGlyph(uc);
-        return (g == null ? Glue.ZERO : new Glue(g.getDepth()));
+        return font.getDepth(uc);
     }
 
     /**
@@ -133,7 +131,7 @@ public class FontImpl extends NullFont {
      */
     public FixedDimen getDesignSize() {
 
-        return fount.getDesignSize();
+        return font.getDesignSize();
     }
 
     /**
@@ -141,7 +139,7 @@ public class FontImpl extends NullFont {
      */
     public FixedDimen getEm() {
 
-        return fount.getEm();
+        return font.getEm();
     }
 
     /**
@@ -149,7 +147,7 @@ public class FontImpl extends NullFont {
      */
     public FixedDimen getEx() {
 
-        return fount.getEx();
+        return font.getEx();
     }
 
     /**
@@ -157,7 +155,8 @@ public class FontImpl extends NullFont {
      */
     public FontByteArray getFontByteArray() {
 
-        return fount.getFontByteArray();
+        // mgn: umbauen
+        return null;//font.getFontByteArray();
     }
 
     /**
@@ -169,13 +168,13 @@ public class FontImpl extends NullFont {
         if (fd != null) {
             return fd;
         }
-        return fount.getFontDimen(key);
+        return font.getFontDimen(key);
     }
 
     /**
      * @see org.extex.font.type.Fount#getFontKey()
      */
-    public FountKey getFontKey() {
+    public FontKey getFontKey() {
 
         return key;
     }
@@ -185,31 +184,17 @@ public class FontImpl extends NullFont {
      */
     public String getFontName() {
 
-        return fount.getFontName();
+        return font.getFontName();
     }
 
     /**
-     * Getter for the fount.
+     * Getter for the font.
      *
-     * @return the fount.
+     * @return the font.
      */
-    public InternalFount getFount() {
+    public ExtexFont getFount() {
 
-        return fount;
-    }
-
-    /**
-     * ...
-     */
-    private Glyph getGlyph(final UnicodeChar c) {
-
-        if (cacheChar != null && cacheChar.equals(c)) {
-            return cacheGlyph;
-        }
-        cacheChar = c;
-        cacheGlyph = (fount != null ? fount.getGlyph(c) : null);
-
-        return cacheGlyph;
+        return font;
     }
 
     /**
@@ -218,8 +203,7 @@ public class FontImpl extends NullFont {
      */
     public FixedGlue getHeight(final UnicodeChar uc) {
 
-        Glyph g = getGlyph(uc);
-        return (g == null ? Glue.ZERO : new Glue(g.getHeight()));
+        return font.getHeight(uc);
     }
 
     /**
@@ -228,8 +212,7 @@ public class FontImpl extends NullFont {
      */
     public FixedDimen getItalicCorrection(final UnicodeChar uc) {
 
-        Glyph g = getGlyph(uc);
-        return (g == null ? Dimen.ZERO_PT : g.getItalicCorrection());
+        return font.getItalicCorrection(uc);
     }
 
     /**
@@ -239,8 +222,7 @@ public class FontImpl extends NullFont {
      */
     public FixedDimen getKerning(final UnicodeChar uc1, final UnicodeChar uc2) {
 
-        Glyph g = getGlyph(uc1);
-        return (g == null ? Dimen.ZERO_PT : g.getKerning(uc2));
+        return font.getKerning(uc1, uc2);
     }
 
     /**
@@ -248,7 +230,8 @@ public class FontImpl extends NullFont {
      */
     public FixedGlue getLetterSpacing() {
 
-        return fount.getLetterSpacing();
+        // mgn: umbauen
+        return null;//font.getLetterSpacing();
     }
 
     /**
@@ -258,8 +241,7 @@ public class FontImpl extends NullFont {
      */
     public UnicodeChar getLigature(final UnicodeChar uc1, final UnicodeChar uc2) {
 
-        Glyph g = getGlyph(uc1);
-        return (g == null ? null : g.getLigature(uc2));
+        return font.getLigature(uc1, uc2);
     }
 
     /**
@@ -267,7 +249,8 @@ public class FontImpl extends NullFont {
      */
     public String getProperty(final String k) {
 
-        return fount.getProperty(k);
+        // mgn: umbauen
+        return null;//font.getProperty(k);
     }
 
     /**
@@ -275,7 +258,7 @@ public class FontImpl extends NullFont {
      */
     public FixedGlue getSpace() {
 
-        return fount.getSpace();
+        return font.getSpace();
     }
 
     /**
@@ -284,8 +267,7 @@ public class FontImpl extends NullFont {
      */
     public FixedGlue getWidth(final UnicodeChar uc) {
 
-        Glyph g = getGlyph(uc);
-        return (g == null ? Glue.ZERO : new Glue(g.getWidth()));
+        return font.getWidth(uc);
     }
 
     /**
@@ -294,7 +276,7 @@ public class FontImpl extends NullFont {
      */
     public boolean hasGlyph(final UnicodeChar uc) {
 
-        return getGlyph(uc) != null;
+        return font.hasGlyph(uc);
     }
 
     /**
@@ -310,13 +292,13 @@ public class FontImpl extends NullFont {
     }
 
     /**
-     * Setter for the fount.
+     * Setter for the font.
      *
-     * @param fount the fount to set
+     * @param font the font to set
      */
-    public void setFount(final InternalFount fount) {
+    public void setFont(final ExtexFont font) {
 
-        this.fount = fount;
+        this.font = font;
     }
 
     /**
@@ -324,7 +306,7 @@ public class FontImpl extends NullFont {
      */
     public String toString() {
 
-        return fount.getFontName();
+        return font.getFontName();
     }
-    
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -18,29 +18,58 @@
 
 package org.extex.interpreter.type.font;
 
-import org.extex.font.type.Fount;
+import org.extex.font.FontKey;
+import org.extex.interpreter.type.count.Count;
+import org.extex.interpreter.type.count.FixedCount;
 import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.glue.FixedGlue;
 import org.extex.type.UnicodeChar;
 
 /**
- * Font Interface
+ * Font Interface.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4388 $
  */
-public interface Font extends Fount {
+public interface Font {
+
+    /**
+     * Returns the actual FontKey for this font after a font substitution.
+     *
+     * @return Returns the actual FontKey for this font.
+     */
+    FontKey getActualFontKey();
+
+    /**
+     * Returns the actual size of the font.
+     *
+     * @return Returns the actual size of the font.
+     */
+    FixedDimen getActualSize();
+
+    /**
+     * Returns the checksum of the font.
+     * TODO: verschieben ???
+     * @return Returns the checksum of the font.
+     */
+    int getCheckSum();
 
     /**
      * Returns the depth of the char.
      *
-     * @param uc the Unicode char
-     *
-     * @return the depth of the char
+     * @param uc     The Unicode char.
+     * @return Returns the depth of the char.
      */
     FixedGlue getDepth(UnicodeChar uc);
+
+    /**
+     * Returns the design size of the font.
+     *
+     * @return Returns the design size of the font.
+     */
+    FixedDimen getDesignSize();
 
     /**
      * Getter for the ef code.
@@ -49,66 +78,114 @@ public interface Font extends Fount {
      *
      * @return the ef code
      */
-    long getEfcode(UnicodeChar uc);
+    long getEfCode(UnicodeChar uc);
+
+    /**
+     * Returns the size of 'M'.
+     *
+     * @return Returns the size of 'M'.
+     */
+    FixedDimen getEm();
+
+    /**
+     * Returns the size of 'x'.
+     *
+     * @return Returns the size of 'x'.
+     */
+    FixedDimen getEx();
+
+    /**
+     * Returns the size of the parameter with the name 'name'.
+     * <p>
+     * The size are multiples of the design size!
+     * </p>
+     *
+     * @param name  The name of the parameter.
+     * @return Returns the size of the parameter with the name 'name'.
+     */
+    FixedDimen getFontDimen(String name);
+
+    /**
+     * Returns the FontKey for this font.
+     *
+     * @return Returns the FontKey for this font.
+     */
+    FontKey getFontKey();
+
+    /**
+     * Returns the name of the font.
+     *
+     * @return Returns the name of the font.
+     */
+    String getFontName();
 
     /**
      * Returns the height of the char.
      *
-     * @param uc the Unicode char
-     *
-     * @return the height of the char
+     * @param uc     The Unicode char.
+     * @return Returns the height of the char.
      */
     FixedGlue getHeight(UnicodeChar uc);
 
     /**
-     * Return the hyphenation character.
+     * Returns the hyphen char.
      *
-     * @return the hyphenation character
+     * @return Returns the hyphen char.
      */
     UnicodeChar getHyphenChar();
 
     /**
      * Returns the italic correction of the char.
      *
-     * @param uc the Unicode char
-     *
-     * @return Returns the italic correction of the char
+     * @param uc     The Unicode char.
+     * @return Returns the italic correction of the char.
      */
     FixedDimen getItalicCorrection(UnicodeChar uc);
 
     /**
      * Returns the kerning between two chars.
      *
-     * @param uc1 the Unicode char (first one)
-     * @param uc2 the Unicode char (second one)
-     *
-     * @return the kerning between two chars
+     * @param uc1     The Unicode char (first one).
+     * @param uc2     The Unicode char (second one).
+     * @return Returns the kerning between two chars.
      */
     FixedDimen getKerning(UnicodeChar uc1, UnicodeChar uc2);
 
     /**
      * Returns the ligature for two chars.
      *
-     * @param uc1 the Unicode char (first one)
-     * @param uc2 the Unicode char (second one)
-     *
-     * @return Returns the ligature for two chars
+     * @param uc1     The Unicode char (first one).
+     * @param uc2     The Unicode char (second one).
+     * @return Returns the ligature for two chars.
      */
     UnicodeChar getLigature(UnicodeChar uc1, UnicodeChar uc2);
 
     /**
-     * Return the skew character
+     * Returns the scale factor of the font.
      *
-     * @return the skew character
+     * @return Returns the scale factor of the font.
+     */
+    FixedCount getScaleFactor();
+
+    /**
+     * Returns the skew char.
+     *
+     * @return Returns the skew char.
      */
     UnicodeChar getSkewChar();
 
     /**
+     * Returns the size of the 'space'.
+     *
+     * @return Returns the size of the 'space'.
+     */
+    FixedGlue getSpace();
+
+    /**
      * Returns the width of the char.
      *
-     * @param uc the Unicode char
-     *
-     * @return the width of the char
+     * @param uc     The Unicode char.
+     * @return Returns the width of the char.
      */
     FixedGlue getWidth(UnicodeChar uc);
 
@@ -122,6 +199,13 @@ public interface Font extends Fount {
     boolean hasGlyph(UnicodeChar uc);
 
     /**
+     * Set the actual size of the font.
+     *
+     * @param size  The actual size.
+     */
+    void setActualSize(Dimen size);
+
+    /**
      * Setter for the ef code.
      * The ef code influences the stretchability of characters. It has a
      * positive value. 1000 means "normal" stretchability.
@@ -129,28 +213,35 @@ public interface Font extends Fount {
      * @param uc the character
      * @param code the associated code
      */
-    void setEfcode(UnicodeChar uc, long code);
+    void setEfCode(UnicodeChar uc, long code);
 
     /**
-     * Setter for the font dimen register.
+     * Set the new value for the font parameter.
      *
-     * @param key the key
-     * @param value the value for the key
+     * @param name  The name of the parameter.
+     * @param value The value to set.
      */
-    void setFontDimen(String key, Dimen value);
+    void setFontDimen(String name, Dimen value);
 
     /**
-     * Set the char for hyphenation.
+     * Set the hyphen char.
      *
-     * @param hyphen the char to set
+     * @param uc    The Unicode char.
      */
-    void setHyphenChar(UnicodeChar hyphen);
+    void setHyphenChar(UnicodeChar uc);
 
     /**
-     * Set the skew character.
+     * Set the scale factor of the font.
      *
-     * @param skew the new skew character
+     * @param scaleFactor    The scale factor.
      */
-    void setSkewChar(UnicodeChar skew);
+    void setScaleFactor(Count scaleFactor);
+
+    /**
+     * Set the skew char.
+     *
+     * @param uc    The Unicode char.
+     */
+    void setSkewChar(UnicodeChar uc);
 
 }

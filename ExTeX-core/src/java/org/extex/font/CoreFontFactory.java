@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -16,20 +16,25 @@
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
+
 package org.extex.font;
 
+import java.util.Map;
+
 import org.extex.font.exception.FontException;
-import org.extex.interpreter.type.font.Font;
+import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.util.resource.ResourceFinder;
 
-
-public interface CoreFontFactory {
+public interface CoreFontFactory extends ResourceFinder {
 
     /**
      * Return a new instance.
      * 
      * If the name is empty or null, then the <code>NullFont</code> are
      * returned.
+     * 
+     * If no font is found, then <code>null</code> is returned.
      * 
      * @param key the fount key
      * 
@@ -38,6 +43,43 @@ public interface CoreFontFactory {
      * @throws ConfigurationException from the resource finder.
      * @throws FontException if a font error occurred.
      */
-    Font getInstance(FountKey key) throws ConfigurationException, FontException;
+    ExtexFont getInstance(FontKey key) throws ConfigurationException,
+            FontException;
+
+    /**
+     * Returns a font key for the font.
+     *
+     * @param fontName the name of the font.
+     * @return the key for the font.
+     */
+    FontKey getFontKey(String fontName);
+
+    /**
+     * Returns a font key for the font.
+     *
+     * @param fontName  the name of the font.
+     * @param size      the size of the font.
+     * @return the key for the font.
+     */
+    FontKey getFontKey(String fontName, FixedDimen size);
+
+    /**
+     * Returns a font key for the font.
+     *
+     * @param fontName  the name of the font.
+     * @param size      the size of the font.
+     * @param map       the map for the key.
+     * @return the key for the font.
+     */
+    FontKey getFontKey(String fontName, FixedDimen size, Map map);
+
+    /**
+     * Returns a font key for the font.
+     *
+     * @param fontKey   the key of the font.
+     * @param size      the size of the font.
+     * @return the key for the font.
+     */
+    FontKey getFontKey(FontKey fontKey, FixedDimen size);
 
 }

@@ -20,6 +20,13 @@
 <Resource>
   <Finder class="org.extex.util.resource.FileFinder"
           default="default">
+    <u2t>
+      <extension>.u2t</extension>
+      <path>../ExTeX-Font/src/font</path>
+      <path>.</path>
+      <path property="extex.fonts"/>
+      <path property="texinputs"/>
+    </u2t>
     <tex>
       <path property="extex.texinputs"/>
       <path property="texinputs"/>
