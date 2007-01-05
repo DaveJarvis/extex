@@ -23,7 +23,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.extex.font.FountKey;
+import org.extex.font.FontKey;
 import org.extex.interpreter.type.font.Font;
 import org.pdfbox.afmtypes.FontMetric;
 import org.pdfbox.pdmodel.PDDocument;
@@ -52,7 +52,7 @@ public class PdfBoxType1Font extends PDType1Font {
     public static PDFont getInstance(final PDDocument doc, final Font font)
             throws IOException {
 
-        FountKey key = font.getFontKey();
+        FontKey key = font.getFontKey();
         PDFont pdfont = (PDFont) map.get(key);
         if (pdfont == null) {
             pdfont = new PdfBoxType1Font(doc, font);

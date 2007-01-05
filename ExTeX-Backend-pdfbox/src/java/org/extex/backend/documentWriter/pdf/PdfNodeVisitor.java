@@ -26,6 +26,7 @@ import org.extex.backend.documentWriter.exception.DocumentWriterException;
 import org.extex.backend.documentWriter.exception.DocumentWriterIOException;
 import org.extex.backend.documentWriter.pdf.pdfbox.PdfBoxType1Font;
 import org.extex.color.ColorVisitor;
+import org.extex.font.FontKey;
 import org.extex.font.FountKey;
 import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.interpreter.type.font.Font;
@@ -245,7 +246,7 @@ public class PdfNodeVisitor implements NodeVisitor {
     /**
      * the fount key from the character before.
      */
-    private FountKey oldfountkey = null;
+    private FontKey oldfountkey = null;
 
     /**
      * the pdf font.
@@ -262,11 +263,11 @@ public class PdfNodeVisitor implements NodeVisitor {
         try {
             UnicodeChar uc = node.getCharacter();
             Font newfont = node.getTypesettingContext().getFont();
-            FountKey newfountkey = newfont.getFontKey();
+            FontKey newfountkey = newfont.getFontKey();
             org.extex.interpreter.context.Color newcolor = node
                     .getTypesettingContext().getColor();
 
-            if (!newfountkey.eq(oldfountkey)) {
+            if (!newfountkey.equals(oldfountkey)) {
                 pdfont = PdfBoxType1Font.getInstance(document, newfont);
                 oldfountkey = newfountkey;
             }
