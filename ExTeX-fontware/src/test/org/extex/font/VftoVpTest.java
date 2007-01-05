@@ -34,7 +34,6 @@ import java.util.Properties;
 import junit.framework.TestCase;
 
 import org.extex.font.type.PlWriter;
-import org.extex.font.type.vf.VFFont;
 import org.extex.util.file.random.RandomAccessInputFile;
 import org.extex.util.file.random.RandomAccessInputStream;
 import org.extex.util.file.random.RandomAccessR;
@@ -129,16 +128,17 @@ public class VftoVpTest extends TestCase {
             //            }
             //            PSFontsMapReader psfm = new PSFontsMapReader(psin);
 
-            VFFont font = new VFFont(new RandomAccessInputStream(tfmin),
-                    FILES[i], makeFontFactory());
-
-            //font.setFontMapEncoding(psfm, ef);
-
-            PlWriter out = new PlWriter(new BufferedOutputStream(
-                    new FileOutputStream(PATH + FILES[i] + ".vf.pl")));
-            out.printZeroWidth(true);
-            font.toPL(out);
-            out.close();
+            // mgn: umbauen
+//            VFFont font = new VFFont(new RandomAccessInputStream(tfmin),
+//                    FILES[i], makeFontFactory());
+//
+//            //font.setFontMapEncoding(psfm, ef);
+//
+//            PlWriter out = new PlWriter(new BufferedOutputStream(
+//                    new FileOutputStream(PATH + FILES[i] + ".vf.pl")));
+//            out.printZeroWidth(true);
+//            font.toPL(out);
+//            out.close();
         }
 
     }

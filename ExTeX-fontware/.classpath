@@ -10,7 +10,6 @@
 	<classpathentry kind="lib" path="/ExTeX-Font/lib/iText.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-base"/>
 	<classpathentry kind="lib" path="/ExTeX-Font/lib/jdom.jar"/>
-	<classpathentry kind="lib" path="/build/target/application/extex.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-CLI-TeX"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

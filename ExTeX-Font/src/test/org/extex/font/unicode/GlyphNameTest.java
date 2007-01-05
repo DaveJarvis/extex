@@ -24,7 +24,7 @@ import org.extex.type.UnicodeChar;
 import junit.framework.TestCase;
 
 /**
- * Test for the mapping between the glyph name and the unicode char.
+ * Test for the mapping between the glyph name and the Unicode char.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$

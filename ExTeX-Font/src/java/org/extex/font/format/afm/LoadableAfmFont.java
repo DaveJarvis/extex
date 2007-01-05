@@ -57,6 +57,11 @@ public class LoadableAfmFont implements LoadableFont {
     private FontKey fontKey;
 
     /**
+     * The actial font key.
+     */
+    private FontKey actualFontKey;
+
+    /**
      * The glyph name Unicode table.
      */
     private GlyphName glyphname;
@@ -84,7 +89,7 @@ public class LoadableAfmFont implements LoadableFont {
      */
     private FixedDimen floatToDimen(final float val) {
 
-        long l = (long) (getDesignSize().getValue() * val / 1000);
+        long l = (long) (getActualSize().getValue() * val / 1000);
 
         return new Dimen(l);
     }
@@ -102,7 +107,7 @@ public class LoadableAfmFont implements LoadableFont {
      */
     public FixedDimen getActualSize() {
 
-        return fontKey.getDimen("size");
+        return actualFontKey.getDimen("size");
     }
 
     /**
@@ -158,7 +163,7 @@ public class LoadableAfmFont implements LoadableFont {
      */
     public FixedDimen getEm() {
 
-        return fontKey.getDimen("size");
+        return actualFontKey.getDimen("size");
     }
 
     /**
@@ -299,6 +304,15 @@ public class LoadableAfmFont implements LoadableFont {
         } catch (IOException e) {
             throw new CorruptFontException(fontKey, e.getLocalizedMessage());
         }
+
+        if (fontKey.getDimen("size") == null) {
+            // use 10pt as default
+            actualFontKey = factory.getFontKey(fontKey, new Dimen(
+                    Dimen.ONE * 10));
+        } else {
+            actualFontKey = fontKey;
+        }
+
     }
 
 }

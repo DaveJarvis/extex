@@ -30,10 +30,8 @@ import java.util.Properties;
 
 import org.extex.font.exception.FontException;
 import org.extex.font.exception.FontMapNotFoundException;
+import org.extex.font.format.tfm.TfmFont;
 import org.extex.font.type.PlWriter;
-import org.extex.font.type.tfm.TFMFont;
-import org.extex.font.type.tfm.enc.EncFactory;
-import org.extex.font.type.tfm.psfontsmap.PSFontsMapReader;
 import org.extex.util.file.random.RandomAccessInputStream;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.ConfigurationFactory;
@@ -41,6 +39,8 @@ import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.resource.ResourceFinder;
 import org.extex.util.resource.ResourceFinderFactory;
 
+import de.dante.extex.unicodeFont.format.tex.psfontmap.PsFontsMapReader;
+import de.dante.extex.unicodeFont.format.tex.psfontmap.enc.EncFactory;
 
 /**
  * Convert a TFM-file to a PL-file
@@ -113,15 +113,16 @@ public final class TFM2PL {
         if (psin == null) {
             throw new FontMapNotFoundException();
         }
-        PSFontsMapReader psfm = new PSFontsMapReader(psin);
-
-        TFMFont font = new TFMFont(new RandomAccessInputStream(tfmin), fontname);
-
-        font.setFontMapEncoding(psfm, ef);
-
-        PlWriter out = new PlWriter(new BufferedOutputStream(
-                new FileOutputStream(plfile)));
-        font.toPL(out);
-        out.close();
+        // mgn: umbauen
+//        PsFontsMapReader psfm = new PSFontsMapReader(psin);
+//
+//        TfmFont font = new TfmFont(new RandomAccessInputStream(tfmin), fontname);
+//
+//        font.setFontMapEncoding(psfm, ef);
+//
+//        PlWriter out = new PlWriter(new BufferedOutputStream(
+//                new FileOutputStream(plfile)));
+//        font.toPL(out);
+//        out.close();
     }
 }

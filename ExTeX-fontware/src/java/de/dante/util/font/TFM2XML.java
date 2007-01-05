@@ -25,14 +25,12 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 
 import org.extex.font.exception.FontMapNotFoundException;
-import org.extex.font.type.tfm.TFMFont;
-import org.extex.font.type.tfm.enc.EncFactory;
-import org.extex.font.type.tfm.psfontsmap.PSFontsMapReader;
 import org.extex.util.file.random.RandomAccessInputStream;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.xml.XMLStreamWriter;
 
 import de.dante.extex.unicodeFont.format.pfb.PfbParser;
+import de.dante.extex.unicodeFont.format.tex.psfontmap.enc.EncFactory;
 
 /**
  * Convert a TFM-file to a XML-file.
@@ -78,32 +76,33 @@ public final class TFM2XML extends AbstractFontUtil {
         if (psin == null) {
             throw new FontMapNotFoundException();
         }
-        PSFontsMapReader psfm = new PSFontsMapReader(psin);
-
-        TFMFont font = new TFMFont(new RandomAccessInputStream(tfmin), fontname);
-
-        font.setFontMapEncoding(psfm, ef);
-
-        String pfbfile = font.getPfbfilename();
-        if (pfbfile != null) {
-            // pfb file
-            InputStream pfbin = getFinder().findResource(pfbfile, "");
-            if (pfbin == null) {
-                // throw new FileNotFoundException(pfbfile);
-                System.err.println("Warning: file " + pfbfile + " not found!");
-            } else {
-                font.setPfbParser(new PfbParser(pfbin));
-            }
-        }
-
-        // write to xml-file
-        XMLStreamWriter writer = new XMLStreamWriter(new FileOutputStream(
-                xmlfile), "ISO-8859-1");
-        writer.setBeauty(true);
-        writer.writeStartDocument();
-        font.writeXML(writer);
-        writer.writeEndDocument();
-        writer.close();
+        // mgn: umbauen
+//        PSFontsMapReader psfm = new PSFontsMapReader(psin);
+//
+//        TFMFont font = new TFMFont(new RandomAccessInputStream(tfmin), fontname);
+//
+//        font.setFontMapEncoding(psfm, ef);
+//
+//        String pfbfile = font.getPfbfilename();
+//        if (pfbfile != null) {
+//            // pfb file
+//            InputStream pfbin = getFinder().findResource(pfbfile, "");
+//            if (pfbin == null) {
+//                // throw new FileNotFoundException(pfbfile);
+//                System.err.println("Warning: file " + pfbfile + " not found!");
+//            } else {
+//                font.setPfbParser(new PfbParser(pfbin));
+//            }
+//        }
+//
+//        // write to xml-file
+//        XMLStreamWriter writer = new XMLStreamWriter(new FileOutputStream(
+//                xmlfile), "ISO-8859-1");
+//        writer.setBeauty(true);
+//        writer.writeStartDocument();
+//        font.writeXML(writer);
+//        writer.writeEndDocument();
+//        writer.close();
     }
 
     /**

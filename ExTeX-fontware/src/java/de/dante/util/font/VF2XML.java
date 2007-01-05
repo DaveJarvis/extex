@@ -28,7 +28,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Properties;
 
 import org.extex.font.FontFactory;
-import org.extex.font.type.vf.VFFont;
 import org.extex.util.file.random.RandomAccessInputStream;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.ConfigurationFactory;
@@ -116,20 +115,21 @@ public final class VF2XML {
 
         // RandomAccessInputFileDebug rar = new RandomAccessInputFileDebug("src/font/aer12.vf");
 
-        VFFont font = new VFFont(new RandomAccessInputStream(vfin), fontname,
-                makeFontFactory());
-        //        VFFont font = new VFFont(rar, fontname);
-
-        //font.setFontMapEncoding(psfm, ef);
-
-        // write to xml-file
-        XMLStreamWriter writer = new XMLStreamWriter(new FileOutputStream(
-                xmlfile), "ISO-8859-1");
-        writer.setBeauty(true);
-        writer.writeStartDocument();
-        font.writeXML(writer);
-        writer.writeEndDocument();
-        writer.close();
+        // mgn: umbauen
+//        VFFont font = new VFFont(new RandomAccessInputStream(vfin), fontname,
+//                makeFontFactory());
+//        //        VFFont font = new VFFont(rar, fontname);
+//
+//        //font.setFontMapEncoding(psfm, ef);
+//
+//        // write to xml-file
+//        XMLStreamWriter writer = new XMLStreamWriter(new FileOutputStream(
+//                xmlfile), "ISO-8859-1");
+//        writer.setBeauty(true);
+//        writer.writeStartDocument();
+//        font.writeXML(writer);
+//        writer.writeEndDocument();
+//        writer.close();
     }
 
     /**

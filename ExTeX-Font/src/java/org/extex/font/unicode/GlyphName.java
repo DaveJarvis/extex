@@ -20,20 +20,17 @@
 package org.extex.font.unicode;
 
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.LineNumberReader;
-import java.io.PrintStream;
-import java.util.Arrays;
+import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Properties;
 
 import org.extex.type.UnicodeChar;
 
 /**
  * This class manage the correlation between the glyph name and
  * the Unicode value.
- *
- * mgn: in Textdatei ; durch = ersetzen und als Properties einlesen
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
@@ -68,32 +65,28 @@ public final class GlyphName {
         glyphmap = new HashMap(INITSIZE);
         unicodemap = new HashMap(INITSIZE);
 
-        LineNumberReader in = new LineNumberReader(new InputStreamReader(
-                getClass().getResourceAsStream(FILE)));
+        Properties prop = new Properties();
+        prop.load(getClass().getResourceAsStream(FILE));
 
-        String line;
-        try {
-            while ((line = in.readLine()) != null) {
-                // ignore comment with #
-                if (!line.startsWith("#") && line.trim().length() > 0) {
-                    String[] tmp = line.split(";", 2);
+        Enumeration keyenum = prop.keys();
 
-                    // check, if more than one value
-                    if (tmp[1].length() > 4) {
-                        // TODO incomplete
-                    } else {
-                        UnicodeChar uc = UnicodeChar.get(Integer.parseInt(
-                                tmp[1], HEX));
-                        glyphmap.put(tmp[0], uc);
-                        unicodemap.put(uc, tmp[0]);
+        while (keyenum.hasMoreElements()) {
+            String key = (String) keyenum.nextElement();
+            String value = prop.getProperty(key).trim();
 
-                    }
+            // only one 16-bit value; rest ignored
+            // TODO: add combined Unicode characters
+            if (value.length() <= 4) {
+                try {
+                    UnicodeChar uc = UnicodeChar.get(Integer.parseInt(value,
+                            HEX));
+                    glyphmap.put(key, uc);
+                    unicodemap.put(uc, key);
+                } catch (NumberFormatException e) {
+                    throw new IOException(e.getMessage());
                 }
             }
-        } catch (NumberFormatException e) {
-            throw new IOException(e.getMessage());
         }
-        in.close();
     }
 
     /**
@@ -102,7 +95,7 @@ public final class GlyphName {
     private Map glyphmap;
 
     /**
-     * The unicode map.
+     * The Unicode map.
      */
     private Map unicodemap;
 
@@ -142,7 +135,7 @@ public final class GlyphName {
      * Returns the name of the glyph, or <code>null</code>,
      * if not found.
      *
-     * @param uc    the unicode char.
+     * @param uc    the Unicode char.
      * @return the name of the glyph, or <code>null</code>, if not found.
      */
     public String getGlyphname(final UnicodeChar uc) {
@@ -150,32 +143,4 @@ public final class GlyphName {
         return (String) unicodemap.get(uc);
     }
 
-    /**
-     * Print all the entries.
-     *
-     * @param out   The stream for the output.
-     * @throws IOException if an IO-error occurred.
-     */
-    public void printEntries(final PrintStream out) throws IOException {
-
-        String[] keys = new String[glyphmap.size()];
-        glyphmap.keySet().toArray(keys);
-
-        // sort the key
-        Arrays.sort(keys);
-
-        for (int i = 0; i < keys.length; i++) {
-
-            UnicodeChar uc = (UnicodeChar) glyphmap.get(keys[i]);
-            out.print(keys[i]);
-            out.print(";");
-            out.print(Integer.toHexString(uc.getCodePoint()));
-            out.print(";");
-            String n = uc.getUnicodeName();
-            if (n == null) {
-                n = "";
-            }
-            out.println();
-        }
-    }
 }

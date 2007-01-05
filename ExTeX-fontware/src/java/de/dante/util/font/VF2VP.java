@@ -30,7 +30,6 @@ import java.util.Properties;
 
 import org.extex.font.FontFactory;
 import org.extex.font.type.PlWriter;
-import org.extex.font.type.vf.VFFont;
 import org.extex.util.file.random.RandomAccessInputStream;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.ConfigurationFactory;
@@ -117,15 +116,16 @@ public final class VF2VP {
 
         // RandomAccessInputFileDebug rar = new RandomAccessInputFileDebug("src/font/aer12.vf");
 
-        VFFont font = new VFFont(new RandomAccessInputStream(vfin), fontname,
-                makeFontFactory());
-
-        //font.setFontMapEncoding(psfm, ef);
-
-        PlWriter out = new PlWriter(new BufferedOutputStream(
-                new FileOutputStream(plfile)));
-        font.toPL(out);
-        out.close();
+        // mgn: umbauen
+//        VFFont font = new VFFont(new RandomAccessInputStream(vfin), fontname,
+//                makeFontFactory());
+//
+//        //font.setFontMapEncoding(psfm, ef);
+//
+//        PlWriter out = new PlWriter(new BufferedOutputStream(
+//                new FileOutputStream(plfile)));
+//        font.toPL(out);
+//        out.close();
     }
 
     /**
