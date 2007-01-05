@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -23,11 +23,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.extex.font.FontByteArray;
 import org.extex.font.FontKey;
-import org.extex.font.Glyph;
-import org.extex.font.Kerning;
-import org.extex.font.Ligature;
 import org.extex.interpreter.type.count.Count;
 import org.extex.interpreter.type.count.FixedCount;
 import org.extex.interpreter.type.dimen.Dimen;
@@ -40,233 +36,22 @@ import org.extex.type.UnicodeChar;
 /**
  * This class provides a memory-only font for test cases. Since no external file
  * is required no problem with parsing can happen.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4784 $
  */
 public class LauncherFont implements Font, Serializable {
 
     /**
-     * This inner class contains the glyph definition for the launcher font.
-     *
-     * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision: 4784 $
-     */
-    final class LauncherGlyph implements Glyph, Serializable {
-
-        /**
-         * The field <tt>serialVersionUID</tt> contains the version number for
-         * serialization.
-         */
-        protected static final long serialVersionUID = 1L;
-
-        /**
-         * The field <tt>c</tt> contains the character associated with this glyph.
-         */
-        private final UnicodeChar c;
-
-        /**
-         * Creates a new object.
-         *
-         * @param c the character
-         */
-        private LauncherGlyph(final UnicodeChar c) {
-
-            super();
-            this.c = c;
-        }
-
-        /**
-         * @see org.extex.font.Glyph#addKerning(org.extex.font.Kerning)
-         */
-        public void addKerning(final Kerning kern) {
-
-        }
-
-        /**
-         * @see org.extex.font.Glyph#addLigature(org.extex.font.Ligature)
-         */
-        public void addLigature(final Ligature lig) {
-
-        }
-
-        /**
-         * @see org.extex.font.Glyph#getDepth()
-         */
-        public Dimen getDepth() {
-
-            switch (c.getCodePoint()) {
-                case 'q':
-                case 'p':
-                case 'g':
-                case 'j':
-                case 'y':
-                    return new Dimen(Dimen.ONE * 2);
-                case ',':
-                case ';':
-                case '/':
-                case '(':
-                case ')':
-                    return new Dimen(Dimen.ONE);
-                default:
-                    return Dimen.ZERO_PT;
-            }
-        }
-
-        /**
-         * @see org.extex.font.Glyph#getExternalFile()
-         */
-        public FontByteArray getExternalFile() {
-
-            return null;
-        }
-
-        /**
-         * @see org.extex.font.Glyph#getHeight()
-         */
-        public Dimen getHeight() {
-
-            return new Dimen(Dimen.ONE * 8);
-        }
-
-        /**
-         * @see org.extex.font.Glyph#getItalicCorrection()
-         */
-        public Dimen getItalicCorrection() {
-
-            return new Dimen(Dimen.ZERO_PT);
-        }
-
-        /**
-         * @see org.extex.font.Glyph#getKerning(org.extex.type.UnicodeChar)
-         */
-        public Dimen getKerning(final UnicodeChar uc) {
-
-            return new Dimen(Dimen.ZERO_PT);
-        }
-
-        /**
-         * @see org.extex.font.Glyph#getLeftSpace()
-         */
-        public Dimen getLeftSpace() {
-
-            return Dimen.ZERO_PT;
-        }
-
-        /**
-         * @see org.extex.font.Glyph#getLigature(org.extex.type.UnicodeChar)
-         */
-        public UnicodeChar getLigature(final UnicodeChar uc) {
-
-            if (c.getCodePoint() == 'f') {
-                if (uc.getCodePoint() == 'f') {
-                    return UnicodeChar.get(222); //TODO
-                }
-            }
-            return null;
-        }
-
-        /**
-         * @see org.extex.font.Glyph#getName()
-         */
-        public String getName() {
-
-            return c.toString();
-        }
-
-        /**
-         * @see org.extex.font.Glyph#getNumber()
-         */
-        public String getNumber() {
-
-            return this.c.toString();
-        }
-
-        /**
-         * @see org.extex.font.Glyph#getRightSpace()
-         */
-        public Dimen getRightSpace() {
-
-            return Dimen.ZERO_PT;
-        }
-
-        /**
-         * @see org.extex.font.Glyph#getWidth()
-         */
-        public Dimen getWidth() {
-
-            return new Dimen(Dimen.ONE * 8);
-        }
-
-        /**
-         * @see org.extex.font.Glyph#setDepth(org.extex.interpreter.type.dimen.Dimen)
-         */
-        public void setDepth(final Dimen d) {
-
-        }
-
-        /**
-         * @see org.extex.font.Glyph#setExternalFile(org.extex.font.FontByteArray)
-         */
-        public void setExternalFile(final FontByteArray file) {
-
-        }
-
-        /**
-         * @see org.extex.font.Glyph#setHeight(org.extex.interpreter.type.dimen.Dimen)
-         */
-        public void setHeight(final Dimen h) {
-
-        }
-
-        /**
-         * @see org.extex.font.Glyph#setItalicCorrection(org.extex.interpreter.type.dimen.Dimen)
-         */
-        public void setItalicCorrection(final Dimen d) {
-
-        }
-
-        /**
-         * @see org.extex.font.Glyph#setLeftSpace(org.extex.interpreter.type.dimen.Dimen)
-         */
-        public void setLeftSpace(final Dimen ls) {
-
-        }
-
-        /**
-         * @see org.extex.font.Glyph#setName(java.lang.String)
-         */
-        public void setName(final String n) {
-
-        }
-
-        /**
-         * @see org.extex.font.Glyph#setNumber(java.lang.String)
-         */
-        public void setNumber(final String nr) {
-
-        }
-
-        /**
-         * @see org.extex.font.Glyph#setRightSpace(org.extex.interpreter.type.dimen.Dimen)
-         */
-        public void setRightSpace(final Dimen rs) {
-
-        }
-
-        /**
-         * @see org.extex.font.Glyph#setWidth(org.extex.interpreter.type.dimen.Dimen)
-         */
-        public void setWidth(final Dimen w) {
-
-        }
-    }
-
-    /**
      * The field <tt>serialVersionUID</tt> contains the version number for
      * serialization.
      */
     protected static final long serialVersionUID = 1L;
+
+    /**
+     * The field <tt>fontdimen</tt> contains the font dimens.
+     */
+    private Map fontdimen = new HashMap();
 
     /**
      * The field <tt>hyphen</tt> contains the hyphen char.
@@ -279,12 +64,16 @@ public class LauncherFont implements Font, Serializable {
     private UnicodeChar skew = null;
 
     /**
-     * The field <tt>fontdimen</tt> contains the font dimens.
+     * @see org.extex.interpreter.type.font.Font#getActualFontKey()
      */
-    private Map fontdimen = new HashMap();
+    public FontKey getActualFontKey() {
+
+        // TODO mgn: getActualFontKey unimplemented
+        return null;
+    }
 
     /**
-     * @see org.extex.font.type.Fount#getActualSize()
+     * @see org.extex.interpreter.type.font.Font#getActualSize()
      */
     public FixedDimen getActualSize() {
 
@@ -292,7 +81,7 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
-     * @see org.extex.font.type.Fount#getCheckSum()
+     * @see org.extex.interpreter.type.font.Font#getCheckSum()
      */
     public int getCheckSum() {
 
@@ -305,11 +94,26 @@ public class LauncherFont implements Font, Serializable {
      */
     public FixedGlue getDepth(final UnicodeChar uc) {
 
-        return new Glue(Dimen.ZERO_PT);
+        switch (uc.getCodePoint()) {
+        case 'q':
+        case 'p':
+        case 'g':
+        case 'j':
+        case 'y':
+            return new Glue(Dimen.ONE * 2);
+        case ',':
+        case ';':
+        case '/':
+        case '(':
+        case ')':
+            return new Glue(Dimen.ONE);
+        default:
+            return Glue.ZERO;
+        }
     }
 
     /**
-     * @see org.extex.font.type.Fount#getDesignSize()
+     * @see org.extex.interpreter.type.font.Font#getDesignSize()
      */
     public FixedDimen getDesignSize() {
 
@@ -317,7 +121,8 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
-     * @see org.extex.interpreter.type.font.Font#getEfCode(org.extex.type.UnicodeChar)
+     * @see org.extex.interpreter.type.font.Font#getEfCode(
+     *      org.extex.type.UnicodeChar)
      */
     public long getEfCode(final UnicodeChar uc) {
 
@@ -325,7 +130,7 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
-     * @see org.extex.font.type.Fount#getEm()
+     * @see org.extex.interpreter.type.font.Font#getEm()
      */
     public FixedDimen getEm() {
 
@@ -333,7 +138,7 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
-     * @see org.extex.font.type.Fount#getEx()
+     * @see org.extex.interpreter.type.font.Font#getEx()
      */
     public FixedDimen getEx() {
 
@@ -341,15 +146,7 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
-     * @see org.extex.font.type.Fount#getFontByteArray()
-     */
-    public FontByteArray getFontByteArray() {
-
-        return null;
-    }
-
-    /**
-     * @see org.extex.font.type.Fount#getFontDimen(java.lang.String)
+     * @see org.extex.interpreter.type.font.Font#getFontDimen(java.lang.String)
      */
     public FixedDimen getFontDimen(final String key) {
 
@@ -357,7 +154,7 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
-     * @see org.extex.font.type.Fount#getFontKey()
+     * @see org.extex.interpreter.type.font.Font#getFontKey()
      */
     public FontKey getFontKey() {
 
@@ -365,19 +162,11 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
-     * @see org.extex.font.type.Fount#getFontName()
+     * @see org.extex.interpreter.type.font.Font#getFontName()
      */
     public String getFontName() {
 
         return "testfont";
-    }
-
-    /**
-     * ...
-     */
-    private Glyph getGlyph(final UnicodeChar c) {
-
-        return new LauncherGlyph(c);
     }
 
     /**
@@ -386,7 +175,7 @@ public class LauncherFont implements Font, Serializable {
      */
     public FixedGlue getHeight(final UnicodeChar uc) {
 
-        return new Glue(getGlyph(uc).getHeight());
+        return new Glue(Dimen.ONE * 8);
     }
 
     /**
@@ -403,25 +192,16 @@ public class LauncherFont implements Font, Serializable {
      */
     public FixedDimen getItalicCorrection(final UnicodeChar uc) {
 
-        return new Dimen(getGlyph(uc).getItalicCorrection());
+        return new Dimen(Dimen.ZERO_PT);
     }
 
     /**
      * @see org.extex.interpreter.type.font.Font#getKerning(
-     *      org.extex.type.UnicodeChar,
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.type.UnicodeChar, org.extex.type.UnicodeChar)
      */
     public FixedDimen getKerning(final UnicodeChar uc1, final UnicodeChar uc2) {
 
-        return new Dimen(getGlyph(uc1).getKerning(uc2));
-    }
-
-    /**
-     * @see org.extex.font.type.Fount#getLetterSpacing()
-     */
-    public FixedGlue getLetterSpacing() {
-
-        return new Glue(Dimen.ZERO_PT);
+        return new Dimen(Dimen.ZERO_PT);
     }
 
     /**
@@ -430,15 +210,20 @@ public class LauncherFont implements Font, Serializable {
      */
     public UnicodeChar getLigature(final UnicodeChar uc1, final UnicodeChar uc2) {
 
-        return getGlyph(uc1).getLigature(uc2);
+        if (uc1.getCodePoint() == 'f') {
+            if (uc2.getCodePoint() == 'f') {
+                return UnicodeChar.get(222); // TODO
+            }
+        }
+        return null;
     }
 
     /**
-     * @see org.extex.font.type.Fount#getProperty(java.lang.String)
+     * @see org.extex.interpreter.type.font.Font#getScaleFactor()
      */
-    public String getProperty(final String key) {
+    public FixedCount getScaleFactor() {
 
-        return null;
+        return Count.ONE;
     }
 
     /**
@@ -450,7 +235,7 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
-     * @see org.extex.font.type.Fount#getSpace()
+     * @see org.extex.interpreter.type.font.Font#getSpace()
      */
     public FixedGlue getSpace() {
 
@@ -463,7 +248,7 @@ public class LauncherFont implements Font, Serializable {
      */
     public FixedGlue getWidth(final UnicodeChar uc) {
 
-        return new Glue(getGlyph(uc).getWidth());
+        return new Glue(Dimen.ONE * 8);
     }
 
     /**
@@ -476,7 +261,17 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
-     * @see org.extex.interpreter.type.font.Font#setEfCode(org.extex.type.UnicodeChar, long)
+     * @see org.extex.interpreter.type.font.Font#setActualSize(org.extex.interpreter.type.dimen.Dimen)
+     */
+    public void setActualSize(final Dimen size) {
+
+        // TODO mgn: setActualSize unimplemented
+
+    }
+
+    /**
+     * @see org.extex.interpreter.type.font.Font#setEfCode(org.extex.type.UnicodeChar,
+     *      long)
      */
     public void setEfCode(final UnicodeChar uc, final long code) {
 
@@ -485,8 +280,7 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
-     * @see org.extex.interpreter.type.font.Font#setFontDimen(
-     *      java.lang.String,
+     * @see org.extex.interpreter.type.font.Font#setFontDimen( java.lang.String,
      *      org.extex.interpreter.type.dimen.Dimen)
      */
     public void setFontDimen(final String key, final Dimen value) {
@@ -503,6 +297,12 @@ public class LauncherFont implements Font, Serializable {
         this.hyphen = hyphen;
     }
 
+    public void setScaleFactor(Count scaleFactor) {
+
+        // TODO mgn: setScaleFactor unimplemented
+
+    }
+
     /**
      * @see org.extex.interpreter.type.font.Font#setSkewChar(
      *      org.extex.type.UnicodeChar)
@@ -510,30 +310,6 @@ public class LauncherFont implements Font, Serializable {
     public void setSkewChar(final UnicodeChar skew) {
 
         this.skew = skew;
-    }
-
-    public void setActualSize(Dimen size) {
-
-        // TODO mgn: setActualSize unimplemented
-        
-    }
-
-    public void setScaleFactor(Count scaleFactor) {
-
-        // TODO mgn: setScaleFactor unimplemented
-        
-    }
-
-    public FixedCount getScaleFactor() {
-
-        // TODO mgn: getScalefactor unimplemented
-        return null;
-    }
-
-    public FontKey getActualFontKey() {
-
-        // TODO mgn: getActualFontKey unimplemented
-        return null;
     }
 
 }
