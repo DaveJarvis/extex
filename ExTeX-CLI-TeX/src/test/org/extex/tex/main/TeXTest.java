@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -32,11 +32,10 @@ import junit.framework.TestCase;
 import org.extex.ExTeX;
 import org.extex.interpreter.exception.InterpreterException;
 
-
 /**
  * This class contains test cases for the command line interface of
  * <logo>ExTeX</logo>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4708 $
  */
@@ -46,12 +45,13 @@ public class TeXTest extends TestCase {
      * The field <tt>BANNER</tt> contains the default banner.
      */
     public static final String BANNER = "This is ExTeX, Version "
-            + ExTeX.getVersion() + " (" + System.getProperty("java.version")
-            + ")\n";
+                                        + ExTeX.getVersion() + " ("
+                                        + System.getProperty("java.version")
+                                        + ")\n";
 
     /**
      * The command line interface.
-     *
+     * 
      * @param args command line arguments
      */
     public static void main(final String[] args) {
@@ -61,7 +61,7 @@ public class TeXTest extends TestCase {
 
     /**
      * Create a new instance of properties pre-filled with the java.version.
-     *
+     * 
      * @return the new properties
      */
     private Properties makeProperties() {
@@ -73,22 +73,23 @@ public class TeXTest extends TestCase {
 
     /**
      * Run a test through the command line.
-     *
+     * 
      * @param args the array of command line arguments
      * @param properties the properties to use
      * @param expect the expected result on the error stream or
-     *  <code>null</code>
+     *            <code>null</code>
      * @param exit the expected exit code
-     *
+     * 
      * @return the result on the error stream
-     *
+     * 
      * @throws InterpreterException in case of an interpreter error
      * @throws IOException in case of an io error
      */
     public static String runTest(final String[] args,
             final Properties properties, final String expect, final int exit)
-            throws InterpreterException,
-                IOException {
+            throws InterpreterException, IOException {
+
+        properties.setProperty("extex.config", "tex.xml");
 
         TeX tex;
         ByteArrayOutputStream outBuffer = new ByteArrayOutputStream();
@@ -120,24 +121,20 @@ public class TeXTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  This test case validates that ...
-     * </testcase>
-     *
+     * <testcase> This test case validates that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testUndefinedProperty() throws Exception {
 
-        runTest(new String[]{"--undefined"}, System.getProperties(), BANNER
-                + "Missing argument on command line", -1);
+        runTest(new String[]{"--undefined"}, System.getProperties(),
+                BANNER + "Missing argument on command line", -1);
     }
 
     /**
-     * <testcase>
-     *  This test case validates that <tt>-version</tt> prints the version
-     *  number and exists with code 0.
-     * </testcase>
-     *
+     * <testcase> This test case validates that <tt>-version</tt> prints the
+     * version number and exists with code 0. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testVersion() throws Exception {
@@ -146,10 +143,8 @@ public class TeXTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  This test case validates that ...
-     * </testcase>
-     *
+     * <testcase> This test case validates that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testHelp() throws Exception {
@@ -160,10 +155,8 @@ public class TeXTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  This test case validates that ...
-     * </testcase>
-     *
+     * <testcase> This test case validates that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testCopying() throws Exception {
@@ -174,10 +167,8 @@ public class TeXTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  This test case validates that ...
-     * </testcase>
-     *
+     * <testcase> This test case validates that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testCopyright() throws Exception {
@@ -195,26 +186,22 @@ public class TeXTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  This test case validates that ...
-     * </testcase>
-     *
+     * <testcase> This test case validates that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testHelp2() throws Exception {
 
         String s = runTest(new String[]{"-prog=abc", "-help"},
-                makeProperties(), null, 0);
+                           makeProperties(), null, 0);
         assertTrue(s + "\ndoes  not match", s
                 .startsWith("Usage: abc <options> file\n"));
     }
 
     /**
-     * <testcase>
-     *  This test case validates that <tt>-ver</tt> prints the version
-     *  number and exists with code 0.
-     * </testcase>
-     *
+     * <testcase> This test case validates that <tt>-ver</tt> prints the
+     * version number and exists with code 0. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testVer() throws Exception {
@@ -223,49 +210,41 @@ public class TeXTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  This test case validates that ...
-     * </testcase>
-     *
+     * <testcase> This test case validates that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testInteraction1() throws Exception {
 
-        runTest(new String[]{"-interaction"}, makeProperties(), BANNER
-                + "Missing argument on command line", -1);
+        runTest(new String[]{"-interaction"}, makeProperties(),
+                BANNER + "Missing argument on command line", -1);
     }
 
     /**
-     * <testcase>
-     *  This test case validates that ...
-     * </testcase>
-     *
+     * <testcase> This test case validates that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testInteraction2() throws Exception {
 
-        runTest(new String[]{"-interaction=xxx"}, makeProperties(), BANNER
-                + "Interaction xxx is unknown\n", -1);
+        runTest(new String[]{"-interaction=xxx"}, makeProperties(),
+                BANNER + "Interaction xxx is unknown\n", -1);
     }
 
     /**
-     * <testcase>
-     *  This test case validates that ...
-     * </testcase>
-     *
+     * <testcase> This test case validates that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testInteraction3() throws Exception {
 
-        runTest(new String[]{"-interaction="}, makeProperties(), BANNER
-                + "Interaction  is unknown\n", -1);
+        runTest(new String[]{"-interaction="}, makeProperties(),
+                BANNER + "Interaction  is unknown\n", -1);
     }
 
     /**
-     * <testcase>
-     *  This test case validates that ...
-     * </testcase>
-     *
+     * <testcase> This test case validates that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testInteraction4() throws Exception {
@@ -276,10 +255,8 @@ public class TeXTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  This test case validates that ...
-     * </testcase>
-     *
+     * <testcase> This test case validates that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testInteraction5() throws Exception {
@@ -290,10 +267,8 @@ public class TeXTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  This test case validates that ...
-     * </testcase>
-     *
+     * <testcase> This test case validates that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testInteraction6() throws Exception {
@@ -303,10 +278,8 @@ public class TeXTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  This test case validates that ...
-     * </testcase>
-     *
+     * <testcase> This test case validates that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testProgname1() throws Exception {
@@ -317,10 +290,8 @@ public class TeXTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  This test case validates that ...
-     * </testcase>
-     *
+     * <testcase> This test case validates that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testProgname2() throws Exception {
@@ -331,10 +302,8 @@ public class TeXTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  This test case validates that ...
-     * </testcase>
-     *
+     * <testcase> This test case validates that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testProgname3() throws Exception {
@@ -345,10 +314,8 @@ public class TeXTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  This test case validates that ...
-     * </testcase>
-     *
+     * <testcase> This test case validates that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testProgname4() throws Exception {
@@ -359,24 +326,21 @@ public class TeXTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  This test case validates that ...
-     * </testcase>
-     *
+     * <testcase> This test case validates that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testPropertyName1() throws Exception {
 
         runTest(new String[]{"--extex.name", "abc", "-version"},
                 makeProperties(), "This is abc, Version " + ExTeX.getVersion()
-                        + " (" + System.getProperty("java.version") + ")\n", 0);
+                                  + " (" + System.getProperty("java.version")
+                                  + ")\n", 0);
     }
 
     /**
-     * <testcase>
-     *  This test case validates that ...
-     * </testcase>
-     *
+     * <testcase> This test case validates that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testPropertyName2() throws Exception {
@@ -387,10 +351,8 @@ public class TeXTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  This test case validates that ...
-     * </testcase>
-     *
+     * <testcase> This test case validates that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test0() throws Exception {
@@ -398,32 +360,28 @@ public class TeXTest extends TestCase {
         System.setIn(new ByteArrayInputStream("\\relax\n\\end\\n".getBytes()));
         runTest(new String[]{"-ini"}, new Properties(),
                 "This is ExTeX, Version " + ExTeX.getVersion()
-                        + " (ExTeX mode)\n"
+                        + " (TeX compatibility mode)\n"
                         + "**\n*\nNo pages of output.\nTranscript written on "
                         + (new File(".", "texput.log")).toString() + ".\n", 0);
     }
 
     /**
-     * <testcase>
-     *  This test case validates that ...
-     * </testcase>
-     *
+     * <testcase> This test case validates that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testNobanner1() throws Exception {
 
         System.setIn(new ByteArrayInputStream("\\relax\n\\end\\n".getBytes()));
         runTest(new String[]{"-ini", "--extex.nobanner=true"},
-                new Properties(),
-                "**\n*Transcript written on "
-                        + (new File(".", "texput.log")).toString() + ".\n", 0);
+                new Properties(), "**\n*Transcript written on "
+                                  + (new File(".", "texput.log")).toString()
+                                  + ".\n", 0);
     }
 
     /**
-     * <testcase>
-     *  This test case validates that ...
-     * </testcase>
-     *
+     * <testcase> This test case validates that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testExTeXBanner1() throws Exception {
@@ -431,14 +389,12 @@ public class TeXTest extends TestCase {
         System.setIn(new ByteArrayInputStream("\\relax\n\\end\\n".getBytes()));
         runTest(new String[]{"--extex.banner=xyz", "-version"},
                 new Properties(), "This is ExTeX, Version "
-                        + ExTeX.getVersion() + " (xyz)\n", 0);
+                                  + ExTeX.getVersion() + " (xyz)\n", 0);
     }
 
     /**
-     * <testcase>
-     *  This test case validates that ...
-     * </testcase>
-     *
+     * <testcase> This test case validates that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testFmt() throws Exception {
@@ -449,7 +405,7 @@ public class TeXTest extends TestCase {
                 new Properties(),
                 "This is ExTeX, Version "
                         + ExTeX.getVersion()
-                        + " (ExTeX mode)\n"
+                        + " (TeX compatibility mode)\n"
                         + "**\nSorry, I can't find the format `xyzzy.fmt'; will try `tex.fmt'.\n"
                         + "Sorry, I can't find the format `tex.fmt'!\n"
                         + "Transcript written on "
@@ -457,10 +413,8 @@ public class TeXTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  This test case validates that ...
-     * </testcase>
-     *
+     * <testcase> This test case validates that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testStarStar1() throws Exception {
@@ -471,13 +425,12 @@ public class TeXTest extends TestCase {
                 new Properties(),
                 "This is ExTeX, Version "
                         + ExTeX.getVersion()
-                        + " (ExTeX mode)\n"
-                        + "**\n! I can't find file `xyzzy.tex'.\n"
-                        + "Please type another input file name: I can't find file `xyzzy'\n"
+                        + " (TeX compatibility mode)\n"
+                        + "**I can't find file `xyzzy'\n"
                         + "*\n" + "No pages of output.\n"
                         + "Transcript written on "
                         + (new File(".", "xyzzy.log")).toString() + ".\n", 0);
     }
 
-    //TODO add more test cases
+    // TODO add more test cases
 }
