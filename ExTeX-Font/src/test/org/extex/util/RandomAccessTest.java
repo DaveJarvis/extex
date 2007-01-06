@@ -37,7 +37,7 @@ public class RandomAccessTest extends TestCase {
     /**
      * The field <tt>SRC_FONT</tt> ...
      */
-    private static final String SRC_FONT = "../ExTeX-BaseFont/src/font/Gara.ttf";
+    private static final String SRC_FONT = "../ExTeX-Font/src/font/Gara.ttf";
 
     /**
      * Creates a new object.
