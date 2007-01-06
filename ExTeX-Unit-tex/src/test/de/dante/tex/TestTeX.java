@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -43,7 +43,7 @@ import org.extex.util.framework.configuration.ConfigurationFactory;
 
 /**
  * Test for ExTeX.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
  * @version $Revision$
@@ -74,13 +74,14 @@ public final class TestTeX {
     }
 
     /**
-     * Run ExTeX with a special file and compare the output with a output test file.
-     *
-     * @param texfile   the tex file
-     * @param outfile   the output test file
-     *
-     * @exception Exception iff an error occurs; iff the two files are
-     *     not equals AssertionFailedError
+     * Run ExTeX with a special file and compare the output with a output test
+     * file.
+     * 
+     * @param texfile the tex file
+     * @param outfile the output test file
+     * 
+     * @exception Exception iff an error occurs; iff the two files are not
+     *                equals AssertionFailedError
      */
     public static void testRun(final String texfile, final String outfile,
             final String project) throws Exception {
@@ -89,7 +90,7 @@ public final class TestTeX {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         Properties pro = (Properties) System.getProperties().clone();
         ExTeX extex = new ExTeX(pro, ".extex-test");
-        //        pro.setProperty("extex.output", "dump");
+        // pro.setProperty("extex.output", "dump");
         pro.setProperty("extex.output", "test-plain"); // gene
         pro.setProperty("extex.config", "tex.xml"); // gene
         pro.setProperty("extex.texinputs", //
@@ -123,7 +124,6 @@ public final class TestTeX {
 
             Assert.assertNotNull("Left-over: " + linetesttxt, linetesttxt);
 
-            new File(outfile).delete();
             new File(texfile + ".log").delete();
 
         } finally { // gene: to assure that the resources are freed
@@ -135,21 +135,21 @@ public final class TestTeX {
     public static void test(final String basename) throws Exception {
 
         throw new RuntimeException("died");
-//        testRun(basename, "develop/test/data/" + basename + ".testtxt");
+        // testRun(basename, "develop/test/data/" + basename + ".testtxt");
     }
 
     public static void test(final String basename, final String project)
             throws Exception {
 
         testRun(
-            basename, //
-            "../" + project + "/src/test/data/" + basename + ".testtxt",
-            project);
+                basename, //
+                "../" + project + "/src/test/data/" + basename + ".testtxt",
+                project);
     }
 
     /**
      * Make an <code>Interpreter</code>.
-     *
+     * 
      * @param configurationFile configuration file for ExTeX
      * @return an <code>Interpreter</code>
      * @exception Exception if an error occurs
@@ -157,19 +157,17 @@ public final class TestTeX {
     public static Interpreter makeInterpreter(String configurationFile)
             throws Exception {
 
-        Configuration config =
-                new ConfigurationFactory().newInstance("config/"
-                        + configurationFile);
-        InterpreterFactory intf =
-                new InterpreterFactory(config.getConfiguration("Interpreter"),
-                    null);
+        Configuration config = new ConfigurationFactory()
+                .newInstance("config/" + configurationFile);
+        InterpreterFactory intf = new InterpreterFactory(config
+                .getConfiguration("Interpreter"), null);
 
         return intf.newInstance(null, null);
     }
 
     /**
      * Make an <code>Interpreter</code>.
-     *
+     * 
      * @return an <code>Interpreter</code>
      * @exception Exception if an error occurs
      */
