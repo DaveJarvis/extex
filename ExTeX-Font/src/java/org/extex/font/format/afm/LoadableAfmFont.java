@@ -57,7 +57,7 @@ public class LoadableAfmFont implements LoadableFont {
     private FontKey fontKey;
 
     /**
-     * The actial font key.
+     * The actual font key.
      */
     private FontKey actualFontKey;
 
@@ -72,7 +72,7 @@ public class LoadableAfmFont implements LoadableFont {
     private AfmCharMetric lastUsedCm = null;
 
     /**
-     * The last used unicode char (for caching).
+     * The last used Unicode char (for caching).
      */
     private UnicodeChar lastUsedUc = null;
 
