@@ -47,14 +47,16 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
 
     /**
      * Creates a new object.
-     * @throws Exception if an error occured. 
+     * @throws Exception if an error occurred. 
      */
     public FontFactoryImplAfmTest() throws Exception {
 
         CoreFontFactory factory = makeFontFactory();
 
-        key = factory.getFontKey("fxlr");
-        font = factory.getInstance(key);
+        if (key == null) {
+            key = factory.getFontKey("fxlr");
+            font = factory.getInstance(key);
+        }
     }
 
     /**
@@ -165,13 +167,6 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
      * @throws Exception if an error occurred.
      */
     public void test10() throws Exception {
-
-        CoreFontFactory factory = makeFontFactory();
-
-        // default size is 10pt
-        FontKey key = factory.getFontKey("fxlr");
-
-        ExtexFont font = factory.getInstance(key);
 
         assertNotNull(font);
         assertFalse(font instanceof NullFont);
