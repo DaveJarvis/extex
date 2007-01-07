@@ -106,6 +106,7 @@
       <tfm-mathext class="org.extex.font.type.efm.EFMType1TFMMathextFount"/>
       <tfm-normal class="org.extex.font.type.efm.EFMType1TFMNOFount"/>
       -->
+      <FontType name="tfm" class="org.extex.font.manager.TfmBackendFontManager" />
   </Fonts>
   
 </ExTeX>

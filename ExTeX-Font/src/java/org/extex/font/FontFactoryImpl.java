@@ -19,14 +19,16 @@
 package org.extex.font;
 
 import java.io.InputStream;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Properties;
+import java.util.WeakHashMap;
 
 import org.extex.font.exception.FontException;
 import org.extex.font.format.NullExtexFont;
+import org.extex.font.manager.BackendFontManagerList;
 import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.type.StringList;
 import org.extex.util.framework.AbstractFactory;
 import org.extex.util.framework.configuration.Configurable;
 import org.extex.util.framework.configuration.Configuration;
@@ -37,6 +39,8 @@ import org.extex.util.resource.ResourceFinder;
 
 /**
  * Factory to load a font.
+ * 
+ * The factory use a cache (a weakmap) to increase the speed.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -47,7 +51,8 @@ public class FontFactoryImpl
             CoreFontFactory,
             ResourceConsumer,
             Configurable,
-            PropertyConfigurable {
+            PropertyConfigurable,
+            BackendFontFactory {
 
     /**
      * The null font
@@ -65,10 +70,9 @@ public class FontFactoryImpl
     private ResourceFinder finder;
 
     /**
-     * BaseFont map.
-     * mgn: WeakMap verwenden
+     * Font map.
      */
-    private Map fountMap = new HashMap();
+    private Map fontMap = new WeakHashMap();
 
     /**
      * The font key factory.
@@ -129,33 +133,14 @@ public class FontFactoryImpl
         return keyFactory.newInstance(key, "size", size);
     }
 
-    //    /**
-    //     * Retrieve the fount; either one already known or a new one.
-    //     *
-    //     * @param key the font key
-    //     *
-    //     * @return the fount
-    //     *
-    //     * @throws ConfigurationException from the resource finder.
-    //     * @throws FontException if a font-error occurred.
-    //     */
-    //    private ModifiableFount getFount(final FontKey key)
-    //            throws ConfigurationException, FontException {
-    //
-    //        ModifiableFount fount = (ModifiableFount) (fountMap.get(key));
-    //        if (fount == null) {
-    //
-    //            fount = loadFont(key);
-    //            fountMap.put(key, fount);
-    //        }
-    //        return fount;
-    //    }
-
     /**
      * Return a new instance.
      *
      * If the name is empty or null, then the <code>NullFont</code>
      * are returned.
+     *
+     * If the font is found in the cache, the cached object is returned,
+     * otherwise, the font is loaded from a file. 
      *
      * @param key the fount key
      *
@@ -171,7 +156,13 @@ public class FontFactoryImpl
             return NULLFONT;
         }
 
-        Iterator it = config.iterator();
+        // in the cache
+        LoadableFont font = (LoadableFont) fontMap.get(key);
+        if (font != null) {
+            return font;
+        }
+
+        Iterator it = config.iterator("Font");
         while (it.hasNext()) {
             Configuration subcfg = (Configuration) it.next();
 
@@ -181,13 +172,17 @@ public class FontFactoryImpl
 
             if (in != null) {
 
-                LoadableFont font = new Loader().getInstance(subcfg);
+                font = new Loader().getInstance(subcfg);
                 font.loadFont(in, this, key);
+
+                // store in the cache
+                fontMap.put(key, font);
 
                 return font;
             }
 
         }
+
         return null;
     }
 
@@ -209,287 +204,31 @@ public class FontFactoryImpl
             return (LoadableFont) createInstanceForConfiguration(subcfg,
                     LoadableFont.class);
         }
+
+        /**
+         * Returns the backend font manager.
+         *
+         * @param subcfg    the configuration.
+         * @param finder    the resource finder.
+         * @param factory   the backend font factory.
+         * @return the backend font manager.
+         * @throws ConfigurationException from the configuration system.
+         */
+        public BackendFontManager getManager(final Configuration subcfg,
+                final ResourceFinder finder, BackendFontFactory factory)
+                throws ConfigurationException {
+
+            BackendFontManager manager = (BackendFontManager) createInstanceForConfiguration(
+                    subcfg, BackendFontManager.class);
+
+            manager.setBackendFontFactory(factory);
+
+            if (manager instanceof ResourceConsumer) {
+                ((ResourceConsumer) manager).setResourceFinder(finder);
+            }
+            return manager;
+        }
     }
-
-    //    /**
-    //     * Return a new instance.
-    //     *
-    //     * If the name is empty or null, then the <code>NullFont</code>
-    //     * are returned.
-    //     *
-    //     * @param tfm the tfm font
-    //     * @param key the fount key
-    //     *
-    //     * @return Returns the new font instance.
-    //     *
-    //     * @throws ConfigurationException from the resource finder.
-    //     * @throws FontException if a font error occurred.
-    //     */
-    //    public Font getInstance(final TFMFont tfm, final FontKey key)
-    //            throws ConfigurationException, FontException {
-    //
-    //        if (tfm == null) {
-    //            return new NullFont();
-    //        }
-    //
-    //        ModifiableFount fount = (ModifiableFount) (fountMap.get(key));
-    //        if (fount == null) {
-    //            fount = new ModifiableFountTFM(key, tfm);
-    //            fountMap.put(key, fount);
-    //        }
-    //
-    //        return new FontImpl(fount);
-    //    }
-
-    //    /**
-    //     * Return a new instance.
-    //     *
-    //     * If the name is empty or null, then the <code>NullFont</code>
-    //     * are returned.
-    //     *
-    //     * @param vf the vf font
-    //     * @param key the fount key
-    //     *
-    //     * @return Returns the new font instance.
-    //     *
-    //     * @throws ConfigurationException from the resource finder.
-    //     * @throws FontException if a font-error occurred.
-    //     */
-    //    public Font getInstance(final VFFont vf, final FountKey key)
-    //            throws ConfigurationException, FontException {
-    //
-    //        if (vf == null) {
-    //            return new NullFont();
-    //        }
-    //
-    //        ModifiableFount fount = (ModifiableFount) (fountMap.get(key));
-    //        return new VirtualFontImpl(fount);
-    //    }
-
-    //    /**
-    //     * Returns the psfontmapreader.
-    //     *
-    //     * @throws FontException if a font-error occurs.
-    //     * @throws ConfigurationException from the config-system.
-    //     * @return Returns the psfm.
-    //     */
-    //    public PSFontsMapReader getPsfm() throws FontException,
-    //            ConfigurationException {
-    //
-    //        if (psfm == null) {
-    //            ef = new EncFactory(finder);
-    //
-    //            InputStream psin = findResource("psfonts.map", "");
-    //
-    //            if (psin == null) {
-    //                throw new FontMapNotFoundException();
-    //            }
-    //            psfm = new PSFontsMapReader(psin);
-    //        }
-    //        return psfm;
-    //    }
-
-    //    /**
-    //     * Load the BaseFont.
-    //     *
-    //     * @param key the fount key
-    //     *
-    //     * @return the font or <code>null</code>, if not found
-    //     *
-    //     * @throws ConfigurationException from the resource finder
-    //     * @throws FontException in case of a font error
-    //     */
-    //    private ModifiableFount loadFont(final FontKey key)
-    //            throws ConfigurationException, FontException {
-    //
-    //        // efm ???
-    //        try {
-    //            EfmReader efmfont = readEFMFont(key.getName());
-    //            if (efmfont != null) {
-    //                return new ModifiableFountEFM(key, efmfont);
-    //            }
-    //        } catch (FontException e) {
-    //            // try next
-    //        }
-    //
-    //        // tfm ???
-    //        try {
-    //            TFMFont tfmfont = readTFMFont(key.getName());
-    //            if (tfmfont != null) {
-    //                return new ModifiableFountTFM(key, tfmfont);
-    //            }
-    //        } catch (FontException e) {
-    //            // try next
-    //        }
-    //
-    //        throw new FontNotFoundException(key.getName());
-    //    }
-
-    //    /**
-    //     * Read an afm font.
-    //     *
-    //     * @param name the name of the afm file
-    //     *
-    //     * @return the afm font or <code>null</code>, if not found
-    //     *
-    //     * @throws ConfigurationException from the resource finder
-    //     * @throws FontException in case of a font error
-    //     */
-    //    public AfmFont readAFMFont(final String name)
-    //            throws ConfigurationException, FontException {
-    //
-    //        AfmFont font = null;
-    //
-    //        if (name != null) {
-    //
-    //            // efm
-    //            InputStream fontfile = findResource(name, "afm");
-    //
-    //            if (fontfile != null) {
-    //                try {
-    //                    font = new AfmFont(fontfile, name);
-    //                } catch (IOException e) {
-    //                    throw new FontIOException(e.getMessage());
-    //                }
-    //            }
-    //        }
-    //        return font;
-    //    }
-
-    //    /**
-    //     * Read a tfm font.
-    //     *
-    //     * @param name the name of the tfm file
-    //     *
-    //     * @return the tfm font or <code>null</code>, if not found
-    //     *
-    //     * @throws ConfigurationException from the resource finder
-    //     * @throws FontException in case of a font error
-    //     */
-    //    public EfmReader readEFMFont(final String name)
-    //            throws ConfigurationException, FontException {
-    //
-    //        EfmReader font = null;
-    //
-    //        if (name != null) {
-    //
-    //            InputStream fontfile = findResource(name, "efm");
-    //
-    //            if (fontfile != null) {
-    //                font = new EfmReader(fontfile);
-    //            }
-    //        }
-    //        return font;
-    //    }
-
-    //    /**
-    //     * Read a tfm font.
-    //     *
-    //     * @param name  the name of the tfm file
-    //     *
-    //     * @return  the tfm font or <code>null</code>, if not found
-    //     *
-    //     * @throws ConfigurationException from the resource finder
-    //     * @throws FontException in case of a font error
-    //     */
-    //    public TFMFont readTFMFont(final String name)
-    //            throws ConfigurationException, FontException {
-    //
-    //        if (name == null) {
-    //            return null;
-    //        }
-    //
-    //        InputStream fontfile = findResource(name, "tfm");
-    //
-    //        if (fontfile == null) {
-    //            return null;
-    //        }
-    //
-    //        TFMFont font = null;
-    //        String fontname = name.replaceAll("\\.tfm|\\.TFM", "");
-    //
-    //        try {
-    //            font = new TFMFont(new RandomAccessInputStream(fontfile), fontname);
-    //
-    //            font.setFontMapEncoding(getPsfm(), ef);
-    //
-    //            String pfbfile = font.getPfbfilename();
-    //            if (pfbfile != null) {
-    //                // pfb file
-    //                InputStream pfbin = findResource(pfbfile, "");
-    //                if (pfbin == null) {
-    //                    throw new FileNotFoundException(pfbfile);
-    //                }
-    //                try {
-    //
-    //                    font.setPfbParser(new PfbParser(pfbin));
-    //                } catch (Exception e) {
-    //                    throw new FontException(e.getMessage());
-    //                }
-    //            }
-    //
-    //            // cache the font ?
-    //            String cachedir = (prop != null
-    //                    ? prop.getProperty("fonts.cache")
-    //                    : null);
-    //            if (cachedir != null) {
-    //                StringBuffer buf = new StringBuffer();
-    //                buf.append(cachedir).append("/");
-    //                buf.append(fontname).append(".").append("efm");
-    //                // write to xml-file
-    //                XMLStreamWriter writer = new XMLStreamWriter(
-    //                        new FileOutputStream(buf.toString()), "ISO-8859-1");
-    //                writer.setBeauty(true);
-    //                writer.writeStartDocument();
-    //                font.writeEFM(writer);
-    //                writer.writeEndDocument();
-    //                writer.close();
-    //            }
-    //        } catch (IOException e) {
-    //            throw new FontIOException(e.getMessage());
-    //        }
-    //
-    //        return font;
-    //    }
-
-    //    /**
-    //     * Read a vf font.
-    //     *
-    //     * @param name  the name of the vf-file
-    //     *
-    //     * @return  the vf font or <code>null</code>, if not found
-    //     *
-    //     * @throws ConfigurationException from the resource finder
-    //     * @throws FontException in case of a font error
-    //     */
-    //    public VFFont readVFFont(final String name) throws ConfigurationException,
-    //            FontException {
-    //
-    //        VFFont font = null;
-    //
-    //        if (name != null) {
-    //
-    //            InputStream fontfile = findResource(name, "vf");
-    //
-    //            if (fontfile != null) {
-    //
-    //                //                try {
-    //                //                    String fontname = name.replaceAll("\\.vf|\\.VF", "");
-    //                //
-    //                //                    // mgn: umbauen
-    //                ////                    font = new VFFont(new RandomAccessInputStream(fontfile),
-    //                ////                            fontname, this);
-    //                //
-    //                //                    //font.setFontMapEncoding(getPsfm(), ef);
-    //                //
-    //                //                } catch (IOException e) {
-    //                //                    throw new FontIOException(e.getMessage());
-    //                //                }
-    //            }
-    //        }
-    //
-    //        return font;
-    //    }
 
     /**
      * @see org.extex.util.resource.PropertyConfigurable#setProperties(java.util.Properties)
@@ -534,6 +273,37 @@ public class FontFactoryImpl
     public FontKey getFontKey(final FontKey fontKey, final FixedDimen size) {
 
         return keyFactory.newInstance(fontKey, "size", size);
+    }
+
+    /**
+     * @see org.extex.font.CoreFontFactory#createManager(org.extex.type.StringList)
+     */
+    public BackendFontManager createManager(final StringList fontTypes)
+            throws ConfigurationException {
+
+        if (fontTypes == null) {
+            throw new IllegalArgumentException("fonttypes");
+        }
+        if (fontTypes.size() == 0) {
+            throw new IllegalArgumentException("fonttypes");
+        }
+        BackendFontManagerList fmlist = new BackendFontManagerList();
+
+        for (int i = 0, n = fontTypes.size(); i < n; i++) {
+
+            Configuration cfg = config.findConfiguration("FontType", fontTypes
+                    .getString(i));
+            if (cfg != null) {
+
+                fmlist.add(new Loader().getManager(cfg, finder, this));
+            }
+        }
+
+        if (fmlist.size() == 1) {
+            return fmlist.get(0);
+        }
+
+        return fmlist;
     }
 
 }

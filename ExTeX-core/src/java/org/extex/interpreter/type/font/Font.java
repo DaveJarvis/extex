@@ -199,13 +199,6 @@ public interface Font {
     boolean hasGlyph(UnicodeChar uc);
 
     /**
-     * Set the actual size of the font.
-     *
-     * @param size  The actual size.
-     */
-    void setActualSize(Dimen size);
-
-    /**
      * Setter for the ef code.
      * The ef code influences the stretchability of characters. It has a
      * positive value. 1000 means "normal" stretchability.
@@ -229,13 +222,6 @@ public interface Font {
      * @param uc    The Unicode char.
      */
     void setHyphenChar(UnicodeChar uc);
-
-    /**
-     * Set the scale factor of the font.
-     *
-     * @param scaleFactor    The scale factor.
-     */
-    void setScaleFactor(Count scaleFactor);
 
     /**
      * Set the skew char.

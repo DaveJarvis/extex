@@ -23,10 +23,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Properties;
+import java.util.WeakHashMap;
 
-import org.extex.font.exception.CorruptedTfmFontMappingException;
 import org.extex.type.UnicodeChar;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.resource.ResourceFinder;
@@ -66,10 +67,18 @@ public class U2tFactory {
     }
 
     /**
+     * Map for caching (u2t).
+     */
+    private Map cacheu2t = new WeakHashMap();
+
+    /**
+     * Map for caching (t2u).
+     */
+    private Map cachet2u = new WeakHashMap();
+
+    /**
      * Returns the u2t map, or <code>null</code>,
      * if the property file is not found.
-     *
-     * mgn: use cache!
      *
      * @param name      the name of the property.
      * @param finder    the resource finder.
@@ -77,12 +86,23 @@ public class U2tFactory {
      *         if the property file is not found.
      * @throws IOException if a io error occurred.
      * @throws ConfigurationException from the configuration system.
-     * @throws NumberFormatException if a parse error occured.
+     * @throws NumberFormatException if a parse error occurred.
      */
     public Map loadU2t(final String name, final ResourceFinder finder)
             throws IOException, ConfigurationException, NumberFormatException {
 
-        Map codepointmap = new HashMap();
+        if (name == null || finder == null) {
+            return null;
+        }
+
+        // in cacheu2t?
+        Map codepointmap = (Map) cacheu2t.get(name);
+
+        if (codepointmap != null) {
+            return codepointmap;
+        }
+
+        codepointmap = new HashMap();
 
         InputStream u2tin = finder.findResource(name, "u2t");
 
@@ -100,8 +120,57 @@ public class U2tFactory {
                 int texpos = Integer.parseInt(value, 16);
                 codepointmap.put(uc, new Integer(texpos));
             }
+            cacheu2t.put(name, codepointmap);
             return codepointmap;
         }
+        return null;
+    }
+
+    /**
+     * Returns the t2u map, or <code>null</code>,
+     * if the property file is not found.
+     *
+     * @param name      the name of the property.
+     * @param finder    the resource finder.
+     * @return the t2u map, or <code>null</code>,
+     *         if the property file is not found.
+     * @throws IOException if a io error occurred.
+     * @throws ConfigurationException from the configuration system.
+     * @throws NumberFormatException if a parse error occurred.
+     */
+    public Map loadT2u(final String name, final ResourceFinder finder)
+            throws IOException, ConfigurationException, NumberFormatException {
+
+        if (name == null || finder == null) {
+            return null;
+        }
+
+        // in cacheu2t?
+        Map codepointmapt2u = (Map) cachet2u.get(name);
+
+        if (codepointmapt2u != null) {
+            return codepointmapt2u;
+        }
+
+        // load u2t map
+        Map codepointmap = loadU2t(name, finder);
+
+        if (codepointmap != null) {
+
+            codepointmapt2u = new HashMap();
+
+            Iterator it = codepointmap.keySet().iterator();
+            while (it.hasNext()) {
+                UnicodeChar key = (UnicodeChar) it.next();
+                Integer value = (Integer) codepointmap.get(key);
+
+                codepointmapt2u.put(value, key);
+
+            }
+            cachet2u.put(name, codepointmapt2u);
+            return codepointmapt2u;
+        }
+
         return null;
     }
 

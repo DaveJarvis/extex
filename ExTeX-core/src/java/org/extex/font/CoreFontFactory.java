@@ -23,6 +23,7 @@ import java.util.Map;
 
 import org.extex.font.exception.FontException;
 import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.type.StringList;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.resource.ResourceFinder;
 
@@ -82,4 +83,13 @@ public interface CoreFontFactory extends ResourceFinder {
      */
     FontKey getFontKey(FontKey fontKey, FixedDimen size);
 
+    /**
+     * Create a manager for the backend font.
+     *
+     * @param fontTypes the font types, which the backend can use.
+     * @return the new manager.
+     * @throws ConfigurationException rom the configuration system.
+     */
+    BackendFontManager createManager(StringList fontTypes)
+            throws ConfigurationException;
 }
