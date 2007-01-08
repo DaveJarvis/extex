@@ -34,13 +34,40 @@ import org.extex.interpreter.type.dimen.FixedDimen;
  * is the name. If the name is <code>null</code>, then the special null font
  * is meant.
  *
- * The default size of a font is 10pt.
+ * <p>properties:</p>TODO mgn: ergänzen
+ * <ul>
+ * <li>size:         The size of the font</li>
+ * <li>scale:        The scaling factr of the font.</li>
+ * <li>letterspaced: ...</li>
+ * <li>ligatures:    If <code>true</code>, the ligature information are used.</li>
+ * <li>kerning:      If <code>true</code>, the kerning information are used.</li>
+ * </ul>
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
 
 public class FontKey implements Serializable {
+
+    /**
+     * The size of the font.
+     */
+    public static final String SIZE = "size";
+
+    /**
+     * The scaling factor of the font.
+     */
+    public static final String SCALE = "scale";
+
+    /**
+     * Use the ligature information of the font.
+     */
+    public static final String LIGATURES = "ligatures";
+
+    /**
+     * Use the kerning information of the font.
+     */
+    public static final String KERNING = "kerning";
 
     /**
      * The field <tt>serialVersionUID</tt>.
