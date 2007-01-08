@@ -20,6 +20,7 @@
 package org.extex.font;
 
 import org.extex.font.type.other.NullFont;
+import org.extex.font.unicode.GlyphName;
 import org.extex.interpreter.type.count.FixedCount;
 import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.interpreter.type.dimen.FixedDimen;
@@ -36,24 +37,27 @@ import org.extex.type.UnicodeChar;
 public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
 
     /**
-     * The font key.
+     * The font key. (only one instance for all tests)
      */
-    private FontKey key;
+    private static FontKey key;
 
     /**
-     * The font.
+     * The font.  (only one instance for all tests)
      */
-    private ExtexFont font;
+    private static ExtexFont font;
 
     /**
-     * Creates a new object.
-     * @throws Exception if an error occurred. 
+     * The factory.  (only one instance for all tests)
      */
-    public FontFactoryImplAfmTest() throws Exception {
+    private static CoreFontFactory factory;
 
-        CoreFontFactory factory = makeFontFactory();
+    /**
+     * @see junit.framework.TestCase#setUp()
+     */
+    protected void setUp() throws Exception {
 
-        if (key == null) {
+        if (factory == null) {
+            factory = makeFontFactory();
             key = factory.getFontKey("fxlr");
             font = factory.getInstance(key);
         }
@@ -191,6 +195,187 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
         FixedGlue d = font.getDepth(UnicodeChar.get('A'));
         assertNotNull(d);
         assertTrue(d.toString(), new Glue(Dimen.ONE * 10 * 1 / 1000).eq(d));
+
+    }
+
+    /**
+     * Test for the font: fxlr 
+     * @throws Exception if an error occurred.
+     */
+    public void testKerning01() throws Exception {
+
+        assertNotNull(font);
+        assertFalse(font instanceof NullFont);
+
+        FixedDimen k = font.getKerning(null, null);
+        assertNotNull(k);
+        assertTrue(k.toString(), Dimen.ZERO_PT.eq(k));
+
+    }
+
+    /**
+     * Test for the font: fxlr 
+     * @throws Exception if an error occurred.
+     */
+    public void testKerning02() throws Exception {
+
+        assertNotNull(font);
+        assertFalse(font instanceof NullFont);
+
+        FixedDimen k = font.getKerning(UnicodeChar.get('@'), null);
+        assertNotNull(k);
+        assertTrue(k.toString(), Dimen.ZERO_PT.eq(k));
+
+    }
+
+    /**
+     * Test for the font: fxlr 
+     * @throws Exception if an error occurred.
+     */
+    public void testKerning03() throws Exception {
+
+        assertNotNull(font);
+        assertFalse(font instanceof NullFont);
+
+        FixedDimen k = font.getKerning(null, UnicodeChar.get('@'));
+        assertNotNull(k);
+        assertTrue(k.toString(), Dimen.ZERO_PT.eq(k));
+
+    }
+
+    /**
+     * Test for the font: fxlr 
+     * @throws Exception if an error occurred.
+     */
+    public void testKerning04() throws Exception {
+
+        assertNotNull(font);
+        assertFalse(font instanceof NullFont);
+
+        FixedDimen k = font.getKerning(UnicodeChar.get('@'), UnicodeChar
+                .get('@'));
+        assertNotNull(k);
+        assertTrue(k.toString(), Dimen.ZERO_PT.eq(k));
+
+    }
+
+    /**
+     * Test for the font: fxlr 
+     * @throws Exception if an error occurred.
+     */
+    public void testKerning05() throws Exception {
+
+        assertNotNull(font);
+        assertFalse(font instanceof NullFont);
+
+        // KPX at Alpha -20
+        FixedDimen k = font.getKerning(UnicodeChar.get('@'), GlyphName
+                .getInstance().getUnicode("Alpha"));
+        assertNotNull(k);
+        assertTrue(k.toString(), new Dimen(Dimen.ONE * 10 * -20 / 1000).eq(k));
+
+    }
+
+    /**
+     * Test for the font: fxlr 
+     * @throws Exception if an error occurred.
+     */
+    public void testKerning06() throws Exception {
+
+        assertNotNull(font);
+        assertFalse(font instanceof NullFont);
+
+        // KPX A c -12
+        FixedDimen k = font.getKerning(UnicodeChar.get('A'), UnicodeChar
+                .get('c'));
+        assertNotNull(k);
+        assertTrue(k.toString(), new Dimen(Dimen.ONE * 10 * -12 / 1000).eq(k));
+
+    }
+
+    /**
+     * Test for the font: fxlr 
+     * @throws Exception if an error occurred.
+     */
+    public void testLigature01() throws Exception {
+
+        assertNotNull(font);
+        assertFalse(font instanceof NullFont);
+
+        UnicodeChar l = font.getLigature(null, null);
+        assertNull(l);
+    }
+
+    /**
+     * Test for the font: fxlr 
+     * @throws Exception if an error occurred.
+     */
+    public void testLigature02() throws Exception {
+
+        assertNotNull(font);
+        assertFalse(font instanceof NullFont);
+
+        UnicodeChar l = font.getLigature(UnicodeChar.get('A'), null);
+        assertNull(l);
+    }
+
+    /**
+     * Test for the font: fxlr 
+     * @throws Exception if an error occurred.
+     */
+    public void testLigature03() throws Exception {
+
+        assertNotNull(font);
+        assertFalse(font instanceof NullFont);
+
+        UnicodeChar l = font.getLigature(null, UnicodeChar.get('A'));
+        assertNull(l);
+    }
+
+    /**
+     * Test for the font: fxlr 
+     * @throws Exception if an error occurred.
+     */
+    public void testLigature04() throws Exception {
+
+        assertNotNull(font);
+        assertFalse(font instanceof NullFont);
+
+        UnicodeChar l = font.getLigature(UnicodeChar.get('A'), UnicodeChar
+                .get('A'));
+        assertNull(l);
+    }
+
+    /**
+     * Test for the font: fxlr 
+     * @throws Exception if an error occurred.
+     */
+    public void testLigature05() throws Exception {
+
+        assertNotNull(font);
+        assertFalse(font instanceof NullFont);
+
+        UnicodeChar l = font.getLigature(UnicodeChar.get('f'), UnicodeChar
+                .get('f'));
+        assertNotNull(l);
+        assertEquals(GlyphName.getInstance().getUnicode("ff").getCodePoint(), l
+                .getCodePoint());
+    }
+
+    /**
+     * Test for the font: fxlr 
+     * @throws Exception if an error occurred.
+     */
+    public void testLigature06() throws Exception {
+
+        assertNotNull(font);
+        assertFalse(font instanceof NullFont);
+
+        UnicodeChar l = font.getLigature(GlyphName.getInstance().getUnicode(
+                "ff"), UnicodeChar.get('i'));
+        assertNotNull(l);
+        assertEquals(GlyphName.getInstance().getUnicode("ffi").getCodePoint(),
+                l.getCodePoint());
 
     }
 

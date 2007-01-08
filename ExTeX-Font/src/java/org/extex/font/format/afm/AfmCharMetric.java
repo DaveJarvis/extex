@@ -64,7 +64,7 @@ public class AfmCharMetric implements Serializable {
     private int c = -1;
 
     /**
-     * Kerning.
+     * Kerning. mgn: nach erstelltem Testfall durch map ersetzen
      */
     private ArrayList k = null;
 

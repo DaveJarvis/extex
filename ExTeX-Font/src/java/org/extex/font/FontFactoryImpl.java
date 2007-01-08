@@ -118,7 +118,7 @@ public class FontFactoryImpl
     public FontKey getFontKey(final String fontName, final FixedDimen size) {
 
         FontKey key = keyFactory.newInstance(fontName);
-        return keyFactory.newInstance(key, "size", size);
+        return keyFactory.newInstance(key, FontKey.SIZE, size);
     }
 
     /**
@@ -130,7 +130,7 @@ public class FontFactoryImpl
 
         FontKey key = keyFactory.newInstance(fontName);
         key = keyFactory.newInstance(key, map);
-        return keyFactory.newInstance(key, "size", size);
+        return keyFactory.newInstance(key, FontKey.SIZE, size);
     }
 
     /**
@@ -272,7 +272,7 @@ public class FontFactoryImpl
      */
     public FontKey getFontKey(final FontKey fontKey, final FixedDimen size) {
 
-        return keyFactory.newInstance(fontKey, "size", size);
+        return keyFactory.newInstance(fontKey, FontKey.SIZE, size);
     }
 
     /**

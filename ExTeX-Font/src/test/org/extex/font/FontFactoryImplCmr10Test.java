@@ -109,7 +109,7 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
         FontKey actualFontKey = font.getActualFontKey();
         assertNotNull(actualFontKey);
         assertEquals(key.getName(), actualFontKey.getName());
-        
+
         FixedDimen ds = actualFontKey.getDimen("size");
         assertTrue(ds.toString(), new Dimen(Dimen.ONE * 10).eq(ds));
     }

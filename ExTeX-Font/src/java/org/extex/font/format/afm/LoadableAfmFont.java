@@ -46,6 +46,8 @@ import org.extex.type.UnicodeChar;
  * <li>If the font has no glyph 'space', then ex is used for getSpace(). (mgn: überprüfen)</li>
  * </ul>
  *
+ * mgn: glyphname - unicode mapping (zusätzlich) einfügen
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -225,9 +227,21 @@ public class LoadableAfmFont implements LoadableFont {
      */
     public FixedDimen getKerning(final UnicodeChar uc1, final UnicodeChar uc2) {
 
-        // TODO mgn: getKerning unimplemented
-        // nokerning beachten
-        return null;
+        // TODO mgn: nokerning beachten
+
+        AfmCharMetric cm1 = getCharMetric(uc1);
+
+        if (cm1 != null) {
+            AfmCharMetric cm2 = getCharMetric(uc2);
+            if (cm2 != null) {
+                AfmKernPairs kp = cm1.getAfmKernPair(cm2.getN());
+                if (kp != null) {
+                    float size = kp.getKerningsize();
+                    return floatToDimen(size);
+                }
+            }
+        }
+        return Dimen.ZERO_PT;
     }
 
     /**
@@ -235,8 +249,22 @@ public class LoadableAfmFont implements LoadableFont {
      */
     public UnicodeChar getLigature(final UnicodeChar uc1, final UnicodeChar uc2) {
 
-        // TODO mgn: getLigature unimplemented
-        // noligature beachten
+        // TODO mgn: noligature beachten
+        AfmCharMetric cm1 = getCharMetric(uc1);
+
+        if (cm1 != null) {
+            AfmCharMetric cm2 = getCharMetric(uc2);
+            if (cm2 != null) {
+                String lig = cm1.getLigature(cm2.getN());
+                if (lig != null) {
+                    try {
+                        return GlyphName.getInstance().getUnicode(lig);
+                    } catch (IOException e) {
+                        return null;
+                    }
+                }
+            }
+        }
         return null;
     }
 
