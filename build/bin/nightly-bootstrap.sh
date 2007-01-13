@@ -1,6 +1,11 @@
 #!/bin/bash
 #--------------------------------------------------------------------
-# (c) 2003-2006 Gerd Neugebauer (gene@gerd-neugebauer.de)
+# This is the cron script used to start the nightly build.
+#
+# (c) 2003-2007 Gerd Neugebauer (gene@gerd-neugebauer.de)
+#--------------------------------------------------------------------
+#
+# CONFIGURATION SECTION
 #
 #--------------------------------------------------------------------
 # LOCALDIR contains the location where the build resides.
@@ -8,28 +13,27 @@
 LOCALDIR="/serv/extex-project/build"
 #--------------------------------------------------------------------
 # INSTALLDIR contains the directory to store the web site in.
-INSTALLDIR=/serv/extex-project/www.extex.org
+INSTALLDIR=/serv/www/extex
 #--------------------------------------------------------------------
 # Point to the Java SDK
 export JAVA_HOME=/serv/extex-project/lib/j2sdk1.4.2_09/
 #--------------------------------------------------------------------
+# Point to Ant
+export ANT_HOME=/serv/extex-project/lib/ant/
+#--------------------------------------------------------------------
 #
-CVSDIR=":pserver:anonymous@cvs.extex.berlios.de:/cvsroot/extex"
-#--------------------------------------------------------------------
-# MODULES contains the list of CVS modelues to check-out.
-MODULES="ExTeX"
-#--------------------------------------------------------------------
-# LOG contains the directory where the logs are stored.
+# END OF CONFIGURATION SECTION
+#
 LOG=$LOCALDIR/log
-#--------------------------------------------------------------------
+TRUNK=$LOCALDIR/trunk
+export PATH=${JAVA_HOME}/bin:$PATH
 
-mkdir -p $LOCALDIR $LOG
-cd $LOCALDIR
-date >$LOG/export.log
-cvs -q -r -d $CVSDIR checkout -P $MODULES >>$LOG/export.log 2>&1
-cvs -q -r -d $CVSDIR update -P $MODULES >>$LOG/export.log 2>&1
+cd $TRUNK
+date >$LOG/export.log >>$LOG/export.log 2>&1
 
+svn update >>$LOG/export.log 2>&1
 
-source $LOCALDIR/ExTeX/util/Build/build.sh
+cd build
+source bin/nightly-build.sh
 
 #

@@ -1,12 +1,13 @@
 #!/bin/bash
 #--------------------------------------------------------------------
-# (c) 2003-2006 Gerd Neugebauer (gene@gerd-neugebauer.de)
+# Main driver for the nightly build process
+#
+# Assumption: The current directory when this scrit is run has to be
+#             the build directory in the ExTeX root (trunk)
+#
+# (c) 2003-2007 Gerd Neugebauer (gene@gerd-neugebauer.de)
 #
 
-if [ "$LOCALDIR" == "" ]; then
-    echo "LOCALDIR is undefined"
-    exit 1
-fi
 if [ "$LOG" == "" ]; then
     echo "LOG is undefined"
     exit 1
@@ -19,6 +20,12 @@ if [ "$INSTALLDIR" == "" ]; then
     echo "INSTALLDIR is undefined"
     exit 1
 fi
+
+
+
+#####################################################################
+exit 0
+#####################################################################
 
 #--------------------------------------------------------------------
 #
