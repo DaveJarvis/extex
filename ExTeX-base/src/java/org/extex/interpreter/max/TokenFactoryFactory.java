@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -25,7 +25,6 @@ import org.extex.scanner.type.token.TokenFactory;
 import org.extex.util.framework.AbstractFactory;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
-
 
 /**
  * This class provides a factory for a
@@ -67,33 +66,6 @@ import org.extex.util.framework.configuration.exception.ConfigurationException;
 public class TokenFactoryFactory extends AbstractFactory {
 
     /**
-     * The field <tt>configuration</tt> contains the configuration for
-     * this factory.
-     */
-    private Configuration configuration;
-
-    /**
-     * Creates a new object.
-     * <p>
-     *  Mainly the configuration needs to specify which class to use for the
-     *  TokenFactory. The name of the class is given as the argument <tt>class</tt>
-     *  as shown below.
-     *  <pre>
-     *   &lt;TokenFactory class="org.extex.scanner.type.token.TokenFactoryImpl"/&gt;
-     *  </pre>
-     * </p>
-     *
-     * @param config the configuration to use
-     * @param logger the logger
-     */
-    public TokenFactoryFactory(final Configuration config, final Logger logger) {
-
-        super();
-        this.configuration = config;
-        enableLogging(logger);
-    }
-
-    /**
      * Instance delivering method.
      *
      * @return an appropriate instance
@@ -102,8 +74,7 @@ public class TokenFactoryFactory extends AbstractFactory {
      */
     public TokenFactory createInstance() throws ConfigurationException {
 
-        return (TokenFactory) createInstanceForConfiguration(configuration,
-                TokenFactory.class);
+        return (TokenFactory) createInstance(TokenFactory.class);
     }
 
 }
