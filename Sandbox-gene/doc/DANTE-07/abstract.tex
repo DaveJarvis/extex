@@ -1,0 +1,71 @@
+%%*****************************************************************************
+%% $Id: abstract.tex,v 0.00 2007/01/14 19:45:08 gene Exp $
+%%*****************************************************************************
+%% Author: Gerd Neugebauer
+%%-----------------------------------------------------------------------------
+\documentclass{scrartcl}
+
+\usepackage[latin1]{inputenc}
+\usepackage{german}
+
+\providecommand*{\ExTeX}{\ifx\texorpdfstring\undefined
+  \textrm{% the logo comes always with serifs
+    \ensuremath{\textstyle\varepsilon_{\kern-0.15em\mathcal{X}}}%
+    \kern-.15em\TeX}%
+  \else\texorpdfstring{%
+  \textrm{% the logo comes always with serifs
+    \ensuremath{\textstyle\varepsilon_{\kern-0.15em\mathcal{X}}}%
+    \kern-.15em\TeX
+  }}{ExTeX}%
+  \fi
+}
+
+\begin{document}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Wie geht es eigentlich\ldots\ {\boldmath\ExTeX}?}
+\author{Gerd Neugebauer}
+%\date{}
+\maketitle
+
+\section*{Question \& Answer Session}
+
+\ExTeX\ wurde als Open-Spource-Projekt gestartet, um \TeX\ in einer
+Reinkarnation für das 21.~Jahrhundert neu erstehen zu lassen. Seit dem
+Start des Projektes wurde eine weiter Weg zurückgelegt. Trotzdem ist
+\ExTeX\ noch nicht für einen produktiven Einsatz bereit.
+
+Mit \ExTeX\ werden einige zentralen Ziele verfolgt:
+
+\begin{itemize}
+\item \ExTeX\ soll in einem Basis-Modus weitestgehend kompatibel zu
+  \TeX\ sein. 
+\item \ExTeX\ soll konfigurierbar und erweiterbar sein.
+\item \ExTeX\ soll neben dem Kommandozeilen-Programm auch eine
+  Schnittstelle zur Nutzung als Bibliothek enthalten.
+\end{itemize}
+
+Dabei kann aus den Erfahrungen aus anderen Systemen zurückgrgriffen
+werden:
+
+\begin{itemize}
+\item $\varepsilon$-\TeX
+\item pdf\TeX
+\item $\Omega$
+\end{itemize}
+
+Diese haben bereits partiell Eingang in die Entwicklung von \ExTeX\
+gefunden. Einige wesentliche interne Strukturen wurden darauf
+ausgerichtet, die \TeX-Erweiterungen der genannten Systeme zu
+unterstützen. 
+
+In dieser Fragestunde kann ein Einblick in den Stand der Entwicklung
+gewonnen werden. An Hand einer praktischen Demonstration können einige
+fertiggestellte Eigenschaften gezeigt werden.
+
+
+\end{document}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Local Variables: 
+% mode: latex
+% TeX-master: nil
+% End: 
