@@ -22,43 +22,81 @@
 
 <project name="texmf" basedir=".">
 
-  <description>ExTeX build file</description>
-
-  <property name="target.lib" location="../target/lib" />
-
-  <!-- ==================================================================== -->
-  <target name="all"
-          description="Build nearly everything"
-          depends="formats" />
-
-  <!-- ==================================================================== -->
-  <target name="extex-jar"
-          description="Compile the Java files">
-    <ant dir="../build" 
-         target="jar" />
-  </target>
-
-  <!-- ==================================================================== -->
-  <target name="texmf"
-          description="Pack the texmf tree into a jar archive">
-    <jar jarfile="target/extex-texmf.jar"
-         basedir="src/texmf"
-    />
-  </target>
-
-  <!-- ==================================================================== -->
-  <target name="formats" depends="extex-jar"
-          description="">
-    <exec executable="sh">
-      <arg line="../extex -ini -config=tex -jobname=tex \input plain.tex \dump\end"/>
-    </exec>
-    <exec executable="sh">
-      <arg line="../extex -ini -config=extex -jobname=extex \input plain.tex \dump\end"/>
-    </exec>
-    <jar jarfile="target/extex-formats.jar"
-         basedir="target"
-         includes="texmf/*.fmt,texmf/*.log"
-    />
-  </target>
+  <description>
+    ExTeX comes with a rudimentary set of support files. Those are stored in
+    a texmf tree.
     
+    Additionally formats are generated here.
+  </description>
+
+  <property name="target" location="target" />
+  <property name="format.jar" location="${target}/extex-formats.jar" />
+
+  <path id="extex.jars">
+    <fileset dir="..">
+      <include name="build/target/application/extex.jar" />
+      <include name="ExTeX-*/lib/*.jar" />
+    </fileset>
+  </path>
+
+  <!-- ==================================================================== -->
+  <target name="all" description="Build nearly everything" depends="formats" />
+
+  <!-- ==================================================================== -->
+  <target name="clean" description="Remove the generated files">
+    <delete>
+      <fileset dir="target">
+        <include name="*.jar" />
+        <include name="*.fmt" />
+        <include name="*.log" />
+      </fileset>
+    </delete>
+  </target>
+
+  <!-- ==================================================================== -->
+  <target name="extex-jar" description="Compile the Java files">
+    <ant dir="../build" target="jar" />
+  </target>
+
+  <!-- ==================================================================== -->
+  <target name="formats" depends="extex-jar" description="">
+
+    <java classname="org.extex.tex.main.TeX"
+          fork="true"
+          failonerror="true"
+          inputstring="">
+      <classpath refid="extex.jars" />
+      <arg value="-ini" />
+      <arg value="-config=extex" />
+      <arg value="-jobname=extex" />
+      <arg value="-output-directory=target" />
+      <arg value="\input plain.tex \dump\end" />
+    </java>
+
+    <java classname="org.extex.tex.main.TeX"
+          fork="true"
+          failonerror="true"
+          inputstring="">
+      <classpath refid="extex.jars" />
+      <arg value="-ini" />
+      <arg value="-config=tex" />
+      <arg value="-jobname=tex" />
+      <arg value="-output-directory=target" />
+      <arg value="\input plain.tex \dump\end" />
+    </java>
+
+    <jar jarfile="${target}/extex-formats.jar"
+         basedir="target"
+         includes="*.fmt,*.log">
+      <manifest>
+        <attribute name="Built-By" value="${user.name}" />
+      </manifest>
+    </jar>
+  </target>
+
+  <!-- ==================================================================== -->
+  <target name="texmf" description="Pack the texmf tree into a jar archive">
+    <jar jarfile="target/extex-texmf.jar" basedir="src/texmf" />
+  </target>
+
 </project>
