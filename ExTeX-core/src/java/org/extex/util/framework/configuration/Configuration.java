@@ -216,8 +216,8 @@ public interface Configuration {
      *   &lt;/cfg&gt;
      * </pre>
      * <p>
-     * Then <tt>getConfig("abc","two")</tt> returns a new XMLConfig rooted at
-     * the abc with the name attribute "two".
+     * Then <tt>getConfig("abc","two")</tt> returns a new Configuration rooted
+     * at the <tt>abc</tt> with the name attribute <tt>"two"</tt>.
      * </p>
      * <p>
      * If there are more than one tags with the same name then the first one is
