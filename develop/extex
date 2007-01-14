@@ -2,7 +2,7 @@
 #------------------------------------------------------------------------------
 # This is the start script for ExTeX
 #------------------------------------------------------------------------------
-# Copyright (C) 2004-2006 The ExTeX Group
+# Copyright (C) 2004-2007 The ExTeX Group
 #
 # This library is free software; you can redistribute it and/or modify it under
 # the terms of the GNU Lesser General Public License as published by the Free
@@ -36,28 +36,27 @@ case "`uname`" in
     # For Cygwin, ensure paths are in UNIX format before anything is touched
     [ -n "$JAVA_HOME" ] &&
         JAVA_HOME=`cygpath --unix "$JAVA_HOME"`
-    sep=';'
+    SEP=';'
     LOCALCLASSPATH=.
-    for i in `ls $EXTEX_HOME/ExTeX-*/target/classes` ; do
-      LOCALCLASSPATH=$LOCALCLASSPATH$sep`cygpath --unix "$i"`
+    for i in `echo $EXTEX_HOME/ExTeX-*/target/classes` ; do
+      LOCALCLASSPATH="$LOCALCLASSPATH$SEP`cygpath --unix "$i"`"
     done
-    for i in `ls $EXTEX_HOME/ExTeX-*/lib/*.jar` ; do
-      LOCALCLASSPATH=$LOCALCLASSPATH$sep`cygpath --unix "$i"`
+    for i in `echo $EXTEX_HOME/ExTeX-*/lib/*.jar` ; do
+      LOCALCLASSPATH="$LOCALCLASSPATH$SEP`cygpath --unix "$i"`"
     done
     ;;
   *)
-    sep=':'
     LOCALCLASSPATH=.
-    for i in `ls $EXTEX_HOME/ExTeX-*/target/classes` ; do
-      LOCALCLASSPATH=$LOCALCLASSPATH$sep$i
+    for i in `echo $EXTEX_HOME/ExTeX-*/target/classes` ; do
+      LOCALCLASSPATH=$LOCALCLASSPATH:$i
     done
-    for i in `ls $EXTEX_HOME/ExTeX-*/lib/*.jar` ; do
-      LOCALCLASSPATH=$LOCALCLASSPATH$sep$i
+    for i in `echo $EXTEX_HOME/ExTeX-*/lib/*.jar` ; do
+      LOCALCLASSPATH=$LOCALCLASSPATH:
     done
     ;;
 esac
 
-# echo $LOCALCLASSPATH
+#echo $LOCALCLASSPATH
 
 exec java $EXTEX_JAVA_OPTS -classpath "$LOCALCLASSPATH" \
     org.extex.tex.main.TeX -progname=`basename $0` $*
