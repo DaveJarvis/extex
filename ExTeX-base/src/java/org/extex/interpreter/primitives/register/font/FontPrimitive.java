@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -25,7 +25,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.extex.font.CoreFontFactory;
-import org.extex.font.FountKey;
+import org.extex.font.ExtexFont;
 import org.extex.font.exception.FontException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
@@ -198,14 +198,14 @@ public class FontPrimitive extends AbstractAssignment
             fontSize = Dimen.parse(context, source, typesetter);
             if (fontSize.lt(Dimen.ZERO_PT)) {
                 throw new HelpingException(getLocalizer(), "TTP.ImproperAt",
-                        fontSize.toString());
+                    fontSize.toString());
             }
 
         } else if (source.getKeyword(context, "scaled")) {
             long s = Count.scanInteger(context, source, typesetter);
             if (s <= 0) {
                 throw new HelpingException(getLocalizer(), "TTP.IllegalMag",
-                        Long.toString(s), "32768"); //TODO gene: max ok?
+                    Long.toString(s), "32768"); //TODO gene: max ok?
             }
             scale = new Count(s);
         }
@@ -228,33 +228,39 @@ public class FontPrimitive extends AbstractAssignment
         }
 
         CoreFontFactory factory = context.getFontFactory();
-        Font font;
+        ExtexFont fnt;
         try {
             Map fontKeyMap = new HashMap();
             fontKeyMap.put("scale", scale);
             fontKeyMap.put("letterspaced", letterspaced);
             fontKeyMap.put("ligatures", new Boolean(ligatures));
             fontKeyMap.put("kerning", new Boolean(kerning));
-            font = new FontImpl(factory.getInstance(factory.getFontKey(fontname, fontSize,
-                    fontKeyMap)));
+            fnt = factory.getInstance(factory.getFontKey(fontname, //
+                fontSize, fontKeyMap));
         } catch (FontException e) {
             if (logger != null) {
                 logger.log(Level.FINE, "FontPrimitive", e);
             }
             throw new HelpingException(getLocalizer(), "TTP.TFMnotFound", //
-                    context.esc(fontId), fontname);
+                context.esc(fontId), fontname);
         } catch (ConfigurationIOException e) {
             if (logger != null) {
                 logger.log(Level.FINE, "FontPrimitive", e);
             }
             throw new HelpingException(getLocalizer(), "TTP.TFMnotFound", //
-                    context.esc(fontId), fontname);
+                context.esc(fontId), fontname);
         } catch (ConfigurationException e) {
             throw new InterpreterException(e);
         }
 
-        Code code = new FontCode(fontId.getName(), font);
-        context.setCode(fontId, code, prefix.clearGlobal());
+        if (fnt == null) {
+            throw new HelpingException(getLocalizer(), "TTP.TFMnotFound", //
+                context.esc(fontId), fontname);
+        }
+
+        context.setCode(fontId, //
+            new FontCode(fontId.getName(), new FontImpl(fnt)), //
+            prefix.clearGlobal());
     }
 
     /**
@@ -297,7 +303,7 @@ public class FontPrimitive extends AbstractAssignment
 
         if (t == null) {
             throw new HelpingException(getLocalizer(), "TTP.EOFinDef",
-                    printableControlSequence(context));
+                printableControlSequence(context));
         }
 
         StringBuffer sb = new StringBuffer((char) t.getChar().getCodePoint());
