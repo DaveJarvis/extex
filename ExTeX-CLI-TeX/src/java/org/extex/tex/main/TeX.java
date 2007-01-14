@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -84,7 +84,6 @@ import org.extex.util.framework.configuration.exception.ConfigurationUnsupported
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.i18n.LocalizerFactory;
 import org.extex.util.resource.ResourceFinder;
-
 
 /**
  * This is the command line interface to <logo>ExTeX</logo>.
@@ -734,7 +733,8 @@ public class TeX extends ExTeX {
      * The field <tt>PROP_PARSE_FIRST_LINE</tt> contains the name of the
      * property to nable the parsing of the first line of the file.
      */
-    private static final String PROP_PARSE_FIRST_LINE = "extex.parse.first.line";
+    private static final String PROP_PARSE_FIRST_LINE =
+            "extex.parse.first.line";
 
     /**
      * The constant <tt>TRACE_MAP</tt> contains the mapping from single
@@ -752,7 +752,8 @@ public class TeX extends ExTeX {
      * The field <tt>PROP_OUTPUTDIR_FALLBACK</tt> contains the name of the
      * for the fallback if the output directory fails to be writable.
      */
-    private static final String PROP_OUTPUT_DIR_FALLBACK = "tex.output.dir.fallback";
+    private static final String PROP_OUTPUT_DIR_FALLBACK =
+            "tex.output.dir.fallback";
 
     static {
         TRACE_MAP.put("+", PROP_TRACING_ONLINE);
@@ -799,7 +800,7 @@ public class TeX extends ExTeX {
             logger.addHandler(consoleHandler);
 
             logException(logger, LocalizerFactory.getLocalizer(TeX.class)
-                    .format("ExTeX.SevereError", e.toString()), e);
+                .format("ExTeX.SevereError", e.toString()), e);
             status = EXIT_INTERNAL_ERROR;
         }
 
@@ -871,10 +872,11 @@ public class TeX extends ExTeX {
      */
     private int copying(final PrintStream printStream) throws IOException {
 
-        String file = this.getClass().getName().replace('.', '/').replaceAll(
-                "[a-z0-9_A-Z]+$", "LICENSE.txt");
-        InputStream stream = getClass().getClassLoader().getResourceAsStream(
-                file);
+        String file =
+                this.getClass().getName().replace('.', '/').replaceAll(
+                    "[a-z0-9_A-Z]+$", "LICENSE.txt");
+        InputStream stream =
+                getClass().getClassLoader().getResourceAsStream(file);
         if (stream == null) {
             printStream.println(file + ": resource not found");
             return EXIT_INTERNAL_ERROR;
@@ -951,12 +953,12 @@ public class TeX extends ExTeX {
         this.interpreter = interpreter;
 
         try {
-            interpreter.addStream(factory.newInstance(new TeXInputReader(
-                    getLogger(), properties.getProperty(PROP_ENCODING),
-                    interpreter)));
+            interpreter.addStream(factory
+                .newInstance(new TeXInputReader(getLogger(), properties
+                    .getProperty(PROP_ENCODING), interpreter)));
         } catch (UnsupportedEncodingException e) {
             throw new ConfigurationUnsupportedEncodingException(properties
-                    .getProperty(PROP_ENCODING), "<stdin>");
+                .getProperty(PROP_ENCODING), "<stdin>");
         }
 
         super.initializeStreams(interpreter, properties);
@@ -979,13 +981,13 @@ public class TeX extends ExTeX {
                 FontException,
                 IOException {
 
-        interpreter = super
-                .makeInterpreter(config, outFactory, finder, jobname);
+        interpreter =
+                super.makeInterpreter(config, outFactory, finder, jobname);
         Logger logger = getLogger();
 
         interpreter.getContext().setStandardTokenStream(
-                interpreter.getTokenStreamFactory().newInstance(
-                        new InputStreamReader(System.in)));
+            interpreter.getTokenStreamFactory().newInstance(
+                new InputStreamReader(System.in)));
 
         if (interpreter instanceof StreamCloseObservable) {
             StreamCloseObserver observer = new FileCloseObserver(logger);
@@ -1056,7 +1058,7 @@ public class TeX extends ExTeX {
         });
 
         return super.makeBackend(config, outFactory, options, colorConfig,
-                finder, fontFactory);
+            finder, fontFactory);
     }
 
     /**
@@ -1078,8 +1080,8 @@ public class TeX extends ExTeX {
             throws ConfigurationException,
                 NotObservableException {
 
-        TokenStreamFactory factory = super.makeTokenStreamFactory(config,
-                finder);
+        TokenStreamFactory factory =
+                super.makeTokenStreamFactory(config, finder);
         factory.registerObserver(new FileOpenObserver(getLogger()));
 
         if (!"".equals(getProperty(PROP_FILE))
@@ -1111,8 +1113,8 @@ public class TeX extends ExTeX {
                                     int c;
                                     for (c = stream.read(); c > 0
                                             && !Character
-                                                    .isWhitespace((char) c); c = stream
-                                            .read()) {
+                                                .isWhitespace((char) c); c =
+                                            stream.read()) {
                                         fmt.append((char) c);
                                     }
                                     while (c > 0 && c != '\n') {
@@ -1121,8 +1123,8 @@ public class TeX extends ExTeX {
                                     String format = fmt.toString();
                                     if (!format.equals("")) {
                                         loadFormat(format, interpreter, finder,
-                                                getProperty(PROP_JOBNAME),
-                                                null, null, null);
+                                            getProperty(PROP_JOBNAME), null,
+                                            null, null);
                                     }
                                 } else {
                                     stream.reset();
@@ -1132,14 +1134,14 @@ public class TeX extends ExTeX {
                                     stream.reset();
                                 } catch (IOException e1) {
                                     getLogger().throwing(TeX.class.getName(),
-                                            "update()", e);
+                                        "update()", e);
                                 }
                             } catch (GeneralException e) {
                                 getLogger().throwing(TeX.class.getName(),
-                                        "update()", e);
+                                    "update()", e);
                             } catch (ConfigurationException e) {
                                 getLogger().throwing(TeX.class.getName(),
-                                        "update()", e);
+                                    "update()", e);
                             }
                         }
                     }
@@ -1190,9 +1192,9 @@ public class TeX extends ExTeX {
                 pattern = "";
         }
         getLogger().log(
-                (getBooleanProperty(PROP_NO_BANNER) ? Level.FINE : Level.INFO),
-                localizer.format(pattern, primaryFile, //
-                        Integer.toString(pages)));
+            (getBooleanProperty(PROP_NO_BANNER) ? Level.FINE : Level.INFO),
+            localizer.format(pattern, primaryFile, //
+                Integer.toString(pages)));
     }
 
     /**
@@ -1254,7 +1256,7 @@ public class TeX extends ExTeX {
             showBanner(null, Level.INFO);
             logInternalError(e);
             info(getLocalizer().format("ExTeX.Logfile",
-                    getProperty(PROP_JOBNAME)));
+                getProperty(PROP_JOBNAME)));
 
         }
         return EXIT_INTERNAL_ERROR;
@@ -1354,14 +1356,15 @@ public class TeX extends ExTeX {
                         } else if (set("configuration", PROP_CONFIG, arg)) {
                             // ok
                         } else if ("copyright".startsWith(arg)) {
-                            int year = Calendar.getInstance()
-                                    .get(Calendar.YEAR);
-                            String copyrightYear = (year <= COPYRIGHT_YEAR
-                                    ? Integer.toString(COPYRIGHT_YEAR)
-                                    : Integer.toString(COPYRIGHT_YEAR) + "-"
-                                            + Integer.toString(year));
+                            int year =
+                                    Calendar.getInstance().get(Calendar.YEAR);
+                            String copyrightYear =
+                                    (year <= COPYRIGHT_YEAR ? Integer
+                                        .toString(COPYRIGHT_YEAR) : Integer
+                                        .toString(COPYRIGHT_YEAR)
+                                            + "-" + Integer.toString(year));
                             return info(getLocalizer().format(
-                                    "ExTeX.Copyright", copyrightYear));
+                                "ExTeX.Copyright", copyrightYear));
                         } else if ("copying".startsWith(arg)) {
                             return copying(System.err);
                         } else if (!mergeProperties(arg)) {
@@ -1374,7 +1377,11 @@ public class TeX extends ExTeX {
                                 throw new MainMissingArgumentException(arg);
                             }
                             useTrace(args[i]);
-                        } else if (arg.startsWith("debug=")) {
+                        } else if (arg.startsWith("debug=")
+                                || arg.startsWith("debu=")
+                                || arg.startsWith("deb=")
+                                || arg.startsWith("de=")
+                                || arg.startsWith("d=")) {
                             useTrace(arg.substring(arg.indexOf('=') + 1));
                         } else if (!mergeProperties(arg)) {
                             throw new MainUnknownOptionException(arg);
@@ -1383,7 +1390,7 @@ public class TeX extends ExTeX {
                     case 'h':
                         if ("help".startsWith(arg)) {
                             return info(getLocalizer().format("ExTeX.Usage",
-                                    getProperty(PROP_PROGNAME)));
+                                getProperty(PROP_PROGNAME)));
                         } else if ("halt-on-error".startsWith(arg)) {
                             setProperty(PROP_HALT_ON_ERROR, "true");
                         } else if (!mergeProperties(arg)) {
@@ -1440,7 +1447,7 @@ public class TeX extends ExTeX {
                         } else if (set("output-path", PROP_OUTPUT_DIRS, arg)) {
                             // ok
                         } else if (set("output-directory", PROP_OUTPUT_DIR,
-                                args, i)) {
+                            args, i)) {
                             i++;
                         } else if (set("output-directory", PROP_OUTPUT_DIR, arg)) {
                             // ok
@@ -1469,10 +1476,10 @@ public class TeX extends ExTeX {
                         } else if (set("texoutputs", PROP_OUTPUT_DIR, arg)) {
                             // ok
                         } else if (set("texmfoutputs",
-                                PROP_OUTPUT_DIR_FALLBACK, args, i)) {
+                            PROP_OUTPUT_DIR_FALLBACK, args, i)) {
                             i++;
                         } else if (set("texmfoutputs",
-                                PROP_OUTPUT_DIR_FALLBACK, arg)) {
+                            PROP_OUTPUT_DIR_FALLBACK, arg)) {
                             // ok
                         } else if (!mergeProperties(arg)) {
                             throw new MainUnknownOptionException(arg);
@@ -1494,14 +1501,17 @@ public class TeX extends ExTeX {
             } else if (c == '&') {
                 setProperty(PROP_FMT, arg.substring(1));
             } else if (c == '\\') {
+                applyLanguage();
                 return runWithCode(args, i);
             } else if (arg.equals("")) {
                 // silently ignored as TeXk does
             } else {
+                applyLanguage();
                 return runWithFile(args, i);
             }
         }
 
+        applyLanguage();
         return runWithoutFile();
     }
 
@@ -1569,7 +1579,7 @@ public class TeX extends ExTeX {
 
         try {
             if (!Interaction.get(getProperty(PROP_INTERACTION)).equals(
-                    Interaction.ERRORSTOPMODE)) {
+                Interaction.ERRORSTOPMODE)) {
                 return EXIT_INTERNAL_ERROR;
             }
         } catch (InteractionUnknownException e1) {
@@ -1578,14 +1588,15 @@ public class TeX extends ExTeX {
 
         try {
             showBanner(new ConfigurationFactory()
-                    .newInstance(getProperty(PROP_CONFIG)), Level.INFO);
+                .newInstance(getProperty(PROP_CONFIG)), Level.INFO);
         } catch (ConfigurationException e) {
             // ignored on purpose. It will be checked again later
         }
 
         QueryFileHandler queryHandler = getQueryFileHandler();
         setInputFileName((queryHandler != null //
-                ? queryHandler.query(getLogger(), getProperties()) : null));
+                ? queryHandler.query(getLogger(), getProperties())
+                : null));
 
         runAndRemapExceptions();
         return EXIT_OK;
@@ -1651,8 +1662,9 @@ public class TeX extends ExTeX {
 
         if (name != null) {
             setProperty(PROP_JOBNAME, //
-                    (name.matches(".*\\.[a-zA-Z0-9_]*") //
-                            ? name.substring(0, name.lastIndexOf(".")) : name));
+                (name.matches(".*\\.[a-zA-Z0-9_]*") //
+                        ? name.substring(0, name.lastIndexOf("."))
+                        : name));
             setProperty(PROP_FILE, name);
         } else {
             setProperty(PROP_JOBNAME, "texput");
