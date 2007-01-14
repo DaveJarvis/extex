@@ -22,6 +22,7 @@ package org.extex.util.framework.i18n;
 import java.io.PrintStream;
 import java.text.MessageFormat;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
@@ -181,7 +182,7 @@ public final class LocalizerFactory {
                 final Object c, final Object d, final Object e) {
 
             return MessageFormat.format(format(fmt),
-                    new Object[]{a, b, c, d, e});
+                new Object[]{a, b, c, d, e});
         }
 
         /**
@@ -259,7 +260,7 @@ public final class LocalizerFactory {
                 final Object a, final Object b) {
 
             writer.println(MessageFormat
-                    .format(format(fmt), new Object[]{a, b}));
+                .format(format(fmt), new Object[]{a, b}));
         }
 
         /**
@@ -291,6 +292,11 @@ public final class LocalizerFactory {
     private static final Map CACHE = new HashMap();
 
     /**
+     * The field <tt>locale</tt> contains the ...
+     */
+    private static Locale locale = Locale.getDefault();
+
+    /**
      * Return the localizer associated to a given name.
      *
      * @param theClass the class of the localizer
@@ -299,13 +305,7 @@ public final class LocalizerFactory {
      */
     public static Localizer getLocalizer(final Class theClass) {
 
-        String name = theClass.getName();
-        Localizer loc = (Localizer) CACHE.get(name);
-        if (loc == null) {
-            loc = new BasicLocalizer(name);
-            CACHE.put(name, loc);
-        }
-        return loc;
+        return getLocalizer(theClass.getName());
     }
 
     /**
@@ -317,6 +317,10 @@ public final class LocalizerFactory {
      */
     public static Localizer getLocalizer(final String name) {
 
+        if (locale != Locale.getDefault()) {
+            locale = Locale.getDefault();
+            CACHE.clear();
+        }
         Localizer loc = (Localizer) CACHE.get(name);
         if (loc == null) {
             loc = new BasicLocalizer(name);
