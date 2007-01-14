@@ -3,7 +3,6 @@
 	<name>ExTeX-CLI-TeX</name>
 	<comment></comment>
 	<projects>
-		<project>ExTeX</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
