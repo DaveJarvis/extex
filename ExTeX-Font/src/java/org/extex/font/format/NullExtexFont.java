@@ -21,37 +21,45 @@ package org.extex.font.format;
 
 import org.extex.font.ExtexFont;
 import org.extex.font.FontKey;
+import org.extex.interpreter.type.count.Count;
 import org.extex.interpreter.type.count.FixedCount;
+import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.glue.FixedGlue;
+import org.extex.interpreter.type.glue.Glue;
 import org.extex.type.UnicodeChar;
 
 /**
- * Null extex font.
+ * This class implements a dummy font which does not contain any characters.
  *
- * mgn: incomplete
- *
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
 public class NullExtexFont implements ExtexFont {
 
     /**
+     * @see org.extex.font.BaseFont#getActualFontKey()
+     */
+    public FontKey getActualFontKey() {
+
+        return null;
+    }
+
+    /**
      * @see org.extex.font.ExtexFont#getActualSize()
      */
     public FixedDimen getActualSize() {
 
-        // TODO mgn: getActualSize unimplemented
-        return null;
+        return Dimen.ZERO_PT;
     }
 
     /**
      * @see org.extex.font.ExtexFont#getDepth(org.extex.type.UnicodeChar)
      */
-    public FixedGlue getDepth(UnicodeChar uc) {
+    public FixedGlue getDepth(final UnicodeChar uc) {
 
-        // TODO mgn: getDepth unimplemented
-        return null;
+        return Glue.ZERO;
     }
 
     /**
@@ -59,8 +67,7 @@ public class NullExtexFont implements ExtexFont {
      */
     public FixedDimen getDesignSize() {
 
-        // TODO mgn: getDesignSize unimplemented
-        return null;
+        return Dimen.ONE_PT;
     }
 
     /**
@@ -68,8 +75,7 @@ public class NullExtexFont implements ExtexFont {
      */
     public FixedDimen getEm() {
 
-        // TODO mgn: getEm unimplemented
-        return null;
+        return Dimen.ZERO_PT;
     }
 
     /**
@@ -77,106 +83,14 @@ public class NullExtexFont implements ExtexFont {
      */
     public FixedDimen getEx() {
 
-        // TODO mgn: getEx unimplemented
-        return null;
+        return Dimen.ZERO_PT;
     }
 
     /**
      * @see org.extex.font.ExtexFont#getFontDimen(java.lang.String)
      */
-    public FixedDimen getFontDimen(String name) {
+    public FixedDimen getFontDimen(final String name) {
 
-        // TODO mgn: getFontDimen unimplemented
-        return null;
-    }
-
-    /**
-     * @see org.extex.font.ExtexFont#getFontName()
-     */
-    public String getFontName() {
-
-        // TODO mgn: getFontName unimplemented
-        return null;
-    }
-
-    /**
-     * @see org.extex.font.ExtexFont#getHeight(org.extex.type.UnicodeChar)
-     */
-    public FixedGlue getHeight(UnicodeChar uc) {
-
-        // TODO mgn: getHeight unimplemented
-        return null;
-    }
-
-    /**
-     * @see org.extex.font.ExtexFont#getItalicCorrection(org.extex.type.UnicodeChar)
-     */
-    public FixedDimen getItalicCorrection(UnicodeChar uc) {
-
-        // TODO mgn: getItalicCorrection unimplemented
-        return null;
-    }
-
-    /**
-     * @see org.extex.font.ExtexFont#getKerning(org.extex.type.UnicodeChar, org.extex.type.UnicodeChar)
-     */
-    public FixedDimen getKerning(UnicodeChar uc1, UnicodeChar uc2) {
-
-        // TODO mgn: getKerning unimplemented
-        return null;
-    }
-
-    /**
-     * @see org.extex.font.ExtexFont#getLigature(org.extex.type.UnicodeChar, org.extex.type.UnicodeChar)
-     */
-    public UnicodeChar getLigature(UnicodeChar uc1, UnicodeChar uc2) {
-
-        // TODO mgn: getLigature unimplemented
-        return null;
-    }
-
-    /**
-     * @see org.extex.font.ExtexFont#getScaleFactor()
-     */
-    public FixedCount getScaleFactor() {
-
-        // TODO mgn: getScaleFactor unimplemented
-        return null;
-    }
-
-    /**
-     * @see org.extex.font.ExtexFont#getSpace()
-     */
-    public FixedGlue getSpace() {
-
-        // TODO mgn: getSpace unimplemented
-        return null;
-    }
-
-    /**
-     * @see org.extex.font.ExtexFont#getWidth(org.extex.type.UnicodeChar)
-     */
-    public FixedGlue getWidth(UnicodeChar uc) {
-
-        // TODO mgn: getWidth unimplemented
-        return null;
-    }
-
-    /**
-     * @see org.extex.font.ExtexFont#hasGlyph(org.extex.type.UnicodeChar)
-     */
-    public boolean hasGlyph(UnicodeChar uc) {
-
-        // TODO mgn: hasGlyph unimplemented
-        return false;
-    }
-
-    /**
-     * @see org.extex.font.BaseFont#getActualFontKey()
-     */
-    public FontKey getActualFontKey() {
-
-        // TODO mgn: getActualFontKey unimplemented
         return null;
     }
 
@@ -185,8 +99,81 @@ public class NullExtexFont implements ExtexFont {
      */
     public FontKey getFontKey() {
 
-        // TODO mgn: getFontKey unimplemented
         return null;
+    }
+
+    /**
+     * @see org.extex.font.ExtexFont#getFontName()
+     */
+    public String getFontName() {
+
+        return "nullfont";
+    }
+
+    /**
+     * @see org.extex.font.ExtexFont#getHeight(org.extex.type.UnicodeChar)
+     */
+    public FixedGlue getHeight(final UnicodeChar uc) {
+
+        return Glue.ZERO;
+    }
+
+    /**
+     * @see org.extex.font.ExtexFont#getItalicCorrection(org.extex.type.UnicodeChar)
+     */
+    public FixedDimen getItalicCorrection(final UnicodeChar uc) {
+
+        return Dimen.ZERO_PT;
+    }
+
+    /**
+     * @see org.extex.font.ExtexFont#getKerning(org.extex.type.UnicodeChar,
+     *       org.extex.type.UnicodeChar)
+     */
+    public FixedDimen getKerning(final UnicodeChar uc1, final UnicodeChar uc2) {
+
+        return Dimen.ZERO_PT;
+    }
+
+    /**
+     * @see org.extex.font.ExtexFont#getLigature(org.extex.type.UnicodeChar,
+     *      org.extex.type.UnicodeChar)
+     */
+    public UnicodeChar getLigature(final UnicodeChar uc1, final UnicodeChar uc2) {
+
+        return null;
+    }
+
+    /**
+     * @see org.extex.font.ExtexFont#getScaleFactor()
+     */
+    public FixedCount getScaleFactor() {
+
+        return Count.THOUSAND;
+    }
+
+    /**
+     * @see org.extex.font.ExtexFont#getSpace()
+     */
+    public FixedGlue getSpace() {
+
+        return Glue.ZERO;
+    }
+
+    /**
+     * @see org.extex.font.ExtexFont#getWidth(org.extex.type.UnicodeChar)
+     */
+    public FixedGlue getWidth(final UnicodeChar uc) {
+
+        return Glue.ZERO;
+    }
+
+    /**
+     * @see org.extex.font.ExtexFont#hasGlyph(org.extex.type.UnicodeChar)
+     */
+    public boolean hasGlyph(final UnicodeChar uc) {
+
+        return false;
     }
 
 }

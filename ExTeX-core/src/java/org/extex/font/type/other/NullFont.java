@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -26,7 +26,6 @@ import java.util.Map;
 import org.extex.font.FontByteArray;
 import org.extex.font.FontKey;
 import org.extex.font.FontKeyFactory;
-import org.extex.font.FountKey;
 import org.extex.interpreter.type.count.Count;
 import org.extex.interpreter.type.count.FixedCount;
 import org.extex.interpreter.type.dimen.Dimen;
@@ -39,8 +38,8 @@ import org.extex.type.UnicodeChar;
 /**
  * This class implements a dummy font which does not contain any characters.
  *
- * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
 public class NullFont implements Font, Serializable {
@@ -55,7 +54,7 @@ public class NullFont implements Font, Serializable {
      * The field <tt>serialVersionUID</tt> contains the version number for
      * serialization.
      */
-    protected static final long serialVersionUID = 2006L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * The field <tt>efCode</tt> contains the ef code.
@@ -83,6 +82,14 @@ public class NullFont implements Font, Serializable {
     public NullFont() {
 
         super();
+    }
+
+    /**
+     * @see org.extex.interpreter.type.font.Font#getActualFontKey()
+     */
+    public FontKey getActualFontKey() {
+
+        return null;
     }
 
     /**
@@ -202,7 +209,7 @@ public class NullFont implements Font, Serializable {
      */
     public FixedDimen getItalicCorrection(final UnicodeChar uc) {
 
-        return null;
+        return Dimen.ZERO_PT;
     }
 
     /**
@@ -211,15 +218,7 @@ public class NullFont implements Font, Serializable {
      */
     public FixedDimen getKerning(final UnicodeChar uc1, final UnicodeChar uc2) {
 
-        return null;
-    }
-
-    /**
-     * @see org.extex.interpreter.type.font.Font#getLetterSpacing()
-     */
-    public FixedGlue getLetterSpacing() {
-
-        return null;
+        return Dimen.ZERO_PT;
     }
 
     /**
@@ -239,6 +238,14 @@ public class NullFont implements Font, Serializable {
     public String getProperty(final String key) {
 
         return null;
+    }
+
+    /**
+     * @see org.extex.interpreter.type.font.Font#getScaleFactor()
+     */
+    public FixedCount getScaleFactor() {
+
+        return Count.THOUSAND;
     }
 
     /**
@@ -311,42 +318,18 @@ public class NullFont implements Font, Serializable {
      * @see org.extex.interpreter.type.font.Font#setHyphenChar(
      *      org.extex.type.UnicodeChar)
      */
-    public void setHyphenChar(final UnicodeChar ahyphen) {
+    public void setHyphenChar(final UnicodeChar hyphen) {
 
-        this.hyphen = ahyphen;
+        this.hyphen = hyphen;
     }
 
     /**
      * @see org.extex.interpreter.type.font.Font#setSkewChar(
      *      org.extex.type.UnicodeChar)
      */
-    public void setSkewChar(final UnicodeChar askew) {
+    public void setSkewChar(final UnicodeChar skew) {
 
-        this.skew = askew;
-    }
-
-    public void setActualSize(Dimen size) {
-
-        // TODO mgn: setActualSize unimplemented
-        
-    }
-
-    public void setScaleFactor(Count scaleFactor) {
-
-        // TODO mgn: setScaleFactor unimplemented
-        
-    }
-
-    public FixedCount getScaleFactor() {
-
-        // TODO mgn: getScaleFactor unimplemented
-        return null;
-    }
-
-    public FontKey getActualFontKey() {
-
-        // TODO mgn: getActualFontKey unimplemented
-        return null;
+        this.skew = skew;
     }
 
 }
