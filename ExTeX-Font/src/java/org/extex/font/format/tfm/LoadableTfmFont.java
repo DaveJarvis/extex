@@ -97,7 +97,7 @@ public class LoadableTfmFont implements LoadableFont {
     public FixedGlue getDepth(final UnicodeChar uc) {
 
         int cp = charPos(uc);
-        if (cp >= 0) {
+        if (cp >= 0 && reader.getDepth(cp) != null) {
             return new Glue((getActualSize().getValue() * reader.getDepth(cp)
                     .getValue()) >> 20);
         }
@@ -161,7 +161,7 @@ public class LoadableTfmFont implements LoadableFont {
     public FixedGlue getHeight(final UnicodeChar uc) {
 
         int cp = charPos(uc);
-        if (cp >= 0) {
+        if (cp >= 0 && reader.getHeight(cp) != null) {
             return new Glue((getActualSize().getValue() * reader.getHeight(cp)
                     .getValue()) >> 20);
         }
@@ -174,7 +174,7 @@ public class LoadableTfmFont implements LoadableFont {
     public FixedDimen getItalicCorrection(final UnicodeChar uc) {
 
         int cp = charPos(uc);
-        if (cp >= 0) {
+        if (cp >= 0 && reader.getItalicCorrection(cp) != null) {
             return new Dimen((getActualSize().getValue() * reader
                     .getItalicCorrection(cp).getValue()) >> 20);
         }
@@ -237,7 +237,7 @@ public class LoadableTfmFont implements LoadableFont {
     public FixedGlue getWidth(final UnicodeChar uc) {
 
         int cp = charPos(uc);
-        if (cp >= 0) {
+        if (cp >= 0 && reader.getWidth(cp) != null) {
             return new Glue((getActualSize().getValue() * reader.getWidth(cp)
                     .getValue()) >> 20);
         }
@@ -279,7 +279,12 @@ public class LoadableTfmFont implements LoadableFont {
      */
     public boolean hasGlyph(final UnicodeChar uc) {
 
-        return (charPos(uc) > 0);
+        int cp = charPos(uc);
+        TfmFixWord w = reader.getWidth(cp);
+        if (w == null || w.getValue() == 0) {
+            return false;
+        }
+        return true;
     }
 
     /**
