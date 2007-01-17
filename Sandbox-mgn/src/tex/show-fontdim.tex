@@ -1,0 +1,38 @@
+% Ausgabe von Fontparametern.
+% Rolf Niepraschk, Rolf.Niepraschk@gmx.de, 2007-01-14
+%
+% kleine Änderungen mgn 2007-01-17
+%
+% Aufruf etex shonw-fontdimen.tex
+%
+
+\def\fname{cmr10 at 12pt}
+
+\def\typeout{\immediate\write17}
+\count0=0\relax
+\font\f=\fname\relax
+\typeout{// ************************************************************}
+\typeout{// \fname}
+\loop
+  \count1=\fontcharwd\f\count0\relax
+  \count2=\fontcharht\f\count0\relax
+  \count3=\fontchardp\f\count0\relax
+  \count4=\fontcharic\f\count0\relax
+  \iffontchar\f\count0\relax
+   \typeout{// Char \the\count0: %
+       Width=\the\count1, Height=\the\count2, Depth=\the\count3, IC=\the\count4}
+  \else
+   \typeout{// Char \the\count0: notdef}%
+  \fi
+  \advance \count0 by 1\relax
+\ifnum \count0<256\relax \repeat
+
+\setbox0=\hbox{AV}
+\setbox1=\hbox{A{}V}
+
+\count1\wd1\relax \advance\count1-\wd0\relax
+
+\typeout{// Kerning: AV : \the\count1}
+\typeout{// ************************************************************}
+
+\bye
