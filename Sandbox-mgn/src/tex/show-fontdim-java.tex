@@ -11,6 +11,8 @@
 \def\typeout{\immediate\write17}
 \count0=0\relax
 \font\f=\fname\relax
+\edef\LBRACE{\string{}
+\edef\RBRACE{\string}}
 \typeout{// ************************************************************}
 \loop
   \count1=\fontcharwd\f\count0\relax
@@ -22,7 +24,7 @@
   \typeout{*/}
   \iffontchar\f\count0\relax
    \typeout{public void test\fname C\the\count0() throws Exception}
-   \typeout{XXX}
+   \typeout{\LBRACE}
    \typeout{FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + \the\count0));}
    \typeout{FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + \the\count0));}
    \typeout{FixedGlue d = font.getDepth(UnicodeChar.get(Unicode.OFFSET + \the\count0));}
@@ -39,12 +41,12 @@
    \typeout{ new Glue(\the\count3).eq(d));}
    \typeout{assertTrue(Long.toString(i.getValue()),}
    \typeout{ new Dimen(\the\count4).eq(i));}
-   \typeout{YYY}
+   \typeout{\RBRACE}
   \else
    \typeout{public void test\fname C\the\count0() throws Exception}
-   \typeout{XXX}
+   \typeout{\LBRACE}
    \typeout{assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + \the\count0)));}
-   \typeout{YYY}
+   \typeout{\RBRACE}
   \fi
   \advance \count0 by 1\relax
 \ifnum \count0<256\relax \repeat
