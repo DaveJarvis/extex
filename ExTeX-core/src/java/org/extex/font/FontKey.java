@@ -28,6 +28,8 @@ import org.extex.interpreter.type.count.Count;
 import org.extex.interpreter.type.count.FixedCount;
 import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.interpreter.type.glue.FixedGlue;
+import org.extex.interpreter.type.glue.Glue;
 
 /**
  * Class for a font key.
@@ -67,6 +69,11 @@ public class FontKey implements Serializable {
     public static final String LIGATURES = "ligatures";
 
     /**
+     * Use the letterspaced information of the font.
+     */
+    public static final String LETTERSPACE = "letterspaced";
+
+    /**
      * Use the kerning information of the font.
      */
     public static final String KERNING = "kerning";
@@ -85,6 +92,11 @@ public class FontKey implements Serializable {
      * Map for dimen values.
      */
     private Map dimenMap;
+
+    /**
+     * Map for glue values.
+     */
+    private Map glueMap;
 
     /**
      * Map for count values.
@@ -111,6 +123,7 @@ public class FontKey implements Serializable {
         name = fk.getName();
         stringMap = new HashMap(fk.getStringMap());
         dimenMap = new HashMap(fk.getDimenMap());
+        glueMap = new HashMap(fk.getGlueMap());
         countMap = new HashMap(fk.getCountMap());
         booleanMap = new HashMap(fk.getBooleanMap());
     }
@@ -129,6 +142,7 @@ public class FontKey implements Serializable {
 
         stringMap = new HashMap();
         dimenMap = new HashMap();
+        glueMap = new HashMap();
         countMap = new HashMap();
         booleanMap = new HashMap();
 
@@ -175,6 +189,17 @@ public class FontKey implements Serializable {
      * @param key The key.
      * @return Returns the value for the key.
      */
+    public FixedGlue getGlue(final String key) {
+
+        return (FixedGlue) glueMap.get(key);
+    }
+
+    /**
+     * Returns the value for the key or <code>null</code>,
+     * if no key exists in the map.
+     * @param key The key.
+     * @return Returns the value for the key.
+     */
     public FixedCount getCount(final String key) {
 
         return (FixedCount) countMap.get(key);
@@ -187,6 +212,15 @@ public class FontKey implements Serializable {
     protected Map getDimenMap() {
 
         return dimenMap;
+    }
+
+    /**
+     * Returns the glueMap.
+     * @return Returns the glueMap.
+     */
+    protected Map getGlueMap() {
+
+        return glueMap;
     }
 
     /**
@@ -242,6 +276,8 @@ public class FontKey implements Serializable {
                 put(key, (String) obj);
             } else if (obj instanceof Dimen) {
                 put(key, (Dimen) obj);
+            } else if (obj instanceof Glue) {
+                put(key, (Glue) obj);
             } else if (obj instanceof Count) {
                 put(key, (Count) obj);
             } else if (obj instanceof Boolean) {
@@ -268,6 +304,16 @@ public class FontKey implements Serializable {
     public void put(final String key, final FixedDimen value) {
 
         dimenMap.put(key, value);
+    }
+
+    /**
+     * Put an key values pair on the map.
+     * @param key   The key.
+     * @param value The value.
+     */
+    public void put(final String key, final FixedGlue value) {
+
+        glueMap.put(key, value);
     }
 
     /**
@@ -313,6 +359,14 @@ public class FontKey implements Serializable {
 
             buf.append(" ").append(key).append("=");
             c.toString(buf);
+        }
+
+        it = glueMap.keySet().iterator();
+        while (it.hasNext()) {
+            String key = (String) it.next();
+            FixedGlue g = getGlue(key);
+
+            buf.append(" ").append(key).append("=").append(g.toString());
         }
 
         it = stringMap.keySet().iterator();
