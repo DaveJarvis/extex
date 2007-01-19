@@ -23,7 +23,6 @@ import java.io.IOException;
 import java.io.Serializable;
 
 import org.extex.util.EFMWriterConvertible;
-import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 
@@ -61,7 +60,6 @@ import de.dante.extex.unicodeFont.format.pl.PlWriter;
 
 public class TfmCharInfoArray
         implements
-            XMLWriterConvertible,
             EFMWriterConvertible,
             PlFormat,
             Serializable {
@@ -72,9 +70,49 @@ public class TfmCharInfoArray
     private static final long serialVersionUID = 1L;
 
     /**
+     * smallest character code in the font.
+     */
+    private short bc;
+
+    /**
      * the char info.
      */
     private TfmCharInfoWord[] charinfoword;
+
+    /**
+     * the depth.
+     */
+    private TfmDepthArray depth;
+
+    /**
+     * encdoing table.
+     */
+    private String[] enctable;
+
+    /**
+     * the exten.
+     */
+    private TfmExtenArray exten;
+
+    /**
+     * the height.
+     */
+    private TfmHeightArray height;
+
+    /**
+     * the italic.
+     */
+    private TfmItalicArray italic;
+
+    /**
+     * Lig/kern programs in the final format.
+     */
+    private TfmLigKern[] ligKernTable;
+
+    /**
+     * the width.
+     */
+    private TfmWidthArray width;
 
     /**
      * Create a new object.
@@ -92,48 +130,16 @@ public class TfmCharInfoArray
     }
 
     /**
-     * Returns the charinfoword.
-     * @return Returns the charinfoword.
+     * Check the existence of particular character in the font.
+     *
+     * @param pos   the checked character code.
+     * @return <code>true</code> if the character is present.
      */
-    public TfmCharInfoWord[] getCharinfoword() {
+    private boolean charExists(final short pos) {
 
-        return charinfoword;
+        int c = pos - bc;
+        return (c >= 0 && c < charinfoword.length && charinfoword[c].exists());
     }
-
-    /**
-     * the width.
-     */
-    private TfmWidthArray width;
-
-    /**
-     * the height.
-     */
-    private TfmHeightArray height;
-
-    /**
-     * the depth.
-     */
-    private TfmDepthArray depth;
-
-    /**
-     * the italic.
-     */
-    private TfmItalicArray italic;
-
-    /**
-     * smallest character code in the font.
-     */
-    private short bc;
-
-    /**
-     * the exten.
-     */
-    private TfmExtenArray exten;
-
-    /**
-     * Lig/kern programs in the final format.
-     */
-    private TfmLigKern[] ligKernTable;
 
     /**
      * Create the char table.
@@ -198,6 +204,142 @@ public class TfmCharInfoArray
     }
 
     /**
+     * Create the ligature/kerning map.
+     */
+    public void createLigKernMap() {
+
+        for (int i = 0; i < charinfoword.length; i++) {
+            charinfoword[i].createLigKernMap();
+        }
+
+    }
+
+    /**
+     * Returns the bc.
+     * @return Returns the bc.
+     */
+    public short getBc() {
+
+        return bc;
+    }
+
+    /**
+     * Returns the charinfoword.
+     * @return Returns the charinfoword.
+     */
+    public TfmCharInfoWord[] getCharinfoword() {
+
+        return charinfoword;
+    }
+
+    /**
+     * Returns the charinfoword for the character.
+     * If the position less then bc (first character in the font),
+     * <code>null</code> will be returned.
+     *
+     * @param i the position of the character
+     * @return Returns the charinfoword for the character.
+     */
+    public TfmCharInfoWord getCharInfoWord(final int i) {
+
+        if (i < bc) {
+            return null;
+        }
+        int idx = i;
+        if (bc != 0) {
+            idx = i - bc;
+        }
+        if (idx >= 0 && idx < charinfoword.length) {
+            return charinfoword[idx];
+        }
+        return null;
+    }
+
+    /**
+     * Returns the depth.
+     * @return Returns the depth.
+     */
+    public TfmDepthArray getDepth() {
+
+        return depth;
+    }
+
+    /**
+     * Returns the height.
+     * @return Returns the height.
+     */
+    public TfmHeightArray getHeight() {
+
+        return height;
+    }
+
+    /**
+     * Returns the italic.
+     * @return Returns the italic.
+     */
+    public TfmItalicArray getItalic() {
+
+        return italic;
+    }
+
+    /**
+     * Returns the width.
+     * @return Returns the width.
+     */
+    public TfmWidthArray getWidth() {
+
+        return width;
+    }
+
+    /**
+     * Set the encdoing table.
+     * @param et    the encoding table
+     */
+    public void setEncodingTable(final String[] et) {
+
+        if (et != null) {
+            enctable = et;
+            for (int i = 0; i < charinfoword.length; i++) {
+                if (i < enctable.length) {
+                    charinfoword[i].setGlyphname(enctable[i]);
+                }
+            }
+        }
+    }
+
+    /**
+     * Gets referenced character dimension from apropriate table.
+     *
+     * @param table     referenced table of dimensions.
+     * @param i         referenced index to the dimension table.
+     * @param pos       the position of character in <code>charTable</code> for
+     *                  error messages.
+     * @return Returns the FixWord
+     */
+    private TfmFixWord takeDimen(final TfmFixWord[] table, final short i,
+            final int pos) {
+
+        if (i < table.length) {
+            return table[i];
+        }
+        return TfmFixWord.ZERO;
+    }
+
+    /**
+     * @see org.extex.font.type.PlFormat#toPL(org.extex.font.type.PlWriter)
+     */
+    public void toPL(final PlWriter out) throws IOException {
+
+        for (int i = 0; i < charinfoword.length; i++) {
+            if (charinfoword[i] != null) {
+                out.plopen("CHARACTER").addChar((short) (i + bc));
+                charinfoword[i].toPL(out);
+                out.plclose();
+            }
+        }
+    }
+
+    /**
      * Checks the consistency of larger character chain. It checks only the
      * characters which have less position in |charTable| then the given
      * character position and are supossed to have the corresponding <code>CharInfo</code>
@@ -219,36 +361,6 @@ public class TfmCharInfoArray
             next = ciw.getRemainder();
         }
         return true;
-    }
-
-    /**
-     * Check the existence of particular character in the font.
-     *
-     * @param pos   the checked character code.
-     * @return <code>true</code> if the character is present.
-     */
-    private boolean charExists(final short pos) {
-
-        int c = pos - bc;
-        return (c >= 0 && c < charinfoword.length && charinfoword[c].exists());
-    }
-
-    /**
-     * Gets referenced character dimension from apropriate table.
-     *
-     * @param table     referenced table of dimensions.
-     * @param i         referenced index to the dimension table.
-     * @param pos       the position of character in <code>charTable</code> for
-     *                  error messages.
-     * @return Returns the FixWord
-     */
-    private TfmFixWord takeDimen(final TfmFixWord[] table, final short i,
-            final int pos) {
-
-        if (i < table.length) {
-            return table[i];
-        }
-        return TfmFixWord.ZERO;
     }
 
     /**
@@ -335,131 +447,5 @@ public class TfmCharInfoArray
                 writer.writeEndElement();
             }
         }
-    }
-
-    /**
-     * encdoing table.
-     */
-    private String[] enctable;
-
-    /**
-     * Set the encdoing table.
-     * @param et    the encoding table
-     */
-    public void setEncodingTable(final String[] et) {
-
-        if (et != null) {
-            enctable = et;
-            for (int i = 0; i < charinfoword.length; i++) {
-                if (i < enctable.length) {
-                    charinfoword[i].setGlyphname(enctable[i]);
-                }
-            }
-        }
-    }
-
-    /**
-     * Returns the charinfoword for the character.
-     * If the position less then bc (first character in the font),
-     * <code>null</code> will be returned.
-     *
-     * @param i the position of the character
-     * @return Returns the charinfoword for the character.
-     */
-    public TfmCharInfoWord getCharInfoWord(final int i) {
-
-        if (i < bc) {
-            return null;
-        }
-        int idx = i;
-        if (bc != 0) {
-            idx = i - bc;
-        }
-        if (idx >= 0 && idx < charinfoword.length) {
-            return charinfoword[idx];
-        }
-        return null;
-    }
-
-    /**
-     * @see org.extex.font.type.PlFormat#toPL(org.extex.font.type.PlWriter)
-     */
-    public void toPL(final PlWriter out) throws IOException {
-
-        for (int i = 0; i < charinfoword.length; i++) {
-            if (charinfoword[i] != null) {
-                out.plopen("CHARACTER").addChar((short) (i + bc));
-                charinfoword[i].toPL(out);
-                out.plclose();
-            }
-        }
-    }
-
-    /**
-     * @see org.extex.util.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(XMLStreamWriter writer) throws IOException {
-
-        writer.writeStartElement("charinfo");
-        for (int i = 0; i < charinfoword.length; i++) {
-            charinfoword[i].writeXML(writer);
-        }
-        writer.writeEndElement();
-    }
-
-    /**
-     * Returns the depth.
-     * @return Returns the depth.
-     */
-    public TfmDepthArray getDepth() {
-
-        return depth;
-    }
-
-    /**
-     * Returns the height.
-     * @return Returns the height.
-     */
-    public TfmHeightArray getHeight() {
-
-        return height;
-    }
-
-    /**
-     * Returns the italic.
-     * @return Returns the italic.
-     */
-    public TfmItalicArray getItalic() {
-
-        return italic;
-    }
-
-    /**
-     * Returns the width.
-     * @return Returns the width.
-     */
-    public TfmWidthArray getWidth() {
-
-        return width;
-    }
-
-    /**
-     * Returns the bc.
-     * @return Returns the bc.
-     */
-    public short getBc() {
-
-        return bc;
-    }
-
-    /**
-     * Create the ligature/kerning map.
-     */
-    public void createLigKernMap() {
-
-        for (int i = 0; i < charinfoword.length; i++) {
-            charinfoword[i].createLigKernMap();
-        }
-
     }
 }

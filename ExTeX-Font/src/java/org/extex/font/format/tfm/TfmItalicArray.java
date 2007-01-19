@@ -22,10 +22,7 @@ package org.extex.font.format.tfm;
 import java.io.IOException;
 import java.io.Serializable;
 
-import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
-import org.extex.util.xml.XMLStreamWriter;
-
 
 /**
  * Class for TFM italic table.
@@ -42,7 +39,7 @@ import org.extex.util.xml.XMLStreamWriter;
  * @version $Revision$
  */
 
-public class TfmItalicArray implements XMLWriterConvertible, Serializable {
+public class TfmItalicArray implements Serializable {
 
     /**
      * The field <tt>serialVersionUID</tt> ...
@@ -81,20 +78,4 @@ public class TfmItalicArray implements XMLWriterConvertible, Serializable {
         return table;
     }
 
-    /**
-     * @see org.extex.util.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(final XMLStreamWriter writer) throws IOException {
-
-        writer.writeStartElement("italictable");
-        for (int i = 0; i < table.length; i++) {
-            writer.writeStartElement("italic");
-            writer.writeAttribute("id", String.valueOf(i));
-            writer.writeAttribute("value_fw", String.valueOf(table[i]
-                    .getValue()));
-            writer.writeAttribute("value", table[i].toStringComma());
-            writer.writeEndElement();
-        }
-        writer.writeEndElement();
-    }
 }

@@ -38,6 +38,35 @@ public class TfmLigature extends TfmLigKern implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
+     * Character code representing the ligature character to be added
+     * between the current and next character in the text if this
+     * instruction is activated.
+     */
+    private short addingChar;
+
+    /**
+     * Indication that the current character should not be removed.
+     */
+    private boolean keepLeft;
+
+    /**
+     * If some of the following flags are not set, the corresponding
+     * character in the text is removed after inserting the ligature
+     * character (in the process of constituing of ligatures).
+     */
+
+    /**
+     * Indication that the next character should not be removed.
+     */
+    private boolean keepRight;
+
+    /**
+     * Tells how many characters from the current position in the text
+     * should be skiped over after performing this instruction.
+     */
+    private byte stepOver;
+
+    /**
      * Create a new object.
      *
      * @param skip  the skip amount to the next instruction.
@@ -60,41 +89,21 @@ public class TfmLigature extends TfmLigKern implements Serializable {
     }
 
     /**
-     * Character code representing the ligature character to be added
-     * between the current and next character in the text if this
-     * instruction is activated.
-     */
-    private short addingChar;
-
-    /**
-     * If some of the following flags are not set, the corresponding
-     * character in the text is removed after inserting the ligature
-     * character (in the process of constituing of ligatures).
-     */
-
-    /**
-     * Indication that the current character should not be removed.
-     */
-    private boolean keepLeft;
-
-    /**
-     * Indication that the next character should not be removed.
-     */
-    private boolean keepRight;
-
-    /**
-     * Tells how many characters from the current position in the text
-     * should be skiped over after performing this instruction.
-     */
-    private byte stepOver;
-
-    /**
      * Returns the addingChar.
      * @return Returns the addingChar.
      */
     public short getAddingChar() {
 
         return addingChar;
+    }
+
+    /**
+     * Returns the stepOver.
+     * @return Returns the stepOver.
+     */
+    public byte getStepOver() {
+
+        return stepOver;
     }
 
     /**
@@ -113,15 +122,6 @@ public class TfmLigature extends TfmLigKern implements Serializable {
     public boolean isKeepRight() {
 
         return keepRight;
-    }
-
-    /**
-     * Returns the stepOver.
-     * @return Returns the stepOver.
-     */
-    public byte getStepOver() {
-
-        return stepOver;
     }
 
     /**

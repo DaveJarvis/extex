@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -22,10 +22,7 @@ package org.extex.font.format.tfm;
 import java.io.IOException;
 import java.io.Serializable;
 
-import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
-import org.extex.util.xml.XMLStreamWriter;
-
 
 /**
  * Class for TFM kern table.
@@ -42,10 +39,10 @@ import org.extex.util.xml.XMLStreamWriter;
  * @version $Revision$
  */
 
-public class TfmKernArray implements XMLWriterConvertible, Serializable {
+public class TfmKernArray implements Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * The field <tt>serialVersionUID</tt>.
      */
     private static final long serialVersionUID = 1L;
 
@@ -81,18 +78,4 @@ public class TfmKernArray implements XMLWriterConvertible, Serializable {
         return table;
     }
 
-    /**
-     * @see org.extex.util.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(final XMLStreamWriter writer) throws IOException {
-
-        writer.writeStartElement("kerntable");
-        for (int i = 0; i < table.length; i++) {
-            writer.writeStartElement("kern");
-            writer.writeAttribute("id", String.valueOf(i));
-            writer.writeAttribute("value", table[i].toStringComma());
-            writer.writeEndElement();
-        }
-        writer.writeEndElement();
-    }
 }

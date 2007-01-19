@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -22,10 +22,7 @@ package org.extex.font.format.tfm;
 import java.io.IOException;
 import java.io.Serializable;
 
-import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
-import org.extex.util.xml.XMLStreamWriter;
-
 
 /**
  * Class for extensible recipe.
@@ -47,27 +44,12 @@ import org.extex.util.xml.XMLStreamWriter;
  * @version $Revision$
  */
 
-public class TfmExtensibleRecipe implements XMLWriterConvertible, Serializable {
+public class TfmExtensibleRecipe implements Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * The field <tt>serialVersionUID</tt>.
      */
     private static final long serialVersionUID = 1L;
-
-    /**
-     * the id.
-     */
-    private int etid;
-
-    /**
-     * top.
-     */
-    private short top;
-
-    /**
-     * mid.
-     */
-    private short mid;
 
     /**
      * bot.
@@ -75,9 +57,24 @@ public class TfmExtensibleRecipe implements XMLWriterConvertible, Serializable {
     private short bot;
 
     /**
+     * the id.
+     */
+    private int etid;
+
+    /**
+     * mid.
+     */
+    private short mid;
+
+    /**
      * rep.
      */
     private short rep;
+
+    /**
+     * top.
+     */
+    private short top;
 
     /**
      * Create a new object.
@@ -131,17 +128,4 @@ public class TfmExtensibleRecipe implements XMLWriterConvertible, Serializable {
         return top;
     }
 
-    /**
-     * @see org.extex.util.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(final XMLStreamWriter writer) throws IOException {
-
-        writer.writeStartElement("extensiblerecipe");
-        writer.writeAttribute("id", String.valueOf(etid));
-        writer.writeAttribute("top", String.valueOf(top));
-        writer.writeAttribute("mid", String.valueOf(mid));
-        writer.writeAttribute("bot", String.valueOf(bot));
-        writer.writeAttribute("rep", String.valueOf(rep));
-        writer.writeEndElement();
-    }
 }

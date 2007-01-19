@@ -22,9 +22,7 @@ package org.extex.font.format.tfm;
 import java.io.IOException;
 import java.io.Serializable;
 
-import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
-import org.extex.util.xml.XMLStreamWriter;
 
 import de.dante.extex.unicodeFont.format.pl.PlFormat;
 import de.dante.extex.unicodeFont.format.pl.PlWriter;
@@ -101,17 +99,16 @@ import de.dante.extex.unicodeFont.format.pl.PlWriter;
  * The TUG DVI Driver Standards Committee
  * </p>
  *
- * mgn: in map umbauen
- *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
 
-public class TfmLigKernArray
-        implements
-            XMLWriterConvertible,
-            PlFormat,
-            Serializable {
+public class TfmLigKernArray implements PlFormat, Serializable {
+
+    /**
+     * Code for left boundary lig/kern program in <code>labels</code> table.
+     */
+    private static final int BOUNDARYLABEL = TfmCharInfoWord.NOCHARCODE;
 
     /**
      * The field <tt>serialVersionUID</tt>.
@@ -119,9 +116,20 @@ public class TfmLigKernArray
     private static final long serialVersionUID = 1L;
 
     /**
-     * the array.
+     * smallest character code in the font.
      */
-    private TfmLigKernCommand[] ligkerncommand;
+    private short bc;
+
+    /**
+     * Invisible right boundary character code.
+     */
+    private short boundaryChar = TfmCharInfoWord.NOCHARCODE;
+
+    /**
+     * Starting index of lig/kern program for invisible left boundary character
+     * or <code>NOINDEX</code> if there is no such program.
+     */
+    private int boundaryStart = TfmCharInfoWord.NOINDEX;
 
     /**
      * charinfo.
@@ -132,6 +140,21 @@ public class TfmLigKernArray
      * kern.
      */
     private TfmKernArray kern;
+
+    /**
+     * The associative table of lig/kern program starts in <code>ligAuxTab</code>.
+     */
+    private TfmIndexMultimap labels = new TfmIndexMultimap();
+
+    /**
+     * the array.
+     */
+    private TfmLigKernCommand[] ligkerncommand;
+
+    /**
+     * Lig/kern programs in the final format.
+     */
+    private TfmLigKern[] ligKernTable;
 
     /**
      * Create a new object.
@@ -150,9 +173,51 @@ public class TfmLigKernArray
     }
 
     /**
-     * smallest character code in the font.
+     * Builds associative table labels which maps the character
+     * codes to lig/kern program starting indexes in ligAuxTab
+     * for remapping later.
+     * It also marks the starting instructions of lig/kern
+     * programs as active
+     * (using the <code>activity</code> field of LigKern).
+     * TFtoPL[67]
      */
-    private short bc;
+    private void buildLabels() {
+
+        TfmCharInfoWord[] ciw = charinfo.getCharinfoword();
+
+        for (int i = 0; i < ciw.length; i++) {
+            if (ciw[i].getTag() == TfmCharInfoWord.LIG_TAG) {
+                int start = ligStart(ciw[i].getRemainder());
+                if (start < ligkerncommand.length) {
+                    labels.add(start, i);
+                    ligkerncommand[start]
+                            .setActivity(TfmLigKernCommand.ACCESSIBLE);
+                } else {
+                    ciw[i].resetTag();
+                }
+            }
+        }
+    }
+
+    /**
+     * Fills in the blank <code>ligKernTable</code> by the final version of
+     * lig/kern instructions.
+     */
+    private void buildLigKernTable() {
+
+        int currIns = 0;
+        for (int i = 0; i < ligkerncommand.length; i++) {
+            setLigStarts(i, currIns);
+            TfmLigKernCommand lkc = ligkerncommand[i];
+            if (lkc.getActivity() != TfmLigKernCommand.PASSTHROUGH) {
+                if (!lkc.meansRestart()) {
+                    int skip = getSkip(i);
+                    ligKernTable[currIns++] = (lkc.meansKern()) ? makeKern(lkc,
+                            skip) : makeLig(lkc, skip);
+                }
+            }
+        }
+    }
 
     /**
      * Calculate lig/kern.
@@ -177,25 +242,193 @@ public class TfmLigKernArray
     }
 
     /**
-     * Invisible right boundary character code.
+     * Check, if char has ligature or kern.
+     * @param ciw   the char
+     * @return Returns true, if the char has a ligature or a kern
      */
-    private short boundaryChar = TfmCharInfoWord.NOCHARCODE;
+    private boolean foundLigKern(final TfmCharInfoWord ciw) {
+
+        boolean found = false;
+        int ligstart = ciw.getLigkernstart();
+        if (ligstart != TfmCharInfoWord.NOINDEX && ligKernTable != null) {
+
+            for (int k = ligstart; k != TfmCharInfoWord.NOINDEX; k = ligKernTable[k]
+                    .nextIndex(k)) {
+                TfmLigKern lk = ligKernTable[k];
+
+                if (lk instanceof TfmLigature || lk instanceof TfmKerning) {
+                    found = true;
+                    break;
+                }
+            }
+        }
+        return found;
+    }
 
     /**
-     * Starting index of lig/kern program for invisible left boundary character
-     * or <code>NOINDEX</code> if there is no such program.
+     * Returns the boundaryChar.
+     * @return Returns the boundaryChar.
      */
-    private int boundaryStart = TfmCharInfoWord.NOINDEX;
+    public short getBoundaryChar() {
+
+        return boundaryChar;
+    }
 
     /**
-     * The associative table of lig/kern program starts in <code>ligAuxTab</code>.
+     * Returns the boundaryStart.
+     * @return Returns the boundaryStart.
      */
-    private TfmIndexMultimap labels = new TfmIndexMultimap();
+    public int getBoundaryStart() {
+
+        return boundaryStart;
+    }
 
     /**
-     * Code for left boundary lig/kern program in <code>labels</code> table.
+     * Return the kerning.
+     *
+     * @param cp1 the left char. This character has to exist.
+     * @param cp2 the right char. This character has to exist.
+     * @return the kerning.
      */
-    private static final int BOUNDARYLABEL = TfmCharInfoWord.NOCHARCODE;
+    public TfmFixWord getKerning(final int cp1, final int cp2) {
+
+        TfmCharInfoWord ciw = charinfo.getCharinfoword()[cp1];
+        if (ciw == null) {
+            return TfmFixWord.ZERO;
+        }
+
+        return ciw.getKerning(cp2);
+    }
+
+    /**
+     * Return the ligature.
+     *
+     * If no ligature exists, the -1 is returned.
+     *
+     * @param cp1 the left char. This character has to exist.
+     * @param cp2 the right char. This character has to exist.
+     * @return the ligature.
+     */
+    public int getLigature(final int cp1, final int cp2) {
+
+        TfmCharInfoWord ciw = charinfo.getCharinfoword()[cp1];
+        if (ciw == null || !foundLigKern(ciw) || ligKernTable == null) {
+            return -1;
+        }
+
+        return ciw.getLigature(cp2);
+    }
+
+    /**
+     * Returns the ligkerncommand.
+     * @return Returns the ligkerncommand.
+     */
+    public TfmLigKernCommand[] getLigkerncommand() {
+
+        return ligkerncommand;
+    }
+
+    /**
+     * Returns the ligKernTable.
+     * @return Returns the ligKernTable.
+     */
+    public TfmLigKern[] getLigKernTable() {
+
+        return ligKernTable;
+    }
+
+    /**
+     * Gets the offset of next lig/kern instruction in a program based on
+     * counting only those intervene instructions which will be converted to
+     * final lig/kern program.
+     *
+     * @param pos   the position of current lig/kern instruction
+     *              in ligAuxTable.
+     * @return Returns the skip amount of the next instruction
+     *         in the final version of lig/kern program.
+     */
+    private int getSkip(final int pos) {
+
+        TfmLigKernCommand lkc = ligkerncommand[pos];
+        if (lkc.meansStop()) {
+            return -1;
+        }
+        int p = pos;
+        int skip = 0;
+        int next = lkc.nextIndex(pos);
+        while (++p < next) {
+            if (ligkerncommand[pos].getActivity() != TfmLigKernCommand.PASSTHROUGH) {
+                skip++;
+            }
+        }
+        return skip;
+    }
+
+    /**
+     * Finds out the actual starting index of lig/kern program in case there is
+     * a restart instructions and checks for validity.
+     * TFtoPL[67]
+     *
+     * @param start     the starting index of lig/kern program
+     *                  given in a character info.
+     * @return Returns the actual starting index.
+     */
+    private int ligStart(final int start) {
+
+        int newstart = start;
+        if (newstart < ligkerncommand.length) {
+            TfmLigKernCommand lkc = ligkerncommand[start];
+            if (lkc.meansRestart()) {
+                newstart = lkc.restartIndex();
+                if (newstart < ligkerncommand.length
+                        && lkc.getActivity() == TfmLigKernCommand.UNREACHABLE) {
+                    lkc.setActivity(TfmLigKernCommand.PASSTHROUGH);
+                }
+            }
+        }
+        return newstart;
+    }
+
+    /**
+     * Creates a final version of kerning instruction after validity checks.
+     *
+     * @param lkc   the original version of lig/kern instruction.
+     * @param skip  the offset of next lig/kern instruction in the final version
+     *              of the lig/kern program.
+     * @return Returns the ligkern
+     */
+    private TfmLigKern makeKern(final TfmLigKernCommand lkc, final int skip) {
+
+        int kernIdx = lkc.kernIndex();
+        TfmFixWord kernword = null;
+        if (kernIdx < kern.getTable().length) {
+            kernword = kern.getTable()[kernIdx];
+        } else {
+            kernword = TfmFixWord.ZERO;
+        }
+        return new TfmKerning(skip, lkc.nextChar(), kernword);
+    }
+
+    /**
+     * Creates a final version of ligature instruction after validity checks.
+     *
+     * @param lkc   the original version of lig/kern instruction.
+     * @param skip  the offset of next lig/kern instruction in the final version
+     *              of the lig/kern program.
+     * @return Returns the ligkern
+     */
+    private TfmLigKern makeLig(final TfmLigKernCommand lkc, final int skip) {
+
+        //       if (!charExists(lkc.ligChar())) {
+        //           badchar(lkc.ligChar(), "Ligature step produces the");
+        //           lkc.setLigChar(firstCharCode);
+        //       }
+        boolean left = lkc.leaveLeft();
+        boolean right = lkc.leaveRight();
+        byte step = lkc.stepOver();
+        return new TfmLigature(skip, lkc.nextChar(), lkc.ligChar(), left,
+                right, step);
+    }
 
     /**
      * Marks the lig/kern instructions which are really a part of some lig/kern
@@ -227,99 +460,6 @@ public class TfmLigKernArray
             }
         }
         ligKernTable = new TfmLigKern[ligKernLength];
-    }
-
-    /**
-     * Lig/kern programs in the final format.
-     */
-    private TfmLigKern[] ligKernTable;
-
-    /**
-     * Fills in the blank <code>ligKernTable</code> by the final version of
-     * lig/kern instructions.
-     */
-    private void buildLigKernTable() {
-
-        int currIns = 0;
-        for (int i = 0; i < ligkerncommand.length; i++) {
-            setLigStarts(i, currIns);
-            TfmLigKernCommand lkc = ligkerncommand[i];
-            if (lkc.getActivity() != TfmLigKernCommand.PASSTHROUGH) {
-                if (!lkc.meansRestart()) {
-                    int skip = getSkip(i);
-                    ligKernTable[currIns++] = (lkc.meansKern()) ? makeKern(lkc,
-                            skip) : makeLig(lkc, skip);
-                }
-            }
-        }
-    }
-
-    /**
-     * Creates a final version of ligature instruction after validity checks.
-     *
-     * @param lkc   the original version of lig/kern instruction.
-     * @param skip  the offset of next lig/kern instruction in the final version
-     *              of the lig/kern program.
-     * @return Returns the ligkern
-     */
-    private TfmLigKern makeLig(final TfmLigKernCommand lkc, final int skip) {
-
-        //       if (!charExists(lkc.ligChar())) {
-        //           badchar(lkc.ligChar(), "Ligature step produces the");
-        //           lkc.setLigChar(firstCharCode);
-        //       }
-        boolean left = lkc.leaveLeft();
-        boolean right = lkc.leaveRight();
-        byte step = lkc.stepOver();
-        return new TfmLigature(skip, lkc.nextChar(), lkc.ligChar(), left,
-                right, step);
-    }
-
-    /**
-     * Creates a final version of kerning instruction after validity checks.
-     *
-     * @param lkc   the original version of lig/kern instruction.
-     * @param skip  the offset of next lig/kern instruction in the final version
-     *              of the lig/kern program.
-     * @return Returns the ligkern
-     */
-    private TfmLigKern makeKern(final TfmLigKernCommand lkc, final int skip) {
-
-        int kernIdx = lkc.kernIndex();
-        TfmFixWord kernword = null;
-        if (kernIdx < kern.getTable().length) {
-            kernword = kern.getTable()[kernIdx];
-        } else {
-            kernword = TfmFixWord.ZERO;
-        }
-        return new TfmKerning(skip, lkc.nextChar(), kernword);
-    }
-
-    /**
-     * Gets the offset of next lig/kern instruction in a program based on
-     * counting only those intervene instructions which will be converted to
-     * final lig/kern program.
-     *
-     * @param pos   the position of current lig/kern instruction
-     *              in ligAuxTable.
-     * @return Returns the skip amount of the next instruction
-     *         in the final version of lig/kern program.
-     */
-    private int getSkip(final int pos) {
-
-        TfmLigKernCommand lkc = ligkerncommand[pos];
-        if (lkc.meansStop()) {
-            return -1;
-        }
-        int p = pos;
-        int skip = 0;
-        int next = lkc.nextIndex(pos);
-        while (++p < next) {
-            if (ligkerncommand[pos].getActivity() != TfmLigKernCommand.PASSTHROUGH) {
-                skip++;
-            }
-        }
-        return skip;
     }
 
     /**
@@ -373,94 +513,6 @@ public class TfmLigKernArray
     }
 
     /**
-     * Builds associative table labels which maps the character
-     * codes to lig/kern program starting indexes in ligAuxTab
-     * for remapping later.
-     * It also marks the starting instructions of lig/kern
-     * programs as active
-     * (using the <code>activity</code> field of LigKern).
-     * TFtoPL[67]
-     */
-    private void buildLabels() {
-
-        TfmCharInfoWord[] ciw = charinfo.getCharinfoword();
-
-        for (int i = 0; i < ciw.length; i++) {
-            if (ciw[i].getTag() == TfmCharInfoWord.LIG_TAG) {
-                int start = ligStart(ciw[i].getRemainder());
-                if (start < ligkerncommand.length) {
-                    labels.add(start, i);
-                    ligkerncommand[start]
-                            .setActivity(TfmLigKernCommand.ACCESSIBLE);
-                } else {
-                    ciw[i].resetTag();
-                }
-            }
-        }
-    }
-
-    /**
-     * Finds out the actual starting index of lig/kern program in case there is
-     * a restart instructions and checks for validity.
-     * TFtoPL[67]
-     *
-     * @param start     the starting index of lig/kern program
-     *                  given in a character info.
-     * @return Returns the actual starting index.
-     */
-    private int ligStart(final int start) {
-
-        int newstart = start;
-        if (newstart < ligkerncommand.length) {
-            TfmLigKernCommand lkc = ligkerncommand[start];
-            if (lkc.meansRestart()) {
-                newstart = lkc.restartIndex();
-                if (newstart < ligkerncommand.length
-                        && lkc.getActivity() == TfmLigKernCommand.UNREACHABLE) {
-                    lkc.setActivity(TfmLigKernCommand.PASSTHROUGH);
-                }
-            }
-        }
-        return newstart;
-    }
-
-    /**
-     * Returns the ligkerncommand.
-     * @return Returns the ligkerncommand.
-     */
-    public TfmLigKernCommand[] getLigkerncommand() {
-
-        return ligkerncommand;
-    }
-
-    /**
-     * Returns the boundaryChar.
-     * @return Returns the boundaryChar.
-     */
-    public short getBoundaryChar() {
-
-        return boundaryChar;
-    }
-
-    /**
-     * Returns the boundaryStart.
-     * @return Returns the boundaryStart.
-     */
-    public int getBoundaryStart() {
-
-        return boundaryStart;
-    }
-
-    /**
-     * Returns the ligKernTable.
-     * @return Returns the ligKernTable.
-     */
-    public TfmLigKern[] getLigKernTable() {
-
-        return ligKernTable;
-    }
-
-    /**
      * @see org.extex.font.type.PlFormat#toPL(
      *      org.extex.font.type.PlWriter)
      */
@@ -509,109 +561,6 @@ public class TfmLigKernArray
             }
             out.plclose();
         }
-    }
-
-    /**
-     * Return the ligature.
-     *
-     * If no ligature exists, the -1 is returned.
-     *
-     * @param cp1 the left char. This character has to exist.
-     * @param cp2 the right char. This character has to exist.
-     * @return the ligature.
-     */
-    public int getLigature(final int cp1, final int cp2) {
-
-        TfmCharInfoWord ciw = charinfo.getCharinfoword()[cp1];
-        if (ciw == null || !foundLigKern(ciw) || ligKernTable == null) {
-            return -1;
-        }
-
-        return ciw.getLigature(cp2);
-
-        //        int ligstart = ciw.getLigkernstart();
-        //        for (int k = ligstart; k != TfmCharInfoWord.NOINDEX; k = ligKernTable[k]
-        //                .nextIndex(k)) {
-        //            TfmLigKern lk = ligKernTable[k];
-        //
-        //            if (lk instanceof TfmLigature) {
-        //                TfmLigature lig = (TfmLigature) lk;
-        //
-        //                if (lig.getNextChar() == cp2) {
-        //                    return lig.getAddingChar();
-        //                }
-        //            }
-        //        }
-        //        return -1;
-    }
-
-    /**
-     * Return the kerning.
-     *
-     * @param cp1 the left char. This character has to exist.
-     * @param cp2 the right char. This character has to exist.
-     * @return the kerning.
-     */
-    public TfmFixWord getKerning(final int cp1, final int cp2) {
-
-        TfmCharInfoWord ciw = charinfo.getCharinfoword()[cp1];
-        if (ciw == null ) {
-            return TfmFixWord.ZERO;
-        }
-
-        return ciw.getKerning(cp2);
-
-        //        int ligstart = ciw.getLigkernstart();
-        //        for (int k = ligstart; k != TfmCharInfoWord.NOINDEX; k = ligKernTable[k]
-        //                .nextIndex(k)) {
-        //            TfmLigKern lk = ligKernTable[k];
-        //
-        //            if (lk instanceof TfmKerning) {
-        //                TfmKerning kerning = (TfmKerning) lk;
-        //
-        //                if (kerning.getNextChar() == cp2) {
-        //                    return kerning.getKern();
-        //                }
-        //            }
-        //        }
-        //
-        //        return TfmFixWord.ZERO;
-    }
-
-    /**
-     * Check, if char has ligature or kern.
-     * @param ciw   the char
-     * @return Returns true, if the char has a ligature or a kern
-     */
-    private boolean foundLigKern(final TfmCharInfoWord ciw) {
-
-        boolean found = false;
-        int ligstart = ciw.getLigkernstart();
-        if (ligstart != TfmCharInfoWord.NOINDEX && ligKernTable != null) {
-
-            for (int k = ligstart; k != TfmCharInfoWord.NOINDEX; k = ligKernTable[k]
-                    .nextIndex(k)) {
-                TfmLigKern lk = ligKernTable[k];
-
-                if (lk instanceof TfmLigature || lk instanceof TfmKerning) {
-                    found = true;
-                    break;
-                }
-            }
-        }
-        return found;
-    }
-
-    /**
-     * @see org.extex.util.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(final XMLStreamWriter writer) throws IOException {
-
-        writer.writeStartElement("ligkern");
-        for (int i = 0; i < ligkerncommand.length; i++) {
-            ligkerncommand[i].writeXML(writer);
-        }
-        writer.writeEndElement();
     }
 
 }

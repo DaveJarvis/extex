@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -22,10 +22,7 @@ package org.extex.font.format.tfm;
 import java.io.IOException;
 import java.io.Serializable;
 
-import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
-import org.extex.util.xml.XMLStreamWriter;
-
 
 /**
  * Class for TFM header length table.
@@ -63,12 +60,12 @@ import org.extex.util.xml.XMLStreamWriter;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class TfmHeaderLengths implements XMLWriterConvertible, Serializable {
+public class TfmHeaderLengths implements Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * Bytes in the Header of the TFM-file.
      */
-    private static final long serialVersionUID = 1L;
+    private static final int HEADERBYTES = 6;
 
     /**
      * max chars.
@@ -76,9 +73,24 @@ public class TfmHeaderLengths implements XMLWriterConvertible, Serializable {
     private static final int MAXCHARS = 255;
 
     /**
-     * Bytes in the Header of the TFM-file.
+     * The field <tt>serialVersionUID</tt> ...
      */
-    private static final int HEADERBYTES = 6;
+    private static final long serialVersionUID = 1L;
+
+    /**
+     * smallest character code in the font.
+     */
+    private short bc;
+
+    /**
+     * number of character.
+     */
+    private int cc;
+
+    /**
+     * largest character code in the font.
+     */
+    private short ec;
 
     /**
      * length of the entire file.
@@ -91,44 +103,9 @@ public class TfmHeaderLengths implements XMLWriterConvertible, Serializable {
     private short lh;
 
     /**
-     * smallest character code in the font.
-     */
-    private short bc;
-
-    /**
-     * largest character code in the font.
-     */
-    private short ec;
-
-    /**
-     * number of words in the width table.
-     */
-    private short nw;
-
-    /**
-     * number of words in the height table.
-     */
-    private short nh;
-
-    /**
      * number of words in the depth table.
      */
     private short nd;
-
-    /**
-     * number of words in the italic correction table.
-     */
-    private short ni;
-
-    /**
-     * number of words in the lig/kern table.
-     */
-    private short nl;
-
-    /**
-     * number of words in the kern table.
-     */
-    private short nk;
 
     /**
      * number of words in the extensible character table.
@@ -136,14 +113,34 @@ public class TfmHeaderLengths implements XMLWriterConvertible, Serializable {
     private short ne;
 
     /**
+     * number of words in the height table.
+     */
+    private short nh;
+
+    /**
+     * number of words in the italic correction table.
+     */
+    private short ni;
+
+    /**
+     * number of words in the kern table.
+     */
+    private short nk;
+
+    /**
+     * number of words in the lig/kern table.
+     */
+    private short nl;
+
+    /**
      * number of font parameter words.
      */
     private short np;
 
     /**
-     * number of character.
+     * number of words in the width table.
      */
-    private int cc;
+    private short nw;
 
     /**
      * Create a new object.
@@ -304,27 +301,4 @@ public class TfmHeaderLengths implements XMLWriterConvertible, Serializable {
         return nw;
     }
 
-    /**
-     * @see org.extex.util.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(final XMLStreamWriter writer) throws IOException {
-
-        writer.writeStartElement("headerlength");
-        writer.writeAttribute("lf", String.valueOf(lf));
-        writer.writeAttribute("lh", String.valueOf(lh));
-        writer.writeAttribute("bc", String.valueOf(bc));
-        writer.writeAttribute("ec", String.valueOf(ec));
-        writer.writeAttribute("nw", String.valueOf(nw));
-        writer.writeAttribute("nh", String.valueOf(nh));
-        writer.writeAttribute("nd", String.valueOf(nd));
-        writer.writeAttribute("ni", String.valueOf(ni));
-        writer.writeAttribute("nl", String.valueOf(nl));
-        writer.writeAttribute("nk", String.valueOf(nk));
-        writer.writeAttribute("lf", String.valueOf(lf));
-        writer.writeAttribute("ne", String.valueOf(ne));
-        writer.writeAttribute("lf", String.valueOf(lf));
-        writer.writeAttribute("np", String.valueOf(np));
-        writer.writeAttribute("cc", String.valueOf(cc));
-        writer.writeEndElement();
-    }
 }

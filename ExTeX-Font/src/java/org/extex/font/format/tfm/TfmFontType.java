@@ -34,19 +34,23 @@ import java.io.Serializable;
 public class TfmFontType implements Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * Type (type-safe class).
      */
-    private static final long serialVersionUID = 1L;
+    private static final class Type implements Serializable {
 
-    /**
-     * Normal TeX font metric.
-     */
-    public static final Type VANILLA = new Type();
+        /**
+         * The field <tt>serialVersionUID</tt> ...
+         */
+        private static final long serialVersionUID = 1L;
 
-    /**
-     * TeX Math Symbols font metric.
-     */
-    public static final Type MATHSY = new Type();
+        /**
+         * Creates a new object.
+         */
+        public Type() {
+
+            super();
+        }
+    }
 
     /**
      * TeX Math Extension font metric.
@@ -54,14 +58,29 @@ public class TfmFontType implements Serializable {
     public static final Type MATHEX = new Type();
 
     /**
+     * TeX Math Symbols font metric.
+     */
+    public static final Type MATHSY = new Type();
+
+    /**
      * Other font metric.
      */
     public static final Type OTHER = new Type();
 
     /**
+     * The field <tt>serialVersionUID</tt>.
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Typewriter font metric.
      */
     public static final Type TYPEWRITER = new Type();
+
+    /**
+     * Normal TeX font metric.
+     */
+    public static final Type VANILLA = new Type();
 
     /**
      * the type.
@@ -87,25 +106,6 @@ public class TfmFontType implements Serializable {
             type = OTHER;
         }
 
-    }
-
-    /**
-     * Type (type-safe class).
-     */
-    private static final class Type implements Serializable {
-
-        /**
-         * The field <tt>serialVersionUID</tt> ...
-         */
-        private static final long serialVersionUID = 1L;
-
-        /**
-         * Creates a new object.
-         */
-        public Type() {
-
-            super();
-        }
     }
 
     /**

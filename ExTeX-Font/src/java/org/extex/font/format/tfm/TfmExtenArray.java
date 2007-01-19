@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -22,10 +22,7 @@ package org.extex.font.format.tfm;
 import java.io.IOException;
 import java.io.Serializable;
 
-import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
-import org.extex.util.xml.XMLStreamWriter;
-
 
 /**
  * Class for TFM exten array.
@@ -47,10 +44,10 @@ import org.extex.util.xml.XMLStreamWriter;
  * @version $Revision$
  */
 
-public class TfmExtenArray implements XMLWriterConvertible, Serializable {
+public class TfmExtenArray implements Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * The field <tt>serialVersionUID</tt>.
      */
     private static final long serialVersionUID = 1L;
 
@@ -83,15 +80,4 @@ public class TfmExtenArray implements XMLWriterConvertible, Serializable {
         return extensiblerecipe;
     }
 
-    /**
-     * @see org.extex.util.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(final XMLStreamWriter writer) throws IOException {
-
-        writer.writeStartElement("exten");
-        for (int i = 0; i < extensiblerecipe.length; i++) {
-            extensiblerecipe[i].writeXML(writer);
-        }
-        writer.writeEndElement();
-    }
 }

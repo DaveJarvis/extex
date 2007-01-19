@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -35,15 +35,15 @@ import java.io.Serializable;
 public abstract class TfmLigKern implements Serializable {
 
     /**
-     * The skip amount.
-     */
-    private int skip;
-
-    /**
      * Character code representing the character which must be next to the
      * current one to activate this instruction.
      */
     private short nextChar;
+
+    /**
+     * The skip amount.
+     */
+    private int skip;
 
     /**
      * Create a new object.
@@ -69,6 +69,15 @@ public abstract class TfmLigKern implements Serializable {
     }
 
     /**
+     * Returns the nextChar.
+     * @return Returns the nextChar.
+     */
+    public short getNextChar() {
+
+        return nextChar;
+    }
+
+    /**
      * Tells the index to the ligtable of the next instruction of lig/kern
      * program for given index of this instruction.
      *
@@ -79,15 +88,6 @@ public abstract class TfmLigKern implements Serializable {
     public int nextIndex(final int pos) {
 
         return (skip < 0) ? TfmCharInfoWord.NOINDEX : pos + skip + 1;
-    }
-
-    /**
-     * Returns the nextChar.
-     * @return Returns the nextChar.
-     */
-    public short getNextChar() {
-
-        return nextChar;
     }
 
     /**

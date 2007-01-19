@@ -33,9 +33,14 @@ import java.io.Serializable;
 public class TfmKerning extends TfmLigKern implements Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * The field <tt>serialVersionUID</tt>.
      */
     private static final long serialVersionUID = 1L;
+
+    /**
+     * The amount of kerning.
+     */
+    private TfmFixWord kern;
 
     /**
      * Create a new object.
@@ -50,11 +55,6 @@ public class TfmKerning extends TfmLigKern implements Serializable {
         super(skip, next);
         kern = k;
     }
-
-    /**
-     * The amount of kerning.
-     */
-    private TfmFixWord kern;
 
     /**
      * @see org.extex.font.type.tfm.TFMLigKern#getKern()

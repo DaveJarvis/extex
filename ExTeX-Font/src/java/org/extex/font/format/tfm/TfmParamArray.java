@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -25,7 +25,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.extex.util.EFMWriterConvertible;
-import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 import org.jdom.Element;
@@ -50,15 +49,41 @@ import de.dante.extex.unicodeFont.format.pl.PlWriter;
 
 public class TfmParamArray
         implements
-            XMLWriterConvertible,
             EFMWriterConvertible,
             PlFormat,
             Serializable {
 
     /**
+     * Labels for MATHEX.
+     */
+    public static final String[] LABEL_MATHEX = {"SLANT", "SPACE", "STRETCH",
+            "SHRINK", "XHEIGHT", "QUAD", "EXTRASPACE", "DEFAULTRULETHICKNESS",
+            "BIGOPSPACING1", "BIGOPSPACING2", "BIGOPSPACING3", "BIGOPSPACING4",
+            "BIGOPSPACING5"};
+
+    /**
+     * Labels for MATHSY.
+     */
+    public static final String[] LABEL_MATHSY = {"SLANT", "SPACE", "STRETCH",
+            "SHRINK", "XHEIGHT", "QUAD", "EXTRASPACE", "NUM1", "NUM2", "NUM3",
+            "DENOM1", "DENOM2", "SUP1", "SUP2", "SUP3", "SUB1", "SUB2",
+            "SUPDROP", "SUBDROP", "DELIM1", "DELIM2", "AXISHEIGHT"};
+
+    /**
+     * Labels for VANILLA.
+     */
+    public static final String[] LABEL_VANILLA = {"SLANT", "SPACE", "STRETCH",
+            "SHRINK", "XHEIGHT", "QUAD", "EXTRASPACE"};
+
+    /**
      * The field <tt>serialVersionUID</tt> ...
      */
     private static final long serialVersionUID = 1L;
+
+    /**
+     * the font type.
+     */
+    private TfmFontType fonttpye;
 
     /**
      * Map for the parameters.
@@ -69,11 +94,6 @@ public class TfmParamArray
      * the param table.
      */
     private TfmFixWord[] table;
-
-    /**
-     * the font type.
-     */
-    private TfmFontType fonttpye;
 
     /**
      * Create a new object.
@@ -112,54 +132,17 @@ public class TfmParamArray
     }
 
     /**
-     * Returns the table.
-     * @return Returns the table.
+     * Add the parameter to the element.
+     * @param element   the element
      */
-    public TfmFixWord[] getTable() {
+    public void addParam(final Element element) {
 
-        return table;
-    }
-
-    /**
-     * Labels for VANILLA.
-     */
-    public static final String[] LABEL_VANILLA = {"SLANT", "SPACE", "STRETCH",
-            "SHRINK", "XHEIGHT", "QUAD", "EXTRASPACE"};
-
-    /**
-     * Labels for MATHSY.
-     */
-    public static final String[] LABEL_MATHSY = {"SLANT", "SPACE", "STRETCH",
-            "SHRINK", "XHEIGHT", "QUAD", "EXTRASPACE", "NUM1", "NUM2", "NUM3",
-            "DENOM1", "DENOM2", "SUP1", "SUP2", "SUP3", "SUB1", "SUB2",
-            "SUPDROP", "SUBDROP", "DELIM1", "DELIM2", "AXISHEIGHT"};
-
-    /**
-     * Labels for MATHEX.
-     */
-    public static final String[] LABEL_MATHEX = {"SLANT", "SPACE", "STRETCH",
-            "SHRINK", "XHEIGHT", "QUAD", "EXTRASPACE", "DEFAULTRULETHICKNESS",
-            "BIGOPSPACING1", "BIGOPSPACING2", "BIGOPSPACING3", "BIGOPSPACING4",
-            "BIGOPSPACING5"};
-
-    /**
-     * Returns the length of the parameter array.
-     * @return Returns the length of the parameter array.
-     */
-    public int getLength() {
-
-        return table.length;
-    }
-
-    /**
-     * Returns the parameter with the name <code>name</code>.
-     * @param name  The name of the parameter.
-     * @return Returns the parameter with the name <code>name</code>.
-     */
-    public TfmFixWord getParam(final String name) {
-
-        TfmFixWord value = (TfmFixWord) param.get(name);
-        return value == null ? TfmFixWord.ZERO : value;
+        for (int i = 0; i < table.length; i++) {
+            String name = getLabelName(i);
+            if (name.length() != 0) {
+                element.setAttribute(name, table[i].toStringComma());
+            }
+        }
     }
 
     /**
@@ -186,17 +169,42 @@ public class TfmParamArray
     }
 
     /**
-     * Add the parameter to the element.
-     * @param element   the element
+     * Returns the length of the parameter array.
+     * @return Returns the length of the parameter array.
      */
-    public void addParam(final Element element) {
+    public int getLength() {
 
-        for (int i = 0; i < table.length; i++) {
-            String name = getLabelName(i);
-            if (name.length() != 0) {
-                element.setAttribute(name, table[i].toStringComma());
-            }
-        }
+        return table.length;
+    }
+
+    /**
+     * Getter for param.
+     *
+     * @return Returns the param.
+     */
+    public Map getParam() {
+
+        return param;
+    }
+
+    /**
+     * Returns the parameter with the name <code>name</code>.
+     * @param name  The name of the parameter.
+     * @return Returns the parameter with the name <code>name</code>.
+     */
+    public TfmFixWord getParam(final String name) {
+
+        TfmFixWord value = (TfmFixWord) param.get(name);
+        return value == null ? TfmFixWord.ZERO : value;
+    }
+
+    /**
+     * Returns the table.
+     * @return Returns the table.
+     */
+    public TfmFixWord[] getTable() {
+
+        return table;
     }
 
     /**
@@ -220,27 +228,6 @@ public class TfmParamArray
     }
 
     /**
-     * @see org.extex.util.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(final XMLStreamWriter writer) throws IOException {
-
-        writer.writeStartElement("params");
-        for (int i = 0; i < table.length; i++) {
-            writer.writeStartElement("param");
-            writer.writeAttribute("id", String.valueOf(i));
-            String name = getLabelName(i);
-            if (name.length() != 0) {
-                writer.writeAttribute("name", name);
-            }
-            writer.writeAttribute("value_fw", String.valueOf(table[i]
-                    .getValue()));
-            writer.writeAttribute("value", table[i].toStringComma());
-            writer.writeEndElement();
-        }
-        writer.writeEndElement();
-    }
-
-    /**
      * @see org.extex.util.EFMWriterConvertible#writeEFM(org.extex.util.xml.XMLStreamWriter)
      */
     public void writeEFM(final XMLStreamWriter writer) throws IOException {
@@ -256,4 +243,5 @@ public class TfmParamArray
         }
         writer.writeEndElement();
     }
+
 }

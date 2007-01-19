@@ -22,9 +22,7 @@ package org.extex.font.format.tfm;
 import java.io.IOException;
 import java.io.Serializable;
 
-import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
-import org.extex.util.xml.XMLStreamWriter;
 
 import de.dante.extex.unicodeFont.format.pl.PlFormat;
 import de.dante.extex.unicodeFont.format.pl.PlWriter;
@@ -64,11 +62,22 @@ import de.dante.extex.unicodeFont.format.pl.PlWriter;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class TfmHeaderArray
-        implements
-            XMLWriterConvertible,
-            PlFormat,
-            Serializable {
+public class TfmHeaderArray implements PlFormat, Serializable {
+
+    /**
+     * Size of coding scheme header information in words
+     */
+    private static final int CODING_SCHEME_SIZE = 10;
+
+    /**
+     * Size of font family header information in words
+     */
+    private static final int FONT_FAMILY_SIZE = 5;
+
+    /**
+     * header[18..]
+     */
+    public static final int HEADER_REST_SIZE = 18;
 
     /**
      * The field <tt>serialVersionUID</tt> ...
@@ -81,24 +90,14 @@ public class TfmHeaderArray
     private int checksum;
 
     /**
-     * header[1]: design size
-     */
-    private TfmFixWord designsize;
-
-    /**
      * header[2..11]: coding scheme
      */
     private String codingscheme;
 
     /**
-     * Size of coding scheme header information in words
+     * header[1]: design size
      */
-    private static final int CODING_SCHEME_SIZE = 10;
-
-    /**
-     * the font type (VANILLA, MATHSY, MATHEX)
-     */
-    private TfmFontType fonttype;
+    private TfmFixWord designsize;
 
     /**
      * header[12..16]: font family
@@ -106,9 +105,14 @@ public class TfmHeaderArray
     private String fontfamily;
 
     /**
-     * Size of font family header information in words
+     * the font type (VANILLA, MATHSY, MATHEX)
      */
-    private static final int FONT_FAMILY_SIZE = 5;
+    private TfmFontType fonttype;
+
+    /**
+     * Uninterpreted rest of the header
+     */
+    private int[] headerrest = null;
 
     /**
      * True if only 7 bit character codes are used.
@@ -119,16 +123,6 @@ public class TfmHeaderArray
      * BaseFont Xerox face code
      */
     private int xeroxfacecode = -1;
-
-    /**
-     * Uninterpreted rest of the header
-     */
-    private int[] headerrest = null;
-
-    /**
-     * header[18..]
-     */
-    private static final int HEADER_REST_SIZE = 18;
 
     /**
      * Create a new object
@@ -176,30 +170,6 @@ public class TfmHeaderArray
                 }
             }
         }
-    }
-
-    /**
-     * Reads a character string from the header.
-     * The string is stored as its length in first byte
-     * then the string (the rest of area is not used).
-     *
-     * @param rar   the input
-     * @param size  the size of string area in the header.
-     * @return the string
-     * @throws IOException if an I/O error occured
-     */
-    private String readBCPL(final RandomAccessR rar, final int size)
-            throws IOException {
-
-        int len = rar.readByte();
-        StringBuffer buf = new StringBuffer();
-        for (int i = 0; i < size - 1; i++) {
-            char c = Character.toUpperCase((char) rar.readByte());
-            if (i < len) {
-                buf.append(c);
-            }
-        }
-        return buf.toString();
     }
 
     /**
@@ -251,7 +221,7 @@ public class TfmHeaderArray
      * Returns the fontype.
      * @return Returns the fontype.
      */
-    public TfmFontType getFontype() {
+    public TfmFontType getFontType() {
 
         return fonttype;
     }
@@ -266,12 +236,46 @@ public class TfmHeaderArray
     }
 
     /**
+     * Getter for xeroxfacecode.
+     *
+     * @return Returns the xeroxfacecode.
+     */
+    public int getXeroxfacecode() {
+
+        return xeroxfacecode;
+    }
+
+    /**
      * Returns the sevenBitSafe.
      * @return Returns the sevenBitSafe.
      */
     public boolean isSevenBitSafe() {
 
         return sevenBitSafe;
+    }
+
+    /**
+     * Reads a character string from the header.
+     * The string is stored as its length in first byte
+     * then the string (the rest of area is not used).
+     *
+     * @param rar   the input
+     * @param size  the size of string area in the header.
+     * @return the string
+     * @throws IOException if an I/O error occured
+     */
+    private String readBCPL(final RandomAccessR rar, final int size)
+            throws IOException {
+
+        int len = rar.readByte();
+        StringBuffer buf = new StringBuffer();
+        for (int i = 0; i < size - 1; i++) {
+            char c = Character.toUpperCase((char) rar.readByte());
+            if (i < len) {
+                buf.append(c);
+            }
+        }
+        return buf.toString();
     }
 
     /**
@@ -303,38 +307,6 @@ public class TfmHeaderArray
         if (sevenBitSafe) {
             out.plopen("SEVENBITSAFEFLAG").addBool(sevenBitSafe).plclose();
         }
-    }
-
-    /**
-     * @see org.extex.util.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(final XMLStreamWriter writer) throws IOException {
-
-        writer.writeStartElement("header");
-        writer.writeAttribute("checksum", String.valueOf(checksum));
-        writer.writeAttribute("desingsize", designsize.toString());
-        writer.writeAttribute("units", String.valueOf(TfmConstants.CONST_1000));
-        if (codingscheme != null) {
-            writer.writeAttribute("codingscheme", codingscheme);
-        }
-        if (fonttype != null) {
-            writer.writeAttribute("fonttype", fonttype.toString());
-        }
-        if (fontfamily != null) {
-            writer.writeAttribute("fontfamily", fontfamily);
-        }
-        writer.writeAttribute("sevenbitsafe", String.valueOf(sevenBitSafe));
-        writer.writeAttribute("xeroxfacecode", String.valueOf(xeroxfacecode));
-        if (headerrest != null) {
-            for (int i = 0; i < headerrest.length; i++) {
-                writer.writeStartElement("header");
-                writer.writeAttribute("id", String
-                        .valueOf(i + HEADER_REST_SIZE));
-                writer.writeAttribute("value", String.valueOf(headerrest[i]));
-                writer.writeEndElement();
-            }
-        }
-        writer.writeEndElement();
     }
 
 }

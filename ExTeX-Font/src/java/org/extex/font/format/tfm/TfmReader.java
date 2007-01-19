@@ -28,7 +28,6 @@ import org.extex.font.exception.FontException;
 import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.util.EFMWriterConvertible;
-import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessInputStream;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
@@ -49,12 +48,7 @@ import de.dante.extex.unicodeFont.format.tex.psfontmap.enc.EncFactory;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class TfmReader
-        implements
-            XMLWriterConvertible,
-            PlFormat,
-            EFMWriterConvertible,
-            Serializable {
+public class TfmReader implements PlFormat, EFMWriterConvertible, Serializable {
 
     /**
      * The field <tt>serialVersionUID</tt> ...
@@ -62,9 +56,129 @@ public class TfmReader
     private static final long serialVersionUID = 1L;
 
     /**
+     * The char info.
+     */
+    private TfmCharInfoArray charinfo;
+
+    /**
+     * The depth.
+     */
+    private TfmDepthArray depth;
+
+    /**
+     * Encoderfactory.
+     */
+    private EncFactory encfactory;
+
+    /**
+     * encodingtable.
+     */
+    private String[] enctable;
+
+    /**
+     * the exten
+     */
+    private TfmExtenArray exten;
+
+    /**
      * The font name.
      */
     private String fontname;
+
+    /**
+     * The header.
+     */
+    private TfmHeaderArray header;
+
+    /**
+     * The height.
+     */
+    private TfmHeightArray height;
+
+    /**
+     * The italic.
+     */
+    private TfmItalicArray italic;
+
+    /**
+     * The kern.
+     */
+    private TfmKernArray kern;
+
+    /**
+     * The lengths in the file.
+     */
+    private TfmHeaderLengths lengths;
+
+    /**
+     * The lig/kern array.
+     */
+    private TfmLigKernArray ligkern;
+
+    /**
+     * The param.
+     */
+    private TfmParamArray param;
+
+    /**
+     * pfb filename.
+     */
+    private String pfbfilename;
+
+    /**
+     * the pfb parser.
+     */
+    private PfbParser pfbparser;
+
+    /**
+     * psfontencoding.
+     */
+    private PsFontEncoding psfenc;
+
+    //    /**
+    //     * @see de.dante.extex.font.type.FontMetric#getFontMetric()
+    //     */
+    //    public Element getFontMetric() {
+    //
+    //        // create efm-file
+    //        Element root = new Element("fontgroup");
+    //        root.setAttribute("name", getFontFamily());
+    //        root.setAttribute("id", getFontFamily());
+    //        root.setAttribute("default-size", String.valueOf(getDesignSize()));
+    //        root.setAttribute("empr", "100");
+    //        root.setAttribute("type", "tfm");
+    //
+    //        Element fontdimen = new Element("fontdimen");
+    //        root.addContent(fontdimen);
+    //
+    //        Element font = new Element("font");
+    //        root.addContent(font);
+    //
+    //        font.setAttribute("font-name", getFontFamily());
+    //        font.setAttribute("font-family", getFontFamily());
+    //        root.setAttribute("units-per-em", "1000");
+    //        font.setAttribute("checksum", String.valueOf(getChecksum()));
+    //        font.setAttribute("type", getFontType().toTFMString());
+    //        param.addParam(fontdimen);
+    //
+    //        // filename
+    //        if (pfbfilename != null) {
+    //            font.setAttribute("filename", pfbfilename);
+    //        }
+    //        // charinfo.addGlyphs(font);
+    //
+    //        return root;
+    //    }
+    //
+    /**
+     * psfontmap.
+     */
+    private PsFontsMapReader psfontmap;
+
+    /**
+     * The width.
+     */
+    private TfmWidthArray width;
 
     /**
      * Create e new object.
@@ -102,7 +216,7 @@ public class TfmReader
         ligkern = new TfmLigKernArray(rar, lengths.getNl());
         kern = new TfmKernArray(rar, lengths.getNk());
         exten = new TfmExtenArray(rar, lengths.getNe());
-        param = new TfmParamArray(rar, lengths.getNp(), header.getFontype());
+        param = new TfmParamArray(rar, lengths.getNp(), header.getFontType());
 
         // close input
         rar.close();
@@ -120,59 +234,19 @@ public class TfmReader
     }
 
     /**
-     * The lengths in the file.
+     * remove the path, if exists.
+     * @param  file the filename
+     * @return  the filename without the path
      */
-    private TfmHeaderLengths lengths;
+    private String filenameWithoutPath(final String file) {
 
-    /**
-     * The header.
-     */
-    private TfmHeaderArray header;
-
-    /**
-     * The char info.
-     */
-    private TfmCharInfoArray charinfo;
-
-    /**
-     * The width.
-     */
-    private TfmWidthArray width;
-
-    /**
-     * The height.
-     */
-    private TfmHeightArray height;
-
-    /**
-     * The depth.
-     */
-    private TfmDepthArray depth;
-
-    /**
-     * The italic.
-     */
-    private TfmItalicArray italic;
-
-    /**
-     * The lig/kern array.
-     */
-    private TfmLigKernArray ligkern;
-
-    /**
-     * The kern.
-     */
-    private TfmKernArray kern;
-
-    /**
-     * the exten
-     */
-    private TfmExtenArray exten;
-
-    /**
-     * The param.
-     */
-    private TfmParamArray param;
+        String rt = file;
+        int i = rt.lastIndexOf(File.separator);
+        if (i > 0) {
+            rt = rt.substring(i + 1);
+        }
+        return rt;
+    }
 
     /**
      * Returns the charinfo.
@@ -184,12 +258,67 @@ public class TfmReader
     }
 
     /**
+     * Returns the checksum.
+     * @return Returns the checksum.
+     */
+    public int getChecksum() {
+
+        return header.getChecksum();
+    }
+
+    /**
+     * Returns the coding scheme of the font.
+     *
+     * @return the coding scheme of the font.
+     * @see org.extex.font.format.tfm.TfmHeaderArray#getCodingscheme()
+     */
+    public String getCodingscheme() {
+
+        return header.getCodingscheme();
+    }
+
+    /**
      * Returns the depth.
      * @return Returns the depth.
      */
     public TfmDepthArray getDepth() {
 
         return depth;
+    }
+
+    /**
+     * Returns the depth of a char.
+     *
+     * @param pos   the position
+     * @return the depth of a char, or <code>null</code>, if it does not exist.
+     */
+    public TfmFixWord getDepth(final int pos) {
+
+        TfmCharInfoWord ci = charinfo.getCharInfoWord(pos);
+        if (ci != null) {
+            return ci.getDepth();
+        }
+        return null;
+    }
+
+    /**
+     * Returns the design size.
+     * @return Returns the design size.
+     */
+    public FixedDimen getDesignSize() {
+
+        TfmFixWord ds = header.getDesignsize();
+
+        return new Dimen(ds.getValue() >> 4);
+    }
+
+    /**
+     * Returns the design size as fix word.
+     * @return Returns the design size as fix word.
+     */
+    public TfmFixWord getDesignSizeAsFixWord() {
+
+        return header.getDesignsize();
     }
 
     /**
@@ -220,6 +349,24 @@ public class TfmReader
     }
 
     /**
+     * Returns the face of the font.
+     * @return Returns the face of the font.
+     */
+    public int getFace() {
+
+        return header.getFace();
+    }
+
+    /**
+     * Returns the font family.
+     * @return Returns the font family.
+     */
+    public String getFontFamily() {
+
+        return header.getFontfamily();
+    }
+
+    /**
      * Returns the fontname.
      * @return Returns the fontname.
      */
@@ -229,12 +376,12 @@ public class TfmReader
     }
 
     /**
-     * Returns the face of the font.
-     * @return Returns the face of the font.
+     * Returns the font type.
+     * @return Returns the font type.
      */
-    public int getFace() {
+    public TfmFontType getFontType() {
 
-        return header.getFace();
+        return header.getFontType();
     }
 
     /**
@@ -256,12 +403,42 @@ public class TfmReader
     }
 
     /**
+     * Returns the height of a char.
+     *
+     * @param pos   the position
+     * @return the height of a char, or <code>null</code>, if it does not exist.
+     */
+    public TfmFixWord getHeight(final int pos) {
+
+        TfmCharInfoWord ci = charinfo.getCharInfoWord(pos);
+        if (ci != null) {
+            return ci.getHeight();
+        }
+        return null;
+    }
+
+    /**
      * Returns the italic.
      * @return Returns the italic.
      */
     public TfmItalicArray getItalic() {
 
         return italic;
+    }
+
+    /**
+     * Returns the italic correction of a char.
+     *
+     * @param pos   the position
+     * @return the italic correction of a char, or <code>null</code>, if it does not exist.
+     */
+    public TfmFixWord getItalicCorrection(final int pos) {
+
+        TfmCharInfoWord ci = charinfo.getCharInfoWord(pos);
+        if (ci != null) {
+            return ci.getItalic();
+        }
+        return null;
     }
 
     /**
@@ -274,12 +451,28 @@ public class TfmReader
     }
 
     /**
+     * @see org.extex.font.format.tfm.TfmLigKernArray#getKerning(int, int)
+     */
+    public TfmFixWord getKerning(final int cp1, final int cp2) {
+
+        return ligkern.getKerning(cp1, cp2);
+    }
+
+    /**
      * Returns the lengths.
      * @return Returns the lengths.
      */
     public TfmHeaderLengths getLengths() {
 
         return lengths;
+    }
+
+    /**
+     * @see org.extex.font.format.tfm.TfmLigKernArray#getLigature(int, int)
+     */
+    public int getLigature(final int cp1, final int cp2) {
+
+        return ligkern.getLigature(cp1, cp2);
     }
 
     /**
@@ -332,6 +525,15 @@ public class TfmReader
     }
 
     /**
+     * Returns the pfbparser.
+     * @return Returns the pfbparser.
+     */
+    public PfbParser getPfbParser() {
+
+        return pfbparser;
+    }
+
+    /**
      * Returns the psfenc.
      * @return Returns the psfenc.
      */
@@ -359,140 +561,18 @@ public class TfmReader
     }
 
     /**
-     * Returns the font family.
-     * @return Returns the font family.
+     * Returns the width of a char.
+     *
+     * @param pos   the position
+     * @return the width of a char, or <code>null</code>, if it does not exist.
      */
-    public String getFontFamily() {
+    public TfmFixWord getWidth(final int pos) {
 
-        return header.getFontfamily();
-    }
-
-    /**
-     * Returns the checksum.
-     * @return Returns the checksum.
-     */
-    public int getChecksum() {
-
-        return header.getChecksum();
-    }
-
-    /**
-     * Returns the design size.
-     * @return Returns the design size.
-     */
-    public FixedDimen getDesignSize() {
-
-        TfmFixWord ds = header.getDesignsize();
-
-        return new Dimen(ds.getValue() >> 4);
-    }
-
-    /**
-     * Returns the design size as fix word.
-     * @return Returns the design size as fix word.
-     */
-    public TfmFixWord getDesignSizeAsFixWord() {
-
-        return header.getDesignsize();
-    }
-
-    /**
-     * Returns the font type.
-     * @return Returns the font type.
-     */
-    public TfmFontType getFontType() {
-
-        return header.getFontype();
-    }
-
-    //    /**
-    //     * @see de.dante.extex.font.type.FontMetric#getFontMetric()
-    //     */
-    //    public Element getFontMetric() {
-    //
-    //        // create efm-file
-    //        Element root = new Element("fontgroup");
-    //        root.setAttribute("name", getFontFamily());
-    //        root.setAttribute("id", getFontFamily());
-    //        root.setAttribute("default-size", String.valueOf(getDesignSize()));
-    //        root.setAttribute("empr", "100");
-    //        root.setAttribute("type", "tfm");
-    //
-    //        Element fontdimen = new Element("fontdimen");
-    //        root.addContent(fontdimen);
-    //
-    //        Element font = new Element("font");
-    //        root.addContent(font);
-    //
-    //        font.setAttribute("font-name", getFontFamily());
-    //        font.setAttribute("font-family", getFontFamily());
-    //        root.setAttribute("units-per-em", "1000");
-    //        font.setAttribute("checksum", String.valueOf(getChecksum()));
-    //        font.setAttribute("type", getFontType().toTFMString());
-    //        param.addParam(fontdimen);
-    //
-    //        // filename
-    //        if (pfbfilename != null) {
-    //            font.setAttribute("filename", pfbfilename);
-    //        }
-    //        // charinfo.addGlyphs(font);
-    //
-    //        return root;
-    //    }
-    //
-    /**
-     * psfontmap.
-     */
-    private PsFontsMapReader psfontmap;
-
-    /**
-     * Encoderfactory.
-     */
-    private EncFactory encfactory;
-
-    /**
-     * psfontencoding.
-     */
-    private PsFontEncoding psfenc;
-
-    /**
-     * encodingtable.
-     */
-    private String[] enctable;
-
-    /**
-     * pfb filename.
-     */
-    private String pfbfilename;
-
-    /**
-     * the pfb parser.
-     */
-    private PfbParser pfbparser;
-
-    /**
-     * Returns the pfbparser.
-     * @return Returns the pfbparser.
-     */
-    public PfbParser getPfbParser() {
-
-        return pfbparser;
-    }
-
-    /**
-     * The pfbparser to set.
-     * @param parser The pfbparser to set.
-     */
-    public void setPfbParser(final PfbParser parser) {
-
-        pfbparser = parser;
-        if (enctable == null && parser != null) {
-
-            // no encoding table -> set the glyphname
-            String enc[] = parser.getEncoding();
-            // glyphname
-            charinfo.setEncodingTable(enc);
+        TfmCharInfoWord ci = charinfo.getCharInfoWord(pos);
+        if (ci != null) {
+            return ci.getWidth();
         }
+        return null;
     }
 
     /**
@@ -530,18 +610,19 @@ public class TfmReader
     }
 
     /**
-     * remove the path, if exists.
-     * @param  file the filename
-     * @return  the filename without the path
+     * The pfbparser to set.
+     * @param parser The pfbparser to set.
      */
-    private String filenameWithoutPath(final String file) {
+    public void setPfbParser(final PfbParser parser) {
 
-        String rt = file;
-        int i = rt.lastIndexOf(File.separator);
-        if (i > 0) {
-            rt = rt.substring(i + 1);
+        pfbparser = parser;
+        if (enctable == null && parser != null) {
+
+            // no encoding table -> set the glyphname
+            String enc[] = parser.getEncoding();
+            // glyphname
+            charinfo.setEncodingTable(enc);
         }
-        return rt;
     }
 
     /**
@@ -556,27 +637,25 @@ public class TfmReader
     }
 
     /**
-     * @see org.extex.util.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
+     * Visit for the {@link TfmVisitor}. 
+     *
+     * @param visitor The visitor.
+     * @throws IOException if a io error occurred.
      */
-    public void writeXML(final XMLStreamWriter writer) throws IOException {
+    public void visit(final TfmVisitor visitor) throws IOException {
 
-        writer.writeStartElement("tfm");
-        writer.writeAttribute("name", fontname);
-        lengths.writeXML(writer);
-        header.writeXML(writer);
-        charinfo.writeXML(writer);
-        width.writeXML(writer);
-        height.writeXML(writer);
-        depth.writeXML(writer);
-        italic.writeXML(writer);
-        ligkern.writeXML(writer);
-        kern.writeXML(writer);
-        exten.writeXML(writer);
-        param.writeXML(writer);
-        if (pfbparser != null) {
-            pfbparser.writeXML(writer);
-        }
-        writer.writeEndElement();
+        visitor.visitTfmReader(this);
+        visitor.visitTfmHeaderLengths(lengths);
+        visitor.visitTfmHeaderArray(header);
+        visitor.visitTfmCharInfoArray(charinfo);
+        visitor.visitTfmWidthArray(width);
+        visitor.visitTfmHeightArray(height);
+        visitor.visitTfmDepthArray(depth);
+        visitor.visitTfmItalicArray(italic);
+        visitor.visitTfmLigKernArray(ligkern);
+        visitor.visitTfmKernArray(kern);
+        visitor.visitTfmExtenArray(exten);
+        visitor.visitTfmParamArray(param);
     }
 
     /**
@@ -599,93 +678,6 @@ public class TfmReader
         param.writeEFM(writer);
         charinfo.writeEFM(writer);
         writer.writeEndElement();
-    }
-
-    /**
-     * Returns the width of a char.
-     *
-     * @param pos   the position
-     * @return the width of a char, or <code>null</code>, if it does not exist.
-     */
-    public TfmFixWord getWidth(final int pos) {
-
-        TfmCharInfoWord ci = charinfo.getCharInfoWord(pos);
-        if (ci != null) {
-            return ci.getWidth();
-        }
-        return null;
-    }
-
-    /**
-     * Returns the height of a char.
-     *
-     * @param pos   the position
-     * @return the height of a char, or <code>null</code>, if it does not exist.
-     */
-    public TfmFixWord getHeight(final int pos) {
-
-        TfmCharInfoWord ci = charinfo.getCharInfoWord(pos);
-        if (ci != null) {
-            return ci.getHeight();
-        }
-        return null;
-    }
-
-    /**
-     * Returns the depth of a char.
-     *
-     * @param pos   the position
-     * @return the depth of a char, or <code>null</code>, if it does not exist.
-     */
-    public TfmFixWord getDepth(final int pos) {
-
-        TfmCharInfoWord ci = charinfo.getCharInfoWord(pos);
-        if (ci != null) {
-            return ci.getDepth();
-        }
-        return null;
-    }
-
-    /**
-     * Returns the italic correction of a char.
-     *
-     * @param pos   the position
-     * @return the italic correction of a char, or <code>null</code>, if it does not exist.
-     */
-    public TfmFixWord getItalicCorrection(final int pos) {
-
-        TfmCharInfoWord ci = charinfo.getCharInfoWord(pos);
-        if (ci != null) {
-            return ci.getItalic();
-        }
-        return null;
-    }
-
-    /**
-     * Returns the coding scheme of the font.
-     *
-     * @return the coding scheme of the font.
-     * @see org.extex.font.format.tfm.TfmHeaderArray#getCodingscheme()
-     */
-    public String getCodingscheme() {
-
-        return header.getCodingscheme();
-    }
-
-    /**
-     * @see org.extex.font.format.tfm.TfmLigKernArray#getKerning(int, int)
-     */
-    public TfmFixWord getKerning(final int cp1, final int cp2) {
-
-        return ligkern.getKerning(cp1, cp2);
-    }
-
-    /**
-     * @see org.extex.font.format.tfm.TfmLigKernArray#getLigature(int, int)
-     */
-    public int getLigature(final int cp1, final int cp2) {
-
-        return ligkern.getLigature(cp1, cp2);
     }
 
 }

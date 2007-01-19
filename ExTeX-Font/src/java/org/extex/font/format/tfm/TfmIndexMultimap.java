@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -34,9 +34,74 @@ import java.util.ArrayList;
 public class TfmIndexMultimap implements Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * Class <code>Enum</code> provides the sequence of all values
+     * associated to particular key.
+     */
+    public final class Enum implements Serializable {
+
+        /**
+         * The field <tt>serialVersionUID</tt> ...
+         */
+        private static final long serialVersionUID = 1L;
+
+        /**
+         * the key for which the values are required.
+         */
+        private final int key;
+
+        /**
+         * the current position in the sequence of pairs.
+         */
+        private int pos;
+
+        /**
+         * Create a new object.
+         *
+         * @param k the key for which the values are required.
+         */
+        private Enum(final int k) {
+
+            super();
+            synchronized (data) {
+                key = k;
+                pos = search(key);
+                while (pos > 0 && at(pos - 1).getKey() == key) {
+                    pos--;
+                }
+            }
+        }
+
+        /**
+         * Tests if there is another associated value.
+         *
+         * @return Return <code>true</code> if next value is available,
+         *         otherwise <code>false</code>.
+         */
+        public boolean hasMore() {
+
+            return (pos < size() && at(pos).getKey() == key);
+        }
+
+        /**
+         * Gives the next value from the sequence of associated values.
+         *
+         * @return Return the next value.
+         */
+        public int next() {
+
+            return at(pos++).getVal();
+        }
+    }
+
+    /**
+     * The field <tt>serialVersionUID</tt>.
      */
     private static final long serialVersionUID = 1L;
+
+    /**
+     * Internal storage of (key, value) pairs.
+     */
+    private ArrayList data = new ArrayList();
 
     /**
      * Create a new object.
@@ -47,18 +112,20 @@ public class TfmIndexMultimap implements Serializable {
     }
 
     /**
-     * Internal storage of (key, value) pairs.
-     */
-    private ArrayList data = new ArrayList();
-
-    /**
-     * The number of (key, value) pairs kept.
+     * Adds a new (key, value) pair.
      *
-     * @return Returns the number of stored pairs.
+     * @param key the key of the new pair.
+     * @param val the value of the new pair.
      */
-    public int size() {
+    public void add(final int key, final int val) {
 
-        return data.size();
+        synchronized (data) {
+            int pos = search(key);
+            while (pos < size() && at(pos).getKey() == key) {
+                pos++;
+            }
+            insert(new TfmKeyInt(key, val), pos);
+        }
     }
 
     /**
@@ -70,6 +137,17 @@ public class TfmIndexMultimap implements Serializable {
     public TfmKeyInt at(final int i) {
 
         return (TfmKeyInt) data.get(i);
+    }
+
+    /**
+     * Gives the sequence of all keys associated to the given key.
+     *
+     * @param key the given key.
+     * @return Return the object representing the sequence of associated values.
+     */
+    public Enum forKey(final int key) {
+
+        return new Enum(key);
     }
 
     /**
@@ -109,90 +187,12 @@ public class TfmIndexMultimap implements Serializable {
     }
 
     /**
-     * Adds a new (key, value) pair.
+     * The number of (key, value) pairs kept.
      *
-     * @param key the key of the new pair.
-     * @param val the value of the new pair.
+     * @return Returns the number of stored pairs.
      */
-    public void add(final int key, final int val) {
+    public int size() {
 
-        synchronized (data) {
-            int pos = search(key);
-            while (pos < size() && at(pos).getKey() == key) {
-                pos++;
-            }
-            insert(new TfmKeyInt(key, val), pos);
-        }
-    }
-
-    /**
-     * Gives the sequence of all keys associated to the given key.
-     *
-     * @param key the given key.
-     * @return Return the object representing the sequence of associated values.
-     */
-    public Enum forKey(final int key) {
-
-        return new Enum(key);
-    }
-
-    /**
-     * Class <code>Enum</code> provides the sequence of all values
-     * associated to particular key.
-     */
-    public final class Enum implements Serializable {
-
-        /**
-         * The field <tt>serialVersionUID</tt> ...
-         */
-        private static final long serialVersionUID = 1L;
-
-        /**
-         * Create a new object.
-         *
-         * @param k the key for which the values are required.
-         */
-        private Enum(final int k) {
-
-            super();
-            synchronized (data) {
-                key = k;
-                pos = search(key);
-                while (pos > 0 && at(pos - 1).getKey() == key) {
-                    pos--;
-                }
-            }
-        }
-
-        /**
-         * the current position in the sequence of pairs.
-         */
-        private int pos;
-
-        /**
-         * the key for which the values are required.
-         */
-        private final int key;
-
-        /**
-         * Tests if there is another associated value.
-         *
-         * @return Return <code>true</code> if next value is available,
-         *         otherwise <code>false</code>.
-         */
-        public boolean hasMore() {
-
-            return (pos < size() && at(pos).getKey() == key);
-        }
-
-        /**
-         * Gives the next value from the sequence of associated values.
-         *
-         * @return Return the next value.
-         */
-        public int next() {
-
-            return at(pos++).getVal();
-        }
+        return data.size();
     }
 }
