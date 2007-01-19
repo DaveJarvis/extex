@@ -1,28 +1,64 @@
 % Ausgabe von Fontparametern.
 % Rolf Niepraschk, Rolf.Niepraschk@gmx.de, 2007-01-14
 %
-% kleine Änderungen mgn 2007-01-17
+% kleine Änderungen, mgn 2007-01-17
+% Ausgabe als "\jobname.java", RN 2007-01-18
 %
-% Aufruf etex shonw-fontdimen.tex
+% Aufruf etex show-fontdimen-java.tex
 %
+% $Id; $
+%
+\def\fname{cmtt10}
+\edef\filename{\jobname.java}
 
-\def\fname{cmr10 at 12pt}
+\def\writeIt{\immediate\write\fdimfile}
+\newwrite\fdimfile
+\immediate\openout\fdimfile=\filename
 
-\def\typeout{\immediate\write17}
 \count0=0\relax
 \font\f=\fname\relax
-\typeout{// ************************************************************}
-\typeout{// \fname}
+\edef\LBRACE{\string{}
+\edef\RBRACE{\string}}
+\writeIt{// ************************************************************}
 \loop
   \count1=\fontcharwd\f\count0\relax
   \count2=\fontcharht\f\count0\relax
   \count3=\fontchardp\f\count0\relax
   \count4=\fontcharic\f\count0\relax
+  \writeIt{/**}
+  \writeIt{* test\fname C\the\count0}
   \iffontchar\f\count0\relax
-   \typeout{// Char \the\count0: %
+     \writeIt{* Char \the\count0: %
        Width=\the\count1, Height=\the\count2, Depth=\the\count3, IC=\the\count4}
   \else
-   \typeout{// Char \the\count0: notdef}%
+     \writeIt{* Char \the\count0: not defined}
+  \fi
+  \writeIt{*/}
+  \iffontchar\f\count0\relax
+   \writeIt{public void test\fname C\the\count0() throws Exception}
+   \writeIt{\LBRACE}
+   \writeIt{FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + \the\count0));}
+   \writeIt{FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + \the\count0));}
+   \writeIt{FixedGlue d = font.getDepth(UnicodeChar.get(Unicode.OFFSET + \the\count0));}
+   \writeIt{FixedDimen i = font.getItalicCorrection(UnicodeChar.get(Unicode.OFFSET + \the\count0));}
+   \writeIt{assertNotNull(w);}
+   \writeIt{assertNotNull(h);}
+   \writeIt{assertNotNull(d);}
+   \writeIt{assertNotNull(i);}
+   \writeIt{assertTrue(Long.toString(w.getLength().getValue()),}
+   \writeIt{ new Glue(\the\count1).eq(w));}
+   \writeIt{assertTrue(Long.toString(h.getLength().getValue()),}
+   \writeIt{ new Glue(\the\count2).eq(h));}
+   \writeIt{assertTrue(Long.toString(d.getLength().getValue()),}
+   \writeIt{ new Glue(\the\count3).eq(d));}
+   \writeIt{assertTrue(Long.toString(i.getValue()),}
+   \writeIt{ new Dimen(\the\count4).eq(i));}
+   \writeIt{\RBRACE}
+  \else
+   \writeIt{public void test\fname C\the\count0() throws Exception}
+   \writeIt{\LBRACE}
+   \writeIt{assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + \the\count0)));}
+   \writeIt{\RBRACE}
   \fi
   \advance \count0 by 1\relax
 \ifnum \count0<256\relax \repeat
@@ -32,7 +68,13 @@
 
 \count1\wd1\relax \advance\count1-\wd0\relax
 
-\typeout{// Kerning: AV : \the\count1}
-\typeout{// ************************************************************}
+\writeIt{// Kerning: AV : \the\count1}
+\writeIt{// ************************************************************}
+
+\bye
+\immediate\closeout\fdimfile
+\message{^^J****************************************************}
+\message{fontdim parameters written to ``\filename''.}
+\message{****************************************************}
 
 \bye
