@@ -2,7 +2,7 @@
   ############################################################################
   # This is the Ant build file for ExTeX
   ############################################################################
-  # Copyright (C) 2004-2006 The ExTeX Group
+  # Copyright (C) 2004-2007 The ExTeX Group
   #
   # This library is free software; you can redistribute it and/or modify it
   # under the terms of the GNU Lesser General Public License as published by
@@ -40,8 +40,8 @@
   <property name="application" value="application" />
 
   <!-- 
-    -  The configuration can be found in application.config or wherever the
-    -  property "application" points to.
+    -  The configuration can be found in application.config
+    -  or wherever the property "application" points to.
     -  This configuration is transformed into something digestable by Ant and
     -  imported.
     -->
@@ -53,22 +53,31 @@
   
   <import file="build-sub-projects.xml"/>
 
+  <property name="snapshot" location="${target}/${application}/html/snapshot" />
+  <property name="classes" location="target/${application}/classes" />
   <property name="javac.deprecation" value="off" />
   <property name="extex.jar.file" value="extex" />
-  <property name="classes" location="target/${application}/classes" />
-  <property name="javadoc" location="target/${application}/html/javadoc" />
-  <property name="installer.dir" location="util/Installer" />
-  <property name="target.lib" location="target/lib" />
+
+  <property name="javadoc" location="${snapshot}/javadoc" />
+
+  <property name="installer.dir" location="../util/Installer" />
+
+  <property name="target.lib" location="${target}/${application}/lib" />
 
   <property name="tests.haltonfailure" value="no" />
   <property name="test.classes" location="${target}/${application}/test/classes" />
   <property name="test.results" location="${target}/${application}/test/results" />
-  <property name="test.results.html" location="${target}/${application}/html/reports/tests" />
+  <property name="test.results.html" location="${snapshot}/tests" />
 
   <!-- ==================================================================== -->
   <taskdef name="checkstyle"
            classname="com.puppycrawl.tools.checkstyle.CheckStyleTask"
            classpath="lib/checkstyle-all-4.2.jar"/>
+
+  <!-- ==================================================================== -->
+  <taskdef name="izpack"
+           classpath="${installer.dir}/IzPack/lib/compiler.jar"
+           classname="com.izforge.izpack.ant.IzPackTask" />
 
   <!-- ==================================================================== -->
   <target name="all"
@@ -87,9 +96,9 @@
       <fileset refid="application.source.files" />
     </checkstyle>
 
-    <mkdir dir="${target}/${application}/html"/>
+    <mkdir dir="${snapshot}"/>
     <xslt in="${target}/${application}/checkstyle.xml"
-          out="${target}/${application}/html/checkstyle/checkstyle.html"
+          out="${snapshot}/checkstyle.html"
           style="src/xslt/checkstyle-frames.xsl"/>
   </target>
 
@@ -102,7 +111,8 @@
   </target>
 
   <!-- ==================================================================== -->
-  <target name="compile" description="Compile the production Java files">
+  <target name="compile"
+          description="Compile the production Java files">
 
     <mkdir dir="${classes}" />
     <javac destdir="${classes}"
@@ -121,10 +131,20 @@
   </target>
 
   <!-- ==================================================================== -->
+  <target name="doc"
+          description="Build the documentation" >
+    <ant dir="../doc/UsersGuide" 
+         target="all">
+    </ant>
+  </target>
+
+  <!-- ==================================================================== -->
   <target name="formats"
           description="Compile the format files">
     <ant dir="../texmf" 
-         target="formats" />
+         target="formats">
+      <property name="target" value="${target}/${application}"/>
+    </ant>
   </target>
 
   <!-- ==================================================================== -->
@@ -141,6 +161,18 @@
     <copy todir="target/classes">
       <fileset dir="src/java" excludes="*.java"/>
     </copy>
+  </target>
+
+  <!-- ==================================================================== -->
+  <target name="installer"
+          depends="jar,formats,lib"
+          description="Create the standalone installer for ExTeX.">
+    <mkdir dir="${snapshot}" />
+    <izpack input="${installer.dir}/install.xml"
+            output="${snapshot}/ExTeX-setup.jar"
+            installerType="standard"
+            basedir="${installer.dir}"
+            izPackDir="${installer.dir}/IzPack/" />
   </target>
 
   <!-- ==================================================================== -->
@@ -191,8 +223,24 @@
   </target>
     
   <!-- ==================================================================== -->
+  <target name="lib"
+          description="Collect the libraries in target">
+    <mkdir dir="${target.lib}"/>
+    <copy todir="${target.lib}"
+          flatten="true">
+      <fileset refid="application.libraries"/>
+    </copy>
+  </target>
+
+  <!-- ==================================================================== -->
   <target name="site"
+          depends="site.static,installer,test,javadoc"
           description="Build the site">
+  </target>
+
+  <!-- ==================================================================== -->
+  <target name="site.static"
+          description="Build the static structure of the site">
     <subant antfile="../www/build.xml"
             buildpath="../www"
             target="site">
