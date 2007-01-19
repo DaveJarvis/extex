@@ -61,6 +61,8 @@
   <!-- ==================================================================== -->
   <target name="formats" depends="extex-jar" description="">
 
+    <mkdir dir="target/texmf"/>
+
     <java classname="org.extex.tex.main.TeX"
           fork="true"
           failonerror="true"
@@ -69,7 +71,7 @@
       <arg value="-ini" />
       <arg value="-config=extex" />
       <arg value="-jobname=extex" />
-      <arg value="-output-directory=target" />
+      <arg value="-output-directory=target/texmf" />
       <arg value="\input plain.tex \dump\end" />
     </java>
 
@@ -81,13 +83,13 @@
       <arg value="-ini" />
       <arg value="-config=tex" />
       <arg value="-jobname=tex" />
-      <arg value="-output-directory=target" />
+      <arg value="-output-directory=target/texmf" />
       <arg value="\input plain.tex \dump\end" />
     </java>
 
     <jar jarfile="${target}/extex-formats.jar"
          basedir="target"
-         includes="*.fmt,*.log">
+         includes="texmf/*.fmt,texmf/*.log">
       <manifest>
         <attribute name="Built-By" value="${user.name}" />
       </manifest>
