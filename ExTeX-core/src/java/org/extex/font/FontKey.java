@@ -24,6 +24,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import org.extex.interpreter.type.count.Count;
+import org.extex.interpreter.type.count.FixedCount;
 import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.interpreter.type.dimen.FixedDimen;
 
@@ -37,7 +39,7 @@ import org.extex.interpreter.type.dimen.FixedDimen;
  * <p>properties:</p>TODO mgn: ergänzen
  * <ul>
  * <li>size:         The size of the font</li>
- * <li>scale:        The scaling factr of the font.</li>
+ * <li>scale:        The scaling factor of the font.</li>
  * <li>letterspaced: ...</li>
  * <li>ligatures:    If <code>true</code>, the ligature information are used.</li>
  * <li>kerning:      If <code>true</code>, the kerning information are used.</li>
@@ -85,6 +87,11 @@ public class FontKey implements Serializable {
     private Map dimenMap;
 
     /**
+     * Map for count values.
+     */
+    private Map countMap;
+
+    /**
      * The name of the font.
      */
     private String name;
@@ -104,6 +111,7 @@ public class FontKey implements Serializable {
         name = fk.getName();
         stringMap = new HashMap(fk.getStringMap());
         dimenMap = new HashMap(fk.getDimenMap());
+        countMap = new HashMap(fk.getCountMap());
         booleanMap = new HashMap(fk.getBooleanMap());
     }
 
@@ -121,6 +129,7 @@ public class FontKey implements Serializable {
 
         stringMap = new HashMap();
         dimenMap = new HashMap();
+        countMap = new HashMap();
         booleanMap = new HashMap();
 
     }
@@ -161,12 +170,32 @@ public class FontKey implements Serializable {
     }
 
     /**
+     * Returns the value for the key or <code>null</code>,
+     * if no key exists in the map.
+     * @param key The key.
+     * @return Returns the value for the key.
+     */
+    public FixedCount getCount(final String key) {
+
+        return (FixedCount) countMap.get(key);
+    }
+
+    /**
      * Returns the dimenMap.
      * @return Returns the dimenMap.
      */
     protected Map getDimenMap() {
 
         return dimenMap;
+    }
+
+    /**
+     * Returns the countMap.
+     * @return Returns the countMap.
+     */
+    protected Map getCountMap() {
+
+        return countMap;
     }
 
     /**
@@ -213,6 +242,8 @@ public class FontKey implements Serializable {
                 put(key, (String) obj);
             } else if (obj instanceof Dimen) {
                 put(key, (Dimen) obj);
+            } else if (obj instanceof Count) {
+                put(key, (Count) obj);
             } else if (obj instanceof Boolean) {
                 put(key, ((Boolean) obj).booleanValue());
             }
@@ -244,6 +275,16 @@ public class FontKey implements Serializable {
      * @param key   The key.
      * @param value The value.
      */
+    public void put(final String key, final FixedCount value) {
+
+        countMap.put(key, value);
+    }
+
+    /**
+     * Put an key values pair on the map.
+     * @param key   The key.
+     * @param value The value.
+     */
     public void put(final String key, final String value) {
 
         stringMap.put(key, value);
@@ -263,6 +304,15 @@ public class FontKey implements Serializable {
 
             buf.append(" ").append(key).append("=");
             d.toString(buf);
+        }
+
+        it = countMap.keySet().iterator();
+        while (it.hasNext()) {
+            String key = (String) it.next();
+            FixedCount c = getCount(key);
+
+            buf.append(" ").append(key).append("=");
+            c.toString(buf);
         }
 
         it = stringMap.keySet().iterator();
