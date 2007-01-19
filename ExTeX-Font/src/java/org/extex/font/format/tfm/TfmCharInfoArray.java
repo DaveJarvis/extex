@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -360,13 +360,23 @@ public class TfmCharInfoArray
 
     /**
      * Returns the charinfoword for the character.
+     * If the position less then bc (first character in the font),
+     * <code>null</code> will be returned.
+     *
      * @param i the position of the character
      * @return Returns the charinfoword for the character.
      */
     public TfmCharInfoWord getCharInfoWord(final int i) {
 
-        if (i >= 0 && i < charinfoword.length) {
-            return charinfoword[i];
+        if (i < bc) {
+            return null;
+        }
+        int idx = i;
+        if (bc != 0) {
+            idx = i - bc;
+        }
+        if (idx >= 0 && idx < charinfoword.length) {
+            return charinfoword[idx];
         }
         return null;
     }

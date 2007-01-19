@@ -29,12 +29,12 @@ import org.extex.unicode.Unicode;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
- * Test for the font factory (with font cmtt10).
+ * Test for the font factory (with font cmvtti10).
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
+public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
 
     /**
      * The font.
@@ -52,13 +52,13 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
      * @throws ConfigurationException from the configuration system.
      * @throws FontException if a font error occurred.
      */
-    public FontFactoryImplGenCmtt10Test() throws ConfigurationException,
+    public FontFactoryImplGenCmvtti10Test() throws ConfigurationException,
             FontException {
 
         if (key == null) {
             CoreFontFactory factory = makeFontFactory();
 
-            key = factory.getFontKey("cmtt10", new Dimen(Dimen.ONE * 10));
+            key = factory.getFontKey("cmvtti10");
 
             font = factory.getInstance(key);
         }
@@ -74,10 +74,10 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
     }
 
     /**
-     * testcmtt10C0
-     * Char 0: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 0: Width=475133, Height=400498, Depth=0, IC=90568
      */
-    public void testcmtt10C0() throws Exception {
+    public void testcmvtti10C0() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 0));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 0));
@@ -88,19 +88,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(475133)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(90568).eq(i));
     }
 
     /**
-     * testcmtt10C1
-     * Char 1: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 1: Width=628048, Height=400498, Depth=0, IC=0
      */
-    public void testcmtt10C1() throws Exception {
+    public void testcmvtti10C1() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 1));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 1));
@@ -111,7 +111,7 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(628048)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
@@ -120,10 +120,10 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
     }
 
     /**
-     * testcmtt10C2
-     * Char 2: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 2: Width=589820, Height=400498, Depth=0, IC=50971
      */
-    public void testcmtt10C2() throws Exception {
+    public void testcmvtti10C2() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 2));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 2));
@@ -134,19 +134,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(589820)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(50971).eq(i));
     }
 
     /**
-     * testcmtt10C3
-     * Char 3: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 3: Width=513361, Height=400498, Depth=0, IC=0
      */
-    public void testcmtt10C3() throws Exception {
+    public void testcmvtti10C3() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 3));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 3));
@@ -157,7 +157,7 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(513361)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
@@ -166,10 +166,10 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
     }
 
     /**
-     * testcmtt10C4
-     * Char 4: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 4: Width=513361, Height=400498, Depth=0, IC=86745
      */
-    public void testcmtt10C4() throws Exception {
+    public void testcmvtti10C4() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 4));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 4));
@@ -180,19 +180,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(513361)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(86745).eq(i));
     }
 
     /**
-     * testcmtt10C5
-     * Char 5: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 5: Width=551591, Height=400498, Depth=0, IC=89203
      */
-    public void testcmtt10C5() throws Exception {
+    public void testcmvtti10C5() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 5));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 5));
@@ -203,19 +203,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(551591)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(89203).eq(i));
     }
 
     /**
-     * testcmtt10C6
-     * Char 6: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 6: Width=551591, Height=400498, Depth=0, IC=81010
      */
-    public void testcmtt10C6() throws Exception {
+    public void testcmvtti10C6() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 6));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 6));
@@ -226,19 +226,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(551591)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(81010).eq(i));
     }
 
     /**
-     * testcmtt10C7
-     * Char 7: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 7: Width=589820, Height=400498, Depth=0, IC=60985
      */
-    public void testcmtt10C7() throws Exception {
+    public void testcmvtti10C7() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 7));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 7));
@@ -249,19 +249,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(589820)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(60985).eq(i));
     }
 
     /**
-     * testcmtt10C8
-     * Char 8: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 8: Width=551591, Height=400498, Depth=0, IC=30946
      */
-    public void testcmtt10C8() throws Exception {
+    public void testcmvtti10C8() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 8));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 8));
@@ -272,19 +272,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(551591)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(30946).eq(i));
     }
 
     /**
-     * testcmtt10C9
-     * Char 9: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 9: Width=589820, Height=400498, Depth=0, IC=60985
      */
-    public void testcmtt10C9() throws Exception {
+    public void testcmvtti10C9() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 9));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 9));
@@ -295,19 +295,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(589820)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(60985).eq(i));
     }
 
     /**
-     * testcmtt10C10
-     * Char 10: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 10: Width=551591, Height=400498, Depth=0, IC=55978
      */
-    public void testcmtt10C10() throws Exception {
+    public void testcmvtti10C10() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 10));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 10));
@@ -318,19 +318,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(551591)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(55978).eq(i));
     }
 
     /**
-     * testcmtt10C11
-     * Char 11: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 11: Width=491518, Height=400498, Depth=145636, IC=128796
      */
-    public void testcmtt10C11() throws Exception {
+    public void testcmvtti10C11() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 11));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 11));
@@ -341,19 +341,20 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(491518)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(d.getLength().getValue()), new Glue(145636)
+                .eq(d));
+        assertTrue(Long.toString(i.getValue()), new Dimen(128796).eq(i));
     }
 
     /**
-     * testcmtt10C12
-     * Char 12: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 12: Width=453290, Height=400498, Depth=145636, IC=65385
      */
-    public void testcmtt10C12() throws Exception {
+    public void testcmvtti10C12() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 12));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 12));
@@ -364,19 +365,20 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(453290)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(d.getLength().getValue()), new Glue(145636)
+                .eq(d));
+        assertTrue(Long.toString(i.getValue()), new Dimen(65385).eq(i));
     }
 
     /**
-     * testcmtt10C13
-     * Char 13: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 13: Width=472403, Height=400498, Depth=145636, IC=65385
      */
-    public void testcmtt10C13() throws Exception {
+    public void testcmvtti10C13() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 13));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 13));
@@ -387,19 +389,20 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(472403)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(d.getLength().getValue()), new Glue(145636)
+                .eq(d));
+        assertTrue(Long.toString(i.getValue()), new Dimen(65385).eq(i));
     }
 
     /**
-     * testcmtt10C14
-     * Char 14: Width=344061, Height=254861, Depth=145636, IC=0
+     * test cmvtti10
+     * Char 14: Width=708606, Height=400498, Depth=145636, IC=65385
      */
-    public void testcmtt10C14() throws Exception {
+    public void testcmvtti10C14() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 14));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 14));
@@ -410,20 +413,20 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(708606)
                 .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(254861)
+        assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(145636)
                 .eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(65385).eq(i));
     }
 
     /**
-     * testcmtt10C15
-     * Char 15: Width=344061, Height=254861, Depth=145636, IC=0
+     * test cmvtti10
+     * Char 15: Width=718163, Height=400498, Depth=145636, IC=65385
      */
-    public void testcmtt10C15() throws Exception {
+    public void testcmvtti10C15() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 15));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 15));
@@ -434,20 +437,20 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(718163)
                 .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(254861)
+        assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(145636)
                 .eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(65385).eq(i));
     }
 
     /**
-     * testcmtt10C16
-     * Char 16: Width=344061, Height=282168, Depth=0, IC=0
+     * test cmvtti10
+     * Char 16: Width=245758, Height=282168, Depth=0, IC=65385
      */
-    public void testcmtt10C16() throws Exception {
+    public void testcmvtti10C16() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 16));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 16));
@@ -458,19 +461,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(245758)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(282168)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(65385).eq(i));
     }
 
     /**
-     * testcmtt10C17
-     * Char 17: Width=344061, Height=282168, Depth=145636, IC=0
+     * test cmvtti10
+     * Char 17: Width=264873, Height=282168, Depth=145636, IC=16840
      */
-    public void testcmtt10C17() throws Exception {
+    public void testcmvtti10C17() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 17));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 17));
@@ -481,20 +484,20 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(264873)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(282168)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(145636)
                 .eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(16840).eq(i));
     }
 
     /**
-     * testcmtt10C18
-     * Char 18: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 18: Width=398675, Height=400498, Depth=0, IC=0
      */
-    public void testcmtt10C18() throws Exception {
+    public void testcmvtti10C18() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 18));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 18));
@@ -505,7 +508,7 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(398675)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
@@ -514,10 +517,10 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
     }
 
     /**
-     * testcmtt10C19
-     * Char 19: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 19: Width=398675, Height=400498, Depth=0, IC=42781
      */
-    public void testcmtt10C19() throws Exception {
+    public void testcmvtti10C19() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 19));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 19));
@@ -528,19 +531,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(398675)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(42781).eq(i));
     }
 
     /**
-     * testcmtt10C20
-     * Char 20: Width=344061, Height=370916, Depth=0, IC=0
+     * test cmvtti10
+     * Char 20: Width=398675, Height=370916, Depth=0, IC=48583
      */
-    public void testcmtt10C20() throws Exception {
+    public void testcmvtti10C20() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 20));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 20));
@@ -551,19 +554,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(398675)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(370916)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(48583).eq(i));
     }
 
     /**
-     * testcmtt10C21
-     * Char 21: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 21: Width=398675, Height=400498, Depth=0, IC=62806
      */
-    public void testcmtt10C21() throws Exception {
+    public void testcmvtti10C21() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 21));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 21));
@@ -574,19 +577,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(398675)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(62806).eq(i));
     }
 
     /**
-     * testcmtt10C22
-     * Char 22: Width=344061, Height=370641, Depth=0, IC=0
+     * test cmvtti10
+     * Char 22: Width=398675, Height=370641, Depth=0, IC=63988
      */
-    public void testcmtt10C22() throws Exception {
+    public void testcmvtti10C22() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 22));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 22));
@@ -597,19 +600,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(398675)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(370641)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(63988).eq(i));
     }
 
     /**
-     * testcmtt10C23
-     * Char 23: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 23: Width=591033, Height=400498, Depth=0, IC=0
      */
-    public void testcmtt10C23() throws Exception {
+    public void testcmvtti10C23() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 23));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 23));
@@ -620,7 +623,7 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(591033)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
@@ -629,10 +632,10 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
     }
 
     /**
-     * testcmtt10C24
-     * Char 24: Width=344061, Height=0, Depth=127431, IC=0
+     * test cmvtti10
+     * Char 24: Width=360446, Height=0, Depth=127431, IC=0
      */
-    public void testcmtt10C24() throws Exception {
+    public void testcmvtti10C24() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 24));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 24));
@@ -643,7 +646,7 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(360446)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(0).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(127431)
@@ -652,10 +655,10 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
     }
 
     /**
-     * testcmtt10C25
-     * Char 25: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 25: Width=417791, Height=400498, Depth=145636, IC=51883
      */
-    public void testcmtt10C25() throws Exception {
+    public void testcmvtti10C25() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 25));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 25));
@@ -666,19 +669,20 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(417791)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(d.getLength().getValue()), new Glue(145636)
+                .eq(d));
+        assertTrue(Long.toString(i.getValue()), new Dimen(51883).eq(i));
     }
 
     /**
-     * testcmtt10C26
-     * Char 26: Width=344061, Height=282168, Depth=0, IC=0
+     * test cmvtti10
+     * Char 26: Width=551591, Height=282168, Depth=0, IC=55068
      */
-    public void testcmtt10C26() throws Exception {
+    public void testcmvtti10C26() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 26));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 26));
@@ -689,19 +693,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(551591)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(282168)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(55068).eq(i));
     }
 
     /**
-     * testcmtt10C27
-     * Char 27: Width=344061, Height=282168, Depth=0, IC=0
+     * test cmvtti10
+     * Char 27: Width=551591, Height=282168, Depth=0, IC=55068
      */
-    public void testcmtt10C27() throws Exception {
+    public void testcmvtti10C27() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 27));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 27));
@@ -712,19 +716,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(551591)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(282168)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(55068).eq(i));
     }
 
     /**
-     * testcmtt10C28
-     * Char 28: Width=344061, Height=354986, Depth=72818, IC=0
+     * test cmvtti10
+     * Char 28: Width=398675, Height=354986, Depth=72818, IC=70543
      */
-    public void testcmtt10C28() throws Exception {
+    public void testcmvtti10C28() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 28));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 28));
@@ -735,20 +739,20 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(398675)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(354986)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(72818)
                 .eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(70543).eq(i));
     }
 
     /**
-     * testcmtt10C29
-     * Char 29: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 29: Width=666278, Height=400498, Depth=0, IC=81010
      */
-    public void testcmtt10C29() throws Exception {
+    public void testcmvtti10C29() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 29));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 29));
@@ -759,19 +763,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(666278)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(81010).eq(i));
     }
 
     /**
-     * testcmtt10C30
-     * Char 30: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 30: Width=742736, Height=400498, Depth=0, IC=81010
      */
-    public void testcmtt10C30() throws Exception {
+    public void testcmvtti10C30() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 30));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 30));
@@ -782,19 +786,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(742736)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(81010).eq(i));
     }
 
     /**
-     * testcmtt10C31
-     * Char 31: Width=344061, Height=436906, Depth=36408, IC=0
+     * test cmvtti10
+     * Char 31: Width=589820, Height=436906, Depth=36408, IC=50971
      */
-    public void testcmtt10C31() throws Exception {
+    public void testcmvtti10C31() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 31));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 31));
@@ -805,20 +809,20 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(589820)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(436906)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(36408)
                 .eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(50971).eq(i));
     }
 
     /**
-     * testcmtt10C32
-     * Char 32: Width=344061, Height=143815, Depth=72818, IC=0
+     * test cmvtti10
+     * Char 32: Width=207530, Height=282168, Depth=0, IC=0
      */
-    public void testcmtt10C32() throws Exception {
+    public void testcmvtti10C32() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 32));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 32));
@@ -829,20 +833,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(207530)
                 .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(143815)
+        assertTrue(Long.toString(h.getLength().getValue()), new Glue(282168)
                 .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(72818)
-                .eq(d));
+        assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
 
     /**
-     * testcmtt10C33
-     * Char 33: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 33: Width=245758, Height=400498, Depth=0, IC=56435
      */
-    public void testcmtt10C33() throws Exception {
+    public void testcmvtti10C33() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 33));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 33));
@@ -853,19 +856,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(245758)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(56435).eq(i));
     }
 
     /**
-     * testcmtt10C34
-     * Char 34: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 34: Width=398675, Height=400498, Depth=0, IC=8921
      */
-    public void testcmtt10C34() throws Exception {
+    public void testcmvtti10C34() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 34));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 34));
@@ -876,19 +879,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(398675)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(8921).eq(i));
     }
 
     /**
-     * testcmtt10C35
-     * Char 35: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 35: Width=628048, Height=400498, Depth=0, IC=48981
      */
-    public void testcmtt10C35() throws Exception {
+    public void testcmvtti10C35() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 35));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 35));
@@ -899,19 +902,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(628048)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(48981).eq(i));
     }
 
     /**
-     * testcmtt10C36
-     * Char 36: Width=344061, Height=455111, Depth=54613, IC=0
+     * test cmvtti10
+     * Char 36: Width=569341, Height=400498, Depth=0, IC=0
      */
-    public void testcmtt10C36() throws Exception {
+    public void testcmvtti10C36() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 36));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 36));
@@ -922,20 +925,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(569341)
                 .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(455111)
+        assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(54613)
-                .eq(d));
+        assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
 
     /**
-     * testcmtt10C37
-     * Char 37: Width=344061, Height=455111, Depth=54613, IC=0
+     * test cmvtti10
+     * Char 37: Width=628048, Height=455111, Depth=54613, IC=20933
      */
-    public void testcmtt10C37() throws Exception {
+    public void testcmvtti10C37() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 37));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 37));
@@ -946,20 +948,20 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(628048)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(455111)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(54613)
                 .eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(20933).eq(i));
     }
 
     /**
-     * testcmtt10C38
-     * Char 38: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 38: Width=589820, Height=400498, Depth=0, IC=42781
      */
-    public void testcmtt10C38() throws Exception {
+    public void testcmvtti10C38() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 38));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 38));
@@ -970,19 +972,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(589820)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(42781).eq(i));
     }
 
     /**
-     * testcmtt10C39
-     * Char 39: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 39: Width=245758, Height=400498, Depth=0, IC=56435
      */
-    public void testcmtt10C39() throws Exception {
+    public void testcmvtti10C39() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 39));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 39));
@@ -993,19 +995,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(245758)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(56435).eq(i));
     }
 
     /**
-     * testcmtt10C40
-     * Char 40: Width=344061, Height=455111, Depth=54611, IC=0
+     * test cmvtti10
+     * Char 40: Width=322216, Height=455111, Depth=54611, IC=94663
      */
-    public void testcmtt10C40() throws Exception {
+    public void testcmvtti10C40() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 40));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 40));
@@ -1016,20 +1018,20 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(322216)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(455111)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(54611)
                 .eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(94663).eq(i));
     }
 
     /**
-     * testcmtt10C41
-     * Char 41: Width=344061, Height=455111, Depth=54611, IC=0
+     * test cmvtti10
+     * Char 41: Width=322216, Height=455111, Depth=54611, IC=30946
      */
-    public void testcmtt10C41() throws Exception {
+    public void testcmvtti10C41() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 41));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 41));
@@ -1040,20 +1042,20 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(322216)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(455111)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(54611)
                 .eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(30946).eq(i));
     }
 
     /**
-     * testcmtt10C42
-     * Char 42: Width=344061, Height=341333, Depth=0, IC=0
+     * test cmvtti10
+     * Char 42: Width=398675, Height=341333, Depth=0, IC=56661
      */
-    public void testcmtt10C42() throws Exception {
+    public void testcmvtti10C42() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 42));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 42));
@@ -1064,19 +1066,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(398675)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(341333)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(56661).eq(i));
     }
 
     /**
-     * testcmtt10C43
-     * Char 43: Width=344061, Height=347703, Depth=-52794, IC=0
+     * test cmvtti10
+     * Char 43: Width=589820, Height=429623, Depth=29125, IC=30946
      */
-    public void testcmtt10C43() throws Exception {
+    public void testcmvtti10C43() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 43));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 43));
@@ -1087,20 +1089,20 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(589820)
                 .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(347703)
+        assertTrue(Long.toString(h.getLength().getValue()), new Glue(429623)
                 .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(-52794)
+        assertTrue(Long.toString(d.getLength().getValue()), new Glue(29125)
                 .eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(30946).eq(i));
     }
 
     /**
-     * testcmtt10C44
-     * Char 44: Width=344061, Height=81920, Depth=91021, IC=0
+     * test cmvtti10
+     * Char 44: Width=245758, Height=65536, Depth=91021, IC=0
      */
-    public void testcmtt10C44() throws Exception {
+    public void testcmvtti10C44() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 44));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 44));
@@ -1111,9 +1113,9 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(245758)
                 .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(81920)
+        assertTrue(Long.toString(h.getLength().getValue()), new Glue(65536)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(91021)
                 .eq(d));
@@ -1121,10 +1123,10 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
     }
 
     /**
-     * testcmtt10C45
-     * Char 45: Width=344061, Height=347703, Depth=-52794, IC=0
+     * test cmvtti10
+     * Char 45: Width=283988, Height=282168, Depth=0, IC=16156
      */
-    public void testcmtt10C45() throws Exception {
+    public void testcmvtti10C45() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 45));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 45));
@@ -1135,20 +1137,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(283988)
                 .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(347703)
+        assertTrue(Long.toString(h.getLength().getValue()), new Glue(282168)
                 .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(-52794)
-                .eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
+        assertTrue(Long.toString(i.getValue()), new Dimen(16156).eq(i));
     }
 
     /**
-     * testcmtt10C46
-     * Char 46: Width=344061, Height=81920, Depth=0, IC=0
+     * test cmvtti10
+     * Char 46: Width=245758, Height=65536, Depth=0, IC=0
      */
-    public void testcmtt10C46() throws Exception {
+    public void testcmvtti10C46() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 46));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 46));
@@ -1159,19 +1160,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(245758)
                 .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(81920)
+        assertTrue(Long.toString(h.getLength().getValue()), new Glue(65536)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
 
     /**
-     * testcmtt10C47
-     * Char 47: Width=344061, Height=455111, Depth=54611, IC=0
+     * test cmvtti10
+     * Char 47: Width=398675, Height=455111, Depth=54611, IC=94663
      */
-    public void testcmtt10C47() throws Exception {
+    public void testcmvtti10C47() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 47));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 47));
@@ -1182,20 +1183,20 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(398675)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(455111)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(54611)
                 .eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(94663).eq(i));
     }
 
     /**
-     * testcmtt10C48
-     * Char 48: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 48: Width=398675, Height=400498, Depth=0, IC=81010
      */
-    public void testcmtt10C48() throws Exception {
+    public void testcmvtti10C48() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 48));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 48));
@@ -1206,19 +1207,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(398675)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(81010).eq(i));
     }
 
     /**
-     * testcmtt10C49
-     * Char 49: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 49: Width=398675, Height=400498, Depth=0, IC=81010
      */
-    public void testcmtt10C49() throws Exception {
+    public void testcmvtti10C49() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 49));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 49));
@@ -1229,19 +1230,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(398675)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(81010).eq(i));
     }
 
     /**
-     * testcmtt10C50
-     * Char 50: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 50: Width=398675, Height=400498, Depth=0, IC=81010
      */
-    public void testcmtt10C50() throws Exception {
+    public void testcmvtti10C50() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 50));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 50));
@@ -1252,19 +1253,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(398675)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(81010).eq(i));
     }
 
     /**
-     * testcmtt10C51
-     * Char 51: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 51: Width=398675, Height=400498, Depth=0, IC=81010
      */
-    public void testcmtt10C51() throws Exception {
+    public void testcmvtti10C51() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 51));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 51));
@@ -1275,19 +1276,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(398675)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(81010).eq(i));
     }
 
     /**
-     * testcmtt10C52
-     * Char 52: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 52: Width=398675, Height=400498, Depth=145636, IC=81010
      */
-    public void testcmtt10C52() throws Exception {
+    public void testcmvtti10C52() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 52));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 52));
@@ -1298,19 +1299,20 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(398675)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(d.getLength().getValue()), new Glue(145636)
+                .eq(d));
+        assertTrue(Long.toString(i.getValue()), new Dimen(81010).eq(i));
     }
 
     /**
-     * testcmtt10C53
-     * Char 53: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 53: Width=398675, Height=400498, Depth=0, IC=81010
      */
-    public void testcmtt10C53() throws Exception {
+    public void testcmvtti10C53() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 53));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 53));
@@ -1321,19 +1323,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(398675)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(81010).eq(i));
     }
 
     /**
-     * testcmtt10C54
-     * Char 54: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 54: Width=398675, Height=400498, Depth=0, IC=81010
      */
-    public void testcmtt10C54() throws Exception {
+    public void testcmvtti10C54() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 54));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 54));
@@ -1344,19 +1346,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(398675)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(81010).eq(i));
     }
 
     /**
-     * testcmtt10C55
-     * Char 55: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 55: Width=398675, Height=400498, Depth=145636, IC=81010
      */
-    public void testcmtt10C55() throws Exception {
+    public void testcmvtti10C55() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 55));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 55));
@@ -1367,19 +1369,20 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(398675)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(d.getLength().getValue()), new Glue(145636)
+                .eq(d));
+        assertTrue(Long.toString(i.getValue()), new Dimen(81010).eq(i));
     }
 
     /**
-     * testcmtt10C56
-     * Char 56: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 56: Width=398675, Height=400498, Depth=0, IC=81010
      */
-    public void testcmtt10C56() throws Exception {
+    public void testcmvtti10C56() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 56));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 56));
@@ -1390,19 +1393,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(398675)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(81010).eq(i));
     }
 
     /**
-     * testcmtt10C57
-     * Char 57: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 57: Width=398675, Height=400498, Depth=0, IC=81010
      */
-    public void testcmtt10C57() throws Exception {
+    public void testcmvtti10C57() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 57));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 57));
@@ -1413,19 +1416,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(398675)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(81010).eq(i));
     }
 
     /**
-     * testcmtt10C58
-     * Char 58: Width=344061, Height=282168, Depth=0, IC=0
+     * test cmvtti10
+     * Char 58: Width=245758, Height=282168, Depth=0, IC=26851
      */
-    public void testcmtt10C58() throws Exception {
+    public void testcmvtti10C58() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 58));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 58));
@@ -1436,19 +1439,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(245758)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(282168)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(26851).eq(i));
     }
 
     /**
-     * testcmtt10C59
-     * Char 59: Width=344061, Height=282168, Depth=91021, IC=0
+     * test cmvtti10
+     * Char 59: Width=245758, Height=282168, Depth=91021, IC=26851
      */
-    public void testcmtt10C59() throws Exception {
+    public void testcmvtti10C59() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 59));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 59));
@@ -1459,20 +1462,20 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(245758)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(282168)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(91021)
                 .eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(26851).eq(i));
     }
 
     /**
-     * testcmtt10C60
-     * Char 60: Width=344061, Height=364088, Depth=-36409, IC=0
+     * test cmvtti10
+     * Char 60: Width=245758, Height=254861, Depth=145636, IC=20026
      */
-    public void testcmtt10C60() throws Exception {
+    public void testcmvtti10C60() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 60));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 60));
@@ -1483,20 +1486,20 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(245758)
                 .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(364088)
+        assertTrue(Long.toString(h.getLength().getValue()), new Glue(254861)
                 .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(-36409)
+        assertTrue(Long.toString(d.getLength().getValue()), new Glue(145636)
                 .eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(20026).eq(i));
     }
 
     /**
-     * testcmtt10C61
-     * Char 61: Width=344061, Height=272383, Depth=-128115, IC=0
+     * test cmvtti10
+     * Char 61: Width=589820, Height=272383, Depth=-128115, IC=48981
      */
-    public void testcmtt10C61() throws Exception {
+    public void testcmvtti10C61() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 61));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 61));
@@ -1507,20 +1510,20 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(589820)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(272383)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(-128115)
                 .eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(48981).eq(i));
     }
 
     /**
-     * testcmtt10C62
-     * Char 62: Width=344061, Height=364088, Depth=-36409, IC=0
+     * test cmvtti10
+     * Char 62: Width=398675, Height=254861, Depth=145636, IC=0
      */
-    public void testcmtt10C62() throws Exception {
+    public void testcmvtti10C62() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 62));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 62));
@@ -1531,20 +1534,20 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(398675)
                 .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(364088)
+        assertTrue(Long.toString(h.getLength().getValue()), new Glue(254861)
                 .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(-36409)
+        assertTrue(Long.toString(d.getLength().getValue()), new Glue(145636)
                 .eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
 
     /**
-     * testcmtt10C63
-     * Char 63: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 63: Width=398675, Height=400498, Depth=0, IC=61896
      */
-    public void testcmtt10C63() throws Exception {
+    public void testcmvtti10C63() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 63));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 63));
@@ -1555,19 +1558,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(398675)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(61896).eq(i));
     }
 
     /**
-     * testcmtt10C64
-     * Char 64: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 64: Width=513361, Height=400498, Depth=0, IC=50971
      */
-    public void testcmtt10C64() throws Exception {
+    public void testcmvtti10C64() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 64));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 64));
@@ -1578,19 +1581,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(513361)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(50971).eq(i));
     }
 
     /**
-     * testcmtt10C65
-     * Char 65: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 65: Width=551591, Height=400498, Depth=0, IC=0
      */
-    public void testcmtt10C65() throws Exception {
+    public void testcmvtti10C65() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 65));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 65));
@@ -1601,7 +1604,7 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(551591)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
@@ -1610,10 +1613,10 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
     }
 
     /**
-     * testcmtt10C66
-     * Char 66: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 66: Width=532476, Height=400498, Depth=0, IC=55978
      */
-    public void testcmtt10C66() throws Exception {
+    public void testcmvtti10C66() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 66));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 66));
@@ -1624,19 +1627,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(532476)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(55978).eq(i));
     }
 
     /**
-     * testcmtt10C67
-     * Char 67: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 67: Width=551591, Height=400498, Depth=0, IC=81010
      */
-    public void testcmtt10C67() throws Exception {
+    public void testcmvtti10C67() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 67));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 67));
@@ -1647,19 +1650,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(551591)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(81010).eq(i));
     }
 
     /**
-     * testcmtt10C68
-     * Char 68: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 68: Width=570706, Height=400498, Depth=0, IC=50971
      */
-    public void testcmtt10C68() throws Exception {
+    public void testcmvtti10C68() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 68));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 68));
@@ -1670,19 +1673,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(570706)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(50971).eq(i));
     }
 
     /**
-     * testcmtt10C69
-     * Char 69: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 69: Width=513361, Height=400498, Depth=0, IC=81010
      */
-    public void testcmtt10C69() throws Exception {
+    public void testcmvtti10C69() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 69));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 69));
@@ -1693,19 +1696,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(513361)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(81010).eq(i));
     }
 
     /**
-     * testcmtt10C70
-     * Char 70: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 70: Width=494248, Height=400498, Depth=0, IC=90568
      */
-    public void testcmtt10C70() throws Exception {
+    public void testcmvtti10C70() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 70));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 70));
@@ -1716,19 +1719,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(494248)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(90568).eq(i));
     }
 
     /**
-     * testcmtt10C71
-     * Char 71: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 71: Width=589820, Height=400498, Depth=0, IC=42781
      */
-    public void testcmtt10C71() throws Exception {
+    public void testcmvtti10C71() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 71));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 71));
@@ -1739,19 +1742,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(589820)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(42781).eq(i));
     }
 
     /**
-     * testcmtt10C72
-     * Char 72: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 72: Width=551591, Height=400498, Depth=0, IC=89203
      */
-    public void testcmtt10C72() throws Exception {
+    public void testcmvtti10C72() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 72));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 72));
@@ -1762,19 +1765,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(551591)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(89203).eq(i));
     }
 
     /**
-     * testcmtt10C73
-     * Char 73: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 73: Width=283988, Height=400498, Depth=0, IC=90568
      */
-    public void testcmtt10C73() throws Exception {
+    public void testcmvtti10C73() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 73));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 73));
@@ -1785,19 +1788,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(283988)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(90568).eq(i));
     }
 
     /**
-     * testcmtt10C74
-     * Char 74: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 74: Width=398675, Height=400498, Depth=0, IC=73728
      */
-    public void testcmtt10C74() throws Exception {
+    public void testcmvtti10C74() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 74));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 74));
@@ -1808,19 +1811,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(398675)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(73728).eq(i));
     }
 
     /**
-     * testcmtt10C75
-     * Char 75: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 75: Width=570706, Height=400498, Depth=0, IC=81010
      */
-    public void testcmtt10C75() throws Exception {
+    public void testcmvtti10C75() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 75));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 75));
@@ -1831,19 +1834,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(570706)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(81010).eq(i));
     }
 
     /**
-     * testcmtt10C76
-     * Char 76: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 76: Width=475133, Height=400498, Depth=0, IC=0
      */
-    public void testcmtt10C76() throws Exception {
+    public void testcmvtti10C76() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 76));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 76));
@@ -1854,7 +1857,7 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(475133)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
@@ -1863,10 +1866,10 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
     }
 
     /**
-     * testcmtt10C77
-     * Char 77: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 77: Width=666278, Height=400498, Depth=0, IC=89203
      */
-    public void testcmtt10C77() throws Exception {
+    public void testcmvtti10C77() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 77));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 77));
@@ -1877,19 +1880,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(666278)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(89203).eq(i));
     }
 
     /**
-     * testcmtt10C78
-     * Char 78: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 78: Width=551591, Height=400498, Depth=0, IC=89203
      */
-    public void testcmtt10C78() throws Exception {
+    public void testcmvtti10C78() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 78));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 78));
@@ -1900,19 +1903,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(551591)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(89203).eq(i));
     }
 
     /**
-     * testcmtt10C79
-     * Char 79: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 79: Width=589820, Height=400498, Depth=0, IC=50971
      */
-    public void testcmtt10C79() throws Exception {
+    public void testcmvtti10C79() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 79));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 79));
@@ -1923,19 +1926,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(589820)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(50971).eq(i));
     }
 
     /**
-     * testcmtt10C80
-     * Char 80: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 80: Width=513361, Height=400498, Depth=0, IC=55978
      */
-    public void testcmtt10C80() throws Exception {
+    public void testcmvtti10C80() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 80));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 80));
@@ -1946,19 +1949,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(513361)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(55978).eq(i));
     }
 
     /**
-     * testcmtt10C81
-     * Char 81: Width=344061, Height=400498, Depth=91021, IC=0
+     * test cmvtti10
+     * Char 81: Width=589820, Height=400498, Depth=91021, IC=50971
      */
-    public void testcmtt10C81() throws Exception {
+    public void testcmvtti10C81() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 81));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 81));
@@ -1969,20 +1972,20 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(589820)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(91021)
                 .eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(50971).eq(i));
     }
 
     /**
-     * testcmtt10C82
-     * Char 82: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 82: Width=551591, Height=400498, Depth=0, IC=8193
      */
-    public void testcmtt10C82() throws Exception {
+    public void testcmvtti10C82() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 82));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 82));
@@ -1993,19 +1996,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(551591)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(8193).eq(i));
     }
 
     /**
-     * testcmtt10C83
-     * Char 83: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 83: Width=436903, Height=400498, Depth=0, IC=61896
      */
-    public void testcmtt10C83() throws Exception {
+    public void testcmvtti10C83() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 83));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 83));
@@ -2016,19 +2019,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(436903)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(61896).eq(i));
     }
 
     /**
-     * testcmtt10C84
-     * Char 84: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 84: Width=551591, Height=400498, Depth=0, IC=90568
      */
-    public void testcmtt10C84() throws Exception {
+    public void testcmvtti10C84() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 84));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 84));
@@ -2039,19 +2042,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(551591)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(90568).eq(i));
     }
 
     /**
-     * testcmtt10C85
-     * Char 85: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 85: Width=551591, Height=400498, Depth=0, IC=89203
      */
-    public void testcmtt10C85() throws Exception {
+    public void testcmvtti10C85() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 85));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 85));
@@ -2062,19 +2065,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(551591)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(89203).eq(i));
     }
 
     /**
-     * testcmtt10C86
-     * Char 86: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 86: Width=551591, Height=400498, Depth=0, IC=109681
      */
-    public void testcmtt10C86() throws Exception {
+    public void testcmvtti10C86() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 86));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 86));
@@ -2085,19 +2088,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(551591)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(109681).eq(i));
     }
 
     /**
-     * testcmtt10C87
-     * Char 87: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 87: Width=742736, Height=400498, Depth=0, IC=109681
      */
-    public void testcmtt10C87() throws Exception {
+    public void testcmvtti10C87() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 87));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 87));
@@ -2108,19 +2111,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(742736)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(109681).eq(i));
     }
 
     /**
-     * testcmtt10C88
-     * Char 88: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 88: Width=551591, Height=400498, Depth=0, IC=90568
      */
-    public void testcmtt10C88() throws Exception {
+    public void testcmvtti10C88() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 88));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 88));
@@ -2131,19 +2134,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(551591)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(90568).eq(i));
     }
 
     /**
-     * testcmtt10C89
-     * Char 89: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 89: Width=551591, Height=400498, Depth=0, IC=117328
      */
-    public void testcmtt10C89() throws Exception {
+    public void testcmvtti10C89() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 89));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 89));
@@ -2154,19 +2157,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(551591)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(117328).eq(i));
     }
 
     /**
-     * testcmtt10C90
-     * Char 90: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 90: Width=475133, Height=400498, Depth=0, IC=81010
      */
-    public void testcmtt10C90() throws Exception {
+    public void testcmvtti10C90() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 90));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 90));
@@ -2177,19 +2180,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(475133)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(81010).eq(i));
     }
 
     /**
-     * testcmtt10C91
-     * Char 91: Width=344061, Height=455111, Depth=54611, IC=0
+     * test cmvtti10
+     * Char 91: Width=249401, Height=455111, Depth=54611, IC=113778
      */
-    public void testcmtt10C91() throws Exception {
+    public void testcmvtti10C91() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 91));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 91));
@@ -2200,20 +2203,20 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(249401)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(455111)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(54611)
                 .eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(113778).eq(i));
     }
 
     /**
-     * testcmtt10C92
-     * Char 92: Width=344061, Height=455111, Depth=54611, IC=0
+     * test cmvtti10
+     * Char 92: Width=398675, Height=400498, Depth=0, IC=96301
      */
-    public void testcmtt10C92() throws Exception {
+    public void testcmvtti10C92() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 92));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 92));
@@ -2224,20 +2227,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(398675)
                 .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(455111)
+        assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(54611)
-                .eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
+        assertTrue(Long.toString(i.getValue()), new Dimen(96301).eq(i));
     }
 
     /**
-     * testcmtt10C93
-     * Char 93: Width=344061, Height=455111, Depth=54611, IC=0
+     * test cmvtti10
+     * Char 93: Width=249401, Height=455111, Depth=54611, IC=60076
      */
-    public void testcmtt10C93() throws Exception {
+    public void testcmvtti10C93() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 93));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 93));
@@ -2248,20 +2250,20 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(249401)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(455111)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(54611)
                 .eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(60076).eq(i));
     }
 
     /**
-     * testcmtt10C94
-     * Char 94: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 94: Width=398675, Height=400498, Depth=0, IC=41188
      */
-    public void testcmtt10C94() throws Exception {
+    public void testcmvtti10C94() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 94));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 94));
@@ -2272,19 +2274,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(398675)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(41188).eq(i));
     }
 
     /**
-     * testcmtt10C95
-     * Char 95: Width=344061, Height=0, Depth=62348, IC=0
+     * test cmvtti10
+     * Char 95: Width=245758, Height=400498, Depth=0, IC=56435
      */
-    public void testcmtt10C95() throws Exception {
+    public void testcmvtti10C95() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 95));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 95));
@@ -2295,19 +2297,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(245758)
                 .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(0).eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(62348)
-                .eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
+                .eq(h));
+        assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
+        assertTrue(Long.toString(i.getValue()), new Dimen(56435).eq(i));
     }
 
     /**
-     * testcmtt10C96
-     * Char 96: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 96: Width=245758, Height=400498, Depth=0, IC=56435
      */
-    public void testcmtt10C96() throws Exception {
+    public void testcmvtti10C96() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 96));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 96));
@@ -2318,19 +2320,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(245758)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(56435).eq(i));
     }
 
     /**
-     * testcmtt10C97
-     * Char 97: Width=344061, Height=282168, Depth=0, IC=0
+     * test cmvtti10
+     * Char 97: Width=398675, Height=282168, Depth=0, IC=65385
      */
-    public void testcmtt10C97() throws Exception {
+    public void testcmvtti10C97() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 97));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 97));
@@ -2341,19 +2343,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(398675)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(282168)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(65385).eq(i));
     }
 
     /**
-     * testcmtt10C98
-     * Char 98: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 98: Width=360446, Height=400498, Depth=0, IC=33906
      */
-    public void testcmtt10C98() throws Exception {
+    public void testcmvtti10C98() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 98));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 98));
@@ -2364,19 +2366,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(360446)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(33906).eq(i));
     }
 
     /**
-     * testcmtt10C99
-     * Char 99: Width=344061, Height=282168, Depth=0, IC=0
+     * test cmvtti10
+     * Char 99: Width=360446, Height=282168, Depth=0, IC=32313
      */
-    public void testcmtt10C99() throws Exception {
+    public void testcmvtti10C99() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 99));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 99));
@@ -2387,19 +2389,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(360446)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(282168)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(32313).eq(i));
     }
 
     /**
-     * testcmtt10C100
-     * Char 100: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 100: Width=398675, Height=400498, Depth=0, IC=65385
      */
-    public void testcmtt10C100() throws Exception {
+    public void testcmvtti10C100() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 100));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 100));
@@ -2410,19 +2412,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(398675)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(65385).eq(i));
     }
 
     /**
-     * testcmtt10C101
-     * Char 101: Width=344061, Height=282168, Depth=0, IC=0
+     * test cmvtti10
+     * Char 101: Width=360446, Height=282168, Depth=0, IC=55068
      */
-    public void testcmtt10C101() throws Exception {
+    public void testcmvtti10C101() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 101));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 101));
@@ -2433,19 +2435,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(360446)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(282168)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(55068).eq(i));
     }
 
     /**
-     * testcmtt10C102
-     * Char 102: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 102: Width=245760, Height=400498, Depth=145636, IC=128796
      */
-    public void testcmtt10C102() throws Exception {
+    public void testcmvtti10C102() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 102));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 102));
@@ -2456,19 +2458,20 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(245760)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(d.getLength().getValue()), new Glue(145636)
+                .eq(d));
+        assertTrue(Long.toString(i.getValue()), new Dimen(128796).eq(i));
     }
 
     /**
-     * testcmtt10C103
-     * Char 103: Width=344061, Height=282168, Depth=145636, IC=0
+     * test cmvtti10
+     * Char 103: Width=360446, Height=282168, Depth=145636, IC=55068
      */
-    public void testcmtt10C103() throws Exception {
+    public void testcmvtti10C103() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 103));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 103));
@@ -2479,20 +2482,20 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(360446)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(282168)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(145636)
                 .eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(55068).eq(i));
     }
 
     /**
-     * testcmtt10C104
-     * Char 104: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 104: Width=398675, Height=400498, Depth=0, IC=65385
      */
-    public void testcmtt10C104() throws Exception {
+    public void testcmvtti10C104() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 104));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 104));
@@ -2503,19 +2506,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(398675)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(65385).eq(i));
     }
 
     /**
-     * testcmtt10C105
-     * Char 105: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 105: Width=245758, Height=400498, Depth=0, IC=65385
      */
-    public void testcmtt10C105() throws Exception {
+    public void testcmvtti10C105() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 105));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 105));
@@ -2526,19 +2529,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(245758)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(65385).eq(i));
     }
 
     /**
-     * testcmtt10C106
-     * Char 106: Width=344061, Height=400498, Depth=145636, IC=0
+     * test cmvtti10
+     * Char 106: Width=245758, Height=400498, Depth=145636, IC=84651
      */
-    public void testcmtt10C106() throws Exception {
+    public void testcmvtti10C106() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 106));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 106));
@@ -2549,20 +2552,20 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(245758)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(145636)
                 .eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(84651).eq(i));
     }
 
     /**
-     * testcmtt10C107
-     * Char 107: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 107: Width=360446, Height=400498, Depth=0, IC=70541
      */
-    public void testcmtt10C107() throws Exception {
+    public void testcmvtti10C107() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 107));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 107));
@@ -2573,19 +2576,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(360446)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(70541).eq(i));
     }
 
     /**
-     * testcmtt10C108
-     * Char 108: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 108: Width=207530, Height=400498, Depth=0, IC=65385
      */
-    public void testcmtt10C108() throws Exception {
+    public void testcmvtti10C108() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 108));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 108));
@@ -2596,19 +2599,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(207530)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(65385).eq(i));
     }
 
     /**
-     * testcmtt10C109
-     * Char 109: Width=344061, Height=282168, Depth=0, IC=0
+     * test cmvtti10
+     * Char 109: Width=628048, Height=282168, Depth=0, IC=65385
      */
-    public void testcmtt10C109() throws Exception {
+    public void testcmvtti10C109() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 109));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 109));
@@ -2619,19 +2622,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(628048)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(282168)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(65385).eq(i));
     }
 
     /**
-     * testcmtt10C110
-     * Char 110: Width=344061, Height=282168, Depth=0, IC=0
+     * test cmvtti10
+     * Char 110: Width=436903, Height=282168, Depth=0, IC=65385
      */
-    public void testcmtt10C110() throws Exception {
+    public void testcmvtti10C110() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 110));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 110));
@@ -2642,19 +2645,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(436903)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(282168)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(65385).eq(i));
     }
 
     /**
-     * testcmtt10C111
-     * Char 111: Width=344061, Height=282168, Depth=0, IC=0
+     * test cmvtti10
+     * Char 111: Width=398675, Height=282168, Depth=0, IC=33906
      */
-    public void testcmtt10C111() throws Exception {
+    public void testcmvtti10C111() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 111));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 111));
@@ -2665,19 +2668,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(398675)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(282168)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(33906).eq(i));
     }
 
     /**
-     * testcmtt10C112
-     * Char 112: Width=344061, Height=282168, Depth=145636, IC=0
+     * test cmvtti10
+     * Char 112: Width=398675, Height=282168, Depth=145636, IC=33906
      */
-    public void testcmtt10C112() throws Exception {
+    public void testcmvtti10C112() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 112));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 112));
@@ -2688,20 +2691,20 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(398675)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(282168)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(145636)
                 .eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(33906).eq(i));
     }
 
     /**
-     * testcmtt10C113
-     * Char 113: Width=344061, Height=282168, Depth=145636, IC=0
+     * test cmvtti10
+     * Char 113: Width=360446, Height=282168, Depth=145636, IC=55068
      */
-    public void testcmtt10C113() throws Exception {
+    public void testcmvtti10C113() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 113));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 113));
@@ -2712,20 +2715,20 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(360446)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(282168)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(145636)
                 .eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(55068).eq(i));
     }
 
     /**
-     * testcmtt10C114
-     * Char 114: Width=344061, Height=282168, Depth=0, IC=0
+     * test cmvtti10
+     * Char 114: Width=331775, Height=282168, Depth=0, IC=70541
      */
-    public void testcmtt10C114() throws Exception {
+    public void testcmvtti10C114() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 114));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 114));
@@ -2736,19 +2739,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(331775)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(282168)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(70541).eq(i));
     }
 
     /**
-     * testcmtt10C115
-     * Char 115: Width=344061, Height=282168, Depth=0, IC=0
+     * test cmvtti10
+     * Char 115: Width=322216, Height=282168, Depth=0, IC=51426
      */
-    public void testcmtt10C115() throws Exception {
+    public void testcmvtti10C115() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 115));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 115));
@@ -2759,19 +2762,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(322216)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(282168)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(51426).eq(i));
     }
 
     /**
-     * testcmtt10C116
-     * Char 116: Width=344061, Height=362791, Depth=0, IC=0
+     * test cmvtti10
+     * Char 116: Width=264873, Height=400498, Depth=0, IC=65385
      */
-    public void testcmtt10C116() throws Exception {
+    public void testcmvtti10C116() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 116));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 116));
@@ -2782,19 +2785,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(264873)
                 .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(362791)
+        assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(65385).eq(i));
     }
 
     /**
-     * testcmtt10C117
-     * Char 117: Width=344061, Height=282168, Depth=0, IC=0
+     * test cmvtti10
+     * Char 117: Width=417790, Height=282168, Depth=0, IC=65385
      */
-    public void testcmtt10C117() throws Exception {
+    public void testcmvtti10C117() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 117));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 117));
@@ -2805,19 +2808,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(417790)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(282168)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(65385).eq(i));
     }
 
     /**
-     * testcmtt10C118
-     * Char 118: Width=344061, Height=282168, Depth=0, IC=0
+     * test cmvtti10
+     * Char 118: Width=360446, Height=282168, Depth=0, IC=70541
      */
-    public void testcmtt10C118() throws Exception {
+    public void testcmvtti10C118() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 118));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 118));
@@ -2828,19 +2831,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(360446)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(282168)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(70541).eq(i));
     }
 
     /**
-     * testcmtt10C119
-     * Char 119: Width=344061, Height=282168, Depth=0, IC=0
+     * test cmvtti10
+     * Char 119: Width=513361, Height=282168, Depth=0, IC=70541
      */
-    public void testcmtt10C119() throws Exception {
+    public void testcmvtti10C119() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 119));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 119));
@@ -2851,19 +2854,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(513361)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(282168)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(70541).eq(i));
     }
 
     /**
-     * testcmtt10C120
-     * Char 120: Width=344061, Height=282168, Depth=0, IC=0
+     * test cmvtti10
+     * Char 120: Width=361356, Height=282168, Depth=0, IC=80098
      */
-    public void testcmtt10C120() throws Exception {
+    public void testcmvtti10C120() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 120));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 120));
@@ -2874,19 +2877,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(361356)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(282168)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(80098).eq(i));
     }
 
     /**
-     * testcmtt10C121
-     * Char 121: Width=344061, Height=282168, Depth=145636, IC=0
+     * test cmvtti10
+     * Char 121: Width=379561, Height=282168, Depth=145636, IC=55068
      */
-    public void testcmtt10C121() throws Exception {
+    public void testcmvtti10C121() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 121));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 121));
@@ -2897,20 +2900,20 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(379561)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(282168)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(145636)
                 .eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(55068).eq(i));
     }
 
     /**
-     * testcmtt10C122
-     * Char 122: Width=344061, Height=282168, Depth=0, IC=0
+     * test cmvtti10
+     * Char 122: Width=322218, Height=282168, Depth=0, IC=93298
      */
-    public void testcmtt10C122() throws Exception {
+    public void testcmvtti10C122() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 122));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 122));
@@ -2921,19 +2924,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(322218)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(282168)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(93298).eq(i));
     }
 
     /**
-     * testcmtt10C123
-     * Char 123: Width=344061, Height=455111, Depth=54611, IC=0
+     * test cmvtti10
+     * Char 123: Width=398675, Height=282168, Depth=0, IC=62711
      */
-    public void testcmtt10C123() throws Exception {
+    public void testcmvtti10C123() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 123));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 123));
@@ -2944,20 +2947,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(398675)
                 .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(455111)
+        assertTrue(Long.toString(h.getLength().getValue()), new Glue(282168)
                 .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(54611)
-                .eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
+        assertTrue(Long.toString(i.getValue()), new Dimen(62711).eq(i));
     }
 
     /**
-     * testcmtt10C124
-     * Char 124: Width=344061, Height=455111, Depth=54611, IC=0
+     * test cmvtti10
+     * Char 124: Width=797350, Height=282168, Depth=0, IC=62711
      */
-    public void testcmtt10C124() throws Exception {
+    public void testcmvtti10C124() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 124));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 124));
@@ -2968,20 +2970,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(797350)
                 .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(455111)
+        assertTrue(Long.toString(h.getLength().getValue()), new Glue(282168)
                 .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(54611)
-                .eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
+        assertTrue(Long.toString(i.getValue()), new Dimen(62711).eq(i));
     }
 
     /**
-     * testcmtt10C125
-     * Char 125: Width=344061, Height=455111, Depth=54611, IC=0
+     * test cmvtti10
+     * Char 125: Width=398675, Height=400498, Depth=0, IC=61896
      */
-    public void testcmtt10C125() throws Exception {
+    public void testcmvtti10C125() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 125));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 125));
@@ -2992,20 +2993,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(398675)
                 .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(455111)
+        assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(54611)
-                .eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
+        assertTrue(Long.toString(i.getValue()), new Dimen(61896).eq(i));
     }
 
     /**
-     * testcmtt10C126
-     * Char 126: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 126: Width=398675, Height=400498, Depth=0, IC=61896
      */
-    public void testcmtt10C126() throws Exception {
+    public void testcmvtti10C126() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 126));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 126));
@@ -3016,19 +3016,19 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(398675)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(61896).eq(i));
     }
 
     /**
-     * testcmtt10C127
-     * Char 127: Width=344061, Height=400498, Depth=0, IC=0
+     * test cmvtti10
+     * Char 127: Width=398675, Height=400498, Depth=0, IC=46878
      */
-    public void testcmtt10C127() throws Exception {
+    public void testcmvtti10C127() throws Exception {
 
         FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + 127));
         FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + 127));
@@ -3039,1162 +3039,1162 @@ public class FontFactoryImplGenCmtt10Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(344061)
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(398675)
                 .eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(400498)
                 .eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
-        assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
+        assertTrue(Long.toString(i.getValue()), new Dimen(46878).eq(i));
     }
 
     /**
-     * testcmtt10C128
+     * test cmvtti10
      * Char 128: not defined
      */
-    public void testcmtt10C128() throws Exception {
+    public void testcmvtti10C128() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 128)));
     }
 
     /**
-     * testcmtt10C129
+     * test cmvtti10
      * Char 129: not defined
      */
-    public void testcmtt10C129() throws Exception {
+    public void testcmvtti10C129() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 129)));
     }
 
     /**
-     * testcmtt10C130
+     * test cmvtti10
      * Char 130: not defined
      */
-    public void testcmtt10C130() throws Exception {
+    public void testcmvtti10C130() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 130)));
     }
 
     /**
-     * testcmtt10C131
+     * test cmvtti10
      * Char 131: not defined
      */
-    public void testcmtt10C131() throws Exception {
+    public void testcmvtti10C131() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 131)));
     }
 
     /**
-     * testcmtt10C132
+     * test cmvtti10
      * Char 132: not defined
      */
-    public void testcmtt10C132() throws Exception {
+    public void testcmvtti10C132() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 132)));
     }
 
     /**
-     * testcmtt10C133
+     * test cmvtti10
      * Char 133: not defined
      */
-    public void testcmtt10C133() throws Exception {
+    public void testcmvtti10C133() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 133)));
     }
 
     /**
-     * testcmtt10C134
+     * test cmvtti10
      * Char 134: not defined
      */
-    public void testcmtt10C134() throws Exception {
+    public void testcmvtti10C134() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 134)));
     }
 
     /**
-     * testcmtt10C135
+     * test cmvtti10
      * Char 135: not defined
      */
-    public void testcmtt10C135() throws Exception {
+    public void testcmvtti10C135() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 135)));
     }
 
     /**
-     * testcmtt10C136
+     * test cmvtti10
      * Char 136: not defined
      */
-    public void testcmtt10C136() throws Exception {
+    public void testcmvtti10C136() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 136)));
     }
 
     /**
-     * testcmtt10C137
+     * test cmvtti10
      * Char 137: not defined
      */
-    public void testcmtt10C137() throws Exception {
+    public void testcmvtti10C137() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 137)));
     }
 
     /**
-     * testcmtt10C138
+     * test cmvtti10
      * Char 138: not defined
      */
-    public void testcmtt10C138() throws Exception {
+    public void testcmvtti10C138() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 138)));
     }
 
     /**
-     * testcmtt10C139
+     * test cmvtti10
      * Char 139: not defined
      */
-    public void testcmtt10C139() throws Exception {
+    public void testcmvtti10C139() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 139)));
     }
 
     /**
-     * testcmtt10C140
+     * test cmvtti10
      * Char 140: not defined
      */
-    public void testcmtt10C140() throws Exception {
+    public void testcmvtti10C140() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 140)));
     }
 
     /**
-     * testcmtt10C141
+     * test cmvtti10
      * Char 141: not defined
      */
-    public void testcmtt10C141() throws Exception {
+    public void testcmvtti10C141() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 141)));
     }
 
     /**
-     * testcmtt10C142
+     * test cmvtti10
      * Char 142: not defined
      */
-    public void testcmtt10C142() throws Exception {
+    public void testcmvtti10C142() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 142)));
     }
 
     /**
-     * testcmtt10C143
+     * test cmvtti10
      * Char 143: not defined
      */
-    public void testcmtt10C143() throws Exception {
+    public void testcmvtti10C143() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 143)));
     }
 
     /**
-     * testcmtt10C144
+     * test cmvtti10
      * Char 144: not defined
      */
-    public void testcmtt10C144() throws Exception {
+    public void testcmvtti10C144() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 144)));
     }
 
     /**
-     * testcmtt10C145
+     * test cmvtti10
      * Char 145: not defined
      */
-    public void testcmtt10C145() throws Exception {
+    public void testcmvtti10C145() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 145)));
     }
 
     /**
-     * testcmtt10C146
+     * test cmvtti10
      * Char 146: not defined
      */
-    public void testcmtt10C146() throws Exception {
+    public void testcmvtti10C146() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 146)));
     }
 
     /**
-     * testcmtt10C147
+     * test cmvtti10
      * Char 147: not defined
      */
-    public void testcmtt10C147() throws Exception {
+    public void testcmvtti10C147() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 147)));
     }
 
     /**
-     * testcmtt10C148
+     * test cmvtti10
      * Char 148: not defined
      */
-    public void testcmtt10C148() throws Exception {
+    public void testcmvtti10C148() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 148)));
     }
 
     /**
-     * testcmtt10C149
+     * test cmvtti10
      * Char 149: not defined
      */
-    public void testcmtt10C149() throws Exception {
+    public void testcmvtti10C149() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 149)));
     }
 
     /**
-     * testcmtt10C150
+     * test cmvtti10
      * Char 150: not defined
      */
-    public void testcmtt10C150() throws Exception {
+    public void testcmvtti10C150() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 150)));
     }
 
     /**
-     * testcmtt10C151
+     * test cmvtti10
      * Char 151: not defined
      */
-    public void testcmtt10C151() throws Exception {
+    public void testcmvtti10C151() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 151)));
     }
 
     /**
-     * testcmtt10C152
+     * test cmvtti10
      * Char 152: not defined
      */
-    public void testcmtt10C152() throws Exception {
+    public void testcmvtti10C152() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 152)));
     }
 
     /**
-     * testcmtt10C153
+     * test cmvtti10
      * Char 153: not defined
      */
-    public void testcmtt10C153() throws Exception {
+    public void testcmvtti10C153() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 153)));
     }
 
     /**
-     * testcmtt10C154
+     * test cmvtti10
      * Char 154: not defined
      */
-    public void testcmtt10C154() throws Exception {
+    public void testcmvtti10C154() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 154)));
     }
 
     /**
-     * testcmtt10C155
+     * test cmvtti10
      * Char 155: not defined
      */
-    public void testcmtt10C155() throws Exception {
+    public void testcmvtti10C155() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 155)));
     }
 
     /**
-     * testcmtt10C156
+     * test cmvtti10
      * Char 156: not defined
      */
-    public void testcmtt10C156() throws Exception {
+    public void testcmvtti10C156() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 156)));
     }
 
     /**
-     * testcmtt10C157
+     * test cmvtti10
      * Char 157: not defined
      */
-    public void testcmtt10C157() throws Exception {
+    public void testcmvtti10C157() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 157)));
     }
 
     /**
-     * testcmtt10C158
+     * test cmvtti10
      * Char 158: not defined
      */
-    public void testcmtt10C158() throws Exception {
+    public void testcmvtti10C158() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 158)));
     }
 
     /**
-     * testcmtt10C159
+     * test cmvtti10
      * Char 159: not defined
      */
-    public void testcmtt10C159() throws Exception {
+    public void testcmvtti10C159() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 159)));
     }
 
     /**
-     * testcmtt10C160
+     * test cmvtti10
      * Char 160: not defined
      */
-    public void testcmtt10C160() throws Exception {
+    public void testcmvtti10C160() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 160)));
     }
 
     /**
-     * testcmtt10C161
+     * test cmvtti10
      * Char 161: not defined
      */
-    public void testcmtt10C161() throws Exception {
+    public void testcmvtti10C161() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 161)));
     }
 
     /**
-     * testcmtt10C162
+     * test cmvtti10
      * Char 162: not defined
      */
-    public void testcmtt10C162() throws Exception {
+    public void testcmvtti10C162() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 162)));
     }
 
     /**
-     * testcmtt10C163
+     * test cmvtti10
      * Char 163: not defined
      */
-    public void testcmtt10C163() throws Exception {
+    public void testcmvtti10C163() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 163)));
     }
 
     /**
-     * testcmtt10C164
+     * test cmvtti10
      * Char 164: not defined
      */
-    public void testcmtt10C164() throws Exception {
+    public void testcmvtti10C164() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 164)));
     }
 
     /**
-     * testcmtt10C165
+     * test cmvtti10
      * Char 165: not defined
      */
-    public void testcmtt10C165() throws Exception {
+    public void testcmvtti10C165() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 165)));
     }
 
     /**
-     * testcmtt10C166
+     * test cmvtti10
      * Char 166: not defined
      */
-    public void testcmtt10C166() throws Exception {
+    public void testcmvtti10C166() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 166)));
     }
 
     /**
-     * testcmtt10C167
+     * test cmvtti10
      * Char 167: not defined
      */
-    public void testcmtt10C167() throws Exception {
+    public void testcmvtti10C167() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 167)));
     }
 
     /**
-     * testcmtt10C168
+     * test cmvtti10
      * Char 168: not defined
      */
-    public void testcmtt10C168() throws Exception {
+    public void testcmvtti10C168() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 168)));
     }
 
     /**
-     * testcmtt10C169
+     * test cmvtti10
      * Char 169: not defined
      */
-    public void testcmtt10C169() throws Exception {
+    public void testcmvtti10C169() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 169)));
     }
 
     /**
-     * testcmtt10C170
+     * test cmvtti10
      * Char 170: not defined
      */
-    public void testcmtt10C170() throws Exception {
+    public void testcmvtti10C170() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 170)));
     }
 
     /**
-     * testcmtt10C171
+     * test cmvtti10
      * Char 171: not defined
      */
-    public void testcmtt10C171() throws Exception {
+    public void testcmvtti10C171() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 171)));
     }
 
     /**
-     * testcmtt10C172
+     * test cmvtti10
      * Char 172: not defined
      */
-    public void testcmtt10C172() throws Exception {
+    public void testcmvtti10C172() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 172)));
     }
 
     /**
-     * testcmtt10C173
+     * test cmvtti10
      * Char 173: not defined
      */
-    public void testcmtt10C173() throws Exception {
+    public void testcmvtti10C173() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 173)));
     }
 
     /**
-     * testcmtt10C174
+     * test cmvtti10
      * Char 174: not defined
      */
-    public void testcmtt10C174() throws Exception {
+    public void testcmvtti10C174() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 174)));
     }
 
     /**
-     * testcmtt10C175
+     * test cmvtti10
      * Char 175: not defined
      */
-    public void testcmtt10C175() throws Exception {
+    public void testcmvtti10C175() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 175)));
     }
 
     /**
-     * testcmtt10C176
+     * test cmvtti10
      * Char 176: not defined
      */
-    public void testcmtt10C176() throws Exception {
+    public void testcmvtti10C176() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 176)));
     }
 
     /**
-     * testcmtt10C177
+     * test cmvtti10
      * Char 177: not defined
      */
-    public void testcmtt10C177() throws Exception {
+    public void testcmvtti10C177() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 177)));
     }
 
     /**
-     * testcmtt10C178
+     * test cmvtti10
      * Char 178: not defined
      */
-    public void testcmtt10C178() throws Exception {
+    public void testcmvtti10C178() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 178)));
     }
 
     /**
-     * testcmtt10C179
+     * test cmvtti10
      * Char 179: not defined
      */
-    public void testcmtt10C179() throws Exception {
+    public void testcmvtti10C179() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 179)));
     }
 
     /**
-     * testcmtt10C180
+     * test cmvtti10
      * Char 180: not defined
      */
-    public void testcmtt10C180() throws Exception {
+    public void testcmvtti10C180() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 180)));
     }
 
     /**
-     * testcmtt10C181
+     * test cmvtti10
      * Char 181: not defined
      */
-    public void testcmtt10C181() throws Exception {
+    public void testcmvtti10C181() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 181)));
     }
 
     /**
-     * testcmtt10C182
+     * test cmvtti10
      * Char 182: not defined
      */
-    public void testcmtt10C182() throws Exception {
+    public void testcmvtti10C182() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 182)));
     }
 
     /**
-     * testcmtt10C183
+     * test cmvtti10
      * Char 183: not defined
      */
-    public void testcmtt10C183() throws Exception {
+    public void testcmvtti10C183() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 183)));
     }
 
     /**
-     * testcmtt10C184
+     * test cmvtti10
      * Char 184: not defined
      */
-    public void testcmtt10C184() throws Exception {
+    public void testcmvtti10C184() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 184)));
     }
 
     /**
-     * testcmtt10C185
+     * test cmvtti10
      * Char 185: not defined
      */
-    public void testcmtt10C185() throws Exception {
+    public void testcmvtti10C185() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 185)));
     }
 
     /**
-     * testcmtt10C186
+     * test cmvtti10
      * Char 186: not defined
      */
-    public void testcmtt10C186() throws Exception {
+    public void testcmvtti10C186() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 186)));
     }
 
     /**
-     * testcmtt10C187
+     * test cmvtti10
      * Char 187: not defined
      */
-    public void testcmtt10C187() throws Exception {
+    public void testcmvtti10C187() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 187)));
     }
 
     /**
-     * testcmtt10C188
+     * test cmvtti10
      * Char 188: not defined
      */
-    public void testcmtt10C188() throws Exception {
+    public void testcmvtti10C188() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 188)));
     }
 
     /**
-     * testcmtt10C189
+     * test cmvtti10
      * Char 189: not defined
      */
-    public void testcmtt10C189() throws Exception {
+    public void testcmvtti10C189() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 189)));
     }
 
     /**
-     * testcmtt10C190
+     * test cmvtti10
      * Char 190: not defined
      */
-    public void testcmtt10C190() throws Exception {
+    public void testcmvtti10C190() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 190)));
     }
 
     /**
-     * testcmtt10C191
+     * test cmvtti10
      * Char 191: not defined
      */
-    public void testcmtt10C191() throws Exception {
+    public void testcmvtti10C191() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 191)));
     }
 
     /**
-     * testcmtt10C192
+     * test cmvtti10
      * Char 192: not defined
      */
-    public void testcmtt10C192() throws Exception {
+    public void testcmvtti10C192() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 192)));
     }
 
     /**
-     * testcmtt10C193
+     * test cmvtti10
      * Char 193: not defined
      */
-    public void testcmtt10C193() throws Exception {
+    public void testcmvtti10C193() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 193)));
     }
 
     /**
-     * testcmtt10C194
+     * test cmvtti10
      * Char 194: not defined
      */
-    public void testcmtt10C194() throws Exception {
+    public void testcmvtti10C194() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 194)));
     }
 
     /**
-     * testcmtt10C195
+     * test cmvtti10
      * Char 195: not defined
      */
-    public void testcmtt10C195() throws Exception {
+    public void testcmvtti10C195() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 195)));
     }
 
     /**
-     * testcmtt10C196
+     * test cmvtti10
      * Char 196: not defined
      */
-    public void testcmtt10C196() throws Exception {
+    public void testcmvtti10C196() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 196)));
     }
 
     /**
-     * testcmtt10C197
+     * test cmvtti10
      * Char 197: not defined
      */
-    public void testcmtt10C197() throws Exception {
+    public void testcmvtti10C197() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 197)));
     }
 
     /**
-     * testcmtt10C198
+     * test cmvtti10
      * Char 198: not defined
      */
-    public void testcmtt10C198() throws Exception {
+    public void testcmvtti10C198() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 198)));
     }
 
     /**
-     * testcmtt10C199
+     * test cmvtti10
      * Char 199: not defined
      */
-    public void testcmtt10C199() throws Exception {
+    public void testcmvtti10C199() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 199)));
     }
 
     /**
-     * testcmtt10C200
+     * test cmvtti10
      * Char 200: not defined
      */
-    public void testcmtt10C200() throws Exception {
+    public void testcmvtti10C200() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 200)));
     }
 
     /**
-     * testcmtt10C201
+     * test cmvtti10
      * Char 201: not defined
      */
-    public void testcmtt10C201() throws Exception {
+    public void testcmvtti10C201() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 201)));
     }
 
     /**
-     * testcmtt10C202
+     * test cmvtti10
      * Char 202: not defined
      */
-    public void testcmtt10C202() throws Exception {
+    public void testcmvtti10C202() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 202)));
     }
 
     /**
-     * testcmtt10C203
+     * test cmvtti10
      * Char 203: not defined
      */
-    public void testcmtt10C203() throws Exception {
+    public void testcmvtti10C203() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 203)));
     }
 
     /**
-     * testcmtt10C204
+     * test cmvtti10
      * Char 204: not defined
      */
-    public void testcmtt10C204() throws Exception {
+    public void testcmvtti10C204() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 204)));
     }
 
     /**
-     * testcmtt10C205
+     * test cmvtti10
      * Char 205: not defined
      */
-    public void testcmtt10C205() throws Exception {
+    public void testcmvtti10C205() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 205)));
     }
 
     /**
-     * testcmtt10C206
+     * test cmvtti10
      * Char 206: not defined
      */
-    public void testcmtt10C206() throws Exception {
+    public void testcmvtti10C206() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 206)));
     }
 
     /**
-     * testcmtt10C207
+     * test cmvtti10
      * Char 207: not defined
      */
-    public void testcmtt10C207() throws Exception {
+    public void testcmvtti10C207() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 207)));
     }
 
     /**
-     * testcmtt10C208
+     * test cmvtti10
      * Char 208: not defined
      */
-    public void testcmtt10C208() throws Exception {
+    public void testcmvtti10C208() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 208)));
     }
 
     /**
-     * testcmtt10C209
+     * test cmvtti10
      * Char 209: not defined
      */
-    public void testcmtt10C209() throws Exception {
+    public void testcmvtti10C209() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 209)));
     }
 
     /**
-     * testcmtt10C210
+     * test cmvtti10
      * Char 210: not defined
      */
-    public void testcmtt10C210() throws Exception {
+    public void testcmvtti10C210() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 210)));
     }
 
     /**
-     * testcmtt10C211
+     * test cmvtti10
      * Char 211: not defined
      */
-    public void testcmtt10C211() throws Exception {
+    public void testcmvtti10C211() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 211)));
     }
 
     /**
-     * testcmtt10C212
+     * test cmvtti10
      * Char 212: not defined
      */
-    public void testcmtt10C212() throws Exception {
+    public void testcmvtti10C212() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 212)));
     }
 
     /**
-     * testcmtt10C213
+     * test cmvtti10
      * Char 213: not defined
      */
-    public void testcmtt10C213() throws Exception {
+    public void testcmvtti10C213() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 213)));
     }
 
     /**
-     * testcmtt10C214
+     * test cmvtti10
      * Char 214: not defined
      */
-    public void testcmtt10C214() throws Exception {
+    public void testcmvtti10C214() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 214)));
     }
 
     /**
-     * testcmtt10C215
+     * test cmvtti10
      * Char 215: not defined
      */
-    public void testcmtt10C215() throws Exception {
+    public void testcmvtti10C215() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 215)));
     }
 
     /**
-     * testcmtt10C216
+     * test cmvtti10
      * Char 216: not defined
      */
-    public void testcmtt10C216() throws Exception {
+    public void testcmvtti10C216() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 216)));
     }
 
     /**
-     * testcmtt10C217
+     * test cmvtti10
      * Char 217: not defined
      */
-    public void testcmtt10C217() throws Exception {
+    public void testcmvtti10C217() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 217)));
     }
 
     /**
-     * testcmtt10C218
+     * test cmvtti10
      * Char 218: not defined
      */
-    public void testcmtt10C218() throws Exception {
+    public void testcmvtti10C218() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 218)));
     }
 
     /**
-     * testcmtt10C219
+     * test cmvtti10
      * Char 219: not defined
      */
-    public void testcmtt10C219() throws Exception {
+    public void testcmvtti10C219() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 219)));
     }
 
     /**
-     * testcmtt10C220
+     * test cmvtti10
      * Char 220: not defined
      */
-    public void testcmtt10C220() throws Exception {
+    public void testcmvtti10C220() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 220)));
     }
 
     /**
-     * testcmtt10C221
+     * test cmvtti10
      * Char 221: not defined
      */
-    public void testcmtt10C221() throws Exception {
+    public void testcmvtti10C221() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 221)));
     }
 
     /**
-     * testcmtt10C222
+     * test cmvtti10
      * Char 222: not defined
      */
-    public void testcmtt10C222() throws Exception {
+    public void testcmvtti10C222() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 222)));
     }
 
     /**
-     * testcmtt10C223
+     * test cmvtti10
      * Char 223: not defined
      */
-    public void testcmtt10C223() throws Exception {
+    public void testcmvtti10C223() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 223)));
     }
 
     /**
-     * testcmtt10C224
+     * test cmvtti10
      * Char 224: not defined
      */
-    public void testcmtt10C224() throws Exception {
+    public void testcmvtti10C224() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 224)));
     }
 
     /**
-     * testcmtt10C225
+     * test cmvtti10
      * Char 225: not defined
      */
-    public void testcmtt10C225() throws Exception {
+    public void testcmvtti10C225() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 225)));
     }
 
     /**
-     * testcmtt10C226
+     * test cmvtti10
      * Char 226: not defined
      */
-    public void testcmtt10C226() throws Exception {
+    public void testcmvtti10C226() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 226)));
     }
 
     /**
-     * testcmtt10C227
+     * test cmvtti10
      * Char 227: not defined
      */
-    public void testcmtt10C227() throws Exception {
+    public void testcmvtti10C227() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 227)));
     }
 
     /**
-     * testcmtt10C228
+     * test cmvtti10
      * Char 228: not defined
      */
-    public void testcmtt10C228() throws Exception {
+    public void testcmvtti10C228() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 228)));
     }
 
     /**
-     * testcmtt10C229
+     * test cmvtti10
      * Char 229: not defined
      */
-    public void testcmtt10C229() throws Exception {
+    public void testcmvtti10C229() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 229)));
     }
 
     /**
-     * testcmtt10C230
+     * test cmvtti10
      * Char 230: not defined
      */
-    public void testcmtt10C230() throws Exception {
+    public void testcmvtti10C230() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 230)));
     }
 
     /**
-     * testcmtt10C231
+     * test cmvtti10
      * Char 231: not defined
      */
-    public void testcmtt10C231() throws Exception {
+    public void testcmvtti10C231() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 231)));
     }
 
     /**
-     * testcmtt10C232
+     * test cmvtti10
      * Char 232: not defined
      */
-    public void testcmtt10C232() throws Exception {
+    public void testcmvtti10C232() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 232)));
     }
 
     /**
-     * testcmtt10C233
+     * test cmvtti10
      * Char 233: not defined
      */
-    public void testcmtt10C233() throws Exception {
+    public void testcmvtti10C233() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 233)));
     }
 
     /**
-     * testcmtt10C234
+     * test cmvtti10
      * Char 234: not defined
      */
-    public void testcmtt10C234() throws Exception {
+    public void testcmvtti10C234() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 234)));
     }
 
     /**
-     * testcmtt10C235
+     * test cmvtti10
      * Char 235: not defined
      */
-    public void testcmtt10C235() throws Exception {
+    public void testcmvtti10C235() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 235)));
     }
 
     /**
-     * testcmtt10C236
+     * test cmvtti10
      * Char 236: not defined
      */
-    public void testcmtt10C236() throws Exception {
+    public void testcmvtti10C236() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 236)));
     }
 
     /**
-     * testcmtt10C237
+     * test cmvtti10
      * Char 237: not defined
      */
-    public void testcmtt10C237() throws Exception {
+    public void testcmvtti10C237() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 237)));
     }
 
     /**
-     * testcmtt10C238
+     * test cmvtti10
      * Char 238: not defined
      */
-    public void testcmtt10C238() throws Exception {
+    public void testcmvtti10C238() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 238)));
     }
 
     /**
-     * testcmtt10C239
+     * test cmvtti10
      * Char 239: not defined
      */
-    public void testcmtt10C239() throws Exception {
+    public void testcmvtti10C239() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 239)));
     }
 
     /**
-     * testcmtt10C240
+     * test cmvtti10
      * Char 240: not defined
      */
-    public void testcmtt10C240() throws Exception {
+    public void testcmvtti10C240() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 240)));
     }
 
     /**
-     * testcmtt10C241
+     * test cmvtti10
      * Char 241: not defined
      */
-    public void testcmtt10C241() throws Exception {
+    public void testcmvtti10C241() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 241)));
     }
 
     /**
-     * testcmtt10C242
+     * test cmvtti10
      * Char 242: not defined
      */
-    public void testcmtt10C242() throws Exception {
+    public void testcmvtti10C242() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 242)));
     }
 
     /**
-     * testcmtt10C243
+     * test cmvtti10
      * Char 243: not defined
      */
-    public void testcmtt10C243() throws Exception {
+    public void testcmvtti10C243() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 243)));
     }
 
     /**
-     * testcmtt10C244
+     * test cmvtti10
      * Char 244: not defined
      */
-    public void testcmtt10C244() throws Exception {
+    public void testcmvtti10C244() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 244)));
     }
 
     /**
-     * testcmtt10C245
+     * test cmvtti10
      * Char 245: not defined
      */
-    public void testcmtt10C245() throws Exception {
+    public void testcmvtti10C245() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 245)));
     }
 
     /**
-     * testcmtt10C246
+     * test cmvtti10
      * Char 246: not defined
      */
-    public void testcmtt10C246() throws Exception {
+    public void testcmvtti10C246() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 246)));
     }
 
     /**
-     * testcmtt10C247
+     * test cmvtti10
      * Char 247: not defined
      */
-    public void testcmtt10C247() throws Exception {
+    public void testcmvtti10C247() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 247)));
     }
 
     /**
-     * testcmtt10C248
+     * test cmvtti10
      * Char 248: not defined
      */
-    public void testcmtt10C248() throws Exception {
+    public void testcmvtti10C248() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 248)));
     }
 
     /**
-     * testcmtt10C249
+     * test cmvtti10
      * Char 249: not defined
      */
-    public void testcmtt10C249() throws Exception {
+    public void testcmvtti10C249() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 249)));
     }
 
     /**
-     * testcmtt10C250
+     * test cmvtti10
      * Char 250: not defined
      */
-    public void testcmtt10C250() throws Exception {
+    public void testcmvtti10C250() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 250)));
     }
 
     /**
-     * testcmtt10C251
+     * test cmvtti10
      * Char 251: not defined
      */
-    public void testcmtt10C251() throws Exception {
+    public void testcmvtti10C251() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 251)));
     }
 
     /**
-     * testcmtt10C252
+     * test cmvtti10
      * Char 252: not defined
      */
-    public void testcmtt10C252() throws Exception {
+    public void testcmvtti10C252() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 252)));
     }
 
     /**
-     * testcmtt10C253
+     * test cmvtti10
      * Char 253: not defined
      */
-    public void testcmtt10C253() throws Exception {
+    public void testcmvtti10C253() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 253)));
     }
 
     /**
-     * testcmtt10C254
+     * test cmvtti10
      * Char 254: not defined
      */
-    public void testcmtt10C254() throws Exception {
+    public void testcmvtti10C254() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 254)));
     }
 
     /**
-     * testcmtt10C255
+     * test cmvtti10
      * Char 255: not defined
      */
-    public void testcmtt10C255() throws Exception {
+    public void testcmvtti10C255() throws Exception {
 
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 255)));
     }

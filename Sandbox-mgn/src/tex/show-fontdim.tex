@@ -8,7 +8,8 @@
 %
 % $Id$
 %
-\def\fname{cmtt10}
+\def\fname{cmr10 at 5pt}
+\def\fmethodenname{cmr10}
 \edef\filename{\jobname.java}
 
 \def\writeIt{\immediate\write\fdimfile}
@@ -26,7 +27,7 @@
   \count3=\fontchardp\f\count0\relax
   \count4=\fontcharic\f\count0\relax
   \writeIt{/**}
-  \writeIt{* test\fname C\the\count0}
+  \writeIt{* test \fname}
   \iffontchar\f\count0\relax
      \writeIt{* Char \the\count0: %
        Width=\the\count1, Height=\the\count2, Depth=\the\count3, IC=\the\count4}
@@ -35,7 +36,7 @@
   \fi
   \writeIt{*/}
   \iffontchar\f\count0\relax
-   \writeIt{public void test\fname C\the\count0() throws Exception}
+   \writeIt{public void test\fmethodenname C\the\count0() throws Exception}
    \writeIt{\LBRACE}
    \writeIt{FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + \the\count0));}
    \writeIt{FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + \the\count0));}
@@ -55,7 +56,7 @@
    \writeIt{ new Dimen(\the\count4).eq(i));}
    \writeIt{\RBRACE}
   \else
-   \writeIt{public void test\fname C\the\count0() throws Exception}
+   \writeIt{public void test\fmethodenname C\the\count0() throws Exception}
    \writeIt{\LBRACE}
    \writeIt{assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + \the\count0)));}
    \writeIt{\RBRACE}

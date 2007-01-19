@@ -75,6 +75,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C0
+     * Char 0: Width=409601, Height=447828, Depth=0, IC=0
      */
     public void testcmr10C0() throws Exception {
 
@@ -97,6 +98,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C1
+     * Char 1: Width=546135, Height=447828, Depth=0, IC=0
      */
     public void testcmr10C1() throws Exception {
 
@@ -119,6 +121,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C2
+     * Char 2: Width=509726, Height=447828, Depth=0, IC=0
      */
     public void testcmr10C2() throws Exception {
 
@@ -141,6 +144,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C3
+     * Char 3: Width=455111, Height=447828, Depth=0, IC=0
      */
     public void testcmr10C3() throws Exception {
 
@@ -163,6 +167,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C4
+     * Char 4: Width=436908, Height=447828, Depth=0, IC=0
      */
     public void testcmr10C4() throws Exception {
 
@@ -185,6 +190,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C5
+     * Char 5: Width=491521, Height=447828, Depth=0, IC=0
      */
     public void testcmr10C5() throws Exception {
 
@@ -207,6 +213,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C6
+     * Char 6: Width=473316, Height=447828, Depth=0, IC=0
      */
     public void testcmr10C6() throws Exception {
 
@@ -229,6 +236,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C7
+     * Char 7: Width=509726, Height=447828, Depth=0, IC=0
      */
     public void testcmr10C7() throws Exception {
 
@@ -251,6 +259,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C8
+     * Char 8: Width=473316, Height=447828, Depth=0, IC=0
      */
     public void testcmr10C8() throws Exception {
 
@@ -273,6 +282,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C9
+     * Char 9: Width=509726, Height=447828, Depth=0, IC=0
      */
     public void testcmr10C9() throws Exception {
 
@@ -295,6 +305,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C10
+     * Char 10: Width=473316, Height=447828, Depth=0, IC=0
      */
     public void testcmr10C10() throws Exception {
 
@@ -317,6 +328,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C11
+     * Char 11: Width=382295, Height=455111, Depth=0, IC=50973
      */
     public void testcmr10C11() throws Exception {
 
@@ -339,6 +351,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C12
+     * Char 12: Width=364090, Height=455111, Depth=0, IC=0
      */
     public void testcmr10C12() throws Exception {
 
@@ -361,6 +374,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C13
+     * Char 13: Width=364090, Height=455111, Depth=0, IC=0
      */
     public void testcmr10C13() throws Exception {
 
@@ -383,6 +397,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C14
+     * Char 14: Width=546135, Height=455111, Depth=0, IC=0
      */
     public void testcmr10C14() throws Exception {
 
@@ -405,6 +420,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C15
+     * Char 15: Width=546135, Height=455111, Depth=0, IC=0
      */
     public void testcmr10C15() throws Exception {
 
@@ -427,6 +443,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C16
+     * Char 16: Width=182045, Height=282168, Depth=0, IC=0
      */
     public void testcmr10C16() throws Exception {
 
@@ -449,6 +466,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C17
+     * Char 17: Width=200250, Height=282168, Depth=127431, IC=0
      */
     public void testcmr10C17() throws Exception {
 
@@ -472,6 +490,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C18
+     * Char 18: Width=327681, Height=455111, Depth=0, IC=0
      */
     public void testcmr10C18() throws Exception {
 
@@ -494,6 +513,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C19
+     * Char 19: Width=327681, Height=455111, Depth=0, IC=0
      */
     public void testcmr10C19() throws Exception {
 
@@ -516,6 +536,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C20
+     * Char 20: Width=327681, Height=411876, Depth=0, IC=0
      */
     public void testcmr10C20() throws Exception {
 
@@ -538,6 +559,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C21
+     * Char 21: Width=327681, Height=455111, Depth=0, IC=0
      */
     public void testcmr10C21() throws Exception {
 
@@ -560,6 +582,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C22
+     * Char 22: Width=327681, Height=372098, Depth=0, IC=0
      */
     public void testcmr10C22() throws Exception {
 
@@ -582,6 +605,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C23
+     * Char 23: Width=491521, Height=455111, Depth=0, IC=0
      */
     public void testcmr10C23() throws Exception {
 
@@ -604,6 +628,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C24
+     * Char 24: Width=291271, Height=0, Depth=111501, IC=0
      */
     public void testcmr10C24() throws Exception {
 
@@ -626,6 +651,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C25
+     * Char 25: Width=327681, Height=455111, Depth=0, IC=0
      */
     public void testcmr10C25() throws Exception {
 
@@ -648,6 +674,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C26
+     * Char 26: Width=473316, Height=282168, Depth=0, IC=0
      */
     public void testcmr10C26() throws Exception {
 
@@ -670,6 +697,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C27
+     * Char 27: Width=509726, Height=282168, Depth=0, IC=0
      */
     public void testcmr10C27() throws Exception {
 
@@ -692,6 +720,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C28
+     * Char 28: Width=327681, Height=345885, Depth=63716, IC=0
      */
     public void testcmr10C28() throws Exception {
 
@@ -715,6 +744,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C29
+     * Char 29: Width=591646, Height=447828, Depth=0, IC=0
      */
     public void testcmr10C29() throws Exception {
 
@@ -737,6 +767,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C30
+     * Char 30: Width=664463, Height=447828, Depth=0, IC=0
      */
     public void testcmr10C30() throws Exception {
 
@@ -759,6 +790,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C31
+     * Char 31: Width=509726, Height=479686, Depth=31858, IC=0
      */
     public void testcmr10C31() throws Exception {
 
@@ -782,6 +814,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C32
+     * Char 32: Width=182045, Height=282168, Depth=0, IC=0
      */
     public void testcmr10C32() throws Exception {
 
@@ -804,6 +837,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C33
+     * Char 33: Width=182045, Height=455111, Depth=0, IC=0
      */
     public void testcmr10C33() throws Exception {
 
@@ -826,6 +860,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C34
+     * Char 34: Width=327681, Height=455111, Depth=0, IC=0
      */
     public void testcmr10C34() throws Exception {
 
@@ -848,6 +883,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C35
+     * Char 35: Width=546135, Height=455111, Depth=127430, IC=0
      */
     public void testcmr10C35() throws Exception {
 
@@ -871,6 +907,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C36
+     * Char 36: Width=327681, Height=491520, Depth=36408, IC=0
      */
     public void testcmr10C36() throws Exception {
 
@@ -894,6 +931,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C37
+     * Char 37: Width=546135, Height=491520, Depth=36408, IC=0
      */
     public void testcmr10C37() throws Exception {
 
@@ -917,6 +955,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C38
+     * Char 38: Width=509726, Height=455111, Depth=0, IC=0
      */
     public void testcmr10C38() throws Exception {
 
@@ -939,6 +978,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C39
+     * Char 39: Width=182045, Height=455111, Depth=0, IC=0
      */
     public void testcmr10C39() throws Exception {
 
@@ -961,6 +1001,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C40
+     * Char 40: Width=254863, Height=491520, Depth=163840, IC=0
      */
     public void testcmr10C40() throws Exception {
 
@@ -984,6 +1025,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C41
+     * Char 41: Width=254863, Height=491520, Depth=163840, IC=0
      */
     public void testcmr10C41() throws Exception {
 
@@ -1007,6 +1049,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C42
+     * Char 42: Width=327681, Height=491520, Depth=0, IC=0
      */
     public void testcmr10C42() throws Exception {
 
@@ -1029,6 +1072,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C43
+     * Char 43: Width=509726, Height=382293, Depth=54613, IC=0
      */
     public void testcmr10C43() throws Exception {
 
@@ -1052,6 +1096,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C44
+     * Char 44: Width=182045, Height=69176, Depth=127431, IC=0
      */
     public void testcmr10C44() throws Exception {
 
@@ -1075,6 +1120,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C45
+     * Char 45: Width=218453, Height=282168, Depth=0, IC=0
      */
     public void testcmr10C45() throws Exception {
 
@@ -1097,6 +1143,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C46
+     * Char 46: Width=182045, Height=69176, Depth=0, IC=0
      */
     public void testcmr10C46() throws Exception {
 
@@ -1119,6 +1166,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C47
+     * Char 47: Width=327681, Height=491520, Depth=163840, IC=0
      */
     public void testcmr10C47() throws Exception {
 
@@ -1142,6 +1190,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C48
+     * Char 48: Width=327681, Height=422343, Depth=0, IC=0
      */
     public void testcmr10C48() throws Exception {
 
@@ -1164,6 +1213,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C49
+     * Char 49: Width=327681, Height=422343, Depth=0, IC=0
      */
     public void testcmr10C49() throws Exception {
 
@@ -1186,6 +1236,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C50
+     * Char 50: Width=327681, Height=422343, Depth=0, IC=0
      */
     public void testcmr10C50() throws Exception {
 
@@ -1208,6 +1259,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C51
+     * Char 51: Width=327681, Height=422343, Depth=0, IC=0
      */
     public void testcmr10C51() throws Exception {
 
@@ -1230,6 +1282,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C52
+     * Char 52: Width=327681, Height=422343, Depth=0, IC=0
      */
     public void testcmr10C52() throws Exception {
 
@@ -1252,6 +1305,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C53
+     * Char 53: Width=327681, Height=422343, Depth=0, IC=0
      */
     public void testcmr10C53() throws Exception {
 
@@ -1274,6 +1328,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C54
+     * Char 54: Width=327681, Height=422343, Depth=0, IC=0
      */
     public void testcmr10C54() throws Exception {
 
@@ -1296,6 +1351,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C55
+     * Char 55: Width=327681, Height=422343, Depth=0, IC=0
      */
     public void testcmr10C55() throws Exception {
 
@@ -1318,6 +1374,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C56
+     * Char 56: Width=327681, Height=422343, Depth=0, IC=0
      */
     public void testcmr10C56() throws Exception {
 
@@ -1340,6 +1397,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C57
+     * Char 57: Width=327681, Height=422343, Depth=0, IC=0
      */
     public void testcmr10C57() throws Exception {
 
@@ -1362,6 +1420,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C58
+     * Char 58: Width=182045, Height=282168, Depth=0, IC=0
      */
     public void testcmr10C58() throws Exception {
 
@@ -1384,6 +1443,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C59
+     * Char 59: Width=182045, Height=282168, Depth=127431, IC=0
      */
     public void testcmr10C59() throws Exception {
 
@@ -1407,6 +1467,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C60
+     * Char 60: Width=182045, Height=327680, Depth=127431, IC=0
      */
     public void testcmr10C60() throws Exception {
 
@@ -1430,6 +1491,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C61
+     * Char 61: Width=509726, Height=240435, Depth=-87245, IC=0
      */
     public void testcmr10C61() throws Exception {
 
@@ -1453,6 +1515,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C62
+     * Char 62: Width=309476, Height=327680, Depth=127431, IC=0
      */
     public void testcmr10C62() throws Exception {
 
@@ -1476,6 +1539,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C63
+     * Char 63: Width=309476, Height=455111, Depth=0, IC=0
      */
     public void testcmr10C63() throws Exception {
 
@@ -1498,6 +1562,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C64
+     * Char 64: Width=509726, Height=455111, Depth=0, IC=0
      */
     public void testcmr10C64() throws Exception {
 
@@ -1520,6 +1585,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C65
+     * Char 65: Width=491521, Height=447828, Depth=0, IC=0
      */
     public void testcmr10C65() throws Exception {
 
@@ -1542,6 +1608,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C66
+     * Char 66: Width=464215, Height=447828, Depth=0, IC=0
      */
     public void testcmr10C66() throws Exception {
 
@@ -1564,6 +1631,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C67
+     * Char 67: Width=473316, Height=447828, Depth=0, IC=0
      */
     public void testcmr10C67() throws Exception {
 
@@ -1586,6 +1654,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C68
+     * Char 68: Width=500623, Height=447828, Depth=0, IC=0
      */
     public void testcmr10C68() throws Exception {
 
@@ -1608,6 +1677,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C69
+     * Char 69: Width=446010, Height=447828, Depth=0, IC=0
      */
     public void testcmr10C69() throws Exception {
 
@@ -1630,6 +1700,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C70
+     * Char 70: Width=427806, Height=447828, Depth=0, IC=0
      */
     public void testcmr10C70() throws Exception {
 
@@ -1652,6 +1723,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C71
+     * Char 71: Width=514276, Height=447828, Depth=0, IC=0
      */
     public void testcmr10C71() throws Exception {
 
@@ -1674,6 +1746,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C72
+     * Char 72: Width=491521, Height=447828, Depth=0, IC=0
      */
     public void testcmr10C72() throws Exception {
 
@@ -1696,6 +1769,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C73
+     * Char 73: Width=236658, Height=447828, Depth=0, IC=0
      */
     public void testcmr10C73() throws Exception {
 
@@ -1718,6 +1792,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C74
+     * Char 74: Width=336783, Height=447828, Depth=0, IC=0
      */
     public void testcmr10C74() throws Exception {
 
@@ -1740,6 +1815,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C75
+     * Char 75: Width=509726, Height=447828, Depth=0, IC=0
      */
     public void testcmr10C75() throws Exception {
 
@@ -1762,6 +1838,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C76
+     * Char 76: Width=409601, Height=447828, Depth=0, IC=0
      */
     public void testcmr10C76() throws Exception {
 
@@ -1784,6 +1861,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C77
+     * Char 77: Width=600748, Height=447828, Depth=0, IC=0
      */
     public void testcmr10C77() throws Exception {
 
@@ -1806,6 +1884,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C78
+     * Char 78: Width=491521, Height=447828, Depth=0, IC=0
      */
     public void testcmr10C78() throws Exception {
 
@@ -1828,6 +1907,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C79
+     * Char 79: Width=509726, Height=447828, Depth=0, IC=0
      */
     public void testcmr10C79() throws Exception {
 
@@ -1850,6 +1930,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C80
+     * Char 80: Width=446010, Height=447828, Depth=0, IC=0
      */
     public void testcmr10C80() throws Exception {
 
@@ -1872,6 +1953,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C81
+     * Char 81: Width=509726, Height=447828, Depth=127431, IC=0
      */
     public void testcmr10C81() throws Exception {
 
@@ -1895,6 +1977,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C82
+     * Char 82: Width=482418, Height=447828, Depth=0, IC=0
      */
     public void testcmr10C82() throws Exception {
 
@@ -1917,6 +2000,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C83
+     * Char 83: Width=364090, Height=447828, Depth=0, IC=0
      */
     public void testcmr10C83() throws Exception {
 
@@ -1939,6 +2023,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C84
+     * Char 84: Width=473316, Height=447828, Depth=0, IC=0
      */
     public void testcmr10C84() throws Exception {
 
@@ -1961,6 +2046,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C85
+     * Char 85: Width=491521, Height=447828, Depth=0, IC=0
      */
     public void testcmr10C85() throws Exception {
 
@@ -1983,6 +2069,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C86
+     * Char 86: Width=491521, Height=447828, Depth=0, IC=9101
      */
     public void testcmr10C86() throws Exception {
 
@@ -2005,6 +2092,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C87
+     * Char 87: Width=673566, Height=447828, Depth=0, IC=9101
      */
     public void testcmr10C87() throws Exception {
 
@@ -2027,6 +2115,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C88
+     * Char 88: Width=491521, Height=447828, Depth=0, IC=0
      */
     public void testcmr10C88() throws Exception {
 
@@ -2049,6 +2138,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C89
+     * Char 89: Width=491521, Height=447828, Depth=0, IC=16383
      */
     public void testcmr10C89() throws Exception {
 
@@ -2071,6 +2161,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C90
+     * Char 90: Width=400498, Height=447828, Depth=0, IC=0
      */
     public void testcmr10C90() throws Exception {
 
@@ -2093,6 +2184,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C91
+     * Char 91: Width=182045, Height=491520, Depth=163840, IC=0
      */
     public void testcmr10C91() throws Exception {
 
@@ -2116,6 +2208,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C92
+     * Char 92: Width=327681, Height=455111, Depth=0, IC=0
      */
     public void testcmr10C92() throws Exception {
 
@@ -2138,6 +2231,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C93
+     * Char 93: Width=182045, Height=491520, Depth=163840, IC=0
      */
     public void testcmr10C93() throws Exception {
 
@@ -2161,6 +2255,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C94
+     * Char 94: Width=327681, Height=455111, Depth=0, IC=0
      */
     public void testcmr10C94() throws Exception {
 
@@ -2183,6 +2278,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C95
+     * Char 95: Width=182045, Height=437688, Depth=0, IC=0
      */
     public void testcmr10C95() throws Exception {
 
@@ -2205,6 +2301,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C96
+     * Char 96: Width=182045, Height=455111, Depth=0, IC=0
      */
     public void testcmr10C96() throws Exception {
 
@@ -2227,6 +2324,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C97
+     * Char 97: Width=327681, Height=282168, Depth=0, IC=0
      */
     public void testcmr10C97() throws Exception {
 
@@ -2249,6 +2347,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C98
+     * Char 98: Width=364090, Height=455111, Depth=0, IC=0
      */
     public void testcmr10C98() throws Exception {
 
@@ -2271,6 +2370,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C99
+     * Char 99: Width=291271, Height=282168, Depth=0, IC=0
      */
     public void testcmr10C99() throws Exception {
 
@@ -2293,6 +2393,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C100
+     * Char 100: Width=364090, Height=455111, Depth=0, IC=0
      */
     public void testcmr10C100() throws Exception {
 
@@ -2315,6 +2416,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C101
+     * Char 101: Width=291271, Height=282168, Depth=0, IC=0
      */
     public void testcmr10C101() throws Exception {
 
@@ -2337,6 +2439,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C102
+     * Char 102: Width=200250, Height=455111, Depth=0, IC=50973
      */
     public void testcmr10C102() throws Exception {
 
@@ -2359,6 +2462,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C103
+     * Char 103: Width=327681, Height=282168, Depth=127431, IC=9101
      */
     public void testcmr10C103() throws Exception {
 
@@ -2382,6 +2486,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C104
+     * Char 104: Width=364090, Height=455111, Depth=0, IC=0
      */
     public void testcmr10C104() throws Exception {
 
@@ -2404,6 +2509,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C105
+     * Char 105: Width=182045, Height=437688, Depth=0, IC=0
      */
     public void testcmr10C105() throws Exception {
 
@@ -2426,6 +2532,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C106
+     * Char 106: Width=200250, Height=437688, Depth=127431, IC=0
      */
     public void testcmr10C106() throws Exception {
 
@@ -2449,6 +2556,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C107
+     * Char 107: Width=345886, Height=455111, Depth=0, IC=0
      */
     public void testcmr10C107() throws Exception {
 
@@ -2471,6 +2579,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C108
+     * Char 108: Width=182045, Height=455111, Depth=0, IC=0
      */
     public void testcmr10C108() throws Exception {
 
@@ -2493,6 +2602,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C109
+     * Char 109: Width=546135, Height=282168, Depth=0, IC=0
      */
     public void testcmr10C109() throws Exception {
 
@@ -2515,6 +2625,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C110
+     * Char 110: Width=364090, Height=282168, Depth=0, IC=0
      */
     public void testcmr10C110() throws Exception {
 
@@ -2537,6 +2648,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C111
+     * Char 111: Width=327681, Height=282168, Depth=0, IC=0
      */
     public void testcmr10C111() throws Exception {
 
@@ -2559,6 +2671,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C112
+     * Char 112: Width=364090, Height=282168, Depth=127431, IC=0
      */
     public void testcmr10C112() throws Exception {
 
@@ -2582,6 +2695,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C113
+     * Char 113: Width=345885, Height=282168, Depth=127431, IC=0
      */
     public void testcmr10C113() throws Exception {
 
@@ -2605,6 +2719,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C114
+     * Char 114: Width=256683, Height=282168, Depth=0, IC=0
      */
     public void testcmr10C114() throws Exception {
 
@@ -2627,6 +2742,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C115
+     * Char 115: Width=258503, Height=282168, Depth=0, IC=0
      */
     public void testcmr10C115() throws Exception {
 
@@ -2649,6 +2765,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C116
+     * Char 116: Width=254863, Height=403098, Depth=0, IC=0
      */
     public void testcmr10C116() throws Exception {
 
@@ -2671,6 +2788,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C117
+     * Char 117: Width=364090, Height=282168, Depth=0, IC=0
      */
     public void testcmr10C117() throws Exception {
 
@@ -2693,6 +2811,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C118
+     * Char 118: Width=345886, Height=282168, Depth=0, IC=9101
      */
     public void testcmr10C118() throws Exception {
 
@@ -2715,6 +2834,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C119
+     * Char 119: Width=473316, Height=282168, Depth=0, IC=9101
      */
     public void testcmr10C119() throws Exception {
 
@@ -2737,6 +2857,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C120
+     * Char 120: Width=345886, Height=282168, Depth=0, IC=0
      */
     public void testcmr10C120() throws Exception {
 
@@ -2759,6 +2880,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C121
+     * Char 121: Width=345886, Height=282168, Depth=127431, IC=9101
      */
     public void testcmr10C121() throws Exception {
 
@@ -2782,6 +2904,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C122
+     * Char 122: Width=291271, Height=282168, Depth=0, IC=0
      */
     public void testcmr10C122() throws Exception {
 
@@ -2804,6 +2927,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C123
+     * Char 123: Width=327681, Height=282168, Depth=0, IC=18205
      */
     public void testcmr10C123() throws Exception {
 
@@ -2826,6 +2950,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C124
+     * Char 124: Width=655361, Height=282168, Depth=0, IC=18205
      */
     public void testcmr10C124() throws Exception {
 
@@ -2848,6 +2973,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C125
+     * Char 125: Width=327681, Height=455111, Depth=0, IC=0
      */
     public void testcmr10C125() throws Exception {
 
@@ -2870,6 +2996,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C126
+     * Char 126: Width=327681, Height=437688, Depth=0, IC=0
      */
     public void testcmr10C126() throws Exception {
 
@@ -2892,6 +3019,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C127
+     * Char 127: Width=327681, Height=437688, Depth=0, IC=0
      */
     public void testcmr10C127() throws Exception {
 
@@ -2914,6 +3042,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C128
+     * Char 128: not defined
      */
     public void testcmr10C128() throws Exception {
 
@@ -2922,6 +3051,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C129
+     * Char 129: not defined
      */
     public void testcmr10C129() throws Exception {
 
@@ -2930,6 +3060,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C130
+     * Char 130: not defined
      */
     public void testcmr10C130() throws Exception {
 
@@ -2938,6 +3069,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C131
+     * Char 131: not defined
      */
     public void testcmr10C131() throws Exception {
 
@@ -2946,6 +3078,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C132
+     * Char 132: not defined
      */
     public void testcmr10C132() throws Exception {
 
@@ -2954,6 +3087,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C133
+     * Char 133: not defined
      */
     public void testcmr10C133() throws Exception {
 
@@ -2962,6 +3096,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C134
+     * Char 134: not defined
      */
     public void testcmr10C134() throws Exception {
 
@@ -2970,6 +3105,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C135
+     * Char 135: not defined
      */
     public void testcmr10C135() throws Exception {
 
@@ -2978,6 +3114,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C136
+     * Char 136: not defined
      */
     public void testcmr10C136() throws Exception {
 
@@ -2986,6 +3123,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C137
+     * Char 137: not defined
      */
     public void testcmr10C137() throws Exception {
 
@@ -2994,6 +3132,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C138
+     * Char 138: not defined
      */
     public void testcmr10C138() throws Exception {
 
@@ -3002,6 +3141,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C139
+     * Char 139: not defined
      */
     public void testcmr10C139() throws Exception {
 
@@ -3010,6 +3150,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C140
+     * Char 140: not defined
      */
     public void testcmr10C140() throws Exception {
 
@@ -3018,6 +3159,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C141
+     * Char 141: not defined
      */
     public void testcmr10C141() throws Exception {
 
@@ -3026,6 +3168,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C142
+     * Char 142: not defined
      */
     public void testcmr10C142() throws Exception {
 
@@ -3034,6 +3177,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C143
+     * Char 143: not defined
      */
     public void testcmr10C143() throws Exception {
 
@@ -3042,6 +3186,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C144
+     * Char 144: not defined
      */
     public void testcmr10C144() throws Exception {
 
@@ -3050,6 +3195,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C145
+     * Char 145: not defined
      */
     public void testcmr10C145() throws Exception {
 
@@ -3058,6 +3204,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C146
+     * Char 146: not defined
      */
     public void testcmr10C146() throws Exception {
 
@@ -3066,6 +3213,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C147
+     * Char 147: not defined
      */
     public void testcmr10C147() throws Exception {
 
@@ -3074,6 +3222,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C148
+     * Char 148: not defined
      */
     public void testcmr10C148() throws Exception {
 
@@ -3082,6 +3231,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C149
+     * Char 149: not defined
      */
     public void testcmr10C149() throws Exception {
 
@@ -3090,6 +3240,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C150
+     * Char 150: not defined
      */
     public void testcmr10C150() throws Exception {
 
@@ -3098,6 +3249,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C151
+     * Char 151: not defined
      */
     public void testcmr10C151() throws Exception {
 
@@ -3106,6 +3258,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C152
+     * Char 152: not defined
      */
     public void testcmr10C152() throws Exception {
 
@@ -3114,6 +3267,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C153
+     * Char 153: not defined
      */
     public void testcmr10C153() throws Exception {
 
@@ -3122,6 +3276,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C154
+     * Char 154: not defined
      */
     public void testcmr10C154() throws Exception {
 
@@ -3130,6 +3285,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C155
+     * Char 155: not defined
      */
     public void testcmr10C155() throws Exception {
 
@@ -3138,6 +3294,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C156
+     * Char 156: not defined
      */
     public void testcmr10C156() throws Exception {
 
@@ -3146,6 +3303,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C157
+     * Char 157: not defined
      */
     public void testcmr10C157() throws Exception {
 
@@ -3154,6 +3312,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C158
+     * Char 158: not defined
      */
     public void testcmr10C158() throws Exception {
 
@@ -3162,6 +3321,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C159
+     * Char 159: not defined
      */
     public void testcmr10C159() throws Exception {
 
@@ -3170,6 +3330,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C160
+     * Char 160: not defined
      */
     public void testcmr10C160() throws Exception {
 
@@ -3178,6 +3339,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C161
+     * Char 161: not defined
      */
     public void testcmr10C161() throws Exception {
 
@@ -3186,6 +3348,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C162
+     * Char 162: not defined
      */
     public void testcmr10C162() throws Exception {
 
@@ -3194,6 +3357,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C163
+     * Char 163: not defined
      */
     public void testcmr10C163() throws Exception {
 
@@ -3202,6 +3366,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C164
+     * Char 164: not defined
      */
     public void testcmr10C164() throws Exception {
 
@@ -3210,6 +3375,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C165
+     * Char 165: not defined
      */
     public void testcmr10C165() throws Exception {
 
@@ -3218,6 +3384,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C166
+     * Char 166: not defined
      */
     public void testcmr10C166() throws Exception {
 
@@ -3226,6 +3393,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C167
+     * Char 167: not defined
      */
     public void testcmr10C167() throws Exception {
 
@@ -3234,6 +3402,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C168
+     * Char 168: not defined
      */
     public void testcmr10C168() throws Exception {
 
@@ -3242,6 +3411,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C169
+     * Char 169: not defined
      */
     public void testcmr10C169() throws Exception {
 
@@ -3250,6 +3420,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C170
+     * Char 170: not defined
      */
     public void testcmr10C170() throws Exception {
 
@@ -3258,6 +3429,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C171
+     * Char 171: not defined
      */
     public void testcmr10C171() throws Exception {
 
@@ -3266,6 +3438,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C172
+     * Char 172: not defined
      */
     public void testcmr10C172() throws Exception {
 
@@ -3274,6 +3447,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C173
+     * Char 173: not defined
      */
     public void testcmr10C173() throws Exception {
 
@@ -3282,6 +3456,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C174
+     * Char 174: not defined
      */
     public void testcmr10C174() throws Exception {
 
@@ -3290,6 +3465,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C175
+     * Char 175: not defined
      */
     public void testcmr10C175() throws Exception {
 
@@ -3298,6 +3474,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C176
+     * Char 176: not defined
      */
     public void testcmr10C176() throws Exception {
 
@@ -3306,6 +3483,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C177
+     * Char 177: not defined
      */
     public void testcmr10C177() throws Exception {
 
@@ -3314,6 +3492,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C178
+     * Char 178: not defined
      */
     public void testcmr10C178() throws Exception {
 
@@ -3322,6 +3501,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C179
+     * Char 179: not defined
      */
     public void testcmr10C179() throws Exception {
 
@@ -3330,6 +3510,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C180
+     * Char 180: not defined
      */
     public void testcmr10C180() throws Exception {
 
@@ -3338,6 +3519,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C181
+     * Char 181: not defined
      */
     public void testcmr10C181() throws Exception {
 
@@ -3346,6 +3528,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C182
+     * Char 182: not defined
      */
     public void testcmr10C182() throws Exception {
 
@@ -3354,6 +3537,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C183
+     * Char 183: not defined
      */
     public void testcmr10C183() throws Exception {
 
@@ -3362,6 +3546,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C184
+     * Char 184: not defined
      */
     public void testcmr10C184() throws Exception {
 
@@ -3370,6 +3555,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C185
+     * Char 185: not defined
      */
     public void testcmr10C185() throws Exception {
 
@@ -3378,6 +3564,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C186
+     * Char 186: not defined
      */
     public void testcmr10C186() throws Exception {
 
@@ -3386,6 +3573,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C187
+     * Char 187: not defined
      */
     public void testcmr10C187() throws Exception {
 
@@ -3394,6 +3582,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C188
+     * Char 188: not defined
      */
     public void testcmr10C188() throws Exception {
 
@@ -3402,6 +3591,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C189
+     * Char 189: not defined
      */
     public void testcmr10C189() throws Exception {
 
@@ -3410,6 +3600,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C190
+     * Char 190: not defined
      */
     public void testcmr10C190() throws Exception {
 
@@ -3418,6 +3609,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C191
+     * Char 191: not defined
      */
     public void testcmr10C191() throws Exception {
 
@@ -3426,6 +3618,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C192
+     * Char 192: not defined
      */
     public void testcmr10C192() throws Exception {
 
@@ -3434,6 +3627,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C193
+     * Char 193: not defined
      */
     public void testcmr10C193() throws Exception {
 
@@ -3442,6 +3636,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C194
+     * Char 194: not defined
      */
     public void testcmr10C194() throws Exception {
 
@@ -3450,6 +3645,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C195
+     * Char 195: not defined
      */
     public void testcmr10C195() throws Exception {
 
@@ -3458,6 +3654,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C196
+     * Char 196: not defined
      */
     public void testcmr10C196() throws Exception {
 
@@ -3466,6 +3663,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C197
+     * Char 197: not defined
      */
     public void testcmr10C197() throws Exception {
 
@@ -3474,6 +3672,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C198
+     * Char 198: not defined
      */
     public void testcmr10C198() throws Exception {
 
@@ -3482,6 +3681,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C199
+     * Char 199: not defined
      */
     public void testcmr10C199() throws Exception {
 
@@ -3490,6 +3690,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C200
+     * Char 200: not defined
      */
     public void testcmr10C200() throws Exception {
 
@@ -3498,6 +3699,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C201
+     * Char 201: not defined
      */
     public void testcmr10C201() throws Exception {
 
@@ -3506,6 +3708,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C202
+     * Char 202: not defined
      */
     public void testcmr10C202() throws Exception {
 
@@ -3514,6 +3717,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C203
+     * Char 203: not defined
      */
     public void testcmr10C203() throws Exception {
 
@@ -3522,6 +3726,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C204
+     * Char 204: not defined
      */
     public void testcmr10C204() throws Exception {
 
@@ -3530,6 +3735,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C205
+     * Char 205: not defined
      */
     public void testcmr10C205() throws Exception {
 
@@ -3538,6 +3744,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C206
+     * Char 206: not defined
      */
     public void testcmr10C206() throws Exception {
 
@@ -3546,6 +3753,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C207
+     * Char 207: not defined
      */
     public void testcmr10C207() throws Exception {
 
@@ -3554,6 +3762,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C208
+     * Char 208: not defined
      */
     public void testcmr10C208() throws Exception {
 
@@ -3562,6 +3771,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C209
+     * Char 209: not defined
      */
     public void testcmr10C209() throws Exception {
 
@@ -3570,6 +3780,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C210
+     * Char 210: not defined
      */
     public void testcmr10C210() throws Exception {
 
@@ -3578,6 +3789,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C211
+     * Char 211: not defined
      */
     public void testcmr10C211() throws Exception {
 
@@ -3586,6 +3798,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C212
+     * Char 212: not defined
      */
     public void testcmr10C212() throws Exception {
 
@@ -3594,6 +3807,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C213
+     * Char 213: not defined
      */
     public void testcmr10C213() throws Exception {
 
@@ -3602,6 +3816,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C214
+     * Char 214: not defined
      */
     public void testcmr10C214() throws Exception {
 
@@ -3610,6 +3825,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C215
+     * Char 215: not defined
      */
     public void testcmr10C215() throws Exception {
 
@@ -3618,6 +3834,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C216
+     * Char 216: not defined
      */
     public void testcmr10C216() throws Exception {
 
@@ -3626,6 +3843,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C217
+     * Char 217: not defined
      */
     public void testcmr10C217() throws Exception {
 
@@ -3634,6 +3852,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C218
+     * Char 218: not defined
      */
     public void testcmr10C218() throws Exception {
 
@@ -3642,6 +3861,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C219
+     * Char 219: not defined
      */
     public void testcmr10C219() throws Exception {
 
@@ -3650,6 +3870,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C220
+     * Char 220: not defined
      */
     public void testcmr10C220() throws Exception {
 
@@ -3658,6 +3879,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C221
+     * Char 221: not defined
      */
     public void testcmr10C221() throws Exception {
 
@@ -3666,6 +3888,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C222
+     * Char 222: not defined
      */
     public void testcmr10C222() throws Exception {
 
@@ -3674,6 +3897,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C223
+     * Char 223: not defined
      */
     public void testcmr10C223() throws Exception {
 
@@ -3682,6 +3906,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C224
+     * Char 224: not defined
      */
     public void testcmr10C224() throws Exception {
 
@@ -3690,6 +3915,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C225
+     * Char 225: not defined
      */
     public void testcmr10C225() throws Exception {
 
@@ -3698,6 +3924,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C226
+     * Char 226: not defined
      */
     public void testcmr10C226() throws Exception {
 
@@ -3706,6 +3933,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C227
+     * Char 227: not defined
      */
     public void testcmr10C227() throws Exception {
 
@@ -3714,6 +3942,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C228
+     * Char 228: not defined
      */
     public void testcmr10C228() throws Exception {
 
@@ -3722,6 +3951,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C229
+     * Char 229: not defined
      */
     public void testcmr10C229() throws Exception {
 
@@ -3730,6 +3960,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C230
+     * Char 230: not defined
      */
     public void testcmr10C230() throws Exception {
 
@@ -3738,6 +3969,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C231
+     * Char 231: not defined
      */
     public void testcmr10C231() throws Exception {
 
@@ -3746,6 +3978,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C232
+     * Char 232: not defined
      */
     public void testcmr10C232() throws Exception {
 
@@ -3754,6 +3987,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C233
+     * Char 233: not defined
      */
     public void testcmr10C233() throws Exception {
 
@@ -3762,6 +3996,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C234
+     * Char 234: not defined
      */
     public void testcmr10C234() throws Exception {
 
@@ -3770,6 +4005,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C235
+     * Char 235: not defined
      */
     public void testcmr10C235() throws Exception {
 
@@ -3778,6 +4014,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C236
+     * Char 236: not defined
      */
     public void testcmr10C236() throws Exception {
 
@@ -3786,6 +4023,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C237
+     * Char 237: not defined
      */
     public void testcmr10C237() throws Exception {
 
@@ -3794,6 +4032,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C238
+     * Char 238: not defined
      */
     public void testcmr10C238() throws Exception {
 
@@ -3802,6 +4041,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C239
+     * Char 239: not defined
      */
     public void testcmr10C239() throws Exception {
 
@@ -3810,6 +4050,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C240
+     * Char 240: not defined
      */
     public void testcmr10C240() throws Exception {
 
@@ -3818,6 +4059,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C241
+     * Char 241: not defined
      */
     public void testcmr10C241() throws Exception {
 
@@ -3826,6 +4068,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C242
+     * Char 242: not defined
      */
     public void testcmr10C242() throws Exception {
 
@@ -3834,6 +4077,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C243
+     * Char 243: not defined
      */
     public void testcmr10C243() throws Exception {
 
@@ -3842,6 +4086,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C244
+     * Char 244: not defined
      */
     public void testcmr10C244() throws Exception {
 
@@ -3850,6 +4095,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C245
+     * Char 245: not defined
      */
     public void testcmr10C245() throws Exception {
 
@@ -3858,6 +4104,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C246
+     * Char 246: not defined
      */
     public void testcmr10C246() throws Exception {
 
@@ -3866,6 +4113,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C247
+     * Char 247: not defined
      */
     public void testcmr10C247() throws Exception {
 
@@ -3874,6 +4122,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C248
+     * Char 248: not defined
      */
     public void testcmr10C248() throws Exception {
 
@@ -3882,6 +4131,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C249
+     * Char 249: not defined
      */
     public void testcmr10C249() throws Exception {
 
@@ -3890,6 +4140,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C250
+     * Char 250: not defined
      */
     public void testcmr10C250() throws Exception {
 
@@ -3898,6 +4149,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C251
+     * Char 251: not defined
      */
     public void testcmr10C251() throws Exception {
 
@@ -3906,6 +4158,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C252
+     * Char 252: not defined
      */
     public void testcmr10C252() throws Exception {
 
@@ -3914,6 +4167,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C253
+     * Char 253: not defined
      */
     public void testcmr10C253() throws Exception {
 
@@ -3922,6 +4176,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C254
+     * Char 254: not defined
      */
     public void testcmr10C254() throws Exception {
 
@@ -3930,6 +4185,7 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * testcmr10C255
+     * Char 255: not defined
      */
     public void testcmr10C255() throws Exception {
 
