@@ -105,7 +105,7 @@ extex.fonts = $INSTALL_PATH/font
 ##    internal error is encountered. This is handy for development.
 ##-----------------------------------------------------------------------------
 ##
-extex.texinputs = $INSTALL_PATH/texmf
+#extex.texinputs = .../texmf
 ##    This parameter contains the additional directories for searching
 ##    TeX input files.
 ##    NOTE: if you add a reference to a texmf tree then the file ls-R
@@ -122,7 +122,7 @@ extex.texinputs = $INSTALL_PATH/texmf
 ##    trace the search for font files.
 ##-----------------------------------------------------------------------------
 ##
-extex.trace.macros = false
+#extex.trace.macros = false
 ##    This boolean parameter contains the indicator whether or not to
 ##    trace the execution of macros.
 ##-----------------------------------------------------------------------------

@@ -2,7 +2,7 @@
 #------------------------------------------------------------------------------
 # This is the start script for ExTeX
 #------------------------------------------------------------------------------
-# Copyright (C) 2004-2006 The ExTeX Group
+# Copyright (C) 2004-2007 The ExTeX Group
 #
 # This library is free software; you can redistribute it and/or modify it under
 # the terms of the GNU Lesser General Public License as published by the Free
@@ -53,6 +53,6 @@ case "`uname`" in
 esac
 
 exec java $EXTEX_JAVA_OPTS -classpath "$LOCALCLASSPATH" \
-    de.dante.extex.main.TeX -progname=`basename $0` $*
+    org.extex.tex.main.TeX -progname=`basename $0` $*
 
 #

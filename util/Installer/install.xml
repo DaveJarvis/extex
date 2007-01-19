@@ -8,7 +8,6 @@
       <author name="Gerd Neugebauer" email="gene@gerd-neugebauer.de"/>
       <author name="Michael Niedermair" email="m.g.n@gmx.de"/>
       <author name="Sebastian Waschik" email="sebastian.waschik@gmx.de"/>
-      <author name="Rolf Niepraschk" email="rolf.niepraschk@ptb.de"/>
     </authors>
     <url>http://www.extex.org/</url>
     <javaversion>1.4</javaversion>
@@ -28,7 +27,7 @@
   </locale>
 
   <resources>
-    <res id="LicencePanel.licence" src="../../LICENSE.txt"/>
+    <res id="LicencePanel.licence" src="LICENSE.txt"/>
     <res id="HTMLInfoPanel.info_eng" src="README.en"/>
     <res id="HTMLInfoPanel.info_deu" src="README.de"/>
     <res id="installer.langsel.img" src="ExTeX-splash.png" />
@@ -55,46 +54,52 @@
   <packs>
     <pack name="Core" id="core" required="yes">
       <description/>
-      <file src="../../LICENSE.txt" targetdir="$INSTALL_PATH"/>
+      <file src="LICENSE.txt" targetdir="$INSTALL_PATH"/>
       <file src="extex" targetdir="$INSTALL_PATH"/>
-      <parsable targetfile="$INSTALL_PATH/extex"/>
+<!--      <parsable targetfile="$INSTALL_PATH/extex"/> -->
       <executable targetfile="$INSTALL_PATH/extex"/>
       <file src="extex.bat" targetdir="$INSTALL_PATH"/>
       <parsable targetfile="$INSTALL_PATH/extex.bat"/>
       <executable targetfile="$INSTALL_PATH/extex.bat"/>
-      <file src="../../target/lib/extex.jar" targetdir="$INSTALL_PATH/lib"/>
+      <file src="../../build/target/application/extex.jar"
+            targetdir="$INSTALL_PATH/lib"/>
       <file src=".extex" targetdir="$INSTALL_PATH"/>
       <parsable targetfile="$INSTALL_PATH/.extex"/>
     </pack>
 
     <pack name="Formats" id="formats" required="yes">
       <description/>
-      <file src="../../target/lib/extex-formats.jar" targetdir="$INSTALL_PATH/lib"/>
+      <file src="../../build/target/application/extex-formats.jar"
+            targetdir="$INSTALL_PATH/lib"/>
     </pack>
 
     <pack name="Libraries" id="libs" required="yes">
       <description/>
-      <fileset dir="../../lib" targetdir="$INSTALL_PATH/lib">
+      <fileset dir="../../build/target/application/lib"
+               targetdir="$INSTALL_PATH/lib">
         <exclude name="js.jar"/>
       </fileset>
     </pack>
 
     <pack name="User Settings" id="settings" required="no">
       <description/>
-      <file src=".extex" targetdir="$USER_HOME" overwrite="askfalse"/>
+      <file src=".extex"
+            targetdir="$USER_HOME"
+            overwrite="askfalse"/>
       <parsable targetfile="$USER_HOME/.extex"/>
     </pack>
 
     <pack name="Documentation" id="doc" required="no">
       <description/>
-      <file src="../../www/src/documentation/man/extex-users.pdf"
+      <file src="../../www/src/site/documentation/man/extex-users.pdf"
             targetdir="$INSTALL_PATH/doc"/>
     </pack>
 
-    <pack name="Fonts" id="fonts" required="no">
+    <pack name="TeX-MF" id="texmf" required="no">
       <description/>
-      <fileset dir="../../src/font"
-               targetdir="$INSTALL_PATH/font">
+      <fileset dir="../../texmf/target"
+               targetdir="$INSTALL_PATH/lib">
+        <include name="*.jar"/>
       </fileset>
     </pack>
 
