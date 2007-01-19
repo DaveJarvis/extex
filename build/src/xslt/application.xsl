@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   ############################################################################
-  # Copyright (C) 2006 The ExTeX Group
+  # Copyright (C) 2006-2007 The ExTeX Group
   #
   # This library is free software; you can redistribute it and/or modify it
   # under the terms of the GNU Lesser General Public License as published by
@@ -42,6 +42,10 @@
     <xsl:apply-templates select="component" mode="resource"/>
   </fileset>
 
+  <fileset dir=".." id="application.libraries">
+    <xsl:apply-templates select="component" mode="libraries"/>
+  </fileset>
+
   <path id="application.source.path">
     <dirset dir="..">
       <xsl:apply-templates select="component" mode="source"/>
@@ -75,11 +79,17 @@
 </project>
 </xsl:template>
 
+
  <!-- ===================================================================== -->
 <xsl:template match="component" mode="classpath">
   <fileset dir="../{@name}">
     <include name="lib/*.jar" />
   </fileset>
+</xsl:template>
+
+ <!-- ===================================================================== -->
+<xsl:template match="component" mode="libraries">
+  <include name="{@name}/lib/*.jar"/>
 </xsl:template>
 
  <!-- ===================================================================== -->
