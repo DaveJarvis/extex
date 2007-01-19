@@ -33,7 +33,6 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractAssignment;
-import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.count.Count;
 import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.interpreter.type.font.Font;
@@ -120,13 +119,13 @@ import org.extex.util.framework.logger.LogEnabled;
  * <p>
  *  In the following example the font cmr12 is loaded at the double design size.
  *  The scale factor 2000 is divided by 1000 to get the effective scaling factor.
- *  The macro <tt>\myfont</tt> is bound to this font.
+ *  The macro <tt>\magnifiedfiverm</tt> is bound to this font.
  * </p>
  * <pre class="TeXSample">
  *   \font\magnifiedfiverm=cmr5 scaled 2000  </pre>
  * <p>
  *  In the following example the font cmr10 is loaded at the size of 12 true pt.
- *  The macro <tt>\myfont</tt> is bound to this font.
+ *  The macro <tt>\second</tt> is bound to this font.
  * </p>
  * <pre class="TeXSample">
  *   \font\second=cmr10 at 12truept  </pre>
