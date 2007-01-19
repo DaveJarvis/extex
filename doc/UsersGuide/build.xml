@@ -2,7 +2,7 @@
   ############################################################################
   # This is the Ant build file for the ExTeX Users Guide
   ############################################################################
-  # Copyright (C) 2005 The ExTeX Group
+  # Copyright (C) 2005-2007 The ExTeX Group
   #
   # This library is free software; you can redistribute it and/or modify it
   # under the terms of the GNU Lesser General Public License as published by
@@ -20,32 +20,21 @@
   #
   ######################################################################### -->
 
-<project name="ExTeX" default="help" basedir=".">
+<project name="doc-users-guide" default="all" basedir=".">
 
-    <description>ExTeX - build file</description>
+  <description>ExTeX - build file</description>
 
-    <target name="help" description="Displays usage information">
-        <echo>Usage: ant &lt;target&gt;
-          The following targets are supported:
-          all
-              Build nearly everything
-          deploy
-          clean
-        </echo>
-    </target>
+  <property name="tmp" location="tmp"/>
+  <property name="deploy" location="deploy"/>
 
-    <property name="tmp" location="tmp"/>
-    <property name="deploy" location="deploy"/>
+  <target name="all"
+          description="Build nearly everything">
+    <exec executable="make" output="tmp/extex-users.out" failonerror="true"/>
+  </target>
 
-    <target name="all"
-            description="Build nearly everything"
-            depends="installer,javadoc,checkstyle,tests" />
-
-    <target name="compile"
-            description="Compile the source files">
-        <exec executable="make" output="tmp/extex-users.out">
-        </exec>
-    </target>
+  <target name="compile"
+          description="Compile the source files">
+  </target>
 
 </project>
 

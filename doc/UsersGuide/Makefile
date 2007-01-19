@@ -5,8 +5,8 @@
 #*=============================================================================
 
 MANUAL = extex-users
-DEPLOYDIR = ../../www/src/documentation/man
-SRCDIR = ../../src/java
+DEPLOYDIR = ../../build/target/application/html/documentation/man
+SRCDIR = ../../ExTeX-*/src
 
 all: $(MANUAL).pdf
 
@@ -32,13 +32,13 @@ tmp/configurations.tex cfg: bin/primitives.pl
 		-cp   $(SRCDIR)				\
 		-sets tmp/configurations.tex		\
 		-prim tmp/primitives.tex		\
-		$(SRCDIR)/config/*.xml 
+		$(SRCDIR)/src/resources/config/*.xml 
 
 tmp/syntax.tex syntax: bin/syntax.pl
 	mkdir -p tmp
 	perl bin/syntax.pl				\
-		-cp   $(SRCDIR)				\
-		-out  tmp/syntax.tex
+		-out  tmp/syntax.tex			\
+		-cp   $(SRCDIR)
 
 deploy: $(MANUAL).pdf
 	mkdir -p $(DEPLOYDIR)
