@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -114,7 +114,7 @@ public class TfmLigKernArray
             Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * The field <tt>serialVersionUID</tt>.
      */
     private static final long serialVersionUID = 1L;
 
@@ -527,20 +527,22 @@ public class TfmLigKernArray
             return -1;
         }
 
-        int ligstart = ciw.getLigkernstart();
-        for (int k = ligstart; k != TfmCharInfoWord.NOINDEX; k = ligKernTable[k]
-                .nextIndex(k)) {
-            TfmLigKern lk = ligKernTable[k];
+        return ciw.getLigature(cp2);
 
-            if (lk instanceof TfmLigature) {
-                TfmLigature lig = (TfmLigature) lk;
-
-                if (lig.getNextChar() == cp2) {
-                    return lig.getAddingChar();
-                }
-            }
-        }
-        return -1;
+        //        int ligstart = ciw.getLigkernstart();
+        //        for (int k = ligstart; k != TfmCharInfoWord.NOINDEX; k = ligKernTable[k]
+        //                .nextIndex(k)) {
+        //            TfmLigKern lk = ligKernTable[k];
+        //
+        //            if (lk instanceof TfmLigature) {
+        //                TfmLigature lig = (TfmLigature) lk;
+        //
+        //                if (lig.getNextChar() == cp2) {
+        //                    return lig.getAddingChar();
+        //                }
+        //            }
+        //        }
+        //        return -1;
     }
 
     /**
@@ -553,25 +555,27 @@ public class TfmLigKernArray
     public TfmFixWord getKerning(final int cp1, final int cp2) {
 
         TfmCharInfoWord ciw = charinfo.getCharinfoword()[cp1];
-        if (ciw == null || !foundLigKern(ciw) || ligKernTable == null) {
+        if (ciw == null ) {
             return TfmFixWord.ZERO;
         }
 
-        int ligstart = ciw.getLigkernstart();
-        for (int k = ligstart; k != TfmCharInfoWord.NOINDEX; k = ligKernTable[k]
-                .nextIndex(k)) {
-            TfmLigKern lk = ligKernTable[k];
+        return ciw.getKerning(cp2);
 
-            if (lk instanceof TfmKerning) {
-                TfmKerning kerning = (TfmKerning) lk;
-
-                if (kerning.getNextChar() == cp2) {
-                    return kerning.getKern();
-                }
-            }
-        }
-
-        return TfmFixWord.ZERO;
+        //        int ligstart = ciw.getLigkernstart();
+        //        for (int k = ligstart; k != TfmCharInfoWord.NOINDEX; k = ligKernTable[k]
+        //                .nextIndex(k)) {
+        //            TfmLigKern lk = ligKernTable[k];
+        //
+        //            if (lk instanceof TfmKerning) {
+        //                TfmKerning kerning = (TfmKerning) lk;
+        //
+        //                if (kerning.getNextChar() == cp2) {
+        //                    return kerning.getKern();
+        //                }
+        //            }
+        //        }
+        //
+        //        return TfmFixWord.ZERO;
     }
 
     /**

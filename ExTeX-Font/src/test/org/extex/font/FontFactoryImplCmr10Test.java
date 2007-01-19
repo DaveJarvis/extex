@@ -29,7 +29,7 @@ import org.extex.type.UnicodeChar;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
- * Test for the font factory.
+ * Test for the font factory (cmr10).
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
@@ -39,12 +39,12 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
     /**
      * The font.
      */
-    private ExtexFont font;
+    private static ExtexFont font;
 
     /**
      * The font key.
      */
-    private FontKey key;
+    private static FontKey key;
 
     /**
      * Creates a new object.
@@ -55,12 +55,13 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
     public FontFactoryImplCmr10Test() throws ConfigurationException,
             FontException {
 
-        CoreFontFactory factory = makeFontFactory();
+        if (key == null) {
+            CoreFontFactory factory = makeFontFactory();
 
-        key = factory.getFontKey("cmr10");
+            key = factory.getFontKey("cmr10");
 
-        font = factory.getInstance(key);
-
+            font = factory.getInstance(key);
+        }
     }
 
     /**

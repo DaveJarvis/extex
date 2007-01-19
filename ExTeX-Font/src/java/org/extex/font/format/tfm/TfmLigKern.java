@@ -89,4 +89,16 @@ public abstract class TfmLigKern implements Serializable {
 
         return nextChar;
     }
+
+    /**
+     * @see java.lang.Object#toString()
+     */
+    public String toString() {
+
+        StringBuffer buf = new StringBuffer();
+        buf.append(" nextchar=").append(nextChar);
+        buf.append(" skip=").append(skip);
+        return buf.toString();
+    }
+
 }

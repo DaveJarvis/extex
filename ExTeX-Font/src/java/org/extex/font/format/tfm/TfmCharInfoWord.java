@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -21,6 +21,8 @@ package org.extex.font.format.tfm;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
@@ -90,7 +92,7 @@ public class TfmCharInfoWord
             Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * The field <tt>serialVersionUID</tt>.
      */
     private static final long serialVersionUID = 1L;
 
@@ -215,6 +217,7 @@ public class TfmCharInfoWord
                 // not defined: use no_tag
                 tagT = NO_TAG;
         }
+
     }
 
     /**
@@ -893,4 +896,87 @@ public class TfmCharInfoWord
         }
         writer.writeEndElement();
     }
+
+    /**
+     * The kerning map.
+     */
+    private Map kernmap;
+
+    /**
+     * The ligature map.
+     */
+    private Map ligmap;
+
+    /**
+     * Create the ligature/kerning map.
+     */
+    public void createLigKernMap() {
+
+        kernmap = new HashMap();
+        ligmap = new HashMap();
+
+        // ligature
+        int ligstart = getLigkernstart();
+        if (ligstart != NOINDEX && ligKernTable != null) {
+
+            for (int k = ligstart; k != NOINDEX; k = ligKernTable[k]
+                    .nextIndex(k)) {
+                TfmLigKern lk = ligKernTable[k];
+
+                if (lk instanceof TfmLigature) {
+                    TfmLigature lig = (TfmLigature) lk;
+
+                    ligmap.put(new Integer(lig.getNextChar()), new Integer(lig
+                            .getAddingChar()));
+
+                } else if (lk instanceof TfmKerning) {
+                    TfmKerning kern = (TfmKerning) lk;
+
+                    kernmap
+                            .put(new Integer(kern.getNextChar()), kern
+                                    .getKern());
+                }
+            }
+        }
+    }
+
+    /**
+     * Return the ligature.
+     *
+     * If no ligature exists, the -1 is returned.
+     *
+     * @param cp2 the right char. This character has to exist.
+     * @return the ligature.
+     */
+    public int getLigature(final int cp2) {
+
+        if (ligmap == null) {
+            return -1;
+        }
+        Integer lig = (Integer) ligmap.get(new Integer(cp2));
+        if (lig != null) {
+            return lig.intValue();
+        }
+        return -1;
+    }
+
+    /**
+     * Return the kerning.
+     *
+     * @param cp2 the right char. This character has to exist.
+     * @return the kerning.
+     */
+    public TfmFixWord getKerning(final int cp2) {
+
+        if (kernmap == null) {
+            return TfmFixWord.ZERO;
+        }
+        TfmFixWord kern = (TfmFixWord) kernmap.get(new Integer(cp2));
+        if (kern != null) {
+            return kern;
+        }
+
+        return TfmFixWord.ZERO;
+    }
+
 }

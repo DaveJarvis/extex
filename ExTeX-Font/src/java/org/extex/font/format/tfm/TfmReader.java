@@ -114,6 +114,9 @@ public class TfmReader
         charinfo.createCharTable(width, height, depth, italic, exten, lengths
                 .getBc(), ligkern.getLigKernTable());
 
+        // create the lig/kern map for each character
+        charinfo.createLigKernMap();
+
     }
 
     /**

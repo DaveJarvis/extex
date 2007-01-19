@@ -451,4 +451,15 @@ public class TfmCharInfoArray
 
         return bc;
     }
+
+    /**
+     * Create the ligature/kerning map.
+     */
+    public void createLigKernMap() {
+
+        for (int i = 0; i < charinfoword.length; i++) {
+            charinfoword[i].createLigKernMap();
+        }
+
+    }
 }

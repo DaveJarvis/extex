@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -63,4 +63,15 @@ public class TfmKerning extends TfmLigKern implements Serializable {
 
         return kern;
     }
+
+    /**
+     * @see java.lang.Object#toString()
+     */
+    public String toString() {
+
+        StringBuffer buf = new StringBuffer(super.toString());
+        buf.append(" kern=").append(kern.toString());
+        return buf.toString();
+    }
+
 }

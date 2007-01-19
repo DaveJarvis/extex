@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -33,7 +33,7 @@ import java.io.Serializable;
 public class TfmLigature extends TfmLigKern implements Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * The field <tt>serialVersionUID</tt>.
      */
     private static final long serialVersionUID = 1L;
 
@@ -122,5 +122,18 @@ public class TfmLigature extends TfmLigKern implements Serializable {
     public byte getStepOver() {
 
         return stepOver;
+    }
+
+    /**
+     * @see java.lang.Object#toString()
+     */
+    public String toString() {
+
+        StringBuffer buf = new StringBuffer(super.toString());
+        buf.append(" addingchar=").append(addingChar);
+        buf.append(" keepleft=").append(keepLeft);
+        buf.append(" keepright=").append(keepRight);
+        buf.append(" stepover=").append(stepOver);
+        return buf.toString();
     }
 }
