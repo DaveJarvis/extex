@@ -81,7 +81,7 @@
     <define name="catcode"
             class="org.extex.interpreter.primitives.register.CatcodePrimitive"/>
     <define name="char"
-            class="org.extex.interpreter.primitives.string.Char"/>
+            class="org.extex.interpreter.primitives.typesetter.Char"/>
     <define name="chardef"
             class="org.extex.interpreter.primitives.register.Chardef"/>
     <define name="cleaders"
