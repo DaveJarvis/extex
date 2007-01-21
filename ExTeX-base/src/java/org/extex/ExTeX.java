@@ -818,7 +818,7 @@ public class ExTeX {
         /**
          * Setter for the interpreter context.
          *
-         * @param context the interprter context
+         * @param context the interpreter context
          */
         void setContext(Context context);
     }
