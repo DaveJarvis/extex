@@ -6,7 +6,7 @@
 #extex.code = \relax
 ##    This parameter contains ExTeX code to be executed directly. The
 ##    execution is performed after any code specified in an input
-##    file. on the command line the code has to start with a
+##    file. On the command line the code has to start with a
 ##    backslash. This restriction does not hold for the property
 ##    settings.
 ##-----------------------------------------------------------------------------
@@ -29,7 +29,7 @@
 ##    This parameter contains the logical name of the error handler. 
 ##-----------------------------------------------------------------------------
 ##
-extex.fonts = $INSTALL_PATH/font
+#extex.fonts = $INSTALL_PATH/font
 ##    This parameter contains the name of the property indicating
 ##    where to find font files. The value is a path similar to
 ##    extex.texinputs.
@@ -91,8 +91,9 @@ extex.fonts = $INSTALL_PATH/font
 ##-----------------------------------------------------------------------------
 ##
 #extex.output.directories = .
-##    This parameter contain the directories where output files should
-##    be created.
+##    This parameter contains the directories where output files should
+##    be created. The separator : can be used to put several directories
+##    into the property.
 ##-----------------------------------------------------------------------------
 ##
 #extex.progname =
