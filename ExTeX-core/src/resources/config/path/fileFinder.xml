@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!--
-  -  Copyright (C) 2004-2006 The ExTeX Group
+  -  Copyright (C) 2004-2007 The ExTeX Group
   -
   -  This library is free software; you can redistribute it and/or modify it
   -  under the terms of the GNU Lesser General Public License as published by
@@ -22,7 +22,6 @@
           default="default">
     <u2t>
       <extension>.u2t</extension>
-      <path>../ExTeX-Font/src/font</path>
       <path>.</path>
       <path property="extex.fonts"/>
       <path property="texinputs"/>
@@ -93,6 +92,18 @@
       <path property="texinputs"/>
       <path property="extex.fonts"/>
       <path>.</path>
+      <extension/>
+    </default>
+  </Finder>
+
+  <Finder class="org.extex.util.resource.ClasspathArchiveFinder"
+          trace="false"
+          default="default">
+    <fmt>
+      <extension>.fmt</extension>
+    </fmt>
+    <default>
+      <extension>.{type}</extension>
       <extension></extension>
     </default>
   </Finder>
