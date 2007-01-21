@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,51 +17,61 @@
  *
  */
 
-package org.extex.interpreter.primitives.namespace;
+package org.extex.unit.namespace;
 
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
-import org.extex.interpreter.type.AbstractAssignment;
-import org.extex.interpreter.type.ExpandableCode;
-import org.extex.interpreter.type.Theable;
+import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.interpreter.primitives.macro.Let;
 import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.token.CodeToken;
+import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 
+
 /**
- * This class provides an implementation for the primitive <code>\namespace</code>.
+ * This class provides an implementation for the primitive <code>\import</code>.
  *
- * <doc name="namespace">
- * <h3>The Primitive <tt>\namespace</tt></h3>
+ * <doc name="import">
+ * <h3>The Primitive <tt>\import</tt></h3>
  * <p>
- *  TODO missing documentation
+ *  The primitive <tt>\import</tt> defines all control sequences exported from
+ *  the given name space into the current name space. Any definitions with the
+ *  same name are overwritten.
+ * </p>
+ * <p>
+ *  The definitions are usually performed local to the current group. If the
+ *  prefix <tt>\global</tt> is given then the definition is made globally.
  * </p>
  *
  * <h4>Syntax</h4>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    &lang;namespace&rang;
- *      &rarr; <tt>\namespace</tt> {@linkplain
+ *    &lang;import&rang;
+ *      &rarr; &lang;prefix&rang; <tt>\import</tt> {@linkplain
  *      org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
- *      &lang;replacement text&rang;}  </pre>
+ *      &lang;name space&rang;}
+ *
+ *    &lang;prefix&rang;
+ *      &rarr;
+ *      | <tt>\global</tt>  </pre>
  *
  * <h4>Examples</h4>
  *  <pre class="TeXSample">
- *    \namespace{org.dante.dtk}  </pre>
+ *    \import{de.dante.dtk}  </pre>
  *
  * </doc>
  *
+ *
  * @see org.extex.interpreter.primitives.namespace.Export
- * @see org.extex.interpreter.primitives.namespace.Import
+ * @see org.extex.interpreter.primitives.namespace.Namespace
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
+ * @version $Revision: 4770 $
  */
-public class Namespace extends AbstractAssignment
-        implements
-            Theable,
-            ExpandableCode {
+public class Import extends Let {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
@@ -73,7 +83,7 @@ public class Namespace extends AbstractAssignment
      *
      * @param name the name for debugging
      */
-    public Namespace(final String name) {
+    public Import(final String name) {
 
         super(name);
     }
@@ -89,34 +99,23 @@ public class Namespace extends AbstractAssignment
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        Tokens toks = source.getTokens(context, source, typesetter);
-        context.setNamespace(toks.toText(), prefix.clearGlobal());
-    }
+        String ns = source.getTokens(context, source, typesetter).toText();
+        Tokens export = context.getToks(ns + "\bexport");
+        String namespace = context.getNamespace();
+        int length = export.length();
 
-    /**
-     * @see org.extex.interpreter.type.ExpandableCode#expand(
-     *      org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
-     */
-    public void expand(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
-            throws InterpreterException {
-
-        source.push(new Tokens(context, context.getNamespace()));
-    }
-
-    /**
-     * @see org.extex.interpreter.type.Theable#the(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
-     */
-    public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
-
-        return new Tokens(context, context.getNamespace());
+        for (int i = 0; i < length; i++) {
+            Token t = export.get(i);
+            if (t instanceof CodeToken) {
+                if (context.getCode((CodeToken) t) == null) {
+                    throw new HelpingException(getLocalizer(),
+                            "Namespace.Import.undef", t.toString());
+                } else {
+                    let(prefix, context, //
+                            ((CodeToken) t).cloneInNamespace(namespace), t);
+                }
+            }
+        }
     }
 
 }

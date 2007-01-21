@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!--
-  -  Copyright (C) 2004-2006 The ExTeX Group
+  -  Copyright (C) 2004-2007 The ExTeX Group
   -
   -  This library is free software; you can redistribute it and/or modify it
   -  under the terms of the GNU Lesser General Public License as published by
@@ -20,11 +20,11 @@
 <unit name="namespace">
   <primitives>
     <define name="export"
-            class="org.extex.interpreter.primitives.namespace.Export"/>
+            class="org.extex.unit.namespace.Export"/>
     <define name="import"
-            class="org.extex.interpreter.primitives.namespace.Import"/>
+            class="org.extex.unit.namespace.Import"/>
     <define name="namespace"
-            class="org.extex.interpreter.primitives.namespace.Namespace"/>
+            class="org.extex.unit.namespace.Namespace"/>
   </primitives>
  </unit>
  
