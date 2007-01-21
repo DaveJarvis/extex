@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -20,16 +20,12 @@
 package org.extex.util.resource;
 
 import java.io.InputStream;
-import java.text.MessageFormat;
-import java.util.ResourceBundle;
-import java.util.logging.Logger;
 
 import org.extex.type.StringListIterator;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.framework.configuration.exception.ConfigurationMissingAttributeException;
-import org.extex.util.framework.logger.LogEnabled;
-
+import org.extex.util.framework.configuration.exception.ConfigurationMissingException;
 
 /**
  * This resource finder utilizes the Java class finder to search in the class
@@ -40,7 +36,7 @@ import org.extex.util.framework.logger.LogEnabled;
  * The following example shows a configuration for a resource finder:
  *
  * <pre>
- * &lt;Finder class="de.dante.util.resource.ClasspathFinder"
+ * &lt;Finder class="org.extex.util.resource.ClasspathFinder"
  *         trace="false"
  *         default="default"&gt;
  *   &lt;tex&gt;
@@ -91,64 +87,19 @@ import org.extex.util.framework.logger.LogEnabled;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class ClasspathFinder implements LogEnabled, ResourceFinder {
-
-    /**
-     * The field <tt>bundle</tt> contains the resource bundle for messages.
-     */
-    private transient ResourceBundle bundle = null;
-
-    /**
-     * The field <tt>configuration</tt> contains the configuration object on
-     * which this resource finder is based.
-     */
-    private Configuration configuration;
-
-    /**
-     * The field <tt>logger</tt> contains the logger to be used for tracing.
-     */
-    private Logger logger = null;
-
-    /**
-     * The field <tt>trace</tt> contains the indicator that tracing is required.
-     * This field is set to <code>true</code> according to the configuration.
-     */
-    private boolean trace = false;
+public class ClasspathFinder extends AbstractFinder {
 
     /**
      * Creates a new object.
      *
      * @param configuration the encapsulated configuration object
-     */
-    public ClasspathFinder(final Configuration configuration) {
-
-        super();
-        this.configuration = configuration;
-        String t = configuration.getAttribute("trace");
-        if (t != null && Boolean.valueOf(t).booleanValue()) {
-            trace = true;
-        }
-    }
-
-    /**
-     * Setter for the logger.
      *
-     * @param theLogger the logger to set.
-     *
-     * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
-     *      java.util.logging.Logger)
+     * @throws ConfigurationMissingException in case of an error
      */
-    public void enableLogging(final Logger theLogger) {
+    public ClasspathFinder(final Configuration configuration)
+            throws ConfigurationMissingException {
 
-        this.logger = theLogger;
-    }
-
-    /**
-     * @see org.extex.util.resource.ResourceFinder#enableTracing(boolean)
-     */
-    public void enableTracing(final boolean flag) {
-
-        trace = flag;
+        super(configuration);
     }
 
     /**
@@ -159,30 +110,25 @@ public class ClasspathFinder implements LogEnabled, ResourceFinder {
     public InputStream findResource(final String name, final String type)
             throws ConfigurationException {
 
-        if (trace && bundle == null) {
-            bundle = ResourceBundle.getBundle(ClasspathFinder.class.getName());
-        }
-
         ClassLoader classLoader = this.getClass().getClassLoader();
 
+        Configuration configuration = getConfiguration();
         Configuration cfg = configuration.findConfiguration(type);
         if (cfg == null) {
-            String t = configuration.getAttribute("default");
+            String t = configuration.getAttribute(ATTR_DEFAULT);
             if (t == null) {
-                throw new ConfigurationMissingAttributeException("default",
-                        configuration);
+                throw new ConfigurationMissingAttributeException(ATTR_DEFAULT,
+                    configuration);
             }
             cfg = configuration.getConfiguration(t);
             if (cfg == null) {
                 return null;
             }
         }
-        String t = cfg.getAttribute("skip");
+        String t = cfg.getAttribute(ATTR_SKIP);
         if (t != null && Boolean.valueOf(t).booleanValue()) {
 
-            if (trace) {
-                trace("Skipped", type, null);
-            }
+            trace("Skipped", type, null);
             return null;
         }
         String prefix = cfg.getAttribute("prefix");
@@ -195,35 +141,16 @@ public class ClasspathFinder implements LogEnabled, ResourceFinder {
         while (extIt.hasNext()) {
             String fullName = prefix + name + extIt.next();
             fullName = fullName.replaceAll("\\{type\\}", type);
-            if (trace) {
-                trace("Try", fullName, null);
-            }
+            trace("Try", fullName, null);
             InputStream stream = classLoader.getResourceAsStream(fullName);
 
             if (stream != null) {
-                if (trace) {
-                    trace("Found", fullName, null);
-                }
+                trace("Found", fullName, null);
                 return stream;
             }
-            if (trace) {
-                trace("NotFound", fullName, null);
-            }
+            trace("NotFound", fullName, null);
         }
         return null;
-    }
-
-    /**
-     * Produce an internationalized trace message.
-     *
-     * @param key the resource key for the message format
-     * @param arg the first argument to insert
-     * @param arg2 the second argument to insert
-     */
-    private void trace(final String key, final String arg, final String arg2) {
-
-        logger.fine(MessageFormat.format(bundle.getString(key), //
-                new Object[]{arg, arg2}));
     }
 
 }

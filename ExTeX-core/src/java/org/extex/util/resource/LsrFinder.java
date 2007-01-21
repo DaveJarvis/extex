@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -25,15 +25,12 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
-import java.util.ResourceBundle;
-import java.util.logging.Logger;
 
 import org.extex.type.StringList;
 import org.extex.type.StringListIterator;
@@ -43,8 +40,6 @@ import org.extex.util.framework.configuration.exception.ConfigurationIOException
 import org.extex.util.framework.configuration.exception.ConfigurationMissingAttributeException;
 import org.extex.util.framework.configuration.exception.ConfigurationMissingException;
 import org.extex.util.framework.configuration.exception.ConfigurationWrapperException;
-import org.extex.util.framework.logger.LogEnabled;
-
 
 /**
  * This resource finder searches a file in a <tt>ls-R</tt> file database as
@@ -129,29 +124,13 @@ import org.extex.util.framework.logger.LogEnabled;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class LsrFinder
-        implements
-            ResourceFinder,
-            LogEnabled,
-            PropertyConfigurable {
-
-    /**
-     * The field <tt>ATTR_DEFAULT</tt> contains the attribute name for the
-     * default type.
-     */
-    private static final String ATTR_DEFAULT = "default";
+public class LsrFinder extends AbstractFinder implements PropertyConfigurable {
 
     /**
      * The field <tt>ATTR_PROPERTY</tt> contains the attribute name for the
      * property access.
      */
     private static final String ATTR_PROPERTY = "property";
-
-    /**
-     * The constant <tt>EXTENSION_TAG</tt> contains the name of the tag to get
-     * the possible extensions.
-     */
-    private static final String EXTENSION_TAG = "extension";
 
     /**
      * The field <tt>INITIAL_LIST_SIZE</tt> contains the initial size of the
@@ -171,20 +150,9 @@ public class LsrFinder
     private static final String TAG_PATH = "path";
 
     /**
-     * The field <tt>bundle</tt> contains the resource bundle for messages.
-     */
-    private ResourceBundle bundle = null;
-
-    /**
      * The field <tt>cache</tt> contains the map for the ls-R entries.
      */
     private Map cache = null;
-
-    /**
-     * The field <tt>config</tt> contains the configuration object on which this
-     * file finder is based.
-     */
-    private Configuration config;
 
     /**
      * The field <tt>initialCapacity</tt> contains the initial capacity of the
@@ -194,35 +162,24 @@ public class LsrFinder
     private int initialCapacity = -1;
 
     /**
-     * The field <tt>logger</tt> contains the logger to be used for tracing.
-     */
-    private Logger logger = null;
-
-    /**
      * The field <tt>properties</tt> contains the properties provided for this
      * finder.
      */
     private Properties properties = System.getProperties();
 
     /**
-     * The field <tt>trace</tt> contains the indicator that tracing is required.
-     * This field is set to <code>true</code> according to the configuration.
-     */
-    private boolean trace = false;
-
-    /**
      * Creates a new object.
      *
      * @param configuration the encapsulated configuration object
+     *
+     * @throws ConfigurationMissingException in case of an error
      */
-    public LsrFinder(final Configuration configuration) {
+    public LsrFinder(final Configuration configuration)
+            throws ConfigurationMissingException {
 
-        super();
-        this.config = configuration;
-        String a = configuration.getAttribute("trace");
-        this.trace = (a != null && Boolean.valueOf(a).booleanValue());
+        super(configuration);
 
-        a = configuration.getAttribute("capacity");
+        String a = configuration.getAttribute("capacity");
         if (a != null && !"".equals(a)) {
             try {
                 this.initialCapacity = Integer.parseInt(a);
@@ -233,67 +190,37 @@ public class LsrFinder
     }
 
     /**
-     * Setter for the logger.
-     *
-     * @param logger the new logger
-     *
-     * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
-     *      java.util.logging.Logger)
-     */
-    public void enableLogging(final Logger logger) {
-
-        this.logger = logger;
-    }
-
-    /**
-     * @see org.extex.util.resource.ResourceFinder#enableTracing(boolean)
-     */
-    public void enableTracing(final boolean flag) {
-
-        this.trace = flag;
-    }
-
-    /**
      * @see org.extex.util.resource.ResourceFinder#findResource(java.lang.String,
      *      java.lang.String)
      */
     public InputStream findResource(final String name, final String type)
             throws ConfigurationException {
 
-        boolean verbose = (trace && logger != null);
-
-        if (verbose) {
-            trace("Searching", name, type, null);
-        }
+        trace("Searching", name, type, null);
 
         if (cache == null) {
             initialize();
         }
 
+        Configuration config = getConfiguration();
         Configuration cfg = config.findConfiguration(type);
         if (cfg == null) {
             String t = config.getAttribute(ATTR_DEFAULT);
             if (t == null) {
                 throw new ConfigurationMissingAttributeException(ATTR_DEFAULT,
-                        config);
+                    config);
             }
             cfg = config.getConfiguration(t);
             if (cfg == null) {
-                if (verbose) {
-                    trace("DefaultNotFound", type, t, null);
-                }
+                trace("DefaultNotFound", type, t, null);
                 return null;
             }
-            if (verbose) {
-                trace("ConfigurationNotFound", type, t, null);
-            }
+            trace("ConfigurationNotFound", type, t, null);
         }
         String t = config.getAttribute("skip");
         if (t != null && Boolean.valueOf(t).booleanValue()) {
 
-            if (verbose) {
-                trace("Skipped", type, null, null);
-            }
+            trace("Skipped", type, null, null);
             return null;
         }
 
@@ -305,22 +232,15 @@ public class LsrFinder
                 continue;
             } else if (c instanceof File) {
                 File file = (File) c;
-                if (verbose) {
-                    trace("Try", file.toString(), null, null);
-                }
+                trace("Try", file.toString(), null, null);
                 if (file != null && file.canRead()) {
                     try {
                         InputStream stream = new FileInputStream(file);
-                        if (verbose) {
-                            trace("Found", file.toString(), null, null);
-                        }
+                        trace("Found", file.toString(), null, null);
                         return stream;
                     } catch (FileNotFoundException e) {
                         // ignore unreadable files
-                        if (verbose) {
-                            trace("FoundUnreadable", file.toString(), null,
-                                    null);
-                        }
+                        trace("FoundUnreadable", file.toString(), null, null);
                         continue;
                     }
                 }
@@ -329,31 +249,23 @@ public class LsrFinder
                 List l = (List) c;
                 for (int i = 0; i < l.size(); i++) {
                     File file = (File) l.get(i);
-                    if (verbose) {
-                        trace("Try", file.toString(), null, null);
-                    }
+                    trace("Try", file.toString(), null, null);
                     if (file != null && file.canRead()) {
                         try {
                             InputStream stream = new FileInputStream(file);
-                            if (verbose) {
-                                trace("Found", file.toString(), null, null);
-                            }
+                            trace("Found", file.toString(), null, null);
                             return stream;
                         } catch (FileNotFoundException e) {
                             // ignore unreadable files
-                            if (verbose) {
-                                trace("FoundUnreadable", file.toString(), null,
-                                        null);
-                            }
+                            trace("FoundUnreadable", file.toString(), null,
+                                null);
                             continue;
                         }
                     }
                 }
             }
         }
-        if (verbose) {
-            trace("Failed", name, null, null);
-        }
+        trace("Failed", name, null, null);
         return null;
     }
 
@@ -364,15 +276,16 @@ public class LsrFinder
      */
     private void initialize() throws ConfigurationException {
 
-        boolean verbose = (trace && logger != null);
+        Configuration config = getConfiguration();
         Iterator it = config.iterator(TAG_PATH);
         if (!it.hasNext()) {
             throw new ConfigurationMissingException(TAG_PATH, config.toString());
         }
 
-        cache = (initialCapacity > 0
-                ? new HashMap(initialCapacity)
-                : new HashMap());
+        cache =
+                (initialCapacity > 0
+                        ? new HashMap(initialCapacity)
+                        : new HashMap());
 
         while (it.hasNext()) {
             Configuration cfg = (Configuration) it.next();
@@ -381,12 +294,11 @@ public class LsrFinder
             if (pathProperty != null) {
                 name = properties.getProperty(pathProperty);
                 if (name == null) {
-                    if (verbose) {
-                        trace("UndefinedProperty", pathProperty, null, null);
-                    }
+                    trace("UndefinedProperty", pathProperty, null, null);
                 } else {
-                    StringListIterator sit = new StringList(name, System
-                            .getProperty("path.separator", ":")).getIterator();
+                    StringListIterator sit =
+                            new StringList(name, System.getProperty(
+                                "path.separator", ":")).getIterator();
                     while (sit.hasNext()) {
                         load(sit.next());
                     }
@@ -412,17 +324,15 @@ public class LsrFinder
         long start = System.currentTimeMillis();
         File file = new File(path, LSR_FILE_NAME);
         if (!file.canRead()) {
-            if (logger != null) {
-                trace("UnreadableLsr", file.toString(), null, null);
-            }
+            trace("UnreadableLsr", file.toString(), null, null);
             return;
         }
 
         File directory = new File(path);
 
         try {
-            BufferedInputStream in = new BufferedInputStream(
-                    new FileInputStream(file));
+            BufferedInputStream in =
+                    new BufferedInputStream(new FileInputStream(file));
             for (int c = in.read(); c >= 0; c = in.read()) {
                 if (c == '%') {
                     do {
@@ -497,11 +407,9 @@ public class LsrFinder
             throw new ConfigurationIOException(null, e);
         }
 
-        if (trace && logger != null) {
-            trace("DatabaseLoaded", file.toString(), //
-                    Long.toString(System.currentTimeMillis() - start), //
-                    Integer.toString(cache.size()));
-        }
+        trace("DatabaseLoaded", file.toString(), //
+            Long.toString(System.currentTimeMillis() - start), //
+            Integer.toString(cache.size()));
         //        System.err.print(file);
         //        System.err.print('\t');
         //        System.err.println(System.currentTimeMillis() - start);
@@ -518,25 +426,6 @@ public class LsrFinder
     public void setProperties(final Properties prop) {
 
         properties = prop;
-    }
-
-    /**
-     * Produce an internationalized trace message.
-     *
-     * @param key the resource key for the message format
-     * @param arg the first argument to insert
-     * @param arg2 the second argument to insert
-     * @param arg3 the third argument to insert
-     */
-    private void trace(final String key, final String arg, final String arg2,
-            final String arg3) {
-
-        if (bundle == null) {
-            bundle = ResourceBundle.getBundle(LsrFinder.class.getName());
-        }
-
-        logger.fine(MessageFormat.format(bundle.getString(key), //
-                new Object[]{arg, arg2, arg3}));
     }
 
 }

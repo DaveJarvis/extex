@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -34,8 +34,8 @@ import org.extex.type.StringListIterator;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.framework.configuration.exception.ConfigurationMissingAttributeException;
+import org.extex.util.framework.configuration.exception.ConfigurationMissingException;
 import org.extex.util.framework.logger.LogEnabled;
-
 
 /**
  * This file finder searches for the file in different directories and with
@@ -117,17 +117,7 @@ import org.extex.util.framework.logger.LogEnabled;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class FileFinder
-        implements
-            ResourceFinder,
-            LogEnabled,
-            PropertyConfigurable {
-
-    /**
-     * The constant <tt>EXTENSION_TAG</tt> contains the name of the tag to get
-     * the possible extensions.
-     */
-    private static final String EXTENSION_TAG = "extension";
+public class FileFinder extends AbstractFinder implements PropertyConfigurable {
 
     /**
      * The constant <tt>PATH_TAG</tt> contains the name of the tag to get the
@@ -136,66 +126,21 @@ public class FileFinder
     private static final String PATH_TAG = "path";
 
     /**
-     * The field <tt>bundle</tt> contains the resource bundle for messages.
-     */
-    private transient ResourceBundle bundle = null;
-
-    /**
-     * The field <tt>config</tt> contains the configuration object on which this
-     * file finder is based.
-     */
-    private Configuration config;
-
-    /**
-     * The field <tt>logger</tt> contains the logger to be used for tracing.
-     */
-    private Logger logger = null;
-
-    /**
      * The field <tt>properties</tt> contains the properties instance to use.
      */
     private Properties properties = null;
 
     /**
-     * The field <tt>trace</tt> contains the indicator that tracing is required.
-     * This field is set to <code>true</code> according to the configuration.
-     */
-    private boolean trace = false;
-
-    /**
      * Creates a new object.
      *
      * @param configuration the encapsulated configuration object
-     */
-    public FileFinder(final Configuration configuration) {
-
-        super();
-        this.config = configuration;
-        String t = configuration.getAttribute("trace");
-        if (t != null && Boolean.valueOf(t).booleanValue()) {
-            trace = true;
-        }
-    }
-
-    /**
-     * Setter for the logger.
      *
-     * @param theLogger the logger to set.
-     *
-     * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
-     *      java.util.logging.Logger)
+     * @throws ConfigurationMissingException in case of an error
      */
-    public void enableLogging(final Logger theLogger) {
+    public FileFinder(final Configuration configuration)
+            throws ConfigurationMissingException {
 
-        this.logger = theLogger;
-    }
-
-    /**
-     * @see org.extex.util.resource.ResourceFinder#enableTracing(boolean)
-     */
-    public void enableTracing(final boolean flag) {
-
-        trace = flag;
+        super(configuration);
     }
 
     /**
@@ -211,23 +156,17 @@ public class FileFinder
     private InputStream find(final String name, final String path,
             final Configuration cfg) {
 
-        InputStream stream;
         StringListIterator extIt = cfg.getValues(EXTENSION_TAG).getIterator();
-        boolean verbose = (trace && logger != null);
 
         while (extIt.hasNext()) {
             String ext = extIt.next();
             File file = new File(path, name + ext);
 
-            if (verbose) {
-                trace("Try", file.toString(), null);
-            }
+            trace("Try", file.toString(), null);
             if (file.canRead()) {
                 try {
-                    stream = new FileInputStream(file);
-                    if (verbose) {
-                        trace("Found", file.toString(), null);
-                    }
+                    InputStream stream = new FileInputStream(file);
+                    trace("Found", file.toString(), null);
                     return stream;
                 } catch (FileNotFoundException e) {
                     // Ignore unreadable files.
@@ -271,24 +210,20 @@ public class FileFinder
     public InputStream findResource(final String name, final String type)
             throws ConfigurationException {
 
-        boolean verbose = (trace && logger != null);
-        if (verbose) {
-            trace("Searching", name, type);
-        }
+        trace("Searching", name, type);
 
         InputStream stream = null;
+        Configuration config = getConfiguration();
         Configuration cfg = config.findConfiguration(type);
         if (cfg == null) {
             String t = config.getAttribute("default");
             if (t == null) {
                 throw new ConfigurationMissingAttributeException("default",
-                        config);
+                    config);
             }
             cfg = config.getConfiguration(t);
 
-            if (verbose) {
-                trace("ConfigurationNotFound", type, t);
-            }
+            trace("ConfigurationNotFound", type, t);
         }
 
         Iterator iterator = cfg.iterator(PATH_TAG);
@@ -298,9 +233,11 @@ public class FileFinder
             if (prop != null) {
                 String path = properties.getProperty(prop, null);
                 if (path != null) {
-                    stream = find(name, new StringList(path, System
-                            .getProperty("path.separator", ":")), cfg);
-                } else if (verbose) {
+                    stream =
+                            find(name, //
+                                new StringList(path, System.getProperty(
+                                    "path.separator", ":")), cfg);
+                } else {
                     trace("UndefinedProperty", prop, null);
                 }
             } else {
@@ -308,31 +245,11 @@ public class FileFinder
             }
         }
 
-        if (stream == null && verbose) {
+        if (stream == null) {
             trace("Failed", name, null);
         }
 
         return stream;
-    }
-
-    /**
-     * Getter for configuration.
-     *
-     * @return the configuration.
-     */
-    protected Configuration getConfiguration() {
-
-        return this.config;
-    }
-
-    /**
-     * Getter for logger.
-     *
-     * @return the logger.
-     */
-    public Logger getLogger() {
-
-        return this.logger;
     }
 
     /**
@@ -342,23 +259,6 @@ public class FileFinder
     public void setProperties(final Properties properties) {
 
         this.properties = properties;
-    }
-
-    /**
-     * Produce an internationalized trace message.
-     *
-     * @param key the resource key for the message format
-     * @param arg the first argument to insert
-     * @param arg2 the second argument to insert
-     */
-    private void trace(final String key, final String arg, final String arg2) {
-
-        if (bundle == null) {
-            bundle = ResourceBundle.getBundle(FileFinder.class.getName());
-        }
-
-        logger.fine(MessageFormat.format(bundle.getString(key), //
-                new Object[]{arg, arg2}));
     }
 
 }
