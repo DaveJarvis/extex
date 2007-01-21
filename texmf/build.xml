@@ -59,9 +59,11 @@
   </target>
 
   <!-- ==================================================================== -->
-  <target name="formats" depends="extex-jar" description="">
+  <target name="formats"
+          depends="extex-jar,index"
+          description="Generate the various formats">
 
-    <mkdir dir="target/texmf"/>
+    <mkdir dir="target/texmf" />
 
     <java classname="org.extex.tex.main.TeX"
           fork="true"
@@ -97,7 +99,30 @@
   </target>
 
   <!-- ==================================================================== -->
-  <target name="texmf" description="Pack the texmf tree into a jar archive">
+  <target name="index" description="Pack the texmf tree into a jar archive">
+
+    <mkdir dir="target/classes" />
+
+    <javac srcdir="../ExTeX-core/src/java"
+           includes="**/TocIndex.java"
+           destdir="target/classes" />
+
+    <java classname="org.extex.util.resource.tool.TocIndex"
+          fork="true"
+          dir="src/texmf"
+          failonerror="true"
+          classpath="target/classes">
+      <arg value="-omit=.*\.svn/.*" />
+      <arg value="-omit=.*toc.index" />
+      <arg value="-output" />
+      <arg value="toc.index" />
+    </java>
+  </target>
+
+  <!-- ==================================================================== -->
+  <target name="texmf"
+          depends="index"
+          description="Pack the texmf tree into a jar archive">
     <jar jarfile="target/extex-texmf.jar" basedir="src/texmf" />
   </target>
 
