@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -25,7 +25,6 @@ import org.extex.main.errorHandler.editHandler.EditHandler;
 import org.extex.scanner.type.token.Token;
 import org.extex.util.exception.GeneralException;
 
-
 /**
  * This interface defines the capabilities of an error handler. The error
  * handler is invoked in the interpreter when an exception is caught. The error
@@ -41,7 +40,7 @@ public interface ErrorHandler {
     /**
      * This is the error handling callback.
      *
-     * @param e the exception which has led to the invokation
+     * @param e the exception which has led to the invocation
      * @param token the token leading to the error
      * @param source the token source
      * @param context the processor context
