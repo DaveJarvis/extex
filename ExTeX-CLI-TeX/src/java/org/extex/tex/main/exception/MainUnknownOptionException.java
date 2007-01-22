@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -21,7 +21,7 @@ package org.extex.tex.main.exception;
 
 /**
  * This exception is thrown when the main program encounters an unknown
- * commandline option.
+ * command-line option.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -54,7 +54,7 @@ public class MainUnknownOptionException extends MainException {
     public String getLocalizedMessage() {
 
         return getLocalizer().format("MainUnknownOptionException.Message",
-                super.getMessage());
+            super.getMessage());
     }
 
 }

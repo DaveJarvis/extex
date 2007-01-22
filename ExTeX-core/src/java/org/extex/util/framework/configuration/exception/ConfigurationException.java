@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -55,37 +55,23 @@ public abstract class ConfigurationException extends Exception {
      * Creates a new object.
      *
      * @param message the message string
-     * @param theSource the name of the file causing this error
+     * @param source the name of the file causing this error
      */
-    public ConfigurationException(final String message, final String theSource) {
+    public ConfigurationException(final String message, final String source) {
 
         super(message);
-        this.source = theSource;
+        this.source = source;
     }
 
     /**
      * Creates a new object.
      *
      * @param message message the message string
-     * @param theCause the next Throwable in the list
+     * @param cause the next Throwable in the chained list
      */
-    public ConfigurationException(final String message, final Throwable theCause) {
+    public ConfigurationException(final String message, final Throwable cause) {
 
-        super(message, theCause);
-    }
-
-    /**
-     * Getter for localizer.
-     *
-     * @return the localizer.
-     */
-    protected Localizer getLocalizer() {
-
-        if (this.localizer == null) {
-            this.localizer = LocalizerFactory
-                    .getLocalizer(ConfigurationException.class);
-        }
-        return this.localizer;
+        super(message, cause);
     }
 
     /**
@@ -147,23 +133,22 @@ public abstract class ConfigurationException extends Exception {
                     if (source != null) {
                         if (message != null) {
                             return getLocalizer()
-                                    .format(
-                                            "ConfigurationException.FormatCauseMessageLocation",
-                                            getText(), msg, message, source);
+                                .format(
+                                    "ConfigurationException.FormatCauseMessageLocation",
+                                    getText(), msg, message, source);
                         } else {
-                            return getLocalizer()
-                                    .format(
-                                            "ConfigurationException.FormatCauseLocation",
-                                            getText(), msg, source);
+                            return getLocalizer().format(
+                                "ConfigurationException.FormatCauseLocation",
+                                getText(), msg, source);
                         }
                     } else if (message != null) {
                         return getLocalizer().format(
-                                "ConfigurationException.FormatCauseMessage",
-                                getText(), msg, message);
+                            "ConfigurationException.FormatCauseMessage",
+                            getText(), msg, message);
                     } else {
                         return getLocalizer().format(
-                                "ConfigurationException.FormatCause",
-                                getText(), msg);
+                            "ConfigurationException.FormatCause", getText(),
+                            msg);
                     }
                 }
             }
@@ -172,20 +157,33 @@ public abstract class ConfigurationException extends Exception {
         if (source != null) {
             if (message != null) {
                 return getLocalizer().format(
-                        "ConfigurationException.FormatMessageLocation",
-                        getText(), message, source);
+                    "ConfigurationException.FormatMessageLocation", getText(),
+                    message, source);
             } else {
                 return getLocalizer().format(
-                        "ConfigurationException.FormatLocation", getText(),
-                        source);
+                    "ConfigurationException.FormatLocation", getText(), source);
             }
         } else if (message != null) {
             return getLocalizer().format(
-                    "ConfigurationException.FormatMessage", getText(), message);
+                "ConfigurationException.FormatMessage", getText(), message);
         } else {
             return getLocalizer().format("ConfigurationException.Format",
-                    getText());
+                getText());
         }
+    }
+
+    /**
+     * Getter for localizer.
+     *
+     * @return the localizer.
+     */
+    protected Localizer getLocalizer() {
+
+        if (this.localizer == null) {
+            this.localizer =
+                    LocalizerFactory.getLocalizer(ConfigurationException.class);
+        }
+        return this.localizer;
     }
 
     /**

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -16,14 +16,14 @@
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
-package org.extex.interpreter.exception;
 
+package org.extex.interpreter.exception;
 
 /**
  * This exception indicates that a situation has been detected which should not
  * happen. This results from conservative programming. For instance if all
  * possible values of a variable are processed in a switch statement and then
- * this exceptiopn is thrown in the default clause.
+ * this exception is thrown in the default clause.
  * <p>
  * This exception is not applicable for i18n.
  * </p>

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -27,7 +27,6 @@ import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.typesetter.Typesetter;
-
 
 /**
  * This class provides an implementation for the primitive <code>\else</code>.
@@ -104,7 +103,7 @@ public class Else extends AbstractCode {
 
         if (cond == null || AbstractIf.skipToElseOrFi(context, source)) {
             throw new HelpingException(getLocalizer(), "TTP.ExtraOrElseFi",
-                    printableControlSequence(context));
+                printableControlSequence(context));
         }
     }
 

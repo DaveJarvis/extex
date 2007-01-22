@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -27,7 +27,6 @@ import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.typesetter.Typesetter;
-
 
 /**
  * This class provides an implementation for the primitive <code>\fi</code>.
@@ -93,7 +92,7 @@ public class Fi extends AbstractCode implements ExpandableCode {
 
         if (context.popConditional() == null) {
             throw new HelpingException(getLocalizer(), "TTP.ExtraOrElseFi",
-                    printableControlSequence(context));
+                printableControlSequence(context));
         }
     }
 
@@ -118,7 +117,7 @@ public class Fi extends AbstractCode implements ExpandableCode {
 
         if (context.popConditional() == null) {
             throw new HelpingException(getLocalizer(), "TTP.ExtraOrElseFi",
-                    printableControlSequence(context));
+                printableControlSequence(context));
         }
     }
 

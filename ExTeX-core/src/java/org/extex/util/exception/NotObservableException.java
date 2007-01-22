@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -18,7 +18,6 @@
  */
 
 package org.extex.util.exception;
-
 
 /**
  * This Exception is thrown when an Observer for a non-observable action is
@@ -75,7 +74,7 @@ public class NotObservableException extends GeneralException {
     public String getLocalizedMessage() {
 
         return getLocalizer().format("NotObservableException.Text",
-                super.getMessage());
+            super.getMessage());
     }
 
     /**
@@ -85,4 +84,5 @@ public class NotObservableException extends GeneralException {
 
         return getLocalizedMessage();
     }
+
 }

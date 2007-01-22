@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -18,7 +18,6 @@
  */
 
 package org.extex.util.framework.configuration.exception;
-
 
 /**
  * This exception is thrown when a dynamically loaded class signals an
@@ -68,8 +67,8 @@ public class ConfigurationInstantiationException extends ConfigurationException 
     protected String getText() {
 
         return getLocalizer().format(
-                "ConfigurationInstantiationException.Text",
-                getCause().getLocalizedMessage());
+            "ConfigurationInstantiationException.Text",
+            getCause().getLocalizedMessage());
     }
 
 }

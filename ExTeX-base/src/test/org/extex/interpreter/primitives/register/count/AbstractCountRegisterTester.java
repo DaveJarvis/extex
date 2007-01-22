@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -599,7 +599,7 @@ public abstract class AbstractCountRegisterTester extends ExTeXLauncher {
 
     /**
      * <testcase>
-     *  Test case showing that an division by the constant 12 works.
+     *  Test case showing that an division by the constant 0 leads to an error.
      * </testcase>
      *
      * @throws Exception in case of an error

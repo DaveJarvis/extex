@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -16,10 +16,10 @@
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
+
 package org.extex.util.framework.configuration.exception;
 
 import org.extex.util.framework.configuration.Configuration;
-
 
 /**
  * This Exception is thrown when a configuration is requested with the path
@@ -28,8 +28,9 @@ import org.extex.util.framework.configuration.Configuration;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class ConfigurationMissingAttributeException extends
-        ConfigurationException {
+public class ConfigurationMissingAttributeException
+        extends
+            ConfigurationException {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
@@ -40,24 +41,24 @@ public class ConfigurationMissingAttributeException extends
      * Create a new object.
      *
      * @param message the message string
-     * @param location the location where the exception has occured
+     * @param origin the configuration in which the exception has occurred
      */
     public ConfigurationMissingAttributeException(final String message,
-        final String location) {
+            final Configuration origin) {
 
-        super(message, location);
+        super(message, origin.toString());
     }
 
     /**
      * Create a new object.
      *
      * @param message the message string
-     * @param origin the configuration in which the exception has occurred
+     * @param location the location where the exception has occured
      */
     public ConfigurationMissingAttributeException(final String message,
-        final Configuration origin) {
+            final String location) {
 
-        super(message, origin.toString());
+        super(message, location);
     }
 
     /**
@@ -67,7 +68,7 @@ public class ConfigurationMissingAttributeException extends
      * @param cause the next Throwable in the list
      */
     public ConfigurationMissingAttributeException(final String message,
-        final Throwable cause) {
+            final Throwable cause) {
 
         super(message, cause);
     }
@@ -83,7 +84,8 @@ public class ConfigurationMissingAttributeException extends
      */
     public String getText() {
 
-        return getLocalizer().format("ConfigurationMissingAttributeException.Text");
+        return getLocalizer().format(
+            "ConfigurationMissingAttributeException.Text");
     }
 
 }

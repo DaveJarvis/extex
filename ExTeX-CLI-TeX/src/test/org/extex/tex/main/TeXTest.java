@@ -25,6 +25,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Calendar;
+import java.util.Locale;
 import java.util.Properties;
 
 import junit.framework.TestCase;
@@ -44,10 +45,9 @@ public class TeXTest extends TestCase {
     /**
      * The field <tt>BANNER</tt> contains the default banner.
      */
-    public static final String BANNER = "This is ExTeX, Version "
-                                        + ExTeX.getVersion() + " ("
-                                        + System.getProperty("java.version")
-                                        + ")\n";
+    public static final String BANNER =
+            "This is ExTeX, Version " + ExTeX.getVersion() + " ("
+                    + System.getProperty("java.version") + ")\n";
 
     /**
      * The command line interface.
@@ -57,6 +57,26 @@ public class TeXTest extends TestCase {
     public static void main(final String[] args) {
 
         junit.textui.TestRunner.run(TeXTest.class);
+    }
+
+    /**
+     * Creates a new object.
+     */
+    public TeXTest() {
+
+        super();
+        Locale.setDefault(Locale.ENGLISH);
+    }
+
+    /**
+     * Creates a new object.
+     *
+     * @param name the name
+     */
+    public TeXTest(final String name) {
+
+        super(name);
+        Locale.setDefault(Locale.ENGLISH);
     }
 
     /**
@@ -87,7 +107,8 @@ public class TeXTest extends TestCase {
      */
     public static String runTest(final String[] args,
             final Properties properties, final String expect, final int exit)
-            throws InterpreterException, IOException {
+            throws InterpreterException,
+                IOException {
 
         properties.setProperty("extex.config", "tex.xml");
 
@@ -127,8 +148,8 @@ public class TeXTest extends TestCase {
      */
     public void testUndefinedProperty() throws Exception {
 
-        runTest(new String[]{"--undefined"}, System.getProperties(),
-                BANNER + "Missing argument on command line", -1);
+        runTest(new String[]{"--undefined"}, System.getProperties(), BANNER
+                + "Missing argument for --undefined", -1);
     }
 
     /**
@@ -151,7 +172,7 @@ public class TeXTest extends TestCase {
 
         String s = runTest(new String[]{"-help"}, makeProperties(), null, 0);
         assertTrue(s + "\ndoes  not match", s
-                .startsWith("Usage: extex <options> file\n"));
+            .startsWith("Usage: extex <options> file\n"));
     }
 
     /**
@@ -162,8 +183,8 @@ public class TeXTest extends TestCase {
     public void testCopying() throws Exception {
 
         String s = runTest(new String[]{"-copying"}, makeProperties(), null, 0);
-        assertTrue(s + "\ndoes  not match", s
-                .startsWith("\nGNU LIBRARY GENERAL PUBLIC LICENSE"));
+        assertTrue("No match:\n" + s, //
+            s.indexOf("GNU LIBRARY GENERAL PUBLIC LICENSE") >= 0);
     }
 
     /**
@@ -174,15 +195,15 @@ public class TeXTest extends TestCase {
     public void testCopyright() throws Exception {
 
         runTest(
-                new String[]{"-copyright"},
-                makeProperties(),
-                "Copyright (C) 2003-"
-                        + Calendar.getInstance().get(Calendar.YEAR)
-                        + " DANTE e.V. (mailto:extex@dante.de).\n"
-                        + "There is NO warranty.  Redistribution of this software is\n"
-                        + "covered by the terms of the GNU Library General Public License.\n"
-                        + "For more information about these matters, use the command line\n"
-                        + "switch -copying.\n", 0);
+            new String[]{"-copyright"},
+            makeProperties(),
+            "Copyright (C) 2003-"
+                    + Calendar.getInstance().get(Calendar.YEAR)
+                    + " The ExTeX Group (mailto:extex@dante.de).\n"
+                    + "There is NO warranty.  Redistribution of this software is\n"
+                    + "covered by the terms of the GNU Library General Public License.\n"
+                    + "For more information about these matters, use the command line\n"
+                    + "switch -copying.\n", 0);
     }
 
     /**
@@ -192,10 +213,11 @@ public class TeXTest extends TestCase {
      */
     public void testHelp2() throws Exception {
 
-        String s = runTest(new String[]{"-prog=abc", "-help"},
-                           makeProperties(), null, 0);
+        String s =
+                runTest(new String[]{"-prog=abc", "-help"}, makeProperties(),
+                    null, 0);
         assertTrue(s + "\ndoes  not match", s
-                .startsWith("Usage: abc <options> file\n"));
+            .startsWith("Usage: abc <options> file\n"));
     }
 
     /**
@@ -216,8 +238,8 @@ public class TeXTest extends TestCase {
      */
     public void testInteraction1() throws Exception {
 
-        runTest(new String[]{"-interaction"}, makeProperties(),
-                BANNER + "Missing argument on command line", -1);
+        runTest(new String[]{"-interaction"}, makeProperties(), BANNER
+                + "Missing argument for extex.interaction", -1);
     }
 
     /**
@@ -227,8 +249,8 @@ public class TeXTest extends TestCase {
      */
     public void testInteraction2() throws Exception {
 
-        runTest(new String[]{"-interaction=xxx"}, makeProperties(),
-                BANNER + "Interaction xxx is unknown\n", -1);
+        runTest(new String[]{"-interaction=xxx"}, makeProperties(), BANNER
+                + "Interaction xxx is unknown\n", -1);
     }
 
     /**
@@ -238,8 +260,8 @@ public class TeXTest extends TestCase {
      */
     public void testInteraction3() throws Exception {
 
-        runTest(new String[]{"-interaction="}, makeProperties(),
-                BANNER + "Interaction  is unknown\n", -1);
+        runTest(new String[]{"-interaction="}, makeProperties(), BANNER
+                + "Interaction  is unknown\n", -1);
     }
 
     /**
@@ -251,7 +273,7 @@ public class TeXTest extends TestCase {
 
         System.setIn(new ByteArrayInputStream("".getBytes()));
         runTest(new String[]{"-ini", "-interaction=batchmode"},
-                makeProperties(), "", -1);
+            makeProperties(), "", -1);
     }
 
     /**
@@ -263,7 +285,7 @@ public class TeXTest extends TestCase {
 
         System.setIn(new ByteArrayInputStream("".getBytes()));
         runTest(new String[]{"-ini", "-interaction=b"}, makeProperties(), "",
-                -1);
+            -1);
     }
 
     /**
@@ -285,8 +307,8 @@ public class TeXTest extends TestCase {
     public void testProgname1() throws Exception {
 
         runTest(new String[]{"-progname", "abc", "-version"}, makeProperties(),
-                "This is ExTeX, Version " + ExTeX.getVersion() + " ("
-                        + System.getProperty("java.version") + ")\n", 0);
+            "This is ExTeX, Version " + ExTeX.getVersion() + " ("
+                    + System.getProperty("java.version") + ")\n", 0);
     }
 
     /**
@@ -297,8 +319,8 @@ public class TeXTest extends TestCase {
     public void testProgname2() throws Exception {
 
         runTest(new String[]{"-prog", "abc", "-version"}, makeProperties(),
-                "This is ExTeX, Version " + ExTeX.getVersion() + " ("
-                        + System.getProperty("java.version") + ")\n", 0);
+            "This is ExTeX, Version " + ExTeX.getVersion() + " ("
+                    + System.getProperty("java.version") + ")\n", 0);
     }
 
     /**
@@ -309,8 +331,8 @@ public class TeXTest extends TestCase {
     public void testProgname3() throws Exception {
 
         runTest(new String[]{"-progname=abc", "-version"}, makeProperties(),
-                "This is ExTeX, Version " + ExTeX.getVersion() + " ("
-                        + System.getProperty("java.version") + ")\n", 0);
+            "This is ExTeX, Version " + ExTeX.getVersion() + " ("
+                    + System.getProperty("java.version") + ")\n", 0);
     }
 
     /**
@@ -321,8 +343,8 @@ public class TeXTest extends TestCase {
     public void testProgname4() throws Exception {
 
         runTest(new String[]{"-prog=abc", "-version"}, makeProperties(),
-                "This is ExTeX, Version " + ExTeX.getVersion() + " ("
-                        + System.getProperty("java.version") + ")\n", 0);
+            "This is ExTeX, Version " + ExTeX.getVersion() + " ("
+                    + System.getProperty("java.version") + ")\n", 0);
     }
 
     /**
@@ -333,9 +355,8 @@ public class TeXTest extends TestCase {
     public void testPropertyName1() throws Exception {
 
         runTest(new String[]{"--extex.name", "abc", "-version"},
-                makeProperties(), "This is abc, Version " + ExTeX.getVersion()
-                                  + " (" + System.getProperty("java.version")
-                                  + ")\n", 0);
+            makeProperties(), "This is abc, Version " + ExTeX.getVersion()
+                    + " (" + System.getProperty("java.version") + ")\n", 0);
     }
 
     /**
@@ -346,8 +367,8 @@ public class TeXTest extends TestCase {
     public void testPropertyName2() throws Exception {
 
         runTest(new String[]{"--extex.name=abc", "-version"}, makeProperties(),
-                "This is abc, Version " + ExTeX.getVersion() + " ("
-                        + System.getProperty("java.version") + ")\n", 0);
+            "This is abc, Version " + ExTeX.getVersion() + " ("
+                    + System.getProperty("java.version") + ")\n", 0);
     }
 
     /**
@@ -359,10 +380,10 @@ public class TeXTest extends TestCase {
 
         System.setIn(new ByteArrayInputStream("\\relax\n\\end\\n".getBytes()));
         runTest(new String[]{"-ini"}, new Properties(),
-                "This is ExTeX, Version " + ExTeX.getVersion()
-                        + " (TeX compatibility mode)\n"
-                        + "**\n*\nNo pages of output.\nTranscript written on "
-                        + (new File(".", "texput.log")).toString() + ".\n", 0);
+            "This is ExTeX, Version " + ExTeX.getVersion()
+                    + " (TeX compatibility mode)\n"
+                    + "**\n*\nNo pages of output.\nTranscript written on "
+                    + (new File(".", "texput.log")).toString() + ".\n", 0);
     }
 
     /**
@@ -374,9 +395,8 @@ public class TeXTest extends TestCase {
 
         System.setIn(new ByteArrayInputStream("\\relax\n\\end\\n".getBytes()));
         runTest(new String[]{"-ini", "--extex.nobanner=true"},
-                new Properties(), "**\n*Transcript written on "
-                                  + (new File(".", "texput.log")).toString()
-                                  + ".\n", 0);
+            new Properties(), "**\n*Transcript written on "
+                    + (new File(".", "texput.log")).toString() + ".\n", 0);
     }
 
     /**
@@ -388,8 +408,8 @@ public class TeXTest extends TestCase {
 
         System.setIn(new ByteArrayInputStream("\\relax\n\\end\\n".getBytes()));
         runTest(new String[]{"--extex.banner=xyz", "-version"},
-                new Properties(), "This is ExTeX, Version "
-                                  + ExTeX.getVersion() + " (xyz)\n", 0);
+            new Properties(), "This is ExTeX, Version " + ExTeX.getVersion()
+                    + " (xyz)\n", 0);
     }
 
     /**
@@ -401,15 +421,15 @@ public class TeXTest extends TestCase {
 
         System.setIn(new ByteArrayInputStream("\\relax\n\\end\n".getBytes()));
         runTest(
-                new String[]{"&xyzzy"},
-                new Properties(),
-                "This is ExTeX, Version "
-                        + ExTeX.getVersion()
-                        + " (TeX compatibility mode)\n"
-                        + "**\nSorry, I can't find the format `xyzzy.fmt'; will try `tex.fmt'.\n"
-                        + "Sorry, I can't find the format `tex.fmt'!\n"
-                        + "Transcript written on "
-                        + (new File(".", "texput.log")).toString() + ".\n", -1);
+            new String[]{"&xyzzy"},
+            new Properties(),
+            "This is ExTeX, Version "
+                    + ExTeX.getVersion()
+                    + " (TeX compatibility mode)\n"
+                    + "**\nSorry, I can't find the format `xyzzy.fmt'; will try `tex.fmt'.\n"
+                    + "Sorry, I can't find the format `tex.fmt'!\n"
+                    + "Transcript written on "
+                    + (new File(".", "texput.log")).toString() + ".\n", -1);
     }
 
     /**
@@ -420,16 +440,12 @@ public class TeXTest extends TestCase {
     public void testStarStar1() throws Exception {
 
         System.setIn(new ByteArrayInputStream("xyzzy\n".getBytes()));
-        runTest(
-                new String[]{"-ini"},
-                new Properties(),
-                "This is ExTeX, Version "
-                        + ExTeX.getVersion()
-                        + " (TeX compatibility mode)\n"
-                        + "**I can't find file `xyzzy'\n"
-                        + "*\n" + "No pages of output.\n"
-                        + "Transcript written on "
-                        + (new File(".", "xyzzy.log")).toString() + ".\n", 0);
+        runTest(new String[]{"-ini"}, new Properties(),
+            "This is ExTeX, Version " + ExTeX.getVersion()
+                    + " (TeX compatibility mode)\n"
+                    + "**I can't find file `xyzzy'\n" + "*\n"
+                    + "No pages of output.\n" + "Transcript written on "
+                    + (new File(".", "xyzzy.log")).toString() + ".\n", 0);
     }
 
     // TODO add more test cases

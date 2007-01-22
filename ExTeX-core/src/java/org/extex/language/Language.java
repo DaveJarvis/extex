@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -24,7 +24,7 @@ import org.extex.language.ligature.LigatureBuilder;
 import org.extex.language.word.WordTokenizer;
 
 /**
- * This interface describes a container for all language-dependant information.
+ * This interface describes a container for all language-dependent information.
  * <p>
  *  This container subsumes a hyphenator. In addition the access to the ligature
  *  builder is enabled.
@@ -33,11 +33,7 @@ import org.extex.language.word.WordTokenizer;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4446 $
  */
-public interface Language
-        extends
-            Hyphenator,
-            LigatureBuilder,
-            WordTokenizer {
+public interface Language extends Hyphenator, LigatureBuilder, WordTokenizer {
 
     /**
      * Getter for the name.

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -20,7 +20,7 @@
 package org.extex.util.framework.configuration.exception;
 
 /**
- * This exception is thrown when a dynamicaly loaded class has signaled an
+ * This exception is thrown when a dynamically loaded class has signaled an
  * illegal access.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -55,8 +55,8 @@ public class ConfigurationIllegalAccessException extends ConfigurationException 
     protected String getMesssage() {
 
         return getLocalizer().format(
-                "ConfigurationIllegalAccessException.Text",
-                getCause().getLocalizedMessage());
+            "ConfigurationIllegalAccessException.Text",
+            getCause().getLocalizedMessage());
     }
 
 }

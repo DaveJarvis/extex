@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -27,6 +27,10 @@ import org.extex.util.framework.i18n.LocalizerFactory;
  *  The localization format is taken from the Localizer under the key
  *  <tt>TTP.ArithmeticOverflow</tt>.
  * </p>
+ * <p>
+ *  The format takes one argument which is the empty sting or the name of the
+ *  macro the problem occurs in.
+ * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4726 $
@@ -46,7 +50,8 @@ public class ArithmeticOverflowException extends HelpingException {
     public ArithmeticOverflowException(final String macro) {
 
         super(LocalizerFactory.getLocalizer(//
-                ArithmeticOverflowException.class), "TTP.ArithmeticOverflow");
+            ArithmeticOverflowException.class), //
+            "TTP.ArithmeticOverflow", macro == null ? "" : macro);
     }
 
 }

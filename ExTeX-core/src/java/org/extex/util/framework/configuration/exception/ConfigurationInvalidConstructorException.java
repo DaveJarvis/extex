@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -38,7 +38,7 @@ public class ConfigurationInvalidConstructorException
     private static final long serialVersionUID = 1L;
 
     /**
-     * The field <tt>classname</tt> contains the name of the class which
+     * The field <tt>className</tt> contains the name of the class which
      * could not be found.
      */
     private String className;
@@ -70,12 +70,12 @@ public class ConfigurationInvalidConstructorException
     protected String getText() {
 
         return getLocalizer().format(
-                "ConfigurationInvalidConstructorException.Text",
-                (className != null //
-                        ? className //
-                        : getCause() != null
-                                ? getCause().getLocalizedMessage()
-                                : ""));
+            "ConfigurationInvalidConstructorException.Text",
+            (className != null //
+                    ? className //
+                    : getCause() != null
+                            ? getCause().getLocalizedMessage()
+                            : ""));
     }
 
 }
