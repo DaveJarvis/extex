@@ -27,6 +27,12 @@ import org.extex.type.StringList;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.resource.ResourceFinder;
 
+/**
+ * This interface describes the features of a font factory needed by the core.
+ *
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * @version $Revision$
+ */
 public interface CoreFontFactory extends ResourceFinder {
 
     /**
