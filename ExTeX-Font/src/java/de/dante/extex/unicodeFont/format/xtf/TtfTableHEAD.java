@@ -22,7 +22,7 @@ package de.dante.extex.unicodeFont.format.xtf;
 import java.io.IOException;
 import java.text.DateFormat;
 
-import org.extex.font.type.Fixed32;
+import org.extex.font.format.Fixed32;
 import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;

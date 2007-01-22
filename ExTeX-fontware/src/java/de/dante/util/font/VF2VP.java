@@ -19,18 +19,14 @@
 
 package de.dante.util.font;
 
-import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Properties;
 
 import org.extex.font.FontFactory;
-import org.extex.font.type.PlWriter;
-import org.extex.util.file.random.RandomAccessInputStream;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.ConfigurationFactory;
 import org.extex.util.framework.configuration.exception.ConfigurationClassNotFoundException;

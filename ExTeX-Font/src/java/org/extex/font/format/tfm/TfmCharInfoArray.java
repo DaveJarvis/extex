@@ -22,12 +22,7 @@ package org.extex.font.format.tfm;
 import java.io.IOException;
 import java.io.Serializable;
 
-import org.extex.util.EFMWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
-import org.extex.util.xml.XMLStreamWriter;
-
-import de.dante.extex.unicodeFont.format.pl.PlFormat;
-import de.dante.extex.unicodeFont.format.pl.PlWriter;
 
 /**
  * Class for TFM char info.
@@ -58,11 +53,7 @@ import de.dante.extex.unicodeFont.format.pl.PlWriter;
  * @version $Revision$
  */
 
-public class TfmCharInfoArray
-        implements
-            EFMWriterConvertible,
-            PlFormat,
-            Serializable {
+public class TfmCharInfoArray implements Serializable {
 
     /**
      * The field <tt>serialVersionUID</tt> ...
@@ -326,20 +317,6 @@ public class TfmCharInfoArray
     }
 
     /**
-     * @see org.extex.font.type.PlFormat#toPL(org.extex.font.type.PlWriter)
-     */
-    public void toPL(final PlWriter out) throws IOException {
-
-        for (int i = 0; i < charinfoword.length; i++) {
-            if (charinfoword[i] != null) {
-                out.plopen("CHARACTER").addChar((short) (i + bc));
-                charinfoword[i].toPL(out);
-                out.plclose();
-            }
-        }
-    }
-
-    /**
      * Checks the consistency of larger character chain. It checks only the
      * characters which have less position in |charTable| then the given
      * character position and are supossed to have the corresponding <code>CharInfo</code>
@@ -363,89 +340,4 @@ public class TfmCharInfoArray
         return true;
     }
 
-    /**
-     * @see org.extex.util.EFMWriterConvertible#writeEFM(org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeEFM(final XMLStreamWriter writer) throws IOException {
-
-        for (int i = 0; i < charinfoword.length; i++) {
-
-            // get char
-            TfmCharInfoWord ci = charinfoword[i];
-
-            if (ci != null) {
-
-                // create glyph
-                writer.writeStartElement("glyph");
-
-                writer.writeAttribute("ID", String.valueOf(i));
-                writer.writeAttribute("glyph-number", String.valueOf(i + bc));
-                String c = Character.toString((char) i);
-                if (c != null && c.trim().length() > 0) {
-                    writer.writeAttribute("char", c);
-                }
-                if (ci.getGlyphname() != null) {
-                    writer.writeAttribute("glyph-name", ci.getGlyphname()
-                            .replaceAll("/", ""));
-                }
-                writer.writeAttribute("width", String.valueOf(ci.getWidth()
-                        .getValue()));
-                writer.writeAttribute("height", String.valueOf(ci.getHeight()
-                        .getValue()));
-                writer.writeAttribute("depth", String.valueOf(ci.getDepth()
-                        .getValue()));
-                writer.writeAttribute("italic", String.valueOf(ci.getItalic()
-                        .getValue()));
-
-                // ligature
-                int ligstart = ci.getLigkernstart();
-                if (ligstart != TfmCharInfoWord.NOINDEX) {
-
-                    for (int k = ligstart; k != TfmCharInfoWord.NOINDEX; k = ligKernTable[k]
-                            .nextIndex(k)) {
-                        TfmLigKern lk = ligKernTable[k];
-
-                        if (lk instanceof TfmLigature) {
-                            TfmLigature lig = (TfmLigature) lk;
-
-                            writer.writeStartElement("ligature");
-                            writer.writeAttribute("letter-id", String
-                                    .valueOf(lig.getNextChar()));
-                            String sl = Character.toString((char) lig
-                                    .getNextChar());
-                            if (sl != null && sl.trim().length() > 0) {
-                                writer.writeAttribute("letter", sl.trim());
-                            }
-
-                            writer.writeAttribute("lig-id", String.valueOf(lig
-                                    .getAddingChar()));
-                            String slig = Character.toString((char) lig
-                                    .getAddingChar());
-                            if (slig != null && slig.trim().length() > 0) {
-                                writer.writeAttribute("lig", slig.trim());
-                            }
-                            writer.writeEndElement();
-                        } else if (lk instanceof TfmKerning) {
-                            TfmKerning kern = (TfmKerning) lk;
-
-                            writer.writeStartElement("kerning");
-
-                            writer.writeAttribute("glyph-id", String
-                                    .valueOf(kern.getNextChar()));
-                            String sk = Character.toString((char) kern
-                                    .getNextChar());
-                            if (sk != null && sk.trim().length() > 0) {
-                                writer.writeAttribute("char", sk.trim());
-                            }
-                            writer.writeAttribute("size", String.valueOf(kern
-                                    .getKern().getValue()));
-
-                            writer.writeEndElement();
-                        }
-                    }
-                }
-                writer.writeEndElement();
-            }
-        }
-    }
 }

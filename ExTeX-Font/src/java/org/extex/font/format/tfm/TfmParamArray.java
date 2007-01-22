@@ -24,13 +24,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.extex.util.EFMWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
-import org.extex.util.xml.XMLStreamWriter;
-import org.jdom.Element;
-
-import de.dante.extex.unicodeFont.format.pl.PlFormat;
-import de.dante.extex.unicodeFont.format.pl.PlWriter;
 
 /**
  * Class for TFM parameter table.
@@ -47,11 +41,7 @@ import de.dante.extex.unicodeFont.format.pl.PlWriter;
  * @version $Revision$
  */
 
-public class TfmParamArray
-        implements
-            EFMWriterConvertible,
-            PlFormat,
-            Serializable {
+public class TfmParamArray implements Serializable {
 
     /**
      * Labels for MATHEX.
@@ -91,11 +81,6 @@ public class TfmParamArray
     private Map param;
 
     /**
-     * the param table.
-     */
-    private TfmFixWord[] table;
-
-    /**
      * Create a new object.
      *
      * @param rar   the input
@@ -132,20 +117,6 @@ public class TfmParamArray
     }
 
     /**
-     * Add the parameter to the element.
-     * @param element   the element
-     */
-    public void addParam(final Element element) {
-
-        for (int i = 0; i < table.length; i++) {
-            String name = getLabelName(i);
-            if (name.length() != 0) {
-                element.setAttribute(name, table[i].toStringComma());
-            }
-        }
-    }
-
-    /**
      * Returns the label of the parameter, or a empty string,
      * if no label name exits.
      * @param id    the id
@@ -169,15 +140,6 @@ public class TfmParamArray
     }
 
     /**
-     * Returns the length of the parameter array.
-     * @return Returns the length of the parameter array.
-     */
-    public int getLength() {
-
-        return table.length;
-    }
-
-    /**
      * Getter for param.
      *
      * @return Returns the param.
@@ -196,52 +158,6 @@ public class TfmParamArray
 
         TfmFixWord value = (TfmFixWord) param.get(name);
         return value == null ? TfmFixWord.ZERO : value;
-    }
-
-    /**
-     * Returns the table.
-     * @return Returns the table.
-     */
-    public TfmFixWord[] getTable() {
-
-        return table;
-    }
-
-    /**
-     * @see org.extex.font.type.PlFormat#toPL(org.extex.font.type.PlWriter)
-     */
-    public void toPL(final PlWriter out) throws IOException {
-
-        if (table.length > 0) {
-            out.plopen("FONTDIMEN");
-            for (int i = 0; i < table.length; i++) {
-                String name = getLabelName(i);
-                if (name != null && name.length() > 0) {
-                    out.plopen(name);
-                } else {
-                    out.plopen("PARAMETER").addDec(i + 1);
-                }
-                out.addReal(table[i]).plclose();
-            }
-            out.plclose();
-        }
-    }
-
-    /**
-     * @see org.extex.util.EFMWriterConvertible#writeEFM(org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeEFM(final XMLStreamWriter writer) throws IOException {
-
-        writer.writeStartElement("fontdimen");
-        for (int i = 0; i < table.length; i++) {
-            String name = getLabelName(i);
-            if (name.length() != 0) {
-                writer
-                        .writeAttribute(name, String.valueOf(table[i]
-                                .getValue()));
-            }
-        }
-        writer.writeEndElement();
     }
 
 }

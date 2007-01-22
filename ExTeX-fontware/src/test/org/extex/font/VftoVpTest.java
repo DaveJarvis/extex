@@ -19,11 +19,9 @@
 
 package org.extex.font;
 
-import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
@@ -33,9 +31,7 @@ import java.util.Properties;
 
 import junit.framework.TestCase;
 
-import org.extex.font.type.PlWriter;
 import org.extex.util.file.random.RandomAccessInputFile;
-import org.extex.util.file.random.RandomAccessInputStream;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.ConfigurationFactory;

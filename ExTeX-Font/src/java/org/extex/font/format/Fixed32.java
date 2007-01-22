@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.font.type;
+package org.extex.font.format;
 
 /**
  * Class for a fixed point format (32 bit).

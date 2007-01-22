@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -16,35 +16,37 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  */
 
-package de.dante.extex.unicodeFont.format.pl;
+package org.extex.font.format.pl;
+
+import java.io.IOException;
+import java.io.Reader;
 
 /**
- * Abstract class for a pl command.
+ * Interface for a PL command.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  *
  */
-public abstract class AbstractPlCommand implements PlCommand {
+public interface PlCommand {
 
     /**
-     * The parameter.
+     * Execute the PL command.
+     *
+     * @param reader    The reader.
+     * @throws IOException if an IO-error occurred.
      */
-    protected String param;
+    void execute(Reader reader) throws IOException;
 
     /**
-     * @see de.dante.extex.unicodeFont.format.pl.PlCommand#getParameter()
+     * Returns the parameter.
+     * @return Returns the parameter.
      */
-    public String getParameter() {
-
-        return param;
-    }
+    String getParameter();
 
     /**
-     * @see de.dante.extex.unicodeFont.format.pl.PlCommand#setParameter(java.lang.String)
+     * Set the parameter.
+     * @param p The parameter.
      */
-    public void setParameter(final String p) {
-
-        param = p;
-    }
+    void setParameter(String p);
 }

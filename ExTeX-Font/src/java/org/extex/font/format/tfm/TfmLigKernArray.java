@@ -22,10 +22,9 @@ package org.extex.font.format.tfm;
 import java.io.IOException;
 import java.io.Serializable;
 
+import org.extex.font.format.pl.PlFormat;
+import org.extex.font.format.pl.PlWriter;
 import org.extex.util.file.random.RandomAccessR;
-
-import de.dante.extex.unicodeFont.format.pl.PlFormat;
-import de.dante.extex.unicodeFont.format.pl.PlWriter;
 
 /**
  * Class for TFM lig/kern array.
@@ -246,7 +245,7 @@ public class TfmLigKernArray implements PlFormat, Serializable {
      * @param ciw   the char
      * @return Returns true, if the char has a ligature or a kern
      */
-    private boolean foundLigKern(final TfmCharInfoWord ciw) {
+    public boolean foundLigKern(final TfmCharInfoWord ciw) {
 
         boolean found = false;
         int ligstart = ciw.getLigkernstart();
@@ -266,6 +265,16 @@ public class TfmLigKernArray implements PlFormat, Serializable {
     }
 
     /**
+     * Getter for bc.
+     *
+     * @return Returns the bc.
+     */
+    public short getBc() {
+    
+        return bc;
+    }
+
+    /**
      * Returns the boundaryChar.
      * @return Returns the boundaryChar.
      */
@@ -281,6 +290,16 @@ public class TfmLigKernArray implements PlFormat, Serializable {
     public int getBoundaryStart() {
 
         return boundaryStart;
+    }
+
+    /**
+     * Getter for charinfo.
+     *
+     * @return Returns the charinfo.
+     */
+    public TfmCharInfoArray getCharinfo() {
+
+        return charinfo;
     }
 
     /**
@@ -512,6 +531,7 @@ public class TfmLigKernArray implements PlFormat, Serializable {
         }
     }
 
+    
     /**
      * @see org.extex.font.type.PlFormat#toPL(
      *      org.extex.font.type.PlWriter)

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,47 +17,31 @@
  *
  */
 
-package de.dante.extex.unicodeFont.format.efm;
+package org.extex.font.format.pl;
 
-import org.extex.type.UnicodeChar;
+import java.io.IOException;
+
+import org.extex.font.exception.FontException;
 
 /**
- * Abstract class for e efm kerning.
+ * Interface for the PL-Format.
+ *
+ * <p>
+ * Convert a BaseFont (e.g. tfm) to a PL-file (property-list).
+ * </p>
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-
-public abstract class EfmAbstractKerning implements EfmKerning {
-
-    /**
-     * The unicode char.
-     */
-    private UnicodeChar uc;
+public interface PlFormat {
 
     /**
-     * Create a new object.
+     * Print all information (jn PL-format) to the writer.
+     *
+     * @param out  the plwriter
+     * @throws IOException if an IO-error occurs.
+     * @throws FontException if a font-error occurs.
      */
-    public EfmAbstractKerning() {
-
-        super();
-    }
-
-    /**
-     * @see de.dante.extex.unicodeFont.format.efm.EfmKerning#getUnicodeChar()
-     */
-    public UnicodeChar getUnicodeChar() {
-
-        return uc;
-    }
-
-    /**
-     * @see de.dante.extex.unicodeFont.format.efm.EfmKerning#setUnicodeChar(
-     *      org.extex.type.UnicodeChar)
-     */
-    public void setUnicodeChar(final UnicodeChar auc) {
-
-        uc = auc;
-    }
+    void toPL(PlWriter out) throws IOException, FontException;
 
 }

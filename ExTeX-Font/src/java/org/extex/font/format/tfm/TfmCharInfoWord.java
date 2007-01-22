@@ -27,9 +27,6 @@ import java.util.Map;
 import org.extex.util.file.random.RandomAccessR;
 import org.jdom.Element;
 
-import de.dante.extex.unicodeFont.format.pl.PlFormat;
-import de.dante.extex.unicodeFont.format.pl.PlWriter;
-
 /**
  * Class for TFM char info word.
  *
@@ -83,7 +80,7 @@ import de.dante.extex.unicodeFont.format.pl.PlWriter;
  * @version $Revision$
  */
 
-public class TfmCharInfoWord implements PlFormat, Serializable {
+public class TfmCharInfoWord implements Serializable {
 
     /**
      * Tag (type-safe class).
@@ -427,7 +424,7 @@ public class TfmCharInfoWord implements PlFormat, Serializable {
      * Check, if char has a entry (glyphname, top, mid, bot, rep, ligature or kern.
      * @return Returns true, if the char has an entry.
      */
-    private boolean foundEntry() {
+    public boolean foundEntry() {
 
         boolean found = false;
         if (glyphname != null) {
@@ -811,58 +808,6 @@ public class TfmCharInfoWord implements PlFormat, Serializable {
     public void setWidth(final TfmFixWord awidth) {
 
         width = awidth;
-    }
-
-    /**
-     * @see org.extex.font.type.PlFormat#toPL(org.extex.font.type.PlWriter)
-     */
-    public void toPL(final PlWriter out) throws IOException {
-
-        out.addFixWord(width, "CHARWD");
-        out.addFixWord(height, "CHARHT");
-        out.addFixWord(depth, "CHARDP");
-        out.addFixWord(italic, "CHARIC");
-
-        if (foundEntry()) {
-            out.plopen("COMMENT");
-            if (glyphname != null) {
-                out.plopen("NAME").addStr(glyphname).plclose();
-            }
-            if (getTop() != NOCHARCODE) {
-                out.plopen("TOP").addDec(getTop()).plclose();
-            }
-            if (getMid() != NOCHARCODE) {
-                out.plopen("MID").addDec(getMid()).plclose();
-            }
-            if (getBot() != NOCHARCODE) {
-                out.plopen("BOT").addDec(getBot()).plclose();
-            }
-            if (getRep() != NOCHARCODE) {
-                out.plopen("REP").addDec(getRep()).plclose();
-            }
-            // ligature
-            int ligstart = getLigkernstart();
-            if (ligstart != NOINDEX && ligKernTable != null) {
-
-                for (int k = ligstart; k != NOINDEX; k = ligKernTable[k]
-                        .nextIndex(k)) {
-                    TfmLigKern lk = ligKernTable[k];
-
-                    if (lk instanceof TfmLigature) {
-                        TfmLigature lig = (TfmLigature) lk;
-
-                        out.plopen("LIG").addChar(lig.getNextChar()).addChar(
-                                lig.getAddingChar()).plclose();
-                    } else if (lk instanceof TfmKerning) {
-                        TfmKerning kern = (TfmKerning) lk;
-
-                        out.plopen("KRN").addChar(kern.getNextChar()).addReal(
-                                kern.getKern()).plclose();
-                    }
-                }
-            }
-            out.plclose();
-        }
     }
 
 }

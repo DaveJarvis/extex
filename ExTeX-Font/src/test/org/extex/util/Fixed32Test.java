@@ -19,7 +19,7 @@
 
 package org.extex.util;
 
-import org.extex.font.type.Fixed32;
+import org.extex.font.format.Fixed32;
 
 import junit.framework.TestCase;
 

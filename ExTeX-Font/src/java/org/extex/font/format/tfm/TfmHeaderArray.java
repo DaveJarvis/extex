@@ -24,9 +24,6 @@ import java.io.Serializable;
 
 import org.extex.util.file.random.RandomAccessR;
 
-import de.dante.extex.unicodeFont.format.pl.PlFormat;
-import de.dante.extex.unicodeFont.format.pl.PlWriter;
-
 /**
  * Class for TFM header information.
  *
@@ -62,7 +59,7 @@ import de.dante.extex.unicodeFont.format.pl.PlWriter;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class TfmHeaderArray implements PlFormat, Serializable {
+public class TfmHeaderArray implements Serializable {
 
     /**
      * Size of coding scheme header information in words
@@ -276,37 +273,6 @@ public class TfmHeaderArray implements PlFormat, Serializable {
             }
         }
         return buf.toString();
-    }
-
-    /**
-     * @see de.dante.extex.unicodeFont.format.pl.PlFormat#toPL(
-     *      de.dante.extex.unicodeFont.format.pl.PlWriter)
-     */
-    public void toPL(final PlWriter out) throws IOException {
-
-        if (fontfamily != null) {
-            out.plopen("FAMILY").addStr(fontfamily).plclose();
-        }
-        if (xeroxfacecode >= 0) {
-            out.plopen("FACE").addFace(xeroxfacecode).plclose();
-        }
-
-        if (headerrest != null) {
-            for (int i = 0; i < headerrest.length; i++) {
-                out.plopen("HEADER").addDec(i + HEADER_REST_SIZE).addOct(
-                        headerrest[i]).plclose();
-            }
-        }
-        if (codingscheme != null) {
-            out.plopen("CODINGSCHEME").addStr(codingscheme).plclose();
-        }
-        out.plopen("DESIGNSIZE").addReal(designsize).plclose();
-        out.addComment("DESIGNSIZE IS IN POINTS");
-        out.addComment("OTHER SIZES ARE MULTIPLES OF DESIGNSIZE");
-        out.plopen("CHECKSUM").addOct(checksum).plclose();
-        if (sevenBitSafe) {
-            out.plopen("SEVENBITSAFEFLAG").addBool(sevenBitSafe).plclose();
-        }
     }
 
 }

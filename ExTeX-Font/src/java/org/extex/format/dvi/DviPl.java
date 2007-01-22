@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -25,8 +25,8 @@ import java.util.Map;
 
 import org.extex.font.FontFactory;
 import org.extex.font.exception.FontException;
+import org.extex.font.format.pl.PlWriter;
 import org.extex.font.format.tfm.TfmFixWord;
-import org.extex.font.type.PlWriter;
 import org.extex.format.dvi.command.DviBOP;
 import org.extex.format.dvi.command.DviChar;
 import org.extex.format.dvi.command.DviCommand;

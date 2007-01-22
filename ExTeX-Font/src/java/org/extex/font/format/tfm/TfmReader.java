@@ -27,15 +27,11 @@ import java.io.Serializable;
 import org.extex.font.exception.FontException;
 import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.interpreter.type.dimen.FixedDimen;
-import org.extex.util.EFMWriterConvertible;
 import org.extex.util.file.random.RandomAccessInputStream;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
-import org.extex.util.xml.XMLStreamWriter;
 
 import de.dante.extex.unicodeFont.format.pfb.PfbParser;
-import de.dante.extex.unicodeFont.format.pl.PlFormat;
-import de.dante.extex.unicodeFont.format.pl.PlWriter;
 import de.dante.extex.unicodeFont.format.tex.psfontmap.PsFontEncoding;
 import de.dante.extex.unicodeFont.format.tex.psfontmap.PsFontsMapReader;
 import de.dante.extex.unicodeFont.format.tex.psfontmap.enc.EncFactory;
@@ -48,10 +44,10 @@ import de.dante.extex.unicodeFont.format.tex.psfontmap.enc.EncFactory;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class TfmReader implements PlFormat, EFMWriterConvertible, Serializable {
+public class TfmReader implements Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * The field <tt>serialVersionUID</tt>.
      */
     private static final long serialVersionUID = 1L;
 
@@ -66,12 +62,12 @@ public class TfmReader implements PlFormat, EFMWriterConvertible, Serializable {
     private TfmDepthArray depth;
 
     /**
-     * Encoderfactory.
+     * Encoder factory.
      */
     private EncFactory encfactory;
 
     /**
-     * encodingtable.
+     * encoding table.
      */
     private String[] enctable;
 
@@ -135,41 +131,6 @@ public class TfmReader implements PlFormat, EFMWriterConvertible, Serializable {
      */
     private PsFontEncoding psfenc;
 
-    //    /**
-    //     * @see de.dante.extex.font.type.FontMetric#getFontMetric()
-    //     */
-    //    public Element getFontMetric() {
-    //
-    //        // create efm-file
-    //        Element root = new Element("fontgroup");
-    //        root.setAttribute("name", getFontFamily());
-    //        root.setAttribute("id", getFontFamily());
-    //        root.setAttribute("default-size", String.valueOf(getDesignSize()));
-    //        root.setAttribute("empr", "100");
-    //        root.setAttribute("type", "tfm");
-    //
-    //        Element fontdimen = new Element("fontdimen");
-    //        root.addContent(fontdimen);
-    //
-    //        Element font = new Element("font");
-    //        root.addContent(font);
-    //
-    //        font.setAttribute("font-name", getFontFamily());
-    //        font.setAttribute("font-family", getFontFamily());
-    //        root.setAttribute("units-per-em", "1000");
-    //        font.setAttribute("checksum", String.valueOf(getChecksum()));
-    //        font.setAttribute("type", getFontType().toTFMString());
-    //        param.addParam(fontdimen);
-    //
-    //        // filename
-    //        if (pfbfilename != null) {
-    //            font.setAttribute("filename", pfbfilename);
-    //        }
-    //        // charinfo.addGlyphs(font);
-    //
-    //        return root;
-    //    }
-    //
     /**
      * psfontmap.
      */
@@ -626,17 +587,6 @@ public class TfmReader implements PlFormat, EFMWriterConvertible, Serializable {
     }
 
     /**
-     * @see org.extex.font.type.PlFormat#toPL(org.extex.font.type.PlWriter)
-     */
-    public void toPL(final PlWriter out) throws IOException {
-
-        header.toPL(out);
-        param.toPL(out);
-        ligkern.toPL(out);
-        charinfo.toPL(out);
-    }
-
-    /**
      * Visit for the {@link TfmVisitor}. 
      *
      * @param visitor The visitor.
@@ -656,28 +606,6 @@ public class TfmReader implements PlFormat, EFMWriterConvertible, Serializable {
         visitor.visitTfmKernArray(kern);
         visitor.visitTfmExtenArray(exten);
         visitor.visitTfmParamArray(param);
-    }
-
-    /**
-     * @see org.extex.util.EFMWriterConvertible#writeEFM(org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeEFM(final XMLStreamWriter writer) throws IOException {
-
-        writer.writeStartElement("font");
-        writer.writeAttribute("id", getFontFamily());
-        writer.writeAttribute("font-name", getFontFamily());
-        writer.writeAttribute("font-family", getFontFamily());
-        writer.writeAttribute("default-size", String.valueOf(getDesignSize()));
-        writer.writeAttribute("type", "tfm");
-        writer.writeAttribute("units-per-em", "1000");
-        writer.writeAttribute("checksum", String.valueOf(getChecksum()));
-        writer.writeAttribute("subtype", getFontType().toTFMString());
-        if (pfbfilename != null) {
-            writer.writeAttribute("filename", pfbfilename);
-        }
-        param.writeEFM(writer);
-        charinfo.writeEFM(writer);
-        writer.writeEndElement();
     }
 
 }

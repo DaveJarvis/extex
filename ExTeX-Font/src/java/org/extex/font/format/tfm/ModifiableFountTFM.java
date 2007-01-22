@@ -111,13 +111,14 @@ public class ModifiableFountTFM implements ModifiableFount, Serializable {
      */
     private void setFontDimenValues() {
 
-        TfmParamArray param = font.getParam();
-        TfmFixWord[] fw = param.getTable();
-        for (int i = 0; i < fw.length; i++) {
-            String labelname = param.getLabelName(i);
-            Dimen d = convertFixWordToDimen(fw[i]);
-            fontdimen.put(labelname, d);
-        }
+        // mgn: umbauen
+//        TfmParamArray param = font.getParam();
+//        TfmFixWord[] fw = param.getTable();
+//        for (int i = 0; i < fw.length; i++) {
+//            String labelname = param.getLabelName(i);
+//            Dimen d = convertFixWordToDimen(fw[i]);
+//            fontdimen.put(labelname, d);
+//        }
     }
 
     /**

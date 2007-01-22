@@ -47,7 +47,6 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import de.dante.extex.unicodeFont.exception.FontIOException;
-import de.dante.extex.unicodeFont.format.efm.EfmFont;
 import de.dante.extex.unicodeFont.format.pfb.PfbParser;
 import de.dante.extex.unicodeFont.format.tex.psfontmap.PsFontEncoding;
 import de.dante.extex.unicodeFont.format.tex.psfontmap.PsFontsMapReader;
@@ -369,11 +368,12 @@ public class FontMap extends AbstractFontUtil {
 
                     tfmReader.setFontMapEncoding(psFontMapReader, encfactory);
 
-                    EfmFont efmFont = new EfmFont(tfmReader);
-                    efmFont.setEncoding(encfile);
-
-                    efmFont.write(new FileOutputStream(efmoutput
-                            + File.separator + efmfile), DEFAULTENCODING);
+                    // mgn: umbauen
+//                    EfmFont efmFont = new EfmFont(tfmReader);
+//                    efmFont.setEncoding(encfile);
+//
+//                    efmFont.write(new FileOutputStream(efmoutput
+//                            + File.separator + efmfile), DEFAULTENCODING);
 
                 }
             }
