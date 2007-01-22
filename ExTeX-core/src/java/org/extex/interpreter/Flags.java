@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -87,6 +87,133 @@ public interface Flags {
     Flags NONE = new Flags() {
 
         /**
+         * @see org.extex.interpreter.Flags#clear()
+         */
+        public void clear() {
+
+        }
+
+        /**
+         * @see org.extex.interpreter.Flags#clearExpanded()
+         */
+        public boolean clearExpanded() {
+
+            return false;
+        }
+
+        /**
+         * @see org.extex.interpreter.Flags#clearGlobal()
+         */
+        public boolean clearGlobal() {
+
+            return false;
+        }
+
+        /**
+         * @see org.extex.interpreter.Flags#clearImmediate()
+         */
+        public boolean clearImmediate() {
+
+            return false;
+        }
+
+        /**
+         * @see org.extex.interpreter.Flags#clearLong()
+         */
+        public boolean clearLong() {
+
+            return false;
+        }
+
+        /**
+         * @see org.extex.interpreter.Flags#clearOuter()
+         */
+        public boolean clearOuter() {
+
+            return false;
+        }
+
+        /**
+         * @see org.extex.interpreter.Flags#clearProtected()
+         */
+        public boolean clearProtected() {
+
+            return false;
+        }
+
+        /**
+         * @see org.extex.interpreter.Flags#copy()
+         */
+        public Flags copy() {
+
+            return null;
+        }
+
+        /**
+         * @see org.extex.interpreter.Flags#get()
+         */
+        public String[] get() {
+
+            return null;
+        }
+
+        /**
+         * @see org.extex.interpreter.Flags#isDirty()
+         */
+        public boolean isDirty() {
+
+            return false;
+        }
+
+        /**
+         * @see org.extex.interpreter.Flags#isExpanded()
+         */
+        public boolean isExpanded() {
+
+            return false;
+        }
+
+        /**
+         * @see org.extex.interpreter.Flags#isGlobal()
+         */
+        public boolean isGlobal() {
+
+            return false;
+        }
+
+        /**
+         * @see org.extex.interpreter.Flags#isImmediate()
+         */
+        public boolean isImmediate() {
+
+            return false;
+        }
+
+        /**
+         * @see org.extex.interpreter.Flags#isLong()
+         */
+        public boolean isLong() {
+
+            return false;
+        }
+
+        /**
+         * @see org.extex.interpreter.Flags#isOuter()
+         */
+        public boolean isOuter() {
+
+            return false;
+        }
+
+        /**
+         * @see org.extex.interpreter.Flags#isProtected()
+         */
+        public boolean isProtected() {
+
+            return false;
+        }
+
+        /**
          * @see org.extex.interpreter.Flags#set(org.extex.interpreter.Flags)
          */
         public void set(final Flags flags) {
@@ -150,70 +277,11 @@ public interface Flags {
             throw new UnsupportedOperationException();
         }
 
-        public void clear() {
-        }
-
-        public boolean clearExpanded() {
-            return false;
-        }
-
-        public boolean clearGlobal() {
-            return false;
-        }
-
-        public boolean clearImmediate() {
-            return false;
-        }
-
-        public boolean clearLong() {
-            return false;
-        }
-
-        public boolean clearOuter() {
-            return false;
-        }
-
-        public boolean clearProtected() {
-            return false;
-        }
-
-        public Flags copy() {
-            return null;
-        }
-
-        public String[] get() {
-            return null;
-        }
-
-        public boolean isDirty() {
-            return false;
-        }
-
-        public boolean isExpanded() {
-            return false;
-        }
-
-        public boolean isGlobal() {
-            return false;
-        }
-
-        public boolean isImmediate() {
-            return false;
-        }
-
-        public boolean isLong() {
-            return false;
-        }
-
-        public boolean isOuter() {
-            return false;
-        }
-
-        public boolean isProtected() {
-            return false;
-        }
-
+        /**
+         * @see org.extex.interpreter.Flags#toText()
+         */
         public String toText() {
+
             return "";
         }
     };
