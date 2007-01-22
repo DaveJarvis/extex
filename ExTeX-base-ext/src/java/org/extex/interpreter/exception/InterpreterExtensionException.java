@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -21,14 +21,13 @@ package org.extex.interpreter.exception;
 
 import org.extex.interpreter.exception.InterpreterException;
 
-
 /**
  * This exception is thrown when the main program use an
  * ExTeX extension witch is not available.
  *
  * @author <a href="mailto:mgn@gmx.de">Michael Niedermair</a>
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4728 $
+ * @version $Revision$
  */
 public class InterpreterExtensionException extends InterpreterException {
 
@@ -44,7 +43,7 @@ public class InterpreterExtensionException extends InterpreterException {
      */
     public InterpreterExtensionException() {
 
-        super("ExTeXExtensionException");
+        super("");
     }
 
     /**
@@ -53,7 +52,7 @@ public class InterpreterExtensionException extends InterpreterException {
     public String getLocalizedMessage() {
 
         return getLocalizer().format("MainExTeXExtensionException.Message",
-                super.getMessage());
+            super.getMessage());
     }
 
 }
