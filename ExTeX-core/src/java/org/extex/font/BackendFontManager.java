@@ -24,10 +24,10 @@ import java.util.Iterator;
 import org.extex.type.UnicodeChar;
 
 /**
- * The bacikend font manager describes the ablities needed by a backend to deal
- * with fonts. The procedure assumes that in a first pass all characters of all
- * fonts on a page or in a range of pages are püassed to the manager. The
- * manager returns a representation appropriate for the backend format.
+ * The back-end font manager describes the abilities needed by a back-end to
+ * deal with fonts. The procedure assumes that in a first pass all characters of
+ * all fonts on a page or in a range of pages are passed to the manager. The
+ * manager returns a representation appropriate for the back-end format.
  * 
  * <p>
  *  In a second pass the manager can be asked to return all fonts. Those fonts
@@ -44,7 +44,7 @@ public interface BackendFontManager {
     /**
      * Take a character and a font and see if they can be managed by this
      * manager. The internal state is adjusted to report the font and the
-     * character appropriately after the invocation has retunred.
+     * character appropriately after the invocation has returned.
      * 
      * @param fontKey the font key for the character at hand
      * @param uc the Unicode character at hand
@@ -57,7 +57,7 @@ public interface BackendFontManager {
     /**
      * Get the font info for the most recently recognized pair of font and
      * character. If invoked before any character has been recognized
-     * sucessfully then <code>null</code> is returned.
+     * successfully then <code>null</code> is returned.
      * 
      * @return the font info for the most recently recognized font/character
      *  pair
@@ -67,7 +67,7 @@ public interface BackendFontManager {
     /**
      * Get the char info for the most recently recognized pair of font and
      * character. If invoked before any character has been recognized
-     * sucessfully then <code>null</code> is returned.
+     * successfully then <code>null</code> is returned.
      * 
      * @return the char info for the most recently recognized font/character
      *  pair
@@ -78,12 +78,12 @@ public interface BackendFontManager {
      * Get the new font indicator for the most recently recognized pair of font
      * and character. If the font has never been recognized before then
      * <code>true</code> is returned. The font compared for this test is the
-     * backend font &ndash; not the font passed in. This means that each time
-     * getRecognizedFont() retunrs a new font info this method returns
+     * back-end font &ndash; not the font passed in. This means that each time
+     * getRecognizedFont() returns a new font info this method returns
      * <code>true</code>. 
      * <p>
      *  If invoked before any character has been recognized
-     *  sucessfully then <code>null</code> is retunred.
+     *  successfully then <code>null</code> is returned.
      * </p>
      * 
      * @return the font info for the most recently recognized font/character
@@ -92,23 +92,23 @@ public interface BackendFontManager {
     boolean isNewRecongnizedFont();
 
     /**
-     * Return the iterator for all recognized backend fonts.
+     * Return the iterator for all recognized back-end fonts.
      * 
-     * @return the iterator for all recognized backend font
+     * @return the iterator for all recognized back-end font
      */
     Iterator iterate();
 
     /**
-     * Rest the internal state to the initial state. Afterwaords the instance
+     * Rest the internal state to the initial state. Afterwards the instance
      * does not know anything about recognized fonts and can be used like a
      * newly created instance.
      */
     void reset();
 
     /**
-     * Setter for the backend font factory.
+     * Setter for the back-end font factory.
      * 
-     * @param factory the backend font factory to set
+     * @param factory the back-end font factory to set
      */
     void setBackendFontFactory(BackendFontFactory factory);
 }
