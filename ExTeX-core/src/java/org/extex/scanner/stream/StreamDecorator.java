@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -24,7 +24,7 @@ import java.io.InputStream;
 /**
  * This interface describes the ability to manipulate an
  * {@link java.io.InputStream InputStream} by attaching additional processing
- * units in a pipe mannor.
+ * units in a pipe manner.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -34,7 +34,7 @@ public interface StreamDecorator {
     /**
      * Attach a processor to an input stream.
      * If the decorator decides that no additional pipe element is required it
-     * shoudl simply return the input stream.
+     * should simply return the input stream.
      *
      * @param stream the stream to add some processing unit to
      *
