@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -272,8 +272,8 @@ public class Count implements Serializable, FixedCount {
                 }
 
                 throw new HelpingException(LocalizerFactory
-                        .getLocalizer(Count.class), "MissingParenthesis",
-                        (t == null ? "null" : t.toString()));
+                    .getLocalizer(Count.class), "MissingParenthesis",
+                    (t == null ? "null" : t.toString()));
 
             } else if (t.equals(Catcode.OTHER, '-')) {
                 return -scanInteger(context, source, typesetter);
@@ -285,12 +285,11 @@ public class Count implements Serializable, FixedCount {
                 Code code = context.getCode((CodeToken) t);
                 if (code instanceof CountConvertible) {
                     return ((CountConvertible) code).convertCount(context,
-                                                                  source,
-                                                                  typesetter);
+                        source, typesetter);
 
                 } else if (code instanceof ExpandableCode) {
                     ((ExpandableCode) code).expand(Flags.NONE, context, source,
-                                                   typesetter);
+                        typesetter);
                 } else {
                     break;
                 }
@@ -345,7 +344,7 @@ public class Count implements Serializable, FixedCount {
             throws InterpreterException {
 
         return scanNumber(context, source, typesetter, source
-                .getNonSpace(context));
+            .getNonSpace(context));
     }
 
     /**
@@ -377,129 +376,127 @@ public class Count implements Serializable, FixedCount {
             if (t instanceof OtherToken) {
                 int c = t.getChar().getCodePoint();
                 switch (c) {
-                case '0':
-                case '1':
-                case '2':
-                case '3':
-                case '4':
-                case '5':
-                case '6':
-                case '7':
-                case '8':
-                case '9':
-                    n = c - '0';
+                    case '0':
+                    case '1':
+                    case '2':
+                    case '3':
+                    case '4':
+                    case '5':
+                    case '6':
+                    case '7':
+                    case '8':
+                    case '9':
+                        n = c - '0';
 
-                    for (;;) {
-                        for (t = source.getToken(context); t instanceof OtherToken
-                                                           && t.getChar()
-                                                                   .isDigit(); t = source
-                                .getToken(context)) {
-                            n = n * 10 + t.getChar().getCodePoint() - '0';
+                        for (;;) {
+                            for (t = source.getToken(context); t instanceof OtherToken
+                                    && t.getChar().isDigit(); t =
+                                    source.getToken(context)) {
+                                n = n * 10 + t.getChar().getCodePoint() - '0';
+                            }
+                            if (t instanceof CodeToken) {
+                                Code code = context.getCode((CodeToken) t);
+                                if (code instanceof ExpandableCode) {
+                                    ((ExpandableCode) code).expand(Flags.NONE,
+                                        context, source, typesetter);
+                                    continue;
+                                }
+                            }
+                            break;
                         }
-                        if (t instanceof CodeToken) {
-                            Code code = context.getCode((CodeToken) t);
-                            if (code instanceof ExpandableCode) {
-                                ((ExpandableCode) code).expand(Flags.NONE,
-                                                               context, source,
-                                                               typesetter);
-                                continue;
+
+                        if (t instanceof SpaceToken) {
+                            source.skipSpace();
+                        } else {
+                            source.push(t);
+                        }
+                        return n;
+
+                    case '`':
+                        t = source.getToken(context);
+
+                        if (t instanceof ControlSequenceToken) {
+                            String s = ((ControlSequenceToken) t).getName();
+                            return ("".equals(s) ? 0 : s.charAt(0));
+                        } else if (t != null) {
+                            return t.getChar().getCodePoint();
+                        }
+                        // fall through to error handling
+                        break;
+
+                    case '\'':
+                        t = source.scanToken(context);
+                        if (!(t instanceof OtherToken)) {
+                            throw new MissingNumberException();
+                        }
+                        n = t.getChar().getCodePoint() - '0';
+                        if (n < 0 || n > 7) {
+                            throw new MissingNumberException();
+                        }
+                        for (t = source.scanToken(context); t instanceof OtherToken; //
+                        t = source.scanToken(context)) {
+                            no = t.getChar().getCodePoint() - '0';
+                            if (no < 0 || no > 7) {
+                                break;
+                            }
+                            n = n * 8 + no;
+                        }
+
+                        while (t instanceof SpaceToken) {
+                            t = source.getToken(context);
+                        }
+                        source.push(t);
+                        return n;
+
+                    case '"':
+
+                        for (t = source.scanToken(context); //
+                        t instanceof OtherToken || t instanceof LetterToken; //
+                        t = source.scanToken(context)) {
+                            no = t.getChar().getCodePoint();
+                            switch (no) {
+                                case '0':
+                                case '1':
+                                case '2':
+                                case '3':
+                                case '4':
+                                case '5':
+                                case '6':
+                                case '7':
+                                case '8':
+                                case '9':
+                                    n = n * 16 + no - '0';
+                                    break;
+                                case 'a':
+                                case 'b':
+                                case 'c':
+                                case 'd':
+                                case 'e':
+                                case 'f':
+                                    n = n * 16 + no - 'a' + 10;
+                                    break;
+                                case 'A':
+                                case 'B':
+                                case 'C':
+                                case 'D':
+                                case 'E':
+                                case 'F':
+                                    n = n * 16 + no - 'A' + 10;
+                                    break;
+                                default:
+                                    source.push(t);
+                                    source.skipSpace();
+                                    return n;
                             }
                         }
-                        break;
-                    }
 
-                    if (t instanceof SpaceToken) {
-                        source.skipSpace();
-                    } else {
+                        while (t instanceof SpaceToken) {
+                            t = source.getToken(context);
+                        }
                         source.push(t);
-                    }
-                    return n;
+                        return n;
 
-                case '`':
-                    t = source.getToken(context);
-
-                    if (t instanceof ControlSequenceToken) {
-                        String s = ((ControlSequenceToken) t).getName();
-                        return ("".equals(s) ? 0 : s.charAt(0));
-                    } else if (t != null) {
-                        return t.getChar().getCodePoint();
-                    }
-                    // fall through to error handling
-                    break;
-
-                case '\'':
-                    t = source.scanToken(context);
-                    if (!(t instanceof OtherToken)) {
-                        throw new MissingNumberException();
-                    }
-                    n = t.getChar().getCodePoint() - '0';
-                    if (n < 0 || n > 7) {
-                        throw new MissingNumberException();
-                    }
-                    for (t = source.scanToken(context); t instanceof OtherToken; //
-                    t = source.scanToken(context)) {
-                        no = t.getChar().getCodePoint() - '0';
-                        if (no < 0 || no > 7) {
-                            break;
-                        }
-                        n = n * 8 + no;
-                    }
-
-                    while (t instanceof SpaceToken) {
-                        t = source.getToken(context);
-                    }
-                    source.push(t);
-                    return n;
-
-                case '"':
-
-                    for (t = source.scanToken(context); //
-                    t instanceof OtherToken || t instanceof LetterToken; //
-                    t = source.scanToken(context)) {
-                        no = t.getChar().getCodePoint();
-                        switch (no) {
-                        case '0':
-                        case '1':
-                        case '2':
-                        case '3':
-                        case '4':
-                        case '5':
-                        case '6':
-                        case '7':
-                        case '8':
-                        case '9':
-                            n = n * 16 + no - '0';
-                            break;
-                        case 'a':
-                        case 'b':
-                        case 'c':
-                        case 'd':
-                        case 'e':
-                        case 'f':
-                            n = n * 16 + no - 'a' + 10;
-                            break;
-                        case 'A':
-                        case 'B':
-                        case 'C':
-                        case 'D':
-                        case 'E':
-                        case 'F':
-                            n = n * 16 + no - 'A' + 10;
-                            break;
-                        default:
-                            source.push(t);
-                            source.skipSpace();
-                            return n;
-                        }
-                    }
-
-                    while (t instanceof SpaceToken) {
-                        t = source.getToken(context);
-                    }
-                    source.push(t);
-                    return n;
-
-                default:
+                    default:
                 }
                 break;
             } else if (t instanceof CodeToken) {
@@ -510,11 +507,10 @@ public class Count implements Serializable, FixedCount {
 
                 } else if (code instanceof CountConvertible) {
                     return ((CountConvertible) code).convertCount(context,
-                                                                  source,
-                                                                  typesetter);
+                        source, typesetter);
                 } else if (code instanceof ExpandableCode) {
                     ((ExpandableCode) code).expand(Flags.NONE, context, source,
-                                                   typesetter);
+                        typesetter);
                     t = source.getToken(context);
                 } else {
 
@@ -593,7 +589,7 @@ public class Count implements Serializable, FixedCount {
     public void divide(final long denom) throws ArithmeticOverflowException {
 
         if (denom == 0) {
-            throw new ArithmeticOverflowException("");
+            throw new ArithmeticOverflowException(null);
         }
 
         value /= denom;
