@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -16,11 +16,11 @@
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
+
 package org.extex.scanner.stream;
 
 import org.extex.interpreter.type.count.FixedCount;
 import org.extex.interpreter.type.tokens.FixedTokens;
-
 
 /**
  * This interface describes the possibilities of a token stream to access its
@@ -41,11 +41,11 @@ public interface TokenStreamOptions {
     FixedCount getCountOption(String name);
 
     /**
-     * Getter for a toks register.
+     * Getter for a tokens register.
      *
      * @param name the name of the register
      *
-     * @return the content of the toks register
+     * @return the content of the tokens register
      */
     FixedTokens getToksOption(String name);
 
