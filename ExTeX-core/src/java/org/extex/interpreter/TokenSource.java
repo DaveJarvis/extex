@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -33,7 +33,6 @@ import org.extex.type.UnicodeChar;
 import org.extex.typesetter.Typesetter;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.exception.NotObservableException;
-
 
 /**
  * This interface describes a class to acquire
@@ -131,7 +130,7 @@ public interface TokenSource {
      * <h3>A Box</h3>
      * 
      * <pre class="syntax">
-     *    &amp;langbox&amp;rang
+     *    &lang;box&rang;
      * </pre>
      * 
      * </doc>
@@ -180,8 +179,8 @@ public interface TokenSource {
      * The formal description of this syntactic entity is the following:
      * 
      * <pre class="syntax">
-     *    &amp;langcontrol sequence&amp;rang
-     *      &amp;rarr &lt;i&gt;?&lt;sub&gt;13&lt;/sub&gt;&lt;/i&gt;
+     *    &lang;control sequence&rang;
+     *      &rarr; &lt;i&gt;?&lt;sub&gt;13&lt;/sub&gt;&lt;/i&gt;
      *       |  &lt;i&gt;?&lt;sub&gt;0&lt;/sub&gt;&lt;/i&gt;&lt;i&gt;?&lt;/i&gt;
      *       |  &lt;i&gt;?&lt;sub&gt;0&lt;/sub&gt;&lt;/i&gt;&lt;i&gt;?&lt;sub&gt;11&lt;/sub&gt;&lt;/i&gt;*
      * </pre>
@@ -223,7 +222,7 @@ public interface TokenSource {
      * <h3>A Font</h3>
      * 
      * <pre class="syntax">
-     *    &amp;langfont&amp;rang
+     *    &lang;font&rang;
      * </pre>
      * 
      * </doc>
@@ -310,17 +309,17 @@ public interface TokenSource {
      * </p>
      * 
      * <pre class="syntax">
-     *    &amp;langequals&amp;rang
-     *      &amp;rarr {@linkplain org.extex.interpreter.TokenSource#skipSpace()
-     *             &amp;langoptional spaces&amp;rang}
+     *    &lang;equals&rang;
+     *      &rarr; {@linkplain org.extex.interpreter.TokenSource#skipSpace()
+     *             &lang;optional spaces&rang;}
      *       |  {@linkplain org.extex.interpreter.TokenSource#skipSpace()
-     *             &amp;langoptional spaces&amp;rang}
+     *             &lang;optional spaces&rang;}
      * <tt>
      * =
      * </tt>
      * &lt;sub&gt;12&lt;/sub&gt; {@linkplain
      *             org.extex.interpreter.TokenSource#skipSpace()
-     *             &amp;langoptional spaces&amp;rang}
+     *             &lang;optional spaces&rang;}
      * </pre>
      * 
      * </doc>
@@ -346,7 +345,7 @@ public interface TokenSource {
      * <h3>A Token</h3>
      * 
      * <pre class="syntax">
-     *    &amp;langtoken&amp;rang
+     *    &lang;token&rang;
      * </pre>
      * 
      * <p>
@@ -383,7 +382,7 @@ public interface TokenSource {
      * </p>
      * 
      * <pre class="syntax">
-     *     &amp;langreplacement text&amp;rang
+     *     &lang;replacement text&rang;
      * </pre>
      * 
      * </doc>
@@ -451,7 +450,7 @@ public interface TokenSource {
      * <h3>A Character Code</h3>
      * 
      * <pre class="syntax">
-     *    &amp;langcharacter code&amp;rang
+     *    &lang;character code&rang;
      * </pre>
      * 
      * <p>
@@ -521,7 +520,7 @@ public interface TokenSource {
      * <h3>A Number</h3>
      * 
      * <pre class="syntax">
-     *    &amp;langnumber&amp;rang
+     *    &lang;number&rang;
      * </pre>
      * 
      * <p>
@@ -581,18 +580,18 @@ public interface TokenSource {
      * </p>
      * <p>
      * Te integer register <tt>\maxRegister</tt> is defined in the name space
-     * <tt>system</tt>. Thus special actions have to be used to acces it.
+     * <tt>system</tt>. Thus special actions have to be used to access it.
      * </p>
      * 
      * <h4>Syntax</h4>
      * 
      * <pre class="syntax">
-     *    &amp;langregister name&amp;rang
-     *        &amp;rarr {@linkplain
+     *    &lang;register name&rang;
+     *        &rarr; {@linkplain
      *         org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,String)
-     *         &amp;langtokens&amp;rang}
+     *         &lang;tokens&rang;}
      *         | {@linkplain org.extex.interpreter.TokenSource#scanNumber(Context)
-     *         &amp;langnumber&amp;rang}
+     *         &lang;number&rang;}
      * </pre>
      * 
      * <h4>Examples</h4>
@@ -648,7 +647,7 @@ public interface TokenSource {
      * <p>
      * 
      * <pre class="syntax">
-     *     &amp;langgeneral text&amp;rang
+     *     &lang;general text&rang;
      * </pre>
      * 
      * </p>
@@ -733,8 +732,8 @@ public interface TokenSource {
      * </p>
      * 
      * <pre class="syntax">
-     *    &amp;langoptional spaces&amp;rang
-     *      &amp;rarr [ \t\n]*
+     *    &lang;optional spaces&rang;
+     *      &rarr; [ \t\n]*
      * </pre>
      * 
      * </doc>
@@ -753,7 +752,8 @@ public interface TokenSource {
      * @throws NotObservableException in case that the named observer is not
      *             accessible
      */
-    void update(String name, String text) throws InterpreterException,
-            NotObservableException;
+    void update(String name, String text)
+            throws InterpreterException,
+                NotObservableException;
 
 }
