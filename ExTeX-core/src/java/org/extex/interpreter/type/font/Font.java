@@ -19,7 +19,6 @@
 package org.extex.interpreter.type.font;
 
 import org.extex.font.FontKey;
-import org.extex.interpreter.type.count.Count;
 import org.extex.interpreter.type.count.FixedCount;
 import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.interpreter.type.dimen.FixedDimen;
