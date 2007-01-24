@@ -44,7 +44,7 @@ import org.extex.util.framework.Registrar;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4726 $
  */
-public class FontImpl extends NullFont {
+public class FontImpl extends NullFont implements ModifiableFont {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
@@ -295,6 +295,8 @@ public class FontImpl extends NullFont {
      * Setter for the font.
      *
      * @param font the font to set
+     *
+     * @see org.extex.interpreter.type.font.ModifiableFont#setFont(org.extex.font.ExtexFont)
      */
     public void setFont(final ExtexFont font) {
 
