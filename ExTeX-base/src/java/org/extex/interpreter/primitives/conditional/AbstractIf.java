@@ -49,6 +49,11 @@ import org.extex.util.framework.i18n.LocalizerFactory;
 public abstract class AbstractIf extends AbstractCode implements ExpandableCode {
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    protected static final long serialVersionUID = 24012007L;
+
+    /**
      * Getter for the localizer.
      *
      * @return the localizer
