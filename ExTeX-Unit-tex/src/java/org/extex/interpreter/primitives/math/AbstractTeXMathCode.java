@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -39,7 +39,6 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.noad.MathGlyph;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
-
 /**
  * This is the base class for all math primitives using the TeX encoding.
  * It tries to ensure that the primitive is invoked in math mode only.
@@ -48,6 +47,11 @@ import org.extex.util.framework.i18n.LocalizerFactory;
  * @version $Revision: 4770 $
  */
 public abstract class AbstractTeXMathCode extends AbstractMathCode {
+
+    /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    protected static final long serialVersionUID = 24012007L;
 
     /**
      * The field <tt>CLASS_OFFSET</tt> contains the offset for adjoining the
@@ -169,13 +173,13 @@ public abstract class AbstractTeXMathCode extends AbstractMathCode {
         int codePoint = mg.getCharacter().getCodePoint();
         if (codePoint > CHARACTER_MASK) {
             throw new HelpingException(LocalizerFactory
-                    .getLocalizer(AbstractTeXMathCode.class),
-                    "InvalidCharacterCode");
+                .getLocalizer(AbstractTeXMathCode.class),
+                "InvalidCharacterCode");
         }
         int mathFamily = mg.getFamily();
         if (mathFamily > FAMILY_MASK) {
             throw new HelpingException(LocalizerFactory
-                    .getLocalizer(AbstractTeXMathCode.class), "InvalidFamilyCode");
+                .getLocalizer(AbstractTeXMathCode.class), "InvalidFamilyCode");
         }
         return (((Integer) mathClass.visit(VISITOR, null, null)).intValue() << CLASS_OFFSET)
                 | (mathFamily << FAMILY_OFFSET) | codePoint;
@@ -200,11 +204,11 @@ public abstract class AbstractTeXMathCode extends AbstractMathCode {
 
         Token t = source.getToken(context);
         if (t instanceof LeftBraceToken) {
-            MathClass mc = MathClass.parse(context, source, typesetter,
-                    primitive);
+            MathClass mc =
+                    MathClass.parse(context, source, typesetter, primitive);
             long family = Count.parse(context, source, typesetter).getValue();
-            UnicodeChar c = source.scanCharacterCode(context, typesetter,
-                    primitive);
+            UnicodeChar c =
+                    source.scanCharacterCode(context, typesetter, primitive);
 
             t = source.getToken(context);
             if (!(t instanceof RightBraceToken)) {
@@ -212,15 +216,15 @@ public abstract class AbstractTeXMathCode extends AbstractMathCode {
                     throw new EofException();
                 }
                 throw new HelpingException(LocalizerFactory
-                        .getLocalizer(AbstractTeXMathCode.class),
-                        "MissingRightBrace");
+                    .getLocalizer(AbstractTeXMathCode.class),
+                    "MissingRightBrace");
             }
             return new MathCode(mc, new MathGlyph((int) family, c));
         } else if (t instanceof CodeToken) {
             Code code = context.getCode((CodeToken) t);
             if (code instanceof MathCodeConvertible) {
                 return ((MathCodeConvertible) code).convertMathCode(context,
-                        source, typesetter);
+                    source, typesetter);
             }
         }
 
@@ -229,15 +233,15 @@ public abstract class AbstractTeXMathCode extends AbstractMathCode {
 
         if (code < 0 || code > SPECIAL_MATH_CODE) {
             throw new HelpingException(LocalizerFactory
-                    .getLocalizer(AbstractTeXMathCode.class),
-                    "TTP.BadMathCharCode", Long.toString(code));
+                .getLocalizer(AbstractTeXMathCode.class),
+                "TTP.BadMathCharCode", Long.toString(code));
         } else if (code == SPECIAL_MATH_CODE) {
             return new MathCode(null, null);
         } else {
             return new MathCode(MathClass
-                    .getMathClass((int) (code >> CLASS_OFFSET)), //
-                    new MathGlyph((int) (code >> FAMILY_OFFSET) & FAMILY_MASK, //
-                            UnicodeChar.get((int) (code & CHARACTER_MASK))));
+                .getMathClass((int) (code >> CLASS_OFFSET)), //
+                new MathGlyph((int) (code >> FAMILY_OFFSET) & FAMILY_MASK, //
+                    UnicodeChar.get((int) (code & CHARACTER_MASK))));
         }
 
     }
@@ -251,6 +255,5 @@ public abstract class AbstractTeXMathCode extends AbstractMathCode {
 
         super(name);
     }
-
 
 }
