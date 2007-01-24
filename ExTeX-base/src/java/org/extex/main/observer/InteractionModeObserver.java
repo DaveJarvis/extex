@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -60,7 +60,7 @@ public class InteractionModeObserver implements InteractionObserver {
     public void receiveInteractionChange(final ContextInternals context,
             final Interaction mode) throws Exception {
 
-        handler.setLevel((Interaction) mode == Interaction.BATCHMODE //
+        handler.setLevel(mode == Interaction.BATCHMODE //
                 ? Level.SEVERE : Level.INFO);
     }
 

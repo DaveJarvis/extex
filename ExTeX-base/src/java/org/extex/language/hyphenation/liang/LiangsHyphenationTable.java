@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -328,7 +328,7 @@ public class LiangsHyphenationTable extends BaseHyphenationTable {
         boolean[] isHyph = new boolean[hyph.length];
 
         for (int i = 0; i < hyph.length; i++) {
-            if ((((int) hyph[i]) & 1) != 0) {
+            if (((hyph[i]) & 1) != 0) {
                 isHyph[i] = true;
                 hasNoHyphen = false;
             } else {

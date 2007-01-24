@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -176,7 +176,7 @@ public class ExTeXWords implements WordTokenizer {
             }
 
         } else {
-            word.add(((CharNode) node).getCharacter());
+            word.add((node).getCharacter());
         }
     }
 
@@ -298,7 +298,7 @@ public class ExTeXWords implements WordTokenizer {
                         nodes.remove(insertion--);
                         post = new HorizontalListNode(new LigatureNode(
                                 ((CharNode) prev).getTypesettingContext(), lig,
-                                (CharNode) prev, (CharNode) hyphenNode));
+                                (CharNode) prev, hyphenNode));
                         nobreak.add(prev);
                     } else {
                         FixedDimen kern = font.getKerning(c, hyphen);
