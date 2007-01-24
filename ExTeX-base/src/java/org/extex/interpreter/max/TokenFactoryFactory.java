@@ -19,11 +19,8 @@
 
 package org.extex.interpreter.max;
 
-import java.util.logging.Logger;
-
 import org.extex.scanner.type.token.TokenFactory;
 import org.extex.util.framework.AbstractFactory;
-import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
