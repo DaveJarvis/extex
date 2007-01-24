@@ -23,19 +23,14 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.text.MessageFormat;
 import java.util.Iterator;
 import java.util.Properties;
-import java.util.ResourceBundle;
-import java.util.logging.Logger;
-
 import org.extex.type.StringList;
 import org.extex.type.StringListIterator;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.framework.configuration.exception.ConfigurationMissingAttributeException;
 import org.extex.util.framework.configuration.exception.ConfigurationMissingException;
-import org.extex.util.framework.logger.LogEnabled;
 
 /**
  * This file finder searches for the file in different directories and with
