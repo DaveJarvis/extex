@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -83,7 +83,7 @@ public class MathList extends AbstractNoad {
      */
     public Noad get(final int index) {
 
-        return (Noad) nucleus.get(index);
+        return nucleus.get(index);
     }
 
     /**
@@ -105,7 +105,7 @@ public class MathList extends AbstractNoad {
      */
     public Noad remove(final int index) {
 
-        return (Noad) this.nucleus.remove(index);
+        return this.nucleus.remove(index);
     }
 
     /**
