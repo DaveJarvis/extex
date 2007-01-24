@@ -21,7 +21,6 @@ package org.extex.typesetter.type.noad;
 
 import java.util.logging.Logger;
 
-import org.extex.font.type.other.NullFont;
 import org.extex.interpreter.context.Color;
 import org.extex.interpreter.context.tc.TypesettingContext;
 import org.extex.interpreter.context.tc.TypesettingContextFactory;
@@ -37,7 +36,6 @@ import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.noad.util.MathContext;
 import org.extex.typesetter.type.noad.util.MathFontParameter;
-import org.extex.typesetter.type.noad.util.MathSpacing;
 import org.extex.typesetter.type.node.CharNode;
 import org.extex.typesetter.type.node.ImplicitKernNode;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
