@@ -293,7 +293,7 @@ public class Glue implements Serializable, FixedGlue {
      */
     public FixedGlueComponent getShrink() {
 
-        return (FixedGlueComponent) shrink;
+        return shrink;
     }
 
     /**
@@ -307,7 +307,7 @@ public class Glue implements Serializable, FixedGlue {
      */
     public FixedGlueComponent getStretch() {
 
-        return (FixedGlueComponent) stretch;
+        return stretch;
     }
 
     /**

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -93,18 +93,18 @@ public class BasicColorConverter implements ColorConverter {
         public Object visitRgb(final RgbColor color, final Object value)
                 throws GeneralException {
 
-            int r = Color.MAX_VALUE - ((RgbColor) color).getRed();
-            int g = Color.MAX_VALUE - ((RgbColor) color).getGreen();
-            int b = Color.MAX_VALUE - ((RgbColor) color).getBlue();
+            int r = Color.MAX_VALUE - color.getRed();
+            int g = Color.MAX_VALUE - color.getGreen();
+            int b = Color.MAX_VALUE - color.getBlue();
             int black = (r > b ? (b > g ? g : b) : (r > g ? g : r));
             return ColorFactory.getCmyk(//
-                    black == Color.MAX_VALUE ? 0 : (r - black)
-                            / (Color.MAX_VALUE - black), //
-                    black == Color.MAX_VALUE ? 0 : (g - black)
-                            / (Color.MAX_VALUE - black), //
-                    black == Color.MAX_VALUE ? 0 : (r - black)
-                            / (Color.MAX_VALUE - black), //
-                    black, ((RgbColor) color).getAlpha());
+                black == Color.MAX_VALUE ? 0 : (r - black)
+                        / (Color.MAX_VALUE - black), //
+                black == Color.MAX_VALUE ? 0 : (g - black)
+                        / (Color.MAX_VALUE - black), //
+                black == Color.MAX_VALUE ? 0 : (r - black)
+                        / (Color.MAX_VALUE - black), //
+                black, color.getAlpha());
         }
     };
 
@@ -155,12 +155,9 @@ public class BasicColorConverter implements ColorConverter {
         public Object visitRgb(final RgbColor color, final Object value)
                 throws GeneralException {
 
-            return ColorFactory
-                    .getGray(
-                            (222 * ((RgbColor) color).getRed() + 707
-                                    * ((RgbColor) color).getGreen() + 713 * ((RgbColor) color)
-                                    .getBlue()) / 1000, ((RgbColor) color)
-                                    .getAlpha());
+            return ColorFactory.getGray((222 * color.getRed() + 707
+                    * color.getGreen() + 713 * color.getBlue()) / 1000, color
+                .getAlpha());
         }
     };
 
@@ -178,19 +175,22 @@ public class BasicColorConverter implements ColorConverter {
         public Object visitCmyk(final CmykColor color, final Object value)
                 throws GeneralException {
 
-            int r = Color.MAX_VALUE - color.getCyan()
-                    * (Color.MAX_VALUE - color.getBlack()) / Color.MAX_VALUE
-                    + color.getBlack();
-            int g = Color.MAX_VALUE - color.getMagenta()
-                    * (Color.MAX_VALUE - color.getBlack()) / Color.MAX_VALUE
-                    + color.getBlack();
-            int b = Color.MAX_VALUE - color.getYellow()
-                    * (Color.MAX_VALUE - color.getBlack()) / Color.MAX_VALUE
-                    + color.getBlack();
+            int r =
+                    Color.MAX_VALUE - color.getCyan()
+                            * (Color.MAX_VALUE - color.getBlack())
+                            / Color.MAX_VALUE + color.getBlack();
+            int g =
+                    Color.MAX_VALUE - color.getMagenta()
+                            * (Color.MAX_VALUE - color.getBlack())
+                            / Color.MAX_VALUE + color.getBlack();
+            int b =
+                    Color.MAX_VALUE - color.getYellow()
+                            * (Color.MAX_VALUE - color.getBlack())
+                            / Color.MAX_VALUE + color.getBlack();
             return ColorFactory.getRgb((r < 0 ? 0 : r), //
-                    (g < 0 ? 0 : g), //
-                    (b < 0 ? 0 : b), //
-                    color.getAlpha());
+                (g < 0 ? 0 : g), //
+                (b < 0 ? 0 : b), //
+                color.getAlpha());
         }
 
         /**
