@@ -48,7 +48,10 @@ import org.extex.backend.outputStream.OutputStreamFactory;
 import org.extex.color.ColorConverter;
 import org.extex.color.ColorConverterFacory;
 import org.extex.font.CoreFontFactory;
+import org.extex.font.ExtexFont;
+import org.extex.font.FontKey;
 import org.extex.font.exception.FontException;
+import org.extex.font.exception.FontNotFoundException;
 import org.extex.interpreter.ErrorHandler;
 import org.extex.interpreter.ErrorHandlerFactory;
 import org.extex.interpreter.Interpreter;
@@ -58,6 +61,7 @@ import org.extex.interpreter.context.ContextFactory;
 import org.extex.interpreter.context.observer.interaction.InteractionObservable;
 import org.extex.interpreter.context.observer.interaction.InteractionObserver;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.RegistrarFontNotFoundException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.interaction.Interaction;
 import org.extex.interpreter.interaction.InteractionUnknownException;
@@ -67,6 +71,7 @@ import org.extex.interpreter.max.TokenFactoryFactory;
 import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.interpreter.type.font.Font;
 import org.extex.interpreter.type.font.FontImpl;
+import org.extex.interpreter.type.font.ModifiableFont;
 import org.extex.interpreter.unit.LoadUnit;
 import org.extex.language.LanguageManager;
 import org.extex.language.LanguageManagerFactory;
@@ -514,6 +519,55 @@ public class ExTeX {
         public Object reconnect(final Object object) throws RegistrarException {
 
             ((ResourceConsumer) object).setResourceFinder(finder);
+            return object;
+        }
+    }
+
+    /**
+     * This class is used to inject a resource finder when a class is loaded
+     * from a format which needs it.
+     *
+     * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+     * @version $Revision: 4770 $
+     */
+    private class FontInjector implements RegistrarObserver {
+
+        /**
+         * The field <tt>factory</tt> contains the font factory to use for
+         * reconnecting the font.
+         */
+        private CoreFontFactory factory;
+
+        /**
+         * Creates a new object.
+         *
+         * @param factory the resource finder to inject
+         */
+        public FontInjector(final CoreFontFactory factory) {
+
+            super();
+            this.factory = factory;
+        }
+
+        /**
+         * @see org.extex.util.framework.RegistrarObserver#reconnect(java.lang.Object)
+         */
+        public Object reconnect(final Object object) throws RegistrarException {
+
+            ModifiableFont font = (ModifiableFont) object;
+            FontKey fontKey = font.getFontKey();
+            ExtexFont fnt;
+            try {
+                fnt = factory.getInstance(fontKey);
+            } catch (ConfigurationException e) {
+                throw new RegistrarException(e);
+            } catch (FontException e) {
+                throw new RegistrarException(e);
+            }
+            if (fnt == null) {
+                throw new RegistrarFontNotFoundException(fontKey);
+            }
+            font.setFont(fnt);
             return object;
         }
     }
@@ -1212,9 +1266,12 @@ public class ExTeX {
             if (stream == null) {
                 throw new HelpingException(localizer, "FormatNotFound", format);
             }
-            Object ref =
+            Object ref1 =
                     Registrar.register(new ResourceFinderInjector(finder),
                         ResourceConsumer.class);
+            Object ref2 =
+                    Registrar.register(new FontInjector(context
+                        .getFontFactory()), ModifiableFont.class);
             try {
                 //TODO gene: provide adequate configuration names
                 interpreter.loadFormat(stream, format, "ExTeX", "ExTeX");
@@ -1223,8 +1280,12 @@ public class ExTeX {
                 logger.throwing(this.getClass().getName(), "loadFormat()", e);
                 throw new HelpingException(localizer, "TTP.FormatFileError",
                     format);
+            } catch (RegistrarFontNotFoundException e) {
+                throw new HelpingException(localizer, "FontNotFound",
+                    e.getKey().getName());
             } finally {
-                Registrar.unregister(ref);
+                Registrar.unregister(ref1);
+                Registrar.unregister(ref2);
             }
             context = interpreter.getContext();
             logger.fine(localizer.format("ExTeX.FormatDate", context.getId(),
@@ -1382,7 +1443,7 @@ public class ExTeX {
      * @param tokenFactory the token factory to inject
      * @param fontFactory the font factory
      * @param interpreter the interpreter
-     * @param finder the resoruce finder
+     * @param finder the resource finder
      * @param jobname the job name
      * @param outFactory the output stream factory
      *
@@ -1408,6 +1469,7 @@ public class ExTeX {
 
         interpreter.setContext(context);
 
+        context.setFontFactory(fontFactory);
         context.set(makeDefaultFont(config.findConfiguration(TAG_FONT),
             fontFactory), true);
 
