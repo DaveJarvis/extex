@@ -23,7 +23,6 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.extex.font.FontByteArray;
 import org.extex.font.FontKey;
 import org.extex.font.GlyphImpl;
 import org.extex.font.Kerning;

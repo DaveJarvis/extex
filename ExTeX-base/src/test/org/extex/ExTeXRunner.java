@@ -23,7 +23,6 @@ import java.util.Properties;
 
 import org.extex.ExTeX;
 import org.extex.font.CoreFontFactory;
-import org.extex.font.FontFactory;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.ConfigurationFactory;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
