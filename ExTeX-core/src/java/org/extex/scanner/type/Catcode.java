@@ -925,6 +925,11 @@ public abstract class Catcode implements Serializable {
     }
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    protected static final long serialVersionUID = 24012007L;
+
+    /**
      * The constant <tt>ACTIVE</tt> contains the unique object representing
      * the active catcode.
      */

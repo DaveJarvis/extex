@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -43,6 +43,11 @@ import org.extex.util.framework.i18n.LocalizerFactory;
  * @version $Revision:4399 $
  */
 public abstract class MathClass implements Serializable {
+
+    /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    protected static final long serialVersionUID = 24012007L;
 
     /**
      * This is a inner class for a binary operator.
@@ -482,8 +487,9 @@ public abstract class MathClass implements Serializable {
      *
      * @see MathClass#getMathClass(int)
      */
-    private static final MathClass[] MC = {ORDINARY, LARGE, BINARY, RELATION,
-            OPENING, CLOSING, PUNCTUATION, VARIABLE, null};
+    private static final MathClass[] MC =
+            {ORDINARY, LARGE, BINARY, RELATION, OPENING, CLOSING, PUNCTUATION,
+                    VARIABLE, null};
 
     /**
      * Factory method for the math class which maps the <logo>TeX</logo>
@@ -569,7 +575,7 @@ public abstract class MathClass implements Serializable {
 
             } catch (MissingNumberException e) {
                 throw new HelpingException(LocalizerFactory
-                        .getLocalizer(MathClass.class), "TTP.MissingDelim");
+                    .getLocalizer(MathClass.class), "TTP.MissingDelim");
             }
         } else if (t instanceof LetterToken) {
             source.push(t);
@@ -614,7 +620,7 @@ public abstract class MathClass implements Serializable {
                 default:
             }
             throw new HelpingException(LocalizerFactory
-                    .getLocalizer(MathClass.class), "TTP.MissingDelim");
+                .getLocalizer(MathClass.class), "TTP.MissingDelim");
         }
 
         throw new EofException();

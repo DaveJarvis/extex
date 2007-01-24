@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -53,6 +53,11 @@ import java.io.Serializable;
  * @version $Revision$
  */
 public abstract class GroupType implements Serializable {
+
+    /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    protected static final long serialVersionUID = 24012007L;
 
     /**
      * The field <tt>ADJUSTED_HBOX_GROUP</tt> contains the symbolic constant
