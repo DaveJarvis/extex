@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
@@ -26,8 +26,6 @@ import org.extex.type.UnicodeChar;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
-
-
 /**
  * This is the abstract base class for all Tokens.
  *
@@ -42,6 +40,11 @@ public abstract class AbstractToken implements Token, Serializable {
      * the hash code.
      */
     private static final int HASH_FACTOR = 17;
+
+    /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    protected static final long serialVersionUID = 24012007L;
 
     /**
      * The field <tt>uniCode</tt> contains the Unicode character assigned to
@@ -99,7 +102,7 @@ public abstract class AbstractToken implements Token, Serializable {
         return this == t
                 || (t instanceof Token
                         && getCatcode() == ((Token) t).getCatcode() && getChar()
-                        .equals(((Token) t).getChar()));
+                    .equals(((Token) t).getChar()));
     }
 
     /**
