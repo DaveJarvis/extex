@@ -19,7 +19,6 @@
 
 package org.extex.util.resource;
 
-import java.io.InputStream;
 import java.util.Iterator;
 
 import org.extex.type.StringList;
