@@ -17,38 +17,50 @@
  *
  */
 
-package org.extex.interpreter.primitives.register.dimen;
+package org.extex.unit.pdftex.exception;
 
-import org.extex.unit.tex.register.dimen.AbstractDimenRegisterTester;
+import org.extex.interpreter.exception.InterpreterException;
+
 
 /**
- * This is a test suite for the primitive <tt>\pdfthreadhoffset</tt>.
+ * This exception is raised when a <logo>pdfTeX</logo> primitive is used
+ * without being in PDF mode.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4824 $
+ * @version $Revision: 4732 $
  */
-public class PdfthreadhoffsetTest extends AbstractDimenRegisterTester {
+public class InterpreterPdftexUnsupportedException extends InterpreterException {
 
     /**
-     * Command line interface.
-     * @param args the arguments
+     * The field <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    public static void main(final String[] args) {
+    protected static final long serialVersionUID = 2005L;
 
-        junit.textui.TestRunner.run(PdfthreadhoffsetTest.class);
+    /**
+     * Creates a new object.
+     *
+     */
+    public InterpreterPdftexUnsupportedException() {
+
+        super();
     }
 
     /**
      * Creates a new object.
      *
-     * @param arg the name
+     * @param primitive the name of the primitive in action
      */
-    public PdfthreadhoffsetTest(final String arg) {
+    public InterpreterPdftexUnsupportedException(final String primitive) {
 
-        super(arg, "pdfthreadhoffset", "", "0.0pt");
-        setConfig("pdftex-test");
+        super(primitive);
     }
 
-    //TODO implement the primitive specific test cases
+    /**
+     * @see java.lang.Throwable#getMessage()
+     */
+    public String getMessage() {
+
+        return getLocalizer().format("Text", super.getMessage());
+    }
 
 }

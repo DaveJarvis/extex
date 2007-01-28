@@ -17,38 +17,48 @@
  *
  */
 
-package org.extex.interpreter.primitives.register.dimen;
-
-import org.extex.unit.tex.register.dimen.AbstractDimenRegisterTester;
+package org.extex.unit.pdftex.util.id;
 
 /**
- * This is a test suite for the primitive <tt>\pdfthreadhoffset</tt>.
+ * This class carries an id based on a number.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4824 $
+ * @version $Revision$
  */
-public class PdfthreadhoffsetTest extends AbstractDimenRegisterTester {
+public class NumIdSpec extends IdSpec {
 
     /**
-     * Command line interface.
-     * @param args the arguments
+     * The field <tt>num</tt> contains the number.
      */
-    public static void main(final String[] args) {
-
-        junit.textui.TestRunner.run(PdfthreadhoffsetTest.class);
-    }
+    private long num;
 
     /**
      * Creates a new object.
      *
-     * @param arg the name
+     * @param num the num
      */
-    public PdfthreadhoffsetTest(final String arg) {
+    public NumIdSpec(final long num) {
 
-        super(arg, "pdfthreadhoffset", "", "0.0pt");
-        setConfig("pdftex-test");
+        super();
+        this.num = num;
     }
 
-    //TODO implement the primitive specific test cases
+    /**
+     * Getter for the number.
+     *
+     * @return the number
+     */
+    public long getNum() {
+
+        return this.num;
+    }
+
+    /**
+     * @see java.lang.Object#toString()
+     */
+    public String toString() {
+
+        return "num " + Long.toString(num);
+    }
 
 }

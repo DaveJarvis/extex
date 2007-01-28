@@ -19,7 +19,7 @@
 
 package org.extex.interpreter.primitives.register.dimen;
 
-import org.extex.interpreter.primitives.register.dimen.AbstractDimenRegisterTester;
+import org.extex.unit.tex.register.dimen.AbstractDimenRegisterTester;
 
 /**
  * This is a test suite for the primitive <tt>\pdfpageheight</tt>.

@@ -2,7 +2,6 @@ package org.extex.backend.documentWriter;
 
 
 import org.extex.interpreter.exception.InterpreterException;
-import org.extex.interpreter.primitives.pdftex.util.action.ActionSpec;
 import org.extex.interpreter.type.box.Box;
 import org.extex.interpreter.type.font.Font;
 import org.extex.typesetter.type.node.RuleNode;
@@ -10,6 +9,7 @@ import org.extex.typesetter.type.node.pdftex.PdfAnnotation;
 import org.extex.typesetter.type.node.pdftex.PdfObject;
 import org.extex.typesetter.type.node.pdftex.PdfRefXImage;
 import org.extex.typesetter.type.node.pdftex.PdfXForm;
+import org.extex.unit.pdftex.util.action.ActionSpec;
 
 
 /**

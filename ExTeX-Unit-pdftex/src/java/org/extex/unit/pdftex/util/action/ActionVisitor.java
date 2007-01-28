@@ -17,38 +17,50 @@
  *
  */
 
-package org.extex.interpreter.primitives.register.dimen;
-
-import org.extex.unit.tex.register.dimen.AbstractDimenRegisterTester;
+package org.extex.unit.pdftex.util.action;
 
 /**
- * This is a test suite for the primitive <tt>\pdfthreadhoffset</tt>.
+ * This interface describes a visitor for actions as used on PDF nodes.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4824 $
+ * @version $Revision$
  */
-public class PdfthreadhoffsetTest extends AbstractDimenRegisterTester {
+public interface ActionVisitor {
 
     /**
-     * Command line interface.
-     * @param args the arguments
-     */
-    public static void main(final String[] args) {
-
-        junit.textui.TestRunner.run(PdfthreadhoffsetTest.class);
-    }
-
-    /**
-     * Creates a new object.
+     * Visit a Goto action with id.
      *
-     * @param arg the name
+     * @param spec the specification
+     *
+     * @return any Object
      */
-    public PdfthreadhoffsetTest(final String arg) {
+    Object visitGotoId(GotoIdActionSpec spec);
 
-        super(arg, "pdfthreadhoffset", "", "0.0pt");
-        setConfig("pdftex-test");
-    }
+    /**
+     * Visit a GotoPage action
+     *
+     * @param spec the specification
+     *
+     * @return any Object
+     */
+    Object visitGotoPage(GotoPageActionSpec spec);
 
-    //TODO implement the primitive specific test cases
+    /**
+     * Visit a Thread action.
+     *
+     * @param spec the specification
+     *
+     * @return any Object
+     */
+    Object visitThread(ThreadActionSpec spec);
+
+    /**
+     * Visit a User action.
+     *
+     * @param spec the specification
+     *
+     * @return any Object
+     */
+    Object visitUser(UserActionSpec spec);
 
 }

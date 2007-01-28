@@ -17,38 +17,49 @@
  *
  */
 
-package org.extex.interpreter.primitives.register.dimen;
-
-import org.extex.unit.tex.register.dimen.AbstractDimenRegisterTester;
+package org.extex.unit.pdftex.exception;
 
 /**
- * This is a test suite for the primitive <tt>\pdfthreadhoffset</tt>.
+ * This exception is raised when a <logo>pdfTeX</logo> encounters an invalid
+ * identifier type.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4824 $
+ * @version $Revision$
  */
-public class PdfthreadhoffsetTest extends AbstractDimenRegisterTester {
+public class InterpreterPdftexIdentifierTypeException
+        extends
+            InterpreterPdftexException {
 
     /**
-     * Command line interface.
-     * @param args the arguments
+     * The field <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    public static void main(final String[] args) {
+    protected static final long serialVersionUID = 2005L;
 
-        junit.textui.TestRunner.run(PdfthreadhoffsetTest.class);
+    /**
+     * Creates a new object.
+     *
+     */
+    public InterpreterPdftexIdentifierTypeException() {
+
+        super();
     }
 
     /**
      * Creates a new object.
      *
-     * @param arg the name
+     * @param primitive the name of the primitive in action
      */
-    public PdfthreadhoffsetTest(final String arg) {
+    public InterpreterPdftexIdentifierTypeException(final String primitive) {
 
-        super(arg, "pdfthreadhoffset", "", "0.0pt");
-        setConfig("pdftex-test");
+        super(primitive);
     }
 
-    //TODO implement the primitive specific test cases
+    /**
+     * @see java.lang.Throwable#getMessage()
+     */
+    public String getMessage() {
+
+        return getLocalizer().format("Text", super.getMessage());
+    }
 
 }

@@ -17,38 +17,57 @@
  *
  */
 
-package org.extex.interpreter.primitives.register.dimen;
-
-import org.extex.unit.tex.register.dimen.AbstractDimenRegisterTester;
+package org.extex.unit.pdftex.util.destination;
 
 /**
- * This is a test suite for the primitive <tt>\pdfthreadhoffset</tt>.
+ * This class carries a destination type ZOOM as used in PDF nodes.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4824 $
+ * @version $Revision: 4732 $
  */
-public class PdfthreadhoffsetTest extends AbstractDimenRegisterTester {
+public class ZoomDestType extends DestType {
 
     /**
-     * Command line interface.
-     * @param args the arguments
+     * The field <tt>zoom</tt> contains the zoom value.
      */
-    public static void main(final String[] args) {
-
-        junit.textui.TestRunner.run(PdfthreadhoffsetTest.class);
-    }
+    private long zoom;
 
     /**
      * Creates a new object.
      *
-     * @param arg the name
+     * @param zoom the zoom value
      */
-    public PdfthreadhoffsetTest(final String arg) {
+    public ZoomDestType(final long zoom) {
 
-        super(arg, "pdfthreadhoffset", "", "0.0pt");
-        setConfig("pdftex-test");
+        super();
+        this.zoom = zoom;
     }
 
-    //TODO implement the primitive specific test cases
+    /**
+     * Getter for zoom.
+     *
+     * @return the zoom
+     */
+    public long getZoom() {
+
+        return this.zoom;
+    }
+
+    /**
+     * @see java.lang.Object#toString()
+     */
+    public String toString() {
+
+        return "zoom " + Long.toString(zoom);
+    }
+
+    /**
+     * @see org.extex.unit.pdftex.util.destType.DestType#visit(
+     *      org.extex.unit.pdftex.util.destType.DestTypeVisitor)
+     */
+    public Object visit(final DestinationVisitor visitor) {
+
+        return visitor.visitZoom(this);
+    }
 
 }

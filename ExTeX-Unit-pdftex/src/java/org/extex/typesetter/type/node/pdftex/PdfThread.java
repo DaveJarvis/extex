@@ -19,9 +19,9 @@
 
 package org.extex.typesetter.type.node.pdftex;
 
-import org.extex.interpreter.primitives.pdftex.util.id.IdSpec;
 import org.extex.typesetter.type.node.RuleNode;
 import org.extex.typesetter.type.node.WhatsItNode;
+import org.extex.unit.pdftex.util.id.IdSpec;
 
 
 /**
