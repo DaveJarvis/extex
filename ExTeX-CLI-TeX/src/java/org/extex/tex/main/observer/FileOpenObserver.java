@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -23,7 +23,6 @@ import java.io.InputStream;
 import java.util.logging.Logger;
 
 import org.extex.scanner.stream.observer.file.OpenFileObserver;
-
 
 /**
  * This observer reports that a certain file has been opened.
@@ -60,7 +59,7 @@ public class FileOpenObserver implements OpenFileObserver {
     public void update(final String filename, final String filetype,
             final InputStream stream) {
 
-        logger.info("(" + filename);
+        logger.info("(" + filename + " ");
     }
 
 }

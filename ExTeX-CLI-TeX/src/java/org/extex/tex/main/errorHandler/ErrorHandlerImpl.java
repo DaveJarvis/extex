@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
@@ -39,7 +39,6 @@ import org.extex.util.framework.i18n.Localizable;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.logger.LogEnabled;
 
-
 /**
  * This is a simple implementation of the error handler interacting with the
  * user on the command line like <logo>TeX</logo> does.
@@ -57,7 +56,7 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
 
     /**
      * The field <tt>ENABLE_DEBUG</tt> contains the indicator for turning on
-     * the dubugging emulation.
+     * the debugging emulation.
      */
     private static boolean ENABLE_DEBUG = false;
 
@@ -103,19 +102,20 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
             final Context context = (Context) oContext;
             final GeneralException ex = (GeneralException) oException;
             if (ex.getCause() instanceof ConfigurationException) {
-                showErrorLine(logger, ex.getCause().getLocalizedMessage(), source
-                        .getLocator());
+                showErrorLine(logger, ex.getCause().getLocalizedMessage(),
+                    source.getLocator());
             } else {
                 showErrorLine(logger, ex.getLocalizedMessage(), source
-                        .getLocator());
+                    .getLocator());
             }
 
             try {
                 boolean firstHelp = true;
 
                 for (;;) {
-                    String line = promptAndReadLine(localizer
-                            .format("ErrorHandler.Prompt"));
+                    String line =
+                            promptAndReadLine(localizer
+                                .format("ErrorHandler.Prompt"));
                     logger.config(line);
 
                     if (line.equals("") || line.equals(NL)) {
@@ -149,7 +149,7 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
                                     handleDebug();
                                 } else {
                                     logger.severe(localizer
-                                            .format("ErrorHandler.help")
+                                        .format("ErrorHandler.help")
                                             + NL);
                                 }
                                 break;
@@ -158,19 +158,19 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
                                 // TTP[84]
                                 if (editHandler != null
                                         && editHandler.edit(localizer, //
-                                                source.getLocator())) {
+                                            source.getLocator())) {
 
                                     context
-                                            .setInteraction(Interaction.SCROLLMODE);
+                                        .setInteraction(Interaction.SCROLLMODE);
                                     logger.info(localizer
-                                            .format("ErrorHandler.scrollmode")
+                                        .format("ErrorHandler.scrollmode")
                                             + NL);
                                 }
                                 return true;
                             case 'i':
                             case 'I':
                                 source.addStream(source.getTokenStreamFactory()
-                                        .newInstance(line.substring(1)));
+                                    .newInstance(line.substring(1)));
                                 break;
                             case 'h':
                             case 'H':
@@ -178,11 +178,13 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
                                 String help;
 
                                 if (!firstHelp) {
-                                    help = localizer
-                                            .format("ErrorHandler.noMoreHelp");
+                                    help =
+                                            localizer
+                                                .format("ErrorHandler.noMoreHelp");
                                 } else if ((help = ex.getHelp()) == null) {
-                                    help = localizer
-                                            .format("ErrorHandler.noHelp");
+                                    help =
+                                            localizer
+                                                .format("ErrorHandler.noHelp");
                                 }
 
                                 firstHelp = false;
@@ -192,21 +194,21 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
                             case 'Q':
                                 context.setInteraction(Interaction.BATCHMODE);
                                 logger.info(localizer
-                                        .format("ErrorHandler.batchmode")
+                                    .format("ErrorHandler.batchmode")
                                         + NL);
                                 return true;
                             case 'r':
                             case 'R':
                                 context.setInteraction(Interaction.NONSTOPMODE);
                                 logger.info(localizer
-                                        .format("ErrorHandler.nonstopmode")
+                                    .format("ErrorHandler.nonstopmode")
                                         + NL);
                                 return true;
                             case 's':
                             case 'S':
                                 context.setInteraction(Interaction.SCROLLMODE);
                                 logger.info(localizer
-                                        .format("ErrorHandler.scrollmode")
+                                    .format("ErrorHandler.scrollmode")
                                         + NL);
                                 return true;
                             case 'x':
@@ -214,7 +216,7 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
                                 return false;
                             default:
                                 logger.severe(localizer
-                                        .format("ErrorHandler.help")
+                                    .format("ErrorHandler.help")
                                         + NL);
                         }
                     }
@@ -301,8 +303,9 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
     protected void handleDebug() throws HelpingException {
 
         for (;;) {
-            String line = promptAndReadLine(localizer
-                    .format("ErrorHandler.DebugPrompt"));
+            String line =
+                    promptAndReadLine(localizer
+                        .format("ErrorHandler.DebugPrompt"));
             logger.config(line);
 
             if (line.startsWith("-")) {
@@ -345,7 +348,7 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
 
         try {
             return context.getInteraction().visit(iv, source, context,
-                    exception);
+                exception);
         } catch (InterpreterException e) {
             throw e;
         } catch (GeneralException e) {
@@ -405,25 +408,48 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
     /**
      * This method is invoked to present the current line causing the error.
      *
-     * @param theLogger the logger to use for output
+     * @param logger the logger to use for output
      * @param message the error message
      * @param locator the locator for the error position
      */
-    protected void showErrorLine(final Logger theLogger, final String message,
+    protected void showErrorLine(final Logger logger, final String message,
             final Locator locator) {
 
         if (locator == null) {
             return;
         }
-        String file = locator.getResourceName();
+
         StringBuffer sb = new StringBuffer();
 
-        for (int i = locator.getLinePointer(); i > 0; i--) {
-            sb.append('_');
-        }
-        theLogger.severe(NL + NL + (file == null ? "" : file) + ":"
-                + Integer.toString(locator.getLineNumber()) + ": " + message
-                + NL + NL + locator.getLine() + NL + sb.toString() + "^" + NL);
-    }
+        for (Locator loc = locator; loc != null; loc = loc.getCause()) {
 
+            String file = loc.getResourceName();
+            int lineNumber = loc.getLineNumber();
+            String line = loc.getLine();
+            sb.append(NL);
+            sb.append(NL);
+            sb.append(file == null ? "" : file);
+            sb.append(':');
+            sb.append(lineNumber >= 0 ? Integer.toString(lineNumber) : "");
+            sb.append(':');
+            if (loc.getCause()==null) {
+                sb.append(' ');
+                sb.append(message);
+            }
+            sb.append(NL);
+            sb.append(NL);
+            if (line != null) {
+                sb.append(NL);
+                sb.append(line);
+                sb.append(NL);
+                for (int i = loc.getLinePointer(); i > 0; i--) {
+                    sb.append('_');
+                }
+                sb.append('^');
+                sb.append(NL);
+            }
+        }
+
+        logger.severe(sb.toString());
+    }
 }

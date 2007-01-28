@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
@@ -22,7 +22,6 @@ package org.extex.tex.main.errorHandler;
 import java.util.logging.Logger;
 
 import org.extex.type.Locator;
-
 
 /**
  * This is the error handler in <logo>TeX</logo> compatibility mode: the message
@@ -49,20 +48,31 @@ public class ErrorHandlerTeXImpl extends ErrorHandlerImpl {
     protected void showErrorLine(final Logger logger, final String message,
             final Locator locator) {
 
+        StringBuffer sb = new StringBuffer();
         String file = locator.getResourceName();
         String line = locator.getLine();
         int pointer = locator.getLinePointer();
-        StringBuffer sb = new StringBuffer();
+        int lineNumber = locator.getLineNumber();
         file = (file == null ? "<>" : "<" + file + ">");
 
+        sb.append(NL);
+        sb.append('!');
+        sb.append(message);
+        sb.append(NL);
+        sb.append(file);
+        sb.append(NL);
+        sb.append(line.substring(0, pointer - 1));
+        sb.append(NL);
         for (int i = pointer + file.length(); i > 0; i--) {
             sb.append(' ');
         }
+        sb.append(line.substring(pointer));
+        sb.append(NL);
+        sb.append("l.");
+        sb.append(lineNumber >= 0 ? Integer.toString(lineNumber) : "?");
+        sb.append(NL);
 
-        logger.severe(NL + "!" + message + NL + file
-                + line.substring(0, pointer - 1) + NL + sb.toString()
-                + line.substring(pointer) + "l."
-                + Integer.toString(locator.getLineNumber()) + NL);
+        logger.severe(sb.toString());
     }
 
 }
