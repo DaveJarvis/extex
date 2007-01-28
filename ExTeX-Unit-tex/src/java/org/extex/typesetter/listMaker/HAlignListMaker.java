@@ -26,9 +26,6 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.HelpingException;
-import org.extex.interpreter.primitives.table.Noalign;
-import org.extex.interpreter.primitives.table.Omit;
-import org.extex.interpreter.primitives.table.util.PreambleItem;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.interpreter.type.dimen.FixedDimen;
@@ -44,6 +41,9 @@ import org.extex.typesetter.listMaker.RestrictedHorizontalListMaker;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.node.HorizontalListNode;
 import org.extex.typesetter.type.node.VerticalListNode;
+import org.extex.unit.tex.table.Noalign;
+import org.extex.unit.tex.table.Omit;
+import org.extex.unit.tex.table.util.PreambleItem;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 
