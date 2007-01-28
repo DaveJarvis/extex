@@ -21,13 +21,13 @@ package org.extex.interpreter.expression;
 
 import junit.framework.TestCase;
 
-import org.extex.interpreter.context.impl.ContextImpl;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.MissingNumberException;
 import org.extex.interpreter.expression.Evaluator;
 import org.extex.interpreter.expression.TeXEvaluator;
 import org.extex.interpreter.expression.term.Accumulator;
 import org.extex.interpreter.max.StringSource;
+import org.extex.interpreter.max.context.ContextImpl;
 import org.extex.interpreter.type.count.Count;
 import org.extex.scanner.type.token.TokenFactoryImpl;
 import org.extex.util.framework.configuration.ConfigurationFactory;

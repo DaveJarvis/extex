@@ -24,11 +24,11 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.HelpingException;
-import org.extex.interpreter.primitives.conditional.AbstractIf;
 import org.extex.interpreter.type.scaled.ScaledNumber;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
+import org.extex.unit.base.conditional.AbstractIf;
 
 
 
@@ -91,12 +91,12 @@ public class Ifscaled extends AbstractIf {
     }
 
     /**
-     * @see org.extex.interpreter.primitives.conditional.AbstractIf#conditional(
+     * @see org.extex.unit.base.conditional.AbstractIf#conditional(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    protected boolean conditional(final Context context,
+    public boolean conditional(final Context context,
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 

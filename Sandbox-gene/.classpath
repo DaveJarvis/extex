@@ -8,5 +8,25 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-core"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3.8.1"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Font"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Backend-dump"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Backend-dvix"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Backend-ps"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Backend-rtf"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Backend-text"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Backend-xml"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-base-ext"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-CLI-TeX"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-In-magic"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Scanner"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Scanner32"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Unit-color"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Unit-etex"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Unit-extex"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Unit-image"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Unit-namespace"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Unit-native"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Unit-omega"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Unit-pdftex"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Unit-tex"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

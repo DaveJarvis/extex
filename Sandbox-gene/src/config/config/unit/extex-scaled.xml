@@ -21,31 +21,31 @@
   <primitives>
     <define name="maxError"
             namespace="system"
-            class="org.extex.interpreter.primitives.register.count.util.IntegerCode">100</define>
+            class="org.extex.unit.base.register.count.util.IntegerCode">100</define>
     <define name="maxRegister"
             namespace="system"
-            class="org.extex.interpreter.primitives.register.count.util.IntegerCode">-1</define>
+            class="org.extex.unit.base.register.count.util.IntegerCode">-1</define>
 
     <define name="everydisplayend"
-            class="org.extex.interpreter.primitives.register.toks.ToksParameter"/>
+            class="org.extex.unit.base.register.toks.ToksParameter"/>
     <define name="everymathend"
-            class="org.extex.interpreter.primitives.register.toks.ToksParameter"/>
+            class="org.extex.unit.base.register.toks.ToksParameter"/>
     <define name="hyphenation"
-            class="org.extex.interpreter.primitives.hyphen.Hyphenation"/>
+            class="org.extex.unit.etex.typesetter.Hyphenation"/>
     <define name="ifscaled"
-            class="org.extex.interpreter.primitives.conditional.Ifscaled"/>
+            class="org.extex.unit.base.conditional.Ifscaled"/>
     <define name="ignorevoid"
-            class="org.extex.interpreter.primitives.register.count.IntegerParameter"/>
+            class="org.extex.unit.base.register.count.IntegerParameter"/>
     <define name="integer"
-            class="org.extex.interpreter.primitives.register.count.Integer"/>
+            class="org.extex.unit.base.register.count.Integer"/>
     <define name="lang"
-            class="org.extex.interpreter.primitives.register.toks.ToksParameter"/>
+            class="org.extex.unit.base.register.toks.ToksParameter"/>
     <define name="mediaheight"
-            class="org.extex.interpreter.primitives.register.dimen.DimenParameter"/>
+            class="org.extex.unit.base.register.dimen.DimenParameter"/>
     <define name="mediawidth"
-            class="org.extex.interpreter.primitives.register.dimen.DimenParameter"/>
+            class="org.extex.unit.base.register.dimen.DimenParameter"/>
     <define name="scaled"
-            class="org.extex.interpreter.primitives.register.scaled.Scaled"/>
+            class="org.extex.unit.base.register.scaled.Scaled"/>
  </primitives>
  </unit>
  
