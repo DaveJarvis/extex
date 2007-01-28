@@ -1,0 +1,81 @@
+/*
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ *
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+ *
+ */
+
+package org.extex.unit.tex.register.skip;
+
+import org.extex.interpreter.Namespace;
+import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.typesetter.Typesetter;
+
+/**
+ * This class provides an implementation for the primitive <code>\skip</code>.
+ * It sets the named skip register to the value given,
+ * and as a side effect all prefixes are zeroed.
+ *
+ * <p>
+ * All features are inherited from
+ * {@link org.extex.unit.tex.register.skip.SkipParameter SkipParameter}.
+ * Just the key has to be provided under which this Glue has to be stored.
+ * This key is constructed from the name, a hash mark and the running number.
+ * </p>
+ *
+ * <p>Example</p>
+ * <pre>
+ * \skip12=345pt plus 12em
+ * </pre>
+ *
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * @version $Revision:4431 $
+ */
+public class SkipParameter extends SkipPrimitive {
+
+    /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    protected static final long serialVersionUID = 2005L;
+
+    /**
+     * Creates a new object.
+     *
+     * @param name the name for debugging
+     */
+    public SkipParameter(final String name) {
+
+        super(name);
+    }
+
+    /**
+     * Return the key (the number) for the skip register.
+     *
+     * @param source the source for the next tokens &ndash; if required
+     * @param context the interpreter context to use
+     *
+     * @return the key for the skip register
+     */
+    protected String getKey(final Context context, final TokenSource source, Typesetter typesetter) {
+
+        if (Namespace.SUPPORT_NAMESPACE_SKIP) {
+            return context.getNamespace() + "\b" + getName();
+        } else {
+            return getName();
+        }
+    }
+
+}
