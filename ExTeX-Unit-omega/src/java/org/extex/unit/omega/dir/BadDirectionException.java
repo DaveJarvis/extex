@@ -17,28 +17,35 @@
  *
  */
 
-package org.extex.interpreter.primitives.math.delimiter;
+package org.extex.unit.omega.dir;
 
-import org.extex.unit.tex.math.AbstractMathTester;
+import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.util.framework.i18n.LocalizerFactory;
+
 
 /**
- * This is a test suite for the primitive <tt>\oradical</tt>.
+ * this exception signals that an invalid specification for a direction has been
+ * encountered.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 4732 $
  */
-public class OradicalTest extends AbstractMathTester {
+public class BadDirectionException extends HelpingException {
 
     /**
-     * Constructor for RadicalTest.
-     *
-     * @param arg the name
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
-    public OradicalTest(final String arg) {
+    protected static final long serialVersionUID = 2006L;
 
-        super(arg, "oradical", "12 32");
-        setConfig("omega-test");
+    /**
+     * Creates a new object.
+     *
+     */
+    public BadDirectionException() {
+
+        super(LocalizerFactory.getLocalizer(BadDirectionException.class),
+                "Omega.BadDirection");
     }
 
-    //TODO implement more primitive specific test cases
 }

@@ -24,6 +24,7 @@ import org.extex.interpreter.type.math.MathClass;
 import org.extex.interpreter.type.math.MathCode;
 import org.extex.test.NoFlagsButGlobalPrimitiveTester;
 import org.extex.type.UnicodeChar;
+import org.extex.unit.tex.math.AbstractMathTester;
 
 /**
  * This is a test suite for the primitive <tt>\omathcode</tt>.

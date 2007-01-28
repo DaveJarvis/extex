@@ -17,28 +17,23 @@
  *
  */
 
-package org.extex.interpreter.primitives.math.delimiter;
-
-import org.extex.unit.tex.math.AbstractMathTester;
+package org.extex.unit.omega.ocp.util;
 
 /**
- * This is a test suite for the primitive <tt>\oradical</tt>.
+ * TODO gene: missing JavaDoc.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class OradicalTest extends AbstractMathTester {
+public class OcpList {
 
     /**
-     * Constructor for RadicalTest.
+     * Creates a new object.
      *
-     * @param arg the name
      */
-    public OradicalTest(final String arg) {
+    public OcpList() {
 
-        super(arg, "oradical", "12 32");
-        setConfig("omega-test");
+        super();
     }
 
-    //TODO implement more primitive specific test cases
 }

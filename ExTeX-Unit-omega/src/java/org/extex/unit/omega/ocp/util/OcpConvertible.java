@@ -17,28 +17,33 @@
  *
  */
 
-package org.extex.interpreter.primitives.math.delimiter;
+package org.extex.unit.omega.ocp.util;
 
-import org.extex.unit.tex.math.AbstractMathTester;
+import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.InterpreterException;
+import org.extex.typesetter.Typesetter;
 
 /**
- * This is a test suite for the primitive <tt>\oradical</tt>.
+ * This interface describes the feature of a code to be convertible into an Ocp.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4411 $
  */
-public class OradicalTest extends AbstractMathTester {
+public interface OcpConvertible {
 
     /**
-     * Constructor for RadicalTest.
+     * TODO gene: missing JavaDoc
      *
-     * @param arg the name
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter
+     *
+     * @return the Ocp encountered
+     *
+     * @throws InterpreterException in case of an error
      */
-    public OradicalTest(final String arg) {
+    Ocp convertOcp(Context context, TokenSource source, Typesetter typesetter)
+            throws InterpreterException;
 
-        super(arg, "oradical", "12 32");
-        setConfig("omega-test");
-    }
-
-    //TODO implement more primitive specific test cases
 }

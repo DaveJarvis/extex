@@ -17,28 +17,20 @@
  *
  */
 
-package org.extex.interpreter.primitives.math.delimiter;
-
-import org.extex.unit.tex.math.AbstractMathTester;
+package org.extex.unit.omega;
 
 /**
- * This is a test suite for the primitive <tt>\oradical</tt>.
+ * This interface contains methods and constants for the context extension for
+ * Omega.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 4411 $
  */
-public class OradicalTest extends AbstractMathTester {
+public interface OmegaExtension {
 
     /**
-     * Constructor for RadicalTest.
-     *
-     * @param arg the name
+     * The constant <tt>NAME</tt> contains the name of the context extension.
      */
-    public OradicalTest(final String arg) {
+    String NAME = "org.extex.interpreter.omega";
 
-        super(arg, "oradical", "12 32");
-        setConfig("omega-test");
-    }
-
-    //TODO implement more primitive specific test cases
 }

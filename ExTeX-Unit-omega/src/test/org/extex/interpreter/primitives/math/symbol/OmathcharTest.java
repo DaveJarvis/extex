@@ -19,7 +19,7 @@
 
 package org.extex.interpreter.primitives.math.symbol;
 
-import org.extex.interpreter.primitives.math.AbstractMathTester;
+import org.extex.unit.tex.math.AbstractMathTester;
 
 /**
  * This is a test suite for the primitive <tt>\omathchar</tt>.
