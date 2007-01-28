@@ -19,8 +19,8 @@
 
 package org.extex.interpreter.primitives.typesetter.undo;
 
-import org.extex.interpreter.primitives.math.AbstractMathTester;
 import org.extex.test.ExTeXLauncher;
+import org.extex.unit.tex.math.AbstractMathTester;
 
 
 /**

@@ -19,7 +19,7 @@
 
 package org.extex.interpreter.primitives.typesetter.undo;
 
-import org.extex.interpreter.primitives.register.dimen.AbstractReadonlyDimenRegisterTester;
+import org.extex.unit.tex.register.dimen.AbstractReadonlyDimenRegisterTester;
 
 /**
  * This is a test suite for the primitive <tt>\lastkern</tt>.
