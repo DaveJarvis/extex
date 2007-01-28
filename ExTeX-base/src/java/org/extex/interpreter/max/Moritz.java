@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -50,8 +50,6 @@ import org.extex.interpreter.observer.start.StartObserver;
 import org.extex.interpreter.observer.streamClose.StreamCloseObservable;
 import org.extex.interpreter.observer.streamClose.StreamCloseObserver;
 import org.extex.interpreter.observer.streamClose.StreamCloseObserverList;
-import org.extex.interpreter.primitives.register.count.util.IntegerCode;
-import org.extex.interpreter.primitives.register.toks.ToksParameter;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.CsConvertible;
@@ -85,11 +83,12 @@ import org.extex.scanner.type.token.TokenFactory;
 import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
 import org.extex.typesetter.Typesetter;
+import org.extex.unit.base.register.count.util.IntegerCode;
+import org.extex.unit.base.register.toks.ToksParameter;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.exception.NotObservableException;
 import org.extex.util.framework.configuration.Configurable;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
-
 
 /**
  * This class provides the layer above the input streams and the tokenizer. It
@@ -163,6 +162,19 @@ public class Moritz extends Max
     private static final long MAX_CHAR_CODE = Long.MAX_VALUE;
 
     /**
+     * The field <tt>lastToken</tt> contains the last token read.
+     */
+    private Token lastToken = null;
+
+    /**
+     * The field <tt>maxRegister</tt> contains the indicator for the max
+     * register value. Positive values are interpreted literally. Negative
+     * values have a special meaning indicating that arbitrary token lists
+     * are allowed in addition to arbitrary numbers.
+     */
+    private IntegerCode maxRegister = new IntegerCode("maxRegister", 255);
+
+    /**
      * The field <tt>observersCloseStream</tt> contains the observer list is
      * used for the observers which are registered to receive notifications when
      * a stream is closed.
@@ -193,14 +205,6 @@ public class Moritz extends Max
     private PushObserver observersPush = null;
 
     /**
-     * The field <tt>maxRegister</tt> contains the indicator for the max
-     * register value. Positive values are interpreted literally. Negative
-     * values have a special meaning indicating that arbitrary token lists
-     * are allowed in addition to arbitrary numbers.
-     */
-    private IntegerCode maxRegister = new IntegerCode("maxRegister", 255);
-
-    /**
      * The field <tt>skipSpaces</tt> contains the indicator that space tokens
      * should be discarded before the next token is delivered.
      */
@@ -227,11 +231,6 @@ public class Moritz extends Max
     private TokenStreamFactory tokenStreamFactory = null;
 
     /**
-     * The field <tt>lastToken</tt> contains the last token read.
-     */
-    private Token lastToken = null;
-
-    /**
      * Creates a new object.
      */
     public Moritz() {
@@ -248,12 +247,13 @@ public class Moritz extends Max
 
                 try {
                     Context c = getContext();
-                    CodeToken t = (CodeToken) c.getTokenFactory().createToken(
-                            Catcode.ESCAPE, UnicodeChar.get('\\'),
-                            "maxRegister", Namespace.SYSTEM_NAMESPACE);
+                    CodeToken t =
+                            (CodeToken) c.getTokenFactory().createToken(
+                                Catcode.ESCAPE, UnicodeChar.get('\\'),
+                                "maxRegister", Namespace.SYSTEM_NAMESPACE);
                     Code code = c.getCode(t);
                     if (code instanceof IntegerCode) {
-                        maxRegister = ((IntegerCode) code);
+                        maxRegister = (IntegerCode) code;
                     }
                 } catch (CatcodeException e) {
                     throw new InterpreterException(e);
@@ -347,11 +347,12 @@ public class Moritz extends Max
         }
         boolean isFile = stream.isFileStream();
         int last = streamStack.size() - 1;
-        stream = (last >= 0 ? (TokenStream) streamStack.remove(last) : null);
+        stream = last >= 0 ? (TokenStream) streamStack.remove(last) : null;
         if (isFile) {
             push(context.getToks(ToksParameter.getKey("everyeof", context)));
             return true;
         }
+        skipSpaces = false; // macro code needs this
         return false;
     }
 
@@ -411,8 +412,7 @@ public class Moritz extends Max
         }
         try {
             push(context.getTokenFactory().createToken(Catcode.ESCAPE,
-                    context.escapechar(), "inaccessible ",
-                    context.getNamespace()));
+                context.escapechar(), "inaccessible ", context.getNamespace()));
         } catch (InterpreterException e) {
             throw e;
         } catch (GeneralException e) {
@@ -439,11 +439,11 @@ public class Moritz extends Max
             Code code = context.getCode((CodeToken) t);
             if (code == null) {
                 throw new UndefinedControlSequenceException(AbstractCode
-                        .printable(context, t));
+                    .printable(context, t));
 
             } else if (code instanceof FontConvertible) {
                 return ((FontConvertible) code).convertFont(context, this,
-                        getTypesetter());
+                    getTypesetter());
             }
 
         }
@@ -510,11 +510,19 @@ public class Moritz extends Max
     }
 
     /**
+     * @see org.extex.interpreter.TokenSource#getLastToken()
+     */
+    public Token getLastToken() {
+
+        return lastToken;
+    }
+
+    /**
      * @see org.extex.interpreter.TokenSource#getLocator()
      */
     public Locator getLocator() {
 
-        return (stream == null ? null : stream.getLocator());
+        return stream == null ? null : stream.getLocator();
     }
 
     /**
@@ -579,7 +587,7 @@ public class Moritz extends Max
                         String val = ((ControlSequenceToken) t).getName();
                         if (val.length() != 1) {
                             throw new HelpingException(getLocalizer(),
-                                    "TTP.NonNumericToken", t.toString());
+                                "TTP.NonNumericToken", t.toString());
                         }
                         return val.charAt(0);
                     } else if (t != null) {
@@ -649,7 +657,7 @@ public class Moritz extends Max
                     return n;
 
                 default:
-            // fall through to error handling
+                    // fall through to error handling
             }
         }
 
@@ -664,7 +672,8 @@ public class Moritz extends Max
      *
      * @throws InterpreterException in case of an error
      *
-     * @see org.extex.interpreter.TokenSource#getOptionalEquals(Context)
+     * @see org.extex.interpreter.TokenSource#getOptionalEquals(
+     *      org.extex.interpreter.context.Context)
      */
     public void getOptionalEquals(final Context context)
             throws InterpreterException {
@@ -686,7 +695,7 @@ public class Moritz extends Max
      * returned.
      * <p>
      * Whenever a file stream is closed then the tokens from the stream are
-     * discarted. This holds also for the tokens pushed back onto this stream.
+     * discarded. This holds also for the tokens pushed back onto this stream.
      * </p>
      *
      * @param context the interpreter context
@@ -702,63 +711,36 @@ public class Moritz extends Max
 
         TokenFactory factory = context.getTokenFactory();
         Tokenizer tokenizer = context.getTokenizer();
-        Token t;
 
-        if (skipSpaces) {
+        try {
 
-            skipSpaces = false;
+            while (stream != null) {
 
-            try {
-                while (stream != null) {
-                    do {
-                        t = stream.get(factory, tokenizer);
-                        if (t != null && observersPop != null) {
-                            observersPop.update(t);
-                        }
-                    } while (t != null && t instanceof SpaceToken);
+                for (Token t = stream.get(factory, tokenizer); t != null; t =
+                        stream.get(factory, tokenizer)) {
 
-                    if (t != null) {
+                    if (observersPop != null) {
+                        observersPop.update(t);
+                    }
+                    if (!skipSpaces || !(t instanceof SpaceToken)) {
                         lastToken = t;
+                        skipSpaces = false;
                         return t;
                     }
-
-                    closeStream(context);
                 }
-            } catch (ScannerException e) {
-                throw new InterpreterException(e);
+
+                closeStream(context);
             }
 
-        } else {
-
-            try {
-                while (stream != null) {
-                    t = stream.get(factory, tokenizer);
-                    if (t != null) {
-                        if (observersPop != null) {
-                            observersPop.update(t);
-                        }
-                        lastToken = t;
-                        return t;
-                    }
-                    closeStream(context);
-                }
-            } catch (ScannerException e) {
-                throw new InterpreterException(e);
-            }
+        } catch (ScannerException e) {
+            throw new InterpreterException(e);
         }
+
         if (observersEOF != null) {
             observersEOF.update();
         }
         lastToken = null;
         return null;
-    }
-
-    /**
-     * @see org.extex.interpreter.TokenSource#getLastToken()
-     */
-    public Token getLastToken() {
-
-        return lastToken;
     }
 
     /**
@@ -776,7 +758,8 @@ public class Moritz extends Max
         if (token instanceof LeftBraceToken) {
             int balance = 1;
 
-            for (token = getToken(context); token != null; token = getToken(context)) {
+            for (token = getToken(context); token != null; token =
+                    getToken(context)) {
 
                 if (token.isa(Catcode.LEFTBRACE)) {
                     ++balance;
@@ -793,7 +776,7 @@ public class Moritz extends Max
             Code code = context.getCode((CodeToken) token);
             if (code instanceof TokensConvertible) {
                 return ((TokensConvertible) code).convertTokens(context,
-                        source, typesetter);
+                    source, typesetter);
             }
 
         } else if (token == null) {
@@ -954,7 +937,7 @@ public class Moritz extends Max
 
         if (tokenStreamFactory instanceof OpenFileObservable) {
             ((OpenFileObservable) tokenStreamFactory)
-                    .registerObserver(observer);
+                .registerObserver(observer);
         }
     }
 
@@ -965,7 +948,7 @@ public class Moritz extends Max
 
         if (tokenStreamFactory instanceof OpenReaderObservable) {
             ((OpenReaderObservable) tokenStreamFactory)
-                    .registerObserver(observer);
+                .registerObserver(observer);
         }
     }
 
@@ -976,7 +959,7 @@ public class Moritz extends Max
 
         if (tokenStreamFactory instanceof OpenStringObservable) {
             ((OpenStringObservable) tokenStreamFactory)
-                    .registerObserver(observer);
+                .registerObserver(observer);
         }
     }
 
@@ -1011,9 +994,9 @@ public class Moritz extends Max
      */
     public void registerObserver(final StreamCloseObserver observer) {
 
-        observersCloseStream = StreamCloseObserverList.register(
-                observersCloseStream, //
-                observer);
+        observersCloseStream =
+                StreamCloseObserverList.register(observersCloseStream, //
+                    observer);
     }
 
     /**
@@ -1093,7 +1076,7 @@ public class Moritz extends Max
     public long scanNumber(final Context context) throws InterpreterException {
 
         return Count.scanNumber(context, this, getTypesetter(),
-                getNonSpace(context));
+            getNonSpace(context));
     }
 
     /**
@@ -1133,8 +1116,8 @@ public class Moritz extends Max
 
         source.push(token);
         long registerNumber = Count.scanInteger(context, source, typesetter);
-        if (registerNumber < 0
-                || (maxRegisterValue >= 0 && registerNumber > maxRegisterValue)) {
+        if (registerNumber < 0 || maxRegisterValue >= 0
+                && registerNumber > maxRegisterValue) {
             throw new IllegalRegisterException(Long.toString(registerNumber));
         }
         return Long.toString(registerNumber);
@@ -1202,7 +1185,7 @@ public class Moritz extends Max
                 } else if (reportUndefined
                         && context.getCode((CodeToken) token) == null) {
                     throw new UndefinedControlSequenceException(token
-                            .toString());
+                        .toString());
                 } else {
                     toks.add(token);
                 }
@@ -1268,7 +1251,7 @@ public class Moritz extends Max
                 } else if (reportUndefined
                         && context.getCode((CodeToken) token) == null) {
                     throw new UndefinedControlSequenceException(token
-                            .toString());
+                        .toString());
                 } else {
                     toks.add(token);
                 }

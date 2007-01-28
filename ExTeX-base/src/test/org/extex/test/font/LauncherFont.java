@@ -24,6 +24,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.extex.font.FontKey;
+import org.extex.font.FontKeyFactory;
 import org.extex.interpreter.type.count.Count;
 import org.extex.interpreter.type.count.FixedCount;
 import org.extex.interpreter.type.dimen.Dimen;
@@ -49,6 +50,11 @@ public class LauncherFont implements Font, Serializable {
     protected static final long serialVersionUID = 1L;
 
     /**
+     * The field <tt>efCode</tt> contains the ...
+     */
+    private Map efCode = new HashMap();
+
+    /**
      * The field <tt>fontdimen</tt> contains the font dimens.
      */
     private Map fontdimen = new HashMap();
@@ -68,8 +74,7 @@ public class LauncherFont implements Font, Serializable {
      */
     public FontKey getActualFontKey() {
 
-        // TODO mgn: getActualFontKey unimplemented
-        return null;
+        return new FontKeyFactory().newInstance("testfont");
     }
 
     /**
@@ -85,7 +90,7 @@ public class LauncherFont implements Font, Serializable {
      */
     public int getCheckSum() {
 
-        return 0;
+        return 12345;
     }
 
     /**
@@ -95,20 +100,20 @@ public class LauncherFont implements Font, Serializable {
     public FixedGlue getDepth(final UnicodeChar uc) {
 
         switch (uc.getCodePoint()) {
-        case 'q':
-        case 'p':
-        case 'g':
-        case 'j':
-        case 'y':
-            return new Glue(Dimen.ONE * 2);
-        case ',':
-        case ';':
-        case '/':
-        case '(':
-        case ')':
-            return new Glue(Dimen.ONE);
-        default:
-            return Glue.ZERO;
+            case 'q':
+            case 'p':
+            case 'g':
+            case 'j':
+            case 'y':
+                return new Glue(Dimen.ONE * 2);
+            case ',':
+            case ';':
+            case '/':
+            case '(':
+            case ')':
+                return new Glue(Dimen.ONE);
+            default:
+                return Glue.ZERO;
         }
     }
 
@@ -126,7 +131,8 @@ public class LauncherFont implements Font, Serializable {
      */
     public long getEfCode(final UnicodeChar uc) {
 
-        return 1000;
+        Long l = (Long) efCode.get(uc);
+        return l != null ? l.longValue() : 1000;
     }
 
     /**
@@ -158,7 +164,7 @@ public class LauncherFont implements Font, Serializable {
      */
     public FontKey getFontKey() {
 
-        return null;
+        return new FontKeyFactory().newInstance("testfont");
     }
 
     /**
@@ -261,22 +267,12 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
-     * @see org.extex.interpreter.type.font.Font#setActualSize(org.extex.interpreter.type.dimen.Dimen)
-     */
-    public void setActualSize(final Dimen size) {
-
-        // TODO mgn: setActualSize unimplemented
-
-    }
-
-    /**
      * @see org.extex.interpreter.type.font.Font#setEfCode(org.extex.type.UnicodeChar,
      *      long)
      */
     public void setEfCode(final UnicodeChar uc, final long code) {
 
-        // TODO gene: setEfcode unimplemented
-
+        efCode.put(uc, new Long(code));
     }
 
     /**
@@ -295,12 +291,6 @@ public class LauncherFont implements Font, Serializable {
     public void setHyphenChar(final UnicodeChar hyphen) {
 
         this.hyphen = hyphen;
-    }
-
-    public void setScaleFactor(Count scaleFactor) {
-
-        // TODO mgn: setScaleFactor unimplemented
-
     }
 
     /**

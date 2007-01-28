@@ -51,7 +51,6 @@ import org.extex.font.CoreFontFactory;
 import org.extex.font.ExtexFont;
 import org.extex.font.FontKey;
 import org.extex.font.exception.FontException;
-import org.extex.font.exception.FontNotFoundException;
 import org.extex.interpreter.ErrorHandler;
 import org.extex.interpreter.ErrorHandlerFactory;
 import org.extex.interpreter.Interpreter;
@@ -1281,8 +1280,8 @@ public class ExTeX {
                 throw new HelpingException(localizer, "TTP.FormatFileError",
                     format);
             } catch (RegistrarFontNotFoundException e) {
-                throw new HelpingException(localizer, "FontNotFound",
-                    e.getKey().getName());
+                throw new HelpingException(localizer, "FontNotFound", e
+                    .getKey().getName());
             } finally {
                 Registrar.unregister(ref1);
                 Registrar.unregister(ref2);
@@ -1493,6 +1492,10 @@ public class ExTeX {
         }
         makePageSize(context);
 
+        if (getBooleanProperty(PROP_TRACE_MACROS)) {
+            context.setCount("tracingcommands", 1, true);
+        }
+        
         return context;
     }
 

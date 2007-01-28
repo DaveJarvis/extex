@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -49,6 +49,8 @@ import org.extex.interpreter.exception.helping.UnusedPrefixException;
 import org.extex.interpreter.interaction.Interaction;
 import org.extex.interpreter.loader.LoaderException;
 import org.extex.interpreter.loader.SerialLoader;
+import org.extex.interpreter.max.exception.NoTokenStreamFactoryException;
+import org.extex.interpreter.max.exception.NoTypesetterException;
 import org.extex.interpreter.observer.command.CommandObservable;
 import org.extex.interpreter.observer.command.CommandObserver;
 import org.extex.interpreter.observer.command.CommandObserverList;
@@ -70,7 +72,6 @@ import org.extex.interpreter.observer.start.StartObserverList;
 import org.extex.interpreter.observer.stop.StopObservable;
 import org.extex.interpreter.observer.stop.StopObserver;
 import org.extex.interpreter.observer.stop.StopObserverList;
-import org.extex.interpreter.primitives.register.count.util.IntegerCode;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.CodeExpander;
@@ -105,6 +106,7 @@ import org.extex.scanner.type.token.TokenVisitor;
 import org.extex.type.UnicodeChar;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
+import org.extex.unit.base.register.count.util.IntegerCode;
 import org.extex.util.Switch;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.Registrar;
@@ -253,8 +255,8 @@ public abstract class Max
      * the run is terminated. This value can be overwritten in the
      * configuration.
      */
-    private IntegerCode maxErrors = new IntegerCode("maxErrors",
-            MAX_ERRORS_DEFAULT);
+    private IntegerCode maxErrors =
+            new IntegerCode("maxErrors", MAX_ERRORS_DEFAULT);
 
     /**
      * This observer list is used for the observers which are registered to
@@ -330,11 +332,11 @@ public abstract class Max
             Code code = context.getCode(token);
             if (code instanceof ExpandableCode) {
                 ((ExpandableCode) code).expand(Flags.NONE, context,
-                        (TokenSource) arg, typesetter);
+                    (TokenSource) arg, typesetter);
                 return null;
             } else if (code == null) {
                 throw new UndefinedControlSequenceException(AbstractCode
-                        .printable(context, token));
+                    .printable(context, token));
             } else {
                 return token;
             }
@@ -362,11 +364,11 @@ public abstract class Max
             Code code = context.getCode(token);
             if (code instanceof ExpandableCode) {
                 ((ExpandableCode) code).expand(Flags.NONE, context,
-                        (TokenSource) arg, typesetter);
+                    (TokenSource) arg, typesetter);
                 return null;
             } else if (code == null) {
                 throw new UndefinedControlSequenceException(AbstractCode
-                        .printable(context, token));
+                    .printable(context, token));
             } else {
                 return token;
             }
@@ -508,9 +510,10 @@ public abstract class Max
 
                 try {
                     Context c = getContext();
-                    CodeToken t = (CodeToken) c.getTokenFactory().createToken(
-                            Catcode.ESCAPE, UnicodeChar.get('\\'), "maxErrors",
-                            Namespace.SYSTEM_NAMESPACE);
+                    CodeToken t =
+                            (CodeToken) c.getTokenFactory().createToken(
+                                Catcode.ESCAPE, UnicodeChar.get('\\'),
+                                "maxErrors", Namespace.SYSTEM_NAMESPACE);
                     Code code = c.getCode(t);
                     if (code instanceof IntegerCode) {
                         maxErrors = (IntegerCode) code;
@@ -579,7 +582,8 @@ public abstract class Max
      */
     private void execute(final Switch onceMore) throws InterpreterException {
 
-        for (Token token = getToken(context); token != null; token = getToken(context)) {
+        for (Token token = getToken(context); token != null; token =
+                getToken(context)) {
 
             if (observersCommand != null) {
                 observersCommand.update(token);
@@ -595,7 +599,7 @@ public abstract class Max
                 }
 
                 handleException(token, context, (InterpreterException) x,
-                        typesetter);
+                    typesetter);
                 e.setProcessed(true);
 
             } catch (RuntimeException e) {
@@ -683,7 +687,7 @@ public abstract class Max
             code = context.getCode((CodeToken) t);
             if (code instanceof ExpandableCode) {
                 ((ExpandableCode) code).expand(prefix, context, this,
-                        typesetter);
+                    typesetter);
             } else {
                 return t;
             }
@@ -713,8 +717,8 @@ public abstract class Max
         }
 
         try {
-            for (Token t = stream.get(null, null); t != null; t = stream.get(
-                    null, null)) {
+            for (Token t = stream.get(null, null); t != null; t =
+                    stream.get(null, null)) {
 
                 t = (Token) t.visit(tv, stream);
                 if (t != null) {
@@ -757,10 +761,10 @@ public abstract class Max
                 return t;
             } else if (code instanceof CodeExpander) {
                 ((CodeExpander) code).expandCode(context, this, typesetter,
-                        tokens);
+                    tokens);
             } else if (code instanceof ExpandableCode) {
                 ((ExpandableCode) code).expand(prefix, context, this,
-                        typesetter);
+                    typesetter);
             } else {
                 return t;
             }
@@ -1060,7 +1064,7 @@ public abstract class Max
             public Object reconnect(final Object object) {
 
                 ((Localizable) object).enableLocalization(LocalizerFactory
-                        .getLocalizer(object.getClass()));
+                    .getLocalizer(object.getClass()));
                 return object;
             }
 
@@ -1072,7 +1076,7 @@ public abstract class Max
 
         } catch (InvalidClassException e) {
             throw new LoaderException(getLocalizer().format(
-                    "ClassLoaderIncompatibility", fmt, e.getMessage()));
+                "ClassLoaderIncompatibility", fmt, e.getMessage()));
         } finally {
 
             Registrar.unregister(ref2);
@@ -1082,16 +1086,16 @@ public abstract class Max
         try {
             if (newContext instanceof Configurable) {
                 ((Configurable) newContext).configure(configuration
-                        .getConfiguration(CONTEXT_TAG).getConfiguration(
-                                contextType));
+                    .getConfiguration(CONTEXT_TAG)
+                    .getConfiguration(contextType));
             }
 
             LanguageManager languageManager = newContext.getLanguageManager();
             if (languageManager instanceof Configurable) {
 
                 ((Configurable) languageManager).configure(configuration
-                        .getConfiguration(LANGUAGE_TAG).getConfiguration(
-                                languageType));
+                    .getConfiguration(LANGUAGE_TAG).getConfiguration(
+                        languageType));
             }
         } catch (ConfigurationException e) {
             throw new LoaderException(e);
@@ -1134,7 +1138,7 @@ public abstract class Max
 
         try {
             LoadUnit.loadUnit(cfg, getContext(), this, getTypesetter(),
-                    getLogger(), outFactory);
+                getLogger(), outFactory);
         } catch (GeneralException e) {
             Throwable cause = e.getCause();
             if (cause instanceof ConfigurationException) {
@@ -1151,8 +1155,8 @@ public abstract class Max
      */
     public void registerObserver(final CommandObserver observer) {
 
-        observersCommand = CommandObserverList.register(observersCommand,
-                observer);
+        observersCommand =
+                CommandObserverList.register(observersCommand, observer);
     }
 
     /**
@@ -1172,8 +1176,8 @@ public abstract class Max
      */
     public void registerObserver(final ExpandMacroObserver observer) {
 
-        observersMacro = ExpandMacroObserverList.register(observersMacro,
-                observer);
+        observersMacro =
+                ExpandMacroObserverList.register(observersMacro, observer);
     }
 
     /**
@@ -1183,8 +1187,8 @@ public abstract class Max
      */
     public void registerObserver(final ExpandObserver observer) {
 
-        observersExpand = ExpandObserverList
-                .register(observersExpand, observer);
+        observersExpand =
+                ExpandObserverList.register(observersExpand, observer);
     }
 
     /**
@@ -1261,8 +1265,9 @@ public abstract class Max
         if (groupLevel != 0) {
             Localizer loc = getLocalizer();
             String endPrimitive = loc.format("TTP.EndPrimitive");
-            String message = loc.format("TTP.EndGroup", context
-                    .esc(endPrimitive), Long.toString(groupLevel));
+            String message =
+                    loc.format("TTP.EndGroup", context.esc(endPrimitive), Long
+                        .toString(groupLevel));
             InterpreterException e = new InterpreterException(message);
             if (observersError != null) {
                 observersError.update(e);
@@ -1273,9 +1278,10 @@ public abstract class Max
         if (cond != null) {
             Localizer loc = getLocalizer();
             String endPrimitive = loc.format("TTP.EndPrimitive");
-            String message = loc.format("TTP.EndIf", context.esc(endPrimitive),
-                    context.esc(cond.getPrimitiveName()), cond.getLocator()
-                            .toString());
+            String message =
+                    loc.format("TTP.EndIf", context.esc(endPrimitive), context
+                        .esc(cond.getPrimitiveName()), cond.getLocator()
+                        .toString());
             logger.warning(message);
             InterpreterException e = new InterpreterException(message);
             if (observersError != null) {
@@ -1394,7 +1400,7 @@ public abstract class Max
             Count ignoreVoid = context.getCount("ignorevoid");
             if (ignoreVoid.le(Count.ZERO)) {
                 throw new UndefinedControlSequenceException(AbstractCode
-                        .printable(context, token));
+                    .printable(context, token));
             }
         } else {
 
@@ -1428,7 +1434,7 @@ public abstract class Max
             reportDirtyFlag(token);
         }
         typesetter
-                .cr(context, context.getTypesettingContext(), token.getChar());
+            .cr(context, context.getTypesettingContext(), token.getChar());
         return null;
     }
 
@@ -1458,7 +1464,7 @@ public abstract class Max
             Count ignoreVoid = context.getCount("ignorevoid");
             if (ignoreVoid.le(Count.ZERO)) {
                 throw new UndefinedControlSequenceException(AbstractCode
-                        .printable(context, token));
+                    .printable(context, token));
             }
         } else {
 
@@ -1522,12 +1528,14 @@ public abstract class Max
         if (prefix.isDirty()) {
             reportDirtyFlag(token);
         }
-        if (typesetter.letter(token
-                .getChar(), context.getTypesettingContext(), context, this, getLocator())
+        if (typesetter.letter(token.getChar(), context.getTypesettingContext(),
+            context, this, getLocator())
                 && context.getCount("tracinglostchars").gt(Count.ZERO)) {
+//            FontUtil.charWarning(logger, context, context
+//                .getTypesettingContext().getFont(), token.getChar());
             logger.info(getLocalizer().format("TTP.MissingChar",
-                    token.getChar().toString(),
-                    context.getTypesettingContext().getFont().getFontName()));
+                token.getChar().toString(),
+                context.getTypesettingContext().getFont().getFontName()));
         }
 
         return null;
@@ -1552,7 +1560,7 @@ public abstract class Max
             final Object ignore) throws GeneralException {
 
         throw new CantUseInException(token.toString(), typesetter.getMode()
-                .toString());
+            .toString());
     }
 
     /**
@@ -1607,8 +1615,8 @@ public abstract class Max
             reportDirtyFlag(token);
         }
         typesetter.letter(token.getChar(), //
-                context.getTypesettingContext(), //
-                context, this, getLocator());
+            context.getTypesettingContext(), //
+            context, this, getLocator());
         return null;
     }
 

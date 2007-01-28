@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -29,7 +29,6 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.max.StringSource;
-import org.extex.interpreter.primitives.macro.Let;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.InitializableCode;
 import org.extex.interpreter.type.OutputStreamConsumer;
@@ -44,22 +43,23 @@ import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
 import org.extex.type.UnicodeChar;
 import org.extex.typesetter.Typesetter;
+import org.extex.unit.base.macro.Let;
+import org.extex.unit.base.macro.LetCode;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.AbstractFactory;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
-
 /**
- * This is a factory to units from a configuration.
+ * This is a factory load to units from a configuration.
  * A unit is a configuration consisting of an optional setup class and a set of
  * primitives. When the unit is loaded the setup class is instantiated and run.
  * Then the primitives are created and registered in the context.
  *
  * <pre>
- *  &lt;unit&gt;
- *    &lt;setup class="the.setup.Class"/&gt;
+ *  &lt;unit name="the name"
+ *        class="the.setup.Class"&gt;
  *    &lt;primitive&gt;
  *      &lt;define name="<i>name</i>" class="<i>class</i>"/&gt;
  *      &lt;define name="<i>name</i>" class="<i>class</i>"&gt;<i>value</i>&lt;/define&gt;
@@ -117,13 +117,13 @@ public final class LoadUnit extends AbstractFactory {
         TokenFactory tokenFactory = context.getTokenFactory();
         LoadUnit primitiveFactory = new LoadUnit();
 
-        String name = configuration.getAttribute("name");
+        String name = configuration.getAttribute(NAME_ATTRIBUTE);
         if (name == null) {
             name = "?";
         }
         UnitInfo unitInfo = new UnitInfo(name);
 
-        if (configuration.getAttribute("class") != null) {
+        if (configuration.getAttribute(CLASS_ATTRIBUTE) != null) {
             UnitInfoFactory factory = new UnitInfoFactory();
             factory.enableLogging(logger);
             factory.configure(configuration);
@@ -141,13 +141,13 @@ public final class LoadUnit extends AbstractFactory {
         Iterator iterator = configuration.iterator("primitives");
         while (iterator.hasNext()) {
             primitiveFactory.define((Configuration) iterator.next(),
-                    tokenFactory, context, typesetter, logger, outputFactory);
+                tokenFactory, context, typesetter, logger, outputFactory);
         }
 
         iterator = configuration.iterator("import");
         while (iterator.hasNext()) {
-            String ns = ((Configuration) iterator.next())
-                    .getAttribute("namespace");
+            String ns =
+                    ((Configuration) iterator.next()).getAttribute("namespace");
             Tokens export = context.getToks(ns + "\bexport");
             String namespace = context.getNamespace();
             int length = export.length();
@@ -157,11 +157,15 @@ public final class LoadUnit extends AbstractFactory {
                 if (t instanceof CodeToken) {
                     if (context.getCode((CodeToken) t) == null) {
                         throw new HelpingException(LocalizerFactory
-                                .getLocalizer(LoadUnit.class),
-                                "Loader.Import.undef", t.toString());
+                            .getLocalizer(LoadUnit.class),
+                            "Loader.Import.undef", t.toString());
                     } else {
-                        Let.let(Flags.NONE, context, //
-                                ((CodeToken) t).cloneInNamespace(namespace), t);
+                        context.setCode(((CodeToken) t)
+                            .cloneInNamespace(namespace),
+                            (t instanceof CodeToken //
+                                    ? context.getCode((CodeToken) t)
+                                    : new LetCode(t)), //
+                            false);
                     }
                 }
             }
@@ -224,8 +228,8 @@ public final class LoadUnit extends AbstractFactory {
             Configuration cfg = (Configuration) iterator.next();
 
             String name = cfg.getAttribute(NAME_ATTRIBUTE);
-            Code code = (Code) createInstanceForConfiguration(cfg, Code.class,
-                    name);
+            Code code =
+                    (Code) createInstanceForConfiguration(cfg, Code.class, name);
 
             String namespace = cfg.getAttribute(NAMESPACE_ATTRIBUTE);
             if (namespace == null) {
@@ -233,16 +237,16 @@ public final class LoadUnit extends AbstractFactory {
             }
 
             context.setCode((CodeToken) tokenFactory.createToken(
-                    Catcode.ESCAPE, esc, name, namespace), code, true);
+                Catcode.ESCAPE, esc, name, namespace), code, true);
             if (code instanceof InitializableCode) {
 
                 stringSource.reset(cfg.getValue());
                 ((InitializableCode) code).init(context, stringSource,
-                        typesetter);
+                    typesetter);
             }
             if (code instanceof OutputStreamConsumer) {
                 ((OutputStreamConsumer) code)
-                        .setOutputStreamFactory(outputFactory);
+                    .setOutputStreamFactory(outputFactory);
             }
         }
     }

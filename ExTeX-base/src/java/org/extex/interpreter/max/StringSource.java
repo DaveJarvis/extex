@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -33,7 +33,6 @@ import org.extex.scanner.type.token.TokenFactory;
 import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
-
 
 /**
  * This class provides a token source which is fed from a string.
@@ -102,7 +101,7 @@ public class StringSource extends Moritz {
                 UnicodeChar c = UnicodeChar.get(cs.charAt(next++));
                 try {
                     return factory.createToken(tokenizer.getCatcode(c), c,
-                            Namespace.DEFAULT_NAMESPACE);
+                        Namespace.DEFAULT_NAMESPACE);
                 } catch (CatcodeException e) {
                     throw new ScannerException(e);
                 }

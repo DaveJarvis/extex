@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.CharacterCodingException;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
 import java.util.logging.Handler;
@@ -113,21 +114,18 @@ public class ExTeXLauncher extends TestCase {
      * The constant <tt>DEFINE_BRACES</tt> contains the definition of the
      * usual category codes for braces { and }.
      */
-    public static final String DEFINE_BRACES = "\\catcode`\\{=1 "
-                                               + "\\catcode`\\}=2 ";
+    public static final String DEFINE_BRACES =
+            "\\catcode`\\{=1 " + "\\catcode`\\}=2 ";
 
     /**
      * The constant <tt>DEFINE_CATCODES</tt> contains the definition of the
      * usual category codes for {, }, $, &, #, ^, _, and ^^10.
      */
-    public static final String DEFINE_CATCODES = "\\catcode`\\{=1 "
-                                                 + "\\catcode`\\}=2 "
-                                                 + "\\catcode`\\$=3 "
-                                                 + "\\catcode`\\&=4 "
-                                                 + "\\catcode`\\#=6 "
-                                                 + "\\catcode`\\^=7 "
-                                                 + "\\catcode`\\_=8 "
-                                                 + "\\catcode`\\^^I=10 ";
+    public static final String DEFINE_CATCODES =
+            "\\catcode`\\{=1 " + "\\catcode`\\}=2 " + "\\catcode`\\$=3 "
+                    + "\\catcode`\\&=4 " + "\\catcode`\\#=6 "
+                    + "\\catcode`\\^=7 " + "\\catcode`\\_=8 "
+                    + "\\catcode`\\^^I=10 ";
 
     /**
      * The constant <tt>DEFINE_HASH</tt> contains the definition of the
@@ -142,10 +140,22 @@ public class ExTeXLauncher extends TestCase {
     public static final String DEFINE_MATH = "\\catcode`\\$=3 ";
 
     /**
+     * The constant <tt>DEFINE_TILDE</tt> contains the definition of the
+     * category code for ~.
+     */
+    public static final String DEFINE_TILDE = "\\catcode`\\~=13 ";
+
+    /**
      * The field <tt>levelMap</tt> contains the mapping for debug levels from
      * String representation to Level values.
      */
     private static final Map LEVEL_MAP = new HashMap();
+
+    /**
+     * The constant <tt>TERM</tt> contains the terminating string for output.
+     */
+    public static final String TERM = "\n\n";
+
     static {
         LEVEL_MAP.put("config", Level.CONFIG);
         LEVEL_MAP.put("info", Level.INFO);
@@ -155,11 +165,6 @@ public class ExTeXLauncher extends TestCase {
         LEVEL_MAP.put("finer", Level.FINER);
         LEVEL_MAP.put("finest", Level.FINEST);
     }
-
-    /**
-     * The constant <tt>TERM</tt> contains the terminating string for output.
-     */
-    public static final String TERM = "\n\n";
 
     /**
      * Set some properties to default values. The properties set are:
@@ -229,6 +234,7 @@ public class ExTeXLauncher extends TestCase {
     public ExTeXLauncher(final String arg) {
 
         super(arg);
+        Locale.setDefault(Locale.ENGLISH);
     }
 
     /**
@@ -305,20 +311,23 @@ public class ExTeXLauncher extends TestCase {
             protected Interpreter makeInterpreter(final Configuration config,
                     final OutputStreamFactory outFatory,
                     final ResourceFinder finder, final String jobname)
-                    throws ConfigurationException, GeneralException,
-                    FontException, IOException {
+                    throws ConfigurationException,
+                        GeneralException,
+                        FontException,
+                        IOException {
 
-                Interpreter interpreter = super
-                        .makeInterpreter(config, outFatory, finder, jobname);
+                Interpreter interpreter =
+                        super.makeInterpreter(config, outFatory, finder,
+                            jobname);
                 Context context = interpreter.getContext();
                 context.set(new LauncherFont(), true);
                 context.setStandardTokenStream(interpreter
-                        .getTokenStreamFactory()
-                        .newInstance(new InputStreamReader(System.in)));
+                    .getTokenStreamFactory().newInstance(
+                        new InputStreamReader(System.in)));
                 context.set(context.getLanguage("0"), true);
                 if (setHsize) {
                     context.setDimen("hsize", new Dimen(Dimen.ONE * 3000), //
-                                     true);
+                        true);
                 }
                 return interpreter;
             }
@@ -340,9 +349,9 @@ public class ExTeXLauncher extends TestCase {
         extex.setLogger(logger);
 
         if (Boolean.valueOf(properties.getProperty("extex.launcher.verbose", //
-                                                   "false")).booleanValue()) {
-            Logger.getLogger(ExTeXLauncher.class.getName())
-                    .info("Running:\n" + code + "\n");
+            "false")).booleanValue()) {
+            Logger.getLogger(ExTeXLauncher.class.getName()).info(
+                "Running:\n" + code + "\n");
         }
 
         init(extex);
@@ -462,8 +471,9 @@ public class ExTeXLauncher extends TestCase {
      */
     private Level getLogLevel(final Properties properties) {
 
-        Level level = (Level) LEVEL_MAP.get(properties
-                .getProperty("extex.launcher.loglevel", "info"));
+        Level level =
+                (Level) LEVEL_MAP.get(properties.getProperty(
+                    "extex.launcher.loglevel", "info"));
 
         return level == null ? Level.INFO : level;
     }
