@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!--
-  -  Copyright (C) 2006 The ExTeX Group
+  -  Copyright (C) 2006-2007 The ExTeX Group
   -
   -  This library is free software; you can redistribute it and/or modify it
   -  under the terms of the GNU Lesser General Public License as published by
@@ -21,27 +21,27 @@
   <primitives>
     <define name="maxError"
             namespace="system"
-            class="org.extex.interpreter.primitives.register.count.util.IntegerCode">100</define>
+            class="org.extex.unit.base.register.count.util.IntegerCode">100</define>
     <define name="maxRegister"
             namespace="system"
-            class="org.extex.interpreter.primitives.register.count.util.IntegerCode">-1</define>
+            class="org.extex.unit.base.register.count.util.IntegerCode">-1</define>
 
     <define name="everydisplayend"
-            class="org.extex.interpreter.primitives.register.toks.ToksParameter"/>
+            class="org.extex.unit.base.register.toks.ToksParameter"/>
     <define name="everymathend"
-            class="org.extex.interpreter.primitives.register.toks.ToksParameter"/>
+            class="org.extex.unit.base.register.toks.ToksParameter"/>
     <define name="hyphenation"
-            class="org.extex.interpreter.primitives.hyphen.Hyphenation"/>
+            class="org.extex.unit.tex.hyphen.Hyphenation"/>
     <define name="ignorevoid"
-            class="org.extex.interpreter.primitives.register.count.IntegerParameter"/>
+            class="org.extex.unit.tex.register.count.IntegerParameter"/>
     <define name="integer"
-            class="org.extex.interpreter.primitives.register.count.Integer"/>
+            class="org.extex.unit.tex.register.count.Integer"/>
     <define name="lang"
-            class="org.extex.interpreter.primitives.register.toks.ToksParameter"/>
+            class="org.extex.unit.base.register.toks.ToksParameter"/>
     <define name="mediaheight"
-            class="org.extex.interpreter.primitives.register.dimen.DimenParameter"/>
+            class="org.extex.unit.tex.register.dimen.DimenParameter"/>
     <define name="mediawidth"
-            class="org.extex.interpreter.primitives.register.dimen.DimenParameter"/>
+            class="org.extex.unit.tex.register.dimen.DimenParameter"/>
  </primitives>
  </unit>
  
