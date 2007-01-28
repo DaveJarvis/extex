@@ -22,7 +22,7 @@ package de.dante.extex.interpreter.primitives.file;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
-import org.extex.interpreter.primitives.file.Input;
+import org.extex.unit.tex.file.Input;
 
 /**
  * This class provides an implementation for the primitive
@@ -63,7 +63,7 @@ public class InputFile extends Input {
      *
      * @throws InterpreterException in case of an error
      *
-     * @see org.extex.interpreter.primitives.file.AbstractFileCode#scanFileName(
+     * @see org.extex.unit.base.file.AbstractFileCode#scanFileName(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource)
      */

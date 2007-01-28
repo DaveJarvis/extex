@@ -22,7 +22,7 @@ package de.dante.extex.interpreter.context.impl.extension;
 import java.io.Serializable;
 
 import org.extex.interpreter.Tokenizer;
-import org.extex.interpreter.context.impl.Group;
+import org.extex.interpreter.max.context.Group;
 
 import de.dante.extex.interpreter.type.bool.Bool;
 import de.dante.extex.interpreter.type.hash.toks.HashToks;

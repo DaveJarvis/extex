@@ -23,13 +23,13 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
-import org.extex.interpreter.primitives.hyphen.AbstractHyphenationCode;
 import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.count.Count;
 import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.language.Language;
 import org.extex.language.hyphenation.exception.HyphenationException;
 import org.extex.typesetter.Typesetter;
+import org.extex.unit.tex.hyphen.AbstractHyphenationCode;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 

@@ -24,9 +24,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.extex.interpreter.Tokenizer;
-import org.extex.interpreter.context.impl.Group;
-import org.extex.interpreter.context.impl.GroupImpl;
 import org.extex.interpreter.exception.InterpreterExtensionException;
+import org.extex.interpreter.max.context.Group;
+import org.extex.interpreter.max.context.GroupImpl;
 import org.extex.util.exception.GeneralException;
 
 import de.dante.extex.interpreter.type.bool.Bool;
