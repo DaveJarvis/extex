@@ -55,7 +55,7 @@
 
   <!-- ==================================================================== -->
   <target name="extex-jar" description="Compile the Java files">
-    <ant dir="../build" target="jar" />
+    <ant dir="../build" target="jar" inheritAll="false"/>
   </target>
 
   <!-- ==================================================================== -->
