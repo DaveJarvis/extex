@@ -17,7 +17,7 @@
   -  Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
   -
   -->
-<ExTeX >
+<ExTeX>
   <banner>TeX compatibility mode</banner>
 
   <!-- 
@@ -69,10 +69,10 @@
     <!-- The configuration of the context implementation to use.
       -->
     <Context default="ExTeX">
-      <ExTeX class="org.extex.interpreter.context.impl.ContextImpl">
+      <ExTeX class="org.extex.interpreter.max.context.ContextImpl">
         <!-- The implementation of the group to use.
           -->
-        <Group class="org.extex.interpreter.context.impl.GroupImpl"/>
+        <Group class="org.extex.interpreter.max.context.GroupImpl"/>
 
         <!-- The implementation of the typesetting context to use.
           -->
