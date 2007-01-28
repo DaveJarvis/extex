@@ -25,12 +25,12 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.group.GroupType;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.HelpingException;
-import org.extex.interpreter.primitives.register.box.AbstractBox;
 import org.extex.interpreter.type.box.Box;
 import org.extex.interpreter.type.count.Count;
 import org.extex.typesetter.Mode;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.node.InsertionNode;
+import org.extex.unit.tex.register.box.AbstractBox;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 

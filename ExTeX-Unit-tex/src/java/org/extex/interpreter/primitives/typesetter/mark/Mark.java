@@ -33,7 +33,7 @@ import org.extex.typesetter.Typesetter;
  * <p>
  *  The primitive <tt>\mark</tt> places its argument as a mark node on the
  *  current node list. The argument is expanded during this operation as in
- *  {@link org.extex.interpreter.primitives.macro.Edef <tt>\edef</tt>}.
+ *  {@link org.extex.unit.tex.macro.Edef <tt>\edef</tt>}.
  * </p>
  * <p>
  *  The tokens are stored in the current node list. They are not affected by

@@ -23,7 +23,6 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
-import org.extex.interpreter.primitives.register.box.AbstractBox;
 import org.extex.interpreter.type.count.Count;
 import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.type.token.LeftBraceToken;
@@ -31,6 +30,7 @@ import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.ParagraphObserver;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.NodeList;
+import org.extex.unit.tex.register.box.AbstractBox;
 
 
 /**

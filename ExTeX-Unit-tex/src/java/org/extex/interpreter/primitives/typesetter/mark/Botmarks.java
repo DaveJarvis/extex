@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,10 +19,11 @@
 
 package org.extex.interpreter.primitives.typesetter.mark;
 
-
+import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.typesetter.Typesetter;
 
 /**
  * This class provides an implementation for the primitive
@@ -48,7 +49,7 @@ import org.extex.interpreter.type.tokens.Tokens;
  *  <pre class="syntax">
  *    &lang;botmark&rang;
  *      &rarr; <tt>\botmarks</tt> {@linkplain
- *        org.extex.interpreter.primitives.typesetter.mark.AbstractMarksCode#getKey(Context,TokenSource,Typesetter)
+ *        org.extex.unit.etex.typesetter.mark.AbstractMarksCode#getKey(Context,TokenSource,Typesetter)
  *        &lang;mark name&rang;}  </pre>
  *
  * <h4>Examples</h4>
@@ -81,7 +82,7 @@ public class Botmarks extends AbstractMarksCode {
     }
 
     /**
-     * @see org.extex.interpreter.primitives.typesetter.mark.AbstractMarksCode#getValue(
+     * @see org.extex.unit.etex.typesetter.mark.AbstractMarksCode#getValue(
      *      org.extex.interpreter.context.Context,
      *      java.lang.String)
      */
