@@ -19,8 +19,8 @@
 
 package org.extex.interpreter.primitives.conditional.analyze;
 
-import org.extex.interpreter.primitives.math.AbstractMathTester;
 import org.extex.interpreter.primitives.register.count.AbstractReadonlyCountRegisterTester;
+import org.extex.unit.tex.math.AbstractMathTester;
 
 
 /**

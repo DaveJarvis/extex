@@ -20,6 +20,7 @@
 package org.extex.interpreter.primitives.prefix;
 
 import org.extex.scanner.type.Catcode;
+import org.extex.unit.tex.prefix.PrefixTester;
 
 /**
  * This is a test suite for the primitive <tt>\protected</tt>.

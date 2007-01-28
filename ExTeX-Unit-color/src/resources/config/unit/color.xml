@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!--
-  -  Copyright (C) 2005-2006 The ExTeX Group
+  -  Copyright (C) 2005-2007 The ExTeX Group
   -
   -  This library is free software; you can redistribute it and/or modify it
   -  under the terms of the GNU Lesser General Public License as published by
@@ -20,9 +20,9 @@
 <unit name="color">
   <primitives>
     <define name="color"
-            class="org.extex.interpreter.primitives.color.ColorPrimitive"/>
+            class="org.extex.unit.color.ColorPrimitive"/>
     <define name="colordef"
-            class="org.extex.interpreter.primitives.color.Colordef"/>
+            class="org.extex.unit.color.Colordef"/>
   </primitives>
 </unit>
  

@@ -24,12 +24,11 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.HelpingException;
-import org.extex.interpreter.primitives.macro.Let;
 import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
-
+import org.extex.unit.base.macro.Let;
 
 /**
  * This class provides an implementation for the primitive <code>\import</code>.
@@ -109,10 +108,10 @@ public class Import extends Let {
             if (t instanceof CodeToken) {
                 if (context.getCode((CodeToken) t) == null) {
                     throw new HelpingException(getLocalizer(),
-                            "Namespace.Import.undef", t.toString());
+                        "Namespace.Import.undef", t.toString());
                 } else {
                     let(prefix, context, //
-                            ((CodeToken) t).cloneInNamespace(namespace), t);
+                        ((CodeToken) t).cloneInNamespace(namespace), t);
                 }
             }
         }

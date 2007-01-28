@@ -19,8 +19,8 @@
 
 package org.extex.interpreter.primitives.conditional;
 
-import org.extex.interpreter.primitives.math.AbstractMathTester;
 import org.extex.test.ExTeXLauncher;
+import org.extex.unit.tex.math.AbstractMathTester;
 
 /**
  * This is a test suite for the primitive <tt>\u005cnless</tt>.
