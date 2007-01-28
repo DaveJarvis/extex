@@ -286,19 +286,17 @@ public class Count implements Serializable, FixedCount {
                 if (code instanceof CountConvertible) {
                     return ((CountConvertible) code).convertCount(context,
                         source, typesetter);
-
                 } else if (code instanceof ExpandableCode) {
                     ((ExpandableCode) code).expand(Flags.NONE, context, source,
                         typesetter);
                 } else {
-                    break;
+                    throw new MissingNumberException();
                 }
             } else {
                 return scanNumber(context, source, typesetter, t);
             }
         }
 
-        throw new MissingNumberException();
     }
 
     /**
@@ -396,7 +394,8 @@ public class Count implements Serializable, FixedCount {
                             }
                             if (t instanceof CodeToken) {
                                 Code code = context.getCode((CodeToken) t);
-                                if (code instanceof ExpandableCode) {
+                                if (code instanceof CountConvertible) {
+                                } else if (code instanceof ExpandableCode) {
                                     ((ExpandableCode) code).expand(Flags.NONE,
                                         context, source, typesetter);
                                     continue;
@@ -501,11 +500,7 @@ public class Count implements Serializable, FixedCount {
                 break;
             } else if (t instanceof CodeToken) {
                 Code code = context.getCode((CodeToken) t);
-                if (code == null) {
-
-                    break;
-
-                } else if (code instanceof CountConvertible) {
+                if (code instanceof CountConvertible) {
                     return ((CountConvertible) code).convertCount(context,
                         source, typesetter);
                 } else if (code instanceof ExpandableCode) {

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -37,14 +37,10 @@ public class Locator implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
-     * The field <tt>resource</tt> contains the name of the resource.
+     * The field <tt>cause</tt> contains the next in the sequence of chained
+     * locators.
      */
-    private String resource;
-
-    /**
-     * The field <tt>lineNumber</tt> contains the line number.
-     */
-    private int lineNumber;
+    private Locator cause = null;
 
     /**
      * The field <tt>line</tt> contains the current line of input.
@@ -52,10 +48,20 @@ public class Locator implements Serializable {
     private String line;
 
     /**
+     * The field <tt>lineNumber</tt> contains the line number.
+     */
+    private int lineNumber;
+
+    /**
      * The field <tt>linePointer</tt> contains the position in the line the
      * locator refers to.
      */
     private int linePointer;
+
+    /**
+     * The field <tt>resource</tt> contains the name of the resource.
+     */
+    private String resource;
 
     /**
      * Creates a new object.
@@ -76,6 +82,16 @@ public class Locator implements Serializable {
     }
 
     /**
+     * Getter for cause.
+     *
+     * @return the cause
+     */
+    public final Locator getCause() {
+
+        return cause;
+    }
+
+    /**
      * Getter for the line.
      *
      * @return the line.
@@ -83,6 +99,18 @@ public class Locator implements Serializable {
     public String getLine() {
 
         return line;
+    }
+
+    /**
+     * Getter for the line number.
+     * If the line number is negative then it has the meaning of an undefined
+     * value.
+     *
+     * @return the line number
+     */
+    public int getLineNumber() {
+
+        return lineNumber;
     }
 
     /**
@@ -110,13 +138,13 @@ public class Locator implements Serializable {
     }
 
     /**
-     * Getter for the line number.
+     * Setter for cause.
      *
-     * @return the line number
+     * @param cause the cause to set
      */
-    public int getLineNumber() {
+    public final void setCause(Locator cause) {
 
-        return lineNumber;
+        this.cause = cause;
     }
 
     /**
@@ -131,7 +159,7 @@ public class Locator implements Serializable {
     public String toString() {
 
         return (resource != null ? resource : "") + ":"
-                + Integer.toString(lineNumber);
+                + (lineNumber >= 0 ? Integer.toString(lineNumber) : "");
     }
 
 }

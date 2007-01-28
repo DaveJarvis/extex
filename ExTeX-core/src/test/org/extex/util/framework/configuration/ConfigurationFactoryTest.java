@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,12 +19,14 @@
 
 package org.extex.util.framework.configuration;
 
+import java.util.Locale;
+
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import junit.framework.TestCase;
 
 /**
- * TODO gene: missing JavaDoc.
+ * Test suite for the configuration factory.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -32,8 +34,28 @@ import junit.framework.TestCase;
 public class ConfigurationFactoryTest extends TestCase {
 
     /**
+     * Creates a new object.
+     */
+    public ConfigurationFactoryTest() {
+
+        super();
+        Locale.setDefault(Locale.ENGLISH);
+    }
+
+    /**
+     * Creates a new object.
+     *
+     * @param name the name
+     */
+    public ConfigurationFactoryTest(final String name) {
+
+        super(name);
+        Locale.setDefault(Locale.ENGLISH);
+    }
+
+    /**
      * <testcase>
-     *  Test that null leads to an approriate error message.
+     *  Test that null leads to an appropriate error message.
      * </testcase>
      */
     public void testNewInstance1() {

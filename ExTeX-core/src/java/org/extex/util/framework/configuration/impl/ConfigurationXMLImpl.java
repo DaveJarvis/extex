@@ -126,18 +126,18 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
      * The field <tt>ext</tt> contains extensions to use when searching for
      * configuration files.
      */
-    private static final String[] EXTENSIONS = {"", ".xml"};
+    private static final String[] EXTENSIONS = {".xml", ""};
 
     /**
      * The field <tt>path</tt> contains the path to use when searching for
      * configuration files.
      */
-    private static final String[] PATHS = {"", "config/"};
+    private static final String[] PATHS = {"config/", ""};
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 1L;
+    protected static final long serialVersionUID = 27012007L;
 
     /**
      * Recursively collect the Xpath from the root to the given node.
@@ -147,6 +147,9 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
      */
     private static void toString(final StringBuffer sb, final Node node) {
 
+        if (node == null) {
+            return;
+        }
         Node p = node.getParentNode();
         if (p != null && !(p instanceof Document)) {
             toString(sb, p);
@@ -171,6 +174,11 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
      * The field <tt>root</tt> contains the root element for this configuration.
      */
     private Element root;
+
+    /**
+     * The field <tt>fullName</tt> contains the url of the resource found.
+     */
+    private String fullName;
 
     /**
      * Creates a new object with a given root element. This constructor is
@@ -729,10 +737,8 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
 
         for (int pi = 0; pi < PATHS.length; pi++) {
             for (int ei = 0; ei < EXTENSIONS.length; ei++) {
-                InputStream stream =
-                        classLoader.getResourceAsStream(PATHS[pi] + name
-                                + EXTENSIONS[ei]);
-
+                fullName = PATHS[pi] + name + EXTENSIONS[ei];
+                InputStream stream = classLoader.getResourceAsStream(fullName);
                 if (stream != null) {
                     return stream;
                 }
@@ -778,7 +784,7 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
                 theResource);
         } catch (SAXException e) {
             throw new ConfigurationSyntaxException(e.getLocalizedMessage(),
-                theResource);
+                fullName);
         } catch (FactoryConfigurationError e) {
             throw new ConfigurationSyntaxException(e.getLocalizedMessage(),
                 theResource);

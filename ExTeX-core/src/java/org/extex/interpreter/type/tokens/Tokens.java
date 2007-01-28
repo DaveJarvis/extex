@@ -282,17 +282,17 @@ public class Tokens implements Serializable, FixedTokens {
                 long esc = context.getCount("escapechar").getValue();
                 if (esc >= 0) {
                     toks.add(factory.createToken(Catcode.OTHER, (char) (esc),
-                            Namespace.DEFAULT_NAMESPACE));
+                        Namespace.DEFAULT_NAMESPACE));
                 }
                 toks.add(factory, t.toString());
             } else if (t instanceof MacroParamToken) {
                 //toks.add(factory.createToken(Catcode.OTHER, '#',
                 //        Namespace.DEFAULT_NAMESPACE));
                 toks.add(factory.createToken(Catcode.OTHER, t.getChar(),
-                        Namespace.DEFAULT_NAMESPACE));
+                    Namespace.DEFAULT_NAMESPACE));
             } else {
                 toks.add(factory.createToken(Catcode.OTHER, t.getChar(),
-                        Namespace.DEFAULT_NAMESPACE));
+                    Namespace.DEFAULT_NAMESPACE));
             }
         }
     }
@@ -358,6 +358,32 @@ public class Tokens implements Serializable, FixedTokens {
         }
 
         return sb.toString();
+    }
+
+    /**
+     * Remove the first toke from the list and return it.
+     *
+     * @return the token taken from the from the front of the list or
+     *   <code>null</code> if the list is empty
+     */
+    public Token pop() {
+
+        if (tokens.size() == 0) {
+            return null;
+        }
+        Token t = (Token) tokens.get(0);
+        tokens.remove(0);
+        return t;
+    }
+
+    /**
+     * Push a token to the front of the list.
+     *
+     * @param token the token to push
+     */
+    public void push(final Token token) {
+
+        tokens.add(0, token);
     }
 
 }

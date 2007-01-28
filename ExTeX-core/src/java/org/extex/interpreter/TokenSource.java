@@ -323,8 +323,8 @@ public interface TokenSource {
      * </pre>
      * 
      * </doc>
-     * 
-     * 
+     *
+     *
      * @param context the interpreter context
      * 
      * @throws InterpreterException in case of an error

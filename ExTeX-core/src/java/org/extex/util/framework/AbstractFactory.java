@@ -89,13 +89,13 @@ public abstract class AbstractFactory
      * The constant <tt>CLASS_ATTRIBUTE</tt> contains the name of the attribute
      * used to get the class name.
      */
-    private static final String CLASS_ATTRIBUTE = "class";
+    protected static final String CLASS_ATTRIBUTE = "class";
 
     /**
      * The constant <tt>DEFAULT_ATTRIBUTE</tt> contains the name of the
      * attribute used to get the default configuration.
      */
-    private static final String DEFAULT_ATTRIBUTE = "default";
+    protected static final String DEFAULT_ATTRIBUTE = "default";
 
     /**
      * Configure an instance if this instance supports configuration.
