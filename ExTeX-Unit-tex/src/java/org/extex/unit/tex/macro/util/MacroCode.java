@@ -19,9 +19,6 @@
 
 package org.extex.unit.tex.macro.util;
 
-import javax.swing.UIManager;
-
-import org.apache.xml.utils.UnImplNode;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.Tokenizer;
