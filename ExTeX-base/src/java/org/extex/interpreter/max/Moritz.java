@@ -128,14 +128,14 @@ import org.extex.util.framework.configuration.exception.ConfigurationException;
  * </p>
  * <p>
  *  The primitive <tt>\maxRegister</tt> is usually defined in the name space
- *  <tt>system</tt> thus you have to take special means to access it.
+ *  <tt>system</tt>. Thus you have to take special means to access it.
  * </p>
  *
  * <h4>Examples</h4>
  * <p>
  * </p>
  * <pre class="TeXSample">
- *   \namespace{system}\maxRegister=1024\namespace{}  </pre>
+ *   {\namespace{system}\maxRegister=1024}  </pre>
  * </doc>
  *
  *
