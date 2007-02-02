@@ -54,19 +54,9 @@ import org.extex.interpreter.type.glue.Glue;
 public class FontKey implements Serializable {
 
     /**
-     * The size of the font.
+     * Use the kerning information of the font.
      */
-    public static final String SIZE = "size";
-
-    /**
-     * The scaling factor of the font.
-     */
-    public static final String SCALE = "scale";
-
-    /**
-     * Use the ligature information of the font.
-     */
-    public static final String LIGATURES = "ligatures";
+    public static final String KERNING = "kerning";
 
     /**
      * Use the letterspaced information of the font.
@@ -74,9 +64,14 @@ public class FontKey implements Serializable {
     public static final String LETTERSPACE = "letterspaced";
 
     /**
-     * Use the kerning information of the font.
+     * Use the ligature information of the font.
      */
-    public static final String KERNING = "kerning";
+    public static final String LIGATURES = "ligatures";
+
+    /**
+     * The scaling factor of the font.
+     */
+    public static final String SCALE = "scale";
 
     /**
      * The field <tt>serialVersionUID</tt>.
@@ -84,9 +79,19 @@ public class FontKey implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
+     * The size of the font.
+     */
+    public static final String SIZE = "size";
+
+    /**
      * Map for boolean values.
      */
     private Map booleanMap;
+
+    /**
+     * Map for count values.
+     */
+    private Map countMap;
 
     /**
      * Map for dimen values.
@@ -97,11 +102,6 @@ public class FontKey implements Serializable {
      * Map for glue values.
      */
     private Map glueMap;
-
-    /**
-     * Map for count values.
-     */
-    private Map countMap;
 
     /**
      * The name of the font.
@@ -178,9 +178,38 @@ public class FontKey implements Serializable {
      * @param key The key.
      * @return Returns the value for the key.
      */
+    public FixedCount getCount(final String key) {
+
+        return (FixedCount) countMap.get(key);
+    }
+
+    /**
+     * Returns the countMap.
+     * @return Returns the countMap.
+     */
+    protected Map getCountMap() {
+
+        return countMap;
+    }
+
+    /**
+     * Returns the value for the key or <code>null</code>,
+     * if no key exists in the map.
+     * @param key The key.
+     * @return Returns the value for the key.
+     */
     public FixedDimen getDimen(final String key) {
 
         return (FixedDimen) dimenMap.get(key);
+    }
+
+    /**
+     * Returns the dimenMap.
+     * @return Returns the dimenMap.
+     */
+    protected Map getDimenMap() {
+
+        return dimenMap;
     }
 
     /**
@@ -195,41 +224,12 @@ public class FontKey implements Serializable {
     }
 
     /**
-     * Returns the value for the key or <code>null</code>,
-     * if no key exists in the map.
-     * @param key The key.
-     * @return Returns the value for the key.
-     */
-    public FixedCount getCount(final String key) {
-
-        return (FixedCount) countMap.get(key);
-    }
-
-    /**
-     * Returns the dimenMap.
-     * @return Returns the dimenMap.
-     */
-    protected Map getDimenMap() {
-
-        return dimenMap;
-    }
-
-    /**
      * Returns the glueMap.
      * @return Returns the glueMap.
      */
     protected Map getGlueMap() {
 
         return glueMap;
-    }
-
-    /**
-     * Returns the countMap.
-     * @return Returns the countMap.
-     */
-    protected Map getCountMap() {
-
-        return countMap;
     }
 
     /**
@@ -301,6 +301,16 @@ public class FontKey implements Serializable {
      * @param key   The key.
      * @param value The value.
      */
+    public void put(final String key, final FixedCount value) {
+
+        countMap.put(key, value);
+    }
+
+    /**
+     * Put an key values pair on the map.
+     * @param key   The key.
+     * @param value The value.
+     */
     public void put(final String key, final FixedDimen value) {
 
         dimenMap.put(key, value);
@@ -321,22 +331,15 @@ public class FontKey implements Serializable {
      * @param key   The key.
      * @param value The value.
      */
-    public void put(final String key, final FixedCount value) {
-
-        countMap.put(key, value);
-    }
-
-    /**
-     * Put an key values pair on the map.
-     * @param key   The key.
-     * @param value The value.
-     */
     public void put(final String key, final String value) {
 
         stringMap.put(key, value);
     }
 
     /**
+     * Returns the value of the <code>FontKey</code> as <code>String</code>.
+     * If a value is <code>null</code>, then the text 'null' is returned.
+     *
      * @see java.lang.Object#toString()
      */
     public String toString() {
@@ -349,7 +352,11 @@ public class FontKey implements Serializable {
             FixedDimen d = getDimen(key);
 
             buf.append(" ").append(key).append("=");
-            d.toString(buf);
+            if (d != null) {
+                d.toString(buf);
+            } else {
+                buf.append("null");
+            }
         }
 
         it = countMap.keySet().iterator();
@@ -358,7 +365,11 @@ public class FontKey implements Serializable {
             FixedCount c = getCount(key);
 
             buf.append(" ").append(key).append("=");
-            c.toString(buf);
+            if (c != null) {
+                c.toString(buf);
+            } else {
+                buf.append("null");
+            }
         }
 
         it = glueMap.keySet().iterator();
@@ -366,7 +377,12 @@ public class FontKey implements Serializable {
             String key = (String) it.next();
             FixedGlue g = getGlue(key);
 
-            buf.append(" ").append(key).append("=").append(g.toString());
+            buf.append(" ").append(key).append("=");
+            if (g != null) {
+                buf.append(g.toString());
+            } else {
+                buf.append("null");
+            }
         }
 
         it = stringMap.keySet().iterator();
@@ -374,7 +390,12 @@ public class FontKey implements Serializable {
             String key = (String) it.next();
             String s = getString(key);
 
-            buf.append(" ").append(key).append("=").append(s);
+            buf.append(" ").append(key).append("=");
+            if (s != null) {
+                buf.append(s);
+            } else {
+                buf.append("null");
+            }
         }
 
         it = booleanMap.keySet().iterator();

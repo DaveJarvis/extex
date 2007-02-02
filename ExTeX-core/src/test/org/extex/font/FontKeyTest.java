@@ -28,6 +28,7 @@ import org.extex.interpreter.type.dimen.FixedDimen;
  * Test suite for the font key.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
 public class FontKeyTest extends TestCase {
@@ -51,7 +52,7 @@ public class FontKeyTest extends TestCase {
         FontKey key = new FontKey("cmr10");
         key.put(FontKey.SIZE, (FixedDimen) null);
 
-        assertEquals("cmr10 size=", key.toString());
+        assertEquals("cmr10 size=null", key.toString());
     }
 
 }
