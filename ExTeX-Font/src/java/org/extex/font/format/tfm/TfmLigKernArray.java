@@ -270,7 +270,7 @@ public class TfmLigKernArray implements PlFormat, Serializable {
      * @return Returns the bc.
      */
     public short getBc() {
-    
+
         return bc;
     }
 
@@ -311,7 +311,11 @@ public class TfmLigKernArray implements PlFormat, Serializable {
      */
     public TfmFixWord getKerning(final int cp1, final int cp2) {
 
-        TfmCharInfoWord ciw = charinfo.getCharinfoword()[cp1];
+        TfmCharInfoWord[] ciwArray = charinfo.getCharinfoword();
+        if (cp1 < 0 || cp1 >= ciwArray.length) {
+            return TfmFixWord.ZERO;
+        }
+        TfmCharInfoWord ciw = ciwArray[cp1];
         if (ciw == null) {
             return TfmFixWord.ZERO;
         }
@@ -330,7 +334,11 @@ public class TfmLigKernArray implements PlFormat, Serializable {
      */
     public int getLigature(final int cp1, final int cp2) {
 
-        TfmCharInfoWord ciw = charinfo.getCharinfoword()[cp1];
+        TfmCharInfoWord[] ciwArray = charinfo.getCharinfoword();
+        if (cp1 < 0 || cp1 >= ciwArray.length) {
+            return -1;
+        }
+        TfmCharInfoWord ciw = ciwArray[cp1];
         if (ciw == null || !foundLigKern(ciw) || ligKernTable == null) {
             return -1;
         }
@@ -531,7 +539,6 @@ public class TfmLigKernArray implements PlFormat, Serializable {
         }
     }
 
-    
     /**
      * @see org.extex.font.type.PlFormat#toPL(
      *      org.extex.font.type.PlWriter)

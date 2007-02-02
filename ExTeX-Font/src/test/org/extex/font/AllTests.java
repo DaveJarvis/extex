@@ -48,6 +48,7 @@ public class AllTests {
         suite.addTestSuite(FontFactoryImplGenCmr10Scaled1440Test.class);
         suite.addTestSuite(FontFactoryImplAfmTest.class);
         suite.addTestSuite(FontFactoryImplCmr10Test.class);
+        suite.addTestSuite(FontFactoryImplCmmanTest.class);
         //$JUnit-END$
         return suite;
     }
