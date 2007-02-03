@@ -71,7 +71,7 @@ import org.extex.typesetter.Typesetter;
  *   &lang;optional <tt>by</tt>&rang;
  *     &rarr; [by]
  *      |  {@linkplain org.extex.interpreter.TokenSource#skipSpace()
-*            &lang;optional spaces&rang;}
+ *            &lang;optional spaces&rang;}
  *   </pre>
  *
  * <h4>Examples</h4>
@@ -123,18 +123,18 @@ public class Advance extends AbstractAssignment {
             if (code instanceof Advanceable) {
 
                 ((Advanceable) code).advance(prefix, context, source,
-                        typesetter);
+                    typesetter);
                 return;
 
             } else if (code == null) {
-                throw new UndefinedControlSequenceException(//
-                        printable(context, cs));
+                throw new UndefinedControlSequenceException(printable(context,
+                    cs));
             }
         } else if (cs == null) {
             throw new EofException(printableControlSequence(context));
         }
         throw new CantUseAfterException(cs.toText(),
-                printableControlSequence(context));
+            printableControlSequence(context));
     }
 
 }
