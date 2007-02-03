@@ -395,6 +395,7 @@ public class Count implements Serializable, FixedCount {
                             if (t instanceof CodeToken) {
                                 Code code = context.getCode((CodeToken) t);
                                 if (code instanceof CountConvertible) {
+                                    // ignored on purpose
                                 } else if (code instanceof ExpandableCode) {
                                     ((ExpandableCode) code).expand(Flags.NONE,
                                         context, source, typesetter);
@@ -441,10 +442,11 @@ public class Count implements Serializable, FixedCount {
                             n = n * 8 + no;
                         }
 
-                        while (t instanceof SpaceToken) {
-                            t = source.getToken(context);
+                        if (t instanceof SpaceToken) {
+                            source.skipSpace();
+                        } else {
+                            source.push(t);
                         }
-                        source.push(t);
                         return n;
 
                     case '"':
@@ -489,10 +491,11 @@ public class Count implements Serializable, FixedCount {
                             }
                         }
 
-                        while (t instanceof SpaceToken) {
-                            t = source.getToken(context);
+                        if (t instanceof SpaceToken) {
+                            source.skipSpace();
+                        } else {
+                            source.push(t);
                         }
-                        source.push(t);
                         return n;
 
                     default:
