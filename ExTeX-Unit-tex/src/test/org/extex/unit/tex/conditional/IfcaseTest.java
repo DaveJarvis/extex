@@ -56,12 +56,104 @@ public class IfcaseTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    public void testErr1() throws Exception {
+
+        assertFailure(//--- input code ---
+            "\\ifcase 0 ",
+            //--- output channel ---
+            "(\\end occurred when \\ifcase was incomplete)\n"
+                    + "(\\end occurred when \\ifcase was incomplete)\n");
+    }
+
+    /**
+     * <testcase primitive="\ifcase">
+     *  Test case checking that the case 0 is hit if present.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testErr2() throws Exception {
+
+        assertFailure(//--- input code ---
+            "\\ifcase 0 a\\or ",
+            //--- output channel ---
+            "Incomplete \\or; all text was ignored after line 1");
+    }
+
+    /**
+     * <testcase primitive="\ifcase">
+     *  Test case checking that the case 0 is hit if present.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testErr3() throws Exception {
+
+        assertFailure(//--- input code ---
+            "\\ifcase 1 a\\or ",
+            //--- output channel ---
+            "(\\end occurred when \\ifcase was incomplete)\n"
+                    + "(\\end occurred when \\ifcase was incomplete)\n");
+    }
+
+    /**
+     * <testcase primitive="\ifcase">
+     *  Test case checking that the case 0 is hit if present.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testErr4() throws Exception {
+
+        assertFailure(//--- input code ---
+            "\\ifcase 2 a\\or ",
+            //--- output channel ---
+            "Incomplete \\ifcase; all text was ignored after line 1");
+    }
+
+    /**
+     * <testcase primitive="\ifcase">
+     *  Test case checking that the case 0 is hit if present.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testErr10() throws Exception {
+
+        assertFailure(//--- input code ---
+            "\\ifcase 0 a\\or \\else e",
+            //--- output channel ---
+            "Incomplete \\or; all text was ignored after line 1");
+    }
+
+    /**
+     * <testcase primitive="\ifcase">
+     *  Test case checking that the case 0 is hit if present.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testErr11() throws Exception {
+
+        assertFailure(//--- input code ---
+            "\\ifcase 0 a\\else \\else e",
+            //--- output channel ---
+            "Extra \\else");
+    }
+
+    /**
+     * <testcase primitive="\ifcase">
+     *  Test case checking that the case 0 is hit if present.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
     public void testConst0() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\ifcase 0 a\\or b\\or c\\or d\\else e\\fi \\end",
-                //--- output channel ---
-                "a" + TERM);
+            "\\ifcase 0 a\\or b\\or c\\or d\\else e\\fi \\end",
+            //--- output channel ---
+            "a" + TERM);
     }
 
     /**
@@ -74,9 +166,9 @@ public class IfcaseTest extends ExTeXLauncher {
     public void testConst1() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\ifcase 1 a\\or b\\or c\\or d\\else e\\fi \\end",
-                //--- output channel ---
-                "b" + TERM);
+            "\\ifcase 1 a\\or b\\or c\\or d\\else e\\fi \\end",
+            //--- output channel ---
+            "b" + TERM);
     }
 
     /**
@@ -89,9 +181,9 @@ public class IfcaseTest extends ExTeXLauncher {
     public void testConst2() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\ifcase 2 a\\or b\\or c\\or d\\else e\\fi \\end",
-                //--- output channel ---
-                "c" + TERM);
+            "\\ifcase 2 a\\or b\\or c\\or d\\else e\\fi \\end",
+            //--- output channel ---
+            "c" + TERM);
     }
 
     /**
@@ -104,9 +196,9 @@ public class IfcaseTest extends ExTeXLauncher {
     public void testConst12() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\ifcase -1 a\\or b\\or c\\or d\\else e\\fi \\end",
-                //--- output channel ---
-                "e" + TERM);
+            "\\ifcase -1 a\\or b\\or c\\or d\\else e\\fi \\end",
+            //--- output channel ---
+            "e" + TERM);
     }
 
     /**
@@ -119,11 +211,10 @@ public class IfcaseTest extends ExTeXLauncher {
     public void testConst12b() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\ifcase -1 a\\or b\\or c\\or d\\fi \\end",
-                //--- output channel ---
-                "");
+            "\\ifcase -1 a\\or b\\or c\\or d\\fi \\end",
+            //--- output channel ---
+            "");
     }
-
 
     /**
      * <testcase primitive="\ifcase">
@@ -135,9 +226,9 @@ public class IfcaseTest extends ExTeXLauncher {
     public void testConst_1() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\ifcase -1 a\\or b\\or c\\or d\\else e\\fi \\end",
-                //--- output channel ---
-                "e" + TERM);
+            "\\ifcase -1 a\\or b\\or c\\or d\\else e\\fi \\end",
+            //--- output channel ---
+            "e" + TERM);
     }
 
     /**
@@ -150,9 +241,84 @@ public class IfcaseTest extends ExTeXLauncher {
     public void testConst_1b() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\ifcase -1 a\\or b\\or c\\or d\\fi \\end",
-                //--- output channel ---
-                "");
+            "\\ifcase -1 a\\or b\\or c\\or d\\fi \\end",
+            //--- output channel ---
+            "");
+    }
+
+    /**
+     * <testcase primitive="\ifcase">
+     *  Test case checking that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test11() throws Exception {
+
+        assertSuccess(//--- input code ---
+            "\\ifcase -1 a\\else e\\fi \\end",
+            //--- output channel ---
+            "e" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\ifcase">
+     *  Test case checking that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test12() throws Exception {
+
+        assertSuccess(//--- input code ---
+            "\\ifcase 2 a\\else e\\fi \\end",
+            //--- output channel ---
+            "e" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\ifcase">
+     *  Test case checking that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test13() throws Exception {
+
+        assertSuccess(//--- input code ---
+            "x\\ifcase 2 a\\fi x\\end",
+            //--- output channel ---
+            "xx" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\ifcase">
+     *  Test case checking that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test20() throws Exception {
+
+        assertSuccess(//--- input code ---
+            "x\\ifcase 2 \\ifcase 2 a\\fi\\fi x\\end",
+            //--- output channel ---
+            "xx" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\ifcase">
+     *  Test case checking that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testExpand1() throws Exception {
+
+        assertSuccess(//--- input code ---
+            "\\count0=\\ifcase 2 123\\else 456\\fi \\the\\count0\\end",
+            //--- output channel ---
+            "456" + TERM);
     }
 
 }

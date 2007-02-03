@@ -56,7 +56,7 @@ public class OrTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
-    public void testConst0() throws Exception {
+    public void test0() throws Exception {
 
         assertFailure(//--- input code ---
                 "\\or",
@@ -79,4 +79,19 @@ public class OrTest extends ExTeXLauncher {
                 "a" + TERM);
     }
 
+
+    /**
+     * <testcase primitive="\or">
+     *  Test case checking that a lonely <tt>\or</tt> leads to an error.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test2() throws Exception {
+
+        assertFailure(//--- input code ---
+                "\\ifcase1\\or\\fi\\or",
+                //--- log message ---
+                "Extra \\or");
+    }
 }

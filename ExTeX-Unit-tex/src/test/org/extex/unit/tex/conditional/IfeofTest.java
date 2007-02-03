@@ -30,6 +30,12 @@ import org.extex.test.ExTeXLauncher;
 public class IfeofTest extends ExTeXLauncher {
 
     /**
+     * The field <tt>EMPTY_TEX</tt> contains the location of an empty file.
+     */
+    private static final String EMPTY_TEX = "../ExTeX-Unit-tex/src/test/tex/empty.tex";
+
+
+    /**
      * Method for running the tests standalone.
      *
      * @param args command line parameter
@@ -56,12 +62,27 @@ public class IfeofTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    public void testErr0() throws Exception {
+
+        assertFailure(//--- input code ---
+            "\\ifeof ",
+            //--- output channel ---
+            "Missing number, treated as zero");
+    }
+
+    /**
+     * <testcase primitive="\ifeof">
+     *  Test case checking that <tt>\ifeof</tt> ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
     public void testErr1() throws Exception {
 
         assertFailure(//--- input code ---
-                "\\ifeof x true\\else false\\fi \\end",
-                //--- output channel ---
-                "Missing number, treated as zero");
+            "\\ifeof x true\\else false\\fi \\end",
+            //--- output channel ---
+            "Missing number, treated as zero");
     }
 
     /**
@@ -74,9 +95,25 @@ public class IfeofTest extends ExTeXLauncher {
     public void test1() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\ifeof8 true\\else false\\fi \\end",
-                //--- output channel ---
-                "true" + TERM);
+            "\\ifeof8 true\\else false\\fi \\end",
+            //--- output channel ---
+            "true" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\ifeof">
+     *  Test case checking that <tt>\ifeof</tt> ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test2() throws Exception {
+
+        assertSuccess(//--- input code ---
+            "\\openin8 " + EMPTY_TEX + " "
+            + "\\ifeof8 true\\else false\\fi \\end",
+            //--- output channel ---
+            "true" + TERM);
     }
 
     //TODO implement the primitive specific test cases

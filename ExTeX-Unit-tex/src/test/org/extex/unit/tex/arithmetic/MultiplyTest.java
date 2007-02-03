@@ -51,6 +51,37 @@ public class MultiplyTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\multiply">
+     *  Test case checking that <tt>\advance</tt> needs one arguments.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testEof1() throws Exception {
+
+        assertFailure(//--- input code ---
+                "\\multiply ",
+                //--- log message ---
+                "Unexpected end of file while processing \\multiply");
+    }
+
+    /**
+     * <testcase primitive="\multiply">
+     *  Test case checking that <tt>\multiply</tt> needs a defined control
+     *  sequence as first argument.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testUndef1() throws Exception {
+
+        assertFailure(//--- input code ---
+                "\\multiply \\x ",
+                //--- log message ---
+                "Undefined control sequence \\x");
+    }
+
+    /**
+     * <testcase primitive="\multiply">
      *  Test case checking that <tt>\multiply</tt> on a letter leads to an error.
      * </testcase>
      *

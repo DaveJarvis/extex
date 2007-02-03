@@ -51,6 +51,36 @@ public class IfdimTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\ifdim">
+     *  Test case checking that <tt>\ifdim</tt> ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testEof1() throws Exception {
+
+        assertFailure(//--- input code ---
+                "x\\ifdim 0pt",
+                //--- output channel ---
+                "Unexpected end of file while processing \\ifdim");
+    }
+
+    /**
+     * <testcase primitive="\ifdim">
+     *  Test case checking that <tt>\ifdim</tt> ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testErr1() throws Exception {
+
+        assertFailure(//--- input code ---
+                "x\\ifdim 0pt!",
+                //--- output channel ---
+                "Missing = inserted for \\ifdim");
+    }
+
+    /**
+     * <testcase primitive="\ifdim">
      *  Test case checking that <tt>\ifdim</tt> on \verb|0pt<1pt|
      *  selects the then branch.
      * </testcase>

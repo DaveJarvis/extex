@@ -80,4 +80,19 @@ public class IffalseTest extends ExTeXLauncher {
                 "xx" + TERM);
     }
 
+    /**
+     * <testcase primitive="\iffalse">
+     *  Test case checking that <tt>\iffalse</tt> ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test3() throws Exception {
+
+        assertSuccess(//--- input code ---
+                "x\\iffalse \\iffalse \\iffalse a\\fi\\fi\\fi x\\end",
+                //--- output channel ---
+                "xx" + TERM);
+    }
+
 }

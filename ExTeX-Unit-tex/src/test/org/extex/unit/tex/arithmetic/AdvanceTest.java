@@ -51,6 +51,37 @@ public class AdvanceTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\advance">
+     *  Test case checking that <tt>\advance</tt> needs one arguments.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testEof1() throws Exception {
+
+        assertFailure(//--- input code ---
+                "\\advance ",
+                //--- log message ---
+                "Unexpected end of file while processing \\advance");
+    }
+
+    /**
+     * <testcase primitive="\advance">
+     *  Test case checking that <tt>\advance</tt> needs a defined control
+     *  sequence as first argument.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testUndef1() throws Exception {
+
+        assertFailure(//--- input code ---
+                "\\advance \\x ",
+                //--- log message ---
+                "Undefined control sequence \\x");
+    }
+
+    /**
+     * <testcase primitive="\advance">
      *  Test case checking that <tt>\advance</tt> on a letter leads to an error.
      * </testcase>
      *

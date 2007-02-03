@@ -51,6 +51,37 @@ public class DivideTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\divide">
+     *  Test case checking that <tt>\advance</tt> needs one arguments.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testEof1() throws Exception {
+
+        assertFailure(//--- input code ---
+                "\\divide ",
+                //--- log message ---
+                "Unexpected end of file while processing \\divide");
+    }
+
+    /**
+     * <testcase primitive="\divide">
+     *  Test case checking that <tt>\divide</tt> needs a defined control
+     *  sequence as first argument.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testUndef1() throws Exception {
+
+        assertFailure(//--- input code ---
+                "\\divide \\x ",
+                //--- log message ---
+                "Undefined control sequence \\x");
+    }
+
+    /**
+     * <testcase primitive="\divide">
      *  Test case checking that <tt>\divide</tt> on a letter leads to an error.
      * </testcase>
      *

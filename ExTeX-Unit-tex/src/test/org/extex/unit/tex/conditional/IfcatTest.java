@@ -51,6 +51,21 @@ public class IfcatTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\ifcat">
+     *  Test case checking that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testErr1() throws Exception {
+
+        assertFailure(//--- input code ---
+                "\\ifcat",
+                //--- output channel ---
+                "Unexpected end of file while processing \\ifcat");
+    }
+
+    /**
+     * <testcase primitive="\ifcat">
      *  Test case checking that <tt>\ifcat</tt> ...
      * </testcase>
      *

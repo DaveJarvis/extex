@@ -41,6 +41,22 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\let">
+     *  Test case checking that let needs a second argument.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testError1() throws Exception {
+
+        assertFailure(//--- input code ---
+                DEFINE_CATCODES
+                + "\\let\\a ",
+                //--- output message ---
+                "Unexpected end of file while processing \\let");
+    }
+
+    /**
+     * <testcase primitive="\let">
      *  Test case checking that let can assign a letter to a control sequence.
      * </testcase>
      *

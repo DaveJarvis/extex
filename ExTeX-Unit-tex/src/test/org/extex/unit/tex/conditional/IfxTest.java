@@ -56,6 +56,21 @@ public class IfxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    public void testErr1() throws Exception {
+
+        assertFailure(//--- input code ---
+                "\\ifx ",
+                //--- output channel ---
+                "Unexpected end of file while processing \\ifx");
+    }
+
+    /**
+     * <testcase primitive="\ifx">
+     *  Test case checking that <tt>\ifx</tt> ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
     public void test1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -253,6 +268,69 @@ public class IfxTest extends ExTeXLauncher {
                 + "\\end",
                 //--- output channel ---
                 "t" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\ifx">
+     *  Test case checking that <tt>\ifx</tt> ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test10() throws Exception {
+
+        assertSuccess(//--- input code ---
+                "\\ifx a\\relax true\\else false\\fi",
+                //--- output channel ---
+                "false" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\ifx">
+     *  Test case checking that <tt>\ifx</tt> ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test11() throws Exception {
+
+        assertSuccess(//--- input code ---
+            DEFINE_BRACES + "\\def\\x{a}" +
+                "\\ifx a\\x true\\else false\\fi",
+                //--- output channel ---
+                "false" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\ifx">
+     *  Test case checking that <tt>\ifx</tt> ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test12() throws Exception {
+
+        assertSuccess(//--- input code ---
+            DEFINE_BRACES + "\\def\\x{a}" +
+                "\\ifx \\relax\\x true\\else false\\fi",
+                //--- output channel ---
+                "false" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\ifx">
+     *  Test case checking that <tt>\ifx</tt> ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test13() throws Exception {
+
+        assertSuccess(//--- input code ---
+            DEFINE_BRACES +
+                "\\ifx \\a\\b true\\else false\\fi",
+                //--- output channel ---
+                "true" + TERM);
     }
 
     //TODO implement more primitive specific test cases
