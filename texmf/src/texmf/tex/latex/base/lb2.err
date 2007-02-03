@@ -1,0 +1,1088 @@
+\def\readRCS$#1 #2 #3 #4 #5${\def\erratafiledate{#4}}
+\readRCS
+$Id: lb2.err,v 1.23 2006/05/12 11:02:55 mittelba Exp $
+
+\def\comando#1{\texttt{\string#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% To produce a printed version of this errata file run this file through
+% LaTeX. It will unpack a small class file (if not already present) and
+% a configuration file with the extension .cfg. You might want to modify
+% the setting in this configuration file to print only a partial errata
+% suitable for your printed revision of this book, see details in the
+% .cfg file.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{filecontents}{errata.cls}
+% Copyright (C) 1997,2004,2005 Frank Mittelbach
+% This file is distributed under LPPL
+
+\ProvidesClass{errata}
+  [2005/11/10 v0.9a Mini class for errata files subject to change (FMi)]
+
+\LoadClass{article}
+
+\setcounter{secnumdepth}{-1}
+\addtolength\textwidth{5cm}
+\addtolength\oddsidemargin{-3cm}
+
+\addtolength\textheight{36pt}
+
+\RequirePackage{shortvrb}
+\MakeShortVerb{\|}
+
+\RequirePackage{array,longtable}
+\RequirePackage{multicol}
+
+
+\newcommand\erratagetnumber{}
+\def\erratagetnumber#1/#2/#3\erratagetnumber{#1#2#3}
+
+
+\newcommand\gobbleerrata{%
+  \setbox\@tempboxa\vbox\bgroup
+     \let\endgobble\egroup
+     \let\hideamp\relax
+     \let\\\relax\let\par\@@par}
+
+\newcommand*\hideamp{&}
+
+\let\endgobble\relax
+
+
+\newcommand\erratastartdate{}
+\newcommand\myprinting{1}
+
+
+\newcommand\doweprint[2]{%
+  \ifnum \myprinting < \if!#2!1000 \else \ifx s#2 1000\else#2 \fi\fi
+   \ifnum \expandafter\erratagetnumber\erratastartdate\erratagetnumber <
+          \erratagetnumber#1\erratagetnumber \relax
+     \@tempswatrue
+   \else
+     \@tempswafalse
+   \fi
+  \else
+    \@tempswafalse
+  \fi
+}
+
+
+
+\newcommand\includedentries{entries after = \erratastartdate}
+\newcommand\printedentries{between \erratastartdate\space and}
+
+\newcommand\showallerrors{%
+ \renewcommand\includedentries{all errata entries}%
+ \renewcommand\printedentries{up to}
+ \renewcommand\doweprint[2]{\@tempswatrue}}
+
+
+\newcommand\displayrevisionfix[2]{%
+    \if!#2!\textbf{#1}\else\textit{#1}\rlap{\textsuperscript{#2}}\fi}
+
+\newcommand\norevisionnumbers{%
+  \renewcommand\displayrevisionfix[2]{\textbf{##1}}}
+
+\IfFileExists{\jobname.cfg}
+  {
+   \input{\jobname.cfg}
+   \typeout{***************************************************}
+   \typeout{*}
+   \typeout{* Configuration file for \jobname.err found }
+   \typeout{*}
+   \typeout{***************************************************}
+  \AtEndDocument{
+   \typeout{***************************************************}
+   \typeout{*}
+   \typeout{* If you wish to generate an errata listing}
+   \typeout{* containing only errors found after a certain revision}
+   \typeout{* and/or only errors found after a certain date}
+   \typeout{* modify the information stored in \jobname.cfg}
+   \typeout{*}
+   \typeout{* Current settings are:}
+   \typeout{*}
+   \typeout{* \@spaces  printing of your book = \myprinting}
+   \typeout{* \@spaces  include \includedentries}
+   \typeout{*}
+   \typeout{***************************************************}
+  }}
+  {}
+
+%% \erroronpage <page> <line info> <contributor> <date> <fixed in revision>
+
+\newcommand\erroronpage[5]{%
+   \endgobble
+   \doweprint{#4}{#5}%
+   \if@tempswa
+     \typeout{Typesetting entry #1 #2 #3 #4}%
+   \else
+     \typeout{Ignoring entry #1 #2 #3 #4}%
+     \expandafter\gobbleerrata
+   \fi
+   \hideamp \\%
+   \displayrevisionfix{#1}{#5}
+   \hideamp #2 \hideamp (\textsf{#3}) \hideamp
+}
+
+\newcommand\seriouserroronpage[5]{%
+   \endgobble
+   \doweprint{#4}{#5}%
+   \if@tempswa
+     \typeout{Typesetting entry #1 #2 #3 #4}%
+   \else
+     \typeout{Ignoring entry #1 #2 #3 #4}%
+     \expandafter\gobbleerrata
+   \fi
+   \hideamp \\%
+   \fbox{\bfseries !!}\hfill
+   \displayrevisionfix{#1}{#5}
+   \hideamp #2 \hideamp (\textsf{#3}) \hideamp
+}
+
+\newcommand\CHAPTER[1]{\endgobble
+  &\\[4pt]%
+  \multicolumn{4}{l}{\framebox[10cm][l]{\textbf{\normalsize\strut#1}}} \\}
+
+\newenvironment{erratalist}
+  {\begin{longtable}{r>{\raggedright}p{2cm}l>{\raggedright}p{10cm}l}}
+  {\endgobble\end{longtable}}
+
+\newcommand\erratatitle[2]
+  {\begin{center}\LARGE\bfseries
+      Errata list for #1\\[5pt](\myprinting.\ printing)\\[10pt]
+      \small Includes all entries found \printedentries\space #2\\
+      (For other periods/print runs reprocess this document
+      with different config settings)
+   \end{center}%
+   \markright{Errata for #1 (\printedentries\space #2)}%
+   \thispagestyle{plain}%
+   \vspace{20pt}}
+
+\pagestyle{myheadings}
+
+\AtBeginDocument{\small}
+
+\setlength\parindent{0pt}
+\setlength\parskip{2pt}
+
+\newcommand\contributor[2]{\makebox[1cm][l]{\sffamily#1} #2\par}
+
+% some special shortcuts overwriting existing commands:
+
+\let\u\underline 
+\renewcommand\>{$\to$}
+
+%%% some code suggested by Thorsten Hansen to count the number of
+%%% contributions by individuals (will work only if we do not get
+%%% too many :-)
+
+\def\count@contributors#1/#2/#3\@nil{
+   \@ifundefined{c@#1}{\newcounter{#1}}{}\stepcounter{#1}%
+%%%   also count secondary:
+%%%   \@ifundefined{c@#2}{\newcounter{#2}}{}\stepcounter{#2}% 
+}
+
+\renewcommand\erroronpage[5]{%
+   \count@contributors#3/secondary/\@nil
+   \endgobble
+   \doweprint{#4}{#5}%
+   \if@tempswa
+     \typeout{Typesetting entry #1 #2 #3 #4}%
+   \else
+     \typeout{Ignoring entry #1 #2 #3 #4}%
+     \expandafter\gobbleerrata
+   \fi
+   \hideamp \\%
+   \displayrevisionfix{#1}{#5}
+   \hideamp #2 \hideamp (\textsf{#3}) \hideamp
+}
+ 
+\renewcommand\seriouserroronpage[5]{%
+   \count@contributors#3/secondary/\@nil
+   \endgobble
+   \doweprint{#4}{#5}%
+   \if@tempswa
+     \typeout{Typesetting entry #1 #2 #3 #4}%
+   \else
+     \typeout{Ignoring entry #1 #2 #3 #4}%
+     \expandafter\gobbleerrata
+   \fi
+   \hideamp \\%
+   \fbox{\bfseries !!}\hfill
+   \displayrevisionfix{#1}{#5}
+   \hideamp #2 \hideamp (\textsf{#3}) \hideamp
+}
+
+\renewcommand\contributor[2]{\makebox[1cm][l]{%
+  \sffamily#1} #2\@ifundefined{c@#1}{}{ (\arabic{#1})}\par} 
+
+\end{filecontents}
+
+
+\begin{filecontents}{\jobname.cfg}
+%
+%
+% Configuration file for the errata listing of 
+%
+%  Der LaTeX-Begleiter 2 Auflage
+%
+%
+% \erratastartdate 
+%
+% Specifies the date from which on errata entries should be listed.
+%
+% The format is YYYY/MM/DD.
+%
+% The default below ensures that all entries are typeset.
+%
+
+\renewcommand\erratastartdate{2005/09/01}
+
+
+%
+% \myprinting
+%
+% Specifies which (revised) printing you own. For example, if you
+%    have the second printing set this to 2 so that errors already
+%    corrected in that printing will not appear in your errata
+%    listing.
+%
+% The default below ensures that all entries relevant to the first
+%    printing are typeset. 
+%    
+%
+
+\renewcommand\myprinting{1}
+
+%
+% \norevisionnumbers
+%
+% Specifies that all page numbers in the errata are shown in the same
+%    format (bold face) irregardless of whether or not they are fixed
+%    in some revision. The default is to print corrected errors in
+%    italic and add the revision number as a superscript.
+
+%
+% \showallerrors
+%
+% With this command you tell the program that all errata entries are
+%    supposed to be generated. This makes \myprinting and
+%    \erratastartdate basically obsolete so this isn't turned on by
+%    default.
+%
+%
+\endinput
+\end{filecontents}
+
+
+\documentclass{errata}[2005/11/10]  % we want new class
+
+\renewcommand\erratatitle[2]
+  {\begin{center}\LARGE\bfseries
+      Errataliste für #1\\[5pt](\myprinting.\ Druck)\\[10pt]
+      \small Enthält alle Einträge die \printedentries\space #2
+      gemeldet wurden \\
+      (Für andere Zeiträume/Druckausgaben ändert man die \texttt{.cfg}
+       Datei und formatiert erneut.)
+   \end{center}%
+   \markright{Errata für #1 (\printedentries\space #2)}%
+   \thispagestyle{plain}%
+   \vspace{20pt}}
+
+\renewcommand\printedentries{zwischen \erratastartdate\space und}
+
+
+\usepackage[T1]{fontenc}
+\let\u\underline          % shortcut for this file
+
+\newcommand\meta[1]{$\langle$\textit{#1\/}$\rangle$}
+\newcommand\BibTeX{\textsc{Bib}\TeX}
+
+
+\usepackage{textcomp}
+
+\usepackage{url}
+
+\usepackage[ngerman]{babel}
+\usepackage[latin1]{inputenc}
+
+\begin{document}
+
+\erratatitle{Der \LaTeX{}-Begleiter, zweite Auf\/lage}{\erratafiledate}
+
+
+\vspace*{-\baselineskip}
+
+\begin{verbatim}
+@book(Pearson:MG05,
+   author = {Frank Mittelbach and Michel Goossens},
+   title = {Der {\LaTeX}-Begleiter},  edition = 2,
+   note =  {Unter Mitarbeit von Johannes Braams, David Carlisle, und Chris Rowley},
+   publisher = {Pearson Studium}, address = {M\"unchen}, year = 2005,
+   pagenums = {1180},  bibliography = {yes}, index = {yes},
+   isbn = {3-8273-7166-X},
+)
+\end{verbatim}
+
+
+\begin{list}{}{\setlength\leftmargin{0cm}\setlength\rightmargin{3cm}}
+\item[]
+
+Diese Errata-Datei (\texttt{\jobname.err}) ist Teil der
+\LaTeX-Distribution und die neuste Version findet man auf der \LaTeX{}
+Project Webseite unter
+\url{http://www.latex-project.org/guides/}\texttt{\jobname.err}. Dort
+findet man auch einige Abschnitte des Buches als PDF-Dateien.
+
+Die erste Spalte der Tabelle zeigt die Seitennummer des
+Errataeintrags. Hochgestellte Ziffern in der ersten Spalte verweisen
+auf den Nachdruck, in dem der beschriebene Fehler korrigiert wurde
+(ein \textit{s} zeigt, an, dass das Problem bisher nur in den
+"`S"'ourcen korrigiert wurde). Die zweite Spalte beschreibt die genaue
+Position (negative Zeilen- oder Absatznummern werden vom Fuß der Seite
+gezählt). Die dritte Spalte zeigt die Initialen der Person die den
+Fehler zuerst aufgespürt/gemeldet hat.
+
+
+Mithilfe der Konfigurationsdatei  \texttt{\jobname.cfg} ist es möglich die
+Liste so anzupassen, dass nur Errataeinträge ab einem
+speziellen Nachdruck oder ab einem gewünschten Datum angezeigt werden.
+
+
+\begin{center}
+  \Large \bfseries  Irren ist menschlich -- Fehlerwettbewerb 
+\end{center}
+
+ 
+Jeder gefundene und mitgeteilte Fehler ist ein Gewinn für alle Leser
+und Käufer unseres Buches. Aus diesem Grund schreiben wir, Pearson
+Studium und die Autoren, einen Preis aus -- immer halbjährlich -- den
+die Person erhält, die die meisten Fehler innerhalb dieser Zeit findet
+(im Falle einer Überschneidung wird das Los zwischen den "`besten"'
+Fehlersuchern entscheiden).  Eine Person kann nur einmal einen Preis
+bekommen; Fehler die durch die Autoren gefunden werden, zählen nicht.
+\begin{center} 
+Ihr Preis: Ein Lehrbuch Ihrer Wahl!  
+\end{center}
+Auswählen können Sie dieses unter \url{http://www.pearson-studium.de}.
+(Bundles und mehrbändige Bücher sind davon ausgenommen).
+ 
+Wie üblich behalten sich die Autoren und der Verlag das Recht vor,
+selbst zu entscheiden ob ein Fehler tatsächlich als Fehler anzusehen
+ist oder ob ein öfters vorkommender Fehler als ein oder mehrere Fehler
+gezählt wird.
+ 
+- Viel Erfolg -  
+
+\begin{center}
+\begin{tabular}{clr@{ Eingaben}}
+Ende der Wettbewerbsperiode & Gewinner \\[4pt]
+2006/04 & Jens Mandavid & 121 \\
+2006/10 & \\
+2007/04 & \\
+2007/10 & \\
+2008/04 & \\
+2008/10 & \\
+\end{tabular}
+\end{center}
+\end{list}
+
+\newpage
+
+
+%<--------------------------
+
+\begin{erratalist}
+
+\CHAPTER{Allgemein  }
+
+\iffalse
+\seriouserroronpage{general}{}{FMi}{2004/06/12}{}
+
+   To help you in assessing this errata document we have placed
+   exclamation marks in front of each entry that we consider essential
+   for correctly understanding the book contents.
+ \fi
+
+\CHAPTER{Titelei}
+
+
+\erroronpage{iii}{bottom}{MHo}{2005/10/10}{s}
+LB2 mentions the fabled city of ``San Franciso'' which of course
+should be ``Francis\u{c}o''.
+
+\CHAPTER{Kapitel 1}
+
+\erroronpage{3}{Abs.4, Z.4}{JMa}{2005/12/26}{}
+ Ersetze: (NFSS) \> (\textsf{NFSS})
+
+\erroronpage{15}{Abs.5, Z.2}{ESt}{2006/03/11}{s}
+ \texttt{info/examples/lb2} wird nicht gefunden. Kein wirklicher Fehler im
+ Buch, sondern ein Versehen auf CTAN.
+
+
+\CHAPTER{Kapitel 2}
+
+\erroronpage{26}{Abs.-3, Z.4}{JMa}{2006/01/03}{s}
+ Zur schließenden Klammer in Zeile 5 gibt es keine öffnende; es sollte wohl 
+heißen: (zum Beispiel \ldots{}
+
+\erroronpage{29}{Abs. nach 2-2-3, Z.7}{JMa}{2006/01/03}{s}
+ Es muss ``mit unterschiedliche\u{n} Definitionen'' heißen.
+
+\erroronpage{31}{Abs.3, Z.3}{FMi}{2006/02/28}{s}
+Im Deutschen steht bei einer Aufzählung kein Komma vor ``oder''.
+
+\erroronpage{33}{Abs.1, Z.-2}{FMi}{2006/02/28}{s}
+Im Deutschen steht bei einer Aufzählung kein Komma vor ``oder''.
+
+\erroronpage{37}{Abs.1, Z.1}{JMa}{2006/01/03}{s}
+Im Deutschen steht bei einer Aufzählung kein Komma vor ``oder''.
+
+\erroronpage{39}{Abs.3, Z.4 und Z.7}{JMa}{2006/01/03}{s}
+Im Deutschen steht bei einer Aufzählung kein Komma vor ``oder''.
+
+\erroronpage{42}{Absatz \textit{rechts}, Z.2}{JMa}{2006/01/03}{s}
+Im Deutschen steht bei einer Aufzählung kein Komma vor ``oder''.
+
+\erroronpage{56}{Abs.3, Z.3}{JMa}{2006/01/03}{s}
+Hier fehlt ein Buchstabe: ``Das Beispiel zeigt, das\u{s} es 
+wahrscheinlich''.
+
+\erroronpage{60}{Tab.2.3, rechte Spalte, Z.1}{JMa}{2006/01/03}{s}
+Hier fehlt zu einer schließenden Klammer die öffnende.
+
+\erroronpage{61}{Abs.3, Z.-1}{JMa}{2006/01/03}{s}
+\LaTeX-Trennfehler: Kapitel-eintr"age statt Kapite-leintr"age.
+
+\erroronpage{64}{Abs.3, Z.-2}{JMa}{2006/01/03}{s}
+\LaTeX-Trennfehler: Abschnitts-eintrag statt Abschnitt-seintrag.
+
+\erroronpage{65}{Abs.1, Z.1-2}{JMa}{2006/01/03}{s}
+Es muss ``Ein solcher Wechsel'' statt ``Eine solcher Wechsel'' heißen.
+
+\erroronpage{65}{Abs.-2, Z.1-2}{JMa}{2006/01/03}{s}
+\LaTeX-Trennfehler: Verzeichnis-eintr"age statt Verzeichni-seintr"age.
+
+\erroronpage{70}{Abs.-1, Z.1-2}{JMa}{2006/01/03}{s}
+Hier fehlt ein Komma am Ende der ersten Zeile und ein Punkt am Ende des 
+ersten Satzes.
+
+\erroronpage{73}{Abs.2, Z.4}{JMa}{2006/01/03}{s}
+Im Deutschen steht bei einer Aufzählung kein Komma vor ``oder''.
+
+\erroronpage{74}{Abs.2, Z.12}{JMa}{2006/01/03}{s}
+Hier fehlt ein Komma vor ``wenn sie durch''.
+
+\erroronpage{75}{Abs.3, Z.1}{JMa}{2006/01/03}{s}
+Es fehlen zwei Buchstaben: ``ohne daf"ur einen eigen\u{en} Abstand 
+einzuf"ugen''.
+
+
+\CHAPTER{Kapitel 3}
+
+\erroronpage{94}{Abs.-3, Z.-1}{JMa}{2006/01/06}{s}
+Lösche s aus Grau\u{s}wertproblem
+
+
+\erroronpage{101}{Abs.3, Z.3}{JMa}{2006/01/14}{s}
+Kein Komma vor und bei einer Aufzählung.
+
+\erroronpage{114}{para 3}{FMi/CBe}{2005/09/02}{}
+ |\linespread| is the \LaTeXe\ command for
+ setting up the value of |\baselinestretch|; it is not necessary
+ to use |\renewcommand| and in particular it is not necessary to
+ activate the new interline spacing by changing font; it suffices the command
+ |\selectfont|; the procedure described in this paragraph,
+ although still possible, was the one to use with \LaTeX\,209 and with the
+ early versions of \LaTeXe, and it was the only way when the First Edition was
+ published. The command |\linespread| is introduced the first
+ time on page~204, but section 3.1.13 was the right place to do it.
+
+ Wurde im englischen Original im 4ten Druck korrigiert, Text für die deutsche
+ Fassung fehlt noch.
+
+
+\erroronpage{123}{2. Abs, Z.2}{JMa}{2006/01/14}{s}
+\ldots die Auswirkung\u{en} von \textsf{perpage} deutlich zu sehen sind.
+
+\erroronpage{143}{3. Abs, Z.1}{JMa}{2006/01/14}{s}
+Am Ende der Zeile fehlt ein Komma.
+
+\erroronpage{144}{1. Abs, Z.2}{JMa}{2006/01/14}{s}
+Es muss \u{kein} statt keinen hei\ss{}en.
+
+\erroronpage{147}{Bsp.3-3-19}{JMa}{2006/01/14}{s}
+Der \LaTeX{}-Begleiter sollte stets mit Bindestrich geschrieben werden.
+
+\erroronpage{158}{Bsp.3-3-28}{FMi/JBez}{2005/09/02}{}
+  The vertical space above ``Return values'' is too small.
+
+  Das ist ein ziemlich versteckter \LaTeX-Fehler, mit dem man momentan noch
+  leben muss.
+
+\erroronpage{163}{Z.-3}{JMa}{2006/01/14}{s}
+Ersetze: "`fontenc"' \> "`\textsf{fontenc}"'
+
+\erroronpage{174}{3. Abs, Z.-2}{JMa}{2006/01/14}{s}
+Ersetze: "`diesen"' \> "`diesem"'
+
+\erroronpage{175}{Z. -4}{JMa}{2006/01/14}{s}
+Streiche einmal das Wort "`sich"'.
+
+\erroronpage{182}{Abs -1, Z.3}{JMa}{2006/01/14}{s}
+Es geht um eine Untermenge \u{von} \ldots
+
+\erroronpage{184}{Z.3}{JMa}{2006/01/14}{s}
+Streiche einmal das Wort "`Beispiel"'.
+
+\erroronpage{192}{3. Abs, Z.3}{JMa}{2006/01/14}{s}
+Es soll wohl "`von dieser \u{durch} das Resultat von \ldots"' hei\ss{}en.
+
+\erroronpage{195}{4. Abs, Z.5}{JMa}{2006/01/14}{s}
+Ersetze: "`ausgeben"' \> "`aus\u{ge}geben"'
+
+\erroronpage{197}{2. Abs, Z.1}{JMa}{2006/01/14}{s}
+Streiche das zweite t aus setz\u{t}en.
+
+
+
+
+\CHAPTER{Kapitel 4}
+
+
+\erroronpage{208}{Z. 1}{JMa}{2006/01/27}{s}
+Fehlendes Komma: "`zwei Pakete, mit deren"'
+
+\erroronpage{210}{Abs.6, Z.-1}{JMa}{2006/01/27}{s}
+Fehlendes Komma: "`abliest), kann man"'
+
+\erroronpage{221}{para 4, l.4}{FMi}{2006/09/09}{s}
+   Option  \texttt{b3} ist zweifach gelistet.
+
+
+
+\CHAPTER{Kapitel 5}
+
+
+\erroronpage{243}{}{FMi/CBe}{2005/09/02}{}
+ The explanation of the command \comando{\arraystretch} is
+ wrong; in fact it does not multiply the inter-row space by the specified
+ factor, so that a factor of 1.5 would move the rows 50\% farther apart.
+ \comando{\arraystretch} scales by the specified factor the height and depth of
+ the invisible strut that is in the first cell of every row of tabular and array
+ environments. If all the cells of the row are smaller than the strut the effect
+ is more or less similar to an enlargement of the inter-row space, while if at
+ least one cell in the row is larger than the strut no spreading apart takes
+ place other than that required by the largest cell. 
+
+ Wurde im englischen Original im 4ten Druck korrigiert, Text für die deutsche
+ Fassung fehlt noch.
+
+\erroronpage{249}{Abs.3 in 5.1.1}{JMa}{2006/01/27}{s}
+Dieser Satz steht schon am Ende des ersten Absatzes dieses 
+Abschnitts.
+
+\erroronpage{253}{Z. -2}{JMa}{2006/01/27}{s}
+Kein Komma vor "`erzeugt wurden"'
+
+\erroronpage{269}{Abs.5, Z.1}{JMa}{2006/01/27}{s}
+\LaTeX-Trennfehler: Standar-dumgebung. \> Standard-umgebung 
+
+
+
+\CHAPTER{Kapitel 6}
+
+
+\erroronpage{292}{Abs.-1, Z.2}{MSch}{2006/01/04}{s}
+  Füge hinzu:  "`z.B. bedeutet \u{\texttt{0.2}}, dass 20\% von Gleitobjekten
+  belegt sein darf"'
+
+\erroronpage{301}{Z.1}{JMa}{2006/02/04}{s}
+Fehlendes Komma: "`Hilfsdatei, in der"'
+
+\erroronpage{301}{Abs.-2,Z.3}{JMa}{2006/02/04}{s}
+Falsche Anf"uhrungszeichen bei "`eingerahmt"'
+
+\erroronpage{302}{exa 6-3-1}{FMi/CBe}{2005/09/02}{}
+The Euler constant must be typeset in roman type according
+to the ISO rules; $e$ is the charge of the electron.
+
+\erroronpage{304}{Z.2}{JMa}{2006/02/04}{s}
+Es muss "`in den Abschnitten\u{n} 6.2.1 bzw. 6.2.2"' hei\ss{}en.
+
+\erroronpage{304}{Z.-5}{JMa}{2006/02/04}{s}
+Es muss "`{}"uber ein zus"atzliche\u{s} obligatorisches Argument"' 
+hei\ss{}en.
+
+\erroronpage{315}{Abs.-3,Z.-3}{JMa}{2006/02/04}{s}
+Streiche den letzten Buchstaben von "`Bed"urfnisse\u{n}"'.
+
+\erroronpage{318}{Bsp.6-5-2, Abb.2}{JMa}{2006/02/04}{s}
+Fehlendes Komma: "`Eine Legende, die mehrere"'
+
+\erroronpage{319}{Bsp.6-5-3, Tab.1}{JMa}{2006/02/04}{s}
+Fehlendes Komma: "`Eine Legende, die mehrere"'
+
+\erroronpage{321}{Option \texttt{position}}{FMi/JS}{2005/09/14}{s}
+   Beschreibe, dass der Schlüssel \texttt{bottom} die Voreinstellung ist.
+
+\erroronpage{322}{Abs.-1, Z.2}{JMa}{2006/02/04}{s}
+Streiche ein "`es"'.
+
+\erroronpage{327}{Abs.-1, Z.3 und Z.5}{JMa}{2006/02/04}{s}
+Ersetze: \textsl{typ} \> \textsl{klasse}
+
+
+
+\CHAPTER{Kapitel 7}
+
+\erroronpage{340}{Fußnote 2}{JMa}{2006/02/27}{s}
+Fehlendes Komma: "`verwandelt, ist dabei"'
+
+\erroronpage{344}{Abs.3, Z.4}{JMa}{2006/02/27}{s}
+Schließende Klammer nach "`Abbildung 7.3"' fehlt.
+
+\erroronpage{348}{Abs.-1, Z.3-4}{JMa}{2006/02/27}{s}
+Trennfehler: Es muss Pa-ketnamen statt Pak-etnamen hei\ss{}en.
+
+\erroronpage{349}{}{FMi}{2006/02/27}{s}
+Änderung auf Seite 348 ändert Seitenumbruch.
+
+\erroronpage{352}{Abs.-1, Z.1}{JMa}{2006/02/27}{s}
+Fehlendes Komma: "`einnimmt, ist der"'
+
+\erroronpage{356}{Bsp.7-3-7}{JMa}{2006/02/27}{}
+Ersetze: NFSS \> \textsf{NFSS}
+
+\erroronpage{362}{Abs.-1, Z.4}{JMa}{2006/02/27}{s}
+Streiche das mittlere s in Symbol\u{s}fonts.
+
+\erroronpage{364}{Abs.-2, Z.-1}{JMa}{2006/02/27}{s}
+Ersetze: hinzu-f"ugt \> hinzu-\u{ge}f"ugt
+
+\erroronpage{367}{Ab.-2, Z.-1}{MSch}{2006/01/06}{s}
+  Der Abstand vor dem Punkt am Satzende ("`T1-Kodierung ."') ist zu
+  entfernen.
+
+\erroronpage{371}{Abs. \texttt{cp437de}}{JMa}{2006/02/27}{s}
+Falsche Anführungszeichen beim \ss
+
+\erroronpage{371}{Abs \texttt{utf8}}{JMa}{2006/02/27}{s}
+Das Leerzeichen vor dem Punkt ist zu entfernen.
+
+\erroronpage{394}{letzte Z.}{MSch}{2006/01/06}{s}
+  Der Abstand vor der schlie\ss enden Klammer ("`in Abschnitt 7.5.4 )"')
+  ist zu entfernen.
+
+\erroronpage{404}{Abs.-1, Z.1}{JMa}{2006/02/27}{s}
+Streiche das n aus Name\u{n}.
+
+\erroronpage{406}{Abs.3, Z.-3}{JMa}{2006/02/27}{s}
+Fehlendes Komma: "`werden, normalerweise ohnehin"'
+
+\erroronpage{407}{Bsp. 7-7-21, 7-7-22}{TNdz}{2006/01/20}{s}
+    Fehlendes Komma: "`\ldots ist ein Blindtext, an dem sich 
+    verschiedene \ldots"´
+
+\erroronpage{416}{Kapitel 7.8.6, Z.8}{RSi}{2005/12/07}{s}
+   Leerzeichen nach dem kleinen Omega (|\textscomega|) fehlt.
+
+\erroronpage{420}{Abs.3, Z.-2}{JMa}{2006/02/27}{s}
+Ersetze: L"ander \> L"ander\u{n}
+
+\erroronpage{420}{Abs.4, Z.-1}{JMa}{2006/02/27}{s}
+Streiche eines der beiden "`auf"'.
+
+\erroronpage{422}{Abs.3, Z.2}{JMa}{2006/02/27}{s}
+Fehlendes Komma: "`zur Verf"ugung, um auf die"'
+
+\erroronpage{423}{Abs.1, Z.-2}{JMa}{2006/02/27}{s}
+Ersetze: zum \> zu
+
+\erroronpage{428}{Tabelle 7.27, Z.~1}{MSch}{2005/12/31}{s}
+  Ersetze: \dq`Cork\dq'-Kodierung durch "`Cork"'-Kodierung
+
+\erroronpage{428}{Abs1., Z.4-5}{JMa}{2006/02/27}{s}
+Trennfehler: Es muss Pro-zent statt Proz-ent hei\ss{}en.
+
+
+\erroronpage{435}{Abs.-2, Z.-1}{JMa}{2006/02/27}{s}
+Fehlendes Komma vor "`werden"'
+
+\erroronpage{445}{Abs.-3, Z.1}{JMa}{2006/02/27}{s}
+Streiche das s aus Namen\u{s}
+
+\erroronpage{454}{Abs.4, Z.-2}{JMa}{2006/02/27}{s}
+Ersetze: dass \> das
+
+\erroronpage{454}{Abs.5, Z.-3}{JMa}{2006/02/27}{s}
+Ersetze: dier \> die
+
+\erroronpage{456}{Abs.2, Z.2}{JMa}{2006/02/27}{s}
+Fehlendes Komma: "`Befehle, die"'
+
+\erroronpage{458}{Abs.2, Z.2}{JMa}{2006/02/27}{s}
+Fehlendes Komma: "`Zeichen, die in"'
+
+\erroronpage{458}{Abs.2, Z.2}{JMa}{2006/02/27}{s}
+Fehlendes Komma: "`solchen, die in"'
+
+\erroronpage{458}{Abs.4, Z.3}{JMa}{2006/02/27}{s}
+Fehlendes Komma vor "`wurden"'
+
+\erroronpage{464}{Abs.1, Z.3-4}{JMa}{2006/02/27}{s}
+Trennfehler: Es muss Ak-zentzeichen statt Akz-entzeichen hei\ss{}en.
+
+\erroronpage{468}{Tab.7.33}{FMi}{2006/05/12}{s}
+Die "'Tabellen"uberschrift"` ist nicht im \textsf{sf}-Format.
+
+
+\CHAPTER{Kapitel 8}
+
+\erroronpage{496}{Abs.2, Z.1/2}{JMa}{2006/03/05}{s}
+Trennfehler: Mark-up sieht deutlich besser aus als Mar-kup.
+
+\erroronpage{504}{Abs.-2,Z.3}{JMa}{2006/03/05}{s}
+Kein Komma vor "`oder"' bei einer Aufz"ahlung.
+
+
+\erroronpage{507}{Abs.-2, Z.1}{JMa}{2006/03/05}{s}
+Streiche die beiden letzten Buchstaben von Paket\u{es}.
+
+\erroronpage{510}{Abs.-1, Z.1}{JMa}{2006/03/05}{s}
+Streiche einmal das Wort "`Tabelle"'.
+
+\erroronpage{516}{Abs.-3, Z.2}{JMa}{2006/03/05}{s}
+Streiche ein "`die"'.
+
+
+\CHAPTER{Kapitel 9}
+
+\erroronpage{560}{2. Snippet}{MSch/FMi}{2006/01/06}{s}
+  Der vertikale Abstand vor dem Codebeispiel ist im Verh"altnis zum
+  darauffolgenden Abstand erheblich zu gro\ss.
+
+  Und zudem die Seite eine Zeile zu lang.
+
+
+\erroronpage{563}{Abs.1, Z.4}{JMa}{2006/03/014}{s}
+Die "offnende Klammer fehlt vor "`zum Beispiel"'.
+
+\erroronpage{565}{Abs.-2, Z.1}{JMa}{2006/03/14}{s}
+Streiche den letzten Buchstaben von sprachspezifische\u{n}.
+
+
+\erroronpage{567}{tab 9.3}{FMi/CBe}{2004/07/27}{}
+   I am surprised that in Russian there is no word for ``Glossary''.
+
+   Frank: It most certainly exits :-), but right now Babel doesn't
+   know about it---so there is nothing we can do about it at the
+   moment. Actually the same problem exists with Polish, although here
+   I got a translation ``s\l ownik termin{\'o}w'' which will eventually
+   find its way into Babel.
+
+   Tja, so gehts. Auch als das deutsche Buch gesetzt wurden waren die Begriffe
+   auch noch nicht bekannt.
+
+\erroronpage{579}{Abs.3, Z.3}{JMa}{2006/03/14}{s}
+Streiche die beiden letzten Buchstaben von ein\u{es}.
+
+\erroronpage{590}{Abs.1, Z.5/6}{JMa}{2006/03/14}{s}
+Wenn  "`rumakeindex"' getrennt werden muss, sieht "`rumake-index"' deutlich 
+besser aus.
+
+\erroronpage{599}{Abs.2, Z.2}{JMa}{2006/03/14}{s}
+Zu der schließenden Klammer gibt es keine "offnende.
+
+
+
+\CHAPTER{Kapitel 10}
+
+
+\erroronpage{628}{Abs.-3, Z.4}{JMa}{2006/03/23}{s}
+Der Bruch $\displaystyle\frac{\pi}{2}$ ragt in die Zeile darunter.
+
+\erroronpage{638}{Abs.3, Z.-1}{JMa}{2006/03/23}{s}
+Streiche den letzten Buchstaben von ausf"uhrliche\u{n}.
+
+\erroronpage{647}{Abs.4, Z.1}{JMa}{2006/03/23}{s}
+Streiche den letzten Buchstaben von vertikale\u{r}.
+
+\erroronpage{661}{Abs.-3, Z.3}{JMa}{2006/03/23}{s}
+Ersetze: "`verf"ugt"' \> "`verf"ugen"'
+
+\erroronpage{661}{para -2, l.1}{FMi}{2005/11/11}{s}
+  Leider ist Th\`anhs Name falsch geschrieben. Die korrekte Schreibweise
+  ist "`H\`an Th\^e\llap{\raise 0.5ex\hbox{\'{}}} Th\`anh"'.
+
+
+
+\CHAPTER{Kapitel 11}
+
+\erroronpage{686}{Abs.-2, Z.-2}{JMa}{2006/03/23}{s}
+Streiche das Komma vor "`und"'.
+
+\erroronpage{691}{Abs.4, Z.2}{JMa}{2006/03/23}{s}
+Ersetze: "`eigene"' \> "`eigenen"'
+
+\erroronpage{697}{Abs. \texttt{-o} \textsl{ind}}{JMa}{2006/03/23}{s}
+Streiche die letzten Buchstaben von Verwendung\u{Index}.
+
+\erroronpage{703}{Z.2}{AFe}{2006/01/13}{s}
+   Extra Buchstabe: |\mark|\texttt{\u k}|both| \>
+   |\markboth|
+
+\erroronpage{704}{Abs.1, Z.1}{JMa}{2006/03/23}{s}
+Streiche den letzten Buchstaben von Teil\u{s}.
+
+
+\CHAPTER{Kapitel 12}
+
+\erroronpage{709}{Abs.3, Z.-5}{JMa}{2006/03/31}{s}
+Entferne das Komma vor l"asst.
+
+\erroronpage{711}{Abs.2, Z.3/4}{JMa}{2006/03/31}{s}
+Trennfehler: Schreibe Layout-richtlinien statt Layou-trichtlinien.
+
+\erroronpage{717}{Abs.3, Z.2}{JMa}{2006/03/31}{s}
+F"uge ein Komma vor "`definieren"' ein.
+
+\erroronpage{719}{Abs.-1, Z.2}{JMa}{2006/03/31}{s}
+F"uge ein Komma vor "`mit dessen Hilfe"' ein.
+
+\erroronpage{721}{Abs.-1, Z.2}{JMa}{2006/03/31}{s}
+F"uge ein Komma vor "`die nicht unterst"utzt"' ein.
+
+\erroronpage{728}{Abs.2, Z.-1}{JMa}{2006/03/31}{s}
+Es hei\ss{}t \u{der} Apostroph, nicht "`das"'.
+
+\erroronpage{734}{Abs.-3, Z.-3}{JMa}{2006/03/31}{s}
+F"uge ein "offnende Klammer vor "`zum Beispiel"' ein.
+
+\erroronpage{735}{Abs.3, Z.1}{JMa}{2006/03/31}{s}
+F"uge ein Komma vor "`wo im"' ein.
+
+\erroronpage{737}{Abs.-3, Z.-2}{JMa}{2006/03/31}{s}
+F"uge ein Komma vor "`die normalerweise"' ein.
+
+\erroronpage{740}{Abs.-3, Z.2}{JMa}{2006/03/31}{s}
+Streiche den letzten Buchstaben von wurde\u{n}.
+
+\erroronpage{745}{Abs.-1, Z.-2}{JMa}{2006/03/31}{s}
+Ersetze: "`ein solche"' \> "`eine solche"'
+
+\erroronpage{746}{Abs.-4, Z.1}{JMa}{2006/03/31}{s}
+F"uge ein Komma vor "`wo im"' ein.
+
+\erroronpage{752}{Abs.1, Z.-2}{JMa}{2006/03/31}{s}
+Zur schlie\ss{}enden Klammer gibt es keine "offnende.
+
+\erroronpage{752}{Abs.3, Z.-2}{JMa}{2006/03/31}{s}
+Streiche die letzten drei Buchstaben von "`aufauf"'.
+
+\erroronpage{755}{Abs.-1, Z.2}{JMa}{2006/03/31}{s}
+Ersetze: "`eine vollst"andigen"' \> "`einen vollst"andigen"'
+
+\erroronpage{763}{Abs.3, Z.6}{JMa}{2006/03/31}{s}
+Streiche das Komma vor "`und"'.
+
+\erroronpage{767}{Abs.-3, Z.1}{JMa}{2006/03/31}{s}
+Ersetze: "`L"adt"' \> "`l"adt"'
+
+\erroronpage{772}{Tab.12.2}{JMa}{2006/03/31}{s}
+F"uge ein Komma vor "`die eine bestimmte Wahl"' ein.
+
+\erroronpage{777}{Abs.3, Z.-1}{JMa}{2006/03/31}{s}
+Füge einen Punkt nach "`zeigt"' ein.
+
+\erroronpage{781}{Abs.1, Z.1}{JMa}{2006/03/31}{s}
+Ersetze: "`Diese"' \> "`Dieses"'
+
+
+\CHAPTER{Kapitel 13}
+
+\erroronpage{791}{Tab.13.1, \texttt{inbook}}{JMa}{2006/04/11}{s}
+Streiche einmal das Wort "'oder"`.
+
+\erroronpage{792}{Tab13.2, \texttt{crossref}}{JMa}{2006/04/11}{s}
+F"uge ein Komma vor "`auf den"' ein.
+
+\erroronpage{795/796}{mehrere Stellen}{FMi/DAl}{2005/09/12}{s}
+  Der Name "`Miguel Lopez Fernandez"' sollte durch "`Miguel Parra Benavides"'
+  ersetzt werden, da der bisher verwendete eigentlich Akzente besitzen würde,
+  die an der Stelle im Buch noch nicht diskutiert wurden.
+
+\erroronpage{796}{Abs.-5, Z.-1}{JMa}{2006/04/11}{s}
+F"uge einen Punkt nach "`erscheinen"' ein.
+
+\erroronpage{799}{Abs.-2, Z.3}{JMa}{2006/04/11}{s}
+Streiche das Komma vor "'und"`.
+
+\erroronpage{802}{Abs.-1, Z.-2}{JMa}{2006/04/11}{s}
+Streiche das Komma vor "'und"`.
+
+\erroronpage{819}{Abs.-1, Z.2}{JMa}{2006/04/11}{s}
+Ersetze: BibTexMng \> \textsf{BibTexMng}
+
+\erroronpage{820}{Abs.2, Z.2}{JMa}{2006/04/11}{s}
+Streiche das Komma nach \texttt{size}.
+
+\erroronpage{821}{Tab.13.4, Z.-4}{JMa}{2006/04/11}{s}
+F"uge ein Leerzeichen nach "'Fachzeitschriften"` ein. Ferner ist die 
+"'Tabellen"uberschrift"` nicht im \textsf{sf}-Format.
+
+\erroronpage{828}{Tab. 13.5, Z. 1-2}{MSch}{2006/01/06}{s}
+  Donald Ervin Knuths Name ist falsch geschrieben. Ersetze: "`Erwin"' \>
+  "`Ervin"'
+
+\erroronpage{830}{Tab.13.6}{JMa}{2006/04/11}{s}
+Ersetze: Italienische \> Italienisch
+
+\erroronpage{832}{Abs.1, Z.2}{JMa}{2006/04/11}{s}
+Ersetze: Abschnitte \> Abschnitten
+
+\erroronpage{839}{Tab.13.8, \texttt{substring}}{JMa}{2006/04/11}{s}
+F"uge ein Leerzeichen vor "`hat"' ein.
+
+\erroronpage{842}{Abs.1, Z.-2}{JMa}{2006/04/11}{s}
+Entweder fehlt hier eine "offnende Klammer -- oder die schlie\ss{}ende ist 
+zu viel.
+
+
+\CHAPTER{Kapitel 14}
+
+\erroronpage{853}{Tab.14.1}{FMi}{2006/05/12}{s}
+Die "'Tabellen"uberschrift"` ist nicht im \textsf{sf}-Format.
+
+\erroronpage{858}{Abs.5, Z.1}{JMa}{2006/05/03}{}
+F"uge ein "'zu"` zwischen "'Kommentare"` und "'entfernen"` ein.
+
+\erroronpage{865}{1. Snippet, Z. 2}{MSch}{2006/01/06}{}
+  Ersetze: |text/latex/base| \> |tex/latex/base|
+
+\erroronpage{865}{l.-7}{FMi/HjG}{2005/09/02}{}
+   Underline, as it is command line input.
+
+\erroronpage{871}{Abs.2, Z.2}{JMa}{2006/05/03}{}
+Ersetze entg"ultig \> endg"ultig
+
+\erroronpage{882}{Abs.1, Z.2}{JMa}{2006/05/03}{}
+Ersetze Abschnitte \> Abschnitten
+
+\erroronpage{891}{Tab.A.3, Z.1}{JMa}{2006/05/03}{}
+F"uge ein Komma vor "'der eine feste oder"` ein.
+
+\erroronpage{906}{Abs.1, Z.1}{JMa}{2006/05/03}{}
+Ersetze \textsl{text} \> \textsl{test}
+
+\erroronpage{909}{Abs.2, Z.1}{JMa}{2006/05/03}{}
+F"uge ein Komma vor "'ob"` ein.
+
+\erroronpage{918}{Abs.-1, Z.3}{JMa}{2006/05/03}{}
+F"uge ein Komma vor "'wird"` ein.
+
+
+
+\CHAPTER{Anhang A}
+
+\erroronpage{882}{Abs.1, Z.2}{FMi}{2006/05/12}{s}
+Ersetze: Abschnitte \> Abschnitten
+
+\erroronpage{888}{fig A.1, l.4}{FMi/JAn}{2005/09/09}{}
+    ``Did\^ot'' \> ``Didot'' und entferne Komma nach "`Zoll"' 
+
+
+
+\CHAPTER{Bibliographie}
+
+\erroronpage{1026}{[128]}{FMi}{2005/11/07}{s}
+  Der Titel lautet: ``E-\TeX: Guidelines for Future \TeX{} Extensions''.
+
+\erroronpage{1030}{[162]-[163]}{FMi/RKo}{2005/11/11}{s}
+
+   Leider ist Th\`anhs Name falsch geschrieben (Akzente) . Die
+  korrekte Schreibweise ist "`H\`an Th\^e\llap{\raise 0.5ex\hbox{\'{}}}
+  Th\`anh"'.
+
+\erroronpage{1030}{[159]-[163]}{FMi/RKo}{2005/11/11}{}
+
+  Außerdem ist "`Han"' der Familienname müsste also korrekterweise unter H
+  einsortiert werden (letzteres lässt sich aber nur schwer korrigieren, da
+  dann nahezu das gesamte Buch neu gesetzt werden müsste).
+
+
+\CHAPTER{Index}
+
+
+\erroronpage{1033}{2. Absatz, Z.4}{JMa}{2006/01/05}{}
+Die Abkürzung NFSS sollte \textsf{NFSS} geschrieben werden.
+
+\iffalse Nicht wirklich, aber auch nicht schoen so ... mal sehen
+
+\erroronpage{1068}{"`Gleichheits- und Relationszeichen"'}{MSch}{2005/12/31}{}
+  Die beiden Einträge zu Gleichheits- und Relationszeichen sind durch
+  die Verwendung unterschiedlicher Trennzeichen falsch sortiert;
+  vertausche "`negierte, mathematische Symbole"' und "`mathematische
+  Symbole"'.
+\fi
+
+\erroronpage{1088}{rechte Spalte}{JMa}{2006/01/05}{}
+Die Abkürzung NFSS sollte \textsf{NFSS} geschrieben werden.
+
+\CHAPTER{Biographien}
+
+\erroronpage{1129}{Abs. 2, Z.3}{SZi}{2005/11/24}{} 
+  l"osche g aus Dok\u{g}umente
+
+\end{erratalist}
+
+
+\setcounter{collectmore}{3}
+
+\begin{multicols}{3}[Dank an alle die Fehler oder Auslassungen
+   gemeldet haben. Gelistet sind jeweils die Personen die ein Problem
+   zuerst entdeckt haben. Einige Fehler wurden im englischen Original
+   gefunden, weshalb auch ein paar Namen ohne Fehlerzahl auftauchen.]
+%\contributor{J-CCh}{Jean-C\^ome Charpentier}
+\contributor{AFe}{Alfonso Fernandez Vazquez}
+\contributor{CBe}{Claudio Beccari}
+\contributor{DAl}{Daniel Alonso i Alemany}
+\contributor{ESt}{Eckhard Stein}
+\contributor{FMi}{Frank Mittelbach}
+\contributor{HjG}{Hubert G\"a\ss lein}
+\contributor{JAn}{Jacques Andr\'e}
+\contributor{JBez}{Javier Bezos}
+\contributor{JMa}{Jens Mandavid}
+\contributor{JS}{Joachim Schrod}
+\contributor{MHo}{Morten H\o gholm}
+\contributor{MSch}{Michael Schutte}
+\contributor{RKo}{Reinhard Kotucha}
+\contributor{RSi}{Roman Sigg}
+\contributor{SZi}{Stefan Ziesemer}
+\contributor{TNdz}{Timo Niedenzu} 
+\end{multicols}
+
+
+Sollten Sie einen weiteren Fehler entdecken, melden Sie diesen bitte an
+\begin{quote}\ttfamily
+  frank.mittelbach@latex-project.org
+\end{quote}
+wenn möglich gleich in der für diese Datei benötigte Form, d.h.
+\begin{flushleft}
+|\erroronpage{|\textit{Seitennummr}|}{|\textit{Zeilenidentifikation}|}{|%
+   \textit{Initialen}|}{|\textit{JJJJ/MM/DD}|}{}| \\
+   \hspace*{2em}\textit{Beschreibung des Fehlers}
+\end{flushleft}
+Hier ist ein Beispiel:
+\begin{verbatim}
+\erroronpage{5}{Abs.3, Z.1}{MOs}{2005/09/01}{}
+   Ersetze: "`LaTeX"' \> "`\LaTeX{}"' 
+\end{verbatim}
+Die Verwendung von Babelkommandos (etwa |"`|) ist möglich, aber Umlaute
+sollten möglichst nicht als 8-bit Zeichen eingegeben werden (also besser |"a|
+oder |\"a|) um Probleme mit der Kodierung zu verhindern.
+
+\end{document}
