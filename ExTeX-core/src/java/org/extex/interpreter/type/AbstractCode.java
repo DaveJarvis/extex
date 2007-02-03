@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -33,8 +33,6 @@ import org.extex.typesetter.Typesetter;
 import org.extex.util.framework.Registrar;
 import org.extex.util.framework.i18n.Localizable;
 import org.extex.util.framework.i18n.Localizer;
-
-
 
 /**
  * This is the abstract base class which can be used for all classes
@@ -115,7 +113,7 @@ public abstract class AbstractCode implements Code, Localizable, Serializable {
             throws InterpreterException {
 
         throw new CantUseInException(printableControlSequence(context),
-                typesetter.getMode().toString());
+            typesetter.getMode().toString());
     }
 
     /**
@@ -184,9 +182,9 @@ public abstract class AbstractCode implements Code, Localizable, Serializable {
     /**
      * @see org.extex.interpreter.type.Code#setName(java.lang.String)
      */
-    public void setName(final String theName) {
+    public void setName(final String name) {
 
-        this.name = theName;
+        this.name = name;
     }
 
     /**
@@ -194,7 +192,7 @@ public abstract class AbstractCode implements Code, Localizable, Serializable {
      */
     public String toString() {
 
-        return "\\" + name;
+        return name;
     }
 
 }
