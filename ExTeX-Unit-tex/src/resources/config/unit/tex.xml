@@ -332,7 +332,7 @@
     <define name="leqno"
             class="org.extex.unit.tex.math.numbering.Leqno"/>
     <define name="let"
-            class="org.extex.unit.base.macro.Let"/>
+            class="org.extex.unit.tex.macro.Let"/>
     <define name="limits"
             class="org.extex.unit.tex.math.limits.Limits"/>
     <define name="linepenalty"

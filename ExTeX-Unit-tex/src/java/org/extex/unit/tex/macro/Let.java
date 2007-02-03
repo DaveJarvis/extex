@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.unit.base.macro;
+package org.extex.unit.tex.macro;
 
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
@@ -29,6 +29,7 @@ import org.extex.interpreter.type.Code;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
+import org.extex.unit.base.macro.LetCode;
 
 /**
  * This class provides an implementation for the primitive <code>\let</code>.

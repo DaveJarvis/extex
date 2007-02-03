@@ -28,7 +28,7 @@ import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
-import org.extex.unit.base.macro.Let;
+import org.extex.unit.tex.macro.Let;
 
 /**
  * This class provides an implementation for the primitive <code>\import</code>.

@@ -26,7 +26,6 @@ import org.extex.interpreter.exception.InterpreterException;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
-import org.extex.unit.base.macro.Let;
 
 /**
  * This class provides an implementation for the primitive
