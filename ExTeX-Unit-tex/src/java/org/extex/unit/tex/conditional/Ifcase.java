@@ -29,6 +29,7 @@ import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.count.Count;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
+import org.extex.type.Locator;
 import org.extex.typesetter.Typesetter;
 import org.extex.unit.base.conditional.AbstractIf;
 import org.extex.unit.base.conditional.Else;
@@ -119,9 +120,10 @@ public class Ifcase extends AbstractIf {
 
         long branch = Count.scanInteger(context, source, typesetter);
         if (branch < 0) {
-            if (skipToElseOrFi(context, source)) {
+            if (skipToElseOrFi(context, source,
+                printableControlSequence(context))) {
                 context.pushConditional(source.getLocator(), true, this, -1,
-                        false);
+                    false);
             }
             return;
         }
@@ -132,7 +134,7 @@ public class Ifcase extends AbstractIf {
                 i--;
             } else if (tag == ELSE) {
                 context.pushConditional(source.getLocator(), true, this, -1,
-                        false);
+                    false);
                 return;
             } else if (tag == FI) {
                 return;
@@ -175,9 +177,11 @@ public class Ifcase extends AbstractIf {
 
         Code code;
         int n = 0;
+        Locator locator = source.getLocator();
 
-        for (Token t = source.getToken(context); t != null; t = source
-                .getToken(context)) {
+        for (Token t = source.getToken(context); t != null; t =
+                source.getToken(context)) {
+            locator = source.getLocator();
             if (t instanceof CodeToken
                     && (code = context.getCode((CodeToken) t)) != null) {
                 if (code instanceof Fi) {
@@ -198,7 +202,9 @@ public class Ifcase extends AbstractIf {
             }
         }
 
-        throw new HelpingException(getLocalizer(), "TTP.EOFinSkipped");
+        throw new HelpingException(getMyLocalizer(), "TTP.EOFinSkipped",
+            printableControlSequence(context), Integer.toString(locator
+                .getLineNumber()));
     }
 
     /**
@@ -207,10 +213,10 @@ public class Ifcase extends AbstractIf {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public boolean conditional(final Context context,
-            final TokenSource source, final Typesetter typesetter) {
+    public boolean conditional(final Context context, final TokenSource source,
+            final Typesetter typesetter) {
 
-        return false;
+        throw new ImpossibleException("\\ifcase conditional");
     }
 
     /**

@@ -94,9 +94,8 @@ public class Ifnum extends AbstractIf {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public boolean conditional(final Context context,
-            final TokenSource source, final Typesetter typesetter)
-            throws InterpreterException {
+    public boolean conditional(final Context context, final TokenSource source,
+            final Typesetter typesetter) throws InterpreterException {
 
         long value = Count.scanInteger(context, source, typesetter);
         Token rel = source.getToken(context);
@@ -107,19 +106,20 @@ public class Ifnum extends AbstractIf {
             switch (rel.getChar().getCodePoint()) {
                 case '<':
                     return (value < Count.scanInteger(context, source,
-                            typesetter));
+                        typesetter));
                 case '=':
                     return (value == Count.scanInteger(context, source,
-                            typesetter));
+                        typesetter));
                 case '>':
                     return (value > Count.scanInteger(context, source,
-                            typesetter));
+                        typesetter));
                 default:
-            // fall-through
+                    // fall-through
             }
         }
 
-        throw new HelpingException(getLocalizer(), "TTP.IllegalIfnumOp");
+        throw new HelpingException(getLocalizer(), "TTP.IllegalIfnumOp",
+            printableControlSequence(context));
     }
 
 }

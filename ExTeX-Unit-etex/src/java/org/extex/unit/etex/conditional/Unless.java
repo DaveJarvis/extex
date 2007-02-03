@@ -103,7 +103,8 @@ public class Unless extends AbstractCode {
 
         if (!((AbstractIf) code).conditional(context, source, typesetter)) {
             context.pushConditional(source.getLocator(), true, code, 1, true);
-        } else if (AbstractIf.skipToElseOrFi(context, source)) {
+        } else if (AbstractIf.skipToElseOrFi(context, source,
+            printableControlSequence(context))) {
             context.pushConditional(source.getLocator(), true, code, -1, true);
         }
     }

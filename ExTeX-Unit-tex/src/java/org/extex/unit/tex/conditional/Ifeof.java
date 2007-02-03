@@ -80,13 +80,17 @@ public class Ifeof extends AbstractIf {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public boolean conditional(final Context context,
-            final TokenSource source, final Typesetter typesetter)
-            throws InterpreterException {
+    public boolean conditional(final Context context, final TokenSource source,
+            final Typesetter typesetter) throws InterpreterException {
 
-        String key = AbstractFileCode.scanInFileKey(context, source, typesetter);
-        InFile file = context.getInFile(key);
-        return (file == null || file.isEof());
+        String key =
+                AbstractFileCode.scanInFileKey(context, source, typesetter);
+
+        InFile inFile = context.getInFile(key);
+        if (inFile == null) {
+            return true;
+        }
+        return inFile.isEof();
     }
 
 }
