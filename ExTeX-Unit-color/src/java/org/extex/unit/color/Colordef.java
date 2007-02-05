@@ -66,7 +66,7 @@ import org.extex.unit.color.util.ColorParser;
  *  <pre class="syntax">
  *    &lang;colordef&rang;
  *      &rarr; &lang;optional prefix&rang; <tt>\colordef</tt> {@linkplain
- *       org.extex.interpreter.TokenSource#getControlSequence(Context)
+ *       org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
  *       &lang;control sequence&rang;} &lang;color&rang;
  *
  *    &lang;optional prefix&rang;
@@ -179,7 +179,7 @@ public class Colordef extends AbstractAssignment {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        CodeToken cs = source.getControlSequence(context);
+        CodeToken cs = source.getControlSequence(context, typesetter);
         source.getOptionalEquals(context);
         Color color =
                 ColorParser.parseColor(context, source, typesetter, getName());
