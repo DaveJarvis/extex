@@ -252,6 +252,38 @@ public class MessageTest extends NoFlagsPrimitiveTester {
                 "Undefined control sequence the control sequence \\x");
     }
 
+    /**
+     * <testcase primitive="\message">
+     *  Test case checking that \message ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testMessageLog1() throws Exception {
+
+        assertSuccess(//--- input code ---
+                DEFINE_BRACES
+                + "\\message to log {x}",
+                //--- log message ---
+                "");
+    }
+
+    /**
+     * <testcase primitive="\message">
+     *  Test case checking that \message ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testMessageLog2() throws Exception {
+
+        assertFailure(//--- input code ---
+                DEFINE_BRACES
+                + "\\message to {x}",
+                //--- log message ---
+                "`log' target missing");
+    }
+
 
     /**
      * <testcase primitive="\message">

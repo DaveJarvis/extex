@@ -17,13 +17,13 @@
  *
  */
 
-package org.extex.unit.tex.file;
+package org.extex.unit.tex.macro;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
 /**
- * Test suite for the file primitives in unit tex.
+ * Test suite for the macro primitives in unit tex.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -32,19 +32,19 @@ public class AllTests {
 
     public static Test suite() {
 
-        TestSuite suite = new TestSuite("Test for org.extex.unit.tex.file");
+        TestSuite suite = new TestSuite("Test for org.extex.unit.tex.macro");
         //$JUnit-BEGIN$
-        suite.addTestSuite(ReadTest.class);
-        suite.addTestSuite(OpenoutTest.class);
-        suite.addTestSuite(InputTest.class);
-        suite.addTestSuite(InputlinenoTest.class);
-        suite.addTestSuite(DumpTest.class);
-        suite.addTestSuite(EndTest.class);
-        suite.addTestSuite(EndinputTest.class);
-        suite.addTestSuite(CloseinTest.class);
-        suite.addTestSuite(WriteTest.class);
-        suite.addTestSuite(CloseoutTest.class);
-        suite.addTestSuite(OpeninTest.class);
+        suite.addTestSuite(FutureletTest.class);
+        suite.addTestSuite(MacroExpansionTest.class);
+        suite.addTestSuite(DefTest.class);
+        suite.addTestSuite(EndcsnameTest.class);
+        suite.addTestSuite(EdefTest.class);
+        suite.addTestSuite(ExpandafterTest.class);
+        suite.addTestSuite(NoexpandTest.class);
+        suite.addTestSuite(LetTest.class);
+        suite.addTestSuite(XdefTest.class);
+        suite.addTestSuite(GdefTest.class);
+        suite.addTestSuite(CsnameTest.class);
         //$JUnit-END$
         return suite;
     }

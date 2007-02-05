@@ -51,6 +51,36 @@ public class FontdimenTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\fontdimen">
+     *  Test case checking that \fontdimen needs an argument.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testEof1() throws Exception {
+
+        assertFailure(//--- input code ---
+            "\\fontdimen",
+            //--- output channel ---
+            "Unexpected end of file while processing \\fontdimen");
+    }
+
+    /**
+     * <testcase primitive="\fontdimen">
+     *  Test case checking that \fontdimen needs an argument.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testEof2() throws Exception {
+
+        assertFailure(//--- input code ---
+            "\\the\\fontdimen",
+            //--- output channel ---
+            "Unexpected end of file while processing \\fontdimen");
+    }
+
+    /**
+     * <testcase primitive="\fontdimen">
      *  Test case checking that \fontdimen on unset keys returns 0 pt.
      * </testcase>
      *

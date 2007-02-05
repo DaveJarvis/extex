@@ -46,6 +46,21 @@ public class ExpandafterTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    public void testEof1() throws Exception {
+
+        assertFailure(//--- input code ---
+                "\\expandafter",
+                //--- output message ---
+                "Unexpected end of file while processing \\expandafter");
+    }
+
+    /**
+     * <testcase primitive="\expandafter">
+     *  Test case checking that <tt>\expandafter</tt> exchanges two letters.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
     public void testExpandafterLetterLetter1() throws Exception {
 
         assertSuccess(//--- input code ---
@@ -84,7 +99,7 @@ public class ExpandafterTest extends ExTeXLauncher {
                 DEFINE_CATCODES + "\\let\\x=X \\let\\y=Y"
                         + "\\expandafter\\x\\y A" + "\\end",
                 //--- output message ---
-                "XYA" + TERM);
+                "YXA" + TERM);
     }
 
 }

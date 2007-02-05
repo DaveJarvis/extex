@@ -61,7 +61,7 @@ public class LowercaseTest extends NoFlagsPrimitiveTester {
         assertFailure(//--- input code ---
                 "\\lowercase",
                 //--- log message ---
-                "Unexpected end of file while processing \\lowercase");
+                "File ended while scanning text of \\lowercase");
     }
 
     /**

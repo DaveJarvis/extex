@@ -21,6 +21,7 @@ package org.extex.unit.tex.prefix;
 
 import java.util.Properties;
 
+import org.extex.ExTeX;
 import org.extex.test.ExTeXLauncher;
 
 /**

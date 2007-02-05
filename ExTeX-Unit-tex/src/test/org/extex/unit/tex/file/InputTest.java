@@ -76,12 +76,12 @@ public class InputTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
-    public void ________________________testErr0() throws Exception {
+    public void testErr0() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\input develop/test/data/DoesNotExist",
+        assertFailure(//--- input code ---
+                "\\input DoesNotExist",
                 //--- output channel ---
-                "");
+                "I can't find file `DoesNotExist'");
     }
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,34 +17,29 @@
  *
  */
 
-package org.extex.unit.tex.font;
+package org.extex.unit.tex.info;
+
+import org.extex.test.NoFlagsPrimitiveTester;
 
 /**
- * This is a test suite for the primitive <tt>\hyphenchar</tt>.
+ * This is a test suite for the primitive <tt>\showlists</tt>.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
+ * @version $Revision$
  */
-public class HyphencharTest extends AbstractFontcharTester {
+public class ShowlistsTest extends NoFlagsPrimitiveTester {
 
     /**
-     * Method for running the tests standalone.
-     *
-     * @param args command line parameter
-     */
-    public static void main(final String[] args) {
-
-        junit.textui.TestRunner.run(HyphencharTest.class);
-    }
-
-    /**
-     * Constructor for HyphencharTest.
+     * Constructor for JobnameTest.
      *
      * @param arg the name
      */
-    public HyphencharTest(final String arg) {
+    public ShowlistsTest(final String arg) {
 
-        super(arg, "hyphenchar", "\\nullfont=123 ", "45");
+        super(arg, "showlists", "");
     }
+
+
+    //TODO implement more primitive specific test cases
 
 }

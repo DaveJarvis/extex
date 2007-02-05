@@ -85,4 +85,36 @@ public class DefTest extends AbstractDefTester {
                 "B2B" + TERM);
     }
 
+    /**
+     * <testcase>
+     *  Test case checking that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testMacroError1() throws Exception {
+
+        assertFailure(//--- input code ---
+                DEFINE_BRACES + DEFINE_HASH + "\\" + getDef()
+                        + "\\a#1{}" + "\\a",
+                //--- output channel ---
+                "File ended while scanning use of \\a");
+    }
+
+    /**
+     * <testcase>
+     *  Test case checking that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testMacroError2() throws Exception {
+
+        assertFailure(//--- input code ---
+                DEFINE_BRACES + DEFINE_HASH + "\\" + getDef()
+                        + "\\a#1{}" + "\\a{",
+                //--- output channel ---
+                "File ended while scanning use of \\a");
+    }
+
 }

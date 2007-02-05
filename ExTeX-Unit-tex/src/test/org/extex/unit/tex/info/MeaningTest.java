@@ -46,6 +46,21 @@ public class MeaningTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    public void testEof1() throws Exception {
+
+        assertFailure(//--- input code ---
+                "\\meaning ",
+                //--- output channel ---
+                "Unexpected end of file while processing \\meaning");
+    }
+
+    /**
+     * <testcase primitive="\meaning">
+     *  Test case checking that the <tt>\meaning</tt> of a letter is reported.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
     public void testLetter1() throws Exception {
 
         assertSuccess(//--- input code ---

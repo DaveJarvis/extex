@@ -51,6 +51,21 @@ public class AftergroupTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\aftergroup">
+     *  Test case checking that <tt>\aftergroup</tt> needs a token argument.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test0() throws Exception {
+
+        assertFailure(//--- input code ---
+            "\\aftergroup",
+            //--- output channel ---
+            "Unexpected end of file while processing \\aftergroup");
+    }
+
+    /**
+     * <testcase primitive="\aftergroup">
      *  Test case checking that a <tt>\aftergroup</tt> token of type letter
      *  is shifted to the end of the group.
      * </testcase>

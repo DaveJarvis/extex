@@ -176,7 +176,7 @@ public class CsnameTest extends ExTeXLauncher {
     /**
      * <testcase primitive="\csname">
      *  Test case checking that <tt>\csname</tt> returns something equivalent
-     *  to <tt>\relax</tt> if nor defned otherwise.
+     *  to <tt>\relax</tt> if nor defined otherwise.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -192,5 +192,36 @@ public class CsnameTest extends ExTeXLauncher {
                 "a\\xyz b");
     }
 
+    /**
+     * <testcase primitive="\csname">
+     *  Test case checking that <tt>\csname</tt> ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testUndef1() throws Exception {
+
+        assertFailure(//--- input code ---
+                DEFINE_BRACES
+                + "\\csname \\xxx ",
+                //--- log message ---
+                "Undefined control sequence \\xxx");
+    }
+
+    /**
+     * <testcase primitive="\csname">
+     *  Test case checking that <tt>\csname</tt> ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testEof1() throws Exception {
+
+        assertSuccess(//--- input code ---
+                DEFINE_BRACES
+                + "\\csname jobname ",
+                //--- log message ---
+                "texput" + TERM);
+    }
 
 }

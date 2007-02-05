@@ -17,13 +17,13 @@
  *
  */
 
-package org.extex.unit.tex.file;
+package org.extex.unit.tex.info;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
 /**
- * Test suite for the file primitives in unit tex.
+ * Test suite for info primitives in unit tex.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -32,19 +32,17 @@ public class AllTests {
 
     public static Test suite() {
 
-        TestSuite suite = new TestSuite("Test for org.extex.unit.tex.file");
+        TestSuite suite = new TestSuite("Test for org.extex.unit.tex.info");
         //$JUnit-BEGIN$
-        suite.addTestSuite(ReadTest.class);
-        suite.addTestSuite(OpenoutTest.class);
-        suite.addTestSuite(InputTest.class);
-        suite.addTestSuite(InputlinenoTest.class);
-        suite.addTestSuite(DumpTest.class);
-        suite.addTestSuite(EndTest.class);
-        suite.addTestSuite(EndinputTest.class);
-        suite.addTestSuite(CloseinTest.class);
-        suite.addTestSuite(WriteTest.class);
-        suite.addTestSuite(CloseoutTest.class);
-        suite.addTestSuite(OpeninTest.class);
+        suite.addTestSuite(JobnameTest.class);
+        suite.addTestSuite(ShowboxTest.class);
+        suite.addTestSuite(MessageTest.class);
+        suite.addTestSuite(ShowTest.class);
+        suite.addTestSuite(TheTest.class);
+        suite.addTestSuite(ShowtheTest.class);
+        suite.addTestSuite(ShowlistsTest.class);
+        suite.addTestSuite(MeaningTest.class);
+        suite.addTestSuite(ErrmessageTest.class);
         //$JUnit-END$
         return suite;
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,34 +17,33 @@
  *
  */
 
-package org.extex.unit.tex.font;
+package org.extex.unit.tex.string;
+
+import junit.framework.Test;
+import junit.framework.TestSuite;
 
 /**
- * This is a test suite for the primitive <tt>\hyphenchar</tt>.
+ * Test suite for string i  unit tex.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
+ * @version $Revision$
  */
-public class HyphencharTest extends AbstractFontcharTester {
+public class AllTests {
 
-    /**
-     * Method for running the tests standalone.
-     *
-     * @param args command line parameter
-     */
-    public static void main(final String[] args) {
+    public static Test suite() {
 
-        junit.textui.TestRunner.run(HyphencharTest.class);
-    }
-
-    /**
-     * Constructor for HyphencharTest.
-     *
-     * @param arg the name
-     */
-    public HyphencharTest(final String arg) {
-
-        super(arg, "hyphenchar", "\\nullfont=123 ", "45");
+        TestSuite suite = new TestSuite("Test for org.extex.unit.tex.string");
+        //$JUnit-BEGIN$
+        suite.addTestSuite(NumberTest.class);
+        suite.addTestSuite(CharTest.class);
+        suite.addTestSuite(StringTest.class);
+        suite.addTestSuite(RomannumeralTest.class);
+        suite.addTestSuite(LowercaseTest.class);
+        suite.addTestSuite(LccodeTest.class);
+        suite.addTestSuite(UppercaseTest.class);
+        suite.addTestSuite(UccodeTest.class);
+        //$JUnit-END$
+        return suite;
     }
 
 }

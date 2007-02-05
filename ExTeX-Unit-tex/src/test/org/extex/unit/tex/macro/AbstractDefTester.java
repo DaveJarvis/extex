@@ -61,10 +61,10 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     public void testImmediate1() throws Exception {
 
         assertFailure(//--- input code ---
-                DEFINE_BRACES + "\\immediate\\" + def + "\\aaa{}",
-                //--- log message ---
-                "You can't use the prefix `\\immediate' with the control sequence \\"
-                        + def);
+            DEFINE_BRACES + "\\immediate\\" + def + "\\aaa{}",
+            //--- log message ---
+            "You can't use the prefix `\\immediate' with the control sequence \\"
+                    + def);
     }
 
     /**
@@ -77,9 +77,9 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     public void testBasic1() throws Exception {
 
         assertSuccess(//--- input code ---
-                DEFINE_BRACES + "\\" + def + "\\aaa{AAA}" + "--\\aaa--\\end",
-                //--- output message ---
-                "--AAA--" + TERM);
+            DEFINE_BRACES + "\\" + def + "\\aaa{AAA}" + "--\\aaa--\\end",
+            //--- output message ---
+            "--AAA--" + TERM);
     }
 
     /**
@@ -92,10 +92,9 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     public void testLong1() throws Exception {
 
         assertSuccess(//--- input code ---
-                DEFINE_BRACES + "\\long\\" + def + "\\aaa{AAA}"
-                        + "--\\aaa--\\end",
-                //--- output message ---
-                "--AAA--" + TERM);
+            DEFINE_BRACES + "\\long\\" + def + "\\aaa{AAA}" + "--\\aaa--\\end",
+            //--- output message ---
+            "--AAA--" + TERM);
     }
 
     /**
@@ -108,10 +107,10 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     public void testLong2() throws Exception {
 
         assertSuccess(//--- input code ---
-                DEFINE_BRACES + "\\long\\" + def + "\\aaa{AAA\\par BBB}"
-                        + "--\\aaa--\\end",
-                //--- output message ---
-                "--AAA\n\nBBB--" + TERM);
+            DEFINE_BRACES + "\\long\\" + def + "\\aaa{AAA\\par BBB}"
+                    + "--\\aaa--\\end",
+            //--- output message ---
+            "--AAA\n\nBBB--" + TERM);
     }
 
     /**
@@ -124,10 +123,10 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     public void testArguments1() throws Exception {
 
         assertSuccess(//--- input code ---
-                DEFINE_BRACES + DEFINE_HASH + "\\" + def + "\\aaa#1{A#1A}"
-                        + "--\\aaa 1--\\end",
-                //--- output message ---
-                "--A1A--" + TERM);
+            DEFINE_BRACES + DEFINE_HASH + "\\" + def + "\\aaa#1{A#1A}"
+                    + "--\\aaa 1--\\end",
+            //--- output message ---
+            "--A1A--" + TERM);
     }
 
     /**
@@ -140,10 +139,10 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     public void testArguments2() throws Exception {
 
         assertSuccess(//--- input code ---
-                DEFINE_BRACES + DEFINE_HASH + "\\" + def + "\\aaa#1{A#1A}"
-                        + "--\\aaa {1}--\\end",
-                //--- output message ---
-                "--A1A--" + TERM);
+            DEFINE_BRACES + DEFINE_HASH + "\\" + def + "\\aaa#1{A#1A}"
+                    + "--\\aaa {1}--\\end",
+            //--- output message ---
+            "--A1A--" + TERM);
     }
 
     /**
@@ -156,10 +155,10 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     public void testArguments3() throws Exception {
 
         assertSuccess(//--- input code ---
-                DEFINE_BRACES + DEFINE_HASH + "\\" + def + "\\aaa#1{A#1A}"
-                        + "--\\aaa {12}--\\end",
-                //--- output message ---
-                "--A12A--" + TERM);
+            DEFINE_BRACES + DEFINE_HASH + "\\" + def + "\\aaa#1{A#1A}"
+                    + "--\\aaa {12}--\\end",
+            //--- output message ---
+            "--A12A--" + TERM);
     }
 
     /**
@@ -172,10 +171,10 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     public void testTwoArguments1() throws Exception {
 
         assertSuccess(//--- input code ---
-                DEFINE_BRACES + DEFINE_HASH + "\\" + def
-                        + "\\a#1#2{--#1--#2--}" + "\\a 2." + "\\end ",
-                //--- output channel ---
-                "--2--.--" + TERM);
+            DEFINE_BRACES + DEFINE_HASH + "\\" + def + "\\a#1#2{--#1--#2--}"
+                    + "\\a 2." + "\\end ",
+            //--- output channel ---
+            "--2--.--" + TERM);
     }
 
     /**
@@ -188,10 +187,10 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     public void testPattern1() throws Exception {
 
         assertSuccess(//--- input code ---
-                DEFINE_BRACES + DEFINE_HASH + "\\" + def + "\\aaa#1.{--#1--}"
-                        + "\\aaa 2." + "\\end ",
-                //--- output channel ---
-                "--2--" + TERM);
+            DEFINE_BRACES + DEFINE_HASH + "\\" + def + "\\aaa#1.{--#1--}"
+                    + "\\aaa 2." + "\\end ",
+            //--- output channel ---
+            "--2--" + TERM);
     }
 
     /**
@@ -204,10 +203,10 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     public void testPattern2() throws Exception {
 
         assertSuccess(//--- input code ---
-                DEFINE_BRACES + DEFINE_HASH + "\\" + def + "\\aaa#1.{--#1--}"
-                        + "\\aaa {2.1}." + "\\end ",
-                //--- output channel ---
-                "--2.1--" + TERM);
+            DEFINE_BRACES + DEFINE_HASH + "\\" + def + "\\aaa#1.{--#1--}"
+                    + "\\aaa {2.1}." + "\\end ",
+            //--- output channel ---
+            "--2.1--" + TERM);
     }
 
     /**
@@ -220,10 +219,10 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     public void testBrace1() throws Exception {
 
         assertFailure(//--- input code ---
-                DEFINE_BRACES + DEFINE_HASH + "\\" + def + "\\aaa#1.{--#1--}"
-                        + "\\aaa }.",
-                //--- output channel ---
-                "Argument of \\aaa has an extra }");
+            DEFINE_BRACES + DEFINE_HASH + "\\" + def + "\\aaa#1.{--#1--}"
+                    + "\\aaa }.",
+            //--- output channel ---
+            "Argument of \\aaa has an extra }");
     }
 
     /**
@@ -236,9 +235,9 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     public void testHashArgument1() throws Exception {
 
         assertSuccess(//--- input code ---
-                DEFINE_BRACES + DEFINE_HASH + "\\" + def + "\\a{--##--}\\end",
-                //--- output channel ---
-                "");
+            DEFINE_BRACES + DEFINE_HASH + "\\" + def + "\\a{--##--}\\end",
+            //--- output channel ---
+            "");
     }
 
     /**
@@ -251,9 +250,9 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     public void testHashArgument2() throws Exception {
 
         assertFailure(//--- input code ---
-                DEFINE_BRACES + DEFINE_HASH + "\\" + def + "\\a{--##--}\\a ",
-                //--- output channel ---
-                "You can't use `macro parameter character #' in horizontal mode");
+            DEFINE_BRACES + DEFINE_HASH + "\\" + def + "\\a{--##--}\\a ",
+            //--- output channel ---
+            "You can't use `macro parameter character #' in horizontal mode");
     }
 
     /**
@@ -267,10 +266,10 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     public void testHash10() throws Exception {
 
         assertFailure(//--- input code ---
-                DEFINE_BRACES + DEFINE_HASH + "\\" + getDef() + "\\a#{xxx}"
-                        + "\\a \\end",
-                //--- output channel ---
-                "Use of \\a doesn't match its definition");
+            DEFINE_BRACES + DEFINE_HASH + "\\" + getDef() + "\\a#{xxx}"
+                    + "\\a \\end",
+            //--- output channel ---
+            "Use of \\a doesn't match its definition");
     }
 
     /**
@@ -284,10 +283,102 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     public void testHash11() throws Exception {
 
         assertSuccess(//--- input code ---
-                DEFINE_BRACES + DEFINE_HASH + "\\" + getDef() + "\\a#{xxx}"
-                        + "\\a{} \\end",
+            DEFINE_BRACES + DEFINE_HASH + "\\" + getDef() + "\\a#{xxx}"
+                    + "\\a{} \\end",
+            //--- output channel ---
+            "xxx" + TERM);
+    }
+
+    /**
+     * <testcase>
+     *  Test case checking that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testHashError1() throws Exception {
+
+        assertFailure(//--- input code ---
+            DEFINE_BRACES + DEFINE_HASH + "\\" + def + "\\aaa#2{--#1--}",
+            //--- output channel ---
+            "Parameters must be numbered consecutively");
+    }
+
+    /**
+     * <testcase>
+     *  Test case checking that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testHashError2() throws Exception {
+
+        assertFailure(//--- input code ---
+            DEFINE_BRACES + DEFINE_HASH + "\\" + def + "\\aaa#a{--#1--}",
+            //--- output channel ---
+            "Parameters must be numbered consecutively");
+    }
+
+    /**
+     * <testcase>
+     *  Test case checking that a ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testRight1() throws Exception {
+
+        assertFailure(//--- input code ---
+            DEFINE_BRACES + DEFINE_HASH + "\\" + getDef() + "\\a}",
+            //--- output channel ---
+            "Missing { inserted");
+    }
+
+    /**
+     * <testcase>
+     *  Test case checking that a ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testOuter1() throws Exception {
+
+        assertFailure(//--- input code ---
+            DEFINE_BRACES + DEFINE_HASH + "\\outer\\def\\x{x}\\" + getDef()
+                    + "\\a\\x{}",
+            //--- output channel ---
+            "Forbidden control sequence found while scanning definition of \\"
+                    + getDef());
+    }
+
+    /**
+     * <testcase>
+     *  Test case checking that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testEof1() throws Exception {
+
+        assertFailure(//--- input code ---
+                "\\" + getDef() + "\\a",
                 //--- output channel ---
-                "xxx" + TERM);
+                "File ended while scanning definition of \\"+ getDef());
+    }
+
+    /**
+     * <testcase>
+     *  Test case checking that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testEof2() throws Exception {
+
+        assertFailure(//--- input code ---
+                DEFINE_BRACES + "\\" + getDef() + "\\a{",
+                //--- output channel ---
+                "File ended while scanning text of \\a");
     }
 
     /**

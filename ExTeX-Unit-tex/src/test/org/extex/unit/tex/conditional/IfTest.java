@@ -273,7 +273,7 @@ public class IfTest extends ExTeXLauncher {
                 return null;
             }
 
-            public CodeToken getControlSequence(Context context)
+            public CodeToken getControlSequence(Context context, Typesetter typesetter)
                     throws InterpreterException {
 
                 return null;

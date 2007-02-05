@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,34 +17,29 @@
  *
  */
 
-package org.extex.unit.tex.font;
+package org.extex.unit.tex.prefix;
+
+import junit.framework.Test;
+import junit.framework.TestSuite;
 
 /**
- * This is a test suite for the primitive <tt>\hyphenchar</tt>.
+ * Test suite for prefix primitives in unit tex.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
+ * @version $Revision$
  */
-public class HyphencharTest extends AbstractFontcharTester {
+public class AllTests {
 
-    /**
-     * Method for running the tests standalone.
-     *
-     * @param args command line parameter
-     */
-    public static void main(final String[] args) {
+    public static Test suite() {
 
-        junit.textui.TestRunner.run(HyphencharTest.class);
-    }
-
-    /**
-     * Constructor for HyphencharTest.
-     *
-     * @param arg the name
-     */
-    public HyphencharTest(final String arg) {
-
-        super(arg, "hyphenchar", "\\nullfont=123 ", "45");
+        TestSuite suite = new TestSuite("Test for org.extex.unit.tex.prefix");
+        //$JUnit-BEGIN$
+        suite.addTestSuite(ImmediateTest.class);
+        suite.addTestSuite(LongTest.class);
+        suite.addTestSuite(GlobalTest.class);
+        suite.addTestSuite(OuterTest.class);
+        //$JUnit-END$
+        return suite;
     }
 
 }
