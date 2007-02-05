@@ -55,7 +55,7 @@ import org.extex.unit.base.register.count.util.IntegerCode;
  *  <pre class="syntax">
  *    &lang;integer&rang;
  *      &rarr; &lang;optional prefix&rang; <tt>\integer</tt> {@linkplain
- *        org.extex.interpreter.TokenSource#getControlSequence(Context)
+ *        org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
  *        &lang;control sequence&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
@@ -109,7 +109,7 @@ public class Integer extends AbstractAssignment {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        CodeToken cs = source.getControlSequence(context);
+        CodeToken cs = source.getControlSequence(context, typesetter);
         source.getOptionalEquals(context);
         long value = Count.scanInteger(context, source, typesetter);
         context.setCode(cs, new IntegerCode(getName(), value), prefix
