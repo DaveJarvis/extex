@@ -26,6 +26,8 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.EofException;
+import org.extex.interpreter.exception.helping.EofInToksException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.TokensWriter;
 import org.extex.interpreter.type.file.ExecuteFile;
@@ -106,7 +108,7 @@ public class Write extends AbstractCode
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 20061001L;
+    protected static final long serialVersionUID = 04022007L;
 
     /**
      * The field <tt>SYSTEM</tt> contains the key for the system execute
@@ -189,10 +191,15 @@ public class Write extends AbstractCode
 
         } else {
 
-            Tokens toks = source.getTokens(context, source, typesetter);
+            Tokens tokens;
+            try {
+                tokens = source.getTokens(context, source, typesetter);
+            } catch (EofException e) {
+                throw new EofInToksException(printableControlSequence(context));
+            }
 
             try {
-                typesetter.add(new WhatsItWriteNode(key, toks, source, this));
+                typesetter.add(new WhatsItWriteNode(key, tokens, source, this));
             } catch (TypesetterException e) {
                 throw new InterpreterException(e);
             } catch (ConfigurationException e) {
