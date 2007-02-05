@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,38 +17,28 @@
  *
  */
 
-package org.extex.interpreter.primitives.namespace;
+package org.extex.unit.namespace;
 
-import org.extex.test.NoFlagsPrimitiveTester;
+import junit.framework.Test;
+import junit.framework.TestSuite;
 
 /**
- * This is a test suite for the primitive <tt>\export</tt>.
+ * Test suite for name space primitives for unit namespace.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class ExportTest extends NoFlagsPrimitiveTester {
+public class AllTests {
 
-    /**
-     * Command line interface.
-     * @param args the arguments
-     */
-    public static void main(final String[] args) {
+    public static Test suite() {
 
-        junit.textui.TestRunner.run(ExportTest.class);
+        TestSuite suite = new TestSuite("Test for org.extex.unit.namespace");
+        //$JUnit-BEGIN$
+        suite.addTestSuite(ImportTest.class);
+        suite.addTestSuite(ExportTest.class);
+        suite.addTestSuite(NamespaceTest.class);
+        //$JUnit-END$
+        return suite;
     }
-
-    /**
-     * Constructor for NamespaceTest.
-     *
-     * @param arg the name
-     */
-    public ExportTest(final String arg) {
-
-        super(arg, "export", "{\\a}", DEFINE_BRACES);
-        setConfig("namespace-test");
-    }
-
-    //TODO implement more primitive specific test cases
 
 }
