@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -318,6 +318,23 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
                 //--- output channel ---
                 "abc" + TERM);
     }
+
+    /**
+     * <testcase>
+     *  Test case showing that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testEof1() throws Exception {
+
+        assertFailure(
+                //--- input code ---
+                prepare + "\\" + invocation,
+                //--- output channel ---
+                "File ended while scanning text of \\" + primitive);
+    }
+
 
     //TODO gene: add more test cases
 }
