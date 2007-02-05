@@ -83,7 +83,7 @@ public class Pushocplist extends AbstractCode {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        CodeToken cs = source.getControlSequence(context);
+        CodeToken cs = source.getControlSequence(context, typesetter);
         Code code = context.getCode(cs);
         
         if (!(code instanceof OcpList)) {

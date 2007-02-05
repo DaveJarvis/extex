@@ -87,7 +87,7 @@ public class OcpPrimitive extends AbstractFileCode implements ResourceConsumer {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        CodeToken cs = source.getControlSequence(context);
+        CodeToken cs = source.getControlSequence(context, typesetter);
         source.getOptionalEquals(context);
         String file = scanFileName(context, source);
         context.setCode(cs, Ocp.load(file, finder), prefix.clearGlobal());
