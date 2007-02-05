@@ -33,7 +33,6 @@ import org.extex.interpreter.type.font.Font;
 import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.type.UnicodeChar;
 import org.extex.typesetter.Typesetter;
-import org.extex.util.exception.GeneralException;
 
 /**
  * This class provides an implementation for the primitive
@@ -105,12 +104,8 @@ public class Skewchar extends AbstractAssignment
 
         Font font = source.getFont(context, getName());
         source.getOptionalEquals(context);
-        try {
-            long c = Count.scanInteger(context, source, typesetter);
-            font.setSkewChar(UnicodeChar.get((int) c));
-        } catch (EofException e) {
-            throw new EofException(printableControlSequence(context));
-        }
+        long c = Count.scanInteger(context, source, typesetter);
+        font.setSkewChar(UnicodeChar.get((int) c));
     }
 
     /**
@@ -160,18 +155,8 @@ public class Skewchar extends AbstractAssignment
 
         Font font = source.getFont(context, getName());
         UnicodeChar uc = font.getSkewChar();
-        try {
-            if (uc == null) {
-                return new Tokens(context, "-1");
-            } else {
-                return new Tokens(context, //
-                        Integer.toString(uc.getCodePoint()));
-            }
-        } catch (EofException e) {
-            throw new EofException(printableControlSequence(context));
-        } catch (GeneralException e) {
-            throw new InterpreterException(e);
-        }
+        return new Tokens(context, //
+            uc == null ? "-1" : Integer.toString(uc.getCodePoint()));
     }
 
 }

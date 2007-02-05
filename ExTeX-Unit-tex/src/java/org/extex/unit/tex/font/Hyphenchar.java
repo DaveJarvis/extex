@@ -33,7 +33,6 @@ import org.extex.interpreter.type.font.Font;
 import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.type.UnicodeChar;
 import org.extex.typesetter.Typesetter;
-import org.extex.util.exception.GeneralException;
 
 /**
  * This class provides an implementation for the primitive
@@ -83,8 +82,11 @@ import org.extex.util.exception.GeneralException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
-public class Hyphenchar extends AbstractAssignment implements CountConvertible,
-        ExpandableCode, Theable {
+public class Hyphenchar extends AbstractAssignment
+        implements
+            CountConvertible,
+            ExpandableCode,
+            Theable {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for
@@ -170,18 +172,8 @@ public class Hyphenchar extends AbstractAssignment implements CountConvertible,
 
         Font font = source.getFont(context, getName());
         UnicodeChar uc = font.getHyphenChar();
-        try {
-            if (uc == null) {
-                return new Tokens(context, "-1");
-            } else {
-                return new Tokens(context, //
-                        Integer.toString(uc.getCodePoint()));
-            }
-        } catch (EofException e) {
-            throw new EofException(printableControlSequence(context));
-        } catch (GeneralException e) {
-            throw new InterpreterException(e);
-        }
+        return new Tokens(context, //
+            uc == null ? "-1" : Integer.toString(uc.getCodePoint()));
     }
 
 }
