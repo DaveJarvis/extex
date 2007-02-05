@@ -41,7 +41,7 @@
     <define name="DefaultOutputTranslation"
             class="org.extex.unit.omega.translation.DefaultInputTranslation"/>
     <define name="hfi"
-            class="org.extex.interpreter.primitives.typesetter.spacing.Hfi"/>
+            class="org.extex.unit.tex.typesetter.spacing.Hfi"/>
     <define name="InputMode"
             class="org.extex.unit.omega.mode.InputMode"/>
     <define name="InputTranslation"
@@ -51,9 +51,9 @@
     <define name="localinterlinepenalty"
             class="org.extex.unit.tex.register.count.IntegerParameter"/>
     <define name="localleftbox"
-            class="org.extex.interpreter.primitives.typesetter.box.Localleftbox"/>
+            class="org.extex.unit.tex.typesetter.box.Localleftbox"/>
     <define name="localrightbox"
-            class="org.extex.interpreter.primitives.typesetter.box.Localrightbox"/>
+            class="org.extex.unit.tex.typesetter.box.Localrightbox"/>
     <define name="mathdir"
             class="org.extex.unit.omega.dir.Mathdir"/>
     <define name="naturaldir"
@@ -113,7 +113,7 @@
     <define name="unnaturaldir"
             class="org.extex.unit.omega.dir.Unnaturaldir"/>
     <define name="vfi"
-            class="org.extex.interpreter.primitives.typesetter.spacing.Vfi"/>
+            class="org.extex.unit.tex.typesetter.spacing.Vfi"/>
   </primitives>
  </unit>
  
