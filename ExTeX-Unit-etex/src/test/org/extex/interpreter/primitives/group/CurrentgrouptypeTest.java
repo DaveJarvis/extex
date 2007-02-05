@@ -119,6 +119,23 @@ public class CurrentgrouptypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentgrouptype">
+     *  Test case checking that <tt>\currentgrouptype</tt> inside a vbox
+     *  in a group returns 4.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test4() throws Exception {
+
+        assertSuccess(//--- input code ---
+                DEFINE_BRACES
+                + "\\setbox0=\\vbox{\\global\\count0=\\currentgrouptype}\\the\\count0\\end",
+                //--- log message ---
+                "4" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\currentgrouptype">
      *  Test case checking that <tt>\currentgrouptype</tt> inside a group
      *  returns 1.
      * </testcase>
@@ -132,6 +149,23 @@ public class CurrentgrouptypeTest extends AbstractReadonlyCountRegisterTester {
                 + "\\vtop{\\the\\currentgrouptype}\\end",
                 //--- log message ---
                 "5\n\n" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\currentgrouptype">
+     *  Test case checking that <tt>\currentgrouptype</tt> inside a vcenter
+     *  in a group returns 12.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test12() throws Exception {
+
+        assertSuccess(//--- input code ---
+                DEFINE_BRACES
+                + "\\setbox0=\\vcenter{\\global\\count0=\\currentgrouptype}\\the\\count0\\end",
+                //--- log message ---
+                "12" + TERM);
     }
 
     /**

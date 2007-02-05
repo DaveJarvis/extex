@@ -57,6 +57,21 @@ public class IfcsnameTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
+    public void testError1() throws Exception {
+
+        assertFailure(//--- input code ---
+                "\\ifcsname ",
+                //--- output channel ---
+                "Incomplete \\ifcsname; all text was ignored after line ");
+    }
+
+    /**
+     * <testcase primitive="\ifcsname">
+     *  Test case checking that <tt>\ifcsname</tt> ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
     public void test1() throws Exception {
 
         assertSuccess(//--- input code ---
