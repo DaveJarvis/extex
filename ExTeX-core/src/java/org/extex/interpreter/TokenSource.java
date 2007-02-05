@@ -203,13 +203,15 @@ public interface TokenSource {
      * </doc>
      * 
      * @param context the interpreter context
+     * @param typesetter the typesetter
      * 
      * @return the token read
      * 
      * @throws InterpreterException in case that the token stream is at its end
      *             or that the token read is not a control sequence token
      */
-    CodeToken getControlSequence(Context context) throws InterpreterException;
+    CodeToken getControlSequence(Context context, Typesetter typesetter)
+            throws InterpreterException;
 
     /**
      * Parse the specification of a font.
