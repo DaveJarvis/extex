@@ -87,7 +87,7 @@ public class Omathchardef extends AbstractAssignment {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        CodeToken cs = source.getControlSequence(context);
+        CodeToken cs = source.getControlSequence(context, typesetter);
         source.getOptionalEquals(context);
         MathCode mathchar = AbstractOmegaMathCode.parseMathCode(context, source,
                 typesetter, getName());
