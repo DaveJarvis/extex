@@ -93,7 +93,7 @@ public class Unless extends AbstractCode {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        CodeToken token = source.getControlSequence(context);
+        CodeToken token = source.getControlSequence(context, typesetter);
         Code code = context.getCode(token);
 
         if (!code.isIf() || code instanceof Ifcase) {
