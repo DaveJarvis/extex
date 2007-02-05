@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -28,6 +28,8 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.EofException;
+import org.extex.interpreter.exception.helping.EofInToksException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.unit.LoaderFactory;
@@ -154,7 +156,7 @@ public class NativeLoad extends AbstractCode
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2006L;
+    protected static final long serialVersionUID = 04022007L;
 
     /**
      * The field <tt>logger</tt> contains the logger to use.
@@ -211,11 +213,16 @@ public class NativeLoad extends AbstractCode
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        String name = source.getTokens(context, source, typesetter).toText();
+        String name;
+        try {
+            name = source.getTokens(context, source, typesetter).toText();
+        } catch (EofException e) {
+            throw new EofInToksException(printableControlSequence(context));
+        }
         Configuration cfg = (Configuration) map.get(name);
         if (cfg == null) {
             throw new HelpingException(getLocalizer(), "UnknownType", name,
-                    getName());
+                getName());
         }
 
         LoaderFactory factory = new LoaderFactory();

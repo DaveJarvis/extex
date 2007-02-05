@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -28,6 +28,8 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.EofException;
+import org.extex.interpreter.exception.helping.EofInToksException;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.typesetter.Typesetter;
 import org.extex.util.framework.AbstractFactory;
@@ -55,7 +57,7 @@ import org.extex.util.framework.logger.LogEnabled;
  * <pre class="syntax">
  *   &lang;nativedef&rang;
  *       &rarr; <tt>\nativedef</tt> &lang;type&rang; {@linkplain
- *       org.extex.interpreter.TokenSource#getControlSequence(Context)
+ *       org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
  *       &lang;control sequence&rang;} &lang;name&rang;  </pre>
  * <p>
  *  The <tt>&lang;type&rang;</tt> is any specification of a list of
@@ -167,7 +169,7 @@ public class NativeDef extends AbstractAssignment
         public Definer createLoad() throws ConfigurationException {
 
             return (Definer) createInstanceForConfiguration(getConfiguration(),
-                    Definer.class);
+                Definer.class);
         }
     }
 
@@ -208,11 +210,16 @@ public class NativeDef extends AbstractAssignment
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        String name = source.getTokens(context, source, typesetter).toText();
+        String name;
+        try {
+            name = source.getTokens(context, source, typesetter).toText();
+        } catch (EofException e) {
+            throw new EofInToksException(printableControlSequence(context));
+        }
         Configuration cfg = (Configuration) map.get(name);
         if (cfg == null) {
             throw new InterpreterException(getLocalizer().format("UnknownType",
-                    name, getName()));
+                name, getName()));
         }
 
         Factory factory = new Factory();
