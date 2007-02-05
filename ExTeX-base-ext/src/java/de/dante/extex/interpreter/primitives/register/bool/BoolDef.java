@@ -69,7 +69,7 @@ public class BoolDef extends AbstractAssignment {
             throws InterpreterException {
 
         //  \booldef\hugo=7
-        CodeToken token = source.getControlSequence(context);
+        CodeToken token = source.getControlSequence(context, typesetter);
         source.getOptionalEquals(context);
         String key = "bool#"
                 + Long.toString(Count.scanInteger(context, source, typesetter));

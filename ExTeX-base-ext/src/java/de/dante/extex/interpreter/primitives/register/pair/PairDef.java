@@ -67,7 +67,7 @@ public class PairDef extends AbstractAssignment {
             throws InterpreterException {
 
         //  \pairdef\hugo=7
-        CodeToken tok = source.getControlSequence(context);
+        CodeToken tok = source.getControlSequence(context, typesetter);
         source.getOptionalEquals(context);
         String key = "pair#"
                 + Long.toString(Count.scanInteger(context, source, typesetter));

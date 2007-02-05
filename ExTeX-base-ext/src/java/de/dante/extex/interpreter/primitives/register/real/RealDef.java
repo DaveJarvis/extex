@@ -69,7 +69,7 @@ public class RealDef extends AbstractAssignment {
             throws InterpreterException {
 
         //  \realdef\hugo=7
-        CodeToken tok = source.getControlSequence(context);
+        CodeToken tok = source.getControlSequence(context, typesetter);
         source.getOptionalEquals(context);
         String key = "real#"
                 + Long.toString(Count.scanInteger(context, source, typesetter));
