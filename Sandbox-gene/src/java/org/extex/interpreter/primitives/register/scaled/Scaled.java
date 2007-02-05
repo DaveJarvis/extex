@@ -56,7 +56,7 @@ import org.extex.typesetter.Typesetter;
  *  <pre class="syntax">
  *    &lang;scaled&rang;
  *      &rarr; &lang;optional prefix&rang; <tt>\scaled</tt> {@linkplain
- *        org.extex.interpreter.TokenSource#getControlSequence(Context)
+ *        org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
  *        &lang;control sequence&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} ...
@@ -108,7 +108,7 @@ public class Scaled extends AbstractAssignment {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        CodeToken cs = source.getControlSequence(context);
+        CodeToken cs = source.getControlSequence(context, typesetter);
         source.getOptionalEquals(context);
         ScaledNumber scaled = ScaledNumber.scanScaledNumber(context, source,
                 typesetter);
