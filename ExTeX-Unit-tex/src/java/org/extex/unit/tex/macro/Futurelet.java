@@ -44,7 +44,7 @@ import org.extex.typesetter.Typesetter;
  *  <pre class="syntax">
  *    &lang;futurelet&rang;
  *      &rarr; <tt>\futurelet</tt> {@linkplain
- *        org.extex.interpreter.TokenSource#getControlSequence(Context)
+ *        org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
  *        &lang;control sequence&rang;} {@linkplain
  *       org.extex.interpreter.TokenSource#getToken(Context)
  *       &lang;token&rang;} ...  </pre>
@@ -87,7 +87,7 @@ public class Futurelet extends Let {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        CodeToken cs = source.getControlSequence(context);
+        CodeToken cs = source.getControlSequence(context, typesetter);
         Token t1 = source.getToken(context);
         Token t2 = source.getToken(context);
         let(prefix, context, cs, t2);

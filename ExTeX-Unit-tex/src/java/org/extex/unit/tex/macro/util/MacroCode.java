@@ -27,7 +27,6 @@ import org.extex.interpreter.exception.ImpossibleException;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.HelpingException;
-import org.extex.interpreter.primitives.typesetter.paragraph.Par;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.ComparableCode;
@@ -48,6 +47,7 @@ import org.extex.scanner.type.token.TokenFactory;
 import org.extex.type.Locator;
 import org.extex.typesetter.Typesetter;
 import org.extex.unit.base.macro.LetCode;
+import org.extex.unit.tex.typesetter.paragraph.Par;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.i18n.LocalizerFactory;
@@ -209,8 +209,8 @@ public class MacroCode extends AbstractCode
         super(name);
         this.body = body;
         this.pattern = pattern;
-        this.notLong = !flags.isLong();
-        this.outerP = flags.isOuter();
+        this.notLong = !flags.clearLong();
+        this.outerP = flags.clearOuter();
     }
 
     /**
@@ -332,7 +332,7 @@ public class MacroCode extends AbstractCode
 
         if (t == null) {
             throw new HelpingException(getLocalizer(), "TTP.EOFinMatch",
-                printableControlSequence(context));
+                getName());
         } else if (t instanceof LeftBraceToken) {
             source.push(t);
             Tokens toks;
@@ -340,7 +340,7 @@ public class MacroCode extends AbstractCode
                 toks = source.getTokens(context, source, typesetter);
             } catch (EofException e) {
                 throw new HelpingException(getLocalizer(), "TTP.EOFinMatch",
-                    printableControlSequence(context));
+                    getName());
             }
             return toks;
         }
@@ -384,16 +384,14 @@ public class MacroCode extends AbstractCode
                 return i;
             }
             throw new HelpingException(getLocalizer(), "TTP.UseDoesntMatch",
-                printableControlSequence(context));
+                getName());
         }
         Token ti = pattern.get(i);
         if (ti instanceof MacroParamToken) {
             t = source.getToken(context);
-            if (!ti.equals(t)) {
-                throw new HelpingException(getLocalizer(),
-                    "TTP.UseDoesntMatch", printableControlSequence(context));
+            if (ti.equals(t)) {
+                return i;
             }
-            return i;
         } else if (ti instanceof OtherToken && ti.getChar().isDigit()) {
             int no = ti.getChar().getCodePoint() - '0';
             int i1 = i + 1;
@@ -405,9 +403,8 @@ public class MacroCode extends AbstractCode
             args[no] = getTokenOrBlock(context, source, typesetter);
             return i1;
         }
-
         throw new HelpingException(getLocalizer(), "TTP.UseDoesntMatch",
-            printableControlSequence(context));
+            getName());
     }
 
     /**
@@ -443,10 +440,10 @@ public class MacroCode extends AbstractCode
                 Token t = source.getToken(context);
                 if (!ti.equals(t)) {
                     throw new HelpingException(getLocalizer(),
-                        "TTP.UseDoesntMatch", printableControlSequence(context));
+                        "TTP.UseDoesntMatch", getName());
                 } else if (notLong && t.equals(Catcode.ESCAPE, "par")) {
                     throw new HelpingException(getLocalizer(),
-                        "TTP.RunawayArg", printableControlSequence(context));
+                        "TTP.RunawayArg", getName());
                 }
             }
         }
@@ -481,21 +478,19 @@ public class MacroCode extends AbstractCode
                 depth--;
                 if (depth < 0) {
                     throw new HelpingException(getLocalizer(),
-                        "TTP.ExtraRightBrace",
-                        printableControlSequence(context));
+                        "TTP.ExtraRightBrace", getName());
                 }
             } else if (notLong && t instanceof CodeToken) {
                 Code code = context.getCode((CodeToken) t);
                 if (code instanceof Par) {
                     throw new HelpingException(getLocalizer(),
-                        "TTP.RunawayArg", printableControlSequence(context));
+                        "TTP.RunawayArg", getName());
                 }
             }
             toks.add(t);
         }
 
-        throw new HelpingException(getLocalizer(), "TTP.EOFinMatch",
-            printableControlSequence(context));
+        throw new HelpingException(getLocalizer(), "TTP.EOFinMatch", getName());
     }
 
     /**
@@ -508,11 +503,11 @@ public class MacroCode extends AbstractCode
             StringBuffer sb = new StringBuffer();
             boolean sep = false;
             if (!notLong) {
-                sb.append(context.esc("long"));
+                sb.append(context.esc(getLocalizer().format("TTP.long")));
                 sep = true;
             }
             if (outerP) {
-                sb.append(context.esc("outer"));
+                sb.append(context.esc(getLocalizer().format("TTP.outer")));
                 sep = true;
             }
             if (sep) {

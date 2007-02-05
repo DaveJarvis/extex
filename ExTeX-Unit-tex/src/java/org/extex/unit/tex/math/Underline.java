@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -35,7 +35,8 @@ import org.extex.typesetter.type.noad.UnderlinedNoad;
  * <doc name="underline">
  * <h3>The Math Primitive <tt>&#x5c;underline</tt></h3>
  * <p>
- *  TODO missing documentation
+ *  The math primitive <tt>&#x5c;underline</tt> takes one argument and
+ *  underlines it. The material to be underlined is typeset in math mode.
  * </p>
  *
  * <h4>Syntax</h4>

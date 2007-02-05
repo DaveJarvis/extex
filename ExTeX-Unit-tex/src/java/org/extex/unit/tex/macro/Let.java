@@ -48,7 +48,7 @@ import org.extex.unit.base.macro.LetCode;
  *  <pre class="syntax">
  *    &lang;let&rang;
  *      &rarr; <tt>\let</tt> {@linkplain
- *        org.extex.interpreter.TokenSource#getControlSequence(Context)
+ *        org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
  *        &lang;control sequence&rang;} {@linkplain
  *      org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *      &lang;equals&rang;} {@linkplain
@@ -93,7 +93,7 @@ public class Let extends AbstractAssignment {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        CodeToken cs = source.getControlSequence(context);
+        CodeToken cs = source.getControlSequence(context, typesetter);
         source.getOptionalEquals(context);
         Token t = source.getToken(context);
 

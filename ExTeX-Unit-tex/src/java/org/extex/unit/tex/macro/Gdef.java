@@ -40,7 +40,7 @@ import org.extex.typesetter.Typesetter;
  *  <pre class="syntax">
  *    &lang;gdef&rang;
  *       &rarr; &lang;prefix&rang; <tt>\gdef</tt> {@linkplain
- *         org.extex.interpreter.TokenSource#getControlSequence(Context)
+ *         org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
  *         &lang;control sequence&rang;} &lang;parameter text&rang; <tt>{</tt> &lang;replacement text&rang; <tt>}</tt>
  *
  *    &lang;prefix&rang;

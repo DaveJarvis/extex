@@ -52,7 +52,7 @@ import org.extex.typesetter.Typesetter;
  *  <pre class="syntax">
  *    &lang;expandafter&rang;
  *     &rarr; <tt>\expandafter</tt> {@linkplain
- *         org.extex.interpreter.TokenSource#getControlSequence(Context)
+ *         org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
  *         &lang;control sequence&rang;} ...  </pre>
  *
  * <h4>Examples</h4>
@@ -94,11 +94,8 @@ public class Expandafter extends AbstractCode implements ExpandableCode {
             throws InterpreterException {
 
         Token t = source.getToken(context);
-        if (t == null) {
-            throw new EofException(printableControlSequence(context));
-        }
         Token token = source.getToken(context);
-        if (token == null) {
+        if (t == null || token == null) {
             throw new EofException(printableControlSequence(context));
         }
         source.execute(token, context, typesetter);

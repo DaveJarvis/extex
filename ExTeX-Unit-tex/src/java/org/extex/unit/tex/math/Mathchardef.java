@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -28,7 +28,6 @@ import org.extex.interpreter.type.math.MathCode;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.unit.tex.math.util.TeXMathcharCode;
-
 
 /**
  * This class provides an implementation for the primitive
@@ -87,14 +86,15 @@ public class Mathchardef extends AbstractAssignment {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        CodeToken cs = source.getControlSequence(context);
+        CodeToken cs = source.getControlSequence(context, typesetter);
         source.getOptionalEquals(context);
-        MathCode mathchar = AbstractTeXMathCode.parseMathCode(context, source,
-                typesetter, getName());
+        MathCode mathchar =
+                AbstractTeXMathCode.parseMathCode(context, source, typesetter,
+                    getName());
 
         context.setCode(cs, //
-                new TeXMathcharCode(cs.toString(), mathchar), //
-                prefix.clearGlobal());
+            new TeXMathcharCode(cs.toString(), mathchar), //
+            prefix.clearGlobal());
     }
 
 }

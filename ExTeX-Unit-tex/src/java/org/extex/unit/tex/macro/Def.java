@@ -23,6 +23,8 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.EofException;
+import org.extex.interpreter.exception.helping.EofInToksException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.Code;
@@ -53,7 +55,7 @@ import org.extex.unit.tex.macro.util.ProtectedMacroCode;
  *  <pre class="syntax">
  *    &lang;def&rang;
  *       &rarr; &lang;prefix&rang; <tt>\def</tt> {@linkplain
- *       org.extex.interpreter.TokenSource#getControlSequence(Context)
+ *       org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
  *       &lang;control sequence&rang;} &lang;parameter text&rang; <tt>{</tt> &lang;replacement text&rang; <tt>}</tt>
  *
  *    &lang;prefix&rang;
@@ -106,25 +108,26 @@ public class Def extends AbstractAssignment {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        CodeToken cs = source.getControlSequence(context);
+        CodeToken cs = source.getControlSequence(context, typesetter);
         MacroPattern pattern = getPattern(context, source);
-        Tokens body =
-                (!prefix.clearExpanded() ? source.getTokens(context, source,
-                    typesetter) //
-                        : source.scanUnprotectedTokens(context, false, false,
-                            getName()));
-        //TODO gene: maybe the treatment of # is incorrect
+        String csName = printable(context, cs);
+        Tokens body;
+        try {
+            body =
+                    prefix.clearExpanded() //
+                            ? source.scanUnprotectedTokens(context, false,
+                                false, getName())//
+                            : source.getTokens(context, source, typesetter);
+            //TODO gene: maybe the treatment of # is incorrect
+        } catch (EofException e) {
+            throw new EofInToksException(csName);
+        }
 
-        MacroCode macroCode =
-                (prefix.clearProtected() //
-                        ? new ProtectedMacroCode(printable(context, cs),
-                            prefix, pattern, body) //
-                        : new MacroCode(printable(context, cs), prefix,
-                            pattern, body));
+        MacroCode macroCode = (prefix.clearProtected() //
+                ? new ProtectedMacroCode(csName, prefix, pattern, body) //
+                : new MacroCode(csName, prefix, pattern, body));
 
         context.setCode(cs, macroCode, prefix.clearGlobal());
-        prefix.clearLong();
-        prefix.clearOuter();
     }
 
     /**
