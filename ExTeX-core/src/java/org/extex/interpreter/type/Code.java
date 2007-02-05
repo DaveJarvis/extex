@@ -58,13 +58,6 @@ public interface Code {
     boolean isOuter();
 
     /**
-     * Setter for the name of this primitive.
-     *
-     * @param name the name
-     */
-    void setName(String name);
-
-    /**
      * Getter for the name.
      *
      * @return the name
