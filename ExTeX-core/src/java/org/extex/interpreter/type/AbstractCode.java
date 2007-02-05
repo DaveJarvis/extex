@@ -180,14 +180,6 @@ public abstract class AbstractCode implements Code, Localizable, Serializable {
     }
 
     /**
-     * @see org.extex.interpreter.type.Code#setName(java.lang.String)
-     */
-    public void setName(final String name) {
-
-        this.name = name;
-    }
-
-    /**
      * @see java.lang.Object#toString()
      */
     public String toString() {
