@@ -27,6 +27,7 @@ import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.exception.helping.UndefinedControlSequenceException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Code;
+import org.extex.interpreter.type.CsConvertible;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.type.Catcode;
@@ -96,7 +97,7 @@ public class Csname extends AbstractCode implements ExpandableCode {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 04022007L;
 
     /**
      * Expand tokens and collect the result until <tt>\endcsname</tt> is found.
@@ -159,25 +160,6 @@ public class Csname extends AbstractCode implements ExpandableCode {
     public Csname(final String name) {
 
         super(name);
-    }
-
-    /**
-     * @see org.extex.interpreter.type.CsConvertible#convertCs(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource)
-     */
-    public Token convertCs(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
-
-        Tokens toks =
-                scanToEndCsname(context, source, typesetter, getLocalizer());
-
-        try {
-            return context.getTokenFactory().createToken(Catcode.ESCAPE,
-                context.escapechar(), toks.toText(), context.getNamespace());
-        } catch (CatcodeException e) {
-            throw new InterpreterException(e);
-        }
     }
 
     /**
