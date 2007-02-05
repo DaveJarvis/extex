@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -25,11 +25,12 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.EofException;
+import org.extex.interpreter.exception.helping.EofInToksException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.primitives.dynamic.Definer;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.Code;
-import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 
@@ -51,7 +52,7 @@ import org.extex.typesetter.Typesetter;
  * <pre class="syntax">
  *   &lang;javadef&rang;
  *       &rarr; <tt>\javadef</tt> {@linkplain
- *       org.extex.interpreter.TokenSource#getControlSequence(Context)
+ *       org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
  *       &lang;control sequence&rang;} <i>&lang;tokens&rang;</i> </pre>
  * <p>
  * The <i>&lang;control sequence&rang;</i> is any macro or active
@@ -138,12 +139,11 @@ public class JavaDef extends AbstractAssignment implements Definer {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 04022007L;
 
     /**
      * Creates a new object.
      * This method is needed for the nativedef wrapper.
-     *
      */
     public JavaDef() {
 
@@ -185,19 +185,24 @@ public class JavaDef extends AbstractAssignment implements Definer {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        CodeToken cs = source.getControlSequence(context);
-        Tokens name = source.getTokens(context, source, typesetter);
-        String classname = name.toText();
+        CodeToken cs = source.getControlSequence(context, typesetter);
+        String classname;
+        try {
+            classname = source.getTokens(context, source, typesetter).toText();
+        } catch (EofException e) {
+            throw new EofInToksException(printableControlSequence(context));
+        }
         if ("".equals(classname)) {
             throw new HelpingException(getLocalizer(), "ClassNotFound",
-                    classname);
+                classname);
         }
         Code code;
 
         try {
-            code = (Code) (Class.forName(classname).getConstructor(
-                    new Class[]{String.class}).newInstance(new Object[]{cs
-                    .getName()}));
+            code =
+                    (Code) (Class.forName(classname).getConstructor(
+                        new Class[]{String.class}).newInstance(new Object[]{cs
+                        .getName()}));
         } catch (IllegalArgumentException e) {
             throw new InterpreterException(e);
         } catch (SecurityException e) {
@@ -212,7 +217,7 @@ public class JavaDef extends AbstractAssignment implements Definer {
             throw new InterpreterException(e);
         } catch (ClassNotFoundException e) {
             throw new HelpingException(getLocalizer(), "ClassNotFound",
-                    classname);
+                classname);
         }
         context.setCode(cs, code, prefix.clearGlobal());
     }

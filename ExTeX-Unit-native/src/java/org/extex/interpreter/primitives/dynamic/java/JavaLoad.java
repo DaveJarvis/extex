@@ -23,6 +23,8 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.EofException;
+import org.extex.interpreter.exception.helping.EofInToksException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.tokens.Tokens;
@@ -144,8 +146,12 @@ public class JavaLoad extends AbstractCode implements Loader {
     public void load(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
 
-        Tokens name = source.getTokens(context, source, typesetter);
-        String classname = name.toText();
+        String classname;
+        try {
+            classname = source.getTokens(context, source, typesetter).toText();
+        } catch (EofException e) {
+            throw new EofInToksException(printableControlSequence(context));
+        }
         if ("".equals(classname)) {
             throw new HelpingException(getLocalizer(), "ClassNotFound",
                     classname);
