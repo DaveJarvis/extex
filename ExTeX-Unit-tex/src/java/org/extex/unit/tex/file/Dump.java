@@ -19,7 +19,6 @@
 
 package org.extex.unit.tex.file;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Calendar;
@@ -172,8 +171,6 @@ public class Dump extends AbstractCode
 
             new SerialLoader().save(stream, jobname, context);
 
-        } catch (FileNotFoundException e) {
-            throw new InterpreterException(e);
         } catch (IOException e) {
             throw new InterpreterException(e);
         } catch (DocumentWriterException e) {

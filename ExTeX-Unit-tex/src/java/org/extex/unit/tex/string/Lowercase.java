@@ -107,10 +107,8 @@ public class Lowercase extends AbstractCode implements ExpandableCode {
         Tokens toks;
         try {
             toks = source.getTokens(context, source, typesetter);
-        } catch (EofInToksException e) {
-            throw new EofInToksException(printableControlSequence(context));
         } catch (EofException e) {
-            throw new EofException(printableControlSequence(context));
+            throw new EofInToksException(printableControlSequence(context));
         }
 
         String namespace = context.getNamespace();
