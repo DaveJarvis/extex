@@ -78,7 +78,7 @@ import org.extex.util.framework.logger.LogEnabled;
  *  <pre class="syntax">
  *    &lang;font&rang;
  *      &rarr; &lang;prefix&rang; <tt>\font</tt> {@linkplain
- *       org.extex.interpreter.TokenSource#getControlSequence(Context)
+ *       org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
  *       &lang;control sequence&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} &lang;font name&rang; &lang;options&rang;
@@ -187,7 +187,7 @@ public class FontPrimitive extends AbstractAssignment
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        CodeToken fontId = source.getControlSequence(context);
+        CodeToken fontId = source.getControlSequence(context, typesetter);
         source.getOptionalEquals(context);
         String fontname = scanFontName(context, source);
         Dimen fontSize = null;

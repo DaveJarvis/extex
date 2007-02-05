@@ -391,21 +391,24 @@ public class Moritz extends Max
      * return <code>null</code>.
      *
      * @param context the interpreter context
+     * @param typesetter the typesetter
      *
      * @return the token read
      *
      * @throws InterpreterException in case that the token stream is at its
      *  end or that the token read is not a control sequence token
+     *
+     * @see org.extex.interpreter.TokenSource#getControlSequence(org.extex.interpreter.context.Context, org.extex.typesetter.Typesetter)
      */
-    public CodeToken getControlSequence(final Context context)
-            throws InterpreterException {
+    public CodeToken getControlSequence(final Context context,
+            final Typesetter typesetter) throws InterpreterException {
 
         Token t = getToken(context);
 
         if (t instanceof CodeToken) {
             Code code = context.getCode((CodeToken) t);
             if (code instanceof CsConvertible) {
-                t = ((CsConvertible) code).convertCs(context, this);
+                t = ((CsConvertible) code).convertCs(context, this, typesetter);
             }
             return (CodeToken) t;
 
@@ -1235,7 +1238,7 @@ public class Moritz extends Max
             token = expandUnproteced(getToken(context), toks);
 
             if (token == null) {
-                return toks;
+                throw new EofException();
             }
 
             if (token instanceof LeftBraceToken) {
