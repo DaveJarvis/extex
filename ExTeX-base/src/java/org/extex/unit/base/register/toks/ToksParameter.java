@@ -24,6 +24,8 @@ import org.extex.interpreter.Namespace;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.EofException;
+import org.extex.interpreter.exception.helping.EofInToksException;
 import org.extex.interpreter.type.InitializableCode;
 import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.tokens.Tokens;
@@ -50,8 +52,12 @@ import org.extex.util.framework.configuration.exception.ConfigurationException;
  * @author <a href="mailto:mgn@gmx.de">Michael Niedermair</a>
  * @version $Revision:4431 $
  */
-public class ToksParameter extends AbstractToks implements TokensConvertible,
-        Theable, InitializableCode, Configurable {
+public class ToksParameter extends AbstractToks
+        implements
+            TokensConvertible,
+            Theable,
+            InitializableCode,
+            Configurable {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for
@@ -90,6 +96,18 @@ public class ToksParameter extends AbstractToks implements TokensConvertible,
 
         super(name);
         key = name;
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param name the name for debugging
+     * @param key the key
+     */
+    public ToksParameter(final String name, final String key) {
+
+        super(name);
+        this.key = key;
     }
 
     /**
@@ -132,12 +150,12 @@ public class ToksParameter extends AbstractToks implements TokensConvertible,
 
         if (source != null) {
             Tokens toks = new Tokens();
-            for (Token t = source.getToken(context); t != null; t = source
-                    .getToken(context)) {
+            for (Token t = source.getToken(context); t != null; t =
+                    source.getToken(context)) {
                 toks.add(t);
             }
             context.setToks(getKey(context, (TokenSource) null, typesetter),
-                            toks, true);
+                toks, true);
         }
     }
 
@@ -154,8 +172,13 @@ public class ToksParameter extends AbstractToks implements TokensConvertible,
 
         String key = getKey(context, source, typesetter);
         source.getOptionalEquals(context);
-        Tokens toks = source.getTokens(context, source, typesetter);
-        context.setToks(key, toks, prefix.clearGlobal());
+        Tokens tokens;
+        try {
+            tokens = source.getTokens(context, source, typesetter);
+        } catch (EofException e) {
+            throw new EofInToksException(printableControlSequence(context));
+        }
+        context.setToks(key, tokens, prefix.clearGlobal());
     }
 
     /**
