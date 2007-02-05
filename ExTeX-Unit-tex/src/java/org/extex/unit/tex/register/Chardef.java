@@ -60,7 +60,7 @@ import org.extex.unit.base.register.CharCode;
  *  <pre class="syntax">
  *    &lang;chardef&rang;
  *      &rarr; <tt>\chardef</tt> {@linkplain
- *        org.extex.interpreter.TokenSource#getControlSequence(Context)
+ *        org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
  *        &lang;control sequence&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
@@ -107,7 +107,7 @@ public class Chardef extends AbstractAssignment {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        CodeToken cs = source.getControlSequence(context);
+        CodeToken cs = source.getControlSequence(context, typesetter);
         source.getOptionalEquals(context);
         UnicodeChar uc =
                 source.scanCharacterCode(context, typesetter, getName());

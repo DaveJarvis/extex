@@ -53,7 +53,7 @@ import org.extex.unit.base.register.toks.ToksParameter;
  *  <pre class="syntax">
  *    &lang;toksdef&rang;
  *      &rarr; &lang;optional prefix&rang; <tt>\toksdef</tt> {@linkplain
- *        org.extex.interpreter.TokenSource#getControlSequence(Context)
+ *        org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
  *        &lang;control sequence&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
@@ -127,10 +127,11 @@ public class Toksdef extends AbstractToks {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        CodeToken cs = source.getControlSequence(context);
+        CodeToken cs = source.getControlSequence(context, typesetter);
         source.getOptionalEquals(context);
         String key = getKey(context, source, typesetter);
-        context.setCode(cs, new ToksParameter(key), prefix.clearGlobal());
+        context.setCode(cs, new ToksParameter(cs.getName(), key), prefix
+            .clearGlobal());
     }
 
 }

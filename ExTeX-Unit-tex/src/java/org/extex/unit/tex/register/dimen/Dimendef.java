@@ -51,7 +51,7 @@ import org.extex.typesetter.Typesetter;
  *  <pre class="syntax">
  *    &lang;dimendef&rang;
  *      &rarr; &lang;modifier&rang; <tt>\dimendef</tt> {@linkplain
- *        org.extex.interpreter.TokenSource#getControlSequence(Context)
+ *        org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
  *        &lang;control sequence&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
@@ -125,7 +125,7 @@ public class Dimendef extends AbstractDimen {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        CodeToken cs = source.getControlSequence(context);
+        CodeToken cs = source.getControlSequence(context, typesetter);
         source.getOptionalEquals(context);
         String key = getKey(context, source, typesetter);
         context.setCode(cs, new DimenParameter(key), prefix.clearGlobal());

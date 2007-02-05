@@ -67,7 +67,7 @@ import org.extex.util.framework.logger.LogEnabled;
  *      &rarr; &lang;optional prefix&rang;<tt>\read</tt> {@linkplain
  *        org.extex.unit.base.file.AbstractFileCode#scanInFileKey(Context,TokenSource,Typesetter)
  *        &lang;infile&nbsp;name&rang;} <tt>to</tt> {@linkplain
- *        org.extex.interpreter.TokenSource#getControlSequence(Context)
+ *        org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
  *        &lang;control sequence&rang;}
  *
  *    &lang;optional prefix&rang;
@@ -125,7 +125,7 @@ public class Read extends AbstractAssignment implements LogEnabled {
             throw new HelpingException(getLocalizer(), "TTP.MissingToForRead",
                 printableControlSequence(context));
         }
-        CodeToken cs = source.getControlSequence(context);
+        CodeToken cs = source.getControlSequence(context, typesetter);
 
         InFile file = context.getInFile(key);
 

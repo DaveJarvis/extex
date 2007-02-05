@@ -52,7 +52,7 @@ import org.extex.typesetter.Typesetter;
  *  <pre class="syntax">
  *    &lang;countdef&rang;
  *      &rarr; &lang;modifier&rang; <tt>\countdef</tt> {@linkplain
- *        org.extex.interpreter.TokenSource#getControlSequence(Context)
+ *        org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
  *        &lang;control sequence&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
@@ -126,7 +126,7 @@ public class Countdef extends AbstractCount {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        CodeToken cs = source.getControlSequence(context);
+        CodeToken cs = source.getControlSequence(context, typesetter);
         source.getOptionalEquals(context);
         String key = getKey(context, source, typesetter);
         context.setCode(cs, new IntegerParameter(key), prefix.clearGlobal());
