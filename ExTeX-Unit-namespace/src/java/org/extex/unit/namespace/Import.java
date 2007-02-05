@@ -23,6 +23,8 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.EofException;
+import org.extex.interpreter.exception.helping.EofInToksException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.type.token.CodeToken;
@@ -75,7 +77,7 @@ public class Import extends Let {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 04022007L;
 
     /**
      * Creates a new object.
@@ -98,7 +100,12 @@ public class Import extends Let {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        String ns = source.getTokens(context, source, typesetter).toText();
+        String ns;
+        try {
+            ns = source.getTokens(context, source, typesetter).toText();
+        } catch (EofException e) {
+            throw new EofInToksException(printableControlSequence(context));
+        }
         Tokens export = context.getToks(ns + "\bexport");
         String namespace = context.getNamespace();
         int length = export.length();

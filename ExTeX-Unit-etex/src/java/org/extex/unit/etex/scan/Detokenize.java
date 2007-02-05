@@ -23,6 +23,8 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.EofException;
+import org.extex.interpreter.exception.helping.EofInToksException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.tokens.Tokens;
@@ -62,7 +64,7 @@ public class Detokenize extends AbstractCode implements ExpandableCode {
     /**
      * The field <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 20060616L;
+    protected static final long serialVersionUID = 04022007L;
 
     /**
      * Creates a new object.
@@ -85,7 +87,12 @@ public class Detokenize extends AbstractCode implements ExpandableCode {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        Tokens tokens = source.getTokens(context, source, typesetter);
+        Tokens tokens;
+        try {
+            tokens = source.getTokens(context, source, typesetter);
+        } catch (EofException e) {
+            throw new EofInToksException(printableControlSequence(context));
+        }
         source.push(new Tokens(context, tokens.toText()));
     }
 
@@ -100,7 +107,12 @@ public class Detokenize extends AbstractCode implements ExpandableCode {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        Tokens tokens = source.getTokens(context, source, typesetter);
+        Tokens tokens;
+        try {
+            tokens = source.getTokens(context, source, typesetter);
+        } catch (EofException e) {
+            throw new EofInToksException(printableControlSequence(context));
+        }
         source.push(new Tokens(context, tokens.toText()));
     }
 

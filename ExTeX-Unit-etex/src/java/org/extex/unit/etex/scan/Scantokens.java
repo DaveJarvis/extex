@@ -24,6 +24,8 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.Tokenizer;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.EofException;
+import org.extex.interpreter.exception.helping.EofInToksException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.tokens.Tokens;
@@ -163,7 +165,7 @@ public class Scantokens extends AbstractCode implements ExpandableCode {
     /**
      * The field <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 20060616L;
+    protected static final long serialVersionUID = 04022007L;
 
     /**
      * Creates a new object.
@@ -186,10 +188,15 @@ public class Scantokens extends AbstractCode implements ExpandableCode {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        Tokens toks = source.getTokens(context, source, typesetter);
+        Tokens tokens;
+        try {
+            tokens = source.getTokens(context, source, typesetter);
+        } catch (EofException e) {
+            throw new EofInToksException(printableControlSequence(context));
+        }
         TokenStreamFactory factory = source.getTokenStreamFactory();
         try {
-            String t = toks.toText(context.escapechar());
+            String t = tokens.toText(context.escapechar());
             source.addStream(new TokenStreamProxy(factory.newInstance(t)));
         } catch (ConfigurationException e) {
             throw new InterpreterException(e);
