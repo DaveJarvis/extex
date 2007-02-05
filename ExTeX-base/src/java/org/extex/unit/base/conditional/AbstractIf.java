@@ -29,6 +29,7 @@ import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
+import org.extex.type.Locator;
 import org.extex.typesetter.Typesetter;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.i18n.LocalizerFactory;
@@ -68,11 +69,12 @@ public abstract class AbstractIf extends AbstractCode implements ExpandableCode 
      * counting the intermediate <tt>\if</tt>s and <tt>\fi</tt>s.
      *
      * <p>
-     *  This method implements to the absorption of tokens at high speed.
+     *  This method implements the absorption of tokens at high speed.
      * </p>
      *
      * @param context the interpreter context
      * @param source the source for new tokens
+     * @param name the name of the invoking primitive
      *
      * @return <code>true</code> if a matching <tt>\else</tt> has been found;
      *         otherwise return <code>false</code> if a matching <tt>\fi</tt>
@@ -81,13 +83,17 @@ public abstract class AbstractIf extends AbstractCode implements ExpandableCode 
      * @throws InterpreterException in case of en error
      */
     public static boolean skipToElseOrFi(final Context context,
-            final TokenSource source) throws InterpreterException {
+            final TokenSource source, final String name)
+            throws InterpreterException {
 
         Code code;
         int n = 0;
 
-        for (Token t = source.getToken(context); t != null; t = source
-                .getToken(context)) {
+        Locator locator = source.getLocator();
+        for (Token t = source.getToken(context); t != null; t =
+                source.getToken(context)) {
+
+            locator = source.getLocator();
 
             if (t instanceof CodeToken
                     && (code = context.getCode((CodeToken) t)) != null) {
@@ -103,12 +109,14 @@ public abstract class AbstractIf extends AbstractCode implements ExpandableCode 
                     n++;
                 } else if (code.isOuter()) {
                     throw new HelpingException(getMyLocalizer(),
-                            "TTP.OuterInSkipped");
+                        "TTP.OuterInSkipped", name, Integer.toString(locator
+                            .getLineNumber()));
                 }
             }
         }
 
-        throw new HelpingException(getMyLocalizer(), "TTP.EOFinSkipped");
+        throw new HelpingException(getMyLocalizer(), "TTP.EOFinSkipped", name,
+            locator != null ? Integer.toString(locator.getLineNumber()) : "");
     }
 
     /**
@@ -152,7 +160,8 @@ public abstract class AbstractIf extends AbstractCode implements ExpandableCode 
 
         if (conditional(context, source, typesetter)) {
             context.pushConditional(source.getLocator(), true, this, 1, false);
-        } else if (skipToElseOrFi(context, source)) {
+        } else if (skipToElseOrFi(context, source,
+            printableControlSequence(context))) {
             context.pushConditional(source.getLocator(), true, this, -1, false);
         }
     }
@@ -170,7 +179,8 @@ public abstract class AbstractIf extends AbstractCode implements ExpandableCode 
 
         if (conditional(context, source, typesetter)) {
             context.pushConditional(source.getLocator(), true, this, 1, false);
-        } else if (skipToElseOrFi(context, source)) {
+        } else if (skipToElseOrFi(context, source,
+            printableControlSequence(context))) {
             context.pushConditional(source.getLocator(), true, this, -1, false);
         }
     }
