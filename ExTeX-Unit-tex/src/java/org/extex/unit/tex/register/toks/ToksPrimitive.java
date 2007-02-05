@@ -23,12 +23,13 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.EofException;
+import org.extex.interpreter.exception.helping.EofInToksException;
 import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.interpreter.type.tokens.TokensConvertible;
 import org.extex.typesetter.Typesetter;
 import org.extex.unit.base.register.toks.AbstractToks;
-import org.extex.util.exception.GeneralException;
 
 /**
  * This class provides an implementation for the primitive <code>\toks</code>.
@@ -96,7 +97,7 @@ public class ToksPrimitive extends AbstractToks
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 04022007L;
 
     /**
      * Creates a new object.
@@ -121,7 +122,12 @@ public class ToksPrimitive extends AbstractToks
 
         String key = getKey(context, source, typesetter);
         source.getOptionalEquals(context);
-        Tokens toks = source.getTokens(context, source, typesetter);
+        Tokens toks;
+        try {
+            toks = source.getTokens(context, source, typesetter);
+        } catch (EofException e) {
+            throw new EofInToksException(printableControlSequence(context));
+        }
         context.setToks(key, toks, prefix.clearGlobal());
     }
 
@@ -137,26 +143,6 @@ public class ToksPrimitive extends AbstractToks
 
         String key = getKey(context, source, typesetter);
         return context.getToks(key);
-    }
-
-    /**
-     * Scan the tokens between <code>{</code> and <code>}</code> and store
-     * them in the named tokens register.
-     *
-     * @param prefix the prefix flags
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     * @param key the key
-     *
-     * @throws GeneralException in case of an error
-     */
-    protected void expand(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter,
-            final String key) throws GeneralException {
-
-        Tokens toks = source.getTokens(context, source, typesetter);
-        context.setToks(key, toks, prefix.clearGlobal());
     }
 
     /**
