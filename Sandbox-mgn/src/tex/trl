@@ -1,0 +1,3 @@
+#!/bin/bash
+latex show-fontdim.tex
+rm -f *~ *.backup *.log *.aux

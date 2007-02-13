@@ -1,81 +1,112 @@
-% Ausgabe von Fontparametern.
+% Ausgabe von Fontparametern als java Testmethoden.
+%
 % Rolf Niepraschk, Rolf.Niepraschk@gmx.de, 2007-01-14
+% - kleine Änderungen, mgn 2007-01-17
+% - Ausgabe als "\jobname.java", RN 2007-01-18
+% - Jetzt als LaTeX-Datei, RN 2007-01-22
+% - kleine Änderungen, mgn 2007-02-13
 %
-% kleine Änderungen, mgn 2007-01-17
-% Ausgabe als "\jobname.java", RN 2007-01-18
-%
-% Aufruf etex show-fontdimen-java.tex
+% Aufruf:  latex   show-fontdimen-java.tex
 %
 % $Id$
 %
-\def\fname{cmr10 at 5pt}
-\def\fmethodenname{cmr10}
-\edef\filename{\jobname.java}
+\documentclass{article}
 
-\def\writeIt{\immediate\write\fdimfile}
+\newcommand*\fname{cmr10 scaled 1440}
+\newcommand*\fmethodenname{cmr10}
+
+% -----------------------------
+\newcommand*\filename{} \edef\filename{\jobname.java}
+\newcount\kerningcount
+\kerningcount=0
+
+\makeatletter
 \newwrite\fdimfile
+\newcommand\writeIt{\immediate\write\fdimfile}
+\newcommand*\LBRACE{} \edef\LBRACE{\string{}% }{
+\newcommand*\RBRACE{} \edef\RBRACE{\string}}%
+
+\newcommand*\@printKerning[2]{%
+  \advance\kerningcount+1\relax
+  \setbox0=\hbox{#1#2}%
+  \setbox1=\hbox{#1{}#2}%
+  \count1\wd0\relax \advance\count1-\wd1\relax
+  \writeIt{}
+  \writeIt{/**}
+  \writeIt{* kerning test \fname}%
+  \writeIt{* Kerning: #1#2: \the\count1}
+  \writeIt{*/}
+  \writeIt{public void testKerning\the\kerningcount() throws Exception}%
+  \writeIt{\LBRACE}%
+  \writeIt{FixedDimen k = font.getKerning(UnicodeChar.get('#1'),}
+  \writeIt{   UnicodeChar.get('#2'));}
+  \writeIt{assertNotNull(k);}
+  \writeIt{assertTrue(Long.toString(k.getValue()), new Dimen(\the\count1).eq(k));}
+  \writeIt{\RBRACE}%
+}
+\newcommand*\printKerning[1]{%
+  \begingroup
+    \@for\@tempa:=#1\do{%
+      \expandafter\@printKerning\@tempa}%
+  \endgroup
+}
+
 \immediate\openout\fdimfile=\filename
 
 \count0=0\relax
 \font\f=\fname\relax
-\edef\LBRACE{\string{}
-\edef\RBRACE{\string}}
-\writeIt{// ************************************************************}
+
+\writeIt{// ************************************************************}%
 \loop
   \count1=\fontcharwd\f\count0\relax
   \count2=\fontcharht\f\count0\relax
   \count3=\fontchardp\f\count0\relax
   \count4=\fontcharic\f\count0\relax
   \writeIt{/**}
-  \writeIt{* test \fname}
+  \writeIt{* test \fname}%
   \iffontchar\f\count0\relax
-     \writeIt{* Char \the\count0: %
-       Width=\the\count1, Height=\the\count2, Depth=\the\count3, IC=\the\count4}
+    \writeIt{* Char \the\count0: %
+       Width=\the\count1, Height=\the\count2, Depth=\the\count3, IC=\the\count4}%
   \else
-     \writeIt{* Char \the\count0: not defined}
+    \writeIt{* Char \the\count0: not defined}%
   \fi
-  \writeIt{*/}
+  \writeIt{*/}%
+  \writeIt{public void test\fmethodenname C\the\count0() throws Exception}%
+  \writeIt{\LBRACE}%
   \iffontchar\f\count0\relax
-   \writeIt{public void test\fmethodenname C\the\count0() throws Exception}
-   \writeIt{\LBRACE}
-   \writeIt{FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + \the\count0));}
-   \writeIt{FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + \the\count0));}
-   \writeIt{FixedGlue d = font.getDepth(UnicodeChar.get(Unicode.OFFSET + \the\count0));}
-   \writeIt{FixedDimen i = font.getItalicCorrection(UnicodeChar.get(Unicode.OFFSET + \the\count0));}
-   \writeIt{assertNotNull(w);}
-   \writeIt{assertNotNull(h);}
-   \writeIt{assertNotNull(d);}
-   \writeIt{assertNotNull(i);}
-   \writeIt{assertTrue(Long.toString(w.getLength().getValue()),}
-   \writeIt{ new Glue(\the\count1).eq(w));}
-   \writeIt{assertTrue(Long.toString(h.getLength().getValue()),}
-   \writeIt{ new Glue(\the\count2).eq(h));}
-   \writeIt{assertTrue(Long.toString(d.getLength().getValue()),}
-   \writeIt{ new Glue(\the\count3).eq(d));}
-   \writeIt{assertTrue(Long.toString(i.getValue()),}
-   \writeIt{ new Dimen(\the\count4).eq(i));}
-   \writeIt{\RBRACE}
+    \writeIt{FixedGlue h = font.getHeight(UnicodeChar.get(Unicode.OFFSET + \the\count0));}%
+    \writeIt{FixedGlue w = font.getWidth(UnicodeChar.get(Unicode.OFFSET + \the\count0));}%
+    \writeIt{FixedGlue d = font.getDepth(UnicodeChar.get(Unicode.OFFSET + \the\count0));}%
+    \writeIt{FixedDimen i = font.getItalicCorrection(UnicodeChar.get(Unicode.OFFSET + \the\count0));}%
+    \writeIt{assertNotNull(w);}%
+    \writeIt{assertNotNull(h);}%
+    \writeIt{assertNotNull(d);}%
+    \writeIt{assertNotNull(i);}%
+    \writeIt{assertTrue(Long.toString(w.getLength().getValue()),}%
+    \writeIt{ new Glue(\the\count1).eq(w));}%
+    \writeIt{assertTrue(Long.toString(h.getLength().getValue()),}%
+    \writeIt{ new Glue(\the\count2).eq(h));}%
+    \writeIt{assertTrue(Long.toString(d.getLength().getValue()),}%
+    \writeIt{ new Glue(\the\count3).eq(d));}%
+    \writeIt{assertTrue(Long.toString(i.getValue()),}%
+    \writeIt{ new Dimen(\the\count4).eq(i));}%
   \else
-   \writeIt{public void test\fmethodenname C\the\count0() throws Exception}
-   \writeIt{\LBRACE}
-   \writeIt{assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + \the\count0)));}
-   \writeIt{\RBRACE}
+    \writeIt{assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + \the\count0)));}%
   \fi
+  \writeIt{\RBRACE}%
   \advance \count0 by 1\relax
 \ifnum \count0<256\relax \repeat
 
-\setbox0=\hbox{AV}
-\setbox1=\hbox{A{}V}
+\printKerning{AV,Ve,{V,},AW,W.}%
 
-\count1\wd1\relax \advance\count1-\wd0\relax
-
-\writeIt{// Kerning: AV : \the\count1}
 \writeIt{// ************************************************************}
 
-\bye
 \immediate\closeout\fdimfile
-\message{^^J****************************************************}
-\message{fontdim parameters written to ``\filename''.}
-\message{****************************************************}
 
-\bye
+\typeout{^^J****************************************************}
+\typeout{fontdim parameters written to ``\filename''.}
+\typeout{****************************************************}
+
+\begin{document}
+\end{document}
+\endinput
