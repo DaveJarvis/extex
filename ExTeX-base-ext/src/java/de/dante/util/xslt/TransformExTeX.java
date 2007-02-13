@@ -99,8 +99,9 @@ public final class TransformExTeX {
 
         // -----------------------------------------------
 
-        BufferedOutputStream out = new BufferedOutputStream(
-                new FileOutputStream(args[2]), BUFFERSIZE);
+        BufferedOutputStream out =
+                new BufferedOutputStream(new FileOutputStream(args[2]),
+                    BUFFERSIZE);
 
         InputStream xmlin = finder.findResource(args[0], "");
         InputStream xslin = finder.findResource(args[1], "");
@@ -110,11 +111,11 @@ public final class TransformExTeX {
         factory.setNamespaceAware(true);
         DocumentBuilder builder = factory.newDocumentBuilder();
         builder.setEntityResolver(entresolver);
-        
+
         Document xmldoc = builder.parse(xmlin);
 
         Transform.transform(new DOMSource(xmldoc), new StreamSource(xslin),
-                resolver, out);
+            resolver, out);
     }
 
     /**
@@ -207,8 +208,9 @@ public final class TransformExTeX {
         public FontFactory getFontFactory() throws ConfigurationException {
 
             if (fontFactory == null) {
-                fontFactory = makemyFontFactory(config
-                        .getConfiguration("Fonts"), getResourceFinder());
+                fontFactory =
+                        makemyFontFactory(config.getConfiguration("Fonts"),
+                            getResourceFinder());
             }
             return fontFactory;
         }
@@ -231,15 +233,15 @@ public final class TransformExTeX {
 
             if (fontClass == null || fontClass.equals("")) {
                 throw new ConfigurationMissingAttributeException("class",
-                        config);
+                    config);
             }
 
             try {
-                fontFactory = (FontFactory) (Class.forName(fontClass)
-                        .getConstructor(
-                                new Class[]{Configuration.class,
-                                        ResourceFinder.class})
-                        .newInstance(new Object[]{config, finder}));
+                fontFactory =
+                        (FontFactory) (Class.forName(fontClass).getConstructor(
+                            new Class[]{Configuration.class,
+                                    ResourceFinder.class})
+                            .newInstance(new Object[]{config, finder}));
             } catch (IllegalArgumentException e) {
                 throw new ConfigurationInstantiationException(e);
             } catch (SecurityException e) {
@@ -258,7 +260,7 @@ public final class TransformExTeX {
 
             if (fontFactory instanceof PropertyConfigurable) {
                 ((PropertyConfigurable) fontFactory)
-                        .setProperties(getProperties());
+                    .setProperties(getProperties());
             }
 
             return fontFactory;

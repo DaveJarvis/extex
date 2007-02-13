@@ -35,7 +35,7 @@ import de.dante.extex.interpreter.type.real.RealConvertible;
 
 /**
  * Abstract class for math primitives. E.g. sin, cos, ...
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -44,7 +44,7 @@ public abstract class AbstractMath extends AbstractCode implements Theable,
 
     /**
      * Creates a new object.
-     * 
+     *
      * @param name the name for debugging
      * @throws GeneralException ...
      */
@@ -56,7 +56,7 @@ public abstract class AbstractMath extends AbstractCode implements Theable,
 
     /**
      * execute
-     * 
+     *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
@@ -105,7 +105,7 @@ public abstract class AbstractMath extends AbstractCode implements Theable,
 
     /**
      * Calculate
-     * 
+     *
      * @param context the context
      * @param source the tokensource
      * @return the real-value
