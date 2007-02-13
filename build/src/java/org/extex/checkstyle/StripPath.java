@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -27,7 +27,7 @@ import java.util.regex.Pattern;
 
 /**
  * ...
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -35,7 +35,7 @@ public class StripPath {
 
     /**
      * Command line interface.
-     * 
+     *
      * @param arg the command line arguments
      */
     public static void main(final String[] arg) {
@@ -55,7 +55,7 @@ public class StripPath {
 
     /**
      * ...
-     * 
+     *
      * @param name the file name to process
      *
      * @throws IOException in case of an error
