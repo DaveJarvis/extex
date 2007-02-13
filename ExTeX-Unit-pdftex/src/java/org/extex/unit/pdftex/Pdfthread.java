@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -30,7 +30,6 @@ import org.extex.typesetter.type.node.RuleNode;
 import org.extex.typesetter.type.node.pdftex.PdfThread;
 import org.extex.unit.pdftex.util.id.IdSpec;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
-
 
 /**
  * This class provides an implementation for the primitive <code>\pdfthread</code>.
@@ -116,8 +115,9 @@ public class Pdfthread extends AbstractPdftexCode {
 
         IdSpec id = IdSpec.parseIdSpec(context, source, typesetter, getName());
 
-        PdfThread thread = new PdfThread(new RuleNode(width, height, depth,
-                context.getTypesettingContext(), true), attr, id);
+        PdfThread thread =
+                new PdfThread(new RuleNode(width, height, depth, context
+                    .getTypesettingContext(), true), attr, id);
 
         try {
             typesetter.add(thread);

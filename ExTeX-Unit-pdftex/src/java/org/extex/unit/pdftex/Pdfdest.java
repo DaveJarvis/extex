@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -29,7 +29,6 @@ import org.extex.typesetter.type.node.pdftex.PdfDest;
 import org.extex.unit.pdftex.util.destination.DestType;
 import org.extex.unit.pdftex.util.id.IdSpec;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
-
 
 /**
  * This class provides an implementation for the primitive <code>\pdfdest</code>.
@@ -86,8 +85,8 @@ public class Pdfdest extends AbstractPdftexCode {
         ensurePdftex(context, typesetter);
 
         IdSpec id = IdSpec.parseIdSpec(context, source, typesetter, getName());
-        DestType type = DestType.parseDestType(context, source, typesetter,
-                getName());
+        DestType type =
+                DestType.parseDestType(context, source, typesetter, getName());
 
         try {
             typesetter.add(new PdfDest(id, type));

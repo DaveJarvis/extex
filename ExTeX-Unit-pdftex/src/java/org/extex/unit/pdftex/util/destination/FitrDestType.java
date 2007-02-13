@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -59,6 +59,10 @@ public class FitrDestType extends DestType {
     }
 
     /**
+     * Returns a string representation of the object.
+     *
+     * @return  a string representation of the object.
+     *
      * @see java.lang.Object#toString()
      */
     public String toString() {
@@ -83,8 +87,14 @@ public class FitrDestType extends DestType {
     }
 
     /**
-     * @see org.extex.unit.pdftex.util.destType.DestType#visit(
-     *      org.extex.unit.pdftex.util.destType.DestTypeVisitor)
+     * This method is the entry point for the visitor pattern.
+     *
+     * @param visitor the visitor to call back
+     *
+     * @return an arbitrary return object
+     *
+     * @see org.extex.unit.pdftex.util.destination.DestType#visit(
+     *      org.extex.unit.pdftex.util.destination.DestinationVisitor)
      */
     public Object visit(final DestinationVisitor visitor) {
 

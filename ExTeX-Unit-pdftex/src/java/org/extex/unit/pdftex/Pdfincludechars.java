@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -26,7 +26,6 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.font.Font;
 import org.extex.typesetter.Typesetter;
-
 
 /**
  * This class provides an implementation for the primitive
@@ -91,7 +90,8 @@ public class Pdfincludechars extends AbstractPdftexCode {
         PdftexSupport writer = ensurePdftex(context, typesetter);
 
         Font font = source.getFont(context, getName());
-        String text = source.scanTokens(context, false, false, getName()).toText();
+        String text =
+                source.scanTokens(context, false, false, getName()).toText();
 
         writer.pdfincludechars(font, text);
     }

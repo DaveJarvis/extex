@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -24,7 +24,6 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.typesetter.Typesetter;
 import org.extex.unit.pdftex.exception.InterpreterPdftexActionTypeException;
-
 
 /**
  * This is the abstract base class for actions in PDF.
@@ -52,13 +51,13 @@ public abstract class ActionSpec {
 
         if (source.getKeyword(context, "user")) {
             return UserActionSpec.parseActionSpec(context, source, typesetter,
-                    name);
+                name);
         } else if (source.getKeyword(context, "goto")) {
             return GotoActionSpec.parseActionSpec(context, source, typesetter,
-                    name);
+                name);
         } else if (source.getKeyword(context, "thread")) {
-            return ThreadActionSpec.parseActionSpec(context, source, typesetter,
-                    name);
+            return ThreadActionSpec.parseActionSpec(context, source,
+                typesetter, name);
         }
 
         throw new InterpreterPdftexActionTypeException(name);

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -26,7 +26,6 @@ import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.count.Count;
 import org.extex.typesetter.Typesetter;
 import org.extex.unit.pdftex.exception.InterpreterPdftexException;
-
 
 /**
  * This class provides a base class for pdf<logo>TeX</logo> primitives.
@@ -64,8 +63,8 @@ public abstract class AbstractPdftexCode extends AbstractCode {
     protected PdftexSupport ensurePdftex(final Context context,
             final Typesetter typesetter) throws InterpreterPdftexException {
 
-        DocumentWriter documentWriter = typesetter.getBackendDriver()
-                .getDocumentWriter();
+        DocumentWriter documentWriter =
+                typesetter.getBackendDriver().getDocumentWriter();
 
         if (documentWriter instanceof PdftexSupport
                 && context.getCount("pdfoutput").gt(Count.ZERO)) {

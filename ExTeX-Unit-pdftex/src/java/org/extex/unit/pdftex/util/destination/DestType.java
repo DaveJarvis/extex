@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -27,7 +27,6 @@ import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.node.RuleNode;
 import org.extex.unit.pdftex.exception.InterpreterPdftexDestinationTypeException;
-
 
 /**
  * This is the abstract base class for destination types in PDF.
@@ -254,7 +253,7 @@ public abstract class DestType {
             }
 
             return new FitrDestType(new RuleNode(width, height, depth, null,
-                    true));
+                true));
 
         } else if (source.getKeyword(context, "zoom")) {
             long zoom = Count.scanInteger(context, source, typesetter);

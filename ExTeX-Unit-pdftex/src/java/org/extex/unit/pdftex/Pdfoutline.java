@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -27,7 +27,6 @@ import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.count.Count;
 import org.extex.typesetter.Typesetter;
 import org.extex.unit.pdftex.util.action.ActionSpec;
-
 
 /**
  * This class provides an implementation for the primitive <code>\pdfoutline</code>.
@@ -85,8 +84,9 @@ public class Pdfoutline extends AbstractPdftexCode {
 
         PdftexSupport writer = ensurePdftex(context, typesetter);
 
-        ActionSpec action = ActionSpec.parseActionSpec(context, source,
-                typesetter, getName());
+        ActionSpec action =
+                ActionSpec.parseActionSpec(context, source, typesetter,
+                    getName());
         long count = 0;
         if (source.getKeyword(context, "count")) {
             count = Count.scanInteger(context, source, typesetter);

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -26,7 +26,6 @@ import org.extex.interpreter.type.count.Count;
 import org.extex.typesetter.Typesetter;
 import org.extex.unit.pdftex.exception.InterpreterPdftexIdentifierTypeException;
 
-
 /**
  * This is the abstract base class for ids.
  * An id can either be a number or a name.
@@ -41,6 +40,7 @@ public abstract class IdSpec {
      *
      * @param source the source for new tokens
      * @param context the interpreter context
+     * @param typesetter the typesetter
      * @param name the name of the current primitive
      *
      * @return the id instance
@@ -48,7 +48,7 @@ public abstract class IdSpec {
      * @throws InterpreterException in case of an parse error
      */
     public static IdSpec parseIdSpec(final Context context,
-            final TokenSource source, Typesetter typesetter, final String name)
+            final TokenSource source, final Typesetter typesetter, final String name)
             throws InterpreterException {
 
         if (source.getKeyword(context, "num")) {

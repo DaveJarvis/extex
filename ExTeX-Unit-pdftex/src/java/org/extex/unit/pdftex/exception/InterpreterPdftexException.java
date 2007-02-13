@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -20,7 +20,6 @@
 package org.extex.unit.pdftex.exception;
 
 import org.extex.interpreter.exception.InterpreterException;
-
 
 /**
  * This exception is raised when a <logo>pdfTeX</logo> primitive is used
@@ -56,6 +55,11 @@ public class InterpreterPdftexException extends InterpreterException {
     }
 
     /**
+     * Returns the detail message string of this throwable.
+     *
+     * @return  the detail message string of this <tt>Throwable</tt> instance
+     *          (which may be <tt>null</tt>).
+     *
      * @see java.lang.Throwable#getMessage()
      */
     public String getMessage() {
