@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -49,6 +49,88 @@ public class IgnorevoidTest extends AbstractCountRegisterTester {
         setConfig("extex-test");
     }
 
-    //TODO implement the primitive specific test cases
+    /**
+     * <testcase primitive="\ignorevoid">
+     *  Test case checking that <tt>\ignorevoid</tt> is 0 initially.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test1() throws Exception {
+
+        assertSuccess(
+        //--- input code ---
+            DEFINE_BRACES + "\\the\\ignorevoid" + " \\end",
+            //--- log message ---
+            "0" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\ignorevoid">
+     *  Test case checking that if <tt>\ignorevoid</tt> is 0 then an undefined
+     *  control sequence leads to an error.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test2() throws Exception {
+
+        assertFailure(
+        //--- input code ---
+            DEFINE_BRACES + "\\ignorevoid=0" + " \\undefined\\end",
+            //--- log message ---
+            "Undefined control sequence \\undefined");
+    }
+
+    /**
+     * <testcase primitive="\ignorevoid">
+     *  Test case checking that if <tt>\ignorevoid</tt> is 0 then an undefined
+     *  active character leads to an error.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test3() throws Exception {
+
+        assertFailure(
+        //--- input code ---
+            DEFINE_BRACES + "\\catcode`\\*=13 \\ignorevoid=0" + " *\\end",
+            //--- log message ---
+            "Undefined control sequence *");
+    }
+
+    /**
+     * <testcase primitive="\ignorevoid">
+     *  Test case checking that if <tt>\ignorevoid</tt> is not 0 then an
+     *  undefined control sequence is ignored.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test4() throws Exception {
+
+        assertSuccess(
+        //--- input code ---
+            DEFINE_BRACES + "\\ignorevoid=1" + " \\undefined\\end",
+            //--- log message ---
+            "");
+    }
+
+    /**
+     * <testcase primitive="\ignorevoid">
+     *  Test case checking that if <tt>\ignorevoid</tt> is not 0 then an
+     *  undefined control sequence is ignored.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test5() throws Exception {
+
+        assertSuccess(
+        //--- input code ---
+            DEFINE_BRACES + "\\catcode`\\*=13 \\ignorevoid=1" + " *\\end",
+            //--- log message ---
+            "");
+    }
 
 }
