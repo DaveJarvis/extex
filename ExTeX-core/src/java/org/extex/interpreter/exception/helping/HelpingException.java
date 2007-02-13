@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -21,7 +21,6 @@ package org.extex.interpreter.exception.helping;
 
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.util.framework.i18n.Localizer;
-
 
 /**
  * This class provides an Exception with the possibility to provide additional

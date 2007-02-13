@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -58,47 +58,77 @@ public class ImmutableDimen extends Dimen implements Serializable {
     }
 
     /**
+     * Add the value of the argument to the current value.
+     * This operation is not supported.
+     *
+     * @param d the Dimen to add
+     *
      * @see org.extex.interpreter.type.dimen.Dimen#add(
      *      org.extex.interpreter.type.dimen.FixedDimen)
      */
     public void add(final Dimen d) {
 
-        throw new RuntimeException("Unable to add to an immutable object");
+        throw new UnsupportedOperationException(
+            "Unable to add to an immutable object");
     }
 
     /**
+     * Divide the current value with a given number.
+     * This operation is not supported.
+     *
+     * @param denom denominator to divide by
+     *
      * @see org.extex.interpreter.type.dimen.Dimen#divide(long)
      */
     public void divide(final long denom) {
 
-        throw new RuntimeException("Unable to divide an immutable object");
+        throw new UnsupportedOperationException(
+            "Unable to add to an immutable object");
     }
 
     /**
+     * Sets the value of the dimen to the maximum of the value already stored
+     * and a given argument.
+     * This operation is not supported.
+     *
+     * @param d the other dimen
+     *
      * @see org.extex.interpreter.type.dimen.Dimen#max(
      *      org.extex.interpreter.type.dimen.FixedDimen)
      */
     public void max(final Dimen d) {
 
-        throw new RuntimeException("Unable to set an immutable object");
+        throw new UnsupportedOperationException(
+            "Unable to add to an immutable object");
     }
 
     /**
+     * Multiply the current value with a given number.
+     * This operation is not supported.
+     *
+     * @param factor the factor to multiply with
+     *
      * @see org.extex.interpreter.type.dimen.Dimen#multiply(long)
      */
     public void multiply(final long factor) {
 
-        throw new RuntimeException("Unable to multiply an immutable object");
+        throw new UnsupportedOperationException(
+            "Unable to add to an immutable object");
     }
 
     /**
+     * Subtract the value of the argument from the current value.
+     * This operation is not supported.
+     *
+     * @param d the Dimen to subtract
+     *
      * @see org.extex.interpreter.type.dimen.Dimen#subtract(
      *      org.extex.interpreter.type.dimen.FixedDimen)
      */
     public void subtract(final FixedDimen d) {
 
-        throw new RuntimeException(
-                "Unable to subtract from an immutable object");
+        throw new UnsupportedOperationException(
+            "Unable to add to an immutable object");
     }
 
 }

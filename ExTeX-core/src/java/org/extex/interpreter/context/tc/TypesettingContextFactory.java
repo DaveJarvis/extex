@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -30,9 +30,6 @@ import org.extex.util.framework.configuration.exception.ConfigurationClassNotFou
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.framework.configuration.exception.ConfigurationInstantiationException;
 import org.extex.util.framework.configuration.exception.ConfigurationMissingAttributeException;
-
-
-
 
 /**
  * This class provides a factory for a
@@ -97,7 +94,7 @@ public class TypesettingContextFactory extends AbstractFactory {
         String classname = configuration.getAttribute(CLASS_ATTRIBUTE);
         if (classname == null) {
             throw new ConfigurationMissingAttributeException(CLASS_ATTRIBUTE,
-                    configuration);
+                configuration);
         }
 
         try {
@@ -106,7 +103,7 @@ public class TypesettingContextFactory extends AbstractFactory {
             throw new ConfigurationInstantiationException(e);
         } catch (ClassNotFoundException e) {
             throw new ConfigurationClassNotFoundException(classname,
-                    configuration);
+                configuration);
         }
     }
 
@@ -282,7 +279,7 @@ public class TypesettingContextFactory extends AbstractFactory {
 
         if (languageManager != null) {
             return newInstance(tc, languageManager.getLanguage(tc.getLanguage()
-                    .getName()));
+                .getName()));
         }
         return tc;
     }

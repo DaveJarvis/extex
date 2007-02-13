@@ -101,11 +101,11 @@ import org.extex.util.framework.configuration.exception.ConfigurationException;
  *       |  <tt>alpha</tt> &lang;number&rang;
  *
  *    &lang;color&rang;
- *      &rarr; <tt>{</tt> &lang;color value&rang; &lang;color value&rang; &lang;color value&rang; <tt>}</tt> 
- *       |  <tt>rgb</tt> <tt>{</tt> &lang;color value&rang; &lang;color value&rang; &lang;color value&rang; <tt>}</tt> 
- *       |  <tt>gray</tt> <tt>{</tt> &lang;color value&rang; <tt>}</tt> 
- *       |  <tt>cmyk</tt> <tt>{</tt> &lang;color value&rang; &lang;color value&rang; &lang;color value&rang; &lang;color value&rang; <tt>}</tt> 
- *       |  <tt>hsv</tt> <tt>{</tt> &lang;color value&rang; &lang;color value&rang; &lang;color value&rang; <tt>}</tt> 
+ *      &rarr; <tt>{</tt> &lang;color value&rang; &lang;color value&rang; &lang;color value&rang; <tt>}</tt>
+ *       |  <tt>rgb</tt> <tt>{</tt> &lang;color value&rang; &lang;color value&rang; &lang;color value&rang; <tt>}</tt>
+ *       |  <tt>gray</tt> <tt>{</tt> &lang;color value&rang; <tt>}</tt>
+ *       |  <tt>cmyk</tt> <tt>{</tt> &lang;color value&rang; &lang;color value&rang; &lang;color value&rang; &lang;color value&rang; <tt>}</tt>
+ *       |  <tt>hsv</tt> <tt>{</tt> &lang;color value&rang; &lang;color value&rang; &lang;color value&rang; <tt>}</tt>
  *       |  &lang;color convertible&rang;
  *
  *    &lang;color value&rang;

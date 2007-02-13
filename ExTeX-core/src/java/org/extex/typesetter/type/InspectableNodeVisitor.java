@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -17,9 +17,7 @@
  *
  */
 
-// created: 2004-07-30
 package org.extex.typesetter.type;
-
 
 /**
  * This is an interface of a debugable NodeVisitor for inspecting
@@ -29,10 +27,11 @@ package org.extex.typesetter.type;
  * @version $Revision: 4399 $
  */
 public interface InspectableNodeVisitor extends NodeVisitor {
+
     /**
      * Set visitor for nested nodes.
      *
      * @param visitor to use
      */
-    void  setVisitor(NodeVisitor visitor);
+    void setVisitor(NodeVisitor visitor);
 }

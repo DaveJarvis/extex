@@ -49,6 +49,10 @@ public class ErrorLimitException extends InterpreterException {
     }
 
     /**
+     * Creates a localized description of this throwable.
+     *
+     * @return the localized description of this throwable
+     *
      * @see java.lang.Throwable#getLocalizedMessage()
      */
     public String getLocalizedMessage() {
@@ -58,6 +62,11 @@ public class ErrorLimitException extends InterpreterException {
     }
 
     /**
+     * Returns the detail message string of this throwable.
+     *
+     * @return  the detail message string of this <tt>Throwable</tt> instance
+     *          (which may be <tt>null</tt>).
+     *
      * @see java.lang.Throwable#getMessage()
      */
     public String getMessage() {

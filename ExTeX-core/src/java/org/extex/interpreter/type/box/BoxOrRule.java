@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,7 +19,6 @@
 
 package org.extex.interpreter.type.box;
 
-
 /**
  * This interface is a marker interface for Boxable or RuleConvertible.
  * It is needed for leaders.
@@ -28,6 +27,5 @@ package org.extex.interpreter.type.box;
  * @version $Revision$
  */
 public interface BoxOrRule {
-
 
 }

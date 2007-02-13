@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -72,6 +72,13 @@ public class ResourceFinderList implements ResourceFinder, RecursiveFinder {
     }
 
     /**
+     * Enable or disable the tracing. The argument indicates whether tracing
+     * should be enabled or disabled.
+     * The resource finder can decide on its own how to perform tracing. The
+     * preferred way is to write tracing records to a logger.
+     *
+     * @param flag indicator whether tracing should be turned on or off.
+     *
      * @see org.extex.util.resource.ResourceFinder#enableTracing(boolean)
      */
     public void enableTracing(final boolean flag) {
@@ -82,6 +89,16 @@ public class ResourceFinderList implements ResourceFinder, RecursiveFinder {
     }
 
     /**
+     * Find a resource which can be used for reading. If the search fails then
+     * <code>null</code> is returned.
+     *
+     * @param name the base name of the resource
+     * @param type the type, i.e. the extension
+     *
+     * @return the file or <code>null</code> if none could be found
+     *
+     * @throws ConfigurationException in case of an exception
+     *
      * @see org.extex.util.resource.ResourceFinder#findResource(java.lang.String,
      *      java.lang.String)
      */

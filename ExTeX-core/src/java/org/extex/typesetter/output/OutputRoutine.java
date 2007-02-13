@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -22,7 +22,6 @@ package org.extex.typesetter.output;
 import org.extex.backend.BackendDriver;
 import org.extex.typesetter.type.page.Page;
 import org.extex.util.exception.GeneralException;
-
 
 /**
  * This interface describes the functionality provided by an output routine.

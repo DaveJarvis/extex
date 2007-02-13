@@ -87,6 +87,10 @@ public class TokenStreamBaseImpl implements TokenStream {
     }
 
     /**
+     * Close this stream if it is a file stream.
+     *
+     * @return <code>true</code> if the closing was successful
+     *
      * @see org.extex.scanner.TokenStream#closeFileStream()
      */
     public boolean closeFileStream() {
@@ -96,6 +100,19 @@ public class TokenStreamBaseImpl implements TokenStream {
     }
 
     /**
+     * Get the next token from the token stream.
+     * If tokens are on the push-back stack then those are delivered otherwise
+     * new tokens might be extracted utilizing the token factory and the
+     * tokenizer.
+     *
+     * @param factory the token factory
+     * @param tokenizer the tokenizer
+     *
+     * @return the next Token or <code>null</code> if no more tokens are
+     * available
+     *
+     * @throws ScannerException in case of an error
+     *
      * @see org.extex.scanner.TokenStream#get(
      *      org.extex.scanner.type.token.TokenFactory,
      *      org.extex.interpreter.Tokenizer)
@@ -125,6 +142,13 @@ public class TokenStreamBaseImpl implements TokenStream {
     }
 
     /**
+     * Getter for the locator.
+     * The locator describes the place the tokens have been read from in terms
+     * of the user. This information is meant for the end user to track down
+     * problems.
+     *
+     * @return the locator
+     *
      * @see org.extex.scanner.TokenStream#getLocator()
      */
     public Locator getLocator() {
@@ -169,6 +193,10 @@ public class TokenStreamBaseImpl implements TokenStream {
     }
 
     /**
+     * Check whether the current stream is associated with a file to read from.
+     *
+     * @return <code>true</code> if the stream is a file stream
+     *
      * @see org.extex.scanner.TokenStream#isFileStream()
      */
     public boolean isFileStream() {
@@ -177,6 +205,18 @@ public class TokenStreamBaseImpl implements TokenStream {
     }
 
     /**
+     * Push back a token into the stream.
+     * If the token is <code>null</code> then nothing happens:
+     * a <code>null</code> token is not pushed!
+     * <p>
+     * Note that it is up to the implementation to accept tokens not produced
+     * with the token factory for push back. In general the behaviour in such a
+     * case is not defined and should be avoided.
+     * </p>
+     *
+     * @param token the token to push back
+     * @see "<logo>TeX</logo> &ndash; The Program [325]"
+     *
      * @see org.extex.scanner.TokenStream#put(
      *      org.extex.scanner.type.token.Token)
      */

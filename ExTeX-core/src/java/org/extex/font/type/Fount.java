@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -34,7 +34,8 @@ public interface Fount {
 
     /**
      * Returns the actual size.
-     * @return Returns the actual size.
+     *
+     * @return the actual size
      */
     FixedDimen getActualSize();
 
@@ -55,14 +56,14 @@ public interface Fount {
     /**
      * Return the em size of the font.
      *
-     * @return em-size
+     * @return em size
      */
     FixedDimen getEm();
 
     /**
      * Return the ex size of the font.
      *
-     * @return ex-size
+     * @return ex size
      */
     FixedDimen getEx();
 
@@ -79,14 +80,15 @@ public interface Fount {
     /**
      * Return font dimen size with a key.
      *
-     * @param key   the key
+     * @param key the key
      * @return the value for the key
      */
     FixedDimen getFontDimen(String key);
 
     /**
      * Returns the key for the font.
-     * @return Returns the key for the font.
+     *
+     * @return the key for the font
      */
     FountKey getFontKey();
 
@@ -99,6 +101,7 @@ public interface Fount {
 
     /**
      * Return the letter spacing
+     *
      * @return  the letter spacing
      */
     FixedGlue getLetterSpacing();

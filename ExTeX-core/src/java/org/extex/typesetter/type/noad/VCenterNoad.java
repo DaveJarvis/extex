@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -32,8 +32,6 @@ import org.extex.typesetter.type.noad.util.MathFontParameter;
 import org.extex.typesetter.type.node.HorizontalListNode;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-
-
 /**
  * This class represents a Noad with vertically centered material.
  *
@@ -56,6 +54,11 @@ public class VCenterNoad extends AbstractNucleusNoad {
     }
 
     /**
+     * Add some information in the middle of the default toString method.
+     *
+     * @param sb the target string buffer
+     * @param depth the recursion depth
+     *
      * @see "TTP [696]"
      * @see org.extex.typesetter.type.noad.AbstractNoad#toStringAdd(
      *      java.lang.StringBuffer,
@@ -67,6 +70,19 @@ public class VCenterNoad extends AbstractNucleusNoad {
     }
 
     /**
+     * Translate a Noad into a NodeList.
+     *
+     * @param previousNoad the previous noad
+     * @param noads the list of noads currently processed
+     * @param index the index of the current node in the list
+     * @param list the list to add the nodes to. This list contains the Nodes
+     *  previously typeset. Thus it can be used to look back
+     * @param mathContext the context to consider
+     * @param logger the logger for debugging and tracing information
+     *
+     * @throws TypesetterException in case of a problem
+     * @throws ConfigurationException in case of a configuration problem
+     *
      * @see "TTP [736]"
      * @see org.extex.typesetter.type.noad.Noad#typeset(
      *      org.extex.typesetter.type.noad.Noad,
@@ -88,8 +104,8 @@ public class VCenterNoad extends AbstractNucleusNoad {
 
         setSpacingClass(n.getSpacingClass());
         getSpacingClass().addClearance(
-                (previousNoad != null ? previousNoad.getSpacingClass() : null),
-                list, mathContext);
+            (previousNoad != null ? previousNoad.getSpacingClass() : null),
+            list, mathContext);
 
         Dimen d = new Dimen(hlist.getHeight());
         d.add(hlist.getDepth());

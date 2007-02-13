@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -84,6 +84,10 @@ public abstract class AbstractListMaker implements ListMaker {
     }
 
     /**
+     * Getter for the locator.
+     *
+     * @return the locator
+     *
      * @see org.extex.typesetter.ListMaker#getLocator()
      */
     public Locator getLocator() {
@@ -102,6 +106,11 @@ public abstract class AbstractListMaker implements ListMaker {
     }
 
     /**
+     * Getter for the current mode.
+     *
+     * @return the mode which is one of the values defined in
+     * {@link org.extex.typesetter.Mode Mode}.
+     *
      * @see org.extex.typesetter.ListMaker#getMode()
      */
     public abstract Mode getMode();
@@ -117,6 +126,12 @@ public abstract class AbstractListMaker implements ListMaker {
     }
 
     /**
+     * Getter for the previous depth parameter.
+     *
+     * @return the previous depth
+     *
+     * @throws TypesetterUnsupportedException in case of an error
+     *
      * @see org.extex.typesetter.ListMaker#getPrevDepth()
      */
     public FixedDimen getPrevDepth() throws TypesetterUnsupportedException {
@@ -140,6 +155,17 @@ public abstract class AbstractListMaker implements ListMaker {
     }
 
     /**
+     * Treat a math shift character.
+     * Usually this leads to entering or leaving math mode &ndash; maybe after
+     * inspection of a following token.
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param t the actual math shift character token
+     *
+     * @throws TypesetterException in case of an error
+     * @throws ConfigurationException in case of a configuration error
+     *
      * @see org.extex.typesetter.ListMaker#mathShift(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
@@ -173,6 +199,11 @@ public abstract class AbstractListMaker implements ListMaker {
     }
 
     /**
+     * Notification method to deal the case that a right brace has been
+     * encountered.
+     *
+     * @throws TypesetterException in case of an error
+     *
      * @see org.extex.typesetter.ListMaker#rightBrace()
      */
     public void rightBrace() throws TypesetterException {
@@ -180,6 +211,12 @@ public abstract class AbstractListMaker implements ListMaker {
     }
 
     /**
+     * Setter for the previous depth parameter.
+     *
+     * @param pd the previous depth parameter
+     *
+     * @throws TypesetterUnsupportedException in case of an error
+     *
      * @see org.extex.typesetter.ListMaker#setPrevDepth(
      *      org.extex.interpreter.type.dimen.FixedDimen)
      */
@@ -190,6 +227,13 @@ public abstract class AbstractListMaker implements ListMaker {
     }
 
     /**
+     * Setter for the space factor.
+     *
+     * @param sf the space factor to set
+     *
+     * @throws TypesetterUnsupportedException in case of an error
+     * @throws InvalidSpacefactorException in case of an invalid space factor
+     *
      * @see org.extex.typesetter.ListMaker#setSpacefactor(
      *      org.extex.interpreter.type.count.FixedCount)
      */
@@ -201,6 +245,15 @@ public abstract class AbstractListMaker implements ListMaker {
     }
 
     /**
+     * Treat a subscript mark. This might be meaningful in math mode only.
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter
+     * @param t the actual sub mark token
+     *
+     * @throws TypesetterException in case of an error
+     *
      * @see org.extex.typesetter.ListMaker#subscriptMark(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
@@ -216,6 +269,15 @@ public abstract class AbstractListMaker implements ListMaker {
     }
 
     /**
+     * Treat a superscript mark. This might be meaningful in math mode only.
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter
+     * @param t the actual super mark token
+     *
+     * @throws TypesetterException in case of an error
+     *
      * @see org.extex.typesetter.ListMaker#superscriptMark(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
@@ -246,6 +308,10 @@ public abstract class AbstractListMaker implements ListMaker {
     }
 
     /**
+     * Get the string representation of this object for debugging purposes.
+     *
+     * @return the string representation
+     *
      * @see java.lang.Object#toString()
      */
     public String toString() {

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -21,7 +21,6 @@ package org.extex.typesetter.type.node;
 
 import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.typesetter.Discardable;
-
 
 /**
  * This class represents an explicit kerning node for the typesetter.
@@ -64,6 +63,15 @@ public class ExplicitKernNode extends AbstractKernNode implements Discardable {
     }
 
     /**
+     * This method puts the printable representation into the string buffer.
+     * This is meant to produce a exhaustive form as it is used in tracing
+     * output to the log file.
+     *
+     * @param sb the output string buffer
+     * @param prefix the prefix string inserted at the beginning of each line
+     * @param breadth the breadth of the nodes to display
+     * @param depth the depth of the nodes to display
+     *
      * @see org.extex.typesetter.type.Node#toString(
      *      java.lang.StringBuffer,
      *      java.lang.String,
@@ -74,7 +82,7 @@ public class ExplicitKernNode extends AbstractKernNode implements Discardable {
             final int breadth, final int depth) {
 
         sb.append(getLocalizer().format("String.Format", //
-                getWidth().toString()));
+            getWidth().toString()));
     }
 
     /**

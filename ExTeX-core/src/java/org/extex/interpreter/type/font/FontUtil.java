@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -27,8 +27,6 @@ import org.extex.typesetter.TypesetterOptions;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
-
-
 /**
  * Font utility methods.
  *
@@ -48,8 +46,8 @@ public final class FontUtil {
      * The constant <tt>LOCALIZER</tt> contains the localizer for this utility
      * class.
      */
-    private static final Localizer LOCALIZER = LocalizerFactory
-            .getLocalizer(FontUtil.class);
+    private static final Localizer LOCALIZER =
+            LocalizerFactory.getLocalizer(FontUtil.class);
 
     /**
      * This method produces a log entry for lost characters if the count
@@ -87,7 +85,7 @@ public final class FontUtil {
 
         if (context.getCountOption("tracinglostchars").gt(Count.ZERO)) {
             logger.info(LOCALIZER.format("TTP.MissingChar", c.toString(), font
-                    .getFontName()));
+                .getFontName()));
         }
     }
 

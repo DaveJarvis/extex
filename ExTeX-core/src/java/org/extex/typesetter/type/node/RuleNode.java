@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -24,8 +24,6 @@ import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeVisitor;
 import org.extex.util.exception.GeneralException;
-
-
 
 /**
  * The rule node represents a rectangular area on the page filled with some
@@ -62,13 +60,13 @@ public class RuleNode extends AbstractNode implements Node {
      * @param depth the depth of the rule
      * @param theContext the typesetting context
      * @param horizontal the indicator that this is a
-     *  horizontal rule; otherwise it is a vertical rule
+     *   horizontal rule; otherwise it is a vertical rule
      *
      * @see "<logo>TeX</logo> &ndash; The Program [139]"
      */
     public RuleNode(final FixedDimen width, final FixedDimen height,
             final FixedDimen depth, final TypesettingContext theContext,
-            boolean horizontal) {
+            final boolean horizontal) {
 
         super(width, height, depth);
         this.context = theContext;
@@ -125,6 +123,13 @@ public class RuleNode extends AbstractNode implements Node {
     }
 
     /**
+     * This method puts the printable representation into the string buffer.
+     * This is meant to produce a short form only as it is used in error
+     * messages to the user.
+     *
+     * @param sb the output string buffer
+     * @param prefix the prefix string inserted at the beginning of each line
+     *
      * @see org.extex.typesetter.type.Node#toText(
      *      java.lang.StringBuffer,
      *      java.lang.String)
@@ -141,6 +146,15 @@ public class RuleNode extends AbstractNode implements Node {
     }
 
     /**
+     * This method provides an entry point for the visitor pattern.
+     *
+     * @param visitor the visitor to apply
+     * @param value the argument for the visitor
+     *
+     * @return the result of the method invocation of the visitor
+     *
+     * @throws GeneralException in case of an error
+     *
      * @see org.extex.typesetter.type.Node#visit(
      *      org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)

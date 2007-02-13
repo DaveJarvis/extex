@@ -121,6 +121,10 @@ public final class Registrar {
         }
 
         /**
+         * Get the string representation of this object for debugging purposes.
+         *
+         * @return the string representation
+         *
          * @see java.lang.Object#toString()
          */
         public String toString() {

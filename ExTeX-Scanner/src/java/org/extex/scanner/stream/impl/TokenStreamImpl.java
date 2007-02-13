@@ -48,7 +48,7 @@ import org.extex.util.framework.configuration.exception.ConfigurationSyntaxExcep
 /**
  * This class contains an implementation of a token stream which is fed from a
  * Reader.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision:4725 $
@@ -57,7 +57,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
 
     /**
      * This is a type-safe class to represent state information.
-     * 
+     *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision:4725 $
      */
@@ -71,7 +71,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
 
         /**
          * Creates a new object.
-         * 
+         *
          * @param name the print name of the state
          */
         public State(final String name) {
@@ -81,6 +81,10 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
         }
 
         /**
+         * Returns a string representation of the object.
+         *
+         * @return  a string representation of the object.
+         *
          * @see java.lang.Object#toString()
          */
         public String toString() {
@@ -176,7 +180,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
             TokenFactory tokenFactory = (TokenFactory) oFactory;
             Tokenizer tokenizer = (Tokenizer) oTokenizer;
             return tokenFactory.createToken(Catcode.ACTIVE, (UnicodeChar) uc,
-                                            tokenizer.getNamespace());
+                tokenizer.getNamespace());
         }
 
         /**
@@ -203,11 +207,14 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
             Token t = null;
 
             if (state == MID_LINE) {
-                t = factory.createToken(Catcode.SPACE, ' ', tokenizer
-                        .getNamespace());
+                t =
+                        factory.createToken(Catcode.SPACE, ' ', tokenizer
+                            .getNamespace());
             } else if (state == NEW_LINE) {
-                t = factory.createToken(Catcode.ESCAPE, (UnicodeChar) uchar,
-                                        "par", tokenizer.getNamespace());
+                t =
+                        factory.createToken(Catcode.ESCAPE,
+                            (UnicodeChar) uchar, "par", tokenizer
+                                .getNamespace());
             } else {
                 // drop the character
             }
@@ -231,14 +238,14 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
             if (atEndOfLine()) {
                 // empty control sequence; see "The TeXbook, Chapter 8, p. 47"
                 return factory.createToken(Catcode.ESCAPE, (UnicodeChar) uchar,
-                                           "", namespace);
+                    "", namespace);
             }
 
             UnicodeChar uc = getChar(tokenizer);
 
             if (uc == null) {
                 return factory.createToken(Catcode.ESCAPE, (UnicodeChar) uchar,
-                                           "", namespace);
+                    "", namespace);
 
             } else if (tokenizer.getCatcode(uc) == Catcode.LETTER) {
                 StringBuffer sb = new StringBuffer();
@@ -249,15 +256,13 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                     if (tokenizer.getCatcode(uc) != Catcode.LETTER) {
                         ungetChar(uc);
                         return factory.createToken(Catcode.ESCAPE,
-                                                   (UnicodeChar) uchar, sb
-                                                           .toString(),
-                                                   namespace);
+                            (UnicodeChar) uchar, sb.toString(), namespace);
                     }
                     sb.append((char) (uc.getCodePoint()));
                 }
 
                 return factory.createToken(Catcode.ESCAPE, (UnicodeChar) uchar,
-                                           sb.toString(), namespace);
+                    sb.toString(), namespace);
 
             } else {
                 state = MID_LINE;
@@ -301,9 +306,8 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
             Tokenizer tokenizer = (Tokenizer) oTokenizer;
             state = MID_LINE;
 
-            return ((TokenFactory) oFactory)
-                    .createToken(Catcode.LEFTBRACE, (UnicodeChar) uc, tokenizer
-                            .getNamespace());
+            return ((TokenFactory) oFactory).createToken(Catcode.LEFTBRACE,
+                (UnicodeChar) uc, tokenizer.getNamespace());
         }
 
         /**
@@ -317,9 +321,8 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
             Tokenizer tokenizer = (Tokenizer) oTokenizer;
             state = MID_LINE;
 
-            return ((TokenFactory) oFactory)
-                    .createToken(Catcode.LETTER, (UnicodeChar) uc, tokenizer
-                            .getNamespace());
+            return ((TokenFactory) oFactory).createToken(Catcode.LETTER,
+                (UnicodeChar) uc, tokenizer.getNamespace());
         }
 
         /**
@@ -333,9 +336,8 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
             Tokenizer tokenizer = (Tokenizer) oTokenizer;
             state = MID_LINE;
 
-            return ((TokenFactory) oFactory)
-                    .createToken(Catcode.MACROPARAM, (UnicodeChar) uc,
-                                 tokenizer.getNamespace());
+            return ((TokenFactory) oFactory).createToken(Catcode.MACROPARAM,
+                (UnicodeChar) uc, tokenizer.getNamespace());
         }
 
         /**
@@ -349,9 +351,8 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
             Tokenizer tokenizer = (Tokenizer) oTokenizer;
             state = MID_LINE;
 
-            return ((TokenFactory) oFactory)
-                    .createToken(Catcode.MATHSHIFT, (UnicodeChar) uc, tokenizer
-                            .getNamespace());
+            return ((TokenFactory) oFactory).createToken(Catcode.MATHSHIFT,
+                (UnicodeChar) uc, tokenizer.getNamespace());
         }
 
         /**
@@ -365,9 +366,8 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
             Tokenizer tokenizer = (Tokenizer) oTokenizer;
             state = MID_LINE;
 
-            return ((TokenFactory) oFactory)
-                    .createToken(Catcode.OTHER, (UnicodeChar) uc, tokenizer
-                            .getNamespace());
+            return ((TokenFactory) oFactory).createToken(Catcode.OTHER,
+                (UnicodeChar) uc, tokenizer.getNamespace());
         }
 
         /**
@@ -381,23 +381,22 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
             Tokenizer tokenizer = (Tokenizer) oTokenizer;
             state = MID_LINE;
 
-            return ((TokenFactory) oFactory)
-                    .createToken(Catcode.RIGHTBRACE, (UnicodeChar) uc,
-                                 tokenizer.getNamespace());
+            return ((TokenFactory) oFactory).createToken(Catcode.RIGHTBRACE,
+                (UnicodeChar) uc, tokenizer.getNamespace());
         }
 
         /**
          * This visit method is invoked on a space token.
-         * 
+         *
          * @param oFactory the first argument is the factory to use
          * @param oTokenizer the second argument is the tokenizer to use
          * @param uc the third argument is the UnicodeCharacer
-         * 
+         *
          * @return a space token if in mid line mode or <code>null</code>
          *         otherwise
-         * 
+         *
          * @throws CatcodeException in case of an error
-         * 
+         *
          * @see org.extex.scanner.type.CatcodeVisitor#visitSpace(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          * @see "The TeXbook [Chapter 8, page 47]"
@@ -411,7 +410,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
             if (state == MID_LINE) {
                 state = SKIP_BLANKS;
                 return factory.createToken(Catcode.SPACE, ' ',
-                                           Namespace.DEFAULT_NAMESPACE);
+                    Namespace.DEFAULT_NAMESPACE);
             }
 
             return null;
@@ -428,9 +427,8 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
             Tokenizer tokenizer = (Tokenizer) oTokenizer;
             state = MID_LINE;
 
-            return ((TokenFactory) oFactory)
-                    .createToken(Catcode.SUBMARK, (UnicodeChar) uc, tokenizer
-                            .getNamespace());
+            return ((TokenFactory) oFactory).createToken(Catcode.SUBMARK,
+                (UnicodeChar) uc, tokenizer.getNamespace());
         }
 
         /**
@@ -444,9 +442,8 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
             Tokenizer tokenizer = (Tokenizer) oTokenizer;
             state = MID_LINE;
 
-            return ((TokenFactory) oFactory)
-                    .createToken(Catcode.SUPMARK, (UnicodeChar) uc, tokenizer
-                            .getNamespace());
+            return ((TokenFactory) oFactory).createToken(Catcode.SUPMARK,
+                (UnicodeChar) uc, tokenizer.getNamespace());
         }
 
         /**
@@ -460,16 +457,15 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
             Tokenizer tokenizer = (Tokenizer) oTokenizer;
             state = MID_LINE;
 
-            return ((TokenFactory) oFactory)
-                    .createToken(Catcode.TABMARK, (UnicodeChar) uc, tokenizer
-                            .getNamespace());
+            return ((TokenFactory) oFactory).createToken(Catcode.TABMARK,
+                (UnicodeChar) uc, tokenizer.getNamespace());
         }
 
     };
 
     /**
      * Creates a new object.
-     * 
+     *
      * @param config the configuration object for this instance; This
      *            configuration is ignored in this implementation.
      * @param options ignored here
@@ -477,14 +473,15 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
      *            name
      * @param encoding the encoding to use
      * @param stream the input stream to read
-     * 
+     *
      * @throws ConfigurationException in case of an error in the configuration
      * @throws IOException in case of an IO error
      */
     public TokenStreamImpl(final Configuration config,
             final TokenStreamOptions options, final InputStream stream,
-            final String theSource, final String encoding) throws IOException,
-            ConfigurationException {
+            final String theSource, final String encoding)
+            throws IOException,
+                ConfigurationException {
 
         super(true);
 
@@ -495,7 +492,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                 bufferSize = Integer.parseInt(size);
             } catch (NumberFormatException e) {
                 throw new ConfigurationSyntaxException(e.getLocalizedMessage(),
-                        config.toString() + "#" + BUFFERSIZE_ATTRIBUTE);
+                    config.toString() + "#" + BUFFERSIZE_ATTRIBUTE);
             }
         }
 
@@ -507,21 +504,22 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
         }
 
         this.source = theSource;
-        this.in = new LineNumberReader(new InputStreamReader(inputStream,
-                encoding));
+        this.in =
+                new LineNumberReader(new InputStreamReader(inputStream,
+                    encoding));
 
     }
 
     /**
      * Creates a new object.
-     * 
+     *
      * @param config the configuration object for this instance; This
      *            configuration is ignored in this implementation.
      * @param options ignored here
      * @param reader the reader
      * @param isFile indicator for file streams
      * @param theSource the description of the input source
-     * 
+     *
      * @throws IOException in case of an IO error
      */
     public TokenStreamImpl(final Configuration config,
@@ -535,13 +533,13 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
 
     /**
      * Creates a new object.
-     * 
+     *
      * @param config the configuration object for this instance; This
      *            configuration is ignored in this implementation.
      * @param options ignored here
      * @param theLine the string to use as source for characters
      * @param theSource the description of the input source
-     * 
+     *
      * @throws IOException in case of an IO error
      */
     public TokenStreamImpl(final Configuration config,
@@ -555,7 +553,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
 
     /**
      * Checks whether the pointer is at the end of line.
-     * 
+     *
      * @return <code>true</code> iff the next reading operation would try to
      *         refill the line buffer
      */
@@ -579,7 +577,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
      * This operation might involve that an additional bunch of characters is
      * read in (with {@link #refill() refill()}).
      * </p>
-     * 
+     *
      * @param tokenizer the classifier for characters
      * @return the character or <code>null</code> if no more character is
      *         available
@@ -636,10 +634,9 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                     }
                 } else if (c != null) {
                     hexHigh = c.getCodePoint();
-                    uc = UnicodeChar
-                            .get(((hexHigh < CARET_LIMIT) ? hexHigh
-                                                            + CARET_LIMIT
-                                    : hexHigh - CARET_LIMIT));
+                    uc =
+                            UnicodeChar.get(((hexHigh < CARET_LIMIT) ? hexHigh
+                                    + CARET_LIMIT : hexHigh - CARET_LIMIT));
                 }
             } else {
                 pointer = savePointer;
@@ -655,7 +652,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
     public Locator getLocator() {
 
         return new Locator(source, (in == null ? 0 : in.getLineNumber()), line,
-                pointer - 1);
+            pointer - 1);
     }
 
     /**
@@ -675,8 +672,9 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
             }
 
             try {
-                t = (Token) tokenizer.getCatcode(uc).visit(visitor, factory,
-                                                           tokenizer, uc);
+                t =
+                        (Token) tokenizer.getCatcode(uc).visit(visitor,
+                            factory, tokenizer, uc);
             } catch (Exception e) {
                 throw new ScannerException(e);
             }
@@ -687,7 +685,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
 
     /**
      * Get the next character from the input line.
-     * 
+     *
      * @return the next raw character or <code>null</code> if none is
      *         available.
      */
@@ -707,9 +705,9 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
     /**
      * Analyze a character and return its hex value, i.e. '0' to '9' are mapped
      * to 0 to 9 and 'a' to 'f' (case sensitive) are mapped to 10 to 15.
-     * 
+     *
      * @param c the character code to analyze
-     * 
+     *
      * @return the integer value of a hex digit or -1 if no hex digit is given
      */
     protected int hex2int(final int c) {
@@ -755,9 +753,9 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
 
     /**
      * Get the next line from the input reader to be processed.
-     * 
+     *
      * @return <code>true</code> iff the next line could be acquired.
-     * 
+     *
      * @throws ScannerException in case of some kind of IO error
      */
     protected boolean refill() throws ScannerException {
@@ -788,7 +786,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
 
     /**
      * Save the look-ahead character.
-     * 
+     *
      * @param uc the character to save
      */
     private void ungetChar(final UnicodeChar uc) {

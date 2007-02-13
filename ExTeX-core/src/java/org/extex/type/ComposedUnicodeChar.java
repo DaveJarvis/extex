@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,11 +19,10 @@
 
 package org.extex.type;
 
-
 /**
  * This class provides a Unicode character with some combing characters attached
  * to it.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -44,7 +43,7 @@ public class ComposedUnicodeChar extends UnicodeChar {
     /**
      * Creates a new object from an integer code point and some combining
      * characters.
-     * 
+     *
      * @param codePoint the 32-bit code point
      * @param combining the array of code points for the combining characters
      */
@@ -60,16 +59,6 @@ public class ComposedUnicodeChar extends UnicodeChar {
     }
 
     /**
-     * Getter for combining character's code points.
-     * 
-     * @return the combining character's code points
-     */
-    protected int[] getCombiningCodePoints() {
-
-        return this.combiningCodePoints;
-    }
-
-    /**
      * Compares a <code>UnicodeChar</code> character with the value of this
      * object. They are considered equal if the are both
      * {@link ComposedUnicodeChar ComposedUnicodeChar}s and have the same
@@ -78,16 +67,16 @@ public class ComposedUnicodeChar extends UnicodeChar {
      * The general signature for comparison to an arbitrary object is required
      * for the implementation of {@link java.util.HashMap HashMap} and friends.
      * </p>
-     * 
+     *
      * @param unicodeChar the character to compare
-     * 
+     *
      * @return <code>true</code> if the characters are equal, otherwise
      *         <code>false</code>
      */
     public boolean equals(final Object unicodeChar) {
 
         if (!(unicodeChar instanceof ComposedUnicodeChar)
-            || this.getCodePoint() != ((UnicodeChar) unicodeChar)
+                || this.getCodePoint() != ((UnicodeChar) unicodeChar)
                     .getCodePoint()) {
             return false;
         }
@@ -103,4 +92,27 @@ public class ComposedUnicodeChar extends UnicodeChar {
         }
         return true;
     }
+
+    /**
+     * Getter for combining character's code points.
+     *
+     * @return the combining character's code points
+     */
+    protected int[] getCombiningCodePoints() {
+
+        return this.combiningCodePoints;
+    }
+
+    /**
+     * Getter for the hash code.
+     *
+     * @return the hash code
+     *
+     * @see org.extex.type.UnicodeChar#hashCode()
+     */
+    public int hashCode() {
+
+        return getCodePoint();
+    }
+
 }

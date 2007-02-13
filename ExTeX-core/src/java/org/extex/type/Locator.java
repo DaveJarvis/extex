@@ -142,7 +142,7 @@ public class Locator implements Serializable {
      *
      * @param cause the cause to set
      */
-    public final void setCause(Locator cause) {
+    public final void setCause(final Locator cause) {
 
         this.cause = cause;
     }
@@ -153,6 +153,8 @@ public class Locator implements Serializable {
      * This is the Unix style of presenting a file position.
      * If the file name is null then it is treated as if it where the empty
      * string.
+     *
+     * @return the printable representation
      *
      * @see java.lang.Object#toString()
      */

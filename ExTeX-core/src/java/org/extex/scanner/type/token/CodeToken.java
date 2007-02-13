@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -21,7 +21,7 @@ package org.extex.scanner.type.token;
 
 /**
  * The code token extends the {@link org.extex.scanner.type.token.Token Token}
- * with the ability to retrieve a namespace.
+ * with the ability to retrieve a name space.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4738 $
@@ -29,18 +29,18 @@ package org.extex.scanner.type.token;
 public interface CodeToken extends Token {
 
     /**
-     * Create a new instance of the token where the namespace is the default
-     * namespace and the other attributes are the same as for the current token.
+     * Create a new instance of the token where the name space is the default
+     * name space and the other attributes are the same as for the current token.
      *
      * @return the new token
      */
     CodeToken cloneInDefaultNamespace();
 
     /**
-     * Create a new instance of the token where the namespace is the given one
+     * Create a new instance of the token where the name space is the given one
      * and the other attributes are the same as for the current token.
      *
-     * @param namespace the namespace to use
+     * @param namespace the name space to use
      *
      * @return the new token
      */
@@ -56,9 +56,9 @@ public interface CodeToken extends Token {
     String getName();
 
     /**
-     * Getter for the namespace.
+     * Getter for the name space.
      *
-     * @return the namespace
+     * @return the name space
      */
     String getNamespace();
 

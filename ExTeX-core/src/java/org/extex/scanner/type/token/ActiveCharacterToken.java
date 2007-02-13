@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -22,8 +22,6 @@ package org.extex.scanner.type.token;
 import org.extex.interpreter.Namespace;
 import org.extex.scanner.type.Catcode;
 import org.extex.type.UnicodeChar;
-
-
 
 /**
  * This class represents an active character token.
@@ -70,6 +68,11 @@ public class ActiveCharacterToken extends AbstractToken implements CodeToken {
     }
 
     /**
+     * Create a new instance of the token where the name space is the default
+     * name space and the other attributes are the same as for the current token.
+     *
+     * @return the new token
+     *
      * @see org.extex.scanner.type.token.CodeToken#cloneInDefaultNamespace()
      */
     public CodeToken cloneInDefaultNamespace() {
@@ -81,9 +84,9 @@ public class ActiveCharacterToken extends AbstractToken implements CodeToken {
     }
 
     /**
-     * Create a new instance of the token where the namespace is the given one.
+     * Create a new instance of the token where the name space is the given one.
      *
-     * @param theNamespace the namespace to use
+     * @param theNamespace the name space to use
      *
      * @return the new token
      *
@@ -99,6 +102,12 @@ public class ActiveCharacterToken extends AbstractToken implements CodeToken {
     }
 
     /**
+     * Indicates whether some other object is "equal to" this one.
+     *
+     * @param   other   the reference object with which to compare.
+     * @return  <code>true</code> if this object is the same as the obj
+     *          argument; <code>false</code> otherwise.
+     *
      * @see java.lang.Object#equals(java.lang.Object)
      */
     public boolean equals(final Object other) {
@@ -111,6 +120,10 @@ public class ActiveCharacterToken extends AbstractToken implements CodeToken {
     }
 
     /**
+     * Getter for the catcode.
+     *
+     * @return the catcode
+     *
      * @see org.extex.scanner.type.token.Token#getCatcode()
      */
     public Catcode getCatcode() {
@@ -119,6 +132,12 @@ public class ActiveCharacterToken extends AbstractToken implements CodeToken {
     }
 
     /**
+     * Getter for the name.
+     * The name is the string representation without the escape character
+     * in front.
+     *
+     * @return the name of the token
+     *
      * @see org.extex.scanner.type.token.CodeToken#getName()
      */
     public String getName() {
@@ -127,6 +146,10 @@ public class ActiveCharacterToken extends AbstractToken implements CodeToken {
     }
 
     /**
+     * Getter for the name space.
+     *
+     * @return the name space
+     *
      * @see org.extex.scanner.type.token.CodeToken#getNamespace()
      */
     public String getNamespace() {
@@ -135,6 +158,10 @@ public class ActiveCharacterToken extends AbstractToken implements CodeToken {
     }
 
     /**
+     * Returns a hash code value for the object.
+     *
+     * @return  a hash code value for this object
+     *
      * @see java.lang.Object#hashCode()
      */
     public int hashCode() {
@@ -150,7 +177,7 @@ public class ActiveCharacterToken extends AbstractToken implements CodeToken {
     public String toString() {
 
         return getLocalizer().format("ActiveCharacterToken.Text",
-                super.toString());
+            super.toString());
     }
 
     /**
@@ -163,10 +190,18 @@ public class ActiveCharacterToken extends AbstractToken implements CodeToken {
     public void toString(final StringBuffer sb) {
 
         sb.append(getLocalizer().format("ActiveCharacterToken.Text", //
-                super.toString()));
+            super.toString()));
     }
 
     /**
+     * Invoke the appropriate visit method for the current class.
+     * @param visitor the calling visitor
+     * @param arg1 the first argument to pass
+     *
+     * @return the result object
+     *
+     * @throws Exception in case of an error
+     *
      * @see org.extex.scanner.type.token.Token#visit(
      *      org.extex.scanner.type.token.TokenVisitor,
      *      java.lang.Object)

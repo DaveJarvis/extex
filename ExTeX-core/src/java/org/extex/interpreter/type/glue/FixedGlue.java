@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -23,7 +23,6 @@ import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.type.token.TokenFactory;
 import org.extex.util.exception.GeneralException;
-
 
 /**
  * This interface describes the features of a
@@ -50,8 +49,9 @@ public interface FixedGlue {
     /**
      * The constant <tt>SS</tt> contains the glue to insert for this primitive.
      */
-    FixedGlue S_S = new Glue(GlueComponent.ZERO, GlueComponent.ONE_FIL,
-            GlueComponent.ONE_FIL);
+    FixedGlue S_S =
+            new Glue(GlueComponent.ZERO, GlueComponent.ONE_FIL,
+                GlueComponent.ONE_FIL);
 
     /**
      * Make a copy of this object.

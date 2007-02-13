@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -21,7 +21,6 @@ package org.extex.scanner.type.token;
 
 import org.extex.scanner.type.Catcode;
 import org.extex.type.UnicodeChar;
-
 
 /**
  * This class represents a letter token.
@@ -52,6 +51,10 @@ public class LetterToken extends AbstractToken implements Token {
     }
 
     /**
+     * Getter for the catcode.
+     *
+     * @return the catcode
+     *
      * @see org.extex.scanner.type.token.Token#getCatcode()
      */
     public Catcode getCatcode() {
@@ -84,6 +87,14 @@ public class LetterToken extends AbstractToken implements Token {
     }
 
     /**
+     * Invoke the appropriate visit method for the current class.
+     * @param visitor the calling visitor
+     * @param arg1 the first argument to pass
+     *
+     * @return the result object
+     *
+     * @throws Exception in case of an error
+     *
      * @see org.extex.scanner.type.token.Token#visit(
      *      org.extex.scanner.type.token.TokenVisitor,
      *      java.lang.Object)

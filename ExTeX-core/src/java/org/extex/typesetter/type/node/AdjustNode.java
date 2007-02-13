@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -23,8 +23,6 @@ import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.NodeVisitor;
 import org.extex.util.exception.GeneralException;
-
-
 
 /**
  * The adjust node is used to insert material which should be pushed out the
@@ -90,11 +88,18 @@ public class AdjustNode extends AbstractNode implements Node {
             final int breadth, final int depth) {
 
         sb.append(getLocalizer().format("String.Format", //
-                getWidth().toString()));
+            getWidth().toString()));
         nodes.toString(sb, prefix, Integer.MAX_VALUE, Integer.MAX_VALUE);
     }
 
     /**
+     * This method puts the printable representation into the string buffer.
+     * This is meant to produce a short form only as it is used in error
+     * messages to the user.
+     *
+     * @param sb the output string buffer
+     * @param prefix the prefix string inserted at the beginning of each line
+     *
      * @see org.extex.typesetter.type.Node#toText(java.lang.StringBuffer,
      *      java.lang.String)
      */
@@ -104,6 +109,15 @@ public class AdjustNode extends AbstractNode implements Node {
     }
 
     /**
+     * This method provides an entry point for the visitor pattern.
+     *
+     * @param visitor the visitor to apply
+     * @param value the argument for the visitor
+     *
+     * @return the result of the method invocation of the visitor
+     *
+     * @throws GeneralException in case of an error
+     *
      * @see org.extex.typesetter.type.Node#visit(
      *      org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)

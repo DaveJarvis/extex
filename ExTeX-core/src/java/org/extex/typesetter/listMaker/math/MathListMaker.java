@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -77,12 +77,10 @@ import org.extex.typesetter.type.node.GlueNode;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.framework.logger.LogEnabled;
 
-
-
 /**
  * This is the list maker for the inline math formulae.
- * 
- * 
+ *
+ *
  * <doc name="mathsurround" type="register">
  * <h3>The Dimen Parameter <tt>\mathsurround</tt></h3>
  * <p>
@@ -91,9 +89,9 @@ import org.extex.util.framework.logger.LogEnabled;
  * before and after the formula. This additional space will be discarded at the
  * end of a line.
  * </p>
- * 
+ *
  * </doc>
- * 
+ *
  * <doc name="everymath" type="register">
  * <h3>The Tokens Parameter <tt>\everymath</tt></h3>
  * <p>
@@ -101,10 +99,10 @@ import org.extex.util.framework.logger.LogEnabled;
  * inserted at the beginning of inline math. Those tokens take effect after the
  * math mode has been entered but before any tokens given explicitly.
  * </p>
- * 
+ *
  * <h4>Syntax</h4>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *     &amp;langeverymath&amp;rang
  *       &amp;rarr
@@ -117,15 +115,15 @@ import org.extex.util.framework.logger.LogEnabled;
  *         org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
  *         &amp;langtokens&amp;rang}
  * </pre>
- * 
+ *
  * <h4>Examples</h4>
- * 
+ *
  * <pre class="TeXSample">
  *     \everymath={\,}
  * </pre>
- * 
+ *
  * </doc>
- * 
+ *
  * <doc name="everymathend" type="register">
  * <h3>The Tokens Parameter <tt>\everymathend</tt></h3>
  * <p>
@@ -133,10 +131,10 @@ import org.extex.util.framework.logger.LogEnabled;
  * is inserted at the end of inline math. Those tokens take effect just before
  * the math mode is ended but after any tokens given explicitly.
  * </p>
- * 
+ *
  * <h4>Syntax</h4>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *     &amp;langeverymathend&amp;rang
  *       &amp;rarr
@@ -149,26 +147,28 @@ import org.extex.util.framework.logger.LogEnabled;
  *         org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
  *         &amp;langtokens&amp;rang}
  * </pre>
- * 
+ *
  * <h4>Examples</h4>
- * 
+ *
  * <pre class="TeXSample">
  *     \everymathend={\,}
  * </pre>
- * 
+ *
  * </doc>
- * 
- * 
+ *
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4496 $
  */
-public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
-        LogEnabled {
+public class MathListMaker extends HorizontalListMaker
+        implements
+            NoadConsumer,
+            LogEnabled {
 
     /**
      * This inner class is a memento of the state of the math list maker. It is
      * used to store to the stack and restore the state from the stack.
-     * 
+     *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision:4496 $
      */
@@ -199,7 +199,7 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
 
         /**
          * Creates a new object.
-         * 
+         *
          * @param ip the insertion point to be saved in this memento
          * @param noads the noads to be saved in this memento
          * @param block indicator to distinguish blocks from \left-\right
@@ -216,8 +216,18 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
         }
 
         /**
+         * Getter for delimiter.
+         *
+         * @return the delimiter
+         */
+        public MathDelimiter getDelimiter() {
+
+            return delimiter;
+        }
+
+        /**
          * Getter for the insertion point.
-         * 
+         *
          * @return the insertion point
          */
         public MathList getInsertionPoint() {
@@ -227,7 +237,7 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
 
         /**
          * Getter for noads.
-         * 
+         *
          * @return the noads
          */
         public Noad getNoads() {
@@ -237,7 +247,7 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
 
         /**
          * Getter for block indicator.
-         * 
+         *
          * @return the block
          */
         protected boolean isBlock() {
@@ -254,31 +264,33 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
     /**
      * This method checks that extension fonts have sufficient font dimen values
      * set.
-     * 
+     *
      * @param options the options
-     * 
+     *
      * @return <code>true</code> iff the needed font dimens are not present
-     * 
+     *
      * @see "[TTP 1195]"
      */
     protected static boolean insufficientExtensionFonts(
             final TypesetterOptions options) {
 
-        Font textfont3 = options
-                .getFont(MathFontParameter.key(options, "textfont", "3"));
+        Font textfont3 =
+                options
+                    .getFont(MathFontParameter.key(options, "textfont", "3"));
         if (textfont3.getFontDimen("8") == null) {
             return true;
         }
 
-        Font scriptfont3 = options.getFont(MathFontParameter.key(options,
-                                                                 "scriptfont",
-                                                                 "3"));
+        Font scriptfont3 =
+                options.getFont(MathFontParameter.key(options, "scriptfont",
+                    "3"));
         if (scriptfont3.getFontDimen("8") == null) {
             return true;
         }
 
-        Font scriptscriptfont3 = options.getFont(MathFontParameter
-                .key(options, "scriptscriptfont", "3"));
+        Font scriptscriptfont3 =
+                options.getFont(MathFontParameter.key(options,
+                    "scriptscriptfont", "3"));
         if (scriptscriptfont3.getFontDimen("8") == null) {
             return true;
         }
@@ -289,30 +301,32 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
      * This method checks that symbol fonts have sufficient font dimen values
      * set. In fact only the fonts itself are checked. the font dimens are
      * checked when needed.
-     * 
+     *
      * @param options the options
-     * 
+     *
      * @return <code>true</code> iff the symbol fonts have the needed font
      *         dimens
-     * 
+     *
      * @see "[TTP 1195]"
      */
     protected static boolean insufficientSymbolFonts(
             final TypesetterOptions options) {
 
-        Font textfont2 = options
-                .getFont(MathFontParameter.key(options, "textfont", "2"));
+        Font textfont2 =
+                options
+                    .getFont(MathFontParameter.key(options, "textfont", "2"));
         if (textfont2.getFontDimen("8") == null) {
             return true;
         }
-        Font scriptfont2 = options.getFont(MathFontParameter.key(options,
-                                                                 "scriptfont",
-                                                                 "2"));
+        Font scriptfont2 =
+                options.getFont(MathFontParameter.key(options, "scriptfont",
+                    "2"));
         if (scriptfont2.getFontDimen("8") == null) {
             return true;
         }
-        Font scriptscriptfont2 = options.getFont(MathFontParameter
-                .key(options, "scriptscriptfont", "2"));
+        Font scriptscriptfont2 =
+                options.getFont(MathFontParameter.key(options,
+                    "scriptscriptfont", "2"));
         if (scriptscriptfont2.getFontDimen("8") == null) {
             return true;
         }
@@ -349,7 +363,7 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
 
     /**
      * Creates a new object.
-     * 
+     *
      * @param manager the manager to ask for global changes
      * @param locator the locator
      */
@@ -390,7 +404,7 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
 
         MathGlyph smallChar = delimiter.getSmallChar(); // TODO: gene why???
         insertionPoint.add(NOAD_FACTORY.getNoad(delimiter.getMathClass(),
-                                                smallChar, tc));
+            smallChar, tc));
     }
 
     /**
@@ -424,15 +438,16 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
      * @see org.extex.typesetter.ListMaker#add(
      *      org.extex.typesetter.type.Node)
      */
-    public void add(final Node node) throws TypesetterException,
-            ConfigurationException {
+    public void add(final Node node)
+            throws TypesetterException,
+                ConfigurationException {
 
         if (node instanceof DiscretionaryNode) {
             NodeList postBreak = ((DiscretionaryNode) node).getPostBreak();
             if (postBreak != null && postBreak.size() != 0) {
-                throw new TypesetterException(new HelpingException(
-                        getLocalizer(), "TTP.IllegalMathDisc", postBreak
-                                .toString()));
+                throw new TypesetterException(
+                    new HelpingException(getLocalizer(), "TTP.IllegalMathDisc",
+                        postBreak.toString()));
             }
         }
 
@@ -441,58 +456,60 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
 
     /**
      * Spaces are ignored in math mode. Thus this method is a noop.
-     * 
+     *
      * @param typesettingContext the typesetting context for the space
      * @param spacefactor the space factor to use for this space or
      *            <code>null</code> to indicate that the default space factor
      *            should be used.
-     * 
+     *
      * @throws TypesetterException in case of an error
      * @throws ConfigurationException in case of a configuration error
-     * 
+     *
      * @see org.extex.typesetter.ListMaker#addSpace(
      *      org.extex.interpreter.context.tc.TypesettingContext,
      *      org.extex.interpreter.type.count.Count)
      */
     public void addSpace(final TypesettingContext typesettingContext,
-            final Count spacefactor) throws TypesetterException,
-            ConfigurationException {
+            final Count spacefactor)
+            throws TypesetterException,
+                ConfigurationException {
 
     }
 
     /**
      * Close the node list. In the course of the closing, the Noad list is
      * translated into a Node list.
-     * 
+     *
      * @param context the fragment of the context accessible for the typesetter
-     * 
+     *
      * @return the node list enclosed in this instance
-     * 
+     *
      * @throws TypesetterException in case of an error
      * @throws ConfigurationException in case of a configuration error
-     * 
+     *
      * @see org.extex.typesetter.ListMaker#complete(TypesetterOptions)
      * @see "<logo>TeX</logo> &ndash; The Program [719]"
      */
     public NodeList complete(final TypesetterOptions context)
-            throws TypesetterException, ConfigurationException {
+            throws TypesetterException,
+                ConfigurationException {
 
         if (!stack.empty()) {
             MathMemento mm = (MathMemento) stack.pop();
             throw new TypesetterException(new HelpingException(getLocalizer(),
-                    "TTP.MissingInserted", //
-                    (mm.isBlock() ? "}" : "\\right.")));
+                "TTP.MissingInserted", //
+                (mm.isBlock() ? "}" : "\\right.")));
         }
 
         // see [TTP 1195]
         if (insufficientSymbolFonts(context)) {
             throw new TypesetterException(new HelpingException(getLocalizer(),
-                    "TTP.InsufficientSymbolFonts"));
+                "TTP.InsufficientSymbolFonts"));
         }
         // see [TTP 1195]
         if (insufficientExtensionFonts(context)) {
             throw new TypesetterException(new HelpingException(getLocalizer(),
-                    "TTP.InsufficientExtensionFonts"));
+                "TTP.InsufficientExtensionFonts"));
         }
 
         GenericNodeList list = new GenericNodeList();
@@ -500,7 +517,7 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
         // see [TTP 1196]
         list.add(new BeforeMathNode(mathsurround));
         noads.typeset(null, null, 0, list, new MathContext(StyleNoad.TEXTSTYLE,
-                context), logger);
+            context), logger);
         // see [TTP 1196]
         list.add(new AfterMathNode(mathsurround));
         // see [TTP 1196]
@@ -534,18 +551,18 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
      * does not contain an element then <code>null</code> is returned. If it
      * contains only one element then this element is returned. Otherwise the
      * complete list is returned.
-     * 
+     *
      * @return the contents of the insertion point
      */
     protected Noad getInsertionPoint() {
 
         switch (insertionPoint.size()) {
-        case 0:
-            return null;
-        case 1:
-            return insertionPoint.get(0);
-        default:
-            return insertionPoint;
+            case 0:
+                return null;
+            case 1:
+                return insertionPoint.get(0);
+            default:
+                return insertionPoint;
         }
     }
 
@@ -567,7 +584,7 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
 
     /**
      * Getter for logger.
-     * 
+     *
      * @return the logger
      */
     public Logger getLogger() {
@@ -585,7 +602,7 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
 
     /**
      * Getter for Noads.
-     * 
+     *
      * @return the Noads.
      */
     protected Noad getNoads() {
@@ -595,7 +612,7 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
 
     /**
      * Getter for closing.
-     * 
+     *
      * @return the closing
      */
     protected boolean isClosing() {
@@ -617,7 +634,7 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
     /**
      * Notification method to deal the case that a left brace has been
      * encountered.
-     * 
+     *
      * @see org.extex.typesetter.ListMaker#leftBrace()
      */
     public void leftBrace() {
@@ -647,10 +664,10 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
 
         } else {
             try {
-                ActiveCharacterToken t = (ActiveCharacterToken) context
-                        .getTokenFactory()
-                        .createToken(Catcode.ACTIVE, symbol,
-                                     Namespace.DEFAULT_NAMESPACE);
+                ActiveCharacterToken t =
+                        (ActiveCharacterToken) context.getTokenFactory()
+                            .createToken(Catcode.ACTIVE, symbol,
+                                Namespace.DEFAULT_NAMESPACE);
                 source.push(t);
 
             } catch (CatcodeException e) {
@@ -696,12 +713,12 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
 
         if (stack.empty()) {
             throw new TypesetterHelpingException(getLocalizer(),
-                    "TTP.ExtraOrForgotten", "$");
+                "TTP.ExtraOrForgotten", "$");
         }
         MathMemento memento = (MathMemento) stack.peek();
         if (memento.isBlock()) {
             throw new TypesetterHelpingException(getLocalizer(),
-                    "TTP.ExtraOrForgotten", "\\right.");
+                "TTP.ExtraOrForgotten", "\\right.");
         }
 
         insertionPoint = new MathList();
@@ -711,10 +728,10 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
     /**
      * Emitting a new paragraph is not supported in math mode. Thus an exception
      * is thrown.
-     * 
+     *
      * @throws TypesetterException in case of an error
      * @throws ConfigurationException in case of an configuration error
-     * 
+     *
      * @see org.extex.typesetter.ListMaker#par()
      * @see "<logo>TeX</logo> &ndash; The Program [1047]"
      */
@@ -740,12 +757,12 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
 
         if (stack.empty()) {
             throw new TypesetterHelpingException(getLocalizer(),
-                    "TTP.ExtraOrForgotten", "$");
+                "TTP.ExtraOrForgotten", "$");
         }
         MathMemento memento = (MathMemento) stack.pop();
         if (memento.isBlock()) {
             throw new TypesetterHelpingException(getLocalizer(),
-                    "TTP.ExtraRigt", "\\right.");
+                "TTP.ExtraRigt", "\\right.");
         }
 
         LeftNoad n = (LeftNoad) noads;
@@ -761,12 +778,12 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
 
         if (stack.empty()) {
             throw new TypesetterHelpingException(getLocalizer(),
-                    "TTP.ExtraOrForgotten", "$");
+                "TTP.ExtraOrForgotten", "$");
         }
         MathMemento memento = (MathMemento) stack.pop();
         if (!memento.isBlock()) {
             throw new TypesetterHelpingException(getLocalizer(),
-                    "TTP.ExtraOrForgotten", "\\right.");
+                "TTP.ExtraOrForgotten", "\\right.");
         }
         Noad n = noads;
         insertionPoint = memento.getInsertionPoint();
@@ -820,7 +837,7 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
 
     /**
      * Setter for closing.
-     * 
+     *
      * @param closing the closing to set
      */
     protected void setClosing(final boolean closing) {
@@ -830,7 +847,7 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
 
     /**
      * Setter for insertionPoint.
-     * 
+     *
      * @param insertionPoint the insertionPoint to set
      */
     protected void setInsertionPoint(final MathList insertionPoint) {
@@ -856,14 +873,15 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
             final Typesetter typesetter, final Token token)
             throws TypesetterException {
 
-        Noad sub = scanNoad(null, context, source, typesetter, token.toString());
+        Noad sub =
+                scanNoad(null, context, source, typesetter, token.toString());
         if (insertionPoint.size() == 0) {
             add(new MathList());
         }
         Noad noad = insertionPoint.get(insertionPoint.size() - 1);
         if (noad.getSubscript() != null) {
             throw new TypesetterException(new HelpingException(getLocalizer(),
-                    "TTP.DoubleSubscript"));
+                "TTP.DoubleSubscript"));
         }
 
         noad.setSubscript(sub);
@@ -879,14 +897,15 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
             final TokenSource source, final Typesetter typesetter,
             final Token token) throws TypesetterException {
 
-        Noad sup = scanNoad(null, context, source, typesetter, token.toString());
+        Noad sup =
+                scanNoad(null, context, source, typesetter, token.toString());
         if (insertionPoint.size() == 0) {
             add(new MathList());
         }
         Noad noad = insertionPoint.get(insertionPoint.size() - 1);
         if (noad.getSuperscript() != null) {
             throw new TypesetterException(new HelpingException(getLocalizer(),
-                    "TTP.DoubleSuperscript"));
+                "TTP.DoubleSuperscript"));
         }
 
         noad.setSuperscript(sup);
@@ -906,11 +925,12 @@ public class MathListMaker extends HorizontalListMaker implements NoadConsumer,
         // see [TTP 1183]
         if (!(noads instanceof MathList)) {
             throw new TypesetterException(new HelpingException(getLocalizer(),
-                    "TTP.AmbiguousFraction"));
+                "TTP.AmbiguousFraction"));
         }
         insertionPoint = new MathList();
-        noads = new FractionNoad((MathList) noads, insertionPoint,
-                leftDelimiter, rightDelimiter, ruleWidth, tc);
+        noads =
+                new FractionNoad((MathList) noads, insertionPoint,
+                    leftDelimiter, rightDelimiter, ruleWidth, tc);
     }
 
 }

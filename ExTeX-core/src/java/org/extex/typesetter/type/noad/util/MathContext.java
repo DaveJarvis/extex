@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -31,7 +31,6 @@ import org.extex.typesetter.TypesetterOptions;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.noad.StyleNoad;
 import org.extex.util.framework.i18n.LocalizerFactory;
-
 
 /**
  * This class provides a container for the information on the current
@@ -105,16 +104,15 @@ public class MathContext {
             final StyleNoad actualStyle) throws TypesetterException {
 
         Font font = options.getFont(MathFontParameter.key(options, //
-                actualStyle.getFontName(), p.inSymbol() ? "2" : "3"));
+            actualStyle.getFontName(), p.inSymbol() ? "2" : "3"));
         FixedDimen value;
         if (font == null || (value = font.getFontDimen(p.getNo())) == null) {
             throw new TypesetterException(
             //
-                    new HelpingException(LocalizerFactory
-                            .getLocalizer(getClass()), //
-                            p.inSymbol()
-                                    ? "TTP.InsufficientSymbolFonts"
-                                    : "TTP.InsufficientExtensionFonts"));
+                new HelpingException(LocalizerFactory.getLocalizer(getClass()), //
+                    p.inSymbol()
+                            ? "TTP.InsufficientSymbolFonts"
+                            : "TTP.InsufficientExtensionFonts"));
         }
         return value;
     }
@@ -145,7 +143,7 @@ public class MathContext {
 
         Dimen length = new Dimen(mudimen.getLength().getValue());
         length.multiply(mathParameter(MathFontParameter.MATH_QUAD, style)
-                .getValue(), MU_UNIT);
+            .getValue(), MU_UNIT);
 
         return length;
     }
@@ -173,8 +171,8 @@ public class MathContext {
      */
     public Glue convert(final Muskip muglue) throws TypesetterException {
 
-        long factor = mathParameter(MathFontParameter.MATH_QUAD, style)
-                .getValue();
+        long factor =
+                mathParameter(MathFontParameter.MATH_QUAD, style).getValue();
         GlueComponent length = new GlueComponent(muglue.getLength());
         GlueComponent stretch = new GlueComponent(muglue.getStretch());
         GlueComponent shrink = new GlueComponent(muglue.getShrink());

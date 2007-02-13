@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -28,8 +28,6 @@ import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.noad.util.MathContext;
 import org.extex.typesetter.type.noad.util.MathSpacing;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
-
-
 
 /**
  * This class provides a container for a mathematical glyph.
@@ -88,6 +86,22 @@ public class MathGlyph implements Noad, Serializable {
     }
 
     /**
+     * Getter for spacing class.
+     *
+     * @return the spacing class
+     *
+     * @see org.extex.typesetter.type.noad.Noad#getSpacingClass()
+     */
+    public MathSpacing getSpacingClass() {
+
+        return MathSpacing.ORD; // gene: correct?
+    }
+
+    /**
+     * Getter for the subscript.
+     *
+     * @return the subscript.
+     *
      * @see org.extex.typesetter.type.noad.Noad#getSubscript()
      */
     public Noad getSubscript() {
@@ -96,6 +110,10 @@ public class MathGlyph implements Noad, Serializable {
     }
 
     /**
+     * Getter for the superscript.
+     *
+     * @return the superscript.
+     *
      * @see org.extex.typesetter.type.noad.Noad#getSuperscript()
      */
     public Noad getSuperscript() {
@@ -104,6 +122,10 @@ public class MathGlyph implements Noad, Serializable {
     }
 
     /**
+     * Setter for the subscript.
+     *
+     * @param subscript the subscript to set.
+     *
      * @see org.extex.typesetter.type.noad.Noad#setSubscript(
      *       org.extex.typesetter.type.noad.Noad)
      */
@@ -113,6 +135,10 @@ public class MathGlyph implements Noad, Serializable {
     }
 
     /**
+     * Setter for the superscript.
+     *
+     * @param superscript the superscript to set.
+     *
      * @see org.extex.typesetter.type.noad.Noad#setSuperscript(
      *       org.extex.typesetter.type.noad.Noad)
      */
@@ -122,6 +148,10 @@ public class MathGlyph implements Noad, Serializable {
     }
 
     /**
+     * Get the string representation of this object for debugging purposes.
+     *
+     * @return the string representation
+     *
      * @see java.lang.Object#toString()
      */
     public String toString() {
@@ -132,6 +162,10 @@ public class MathGlyph implements Noad, Serializable {
     }
 
     /**
+     * Produce a printable representation of the noad in a StringBuffer.
+     *
+     * @param sb the string buffer
+     *
      * @see org.extex.typesetter.type.noad.Noad#toString(
      *       java.lang.StringBuffer)
      */
@@ -166,6 +200,19 @@ public class MathGlyph implements Noad, Serializable {
     }
 
     /**
+     * Translate a Noad into a NodeList.
+     *
+     * @param previousNoad the previous noad
+     * @param noads the list of noads currently processed
+     * @param index the index of the current node in the list
+     * @param list the list to add the nodes to. This list contains the Nodes
+     *  previously typeset. Thus it can be used to look back
+     * @param mathContext the context to consider
+     * @param logger the logger for debugging and tracing information
+     *
+     * @throws TypesetterException in case of a problem
+     * @throws ConfigurationException in case of a configuration problem
+     *
      * @see org.extex.typesetter.type.noad.Noad#typeset(
      *      org.extex.typesetter.type.noad.Noad,
      *      org.extex.typesetter.type.noad.NoadList,
@@ -182,14 +229,6 @@ public class MathGlyph implements Noad, Serializable {
 
         //TODO gene: typeset() unimplemented
         throw new RuntimeException("unimplemented");
-    }
-
-    /**
-     * @see org.extex.typesetter.type.noad.Noad#getSpacingClass()
-     */
-    public MathSpacing getSpacingClass() {
-
-        return MathSpacing.ORD; // gene: correct?
     }
 
 }

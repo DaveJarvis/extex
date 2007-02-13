@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -29,8 +29,6 @@ import org.extex.scanner.type.CatcodeVisitor;
 import org.extex.scanner.type.CatcodeVisitorException;
 import org.extex.scanner.type.CatcodeWrongLengthException;
 import org.extex.type.UnicodeChar;
-
-
 
 /**
  * This is a implementation of a token factory. This means that the factory
@@ -154,7 +152,7 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
 
         try {
             return (Token) code.visit(this, null, //
-                    UnicodeChar.get(c), namespace);
+                UnicodeChar.get(c), namespace);
         } catch (CatcodeException e) {
             throw e;
         } catch (RuntimeException e) {
@@ -309,8 +307,9 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
             token = ((WeakReference) token).get();
         }
         if (token == null) {
-            token = new ControlSequenceToken((UnicodeChar) oChar, value,
-                    namespace);
+            token =
+                    new ControlSequenceToken((UnicodeChar) oChar, value,
+                        namespace);
             map.put(value, new WeakReference(token));
         }
 

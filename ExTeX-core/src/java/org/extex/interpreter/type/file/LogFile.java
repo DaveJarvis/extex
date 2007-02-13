@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -24,7 +24,6 @@ import java.util.logging.Logger;
 
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.tokens.Tokens;
-
 
 /**
  * This implementation of an OutFile encapsulates a Logger.
@@ -57,6 +56,10 @@ public class LogFile extends OutFile {
     }
 
     /**
+     * Close the current file.
+     *
+     * @throws IOException in case of an error
+     *
      * @see org.extex.interpreter.type.file.OutFile#close()
      */
     public void close() throws IOException {
@@ -64,6 +67,10 @@ public class LogFile extends OutFile {
     }
 
     /**
+     * Check whether the output file is open.
+     *
+     * @return <code>true</code> iff the instance is open
+     *
      * @see org.extex.interpreter.type.file.OutFile#isOpen()
      */
     public boolean isOpen() {
@@ -72,6 +79,8 @@ public class LogFile extends OutFile {
     }
 
     /**
+     * Open the current file.
+     *
      * @see org.extex.interpreter.type.file.OutFile#open()
      */
     public void open() {
@@ -79,6 +88,13 @@ public class LogFile extends OutFile {
     }
 
     /**
+     * Write some tokens to the output writer.
+     *
+     * @param toks tokens to write
+     *
+     * @throws InterpreterException in case of an error
+     * @throws IOException in case of an IO error
+     *
      * @see org.extex.interpreter.type.file.OutFile#write(
      *      org.extex.interpreter.type.tokens.Tokens)
      */

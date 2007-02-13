@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -37,8 +37,6 @@ import org.extex.scanner.type.token.TokenFactory;
 import org.extex.typesetter.Typesetter;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
-
-
 /**
  * This class provides a dimen value with a length which is a multiple of
  * math units (mu).
@@ -75,14 +73,13 @@ public class Mudimen implements Serializable {
             Code code = context.getCode((CodeToken) t);
             if (code instanceof MudimenConvertible) {
                 return ((MudimenConvertible) code).convertMudimen(context,
-                        source, null);
+                    source, null);
             }
         }
         long value = ScaledNumber.scanFloat(context, source, typesetter, t);
         if (!source.getKeyword(context, "mu")) {
             throw new HelpingException(//
-                    LocalizerFactory.getLocalizer(Mudimen.class),
-                    "TTP.IllegalMu");
+                LocalizerFactory.getLocalizer(Mudimen.class), "TTP.IllegalMu");
         }
         return value;
     }

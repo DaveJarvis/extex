@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -24,11 +24,10 @@ import org.extex.interpreter.type.count.FixedCount;
 import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.typesetter.type.NodeList;
 
-
 /**
  * This interface describes a page for the back-end. It carries nodes and allows
  * access to additional parameters.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4739 $
  */
@@ -36,35 +35,35 @@ public interface Page {
 
     /**
      * Getter for the background color.
-     * 
+     *
      * @return the background color
      */
     Color getColor();
 
     /**
      * Getter for the height of the media.
-     * 
+     *
      * @return the height of the media
      */
     Dimen getMediaHeight();
 
     /**
      * Getter for the horizontal offset of the media.
-     * 
+     *
      * @return the horizontal offset of the media
      */
     Dimen getMediaHOffset();
 
     /**
      * Getter for the vertical offset of the media.
-     * 
+     *
      * @return the vertical offset of the media
      */
     Dimen getMediaVOffset();
 
     /**
      * Getter for the width of the media.
-     * 
+     *
      * @return the width of the media
      */
     Dimen getMediaWidth();
@@ -72,49 +71,49 @@ public interface Page {
     /**
      * Getter for the node list. The node list describes where on the page to
      * put characters from fonts or other graphical symbols like rules.
-     * 
+     *
      * @return the node list
      */
     NodeList getNodes();
 
     /**
      * Getter for the array of page numbers.
-     * 
+     *
      * @return the array of page numbers
      */
     FixedCount[] getPageNo();
 
     /**
      * Setter for the background color.
-     * 
+     *
      * @param background the background color
      */
     void setColor(Color background);
 
     /**
      * Setter for the height of the media.
-     * 
+     *
      * @param height the media height
      */
     void setMediaHeight(Dimen height);
 
     /**
      * Setter for the horizontal offset of the media.
-     * 
+     *
      * @param offset the media horizontal offset
      */
     void setMediaHOffset(Dimen offset);
 
     /**
      * Setter for the vertical offset of the media.
-     * 
+     *
      * @param offset the media vertical offset
      */
     void setMediaVOffset(Dimen offset);
 
     /**
      * Setter for the width of the media.
-     * 
+     *
      * @param width the media width
      */
     void setMediaWidth(Dimen width);

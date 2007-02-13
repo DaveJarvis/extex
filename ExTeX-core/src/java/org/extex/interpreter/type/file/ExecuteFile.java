@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -22,10 +22,10 @@ package org.extex.interpreter.type.file;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.i18n.LocalizerFactory;
-
 
 /**
  * This is a class presenting itself as an OutFile which sends the tokens
@@ -60,6 +60,10 @@ public class ExecuteFile extends OutFile {
     }
 
     /**
+     * Close the current file.
+     *
+     * @throws IOException in case of an error
+     *
      * @see org.extex.interpreter.type.file.OutFile#close()
      */
     public void close() throws IOException {
@@ -67,6 +71,10 @@ public class ExecuteFile extends OutFile {
     }
 
     /**
+     * Check whether the output file is open.
+     *
+     * @return <code>true</code> iff the instance is open
+     *
      * @see org.extex.interpreter.type.file.OutFile#isOpen()
      */
     public boolean isOpen() {
@@ -75,6 +83,8 @@ public class ExecuteFile extends OutFile {
     }
 
     /**
+     * Open the current file.
+     *
      * @see org.extex.interpreter.type.file.OutFile#open()
      */
     public void open() {
@@ -82,6 +92,13 @@ public class ExecuteFile extends OutFile {
     }
 
     /**
+     * Write some tokens to the output writer.
+     *
+     * @param toks tokens to write
+     *
+     * @throws InterpreterException in case of an error
+     * @throws IOException in case of an IO error
+     *
      * @see org.extex.interpreter.type.file.OutFile#write(
      *      org.extex.interpreter.type.tokens.Tokens)
      */
@@ -97,7 +114,7 @@ public class ExecuteFile extends OutFile {
                 logger.fine(localizer.format("End.Message", command));
             } else {
                 logger.fine(localizer.format("Failed.Message", command, //
-                        Integer.toString(exitCode)));
+                    Integer.toString(exitCode)));
             }
         } catch (InterruptedException e) {
             logger.fine(localizer.format("Interrupted.Message", command));

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -20,10 +20,6 @@
 package org.extex.scanner.type;
 
 import junit.framework.TestCase;
-
-import org.extex.scanner.type.Catcode;
-import org.extex.scanner.type.CatcodeException;
-import org.extex.scanner.type.CatcodeVisitor;
 
 /**
  * Test cases for Catcodes
@@ -577,6 +573,15 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     }
 
     /**
+     * This visit method is invoked on an active token.
+     * In <logo>TeX</logo> this is e.g. ~.
+     *
+     * @param arg1 the first argument to pass
+     * @param arg2 the second argument to pass
+     * @param uc the third argument to pass
+     *
+     * @return some value
+     *
      * @see org.extex.scanner.type.CatcodeVisitor#visitActive(
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
@@ -591,9 +596,17 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     }
 
     /**
+     * This visit method is invoked on a comment token.
+     * In <logo>TeX</logo> this normally is a %.
+     *
+     * @param arg1 the first argument to pass
+     * @param arg2 the second argument to pass
+     * @param uc the third argument to pass
+     *
+     * @return some value
+     *
      * @see org.extex.scanner.type.CatcodeVisitor#visitComment(
-     *      java.lang.final Object,
-     *      java.lang.Object, java.lang.final Object)
+     *      java.lang.Object, java.lang.Object, java.lang.Object)
      */
     public final Object visitComment(final Object arg1, final Object arg2,
             final Object uc) {
@@ -605,9 +618,16 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     }
 
     /**
+     * This visit method is invoked on a cr token.
+     *
+     * @param arg1 the first argument to pass
+     * @param arg2 the second argument to pass
+     * @param uc the third argument to pass
+     *
+     * @return some value
+     *
      * @see org.extex.scanner.type.CatcodeVisitor#visitCr(
-     *      java.lang.final Object,
-     *      java.lang.Object, java.lang.final Object)
+     *      java.lang.Object, java.lang.Object, java.lang.Object)
      */
     public final Object visitCr(final Object arg1, final Object arg2,
             final Object uc) {
@@ -619,9 +639,17 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     }
 
     /**
+     * This visit method is invoked on an escape token.
+     * In <logo>TeX</logo> this normally means a control sequence.
+     *
+     * @param arg1 the first argument to pass
+     * @param arg2 the second argument to pass
+     * @param uc the third argument to pass
+     *
+     * @return some value
+     *
      * @see org.extex.scanner.type.CatcodeVisitor#visitEscape(
-     *      java.lang.final Object,
-     *      java.lang.Object, java.lang.final Object)
+     *      java.lang.Object, java.lang.Object, java.lang.Object)
      */
     public final Object visitEscape(final Object arg1, final Object arg2,
             final Object uc) {
@@ -633,9 +661,16 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     }
 
     /**
+     * This visit method is invoked on an ignore token.
+     *
+     * @param arg1 the first argument to pass
+     * @param arg2 the second argument to pass
+     * @param uc the third argument to pass
+     *
+     * @return some value
+     *
      * @see org.extex.scanner.type.CatcodeVisitor#visitIgnore(
-     *      java.lang.final Object,
-     *      java.lang.Object, java.lang.final Object)
+     *      java.lang.Object, java.lang.Object, java.lang.Object)
      */
     public final Object visitIgnore(final Object arg1, final Object arg2,
             final Object uc) {
@@ -647,9 +682,16 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     }
 
     /**
+     * This visit method is invoked on an invalid token.
+     *
+     * @param arg1 the first argument to pass
+     * @param arg2 the second argument to pass
+     * @param uc the third argument to pass
+     *
+     * @return some value
+     *
      * @see org.extex.scanner.type.CatcodeVisitor#visitInvalid(
-     *      java.lang.final Object,
-     *      java.lang.Object, java.lang.final Object)
+     *      java.lang.Object, java.lang.Object, java.lang.Object)
      */
     public final Object visitInvalid(final Object arg1, final Object arg2,
             final Object uc) {
@@ -661,9 +703,16 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     }
 
     /**
+     * This visit method is invoked on a left brace token.
+     *
+     * @param arg1 the first argument to pass
+     * @param arg2 the second argument to pass
+     * @param uc the third argument to pass
+     *
+     * @return some value
+     *
      * @see org.extex.scanner.type.CatcodeVisitor#visitLeftBrace(
-     *      java.lang.final Object,
-     *      java.lang.Object, java.lang.final Object)
+     *      java.lang.Object, java.lang.Object, java.lang.Object)
      */
     public final Object visitLeftBrace(final Object arg1, final Object arg2,
             final Object uc) {
@@ -675,9 +724,16 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     }
 
     /**
+     * This visit method is invoked on a letter token.
+     *
+     * @param arg1 the first argument to pass
+     * @param arg2 the second argument to pass
+     * @param uc the third argument to pass
+     *
+     * @return some value
+     *
      * @see org.extex.scanner.type.CatcodeVisitor#visitLetter(
-     *      java.lang.final Object,
-     *      java.lang.Object, java.lang.final Object)
+     *      java.lang.Object, java.lang.Object, java.lang.Object)
      */
     public final Object visitLetter(final Object arg1, final Object arg2,
             final Object uc) {
@@ -689,9 +745,17 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     }
 
     /**
+     * This visit method is invoked on a macro parameter token.
+     * In <logo>TeX</logo> this normally is a #.
+     *
+     * @param arg1 the first argument to pass
+     * @param arg2 the second argument to pass
+     * @param uc the third argument to pass
+     *
+     * @return some value
+     *
      * @see org.extex.scanner.type.CatcodeVisitor#visitMacroParam(
-     *      java.lang.final Object,
-     *      java.lang.Object, java.lang.final Object)
+     *      java.lang.Object, java.lang.Object, java.lang.Object)
      */
     public final Object visitMacroParam(final Object arg1, final Object arg2,
             final Object uc) {
@@ -703,9 +767,18 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     }
 
     /**
+     * This visit method is invoked on a math shift token.
+     * In <logo>TeX</logo> this normally is a $.
+     *
+     * @param arg1 the first argument to pass
+     * @param arg2 the second argument to pass
+     * @param uc the third argument to pass
+     *
+     * @return some value
+     *
      * @see org.extex.scanner.type.CatcodeVisitor#visitMathShift(
-     *      java.lang.final Object,
-     *      java.lang.Object, java.lang.final Object)
+     *      java.lang.Object,
+     *      java.lang.Object, java.lang.Object)
      */
     public final Object visitMathShift(final Object arg1, final Object arg2,
             final Object uc) {
@@ -717,9 +790,17 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     }
 
     /**
+     * This visit method is invoked on an other token.
+     *
+     * @param arg1 the first argument to pass
+     * @param arg2 the second argument to pass
+     * @param uc the third argument to pass
+     *
+     * @return some value
+     *
      * @see org.extex.scanner.type.CatcodeVisitor#visitOther(
-     *      java.lang.final Object,
-     *      java.lang.Object, java.lang.final Object)
+     *      java.lang.Object,
+     *      java.lang.Object, java.lang.Object)
      */
     public final Object visitOther(final Object arg1, final Object arg2,
             final Object uc) {
@@ -731,9 +812,17 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     }
 
     /**
+     * This visit method is invoked on a right brace token.
+     *
+     * @param arg1 the first argument to pass
+     * @param arg2 the second argument to pass
+     * @param uc the third argument to pass
+     *
+     * @return some value
+     *
      * @see org.extex.scanner.type.CatcodeVisitor#visitRightBrace(
-     *      java.lang.final Object,
-     *      java.lang.Object, java.lang.final Object)
+     *      java.lang.Object,
+     *      java.lang.Object, java.lang.Object)
      */
     public final Object visitRightBrace(final Object arg1, final Object arg2,
             final Object uc) {
@@ -745,9 +834,16 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     }
 
     /**
+     * This visit method is invoked on a space token.
+     *
+     * @param arg1 the first argument to pass
+     * @param arg2 the second argument to pass
+     * @param uc the third argument to pass
+     *
+     * @return some value
+     *
      * @see org.extex.scanner.type.CatcodeVisitor#visitSpace(
-     *      java.lang.final Object,
-     *      java.lang.Object, java.lang.final Object)
+     *      java.lang.Object, java.lang.Object, java.lang.Object)
      */
     public final Object visitSpace(final Object arg1, final Object arg2,
             final Object uc) {
@@ -759,9 +855,17 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     }
 
     /**
+     * This visit method is invoked on a sub mark token.
+     * In <logo>TeX</logo> this normally is a _.
+     *
+     * @param arg1 the first argument to pass
+     * @param arg2 the second argument to pass
+     * @param uc the third argument to pass
+     *
+     * @return some value
+     *
      * @see org.extex.scanner.type.CatcodeVisitor#visitSubMark(
-     *      java.lang.final Object,
-     *      java.lang.Object, java.lang.final Object)
+     *      java.lang.Object, java.lang.Object, java.lang.Object)
      */
     public final Object visitSubMark(final Object arg1, final Object arg2,
             final Object uc) {
@@ -773,9 +877,17 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     }
 
     /**
+     * This visit method is invoked on a sup mark token.
+     * In <logo>TeX</logo> this normally is a ^.
+     *
+     * @param arg1 the first argument to pass
+     * @param arg2 the second argument to pass
+     * @param uc the third argument to pass
+     *
+     * @return some value
+     *
      * @see org.extex.scanner.type.CatcodeVisitor#visitSupMark(
-     *      java.lang.final Object,
-     *      java.lang.Object, java.lang.final Object)
+     *      java.lang.Object, java.lang.Object, java.lang.Object)
      */
     public final Object visitSupMark(final Object arg1, final Object arg2,
             final Object uc) {
@@ -787,6 +899,15 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     }
 
     /**
+     * This visit method is invoked on a tab mark token.
+     * In <logo>TeX</logo> this normally is a &.
+     *
+     * @param arg1 the first argument to pass
+     * @param arg2 the second argument to pass
+     * @param uc the third argument to pass
+     *
+     * @return some value
+     *
      * @see org.extex.scanner.type.CatcodeVisitor#visitTabMark(
      *      java.lang.Object, java.lang.Object, java.lang.Object)
      */

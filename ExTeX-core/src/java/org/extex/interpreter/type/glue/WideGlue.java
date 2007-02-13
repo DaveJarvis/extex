@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -276,6 +276,10 @@ public class WideGlue {
     }
 
     /**
+     * Returns a string representation of the object.
+     *
+     * @return  a string representation of the object.
+     *
      * @see java.lang.Object#toString()
      */
     public String toString() {

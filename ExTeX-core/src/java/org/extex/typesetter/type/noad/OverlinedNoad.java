@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -33,8 +33,6 @@ import org.extex.typesetter.type.node.HorizontalListNode;
 import org.extex.typesetter.type.node.RuleNode;
 import org.extex.typesetter.type.node.VerticalListNode;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
-
-
 
 /**
  * This class provides an over-lining for the nucleus.
@@ -105,30 +103,30 @@ public class OverlinedNoad extends AbstractNucleusNoad {
                 ConfigurationException {
 
         getSpacingClass().addClearance(
-                (previousNoad != null ? previousNoad.getSpacingClass() : null),
-                list, mathContext);
+            (previousNoad != null ? previousNoad.getSpacingClass() : null),
+            list, mathContext);
 
         HorizontalListNode hlist = new HorizontalListNode();
-        FixedDimen thickness = mathContext
-                .mathParameter(MathFontParameter.DEFAULT_RULE_THICKNESS);
+        FixedDimen thickness =
+                mathContext
+                    .mathParameter(MathFontParameter.DEFAULT_RULE_THICKNESS);
         StyleNoad style = mathContext.getStyle();
         mathContext.setStyle(style.cramped());
         Noad n = getNucleus();
-        n.typeset(previousNoad, noads, index, hlist, mathContext,
-                logger);
+        n.typeset(previousNoad, noads, index, hlist, mathContext, logger);
         mathContext.setStyle(style);
 
         setSpacingClass(n.getSpacingClass());
         getSpacingClass().addClearance(
-                (previousNoad != null ? previousNoad.getSpacingClass() : null),
-                list, mathContext);
+            (previousNoad != null ? previousNoad.getSpacingClass() : null),
+            list, mathContext);
 
         VerticalListNode vlist = new VerticalListNode();
         vlist.add(new ExplicitKernNode(thickness, false));
         vlist.add(new RuleNode(hlist.getWidth(), thickness, Dimen.ZERO_PT,
-                getTypesettingContext(), true));
+            getTypesettingContext(), true));
         vlist.add(new ExplicitKernNode(new Dimen(3 * thickness.getValue()),
-                false));
+            false));
         vlist.add(hlist);
         list.add(vlist);
 

@@ -64,6 +64,15 @@ public abstract class AbstractToken implements Token, Serializable {
     }
 
     /**
+     * Compare the current token with a pair of catcode and character value.
+     * This pair constitutes a virtual token. They are the same if the catcode
+     * and the value are the same.
+     *
+     * @param cc the catcode
+     * @param c the value
+     *
+     * @return <code>true</code> iff the tokens are equal
+     *
      * @see org.extex.scanner.type.token.Token#equals(
      *      org.extex.scanner.type.Catcode,
      *      char)
@@ -74,6 +83,15 @@ public abstract class AbstractToken implements Token, Serializable {
     }
 
     /**
+     * Compare the current token with a pair of catcode and String value. This
+     * pair constitutes a virtual token. They are the same if the catcode and
+     * the value are the same.
+     *
+     * @param cc the catcode
+     * @param s the value
+     *
+     * @return <code>true</code> iff the tokens are equal
+     *
      * @see org.extex.scanner.type.token.Token#equals(
      *      org.extex.scanner.type.Catcode,
      *      java.lang.String)
@@ -85,6 +103,13 @@ public abstract class AbstractToken implements Token, Serializable {
     }
 
     /**
+     * Compare the current token with a character value. They are the same if
+     * the values are the same.
+     *
+     * @param c the value
+     *
+     * @return <code>true</code> iff the tokens are equal
+     *
      * @see org.extex.scanner.type.token.Token#equals(char)
      */
     public boolean equals(final char c) {
@@ -95,6 +120,12 @@ public abstract class AbstractToken implements Token, Serializable {
     }
 
     /**
+     * Indicates whether some other object is "equal to" this one.
+     *
+     * @param   t the reference token with which to compare.
+     * @return  <code>true</code> if this object is the same as the obj
+     *          argument; <code>false</code> otherwise.
+     *
      * @see java.lang.Object#equals(java.lang.Object)
      */
     public boolean equals(final Object t) {
@@ -106,13 +137,19 @@ public abstract class AbstractToken implements Token, Serializable {
     }
 
     /**
-     * This is the getter for the catcode of this token.
+     * Getter for the catcode.
+     *
+     * @return the catcode
      *
      * @see org.extex.scanner.type.token.Token#getCatcode()
      */
     public abstract Catcode getCatcode();
 
     /**
+     * Getter for the value.
+     *
+     * @return the value
+     *
      * @see org.extex.scanner.type.token.Token#getChar()
      */
     public final UnicodeChar getChar() {
@@ -131,6 +168,10 @@ public abstract class AbstractToken implements Token, Serializable {
     }
 
     /**
+     * Returns a hash code value for the object.
+     *
+     * @return  a hash code value for this object
+     *
      * @see java.lang.Object#hashCode()
      */
     public int hashCode() {
@@ -139,6 +180,12 @@ public abstract class AbstractToken implements Token, Serializable {
     }
 
     /**
+     * Check if the current token has a specified catcode.
+     *
+     * @param cc the catcode to compare against
+     *
+     * @return <code>true</code> iff the catcodes coincide
+     *
      * @see org.extex.scanner.type.token.Token#isa(
      *      org.extex.scanner.type.Catcode)
      */
@@ -173,6 +220,13 @@ public abstract class AbstractToken implements Token, Serializable {
     }
 
     /**
+     * Return the printable representation of this token as it can be read back
+     * in.
+     *
+     * @param esc the escape character
+     *
+     * @return the printable representation
+     *
      * @see org.extex.scanner.type.token.Token#toText(
      *      org.extex.type.UnicodeChar)
      */

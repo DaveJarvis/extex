@@ -78,6 +78,11 @@ public class NotObservableException extends GeneralException {
     }
 
     /**
+     * Returns the detail message string of this throwable.
+     *
+     * @return  the detail message string of this <tt>Throwable</tt> instance
+     *          (which may be <tt>null</tt>).
+     *
      * @see java.lang.Throwable#getMessage()
      */
     public String getMessage() {

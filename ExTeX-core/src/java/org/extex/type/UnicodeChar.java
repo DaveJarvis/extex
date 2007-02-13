@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -36,8 +36,16 @@ import com.ibm.icu.lang.UCharacter;
  */
 public class UnicodeChar implements Serializable {
 
+    /**
+     * The constant <tt>MAX_VALUE</tt> contains the maximal admissible code
+     * point.
+     */
     public static final int MAX_VALUE = UCharacter.MAX_VALUE;
 
+    /**
+     * The constant <tt>MIN_VALUE</tt> contains the minimal admissible code
+     * point.
+     */
     public static final int MIN_VALUE = UCharacter.MIN_VALUE;
 
     /**

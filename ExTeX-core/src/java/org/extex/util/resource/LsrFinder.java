@@ -410,9 +410,10 @@ public class LsrFinder extends AbstractFinder implements PropertyConfigurable {
         trace("DatabaseLoaded", file.toString(), //
             Long.toString(System.currentTimeMillis() - start), //
             Integer.toString(cache.size()));
-        //        System.err.print(file);
-        //        System.err.print('\t');
-        //        System.err.println(System.currentTimeMillis() - start);
+        //        PrintStream err = System.err;
+        //        err.print(file);
+        //        err.print('\t');
+        //        err.println(System.currentTimeMillis() - start);
     }
 
     /**

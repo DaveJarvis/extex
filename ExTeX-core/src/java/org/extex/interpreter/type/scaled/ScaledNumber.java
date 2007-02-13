@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -42,8 +42,6 @@ import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
 import org.extex.typesetter.Typesetter;
 import org.extex.util.framework.i18n.LocalizerFactory;
-
-
 
 /**
  * This class provides a fixed point number.
@@ -217,9 +215,9 @@ public class ScaledNumber {
                     }
 
                     throw new HelpingException(LocalizerFactory
-                            .getLocalizer(ScaledNumber.class),
-                            "MissingParenthesis", (t == null ? "null" : t
-                                    .toString()));
+                        .getLocalizer(ScaledNumber.class),
+                        "MissingParenthesis", (t == null ? "null" : t
+                            .toString()));
 
                 } else if (t.equals(Catcode.OTHER, '-')) {
                     return -parse(context, source, typesetter);
@@ -230,21 +228,23 @@ public class ScaledNumber {
             } else if (t instanceof CodeToken) {
                 Code code = context.getCode((CodeToken) t);
                 if (code instanceof ScaledConvertible) {
-                    long val = ((ScaledConvertible) code).convertScaled(
-                            context, source, typesetter);
+                    long val =
+                            ((ScaledConvertible) code).convertScaled(context,
+                                source, typesetter);
                     source.skipSpace();
                     return val;
 
                 } else if (code instanceof CountConvertible) {
-                    long val = ((CountConvertible) code).convertCount(context,
-                            source, typesetter)
-                            * ONE;
+                    long val =
+                            ((CountConvertible) code).convertCount(context,
+                                source, typesetter)
+                                    * ONE;
                     source.skipSpace();
                     return val;
 
                 } else if (code instanceof ExpandableCode) {
                     ((ExpandableCode) code).expand(Flags.NONE, context, source,
-                            typesetter);
+                        typesetter);
                 } else {
                     source.push(t);
                     break;
@@ -310,7 +310,7 @@ public class ScaledNumber {
         }
         if (t != null
                 && (t.equals(Catcode.OTHER, '.') || t
-                        .equals(Catcode.OTHER, ','))) {
+                    .equals(Catcode.OTHER, ','))) {
             // @see "TeX -- The Program [102]"
             int[] dig = new int[FLOAT_DIGITS];
             int k = 0;
@@ -613,14 +613,14 @@ public class ScaledNumber {
 
         if (val < 0) {
             toks.add(factory.createToken(Catcode.OTHER, '-',
-                    Namespace.DEFAULT_NAMESPACE));
+                Namespace.DEFAULT_NAMESPACE));
             val = -val;
         }
 
         long v = val / ONE;
         if (v == 0) {
             toks.add(factory.createToken(Catcode.OTHER, '0',
-                    Namespace.DEFAULT_NAMESPACE));
+                Namespace.DEFAULT_NAMESPACE));
         } else {
             long m = 1;
             while (m <= v) {
@@ -629,14 +629,14 @@ public class ScaledNumber {
             m /= 10;
             while (m > 0) {
                 toks.add(factory.createToken(Catcode.OTHER,
-                        (char) ('0' + (v / m)), Namespace.DEFAULT_NAMESPACE));
+                    (char) ('0' + (v / m)), Namespace.DEFAULT_NAMESPACE));
                 v = v % m;
                 m /= 10;
             }
         }
 
         toks.add(factory.createToken(Catcode.OTHER, '.',
-                Namespace.DEFAULT_NAMESPACE));
+            Namespace.DEFAULT_NAMESPACE));
 
         val = 10 * (val % ONE) + 5;
         long delta = 10;
@@ -646,7 +646,7 @@ public class ScaledNumber {
             }
             int i = (int) (val / ONE);
             toks.add(factory.createToken(Catcode.OTHER, (char) ('0' + i),
-                    Namespace.DEFAULT_NAMESPACE));
+                Namespace.DEFAULT_NAMESPACE));
             val = 10 * (val % ONE);
             delta *= 10;
         } while (val > delta);

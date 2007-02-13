@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -24,7 +24,6 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.node.RuleNode;
-
 
 /**
  * This interface describes the possibility to provide a rule as result of the

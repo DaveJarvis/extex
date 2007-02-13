@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -76,6 +76,8 @@ public final class OpenReaderObserverList implements OpenReaderObserver {
     /**
      * Invoke all observers on the list to inform them of the reader which has
      * been opened.
+     *
+     * @param reader the reader to be processed
      *
      * @see org.extex.scanner.stream.observer.reader.OpenReaderObserver#update(
      *      java.io.Reader)

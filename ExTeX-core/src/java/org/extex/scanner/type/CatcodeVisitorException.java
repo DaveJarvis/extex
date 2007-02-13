@@ -42,6 +42,10 @@ public class CatcodeVisitorException extends CatcodeException {
     }
 
     /**
+     * Creates a localized description of this throwable.
+     *
+     * @return the localized description of this throwable
+     *
      * @see java.lang.Throwable#getLocalizedMessage()
      */
     public String getLocalizedMessage() {

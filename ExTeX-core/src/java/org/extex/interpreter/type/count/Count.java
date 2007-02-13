@@ -45,7 +45,7 @@ import org.extex.util.framework.i18n.LocalizerFactory;
 /**
  * This class represents a long integer value. It is used for instance as count
  * register.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision:4399 $
@@ -78,7 +78,7 @@ public class Count implements Serializable, FixedCount {
 
     /**
      * This interface describes a binary operation on two longs.
-     * 
+     *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision:4399 $
      */
@@ -86,10 +86,10 @@ public class Count implements Serializable, FixedCount {
 
         /**
          * Apply the operation on the arguments.
-         * 
+         *
          * @param arg1 the first argument
          * @param arg2 the second argument
-         * 
+         *
          * @return the result
          */
         long apply(long arg1, long arg2);
@@ -97,15 +97,21 @@ public class Count implements Serializable, FixedCount {
 
     /**
      * This operation subtracts the second argument from the first one.
-     * 
+     *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision:4399 $
      */
     private static final class Minus implements BinOp {
 
         /**
-         * @see org.extex.interpreter.primitives.register.count.Numexpr.BinOp#apply(long,
-         *      long)
+         * Apply the operation on the arguments.
+         *
+         * @param arg1 the first argument
+         * @param arg2 the second argument
+         *
+         * @return the result
+         *
+         * @see org.extex.interpreter.type.count.Count.BinOp#apply(long, long)
          */
         public long apply(final long arg1, final long arg2) {
 
@@ -115,15 +121,21 @@ public class Count implements Serializable, FixedCount {
 
     /**
      * This operation adds the arguments.
-     * 
+     *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision:4399 $
      */
     private static final class Plus implements BinOp {
 
         /**
-         * @see org.extex.interpreter.primitives.register.count.Numexpr.BinOp#apply(long,
-         *      long)
+         * Apply the operation on the arguments.
+         *
+         * @param arg1 the first argument
+         * @param arg2 the second argument
+         *
+         * @return the result
+         *
+         * @see org.extex.interpreter.type.count.Count.BinOp#apply(long, long)
          */
         public long apply(final long arg1, final long arg2) {
 
@@ -133,15 +145,21 @@ public class Count implements Serializable, FixedCount {
 
     /**
      * This operation ignores the first argument and returns the second one.
-     * 
+     *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision:4399 $
      */
     private static final class Second implements BinOp {
 
         /**
-         * @see org.extex.interpreter.primitives.register.count.Numexpr.BinOp#apply(long,
-         *      long)
+         * Apply the operation on the arguments.
+         *
+         * @param arg1 the first argument
+         * @param arg2 the second argument
+         *
+         * @return the result
+         *
+         * @see org.extex.interpreter.type.count.Count.BinOp#apply(long, long)
          */
         public long apply(final long arg1, final long arg2) {
 
@@ -167,13 +185,13 @@ public class Count implements Serializable, FixedCount {
 
     /**
      * Evaluate an expression.
-     * 
+     *
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     * 
+     *
      * @return the result
-     * 
+     *
      * @throws InterpreterException in case of an error
      */
     private static long evalExpr(final Context context,
@@ -223,18 +241,18 @@ public class Count implements Serializable, FixedCount {
      * optional white space. White space is also ignored between the sign and
      * the number. All non-whitespace characters must have the category code
      * OTHER.
-     * 
+     *
      * <p>
      * This method parses the following syntactic entity:
      * </p>
-     * 
+     *
      * <doc type="syntax" name="integer">
      * <h3>A Number</h3>
-     * 
+     *
      * <pre class="syntax">
      *    &amp;langnumber&amp;rang
      * </pre>
-     * 
+     *
      * <p>
      * A number consists of a non-empty sequence of digits with category code
      * {@link org.extex.scanner.type.Catcode#OTHER OTHER}. The number is
@@ -243,16 +261,16 @@ public class Count implements Serializable, FixedCount {
      * <p>
      * Tokens are expanded while gathering the requested values.
      * </p>
-     * 
+     *
      * </doc>
-     * 
-     * 
+     *
+     *
      * @param context the processor context
      * @param source the source for new tokens
      * @param typesetter the typesetter to use for conversion
-     * 
+     *
      * @return the value of the count
-     * 
+     *
      * @throws InterpreterException in case of an error
      */
     public static long scanInteger(final Context context,
@@ -307,33 +325,33 @@ public class Count implements Serializable, FixedCount {
      * This method implements the generalization of several syntactic
      * definitions from <logo>TeX</logo>:
      * </p>
-     * 
+     *
      * <doc type="syntax" name="number">
      * <h3>A Number</h3>
-     * 
+     *
      * <pre class="syntax">
      *    &amp;langnumber&amp;rang
      * </pre>
-     * 
+     *
      * <p>
      * A number consists of a non-empty sequence of digits with category code
      * {@link org.extex.scanner.type.Catcode#OTHER OTHER}.
      * </p>
-     * 
+     *
      * </doc>
-     * 
-     * 
+     *
+     *
      * Scan the input stream for tokens making up a number, this is a sequence
      * of digits with category code <tt>OTHER</tt>. The number can be
      * preceded by optional white space. Alternate representations for an
      * integer exist.
-     * 
+     *
      * @param context the processor context
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     * 
+     *
      * @return the value of the integer scanned
-     * 
+     *
      * @throws InterpreterException in case that no number is found or the end
      *             of file has been reached before an integer could be acquired
      */
@@ -350,14 +368,14 @@ public class Count implements Serializable, FixedCount {
      * of digits with category code <tt>OTHER</tt>. The number can be
      * preceded by optional white space. Alternate representations for an
      * integer exist.
-     * 
+     *
      * @param context the processor context
      * @param source the source for new tokens
      * @param typesetter the typesetter
      * @param token the first token
-     * 
+     *
      * @return the value of the integer scanned
-     * 
+     *
      * @throws InterpreterException in case that no number is found or the end
      *             of file has been reached before an integer could be acquired
      */
@@ -525,13 +543,13 @@ public class Count implements Serializable, FixedCount {
 
     /**
      * parse a token stream for a count value.
-     * 
+     *
      * @param context the processor context
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     * 
+     *
      * @return a new Count instance with the value acquired
-     * 
+     *
      * @throws InterpreterException in case of an error
      */
     public static Count parse(final Context context, final TokenSource source,
@@ -547,7 +565,7 @@ public class Count implements Serializable, FixedCount {
 
     /**
      * Creates a new object.
-     * 
+     *
      * @param count the reference to be copied
      */
     public Count(final FixedCount count) {
@@ -558,7 +576,7 @@ public class Count implements Serializable, FixedCount {
 
     /**
      * Creates a new object.
-     * 
+     *
      * @param value the value
      */
     public Count(final long value) {
@@ -569,7 +587,7 @@ public class Count implements Serializable, FixedCount {
 
     /**
      * Add a long to the value. This operation modifies the value.
-     * 
+     *
      * @param val the value to add to
      */
     public void add(final long val) {
@@ -579,9 +597,9 @@ public class Count implements Serializable, FixedCount {
 
     /**
      * Divide the value by a long. This operation modifies the value.
-     * 
+     *
      * @param denom the denominator to divide by
-     * 
+     *
      * @throws ArithmeticOverflowException in case of a division by zero
      */
     public void divide(final long denom) throws ArithmeticOverflowException {
@@ -614,7 +632,7 @@ public class Count implements Serializable, FixedCount {
     /**
      * Getter for the localizer. The localizer is initialized from the name of
      * the Count class.
-     * 
+     *
      * @return the localizer
      */
     protected Localizer getLocalizer() {
@@ -624,7 +642,7 @@ public class Count implements Serializable, FixedCount {
 
     /**
      * Getter for the value
-     * 
+     *
      * @return the value
      */
     public long getValue() {
@@ -661,7 +679,7 @@ public class Count implements Serializable, FixedCount {
 
     /**
      * Multiply the value with a factor. This operation modifies the value.
-     * 
+     *
      * @param factor the factor to multiply with
      */
     public void multiply(final long factor) {
@@ -680,9 +698,9 @@ public class Count implements Serializable, FixedCount {
 
     /**
      * Setter for the value.
-     * 
+     *
      * @param l the new value
-     * 
+     *
      * @see #setValue(long)
      */
     public void set(final long l) {
@@ -692,9 +710,9 @@ public class Count implements Serializable, FixedCount {
 
     /**
      * Setter for the value.
-     * 
+     *
      * @param l the new value
-     * 
+     *
      * @see #set(long)
      */
     public void setValue(final long l) {
@@ -706,9 +724,9 @@ public class Count implements Serializable, FixedCount {
      * Determine the printable representation of the object. The value returned
      * is exactly the string which would be produced by <logo>TeX</logo> to
      * print the Count.
-     * 
+     *
      * @return the printable representation
-     * 
+     *
      * @see #toString(StringBuffer)
      */
     public String toString() {
@@ -720,9 +738,9 @@ public class Count implements Serializable, FixedCount {
      * Determine the printable representation of the object. The value returned
      * is exactly the string which would be produced by <logo>TeX</logo> to
      * print the Count.
-     * 
+     *
      * @param sb the target string buffer
-     * 
+     *
      * @see #toString()
      */
     public void toString(final StringBuffer sb) {
@@ -734,11 +752,11 @@ public class Count implements Serializable, FixedCount {
      * Determine the printable representation of the object. The value returned
      * is exactly the string which would be produced by <logo>TeX</logo> to
      * print the Count.
-     * 
+     *
      * @param context the interpreter context
-     * 
+     *
      * @return the Tokens representing this instance
-     * 
+     *
      * @throws InterpreterException in case of an error
      */
     public Tokens toToks(final Context context) throws InterpreterException {

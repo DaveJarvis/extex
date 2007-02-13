@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -29,9 +29,6 @@ import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeVisitor;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.logger.LogEnabled;
-
-
-
 
 /**
  * This WhatsIt node closes an out file on shipping.

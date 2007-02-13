@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
@@ -30,8 +30,8 @@ import org.extex.util.framework.configuration.exception.ConfigurationMissingAttr
 
 /**
  * This is the factory to provide an instance of a document writer.
- * 
- * 
+ *
+ *
  * <p>
  * The class to be instantiated can implements one or more interfaces which
  * trigger special actions:
@@ -58,8 +58,8 @@ import org.extex.util.framework.configuration.exception.ConfigurationMissingAttr
  * {@link org.extex.backend.outputStream.OutputStreamFactory OutputStreamFactory}
  * is passed in with the interface method. </dd>
  * </dl>
- * 
- * 
+ *
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -73,10 +73,10 @@ public class DocumentWriterFactory extends AbstractFactory {
 
     /**
      * Creates a new object.
-     * 
+     *
      * @param configuration the configuration to use for the factory
      * @param logger the logger
-     * 
+     *
      * @throws ConfigurationException in case of an error
      */
     public DocumentWriterFactory(final Configuration configuration,
@@ -103,13 +103,13 @@ public class DocumentWriterFactory extends AbstractFactory {
      * If the generated instance implements the interface MultipleDocumentStream
      * then the method setOutputStreamFactory of this interface is invoked.
      * </p>
-     * 
+     *
      * @param type the type of the document writer
      * @param options the dynamic access to the readable part of the context
      * @param outFactory the factory for further output streams
-     * 
+     *
      * @return the new instance
-     * 
+     *
      * @throws DocumentWriterException in case of a problem
      * @throws ConfigurationException in case of a configuration problem
      */

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -106,6 +106,10 @@ public class TypesettingContextImpl implements ModifiableTypesettingContext {
     }
 
     /**
+     * Getter for the color.
+     *
+     * @return the current color
+     *
      * @see org.extex.interpreter.context.tc.TypesettingContext#getColor()
      */
     public Color getColor() {
@@ -114,6 +118,10 @@ public class TypesettingContextImpl implements ModifiableTypesettingContext {
     }
 
     /**
+     * Getter for the writing direction.
+     *
+     * @return the current direction
+     *
      * @see org.extex.interpreter.context.tc.TypesettingContext#getDirection()
      */
     public Direction getDirection() {
@@ -122,6 +130,10 @@ public class TypesettingContextImpl implements ModifiableTypesettingContext {
     }
 
     /**
+     * Getter for the font component.
+     *
+     * @return the font
+     *
      * @see org.extex.interpreter.context.tc.TypesettingContext#getFont()
      */
     public Font getFont() {
@@ -133,6 +145,10 @@ public class TypesettingContextImpl implements ModifiableTypesettingContext {
     }
 
     /**
+     * Getter for the hyphenation table.
+     *
+     * @return the hyphenation table
+     *
      * @see org.extex.interpreter.context.tc.TypesettingContext#getLanguage()
      */
     public Language getLanguage() {
@@ -141,6 +157,11 @@ public class TypesettingContextImpl implements ModifiableTypesettingContext {
     }
 
     /**
+     * Setter for all components. The components color, direction, font,
+     * language, etc are copied from the instance given.
+     *
+     * @param context the context to clone
+     *
      * @see org.extex.interpreter.context.tc.ModifiableTypesettingContext#set(
      *      org.extex.interpreter.context.tc.TypesettingContext)
      */
@@ -155,33 +176,49 @@ public class TypesettingContextImpl implements ModifiableTypesettingContext {
     }
 
     /**
+     * Setter for the color.
+     *
+     * @param color the new color
+     *
      * @see org.extex.interpreter.context.tc.ModifiableTypesettingContext#setColor(
      *      org.extex.interpreter.context.Color)
      */
-    public void setColor(final Color theColor) {
+    public void setColor(final Color color) {
 
-        this.color = theColor;
+        this.color = color;
     }
 
     /**
+     * Setter for the writing direction.
+     *
+     * @param direction the new direction
+     *
      * @see org.extex.interpreter.context.tc.ModifiableTypesettingContext#setDirection(
      *      org.extex.interpreter.context.tc.Direction)
      */
-    public void setDirection(final Direction theDirection) {
+    public void setDirection(final Direction direction) {
 
-        this.direction = theDirection;
+        this.direction = direction;
     }
 
     /**
+     * Setter for the font component.
+     *
+     * @param font the font to store
+     *
      * @see org.extex.interpreter.context.tc.ModifiableTypesettingContext#setFont(
      *      org.extex.interpreter.type.font.Font)
      */
-    public void setFont(final Font theFont) {
+    public void setFont(final Font font) {
 
-        this.font = theFont;
+        this.font = font;
     }
 
     /**
+     * Setter for the hyphenation table.
+     *
+     * @param language the hyphenation table
+     *
      * @see org.extex.interpreter.context.tc.ModifiableTypesettingContext#setLanguage(
      *      org.extex.language.Language)
      */
@@ -191,6 +228,10 @@ public class TypesettingContextImpl implements ModifiableTypesettingContext {
     }
 
     /**
+     * Returns a string representation of the object.
+     *
+     * @return  a string representation of the object
+     *
      * @see java.lang.Object#toString()
      */
     public String toString() {
@@ -207,5 +248,4 @@ public class TypesettingContextImpl implements ModifiableTypesettingContext {
         return sb.toString();
     }
 
-    
 }

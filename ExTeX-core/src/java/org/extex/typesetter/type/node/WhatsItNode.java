@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -21,8 +21,6 @@ package org.extex.typesetter.type.node;
 
 import org.extex.typesetter.type.NodeVisitor;
 import org.extex.util.exception.GeneralException;
-
-
 
 /**
  * This node type represents the extension node from the perspective of
@@ -50,6 +48,15 @@ public class WhatsItNode extends AbstractNode {
     }
 
     /**
+     * This method puts the printable representation into the string buffer.
+     * This is meant to produce a exhaustive form as it is used in tracing
+     * output to the log file.
+     *
+     * @param sb the output string buffer
+     * @param prefix the prefix string inserted at the beginning of each line
+     * @param breadth the breadth of the nodes to display
+     * @param depth the depth of the nodes to display
+     *
      * @see org.extex.typesetter.type.Node#toString(
      *      java.lang.StringBuffer,
      *      java.lang.String,
@@ -63,6 +70,15 @@ public class WhatsItNode extends AbstractNode {
     }
 
     /**
+     * This method provides an entry point for the visitor pattern.
+     *
+     * @param visitor the visitor to apply
+     * @param value the argument for the visitor
+     *
+     * @return the result of the method invocation of the visitor
+     *
+     * @throws GeneralException in case of an error
+     *
      * @see org.extex.typesetter.type.Node#visit(
      *      org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -32,7 +32,6 @@ import org.extex.typesetter.type.NodeIterator;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.NodeVisitor;
 import org.extex.util.exception.GeneralException;
-
 
 /**
  * Abstract base class for all <code>NodeList</code>s.
@@ -106,6 +105,11 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     }
 
     /**
+     * Add a node to the node list at a given position.
+     *
+     * @param index the position of insertion
+     * @param node the node to add
+     *
      * @see org.extex.typesetter.type.NodeList#add(int,
      *      org.extex.typesetter.type.Node)
      */
@@ -115,6 +119,11 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     }
 
     /**
+     * Add a node to the node list.
+     * The other attributes (width, height, depth) are not modified.
+     *
+     * @param node the node to add
+     *
      * @see org.extex.typesetter.type.NodeList#add(
      *      org.extex.typesetter.type.Node)
      */
@@ -126,6 +135,11 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     }
 
     /**
+     * Add some glue to the node list.
+     * The other attributes (width, height, depth) are not modified.
+     *
+     * @param glue the glue to add
+     *
      * @see org.extex.typesetter.type.NodeList#addSkip(
      *      org.extex.interpreter.type.glue.FixedGlue)
      */
@@ -136,6 +150,23 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     }
 
     /**
+     * This method performs any action which are required to executed at the
+     * time of shipping the node to the DocumentWriter.
+     *
+     * @param context the interpreter context
+     * @param typesetter the typesetter
+     * @param visitor the node visitor to be invoked when the node is hit. Note
+     *  that each node in the output page is visited this way. Thus there is no
+     *  need to implement a node traversal for the NodeList types
+     * @param inHMode <code>true</code> iff the container is a horizontal list.
+     *  Otherwise the container is a vertical list
+     *
+     * @return the node to be used instead of the current one in the output
+     *  list. If the value is <code>null</code> then the node is deleted. If
+     *  the value is the node itself then it is preserved.
+     *
+     * @throws GeneralException in case of an error
+     *
      * @see org.extex.typesetter.type.Node#atShipping(
      *      org.extex.interpreter.context.Context,
      *      org.extex.typesetter.Typesetter,
@@ -168,6 +199,10 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     }
 
     /**
+     * Remove all nodes from the list. The list is empty afterwards.
+     * The dimensions are reset to zero unless target sizes are specified.
+     * In this case the target sizes are used.
+     *
      * @see org.extex.typesetter.type.NodeList#clear()
      */
     public void clear() {
@@ -179,6 +214,10 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     }
 
     /**
+     * Clone the current object.
+     *
+     * @return the copy
+     *
      * @see org.extex.typesetter.type.NodeList#copy()
      */
     public NodeList copy() {
@@ -193,6 +232,10 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     }
 
     /**
+     * This method determines the number of characters contained in a node.
+     *
+     * @return the number of characters contained
+     *
      * @see org.extex.typesetter.type.Node#countChars()
      */
     public int countChars() {
@@ -216,6 +259,13 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     }
 
     /**
+     * Getter for a node at a given position.
+     *
+     * @param index the position
+     *
+     * @return the node at position <i>index</i> of <code>null</code> if index
+     * is out of bounds
+     *
      * @see org.extex.typesetter.type.NodeList#get(int)
      */
     public Node get(final int index) {
@@ -224,6 +274,10 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     }
 
     /**
+     * Getter for the array of characters enclosed in this node.
+     *
+     * @return the array of characters
+     *
      * @see org.extex.typesetter.type.Node#getChars()
      */
     public CharNode[] getChars() {
@@ -245,6 +299,13 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     }
 
     /**
+     * Getter for the move value of the node list.
+     * The move parameter describes how far from its original position the box
+     * is moved leftwards or rightwards. Positive values indicate a move
+     * rightwards.
+     *
+     * @return the move value
+     *
      * @see org.extex.typesetter.type.NodeList#getMove()
      */
     public Dimen getMove() {
@@ -253,6 +314,12 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     }
 
     /**
+     * Getter for the shift value of the node list.
+     * The shift parameter describes how far from its original position the box
+     * is shifted up or down. Positive values indicate a shift downwards.
+     *
+     * @return the shift value
+     *
      * @see org.extex.typesetter.type.NodeList#getShift()
      */
     public Dimen getShift() {
@@ -292,6 +359,12 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     }
 
     /**
+     * Get a new iterator for all nodes in the list.
+     * This method is just provided for completeness. Consider a conventional
+     * loop because of performance issues.
+     *
+     * @return the iterator for all nodes in the list
+     *
      * @see org.extex.typesetter.type.NodeList#iterator()
      */
     public NodeIterator iterator() {
@@ -300,6 +373,13 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     }
 
     /**
+     * Remove an element at a given position.
+     * The other attributes (width, height, depth) are not modified.
+     *
+     * @param index the position
+     *
+     * @return the element previously located at position <i>index</i>
+     *
      * @see org.extex.typesetter.type.NodeList#remove(int)
      */
     public Node remove(final int index) {
@@ -309,6 +389,13 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     }
 
     /**
+     * Setter for the move value of the node list.
+     * The move parameter describes how far from its original position the box
+     * is moved leftwards or rightwards. Positive values indicate a move
+     * rightwards.
+     *
+     * @param d the move value
+     *
      * @see org.extex.typesetter.type.NodeList#setMove(
      *      org.extex.interpreter.type.dimen.FixedDimen)
      */
@@ -318,6 +405,12 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     }
 
     /**
+     * Setter for the shift value of the node list.
+     * The shift parameter describes how far from its original position the box
+     * is shifted up or down. Positive values indicate a shift downwards.
+     *
+     * @param d the amount to be shifted
+     *
      * @see org.extex.typesetter.type.NodeList#setShift(
      *      org.extex.interpreter.type.dimen.FixedDimen)
      */
@@ -454,6 +547,15 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     }
 
     /**
+     * This method provides an entry point for the visitor pattern.
+     *
+     * @param visitor the visitor to apply
+     * @param value the argument for the visitor
+     *
+     * @return the result of the method invocation of the visitor
+     *
+     * @throws GeneralException in case of an error
+     *
      * @see org.extex.typesetter.type.Node#visit(
      *      org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)

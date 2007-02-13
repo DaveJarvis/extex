@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -32,7 +32,6 @@ import org.extex.typesetter.type.NodeVisitor;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.i18n.LocalizerFactory;
-
 
 /**
  * This abstract class provides some methods common to all Nodes.
@@ -112,6 +111,10 @@ public abstract class AbstractNode implements Node {
     }
 
     /**
+     * Add the flexible depth of the current node to the given glue.
+     *
+     * @param glue the glue to add to.
+     *
      * @see org.extex.typesetter.type.Node#addDepthTo(
      *      org.extex.interpreter.type.glue.WideGlue)
      */
@@ -121,6 +124,10 @@ public abstract class AbstractNode implements Node {
     }
 
     /**
+     * Add the flexible height of the current node to the given glue.
+     *
+     * @param glue the glue to add to.
+     *
      * @see org.extex.typesetter.type.Node#addHeightTo(
      *      org.extex.interpreter.type.glue.WideGlue)
      */
@@ -130,6 +137,10 @@ public abstract class AbstractNode implements Node {
     }
 
     /**
+     * Add the flexible width of the current node to the given glue.
+     *
+     * @param glue the glue to add to.
+     *
      * @see org.extex.typesetter.type.Node#addWidthTo(
      *      org.extex.interpreter.type.glue.WideGlue)
      */
@@ -215,7 +226,8 @@ public abstract class AbstractNode implements Node {
     protected long computeAdjustment(final long size, final FixedGlue glue,
             final FixedGlueComponent sum) {
 
-        FixedGlueComponent s = (size > 0 ? glue.getStretch() : glue.getShrink());
+        FixedGlueComponent s =
+                (size > 0 ? glue.getStretch() : glue.getShrink());
 
         int order = s.getOrder();
         long value = sum.getValue();
@@ -252,6 +264,10 @@ public abstract class AbstractNode implements Node {
     }
 
     /**
+     * Getter for the depth of the node.
+     *
+     * @return the depth
+     *
      * @see org.extex.typesetter.type.Node#getDepth()
      */
     public FixedDimen getDepth() {
@@ -260,6 +276,10 @@ public abstract class AbstractNode implements Node {
     }
 
     /**
+     * Getter for the height of the node.
+     *
+     * @return the height
+     *
      * @see org.extex.typesetter.type.Node#getHeight()
      */
     public FixedDimen getHeight() {
@@ -309,6 +329,10 @@ public abstract class AbstractNode implements Node {
     }
 
     /**
+     * Getter for the width of the node.
+     *
+     * @return the width
+     *
      * @see org.extex.typesetter.type.Node#getWidth()
      */
     public FixedDimen getWidth() {
@@ -356,6 +380,10 @@ public abstract class AbstractNode implements Node {
     }
 
     /**
+     * Setter for the depth of the node.
+     *
+     * @param depth the node depth
+     *
      * @see org.extex.typesetter.type.Node#setDepth(
      *      org.extex.interpreter.type.dimen.FixedDimen)
      */
@@ -365,6 +393,10 @@ public abstract class AbstractNode implements Node {
     }
 
     /**
+     * Setter for the height of the node.
+     *
+     * @param height the new height
+     *
      * @see org.extex.typesetter.type.Node#setHeight(
      *      org.extex.interpreter.type.dimen.FixedDimen)
      */
@@ -374,6 +406,10 @@ public abstract class AbstractNode implements Node {
     }
 
     /**
+     * Setter for the width of the node.
+     *
+     * @param width the new width
+     *
      * @see org.extex.typesetter.type.Node#setWidth(
      *      org.extex.interpreter.type.dimen.FixedDimen)
      */
@@ -427,6 +463,15 @@ public abstract class AbstractNode implements Node {
     }
 
     /**
+     * This method puts the printable representation into the string buffer.
+     * This is meant to produce a exhaustive form as it is used in tracing
+     * output to the log file.
+     *
+     * @param sb the output string buffer
+     * @param prefix the prefix string inserted at the beginning of each line
+     * @param breadth the breadth of the nodes to display
+     * @param depth the depth of the nodes to display
+     *
      * @see org.extex.typesetter.type.Node#toString(
      *      java.lang.StringBuffer,
      *      java.lang.String,

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -34,8 +34,6 @@ import org.extex.typesetter.type.node.RuleNode;
 import org.extex.typesetter.type.node.VerticalListNode;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-
-
 /**
  * This class provides an underlining for the nucleus.
  *
@@ -58,6 +56,11 @@ public class UnderlinedNoad extends AbstractNucleusNoad {
     }
 
     /**
+     * Add some information in the middle of the default toString method.
+     *
+     * @param sb the target string buffer
+     * @param depth the recursion depth
+     *
      * @see "TTP [696]"
      * @see org.extex.typesetter.type.noad.AbstractNoad#toStringAdd(
      *      java.lang.StringBuffer,
@@ -69,6 +72,19 @@ public class UnderlinedNoad extends AbstractNucleusNoad {
     }
 
     /**
+     * Translate a Noad into a NodeList.
+     *
+     * @param previousNoad the previous noad
+     * @param noads the list of noads currently processed
+     * @param index the index of the current node in the list
+     * @param list the list to add the nodes to. This list contains the Nodes
+     *  previously typeset. Thus it can be used to look back
+     * @param mathContext the context to consider
+     * @param logger the logger for debugging and tracing information
+     *
+     * @throws TypesetterException in case of a problem
+     * @throws ConfigurationException in case of a configuration problem
+     *
      * @see "TTP [735]"
      * @see org.extex.typesetter.type.noad.Noad#typeset(
      *      org.extex.typesetter.type.noad.Noad,
@@ -90,17 +106,18 @@ public class UnderlinedNoad extends AbstractNucleusNoad {
         setSpacingClass(n.getSpacingClass());
 
         getSpacingClass().addClearance(
-                (previousNoad != null ? previousNoad.getSpacingClass() : null),
-                list, mathContext);
+            (previousNoad != null ? previousNoad.getSpacingClass() : null),
+            list, mathContext);
 
-        FixedDimen thickness = mathContext
-                .mathParameter(MathFontParameter.DEFAULT_RULE_THICKNESS);
+        FixedDimen thickness =
+                mathContext
+                    .mathParameter(MathFontParameter.DEFAULT_RULE_THICKNESS);
         VerticalListNode vlist = new VerticalListNode();
         vlist.add(hlist);
         vlist.add(new ExplicitKernNode(new Dimen(3 * thickness.getValue()),
-                false));
+            false));
         vlist.add(new RuleNode(hlist.getWidth(), thickness, Dimen.ZERO_PT,
-                getTypesettingContext(), true));
+            getTypesettingContext(), true));
         vlist.add(new ExplicitKernNode(thickness, false));
 
         Dimen h = new Dimen(vlist.getHeight());

@@ -37,16 +37,16 @@ public interface CoreFontFactory extends ResourceFinder {
 
     /**
      * Return a new instance.
-     * 
+     *
      * If the name is empty or null, then the <code>NullFont</code> are
      * returned.
-     * 
+     *
      * If no font is found, then <code>null</code> is returned.
-     * 
+     *
      * @param key the fount key
-     * 
+     *
      * @return Returns the new font instance.
-     * 
+     *
      * @throws ConfigurationException from the resource finder.
      * @throws FontException if a font error occurred.
      */

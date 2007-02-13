@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -22,7 +22,6 @@ package org.extex.interpreter.exception.helping;
 import org.extex.type.UnicodeChar;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.i18n.LocalizerFactory;
-
 
 /**
  * This exception is raised when an unexpected character code is encountered.
@@ -54,7 +53,7 @@ public class InvalidCharacterException extends HelpingException {
     public InvalidCharacterException(final UnicodeChar uc) {
 
         super(LocalizerFactory.getLocalizer(InvalidCharacterException.class),
-                "TTP.InvalidChar", uc.toString());
+            "TTP.InvalidChar", uc.toString());
         cc = uc.toString();
     }
 
@@ -66,7 +65,7 @@ public class InvalidCharacterException extends HelpingException {
     public InvalidCharacterException(final String uc) {
 
         super(LocalizerFactory.getLocalizer(InvalidCharacterException.class),
-                "TTP.InvalidChar", uc);
+            "TTP.InvalidChar", uc);
         cc = uc;
     }
 

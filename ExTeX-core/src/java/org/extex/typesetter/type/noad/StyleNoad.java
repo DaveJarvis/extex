@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -28,8 +28,6 @@ import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.noad.util.MathContext;
 import org.extex.typesetter.type.noad.util.MathSpacing;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
-
-
 
 /**
  * This Noad indicates a change in the style to be used for the further
@@ -190,25 +188,27 @@ public final class StyleNoad implements Noad {
      */
     private static final StyleNoad[] STYLE = {//
             new StyleNoad(0, "displaystyle", "textfont"),
-            new StyleNoad(1, "displaystyle", "textfont"),
-            new StyleNoad(2, "textstyle", "textfont"),
-            new StyleNoad(3, "textstyle", "textfont"),
-            new StyleNoad(4, "scriptstyle", "scriptfont"),
-            new StyleNoad(5, "scriptstyle", "scriptfont"),
-            new StyleNoad(6, "scriptscriptstyle", "scriptscriptfont"),
-            new StyleNoad(7, "scriptscriptstyle", "scriptscriptfont")};
+                    new StyleNoad(1, "displaystyle", "textfont"),
+                    new StyleNoad(2, "textstyle", "textfont"),
+                    new StyleNoad(3, "textstyle", "textfont"),
+                    new StyleNoad(4, "scriptstyle", "scriptfont"),
+                    new StyleNoad(5, "scriptstyle", "scriptfont"),
+                    new StyleNoad(6, "scriptscriptstyle", "scriptscriptfont"),
+                    new StyleNoad(7, "scriptscriptstyle", "scriptscriptfont")};
 
     /**
      * The field <tt>CRAMPED</tt> contains the mapping to cramped styles.
      */
-    private static final StyleNoad[] CRAMPED = {STYLE[1], STYLE[1], STYLE[3],
-            STYLE[3], STYLE[5], STYLE[5], STYLE[7], STYLE[7]};
+    private static final StyleNoad[] CRAMPED =
+            {STYLE[1], STYLE[1], STYLE[3], STYLE[3], STYLE[5], STYLE[5],
+                    STYLE[7], STYLE[7]};
 
     /**
      * The field <tt>DENOM</tt> contains the mapping to denom styles.
      */
-    private static final StyleNoad[] DENOM = {STYLE[5], STYLE[6], STYLE[7],
-            STYLE[7], STYLE[7], STYLE[7], STYLE[7], STYLE[7]};
+    private static final StyleNoad[] DENOM =
+            {STYLE[5], STYLE[6], STYLE[7], STYLE[7], STYLE[7], STYLE[7],
+                    STYLE[7], STYLE[7]};
 
     /**
      * The constant <tt>DISPLAYSTYLE</tt> contains the value for the display
@@ -219,8 +219,9 @@ public final class StyleNoad implements Noad {
     /**
      * The field <tt>NUM</tt> contains the mapping to num styles.
      */
-    private static final StyleNoad[] NUM = {STYLE[2], STYLE[3], STYLE[4],
-            STYLE[5], STYLE[6], STYLE[6], STYLE[6], STYLE[7]};
+    private static final StyleNoad[] NUM =
+            {STYLE[2], STYLE[3], STYLE[4], STYLE[5], STYLE[6], STYLE[6],
+                    STYLE[6], STYLE[7]};
 
     /**
      * The constant <tt>SCRIPTSCRIPTSTYLE</tt> contains the value for the
@@ -237,14 +238,16 @@ public final class StyleNoad implements Noad {
     /**
      * The field <tt>SUB</tt> contains the mapping to sub styles.
      */
-    private static final StyleNoad[] SUB = {STYLE[5], STYLE[5], STYLE[5],
-            STYLE[5], STYLE[7], STYLE[7], STYLE[7], STYLE[7]};
+    private static final StyleNoad[] SUB =
+            {STYLE[5], STYLE[5], STYLE[5], STYLE[5], STYLE[7], STYLE[7],
+                    STYLE[7], STYLE[7]};
 
     /**
      * The field <tt>SUP</tt> contains the mapping to sup styles.
      */
-    private static final StyleNoad[] SUP = {STYLE[4], STYLE[5], STYLE[4],
-            STYLE[5], STYLE[6], STYLE[7], STYLE[6], STYLE[7]};
+    private static final StyleNoad[] SUP =
+            {STYLE[4], STYLE[5], STYLE[4], STYLE[5], STYLE[6], STYLE[7],
+                    STYLE[6], STYLE[7]};
 
     /**
      * The constant <tt>TEXTSTYLE</tt> contains the value for the text
@@ -328,6 +331,10 @@ public final class StyleNoad implements Noad {
     }
 
     /**
+     * Getter for spacing class.
+     *
+     * @return the spacing class
+     *
      * @see org.extex.typesetter.type.noad.Noad#getSpacingClass()
      */
     public MathSpacing getSpacingClass() {
@@ -346,6 +353,10 @@ public final class StyleNoad implements Noad {
     }
 
     /**
+     * Getter for the subscript.
+     *
+     * @return the subscript.
+     *
      * @see org.extex.typesetter.type.noad.Noad#getSubscript()
      */
     public Noad getSubscript() {
@@ -354,6 +365,10 @@ public final class StyleNoad implements Noad {
     }
 
     /**
+     * Getter for the superscript.
+     *
+     * @return the superscript.
+     *
      * @see org.extex.typesetter.type.noad.Noad#getSuperscript()
      */
     public Noad getSuperscript() {
@@ -412,6 +427,10 @@ public final class StyleNoad implements Noad {
     }
 
     /**
+     * Setter for the subscript.
+     *
+     * @param subscript the subscript to set.
+     *
      * @see org.extex.typesetter.type.noad.Noad#setSubscript(
      *      org.extex.typesetter.type.noad.Noad)
      */
@@ -421,6 +440,10 @@ public final class StyleNoad implements Noad {
     }
 
     /**
+     * Setter for the superscript.
+     *
+     * @param superscript the superscript to set.
+     *
      * @see org.extex.typesetter.type.noad.Noad#setSuperscript(
      *      org.extex.typesetter.type.noad.Noad)
      */
@@ -454,6 +477,10 @@ public final class StyleNoad implements Noad {
     }
 
     /**
+     * Get the string representation of this object for debugging purposes.
+     *
+     * @return the string representation
+     *
      * @see java.lang.Object#toString()
      */
     public String toString() {
@@ -476,6 +503,11 @@ public final class StyleNoad implements Noad {
     }
 
     /**
+     * Produce a printable representation to a certain depth of the noad.
+     *
+     * @param sb the string buffer
+     * @param depth the depth to which the full information should be given
+     *
      * @see org.extex.typesetter.type.noad.Noad#toString(
      *       java.lang.StringBuffer, int)
      */
@@ -485,6 +517,19 @@ public final class StyleNoad implements Noad {
     }
 
     /**
+     * Translate a Noad into a NodeList.
+     *
+     * @param previousNoad the previous noad
+     * @param noads the list of noads currently processed
+     * @param index the index of the current node in the list
+     * @param list the list to add the nodes to. This list contains the Nodes
+     *  previously typeset. Thus it can be used to look back
+     * @param mathContext the context to consider
+     * @param logger the logger for debugging and tracing information
+     *
+     * @throws TypesetterException in case of a problem
+     * @throws ConfigurationException in case of a configuration problem
+     *
      * @see org.extex.typesetter.type.noad.Noad#typeset(
      *      org.extex.typesetter.type.noad.Noad,
      *      org.extex.typesetter.type.noad.NoadList,

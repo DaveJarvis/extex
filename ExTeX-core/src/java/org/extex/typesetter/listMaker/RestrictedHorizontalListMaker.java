@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -47,6 +47,11 @@ public class RestrictedHorizontalListMaker extends HorizontalListMaker {
     }
 
     /**
+     * Getter for the current mode.
+     *
+     * @return the mode which is one of the values defined in
+     * {@link org.extex.typesetter.Mode Mode}.
+     *
      * @see org.extex.typesetter.ListMaker#getMode()
      */
     public Mode getMode() {
@@ -55,6 +60,21 @@ public class RestrictedHorizontalListMaker extends HorizontalListMaker {
     }
 
     /**
+     * Close the node list. This means that everything is done to ship the
+     * closed node list to the document writer. Nevertheless the invoking
+     * application might decide not to modify the node list and continue
+     * processing. In the other case some  nodes might be taken from the node
+     * list returned by this method. Then the processing has to continue with
+     * the reduced node list.
+     *
+     * @param context the typesetter options mapping a fragment of the
+     *  interpreter context
+     *
+     * @return the node list enclosed in this instance
+     *
+     * @throws TypesetterException in case of an error
+     * @throws ConfigurationException in case of a configuration error
+     *
      * @see org.extex.typesetter.ListMaker#complete(TypesetterOptions)
      */
     public NodeList complete(final TypesetterOptions context)

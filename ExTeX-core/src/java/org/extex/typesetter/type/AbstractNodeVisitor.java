@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -39,8 +39,6 @@ import org.extex.typesetter.type.node.SpaceNode;
 import org.extex.typesetter.type.node.VerticalListNode;
 import org.extex.typesetter.type.node.WhatsItNode;
 import org.extex.util.exception.GeneralException;
-
-
 
 /**
  * This abstract class can be used as base for node visitors for which only a

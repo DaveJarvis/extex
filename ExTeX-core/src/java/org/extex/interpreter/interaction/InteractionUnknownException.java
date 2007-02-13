@@ -46,6 +46,10 @@ public class InteractionUnknownException extends InterpreterException {
     }
 
     /**
+     * Creates a localized description of this throwable.
+     *
+     * @return the localized description of this throwable
+     *
      * @see java.lang.Throwable#getLocalizedMessage()
      */
     public String getLocalizedMessage() {

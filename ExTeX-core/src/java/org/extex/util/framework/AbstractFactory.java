@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -77,6 +77,10 @@ public abstract class AbstractFactory
             RegistrarObserver {
 
     /**
+     * Setter for the resource finder.
+     *
+     * @param finder the resource finder
+     *
      * @see org.extex.util.resource.ResourceConsumer#setResourceFinder(
      *      org.extex.util.resource.ResourceFinder)
      */
@@ -649,7 +653,7 @@ public abstract class AbstractFactory
      *
      * @return the desired sub-configuration
      *
-     * @throws ConfigurationException in case of an error 
+     * @throws ConfigurationException in case of an error
      */
     protected Configuration selectConfiguration(final String type)
             throws ConfigurationException {

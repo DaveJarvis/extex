@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -24,8 +24,6 @@ import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.typesetter.Discardable;
 import org.extex.typesetter.type.NodeVisitor;
 import org.extex.util.exception.GeneralException;
-
-
 
 /**
  * This node represents a <logo>TeX</logo> "math" node with the subtype "after".
@@ -83,7 +81,7 @@ public class AfterMathNode extends AbstractNode implements Discardable {
             sb.append(getLocalizer().format("String.Format"));
         } else {
             sb.append(getLocalizer().format("StringSurrounded.Format",
-                    width.toString()));
+                width.toString()));
         }
     }
 

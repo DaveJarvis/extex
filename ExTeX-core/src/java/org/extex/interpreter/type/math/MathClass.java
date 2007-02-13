@@ -87,8 +87,19 @@ public abstract class MathClass implements Serializable {
         }
 
         /**
-         * @see org.extex.typesetter.type.math.MathClass#visit(
-         *      MathClassVisitor, java.lang.Object)
+         * Call a method in the visitor depending on the type.
+         * This method is the entry point for the visitor pattern.
+         *
+         * @param visitor the visitor to call
+         * @param arg an arbitrary argument passed to the visitor
+         * @param arg2 an arbitrary second argument passed to the visitor
+         *
+         * @return an arbitrary return value
+         *
+         * @see org.extex.interpreter.type.math.MathClass#visit(
+         *      org.extex.interpreter.type.math.MathClassVisitor,
+         *      java.lang.Object,
+         *      java.lang.Object)
          */
         public Object visit(final MathClassVisitor visitor, final Object arg,
                 final Object arg2) {
@@ -99,9 +110,6 @@ public abstract class MathClass implements Serializable {
 
     /**
      * This is a inner class for closing.
-     *
-     * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision:4399 $
      */
     private static final class ClosingMathClass extends MathClass {
 
@@ -135,8 +143,19 @@ public abstract class MathClass implements Serializable {
         }
 
         /**
-         * @see org.extex.typesetter.type.math.MathClass#visit(
-         *      MathClassVisitor, java.lang.Object)
+         * Call a method in the visitor depending on the type.
+         * This method is the entry point for the visitor pattern.
+         *
+         * @param visitor the visitor to call
+         * @param arg an arbitrary argument passed to the visitor
+         * @param arg2 an arbitrary second argument passed to the visitor
+         *
+         * @return an arbitrary return value
+         *
+         * @see org.extex.interpreter.type.math.MathClass#visit(
+         *      org.extex.interpreter.type.math.MathClassVisitor,
+         *      java.lang.Object,
+         *      java.lang.Object)
          */
         public Object visit(final MathClassVisitor visitor, final Object arg,
                 final Object arg2) {
@@ -183,8 +202,19 @@ public abstract class MathClass implements Serializable {
         }
 
         /**
-         * @see org.extex.typesetter.type.math.MathClass#visit(
-         *      MathClassVisitor, java.lang.Object, java.lang.Object)
+         * Call a method in the visitor depending on the type.
+         * This method is the entry point for the visitor pattern.
+         *
+         * @param visitor the visitor to call
+         * @param arg an arbitrary argument passed to the visitor
+         * @param arg2 an arbitrary second argument passed to the visitor
+         *
+         * @return an arbitrary return value
+         *
+         * @see org.extex.interpreter.type.math.MathClass#visit(
+         *      org.extex.interpreter.type.math.MathClassVisitor,
+         *      java.lang.Object,
+         *      java.lang.Object)
          */
         public Object visit(final MathClassVisitor visitor, final Object arg,
                 final Object arg2) {
@@ -231,8 +261,19 @@ public abstract class MathClass implements Serializable {
         }
 
         /**
-         * @see org.extex.typesetter.type.math.MathClass#visit(
-         *      MathClassVisitor, java.lang.Object, java.lang.Object)
+         * Call a method in the visitor depending on the type.
+         * This method is the entry point for the visitor pattern.
+         *
+         * @param visitor the visitor to call
+         * @param arg an arbitrary argument passed to the visitor
+         * @param arg2 an arbitrary second argument passed to the visitor
+         *
+         * @return an arbitrary return value
+         *
+         * @see org.extex.interpreter.type.math.MathClass#visit(
+         *      org.extex.interpreter.type.math.MathClassVisitor,
+         *      java.lang.Object,
+         *      java.lang.Object)
          */
         public Object visit(final MathClassVisitor visitor, final Object arg,
                 final Object arg2) {
@@ -279,8 +320,19 @@ public abstract class MathClass implements Serializable {
         }
 
         /**
-         * @see org.extex.typesetter.type.math.MathClass#visit(
-         *      MathClassVisitor, java.lang.Object, java.lang.Object)
+         * Call a method in the visitor depending on the type.
+         * This method is the entry point for the visitor pattern.
+         *
+         * @param visitor the visitor to call
+         * @param arg an arbitrary argument passed to the visitor
+         * @param arg2 an arbitrary second argument passed to the visitor
+         *
+         * @return an arbitrary return value
+         *
+         * @see org.extex.interpreter.type.math.MathClass#visit(
+         *      org.extex.interpreter.type.math.MathClassVisitor,
+         *      java.lang.Object,
+         *      java.lang.Object)
          */
         public Object visit(final MathClassVisitor visitor, final Object arg,
                 final Object arg2) {
@@ -327,8 +379,19 @@ public abstract class MathClass implements Serializable {
         }
 
         /**
-         * @see org.extex.typesetter.type.math.MathClass#visit(
-         *      MathClassVisitor, java.lang.Object, java.lang.Object)
+         * Call a method in the visitor depending on the type.
+         * This method is the entry point for the visitor pattern.
+         *
+         * @param visitor the visitor to call
+         * @param arg an arbitrary argument passed to the visitor
+         * @param arg2 an arbitrary second argument passed to the visitor
+         *
+         * @return an arbitrary return value
+         *
+         * @see org.extex.interpreter.type.math.MathClass#visit(
+         *      org.extex.interpreter.type.math.MathClassVisitor,
+         *      java.lang.Object,
+         *      java.lang.Object)
          */
         public Object visit(final MathClassVisitor visitor, final Object arg,
                 final Object arg2) {
@@ -375,8 +438,19 @@ public abstract class MathClass implements Serializable {
         }
 
         /**
-         * @see org.extex.typesetter.type.math.MathClass#visit(
-         *      MathClassVisitor, java.lang.Object, java.lang.Object)
+         * Call a method in the visitor depending on the type.
+         * This method is the entry point for the visitor pattern.
+         *
+         * @param visitor the visitor to call
+         * @param arg an arbitrary argument passed to the visitor
+         * @param arg2 an arbitrary second argument passed to the visitor
+         *
+         * @return an arbitrary return value
+         *
+         * @see org.extex.interpreter.type.math.MathClass#visit(
+         *      org.extex.interpreter.type.math.MathClassVisitor,
+         *      java.lang.Object,
+         *      java.lang.Object)
          */
         public Object visit(final MathClassVisitor visitor, final Object arg,
                 final Object arg2) {
@@ -423,8 +497,19 @@ public abstract class MathClass implements Serializable {
         }
 
         /**
-         * @see org.extex.typesetter.type.math.MathClass#visit(
-         *      MathClassVisitor, java.lang.Object, java.lang.Object)
+         * Call a method in the visitor depending on the type.
+         * This method is the entry point for the visitor pattern.
+         *
+         * @param visitor the visitor to call
+         * @param arg an arbitrary argument passed to the visitor
+         * @param arg2 an arbitrary second argument passed to the visitor
+         *
+         * @return an arbitrary return value
+         *
+         * @see org.extex.interpreter.type.math.MathClass#visit(
+         *      org.extex.interpreter.type.math.MathClassVisitor,
+         *      java.lang.Object,
+         *      java.lang.Object)
          */
         public Object visit(final MathClassVisitor visitor, final Object arg,
                 final Object arg2) {

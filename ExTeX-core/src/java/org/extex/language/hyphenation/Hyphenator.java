@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -28,8 +28,6 @@ import org.extex.type.UnicodeCharList;
 import org.extex.typesetter.TypesetterOptions;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.node.factory.NodeFactory;
-
-
 
 /**
  * Interface for the <code>HyphenationTable</code>.

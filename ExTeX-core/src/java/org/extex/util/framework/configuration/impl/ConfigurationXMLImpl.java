@@ -68,7 +68,7 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
         /**
          * Creates a new object.
          *
-         * @param node
+         * @param node the root node
          */
         protected ConfigIterator(final Node node) {
 
@@ -77,6 +77,12 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
         }
 
         /**
+         * Returns <tt>true</tt> if the iteration has more elements. (In other
+         * words, returns <tt>true</tt> if <tt>next</tt> would return an element
+         * rather than throwing an exception.)
+         *
+         * @return <tt>true</tt> if the iterator has more elements.
+         *
          * @see java.util.Iterator#hasNext()
          */
         public boolean hasNext() {
@@ -95,6 +101,10 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
         }
 
         /**
+         * Returns the next element in the iteration.
+         *
+         * @return the next element in the iteration.
+         *
          * @see java.util.Iterator#next()
          */
         public Object next() {
@@ -113,6 +123,8 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
         }
 
         /**
+         * This is an unsupported operation and leads to an exception.
+         *
          * @see java.util.Iterator#remove()
          */
         public void remove() {

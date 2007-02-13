@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -24,7 +24,6 @@ import org.extex.interpreter.exception.InterpreterException;
 import org.extex.scanner.type.token.Token;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
-
 /**
  * This exception is raised when direction is needed but has not been found.
  *
@@ -48,10 +47,15 @@ public class MissingOcplistException extends InterpreterException {
     public MissingOcplistException(final Context context, final Token t) {
 
         super(LocalizerFactory.getLocalizer(MissingOcplistException.class)
-                .format("Omega.MissingOcplist"));
+            .format("Omega.MissingOcplist"));
     }
 
     /**
+     * Returns the detail message string of this throwable.
+     *
+     * @return  the detail message string of this <tt>Throwable</tt> instance
+     *          (which may be <tt>null</tt>).
+     *
      * @see java.lang.Throwable#getLocalizedMessage()
      */
     public String getLocalizedMessage() {

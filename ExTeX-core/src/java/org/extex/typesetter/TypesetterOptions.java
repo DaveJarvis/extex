@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -30,8 +30,6 @@ import org.extex.scanner.type.token.TokenFactory;
 import org.extex.type.UnicodeChar;
 import org.extex.typesetter.paragraphBuilder.ParagraphShape;
 import org.extex.util.exception.GeneralException;
-
-
 
 /**
  * This interface describes the possibilities of the typesetter to access its
@@ -83,7 +81,7 @@ public interface TypesetterOptions {
      *
      * @param name the name of the register
      *
-     * @return te muskip register value
+     * @return the muskip register value
      */
     Muskip getMuskip(String name);
 
@@ -100,12 +98,12 @@ public interface TypesetterOptions {
     /**
      * Getter for the current name space.
      *
-     * @return the current namespace
+     * @return the current name space
      */
     String getNamespace();
 
     /**
-     * Getter fot the paragraph shape.
+     * Getter for the paragraph shape.
      *
      * @return the paragraph shape or <code>null</code> if no special shape
      *   is present
@@ -150,6 +148,5 @@ public interface TypesetterOptions {
      * @throws GeneralException in case of an error
      */
     void setCountOption(String name, long value) throws GeneralException;
-
 
 }

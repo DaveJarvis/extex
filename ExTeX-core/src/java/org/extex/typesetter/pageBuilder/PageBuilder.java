@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,7 +19,6 @@
 
 package org.extex.typesetter.pageBuilder;
 
-
 import org.extex.backend.BackendDriver;
 import org.extex.interpreter.context.Context;
 import org.extex.typesetter.Typesetter;
@@ -29,7 +28,6 @@ import org.extex.typesetter.output.OutputRoutine;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.node.VerticalListNode;
 import org.extex.typesetter.type.page.PageFactory;
-
 
 /**
  * This interface describes the capabilities of a page builder.

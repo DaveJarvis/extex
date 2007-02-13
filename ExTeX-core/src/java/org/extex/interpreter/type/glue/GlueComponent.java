@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -43,7 +43,6 @@ import org.extex.scanner.type.token.TokenFactory;
 import org.extex.typesetter.Typesetter;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.i18n.LocalizerFactory;
-
 
 /**
  * This class provides a means to store floating numbers with an order.
@@ -91,8 +90,8 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
     /**
      * The constant <tt>MINUS_ONE_FIL</tt> contains the value of -1 fil.
      */
-    public static final FixedGlueComponent MINUS_ONE_FIL = new GlueComponent(
-            -ONE, 2);
+    public static final FixedGlueComponent MINUS_ONE_FIL =
+            new GlueComponent(-ONE, 2);
 
     /**
      * The constant <tt>ONE_FI</tt> contains the value of 1 fi.
@@ -168,12 +167,13 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
             } else if (t instanceof CodeToken) {
                 Code code = context.getCode((CodeToken) t);
                 if (code instanceof DimenConvertible) {
-                    value = ((DimenConvertible) code).convertDimen(context,
-                            source, typesetter);
+                    value =
+                            ((DimenConvertible) code).convertDimen(context,
+                                source, typesetter);
                     return new GlueComponent(value);
                 } else if (code instanceof ExpandableCode) {
                     ((ExpandableCode) code).expand(Flags.NONE, context, source,
-                            typesetter);
+                        typesetter);
                 } else {
                     break;
                 }
@@ -184,7 +184,8 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
 
         value = ScaledNumber.scanFloat(context, source, typesetter, t);
 
-        GlueComponent gc = attachUnit(value, context, source, typesetter, fixed);
+        GlueComponent gc =
+                attachUnit(value, context, source, typesetter, fixed);
         if (gc == null) {
             // cf. TTP [459]
             throw new HelpingException(getMyLocalizer(), "TTP.IllegalUnit");
@@ -225,9 +226,10 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
         if (t instanceof CodeToken) {
             Code code = context.getCode((CodeToken) t);
             if (code instanceof DimenConvertible) {
-                v = v
-                        * ((DimenConvertible) code).convertDimen(context,
-                                source, typesetter) / ONE;
+                v =
+                        v
+                                * ((DimenConvertible) code).convertDimen(
+                                    context, source, typesetter) / ONE;
                 return new GlueComponent(v);
             }
         } else if (t instanceof LetterToken) {
@@ -276,12 +278,14 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
                     return new GlueComponent(v);
                 case 'e':
                     if (t.equals(Catcode.LETTER, 'x')) {
-                        FixedDimen ex = context.getTypesettingContext()
-                                .getFont().getEm();
+                        FixedDimen ex =
+                                context.getTypesettingContext().getFont()
+                                    .getEm();
                         v = v * ex.getValue() / ONE;
                     } else if (t.equals(Catcode.LETTER, 'm')) {
-                        FixedDimen em = context.getTypesettingContext()
-                                .getFont().getEm();
+                        FixedDimen em =
+                                context.getTypesettingContext().getFont()
+                                    .getEm();
                         v = v * em.getValue() / ONE;
                     } else {
                         break;
@@ -598,7 +602,7 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
      *
      */
     public void negate() {
-        
+
         this.value = -this.value;
     }
 
@@ -755,7 +759,7 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
             }
         } else {
             throw new RuntimeException(getMyLocalizer().format("Illegal.Order",
-                    Integer.toString(order)));
+                Integer.toString(order)));
         }
     }
 
@@ -812,14 +816,14 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
 
         if (val < 0) {
             toks.add(factory.createToken(Catcode.OTHER, '-',
-                    Namespace.DEFAULT_NAMESPACE));
+                Namespace.DEFAULT_NAMESPACE));
             val = -val;
         }
 
         long v = val / ONE;
         if (v == 0) {
             toks.add(factory.createToken(Catcode.OTHER, '0',
-                    Namespace.DEFAULT_NAMESPACE));
+                Namespace.DEFAULT_NAMESPACE));
         } else {
             long m = 1;
             while (m <= v) {
@@ -828,14 +832,14 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
             m /= 10;
             while (m > 0) {
                 toks.add(factory.createToken(Catcode.OTHER,
-                        (char) ('0' + (v / m)), Namespace.DEFAULT_NAMESPACE));
+                    (char) ('0' + (v / m)), Namespace.DEFAULT_NAMESPACE));
                 v = v % m;
                 m /= 10;
             }
         }
 
         toks.add(factory.createToken(Catcode.OTHER, '.',
-                Namespace.DEFAULT_NAMESPACE));
+            Namespace.DEFAULT_NAMESPACE));
 
         val = 10 * (val % ONE) + 5;
         long delta = 10;
@@ -845,23 +849,24 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
             }
             int i = (int) (val / ONE);
             toks.add(factory.createToken(Catcode.OTHER, (char) ('0' + i),
-                    Namespace.DEFAULT_NAMESPACE));
+                Namespace.DEFAULT_NAMESPACE));
             val = 10 * (val % ONE);
             delta *= 10;
         } while (val > delta);
 
         if (order == 0) {
             toks.add(factory.createToken(Catcode.LETTER, c1,
-                    Namespace.DEFAULT_NAMESPACE));
+                Namespace.DEFAULT_NAMESPACE));
             toks.add(factory.createToken(Catcode.LETTER, c2,
-                    Namespace.DEFAULT_NAMESPACE));
+                Namespace.DEFAULT_NAMESPACE));
         } else if (order > 0) {
             toks.add(factory.createToken(Catcode.LETTER, 'f',
-                    Namespace.DEFAULT_NAMESPACE));
+                Namespace.DEFAULT_NAMESPACE));
             toks.add(factory.createToken(Catcode.LETTER, 'i',
-                    Namespace.DEFAULT_NAMESPACE));
-            Token l = factory.createToken(Catcode.LETTER, 'l',
-                    Namespace.DEFAULT_NAMESPACE);
+                Namespace.DEFAULT_NAMESPACE));
+            Token l =
+                    factory.createToken(Catcode.LETTER, 'l',
+                        Namespace.DEFAULT_NAMESPACE);
             for (int i = order; i > 1; i--) {
                 toks.add(l);
             }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -22,10 +22,8 @@ package org.extex.scanner.type.token;
 import org.extex.scanner.type.Catcode;
 import org.extex.type.UnicodeChar;
 
-
-
 /**
- * This class represents a cr token.
+ * This class represents a carriage return token.
  * <p>
  * This class has a protected constructor only. Use the factory
  * {@link org.extex.scanner.type.token.TokenFactory TokenFactory}
@@ -53,7 +51,18 @@ public class CrToken extends AbstractToken implements Token {
     }
 
     /**
-     * @see org.extex.scanner.type.token.AbstractToken#equals(org.extex.scanner.type.Catcode, char)
+     * Compare the current token with a pair of catcode and character value.
+     * This pair constitutes a virtual token. They are the same if the catcode
+     * and the value are the same.
+     *
+     * @param cc the catcode
+     * @param c the value
+     *
+     * @return <code>true</code> iff the tokens are equal
+     *
+     * @see org.extex.scanner.type.token.AbstractToken#equals(
+     *      org.extex.scanner.type.Catcode,
+     *      char)
      */
     public boolean equals(final Catcode cc, final char c) {
 
@@ -61,7 +70,17 @@ public class CrToken extends AbstractToken implements Token {
     }
 
     /**
-     * @see org.extex.scanner.type.token.AbstractToken#equals(org.extex.scanner.type.Catcode, java.lang.String)
+     * Compare the current token with a pair of catcode and String value. This
+     * pair constitutes a virtual token. They are the same if the catcode and
+     * the value are the same.
+     *
+     * @param cc the catcode
+     * @param s the value
+     *
+     * @return <code>true</code> iff the tokens are equal
+     *
+     * @see org.extex.scanner.type.token.AbstractToken#equals(
+     *      org.extex.scanner.type.Catcode, java.lang.String)
      */
     public boolean equals(final Catcode cc, final String s) {
 
@@ -69,6 +88,13 @@ public class CrToken extends AbstractToken implements Token {
     }
 
     /**
+     * Compare the current token with a character value. They are the same if
+     * the values are the same.
+     *
+     * @param c the value
+     *
+     * @return <code>true</code> iff the tokens are equal
+     *
      * @see org.extex.scanner.type.token.AbstractToken#equals(char)
      */
     public boolean equals(final char c) {
@@ -77,6 +103,10 @@ public class CrToken extends AbstractToken implements Token {
     }
 
     /**
+     * Getter for the catcode.
+     *
+     * @return the catcode
+     *
      * @see org.extex.scanner.type.token.Token#getCatcode()
      */
     public Catcode getCatcode() {
@@ -109,6 +139,14 @@ public class CrToken extends AbstractToken implements Token {
     }
 
     /**
+     * This method returns the textual representation for the Token.
+     * This textual representation might not contain the full information but
+     * can be used as an abbreviated form to be shown to the end user.
+     * A representation with more complete information can be received with the
+     * method {@link java.lang.Object#toString() toString()}.
+     *
+     * @return the textual representation
+     *
      * @see org.extex.scanner.type.token.Token#toText()
      */
     public String toText() {
@@ -117,6 +155,14 @@ public class CrToken extends AbstractToken implements Token {
     }
 
     /**
+     * Invoke the appropriate visit method for the current class.
+     * @param visitor the calling visitor
+     * @param arg1 the first argument to pass
+     *
+     * @return the result object
+     *
+     * @throws Exception in case of an error
+     *
      * @see org.extex.scanner.type.token.Token#visit(
      *      org.extex.scanner.type.token.TokenVisitor,
      *      java.lang.Object)

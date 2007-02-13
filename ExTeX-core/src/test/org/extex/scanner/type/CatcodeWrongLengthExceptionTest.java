@@ -51,5 +51,4 @@ public class CatcodeWrongLengthExceptionTest extends TestCase {
             new CatcodeWrongLengthException("xxx").getLocalizedMessage());
     }
 
-
 }

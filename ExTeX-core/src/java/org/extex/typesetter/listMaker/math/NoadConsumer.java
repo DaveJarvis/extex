@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -33,7 +33,6 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.noad.Noad;
 
-
 /**
  * This interface describes list makers which are able to consume a Noad.
  * This is usually the case for math list makers.
@@ -51,8 +50,7 @@ public interface NoadConsumer extends ListMaker {
      *
      * @throws TypesetterException in case of an error
      */
-    void add(MathCode mc, TypesettingContext tc)
-            throws TypesetterException;
+    void add(MathCode mc, TypesettingContext tc) throws TypesetterException;
 
     /**
      * Add a mathematical delimiter.
@@ -161,7 +159,7 @@ public interface NoadConsumer extends ListMaker {
      * @throws TypesetterException in case of an error
      */
     void switchToFraction(MathDelimiter leftDelimiter,
-            MathDelimiter rightDelimiter, FixedDimen ruleWidth, TypesettingContext tc)
-            throws TypesetterException;
+            MathDelimiter rightDelimiter, FixedDimen ruleWidth,
+            TypesettingContext tc) throws TypesetterException;
 
 }

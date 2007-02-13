@@ -40,7 +40,10 @@ import junit.framework.TestCase;
  */
 public class ClasspathArchiveFinderTest extends TestCase {
 
-    private static final Configuration cfg = new Configuration() {
+    /**
+     * The constant <tt>CFG</tt> contains the configuration.
+     */
+    private static final Configuration CFG = new Configuration() {
 
         public Configuration findConfiguration(final String key)
                 throws ConfigurationInvalidResourceException,
@@ -140,7 +143,7 @@ public class ClasspathArchiveFinderTest extends TestCase {
      */
     public final void testFindResource0() throws Exception {
 
-        ClasspathArchiveFinder finder = new ClasspathArchiveFinder(cfg);
+        ClasspathArchiveFinder finder = new ClasspathArchiveFinder(CFG);
 
         assertNull(finder.findResource("undef", "tex"));
     }
@@ -150,7 +153,7 @@ public class ClasspathArchiveFinderTest extends TestCase {
      */
     public final void testFindResource1() throws Exception {
 
-        ClasspathArchiveFinder finder = new ClasspathArchiveFinder(cfg);
+        ClasspathArchiveFinder finder = new ClasspathArchiveFinder(CFG);
 
         assertNull(finder.findResource(null, null));
     }
@@ -160,7 +163,7 @@ public class ClasspathArchiveFinderTest extends TestCase {
      */
     public final void testFindResource2() throws Exception {
 
-        ClasspathArchiveFinder finder = new ClasspathArchiveFinder(cfg);
+        ClasspathArchiveFinder finder = new ClasspathArchiveFinder(CFG);
 
         assertNotNull(finder.findResource("a", "tex"));
     }
@@ -170,7 +173,7 @@ public class ClasspathArchiveFinderTest extends TestCase {
      */
     public final void testFindResource3() throws Exception {
 
-        ClasspathArchiveFinder finder = new ClasspathArchiveFinder(cfg);
+        ClasspathArchiveFinder finder = new ClasspathArchiveFinder(CFG);
 
         assertNotNull(finder.findResource("a.tex", ""));
     }
@@ -180,7 +183,7 @@ public class ClasspathArchiveFinderTest extends TestCase {
      */
     public final void testFindResource4() throws Exception {
 
-        ClasspathArchiveFinder finder = new ClasspathArchiveFinder(cfg);
+        ClasspathArchiveFinder finder = new ClasspathArchiveFinder(CFG);
 
         assertNotNull(finder.findResource("aa", "tex"));
     }
@@ -190,8 +193,9 @@ public class ClasspathArchiveFinderTest extends TestCase {
      */
     public final void testFindResource5() throws Exception {
 
-        ClasspathArchiveFinder finder = new ClasspathArchiveFinder(cfg);
+        ClasspathArchiveFinder finder = new ClasspathArchiveFinder(CFG);
 
         assertNull(finder.findResource("bb", "tex"));
     }
+
 }

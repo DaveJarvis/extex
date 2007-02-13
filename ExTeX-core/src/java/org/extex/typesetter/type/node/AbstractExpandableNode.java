@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -107,6 +107,10 @@ public abstract class AbstractExpandableNode extends AbstractNode {
     }
 
     /**
+     * Add the flexible depth of the current node to the given glue.
+     *
+     * @param glue the glue to add to.
+     *
      * @see org.extex.typesetter.type.Node#addDepthTo(
      *      org.extex.interpreter.type.glue.WideGlue)
      */
@@ -120,6 +124,10 @@ public abstract class AbstractExpandableNode extends AbstractNode {
     }
 
     /**
+     * Add the flexible height of the current node to the given glue.
+     *
+     * @param glue the glue to add to.
+     *
      * @see org.extex.typesetter.type.Node#addHeightTo(
      *      org.extex.interpreter.type.glue.WideGlue)
      */
@@ -133,6 +141,10 @@ public abstract class AbstractExpandableNode extends AbstractNode {
     }
 
     /**
+     * Add the flexible width of the current node to the given glue.
+     *
+     * @param glue the glue to add to.
+     *
      * @see org.extex.typesetter.type.Node#addWidthTo(
      *      org.extex.interpreter.type.glue.WideGlue)
      */
@@ -166,6 +178,12 @@ public abstract class AbstractExpandableNode extends AbstractNode {
     }
 
     /**
+     * Adjust the height of a flexible node. This method is a noop for any but
+     * the flexible nodes.
+     *
+     * @param height the desired height
+     * @param sum the total sum of the glues
+     *
      * @see org.extex.typesetter.type.node.AbstractNode#spreadHeight(
      *      org.extex.interpreter.type.dimen.FixedDimen,
      *      org.extex.interpreter.type.glue.FixedGlueComponent)

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -21,7 +21,6 @@ package org.extex.typesetter.type.node;
 
 import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.typesetter.type.Node;
-
 
 /**
  * This class provides an extension mechanism for nodes. With this class it is
@@ -54,6 +53,10 @@ public class ExtensionNode extends WhatsItNode implements Node {
     }
 
     /**
+     * Getter for the depth of the node.
+     *
+     * @return the depth
+     *
      * @see org.extex.typesetter.type.node.AbstractNode#getDepth()
      */
     public FixedDimen getDepth() {
@@ -62,6 +65,10 @@ public class ExtensionNode extends WhatsItNode implements Node {
     }
 
     /**
+     * Getter for the height of the node.
+     *
+     * @return the height
+     *
      * @see org.extex.typesetter.type.node.AbstractNode#getHeight()
      */
     public FixedDimen getHeight() {
@@ -70,6 +77,10 @@ public class ExtensionNode extends WhatsItNode implements Node {
     }
 
     /**
+     * Getter for the width of the node.
+     *
+     * @return the width
+     *
      * @see org.extex.typesetter.type.node.AbstractNode#getWidth()
      */
     public FixedDimen getWidth() {
@@ -78,6 +89,10 @@ public class ExtensionNode extends WhatsItNode implements Node {
     }
 
     /**
+     * Setter for the depth of the node.
+     *
+     * @param depth the node depth
+     *
      * @see org.extex.typesetter.type.Node#setDepth(
      *      org.extex.interpreter.type.dimen.FixedDimen)
      */
@@ -87,6 +102,10 @@ public class ExtensionNode extends WhatsItNode implements Node {
     }
 
     /**
+     * Setter for the height of the node.
+     *
+     * @param height the new height
+     *
      * @see org.extex.typesetter.type.Node#setHeight(
      *      org.extex.interpreter.type.dimen.FixedDimen)
      */
@@ -96,6 +115,10 @@ public class ExtensionNode extends WhatsItNode implements Node {
     }
 
     /**
+     * Setter for the width of the node.
+     *
+     * @param width the new width
+     *
      * @see org.extex.typesetter.type.Node#setWidth(
      *      org.extex.interpreter.type.dimen.FixedDimen)
      */

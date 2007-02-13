@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -26,8 +26,6 @@ import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.type.UnicodeChar;
 import org.extex.typesetter.type.noad.MathGlyph;
 import org.extex.util.framework.i18n.LocalizerFactory;
-
-
 
 /**
  * This class represents a mathematical character. It consists of a class, a
@@ -94,15 +92,16 @@ public class MathCode implements Serializable {
         super();
         if (code < 0 || code > 0x8000) {
             throw new HelpingException(LocalizerFactory
-                    .getLocalizer(MathCode.class), "TTP.InvalidCode", //
-                    Long.toString(code));
+                .getLocalizer(MathCode.class), "TTP.InvalidCode", //
+                Long.toString(code));
         } else if (code == 0x8000) {
             mathClass = null;
             mathGlyph = null;
         } else {
             mathClass = MathClass.getMathClass((int) (code >> CLASS_SHIFT));
-            mathGlyph = new MathGlyph((int) (code >> 8) & FAMILY_MASK,
-                    UnicodeChar.get((int) (code & CHAR_MASK)));
+            mathGlyph =
+                    new MathGlyph((int) (code >> 8) & FAMILY_MASK, UnicodeChar
+                        .get((int) (code & CHAR_MASK)));
         }
     }
 

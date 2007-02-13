@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -35,8 +35,6 @@ import org.extex.typesetter.type.node.HorizontalListNode;
 import org.extex.typesetter.type.node.RuleNode;
 import org.extex.typesetter.type.node.VerticalListNode;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
-
-
 
 /**
  * This Noad represents some mathematical material stacked above some other
@@ -111,6 +109,11 @@ public class FractionNoad extends AbstractNoad {
     }
 
     /**
+     * Add some information in the middle of the default toString method.
+     *
+     * @param sb the target string buffer
+     * @param depth the recursion depth
+     *
      * @see "TTP [697]"
      * @see org.extex.typesetter.type.noad.AbstractNoad#toStringAdd(
      *      java.lang.StringBuffer,
@@ -137,6 +140,19 @@ public class FractionNoad extends AbstractNoad {
     }
 
     /**
+     * Translate a Noad into a NodeList.
+     *
+     * @param previousNoad the previous noad
+     * @param noads the list of noads currently processed
+     * @param index the index of the current node in the list
+     * @param list the list to add the nodes to. This list contains the Nodes
+     *  previously typeset. Thus it can be used to look back
+     * @param mathContext the context to consider
+     * @param logger the logger for debugging and tracing information
+     *
+     * @throws TypesetterException in case of a problem
+     * @throws ConfigurationException in case of a configuration problem
+     *
      * @see "TTP [704,743]"
      * @see org.extex.typesetter.type.noad.Noad#typeset(
      *      org.extex.typesetter.type.noad.Noad,
@@ -153,8 +169,8 @@ public class FractionNoad extends AbstractNoad {
                 ConfigurationException {
 
         getSpacingClass().addClearance(
-                (previousNoad != null ? previousNoad.getSpacingClass() : null),
-                list, mathContext);
+            (previousNoad != null ? previousNoad.getSpacingClass() : null),
+            list, mathContext);
 
         NodeList vlist = new VerticalListNode();
 
@@ -184,8 +200,9 @@ public class FractionNoad extends AbstractNoad {
 
         vlist.add(num);
         if (thickness == null) {
-            thickness = mathContext
-                    .mathParameter(MathFontParameter.DEFAULT_RULE_THICKNESS);
+            thickness =
+                    mathContext
+                        .mathParameter(MathFontParameter.DEFAULT_RULE_THICKNESS);
         }
 
         if (!thickness.ne(Dimen.ZERO)) {
@@ -197,14 +214,14 @@ public class FractionNoad extends AbstractNoad {
 
         if (leftDelimiter != null) {
             leftDelimiter.typeset(list, mathContext, vlist.getHeight(), vlist
-                    .getDepth());
+                .getDepth());
         }
 
         list.add(vlist);
 
         if (rightDelimiter != null) {
             rightDelimiter.typeset(list, mathContext, vlist.getHeight(), vlist
-                    .getDepth());
+                .getDepth());
         }
     }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -42,8 +42,6 @@ import org.extex.typesetter.Typesetter;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
-
-
 /**
  * This class provides a skip value with a variable length of order 0.
  * The actual length is a multiple of math units (mu).
@@ -81,14 +79,15 @@ public class Muskip extends Mudimen implements Serializable {
                 Code code = context.getCode((CodeToken) t);
                 if (code instanceof MuskipConvertible) {
                     return new Muskip(((MuskipConvertible) code).convertMuskip(
-                            context, source, typesetter));
+                        context, source, typesetter));
                 } else if (code instanceof MudimenConvertible) {
-                    long md = ((MudimenConvertible) code).convertMudimen(
-                            context, source, typesetter);
+                    long md =
+                            ((MudimenConvertible) code).convertMudimen(context,
+                                source, typesetter);
                     return new Muskip(md);
                 } else if (code instanceof ExpandableCode) {
                     ((ExpandableCode) code).expand(Flags.NONE, context, source,
-                            typesetter);
+                        typesetter);
                 } else {
                     break;
                 }
@@ -103,7 +102,7 @@ public class Muskip extends Mudimen implements Serializable {
         long value = ScaledNumber.scanFloat(context, source, typesetter, t);
         if (!source.getKeyword(context, "mu")) {
             throw new HelpingException(LocalizerFactory
-                    .getLocalizer(Muskip.class), "TTP.IllegalMu");
+                .getLocalizer(Muskip.class), "TTP.IllegalMu");
         }
         Muskip ms = new Muskip(new Dimen(value));
 
@@ -152,7 +151,7 @@ public class Muskip extends Mudimen implements Serializable {
             return new GlueComponent(value, 1);
         }
         throw new HelpingException(LocalizerFactory.getLocalizer(Muskip.class),
-                "TTP.IllegalMu");
+            "TTP.IllegalMu");
 
     }
 

@@ -136,7 +136,7 @@ public class FontKey implements Serializable {
      *
      * If the name is a empty string, then the key for
      * the null font is returned; i.e. the name is treated as null.
-     * 
+     *
      * @param theName   The name of the font.
      */
     protected FontKey(final String theName) {

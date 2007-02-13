@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -32,8 +32,6 @@ import org.extex.typesetter.type.noad.util.MathSpacing;
 import org.extex.typesetter.type.node.HorizontalListNode;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-
-
 /**
  * This Noad represents an ordinary character.
  *
@@ -57,6 +55,11 @@ public class OrdinaryNoad extends AbstractNucleusNoad implements SimpleNoad {
     }
 
     /**
+     * Add some information in the middle of the default toString method.
+     *
+     * @param sb the target string buffer
+     * @param depth the recursion depth
+     *
      * @see "TTP [696]"
      * @see org.extex.typesetter.type.noad.AbstractNoad#toStringAdd(
      *      java.lang.StringBuffer,
@@ -68,6 +71,19 @@ public class OrdinaryNoad extends AbstractNucleusNoad implements SimpleNoad {
     }
 
     /**
+     * Translate a Noad into a NodeList.
+     *
+     * @param previousNoad the previous noad
+     * @param noads the list of noads currently processed
+     * @param index the index of the current node in the list
+     * @param list the list to add the nodes to. This list contains the Nodes
+     *  previously typeset. Thus it can be used to look back
+     * @param mathContext the context to consider
+     * @param logger the logger for debugging and tracing information
+     *
+     * @throws TypesetterException in case of a problem
+     * @throws ConfigurationException in case of a configuration problem
+     *
      * @see "TTP [752]"
      * @see org.extex.typesetter.type.noad.Noad#typeset(
      *      org.extex.typesetter.type.noad.Noad,
@@ -84,8 +100,8 @@ public class OrdinaryNoad extends AbstractNucleusNoad implements SimpleNoad {
                 ConfigurationException {
 
         getSpacingClass().addClearance(
-                (previousNoad != null ? previousNoad.getSpacingClass() : null),
-                list, mathContext);
+            (previousNoad != null ? previousNoad.getSpacingClass() : null),
+            list, mathContext);
 
         Noad n = getNucleus();
         if (n != null) {
@@ -93,8 +109,9 @@ public class OrdinaryNoad extends AbstractNucleusNoad implements SimpleNoad {
         }
 
         ImmutableDimen delta = Dimen.ZERO_PT; // TODO gene: determine delta
-        Node node = makeScripts(new HorizontalListNode(), mathContext, delta,
-                logger);
+        Node node =
+                makeScripts(new HorizontalListNode(), mathContext, delta,
+                    logger);
         list.add(node);
     }
 

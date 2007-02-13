@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -40,8 +40,6 @@ import org.extex.typesetter.type.noad.StyleNoad;
 import org.extex.typesetter.type.noad.util.MathContext;
 import org.extex.typesetter.type.node.HorizontalListNode;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
-
-
 
 /**
  * This is the list maker for the display math formulae.
@@ -134,12 +132,12 @@ public class DisplaymathListMaker extends MathListMaker implements EqConsumer {
         // see [TTP 1195]
         if (insufficientSymbolFonts(context)) {
             throw new TypesetterException(new HelpingException(getLocalizer(),
-                    "TTP.InsufficientSymbolFonts"));
+                "TTP.InsufficientSymbolFonts"));
         }
         // see [TTP 1195]
         if (insufficientExtensionFonts(context)) {
             throw new TypesetterException(new HelpingException(getLocalizer(),
-                    "TTP.InsufficientExtensionFonts"));
+                "TTP.InsufficientExtensionFonts"));
         }
 
         HorizontalListNode list = new HorizontalListNode();
@@ -150,7 +148,7 @@ public class DisplaymathListMaker extends MathListMaker implements EqConsumer {
         }
 
         getNoads().typeset(null, null, 0, list,
-                new MathContext(StyleNoad.DISPLAYSTYLE, context), getLogger());
+            new MathContext(StyleNoad.DISPLAYSTYLE, context), getLogger());
 
         if (eqno != null && !leq) {
             //TODO gene: eqno unimplemented

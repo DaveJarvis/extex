@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -27,8 +27,6 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.noad.util.MathContext;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
-
-
 
 /**
  * This Noad carries a delimiter which is set on the right side of the math
@@ -66,6 +64,11 @@ public class RightNoad extends AbstractNoad {
     }
 
     /**
+     * Add some information in the middle of the default toString method.
+     *
+     * @param sb the target string buffer
+     * @param depth the recursion depth
+     *
      * @see "TTP [696]"
      * @see org.extex.typesetter.type.noad.AbstractNoad#toStringAdd(
      *      java.lang.StringBuffer,
@@ -78,6 +81,18 @@ public class RightNoad extends AbstractNoad {
     }
 
     /**
+     * Translate a Noad into a NodeList.
+     *
+     * @param previousNoad the previous noad
+     * @param noads the list of noads currently processed
+     * @param index the index of the current node in the list
+     * @param list the list to add the nodes to. This list contains the Nodes
+     *  previously typeset. Thus it can be used to look back
+     * @param mathContext the context to consider
+     * @param logger the logger for debugging and tracing information
+     *
+     * @throws TypesetterException in case of a problem
+     * @throws ConfigurationException in case of a configuration problem
      *
      * @see "TTP [762]"
      * @see org.extex.typesetter.type.noad.Noad#typeset(
@@ -95,13 +110,13 @@ public class RightNoad extends AbstractNoad {
                 ConfigurationException {
 
         getSpacingClass().addClearance(
-                (previousNoad != null ? previousNoad.getSpacingClass() : null),
-                list, mathContext);
+            (previousNoad != null ? previousNoad.getSpacingClass() : null),
+            list, mathContext);
 
         Dimen height = new Dimen();
         Dimen depth = new Dimen();
         noad.typeset(previousNoad, noads, index, list, mathContext, logger,
-                height, depth);
+            height, depth);
         delimiter.typeset(list, mathContext, height, depth);
     }
 

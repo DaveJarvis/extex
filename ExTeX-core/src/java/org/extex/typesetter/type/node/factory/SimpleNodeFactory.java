@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -25,8 +25,6 @@ import org.extex.interpreter.type.font.Font;
 import org.extex.type.UnicodeChar;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.node.CharNode;
-
-
 
 /**
  * This is a factory for
@@ -70,7 +68,7 @@ public class SimpleNodeFactory implements NodeFactory {
             return null;
         } else if (font instanceof VirtualFount) {
             return ((VirtualFount) font).getVirtualCharNode(typesettingContext,
-                    uc);
+                uc);
         }
 
         return new CharNode(typesettingContext, uc);

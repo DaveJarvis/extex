@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -24,12 +24,11 @@ import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.typesetter.type.NodeVisitor;
 import org.extex.util.exception.GeneralException;
 
-
 /**
  * This class provides the same functionality as
  * {@link org.extex.typesetter.type.node.KernNode KernNode} but is
  * distinguishable for the sake of some fine differentiations in <logo>TeX</logo>.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4739 $
  */
@@ -37,27 +36,27 @@ public abstract class AbstractKernNode extends AbstractNode implements KernNode 
 
     /**
      * Creates a new object.
-     * 
+     *
      * @param kern the natural size
      * @param horizontal the indicator that the kern works horizontally
      */
     public AbstractKernNode(final FixedDimen kern, final boolean horizontal) {
 
         super((horizontal ? kern : Dimen.ZERO_PT), //
-                (horizontal ? Dimen.ZERO_PT : kern), //
-                Dimen.ZERO_PT);
+            (horizontal ? Dimen.ZERO_PT : kern), //
+            Dimen.ZERO_PT);
     }
 
     /**
      * This method puts the printable representation into the string buffer.
      * This is meant to produce a short form only as it is used in error
      * messages to the user.
-     * 
+     *
      * @param sb the output string buffer
      * @param prefix the prefix string inserted at the beginning of each line
      * @param breadth the breadth
      * @param depth the depth
-     * 
+     *
      * @see "<logo>TeX</logo> &ndash; The Program [191]"
      * @see org.extex.typesetter.type.Node#toString( java.lang.StringBuffer,
      *      java.lang.String, int, int)
@@ -66,10 +65,17 @@ public abstract class AbstractKernNode extends AbstractNode implements KernNode 
             final int breadth, final int depth) {
 
         sb.append(getLocalizer().format("String.Format", //
-                                        getWidth().toString()));
+            getWidth().toString()));
     }
 
     /**
+     * This method puts the printable representation into the string buffer.
+     * This is meant to produce a short form only as it is used in error
+     * messages to the user.
+     *
+     * @param sb the output string buffer
+     * @param prefix the prefix string inserted at the beginning of each line
+     *
      * @see org.extex.typesetter.type.Node#toText(java.lang.StringBuffer,
      *      java.lang.String)
      */
@@ -79,6 +85,15 @@ public abstract class AbstractKernNode extends AbstractNode implements KernNode 
     }
 
     /**
+     * This method provides an entry point for the visitor pattern.
+     *
+     * @param visitor the visitor to apply
+     * @param value the argument for the visitor
+     *
+     * @return the result of the method invocation of the visitor
+     *
+     * @throws GeneralException in case of an error
+     *
      * @see org.extex.typesetter.type.Node#visit(
      *      org.extex.typesetter.type.NodeVisitor, java.lang.Object)
      */

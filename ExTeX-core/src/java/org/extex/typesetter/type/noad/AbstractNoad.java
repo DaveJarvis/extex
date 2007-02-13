@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -39,8 +39,6 @@ import org.extex.typesetter.type.node.VerticalListNode;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.i18n.LocalizerFactory;
-
-
 
 /**
  * This is the abstract base class for Noads.
@@ -82,9 +80,10 @@ public abstract class AbstractNoad implements Noad {
         if (node.getWidth().eq(width)) {
             return node;
         }
-        HorizontalListNode hlist = (node instanceof HorizontalListNode
-                ? (HorizontalListNode) node
-                : new HorizontalListNode());
+        HorizontalListNode hlist =
+                (node instanceof HorizontalListNode
+                        ? (HorizontalListNode) node
+                        : new HorizontalListNode());
         hlist.add(0, new GlueNode(Glue.S_S, true));
         hlist.add(new GlueNode(Glue.S_S, true));
         return hlist;
@@ -214,11 +213,12 @@ public abstract class AbstractNoad implements Noad {
             shiftUp = new Dimen();
         } else if (node instanceof HorizontalListNode) {
             hlist = (HorizontalListNode) node;
-            StyleNoad t = (mc.getStyle().less(StyleNoad.SCRIPTSTYLE)
-                    ? StyleNoad.SCRIPTSTYLE
-                    : StyleNoad.SCRIPTSCRIPTSTYLE);
-            FixedDimen subDrop = mc
-                    .mathParameter(MathFontParameter.SUB_DROP, t);
+            StyleNoad t =
+                    (mc.getStyle().less(StyleNoad.SCRIPTSTYLE)
+                            ? StyleNoad.SCRIPTSTYLE
+                            : StyleNoad.SCRIPTSCRIPTSTYLE);
+            FixedDimen subDrop =
+                    mc.mathParameter(MathFontParameter.SUB_DROP, t);
 
             shiftUp = new Dimen(node.getHeight());
             shiftUp.subtract(subDrop);

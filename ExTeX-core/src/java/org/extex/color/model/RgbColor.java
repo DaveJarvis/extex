@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -81,6 +81,12 @@ public class RgbColor implements Color {
     }
 
     /**
+     * Indicates whether some other object is "equal to" this one.
+     *
+     * @param   obj   the reference object with which to compare.
+     * @return  <code>true</code> if this object is the same as the obj
+     *          argument; <code>false</code> otherwise.
+     *
      * @see java.lang.Object#equals(java.lang.Object)
      */
     public boolean equals(final Object obj) {
@@ -127,6 +133,11 @@ public class RgbColor implements Color {
     }
 
     /**
+     * Getter for the alpha channel.
+     * The range of the value is 0x00 to 0xffff.
+     *
+     * @return the alpha channel
+     *
      * @see org.extex.interpreter.context.Color#getAlpha()
      */
     public int getAlpha() {
@@ -135,6 +146,10 @@ public class RgbColor implements Color {
     }
 
     /**
+     * Returns a hash code value for the object.
+     *
+     * @return  a hash code value for this object
+     *
      * @see java.lang.Object#hashCode()
      */
     public int hashCode() {
@@ -143,6 +158,10 @@ public class RgbColor implements Color {
     }
 
     /**
+     * Returns a string representation of the object.
+     *
+     * @return  a string representation of the object.
+     *
      * @see java.lang.Object#toString()
      */
     public String toString() {

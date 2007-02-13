@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -22,7 +22,6 @@ package org.extex.typesetter.type.node.factory;
 import org.extex.interpreter.context.tc.TypesettingContext;
 import org.extex.type.UnicodeChar;
 import org.extex.typesetter.type.Node;
-
 
 /**
  * This interface describes a node factory.

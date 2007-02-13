@@ -36,7 +36,7 @@ public class FontKeyFactory extends AbstractFactory {
     /**
      * Fontkey for null.
      */
-    public static FontKey NULL_KEY = new FontKey("nullfont");
+    public static final FontKey NULL_KEY = new FontKey("nullfont");
 
     /**
      * Create a new object.

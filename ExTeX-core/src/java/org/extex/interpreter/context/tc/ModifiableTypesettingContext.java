@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -23,11 +23,10 @@ import org.extex.interpreter.context.Color;
 import org.extex.interpreter.type.font.Font;
 import org.extex.language.Language;
 
-
 /**
  * The typesetting context is a container for attributes describing the
  * appearance of glyphs or other nodes.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4399 $
  */
@@ -36,43 +35,43 @@ public interface ModifiableTypesettingContext extends TypesettingContext {
     /**
      * Setter for all components. The components color, direction, font,
      * language, etc are copied from the instance given.
-     * 
+     *
      * @param context the context to clone
      */
     void set(TypesettingContext context);
 
     /**
      * Setter for the color.
-     * 
+     *
      * @param color the new color
-     * 
+     *
      * @see TypesettingContext#getColor()
      */
     void setColor(Color color);
 
     /**
      * Setter for the writing direction.
-     * 
+     *
      * @param direction the new direction
-     * 
+     *
      * @see TypesettingContext#getDirection()
      */
     void setDirection(Direction direction);
 
     /**
      * Setter for the font component.
-     * 
+     *
      * @param font the font to store
-     * 
+     *
      * @see TypesettingContext#getFont()
      */
     void setFont(Font font);
 
     /**
      * Setter for the hyphenation table.
-     * 
+     *
      * @param language the hyphenation table
-     * 
+     *
      * @see TypesettingContext#getLanguage()
      */
     void setLanguage(Language language);

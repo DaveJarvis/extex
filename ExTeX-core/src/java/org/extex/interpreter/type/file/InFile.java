@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -29,8 +29,6 @@ import org.extex.scanner.exception.ScannerException;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
 
-
-
 /**
  * This class holds an input file from which tokens can be read.
  *
@@ -59,8 +57,9 @@ public class InFile implements Serializable {
      * Creates a new object.
      *
      * @param inStream the token stream to read from
+     * @param isStandard the stream is the standard input stream
      */
-    public InFile(final TokenStream inStream, boolean isStandard) {
+    public InFile(final TokenStream inStream, final boolean isStandard) {
 
         super();
         this.stream = inStream;

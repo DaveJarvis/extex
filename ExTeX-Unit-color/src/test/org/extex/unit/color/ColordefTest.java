@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -60,9 +60,9 @@ public class ColordefTest extends NoFlagsButGlobalPrimitiveTester {
     public void testError1() throws Exception {
 
         assertFailure(//--- input code ---
-                DEFINE_BRACES + "\\colordef rgb",
-                //--- log message ---
-                "Missing control sequence inserted");
+            DEFINE_BRACES + "\\colordef rgb",
+            //--- log message ---
+            "Missing control sequence inserted");
     }
 
     /**
@@ -75,9 +75,9 @@ public class ColordefTest extends NoFlagsButGlobalPrimitiveTester {
     public void testError2() throws Exception {
 
         assertFailure(//--- input code ---
-                DEFINE_BRACES + "\\colordef\\x undef ",
-                //--- log message ---
-                "Missing left brace for color value");
+            DEFINE_BRACES + "\\colordef\\x undef ",
+            //--- log message ---
+            "Missing left brace for color value");
     }
 
     /**
@@ -90,9 +90,9 @@ public class ColordefTest extends NoFlagsButGlobalPrimitiveTester {
     public void testError3() throws Exception {
 
         assertFailure(//--- input code ---
-                DEFINE_BRACES + "\\colordef\\x {1} ",
-                //--- log message ---
-                "Missing number, treated as zero");
+            DEFINE_BRACES + "\\colordef\\x {1} ",
+            //--- log message ---
+            "Missing number, treated as zero");
     }
 
     /**
@@ -105,9 +105,9 @@ public class ColordefTest extends NoFlagsButGlobalPrimitiveTester {
     public void testError4() throws Exception {
 
         assertFailure(//--- input code ---
-                DEFINE_BRACES + "\\colordef\\x {1 2 3} ",
-                //--- log message ---
-                "Illegal color value");
+            DEFINE_BRACES + "\\colordef\\x {1 2 3} ",
+            //--- log message ---
+            "Illegal color value");
     }
 
     /**
@@ -120,10 +120,9 @@ public class ColordefTest extends NoFlagsButGlobalPrimitiveTester {
     public void test1() throws Exception {
 
         assertFailure(//--- input code ---
-                DEFINE_BRACES + "\\colordef\\x {.1 .2 .3} " +
-                "\\showthe\\x \\end",
-                //--- log message ---
-                "> rgb {0.09999237 0.19998474 0.29999238}.\n");
+            DEFINE_BRACES + "\\colordef\\x {.1 .2 .3} " + "\\showthe\\x \\end",
+            //--- log message ---
+            "> rgb {0.09999237 0.19998474 0.29999238}.\n");
     }
 
     /**
@@ -136,11 +135,10 @@ public class ColordefTest extends NoFlagsButGlobalPrimitiveTester {
     public void test20() throws Exception {
 
         assertFailure(//--- input code ---
-                DEFINE_BRACES + "\\colordef\\x {.1 .2 .3} " +
-                "\\colordef\\y\\x" +
-                "\\showthe\\y \\end",
-                //--- log message ---
-                "> rgb {0.09999237 0.19998474 0.29999238}.\n");
+            DEFINE_BRACES + "\\colordef\\x {.1 .2 .3} " + "\\colordef\\y\\x"
+                    + "\\showthe\\y \\end",
+            //--- log message ---
+            "> rgb {0.09999237 0.19998474 0.29999238}.\n");
     }
 
     /**
@@ -153,10 +151,9 @@ public class ColordefTest extends NoFlagsButGlobalPrimitiveTester {
     public void test30() throws Exception {
 
         assertFailure(//--- input code ---
-                DEFINE_BRACES + "\\colordef\\x {1 1 1} " +
-                "\\showthe\\x \\end",
-                //--- log message ---
-                "> rgb {1.0 1.0 1.0}.\n");
+            DEFINE_BRACES + "\\colordef\\x {1 1 1} " + "\\showthe\\x \\end",
+            //--- log message ---
+            "> rgb {1.0 1.0 1.0}.\n");
     }
 
     /**
@@ -169,10 +166,9 @@ public class ColordefTest extends NoFlagsButGlobalPrimitiveTester {
     public void test31() throws Exception {
 
         assertFailure(//--- input code ---
-                DEFINE_BRACES + "\\colordef\\x rgb {1 1 1} " +
-                "\\showthe\\x \\end",
-                //--- log message ---
-                "> rgb {1.0 1.0 1.0}.\n");
+            DEFINE_BRACES + "\\colordef\\x rgb {1 1 1} " + "\\showthe\\x \\end",
+            //--- log message ---
+            "> rgb {1.0 1.0 1.0}.\n");
     }
 
     /**
@@ -185,10 +181,9 @@ public class ColordefTest extends NoFlagsButGlobalPrimitiveTester {
     public void test32() throws Exception {
 
         assertFailure(//--- input code ---
-                DEFINE_BRACES + "\\colordef\\x gray {1} " +
-                "\\showthe\\x \\end",
-                //--- log message ---
-                "> gray {1.0}.\n");
+            DEFINE_BRACES + "\\colordef\\x gray {1} " + "\\showthe\\x \\end",
+            //--- log message ---
+            "> gray {1.0}.\n");
     }
 
     /**
@@ -201,10 +196,9 @@ public class ColordefTest extends NoFlagsButGlobalPrimitiveTester {
     public void test33() throws Exception {
 
         assertFailure(//--- input code ---
-                DEFINE_BRACES + "\\colordef\\x hsv {1 1 1} " +
-                "\\showthe\\x \\end",
-                //--- log message ---
-                "> hsv {1.0 1.0 1.0}.\n");
+            DEFINE_BRACES + "\\colordef\\x hsv {1 1 1} " + "\\showthe\\x \\end",
+            //--- log message ---
+            "> hsv {1.0 1.0 1.0}.\n");
     }
 
     /**
@@ -217,10 +211,10 @@ public class ColordefTest extends NoFlagsButGlobalPrimitiveTester {
     public void test34() throws Exception {
 
         assertFailure(//--- input code ---
-                DEFINE_BRACES + "\\colordef\\x cmyk {1 1 1 1} " +
-                "\\showthe\\x \\end",
-                //--- log message ---
-                "> cmyk {1.0 1.0 1.0 1.0}.\n");
+            DEFINE_BRACES + "\\colordef\\x cmyk {1 1 1 1} "
+                    + "\\showthe\\x \\end",
+            //--- log message ---
+            "> cmyk {1.0 1.0 1.0 1.0}.\n");
     }
 
 }

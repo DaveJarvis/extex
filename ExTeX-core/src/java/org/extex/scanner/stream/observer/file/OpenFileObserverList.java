@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -76,6 +76,11 @@ public final class OpenFileObserverList implements OpenFileObserver {
     /**
      * Invoke all observers on the list to inform them of the file which has
      * been opened.
+     *
+     * @param filename the name of the file to be opened
+     * @param filetype the type of the file to be opened. The type is resolved
+     *  via the configuration to a file name pattern
+     * @param stream the input stream to read from
      *
      * @see org.extex.scanner.stream.observer.file.OpenFileObserver#update(
      *      java.lang.String,

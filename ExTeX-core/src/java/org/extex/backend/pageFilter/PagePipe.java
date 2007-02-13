@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -21,7 +21,6 @@ package org.extex.backend.pageFilter;
 
 import org.extex.backend.exception.BackendException;
 import org.extex.typesetter.type.page.Page;
-
 
 /**
  * A page pipe describes the ability to process a node list &ndash; resulting

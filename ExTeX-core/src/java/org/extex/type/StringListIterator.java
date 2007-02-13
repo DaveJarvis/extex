@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -49,6 +49,12 @@ public class StringListIterator {
     }
 
     /**
+     * Returns <tt>true</tt> if the iteration has more elements. (In other
+     * words, returns <tt>true</tt> if <tt>next</tt> would return an element
+     * rather than throwing an exception.)
+     *
+     * @return <tt>true</tt> if the iterator has more elements.
+     *
      * @see java.util.Iterator#hasNext()
      */
     public boolean hasNext() {
@@ -57,6 +63,10 @@ public class StringListIterator {
     }
 
     /**
+     * Returns the next element in the iteration.
+     *
+     * @return the next element in the iteration.
+     *
      * @see java.util.Iterator#next()
      */
     public String next() {

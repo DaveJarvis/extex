@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -25,7 +25,6 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.typesetter.Typesetter;
 
-
 /**
  * This is a interface to mark those Classes which are able to advance
  * something.
@@ -44,7 +43,7 @@ import org.extex.typesetter.Typesetter;
  * <p>
  *  With this interface the functionality is in fact tied to the implementing
  *  code and not to the primitive <tt>\advance</tt>. Each primitive can be
- *  made aware for advancing without touchíng the code for <tt>\advance</tt>.
+ *  made aware for advancing without touching the code for <tt>\advance</tt>.
  * </p>
  * </doc>
  *

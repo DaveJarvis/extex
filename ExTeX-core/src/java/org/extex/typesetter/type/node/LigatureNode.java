@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -25,8 +25,6 @@ import org.extex.type.UnicodeChar;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeVisitor;
 import org.extex.util.exception.GeneralException;
-
-
 
 /**
  * The ligature node represents a ligature of several characters.
@@ -93,6 +91,18 @@ public class LigatureNode extends CharNode implements Node {
     }
 
     /**
+     * This method determines the number of characters contained in a node.
+     * <ul>
+     * <li>A CharNode has a single character</li>
+     * <li>A LigatureNde has the number of characters which made up the
+     *  ligature</li>
+     * <li>A NodeList has the number of characters given by the sum of the
+     *  number of characters of its elements</li>
+     * <li>Any other node types has no character</li>
+     * </ul>
+     *
+     * @return the number of characters contained
+     *
      * @see org.extex.typesetter.type.Node#countChars()
      */
     public int countChars() {
@@ -101,6 +111,10 @@ public class LigatureNode extends CharNode implements Node {
     }
 
     /**
+     * Getter for the array of characters enclosed in this node.
+     *
+     * @return the array of characters
+     *
      * @see org.extex.typesetter.type.Node#getChars()
      */
     public CharNode[] getChars() {
@@ -150,8 +164,8 @@ public class LigatureNode extends CharNode implements Node {
 
         Font font = getTypesettingContext().getFont();
         sb.append(getLocalizer().format("String.Format",
-                (font == null ? "*" : font.getFontName()),
-                getCharacter().toString(), left.toString(), right.toString()));
+            (font == null ? "*" : font.getFontName()),
+            getCharacter().toString(), left.toString(), right.toString()));
     }
 
     /**

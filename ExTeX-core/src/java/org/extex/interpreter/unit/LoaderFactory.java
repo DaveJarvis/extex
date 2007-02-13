@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -28,19 +28,19 @@ import org.extex.util.framework.configuration.exception.ConfigurationException;
  * its properties from the
  * {@link org.extex.util.framework.AbstractFactory AbstractFactory}. Among them
  * the support for configuration and logging.
- * 
+ *
  * <h3>Configuration</h3>
- * 
+ *
  * <p>
  * Mainly the configuration needs to specify which class to use for the
  * ErrorHandler. The configuration provides a mapping from a type name to the
  * sub-configuration to be used. The name of the class is given as the argument
  * <tt>class</tt> of the sub-configuration as shown below.
- * 
+ *
  * <pre>
  *    &lt;setup class=&quot;org.extex.interpreter.unit.tex.Setup&quot;/&gt;
  * </pre>
- * 
+ *
  * </p>
  * <p>
  * The named class need to implement the interface
@@ -58,9 +58,9 @@ import org.extex.util.framework.configuration.exception.ConfigurationException;
  * passed to the new instance. For this purpose the factory itself is log
  * enabled to receive the logger.
  * </p>
- * 
- * 
- * 
+ *
+ *
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -69,9 +69,9 @@ public class LoaderFactory extends AbstractFactory {
     /**
      * Create a new instance of the class given by the attribute <tt>class</tt>
      * of the configuration.
-     * 
+     *
      * @return the Code loaded
-     * 
+     *
      * @throws ConfigurationException in case of an error
      */
     public Loader createLoad() throws ConfigurationException {

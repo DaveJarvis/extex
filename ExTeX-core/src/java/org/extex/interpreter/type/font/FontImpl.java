@@ -114,7 +114,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
     public int getCheckSum() {
 
         // mgn: umbauen
-        return 0;//font.getCheckSum();
+        return 0; //font.getCheckSum();
     }
 
     /**
@@ -160,15 +160,20 @@ public class FontImpl extends NullFont implements ModifiableFont {
     }
 
     /**
+     * Return font dimen size with a key.
+     *
+     * @param k the key
+     * @return the value for the key
+     *
      * @see org.extex.font.type.Fount#getFontDimen(java.lang.String)
      */
-    public FixedDimen getFontDimen(final String key) {
+    public FixedDimen getFontDimen(final String k) {
 
-        FixedDimen fd = super.getFontDimen(key);
+        FixedDimen fd = super.getFontDimen(k);
         if (fd != null) {
             return fd;
         }
-        return font.getFontDimen(key);
+        return font.getFontDimen(k);
     }
 
     /**

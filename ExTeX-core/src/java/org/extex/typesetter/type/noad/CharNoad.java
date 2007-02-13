@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -82,6 +82,10 @@ public class CharNoad extends AbstractNoad {
     }
 
     /**
+     * Produce a printable representation of the noad in a StringBuffer.
+     *
+     * @param sb the string buffer
+     *
      * @see org.extex.typesetter.type.noad.Noad#toString(
      *      java.lang.StringBuffer)
      */
@@ -91,6 +95,19 @@ public class CharNoad extends AbstractNoad {
     }
 
     /**
+     * Translate a Noad into a NodeList.
+     *
+     * @param previousNoad the previous noad
+     * @param noads the list of noads currently processed
+     * @param index the index of the current node in the list
+     * @param list the list to add the nodes to. This list contains the Nodes
+     *  previously typeset. Thus it can be used to look back
+     * @param mathContext the context to consider
+     * @param logger the logger for debugging and tracing information
+     *
+     * @throws TypesetterException in case of a problem
+     * @throws ConfigurationException in case of a configuration problem
+     *
      * @see org.extex.typesetter.type.noad.Noad#typeset(
      *      org.extex.typesetter.type.noad.Noad,
      *      org.extex.typesetter.type.noad.NoadList,

@@ -35,38 +35,40 @@ import org.extex.type.UnicodeChar;
 public interface Font {
 
     /**
-     * Returns the actual FontKey for this font after a font substitution.
+     * Returns the actual FontKey for this font.
+     * The font key may differ from the one requested.
      *
-     * @return Returns the actual FontKey for this font.
+     * @return the actual FontKey for this font.
      */
     FontKey getActualFontKey();
 
     /**
      * Returns the actual size of the font.
      *
-     * @return Returns the actual size of the font.
+     * @return the actual size of the font.
      */
     FixedDimen getActualSize();
 
     /**
-     * Returns the checksum of the font.
+     * Returns the check sum of the font.
      * TODO: verschieben ???
-     * @return Returns the checksum of the font.
+     * @return the check sum of the font
      */
     int getCheckSum();
 
     /**
-     * Returns the depth of the char.
+     * Returns the depth of the character.
      *
-     * @param uc     The Unicode char.
-     * @return Returns the depth of the char.
+     * @param uc the character
+     *
+     * @return the depth of the character
      */
     FixedGlue getDepth(UnicodeChar uc);
 
     /**
      * Returns the design size of the font.
      *
-     * @return Returns the design size of the font.
+     * @return the design size of the font
      */
     FixedDimen getDesignSize();
 
@@ -82,7 +84,7 @@ public interface Font {
     /**
      * Returns the size of 'M'.
      *
-     * @return Returns the size of 'M'.
+     * @return the size of 'M'.
      */
     FixedDimen getEm();
 
@@ -100,91 +102,97 @@ public interface Font {
      * </p>
      *
      * @param name  The name of the parameter.
-     * @return Returns the size of the parameter with the name 'name'.
+     *
+     * @return the size of the parameter with the name 'name'.
      */
     FixedDimen getFontDimen(String name);
 
     /**
      * Returns the FontKey for this font.
      *
-     * @return Returns the FontKey for this font.
+     * @return the FontKey for this font
      */
     FontKey getFontKey();
 
     /**
      * Returns the name of the font.
      *
-     * @return Returns the name of the font.
+     * @return the name of the font
      */
     String getFontName();
 
     /**
-     * Returns the height of the char.
+     * Returns the height of a character.
      *
-     * @param uc     The Unicode char.
-     * @return Returns the height of the char.
+     * @param uc the character
+     *
+     * @return the height of the character
      */
     FixedGlue getHeight(UnicodeChar uc);
 
     /**
-     * Returns the hyphen char.
+     * Returns the hyphen character.
      *
-     * @return Returns the hyphen char.
+     * @return the hyphen character
      */
     UnicodeChar getHyphenChar();
 
     /**
-     * Returns the italic correction of the char.
+     * Returns the italic correction of a character.
      *
-     * @param uc     The Unicode char.
-     * @return Returns the italic correction of the char.
+     * @param uc the character
+     *
+     * @return the italic correction of the character
      */
     FixedDimen getItalicCorrection(UnicodeChar uc);
 
     /**
-     * Returns the kerning between two chars.
+     * Returns the kerning between two characters.
      *
-     * @param uc1     The Unicode char (first one).
-     * @param uc2     The Unicode char (second one).
-     * @return Returns the kerning between two chars.
+     * @param uc1 the first character
+     * @param uc2 the second character
+     *
+     * @return the kerning between two characters
      */
     FixedDimen getKerning(UnicodeChar uc1, UnicodeChar uc2);
 
     /**
-     * Returns the ligature for two chars.
+     * Returns the ligature for two characters.
      *
-     * @param uc1     The Unicode char (first one).
-     * @param uc2     The Unicode char (second one).
-     * @return Returns the ligature for two chars.
+     * @param uc1 the first character
+     * @param uc2 the second character
+     *
+     * @return Returns the ligature for two characters
      */
     UnicodeChar getLigature(UnicodeChar uc1, UnicodeChar uc2);
 
     /**
      * Returns the scale factor of the font.
      *
-     * @return Returns the scale factor of the font.
+     * @return the scale factor of the font
      */
     FixedCount getScaleFactor();
 
     /**
      * Returns the skew char.
      *
-     * @return Returns the skew char.
+     * @return the skew char
      */
     UnicodeChar getSkewChar();
 
     /**
      * Returns the size of the 'space'.
      *
-     * @return Returns the size of the 'space'.
+     * @return the size of the 'space'.
      */
     FixedGlue getSpace();
 
     /**
-     * Returns the width of the char.
+     * Returns the width of a character.
      *
-     * @param uc     The Unicode char.
-     * @return Returns the width of the char.
+     * @param uc the character
+     *
+     * @return the width of the character
      */
     FixedGlue getWidth(UnicodeChar uc);
 
@@ -210,22 +218,22 @@ public interface Font {
     /**
      * Set the new value for the font parameter.
      *
-     * @param name  The name of the parameter.
-     * @param value The value to set.
+     * @param name the name of the parameter
+     * @param value the value to set
      */
     void setFontDimen(String name, Dimen value);
 
     /**
-     * Set the hyphen char.
+     * Set the hyphen character.
      *
-     * @param uc    The Unicode char.
+     * @param uc the hyphen character
      */
     void setHyphenChar(UnicodeChar uc);
 
     /**
-     * Set the skew char.
+     * Set the skew character.
      *
-     * @param uc    The Unicode char.
+     * @param uc the skew character
      */
     void setSkewChar(UnicodeChar uc);
 

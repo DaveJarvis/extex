@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -18,7 +18,6 @@
  */
 
 package org.extex.interpreter.type.count;
-
 
 /**
  * This class provides an implementation of a Count where all methods modifying
@@ -55,27 +54,42 @@ public class ImmutableCount extends Count {
     }
 
     /**
+     * This operation is unsupported and leads to an exception.
+     *
+     * @param val the value to add to
+     *
      * @see org.extex.interpreter.type.count.Count#add(long)
      */
     public void add(final long val) {
 
-        throw new RuntimeException("Unable to set an immutable object");
+        throw new UnsupportedOperationException(
+            "Unable to set an immutable object");
     }
 
     /**
+     * This operation is unsupported and leads to an exception.
+     *
+     * @param val the value to divide by
+     *
      * @see org.extex.interpreter.type.count.Count#divide(long)
      */
     public void divide(final long val) {
 
-        throw new RuntimeException("Unable to set an immutable object");
+        throw new UnsupportedOperationException(
+            "Unable to set an immutable object");
     }
 
     /**
+     * This operation is unsupported and leads to an exception.
+     *
+     * @param val the value to multiply with
+     *
      * @see org.extex.interpreter.type.count.Count#multiply(long)
      */
     public void multiply(final long val) {
 
-        throw new RuntimeException("Unable to set an immutable object");
+        throw new UnsupportedOperationException(
+            "Unable to set an immutable object");
     }
 
 }

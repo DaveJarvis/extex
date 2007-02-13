@@ -30,7 +30,8 @@ import junit.framework.TestCase;
 public class ImpossibleExceptionTest extends TestCase {
 
     /**
-     * Test method for {@link org.extex.interpreter.exception.ImpossibleException#ImpossibleException(java.lang.String)}.
+     * Test method for {@link
+     * org.extex.interpreter.exception.ImpossibleException#ImpossibleException(java.lang.String)}.
      */
     public final void testImpossibleExceptionString() {
 
@@ -40,7 +41,8 @@ public class ImpossibleExceptionTest extends TestCase {
     }
 
     /**
-     * Test method for {@link org.extex.interpreter.exception.ImpossibleException#ImpossibleException(java.lang.Throwable)}.
+     * Test method for {@link
+     * org.extex.interpreter.exception.ImpossibleException#ImpossibleException(java.lang.Throwable)}.
      */
     public final void testImpossibleExceptionThrowable() {
 
@@ -52,7 +54,9 @@ public class ImpossibleExceptionTest extends TestCase {
     }
 
     /**
-     * Test method for {@link org.extex.interpreter.exception.ImpossibleException#ImpossibleException(java.lang.String, java.lang.Throwable)}.
+     * Test method for {@link
+     * org.extex.interpreter.exception.ImpossibleException#ImpossibleException(
+     * java.lang.String, java.lang.Throwable)}.
      */
     public final void testImpossibleExceptionStringThrowable() {
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -21,7 +21,6 @@ package org.extex.interpreter.exception.helping;
 
 import org.extex.scanner.type.token.Token;
 import org.extex.util.framework.i18n.LocalizerFactory;
-
 
 /**
  * This exception is raised when an unused prefix flag has been encountered.
@@ -49,7 +48,7 @@ public class UnusedPrefixException extends HelpingException {
     public UnusedPrefixException(final String flag, final Token token) {
 
         super(LocalizerFactory.getLocalizer(UnusedPrefixException.class),
-                "UnusedPrefix", flag, token.toString());
+            "UnusedPrefix", flag, token.toString());
     }
 
 }

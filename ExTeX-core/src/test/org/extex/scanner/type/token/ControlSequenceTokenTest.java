@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -23,11 +23,7 @@ import junit.framework.TestCase;
 
 import org.extex.interpreter.Namespace;
 import org.extex.scanner.type.Catcode;
-import org.extex.scanner.type.token.ControlSequenceToken;
-import org.extex.scanner.type.token.OtherToken;
-import org.extex.scanner.type.token.Token;
 import org.extex.type.UnicodeChar;
-
 
 /**
  * Test cases for control sequence tokens.
@@ -49,8 +45,9 @@ public class ControlSequenceTokenTest extends TestCase {
     /**
      * The field <tt>t</tt> contains the reference token.
      */
-    private static ControlSequenceToken t = new ControlSequenceToken(
-            UnicodeChar.get('\\'), "x", Namespace.DEFAULT_NAMESPACE);
+    private static ControlSequenceToken t =
+            new ControlSequenceToken(UnicodeChar.get('\\'), "x",
+                Namespace.DEFAULT_NAMESPACE);
 
     /**
      */
@@ -98,8 +95,8 @@ public class ControlSequenceTokenTest extends TestCase {
      */
     public void testToText2() {
 
-        Token ta = new ControlSequenceToken(null, "a",
-                Namespace.DEFAULT_NAMESPACE);
+        Token ta =
+                new ControlSequenceToken(null, "a", Namespace.DEFAULT_NAMESPACE);
         assertEquals("a", ta.toText());
     }
 

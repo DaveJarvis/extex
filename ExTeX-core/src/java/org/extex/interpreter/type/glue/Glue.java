@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -94,15 +94,16 @@ public class Glue implements Serializable, FixedGlue {
         if (t instanceof CodeToken) {
             Code code = context.getCode((CodeToken) t);
             if (code instanceof GlueConvertible) {
-                Glue g = ((GlueConvertible) code).convertGlue(context, source,
-                        null);
+                Glue g =
+                        ((GlueConvertible) code).convertGlue(context, source,
+                            null);
                 length = g.getLength().copy();
                 shrink = g.getShrink().copy();
                 stretch = g.getStretch().copy();
                 return new Glue(length, stretch, shrink);
             } else if (code == null) {
                 throw new UndefinedControlSequenceException(AbstractCode
-                        .printable(context, t));
+                    .printable(context, t));
             }
         }
         source.push(t);
@@ -422,10 +423,9 @@ public class Glue implements Serializable, FixedGlue {
      *
      */
     public void negateLength() {
-        
+
         this.length.negate();
     }
-
 
     /**
      * Set the glue value to a non-stretchable and non-shrinkable length.

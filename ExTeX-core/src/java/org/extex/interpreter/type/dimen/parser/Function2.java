@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -21,6 +21,12 @@ package org.extex.interpreter.type.dimen.parser;
 
 import org.extex.interpreter.exception.helping.HelpingException;
 
+/**
+ * TODO gene: missing JavaDoc.
+ *
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * @version $Revision$
+ */
 interface Function2 {
 
     /**
@@ -32,4 +38,5 @@ interface Function2 {
      * @throws HelpingException in case of an error
      */
     void apply(Accumulator arg1, Accumulator arg2) throws HelpingException;
+
 }

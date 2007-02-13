@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -47,21 +47,33 @@ public class ImmutableTokens extends Tokens {
     }
 
     /**
+     * Add another token to the end of the Tokens.
+     * This operation is unsupported and leads to an exception.
+     *
+     * @param t The token to add
+     *
      * @see org.extex.interpreter.type.tokens.Tokens#add(
      *      org.extex.scanner.type.token.Token)
      */
     public void add(final Token t) {
 
-        throw new RuntimeException("Unable to add to an immutable object");
+        throw new UnsupportedOperationException(
+            "Unable to add to an immutable object");
     }
 
     /**
+     * Add another token list to the end of the Tokens.
+     * This operation is unsupported and leads to an exception.
+     *
+     * @param toks the tokens to add
+     *
      * @see org.extex.interpreter.type.tokens.Tokens#add(
      *      org.extex.interpreter.type.tokens.Tokens)
      */
     public void add(final Tokens toks) {
 
-        throw new RuntimeException("Unable to add to an immutable object");
+        throw new UnsupportedOperationException(
+            "Unable to add to an immutable object");
     }
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,7 +19,6 @@
 
 package org.extex.typesetter.type.node;
 
-
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.interpreter.type.dimen.FixedDimen;
@@ -30,8 +29,6 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeVisitor;
 import org.extex.util.exception.GeneralException;
-
-
 
 /**
  * This class provides a container for nodes which is interpreted as horizontal
@@ -97,6 +94,11 @@ public class HorizontalListNode extends GenericNodeList {
     }
 
     /**
+     * Add a node to the node list at a given position.
+     *
+     * @param index the position of insertion
+     * @param node the node to add
+     *
      * @see org.extex.typesetter.type.node.GenericNodeList#add(
      *     int,
      *     org.extex.typesetter.type.Node)
@@ -110,6 +112,11 @@ public class HorizontalListNode extends GenericNodeList {
     }
 
     /**
+     * Add a node to the node list.
+     * The other attributes (width, height, depth) are not modified.
+     *
+     * @param node the node to add
+     *
      * @see org.extex.typesetter.type.node.GenericNodeList#add(
      *      org.extex.typesetter.type.Node)
      */
@@ -122,6 +129,11 @@ public class HorizontalListNode extends GenericNodeList {
     }
 
     /**
+     * Add some glue to the node list.
+     * The other attributes (width, height, depth) are not modified.
+     *
+     * @param glue the glue to add
+     *
      * @see org.extex.typesetter.type.NodeList#addSkip(
      *      FixedGlue)
      */
@@ -133,6 +145,23 @@ public class HorizontalListNode extends GenericNodeList {
     }
 
     /**
+     * This method performs any action which are required to executed at the
+     * time of shipping the node to the DocumentWriter.
+     *
+     * @param context the interpreter context
+     * @param typesetter the typesetter
+     * @param visitor the node visitor to be invoked when the node is hit. Note
+     *  that each node in the output page is visited this way. Thus there is no
+     *  need to implement a node traversal for the NodeList types
+     * @param inHMode <code>true</code> iff the container is a horizontal list.
+     *  Otherwise the container is a vertical list
+     *
+     * @return the node to be used instead of the current one in the output
+     *  list. If the value is <code>null</code> then the node is deleted. If
+     *  the value is the node itself then it is preserved.
+     *
+     * @throws GeneralException in case of an error
+     *
      * @see org.extex.typesetter.type.node.GenericNodeList#atShipping(
      *      org.extex.interpreter.context.Context,
      *      org.extex.typesetter.Typesetter,
@@ -148,7 +177,6 @@ public class HorizontalListNode extends GenericNodeList {
 
     /**
      * Adjust the variable nodes to achieve a given target width.
-     *
      */
     public void hpack() {
 
@@ -192,6 +220,9 @@ public class HorizontalListNode extends GenericNodeList {
      * The <logo>TeX</logo> definition of a hlist states that a box is not
      * variable neither in width nor in height.
      *
+     * @param w the desired width
+     * @param sum the total sum of the glues
+     *
      * @see org.extex.typesetter.type.node.AbstractNode#spreadWidth(
      *      org.extex.interpreter.type.dimen.FixedDimen,
      *      org.extex.interpreter.type.glue.FixedGlueComponent)
@@ -201,7 +232,17 @@ public class HorizontalListNode extends GenericNodeList {
     }
 
     /**
-     * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuffer,
+     * This method puts the printable representation into the string buffer.
+     * This is meant to produce a exhaustive form as it is used in tracing
+     * output to the log file.
+     *
+     * @param sb the output string buffer
+     * @param prefix the prefix string inserted at the beginning of each line
+     * @param breadth the breadth of the nodes to display
+     * @param depth the depth of the nodes to display
+     *
+     * @see org.extex.typesetter.type.Node#toString(
+     *      java.lang.StringBuffer,
      *      java.lang.String, int, int)
      */
     public void toString(final StringBuffer sb, final String prefix,
@@ -212,7 +253,15 @@ public class HorizontalListNode extends GenericNodeList {
     }
 
     /**
-     * @see org.extex.typesetter.type.Node#toText(java.lang.StringBuffer,
+     * This method puts the printable representation into the string buffer.
+     * This is meant to produce a short form only as it is used in error
+     * messages to the user.
+     *
+     * @param sb the output string buffer
+     * @param prefix the prefix string inserted at the beginning of each line
+     *
+     * @see org.extex.typesetter.type.Node#toText(
+     *      java.lang.StringBuffer,
      *      java.lang.String)
      */
     public void toText(final StringBuffer sb, final String prefix) {
@@ -224,6 +273,15 @@ public class HorizontalListNode extends GenericNodeList {
     }
 
     /**
+     * This method provides an entry point for the visitor pattern.
+     *
+     * @param visitor the visitor to apply
+     * @param value the argument for the visitor
+     *
+     * @return the result of the method invocation of the visitor
+     *
+     * @throws GeneralException in case of an error
+     *
      * @see org.extex.typesetter.type.Node#visit(
      *      org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)

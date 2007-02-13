@@ -43,6 +43,8 @@ public class TocIndex {
      */
     public static void main(final String[] args) {
 
+        PrintStream err = System.err;
+        PrintStream out = System.out;
         TocIndex tocIndex = new TocIndex();
         File base = null;
 
@@ -50,7 +52,7 @@ public class TocIndex {
             String arg = args[i];
             if (!arg.startsWith("-")) {
                 if (base != null) {
-                    System.err.println("Too many bases");
+                    err.println("Too many bases");
                     System.exit(-1);
                 }
                 base = new File(arg);
@@ -67,25 +69,25 @@ public class TocIndex {
                         System
                             .setOut(new PrintStream(new FileOutputStream(arg)));
                     } catch (FileNotFoundException e) {
-                        System.err.print(arg);
-                        System.err.print(" ");
-                        System.err.println(e.getLocalizedMessage());
+                        err.print(arg);
+                        err.print(" ");
+                        err.println(e.getLocalizedMessage());
                     }
                 }
             } else {
-                System.err.println("Unknown argument: " + arg);
+                err.println("Unknown argument: " + arg);
                 System.exit(-1);
             }
         }
 
         try {
-            System.out.println("#");
-            System.out.print("# Created ");
-            System.out.println(new Date().toString());
-            System.out.println("#");
-            tocIndex.collect(base != null ? base : new File("."));
+            out.println("#");
+            out.print("# Created ");
+            out.println(new Date().toString());
+            out.println("#");
+            tocIndex.collect(base != null ? base : new File("."), out);
         } catch (MalformedURLException e) {
-            e.printStackTrace(System.err);
+            e.printStackTrace(err);
             System.exit(-1);
         }
         System.exit(0);
@@ -101,15 +103,18 @@ public class TocIndex {
      * files for the index.
      *
      * @param file the current file to consider
+     * @param out the output stream
      *
      * @throws MalformedURLException just in case
      */
-    private void collect(final File file) throws MalformedURLException {
+    private void collect(final File file, final PrintStream out)
+            throws MalformedURLException {
 
         String f = file.toURL().getFile();
         f = f.substring(f.indexOf("/./") + 3);
 
-        for (int i = 0, n = omit.size(); i < n; i++) {
+        int n = omit.size();
+        for (int i = 0; i < n; i++) {
             if (f.matches((String) omit.get(i))) {
                 return;
             }
@@ -118,12 +123,12 @@ public class TocIndex {
         if (file.isDirectory()) {
             File[] list = file.listFiles();
             for (int i = 0; i < list.length; i++) {
-                collect(list[i]);
+                collect(list[i], out);
             }
         } else if (file.isFile()) {
-            System.out.print(file.getName());
-            System.out.print("=");
-            System.out.println(f);
+            out.print(file.getName());
+            out.print("=");
+            out.println(f);
         }
     }
 
@@ -136,4 +141,5 @@ public class TocIndex {
 
         omit.add(arg);
     }
+
 }

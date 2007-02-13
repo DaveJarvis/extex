@@ -26,8 +26,6 @@ import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.noad.util.MathContext;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-
-
 /**
  * This class provides a container for Noads and Nodes.
  *
@@ -119,6 +117,10 @@ public class MathList extends AbstractNoad {
     }
 
     /**
+     * Get the string representation of this object for debugging purposes.
+     *
+     * @return the string representation
+     *
      * @see java.lang.Object#toString()
      */
     public String toString() {
@@ -129,6 +131,10 @@ public class MathList extends AbstractNoad {
     }
 
     /**
+     * Produce a printable representation of the noad in a StringBuffer.
+     *
+     * @param sb the string buffer
+     *
      * @see org.extex.typesetter.type.noad.Noad#toString(
      *      java.lang.StringBuffer)
      */
@@ -140,6 +146,11 @@ public class MathList extends AbstractNoad {
     }
 
     /**
+     * Produce a printable representation to a certain depth of the noad.
+     *
+     * @param sb the string buffer
+     * @param depth the depth to which the full information should be given
+     *
      * @see org.extex.typesetter.type.noad.Noad#toString(
      *      java.lang.StringBuffer, int)
      */
@@ -155,6 +166,19 @@ public class MathList extends AbstractNoad {
     }
 
     /**
+     * Translate a Noad into a NodeList.
+     *
+     * @param previousNoad the previous noad
+     * @param noads the list of noads currently processed
+     * @param index the index of the current node in the list
+     * @param list the list to add the nodes to. This list contains the Nodes
+     *  previously typeset. Thus it can be used to look back
+     * @param mathContext the context to consider
+     * @param logger the logger for debugging and tracing information
+     *
+     * @throws TypesetterException in case of a problem
+     * @throws ConfigurationException in case of a configuration problem
+     *
      * @see org.extex.typesetter.type.noad.Noad#typeset(
      *      org.extex.typesetter.type.noad.Noad,
      *      org.extex.typesetter.type.noad.NoadList,

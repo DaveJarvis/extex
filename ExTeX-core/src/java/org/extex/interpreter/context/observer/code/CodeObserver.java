@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -22,7 +22,6 @@ package org.extex.interpreter.context.observer.code;
 import org.extex.interpreter.context.ContextInternals;
 import org.extex.interpreter.type.Code;
 import org.extex.scanner.type.token.Token;
-
 
 /**
  * This interface describes the ability to receive a notification about the

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -18,7 +18,6 @@
  */
 
 package org.extex.typesetter.type.noad;
-
 
 import org.extex.interpreter.context.Color;
 import org.extex.interpreter.context.tc.TypesettingContext;
@@ -85,6 +84,11 @@ public abstract class AbstractNucleusNoad extends AbstractNoad {
     }
 
     /**
+     * Produce a printable representation to a certain depth of the noad.
+     *
+     * @param sb the string buffer
+     * @param depth the depth to which the full information should be given
+     *
      * @see "TTP [696]"
      * @see org.extex.typesetter.type.noad.Noad#toString(
      *      java.lang.StringBuffer, int)

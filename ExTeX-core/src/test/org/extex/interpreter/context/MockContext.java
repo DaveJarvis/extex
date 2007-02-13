@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -68,8 +68,6 @@ import org.extex.typesetter.paragraphBuilder.ParagraphShape;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-
-
 /**
  * This mock implementation of a context does nothing useful but provide dummy
  * methods. It is meant as a base for derived mock implementations in test
@@ -104,14 +102,24 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * Add a unit to the list of loaded units. The units can be notified when
+     * the context is loaded from a format.
+     *
+     * @param info the info of the unit loaded
+     *
      * @see org.extex.interpreter.context.Context#addUnit(
      *      org.extex.interpreter.unit.UnitInfo)
      */
-    public void addUnit(UnitInfo info) {
+    public void addUnit(final UnitInfo info) {
 
     }
 
     /**
+     * Register a observer to be called at the end of the group. The end of the
+     * group is reached when the group is closed.
+     *
+     * @param observer the observer to register
+     *
      * @see org.extex.interpreter.context.ContextGroup#afterGroup(
      *      org.extex.interpreter.context.observer.group.AfterGroupObserver)
      */
@@ -121,6 +129,12 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * Add a token to the tokens inserted after the group has been closed.
+     *
+     * @param t the token to add
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.context.ContextGroup#afterGroup(
      *      org.extex.scanner.type.token.Token)
      */
@@ -130,6 +144,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * This method clears all split marks.
+     *
      * @see org.extex.interpreter.context.ContextMark#clearSplitMarks()
      */
     public void clearSplitMarks() {

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -75,6 +75,8 @@ public final class OpenStringObserverList implements OpenStringObserver {
     /**
      * Invoke all observers on the list to inform them of the character sequence
      * which has been opened.
+     *
+     * @param string the contents to be processed
      *
      * @see org.extex.scanner.stream.observer.string.OpenStringObserver#update(
      *      java.lang.CharSequence)
