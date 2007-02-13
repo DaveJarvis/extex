@@ -58,7 +58,7 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
      * The field <tt>ENABLE_DEBUG</tt> contains the indicator for turning on
      * the debugging emulation.
      */
-    private static boolean ENABLE_DEBUG = false;
+    private static final boolean ENABLE_DEBUG = false;
 
     /**
      * The constant <tt>NL</tt> contains the String with the newline character,

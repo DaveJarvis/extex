@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -23,7 +23,6 @@ import org.extex.main.errorHandler.editHandler.EditHandler;
 import org.extex.type.Locator;
 import org.extex.util.framework.i18n.Localizer;
 
-
 /**
  * This is a dummy implementation for an EditHandler which just prints the
  * location to the error stream.
@@ -42,6 +41,13 @@ public class EditHandlerTeXImpl implements EditHandler {
     }
 
     /**
+     * Edit a file at a given location.
+     *
+     * @param localizer the localizer to acquire texts from
+     * @param locator the locator for the place to edit
+     *
+     * @return <code>true</code> iff the job can be continued
+     *
      * @see org.extex.main.errorHandler.editHandler.EditHandler#edit(
      *      org.extex.util.framework.i18n.Localizer,
      *      org.extex.type.Locator)
@@ -49,7 +55,7 @@ public class EditHandlerTeXImpl implements EditHandler {
     public boolean edit(final Localizer localizer, final Locator locator) {
 
         System.err.println(localizer.format("EditHandler.edit", locator
-                .getResourceName(), Integer.toString(locator.getLineNumber())));
+            .getResourceName(), Integer.toString(locator.getLineNumber())));
         return false;
     }
 

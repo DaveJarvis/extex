@@ -36,7 +36,7 @@ import org.extex.interpreter.exception.InterpreterException;
 /**
  * This class contains test cases for the command line interface of
  * <logo>ExTeX</logo>.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4708 $
  */
@@ -51,7 +51,7 @@ public class TeXTest extends TestCase {
 
     /**
      * The command line interface.
-     * 
+     *
      * @param args command line arguments
      */
     public static void main(final String[] args) {
@@ -81,7 +81,7 @@ public class TeXTest extends TestCase {
 
     /**
      * Create a new instance of properties pre-filled with the java.version.
-     * 
+     *
      * @return the new properties
      */
     private Properties makeProperties() {
@@ -93,15 +93,15 @@ public class TeXTest extends TestCase {
 
     /**
      * Run a test through the command line.
-     * 
+     *
      * @param args the array of command line arguments
      * @param properties the properties to use
      * @param expect the expected result on the error stream or
      *            <code>null</code>
      * @param exit the expected exit code
-     * 
+     *
      * @return the result on the error stream
-     * 
+     *
      * @throws InterpreterException in case of an interpreter error
      * @throws IOException in case of an io error
      */
@@ -143,7 +143,7 @@ public class TeXTest extends TestCase {
 
     /**
      * <testcase> This test case validates that ... </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     public void testUndefinedProperty() throws Exception {
@@ -155,7 +155,7 @@ public class TeXTest extends TestCase {
     /**
      * <testcase> This test case validates that <tt>-version</tt> prints the
      * version number and exists with code 0. </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     public void testVersion() throws Exception {
@@ -165,7 +165,7 @@ public class TeXTest extends TestCase {
 
     /**
      * <testcase> This test case validates that ... </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     public void testHelp() throws Exception {
@@ -177,7 +177,7 @@ public class TeXTest extends TestCase {
 
     /**
      * <testcase> This test case validates that ... </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     public void testCopying() throws Exception {
@@ -189,7 +189,7 @@ public class TeXTest extends TestCase {
 
     /**
      * <testcase> This test case validates that ... </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     public void testCopyright() throws Exception {
@@ -208,7 +208,7 @@ public class TeXTest extends TestCase {
 
     /**
      * <testcase> This test case validates that ... </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     public void testHelp2() throws Exception {
@@ -223,7 +223,7 @@ public class TeXTest extends TestCase {
     /**
      * <testcase> This test case validates that <tt>-ver</tt> prints the
      * version number and exists with code 0. </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     public void testVer() throws Exception {
@@ -233,7 +233,7 @@ public class TeXTest extends TestCase {
 
     /**
      * <testcase> This test case validates that ... </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     public void testInteraction1() throws Exception {
@@ -244,7 +244,7 @@ public class TeXTest extends TestCase {
 
     /**
      * <testcase> This test case validates that ... </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     public void testInteraction2() throws Exception {
@@ -255,7 +255,7 @@ public class TeXTest extends TestCase {
 
     /**
      * <testcase> This test case validates that ... </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     public void testInteraction3() throws Exception {
@@ -266,7 +266,7 @@ public class TeXTest extends TestCase {
 
     /**
      * <testcase> This test case validates that ... </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     public void testInteraction4() throws Exception {
@@ -278,7 +278,7 @@ public class TeXTest extends TestCase {
 
     /**
      * <testcase> This test case validates that ... </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     public void testInteraction5() throws Exception {
@@ -290,7 +290,7 @@ public class TeXTest extends TestCase {
 
     /**
      * <testcase> This test case validates that ... </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     public void testInteraction6() throws Exception {
@@ -301,7 +301,7 @@ public class TeXTest extends TestCase {
 
     /**
      * <testcase> This test case validates that ... </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     public void testProgname1() throws Exception {
@@ -313,7 +313,7 @@ public class TeXTest extends TestCase {
 
     /**
      * <testcase> This test case validates that ... </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     public void testProgname2() throws Exception {
@@ -325,7 +325,7 @@ public class TeXTest extends TestCase {
 
     /**
      * <testcase> This test case validates that ... </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     public void testProgname3() throws Exception {
@@ -337,7 +337,7 @@ public class TeXTest extends TestCase {
 
     /**
      * <testcase> This test case validates that ... </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     public void testProgname4() throws Exception {
@@ -349,7 +349,7 @@ public class TeXTest extends TestCase {
 
     /**
      * <testcase> This test case validates that ... </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     public void testPropertyName1() throws Exception {
@@ -361,7 +361,7 @@ public class TeXTest extends TestCase {
 
     /**
      * <testcase> This test case validates that ... </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     public void testPropertyName2() throws Exception {
@@ -373,7 +373,7 @@ public class TeXTest extends TestCase {
 
     /**
      * <testcase> This test case validates that ... </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     public void test0() throws Exception {
@@ -388,7 +388,7 @@ public class TeXTest extends TestCase {
 
     /**
      * <testcase> This test case validates that ... </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     public void testNobanner1() throws Exception {
@@ -401,7 +401,7 @@ public class TeXTest extends TestCase {
 
     /**
      * <testcase> This test case validates that ... </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     public void testExTeXBanner1() throws Exception {
@@ -414,7 +414,7 @@ public class TeXTest extends TestCase {
 
     /**
      * <testcase> This test case validates that ... </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     public void testFmt() throws Exception {
@@ -434,7 +434,7 @@ public class TeXTest extends TestCase {
 
     /**
      * <testcase> This test case validates that ... </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     public void testStarStar1() throws Exception {

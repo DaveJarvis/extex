@@ -49,6 +49,10 @@ public class TokenObserver implements PopObserver {
     }
 
     /**
+     * This method is meant to be invoked just after a pop ocurrs.
+     *
+     * @param token the token to be expanded
+     *
      * @see org.extex.interpreter.observer.pop.PopObserver#update(
      *      org.extex.scanner.type.token.Token)
      */

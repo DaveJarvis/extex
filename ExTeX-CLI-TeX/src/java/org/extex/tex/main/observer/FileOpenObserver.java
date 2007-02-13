@@ -51,6 +51,14 @@ public class FileOpenObserver implements OpenFileObserver {
     }
 
     /**
+     * This method is meant to be invoked just after a new file based stream has
+     * been opened.
+     *
+     * @param filename the name of the file to be opened
+     * @param filetype the type of the file to be opened. The type is resolved
+     *  via the configuration to a file name pattern
+     * @param stream the input stream to read from
+     *
      * @see org.extex.scanner.stream.observer.file.OpenFileObserver#update(
      *      java.lang.String,
      *      java.lang.String,

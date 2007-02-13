@@ -42,6 +42,12 @@ public class ErrorHandlerTeXImpl extends ErrorHandlerImpl {
     }
 
     /**
+     * This method is invoked to present the current line causing the error.
+     *
+     * @param logger the logger to use for output
+     * @param message the error message
+     * @param locator the locator for the error position
+     *
      * @see org.extex.tex.main.errorHandler.ErrorHandlerImpl#showErrorLine(
      *      java.util.logging.Logger, java.lang.String, org.extex.type.Locator)
      */

@@ -49,6 +49,10 @@ public class MainMissingArgumentException extends MainException {
     }
 
     /**
+     * Creates a localized description of this throwable.
+     *
+     * @return  The localized description of this throwable.
+     *
      * @see java.lang.Throwable#getLocalizedMessage()
      */
     public String getLocalizedMessage() {

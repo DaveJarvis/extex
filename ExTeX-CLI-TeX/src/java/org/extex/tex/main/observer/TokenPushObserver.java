@@ -49,6 +49,10 @@ public class TokenPushObserver implements PushObserver {
     }
 
     /**
+     * This method is meant to be invoked just after a push event.
+     *
+     * @param token the token which has been pushed
+     *
      * @see org.extex.interpreter.observer.push.PushObserver#update(
      *      org.extex.scanner.type.token.Token)
      */

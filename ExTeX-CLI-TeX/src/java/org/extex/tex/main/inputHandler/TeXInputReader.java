@@ -82,6 +82,12 @@ public class TeXInputReader extends Reader {
     }
 
     /**
+     * Close the stream.  Once a stream has been closed, further read(),
+     * ready(), mark(), or reset() invocations will throw an IOException.
+     * Closing a previously-closed stream, however, has no effect.
+     *
+     * @exception  IOException  If an I/O error occurs
+     *
      * @see java.io.Reader#close()
      */
     public void close() throws IOException {
@@ -90,6 +96,12 @@ public class TeXInputReader extends Reader {
     }
 
     /**
+     * Tell whether this stream supports the mark() operation. The default
+     * implementation always returns false. Subclasses should override this
+     * method.
+     *
+     * @return true if and only if this stream supports the mark operation.
+     *
      * @see java.io.Reader#markSupported()
      */
     public boolean markSupported() {
@@ -98,6 +110,15 @@ public class TeXInputReader extends Reader {
     }
 
     /**
+     * Read a single character.  This method will block until a character is
+     * available, an I/O error occurs, or the end of the stream is reached.
+     *
+     * @return     The character read, as an integer in the range 0 to 65535
+     *             (<tt>0x00-0xffff</tt>), or -1 if the end of the stream has
+     *             been reached
+     *
+     * @exception  IOException  If an I/O error occurs
+     *
      * @see java.io.Reader#read()
      */
     public int read() throws IOException {
@@ -106,17 +127,41 @@ public class TeXInputReader extends Reader {
     }
 
     /**
+     * Read characters into an array.  This method will block until some input
+     * is available, an I/O error occurs, or the end of the stream is reached.
+     *
+     * @param       buffer  Destination buffer
+     *
+     * @return      The number of characters read, or -1
+     *              if the end of the stream
+     *              has been reached
+     *
+     * @exception   IOException  If an I/O error occurs
+     *
      * @see java.io.Reader#read(char[])
      */
-    public int read(final char[] arg0) throws IOException {
+    public int read(final char[] buffer) throws IOException {
 
-        return this.reader.read(arg0);
+        return this.reader.read(buffer);
     }
 
     /**
+     * Read characters into a portion of an array.  This method will block
+     * until some input is available, an I/O error occurs, or the end of the
+     * stream is reached.
+     *
+     * @param      buffer  Destination buffer
+     * @param      startIndex   Offset at which to start storing characters
+     * @param      len   Maximum number of characters to read
+     *
+     * @return     The number of characters read, or -1 if the end of the
+     *             stream has been reached
+     *
+     * @exception  IOException  If an I/O error occurs
+     *
      * @see java.io.Reader#read(char[], int, int)
      */
-    public int read(final char[] buffer, final int startIndex, final int arg2)
+    public int read(final char[] buffer, final int startIndex, final int len)
             throws IOException {
 
         /*
@@ -124,13 +169,13 @@ public class TeXInputReader extends Reader {
          //                .getIndex()) {
          //            return -1;
          //        }
-         * 
+         *
          */
         if (showPrompt) {
             logger.severe(prompt);
             showPrompt = false;
         }
-        int ret = reader.read(buffer, startIndex, arg2);
+        int ret = reader.read(buffer, startIndex, len);
         for (int i = 0; i < ret; i++) {
             char c = buffer[startIndex + i];
             logger.fine(Character.toString(c));
@@ -142,6 +187,14 @@ public class TeXInputReader extends Reader {
     }
 
     /**
+     * Tell whether this stream is ready to be read.
+     *
+     * @return True if the next read() is guaranteed not to block for input,
+     * false otherwise.  Note that returning false does not guarantee that the
+     * next read will block.
+     *
+     * @exception  IOException  If an I/O error occurs
+     *
      * @see java.io.Reader#ready()
      */
     public boolean ready() throws IOException {
@@ -150,6 +203,18 @@ public class TeXInputReader extends Reader {
     }
 
     /**
+     * Reset the stream.  If the stream has been marked, then attempt to
+     * reposition it at the mark.  If the stream has not been marked, then
+     * attempt to reset it in some way appropriate to the particular stream,
+     * for example by repositioning it to its starting point.  Not all
+     * character-input streams support the reset() operation, and some support
+     * reset() without supporting mark().
+     *
+     * @exception  IOException  If the stream has not been marked,
+     *                          or if the mark has been invalidated,
+     *                          or if the stream does not support reset(),
+     *                          or if some other I/O error occurs
+     *
      * @see java.io.Reader#reset()
      */
     public void reset() throws IOException {
@@ -158,11 +223,21 @@ public class TeXInputReader extends Reader {
     }
 
     /**
+     * Skip characters.  This method will block until some characters are
+     * available, an I/O error occurs, or the end of the stream is reached.
+     *
+     * @param  n  The number of characters to skip
+     *
+     * @return    The number of characters actually skipped
+     *
+     * @exception  IllegalArgumentException  If <code>n</code> is negative.
+     * @exception  IOException  If an I/O error occurs
+     *
      * @see java.io.Reader#skip(long)
      */
-    public long skip(final long arg0) throws IOException {
+    public long skip(final long n) throws IOException {
 
-        return this.reader.skip(arg0);
+        return this.reader.skip(n);
     }
 
 }
