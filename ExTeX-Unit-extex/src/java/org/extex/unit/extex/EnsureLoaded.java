@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -111,15 +111,30 @@ public class EnsureLoaded extends AbstractCode
     }
 
     /**
+     * Setter for the logger.
+     *
+     * @param log the logger to use
+     *
      * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
-    public void enableLogging(final Logger theLogger) {
+    public void enableLogging(final Logger log) {
 
-        this.logger = theLogger;
+        this.logger = log;
     }
 
     /**
+     * This method takes the first token and executes it. The result is placed
+     * on the stack. This operation might have side effects. To execute a token
+     * it might be necessary to consume further tokens.
+     *
+     * @param prefix the prefix controlling the execution
+     * @param context the interpreter context
+     * @param source the token source
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.Code#execute(
      *       org.extex.interpreter.Flags,
      *       org.extex.interpreter.context.Context,
@@ -164,6 +179,10 @@ public class EnsureLoaded extends AbstractCode
     }
 
     /**
+     * This method takes an output stream factory for further use.
+     *
+     * @param factory the output stream factory to use
+     *
      * @see org.extex.interpreter.type.OutputStreamConsumer#setOutputStreamFactory(
      *      org.extex.backend.outputStream.OutputStreamFactory)
      */
