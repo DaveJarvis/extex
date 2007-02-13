@@ -100,6 +100,11 @@ public class MuskipPrimitive extends MuskipParameter {
      * @return the key for the muskip register
      *
      * @throws InterpreterException in case of an error
+     *
+     * @see org.extex.unit.tex.register.muskip.MuskipParameter#getKey(
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource,
+     *      org.extex.typesetter.Typesetter)
      */
     protected String getKey(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -22,7 +22,6 @@ package org.extex.unit.tex.table;
 import java.util.Properties;
 
 import org.extex.test.NoFlagsPrimitiveTester;
-
 
 /**
  * This is a test suite for the primitive <tt>\halign</tt>.

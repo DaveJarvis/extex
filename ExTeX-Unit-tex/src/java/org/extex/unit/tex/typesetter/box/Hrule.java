@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -30,7 +30,6 @@ import org.extex.typesetter.Mode;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.node.RuleNode;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
-
 
 /**
  * This class provides an implementation for the primitive <code>\hrule</code>.
@@ -131,8 +130,6 @@ public class Hrule extends AbstractCode implements RuleConvertible {
 
         try {
             typesetter.add(getRule(context, source, typesetter));
-        } catch (InterpreterException e) {
-            throw e;
         } catch (ConfigurationException e) {
             throw new InterpreterException(e);
         }
@@ -174,7 +171,7 @@ public class Hrule extends AbstractCode implements RuleConvertible {
         }
 
         return new RuleNode(width, height, depth, context
-                .getTypesettingContext(), true);
+            .getTypesettingContext(), true);
     }
 
 }

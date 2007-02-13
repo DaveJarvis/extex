@@ -54,6 +54,9 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
      *  Test case checking that <tt>\romannumeral</tt> on a count with the value
      *  2 gives <tt>ii</tt>.
      * </testcase>
+     *
+     * @throws Exception in case of an error
+     *
      */
     public void testCount1() throws Exception {
 
@@ -65,8 +68,10 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
      *  Test case checking that <tt>\romannumeral</tt> on -1 gives
      *  the empty token list.
      * </testcase>
+     *
+     * @throws Exception in case of an error
      */
-    public void test_1() throws Exception {
+    public void testMinus1() throws Exception {
 
         assertSuccess("\\romannumeral -1 \\end", "");
     }
@@ -76,6 +81,8 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
      *  Test case checking that <tt>\romannumeral</tt> on 0 gives
      *  the empty token list.
      * </testcase>
+     *
+     * @throws Exception in case of an error
      */
     public void test0() throws Exception {
 
@@ -87,6 +94,8 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
      *  Test case checking that <tt>\romannumeral</tt> on 1 gives
      *  <tt>i</tt>.
      * </testcase>
+     *
+     * @throws Exception in case of an error
      */
     public void test1() throws Exception {
 
@@ -98,6 +107,8 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
      *  Test case checking that <tt>\romannumeral</tt> on 2 gives
      *  <tt>ii</tt>.
      * </testcase>
+     *
+     * @throws Exception in case of an error
      */
     public void test2() throws Exception {
 
@@ -109,6 +120,8 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
      *  Test case checking that <tt>\romannumeral</tt> on 3 gives
      *  <tt>iii</tt>.
      * </testcase>
+     *
+     * @throws Exception in case of an error
      */
     public void test3() throws Exception {
 
@@ -120,6 +133,8 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
      *  Test case checking that <tt>\romannumeral</tt> on 4 gives
      *  <tt>iv</tt>.
      * </testcase>
+     *
+     * @throws Exception in case of an error
      */
     public void test4() throws Exception {
 
@@ -131,6 +146,8 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
      *  Test case checking that <tt>\romannumeral</tt> on 5 gives
      *  <tt>v</tt>.
      * </testcase>
+     *
+     * @throws Exception in case of an error
      */
     public void test5() throws Exception {
 
@@ -142,6 +159,8 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
      *  Test case checking that <tt>\romannumeral</tt> on 6 gives
      *  <tt>vi</tt>.
      * </testcase>
+     *
+     * @throws Exception in case of an error
      */
     public void test6() throws Exception {
 
@@ -153,6 +172,8 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
      *  Test case checking that <tt>\romannumeral</tt> on 7 gives
      *  <tt>vii</tt>.
      * </testcase>
+     *
+     * @throws Exception in case of an error
      */
     public void test7() throws Exception {
 
@@ -164,6 +185,8 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
      *  Test case checking that <tt>\romannumeral</tt> on 8 gives
      *  <tt>viii</tt>.
      * </testcase>
+     *
+     * @throws Exception in case of an error
      */
     public void test8() throws Exception {
 
@@ -175,6 +198,8 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
      *  Test case checking that <tt>\romannumeral</tt> on 9 gives
      *  <tt>ix</tt>.
      * </testcase>
+     *
+     * @throws Exception in case of an error
      */
     public void test9() throws Exception {
 
@@ -186,6 +211,8 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
      *  Test case checking that <tt>\romannumeral</tt> on 10 gives
      *  <tt>x</tt>.
      * </testcase>
+     *
+     * @throws Exception in case of an error
      */
     public void test10() throws Exception {
 
@@ -197,6 +224,8 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
      *  Test case checking that <tt>\romannumeral</tt> on 11 gives
      *  <tt>xi</tt>.
      * </testcase>
+     *
+     * @throws Exception in case of an error
      */
     public void test11() throws Exception {
 
@@ -208,6 +237,8 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
      *  Test case checking that <tt>\romannumeral</tt> on 12 gives
      *  <tt>xii</tt>.
      * </testcase>
+     *
+     * @throws Exception in case of an error
      */
     public void test12() throws Exception {
 
@@ -219,6 +250,8 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
      *  Test case checking that <tt>\romannumeral</tt> on 13 gives
      *  <tt>xiii</tt>.
      * </testcase>
+     *
+     * @throws Exception in case of an error
      */
     public void test13() throws Exception {
 
@@ -230,6 +263,8 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
      *  Test case checking that <tt>\romannumeral</tt> on 14 gives
      *  <tt>xiv</tt>.
      * </testcase>
+     *
+     * @throws Exception in case of an error
      */
     public void test14() throws Exception {
 
@@ -241,6 +276,8 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
      *  Test case checking that <tt>\romannumeral</tt> on 15 gives
      *  <tt>xv</tt>.
      * </testcase>
+     *
+     * @throws Exception in case of an error
      */
     public void test15() throws Exception {
 
@@ -252,6 +289,8 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
      *  Test case checking that <tt>\romannumeral</tt> on 49 gives
      *  <tt>xlix</tt>.
      * </testcase>
+     *
+     * @throws Exception in case of an error
      */
     public void test49() throws Exception {
 
@@ -263,6 +302,8 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
      *  Test case checking that <tt>\romannumeral</tt> on 50 gives
      *  <tt>l</tt>.
      * </testcase>
+     *
+     * @throws Exception in case of an error
      */
     public void test50() throws Exception {
 
@@ -274,6 +315,8 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
      *  Test case checking that <tt>\romannumeral</tt> on 51 gives
      *  <tt>li</tt>.
      * </testcase>
+     *
+     * @throws Exception in case of an error
      */
     public void test51() throws Exception {
 
@@ -285,6 +328,8 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
      *  Test case checking that <tt>\romannumeral</tt> on 99 gives
      *  <tt>xcix</tt>.
      * </testcase>
+     *
+     * @throws Exception in case of an error
      */
     public void test99() throws Exception {
 
@@ -296,6 +341,8 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
      *  Test case checking that <tt>\romannumeral</tt> on 100 gives
      *  <tt>c</tt>.
      * </testcase>
+     *
+     * @throws Exception in case of an error
      */
     public void test100() throws Exception {
 
@@ -307,6 +354,8 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
      *  Test case checking that <tt>\romannumeral</tt> on 101 gives
      *  <tt>ci</tt>.
      * </testcase>
+     *
+     * @throws Exception in case of an error
      */
     public void test101() throws Exception {
 
@@ -318,6 +367,8 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
      *  Test case checking that <tt>\romannumeral</tt> on 499 gives
      *  <tt>cdxcix</tt>.
      * </testcase>
+     *
+     * @throws Exception in case of an error
      */
     public void test499() throws Exception {
 
@@ -329,6 +380,8 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
      *  Test case checking that <tt>\romannumeral</tt> on 500 gives
      *  <tt>d</tt>.
      * </testcase>
+     *
+     * @throws Exception in case of an error
      */
     public void test500() throws Exception {
 
@@ -340,6 +393,8 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
      *  Test case checking that <tt>\romannumeral</tt> on 501 gives
      *  <tt>di</tt>.
      * </testcase>
+     *
+     * @throws Exception in case of an error
      */
     public void test501() throws Exception {
 
@@ -351,6 +406,8 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
      *  Test case checking that <tt>\romannumeral</tt> on 999 gives
      *  <tt>cmxcix</tt>.
      * </testcase>
+     *
+     * @throws Exception in case of an error
      */
     public void test999() throws Exception {
 
@@ -362,6 +419,8 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
      *  Test case checking that <tt>\romannumeral</tt> on 1000 gives
      *  <tt>m</tt>.
      * </testcase>
+     *
+     * @throws Exception in case of an error
      */
     public void test1000() throws Exception {
 
@@ -373,6 +432,8 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
      *  Test case checking that <tt>\romannumeral</tt> on 1001 gives
      *  <tt>mi</tt>.
      * </testcase>
+     *
+     * @throws Exception in case of an error
      */
     public void test1001() throws Exception {
 
@@ -384,6 +445,8 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
      *  Test case checking that <tt>\romannumeral</tt> on 1999 gives
      *  <tt>mcmxcix</tt>.
      * </testcase>
+     *
+     * @throws Exception in case of an error
      */
     public void test1999() throws Exception {
 
@@ -395,6 +458,8 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
      *  Test case checking that <tt>\romannumeral</tt> on 2000 gives
      *  <tt>mm</tt>.
      * </testcase>
+     *
+     * @throws Exception in case of an error
      */
     public void test2000() throws Exception {
 
@@ -406,6 +471,8 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
      *  Test case checking that <tt>\romannumeral</tt> on 3001 gives
      *  <tt>mmmi</tt>.
      * </testcase>
+     *
+     * @throws Exception in case of an error
      */
     public void test3001() throws Exception {
 
@@ -417,6 +484,8 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
      *  Test case checking that <tt>\romannumeral</tt> on 4001 gives
      *  <tt>mmmmi</tt>.
      * </testcase>
+     *
+     * @throws Exception in case of an error
      */
     public void test4001() throws Exception {
 
@@ -428,6 +497,8 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
      *  Test case checking that <tt>\romannumeral</tt> on 5001 gives
      *  <tt>mmmmmi</tt>.
      * </testcase>
+     *
+     * @throws Exception in case of an error
      */
     public void test5001() throws Exception {
 
@@ -439,6 +510,8 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
      *  Test case checking that <tt>\romannumeral</tt> on 6001 gives
      *  <tt>mmmmmmi</tt>.
      * </testcase>
+     *
+     * @throws Exception in case of an error
      */
     public void test6001() throws Exception {
 

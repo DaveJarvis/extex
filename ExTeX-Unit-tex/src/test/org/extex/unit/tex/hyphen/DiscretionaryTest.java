@@ -49,12 +49,10 @@ public class DiscretionaryTest extends NoFlagsPrimitiveTester {
     public void testDisc1() throws Exception {
 
         assertSuccess(//--- input code ---
-                DEFINE_BRACES
-                + "\\hsize=123pt "
-                + "\\discretionary{a}{b}{c}"
-                + "\\end ",
-                //--- output channel ---
-                "--" + TERM);
+            DEFINE_BRACES + "\\hsize=123pt " + "\\discretionary{a}{b}{c}"
+                    + "\\end ",
+            //--- output channel ---
+            "--" + TERM);
     }
 
     /**
@@ -67,14 +65,11 @@ public class DiscretionaryTest extends NoFlagsPrimitiveTester {
     public void testMath1() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\catcode`{=1 "
-                + "\\catcode`}=2 "
-                + "\\catcode`$=3 "
-                + "\\hsize=123pt "
-                + "$\\discretionary{a}{b}{c}$"
-                + "\\end ",
-                //--- output channel ---
-                "");//TODO check
+            "\\catcode`{=1 " + "\\catcode`}=2 " + "\\catcode`$=3 "
+                    + "\\hsize=123pt " + "$\\discretionary{a}{b}{c}$"
+                    + "\\end ",
+            //--- output channel ---
+            ""); //TODO check
     }
 
 }

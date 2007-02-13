@@ -59,9 +59,9 @@ public class DivideTest extends NoFlagsButGlobalPrimitiveTester {
     public void testEof1() throws Exception {
 
         assertFailure(//--- input code ---
-                "\\divide ",
-                //--- log message ---
-                "Unexpected end of file while processing \\divide");
+            "\\divide ",
+            //--- log message ---
+            "Unexpected end of file while processing \\divide");
     }
 
     /**
@@ -75,9 +75,9 @@ public class DivideTest extends NoFlagsButGlobalPrimitiveTester {
     public void testUndef1() throws Exception {
 
         assertFailure(//--- input code ---
-                "\\divide \\x ",
-                //--- log message ---
-                "Undefined control sequence \\x");
+            "\\divide \\x ",
+            //--- log message ---
+            "Undefined control sequence \\x");
     }
 
     /**
@@ -90,9 +90,9 @@ public class DivideTest extends NoFlagsButGlobalPrimitiveTester {
     public void testLetter1() throws Exception {
 
         assertFailure(//--- input code ---
-                "\\divide a",
-                //--- log message ---
-                "You can\'t use `a\' after \\divide");
+            "\\divide a",
+            //--- log message ---
+            "You can\'t use `a\' after \\divide");
     }
 
     /**
@@ -106,9 +106,9 @@ public class DivideTest extends NoFlagsButGlobalPrimitiveTester {
     public void testOther1() throws Exception {
 
         assertFailure(//--- input code ---
-                "\\divide 12 ",
-                //--- log message ---
-                "You can\'t use `1\' after \\divide");
+            "\\divide 12 ",
+            //--- log message ---
+            "You can\'t use `1\' after \\divide");
     }
 
     /**
@@ -122,10 +122,9 @@ public class DivideTest extends NoFlagsButGlobalPrimitiveTester {
     public void testMacro1() throws Exception {
 
         assertFailure(//--- input code ---
-                "\\catcode`#=6 "
-                + "\\divide #2 ",
-                //--- log message ---
-                "You can\'t use `#\' after \\divide");
+            "\\catcode`#=6 " + "\\divide #2 ",
+            //--- log message ---
+            "You can\'t use `#\' after \\divide");
     }
 
     /**
@@ -139,9 +138,9 @@ public class DivideTest extends NoFlagsButGlobalPrimitiveTester {
     public void testRelax1() throws Exception {
 
         assertFailure(//--- input code ---
-                "\\divide \\relax ",
-                //--- log message ---
-                "You can\'t use `\\relax\' after \\divide");
+            "\\divide \\relax ",
+            //--- log message ---
+            "You can\'t use `\\relax\' after \\divide");
     }
 
     /**
@@ -155,11 +154,9 @@ public class DivideTest extends NoFlagsButGlobalPrimitiveTester {
     public void testCount0() throws Exception {
 
         assertFailure(//--- input code ---
-                "\\count1 16 "
-                +"\\divide \\count1 0 "
-                + "\\the\\count1 \\end",
-                //--- log message ---
-                "Arithmetic overflow");
+            "\\count1 16 " + "\\divide \\count1 0 " + "\\the\\count1 \\end",
+            //--- log message ---
+            "Arithmetic overflow");
     }
 
     /**
@@ -173,11 +170,9 @@ public class DivideTest extends NoFlagsButGlobalPrimitiveTester {
     public void testCount1() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\count1 16 "
-                + "\\divide \\count1 8 "
-                + "\\the\\count1 \\end",
-                //--- output channel ---
-                "2" + TERM);
+            "\\count1 16 " + "\\divide \\count1 8 " + "\\the\\count1 \\end",
+            //--- output channel ---
+            "2" + TERM);
     }
 
     /**
@@ -191,11 +186,11 @@ public class DivideTest extends NoFlagsButGlobalPrimitiveTester {
     public void testCount2() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\count1 16 "
-                + "\\begingroup\\global\\divide \\count1 8 \\endgroup "
-                + "\\the\\count1 \\end",
-                //--- output channel ---
-                "2" + TERM);
+            "\\count1 16 "
+                    + "\\begingroup\\global\\divide \\count1 8 \\endgroup "
+                    + "\\the\\count1 \\end",
+            //--- output channel ---
+            "2" + TERM);
     }
 
     /**
@@ -209,11 +204,9 @@ public class DivideTest extends NoFlagsButGlobalPrimitiveTester {
     public void testDimen1() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\dimen1 8pt "
-                + "\\divide \\dimen1 16 "
-                + "\\the\\dimen1 \\end",
-                //--- output channel ---
-                "0.5pt" + TERM);
+            "\\dimen1 8pt " + "\\divide \\dimen1 16 " + "\\the\\dimen1 \\end",
+            //--- output channel ---
+            "0.5pt" + TERM);
     }
 
     /**
@@ -227,11 +220,11 @@ public class DivideTest extends NoFlagsButGlobalPrimitiveTester {
     public void testDimen2() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\dimen1 8pt "
-                + "\\begingroup\\global\\divide \\dimen1 16 \\endgroup "
-                + "\\the\\dimen1 \\end",
-                //--- output channel ---
-                "0.5pt" + TERM);
+            "\\dimen1 8pt "
+                    + "\\begingroup\\global\\divide \\dimen1 16 \\endgroup "
+                    + "\\the\\dimen1 \\end",
+            //--- output channel ---
+            "0.5pt" + TERM);
     }
 
     /**
@@ -245,11 +238,9 @@ public class DivideTest extends NoFlagsButGlobalPrimitiveTester {
     public void testDimen0() throws Exception {
 
         assertFailure(//--- input code ---
-                "\\dimen1 8pt "
-                +"\\divide \\dimen1 0 "
-                + "\\the\\dimen1 \\end",
-                //--- log message ---
-                "Arithmetic overflow");
+            "\\dimen1 8pt " + "\\divide \\dimen1 0 " + "\\the\\dimen1 \\end",
+            //--- log message ---
+            "Arithmetic overflow");
     }
 
 }

@@ -43,15 +43,34 @@ import org.extex.util.framework.configuration.ConfigurationFactory;
 
 /**
  * Test for ExTeX.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
  * @version $Revision$
  */
 public final class TestTeX {
 
+    /**
+     * TODO missing JavaDoc.
+     *
+     */
     private static class AssertFailErrorHandler implements ErrorHandler {
 
+        /**
+         * TODO missing JavaDoc
+         *
+         * @param e ...
+         * @param token ...
+         * @param source ...
+         * @param context ...
+         * @return ...
+         *
+         * @see org.extex.interpreter.ErrorHandler#handleError(
+         *      org.extex.util.exception.GeneralException,
+         *      org.extex.scanner.type.token.Token,
+         *      org.extex.interpreter.TokenSource,
+         *      org.extex.interpreter.context.Context)
+         */
         public boolean handleError(final GeneralException e, final Token token,
                 final TokenSource source, final Context context) {
 
@@ -59,11 +78,19 @@ public final class TestTeX {
             return false; // not reached
         }
 
+        /**
+         * TODO missing JavaDoc.
+         *
+         */
         public void setEditHandler(final EditHandler editHandler) {
 
         }
     }
 
+    /**
+     * TODO missing JavaDoc.
+     *
+     */
     private static ErrorHandler errorHandler = new AssertFailErrorHandler();
 
     /**
@@ -76,10 +103,11 @@ public final class TestTeX {
     /**
      * Run ExTeX with a special file and compare the output with a output test
      * file.
-     * 
+     *
      * @param texfile the tex file
      * @param outfile the output test file
-     * 
+     * @param project ...
+     *
      * @exception Exception iff an error occurs; iff the two files are not
      *                equals AssertionFailedError
      */
@@ -132,12 +160,27 @@ public final class TestTeX {
         }
     }
 
+    /**
+     * TODO missing JavaDoc
+     *
+     * @param basename ...
+     *
+     * @throws Exception ...
+     */
     public static void test(final String basename) throws Exception {
 
         throw new RuntimeException("died");
         // testRun(basename, "develop/test/data/" + basename + ".testtxt");
     }
 
+    /**
+     * TODO missing JavaDoc.
+     *
+     * @param basename ...
+     * @param project ...
+     *
+     * @throws Exception ...
+     */
     public static void test(final String basename, final String project)
             throws Exception {
 
@@ -149,12 +192,12 @@ public final class TestTeX {
 
     /**
      * Make an <code>Interpreter</code>.
-     * 
+     *
      * @param configurationFile configuration file for ExTeX
      * @return an <code>Interpreter</code>
      * @exception Exception if an error occurs
      */
-    public static Interpreter makeInterpreter(String configurationFile)
+    public static Interpreter makeInterpreter(final String configurationFile)
             throws Exception {
 
         Configuration config = new ConfigurationFactory()
@@ -167,7 +210,7 @@ public final class TestTeX {
 
     /**
      * Make an <code>Interpreter</code>.
-     * 
+     *
      * @return an <code>Interpreter</code>
      * @exception Exception if an error occurs
      */
@@ -175,4 +218,5 @@ public final class TestTeX {
 
         return makeInterpreter("tex.xml");
     }
+
 }

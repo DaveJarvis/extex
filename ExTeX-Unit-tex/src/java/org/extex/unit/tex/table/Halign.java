@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -40,7 +40,6 @@ import org.extex.typesetter.TypesetterOptions;
 import org.extex.typesetter.listMaker.HAlignListMaker;
 import org.extex.typesetter.type.NodeList;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
-
 
 /**
  * This class provides an implementation for the primitive <code>\halign</code>.
@@ -96,6 +95,17 @@ public class Halign extends AbstractAlign implements Boxable {
     }
 
     /**
+     * This method takes the first token and executes it. The result is placed
+     * on the stack. This operation might have side effects. To execute a token
+     * it might be necessary to consume further tokens.
+     *
+     * @param prefix the prefix controlling the execution
+     * @param context the interpreter context
+     * @param source the token source
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -160,10 +170,10 @@ public class Halign extends AbstractAlign implements Boxable {
         } else if (t.isa(Catcode.LEFTBRACE)) {
             List preamble = getPreamble(context, source);
             typesetter.push(new HAlignListMaker(typesetter.getManager(),
-                    context, source, preamble, width, spread));
+                context, source, preamble, width, spread));
         } else {
             throw new MissingLeftBraceException(
-                    printableControlSequence(context));
+                printableControlSequence(context));
         }
 
         try {

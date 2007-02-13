@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -20,7 +20,6 @@
 package org.extex.unit.tex.register.count;
 
 import org.extex.interpreter.primitives.register.count.AbstractCountRegisterTester;
-
 
 /**
  * This is a test suite for the primitive <tt>\tracinglostchars</tt>.
@@ -59,11 +58,11 @@ public class TracinglostcharsTest extends AbstractCountRegisterTester {
     public void test01() throws Exception {
 
         assertOutput(//--- input code ---
-                "\\nullfont\\tracinglostchars=1 a \\end",
-                //--- log message ---
-                "Missing character: There is no a in font nullfont!\n",
-                //--- output stream ---
-                "");
+            "\\nullfont\\tracinglostchars=1 a \\end",
+            //--- log message ---
+            "Missing character: There is no a in font nullfont!\n",
+            //--- output stream ---
+            "");
     }
 
     /**
@@ -76,11 +75,11 @@ public class TracinglostcharsTest extends AbstractCountRegisterTester {
     public void test1() throws Exception {
 
         assertOutput(//--- input code ---
-                "\\tracinglostchars=1 a \\end",
-                //--- log message ---
-                "",
-                //--- output stream ---
-                "a" + TERM);
+            "\\tracinglostchars=1 a \\end",
+            //--- log message ---
+            "",
+            //--- output stream ---
+            "a" + TERM);
     }
 
     /**
@@ -93,12 +92,11 @@ public class TracinglostcharsTest extends AbstractCountRegisterTester {
     public void test02() throws Exception {
 
         assertOutput(//--- input code ---
-                DEFINE_BRACES +
-                "\\nullfont\\tracinglostchars=1\\hbox{a}\\end",
-                //--- log message ---
-                "Missing character: There is no a in font nullfont!\n",
-                //--- output stream ---
-                "");
+            DEFINE_BRACES + "\\nullfont\\tracinglostchars=1\\hbox{a}\\end",
+            //--- log message ---
+            "Missing character: There is no a in font nullfont!\n",
+            //--- output stream ---
+            "");
     }
 
     /**
@@ -111,14 +109,12 @@ public class TracinglostcharsTest extends AbstractCountRegisterTester {
     public void test2() throws Exception {
 
         assertOutput(//--- input code ---
-                DEFINE_BRACES +
-                "\\tracinglostchars=1\\hbox{a}\\end",
-                //--- log message ---
-                "",
-                //--- output stream ---
-                "a" + TERM);
+            DEFINE_BRACES + "\\tracinglostchars=1\\hbox{a}\\end",
+            //--- log message ---
+            "",
+            //--- output stream ---
+            "a" + TERM);
     }
-
 
     //TODO implement more primitive specific test cases (lost chars in math mode...)
 

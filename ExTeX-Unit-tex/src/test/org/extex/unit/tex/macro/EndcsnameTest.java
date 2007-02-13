@@ -54,5 +54,4 @@ public class EndcsnameTest extends ExTeXLauncher {
                 "Extra \\endcsname");
     }
 
-
 }

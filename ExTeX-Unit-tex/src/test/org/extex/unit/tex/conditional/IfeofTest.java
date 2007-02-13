@@ -34,7 +34,6 @@ public class IfeofTest extends ExTeXLauncher {
      */
     private static final String EMPTY_TEX = "../ExTeX-Unit-tex/src/test/tex/empty.tex";
 
-
     /**
      * Method for running the tests standalone.
      *

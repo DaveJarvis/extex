@@ -39,5 +39,4 @@ public class NoexpandTest extends NoFlagsButGlobalPrimitiveTester {
         super(arg, "noexpand", "\\relax");
     }
 
-
 }

@@ -76,9 +76,6 @@ public class MacroCode extends AbstractCode
 
     /**
      * This inner class provides the tokens of a macro as a toekn stream.
-     *
-     * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision$
      */
     private class MacroTokenStream implements TokenStream {
 
@@ -106,6 +103,10 @@ public class MacroCode extends AbstractCode
         }
 
         /**
+         * Close this stream if it is a file stream.
+         *
+         * @return <code>true</code> if the closing was successful
+         *
          * @see org.extex.scanner.TokenStream#closeFileStream()
          */
         public boolean closeFileStream() {
@@ -114,6 +115,19 @@ public class MacroCode extends AbstractCode
         }
 
         /**
+         * Get the next token from the token stream.
+         * If tokens are on the push-back stack then those are delivered otherwise
+         * new tokens might be extracted utilizing the token factory and the
+         * tokenizer.
+         *
+         * @param factory the token factory
+         * @param tokenizer the tokenizer
+         *
+         * @return the next Token or <code>null</code> if no more tokens are
+         * available
+         *
+         * @throws ScannerException in case of an error
+         *
          * @see org.extex.scanner.TokenStream#get(
          *      org.extex.scanner.type.token.TokenFactory,
          *      org.extex.interpreter.Tokenizer)
@@ -125,6 +139,13 @@ public class MacroCode extends AbstractCode
         }
 
         /**
+         * Getter for the locator.
+         * The locator describes the place the tokens have been read from in terms
+         * of the user. This information is meant for the end user to track down
+         * problems.
+         *
+         * @return the locator
+         *
          * @see org.extex.scanner.TokenStream#getLocator()
          */
         public Locator getLocator() {
@@ -135,6 +156,14 @@ public class MacroCode extends AbstractCode
         }
 
         /**
+         * Check to see if a further token can be acquired from the token stream.
+         *
+         * @return <code>true</code> if the stream is at its end
+         *
+         * @throws ScannerException in case that an error has been encountered.
+         *  Especially if an IO exceptions occurs it is delivered as chained
+         *  exception in a ScannerException.
+         *
          * @see org.extex.scanner.TokenStream#isEof()
          */
         public boolean isEof() throws ScannerException {
@@ -143,6 +172,14 @@ public class MacroCode extends AbstractCode
         }
 
         /**
+         * Check to see if the token stream is currently at the end of line.
+         *
+         * @return <code>true</code> if the stream is at end of line
+         *
+         * @throws ScannerException in case that an error has been encountered.
+         *  Especially if an IO exceptions occurs it is delivered as chained
+         *  exception in a ScannerException.
+         *
          * @see org.extex.scanner.TokenStream#isEol()
          */
         public boolean isEol() throws ScannerException {
@@ -151,6 +188,10 @@ public class MacroCode extends AbstractCode
         }
 
         /**
+         * Check whether the current stream is associated with a file to read from.
+         *
+         * @return <code>true</code> if the stream is a file stream
+         *
          * @see org.extex.scanner.TokenStream#isFileStream()
          */
         public boolean isFileStream() {
@@ -159,7 +200,20 @@ public class MacroCode extends AbstractCode
         }
 
         /**
-         * @see org.extex.scanner.TokenStream#put(org.extex.scanner.type.token.Token)
+         * Push back a token into the stream.
+         * If the token is <code>null</code> then nothing happens:
+         * a <code>null</code> token is not pushed!
+         * <p>
+         * Note that it is up to the implementation to accept tokens not produced
+         * with the token factory for push back. In general the behaviour in such a
+         * case is not defined and should be avoided.
+         * </p>
+         *
+         * @param token the token to push back
+         * @see "<logo>TeX</logo> &ndash; The Program [325]"
+         *
+         * @see org.extex.scanner.TokenStream#put(
+         *      org.extex.scanner.type.token.Token)
          */
         public void put(final Token token) {
 
@@ -214,6 +268,16 @@ public class MacroCode extends AbstractCode
     }
 
     /**
+     * Compare the code with some other code.
+     *
+     * @param token the token to compare to
+     * @param context the interpreter context
+     *
+     * @return <code>true</code> iff the code is equivalent according to the
+     *   semantics of <code>\ifx</code>
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.ComparableCode#compare(
      *      org.extex.scanner.type.token.Token,
      *      org.extex.interpreter.context.Context)
@@ -240,6 +304,17 @@ public class MacroCode extends AbstractCode
     }
 
     /**
+     * This method takes the first token and executes it. The result is placed
+     * on the stack. This operation might have side effects. To execute a token
+     * it might be necessary to consume further tokens.
+     *
+     * @param prefix the prefix controlling the execution
+     * @param context the interpreter context
+     * @param source the token source
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -290,6 +365,19 @@ public class MacroCode extends AbstractCode
     }
 
     /**
+     * This method takes the first token and expands it. The result is placed
+     * on the stack.
+     * This means that expandable code does one step of expansion and puts the
+     * result on the stack. To expand a token it might be necessary to consume
+     * further tokens.
+     *
+     * @param prefix the prefix flags controlling the expansion
+     * @param context the interpreter context
+     * @param source the token source
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.ExpandableCode#expand(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -304,6 +392,10 @@ public class MacroCode extends AbstractCode
     }
 
     /**
+     * Getter for localizer.
+     *
+     * @return the localizer.
+     *
      * @see org.extex.interpreter.type.AbstractCode#getLocalizer()
      */
     protected Localizer getLocalizer() {
@@ -349,6 +441,10 @@ public class MacroCode extends AbstractCode
     }
 
     /**
+     * Getter for the outer flag.
+     *
+     * @return <code>true</code> iff the code is defined outer.
+     *
      * @see org.extex.interpreter.type.Code#isOuter()
      */
     public boolean isOuter() {
@@ -494,6 +590,13 @@ public class MacroCode extends AbstractCode
     }
 
     /**
+     * This method is the getter for the description of the primitive.
+     *
+     * @param context the interpreter context
+     *
+     * @return the description of the primitive as list of Tokens
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.Showable#show(
      *      org.extex.interpreter.context.Context)
      */

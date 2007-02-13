@@ -361,9 +361,9 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     public void testEof1() throws Exception {
 
         assertFailure(//--- input code ---
-                "\\" + getDef() + "\\a",
-                //--- output channel ---
-                "File ended while scanning definition of \\"+ getDef());
+            "\\" + getDef() + "\\a",
+            //--- output channel ---
+            "File ended while scanning definition of \\" + getDef());
     }
 
     /**
@@ -376,9 +376,9 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     public void testEof2() throws Exception {
 
         assertFailure(//--- input code ---
-                DEFINE_BRACES + "\\" + getDef() + "\\a{",
-                //--- output channel ---
-                "File ended while scanning text of \\a");
+            DEFINE_BRACES + "\\" + getDef() + "\\a{",
+            //--- output channel ---
+            "File ended while scanning text of \\a");
     }
 
     /**

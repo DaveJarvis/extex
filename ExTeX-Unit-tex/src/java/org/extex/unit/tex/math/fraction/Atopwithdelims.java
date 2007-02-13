@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -28,7 +28,6 @@ import org.extex.interpreter.type.math.MathDelimiter;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.listMaker.math.NoadConsumer;
 import org.extex.unit.tex.math.delimiter.AbstractTeXDelimiter;
-
 
 /**
  * This class provides an implementation for the primitive
@@ -96,13 +95,13 @@ public class Atopwithdelims extends AbstractTeXDelimiter {
             throws InterpreterException {
 
         NoadConsumer nc = getListMaker(context, typesetter);
-        MathDelimiter del1 = parseDelimiter(context, source, typesetter,
-                getName());
-        MathDelimiter del2 = parseDelimiter(context, source, typesetter,
-                getName());
+        MathDelimiter del1 =
+                parseDelimiter(context, source, typesetter, getName());
+        MathDelimiter del2 =
+                parseDelimiter(context, source, typesetter, getName());
 
         nc.switchToFraction(del1, del2, Dimen.ZERO_PT, context
-                .getTypesettingContext());
+            .getTypesettingContext());
     }
 
 }

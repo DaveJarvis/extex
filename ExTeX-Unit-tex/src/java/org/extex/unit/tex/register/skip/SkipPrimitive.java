@@ -99,6 +99,16 @@ public class SkipPrimitive extends AbstractSkip
     }
 
     /**
+     * This method is called when the macro <tt>\advance</tt> has been seen.
+     * It performs the remaining tasks for the expansion.
+     *
+     * @param prefix the prefix for the command
+     * @param context the processor context
+     * @param source the token source to parse
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.arithmetic.Advanceable#advance(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -117,6 +127,17 @@ public class SkipPrimitive extends AbstractSkip
     }
 
     /**
+     * This method takes the first token and executes it. The result is placed
+     * on the stack. This operation might have side effects. To execute a token
+     * it might be necessary to consume further tokens.
+     *
+     * @param prefix the prefix controlling the execution
+     * @param context the interpreter context
+     * @param source the token source
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -134,6 +155,19 @@ public class SkipPrimitive extends AbstractSkip
     }
 
     /**
+     * This method converts a register into a glue value.
+     * It might be necessary to read further tokens to determine which value to
+     * use. For instance an additional register number might be required. In
+     * this case the additional arguments Context and TokenSource can be used.
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter to use for conversion
+     *
+     * @return the converted value
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.glue.GlueConvertible#convertGlue(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
@@ -147,6 +181,16 @@ public class SkipPrimitive extends AbstractSkip
     }
 
     /**
+     * This method is called when the macro <tt>\divide</tt> has been seen.
+     * It performs the remaining tasks for the expansion.
+     *
+     * @param prefix the prefix for the command
+     * @param context the processor context
+     * @param source the token source to parse
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.arithmetic.Divideable#divide(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -172,6 +216,16 @@ public class SkipPrimitive extends AbstractSkip
     }
 
     /**
+     * This method is called when the macro <tt>\multiply</tt> has been seen.
+     * It performs the remaining tasks for the expansion.
+     *
+     * @param prefix the prefix for the command
+     * @param context the processor context
+     * @param source the token source to parse
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.arithmetic.Multiplyable#multiply(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -192,6 +246,15 @@ public class SkipPrimitive extends AbstractSkip
     }
 
     /**
+     * This method is the getter for the description of the primitive.
+     *
+     * @param context the interpreter context
+     * @param source the source for further tokens to qualify the request
+     * @param typesetter the typesetter to use
+     *
+     * @return the description of the primitive as list of Tokens
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.Theable#the(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,

@@ -118,6 +118,10 @@ public class TexUnitInfo extends UnitInfo
     }
 
     /**
+     * Setter for the logger.
+     *
+     * @param log the logger to use
+     *
      * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
@@ -127,7 +131,15 @@ public class TexUnitInfo extends UnitInfo
     }
 
     /**
-     * @see org.extex.interpreter.primitives.dynamic.Loader#load(
+     * Perform a load operation.
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     *
+     * @see org.extex.interpreter.unit.Loader#load(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)

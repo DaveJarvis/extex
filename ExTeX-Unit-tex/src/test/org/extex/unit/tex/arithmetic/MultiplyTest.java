@@ -59,9 +59,9 @@ public class MultiplyTest extends NoFlagsButGlobalPrimitiveTester {
     public void testEof1() throws Exception {
 
         assertFailure(//--- input code ---
-                "\\multiply ",
-                //--- log message ---
-                "Unexpected end of file while processing \\multiply");
+            "\\multiply ",
+            //--- log message ---
+            "Unexpected end of file while processing \\multiply");
     }
 
     /**
@@ -75,9 +75,9 @@ public class MultiplyTest extends NoFlagsButGlobalPrimitiveTester {
     public void testUndef1() throws Exception {
 
         assertFailure(//--- input code ---
-                "\\multiply \\x ",
-                //--- log message ---
-                "Undefined control sequence \\x");
+            "\\multiply \\x ",
+            //--- log message ---
+            "Undefined control sequence \\x");
     }
 
     /**
@@ -90,9 +90,9 @@ public class MultiplyTest extends NoFlagsButGlobalPrimitiveTester {
     public void testLetter1() throws Exception {
 
         assertFailure(//--- input code ---
-                "\\multiply a",
-                //--- log message ---
-                "You can\'t use `a\' after \\multiply");
+            "\\multiply a",
+            //--- log message ---
+            "You can\'t use `a\' after \\multiply");
     }
 
     /**
@@ -106,9 +106,9 @@ public class MultiplyTest extends NoFlagsButGlobalPrimitiveTester {
     public void testOther1() throws Exception {
 
         assertFailure(//--- input code ---
-                "\\multiply 12 ",
-                //--- log message ---
-                "You can\'t use `1\' after \\multiply");
+            "\\multiply 12 ",
+            //--- log message ---
+            "You can\'t use `1\' after \\multiply");
     }
 
     /**
@@ -122,10 +122,9 @@ public class MultiplyTest extends NoFlagsButGlobalPrimitiveTester {
     public void testMacro1() throws Exception {
 
         assertFailure(//--- input code ---
-                "\\catcode`#=6 "
-                + "\\multiply #2 ",
-                //--- log message ---
-                "You can\'t use `#\' after \\multiply");
+            "\\catcode`#=6 " + "\\multiply #2 ",
+            //--- log message ---
+            "You can\'t use `#\' after \\multiply");
     }
 
     /**
@@ -139,9 +138,9 @@ public class MultiplyTest extends NoFlagsButGlobalPrimitiveTester {
     public void testRelax1() throws Exception {
 
         assertFailure(//--- input code ---
-                "\\multiply \\relax ",
-                //--- log message ---
-                "You can\'t use `\\relax\' after \\multiply");
+            "\\multiply \\relax ",
+            //--- log message ---
+            "You can\'t use `\\relax\' after \\multiply");
     }
 
     /**
@@ -155,11 +154,9 @@ public class MultiplyTest extends NoFlagsButGlobalPrimitiveTester {
     public void testCount1() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\count1 8 "
-                +"\\multiply \\count1 16 "
-                + "\\the\\count1 \\end",
-                //--- output channel ---
-                "128" + TERM);
+            "\\count1 8 " + "\\multiply \\count1 16 " + "\\the\\count1 \\end",
+            //--- output channel ---
+            "128" + TERM);
     }
 
     /**
@@ -173,11 +170,11 @@ public class MultiplyTest extends NoFlagsButGlobalPrimitiveTester {
     public void testCount2() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\count1 8 "
-                +"\\begingroup\\global\\multiply \\count1 16 \\endgroup "
-                + "\\the\\count1 \\end",
-                //--- output channel ---
-                "128" + TERM);
+            "\\count1 8 "
+                    + "\\begingroup\\global\\multiply \\count1 16 \\endgroup "
+                    + "\\the\\count1 \\end",
+            //--- output channel ---
+            "128" + TERM);
     }
 
     /**
@@ -191,11 +188,9 @@ public class MultiplyTest extends NoFlagsButGlobalPrimitiveTester {
     public void testDimen1() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\dimen1 8pt "
-                + "\\multiply \\dimen1 16 "
-                + "\\the\\dimen1 \\end",
-                //--- output channel ---
-                "128.0pt" + TERM);
+            "\\dimen1 8pt " + "\\multiply \\dimen1 16 " + "\\the\\dimen1 \\end",
+            //--- output channel ---
+            "128.0pt" + TERM);
     }
 
     /**
@@ -209,11 +204,11 @@ public class MultiplyTest extends NoFlagsButGlobalPrimitiveTester {
     public void testDimen2() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\dimen1 8pt "
-                + "\\begingroup\\global\\multiply \\dimen1 16 \\endgroup "
-                + "\\the\\dimen1 \\end",
-                //--- output channel ---
-                "128.0pt" + TERM);
+            "\\dimen1 8pt "
+                    + "\\begingroup\\global\\multiply \\dimen1 16 \\endgroup "
+                    + "\\the\\dimen1 \\end",
+            //--- output channel ---
+            "128.0pt" + TERM);
     }
 
 }

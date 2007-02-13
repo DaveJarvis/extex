@@ -29,6 +29,10 @@ import org.extex.test.NoFlagsButGlobalPrimitiveTester;
  */
 public class ReadTest extends NoFlagsButGlobalPrimitiveTester {
 
+    /**
+     * The constant <tt>DATA_FILE</tt> contains the name of the file to use for
+     * testing.
+     */
     private static final String DATA_FILE =
             "../ExTeX-Unit-tex/src/test/data/read_data.tex";
 

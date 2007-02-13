@@ -27,7 +27,6 @@ import org.extex.typesetter.Typesetter;
 import org.extex.unit.base.conditional.AbstractIf;
 import org.extex.unit.tex.register.box.AbstractBox;
 
-
 /**
  * This class provides an implementation for the primitive <code>\ifvbox</code>.
  *
@@ -79,14 +78,26 @@ public class Ifvbox extends AbstractIf {
     }
 
     /**
+     * This method computes the boolean value of the conditional.
+     * If the result is <code>true</code> then the then branch is expanded and
+     * the else branch is skipped. Otherwise the then branch is skipped and the
+     * else branch is expanded.
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter
+     *
+     * @return the boolean value
+     *
+     * @throws InterpreterException in case of en error
+     *
      * @see org.extex.unit.base.conditional.AbstractIf#conditional(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public boolean conditional(final Context context,
-            final TokenSource source, final Typesetter typesetter)
-            throws InterpreterException {
+    public boolean conditional(final Context context, final TokenSource source,
+            final Typesetter typesetter) throws InterpreterException {
 
         String key = AbstractBox.getKey(context, source, typesetter, getName());
         Box box = context.getBox(key);

@@ -69,6 +69,10 @@ public class FixedHelpingException extends HelpingException {
     }
 
     /**
+     * Getter for further help information.
+     *
+     * @return the help information
+     *
      * @see org.extex.util.exception.GeneralException#getHelp()
      */
     public String getHelp() {
@@ -77,6 +81,10 @@ public class FixedHelpingException extends HelpingException {
     }
 
     /**
+     * Creates a localized description of this throwable.
+     *
+     * @return the localized description of this throwable.
+     *
      * @see java.lang.Throwable#getLocalizedMessage()
      */
     public String getLocalizedMessage() {
@@ -85,6 +93,10 @@ public class FixedHelpingException extends HelpingException {
     }
 
     /**
+     * Creates a description of this throwable.
+     *
+     * @return the description of this throwable.
+     *
      * @see java.lang.Throwable#getMessage()
      */
     public String getMessage() {

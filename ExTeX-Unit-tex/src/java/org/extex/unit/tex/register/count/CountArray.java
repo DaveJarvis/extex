@@ -50,6 +50,18 @@ public class CountArray extends CountPrimitive {
     }
 
     /**
+     * Return the key (the name of the primitive) for the numbered count
+     * register.
+     *
+     * @param context the interpreter context to use
+     * @param source the source for new tokens
+     * @param typesetter the typesetter
+     *
+     * @return the key for the current register
+     *
+     * @throws InterpreterException in case that a derived class need to throw
+     *  an Exception this one is declared.
+     *
      * @see org.extex.unit.tex.register.count.AbstractCount#getKey(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,

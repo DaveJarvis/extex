@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -141,7 +141,7 @@ public class Patterns extends AbstractHyphenationCode {
 
         /**
          * @see org.extex.scanner.type.token.TokenVisitor#visitActive(
-         *      org.extex.scanner.type.ActiveCharacterToken,
+         *      org.extex.scanner.type.token.ActiveCharacterToken,
          *      java.lang.Object)
          */
         public Object visitActive(final ActiveCharacterToken token,
@@ -153,7 +153,7 @@ public class Patterns extends AbstractHyphenationCode {
 
         /**
          * @see org.extex.scanner.type.token.TokenVisitor#visitCr(
-         *      org.extex.scanner.type.CrToken,
+         *      org.extex.scanner.type.token.CrToken,
          *      java.lang.Object)
          */
         public Object visitCr(final CrToken token, final Object arg)
@@ -165,7 +165,7 @@ public class Patterns extends AbstractHyphenationCode {
 
         /**
          * @see org.extex.scanner.type.token.TokenVisitor#visitEscape(
-         *      org.extex.scanner.type.ControlSequenceToken,
+         *      org.extex.scanner.type.token.ControlSequenceToken,
          *      java.lang.Object)
          */
         public Object visitEscape(final ControlSequenceToken token,
@@ -177,7 +177,7 @@ public class Patterns extends AbstractHyphenationCode {
 
         /**
          * @see org.extex.scanner.type.token.TokenVisitor#visitLeftBrace(
-         *      org.extex.scanner.type.LeftBraceToken,
+         *      org.extex.scanner.type.token.LeftBraceToken,
          *      java.lang.Object)
          */
         public Object visitLeftBrace(final LeftBraceToken token,
@@ -189,7 +189,7 @@ public class Patterns extends AbstractHyphenationCode {
 
         /**
          * @see org.extex.scanner.type.token.TokenVisitor#visitLetter(
-         *      org.extex.scanner.type.LetterToken,
+         *      org.extex.scanner.type.token.LetterToken,
          *      java.lang.Object)
          */
         public Object visitLetter(final LetterToken token, final Object arg)
@@ -216,7 +216,7 @@ public class Patterns extends AbstractHyphenationCode {
 
         /**
          * @see org.extex.scanner.type.token.TokenVisitor#visitMacroParam(
-         *      org.extex.scanner.type.MacroParamToken,
+         *      org.extex.scanner.type.token.MacroParamToken,
          *      java.lang.Object)
          */
         public Object visitMacroParam(final MacroParamToken token,
@@ -228,7 +228,7 @@ public class Patterns extends AbstractHyphenationCode {
 
         /**
          * @see org.extex.scanner.type.token.TokenVisitor#visitMathShift(
-         *      org.extex.scanner.type.MathShiftToken,
+         *      org.extex.scanner.type.token.MathShiftToken,
          *      java.lang.Object)
          */
         public Object visitMathShift(final MathShiftToken token,
@@ -240,7 +240,7 @@ public class Patterns extends AbstractHyphenationCode {
 
         /**
          * @see org.extex.scanner.type.token.TokenVisitor#visitOther(
-         *      org.extex.scanner.type.OtherToken,
+         *      org.extex.scanner.type.token.OtherToken,
          *      java.lang.Object)
          */
         public Object visitOther(final OtherToken token, final Object arg)

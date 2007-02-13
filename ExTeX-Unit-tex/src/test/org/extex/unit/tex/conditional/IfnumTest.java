@@ -278,8 +278,7 @@ public class IfnumTest extends ExTeXLauncher {
     public void testOuter1() throws Exception {
 
         assertFailure(//--- input code ---
-            DEFINE_BRACES +
-            "\\outer\\def\\x{}\\iffalse\\x\\fi\\end",
+            DEFINE_BRACES + "\\outer\\def\\x{}\\iffalse\\x\\fi\\end",
             //--- output channel ---
             "Incomplete \\iffalse; all text was ignored after line 1");
     }

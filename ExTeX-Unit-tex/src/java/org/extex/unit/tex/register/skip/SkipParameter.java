@@ -66,10 +66,17 @@ public class SkipParameter extends SkipPrimitive {
      *
      * @param source the source for the next tokens &ndash; if required
      * @param context the interpreter context to use
+     * @param typesetter the typesetter
      *
      * @return the key for the skip register
+     *
+     * @see org.extex.unit.tex.register.skip.AbstractSkip#getKey(
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource,
+     *      org.extex.typesetter.Typesetter)
      */
-    protected String getKey(final Context context, final TokenSource source, Typesetter typesetter) {
+    protected String getKey(final Context context, final TokenSource source,
+            final Typesetter typesetter) {
 
         if (Namespace.SUPPORT_NAMESPACE_SKIP) {
             return context.getNamespace() + "\b" + getName();

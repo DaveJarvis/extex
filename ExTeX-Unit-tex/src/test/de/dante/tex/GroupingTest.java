@@ -16,11 +16,12 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  *
  */
+
 package de.dante.tex;
 
 import junit.framework.TestCase;
 
-/*
+/**
  * Test for grouping.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
@@ -32,7 +33,8 @@ public class GroupingTest extends TestCase {
      * Main entry function for running alone.
      * @param  args command line args
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
+
         junit.textui.TestRunner.run(GroupingTest.class);
     }
 
@@ -40,8 +42,7 @@ public class GroupingTest extends TestCase {
      * Test the primitive <tt>&#x5c;unless</tt>.
      * @exception Exception iff test failed
      */
-    public void testGroup()
-        throws Exception {
+    public void testGroup() throws Exception {
 
         TestTeX.test("jugrouping", "ExTeX-Unit-tex");
     }

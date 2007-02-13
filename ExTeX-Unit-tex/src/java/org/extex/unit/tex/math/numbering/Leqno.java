@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -27,7 +27,6 @@ import org.extex.typesetter.ListMaker;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.listMaker.math.EqConsumer;
 import org.extex.unit.tex.math.AbstractMathCode;
-
 
 /**
  * This class provides an implementation for the primitive <code>\leqno</code>.
@@ -99,10 +98,10 @@ public class Leqno extends AbstractMathCode {
 
         } catch (CantUseInException e) {
             throw new CantUseInException(printableControlSequence(context),
-                    "math mode");
+                "math mode");
         }
         throw new CantUseInException(printableControlSequence(context), //
-                typesetter.getMode().toString());
+            typesetter.getMode().toString());
     }
 
 }

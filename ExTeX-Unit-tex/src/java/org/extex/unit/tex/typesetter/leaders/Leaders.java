@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -40,7 +40,6 @@ import org.extex.typesetter.type.node.RuleNode;
 import org.extex.unit.tex.typesetter.spacing.HorizontalSkip;
 import org.extex.unit.tex.typesetter.spacing.VerticalSkip;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
-
 
 /**
  * This class provides an implementation for the primitive
@@ -112,8 +111,9 @@ public class Leaders extends AbstractCode {
             node = b.getNodes();
             horizontal = b.isHbox();
         } else if (code instanceof RuleConvertible) {
-            node = ((RuleConvertible) code)
-                    .getRule(context, source, typesetter);
+            node =
+                    ((RuleConvertible) code).getRule(context, source,
+                        typesetter);
             horizontal = ((RuleNode) node).isHorizontal();
         } else {
             throw new HelpingException(getLocalizer(), "TTP.BoxExpected");
@@ -124,7 +124,7 @@ public class Leaders extends AbstractCode {
 
         if (code == null) {
             throw new UndefinedControlSequenceException(//
-                    context.esc(vskip.getName()));
+                context.esc(vskip.getName()));
         }
 
         FixedGlue skip;
@@ -132,13 +132,13 @@ public class Leaders extends AbstractCode {
         if (horizontal) {
             if (!(code instanceof HorizontalSkip)) {
                 throw new HelpingException(getLocalizer(),
-                        "TTP.BadGlueAfterLeaders");
+                    "TTP.BadGlueAfterLeaders");
             }
             skip = ((HorizontalSkip) code).getGlue(context, source, typesetter);
         } else {
             if (!(code instanceof VerticalSkip)) {
                 throw new HelpingException(getLocalizer(),
-                        "TTP.BadGlueAfterLeaders");
+                    "TTP.BadGlueAfterLeaders");
             }
             skip = ((VerticalSkip) code).getGlue(context, source, typesetter);
         }

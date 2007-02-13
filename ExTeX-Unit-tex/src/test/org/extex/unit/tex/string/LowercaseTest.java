@@ -48,7 +48,6 @@ public class LowercaseTest extends NoFlagsPrimitiveTester {
         super(arg, "lowercase", "{abc}");
     }
 
-
     /**
      * <testcase primitive="\lowercase">
      *  Test case checking that <tt>\lowercase</tt> throws an error on eof.

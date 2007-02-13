@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -50,10 +50,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
     public void testL1() throws Exception {
 
         assertFailure(//--- input code ---
-                "\\show a"
-                + "\\end",
-                //--- output channel ---
-                "> the letter a.\n");
+            "\\show a" + "\\end",
+            //--- output channel ---
+            "> the letter a.\n");
     }
 
     /**
@@ -67,10 +66,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
     public void testL2() throws Exception {
 
         assertFailure(//--- input code ---
-                "\\show A"
-                + "\\end",
-                //--- output channel ---
-                "> the letter A.\n");
+            "\\show A" + "\\end",
+            //--- output channel ---
+            "> the letter A.\n");
     }
 
     /**
@@ -84,10 +82,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
     public void testD1() throws Exception {
 
         assertFailure(//--- input code ---
-                "\\show 1"
-                + "\\end",
-                //--- output channel ---
-                "> the character 1.\n");
+            "\\show 1" + "\\end",
+            //--- output channel ---
+            "> the character 1.\n");
     }
 
     /**
@@ -101,10 +98,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
     public void testX1() throws Exception {
 
         assertFailure(//--- input code ---
-                "\\show ,"
-                + "\\end",
-                //--- output channel ---
-                "> the character ,.\n");
+            "\\show ," + "\\end",
+            //--- output channel ---
+            "> the character ,.\n");
     }
 
     /**
@@ -118,11 +114,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
     public void testB1() throws Exception {
 
         assertFailure(//--- input code ---
-                DEFINE_BRACES
-                + "\\show {"
-                + "\\end",
-                //--- output channel ---
-                "> begin-group character {.\n");
+            DEFINE_BRACES + "\\show {" + "\\end",
+            //--- output channel ---
+            "> begin-group character {.\n");
     }
 
     /**
@@ -136,11 +130,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
     public void testB2() throws Exception {
 
         assertFailure(//--- input code ---
-                DEFINE_BRACES
-                + "\\show }"
-                + "\\end",
-                //--- output channel ---
-                "> end-group character }.\n");
+            DEFINE_BRACES + "\\show }" + "\\end",
+            //--- output channel ---
+            "> end-group character }.\n");
     }
 
     /**
@@ -154,11 +146,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
     public void testH1() throws Exception {
 
         assertFailure(//--- input code ---
-                DEFINE_HASH
-                + "\\show #"
-                + "\\end",
-                //--- output channel ---
-                "> macro parameter character #.\n");
+            DEFINE_HASH + "\\show #" + "\\end",
+            //--- output channel ---
+            "> macro parameter character #.\n");
     }
 
     /**
@@ -172,11 +162,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
     public void testM1() throws Exception {
 
         assertFailure(//--- input code ---
-                DEFINE_MATH
-                + "\\show $"
-                + "\\end",
-                //--- output channel ---
-                "> math shift character $.\n");
+            DEFINE_MATH + "\\show $" + "\\end",
+            //--- output channel ---
+            "> math shift character $.\n");
     }
 
     /**
@@ -190,11 +178,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
     public void testM2() throws Exception {
 
         assertFailure(//--- input code ---
-                DEFINE_CATCODES
-                + "\\show _"
-                + "\\end",
-                //--- output channel ---
-                "> subscript character _.\n");
+            DEFINE_CATCODES + "\\show _" + "\\end",
+            //--- output channel ---
+            "> subscript character _.\n");
     }
 
     /**
@@ -208,11 +194,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
     public void testA1() throws Exception {
 
         assertFailure(//--- input code ---
-                DEFINE_CATCODES
-                + "\\show &"
-                + "\\end",
-                //--- output channel ---
-                "> alignment tab character &.\n");
+            DEFINE_CATCODES + "\\show &" + "\\end",
+            //--- output channel ---
+            "> alignment tab character &.\n");
     }
 
     /**
@@ -226,11 +210,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
     public void testTab2() throws Exception {
 
         assertFailure(//--- input code ---
-                DEFINE_CATCODES
-                + "\\show ^^10"
-                + "\\end",
-                //--- output channel ---
-                "> the character ^^10.\n");
+            DEFINE_CATCODES + "\\show ^^10" + "\\end",
+            //--- output channel ---
+            "> the character ^^10.\n");
     }
 
     /**
@@ -244,11 +226,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
     public void testM3() throws Exception {
 
         assertFailure(//--- input code ---
-                DEFINE_CATCODES
-                + "\\show ^"
-                + "\\end",
-                //--- output channel ---
-                "> superscript character ^.\n");
+            DEFINE_CATCODES + "\\show ^" + "\\end",
+            //--- output channel ---
+            "> superscript character ^.\n");
     }
 
     /**
@@ -260,12 +240,11 @@ public class ShowTest extends NoFlagsPrimitiveTester {
      * @throws Exception in case of an error
      */
     public void testUndef() throws Exception {
-        
+
         assertFailure(//--- input code ---
-                "\\show\\x"
-                + "\\end",
-                //--- output channel ---
-        "> \\x=undefined.\n");
+            "\\show\\x" + "\\end",
+            //--- output channel ---
+            "> \\x=undefined.\n");
     }
 
     /**
@@ -279,10 +258,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
     public void test1() throws Exception {
 
         assertFailure(//--- input code ---
-                "\\show\\relax"
-                + "\\end",
-                //--- output channel ---
-                "> \\relax=\\relax.\n");
+            "\\show\\relax" + "\\end",
+            //--- output channel ---
+            "> \\relax=\\relax.\n");
     }
 
     /**
@@ -296,11 +274,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
     public void test2() throws Exception {
 
         assertFailure(//--- input code ---
-                "\\catcode`\\~=13 \\let~\\def"
-                + "\\show~"
-                + "\\end",
-                //--- output channel ---
-                "> ~=\\def.\n");
+            "\\catcode`\\~=13 \\let~\\def" + "\\show~" + "\\end",
+            //--- output channel ---
+            "> ~=\\def.\n");
     }
 
     /**
@@ -314,11 +290,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
     public void testMacro1() throws Exception {
 
         assertFailure(//--- input code ---
-                DEFINE_BRACES
-                + "\\def\\x{abc}\\show\\x"
-                + "\\end",
-                //--- output channel ---
-                "> \\x=macro:\n->abc.\n");
+            DEFINE_BRACES + "\\def\\x{abc}\\show\\x" + "\\end",
+            //--- output channel ---
+            "> \\x=macro:\n->abc.\n");
     }
 
     /**
@@ -332,11 +306,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
     public void testMacro2() throws Exception {
 
         assertFailure(//--- input code ---
-                DEFINE_BRACES
-                + "\\def\\x#1{abc}\\show\\x"
-                + "\\end",
-                //--- output channel ---
-                "> \\x=macro:\n#1->abc.\n");
+            DEFINE_BRACES + "\\def\\x#1{abc}\\show\\x" + "\\end",
+            //--- output channel ---
+            "> \\x=macro:\n#1->abc.\n");
     }
 
     /**
@@ -350,11 +322,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
     public void testMacro3() throws Exception {
 
         assertFailure(//--- input code ---
-                DEFINE_BRACES
-                + "\\def\\x#1-#2{abc}\\show\\x"
-                + "\\end",
-                //--- output channel ---
-                "> \\x=macro:\n#1-#2->abc.\n");
+            DEFINE_BRACES + "\\def\\x#1-#2{abc}\\show\\x" + "\\end",
+            //--- output channel ---
+            "> \\x=macro:\n#1-#2->abc.\n");
     }
 
     /**
@@ -368,11 +338,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
     public void testMacro4() throws Exception {
 
         assertFailure(//--- input code ---
-                DEFINE_BRACES
-                + "\\long\\def\\x{abc}\\show\\x"
-                + "\\end",
-                //--- output channel ---
-                "> \\x=\\long macro:\n->abc.\n");
+            DEFINE_BRACES + "\\long\\def\\x{abc}\\show\\x" + "\\end",
+            //--- output channel ---
+            "> \\x=\\long macro:\n->abc.\n");
     }
 
     /**
@@ -386,11 +354,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
     public void testMacro5() throws Exception {
 
         assertFailure(//--- input code ---
-                DEFINE_BRACES
-                + "\\outer\\def\\x{abc}\\show\\x"
-                + "\\end",
-                //--- output channel ---
-                "> \\x=\\outer macro:\n->abc.\n");
+            DEFINE_BRACES + "\\outer\\def\\x{abc}\\show\\x" + "\\end",
+            //--- output channel ---
+            "> \\x=\\outer macro:\n->abc.\n");
     }
 
     /**
@@ -404,11 +370,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
     public void testMacro6() throws Exception {
 
         assertFailure(//--- input code ---
-                DEFINE_BRACES
-                + "\\long\\outer\\def\\x{abc}\\show\\x"
-                + "\\end",
-                //--- output channel ---
-                "> \\x=\\long\\outer macro:\n->abc.\n");
+            DEFINE_BRACES + "\\long\\outer\\def\\x{abc}\\show\\x" + "\\end",
+            //--- output channel ---
+            "> \\x=\\long\\outer macro:\n->abc.\n");
     }
 
     /**
@@ -422,11 +386,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
     public void testMacro7() throws Exception {
 
         assertFailure(//--- input code ---
-                DEFINE_BRACES
-                + "\\outer\\long\\def\\x{abc}\\show\\x"
-                + "\\end",
-                //--- output channel ---
-                "> \\x=\\long\\outer macro:\n->abc.\n");
+            DEFINE_BRACES + "\\outer\\long\\def\\x{abc}\\show\\x" + "\\end",
+            //--- output channel ---
+            "> \\x=\\long\\outer macro:\n->abc.\n");
     }
 
     /**
@@ -440,10 +402,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
     public void testChardef1() throws Exception {
 
         assertFailure(//--- input code ---
-                "\\chardef\\x=123 \\show\\x"
-                + "\\end",
-                //--- output channel ---
-                "> \\x=\\char\"7B.\n");
+            "\\chardef\\x=123 \\show\\x" + "\\end",
+            //--- output channel ---
+            "> \\x=\\char\"7B.\n");
     }
 
     /**
@@ -457,10 +418,9 @@ public class ShowTest extends NoFlagsPrimitiveTester {
     public void testMathchardef1() throws Exception {
 
         assertFailure(//--- input code ---
-                "\\mathchardef\\x=123 \\show\\x"
-                + "\\end",
-                //--- output channel ---
-                "> \\x=\\mathchar\"7B.\n");
+            "\\mathchardef\\x=123 \\show\\x" + "\\end",
+            //--- output channel ---
+            "> \\x=\\mathchar\"7B.\n");
     }
 
     //TODO implement more primitive specific test cases

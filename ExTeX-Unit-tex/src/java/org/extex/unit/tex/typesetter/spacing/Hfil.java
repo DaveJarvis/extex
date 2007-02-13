@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -28,7 +28,6 @@ import org.extex.interpreter.type.glue.Glue;
 import org.extex.interpreter.type.glue.GlueComponent;
 import org.extex.typesetter.Typesetter;
 import org.extex.unit.tex.typesetter.AbstractHorizontalCode;
-
 
 /**
  * This class provides an implementation for the primitive <code>\hfil</code>.
@@ -66,8 +65,9 @@ public class Hfil extends AbstractHorizontalCode implements HorizontalSkip {
     /**
      * The field <tt>FIL</tt> contains the glue to insert for this primitive.
      */
-    private static final Glue FIL = new Glue(GlueComponent.ZERO,
-            GlueComponent.ONE_FIL, GlueComponent.ZERO);
+    private static final Glue FIL =
+            new Glue(GlueComponent.ZERO, GlueComponent.ONE_FIL,
+                GlueComponent.ZERO);
 
     /**
      * Creates a new object.

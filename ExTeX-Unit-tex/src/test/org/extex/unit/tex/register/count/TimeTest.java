@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -20,7 +20,6 @@
 package org.extex.unit.tex.register.count;
 
 import java.util.Calendar;
-import java.lang.Integer;
 
 import org.extex.interpreter.primitives.register.count.AbstractCountRegisterTester;
 
@@ -33,6 +32,12 @@ import org.extex.interpreter.primitives.register.count.AbstractCountRegisterTest
 public class TimeTest extends AbstractCountRegisterTester {
 
     /**
+     * The constant <tt>MINUTES_PER_HOUR</tt> contains the number of minutes per
+     * hour.
+     */
+    private static final int MINUTES_PER_HOUR = 60;
+
+    /**
      * Provide the current time as default value for the comparison.
      *
      * @return the current time as string
@@ -40,8 +45,8 @@ public class TimeTest extends AbstractCountRegisterTester {
     private static String getDefaultValue() {
 
         Calendar cal = Calendar.getInstance();
-        int x = cal.get(Calendar.HOUR_OF_DAY) * 60 + cal.get(Calendar.MINUTE);
-        return Integer.toString(x);
+        return java.lang.Integer.toString(cal.get(Calendar.HOUR_OF_DAY)
+                * MINUTES_PER_HOUR + cal.get(Calendar.MINUTE));
     }
 
     /**

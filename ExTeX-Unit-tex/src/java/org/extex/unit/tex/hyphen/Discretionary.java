@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -138,7 +138,7 @@ public class Discretionary extends AbstractCode {
      * @throws ConfigurationException in case of a configuration error
      */
     private NodeList fill(final Tokens tokens, final TypesettingContext tc,
-            final Context context, TokenSource source,
+            final Context context, final TokenSource source,
             final Typesetter typesetter, final Locator locator)
             throws TypesetterException,
                 ConfigurationException {

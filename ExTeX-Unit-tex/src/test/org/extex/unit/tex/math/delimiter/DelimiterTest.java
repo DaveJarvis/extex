@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -49,15 +49,13 @@ public class DelimiterTest extends AbstractMathTester {
     public void test1() throws Exception {
 
         assertSuccess(showNodesProperties(),
-                //--- input code ---
-                DEFINE_BRACES + DEFINE_MATH + DEFINE_MATH_FONTS +
-                "$\\delimiter\"0161161 $\\end",
-                //--- output channel ---
-                "\\vbox(4.30554pt+0.0pt)x5.28589pt\n" +
-                ".\\hbox(4.30554pt+0.0pt)x5.28589pt\n" +
-                "..\\mathon\n" +
-                "..a\n" +
-                "..\\mathoff\n");
+        //--- input code ---
+            DEFINE_BRACES + DEFINE_MATH + DEFINE_MATH_FONTS
+                    + "$\\delimiter\"0161161 $\\end",
+            //--- output channel ---
+            "\\vbox(4.30554pt+0.0pt)x5.28589pt\n"
+                    + ".\\hbox(4.30554pt+0.0pt)x5.28589pt\n" + "..\\mathon\n"
+                    + "..a\n" + "..\\mathoff\n");
     }
 
     //TODO implement the primitive specific test cases

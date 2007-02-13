@@ -58,10 +58,9 @@ public class CharTest extends NoFlagsPrimitiveTester {
     public void test1() throws Exception {
 
         assertSuccess(//--- input code ---
-                DEFINE_BRACES + "\\char 65\\end",
-                //--- output channel ---
-                "A" + TERM);
+            DEFINE_BRACES + "\\char 65\\end",
+            //--- output channel ---
+            "A" + TERM);
     }
-
 
 }

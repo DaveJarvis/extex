@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -22,7 +22,6 @@ package org.extex.unit.tex.info;
 import java.util.Properties;
 
 import org.extex.test.NoFlagsPrimitiveTester;
-
 
 /**
  * This is a test suite for the primitive <tt>\jobname</tt>.
@@ -53,10 +52,9 @@ public class JobnameTest extends NoFlagsPrimitiveTester {
     public void testJobname1() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\jobname"
-                + "\\end ",
-                //--- output channel ---
-                "texput" + TERM);
+            "\\jobname" + "\\end ",
+            //--- output channel ---
+            "texput" + TERM);
     }
 
     /**
@@ -72,11 +70,10 @@ public class JobnameTest extends NoFlagsPrimitiveTester {
         properties.setProperty("extex.jobname", "job");
 
         assertSuccess(properties,
-                //--- input code ---
-                "\\jobname"
-                + "\\end ",
-                //--- output channel ---
-                "job" + TERM);
+        //--- input code ---
+            "\\jobname" + "\\end ",
+            //--- output channel ---
+            "job" + TERM);
     }
 
 }

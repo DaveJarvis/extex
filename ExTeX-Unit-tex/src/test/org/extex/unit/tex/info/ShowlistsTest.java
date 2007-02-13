@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,6 +19,8 @@
 
 package org.extex.unit.tex.info;
 
+import java.util.Properties;
+
 import org.extex.test.NoFlagsPrimitiveTester;
 
 /**
@@ -30,7 +32,7 @@ import org.extex.test.NoFlagsPrimitiveTester;
 public class ShowlistsTest extends NoFlagsPrimitiveTester {
 
     /**
-     * Constructor for JobnameTest.
+     * Creates a new object.
      *
      * @param arg the name
      */
@@ -39,7 +41,59 @@ public class ShowlistsTest extends NoFlagsPrimitiveTester {
         super(arg, "showlists", "");
     }
 
+    /**
+     * <testcase primitive="\showlists">
+     *  Test case checking that the <tt>\showlists</tt> ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test1() throws Exception {
 
-    //TODO implement more primitive specific test cases
+        Properties p = prepare();
+
+        assertFailure(p, //--- input code ---
+                "\\showlists\\end ",
+                //--- error channel ---
+                "### vertical mode entered at line 0\n" + "prevdepth ignored\n"
+                + "Transcript written on ."
+                + System.getProperty("file.separator") + "texput.log.\n");
+    }
+
+    /**
+     * <testcase primitive="\showlists">
+     *  Test case checking that the <tt>\showlists</tt> ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test2() throws Exception {
+
+        Properties p = prepare();
+
+        assertOutput(p, //--- input code ---
+                DEFINE_BRACES + "\\hbox{\\showlists}\\end ",
+                //--- error channel ---
+                "### restricted horizontal mode entered at line 1\n"
+                + "spacefactor 1000\n"
+                + "### vertical mode entered at line 0\n"
+                + "prevdepth ignored\n"
+                + "Transcript written on ."
+                + System.getProperty("file.separator") + "texput.log.\n",
+                //
+                "");
+    }
+
+    /**
+     * Prepare the properties to use a fine log level.
+     *
+     * @return the properties to use
+     */
+    private Properties prepare() {
+
+        Properties p = getProps();
+        p.setProperty("extex.launcher.loglevel", "fine");
+        return p;
+    }
 
 }

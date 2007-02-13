@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -49,11 +49,10 @@ public class LeftTest extends AbstractMathTester {
     public void testErr1() throws Exception {
 
         assertFailure(
-                //--- input code ---
-                DEFINE_MATH +
-                "$\\left $\\end",
-                //--- output channel ---
-                "Missing delimiter (. inserted)");
+        //--- input code ---
+            DEFINE_MATH + "$\\left $\\end",
+            //--- output channel ---
+            "Missing delimiter (. inserted)");
     }
 
     /**
@@ -66,11 +65,10 @@ public class LeftTest extends AbstractMathTester {
     public void testErr2() throws Exception {
 
         assertFailure(
-                //--- input code ---
-                DEFINE_MATH +
-                "$\\left. $\\end",
-                //--- output channel ---
-                "Missing \\right. inserted");
+        //--- input code ---
+            DEFINE_MATH + "$\\left. $\\end",
+            //--- output channel ---
+            "Missing \\right. inserted");
     }
 
     /**
@@ -83,11 +81,10 @@ public class LeftTest extends AbstractMathTester {
     public void testErr3() throws Exception {
 
         assertFailure(
-                //--- input code ---
-                DEFINE_BRACES + DEFINE_MATH +
-                "$\\left. } $\\end",
-                //--- output channel ---
-                "Too many }'s");
+        //--- input code ---
+            DEFINE_BRACES + DEFINE_MATH + "$\\left. } $\\end",
+            //--- output channel ---
+            "Too many }'s");
     }
 
     /**
@@ -100,11 +97,11 @@ public class LeftTest extends AbstractMathTester {
     public void test1() throws Exception {
 
         assertSuccess(
-                //--- input code ---
-                DEFINE_BRACES + DEFINE_MATH + DEFINE_MATH_FONTS +
-                "$\\left. A \\right. $\\end",
-                //--- output channel ---
-                "A" + TERM);
+        //--- input code ---
+            DEFINE_BRACES + DEFINE_MATH + DEFINE_MATH_FONTS
+                    + "$\\left. A \\right. $\\end",
+            //--- output channel ---
+            "A" + TERM);
     }
 
 }

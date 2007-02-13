@@ -74,6 +74,12 @@ public class IntegerParameter extends CountPrimitive
     }
 
     /**
+     * Configure an object according to a given Configuration.
+     *
+     * @param config the configuration object to consider
+     *
+     * @throws ConfigurationException in case that something went wrong
+     *
      * @see org.extex.util.framework.configuration.Configurable#configure(
      *      org.extex.util.framework.configuration.Configuration)
      */
@@ -87,6 +93,18 @@ public class IntegerParameter extends CountPrimitive
     }
 
     /**
+     * Return the key (the name of the primitive) for the numbered count
+     * register.
+     *
+     * @param context the interpreter context to use
+     * @param source the source for new tokens
+     * @param typesetter the typesetter
+     *
+     * @return the key for the current register
+     *
+     * @throws InterpreterException in case that a derived class need to throw
+     *  an Exception this one is declared.
+     *
      * @see org.extex.unit.tex.register.count.AbstractCount#getKey(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,

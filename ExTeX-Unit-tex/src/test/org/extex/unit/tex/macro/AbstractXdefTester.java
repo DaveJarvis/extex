@@ -48,7 +48,7 @@ public abstract class AbstractXdefTester extends AbstractDefTester {
     public void testExpand1() throws Exception {
 
         assertSuccess(//--- input code ---
-                DEFINE_BRACES 
+                DEFINE_BRACES
                 + "\\def\\a{A}"
                 + "\\" + getDef() + "\\aaa{X\\a X}"
                 + "\\def\\a{B}"
@@ -56,6 +56,5 @@ public abstract class AbstractXdefTester extends AbstractDefTester {
                 //--- output message ---
                 "--XAX--" + TERM);
     }
-
 
 }

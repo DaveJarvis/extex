@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -28,11 +28,9 @@ import org.extex.interpreter.exception.helping.CantUseInException;
 import org.extex.interpreter.type.box.Box;
 import org.extex.typesetter.Mode;
 import org.extex.typesetter.Typesetter;
-import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.node.AdjustNode;
 import org.extex.unit.tex.register.box.AbstractBox;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
-
 
 /**
  * This class provides an implementation for the primitive <code>\vadjust</code>.
@@ -89,17 +87,16 @@ public class Vadjust extends AbstractBox {
         Mode mode = typesetter.getMode();
         if (!mode.isHmode()) {
             throw new CantUseInException(printableControlSequence(context),
-                    mode.toString());
+                mode.toString());
         }
         Flags flags = prefix.copy();
         prefix.clear();
-        Box b = new Box(context, source, typesetter, false, null,
-                GroupType.VBOX_GROUP, source.getLastToken());
+        Box b =
+                new Box(context, source, typesetter, false, null,
+                    GroupType.VBOX_GROUP, source.getLastToken());
 
         try {
             typesetter.add(new AdjustNode(b.getNodes()));
-        } catch (TypesetterException e) {
-            throw new InterpreterException(e);
         } catch (ConfigurationException e) {
             throw new InterpreterException(e);
         }

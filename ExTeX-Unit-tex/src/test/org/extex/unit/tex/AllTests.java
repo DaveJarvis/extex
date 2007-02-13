@@ -23,13 +23,26 @@ import junit.framework.Test;
 import junit.framework.TestSuite;
 
 /**
- * TODO gene: missing JavaDoc.
+ * Test suite for basic primitives in unit tex.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class AllTests {
+public final class AllTests {
 
+    /**
+     * Creates a new object.
+     */
+    private AllTests() {
+
+        super();
+    }
+
+    /**
+     * Test suite for the basic primitives in unit tex.
+     *
+     * @return the test suite
+     */
     public static Test suite() {
 
         TestSuite suite = new TestSuite("Test for org.extex.unit.tex");

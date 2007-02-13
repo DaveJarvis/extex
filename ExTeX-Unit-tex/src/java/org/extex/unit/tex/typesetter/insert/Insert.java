@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -32,7 +32,6 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.node.InsertionNode;
 import org.extex.unit.tex.register.box.AbstractBox;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
-
 
 /**
  * This class provides an implementation for the primitive
@@ -90,8 +89,9 @@ public class Insert extends AbstractBox {
         Flags f = prefix.copy();
         prefix.clear();
         long index = Count.scanNumber(context, source, typesetter);
-        Box b = new Box(context, source, typesetter, false, null,
-                GroupType.INSERT_GROUP, source.getLastToken());
+        Box b =
+                new Box(context, source, typesetter, false, null,
+                    GroupType.INSERT_GROUP, source.getLastToken());
 
         Mode mode = typesetter.getMode();
         if (mode != Mode.VERTICAL && mode != Mode.INNER_VERTICAL) {

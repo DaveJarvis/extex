@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -24,7 +24,6 @@ import org.extex.interpreter.type.math.MathClass;
 import org.extex.interpreter.type.math.MathCode;
 import org.extex.test.NoFlagsButGlobalPrimitiveTester;
 import org.extex.type.UnicodeChar;
-
 
 /**
  * This is a test suite for the primitive <tt>\mathcode</tt>.
@@ -55,9 +54,9 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
         assertFailure(
         //--- input code ---
-                "\\mathcode`. \"10041" + " \\end",
-                //--- output message ---
-                "Bad mathchar (65601)");
+            "\\mathcode`. \"10041" + " \\end",
+            //--- output message ---
+            "Bad mathchar (65601)");
     }
 
     /**
@@ -71,9 +70,9 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
         assertFailure(
         //--- input code ---
-                "\\mathcode`. 32769" + " \\end",
-                //--- output message ---
-                "Bad mathchar (32769)");
+            "\\mathcode`. 32769" + " \\end",
+            //--- output message ---
+            "Bad mathchar (32769)");
     }
 
     /**
@@ -87,9 +86,9 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
         assertSuccess(
         //--- input code ---
-                "\\mathcode`. 0" + " \\end",
-                //--- output message ---
-                "");
+            "\\mathcode`. 0" + " \\end",
+            //--- output message ---
+            "");
     }
 
     /**
@@ -103,9 +102,9 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
         assertSuccess(
         //--- input code ---
-                "\\mathcode`. 32767" + " \\end",
-                //--- output message ---
-                "");
+            "\\mathcode`. 32767" + " \\end",
+            //--- output message ---
+            "");
     }
 
     /**
@@ -119,9 +118,9 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
         assertSuccess(
         //--- input code ---
-                "\\mathcode`. 32768" + " \\end",
-                //--- output message ---
-                "");
+            "\\mathcode`. 32768" + " \\end",
+            //--- output message ---
+            "");
     }
 
     /**
@@ -135,9 +134,9 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
         assertFailure(
         //--- input code ---
-                "\\mathcode`. -1" + " \\end",
-                //--- output message ---
-                "Bad mathchar (-1)");
+            "\\mathcode`. -1" + " \\end",
+            //--- output message ---
+            "Bad mathchar (-1)");
     }
 
     /**
@@ -151,11 +150,11 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
         Interpreter interpreter = assertSuccess(
         //--- input code ---
-                "\\mathcode`. \"41" + "\\end",
-                //--- output message ---
-                "");
-        MathCode mc = interpreter.getContext()
-                .getMathcode(UnicodeChar.get('.'));
+            "\\mathcode`. \"41" + "\\end",
+            //--- output message ---
+            "");
+        MathCode mc =
+                interpreter.getContext().getMathcode(UnicodeChar.get('.'));
         assertEquals(MathClass.ORDINARY, mc.getMathClass());
         assertEquals(0, mc.getMathGlyph().getFamily());
         assertEquals('A', mc.getMathGlyph().getCharacter().getCodePoint());
@@ -172,11 +171,11 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
         Interpreter interpreter = assertSuccess(
         //--- input code ---
-                "\\mathcode`. \"1041" + "\\end",
-                //--- output message ---
-                "");
-        MathCode mc = interpreter.getContext()
-                .getMathcode(UnicodeChar.get('.'));
+            "\\mathcode`. \"1041" + "\\end",
+            //--- output message ---
+            "");
+        MathCode mc =
+                interpreter.getContext().getMathcode(UnicodeChar.get('.'));
         assertEquals(MathClass.LARGE, mc.getMathClass());
         assertEquals(0, mc.getMathGlyph().getFamily());
         assertEquals('A', mc.getMathGlyph().getCharacter().getCodePoint());
@@ -193,11 +192,11 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
         Interpreter interpreter = assertSuccess(
         //--- input code ---
-                "\\mathcode`. \"2041" + "\\end",
-                //--- output message ---
-                "");
-        MathCode mc = interpreter.getContext()
-                .getMathcode(UnicodeChar.get('.'));
+            "\\mathcode`. \"2041" + "\\end",
+            //--- output message ---
+            "");
+        MathCode mc =
+                interpreter.getContext().getMathcode(UnicodeChar.get('.'));
         assertEquals(MathClass.BINARY, mc.getMathClass());
         assertEquals(0, mc.getMathGlyph().getFamily());
         assertEquals('A', mc.getMathGlyph().getCharacter().getCodePoint());
@@ -214,11 +213,11 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
         Interpreter interpreter = assertSuccess(
         //--- input code ---
-                "\\mathcode`. \"3041" + "\\end",
-                //--- output message ---
-                "");
-        MathCode mc = interpreter.getContext()
-                .getMathcode(UnicodeChar.get('.'));
+            "\\mathcode`. \"3041" + "\\end",
+            //--- output message ---
+            "");
+        MathCode mc =
+                interpreter.getContext().getMathcode(UnicodeChar.get('.'));
         assertEquals(MathClass.RELATION, mc.getMathClass());
         assertEquals(0, mc.getMathGlyph().getFamily());
         assertEquals('A', mc.getMathGlyph().getCharacter().getCodePoint());
@@ -235,11 +234,11 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
         Interpreter interpreter = assertSuccess(
         //--- input code ---
-                "\\mathcode`. \"4041" + "\\end",
-                //--- output message ---
-                "");
-        MathCode mc = interpreter.getContext()
-                .getMathcode(UnicodeChar.get('.'));
+            "\\mathcode`. \"4041" + "\\end",
+            //--- output message ---
+            "");
+        MathCode mc =
+                interpreter.getContext().getMathcode(UnicodeChar.get('.'));
         assertEquals(MathClass.OPENING, mc.getMathClass());
         assertEquals(0, mc.getMathGlyph().getFamily());
         assertEquals('A', mc.getMathGlyph().getCharacter().getCodePoint());
@@ -256,11 +255,11 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
         Interpreter interpreter = assertSuccess(
         //--- input code ---
-                "\\mathcode`. \"5041" + "\\end",
-                //--- output message ---
-                "");
-        MathCode mc = interpreter.getContext()
-                .getMathcode(UnicodeChar.get('.'));
+            "\\mathcode`. \"5041" + "\\end",
+            //--- output message ---
+            "");
+        MathCode mc =
+                interpreter.getContext().getMathcode(UnicodeChar.get('.'));
         assertEquals(MathClass.CLOSING, mc.getMathClass());
         assertEquals(0, mc.getMathGlyph().getFamily());
         assertEquals('A', mc.getMathGlyph().getCharacter().getCodePoint());
@@ -277,11 +276,11 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
         Interpreter interpreter = assertSuccess(
         //--- input code ---
-                "\\mathcode`. \"6041" + "\\end",
-                //--- output message ---
-                "");
-        MathCode mc = interpreter.getContext()
-                .getMathcode(UnicodeChar.get('.'));
+            "\\mathcode`. \"6041" + "\\end",
+            //--- output message ---
+            "");
+        MathCode mc =
+                interpreter.getContext().getMathcode(UnicodeChar.get('.'));
         assertEquals(MathClass.PUNCTUATION, mc.getMathClass());
         assertEquals(0, mc.getMathGlyph().getFamily());
         assertEquals('A', mc.getMathGlyph().getCharacter().getCodePoint());
@@ -298,11 +297,11 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
         Interpreter interpreter = assertSuccess(
         //--- input code ---
-                "\\mathcode`. \"7041" + "\\end",
-                //--- output message ---
-                "");
-        MathCode mc = interpreter.getContext()
-                .getMathcode(UnicodeChar.get('.'));
+            "\\mathcode`. \"7041" + "\\end",
+            //--- output message ---
+            "");
+        MathCode mc =
+                interpreter.getContext().getMathcode(UnicodeChar.get('.'));
         assertEquals(MathClass.VARIABLE, mc.getMathClass());
         assertEquals(0, mc.getMathGlyph().getFamily());
         assertEquals('A', mc.getMathGlyph().getCharacter().getCodePoint());
@@ -319,9 +318,9 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
         assertSuccess(
         //--- input code ---
-                "\\mathcode`.=1234 " + "\\count0=\\mathcode`.\\the\\count0\\end",
-                //--- output message ---
-                "1234" + TERM);
+            "\\mathcode`.=1234 " + "\\count0=\\mathcode`.\\the\\count0\\end",
+            //--- output message ---
+            "1234" + TERM);
     }
 
     /**
@@ -335,9 +334,9 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
         assertSuccess(
         //--- input code ---
-                "\\mathcode`.=1234 " + "\\the\\mathcode`.\\end",
-                //--- output message ---
-                "1234" + TERM);
+            "\\mathcode`.=1234 " + "\\the\\mathcode`.\\end",
+            //--- output message ---
+            "1234" + TERM);
     }
 
     /**
@@ -351,10 +350,10 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
         assertSuccess(
         //--- input code ---
-                AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH
-                        + "\\mathcode`. \"41" + "$a.b$\\end",
-                //--- output message ---
-                "aAb" + TERM);
+            AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH
+                    + "\\mathcode`. \"41" + "$a.b$\\end",
+            //--- output message ---
+            "aAb" + TERM);
     }
 
     /**
@@ -368,10 +367,10 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
         assertFailure(
         //--- input code ---
-                AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH + DEFINE_BRACES
-                + "\\mathcode`. \"8000" + "$a.b$\\end",
-                //--- output message ---
-                "Undefined control sequence .");
+            AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH + DEFINE_BRACES
+                    + "\\mathcode`. \"8000" + "$a.b$\\end",
+            //--- output message ---
+            "Undefined control sequence .");
     }
 
     /**
@@ -385,12 +384,11 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
         assertSuccess(
         //--- input code ---
-                AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH + DEFINE_BRACES
-                + "\\catcode`\\.=13 \\def.{xxx}"
-                + "\\catcode`\\.=12 "
-                + "\\mathcode`. \"8000" + "$a.b$\\end",
-                //--- output message ---
-                "axxxb" + TERM);
+            AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH + DEFINE_BRACES
+                    + "\\catcode`\\.=13 \\def.{xxx}" + "\\catcode`\\.=12 "
+                    + "\\mathcode`. \"8000" + "$a.b$\\end",
+            //--- output message ---
+            "axxxb" + TERM);
     }
 
     //TODO implement more primitive specific test cases

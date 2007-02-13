@@ -79,7 +79,6 @@ public class OrTest extends ExTeXLauncher {
                 "a" + TERM);
     }
 
-
     /**
      * <testcase primitive="\or">
      *  Test case checking that a lonely <tt>\or</tt> leads to an error.

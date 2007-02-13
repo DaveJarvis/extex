@@ -28,8 +28,21 @@ import junit.framework.TestSuite;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class AllTests {
+public final class AllTests {
 
+    /**
+     * Creates a new object.
+     */
+    private AllTests() {
+
+        super();
+    }
+
+    /**
+     * Test suite for the macro primitives in unit tex.
+     *
+     * @return the test suite
+     */
     public static Test suite() {
 
         TestSuite suite = new TestSuite("Test for org.extex.unit.tex.macro");

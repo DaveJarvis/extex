@@ -37,7 +37,7 @@ import org.extex.typesetter.Typesetter;
 /**
  * This class provides an implementation for the primitive
  * <code>\hyphenchar</code>.
- * 
+ *
  * <doc name="hyphenchar">
  * <h3>The Primitive <tt>\hyphenchar</tt></h3>
  * <p>
@@ -46,10 +46,10 @@ import org.extex.typesetter.Typesetter;
  * negative value &ndash; indicates that no hyphenation should be applied.
  * Otherwise the given character will be used when hyphenating words.
  * </p>
- * 
+ *
  * <h4>Syntax</h4>
  * The formal description of this primitive is the following:
- * 
+ *
  * <pre class="syntax">
  *     &amp;langhyphenchar&amp;rang
  *       &amp;rarr
@@ -62,13 +62,13 @@ import org.extex.typesetter.Typesetter;
  *         org.extex.interpreter.TokenSource#scanNumber(Context)
  *         &amp;lang8-bit number&amp;rang}
  * </pre>
- * 
+ *
  * <h4>Examples</h4>
- * 
+ *
  * <pre class="TeXSample">
  *     \hyphenchar\font=132
  * </pre>
- * 
+ *
  * <h4>Incompatibility</h4>
  * <p>
  * The TeXbook gives no indication ow the primitive should react for negative
@@ -77,8 +77,8 @@ import org.extex.typesetter.Typesetter;
  * is not preserved in <logo>ExTeX</logo>.
  * </p>
  * </doc>
- * 
- * 
+ *
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
@@ -96,7 +96,7 @@ public class Hyphenchar extends AbstractAssignment
 
     /**
      * Creates a new object.
-     * 
+     *
      * @param name the name for debugging
      */
     public Hyphenchar(final String name) {

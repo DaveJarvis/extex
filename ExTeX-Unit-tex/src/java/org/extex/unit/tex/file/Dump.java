@@ -109,12 +109,16 @@ public class Dump extends AbstractCode
     }
 
     /**
+     * Setter for the logger.
+     *
+     * @param log the logger to use
+     *
      * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
-    public void enableLogging(final Logger theLogger) {
+    public void enableLogging(final Logger log) {
 
-        this.logger = theLogger;
+        this.logger = log;
     }
 
     /**
@@ -187,6 +191,10 @@ public class Dump extends AbstractCode
     }
 
     /**
+     * This method takes an output stream factory for further use.
+     *
+     * @param factory the output stream factory to use
+     *
      * @see org.extex.interpreter.type.OutputStreamConsumer#setOutputStreamFactory(
      *      org.extex.backend.outputStream.OutputStreamFactory)
      */

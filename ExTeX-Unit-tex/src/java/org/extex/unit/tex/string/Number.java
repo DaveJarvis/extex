@@ -33,7 +33,6 @@ import org.extex.typesetter.Typesetter;
  * This class provides an implementation for the primitive
  * <code>\number</code>.
  *
- *
  * <doc name="number">
  * <h3>The Primitive <tt>\number</tt></h3>
  * <p>
@@ -73,6 +72,17 @@ public class Number extends AbstractCode implements ExpandableCode {
     }
 
     /**
+     * This method takes the first token and executes it. The result is placed
+     * on the stack. This operation might have side effects. To execute a token
+     * it might be necessary to consume further tokens.
+     *
+     * @param prefix the prefix controlling the execution
+     * @param context the interpreter context
+     * @param source the token source
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -88,6 +98,19 @@ public class Number extends AbstractCode implements ExpandableCode {
     }
 
     /**
+     * This method takes the first token and expands it. The result is placed
+     * on the stack.
+     * This means that expandable code does one step of expansion and puts the
+     * result on the stack. To expand a token it might be necessary to consume
+     * further tokens.
+     *
+     * @param prefix the prefix flags controlling the expansion
+     * @param context the interpreter context
+     * @param source the token source
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.ExpandableCode#expand(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,

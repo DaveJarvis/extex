@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -21,7 +21,6 @@ package org.extex.unit.tex.register.toks;
 
 import org.extex.interpreter.primitives.register.toks.AbstractToksRegisterTester;
 import org.extex.unit.tex.math.AbstractMathTester;
-
 
 /**
  * This is a test suite for the primitive <tt>\everydisplay</tt>.
@@ -60,9 +59,9 @@ public class EverydisplayTest extends AbstractToksRegisterTester {
     public void test1() throws Exception {
 
         assertSuccess(//--- input code ---
-                DEFINE_BRACES + DEFINE_MATH + "\\everydisplay{x}BC" + "\\end",
-                //--- output channel ---
-                "BC" + TERM);
+            DEFINE_BRACES + DEFINE_MATH + "\\everydisplay{x}BC" + "\\end",
+            //--- output channel ---
+            "BC" + TERM);
     }
 
     /**
@@ -75,10 +74,10 @@ public class EverydisplayTest extends AbstractToksRegisterTester {
     public void test2() throws Exception {
 
         assertSuccess(//--- input code ---
-                AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_BRACES
-                        + DEFINE_MATH + "\\everydisplay{x}B$ z $C" + "\\end",
-                //--- output channel ---
-                "BzC" + TERM);
+            AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_BRACES + DEFINE_MATH
+                    + "\\everydisplay{x}B$ z $C" + "\\end",
+            //--- output channel ---
+            "BzC" + TERM);
     }
 
     /**
@@ -91,10 +90,10 @@ public class EverydisplayTest extends AbstractToksRegisterTester {
     public void test10() throws Exception {
 
         assertSuccess(//--- input code ---
-                AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_BRACES
-                        + DEFINE_MATH + "\\everydisplay{x}BC$$ z $$" + "\\end",
-                //--- output channel ---
-                "BCxz" + TERM);
+            AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_BRACES + DEFINE_MATH
+                    + "\\everydisplay{x}BC$$ z $$" + "\\end",
+            //--- output channel ---
+            "BCxz" + TERM);
     }
 
     //TODO implement more primitive specific test cases

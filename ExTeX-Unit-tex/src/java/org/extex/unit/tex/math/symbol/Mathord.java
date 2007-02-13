@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -28,7 +28,6 @@ import org.extex.typesetter.listMaker.math.NoadConsumer;
 import org.extex.typesetter.type.noad.Noad;
 import org.extex.typesetter.type.noad.OrdinaryNoad;
 import org.extex.unit.tex.math.AbstractMathCode;
-
 
 /**
  * This class provides an implementation for the primitive <code>\mathord</code>.
@@ -95,8 +94,9 @@ public class Mathord extends AbstractMathCode {
             throws InterpreterException {
 
         NoadConsumer nc = getListMaker(context, typesetter);
-        Noad noad = nc.scanNoad(prefix, context, source, typesetter,
-                printableControlSequence(context));
+        Noad noad =
+                nc.scanNoad(prefix, context, source, typesetter,
+                    printableControlSequence(context));
         nc.add(new OrdinaryNoad(noad, context.getTypesettingContext()));
     }
 

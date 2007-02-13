@@ -19,7 +19,6 @@
 
 package org.extex.unit.tex.string;
 
-
 /**
  * This is a test suite for the primitive <tt>&#x5c;uccode</tt>.
  *

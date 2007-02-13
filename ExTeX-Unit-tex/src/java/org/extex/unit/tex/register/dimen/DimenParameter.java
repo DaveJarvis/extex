@@ -70,6 +70,12 @@ public class DimenParameter extends DimenPrimitive
     }
 
     /**
+     * Configure an object according to a given Configuration.
+     *
+     * @param config the configuration object to consider
+     *
+     * @throws ConfigurationException in case that something went wrong
+     *
      * @see org.extex.util.framework.configuration.Configurable#configure(
      *      org.extex.util.framework.configuration.Configuration)
      */

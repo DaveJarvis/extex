@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -28,7 +28,6 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.listMaker.math.NoadConsumer;
 import org.extex.unit.tex.math.AbstractTeXMathCode;
 import org.extex.unit.tex.math.util.MathCodeConvertible;
-
 
 /**
  * This class provides an implementation for the primitive
@@ -92,7 +91,7 @@ public class Mathchar extends AbstractTeXMathCode
             throws InterpreterException {
 
         return parseMathCode(context, source, typesetter,
-                printableControlSequence(context));
+            printableControlSequence(context));
     }
 
     /**
@@ -107,8 +106,9 @@ public class Mathchar extends AbstractTeXMathCode
             throws InterpreterException {
 
         NoadConsumer nc = getListMaker(context, typesetter);
-        MathCode mc = parseMathCode(context, source, typesetter,
-                printableControlSequence(context));
+        MathCode mc =
+                parseMathCode(context, source, typesetter,
+                    printableControlSequence(context));
 
         nc.add(mc, context.getTypesettingContext());
     }

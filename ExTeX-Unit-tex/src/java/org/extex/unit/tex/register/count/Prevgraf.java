@@ -70,6 +70,15 @@ public class Prevgraf extends CountPrimitive {
     }
 
     /**
+     * Return the key (the name of the primitive) for the numbered count
+     * register.
+     *
+     * @param context the interpreter context to use
+     * @param source the source for new tokens
+     * @param typesetter the typesetter
+     *
+     * @return the key for the current register
+     *
      * @see org.extex.unit.tex.register.count.AbstractCount#getKey(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
@@ -82,6 +91,16 @@ public class Prevgraf extends CountPrimitive {
     }
 
     /**
+     * This method is called when the macro <tt>\advance</tt> has been seen.
+     * It performs the remaining tasks for the expansion.
+     *
+     * @param prefix the prefix for the command
+     * @param context the processor context
+     * @param source the token source to parse
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.arithmetic.Advanceable#advance(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -106,6 +125,19 @@ public class Prevgraf extends CountPrimitive {
     }
 
     /**
+     * The method <tt>assign</tt> is the core of the functionality of
+     * {@link #execute(Flags, Context, TokenSource, Typesetter) execute()}.
+     * This method is preferable to <tt>execute()</tt> since the
+     * <tt>execute()</tt> method provided in this class takes care of
+     * <tt>\afterassignment</tt> and <tt>\globaldefs</tt> as well.
+     *
+     * @param prefix the prefix controlling the execution
+     * @param context the interpreter context
+     * @param source the token source
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.AbstractAssignment#assign(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -128,6 +160,16 @@ public class Prevgraf extends CountPrimitive {
     }
 
     /**
+     * This method is called when the macro <tt>\divide</tt> has been seen.
+     * It performs the remaining tasks for the expansion.
+     *
+     * @param prefix the prefix for the command
+     * @param context the processor context
+     * @param source the token source to parse
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.arithmetic.Divideable#divide(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -157,6 +199,16 @@ public class Prevgraf extends CountPrimitive {
     }
 
     /**
+     * This method is called when the macro <tt>\multiply</tt> has been seen.
+     * It performs the remaining tasks for the expansion.
+     *
+     * @param prefix the prefix for the command
+     * @param context the processor context
+     * @param source the token source to parse
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.arithmetic.Multiplyable#multiply(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,

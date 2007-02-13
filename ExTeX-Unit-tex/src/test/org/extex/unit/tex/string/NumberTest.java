@@ -53,6 +53,8 @@ public class NumberTest extends NoFlagsPrimitiveTester {
      *  Test case checking that <tt>\number</tt> on a count with the value
      *  2 gives <tt>2</tt>.
      * </testcase>
+     *
+     * @throws Exception in case of an error
      */
     public void testCount1() throws Exception {
 
@@ -66,6 +68,8 @@ public class NumberTest extends NoFlagsPrimitiveTester {
      *  Test case checking that <tt>\number</tt> on a count with the value
      *  32 gives <tt>32</tt>.
      * </testcase>
+     *
+     * @throws Exception in case of an error
      */
     public void testCount2() throws Exception {
 
@@ -79,6 +83,8 @@ public class NumberTest extends NoFlagsPrimitiveTester {
      *  Test case checking that <tt>\number</tt> on a count with the value
      *  -2 gives <tt>-2</tt>.
      * </testcase>
+     *
+     * @throws Exception in case of an error
      */
     public void testCount3() throws Exception {
 
@@ -91,6 +97,8 @@ public class NumberTest extends NoFlagsPrimitiveTester {
      * <testcase primitive="\number">
      *  Test case checking that <tt>\number</tt> is expandable.
      * </testcase>
+     *
+     * @throws Exception in case of an error
      */
     public void testConvert1() throws Exception {
 

@@ -94,7 +94,6 @@ public class InputlinenoTest extends ExTeXLauncher {
                 "1" + TERM);
     }
 
-
     //TODO implement the primitive specific test cases
 
 }

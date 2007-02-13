@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -206,6 +206,8 @@ public class Vbox extends AbstractBoxPrimitive {
             final Typesetter typesetter, final GroupType groupType,
             final Token startToken) throws InterpreterException {
 
+        //TODO gene: clear afterassignment ???
+        //TODO gene: don't use afterassignment in pure vmode
         Tokens everyvbox = context.getToks("everyvbox");
         Token afterassignment = context.getAfterassignment();
         Tokens insert;

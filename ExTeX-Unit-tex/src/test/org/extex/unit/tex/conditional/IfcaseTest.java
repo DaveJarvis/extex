@@ -223,7 +223,7 @@ public class IfcaseTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
-    public void testConst_1() throws Exception {
+    public void testConstMinus1() throws Exception {
 
         assertSuccess(//--- input code ---
             "\\ifcase -1 a\\or b\\or c\\or d\\else e\\fi \\end",
@@ -238,7 +238,7 @@ public class IfcaseTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
-    public void testConst_1b() throws Exception {
+    public void testConstMinus1b() throws Exception {
 
         assertSuccess(//--- input code ---
             "\\ifcase -1 a\\or b\\or c\\or d\\fi \\end",

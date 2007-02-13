@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -20,7 +20,6 @@
 package org.extex.unit.tex.register.count;
 
 import org.extex.interpreter.primitives.register.count.AbstractCountRegisterTester;
-
 
 /**
  * This is a test suite for the primitive <tt>\escapechar</tt>.
@@ -60,10 +59,9 @@ public class EscapecharTest extends AbstractCountRegisterTester {
     public void test1() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\escapechar=`\\:\\meaning\\relax"
-                        + "\\end",
-                //--- output channel ---
-                ":relax=:relax" + TERM);
+            "\\escapechar=`\\:\\meaning\\relax" + "\\end",
+            //--- output channel ---
+            ":relax=:relax" + TERM);
     }
 
     /**
@@ -77,10 +75,9 @@ public class EscapecharTest extends AbstractCountRegisterTester {
     public void test2() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\escapechar=`\\:\\string\\relax"
-                        + "\\end",
-                //--- output channel ---
-                ":relax" + TERM);
+            "\\escapechar=`\\:\\string\\relax" + "\\end",
+            //--- output channel ---
+            ":relax" + TERM);
     }
 
     //TODO implement the primitive specific test cases

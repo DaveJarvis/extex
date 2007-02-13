@@ -59,9 +59,9 @@ public class IfxTest extends ExTeXLauncher {
     public void testErr1() throws Exception {
 
         assertFailure(//--- input code ---
-                "\\ifx ",
-                //--- output channel ---
-                "Unexpected end of file while processing \\ifx");
+            "\\ifx ",
+            //--- output channel ---
+            "Unexpected end of file while processing \\ifx");
     }
 
     /**
@@ -74,9 +74,9 @@ public class IfxTest extends ExTeXLauncher {
     public void test1() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\ifx aa true\\else false\\fi",
-                //--- output channel ---
-                "true" + TERM);
+            "\\ifx aa true\\else false\\fi",
+            //--- output channel ---
+            "true" + TERM);
     }
 
     /**
@@ -89,9 +89,9 @@ public class IfxTest extends ExTeXLauncher {
     public void test2() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\ifx ab true\\else false\\fi",
-                //--- output channel ---
-                "false" + TERM);
+            "\\ifx ab true\\else false\\fi",
+            //--- output channel ---
+            "false" + TERM);
     }
 
     /**
@@ -105,9 +105,9 @@ public class IfxTest extends ExTeXLauncher {
     public void testMacro1() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\ifx \\xx\\yy true\\else false\\fi",
-                //--- output channel ---
-                "true" + TERM);
+            "\\ifx \\xx\\yy true\\else false\\fi",
+            //--- output channel ---
+            "true" + TERM);
     }
 
     /**
@@ -121,9 +121,9 @@ public class IfxTest extends ExTeXLauncher {
     public void testMacro2() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\ifx \\xx\\xx true\\else false\\fi",
-                //--- output channel ---
-                "true" + TERM);
+            "\\ifx \\xx\\xx true\\else false\\fi",
+            //--- output channel ---
+            "true" + TERM);
     }
 
     /**
@@ -137,9 +137,9 @@ public class IfxTest extends ExTeXLauncher {
     public void testMacro3() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\ifx \\relax\\yy true\\else false\\fi",
-                //--- output channel ---
-                "false" + TERM);
+            "\\ifx \\relax\\yy true\\else false\\fi",
+            //--- output channel ---
+            "false" + TERM);
     }
 
     /**
@@ -154,9 +154,9 @@ public class IfxTest extends ExTeXLauncher {
     public void testMacro4() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\let\\xx\\undefined\\ifx \\xx\\undefined true\\else false\\fi",
-                //--- output channel ---
-                "true" + TERM);
+            "\\let\\xx\\undefined\\ifx \\xx\\undefined true\\else false\\fi",
+            //--- output channel ---
+            "true" + TERM);
     }
 
     /**
@@ -179,25 +179,20 @@ public class IfxTest extends ExTeXLauncher {
     public void testTeXbook() throws Exception {
 
         assertSuccess(//--- input code ---
-                DEFINE_BRACES
-                + "\\def\\a{\\c}"
-                + "\\def\\b{\\d}"
-                + "\\def\\c{\\e}"
-                + "\\def\\d{\\e}"
-                + "\\def\\e{A}"
-                + "\\ifx\\c\\d t \\else f \\fi "
-                + "\\ifx\\a\\b t \\else f \\fi "
-                + "\\ifx\\a\\c t \\else f \\fi "
-                + "\\ifx\\a\\d t \\else f \\fi "
-                + "\\ifx\\a\\e t \\else f \\fi "
-                + "\\ifx\\b\\c t \\else f \\fi "
-                + "\\ifx\\b\\d t \\else f \\fi "
-                + "\\ifx\\b\\e t \\else f \\fi "
-                + "\\ifx\\c\\e t \\else f \\fi "
-                + "\\ifx\\d\\e t \\else f \\fi "
-                + "\\end",
-                //--- output channel ---
-                "t f f f f f f f f f" + TERM);
+            DEFINE_BRACES + "\\def\\a{\\c}" + "\\def\\b{\\d}" + "\\def\\c{\\e}"
+                    + "\\def\\d{\\e}" + "\\def\\e{A}"
+                    + "\\ifx\\c\\d t \\else f \\fi "
+                    + "\\ifx\\a\\b t \\else f \\fi "
+                    + "\\ifx\\a\\c t \\else f \\fi "
+                    + "\\ifx\\a\\d t \\else f \\fi "
+                    + "\\ifx\\a\\e t \\else f \\fi "
+                    + "\\ifx\\b\\c t \\else f \\fi "
+                    + "\\ifx\\b\\d t \\else f \\fi "
+                    + "\\ifx\\b\\e t \\else f \\fi "
+                    + "\\ifx\\c\\e t \\else f \\fi "
+                    + "\\ifx\\d\\e t \\else f \\fi " + "\\end",
+            //--- output channel ---
+            "t f f f f f f f f f" + TERM);
     }
 
     /**
@@ -210,11 +205,9 @@ public class IfxTest extends ExTeXLauncher {
     public void testFont1() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\font\\f cmr10 "
-                + "\\ifx\\f\\f t\\else f\\fi"
-                + "\\end",
-                //--- output channel ---
-                "t" + TERM);
+            "\\font\\f cmr10 " + "\\ifx\\f\\f t\\else f\\fi" + "\\end",
+            //--- output channel ---
+            "t" + TERM);
     }
 
     /**
@@ -227,11 +220,9 @@ public class IfxTest extends ExTeXLauncher {
     public void testFont2() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\font\\f cmr10 "
-                + "\\ifx\\f\\g t\\else f\\fi"
-                + "\\end",
-                //--- output channel ---
-                "f" + TERM);
+            "\\font\\f cmr10 " + "\\ifx\\f\\g t\\else f\\fi" + "\\end",
+            //--- output channel ---
+            "f" + TERM);
     }
 
     /**
@@ -244,12 +235,10 @@ public class IfxTest extends ExTeXLauncher {
     public void testFont3() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\font\\f cmr10 "
-                + "\\font\\g cmr10 "
-                + "\\ifx\\f\\g t\\else f\\fi"
-                + "\\end",
-                //--- output channel ---
-                "f" + TERM);
+            "\\font\\f cmr10 " + "\\font\\g cmr10 "
+                    + "\\ifx\\f\\g t\\else f\\fi" + "\\end",
+            //--- output channel ---
+            "f" + TERM);
     }
 
     /**
@@ -262,12 +251,10 @@ public class IfxTest extends ExTeXLauncher {
     public void testFont4() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\font\\f cmr10 "
-                + "\\let\\g\\f "
-                + "\\ifx\\f\\g t\\else f\\fi"
-                + "\\end",
-                //--- output channel ---
-                "t" + TERM);
+            "\\font\\f cmr10 " + "\\let\\g\\f " + "\\ifx\\f\\g t\\else f\\fi"
+                    + "\\end",
+            //--- output channel ---
+            "t" + TERM);
     }
 
     /**
@@ -280,9 +267,9 @@ public class IfxTest extends ExTeXLauncher {
     public void test10() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\ifx a\\relax true\\else false\\fi",
-                //--- output channel ---
-                "false" + TERM);
+            "\\ifx a\\relax true\\else false\\fi",
+            //--- output channel ---
+            "false" + TERM);
     }
 
     /**
@@ -295,10 +282,9 @@ public class IfxTest extends ExTeXLauncher {
     public void test11() throws Exception {
 
         assertSuccess(//--- input code ---
-            DEFINE_BRACES + "\\def\\x{a}" +
-                "\\ifx a\\x true\\else false\\fi",
-                //--- output channel ---
-                "false" + TERM);
+            DEFINE_BRACES + "\\def\\x{a}" + "\\ifx a\\x true\\else false\\fi",
+            //--- output channel ---
+            "false" + TERM);
     }
 
     /**
@@ -311,10 +297,10 @@ public class IfxTest extends ExTeXLauncher {
     public void test12() throws Exception {
 
         assertSuccess(//--- input code ---
-            DEFINE_BRACES + "\\def\\x{a}" +
-                "\\ifx \\relax\\x true\\else false\\fi",
-                //--- output channel ---
-                "false" + TERM);
+            DEFINE_BRACES + "\\def\\x{a}"
+                    + "\\ifx \\relax\\x true\\else false\\fi",
+            //--- output channel ---
+            "false" + TERM);
     }
 
     /**
@@ -327,10 +313,9 @@ public class IfxTest extends ExTeXLauncher {
     public void test13() throws Exception {
 
         assertSuccess(//--- input code ---
-            DEFINE_BRACES +
-                "\\ifx \\a\\b true\\else false\\fi",
-                //--- output channel ---
-                "true" + TERM);
+            DEFINE_BRACES + "\\ifx \\a\\b true\\else false\\fi",
+            //--- output channel ---
+            "true" + TERM);
     }
 
     //TODO implement more primitive specific test cases

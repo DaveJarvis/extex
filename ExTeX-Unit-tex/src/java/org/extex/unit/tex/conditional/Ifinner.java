@@ -72,6 +72,17 @@ public class Ifinner extends AbstractIf {
     }
 
     /**
+     * This method computes the boolean value of the conditional.
+     * If the result is <code>true</code> then the then branch is expanded and
+     * the else branch is skipped. Otherwise the then branch is skipped and the
+     * else branch is expanded.
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter
+     *
+     * @return the boolean value
+     *
      * @see org.extex.unit.base.conditional.AbstractIf#conditional(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,

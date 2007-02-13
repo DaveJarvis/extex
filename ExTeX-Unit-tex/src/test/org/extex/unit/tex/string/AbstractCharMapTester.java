@@ -63,6 +63,7 @@ public abstract class AbstractCharMapTester extends ExTeXLauncher {
      * @param primitive the name of the integer register to test
      * @param args the parameters for the invocation
      * @param init the default value
+     * @param max ...
      */
     public AbstractCharMapTester(final String arg, final String primitive,
             final String args, final String init, final String max) {

@@ -73,6 +73,10 @@ public class PreambleItem {
     }
 
     /**
+     * Get the printable representation of this instance.
+     *
+     * @return the printable representation of this instance
+     *
      * @see java.lang.Object#toString()
      */
     public String toString() {

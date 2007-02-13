@@ -22,7 +22,6 @@ package org.extex.unit.tex.conditional;
 import org.extex.test.ExTeXLauncher;
 import org.extex.unit.tex.math.AbstractMathTester;
 
-
 /**
  * This is a test suite for the primitive <tt>\ifinner</tt>.
  *

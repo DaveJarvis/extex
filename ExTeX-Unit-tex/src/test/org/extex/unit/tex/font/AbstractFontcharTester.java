@@ -41,6 +41,7 @@ public class AbstractFontcharTester extends NoFlagsPrimitiveTester {
      * @param name the name for debugging
      * @param primitive the name of the primitive
      * @param arguments the arguments for smoke testing
+     * @param def ...
      */
     public AbstractFontcharTester(final String name, final String primitive,
             final String arguments, final String def) {
@@ -336,6 +337,5 @@ public class AbstractFontcharTester extends NoFlagsPrimitiveTester {
             //--- output channel ---
             "-1" + TERM);
     }
-
 
 }

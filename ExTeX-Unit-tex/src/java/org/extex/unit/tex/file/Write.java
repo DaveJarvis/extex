@@ -150,26 +150,47 @@ public class Write extends AbstractCode
     }
 
     /**
+     * Configure an object according to a given Configuration.
+     *
+     * @param config the configuration object to consider
+     *
+     * @throws ConfigurationException in case that something went wrong
+     *
      * @see org.extex.util.framework.configuration.Configurable#configure(
      *      org.extex.util.framework.configuration.Configuration)
      */
     public void configure(final Configuration config)
             throws ConfigurationException {
 
-        write18 = Boolean.valueOf(config.getAttribute("write18"))
-                .booleanValue();
+        write18 =
+                Boolean.valueOf(config.getAttribute("write18")).booleanValue();
     }
 
     /**
+     * Setter for the logger.
+     *
+     * @param log the logger to use
+     *
      * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
-    public void enableLogging(final Logger theLogger) {
+    public void enableLogging(final Logger log) {
 
-        this.logger = theLogger;
+        this.logger = log;
     }
 
     /**
+     * This method takes the first token and executes it. The result is placed
+     * on the stack. This operation might have side effects. To execute a token
+     * it might be necessary to consume further tokens.
+     *
+     * @param prefix the prefix controlling the execution
+     * @param context the interpreter context
+     * @param source the token source
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -180,13 +201,14 @@ public class Write extends AbstractCode
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        String key = AbstractFileCode.scanOutFileKey(context, source,
-                typesetter);
+        String key =
+                AbstractFileCode.scanOutFileKey(context, source, typesetter);
 
         if (prefix.clearImmediate()) {
 
-            Tokens toks = source.scanUnprotectedTokens(context, false, false,
-                    getName());
+            Tokens toks =
+                    source.scanUnprotectedTokens(context, false, false,
+                        getName());
             write(key, toks, context);
 
         } else {
@@ -220,7 +242,6 @@ public class Write extends AbstractCode
     public void write(final String key, final Tokens toks, final Context context)
             throws InterpreterException {
 
-
         OutFile file = context.getOutFile(key);
 
         if (file == null || !file.isOpen()) {
@@ -228,7 +249,8 @@ public class Write extends AbstractCode
             if (!init) {
                 init = true;
                 context.setOutFile(LOG_FILE, new LogFile(logger), true);
-                context.setOutFile(USER_AND_LOG, new UserAndLogFile(logger), true);
+                context.setOutFile(USER_AND_LOG, new UserAndLogFile(logger),
+                    true);
                 if (write18) {
                     context.setOutFile(SYSTEM, new ExecuteFile(logger), true);
                 }
