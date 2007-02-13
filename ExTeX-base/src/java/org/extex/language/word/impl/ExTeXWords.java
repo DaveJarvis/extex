@@ -40,7 +40,6 @@ import org.extex.typesetter.type.node.KernNode;
 import org.extex.typesetter.type.node.LigatureNode;
 import org.extex.typesetter.type.node.WhatsItNode;
 
-
 /**
  * This class tokenizes a list of nodes according to the rules of
  * <logo>ExTeX</logo>.
@@ -77,8 +76,8 @@ public class ExTeXWords implements WordTokenizer {
             final LigatureBuilder ligatureBuilder) throws HyphenationException {
 
         if (ligatureBuilder != null) {
-            for (int i = 0; i < list.size(); i = ligatureBuilder
-                    .insertLigatures(list, i)) {
+            for (int i = 0; i < list.size(); i =
+                    ligatureBuilder.insertLigatures(list, i)) {
                 // ok
             }
         }
@@ -122,10 +121,11 @@ public class ExTeXWords implements WordTokenizer {
 
         if (needHyphen == 1 && isHyph[index + leftLen]) {
             nodes.add(insertionPoint, //
-                    new DiscretionaryNode(//
-                            new HorizontalListNode(node.getLeft(), hyphenNode),
-                            new HorizontalListNode(node.getRight()),
-                            new HorizontalListNode(node)));
+                new DiscretionaryNode(
+                    //
+                    new HorizontalListNode(node.getLeft(), hyphenNode),
+                    new HorizontalListNode(node.getRight()),
+                    new HorizontalListNode(node)));
             return index + n;
         }
 
@@ -146,8 +146,8 @@ public class ExTeXWords implements WordTokenizer {
         }
 
         nodes.add(insertionPoint, new DiscretionaryNode(pre, hyphenate(post,
-                index + 1, hyphenNode.getTypesettingContext().getLanguage()),
-                new HorizontalListNode(node)));
+            index + 1, hyphenNode.getTypesettingContext().getLanguage()),
+            new HorizontalListNode(node)));
 
         return index + n;
     }
@@ -254,7 +254,7 @@ public class ExTeXWords implements WordTokenizer {
         addWord((CharNode) n, word);
 
         return collectWord(nodes, word, i, ((CharNode) n)
-                .getTypesettingContext().getLanguage());
+            .getTypesettingContext().getLanguage());
     }
 
     /**
@@ -277,8 +277,8 @@ public class ExTeXWords implements WordTokenizer {
 
         for (int si = 0; si < spec.length;) {
 
-            for (n = nodes.get(insertion); !(n instanceof CharNode); n = nodes
-                    .get(insertion)) {
+            for (n = nodes.get(insertion); !(n instanceof CharNode); n =
+                    nodes.get(insertion)) {
                 if (nobreak == null) {
                     nobreak = new HorizontalListNode(n);
                 } else {
@@ -296,15 +296,17 @@ public class ExTeXWords implements WordTokenizer {
                     UnicodeChar lig = font.getLigature(c, hyphen);
                     if (lig != null) {
                         nodes.remove(insertion--);
-                        post = new HorizontalListNode(new LigatureNode(
-                                ((CharNode) prev).getTypesettingContext(), lig,
-                                (CharNode) prev, hyphenNode));
+                        post =
+                                new HorizontalListNode(new LigatureNode(
+                                    ((CharNode) prev).getTypesettingContext(),
+                                    lig, (CharNode) prev, hyphenNode));
                         nobreak.add(prev);
                     } else {
                         FixedDimen kern = font.getKerning(c, hyphen);
                         if (kern != null && kern.ne(Dimen.ZERO_PT)) {
-                            post = new HorizontalListNode(new ImplicitKernNode(
-                                    kern, true));
+                            post =
+                                    new HorizontalListNode(
+                                        new ImplicitKernNode(kern, true));
                         } else {
                             post = new HorizontalListNode();
                         }
@@ -314,14 +316,15 @@ public class ExTeXWords implements WordTokenizer {
                     post = new HorizontalListNode(hyphenNode);
                 }
                 nodes.add(insertion++, //
-                        new DiscretionaryNode(post, null, nobreak));
+                    new DiscretionaryNode(post, null, nobreak));
                 nobreak = null;
             }
 
             if (n instanceof LigatureNode) {
 
-                si = insertShyIntoLigature(nodes, insertion, si,
-                        (LigatureNode) n, spec, hyphenNode);
+                si =
+                        insertShyIntoLigature(nodes, insertion, si,
+                            (LigatureNode) n, spec, hyphenNode);
                 prev = null;
 
             } else {

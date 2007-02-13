@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,7 +19,6 @@
 
 package org.extex.interpreter;
 
-import org.extex.interpreter.Flags;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
@@ -73,6 +72,8 @@ public class FlagsImpl implements Flags {
 
     /**
      * This method clears all flags.
+     *
+     * @see org.extex.interpreter.Flags#clear()
      */
     public void clear() {
 
@@ -85,6 +86,10 @@ public class FlagsImpl implements Flags {
     }
 
     /**
+     * Setter for the expanded flag. The flag is reset to <code>false</code>.
+     *
+     * @return the old value of the expanded flag
+     *
      * @see org.extex.interpreter.Flags#clearExpanded()
      */
     public boolean clearExpanded() {
@@ -95,6 +100,10 @@ public class FlagsImpl implements Flags {
     }
 
     /**
+     * Setter for the global flag. The flag is reset to <code>false</code>.
+     *
+     * @return the old value of the global flag
+     *
      * @see org.extex.interpreter.Flags#clearGlobal()
      */
     public boolean clearGlobal() {
@@ -105,6 +114,10 @@ public class FlagsImpl implements Flags {
     }
 
     /**
+     * Setter for the immediate flag. The flag is reset to <code>false</code>.
+     *
+     * @return the old value of the immediate flag
+     *
      * @see org.extex.interpreter.Flags#clearImmediate()
      */
     public boolean clearImmediate() {
@@ -115,6 +128,10 @@ public class FlagsImpl implements Flags {
     }
 
     /**
+     * Setter for the long flag. The flag is reset to <code>false</code>.
+     *
+     * @return the old value of the long flag
+     *
      * @see org.extex.interpreter.Flags#clearLong()
      */
     public boolean clearLong() {
@@ -125,6 +142,10 @@ public class FlagsImpl implements Flags {
     }
 
     /**
+     * Setter for the outer flag. The flag is reset to <code>false</code>.
+     *
+     * @return the old value of the outer flag
+     *
      * @see org.extex.interpreter.Flags#clearOuter()
      */
     public boolean clearOuter() {
@@ -135,6 +156,10 @@ public class FlagsImpl implements Flags {
     }
 
     /**
+     * Setter for the protected flag. The flag is reset to <code>false</code>.
+     *
+     * @return the old value of the protected flag
+     *
      * @see org.extex.interpreter.Flags#clearProtected()
      */
     public boolean clearProtected() {
@@ -145,6 +170,10 @@ public class FlagsImpl implements Flags {
     }
 
     /**
+     * Clone an instance.
+     *
+     * @return a copy of the instance
+     *
      * @see org.extex.interpreter.Flags#copy()
      */
     public Flags copy() {
@@ -172,6 +201,10 @@ public class FlagsImpl implements Flags {
     }
 
     /**
+     * Getter for the text representations of the flags currently set.
+     *
+     * @return the array of flag names
+     *
      * @see org.extex.interpreter.Flags#get()
      */
     public String[] get() {
@@ -206,6 +239,10 @@ public class FlagsImpl implements Flags {
     }
 
     /**
+     * Test if all flags are cleared.
+     *
+     * @return <code>true</code> iff not all flags are cleared
+     *
      * @see org.extex.interpreter.Flags#isDirty()
      */
     public boolean isDirty() {
@@ -265,6 +302,10 @@ public class FlagsImpl implements Flags {
     }
 
     /**
+     * Getter for the protected flag.
+     *
+     * @return the current value of the protected flag
+     *
      * @see org.extex.interpreter.Flags#isProtected()
      */
     public boolean isProtected() {
@@ -273,6 +314,10 @@ public class FlagsImpl implements Flags {
     }
 
     /**
+     * Copy the flag settings from a given instance int this instance.
+     *
+     * @param flags the flags to copy
+     *
      * @see org.extex.interpreter.Flags#set(
      *      org.extex.interpreter.Flags)
      */
@@ -345,6 +390,10 @@ public class FlagsImpl implements Flags {
     }
 
     /**
+     * Determine a printable representation of the instance.
+     *
+     * @return the printable representation
+     *
      * @see java.lang.Object#toString()
      */
     public String toString() {
@@ -360,6 +409,11 @@ public class FlagsImpl implements Flags {
     }
 
     /**
+     * Determine a printable representation of the flags set.
+     * The representation takes into account the current locale.
+     *
+     * @return the list
+     *
      * @see org.extex.interpreter.Flags#toText()
      */
     public String toText() {

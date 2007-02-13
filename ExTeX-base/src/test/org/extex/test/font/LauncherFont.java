@@ -37,7 +37,7 @@ import org.extex.type.UnicodeChar;
 /**
  * This class provides a memory-only font for test cases. Since no external file
  * is required no problem with parsing can happen.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4784 $
  */
@@ -50,7 +50,7 @@ public class LauncherFont implements Font, Serializable {
     protected static final long serialVersionUID = 1L;
 
     /**
-     * The field <tt>efCode</tt> contains the ...
+     * The field <tt>efCode</tt> contains the ef code.
      */
     private Map efCode = new HashMap();
 
@@ -70,6 +70,10 @@ public class LauncherFont implements Font, Serializable {
     private UnicodeChar skew = null;
 
     /**
+     * Returns the actual FontKey for this font.
+     *
+     * @return the actual FontKey for this font.
+     *
      * @see org.extex.interpreter.type.font.Font#getActualFontKey()
      */
     public FontKey getActualFontKey() {
@@ -78,6 +82,10 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
+     * Returns the actual size of the font.
+     *
+     * @return the actual size of the font
+     *
      * @see org.extex.interpreter.type.font.Font#getActualSize()
      */
     public FixedDimen getActualSize() {
@@ -86,6 +94,10 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
+     * Returns the check sum of the font.
+     *
+     * @return the check sum of the font.
+     *
      * @see org.extex.interpreter.type.font.Font#getCheckSum()
      */
     public int getCheckSum() {
@@ -94,6 +106,12 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
+     * Returns the depth of the character.
+     *
+     * @param uc the character
+     *
+     * @return the depth of the character
+     *
      * @see org.extex.interpreter.type.font.Font#getDepth(
      *      org.extex.type.UnicodeChar)
      */
@@ -118,6 +136,10 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
+     * Returns the design size of the font.
+     *
+     * @return the design size of the font
+     *
      * @see org.extex.interpreter.type.font.Font#getDesignSize()
      */
     public FixedDimen getDesignSize() {
@@ -126,6 +148,12 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
+     * Getter for the ef code.
+     *
+     * @param uc the character
+     *
+     * @return the ef code
+     *
      * @see org.extex.interpreter.type.font.Font#getEfCode(
      *      org.extex.type.UnicodeChar)
      */
@@ -136,6 +164,10 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
+     * Returns the size of 1em.
+     *
+     * @return the size of 1em.
+     *
      * @see org.extex.interpreter.type.font.Font#getEm()
      */
     public FixedDimen getEm() {
@@ -144,6 +176,10 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
+     * Returns the size of 1ex.
+     *
+     * @return Returns the size of 1ex.
+     *
      * @see org.extex.interpreter.type.font.Font#getEx()
      */
     public FixedDimen getEx() {
@@ -152,14 +188,24 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
+     * Returns the size of the parameter with the name 'name'.
+     *
+     * @param name the name of the parameter.
+     *
+     * @return the size of the parameter with the name 'name'.
+     *
      * @see org.extex.interpreter.type.font.Font#getFontDimen(java.lang.String)
      */
-    public FixedDimen getFontDimen(final String key) {
+    public FixedDimen getFontDimen(final String name) {
 
         return Dimen.ZERO_PT;
     }
 
     /**
+     * Returns the FontKey for this font.
+     *
+     * @return the FontKey for this font
+     *
      * @see org.extex.interpreter.type.font.Font#getFontKey()
      */
     public FontKey getFontKey() {
@@ -168,6 +214,10 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
+     * Returns the name of the font.
+     *
+     * @return the name of the font
+     *
      * @see org.extex.interpreter.type.font.Font#getFontName()
      */
     public String getFontName() {
@@ -176,6 +226,12 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
+     * Returns the height of a character.
+     *
+     * @param uc the character
+     *
+     * @return the height of the character
+     *
      * @see org.extex.interpreter.type.font.Font#getHeight(
      *      org.extex.type.UnicodeChar)
      */
@@ -185,6 +241,10 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
+     * Returns the hyphen character.
+     *
+     * @return the hyphen character
+     *
      * @see org.extex.interpreter.type.font.Font#getHyphenChar()
      */
     public UnicodeChar getHyphenChar() {
@@ -193,6 +253,12 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
+     * Returns the italic correction of a character.
+     *
+     * @param uc the character
+     *
+     * @return the italic correction of the character
+     *
      * @see org.extex.interpreter.type.font.Font#getItalicCorrection(
      *      org.extex.type.UnicodeChar)
      */
@@ -202,6 +268,13 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
+     * Returns the kerning between two characters.
+     *
+     * @param uc1 the first character
+     * @param uc2 the second character
+     *
+     * @return the kerning between two characters
+     *
      * @see org.extex.interpreter.type.font.Font#getKerning(
      *      org.extex.type.UnicodeChar, org.extex.type.UnicodeChar)
      */
@@ -211,6 +284,13 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
+     * Returns the ligature for two characters.
+     *
+     * @param uc1 the first character
+     * @param uc2 the second character
+     *
+     * @return Returns the ligature for two characters
+     *
      * @see org.extex.interpreter.type.font.Font#getLigature(
      *      org.extex.type.UnicodeChar, org.extex.type.UnicodeChar)
      */
@@ -225,6 +305,10 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
+     * Returns the scale factor of the font.
+     *
+     * @return the scale factor of the font
+     *
      * @see org.extex.interpreter.type.font.Font#getScaleFactor()
      */
     public FixedCount getScaleFactor() {
@@ -233,6 +317,10 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
+     * Returns the skew char.
+     *
+     * @return the skew char
+     *
      * @see org.extex.interpreter.type.font.Font#getSkewChar()
      */
     public UnicodeChar getSkewChar() {
@@ -241,6 +329,10 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
+     * Returns the size of the 'space'.
+     *
+     * @return Returns the size of the 'space'.
+     *
      * @see org.extex.interpreter.type.font.Font#getSpace()
      */
     public FixedGlue getSpace() {
@@ -249,6 +341,12 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
+     * Returns the width of a character.
+     *
+     * @param uc the character
+     *
+     * @return Returns the width of the character
+     *
      * @see org.extex.interpreter.type.font.Font#getWidth(
      *      org.extex.type.UnicodeChar)
      */
@@ -258,6 +356,12 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
+     * Determine whether the glyph for a given character is present in this font.
+     *
+     * @param uc the character
+     *
+     * @return <code>true</code> iff the glyph is present
+     *
      * @see org.extex.interpreter.type.font.Font#hasGlyph(
      *      org.extex.type.UnicodeChar)
      */
@@ -267,7 +371,15 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
-     * @see org.extex.interpreter.type.font.Font#setEfCode(org.extex.type.UnicodeChar,
+     * Setter for the ef code.
+     * The ef code influences the stretchability of characters. It has a
+     * positive value. 1000 means "normal" stretchability.
+     *
+     * @param uc the character
+     * @param code the associated code
+     *
+     * @see org.extex.interpreter.type.font.Font#setEfCode(
+     *      org.extex.type.UnicodeChar,
      *      long)
      */
     public void setEfCode(final UnicodeChar uc, final long code) {
@@ -276,30 +388,44 @@ public class LauncherFont implements Font, Serializable {
     }
 
     /**
-     * @see org.extex.interpreter.type.font.Font#setFontDimen( java.lang.String,
+     * Set the new value for the font parameter.
+     *
+     * @param name the name of the parameter
+     * @param value the value to set
+     *
+     * @see org.extex.interpreter.type.font.Font#setFontDimen(
+     *      java.lang.String,
      *      org.extex.interpreter.type.dimen.Dimen)
      */
-    public void setFontDimen(final String key, final Dimen value) {
+    public void setFontDimen(final String name, final Dimen value) {
 
-        fontdimen.put(key, value);
+        fontdimen.put(name, value);
     }
 
     /**
+     * Set the hyphen character.
+     *
+     * @param h the hyphen character
+     *
      * @see org.extex.interpreter.type.font.Font#setHyphenChar(
      *      org.extex.type.UnicodeChar)
      */
-    public void setHyphenChar(final UnicodeChar hyphen) {
+    public void setHyphenChar(final UnicodeChar h) {
 
-        this.hyphen = hyphen;
+        this.hyphen = h;
     }
 
     /**
+     * Set the skew character.
+     *
+     * @param s the skew character
+     *
      * @see org.extex.interpreter.type.font.Font#setSkewChar(
      *      org.extex.type.UnicodeChar)
      */
-    public void setSkewChar(final UnicodeChar skew) {
+    public void setSkewChar(final UnicodeChar s) {
 
-        this.skew = skew;
+        this.skew = s;
     }
 
 }

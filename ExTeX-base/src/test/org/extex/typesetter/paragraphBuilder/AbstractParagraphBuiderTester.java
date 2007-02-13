@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -28,12 +28,7 @@ import java.util.regex.Pattern;
 
 import junit.framework.TestCase;
 
-import org.extex.font.FontByteArray;
 import org.extex.font.FontKey;
-import org.extex.font.Glyph;
-import org.extex.font.Kerning;
-import org.extex.font.Ligature;
-import org.extex.font.type.BoundingBox;
 import org.extex.interpreter.context.tc.TypesettingContext;
 import org.extex.interpreter.context.tc.TypesettingContextFactory;
 import org.extex.interpreter.context.tc.TypesettingContextImpl;
@@ -84,7 +79,13 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
     private class MockOptions implements TypesetterOptions {
 
         /**
-         * @see de.dante.extex.typesetter.TypesetterOptions#getCountOption(java.lang.String)
+         * Getter for a count register.
+         *
+         * @param name the name of the register
+         *
+         * @return the content of the count register
+         *
+         * @see org.extex.typesetter.TypesetterOptions#getCountOption(java.lang.String)
          */
         public FixedCount getCountOption(final String name) {
 
@@ -105,7 +106,13 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.TypesetterOptions#getDimenOption(java.lang.String)
+         * Getter for a dimen register.
+         *
+         * @param name the name of the register
+         *
+         * @return the content of the dimen register
+         *
+         * @see org.extex.typesetter.TypesetterOptions#getDimenOption(java.lang.String)
          */
         public FixedDimen getDimenOption(final String name) {
 
@@ -116,7 +123,13 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.TypesetterOptions#getFont(java.lang.String)
+         * Getter for a current font register.
+         *
+         * @param name the name or the number of the register
+         *
+         * @return the named font register or <code>null</code> if none is set
+         *
+         * @see org.extex.typesetter.TypesetterOptions#getFont(java.lang.String)
          */
         public Font getFont(final String name) {
 
@@ -124,7 +137,13 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.TypesetterOptions#getGlueOption(java.lang.String)
+         * Getter for a glue register.
+         *
+         * @param name the name of the register
+         *
+         * @return the content of the glue register
+         *
+         * @see org.extex.typesetter.TypesetterOptions#getGlueOption(java.lang.String)
          */
         public FixedGlue getGlueOption(final String name) {
 
@@ -135,7 +154,14 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.TypesetterOptions#getLccode(org.extex.type.UnicodeChar)
+         * Getter for the lccode mapping of upper case characters to their
+         * lower case equivalent.
+         *
+         * @param uc the upper case character
+         *
+         * @return the lower case equivalent or null if none exists
+         *
+         * @see org.extex.typesetter.TypesetterOptions#getLccode(org.extex.type.UnicodeChar)
          */
         public UnicodeChar getLccode(final UnicodeChar uc) {
 
@@ -143,7 +169,13 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.TypesetterOptions#getMuskip(java.lang.String)
+         * Getter for a muskip register.
+         *
+         * @param name the name of the register
+         *
+         * @return te muskip register value
+         *
+         * @see org.extex.typesetter.TypesetterOptions#getMuskip(java.lang.String)
          */
         public Muskip getMuskip(final String name) {
 
@@ -151,7 +183,11 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.TypesetterOptions#getNamespace()
+         * Getter for the current name space.
+         *
+         * @return the current name space
+         *
+         * @see org.extex.typesetter.TypesetterOptions#getNamespace()
          */
         public String getNamespace() {
 
@@ -159,7 +195,12 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.TypesetterOptions#getParshape()
+         * Getter for the paragraph shape.
+         *
+         * @return the paragraph shape or <code>null</code> if no special shape
+         *   is present
+         *
+         * @see org.extex.typesetter.TypesetterOptions#getParshape()
          */
         public ParagraphShape getParshape() {
 
@@ -167,7 +208,12 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.TypesetterOptions#getTokenFactory()
+         * Getter for the token factory. The token factory can be used to get new
+         * tokens of some kind.
+         *
+         * @return the token factory
+         *
+         * @see org.extex.typesetter.TypesetterOptions#getTokenFactory()
          */
         public TokenFactory getTokenFactory() {
 
@@ -175,7 +221,11 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.TypesetterOptions#getTypesettingContext()
+         * Getter for the typesetting context.
+         *
+         * @return the typesetting context
+         *
+         * @see org.extex.typesetter.TypesetterOptions#getTypesettingContext()
          */
         public TypesettingContext getTypesettingContext() {
 
@@ -183,7 +233,11 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.TypesetterOptions#getTypesettingContextFactory()
+         * Getter for the typesetting context factory.
+         *
+         * @return the typesetting context factory
+         *
+         * @see org.extex.typesetter.TypesetterOptions#getTypesettingContextFactory()
          */
         public TypesettingContextFactory getTypesettingContextFactory() {
 
@@ -191,9 +245,16 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.TypesetterOptions#setCountOption(
+         * Setter for a count register.
+         *
+         * @param name the name of the register
+         * @param value the value
+         *
+         * @throws GeneralException in case of an error
+         *
+         * @see org.extex.typesetter.TypesetterOptions#setCountOption(
          *      java.lang.String,
-         *      de.dante.extex.interpreter.type.count.FixedCount)
+         *      org.extex.interpreter.type.count.FixedCount)
          */
         public void setCountOption(final String name, final long value)
                 throws GeneralException {
@@ -201,8 +262,12 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.TypesetterOptions#setParshape(
-         *      de.dante.extex.typesetter.paragraphBuilder.ParagraphShape)
+         * Setter for the paragraph shape.
+         *
+         * @param shape the new paragraph shape
+         *
+         * @see org.extex.typesetter.TypesetterOptions#setParshape(
+         *      org.extex.typesetter.paragraphBuilder.ParagraphShape)
          */
         public void setParshape(final ParagraphShape shape) {
 
@@ -245,17 +310,21 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
     private TypesettingContextImpl tc = new TypesettingContextImpl(new Font() {
 
         /**
-         * The field <tt>hyphenChar</tt> contains the ...
+         * The field <tt>hyphenChar</tt> contains the hyphen character.
          */
         private UnicodeChar hyphenChar = UnicodeChar.get('-');
 
         /**
-         * The field <tt>skewChar</tt> contains the ...
+         * The field <tt>skewChar</tt> contains the skew character.
          */
         private UnicodeChar skewChar = null;
 
         /**
-         * @see de.dante.extex.font.type.Fount#getActualSize()
+         * Returns the actual size.
+         *
+         * @return the actual size
+         *
+         * @see org.extex.interpreter.type.font.Font#getActualSize()
          */
         public FixedDimen getActualSize() {
 
@@ -263,15 +332,11 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.Fount#getBoundingBox()
-         */
-        public BoundingBox getBoundingBox() {
-
-            return null;
-        }
-
-        /**
-         * @see de.dante.extex.font.type.Fount#getCheckSum()
+         * Returns the check sum of the font.
+         *
+         * @return the check sum of the font
+         *
+         * @see org.extex.interpreter.type.font.Font#getCheckSum()
          */
         public int getCheckSum() {
 
@@ -279,8 +344,13 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.BaseFont#getDepth(
-         *      org.extex.type.UnicodeChar)
+         * Returns the depth of the character.
+         *
+         * @param uc the character
+         *
+         * @return the depth of the character
+         *
+         * @see org.extex.interpreter.type.font.Font#getDepth(org.extex.type.UnicodeChar)
          */
         public FixedGlue getDepth(final UnicodeChar uc) {
 
@@ -288,20 +358,37 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.Fount#getDesignSize()
+         * Returns the design size of the font.
+         *
+         * @return the design size of the font
+         *
+         * @see org.extex.interpreter.type.font.Font#getDesignSize()
          */
         public FixedDimen getDesignSize() {
 
             return VPT;
         }
 
+        /**
+         * Getter for the ef code.
+         *
+         * @param uc the character
+         *
+         * @return the ef code
+         *
+         * @see org.extex.interpreter.type.font.Font#getEfCode(org.extex.type.UnicodeChar)
+         */
         public long getEfCode(final UnicodeChar uc) {
 
             return 1000;
         }
 
         /**
-         * @see de.dante.extex.font.type.Fount#getEm()
+         * Returns the size of 1em.
+         *
+         * @return the size of 1em.
+         *
+         * @see org.extex.interpreter.type.font.Font#getEm()
          */
         public FixedDimen getEm() {
 
@@ -309,7 +396,11 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.Fount#getEx()
+         * Returns the size of 1ex.
+         *
+         * @return the size of 1ex.
+         *
+         * @see org.extex.interpreter.type.font.Font#getEx()
          */
         public FixedDimen getEx() {
 
@@ -317,15 +408,13 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.Fount#getFontByteArray()
-         */
-        public FontByteArray getFontByteArray() {
-
-            return null;
-        }
-
-        /**
-         * @see de.dante.extex.font.type.Fount#getFontDimen(java.lang.String)
+         * Returns the size of the parameter with the name 'name'.
+         *
+         * @param name the name of the parameter
+         *
+         * @return the size of the parameter with the name 'name'.
+         *
+         * @see org.extex.interpreter.type.font.Font#getFontDimen(java.lang.String)
          */
         public FixedDimen getFontDimen(final String key) {
 
@@ -333,7 +422,11 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.Fount#getFontKey()
+         * Returns the FontKey for this font.
+         *
+         * @return the FontKey for this font
+         *
+         * @see org.extex.interpreter.type.font.Font#getFontKey()
          */
         public FontKey getFontKey() {
 
@@ -341,7 +434,11 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.Fount#getFontName()
+         * Returns the name of the font.
+         *
+         * @return the name of the font
+         *
+         * @see org.extex.interpreter.type.font.Font#getFontName()
          */
         public String getFontName() {
 
@@ -349,181 +446,13 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.Fount#getGlyph(org.extex.type.UnicodeChar)
-         */
-        public Glyph getGlyph(final UnicodeChar c) {
-
-            return new Glyph() {
-
-                /**
-                 * @see de.dante.extex.font.Glyph#addKerning(de.dante.extex.font.Kerning)
-                 */
-                public void addKerning(final Kerning kern) {
-
-                }
-
-                /**
-                 * @see de.dante.extex.font.Glyph#addLigature(de.dante.extex.font.Ligature)
-                 */
-                public void addLigature(final Ligature lig) {
-
-                }
-
-                /**
-                 * @see de.dante.extex.font.Glyph#getDepth()
-                 */
-                public Dimen getDepth() {
-
-                    return Dimen.ONE_PT;
-                }
-
-                /**
-                 * @see de.dante.extex.font.Glyph#getExternalFile()
-                 */
-                public FontByteArray getExternalFile() {
-
-                    return null;
-                }
-
-                /**
-                 * @see de.dante.extex.font.Glyph#getHeight()
-                 */
-                public Dimen getHeight() {
-
-                    return VPT;
-                }
-
-                /**
-                 * @see de.dante.extex.font.Glyph#getItalicCorrection()
-                 */
-                public Dimen getItalicCorrection() {
-
-                    return Dimen.ZERO_PT;
-                }
-
-                /**
-                 * @see de.dante.extex.font.Glyph#getKerning(org.extex.type.UnicodeChar)
-                 */
-                public Dimen getKerning(final UnicodeChar uc) {
-
-                    return null;
-                }
-
-                /**
-                 * @see de.dante.extex.font.Glyph#getLeftSpace()
-                 */
-                public Dimen getLeftSpace() {
-
-                    return null;
-                }
-
-                /**
-                 * @see de.dante.extex.font.Glyph#getLigature(org.extex.type.UnicodeChar)
-                 */
-                public UnicodeChar getLigature(final UnicodeChar uc) {
-
-                    return null;
-                }
-
-                /**
-                 * @see de.dante.extex.font.Glyph#getName()
-                 */
-                public String getName() {
-
-                    return null;
-                }
-
-                /**
-                 * @see de.dante.extex.font.Glyph#getNumber()
-                 */
-                public String getNumber() {
-
-                    return null;
-                }
-
-                /**
-                 * @see de.dante.extex.font.Glyph#getRightSpace()
-                 */
-                public Dimen getRightSpace() {
-
-                    return null;
-                }
-
-                /**
-                 * @see de.dante.extex.font.Glyph#getWidth()
-                 */
-                public Dimen getWidth() {
-
-                    return VPT;
-                }
-
-                /**
-                 * @see de.dante.extex.font.Glyph#setDepth(de.dante.extex.interpreter.type.dimen.Dimen)
-                 */
-                public void setDepth(final Dimen d) {
-
-                }
-
-                /**
-                 * @see de.dante.extex.font.Glyph#setExternalFile(de.dante.extex.font.FontByteArray)
-                 */
-                public void setExternalFile(final FontByteArray file) {
-
-                }
-
-                /**
-                 * @see de.dante.extex.font.Glyph#setHeight(de.dante.extex.interpreter.type.dimen.Dimen)
-                 */
-                public void setHeight(final Dimen h) {
-
-                }
-
-                /**
-                 * @see de.dante.extex.font.Glyph#setItalicCorrection(de.dante.extex.interpreter.type.dimen.Dimen)
-                 */
-                public void setItalicCorrection(final Dimen d) {
-
-                }
-
-                /**
-                 * @see de.dante.extex.font.Glyph#setLeftSpace(de.dante.extex.interpreter.type.dimen.Dimen)
-                 */
-                public void setLeftSpace(final Dimen ls) {
-
-                }
-
-                /**
-                 * @see de.dante.extex.font.Glyph#setName(java.lang.String)
-                 */
-                public void setName(final String n) {
-
-                }
-
-                /**
-                 * @see de.dante.extex.font.Glyph#setNumber(java.lang.String)
-                 */
-                public void setNumber(final String nr) {
-
-                }
-
-                /**
-                 * @see de.dante.extex.font.Glyph#setRightSpace(de.dante.extex.interpreter.type.dimen.Dimen)
-                 */
-                public void setRightSpace(final Dimen rs) {
-
-                }
-
-                /**
-                 * @see de.dante.extex.font.Glyph#setWidth(de.dante.extex.interpreter.type.dimen.Dimen)
-                 */
-                public void setWidth(final Dimen w) {
-
-                }
-            };
-        }
-
-        /**
-         * @see de.dante.extex.interpreter.type.font.BaseFont#getHeight(org.extex.type.UnicodeChar)
+         * Returns the height of a character.
+         *
+         * @param uc the character
+         *
+         * @return the height of the character
+         *
+         * @see org.extex.interpreter.type.font.Font#getHeight(org.extex.type.UnicodeChar)
          */
         public FixedGlue getHeight(final UnicodeChar uc) {
 
@@ -531,7 +460,11 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.BaseFont#getHyphenChar()
+         * Returns the hyphen character.
+         *
+         * @return the hyphen character
+         *
+         * @see org.extex.interpreter.type.font.Font#getHyphenChar()
          */
         public UnicodeChar getHyphenChar() {
 
@@ -539,7 +472,13 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.BaseFont#getItalicCorrection(org.extex.type.UnicodeChar)
+         * Returns the italic correction of a character.
+         *
+         * @param uc the character
+         *
+         * @return the italic correction of the character
+         *
+         * @see org.extex.interpreter.type.font.Font#getItalicCorrection(org.extex.type.UnicodeChar)
          */
         public FixedDimen getItalicCorrection(final UnicodeChar uc) {
 
@@ -547,7 +486,15 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.BaseFont#getKerning(org.extex.type.UnicodeChar, org.extex.type.UnicodeChar)
+         * Returns the kerning between two characters.
+         *
+         * @param uc1 the first character
+         * @param uc2 the second character
+         *
+         * @return the kerning between two characters
+         *
+         * @see org.extex.interpreter.type.font.Font#getKerning(
+         *      org.extex.type.UnicodeChar, org.extex.type.UnicodeChar)
          */
         public FixedDimen getKerning(final UnicodeChar uc1,
                 final UnicodeChar uc2) {
@@ -556,15 +503,15 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.Fount#getLetterSpacing()
-         */
-        public FixedGlue getLetterSpacing() {
-
-            return null;
-        }
-
-        /**
-         * @see de.dante.extex.interpreter.type.font.BaseFont#getLigature(org.extex.type.UnicodeChar, org.extex.type.UnicodeChar)
+         * Returns the ligature for two characters.
+         *
+         * @param uc1 the first character
+         * @param uc2 the second character
+         *
+         * @return Returns the ligature for two characters
+         *
+         * @see org.extex.interpreter.type.font.Font#getLigature(
+         *      org.extex.type.UnicodeChar, org.extex.type.UnicodeChar)
          */
         public UnicodeChar getLigature(final UnicodeChar uc1,
                 final UnicodeChar uc2) {
@@ -573,15 +520,11 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.Fount#getProperty(java.lang.String)
-         */
-        public String getProperty(final String key) {
-
-            return null;
-        }
-
-        /**
-         * @see de.dante.extex.interpreter.type.font.BaseFont#getSkewChar()
+         * Returns the skew char.
+         *
+         * @return the skew char
+         *
+         * @see org.extex.interpreter.type.font.Font#getSkewChar()
          */
         public UnicodeChar getSkewChar() {
 
@@ -589,7 +532,11 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.font.type.Fount#getSpace()
+         * Returns the size of the 'space'.
+         *
+         * @return the size of the 'space'.
+         *
+         * @see org.extex.interpreter.type.font.Font#getSpace()
          */
         public FixedGlue getSpace() {
 
@@ -597,8 +544,13 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.BaseFont#getWidth(
-         *      org.extex.type.UnicodeChar)
+         * Returns the width of a character.
+         *
+         * @param uc the character
+         *
+         * @return the width of the character
+         *
+         * @see org.extex.interpreter.type.font.Font#getWidth(org.extex.type.UnicodeChar)
          */
         public FixedGlue getWidth(final UnicodeChar uc) {
 
@@ -606,8 +558,14 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.BaseFont#hasGlyph(
-         *      org.extex.type.UnicodeChar)
+         * Determine whether the glyph for a given character is present in this
+         * font.
+         *
+         * @param uc the character
+         *
+         * @return <code>true</code> iff the glyph is present
+         *
+         * @see org.extex.interpreter.type.font.Font#hasGlyph(org.extex.type.UnicodeChar)
          */
         public boolean hasGlyph(final UnicodeChar uc) {
 
@@ -615,7 +573,14 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.BaseFont#setEfCode(
+         * Setter for the ef code.
+         * The ef code influences the stretchability of characters. It has a
+         * positive value. 1000 means "normal" stretchability.
+         *
+         * @param uc the character
+         * @param code the associated code
+         *
+         * @see org.extex.interpreter.type.font.Font#setEfCode(
          *      org.extex.type.UnicodeChar, long)
          */
         public void setEfCode(final UnicodeChar uc, final long code) {
@@ -625,15 +590,24 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.BaseFont#setFontDimen(
-         *      java.lang.String, de.dante.extex.interpreter.type.dimen.Dimen)
+         * Set the new value for the font parameter.
+         *
+         * @param name the name of the parameter
+         * @param value the value to set
+         *
+         * @see org.extex.interpreter.type.font.Font#setFontDimen(
+         *      java.lang.String, org.extex.interpreter.type.dimen.Dimen)
          */
         public void setFontDimen(final String key, final Dimen value) {
 
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.BaseFont#setHyphenChar(
+         * Set the hyphen character.
+         *
+         * @param uc the hyphen character
+         *
+         * @see org.extex.interpreter.type.font.Font#setHyphenChar(
          *      org.extex.type.UnicodeChar)
          */
         public void setHyphenChar(final UnicodeChar hyphen) {
@@ -642,34 +616,39 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.interpreter.type.font.BaseFont#setSkewChar(org.extex.type.UnicodeChar)
+         * Set the skew character.
+         *
+         * @param uc the skew character
+         *
+         * @see org.extex.interpreter.type.font.Font#setSkewChar(org.extex.type.UnicodeChar)
          */
         public void setSkewChar(final UnicodeChar skew) {
 
             skewChar = skew;
         }
 
-        public void setActualSize(Dimen size) {
-
-            // TODO mgn: setActualSize unimplemented
-            
-        }
-
-        public void setScaleFactor(Count scaleFactor) {
-
-            // TODO mgn: setScaleFactor unimplemented
-            
-        }
-
+        /**
+         * Returns the scale factor of the font.
+         *
+         * @return the scale factor of the font
+         *
+         * @see org.extex.interpreter.type.font.Font#getScaleFactor()
+         */
         public FixedCount getScaleFactor() {
 
-            // TODO mgn: getScaleFactor unimplemented
-            return null;
+            return Count.THOUSAND;
         }
 
+        /**
+         * Returns the actual FontKey for this font.
+         * The font key may differ from the one requested.
+         *
+         * @return the actual FontKey for this font.
+         *
+         * @see org.extex.interpreter.type.font.Font#getActualFontKey()
+         */
         public FontKey getActualFontKey() {
 
-            // TODO mgn: getActualFontKey unimplemented
             return null;
         }
 
@@ -824,7 +803,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         nodes.add(new CharNode(tc, UnicodeChar.get('c')));
         nodes.add(new CharNode(tc, UnicodeChar.get('d')));
         nodes.add(new DiscretionaryNode(new HorizontalListNode(),
-                new HorizontalListNode(), new HorizontalListNode()));
+            new HorizontalListNode(), new HorizontalListNode()));
         nodes.add(new CharNode(tc, UnicodeChar.get('e')));
         nodes.add(new SpaceNode(new Glue(Dimen.ONE_PT)));
         nodes.add(new CharNode(tc, UnicodeChar.get('f')));
@@ -900,7 +879,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         nodes.add(new SpaceNode(new Glue(Dimen.ONE_PT)));
         nodes.add(new CharNode(tc, UnicodeChar.get('c')));
         nodes.add(new DiscretionaryNode(new HorizontalListNode(),
-                new HorizontalListNode(), new HorizontalListNode()));
+            new HorizontalListNode(), new HorizontalListNode()));
         nodes.add(new CharNode(tc, UnicodeChar.get('d')));
         nodes.add(new SpaceNode(new Glue(Dimen.ONE_PT)));
         nodes.add(new CharNode(tc, UnicodeChar.get('e')));
@@ -943,8 +922,9 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
 
         String s = spec;
         if (p1 == null) {
-            p1 = Pattern
-                    .compile("^\\discretionary\\{([^{}]*)\\}\\{([^{}]*)\\}\\{([^{}]*)\\}(.*)");
+            p1 =
+                    Pattern
+                        .compile("^\\discretionary\\{([^{}]*)\\}\\{([^{}]*)\\}\\{([^{}]*)\\}(.*)");
             p2 = Pattern.compile("^\\rule\\{([^{}]*)\\}(.*)");
             p3 = Pattern.compile("^\\glue(.*)");
         }
@@ -958,7 +938,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
                 Matcher m = p1.matcher(s.substring(i));
                 if (m.matches()) {
                     nodes.add(new DiscretionaryNode(makeList(m.group(1)),
-                            makeList(m.group(2)), makeList(m.group(3))));
+                        makeList(m.group(2)), makeList(m.group(3))));
                     s = m.group(4);
                     i = -1;
                     continue;
@@ -966,7 +946,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
                 m = p2.matcher(s.substring(i));
                 if (m.matches()) {
                     nodes.add(new RuleNode(VPT, Dimen.ONE_PT, Dimen.ONE_PT, tc,
-                            true));
+                        true));
                     s = m.group(2);
                     i = -1;
                     continue;
@@ -993,8 +973,9 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         super.setUp();
 
         if (tracer == null) {
-            tracer = Logger.getLogger(AbstractParagraphBuiderTester.class
-                    .getName());
+            tracer =
+                    Logger.getLogger(AbstractParagraphBuiderTester.class
+                        .getName());
             tracer.setUseParentHandlers(false);
             if (traceonline()) {
                 Handler handler = new ConsoleHandler();
@@ -1029,11 +1010,10 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         nodes.add(new CharNode(tc, UnicodeChar.get('c')));
         nodes.add(new CharNode(tc, UnicodeChar.get('d')));
         nodes.add(new DiscretionaryNode(new HorizontalListNode(new RuleNode(
-                new Dimen(0x20), Dimen.ZERO_PT, Dimen.ZERO_PT, tc, true)),
-                new HorizontalListNode(new RuleNode(new Dimen(0x30),
-                        Dimen.ZERO_PT, Dimen.ZERO_PT, tc, true)),
-                new HorizontalListNode(new RuleNode(new Dimen(0x40),
-                        Dimen.ZERO_PT, Dimen.ZERO_PT, tc, true))));
+            new Dimen(0x20), Dimen.ZERO_PT, Dimen.ZERO_PT, tc, true)),
+            new HorizontalListNode(new RuleNode(new Dimen(0x30), Dimen.ZERO_PT,
+                Dimen.ZERO_PT, tc, true)), new HorizontalListNode(new RuleNode(
+                new Dimen(0x40), Dimen.ZERO_PT, Dimen.ZERO_PT, tc, true))));
         nodes.add(new CharNode(tc, UnicodeChar.get('e')));
         nodes.add(new SpaceNode(new Glue(Dimen.ONE_PT)));
         nodes.add(new CharNode(tc, UnicodeChar.get('f')));

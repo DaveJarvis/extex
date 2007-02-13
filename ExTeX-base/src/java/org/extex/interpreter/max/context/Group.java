@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -44,7 +44,6 @@ import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
-
 
 /**
  * This is the implementation of a group object. A group is the container for
@@ -134,7 +133,7 @@ public interface Group extends Tokenizer, Serializable {
 
     /**
      * Getter for the delcode of a character.
-     * The sfcode is -1 unless changed explicitly.
+     * The delcode is -1 unless changed explicitly.
      *
      * @param uc the character to get the delcode for
      *
@@ -596,8 +595,23 @@ public interface Group extends Tokenizer, Serializable {
      */
     void setUccode(UnicodeChar lc, UnicodeChar uc, boolean global);
 
+    /**
+     * TODO gene: missing JavaDoc
+     *
+     * @param extension
+     * @param key
+     * @return
+     */
     Object get(Object extension, Object key);
 
+    /**
+     * TODO gene: missing JavaDoc
+     *
+     * @param extension
+     * @param key
+     * @param value
+     * @param global
+     */
     void set(Object extension, Object key, Object value, boolean global);
 
 }

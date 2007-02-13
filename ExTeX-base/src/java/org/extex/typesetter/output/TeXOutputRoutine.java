@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -36,7 +36,6 @@ import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
 import org.extex.type.UnicodeChar;
 import org.extex.typesetter.Typesetter;
-import org.extex.typesetter.output.OutputRoutine;
 import org.extex.typesetter.type.page.Page;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
@@ -203,6 +202,15 @@ public class TeXOutputRoutine implements OutputRoutine {
     }
 
     /**
+     * The output function is invoked to process a vertical list and put the
+     * material on the page. In fact it should find its way to the document
+     * writer &ndash; either immediately or later on.
+     *
+     * @param page the nodes to put onto the page
+     * @param backend the back-end driver to target the nodes to
+     *
+     * @throws GeneralException in case of an error
+     *
      * @see org.extex.typesetter.output.OutputRoutine#output(
      *      org.extex.typesetter.type.page.Page,
      *      org.extex.backend.BackendDriver)

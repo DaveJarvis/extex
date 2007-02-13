@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -22,9 +22,6 @@ package org.extex.interpreter;
 import junit.framework.TestCase;
 
 import org.extex.backend.BackendDriver;
-import org.extex.interpreter.Interpreter;
-import org.extex.interpreter.InterpreterFactory;
-import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.tc.TypesettingContext;
 import org.extex.interpreter.type.count.Count;
@@ -59,7 +56,6 @@ import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.ConfigurationFactory;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
-
 
 /**
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -285,7 +281,8 @@ public class Max1 extends TestCase {
          */
         public boolean letter(final UnicodeChar uc,
                 final TypesettingContext tc, final Context context,
-                TokenSource source, final Locator locator) throws TypesetterException {
+                TokenSource source, final Locator locator)
+                throws TypesetterException {
 
             return false;
         }
@@ -555,13 +552,15 @@ public class Max1 extends TestCase {
      */
     private String doTest(final String in) throws Exception {
 
-        Configuration config = new ConfigurationFactory()
-                .newInstance("config/extex.xml");
+        Configuration config =
+                new ConfigurationFactory().newInstance("config/extex.xml");
 
-        Interpreter interpreter = new InterpreterFactory(config
-                .getConfiguration("Interpreter"), null).newInstance(null, null);
-        TokenStreamFactory factory = new TokenStreamFactory(config
-                .getConfiguration("Scanner"), "base");
+        Interpreter interpreter =
+                new InterpreterFactory(config.getConfiguration("Interpreter"),
+                    null).newInstance(null, null);
+        TokenStreamFactory factory =
+                new TokenStreamFactory(config.getConfiguration("Scanner"),
+                    "base");
         interpreter.setTokenStreamFactory(factory);
 
         TestTypesetter typesetter = new TestTypesetter();

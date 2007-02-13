@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -21,7 +21,6 @@ package org.extex.backend;
 
 import java.io.IOException;
 
-import org.extex.backend.BackendDriver;
 import org.extex.backend.documentWriter.DocumentWriter;
 import org.extex.backend.documentWriter.MultipleDocumentStream;
 import org.extex.backend.documentWriter.exception.DocumentWriterException;
@@ -33,7 +32,6 @@ import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.configuration.Configurable;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
-
 
 /**
  * This back-end driver can be used to combine several components.
@@ -231,7 +229,7 @@ public class BackendDriverImpl
 
         if (documentWriter instanceof MultipleDocumentStream) {
             ((MultipleDocumentStream) documentWriter)
-                    .setOutputStreamFactory(factory);
+                .setOutputStreamFactory(factory);
         }
     }
 

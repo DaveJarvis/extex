@@ -57,7 +57,7 @@ import org.extex.util.resource.ResourceFinder;
 /**
  * This base class for test cases handles all the nifty gritty details of
  * running an instance of <logo>ExTeX</logo>.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -65,7 +65,7 @@ public class ExTeXLauncher extends TestCase {
 
     /**
      * Inner class for the error handler.
-     * 
+     *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision$
      */
@@ -78,7 +78,7 @@ public class ExTeXLauncher extends TestCase {
 
         /**
          * Creates a new object.
-         * 
+         *
          * @param theLogger the target logger
          */
         public EHandler(final Logger theLogger) {
@@ -88,8 +88,17 @@ public class ExTeXLauncher extends TestCase {
         }
 
         /**
+         * This is the error handling callback.
+         *
+         * @param e the exception which has led to the invocation
+         * @param token the token leading to the error
+         * @param source the token source
+         * @param context the processor context
+         *
+         * @return <code>true</code> iff the processing can continue
+         *
          * @see org.extex.interpreter.ErrorHandler#handleError(
-         *      org.extex.util.GeneralException,
+         *      org.extex.util.exception.GeneralException,
          *      org.extex.scanner.type.token.Token,
          *      org.extex.interpreter.TokenSource,
          *      org.extex.interpreter.context.Context)
@@ -102,6 +111,10 @@ public class ExTeXLauncher extends TestCase {
         }
 
         /**
+         * Setter for the edit handler.
+         *
+         * @param editHandler the new edit handler
+         *
          * @see org.extex.interpreter.ErrorHandler#setEditHandler(
          *      org.extex.main.errorHandler.editHandler.EditHandler)
          */
@@ -176,7 +189,7 @@ public class ExTeXLauncher extends TestCase {
      * <dt><tt>extex.fonts</tt></dt>
      * <dd>Preset to <tt>src/font</tt></dd>
      * </dl>
-     * 
+     *
      * @param properties the properties to adapt
      */
     private static void prepareProperties(final Properties properties) {
@@ -189,7 +202,7 @@ public class ExTeXLauncher extends TestCase {
 
     /**
      * Set a property if it has not been set yet.
-     * 
+     *
      * @param properties the properties to modify
      * @param name the name of the property
      * @param value the new value
@@ -228,7 +241,7 @@ public class ExTeXLauncher extends TestCase {
 
     /**
      * Creates a new object.
-     * 
+     *
      * @param arg the name
      */
     public ExTeXLauncher(final String arg) {
@@ -239,15 +252,15 @@ public class ExTeXLauncher extends TestCase {
 
     /**
      * Run some code through <tt>Interpreter</tt> which is expected to fail.
-     * 
+     *
      * @param properties the properties to modify
      * @param code the code to expand
      * @param log the expected output on the log stream
-     * 
+     *
      * @return a new instance of the <tt>Interpreter</tt> class which has been
      *         used for the test run. This object can be inspected in additional
      *         asserts.
-     * 
+     *
      * @throws Exception in case of an error
      */
     public Interpreter assertFailure(final Properties properties,
@@ -258,14 +271,14 @@ public class ExTeXLauncher extends TestCase {
 
     /**
      * Run some code through <tt>Interpreter</tt> which is expected to fail.
-     * 
+     *
      * @param code the code to expand
      * @param log the expected output on the log stream
-     * 
+     *
      * @return a new instance of the <tt>Interpreter</tt> class which has been
      *         used for the test run. This object can be inspected in additional
      *         asserts.
-     * 
+     *
      * @throws Exception in case of an error
      */
     public Interpreter assertFailure(final String code, final String log)
@@ -276,16 +289,16 @@ public class ExTeXLauncher extends TestCase {
 
     /**
      * Run some code through <logo>ExTeX</logo>.
-     * 
+     *
      * @param properties the properties to start with
      * @param code the code to expand
      * @param log the expected output on the log stream
      * @param expect the expected output on the output stream
-     * 
+     *
      * @return a new instance of the <tt>Interpreter</tt> class which has been
      *         used for the test run. This object can be inspected in additional
      *         asserts.
-     * 
+     *
      * @throws InterpreterException in case of an error
      */
     public Interpreter assertOutput(final Properties properties,
@@ -388,15 +401,15 @@ public class ExTeXLauncher extends TestCase {
 
     /**
      * Run some code through <logo>ExTeX</logo>.
-     * 
+     *
      * @param code the code to expand
      * @param log the expected output on the log stream
      * @param expect the expected output on the output stream
-     * 
+     *
      * @return a new instance of the <tt>Interpreter</tt> class which has been
      *         used for the test run. This object can be inspected in additional
      *         asserts.
-     * 
+     *
      * @throws Exception in case of an error
      */
     public Interpreter assertOutput(final String code, final String log,
@@ -407,15 +420,15 @@ public class ExTeXLauncher extends TestCase {
 
     /**
      * Run some code through <logo>ExTeX</logo>.
-     * 
+     *
      * @param properties the properties to modify
      * @param code the code to expand
      * @param expect the expected output on the output stream
-     * 
+     *
      * @return a new instance of the <tt>Interpreter</tt> class which has been
      *         used for the test run. This object can be inspected in additional
      *         asserts.
-     * 
+     *
      * @throws Exception in case of an error
      */
     public Interpreter assertSuccess(final Properties properties,
@@ -426,14 +439,14 @@ public class ExTeXLauncher extends TestCase {
 
     /**
      * Run some code through <logo>ExTeX</logo>.
-     * 
+     *
      * @param code the code to expand
      * @param expect the expected output on the output stream
-     * 
+     *
      * @return a new instance of the <tt>Interpreter</tt> class which has been
      *         used for the test run. This object can be inspected in additional
      *         asserts.
-     * 
+     *
      * @throws Exception in case of an error
      */
     public Interpreter assertSuccess(final String code, final String expect)
@@ -444,7 +457,7 @@ public class ExTeXLauncher extends TestCase {
 
     /**
      * Getter for config.
-     * 
+     *
      * @return the config
      */
     protected String getConfig() {
@@ -454,7 +467,7 @@ public class ExTeXLauncher extends TestCase {
 
     /**
      * Getter for defaultLog.
-     * 
+     *
      * @return the defaultLog
      */
     protected String getDefaultLog() {
@@ -464,9 +477,9 @@ public class ExTeXLauncher extends TestCase {
 
     /**
      * Determine the log level.
-     * 
+     *
      * @param properties the properties
-     * 
+     *
      * @return the log level
      */
     private Level getLogLevel(final Properties properties) {
@@ -480,7 +493,7 @@ public class ExTeXLauncher extends TestCase {
 
     /**
      * Getter for properties.
-     * 
+     *
      * @return the properties
      */
     public Properties getProps() {
@@ -504,7 +517,7 @@ public class ExTeXLauncher extends TestCase {
 
     /**
      * Initialize the ExTeX object just before the code is run.
-     * 
+     *
      * @param extex the ExTeX object
      */
     protected void init(final ExTeX extex) {
@@ -513,7 +526,7 @@ public class ExTeXLauncher extends TestCase {
 
     /**
      * Getter for setHsize.
-     * 
+     *
      * @return the setHsize
      */
     protected boolean isSetHsize() {
@@ -525,9 +538,9 @@ public class ExTeXLauncher extends TestCase {
      * Format a log messages properly. This emulates the way <logo>TeX</logo>
      * does it; i.e. prefix and postfix are appended and line breaking is
      * applied.
-     * 
+     *
      * @param message the message to format
-     * 
+     *
      * @return the formatted message according to the log channel rules
      */
     public String out(final String message) {
@@ -537,11 +550,11 @@ public class ExTeXLauncher extends TestCase {
 
     /**
      * Run <logo>ExTeX</logo> on a file.
-     * 
+     *
      * @param file the name of the file to read from
-     * 
+     *
      * @return the contents of the log file
-     * 
+     *
      * @throws Exception in case of an error
      */
     public String runFile(final String file) throws Exception {
@@ -551,12 +564,12 @@ public class ExTeXLauncher extends TestCase {
 
     /**
      * Run <logo>ExTeX</logo> on a file.
-     * 
+     *
      * @param file the name of the file to read from
      * @param properties properties to start with
-     * 
+     *
      * @return the contents of the log file
-     * 
+     *
      * @throws Exception in case of an error
      */
     public String runFile(final String file, final Properties properties)
@@ -592,7 +605,7 @@ public class ExTeXLauncher extends TestCase {
 
     /**
      * Setter for config.
-     * 
+     *
      * @param config the config to set
      */
     public void setConfig(final String config) {
@@ -602,7 +615,7 @@ public class ExTeXLauncher extends TestCase {
 
     /**
      * Setter for defaultLog.
-     * 
+     *
      * @param defaultLog the defaultLog to set
      */
     protected void setDefaultLog(final String defaultLog) {
@@ -612,7 +625,7 @@ public class ExTeXLauncher extends TestCase {
 
     /**
      * Setter for setHsize.
-     * 
+     *
      * @param setHsize the setHsize to set
      */
     protected void setHsize(final boolean setHsize) {
@@ -622,7 +635,7 @@ public class ExTeXLauncher extends TestCase {
 
     /**
      * Getter for properties.
-     * 
+     *
      * @return the properties
      */
     public Properties showNodesProperties() {

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -23,12 +23,10 @@ import junit.framework.TestCase;
 
 import org.extex.interpreter.Namespace;
 import org.extex.interpreter.type.tokens.Tokens;
-import org.extex.language.hyphenation.liang.LiangsHyphenationTable;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.CatcodeException;
 import org.extex.scanner.type.token.TokenFactory;
 import org.extex.scanner.type.token.TokenFactoryImpl;
-
 
 /**
  * This class contains soem test cases fro liang's hyphenation table.
@@ -66,13 +64,13 @@ public class LiangsHyphenationTableTest extends TestCase {
             char c = s.charAt(i);
             if (c == ' ') {
                 tokens.add(factory.createToken(Catcode.SPACE, ' ',
-                        Namespace.DEFAULT_NAMESPACE));
+                    Namespace.DEFAULT_NAMESPACE));
             } else if (Character.isLetter(c) || c == '.') {
                 tokens.add(factory.createToken(Catcode.LETTER, c,
-                        Namespace.DEFAULT_NAMESPACE));
+                    Namespace.DEFAULT_NAMESPACE));
             } else {
                 tokens.add(factory.createToken(Catcode.OTHER, c,
-                        Namespace.DEFAULT_NAMESPACE));
+                    Namespace.DEFAULT_NAMESPACE));
             }
         }
         return tokens;
@@ -95,7 +93,7 @@ public class LiangsHyphenationTableTest extends TestCase {
                 + "      'd' nil\n" //
                 + "        'e' nil\n" //
                 + "          'f' (0340004)\n", //
-                table.getPatterns().toString());
+            table.getPatterns().toString());
     }
 
     /**
@@ -118,7 +116,7 @@ public class LiangsHyphenationTableTest extends TestCase {
                 + "          'f' (0340004)\n"//
                 + "      'x' nil\n" //
                 + "        'y' (034051)\n", //
-                table.getPatterns().toString());
+            table.getPatterns().toString());
     }
 
     /**
@@ -140,6 +138,6 @@ public class LiangsHyphenationTableTest extends TestCase {
                 + "      'd' nil\n" //
                 + "        'e' nil\n" //
                 + "          'f' (0340004)\n", //
-                table.getPatterns().toString());
+            table.getPatterns().toString());
     }
 }

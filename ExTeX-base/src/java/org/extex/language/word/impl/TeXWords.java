@@ -34,7 +34,6 @@ import org.extex.typesetter.type.node.KernNode;
 import org.extex.typesetter.type.node.LigatureNode;
 import org.extex.typesetter.type.node.WhatsItNode;
 
-
 /**
  * This class tokenizes a list of nodes according to the rules of
  * <logo>TeX</logo>.
@@ -151,7 +150,7 @@ public class TeXWords extends ExTeXWords implements WordTokenizer {
         addWord((CharNode) n, word);
 
         return collectWord(nodes, word, i, ((CharNode) n)
-                .getTypesettingContext().getLanguage());
+            .getTypesettingContext().getLanguage());
     }
 
     /**

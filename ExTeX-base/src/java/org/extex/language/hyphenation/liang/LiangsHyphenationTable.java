@@ -39,7 +39,6 @@ import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.node.CharNode;
 import org.extex.typesetter.type.node.factory.NodeFactory;
 
-
 /**
  * This class stores the values for hyphenations and hyphenates words.
  * It uses Liang's algorithm as described in the <logo>TeX</logo>book.
@@ -261,15 +260,16 @@ public class LiangsHyphenationTable extends BaseHyphenationTable {
 
         UnicodeCharList word = new UnicodeCharList();
         int next = findWord(nodelist, start, word);
-        boolean modified = hyphenateOne(nodelist, context, start, word,
-                hyphenNode);
+        boolean modified =
+                hyphenateOne(nodelist, context, start, word, hyphenNode);
 
         if (forall) {
             for (int i = next; i < nodelist.size(); i = next) {
                 word.clear();
                 next = findWord(nodelist, i, word);
-                modified = (hyphenateOne(nodelist, context, start, word,
-                        hyphenNode) || modified);
+                modified =
+                        (hyphenateOne(nodelist, context, start, word,
+                            hyphenNode) || modified);
             }
         }
 

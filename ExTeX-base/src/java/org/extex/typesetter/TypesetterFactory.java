@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
@@ -19,11 +19,8 @@
 
 package org.extex.typesetter;
 
-
 import org.extex.backend.BackendDriver;
 import org.extex.interpreter.context.Context;
-import org.extex.typesetter.Typesetter;
-import org.extex.typesetter.TypesetterOptions;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.pageBuilder.PageBuilder;
 import org.extex.typesetter.paragraphBuilder.ParagraphBuilder;
@@ -34,7 +31,6 @@ import org.extex.util.framework.configuration.Configurable;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.framework.logger.LogEnabled;
-
 
 /**
  * This is the factory for instances of
@@ -112,8 +108,9 @@ public class TypesetterFactory extends AbstractFactory {
             throws ConfigurationException {
 
         Configuration cfg = config.getConfiguration("NodeFactory");
-        NodeFactory nodeFactory = (NodeFactory) createInstanceForConfiguration(
-                cfg, NodeFactory.class);
+        NodeFactory nodeFactory =
+                (NodeFactory) createInstanceForConfiguration(cfg,
+                    NodeFactory.class);
         if (nodeFactory instanceof LogEnabled) {
             ((LogEnabled) nodeFactory).enableLogging(getLogger());
         }
@@ -143,8 +140,9 @@ public class TypesetterFactory extends AbstractFactory {
                 TypesetterException {
 
         Configuration cfg = config.getConfiguration("PageBuilder");
-        PageBuilder pageBuilder = (PageBuilder) createInstanceForConfiguration(
-                cfg, PageBuilder.class);
+        PageBuilder pageBuilder =
+                (PageBuilder) createInstanceForConfiguration(cfg,
+                    PageBuilder.class);
         pageBuilder.setContext(context);
         PageFactoryImpl pageFactory = new PageFactoryImpl();
         if (pageFactory instanceof LogEnabled) {
@@ -172,8 +170,9 @@ public class TypesetterFactory extends AbstractFactory {
             throws ConfigurationException {
 
         Configuration cfg = config.getConfiguration("ParagraphBuilder");
-        ParagraphBuilder builder = (ParagraphBuilder) createInstanceForConfiguration(
-                cfg, ParagraphBuilder.class);
+        ParagraphBuilder builder =
+                (ParagraphBuilder) createInstanceForConfiguration(cfg,
+                    ParagraphBuilder.class);
         /*
          if (builder instanceof HyphenationEnabled) {
          cfg = cfg.getConfiguration("Hyphenator");
@@ -206,13 +205,13 @@ public class TypesetterFactory extends AbstractFactory {
 
         Configuration cfg = selectConfiguration(type);
 
-        Typesetter typesetter = (Typesetter) createInstance(type,
-                Typesetter.class);
+        Typesetter typesetter =
+                (Typesetter) createInstance(type, Typesetter.class);
         NodeFactory nodeFactory = makeNodeFactory(cfg);
         typesetter.setNodeFactory(nodeFactory);
 
         typesetter.setParagraphBuilder(makeParagraphBuilder(cfg,
-                (TypesetterOptions) context, nodeFactory));
+            (TypesetterOptions) context, nodeFactory));
 
         typesetter.setPageBuilder(makePageBuilder(cfg, context, typesetter));
 

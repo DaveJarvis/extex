@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -54,6 +54,13 @@ public class NamedOutputStream extends OutputStream {
     }
 
     /**
+     * Closes this output stream and releases any system resources
+     * associated with this stream. The general contract of <code>close</code>
+     * is that it closes the output stream. A closed stream cannot perform
+     * output operations and cannot be reopened.
+     *
+     * @exception  IOException  if an I/O error occurs.
+     *
      * @see java.io.OutputStream#close()
      */
     public void close() throws IOException {
@@ -62,6 +69,13 @@ public class NamedOutputStream extends OutputStream {
     }
 
     /**
+     * Indicates whether some other object is "equal to" this one.
+     *
+     * @param   obj   the reference object with which to compare.
+     *
+     * @return  <code>true</code> if this object is the same as the obj
+     *          argument; <code>false</code> otherwise.
+     *
      * @see java.lang.Object#equals(java.lang.Object)
      */
     public boolean equals(final Object obj) {
@@ -70,6 +84,15 @@ public class NamedOutputStream extends OutputStream {
     }
 
     /**
+     * Flushes this output stream and forces any buffered output bytes
+     * to be written out. The general contract of <code>flush</code> is
+     * that calling it is an indication that, if any bytes previously
+     * written have been buffered by the implementation of the output
+     * stream, such bytes should immediately be written to their
+     * intended destination.
+     *
+     * @exception  IOException  if an I/O error occurs.
+     *
      * @see java.io.OutputStream#flush()
      */
     public void flush() throws IOException {
@@ -106,6 +129,14 @@ public class NamedOutputStream extends OutputStream {
     }
 
     /**
+     * Writes <code>b.length</code> bytes from the specified byte array
+     * to this output stream. The general contract for <code>write(b)</code>
+     * is that it should have exactly the same effect as the call
+     * <code>write(b, 0, b.length)</code>.
+     *
+     * @param      b   the data.
+     * @exception  IOException  if an I/O error occurs.
+     *
      * @see java.io.OutputStream#write(byte[])
      */
     public void write(final byte[] b) throws IOException {
@@ -114,6 +145,16 @@ public class NamedOutputStream extends OutputStream {
     }
 
     /**
+     * Writes <code>len</code> bytes from the specified byte array
+     * starting at offset <code>off</code> to this output stream.
+     *
+     * @param      b     the data.
+     * @param      off   the start offset in the data.
+     * @param      len   the number of bytes to write.
+     * @exception  IOException  if an I/O error occurs. In particular,
+     *             an <code>IOException</code> is thrown if the output
+     *             stream is closed.
+     *
      * @see java.io.OutputStream#write(byte[], int, int)
      */
     public void write(final byte[] b, final int off, final int len)
@@ -123,6 +164,13 @@ public class NamedOutputStream extends OutputStream {
     }
 
     /**
+     * Writes the specified byte to this output stream.
+     *
+     * @param      b   the <code>byte</code>.
+     * @exception  IOException  if an I/O error occurs. In particular,
+     *             an <code>IOException</code> may be thrown if the
+     *             output stream has been closed.
+     *
      * @see java.io.OutputStream#write(int)
      */
     public void write(final int b) throws IOException {

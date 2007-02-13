@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -57,6 +57,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      * @param arg the name of the test suite
      * @param primitive the name of the integer register to test
      * @param args ...
+     * @param init ...
      */
     public AbstractNonGroupCountRegisterTester(final String arg,
             final String primitive, final String args, final String init) {
@@ -74,6 +75,7 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      * @param arg the name of the test suite
      * @param primitive the name of the integer register to test
      * @param args ...
+     * @param init ...
      * @param prepare ...
      */
     public AbstractNonGroupCountRegisterTester(final String arg,

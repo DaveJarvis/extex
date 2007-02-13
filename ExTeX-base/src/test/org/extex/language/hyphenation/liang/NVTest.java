@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -27,11 +27,6 @@ import junit.framework.TestCase;
 import org.extex.font.FontByteArray;
 import org.extex.font.FontKey;
 import org.extex.font.FontKeyFactory;
-import org.extex.font.Glyph;
-import org.extex.font.Kerning;
-import org.extex.font.Ligature;
-import org.extex.font.format.tfm.TfmFixWord;
-import org.extex.font.type.BoundingBox;
 import org.extex.font.type.other.NullFont;
 import org.extex.interpreter.Namespace;
 import org.extex.interpreter.context.tc.ModifiableTypesettingContext;
@@ -52,7 +47,6 @@ import org.extex.type.UnicodeChar;
 import org.extex.typesetter.type.node.CharNode;
 import org.extex.typesetter.type.node.factory.CachingNodeFactory;
 import org.extex.typesetter.type.node.factory.NodeFactory;
-
 
 /**
  * This is the test class for NV.
@@ -123,14 +117,10 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see org.extex.font.type.Fount#getBoundingBox()
-         */
-        public BoundingBox getBoundingBox() {
-
-            return null;
-        }
-
-        /**
+         * Returns the check sum.
+         *
+         * @return the check sum
+         *
          * @see org.extex.font.type.Fount#getCheckSum()
          */
         public int getCheckSum() {
@@ -139,6 +129,10 @@ public class NVTest extends TestCase {
         }
 
         /**
+         * Returns the design size.
+         *
+         * @return the design size.
+         *
          * @see org.extex.font.type.Fount#getDesignSize()
          */
         public FixedDimen getDesignSize() {
@@ -147,6 +141,10 @@ public class NVTest extends TestCase {
         }
 
         /**
+         * Return the em size of the font.
+         *
+         * @return em size
+         *
          * @see org.extex.font.type.Fount#getEm()
          */
         public FixedDimen getEm() {
@@ -155,6 +153,10 @@ public class NVTest extends TestCase {
         }
 
         /**
+         * Return the ex size of the font.
+         *
+         * @return ex size
+         *
          * @see org.extex.font.type.Fount#getEx()
          */
         public FixedDimen getEx() {
@@ -167,10 +169,15 @@ public class NVTest extends TestCase {
          */
         public FontByteArray getFontByteArray() {
 
-            return null; // add by mgn
+            return null;
         }
 
         /**
+         * Return font dimen size with a key.
+         *
+         * @param key the key
+         * @return the value for the key
+         *
          * @see org.extex.font.type.Fount#getFontDimen(java.lang.String)
          */
         public FixedDimen getFontDimen(final String key) {
@@ -179,6 +186,10 @@ public class NVTest extends TestCase {
         }
 
         /**
+         * Returns the key for the font.
+         *
+         * @return the key for the font
+         *
          * @see org.extex.font.type.Fount#getFontKey()
          */
         public FontKey getFontKey() {
@@ -187,6 +198,10 @@ public class NVTest extends TestCase {
         }
 
         /**
+         * Return the font name.
+         *
+         * @return the font name
+         *
          * @see org.extex.font.type.Fount#getFontName()
          */
         public String getFontName() {
@@ -195,14 +210,10 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see org.extex.font.type.Fount#getGlyph(org.extex.type.UnicodeChar)
-         */
-        public Glyph getGlyph(final UnicodeChar c) {
-
-            return (Glyph) map.get(c);
-        }
-
-        /**
+         * Returns the hyphen char.
+         *
+         * @return the hyphen char
+         *
          * @see org.extex.interpreter.type.font.Font#getHyphenChar()
          */
         public UnicodeChar getHyphenChar() {
@@ -211,6 +222,10 @@ public class NVTest extends TestCase {
         }
 
         /**
+         * Return the letter spacing
+         *
+         * @return  the letter spacing
+         *
          * @see org.extex.font.type.Fount#getLetterSpacing()
          */
         public FixedGlue getLetterSpacing() {
@@ -219,14 +234,10 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see org.extex.font.type.Fount#getProperty(java.lang.String)
-         */
-        public String getProperty(final String key) {
-
-            return null;
-        }
-
-        /**
+         * Returns the skew char.
+         *
+         * @return the skew char
+         *
          * @see org.extex.interpreter.type.font.Font#getSkewChar()
          */
         public UnicodeChar getSkewChar() {
@@ -235,6 +246,10 @@ public class NVTest extends TestCase {
         }
 
         /**
+         * Return the width of space character.
+         *
+         * @return the width of the space character
+         *
          * @see org.extex.font.type.Fount#getSpace()
          */
         public FixedGlue getSpace() {
@@ -243,21 +258,35 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see org.extex.interpreter.type.font.Font#setFontDimen(java.lang.String, org.extex.interpreter.type.dimen.Dimen)
+         * Set the new value for the font parameter.
+         *
+         * @param name the name of the parameter
+         * @param value the value to set
+         *
+         * @see org.extex.interpreter.type.font.Font#setFontDimen(
+         *      java.lang.String, org.extex.interpreter.type.dimen.Dimen)
          */
-        public void setFontDimen(final String key, final Dimen value) {
+        public void setFontDimen(final String name, final Dimen value) {
 
         }
 
         /**
+         * Set the hyphen character.
+         *
+         * @param h The hyphen character
+         *
          * @see org.extex.interpreter.type.font.Font#setHyphenChar(org.extex.type.UnicodeChar)
          */
-        public void setHyphenChar(final UnicodeChar hyphen) {
+        public void setHyphenChar(final UnicodeChar h) {
 
-            this.hyphen = hyphen;
+            this.hyphen = h;
         }
 
         /**
+         * Set the skew character.
+         *
+         * @param skew the skew character
+         *
          * @see org.extex.interpreter.type.font.Font#setSkewChar(org.extex.type.UnicodeChar)
          */
         public void setSkewChar(final UnicodeChar skew) {
@@ -265,18 +294,30 @@ public class NVTest extends TestCase {
         }
 
         /**
+         * Setter for the ef code.
+         * The ef code influences the stretchability of characters. It has a
+         * positive value. 1000 means "normal" stretchability.
+         *
+         * @param uc the character
+         * @param code the associated code
+         *
          * @see org.extex.interpreter.type.font.Font#setEfCode(org.extex.type.UnicodeChar, long)
          */
-        public void setEfCode(UnicodeChar uc, long code) {
+        public void setEfCode(final UnicodeChar uc, final long code) {
 
             // TODO gene: setEfcode unimplemented
-
         }
 
         /**
-         * @see org.extex.interpreter.type.font.Font#getEfcode()
+         * Getter for the ef code.
+         *
+         * @param uc the character
+         *
+         * @return the ef code
+         *
+         * @see org.extex.font.type.other.NullFont#getEfCode(org.extex.type.UnicodeChar)
          */
-        public long getEfCode(UnicodeChar uc) {
+        public long getEfCode(final UnicodeChar uc) {
 
             // TODO gene: getEfcode unimplemented
             return 0;
@@ -289,17 +330,17 @@ public class NVTest extends TestCase {
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision:4527 $
      */
-    private class MockGlyph implements Glyph {
+    private class MockGlyph {
 
         /**
-         * The field <tt>c</tt> contains the ...
+         * The field <tt>c</tt> contains the character.
          */
         private char c;
 
         /**
          * Creates a new object.
          *
-         * 
+         * @param c the character
          */
         public MockGlyph(final char c) {
 
@@ -308,69 +349,11 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * @see org.extex.font.Glyph#addKerning(org.extex.font.Kerning)
-         */
-        public void addKerning(final Kerning kern) {
-
-        }
-
-        /**
-         * @see org.extex.font.Glyph#addLigature(org.extex.font.Ligature)
-         */
-        public void addLigature(final Ligature lig) {
-
-        }
-
-        /**
-         * @see org.extex.font.Glyph#getDepth()
-         */
-        public Dimen getDepth() {
-
-            return new Dimen();
-        }
-
-        /**
-         * @see org.extex.font.Glyph#getExternalFile()
-         */
-        public FontByteArray getExternalFile() {
-
-            return null;
-        }
-
-        /**
-         * @see org.extex.font.Glyph#getHeight()
-         */
-        public Dimen getHeight() {
-
-            return new Dimen();
-        }
-
-        /**
-         * @see org.extex.font.Glyph#getItalicCorrection()
-         */
-        public Dimen getItalicCorrection() {
-
-            return new Dimen();
-        }
-
-        /**
-         * @see org.extex.font.Glyph#getKerning(org.extex.type.UnicodeChar)
-         */
-        public Dimen getKerning(final UnicodeChar uc) {
-
-            return new Dimen();
-        }
-
-        /**
-         * @see org.extex.font.Glyph#getLeftSpace()
-         */
-        public Dimen getLeftSpace() {
-
-            return new Dimen();
-        }
-
-        /**
-         * @see org.extex.font.Glyph#getLigature(org.extex.type.UnicodeChar)
+         * Try to build a ligature.
+         *
+         * @param uc the character
+         *
+         * @return the ligature
          */
         public UnicodeChar getLigature(final UnicodeChar uc) {
 
@@ -388,160 +371,6 @@ public class NVTest extends TestCase {
             return null;
         }
 
-        /**
-         * @see org.extex.font.Glyph#getName()
-         */
-        public String getName() {
-
-            return null;
-        }
-
-        /**
-         * @see org.extex.font.Glyph#getNumber()
-         */
-        public String getNumber() {
-
-            return null;
-        }
-
-        /**
-         * @see org.extex.font.Glyph#getRightSpace()
-         */
-        public Dimen getRightSpace() {
-
-            return new Dimen();
-        }
-
-        /**
-         * @see org.extex.font.Glyph#getWidth()
-         */
-        public Dimen getWidth() {
-
-            return new Dimen();
-        }
-
-        /**
-         * @see org.extex.font.Glyph#setDepth(org.extex.interpreter.type.dimen.Dimen)
-         */
-        public void setDepth(final Dimen d) {
-
-        }
-
-        /**
-         * @see org.extex.font.Glyph#setDepth(java.lang.String, org.extex.interpreter.type.dimen.Dimen, int)
-         */
-        public void setDepth(final String gsize, final Dimen em,
-                final int unitsperem) {
-
-        }
-
-        /**
-         * @see org.extex.font.Glyph#setDepth(org.extex.font.type.tfm.TFMFixWord, org.extex.interpreter.type.dimen.Dimen)
-         */
-        public void setDepth(final TfmFixWord size, final Dimen em) {
-
-        }
-
-        /**
-         * @see org.extex.font.Glyph#setExternalFile(org.extex.font.FontFile)
-         */
-        public void setExternalFile(final FontByteArray file) {
-
-        }
-
-        /**
-         * @see org.extex.font.Glyph#setHeight(org.extex.interpreter.type.dimen.Dimen)
-         */
-        public void setHeight(final Dimen h) {
-
-        }
-
-        /**
-         * @see org.extex.font.Glyph#setHeight(java.lang.String, org.extex.interpreter.type.dimen.Dimen, int)
-         */
-        public void setHeight(final String gsize, final Dimen em,
-                final int unitsperem) {
-
-        }
-
-        /**
-         * @see org.extex.font.Glyph#setHeight(org.extex.font.type.tfm.TFMFixWord, org.extex.interpreter.type.dimen.Dimen)
-         */
-        public void setHeight(final TfmFixWord size, final Dimen em) {
-
-        }
-
-        /**
-         * @see org.extex.font.Glyph#setItalicCorrection(org.extex.interpreter.type.dimen.Dimen)
-         */
-        public void setItalicCorrection(final Dimen d) {
-
-        }
-
-        /**
-         * @see org.extex.font.Glyph#setItalicCorrection(java.lang.String, org.extex.interpreter.type.dimen.Dimen, int)
-         */
-        public void setItalicCorrection(final String gsize, final Dimen em,
-                final int unitsperem) {
-
-        }
-
-        /**
-         * @see org.extex.font.Glyph#setItalicCorrection(org.extex.font.type.tfm.TFMFixWord, org.extex.interpreter.type.dimen.Dimen)
-         */
-        public void setItalicCorrection(final TfmFixWord size, final Dimen em) {
-
-        }
-
-        /**
-         * @see org.extex.font.Glyph#setLeftSpace(org.extex.interpreter.type.dimen.Dimen)
-         */
-        public void setLeftSpace(final Dimen ls) {
-
-        }
-
-        /**
-         * @see org.extex.font.Glyph#setName(java.lang.String)
-         */
-        public void setName(final String n) {
-
-        }
-
-        /**
-         * @see org.extex.font.Glyph#setNumber(java.lang.String)
-         */
-        public void setNumber(final String nr) {
-
-        }
-
-        /**
-         * @see org.extex.font.Glyph#setRightSpace(org.extex.interpreter.type.dimen.Dimen)
-         */
-        public void setRightSpace(final Dimen rs) {
-
-        }
-
-        /**
-         * @see org.extex.font.Glyph#setWidth(org.extex.interpreter.type.dimen.Dimen)
-         */
-        public void setWidth(final Dimen w) {
-
-        }
-
-        /**
-         * @see org.extex.font.Glyph#setWidth(java.lang.String, org.extex.interpreter.type.dimen.Dimen, int)
-         */
-        public void setWidth(final String gsize, final Dimen em,
-                final int unitsperem) {
-
-        }
-
-        /**
-         * @see org.extex.font.Glyph#setWidth(org.extex.font.type.tfm.TFMFixWord, org.extex.interpreter.type.dimen.Dimen)
-         */
-        public void setWidth(final TfmFixWord size, final Dimen em) {
-
-        }
     }
 
     /**
@@ -590,20 +419,10 @@ public class NVTest extends TestCase {
     private TypesettingContext tc;
 
     /**
-     * TODO gene: missing JavaDoc
+     * Set up the test suite
      *
-     * @param context the typesetting context
-     * @param uc the character
+     * @throws Exception in case of an error
      *
-     * @return a new character node
-     */
-    private CharNode getCharNode(final TypesettingContext context,
-            final UnicodeChar uc) {
-
-        return (CharNode) cnf.getNode(context, uc);
-    }
-
-    /**
      * @see junit.framework.TestCase#setUp()
      */
     public void setUp() throws Exception {
@@ -612,10 +431,12 @@ public class NVTest extends TestCase {
         font = new MockFont();
         cnf = new CachingNodeFactory();
         tokenFactory = new TokenFactoryImpl();
-        f = tokenFactory.createToken(Catcode.LETTER, 'f',
-                Namespace.DEFAULT_NAMESPACE);
-        l = tokenFactory.createToken(Catcode.LETTER, 'l',
-                Namespace.DEFAULT_NAMESPACE);
+        f =
+                tokenFactory.createToken(Catcode.LETTER, 'f',
+                    Namespace.DEFAULT_NAMESPACE);
+        l =
+                tokenFactory.createToken(Catcode.LETTER, 'l',
+                    Namespace.DEFAULT_NAMESPACE);
         hyphen = font.getHyphenChar();
         tc = new TypesettingContextImpl(font);
         ModifiableLanguage lang = new BaseHyphenationTable();
@@ -626,7 +447,7 @@ public class NVTest extends TestCase {
     /**
      * Dummy test case.
      *
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test00000000() throws Exception {
 
@@ -754,4 +575,5 @@ public class NVTest extends TestCase {
     //        assertTrue(list.get(0) instanceof DiscretionaryNode);
     //        assertEquals(list.get(1), ffl);
     //    }
+
 }

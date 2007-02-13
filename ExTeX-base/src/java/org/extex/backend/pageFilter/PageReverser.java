@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -25,9 +25,7 @@ import java.util.List;
 import org.extex.backend.documentWriter.exception.DocumentWriterException;
 import org.extex.backend.exception.BackendException;
 import org.extex.backend.exception.BackendMissingTargetException;
-import org.extex.backend.pageFilter.PagePipe;
 import org.extex.typesetter.type.page.Page;
-
 
 /**
  * This page filter reverses the order of the pages shipped out.
@@ -72,6 +70,10 @@ public class PageReverser implements PagePipe {
     }
 
     /**
+     * Setter for the output node pipe.
+     *
+     * @param out the output node pipe
+     *
      * @see org.extex.backend.pageFilter.PagePipe#setOutput(
      *     org.extex.backend.pageFilter.PagePipe)
      */
@@ -81,6 +83,14 @@ public class PageReverser implements PagePipe {
     }
 
     /**
+     * Setter for a named parameter.
+     * Parameters are a general mechanism to influence the behavior of the
+     * document writer. Any parameter not known by the document writer has to
+     * be ignored.
+     *
+     * @param name the name of the parameter
+     * @param value the value of the parameter
+     *
      * @see org.extex.backend.pageFilter.PagePipe#setParameter(
      *     java.lang.String, java.lang.String)
      */
@@ -89,6 +99,16 @@ public class PageReverser implements PagePipe {
     }
 
     /**
+     * This is the entry point for the document writer. Here it receives a
+     * complete node list to be sent to the output writer. It can be assumed
+     * that all values for width, height, and depth of the node lists are
+     * properly filled. Thus all information should be present to place the
+     * ink on the paper.
+     *
+     * @param nodes the nodes to send
+     *
+     * @throws BackendException in case of an error
+     *
      * @see org.extex.backend.pageFilter.PagePipe#shipout(
      *      org.extex.typesetter.type.page.Page)
      */

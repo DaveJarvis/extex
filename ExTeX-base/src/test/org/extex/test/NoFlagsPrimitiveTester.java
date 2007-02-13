@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -117,10 +117,10 @@ public abstract class NoFlagsPrimitiveTester extends ExTeXLauncher {
     public void testNoGlobalFlag() throws Exception {
 
         assertFailure(//--- input code ---
-                prepare + "\\global\\" + primitive + arguments + "\\end",
-                //--- log message ---
-                out + "You can\'t use the prefix `\\global\' with"
-                        + " the control sequence \\" + primitive);
+            prepare + "\\global\\" + primitive + arguments + "\\end",
+            //--- log message ---
+            out + "You can\'t use the prefix `\\global\' with"
+                    + " the control sequence \\" + primitive);
     }
 
     /**
@@ -134,12 +134,12 @@ public abstract class NoFlagsPrimitiveTester extends ExTeXLauncher {
     public void testNoImmediateFlag() throws Exception {
 
         assertFailure(//--- input code ---
-                prepare + "\\immediate\\" + primitive + arguments + "\\end",
-                //--- log message ---
-                out + "You can\'t use the prefix `\\immediate\' with"
-                        + " the control sequence"
-                        + (primitive.length() >= 15 ? "\n" : " ") + "\\"
-                        + primitive);
+            prepare + "\\immediate\\" + primitive + arguments + "\\end",
+            //--- log message ---
+            out + "You can\'t use the prefix `\\immediate\' with"
+                    + " the control sequence"
+                    + (primitive.length() >= 15 ? "\n" : " ") + "\\"
+                    + primitive);
     }
 
     /**
@@ -153,10 +153,10 @@ public abstract class NoFlagsPrimitiveTester extends ExTeXLauncher {
     public void testNoLongFlag() throws Exception {
 
         assertFailure(//--- input code ---
-                prepare + "\\long\\" + primitive + arguments + "\\end",
-                //--- log message ---
-                out + "You can\'t use the prefix `\\long\' with"
-                        + " the control sequence \\" + primitive);
+            prepare + "\\long\\" + primitive + arguments + "\\end",
+            //--- log message ---
+            out + "You can\'t use the prefix `\\long\' with"
+                    + " the control sequence \\" + primitive);
     }
 
     /**
@@ -170,10 +170,10 @@ public abstract class NoFlagsPrimitiveTester extends ExTeXLauncher {
     public void testNoOuterFlag() throws Exception {
 
         assertFailure(//--- input code ---
-                prepare + "\\outer\\" + primitive + arguments + "\\end",
-                //--- log message ---
-                out + "You can\'t use the prefix `\\outer\' with"
-                        + " the control sequence \\" + primitive);
+            prepare + "\\outer\\" + primitive + arguments + "\\end",
+            //--- log message ---
+            out + "You can\'t use the prefix `\\outer\' with"
+                    + " the control sequence \\" + primitive);
     }
 
     /**
@@ -184,24 +184,23 @@ public abstract class NoFlagsPrimitiveTester extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
-//    public void testNoProtectedFlag() throws Exception {
-//
-//        assertFailure(//--- input code ---
-//                prepare + "\\protected\\" + primitive + arguments + "\\end",
-//                //--- log message ---
-//                out + "You can\'t use the prefix `\\protected\' with"
-//                        + " the control sequence"
-//                        + (primitive.length() >= 15 ? "\n" : " ") + "\\"
-//                        + primitive);
-//    }
-
+    //    public void testNoProtectedFlag() throws Exception {
+    //
+    //        assertFailure(//--- input code ---
+    //                prepare + "\\protected\\" + primitive + arguments + "\\end",
+    //                //--- log message ---
+    //                out + "You can\'t use the prefix `\\protected\' with"
+    //                        + " the control sequence"
+    //                        + (primitive.length() >= 15 ? "\n" : " ") + "\\"
+    //                        + primitive);
+    //    }
     /**
      * Getter for primitive.
      *
      * @return the primitive
      */
     protected String getPrimitive() {
-    
+
         return this.primitive;
     }
 

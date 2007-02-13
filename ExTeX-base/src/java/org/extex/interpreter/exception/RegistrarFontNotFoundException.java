@@ -24,7 +24,8 @@ import org.extex.util.framework.RegistrarException;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This exception signals that a font could not be found during a registrar
+ * operation.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -45,6 +46,7 @@ public class RegistrarFontNotFoundException extends RegistrarException {
     /**
      * Creates a new object.
      *
+     * @param key the key of the fount in question
      */
     public RegistrarFontNotFoundException(final FontKey key) {
 
@@ -62,6 +64,14 @@ public class RegistrarFontNotFoundException extends RegistrarException {
     }
 
     /**
+     * Creates a localized description of this throwable.
+     * Subclasses may override this method in order to produce a
+     * locale-specific message.  For subclasses that do not override this
+     * method, the default implementation returns the same result as
+     * <code>getMessage()</code>.
+     *
+     * @return  The localized description of this throwable.
+     *
      * @see java.lang.Throwable#getLocalizedMessage()
      */
     public String getLocalizedMessage() {

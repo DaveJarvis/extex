@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -24,11 +24,6 @@ import junit.framework.TestCase;
 import org.extex.font.FontByteArray;
 import org.extex.font.FontKey;
 import org.extex.font.FontKeyFactory;
-import org.extex.font.Glyph;
-import org.extex.font.Kerning;
-import org.extex.font.Ligature;
-import org.extex.font.format.tfm.TfmFixWord;
-import org.extex.font.type.BoundingBox;
 import org.extex.font.type.other.NullFont;
 import org.extex.interpreter.context.MockContext;
 import org.extex.interpreter.context.tc.TypesettingContext;
@@ -49,10 +44,9 @@ import org.extex.typesetter.type.node.factory.CachingNodeFactory;
 import org.extex.typesetter.type.node.factory.NodeFactory;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
-
 /**
  * Test suite for the base hyphenation table.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4805 $
  */
@@ -60,14 +54,12 @@ public class BaseHyphenationTableTest extends TestCase {
 
     /**
      * Mock implementation of a font.
-     * 
-     * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision: 4805 $
      */
     private class MockFont extends NullFont {
 
         /**
-         * The field <tt>serialVersionUID</tt> ...
+         * The field <tt>serialVersionUID</tt> contains the version number for
+         * serialization.
          */
         private static final long serialVersionUID = 1L;
 
@@ -77,11 +69,10 @@ public class BaseHyphenationTableTest extends TestCase {
         private UnicodeChar hyphen = UnicodeChar.get('-');
 
         /**
-         * The field <tt>hyphenGlyph</tt> contains the hyphen glyph.
-         */
-        private Glyph hyphenGlyph = new MockGlyph();
-
-        /**
+         * Returns the actual size.
+         *
+         * @return the actual size
+         *
          * @see org.extex.font.type.Fount#getActualSize()
          */
         public FixedDimen getActualSize() {
@@ -90,14 +81,10 @@ public class BaseHyphenationTableTest extends TestCase {
         }
 
         /**
-         * @see org.extex.font.type.Fount#getBoundingBox()
-         */
-        public BoundingBox getBoundingBox() {
-
-            return null;
-        }
-
-        /**
+         * Returns the check sum.
+         *
+         * @return the check sum
+         *
          * @see org.extex.font.type.Fount#getCheckSum()
          */
         public int getCheckSum() {
@@ -106,6 +93,10 @@ public class BaseHyphenationTableTest extends TestCase {
         }
 
         /**
+         * Returns the design size.
+         *
+         * @return the design size.
+         *
          * @see org.extex.font.type.Fount#getDesignSize()
          */
         public FixedDimen getDesignSize() {
@@ -114,15 +105,10 @@ public class BaseHyphenationTableTest extends TestCase {
         }
 
         /**
-         * @see org.extex.interpreter.type.font.Font#getEfcode()
-         */
-        public long getEfCode(UnicodeChar uc) {
-
-            // TODO gene: getEfcode unimplemented
-            return 0;
-        }
-
-        /**
+         * Return the em size of the font.
+         *
+         * @return em size
+         *
          * @see org.extex.font.type.Fount#getEm()
          */
         public FixedDimen getEm() {
@@ -131,6 +117,10 @@ public class BaseHyphenationTableTest extends TestCase {
         }
 
         /**
+         * Return the ex size of the font.
+         *
+         * @return ex size
+         *
          * @see org.extex.font.type.Fount#getEx()
          */
         public FixedDimen getEx() {
@@ -139,14 +129,26 @@ public class BaseHyphenationTableTest extends TestCase {
         }
 
         /**
+         * Returns the byte array for the external file. E.g. cmr12.pfb.
+         *
+         * @return Returns the byte array for the external file e.g. cmr12.pfb
+         *
+         * @deprecated this single method should be replaced by some way to
+         *   retrieve an appropriate font format
+         *
          * @see org.extex.font.type.Fount#getFontByteArray()
          */
         public FontByteArray getFontByteArray() {
 
-            return null; // add by mgn
+            return null;
         }
 
         /**
+         * Return font dimen size with a key.
+         *
+         * @param key the key
+         * @return the value for the key
+         *
          * @see org.extex.font.type.Fount#getFontDimen(java.lang.String)
          */
         public FixedDimen getFontDimen(final String key) {
@@ -155,6 +157,9 @@ public class BaseHyphenationTableTest extends TestCase {
         }
 
         /**
+         * Returns the key for the font.
+         * @return the key for the font
+         *
          * @see org.extex.font.type.Fount#getFontKey()
          */
         public FontKey getFontKey() {
@@ -163,6 +168,10 @@ public class BaseHyphenationTableTest extends TestCase {
         }
 
         /**
+         * Return the font name.
+         *
+         * @return the font name
+         *
          * @see org.extex.font.type.Fount#getFontName()
          */
         public String getFontName() {
@@ -171,17 +180,10 @@ public class BaseHyphenationTableTest extends TestCase {
         }
 
         /**
-         * @see org.extex.font.type.Fount#getGlyph(org.extex.type.UnicodeChar)
-         */
-        public Glyph getGlyph(final UnicodeChar c) {
-
-            if (hyphen.equals(c)) {
-                return hyphenGlyph;
-            }
-            return null;
-        }
-
-        /**
+         * Returns the hyphen char.
+         *
+         * @return the hyphen char
+         *
          * @see org.extex.interpreter.type.font.Font#getHyphenChar()
          */
         public UnicodeChar getHyphenChar() {
@@ -190,6 +192,9 @@ public class BaseHyphenationTableTest extends TestCase {
         }
 
         /**
+         * Return the letter spacing
+         * @return the letter spacing
+         *
          * @see org.extex.font.type.Fount#getLetterSpacing()
          */
         public FixedGlue getLetterSpacing() {
@@ -198,14 +203,10 @@ public class BaseHyphenationTableTest extends TestCase {
         }
 
         /**
-         * @see org.extex.font.type.Fount#getProperty(java.lang.String)
-         */
-        public String getProperty(final String key) {
-
-            return null;
-        }
-
-        /**
+         * Returns the skew char.
+         *
+         * @return the skew char
+         *
          * @see org.extex.interpreter.type.font.Font#getSkewChar()
          */
         public UnicodeChar getSkewChar() {
@@ -214,6 +215,10 @@ public class BaseHyphenationTableTest extends TestCase {
         }
 
         /**
+         * Return the width of space character.
+         *
+         * @return the width of the space character
+         *
          * @see org.extex.font.type.Fount#getSpace()
          */
         public FixedGlue getSpace() {
@@ -222,7 +227,14 @@ public class BaseHyphenationTableTest extends TestCase {
         }
 
         /**
-         * @see org.extex.font.type.other.NullFont#hasGlyph(org.extex.type.UnicodeChar)
+         * Determine whether the glyph for a given character is present in this font.
+         *
+         * @param uc the character
+         *
+         * @return <code>true</code> iff the glyph is present
+         *
+         * @see org.extex.interpreter.type.font.Font#hasGlyph(
+         *      org.extex.type.UnicodeChar)
          */
         public boolean hasGlyph(final UnicodeChar uc) {
 
@@ -230,197 +242,63 @@ public class BaseHyphenationTableTest extends TestCase {
         }
 
         /**
+         * Setter for the ef code.
+         * The ef code influences the stretchability of characters. It has a
+         * positive value. 1000 means "normal" stretchability.
+         *
+         * @param uc the character
+         * @param code the associated code
+         *
          * @see org.extex.interpreter.type.font.Font#setEfCode(org.extex.type.UnicodeChar,
          *      long)
          */
         public void setEfCode(final UnicodeChar uc, final long code) {
 
             // TODO gene: setEfcode unimplemented
-
         }
 
         /**
+         * Set the new value for the font parameter.
+         *
+         * @param name  The name of the parameter.
+         * @param value The value to set.
+         *
          * @see org.extex.interpreter.type.font.Font#setFontDimen(
          *      java.lang.String, org.extex.interpreter.type.dimen.Dimen)
          */
-        public void setFontDimen(final String key, final Dimen value) {
+        public void setFontDimen(final String name, final Dimen value) {
 
         }
 
         /**
+         * Set the hyphen char.
+         *
+         * @param h the hyphen char
+         *
          * @see org.extex.interpreter.type.font.Font#setHyphenChar(
          *      org.extex.type.UnicodeChar)
          */
-        public void setHyphenChar(final UnicodeChar hyphen) {
+        public void setHyphenChar(final UnicodeChar h) {
 
-            this.hyphen = hyphen;
+            this.hyphen = h;
         }
 
         /**
+         * Set the skew char.
+         *
+         * @param s the skew char
+         *
          * @see org.extex.interpreter.type.font.Font#setSkewChar(
          *      org.extex.type.UnicodeChar)
          */
-        public void setSkewChar(final UnicodeChar skew) {
+        public void setSkewChar(final UnicodeChar s) {
 
         }
 
-    }
-
-    /**
-     * This is a mock implementation of a glyph.
-     * 
-     * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision: 4805 $
-     */
-    private class MockGlyph implements Glyph {
-
-        /**
-         * @see org.extex.font.Glyph#addKerning(org.extex.font.Kerning)
-         */
-        public void addKerning(final Kerning kern) {
-
-        }
-
-        /**
-         * @see org.extex.font.Glyph#addLigature(org.extex.font.Ligature)
-         */
-        public void addLigature(final Ligature lig) {
-
-        }
-
-        public Dimen getDepth() {
-
-            return null;
-        }
-
-        public FontByteArray getExternalFile() {
-
-            return null;
-        }
-
-        public Dimen getHeight() {
-
-            return null;
-        }
-
-        public Dimen getItalicCorrection() {
-
-            return null;
-        }
-
-        public Dimen getKerning(final UnicodeChar uc) {
-
-            return null;
-        }
-
-        public Dimen getLeftSpace() {
-
-            return null;
-        }
-
-        public UnicodeChar getLigature(final UnicodeChar uc) {
-
-            return null;
-        }
-
-        public String getName() {
-
-            return null;
-        }
-
-        public String getNumber() {
-
-            return null;
-        }
-
-        public Dimen getRightSpace() {
-
-            return null;
-        }
-
-        public Dimen getWidth() {
-
-            return null;
-        }
-
-        public void setDepth(final Dimen d) {
-
-        }
-
-        public void setDepth(final String gsize, final Dimen em,
-                final int unitsperem) {
-
-        }
-
-        public void setDepth(final TfmFixWord size, final Dimen em) {
-
-        }
-
-        public void setExternalFile(final FontByteArray file) {
-
-        }
-
-        public void setHeight(final Dimen h) {
-
-        }
-
-        public void setHeight(final String gsize, final Dimen em,
-                final int unitsperem) {
-
-        }
-
-        public void setHeight(final TfmFixWord size, final Dimen em) {
-
-        }
-
-        public void setItalicCorrection(final Dimen d) {
-
-        }
-
-        public void setItalicCorrection(final String gsize, final Dimen em,
-                final int unitsperem) {
-
-        }
-
-        public void setItalicCorrection(final TfmFixWord size, final Dimen em) {
-
-        }
-
-        public void setLeftSpace(final Dimen ls) {
-
-        }
-
-        public void setName(final String n) {
-
-        }
-
-        public void setNumber(final String nr) {
-
-        }
-
-        public void setRightSpace(final Dimen rs) {
-
-        }
-
-        public void setWidth(final Dimen w) {
-
-        }
-
-        public void setWidth(final String gsize, final Dimen em,
-                final int unitsperem) {
-
-        }
-
-        public void setWidth(final TfmFixWord size, final Dimen em) {
-
-        }
     }
 
     /**
      * This mock implementation is for test purposes only.
-     * 
-     * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision: 4805 $
      */
     private class MyMockContext extends MockContext {
 
@@ -444,6 +322,13 @@ public class BaseHyphenationTableTest extends TestCase {
         }
 
         /**
+         * Getter for the lccode mapping of upper case characters to their
+         * lower case equivalent.
+         *
+         * @param uc the upper case character
+         *
+         * @return the lower case equivalent or null if none exists
+         *
          * @see org.extex.interpreter.context.Context#getLccode(
          *      org.extex.type.UnicodeChar)
          */
@@ -460,7 +345,7 @@ public class BaseHyphenationTableTest extends TestCase {
 
     /**
      * The command line interface.
-     * 
+     *
      * @param args the command line arguments
      */
     public static void main(final String[] args) {
@@ -469,11 +354,11 @@ public class BaseHyphenationTableTest extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @param s ...
-     * 
-     * @return ...
+     * Make a list of Unicode characters from a String.
+     *
+     * @param s the string to translate
+     *
+     * @return the list
      */
     private static UnicodeCharList makeList(final CharSequence s) {
 
@@ -505,9 +390,9 @@ public class BaseHyphenationTableTest extends TestCase {
 
     /**
      * Create a hlist from a string.
-     * 
+     *
      * @param s the string with the characters to encode
-     * 
+     *
      * @return a horizontal list
      */
     private HorizontalListNode hlist(final String s) {
@@ -527,7 +412,7 @@ public class BaseHyphenationTableTest extends TestCase {
 
     /**
      * Create a new object to test.
-     * 
+     *
      * @return the object to test
      */
     protected Language makeLanguage() {
@@ -538,6 +423,10 @@ public class BaseHyphenationTableTest extends TestCase {
     }
 
     /**
+     * Set-up the test suite.
+     *
+     * @throws Exception in case of an error
+     *
      * @see junit.framework.TestCase#setUp()
      */
     protected void setUp() throws Exception {
@@ -550,7 +439,7 @@ public class BaseHyphenationTableTest extends TestCase {
 
     /**
      * <testcase> Test case checking that ... </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     public void test1() throws Exception {
@@ -562,7 +451,7 @@ public class BaseHyphenationTableTest extends TestCase {
 
     /**
      * <testcase> Test case checking that ... </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     public void test2() throws Exception {
@@ -574,7 +463,7 @@ public class BaseHyphenationTableTest extends TestCase {
 
     /**
      * <testcase> Test case checking that ... </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     public void test3() throws Exception {
@@ -587,8 +476,8 @@ public class BaseHyphenationTableTest extends TestCase {
 
     /**
      * <testcase> Test case checking that ... </testcase>
-     * 
-     * 
+     *
+     *
      * @throws Exception in case of an error
      */
     public void test4() throws Exception {
@@ -600,7 +489,7 @@ public class BaseHyphenationTableTest extends TestCase {
 
     /**
      * <testcase> Test case checking that ... </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     public void test5() throws Exception {
@@ -609,11 +498,11 @@ public class BaseHyphenationTableTest extends TestCase {
         language.hyphenate(nodes, context, HYPHEN, 0, true, nodeFactory);
 
         assertEquals("\\hbox(0.0pt+0.0pt)x0.0pt\n" + ".d\n"
-                     + ".\\discretionary{\\hbox(0.0pt+0.0pt)x0.0pt\n"
-                     + "...-}{}{}\n" + ".e\n"
-                     + ".\\discretionary{\\hbox(0.0pt+0.0pt)x0.0pt\n"
-                     + "...-}{}{}\n" + ".f", //
-                     nodes.toString());
+                + ".\\discretionary{\\hbox(0.0pt+0.0pt)x0.0pt\n"
+                + "...-}{}{}\n" + ".e\n"
+                + ".\\discretionary{\\hbox(0.0pt+0.0pt)x0.0pt\n"
+                + "...-}{}{}\n" + ".f", //
+            nodes.toString());
     }
 
 }

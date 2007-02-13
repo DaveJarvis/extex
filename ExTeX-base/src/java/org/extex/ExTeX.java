@@ -1495,7 +1495,7 @@ public class ExTeX {
         if (getBooleanProperty(PROP_TRACE_MACROS)) {
             context.setCount("tracingcommands", 1, true);
         }
-        
+
         return context;
     }
 

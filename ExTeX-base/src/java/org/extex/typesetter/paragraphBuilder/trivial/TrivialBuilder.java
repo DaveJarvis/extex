@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -52,7 +52,6 @@ import org.extex.typesetter.type.node.VerticalListNode;
 import org.extex.typesetter.type.node.factory.NodeFactory;
 import org.extex.util.framework.logger.LogEnabled;
 
-
 /**
  * This class implements a trivial paragraph builder.
  *
@@ -86,8 +85,8 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
      * stored in it will be overwritten whenever this object will be used for
      * the current paragraph.
      */
-    private FixedParagraphShape fixedParshape = new FixedParagraphShape(
-            Dimen.ZERO_PT);
+    private FixedParagraphShape fixedParshape =
+            new FixedParagraphShape(Dimen.ZERO_PT);
 
     /**
      * The field <tt>hangingParshape</tt> contains the data object used to
@@ -95,8 +94,8 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
      * values stored in it will be overwritten whenever this object will be
      * used for the current paragraph.
      */
-    private HangingParagraphShape hangingParshape = new HangingParagraphShape(
-            0, Dimen.ZERO_PT, Dimen.ZERO_PT);
+    private HangingParagraphShape hangingParshape =
+            new HangingParagraphShape(0, Dimen.ZERO_PT, Dimen.ZERO_PT);
 
     /**
      * The field <tt>logger</tt> contains the logger to be used.
@@ -188,8 +187,8 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
      */
     private int breakLine(final int start, final int len,
             final HorizontalListNode nodes, final HorizontalListNode hlist,
-            final Dimen width, final WideGlue accumulator, final FixedDimen height,
-            final FixedDimen depth) {
+            final Dimen width, final WideGlue accumulator,
+            final FixedDimen height, final FixedDimen depth) {
 
         Node node = nodes.get(start);
         hlist.add(node);
@@ -203,8 +202,9 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
             if (w.getLength().gt(width)) {
                 if (i == start + 1) {
                     //avoid infinite loop and accept overful box
-                    i = saveNodes(nodes, i, point, hlist, accumulator, height,
-                            depth);
+                    i =
+                            saveNodes(nodes, i, point, hlist, accumulator,
+                                height, depth);
                 }
                 return discartNodes(i, len, nodes);
             }
@@ -216,6 +216,16 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
     }
 
     /**
+     * Break a horizontal list into lines.
+     * The horizontal list passed in might be modified under way.
+     *
+     * @param nodes the horizontal node list containing all nodes for the
+     *   paragraph
+     *
+     * @return the
+     *   {@link org.extex.typesetter.type.node.VerticalListNode
+     *   VerticalListNode} containing the hboxes of the lines
+     *
      * @see org.extex.typesetter.paragraphBuilder.ParagraphBuilder#build(
      *      org.extex.typesetter.type.node.HorizontalListNode)
      */
@@ -270,8 +280,9 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
 
             hlist.addSkip(leftskip);
             accumulator.add(leftskip);
-            i = breakLine(i, len, nodes, hlist, wd, accumulator, hlist
-                    .getHeight(), hlist.getDepth());
+            i =
+                    breakLine(i, len, nodes, hlist, wd, accumulator, hlist
+                        .getHeight(), hlist.getDepth());
             hlist.addSkip(rightskip);
             accumulator.add(rightskip);
 
@@ -306,12 +317,16 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
     }
 
     /**
+     * Setter for the logger.
+     *
+     * @param log the logger to use
+     *
      * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
-    public void enableLogging(final Logger theLogger) {
+    public void enableLogging(final Logger log) {
 
-        this.logger = theLogger;
+        this.logger = log;
     }
 
     /**
@@ -391,13 +406,13 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
         parshape = options.getParshape();
 
         if (parshape == null) {
-            int hangafter = (int) options.getCountOption("hangafter")
-                    .getValue();
+            int hangafter =
+                    (int) options.getCountOption("hangafter").getValue();
 
             if (hangafter != 0) {
                 hangingParshape.setHangafter(hangafter);
                 hangingParshape.setHangindent(options
-                        .getDimenOption("hangindent"));
+                    .getDimenOption("hangindent"));
                 hangingParshape.setHsize(options.getDimenOption("hsize"));
                 parshape = hangingParshape;
             } else {
@@ -422,7 +437,8 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
      */
     private int saveNodes(final HorizontalListNode nodes, final int start,
             final int end, final HorizontalListNode hlist,
-            final WideGlue accumulator, final FixedDimen height, final FixedDimen depth) {
+            final WideGlue accumulator, final FixedDimen height,
+            final FixedDimen depth) {
 
         Node node;
         for (int i = start; i < end; i++) {
@@ -442,6 +458,10 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
     }
 
     /**
+     * Setter for the node factory.
+     *
+     * @param nodeFactory the node factory
+     *
      * @see org.extex.typesetter.paragraphBuilder.ParagraphBuilder#setNodefactory(
      *      org.extex.typesetter.type.node.factory.NodeFactory)
      */
@@ -450,6 +470,10 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
     }
 
     /**
+     * Setter for options.
+     *
+     * @param options the options to set.
+     *
      * @see org.extex.typesetter.paragraphBuilder.ParagraphBuilder#setOptions(
      *      org.extex.typesetter.TypesetterOptions)
      */
@@ -470,9 +494,8 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
             final FixedDimen targetWidth, final WideGlue w) {
 
         FixedDimen width = w.getLength();
-        FixedGlueComponent component = (width.lt(targetWidth)
-                ? w.getStretch()
-                : w.getShrink());
+        FixedGlueComponent component =
+                (width.lt(targetWidth) ? w.getStretch() : w.getShrink());
 
         Dimen wd = new Dimen(targetWidth.getValue() - width.getValue());
         NodeIterator it = hlist.iterator();

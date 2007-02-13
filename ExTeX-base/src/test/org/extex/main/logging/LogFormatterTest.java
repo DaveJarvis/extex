@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -21,8 +21,6 @@ package org.extex.main.logging;
 
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
-
-import org.extex.main.logging.LogFormatter;
 
 import junit.framework.TestCase;
 
@@ -97,10 +95,10 @@ public class LogFormatterTest extends TestCase {
         StringBuffer res = new StringBuffer();
         LogFormatter formatter = new LogFormatter();
         res.append(formatter.format(new LogRecord(Level.ALL,
-                "abc def ghi jkl mno pqr stu vwx yz "
-                        + "abc def ghi jkl mno pqr stu vwx yz "
-                        + "abc def ghi jkl mno pqr stu vwx yz "
-                        + "abc def ghi jkl mno pqr stu vwx yz ")));
+            "abc def ghi jkl mno pqr stu vwx yz "
+                    + "abc def ghi jkl mno pqr stu vwx yz "
+                    + "abc def ghi jkl mno pqr stu vwx yz "
+                    + "abc def ghi jkl mno pqr stu vwx yz ")));
         assertEquals("abc def ghi jkl mno pqr stu vwx yz "
                 + "abc def ghi jkl mno pqr stu vwx yz "
                 + "abc def\nghi jkl mno pqr stu vwx yz "

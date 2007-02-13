@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -73,7 +73,9 @@ public final class ErrorObserverList implements ErrorObserver {
     }
 
     /**
-     * Invoke all observers on the list to inform them of the error occured.
+     * Invoke all observers on the list to inform them of the error occurred.
+     *
+     * @param e the exception describing the error condition
      *
      * @see org.extex.interpreter.observer.error.ErrorObserver#update(
      *      java.lang.Exception)

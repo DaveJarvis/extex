@@ -24,6 +24,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.extex.font.FontKey;
+import org.extex.font.FontKeyFactory;
 import org.extex.font.GlyphImpl;
 import org.extex.font.Kerning;
 import org.extex.font.Ligature;
@@ -38,7 +39,7 @@ import org.extex.type.UnicodeChar;
 
 /**
  * This class encapsulates cmr10.tfm for testing purposes.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4784 $
  */
@@ -52,7 +53,7 @@ public class CMR10 implements Font, Serializable {
 
     /**
      * Private implementation of the glyph interface.
-     * 
+     *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision: 4784 $
      */
@@ -66,7 +67,7 @@ public class CMR10 implements Font, Serializable {
 
         /**
          * Creates a new object.
-         * 
+         *
          * @param c the character
          * @param w the width
          * @param h the height
@@ -79,7 +80,7 @@ public class CMR10 implements Font, Serializable {
 
         /**
          * Creates a new object.
-         * 
+         *
          * @param c the character
          * @param w the width
          * @param h the height
@@ -95,7 +96,7 @@ public class CMR10 implements Font, Serializable {
 
         /**
          * Add a ligature entry.
-         * 
+         *
          * @param c the next letter
          * @param d the ligature letter
          */
@@ -111,7 +112,7 @@ public class CMR10 implements Font, Serializable {
 
         /**
          * Add a kerning entry.
-         * 
+         *
          * @param c the character
          * @param dimen the kerning
          */
@@ -154,15 +155,15 @@ public class CMR10 implements Font, Serializable {
     private Dimen[] fontdimen = {Dimen.ZERO_PT, // (SLANT R 0 / 10)
             new Dimen(Dimen.ONE * 33333 / 1000004), // (SPACE R 33333 / 1000004)
             new Dimen(Dimen.ONE * 16666 / 1000007), // (STRETCH R 16666 /
-                                                    // 1000007)
+            // 1000007)
             new Dimen(Dimen.ONE * 11111 / 1000002), // (SHRINK R 11111 /
-                                                    // 1000002)
+            // 1000002)
             new Dimen(Dimen.ONE * 43055 / 1000005), // (XHEIGHT R 43055 /
-                                                    // 1000005)
+            // 1000005)
             new Dimen(Dimen.ONE * 1000003 / 1000000), // (QUAD R 1.000003)
             new Dimen(Dimen.ONE * 11111 / 1000002) // (EXTRASPACE R 11111 /
-                                                    // 1000002)
-    };
+            // 1000002)
+            };
 
     /**
      * The field <tt>SLANT</tt> contains the font dimen position for the slant
@@ -224,8 +225,8 @@ public class CMR10 implements Font, Serializable {
     /**
      * The field <tt>space</tt> contains the space specification.
      */
-    private Glue space = new Glue(fontdimen[SPACE], fontdimen[STRETCH],
-            fontdimen[SHRINK]);
+    private Glue space =
+            new Glue(fontdimen[SPACE], fontdimen[STRETCH], fontdimen[SHRINK]);
 
     /**
      * Creates a new object.
@@ -398,1108 +399,1107 @@ public class CMR10 implements Font, Serializable {
         // (KRN C I R 027779 / 1000000)
         // (STOP)
         makeGlyph('\0', new Dimen(Dimen.ONE * 625002 / TEN_6), // CHARWD
-                  new Dimen(ONE_683332 / TEN_6) // CHARHT
+            new Dimen(ONE_683332 / TEN_6) // CHARHT
         );
         makeGlyph('\001', new Dimen(Dimen.ONE * 833336 / TEN_6), // CHARWD
-                  new Dimen(ONE_683332 / TEN_6) // CHARHT
+            new Dimen(ONE_683332 / TEN_6) // CHARHT
         );
         makeGlyph('\002', new Dimen(ONE_777781 / TEN_6), // CHARWD
-                  new Dimen(ONE_683332 / TEN_6) // CHARHT
+            new Dimen(ONE_683332 / TEN_6) // CHARHT
         );
         makeGlyph('\003', new Dimen(Dimen.ONE * 694446 / TEN_6), // CHARWD
-                  new Dimen(ONE_683332 / TEN_6) // CHARHT
+            new Dimen(ONE_683332 / TEN_6) // CHARHT
         );
         makeGlyph('\004', new Dimen(Dimen.ONE * 666669 / TEN_6), // CHARWD
-                  new Dimen(ONE_683332 / TEN_6) // CHARHT
+            new Dimen(ONE_683332 / TEN_6) // CHARHT
         );
         makeGlyph('\005', new Dimen(Dimen.ONE * 750002 / TEN_6), // CHARWD
-                  new Dimen(ONE_683332 / TEN_6) // CHARHT
+            new Dimen(ONE_683332 / TEN_6) // CHARHT
         );
         makeGlyph('\006', new Dimen(ONE_722224 / TEN_6), // CHARWD
-                  new Dimen(ONE_683332 / TEN_6) // CHARHT
+            new Dimen(ONE_683332 / TEN_6) // CHARHT
         );
         makeGlyph('\007', new Dimen(ONE_777781 / TEN_6), // CHARWD
-                  new Dimen(ONE_683332 / TEN_6) // CHARHT
+            new Dimen(ONE_683332 / TEN_6) // CHARHT
         );
         makeGlyph('\010', new Dimen(ONE_722224 / TEN_6), // CHARWD
-                  new Dimen(ONE_683332 / TEN_6) // CHARHT
+            new Dimen(ONE_683332 / TEN_6) // CHARHT
         );
         makeGlyph('\011', new Dimen(ONE_777781 / TEN_6), // CHARWD
-                  new Dimen(ONE_683332 / TEN_6) // CHARHT
+            new Dimen(ONE_683332 / TEN_6) // CHARHT
         );
         makeGlyph('\012', new Dimen(ONE_722224 / TEN_6), // CHARWD
-                  new Dimen(ONE_683332 / TEN_6) // CHARHT
+            new Dimen(ONE_683332 / TEN_6) // CHARHT
         );
         g = makeGlyph('\013', new Dimen(Dimen.ONE * 583336 / TEN_6), // CHARWD
-                      new Dimen(Dimen.ONE * 694445 / TEN_6), // CHARHT
-                      Dimen.ZERO_PT, new Dimen(Dimen.ONE * 77779 / TEN_6) // CHARIC
-        );
+            new Dimen(Dimen.ONE * 694445 / TEN_6), // CHARHT
+            Dimen.ZERO_PT, new Dimen(Dimen.ONE * 77779 / TEN_6) // CHARIC
+                );
         // (COMMENT
         g.addLig('i', '\020'); // (LIG C i O 16)
         g.addLig('l', '\021'); // (LIG C l O 17)
         g.addKern((char) 047, new Dimen(Dimen.ONE * 77779 / TEN_6)); // (KRN
-                                                                        // O 47
-                                                                        // R
-                                                                        // 077779
-                                                                        // /
-                                                                        // 1000000)
+        // O 47
+        // R
+        // 077779
+        // /
+        // 1000000)
         g.addKern((char) 077, new Dimen(Dimen.ONE * 77779 / TEN_6)); // (KRN
-                                                                        // O 77
-                                                                        // R
-                                                                        // 077779
-                                                                        // /
-                                                                        // 1000000)
+        // O 77
+        // R
+        // 077779
+        // /
+        // 1000000)
         g.addKern((char) 041, new Dimen(Dimen.ONE * 77779 / TEN_6)); // (KRN
-                                                                        // O 41
-                                                                        // R
-                                                                        // 077779
-                                                                        // /
-                                                                        // 1000000)
+        // O 41
+        // R
+        // 077779
+        // /
+        // 1000000)
         g.addKern((char) 051, new Dimen(Dimen.ONE * 77779 / TEN_6)); // (KRN
-                                                                        // O 51
-                                                                        // R
-                                                                        // 077779
-                                                                        // /
-                                                                        // 1000000)
+        // O 51
+        // R
+        // 077779
+        // /
+        // 1000000)
         g.addKern((char) 0135, new Dimen(Dimen.ONE * 77779 / TEN_6)); // (KRN
-                                                                        // O 135
-                                                                        // R
-                                                                        // 077779
-                                                                        // /
-                                                                        // 1000000)
+        // O 135
+        // R
+        // 077779
+        // /
+        // 1000000)
         // )
         makeGlyph('\014', new Dimen(Dimen.ONE * 555557 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
+            new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
         );
         makeGlyph('\015', new Dimen(Dimen.ONE * 555557 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
+            new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
         );
         makeGlyph('\016', new Dimen(Dimen.ONE * 833336 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
+            new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
         );
         makeGlyph('\017', new Dimen(Dimen.ONE * 833336 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
+            new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
         );
         makeGlyph('\020', new Dimen(Dimen.ONE * 277779 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
+            new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
         );
         makeGlyph('\021', new Dimen(Dimen.ONE * 305557 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 430555 / TEN_6), // CHARHT
-                  new Dimen(Dimen.ONE * 194445 / TEN_6), // CHARDP
-                  Dimen.ZERO_PT);
+            new Dimen(Dimen.ONE * 430555 / TEN_6), // CHARHT
+            new Dimen(Dimen.ONE * 194445 / TEN_6), // CHARDP
+            Dimen.ZERO_PT);
         makeGlyph('\022', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
+            new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
         );
         makeGlyph('\023', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
+            new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
         );
         makeGlyph('\024', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 628473 / TEN_6) // CHARHT
+            new Dimen(Dimen.ONE * 628473 / TEN_6) // CHARHT
         );
         makeGlyph('\025', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
+            new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
         );
         makeGlyph('\026', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 567777 / TEN_6) // CHARHT
+            new Dimen(Dimen.ONE * 567777 / TEN_6) // CHARHT
         );
         makeGlyph('\027', new Dimen(Dimen.ONE * 750002 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
+            new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
         );
         makeGlyph('\030', new Dimen(Dimen.ONE * 444446 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 170138 / TEN_6) // CHARDP
+            new Dimen(Dimen.ONE * 170138 / TEN_6) // CHARDP
         );
         makeGlyph('\031', new Dimen(Dimen.ONE * 500003 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
+            new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
         );
         makeGlyph('\032', new Dimen(ONE_722224 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
+            new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
         );
         makeGlyph('\033', new Dimen(ONE_777781 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
+            new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
         );
         makeGlyph('\034', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 527779 / TEN_6), // CHARHT
-                  new Dimen(Dimen.ONE * 97223 / TEN_6), // CHARDP
-                  Dimen.ZERO_PT);
+            new Dimen(Dimen.ONE * 527779 / TEN_6), // CHARHT
+            new Dimen(Dimen.ONE * 97223 / TEN_6), // CHARDP
+            Dimen.ZERO_PT);
         makeGlyph('\035', new Dimen(Dimen.ONE * 902781 / TEN_6), // CHARWD
-                  new Dimen(ONE_683332 / TEN_6) // CHARHT
+            new Dimen(ONE_683332 / TEN_6) // CHARHT
         );
         makeGlyph('\036', new Dimen(Dimen.ONE * 1013891 / TEN_6), // CHARWD
-                  new Dimen(ONE_683332 / TEN_6) // CHARHT
+            new Dimen(ONE_683332 / TEN_6) // CHARHT
         );
         makeGlyph('\037', new Dimen(ONE_777781 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 731944 / TEN_6), // CHARHT
-                  new Dimen(Dimen.ONE * 48612 / TEN_6), // CHARDP
-                  Dimen.ZERO_PT);
+            new Dimen(Dimen.ONE * 731944 / TEN_6), // CHARHT
+            new Dimen(Dimen.ONE * 48612 / TEN_6), // CHARDP
+            Dimen.ZERO_PT);
         g = makeGlyph('\040', new Dimen(Dimen.ONE * 277779 / TEN_6), // CHARWD
-                      new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
-        );
+            new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
+                );
         // (COMMENT
         g.addKern('l', new Dimen(Dimen.ONE * -277779 / TEN_6)); // (KRN C l R
-                                                                // -277779 /
-                                                                // 1000000)
+        // -277779 /
+        // 1000000)
         g.addKern('L', new Dimen(Dimen.ONE * -319446 / TEN_6)); // (KRN C L R
-                                                                // -319446 /
-                                                                // 1000000)
+        // -319446 /
+        // 1000000)
         // )
         g = makeGlyph('\041', new Dimen(Dimen.ONE * 277779 / TEN_6), // CHARWD
-                      new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
-        );
+            new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
+                );
         // (COMMENT
         g.addLig((char) 0140, (char) 074); // (LIG O 140 O 74)
         // )
         makeGlyph('\042', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
+            new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
         );
         makeGlyph('\043', new Dimen(Dimen.ONE * 833336 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 694445 / TEN_6), // CHARHT
-                  new Dimen(Dimen.ONE * 194443 / TEN_6), // CHARDP
-                  Dimen.ZERO_PT);
+            new Dimen(Dimen.ONE * 694445 / TEN_6), // CHARHT
+            new Dimen(Dimen.ONE * 194443 / TEN_6), // CHARDP
+            Dimen.ZERO_PT);
         makeGlyph('\044', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 75 / 100), // CHARHT
-                  new Dimen(Dimen.ONE * 55555 / TEN_6), // CHARDP
-                  Dimen.ZERO_PT);
+            new Dimen(Dimen.ONE * 75 / 100), // CHARHT
+            new Dimen(Dimen.ONE * 55555 / TEN_6), // CHARDP
+            Dimen.ZERO_PT);
         makeGlyph('\045', new Dimen(Dimen.ONE * 833336 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 75 / 100), // CHARHT
-                  new Dimen(Dimen.ONE * 55555 / TEN_6), // CHARDP
-                  Dimen.ZERO_PT);
+            new Dimen(Dimen.ONE * 75 / 100), // CHARHT
+            new Dimen(Dimen.ONE * 55555 / TEN_6), // CHARDP
+            Dimen.ZERO_PT);
         makeGlyph('\046', new Dimen(ONE_777781 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
+            new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
         );
         g = makeGlyph('\047', new Dimen(Dimen.ONE * 277779 / TEN_6), // CHARWD
-                      new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
-        );
+            new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
+                );
         // (COMMENT
         g.addLig((char) 047, (char) 042); // (LIG O 47 O 42)
         g.addKern((char) 077, new Dimen(Dimen.ONE * 111112 / TEN_6)); // (KRN
-                                                                        // O 77
-                                                                        // R
-                                                                        // 111112
-                                                                        // /
-                                                                        // 1000000)
+        // O 77
+        // R
+        // 111112
+        // /
+        // 1000000)
         g.addKern((char) 041, new Dimen(Dimen.ONE * 111112 / TEN_6)); // (KRN
-                                                                        // O 41
-                                                                        // R
-                                                                        // 111112
-                                                                        // /
-                                                                        // 1000000)
+        // O 41
+        // R
+        // 111112
+        // /
+        // 1000000)
         // )
         makeGlyph('\050', new Dimen(Dimen.ONE * 38889 / 100000), // CHARWD
-                  new Dimen(Dimen.ONE * 75 / 100), // CHARHT
-                  new Dimen(Dimen.ONE * 25 / 100), // CHARDP
-                  Dimen.ZERO_PT);
+            new Dimen(Dimen.ONE * 75 / 100), // CHARHT
+            new Dimen(Dimen.ONE * 25 / 100), // CHARDP
+            Dimen.ZERO_PT);
         makeGlyph('\051', new Dimen(Dimen.ONE * 38889 / 100000), // CHARWD
-                  new Dimen(Dimen.ONE * 75 / 100), // CHARHT
-                  new Dimen(Dimen.ONE * 25 / 100), // CHARDP
-                  Dimen.ZERO_PT);
+            new Dimen(Dimen.ONE * 75 / 100), // CHARHT
+            new Dimen(Dimen.ONE * 25 / 100), // CHARDP
+            Dimen.ZERO_PT);
         makeGlyph('\052', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 75 / 100) // CHARHT
+            new Dimen(Dimen.ONE * 75 / 100) // CHARHT
         );
         makeGlyph('\053', new Dimen(ONE_777781 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 583334 / TEN_6), // CHARHT
-                  new Dimen(Dimen.ONE * 83334 / TEN_6), // CHARDP
-                  Dimen.ZERO_PT);
+            new Dimen(Dimen.ONE * 583334 / TEN_6), // CHARHT
+            new Dimen(Dimen.ONE * 83334 / TEN_6), // CHARDP
+            Dimen.ZERO_PT);
         makeGlyph('\054', new Dimen(Dimen.ONE * 277779 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 105556 / TEN_6), // CHARHT
-                  new Dimen(Dimen.ONE * 194445 / TEN_6), // CHARDP
-                  Dimen.ZERO_PT);
+            new Dimen(Dimen.ONE * 105556 / TEN_6), // CHARHT
+            new Dimen(Dimen.ONE * 194445 / TEN_6), // CHARDP
+            Dimen.ZERO_PT);
         g = makeGlyph('\055', new Dimen(Dimen.ONE * 333334 / TEN_6), // CHARWD
-                      new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
-        );
+            new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
+                );
         // (COMMENT
         g.addLig((char) 055, (char) 0173); // (LIG O 55 O 173)
         // )
         makeGlyph('\056', new Dimen(Dimen.ONE * 277779 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 105556 / TEN_6) // CHARHT
+            new Dimen(Dimen.ONE * 105556 / TEN_6) // CHARHT
         );
         makeGlyph('\057', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 75 / 100), // CHARHT
-                  new Dimen(Dimen.ONE * 25 / 100), // CHARDP
-                  Dimen.ZERO_PT);
+            new Dimen(Dimen.ONE * 75 / 100), // CHARHT
+            new Dimen(Dimen.ONE * 25 / 100), // CHARDP
+            Dimen.ZERO_PT);
         makeGlyph('0', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 644444 / TEN_6) // CHARHT
+            new Dimen(Dimen.ONE * 644444 / TEN_6) // CHARHT
         );
         makeGlyph('1', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 644444 / TEN_6) // CHARHT
+            new Dimen(Dimen.ONE * 644444 / TEN_6) // CHARHT
         );
         makeGlyph('2', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 644444 / TEN_6) // CHARHT
+            new Dimen(Dimen.ONE * 644444 / TEN_6) // CHARHT
         );
         makeGlyph('3', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 644444 / TEN_6) // CHARHT
+            new Dimen(Dimen.ONE * 644444 / TEN_6) // CHARHT
         );
         makeGlyph('4', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 644444 / TEN_6) // CHARHT
+            new Dimen(Dimen.ONE * 644444 / TEN_6) // CHARHT
         );
         makeGlyph('5', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 644444 / TEN_6) // CHARHT
+            new Dimen(Dimen.ONE * 644444 / TEN_6) // CHARHT
         );
         makeGlyph('6', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 644444 / TEN_6) // CHARHT
+            new Dimen(Dimen.ONE * 644444 / TEN_6) // CHARHT
         );
         makeGlyph('7', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 644444 / TEN_6) // CHARHT
+            new Dimen(Dimen.ONE * 644444 / TEN_6) // CHARHT
         );
         makeGlyph('8', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 644444 / TEN_6) // CHARHT
+            new Dimen(Dimen.ONE * 644444 / TEN_6) // CHARHT
         );
         makeGlyph('9', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 644444 / TEN_6) // CHARHT
+            new Dimen(Dimen.ONE * 644444 / TEN_6) // CHARHT
         );
         makeGlyph('\072', new Dimen(Dimen.ONE * 277779 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
+            new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
         );
         makeGlyph('\073', new Dimen(Dimen.ONE * 277779 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 430555 / TEN_6), // CHARHT
-                  new Dimen(Dimen.ONE * 194445 / TEN_6), // CHARDP
-                  Dimen.ZERO_PT);
+            new Dimen(Dimen.ONE * 430555 / TEN_6), // CHARHT
+            new Dimen(Dimen.ONE * 194445 / TEN_6), // CHARDP
+            Dimen.ZERO_PT);
         makeGlyph('\074', new Dimen(Dimen.ONE * 277779 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 5 / 10), // CHARHT
-                  new Dimen(Dimen.ONE * 194445 / TEN_6), // CHARDP
-                  Dimen.ZERO_PT);
+            new Dimen(Dimen.ONE * 5 / 10), // CHARHT
+            new Dimen(Dimen.ONE * 194445 / TEN_6), // CHARDP
+            Dimen.ZERO_PT);
         makeGlyph('\075', new Dimen(ONE_777781 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 366875 / TEN_6) // CHARHT
+            new Dimen(Dimen.ONE * 366875 / TEN_6) // CHARHT
         // (CHARDP R -133125 / 1000000)
         );
         makeGlyph('\076', new Dimen(Dimen.ONE * 472224 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 5 / 10), // CHARHT
-                  new Dimen(Dimen.ONE * 194445 / TEN_6), // CHARDP
-                  Dimen.ZERO_PT);
+            new Dimen(Dimen.ONE * 5 / 10), // CHARHT
+            new Dimen(Dimen.ONE * 194445 / TEN_6), // CHARDP
+            Dimen.ZERO_PT);
         g = makeGlyph('\077', new Dimen(Dimen.ONE * 472224 / TEN_6), // CHARWD
-                      new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
-        );
+            new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
+                );
         // (COMMENT
         g.addLig((char) 0140, (char) 076); // (LIG O 140 O 76)
         // )
         makeGlyph('\100', new Dimen(ONE_777781 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
+            new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
         );
         g = makeGlyph('A', new Dimen(Dimen.ONE * 750002 / TEN_6), // CHARWD
-                      new Dimen(ONE_683332 / TEN_6) // CHARHT
-        );
+            new Dimen(ONE_683332 / TEN_6) // CHARHT
+                );
         // (COMMENT
         g.addKern('t', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C t R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('C', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C C R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('O', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C O R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('G', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C G R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('U', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C U R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('Q', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C Q R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('T', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C T R
-                                                                // -083334 /
-                                                                // 1000000)
+        // -083334 /
+        // 1000000)
         g.addKern('Y', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C Y R
-                                                                // -083334 /
-                                                                // 1000000)
+        // -083334 /
+        // 1000000)
         g.addKern('V', new Dimen(Dimen.ONE * -111112 / TEN_6)); // (KRN C V R
-                                                                // -111112 /
-                                                                // 1000000)
+        // -111112 /
+        // 1000000)
         g.addKern('W', new Dimen(Dimen.ONE * -111112 / TEN_6)); // (KRN C W R
-                                                                // -111112 /
-                                                                // 1000000)
+        // -111112 /
+        // 1000000)
         // )
         makeGlyph('B', new Dimen(Dimen.ONE * 708336 / TEN_6), // CHARWD
-                  new Dimen(ONE_683332 / TEN_6) // CHARHT
+            new Dimen(ONE_683332 / TEN_6) // CHARHT
         );
         makeGlyph('C', new Dimen(ONE_722224 / TEN_6), // CHARWD
-                  new Dimen(ONE_683332 / TEN_6) // CHARHT
+            new Dimen(ONE_683332 / TEN_6) // CHARHT
         );
         g = makeGlyph('D', new Dimen(Dimen.ONE * 763891 / TEN_6), // CHARWD
-                      new Dimen(ONE_683332 / TEN_6) // CHARHT
-        );
+            new Dimen(ONE_683332 / TEN_6) // CHARHT
+                );
         // (COMMENT
         g.addKern('X', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C X R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('W', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C W R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('A', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C A R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('V', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C V R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('Y', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C Y R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         // )
         makeGlyph('E', new Dimen(Dimen.ONE * 680557 / TEN_6), // CHARWD
-                  new Dimen(ONE_683332 / TEN_6) // CHARHT
+            new Dimen(ONE_683332 / TEN_6) // CHARHT
         );
         g = makeGlyph('F', new Dimen(Dimen.ONE * 652781 / TEN_6), // CHARWD
-                      new Dimen(ONE_683332 / TEN_6) // CHARHT
-        );
+            new Dimen(ONE_683332 / TEN_6) // CHARHT
+                );
         // (COMMENT
         g.addKern('o', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C o R
-                                                                // -083334 /
-                                                                // 1000000)
+        // -083334 /
+        // 1000000)
         g.addKern('e', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C e R
-                                                                // -083334 /
-                                                                // 1000000)
+        // -083334 /
+        // 1000000)
         g.addKern('u', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C u R
-                                                                // -083334 /
-                                                                // 1000000)
+        // -083334 /
+        // 1000000)
         g.addKern('r', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C r R
-                                                                // -083334 /
-                                                                // 1000000)
+        // -083334 /
+        // 1000000)
         g.addKern('a', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C a R
-                                                                // -083334 /
-                                                                // 1000000)
+        // -083334 /
+        // 1000000)
         g.addKern('A', new Dimen(Dimen.ONE * -111112 / TEN_6)); // (KRN C A R
-                                                                // -111112 /
-                                                                // 1000000)
+        // -111112 /
+        // 1000000)
         g.addKern('O', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C O R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('C', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C C R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('G', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C G R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('Q', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C Q R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         // )
         makeGlyph('G', new Dimen(Dimen.ONE * 784724 / TEN_6), // CHARWD
-                  new Dimen(ONE_683332 / TEN_6) // CHARHT
+            new Dimen(ONE_683332 / TEN_6) // CHARHT
         );
         makeGlyph('H', new Dimen(Dimen.ONE * 750002 / TEN_6), // CHARWD
-                  new Dimen(ONE_683332 / TEN_6) // CHARHT
+            new Dimen(ONE_683332 / TEN_6) // CHARHT
         );
         g = makeGlyph('I', new Dimen(Dimen.ONE * 361112 / TEN_6), // CHARWD
-                      new Dimen(ONE_683332 / TEN_6) // CHARHT
-        );
+            new Dimen(ONE_683332 / TEN_6) // CHARHT
+                );
         // (COMMENT
         g.addKern('I', new Dimen(Dimen.ONE * 27779 / TEN_6)); // (KRN C I R
-                                                                // 027779 /
-                                                                // 1000000)
+        // 027779 /
+        // 1000000)
         // )
         makeGlyph('J', new Dimen(Dimen.ONE * 51389 / 100000), // CHARWD
-                  new Dimen(ONE_683332 / TEN_6) // CHARHT
+            new Dimen(ONE_683332 / TEN_6) // CHARHT
         );
         g = makeGlyph('K', new Dimen(ONE_777781 / TEN_6), // CHARWD
-                      new Dimen(ONE_683332 / TEN_6) // CHARHT
-        );
+            new Dimen(ONE_683332 / TEN_6) // CHARHT
+                );
         // (COMMENT
         g.addKern('O', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C O R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('C', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C C R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('G', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C G R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('Q', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C Q R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         // )
         g = makeGlyph('L', new Dimen(Dimen.ONE * 625002 / TEN_6), // CHARWD
-                      new Dimen(ONE_683332 / TEN_6) // CHARHT
-        );
+            new Dimen(ONE_683332 / TEN_6) // CHARHT
+                );
         // (COMMENT
         g.addKern('T', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C T R
-                                                                // -083334 /
-                                                                // 1000000)
+        // -083334 /
+        // 1000000)
         g.addKern('Y', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C Y R
-                                                                // -083334 /
-                                                                // 1000000)
+        // -083334 /
+        // 1000000)
         g.addKern('V', new Dimen(Dimen.ONE * -111112 / TEN_6)); // (KRN C V R
-                                                                // -111112 /
-                                                                // 1000000)
+        // -111112 /
+        // 1000000)
         g.addKern('W', new Dimen(Dimen.ONE * -111112 / TEN_6)); // (KRN C W R
-                                                                // -111112 /
-                                                                // 1000000)
+        // -111112 /
+        // 1000000)
         // )
         makeGlyph('M', new Dimen(Dimen.ONE * 916669 / TEN_6), // CHARWD
-                  new Dimen(ONE_683332 / TEN_6) // CHARHT
+            new Dimen(ONE_683332 / TEN_6) // CHARHT
         );
         makeGlyph('N', new Dimen(Dimen.ONE * 750002 / TEN_6), // CHARWD
-                  new Dimen(ONE_683332 / TEN_6) // CHARHT
+            new Dimen(ONE_683332 / TEN_6) // CHARHT
         );
         g = makeGlyph('O', new Dimen(ONE_777781 / TEN_6), // CHARWD
-                      new Dimen(ONE_683332 / TEN_6) // CHARHT
-        );
+            new Dimen(ONE_683332 / TEN_6) // CHARHT
+                );
         // (COMMENT
         g.addKern('X', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C X R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('W', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C W R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('A', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C A R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('V', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C V R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('Y', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C Y R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         // )
         g = makeGlyph('P', new Dimen(Dimen.ONE * 680557 / TEN_6), // CHARWD
-                      new Dimen(ONE_683332 / TEN_6) // CHARHT
-        );
+            new Dimen(ONE_683332 / TEN_6) // CHARHT
+                );
         // (COMMENT
         g.addKern('A', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C A R
-                                                                // -083334 /
-                                                                // 1000000)
+        // -083334 /
+        // 1000000)
         g.addKern('o', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C o R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('e', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C e R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('a', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C a R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern((char) 056, new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN
-                                                                        // O 56
-                                                                        // R
-                                                                        // -083334
-                                                                        // /
-                                                                        // 1000000)
+        // O 56
+        // R
+        // -083334
+        // /
+        // 1000000)
         g.addKern((char) 054, new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN
-                                                                        // O 54
-                                                                        // R
-                                                                        // -083334
-                                                                        // /
-                                                                        // 1000000)
+        // O 54
+        // R
+        // -083334
+        // /
+        // 1000000)
         // )
         makeGlyph('Q', new Dimen(ONE_777781 / TEN_6), // CHARWD
-                  new Dimen(ONE_683332 / TEN_6), // CHARHT
-                  new Dimen(Dimen.ONE * 194445 / TEN_6), // CHARDP
-                  Dimen.ZERO_PT);
+            new Dimen(ONE_683332 / TEN_6), // CHARHT
+            new Dimen(Dimen.ONE * 194445 / TEN_6), // CHARDP
+            Dimen.ZERO_PT);
         g = makeGlyph('R', new Dimen(Dimen.ONE * 736113 / TEN_6), // CHARWD
-                      new Dimen(ONE_683332 / TEN_6) // CHARHT
-        );
+            new Dimen(ONE_683332 / TEN_6) // CHARHT
+                );
         // (COMMENT
         g.addKern('t', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C t R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('C', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C C R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('O', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C O R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('G', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C G R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('U', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C U R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('Q', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C Q R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('T', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C T R
-                                                                // -083334 /
-                                                                // 1000000)
+        // -083334 /
+        // 1000000)
         g.addKern('Y', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C Y R
-                                                                // -083334 /
-                                                                // 1000000)
+        // -083334 /
+        // 1000000)
         g.addKern('V', new Dimen(Dimen.ONE * -111112 / TEN_6)); // (KRN C V R
-                                                                // -111112 /
-                                                                // 1000000)
+        // -111112 /
+        // 1000000)
         g.addKern('W', new Dimen(Dimen.ONE * -111112 / TEN_6)); // (KRN C W R
-                                                                // -111112 /
-                                                                // 1000000)
+        // -111112 /
+        // 1000000)
         // )
         makeGlyph('S', new Dimen(Dimen.ONE * 555557 / TEN_6), // CHARWD
-                  new Dimen(ONE_683332 / TEN_6) // CHARHT
+            new Dimen(ONE_683332 / TEN_6) // CHARHT
         );
         g = makeGlyph('T', new Dimen(ONE_722224 / TEN_6), // CHARWD
-                      new Dimen(ONE_683332 / TEN_6) // CHARHT
-        );
+            new Dimen(ONE_683332 / TEN_6) // CHARHT
+                );
         // (COMMENT
         g.addKern('y', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C y R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('e', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C e R
-                                                                // -083334 /
-                                                                // 1000000)
+        // -083334 /
+        // 1000000)
         g.addKern('o', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C o R
-                                                                // -083334 /
-                                                                // 1000000)
+        // -083334 /
+        // 1000000)
         g.addKern('r', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C r R
-                                                                // -083334 /
-                                                                // 1000000)
+        // -083334 /
+        // 1000000)
         g.addKern('a', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C a R
-                                                                // -083334 /
-                                                                // 1000000)
+        // -083334 /
+        // 1000000)
         g.addKern('A', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C A R
-                                                                // -083334 /
-                                                                // 1000000)
+        // -083334 /
+        // 1000000)
         g.addKern('u', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C u R
-                                                                // -083334 /
-                                                                // 1000000)
+        // -083334 /
+        // 1000000)
         // )
         makeGlyph('U', new Dimen(Dimen.ONE * 750002 / TEN_6), // CHARWD
-                  new Dimen(ONE_683332 / TEN_6) // CHARHT
+            new Dimen(ONE_683332 / TEN_6) // CHARHT
         );
         g = makeGlyph('V', new Dimen(Dimen.ONE * 750002 / TEN_6), // CHARWD
-                      new Dimen(ONE_683332 / TEN_6), // CHARHT
-                      Dimen.ZERO_PT, new Dimen(Dimen.ONE * 13888 / TEN_6) // CHARIC
-        );
+            new Dimen(ONE_683332 / TEN_6), // CHARHT
+            Dimen.ZERO_PT, new Dimen(Dimen.ONE * 13888 / TEN_6) // CHARIC
+                );
         // (COMMENT
         g.addKern('o', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C o R
-                                                                // -083334 /
-                                                                // 1000000)
+        // -083334 /
+        // 1000000)
         g.addKern('e', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C e R
-                                                                // -083334 /
-                                                                // 1000000)
+        // -083334 /
+        // 1000000)
         g.addKern('u', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C u R
-                                                                // -083334 /
-                                                                // 1000000)
+        // -083334 /
+        // 1000000)
         g.addKern('r', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C r R
-                                                                // -083334 /
-                                                                // 1000000)
+        // -083334 /
+        // 1000000)
         g.addKern('a', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C a R
-                                                                // -083334 /
-                                                                // 1000000)
+        // -083334 /
+        // 1000000)
         g.addKern('A', new Dimen(Dimen.ONE * -111112 / TEN_6)); // (KRN C A R
-                                                                // -111112 /
-                                                                // 1000000)
+        // -111112 /
+        // 1000000)
         g.addKern('O', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C O R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('C', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C C R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('G', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C G R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('Q', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C Q R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         // )
         g = makeGlyph('W', new Dimen(Dimen.ONE * 1027781 / TEN_6), // CHARWD
-                      new Dimen(ONE_683332 / TEN_6), // CHARHT
-                      Dimen.ZERO_PT, new Dimen(Dimen.ONE * 13888 / TEN_6) // CHARIC
-        );
+            new Dimen(ONE_683332 / TEN_6), // CHARHT
+            Dimen.ZERO_PT, new Dimen(Dimen.ONE * 13888 / TEN_6) // CHARIC
+                );
         // (COMMENT
         g.addKern('o', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C o R
-                                                                // -083334 /
-                                                                // 1000000)
+        // -083334 /
+        // 1000000)
         g.addKern('e', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C e R
-                                                                // -083334 /
-                                                                // 1000000)
+        // -083334 /
+        // 1000000)
         g.addKern('u', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C u R
-                                                                // -083334 /
-                                                                // 1000000)
+        // -083334 /
+        // 1000000)
         g.addKern('r', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C r R
-                                                                // -083334 /
-                                                                // 1000000)
+        // -083334 /
+        // 1000000)
         g.addKern('a', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C a R
-                                                                // -083334 /
-                                                                // 1000000)
+        // -083334 /
+        // 1000000)
         g.addKern('A', new Dimen(Dimen.ONE * -111112 / TEN_6)); // (KRN C A R
-                                                                // -111112 /
-                                                                // 1000000)
+        // -111112 /
+        // 1000000)
         g.addKern('O', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C O R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('C', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C C R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('G', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C G R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('Q', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C Q R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         // )
         g = makeGlyph('X', new Dimen(Dimen.ONE * 750002 / TEN_6), // CHARWD
-                      new Dimen(ONE_683332 / TEN_6) // CHARHT
-        );
+            new Dimen(ONE_683332 / TEN_6) // CHARHT
+                );
         // (COMMENT
         g.addKern('O', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C O R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('C', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C C R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('G', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C G R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('Q', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C Q R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         // )
         g = makeGlyph('Y', new Dimen(Dimen.ONE * 750002 / TEN_6), // CHARWD
-                      new Dimen(ONE_683332 / TEN_6), // CHARHT
-                      new Dimen(Dimen.ONE * 0), // CHARDP
-                      new Dimen(Dimen.ONE * 25 / 1000) // CHARIC
-        );
+            new Dimen(ONE_683332 / TEN_6), // CHARHT
+            new Dimen(Dimen.ONE * 0), // CHARDP
+            new Dimen(Dimen.ONE * 25 / 1000) // CHARIC
+                );
         // (COMMENT
         g.addKern('e', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C e R
-                                                                // -083334 /
-                                                                // 1000000)
+        // -083334 /
+        // 1000000)
         g.addKern('o', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C o R
-                                                                // -083334 /
-                                                                // 1000000)
+        // -083334 /
+        // 1000000)
         g.addKern('r', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C r R
-                                                                // -083334 /
-                                                                // 1000000)
+        // -083334 /
+        // 1000000)
         g.addKern('a', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C a R
-                                                                // -083334 /
-                                                                // 1000000)
+        // -083334 /
+        // 1000000)
         g.addKern('A', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C A R
-                                                                // -083334 /
-                                                                // 1000000)
+        // -083334 /
+        // 1000000)
         g.addKern('u', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C u R
-                                                                // -083334 /
-                                                                // 1000000)
+        // -083334 /
+        // 1000000)
         // )
         makeGlyph('Z', new Dimen(Dimen.ONE * 611113 / TEN_6), // CHARWD
-                  new Dimen(ONE_683332 / TEN_6) // CHARHT
+            new Dimen(ONE_683332 / TEN_6) // CHARHT
         );
         makeGlyph('\133', new Dimen(Dimen.ONE * 277779 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 75 / 100), // CHARHT
-                  new Dimen(Dimen.ONE * 25 / 100), // CHARDP
-                  Dimen.ZERO_PT);
+            new Dimen(Dimen.ONE * 75 / 100), // CHARHT
+            new Dimen(Dimen.ONE * 25 / 100), // CHARDP
+            Dimen.ZERO_PT);
         makeGlyph('\134', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
+            new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
         );
         makeGlyph('\135', new Dimen(Dimen.ONE * 277779 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 75 / 100), // CHARHT
-                  new Dimen(Dimen.ONE * 25 / 100), // CHARDP
-                  Dimen.ZERO_PT);
+            new Dimen(Dimen.ONE * 75 / 100), // CHARHT
+            new Dimen(Dimen.ONE * 25 / 100), // CHARDP
+            Dimen.ZERO_PT);
         makeGlyph('\136', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
+            new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
         );
         makeGlyph('\137', new Dimen(Dimen.ONE * 277779 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 667859 / TEN_6) // CHARHT
+            new Dimen(Dimen.ONE * 667859 / TEN_6) // CHARHT
         );
         g = makeGlyph('\140', new Dimen(Dimen.ONE * 277779 / TEN_6), // CHARWD
-                      new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
-        );
+            new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
+                );
         // (COMMENT
         g.addLig((char) 0140, (char) 0134); // (LIG O 140 O 134)
         // )
         g = makeGlyph('a', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-                      new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
-        );
+            new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
+                );
         // (COMMENT
         g.addKern('v', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C v R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('j', new Dimen(Dimen.ONE * 55555 / TEN_6)); // (KRN C j R
-                                                                // 055555 /
-                                                                // 1000000)
+        // 055555 /
+        // 1000000)
         g.addKern('y', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C y R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('w', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C w R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         // )
         g = makeGlyph('b', new Dimen(Dimen.ONE * 555557 / TEN_6), // CHARWD
-                      new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
-        );
+            new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
+                );
         // (COMMENT
         g.addKern('e', new Dimen(Dimen.ONE * 27779 / TEN_6)); // (KRN C e R
-                                                                // 027779 /
-                                                                // 1000000)
+        // 027779 /
+        // 1000000)
         g.addKern('o', new Dimen(Dimen.ONE * 27779 / TEN_6)); // (KRN C o R
-                                                                // 027779 /
-                                                                // 1000000)
+        // 027779 /
+        // 1000000)
         g.addKern('x', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C x R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('d', new Dimen(Dimen.ONE * 27779 / TEN_6)); // (KRN C d R
-                                                                // 027779 /
-                                                                // 1000000)
+        // 027779 /
+        // 1000000)
         g.addKern('c', new Dimen(Dimen.ONE * 27779 / TEN_6)); // (KRN C c R
-                                                                // 027779 /
-                                                                // 1000000)
+        // 027779 /
+        // 1000000)
         g.addKern('q', new Dimen(Dimen.ONE * 27779 / TEN_6)); // (KRN C q R
-                                                                // 027779 /
-                                                                // 1000000)
+        // 027779 /
+        // 1000000)
         g.addKern('v', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C v R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('j', new Dimen(Dimen.ONE * 55555 / TEN_6)); // (KRN C j R
-                                                                // 055555 /
-                                                                // 1000000)
+        // 055555 /
+        // 1000000)
         g.addKern('y', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C y R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('w', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C w R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         // )
         g = makeGlyph('c', new Dimen(Dimen.ONE * 444446 / TEN_6), // CHARWD
-                      new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
-        );
+            new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
+                );
         // (COMMENT
         g.addKern('h', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C h R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('k', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C k R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         // )
         makeGlyph('d', new Dimen(Dimen.ONE * 555557 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
+            new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
         );
         makeGlyph('e', new Dimen(Dimen.ONE * 444446 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
+            new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
         );
         g = g = g = makeGlyph('f', new Dimen(Dimen.ONE * 305557 / TEN_6), // CHARWD
-                              new Dimen(Dimen.ONE * 694445 / TEN_6), // CHARHT
-                              Dimen.ZERO_PT, new Dimen(Dimen.ONE * 77779
-                                                       / TEN_6) // CHARIC
-        );
+            new Dimen(Dimen.ONE * 694445 / TEN_6), // CHARHT
+            Dimen.ZERO_PT, new Dimen(Dimen.ONE * 77779 / TEN_6) // CHARIC
+                );
         // (COMMENT
         g.addLig('i', (char) 014); // (LIG C i O 14)
         g.addLig('f', (char) 013); // (LIG C f O 13)
         g.addLig('l', (char) 015); // (LIG C l O 15)
         g.addKern((char) 047, new Dimen(Dimen.ONE * 77779 / TEN_6)); // (KRN
-                                                                        // O 47
-                                                                        // R
-                                                                        // 077779
-                                                                        // /
-                                                                        // 1000000)
+        // O 47
+        // R
+        // 077779
+        // /
+        // 1000000)
         g.addKern((char) 077, new Dimen(Dimen.ONE * 77779 / TEN_6)); // (KRN
-                                                                        // O 77
-                                                                        // R
-                                                                        // 077779
-                                                                        // /
-                                                                        // 1000000)
+        // O 77
+        // R
+        // 077779
+        // /
+        // 1000000)
         g.addKern((char) 041, new Dimen(Dimen.ONE * 77779 / TEN_6)); // (KRN
-                                                                        // O 41
-                                                                        // R
-                                                                        // 077779
-                                                                        // /
-                                                                        // 1000000)
+        // O 41
+        // R
+        // 077779
+        // /
+        // 1000000)
         g.addKern((char) 051, new Dimen(Dimen.ONE * 77779 / TEN_6)); // (KRN
-                                                                        // O 51
-                                                                        // R
-                                                                        // 077779
-                                                                        // /
-                                                                        // 1000000)
+        // O 51
+        // R
+        // 077779
+        // /
+        // 1000000)
         g.addKern((char) 0135, new Dimen(Dimen.ONE * 77779 / TEN_6)); // (KRN
-                                                                        // O 135
-                                                                        // R
-                                                                        // 077779
-                                                                        // /
-                                                                        // 1000000)
+        // O 135
+        // R
+        // 077779
+        // /
+        // 1000000)
         // )
         g = makeGlyph('g', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-                      new Dimen(Dimen.ONE * 430555 / TEN_6), // CHARHT
-                      new Dimen(Dimen.ONE * 194445 / TEN_6), // CHARDP
-                      new Dimen(Dimen.ONE * 13888 / TEN_6) // CHARIC
-        );
+            new Dimen(Dimen.ONE * 430555 / TEN_6), // CHARHT
+            new Dimen(Dimen.ONE * 194445 / TEN_6), // CHARDP
+            new Dimen(Dimen.ONE * 13888 / TEN_6) // CHARIC
+                );
         // (COMMENT
         g.addKern('j', new Dimen(Dimen.ONE * 27779 / TEN_6)); // (KRN C j R
-                                                                // 027779 /
-                                                                // 1000000)
+        // 027779 /
+        // 1000000)
         // )
         g = makeGlyph('h', new Dimen(Dimen.ONE * 555557 / TEN_6), // CHARWD
-                      new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
-        );
+            new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
+                );
         // (COMMENT
         g.addKern('t', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C t R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('u', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C u R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('b', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C b R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('y', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C y R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('v', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C v R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('w', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C w R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         // )
         makeGlyph('i', new Dimen(Dimen.ONE * 277779 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 667859 / TEN_6) // CHARHT
+            new Dimen(Dimen.ONE * 667859 / TEN_6) // CHARHT
         );
         makeGlyph('j', new Dimen(Dimen.ONE * 305557 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 667859 / TEN_6), // CHARHT
-                  new Dimen(Dimen.ONE * 194445 / TEN_6), // CHARDP
-                  Dimen.ZERO_PT);
+            new Dimen(Dimen.ONE * 667859 / TEN_6), // CHARHT
+            new Dimen(Dimen.ONE * 194445 / TEN_6), // CHARDP
+            Dimen.ZERO_PT);
         g = makeGlyph('k', new Dimen(Dimen.ONE * 527781 / TEN_6), // CHARWD
-                      new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
-        );
+            new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
+                );
         // (COMMENT
         g.addKern('a', new Dimen(Dimen.ONE * -55555 / TEN_6)); // (KRN C a R
-                                                                // -055555 /
-                                                                // 1000000)
+        // -055555 /
+        // 1000000)
         g.addKern('e', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C e R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('a', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C a R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('o', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C o R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('c', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C c R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         // )
         makeGlyph('l', new Dimen(Dimen.ONE * 277779 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
+            new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
         );
         g = makeGlyph('m', new Dimen(Dimen.ONE * 833336 / TEN_6), // CHARWD
-                      new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
-        );
+            new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
+                );
         // (COMMENT
         g.addKern('t', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C t R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('u', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C u R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('b', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C b R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('y', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C y R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('v', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C v R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('w', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C w R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         // )
         g = makeGlyph('n', new Dimen(Dimen.ONE * 555557 / TEN_6), // CHARWD
-                      new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
-        );
+            new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
+                );
         // (COMMENT
         g.addKern('t', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C t R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('u', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C u R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('b', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C b R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('y', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C y R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('v', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C v R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('w', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C w R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         // )
         g = makeGlyph('o', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-                      new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
-        );
+            new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
+                );
         // (COMMENT
         g.addKern('e', new Dimen(Dimen.ONE * 27779 / TEN_6)); // (KRN C e R
-                                                                // 027779 /
-                                                                // 1000000)
+        // 027779 /
+        // 1000000)
         g.addKern('o', new Dimen(Dimen.ONE * 27779 / TEN_6)); // (KRN C o R
-                                                                // 027779 /
-                                                                // 1000000)
+        // 027779 /
+        // 1000000)
         g.addKern('x', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C x R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('d', new Dimen(Dimen.ONE * 27779 / TEN_6)); // (KRN C d R
-                                                                // 027779 /
-                                                                // 1000000)
+        // 027779 /
+        // 1000000)
         g.addKern('c', new Dimen(Dimen.ONE * 27779 / TEN_6)); // (KRN C c R
-                                                                // 027779 /
-                                                                // 1000000)
+        // 027779 /
+        // 1000000)
         g.addKern('q', new Dimen(Dimen.ONE * 27779 / TEN_6)); // (KRN C q R
-                                                                // 027779 /
-                                                                // 1000000)
+        // 027779 /
+        // 1000000)
         g.addKern('v', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C v R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('j', new Dimen(Dimen.ONE * 55555 / TEN_6)); // (KRN C j R
-                                                                // 055555 /
-                                                                // 1000000)
+        // 055555 /
+        // 1000000)
         g.addKern('y', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C y R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('w', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C w R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         // )
         g = makeGlyph('p', new Dimen(Dimen.ONE * 555557 / TEN_6), // CHARWD
-                      new Dimen(Dimen.ONE * 430555 / TEN_6), // CHARHT
-                      new Dimen(Dimen.ONE * 194445 / TEN_6), // CHARDP
-                      Dimen.ZERO_PT);
+            new Dimen(Dimen.ONE * 430555 / TEN_6), // CHARHT
+            new Dimen(Dimen.ONE * 194445 / TEN_6), // CHARDP
+            Dimen.ZERO_PT);
         // (COMMENT
         g.addKern('e', new Dimen(Dimen.ONE * 27779 / TEN_6)); // (KRN C e R
-                                                                // 027779 /
-                                                                // 1000000)
+        // 027779 /
+        // 1000000)
         g.addKern('o', new Dimen(Dimen.ONE * 27779 / TEN_6)); // (KRN C o R
-                                                                // 027779 /
-                                                                // 1000000)
+        // 027779 /
+        // 1000000)
         g.addKern('x', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C x R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('d', new Dimen(Dimen.ONE * 27779 / TEN_6)); // (KRN C d R
-                                                                // 027779 /
-                                                                // 1000000)
+        // 027779 /
+        // 1000000)
         g.addKern('c', new Dimen(Dimen.ONE * 27779 / TEN_6)); // (KRN C c R
-                                                                // 027779 /
-                                                                // 1000000)
+        // 027779 /
+        // 1000000)
         g.addKern('q', new Dimen(Dimen.ONE * 27779 / TEN_6)); // (KRN C q R
-                                                                // 027779 /
-                                                                // 1000000)
+        // 027779 /
+        // 1000000)
         g.addKern('v', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C v R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('j', new Dimen(Dimen.ONE * 55555 / TEN_6)); // (KRN C j R
-                                                                // 055555 /
-                                                                // 1000000)
+        // 055555 /
+        // 1000000)
         g.addKern('y', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C y R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('w', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C w R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         // )
         makeGlyph('q', new Dimen(Dimen.ONE * 527779 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 430555 / TEN_6), // CHARHT
-                  new Dimen(Dimen.ONE * 194445 / TEN_6), // CHARDP
-                  Dimen.ZERO_PT);
+            new Dimen(Dimen.ONE * 430555 / TEN_6), // CHARHT
+            new Dimen(Dimen.ONE * 194445 / TEN_6), // CHARDP
+            Dimen.ZERO_PT);
         makeGlyph('r', new Dimen(Dimen.ONE * 391668 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
+            new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
         );
         makeGlyph('s', new Dimen(Dimen.ONE * 394445 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
+            new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
         );
         g = makeGlyph('t', new Dimen(Dimen.ONE * 38889 / 100000), // CHARWD
-                      new Dimen(Dimen.ONE * 61508 / 100000) // CHARHT
-        );
+            new Dimen(Dimen.ONE * 61508 / 100000) // CHARHT
+                );
         // (COMMENT
         g.addKern('y', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C y R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('w', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C w R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         // )
         g = makeGlyph('u', new Dimen(Dimen.ONE * 555557 / TEN_6), // CHARWD
-                      new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
-        );
+            new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
+                );
         // (COMMENT
         g.addKern('w', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C w R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         // )
         g = makeGlyph('v', new Dimen(Dimen.ONE * 527781 / TEN_6), // CHARWD
-                      new Dimen(Dimen.ONE * 430555 / TEN_6), // CHARHT
-                      Dimen.ZERO_PT, new Dimen(Dimen.ONE * 13888 / TEN_6) // CHARIC
-        );
+            new Dimen(Dimen.ONE * 430555 / TEN_6), // CHARHT
+            Dimen.ZERO_PT, new Dimen(Dimen.ONE * 13888 / TEN_6) // CHARIC
+                );
         // (COMMENT
         g.addKern('a', new Dimen(Dimen.ONE * -55555 / TEN_6)); // (KRN C a R
-                                                                // -055555 /
-                                                                // 1000000)
+        // -055555 /
+        // 1000000)
         g.addKern('e', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C e R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('a', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C a R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('o', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C o R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('c', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C c R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         // )
         g = makeGlyph('w', new Dimen(ONE_722224 / TEN_6), // CHARWD
-                      new Dimen(Dimen.ONE * 430555 / TEN_6), // CHARHT
-                      Dimen.ZERO_PT, new Dimen(Dimen.ONE * 13888 / TEN_6) // CHARIC
-        );
+            new Dimen(Dimen.ONE * 430555 / TEN_6), // CHARHT
+            Dimen.ZERO_PT, new Dimen(Dimen.ONE * 13888 / TEN_6) // CHARIC
+                );
         // (COMMENT
         g.addKern('e', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C e R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('a', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C a R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('o', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C o R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('c', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C c R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         // )
         makeGlyph('x', new Dimen(Dimen.ONE * 527781 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
+            new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
         );
         g = makeGlyph('y', new Dimen(Dimen.ONE * 527781 / TEN_6), // CHARWD
-                      new Dimen(Dimen.ONE * 430555 / TEN_6), // CHARHT
-                      new Dimen(Dimen.ONE * 194445 / TEN_6), // CHARDP
-                      new Dimen(Dimen.ONE * 13888 / TEN_6) // CHARIC
-        );
+            new Dimen(Dimen.ONE * 430555 / TEN_6), // CHARHT
+            new Dimen(Dimen.ONE * 194445 / TEN_6), // CHARDP
+            new Dimen(Dimen.ONE * 13888 / TEN_6) // CHARIC
+                );
         // (COMMENT
         g.addKern('o', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C o R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('e', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C e R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern('a', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C a R
-                                                                // -027779 /
-                                                                // 1000000)
+        // -027779 /
+        // 1000000)
         g.addKern((char) 056, new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN
-                                                                        // O 56
-                                                                        // R
-                                                                        // -083334
-                                                                        // /
-                                                                        // 1000000)
+        // O 56
+        // R
+        // -083334
+        // /
+        // 1000000)
         g.addKern((char) 054, new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN
-                                                                        // O 54
-                                                                        // R
-                                                                        // -083334
-                                                                        // /
-                                                                        // 1000000)
+        // O 54
+        // R
+        // -083334
+        // /
+        // 1000000)
         // )
         makeGlyph('z', new Dimen(Dimen.ONE * 444446 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
+            new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
         );
         g = makeGlyph('\173', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-                      new Dimen(Dimen.ONE * 430555 / TEN_6), // CHARHT
-                      Dimen.ZERO_PT, new Dimen(Dimen.ONE * 27779 / TEN_6) // CHARIC
-        );
+            new Dimen(Dimen.ONE * 430555 / TEN_6), // CHARHT
+            Dimen.ZERO_PT, new Dimen(Dimen.ONE * 27779 / TEN_6) // CHARIC
+                );
         // (COMMENT
         g.addLig((char) 055, (char) 0174); // (LIG O 55 O 174)
         // )
         makeGlyph('\174', new Dimen(Dimen.ONE * 1000003 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 430555 / TEN_6), // CHARHT
-                  Dimen.ZERO_PT, new Dimen(Dimen.ONE * 27779 / TEN_6) // CHARIC
+            new Dimen(Dimen.ONE * 430555 / TEN_6), // CHARHT
+            Dimen.ZERO_PT, new Dimen(Dimen.ONE * 27779 / TEN_6) // CHARIC
         );
         makeGlyph('\175', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
+            new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
         );
         makeGlyph('\176', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 667859 / TEN_6) // CHARHT
+            new Dimen(Dimen.ONE * 667859 / TEN_6) // CHARHT
         );
         makeGlyph('\177', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-                  new Dimen(Dimen.ONE * 667859 / TEN_6) // CHARHT
+            new Dimen(Dimen.ONE * 667859 / TEN_6) // CHARHT
         );
 
     }
@@ -1521,7 +1521,11 @@ public class CMR10 implements Font, Serializable {
     }
 
     /**
-     * @see org.extex.font.type.Fount#getDesignSize()
+     * Returns the design size of the font.
+     *
+     * @return the design size of the font
+     *
+     * @see org.extex.interpreter.type.font.Font#getDesignSize()
      */
     public FixedDimen getDesignSize() {
 
@@ -1554,22 +1558,34 @@ public class CMR10 implements Font, Serializable {
     }
 
     /**
-     * @see org.extex.font.type.Fount#getFontKey()
+     * Returns the FontKey for this font.
+     *
+     * @return the FontKey for this font
+     *
+     * @see org.extex.interpreter.type.font.Font#getFontKey()
      */
     public FontKey getFontKey() {
 
-        return null;
+        return fontKey;
     }
 
     /**
-     * @see org.extex.font.type.Fount#getFontName()
+     * Return the font name.
+     *
+     * @return the font name
+     *
+     * @see org.extex.interpreter.type.font.Font#getFontName()
      */
     public String getFontName() {
 
-        return "CMR10";
+        return "cmr10";
     }
 
     /**
+     * Returns the hyphen character.
+     *
+     * @return the hyphen character
+     *
      * @see org.extex.interpreter.type.font.Font#getHyphenChar()
      */
     public UnicodeChar getHyphenChar() {
@@ -1578,22 +1594,10 @@ public class CMR10 implements Font, Serializable {
     }
 
     /**
-     * @see org.extex.font.type.Fount#getLetterSpacing()
-     */
-    public FixedGlue getLetterSpacing() {
-
-        return null;
-    }
-
-    /**
-     * @see org.extex.font.type.Fount#getProperty(java.lang.String)
-     */
-    public String getProperty(final String key) {
-
-        return null;
-    }
-
-    /**
+     * Returns the skew char.
+     *
+     * @return the skew char
+     *
      * @see org.extex.interpreter.type.font.Font#getSkewChar()
      */
     public UnicodeChar getSkewChar() {
@@ -1602,7 +1606,11 @@ public class CMR10 implements Font, Serializable {
     }
 
     /**
-     * @see org.extex.font.type.Fount#getSpace()
+     * Returns the size of the 'space'.
+     *
+     * @return the size of the 'space'.
+     *
+     * @see org.extex.interpreter.type.font.Font#getSpace()
      */
     public FixedGlue getSpace() {
 
@@ -1611,11 +1619,11 @@ public class CMR10 implements Font, Serializable {
 
     /**
      * TODO gene: missing JavaDoc
-     * 
+     *
      * @param c character code
      * @param w width
      * @param h height
-     * 
+     *
      * @return ...
      */
     private MyGlyph makeGlyph(final char c, final Dimen w, final Dimen h) {
@@ -1628,13 +1636,13 @@ public class CMR10 implements Font, Serializable {
 
     /**
      * TODO gene: missing JavaDoc
-     * 
+     *
      * @param c ...
      * @param w width
      * @param h height
      * @param d ...
      * @param ic ...
-     * 
+     *
      * @return ...
      */
     private MyGlyph makeGlyph(final char c, final Dimen w, final Dimen h,
@@ -1647,7 +1655,13 @@ public class CMR10 implements Font, Serializable {
     }
 
     /**
-     * @see org.extex.interpreter.type.font.Font#setFontDimen( java.lang.String,
+     * Set the new value for the font parameter.
+     *
+     * @param key the name of the parameter
+     * @param value the value to set
+     *
+     * @see org.extex.interpreter.type.font.Font#setFontDimen(
+     *      java.lang.String,
      *      org.extex.interpreter.type.dimen.Dimen)
      */
     public void setFontDimen(final String key, final Dimen value) {
@@ -1656,6 +1670,10 @@ public class CMR10 implements Font, Serializable {
     }
 
     /**
+     * Set the hyphen character.
+     *
+     * @param hyphen the hyphen character
+     *
      * @see org.extex.interpreter.type.font.Font#setHyphenChar(
      *      org.extex.type.UnicodeChar)
      */
@@ -1665,6 +1683,10 @@ public class CMR10 implements Font, Serializable {
     }
 
     /**
+     * Set the skew character.
+     *
+     * @param skew the skew character
+     *
      * @see org.extex.interpreter.type.font.Font#setSkewChar(
      *      org.extex.type.UnicodeChar)
      */
@@ -1674,110 +1696,181 @@ public class CMR10 implements Font, Serializable {
     }
 
     /**
-     * @see org.extex.interpreter.type.font.Font#setEfCode(org.extex.type.UnicodeChar,
-     *      long)
+     * Setter for the ef code.
+     * The ef code influences the stretchability of characters. It has a
+     * positive value. 1000 means "normal" stretchability.
+     *
+     * @param uc the character
+     * @param code the associated code
+     *
+     * @see org.extex.interpreter.type.font.Font#setEfCode(
+     *      org.extex.type.UnicodeChar, long)
      */
-    public void setEfCode(UnicodeChar uc, long code) {
+    public void setEfCode(final UnicodeChar uc, final long code) {
 
-        // TODO gene: setEfcode unimplemented
-
+        efcode.put(uc, new Long(code));
     }
 
     /**
-     * @see org.extex.interpreter.type.font.Font#getEfCode(org.extex.type.UnicodeChar)
+     * The field <tt>efcode</tt> contains the ef code.
      */
-    public long getEfCode(UnicodeChar uc) {
+    private Map efcode = new HashMap();
 
-        // TODO gene: getEfcode unimplemented
-        return 0;
+    /**
+     * Getter for the ef code.
+     *
+     * @param uc the character
+     *
+     * @return the ef code
+     *
+     * @see org.extex.interpreter.type.font.Font#getEfCode(
+     *      org.extex.type.UnicodeChar)
+     */
+    public long getEfCode(final UnicodeChar uc) {
+
+        Long x = (Long) efcode.get(uc);
+        return (x == null ? 0 : x.longValue());
     }
 
     /**
+     * Returns the depth of the character.
+     *
+     * @param uc the character
+     *
+     * @return the depth of the character
+     *
      * @see org.extex.interpreter.type.font.Font#getDepth(org.extex.type.UnicodeChar)
      */
-    public FixedGlue getDepth(UnicodeChar uc) {
+    public FixedGlue getDepth(final UnicodeChar uc) {
 
         // TODO gene: getDepth unimplemented
         return null;
     }
 
     /**
+     * Returns the height of a character.
+     *
+     * @param uc the character
+     *
+     * @return the height of the character
+     *
      * @see org.extex.interpreter.type.font.Font#getHeight(org.extex.type.UnicodeChar)
      */
-    public FixedGlue getHeight(UnicodeChar uc) {
+    public FixedGlue getHeight(final UnicodeChar uc) {
 
         // TODO gene: getHeight unimplemented
         return null;
     }
 
     /**
+     * Returns the italic correction of a character.
+     *
+     * @param uc the character
+     *
+     * @return the italic correction of the character
+     *
      * @see org.extex.interpreter.type.font.Font#getItalicCorrection(org.extex.type.UnicodeChar)
      */
-    public FixedDimen getItalicCorrection(UnicodeChar uc) {
+    public FixedDimen getItalicCorrection(final UnicodeChar uc) {
 
         // TODO gene: getItalicCorrection unimplemented
         return null;
     }
 
     /**
-     * @see org.extex.interpreter.type.font.Font#getKerning(org.extex.type.UnicodeChar,
+     * Returns the kerning between two characters.
+     *
+     * @param uc1 the first character
+     * @param uc2 the second character
+     *
+     * @return the kerning between two characters
+     *
+     * @see org.extex.interpreter.type.font.Font#getKerning(
+     *      org.extex.type.UnicodeChar,
      *      org.extex.type.UnicodeChar)
      */
-    public FixedDimen getKerning(UnicodeChar uc1, UnicodeChar uc2) {
+    public FixedDimen getKerning(final UnicodeChar uc1, final UnicodeChar uc2) {
 
         // TODO gene: getKerning unimplemented
         return null;
     }
 
     /**
-     * @see org.extex.interpreter.type.font.Font#getLigature(org.extex.type.UnicodeChar,
+     * Returns the ligature for two characters.
+     *
+     * @param uc1 the first character
+     * @param uc2 the second character
+     *
+     * @return Returns the ligature for two characters
+     *
+     * @see org.extex.interpreter.type.font.Font#getLigature(
+     *      org.extex.type.UnicodeChar,
      *      org.extex.type.UnicodeChar)
      */
-    public UnicodeChar getLigature(UnicodeChar uc1, UnicodeChar uc2) {
+    public UnicodeChar getLigature(final UnicodeChar uc1, final UnicodeChar uc2) {
 
         // TODO gene: getLigature unimplemented
         return null;
     }
 
     /**
-     * @see org.extex.interpreter.type.font.Font#getWidth(org.extex.type.UnicodeChar)
+     * Returns the width of a character.
+     *
+     * @param uc the character
+     *
+     * @return the width of the character
+     *
+     * @see org.extex.interpreter.type.font.Font#getWidth(
+     *      org.extex.type.UnicodeChar)
      */
-    public FixedGlue getWidth(UnicodeChar uc) {
+    public FixedGlue getWidth(final UnicodeChar uc) {
 
         // TODO gene: getWidth unimplemented
         return null;
     }
 
     /**
-     * @see org.extex.interpreter.type.font.Font#hasGlyph(org.extex.type.UnicodeChar)
+     * Determine whether the glyph for a given character is present in this font.
+     *
+     * @param uc the character
+     *
+     * @return <code>true</code> iff the glyph is present
+     *
+     * @see org.extex.interpreter.type.font.Font#hasGlyph(
+     *      org.extex.type.UnicodeChar)
      */
-    public boolean hasGlyph(UnicodeChar uc) {
+    public boolean hasGlyph(final UnicodeChar uc) {
 
         return true;
     }
 
-    public void setActualSize(Dimen size) {
-
-        // TODO mgn: setActualSize unimplemented
-
-    }
-
-    public void setScaleFactor(Count scaleFactor) {
-
-        // TODO mgn: setScaleFactor unimplemented
-
-    }
-
+    /**
+     * Returns the scale factor of the font.
+     *
+     * @return the scale factor of the font
+     *
+     * @see org.extex.interpreter.type.font.Font#getScaleFactor()
+     */
     public FixedCount getScaleFactor() {
 
-        // TODO mgn: getScalefactor unimplemented
-        return null;
+        return Count.THOUSAND;
     }
 
+    /**
+     * Returns the actual FontKey for this font.
+     *
+     * @return the actual FontKey for this font.
+     *
+     * @see org.extex.interpreter.type.font.Font#getActualFontKey()
+     */
     public FontKey getActualFontKey() {
 
-        // TODO mgn: getActualFontKey unimplemented
-        return null;
+        return fontKey;
     }
+
+    /**
+     * The field <tt>fontKey</tt> contains the font key.
+     */
+    private FontKey fontKey = new FontKeyFactory().newInstance("cmr10");
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -28,7 +28,6 @@ import org.extex.language.hyphenation.base.BaseHyphenationTable;
 import org.extex.language.hyphenation.exception.HyphenationException;
 import org.extex.language.ligature.impl.LigatureBuilderImpl;
 import org.extex.language.word.WordTokenizer;
-import org.extex.language.word.impl.ExTeXWords;
 import org.extex.test.font.CMR10;
 import org.extex.type.UnicodeChar;
 import org.extex.typesetter.type.NodeList;
@@ -38,7 +37,6 @@ import org.extex.typesetter.type.node.HorizontalListNode;
 import org.extex.typesetter.type.node.LigatureNode;
 import org.extex.typesetter.type.node.factory.NodeFactory;
 import org.extex.typesetter.type.node.factory.SimpleNodeFactory;
-
 
 /**
  * TODO gene: missing JavaDoc.
@@ -68,8 +66,8 @@ public class ExTeXWordsTest extends TestCase {
     /**
      * The field <tt>tc</tt> contains the typesetting context.
      */
-    private static ModifiableTypesettingContext tc = new TypesettingContextImpl(
-            cmr10);
+    private static ModifiableTypesettingContext tc =
+            new TypesettingContextImpl(cmr10);
 
     {
         BaseHyphenationTable lan = new BaseHyphenationTable();
@@ -87,8 +85,8 @@ public class ExTeXWordsTest extends TestCase {
     /**
      * The field <tt>hyphen</tt> contains the hyphen node.
      */
-    private static CharNode hyphen = (CharNode) nf.getNode(tc, UnicodeChar.get(
-            '-'));
+    private static CharNode hyphen =
+            (CharNode) nf.getNode(tc, UnicodeChar.get('-'));
 
     /**
      * The field <tt>UC_F</tt> contains the character f.
@@ -156,32 +154,32 @@ public class ExTeXWordsTest extends TestCase {
             switch (c) {
                 case '\013':
                     nodes.add(new LigatureNode(tc, UC_FF, //
-                            (CharNode) nf.getNode(tc, UC_F), //
-                            (CharNode) nf.getNode(tc, UC_F)));
+                        (CharNode) nf.getNode(tc, UC_F), //
+                        (CharNode) nf.getNode(tc, UC_F)));
                     break;
                 case '\014':
                     nodes.add(new LigatureNode(tc, UC_FI, //
-                            (CharNode) nf.getNode(tc, UC_F), //
-                            (CharNode) nf.getNode(tc, UC_I)));
+                        (CharNode) nf.getNode(tc, UC_F), //
+                        (CharNode) nf.getNode(tc, UC_I)));
                     break;
                 case '\015':
                     nodes.add(new LigatureNode(tc, UC_FL, //
-                            (CharNode) nf.getNode(tc, UC_F), //
-                            (CharNode) nf.getNode(tc, UC_L)));
+                        (CharNode) nf.getNode(tc, UC_F), //
+                        (CharNode) nf.getNode(tc, UC_L)));
                     break;
                 case '\016':
                     nodes.add(new LigatureNode(tc, UC_FFI, //
-                            new LigatureNode(tc, UC_FF, //
-                                    (CharNode) nf.getNode(tc, UC_F), //
-                                    (CharNode) nf.getNode(tc, UC_F)), //
-                            (CharNode) nf.getNode(tc, UC_I)));
+                        new LigatureNode(tc, UC_FF, //
+                            (CharNode) nf.getNode(tc, UC_F), //
+                            (CharNode) nf.getNode(tc, UC_F)), //
+                        (CharNode) nf.getNode(tc, UC_I)));
                     break;
                 case '\017':
                     nodes.add(new LigatureNode(tc, UC_FFL, //
-                            new LigatureNode(tc, UC_FF, //
-                                    (CharNode) nf.getNode(tc, UC_F), //
-                                    (CharNode) nf.getNode(tc, UC_F)), //
-                            (CharNode) nf.getNode(tc, UC_L)));
+                        new LigatureNode(tc, UC_FF, //
+                            (CharNode) nf.getNode(tc, UC_F), //
+                            (CharNode) nf.getNode(tc, UC_F)), //
+                        (CharNode) nf.getNode(tc, UC_L)));
                     break;
                 default:
                     nodes.add(nf.getNode(tc, UnicodeChar.get(c)));
@@ -364,7 +362,7 @@ public class ExTeXWordsTest extends TestCase {
 
         NodeList nodes = makeList("a\17b");
         wt.insertShy(nodes, 1, //
-                new boolean[]{false, false, true, false}, hyphen);
+            new boolean[]{false, false, true, false}, hyphen);
         assertEquals(3, nodes.size());
         assertTrue(nodes.get(0) instanceof CharNode);
         assertTrue(nodes.get(1) instanceof DiscretionaryNode);
@@ -385,16 +383,16 @@ public class ExTeXWordsTest extends TestCase {
 
         NodeList nodes = makeList("a\17b");
         wt.insertShy(nodes, 1, //
-                new boolean[]{false, true, false}, hyphen);
+            new boolean[]{false, true, false}, hyphen);
         assertEquals(3, nodes.size());
         assertTrue(nodes.get(0) instanceof CharNode);
         assertTrue(nodes.get(1) instanceof DiscretionaryNode);
         DiscretionaryNode d = (DiscretionaryNode) nodes.get(1);
-//        assertTrue(d.getPreBreak().get(0) instanceof CharNode);
-//        assertTrue(d.getPostBreak().get(0) instanceof LigatureNode);
-//        assertTrue(nodes.get(2) instanceof CharNode);
+        assertNotNull(d);
+        //        assertTrue(d.getPreBreak().get(0) instanceof CharNode);
+        //        assertTrue(d.getPostBreak().get(0) instanceof LigatureNode);
+        //        assertTrue(nodes.get(2) instanceof CharNode);
     }
 
-    
     //TODO gene: add test cases for handling of implicit kerns
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -21,14 +21,13 @@ package org.extex;
 
 import java.util.Properties;
 
-import org.extex.ExTeX;
+import junit.framework.TestCase;
+
 import org.extex.font.CoreFontFactory;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.ConfigurationFactory;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.resource.ResourceFinder;
-
-import junit.framework.TestCase;
 
 /**
  * ExTeX-TestRunner.

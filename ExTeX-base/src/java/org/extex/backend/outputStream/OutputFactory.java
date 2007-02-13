@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
@@ -33,8 +33,6 @@ import java.util.Map;
 
 import org.extex.backend.documentWriter.exception.DocumentWriterException;
 import org.extex.backend.documentWriter.exception.OutputStreamOpenException;
-import org.extex.backend.outputStream.OutputStreamFactory;
-import org.extex.backend.outputStream.OutputStreamObserver;
 import org.extex.util.framework.AbstractFactory;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
@@ -198,7 +196,7 @@ public class OutputFactory extends AbstractFactory
             int size = observers.size();
             for (int i = 0; i < size; i++) {
                 ((OutputStreamObserver) observers.get(i)).update(name, type,
-                        stream);
+                    stream);
             }
         }
         return stream;
@@ -220,12 +218,14 @@ public class OutputFactory extends AbstractFactory
     private OutputStream makeOutputStream(final String name, final String type)
             throws DocumentWriterException {
 
-        String ext = (type != null ? type : defaultExtension != null
-                ? defaultExtension
-                : "");
+        String ext =
+                (type != null ? type : defaultExtension != null
+                        ? defaultExtension
+                        : "");
 
         if (handlers != null) {
-            OutputStreamFactory handler = (OutputStreamFactory) handlers.get(ext);
+            OutputStreamFactory handler =
+                    (OutputStreamFactory) handlers.get(ext);
             if (handler != null) {
                 return handler.getOutputStream(name, type);
             }
@@ -235,7 +235,8 @@ public class OutputFactory extends AbstractFactory
         String format;
         if (c != null) {
             try {
-                format = selectConfiguration(ext).getAttribute(FORMAT_ATTRIBUTE);
+                format =
+                        selectConfiguration(ext).getAttribute(FORMAT_ATTRIBUTE);
             } catch (ConfigurationException e) {
                 throw new DocumentWriterException(e);
             }
@@ -261,16 +262,17 @@ public class OutputFactory extends AbstractFactory
             filename = basename + (ext == null ? "" : "." + ext);
         } else {
             filename = MessageFormat.format(format, //
-                    new Object[]{basename, //
-                            (name == null ? "" : name), //
-                            new Long(cnt), //
-                            (ext == null ? "" : ext)});
+                new Object[]{basename, //
+                        (name == null ? "" : name), //
+                        new Long(cnt), //
+                        (ext == null ? "" : ext)});
         }
 
         if (outputDirectories != null) {
             for (int i = 0; i < outputDirectories.length; i++) {
-                OutputStream os = openOutputStream(outputDirectories[i],
-                        filename, isDefault);
+                OutputStream os =
+                        openOutputStream(outputDirectories[i], filename,
+                            isDefault);
                 if (os != null) {
                     return os;
                 }
@@ -282,8 +284,9 @@ public class OutputFactory extends AbstractFactory
                 Configuration cfg = c.getConfiguration(ext);
                 Iterator iter = cfg.iterator(PATH_TAG);
                 while (iter.hasNext()) {
-                    OutputStream os = openOutputStream((String) (iter.next()),
-                            filename, isDefault);
+                    OutputStream os =
+                            openOutputStream((String) (iter.next()), filename,
+                                isDefault);
                     if (os != null) {
                         return os;
                     }
@@ -314,8 +317,9 @@ public class OutputFactory extends AbstractFactory
 
         try {
             File file = new File(dir, filename);
-            OutputStream os = new NamedOutputStream(file.toString(),
-                    new BufferedOutputStream(new FileOutputStream(file)));
+            OutputStream os =
+                    new NamedOutputStream(file.toString(),
+                        new BufferedOutputStream(new FileOutputStream(file)));
             return os;
         } catch (FileNotFoundException e) {
             return null;
@@ -323,6 +327,11 @@ public class OutputFactory extends AbstractFactory
     }
 
     /**
+     * Register an observer which is invoked to notify about any output
+     * stream requested via a call to getOututStream(),
+     *
+     * @param observer the observers to register
+     *
      * @see org.extex.backend.outputStream.OutputStreamFactory#register(
      *      org.extex.backend.outputStream.OutputStreamObserver)
      */
@@ -369,6 +378,11 @@ public class OutputFactory extends AbstractFactory
     }
 
     /**
+     * Setter for the default extension.
+     * The default extension is used when the type specified is <code>null</code>.
+     *
+     * @param extension the default extension
+     *
      * @see org.extex.backend.outputStream.OutputStreamFactory#setExtension(
      *      java.lang.String)
      */

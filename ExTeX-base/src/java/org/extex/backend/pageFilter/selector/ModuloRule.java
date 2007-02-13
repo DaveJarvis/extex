@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -52,7 +52,13 @@ class ModuloRule implements Rule {
     }
 
     /**
-     * @see org.extex.backend.pageFilter.PageSelector.Rule#check(int)
+     * Check that a given page is covered by this rule.
+     *
+     * @param value the number to check
+     *
+     * @return <code>true</code> iff the number is covered
+     *
+     * @see org.extex.backend.pageFilter.selector.Rule#check(int)
      */
     public boolean check(final int value) {
 

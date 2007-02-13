@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -89,14 +89,14 @@ public class PageSelector implements PagePipe {
                 addRule(new IntervalRule(from, from));
             } else if (j == 0) {
                 addRule(new IntervalRule(Integer.MAX_VALUE, Integer.parseInt(s
-                        .substring(1))));
+                    .substring(1))));
             } else if (j == s.length() - 1) {
                 addRule(new IntervalRule(Integer.parseInt(s.substring(0, s
-                        .length() - 2)), Integer.MAX_VALUE));
+                    .length() - 2)), Integer.MAX_VALUE));
             } else {
                 addRule(new IntervalRule(Integer
-                        .parseInt(s.substring(0, j - 1)), Integer.parseInt(s
-                        .substring(j))));
+                    .parseInt(s.substring(0, j - 1)), Integer.parseInt(s
+                    .substring(j))));
             }
             //TODO gene: extend the syntax for mod
         }

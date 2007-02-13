@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -75,10 +75,12 @@ public final class StopObserverList implements StopObserver {
     }
 
     /**
-     * Invoke all observers on the list to inform them of the stop operation.
+     * This method is meant to be invoked just before the engine is stopping.
      *
-     * @see org.extex.interpreter.observer.load.LoadObserver#update(
-     *      org.extex.interpreter.context.Context)
+     * @param interpreter the interpreter to be stopped
+     *
+     * @see org.extex.interpreter.observer.stop.StopObserver#update(
+     *      org.extex.interpreter.Interpreter)
      */
     public void update(final Interpreter interpreter) {
 

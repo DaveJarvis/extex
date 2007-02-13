@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -28,8 +28,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.extex.backend.documentWriter.exception.DocumentWriterException;
-import org.extex.backend.outputStream.OutputStreamFactory;
-import org.extex.backend.outputStream.OutputStreamObserver;
 
 /**
  * The trivial output stream factory is not configurable. It just creates files
@@ -70,8 +68,9 @@ public class TrivialOutputFactory implements OutputStreamFactory {
         File file = new File(".", name + "." + ext);
         NamedOutputStream stream = null;
         try {
-            stream = new NamedOutputStream(file.toString(),
-                    new BufferedOutputStream(new FileOutputStream(file)));
+            stream =
+                    new NamedOutputStream(file.toString(),
+                        new BufferedOutputStream(new FileOutputStream(file)));
         } catch (FileNotFoundException e) {
             throw new DocumentWriterException(e);
         }
@@ -79,7 +78,7 @@ public class TrivialOutputFactory implements OutputStreamFactory {
             int size = observers.size();
             for (int i = 0; i < size; i++) {
                 ((OutputStreamObserver) observers.get(i)).update(name, type,
-                        stream);
+                    stream);
             }
         }
         return stream;

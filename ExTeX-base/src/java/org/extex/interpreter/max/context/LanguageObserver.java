@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -18,7 +18,6 @@
  */
 
 package org.extex.interpreter.max.context;
-
 
 import org.extex.interpreter.context.ContextInternals;
 import org.extex.interpreter.context.observer.count.CountObserver;
@@ -62,7 +61,7 @@ public class LanguageObserver implements CountObserver, TokensObserver {
             Tokens lang = context.getToks("lang");
             if (lang == null || lang.length() == 0) {
                 context.getTypesettingContextFactory().newInstance(
-                        context.getTypesettingContext(), value.toString());
+                    context.getTypesettingContext(), value.toString());
             }
         }
     }
@@ -84,7 +83,7 @@ public class LanguageObserver implements CountObserver, TokensObserver {
                 s = "0";
             }
             context.getTypesettingContextFactory().newInstance(
-                    context.getTypesettingContext(), s);
+                context.getTypesettingContext(), s);
         }
     }
 

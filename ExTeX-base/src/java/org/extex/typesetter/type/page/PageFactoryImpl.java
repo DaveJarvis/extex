@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -53,13 +53,9 @@ import org.extex.typesetter.type.node.SpecialNode;
 import org.extex.typesetter.type.node.VerticalListNode;
 import org.extex.typesetter.type.node.VirtualCharNode;
 import org.extex.typesetter.type.node.WhatsItNode;
-import org.extex.typesetter.type.page.Page;
-import org.extex.typesetter.type.page.PageFactory;
-import org.extex.typesetter.type.page.PageFactoryNodeVisitor;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.framework.logger.LogEnabled;
-
 
 /**
  * This class provides a factory for page instances.
@@ -240,8 +236,8 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
      * The field <tt>x</tt> contains the static mapping from integers to the
      * corresponding index of the count register for the page number.
      */
-    private static final String[] NO = {"0", "1", "2", "3", "4", "5", "6", "7",
-            "8", "9"};
+    private static final String[] NO =
+            {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
     /**
      * The field <tt>logger</tt> contains the logger.
@@ -557,9 +553,9 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
                     if (m.matches()) {
                         try {
                             Dimen width = Dimen.parse(context, //
-                                    new StringSource(m.group(1)), typesetter);
+                                new StringSource(m.group(1)), typesetter);
                             Dimen height = Dimen.parse(context, //
-                                    new StringSource(m.group(2)), typesetter);
+                                new StringSource(m.group(2)), typesetter);
                             page.setMediaWidth(width);
                             page.setMediaHeight(height);
                         } catch (ConfigurationException e) {
@@ -587,8 +583,9 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
     public PageFactoryImpl() {
 
         super();
-        sizePattern = Pattern.compile("papersize="
-                + "([0-9.]+[a-z][a-z]),([0-9.]+[a-z][a-z])");
+        sizePattern =
+                Pattern.compile("papersize="
+                        + "([0-9.]+[a-z][a-z]),([0-9.]+[a-z][a-z])");
     }
 
     /**

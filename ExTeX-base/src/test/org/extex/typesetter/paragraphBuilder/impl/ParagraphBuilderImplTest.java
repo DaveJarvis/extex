@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -57,8 +57,13 @@ public class ParagraphBuilderImplTest extends TestCase {
     private class MockOptions implements TypesetterOptions {
 
         /**
-         * @see de.dante.extex.typesetter.TypesetterOptions#getCountOption(
-         *      java.lang.String)
+         * Getter for a count register.
+         *
+         * @param name the name of the register
+         *
+         * @return the content of the count register
+         *
+         * @see org.extex.typesetter.TypesetterOptions#getCountOption(java.lang.String)
          */
         public FixedCount getCountOption(final String name) {
 
@@ -77,7 +82,13 @@ public class ParagraphBuilderImplTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.TypesetterOptions#getDimenOption(java.lang.String)
+         * Getter for a dimen register.
+         *
+         * @param name the name of the register
+         *
+         * @return the content of the dimen register
+         *
+         * @see org.extex.typesetter.TypesetterOptions#getDimenOption(java.lang.String)
          */
         public FixedDimen getDimenOption(final String name) {
 
@@ -88,7 +99,13 @@ public class ParagraphBuilderImplTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.TypesetterOptions#getFont(
+         * Getter for a current font register.
+         *
+         * @param name the name or the number of the register
+         *
+         * @return the named font register or <code>null</code> if none is set
+         *
+         * @see org.extex.typesetter.TypesetterOptions#getFont(
          *      java.lang.String)
          */
         public Font getFont(final String name) {
@@ -97,7 +114,13 @@ public class ParagraphBuilderImplTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.TypesetterOptions#getGlueOption(
+         * Getter for a glue register.
+         *
+         * @param name the name of the register
+         *
+         * @return the content of the glue register
+         *
+         * @see org.extex.typesetter.TypesetterOptions#getGlueOption(
          *      java.lang.String)
          */
         public FixedGlue getGlueOption(final String name) {
@@ -109,7 +132,14 @@ public class ParagraphBuilderImplTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.TypesetterOptions#getLccode(
+         * Getter for the lccode mapping of upper case characters to their
+         * lower case equivalent.
+         *
+         * @param uc the upper case character
+         *
+         * @return the lower case equivalent or null if none exists
+         *
+         * @see org.extex.typesetter.TypesetterOptions#getLccode(
          *      org.extex.type.UnicodeChar)
          */
         public UnicodeChar getLccode(final UnicodeChar uc) {
@@ -118,7 +148,11 @@ public class ParagraphBuilderImplTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.TypesetterOptions#getNamespace()
+         * Getter for the current name space.
+         *
+         * @return the current name space
+         *
+         * @see org.extex.typesetter.TypesetterOptions#getNamespace()
          */
         public String getNamespace() {
 
@@ -126,7 +160,12 @@ public class ParagraphBuilderImplTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.TypesetterOptions#getParshape()
+         * Getter for the paragraph shape.
+         *
+         * @return the paragraph shape or <code>null</code> if no special shape
+         *   is present
+         *
+         * @see org.extex.typesetter.TypesetterOptions#getParshape()
          */
         public ParagraphShape getParshape() {
 
@@ -134,7 +173,12 @@ public class ParagraphBuilderImplTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.TypesetterOptions#getTokenFactory()
+         * Getter for the token factory. The token factory can be used to get new
+         * tokens of some kind.
+         *
+         * @return the token factory
+         *
+         * @see org.extex.typesetter.TypesetterOptions#getTokenFactory()
          */
         public TokenFactory getTokenFactory() {
 
@@ -142,7 +186,11 @@ public class ParagraphBuilderImplTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.TypesetterOptions#getTypesettingContext()
+         * Getter for the typesetting context.
+         *
+         * @return the typesetting context
+         *
+         * @see org.extex.typesetter.TypesetterOptions#getTypesettingContext()
          */
         public TypesettingContext getTypesettingContext() {
 
@@ -150,7 +198,11 @@ public class ParagraphBuilderImplTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.TypesetterOptions#getTypesettingContextFactory()
+         * Getter for the typesetting context factory.
+         *
+         * @return the typesetting context factory
+         *
+         * @see org.extex.typesetter.TypesetterOptions#getTypesettingContextFactory()
          */
         public TypesettingContextFactory getTypesettingContextFactory() {
 
@@ -158,17 +210,28 @@ public class ParagraphBuilderImplTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.TypesetterOptions#setParshape(
-         *      de.dante.extex.typesetter.paragraphBuilder.ParagraphShape)
+         * Setter for the paragraph shape.
+         *
+         * @param shape the new paragraph shape
+         *
+         * @see org.extex.typesetter.TypesetterOptions#setParshape(
+         *      org.extex.typesetter.paragraphBuilder.ParagraphShape)
          */
         public void setParshape(final ParagraphShape shape) {
 
         }
 
         /**
-         * @see de.dante.extex.typesetter.TypesetterOptions#setCountOption(
+         * Setter for a count register.
+         *
+         * @param name the name of the register
+         * @param value the value
+         *
+         * @throws GeneralException in case of an error
+         *
+         * @see org.extex.typesetter.TypesetterOptions#setCountOption(
          *      java.lang.String,
-         *      de.dante.extex.interpreter.type.count.FixedCount)
+         *      org.extex.interpreter.type.count.FixedCount)
          */
         public void setCountOption(final String name, final long value)
                 throws GeneralException {
@@ -176,7 +239,13 @@ public class ParagraphBuilderImplTest extends TestCase {
         }
 
         /**
-         * @see de.dante.extex.typesetter.TypesetterOptions#getMuskip(java.lang.String)
+         * Getter for a muskip register.
+         *
+         * @param name the name of the register
+         *
+         * @return the muskip register value
+         *
+         * @see org.extex.typesetter.TypesetterOptions#getMuskip(java.lang.String)
          */
         public Muskip getMuskip(final String name) {
 
@@ -206,10 +275,8 @@ public class ParagraphBuilderImplTest extends TestCase {
         HorizontalListNode nodes = new HorizontalListNode();
         NodeList n = builder.build(nodes);
         assertEquals(//
-                "\\vbox(0.0pt+0.0pt)x0.01526pt\n"
-                + ".\\hbox(0.0pt+0.0pt)x0.01526pt\n"
-                + "..\\penalty 10000\n"
-                + "..\\glue0.01526pt",
-                n.toString());
+            "\\vbox(0.0pt+0.0pt)x0.01526pt\n"
+                    + ".\\hbox(0.0pt+0.0pt)x0.01526pt\n"
+                    + "..\\penalty 10000\n" + "..\\glue0.01526pt", n.toString());
     }
 }

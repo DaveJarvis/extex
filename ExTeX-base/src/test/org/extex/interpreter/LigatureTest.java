@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -22,7 +22,6 @@ package org.extex.interpreter;
 import java.util.Properties;
 
 import org.extex.test.ExTeXLauncher;
-
 
 /**
  * This is a test suite for the ligature.
@@ -66,13 +65,13 @@ public class LigatureTest extends ExTeXLauncher {
 
         assertSuccess(properties,
         //--- input code ---
-                "\\font\\f=cmr10 \\f " + "Affe",
-                //--- output channel ---
-                "\\vbox(6.94444pt+0.0pt)x3000.0pt\n" //
-                + ".\\hbox(6.94444pt+0.0pt)x3000.0pt\n" //
-                + "..A\n" //
-                + "..\n" //
-                + "..e\n");
+            "\\font\\f=cmr10 \\f " + "Affe",
+            //--- output channel ---
+            "\\vbox(6.94444pt+0.0pt)x3000.0pt\n" //
+                    + ".\\hbox(6.94444pt+0.0pt)x3000.0pt\n" //
+                    + "..A\n" //
+                    + "..\n" //
+                    + "..e\n");
     }
 
 }

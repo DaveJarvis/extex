@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,7 +19,6 @@
 
 package org.extex.interpreter.exception;
 
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
 /**
@@ -48,15 +47,28 @@ public class IllegalRegisterException extends InterpreterException {
     }
 
     /**
+     * Creates a localized description of this throwable.
+     * Subclasses may override this method in order to produce a
+     * locale-specific message.  For subclasses that do not override this
+     * method, the default implementation returns the same result as
+     * <code>getMessage()</code>.
+     *
+     * @return  The localized description of this throwable.
+     *
      * @see java.lang.Throwable#getLocalizedMessage()
      */
     public String getLocalizedMessage() {
 
         return LocalizerFactory.getLocalizer(IllegalRegisterException.class)
-                .format("TTP.BadRegister", super.getMessage());
+            .format("TTP.BadRegister", super.getMessage());
     }
 
     /**
+     * Returns the detail message string of this throwable.
+     *
+     * @return  the detail message string of this <tt>Throwable</tt> instance
+     *          (which may be <tt>null</tt>).
+     *
      * @see java.lang.Throwable#getMessage()
      */
     public String getMessage() {

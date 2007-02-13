@@ -400,6 +400,13 @@ public class ContextImpl
     }
 
     /**
+     * Add a unit to the list of loaded units. The units can be notified when
+     * the context is loaded from a format.
+     *
+     * @param info the info of the unit loaded
+     *
+     * @see #unitIterator()
+     *
      * @see org.extex.interpreter.context.Context#addUnit(
      *      org.extex.interpreter.unit.UnitInfo)
      */
@@ -412,6 +419,11 @@ public class ContextImpl
     }
 
     /**
+     * Register a observer to be called at the end of the group. The end of the
+     * group is reached when the group is closed.
+     *
+     * @param observer the observer to register
+     *
      * @see org.extex.interpreter.context.Context#afterGroup(
      *      AfterGroupObserver)
      */
@@ -421,6 +433,10 @@ public class ContextImpl
     }
 
     /**
+     * Add a token to the tokens inserted after the group has been closed.
+     *
+     * @param t the token to add
+     *
      * @see org.extex.interpreter.context.Context#afterGroup(
      *      org.extex.scanner.type.token.Token)
      */
@@ -430,6 +446,8 @@ public class ContextImpl
     }
 
     /**
+     * This method clears all split marks.
+     *
      * @see org.extex.interpreter.context.ContextMark#clearSplitMarks()
      */
     public void clearSplitMarks() {
@@ -439,6 +457,13 @@ public class ContextImpl
     }
 
     /**
+     * Perform all actions required upon the closing of a group.
+     *
+     * @param typesetter the typesetter to invoke if needed
+     * @param source the source to get Tokens from if needed
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.context.Context#closeGroup(
      *      org.extex.typesetter.Typesetter,
      *     org.extex.interpreter.TokenSource)
@@ -477,6 +502,12 @@ public class ContextImpl
     }
 
     /**
+     * Configure an object according to a given Configuration.
+     *
+     * @param config the configuration object to consider
+     *
+     * @throws ConfigurationException in case that something went wrong
+     *
      * @see org.extex.util.framework.configuration.Configurable#configure(
      *      org.extex.util.framework.configuration.Configuration)
      */
@@ -538,6 +569,10 @@ public class ContextImpl
     }
 
     /**
+     * Setter for the logger.
+     *
+     * @param logger the logger to use
+     *
      * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
@@ -547,6 +582,18 @@ public class ContextImpl
     }
 
     /**
+     * Attach the current escape character in front of a name and return the
+     * result. If the escape character is not set then the argument is returned
+     * unchanged.
+     * <p>
+     * This method is meant to produce a printable version of a control
+     * sequence for error messages.
+     * </p>
+     *
+     * @param name the name of the macro
+     *
+     * @return the control sequence including the escape character
+     *
      * @see org.extex.interpreter.context.Context#esc(java.lang.String)
      */
     public String esc(final String name) {
@@ -556,6 +603,13 @@ public class ContextImpl
     }
 
     /**
+     * This method is meant to produce a printable version of a control
+     * sequence for error messages.
+     *
+     * @param token the token
+     *
+     * @return the control sequence including the escape character
+     *
      * @see org.extex.interpreter.context.Context#esc(
      *      org.extex.scanner.type.token.Token)
      */
@@ -565,6 +619,12 @@ public class ContextImpl
     }
 
     /**
+     * Return the current escape character or <code>\0<code> if it is undefined.
+     * The escape character is retrieved from the count register
+     * <tt>\escapechar</tt>.
+     *
+     * @return the escape character
+     *
      * @see org.extex.interpreter.context.Context#escapechar()
      */
     public UnicodeChar escapechar() {
@@ -585,6 +645,10 @@ public class ContextImpl
     }
 
     /**
+     * Getter for the afterassignment token.
+     *
+     * @return the afterassignment token.
+     *
      * @see org.extex.interpreter.context.Context#getAfterassignment()
      */
     public Token getAfterassignment() {
@@ -593,6 +657,12 @@ public class ContextImpl
     }
 
     /**
+     * Getter for the bottom mark.
+     *
+     * @param name the name of the mark
+     *
+     * @return the bottom mark
+     *
      * @see org.extex.interpreter.context.ContextMark#getBottomMark(
      *      java.lang.Object)
      */
@@ -609,6 +679,14 @@ public class ContextImpl
     }
 
     /**
+     * Getter for the {@link org.extex.interpreter.type.box.Box box}
+     * register. Count registers are named, either with a number or an
+     * arbitrary string.
+     *
+     * @param name the name or number of the count register
+     *
+     * @return the count register or <code>null</code> if it is void
+     *
      * @see org.extex.interpreter.context.Context#getBox(java.lang.String)
      */
     public Box getBox(final String name) {
@@ -631,6 +709,16 @@ public class ContextImpl
     }
 
     /**
+     * Convenience method to get the code assigned to a Token.
+     * If the Token is a ControlSequenceToken then the macro is returned.
+     * If the Token is a ActiveCharacterToken then the active value is returned.
+     *
+     * @param t the Token to differentiate on
+     *
+     * @return the code for the token
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.context.ContextCode#getCode(
      *      org.extex.scanner.type.token.CodeToken)
      */
@@ -640,6 +728,10 @@ public class ContextImpl
     }
 
     /**
+     * Getter for the currently active conditional.
+     *
+     * @return the currently active conditional or <code>null</code> if none
+     *
      * @see org.extex.interpreter.context.Context#getConditional()
      */
     public Conditional getConditional() {
@@ -652,6 +744,18 @@ public class ContextImpl
     }
 
     /**
+     * Getter for the {@link org.extex.interpreter.type.count.Count count}
+     * register. Count registers are named, either with a number or an
+     * arbitrary string.
+     * <p>
+     *  The return value is guaranteed to be a valid object. <code>null</code>
+     *  will never be returned.
+     * </p>
+     *
+     * @param name the name or number of the count register
+     *
+     * @return the count register or <code>null</code> if it is not defined
+     *
      * @see org.extex.interpreter.context.Context#getCount(
      *      java.lang.String)
      */
@@ -661,7 +765,14 @@ public class ContextImpl
     }
 
     /**
-     * @see org.extex.typesetter.TypesetterOptions#getCountOption(java.lang.String)
+     * Getter for a count register.
+     *
+     * @param name the name of the register
+     *
+     * @return the content of the count register
+     *
+     * @see org.extex.typesetter.TypesetterOptions#getCountOption(
+     *      java.lang.String)
      */
     public FixedCount getCountOption(final String name) {
 
@@ -669,6 +780,12 @@ public class ContextImpl
     }
 
     /**
+     * Getter for the delimiter code mapping.
+     *
+     * @param c the character to which the delcode is assigned
+     *
+     * @return the delcode for the given character
+     *
      * @see org.extex.interpreter.context.Context#getDelcode(
      *      org.extex.type.UnicodeChar)
      */
@@ -678,6 +795,12 @@ public class ContextImpl
     }
 
     /**
+     * Get the current value of the dimen register with a given name.
+     *
+     * @param name the name or the number of the register
+     *
+     * @return the dimen register for the given name
+     *
      * @see org.extex.interpreter.context.Context#getDimen(
      *      java.lang.String)
      */
@@ -687,7 +810,14 @@ public class ContextImpl
     }
 
     /**
-     * @see org.extex.typesetter.TypesetterOptions#getDimenOption(java.lang.String)
+     * Getter for a dimen register.
+     *
+     * @param name the name of the register
+     *
+     * @return the content of the dimen register
+     *
+     * @see org.extex.typesetter.TypesetterOptions#getDimenOption(
+     *      java.lang.String)
      */
     public FixedDimen getDimenOption(final String name) {
 
@@ -789,6 +919,10 @@ public class ContextImpl
     }
 
     /**
+     * Getter for the group type.
+     *
+     * @return the group type
+     *
      * @see org.extex.interpreter.context.ContextGroup#getGroupType()
      */
     public GroupType getGroupType() {
@@ -811,6 +945,10 @@ public class ContextImpl
     }
 
     /**
+     * Getter for the current if level.
+     *
+     * @return the current if level
+     *
      * @see org.extex.interpreter.context.Context#getIfLevel()
      */
     public long getIfLevel() {

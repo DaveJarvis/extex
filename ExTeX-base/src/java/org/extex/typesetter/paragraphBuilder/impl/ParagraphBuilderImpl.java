@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -55,7 +55,6 @@ import org.extex.typesetter.type.node.PenaltyNode;
 import org.extex.typesetter.type.node.VerticalListNode;
 import org.extex.typesetter.type.node.factory.NodeFactory;
 import org.extex.util.framework.logger.LogEnabled;
-
 
 /**
  * This class provides a paragraph builder.
@@ -184,8 +183,8 @@ public class ParagraphBuilderImpl implements ParagraphBuilder, LogEnabled {
      * stored in it will be overwritten whenever this object will be used for
      * the current paragraph.
      */
-    private FixedParagraphShape fixedParshape = new FixedParagraphShape(
-            Dimen.ZERO_PT);
+    private FixedParagraphShape fixedParshape =
+            new FixedParagraphShape(Dimen.ZERO_PT);
 
     /**
      * The field <tt>hangingParshape</tt> contains the data object used to
@@ -193,8 +192,8 @@ public class ParagraphBuilderImpl implements ParagraphBuilder, LogEnabled {
      * values stored in it will be overwritten whenever this object will be
      * used for the current paragraph.
      */
-    private HangingParagraphShape hangingParshape = new HangingParagraphShape(
-            0, Dimen.ZERO_PT, Dimen.ZERO_PT);
+    private HangingParagraphShape hangingParshape =
+            new HangingParagraphShape(0, Dimen.ZERO_PT, Dimen.ZERO_PT);
 
     /**
      * The field <tt>logger</tt> contains the logger to be used.
@@ -261,10 +260,10 @@ public class ParagraphBuilderImpl implements ParagraphBuilder, LogEnabled {
             tracer = logger;
         }
 
-        int hyphenpenalty = (int) options.getCountOption("hyphenpenalty")
-                .getValue();
-        int exhyphenpenalty = (int) options.getCountOption("exhyphenpenalty")
-                .getValue();
+        int hyphenpenalty =
+                (int) options.getCountOption("hyphenpenalty").getValue();
+        int exhyphenpenalty =
+                (int) options.getCountOption("exhyphenpenalty").getValue();
         FixedGlue leftskip = options.getGlueOption("leftskip");
         FixedGlue rightskip = options.getGlueOption("rightskip");
 
@@ -296,8 +295,8 @@ public class ParagraphBuilderImpl implements ParagraphBuilder, LogEnabled {
             }
         }
         int tolerance = (int) options.getCountOption("tolerance").getValue();
-        BreakPoint[] breakPoints = makeBreakPoints(nodes, hyphenpenalty,
-                exhyphenpenalty);
+        BreakPoint[] breakPoints =
+                makeBreakPoints(nodes, hyphenpenalty, exhyphenpenalty);
 
         if (tracer != null) {
             for (int i = 0; i < breakPoints.length; i++) {
@@ -305,21 +304,23 @@ public class ParagraphBuilderImpl implements ParagraphBuilder, LogEnabled {
             }
         }
 
-        Breaks breaks = findOptimalBreakPoints(breakPoints, 0, tolerance, 0, 0,
-                leftskip, rightskip, Dimen.ZERO_PT);
+        Breaks breaks =
+                findOptimalBreakPoints(breakPoints, 0, tolerance, 0, 0,
+                    leftskip, rightskip, Dimen.ZERO_PT);
         if (breaks != null) {
             options.setParshape(null);
             return splitNodeList(nodes, breaks, leftskip, rightskip);
         }
 
-        FixedDimen emergencystretch = options
-                .getDimenOption("emergencystretch");
+        FixedDimen emergencystretch =
+                options.getDimenOption("emergencystretch");
         if (emergencystretch.getValue() > 0) {
             if (tracer != null) {
                 tracer.log(Level.FINE, "@thirdpass\n");
             }
-            breaks = findOptimalBreakPoints(breakPoints, 0, tolerance, 0, 0,
-                    leftskip, rightskip, emergencystretch);
+            breaks =
+                    findOptimalBreakPoints(breakPoints, 0, tolerance, 0, 0,
+                        leftskip, rightskip, emergencystretch);
             if (breaks != null) {
                 options.setParshape(null);
                 return splitNodeList(nodes, breaks, leftskip, rightskip);
@@ -392,9 +393,10 @@ public class ParagraphBuilderImpl implements ParagraphBuilder, LogEnabled {
                     fit = Fitness.VERY_LOOSE;
                 } else {
                     badness = Badness.badness(shortfall, line);
-                    fit = (badness < 12 ? Fitness.DECENT : badness < 99
-                            ? Fitness.LOOSE
-                            : Fitness.VERY_LOOSE);
+                    fit =
+                            (badness < 12 ? Fitness.DECENT : badness < 99
+                                    ? Fitness.LOOSE
+                                    : Fitness.VERY_LOOSE);
                 }
             } else { //TTP [853]
                 long shrink = lineWidth.getShrink().getValue();
@@ -467,9 +469,9 @@ public class ParagraphBuilderImpl implements ParagraphBuilder, LogEnabled {
 
         if (tracer != null) {
             tracer.log(Level.FINE,
-                    "........................................................."
-                            .substring(0, depth)
-                            + " +++ " + Integer.toString(pointIndex) + "\n");
+                "........................................................."
+                    .substring(0, depth)
+                        + " +++ " + Integer.toString(pointIndex) + "\n");
             for (int i = 0; i < pointIndex; i++) {
                 if (breakPoint[i].isActive()) {
                     tracer.log(Level.FINE, " " + breakPoint[i].getPosition()
@@ -484,13 +486,15 @@ public class ParagraphBuilderImpl implements ParagraphBuilder, LogEnabled {
 
         for (int i = pointIndex; i < breakPoint.length; i++) {
             breakPoint[i].setActive();
-            pen = computeDemerits(breakPoint, i, leftskip, rightskip,
-                    lineWidth, threshold);
+            pen =
+                    computeDemerits(breakPoint, i, leftskip, rightskip,
+                        lineWidth, threshold);
             if (pen <= Badness.EJECT_PENALTY || pen < threshold) {
                 if (i + 1 < breakPoint.length) {
-                    Breaks b2 = findOptimalBreakPoints(breakPoint, line + 1,
-                            threshold, depth + 1, i + 1, leftskip, rightskip,
-                            emergencystretch);
+                    Breaks b2 =
+                            findOptimalBreakPoints(breakPoint, line + 1,
+                                threshold, depth + 1, i + 1, leftskip,
+                                rightskip, emergencystretch);
                     if (b2 != null
                             && (b == null || b.getPenalty() > b2.getPenalty())) {
                         b = b2;
@@ -527,7 +531,7 @@ public class ParagraphBuilderImpl implements ParagraphBuilder, LogEnabled {
                 TypesettingContext tc = ((CharNode) n).getTypesettingContext();
                 UnicodeChar hyphen = tc.getFont().getHyphenChar();
                 tc.getLanguage().hyphenate(nodes, options, hyphen, i, false,
-                        nodeFactory);
+                    nodeFactory);
             }
         }
     }
@@ -608,9 +612,9 @@ public class ParagraphBuilderImpl implements ParagraphBuilder, LogEnabled {
 
                 node.addWidthTo(wd);
                 breakList.add(new BreakPoint(i, w, wd,
-                        (((DiscretionaryNode) node).getPreBreak() != null
-                                ? hyphenpenalty
-                                : exhyphenpenalty)));
+                    (((DiscretionaryNode) node).getPreBreak() != null
+                            ? hyphenpenalty
+                            : exhyphenpenalty)));
                 i = discartNodes(i, len, nodes, wd);
                 w = new WideGlue();
                 wd = new WideGlue();
@@ -641,16 +645,17 @@ public class ParagraphBuilderImpl implements ParagraphBuilder, LogEnabled {
             final int hyphenpenalty, final int exhyphenpenalty,
             final FixedGlue leftskip, final FixedGlue rightskip) {
 
-        int pretolerance = (int) options.getCountOption("pretolerance")
-                .getValue();
+        int pretolerance =
+                (int) options.getCountOption("pretolerance").getValue();
         if (pretolerance > 0) {
             if (tracer != null) {
                 tracer.log(Level.FINE, "@firstpass\n");
             }
-            BreakPoint[] breakPoints = makeBreakPoints(nodes, hyphenpenalty,
-                    exhyphenpenalty);
-            Breaks breaks = findOptimalBreakPoints(breakPoints, 0,
-                    pretolerance, 0, 0, leftskip, rightskip, Dimen.ZERO_PT);
+            BreakPoint[] breakPoints =
+                    makeBreakPoints(nodes, hyphenpenalty, exhyphenpenalty);
+            Breaks breaks =
+                    findOptimalBreakPoints(breakPoints, 0, pretolerance, 0, 0,
+                        leftskip, rightskip, Dimen.ZERO_PT);
             if (breaks != null) {
                 options.setParshape(null);
                 return splitNodeList(nodes, breaks, leftskip, rightskip);
@@ -669,13 +674,13 @@ public class ParagraphBuilderImpl implements ParagraphBuilder, LogEnabled {
         parshape = options.getParshape();
 
         if (parshape == null) {
-            int hangafter = (int) options.getCountOption("hangafter")
-                    .getValue();
+            int hangafter =
+                    (int) options.getCountOption("hangafter").getValue();
 
             if (hangafter != 0) {
                 hangingParshape.setHangafter(hangafter);
                 hangingParshape.setHangindent(options
-                        .getDimenOption("hangindent"));
+                    .getDimenOption("hangindent"));
                 hangingParshape.setHsize(options.getDimenOption("hsize"));
                 parshape = hangingParshape;
             } else {

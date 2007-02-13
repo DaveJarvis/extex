@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -24,7 +24,6 @@ import java.util.List;
 
 import org.extex.interpreter.type.Code;
 import org.extex.scanner.type.token.Token;
-
 
 /**
  * This class provides a type-safe list of observers for the expand event.
@@ -77,6 +76,12 @@ public final class ExpandMacroObserverList implements ExpandMacroObserver {
     }
 
     /**
+     * This method is meant to be invoked just before a macro is expanded.
+     *
+     * @param token the token to be expanded
+     * @param code The code to which the token is expanded. This might be
+     *  <code>null</code> for undefined macros
+     *
      * @see org.extex.interpreter.observer.expandMacro.ExpandMacroObserver#update(
      *      org.extex.scanner.type.token.Token,
      *      org.extex.interpreter.type.Code)

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -18,8 +18,6 @@
  */
 
 package org.extex.interpreter.exception;
-
-import org.extex.interpreter.exception.InterpreterException;
 
 /**
  * InterpreterException, if a number is not found.

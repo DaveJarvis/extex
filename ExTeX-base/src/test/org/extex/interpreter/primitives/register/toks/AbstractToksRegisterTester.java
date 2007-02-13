@@ -57,6 +57,7 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
      * @param arg the name of the test suite
      * @param primitive the name of the integer register to test
      * @param args the parameters for the invocation
+     * @param init ...
      */
     public AbstractToksRegisterTester(final String arg, final String primitive,
             final String args, final String init) {
@@ -73,6 +74,7 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
      * @param arg the name of the test suite
      * @param primitive the name of the integer register to test
      * @param args the parameters for the invocation
+     * @param init ...
      * @param prepare the preparation code
      */
     public AbstractToksRegisterTester(final String arg, final String primitive,
@@ -334,7 +336,6 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
                 //--- output channel ---
                 "File ended while scanning text of \\" + primitive);
     }
-
 
     //TODO gene: add more test cases
 }

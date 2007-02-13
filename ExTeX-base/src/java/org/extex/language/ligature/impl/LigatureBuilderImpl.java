@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -32,7 +32,6 @@ import org.extex.typesetter.type.node.CharNode;
 import org.extex.typesetter.type.node.ImplicitKernNode;
 import org.extex.typesetter.type.node.LigatureNode;
 
-
 /**
  * This class provides an implementation for a ligature builder.
  * Kerning and ligatures are inserted according to the specification from the
@@ -57,6 +56,14 @@ public class LigatureBuilderImpl implements LigatureBuilder {
     }
 
     /**
+     * Get a single ligature of to characters.
+     *
+     * @param c1 the first character
+     * @param c2 the second character
+     * @param f the current font
+     *
+     * @return the ligature of c1 and c2 or <code>null</code> if none exists
+     *
      * @see org.extex.language.ligature.LigatureBuilder#getLigature(
      *      org.extex.type.UnicodeChar,
      *      org.extex.type.UnicodeChar,
@@ -69,6 +76,18 @@ public class LigatureBuilderImpl implements LigatureBuilder {
     }
 
     /**
+     * Take a node list and transform character sequences into ligatures where
+     * appropriate. The processing should extend over all characters with the
+     * same font and non-character nodes. It should return the control to the
+     * caller as soon as a character node with another font is found.
+     *
+     * @param list the node list to create ligatures for
+     * @param start the index in the list to start processing
+     *
+     * @return the index after last node processed
+     *
+     * @throws HyphenationException in case of an error
+     *
      * @see org.extex.language.ligature.LigatureBuilder#insertLigatures(
      *      org.extex.typesetter.type.NodeList, int)
      */

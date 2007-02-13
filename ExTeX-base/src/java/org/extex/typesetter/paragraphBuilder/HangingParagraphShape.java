@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -21,7 +21,6 @@ package org.extex.typesetter.paragraphBuilder;
 
 import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.interpreter.type.dimen.FixedDimen;
-import org.extex.typesetter.paragraphBuilder.ParagraphShape;
 
 /**
  * This paragraph shape represents a block with hanging indentation.
@@ -64,6 +63,15 @@ public class HangingParagraphShape extends ParagraphShape {
     }
 
     /**
+     * Getter for the left hand margin of a certain position.
+     * The position is given by an index into the list.
+     * If the index points past the end of th list then the last entry is
+     * repeated. If the index is negative then 0pt is returned.
+     *
+     * @param index the index of the position
+     *
+     * @return the left hand margin
+     *
      * @see org.extex.typesetter.paragraphBuilder.ParagraphShape#getIndent(int)
      */
     public FixedDimen getIndent(final int index) {
@@ -80,6 +88,15 @@ public class HangingParagraphShape extends ParagraphShape {
     }
 
     /**
+     * Getter for the right hand margin of a certain position.
+     * The position is given by an index into the list.
+     * If the index points past the end of th list then the last entry is
+     * repeated. If the index is negative then 0pt is returned.
+     *
+     * @param index the index of the position
+     *
+     * @return the right hand margin
+     *
      * @see org.extex.typesetter.paragraphBuilder.ParagraphShape#getLength(int)
      */
     public FixedDimen getLength(final int index) {

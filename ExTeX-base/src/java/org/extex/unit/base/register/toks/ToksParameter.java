@@ -41,13 +41,13 @@ import org.extex.util.framework.configuration.exception.ConfigurationException;
  * This class provides an implementation for the primitive <code>\toks</code>.
  * It sets the numbered toks register to the value given, and as a side effect
  * all prefixes are zeroed.
- * 
+ *
  * Example:
- * 
+ *
  * <pre>
  *     \toks12{123}
  * </pre>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:mgn@gmx.de">Michael Niedermair</a>
  * @version $Revision:4431 $
@@ -67,10 +67,10 @@ public class ToksParameter extends AbstractToks
 
     /**
      * Return the key for a named toks register.
-     * 
+     *
      * @param name the name of the register
      * @param context the interpreter context to use
-     * 
+     *
      * @return the key for the toks register
      */
     public static String getKey(final String name, final Context context) {
@@ -89,7 +89,7 @@ public class ToksParameter extends AbstractToks
 
     /**
      * Creates a new object.
-     * 
+     *
      * @param name the name for debugging
      */
     public ToksParameter(final String name) {
@@ -100,7 +100,7 @@ public class ToksParameter extends AbstractToks
 
     /**
      * Creates a new object.
-     * 
+     *
      * @param name the name for debugging
      * @param key the key
      */
@@ -125,10 +125,10 @@ public class ToksParameter extends AbstractToks
 
     /**
      * Return the key (the number) for the tokens register.
-     * 
+     *
      * @param source the source for the next tokens &ndash; if required
      * @param context the interpreter context to use
-     * 
+     *
      * @return the key for the tokens register
      */
     protected String getKey(final Context context, final TokenSource source,

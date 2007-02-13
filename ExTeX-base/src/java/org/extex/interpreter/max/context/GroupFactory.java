@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -30,7 +30,6 @@ import org.extex.util.framework.configuration.exception.ConfigurationClassNotFou
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.framework.configuration.exception.ConfigurationInstantiationException;
 import org.extex.util.framework.configuration.exception.ConfigurationMissingAttributeException;
-
 
 /**
  * This class provides a factory for a
@@ -76,12 +75,13 @@ public class GroupFactory {
         String classname = config.getAttribute(CLASS_ATTRIBUTE);
         if (classname == null) {
             throw new ConfigurationMissingAttributeException(CLASS_ATTRIBUTE,
-                    config);
+                config);
         }
 
         try {
-            constructor = Class.forName(classname).getConstructor(
-                    new Class[]{Group.class});
+            constructor =
+                    Class.forName(classname).getConstructor(
+                        new Class[]{Group.class});
         } catch (SecurityException e) {
             throw new ConfigurationInstantiationException(e);
         } catch (NoSuchMethodException e) {
@@ -105,7 +105,8 @@ public class GroupFactory {
      * @throws ConfigurationException in case of an error in the configuration.
      */
     public Group newInstance(final Group next, final Locator locator,
-            final Token start, final GroupType type) throws ConfigurationException {
+            final Token start, final GroupType type)
+            throws ConfigurationException {
 
         Group group;
 

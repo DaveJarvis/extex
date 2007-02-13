@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -75,7 +75,6 @@ import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.i18n.Localizable;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.logger.LogEnabled;
-
 
 /**
  * This class implements the paragraph breaking algorithm as used in
@@ -384,8 +383,8 @@ public class TeXParagraphBuilder
      * places. The values stored in it will be overwritten whenever
      * this object will be used for the current paragraph.
      */
-    private FixedParagraphShape fixedParshape = new FixedParagraphShape(
-            Dimen.ZERO_PT);
+    private FixedParagraphShape fixedParshape =
+            new FixedParagraphShape(Dimen.ZERO_PT);
 
     /**
      * The field <tt>hangingParshape</tt> contains the data object
@@ -393,8 +392,8 @@ public class TeXParagraphBuilder
      * appropriate places. The values stored in it will be overwritten
      * whenever this object will be used for the current paragraph.
      */
-    private HangingParagraphShape hangingParshape = new HangingParagraphShape(
-            0, Dimen.ZERO_PT, Dimen.ZERO_PT);
+    private HangingParagraphShape hangingParshape =
+            new HangingParagraphShape(0, Dimen.ZERO_PT, Dimen.ZERO_PT);
 
     /**
      * Creates a new object.
@@ -417,17 +416,17 @@ public class TeXParagraphBuilder
         adjDemerits = options.getCountOption("adjdemerits").getValue();
         clubPenalty = options.getCountOption("clubpenalty").getValue();
         brokenPenalty = options.getCountOption("brokenpenalty").getValue();
-        doubleHyphenDemerits = options.getCountOption("doublehyphendemerits")
-                .getValue();
+        doubleHyphenDemerits =
+                options.getCountOption("doublehyphendemerits").getValue();
         emergencyStretch = options.getDimenOption("emergencystretch");
         exHyphenPenalty = options.getCountOption("exhyphenpenalty").getValue();
-        finalHyphenDemerits = options.getCountOption("finalhyphendemerits")
-                .getValue();
-        finalWidowPenalty = options.getCountOption("finalwidowpenalty")
-                .getValue();
+        finalHyphenDemerits =
+                options.getCountOption("finalhyphendemerits").getValue();
+        finalWidowPenalty =
+                options.getCountOption("finalwidowpenalty").getValue();
         hyphenPenalty = options.getCountOption("hyphenpenalty").getValue();
-        interLinePenalty = options.getCountOption("interlinepenalty")
-                .getValue();
+        interLinePenalty =
+                options.getCountOption("interlinepenalty").getValue();
         leftSkip = options.getGlueOption("leftskip");
         linePenalty = options.getCountOption("linepenalty").getValue();
         looseness = options.getCountOption("looseness").getValue();
@@ -436,8 +435,8 @@ public class TeXParagraphBuilder
         prevGraf = (int) options.getCountOption("prevgraf").getValue();
         rightSkip = options.getGlueOption("rightskip");
         tolerance = options.getCountOption("tolerance").getValue();
-        tracingParagraphs = options.getCountOption("tracingparagraphs").gt(
-                Count.ZERO);
+        tracingParagraphs =
+                options.getCountOption("tracingparagraphs").gt(Count.ZERO);
         prepareParshape();
 
         NodeList result;
@@ -551,13 +550,13 @@ public class TeXParagraphBuilder
         parshape = options.getParshape();
 
         if (parshape == null) {
-            int hangafter = (int) options.getCountOption("hangafter")
-                    .getValue();
+            int hangafter =
+                    (int) options.getCountOption("hangafter").getValue();
 
             if (hangafter != 0) {
                 hangingParshape.setHangafter(hangafter);
                 hangingParshape.setHangindent(options
-                        .getDimenOption("hangindent"));
+                    .getDimenOption("hangindent"));
                 hangingParshape.setHsize(options.getDimenOption("hsize"));
                 parshape = hangingParshape;
             } else {
@@ -984,7 +983,7 @@ public class TeXParagraphBuilder
             // delete_glue_ref(p);
             // finite_shrink <-- q;
             return new Glue(glue.getLength(), glue.getStretch(),
-                    GlueComponent.ZERO);
+                GlueComponent.ZERO);
             // end ;
             // - - -
 
@@ -1492,7 +1491,7 @@ public class TeXParagraphBuilder
                  */
                 // begin v <-- glue_ptr(s);
                 // break_width[1] <-- break_width[1]-width(v);
-                // break_width[2+stretch_order(v)] <-- 
+                // break_width[2+stretch_order(v)] <--
                 //   break_width[2+stretch_order(v)]-stretch(v);
                 // break_width[6] <-- break_width[6]-shrink(v);
                 breakWidth.subtract(((GlueNode) n).getSize());
@@ -1743,8 +1742,9 @@ public class TeXParagraphBuilder
         // stat incr(pass_number);
         // serial(q) <-- pass_number; tats
         // prev_break(q) <-- best_place[fit_class];
-        PassiveNode pn = new PassiveNode(curBreak, passive.size() + 1,
-                bestPlace[fitClass.getOrder()]);
+        PassiveNode pn =
+                new PassiveNode(curBreak, passive.size() + 1,
+                    bestPlace[fitClass.getOrder()]);
         passive.add(pn);
 
         // q <-- get_node(active_node_size);
@@ -1753,9 +1753,9 @@ public class TeXParagraphBuilder
         // fitness(q) <-- fit_class;
         // type(q) <-- break_type;
         // total_demerits(q) <-- minimal_demerits[fit_class];
-        ActiveNode an = new ActiveNode(fitClass, breakType,
-                minimalDemerits[fitClass.getOrder()], bestPlaceLine[fitClass
-                        .getOrder()] + 1, pn);
+        ActiveNode an =
+                new ActiveNode(fitClass, breakType, minimalDemerits[fitClass
+                    .getOrder()], bestPlaceLine[fitClass.getOrder()] + 1, pn);
         // link(q) <-- r;
         // link(prev_r) <-- q;
         // prev_r <-- q;
@@ -2081,8 +2081,9 @@ public class TeXParagraphBuilder
             badness = Badness.INF_BAD + 1;
             // else b <-- badness(-shortfall,cur_active_width[6]);
         } else {
-            badness = Badness.badness(minusShortfall.getValue(), curActiveWidth
-                    .getShrink().getValue());
+            badness =
+                    Badness.badness(minusShortfall.getValue(), curActiveWidth
+                        .getShrink().getValue());
         }
         // if b > 12 then
         // fit_class <-- tight_fit else fit_class <-- decent_fit;
@@ -2237,8 +2238,9 @@ public class TeXParagraphBuilder
             }
             // end ;
         }
-        PassiveNode breakNode = (r < active.size() ? ((ActiveNode) active
-                .get(r)).getBreakNode() : null);
+        PassiveNode breakNode =
+                (r < active.size() ? ((ActiveNode) active.get(r))
+                    .getBreakNode() : null);
         // print(" via @@");
         sb.append(" via @@");
         // if break_node(r)=null then
@@ -2665,8 +2667,7 @@ public class TeXParagraphBuilder
         // link(active) <-- q;
         active.clear();
         active
-                .add(new ActiveNode(Fitness.DECENT, false, 0, prevGraf + 1,
-                        null));
+            .add(new ActiveNode(Fitness.DECENT, false, 0, prevGraf + 1, null));
         // do_all_six(store_background);
         activeWidth.set(background);
 
@@ -4078,7 +4079,7 @@ public class TeXParagraphBuilder
                 UnicodeChar hyphen = tc.getFont().getHyphenChar();
                 if (hyphen != null) {
                     language.hyphenate(list, options, hyphen, start, false,
-                            nodeFactory);
+                        nodeFactory);
                 }
                 return;
             }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -23,7 +23,6 @@ import java.util.Iterator;
 import java.util.Properties;
 import java.util.logging.Logger;
 
-import org.extex.backend.BackendDriver;
 import org.extex.backend.documentWriter.DocumentWriter;
 import org.extex.backend.documentWriter.DocumentWriterFactory;
 import org.extex.backend.documentWriter.DocumentWriterOptions;
@@ -40,7 +39,6 @@ import org.extex.util.framework.configuration.exception.ConfigurationMissingAttr
 import org.extex.util.resource.PropertyConfigurable;
 import org.extex.util.resource.ResourceConsumer;
 import org.extex.util.resource.ResourceFinder;
-
 
 /**
  * This class provides a factory for the back-end.
@@ -131,21 +129,23 @@ public class BackendFactory extends AbstractFactory {
             final DocumentWriterOptions options,
             final OutputStreamFactory outFactory, final ResourceFinder finder,
             final Properties properties, final String creator,
-            final CoreFontFactory fontFactory, final ColorConverter colorConverter)
+            final CoreFontFactory fontFactory,
+            final ColorConverter colorConverter)
             throws DocumentWriterException,
                 ConfigurationException {
 
-        BackendDriver backend = (BackendDriver) createInstanceForConfiguration(
-                getConfiguration(), BackendDriver.class);
+        BackendDriver backend =
+                (BackendDriver) createInstanceForConfiguration(
+                    getConfiguration(), BackendDriver.class);
 
-        DocumentWriterFactory factory = new DocumentWriterFactory(
-                getConfiguration().getConfiguration("DocumentWriter"),
-                getLogger());
+        DocumentWriterFactory factory =
+                new DocumentWriterFactory(getConfiguration().getConfiguration(
+                    "DocumentWriter"), getLogger());
         factory.setResourceFinder(finder);
         DocumentWriter docWriter = factory.newInstance(//
-                type, //
-                options, //
-                outFactory);
+            type, //
+            options, //
+            outFactory);
         if (docWriter instanceof PropertyConfigurable) {
             ((PropertyConfigurable) docWriter).setProperties(properties);
         }
@@ -181,7 +181,7 @@ public class BackendFactory extends AbstractFactory {
 
         if (backend instanceof MultipleDocumentStream) {
             ((MultipleDocumentStream) backend)
-                    .setOutputStreamFactory(outFactory);
+                .setOutputStreamFactory(outFactory);
         }
 
         return backend;

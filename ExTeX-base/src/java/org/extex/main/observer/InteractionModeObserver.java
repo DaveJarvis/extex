@@ -53,6 +53,13 @@ public class InteractionModeObserver implements InteractionObserver {
     }
 
     /**
+     * Receive a notification on a count change.
+     *
+     * @param context the interpreter context
+     * @param mode the new interaction mode.
+     *
+     * @throws Exception in case of a problem
+     *
      * @see org.extex.interpreter.context.observer.interaction.InteractionObserver#receiveInteractionChange(
      *      org.extex.interpreter.context.ContextInternals,
      *      org.extex.interpreter.interaction.Interaction)

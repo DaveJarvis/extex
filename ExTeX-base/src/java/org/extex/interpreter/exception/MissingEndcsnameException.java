@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -20,14 +20,12 @@
 package org.extex.interpreter.exception;
 
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.scanner.type.token.Token;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
-
 /**
- * This exception is raised when a <tt>\csname</tt> without matching \endcsname is
- * encountered.
+ * This exception is raised when a <tt>\csname</tt> without matching
+ * <tt>\endcsname</tt> is encountered.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4770 $
@@ -49,10 +47,18 @@ public class MissingEndcsnameException extends InterpreterException {
     public MissingEndcsnameException(final Context context, final Token t) {
 
         super(LocalizerFactory.getLocalizer(MissingEndcsnameException.class)
-                .format("TTP.MissingEndcsname"));
+            .format("TTP.MissingEndcsname"));
     }
 
     /**
+     * Creates a localized description of this throwable.
+     * Subclasses may override this method in order to produce a
+     * locale-specific message.  For subclasses that do not override this
+     * method, the default implementation returns the same result as
+     * <code>getMessage()</code>.
+     *
+     * @return  The localized description of this throwable.
+     *
      * @see java.lang.Throwable#getLocalizedMessage()
      */
     public String getLocalizedMessage() {

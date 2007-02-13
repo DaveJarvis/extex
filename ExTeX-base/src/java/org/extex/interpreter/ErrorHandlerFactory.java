@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
@@ -19,12 +19,10 @@
 
 package org.extex.interpreter;
 
-import org.extex.interpreter.ErrorHandler;
 import org.extex.main.errorHandler.editHandler.EditHandler;
 import org.extex.util.framework.AbstractFactory;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
-
 
 /**
  * This is the factory for instances of
@@ -113,14 +111,14 @@ public class ErrorHandlerFactory extends AbstractFactory {
     public ErrorHandler newInstance(final String type)
             throws ConfigurationException {
 
-        ErrorHandler errorHandler = (ErrorHandler) createInstance(type,
-                ErrorHandler.class);
-        Configuration cfg = selectConfiguration(type).findConfiguration(
-                "EditHandler");
+        ErrorHandler errorHandler =
+                (ErrorHandler) createInstance(type, ErrorHandler.class);
+        Configuration cfg =
+                selectConfiguration(type).findConfiguration("EditHandler");
         if (cfg != null) {
             errorHandler
-                    .setEditHandler((EditHandler) createInstanceForConfiguration(
-                            cfg, EditHandler.class));
+                .setEditHandler((EditHandler) createInstanceForConfiguration(
+                    cfg, EditHandler.class));
         }
         return errorHandler;
     }

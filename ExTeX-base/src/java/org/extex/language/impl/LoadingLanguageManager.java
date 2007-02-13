@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -42,7 +42,6 @@ import org.extex.util.framework.Registrar;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.resource.ResourceConsumer;
 import org.extex.util.resource.ResourceFinder;
-
 
 /**
  * This class manages the <code>Language</code>s. It is a container
@@ -122,6 +121,12 @@ public class LoadingLanguageManager extends BaseLanguageManager
     }
 
     /**
+     * Create a new language and put it into the table.
+     *
+     * @param name the name of the language
+     *
+     * @return the new instance of a language
+     *
      * @see org.extex.language.impl.BaseLanguageManager#createLanguage(
      *      java.lang.String)
      */
@@ -131,6 +136,14 @@ public class LoadingLanguageManager extends BaseLanguageManager
     }
 
     /**
+     * Create a new instance for the given index if required.
+     *
+     * @param index the symbolic name of the language
+     *
+     * @return the new instance
+     *
+     * @throws HyphenationException in case of an error
+     *
      * @see org.extex.language.impl.LanguageCreator#createLanguageInstance(
      *      java.lang.String)
      */
@@ -149,6 +162,14 @@ public class LoadingLanguageManager extends BaseLanguageManager
     }
 
     /**
+     * Load or create a new instance for the given index if required.
+     *
+     * @param index the symbolic name of the language
+     *
+     * @return the new instance
+     *
+     * @throws HyphenationException in case of an error
+     *
      * @see org.extex.language.impl.LanguageCreator#loadLanguageInstance(
      *      java.lang.String)
      */
@@ -182,7 +203,7 @@ public class LoadingLanguageManager extends BaseLanguageManager
                     return lang;
                 } else {
                     getLogger().warning(
-                            getLocalizer().format("LanguageNotFound", name));
+                        getLocalizer().format("LanguageNotFound", name));
                 }
             } catch (ConfigurationException e) {
                 throw new HyphenationException(e);
@@ -274,17 +295,20 @@ public class LoadingLanguageManager extends BaseLanguageManager
             file = ((NamedOutputStream) fos).getName();
         }
         fos.write("#!extex -lfm\n".getBytes());
-        ObjectOutputStream out = new ObjectOutputStream(new GZIPOutputStream(
-                fos));
+        ObjectOutputStream out =
+                new ObjectOutputStream(new GZIPOutputStream(fos));
         out.writeObject(VERSION);
         out.writeObject(value);
         out.close();
-        getLogger().info(
-                getLocalizer().format("LanguageSaved", name, file));
+        getLogger().info(getLocalizer().format("LanguageSaved", name, file));
         return true;
     }
 
     /**
+     * This method takes an output stream factory for further use.
+     *
+     * @param factory the output stream factory to use
+     *
      * @see org.extex.interpreter.type.OutputStreamConsumer#setOutputStreamFactory(
      *      org.extex.backend.outputStream.OutputStreamFactory)
      */
@@ -294,6 +318,10 @@ public class LoadingLanguageManager extends BaseLanguageManager
     }
 
     /**
+     * Setter for the resource finder.
+     *
+     * @param finder the resource finder
+     *
      * @see org.extex.util.resource.ResourceConsumer#setResourceFinder(
      *      org.extex.util.resource.ResourceFinder)
      */
