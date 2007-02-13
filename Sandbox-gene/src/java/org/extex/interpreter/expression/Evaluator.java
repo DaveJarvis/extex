@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -44,7 +44,6 @@ import org.extex.scanner.type.token.OtherToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 import org.extex.util.framework.i18n.LocalizerFactory;
-
 
 /**
  * This class provides some static methods to parse an expression and return its
@@ -412,8 +411,7 @@ public class Evaluator {
             throw new EofException();
         } else if (!t.equals(Catcode.OTHER, ',')) {
             throw new HelpingException(LocalizerFactory
-                    .getLocalizer(Evaluator.class), "MissingComma", t
-                    .toString());
+                .getLocalizer(Evaluator.class), "MissingComma", t.toString());
         }
         source.skipSpace();
     }
@@ -452,7 +450,7 @@ public class Evaluator {
             throws InterpreterException {
 
         term.set(evalLogicExpressionOrFunctionalExpression(context, source,
-                typesetter));
+            typesetter));
         source.skipSpace();
         return;
     }
@@ -473,7 +471,7 @@ public class Evaluator {
             throws InterpreterException {
 
         return evalExpression(evalTerm(context, source, typesetter), //
-                context, source, typesetter);
+            context, source, typesetter);
     }
 
     /**
@@ -495,8 +493,8 @@ public class Evaluator {
         EType savedValue = start;
         BinaryFunction op = ASSIGN;
 
-        for (Token t = source.getNonSpace(context); t != null; t = source
-                .getNonSpace(context)) {
+        for (Token t = source.getNonSpace(context); t != null; t =
+                source.getNonSpace(context)) {
 
             int c = (t instanceof OtherToken //
                     ? t.getChar().getCodePoint()//
@@ -514,12 +512,14 @@ public class Evaluator {
                     op = MINUS;
                     break;
                 case '*':
-                    savedValue = savedValue.multiply(evalTerm(context, source,
-                            typesetter));
+                    savedValue =
+                            savedValue.multiply(evalTerm(context, source,
+                                typesetter));
                     break;
                 case '/':
-                    savedValue = savedValue.divide(evalTerm(context, source,
-                            typesetter));
+                    savedValue =
+                            savedValue.divide(evalTerm(context, source,
+                                typesetter));
                     break;
                 default:
                     source.push(t);
@@ -580,8 +580,8 @@ public class Evaluator {
         }
 
         throw new HelpingException(LocalizerFactory
-                .getLocalizer(Evaluator.class), "MissingParenthesis", //
-                (t == null ? "null" : t.toString()));
+            .getLocalizer(Evaluator.class), "MissingParenthesis", //
+            (t == null ? "null" : t.toString()));
     }
 
     /**
@@ -637,12 +637,13 @@ public class Evaluator {
                     throw new RuntimeException("unimplemented");
                 case '!':
                 case UC_NOT:
-                    EType ac = evalLogicExpressionOrFunctionalExpression(
-                            context, source, typesetter);
+                    EType ac =
+                            evalLogicExpressionOrFunctionalExpression(context,
+                                source, typesetter);
                     ac.not();
                     return ac;
                 default:
-            // ...
+                    // ...
             }
         }
 
@@ -680,12 +681,13 @@ public class Evaluator {
             switch (t.getChar().getCodePoint()) {
                 case '!':
                 case UC_NOT:
-                    EType ac = evalLogicExpressionOrFunctionalExpression(
-                            context, source, typesetter);
+                    EType ac =
+                            evalLogicExpressionOrFunctionalExpression(context,
+                                source, typesetter);
                     ac.not();
                     return ac;
                 default:
-            // ...
+                    // ...
             }
         }
 
@@ -699,8 +701,8 @@ public class Evaluator {
         op = getJunctor(context, source);
         if (op != null) {
             return op.apply(accumulator,
-                    evalLogicExpressionOrFunctionalExpression(context, source,
-                            typesetter));
+                evalLogicExpressionOrFunctionalExpression(context, source,
+                    typesetter));
         }
         return accumulator;
     }
@@ -719,8 +721,8 @@ public class Evaluator {
     private EType evalTerm(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
 
-        for (Token t = source.getNonSpace(context); t != null; t = source
-                .getNonSpace(context)) {
+        for (Token t = source.getNonSpace(context); t != null; t =
+                source.getNonSpace(context)) {
 
             if (t instanceof OtherToken) {
                 switch (t.getChar().getCodePoint()) {
@@ -728,8 +730,8 @@ public class Evaluator {
                         // continue
                         break;
                     case '-':
-                        EType accumulator = evalTerm(context, source,
-                                typesetter);
+                        EType accumulator =
+                                evalTerm(context, source, typesetter);
                         accumulator = accumulator.negate();
                         return accumulator;
                     case '(':
@@ -738,8 +740,9 @@ public class Evaluator {
                     default:
                         source.push(t);
                         for (int i = 0; i < parsers.size(); i++) {
-                            EType term = ((ETypeParser) parsers.get(i)).parse(
-                                    context, source, typesetter);
+                            EType term =
+                                    ((ETypeParser) parsers.get(i)).parse(
+                                        context, source, typesetter);
                             if (term != null) {
                                 return term;
                             }
@@ -751,8 +754,9 @@ public class Evaluator {
                 Code code = context.getCode((CodeToken) t);
 
                 for (int i = 0; i < parsers.size(); i++) {
-                    EType term = ((ETypeParser) parsers.get(i)).convert(code,
-                            context, source, typesetter);
+                    EType term =
+                            ((ETypeParser) parsers.get(i)).convert(code,
+                                context, source, typesetter);
                     if (term != null) {
                         return term;
                     }
@@ -760,15 +764,15 @@ public class Evaluator {
 
                 if (code instanceof ExpandableCode) {
                     ((ExpandableCode) code).expand(Flags.NONE, context, source,
-                            typesetter);
+                        typesetter);
                 } else {
                     break;
                 }
             } else if (t instanceof LetterToken) {
                 Tokens tokens = new Tokens(t);
                 for (t = source.getToken(context); t != null
-                        && t instanceof LetterToken; t = source
-                        .getToken(context)) {
+                        && t instanceof LetterToken; t =
+                        source.getToken(context)) {
                     tokens.add(t);
                 }
                 source.push(t);
@@ -784,15 +788,15 @@ public class Evaluator {
                 }
                 if (f instanceof UnaryFunction) {
                     return ((UnaryFunction) f).apply(evalTerm(context, source,
-                            typesetter));
+                        typesetter));
                 }
                 t = source.getNonSpace(context);
                 if (t == null) {
                     throw new EofException();
                 } else if (!t.equals(Catcode.OTHER, '(')) {
                     throw new HelpingException(LocalizerFactory
-                            .getLocalizer(Evaluator.class),
-                            "MissingOpenParenthesis", name, t.toString());
+                        .getLocalizer(Evaluator.class),
+                        "MissingOpenParenthesis", name, t.toString());
                 }
                 EType accumulator = new Accumulator();
                 if (f instanceof BinaryFunction) {
@@ -801,8 +805,9 @@ public class Evaluator {
                     EType arg2 = evalExpression(context, source, typesetter);
                     accumulator = ((BinaryFunction) f).apply(arg1, arg2);
                 } else if (f instanceof ParsingFunction) {
-                    accumulator = ((ParsingFunction) f).apply(context, source,
-                            typesetter);
+                    accumulator =
+                            ((ParsingFunction) f).apply(context, source,
+                                typesetter);
                 } else {
                     break;
                 }
@@ -812,8 +817,8 @@ public class Evaluator {
                     throw new EofException();
                 } else if (!t.equals(Catcode.OTHER, ')')) {
                     throw new HelpingException(LocalizerFactory
-                            .getLocalizer(Evaluator.class),
-                            "MissingParenthesis", t.toString());
+                        .getLocalizer(Evaluator.class), "MissingParenthesis", t
+                        .toString());
                 }
                 source.skipSpace();
                 return accumulator;
@@ -864,7 +869,7 @@ public class Evaluator {
                     source.push(t2);
                     break;
                 default:
-            // fall-through to report nothing
+                    // fall-through to report nothing
             }
         }
         source.push(t);
@@ -902,7 +907,7 @@ public class Evaluator {
                         source.push(t2);
                         break;
                     default:
-                // fall-through to report nothing
+                        // fall-through to report nothing
                 }
             }
             source.push(t);
@@ -921,7 +926,7 @@ public class Evaluator {
                         source.push(t2);
                         break;
                     default:
-                // fall-through to report nothing
+                        // fall-through to report nothing
                 }
             }
             source.push(t);
@@ -985,7 +990,7 @@ public class Evaluator {
                     }
                     return GE;
                 default:
-            // fall-through to report nothing
+                    // fall-through to report nothing
             }
         }
         source.push(t);

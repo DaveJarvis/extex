@@ -21,6 +21,7 @@ package finder;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintStream;
 import java.net.URL;
 import java.util.Enumeration;
 import java.util.Properties;
@@ -31,21 +32,29 @@ import java.util.Properties;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Finder {
+public final class Finder {
 
     /**
-     * TODO gene: missing JavaDoc
+     * Creates a new object.
+     */
+    private Finder() {
+
+    }
+
+    /**
+     * The command line interface.
      *
-     * @param args
+     * @param args the command line arguments
      */
     public static void main(final String[] args) {
 
+        PrintStream printStream = System.out;
         ClassLoader classLoader = Finder.class.getClassLoader();
         try {
             Enumeration r = classLoader.getResources("toc.index");
             while (r.hasMoreElements()) {
                 URL el = (URL) r.nextElement();
-                System.out.println(el.getPath());
+                printStream.println(el.getPath());
                 Properties properties = new Properties();
                 InputStream s = el.openStream();
                 properties.load(s);

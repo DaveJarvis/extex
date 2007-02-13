@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -20,13 +20,10 @@
 package org.extex.interpreter.expression;
 
 import org.extex.interpreter.exception.helping.MissingNumberException;
-import org.extex.interpreter.expression.Evaluator;
-import org.extex.interpreter.expression.ExTeXEvaluator;
 import org.extex.interpreter.expression.term.Accumulator;
 import org.extex.interpreter.expression.term.TBoolean;
 import org.extex.interpreter.expression.term.TCount;
 import org.extex.interpreter.expression.term.TDouble;
-
 
 /**
  * This class is a test suite for the expression evaluator.
@@ -86,7 +83,6 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
         assertEquals(9, ((TCount) a.getValue()).getValue());
     }
 
-
     /**
      * <testcase>
      *  Test case checking that ...
@@ -103,7 +99,6 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
         assertEquals(9, ((TCount) a.getValue()).getValue());
     }
 
-
     /**
      * <testcase>
      *  Test case checking that ...
@@ -119,7 +114,6 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
         assertTrue(a.getValue() instanceof TCount);
         assertEquals(9, ((TCount) a.getValue()).getValue());
     }
-
 
     /**
      * <testcase>

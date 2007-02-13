@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -305,7 +305,7 @@ public final class FormatPrinter {
         try {
             for (String a = args[i]; a.startsWith("-"); a = args[++i]) {
                 if ("-help".startsWith(a)) {
-                    System.err.println("FormatPrinter [options] <file>\n" + "");
+                    err.println("FormatPrinter [options] <file>\n" + "");
                     // TODO
                     return;
                 } else if ("-listlimit".startsWith(a)) {
@@ -356,9 +356,10 @@ public final class FormatPrinter {
             System.exit(-1);
         }
 
+        PrintStream out = System.out;
         try {
-            InputStream inStream = new BufferedInputStream(new FileInputStream(
-                    fmt));
+            InputStream inStream =
+                    new BufferedInputStream(new FileInputStream(fmt));
 
             for (int c = inStream.read(); c != '\n'; c = inStream.read()) {
                 if (c < 0) {
@@ -366,13 +367,13 @@ public final class FormatPrinter {
                 }
             }
 
-            ObjectInputStream in = new ObjectInputStream(new GZIPInputStream(
-                    inStream));
+            ObjectInputStream in =
+                    new ObjectInputStream(new GZIPInputStream(inStream));
 
-            for (Object obj = in.readObject(); obj != null; obj = in
-                    .readObject()) {
-                print(System.out, "\n", obj);
-                
+            for (Object obj = in.readObject(); obj != null; obj =
+                    in.readObject()) {
+                print(out, "\n", obj);
+
             }
 
         } catch (EOFException e) {
@@ -382,7 +383,7 @@ public final class FormatPrinter {
             System.exit(-1);
         }
 
-        System.out.println();
+        out.println();
     }
 
     /**

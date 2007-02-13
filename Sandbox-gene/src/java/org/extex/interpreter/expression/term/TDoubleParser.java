@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -32,7 +32,6 @@ import org.extex.scanner.type.token.OtherToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 
-
 /**
  * This class implements the supporting functions for the date type
  * {@linkplain org.extex.interpreter.expression.term.TDouble TDouble}
@@ -52,6 +51,16 @@ public final class TDoubleParser implements ETypeParser {
     }
 
     /**
+     * Try to convert some code into a proper data type.
+     *
+     * @param code the code to convert
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter
+     *
+     * @return the converted value or <code>null</code> if the conversion
+     *  could not be performed
+     *
      * @see org.extex.interpreter.expression.ETypeParser#convert(
      *      org.extex.interpreter.type.Code,
      *      org.extex.interpreter.context.Context,

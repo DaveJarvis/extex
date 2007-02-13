@@ -1,3 +1,21 @@
+/*
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
+ *
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+ *
+ */
 
 package org.extex.interpreter.expression.term;
 
@@ -5,7 +23,6 @@ import org.extex.interpreter.exception.helping.ArithmeticOverflowException;
 import org.extex.interpreter.expression.EType;
 import org.extex.interpreter.expression.exception.CastException;
 import org.extex.interpreter.expression.exception.UnsupportedException;
-
 
 /**
  * This data type contains an accumulator which can contain values of
@@ -34,9 +51,7 @@ public class Accumulator implements EType {
      * @see org.extex.interpreter.expression.EType#add(
      *      org.extex.interpreter.expression.EType)
      */
-    public EType add(final EType t)
-            throws CastException,
-                UnsupportedException {
+    public EType add(final EType t) throws CastException, UnsupportedException {
 
         return (value != null ? value.add(t) : null);
     }
@@ -45,9 +60,7 @@ public class Accumulator implements EType {
      * @see org.extex.interpreter.expression.EType#and(
      *      org.extex.interpreter.expression.EType)
      */
-    public EType and(final EType t)
-            throws CastException,
-                UnsupportedException {
+    public EType and(final EType t) throws CastException, UnsupportedException {
 
         return (value != null ? value.and(t) : null);
     }
@@ -171,9 +184,7 @@ public class Accumulator implements EType {
      * @see org.extex.interpreter.expression.EType#or(
      *      org.extex.interpreter.expression.EType)
      */
-    public EType or(final EType t)
-            throws CastException,
-                UnsupportedException {
+    public EType or(final EType t) throws CastException, UnsupportedException {
 
         return (value != null ? value.or(t) : null);
     }

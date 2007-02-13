@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -21,7 +21,6 @@ package org.extex.interpreter.expression.exception;
 
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.util.framework.i18n.LocalizerFactory;
-
 
 /**
  * This exception signals that the attempt to cast a value has failed.
@@ -53,7 +52,7 @@ public class CastException extends HelpingException {
     public CastException(final String a1, final String a2) {
 
         super(LocalizerFactory.getLocalizer(CastException.class),
-                "CastException", a1, a2);
+            "CastException", a1, a2);
     }
 
 }

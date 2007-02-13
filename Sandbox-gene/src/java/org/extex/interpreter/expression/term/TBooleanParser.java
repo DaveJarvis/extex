@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -29,7 +29,6 @@ import org.extex.interpreter.expression.UnaryFunction;
 import org.extex.interpreter.type.Code;
 import org.extex.typesetter.Typesetter;
 
-
 /**
  * This class implements the supporting functions for the date type
  * {@linkplain org.extex.interpreter.expression.term.TBoolean TBoolean}
@@ -49,6 +48,16 @@ public final class TBooleanParser implements ETypeParser {
     }
 
     /**
+     * Try to convert some code into a proper data type.
+     *
+     * @param code the code to convert
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter
+     *
+     * @return the converted value or <code>null</code> if the conversion
+     *  could not be performed
+     *
      * @see org.extex.interpreter.expression.ETypeParser#convert(
      *      org.extex.interpreter.type.Code,
      *      org.extex.interpreter.context.Context,
@@ -62,7 +71,18 @@ public final class TBooleanParser implements ETypeParser {
     }
 
     /**
-     * @see org.extex.interpreter.expression.TerminalParser#parse(
+     * Try to parse a proper value from the token source.
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter
+     *
+     * @return the element inquired or <code>null</code> if none could be
+     *  parsed
+     *
+     * @throws InterpreterException in case of an error
+     *
+     * @see org.extex.interpreter.expression.ETypeParser#parse(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
@@ -80,7 +100,12 @@ public final class TBooleanParser implements ETypeParser {
     }
 
     /**
-     * @see org.extex.interpreter.expression.TerminalParser#registered(
+     * Inform the parser that it has been registered in an evaluator.
+     * In this case the parser can register some functions in the evaluator.
+     *
+     * @param evaluator the evaluator where the parser has been registered
+     *
+     * @see org.extex.interpreter.expression.ETypeParser#registered(
      *      org.extex.interpreter.expression.Evaluator)
      */
     public void registered(final Evaluator evaluator) {

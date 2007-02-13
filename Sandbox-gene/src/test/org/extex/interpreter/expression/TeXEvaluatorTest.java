@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -23,8 +23,6 @@ import junit.framework.TestCase;
 
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.MissingNumberException;
-import org.extex.interpreter.expression.Evaluator;
-import org.extex.interpreter.expression.TeXEvaluator;
 import org.extex.interpreter.expression.term.Accumulator;
 import org.extex.interpreter.max.StringSource;
 import org.extex.interpreter.max.context.ContextImpl;
@@ -32,7 +30,6 @@ import org.extex.interpreter.type.count.Count;
 import org.extex.scanner.type.token.TokenFactoryImpl;
 import org.extex.util.framework.configuration.ConfigurationFactory;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
-
 
 /**
  * This class is a test suite for the expression evaluator.
@@ -48,10 +45,10 @@ public class TeXEvaluatorTest extends TestCase {
      * @param args the command line arguments
      */
     public static void main(final String[] args) {
-        
+
         junit.textui.TestRunner.run(TeXEvaluatorTest.class);
     }
-    
+
     /**
      * TODO gene: missing JavaDoc
      *
@@ -60,8 +57,7 @@ public class TeXEvaluatorTest extends TestCase {
      *
      * @throws InterpreterException in case of an error
      */
-    protected Accumulator apply(final String s)
-            throws InterpreterException {
+    protected Accumulator apply(final String s) throws InterpreterException {
 
         Evaluator ev = getInstanceForTest();
         Accumulator accumulator = new Accumulator();
@@ -69,8 +65,8 @@ public class TeXEvaluatorTest extends TestCase {
         context.setTokenFactory(new TokenFactoryImpl());
         try {
             context.configure(new ConfigurationFactory().newInstance(
-                    TeXEvaluatorTest.class.getName().replace('.', '/'))
-                    .getConfiguration("ExTeX"));
+                TeXEvaluatorTest.class.getName().replace('.', '/'))
+                .getConfiguration("ExTeX"));
             StringSource source = new StringSource(s);
             source.setContext(context);
             ev.eval(accumulator, context, source, null);
@@ -81,6 +77,11 @@ public class TeXEvaluatorTest extends TestCase {
         return accumulator;
     }
 
+    /**
+     * TODO gene: missing JavaDoc
+     *
+     * @return ...
+     */
     Evaluator getInstanceForTest() {
 
         return new TeXEvaluator();
@@ -116,7 +117,7 @@ public class TeXEvaluatorTest extends TestCase {
         assertNotNull(a);
         assertNotNull(a.getValue());
         assertTrue(a.getValue() instanceof Count);
-        assertEquals(123, ((Count)a.getValue()).getValue());
+        assertEquals(123, ((Count) a.getValue()).getValue());
     }
 
     /**
@@ -132,7 +133,7 @@ public class TeXEvaluatorTest extends TestCase {
         assertNotNull(a);
         assertNotNull(a.getValue());
         assertTrue(a.getValue() instanceof Count);
-        assertEquals(123, ((Count)a.getValue()).getValue());
+        assertEquals(123, ((Count) a.getValue()).getValue());
     }
 
     /**
@@ -148,7 +149,7 @@ public class TeXEvaluatorTest extends TestCase {
         assertNotNull(a);
         assertNotNull(a.getValue());
         assertTrue(a.getValue() instanceof Count);
-        assertEquals(-123, ((Count)a.getValue()).getValue());
+        assertEquals(-123, ((Count) a.getValue()).getValue());
     }
 
     /**
@@ -164,7 +165,7 @@ public class TeXEvaluatorTest extends TestCase {
         assertNotNull(a);
         assertNotNull(a.getValue());
         assertTrue(a.getValue() instanceof Count);
-        assertEquals(-123, ((Count)a.getValue()).getValue());
+        assertEquals(-123, ((Count) a.getValue()).getValue());
     }
 
     /**
@@ -180,7 +181,7 @@ public class TeXEvaluatorTest extends TestCase {
         assertNotNull(a);
         assertNotNull(a.getValue());
         assertTrue(a.getValue() instanceof Count);
-        assertEquals(3, ((Count)a.getValue()).getValue());
+        assertEquals(3, ((Count) a.getValue()).getValue());
     }
 
 }
