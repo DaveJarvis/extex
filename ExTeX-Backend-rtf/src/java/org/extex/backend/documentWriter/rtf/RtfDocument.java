@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -32,7 +32,6 @@ import java.util.Map;
 import org.extex.color.model.RgbColor;
 import org.extex.interpreter.context.Color;
 import org.extex.interpreter.type.font.Font;
-
 
 /**
  * This class provides a container for an RTF document.
@@ -134,8 +133,9 @@ public class RtfDocument {
      */
     protected int mapColor(final RgbColor col) {
 
-        Rgb8Color c = new Rgb8Color(col.getRed() >> 16, col.getGreen() >> 16,
-                col.getGreen() >> 16);
+        Rgb8Color c =
+                new Rgb8Color(col.getRed() >> 16, col.getGreen() >> 16, col
+                    .getGreen() >> 16);
         Integer index = (Integer) colorMap.get(c);
         if (index == null) {
             colorTable.add(c);
@@ -165,6 +165,8 @@ public class RtfDocument {
 
     /**
      * Start a new page.
+     *
+     * @param color the background color
      *
      * @throws IOException in case of an error
      */
@@ -354,14 +356,16 @@ public class RtfDocument {
      * Write the current date in a format suitable for an info item.
      *
      * @param stream the target stream for writing
+     * @param tag the tag
      *
      * @throws IOException in case of an error
      */
     private void writeInfoTime(final OutputStream stream, final String tag)
             throws IOException {
 
-        String now = new SimpleDateFormat(
-                "'\\yr'y'\\mo'm'\\dy'd'\\hr'h'\\min'm").format(new Date());
+        String now =
+                new SimpleDateFormat("'\\yr'y'\\mo'm'\\dy'd'\\hr'h'\\min'm")
+                    .format(new Date());
         stream.write("{\\".getBytes());
         stream.write(tag.getBytes());
         stream.write(now.getBytes());

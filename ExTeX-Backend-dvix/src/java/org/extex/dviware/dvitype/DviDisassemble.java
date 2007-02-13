@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -34,7 +34,6 @@ import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.ConfigurationFactory;
 import org.extex.util.resource.ResourceFinder;
 import org.extex.util.resource.ResourceFinderFactory;
-
 
 /**
  * This class provides a command line tool to disassemble a DVI file.
@@ -112,10 +111,14 @@ public class DviDisassemble implements DviProcessor {
         Configuration config;
         ResourceFinder finder;
         try {
-            config = new ConfigurationFactory().newInstance(properties
-                    .getProperty(PROP_CONFIG));
-            finder = new ResourceFinderFactory().createResourceFinder(config
-                    .getConfiguration("Resource"), logger, properties, null);
+            config =
+                    new ConfigurationFactory().newInstance(properties
+                        .getProperty(PROP_CONFIG));
+            finder =
+                    new ResourceFinderFactory()
+                        .createResourceFinder(config
+                            .getConfiguration("Resource"), logger, properties,
+                            null);
             InputStream dvi = finder.findResource(arg, "dvi");
 
             if (dvi == null) {
@@ -153,6 +156,16 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
+     * A DVI <tt>bop</tt> instruction has been encountered.
+     * This instruction signals the beginning of a new page.
+     *
+     * @param off the current byte position in the input stream
+     * @param c the array of page number indicators. The array has length 10.
+     *  It is initialized from the count registers 0 to 9 at the time the page
+     *  is shipped out.
+     * @param p the pointer to the previous <tt>bop</tt> instruction or -1
+     *  for the first page
+     *
      * @see org.extex.dviware.DviProcessor#bop(int, int[], int)
      */
     public void bop(final int off, final int[] c, final int p) {
@@ -183,6 +196,12 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
+     * A DVI <tt>down</tt> instruction has been encountered.
+     *
+     * @param off the current byte position in the input stream
+     * @param b the number of DVI units to move down. If negative then the
+     *  current position moves upwards.
+     *
      * @see org.extex.dviware.DviProcessor#down(int, int)
      */
     public void down(final int off, final int b) {
@@ -193,6 +212,11 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
+     * A DVI <tt>eop</tt> instruction has been encountered.
+     * This instruction signals the end of a page.
+     *
+     * @param off the current byte position in the input stream
+     *
      * @see org.extex.dviware.DviProcessor#eop(int)
      */
     public void eop(final int off) {
@@ -202,6 +226,11 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
+     * A DVI <tt>fnt</tt> instruction has been encountered.
+     *
+     * @param off the current byte position in the input stream
+     * @param k the new font number; this number is not negative
+     *
      * @see org.extex.dviware.DviProcessor#fnt(int, int)
      */
     public void fnt(final int off, final int k) {
@@ -233,6 +262,12 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
+     * A DVI <tt>nop</tt> instruction has been encountered.
+     * This instruction simply does nothing. It just occupies one byte in
+     * the input stream.
+     *
+     * @param off the current byte position in the input stream
+     *
      * @see org.extex.dviware.DviProcessor#nop(int)
      */
     public void nop(final int off) {
@@ -242,6 +277,10 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
+     * A DVI <tt>pop</tt> instruction has been encountered.
+     *
+     * @param off the current byte position in the input stream
+     *
      * @see org.extex.dviware.DviProcessor#pop(int)
      */
     public void pop(final int off) {
@@ -276,6 +315,13 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
+     * Invoke the callback on a POST_POST instruction.
+     * This is the last instruction in a DVI file.
+     *
+     * @param off the offset in the file of this instruction
+     * @param bop the index of the last BOP instruction
+     * @param id the id of this DVI version. Usually this is 2.
+     *
      * @see org.extex.dviware.DviProcessor#postPost(int, int, int)
      */
     public void postPost(final int off, final int bop, final int id) {
@@ -334,7 +380,7 @@ public class DviDisassemble implements DviProcessor {
                 case 3:
                     out.print('0');
                 default:
-            // continue
+                    // continue
             }
             out.print(s);
         } else {
@@ -344,6 +390,10 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
+     * A DVI <tt>push</tt> instruction has been encountered.
+     *
+     * @param off the current byte position in the input stream
+     *
      * @see org.extex.dviware.DviProcessor#push(int)
      */
     public void push(final int off) {
@@ -353,6 +403,11 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
+     * A DVI <tt>put_char</tt> instruction has been encountered.
+     *
+     * @param off the current byte position
+     * @param c the number of the character to set
+     *
      * @see org.extex.dviware.DviProcessor#putChar(int, int)
      */
     public void putChar(final int off, final int c) {
@@ -365,6 +420,12 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
+     * A DVI <tt>put_rule</tt> instruction has been encountered.
+     *
+     * @param off the current byte position in the input stream
+     * @param a the width
+     * @param b the height
+     *
      * @see org.extex.dviware.DviProcessor#putRule(int, int, int)
      */
     public void putRule(final int off, final int a, final int b) {
@@ -377,6 +438,11 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
+     * A DVI <tt>right</tt> instruction has been encountered.
+     *
+     * @param off the current byte position in the input stream
+     * @param b the distance to move in DVI units
+     *
      * @see org.extex.dviware.DviProcessor#right(int, int)
      */
     public void right(final int off, final int b) {
@@ -387,6 +453,11 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
+     * A DVI <tt>set_char</tt> instruction has been encountered.
+     *
+     * @param off the current byte position
+     * @param c the number of the character to set
+     *
      * @see org.extex.dviware.DviProcessor#setChar(int, int)
      */
     public void setChar(final int off, final int c) {
@@ -408,6 +479,12 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
+     * A DVI <tt>set_rule</tt> instruction has been encountered.
+     *
+     * @param off the current byte position
+     * @param a the width
+     * @param b the height
+     *
      * @see org.extex.dviware.DviProcessor#setRule(int, int, int)
      */
     public void setRule(final int off, final int a, final int b) {
@@ -420,16 +497,29 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
+     * A DVI undefined instruction has been encountered.
+     * This callback is invoked for the op-codes 250&ndash;255 which are
+     * undefined in <logo>TeX</logo>.
+     *
+     * @param off the current byte position
+     * @param opcode the opcode encountered
+     * @param stream the input stream to read further bytes from
+     *
      * @see org.extex.dviware.DviProcessor#undef(int, int, java.io.InputStream)
      */
-    public void undef(final int off, final int c, final InputStream stream) {
+    public void undef(final int off, final int opcode, final InputStream stream) {
 
         printLabel(off);
         out.println("0x");
-        out.println(Integer.toHexString(c));
+        out.println(Integer.toHexString(opcode));
     }
 
     /**
+     * A DVI <tt>w</tt> instruction has been encountered.
+     *
+     * @param off the current byte position in the input stream
+     * @param b the distance to add in DVI units
+     *
      * @see org.extex.dviware.DviProcessor#w(int, int)
      */
     public void w(final int off, final int b) {
@@ -440,6 +530,10 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
+     * A DVI <tt>w0</tt> instruction has been encountered.
+     *
+     * @param off the current byte position in the input stream
+     *
      * @see org.extex.dviware.DviProcessor#w0(int)
      */
     public void w0(final int off) {
@@ -449,6 +543,11 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
+     * A DVI <tt>x</tt> instruction has been encountered.
+     *
+     * @param off the current byte position in the input stream
+     * @param b the distance to move in DVI units
+     *
      * @see org.extex.dviware.DviProcessor#x(int, int)
      */
     public void x(final int off, final int b) {
@@ -459,6 +558,10 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
+     * A DVI <tt>x0</tt> instruction has been encountered.
+     *
+     * @param off the current byte position in the input stream
+     *
      * @see org.extex.dviware.DviProcessor#x0(int)
      */
     public void x0(final int off) {
@@ -468,6 +571,14 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
+     * A DVI <tt>xxx</tt> instruction has been encountered.
+     * This instruction is used to pass some bytes uninterpreted to the DVI
+     * processor. In <logo>TeX</logo> this is accomplished with the
+     * primitive <tt>\special</tt>.
+     *
+     * @param off the current byte position in the input stream
+     * @param x the array of bytes carrying the content
+     *
      * @see org.extex.dviware.DviProcessor#xxx(int, byte[])
      */
     public void xxx(final int off, final byte[] x) {
@@ -480,6 +591,11 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
+     * A DVI <tt>y</tt> instruction has been encountered.
+     *
+     * @param off the current byte position in the input stream
+     * @param b the distance to move
+     *
      * @see org.extex.dviware.DviProcessor#y(int, int)
      */
     public void y(final int off, final int b) {
@@ -490,6 +606,9 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
+     * A DVI <tt>y0</tt> instruction has been encountered.
+     *
+     * @param off the current byte position in the input stream
      * @see org.extex.dviware.DviProcessor#y0(int)
      */
     public void y0(final int off) {
@@ -499,6 +618,10 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
+     * A DVI <tt>z</tt> instruction has been encountered.
+     *
+     * @param off the current byte position in the input stream
+     * @param b the distance to move
      * @see org.extex.dviware.DviProcessor#z(int, int)
      */
     public void z(final int off, final int b) {
@@ -509,6 +632,10 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
+     * A DVI <tt>z0</tt> instruction has been encountered.
+     *
+     * @param off the current byte position in the input stream
+     *
      * @see org.extex.dviware.DviProcessor#z0(int)
      */
     public void z0(final int off) {

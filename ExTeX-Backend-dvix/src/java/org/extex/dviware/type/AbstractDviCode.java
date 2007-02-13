@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -34,19 +34,39 @@ public abstract class AbstractDviCode implements DviCode {
      * The constant <tt>ONE_BYTE_MASK</tt> contains the bit mask for a single
      * byte.
      */
-    private static final int ONE_BYTE_MASK = 0xff;
+    protected static final int ONE_BYTE_MASK = 0xff;
 
     /**
-     * The constant <tt>ONE_BYTE_MASK</tt> contains the bit mask for a double
-     * byle.
+     * The constant <tt>THREE_BYTE_MASK</tt> contains the bit mask for a triple
+     * byte.
      */
-    private static final int TWO_BYTE_MASK = 0xffff;
+    protected static final int THREE_BYTE_MASK = 0xffffff;
 
     /**
-     * The constant <tt>ONE_BYTE_MASK</tt> contains the bit mask for a triple
-     * byle.
+     * The constant <tt>TWO_BYTE_MASK</tt> contains the bit mask for a double
+     * byte.
      */
-    private static final int THREE_BYTE_MASK = 0xffffff;
+    protected static final int TWO_BYTE_MASK = 0xffff;
+
+    /**
+     * Determine which variant of a DVI instruction is needed for the operand.
+     *
+     * @param value the unsigned value
+     *
+     * @return the variant
+     */
+    protected static String variant(final int value) {
+
+        if (value <= ONE_BYTE_MASK) {
+            return "1";
+        } else if (value <= TWO_BYTE_MASK) {
+            return "2";
+        } else if (value <= THREE_BYTE_MASK) {
+            return "3";
+        }
+
+        return "4";
+    }
 
     /**
      * Write two bytes to the output stream.
@@ -64,11 +84,29 @@ public abstract class AbstractDviCode implements DviCode {
     }
 
     /**
-     * Creates a new object.
+     * The field <tt>name</tt> contains the name of the dvi instruction.
      */
-    protected AbstractDviCode() {
+    private String name;
+
+    /**
+     * Creates a new object.
+     *
+     * @param name the name of the dvi instruction
+     */
+    protected AbstractDviCode(final String name) {
 
         super();
+        this.name = name;
+    }
+
+    /**
+     * Getter for name.
+     *
+     * @return the name
+     */
+    public String getName() {
+
+        return name;
     }
 
     /**
@@ -155,26 +193,6 @@ public abstract class AbstractDviCode implements DviCode {
         stream.write((value >> 8) & ONE_BYTE_MASK);
         stream.write(value);
         return 5;
-    }
-
-    /**
-     * Determine which variant of a DVI instruction is needed for the operand.
-     *
-     * @param value the unsigned value
-     *
-     * @return the variant
-     */
-    protected String variant(final int value) {
-
-        if (value <= ONE_BYTE_MASK) {
-            return "1";
-        } else if (value <= TWO_BYTE_MASK) {
-            return "2";
-        } else if (value <= THREE_BYTE_MASK) {
-            return "3";
-        }
-
-        return "4";
     }
 
     /**

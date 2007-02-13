@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -346,7 +346,9 @@ public class Dvi {
      */
     public void parse(final DviProcessor proc) throws IOException {
 
-        int a, b, c;
+        int a;
+        int b;
+        int c;
         int off = pointer;
 
         while ((c = read1()) >= 0) {

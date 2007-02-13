@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -47,7 +47,7 @@ public class DviPostamble extends AbstractDviCode {
 
     /**
      * The field <tt>fontMap</tt> contains the fonts and their mapping to
-     * indices.
+     * indexes.
      */
     private Map fontMap = new HashMap();
 
@@ -96,16 +96,8 @@ public class DviPostamble extends AbstractDviCode {
      */
     public DviPostamble(final int mag) {
 
-        super();
+        super("post");
         this.mag = mag;
-    }
-
-    /**
-     * @see org.extex.dviware.type.DviCode#getName()
-     */
-    public String getName() {
-
-        return "post";
     }
 
     /**
@@ -183,6 +175,14 @@ public class DviPostamble extends AbstractDviCode {
     }
 
     /**
+     * Write the code to the output stream.
+     *
+     * @param stream the target stream
+     *
+     * @return the number of bytes actually written
+     *
+     * @throws IOException in case of an error
+     *
      * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
      */
     public int write(final OutputStream stream) throws IOException {

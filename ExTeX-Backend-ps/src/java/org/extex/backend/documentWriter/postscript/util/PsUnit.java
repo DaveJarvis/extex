@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -141,8 +141,8 @@ public abstract class PsUnit {
             // @see "TeX -- The Program [102]"
             int[] dig = new int[FLOAT_DIGITS];
             int k = 0;
-            for (t = getChar(seq, index); t >= '0' && t <= '9'; t = getChar(
-                    seq, index)) {
+            for (t = getChar(seq, index); t >= '0' && t <= '9'; t =
+                    getChar(seq, index)) {
                 if (k < FLOAT_DIGITS) {
                     dig[k++] = t - '0';
                 }
@@ -236,7 +236,7 @@ public abstract class PsUnit {
                 }
                 break;
             default:
-        // fall through to exception
+                // fall through to exception
         }
         throw new NumberFormatException();
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -82,10 +82,10 @@ public interface DviProcessor {
      *
      * @param off the current byte position in the input stream
      * @param k the number of the font
-     * @param c
-     * @param s
-     * @param d
-     * @param n
+     * @param c ...
+     * @param s ...
+     * @param d ...
+     * @param n ...
      */
     void fntDef(int off, int k, int c, int s, int d, String n);
 
@@ -102,7 +102,7 @@ public interface DviProcessor {
      * A DVI <tt>pop</tt> instruction has been encountered.
      *
      * <p>
-     *  The registers h, b, w, x, y, z are poped from the stack.
+     *  The registers h, b, w, x, y, z are popped from the stack.
      * </p>
      *
      * @param off the current byte position in the input stream
@@ -113,14 +113,14 @@ public interface DviProcessor {
      * A DVI <tt>post</tt> instruction has been encountered.
      *
      * @param off the current byte position in the input stream
-     * @param p
+     * @param p ...
      * @param num the numerator
      * @param den the denominator
      * @param mag the magnification
-     * @param l
-     * @param u
-     * @param sp
-     * @param tp
+     * @param l ...
+     * @param u ...
+     * @param sp ...
+     * @param tp ...
      */
     void post(int off, int p, int num, int den, int mag, int l, int u, int sp,
             int tp);
@@ -139,11 +139,11 @@ public interface DviProcessor {
      * A DVI <tt>pre</tt> instruction has been encountered.
      *
      * @param off the current byte position in the input stream
-     * @param i
-     * @param num
-     * @param den
-     * @param mag
-     * @param comment
+     * @param i ...
+     * @param num the numerator
+     * @param den the denominator
+     * @param mag the magnification in permille
+     * @param comment the comment string
      */
     void pre(int off, int i, int num, int den, int mag, String comment);
 

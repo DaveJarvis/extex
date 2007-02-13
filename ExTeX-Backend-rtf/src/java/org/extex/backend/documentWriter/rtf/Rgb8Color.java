@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -54,6 +54,13 @@ public class Rgb8Color {
     }
 
     /**
+     * Indicates whether some other object is "equal to" this one.
+     *
+     * @param   obj   the reference object with which to compare.
+     *
+     * @return  <code>true</code> if this object is the same as the obj
+     *          argument; <code>false</code> otherwise.
+     *
      * @see java.lang.Object#equals(java.lang.Object)
      */
     public boolean equals(final Object obj) {
@@ -92,6 +99,10 @@ public class Rgb8Color {
     }
 
     /**
+     * Compute the has code for this object.
+     *
+     * @return the hash code
+     *
      * @see java.lang.Object#hashCode()
      */
     public int hashCode() {

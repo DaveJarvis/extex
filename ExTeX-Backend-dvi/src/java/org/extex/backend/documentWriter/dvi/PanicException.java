@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -17,17 +17,16 @@
  *
  */
 
+package org.extex.backend.documentWriter.dvi;
+
+import org.extex.util.exception.GeneralException;
+
 /**
  * Panic exception in dvi writer.
  *
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
  * @version $Revision:4704 $
  */
-
-package org.extex.backend.documentWriter.dvi;
-
-import org.extex.util.exception.GeneralException;
-
 public class PanicException extends GeneralException {
 
     /**
@@ -40,6 +39,7 @@ public class PanicException extends GeneralException {
      *
      */
     public PanicException() {
+
         super("TTP.Confusion");
     }
 

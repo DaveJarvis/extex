@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -44,6 +44,7 @@ import org.extex.typesetter.type.node.GlueNode;
 import org.extex.typesetter.type.node.InsertionNode;
 import org.extex.typesetter.type.node.MarkNode;
 import org.extex.typesetter.type.node.VerticalListNode;
+import org.extex.typesetter.type.page.Page;
 import org.extex.typesetter.type.page.PageImpl;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.configuration.Configuration;
@@ -56,14 +57,29 @@ import org.extex.util.framework.configuration.Configuration;
  */
 public class DviDocumentWriterTest extends TestCase {
 
+    /**
+     * The field <tt>documentWriter</tt> contains the ...
+     */
     private DocumentWriter documentWriter = null;
 
+    /**
+     * The field <tt>nodeList</tt> contains the ...
+     */
     private NodeList nodeList = null;
 
+    /**
+     * The field <tt>documentWriterOptions</tt> contains the ...
+     */
     private MockDocumentWriterOptions documentWriterOptions = null;
 
+    /**
+     * The field <tt>configuration</tt> contains the ...
+     */
     private Configuration configuration = null;
 
+    /**
+     * The field <tt>outputStream</tt> contains the ...
+     */
     private OutputStream outputStream = null;
 
     /**
@@ -123,8 +139,8 @@ public class DviDocumentWriterTest extends TestCase {
         // TODO: do not use null for configuration (TE)
 
         documentWriterOptions = new MockDocumentWriterOptions();
-        documentWriter = new DviDocumentWriter(configuration,
-                documentWriterOptions);
+        documentWriter =
+                new DviDocumentWriter(configuration, documentWriterOptions);
         nodeList = new VerticalListNode();
         outputStream = new ByteArrayOutputStream();
         ((SingleDocumentStream) documentWriter).setOutputStream(outputStream);
@@ -146,8 +162,8 @@ public class DviDocumentWriterTest extends TestCase {
 
         boolean noOutputStream = false;
 
-        documentWriter = new DviDocumentWriter(configuration,
-                documentWriterOptions);
+        documentWriter =
+                new DviDocumentWriter(configuration, documentWriterOptions);
         try {
             FixedCount[] pageNo = null;
             documentWriter.shipout(new PageImpl(nodeList, pageNo));
@@ -220,8 +236,8 @@ public class DviDocumentWriterTest extends TestCase {
     private void checkMagnification(long magnification) throws Exception {
 
         documentWriterOptions.setMagnification(magnification);
-        documentWriter = new DviDocumentWriter(configuration,
-                documentWriterOptions);
+        documentWriter =
+                new DviDocumentWriter(configuration, documentWriterOptions);
         ((SingleDocumentStream) documentWriter).setOutputStream(outputStream);
         FixedCount[] pageNo = null;
         documentWriter.shipout(new PageImpl(nodeList, pageNo));
@@ -240,25 +256,44 @@ public class DviDocumentWriterTest extends TestCase {
         checkMagnification(10);
         checkMagnification(100);
         checkMagnification(1000);
-        checkMagnification((2l << 30) - 1); // test 2^30-1
+        checkMagnification((2L << 30) - 1); // test 2^30-1
 
         try {
-            checkMagnification(2l << 30); // test 2^30
+            checkMagnification(2L << 30); // test 2^30
         } catch (GeneralException e) {
             gotRangeException = true;
         }
         assertTrue(gotRangeException);
     }
 
+    /**
+     * TODO gene: missing JavaDoc.
+     *
+     */
     private class MockFixedCount implements FixedCount {
 
+        /**
+         * The field <tt>value</tt> contains the ...
+         */
         private long value;
 
+        /**
+         * Creates a new object.
+         *
+         * @param theValue the value in scaled points
+         */
         public MockFixedCount(final long theValue) {
 
             value = theValue;
         }
 
+        /**
+         * Getter for the value
+         *
+         * @return the value
+         *
+         * @see org.extex.interpreter.type.count.FixedCount#getValue()
+         */
         public long getValue() {
 
             return value;
@@ -329,6 +364,10 @@ public class DviDocumentWriterTest extends TestCase {
         }
     }
 
+    /**
+     * TODO gene: missing JavaDoc.
+     *
+     */
     private class MockDocumentWriterOptions implements DocumentWriterOptions {
 
         /**

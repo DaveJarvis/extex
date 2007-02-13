@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -39,7 +39,6 @@ import org.extex.typesetter.type.page.Page;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.configuration.Configurable;
 
-
 /**
  * This document writer produces multi-page PostScript documents.
  *
@@ -54,8 +53,8 @@ public class PsWriter extends AbstractPostscriptWriter
     /**
      * The field <tt>DF</tt> contains the formatter for the date.
      */
-    private static final DateFormat DF = new SimpleDateFormat(
-            "MM/dd/yyyy HH:mm:ss");
+    private static final DateFormat DF =
+            new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
 
     /**
      * The field <tt>fontManager</tt> contains the font manager.
@@ -106,7 +105,7 @@ public class PsWriter extends AbstractPostscriptWriter
         stream.write("%!PS-Adobe-3.0\n".getBytes());
         writeDsc(stream, "Creator", getParameter("Creator"));
         writeDsc(stream, "CreationDate", DF.format(Calendar.getInstance()
-                .getTime()));
+            .getTime()));
         writeDsc(stream, "Title", getParameter("Title"));
         writeDsc(stream, "Pages", Integer.toString(pages));
         writeDsc(stream, "PageOrder", getParameter("PageOrder"));

@@ -2,7 +2,7 @@
   ############################################################################
   # This is the Ant build file for ExTeX-Backend-dvi
   ############################################################################
-  # Copyright (C) 2006 The ExTeX Group
+  # Copyright (C) 2006-2007 The ExTeX Group
   #
   # This library is free software; you can redistribute it and/or modify it
   # under the terms of the GNU Lesser General Public License as published by

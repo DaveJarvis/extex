@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -97,6 +97,17 @@ public class DumpDocumentWriter
         }
 
         /**
+         * This method is called when an
+         * {@link org.extex.typesetter.type.node.AdjustNode AdjustNode}
+         * has been encountered.
+         *
+         * @param node the first parameter for the visitor is the node visited
+         * @param value the second parameter for the visitor
+         *
+         * @return the visitor specific value
+         *
+         * @throws GeneralException in case of an error
+         *
          * @see org.extex.typesetter.type.NodeVisitor#visitAdjust(
          *      org.extex.typesetter.type.node.AdjustNode,
          *      java.lang.Object)
@@ -109,12 +120,23 @@ public class DumpDocumentWriter
         }
 
         /**
+         * This method is called when an
+         * {@link org.extex.typesetter.type.node.AfterMathNode AfterMathNode}
+         * has been encountered.
+         *
+         * @param node the first parameter for the visitor is the node visited
+         * @param value the second parameter for the visitor
+         *
+         * @return the visitor specific value
+         *
+         * @throws GeneralException in case of an error
+         *
          * @see org.extex.typesetter.type.NodeVisitor#visitAfterMath(
          *      org.extex.typesetter.type.node.AfterMathNode,
          *      java.lang.Object)
          */
-        public Object visitAfterMath(final AfterMathNode node,
-                final Object oOut) throws GeneralException {
+        public Object visitAfterMath(final AfterMathNode node, final Object oOut)
+                throws GeneralException {
 
             if (node.getWidth().ne(Dimen.ZERO_PT)) {
                 write(' ');
@@ -123,6 +145,17 @@ public class DumpDocumentWriter
         }
 
         /**
+         * This method is called when an
+         * {@link org.extex.typesetter.type.node.AlignedLeadersNode AlignedLeadersNode}
+         * has been encountered.
+         *
+         * @param node the first parameter for the visitor is the node visited
+         * @param value the second parameter for the visitor
+         *
+         * @return the visitor specific value
+         *
+         * @throws GeneralException in case of an error
+         *
          * @see org.extex.typesetter.type.NodeVisitor#visitAlignedLeaders(
          *      org.extex.typesetter.type.node.AlignedLeadersNode,
          *      java.lang.Object)
@@ -138,6 +171,17 @@ public class DumpDocumentWriter
         }
 
         /**
+         * This method is called when a
+         * {@link org.extex.typesetter.type.node.BeforeMathNode BeforeMathNode}
+         * has been encountered.
+         *
+         * @param node the first parameter for the visitor is the node visited
+         * @param value the second parameter for the visitor
+         *
+         * @return the visitor specific value
+         *
+         * @throws GeneralException in case of an error
+         *
          * @see org.extex.typesetter.type.NodeVisitor#visitBeforeMath(
          *      org.extex.typesetter.type.node.BeforeMathNode,
          *      java.lang.Object)
@@ -152,6 +196,17 @@ public class DumpDocumentWriter
         }
 
         /**
+         * This method is called when a
+         * {@link org.extex.typesetter.type.node.CenteredLeadersNode CenteredLeadersNode}
+         * has been encountered.
+         *
+         * @param node the first parameter for the visitor is the node visited
+         * @param value the second parameter for the visitor
+         *
+         * @return the visitor specific value
+         *
+         * @throws GeneralException in case of an error
+         *
          * @see org.extex.typesetter.type.NodeVisitor#visitCenteredLeaders(
          *      org.extex.typesetter.type.node.CenteredLeadersNode,
          *      java.lang.Object)
@@ -167,6 +222,17 @@ public class DumpDocumentWriter
         }
 
         /**
+         * This method is called when a
+         * {@link org.extex.typesetter.type.node.CharNode CharNode}
+         * has been encountered.
+         *
+         * @param node the first parameter for the visitor is the node visited
+         * @param value the second parameter for the visitor
+         *
+         * @return the visitor specific value
+         *
+         * @throws GeneralException in case of an error
+         *
          * @see org.extex.typesetter.type.NodeVisitor#visitChar(
          *      org.extex.typesetter.type.node.CharNode,
          *      java.lang.Object)
@@ -179,6 +245,17 @@ public class DumpDocumentWriter
         }
 
         /**
+         * This method is called when a
+         * {@link org.extex.typesetter.type.node.DiscretionaryNode DiscretionaryNode}
+         * has been encountered.
+         *
+         * @param node the first parameter for the visitor is the node visited
+         * @param value the second parameter for the visitor
+         *
+         * @return the visitor specific value
+         *
+         * @throws GeneralException in case of an error
+         *
          * @see org.extex.typesetter.type.NodeVisitor#visitDiscretionary(
          *      org.extex.typesetter.type.node.DiscretionaryNode,
          *      java.lang.Object)
@@ -191,6 +268,17 @@ public class DumpDocumentWriter
         }
 
         /**
+         * This method is called when an
+         * {@link org.extex.typesetter.type.node.ExpandedLeadersNode ExpandedLeadersNode}
+         * has been encountered.
+         *
+         * @param node the first parameter for the visitor is the node visited
+         * @param value the second parameter for the visitor
+         *
+         * @return the visitor specific value
+         *
+         * @throws GeneralException in case of an error
+         *
          * @see org.extex.typesetter.type.NodeVisitor#visitExpandedLeaders(
          *      org.extex.typesetter.type.node.ExpandedLeadersNode,
          *      java.lang.Object)
@@ -206,6 +294,17 @@ public class DumpDocumentWriter
         }
 
         /**
+         * This method is called when a
+         * {@link org.extex.typesetter.type.node.GlueNode GlueNode}
+         * has been encountered.
+         *
+         * @param node the first parameter for the visitor is the node visited
+         * @param value the second parameter for the visitor
+         *
+         * @return the visitor specific value
+         *
+         * @throws GeneralException in case of an error
+         *
          * @see org.extex.typesetter.type.NodeVisitor#visitGlue(
          *      org.extex.typesetter.type.node.GlueNode,
          *      java.lang.Object)
@@ -227,6 +326,17 @@ public class DumpDocumentWriter
         }
 
         /**
+         * This method is called when a
+         * {@link org.extex.typesetter.type.node.HorizontalListNode HorizontalListNode}
+         * has been encountered.
+         *
+         * @param node the first parameter for the visitor is the node visited
+         * @param value the second parameter for the visitor
+         *
+         * @return the visitor specific value
+         *
+         * @throws GeneralException in case of an error
+         *
          * @see org.extex.typesetter.type.NodeVisitor#visitHorizontalList(
          *      org.extex.typesetter.type.node.HorizontalListNode,
          *      java.lang.Object)
@@ -245,6 +355,17 @@ public class DumpDocumentWriter
         }
 
         /**
+         * This method is called when an
+         * {@link org.extex.typesetter.type.node.InsertionNode InsertionNode}
+         * has been encountered.
+         *
+         * @param node the first parameter for the visitor is the node visited
+         * @param value the second parameter for the visitor
+         *
+         * @return the visitor specific value
+         *
+         * @throws GeneralException in case of an error
+         *
          * @see org.extex.typesetter.type.NodeVisitor#visitInsertion(
          *      org.extex.typesetter.type.node.InsertionNode,
          *      java.lang.Object)
@@ -256,6 +377,17 @@ public class DumpDocumentWriter
         }
 
         /**
+         * This method is called when a
+         * {@link org.extex.typesetter.type.node.KernNode KernNode}
+         * has been encountered.
+         *
+         * @param node the first parameter for the visitor is the node visited
+         * @param value the second parameter for the visitor
+         *
+         * @return the visitor specific value
+         *
+         * @throws GeneralException in case of an error
+         *
          * @see org.extex.typesetter.type.NodeVisitor#visitKern(
          *      org.extex.typesetter.type.node.KernNode,
          *      java.lang.Object)
@@ -267,6 +399,17 @@ public class DumpDocumentWriter
         }
 
         /**
+         * This method is called when a
+         * {@link org.extex.typesetter.type.node.LigatureNode LigatureNode}
+         * has been encountered.
+         *
+         * @param node the first parameter for the visitor is the node visited
+         * @param value the second parameter for the visitor
+         *
+         * @return the visitor specific value
+         *
+         * @throws GeneralException in case of an error
+         *
          * @see org.extex.typesetter.type.NodeVisitor#visitLigature(
          *      org.extex.typesetter.type.node.LigatureNode,
          *      java.lang.Object)
@@ -279,6 +422,17 @@ public class DumpDocumentWriter
         }
 
         /**
+         * This method is called when a
+         * {@link org.extex.typesetter.type.node.MarkNode MarkNode}
+         * has been encountered.
+         *
+         * @param node the first parameter for the visitor is the node visited
+         * @param value the second parameter for the visitor
+         *
+         * @return the visitor specific value
+         *
+         * @throws GeneralException in case of an error
+         *
          * @see org.extex.typesetter.type.NodeVisitor#visitMark(
          *      org.extex.typesetter.type.node.MarkNode,
          *      java.lang.Object)
@@ -290,6 +444,17 @@ public class DumpDocumentWriter
         }
 
         /**
+         * This method is called when a
+         * {@link org.extex.typesetter.type.node.PenaltyNode PenaltyNode}
+         * has been encountered.
+         *
+         * @param node the first parameter for the visitor is the node visited
+         * @param value the second parameter for the visitor
+         *
+         * @return the visitor specific value
+         *
+         * @throws GeneralException in case of an error
+         *
          * @see org.extex.typesetter.type.NodeVisitor#visitPenalty(
          *      org.extex.typesetter.type.node.PenaltyNode,
          *      java.lang.Object)
@@ -301,6 +466,17 @@ public class DumpDocumentWriter
         }
 
         /**
+         * This method is called when a
+         * {@link org.extex.typesetter.type.node.RuleNode RuleNode}
+         * has been encountered.
+         *
+         * @param node the first parameter for the visitor is the node visited
+         * @param value the second parameter for the visitor
+         *
+         * @return the visitor specific value
+         *
+         * @throws GeneralException in case of an error
+         *
          * @see org.extex.typesetter.type.NodeVisitor#visitRule(
          *      org.extex.typesetter.type.node.RuleNode,
          *      java.lang.Object)
@@ -313,6 +489,17 @@ public class DumpDocumentWriter
         }
 
         /**
+         * This method is called when a
+         * {@link org.extex.typesetter.type.node.SpaceNode SpaceNode}
+         * has been encountered.
+         *
+         * @param node the first parameter for the visitor is the node visited
+         * @param value the second parameter for the visitor
+         *
+         * @return the visitor specific value
+         *
+         * @throws GeneralException in case of an error
+         *
          * @see org.extex.typesetter.type.NodeVisitor#visitSpace(
          *      org.extex.typesetter.type.node.SpaceNode,
          *      java.lang.Object)
@@ -325,6 +512,17 @@ public class DumpDocumentWriter
         }
 
         /**
+         * This method is called when a
+         * {@link org.extex.typesetter.type.node.VerticalListNode VerticalListNode}
+         * has been encountered.
+         *
+         * @param node the first parameter for the visitor is the node visited
+         * @param value the second parameter for the visitor
+         *
+         * @return the visitor specific value
+         *
+         * @throws GeneralException in case of an error
+         *
          * @see org.extex.typesetter.type.NodeVisitor#visitVerticalList(
          *      org.extex.typesetter.type.node.VerticalListNode,
          *      java.lang.Object)
@@ -343,7 +541,18 @@ public class DumpDocumentWriter
         }
 
         /**
-         * @see org.extex.typesetter.type.NodeVisitor#visitChar(
+         * This method is called when a
+         * {@link org.extex.typesetter.type.node.VirtualCharNode VirtualCharNode}
+         * has been encountered.
+         *
+         * @param node the first parameter for the visitor is the node visited
+         * @param value the second parameter for the visitor
+         *
+         * @return the visitor specific value
+         *
+         * @throws GeneralException in case of an error
+         *
+         * @see org.extex.typesetter.type.NodeVisitor#visitVirtualChar(
          *      org.extex.typesetter.type.node.VirtualCharNode,
          *      java.lang.Object)
          */
@@ -355,6 +564,17 @@ public class DumpDocumentWriter
         }
 
         /**
+         * This method is called when a
+         * {@link org.extex.typesetter.type.node.WhatsItNode WhatsItNode}
+         * has been encountered.
+         *
+         * @param node the first parameter for the visitor is the node visited
+         * @param value the second parameter for the visitor
+         *
+         * @return the visitor specific value
+         *
+         * @throws GeneralException in case of an error
+         *
          * @see org.extex.typesetter.type.NodeVisitor#visitWhatsIt(
          *      org.extex.typesetter.type.node.WhatsItNode,
          *      java.lang.Object)
@@ -424,6 +644,13 @@ public class DumpDocumentWriter
     }
 
     /**
+     * This method is invoked upon the end of the processing.
+     *
+     * @throws GeneralException in case of a general exception<br>
+     *  especially<br>
+     *  DocumentWriterException in case of an error
+     * @throws IOException in case of an IO exception
+     *
      * @see org.extex.backend.documentWriter.DocumentWriter#close()
      */
     public void close() throws IOException {
@@ -435,6 +662,12 @@ public class DumpDocumentWriter
     }
 
     /**
+     * Configure an object according to a given Configuration.
+     *
+     * @param config the configuration object to consider
+     *
+     * @throws ConfigurationException in case that something went wrong
+     *
      * @see org.extex.util.framework.configuration.Configurable#configure(
      *      org.extex.util.framework.configuration.Configuration)
      */
@@ -445,6 +678,12 @@ public class DumpDocumentWriter
     }
 
     /**
+     * Getter for the extension associated with this kind of output. For
+     * instance <tt>pdf</tt> is the expected value for PDF files and
+     * <tt>dvi</tt> is the expected value for DVI files.
+     *
+     * @return the appropriate extension for file names
+     *
      * @see org.extex.backend.documentWriter.DocumentWriter#getExtension()
      */
     public String getExtension() {
@@ -453,6 +692,10 @@ public class DumpDocumentWriter
     }
 
     /**
+     * Setter for the output stream.
+     *
+     * @param writer the output stream
+     *
      * @see org.extex.backend.documentWriter.SingleDocumentStream#setOutputStream(
      *      java.io.OutputStream)
      */
@@ -462,6 +705,14 @@ public class DumpDocumentWriter
     }
 
     /**
+     * Setter for a named parameter.
+     * Parameters are a general mechanism to influence the behavior of the
+     * document writer. Any parameter not known by the document writer has to
+     * be ignored.
+     *
+     * @param name the name of the parameter
+     * @param value the value of the parameter
+     *
      * @see org.extex.backend.documentWriter.DocumentWriter#setParameter(
      *      java.lang.String, java.lang.String)
      */
@@ -480,6 +731,21 @@ public class DumpDocumentWriter
     }
 
     /**
+     * This is the entry point for the document writer. Here it receives a
+     * complete node list to be sent to the output writer. It can be assumed
+     * that all values for width, height, and depth of the node lists are
+     * properly filled. Thus all information should be present to place the
+     * ink on the paper.
+     *
+     * @param page the page to send
+     *
+     * @return returns the number of pages shipped
+     *
+     * @throws GeneralException in case of a general exception<br>
+     *  especially<br>
+     *  DocumentWriterException in case of an error
+     * @throws IOException in case of an IO exception
+     *
      * @see org.extex.backend.documentWriter.DocumentWriter#shipout(
      *      org.extex.typesetter.type.page.Page)
      */

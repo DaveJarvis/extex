@@ -79,7 +79,7 @@ public class PdfBoxType1Font extends PDType1Font {
         fd = new PDFontDescriptorDictionary();
         setFontDescriptor(fd);
 
-        //        // read the pfb 
+        //        // read the pfb
         //        PfbParser pfbparser = new PfbParser(pfb);
         //        pfb.close();
         //

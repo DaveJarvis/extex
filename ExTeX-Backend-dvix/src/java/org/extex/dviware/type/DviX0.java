@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -24,7 +24,6 @@ import java.io.OutputStream;
 
 import org.extex.dviware.Dvi;
 
-
 /**
  * This class represents the DVI instruction <tt>x0</tt>.
  *
@@ -38,18 +37,18 @@ public class DviX0 extends AbstractDviCode {
      */
     public DviX0() {
 
-        super();
+        super("x0");
     }
 
     /**
-     * @see org.extex.dviware.type.DviCode#getName()
-     */
-    public String getName() {
-
-        return "x0";
-    }
-
-    /**
+     * Write the code to the output stream.
+     *
+     * @param stream the target stream
+     *
+     * @return the number of bytes actually written
+     *
+     * @throws IOException in case of an error
+     *
      * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
      */
     public int write(final OutputStream stream) throws IOException {

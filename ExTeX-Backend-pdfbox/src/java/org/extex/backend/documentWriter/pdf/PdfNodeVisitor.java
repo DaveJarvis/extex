@@ -27,7 +27,6 @@ import org.extex.backend.documentWriter.exception.DocumentWriterIOException;
 import org.extex.backend.documentWriter.pdf.pdfbox.PdfBoxType1Font;
 import org.extex.color.ColorVisitor;
 import org.extex.font.FontKey;
-import org.extex.font.FountKey;
 import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.interpreter.type.font.Font;
 import org.extex.type.UnicodeChar;

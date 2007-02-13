@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -78,7 +78,6 @@ import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.configuration.Configurable;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
-
 
 /**
  * This class provides a base implementation of a DVI document writer.
@@ -826,7 +825,7 @@ public class DviDocumentWriter
 
         pointer += new DviEop().write(stream);
         postamble.recognizePage(nodes.getHeight(), nodes.getDepth(), nodes
-                .getWidth(), stacksize);
+            .getWidth(), stacksize);
         return 1;
     }
 
@@ -854,15 +853,16 @@ public class DviDocumentWriter
     private void writePreamble() throws IOException {
 
         long time = options.getCountOption("time").getValue();
-        String comment = " ExTeX output "
-                + two("year")
-                + "."
-                + two("month")
-                + "."
-                + two("day")
-                + ":"
-                + Long.toString((time / MINUTES_PER_OUR) * 100 + time
-                        % MINUTES_PER_OUR);
+        String comment =
+                " ExTeX output "
+                        + two("year")
+                        + "."
+                        + two("month")
+                        + "."
+                        + two("day")
+                        + ":"
+                        + Long.toString((time / MINUTES_PER_OUR) * 100 + time
+                                % MINUTES_PER_OUR);
         long mag = options.getMagnification();
         if (mag > MAX_4_BYTE) {
             mag = MAX_4_BYTE;

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -32,8 +32,6 @@ import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.page.Page;
 import org.extex.util.exception.GeneralException;
 
-
-
 /**
  * This document writer produces Encapsulated Postscript documents.
  *
@@ -64,6 +62,9 @@ public class EpsWriter extends AbstractPostscriptWriter {
     }
 
     /**
+     * This method is invoked upon the end of the processing.
+     * It does simply nothing for this class.
+     *
      * @see org.extex.backend.documentWriter.DocumentWriter#close()
      */
     public void close() {
@@ -71,6 +72,12 @@ public class EpsWriter extends AbstractPostscriptWriter {
     }
 
     /**
+     * Getter for the extension associated with this kind of output. For
+     * instance <tt>pdf</tt> is the expected value for PDF files and
+     * <tt>dvi</tt> is the expected value for DVI files.
+     *
+     * @return the appropriate extension for file names
+     *
      * @see org.extex.backend.documentWriter.DocumentWriter#getExtension()
      */
     public String getExtension() {
@@ -79,6 +86,21 @@ public class EpsWriter extends AbstractPostscriptWriter {
     }
 
     /**
+     * This is the entry point for the document writer. Here it receives a
+     * complete node list to be sent to the output writer. It can be assumed
+     * that all values for width, height, and depth of the node lists are
+     * properly filled. Thus all information should be present to place the
+     * ink on the paper.
+     *
+     * @param page the page to send
+     *
+     * @return returns the number of pages shipped
+     *
+     * @throws GeneralException in case of a general exception<br>
+     *  especially<br>
+     *  DocumentWriterException in case of an error
+     * @throws IOException in case of an IO exception
+     *
      * @see org.extex.backend.documentWriter.DocumentWriter#shipout(
      *      org.extex.typesetter.type.page.Page)
      */

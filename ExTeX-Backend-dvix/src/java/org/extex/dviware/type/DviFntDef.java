@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -52,20 +52,20 @@ public class DviFntDef extends AbstractDviCode {
      */
     public DviFntDef(final int index, final Font font) {
 
-        super();
+        super("fnt_def" + variant(index));
         this.index = index;
         this.font = font;
     }
 
     /**
-     * @see org.extex.dviware.type.DviCode#getName()
-     */
-    public String getName() {
-
-        return "fnt_def" + variant(index);
-    }
-
-    /**
+     * Write the code to the output stream.
+     *
+     * @param stream the target stream
+     *
+     * @return the number of bytes actually written
+     *
+     * @throws IOException in case of an error
+     *
      * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
      */
     public int write(final OutputStream stream) throws IOException {

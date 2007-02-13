@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -23,7 +23,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import org.extex.dviware.Dvi;
-
 
 /**
  * This interface describes DVI code. It must be written to the output stream
@@ -191,7 +190,7 @@ public interface DviCode {
     };
 
     /**
-     * Getter for the name f the DVI instruction.
+     * Getter for the name of the DVI instruction.
      *
      * @return the name of the DVI instruction
      */

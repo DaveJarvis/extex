@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -24,7 +24,6 @@ import java.io.OutputStream;
 
 import org.extex.dviware.Dvi;
 
-
 /**
  * This class represents the DVI instruction <tt>eop</tt>.
  *
@@ -38,18 +37,18 @@ public class DviEop extends AbstractDviCode {
      */
     public DviEop() {
 
-        super();
+        super("eop");
     }
 
     /**
-     * @see org.extex.dviware.type.DviCode#getName()
-     */
-    public String getName() {
-
-        return "eop";
-    }
-
-    /**
+     * Write the code to the output stream.
+     *
+     * @param stream the target stream
+     *
+     * @return the number of bytes actually written
+     *
+     * @throws IOException in case of an error
+     *
      * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
      */
     public int write(final OutputStream stream) throws IOException {

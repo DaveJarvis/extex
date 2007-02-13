@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -55,8 +55,6 @@ import org.extex.typesetter.type.node.VirtualCharNode;
 import org.extex.typesetter.type.node.WhatsItNode;
 import org.extex.typesetter.type.page.Page;
 import org.extex.util.exception.GeneralException;
-
-
 
 /**
  * This class provides a converter to PostScript code which shows mainly the
@@ -163,8 +161,8 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
     public void init(final HeaderManager header) throws IOException {
 
         String name = this.getClass().getName().replace('.', '/') + ".ps";
-        InputStream stream = getClass().getClassLoader().getResourceAsStream(
-                name);
+        InputStream stream =
+                getClass().getClassLoader().getResourceAsStream(name);
         if (stream != null) {
             header.add(stream, name.substring(name.lastIndexOf('/') + 1));
             stream.close();
@@ -184,9 +182,8 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
      *
      * @throws DocumentWriterException in case of an error
      */
-    public byte[] toPostScript(final Page page,
-            final FontManager fontManager, final HeaderManager headerManager)
-            throws DocumentWriterException {
+    public byte[] toPostScript(final Page page, final FontManager fontManager,
+            final HeaderManager headerManager) throws DocumentWriterException {
 
         fm = fontManager;
 
@@ -302,7 +299,7 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
                     out.append('\\');
                     break;
                 default:
-            // nothing to do
+                    // nothing to do
             }
             out.append(c.toString());
             out.append(") show\n");

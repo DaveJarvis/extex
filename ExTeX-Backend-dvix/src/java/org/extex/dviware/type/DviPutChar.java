@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -24,7 +24,6 @@ import java.io.OutputStream;
 
 import org.extex.dviware.Dvi;
 
-
 /**
  * This class represents the DVI instruction <tt>put_char</tt>.
  *
@@ -45,19 +44,19 @@ public class DviPutChar extends AbstractDviCode {
      */
     public DviPutChar(final int codePoint) {
 
-        super();
+        super("put_char" + variant(codePoint));
         this.codePoint = codePoint;
     }
 
     /**
-     * @see org.extex.dviware.type.DviCode#getName()
-     */
-    public String getName() {
-
-        return "put_char" + variant(codePoint);
-    }
-
-    /**
+     * Write the code to the output stream.
+     *
+     * @param stream the target stream
+     *
+     * @return the number of bytes actually written
+     *
+     * @throws IOException in case of an error
+     *
      * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
      */
     public int write(final OutputStream stream) throws IOException {
