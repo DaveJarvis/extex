@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -52,7 +52,6 @@ import org.extex.unit.tex.conditional.Ifvbox;
 import org.extex.unit.tex.conditional.Ifvmode;
 import org.extex.unit.tex.conditional.Ifvoid;
 import org.extex.unit.tex.conditional.Ifx;
-
 
 /**
  * This class provides an implementation for the primitive
@@ -159,6 +158,19 @@ public class Currentiftype extends AbstractCode
     }
 
     /**
+     * This method converts a register into a count. It might be necessary to
+     * read further tokens to determine which value to use. For instance an
+     * additional register number might be required. In this case the additional
+     * arguments Context and TokenSource can be used.
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter to use for conversion
+     *
+     * @return the converted value
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.count.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
@@ -177,6 +189,15 @@ public class Currentiftype extends AbstractCode
     }
 
     /**
+     * This method is the getter for the description of the primitive.
+     *
+     * @param context the interpreter context
+     * @param source the source for further tokens to qualify the request
+     * @param typesetter the typesetter to use
+     *
+     * @return the description of the primitive as list of Tokens
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.Theable#the(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,

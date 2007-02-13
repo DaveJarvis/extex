@@ -79,6 +79,19 @@ public class Interactionmode extends AbstractAssignment
     }
 
     /**
+     * The method <tt>assign</tt> is the core of the functionality of
+     * {@link #execute(Flags, Context, TokenSource, Typesetter) execute()}.
+     * This method is preferable to <tt>execute()</tt> since the
+     * <tt>execute()</tt> method provided in this class takes care of
+     * <tt>\afterassignment</tt> and <tt>\globaldefs</tt> as well.
+     *
+     * @param prefix the prefix controlling the execution
+     * @param context the interpreter context
+     * @param source the token source
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.AbstractAssignment#assign(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -95,6 +108,19 @@ public class Interactionmode extends AbstractAssignment
     }
 
     /**
+     * This method converts a register into a count. It might be necessary to
+     * read further tokens to determine which value to use. For instance an
+     * additional register number might be required. In this case the additional
+     * arguments Context and TokenSource can be used.
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter to use for conversion
+     *
+     * @return the converted value
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.count.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
@@ -111,6 +137,15 @@ public class Interactionmode extends AbstractAssignment
     }
 
     /**
+     * This method is the getter for the description of the primitive.
+     *
+     * @param context the interpreter context
+     * @param source the source for further tokens to qualify the request
+     * @param typesetter the typesetter to use
+     *
+     * @return the description of the primitive as list of Tokens
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.Theable#the(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,

@@ -92,6 +92,7 @@ public class Scantokens extends AbstractCode implements ExpandableCode {
         /**
          * Creates a new object.
          *
+         * @param stream the stream
          */
         public TokenStreamProxy(final TokenStream stream) {
 
@@ -100,6 +101,10 @@ public class Scantokens extends AbstractCode implements ExpandableCode {
         }
 
         /**
+         * Close this stream if it is a file stream.
+         *
+         * @return <code>true</code> if the closing was successful
+         *
          * @see org.extex.scanner.TokenStream#closeFileStream()
          */
         public boolean closeFileStream() {
@@ -109,6 +114,19 @@ public class Scantokens extends AbstractCode implements ExpandableCode {
         }
 
         /**
+         * Get the next token from the token stream.
+         * If tokens are on the push-back stack then those are delivered otherwise
+         * new tokens might be extracted utilizing the token factory and the
+         * tokenizer.
+         *
+         * @param factory the token factory
+         * @param tokenizer the tokenizer
+         *
+         * @return the next Token or <code>null</code> if no more tokens are
+         * available
+         *
+         * @throws ScannerException in case of an error
+         *
          * @see org.extex.scanner.TokenStream#get(
          *      org.extex.scanner.type.token.TokenFactory,
          *      org.extex.interpreter.Tokenizer)

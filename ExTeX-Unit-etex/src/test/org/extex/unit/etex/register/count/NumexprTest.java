@@ -1,0 +1,391 @@
+/*
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
+ *
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+ *
+ */
+
+package org.extex.unit.etex.register.count;
+
+import org.extex.test.ExTeXLauncher;
+
+/**
+ * This is a test suite for the primitive <tt>\numexpr</tt>.
+ *
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * @version $Revision: 4808 $
+ */
+public class NumexprTest extends ExTeXLauncher {
+
+    /**
+     * Command line interface.
+     * @param args the arguments
+     */
+    public static void main(final String[] args) {
+
+        junit.textui.TestRunner.run(NumexprTest.class);
+    }
+
+    /**
+     * Creates a new object.
+     *
+     * @param arg the name
+     */
+    public NumexprTest(final String arg) {
+
+        super(arg);
+        setConfig("etex-test");
+    }
+
+    /**
+     * <testcase primitive="\numexpr">
+     *  Test case checking that <tt>\numexpr</tt> without any term produces an
+     *  error.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testEOF1() throws Exception {
+
+        assertFailure(//--- input code ---
+            "\\count1=\\numexpr \\relax",
+            //--- log message ---
+            "Missing number, treated as zero");
+    }
+
+    /**
+     * <testcase primitive="\numexpr">
+     *  Test case checking that <tt>\numexpr</tt> with a non-balanced
+     *  parenthesis produces an error.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testError2() throws Exception {
+
+        assertFailure(//--- input code ---
+            "\\count1=\\numexpr ( 123 \\relax",
+            //--- log message ---
+            "Missing ) inserted for expression");
+    }
+
+    /**
+     * <testcase primitive="\numexpr">
+     *  Test case checking that <tt>\numexpr</tt> with a non-balanced
+     *  parenthesis produces an error.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testError1() throws Exception {
+
+        assertFailure(//--- input code ---
+            "\\count1=\\numexpr ( \\relax",
+            //--- log message ---
+            "Missing number, treated as zero");
+    }
+
+    /**
+     * <testcase primitive="\numexpr">
+     *  Test case checking that <tt>\numexpr</tt> produces an error for
+     *  division by zero.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testError3() throws Exception {
+
+        assertFailure(//--- input code ---
+            "\\count1=\\numexpr 6/0\\relax" + "\\the\\count1 ",
+            //--- log message ---
+            "Arithmetic overflow");
+    }
+
+    /**
+     * <testcase primitive="\numexpr">
+     *  Test case checking that <tt>\numexpr</tt> can add two numbers.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test1() throws Exception {
+
+        assertSuccess(//--- input code ---
+            "\\count1=\\numexpr 1+2\\relax" + "\\the\\count1 ",
+            //--- output channel ---
+            "3" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\numexpr">
+     *  Test case checking that <tt>\numexpr</tt> can add multiply numbers.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test2() throws Exception {
+
+        assertSuccess(//--- input code ---
+            "\\count1=\\numexpr 2*3\\relax" + "\\the\\count1 ",
+            //--- output channel ---
+            "6" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\numexpr">
+     *  Test case checking that <tt>\numexpr</tt> can subtract two numbers.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test3() throws Exception {
+
+        assertSuccess(//--- input code ---
+            "\\count1=\\numexpr 5-2\\relax" + "\\the\\count1 ",
+            //--- output channel ---
+            "3" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\numexpr">
+     *  Test case checking that <tt>\numexpr</tt> can divide two numbers.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test4() throws Exception {
+
+        assertSuccess(//--- input code ---
+            "\\count1=\\numexpr 6/2\\relax" + "\\the\\count1 ",
+            //--- output channel ---
+            "3" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\numexpr">
+     *  Test case checking that in <tt>\numexpr</tt> * binds more than +.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test10() throws Exception {
+
+        assertSuccess(//--- input code ---
+            "\\count1=\\numexpr 1+2*3\\relax" + "\\the\\count1 ",
+            //--- output channel ---
+            "7" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\numexpr">
+     *  Test case checking that in <tt>\numexpr</tt> * binds more than +.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test11() throws Exception {
+
+        assertSuccess(//--- input code ---
+            "\\count1=\\numexpr 2*3+1\\relax" + "\\the\\count1 ",
+            //--- output channel ---
+            "7" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\numexpr">
+     *  Test case checking that in <tt>\numexpr</tt> / binds more than +.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test12() throws Exception {
+
+        assertSuccess(//--- input code ---
+            "\\count1=\\numexpr 4/2+10\\relax" + "\\the\\count1 ",
+            //--- output channel ---
+            "12" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\numexpr">
+     *  Test case checking that in <tt>\numexpr</tt> / binds more than +.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test13() throws Exception {
+
+        assertSuccess(//--- input code ---
+            "\\count1=\\numexpr 10+4/2\\relax" + "\\the\\count1 ",
+            //--- output channel ---
+            "12" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\numexpr">
+     *  Test case checking that in <tt>\numexpr</tt> * binds more than -.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test14() throws Exception {
+
+        assertSuccess(//--- input code ---
+            "\\count1=\\numexpr 1-2*3\\relax" + "\\the\\count1 ",
+            //--- output channel ---
+            "-5" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\numexpr">
+     *  Test case checking that in <tt>\numexpr</tt> * binds more than -.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test15() throws Exception {
+
+        assertSuccess(//--- input code ---
+            "\\count1=\\numexpr 2*3-1\\relax" + "\\the\\count1 ",
+            //--- output channel ---
+            "5" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\numexpr">
+     *  Test case checking that in <tt>\numexpr</tt> / binds more than -.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test16() throws Exception {
+
+        assertSuccess(//--- input code ---
+            "\\count1=\\numexpr 4/2-10\\relax" + "\\the\\count1 ",
+            //--- output channel ---
+            "-8" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\numexpr">
+     *  Test case checking that in <tt>\numexpr</tt> / binds more than -.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test17() throws Exception {
+
+        assertSuccess(//--- input code ---
+            "\\count1=\\numexpr 10-4/2\\relax" + "\\the\\count1 ",
+            //--- output channel ---
+            "8" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\numexpr">
+     *  Test case checking that in <tt>\numexpr</tt> parentheses work.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test21() throws Exception {
+
+        assertSuccess(//--- input code ---
+            "\\count1=\\numexpr 2*(1+2)\\relax" + "\\the\\count1 ",
+            //--- output channel ---
+            "6" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\numexpr">
+     *  Test case checking that in <tt>\numexpr</tt> the unary minus is
+     *  treated correctly.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test31() throws Exception {
+
+        assertSuccess(//--- input code ---
+            "\\count1=\\numexpr 2*-3\\relax" + "\\the\\count1 ",
+            //--- output channel ---
+            "-6" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\numexpr">
+     *  Test case checking that in <tt>\numexpr</tt> the unary minus is
+     *  treated correctly &ndash; even if repeated twice.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test32() throws Exception {
+
+        assertSuccess(//--- input code ---
+            "\\count1=\\numexpr 2*--3\\relax" + "\\the\\count1 ",
+            //--- output channel ---
+            "6" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\numexpr">
+     *  Test case checking that in <tt>\numexpr</tt> the unary minus is
+     *  treated correctly.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test33() throws Exception {
+
+        assertSuccess(//--- input code ---
+            "\\count1=\\numexpr -2+3\\relax" + "\\the\\count1 ",
+            //--- output channel ---
+            "1" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\numexpr">
+     *  Test case checking that in <tt>\numexpr</tt> the unary minus is
+     *  treated correctly &ndash; even if repeated twice.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test34() throws Exception {
+
+        assertSuccess(//--- input code ---
+            "\\count1=\\numexpr --2+3\\relax" + "\\the\\count1 ",
+            //--- output channel ---
+            "5" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\numexpr">
+     *  Test case checking that <tt>\numexpr</tt> can be used after
+     *  <tt>\the</tt>.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testThe0() throws Exception {
+
+        assertSuccess(//--- input code ---
+            "\\the\\numexpr 2*3\\relax",
+            //--- output channel ---
+            "6" + TERM);
+    }
+
+}

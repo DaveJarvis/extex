@@ -84,8 +84,8 @@ public class Currentgrouptype extends AbstractCode
             Theable {
 
     /**
-     * The field <tt>gtv</tt> contains the group visitor to map the group type
-     * to the integer representation of <logo>eTeX</logo>.
+     * The constant <tt>GTV</tt> contains the group visitor to map the group
+     * type to the integer representation of <logo>eTeX</logo>.
      */
     private static final GroupTypeVisitor GTV = new GroupTypeVisitor() {
 
@@ -354,6 +354,19 @@ public class Currentgrouptype extends AbstractCode
     }
 
     /**
+     * This method converts a register into a count. It might be necessary to
+     * read further tokens to determine which value to use. For instance an
+     * additional register number might be required. In this case the additional
+     * arguments Context and TokenSource can be used.
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter to use for conversion
+     *
+     * @return the converted value
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.count.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
@@ -366,6 +379,15 @@ public class Currentgrouptype extends AbstractCode
     }
 
     /**
+     * This method is the getter for the description of the primitive.
+     *
+     * @param context the interpreter context
+     * @param source the source for further tokens to qualify the request
+     * @param typesetter the typesetter to use
+     *
+     * @return the description of the primitive as list of Tokens
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.Theable#the(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,

@@ -128,6 +128,19 @@ public class Readline extends AbstractAssignment implements LogEnabled {
     }
 
     /**
+     * The method <tt>assign</tt> is the core of the functionality of
+     * {@link #execute(Flags, Context, TokenSource, Typesetter) execute()}.
+     * This method is preferable to <tt>execute()</tt> since the
+     * <tt>execute()</tt> method provided in this class takes care of
+     * <tt>\afterassignment</tt> and <tt>\globaldefs</tt> as well.
+     *
+     * @param prefix the prefix controlling the execution
+     * @param context the interpreter context
+     * @param source the token source
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.AbstractAssignment#assign(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -179,12 +192,16 @@ public class Readline extends AbstractAssignment implements LogEnabled {
     }
 
     /**
+     * Setter for the logger.
+     *
+     * @param log the logger to use
+     *
      * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
-    public void enableLogging(final Logger theLogger) {
+    public void enableLogging(final Logger log) {
 
-        this.logger = theLogger;
+        this.logger = log;
     }
 
 }

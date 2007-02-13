@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -39,7 +39,6 @@ import org.extex.scanner.type.token.RightBraceToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 import org.extex.util.framework.logger.LogEnabled;
-
 
 /**
  * This class provides an implementation for the primitive <code>\showtokens</code>.
@@ -90,15 +89,30 @@ public class Showtokens extends AbstractCode implements LogEnabled {
     }
 
     /**
+     * Setter for the logger.
+     *
+     * @param log the logger to use
+     *
      * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
-    public void enableLogging(final Logger theLogger) {
+    public void enableLogging(final Logger log) {
 
-        this.logger = theLogger;
+        this.logger = log;
     }
 
     /**
+     * This method takes the first token and executes it. The result is placed
+     * on the stack. This operation might have side effects. To execute a token
+     * it might be necessary to consume further tokens.
+     *
+     * @param prefix the prefix controlling the execution
+     * @param context the interpreter context
+     * @param source the token source
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,

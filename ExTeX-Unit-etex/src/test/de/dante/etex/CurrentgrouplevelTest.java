@@ -43,6 +43,7 @@ public class CurrentgrouplevelTest extends TestCase {
     /**
      * Test the primitive \currengrouplevel.
      *
+     * @throws Exception ...
      */
     public void testCurrentgrouplevel() throws Exception {
 
