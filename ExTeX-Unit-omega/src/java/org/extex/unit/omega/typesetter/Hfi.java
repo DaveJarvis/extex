@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,56 +17,71 @@
  *
  */
 
-package org.extex.unit.omega.math;
+package org.extex.unit.omega.typesetter;
 
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
-import org.extex.interpreter.type.math.MathCode;
+import org.extex.interpreter.type.glue.FixedGlue;
+import org.extex.interpreter.type.glue.Glue;
+import org.extex.interpreter.type.glue.GlueComponent;
 import org.extex.typesetter.Typesetter;
-import org.extex.typesetter.listMaker.math.NoadConsumer;
-import org.extex.typesetter.type.noad.AccentNoad;
-import org.extex.typesetter.type.noad.Noad;
+import org.extex.unit.tex.typesetter.AbstractHorizontalCode;
+import org.extex.unit.tex.typesetter.spacing.HorizontalSkip;
 
 /**
- * This class provides an implementation for the primitive
- * <code>\omathaccent</code>.
+ * This class provides an implementation for the primitive <code>\hfi</code>.
  *
- * <doc name="omathaccent">
- * <h3>The Math Primitive <tt>\omathaccent</tt></h3>
+ * <doc name="hfi">
+ * <h3>The Primitive <tt>\hfi</tt></h3>
  * <p>
- *  TODO missing documentation
+ *  The primitive <tt>\hfi</tt> inserts a new infinite glue into the output.
+ *  The value of <tt>\hfi</tt> is an infinite quantity which is less than
+ *  <tt>\hfil</tt>. This means that <tt>\hfil</tt> or a larger value
+ *  suppress this glue. On the other side if no greater value is present then
+ *  this value suppresses any finite value.
+ * </p>
+ * <p>
+ *  This quantity has been introduced by <logo>Omega</logo>.
  * </p>
  *
  * <h4>Syntax</h4>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    &lang;omathaccent&rang;
- *       &rarr; <tt>\omathaccent</tt>  </pre>
+ *    &lang;hfi&rang;
+ *        &rarr; <tt>\hfi</tt>  </pre>
  *
  * <h4>Examples</h4>
  *  <pre class="TeXSample">
- *    \omathaccent ... </pre>
+ *    \hfi  </pre>
  *
  * </doc>
  *
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4431 $
  */
-public class Omathaccent extends AbstractOmegaMathCode {
+public class Hfi extends AbstractHorizontalCode implements HorizontalSkip {
+
+    /**
+     * The field <tt>FIL</tt> contains the glue to insert for this primitive.
+     */
+    private static final Glue FI =
+            new Glue(GlueComponent.ZERO, GlueComponent.ONE_FI,
+                GlueComponent.ZERO);
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2006L;
+    protected static final long serialVersionUID = 2005L;
 
     /**
      * Creates a new object.
      *
-     * @param name the name for tracing and debugging
+     * @param name the name for debugging
      */
-    public Omathaccent(final String name) {
+    public Hfi(final String name) {
 
         super(name);
     }
@@ -93,13 +108,30 @@ public class Omathaccent extends AbstractOmegaMathCode {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        NoadConsumer nc = getListMaker(context, typesetter);
+        switchToHorizontalMode(typesetter);
+        typesetter.add(FI);
+    }
 
-        MathCode accent = parseMathCode(context, source, typesetter,
-                printableControlSequence(context));
+    /**
+     * This method acquires horizontal glue.
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter
+     *
+     * @return the amount of skip
+     *
+     * @throws InterpreterException in case of an error
+     *
+     * @see org.extex.unit.tex.typesetter.spacing.HorizontalSkip#getGlue(
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource,
+     *      org.extex.typesetter.Typesetter)
+     */
+    public FixedGlue getGlue(final Context context, final TokenSource source,
+            final Typesetter typesetter) throws InterpreterException {
 
-        Noad noad = nc.scanNoad(prefix, context, source, typesetter, getName());
-        nc.add(new AccentNoad(accent, noad, context.getTypesettingContext()));
+        return FI;
     }
 
 }

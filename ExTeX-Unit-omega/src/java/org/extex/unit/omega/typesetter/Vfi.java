@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,57 +17,66 @@
  *
  */
 
-package org.extex.unit.omega.dir;
+package org.extex.unit.omega.typesetter;
 
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.context.tc.Direction;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.glue.FixedGlue;
+import org.extex.interpreter.type.glue.Glue;
+import org.extex.interpreter.type.glue.GlueComponent;
 import org.extex.typesetter.Typesetter;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.unit.tex.typesetter.AbstractVerticalCode;
+import org.extex.unit.tex.typesetter.spacing.VerticalSkip;
 
 /**
- * This class provides an implementation for the primitive
- * <code>\textdir</code>.
+ * This class provides an implementation for the primitive <code>\vfi</code>.
  *
- * <doc name="textdir">
- * <h3>The Primitive <tt>\textdir</tt></h3>
+ * <doc name="vfi">
+ * <h3>The Primitive <tt>\vfil</tt></h3>
  * <p>
- *  TODO missing documentation
+ *  The primitive <tt>\vfill</tt> inserts vertical glue into the current list.
+ *  It switches to vertical mode if necessary. The amount of glue inserted has
+ *  the natural height of 0pt and a stretchability of 1fi.
  * </p>
+ *
  * <h4>Syntax</h4>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    &lang;textdir&rang;
- *      &rarr; <tt>\textdir</tt> &lang;direction&rang;
- *
- *    &lang;direction&rang;
- *      &rarr; [TLRB][TLRB][TLRB]  </pre>
+ *    &lang;vfi&rang;
+ *        &rarr; <tt>\vfi</tt>  </pre>
  *
  * <h4>Examples</h4>
- * <pre class="TeXSample">
- * \textdir TRT  </pre>
+ *  <pre class="TeXSample">
+ *    \vfi  </pre>
+ *
  * </doc>
  *
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4411 $
+ * @version $Revision:4431 $
  */
-public class Textdir extends AbstractDirCode {
+public class Vfi extends AbstractVerticalCode implements VerticalSkip {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2006L;
+    protected static final long serialVersionUID = 2005L;
+
+    /**
+     * The field <tt>FIL</tt> contains the amount of 1 fil.
+     */
+    private static final Glue FI =
+            new Glue(GlueComponent.ZERO, GlueComponent.ONE_FI,
+                GlueComponent.ZERO);
 
     /**
      * Creates a new object.
      *
      * @param name the name for debugging
      */
-    public Textdir(final String name) {
+    public Vfi(final String name) {
 
         super(name);
     }
@@ -94,13 +103,28 @@ public class Textdir extends AbstractDirCode {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        Direction dir = scanDir(source, context);
+        ensureVerticalMode(typesetter);
+        typesetter.add(FI);
+    }
 
-        try {
-            context.set(dir, false);
-        } catch (ConfigurationException e) {
-            throw new InterpreterException(e);
-        }
+    /**
+     * This method acquires a vertical glue.
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter
+     *
+     * @return the amount of vertical skip
+     *
+     * @see org.extex.unit.tex.typesetter.spacing.VerticalSkip#getGlue(
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource,
+     *      org.extex.typesetter.Typesetter)
+     */
+    public FixedGlue getGlue(final Context context, final TokenSource source,
+            final Typesetter typesetter) {
+
+        return FI;
     }
 
 }

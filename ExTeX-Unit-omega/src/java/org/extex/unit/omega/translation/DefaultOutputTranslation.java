@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -29,7 +29,6 @@ import org.extex.unit.omega.mode.AbstractModeCode;
 import org.extex.unit.omega.mode.OmegaMode;
 import org.extex.unit.omega.ocp.util.Ocp;
 import org.extex.unit.omega.ocp.util.OcpUtil;
-
 
 /**
  * This class provides an implementation for the primitive
@@ -80,6 +79,17 @@ public class DefaultOutputTranslation extends AbstractModeCode {
     }
 
     /**
+     * This method takes the first token and executes it. The result is placed
+     * on the stack. This operation might have side effects. To execute a token
+     * it might be necessary to consume further tokens.
+     *
+     * @param prefix the prefix controlling the execution
+     * @param context the interpreter context
+     * @param source the token source
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -94,8 +104,8 @@ public class DefaultOutputTranslation extends AbstractModeCode {
         Ocp ocp = OcpUtil.scanOcp(source, context, typesetter);
 
         context.set(OmegaExtension.NAME, //
-                DEFAULT_OUTPUT_TRANSLATION + mode.toString(), //
-                ocp, prefix.clearGlobal());
+            DEFAULT_OUTPUT_TRANSLATION + mode.toString(), //
+            ocp, prefix.clearGlobal());
     }
 
 }

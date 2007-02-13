@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -39,7 +39,6 @@ import org.extex.typesetter.type.noad.MathGlyph;
 import org.extex.unit.tex.math.AbstractMathCode;
 import org.extex.unit.tex.math.util.MathCodeConvertible;
 import org.extex.util.framework.i18n.LocalizerFactory;
-
 
 /**
  * This is the base class for all math primitives using the Omega encoding.
@@ -170,14 +169,13 @@ public abstract class AbstractOmegaMathCode extends AbstractMathCode {
         long codePoint = mg.getCharacter().getCodePoint();
         if (codePoint > CHARACTER_MASK) {
             throw new HelpingException(LocalizerFactory
-                    .getLocalizer(AbstractOmegaMathCode.class),
-                    "InvalidCharacterCode");
+                .getLocalizer(AbstractOmegaMathCode.class),
+                "InvalidCharacterCode");
         }
         long mathFamily = mg.getFamily();
         if (mathFamily > FAMILY_MASK) {
             throw new HelpingException(LocalizerFactory
-                    .getLocalizer(AbstractOmegaMathCode.class),
-                    "InvalidFamilyCode");
+                .getLocalizer(AbstractOmegaMathCode.class), "InvalidFamilyCode");
         }
         long cat = ((Long) mathClass.visit(VISITOR, null, null)).longValue();
         return (cat << CLASS_OFFSET) | (mathFamily << FAMILY_OFFSET)
@@ -203,11 +201,11 @@ public abstract class AbstractOmegaMathCode extends AbstractMathCode {
 
         Token t = source.getToken(context);
         if (t instanceof LeftBraceToken) {
-            MathClass mc = MathClass.parse(context, source, typesetter,
-                    primitive);
+            MathClass mc =
+                    MathClass.parse(context, source, typesetter, primitive);
             long family = Count.parse(context, source, typesetter).getValue();
-            UnicodeChar c = source.scanCharacterCode(context, typesetter,
-                    primitive);
+            UnicodeChar c =
+                    source.scanCharacterCode(context, typesetter, primitive);
 
             t = source.getToken(context);
             if (!(t instanceof RightBraceToken)) {
@@ -215,15 +213,15 @@ public abstract class AbstractOmegaMathCode extends AbstractMathCode {
                     throw new EofException();
                 }
                 throw new HelpingException(LocalizerFactory
-                        .getLocalizer(AbstractOmegaMathCode.class),
-                        "MissingRightBrace");
+                    .getLocalizer(AbstractOmegaMathCode.class),
+                    "MissingRightBrace");
             }
             return new MathCode(mc, new MathGlyph((int) family, c));
         } else if (t instanceof CodeToken) {
             Code code = context.getCode((CodeToken) t);
             if (code instanceof MathCodeConvertible) {
                 return ((MathCodeConvertible) code).convertMathCode(context,
-                        source, typesetter);
+                    source, typesetter);
             }
         }
 
@@ -232,15 +230,15 @@ public abstract class AbstractOmegaMathCode extends AbstractMathCode {
 
         if (code < 0 || code > SPECIAL_MATH_CODE) {
             throw new HelpingException(LocalizerFactory
-                    .getLocalizer(AbstractOmegaMathCode.class),
-                    "TTP.BadMathCharCode", Long.toString(code));
+                .getLocalizer(AbstractOmegaMathCode.class),
+                "TTP.BadMathCharCode", Long.toString(code));
         } else if (code == SPECIAL_MATH_CODE) {
             return new MathCode(null, null);
         } else {
             return new MathCode(MathClass
-                    .getMathClass((int) (code >> CLASS_OFFSET)), //
-                    new MathGlyph((int) (code >> FAMILY_OFFSET) & FAMILY_MASK, //
-                            UnicodeChar.get((int) (code & CHARACTER_MASK))));
+                .getMathClass((int) (code >> CLASS_OFFSET)), //
+                new MathGlyph((int) (code >> FAMILY_OFFSET) & FAMILY_MASK, //
+                    UnicodeChar.get((int) (code & CHARACTER_MASK))));
         }
 
     }

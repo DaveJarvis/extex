@@ -17,57 +17,61 @@
  *
  */
 
-package org.extex.unit.omega.dir;
+package org.extex.unit.omega.typesetter;
 
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.context.tc.Direction;
+import org.extex.interpreter.context.group.GroupType;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.AbstractCode;
+import org.extex.interpreter.type.box.Box;
+import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
- * This class provides an implementation for the primitive
- * <code>\textdir</code>.
+ * This class provides an implementation for the primitive <code>\localrightbox</code>.
  *
- * <doc name="textdir">
- * <h3>The Primitive <tt>\textdir</tt></h3>
+ * <doc name="localrightbox">
+ * <h3>The Primitive <tt>\localrightbox</tt></h3>
+ * <p>
+ *  The primitive <tt>\localrightbox</tt> takes an argument enclosed in braces
+ *  and typesets this contents in horizontal mode.
+ * </p>
  * <p>
  *  TODO missing documentation
  * </p>
+ *
  * <h4>Syntax</h4>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
- *    &lang;textdir&rang;
- *      &rarr; <tt>\textdir</tt> &lang;direction&rang;
- *
- *    &lang;direction&rang;
- *      &rarr; [TLRB][TLRB][TLRB]  </pre>
+ *    &lang;localrightbox&rang;
+ *      &rarr; <tt>\localrightbox</tt> <tt>{</tt> &lang;horizontal material&rang; <tt>}</tt> </pre>
  *
  * <h4>Examples</h4>
- * <pre class="TeXSample">
- * \textdir TRT  </pre>
+ *  <pre class="TeXSample">
+ *    \localrightbox{abc}  </pre>
+ *
  * </doc>
  *
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:4411 $
+ * @version $Revision:4431 $
  */
-public class Textdir extends AbstractDirCode {
+public class Localrightbox extends AbstractCode {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2006L;
+    protected static final long serialVersionUID = 1L;
 
     /**
      * Creates a new object.
      *
      * @param name the name for debugging
      */
-    public Textdir(final String name) {
+    public Localrightbox(final String name) {
 
         super(name);
     }
@@ -94,13 +98,24 @@ public class Textdir extends AbstractDirCode {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        Direction dir = scanDir(source, context);
+        Token startToken = source.getLastToken();
+        Flags flags = prefix.copy();
+        prefix.clear();
+        Token t = context.getAfterassignment();
+        Tokens insert;
 
-        try {
-            context.set(dir, false);
-        } catch (ConfigurationException e) {
-            throw new InterpreterException(e);
+        if (t == null) {
+            insert = new Tokens();
+        } else {
+            insert = new Tokens(t);
         }
+        Box box = new Box(context, source, typesetter, true, insert,
+                GroupType.HBOX_GROUP, startToken);
+
+        //TODO gene: unimplemented
+        throw new RuntimeException("unimplemented");
+
+        //prefix.set(flags);
     }
 
 }

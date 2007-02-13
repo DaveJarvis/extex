@@ -161,6 +161,19 @@ public class JavaDef extends AbstractAssignment implements Definer {
     }
 
     /**
+     * The method <tt>assign</tt> is the core of the functionality of
+     * {@link #execute(Flags, Context, TokenSource, Typesetter) execute()}.
+     * This method is preferable to <tt>execute()</tt> since the
+     * <tt>execute()</tt> method provided in this class takes care of
+     * <tt>\afterassignment</tt> and <tt>\globaldefs</tt> as well.
+     *
+     * @param prefix the prefix controlling the execution
+     * @param context the interpreter context
+     * @param source the token source
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.AbstractAssignment#assign(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -175,6 +188,15 @@ public class JavaDef extends AbstractAssignment implements Definer {
     }
 
     /**
+     * Perform a define operation
+     *
+     * @param prefix the flags
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.primitives.dynamic.Definer#define(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -196,13 +218,14 @@ public class JavaDef extends AbstractAssignment implements Definer {
             throw new HelpingException(getLocalizer(), "ClassNotFound",
                 classname);
         }
-        Code code;
 
         try {
-            code =
+            Code code =
                     (Code) (Class.forName(classname).getConstructor(
                         new Class[]{String.class}).newInstance(new Object[]{cs
                         .getName()}));
+            context.setCode(cs, code, prefix.clearGlobal());
+
         } catch (IllegalArgumentException e) {
             throw new InterpreterException(e);
         } catch (SecurityException e) {
@@ -219,7 +242,6 @@ public class JavaDef extends AbstractAssignment implements Definer {
             throw new HelpingException(getLocalizer(), "ClassNotFound",
                 classname);
         }
-        context.setCode(cs, code, prefix.clearGlobal());
     }
 
 }

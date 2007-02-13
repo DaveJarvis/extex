@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -29,7 +29,7 @@ import java.io.Serializable;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class OmegaMode implements Serializable{
+public class OmegaMode implements Serializable {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the id for serialization.
@@ -41,7 +41,7 @@ public class OmegaMode implements Serializable{
      * The encoding is more or less a variant of ASCII.
      */
     public static final OmegaMode ONEBYTE = new OmegaMode() {
-        
+
         /**
          * The field <tt>serialVersionUID</tt> contains the id for serialization.
          */
@@ -56,7 +56,7 @@ public class OmegaMode implements Serializable{
          * @throws ObjectStreamException never
          */
         protected Object readResolve() throws ObjectStreamException {
-            
+
             return ONEBYTE;
         }
 
@@ -74,7 +74,7 @@ public class OmegaMode implements Serializable{
      * The encoding is more or less a variant of EBCDIC.
      */
     public static final OmegaMode EBCDIC = new OmegaMode() {
-        
+
         /**
          * The field <tt>serialVersionUID</tt> contains the id for serialization.
          */
@@ -89,7 +89,7 @@ public class OmegaMode implements Serializable{
          * @throws ObjectStreamException never
          */
         protected Object readResolve() throws ObjectStreamException {
-            
+
             return EBCDIC;
         }
 
@@ -108,7 +108,7 @@ public class OmegaMode implements Serializable{
      * endian byte first.
      */
     public static final OmegaMode TWOBYTE = new OmegaMode() {
-        
+
         /**
          * The field <tt>serialVersionUID</tt> contains the id for serialization.
          */
@@ -123,7 +123,7 @@ public class OmegaMode implements Serializable{
          * @throws ObjectStreamException never
          */
         protected Object readResolve() throws ObjectStreamException {
-            
+
             return TWOBYTE;
         }
 
@@ -142,7 +142,7 @@ public class OmegaMode implements Serializable{
      * endian byte first.
      */
     public static final OmegaMode TWOBYTE_LE = new OmegaMode() {
-        
+
         /**
          * The field <tt>serialVersionUID</tt> contains the id for serialization.
          */
@@ -157,7 +157,7 @@ public class OmegaMode implements Serializable{
          * @throws ObjectStreamException never
          */
         protected Object readResolve() throws ObjectStreamException {
-            
+
             return TWOBYTE_LE;
         }
 

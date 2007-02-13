@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -21,7 +21,6 @@ package org.extex.unit.omega.mode;
 
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.util.framework.i18n.LocalizerFactory;
-
 
 /**
  * this exception signals that an invalid specification for a direction has been
@@ -45,7 +44,7 @@ public class BadInputModeException extends HelpingException {
     public BadInputModeException() {
 
         super(LocalizerFactory.getLocalizer(BadInputModeException.class),
-                "Omega.BadMode");
+            "Omega.BadMode");
     }
 
 }

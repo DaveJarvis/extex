@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -25,7 +25,7 @@ import org.extex.typesetter.Typesetter;
 import org.extex.util.exception.GeneralException;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class provides a sensor for the loading operation.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -33,41 +33,48 @@ import org.extex.util.exception.GeneralException;
 public class NativeloadSensor implements Loadable {
 
     /**
-     * The field <tt>kilroy</tt> contains the ...
+     * The field <tt>sensed</tt> contains the ...
      */
-    private static boolean kilroy = false;
+    private static boolean sensed = false;
 
     /**
-     * Getter for kilroy.
+     * Getter for sensed.
      *
-     * @return the kilroy
+     * @return the sensed
      */
-    public static boolean isKilroy() {
+    public static boolean isSensed() {
 
-        return kilroy;
+        return sensed;
     }
 
     /**
-     * Setter for kilroy.
+     * Setter for sensed.
      *
-     * @param kilroy the kilroy to set
+     * @param sensed the sensed to set
      */
-    public static void setKilroy(final boolean kilroy) {
+    public static void setSensed(final boolean sensed) {
 
-        NativeloadSensor.kilroy = kilroy;
+        NativeloadSensor.sensed = sensed;
     }
 
     /**
      * Creates a new object.
-     *
      */
     public NativeloadSensor() {
 
         super();
-        kilroy = false;
+        sensed = false;
     }
 
     /**
+     * Perform any initializations desirable after the component has been
+     * loaded.
+     *
+     * @param context the processor context
+     * @param typesetter the current typesetter
+     *
+     * @throws GeneralException in case of an error
+     *
      * @see org.extex.interpreter.primitives.dynamic.java.Loadable#init(
      *      org.extex.interpreter.context.Context,
      *      org.extex.typesetter.Typesetter)
@@ -75,7 +82,7 @@ public class NativeloadSensor implements Loadable {
     public void init(final Context context, final Typesetter typesetter)
             throws GeneralException {
 
-        kilroy = true;
+        sensed = true;
     }
 
 }

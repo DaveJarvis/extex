@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -88,6 +88,16 @@ public class Ocp implements Code, OcpConvertible, Serializable {
     }
 
     /**
+     * TODO gene: missing JavaDoc
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter
+     *
+     * @return the Ocp encountered
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.unit.omega.ocp.util.OcpConvertible#convertOcp(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
@@ -100,6 +110,17 @@ public class Ocp implements Code, OcpConvertible, Serializable {
     }
 
     /**
+     * This method takes the first token and executes it. The result is placed
+     * on the stack. This operation might have side effects. To execute a token
+     * it might be necessary to consume further tokens.
+     *
+     * @param prefix the prefix controlling the execution
+     * @param context the interpreter context
+     * @param source the token source
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -115,6 +136,10 @@ public class Ocp implements Code, OcpConvertible, Serializable {
     }
 
     /**
+     * Getter for the name.
+     *
+     * @return the name
+     *
      * @see org.extex.interpreter.type.Code#getName()
      */
     public String getName() {
@@ -123,6 +148,11 @@ public class Ocp implements Code, OcpConvertible, Serializable {
     }
 
     /**
+     * This simple little method distinguishes the conditionals from the other
+     * primitives. This is necessary for the processing of all \if* primitives.
+     *
+     * @return <code>true</code> iff this is some sort if <tt>\if</tt>.
+     *
      * @see org.extex.interpreter.type.Code#isIf()
      */
     public boolean isIf() {
@@ -131,6 +161,10 @@ public class Ocp implements Code, OcpConvertible, Serializable {
     }
 
     /**
+     * Getter for the outer flag.
+     *
+     * @return <code>true</code> iff the code is defined outer.
+     *
      * @see org.extex.interpreter.type.Code#isOuter()
      */
     public boolean isOuter() {
@@ -139,7 +173,9 @@ public class Ocp implements Code, OcpConvertible, Serializable {
     }
 
     /**
-     * @see org.extex.interpreter.type.Code#setName(java.lang.String)
+     * Setter for the name.
+     *
+     * @param name the name to set
      */
     public void setName(final String name) {
 

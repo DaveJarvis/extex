@@ -64,7 +64,6 @@ public class ExportTest extends NoFlagsPrimitiveTester {
                 "File ended while scanning text of \\export");
     }
 
-
     //TODO implement more primitive specific test cases
 
 }

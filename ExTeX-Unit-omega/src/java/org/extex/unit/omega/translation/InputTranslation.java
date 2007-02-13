@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -72,6 +72,17 @@ public class InputTranslation extends AbstractModeCode {
     }
 
     /**
+     * This method takes the first token and executes it. The result is placed
+     * on the stack. This operation might have side effects. To execute a token
+     * it might be necessary to consume further tokens.
+     *
+     * @param prefix the prefix controlling the execution
+     * @param context the interpreter context
+     * @param source the token source
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -86,7 +97,7 @@ public class InputTranslation extends AbstractModeCode {
         if (source.getKeyword(context, "currentfile")) {
             file = null;
         } else {
-            file = AbstractFileCode.scanInFileKey(context,source,typesetter);
+            file = AbstractFileCode.scanInFileKey(context, source, typesetter);
         }
         String resource = OcpUtil.scanOcpFileName(source, context);
         InFile inFile = context.getInFile(file);

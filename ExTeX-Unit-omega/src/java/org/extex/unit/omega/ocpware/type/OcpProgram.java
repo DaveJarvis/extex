@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -38,9 +38,20 @@ import java.util.Stack;
 public class OcpProgram implements Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the ...
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
     private static final long serialVersionUID = 2006L;
+
+    /**
+     * The field <tt>SIXTEEN_BIT_MASK</tt> contains the bit mask with 16 bits.
+     */
+    private static final int SIXTEEN_BIT_MASK = 0xffff;
+
+    /**
+     * The field <tt>TWELVE_BIT_MASK</tt> contains the bit mask with 12 bits.
+     */
+    private static final int TWELVE_BIT_MASK = 0xfff;
 
     /**
      * Dump a number as hex and as decimal and optionally as character to an
@@ -73,6 +84,8 @@ public class OcpProgram implements Serializable {
      * @param stream the input stream
      *
      * @return the program
+     *
+     * @throws IOException in case of an IO error
      */
     public static OcpProgram load(final InputStream stream) throws IOException {
 
@@ -152,9 +165,24 @@ public class OcpProgram implements Serializable {
     }
 
     /**
+     * The field <tt>arithStack</tt> contains the ...
+     */
+    private Stack arithStack = new Stack();
+
+    /**
+     * The field <tt>first</tt> contains the ...
+     */
+    private int first = 0;
+
+    /**
      * The field <tt>input</tt> contains the input parameter.
      */
     private int input = 0;
+
+    /**
+     * The field <tt>last</tt> contains the ...
+     */
+    private int last = 0;
 
     /**
      * The field <tt>length</tt> contains the length for dumping. A negative
@@ -168,9 +196,24 @@ public class OcpProgram implements Serializable {
     private int output = 0;
 
     /**
+     * The field <tt>pc</tt> contains the ...
+     */
+    private int pc = 0;
+
+    /**
+     * The field <tt>state</tt> contains the ...
+     */
+    private int state = 0;
+
+    /**
      * The field <tt>states</tt> contains the states.
      */
     private List states = new ArrayList();
+
+    /**
+     * The field <tt>stateStack</tt> contains the ...
+     */
+    private Stack stateStack = new Stack();
 
     /**
      * The field <tt>tables</tt> contains the tables.
@@ -210,8 +253,9 @@ public class OcpProgram implements Serializable {
      * Dump the contents of the instance to an output stream.
      *
      * @param out the output stream
+     * @param orig ...
      */
-    public void dump(final PrintStream out, boolean orig) {
+    public void dump(final PrintStream out, final boolean orig) {
 
         if (length >= 0) {
             dump(out, "ctp_length     : ", length, "\n");
@@ -401,7 +445,7 @@ public class OcpProgram implements Serializable {
                 dump(out, "                ", c, "");
                 return true;
         }
-        dump(out, "", c & 0xffff, "");
+        dump(out, "", c & SIXTEEN_BIT_MASK, "");
         return two;
     }
 
@@ -426,36 +470,6 @@ public class OcpProgram implements Serializable {
     }
 
     /**
-     * Setter for input.
-     *
-     * @param input the input to set
-     */
-    public void setInput(final int input) {
-
-        this.input = input;
-    }
-
-    /**
-     * Setter for the length.
-     *
-     * @param len the length
-     */
-    private void setLength(int len) {
-
-        this.length = len;
-    }
-
-    /**
-     * Setter for output.
-     *
-     * @param output the output to set
-     */
-    public void setOutput(final int output) {
-
-        this.output = output;
-    }
-
-    /**
      * Reset the internal state of the program to the initial values.
      */
     public void reset() {
@@ -476,14 +490,48 @@ public class OcpProgram implements Serializable {
     }
 
     /**
+     * Setter for input.
+     *
+     * @param input the input to set
+     */
+    public void setInput(final int input) {
+
+        this.input = input;
+    }
+
+    /**
+     * Setter for the length.
+     *
+     * @param len the length
+     */
+    private void setLength(final int len) {
+
+        this.length = len;
+    }
+
+    /**
+     * Setter for output.
+     *
+     * @param output the output to set
+     */
+    public void setOutput(final int output) {
+
+        this.output = output;
+    }
+
+    /**
      * TODO gene: missing JavaDoc
      *
-     * @param currentState
+     * @param in the input stream
+     * @param out the output stream
+     * @param currentState the stack of states
      */
     private void step(final PushbackInputStream in, final OutputStream out,
             final int[] currentState) {
 
-        int a, b, c;
+        int a;
+        int b;
+        int c;
 
         for (;;) {
             c = currentState[pc++];
@@ -565,12 +613,12 @@ public class OcpProgram implements Serializable {
                     break;
                 case 20:
                     // OTP_STATE_CHANGE
-                    state = c & 0xfff;
+                    state = c & TWELVE_BIT_MASK;
                     break;
                 case 21:
                     // OTP_STATE_PUSH
                     stateStack.push(new Integer(state));
-                    state = c & 0xfff;
+                    state = c & TWELVE_BIT_MASK;
                     break;
                 case 22:
                     // OTP_STATE_POP
@@ -589,48 +637,48 @@ public class OcpProgram implements Serializable {
                     break;
                 case 26:
                     // OTP_GOTO
-                    pc = c & 0xfff;
+                    pc = c & TWELVE_BIT_MASK;
                     break;
                 case 27:
                     // OTP_GOTO_NE
                     a = currentState[pc++];
-                    if ((a & 0xffff) != (a >> 16)) {
-                        pc = c & 0xfff;
+                    if ((a & SIXTEEN_BIT_MASK) != (a >> 16)) {
+                        pc = c & TWELVE_BIT_MASK;
                     }
                     break;
                 case 28:
                     // OTP_GOTO_EQ
                     a = currentState[pc++];
-                    if ((a & 0xffff) == (a >> 16)) {
-                        pc = c & 0xfff;
+                    if ((a & SIXTEEN_BIT_MASK) == (a >> 16)) {
+                        pc = c & TWELVE_BIT_MASK;
                     }
                     break;
                 case 29:
                     // OTP_GOTO_LT
                     a = currentState[pc++];
-                    if ((a & 0xffff) < (a >> 16)) {
-                        pc = c & 0xfff;
+                    if ((a & SIXTEEN_BIT_MASK) < (a >> 16)) {
+                        pc = c & TWELVE_BIT_MASK;
                     }
                     break;
                 case 30:
                     // OTP_GOTO_LE
                     a = currentState[pc++];
-                    if ((a & 0xffff) <= (a >> 16)) {
-                        pc = c & 0xfff;
+                    if ((a & SIXTEEN_BIT_MASK) <= (a >> 16)) {
+                        pc = c & TWELVE_BIT_MASK;
                     }
                     break;
                 case 31:
                     // OTP_GOTO_GT
                     a = currentState[pc++];
-                    if ((a & 0xffff) > (a >> 16)) {
-                        pc = c & 0xfff;
+                    if ((a & SIXTEEN_BIT_MASK) > (a >> 16)) {
+                        pc = c & TWELVE_BIT_MASK;
                     }
                     break;
                 case 32:
                     // OTP_GOTO_GE
                     a = currentState[pc++];
-                    if ((a & 0xffff) >= (a >> 16)) {
-                        pc = c & 0xfff;
+                    if ((a & SIXTEEN_BIT_MASK) >= (a >> 16)) {
+                        pc = c & TWELVE_BIT_MASK;
                     }
                     break;
                 case 33:
@@ -639,13 +687,13 @@ public class OcpProgram implements Serializable {
                 case 34:
                     // OTP_GOTO_BEG
                     if (false) { //TODO at beginning
-                        pc = c & 0xfff;
+                        pc = c & TWELVE_BIT_MASK;
                     }
                     break;
                 case 35:
                     // OTP_GOTO_END
                     if (false) { //TODO at end
-                        pc = c & 0xfff;
+                        pc = c & TWELVE_BIT_MASK;
                     }
                     break;
                 case 36:
@@ -657,29 +705,5 @@ public class OcpProgram implements Serializable {
             }
         }
     }
-
-    /**
-     * The field <tt>pc</tt> contains the ...
-     */
-    private int pc = 0;
-
-    private int first = 0;
-
-    private int last = 0;
-
-    /**
-     * The field <tt>state</tt> contains the ...
-     */
-    private int state = 0;
-
-    /**
-     * The field <tt>stateStack</tt> contains the ...
-     */
-    private Stack stateStack = new Stack();
-
-    /**
-     * The field <tt>arithStack</tt> contains the ...
-     */
-    private Stack arithStack = new Stack();
 
 }

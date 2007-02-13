@@ -58,7 +58,7 @@ public class JavaloadTest extends NoFlagsPrimitiveTester {
                         + " \\end",
                 //--- log message ---
                 "");
-        assertTrue(JavaloadSensor.isKilroy());
+        assertTrue(JavaloadSensor.isSensed());
     }
 
 }

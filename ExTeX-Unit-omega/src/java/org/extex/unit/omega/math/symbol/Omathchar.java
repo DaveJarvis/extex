@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -29,7 +29,6 @@ import org.extex.typesetter.listMaker.math.NoadConsumer;
 import org.extex.unit.omega.math.AbstractOmegaMathCode;
 import org.extex.unit.tex.math.util.MathCodeConvertible;
 
-
 /**
  * This class provides an implementation for the primitive
  * <code>\omathchar</code>.
@@ -40,6 +39,8 @@ import org.extex.unit.tex.math.util.MathCodeConvertible;
  *  The primitive <tt>\omathchar</tt> inserts a mathematical character consisting
  *  of a math class and a character code inti the current math list. This is
  *  supposed to work in math mode only.
+ * </p>
+ * <p>
  *  TODO missing documentation
  * </p>
  *
@@ -80,6 +81,19 @@ public class Omathchar extends AbstractOmegaMathCode
     }
 
     /**
+     * This method converts an implementing class into a MathCode.
+     * It might be necessary to read further tokens to determine which value to
+     * use. For instance an additional register number might be required. In
+     * this case the additional arguments Context and TokenSource can be used.
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter to use for conversion
+     *
+     * @return the converted value
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.unit.tex.math.util.MathCodeConvertible#convertMathCode(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
@@ -90,10 +104,21 @@ public class Omathchar extends AbstractOmegaMathCode
             throws InterpreterException {
 
         return parseMathCode(context, source, typesetter,
-                printableControlSequence(context));
+            printableControlSequence(context));
     }
 
     /**
+     * This method takes the first token and executes it. The result is placed
+     * on the stack. This operation might have side effects. To execute a token
+     * it might be necessary to consume further tokens.
+     *
+     * @param prefix the prefix controlling the execution
+     * @param context the interpreter context
+     * @param source the token source
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -105,8 +130,9 @@ public class Omathchar extends AbstractOmegaMathCode
             throws InterpreterException {
 
         NoadConsumer nc = getListMaker(context, typesetter);
-        MathCode mc = parseMathCode(context, source, typesetter,
-                printableControlSequence(context));
+        MathCode mc =
+                parseMathCode(context, source, typesetter,
+                    printableControlSequence(context));
 
         nc.add(mc, context.getTypesettingContext());
     }

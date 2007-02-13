@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -21,11 +21,9 @@ package org.extex.typesetter.type.node;
 
 import org.extex.interpreter.type.image.Image;
 import org.extex.typesetter.type.Node;
-import org.extex.typesetter.type.node.WhatsItNode;
-
 
 /**
- * This node contains an image which should be passed to the backend driver.
+ * This node contains an image which should be passed to the back-end driver.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
@@ -39,7 +37,7 @@ public class ImageNode extends WhatsItNode implements Node {
     protected static final long serialVersionUID = 2005L;
 
     /**
-     * The field <tt>image</tt> contains the image to pass to the backend
+     * The field <tt>image</tt> contains the image to pass to the back-end
      * driver.
      */
     private Image image;

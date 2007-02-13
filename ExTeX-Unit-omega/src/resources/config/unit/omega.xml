@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!--
-  -  Copyright (C) 2005-2006 The ExTeX Group
+  -  Copyright (C) 2005-2006-2007 The ExTeX Group
   -
   -  This library is free software; you can redistribute it and/or modify it
   -  under the terms of the GNU Lesser General Public License as published by
@@ -41,7 +41,7 @@
     <define name="DefaultOutputTranslation"
             class="org.extex.unit.omega.translation.DefaultInputTranslation"/>
     <define name="hfi"
-            class="org.extex.unit.tex.typesetter.spacing.Hfi"/>
+            class="org.extex.unit.omega.typesetter.Hfi"/>
     <define name="InputMode"
             class="org.extex.unit.omega.mode.InputMode"/>
     <define name="InputTranslation"
@@ -51,9 +51,9 @@
     <define name="localinterlinepenalty"
             class="org.extex.unit.tex.register.count.IntegerParameter"/>
     <define name="localleftbox"
-            class="org.extex.unit.tex.typesetter.box.Localleftbox"/>
+            class="org.extex.unit.omega.typesetter.Localleftbox"/>
     <define name="localrightbox"
-            class="org.extex.unit.tex.typesetter.box.Localrightbox"/>
+            class="org.extex.unit.omega.typesetter.Localrightbox"/>
     <define name="mathdir"
             class="org.extex.unit.omega.dir.Mathdir"/>
     <define name="naturaldir"
@@ -113,7 +113,7 @@
     <define name="unnaturaldir"
             class="org.extex.unit.omega.dir.Unnaturaldir"/>
     <define name="vfi"
-            class="org.extex.unit.tex.typesetter.spacing.Vfi"/>
+            class="org.extex.unit.omega.typesetter.Vfi"/>
   </primitives>
  </unit>
  

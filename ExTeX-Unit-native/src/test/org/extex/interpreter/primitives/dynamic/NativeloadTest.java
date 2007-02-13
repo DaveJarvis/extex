@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -30,14 +30,14 @@ import org.extex.test.NoFlagsPrimitiveTester;
 public class NativeloadTest extends NoFlagsPrimitiveTester {
 
     /**
-     * Constructor for SkewcharTest.
+     * Creates a new object.
      *
      * @param arg the name
      */
     public NativeloadTest(final String arg) {
 
         super(arg, "nativeload",
-                "{java}{org.extex.interpreter.primitives.dynamic.NativeloadSensor}");
+            "{java}{org.extex.interpreter.primitives.dynamic.NativeloadSensor}");
         setConfig("native-test");
     }
 
@@ -52,14 +52,14 @@ public class NativeloadTest extends NoFlagsPrimitiveTester {
     public void testError1() throws Exception {
 
         assertFailure(
-                //--- input code ---
-                DEFINE_BRACES
-                        + "\\nativeload{undefined type}"
-                        + "{org.extex.interpreter.primitives.dynamic.NativeloadSensor}"
-                        + " \\end",
-                //--- error message ---
-                "I don't know how to load native type `undefined type'");
-        assertFalse(NativeloadSensor.isKilroy());
+        //--- input code ---
+            DEFINE_BRACES
+                    + "\\nativeload{undefined type}"
+                    + "{org.extex.interpreter.primitives.dynamic.NativeloadSensor}"
+                    + " \\end",
+            //--- error message ---
+            "I don't know how to load native type `undefined type'");
+        assertFalse(NativeloadSensor.isSensed());
     }
 
     /**
@@ -74,10 +74,10 @@ public class NativeloadTest extends NoFlagsPrimitiveTester {
 
         assertFailure(
         //--- input code ---
-                DEFINE_BRACES + "\\nativeload{java}" + "{un.de.fined.Class}"
-                        + " \\end",
-                //--- error message ---
-                "Class not found: un.de.fined.Class");
+            DEFINE_BRACES + "\\nativeload{java}" + "{un.de.fined.Class}"
+                    + " \\end",
+            //--- error message ---
+            "Class not found: un.de.fined.Class");
     }
 
     /**
@@ -91,12 +91,12 @@ public class NativeloadTest extends NoFlagsPrimitiveTester {
     public void testError3() throws Exception {
 
         assertFailure(
-                //--- input code ---
-                DEFINE_BRACES + "\\nativeload{java}" + "{java.lang.String}"
-                        + " \\end",
-                //--- error message ---
-                "The class java.lang.String does not implement\n"
-                        + "the required interface org.extex.interpreter.primitives.dynamic.java.Loadable.");
+        //--- input code ---
+            DEFINE_BRACES + "\\nativeload{java}" + "{java.lang.String}"
+                    + " \\end",
+            //--- error message ---
+            "The class java.lang.String does not implement\n"
+            + "the required interface org.extex.interpreter.primitives.dynamic.java.Loadable.");
     }
 
     /**
@@ -110,14 +110,14 @@ public class NativeloadTest extends NoFlagsPrimitiveTester {
     public void test1() throws Exception {
 
         assertSuccess(
-                //--- input code ---
-                DEFINE_BRACES
-                        + "\\nativeload{java}"
-                        + "{org.extex.interpreter.primitives.dynamic.NativeloadSensor}"
-                        + " \\end",
-                //--- log message ---
-                "");
-        assertTrue(NativeloadSensor.isKilroy());
+        //--- input code ---
+            DEFINE_BRACES
+                    + "\\nativeload{java}"
+                    + "{org.extex.interpreter.primitives.dynamic.NativeloadSensor}"
+                    + " \\end",
+            //--- log message ---
+            "");
+        assertTrue(NativeloadSensor.isSensed());
     }
 
 }

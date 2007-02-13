@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -28,7 +28,6 @@ import org.extex.interpreter.type.math.MathCode;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.unit.omega.math.util.OmegaMathcharCode;
-
 
 /**
  * This class provides an implementation for the primitive
@@ -77,6 +76,17 @@ public class Omathchardef extends AbstractAssignment {
     }
 
     /**
+     * This method takes the first token and executes it. The result is placed
+     * on the stack. This operation might have side effects. To execute a token
+     * it might be necessary to consume further tokens.
+     *
+     * @param prefix the prefix controlling the execution
+     * @param context the interpreter context
+     * @param source the token source
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.AbstractAssignment#assign(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -89,12 +99,13 @@ public class Omathchardef extends AbstractAssignment {
 
         CodeToken cs = source.getControlSequence(context, typesetter);
         source.getOptionalEquals(context);
-        MathCode mathchar = AbstractOmegaMathCode.parseMathCode(context, source,
-                typesetter, getName());
+        MathCode mathchar =
+                AbstractOmegaMathCode.parseMathCode(context, source,
+                    typesetter, getName());
 
         context.setCode(cs, //
-                new OmegaMathcharCode(cs.toString(), mathchar), //
-                prefix.clearGlobal());
+            new OmegaMathcharCode(cs.toString(), mathchar), //
+            prefix.clearGlobal());
     }
 
 }
