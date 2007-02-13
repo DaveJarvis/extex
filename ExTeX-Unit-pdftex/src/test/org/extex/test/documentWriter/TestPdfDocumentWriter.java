@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -123,8 +123,8 @@ public class TestPdfDocumentWriter
          *      org.extex.typesetter.type.node.AfterMathNode,
          *      java.lang.Object)
          */
-        public Object visitAfterMath(final AfterMathNode node,
-                final Object oOut) throws GeneralException {
+        public Object visitAfterMath(final AfterMathNode node, final Object oOut)
+                throws GeneralException {
 
             if (node.getWidth().ne(Dimen.ZERO_PT)) {
                 write(' ');
@@ -517,94 +517,145 @@ public class TestPdfDocumentWriter
         return 1;
     }
 
-    public PdfAnnotation getAnnotation(RuleNode node, String annotation) throws InterpreterException {
+    /**
+     * @see org.extex.backend.documentWriter.PdftexSupport#getAnnotation(org.extex.typesetter.type.node.RuleNode, java.lang.String)
+     */
+    public PdfAnnotation getAnnotation(final RuleNode node,
+            final String annotation) throws InterpreterException {
 
         // TODO gene: getAnnotation unimplemented
         return null;
     }
 
-    public PdfObject getObject(String attr, boolean isStream, String text) throws InterpreterException {
+    /**
+     * @see org.extex.backend.documentWriter.PdftexSupport#getObject(java.lang.String, boolean, java.lang.String)
+     */
+    public PdfObject getObject(final String attr, final boolean isStream,
+            final String text) throws InterpreterException {
 
         // TODO gene: getObject unimplemented
         return null;
     }
 
-    public PdfXForm getXForm(String attr, String resources, Box box) throws InterpreterException {
+    /**
+     * @see org.extex.backend.documentWriter.PdftexSupport#getXForm(java.lang.String, java.lang.String, org.extex.interpreter.type.box.Box)
+     */
+    public PdfXForm getXForm(final String attr, final String resources,
+            final Box box) throws InterpreterException {
 
         // TODO gene: getXForm unimplemented
         return null;
     }
 
-    public PdfRefXImage getXImage(String resource, RuleNode rule, String attr, long page, boolean immediate) throws InterpreterException {
+    /**
+     * @see org.extex.backend.documentWriter.PdftexSupport#getXImage(java.lang.String, org.extex.typesetter.type.node.RuleNode, java.lang.String, long, boolean)
+     */
+    public PdfRefXImage getXImage(final String resource, final RuleNode rule,
+            final String attr, final long page, final boolean immediate)
+            throws InterpreterException {
 
         // TODO gene: getXImage unimplemented
         return null;
     }
 
-    public void pdfcatalog(String text, ActionSpec action) {
+    /**
+     * @see org.extex.backend.documentWriter.PdftexSupport#pdfcatalog(java.lang.String, org.extex.unit.pdftex.util.action.ActionSpec)
+     */
+    public void pdfcatalog(final String text, final ActionSpec action) {
 
         // TODO gene: pdfcatalog unimplemented
-        
+
     }
 
-    public String pdffontname(Font font) {
+    /**
+     * @see org.extex.backend.documentWriter.PdftexSupport#pdffontname(org.extex.interpreter.type.font.Font)
+     */
+    public String pdffontname(final Font font) {
 
         // TODO gene: pdffontname unimplemented
         return null;
     }
 
-    public long pdffontobjnum(Font font) {
+    /**
+     * @see org.extex.backend.documentWriter.PdftexSupport#pdffontobjnum(org.extex.interpreter.type.font.Font)
+     */
+    public long pdffontobjnum(final Font font) {
 
         // TODO gene: pdffontobjnum unimplemented
         return 0;
     }
 
-    public void pdfincludechars(Font font, String text) {
+    /**
+     * @see org.extex.backend.documentWriter.PdftexSupport#pdfincludechars(org.extex.interpreter.type.font.Font, java.lang.String)
+     */
+    public void pdfincludechars(final Font font, final String text) {
 
         // TODO gene: pdfincludechars unimplemented
-        
+
     }
 
-    public void pdfinfo(String text) {
+    /**
+     * @see org.extex.backend.documentWriter.PdftexSupport#pdfinfo(java.lang.String)
+     */
+    public void pdfinfo(final String text) {
 
         // TODO gene: pdfinfo unimplemented
-        
+
     }
 
+    /**
+     * @see org.extex.backend.documentWriter.PdftexSupport#pdflastannot()
+     */
     public long pdflastannot() {
 
         // TODO gene: pdflastannot unimplemented
         return 0;
     }
 
+    /**
+     * @see org.extex.backend.documentWriter.PdftexSupport#pdflastobj()
+     */
     public long pdflastobj() {
 
         // TODO gene: pdflastobj unimplemented
         return 0;
     }
 
+    /**
+     * @see org.extex.backend.documentWriter.PdftexSupport#pdflastxform()
+     */
     public long pdflastxform() {
 
         // TODO gene: pdflastxform unimplemented
         return 0;
     }
 
+    /**
+     * @see org.extex.backend.documentWriter.PdftexSupport#pdflastximage()
+     */
     public long pdflastximage() {
 
         // TODO gene: pdflastximage unimplemented
         return 0;
     }
 
-    public void pdfnames(String text) {
+    /**
+     * @see org.extex.backend.documentWriter.PdftexSupport#pdfnames(java.lang.String)
+     */
+    public void pdfnames(final String text) {
 
         // TODO gene: pdfnames unimplemented
-        
+
     }
 
-    public void pdfoutline(ActionSpec action, long count, String text) {
+    /**
+     * @see org.extex.backend.documentWriter.PdftexSupport#pdfoutline(org.extex.unit.pdftex.util.action.ActionSpec, long, java.lang.String)
+     */
+    public void pdfoutline(final ActionSpec action, final long count,
+            final String text) {
 
         // TODO gene: pdfoutline unimplemented
-        
+
     }
 
 }
