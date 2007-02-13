@@ -138,7 +138,7 @@ public class FontFactoryImplCmr10At12Test extends AbstractFontFactoryTester {
 
         FixedCount scale = font.getScaleFactor();
         assertNotNull(scale);
-        assertEquals(Dimen.ONE * 12 / 10, scale.getValue());
+        assertEquals(12 * 1000 / 10, scale.getValue());
     }
 
     /**

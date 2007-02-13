@@ -21,6 +21,8 @@ package org.extex.font;
 
 import org.extex.font.exception.FontException;
 import org.extex.font.type.other.NullFont;
+import org.extex.interpreter.type.count.Count;
+import org.extex.interpreter.type.count.FixedCount;
 import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.glue.FixedGlue;
@@ -180,6 +182,18 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
         assertNotNull(fd1);
         assertTrue(fd1.toString(), Dimen.ZERO_PT.eq(fd1));
 
+    }
+
+    /**
+     * Test for the font key: cmr10 
+     * @throws Exception if an error occurred.
+     */
+    public void testScale01() throws Exception {
+
+        FixedCount scale = font.getScaleFactor();
+        assertNotNull(scale);
+        // scale = 1 -> 1 * 1000
+        assertEquals(1000, scale.getValue());
     }
 
     // -----------------------------------------------

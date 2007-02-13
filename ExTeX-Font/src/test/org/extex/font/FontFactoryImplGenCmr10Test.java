@@ -4192,4 +4192,63 @@ public class FontFactoryImplGenCmr10Test extends AbstractFontFactoryTester {
         assertFalse(font.hasGlyph(UnicodeChar.get(Unicode.OFFSET + 255)));
     }
 
+    /**
+     * kerning test cmr10
+     * Kerning: AV: -72819
+     */
+    public void testKerning1() throws Exception {
+
+        FixedDimen k = font.getKerning(UnicodeChar.get('A'), UnicodeChar
+                .get('V'));
+        assertNotNull(k);
+        assertTrue(Long.toString(k.getValue()), new Dimen(-72819).eq(k));
+    }
+
+    /**
+     * kerning test cmr10
+     * Kerning: Ve: -54614
+     */
+    public void testKerning2() throws Exception {
+
+        FixedDimen k = font.getKerning(UnicodeChar.get('V'), UnicodeChar
+                .get('e'));
+        assertNotNull(k);
+        assertTrue(Long.toString(k.getValue()), new Dimen(-54614).eq(k));
+    }
+
+    /**
+     * kerning test cmr10
+     * Kerning: V,: 0
+     */
+    public void testKerning3() throws Exception {
+
+        FixedDimen k = font.getKerning(UnicodeChar.get('V'), UnicodeChar
+                .get(','));
+        assertNotNull(k);
+        assertTrue(Long.toString(k.getValue()), new Dimen(0).eq(k));
+    }
+
+    /**
+     * kerning test cmr10
+     * Kerning: AW: -72819
+     */
+    public void testKerning4() throws Exception {
+
+        FixedDimen k = font.getKerning(UnicodeChar.get('A'), UnicodeChar
+                .get('W'));
+        assertNotNull(k);
+        assertTrue(Long.toString(k.getValue()), new Dimen(-72819).eq(k));
+    }
+
+    /**
+     * kerning test cmr10
+     * Kerning: W.: 0
+     */
+    public void testKerning5() throws Exception {
+
+        FixedDimen k = font.getKerning(UnicodeChar.get('W'), UnicodeChar
+                .get('.'));
+        assertNotNull(k);
+        assertTrue(Long.toString(k.getValue()), new Dimen(0).eq(k));
+    }
 }

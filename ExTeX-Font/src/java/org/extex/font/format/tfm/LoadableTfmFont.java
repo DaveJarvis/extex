@@ -80,7 +80,7 @@ public class LoadableTfmFont implements LoadableFont {
      */
     public FixedDimen getActualSize() {
 
-        return actualFontKey.getDimen("size");
+        return actualFontKey.getDimen(FontKey.SIZE);
     }
 
     /**
@@ -218,8 +218,12 @@ public class LoadableTfmFont implements LoadableFont {
      */
     public FixedCount getScaleFactor() {
 
-        return new Count(Dimen.ONE * getActualSize().getValue()
-                / getDesignSize().getValue());
+        FixedCount actualscale = actualFontKey.getCount(FontKey.SCALE);
+        if (actualscale == null) {
+            return new Count(getActualSize().getValue() * 1000
+                    / getDesignSize().getValue());
+        }
+        return actualscale;
     }
 
     /**
@@ -310,8 +314,14 @@ public class LoadableTfmFont implements LoadableFont {
             throw new CorruptFontException(fontKey, e.getLocalizedMessage());
         }
 
-        if (fontKey.getDimen("size") == null) {
+        if (fontKey.getDimen(FontKey.SIZE) == null
+                && fontKey.getCount(FontKey.SCALE) == null) {
             actualFontKey = factory.getFontKey(fontKey, reader.getDesignSize());
+        } else if (fontKey.getCount(FontKey.SCALE) != null) {
+            // design size * scale / 1000
+            actualFontKey = factory.getFontKey(fontKey, new Dimen(reader
+                    .getDesignSize().getValue()
+                    * fontKey.getCount(FontKey.SCALE).getValue() / 1000));
         } else {
             actualFontKey = fontKey;
         }

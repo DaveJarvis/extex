@@ -134,6 +134,7 @@ public interface ExtexFont extends BaseFont {
 
     /**
      * Returns the scale factor of the font.
+     * The scale factor is a multiple of 1000.
      *
      * @return Returns the scale factor of the font.
      */
