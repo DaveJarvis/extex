@@ -28,6 +28,9 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.extex.font.format.xtf.TtfTableCMAP;
+import org.extex.font.format.xtf.TtfTableNAME;
+import org.extex.font.format.xtf.XtfReader;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import com.lowagie.text.Document;
@@ -39,10 +42,6 @@ import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 
-import de.dante.extex.unicodeFont.format.xtf.TtfTableCMAP;
-import de.dante.extex.unicodeFont.format.xtf.TtfTableNAME;
-import de.dante.extex.unicodeFont.format.xtf.XtfReader;
-
 /**
  * Print a glyph table from the fonts.
  *
@@ -52,29 +51,9 @@ import de.dante.extex.unicodeFont.format.xtf.XtfReader;
 public class XtfPrintFonts extends XtfInfo {
 
     /**
-     * Creates a new object.
-     *
-     * @throws ConfigurationException if a configuration error occurs.
-     */
-    public XtfPrintFonts() throws ConfigurationException {
-
-        super(XtfPrintFonts.class);
-    }
-
-    /**
-     * Create a pdf file.
-     */
-    private boolean createPdf = false;
-
-    /**
      * parameter.
      */
     private static final int PARAMETER = 1;
-
-    /**
-     * The list for the xtf files.
-     */
-    private List xtflist = new ArrayList();
 
     /**
      * The main method.
@@ -113,6 +92,38 @@ public class XtfPrintFonts extends XtfInfo {
         info.setCreatePdf(true);
 
         info.doIt();
+    }
+
+    /**
+     * Create a pdf file.
+     */
+    private boolean createPdf = false;
+
+    /**
+     * The list for the xtf files.
+     */
+    private List xtflist = new ArrayList();
+
+    /**
+     * Creates a new object.
+     *
+     * @throws ConfigurationException if a configuration error occurs.
+     */
+    public XtfPrintFonts() throws ConfigurationException {
+
+        super(XtfPrintFonts.class);
+    }
+
+    /**
+     * Add a xtf name to the list.
+     *
+     * @param name  The xtf name.
+     */
+    public void addXtfName(final String name) {
+
+        if (name != null) {
+            xtflist.add(name);
+        }
     }
 
     /**
@@ -243,27 +254,6 @@ public class XtfPrintFonts extends XtfInfo {
      *
      * @param idx       The index position.
      * @param basefonts The base fonts.
-     * @return Returns <code>true</code>, if the glyph is found
-     *         at least in one font.
-     */
-    private boolean glyphExists(final int idx, final BaseFont[] basefonts) {
-
-        boolean glyphexists = false;
-
-        for (int b = 0; b < basefonts.length; b++) {
-            if (basefonts[b].charExists((char) idx)) {
-                glyphexists = true;
-                break;
-            }
-        }
-        return glyphexists;
-    }
-
-    /**
-     * Check, if a glyph at the index exits in the fonts.
-     *
-     * @param idx       The index position.
-     * @param basefonts The base fonts.
      * @param reader    The xtf parsers.
      * @return Returns <code>true</code>, if the glyph is found
      *         at least in one font.
@@ -294,6 +284,27 @@ public class XtfPrintFonts extends XtfInfo {
     // ----------------------------------------------------------------
 
     /**
+     * Check, if a glyph at the index exits in the fonts.
+     *
+     * @param idx       The index position.
+     * @param basefonts The base fonts.
+     * @return Returns <code>true</code>, if the glyph is found
+     *         at least in one font.
+     */
+    private boolean glyphExists(final int idx, final BaseFont[] basefonts) {
+
+        boolean glyphexists = false;
+
+        for (int b = 0; b < basefonts.length; b++) {
+            if (basefonts[b].charExists((char) idx)) {
+                glyphexists = true;
+                break;
+            }
+        }
+        return glyphexists;
+    }
+
+    /**
      * Getter for createPdf.
      *
      * @return the createPdf
@@ -311,18 +322,6 @@ public class XtfPrintFonts extends XtfInfo {
     public void setCreatePdf(final boolean pdf) {
 
         createPdf = pdf;
-    }
-
-    /**
-     * Add a xtf name to the list.
-     *
-     * @param name  The xtf name.
-     */
-    public void addXtfName(final String name) {
-
-        if (name != null) {
-            xtflist.add(name);
-        }
     }
 
 }
