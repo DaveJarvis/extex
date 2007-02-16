@@ -145,9 +145,7 @@ public class TypesetterFactory extends AbstractFactory {
                     PageBuilder.class);
         pageBuilder.setContext(context);
         PageFactoryImpl pageFactory = new PageFactoryImpl();
-        if (pageFactory instanceof LogEnabled) {
-            ((LogEnabled) pageFactory).enableLogging(getLogger());
-        }
+        pageFactory.enableLogging(getLogger());
         pageBuilder.setPageFactory(pageFactory);
         return pageBuilder;
     }

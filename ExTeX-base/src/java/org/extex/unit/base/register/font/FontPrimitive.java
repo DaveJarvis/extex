@@ -232,8 +232,8 @@ public class FontPrimitive extends AbstractAssignment
             Map fontKeyMap = new HashMap();
             fontKeyMap.put("scale", scale);
             fontKeyMap.put("letterspaced", letterspaced);
-            fontKeyMap.put("ligatures", new Boolean(ligatures));
-            fontKeyMap.put("kerning", new Boolean(kerning));
+            fontKeyMap.put("ligatures", Boolean.valueOf(ligatures));
+            fontKeyMap.put("kerning", Boolean.valueOf(kerning));
             fnt = factory.getInstance(factory.getFontKey(fontname, //
                 fontSize, fontKeyMap));
         } catch (FontException e) {

@@ -44,7 +44,6 @@ import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
 import org.extex.scanner.type.token.TokenFactoryImpl;
 import org.extex.type.UnicodeChar;
-import org.extex.typesetter.type.node.CharNode;
 import org.extex.typesetter.type.node.factory.CachingNodeFactory;
 import org.extex.typesetter.type.node.factory.NodeFactory;
 
