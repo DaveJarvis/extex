@@ -233,7 +233,7 @@ public class DviDocumentWriterTest extends TestCase {
      *
      * @throws Exception if an error occurs
      */
-    private void checkMagnification(long magnification) throws Exception {
+    private void checkMagnification(final long magnification) throws Exception {
 
         documentWriterOptions.setMagnification(magnification);
         documentWriter =
