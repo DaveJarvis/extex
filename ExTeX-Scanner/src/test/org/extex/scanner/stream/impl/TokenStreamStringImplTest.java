@@ -48,13 +48,13 @@ public class TokenStreamStringImplTest extends TestCase {
     /**
      * The field <tt>factory</tt> contains the token factory to use.
      */
-    private static TokenFactory factory;
+    private TokenFactory factory;
 
     /**
      * The field <tt>tokenizer</tt> contains the tokenizer to use for
      * categorizing characters.
      */
-    private static Tokenizer tokenizer;
+    private Tokenizer tokenizer;
 
     /**
      * Command line interface.
@@ -101,6 +101,9 @@ public class TokenStreamStringImplTest extends TestCase {
         factory = new TokenFactoryImpl();
         tokenizer = new Tokenizer() {
 
+            /**
+             * @see org.extex.interpreter.Tokenizer#getCatcode(org.extex.type.UnicodeChar)
+             */
             public Catcode getCatcode(final UnicodeChar c) {
 
                 if (c.isLetter()) {
@@ -164,7 +167,8 @@ public class TokenStreamStringImplTest extends TestCase {
     public void test1() throws Exception {
 
         TokenStream stream = makeStream("1");
-        assertEquals("the character 1", stream.get(factory, tokenizer).toString());
+        assertEquals("the character 1", stream.get(factory, tokenizer)
+            .toString());
         Token token = stream.get(factory, tokenizer);
         assertNotNull(token);
         assertEquals(SPACE, token.getChar().getCodePoint());
@@ -179,8 +183,10 @@ public class TokenStreamStringImplTest extends TestCase {
     public void test12() throws Exception {
 
         TokenStream stream = makeStream("12");
-        assertEquals("the character 1", stream.get(factory, tokenizer).toString());
-        assertEquals("the character 2", stream.get(factory, tokenizer).toString());
+        assertEquals("the character 1", stream.get(factory, tokenizer)
+            .toString());
+        assertEquals("the character 2", stream.get(factory, tokenizer)
+            .toString());
         Token token = stream.get(factory, tokenizer);
         assertNotNull(token);
         assertEquals(SPACE, token.getChar().getCodePoint());
@@ -197,7 +203,8 @@ public class TokenStreamStringImplTest extends TestCase {
         TokenStream stream = makeStream("^1");
         assertEquals("superscript character ^", stream.get(factory, tokenizer)
             .toString());
-        assertEquals("the character 1", stream.get(factory, tokenizer).toString());
+        assertEquals("the character 1", stream.get(factory, tokenizer)
+            .toString());
         Token token = stream.get(factory, tokenizer);
         assertNotNull(token);
         assertEquals(SPACE, token.getChar().getCodePoint());
@@ -227,7 +234,8 @@ public class TokenStreamStringImplTest extends TestCase {
     public void testCaretA2() throws Exception {
 
         TokenStream stream = makeStream("^^A");
-        assertEquals("the character ^^1", stream.get(factory, tokenizer).toString());
+        assertEquals("the character ^^1", stream.get(factory, tokenizer)
+            .toString());
         Token token = stream.get(factory, tokenizer);
         assertNotNull(token);
         assertEquals(SPACE, token.getChar().getCodePoint());
@@ -242,8 +250,10 @@ public class TokenStreamStringImplTest extends TestCase {
     public void testCaretA3() throws Exception {
 
         TokenStream stream = makeStream("^^A;");
-        assertEquals("the character ^^1", stream.get(factory, tokenizer).toString());
-        assertEquals("the character ;", stream.get(factory, tokenizer).toString());
+        assertEquals("the character ^^1", stream.get(factory, tokenizer)
+            .toString());
+        assertEquals("the character ;", stream.get(factory, tokenizer)
+            .toString());
         Token token = stream.get(factory, tokenizer);
         assertNotNull(token);
         assertEquals(SPACE, token.getChar().getCodePoint());
@@ -310,8 +320,8 @@ public class TokenStreamStringImplTest extends TestCase {
     public void ___testCr3() throws Exception {
 
         TokenStream stream = makeStream("\naaa\n  x");
-        assertEquals("the control sequence \\par", stream.get(factory, tokenizer)
-            .toString());
+        assertEquals("the control sequence \\par", stream.get(factory,
+            tokenizer).toString());
         assertEquals("the letter x", stream.get(factory, tokenizer).toString());
         assertNull(stream.get(factory, tokenizer));
     }
@@ -324,10 +334,10 @@ public class TokenStreamStringImplTest extends TestCase {
     public void ___testCr4() throws Exception {
 
         TokenStream stream = makeStream("\n\nx");
-        assertEquals("the control sequence \\par", stream.get(factory, tokenizer)
-            .toString());
-        assertEquals("the control sequence \\par", stream.get(factory, tokenizer)
-            .toString());
+        assertEquals("the control sequence \\par", stream.get(factory,
+            tokenizer).toString());
+        assertEquals("the control sequence \\par", stream.get(factory,
+            tokenizer).toString());
         assertNull(stream.get(factory, tokenizer));
     }
 
@@ -350,7 +360,8 @@ public class TokenStreamStringImplTest extends TestCase {
     public void testIgnore() throws Exception {
 
         TokenStream stream = makeStream("\f.");
-        assertEquals("the character .", stream.get(factory, tokenizer).toString());
+        assertEquals("the character .", stream.get(factory, tokenizer)
+            .toString());
         assertEquals("blank space  ", stream.get(factory, tokenizer).toString());
         assertNull(stream.get(factory, tokenizer));
     }
@@ -378,11 +389,15 @@ public class TokenStreamStringImplTest extends TestCase {
     public void testMixed() throws Exception {
 
         TokenStream stream = makeStream("12 34");
-        assertEquals("the character 1", stream.get(factory, tokenizer).toString());
-        assertEquals("the character 2", stream.get(factory, tokenizer).toString());
+        assertEquals("the character 1", stream.get(factory, tokenizer)
+            .toString());
+        assertEquals("the character 2", stream.get(factory, tokenizer)
+            .toString());
         assertEquals("blank space  ", stream.get(factory, tokenizer).toString());
-        assertEquals("the character 3", stream.get(factory, tokenizer).toString());
-        assertEquals("the character 4", stream.get(factory, tokenizer).toString());
+        assertEquals("the character 3", stream.get(factory, tokenizer)
+            .toString());
+        assertEquals("the character 4", stream.get(factory, tokenizer)
+            .toString());
         Token token = stream.get(factory, tokenizer);
         assertNotNull(token);
         assertEquals(SPACE, token.getChar().getCodePoint());
@@ -397,7 +412,8 @@ public class TokenStreamStringImplTest extends TestCase {
     public void testSpace() throws Exception {
 
         TokenStream stream = makeStream(" .");
-        assertEquals("the character .", stream.get(factory, tokenizer).toString());
+        assertEquals("the character .", stream.get(factory, tokenizer)
+            .toString());
         assertEquals("blank space  ", stream.get(factory, tokenizer).toString());
         assertNull(stream.get(factory, tokenizer));
     }
@@ -411,7 +427,8 @@ public class TokenStreamStringImplTest extends TestCase {
     public void testSpace2() throws Exception {
 
         TokenStream stream = makeStream(". ");
-        assertEquals("the character .", stream.get(factory, tokenizer).toString());
+        assertEquals("the character .", stream.get(factory, tokenizer)
+            .toString());
         assertEquals("blank space  ", stream.get(factory, tokenizer).toString());
         assertNull(stream.get(factory, tokenizer));
     }
@@ -425,7 +442,8 @@ public class TokenStreamStringImplTest extends TestCase {
     public void testSpace3() throws Exception {
 
         TokenStream stream = makeStream(".  ");
-        assertEquals("the character .", stream.get(factory, tokenizer).toString());
+        assertEquals("the character .", stream.get(factory, tokenizer)
+            .toString());
         assertEquals("blank space  ", stream.get(factory, tokenizer).toString());
         assertNull(stream.get(factory, tokenizer));
     }
@@ -438,7 +456,8 @@ public class TokenStreamStringImplTest extends TestCase {
     public void testSpaces() throws Exception {
 
         TokenStream stream = makeStream("  .");
-        assertEquals("the character .", stream.get(factory, tokenizer).toString());
+        assertEquals("the character .", stream.get(factory, tokenizer)
+            .toString());
         assertEquals("blank space  ", stream.get(factory, tokenizer).toString());
         assertNull(stream.get(factory, tokenizer));
     }
