@@ -61,7 +61,7 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision: 4770 $
      */
-    protected class Cell {
+    protected static class Cell {
 
         /**
          * The field <tt>list</tt> contains the nodes of this cell.
