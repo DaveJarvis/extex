@@ -21,9 +21,7 @@ package org.extex.interpreter.type.font;
 import java.io.ObjectStreamException;
 
 import org.extex.font.ExtexFont;
-import org.extex.font.FontByteArray;
 import org.extex.font.FontKey;
-import org.extex.font.Glyph;
 import org.extex.font.type.other.NullFont;
 import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.glue.FixedGlue;
@@ -53,19 +51,6 @@ public class FontImpl extends NullFont implements ModifiableFont {
     protected static final long serialVersionUID = 2006L;
 
     /**
-     * The field <tt>cacheChar</tt> contains the Unicode character for the
-     * most recently accessed glyph.
-     */
-    private transient UnicodeChar cacheChar = null;
-
-    /**
-     * The field <tt>cacheGlyph</tt> contains the cached glyph or
-     * <code>null</code>. This means the last glyph accessed is stored here to
-     * speed up access.
-     */
-    private transient Glyph cacheGlyph = null;
-
-    /**
      * The font.
      */
     private transient ExtexFont font;
@@ -84,7 +69,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
         super();
 
         this.font = null;
-        key = null;
+        this.key = null;
     }
 
     /**
@@ -97,10 +82,14 @@ public class FontImpl extends NullFont implements ModifiableFont {
         super();
 
         this.font = font;
-        key = (font != null ? font.getFontKey() : null);
+        this.key = (font != null ? font.getFontKey() : null);
     }
 
     /**
+     * Returns the actual size.
+     *
+     * @return the actual size
+     *
      * @see org.extex.font.type.Fount#getActualSize()
      */
     public FixedDimen getActualSize() {
@@ -109,6 +98,10 @@ public class FontImpl extends NullFont implements ModifiableFont {
     }
 
     /**
+     * Returns the check sum.
+     *
+     * @return the check sum
+     *
      * @see org.extex.font.type.Fount#getCheckSum()
      */
     public int getCheckSum() {
@@ -118,6 +111,12 @@ public class FontImpl extends NullFont implements ModifiableFont {
     }
 
     /**
+     * Returns the depth of the char.
+     *
+     * @param uc the Unicode char
+     *
+     * @return the depth of the char
+     *
      * @see org.extex.interpreter.type.font.Font#getDepth(
      *      org.extex.type.UnicodeChar)
      */
@@ -127,6 +126,10 @@ public class FontImpl extends NullFont implements ModifiableFont {
     }
 
     /**
+     * Returns the design size.
+     *
+     * @return the design size
+     *
      * @see org.extex.font.type.Fount#getDesignSize()
      */
     public FixedDimen getDesignSize() {
@@ -135,7 +138,11 @@ public class FontImpl extends NullFont implements ModifiableFont {
     }
 
     /**
-     * @see org.extex.font.type.Fount#getEm()
+     * Returns the size of 1em.
+     *
+     * @return the size of 1em.
+     *
+     * @see org.extex.interpreter.type.font.Font#getEm()
      */
     public FixedDimen getEm() {
 
@@ -143,20 +150,15 @@ public class FontImpl extends NullFont implements ModifiableFont {
     }
 
     /**
-     * @see org.extex.font.type.Fount#getEx()
+     * Returns the size of 1ex.
+     *
+     * @return the size of 1ex.
+     *
+     * @see org.extex.interpreter.type.font.Font#getEx()
      */
     public FixedDimen getEx() {
 
         return font.getEx();
-    }
-
-    /**
-     * @see org.extex.font.type.Fount#getFontByteArray()
-     */
-    public FontByteArray getFontByteArray() {
-
-        // mgn: umbauen
-        return null;//font.getFontByteArray();
     }
 
     /**
@@ -177,7 +179,11 @@ public class FontImpl extends NullFont implements ModifiableFont {
     }
 
     /**
-     * @see org.extex.font.type.Fount#getFontKey()
+     * Returns the key for the font.
+     *
+     * @return the key for the font
+     *
+     * @see org.extex.interpreter.type.font.Font#getFontKey()
      */
     public FontKey getFontKey() {
 
@@ -185,7 +191,11 @@ public class FontImpl extends NullFont implements ModifiableFont {
     }
 
     /**
-     * @see org.extex.font.type.Fount#getFontName()
+     * Returns the name of the font.
+     *
+     * @return Returns the name of the font.
+     *
+     * @see org.extex.interpreter.type.font.Font#getFontName()
      */
     public String getFontName() {
 
@@ -203,6 +213,11 @@ public class FontImpl extends NullFont implements ModifiableFont {
     }
 
     /**
+     * Returns the height of the char.
+     *
+     * @param uc the Unicode char
+     * @return the height of the char
+     *
      * @see org.extex.interpreter.type.font.Font#getHeight(
      *      org.extex.type.UnicodeChar)
      */
@@ -212,6 +227,12 @@ public class FontImpl extends NullFont implements ModifiableFont {
     }
 
     /**
+     * Returns the italic correction of the char.
+     *
+     * @param uc the char
+     *
+     * @return the italic correction of the char
+     *
      * @see org.extex.interpreter.type.font.Font#getItalicCorrection(
      *      org.extex.type.UnicodeChar)
      */
@@ -221,6 +242,13 @@ public class FontImpl extends NullFont implements ModifiableFont {
     }
 
     /**
+     * Returns the kerning between two characters.
+     *
+     * @param uc1 the first character
+     * @param uc2 the second character
+     *
+     * @return the kerning between two characters
+     *
      * @see org.extex.interpreter.type.font.Font#getKerning(
      *      org.extex.type.UnicodeChar,
      *      org.extex.type.UnicodeChar)
@@ -231,15 +259,13 @@ public class FontImpl extends NullFont implements ModifiableFont {
     }
 
     /**
-     * @see org.extex.font.type.Fount#getLetterSpacing()
-     */
-    public FixedGlue getLetterSpacing() {
-
-        // mgn: umbauen
-        return null;//font.getLetterSpacing();
-    }
-
-    /**
+     * Returns the ligature for two characters.
+     *
+     * @param uc1 the first character
+     * @param uc2 the second character
+     *
+     * @return Returns the ligature for two characters
+     *
      * @see org.extex.interpreter.type.font.Font#getLigature(
      *      org.extex.type.UnicodeChar,
      *      org.extex.type.UnicodeChar)
@@ -250,16 +276,11 @@ public class FontImpl extends NullFont implements ModifiableFont {
     }
 
     /**
-     * @see org.extex.font.type.Fount#getProperty(java.lang.String)
-     */
-    public String getProperty(final String k) {
-
-        // mgn: umbauen
-        return null;//font.getProperty(k);
-    }
-
-    /**
-     * @see org.extex.font.type.Fount#getSpace()
+     * Returns the size of the 'space'.
+     *
+     * @return the size of the 'space'
+     *
+     * @see org.extex.interpreter.type.font.Font#getSpace()
      */
     public FixedGlue getSpace() {
 
@@ -267,6 +288,12 @@ public class FontImpl extends NullFont implements ModifiableFont {
     }
 
     /**
+     * Returns the width of a character.
+     *
+     * @param uc the character
+     *
+     * @return the width of the character
+     *
      * @see org.extex.interpreter.type.font.Font#getWidth(
      *      org.extex.type.UnicodeChar)
      */
@@ -276,6 +303,12 @@ public class FontImpl extends NullFont implements ModifiableFont {
     }
 
     /**
+     * Determine whether the glyph for a given character is present in this font.
+     *
+     * @param uc the character
+     *
+     * @return <code>true</code> iff the glyph is present
+     *
      * @see org.extex.interpreter.type.font.Font#hasGlyph(
      *      org.extex.type.UnicodeChar)
      */
@@ -309,6 +342,10 @@ public class FontImpl extends NullFont implements ModifiableFont {
     }
 
     /**
+     * Return the printable representation for this instance.
+     *
+     * @return the printable representation for this instance
+     *
      * @see java.lang.Object#toString()
      */
     public String toString() {
