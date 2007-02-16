@@ -291,8 +291,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 /**
                  * @see org.extex.interpreter.context.Context#getLanguage(java.lang.String)
                  */
-                public Language getLanguage(final String language)
-                        throws InterpreterException {
+                public Language getLanguage(final String language) {
 
                     return null;
                 }
@@ -436,32 +435,28 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 /**
                  * @see org.extex.interpreter.context.Context#set(org.extex.interpreter.context.Color, boolean)
                  */
-                public void set(final Color color, final boolean global)
-                        throws ConfigurationException {
+                public void set(final Color color, final boolean global) {
 
                 }
 
                 /**
                  * @see org.extex.interpreter.context.Context#set(org.extex.interpreter.context.tc.Direction, boolean)
                  */
-                public void set(final Direction direction, final boolean global)
-                        throws ConfigurationException {
+                public void set(final Direction direction, final boolean global) {
 
                 }
 
                 /**
                  * @see org.extex.interpreter.context.Context#set(org.extex.interpreter.type.font.Font, boolean)
                  */
-                public void set(final Font font, final boolean global)
-                        throws ConfigurationException {
+                public void set(final Font font, final boolean global) {
 
                 }
 
                 /**
                  * @see org.extex.interpreter.context.Context#set(org.extex.language.Language, boolean)
                  */
-                public void set(final Language language, final boolean global)
-                        throws ConfigurationException {
+                public void set(final Language language, final boolean global) {
 
                 }
 
