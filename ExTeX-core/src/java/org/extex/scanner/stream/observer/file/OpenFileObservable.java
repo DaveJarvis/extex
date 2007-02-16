@@ -29,7 +29,7 @@ package org.extex.scanner.stream.observer.file;
 public interface OpenFileObservable {
 
     /**
-     * Register an expand observer for later use.
+     * Register an open file observer for later use.
      *
      * @param observer the observer to be registered
      */
