@@ -1343,7 +1343,9 @@ public class ExTeX {
     protected void loadUserProperties(final File file) throws IOException {
 
         if (file != null && file.canRead()) {
-            properties.load(new FileInputStream(file));
+            FileInputStream stream = new FileInputStream(file);
+            properties.load(stream);
+            stream.close();
         }
     }
 
