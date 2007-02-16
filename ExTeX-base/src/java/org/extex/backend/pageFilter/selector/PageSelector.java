@@ -156,6 +156,7 @@ public class PageSelector implements PagePipe {
 
         if (ranges == null) {
             out.shipout(page);
+            return;
         }
 
         int size = ranges.size();
