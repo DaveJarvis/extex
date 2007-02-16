@@ -28,6 +28,12 @@ package org.extex.unit.pdftex.util.action;
 public class GotoPageActionSpec extends GotoActionSpec {
 
     /**
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
+     */
+    private static final long serialVersionUID = 2007L;
+
+    /**
      * The field <tt>file</tt> contains the file name.
      * The value can also be <code>null</code>.
      */

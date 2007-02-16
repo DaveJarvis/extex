@@ -30,6 +30,12 @@ import org.extex.unit.pdftex.util.id.IdSpec;
 public class GotoIdActionSpec extends GotoActionSpec {
 
     /**
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
+     */
+    private static final long serialVersionUID = 2007L;
+
+    /**
      * The field <tt>file</tt> contains the optional file.
      */
     private String file;

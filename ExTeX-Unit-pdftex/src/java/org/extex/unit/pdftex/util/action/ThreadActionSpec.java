@@ -34,6 +34,12 @@ import org.extex.unit.pdftex.util.id.IdSpec;
 public class ThreadActionSpec extends ActionSpec {
 
     /**
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
+     */
+    private static final long serialVersionUID = 2007L;
+
+    /**
      * Parse a thread action spec.
      *
      * @param context the interpreter context

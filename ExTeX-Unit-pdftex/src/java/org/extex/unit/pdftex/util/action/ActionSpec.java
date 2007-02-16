@@ -19,6 +19,8 @@
 
 package org.extex.unit.pdftex.util.action;
 
+import java.io.Serializable;
+
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
@@ -31,7 +33,7 @@ import org.extex.unit.pdftex.exception.InterpreterPdftexActionTypeException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4409 $
  */
-public abstract class ActionSpec {
+public abstract class ActionSpec implements Serializable {
 
     /**
      * Parse an action spec.

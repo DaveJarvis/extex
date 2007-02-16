@@ -33,6 +33,12 @@ import org.extex.typesetter.Typesetter;
 public class UserActionSpec extends ActionSpec {
 
     /**
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
+     */
+    private static final long serialVersionUID = 2007L;
+
+    /**
      * Parse a user action spec.
      *
      * @param context the interpreter context
