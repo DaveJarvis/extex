@@ -383,7 +383,7 @@ public final class StyleNoad implements Noad {
      */
     public boolean isCramped() {
 
-        return (no % 2) == 1;
+        return (no & 1) == 1;
     }
 
     /**
