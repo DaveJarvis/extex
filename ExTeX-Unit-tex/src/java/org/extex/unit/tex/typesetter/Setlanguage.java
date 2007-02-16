@@ -73,7 +73,7 @@ public class Setlanguage extends AbstractBox {
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision: 4770 $
      */
-    private class ParObserver implements ParagraphObserver {
+    private static class ParObserver implements ParagraphObserver {
 
         /**
          * The field <tt>context</tt> contains the interpreter context.
