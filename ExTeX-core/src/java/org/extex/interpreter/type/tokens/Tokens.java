@@ -33,6 +33,7 @@ import org.extex.scanner.type.token.MacroParamToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
 import org.extex.type.UnicodeChar;
+import org.extex.util.exception.GeneralException;
 
 /**
  * This class is a container for a list of
@@ -266,6 +267,14 @@ public class Tokens implements Serializable, FixedTokens {
     }
 
     /**
+     * Determine the printable representation of the object and append it to a
+     * list of Tokens.
+     *
+     * @param context  the processor context
+     * @param toks the tokens to add to
+     *
+     * @throws GeneralException in case of an error
+     *
      * @see org.extex.interpreter.type.tokens.FixedTokens#show(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.type.tokens.Tokens)
@@ -323,6 +332,10 @@ public class Tokens implements Serializable, FixedTokens {
     }
 
     /**
+     * Return a String, which shows all tokens (in text format) in the list.
+     *
+     * @return a String, which show all tokens (in text format) in the list
+     *
      * @see org.extex.interpreter.type.tokens.FixedTokens#toText()
      */
     public String toText() {
@@ -342,6 +355,12 @@ public class Tokens implements Serializable, FixedTokens {
     }
 
     /**
+     * Return a String, which shows all tokens (in text format) in the list.
+     *
+     * @param esc the escape character to use
+     *
+     * @return a String, which show all tokens (in text format) in the list
+     *
      * @see org.extex.interpreter.type.tokens.FixedTokens#toText(UnicodeChar)
      */
     public String toText(final UnicodeChar esc) {
