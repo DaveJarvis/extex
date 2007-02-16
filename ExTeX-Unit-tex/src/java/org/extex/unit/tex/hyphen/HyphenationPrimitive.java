@@ -163,7 +163,7 @@ public class HyphenationPrimitive extends AbstractHyphenationCode {
         Token t = source.getNonSpace(context);
         if (!(t instanceof LeftBraceToken)) {
             throw new MissingLeftBraceException(
-                    printableControlSequence(context));
+                printableControlSequence(context));
         }
 
         try {
@@ -174,8 +174,8 @@ public class HyphenationPrimitive extends AbstractHyphenationCode {
             t = source.getNonSpace(context)) {
 
                 if (!isWordConstituent(t, context)) {
-                    throw new InterpreterException(getLocalizer().format(
-                            "TTP.ImproperHyphen",
+                    throw new InterpreterException(getLocalizer()
+                        .format("TTP.ImproperHyphen",
                             printableControlSequence(context)));
                 }
                 word = collectWord(context, source, t);
