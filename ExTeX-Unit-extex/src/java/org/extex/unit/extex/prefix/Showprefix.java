@@ -64,7 +64,7 @@ public class Showprefix extends AbstractCode implements LogEnabled {
     /**
      * The field <tt>logger</tt> contains the logger.
      */
-    private Logger logger;
+    private transient Logger logger;
 
     /**
      * Creates a new object.
