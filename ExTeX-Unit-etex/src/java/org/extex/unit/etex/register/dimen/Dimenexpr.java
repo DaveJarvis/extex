@@ -266,12 +266,12 @@ public class Dimenexpr extends AbstractCode
                 if (t.equals(Catcode.OTHER, '(')) {
                     long val = evalExpr(context, source, typesetter);
                     t = source.getToken(context);
-                    if (!t.equals(Catcode.OTHER, ')')) {
-                        throw new HelpingException(getLocalizer(),
-                            "MissingParenthesis", (t == null ? "null" : t
-                                .toString()));
+                    if (t != null && t.equals(Catcode.OTHER, ')')) {
+                        return val;
                     }
-                    return val;
+                    throw new HelpingException(getLocalizer(),
+                        "MissingParenthesis", (t == null ? "null" : t
+                            .toString()));
                 } else if (t.equals(Catcode.OTHER, '-')) {
                     return -evalOperand(context, source, typesetter);
                 } else if (t.equals(Catcode.OTHER, '.')
