@@ -160,21 +160,6 @@ public class CsnameTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\csname">
-     *  Test case checking that eof is recognized.
-     * </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void ___testEOF1() throws Exception {
-
-        assertFailure(//--- input code ---
-                "\\expandafter\\meaning\\csname ",
-                //--- log message ---
-                "Unexpected end of file while processing \\meaning");
-    }
-
-    /**
-     * <testcase primitive="\csname">
      *  Test case checking that <tt>\csname</tt> returns something equivalent
      *  to <tt>\relax</tt> if nor defined otherwise.
      * </testcase>
@@ -217,11 +202,26 @@ public class CsnameTest extends ExTeXLauncher {
      */
     public void testEof1() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertFailure(//--- input code ---
                 DEFINE_BRACES
                 + "\\csname jobname ",
                 //--- log message ---
-                "texput" + TERM);
+                "Unexpected end of file");
+    }
+
+    /**
+     * <testcase primitive="\csname">
+     *  Test case checking that eof is recognized.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testEOF1() throws Exception {
+
+        assertFailure(//--- input code ---
+                "\\expandafter\\meaning\\csname ",
+                //--- log message ---
+                "Unexpected end of file");
     }
 
 }
