@@ -23,7 +23,6 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.extex.font.FontByteArray;
 import org.extex.font.FontKey;
 import org.extex.font.FontKeyFactory;
 import org.extex.interpreter.type.count.Count;
@@ -85,6 +84,11 @@ public class NullFont implements Font, Serializable {
     }
 
     /**
+     * Returns the actual FontKey for this font.
+     * The font key may differ from the one requested.
+     *
+     * @return the actual FontKey for this font.
+     *
      * @see org.extex.interpreter.type.font.Font#getActualFontKey()
      */
     public FontKey getActualFontKey() {
@@ -163,6 +167,10 @@ public class NullFont implements Font, Serializable {
     }
 
     /**
+     * Returns the size of 1em.
+     *
+     * @return the size of 1em.
+     *
      * @see org.extex.interpreter.type.font.Font#getEm()
      */
     public FixedDimen getEm() {
@@ -171,19 +179,15 @@ public class NullFont implements Font, Serializable {
     }
 
     /**
+     * Returns the size of 1ex.
+     *
+     * @return the size of 1ex.
+     *
      * @see org.extex.interpreter.type.font.Font#getEx()
      */
     public FixedDimen getEx() {
 
         return Dimen.ZERO_PT;
-    }
-
-    /**
-     * @see org.extex.font.type.Fount#getFontByteArray()
-     */
-    public FontByteArray getFontByteArray() {
-
-        return null;
     }
 
     /**
@@ -205,7 +209,7 @@ public class NullFont implements Font, Serializable {
      *
      * @return the key for the font
      *
-     * @see org.extex.font.type.Fount#getFontKey()
+     * @see org.extex.interpreter.type.font.Font#getFontKey()
      */
     public FontKey getFontKey() {
 
