@@ -19,6 +19,8 @@
 
 package org.extex.unit.pdftex.util.destination;
 
+import java.io.Serializable;
+
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
@@ -34,12 +36,18 @@ import org.extex.unit.pdftex.exception.InterpreterPdftexDestinationTypeException
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4409 $
  */
-public abstract class DestType {
+public abstract class DestType implements Serializable {
 
     /**
      * The constant <tt>FIT</tt> contains the destination type fit.
      */
     public static final DestType FIT = new DestType() {
+
+        /**
+         * The field <tt>serialVersionUID</tt> contains the version number for
+         * serialization.
+         */
+        private static final long serialVersionUID = 2007L;
 
         /**
          * @see org.extex.unit.pdftex.util.destType.DestType#visit(
@@ -58,12 +66,20 @@ public abstract class DestType {
             return "fit";
         }
 
+        //TODO gene: readResolve()
+
     };
 
     /**
      * The constant <tt>FITB</tt> contains the destination type fitb.
      */
     public static final DestType FITB = new DestType() {
+
+        /**
+         * The field <tt>serialVersionUID</tt> contains the version number for
+         * serialization.
+         */
+        private static final long serialVersionUID = 2007L;
 
         /**
          * @see org.extex.unit.pdftex.util.destType.DestType#visit(
@@ -82,12 +98,20 @@ public abstract class DestType {
             return "fitb";
         }
 
+        //TODO gene: readResolve()
+
     };
 
     /**
      * The constant <tt>FITBH</tt> contains the destination type fitbh.
      */
     public static final DestType FITBH = new DestType() {
+
+        /**
+         * The field <tt>serialVersionUID</tt> contains the version number for
+         * serialization.
+         */
+        private static final long serialVersionUID = 2007L;
 
         /**
          * @see org.extex.unit.pdftex.util.destType.DestType#visit(
@@ -106,12 +130,20 @@ public abstract class DestType {
             return "fitbh";
         }
 
+        //TODO gene: readResolve()
+
     };
 
     /**
      * The constant <tt>FITBV</tt> contains the destination type fitbv.
      */
     public static final DestType FITBV = new DestType() {
+
+        /**
+         * The field <tt>serialVersionUID</tt> contains the version number for
+         * serialization.
+         */
+        private static final long serialVersionUID = 2007L;
 
         /**
          * @see org.extex.unit.pdftex.util.destType.DestType#visit(
@@ -130,12 +162,20 @@ public abstract class DestType {
             return "fitbv";
         }
 
+        //TODO gene: readResolve()
+
     };
 
     /**
      * The constant <tt>FITH</tt> contains the destination type fith.
      */
     public static final DestType FITH = new DestType() {
+
+        /**
+         * The field <tt>serialVersionUID</tt> contains the version number for
+         * serialization.
+         */
+        private static final long serialVersionUID = 2007L;
 
         /**
          * @see org.extex.unit.pdftex.util.destType.DestType#visit(
@@ -154,12 +194,20 @@ public abstract class DestType {
             return "fith";
         }
 
+        //TODO gene: readResolve()
+
     };
 
     /**
      * The constant <tt>FITV</tt> contains the destination type fitv.
      */
     public static final DestType FITV = new DestType() {
+
+        /**
+         * The field <tt>serialVersionUID</tt> contains the version number for
+         * serialization.
+         */
+        private static final long serialVersionUID = 2007L;
 
         /**
          * @see org.extex.unit.pdftex.util.destType.DestType#visit(
@@ -178,12 +226,20 @@ public abstract class DestType {
             return "fitv";
         }
 
+        //TODO gene: readResolve()
+
     };
 
     /**
      * The constant <tt>XYZ</tt> contains the destination type xyz.
      */
     public static final DestType XYZ = new DestType() {
+
+        /**
+         * The field <tt>serialVersionUID</tt> contains the version number for
+         * serialization.
+         */
+        private static final long serialVersionUID = 2007L;
 
         /**
          * @see org.extex.unit.pdftex.util.destType.DestType#visit(
@@ -201,6 +257,8 @@ public abstract class DestType {
 
             return "xyz";
         }
+
+        //TODO gene: readResolve()
 
     };
 

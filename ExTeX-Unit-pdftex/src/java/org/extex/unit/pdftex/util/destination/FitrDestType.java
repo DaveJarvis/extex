@@ -31,6 +31,12 @@ import org.extex.typesetter.type.node.RuleNode;
 public class FitrDestType extends DestType {
 
     /**
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
+     */
+    private static final long serialVersionUID = 2007L;
+
+    /**
      * The field <tt>rule</tt> contains the rule specification.
      */
     private RuleNode rule;

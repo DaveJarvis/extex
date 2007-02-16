@@ -28,6 +28,12 @@ package org.extex.unit.pdftex.util.destination;
 public class ZoomDestType extends DestType {
 
     /**
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
+     */
+    private static final long serialVersionUID = 2007L;
+
+    /**
      * The field <tt>zoom</tt> contains the zoom value.
      */
     private long zoom;
