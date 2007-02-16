@@ -71,7 +71,8 @@ public class TraceCommandObserver implements CommandObserver {
 
     /**
      * This method is meant to be invoked just before a token is executed.
-     * A token following a prefix code is ignored if \tracingcommands is
+     * A token following a prefix code is ignored if <tt>\tracingcommands</tt>
+     * is not positive.
      *
      * @param token the token to be expanded
      */
