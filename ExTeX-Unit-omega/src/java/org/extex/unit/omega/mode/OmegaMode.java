@@ -61,6 +61,10 @@ public class OmegaMode implements Serializable {
         }
 
         /**
+         * Return the printable representation for this instance.
+         *
+         * @return the printable representation for this instance
+         *
          * @see java.lang.Object#toString()
          */
         public String toString() {
@@ -94,6 +98,10 @@ public class OmegaMode implements Serializable {
         }
 
         /**
+         * Return the printable representation for this instance.
+         *
+         * @return the printable representation for this instance
+         *
          * @see java.lang.Object#toString()
          */
         public String toString() {
@@ -128,6 +136,10 @@ public class OmegaMode implements Serializable {
         }
 
         /**
+         * Return the printable representation for this instance.
+         *
+         * @return the printable representation for this instance
+         *
          * @see java.lang.Object#toString()
          */
         public String toString() {
@@ -162,6 +174,10 @@ public class OmegaMode implements Serializable {
         }
 
         /**
+         * Return the printable representation for this instance.
+         *
+         * @return the printable representation for this instance
+         *
          * @see java.lang.Object#toString()
          */
         public String toString() {
@@ -174,7 +190,7 @@ public class OmegaMode implements Serializable {
      * Creates a new object.
      * This constructor is private to avoid abuse.
      */
-    private OmegaMode() {
+    protected OmegaMode() {
 
     }
 
