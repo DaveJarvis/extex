@@ -141,7 +141,8 @@ public final class TestTeX {
         BufferedReader intxt = new BufferedReader(stringReader);
 
         try {
-            String linetxt, linetesttxt;
+            String linetxt;
+            String linetesttxt;
             while ((linetxt = intxt.readLine()) != null) {
                 linetesttxt = intesttxt.readLine();
 
