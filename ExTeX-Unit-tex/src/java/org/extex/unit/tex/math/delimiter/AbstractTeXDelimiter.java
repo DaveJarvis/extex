@@ -53,11 +53,6 @@ import org.extex.util.framework.i18n.LocalizerFactory;
 public abstract class AbstractTeXDelimiter extends AbstractMathCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2005L;
-
-    /**
      * The constant <tt>CHAR_MASK</tt> contains the character mask.
      */
     private static final int CHAR_MASK = 0xff;
@@ -91,6 +86,46 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
     private static final int CLASS_SHIFT = 24;
 
     /**
+     * The field <tt>DEL_BINARY</tt> contains the delimiter code for binary.
+     */
+    private static final Integer DEL_BINARY = new Integer(2);
+
+    /**
+     * The field <tt>DEL_CLOSING</tt> contains the delimiter code for closing.
+     */
+    private static final Integer DEL_CLOSING = new Integer(5);
+
+    /**
+     * The field <tt>DEL_LARGE</tt> contains the delimiter code for large.
+     */
+    private static final Integer DEL_LARGE = new Integer(1);
+
+    /**
+     * The field <tt>DEL_OPENING</tt> contains the delimiter code for opening.
+     */
+    private static final Integer DEL_OPENING = new Integer(4);
+
+    /**
+     * The field <tt>DEL_ORDINARY</tt> contains the delimiter code for ordinary.
+     */
+    private static final Integer DEL_ORDINARY = new Integer(0);
+
+    /**
+     * The field <tt>DEL_PUNCTATION</tt> contains the delimiter code for punctation.
+     */
+    private static final Integer DEL_PUNCTATION = new Integer(6);
+
+    /**
+     * The field <tt>DEL_RELATION</tt> contains the delimiter code for relation.
+     */
+    private static final Integer DEL_RELATION = new Integer(3);
+
+    /**
+     * The field <tt>DEL_VARIABLE</tt> contains the delimiter code for variable.
+     */
+    private static final Integer DEL_VARIABLE = new Integer(7);
+
+    /**
      * The field <tt>FAM_MAX</tt> contains the maximum of the family number.
      */
     private static final int FAM_MAX = 15;
@@ -113,85 +148,138 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
     private static final MathClassVisitor MCV = new MathClassVisitor() {
 
         /**
-         * @see org.extex.typesetter.type.math.MathClassVisitor#visitBinary(
-         *      java.lang.Object,
-         *      java.lang.Object)
+         * Invoke the visitor method for a binary operator.
+         *
+         * @param arg the argument
+         * @param arg2 the second argument
+         *
+         * @return the result
+         *
+         * @see org.extex.interpreter.type.math.MathClassVisitor#visitBinary(
+         *      java.lang.Object, java.lang.Object)
          */
         public Object visitBinary(final Object ignore, final Object ignore2) {
 
-            return new Integer(2);
+            return DEL_BINARY;
         }
 
         /**
-         * @see org.extex.typesetter.type.math.MathClassVisitor#visitClosing(
-         *      java.lang.Object,
-         *      java.lang.Object)
+         * Invoke the visitor method for a closing delimiter.
+         *
+         * @param arg the argument
+         * @param arg2 the second argument
+         *
+         * @return the result
+         *
+         * @see org.extex.interpreter.type.math.MathClassVisitor#visitClosing(
+         *      java.lang.Object, java.lang.Object)
          */
         public Object visitClosing(final Object ignore, final Object ignore2) {
 
-            return new Integer(5);
+            return DEL_CLOSING;
         }
 
         /**
-         * @see org.extex.typesetter.type.math.MathClassVisitor#visitLarge(
-         *      java.lang.Object,
-         *      java.lang.Object)
+         * Invoke the visitor method for a large operator.
+         *
+         * @param arg the argument
+         * @param arg2 the second argument
+         *
+         * @return the result
+         *
+         * @see org.extex.interpreter.type.math.MathClassVisitor#visitLarge(
+         *      java.lang.Object, java.lang.Object)
          */
         public Object visitLarge(final Object ignore, final Object ignore2) {
 
-            return new Integer(1);
+            return DEL_LARGE;
         }
 
         /**
-         * @see org.extex.typesetter.type.math.MathClassVisitor#visitOpening(
-         *      java.lang.Object,
-         *      java.lang.Object)
+         * Invoke the visitor method for a opening delimiter.
+         *
+         * @param arg the argument
+         * @param arg2 the second argument
+         *
+         * @return the result
+         *
+         * @see org.extex.interpreter.type.math.MathClassVisitor#visitOpening(
+         *      java.lang.Object, java.lang.Object)
          */
         public Object visitOpening(final Object ignore, final Object ignore2) {
 
-            return new Integer(4);
+            return DEL_OPENING;
         }
 
         /**
-         * @see org.extex.typesetter.type.math.MathClassVisitor#visitOrdinary(
-         *      java.lang.Object,
-         *      java.lang.Object)
+         * Invoke the visitor method for an ordinary symbol .
+         *
+         * @param arg the argument
+         * @param arg2 the second argument
+         *
+         * @return the result
+         *
+         * @see org.extex.interpreter.type.math.MathClassVisitor#visitOrdinary(
+         *      java.lang.Object, java.lang.Object)
          */
         public Object visitOrdinary(final Object ignore, final Object ignore2) {
 
-            return new Integer(0);
+            return DEL_ORDINARY;
         }
 
         /**
-         * @see org.extex.typesetter.type.math.MathClassVisitor#visitPunctation(
-         *      java.lang.Object,
-         *      java.lang.Object)
+         * Invoke the visitor method for a punctation symbol.
+         *
+         * @param arg the argument
+         * @param arg2 the second argument
+         *
+         * @return the result
+         *
+         * @see org.extex.interpreter.type.math.MathClassVisitor#visitPunctation(
+         *      java.lang.Object, java.lang.Object)
          */
         public Object visitPunctation(final Object ignore, final Object ignore2) {
 
-            return new Integer(6);
+            return DEL_PUNCTATION;
         }
 
         /**
-         * @see org.extex.typesetter.type.math.MathClassVisitor#visitRelation(
-         *      java.lang.Object,
-         *      java.lang.Object)
+         * Invoke the visitor method for a relation operator.
+         *
+         * @param arg the argument
+         * @param arg2 the second argument
+         *
+         * @return the result
+         *
+         * @see org.extex.interpreter.type.math.MathClassVisitor#visitRelation(
+         *      java.lang.Object, java.lang.Object)
          */
         public Object visitRelation(final Object ignore, final Object ignore2) {
 
-            return new Integer(3);
+            return DEL_RELATION;
         }
 
         /**
-         * @see org.extex.typesetter.type.math.MathClassVisitor#visitVariable(
-         *      java.lang.Object,
-         *      java.lang.Object)
+         * Invoke the visitor method for a variable width symbol.
+         *
+         * @param arg the argument
+         * @param arg2 the second argument
+         *
+         * @return the result
+         *
+         * @see org.extex.interpreter.type.math.MathClassVisitor#visitVariable(
+         *      java.lang.Object, java.lang.Object)
          */
         public Object visitVariable(final Object ignore, final Object ignore2) {
 
-            return new Integer(7);
+            return DEL_VARIABLE;
         }
     };
+
+    /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    protected static final long serialVersionUID = 2005L;
 
     /**
      * The field <tt>SMALL_CHAR_OFFSET</tt> contains the offset for the small
@@ -204,6 +292,50 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
      * character's class.
      */
     private static final int SMALL_CLASS_OFFSET = 20;
+
+    /**
+     * Translate the delimiter into a <logo>TeX</logo> encoded number or throw
+     * an exception if this is not possible.
+     *
+     * @param del the delimiter to encode
+     *
+     * @return the <logo>TeX</logo> encoded delimiter
+     *
+     * @throws HelpingException in case of an error
+     */
+    public static long delimiterToLong(final MathDelimiter del)
+            throws HelpingException {
+
+        if (del == null) {
+            return -1;
+        }
+
+        long value =
+                ((Integer) del.getMathClass().visit(MCV, null, null))
+                    .longValue() << CLASS_SHIFT;
+
+        int fam0 = del.getSmallChar().getFamily();
+        if (fam0 < FAM_MIN || fam0 > FAM_MAX) {
+            throw new HelpingException(getMyLocalizer(), "ExtendedDelimiter");
+        }
+        int c0 = del.getSmallChar().getCharacter().getCodePoint();
+        if (c0 < CHAR_MIN || c0 > CHAR_MAX) {
+            throw new HelpingException(getMyLocalizer(), "ExtendedDelimiter");
+        }
+        int fam1 = del.getLargeChar().getFamily();
+        if (fam1 < FAM_MIN || fam1 > FAM_MAX) {
+            throw new HelpingException(getMyLocalizer(), "ExtendedDelimiter");
+        }
+        int c1 = del.getLargeChar().getCharacter().getCodePoint();
+        if (c1 < CHAR_MIN || c1 > CHAR_MAX) {
+            throw new HelpingException(getMyLocalizer(), "ExtendedDelimiter");
+        }
+        value |= fam0 << SMALL_CLASS_OFFSET;
+        value |= c0 << SMALL_CHAR_OFFSET;
+        value |= fam1 << LARGE_CLASS_OFFSET;
+        value |= c1;
+        return value;
+    }
 
     /**
      * Create a localizer for this class.
@@ -247,16 +379,18 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
 
         if (delcode < 0 || classCode > CLASS_MAX) {
             throw new HelpingException(getMyLocalizer(),
-                    "TTP.BadDelimiterCode", "\"" + Long.toHexString(delcode));
+                "TTP.BadDelimiterCode", "\"" + Long.toHexString(delcode));
         }
         MathClass mathClass = MathClass.getMathClass(classCode);
-        MathGlyph smallChar = new MathGlyph(
-                (int) ((delcode >> SMALL_CLASS_OFFSET) & CLASS_MASK),
-                UnicodeChar
+        MathGlyph smallChar =
+                new MathGlyph(
+                    (int) ((delcode >> SMALL_CLASS_OFFSET) & CLASS_MASK),
+                    UnicodeChar
                         .get((int) ((delcode >> SMALL_CHAR_OFFSET) & CHAR_MASK)));
-        MathGlyph largeChar = new MathGlyph(
-                (int) ((delcode >> LARGE_CLASS_OFFSET) & CLASS_MASK),
-                UnicodeChar.get((int) (delcode & CHAR_MASK)));
+        MathGlyph largeChar =
+                new MathGlyph(
+                    (int) ((delcode >> LARGE_CLASS_OFFSET) & CLASS_MASK),
+                    UnicodeChar.get((int) (delcode & CHAR_MASK)));
         return new MathDelimiter(mathClass, smallChar, largeChar);
     }
 
@@ -279,14 +413,14 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
             throws InterpreterException {
 
         int smallFam = (int) Count.scanNumber(context, source, typesetter);
-        UnicodeChar smallChar = source.scanCharacterCode(context, typesetter,
-                primitive);
+        UnicodeChar smallChar =
+                source.scanCharacterCode(context, typesetter, primitive);
         int largeFam = (int) Count.scanNumber(context, source, typesetter);
-        UnicodeChar largeChar = source.scanCharacterCode(context, typesetter,
-                primitive);
+        UnicodeChar largeChar =
+                source.scanCharacterCode(context, typesetter, primitive);
 
         return new MathDelimiter(mClass, new MathGlyph(smallFam, smallChar),
-                new MathGlyph(largeFam, largeChar));
+            new MathGlyph(largeFam, largeChar));
     }
 
     /**
@@ -310,21 +444,21 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
             final TokenSource source, final Typesetter typesetter,
             final String primitive) throws InterpreterException {
 
-        for (Token t = source.getToken(context); t != null; t = source
-                .getToken(context)) {
+        for (Token t = source.getToken(context); t != null; t =
+                source.getToken(context)) {
 
             if (t instanceof CodeToken) {
                 Code code = context.getCode((CodeToken) t);
                 if (code instanceof Delimiter) {
                     return newMathDelimiter(Count.scanNumber(context, source,
-                            typesetter));
+                        typesetter));
                 } else if (code instanceof ExpandableCode) {
                     ((ExpandableCode) code).expand(Flags.NONE, context, source,
-                            typesetter);
+                        typesetter);
                     // retry within the outer loop
                 } else {
                     throw new HelpingException(getMyLocalizer(),
-                            "TTP.MissingDelim");
+                        "TTP.MissingDelim");
                 }
             } else {
                 MathDelimiter del = context.getDelcode(t.getChar());
@@ -334,10 +468,10 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
                     source.push(t);
                     try {
                         return newMathDelimiter(Count.scanNumber(context,
-                                source, typesetter));
+                            source, typesetter));
                     } catch (MissingNumberException e) {
                         throw new HelpingException(getMyLocalizer(),
-                                "TTP.MissingDelim");
+                            "TTP.MissingDelim");
                     }
                 } else {
                     source.push(t);
@@ -345,99 +479,56 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
                         case 'b':
                             if (source.getKeyword(context, "bin")) {
                                 return parse(context, source, typesetter,
-                                        MathClass.BINARY, primitive);
+                                    MathClass.BINARY, primitive);
                             }
                             break;
                         case 'c':
                             if (source.getKeyword(context, "close")) {
                                 return parse(context, source, typesetter,
-                                        MathClass.CLOSING, primitive);
+                                    MathClass.CLOSING, primitive);
                             }
                             break;
                         case 'l':
                             if (source.getKeyword(context, "large")) {
                                 return parse(context, source, typesetter,
-                                        MathClass.LARGE, primitive);
+                                    MathClass.LARGE, primitive);
                             }
                             break;
                         case 'o':
                             if (source.getKeyword(context, "open")) {
                                 return parse(context, source, typesetter,
-                                        MathClass.OPENING, primitive);
+                                    MathClass.OPENING, primitive);
                             } else if (source.getKeyword(context, "ord")) {
                                 return parse(context, source, typesetter,
-                                        MathClass.ORDINARY, primitive);
+                                    MathClass.ORDINARY, primitive);
                             }
                             break;
                         case 'p':
                             if (source.getKeyword(context, "punct")) {
                                 return parse(context, source, typesetter,
-                                        MathClass.PUNCTUATION, primitive);
+                                    MathClass.PUNCTUATION, primitive);
                             }
                             break;
                         case 'r':
                             if (source.getKeyword(context, "rel")) {
                                 return parse(context, source, typesetter,
-                                        MathClass.RELATION, primitive);
+                                    MathClass.RELATION, primitive);
                             }
                             break;
                         case 'v':
                             if (source.getKeyword(context, "var")) {
                                 return parse(context, source, typesetter,
-                                        MathClass.VARIABLE, primitive);
+                                    MathClass.VARIABLE, primitive);
                             }
                             break;
                         default:
                             throw new HelpingException(getMyLocalizer(),
-                                    "TTP.MissingDelim");
+                                "TTP.MissingDelim");
                     }
                 }
             }
         }
         throw new EofException();
-    }
-
-    /**
-     * Translate the delimiter into a <logo>TeX</logo> encoded number or throw
-     * an exception if this is not possible.
-     *
-     * @param del the delimiter to encode
-     *
-     * @return the <logo>TeX</logo> encoded delimiter
-     *
-     * @throws HelpingException in case of an error
-     */
-    public static long delimiterToLong(final MathDelimiter del)
-            throws HelpingException {
-
-        if (del == null) {
-            return -1;
-        }
-
-        long value = ((Integer) del.getMathClass().visit(MCV, null, null))
-                .longValue() << CLASS_SHIFT;
-
-        int fam0 = del.getSmallChar().getFamily();
-        if (fam0 < FAM_MIN || fam0 > FAM_MAX) {
-            throw new HelpingException(getMyLocalizer(), "ExtendedDelimiter");
-        }
-        int c0 = del.getSmallChar().getCharacter().getCodePoint();
-        if (c0 < CHAR_MIN || c0 > CHAR_MAX) {
-            throw new HelpingException(getMyLocalizer(), "ExtendedDelimiter");
-        }
-        int fam1 = del.getLargeChar().getFamily();
-        if (fam1 < FAM_MIN || fam1 > FAM_MAX) {
-            throw new HelpingException(getMyLocalizer(), "ExtendedDelimiter");
-        }
-        int c1 = del.getLargeChar().getCharacter().getCodePoint();
-        if (c1 < CHAR_MIN || c1 > CHAR_MAX) {
-            throw new HelpingException(getMyLocalizer(), "ExtendedDelimiter");
-        }
-        value |= fam0 << SMALL_CLASS_OFFSET;
-        value |= c0 << SMALL_CHAR_OFFSET;
-        value |= fam1 << LARGE_CLASS_OFFSET;
-        value |= c1;
-        return value;
     }
 
     /**
