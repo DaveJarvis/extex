@@ -23,6 +23,7 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.exception.helping.UndefinedControlSequenceException;
 import org.extex.interpreter.type.AbstractCode;
@@ -148,7 +149,7 @@ public class Csname extends AbstractCode implements ExpandableCode {
                 toks.add(t);
             }
         }
-        return toks;
+        throw new EofException();
     }
 
     /**
