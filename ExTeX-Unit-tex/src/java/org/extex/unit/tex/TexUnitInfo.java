@@ -101,13 +101,13 @@ public class TexUnitInfo extends UnitInfo
     /**
      * The field <tt>logger</tt> contains the local reference to the logger.
      */
-    private transient Logger logger = null;
+    private transient Logger logger;
 
     /**
      * The field <tt>notRegistered</tt> contains the indicator that the observer
      * for command events as not been registered yet.
      */
-    private transient boolean notRegistered = true;
+    private transient boolean notRegistered;
 
     /**
      * Creates a new object.
@@ -115,6 +115,8 @@ public class TexUnitInfo extends UnitInfo
     public TexUnitInfo() {
 
         super();
+        logger = null;
+        notRegistered = true;
     }
 
     /**
