@@ -19,11 +19,8 @@
 
 package org.extex.unit.tex.typesetter.mark;
 
-import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.tokens.Tokens;
-import org.extex.typesetter.Typesetter;
 
 /**
  * This class provides an implementation for the primitive
@@ -72,12 +69,17 @@ public class Splitbotmarks extends AbstractMarksCode {
     }
 
     /**
-     * @see org.extex.unit.etex.typesetter.mark.AbstractMarksCode#getValue(
-     *      org.extex.interpreter.context.Context,
-     *      java.lang.String)
+     * Get the value for this mark.
+     *
+     * @param context the interpreter context
+     * @param key the key
+     *
+     * @return the value
+     *
+     * @see org.extex.unit.tex.typesetter.mark.AbstractMarksCode#getValue(
+     *      org.extex.interpreter.context.Context, java.lang.String)
      */
-    protected Tokens getValue(final Context context, final String key)
-            throws InterpreterException {
+    protected Tokens getValue(final Context context, final String key) {
 
         return context.getSplitBottomMark(key);
     }

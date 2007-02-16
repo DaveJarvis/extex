@@ -51,6 +51,19 @@ public abstract class AbstractMarksCode extends AbstractCode
     }
 
     /**
+     * This method converts a register into tokens.
+     * It might be necessary to read further tokens to determine which value to
+     * use. For instance an additional register number might be required. In
+     * this case the additional arguments Context and TokenSource can be used.
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter to use for conversion
+     *
+     * @return the converted value
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.tokens.TokensConvertible#convertTokens(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
@@ -65,6 +78,18 @@ public abstract class AbstractMarksCode extends AbstractCode
     }
 
     /**
+     * This method takes the first token and executes it. The result is placed
+     * on the stack. This operation might have side effects. To execute a token
+     * it might be necessary to consume further tokens.
+     *
+     * @param prefix the prefix controlling the execution
+     * @param context the interpreter context
+     * @param source the token source
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     *
+     *
      * @see org.extex.interpreter.type.AbstractCode#execute(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -79,6 +104,19 @@ public abstract class AbstractMarksCode extends AbstractCode
     }
 
     /**
+     * This method takes the first token and expands it. The result is placed
+     * on the stack.
+     * This means that expandable code does one step of expansion and puts the
+     * result on the stack. To expand a token it might be necessary to consume
+     * further tokens.
+     *
+     * @param prefix the prefix flags controlling the expansion
+     * @param context the interpreter context
+     * @param source the token source
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.ExpandableCode#expand(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -164,8 +202,8 @@ public abstract class AbstractMarksCode extends AbstractCode
     protected String getKey(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
 
-        return source.scanRegisterName(context,
-                source, typesetter, printableControlSequence(context));
+        return source.scanRegisterName(context, source, typesetter,
+            printableControlSequence(context));
     }
 
     /**
@@ -175,10 +213,7 @@ public abstract class AbstractMarksCode extends AbstractCode
      * @param key the key
      *
      * @return the value
-     *
-     * @throws InterpreterException in case of an exception
      */
-    protected abstract Tokens getValue(final Context context, final String key)
-            throws InterpreterException;
+    protected abstract Tokens getValue(final Context context, final String key);
 
 }

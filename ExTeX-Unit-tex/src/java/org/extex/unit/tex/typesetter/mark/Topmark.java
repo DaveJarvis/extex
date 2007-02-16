@@ -21,7 +21,6 @@ package org.extex.unit.tex.typesetter.mark;
 
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.typesetter.Typesetter;
 
 /**
@@ -80,13 +79,21 @@ public class Topmark extends Topmarks {
     }
 
     /**
+     * Get the key for this mark.
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter
+     *
+     * @return the key for the mark primitive
+     *
      * @see org.extex.unit.tex.typesetter.mark.AbstractMarkCode#getKey(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
     protected String getKey(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+            final Typesetter typesetter) {
 
         return "0";
     }
