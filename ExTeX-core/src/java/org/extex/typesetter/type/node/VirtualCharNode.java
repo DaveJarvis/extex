@@ -51,7 +51,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision: 4739 $
      */
-    private class NL extends GenericNodeList {
+    private static class NL extends GenericNodeList {
 
         /**
          * The constant <tt>serialVersionUID</tt> contains the id for serialization.
