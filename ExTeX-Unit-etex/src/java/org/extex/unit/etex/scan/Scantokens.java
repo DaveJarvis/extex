@@ -82,7 +82,7 @@ public class Scantokens extends AbstractCode implements ExpandableCode {
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision:4435 $
      */
-    private class TokenStreamProxy implements TokenStream {
+    private static class TokenStreamProxy implements TokenStream {
 
         /**
          * The field <tt>stream</tt> contains the proxied token stream.
