@@ -409,7 +409,7 @@ public final class LengthParser {
                 if (t.equals(Catcode.OTHER, '(')) {
                     evalExpr(accumulator, context, source, typesetter);
                     t = source.getNonSpace(context);
-                    if (t.equals(Catcode.OTHER, ')')) {
+                    if (t != null && t.equals(Catcode.OTHER, ')')) {
                         return;
                     }
 
