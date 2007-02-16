@@ -357,13 +357,28 @@ public class Moritz extends Max
     }
 
     /**
+     * Parse the specification of a box.
+     *
+     * @param flags the flags to be restored
+     * @param context the interpreter context
+     * @param typesetter the typesetter to use
+     * @param insert the token to insert either at the beginning of the box or
+     *   after the box has been gathered. If it is <code>null</code> then
+     *   nothing is inserted
+     *
+     * @return the box gathered
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.TokenSource#getBox(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter,
+     *      org.extex.scanner.type.token.Token)
      */
     public Box getBox(final Flags flags, final Context context,
-            final Typesetter typesetter) throws InterpreterException {
+            final Typesetter typesetter, final Token insert)
+            throws InterpreterException {
 
         Flags f = null;
         if (flags != null) {
@@ -377,7 +392,8 @@ public class Moritz extends Max
                 if (flags != null) {
                     flags.set(f);
                 }
-                return ((Boxable) code).getBox(context, this, typesetter);
+                return ((Boxable) code).getBox(context, this, typesetter,
+                    insert);
             }
         }
         throw new HelpingException(getLocalizer(), "TTP.BoxExpected");
@@ -934,36 +950,42 @@ public class Moritz extends Max
     }
 
     /**
-     * @see org.extex.scanner.stream.observer.file.OpenFileObservable#registerObserver(org.extex.scanner.stream.observer.file.OpenFileObserver)
+     * Register an open file observer for later use.
+     *
+     * @param observer the observer to be registered
+     *
+     * @see org.extex.scanner.stream.observer.file.OpenFileObservable#registerObserver(
+     *      org.extex.scanner.stream.observer.file.OpenFileObserver)
      */
     public void registerObserver(final OpenFileObserver observer) {
 
-        if (tokenStreamFactory instanceof OpenFileObservable) {
-            ((OpenFileObservable) tokenStreamFactory)
-                .registerObserver(observer);
-        }
+        tokenStreamFactory.registerObserver(observer);
     }
 
     /**
-     * @see org.extex.scanner.stream.observer.reader.OpenReaderObservable#registerObserver(org.extex.scanner.stream.observer.reader.OpenReaderObserver)
+     * Register an open reader observer for later use.
+     *
+     * @param observer the observer to be registered
+     *
+     * @see org.extex.scanner.stream.observer.reader.OpenReaderObservable#registerObserver(
+     *      org.extex.scanner.stream.observer.reader.OpenReaderObserver)
      */
     public void registerObserver(final OpenReaderObserver observer) {
 
-        if (tokenStreamFactory instanceof OpenReaderObservable) {
-            ((OpenReaderObservable) tokenStreamFactory)
-                .registerObserver(observer);
-        }
+        tokenStreamFactory.registerObserver(observer);
     }
 
     /**
-     * @see org.extex.scanner.stream.observer.string.OpenStringObservable#registerObserver(org.extex.scanner.stream.observer.string.OpenStringObserver)
+     * Register an open string observer for later use.
+     *
+     * @param observer the observer to be registered
+     *
+     * @see org.extex.scanner.stream.observer.string.OpenStringObservable#registerObserver(
+     *      org.extex.scanner.stream.observer.string.OpenStringObserver)
      */
     public void registerObserver(final OpenStringObserver observer) {
 
-        if (tokenStreamFactory instanceof OpenStringObservable) {
-            ((OpenStringObservable) tokenStreamFactory)
-                .registerObserver(observer);
-        }
+        tokenStreamFactory.registerObserver(observer);
     }
 
     /**
@@ -992,6 +1014,10 @@ public class Moritz extends Max
     }
 
     /**
+     * Register an stream close observer for later use.
+     *
+     * @param observer the observer to be registered
+     *
      * @see org.extex.interpreter.observer.streamClose.StreamCloseObservable#registerObserver(
      *      org.extex.interpreter.observer.streamClose.StreamCloseObserver)
      */
