@@ -232,25 +232,9 @@ public class LsrFinder extends AbstractFinder implements PropertyConfigurable {
                 continue;
             } else if (c instanceof File) {
                 File file = (File) c;
-                trace("Try", file.toString(), null, null);
-                if (file != null && file.canRead()) {
-                    try {
-                        InputStream stream = new FileInputStream(file);
-                        trace("Found", file.toString(), null, null);
-                        return stream;
-                    } catch (FileNotFoundException e) {
-                        // ignore unreadable files
-                        trace("FoundUnreadable", file.toString(), null, null);
-                        continue;
-                    }
-                }
-            } else {
-
-                List l = (List) c;
-                for (int i = 0; i < l.size(); i++) {
-                    File file = (File) l.get(i);
+                if (file != null) {
                     trace("Try", file.toString(), null, null);
-                    if (file != null && file.canRead()) {
+                    if (file.canRead()) {
                         try {
                             InputStream stream = new FileInputStream(file);
                             trace("Found", file.toString(), null, null);
@@ -260,6 +244,28 @@ public class LsrFinder extends AbstractFinder implements PropertyConfigurable {
                             trace("FoundUnreadable", file.toString(), null,
                                 null);
                             continue;
+                        }
+                    }
+                }
+            } else {
+
+                List l = (List) c;
+                for (int i = 0; i < l.size(); i++) {
+                    File file = (File) l.get(i);
+                    if (file != null) {
+                        trace("Try", file.toString(), null, null);
+                        if (!file.canRead()) {
+                            try {
+                                InputStream stream = new FileInputStream(file);
+                                trace("Found", file.toString(), null, null);
+                                return stream;
+                            } catch (FileNotFoundException e) {
+                                // ignore unreadable files
+                                // this should not happen since it has been checked before
+                                trace("FoundUnreadable", file.toString(), null,
+                                    null);
+                                continue;
+                            }
                         }
                     }
                 }
