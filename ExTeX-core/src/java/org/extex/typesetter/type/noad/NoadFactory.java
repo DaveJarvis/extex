@@ -39,7 +39,14 @@ public class NoadFactory {
     private static final MathClassVisitor VISITOR = new MathClassVisitor() {
 
         /**
-         * @see org.extex.typesetter.type.math.MathClassVisitor#visitBinary(
+         * Invoke the visitor method for a binary operator.
+         *
+         * @param arg the argument
+         * @param arg2 the second argument
+         *
+         * @return the result
+         *
+         * @see org.extex.interpreter.type.math.MathClassVisitor#visitBinary(
          *      java.lang.Object, java.lang.Object)
          */
         public Object visitBinary(final Object noad, final Object arg) {
@@ -48,7 +55,14 @@ public class NoadFactory {
         }
 
         /**
-         * @see org.extex.typesetter.type.math.MathClassVisitor#visitClosing(
+         * Invoke the visitor method for a closing delimiter.
+         *
+         * @param arg the argument
+         * @param arg2 the second argument
+         *
+         * @return the result
+         *
+         * @see org.extex.interpreter.type.math.MathClassVisitor#visitClosing(
          *      java.lang.Object, java.lang.Object)
          */
         public Object visitClosing(final Object noad, final Object arg) {
@@ -57,21 +71,35 @@ public class NoadFactory {
         }
 
         /**
-         * @see org.extex.typesetter.type.math.MathClassVisitor#visitLarge(
+         * Invoke the visitor method for a large operator.
+         *
+         * @param arg the argument
+         * @param arg2 the second argument
+         *
+         * @return the result
+         *
+         * @see org.extex.interpreter.type.math.MathClassVisitor#visitLarge(
          *      java.lang.Object, java.lang.Object)
          */
         public Object visitLarge(final Object noad, final Object arg) {
 
             if (arg instanceof MathDelimiter) {
                 return new CharNoad(((MathDelimiter) noad).getLargeChar(),
-                        (TypesettingContext) arg);
+                    (TypesettingContext) arg);
             }
             // TODO gene: visitLarge() partially unimplemented
             throw new RuntimeException("unimplemented");
         }
 
         /**
-         * @see org.extex.typesetter.type.math.MathClassVisitor#visitOpening(
+         * Invoke the visitor method for a opening delimiter.
+         *
+         * @param arg the argument
+         * @param arg2 the second argument
+         *
+         * @return the result
+         *
+         * @see org.extex.interpreter.type.math.MathClassVisitor#visitOpening(
          *      java.lang.Object, java.lang.Object)
          */
         public Object visitOpening(final Object noad, final Object arg) {
@@ -80,7 +108,14 @@ public class NoadFactory {
         }
 
         /**
-         * @see org.extex.typesetter.type.math.MathClassVisitor#visitOrdinary(
+         * Invoke the visitor method for an ordinary symbol .
+         *
+         * @param arg the argument
+         * @param arg2 the second argument
+         *
+         * @return the result
+         *
+         * @see org.extex.interpreter.type.math.MathClassVisitor#visitOrdinary(
          *      java.lang.Object, java.lang.Object)
          */
         public Object visitOrdinary(final Object noad, final Object arg) {
@@ -89,7 +124,14 @@ public class NoadFactory {
         }
 
         /**
-         * @see org.extex.typesetter.type.math.MathClassVisitor#visitPunctation(
+         * Invoke the visitor method for a punctation symbol.
+         *
+         * @param arg the argument
+         * @param arg2 the second argument
+         *
+         * @return the result
+         *
+         * @see org.extex.interpreter.type.math.MathClassVisitor#visitPunctation(
          *      java.lang.Object, java.lang.Object)
          */
         public Object visitPunctation(final Object noad, final Object arg) {
@@ -98,7 +140,14 @@ public class NoadFactory {
         }
 
         /**
-         * @see org.extex.typesetter.type.math.MathClassVisitor#visitRelation(
+         * Invoke the visitor method for a relation operator.
+         *
+         * @param arg the argument
+         * @param arg2 the second argument
+         *
+         * @return the result
+         *
+         * @see org.extex.interpreter.type.math.MathClassVisitor#visitRelation(
          *      java.lang.Object, java.lang.Object)
          */
         public Object visitRelation(final Object noad, final Object arg) {
@@ -107,7 +156,14 @@ public class NoadFactory {
         }
 
         /**
-         * @see org.extex.typesetter.type.math.MathClassVisitor#visitVariable(
+         * Invoke the visitor method for a variable width symbol.
+         *
+         * @param arg the argument
+         * @param arg2 the second argument
+         *
+         * @return the result
+         *
+         * @see org.extex.interpreter.type.math.MathClassVisitor#visitVariable(
          *      java.lang.Object, java.lang.Object)
          */
         public Object visitVariable(final Object noad, final Object arg) {
