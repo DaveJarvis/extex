@@ -285,7 +285,7 @@ public class Count implements Serializable, FixedCount {
             } else if (t.equals(Catcode.OTHER, '(')) {
                 long val = evalExpr(context, source, typesetter);
                 t = source.getToken(context);
-                if (t.equals(Catcode.OTHER, ')')) {
+                if (t != null && t.equals(Catcode.OTHER, ')')) {
                     return val;
                 }
 
