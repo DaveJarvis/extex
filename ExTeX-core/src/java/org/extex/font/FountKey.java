@@ -26,7 +26,6 @@ import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.interpreter.type.glue.FixedGlue;
 import org.extex.interpreter.type.glue.Glue;
 
-
 /**
  * Font key class.
  *
@@ -249,6 +248,10 @@ public class FountKey implements Serializable {
     }
 
     /**
+     * Return the printable representation for this instance.
+     *
+     * @return the printable representation for this instance
+     *
      * @see java.lang.Object#toString()
      */
     public String toString() {

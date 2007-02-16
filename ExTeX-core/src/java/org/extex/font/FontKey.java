@@ -296,7 +296,7 @@ public class FontKey implements Serializable {
      */
     public void put(final String key, final boolean value) {
 
-        booleanMap.put(key, new Boolean(value));
+        booleanMap.put(key, Boolean.valueOf(value));
     }
 
     /**
@@ -342,6 +342,8 @@ public class FontKey implements Serializable {
     /**
      * Returns the value of the <code>FontKey</code> as <code>String</code>.
      * If a value is <code>null</code>, then the text 'null' is returned.
+     *
+     * @return the printable representation for this instance
      *
      * @see java.lang.Object#toString()
      */
