@@ -1219,6 +1219,9 @@ public class TeX extends ExTeX {
         }
         getProperties().load(is);
 
+        if (is != null) {
+            is.close();
+        }
         return true;
     }
 
