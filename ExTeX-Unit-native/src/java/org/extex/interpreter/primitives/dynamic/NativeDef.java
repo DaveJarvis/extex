@@ -157,7 +157,7 @@ public class NativeDef extends AbstractAssignment
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision$
      */
-    protected class Factory extends AbstractFactory {
+    protected static class Factory extends AbstractFactory {
 
         /**
          * Create a new instance of the class given by the attribute
