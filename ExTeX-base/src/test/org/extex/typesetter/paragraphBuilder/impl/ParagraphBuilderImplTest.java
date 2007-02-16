@@ -54,7 +54,7 @@ public class ParagraphBuilderImplTest extends TestCase {
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision$
      */
-    private class MockOptions implements TypesetterOptions {
+    private static class MockOptions implements TypesetterOptions {
 
         /**
          * Getter for a count register.
