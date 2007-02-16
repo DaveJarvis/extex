@@ -29,7 +29,7 @@ package org.extex.scanner.stream.observer.string;
 public interface OpenStringObservable {
 
     /**
-     * Register an expand observer for later use.
+     * Register an open string observer for later use.
      *
      * @param observer the observer to be registered
      */
