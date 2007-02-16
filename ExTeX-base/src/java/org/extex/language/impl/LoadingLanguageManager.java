@@ -193,8 +193,8 @@ public class LoadingLanguageManager extends BaseLanguageManager
                             throw new HyphenationException("EOF");
                         }
                     }
-                    Object version = in.readObject();
                     in = new ObjectInputStream(new GZIPInputStream(ins));
+                    Object version = in.readObject();
 
                     Language lang = (Language) version;
 
