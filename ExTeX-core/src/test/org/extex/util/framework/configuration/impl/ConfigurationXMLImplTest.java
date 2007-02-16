@@ -270,9 +270,8 @@ public class ConfigurationXMLImplTest extends TestCase {
     public final void testGetConfigurationString1()
             throws ConfigurationException {
 
-        Configuration cfg = init();
         try {
-            cfg = cfg.getConfiguration(null);
+            init().getConfiguration(null);
             assertFalse("Exception expected", true);
         } catch (ConfigurationNotFoundException e) {
             assertTrue(true);
@@ -288,9 +287,8 @@ public class ConfigurationXMLImplTest extends TestCase {
     public final void testGetConfigurationString2()
             throws ConfigurationException {
 
-        Configuration cfg = init();
         try {
-            cfg = cfg.getConfiguration("");
+            init().getConfiguration("");
             assertFalse("Exception expected", true);
         } catch (ConfigurationNotFoundException e) {
             assertTrue(true);
@@ -306,9 +304,8 @@ public class ConfigurationXMLImplTest extends TestCase {
     public final void testGetConfigurationString3()
             throws ConfigurationException {
 
-        Configuration cfg = init();
         try {
-            cfg = cfg.getConfiguration("undef");
+            init().getConfiguration("undef");
             assertFalse("Exception expected", true);
         } catch (ConfigurationNotFoundException e) {
             assertTrue(true);
@@ -325,8 +322,7 @@ public class ConfigurationXMLImplTest extends TestCase {
             throws ConfigurationException {
 
         Configuration cfg = init();
-        cfg = cfg.getConfiguration("d");
-        assertNotNull(cfg);
+        assertNotNull(cfg.getConfiguration("d"));
     }
 
     /**
@@ -336,9 +332,8 @@ public class ConfigurationXMLImplTest extends TestCase {
     public final void testGetConfigurationStringString1()
             throws ConfigurationException {
 
-        Configuration cfg = init();
         try {
-            cfg = cfg.getConfiguration(null, null);
+            init().getConfiguration(null, null);
             assertFalse("Exception expected", true);
         } catch (ConfigurationNotFoundException e) {
             assertTrue(true);
@@ -354,9 +349,8 @@ public class ConfigurationXMLImplTest extends TestCase {
     public final void testGetConfigurationStringString2()
             throws ConfigurationException {
 
-        Configuration cfg = init();
         try {
-            cfg = cfg.getConfiguration("d", null);
+            init().getConfiguration("d", null);
             assertFalse("Exception expected", true);
         } catch (ConfigurationNotFoundException e) {
             assertTrue(true);
@@ -372,9 +366,8 @@ public class ConfigurationXMLImplTest extends TestCase {
     public final void testGetConfigurationStringString3()
             throws ConfigurationException {
 
-        Configuration cfg = init();
         try {
-            cfg = cfg.getConfiguration(null, "23");
+            init().getConfiguration(null, "23");
             assertFalse("Exception expected", true);
         } catch (ConfigurationNotFoundException e) {
             assertTrue(true);
@@ -391,8 +384,7 @@ public class ConfigurationXMLImplTest extends TestCase {
             throws ConfigurationException {
 
         Configuration cfg = init();
-        cfg = cfg.getConfiguration("d", "23");
-        assertNotNull(cfg);
+        assertNotNull(cfg.getConfiguration("d", "23"));
     }
 
     /**
