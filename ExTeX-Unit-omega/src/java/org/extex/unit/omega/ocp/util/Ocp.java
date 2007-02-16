@@ -19,6 +19,7 @@
 
 package org.extex.unit.omega.ocp.util;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
 
@@ -58,12 +59,21 @@ public class Ocp implements Code, OcpConvertible, Serializable {
     public static Ocp load(final String resource, final ResourceFinder finder)
             throws InterpreterException {
 
+        InputStream stream = null;
         try {
-            InputStream stream = finder.findResource(resource, "ocp");
+            stream = finder.findResource(resource, "ocp");
+            return new Ocp(resource, stream);
         } catch (ConfigurationException e) {
             throw new InterpreterException(e);
+        } finally {
+            if (stream != null) {
+                try {
+                    stream.close();
+                } catch (IOException e) {
+                    // ignored on purpose
+                }
+            }
         }
-        return new Ocp(resource);
     }
 
     /**
@@ -80,8 +90,9 @@ public class Ocp implements Code, OcpConvertible, Serializable {
      * Creates a new object.
      *
      * @param resource the name of the resource
+     * @param stream the stream to read the resource from
      */
-    public Ocp(final String resource) {
+    public Ocp(final String resource, final InputStream stream) {
 
         super();
         // TODO gene: load unimplemented

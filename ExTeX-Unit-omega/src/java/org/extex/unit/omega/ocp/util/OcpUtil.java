@@ -19,6 +19,8 @@
 
 package org.extex.unit.omega.ocp.util;
 
+import java.io.InputStream;
+
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
@@ -99,7 +101,8 @@ public final class OcpUtil {
 
         } else {
             source.push(t);
-            return new Ocp(scanOcpFileName(source, context));
+            InputStream resource = null; // TODO gene: provide the stream
+            return new Ocp(scanOcpFileName(source, context), resource );
         }
 
         source.push(t);
