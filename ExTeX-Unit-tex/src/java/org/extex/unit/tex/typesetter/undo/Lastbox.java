@@ -27,6 +27,7 @@ import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.box.Box;
 import org.extex.interpreter.type.box.Boxable;
+import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Mode;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.Node;
@@ -77,6 +78,17 @@ public class Lastbox extends AbstractCode implements Boxable {
     }
 
     /**
+     * This method takes the first token and executes it. The result is placed
+     * on the stack. This operation might have side effects. To execute a token
+     * it might be necessary to consume further tokens.
+     *
+     * @param prefix the prefix controlling the execution
+     * @param context the interpreter context
+     * @param source the token source
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -90,7 +102,7 @@ public class Lastbox extends AbstractCode implements Boxable {
         Mode mode = typesetter.getMode();
         if (mode.isMath() || mode == Mode.VERTICAL) {
             throw new HelpingException(getLocalizer(), "TTP.LastBoxIn", //
-                    context.esc(getName()), mode.toString());
+                context.esc(getName()), mode.toString());
         }
 
         //TODO gene: what's to do?
@@ -98,19 +110,33 @@ public class Lastbox extends AbstractCode implements Boxable {
     }
 
     /**
+     * Getter for the content as Box.
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter to use
+     * @param insert the token to insert either at the beginning of the box or
+     *   after the box has been gathered. If it is <code>null</code> then
+     *   nothing is inserted
+     *
+     * @return an appropriate Box
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.box.Boxable#getBox(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter, Token)
      */
     public Box getBox(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+            final Typesetter typesetter, final Token insert)
+            throws InterpreterException {
 
-        Mode mode = typesetter.getMode();
-        if (mode.isMath() || mode == Mode.VERTICAL) {
-            throw new HelpingException(getLocalizer(), "TTP.LastBoxIn", //
-                    context.esc(getName()), mode.toString());
-        }
+//        Mode mode = typesetter.getMode();
+//        if (mode.isMath() || mode == Mode.VERTICAL) {
+//            throw new HelpingException(getLocalizer(), "TTP.LastBoxIn", //
+//                context.esc(getName()), mode.toString());
+//        }
 
         Node nodes = typesetter.getLastNode();
         Box box = null;
@@ -118,6 +144,10 @@ public class Lastbox extends AbstractCode implements Boxable {
         if (nodes instanceof NodeList) {
             typesetter.removeLastNode();
             box = new Box((NodeList) nodes);
+        }
+
+        if (insert != null) {
+            source.push(insert);
         }
 
         return box;
