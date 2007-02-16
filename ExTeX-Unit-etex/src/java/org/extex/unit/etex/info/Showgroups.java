@@ -83,10 +83,11 @@ public class Showgroups extends AbstractBox implements LogEnabled, Configurable 
      * The field <tt>gtv</tt> contains the group tpe visitor to map the group
      * types to keys for the localizer.
      */
-    private final transient GroupTypeVisitor gtv = new GroupTypeVisitor() {
+    private static final GroupTypeVisitor GTV = new GroupTypeVisitor() {
 
         /**
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitAdjustedHboxGroup(java.lang.Object)
+         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitAdjustedHboxGroup(
+         *      java.lang.Object)
          */
         public Object visitAdjustedHboxGroup(final Object arg) {
 
@@ -94,7 +95,8 @@ public class Showgroups extends AbstractBox implements LogEnabled, Configurable 
         }
 
         /**
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitAlignGroup(java.lang.Object)
+         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitAlignGroup(
+         *      java.lang.Object)
          */
         public Object visitAlignGroup(final Object arg) {
 
@@ -102,7 +104,8 @@ public class Showgroups extends AbstractBox implements LogEnabled, Configurable 
         }
 
         /**
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitBottomLevelGroup(java.lang.Object)
+         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitBottomLevelGroup(
+         *      java.lang.Object)
          */
         public Object visitBottomLevelGroup(final Object arg) {
 
@@ -110,7 +113,8 @@ public class Showgroups extends AbstractBox implements LogEnabled, Configurable 
         }
 
         /**
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitDiscGroup(java.lang.Object)
+         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitDiscGroup(
+         *      java.lang.Object)
          */
         public Object visitDiscGroup(final Object arg) {
 
@@ -118,7 +122,8 @@ public class Showgroups extends AbstractBox implements LogEnabled, Configurable 
         }
 
         /**
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitHboxGroup(java.lang.Object)
+         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitHboxGroup(
+         *      java.lang.Object)
          */
         public Object visitHboxGroup(final Object arg) {
 
@@ -126,7 +131,8 @@ public class Showgroups extends AbstractBox implements LogEnabled, Configurable 
         }
 
         /**
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitInsertGroup(java.lang.Object)
+         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitInsertGroup(
+         *      java.lang.Object)
          */
         public Object visitInsertGroup(final Object arg) {
 
@@ -134,7 +140,8 @@ public class Showgroups extends AbstractBox implements LogEnabled, Configurable 
         }
 
         /**
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitMathChoiceGroup(java.lang.Object)
+         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitMathChoiceGroup(
+         *      java.lang.Object)
          */
         public Object visitMathChoiceGroup(final Object arg) {
 
@@ -142,7 +149,8 @@ public class Showgroups extends AbstractBox implements LogEnabled, Configurable 
         }
 
         /**
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitMathGroup(java.lang.Object)
+         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitMathGroup(
+         *      java.lang.Object)
          */
         public Object visitMathGroup(final Object arg) {
 
@@ -150,7 +158,8 @@ public class Showgroups extends AbstractBox implements LogEnabled, Configurable 
         }
 
         /**
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitMathLeftGroup(java.lang.Object)
+         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitMathLeftGroup(
+         *      java.lang.Object)
          */
         public Object visitMathLeftGroup(final Object arg) {
 
@@ -158,7 +167,8 @@ public class Showgroups extends AbstractBox implements LogEnabled, Configurable 
         }
 
         /**
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitMathShiftGroup(java.lang.Object)
+         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitMathShiftGroup(
+         *      java.lang.Object)
          */
         public Object visitMathShiftGroup(final Object arg) {
 
@@ -166,7 +176,8 @@ public class Showgroups extends AbstractBox implements LogEnabled, Configurable 
         }
 
         /**
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitNoAlignGroup(java.lang.Object)
+         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitNoAlignGroup(
+         *      java.lang.Object)
          */
         public Object visitNoAlignGroup(final Object arg) {
 
@@ -174,7 +185,8 @@ public class Showgroups extends AbstractBox implements LogEnabled, Configurable 
         }
 
         /**
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitOutputGroup(java.lang.Object)
+         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitOutputGroup(
+         *      java.lang.Object)
          */
         public Object visitOutputGroup(final Object arg) {
 
@@ -182,7 +194,8 @@ public class Showgroups extends AbstractBox implements LogEnabled, Configurable 
         }
 
         /**
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitSemiSimpleGroup(java.lang.Object)
+         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitSemiSimpleGroup(
+         *      java.lang.Object)
          */
         public Object visitSemiSimpleGroup(final Object arg) {
 
@@ -190,7 +203,8 @@ public class Showgroups extends AbstractBox implements LogEnabled, Configurable 
         }
 
         /**
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitSimpleGroup(java.lang.Object)
+         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitSimpleGroup(
+         *      java.lang.Object)
          */
         public Object visitSimpleGroup(final Object arg) {
 
@@ -198,7 +212,8 @@ public class Showgroups extends AbstractBox implements LogEnabled, Configurable 
         }
 
         /**
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitVboxGroup(java.lang.Object)
+         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitVboxGroup(
+         *      java.lang.Object)
          */
         public Object visitVboxGroup(final Object arg) {
 
@@ -206,7 +221,8 @@ public class Showgroups extends AbstractBox implements LogEnabled, Configurable 
         }
 
         /**
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitVcenterGroup(java.lang.Object)
+         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitVcenterGroup(
+         *      java.lang.Object)
          */
         public Object visitVcenterGroup(final Object arg) {
 
@@ -214,7 +230,8 @@ public class Showgroups extends AbstractBox implements LogEnabled, Configurable 
         }
 
         /**
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitVtopGroup(java.lang.Object)
+         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitVtopGroup(
+         *      java.lang.Object)
          */
         public Object visitVtopGroup(final Object arg) {
 
@@ -319,7 +336,7 @@ public class Showgroups extends AbstractBox implements LogEnabled, Configurable 
                                 .getLineNumber())));
 
             logger.info(loc.format("log.pattern", //
-                loc.format((String) g.getGroupType().visit(gtv, null)), //
+                loc.format((String) g.getGroupType().visit(GTV, null)), //
                 level, //
                 line, //
                 token));
