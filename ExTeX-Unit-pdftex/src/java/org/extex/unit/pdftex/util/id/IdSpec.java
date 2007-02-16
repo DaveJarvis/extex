@@ -19,6 +19,8 @@
 
 package org.extex.unit.pdftex.util.id;
 
+import java.io.Serializable;
+
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
@@ -33,7 +35,13 @@ import org.extex.unit.pdftex.exception.InterpreterPdftexIdentifierTypeException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4409 $
  */
-public abstract class IdSpec {
+public abstract class IdSpec implements Serializable {
+
+    /**
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
+     */
+    private static final long serialVersionUID = 2007L;
 
     /**
      * This method parses an id spec.

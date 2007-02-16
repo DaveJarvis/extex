@@ -28,6 +28,12 @@ package org.extex.unit.pdftex.util.id;
 public class NameIdSpec extends IdSpec {
 
     /**
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
+     */
+    private static final long serialVersionUID = 2007L;
+
+    /**
      * The field <tt>name</tt> contains the name.
      */
     private String name;
