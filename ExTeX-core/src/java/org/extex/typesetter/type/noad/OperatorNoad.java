@@ -91,14 +91,29 @@ public class OperatorNoad extends AbstractNucleusNoad implements SimpleNoad {
     protected void toStringAdd(final StringBuffer sb, final int depth) {
 
         sb.append("mathop");
-        if (limits == Boolean.TRUE) {
+        if (limits == null) {
+            // default behaviour
+        } else if (limits.booleanValue()) {
             sb.append("\\limits");
-        } else if (limits == Boolean.FALSE) {
+        } else {
             sb.append("\\nolimits");
         }
     }
 
     /**
+     * Translate a Noad into a NodeList.
+     *
+     * @param previousNoad the previous noad
+     * @param noads the list of noads currently processed
+     * @param index the index of the current node in the list
+     * @param list the list to add the nodes to. This list contains the Nodes
+     *  previously typeset. Thus it can be used to look back
+     * @param mathContext the context to consider
+     * @param logger the logger for debugging and tracing information
+     *
+     * @throws TypesetterException in case of a problem
+     * @throws ConfigurationException in case of a configuration problem
+     *
      * @see "TTP [749,750]"
      * @see org.extex.typesetter.type.noad.Noad#typeset(
      *      org.extex.typesetter.type.noad.Noad,
