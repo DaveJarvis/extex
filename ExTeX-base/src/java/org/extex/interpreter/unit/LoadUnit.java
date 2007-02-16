@@ -115,7 +115,7 @@ public final class LoadUnit extends AbstractFactory {
         if (name == null) {
             name = "?";
         }
-        UnitInfo unitInfo = new UnitInfo(name);
+        UnitInfo unitInfo;
 
         if (configuration.getAttribute(CLASS_ATTRIBUTE) != null) {
             UnitInfoFactory factory = new UnitInfoFactory();
