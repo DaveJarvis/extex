@@ -96,7 +96,7 @@ public class Colordef extends AbstractAssignment {
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision$
      */
-    private class ColorCode extends AbstractColor {
+    private static class ColorCode extends AbstractColor {
 
         /**
          * The field <tt>serialVersionUID</tt> contains the version number for
