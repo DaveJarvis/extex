@@ -27,6 +27,7 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.box.Box;
+import org.extex.interpreter.type.count.Count;
 import org.extex.typesetter.Typesetter;
 
 /**
@@ -35,7 +36,17 @@ import org.extex.typesetter.Typesetter;
  * <doc name="setbox">
  * <h3>The Primitive <tt>\setbox</tt></h3>
  * <p>
+ *  The primitive <tt>\setbox</tt> takes a key for a box register and assigns
+ *  the following box to this register.
+ * </p>
+ * <p>
  *  TODO missing documentation
+ * </p>
+ * <p>
+ *  The primitive is an assignment. This means that it respects
+ *  <tt>\globaldefs</tt>. The treatment of <tt>\afterassignment</tt> is special
+ *  The token stored for after assignment are inserted just after the box as
+ *  been opened.
  * </p>
  *
  * <h4>Syntax</h4>
@@ -77,6 +88,17 @@ public class Setbox extends AbstractBox implements Code {
     }
 
     /**
+     * This method takes the first token and executes it. The result is placed
+     * on the stack. This operation might have side effects. To execute a token
+     * it might be necessary to consume further tokens.
+     *
+     * @param prefix the prefix controlling the execution
+     * @param context the interpreter context
+     * @param source the token source
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -89,9 +111,13 @@ public class Setbox extends AbstractBox implements Code {
 
         Flags f = prefix.copy();
         prefix.clear();
+        if (context.getCount("globaldefs").ne(Count.ZERO)) {
+            f.setGlobal();
+        }
         String key = getKey(context, source, typesetter, getName());
         source.getOptionalEquals(context);
-        Box box = source.getBox(prefix, context, typesetter);
+        Box box = source.getBox(prefix, context, typesetter, //
+            context.getAfterassignment());
         context.setBox(key, box, f.clearGlobal());
         prefix.set(f);
     }

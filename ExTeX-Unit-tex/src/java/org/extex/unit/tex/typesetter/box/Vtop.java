@@ -86,18 +86,33 @@ public class Vtop extends Vbox {
     }
 
     /**
+     * Acquire a Box and adjust its height and depth according to the rules
+     * required.
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter
+     * @param startToken the token which started the group
+     * @param insert the token to insert at the beginning or <code>null</code>
+     *
+     * @return the complete Box
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.unit.tex.typesetter.box.Vbox#constructBox(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter,
+     *      org.extex.scanner.type.token.Token,
      *      org.extex.scanner.type.token.Token)
      */
     protected Box constructBox(final Context context, final TokenSource source,
-            final Typesetter typesetter, final Token startToken)
-            throws InterpreterException {
+            final Typesetter typesetter, final Token startToken,
+            final Token insert) throws InterpreterException {
 
-        Box box = acquireBox(context, source, typesetter, GroupType.VTOP_GROUP,
-                startToken);
+        Box box =
+                acquireBox(context, source, typesetter, GroupType.VTOP_GROUP,
+                    startToken, insert);
         VerticalListNode nodes = (VerticalListNode) box.getNodes();
         Dimen depth = new Dimen(box.getDepth());
         depth.add(box.getHeight());

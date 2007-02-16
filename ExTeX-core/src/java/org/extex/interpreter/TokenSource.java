@@ -141,12 +141,15 @@ public interface TokenSource {
      * @param flags the flags to be restored
      * @param context the interpreter context
      * @param typesetter the typesetter to use
+     * @param insert the token to insert either at the beginning of the box or
+     *   after the box has been gathered. If it is <code>null</code> then
+     *   nothing is inserted
      *
      * @return the box gathered
      *
      * @throws InterpreterException in case of an error
      */
-    Box getBox(Flags flags, Context context, Typesetter typesetter)
+    Box getBox(Flags flags, Context context, Typesetter typesetter, Token insert)
             throws InterpreterException;
 
     /**

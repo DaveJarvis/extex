@@ -56,6 +56,17 @@ public class BoxParameter extends AbstractCode implements Code, Serializable {
     }
 
     /**
+     * This method takes the first token and executes it. The result is placed
+     * on the stack. This operation might have side effects. To execute a token
+     * it might be necessary to consume further tokens.
+     *
+     * @param prefix the prefix controlling the execution
+     * @param context the interpreter context
+     * @param source the token source
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -68,7 +79,7 @@ public class BoxParameter extends AbstractCode implements Code, Serializable {
 
         String key = getKey(source, context);
         source.getOptionalEquals(context);
-        Box box = source.getBox(prefix, context, typesetter);
+        Box box = source.getBox(prefix, context, typesetter, null);
         context.setBox(key, box, prefix.clearGlobal());
     }
 
@@ -80,7 +91,7 @@ public class BoxParameter extends AbstractCode implements Code, Serializable {
      *
      * @return the key for the box register
      *
-     * @throws InterpreterException in case oif an error
+     * @throws InterpreterException in case of an error
      */
     protected String getKey(final TokenSource source, final Context context)
             throws InterpreterException {

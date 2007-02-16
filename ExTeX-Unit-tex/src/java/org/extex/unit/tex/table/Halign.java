@@ -129,14 +129,30 @@ public class Halign extends AbstractAlign implements Boxable {
     }
 
     /**
-     * @see org.extex.interpreter.type.box.Boxable#getBox(
+     * Getter for the content as Box.
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter to use
+     * @param insert the token to insert either at the beginning of the box or
+     *   after the box has been gathered. If it is <code>null</code> then
+     *   nothing is inserted
+     *
+     * @return an appropriate Box
+     *
+     * @throws InterpreterException in case of an error
+     *
+     * @see org.extex.unit.tex.register.box.BoxPrimitive#getBox(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter,
+     *      org.extex.scanner.type.token.Token)
      */
     public Box getBox(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+            final Typesetter typesetter, final Token insert)
+            throws InterpreterException {
 
+        //TODO gene: treat insert
         return new Box(getNodes(context, source, typesetter));
     }
 

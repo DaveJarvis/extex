@@ -22,6 +22,7 @@ package org.extex.interpreter.type.box;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 
 /**
@@ -39,12 +40,15 @@ public interface Boxable extends BoxOrRule {
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter to use
+     * @param insert the token to insert either at the beginning of the box or
+     *   after the box has been gathered. If it is <code>null</code> then
+     *   nothing is inserted
      *
      * @return an appropriate Box
      *
      * @throws InterpreterException in case of an error
      */
-    Box getBox(Context context, TokenSource source, Typesetter typesetter)
-            throws InterpreterException;
+    Box getBox(Context context, TokenSource source, Typesetter typesetter,
+            Token insert) throws InterpreterException;
 
 }

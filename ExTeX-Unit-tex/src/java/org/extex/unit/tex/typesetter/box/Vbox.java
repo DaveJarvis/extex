@@ -119,33 +119,54 @@ public class Vbox extends AbstractBoxPrimitive {
     }
 
     /**
-     * @see org.extex.interpreter.type.box.Boxable#getBox(
+     * Getter for the content as Box.
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter to use
+     * @param insert the token to insert either at the beginning of the box or
+     *   after the box has been gathered. If it is <code>null</code> then
+     *   nothing is inserted
+     *
+     * @return an appropriate Box
+     *
+     * @throws InterpreterException in case of an error
+     *
+     * @see org.extex.unit.tex.register.box.BoxPrimitive#getBox(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter,
+     *      org.extex.scanner.type.token.Token)
      */
     public Box getBox(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+            final Typesetter typesetter, final Token insert)
+            throws InterpreterException {
 
         Token startToken = source.getLastToken();
         Box box;
         try {
             if (source.getKeyword(context, "to")) {
                 Dimen d = Dimen.parse(context, source, typesetter);
-                box = constructBox(context, source, typesetter, startToken);
+                box =
+                        constructBox(context, source, typesetter, startToken,
+                            insert);
                 box.setHeight(d);
             } else if (source.getKeyword(context, "spread")) {
                 Dimen d = Dimen.parse(context, source, typesetter);
-                box = constructBox(context, source, typesetter, startToken);
+                box =
+                        constructBox(context, source, typesetter, startToken,
+                            insert);
                 box.spreadHeight(d);
             } else {
-                box = constructBox(context, source, typesetter, startToken);
+                box =
+                        constructBox(context, source, typesetter, startToken,
+                            insert);
             }
         } catch (EofException e) {
             throw new EofException(printableControlSequence(context));
         } catch (MissingLeftBraceException e) {
             throw new MissingLeftBraceException(
-                    printableControlSequence(context));
+                printableControlSequence(context));
         }
         return box;
     }
@@ -163,17 +184,19 @@ public class Vbox extends AbstractBoxPrimitive {
      * @param source the source for new tokens
      * @param typesetter the typesetter
      * @param startToken the token which started the group
+     * @param insert the token to insert at the beginning or <code>null</code>
      *
      * @return the complete Box
      *
      * @throws InterpreterException in case of an error
      */
     protected Box constructBox(final Context context, final TokenSource source,
-            final Typesetter typesetter, final Token startToken)
-            throws InterpreterException {
+            final Typesetter typesetter, final Token startToken,
+            final Token insert) throws InterpreterException {
 
-        Box box = acquireBox(context, source, typesetter, GroupType.VBOX_GROUP,
-                startToken);
+        Box box =
+                acquireBox(context, source, typesetter, GroupType.VBOX_GROUP,
+                    startToken, insert);
         NodeList nodes = box.getNodes();
         Dimen depth = new Dimen(box.getDepth());
         depth.add(box.getHeight());
@@ -197,6 +220,7 @@ public class Vbox extends AbstractBoxPrimitive {
      * @param typesetter the typesetter
      * @param groupType the group type
      * @param startToken the token which started the group
+     * @param ins the token to insert at te beginning
      *
      * @return the complete Box
      *
@@ -204,25 +228,23 @@ public class Vbox extends AbstractBoxPrimitive {
      */
     protected Box acquireBox(final Context context, final TokenSource source,
             final Typesetter typesetter, final GroupType groupType,
-            final Token startToken) throws InterpreterException {
+            final Token startToken, final Token ins)
+            throws InterpreterException {
 
-        //TODO gene: clear afterassignment ???
-        //TODO gene: don't use afterassignment in pure vmode
         Tokens everyvbox = context.getToks("everyvbox");
-        Token afterassignment = context.getAfterassignment();
         Tokens insert;
 
-        if (afterassignment == null) {
+        if (ins == null) {
             insert = everyvbox;
         } else {
-            insert = new Tokens(afterassignment);
+            insert = new Tokens(ins);
             if (everyvbox != null) {
                 insert.add(everyvbox);
             }
         }
 
         return new Box(context, source, typesetter, false, insert, groupType,
-                startToken);
+            startToken);
     }
 
 }

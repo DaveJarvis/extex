@@ -100,7 +100,7 @@ public class Hbox extends AbstractBoxPrimitive {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 1L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
@@ -113,36 +113,54 @@ public class Hbox extends AbstractBoxPrimitive {
     }
 
     /**
-     * @see org.extex.interpreter.type.box.Boxable#getBox(
+     * Getter for the content as Box.
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter to use
+     * @param insert the token to insert either at the beginning of the box or
+     *   after the box has been gathered. If it is <code>null</code> then
+     *   nothing is inserted
+     *
+     * @return an appropriate Box
+     *
+     * @throws InterpreterException in case of an error
+     *
+     * @see org.extex.unit.tex.register.box.BoxPrimitive#getBox(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter,
+     *      org.extex.scanner.type.token.Token)
      */
     public Box getBox(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+            final Typesetter typesetter, final Token insert)
+            throws InterpreterException {
 
         Token startToken = source.getLastToken();
         Box box;
         try {
             if (source.getKeyword(context, "to")) {
                 Dimen d = Dimen.parse(context, source, typesetter);
-                box = acquireBox(context, source, typesetter, startToken,
-                        GroupType.ADJUSTED_HBOX_GROUP);
+                box =
+                        acquireBox(context, source, typesetter, startToken,
+                            GroupType.ADJUSTED_HBOX_GROUP, insert);
                 box.setWidth(d);
             } else if (source.getKeyword(context, "spread")) {
                 Dimen d = Dimen.parse(context, source, typesetter);
-                box = acquireBox(context, source, typesetter, startToken,
-                        GroupType.ADJUSTED_HBOX_GROUP);
+                box =
+                        acquireBox(context, source, typesetter, startToken,
+                            GroupType.ADJUSTED_HBOX_GROUP, insert);
                 box.spreadWidth(d);
             } else {
-                box = acquireBox(context, source, typesetter, startToken,
-                        GroupType.HBOX_GROUP);
+                box =
+                        acquireBox(context, source, typesetter, startToken,
+                            GroupType.HBOX_GROUP, insert);
             }
         } catch (EofException e) {
             throw new EofException(printableControlSequence(context));
         } catch (MissingLeftBraceException e) {
             throw new MissingLeftBraceException(
-                    printableControlSequence(context));
+                printableControlSequence(context));
         }
         return box;
     }
@@ -155,6 +173,9 @@ public class Hbox extends AbstractBoxPrimitive {
      * @param source the source for new tokens
      * @param typesetter the typesetter
      * @param startToken the token which started the group
+     * @param insert the token to insert either at the beginning of the box or
+     *   after the box has been gathered. If it is <code>null</code> then
+     *   nothing is inserted
      *
      * @return the complete Box
      *
@@ -162,25 +183,22 @@ public class Hbox extends AbstractBoxPrimitive {
      */
     private Box acquireBox(final Context context, final TokenSource source,
             final Typesetter typesetter, final Token startToken,
-            final GroupType groupType) throws InterpreterException {
+            final GroupType groupType, final Token ins) throws InterpreterException {
 
-        //TODO gene: clear afterassignment ???
-        //TODO gene: don't use afterassignment in pure hmode
         Tokens toks = context.getToks("everyhbox");
-        Token t = context.getAfterassignment();
         Tokens insert;
 
-        if (t == null) {
+        if (ins == null) {
             insert = toks;
         } else {
-            insert = new Tokens(t);
+            insert = new Tokens(ins);
             if (toks != null) {
                 insert.add(toks);
             }
         }
 
         return new Box(context, source, typesetter, true, insert, groupType,
-                startToken);
+            startToken);
     }
 
 }

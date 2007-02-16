@@ -145,6 +145,68 @@ public class Dp extends Setbox
     }
 
     /**
+     * This method converts a register into a count. It might be necessary to
+     * read further tokens to determine which value to use. For instance an
+     * additional register number might be required. In this case the additional
+     * arguments Context and TokenSource can be used.
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter to use for conversion
+     *
+     * @return the converted value
+     *
+     * @throws InterpreterException in case of an error
+     *
+     * @see org.extex.interpreter.type.count.CountConvertible#convertCount(
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, Typesetter)
+     */
+    public long convertCount(final Context context, final TokenSource source,
+            final Typesetter typesetter) throws InterpreterException {
+
+        return convertDimen(context, source, typesetter);
+    }
+
+    /**
+     * This method converts a register into a dimen.
+     * It might be necessary to read further tokens to determine which value to
+     * use. For instance an additional register number might be required. In
+     * this case the additional arguments Context and TokenSource can be used.
+     *
+     * The return value is the length in scaled points.
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter to use for conversion
+     *
+     * @return the converted value in sp
+     *
+     * @throws InterpreterException in case of an error
+     *
+     * @see org.extex.interpreter.type.dimen.DimenConvertible#convertDimen(
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, Typesetter)
+     */
+    public long convertDimen(final Context context, final TokenSource source,
+            final Typesetter typesetter) throws InterpreterException {
+
+        Box b = context.getBox(getKey(context, source, typesetter, getName()));
+        return (b == null ? 0 : b.getDepth().getValue());
+    }
+
+    /**
+     * This method takes the first token and executes it. The result is placed
+     * on the stack. This operation might have side effects. To execute a token
+     * it might be necessary to consume further tokens.
+     *
+     * @param prefix the prefix controlling the execution
+     * @param context the interpreter context
+     * @param source the token source
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -165,6 +227,19 @@ public class Dp extends Setbox
     }
 
     /**
+     * This method takes the first token and expands it. The result is placed
+     * on the stack.
+     * This means that expandable code does one step of expansion and puts the
+     * result on the stack. To expand a token it might be necessary to consume
+     * further tokens.
+     *
+     * @param prefix the prefix flags controlling the expansion
+     * @param context the interpreter context
+     * @param source the token source
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.ExpandableCode#expand(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -179,6 +254,15 @@ public class Dp extends Setbox
     }
 
     /**
+     * This method is the getter for the description of the primitive.
+     *
+     * @param context the interpreter context
+     * @param source the source for further tokens to qualify the request
+     * @param typesetter the typesetter to use
+     *
+     * @return the description of the primitive as list of Tokens
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.Theable#the(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
@@ -193,29 +277,6 @@ public class Dp extends Setbox
         } catch (GeneralException e) {
             throw new InterpreterException(e);
         }
-    }
-
-    /**
-     * @see org.extex.interpreter.type.count.CountConvertible#convertCount(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, Typesetter)
-     */
-    public long convertCount(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
-
-        return convertDimen(context, source, typesetter);
-    }
-
-    /**
-     * @see org.extex.interpreter.type.dimen.DimenConvertible#convertDimen(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, Typesetter)
-     */
-    public long convertDimen(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
-
-        Box b = context.getBox(getKey(context, source, typesetter, getName()));
-        return (b == null ? 0 : b.getDepth().getValue());
     }
 
 }

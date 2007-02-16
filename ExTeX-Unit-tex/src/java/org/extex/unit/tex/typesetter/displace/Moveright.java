@@ -24,6 +24,7 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.box.Box;
 import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 import org.extex.unit.tex.typesetter.box.AbstractBoxPrimitive;
 
@@ -88,16 +89,31 @@ public class Moveright extends AbstractBoxPrimitive {
     }
 
     /**
-     * @see org.extex.interpreter.type.box.Boxable#getBox(
+     * Getter for the content as Box.
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter to use
+     * @param insert the token to insert either at the beginning of the box or
+     *   after the box has been gathered. If it is <code>null</code> then
+     *   nothing is inserted
+     *
+     * @return an appropriate Box
+     *
+     * @throws InterpreterException in case of an error
+     *
+     * @see org.extex.unit.tex.register.box.BoxPrimitive#getBox(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter,
+     *      org.extex.scanner.type.token.Token)
      */
     public Box getBox(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+            final Typesetter typesetter, final Token insert)
+            throws InterpreterException {
 
         Dimen move = Dimen.parse(context, source, typesetter);
-        Box box = source.getBox(null, context, typesetter);
+        Box box = source.getBox(null, context, typesetter, insert);
         if (box != null && !box.isVoid()) {
             move.add(box.getMove());
             box.setMove(move);

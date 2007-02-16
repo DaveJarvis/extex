@@ -32,6 +32,7 @@ import org.extex.interpreter.type.box.Box;
 import org.extex.interpreter.type.box.Boxable;
 import org.extex.interpreter.type.count.Count;
 import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.NodeList;
 import org.extex.unit.tex.register.box.AbstractBox;
@@ -133,19 +134,24 @@ public class Vsplit extends AbstractBox implements Boxable, LogEnabled {
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter to use
+     * @param insert the token to insert either at the beginning of the box or
+     *   after the box has been gathered. If it is <code>null</code> then
+     *   nothing is inserted
      *
      * @return an appropriate Box
      *
      * @throws InterpreterException in case of an error
      *
-     * @see org.extex.interpreter.type.box.Boxable#getBox(
+     * @see org.extex.unit.tex.register.box.BoxPrimitive#getBox(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.Typesetter,
+     *      org.extex.scanner.type.token.Token)
      */
     public Box getBox(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+            final Typesetter typesetter, Token insert) throws InterpreterException {
 
+        //TODO gene: treat insert
         return new Box(vsplit(context, source, typesetter));
     }
 
