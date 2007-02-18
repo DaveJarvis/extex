@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.unit.extex;
+package org.extex.unit.extex.toks;
 
 import org.extex.interpreter.primitives.register.toks.AbstractToksRegisterTester;
 
