@@ -27,10 +27,10 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.group.GroupInfo;
 import org.extex.interpreter.context.group.GroupTypeVisitor;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.AbstractCode;
 import org.extex.scanner.type.token.Token;
 import org.extex.type.Locator;
 import org.extex.typesetter.Typesetter;
-import org.extex.unit.tex.register.box.AbstractBox;
 import org.extex.util.framework.configuration.Configurable;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
@@ -72,7 +72,10 @@ import org.extex.util.framework.logger.LogEnabled;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4770 $
  */
-public class Showgroups extends AbstractBox implements LogEnabled, Configurable {
+public class Showgroups extends AbstractCode
+        implements
+            LogEnabled,
+            Configurable {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
@@ -80,12 +83,18 @@ public class Showgroups extends AbstractBox implements LogEnabled, Configurable 
     protected static final long serialVersionUID = 20060616L;
 
     /**
-     * The field <tt>gtv</tt> contains the group tpe visitor to map the group
+     * The field <tt>GTV</tt> contains the group type visitor to map the group
      * types to keys for the localizer.
      */
     private static final GroupTypeVisitor GTV = new GroupTypeVisitor() {
 
         /**
+         * This method is invoked when an adjusted hbox group has been encountered.
+         *
+         * @param arg the argument
+         *
+         * @return some object
+         *
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitAdjustedHboxGroup(
          *      java.lang.Object)
          */
@@ -95,6 +104,12 @@ public class Showgroups extends AbstractBox implements LogEnabled, Configurable 
         }
 
         /**
+         * This method is invoked when an align group has been encountered.
+         *
+         * @param arg the argument
+         *
+         * @return some object
+         *
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitAlignGroup(
          *      java.lang.Object)
          */
@@ -104,6 +119,12 @@ public class Showgroups extends AbstractBox implements LogEnabled, Configurable 
         }
 
         /**
+         * This method is invoked when a bottom level group has been encountered.
+         *
+         * @param arg the argument
+         *
+         * @return some object
+         *
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitBottomLevelGroup(
          *      java.lang.Object)
          */
@@ -113,6 +134,12 @@ public class Showgroups extends AbstractBox implements LogEnabled, Configurable 
         }
 
         /**
+         * This method is invoked when a disc group has been encountered.
+         *
+         * @param arg the argument
+         *
+         * @return some object
+         *
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitDiscGroup(
          *      java.lang.Object)
          */
@@ -122,6 +149,12 @@ public class Showgroups extends AbstractBox implements LogEnabled, Configurable 
         }
 
         /**
+         * This method is invoked when a hbox group has been encountered.
+         *
+         * @param arg the argument
+         *
+         * @return some object
+         *
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitHboxGroup(
          *      java.lang.Object)
          */
@@ -131,6 +164,12 @@ public class Showgroups extends AbstractBox implements LogEnabled, Configurable 
         }
 
         /**
+         * This method is invoked when an insert group has been encountered.
+         *
+         * @param arg the argument
+         *
+         * @return some object
+         *
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitInsertGroup(
          *      java.lang.Object)
          */
@@ -140,6 +179,12 @@ public class Showgroups extends AbstractBox implements LogEnabled, Configurable 
         }
 
         /**
+         * This method is invoked when a math choice group has been encountered.
+         *
+         * @param arg the argument
+         *
+         * @return some object
+         *
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitMathChoiceGroup(
          *      java.lang.Object)
          */
@@ -149,6 +194,12 @@ public class Showgroups extends AbstractBox implements LogEnabled, Configurable 
         }
 
         /**
+         * This method is invoked when a math group has been encountered.
+         *
+         * @param arg the argument
+         *
+         * @return some object
+         *
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitMathGroup(
          *      java.lang.Object)
          */
@@ -158,6 +209,12 @@ public class Showgroups extends AbstractBox implements LogEnabled, Configurable 
         }
 
         /**
+         * This method is invoked when a math left group has been encountered.
+         *
+         * @param arg the argument
+         *
+         * @return some object
+         *
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitMathLeftGroup(
          *      java.lang.Object)
          */
@@ -167,6 +224,12 @@ public class Showgroups extends AbstractBox implements LogEnabled, Configurable 
         }
 
         /**
+         * This method is invoked when a math shift group has been encountered.
+         *
+         * @param arg the argument
+         *
+         * @return some object
+         *
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitMathShiftGroup(
          *      java.lang.Object)
          */
@@ -176,6 +239,12 @@ public class Showgroups extends AbstractBox implements LogEnabled, Configurable 
         }
 
         /**
+         * This method is invoked when a no align group has been encountered.
+         *
+         * @param arg the argument
+         *
+         * @return some object
+         *
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitNoAlignGroup(
          *      java.lang.Object)
          */
@@ -185,6 +254,12 @@ public class Showgroups extends AbstractBox implements LogEnabled, Configurable 
         }
 
         /**
+         * This method is invoked when a output group has been encountered.
+         *
+         * @param arg the argument
+         *
+         * @return some object
+         *
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitOutputGroup(
          *      java.lang.Object)
          */
@@ -194,6 +269,12 @@ public class Showgroups extends AbstractBox implements LogEnabled, Configurable 
         }
 
         /**
+         * This method is invoked when a semi simple group has been encountered.
+         *
+         * @param arg the argument
+         *
+         * @return some object
+         *
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitSemiSimpleGroup(
          *      java.lang.Object)
          */
@@ -203,6 +284,12 @@ public class Showgroups extends AbstractBox implements LogEnabled, Configurable 
         }
 
         /**
+         * This method is invoked when a simple group has been encountered.
+         *
+         * @param arg the argument
+         *
+         * @return some object
+         *
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitSimpleGroup(
          *      java.lang.Object)
          */
@@ -212,6 +299,12 @@ public class Showgroups extends AbstractBox implements LogEnabled, Configurable 
         }
 
         /**
+         * This method is invoked when a vbox group has been encountered.
+         *
+         * @param arg the argument
+         *
+         * @return some object
+         *
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitVboxGroup(
          *      java.lang.Object)
          */
@@ -221,6 +314,12 @@ public class Showgroups extends AbstractBox implements LogEnabled, Configurable 
         }
 
         /**
+         * This method is invoked when a vcenter group has been encountered.
+         *
+         * @param arg the argument
+         *
+         * @return some object
+         *
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitVcenterGroup(
          *      java.lang.Object)
          */
@@ -230,6 +329,12 @@ public class Showgroups extends AbstractBox implements LogEnabled, Configurable 
         }
 
         /**
+         * This method is invoked when a vtop group has been encountered.
+         *
+         * @param arg the argument
+         *
+         * @return some object
+         *
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitVtopGroup(
          *      java.lang.Object)
          */
