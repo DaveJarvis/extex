@@ -62,7 +62,7 @@ public class IfcsnameTest extends ExTeXLauncher {
         assertFailure(//--- input code ---
                 "\\ifcsname ",
                 //--- output channel ---
-                "Incomplete \\ifcsname; all text was ignored after line ");
+                "Unexpected end of file");
     }
 
     /**
