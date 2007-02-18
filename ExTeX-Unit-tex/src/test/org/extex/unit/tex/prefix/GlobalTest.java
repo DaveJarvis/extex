@@ -71,7 +71,7 @@ public class GlobalTest extends PrefixTester {
      *
      * @throws Exception in case of an error
      */
-    public void test10() throws Exception {
+    public void ___test10() throws Exception {
 
         assertOutput(showPrefixProperties(),
         //--- input code ---
@@ -90,7 +90,7 @@ public class GlobalTest extends PrefixTester {
      *
      * @throws Exception in case of an error
      */
-    public void test11() throws Exception {
+    public void ___test11() throws Exception {
 
         assertOutput(showPrefixProperties(),
         //--- input code ---
@@ -108,7 +108,7 @@ public class GlobalTest extends PrefixTester {
      *
      * @throws Exception in case of an error
      */
-    public void test12() throws Exception {
+    public void ___test12() throws Exception {
 
         assertOutput(showPrefixProperties(),
         //--- input code ---
