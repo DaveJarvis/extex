@@ -35,7 +35,6 @@ import org.extex.typesetter.listMaker.ListManager;
 import org.extex.typesetter.listMaker.RestrictedHorizontalListMaker;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.node.DiscretionaryNode;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive
@@ -104,6 +103,7 @@ public class Discretionary extends AbstractCode {
      * @param typesetter the typesetter
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
@@ -122,14 +122,10 @@ public class Discretionary extends AbstractCode {
         TypesettingContext tc = context.getTypesettingContext();
         Locator locator = source.getLocator();
 
-        try {
-            typesetter.add(new DiscretionaryNode(fill(pre, tc, context,
-                    source, typesetter, locator), //
-                    fill(post, tc, context, source, typesetter, locator), //
-                    fill(nobreak, tc, context, source, typesetter, locator)));
-        } catch (ConfigurationException e) {
-            throw new InterpreterException(e);
-        }
+        typesetter.add(new DiscretionaryNode(fill(pre, tc, context, source,
+            typesetter, locator), //
+            fill(post, tc, context, source, typesetter, locator), //
+            fill(nobreak, tc, context, source, typesetter, locator)));
     }
 
     /**
@@ -151,8 +147,7 @@ public class Discretionary extends AbstractCode {
     private NodeList fill(final Tokens tokens, final TypesettingContext tc,
             final Context context, final TokenSource source,
             final Typesetter typesetter, final Locator locator)
-            throws TypesetterException,
-                ConfigurationException {
+            throws TypesetterException {
 
         if (tokens.length() == 0) {
             return null;

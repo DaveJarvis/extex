@@ -26,7 +26,6 @@ import org.extex.interpreter.context.group.GroupType;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.typesetter.Typesetter;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive
@@ -89,6 +88,7 @@ public class Begingroup extends AbstractCode {
      * @param typesetter the typesetter
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
@@ -100,12 +100,8 @@ public class Begingroup extends AbstractCode {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        try {
-            context.openGroup(GroupType.SEMI_SIMPLE_GROUP, source.getLocator(),
-                    source.getLastToken());
-        } catch (ConfigurationException e) {
-            throw new InterpreterException(e);
-        }
+        context.openGroup(GroupType.SEMI_SIMPLE_GROUP, source.getLocator(),
+            source.getLastToken());
     }
 
 }

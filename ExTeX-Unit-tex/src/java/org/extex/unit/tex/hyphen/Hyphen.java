@@ -31,7 +31,6 @@ import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.node.CharNode;
 import org.extex.typesetter.type.node.DiscretionaryNode;
 import org.extex.typesetter.type.node.HorizontalListNode;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive <code>\-</code>.
@@ -101,6 +100,7 @@ public class Hyphen extends AbstractCode {
      * @param typesetter the typesetter
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
@@ -115,11 +115,7 @@ public class Hyphen extends AbstractCode {
         TypesettingContext tc = context.getTypesettingContext();
         NodeList hyphen = new HorizontalListNode(new CharNode(tc, HYPHEN));
 
-        try {
-            typesetter.add(new DiscretionaryNode(hyphen, null, null));
-        } catch (ConfigurationException e) {
-            throw new InterpreterException(e);
-        }
+        typesetter.add(new DiscretionaryNode(hyphen, null, null));
     }
 
 }
