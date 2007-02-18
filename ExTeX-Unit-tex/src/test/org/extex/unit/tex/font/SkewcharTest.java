@@ -25,7 +25,7 @@ package org.extex.unit.tex.font;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
-public class SkewcharTest extends AbstractFontcharTester {
+public class SkewcharTest extends FontcharTester {
 
     /**
      * Method for running the tests standalone.

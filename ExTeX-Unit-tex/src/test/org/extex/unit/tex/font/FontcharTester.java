@@ -28,7 +28,7 @@ import org.extex.test.NoFlagsPrimitiveTester;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class AbstractFontcharTester extends NoFlagsPrimitiveTester {
+public class FontcharTester extends NoFlagsPrimitiveTester {
 
     /**
      * The field <tt>def</tt> contains the default value.
@@ -43,7 +43,7 @@ public class AbstractFontcharTester extends NoFlagsPrimitiveTester {
      * @param arguments the arguments for smoke testing
      * @param def ...
      */
-    public AbstractFontcharTester(final String name, final String primitive,
+    public FontcharTester(final String name, final String primitive,
             final String arguments, final String def) {
 
         super(name, primitive, arguments);

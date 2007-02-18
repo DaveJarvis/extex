@@ -25,7 +25,7 @@ package org.extex.unit.tex.font;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
-public class HyphencharTest extends AbstractFontcharTester {
+public class HyphencharTest extends FontcharTester {
 
     /**
      * Method for running the tests standalone.
