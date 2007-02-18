@@ -94,6 +94,12 @@ public class Readline extends AbstractAssignment implements LogEnabled {
     private static final Tokenizer TOKENIZER = new Tokenizer() {
 
         /**
+         * Getter for the category code of a character.
+         *
+         * @param c the Unicode character to analyze
+         *
+         * @return the category code of a character
+         *
          * @see org.extex.interpreter.Tokenizer#getCatcode(
          *      org.extex.type.UnicodeChar)
          */
@@ -103,6 +109,10 @@ public class Readline extends AbstractAssignment implements LogEnabled {
         }
 
         /**
+         * Getter for the name space.
+         *
+         * @return the name space
+         *
          * @see org.extex.interpreter.Tokenizer#getNamespace()
          */
         public String getNamespace() {
@@ -187,8 +197,16 @@ public class Readline extends AbstractAssignment implements LogEnabled {
             throw new HelpingException(getLocalizer(), "TTP.EOFinRead");
         }
 
+        boolean longP = prefix.clearLong();
+        boolean outerP = prefix.clearOuter();
         context.setCode(cs, new MacroCode(cs.getName(), prefix,
             MacroPattern.EMPTY, toks), prefix.clearGlobal());
+        if (longP) {
+            prefix.setLong();
+        }
+        if (outerP) {
+            prefix.setOuter();
+        }
     }
 
     /**
