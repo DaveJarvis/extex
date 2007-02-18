@@ -23,11 +23,9 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
-import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.interpreter.type.AbstractCode;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.node.HorizontalListNode;
-import org.extex.unit.tex.register.box.AbstractBox;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive <code>\indent</code>.
@@ -60,7 +58,7 @@ import org.extex.util.framework.configuration.exception.ConfigurationException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
-public class Indent extends AbstractBox {
+public class Indent extends AbstractCode {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
@@ -88,6 +86,7 @@ public class Indent extends AbstractBox {
      * @param typesetter the typesetter
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
@@ -99,13 +98,8 @@ public class Indent extends AbstractBox {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        Dimen parindent = context.getDimen("parindent");
         typesetter.ensureHorizontalMode(source.getLocator());
-        try {
-            typesetter.add(new HorizontalListNode(parindent));
-        } catch (ConfigurationException e) {
-            throw new InterpreterException(e);
-        }
+        typesetter.add(new HorizontalListNode(context.getDimen("parindent")));
     }
 
 }

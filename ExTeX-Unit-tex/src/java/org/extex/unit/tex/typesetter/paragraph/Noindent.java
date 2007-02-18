@@ -23,8 +23,8 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.AbstractCode;
 import org.extex.typesetter.Typesetter;
-import org.extex.unit.tex.register.box.AbstractBox;
 
 /**
  * This class provides an implementation for the primitive <code>\noindent</code>.
@@ -50,7 +50,7 @@ import org.extex.unit.tex.register.box.AbstractBox;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
-public class Noindent extends AbstractBox {
+public class Noindent extends AbstractCode {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
