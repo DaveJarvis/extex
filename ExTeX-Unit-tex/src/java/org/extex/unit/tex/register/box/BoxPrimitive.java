@@ -19,14 +19,13 @@
 
 package org.extex.unit.tex.register.box;
 
-import java.io.Serializable;
-
 import javax.xml.transform.Source;
 
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.box.Box;
 import org.extex.interpreter.type.box.Boxable;
 import org.extex.scanner.type.token.Token;
@@ -52,7 +51,7 @@ import org.extex.util.framework.configuration.exception.ConfigurationException;
  *  <pre class="syntax">
  *    &lang;box&rang;
  *      &rarr; <tt>\box</tt> {@linkplain
- *        org.extex.unit.tex.register.box.AbstractBox#getKey(Context,Source,Typesetter,String)
+ *        org.extex.unit.tex.register.box.Setbox#getKey(Context,Source,Typesetter,String)
  *        &lang;box register name&rang;} </pre>
  *
  * <h4>Examples</h4>
@@ -65,7 +64,7 @@ import org.extex.util.framework.configuration.exception.ConfigurationException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
-public class BoxPrimitive extends AbstractBox implements Boxable, Serializable {
+public class BoxPrimitive extends AbstractCode implements Boxable {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
@@ -93,6 +92,7 @@ public class BoxPrimitive extends AbstractBox implements Boxable, Serializable {
      * @param typesetter the typesetter
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
@@ -102,16 +102,13 @@ public class BoxPrimitive extends AbstractBox implements Boxable, Serializable {
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws InterpreterException {
+            throws InterpreterException,
+                ConfigurationException {
 
-        String key = getKey(context, source, typesetter, getName());
+        String key = Setbox.getKey(context, source, typesetter, getName());
         Box box = context.getBox(key);
         if (box != null) {
-            try {
-                typesetter.add(box.getNodes());
-            } catch (ConfigurationException e) {
-                throw new InterpreterException(e);
-            }
+            typesetter.add(box.getNodes());
             box.clear();
         }
     }
@@ -129,6 +126,7 @@ public class BoxPrimitive extends AbstractBox implements Boxable, Serializable {
      * @return an appropriate Box
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.interpreter.type.box.Boxable#getBox(
      *       org.extex.interpreter.context.Context,
@@ -137,9 +135,9 @@ public class BoxPrimitive extends AbstractBox implements Boxable, Serializable {
      */
     public Box getBox(final Context context, final TokenSource source,
             final Typesetter typesetter, final Token insert)
-            throws InterpreterException {
+            throws InterpreterException, ConfigurationException {
 
-        String key = getKey(context, source, typesetter, getName());
+        String key = Setbox.getKey(context, source, typesetter, getName());
         Box b = context.getBox(key);
         Box box = new Box(b);
         if (b != null) {

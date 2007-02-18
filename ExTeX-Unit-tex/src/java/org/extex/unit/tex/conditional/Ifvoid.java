@@ -25,7 +25,7 @@ import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.box.Box;
 import org.extex.typesetter.Typesetter;
 import org.extex.unit.base.conditional.AbstractIf;
-import org.extex.unit.tex.register.box.AbstractBox;
+import org.extex.unit.tex.register.box.Setbox;
 
 /**
  * This class provides an implementation for the primitive <code>\ifvoid</code>.
@@ -99,7 +99,7 @@ public class Ifvoid extends AbstractIf {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        String key = AbstractBox.getKey(context, source, typesetter, getName());
+        String key = Setbox.getKey(context, source, typesetter, getName());
         Box box = context.getBox(key);
         return (box == null || box.isVoid());
     }

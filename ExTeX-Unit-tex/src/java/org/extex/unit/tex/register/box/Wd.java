@@ -27,6 +27,7 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.box.Box;
@@ -52,7 +53,7 @@ import org.extex.util.exception.GeneralException;
  *  <pre class="syntax">
  *    &lang;wd&rang;
  *      &rarr; <tt>\wd</tt> {@linkplain
- *        org.extex.unit.tex.register.box.AbstractBox#getKey(Context,Source,Typesetter,String)
+ *        org.extex.unit.tex.register.box.Setbox#getKey(Context,Source,Typesetter,String)
  *        &lang;box register name&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
@@ -75,7 +76,7 @@ import org.extex.util.exception.GeneralException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
-public class Wd extends Setbox
+public class Wd extends AbstractAssignment
         implements
             Serializable,
             ExpandableCode,
@@ -96,6 +97,42 @@ public class Wd extends Setbox
     public Wd(final String name) {
 
         super(name);
+    }
+
+    /**
+     * The method <tt>assign</tt> is the core of the functionality of
+     * {@link #execute(Flags, Context, TokenSource, Typesetter) execute()}.
+     * This method is preferable to <tt>execute()</tt> since the
+     * <tt>execute()</tt> method provided in this class takes care of
+     * <tt>\afterassignment</tt> and <tt>\globaldefs</tt> as well.
+     *
+     * @param prefix the prefix controlling the execution
+     * @param context the interpreter context
+     * @param source the token source
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     *
+     * @see org.extex.interpreter.type.AbstractAssignment#assign(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource,
+     *      org.extex.typesetter.Typesetter)
+     */
+    public void assign(final Flags prefix, final Context context,
+            final TokenSource source, final Typesetter typesetter)
+            throws InterpreterException {
+
+        String key = Setbox.getKey(context, source, typesetter, getName());
+        source.getOptionalEquals(context);
+        Dimen d = Dimen.parse(context, source, typesetter);
+
+        Box box = context.getBox(key);
+        if (box != null) {
+            box.setWidth(d);
+        }
+        //TODO gene: treatment of \global correct?
+        prefix.clearGlobal();
     }
 
     /**
@@ -145,39 +182,9 @@ public class Wd extends Setbox
     public long convertDimen(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
 
-        Box b = context.getBox(getKey(context, source, typesetter, getName()));
+        Box b = context.getBox(//
+            Setbox.getKey(context, source, typesetter, getName()));
         return (b == null ? 0 : b.getWidth().getValue());
-    }
-
-    /**
-     * This method takes the first token and executes it. The result is placed
-     * on the stack. This operation might have side effects. To execute a token
-     * it might be necessary to consume further tokens.
-     *
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     *
-     * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
-     */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
-            throws InterpreterException {
-
-        Box box = context.getBox(getKey(context, source, typesetter, getName()));
-        source.getOptionalEquals(context);
-        Dimen d = Dimen.parse(context, source, typesetter);
-
-        if (box != null) {
-            box.setWidth(d);
-        }
     }
 
     /**
@@ -224,7 +231,8 @@ public class Wd extends Setbox
     public Tokens the(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
 
-        Box box = context.getBox(getKey(context, source, typesetter, getName()));
+        Box box = context.getBox(//
+            Setbox.getKey(context, source, typesetter, getName()));
         FixedDimen d = (box == null ? Dimen.ZERO_PT : box.getWidth());
         try {
             return d.toToks(context.getTokenFactory());
