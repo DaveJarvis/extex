@@ -122,7 +122,7 @@ public class IfTest extends ExTeXLauncher {
     public void test10() throws Exception {
 
         assertSuccess(//--- input code ---
-            DEFINE_BRACES + "\\def\\a{*}\\let\\b=*\\def\\c{/}"
+            DEFINE_BRACES + "\\def\\a{*}"
                     + "\\if *\\a true\\else false\\fi\\end",
             //--- output channel ---
             "true" + TERM);
@@ -138,7 +138,7 @@ public class IfTest extends ExTeXLauncher {
     public void test11() throws Exception {
 
         assertSuccess(//--- input code ---
-            DEFINE_BRACES + "\\def\\a{*}\\let\\b=*\\def\\c{/}"
+            DEFINE_BRACES + "\\def\\a{*}"
                     + "\\if \\a* true\\else false\\fi\\end",
             //--- output channel ---
             "true" + TERM);
@@ -154,7 +154,7 @@ public class IfTest extends ExTeXLauncher {
     public void test12() throws Exception {
 
         assertSuccess(//--- input code ---
-            DEFINE_BRACES + "\\def\\a{*}\\let\\b=*\\def\\c{/}"
+            DEFINE_BRACES + "\\def\\a{*}\\let\\b=*"
                     + "\\if \\a\\b true\\else false\\fi\\end",
             //--- output channel ---
             "true" + TERM);
@@ -170,7 +170,7 @@ public class IfTest extends ExTeXLauncher {
     public void test13() throws Exception {
 
         assertSuccess(//--- input code ---
-            DEFINE_BRACES + "\\def\\a{*}\\let\\b=*\\def\\c{/}"
+            DEFINE_BRACES + "\\def\\a{*}\\let\\b=*"
                     + "\\if \\b\\a true\\else false\\fi\\end",
             //--- output channel ---
             "true" + TERM);

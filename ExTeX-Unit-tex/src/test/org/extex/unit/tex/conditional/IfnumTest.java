@@ -248,7 +248,7 @@ public class IfnumTest extends ExTeXLauncher {
     public void testExpand2() throws Exception {
 
         assertSuccess(//--- input code ---
-            "\\count0=\\ifnum 2<1 123\\else 456\\fi \\the\\count0\\end",
+            "\\count0=\\ifnum 2<1 123 \\else 456 \\fi \\the\\count0\\end",
             //--- output channel ---
             "456" + TERM);
     }

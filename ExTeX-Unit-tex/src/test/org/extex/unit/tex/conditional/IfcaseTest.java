@@ -316,7 +316,7 @@ public class IfcaseTest extends ExTeXLauncher {
     public void testExpand1() throws Exception {
 
         assertSuccess(//--- input code ---
-            "\\count0=\\ifcase 2 123\\else 456\\fi \\the\\count0\\end",
+            "\\count0=\\ifcase 2 123 \\else 456 \\fi \\the\\count0\\end",
             //--- output channel ---
             "456" + TERM);
     }
