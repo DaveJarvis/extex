@@ -20,6 +20,7 @@
 package org.extex.unit.etex.group;
 
 import org.extex.interpreter.primitives.register.count.AbstractReadonlyCountRegisterTester;
+import org.extex.unit.tex.math.AbstractMathTester;
 
 /**
  * This is a test suite for the primitive <tt>\currentgrouptype</tt>.
@@ -61,9 +62,9 @@ public class CurrentgrouptypeTest extends AbstractReadonlyCountRegisterTester {
     public void test0() throws Exception {
 
         assertSuccess(//--- input code ---
-                "\\the\\currentgrouptype \\end",
-                //--- log message ---
-                "0" + TERM);
+            "\\the\\currentgrouptype \\end",
+            //--- log message ---
+            "0" + TERM);
     }
 
     /**
@@ -77,10 +78,9 @@ public class CurrentgrouptypeTest extends AbstractReadonlyCountRegisterTester {
     public void test1() throws Exception {
 
         assertSuccess(//--- input code ---
-                DEFINE_BRACES
-                + "{\\the\\currentgrouptype}\\end",
-                //--- log message ---
-                "1" + TERM);
+            DEFINE_BRACES + "{\\the\\currentgrouptype}\\end",
+            //--- log message ---
+            "1" + TERM);
     }
 
     /**
@@ -94,10 +94,9 @@ public class CurrentgrouptypeTest extends AbstractReadonlyCountRegisterTester {
     public void test2() throws Exception {
 
         assertSuccess(//--- input code ---
-                DEFINE_BRACES
-                + "\\hbox{\\the\\currentgrouptype}\\end",
-                //--- log message ---
-                "2" + TERM);
+            DEFINE_BRACES + "\\hbox{\\the\\currentgrouptype}\\end",
+            //--- log message ---
+            "2" + TERM);
     }
 
     /**
@@ -111,10 +110,9 @@ public class CurrentgrouptypeTest extends AbstractReadonlyCountRegisterTester {
     public void test3() throws Exception {
 
         assertSuccess(//--- input code ---
-                DEFINE_BRACES
-                + "\\hbox to 12pt{\\the\\currentgrouptype}\\end",
-                //--- log message ---
-                "3" + TERM);
+            DEFINE_BRACES + "\\hbox to 12pt{\\the\\currentgrouptype}\\end",
+            //--- log message ---
+            "3" + TERM);
     }
 
     /**
@@ -128,10 +126,10 @@ public class CurrentgrouptypeTest extends AbstractReadonlyCountRegisterTester {
     public void test4() throws Exception {
 
         assertSuccess(//--- input code ---
-                DEFINE_BRACES
-                + "\\setbox0=\\vbox{\\global\\count0=\\currentgrouptype}\\the\\count0\\end",
-                //--- log message ---
-                "4" + TERM);
+            DEFINE_BRACES
+                    + "\\setbox0=\\vbox{\\global\\count0=\\currentgrouptype}\\the\\count0\\end",
+            //--- log message ---
+            "4" + TERM);
     }
 
     /**
@@ -145,10 +143,9 @@ public class CurrentgrouptypeTest extends AbstractReadonlyCountRegisterTester {
     public void test5() throws Exception {
 
         assertSuccess(//--- input code ---
-                DEFINE_BRACES
-                + "\\vtop{\\the\\currentgrouptype}\\end",
-                //--- log message ---
-                "5\n\n" + TERM);
+            DEFINE_BRACES + "\\vtop{\\the\\currentgrouptype}\\end",
+            //--- log message ---
+            "5\n\n" + TERM);
     }
 
     /**
@@ -162,10 +159,13 @@ public class CurrentgrouptypeTest extends AbstractReadonlyCountRegisterTester {
     public void test12() throws Exception {
 
         assertSuccess(//--- input code ---
-                DEFINE_BRACES
-                + "\\setbox0=\\vcenter{\\global\\count0=\\currentgrouptype}\\the\\count0\\end",
-                //--- log message ---
-                "12" + TERM);
+            DEFINE_BRACES
+                    + DEFINE_MATH
+                    + AbstractMathTester.DEFINE_MATH_FONTS
+                    + "\\hbox{$\\vcenter{\\global\\count0=\\currentgrouptype}$}"
+                    + "\\the\\count0\\end",
+            //--- log message ---
+            "12" + TERM);
     }
 
     /**
@@ -179,10 +179,10 @@ public class CurrentgrouptypeTest extends AbstractReadonlyCountRegisterTester {
     public void test14() throws Exception {
 
         assertSuccess(//--- input code ---
-                DEFINE_BRACES
-                + "\\begingroup\\the\\currentgrouptype\\endgroup\\end",
-                //--- log message ---
-                "14" + TERM);
+            DEFINE_BRACES
+                    + "\\begingroup\\the\\currentgrouptype\\endgroup\\end",
+            //--- log message ---
+            "14" + TERM);
     }
 
     //TODO implement more primitive specific test cases
