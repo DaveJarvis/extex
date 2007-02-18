@@ -25,7 +25,6 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.typesetter.Typesetter;
-import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.node.RuleNode;
 import org.extex.typesetter.type.node.pdftex.PdfStartLink;
 import org.extex.unit.pdftex.util.action.ActionSpec;
@@ -73,6 +72,18 @@ public class Pdfstartlink extends AbstractPdftexCode {
     }
 
     /**
+     * This method takes the first token and executes it. The result is placed
+     * on the stack. This operation might have side effects. To execute a token
+     * it might be necessary to consume further tokens.
+     *
+     * @param prefix the prefix controlling the execution
+     * @param context the interpreter context
+     * @param source the token source
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
+     *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -81,7 +92,8 @@ public class Pdfstartlink extends AbstractPdftexCode {
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws InterpreterException {
+            throws InterpreterException,
+                ConfigurationException {
 
         ensurePdftex(context, typesetter);
         Dimen width = null;
@@ -117,15 +129,8 @@ public class Pdfstartlink extends AbstractPdftexCode {
                 ActionSpec.parseActionSpec(context, source, typesetter,
                     getName());
 
-        try {
-            typesetter.add(new PdfStartLink(new RuleNode(width, height, depth,
-                context.getTypesettingContext(), true), attr, action));
-        } catch (TypesetterException e) {
-            throw new InterpreterException(e);
-        } catch (ConfigurationException e) {
-            throw new InterpreterException(e);
-        }
-
+        typesetter.add(new PdfStartLink(new RuleNode(width, height, depth,
+            context.getTypesettingContext(), true), attr, action));
     }
 
 }
