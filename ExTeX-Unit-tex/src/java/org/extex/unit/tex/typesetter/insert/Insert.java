@@ -25,12 +25,12 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.group.GroupType;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.box.Box;
 import org.extex.interpreter.type.count.Count;
 import org.extex.typesetter.Mode;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.node.InsertionNode;
-import org.extex.unit.tex.register.box.AbstractBox;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
@@ -58,7 +58,7 @@ import org.extex.util.framework.configuration.exception.ConfigurationException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
-public class Insert extends AbstractBox {
+public class Insert extends AbstractCode {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
@@ -86,6 +86,7 @@ public class Insert extends AbstractBox {
      * @param typesetter the typesetter
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
@@ -95,24 +96,19 @@ public class Insert extends AbstractBox {
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws InterpreterException {
+            throws InterpreterException, ConfigurationException {
 
         Flags f = prefix.copy();
         prefix.clear();
         long index = Count.scanNumber(context, source, typesetter);
-        Box b =
-                new Box(context, source, typesetter, false, null,
-                    GroupType.INSERT_GROUP, source.getLastToken());
+        Box box = new Box(context, source, typesetter, false, null, //
+            GroupType.INSERT_GROUP, source.getLastToken());
 
         Mode mode = typesetter.getMode();
         if (mode != Mode.VERTICAL && mode != Mode.INNER_VERTICAL) {
             throw new HelpingException(getLocalizer(), "TTP.MisplacedInsert");
         }
-        try {
-            typesetter.add(new InsertionNode(index, b.getNodes()));
-        } catch (ConfigurationException e) {
-            throw new InterpreterException(e);
-        }
+        typesetter.add(new InsertionNode(index, box.getNodes()));
         prefix.set(f);
     }
 
