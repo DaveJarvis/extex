@@ -83,6 +83,7 @@ public class Mathdir extends AbstractDirCode {
      * @param typesetter the typesetter
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
@@ -92,15 +93,12 @@ public class Mathdir extends AbstractDirCode {
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws InterpreterException {
+            throws InterpreterException,
+                ConfigurationException {
 
         Direction dir = scanDir(source, context);
 
-        try {
-            context.set(dir, false);
-        } catch (ConfigurationException e) {
-            throw new InterpreterException(e);
-        }
+        context.set(dir, false);
     }
 
 }

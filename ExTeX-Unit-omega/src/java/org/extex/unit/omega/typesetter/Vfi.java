@@ -29,6 +29,7 @@ import org.extex.interpreter.type.glue.GlueComponent;
 import org.extex.typesetter.Typesetter;
 import org.extex.unit.tex.typesetter.AbstractVerticalCode;
 import org.extex.unit.tex.typesetter.spacing.VerticalSkip;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive <code>\vfi</code>.
@@ -92,6 +93,7 @@ public class Vfi extends AbstractVerticalCode implements VerticalSkip {
      * @param typesetter the typesetter
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
@@ -101,7 +103,8 @@ public class Vfi extends AbstractVerticalCode implements VerticalSkip {
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws InterpreterException {
+            throws InterpreterException,
+                ConfigurationException {
 
         ensureVerticalMode(typesetter);
         typesetter.add(FI);

@@ -40,6 +40,7 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.noad.MathGlyph;
 import org.extex.unit.tex.math.AbstractMathCode;
 import org.extex.unit.tex.math.delimiter.Delimiter;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
@@ -249,16 +250,18 @@ public abstract class AbstractOmegaDelimiter extends AbstractMathCode {
 
         if (delcode < 0 || classCode > CLASS_MAX) {
             throw new HelpingException(getMyLocalizer(),
-                    "TTP.BadDelimiterCode", "\"" + Long.toHexString(delcode));
+                "TTP.BadDelimiterCode", "\"" + Long.toHexString(delcode));
         }
         MathClass mathClass = MathClass.getMathClass(classCode);
-        MathGlyph smallChar = new MathGlyph(
-                (int) ((delcode >> SMALL_CLASS_OFFSET) & CLASS_MASK),
-                UnicodeChar
+        MathGlyph smallChar =
+                new MathGlyph(
+                    (int) ((delcode >> SMALL_CLASS_OFFSET) & CLASS_MASK),
+                    UnicodeChar
                         .get((int) ((delcode >> SMALL_CHAR_OFFSET) & CHAR_MASK)));
-        MathGlyph largeChar = new MathGlyph(
-                (int) ((delcode >> LARGE_CLASS_OFFSET) & CLASS_MASK),
-                UnicodeChar.get((int) (delcode & CHAR_MASK)));
+        MathGlyph largeChar =
+                new MathGlyph(
+                    (int) ((delcode >> LARGE_CLASS_OFFSET) & CLASS_MASK),
+                    UnicodeChar.get((int) (delcode & CHAR_MASK)));
         return new MathDelimiter(mathClass, smallChar, largeChar);
     }
 
@@ -281,14 +284,14 @@ public abstract class AbstractOmegaDelimiter extends AbstractMathCode {
             throws InterpreterException {
 
         int smallFam = (int) Count.scanNumber(context, source, typesetter);
-        UnicodeChar smallChar = source.scanCharacterCode(context, typesetter,
-                primitive);
+        UnicodeChar smallChar =
+                source.scanCharacterCode(context, typesetter, primitive);
         int largeFam = (int) Count.scanNumber(context, source, typesetter);
-        UnicodeChar largeChar = source.scanCharacterCode(context, typesetter,
-                primitive);
+        UnicodeChar largeChar =
+                source.scanCharacterCode(context, typesetter, primitive);
 
         return new MathDelimiter(mClass, new MathGlyph(smallFam, smallChar),
-                new MathGlyph(largeFam, largeChar));
+            new MathGlyph(largeFam, largeChar));
     }
 
     /**
@@ -307,26 +310,29 @@ public abstract class AbstractOmegaDelimiter extends AbstractMathCode {
      * @return the MathDelimiter acquired
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      */
     public static MathDelimiter parseDelimiter(final Context context,
             final TokenSource source, final Typesetter typesetter,
-            final String primitive) throws InterpreterException {
+            final String primitive)
+            throws InterpreterException,
+                ConfigurationException {
 
-        for (Token t = source.getToken(context); t != null; t = source
-                .getToken(context)) {
+        for (Token t = source.getToken(context); t != null; t =
+                source.getToken(context)) {
 
             if (t instanceof CodeToken) {
                 Code code = context.getCode((CodeToken) t);
                 if (code instanceof Delimiter) {
                     return newMathDelimiter(Count.scanNumber(context, source,
-                            typesetter));
+                        typesetter));
                 } else if (code instanceof ExpandableCode) {
                     ((ExpandableCode) code).expand(Flags.NONE, context, source,
-                            typesetter);
+                        typesetter);
                     // retry within the outer loop
                 } else {
                     throw new HelpingException(getMyLocalizer(),
-                            "TTP.MissingDelim");
+                        "TTP.MissingDelim");
                 }
             } else {
                 MathDelimiter del = context.getDelcode(t.getChar());
@@ -336,10 +342,10 @@ public abstract class AbstractOmegaDelimiter extends AbstractMathCode {
                     source.push(t);
                     try {
                         return newMathDelimiter(Count.scanNumber(context,
-                                source, typesetter));
+                            source, typesetter));
                     } catch (MissingNumberException e) {
                         throw new HelpingException(getMyLocalizer(),
-                                "TTP.MissingDelim");
+                            "TTP.MissingDelim");
                     }
                 } else {
                     source.push(t);
@@ -347,51 +353,51 @@ public abstract class AbstractOmegaDelimiter extends AbstractMathCode {
                         case 'b':
                             if (source.getKeyword(context, "bin")) {
                                 return parse(context, source, typesetter,
-                                        MathClass.BINARY, primitive);
+                                    MathClass.BINARY, primitive);
                             }
                             break;
                         case 'c':
                             if (source.getKeyword(context, "close")) {
                                 return parse(context, source, typesetter,
-                                        MathClass.CLOSING, primitive);
+                                    MathClass.CLOSING, primitive);
                             }
                             break;
                         case 'l':
                             if (source.getKeyword(context, "large")) {
                                 return parse(context, source, typesetter,
-                                        MathClass.LARGE, primitive);
+                                    MathClass.LARGE, primitive);
                             }
                             break;
                         case 'o':
                             if (source.getKeyword(context, "open")) {
                                 return parse(context, source, typesetter,
-                                        MathClass.OPENING, primitive);
+                                    MathClass.OPENING, primitive);
                             } else if (source.getKeyword(context, "ord")) {
                                 return parse(context, source, typesetter,
-                                        MathClass.ORDINARY, primitive);
+                                    MathClass.ORDINARY, primitive);
                             }
                             break;
                         case 'p':
                             if (source.getKeyword(context, "punct")) {
                                 return parse(context, source, typesetter,
-                                        MathClass.PUNCTUATION, primitive);
+                                    MathClass.PUNCTUATION, primitive);
                             }
                             break;
                         case 'r':
                             if (source.getKeyword(context, "rel")) {
                                 return parse(context, source, typesetter,
-                                        MathClass.RELATION, primitive);
+                                    MathClass.RELATION, primitive);
                             }
                             break;
                         case 'v':
                             if (source.getKeyword(context, "var")) {
                                 return parse(context, source, typesetter,
-                                        MathClass.VARIABLE, primitive);
+                                    MathClass.VARIABLE, primitive);
                             }
                             break;
                         default:
                             throw new HelpingException(getMyLocalizer(),
-                                    "TTP.MissingDelim");
+                                "TTP.MissingDelim");
                     }
                 }
             }
@@ -416,8 +422,9 @@ public abstract class AbstractOmegaDelimiter extends AbstractMathCode {
             return -1;
         }
 
-        long value = ((Integer) del.getMathClass().visit(MCV, null, null))
-                .longValue() << CLASS_SHIFT;
+        long value =
+                ((Integer) del.getMathClass().visit(MCV, null, null))
+                    .longValue() << CLASS_SHIFT;
 
         int fam0 = del.getSmallChar().getFamily();
         if (fam0 < FAM_MIN || fam0 > FAM_MAX) {

@@ -27,6 +27,7 @@ import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.unit.base.file.AbstractFileCode;
 import org.extex.unit.omega.ocp.util.Ocp;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.resource.ResourceConsumer;
 import org.extex.util.resource.ResourceFinder;
 
@@ -87,6 +88,7 @@ public class OcpPrimitive extends AbstractFileCode implements ResourceConsumer {
      * @param typesetter the typesetter
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
@@ -96,7 +98,8 @@ public class OcpPrimitive extends AbstractFileCode implements ResourceConsumer {
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws InterpreterException {
+            throws InterpreterException,
+                ConfigurationException {
 
         CodeToken cs = source.getControlSequence(context, typesetter);
         source.getOptionalEquals(context);

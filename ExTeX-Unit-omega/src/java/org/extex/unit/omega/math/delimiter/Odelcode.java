@@ -36,6 +36,7 @@ import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.type.token.Token;
 import org.extex.type.UnicodeChar;
 import org.extex.typesetter.Typesetter;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive
@@ -181,6 +182,7 @@ public class Odelcode extends AbstractAssignment
      * @param typesetter the typesetter
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.interpreter.type.AbstractAssignment#assign(
      *      org.extex.interpreter.Flags,
@@ -190,7 +192,7 @@ public class Odelcode extends AbstractAssignment
      */
     public void assign(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws InterpreterException {
+            throws InterpreterException, ConfigurationException {
 
         UnicodeChar charCode = source.scanCharacterCode(context, typesetter,
                 getName());

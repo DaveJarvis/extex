@@ -55,16 +55,15 @@ public class Ocp implements Code, OcpConvertible, Serializable {
      * @return the OCP encountered
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      */
     public static Ocp load(final String resource, final ResourceFinder finder)
-            throws InterpreterException {
+            throws InterpreterException, ConfigurationException {
 
         InputStream stream = null;
         try {
             stream = finder.findResource(resource, "ocp");
             return new Ocp(resource, stream);
-        } catch (ConfigurationException e) {
-            throw new InterpreterException(e);
         } finally {
             if (stream != null) {
                 try {
