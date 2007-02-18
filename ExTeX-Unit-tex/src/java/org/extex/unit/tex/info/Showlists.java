@@ -25,9 +25,9 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.count.Count;
 import org.extex.typesetter.Typesetter;
-import org.extex.unit.tex.register.box.AbstractBox;
 import org.extex.util.framework.logger.LogEnabled;
 
 /**
@@ -54,7 +54,7 @@ import org.extex.util.framework.logger.LogEnabled;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4732 $
  */
-public class Showlists extends AbstractBox implements LogEnabled {
+public class Showlists extends AbstractCode implements LogEnabled {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.

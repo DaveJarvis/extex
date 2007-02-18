@@ -27,9 +27,10 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.box.Box;
 import org.extex.typesetter.Typesetter;
-import org.extex.unit.tex.register.box.AbstractBox;
+import org.extex.unit.tex.register.box.Setbox;
 import org.extex.util.framework.logger.LogEnabled;
 
 /**
@@ -49,7 +50,7 @@ import org.extex.util.framework.logger.LogEnabled;
  *  <pre class="syntax">
  *    &lang;showbox&rang;
  *      &rarr; <tt>\showbox</tt> {@linkplain
- *        org.extex.unit.tex.register.box.AbstractBox#getKey(Context,Source,Typesetter,String)
+ *        org.extex.unit.tex.register.box.Setbox#getKey(Context,Source,Typesetter,String)
  *        &lang;box&nbsp;register&nbsp;name&rang;}  </pre>
  *
  * <h4>Examples</h4>
@@ -110,7 +111,7 @@ import org.extex.util.framework.logger.LogEnabled;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4732 $
  */
-public class Showbox extends AbstractBox implements LogEnabled {
+public class Showbox extends AbstractCode implements LogEnabled {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
@@ -167,7 +168,7 @@ public class Showbox extends AbstractBox implements LogEnabled {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        String key = getKey(context, source, typesetter, getName());
+        String key = Setbox.getKey(context, source, typesetter, getName());
         Box b = context.getBox(key);
 
         if (b == null) {
