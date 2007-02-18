@@ -112,10 +112,12 @@ public class Csname extends AbstractCode implements ExpandableCode {
      * @return the Tokens found while scanning the input tokens
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      */
     public static Tokens scanToEndCsname(final Context context,
             final TokenSource source, final Typesetter typesetter,
-            final Localizer loc) throws InterpreterException {
+            final Localizer loc)
+            throws InterpreterException {
 
         Tokens toks = new Tokens();
         for (Token t = source.getToken(context); t != null; t =
@@ -173,6 +175,7 @@ public class Csname extends AbstractCode implements ExpandableCode {
      * @param typesetter the typesetter
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
@@ -216,6 +219,7 @@ public class Csname extends AbstractCode implements ExpandableCode {
      * @param typesetter the typesetter
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.interpreter.type.ExpandableCode#expand(
      *      org.extex.interpreter.Flags,

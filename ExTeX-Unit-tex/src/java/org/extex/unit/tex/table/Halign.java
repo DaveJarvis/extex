@@ -39,7 +39,6 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.TypesetterOptions;
 import org.extex.typesetter.listMaker.HAlignListMaker;
 import org.extex.typesetter.type.NodeList;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive <code>\halign</code>.
@@ -105,6 +104,7 @@ public class Halign extends AbstractAlign implements Boxable {
      * @param typesetter the typesetter
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
@@ -118,13 +118,7 @@ public class Halign extends AbstractAlign implements Boxable {
 
         Flags f = prefix.copy();
         prefix.clear();
-        try {
-            typesetter.add(getNodes(context, source, typesetter));
-        } catch (InterpreterException e) {
-            throw e;
-        } catch (ConfigurationException e) {
-            throw new InterpreterException(e);
-        }
+        typesetter.add(getNodes(context, source, typesetter));
         prefix.set(f);
     }
 
@@ -166,9 +160,11 @@ public class Halign extends AbstractAlign implements Boxable {
      * @return the list of nodes gathered
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      */
     private NodeList getNodes(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+            final Typesetter typesetter)
+            throws InterpreterException {
 
         FixedDimen width = null;
         boolean spread = false;
@@ -192,18 +188,10 @@ public class Halign extends AbstractAlign implements Boxable {
                 printableControlSequence(context));
         }
 
-        try {
-            context.openGroup(GroupType.ALIGN_GROUP, locator, t); //gene: correct value?
-        } catch (ConfigurationException e) {
-            throw new InterpreterException(e);
-        }
+        context.openGroup(GroupType.ALIGN_GROUP, locator, t); //gene: correct value?
 
         source.executeGroup();
-        try {
-            return typesetter.complete((TypesetterOptions) context);
-        } catch (ConfigurationException e) {
-            throw new InterpreterException(e);
-        }
+        return typesetter.complete((TypesetterOptions) context);
     }
 
 }
