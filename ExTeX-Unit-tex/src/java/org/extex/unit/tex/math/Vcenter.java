@@ -22,6 +22,7 @@ package org.extex.unit.tex.math;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.interpreter.context.group.GroupType;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.listMaker.math.NoadConsumer;
@@ -93,7 +94,8 @@ public class Vcenter extends AbstractMathCode {
             throws InterpreterException {
 
         NoadConsumer nc = getListMaker(context, typesetter);
-        Noad noad = nc.scanNoad(prefix, context, source, typesetter, getName());
+        Noad noad = nc.scanNoad(prefix, context, source, typesetter, //
+            getName(), GroupType.VCENTER_GROUP);
         nc.add(new VCenterNoad(noad, context.getTypesettingContext()));
     }
 

@@ -22,6 +22,7 @@ package org.extex.typesetter.listMaker.math;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.interpreter.context.group.GroupType;
 import org.extex.interpreter.context.tc.TypesettingContext;
 import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.math.MathCode;
@@ -136,13 +137,15 @@ public interface NoadConsumer extends ListMaker {
      * @param source the source for new tokens
      * @param typesetter the typesetter
      * @param primitive the name of the primitive for error messages
+     * @param groupType the group type in case that a group needs to be opened
      *
      * @return the Noad read or <code>null</code> if none could be gathered
      *
      * @throws TypesetterException in case of an error
      */
     Noad scanNoad(Flags flags, Context context, TokenSource source,
-            Typesetter typesetter, String primitive) throws TypesetterException;
+            Typesetter typesetter, String primitive, GroupType groupType)
+            throws TypesetterException;
 
     /**
      * This method instructs the implementing class to use a fraction

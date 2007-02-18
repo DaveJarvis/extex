@@ -39,6 +39,7 @@ import org.extex.type.UnicodeChar;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.noad.MathGlyph;
 import org.extex.unit.tex.math.AbstractMathCode;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
@@ -439,10 +440,13 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
      * @return the MathDelimiter acquired
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      */
     public static MathDelimiter parseDelimiter(final Context context,
             final TokenSource source, final Typesetter typesetter,
-            final String primitive) throws InterpreterException {
+            final String primitive)
+            throws InterpreterException,
+                ConfigurationException {
 
         for (Token t = source.getToken(context); t != null; t =
                 source.getToken(context)) {

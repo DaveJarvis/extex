@@ -375,6 +375,12 @@ public class MathListMaker extends HorizontalListMaker
     }
 
     /**
+     * Add a glue node to the list.
+     *
+     * @param g the glue to add
+     *
+     * @throws TypesetterException in case of an error
+     *
      * @see org.extex.typesetter.ListMaker#add(
      *      org.extex.interpreter.type.glue.FixedGlue)
      */
@@ -384,6 +390,13 @@ public class MathListMaker extends HorizontalListMaker
     }
 
     /**
+     * Add a mathematical glyph.
+     *
+     * @param mc the math code
+     * @param tc the typesetting context
+     *
+     * @throws TypesetterException in case of an error
+     *
      * @see org.extex.typesetter.listMaker.math.NoadConsumer#add(
      *      org.extex.interpreter.type.math.MathCode,
      *      org.extex.interpreter.context.tc.TypesettingContext)
@@ -395,6 +408,13 @@ public class MathListMaker extends HorizontalListMaker
     }
 
     /**
+     * Add a mathematical delimiter.
+     *
+     * @param del the delimiter
+     * @param tc the typesetting context
+     *
+     * @throws TypesetterException in case of an error
+     *
      * @see org.extex.typesetter.listMaker.math.NoadConsumer#add(
      *      org.extex.interpreter.type.math.MathDelimiter,
      *      org.extex.interpreter.context.tc.TypesettingContext)
@@ -408,6 +428,12 @@ public class MathListMaker extends HorizontalListMaker
     }
 
     /**
+     * Add some math dimen Noad to the internal list.
+     *
+     * @param skip the length to add
+     *
+     * @throws TypesetterException in case of an error
+     *
      * @see org.extex.typesetter.listMaker.math.NoadConsumer#add(
      *      org.extex.interpreter.type.muskip.Mudimen)
      */
@@ -417,6 +443,12 @@ public class MathListMaker extends HorizontalListMaker
     }
 
     /**
+     * Add some math glue Noad to the internal list.
+     *
+     * @param glue the glue to add
+     *
+     * @throws TypesetterException in case of an error
+     *
      * @see org.extex.typesetter.listMaker.math.NoadConsumer#add(
      *      org.extex.interpreter.type.muskip.Muskip)
      */
@@ -426,6 +458,13 @@ public class MathListMaker extends HorizontalListMaker
     }
 
     /**
+     * Add an arbitrary Noad to the internal list if it is prepared to hold one.
+     * This is usually the case in math modes.
+     *
+     * @param noad the noad to add
+     *
+     * @throws TypesetterException in case of an error
+     *
      * @see org.extex.typesetter.listMaker.math.NoadConsumer#add(
      *      org.extex.typesetter.type.noad.Noad)
      */
@@ -435,6 +474,15 @@ public class MathListMaker extends HorizontalListMaker
     }
 
     /**
+     * Add an arbitrary node to the internal list of nodes gathered so far.
+     * The node should not be one of the special nodes treated by methods of
+     * their own.
+     *
+     * @param node the node to add
+     *
+     * @throws TypesetterException in case of an error
+     * @throws ConfigurationException in case of a configuration error
+     *
      * @see org.extex.typesetter.ListMaker#add(
      *      org.extex.typesetter.type.Node)
      */
@@ -527,6 +575,14 @@ public class MathListMaker extends HorizontalListMaker
     }
 
     /**
+     * Process a carriage return.
+     *
+     * @param context the interpreter context
+     * @param tc the typesetting context
+     * @param uc the character
+     *
+     * @throws TypesetterException in case of an error
+     *
      * @see org.extex.typesetter.ListMaker#cr(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.context.tc.TypesettingContext,
@@ -538,6 +594,10 @@ public class MathListMaker extends HorizontalListMaker
     }
 
     /**
+     * Setter for the logger.
+     *
+     * @param logger the logger to use
+     *
      * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
@@ -567,6 +627,12 @@ public class MathListMaker extends HorizontalListMaker
     }
 
     /**
+     * Get access to the previous noad.
+     *
+     * @return the previous noad or <code>null</code> if there is none
+     *
+     * @throws TypesetterException in case of an error
+     *
      * @see org.extex.typesetter.listMaker.math.NoadConsumer#getLastNoad()
      */
     public Noad getLastNoad() throws TypesetterException {
@@ -575,6 +641,11 @@ public class MathListMaker extends HorizontalListMaker
     }
 
     /**
+     * Access the last node on the list.
+     *
+     * @return the last node in the current list or <code>null</code> if the
+     *   list is empty
+     *
      * @see org.extex.typesetter.ListMaker#getLastNode()
      */
     public Node getLastNode() {
@@ -593,6 +664,11 @@ public class MathListMaker extends HorizontalListMaker
     }
 
     /**
+     * Getter for the current mode.
+     *
+     * @return the mode which is one of the values defined in
+     * {@link org.extex.typesetter.Mode Mode}.
+     *
      * @see org.extex.typesetter.ListMaker#getMode()
      */
     public Mode getMode() {
@@ -621,6 +697,12 @@ public class MathListMaker extends HorizontalListMaker
     }
 
     /**
+     * Open the group for a \left-\right construction.
+     *
+     * @param delimiter the delimiter to typeset on theleft side
+     *
+     * @throws TypesetterException in case of an error
+     *
      * @see org.extex.typesetter.listMaker.math.NoadConsumer#left(
      *      org.extex.interpreter.type.math.MathDelimiter)
      */
@@ -645,6 +727,20 @@ public class MathListMaker extends HorizontalListMaker
     }
 
     /**
+     * Add a letter to the current list or treat it in some other appropriate
+     * way.
+     *
+     * @param tc the typesetting context
+     * @param uc the character
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param locator the locator
+     *
+     * @return <code>true</code> iff the character has been discarded because
+     *   it is not defined in the current font.
+     *
+     * @throws TypesetterException in case of an error
+     *
      * @see org.extex.typesetter.ListMaker#letter(
      *      org.extex.type.UnicodeChar,
      *      org.extex.interpreter.context.tc.TypesettingContext,
@@ -680,6 +776,17 @@ public class MathListMaker extends HorizontalListMaker
     }
 
     /**
+     * Treat a math shift character.
+     * Usually this leads to entering or leaving math mode &ndash; maybe after
+     * inspection of a following token.
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param t the actual math shift character token
+     *
+     * @throws TypesetterException in case of an error
+     * @throws ConfigurationException in case of a configuration error
+     *
      * @see org.extex.typesetter.ListMaker#mathShift(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
@@ -705,6 +812,12 @@ public class MathListMaker extends HorizontalListMaker
     }
 
     /**
+     * Middle in the group for a \left-\right construction.
+     *
+     * @param delimiter the delimiter to typeset here
+     *
+     * @throws TypesetterException in case of an error
+     *
      * @see org.extex.typesetter.listMaker.math.NoadConsumer#middle(
      *      org.extex.interpreter.type.math.MathDelimiter)
      */
@@ -742,6 +855,9 @@ public class MathListMaker extends HorizontalListMaker
     }
 
     /**
+     * Removes the last node from the list.
+     * If the list is empty then nothing is done.
+     *
      * @see org.extex.typesetter.ListMaker#removeLastNode()
      */
     public void removeLastNode() {
@@ -750,6 +866,12 @@ public class MathListMaker extends HorizontalListMaker
     }
 
     /**
+     * Close the group for a <tt>\left</tt>-<tt>\right</tt> construction.
+     *
+     * @param delimiter the delimiter to typeset on the right side
+     *
+     * @throws TypesetterException in case of an error
+     *
      * @see org.extex.typesetter.listMaker.math.NoadConsumer#right(
      *      org.extex.interpreter.type.math.MathDelimiter)
      */
@@ -772,6 +894,11 @@ public class MathListMaker extends HorizontalListMaker
     }
 
     /**
+     * Notification method to deal the case that a right brace has been
+     * encountered.
+     *
+     * @throws TypesetterException in case of an error
+     *
      * @see org.extex.typesetter.ListMaker#rightBrace()
      */
     public void rightBrace() throws TypesetterException {
@@ -792,15 +919,33 @@ public class MathListMaker extends HorizontalListMaker
     }
 
     /**
+     * Process the input until a Noad is completed. A Noad is either a single
+     * Noad or a list of Noads resulting from the processing of a block.
+     *
+     * @param flags the flags to restore after processing
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter
+     * @param primitive the name of the primitive for error messages
+     * @param groupType the group type in case that a group needs to be opened
+     *
+     * @return the Noad read or <code>null</code> if none could be gathered
+     *
+     * @throws TypesetterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
+     *
      * @see org.extex.typesetter.listMaker.math.NoadConsumer#scanNoad(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter, java.lang.String)
+     *      org.extex.typesetter.Typesetter,
+     *      java.lang.String,
+     *      org.extex.interpreter.context.group.GroupType)
      */
     public Noad scanNoad(final Flags flags, final Context context,
             final TokenSource source, final Typesetter typesetter,
-            final String primitive) throws TypesetterException {
+            final String primitive, final GroupType groupType)
+            throws TypesetterException {
 
         Flags f = null;
         if (flags != null) {
@@ -817,7 +962,7 @@ public class MathListMaker extends HorizontalListMaker
             man.push(lm);
             if (t.isa(Catcode.LEFTBRACE)) {
                 lm.leftBrace();
-                context.openGroup(GroupType.MATH_GROUP, source.getLocator(), t);
+                context.openGroup(groupType, source.getLocator(), t);
                 source.executeGroup();
             } else {
                 source.execute(t, context, typesetter);
@@ -825,8 +970,6 @@ public class MathListMaker extends HorizontalListMaker
         } catch (TypesetterException e) {
             throw e;
         } catch (InterpreterException e) {
-            throw new TypesetterException(e);
-        } catch (ConfigurationException e) {
             throw new TypesetterException(e);
         }
         if (flags != null) {
@@ -856,6 +999,12 @@ public class MathListMaker extends HorizontalListMaker
     }
 
     /**
+     * Print the status for <tt>\showlists</tt>.
+     *
+     * @param sb the target buffer
+     * @param depth the depth of the list display
+     * @param breadth the breadth of the list display
+     *
      * @see org.extex.typesetter.ListMaker#showlist(
      *      java.lang.StringBuffer, long, long)
      */
@@ -864,6 +1013,15 @@ public class MathListMaker extends HorizontalListMaker
     }
 
     /**
+     * Treat a subscript mark. This might be meaningful in math mode only.
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter
+     * @param t the actual sub mark token
+     *
+     * @throws TypesetterException in case of an error
+     *
      * @see org.extex.typesetter.ListMaker#subscriptMark(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter,
@@ -874,7 +1032,8 @@ public class MathListMaker extends HorizontalListMaker
             throws TypesetterException {
 
         Noad sub =
-                scanNoad(null, context, source, typesetter, token.toString());
+                scanNoad(null, context, source, typesetter, token.toString(),
+                    GroupType.MATH_GROUP);
         if (insertionPoint.size() == 0) {
             add(new MathList());
         }
@@ -888,6 +1047,15 @@ public class MathListMaker extends HorizontalListMaker
     }
 
     /**
+     * Treat a superscript mark. This might be meaningful in math mode only.
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter
+     * @param t the actual super mark token
+     *
+     * @throws TypesetterException in case of an error
+     *
      * @see org.extex.typesetter.ListMaker#superscriptMark(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter,
@@ -898,7 +1066,8 @@ public class MathListMaker extends HorizontalListMaker
             final Token token) throws TypesetterException {
 
         Noad sup =
-                scanNoad(null, context, source, typesetter, token.toString());
+                scanNoad(null, context, source, typesetter, token.toString(),
+                    GroupType.MATH_GROUP);
         if (insertionPoint.size() == 0) {
             add(new MathList());
         }
@@ -912,6 +1081,19 @@ public class MathListMaker extends HorizontalListMaker
     }
 
     /**
+     * This method instructs the implementing class to use a fraction
+     * construction. The math list collected so far is integrated into the
+     * fraction noad.
+     *
+     * @param leftDelimiter the left delimiter or <code>null</code> if none
+     *  should be used.
+     * @param rightDelimiter the right delimiter or <code>null</code> if none
+     *  should be used.
+     * @param ruleWidth th width of the rule or <code>null</code> to indicate
+     *  that the default width should be used
+     *
+     * @throws TypesetterException in case of an error
+     *
      * @see org.extex.typesetter.listMaker.math.NoadConsumer#switchToFraction(
      *      org.extex.interpreter.type.math.MathDelimiter,
      *      org.extex.interpreter.type.math.MathDelimiter,

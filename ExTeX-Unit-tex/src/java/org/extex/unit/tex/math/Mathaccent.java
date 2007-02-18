@@ -22,6 +22,7 @@ package org.extex.unit.tex.math;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.interpreter.context.group.GroupType;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.math.MathCode;
 import org.extex.typesetter.Typesetter;
@@ -95,10 +96,12 @@ public class Mathaccent extends AbstractTeXMathCode {
 
         NoadConsumer nc = getListMaker(context, typesetter);
 
-        MathCode accent = parseMathCode(context, source, typesetter,
-                printableControlSequence(context));
+        MathCode accent =
+                parseMathCode(context, source, typesetter,
+                    printableControlSequence(context));
 
-        Noad noad = nc.scanNoad(prefix, context, source, typesetter, getName());
+        Noad noad = nc.scanNoad(prefix, context, source, typesetter, //
+            getName(), GroupType.MATH_GROUP);
         nc.add(new AccentNoad(accent, noad, context.getTypesettingContext()));
     }
 

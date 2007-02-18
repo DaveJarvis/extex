@@ -22,12 +22,14 @@ package org.extex.unit.tex.math.delimiter;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.interpreter.context.group.GroupType;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.math.MathDelimiter;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.listMaker.math.NoadConsumer;
 import org.extex.typesetter.type.noad.Noad;
 import org.extex.typesetter.type.noad.RadicalNoad;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive
@@ -82,6 +84,7 @@ public class Radical extends AbstractTeXDelimiter {
      * @param typesetter the typesetter
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
@@ -91,12 +94,14 @@ public class Radical extends AbstractTeXDelimiter {
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws InterpreterException {
+            throws InterpreterException,
+                ConfigurationException {
 
         NoadConsumer nc = getListMaker(context, typesetter);
-        MathDelimiter delcode = parseDelimiter(context, source, typesetter,
-                getName());
-        Noad noad = nc.scanNoad(prefix, context, source, typesetter, getName());
+        MathDelimiter delcode =
+                parseDelimiter(context, source, typesetter, getName());
+        Noad noad = nc.scanNoad(prefix, context, source, typesetter, //
+            getName(), GroupType.MATH_GROUP);
         nc.add(new RadicalNoad(delcode, noad, context.getTypesettingContext()));
     }
 

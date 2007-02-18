@@ -22,6 +22,7 @@ package org.extex.unit.tex.math.symbol;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.interpreter.context.group.GroupType;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.listMaker.math.NoadConsumer;
@@ -105,9 +106,8 @@ public class Mathopen extends AbstractMathCode {
             throws InterpreterException {
 
         NoadConsumer nc = getListMaker(context, typesetter);
-        Noad noad =
-                nc.scanNoad(prefix, context, source, typesetter,
-                    printableControlSequence(context));
+        Noad noad = nc.scanNoad(prefix, context, source, typesetter, //
+            printableControlSequence(context), GroupType.MATH_GROUP);
         nc.add(new OpenNoad(noad, context.getTypesettingContext()));
     }
 
