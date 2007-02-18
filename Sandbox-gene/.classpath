@@ -16,7 +16,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Backend-xml"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-base-ext"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-CLI-TeX"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-In-magic"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Scanner"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Scanner32"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Unit-color"/>
