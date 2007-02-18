@@ -138,13 +138,29 @@ public class Dimenexpr extends AbstractCode
     }
 
     /**
+     * This method converts a register into a count. It might be necessary to
+     * read further tokens to determine which value to use. For instance an
+     * additional register number might be required. In this case the additional
+     * arguments Context and TokenSource can be used.
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter to use for conversion
+     *
+     * @return the converted value
+     *
+     * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
+     *
      * @see org.extex.interpreter.type.count.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
     public long convertCount(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+            final Typesetter typesetter)
+            throws InterpreterException,
+                ConfigurationException {
 
         long result = evalExpr(context, source, typesetter);
         Token t = source.getToken(context);
@@ -156,13 +172,30 @@ public class Dimenexpr extends AbstractCode
     }
 
     /**
+     * This method converts a register into a dimen.
+     * It might be necessary to read further tokens to determine which value to
+     * use. For instance an additional register number might be required. In
+     * this case the additional arguments Context and TokenSource can be used.
+     *
+     * The return value is the length in scaled points.
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter to use for conversion
+     *
+     * @return the converted value in sp
+     *
+     * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
+     *
      * @see org.extex.interpreter.type.dimen.DimenConvertible#convertDimen(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
     public long convertDimen(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+            final Typesetter typesetter)
+            throws InterpreterException {
 
         long result = evalExpr(context, source, typesetter);
         Token t = source.getToken(context);
@@ -183,9 +216,11 @@ public class Dimenexpr extends AbstractCode
      * @return the result
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      */
     private long evalExpr(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+            final Typesetter typesetter)
+            throws InterpreterException {
 
         long val = evalOperand(context, source, typesetter);
 
@@ -217,9 +252,11 @@ public class Dimenexpr extends AbstractCode
      * @return the result
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      */
     private long evalOperand(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+            final Typesetter typesetter)
+            throws InterpreterException {
 
         long val =
                 evalTerminal(context, source, typesetter, source
@@ -255,6 +292,7 @@ public class Dimenexpr extends AbstractCode
      * @return the value
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      */
     private long evalTerminal(final Context context, final TokenSource source,
             final Typesetter typesetter, final Token start)
@@ -326,13 +364,25 @@ public class Dimenexpr extends AbstractCode
     }
 
     /**
+     * This method is the getter for the description of the primitive.
+     *
+     * @param context the interpreter context
+     * @param source the source for further tokens to qualify the request
+     * @param typesetter the typesetter to use
+     *
+     * @return the description of the primitive as list of Tokens
+     *
+     * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
+     *
      * @see org.extex.interpreter.type.Theable#the(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+            final Typesetter typesetter)
+            throws InterpreterException {
 
         try {
             Dimen d = new Dimen(convertDimen(context, source, typesetter));
