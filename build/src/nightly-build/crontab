@@ -1,0 +1,2 @@
+42 1 * * * /serv/extex-project/bin/bootstrap.sh
+12 3 * * * /serv/www/extex/cgi-bin/awstats.pl -config=extex -update >/serv/extex-project/logs/awstats.log
