@@ -671,8 +671,7 @@ public class DumpDocumentWriter
      * @see org.extex.util.framework.configuration.Configurable#configure(
      *      org.extex.util.framework.configuration.Configuration)
      */
-    public void configure(final Configuration config)
-            throws ConfigurationException {
+    public void configure(final Configuration config) {
 
         tree = Boolean.valueOf(config.getAttribute("tree")).booleanValue();
     }
