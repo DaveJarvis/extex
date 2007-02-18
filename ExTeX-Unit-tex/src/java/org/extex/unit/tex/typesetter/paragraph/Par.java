@@ -25,7 +25,6 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.typesetter.Typesetter;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive <code>\par</code>.
@@ -117,6 +116,7 @@ public class Par extends AbstractCode {
      * @param typesetter the typesetter
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
@@ -128,11 +128,7 @@ public class Par extends AbstractCode {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        try {
-            typesetter.par();
-        } catch (ConfigurationException e) {
-            throw new InterpreterException(e);
-        }
+        typesetter.par();
     }
 
 }
