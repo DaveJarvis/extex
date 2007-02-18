@@ -26,7 +26,6 @@ import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.node.MarkNode;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive
@@ -96,6 +95,7 @@ public class Marks extends AbstractMarkCode {
      * @param typesetter the typesetter
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
@@ -108,13 +108,9 @@ public class Marks extends AbstractMarkCode {
             throws InterpreterException {
 
         String index = getKey(context, source, typesetter);
-        Tokens toks = source.scanUnprotectedTokens(context, false, false,
-                getName());
-        try {
-            typesetter.add(new MarkNode(toks, index));
-        } catch (ConfigurationException e) {
-            throw new InterpreterException(e);
-        }
+        Tokens toks =
+                source.scanUnprotectedTokens(context, false, false, getName());
+        typesetter.add(new MarkNode(toks, index));
     }
 
 }
