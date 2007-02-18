@@ -28,6 +28,7 @@ import org.extex.interpreter.type.glue.Glue;
 import org.extex.interpreter.type.glue.GlueComponent;
 import org.extex.typesetter.Typesetter;
 import org.extex.unit.tex.typesetter.AbstractVerticalCode;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive <code>\vfil</code>.
@@ -81,6 +82,18 @@ public class Vfil extends AbstractVerticalCode implements VerticalSkip {
     }
 
     /**
+     * This method takes the first token and executes it. The result is placed
+     * on the stack. This operation might have side effects. To execute a token
+     * it might be necessary to consume further tokens.
+     *
+     * @param prefix the prefix controlling the execution
+     * @param context the interpreter context
+     * @param source the token source
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
+     *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -89,13 +102,21 @@ public class Vfil extends AbstractVerticalCode implements VerticalSkip {
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws InterpreterException {
+            throws InterpreterException, ConfigurationException {
 
         ensureVerticalMode(typesetter);
         typesetter.add(FIL);
     }
 
     /**
+     * This method acquires a vertical glue.
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter
+     *
+     * @return the amount of vertical skip
+     *
      * @see org.extex.unit.tex.typesetter.spacing.VerticalSkip#getGlue(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,

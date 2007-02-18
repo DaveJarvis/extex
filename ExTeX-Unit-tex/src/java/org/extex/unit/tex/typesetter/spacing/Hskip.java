@@ -74,6 +74,17 @@ public class Hskip extends AbstractHorizontalCode implements HorizontalSkip {
     }
 
     /**
+     * This method takes the first token and executes it. The result is placed
+     * on the stack. This operation might have side effects. To execute a token
+     * it might be necessary to consume further tokens.
+     *
+     * @param prefix the prefix controlling the execution
+     * @param context the interpreter context
+     * @param source the token source
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -94,6 +105,16 @@ public class Hskip extends AbstractHorizontalCode implements HorizontalSkip {
     }
 
     /**
+     * This method acquires a vertical glue.
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter
+     *
+     * @return the amount of vertical skip
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.unit.tex.typesetter.spacing.HorizontalSkip#getGlue(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
