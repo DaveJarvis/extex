@@ -59,6 +59,7 @@ public interface ContextCode {
      * @param code the code for the token
      * @param global the indicator for the scope; <code>true</code> means all
      *            groups; otherwise the current group is affected only
+     *
      * @throws InterpreterException in case of an error
      *
      * @see #getCode(CodeToken)

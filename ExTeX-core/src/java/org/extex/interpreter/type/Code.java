@@ -24,6 +24,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.typesetter.Typesetter;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This is the interface for all expandable or executable classes.
@@ -75,8 +76,10 @@ public interface Code {
      * @param typesetter the typesetter
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      */
     void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException;
+            Typesetter typesetter)
+            throws InterpreterException;
 
 }

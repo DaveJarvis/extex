@@ -46,6 +46,7 @@ public interface CountConvertible {
      * @return the converted value
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      */
     long convertCount(Context context, TokenSource source, Typesetter typesetter)
             throws InterpreterException;

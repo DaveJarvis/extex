@@ -50,8 +50,7 @@ public interface CoreFontFactory extends ResourceFinder {
      * @throws ConfigurationException from the resource finder.
      * @throws FontException if a font error occurred.
      */
-    ExtexFont getInstance(FontKey key) throws ConfigurationException,
-            FontException;
+    ExtexFont getInstance(FontKey key) throws FontException;
 
     /**
      * Returns a font key for the font.
@@ -90,12 +89,11 @@ public interface CoreFontFactory extends ResourceFinder {
     FontKey getFontKey(FontKey fontKey, FixedDimen size);
 
     /**
-     * Create a manager for the backend font.
+     * Create a manager for the back-end font.
      *
-     * @param fontTypes the font types, which the backend can use.
+     * @param fontTypes the font types, which the back-end can use.
      * @return the new manager.
      * @throws ConfigurationException rom the configuration system.
      */
-    BackendFontManager createManager(StringList fontTypes)
-            throws ConfigurationException;
+    BackendFontManager createManager(StringList fontTypes);
 }

@@ -47,6 +47,7 @@ public interface Boxable extends BoxOrRule {
      * @return an appropriate Box
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      */
     Box getBox(Context context, TokenSource source, Typesetter typesetter,
             Token insert) throws InterpreterException;

@@ -30,7 +30,6 @@ import org.extex.typesetter.type.noad.Noad;
 import org.extex.typesetter.type.noad.NoadList;
 import org.extex.typesetter.type.noad.util.MathContext;
 import org.extex.typesetter.type.noad.util.MathSpacing;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides a container for a delimiter consisting of a class, a
@@ -238,8 +237,7 @@ public class MathDelimiter implements Noad, Serializable {
     public void typeset(final Noad previousNoad, final NoadList noads,
             final int index, final NodeList list,
             final MathContext mathContext, final Logger logger)
-            throws TypesetterException,
-                ConfigurationException {
+            throws TypesetterException {
 
         typeset(list, mathContext, null, null);
     }
@@ -260,8 +258,7 @@ public class MathDelimiter implements Noad, Serializable {
      */
     public void typeset(final NodeList list, final MathContext mathContext,
             final FixedDimen height, final FixedDimen depth)
-            throws TypesetterException,
-                ConfigurationException {
+            throws TypesetterException {
 
         if (mathClass == null && smallChar == null && largeChar == null) {
             return;

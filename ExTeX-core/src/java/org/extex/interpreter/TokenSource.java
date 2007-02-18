@@ -33,6 +33,7 @@ import org.extex.type.UnicodeChar;
 import org.extex.typesetter.Typesetter;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.exception.NotObservableException;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This interface describes a class to acquire
@@ -116,8 +117,11 @@ public interface TokenSource {
      * @return the expanded tokens
      *
      * @throws GeneralException in case of an error
+     * @throws ConfigurationException in case of an configuration problem
      */
-    Tokens expand(Tokens tokens, Typesetter typesetter) throws GeneralException;
+    Tokens expand(Tokens tokens, Typesetter typesetter)
+            throws GeneralException,
+                ConfigurationException;
 
     /**
      * Parse the specification of a box.
@@ -148,9 +152,11 @@ public interface TokenSource {
      * @return the box gathered
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      */
     Box getBox(Flags flags, Context context, Typesetter typesetter, Token insert)
-            throws InterpreterException;
+            throws InterpreterException,
+                ConfigurationException;
 
     /**
      * Get the next token from the token stream and check that it is a control
@@ -755,7 +761,7 @@ public interface TokenSource {
      *
      * @throws InterpreterException in case of an error
      * @throws NotObservableException in case that the named observer is not
-     *             accessible
+     *   accessible
      */
     void update(String name, String text)
             throws InterpreterException,

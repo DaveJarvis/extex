@@ -49,6 +49,7 @@ public interface DimenConvertible {
      * @return the converted value in sp
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      */
     long convertDimen(Context context, TokenSource source, Typesetter typesetter)
             throws InterpreterException;

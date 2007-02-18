@@ -24,7 +24,7 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
-
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This is an interface for those primitives which are protected during
@@ -48,8 +48,9 @@ public interface CodeExpander {
      * @param tokens the target token list
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      */
     void expandCode(Context context, TokenSource source, Typesetter typesetter,
-            Tokens tokens) throws InterpreterException;
+            Tokens tokens) throws InterpreterException, ConfigurationException;
 
 }

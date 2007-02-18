@@ -678,8 +678,7 @@ public class MockContext implements Context, TypesetterOptions {
      *      org.extex.interpreter.context.tc.Direction,
      *      boolean)
      */
-    public void set(final Direction direction, final boolean global)
-            throws ConfigurationException {
+    public void set(final Direction direction, final boolean global) {
 
         throw new RuntimeException("unimplemented");
     }
@@ -689,8 +688,7 @@ public class MockContext implements Context, TypesetterOptions {
      *      org.extex.interpreter.type.font.Font,
      *      boolean)
      */
-    public void set(final Font font, final boolean global)
-            throws ConfigurationException {
+    public void set(final Font font, final boolean global) {
 
         ((TypesettingContextImpl) tc).setFont(font);
     }
@@ -700,8 +698,7 @@ public class MockContext implements Context, TypesetterOptions {
      *      org.extex.language.Language,
      *      boolean)
      */
-    public void set(final Language language, final boolean global)
-            throws ConfigurationException {
+    public void set(final Language language, final boolean global) {
 
         throw new RuntimeException("unimplemented");
     }
@@ -747,7 +744,7 @@ public class MockContext implements Context, TypesetterOptions {
      * @see org.extex.interpreter.context.Context#setCatcode(org.extex.type.UnicodeChar, org.extex.scanner.type.Catcode, boolean)
      */
     public void setCatcode(final UnicodeChar c, final Catcode cc,
-            final boolean global) throws HelpingException {
+            final boolean global) {
 
         throw new RuntimeException("unimplemented");
     }
@@ -758,8 +755,7 @@ public class MockContext implements Context, TypesetterOptions {
      *      org.extex.interpreter.type.Code,
      *      boolean)
      */
-    public void setCode(final CodeToken t, final Code code, final boolean global)
-            throws InterpreterException {
+    public void setCode(final CodeToken t, final Code code, final boolean global) {
 
         throw new RuntimeException("unimplemented");
     }
@@ -768,7 +764,7 @@ public class MockContext implements Context, TypesetterOptions {
      * @see org.extex.interpreter.context.ContextCount#setCount(java.lang.String, long, boolean)
      */
     public void setCount(final String name, final long value,
-            final boolean global) throws InterpreterException {
+            final boolean global) {
 
         throw new RuntimeException("unimplemented");
     }
@@ -778,8 +774,7 @@ public class MockContext implements Context, TypesetterOptions {
      *      java.lang.String,
      *      long)
      */
-    public void setCountOption(final String name, final long value)
-            throws GeneralException {
+    public void setCountOption(final String name, final long value) {
 
     }
 

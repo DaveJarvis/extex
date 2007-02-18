@@ -37,7 +37,7 @@ public interface CodeObservable {
      * observer is invoked.
      *
      * @param token the token to be observed. This should be a macro or
-     * active character token.
+     *   active character token.
      * @param observer the observer to receive the events
      */
     void registerCodeChangeObserver(Token token, CodeObserver observer);
@@ -49,7 +49,7 @@ public interface CodeObservable {
      * observer is invoked.
      *
      * @param name the token to be observed. This should be a macro or
-     * active character token.
+     *   active character token.
      * @param observer the observer to receive the events
      */
     void unregisterCodeChangeObserver(Token name, CodeObserver observer);

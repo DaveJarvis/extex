@@ -86,8 +86,7 @@ public class TypesettingContextFactory extends AbstractFactory {
      * @see org.extex.util.framework.configuration.Configurable#configure(
      *      org.extex.util.framework.configuration.Configuration)
      */
-    public void configure(final Configuration configuration)
-            throws ConfigurationException {
+    public void configure(final Configuration configuration) {
 
         super.configure(configuration);
 
@@ -208,7 +207,7 @@ public class TypesettingContextFactory extends AbstractFactory {
      * @throws ConfigurationException in case of a configuration problem
      */
     public TypesettingContext newInstance(final TypesettingContext context,
-            final Language language) throws ConfigurationException {
+            final Language language) {
 
         ModifiableTypesettingContext c = newInstance();
         c.set(context);
@@ -229,7 +228,7 @@ public class TypesettingContextFactory extends AbstractFactory {
      * @throws ConfigurationException in case of a configuration problem
      */
     public TypesettingContext newInstance(final TypesettingContext tc,
-            final String language) throws ConfigurationException {
+            final String language) {
 
         ModifiableTypesettingContext c = newInstance();
         c.set(tc);
@@ -255,7 +254,7 @@ public class TypesettingContextFactory extends AbstractFactory {
      *
      * @throws ConfigurationException in case of an error
      */
-    public TypesettingContext initial() throws ConfigurationException {
+    public TypesettingContext initial() {
 
         ModifiableTypesettingContext tc = newInstance();
         if (languageManager != null) {
@@ -274,8 +273,7 @@ public class TypesettingContextFactory extends AbstractFactory {
      *
      * @throws ConfigurationException in case of an error
      */
-    public TypesettingContext newInstance(final TypesettingContext tc)
-            throws ConfigurationException {
+    public TypesettingContext newInstance(final TypesettingContext tc) {
 
         if (languageManager != null) {
             return newInstance(tc, languageManager.getLanguage(tc.getLanguage()

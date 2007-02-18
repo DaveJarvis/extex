@@ -80,7 +80,7 @@ public class DocumentWriterFactory extends AbstractFactory {
      * @throws ConfigurationException in case of an error
      */
     public DocumentWriterFactory(final Configuration configuration,
-            final Logger logger) throws ConfigurationException {
+            final Logger logger) {
 
         super();
         enableLogging(logger);
@@ -116,7 +116,7 @@ public class DocumentWriterFactory extends AbstractFactory {
     public DocumentWriter newInstance(final String type,
             final DocumentWriterOptions options,
             final OutputStreamFactory outFactory)
-            throws DocumentWriterException, ConfigurationException {
+            throws DocumentWriterException {
 
         String outputType = type;
         if (outputType == null || "".equals(outputType)) {

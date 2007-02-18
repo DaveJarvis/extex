@@ -23,7 +23,6 @@ import java.util.logging.Logger;
 
 import org.extex.util.framework.AbstractFactory;
 import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides a factory for a
@@ -48,8 +47,7 @@ public class ContextFactory extends AbstractFactory {
      *
      * @throws ConfigurationException in case of an error in the configuration.
      */
-    public ContextFactory(final Configuration configuration, final Logger logger)
-            throws ConfigurationException {
+    public ContextFactory(final Configuration configuration, final Logger logger) {
 
         super();
         enableLogging(logger);
@@ -69,7 +67,7 @@ public class ContextFactory extends AbstractFactory {
      *
      * @throws ConfigurationException in case of an configuration error
      */
-    public Context newInstance(final String type) throws ConfigurationException {
+    public Context newInstance(final String type) {
 
         return (Context) createInstance(type, Context.class);
     }

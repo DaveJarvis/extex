@@ -78,8 +78,7 @@ public class ResourceFinderImpl
      *
      * @throws ConfigurationException in case of an error in the configuration
      */
-    public ResourceFinderImpl(final Configuration theConfiguration)
-            throws ConfigurationException {
+    public ResourceFinderImpl(final Configuration theConfiguration) {
 
         super();
         this.configuration = theConfiguration;
@@ -111,6 +110,16 @@ public class ResourceFinderImpl
     }
 
     /**
+     * Find a resource which can be used for reading. If the search fails then
+     * <code>null</code> is returned.
+     *
+     * @param name the base name of the resource
+     * @param type the type, i.e. the extension
+     *
+     * @return the file or <code>null</code> if none could be found
+     *
+     * @throws ConfigurationException in case of an exception
+     *
      * @see org.extex.util.resource.ResourceFinder#findResource(
      *      java.lang.String,
      *      java.lang.String)
@@ -182,6 +191,10 @@ public class ResourceFinderImpl
     }
 
     /**
+     * Setter for the interaction provider.
+     *
+     * @param provider the provider
+     *
      * @see org.extex.util.resource.InteractionAware#setInteractionProvider(
      *      org.extex.util.resource.InteractionProvider)
      */

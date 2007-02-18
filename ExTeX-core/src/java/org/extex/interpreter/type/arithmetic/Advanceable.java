@@ -63,8 +63,10 @@ public interface Advanceable {
      * @param typesetter the typesetter
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      */
     void advance(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException;
+            Typesetter typesetter)
+            throws InterpreterException;
 
 }

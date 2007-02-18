@@ -87,6 +87,7 @@ public class Box implements BoxOrRule, Serializable {
      * @param startToken the token which started the group
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      */
     public Box(final Context context, final TokenSource source,
             final Typesetter typesetter, final boolean isHorizontal,
@@ -106,11 +107,11 @@ public class Box implements BoxOrRule, Serializable {
         ListMaker lm;
 
         if (isHorizontal) {
-            lm = new RestrictedHorizontalListMaker(typesetter.getManager(),
-                    source.getLocator());
+            lm = new RestrictedHorizontalListMaker(//
+                typesetter.getManager(), source.getLocator());
         } else {
-            lm = new InnerVerticalListMaker(typesetter.getManager(), source
-                    .getLocator());
+            lm = new InnerVerticalListMaker(//
+                typesetter.getManager(), source.getLocator());
         }
         typesetter.push(lm);
 
@@ -118,19 +119,13 @@ public class Box implements BoxOrRule, Serializable {
             context.openGroup(groupType, source.getLocator(), startToken);
             source.push(insert);
             source.executeGroup();
-        } catch (ConfigurationException e) {
-            throw new InterpreterException(e);
         } finally {
-            try {
-                while (typesetter.getListMaker() != lm) {
-                    typesetter.add(typesetter
-                            .complete((TypesetterOptions) context));
-                }
-
-                nodes = typesetter.complete((TypesetterOptions) context);
-            } catch (ConfigurationException e) {
-                throw new InterpreterException(e);
+            while (typesetter.getListMaker() != lm) {
+                typesetter
+                    .add(typesetter.complete((TypesetterOptions) context));
             }
+
+            nodes = typesetter.complete((TypesetterOptions) context);
         }
     }
 

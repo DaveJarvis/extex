@@ -175,7 +175,7 @@ public interface Context
 
     /**
      * Getter for the {@link org.extex.interpreter.type.box.Box box}
-     * register. Count registers are named, either with a number or an
+     * register. Box registers are named, either with a number or an
      * arbitrary string. The numbered registers where limited to 256 in
      * <logo>TeX</logo>.
      * This restriction does no longer hold for <logo>ExTeX</logo>.
@@ -460,7 +460,7 @@ public interface Context
      *
      * @see #getTypesettingContext()
      */
-    void set(Color color, boolean global) throws ConfigurationException;
+    void set(Color color, boolean global);
 
     /**
      * Setter for the direction in the current typesetting context.
@@ -473,7 +473,7 @@ public interface Context
      *
      * @see #getTypesettingContext()
      */
-    void set(Direction direction, boolean global) throws ConfigurationException;
+    void set(Direction direction, boolean global);
 
     /**
      * Setter for the font in the current typesetting context.
@@ -486,7 +486,7 @@ public interface Context
      *
      * @see #getTypesettingContext()
      */
-    void set(Font font, boolean global) throws ConfigurationException;
+    void set(Font font, boolean global);
 
     /**
      * Setter for the language in the current typesetting context.
@@ -499,7 +499,7 @@ public interface Context
      *
      * @see #getTypesettingContext()
      */
-    void set(Language language, boolean global) throws ConfigurationException;
+    void set(Language language, boolean global);
 
     /**
      * Setter for a value from an extended section of the context.
@@ -611,8 +611,7 @@ public interface Context
      *
      * @see #getLanguageManager()
      */
-    void setLanguageManager(LanguageManager manager)
-            throws ConfigurationException;
+    void setLanguageManager(LanguageManager manager);
 
     /**
      * Declare the translation from an upper case character to a lower case

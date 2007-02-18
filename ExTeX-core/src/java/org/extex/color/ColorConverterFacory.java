@@ -23,8 +23,6 @@ import java.util.logging.Logger;
 
 import org.extex.util.framework.AbstractFactory;
 import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-
 
 /**
  * This is the factory to provide an instance of a color converter.
@@ -42,8 +40,7 @@ public class ColorConverterFacory extends AbstractFactory {
      *
      * @throws ConfigurationException in case of an error
      */
-    public ColorConverterFacory(final Configuration config, final Logger logger)
-            throws ConfigurationException {
+    public ColorConverterFacory(final Configuration config, final Logger logger) {
 
         super();
         enableLogging(logger);
@@ -60,8 +57,7 @@ public class ColorConverterFacory extends AbstractFactory {
      *
      * @throws ConfigurationException in case of a problem in the configuration
      */
-    public ColorConverter newInstance(final String type)
-            throws ConfigurationException {
+    public ColorConverter newInstance(final String type) {
 
         return (ColorConverter) createInstance(type, ColorConverter.class);
     }

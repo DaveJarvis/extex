@@ -123,13 +123,12 @@ public interface ContextGroup {
      * @param start the token which started the group
      *
      * @throws ConfigurationException in case of an error in the configuration,
-     *             e.g. the class for the group can not be determined.
+     *   e.g. the class for the group can not be determined.
      * @throws InterpreterException in case of an error
      *
      * @see #closeGroup(Typesetter, TokenSource)
      */
     void openGroup(GroupType id, Locator locator, Token start)
-            throws ConfigurationException,
-                InterpreterException;
+            throws InterpreterException;
 
 }

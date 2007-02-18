@@ -24,6 +24,7 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This is a interface to mark those classes which are able to provide a
@@ -43,9 +44,12 @@ public interface Theable {
      * @param typesetter the typesetter to use
      *
      * @return the description of the primitive as list of Tokens
+     *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      */
     Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws InterpreterException;
+            throws InterpreterException,
+                ConfigurationException;
 
 }

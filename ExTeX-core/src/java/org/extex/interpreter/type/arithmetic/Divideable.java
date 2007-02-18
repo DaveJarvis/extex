@@ -61,8 +61,10 @@ public interface Divideable {
      * @param typesetter the typesetter
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      */
     void divide(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException;
+            Typesetter typesetter)
+            throws InterpreterException;
 
 }

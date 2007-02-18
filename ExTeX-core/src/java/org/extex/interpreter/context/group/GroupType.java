@@ -84,6 +84,13 @@ public abstract class GroupType implements Serializable {
         }
 
         /**
+         * This is the entry point to separate the different group types.
+         *
+         * @param visitor the group type visitor
+         * @param arg an arbitrary argument to be used by the visitor
+         *
+         * @return some object
+         *
          * @see org.extex.interpreter.context.group.GroupType#visit(
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
@@ -120,6 +127,13 @@ public abstract class GroupType implements Serializable {
         }
 
         /**
+         * This is the entry point to separate the different group types.
+         *
+         * @param visitor the group type visitor
+         * @param arg an arbitrary argument to be used by the visitor
+         *
+         * @return some object
+         *
          * @see org.extex.interpreter.context.group.GroupType#visit(
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
@@ -156,6 +170,13 @@ public abstract class GroupType implements Serializable {
         }
 
         /**
+         * This is the entry point to separate the different group types.
+         *
+         * @param visitor the group type visitor
+         * @param arg an arbitrary argument to be used by the visitor
+         *
+         * @return some object
+         *
          * @see org.extex.interpreter.context.group.GroupType#visit(
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
@@ -192,6 +213,13 @@ public abstract class GroupType implements Serializable {
         }
 
         /**
+         * This is the entry point to separate the different group types.
+         *
+         * @param visitor the group type visitor
+         * @param arg an arbitrary argument to be used by the visitor
+         *
+         * @return some object
+         *
          * @see org.extex.interpreter.context.group.GroupType#visit(
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
@@ -228,6 +256,13 @@ public abstract class GroupType implements Serializable {
         }
 
         /**
+         * This is the entry point to separate the different group types.
+         *
+         * @param visitor the group type visitor
+         * @param arg an arbitrary argument to be used by the visitor
+         *
+         * @return some object
+         *
          * @see org.extex.interpreter.context.group.GroupType#visit(
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
@@ -264,6 +299,13 @@ public abstract class GroupType implements Serializable {
         }
 
         /**
+         * This is the entry point to separate the different group types.
+         *
+         * @param visitor the group type visitor
+         * @param arg an arbitrary argument to be used by the visitor
+         *
+         * @return some object
+         *
          * @see org.extex.interpreter.context.group.GroupType#visit(
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
@@ -300,6 +342,13 @@ public abstract class GroupType implements Serializable {
         }
 
         /**
+         * This is the entry point to separate the different group types.
+         *
+         * @param visitor the group type visitor
+         * @param arg an arbitrary argument to be used by the visitor
+         *
+         * @return some object
+         *
          * @see org.extex.interpreter.context.group.GroupType#visit(
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
@@ -336,6 +385,13 @@ public abstract class GroupType implements Serializable {
         }
 
         /**
+         * This is the entry point to separate the different group types.
+         *
+         * @param visitor the group type visitor
+         * @param arg an arbitrary argument to be used by the visitor
+         *
+         * @return some object
+         *
          * @see org.extex.interpreter.context.group.GroupType#visit(
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
@@ -372,6 +428,13 @@ public abstract class GroupType implements Serializable {
         }
 
         /**
+         * This is the entry point to separate the different group types.
+         *
+         * @param visitor the group type visitor
+         * @param arg an arbitrary argument to be used by the visitor
+         *
+         * @return some object
+         *
          * @see org.extex.interpreter.context.group.GroupType#visit(
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
@@ -408,6 +471,13 @@ public abstract class GroupType implements Serializable {
         }
 
         /**
+         * This is the entry point to separate the different group types.
+         *
+         * @param visitor the group type visitor
+         * @param arg an arbitrary argument to be used by the visitor
+         *
+         * @return some object
+         *
          * @see org.extex.interpreter.context.group.GroupType#visit(
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
@@ -444,6 +514,13 @@ public abstract class GroupType implements Serializable {
         }
 
         /**
+         * This is the entry point to separate the different group types.
+         *
+         * @param visitor the group type visitor
+         * @param arg an arbitrary argument to be used by the visitor
+         *
+         * @return some object
+         *
          * @see org.extex.interpreter.context.group.GroupType#visit(
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
@@ -480,6 +557,13 @@ public abstract class GroupType implements Serializable {
         }
 
         /**
+         * This is the entry point to separate the different group types.
+         *
+         * @param visitor the group type visitor
+         * @param arg an arbitrary argument to be used by the visitor
+         *
+         * @return some object
+         *
          * @see org.extex.interpreter.context.group.GroupType#visit(
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
@@ -516,6 +600,13 @@ public abstract class GroupType implements Serializable {
         }
 
         /**
+         * This is the entry point to separate the different group types.
+         *
+         * @param visitor the group type visitor
+         * @param arg an arbitrary argument to be used by the visitor
+         *
+         * @return some object
+         *
          * @see org.extex.interpreter.context.group.GroupType#visit(
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
@@ -552,6 +643,13 @@ public abstract class GroupType implements Serializable {
         }
 
         /**
+         * This is the entry point to separate the different group types.
+         *
+         * @param visitor the group type visitor
+         * @param arg an arbitrary argument to be used by the visitor
+         *
+         * @return some object
+         *
          * @see org.extex.interpreter.context.group.GroupType#visit(
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
@@ -588,6 +686,13 @@ public abstract class GroupType implements Serializable {
         }
 
         /**
+         * This is the entry point to separate the different group types.
+         *
+         * @param visitor the group type visitor
+         * @param arg an arbitrary argument to be used by the visitor
+         *
+         * @return some object
+         *
          * @see org.extex.interpreter.context.group.GroupType#visit(
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
@@ -624,6 +729,13 @@ public abstract class GroupType implements Serializable {
         }
 
         /**
+         * This is the entry point to separate the different group types.
+         *
+         * @param visitor the group type visitor
+         * @param arg an arbitrary argument to be used by the visitor
+         *
+         * @return some object
+         *
          * @see org.extex.interpreter.context.group.GroupType#visit(
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
@@ -660,6 +772,13 @@ public abstract class GroupType implements Serializable {
         }
 
         /**
+         * This is the entry point to separate the different group types.
+         *
+         * @param visitor the group type visitor
+         * @param arg an arbitrary argument to be used by the visitor
+         *
+         * @return some object
+         *
          * @see org.extex.interpreter.context.group.GroupType#visit(
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
