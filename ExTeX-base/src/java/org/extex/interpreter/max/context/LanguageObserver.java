@@ -24,7 +24,6 @@ import org.extex.interpreter.context.observer.count.CountObserver;
 import org.extex.interpreter.context.observer.tokens.TokensObserver;
 import org.extex.interpreter.type.count.Count;
 import org.extex.interpreter.type.tokens.Tokens;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This observer is meant for keeping the current typesetting context in sync
@@ -49,13 +48,22 @@ public class LanguageObserver implements CountObserver, TokensObserver {
     }
 
     /**
+     * Receive a notification on a count change.
+     *
+     * @param context the interpreter context
+     * @param name the token containing the name of the changed Count.
+     * @param value the new value assigned to the name. In case of
+     *  <code>null</code> the name is unbound.
+     *
+     * @throws ConfigurationException in case of a problem
+     *
      * @see org.extex.interpreter.context.observer.count.CountObserver#receiveCountChange(
      *      org.extex.interpreter.context.ContextInternals,
      *      java.lang.String,
      *      org.extex.interpreter.type.count.Count)
      */
     public void receiveCountChange(final ContextInternals context,
-            final String name, final Count value) throws ConfigurationException {
+            final String name, final Count value) {
 
         if ("language".equals(name)) { // this should never fail; just to be sure
             Tokens lang = context.getToks("lang");
@@ -67,14 +75,22 @@ public class LanguageObserver implements CountObserver, TokensObserver {
     }
 
     /**
+     * Receive a notification on a tokens change.
+     *
+     * @param context the interpreter context
+     * @param name the token containing the name of the changed tokens.
+     * @param value the new value assigned to the name. In case of
+     *  <code>null</code> the name is unbound.
+     *
+     * @throws Exception in case of a problem
+     *
      * @see org.extex.interpreter.context.observer.tokens.TokensObserver#receiveTokensChange(
      *      org.extex.interpreter.context.ContextInternals,
      *      java.lang.String,
      *      org.extex.interpreter.type.tokens.Tokens)
      */
     public void receiveTokensChange(final ContextInternals context,
-            final String name, final Tokens value)
-            throws ConfigurationException {
+            final String name, final Tokens value) {
 
         if ("lang".equals(name)) { // this should never fail; just to be sure
 

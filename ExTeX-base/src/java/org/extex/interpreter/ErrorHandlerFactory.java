@@ -22,7 +22,6 @@ package org.extex.interpreter;
 import org.extex.main.errorHandler.editHandler.EditHandler;
 import org.extex.util.framework.AbstractFactory;
 import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This is the factory for instances of
@@ -88,8 +87,7 @@ public class ErrorHandlerFactory extends AbstractFactory {
      *
      * @throws ConfigurationException in case of an error during configuration
      */
-    public ErrorHandlerFactory(final Configuration configuration)
-            throws ConfigurationException {
+    public ErrorHandlerFactory(final Configuration configuration) {
 
         super();
         configure(configuration);
@@ -108,8 +106,7 @@ public class ErrorHandlerFactory extends AbstractFactory {
      *
      * @throws ConfigurationException in case of an configuration error
      */
-    public ErrorHandler newInstance(final String type)
-            throws ConfigurationException {
+    public ErrorHandler newInstance(final String type) {
 
         ErrorHandler errorHandler =
                 (ErrorHandler) createInstance(type, ErrorHandler.class);

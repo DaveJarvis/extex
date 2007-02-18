@@ -67,8 +67,7 @@ public class GroupFactory {
      *
      * @throws ConfigurationException in case of an error in the configuration.
      */
-    public GroupFactory(final Configuration config)
-            throws ConfigurationException {
+    public GroupFactory(final Configuration config) {
 
         super();
 
@@ -105,8 +104,7 @@ public class GroupFactory {
      * @throws ConfigurationException in case of an error in the configuration.
      */
     public Group newInstance(final Group next, final Locator locator,
-            final Token start, final GroupType type)
-            throws ConfigurationException {
+            final Token start, final GroupType type) {
 
         Group group;
 

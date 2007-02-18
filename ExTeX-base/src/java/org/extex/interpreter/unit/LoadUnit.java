@@ -105,8 +105,7 @@ public final class LoadUnit extends AbstractFactory {
             final Context context, final TokenSource source,
             final Typesetter typesetter, final Logger logger,
             final OutputStreamFactory outputFactory)
-            throws ConfigurationException,
-                GeneralException {
+            throws GeneralException {
 
         TokenFactory tokenFactory = context.getTokenFactory();
         LoadUnit primitiveFactory = new LoadUnit();
@@ -211,8 +210,7 @@ public final class LoadUnit extends AbstractFactory {
             final TokenFactory tokenFactory, final Context context,
             final Typesetter typesetter, final Logger outputLogger,
             final OutputStreamFactory outputFactory)
-            throws GeneralException,
-                ConfigurationException {
+            throws GeneralException {
 
         enableLogging(outputLogger);
         UnicodeChar esc = UnicodeChar.get('\\');

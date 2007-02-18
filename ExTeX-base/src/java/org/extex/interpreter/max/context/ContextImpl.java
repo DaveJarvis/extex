@@ -491,7 +491,7 @@ public class ContextImpl
             for (int i = 0; i < size; i++) {
                 try {
                     ((GroupObserver) groupObservers.get(i))
-                            .receiveCloseGroup(this);
+                        .receiveCloseGroup(this);
                 } catch (InterpreterException e) {
                     throw e;
                 } catch (Exception e) {
@@ -511,14 +511,14 @@ public class ContextImpl
      * @see org.extex.util.framework.configuration.Configurable#configure(
      *      org.extex.util.framework.configuration.Configuration)
      */
-    public void configure(final Configuration configuration)
-            throws ConfigurationException {
+    public void configure(final Configuration configuration) {
 
-        magnificationMax = configuration.getValueAsInteger(
-                "maximalMagnification", (int) MAGNIFICATION_MAX);
+        magnificationMax =
+                configuration.getValueAsInteger("maximalMagnification",
+                    (int) MAGNIFICATION_MAX);
 
-        groupFactory = new GroupFactory(configuration
-                .getConfiguration(GROUP_TAG));
+        groupFactory =
+                new GroupFactory(configuration.getConfiguration(GROUP_TAG));
         if (group == null) {
             try {
                 openGroup(GroupType.BOTTOM_LEVEL_GROUP, null, null);
@@ -527,12 +527,12 @@ public class ContextImpl
             }
         }
 
-        Configuration typesettingConfig = configuration
-                .getConfiguration(TYPESETTING_CONTEXT_TAG);
+        Configuration typesettingConfig =
+                configuration.getConfiguration(TYPESETTING_CONTEXT_TAG);
 
         if (typesettingConfig == null) {
             throw new ConfigurationMissingException(TYPESETTING_CONTEXT_TAG,
-                    configuration.toString());
+                configuration.toString());
         }
         if (typesettingContextFactory == null) {
             typesettingContextFactory = new TypesettingContextFactory();
@@ -544,8 +544,9 @@ public class ContextImpl
         if (languageManager != null) {
             typesettingContextFactory.setLanguageManager(languageManager);
             tc = typesettingContextFactory.initial();
-            tc = typesettingContextFactory.newInstance(tc, languageManager
-                    .getLanguage("0"));
+            tc =
+                    typesettingContextFactory.newInstance(tc, languageManager
+                        .getLanguage("0"));
         } else {
             tc = typesettingContextFactory.initial();
         }
@@ -888,6 +889,13 @@ public class ContextImpl
     }
 
     /**
+     * Getter for the array of group information describing the currently open
+     * groups. The elements represent the groups in ascending order. Thus the
+     * element 0 always represents the global group. This one is guaranteed to
+     * be present. This means that the arras has always at least one element.
+     *
+     * @return the array of group infos
+     *
      * @see org.extex.interpreter.context.ContextGroup#getGroupInfos()
      */
     public GroupInfo[] getGroupInfos() {
@@ -897,8 +905,8 @@ public class ContextImpl
 
         Group g = group;
         while (level-- > 0) {
-            gi[level] = new GroupInfoImpl(g.getLocator(), g.getType(), g
-                    .getStart());
+            gi[level] =
+                    new GroupInfoImpl(g.getLocator(), g.getType(), g.getStart());
             g = g.getNext();
         }
 
@@ -957,6 +965,14 @@ public class ContextImpl
     }
 
     /**
+     * Getter for a input file register.  In the case that the named
+     * descriptor doe not exist yet a new one is returned. Especially if the
+     * name is <code>null</code> then the default input stream is used.
+     *
+     * @param name the name or the number of the file register
+     *
+     * @return the input file descriptor
+     *
      * @see org.extex.interpreter.context.Context#getInFile(
      *      java.lang.String)
      */
@@ -966,6 +982,12 @@ public class ContextImpl
     }
 
     /**
+     * Getter for the interaction. The interaction determines how verbose the
+     * actions are reported and how the interaction with the user is performed
+     * in case of an error.
+     *
+     * @return the current interaction
+     *
      * @see org.extex.interpreter.context.Context#getInteraction()
      */
     public Interaction getInteraction() {
@@ -974,19 +996,30 @@ public class ContextImpl
     }
 
     /**
+     * Getter for the hyphenation record for a given language. The language is
+     * used to find the hyphenation table. If the language is not known an
+     * attempt is made to create it. Otherwise the default hyphenation table is
+     * returned.
+     *
+     * @param language the name of the language to use
+     *
+     * @return the hyphenation table for the requested language
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.context.Context#getLanguage(String)
      */
     public Language getLanguage(final String language)
             throws InterpreterException {
 
-        try {
-            return languageManager.getLanguage(language);
-        } catch (ConfigurationException e) {
-            throw new InterpreterException(e);
-        }
+        return languageManager.getLanguage(language);
     }
 
     /**
+     * Getter for the language manager.
+     *
+     * @return the language manager
+     *
      * @see org.extex.interpreter.context.Context#getLanguageManager()
      */
     public LanguageManager getLanguageManager() {
@@ -995,6 +1028,13 @@ public class ContextImpl
     }
 
     /**
+     * Getter for the lccode mapping of upper case characters to their
+     * lower case equivalent.
+     *
+     * @param uc the upper case character
+     *
+     * @return the lower case equivalent or null if none exists
+     *
      * @see org.extex.interpreter.context.Context#getLccode(
      *      org.extex.type.UnicodeChar)
      */
@@ -1004,6 +1044,11 @@ public class ContextImpl
     }
 
     /**
+     * Getter for the magnification factor in per mille. The default value is
+     * 1000. It can only take positive numbers as values.
+     *
+     * @return the magnification factor
+     *
      * @see org.extex.interpreter.context.Context#getMagnification()
      */
     public long getMagnification() {
@@ -1012,6 +1057,12 @@ public class ContextImpl
     }
 
     /**
+     * Getter for the math code of a character.
+     *
+     * @param uc the character index
+     *
+     * @return the math code
+     *
      * @see org.extex.interpreter.context.Context#getMathcode(
      *      org.extex.type.UnicodeChar)
      */
@@ -1021,6 +1072,12 @@ public class ContextImpl
     }
 
     /**
+     * Getter for a muskip register.
+     *
+     * @param name the name or the number of the register
+     *
+     * @return the named muskip or <code>null</code> if none is set
+     *
      * @see org.extex.interpreter.context.Context#getMuskip(
      *      java.lang.String)
      */
@@ -1030,6 +1087,10 @@ public class ContextImpl
     }
 
     /**
+     * Getter for the current name space.
+     *
+     * @return the current name space
+     *
      * @see org.extex.interpreter.context.Context#getNamespace()
      */
     public String getNamespace() {
@@ -1038,6 +1099,12 @@ public class ContextImpl
     }
 
     /**
+     * Getter for an output file descriptor.
+     *
+     * @param name the name or the number of the file register
+     *
+     * @return the output file descriptor
+     *
      * @see org.extex.interpreter.context.Context#getOutFile(
      *      java.lang.String)
      */
@@ -1059,6 +1126,12 @@ public class ContextImpl
     }
 
     /**
+     * Getter for the space factor code of a character.
+     *
+     * @param uc the Unicode character
+     *
+     * @return the space factor code.
+     *
      * @see org.extex.interpreter.context.Context#getSfcode(
      *      org.extex.type.UnicodeChar)
      */
@@ -1068,6 +1141,12 @@ public class ContextImpl
     }
 
     /**
+     * Getter for the split bottom mark.
+     *
+     * @param name the name of the mark
+     *
+     * @return the split bottom mark
+     *
      * @see org.extex.interpreter.context.ContextMark#getSplitBottomMark(
      *      java.lang.Object)
      */
@@ -1077,6 +1156,12 @@ public class ContextImpl
     }
 
     /**
+     * Getter for the split first mark.
+     *
+     * @param name the name of the mark
+     *
+     * @return the split first mark
+     *
      * @see org.extex.interpreter.context.ContextMark#getSplitFirstMark(
      *      java.lang.Object)
      */
@@ -1086,6 +1171,10 @@ public class ContextImpl
     }
 
     /**
+     * Getter for standardTokenStream.
+     *
+     * @return the standardTokenStream
+     *
      * @see org.extex.interpreter.context.Context#getStandardTokenStream()
      */
     public TokenStream getStandardTokenStream() {
@@ -1219,15 +1308,27 @@ public class ContextImpl
     }
 
     /**
+     * This method can be used to open another group. The current group is
+     * pushed onto the stack to be reactivated when the new group will be
+     * closed.
+     *
+     * @param id the type of the group
+     * @param locator the locator for the start
+     * @param start the token which started the group
+     *
+     * @throws ConfigurationException in case of an error in the configuration,
+     *             e.g. the class for the group can not be determined.
+     * @throws InterpreterException in case of an error
+     *
+     * @see #closeGroup(Typesetter, TokenSource)
+     *
      * @see org.extex.interpreter.context.ContextGroup#openGroup(
      *      org.extex.interpreter.context.group.GroupType,
      *      org.extex.type.Locator,
      *      org.extex.scanner.type.token.Token)
      */
     public void openGroup(final GroupType type, final Locator locator,
-            final Token start)
-            throws ConfigurationException,
-                InterpreterException {
+            final Token start) throws InterpreterException {
 
         group = groupFactory.newInstance(group, locator, start, type);
         group.setStandardTokenStream(standardTokenStream);
@@ -1236,7 +1337,7 @@ public class ContextImpl
             for (int i = 0; i < size; i++) {
                 try {
                     ((GroupObserver) groupObservers.get(i))
-                            .receiveOpenGroup(this);
+                        .receiveOpenGroup(this);
                 } catch (InterpreterException e) {
                     throw e;
                 } catch (Exception e) {
@@ -1247,6 +1348,13 @@ public class ContextImpl
     }
 
     /**
+     * Pop the management information for a conditional from the stack and
+     * return it. If the stack is empty then <code>null</code> is returned.
+     *
+     * @return the formerly topmost element from the conditional stack
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.context.Context#popConditional()
      */
     public Conditional popConditional() {
@@ -1262,7 +1370,7 @@ public class ContextImpl
             for (int i = 0; i < size; i++) {
                 try {
                     ((ConditionalObserver) conditionalObservers.get(i))
-                            .receiveEndConditional(this, cond);
+                        .receiveEndConditional(this, cond);
                 } catch (Exception e) {
                     logger.log(Level.INFO, "", e);
                 }
@@ -1272,6 +1380,11 @@ public class ContextImpl
     }
 
     /**
+     * Pop a direction from the direction stack.
+     *
+     * @return the topmost direction on the stack or <code>null</code> if the
+     *   stack is empty
+     *
      * @see org.extex.interpreter.context.Context#popDirection()
      */
     public Direction popDirection() {
@@ -1280,6 +1393,15 @@ public class ContextImpl
     }
 
     /**
+     * Put a value onto the conditional stack.
+     *
+     * @param locator the locator for the start of the if statement
+     * @param value the value to push
+     * @param primitive the name of the primitive which triggered this
+     *  operation
+     * @param branch the branch number
+     * @param neg negation indicator
+     *
      * @see org.extex.interpreter.context.Context#pushConditional(
      *      org.extex.type.Locator,
      *      boolean,
@@ -1292,7 +1414,7 @@ public class ContextImpl
             final long branch, final boolean neg) {
 
         Conditional cond = isIfThenElse
-                //
+        //
                 ? new Conditional(locator, primitive, branch, neg)
                 : new ConditionalSwitch(locator, primitive, branch, neg);
         conditionalStack.add(cond);
@@ -1302,7 +1424,7 @@ public class ContextImpl
             for (int i = 0; i < size; i++) {
                 try {
                     ((ConditionalObserver) conditionalObservers.get(i))
-                            .receiveStartConditional(this, cond);
+                        .receiveStartConditional(this, cond);
                 } catch (Exception e) {
                     logger.log(Level.INFO, "", e);
                 }
@@ -1311,6 +1433,10 @@ public class ContextImpl
     }
 
     /**
+     * Push a direction onto the direction stack.
+     *
+     * @param dir the direction
+     *
      * @see org.extex.interpreter.context.Context#pushDirection(
      *      org.extex.interpreter.context.tc.Direction)
      */
@@ -1335,6 +1461,12 @@ public class ContextImpl
     }
 
     /**
+     * Receive a notification about a load event.
+     *
+     * @param source the token source
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.context.observer.load.LoadedObservable#receiveLoad(
      *      org.extex.interpreter.TokenSource)
      */
@@ -1344,12 +1476,21 @@ public class ContextImpl
         if (loadObservers != null) {
             for (int i = 0; i < loadObservers.size(); i++) {
                 ((LoadedObserver) loadObservers.get(i)).receiveLoaded(this,
-                        source);
+                    source);
             }
         }
     }
 
     /**
+     * Register an observer for code change events.
+     * Code change events are triggered when the assignment of a macro or
+     * active character changes. In this case the appropriate method in the
+     * observer is invoked.
+     *
+     * @param token the token to be observed. This should be a macro or
+     *   active character token.
+     * @param observer the observer to receive the events
+     *
      * @see org.extex.interpreter.context.observer.code.CodeObservable#registerCodeChangeObserver(
      *      org.extex.scanner.type.token.Token,
      *      org.extex.interpreter.context.observer.code.CodeObserver)
@@ -1366,6 +1507,11 @@ public class ContextImpl
     }
 
     /**
+     * Register an observer for conditional events.
+     * Conditional events are triggered when a conditional is started or ended.
+     *
+     * @param observer the observer to receive the events
+     *
      * @see org.extex.interpreter.context.observer.conditional.ConditionalObservable#registerConditionalObserver(
      *      org.extex.interpreter.context.observer.conditional.ConditionalObserver)
      */
@@ -1379,6 +1525,20 @@ public class ContextImpl
     }
 
     /**
+     * Register an observer for count change events.
+     * Count change events are triggered when a value is assigned to a count
+     * register. In this case the appropriate method in the
+     * observer is invoked.
+     * <p>
+     *  A single count register can be observed by giving a name of the count
+     *  register to observe. Only changes to this register trigger the
+     *  notification. If this name is <code>null</code> the changes to all
+     *  registers are reported to the observer.
+     * </p>
+     *
+     * @param name the name or the number of the register
+     * @param observer the observer to receive the events
+     *
      * @see org.extex.interpreter.context.observer.count.CountObservable#registerCountObserver(
      *      java.lang.String,
      *      org.extex.interpreter.context.observer.count.CountObserver)
@@ -1395,6 +1555,20 @@ public class ContextImpl
     }
 
     /**
+     * Register an observer for dimen change events.
+     * Count change events are triggered when a value is assigned to a dimen
+     * register. In this case the appropriate method in the
+     * observer is invoked.
+     * <p>
+     *  A single dimen register can be observed by giving a name of the dimen
+     *  register to observe. Only changes to this register trigger the
+     *  notification. If this name is <code>null</code> the changes to all
+     *  registers are reported to the observer.
+     * </p>
+     *
+     * @param name the name or the number of the register
+     * @param observer the observer to receive the events
+     *
      * @see org.extex.interpreter.context.observer.dimen.DimenObservable#registerDimenObserver(
      *      java.lang.String,
      *      org.extex.interpreter.context.observer.dimen.DimenObserver)
@@ -1411,6 +1585,20 @@ public class ContextImpl
     }
 
     /**
+     * Register an observer for glue change events.
+     * Count change events are triggered when a value is assigned to a glue
+     * register. In this case the appropriate method in the
+     * observer is invoked.
+     * <p>
+     *  A single glue register can be observed by giving a name of the glue
+     *  register to observe. Only changes to this register trigger the
+     *  notification. If this name is <code>null</code> the changes to all
+     *  registers are reported to the observer.
+     * </p>
+     *
+     * @param name the name or the number of the register
+     * @param observer the observer to receive the events
+     *
      * @see org.extex.interpreter.context.observer.glue.GlueObservable#registerGlueObserver(
      *      java.lang.String,
      *      org.extex.interpreter.context.observer.glue.GlueObserver)
@@ -1427,6 +1615,12 @@ public class ContextImpl
     }
 
     /**
+     * Register an observer for group change events.
+     * Group change events are triggered when a group is opened or closed.
+     * In this case the appropriate method in the observer is invoked.
+     *
+     * @param observer the observer to receive the events
+     *
      * @see org.extex.interpreter.context.observer.group.GroupObservable#registerGroupObserver(
      *      org.extex.interpreter.context.observer.group.GroupObserver)
      */
@@ -1439,6 +1633,19 @@ public class ContextImpl
     }
 
     /**
+     * Register an observer for interaction mode change events.
+     * Interaction mode change events are triggered when a new value is assigned
+     * to the interaction mode. In this case the appropriate method in the
+     * observer is invoked.
+     * <p>
+     *  A single count register can be observed by giving a name of the count
+     *  register to observe. Only changes to this register trigger the
+     *  notification. If this name is <code>null</code> the changes to all
+     *  registers are reported to the observer.
+     * </p>
+     *
+     * @param observer the observer to receive the events
+     *
      * @see org.extex.interpreter.context.observer.interaction.InteractionObservable#registerInteractionObserver(
      *      org.extex.interpreter.context.observer.interaction.InteractionObserver)
      */
@@ -1449,6 +1656,11 @@ public class ContextImpl
     }
 
     /**
+     * Register an observer for load events.
+     * Code change events are triggered when the context is loaded.
+     *
+     * @param observer the observer to receive the events
+     *
      * @see org.extex.interpreter.context.observer.load.LoadedObservable#registerLoadObserver(
      *      org.extex.interpreter.context.observer.load.LoadedObserver)
      */
@@ -1461,6 +1673,15 @@ public class ContextImpl
     }
 
     /**
+     * Register an observer for tokens change events.
+     * Tokens change events are triggered when an assignment to a tokens
+     * register is performed. In this case the appropriate method in the
+     * observer is invoked.
+     *
+     * @param name the token to be observed. This should be a macro or
+     *  active character token.
+     * @param observer the observer to receive the events
+     *
      * @see org.extex.interpreter.context.observer.tokens.TokensObservable#registerTokensObserver(
      *      java.lang.String,
      *      org.extex.interpreter.context.observer.tokens.TokensObserver)
@@ -1493,7 +1714,7 @@ public class ContextImpl
             int len = observerList.size();
             for (int i = 0; i < len; i++) {
                 ((CodeObserver) observerList.get(i)).receiveCodeChange(this, t,
-                        code);
+                    code);
             }
         } catch (InterpreterException e) {
             throw e;
@@ -1518,7 +1739,7 @@ public class ContextImpl
             int len = observerList.size();
             for (int i = 0; i < len; i++) {
                 ((CountObserver) observerList.get(i)).receiveCountChange(this,
-                        name, count);
+                    name, count);
             }
         } catch (InterpreterException e) {
             throw e;
@@ -1543,7 +1764,7 @@ public class ContextImpl
             int len = observerList.size();
             for (int i = 0; i < len; i++) {
                 ((DimenObserver) observerList.get(i)).receiveDimenChange(this,
-                        name, dimen);
+                    name, dimen);
             }
         } catch (InterpreterException e) {
             throw e;
@@ -1568,7 +1789,7 @@ public class ContextImpl
             int len = observerList.size();
             for (int i = 0; i < len; i++) {
                 ((GlueObserver) observerList.get(i)).receiveGlueChange(this,
-                        name, glue);
+                    name, glue);
             }
         } catch (InterpreterException e) {
             throw e;
@@ -1593,7 +1814,7 @@ public class ContextImpl
             int len = observerList.size();
             for (int i = 0; i < len; i++) {
                 ((TokensObserver) observerList.get(i)).receiveTokensChange(
-                        this, name, toks);
+                    this, name, toks);
             }
         } catch (InterpreterException e) {
             throw e;
@@ -1603,6 +1824,14 @@ public class ContextImpl
     }
 
     /**
+     * Setter for the color in the current typesetting context.
+     *
+     * @param color the new color
+     * @param global the indicator for the scope; <code>true</code> means all
+     *  groups; otherwise the current group is affected only
+     *
+     * @throws ConfigurationException in case of an error in the configuration.
+     *
      * @see org.extex.interpreter.context.Context#set(
      *      org.extex.interpreter.context.Color,
      *      boolean)
@@ -1611,10 +1840,18 @@ public class ContextImpl
             throws ConfigurationException {
 
         group.setTypesettingContext(typesettingContextFactory.newInstance(group
-                .getTypesettingContext(), color), global);
+            .getTypesettingContext(), color), global);
     }
 
     /**
+     * Setter for the direction in the current typesetting context.
+     *
+     * @param direction the new direction
+     * @param global the indicator for the scope; <code>true</code> means all
+     *            groups; otherwise the current group is affected only
+     *
+     * @throws ConfigurationException in case of an error in the configuration.
+     *
      * @see org.extex.interpreter.context.Context#set(
      *      org.extex.interpreter.context.tc.Direction,
      *      boolean)
@@ -1623,10 +1860,18 @@ public class ContextImpl
             throws ConfigurationException {
 
         group.setTypesettingContext(typesettingContextFactory.newInstance(group
-                .getTypesettingContext(), direction), global);
+            .getTypesettingContext(), direction), global);
     }
 
     /**
+     * Setter for the font in the current typesetting context.
+     *
+     * @param font the new font
+     * @param global the indicator for the scope; <code>true</code> means all
+     *            groups; otherwise the current group is affected only
+     *
+     * @throws ConfigurationException in case of an error in the configuration.
+     *
      * @see org.extex.interpreter.context.Context#set(
      *      org.extex.interpreter.type.font.Font,
      *      boolean)
@@ -1635,10 +1880,18 @@ public class ContextImpl
             throws ConfigurationException {
 
         group.setTypesettingContext(typesettingContextFactory.newInstance(group
-                .getTypesettingContext(), font), global);
+            .getTypesettingContext(), font), global);
     }
 
     /**
+     * Setter for the language in the current typesetting context.
+     *
+     * @param language the new language
+     * @param global the indicator for the scope; <code>true</code> means all
+     *            groups; otherwise the current group is affected only
+     *
+     * @throws ConfigurationException in case of an error in the configuration.
+     *
      * @see org.extex.interpreter.context.Context#set(
      *      org.extex.language.Language,
      *      boolean)
@@ -1647,10 +1900,18 @@ public class ContextImpl
             throws ConfigurationException {
 
         group.setTypesettingContext(typesettingContextFactory.newInstance(group
-                .getTypesettingContext(), language), global);
+            .getTypesettingContext(), language), global);
     }
 
     /**
+     * Setter for a value from an extended section of the context.
+     *
+     * @param extension the name of the extension
+     * @param key the key for the value
+     * @param value the value to store
+     * @param global the indicator for the scope; <code>true</code> means all
+     *   groups; otherwise the current group is affected only
+     *
      * @see org.extex.interpreter.context.Context#set(
      *      java.lang.Object,
      *      java.lang.Object,
@@ -1676,6 +1937,10 @@ public class ContextImpl
     }
 
     /**
+     * Setter for the afterassignment token.
+     *
+     * @param token the afterassignment token.
+     *
      * @see org.extex.interpreter.context.Context#setAfterassignment(
      *      org.extex.scanner.type.token.Token)
      */
@@ -1685,7 +1950,19 @@ public class ContextImpl
     }
 
     /**
-     * @see org.extex.interpreter.context.Context#setBox(java.lang.String,
+     * Setter for the {@link org.extex.interpreter.type.box.Box box}
+     * register in the current group. Count registers are named, either with a
+     * number or an arbitrary string. The numbered registers where limited to
+     * 256 in <logo>TeX</logo>. This restriction does no longer hold for
+     * <logo>ExTeX</logo>.
+     *
+     * @param name the name or the number of the register
+     * @param value the new value of the register
+     * @param global the indicator for the scope; <code>true</code> means all
+     *            groups; otherwise the current group is affected only
+     *
+     * @see org.extex.interpreter.context.Context#setBox(
+     *      java.lang.String,
      *      org.extex.interpreter.type.box.Box, boolean)
      */
     public void setBox(final String name, final Box value, final boolean global) {
@@ -1694,6 +1971,15 @@ public class ContextImpl
     }
 
     /**
+     * Setter for the catcode of a character in the specified groups.
+     *
+     * @param c the character to assign a catcode for
+     * @param catcode the catcode of the character
+     * @param global the indicator for the scope; <code>true</code> means all
+     *            groups; otherwise the current group is affected only
+     *
+     * @throws HelpingException in case of an error
+     *
      * @see org.extex.interpreter.context.Context#setCatcode(
      *      org.extex.type.UnicodeChar,
      *      org.extex.scanner.type.Catcode, boolean)
@@ -1705,6 +1991,19 @@ public class ContextImpl
     }
 
     /**
+     * Setter for the code assigned to a Token.
+     * The Token has to be either a
+     * {@link org.extex.scanner.type.token.ActiveCharacterToken ActiveCharacterToken}
+     * or a
+     * {@link org.extex.scanner.type.token.ControlSequenceToken ControlSequenceToken}.
+     *
+     * @param t the Token to set the code for
+     * @param code the code for the token
+     * @param global the indicator for the scope; <code>true</code> means all
+     *            groups; otherwise the current group is affected only
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.context.ContextCode#setCode(
      *      org.extex.scanner.type.token.CodeToken,
      *      org.extex.interpreter.type.Code, boolean)
@@ -1725,6 +2024,20 @@ public class ContextImpl
     }
 
     /**
+     * Setter for the {@link org.extex.interpreter.type.count.Count count}
+     * register in all requested groups. Count registers are named, either with
+     * a number or an arbitrary string. The numbered registers where limited to
+     * 256 in <logo>TeX</logo>. This restriction does no longer hold for
+     * <logo>ExTeX</logo>.
+     *
+     * @param name the name or the number of the register
+     * @param value the new value of the register
+     * @param global the indicator for the scope; <code>true</code> means all
+     *            groups; otherwise the current group is affected only
+     *
+     * @throws InterpreterException in case if an exception in a registered
+     *  observer
+     *
      * @see org.extex.interpreter.context.Context#setCount(
      *      java.lang.String,
      *      long, boolean)
@@ -1746,6 +2059,11 @@ public class ContextImpl
     }
 
     /**
+     * Setter for a count register.
+     *
+     * @param name the name of the register
+     * @param value the value
+     *
      * @see org.extex.typesetter.TypesetterOptions#setCountOption(
      *      java.lang.String,
      *      long)
@@ -1757,6 +2075,13 @@ public class ContextImpl
     }
 
     /**
+     * Setter for the delimiter code mapping.
+     *
+     * @param c the character to which the delcode is assigned
+     * @param delimiter the delimiter code
+     * @param global the indicator for the scope; <code>true</code> means all
+     *            groups; otherwise the current group is affected only
+     *
      * @see org.extex.interpreter.context.Context#setDelcode(
      *      org.extex.type.UnicodeChar,
      *      org.extex.interpreter.type.math.MathDelimiter,
@@ -1769,6 +2094,19 @@ public class ContextImpl
     }
 
     /**
+     * Setter for the {@link org.extex.interpreter.type.dimen.Dimen Dimen}
+     * register in all requested groups. Dimen registers are named, either with
+     * a number or an arbitrary string. The numbered registers where limited to
+     * 256 in <logo>TeX</logo>. This restriction does no longer hold for
+     * <logo>ExTeX</logo>.
+     *
+     * @param name the name or the number of the register
+     * @param value the new value of the register
+     * @param global the indicator for the scope; <code>true</code> means all
+     *            groups; otherwise the current group is affected only
+     *
+     * @throws InterpreterException in case of problems in an observer
+     *
      * @see org.extex.interpreter.context.Context#setDimen(
      *      java.lang.String,
      *      org.extex.interpreter.type.dimen.Dimen,
@@ -1790,6 +2128,19 @@ public class ContextImpl
     }
 
     /**
+     * Setter for the {@link org.extex.interpreter.type.dimen.Dimen Dimen}
+     * register in all requested groups. Dimen registers are named, either with
+     * a number or an arbitrary string. The numbered registers where limited to
+     * 256 in <logo>TeX</logo>. This restriction does no longer hold for
+     * <logo>ExTeX</logo>.
+     *
+     * @param name the name or the number of the register
+     * @param value the new value of the register
+     * @param global the indicator for the scope; <code>true</code> means all
+     *            groups; otherwise the current group is affected only
+     *
+     * @throws InterpreterException in case of problems in an observer
+     *
      * @see org.extex.interpreter.context.ContextDimen#setDimen(
      *      java.lang.String,
      *      long, boolean)
@@ -1801,6 +2152,13 @@ public class ContextImpl
     }
 
     /**
+     * Setter for font registers.
+     *
+     * @param name the name or the number of the register
+     * @param font the new Font value
+     * @param global the indicator for the scope; <code>true</code> means all
+     *   groups; otherwise the current group is affected only
+     *
      * @see org.extex.interpreter.context.Context#setFont(
      *      java.lang.String,
      *      org.extex.interpreter.type.font.Font,
@@ -1812,6 +2170,10 @@ public class ContextImpl
     }
 
     /**
+     * Setter for the font factory.
+     *
+     * @param fontFactory the font factory to set.
+     *
      * @see org.extex.interpreter.context.Context#setFontFactory(
      *      org.extex.font.CoreFontFactory)
      */
@@ -1821,7 +2183,17 @@ public class ContextImpl
     }
 
     /**
-     * @see org.extex.interpreter.context.Context#setGlue(java.lang.String,
+     * Setter for a glue register.
+     *
+     * @param name the name of the glue register
+     * @param value the glue value to set
+     * @param global the indicator for the scope; <code>true</code> means all
+     *  groups; otherwise the current group is affected only
+     *
+     * @throws InterpreterException in case of an error
+     *
+     * @see org.extex.interpreter.context.Context#setGlue(
+     *      java.lang.String,
      *      org.extex.interpreter.type.glue.Glue, boolean)
      */
     public void setGlue(final String name, final Glue value,
@@ -1853,6 +2225,17 @@ public class ContextImpl
     }
 
     /**
+     * Setter for the {@link org.extex.interpreter.type.file.InFile InFile}
+     * register in all requested groups. InFile registers are named, either with
+     * a number or an arbitrary string. The numbered registers where limited to
+     * 16 in <logo>TeX</logo>. This restriction does no longer hold for
+     * <logo>ExTeX</logo>.
+     *
+     * @param name the name or the number of the file register
+     * @param file the input file descriptor
+     * @param global the indicator for the scope; <code>true</code> means all
+     *   groups; otherwise the current group is affected only
+     *
      * @see org.extex.interpreter.context.Context#setInFile(
      *      java.lang.String,
      *      org.extex.interpreter.type.file.InFile, boolean)
@@ -1864,6 +2247,13 @@ public class ContextImpl
     }
 
     /**
+     * Setter for the interaction in all requested groups. The interaction
+     * determines how verbose the actions are reported and how the interaction
+     * with the user is performed in case of an error.
+     * @param interaction the new value of the interaction
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.context.ContextInteraction#setInteraction(
      *      org.extex.interpreter.interaction.Interaction)
      */
@@ -1875,7 +2265,7 @@ public class ContextImpl
             try {
                 for (int i = 0; i < changeInteractionObservers.size(); i++) {
                     ((InteractionObserver) changeInteractionObservers.get(i))
-                            .receiveInteractionChange(this, interaction);
+                        .receiveInteractionChange(this, interaction);
                 }
             } catch (Exception e) {
                 throw new InterpreterException(e);
@@ -1884,6 +2274,10 @@ public class ContextImpl
     }
 
     /**
+     * Setter for the hyphenation factory.
+     *
+     * @param hyphenationFactory the hyphenation factory to carry
+     *
      * @see org.extex.language.LanguageManagerCarrier#setLanguageManager(
      *      org.extex.language.LanguageManager)
      */
@@ -1898,6 +2292,14 @@ public class ContextImpl
     }
 
     /**
+     * Declare the translation from an upper case character to a lower case
+     * character.
+     *
+     * @param uc upper case character
+     * @param lc lower case equivalent
+     * @param global the indicator for the scope; <code>true</code> means all
+     *  groups; otherwise the current group is affected only
+     *
      * @see org.extex.interpreter.context.Context#setLccode(
      *      org.extex.type.UnicodeChar,
      *      org.extex.type.UnicodeChar,
@@ -1924,20 +2326,26 @@ public class ContextImpl
 
         if (magnificationLock && this.magnification != mag) {
             throw new HelpingException(localizer, "TTP.IncompatibleMag", //
-                    Long.toString(mag), Long.toString(magnification));
+                Long.toString(mag), Long.toString(magnification));
         }
 
         magnificationLock |= lock;
 
         if (mag < 1 || mag > magnificationMax) {
             throw new HelpingException(localizer, "TTP.IllegalMag", //
-                    Long.toString(mag));
+                Long.toString(mag));
         }
 
         magnification = mag;
     }
 
     /**
+     * Setter for a mark.
+     * The information for first mark and top mark are updated if necessary.
+     *
+     * @param name the name of the mark
+     * @param mark the vale of the mark
+     *
      * @see org.extex.interpreter.context.Context#setMark(
      *      java.lang.Object,
      *      org.extex.interpreter.type.tokens.Tokens)
@@ -1951,6 +2359,13 @@ public class ContextImpl
     }
 
     /**
+     * Setter for the math code of a character
+     *
+     * @param uc the character index
+     * @param code the new math code
+     * @param global the indicator for the scope; <code>true</code> means all
+     *  groups; otherwise the current group is affected only
+     *
      * @see org.extex.interpreter.context.Context#setMathcode(
      *      org.extex.type.UnicodeChar,
      *      MathCode, boolean)
@@ -1962,6 +2377,13 @@ public class ContextImpl
     }
 
     /**
+     * Setter for a muskip register.
+     *
+     * @param name the name or the number of the register
+     * @param value the new value
+     * @param global the indicator for the scope; <code>true</code> means all
+     *  groups; otherwise the current group is affected only
+     *
      * @see org.extex.interpreter.context.Context#setMuskip(
      *      java.lang.String,
      *      org.extex.interpreter.type.muskip.Muskip, boolean)
@@ -1973,6 +2395,12 @@ public class ContextImpl
     }
 
     /**
+     * Setter for the name space.
+     *
+     * @param namespace the new name space
+     * @param global the indicator for the scope; <code>true</code> means all
+     *  groups; otherwise the current group is affected only
+     *
      * @see org.extex.interpreter.context.Context#setNamespace(
      *      java.lang.String, boolean)
      */
@@ -1982,6 +2410,13 @@ public class ContextImpl
     }
 
     /**
+     * Setter for a outfile descriptor.
+     *
+     * @param name the name or the number of the file register
+     * @param file the descriptor of the output file
+     * @param global the indicator for the scope; <code>true</code> means all
+     *   groups; otherwise the current group is affected only
+     *
      * @see org.extex.interpreter.context.Context#setOutFile(
      *      java.lang.String,
      *      org.extex.interpreter.type.file.OutFile, boolean)
@@ -1993,6 +2428,10 @@ public class ContextImpl
     }
 
     /**
+     * Setter for the paragraph shape.
+     *
+     * @param shape the new paragraph shape
+     *
      * @see org.extex.interpreter.context.Context#setParshape(
      *      org.extex.typesetter.paragraphBuilder.ParagraphShape)
      */
@@ -2002,6 +2441,15 @@ public class ContextImpl
     }
 
     /**
+     * Setter for the space factor code in the specified groups.
+     * Any character has an associated space factor. This value can be set
+     * with the current method.
+     *
+     * @param uc the Unicode character to assign the sfcode to
+     * @param code the new sfcode
+     * @param global the indicator for the scope; <code>true</code> means all
+     *            groups; otherwise the current group is affected only
+     *
      * @see org.extex.interpreter.context.Context#setSfcode(
      *      org.extex.type.UnicodeChar,
      *      org.extex.interpreter.type.count.Count, boolean)
@@ -2013,6 +2461,12 @@ public class ContextImpl
     }
 
     /**
+     * Setter for a split mark.
+     * The information for first mark and top mark are updated is necessary.
+     *
+     * @param name the name of the mark
+     * @param mark the vale of the mark
+     *
      * @see org.extex.interpreter.context.ContextMark#setSplitMark(
      *      java.lang.Object,
      *      org.extex.interpreter.type.tokens.Tokens)
@@ -2029,6 +2483,9 @@ public class ContextImpl
      * Setter for standardTokenStream.
      *
      * @param standardTokenStream the standardTokenStream to set.
+     *
+     * @see org.extex.interpreter.context.Context#setStandardTokenStream(
+     *      org.extex.scanner.TokenStream)
      */
     public void setStandardTokenStream(final TokenStream standardTokenStream) {
 
@@ -2050,6 +2507,19 @@ public class ContextImpl
     }
 
     /**
+     * Setter for the {@link org.extex.interpreter.type.tokens.Tokens Tokens}
+     * register in the specified groups. Tokens registers are named, either with
+     * a number or an arbitrary string. The numbered registers where limited to
+     * 256 in <logo>TeX</logo>. This restriction does no longer hold for
+     * <logo>ExTeX</logo>.
+     *
+     * @param name the name or the number of the register
+     * @param toks the new value of the register
+     * @param global the indicator for the scope; <code>true</code> means all
+     *            groups; otherwise the current group is affected only
+     *
+     * @throws InterpreterException in case of a problem in an observer
+     *
      * @see org.extex.interpreter.context.Context#setToks(java.lang.String,
      *      org.extex.interpreter.type.tokens.Tokens, boolean)
      */
@@ -2069,6 +2539,14 @@ public class ContextImpl
     }
 
     /**
+     * Declare the translation from a lower case character to an upper case
+     * character.
+     *
+     * @param lc lower  case character
+     * @param uc uppercase equivalent
+     * @param global the indicator for the scope; <code>true</code> means all
+     *   groups; otherwise the current group is affected only
+     *
      * @see org.extex.interpreter.context.Context#setUccode(
      *      org.extex.type.UnicodeChar,
      *      org.extex.type.UnicodeChar,
@@ -2081,6 +2559,10 @@ public class ContextImpl
     }
 
     /**
+     * This method indicated that a new page is started.
+     * The values of first mark, bottom mark, and top mark should be updated
+     * properly.
+     *
      * @see org.extex.interpreter.context.Context#startMarks()
      */
     public void startMarks() {
@@ -2092,6 +2574,10 @@ public class ContextImpl
     }
 
     /**
+     * Get an iterator to enumerate all unit infos.
+     *
+     * @return the iterator for unit infos
+     *
      * @see org.extex.interpreter.context.Context#unitIterator()
      */
     public Iterator unitIterator() {
@@ -2100,6 +2586,15 @@ public class ContextImpl
     }
 
     /**
+     * Remove a registered observer for code change events.
+     * Code change events are triggered when the assignment of a macro or
+     * active character changes. In this case the appropriate method in the
+     * observer is invoked.
+     *
+     * @param name the token to be observed. This should be a macro or
+     *   active character token.
+     * @param observer the observer to receive the events
+     *
      * @see org.extex.interpreter.context.observer.code.CodeObservable#unregisterCodeChangeObserver(
      *      org.extex.scanner.type.token.Token,
      *      org.extex.interpreter.context.observer.code.CodeObserver)
@@ -2115,6 +2610,11 @@ public class ContextImpl
     }
 
     /**
+     * Remove a registered observer for conditional events.
+     * Conditional events are triggered when a conditional is started or ended.
+     *
+     * @param observer the observer to receive the events
+     *
      * @see org.extex.interpreter.context.observer.conditional.ConditionalObservable#unregisterConditionalObserver(
      *      org.extex.interpreter.context.observer.conditional.ConditionalObserver)
      */
@@ -2128,6 +2628,24 @@ public class ContextImpl
     }
 
     /**
+     * Remove a registered observer for count change events.
+     * Count change events are triggered when a value is assigned to a count
+     * register. In this case the appropriate method in the
+     * observer is invoked.
+     * <p>
+     *  A single count register can be observed by giving a name of the count
+     *  register to observe. The de-registration removes all instances of the
+     *  observer for this register. If none is registered then nothing happens.
+     * </p>
+     * <p>
+     *  If this name is <code>null</code> then the observer for all registers
+     *  is removed. Note that the observers for named registers are not
+     *  effected. They have to be unregistered individually.
+     * </p>
+     *
+     * @param name the name or the number of the register
+     * @param observer the observer to receive the events
+     *
      * @see org.extex.interpreter.context.observer.count.CountObservable#unregisterCountObserver(
      *      java.lang.String,
      *      org.extex.interpreter.context.observer.count.CountObserver)
@@ -2144,6 +2662,24 @@ public class ContextImpl
     }
 
     /**
+     * Remove a registered observer for dimen change events.
+     * Count change events are triggered when a value is assigned to a dimen
+     * register. In this case the appropriate method in the
+     * observer is invoked.
+     * <p>
+     *  A single dimen register can be observed by giving a name of the dimen
+     *  register to observe. The de-registration removes all instances of the
+     *  observer for this register. If none is registered then nothing happens.
+     * </p>
+     * <p>
+     *  If this name is <code>null</code> then the observer for all registers
+     *  is removed. Note that the observers for named registers are not
+     *  effected. They have to be unregistered individually.
+     * </p>
+     *
+     * @param name the name or the number of the register
+     * @param observer the observer to receive the events
+     *
      * @see org.extex.interpreter.context.observer.dimen.DimenObservable#unregisterDimenObserver(
      *      java.lang.String,
      *      org.extex.interpreter.context.observer.dimen.DimenObserver)
@@ -2160,6 +2696,24 @@ public class ContextImpl
     }
 
     /**
+     * Remove a registered observer for glue change events.
+     * Count change events are triggered when a value is assigned to a glue
+     * register. In this case the appropriate method in the
+     * observer is invoked.
+     * <p>
+     *  A single glue register can be observed by giving a name of the glue
+     *  register to observe. The de-registration removes all instances of the
+     *  observer for this register. If none is registered then nothing happens.
+     * </p>
+     * <p>
+     *  If this name is <code>null</code> then the observer for all registers
+     *  is removed. Note that the observers for named registers are not
+     *  effected. They have to be unregistered individually.
+     * </p>
+     *
+     * @param name the name or the number of the register
+     * @param observer the observer to receive the events
+     *
      * @see org.extex.interpreter.context.observer.glue.GlueObservable#unregisterGlueObserver(
      *      java.lang.String,
      *      org.extex.interpreter.context.observer.glue.GlueObserver)
@@ -2176,6 +2730,12 @@ public class ContextImpl
     }
 
     /**
+     * Remove a registered observer for group change events.
+     * Group change events are triggered when a group is opened or closed.
+     * In this case the appropriate method in the observer is invoked.
+     *
+     * @param observer the observer to receive the events
+     *
      * @see org.extex.interpreter.context.observer.group.GroupObservable#unregisterGroupObserver(
      *      org.extex.interpreter.context.observer.group.GroupObserver)
      */
@@ -2189,6 +2749,13 @@ public class ContextImpl
     }
 
     /**
+     * Remove a registered observer for interaction mode change events.
+     * Interaction mode change events are triggered when a new value is assigned
+     * to the interaction mode. In this case the appropriate method in the
+     * observer is invoked.
+     *
+     * @param observer the observer to receive the events
+     *
      * @see org.extex.interpreter.context.observer.interaction.InteractionObservable#unregisterInteractionObserver(
      *      org.extex.interpreter.context.observer.interaction.InteractionObserver)
      */
@@ -2201,6 +2768,11 @@ public class ContextImpl
     }
 
     /**
+     * Remove a registered observer for load events.
+     * Code change events are triggered when the context is loaded.
+     *
+     * @param observer the observer to receive the events
+     *
      * @see org.extex.interpreter.context.observer.load.LoadedObservable#unregisterLoadObserver(
      *      org.extex.interpreter.context.observer.load.LoadedObserver)
      */
@@ -2215,6 +2787,15 @@ public class ContextImpl
     }
 
     /**
+     * Remove a registered observer for toks change events.
+     * Tokens change events are triggered when an assignment to a tokens
+     * register is performed. In this case the appropriate method in the
+     * observer is invoked.
+     *
+     * @param name the token to be observed. This should be a macro or
+     *  active character token.
+     * @param observer the observer to receive the events
+     *
      * @see org.extex.interpreter.context.observer.tokens.TokensObservable#unregisterTokensChangeObserver(
      *      java.lang.String,
      *      org.extex.interpreter.context.observer.tokens.TokensObserver)

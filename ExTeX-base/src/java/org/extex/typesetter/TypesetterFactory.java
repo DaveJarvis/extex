@@ -104,8 +104,7 @@ public class TypesetterFactory extends AbstractFactory {
      *
      * @throws ConfigurationException in case of an configuration error
      */
-    private NodeFactory makeNodeFactory(final Configuration config)
-            throws ConfigurationException {
+    private NodeFactory makeNodeFactory(final Configuration config) {
 
         Configuration cfg = config.getConfiguration("NodeFactory");
         NodeFactory nodeFactory =
@@ -136,8 +135,7 @@ public class TypesetterFactory extends AbstractFactory {
      */
     private PageBuilder makePageBuilder(final Configuration config,
             final Context context, final Typesetter typesetter)
-            throws ConfigurationException,
-                TypesetterException {
+            throws TypesetterException {
 
         Configuration cfg = config.getConfiguration("PageBuilder");
         PageBuilder pageBuilder =
@@ -164,8 +162,7 @@ public class TypesetterFactory extends AbstractFactory {
      * @throws ConfigurationException in case of an configuration error
      */
     private ParagraphBuilder makeParagraphBuilder(final Configuration config,
-            final TypesetterOptions options, final NodeFactory nodeFactory)
-            throws ConfigurationException {
+            final TypesetterOptions options, final NodeFactory nodeFactory) {
 
         Configuration cfg = config.getConfiguration("ParagraphBuilder");
         ParagraphBuilder builder =
@@ -197,9 +194,7 @@ public class TypesetterFactory extends AbstractFactory {
      * @throws TypesetterException in case of another error
      */
     public Typesetter newInstance(final String type, final Context context,
-            final BackendDriver backend)
-            throws TypesetterException,
-                ConfigurationException {
+            final BackendDriver backend) throws TypesetterException {
 
         Configuration cfg = selectConfiguration(type);
 

@@ -143,6 +143,7 @@ public class LoadingLanguageManager extends BaseLanguageManager
      * @return the new instance
      *
      * @throws HyphenationException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.language.impl.LanguageCreator#createLanguageInstance(
      *      java.lang.String)
@@ -151,11 +152,7 @@ public class LoadingLanguageManager extends BaseLanguageManager
             throws HyphenationException {
 
         Language language;
-        try {
-            language = super.createLanguage(name);
-        } catch (ConfigurationException e) {
-            throw new HyphenationException(e);
-        }
+        language = super.createLanguage(name);
         language.setName(name);
         getTables().put(name, language);
         return language;

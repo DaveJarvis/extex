@@ -549,6 +549,19 @@ public class ExTeX {
         }
 
         /**
+         * Reconnect an object.
+         * It should return the object which should actually be used. This is
+         * normally the object which is passed in as argument. Nevertheless the
+         * as a side effect the object can be attached to an internal list in a
+         * factory or augmented with additional information by invoking some of
+         * its methods.
+         *
+         * @param object the object to reconnect
+         *
+         * @return the object to be actually used
+         *
+         * @throws RegistrarException in case of an error during configuration
+         *
          * @see org.extex.util.framework.RegistrarObserver#reconnect(java.lang.Object)
          */
         public Object reconnect(final Object object) throws RegistrarException {
@@ -1184,7 +1197,7 @@ public class ExTeX {
      */
 
     protected boolean initializeStreams(final Interpreter interpreter,
-            final Properties prop) throws ConfigurationException {
+            final Properties prop) {
 
         TokenStreamFactory factory = interpreter.getTokenStreamFactory();
         boolean notInitialized = true;
@@ -1239,8 +1252,7 @@ public class ExTeX {
             final OutputStreamFactory outFactory,
             final TokenFactory tokenFactory)
             throws IOException,
-                GeneralException,
-                ConfigurationException {
+                GeneralException {
 
         String format = (fmt == null ? "" : fmt);
         String time =
@@ -1405,9 +1417,7 @@ public class ExTeX {
             final OutputStreamFactory outFactory,
             final DocumentWriterOptions options,
             final Configuration colorConfig, final ResourceFinder finder,
-            final CoreFontFactory fontFactory)
-            throws DocumentWriterException,
-                ConfigurationException {
+            final CoreFontFactory fontFactory) throws DocumentWriterException {
 
         String outputType = properties.getProperty(PROP_OUTPUT_TYPE);
         return new BackendFactory(config, logger).newInstance(//
@@ -1430,8 +1440,7 @@ public class ExTeX {
      *
      * @throws ConfigurationException in case of a configuration problem
      */
-    protected ColorConverter makeColorConverter(final Configuration config)
-            throws ConfigurationException {
+    protected ColorConverter makeColorConverter(final Configuration config) {
 
         return new ColorConverterFacory(config, logger).newInstance(properties
             .getProperty(PROP_COLOR_CONVERTER));
@@ -1459,8 +1468,7 @@ public class ExTeX {
             final TokenFactory tokenFactory, final CoreFontFactory fontFactory,
             final Interpreter interpreter, final ResourceFinder finder,
             final String jobname, final OutputStreamFactory outFactory)
-            throws ConfigurationException,
-                GeneralException,
+            throws GeneralException,
                 FontException,
                 IOException {
 
@@ -1518,7 +1526,6 @@ public class ExTeX {
     protected Font makeDefaultFont(final Configuration config,
             final CoreFontFactory fontFactory)
             throws GeneralException,
-                ConfigurationException,
                 FontException {
 
         if (config == null) {
@@ -1564,7 +1571,7 @@ public class ExTeX {
      *   been detected in the configuration
      */
     protected CoreFontFactory makeFontFactory(final Configuration config,
-            final ResourceFinder finder) throws ConfigurationException {
+            final ResourceFinder finder) {
 
         CoreFontFactory fontFactory;
         String fontClass = config.getAttribute("class");
@@ -1626,8 +1633,7 @@ public class ExTeX {
     protected Interpreter makeInterpreter(final Configuration config,
             final OutputStreamFactory outFactory, final ResourceFinder finder,
             final String jobname)
-            throws ConfigurationException,
-                GeneralException,
+            throws GeneralException,
                 FontException,
                 IOException {
 
@@ -1698,8 +1704,7 @@ public class ExTeX {
      * @throws ConfigurationException in case of a configuration error
      */
     protected LanguageManager makeLanguageManager(final Configuration config,
-            final OutputStreamFactory outFactory, final ResourceFinder finder)
-            throws ConfigurationException {
+            final OutputStreamFactory outFactory, final ResourceFinder finder) {
 
         LanguageManagerFactory factory = new LanguageManagerFactory();
         factory.enableLogging(logger);
@@ -1791,7 +1796,7 @@ public class ExTeX {
      * @throws ConfigurationException in case of a configuration error
      */
     protected OutputFactory makeOutputFactory(final String jobname,
-            final Configuration config) throws ConfigurationException {
+            final Configuration config) {
 
         OutputFactory outFactory = new OutputFactory(//
             properties.getProperty(PROP_OUTPUT_DIRS).split(":"), //
@@ -1810,9 +1815,7 @@ public class ExTeX {
      * @throws ConfigurationException in case of an configuration error
      * @throws GeneralException in case of another error
      */
-    private void makePageSize(final Context context)
-            throws ConfigurationException,
-                GeneralException {
+    private void makePageSize(final Context context) throws GeneralException {
 
         String page = (String) properties.get(PROP_PAGE);
         Configuration cfg =
@@ -1858,8 +1861,7 @@ public class ExTeX {
      *
      * @throws ConfigurationException in case of an configuration error
      */
-    protected ResourceFinder makeResourceFinder(final Configuration config)
-            throws ConfigurationException {
+    protected ResourceFinder makeResourceFinder(final Configuration config) {
 
         ResourceFinder finder =
                 new ResourceFinderFactory().createResourceFinder(config,
@@ -1886,8 +1888,7 @@ public class ExTeX {
      *
      * @throws ConfigurationException in case of a configuration error
      */
-    protected TokenFactory makeTokenFactory(final Configuration config)
-            throws ConfigurationException {
+    protected TokenFactory makeTokenFactory(final Configuration config) {
 
         TokenFactoryFactory tokenFactoryFactory = new TokenFactoryFactory();
         tokenFactoryFactory.configure(config);
@@ -1916,13 +1917,10 @@ public class ExTeX {
      */
     protected TokenStreamFactory makeTokenStreamFactory(
             final Configuration config, final ResourceFinder finder)
-            throws ConfigurationException,
-                NotObservableException {
+            throws NotObservableException {
 
-        TokenStreamFactory factory =
-                new TokenStreamFactory(config, properties
-                    .getProperty(PROP_TOKEN_STREAM));
-
+        TokenStreamFactory factory = new TokenStreamFactory(config, //
+            properties.getProperty(PROP_TOKEN_STREAM));
         factory.enableLogging(logger);
         factory.setResourceFinder(finder);
 
@@ -1955,7 +1953,6 @@ public class ExTeX {
             final Configuration config, final OutputStreamFactory outFactory,
             final ResourceFinder finder, final CoreFontFactory fontFactory)
             throws TypesetterException,
-                ConfigurationException,
                 CatcodeException,
                 DocumentWriterException {
 
@@ -2008,10 +2005,7 @@ public class ExTeX {
      *  Especially <br>
      *  ErrorLimitException in case that the error limit has been reached
      */
-    public Interpreter run()
-            throws ConfigurationException,
-                IOException,
-                InterpreterException {
+    public Interpreter run() throws IOException, InterpreterException {
 
         String jobname = determineJobname();
         File logFile = makeLogFile(jobname);

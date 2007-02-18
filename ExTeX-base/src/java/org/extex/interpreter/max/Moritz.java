@@ -369,6 +369,7 @@ public class Moritz extends Max
      * @return the box gathered
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.interpreter.TokenSource#getBox(
      *      org.extex.interpreter.Flags,
@@ -835,11 +836,7 @@ public class Moritz extends Max
         }
 
         if (stream == null) {
-            try {
-                stream = getTokenStreamFactory().newInstance("");
-            } catch (ConfigurationException e) {
-                throw new InterpreterException(e);
-            }
+            stream = getTokenStreamFactory().newInstance("");
         }
         stream.put(token);
     }
@@ -897,11 +894,7 @@ public class Moritz extends Max
         }
 
         if (stream == null) {
-            try {
-                stream = getTokenStreamFactory().newInstance("");
-            } catch (ConfigurationException e) {
-                throw new InterpreterException(e);
-            }
+            stream = getTokenStreamFactory().newInstance("");
         }
 
         for (int i = tokens.length() - 1; i >= 0; i--) {
@@ -1161,6 +1154,7 @@ public class Moritz extends Max
      * @return the next not expandable token
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.interpreter.TokenSource#scanToken(
      *      org.extex.interpreter.context.Context)
@@ -1299,13 +1293,14 @@ public class Moritz extends Max
      * @throws ConfigurationException this exception is never thrown. It is
      *  defined here to provide an exit for derived classes
      */
-    public void setTokenStreamFactory(final TokenStreamFactory factory)
-            throws ConfigurationException {
+    public void setTokenStreamFactory(final TokenStreamFactory factory) {
 
         tokenStreamFactory = factory;
     }
 
     /**
+     * Skip spaces and check whether any tokens are left.
+     *
      * @see org.extex.interpreter.TokenSource#skipSpace()
      */
     public void skipSpace() {
@@ -1314,6 +1309,16 @@ public class Moritz extends Max
     }
 
     /**
+     * Send the string to the named observer. The observer must be capable to
+     * deal with a string argument.
+     *
+     * @param name name of the observer
+     * @param text the text to send to the observer
+     *
+     * @throws InterpreterException in case of an error
+     * @throws NotObservableException in case that the named observer is not
+     *   accessible
+     *
      * @see org.extex.interpreter.TokenSource#update(java.lang.String,
      *      java.lang.String)
      */

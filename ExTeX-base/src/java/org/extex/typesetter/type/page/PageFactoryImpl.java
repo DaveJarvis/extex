@@ -272,6 +272,10 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
         private Typesetter typesetter;
 
         /**
+         * Setter for the context.
+         *
+         * @param context the context
+         *
          * @see org.extex.typesetter.type.page.PageFactoryNodeVisitor#setContext(
          *      org.extex.interpreter.context.Context)
          */
@@ -281,6 +285,10 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
         }
 
         /**
+         * Setter for the page.
+         *
+         * @param page the page
+         *
          * @see org.extex.typesetter.type.page.PageFactoryNodeVisitor#setPage(
          *      org.extex.typesetter.type.page.Page)
          */
@@ -290,6 +298,10 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
         }
 
         /**
+         * Setter for the typesetter.
+         *
+         * @param typsetter the typesetter
+         *
          * @see org.extex.typesetter.type.page.PageFactoryNodeVisitor#setTypesetter(
          *      org.extex.typesetter.Typesetter)
          */
@@ -299,6 +311,17 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
         }
 
         /**
+         * This method is called when an
+         * {@link org.extex.typesetter.type.node.AdjustNode AdjustNode}
+         * has been encountered.
+         *
+         * @param node the first parameter for the visitor is the node visited
+         * @param value the second parameter for the visitor
+         *
+         * @return the visitor specific value
+         *
+         * @throws GeneralException in case of an error
+         *
          * @see org.extex.typesetter.type.NodeVisitor#visitAdjust(
          *      org.extex.typesetter.type.node.AdjustNode,
          *      java.lang.Object)
@@ -310,12 +333,21 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
         }
 
         /**
+         * This method is called when an
+         * {@link org.extex.typesetter.type.node.AfterMathNode AfterMathNode}
+         * has been encountered.
+         *
+         * @param node the first parameter for the visitor is the node visited
+         * @param value the second parameter for the visitor
+         *
+         * @return the visitor specific value
+         *
          * @see org.extex.typesetter.type.NodeVisitor#visitAfterMath(
          *      org.extex.typesetter.type.node.AfterMathNode,
          *      java.lang.Object)
          */
         public Object visitAfterMath(final AfterMathNode node,
-                final Object value) throws GeneralException {
+                final Object value) {
 
             if (((Boolean) value).booleanValue()) {
                 if (node.getWidth().eq(Dimen.ZERO_PT)) {
@@ -328,23 +360,41 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
         }
 
         /**
+         * This method is called when an
+         * {@link org.extex.typesetter.type.node.AlignedLeadersNode AlignedLeadersNode}
+         * has been encountered.
+         *
+         * @param node the first parameter for the visitor is the node visited
+         * @param value the second parameter for the visitor
+         *
+         * @return the visitor specific value
+         *
          * @see org.extex.typesetter.type.NodeVisitor#visitAlignedLeaders(
          *      org.extex.typesetter.type.node.AlignedLeadersNode,
          *      java.lang.Object)
          */
         public Object visitAlignedLeaders(final AlignedLeadersNode node,
-                final Object value) throws GeneralException {
+                final Object value) {
 
             return node;
         }
 
         /**
+         * This method is called when a
+         * {@link org.extex.typesetter.type.node.BeforeMathNode BeforeMathNode}
+         * has been encountered.
+         *
+         * @param node the first parameter for the visitor is the node visited
+         * @param value the second parameter for the visitor
+         *
+         * @return the visitor specific value
+         *
          * @see org.extex.typesetter.type.NodeVisitor#visitBeforeMath(
          *      org.extex.typesetter.type.node.BeforeMathNode,
          *      java.lang.Object)
          */
         public Object visitBeforeMath(final BeforeMathNode node,
-                final Object value) throws GeneralException {
+                final Object value) {
 
             if (((Boolean) value).booleanValue()) {
                 if (node.getWidth().eq(Dimen.ZERO_PT)) {
@@ -357,56 +407,99 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
         }
 
         /**
+         * This method is called when a
+         * {@link org.extex.typesetter.type.node.CenteredLeadersNode CenteredLeadersNode}
+         * has been encountered.
+         *
+         * @param node the first parameter for the visitor is the node visited
+         * @param value the second parameter for the visitor
+         *
+         * @return the visitor specific value
+         *
          * @see org.extex.typesetter.type.NodeVisitor#visitCenteredLeaders(
          *      org.extex.typesetter.type.node.CenteredLeadersNode,
          *      java.lang.Object)
          */
         public Object visitCenteredLeaders(final CenteredLeadersNode node,
-                final Object value) throws GeneralException {
+                final Object value) {
 
             return node;
         }
 
         /**
+         * This method is called when a
+         * {@link org.extex.typesetter.type.node.CharNode CharNode}
+         * has been encountered.
+         *
+         * @param node the first parameter for the visitor is the node visited
+         * @param value the second parameter for the visitor
+         *
+         * @return the visitor specific value
+         *
          * @see org.extex.typesetter.type.NodeVisitor#visitChar(
          *      org.extex.typesetter.type.node.CharNode,
          *      java.lang.Object)
          */
-        public Object visitChar(final CharNode node, final Object value)
-                throws GeneralException {
+        public Object visitChar(final CharNode node, final Object value) {
 
             return node;
         }
 
         /**
+         * This method is called when a
+         * {@link org.extex.typesetter.type.node.DiscretionaryNode DiscretionaryNode}
+         * has been encountered.
+         *
+         * @param node the first parameter for the visitor is the node visited
+         * @param value the second parameter for the visitor
+         *
+         * @return the visitor specific value
+         *
          * @see org.extex.typesetter.type.NodeVisitor#visitDiscretionary(
          *      org.extex.typesetter.type.node.DiscretionaryNode,
          *      java.lang.Object)
          */
         public Object visitDiscretionary(final DiscretionaryNode node,
-                final Object value) throws GeneralException {
+                final Object value) {
 
             return node;
         }
 
         /**
+         * This method is called when an
+         * {@link org.extex.typesetter.type.node.ExpandedLeadersNode ExpandedLeadersNode}
+         * has been encountered.
+         *
+         * @param node the first parameter for the visitor is the node visited
+         * @param value the second parameter for the visitor
+         *
+         * @return the visitor specific value
+         *
          * @see org.extex.typesetter.type.NodeVisitor#visitExpandedLeaders(
          *      org.extex.typesetter.type.node.ExpandedLeadersNode,
          *      java.lang.Object)
          */
         public Object visitExpandedLeaders(final ExpandedLeadersNode node,
-                final Object value) throws GeneralException {
+                final Object value) {
 
             return node;
         }
 
         /**
+         * This method is called when a
+         * {@link org.extex.typesetter.type.node.GlueNode GlueNode}
+         * has been encountered.
+         *
+         * @param node the first parameter for the visitor is the node visited
+         * @param value the second parameter for the visitor
+         *
+         * @return the visitor specific value
+         *
          * @see org.extex.typesetter.type.NodeVisitor#visitGlue(
          *      org.extex.typesetter.type.node.GlueNode,
          *      java.lang.Object)
          */
-        public Object visitGlue(final GlueNode node, final Object hMode)
-                throws GeneralException {
+        public Object visitGlue(final GlueNode node, final Object hMode) {
 
             if (((Boolean) hMode).booleanValue()) {
                 if (node.getWidth().eq(Dimen.ZERO_PT)) {
@@ -420,34 +513,60 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
         }
 
         /**
+         * This method is called when a
+         * {@link org.extex.typesetter.type.node.HorizontalListNode HorizontalListNode}
+         * has been encountered.
+         *
+         * @param node the first parameter for the visitor is the node visited
+         * @param value the second parameter for the visitor
+         *
+         * @return the visitor specific value
+         *
          * @see org.extex.typesetter.type.NodeVisitor#visitHorizontalList(
          *      org.extex.typesetter.type.node.HorizontalListNode,
          *      java.lang.Object)
          */
         public Object visitHorizontalList(final HorizontalListNode node,
-                final Object value) throws GeneralException {
+                final Object value) {
 
             return (node.size() == 0 ? null : node);
         }
 
         /**
+         * This method is called when an
+         * {@link org.extex.typesetter.type.node.InsertionNode InsertionNode}
+         * has been encountered.
+         *
+         * @param node the first parameter for the visitor is the node visited
+         * @param value the second parameter for the visitor
+         *
+         * @return the visitor specific value
+         *
          * @see org.extex.typesetter.type.NodeVisitor#visitInsertion(
          *      org.extex.typesetter.type.node.InsertionNode,
          *      java.lang.Object)
          */
         public Object visitInsertion(final InsertionNode node,
-                final Object value) throws GeneralException {
+                final Object value) {
 
             return null;
         }
 
         /**
+         * This method is called when a
+         * {@link org.extex.typesetter.type.node.KernNode KernNode}
+         * has been encountered.
+         *
+         * @param node the first parameter for the visitor is the node visited
+         * @param value the second parameter for the visitor
+         *
+         * @return the visitor specific value
+         *
          * @see org.extex.typesetter.type.NodeVisitor#visitKern(
          *      org.extex.typesetter.type.node.KernNode,
          *      java.lang.Object)
          */
-        public Object visitKern(final KernNode node, final Object value)
-                throws GeneralException {
+        public Object visitKern(final KernNode node, final Object value) {
 
             if (((Boolean) value).booleanValue()) {
                 if (node.getWidth().eq(Dimen.ZERO_PT)) {
@@ -460,83 +579,152 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
         }
 
         /**
+         * This method is called when a
+         * {@link org.extex.typesetter.type.node.LigatureNode LigatureNode}
+         * has been encountered.
+         *
+         * @param node the first parameter for the visitor is the node visited
+         * @param value the second parameter for the visitor
+         *
+         * @return the visitor specific value
+         *
          * @see org.extex.typesetter.type.NodeVisitor#visitLigature(
          *      org.extex.typesetter.type.node.LigatureNode,
          *      java.lang.Object)
          */
-        public Object visitLigature(final LigatureNode node, final Object value)
-                throws GeneralException {
+        public Object visitLigature(final LigatureNode node, final Object value) {
 
             return node;
         }
 
         /**
+         * This method is called when a
+         * {@link org.extex.typesetter.type.node.MarkNode MarkNode}
+         * has been encountered.
+         *
+         * @param node the first parameter for the visitor is the node visited
+         * @param value the second parameter for the visitor
+         *
+         * @return the visitor specific value
+         *
          * @see org.extex.typesetter.type.NodeVisitor#visitMark(
          *      org.extex.typesetter.type.node.MarkNode,
          *      java.lang.Object)
          */
-        public Object visitMark(final MarkNode node, final Object value)
-                throws GeneralException {
+        public Object visitMark(final MarkNode node, final Object value) {
 
             return null;
         }
 
         /**
+         * This method is called when a
+         * {@link org.extex.typesetter.type.node.PenaltyNode PenaltyNode}
+         * has been encountered.
+         *
+         * @param node the first parameter for the visitor is the node visited
+         * @param value the second parameter for the visitor
+         *
+         * @return the visitor specific value
+         *
          * @see org.extex.typesetter.type.NodeVisitor#visitPenalty(
          *      org.extex.typesetter.type.node.PenaltyNode,
          *      java.lang.Object)
          */
-        public Object visitPenalty(final PenaltyNode node, final Object value)
-                throws GeneralException {
+        public Object visitPenalty(final PenaltyNode node, final Object value) {
 
             return null;
         }
 
         /**
+         * This method is called when a
+         * {@link org.extex.typesetter.type.node.RuleNode RuleNode}
+         * has been encountered.
+         *
+         * @param node the first parameter for the visitor is the node visited
+         * @param value the second parameter for the visitor
+         *
+         * @return the visitor specific value
+         *
          * @see org.extex.typesetter.type.NodeVisitor#visitRule(
          *      org.extex.typesetter.type.node.RuleNode,
          *      java.lang.Object)
          */
-        public Object visitRule(final RuleNode node, final Object value)
-                throws GeneralException {
+        public Object visitRule(final RuleNode node, final Object value) {
 
             return node;
         }
 
         /**
+         * This method is called when a
+         * {@link org.extex.typesetter.type.node.SpaceNode SpaceNode}
+         * has been encountered.
+         *
+         * @param node the first parameter for the visitor is the node visited
+         * @param value the second parameter for the visitor
+         *
+         * @return the visitor specific value
+         *
          * @see org.extex.typesetter.type.NodeVisitor#visitSpace(
          *      org.extex.typesetter.type.node.SpaceNode,
          *      java.lang.Object)
          */
-        public Object visitSpace(final SpaceNode node, final Object value)
-                throws GeneralException {
+        public Object visitSpace(final SpaceNode node, final Object value) {
 
             return node;
         }
 
         /**
+         * This method is called when a
+         * {@link org.extex.typesetter.type.node.VerticalListNode VerticalListNode}
+         * has been encountered.
+         *
+         * @param node the first parameter for the visitor is the node visited
+         * @param value the second parameter for the visitor
+         *
+         * @return the visitor specific value
+         *
          * @see org.extex.typesetter.type.NodeVisitor#visitVerticalList(
          *      org.extex.typesetter.type.node.VerticalListNode,
          *      java.lang.Object)
          */
         public Object visitVerticalList(final VerticalListNode node,
-                final Object value) throws GeneralException {
+                final Object value) {
 
             return (node.size() == 0 ? null : node);
         }
 
         /**
+         * This method is called when a
+         * {@link org.extex.typesetter.type.node.VirtualCharNode VirtualCharNode}
+         * has been encountered.
+         *
+         * @param node the first parameter for the visitor is the node visited
+         * @param value the second parameter for the visitor
+         *
+         * @return the visitor specific value
+         *
          * @see org.extex.typesetter.type.NodeVisitor#visitVirtualChar(
          *      org.extex.typesetter.type.node.VirtualCharNode,
          *      java.lang.Object)
          */
         public Object visitVirtualChar(final VirtualCharNode node,
-                final Object value) throws GeneralException {
+                final Object value) {
 
             return node.getNodes();
         }
 
         /**
+         * This method is called when a
+         * {@link org.extex.typesetter.type.node.WhatsItNode WhatsItNode}
+         * has been encountered.
+         *
+         * @param node the first parameter for the visitor is the node visited
+         * @param value the second parameter for the visitor
+         *
+         * @return the visitor specific value
+         *
+         * @throws GeneralException in case of an error
+         *
          * @see org.extex.typesetter.type.NodeVisitor#visitWhatsIt(
          *      org.extex.typesetter.type.node.WhatsItNode,
          *      java.lang.Object)

@@ -195,10 +195,12 @@ public class TeXOutputRoutine implements OutputRoutine {
         super();
         this.interpreter = interpreter;
         TokenFactory tokenFactory = interpreter.getContext().getTokenFactory();
-        rightBrace = tokenFactory.createToken(Catcode.RIGHTBRACE, '}',
-                Namespace.DEFAULT_NAMESPACE);
-        outputToken = tokenFactory.createToken(Catcode.ESCAPE, UnicodeChar
-                .get('\\'), "output", Namespace.DEFAULT_NAMESPACE);
+        rightBrace =
+                tokenFactory.createToken(Catcode.RIGHTBRACE, '}',
+                    Namespace.DEFAULT_NAMESPACE);
+        outputToken =
+                tokenFactory.createToken(Catcode.ESCAPE, UnicodeChar.get('\\'),
+                    "output", Namespace.DEFAULT_NAMESPACE);
     }
 
     /**
@@ -210,6 +212,7 @@ public class TeXOutputRoutine implements OutputRoutine {
      * @param backend the back-end driver to target the nodes to
      *
      * @throws GeneralException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.typesetter.output.OutputRoutine#output(
      *      org.extex.typesetter.type.page.Page,
@@ -231,33 +234,29 @@ public class TeXOutputRoutine implements OutputRoutine {
         deadcyles.add(1);
         if (deadcyles.gt(context.getCount("maxdeadcycles"))) {
             throw new InterpreterException(LocalizerFactory.getLocalizer(
-                    TeXOutputRoutine.class).format("TTP.TooMuchDead",
-                    deadcyles.toString()));
+                TeXOutputRoutine.class).format("TTP.TooMuchDead",
+                deadcyles.toString()));
         }
 
         Box box = context.getBox(OUTPUT_BOX);
         if (box != null && !box.isVoid()) {
             throw new HelpingException(LocalizerFactory
-                    .getLocalizer(TeXOutputRoutine.class),
-                    "TTP.NonEmptyOutBox", context.esc("box"), OUTPUT_BOX);
+                .getLocalizer(TeXOutputRoutine.class), "TTP.NonEmptyOutBox",
+                context.esc("box"), OUTPUT_BOX);
         }
 
         interpreter.push(rightBrace);
         interpreter.push(output);
-        try {
-            context.openGroup(GroupType.OUTPUT_GROUP, interpreter.getLocator(),
-                    this.outputToken);
-            context.setBox(OUTPUT_BOX, new Box(page.getNodes()), false);
-        } catch (ConfigurationException e) {
-            throw new GeneralException(e);
-        }
+        context.openGroup(GroupType.OUTPUT_GROUP, interpreter.getLocator(),
+            this.outputToken);
+        context.setBox(OUTPUT_BOX, new Box(page.getNodes()), false);
         interpreter.executeGroup();
 
         box = context.getBox(OUTPUT_BOX);
         if (box != null && !box.isVoid()) {
             throw new HelpingException(LocalizerFactory
-                    .getLocalizer(TeXOutputRoutine.class),
-                    "TTP.NonEmptyOutBoxAfter", context.esc("box"), OUTPUT_BOX);
+                .getLocalizer(TeXOutputRoutine.class),
+                "TTP.NonEmptyOutBoxAfter", context.esc("box"), OUTPUT_BOX);
         }
     }
 

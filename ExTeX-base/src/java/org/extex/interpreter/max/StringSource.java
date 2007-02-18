@@ -222,7 +222,7 @@ public class StringSource extends Moritz {
      *
      * @throws ConfigurationException in case of errors in the configuration
      */
-    public StringSource(final CharSequence cs) throws ConfigurationException {
+    public StringSource(final CharSequence cs) {
 
         super();
         addStream(new TStream(cs));

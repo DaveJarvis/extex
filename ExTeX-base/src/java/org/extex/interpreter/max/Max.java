@@ -322,6 +322,15 @@ public abstract class Max
     private TokenVisitor tv = new TokenVisitor() {
 
         /**
+         * This visit method is invoked on an active token.
+         * In <logo>TeX</logo> this is e.g. ~.
+         * @param token the active token to visit
+         * @param arg the first argument to pass
+         *
+         * @return some value
+         *
+         * @throws Exception in case of an error
+         *
          * @see org.extex.scanner.type.token.TokenVisitor#visitActive(
          *      org.extex.scanner.type.token.ActiveCharacterToken,
          *      java.lang.Object)
@@ -343,6 +352,14 @@ public abstract class Max
         }
 
         /**
+         * This visit method is invoked on a cr token.
+         * @param token the cr token to visit
+         * @param arg the first argument to pass
+         *
+         * @return some value
+         *
+         * @throws Exception in case of an error
+         *
          * @see org.extex.scanner.type.token.TokenVisitor#visitCr(
          *      org.extex.scanner.type.token.CrToken, java.lang.Object)
          */
@@ -354,6 +371,15 @@ public abstract class Max
         }
 
         /**
+         * This visit method is invoked on an escape token.
+         * In <logo>TeX</logo> this normally means a control sequence.
+         * @param token the control sequence token to visit
+         * @param arg the first argument to pass
+         *
+         * @return some value
+         *
+         * @throws Exception in case of an error
+         *
          * @see org.extex.scanner.type.token.TokenVisitor#visitEscape(
          *      org.extex.scanner.type.token.ControlSequenceToken,
          *      java.lang.Object)
@@ -376,111 +402,170 @@ public abstract class Max
         }
 
         /**
+         * This visit method is invoked on a left brace token.
+         * @param token the left brace token to visit
+         * @param arg the first argument to pass
+         *
+         * @return some value
+         *
          * @see org.extex.scanner.type.token.TokenVisitor#visitLeftBrace(
          *      org.extex.scanner.type.token.LeftBraceToken,
          *      java.lang.Object)
          */
         public Object visitLeftBrace(final LeftBraceToken token,
-                final Object arg) throws Exception {
+                final Object arg) {
 
             return token;
         }
 
         /**
+         * This visit method is invoked on a letter token.
+         * @param token the letter token to visit
+         * @param arg the first argument to pass
+         *
+         * @return some value
+         *
          * @see org.extex.scanner.type.token.TokenVisitor#visitLetter(
          *      org.extex.scanner.type.token.LetterToken,
          *      java.lang.Object)
          */
-        public Object visitLetter(final LetterToken token, final Object arg)
-                throws Exception {
+        public Object visitLetter(final LetterToken token, final Object arg) {
 
             return token;
         }
 
         /**
+         * This visit method is invoked on a macro parameter token.
+         * In <logo>TeX</logo> this normally is a #.
+         * @param token the macro param token to visit
+         * @param arg the first argument to pass
+         *
+         * @return some value
+         *
          * @see org.extex.scanner.type.token.TokenVisitor#visitMacroParam(
          *      org.extex.scanner.type.token.MacroParamToken,
          *      java.lang.Object)
          */
         public Object visitMacroParam(final MacroParamToken token,
-                final Object arg) throws Exception {
+                final Object arg) {
 
             return token;
         }
 
         /**
+         * This visit method is invoked on a math shift token.
+         * In <logo>TeX</logo> this normally is a $.
+         * @param token the math shift token to visit
+         * @param arg the first argument to pass
+         *
+         * @return some value
+         *
          * @see org.extex.scanner.type.token.TokenVisitor#visitMathShift(
          *      org.extex.scanner.type.token.MathShiftToken,
          *      java.lang.Object)
          */
         public Object visitMathShift(final MathShiftToken token,
-                final Object arg) throws Exception {
+                final Object arg) {
 
             return token;
         }
 
         /**
+         * This visit method is invoked on an other token.
+         * @param token the other token to visit
+         * @param arg the first argument to pass
+         *
+         * @return some value
+         *
          * @see org.extex.scanner.type.token.TokenVisitor#visitOther(
          *      org.extex.scanner.type.token.OtherToken,
          *      java.lang.Object)
          */
-        public Object visitOther(final OtherToken token, final Object arg)
-                throws Exception {
+        public Object visitOther(final OtherToken token, final Object arg) {
 
             return token;
         }
 
         /**
+         * This visit method is invoked on a right brace token.
+         * @param token the right brace token to visit
+         * @param arg the first argument to pass
+         *
+         * @return some value
+         *
          * @see org.extex.scanner.type.token.TokenVisitor#visitRightBrace(
          *      org.extex.scanner.type.token.RightBraceToken,
          *      java.lang.Object)
          */
         public Object visitRightBrace(final RightBraceToken token,
-                final Object arg) throws Exception {
+                final Object arg) {
 
             return token;
         }
 
         /**
+         * This visit method is invoked on a space token.
+         * @param token the space token to visit
+         * @param arg the first argument to pass
+         *
+         * @return some value
+         *
          * @see org.extex.scanner.type.token.TokenVisitor#visitSpace(
          *      org.extex.scanner.type.token.SpaceToken,
          *      java.lang.Object)
          */
-        public Object visitSpace(final SpaceToken token, final Object arg)
-                throws Exception {
+        public Object visitSpace(final SpaceToken token, final Object arg) {
 
             return token;
         }
 
         /**
+         * This visit method is invoked on a sub mark token.
+         * In <logo>TeX</logo> this normally is a _.
+         * @param token the sub mark token to visit
+         * @param arg the first argument to pass
+         *
+         * @return some value
+         *
          * @see org.extex.scanner.type.token.TokenVisitor#visitSubMark(
          *      org.extex.scanner.type.token.SubMarkToken,
          *      java.lang.Object)
          */
-        public Object visitSubMark(final SubMarkToken token, final Object arg)
-                throws Exception {
+        public Object visitSubMark(final SubMarkToken token, final Object arg) {
 
             return token;
         }
 
         /**
+         * This visit method is invoked on a sup mark token.
+         * In <logo>TeX</logo> this normally is a ^.
+         * @param token the sup mark token to visit
+         * @param arg the first argument to pass
+         *
+         * @return some value
+         *
          * @see org.extex.scanner.type.token.TokenVisitor#visitSupMark(
          *      org.extex.scanner.type.token.SupMarkToken,
          *      java.lang.Object)
          */
-        public Object visitSupMark(final SupMarkToken token, final Object arg)
-                throws Exception {
+        public Object visitSupMark(final SupMarkToken token, final Object arg) {
 
             return token;
         }
 
         /**
+         * This visit method is invoked on a tab mark token.
+         * In <logo>TeX</logo> this normally is a &.
+         * @param token the tab mark token to visit
+         * @param arg the first argument to pass
+         *
+         * @return some value
+         *
          * @see org.extex.scanner.type.token.TokenVisitor#visitTabMark(
          *      org.extex.scanner.type.token.TabMarkToken,
          *      java.lang.Object)
          */
-        public Object visitTabMark(final TabMarkToken token, final Object arg)
-                throws Exception {
+        public Object visitTabMark(final TabMarkToken token, final Object arg) {
 
             return token;
         }
@@ -533,8 +618,7 @@ public abstract class Max
      *
      * @throws ConfigurationException in case of a configuration error
      */
-    public void configure(final Configuration config)
-            throws ConfigurationException {
+    public void configure(final Configuration config) {
 
         if (config == null) {
             throw new ConfigurationMissingException("Interpreter");
@@ -666,7 +750,7 @@ public abstract class Max
 
     /**
      * Take the token given and expand it as possible. If the token is
-     * expandable then the expansion is performed until an un-expandable token
+     * expandable then the expansion is performed until an non-expandable token
      * has been found. This token is returned.
      *
      * @param token the token to expand
@@ -674,6 +758,7 @@ public abstract class Max
      * @return the next token
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      */
     protected Token expand(final Token token) throws InterpreterException {
 
@@ -688,15 +773,25 @@ public abstract class Max
             if (code instanceof ExpandableCode) {
                 ((ExpandableCode) code).expand(prefix, context, this,
                     typesetter);
+                t = getToken(context);
             } else {
                 return t;
             }
-            t = getToken(context);
         }
         return t;
     }
 
     /**
+     * Expand some tokens.
+     *
+     * @param tokens the tokens to expand
+     * @param typesetter the typesetter to use
+     *
+     * @return the expanded tokens
+     *
+     * @throws GeneralException in case of an error
+     * @throws ConfigurationException in case of an configuration problem
+     *
      * @see org.extex.interpreter.Interpreter#expand(
      *      org.extex.interpreter.type.tokens.Tokens,
      *      org.extex.typesetter.Typesetter)
@@ -706,11 +801,7 @@ public abstract class Max
 
         Tokens result = new Tokens();
         TokenStream stream;
-        try {
-            stream = getTokenStreamFactory().newInstance("");
-        } catch (ConfigurationException e) {
-            throw new InterpreterException(e);
-        }
+        stream = getTokenStreamFactory().newInstance("");
 
         for (int i = tokens.length() - 1; i >= 0; i--) {
             stream.put(tokens.get(i));
@@ -745,6 +836,7 @@ public abstract class Max
      * @return the next token
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      */
     protected Token expandUnproteced(final Token token, final Tokens tokens)
             throws InterpreterException {
@@ -1130,9 +1222,15 @@ public abstract class Max
     }
 
     /**
+     * Load a unit.
+     *
+     * @param name the name of the configuration
+     *
+     * @throws ConfigurationException in case of an error
+     *
      * @see org.extex.interpreter.Interpreter#loadUnit(java.lang.String)
      */
-    public void loadUnit(final String name) throws ConfigurationException {
+    public void loadUnit(final String name) {
 
         Configuration cfg = new ConfigurationFactory().newInstance(name);
 
@@ -1235,9 +1333,18 @@ public abstract class Max
     }
 
     /**
+     * Process the current token streams by repeatedly reading a single token
+     * and processing it until no token is left. The visitor pattern is used to
+     * branch to the appropriate method for processing a single token.
+     *
+     * @throws ConfigurationException in case of a configuration error
+     * @throws ErrorLimitException in case that the error limit has been
+     *  reached
+     * @throws InterpreterException in case of another error
+     *
      * @see org.extex.interpreter.Interpreter#run()
      */
-    public void run() throws ConfigurationException, InterpreterException {
+    public void run() throws InterpreterException {
 
         if (typesetter == null) {
             throw new NoTypesetterException(getClass().getName() + "#run()");
@@ -1296,18 +1403,32 @@ public abstract class Max
     }
 
     /**
+     * Add a token stream and start processing it.
+     *
+     * @param stream the input stream to consider
+     *
+     * @throws ConfigurationException in case of a configuration error
+     * @throws ErrorLimitException in case that the error limit has been
+     *  reached
+     * @throws InterpreterException in case of another error
+     *
      * @see org.extex.interpreter.Interpreter#run(
      *      org.extex.scanner.TokenStream)
      */
-    public void run(final TokenStream stream)
-            throws ConfigurationException,
-                InterpreterException {
+    public void run(final TokenStream stream) throws InterpreterException {
 
         addStream(stream);
         run();
     }
 
     /**
+     * Setter for the context.
+     * Use with care!
+     *
+     * @return the old context
+     *
+     * @param context the interpreter context
+     *
      * @see org.extex.interpreter.Interpreter#setContext(
      *      org.extex.interpreter.context.Context)
      */
@@ -1323,6 +1444,9 @@ public abstract class Max
      * used to delete the error handler currently set.
      *
      * @param handler the new error handler
+     *
+     * @see org.extex.interpreter.Interpreter#setErrorHandler(
+     *      org.extex.interpreter.ErrorHandler)
      */
     public void setErrorHandler(final ErrorHandler handler) {
 
@@ -1330,6 +1454,10 @@ public abstract class Max
     }
 
     /**
+     * Setter for the font factory
+     *
+     * @param fontFactory the new font factory
+     *
      * @see org.extex.interpreter.Interpreter#setFontFactory(
      *      org.extex.font.CoreFontFactory)
      */
@@ -1344,6 +1472,9 @@ public abstract class Max
      * @param interaction the interaction mode
      *
      * @throws GeneralException in case of an error
+     *
+     * @see org.extex.interpreter.Interpreter#setInteraction(
+     *      org.extex.interpreter.interaction.Interaction)
      */
     public void setInteraction(final Interaction interaction)
             throws GeneralException {
@@ -1352,6 +1483,12 @@ public abstract class Max
     }
 
     /**
+     * Setter for the job name.
+     *
+     * @param jobname the new value for the job name
+     *
+     * @throws GeneralException in case of an error
+     *
      * @see org.extex.interpreter.Interpreter#setJobname(java.lang.String)
      */
     public void setJobname(final String jobname) throws GeneralException {
@@ -1360,6 +1497,10 @@ public abstract class Max
     }
 
     /**
+     * This method takes an output stream factory for further use.
+     *
+     * @param factory the output stream factory to use
+     *
      * @see org.extex.interpreter.type.OutputStreamConsumer#setOutputStreamFactory(
      *      org.extex.backend.outputStream.OutputStreamFactory)
      */
@@ -1369,6 +1510,10 @@ public abstract class Max
     }
 
     /**
+     * Setter for the typesetter.
+     *
+     * @param typesetter the new typesetter
+     *
      * @see org.extex.interpreter.Interpreter#setTypesetter(
      *      org.extex.typesetter.Typesetter)
      */
@@ -1387,6 +1532,7 @@ public abstract class Max
      * @return <code>null</code>
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.scanner.type.token.TokenVisitor#visitActive(
      *      org.extex.scanner.type.token.ActiveCharacterToken,
@@ -1448,13 +1594,15 @@ public abstract class Max
      * @return <code>null</code>
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.scanner.type.token.TokenVisitor#visitEscape(
      *      org.extex.scanner.type.token.ControlSequenceToken,
      *      java.lang.Object)
      */
     public Object visitEscape(final ControlSequenceToken token,
-            final Object ignore) throws InterpreterException {
+            final Object ignore)
+            throws InterpreterException {
 
         Code code = context.getCode(token);
         if (observersMacro != null) {
@@ -1486,6 +1634,7 @@ public abstract class Max
      * @return <code>null</code>
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see "<logo>TeX</logo> &ndash; The Program [1063]"
      * @see org.extex.scanner.type.token.TokenVisitor#visitLeftBrace(
@@ -1498,11 +1647,7 @@ public abstract class Max
         if (prefix.isDirty()) {
             reportDirtyFlag(token);
         }
-        try {
-            context.openGroup(GroupType.SIMPLE_GROUP, getLocator(), token);
-        } catch (ConfigurationException e) {
-            throw new InterpreterException(e);
-        }
+        context.openGroup(GroupType.SIMPLE_GROUP, getLocator(), token);
         typesetter.leftBrace();
 
         return null;
@@ -1531,8 +1676,8 @@ public abstract class Max
         if (typesetter.letter(token.getChar(), context.getTypesettingContext(),
             context, this, getLocator())
                 && context.getCount("tracinglostchars").gt(Count.ZERO)) {
-//            FontUtil.charWarning(logger, context, context
-//                .getTypesettingContext().getFont(), token.getChar());
+            //            FontUtil.charWarning(logger, context, context
+            //                .getTypesettingContext().getFont(), token.getChar());
             logger.info(getLocalizer().format("TTP.MissingChar",
                 token.getChar().toString(),
                 context.getTypesettingContext().getFont().getFontName()));
@@ -1574,6 +1719,7 @@ public abstract class Max
      * @return <code>null</code>
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see "<logo>TeX</logo> &ndash; The Program [1137]"
      * @see org.extex.scanner.type.token.TokenVisitor#visitMathShift(
@@ -1586,11 +1732,9 @@ public abstract class Max
         if (prefix.isDirty()) {
             reportDirtyFlag(token);
         }
-        try {
-            typesetter.mathShift(context, this, token);
-        } catch (ConfigurationException e) {
-            throw new InterpreterException(e);
-        }
+
+        typesetter.mathShift(context, this, token);
+
         return null;
     }
 
@@ -1614,6 +1758,7 @@ public abstract class Max
         if (prefix.isDirty()) {
             reportDirtyFlag(token);
         }
+
         typesetter.letter(token.getChar(), //
             context.getTypesettingContext(), //
             context, this, getLocator());
@@ -1641,6 +1786,7 @@ public abstract class Max
         if (prefix.isDirty()) {
             reportDirtyFlag(token);
         }
+
         context.closeGroup(typesetter, this);
         typesetter.rightBrace();
 
@@ -1656,6 +1802,7 @@ public abstract class Max
      * @return <code>null</code>
      *
      * @throws GeneralException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.scanner.type.token.TokenVisitor#visitSpace(
      *      org.extex.scanner.type.token.SpaceToken,
@@ -1664,14 +1811,12 @@ public abstract class Max
     public Object visitSpace(final SpaceToken token, final Object ignore)
             throws GeneralException {
 
-        try {
-            typesetter.addSpace(context.getTypesettingContext(), null);
-        } catch (ConfigurationException e) {
-            throw new InterpreterException(e);
-        }
         if (prefix.isDirty()) {
             reportDirtyFlag(token);
         }
+
+        typesetter.addSpace(context.getTypesettingContext(), null);
+
         return null;
     }
 
@@ -1755,6 +1900,7 @@ public abstract class Max
      * @return <code>null</code>
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.scanner.type.token.TokenVisitor#visitTabMark(
      *      org.extex.scanner.type.token.TabMarkToken,
@@ -1766,11 +1912,7 @@ public abstract class Max
         if (prefix.isDirty()) {
             reportDirtyFlag(token);
         }
-        try {
-            typesetter.tab(context, this, token);
-        } catch (ConfigurationException e) {
-            throw new InterpreterException(e);
-        }
+        typesetter.tab(context, this, token);
 
         return null;
     }

@@ -150,6 +150,12 @@ public class TypesetterImpl
     }
 
     /**
+     * Add a glue node to the list.
+     *
+     * @param g the glue to add
+     *
+     * @throws TypesetterException in case of an error
+     *
      * @see org.extex.typesetter.ListMaker#add(
      *      org.extex.interpreter.type.glue.FixedGlue)
      */
@@ -159,12 +165,19 @@ public class TypesetterImpl
     }
 
     /**
+     * Add an arbitrary node to the internal list of nodes gathered so far.
+     * The node should not be one of the special nodes treated by methods of
+     * their own.
+     *
+     * @param node the node to add
+     *
+     * @throws TypesetterException in case of an error
+     * @throws ConfigurationException in case of a configuration error
+     *
      * @see org.extex.typesetter.ListMaker#add(
      *     org.extex.typesetter.type.Node)
      */
-    public void add(final Node node)
-            throws TypesetterException,
-                ConfigurationException {
+    public void add(final Node node) throws TypesetterException {
 
         if (node == null) {
             return;
@@ -179,37 +192,56 @@ public class TypesetterImpl
                 || node instanceof VerticalListNode)) {
 
             pageBuilder.inspectAndBuild((VerticalListNode) listMaker
-                    .complete(options), this);
+                .complete(options), this);
         }
     }
 
     /**
+     * Add a node list to the current list maker and adjust the spacing between
+     * the elements of the list.
+     *
+     * @param list the list
+     * @param options the options to use
+     *
+     * @throws TypesetterException in case of an error
+     * @throws ConfigurationException in case of a configuration error
+     *
      * @see org.extex.typesetter.ListMaker#addAndAdjust(
      *      org.extex.typesetter.type.NodeList,
      *      org.extex.typesetter.TypesetterOptions)
      */
     public void addAndAdjust(final NodeList list,
-            final TypesetterOptions options)
-            throws TypesetterException,
-                ConfigurationException {
+            final TypesetterOptions options) throws TypesetterException {
 
         listMaker.addAndAdjust(list, options);
     }
 
     /**
+     * Add a space node to the list.
+     *
+     * @param typesettingContext the typesetting context for the space
+     * @param spacefactor the space factor to use for this space or
+     *  <code>null</code> to indicate that the default space factor should
+     *  be used.
+     *
+     * @throws TypesetterException in case of an error
+     * @throws ConfigurationException in case of a configuration error
+     *
      * @see org.extex.typesetter.ListMaker#addSpace(
      *      org.extex.interpreter.context.tc.TypesettingContext,
      *      org.extex.interpreter.type.count.Count)
      */
     public void addSpace(final TypesettingContext typesettingContext,
-            final Count spacefactor)
-            throws TypesetterException,
-                ConfigurationException {
+            final Count spacefactor) throws TypesetterException {
 
         listMaker.addSpace(typesettingContext, null);
     }
 
     /**
+     * Register an observer to be invoked at the end of the paragraph.
+     *
+     * @param observer the observer to register
+     *
      * @see org.extex.typesetter.ListMaker#afterParagraph(
      *      ParagraphObserver)
      */
@@ -219,6 +251,14 @@ public class TypesetterImpl
     }
 
     /**
+     * Invoke the paragraph builder on a list of nodes.
+     *
+     * @param nodes the nodes to make a paragraph from
+     *
+     * @return the vertical node list containing the lines of the paragraph
+     *
+     * @throws TypesetterException in case of an error
+     *
      * @see org.extex.typesetter.listMaker.ListManager#buildParagraph(
      *      org.extex.typesetter.type.node.HorizontalListNode)
      */
@@ -229,6 +269,11 @@ public class TypesetterImpl
     }
 
     /**
+     * Clear the internal state about shipouts.
+     * The shipout mark is reset to <code>false</code>.
+     *
+     * @see #isShipoutMark()
+     *
      * @see org.extex.typesetter.Typesetter#clearShipoutMark()
      */
     public void clearShipoutMark() {
@@ -237,11 +282,25 @@ public class TypesetterImpl
     }
 
     /**
-     * @see org.extex.typesetter.ListMaker#complete(TypesetterOptions)
+     * Close the node list. This means that everything is done to ship the
+     * closed node list to the document writer. Nevertheless the invoking
+     * application might decide not to modify the node list and continue
+     * processing. In the other case some  nodes might be taken from the node
+     * list returned by this method. Then the processing has to continue with
+     * the reduced node list.
+     *
+     * @param context the typesetter options mapping a fragment of the
+     *  interpreter context
+     *
+     * @return the node list enclosed in this instance
+     *
+     * @throws TypesetterException in case of an error
+     * @throws ConfigurationException in case of a configuration error
+     *
+     * @see org.extex.typesetter.ListMaker#complete(org.extex.typesetter.TypesetterOptions)
      */
     public NodeList complete(final TypesetterOptions context)
-            throws TypesetterException,
-                ConfigurationException {
+            throws TypesetterException {
 
         NodeList nodes = listMaker.complete(context);
         pop();
@@ -249,6 +308,14 @@ public class TypesetterImpl
     }
 
     /**
+     * Process a carriage return.
+     *
+     * @param context the interpreter context
+     * @param tc the typesetting context
+     * @param uc the character
+     *
+     * @throws TypesetterException in case of an error
+     *
      * @see org.extex.typesetter.ListMaker#cr(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.context.tc.TypesettingContext,
@@ -274,6 +341,10 @@ public class TypesetterImpl
     }
 
     /**
+     * Setter for the logger.
+     *
+     * @param logger the logger to use
+     *
      * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
@@ -289,11 +360,14 @@ public class TypesetterImpl
     }
 
     /**
+     * End the current paragraph.
+     *
+     * @throws TypesetterException in case of an error
+     * @throws ConfigurationException in case of an configuration problem
+     *
      * @see org.extex.typesetter.listMaker.ListManager#endParagraph()
      */
-    public void endParagraph()
-            throws TypesetterException,
-                ConfigurationException {
+    public void endParagraph() throws TypesetterException {
 
         NodeList list = listMaker.complete(options);
         pop();
@@ -310,6 +384,15 @@ public class TypesetterImpl
     }
 
     /**
+     * Switch to horizontal mode if necessary.
+     * If the current mode is a horizontal mode then nothing is done.
+     *
+     * @param locator the locator
+     *
+     * @return the horizontal list maker
+     *
+     * @throws TypesetterException in case of an error
+     *
      * @see org.extex.typesetter.listMaker.ListManager#ensureHorizontalMode(
      *      org.extex.type.Locator)
      */
@@ -323,9 +406,16 @@ public class TypesetterImpl
     }
 
     /**
+     * Instructs the typesetter to perform any actions necessary for cleaning up
+     * everything at the end of processing. This should involve a shipout of
+     * any material still left unprocessed.
+     *
+     * @throws TypesetterException in case of an error
+     * @throws ConfigurationException in case of an configuration problem
+     *
      * @see org.extex.typesetter.Typesetter#finish()
      */
-    public void finish() throws TypesetterException, ConfigurationException {
+    public void finish() throws TypesetterException {
 
         par();
         pageBuilder.flush(listMaker.complete(options), this);
@@ -348,6 +438,11 @@ public class TypesetterImpl
     }
 
     /**
+     * Access the last node on the list.
+     *
+     * @return the last node in the current list or <code>null</code> if the
+     *   list is empty
+     *
      * @see org.extex.typesetter.ListMaker#getLastNode()
      */
     public Node getLastNode() {
@@ -356,6 +451,10 @@ public class TypesetterImpl
     }
 
     /**
+     * Getter for the current list maker.
+     *
+     * @return the top list maker or <code>null</code> if the stack is empty
+     *
      * @see org.extex.typesetter.Typesetter#getListMaker()
      */
     public ListMaker getListMaker() {
@@ -364,6 +463,10 @@ public class TypesetterImpl
     }
 
     /**
+     * Getter for the locator.
+     *
+     * @return the locator
+     *
      * @see org.extex.typesetter.ListMaker#getLocator()
      */
     public Locator getLocator() {
@@ -385,6 +488,11 @@ public class TypesetterImpl
     }
 
     /**
+     * Getter for the current mode.
+     *
+     * @return the mode which is one of the values defined in
+     * {@link org.extex.typesetter.Mode Mode}.
+     *
      * @see org.extex.typesetter.Typesetter#getMode()
      */
     public Mode getMode() {
@@ -393,6 +501,10 @@ public class TypesetterImpl
     }
 
     /**
+     * Getter for the NodeFactory.
+     *
+     * @return the node factory
+     *
      * @see org.extex.typesetter.Typesetter#getNodeFactory()
      */
     public NodeFactory getNodeFactory() {
@@ -401,6 +513,10 @@ public class TypesetterImpl
     }
 
     /**
+     * Getter for the options object.
+     *
+     * @return the options
+     *
      * @see org.extex.typesetter.listMaker.ListManager#getOptions()
      */
     public TypesetterOptions getOptions() {
@@ -409,6 +525,12 @@ public class TypesetterImpl
     }
 
     /**
+     * Getter for the previous depth parameter.
+     *
+     * @return the previous depth
+     *
+     * @throws TypesetterUnsupportedException in case of an error
+     *
      * @see org.extex.typesetter.ListMaker#getPrevDepth()
      */
     public FixedDimen getPrevDepth() throws TypesetterUnsupportedException {
@@ -417,6 +539,12 @@ public class TypesetterImpl
     }
 
     /**
+     * Getter for the space factor.
+     *
+     * @return the space factor
+     *
+     * @throws TypesetterUnsupportedException in case of an error
+     *
      * @see org.extex.typesetter.ListMaker#getSpacefactor()
      */
     public long getSpacefactor() throws TypesetterUnsupportedException {
@@ -425,6 +553,18 @@ public class TypesetterImpl
     }
 
     /**
+     * Query the shipout mark.
+     * The shipout mark is an internal state which records whether or not the
+     * shipout method has been called recently. This method can be used to
+     * get the current state.
+     * The method {@link #clearShipoutMark() clearShipoutMark()} can be used to
+     * reset the shipout mark to <code>false</code>.
+     * Initially the shipout mark is <code>false</code>.
+     *
+     * @return <code>true</code> iff there has been an invocation to the method
+     *  {@link #shipout(NodeList) shipout()} since the last clearing
+     * @see #clearShipoutMark()
+     *
      * @see org.extex.typesetter.Typesetter#isShipoutMark()
      */
     public boolean isShipoutMark() {
@@ -442,6 +582,20 @@ public class TypesetterImpl
     }
 
     /**
+     * Add a letter to the current list or treat it in some other appropriate
+     * way.
+     *
+     * @param tc the typesetting context
+     * @param uc the character
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param locator the locator
+     *
+     * @return <code>true</code> iff the character has been discarded because
+     *   it is not defined in the current font.
+     *
+     * @throws TypesetterException in case of an error
+     *
      * @see org.extex.typesetter.ListMaker#letter(
      *      org.extex.type.UnicodeChar,
      *      org.extex.interpreter.context.tc.TypesettingContext,
@@ -457,32 +611,55 @@ public class TypesetterImpl
     }
 
     /**
+     * Treat a math shift character.
+     * Usually this leads to entering or leaving math mode &ndash; maybe after
+     * inspection of a following token.
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param t the actual math shift character token
+     *
+     * @throws TypesetterException in case of an error
+     * @throws ConfigurationException in case of a configuration error
+     *
      * @see org.extex.typesetter.ListMaker#mathShift(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.scanner.type.token.Token)
      */
     public void mathShift(final Context context, final TokenSource source,
-            final Token t) throws TypesetterException, ConfigurationException {
+            final Token t) throws TypesetterException {
 
         ensureHorizontalMode(source.getLocator());
         listMaker.mathShift(context, source, t);
     }
 
     /**
+     * Emit a new paragraph.
+     * This might be a noop under certain circumstances.
+     *
+     * @throws TypesetterException in case of an error
+     * @throws ConfigurationException in case of a configuration error
+     *
      * @see org.extex.typesetter.ListMaker#par()
      */
-    public void par() throws TypesetterException, ConfigurationException {
+    public void par() throws TypesetterException {
 
         listMaker.par();
 
         if (saveStack.size() == 0) {
             pageBuilder.inspectAndBuild((VerticalListNode) listMaker
-                    .complete(options), this);
+                .complete(options), this);
         }
     }
 
     /**
+     * Discard the top of the stack of list makers.
+     *
+     * @return the list maker popped from the stack
+     *
+     * @throws TypesetterException in case of an error
+     *
      * @see org.extex.typesetter.listMaker.ListManager#pop()
      */
     public ListMaker pop() throws TypesetterException {
@@ -496,6 +673,12 @@ public class TypesetterImpl
     }
 
     /**
+     * Push a new element to the stack of list makers.
+     *
+     * @param listMaker the new element to push
+     *
+     * @throws TypesetterException in case of an error
+     *
      * @see org.extex.typesetter.listMaker.ListManager#push(
      *      org.extex.typesetter.ListMaker)
      */
@@ -506,6 +689,9 @@ public class TypesetterImpl
     }
 
     /**
+     * Removes the last node from the list.
+     * If the list is empty then nothing is done.
+     *
      * @see org.extex.typesetter.ListMaker#removeLastNode()
      */
     public void removeLastNode() {
@@ -516,6 +702,11 @@ public class TypesetterImpl
     }
 
     /**
+     * Notification method to deal the case that a right brace has been
+     * encountered.
+     *
+     * @throws TypesetterException in case of an error
+     *
      * @see org.extex.typesetter.ListMaker#rightBrace()
      */
     public void rightBrace() throws TypesetterException {
@@ -524,6 +715,12 @@ public class TypesetterImpl
     }
 
     /**
+     * Setter for the back-end driver.
+     * The back-end driver is addressed whenever a complete page has to be
+     * shipped out.
+     *
+     * @param driver the new back-end driver
+     *
      * @see org.extex.typesetter.Typesetter#setBackend(
      *      org.extex.backend.BackendDriver)
      */
@@ -534,6 +731,10 @@ public class TypesetterImpl
     }
 
     /**
+     * Setter for the node factory.
+     *
+     * @param nodeFactory the node factory
+     *
      * @see org.extex.typesetter.Typesetter#setNodeFactory(
      *      org.extex.typesetter.type.node.factory.NodeFactory)
      */
@@ -543,6 +744,10 @@ public class TypesetterImpl
     }
 
     /**
+     * Setter for the typesetter specific options.
+     *
+     * @param options the options to use
+     *
      * @see org.extex.typesetter.Typesetter#setOptions(
      *      org.extex.typesetter.TypesetterOptions)
      */
@@ -553,6 +758,10 @@ public class TypesetterImpl
     }
 
     /**
+     * Setter for the output routine.
+     *
+     * @param output the output routine
+     *
      * @see org.extex.typesetter.Typesetter#setOutputRoutine(
      *      org.extex.typesetter.output.OutputRoutine)
      */
@@ -596,6 +805,12 @@ public class TypesetterImpl
     }
 
     /**
+     * Setter for the previous depth parameter.
+     *
+     * @param pd the previous depth parameter
+     *
+     * @throws TypesetterUnsupportedException in case of an error
+     *
      * @see org.extex.typesetter.ListMaker#setPrevDepth(
      *      org.extex.interpreter.type.dimen.FixedDimen)
      */
@@ -606,6 +821,13 @@ public class TypesetterImpl
     }
 
     /**
+     * Setter for the space factor.
+     *
+     * @param sf the space factor to set
+     *
+     * @throws TypesetterUnsupportedException in case of an error
+     * @throws InvalidSpacefactorException in case of an invalid space factor
+     *
      * @see org.extex.typesetter.ListMaker#setSpacefactor(
      *      org.extex.interpreter.type.count.FixedCount)
      */
@@ -644,6 +866,13 @@ public class TypesetterImpl
     }
 
     /**
+     * This method produces a diagnostic representation of the current lists in
+     * a StringBuffer.
+     *
+     * @param sb the target string buffer
+     * @param depth the depth for the display
+     * @param breadth the breadth of the display
+     *
      * @see org.extex.typesetter.Typesetter#showlists(
      *      java.lang.StringBuffer, long, long)
      */
@@ -651,13 +880,14 @@ public class TypesetterImpl
             final long breadth) {
 
         sb.append(localizer.format("Showlist.Format", listMaker.getMode()
-                .toString(), Integer.toString(listMaker.getLocator()
-                .getLineNumber())));
+            .toString(), Integer.toString(listMaker.getLocator()
+            .getLineNumber())));
         listMaker.showlist(sb, depth, breadth);
 
         for (int i = saveStack.size() - 1; i >= 0; i--) {
             ListMaker lm = (ListMaker) saveStack.get(i);
-            sb.append(localizer.format("Showlist.Format", lm.getMode()
+            sb
+                .append(localizer.format("Showlist.Format", lm.getMode()
                     .toString(), Integer.toString(lm.getLocator()
                     .getLineNumber())));
             lm.showlist(sb, depth, breadth);
@@ -665,6 +895,15 @@ public class TypesetterImpl
     }
 
     /**
+     * Treat a subscript mark. This might be meaningful in math mode only.
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter
+     * @param t the actual sub mark token
+     *
+     * @throws TypesetterException in case of an error
+     *
      * @see org.extex.typesetter.ListMaker#subscriptMark(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
@@ -679,6 +918,15 @@ public class TypesetterImpl
     }
 
     /**
+     * Treat a superscript mark. This might be meaningful in math mode only.
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter
+     * @param t the actual super mark token
+     *
+     * @throws TypesetterException in case of an error
+     *
      * @see org.extex.typesetter.Typesetter#superscriptMark(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
@@ -692,12 +940,21 @@ public class TypesetterImpl
     }
 
     /**
+     * Treat a alignment tab character.
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param t the actual tab token
+     *
+     * @throws TypesetterException in case of an error
+     * @throws ConfigurationException in case of a configuration error
+     *
      * @see org.extex.typesetter.Typesetter#tab(
      *      Context,
      *      TokenSource, org.extex.scanner.type.token.Token)
      */
     public void tab(final Context context, final TokenSource source,
-            final Token t) throws TypesetterException, ConfigurationException {
+            final Token t) throws TypesetterException {
 
         listMaker.tab(context, source, t);
     }

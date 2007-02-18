@@ -31,7 +31,6 @@ import org.extex.typesetter.type.page.Page;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.configuration.Configurable;
 import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This back-end driver can be used to combine several components.
@@ -180,15 +179,22 @@ public class BackendDriverImpl
     }
 
     /**
+     * Configure an object according to a given Configuration.
+     *
+     * @param config the configuration object to consider
+     *
      * @see org.extex.util.framework.configuration.Configurable#configure(
      *      org.extex.util.framework.configuration.Configuration)
      */
-    public void configure(final Configuration config)
-            throws ConfigurationException {
+    public void configure(final Configuration config) {
 
     }
 
     /**
+     * Getter for the document writer.
+     *
+     * @return the document writer
+     *
      * @see org.extex.backend.BackendDriver#getDocumentWriter()
      */
     public DocumentWriter getDocumentWriter() {
@@ -197,6 +203,12 @@ public class BackendDriverImpl
     }
 
     /**
+     * Getter for the extension associated with this kind of output. For
+     * instance <tt>pdf</tt> is the expected value for PDF files and
+     * <tt>dvi</tt> is the expected value for DVI files.
+     *
+     * @return the appropriate extension for file names
+     *
      * @see org.extex.backend.documentWriter.DocumentWriter#getExtension()
      */
     public String getExtension() {
@@ -205,6 +217,10 @@ public class BackendDriverImpl
     }
 
     /**
+     * Getter for the number of pages already produced.
+     *
+     * @return the number of pages already shipped out
+     *
      * @see org.extex.backend.BackendDriver#getPages()
      */
     public int getPages() {
@@ -213,6 +229,10 @@ public class BackendDriverImpl
     }
 
     /**
+     * Setter for the document writer.
+     *
+     * @param docWriter the document writer
+     *
      * @see org.extex.backend.BackendDriver#setDocumentWriter(
      *      org.extex.backend.documentWriter.DocumentWriter)
      */
@@ -222,6 +242,10 @@ public class BackendDriverImpl
     }
 
     /**
+     * Setter for the output stream.
+     *
+     * @param writerFactory the output stream
+     *
      * @see org.extex.backend.documentWriter.MultipleDocumentStream#setOutputStreamFactory(
      *      org.extex.backend.outputStream.OutputStreamFactory)
      */
@@ -234,6 +258,14 @@ public class BackendDriverImpl
     }
 
     /**
+     * Setter for a named parameter.
+     * Parameters are a general mechanism to influence the behavior of the
+     * document writer. Any parameter not known by the document writer has to
+     * be ignored.
+     *
+     * @param name the name of the parameter
+     * @param value the value of the parameter
+     *
      * @see org.extex.backend.documentWriter.DocumentWriter#setParameter(
      *      java.lang.String,
      *      java.lang.String)
@@ -246,6 +278,18 @@ public class BackendDriverImpl
     }
 
     /**
+     * This is the entry point for the document writer. Here it receives a
+     * complete node list to be sent to the output writer. It can be assumed
+     * that all values for width, height, and depth of the node lists are
+     * properly filled. Thus all information should be present to place the
+     * ink on the paper.
+     *
+     * @param page the page to send
+     *
+     * @return returns the number of pages shipped
+     *
+     * @throws BackendException in case of an error
+     *
      * @see org.extex.backend.BackendDriver#shipout(
      *      org.extex.typesetter.type.page.Page)
      */

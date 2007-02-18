@@ -69,7 +69,7 @@ public class TokenFactoryFactory extends AbstractFactory {
      *
      * @throws ConfigurationException in case of an error in the configuration
      */
-    public TokenFactory createInstance() throws ConfigurationException {
+    public TokenFactory createInstance() {
 
         return (TokenFactory) createInstance(TokenFactory.class);
     }

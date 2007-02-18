@@ -35,7 +35,6 @@ import org.extex.backend.documentWriter.exception.DocumentWriterException;
 import org.extex.backend.documentWriter.exception.OutputStreamOpenException;
 import org.extex.util.framework.AbstractFactory;
 import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This factory creates an output stream from a specification in the
@@ -159,11 +158,8 @@ public class OutputFactory extends AbstractFactory
      *
      * @param outdirs the list of output directories
      * @param basename the base name of the main stream
-     *
-     * @throws ConfigurationException in case of an configuration error
      */
-    public OutputFactory(final String[] outdirs, final String basename)
-            throws ConfigurationException {
+    public OutputFactory(final String[] outdirs, final String basename) {
 
         super();
         this.outputDirectories = outdirs;
@@ -234,12 +230,7 @@ public class OutputFactory extends AbstractFactory
         Configuration c = getConfiguration();
         String format;
         if (c != null) {
-            try {
-                format =
-                        selectConfiguration(ext).getAttribute(FORMAT_ATTRIBUTE);
-            } catch (ConfigurationException e) {
-                throw new DocumentWriterException(e);
-            }
+            format = selectConfiguration(ext).getAttribute(FORMAT_ATTRIBUTE);
         } else {
             format = "{0}{1}{2,number,0000}{3}";
         }

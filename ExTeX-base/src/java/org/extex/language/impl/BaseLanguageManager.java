@@ -32,7 +32,6 @@ import org.extex.language.word.WordTokenizer;
 import org.extex.util.framework.AbstractFactory;
 import org.extex.util.framework.Registrar;
 import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
@@ -88,23 +87,23 @@ public class BaseLanguageManager extends AbstractFactory
      *
      * @throws ConfigurationException in case of a configuration error
      */
-    protected Language createLanguage(final String name)
-            throws ConfigurationException {
+    protected Language createLanguage(final String name) {
 
         ModifiableLanguage lang;
         Configuration cfg = selectConfiguration(name);
-        lang = (ModifiableLanguage) createInstanceForConfiguration(cfg,
-                ModifiableLanguage.class);
+        lang =
+                (ModifiableLanguage) createInstanceForConfiguration(cfg,
+                    ModifiableLanguage.class);
 
         Configuration config = cfg.findConfiguration("LigatureBuilder");
         lang.setLigatureBuilder(//
-                (LigatureBuilder) createInstanceForConfiguration(config,
-                        LigatureBuilder.class));
+            (LigatureBuilder) createInstanceForConfiguration(config,
+                LigatureBuilder.class));
 
         config = cfg.findConfiguration("WordTokenizer");
         lang.setWordTokenizer(//
-                (WordTokenizer) createInstanceForConfiguration(config,
-                        WordTokenizer.class));
+            (WordTokenizer) createInstanceForConfiguration(config,
+                WordTokenizer.class));
 
         lang.setName(name);
         tables.put(name, lang);
@@ -136,8 +135,7 @@ public class BaseLanguageManager extends AbstractFactory
      * @see org.extex.language.LanguageManager#getLanguage(
      *      java.lang.String)
      */
-    public Language getLanguage(final String name)
-            throws ConfigurationException {
+    public Language getLanguage(final String name) {
 
         Language table = (Language) tables.get(name);
         if (table == null) {

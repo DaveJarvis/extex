@@ -101,8 +101,7 @@ public class BackendFactory extends AbstractFactory {
      *
      * @throws ConfigurationException in case of an configuration error
      */
-    public BackendFactory(final Configuration config, final Logger logger)
-            throws ConfigurationException {
+    public BackendFactory(final Configuration config, final Logger logger) {
 
         super();
         enableLogging(logger);
@@ -130,9 +129,7 @@ public class BackendFactory extends AbstractFactory {
             final OutputStreamFactory outFactory, final ResourceFinder finder,
             final Properties properties, final String creator,
             final CoreFontFactory fontFactory,
-            final ColorConverter colorConverter)
-            throws DocumentWriterException,
-                ConfigurationException {
+            final ColorConverter colorConverter) throws DocumentWriterException {
 
         BackendDriver backend =
                 (BackendDriver) createInstanceForConfiguration(
