@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -128,6 +128,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
                 case ' ':
                     return Catcode.SPACE;
                 case '\0':
+                case '\f':
                     return Catcode.IGNORE;
                 }
                 return Catcode.OTHER;
@@ -407,10 +408,12 @@ public class TokenStreamStringImpl32Test extends TestCase {
      */
     public void testIgnore() throws Exception {
 
-        TokenStream stream = makeStream("\0");
+        TokenStream stream = makeStream("\f.");
         Token token = stream.get(fac, tokenizer);
         assertNotNull(token);
-        assertEquals(13, token.getChar().getCodePoint());
+        assertEquals("the character .", stream.get(fac, tokenizer)
+            .toString());
+        assertEquals("blank space  ", stream.get(fac, tokenizer).toString());
         assertNull(stream.get(fac, tokenizer));
     }
 
