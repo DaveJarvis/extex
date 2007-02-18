@@ -96,6 +96,7 @@ public class Showthe extends AbstractCode implements LogEnabled {
      * @param typesetter the typesetter
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
@@ -121,7 +122,7 @@ public class Showthe extends AbstractCode implements LogEnabled {
         }
 
         throw new CantUseAfterException(cs.toString(),
-                printableControlSequence(context));
+            printableControlSequence(context));
     }
 
 }

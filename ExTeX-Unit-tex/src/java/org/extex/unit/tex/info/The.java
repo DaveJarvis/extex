@@ -101,6 +101,7 @@ public class The extends AbstractCode implements ExpandableCode, CodeExpander {
      * @param typesetter the typesetter
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
@@ -131,7 +132,7 @@ public class The extends AbstractCode implements ExpandableCode, CodeExpander {
         }
 
         throw new HelpingException(getLocalizer(), "TTP.CantUseAfterThe", //
-                cs.toString(), printableControlSequence(context));
+            cs.toString(), printableControlSequence(context));
     }
 
     /**
@@ -147,6 +148,7 @@ public class The extends AbstractCode implements ExpandableCode, CodeExpander {
      * @param typesetter the typesetter
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.interpreter.type.ExpandableCode#expand(
      *      org.extex.interpreter.Flags,
@@ -171,6 +173,7 @@ public class The extends AbstractCode implements ExpandableCode, CodeExpander {
      * @param tokens the target token list
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.interpreter.type.CodeExpander#expandCode(
      *      org.extex.interpreter.context.Context,
@@ -198,6 +201,6 @@ public class The extends AbstractCode implements ExpandableCode, CodeExpander {
         }
 
         throw new HelpingException(getLocalizer(), "TTP.CantUseAfterThe", //
-                cs.toString(), printableControlSequence(context));
+            cs.toString(), printableControlSequence(context));
     }
 }
