@@ -159,8 +159,7 @@ public class Dimenexpr extends AbstractCode
      */
     public long convertCount(final Context context, final TokenSource source,
             final Typesetter typesetter)
-            throws InterpreterException,
-                ConfigurationException {
+            throws InterpreterException {
 
         long result = evalExpr(context, source, typesetter);
         Token t = source.getToken(context);
