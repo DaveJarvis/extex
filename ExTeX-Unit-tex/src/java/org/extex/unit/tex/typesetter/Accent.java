@@ -36,7 +36,6 @@ import org.extex.type.UnicodeChar;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.node.AccentKernNode;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive <code>\accent</code>.
@@ -96,6 +95,9 @@ public class Accent extends AbstractCode {
      * @param source the token source
      * @param typesetter the typesetter
      *
+     * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
+     *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -108,12 +110,13 @@ public class Accent extends AbstractCode {
             throws InterpreterException {
 
         if (typesetter.getMode().isMath()) {
-            throw new HelpingException(getLocalizer(), //
-                    "TTP.AccentInMathMode", printableControlSequence(context),
-                    context.esc("mathaccent"));
+            throw new HelpingException(
+                getLocalizer(), //
+                "TTP.AccentInMathMode", printableControlSequence(context),
+                context.esc("mathaccent"));
         }
-        UnicodeChar accent = source.scanCharacterCode(context, typesetter,
-                getName());
+        UnicodeChar accent =
+                source.scanCharacterCode(context, typesetter, getName());
         Token token = source.getToken(context);
         TypesettingContext tc = context.getTypesettingContext();
         Font currentFont = tc.getFont();
@@ -134,7 +137,8 @@ public class Accent extends AbstractCode {
 
             if (currentFont.hasGlyph(accent)) {
                 if (!currentFont.hasGlyph(c)) {
-                    typesetter.letter(accent, tc, context, source, source.getLocator());
+                    typesetter.letter(accent, tc, context, source, source
+                        .getLocator());
                 } else {
                     Node node = typesetter.getNodeFactory().getNode(tc, accent);
                     if (node == null) {
@@ -153,15 +157,12 @@ public class Accent extends AbstractCode {
                     // compute delta TTP [1125]
                     long delta = (w - a) / 2 + (h - x) * s / UNIT;
                     d.set(delta);
-                    try {
-                        typesetter.add(new AccentKernNode(d));
-                        typesetter.add(node);
-                        d.set(-a - delta);
-                        typesetter.add(new AccentKernNode(d));
-                        typesetter.letter(c, tc, context, source, source.getLocator());
-                    } catch (ConfigurationException e) {
-                        throw new InterpreterException(e);
-                    }
+                    typesetter.add(new AccentKernNode(d));
+                    typesetter.add(node);
+                    d.set(-a - delta);
+                    typesetter.add(new AccentKernNode(d));
+                    typesetter.letter(c, tc, context, source, source
+                        .getLocator());
                 }
             } else if (currentFont.hasGlyph(c)) {
                 typesetter.letter(c, tc, context, source, source.getLocator());

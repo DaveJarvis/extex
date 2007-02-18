@@ -99,6 +99,7 @@ public class Special extends AbstractCode {
      * @param typesetter the typesetter
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
@@ -108,15 +109,13 @@ public class Special extends AbstractCode {
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws InterpreterException {
+            throws InterpreterException, ConfigurationException {
 
         String text = source.scanUnprotectedTokens(context, true, false,
                 getName()).toText();
         try {
             typesetter.add(new SpecialNode(text));
         } catch (TypesetterException e) {
-            throw new InterpreterException(e);
-        } catch (ConfigurationException e) {
             throw new InterpreterException(e);
         }
     }

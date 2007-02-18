@@ -25,6 +25,7 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.EofInToksException;
+import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.count.Count;
 import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.type.token.LeftBraceToken;
@@ -32,7 +33,6 @@ import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.ParagraphObserver;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.NodeList;
-import org.extex.unit.tex.register.box.AbstractBox;
 
 /**
  * This class provides an implementation for the primitive
@@ -59,7 +59,7 @@ import org.extex.unit.tex.register.box.AbstractBox;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4770 $
  */
-public class Setlanguage extends AbstractBox {
+public class Setlanguage extends AbstractCode {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
@@ -128,6 +128,17 @@ public class Setlanguage extends AbstractBox {
     }
 
     /**
+     * This method takes the first token and executes it. The result is placed
+     * on the stack. This operation might have side effects. To execute a token
+     * it might be necessary to consume further tokens.
+     *
+     * @param prefix the prefix controlling the execution
+     * @param context the interpreter context
+     * @param source the token source
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,

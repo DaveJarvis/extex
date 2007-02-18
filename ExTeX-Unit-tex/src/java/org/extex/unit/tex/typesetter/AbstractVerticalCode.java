@@ -24,7 +24,6 @@ import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.typesetter.Mode;
 import org.extex.typesetter.Typesetter;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
 /**
@@ -57,25 +56,22 @@ public abstract class AbstractVerticalCode extends AbstractCode {
      * @param typesetter the typesetter to ask for the mode
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      */
     protected void ensureVerticalMode(final Typesetter typesetter)
             throws InterpreterException {
 
         Mode mode = typesetter.getMode();
         if (typesetter.getMode() == Mode.HORIZONTAL) { // see TTP[1094]
-            try {
-                // see TTP[1095]
-                typesetter.par();
-            } catch (ConfigurationException e) {
-                throw new InterpreterException(e);
-            }
+            // see TTP[1095]
+            typesetter.par();
             mode = typesetter.getMode();
         }
 
         if (!(mode == Mode.VERTICAL || mode == Mode.INNER_VERTICAL)) {
             throw new HelpingException(LocalizerFactory
-                    .getLocalizer(AbstractVerticalCode.class),
-                    "TTP.MissingInserted", "}");
+                .getLocalizer(AbstractVerticalCode.class),
+                "TTP.MissingInserted", "}");
         }
     }
 
