@@ -32,6 +32,7 @@ import junit.framework.TestCase;
 
 import org.extex.ExTeX;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.interaction.InteractionUnknownException;
 
 /**
  * This class contains test cases for the command line interface of
@@ -43,11 +44,52 @@ import org.extex.interpreter.exception.InterpreterException;
 public class TeXTest extends TestCase {
 
     /**
-     * The field <tt>BANNER</tt> contains the default banner.
+     * The constant <tt>BANNER</tt> contains the default banner.
      */
     public static final String BANNER =
             "This is ExTeX, Version " + ExTeX.getVersion() + " ("
                     + System.getProperty("java.version") + ")\n";
+
+    /**
+     * The field <tt>BANNER_DE</tt> contains the default banner.
+     */
+    public static final String BANNER_DE =
+            "Dies ist ExTeX, Version " + ExTeX.getVersion() + " ("
+                    + System.getProperty("java.version") + ")\n";
+
+    /**
+     * The constant <tt>BANNER_TEX</tt> contains the banner for
+     * TeX compatibility mode.
+     */
+    private static final String BANNER_TEX =
+            "This is ExTeX, Version " + ExTeX.getVersion()
+                    + " (TeX compatibility mode)\n";
+
+    /**
+     * The constant <tt>EMPTY_TEX</tt> contains the ...
+     */
+    private static final String EMPTY_TEX =
+            "../ExTeX-Unit-tex/src/test/tex/empty.tex";
+
+    /**
+     * The constant <tt>EXIT_ERROR</tt> contains the exit code for an error.
+     */
+    public static final int EXIT_ERROR = -1;
+
+    /**
+     * The constant <tt>EXIT_OK</tt> contains the exit code for success.
+     */
+    public static final int EXIT_OK = 0;
+
+    /**
+     * The constant <tt>PARSE_PATH</tt> contains the ...
+     */
+    private static final String PARSE_PATH = "../ExTeX-CLI-tex/src/test/data/";
+
+    /**
+     * The constant <tt>TRANSCRIPT_TEXPUT</tt> contains the ...
+     */
+    private static final String TRANSCRIPT_TEXPUT = transcript("texput");
 
     /**
      * The command line interface.
@@ -57,6 +99,142 @@ public class TeXTest extends TestCase {
     public static void main(final String[] args) {
 
         junit.textui.TestRunner.run(TeXTest.class);
+    }
+
+    /**
+     * Create a new instance of properties pre-filled with the java.version.
+     *
+     * @return the new properties
+     */
+    private static Properties makeProperties() {
+
+        Properties properties = new Properties();
+        properties.put("java.version", System.getProperty("java.version"));
+        return properties;
+    }
+
+    /**
+     * Run a test through the command line with the default properties and
+     * expect a failure.
+     *
+     * @param args the array of command line arguments
+     * @param expect the expected result on the error stream or
+     *            <code>null</code>
+     * @param exit the expected exit code
+     *
+     * @return the result on the error stream
+     *
+     * @throws InterpreterException in case of an interpreter error
+     * @throws IOException in case of an io error
+     */
+    public static String runFailure(final String[] args, final String expect)
+            throws InterpreterException,
+                IOException {
+
+        return runTest(args, makeProperties(), expect, EXIT_ERROR);
+    }
+
+    /**
+     * Run a test through the command line with the default properties and
+     * expect a success.
+     *
+     * @param args the array of command line arguments
+     * @param expect the expected result on the error stream or
+     *            <code>null</code>
+     * @param exit the expected exit code
+     *
+     * @return the result on the error stream
+     *
+     * @throws InterpreterException in case of an interpreter error
+     * @throws IOException in case of an io error
+     */
+    public static String runSuccess(final String[] args, final String expect)
+            throws InterpreterException,
+                IOException {
+
+        return runTest(args, makeProperties(), expect, EXIT_OK);
+    }
+
+    /**
+     * Run a test through the command line.
+     *
+     * @param args the array of command line arguments
+     * @param properties the properties to use
+     * @param expect the expected result on the error stream or
+     *            <code>null</code>
+     * @param exit the expected exit code
+     *
+     * @return the result on the error stream
+     *
+     * @throws InterpreterException in case of an interpreter error
+     * @throws IOException in case of an io error
+     */
+    public static String runTest(final String[] args,
+            final Properties properties, final String expect, final int exit)
+            throws InterpreterException,
+                IOException {
+
+        Locale.setDefault(new Locale("en"));
+        properties.setProperty("extex.config", "tex.xml");
+
+        TeX tex;
+        ByteArrayOutputStream outBuffer = new ByteArrayOutputStream();
+        ByteArrayOutputStream errBuffer = new ByteArrayOutputStream();
+        PrintStream stdout = System.out;
+        PrintStream stderr = System.err;
+        String result = null;
+        try {
+            System.setOut(new PrintStream(outBuffer));
+            System.setErr(new PrintStream(errBuffer));
+
+            tex = new TeX(properties, null);
+            int status = tex.run(args);
+
+            result = errBuffer.toString();
+            if (expect != null) {
+                assertEquals(expect, result);
+            }
+            assertEquals("", outBuffer.toString());
+            assertEquals("Exit status", exit, status);
+
+        } finally {
+            outBuffer.close();
+            System.setOut(stdout);
+            errBuffer.close();
+            System.setErr(stderr);
+        }
+        return result;
+    }
+
+    /**
+     * Run a test through the command line with the default properties.
+     *
+     * @param args the array of command line arguments
+     * @param expect the expected result on the error stream or
+     *            <code>null</code>
+     * @param exit the expected exit code
+     *
+     * @return the result on the error stream
+     *
+     * @throws InterpreterException in case of an interpreter error
+     * @throws IOException in case of an io error
+     */
+    public static String runTest(final String[] args, final String expect,
+            final int exit) throws InterpreterException, IOException {
+
+        return runTest(args, makeProperties(), expect, exit);
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     *
+     * @param name
+     * @return
+     */
+    private static String transcript(final String name) {
+
+        return "Transcript written on "
+                + (new File(".", name + ".log")).toString() + ".\n";
     }
 
     /**
@@ -80,65 +258,16 @@ public class TeXTest extends TestCase {
     }
 
     /**
-     * Create a new instance of properties pre-filled with the java.version.
+     * <testcase>
+     *   This test case validates that a code argument is used.
+     * </testcase>
      *
-     * @return the new properties
+     * @throws Exception in case of an error
      */
-    private Properties makeProperties() {
+    public void testCode() throws Exception {
 
-        Properties properties = new Properties();
-        properties.put("java.version", System.getProperty("java.version"));
-        return properties;
-    }
-
-    /**
-     * Run a test through the command line.
-     *
-     * @param args the array of command line arguments
-     * @param properties the properties to use
-     * @param expect the expected result on the error stream or
-     *            <code>null</code>
-     * @param exit the expected exit code
-     *
-     * @return the result on the error stream
-     *
-     * @throws InterpreterException in case of an interpreter error
-     * @throws IOException in case of an io error
-     */
-    public static String runTest(final String[] args,
-            final Properties properties, final String expect, final int exit)
-            throws InterpreterException,
-                IOException {
-
-        properties.setProperty("extex.config", "tex.xml");
-
-        TeX tex;
-        ByteArrayOutputStream outBuffer = new ByteArrayOutputStream();
-        ByteArrayOutputStream errBuffer = new ByteArrayOutputStream();
-        PrintStream stdout = System.out;
-        PrintStream stderr = System.err;
-        String result = null;
-        try {
-            System.setOut(new PrintStream(outBuffer));
-            System.setErr(new PrintStream(errBuffer));
-
-            tex = new TeX(properties, null);
-            int status = tex.run(args);
-
-            result = errBuffer.toString();
-            if (expect != null) {
-                assertEquals(expect, result);
-            }
-            assertEquals("", outBuffer.toString());
-            assertEquals(exit, status);
-
-        } finally {
-            outBuffer.close();
-            System.setOut(stdout);
-            errBuffer.close();
-            System.setErr(stderr);
-        }
-        return result;
+        runSuccess(new String[]{"-ini", "\\end"}, //
+            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
     }
 
     /**
@@ -146,33 +275,41 @@ public class TeXTest extends TestCase {
      *
      * @throws Exception in case of an error
      */
-    public void testUndefinedProperty() throws Exception {
+    public void testCommandInput1() throws Exception {
 
-        runTest(new String[]{"--undefined"}, System.getProperties(), BANNER
-                + "Missing argument for --undefined", -1);
+        System.setIn(new ByteArrayInputStream("\\relax\n\\end\\n".getBytes()));
+        runSuccess(new String[]{"-ini"}, //
+            BANNER_TEX + "**\n*\nNo pages of output.\n" + TRANSCRIPT_TEXPUT);
     }
 
     /**
-     * <testcase> This test case validates that <tt>-version</tt> prints the
-     * version number and exists with code 0. </testcase>
+     * <testcase>
+     *   This test case validates that an unrecognized configuration is
+     *   encountered.
+     * </testcase>
      *
      * @throws Exception in case of an error
      */
-    public void testVersion() throws Exception {
+    public void testConfgurationError1() throws Exception {
 
-        runTest(new String[]{"-version"}, makeProperties(), BANNER, 0);
+        runFailure(new String[]{"-conf=xyz"}, //
+            BANNER + "**" + TRANSCRIPT_TEXPUT
+                    + "Configuration problem: Configuration `xyz' not found");
     }
 
     /**
-     * <testcase> This test case validates that ... </testcase>
+     * <testcase>
+     *   This test case validates that an unrecognized configuration is
+     *   encountered.
+     * </testcase>
      *
      * @throws Exception in case of an error
      */
-    public void testHelp() throws Exception {
+    public void testConfgurationError2() throws Exception {
 
-        String s = runTest(new String[]{"-help"}, makeProperties(), null, 0);
-        assertTrue(s + "\ndoes  not match", s
-            .startsWith("Usage: extex <options> file\n"));
+        runFailure(new String[]{"-conf", "xyz"}, //
+            BANNER + "**" + TRANSCRIPT_TEXPUT
+                    + "Configuration problem: Configuration `xyz' not found");
     }
 
     /**
@@ -182,7 +319,7 @@ public class TeXTest extends TestCase {
      */
     public void testCopying() throws Exception {
 
-        String s = runTest(new String[]{"-copying"}, makeProperties(), null, 0);
+        String s = runSuccess(new String[]{"-copying"}, null);
         assertTrue("No match:\n" + s, //
             s.indexOf("GNU LIBRARY GENERAL PUBLIC LICENSE") >= 0);
     }
@@ -194,209 +331,87 @@ public class TeXTest extends TestCase {
      */
     public void testCopyright() throws Exception {
 
-        runTest(
-            new String[]{"-copyright"},
-            makeProperties(),
+        runSuccess(
+            new String[]{"-copyright"}, //
             "Copyright (C) 2003-"
                     + Calendar.getInstance().get(Calendar.YEAR)
                     + " The ExTeX Group (mailto:extex@dante.de).\n"
                     + "There is NO warranty.  Redistribution of this software is\n"
                     + "covered by the terms of the GNU Library General Public License.\n"
                     + "For more information about these matters, use the command line\n"
-                    + "switch -copying.\n", 0);
+                    + "switch -copying.\n");
     }
 
     /**
-     * <testcase> This test case validates that ... </testcase>
+     * <testcase>
+     *   This test case validates that an empty argument is ignored.
+     * </testcase>
      *
      * @throws Exception in case of an error
      */
-    public void testHelp2() throws Exception {
+    public void testEmpty() throws Exception {
 
-        String s =
-                runTest(new String[]{"-prog=abc", "-help"}, makeProperties(),
-                    null, 0);
-        assertTrue(s + "\ndoes  not match", s
-            .startsWith("Usage: abc <options> file\n"));
+        runSuccess(new String[]{"", "-version"}, BANNER);
     }
 
     /**
-     * <testcase> This test case validates that <tt>-ver</tt> prints the
-     * version number and exists with code 0. </testcase>
+     * <testcase>
+     *   This test case validates that an unrecognized encoding is encountered.
+     * </testcase>
      *
      * @throws Exception in case of an error
      */
-    public void testVer() throws Exception {
+    public void testEncodingError1() throws Exception {
 
-        runTest(new String[]{"-ver"}, makeProperties(), BANNER, 0);
+        runFailure(
+            new String[]{"--extex.encoding=xyz", "-ini"}, //
+            BANNER_TEX
+                    + "**"
+                    + TRANSCRIPT_TEXPUT
+                    + "Configuration problem: Unsupported encoding xyz in <stdin>");
     }
 
     /**
-     * <testcase> This test case validates that ... </testcase>
+     * <testcase>
+     *   This test case validates that an unrecognized encoding is encountered.
+     * </testcase>
      *
      * @throws Exception in case of an error
      */
-    public void testInteraction1() throws Exception {
+    public void testEncodingError2() throws Exception {
 
-        runTest(new String[]{"-interaction"}, makeProperties(), BANNER
-                + "Missing argument for extex.interaction", -1);
+        runFailure(
+            new String[]{"--extex.encoding", "xyz", "-ini"}, //
+            BANNER_TEX
+                    + "**"
+                    + TRANSCRIPT_TEXPUT
+                    + "Configuration problem: Unsupported encoding xyz in <stdin>");
     }
 
     /**
-     * <testcase> This test case validates that ... </testcase>
+     * <testcase>
+     *   This test case validates that ...
+     * </testcase>
      *
      * @throws Exception in case of an error
      */
-    public void testInteraction2() throws Exception {
+    public void testExternal1() throws Exception {
 
-        runTest(new String[]{"-interaction=xxx"}, makeProperties(), BANNER
-                + "Interaction xxx is unknown\n", -1);
+        runSuccess(new String[]{"-abc.properties", "-init", "\\end"}, //
+            TRANSCRIPT_TEXPUT);
     }
 
     /**
-     * <testcase> This test case validates that ... </testcase>
+     * <testcase>
+     *   This test case validates that ...
+     * </testcase>
      *
      * @throws Exception in case of an error
      */
-    public void testInteraction3() throws Exception {
+    public void testExternal2() throws Exception {
 
-        runTest(new String[]{"-interaction="}, makeProperties(), BANNER
-                + "Interaction  is unknown\n", -1);
-    }
-
-    /**
-     * <testcase> This test case validates that ... </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void testInteraction4() throws Exception {
-
-        System.setIn(new ByteArrayInputStream("".getBytes()));
-        runTest(new String[]{"-ini", "-interaction=batchmode"},
-            makeProperties(), "", -1);
-    }
-
-    /**
-     * <testcase> This test case validates that ... </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void testInteraction5() throws Exception {
-
-        System.setIn(new ByteArrayInputStream("".getBytes()));
-        runTest(new String[]{"-ini", "-interaction=b"}, makeProperties(), "",
-            -1);
-    }
-
-    /**
-     * <testcase> This test case validates that ... </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void testInteraction6() throws Exception {
-
-        System.setIn(new ByteArrayInputStream("".getBytes()));
-        runTest(new String[]{"-ini", "-int=0"}, makeProperties(), "", -1);
-    }
-
-    /**
-     * <testcase> This test case validates that ... </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void testProgname1() throws Exception {
-
-        runTest(new String[]{"-progname", "abc", "-version"}, makeProperties(),
-            "This is ExTeX, Version " + ExTeX.getVersion() + " ("
-                    + System.getProperty("java.version") + ")\n", 0);
-    }
-
-    /**
-     * <testcase> This test case validates that ... </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void testProgname2() throws Exception {
-
-        runTest(new String[]{"-prog", "abc", "-version"}, makeProperties(),
-            "This is ExTeX, Version " + ExTeX.getVersion() + " ("
-                    + System.getProperty("java.version") + ")\n", 0);
-    }
-
-    /**
-     * <testcase> This test case validates that ... </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void testProgname3() throws Exception {
-
-        runTest(new String[]{"-progname=abc", "-version"}, makeProperties(),
-            "This is ExTeX, Version " + ExTeX.getVersion() + " ("
-                    + System.getProperty("java.version") + ")\n", 0);
-    }
-
-    /**
-     * <testcase> This test case validates that ... </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void testProgname4() throws Exception {
-
-        runTest(new String[]{"-prog=abc", "-version"}, makeProperties(),
-            "This is ExTeX, Version " + ExTeX.getVersion() + " ("
-                    + System.getProperty("java.version") + ")\n", 0);
-    }
-
-    /**
-     * <testcase> This test case validates that ... </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void testPropertyName1() throws Exception {
-
-        runTest(new String[]{"--extex.name", "abc", "-version"},
-            makeProperties(), "This is abc, Version " + ExTeX.getVersion()
-                    + " (" + System.getProperty("java.version") + ")\n", 0);
-    }
-
-    /**
-     * <testcase> This test case validates that ... </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void testPropertyName2() throws Exception {
-
-        runTest(new String[]{"--extex.name=abc", "-version"}, makeProperties(),
-            "This is abc, Version " + ExTeX.getVersion() + " ("
-                    + System.getProperty("java.version") + ")\n", 0);
-    }
-
-    /**
-     * <testcase> This test case validates that ... </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void test0() throws Exception {
-
-        System.setIn(new ByteArrayInputStream("\\relax\n\\end\\n".getBytes()));
-        runTest(new String[]{"-ini"}, new Properties(),
-            "This is ExTeX, Version " + ExTeX.getVersion()
-                    + " (TeX compatibility mode)\n"
-                    + "**\n*\nNo pages of output.\nTranscript written on "
-                    + (new File(".", "texput.log")).toString() + ".\n", 0);
-    }
-
-    /**
-     * <testcase> This test case validates that ... </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void testNobanner1() throws Exception {
-
-        System.setIn(new ByteArrayInputStream("\\relax\n\\end\\n".getBytes()));
-        runTest(new String[]{"-ini", "--extex.nobanner=true"},
-            new Properties(), "**\n*Transcript written on "
-                    + (new File(".", "texput.log")).toString() + ".\n", 0);
+        runSuccess(new String[]{"-ppp.properties", "-init", "\\end"}, //
+            TRANSCRIPT_TEXPUT);
     }
 
     /**
@@ -407,9 +422,81 @@ public class TeXTest extends TestCase {
     public void testExTeXBanner1() throws Exception {
 
         System.setIn(new ByteArrayInputStream("\\relax\n\\end\\n".getBytes()));
-        runTest(new String[]{"--extex.banner=xyz", "-version"},
-            new Properties(), "This is ExTeX, Version " + ExTeX.getVersion()
-                    + " (xyz)\n", 0);
+        runSuccess(new String[]{"--extex.banner=xyz", "-version"},
+            "This is ExTeX, Version " + ExTeX.getVersion() + " (xyz)\n");
+    }
+
+    /**
+     * <testcase>
+     *   This test case validates that a non-existent file leads to an error.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testFile1() throws Exception {
+
+        System.setIn(new ByteArrayInputStream("".getBytes()));
+        runSuccess(new String[]{"-ini", "UndefinedFile"}, //
+            BANNER_TEX + "I can\'t find file `UndefinedFile\'\n" + "*\n"
+                    + "No pages of output.\n" + transcript("UndefinedFile"));
+    }
+
+    /**
+     * <testcase>
+     *   This test case validates that a existent file ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testFile10() throws Exception {
+
+        runSuccess(new String[]{"-ini", EMPTY_TEX}, //
+            BANNER_TEX + "(../ExTeX-Unit-tex/src/test/tex/empty.tex )\n"
+                    + "*\n" + "No pages of output.\n" + transcript("empty"));
+    }
+
+    /**
+     * <testcase>
+     *  This test case validates that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testFile11() throws Exception {
+
+        System.setIn(new ByteArrayInputStream((EMPTY_TEX + "\n\\end\n")
+            .getBytes()));
+        runSuccess(new String[]{"-ini"},//
+            BANNER_TEX + "**(" + EMPTY_TEX + " )\n" + "*\n"
+                    + "No pages of output.\n" + transcript("empty"));
+    }
+
+    /**
+     * <testcase>
+     *   This test case validates that a non-existent file leads to an error.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testFile2() throws Exception {
+
+        runSuccess(new String[]{"-ini", "UndefinedFile.tex"}, //
+            BANNER_TEX + "I can\'t find file `UndefinedFile.tex\'\n" + "*\n"
+                    + "No pages of output.\n" + transcript("UndefinedFile"));
+    }
+
+    /**
+     * <testcase>
+     *   This test case validates that a non-existent file leads to an error.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testFile3() throws Exception {
+
+        runSuccess(new String[]{"-ini", "-", "-UndefinedFile"}, //
+            BANNER_TEX + "I can\'t find file `-UndefinedFile\'\n" + "*\n"
+                    + "No pages of output.\n" + transcript("-UndefinedFile"));
     }
 
     /**
@@ -417,19 +504,599 @@ public class TeXTest extends TestCase {
      *
      * @throws Exception in case of an error
      */
-    public void testFmt() throws Exception {
+    public void testFmt1() throws Exception {
 
         System.setIn(new ByteArrayInputStream("\\relax\n\\end\n".getBytes()));
-        runTest(
+        runFailure(
             new String[]{"&xyzzy"},
-            new Properties(),
-            "This is ExTeX, Version "
-                    + ExTeX.getVersion()
-                    + " (TeX compatibility mode)\n"
+            BANNER_TEX
                     + "**\nSorry, I can't find the format `xyzzy.fmt'; will try `tex.fmt'.\n"
                     + "Sorry, I can't find the format `tex.fmt'!\n"
+                    + TRANSCRIPT_TEXPUT);
+    }
+
+    /**
+     * <testcase> This test case validates that ... </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testFmt2() throws Exception {
+
+        runFailure(
+            new String[]{"-fmt=xyzzy"},
+            BANNER_TEX
+                    + "**\nSorry, I can't find the format `xyzzy.fmt'; will try `tex.fmt'.\n"
+                    + "Sorry, I can't find the format `tex.fmt'!\n"
+                    + TRANSCRIPT_TEXPUT);
+    }
+
+    /**
+     * <testcase> This test case validates that ... </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testFmt3() throws Exception {
+
+        runFailure(
+            new String[]{"-fmt", "xyzzy"},
+            BANNER_TEX
+                    + "**\n"
+                    + "Sorry, I can't find the format `xyzzy.fmt'; will try `tex.fmt'.\n"
+                    + "Sorry, I can't find the format `tex.fmt'!\n"
+                    + TRANSCRIPT_TEXPUT);
+    }
+
+    /**
+     * <testcase> This test case validates that ... </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testFormat2() throws Exception {
+
+        runFailure(
+            new String[]{"-format=xyzzy"},
+            BANNER_TEX
+                    + "**\n"
+                    + "Sorry, I can't find the format `xyzzy.fmt'; will try `tex.fmt'.\n"
+                    + "Sorry, I can't find the format `tex.fmt'!\n"
+                    + TRANSCRIPT_TEXPUT);
+    }
+
+    /**
+     * <testcase> This test case validates that ... </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testFormat3() throws Exception {
+
+        runFailure(
+            new String[]{"-format", "xyzzy"},
+            BANNER_TEX
+                    + "**\n"
+                    + "Sorry, I can't find the format `xyzzy.fmt'; will try `tex.fmt'.\n"
+                    + "Sorry, I can't find the format `tex.fmt'!\n"
+                    + TRANSCRIPT_TEXPUT);
+    }
+
+    /**
+     * <testcase>
+     *   This test case validates that a non-existent file leads to an error.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testHaltOnError() throws Exception {
+
+        runFailure(new String[]{"-ini", "-halt-on-error", "\\xxxx"}, //
+            BANNER_TEX + ":1: Undefined control sequence \\xxxx\n" + "\\xxxx\n"
+                    + "______^\n" + "? \n" + "End of file on the terminal!\n"
+                    + TRANSCRIPT_TEXPUT);
+    }
+
+    /**
+     * <testcase> This test case validates that ... </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testHelp() throws Exception {
+
+        String s = runSuccess(new String[]{"-help"}, null);
+        assertTrue(s + "\ndoes  not match", s
+            .startsWith("Usage: extex <options> file\n"));
+    }
+
+    /**
+     * <testcase> This test case validates that ... </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testHelp2() throws Exception {
+
+        String s = runSuccess(new String[]{"-prog=abc", "-help"}, null);
+        assertTrue(s + "\ndoes  not match", s
+            .startsWith("Usage: abc <options> file\n"));
+    }
+
+    /**
+     * <testcase> This test case validates that ... </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testInteraction1() throws Exception {
+
+        runFailure(new String[]{"-interaction"}, //
+            BANNER + "Missing argument for extex.interaction");
+    }
+
+    /**
+     * <testcase> This test case validates that ... </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testInteraction12() throws Exception {
+
+        runFailure(new String[]{"-interaction", "xxx"}, //
+            BANNER + "Interaction xxx is unknown\n");
+    }
+
+    /**
+     * <testcase> This test case validates that ... </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testInteraction14() throws Exception {
+
+        System.setIn(new ByteArrayInputStream("".getBytes()));
+        runFailure(new String[]{"-ini", "-interaction", "batchmode"}, //
+            "");
+    }
+
+    /**
+     * <testcase> This test case validates that ... </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testInteraction15() throws Exception {
+
+        System.setIn(new ByteArrayInputStream("".getBytes()));
+        runFailure(new String[]{"-ini", "-interaction", "b"}, //
+            "");
+    }
+
+    /**
+     * <testcase> This test case validates that ... </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testInteraction16() throws Exception {
+
+        System.setIn(new ByteArrayInputStream("".getBytes()));
+        runFailure(new String[]{"-ini", "-int", "0"}, //
+            "");
+    }
+
+    /**
+     * <testcase> This test case validates that ... </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testInteraction2() throws Exception {
+
+        runFailure(new String[]{"-interaction=xxx"}, //
+            BANNER + "Interaction xxx is unknown\n");
+    }
+
+    /**
+     * <testcase> This test case validates that ... </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testInteraction20() throws Exception {
+
+        System.setIn(new ByteArrayInputStream("".getBytes()));
+        Properties p = makeProperties();
+        p.put("extex.interaction", "illegal");
+        try {
+            runTest(new String[]{"-ini"}, p, "", EXIT_ERROR);
+            assertFalse(true);
+        } catch (InteractionUnknownException e) {
+            assertTrue(true);
+        }
+    }
+
+    /**
+     * <testcase> This test case validates that ... </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testInteraction3() throws Exception {
+
+        runFailure(new String[]{"-interaction="}, //
+            BANNER + "Interaction  is unknown\n");
+    }
+
+    /**
+     * <testcase> This test case validates that ... </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testInteraction4() throws Exception {
+
+        System.setIn(new ByteArrayInputStream("".getBytes()));
+        runFailure(new String[]{"-ini", "-interaction=batchmode"}, //
+            "");
+    }
+
+    /**
+     * <testcase> This test case validates that ... </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testInteraction5() throws Exception {
+
+        System.setIn(new ByteArrayInputStream("".getBytes()));
+        runFailure(new String[]{"-ini", "-interaction=b"}, //
+            "");
+    }
+
+    /**
+     * <testcase> This test case validates that ... </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testInteraction6() throws Exception {
+
+        System.setIn(new ByteArrayInputStream("".getBytes()));
+        runFailure(new String[]{"-ini", "-int=0"}, //
+            "");
+    }
+
+    /**
+     * <testcase> This test case validates that ... </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testJobname1() throws Exception {
+
+        runSuccess(new String[]{"-jobname=abc", "-ini",
+                "--extex.nobanner=true", "\\end"}, //
+            transcript("abc"));
+    }
+
+    /**
+     * <testcase> This test case validates that ... </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testJobname2() throws Exception {
+
+        runSuccess(new String[]{"-jobname", "abc", "-ini",
+                "--extex.nobanner=true", "\\end"}, //
+            transcript("abc"));
+    }
+
+    /**
+     * <testcase>
+     *   This test case validates that <tt>-version</tt> prints the version
+     *   number and exists with code 0 when the language is set to German.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testLanguageVersion() throws Exception {
+
+        runSuccess(new String[]{"-l=de", "-version"}, //
+            BANNER_DE);
+    }
+
+    /**
+     * <testcase>
+     *   This test case validates that <tt>-version</tt> prints the version
+     *   number and exists with code 0 when the language is set to German.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testLanguageVersion2() throws Exception {
+
+        runSuccess(new String[]{"-lan", "de", "-version"}, //
+            BANNER_DE);
+    }
+
+    /**
+     * <testcase>
+     *   This test case validates that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testMain1() throws Exception {
+
+        System.setErr(new PrintStream(new ByteArrayOutputStream()));
+        assertEquals(-1, TeX.mainProgram(new String[]{"-xxx"}));
+    }
+
+    /**
+     * <testcase>
+     *   This test case validates that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testMainError1() throws Exception {
+
+        System.setErr(new PrintStream(new ByteArrayOutputStream()));
+        assertEquals(-1, TeX.mainProgram(null));
+    }
+
+    /**
+     * <testcase>
+     *   This test case validates that an empty argument is ignored.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testMinus() throws Exception {
+
+        runSuccess(new String[]{"-ini", "-"}, //
+            BANNER_TEX + "**\n" + "*\n" + "No pages of output.\n"
                     + "Transcript written on "
-                    + (new File(".", "texput.log")).toString() + ".\n", -1);
+                    + (new File(".", "texput.log")).toString() + ".\n");
+    }
+
+    /**
+     * <testcase> This test case validates that ... </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testMissingProperty() throws Exception {
+
+        runFailure(new String[]{"--"}, //
+            BANNER + "Missing argument for --");
+    }
+
+    /**
+     * <testcase> This test case validates that ... </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testNobanner1() throws Exception {
+
+        System.setIn(new ByteArrayInputStream("\\relax\n\\end\\n".getBytes()));
+        runSuccess(new String[]{"-ini", "--extex.nobanner=true"}, //
+            "**\n*" + TRANSCRIPT_TEXPUT);
+    }
+
+    /**
+     * <testcase>
+     *   This test case validates that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testOutputError1() throws Exception {
+
+        runFailure(new String[]{"-out"}, //
+            BANNER + "Missing argument for extex.output");
+    }
+
+    /**
+     * <testcase>
+     *   This test case validates that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testOutputError2() throws Exception {
+
+        runFailure(
+            new String[]{"-ini", "-out=undefined"}, //
+            BANNER_TEX
+                    + "**"
+                    + TRANSCRIPT_TEXPUT
+                    + "Configuration problem: Configuration `backend/undefined.xml\' not found");
+    }
+
+    /**
+     * <testcase>
+     *   This test case validates that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testOutputError3() throws Exception {
+
+        runFailure(
+            new String[]{"-ini", "-out", "undefined"}, //
+            BANNER_TEX
+                    + "**"
+                    + TRANSCRIPT_TEXPUT
+                    + "Configuration problem: Configuration `backend/undefined.xml\' not found");
+    }
+
+    /**
+     * <testcase>
+     *   This test case validates that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testOutputpath2() throws Exception {
+
+        runSuccess(new String[]{"-ini", "-output-path=.", "\\end"}, //
+            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
+    }
+
+    /**
+     * <testcase>
+     *   This test case validates that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testOutputpath3() throws Exception {
+
+        runSuccess(new String[]{"-ini", "-output-path", ".", "\\end"}, //
+            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
+    }
+
+    /**
+     * <testcase>
+     *   This test case validates that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testOutputpath4() throws Exception {
+
+        runSuccess(new String[]{"-ini", "-output-path=.", "-output-dir=.",
+                "\\end"}, //
+            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
+    }
+
+    /**
+     * <testcase>
+     *   This test case validates that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testOutputpathError1() throws Exception {
+
+        runFailure(new String[]{"-output-path"}, //
+            BANNER + "Missing argument for extex.output.directories");
+    }
+
+    /**
+     * <testcase>
+     *  This test case validates that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testParseFirstLine() throws Exception {
+
+        System.setIn(new ByteArrayInputStream("".getBytes()));
+        runSuccess(new String[]{"-ini", "-parse", "\\end"}, //
+            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
+    }
+
+    /**
+     * <testcase>
+     *   This test case validates that a existent file ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testParseFirstLine2() throws Exception {
+
+        runSuccess(new String[]{"-ini", "-parse", EMPTY_TEX}, //
+            BANNER_TEX + "(" + EMPTY_TEX + " )\n" + "*\n"
+                    + "No pages of output.\n" + transcript("empty"));
+    }
+
+    /**
+     * <testcase>
+     *   This test case validates that a existent file ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testParseFirstLine3() throws Exception {
+
+        runSuccess(
+            new String[]{"-ini", "-parse", PARSE_PATH + "parse1.tex"}, //
+            BANNER_TEX
+                    + "("
+                    + PARSE_PATH
+                    + "parse1.tex \n"
+                    + "Sorry, I can\'t find the format `undef.fmt\'; will try `tex.fmt\'.\n"
+                    + ")\n" + "*\n" + "No pages of output.\n"
+                    + transcript("parse1"));
+    }
+
+    /**
+     * <testcase> This test case validates that ... </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testProgname1() throws Exception {
+
+        runSuccess(new String[]{"-progname", "abc", "-version"},
+            "This is ExTeX, Version " + ExTeX.getVersion() + " ("
+                    + System.getProperty("java.version") + ")\n");
+    }
+
+    /**
+     * <testcase> This test case validates that ... </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testProgname2() throws Exception {
+
+        runSuccess(new String[]{"-prog", "abc", "-version"},
+            "This is ExTeX, Version " + ExTeX.getVersion() + " ("
+                    + System.getProperty("java.version") + ")\n");
+    }
+
+    /**
+     * <testcase> This test case validates that ... </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testProgname3() throws Exception {
+
+        runSuccess(new String[]{"-progname=abc", "-version"},
+            "This is ExTeX, Version " + ExTeX.getVersion() + " ("
+                    + System.getProperty("java.version") + ")\n");
+    }
+
+    /**
+     * <testcase> This test case validates that ... </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testProgname4() throws Exception {
+
+        runSuccess(new String[]{"-prog=abc", "-version"},
+            "This is ExTeX, Version " + ExTeX.getVersion() + " ("
+                    + System.getProperty("java.version") + ")\n");
+    }
+
+    /**
+     * <testcase> This test case validates that ... </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testPropertyName1() throws Exception {
+
+        runSuccess(new String[]{"--extex.name", "abc", "-version"},
+            "This is abc, Version " + ExTeX.getVersion() + " ("
+                    + System.getProperty("java.version") + ")\n");
+    }
+
+    /**
+     * <testcase> This test case validates that ... </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testPropertyName2() throws Exception {
+
+        runSuccess(new String[]{"--extex.name=abc", "-version"},
+            "This is abc, Version " + ExTeX.getVersion() + " ("
+                    + System.getProperty("java.version") + ")\n");
+    }
+
+    /**
+     * <testcase> This test case validates that ... </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testPropertyName3() throws Exception {
+
+        runSuccess(new String[]{"--", "extex.name=abc", "-version"},
+            "This is abc, Version " + ExTeX.getVersion() + " ("
+                    + System.getProperty("java.version") + ")\n");
     }
 
     /**
@@ -440,12 +1107,286 @@ public class TeXTest extends TestCase {
     public void testStarStar1() throws Exception {
 
         System.setIn(new ByteArrayInputStream("xyzzy\n".getBytes()));
-        runTest(new String[]{"-ini"}, new Properties(),
-            "This is ExTeX, Version " + ExTeX.getVersion()
-                    + " (TeX compatibility mode)\n"
-                    + "**I can't find file `xyzzy'\n" + "*\n"
-                    + "No pages of output.\n" + "Transcript written on "
-                    + (new File(".", "xyzzy.log")).toString() + ".\n", 0);
+        runSuccess(new String[]{"-ini"}, //
+            BANNER_TEX + "**I can't find file `xyzzy'\n" + "*\n"
+                    + "No pages of output.\n" + transcript("xyzzy"));
+    }
+
+    /**
+     * <testcase>
+     *   This test case validates that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testTexinputs1() throws Exception {
+
+        runSuccess(new String[]{"-texinputs=.", "-ini", "\\end"}, //
+            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
+    }
+
+    /**
+     * <testcase>
+     *   This test case validates that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testTexinputs2() throws Exception {
+
+        runSuccess(new String[]{"-texinputs", ".", "-ini", "\\end"}, //
+            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
+    }
+
+    /**
+     * <testcase>
+     *   This test case validates that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testTexinputsError1() throws Exception {
+
+        runFailure(new String[]{"-texinputs"}, //
+            BANNER + "Missing argument for extex.texinputs");
+    }
+
+    /**
+     * <testcase>
+     *   This test case validates that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testTexmfoutputs2() throws Exception {
+
+        runSuccess(new String[]{"-ini", "-texmfoutputs=.", "\\end"}, //
+            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
+    }
+
+    /**
+     * <testcase>
+     *   This test case validates that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testTexmfoutputs3() throws Exception {
+
+        runSuccess(new String[]{"-ini", "-texmfoutputs", ".", "\\end"}, //
+            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
+    }
+
+    /**
+     * <testcase>
+     *   This test case validates that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testTexmfoutputsError1() throws Exception {
+
+        runFailure(new String[]{"-texmfoutputs"}, //
+            BANNER + "Missing argument for tex.output.dir.fallback");
+    }
+
+    /**
+     * <testcase>
+     *   This test case validates that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testTexoutputs2() throws Exception {
+
+        runSuccess(new String[]{"-ini", "-texoutputs=.", "\\end"}, //
+            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
+    }
+
+    /**
+     * <testcase>
+     *   This test case validates that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testTexoutputs3() throws Exception {
+
+        runSuccess(new String[]{"-ini", "-texoutputs", ".", "\\end"}, //
+            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
+    }
+
+    /**
+     * <testcase>
+     *   This test case validates that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testTexoutputsError1() throws Exception {
+
+        runFailure(new String[]{"-texoutputs"}, //
+            BANNER + "Missing argument for tex.output.dir");
+    }
+
+    /**
+     * <testcase>
+     *   This test case validates that debug option can be set.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testTrace1() throws Exception {
+
+        runSuccess(new String[]{"-d=fFTM", "-ini", "\\end"}, //
+            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
+    }
+
+    /**
+     * <testcase>
+     *   This test case validates that debug option can be set.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testTrace11() throws Exception {
+
+        runSuccess(new String[]{"-d", "fFTM", "-ini", "\\end"}, //
+            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
+    }
+
+    /**
+     * <testcase>
+     *   This test case validates that debug option can be set.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testTrace12() throws Exception {
+
+        runSuccess(new String[]{"-debug", "fFTM", "-ini", "\\end"}, //
+            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
+    }
+
+    /**
+     * <testcase>
+     *   This test case validates that debug option can be set.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testTrace2() throws Exception {
+
+        runSuccess(new String[]{"-debug=fFTM", "-ini", "\\end"}, //
+            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
+    }
+
+    /**
+     * <testcase>
+     *   This test case validates that a debug code might be unknown.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testTraceError1() throws Exception {
+
+        runFailure(new String[]{"-d=^"}, //
+            BANNER + "Unknown debug option: ^\n");
+    }
+
+    /**
+     * <testcase>
+     *   This test case validates that a debug code might be unknown.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testTraceError2() throws Exception {
+
+        runFailure(new String[]{"-d"}, //
+            BANNER + "Missing argument for d");
+    }
+
+    /**
+     * <testcase> This test case validates that ... </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testUndefinedProperty() throws Exception {
+
+        runFailure(new String[]{"--undefined"}, //
+            BANNER + "Missing argument for --undefined");
+    }
+
+    /**
+     * <testcase>
+     *   This test case validates that an empty argument is ignored.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testUnknown1() throws Exception {
+
+        runFailure(new String[]{"-xxx"}, //
+            BANNER + "Unknown option: xxx\n");
+    }
+
+    /**
+     * <testcase>
+     *   This test case validates that an empty argument is ignored.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testUnknown2() throws Exception {
+
+        for (char c = 'a'; c <= 'z'; c++) {
+            runFailure(new String[]{"-" + c + "xxx"}, //
+                BANNER + "Unknown option: " + c + "xxx\n");
+        }
+    }
+
+    /**
+     * <testcase>
+     *   This test case validates that an empty argument is ignored.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testUnknown3() throws Exception {
+
+        for (char c = 'A'; c <= 'Z'; c++) {
+            runFailure(new String[]{"-" + c + "xxx"}, //
+                BANNER + "Unknown option: " + c + "xxx\n");
+        }
+    }
+
+    /**
+     * <testcase>
+     *  This test case validates that <tt>-ver</tt> prints the
+     *  version number and exists with code 0.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testVer() throws Exception {
+
+        runSuccess(new String[]{"-ver"}, //
+            BANNER);
+    }
+
+    /**
+     * <testcase>
+     *  This test case validates that <tt>-version</tt> prints the
+     *  version number and exists with code 0.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testVersion() throws Exception {
+
+        runSuccess(new String[]{"-version"}, //
+            BANNER);
     }
 
     // TODO add more test cases
