@@ -19,15 +19,13 @@
 
 package org.extex.unit.tex.register.box;
 
-import org.extex.test.NoFlagsPrimitiveTester;
-
 /**
  * This is a test suite for the primitive <tt>\wd</tt>.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class WdTest extends NoFlagsPrimitiveTester {
+public class WdTest extends AbstractBoxDimenTester {
 
     /**
      * Command line interface.
@@ -45,20 +43,22 @@ public class WdTest extends NoFlagsPrimitiveTester {
      */
     public WdTest(final String arg) {
 
-        super(arg, "wd", "1=0pt", "0");
+        super(arg, "wd");
     }
 
     /**
-     * <testcase primitive="\wd">
-     *  Test case checking that <tt>\wd</tt> needs a key.
+     * <testcase>
+     *  Test case checking that the primitive is count convertible on a hbox.
      * </testcase>
      *
      * @throws Exception in case of an error
      */
-    public void testEof1() throws Exception {
+    public void testCount2() throws Exception {
 
-        assertFailure("\\dimen0=\\wd ", //
-            "Missing number, treated as zero");
+        assertSuccess(//
+            DEFINE_BRACES
+                    + "\\setbox1=\\hbox{abc}\\count0=\\wd1 \\the\\count0\\end ", //
+            "1572864" + TERM);
     }
 
     //TODO implement more primitive specific test cases

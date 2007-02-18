@@ -19,15 +19,13 @@
 
 package org.extex.unit.tex.register.box;
 
-import org.extex.test.NoFlagsPrimitiveTester;
-
 /**
  * This is a test suite for the primitive <tt>\ht</tt>.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class HtTest extends NoFlagsPrimitiveTester {
+public class HtTest extends AbstractBoxDimenTester {
 
     /**
      * Command line interface.
@@ -45,20 +43,22 @@ public class HtTest extends NoFlagsPrimitiveTester {
      */
     public HtTest(final String arg) {
 
-        super(arg, "ht", "1=0pt", "0");
+        super(arg, "ht");
     }
 
     /**
-     * <testcase primitive="\ht">
-     *  Test case checking that <tt>\ht</tt> needs a key.
+     * <testcase>
+     *  Test case checking that the primitive is count convertible on a hbox.
      * </testcase>
      *
      * @throws Exception in case of an error
      */
-    public void testEof1() throws Exception {
+    public void testCount2() throws Exception {
 
-        assertFailure("\\dimen0=\\ht ", //
-            "Missing number, treated as zero");
+        assertSuccess(//
+            DEFINE_BRACES
+                    + "\\setbox1=\\hbox{abc}\\count0=\\ht1 \\the\\count0\\end ", //
+            "524288" + TERM);
     }
 
     //TODO implement more primitive specific test cases

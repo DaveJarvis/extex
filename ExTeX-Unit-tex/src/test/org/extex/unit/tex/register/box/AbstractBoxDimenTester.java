@@ -1,0 +1,151 @@
+/*
+ * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ *
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+ *
+ */
+
+package org.extex.unit.tex.register.box;
+
+import org.extex.test.NoFlagsButGlobalPrimitiveTester;
+
+/**
+ * This is a test suite.
+ *
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * @version $Revision$
+ */
+public abstract class AbstractBoxDimenTester
+        extends
+            NoFlagsButGlobalPrimitiveTester {
+
+    /**
+     * The field <tt>primitive</tt> contains the name of the primitive.
+     */
+    private String primitive;
+
+    /**
+     * Creates a new object.
+     *
+     * @param arg the name
+     * @param primitive the name of the integer register to test
+     */
+    public AbstractBoxDimenTester(final String arg, final String primitive) {
+
+        super(arg, primitive, "1=0pt", "0");
+        this.primitive = primitive;
+    }
+
+    /**
+     * <testcase>
+     *  Test case checking that the primitive needs a key.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testEof1() throws Exception {
+
+        assertFailure("\\dimen0=\\" + primitive, //
+            "Missing number, treated as zero");
+    }
+
+    /**
+     * <testcase>
+     *  Test case checking that the primitive needs a key.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testEof3() throws Exception {
+
+        assertFailure("\\the\\" + primitive, //
+            "Missing number, treated as zero");
+    }
+
+    /**
+     * <testcase>
+     *  Test case checking that the primitive respects \afterassignment.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testAfterassignment1() throws Exception {
+
+        assertSuccess(//
+            DEFINE_BRACES + "\\afterassignment x-\\" + primitive
+                    + "1=2pt\\end ", //
+            "-x" + TERM);
+    }
+
+    /**
+     * <testcase>
+     *  Test case checking that the primitive respects \global.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testGlobal1() throws Exception {
+
+        assertSuccess(//
+            DEFINE_BRACES + "\\global\\" + primitive + "1=2pt\\end ", //
+            "");
+    }
+
+    /**
+     * <testcase>
+     *  Test case checking that the primitive is applicable on a hbox.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testHbox1() throws Exception {
+
+        assertSuccess(//
+            DEFINE_BRACES + "\\setbox1=\\hbox{x}\\" + primitive
+                    + "1=2pt \\the\\" + primitive + "1\\end ", //
+            "2.0pt" + TERM);
+    }
+
+    /**
+     * <testcase>
+     *  Test case checking that the primitive is count convertible on a void box.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testCount1() throws Exception {
+
+        assertSuccess(//
+            DEFINE_BRACES + "\\count0=\\" + primitive + "1 \\the\\count0\\end ", //
+            "0" + TERM);
+    }
+
+    /**
+     * <testcase>
+     *  Test case checking that the primitive is dimen convertible on a void box.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testDimen1() throws Exception {
+
+        assertSuccess(//
+            DEFINE_BRACES + "\\dimen0=\\" + primitive + "1 \\the\\dimen0\\end ", //
+            "0.0pt" + TERM);
+    }
+
+    //TODO implement more primitive specific test cases
+
+}

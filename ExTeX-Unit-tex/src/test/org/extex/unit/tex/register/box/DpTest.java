@@ -19,15 +19,13 @@
 
 package org.extex.unit.tex.register.box;
 
-import org.extex.test.NoFlagsPrimitiveTester;
-
 /**
  * This is a test suite for the primitive <tt>\dp</tt>.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class DpTest extends NoFlagsPrimitiveTester {
+public class DpTest extends AbstractBoxDimenTester {
 
     /**
      * Command line interface.
@@ -45,20 +43,22 @@ public class DpTest extends NoFlagsPrimitiveTester {
      */
     public DpTest(final String arg) {
 
-        super(arg, "dp", "1=0pt", "0");
+        super(arg, "dp");
     }
 
     /**
-     * <testcase primitive="\dp">
-     *  Test case checking that <tt>\dp</tt> needs a key.
+     * <testcase>
+     *  Test case checking that the primitive is count convertible on a hbox.
      * </testcase>
      *
      * @throws Exception in case of an error
      */
-    public void testEof1() throws Exception {
+    public void testCount2() throws Exception {
 
-        assertFailure("\\dimen0=\\dp ", //
-            "Missing number, treated as zero");
+        assertSuccess(//
+            DEFINE_BRACES
+                    + "\\setbox1=\\hbox{abc}\\count0=\\dp1 \\the\\count0\\end ", //
+            "0" + TERM);
     }
 
     //TODO implement more primitive specific test cases
