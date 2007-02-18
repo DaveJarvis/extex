@@ -33,13 +33,11 @@ import org.extex.interpreter.type.box.RuleConvertible;
 import org.extex.interpreter.type.glue.FixedGlue;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
-import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.node.AlignedLeadersNode;
 import org.extex.typesetter.type.node.RuleNode;
 import org.extex.unit.tex.typesetter.spacing.HorizontalSkip;
 import org.extex.unit.tex.typesetter.spacing.VerticalSkip;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive
@@ -96,6 +94,7 @@ public class Leaders extends AbstractCode {
      * @param typesetter the typesetter
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
@@ -154,13 +153,7 @@ public class Leaders extends AbstractCode {
             skip = ((VerticalSkip) code).getGlue(context, source, typesetter);
         }
 
-        try {
-            typesetter.add(new AlignedLeadersNode(node, skip, horizontal));
-        } catch (TypesetterException e) {
-            throw new InterpreterException(e);
-        } catch (ConfigurationException e) {
-            throw new InterpreterException(e);
-        }
+        typesetter.add(new AlignedLeadersNode(node, skip, horizontal));
     }
 
 }
