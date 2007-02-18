@@ -115,6 +115,7 @@ public class Closeout extends AbstractCode implements LogEnabled {
      * @param typesetter the typesetter
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
@@ -124,7 +125,7 @@ public class Closeout extends AbstractCode implements LogEnabled {
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws InterpreterException {
+            throws InterpreterException, ConfigurationException {
 
         String key = AbstractFileCode.scanOutFileKey(context, source,
                 typesetter);
@@ -139,11 +140,7 @@ public class Closeout extends AbstractCode implements LogEnabled {
                 }
             }
         } else {
-            try {
-                typesetter.add(new WhatsItCloseNode(key));
-            } catch (ConfigurationException e) {
-                throw new InterpreterException(e);
-            }
+            typesetter.add(new WhatsItCloseNode(key));
         }
     }
 

@@ -167,8 +167,10 @@ public class Read extends AbstractAssignment implements LogEnabled {
             throw new HelpingException(getLocalizer(), "TTP.EOFinRead",
                 printableControlSequence(context));
         }
-        context.setCode(cs, new MacroCode(cs.getName(), prefix,
-            MacroPattern.EMPTY, toks), prefix.clearGlobal());
+        Flags f = prefix.copy();
+        f.setGlobal(prefix.isGlobal());
+        context.setCode(cs, new MacroCode(cs.getName(), f, MacroPattern.EMPTY,
+            toks), prefix.clearGlobal());
     }
 
     /**

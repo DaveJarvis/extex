@@ -19,12 +19,11 @@
 
 package org.extex.unit.tex.file;
 
-import java.io.FileNotFoundException;
-
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.scanner.TokenStream;
 import org.extex.scanner.stream.TokenStreamFactory;
 import org.extex.typesetter.Typesetter;
@@ -87,7 +86,7 @@ public class Input extends AbstractFileCode {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 13022007L;
 
     /**
      * Creates a new object.
@@ -104,16 +103,13 @@ public class Input extends AbstractFileCode {
      * on the stack. This operation might have side effects. To execute a token
      * it might be necessary to consume further tokens.
      *
-     * <p>
-     * Scan the file name and put the file onto the stack of tokenizer streams.
-     * </p>
-     *
      * @param prefix the prefix controlling the execution
      * @param context the interpreter context
      * @param source the token source
      * @param typesetter the typesetter
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
@@ -129,16 +125,11 @@ public class Input extends AbstractFileCode {
         String encoding = getEncoding(context);
         TokenStreamFactory factory = source.getTokenStreamFactory();
 
-        try {
-            TokenStream stream = factory.newInstance(name, FILE_TYPE, encoding);
-            if (stream != null) {
-                source.addStream(stream);
-            } else {
-                throw new InterpreterException(new FileNotFoundException(name));
-            }
-        } catch (ConfigurationException e) {
-            throw new InterpreterException(e);
+        TokenStream stream = factory.newInstance(name, FILE_TYPE, encoding);
+        if (stream == null) {
+            throw new HelpingException(getLocalizer(), "TTP.FileNotFound", name);
         }
+        source.addStream(stream);
     }
 
 }

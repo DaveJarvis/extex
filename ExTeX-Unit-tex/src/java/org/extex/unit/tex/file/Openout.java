@@ -110,6 +110,7 @@ public class Openout extends AbstractFileCode {
      * @param typesetter the typesetter
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
@@ -119,7 +120,7 @@ public class Openout extends AbstractFileCode {
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws InterpreterException {
+            throws InterpreterException,ConfigurationException {
 
         String key = AbstractFileCode.scanOutFileKey(context, source, typesetter);
 
@@ -132,11 +133,7 @@ public class Openout extends AbstractFileCode {
             file.open();
             context.setOutFile(key, file, true);
         } else {
-            try {
-                typesetter.add(new WhatsItOpenNode(key, file));
-            } catch (ConfigurationException e) {
-                throw new InterpreterException(e);
-            }
+            typesetter.add(new WhatsItOpenNode(key, file));
         }
     }
 

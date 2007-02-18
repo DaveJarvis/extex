@@ -36,7 +36,6 @@ import org.extex.interpreter.type.file.OutFile;
 import org.extex.interpreter.type.file.UserAndLogFile;
 import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
-import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.node.WhatsItWriteNode;
 import org.extex.unit.base.file.AbstractFileCode;
 import org.extex.util.framework.configuration.Configurable;
@@ -190,6 +189,7 @@ public class Write extends AbstractCode
      * @param typesetter the typesetter
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
@@ -199,7 +199,8 @@ public class Write extends AbstractCode
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws InterpreterException {
+            throws InterpreterException,
+                ConfigurationException {
 
         String key =
                 AbstractFileCode.scanOutFileKey(context, source, typesetter);
@@ -220,13 +221,7 @@ public class Write extends AbstractCode
                 throw new EofInToksException(printableControlSequence(context));
             }
 
-            try {
-                typesetter.add(new WhatsItWriteNode(key, tokens, source, this));
-            } catch (TypesetterException e) {
-                throw new InterpreterException(e);
-            } catch (ConfigurationException e) {
-                throw new InterpreterException(e);
-            }
+            typesetter.add(new WhatsItWriteNode(key, tokens, source, this));
         }
     }
 
