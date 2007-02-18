@@ -24,10 +24,11 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.box.Box;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.NodeList;
-import org.extex.unit.tex.register.box.AbstractBox;
+import org.extex.unit.tex.register.box.Setbox;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
@@ -57,7 +58,7 @@ import org.extex.util.framework.configuration.exception.ConfigurationException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
-public class Unvcopy extends AbstractBox {
+public class Unvcopy extends AbstractCode {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
@@ -75,6 +76,18 @@ public class Unvcopy extends AbstractBox {
     }
 
     /**
+     * This method takes the first token and executes it. The result is placed
+     * on the stack. This operation might have side effects. To execute a token
+     * it might be necessary to consume further tokens.
+     *
+     * @param prefix the prefix controlling the execution
+     * @param context the interpreter context
+     * @param source the token source
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
+     *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -83,24 +96,21 @@ public class Unvcopy extends AbstractBox {
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws InterpreterException {
+            throws InterpreterException,
+                ConfigurationException {
 
-        String key = getKey(context, source, typesetter, getName());
+        String key = Setbox.getKey(context, source, typesetter, getName());
         Box b = context.getBox(key);
 
         if (b == null || b.isVoid()) {
-            // nothing to do
-        } else if (b.isVbox()) {
-            NodeList nl = b.getNodes();
-            try {
-                for (int i = 0; i < nl.size(); i++) {
-                    typesetter.add(nl.get(i));
-                }
-            } catch (ConfigurationException e) {
-                throw new InterpreterException(e);
-            }
-        } else {
+            return;
+        } else if (!b.isVbox()) {
             throw new HelpingException(getLocalizer(), "TTP.IncompatibleUnbox");
+        }
+
+        NodeList nl = b.getNodes();
+        for (int i = 0; i < nl.size(); i++) {
+            typesetter.add(nl.get(i));
         }
     }
 
