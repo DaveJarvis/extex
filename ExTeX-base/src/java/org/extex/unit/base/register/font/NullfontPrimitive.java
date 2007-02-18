@@ -96,18 +96,37 @@ public class NullfontPrimitive extends AbstractCode
     }
 
     /**
+     * Convert some primitive value into a font.
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter
+     *
+     * @return the converted value
+     *
      * @see org.extex.interpreter.type.font.FontConvertible#convertFont(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
     public Font convertFont(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+            final Typesetter typesetter) {
 
         return nullFont;
     }
 
     /**
+     * This method takes the first token and executes it. The result is placed
+     * on the stack. This operation might have side effects. To execute a token
+     * it might be necessary to consume further tokens.
+     *
+     * @param prefix the prefix controlling the execution
+     * @param context the interpreter context
+     * @param source the token source
+     * @param typesetter the typesetter
+     *
+     * @throws ConfigurationException in case of an configuration error
+     *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -115,14 +134,9 @@ public class NullfontPrimitive extends AbstractCode
      *      org.extex.typesetter.Typesetter)
      */
     public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
-            throws InterpreterException {
+            final TokenSource source, final Typesetter typesetter) {
 
-        try {
-            context.set(nullFont, prefix.clearGlobal());
-        } catch (ConfigurationException e) {
-            throw new InterpreterException(e);
-        }
+        context.set(nullFont, prefix.clearGlobal());
     }
 
 }

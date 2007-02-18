@@ -111,11 +111,16 @@ public class ToksParameter extends AbstractToks
     }
 
     /**
+     * Configure an object according to a given Configuration.
+     *
+     * @param config the configuration object to consider
+     *
+     * @throws ConfigurationException in case that something went wrong
+     *
      * @see org.extex.util.framework.configuration.Configurable#configure(
      *      org.extex.util.framework.configuration.Configuration)
      */
-    public void configure(final Configuration config)
-            throws ConfigurationException {
+    public void configure(final Configuration config) {
 
         String k = config.getAttribute("key");
         if (k != null) {
@@ -142,6 +147,14 @@ public class ToksParameter extends AbstractToks
     }
 
     /**
+     * Initialize the Code with some value coming from a String.
+     *
+     * @param context the interpreter context
+     * @param source the source of information for the initialization
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.InitializableCode#init(
      *      org.extex.interpreter.context.Context, TokenSource, Typesetter)
      */
@@ -160,6 +173,18 @@ public class ToksParameter extends AbstractToks
     }
 
     /**
+     * This method takes the first token and executes it. The result is placed
+     * on the stack. This operation might have side effects. To execute a token
+     * it might be necessary to consume further tokens.
+     *
+     * @param prefix the prefix controlling the execution
+     * @param context the interpreter context
+     * @param source the token source
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
+     *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -182,6 +207,19 @@ public class ToksParameter extends AbstractToks
     }
 
     /**
+     * This method converts a register into tokens.
+     * It might be necessary to read further tokens to determine which value to
+     * use. For instance an additional register number might be required. In
+     * this case the additional arguments Context and TokenSource can be used.
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter to use for conversion
+     *
+     * @return the converted value
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.tokens.TokensConvertible#convertTokens(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,

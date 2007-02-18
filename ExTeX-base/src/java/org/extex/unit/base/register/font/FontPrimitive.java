@@ -177,7 +177,21 @@ public class FontPrimitive extends AbstractAssignment
     }
 
     /**
-     * @see org.extex.interpreter.type.Code#execute(
+     * The method <tt>assign</tt> is the core of the functionality of
+     * {@link #execute(Flags, Context, TokenSource, Typesetter) execute()}.
+     * This method is preferable to <tt>execute()</tt> since the
+     * <tt>execute()</tt> method provided in this class takes care of
+     * <tt>\afterassignment</tt> and <tt>\globaldefs</tt> as well.
+     *
+     * @param prefix the prefix controlling the execution
+     * @param context the interpreter context
+     * @param source the token source
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
+     *
+     * @see org.extex.interpreter.type.AbstractAssignment#assign(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
@@ -248,8 +262,6 @@ public class FontPrimitive extends AbstractAssignment
             }
             throw new HelpingException(getLocalizer(), "TTP.TFMnotFound", //
                 context.esc(fontId), fontname);
-        } catch (ConfigurationException e) {
-            throw new InterpreterException(e);
         }
 
         if (fnt == null) {
@@ -263,6 +275,16 @@ public class FontPrimitive extends AbstractAssignment
     }
 
     /**
+     * Convert some primitive value into a font.
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter
+     *
+     * @return the converted value
+     *
+     * @throws InterpreterException In case of an error
+     *
      * @see org.extex.interpreter.type.font.FontConvertible#convertFont(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
@@ -275,6 +297,10 @@ public class FontPrimitive extends AbstractAssignment
     }
 
     /**
+     * Setter for the logger.
+     *
+     * @param logger the logger to use
+     *
      * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */

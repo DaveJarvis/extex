@@ -172,8 +172,7 @@ public abstract class AbstractFileCode extends AbstractCode
      * @see org.extex.util.framework.configuration.Configurable#configure(
      *      org.extex.util.framework.configuration.Configuration)
      */
-    public void configure(final Configuration config)
-            throws ConfigurationException {
+    public void configure(final Configuration config) {
 
         String strict = config.getAttribute("strict");
         strictTeX = (strict != null && Boolean.valueOf(strict).booleanValue());
