@@ -29,7 +29,7 @@ import org.extex.util.framework.i18n.LocalizerFactory;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public abstract class ConfigurationException extends Exception {
+public abstract class ConfigurationException extends RuntimeException {
 
     /**
      * The field <tt>localizer</tt> contains the localizer.
