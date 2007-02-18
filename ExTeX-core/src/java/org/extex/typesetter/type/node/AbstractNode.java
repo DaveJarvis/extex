@@ -248,6 +248,10 @@ public abstract class AbstractNode implements Node {
     }
 
     /**
+     * This method determines the number of characters contained in a node.
+     *
+     * @return the number of characters contained
+     *
      * @see org.extex.typesetter.type.Node#countChars()
      */
     public int countChars() {
@@ -256,6 +260,10 @@ public abstract class AbstractNode implements Node {
     }
 
     /**
+     * Getter for the array of characters enclosed in this node.
+     *
+     * @return the array of characters
+     *
      * @see org.extex.typesetter.type.Node#getChars()
      */
     public CharNode[] getChars() {
@@ -301,6 +309,10 @@ public abstract class AbstractNode implements Node {
     }
 
     /**
+     * Compute the vertical size of a node.
+     *
+     * @return the vertical size
+     *
      * @see org.extex.typesetter.type.Node#getVerticalSize()
      */
     public FixedDimen getVerticalSize() {
