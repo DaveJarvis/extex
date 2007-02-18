@@ -48,7 +48,7 @@ public class XtfReaderGara2Test extends TestCase {
     public XtfReaderGara2Test() throws IOException {
 
         if (reader == null) {
-            reader = new XtfReader("src/font/Gara.ttf");
+            reader = new XtfReader("../ExTeX-font/src/font/Gara.ttf");
         }
     }
 

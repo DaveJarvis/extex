@@ -37,7 +37,7 @@ public class AfmParserTest extends TestCase {
     public void test01() throws Exception {
 
         AfmParser parser = new AfmParser(new FileInputStream(
-                "src/font/fxlr.afm"));
+                "../ExTeX-Font/src/font/fxlr.afm"));
 
         assertNotNull(parser);
 
@@ -62,7 +62,7 @@ public class AfmParserTest extends TestCase {
     public void test02() throws Exception {
 
         AfmParser parser = new AfmParser(new FileInputStream(
-                "src/font/fxlr.afm"));
+                "../ExTeX-Font/src/font/fxlr.afm"));
 
         assertNotNull(parser);
 

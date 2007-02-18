@@ -22,7 +22,6 @@ package org.extex.format.dvi;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
@@ -37,9 +36,6 @@ import java.util.TreeMap;
 import junit.framework.TestCase;
 
 import org.extex.font.FontFactory;
-import org.extex.font.exception.FontException;
-import org.extex.format.dvi.DviType;
-import org.extex.format.dvi.exception.DviException;
 import org.extex.util.file.random.RandomAccessInputFile;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.ConfigurationFactory;
@@ -57,7 +53,7 @@ import org.extex.util.resource.ResourceFinderFactory;
  * <p>
  * needs -Xms64m -Xmx127m
  * </p>
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -76,8 +72,8 @@ public class DviTypeTest extends TestCase {
 
     /**
      * test DviXml.
-     * 
-     * @param args the commandline
+     *
+     * @param args the command line
      */
     public static void main(final String[] args) {
 
@@ -97,17 +93,16 @@ public class DviTypeTest extends TestCase {
 
     /**
      * Check the file.
-     * 
+     *
      * @param file the file to test
      * @throws IOException if an io-error occurs
      */
     private void checkFile(final String file) throws IOException {
 
-        LineNumberReader inorg = new LineNumberReader(new FileReader(
-                PATH + file + ".dvitype"));
-        LineNumberReader innew = new LineNumberReader(new FileReader(PATH
-                                                                     + file
-                                                                     + ".tmp"));
+        LineNumberReader inorg =
+                new LineNumberReader(new FileReader(PATH + file + ".dvitype"));
+        LineNumberReader innew =
+                new LineNumberReader(new FileReader(PATH + file + ".tmp"));
 
         Map maporg = new TreeMap();
         Map mapnew = new TreeMap();
@@ -131,7 +126,7 @@ public class DviTypeTest extends TestCase {
 
     /**
      * Getter for props.
-     * 
+     *
      * @return the props
      */
     private Properties getProps() {
@@ -156,7 +151,7 @@ public class DviTypeTest extends TestCase {
 
     /**
      * remove the vv- or hh-value.
-     * 
+     *
      * @param s the String
      * @return Returns the String witout vv.. / hh..
      */
@@ -174,24 +169,26 @@ public class DviTypeTest extends TestCase {
     }
 
     /**
-     * make a font factroy.
-     * 
-     * @return Return the fontfactory
+     * make a font factory.
+     *
+     * @return Return the font factory
      * @throws Exception if an error occurs.
      */
 
     private FontFactory makeFontFactory() throws Exception {
 
-        Configuration config = new ConfigurationFactory()
-                .newInstance("config/extex-test-font.xml");
+        Configuration config =
+                new ConfigurationFactory()
+                    .newInstance("config/extex-test-font.xml");
 
         props = getProps();
 
-        finder = (new ResourceFinderFactory()).createResourceFinder(config
-                .getConfiguration("Resource"), null, props, null);
+        finder =
+                (new ResourceFinderFactory()).createResourceFinder(config
+                    .getConfiguration("Resource"), null, props, null);
 
-        FontFactory fontFactory = makeFontFactory(config
-                .getConfiguration("Fonts"));
+        FontFactory fontFactory =
+                makeFontFactory(config.getConfiguration("Fonts"));
 
         return fontFactory;
     }
@@ -202,11 +199,11 @@ public class DviTypeTest extends TestCase {
 
     /**
      * Create a new font factory.
-     * 
+     *
      * @param config the configuration object for the font factory
-     * 
+     *
      * @return the new font factory
-     * 
+     *
      * @throws ConfigurationException in case that some kind of problems have
      *             been detected in the configuration
      */
@@ -229,11 +226,10 @@ public class DviTypeTest extends TestCase {
         // }
 
         try {
-            fontFactory = (FontFactory) (Class.forName(fontClass)
-                    .getConstructor(
-                                    new Class[]{Configuration.class,
-                                            ResourceFinder.class})
-                    .newInstance(new Object[]{config, finder}));
+            fontFactory =
+                    (FontFactory) (Class.forName(fontClass).getConstructor(
+                        new Class[]{Configuration.class, ResourceFinder.class})
+                        .newInstance(new Object[]{config, finder}));
         } catch (IllegalArgumentException e) {
             throw new ConfigurationInstantiationException(e);
         } catch (SecurityException e) {
@@ -259,7 +255,7 @@ public class DviTypeTest extends TestCase {
 
     /**
      * Read the file.
-     * 
+     *
      * @param in the input
      * @param map the map
      * @throws IOException if an io-error occurs
@@ -280,23 +276,19 @@ public class DviTypeTest extends TestCase {
 
     /**
      * ...
-     * 
-     * @param name
-     * @throws IOException
-     * @throws FileNotFoundException
-     * @throws Exception
-     * @throws DviException
-     * @throws FontException
-     * @throws ConfigurationException
+     *
+     * @param name ...
+     *
+     * @throws Exception ...
      */
-    private void run(final String name) throws IOException,
-            FileNotFoundException, Exception, DviException, FontException,
-            ConfigurationException {
+    private void run(final String name) throws Exception {
+
         String file = PATH + name + ".dvi";
         RandomAccessInputFile rar = new RandomAccessInputFile(file);
 
-        PrintWriter writer = new PrintWriter(new BufferedOutputStream(
-                new FileOutputStream(PATH + name + ".tmp")));
+        PrintWriter writer =
+                new PrintWriter(new BufferedOutputStream(new FileOutputStream(
+                    PATH + name + ".tmp")));
         DviType dvitype = new DviType(writer, makeFontFactory());
 
         dvitype.interpret(rar);
@@ -306,7 +298,7 @@ public class DviTypeTest extends TestCase {
 
     /**
      * test the dviXml interpreter.
-     * 
+     *
      * @throws IOException if a IO-error occurs
      */
     public void testandre() throws Exception {
@@ -317,7 +309,7 @@ public class DviTypeTest extends TestCase {
 
     /**
      * test the dviXml interpreter.
-     * 
+     *
      * @throws IOException if a IO-error occurs
      */
     public void testlettrine() throws Exception {
@@ -328,7 +320,7 @@ public class DviTypeTest extends TestCase {
 
     /**
      * test the dviXml interpreter.
-     * 
+     *
      * @throws IOException if a IO-error occurs
      */
     public void testlistings() throws Exception {
