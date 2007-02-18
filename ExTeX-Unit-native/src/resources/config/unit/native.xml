@@ -20,14 +20,14 @@
 <unit name="native">
   <primitives>
     <define name="nativedef"
-            class="org.extex.interpreter.primitives.dynamic.NativeDef">
+            class="org.extex.unit.dynamic.NativeDef">
       <load name="java"
-            class="org.extex.interpreter.primitives.dynamic.java.JavaDef"/>
+            class="org.extex.unit.dynamic.java.JavaDef"/>
     </define>
     <define name="nativeload"
-            class="org.extex.interpreter.primitives.dynamic.NativeLoad">
+            class="org.extex.unit.dynamic.NativeLoad">
       <load name="java"
-            class="org.extex.interpreter.primitives.dynamic.java.JavaLoad"/>
+            class="org.extex.unit.dynamic.java.JavaLoad"/>
     </define>
   </primitives>
  </unit>

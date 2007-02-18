@@ -83,14 +83,14 @@
     <!-- The implementation of the error handler to use.
       -->
 	<ErrorHandler default="ExTeX">
-	 <ExTeX class="org.extex.tex.main.errorHandler.ErrorHandlerImpl">
-       <EditHandler class="org.extex.tex.main.errorHandler.editHandler.EditHandlerTeXImpl"/>
+	 <ExTeX class="org.extex.tex.main.ErrorHandlerImpl">
+       <EditHandler class="org.extex.tex.main.EditHandlerTeXImpl"/>
      </ExTeX>
-	 <TeX class="org.extex.tex.main.errorHandler.ErrorHandlerTeXImpl">
-       <EditHandler class="org.extex.tex.main.errorHandler.editHandler.EditHandlerTeXImpl"/>
+	 <TeX class="org.extex.tex.main.ErrorHandlerTeXImpl">
+       <EditHandler class="org.extex.tex.main.EditHandlerTeXImpl"/>
      </TeX>
-     <extex class="org.extex.tex.main.errorHandler.ErrorHandlerImpl"/>
-     <tex class="org.extex.tex.main.errorHandler.ErrorHandlerTeXImpl"/>
+     <extex class="org.extex.tex.main.ErrorHandlerImpl"/>
+     <tex class="org.extex.tex.main.ErrorHandlerTeXImpl"/>
 	</ErrorHandler>
 
     <unit src="unit/tex.xml"/>

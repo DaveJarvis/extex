@@ -76,12 +76,12 @@
     <define name="pdfoutput"
             class="org.extex.unit.tex.register.count.IntegerParameter">1</define>
     <define name="pdfpageattr"
-            class="org.extex.unit.tex.register.toks.ToksParameter"/><!-- (tokens) -->
+            class="org.extex.unit.base.register.toks.ToksParameter"/><!-- (tokens) -->
     <define name="pdfpageheight"
             class="org.extex.unit.tex.register.dimen.DimenParameter"
             key="mediaheight">297mm</define>
     <define name="pdfpagesattr"
-            class="org.extex.unit.tex.register.toks.ToksParameter"/><!-- (tokens) -->
+            class="org.extex.unit.base.register.toks.ToksParameter"/><!-- (tokens) -->
     <define name="pdfpagewidth"
             class="org.extex.unit.tex.register.dimen.DimenParameter"
             key="mediawidth">210mm</define>
@@ -96,7 +96,7 @@
     <define name="pdfstartlink"
             class="org.extex.unit.pdftex.Pdfstartlink"/><!-- [ <rule spec> ] [ <attr spec> ] <action spec> -->
     <define name="pdftexrevision"
-            class="org.extex.unit.tex.register.toks.ToksParameter"
+            class="org.extex.unit.base.register.toks.ToksParameter"
             >r</define><!-- (expandable) -->
     <define name="pdftexversion"
             class="org.extex.unit.tex.register.count.IntegerParameter"
