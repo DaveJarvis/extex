@@ -25,11 +25,11 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.group.GroupType;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.CantUseInException;
+import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.box.Box;
 import org.extex.typesetter.Mode;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.node.AdjustNode;
-import org.extex.unit.tex.register.box.AbstractBox;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
@@ -56,7 +56,7 @@ import org.extex.util.framework.configuration.exception.ConfigurationException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
-public class Vadjust extends AbstractBox {
+public class Vadjust extends AbstractCode {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
@@ -74,6 +74,18 @@ public class Vadjust extends AbstractBox {
     }
 
     /**
+     * This method takes the first token and executes it. The result is placed
+     * on the stack. This operation might have side effects. To execute a token
+     * it might be necessary to consume further tokens.
+     *
+     * @param prefix the prefix controlling the execution
+     * @param context the interpreter context
+     * @param source the token source
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
+     *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -82,7 +94,7 @@ public class Vadjust extends AbstractBox {
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws InterpreterException {
+            throws InterpreterException, ConfigurationException {
 
         Mode mode = typesetter.getMode();
         if (!mode.isHmode()) {
@@ -91,15 +103,11 @@ public class Vadjust extends AbstractBox {
         }
         Flags flags = prefix.copy();
         prefix.clear();
-        Box b =
+        Box box =
                 new Box(context, source, typesetter, false, null,
                     GroupType.VBOX_GROUP, source.getLastToken());
 
-        try {
-            typesetter.add(new AdjustNode(b.getNodes()));
-        } catch (ConfigurationException e) {
-            throw new InterpreterException(e);
-        }
+        typesetter.add(new AdjustNode(box.getNodes()));
         prefix.set(flags);
     }
 

@@ -176,6 +176,7 @@ public class Hbox extends AbstractBoxPrimitive {
      * @param insert the token to insert either at the beginning of the box or
      *   after the box has been gathered. If it is <code>null</code> then
      *   nothing is inserted
+     * @param groupType the group type
      *
      * @return the complete Box
      *
@@ -183,7 +184,8 @@ public class Hbox extends AbstractBoxPrimitive {
      */
     private Box acquireBox(final Context context, final TokenSource source,
             final Typesetter typesetter, final Token startToken,
-            final GroupType groupType, final Token ins) throws InterpreterException {
+            final GroupType groupType, final Token ins)
+            throws InterpreterException {
 
         Tokens toks = context.getToks("everyhbox");
         Tokens insert;
