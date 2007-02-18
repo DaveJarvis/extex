@@ -24,8 +24,10 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.AbstractCode;
+import org.extex.interpreter.type.ExpandableCode;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This code encapsulated a token which is used to trigger an expansion in the
@@ -35,7 +37,7 @@ import org.extex.typesetter.Typesetter;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:5023 $
  */
-public class LetCode extends AbstractCode {
+public class LetCode extends AbstractCode implements ExpandableCode {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
@@ -82,6 +84,35 @@ public class LetCode extends AbstractCode {
             throws InterpreterException {
 
         source.execute(token, context, typesetter);
+    }
+
+    /**
+     * This method takes the first token and expands it. The result is placed
+     * on the stack.
+     * This means that expandable code does one step of expansion and puts the
+     * result on the stack. To expand a token it might be necessary to consume
+     * further tokens.
+     *
+     * @param prefix the prefix flags controlling the expansion
+     * @param context the interpreter context
+     * @param source the token source
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
+     *
+     * @see org.extex.interpreter.type.ExpandableCode#expand(
+     *      org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource,
+     *      org.extex.typesetter.Typesetter)
+     */
+    public void expand(final Flags prefix, final Context context,
+            final TokenSource source, final Typesetter typesetter)
+            throws InterpreterException,
+                ConfigurationException {
+
+        source.push(token);
     }
 
     /**
