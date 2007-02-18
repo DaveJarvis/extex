@@ -34,7 +34,7 @@ import org.extex.unit.base.conditional.AbstractIf;
  * <doc name="if">
  * <h3>The Primitive <tt>\if</tt></h3>
  * <p>
- *  The primitive expands the tokens following it until two unexpandable tokens
+ *  The primitive expands the tokens following it until two non-expandable tokens
  *  are found. The conditional is true iff the character codes of the two tokens
  *  agree.
  * </p>
