@@ -94,9 +94,7 @@ public class Max1 extends TestCase {
          * @see org.extex.typesetter.Typesetter#add(
          *      org.extex.interpreter.type.node.CharNode)
          */
-        public void add(final Node c)
-                throws TypesetterException,
-                    ConfigurationException {
+        public void add(final Node c) {
 
             // nothing to do
         }
@@ -117,9 +115,7 @@ public class Max1 extends TestCase {
          *      org.extex.interpreter.type.count.Count)
          */
         public void addSpace(final TypesettingContext typesettingContext,
-                final Count spacefactor)
-                throws TypesetterException,
-                    ConfigurationException {
+                final Count spacefactor) {
 
             sb.append(" ");
         }
@@ -141,9 +137,7 @@ public class Max1 extends TestCase {
         /**
          * @see org.extex.typesetter.Typesetter#complete(TypesetterOptions)
          */
-        public NodeList complete(final TypesetterOptions context)
-                throws TypesetterException,
-                    ConfigurationException {
+        public NodeList complete(final TypesetterOptions context) {
 
             return null;
         }
@@ -164,7 +158,7 @@ public class Max1 extends TestCase {
          *      org.extex.type.UnicodeChar)
          */
         public void cr(final Context context, final TypesettingContext tc,
-                final UnicodeChar uc) throws TypesetterException {
+                final UnicodeChar uc) {
 
         }
 
@@ -180,7 +174,7 @@ public class Max1 extends TestCase {
         /**
          * @see org.extex.typesetter.Typesetter#finish()
          */
-        public void finish() throws ConfigurationException {
+        public void finish() {
 
             // nothing to do
         }
@@ -244,7 +238,7 @@ public class Max1 extends TestCase {
         /**
          * @see org.extex.typesetter.ListMaker#getPrevDepth()
          */
-        public FixedDimen getPrevDepth() throws TypesetterUnsupportedException {
+        public FixedDimen getPrevDepth() {
 
             return null;
         }
@@ -252,7 +246,7 @@ public class Max1 extends TestCase {
         /**
          * @see org.extex.typesetter.ListMaker#getSpacefactor()
          */
-        public long getSpacefactor() throws TypesetterUnsupportedException {
+        public long getSpacefactor() {
 
             return 0;
         }
@@ -281,8 +275,7 @@ public class Max1 extends TestCase {
          */
         public boolean letter(final UnicodeChar uc,
                 final TypesettingContext tc, final Context context,
-                TokenSource source, final Locator locator)
-                throws TypesetterException {
+                TokenSource source, final Locator locator) {
 
             return false;
         }
@@ -294,9 +287,7 @@ public class Max1 extends TestCase {
          *      org.extex.scanner.type.token.Token)
          */
         public void mathShift(final Context context, final TokenSource source,
-                final Token t)
-                throws TypesetterException,
-                    ConfigurationException {
+                final Token t) {
 
         }
 
@@ -311,7 +302,7 @@ public class Max1 extends TestCase {
         /**
          * @see org.extex.typesetter.ListMaker#par()
          */
-        public void par() throws TypesetterException, ConfigurationException {
+        public void par() {
 
             sb.append("\n\\par\n");
         }
@@ -320,7 +311,7 @@ public class Max1 extends TestCase {
          * @see org.extex.typesetter.Typesetter#push(
          *      org.extex.typesetter.ListMaker)
          */
-        public void push(final ListMaker listMaker) throws TypesetterException {
+        public void push(final ListMaker listMaker) {
 
         }
 
@@ -458,7 +449,7 @@ public class Max1 extends TestCase {
          */
         public void subscriptMark(final Context context,
                 final TokenSource source, final Typesetter typesetter,
-                final Token t) throws TypesetterException {
+                final Token t) {
 
         }
 
@@ -469,7 +460,7 @@ public class Max1 extends TestCase {
          */
         public void superscriptMark(final Context context,
                 final TokenSource source, final Typesetter typesetter,
-                final Token t) throws TypesetterException {
+                final Token t) {
 
         }
 
@@ -479,9 +470,7 @@ public class Max1 extends TestCase {
          *      TokenSource, org.extex.scanner.type.token.Token)
          */
         public void tab(final Context context, final TokenSource source,
-                final Token t)
-                throws TypesetterException,
-                    ConfigurationException {
+                final Token t) {
 
         }
 
@@ -515,8 +504,7 @@ public class Max1 extends TestCase {
          *      org.extex.interpreter.context.tc.TypesettingContext,
          *      org.extex.scanner.type.token.Token)
          */
-        public void treatLetter(final TypesettingContext context, final Token t)
-                throws GeneralException {
+        public void treatLetter(final TypesettingContext context, final Token t) {
 
         }
 

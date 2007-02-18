@@ -104,10 +104,9 @@ public class ExTeXRunner extends TestCase {
         /**
          * create the config
          */
-        private void makeConfig() throws ConfigurationException {
+        private void makeConfig() {
 
             config = new ConfigurationFactory().newInstance("config/extex.xml");
-
         }
 
         /**
@@ -120,7 +119,7 @@ public class ExTeXRunner extends TestCase {
          * @return Returns the finder.
          * @throws ConfigurationException if an error occurs.
          */
-        public ResourceFinder getResourceFinder() throws ConfigurationException {
+        public ResourceFinder getResourceFinder() {
 
             if (finder == null) {
                 finder = makeResourceFinder(config
@@ -139,7 +138,7 @@ public class ExTeXRunner extends TestCase {
          * @return Returns the font factory.
          * @throws ConfigurationException if an error occurs
          */
-        public CoreFontFactory getFontFactory() throws ConfigurationException {
+        public CoreFontFactory getFontFactory() {
 
             if (fontFactory == null) {
                 fontFactory = makeFontFactory(config.getConfiguration("Fonts"),

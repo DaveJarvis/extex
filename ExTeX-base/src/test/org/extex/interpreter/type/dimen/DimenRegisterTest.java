@@ -66,16 +66,16 @@ public class DimenRegisterTest extends TestCase {
      * @throws ConfigurationException in case of an error in the configuration
      * @throws GeneralException in case of an error during parsing
      */
-    private long doTest(final String spec)
-            throws ConfigurationException,
-                GeneralException {
+    private long doTest(final String spec) throws GeneralException {
 
-        Configuration config = new ConfigurationFactory()
-                .newInstance("config/base-test.xml");
-        TokenStreamFactory fac = new TokenStreamFactory(config
-                .getConfiguration("Scanner"), "base");
-        Interpreter source = new InterpreterFactory(config
-                .getConfiguration("Interpreter"), null).newInstance(null, null);
+        Configuration config =
+                new ConfigurationFactory().newInstance("config/base-test.xml");
+        TokenStreamFactory fac =
+                new TokenStreamFactory(config.getConfiguration("Scanner"),
+                    "base");
+        Interpreter source =
+                new InterpreterFactory(config.getConfiguration("Interpreter"),
+                    null).newInstance(null, null);
         source.addStream(fac.newInstance(spec));
         source.setTokenStreamFactory(fac);
 

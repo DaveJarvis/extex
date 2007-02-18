@@ -310,15 +310,13 @@ public class BaseHyphenationTableTest extends TestCase {
 
         /**
          * Creates a new object.
+         *
+         * @throws ConfigurationException in case of an error
          */
         protected MyMockContext() {
 
             super();
-            try {
-                set(new MockFont(), true);
-            } catch (ConfigurationException e) {
-                throw new RuntimeException(e);
-            }
+            set(new MockFont(), true);
         }
 
         /**

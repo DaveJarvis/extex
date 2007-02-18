@@ -69,7 +69,7 @@ public class ExTeXLauncher extends TestCase {
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision$
      */
-    private class EHandler implements ErrorHandler {
+    private static class EHandler implements ErrorHandler {
 
         /**
          * The field <tt>logger</tt> contains the target logger.
@@ -324,8 +324,7 @@ public class ExTeXLauncher extends TestCase {
             protected Interpreter makeInterpreter(final Configuration config,
                     final OutputStreamFactory outFatory,
                     final ResourceFinder finder, final String jobname)
-                    throws ConfigurationException,
-                        GeneralException,
+                    throws GeneralException,
                         FontException,
                         IOException {
 

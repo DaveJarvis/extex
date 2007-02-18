@@ -113,8 +113,8 @@ public class TestDocumentWriter
          *      org.extex.typesetter.type.node.AfterMathNode,
          *      java.lang.Object)
          */
-        public Object visitAfterMath(final AfterMathNode node,
-                final Object oOut) throws GeneralException {
+        public Object visitAfterMath(final AfterMathNode node, final Object oOut)
+                throws GeneralException {
 
             if (node.getWidth().ne(Dimen.ZERO_PT)) {
                 write(' ');
@@ -438,8 +438,7 @@ public class TestDocumentWriter
      * @see org.extex.util.framework.configuration.Configurable#configure(
      *      org.extex.util.framework.configuration.Configuration)
      */
-    public void configure(final Configuration config)
-            throws ConfigurationException {
+    public void configure(final Configuration config) {
 
         tree = Boolean.valueOf(config.getAttribute("tree")).booleanValue();
     }
