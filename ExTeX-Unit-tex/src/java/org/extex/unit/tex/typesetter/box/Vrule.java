@@ -29,7 +29,6 @@ import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.typesetter.Mode;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.node.RuleNode;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive <code>\vrule</code>.
@@ -65,7 +64,7 @@ import org.extex.util.framework.configuration.exception.ConfigurationException;
  *        &lang;dimen&rang;}   </pre>
  *
  * <p>
- *  The color from the typographic context is taken as foregroud color for the
+ *  The color from the typographic context is taken as foreground color for the
  *  rule. The default color is black.
  * </p>
  * <h4>Examples</h4>
@@ -87,7 +86,7 @@ public class Vrule extends AbstractCode implements RuleConvertible {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 1L;
+    protected static final long serialVersionUID = 15022007L;
 
     /**
      * The constant <tt>DEFAULT_RULE</tt> contains the equivalent to 0.4pt.
@@ -115,6 +114,7 @@ public class Vrule extends AbstractCode implements RuleConvertible {
      * @param typesetter the typesetter
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
@@ -127,29 +127,33 @@ public class Vrule extends AbstractCode implements RuleConvertible {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        try {
-            typesetter.add(getRule(context, source, typesetter));
-        } catch (ConfigurationException e) {
-            throw new InterpreterException(e);
-        }
+        typesetter.add(getRule(context, source, typesetter));
     }
 
     /**
+     * Getter for the content as Rule.
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter to use
+     *
+     * @return an appropriate Box
+     *
+     * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
+     *
      * @see org.extex.interpreter.type.box.RuleConvertible#getRule(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
     public RuleNode getRule(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+            final Typesetter typesetter)
+            throws InterpreterException {
 
         Mode mode = typesetter.getMode();
         if (mode.isVmode()) {
-            try {
-                typesetter.par();
-            } catch (ConfigurationException e) {
-                throw new InterpreterException(e);
-            }
+            typesetter.par();
         }
         Dimen width = new Dimen(DEFAULT_RULE);
         Dimen height = new Dimen(0);

@@ -27,7 +27,6 @@ import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.box.Box;
 import org.extex.interpreter.type.box.Boxable;
 import org.extex.typesetter.Typesetter;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an abstract base class for the displacement primitives.
@@ -65,6 +64,7 @@ public abstract class AbstractBoxPrimitive extends AbstractCode
      * @param typesetter the typesetter
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
@@ -80,11 +80,7 @@ public abstract class AbstractBoxPrimitive extends AbstractCode
         prefix.clear();
         Box box = getBox(context, source, typesetter, null);
         if (box != null) {
-            try {
-                typesetter.add(box.getNodes());
-            } catch (ConfigurationException e) {
-                throw new InterpreterException(e);
-            }
+            typesetter.add(box.getNodes());
         }
         prefix.set(flags);
     }

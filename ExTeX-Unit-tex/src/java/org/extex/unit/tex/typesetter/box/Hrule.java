@@ -29,7 +29,6 @@ import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.typesetter.Mode;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.node.RuleNode;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive <code>\hrule</code>.
@@ -88,7 +87,7 @@ public class Hrule extends AbstractCode implements RuleConvertible {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 1L;
+    protected static final long serialVersionUID = 15022007L;
 
     /**
      * The constant <tt>DEFAULT_RULE</tt> contains the equivalent to 0.4pt.
@@ -116,6 +115,7 @@ public class Hrule extends AbstractCode implements RuleConvertible {
      * @param typesetter the typesetter
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
@@ -128,31 +128,35 @@ public class Hrule extends AbstractCode implements RuleConvertible {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        try {
-            typesetter.add(getRule(context, source, typesetter));
-        } catch (ConfigurationException e) {
-            throw new InterpreterException(e);
-        }
+        typesetter.add(getRule(context, source, typesetter));
     }
 
     /**
+     * Getter for the content as Rule.
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter to use
+     *
+     * @return an appropriate Box
+     *
+     * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
+     *
      * @see org.extex.interpreter.type.box.RuleConvertible#getRule(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
     public RuleNode getRule(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+            final Typesetter typesetter)
+            throws InterpreterException {
 
         Mode mode = typesetter.getMode();
         if (mode.isHmode()) {
-            try {
-                typesetter.par();
-                //            throw new HelpingException(getLocalizer(), "TTP.CantUseHrule",
-                //                    printableControlSequence(context));
-            } catch (ConfigurationException e) {
-                throw new InterpreterException(e);
-            }
+            typesetter.par();
+            //            throw new HelpingException(getLocalizer(), "TTP.CantUseHrule",
+            //                    printableControlSequence(context));
         }
         Dimen width = new Dimen(0);
         Dimen height = new Dimen(DEFAULT_RULE);
@@ -170,8 +174,8 @@ public class Hrule extends AbstractCode implements RuleConvertible {
             }
         }
 
-        return new RuleNode(width, height, depth, context
-            .getTypesettingContext(), true);
+        return new RuleNode(width, height, depth, //
+            context.getTypesettingContext(), true);
     }
 
 }
