@@ -71,6 +71,16 @@ public class FontCode extends AbstractCode
     }
 
     /**
+     * Compare the code with some other code.
+     *
+     * @param token the token to compare to
+     * @param context the interpreter context
+     *
+     * @return <code>true</code> iff the code is equivalent according to the
+     *   semantics of <code>\ifx</code>
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.ComparableCode#compare(
      *      org.extex.scanner.type.token.Token,
      *      org.extex.interpreter.context.Context)
@@ -91,6 +101,16 @@ public class FontCode extends AbstractCode
     }
 
     /**
+     * Convert some primitive value into a font.
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter
+     *
+     * @return the converted value
+     *
+     * @throws InterpreterException In case of an error
+     *
      * @see org.extex.interpreter.type.font.FontConvertible#convertFont(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
@@ -103,6 +123,18 @@ public class FontCode extends AbstractCode
     }
 
     /**
+     * This method takes the first token and executes it. The result is placed
+     * on the stack. This operation might have side effects. To execute a token
+     * it might be necessary to consume further tokens.
+     *
+     * @param prefix the prefix controlling the execution
+     * @param context the interpreter context
+     * @param source the token source
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
+     *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -113,14 +145,20 @@ public class FontCode extends AbstractCode
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        try {
-            context.set(font, prefix.clearGlobal());
-        } catch (ConfigurationException e) {
-            throw new InterpreterException(e);
-        }
+        context.set(font, prefix.clearGlobal());
     }
 
     /**
+     * This method is the getter for the description of the primitive.
+     *
+     * @param context the interpreter context
+     * @param source the source for further tokens to qualify the request
+     * @param typesetter the typesetter to use
+     *
+     * @return the description of the primitive as list of Tokens
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.type.Theable#the(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
