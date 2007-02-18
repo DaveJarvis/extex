@@ -134,6 +134,7 @@ public class EnsureLoaded extends AbstractCode
      * @param typesetter the typesetter
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.interpreter.type.Code#execute(
      *       org.extex.interpreter.Flags,
@@ -163,8 +164,6 @@ public class EnsureLoaded extends AbstractCode
         } catch (ConfigurationNotFoundException e) {
             throw new HelpingException(getLocalizer(), "UnknownUnit",
                     configName);
-        } catch (ConfigurationException e) {
-            throw new InterpreterException(e);
         }
     }
 
