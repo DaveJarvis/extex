@@ -28,6 +28,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.box.Box;
 import org.extex.interpreter.type.box.Boxable;
 import org.extex.interpreter.type.count.Count;
@@ -35,7 +36,7 @@ import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.NodeList;
-import org.extex.unit.tex.register.box.AbstractBox;
+import org.extex.unit.tex.register.box.Setbox;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.framework.logger.LogEnabled;
 
@@ -52,7 +53,9 @@ import org.extex.util.framework.logger.LogEnabled;
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;vsplit&rang;
- *       &rarr; <tt>\vsplit</tt>  </pre>
+ *       &rarr; <tt>\vsplit</tt> {@linkplain
+ *        org.extex.unit.tex.register.box.Setbox#getKey(Context,Source,Typesetter,String)
+ *        &lang;box register name&rang;} </pre>
  *
  * <h4>Examples</h4>
  *  <pre class="TeXSample">
@@ -63,7 +66,7 @@ import org.extex.util.framework.logger.LogEnabled;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
-public class Vsplit extends AbstractBox implements Boxable, LogEnabled {
+public class Vsplit extends AbstractCode implements Boxable, LogEnabled {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
@@ -109,6 +112,7 @@ public class Vsplit extends AbstractBox implements Boxable, LogEnabled {
      * @param typesetter the typesetter
      *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
@@ -121,11 +125,7 @@ public class Vsplit extends AbstractBox implements Boxable, LogEnabled {
             throws InterpreterException {
 
         NodeList nl = vsplit(context, source, typesetter);
-        try {
-            typesetter.add(nl);
-        } catch (ConfigurationException e) {
-            throw new InterpreterException(e);
-        }
+        typesetter.add(nl);
     }
 
     /**
@@ -149,7 +149,8 @@ public class Vsplit extends AbstractBox implements Boxable, LogEnabled {
      *      org.extex.scanner.type.token.Token)
      */
     public Box getBox(final Context context, final TokenSource source,
-            final Typesetter typesetter, Token insert) throws InterpreterException {
+            final Typesetter typesetter, Token insert)
+            throws InterpreterException {
 
         //TODO gene: treat insert
         return new Box(vsplit(context, source, typesetter));
@@ -170,7 +171,7 @@ public class Vsplit extends AbstractBox implements Boxable, LogEnabled {
     private NodeList vsplit(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
 
-        String key = getKey(context, source, typesetter, getName());
+        String key = Setbox.getKey(context, source, typesetter, getName());
         if (!source.getKeyword(context, "to")) {
             throw new HelpingException(getLocalizer(), "TTP.MissingToForVsplit");
         }
