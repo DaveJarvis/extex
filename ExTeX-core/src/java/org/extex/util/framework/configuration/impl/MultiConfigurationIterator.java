@@ -20,10 +20,10 @@
 package org.extex.util.framework.configuration.impl;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
-
 
 /**
  * This class provides an Iterator over multiple Configurations.
@@ -76,6 +76,12 @@ public class MultiConfigurationIterator implements Iterator {
     }
 
     /**
+     * Returns <tt>true</tt> if the iteration has more elements. (In other
+     * words, returns <tt>true</tt> if <tt>next</tt> would return an element
+     * rather than throwing an exception.)
+     *
+     * @return <tt>true</tt> if the iterator has more elements.
+     *
      * @see java.util.Iterator#hasNext()
      */
     public boolean hasNext() {
@@ -89,11 +95,7 @@ public class MultiConfigurationIterator implements Iterator {
         }
 
         while (++ptr < configs.length) {
-            try {
-                iter = configs[ptr].iterator(key);
-            } catch (ConfigurationException e) {
-                throw new RuntimeException(e);
-            }
+            iter = configs[ptr].iterator(key);
 
             if (iter.hasNext()) {
                 return true;
@@ -105,6 +107,11 @@ public class MultiConfigurationIterator implements Iterator {
     }
 
     /**
+     * Returns the next element in the iteration.
+     *
+     * @return the next element in the iteration.
+     * @exception NoSuchElementException iteration has no more elements.
+     *
      * @see java.util.Iterator#next()
      */
     public Object next() {
@@ -137,6 +144,8 @@ public class MultiConfigurationIterator implements Iterator {
     }
 
     /**
+     * This operation is not supported and leads to an exception.
+     *
      * @see java.util.Iterator#remove()
      */
     public void remove() {
