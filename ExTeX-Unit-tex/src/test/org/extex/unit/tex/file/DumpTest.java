@@ -403,7 +403,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 /**
                  * @see org.extex.interpreter.context.Context#popConditional()
                  */
-                public Conditional popConditional() throws InterpreterException {
+                public Conditional popConditional() {
 
                     return null;
                 }
@@ -495,8 +495,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  * @see org.extex.interpreter.context.Context#setCatcode(org.extex.type.UnicodeChar, org.extex.scanner.type.Catcode, boolean)
                  */
                 public void setCatcode(final UnicodeChar c,
-                        final Catcode catcode, final boolean global)
-                        throws HelpingException {
+                        final Catcode catcode, final boolean global) {
 
                 }
 
@@ -512,7 +511,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  * @see org.extex.interpreter.context.Context#setGlue(java.lang.String, org.extex.interpreter.type.glue.Glue, boolean)
                  */
                 public void setGlue(final String name, final Glue value,
-                        final boolean global) throws InterpreterException {
+                        final boolean global) {
 
                 }
 
@@ -526,8 +525,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 /**
                  * @see org.extex.interpreter.context.Context#setLanguageManager(org.extex.language.LanguageManager)
                  */
-                public void setLanguageManager(final LanguageManager manager)
-                        throws ConfigurationException {
+                public void setLanguageManager(final LanguageManager manager) {
 
                 }
 
@@ -542,8 +540,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 /**
                  * @see org.extex.interpreter.context.Context#setMagnification(long, boolean)
                  */
-                public void setMagnification(final long mag, final boolean lock)
-                        throws HelpingException {
+                public void setMagnification(final long mag, final boolean lock) {
 
                 }
 
@@ -620,8 +617,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 /**
                  * @see org.extex.interpreter.context.ContextCode#getCode(org.extex.scanner.type.token.CodeToken)
                  */
-                public Code getCode(final CodeToken t)
-                        throws InterpreterException {
+                public Code getCode(final CodeToken t) {
 
                     return null;
                 }
@@ -630,7 +626,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  * @see org.extex.interpreter.context.ContextCode#setCode(org.extex.scanner.type.token.CodeToken, org.extex.interpreter.type.Code, boolean)
                  */
                 public void setCode(final CodeToken t, final Code code,
-                        final boolean global) throws InterpreterException {
+                        final boolean global) {
 
                 }
 
@@ -646,7 +642,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  * @see org.extex.interpreter.context.ContextCount#setCount(java.lang.String, long, boolean)
                  */
                 public void setCount(final String name, final long value,
-                        final boolean global) throws InterpreterException {
+                        final boolean global) {
 
                 }
 
@@ -662,7 +658,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  * @see org.extex.interpreter.context.ContextDimen#setDimen(java.lang.String, org.extex.interpreter.type.dimen.Dimen, boolean)
                  */
                 public void setDimen(final String name, final Dimen value,
-                        final boolean global) throws InterpreterException {
+                        final boolean global) {
 
                 }
 
@@ -670,7 +666,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  * @see org.extex.interpreter.context.ContextDimen#setDimen(java.lang.String, long, boolean)
                  */
                 public void setDimen(final String name, final long value,
-                        final boolean global) throws InterpreterException {
+                        final boolean global) {
 
                 }
 
@@ -747,8 +743,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 /**
                  * @see org.extex.interpreter.context.ContextGroup#afterGroup(org.extex.scanner.type.token.Token)
                  */
-                public void afterGroup(final Token t)
-                        throws InterpreterException {
+                public void afterGroup(final Token t) {
 
                 }
 
@@ -756,7 +751,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  * @see org.extex.interpreter.context.ContextGroup#closeGroup(org.extex.typesetter.Typesetter, org.extex.interpreter.TokenSource)
                  */
                 public void closeGroup(final Typesetter typesetter,
-                        final TokenSource source) throws InterpreterException {
+                        final TokenSource source) {
 
                 }
 
@@ -796,9 +791,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  * @see org.extex.interpreter.context.ContextGroup#openGroup(org.extex.interpreter.context.group.GroupType, org.extex.type.Locator, org.extex.scanner.type.token.Token)
                  */
                 public void openGroup(final GroupType id,
-                        final Locator locator, final Token start)
-                        throws ConfigurationException,
-                            InterpreterException {
+                        final Locator locator, final Token start) {
 
                 }
 
@@ -829,8 +822,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 /**
                  * @see org.extex.interpreter.context.ContextInteraction#setInteraction(org.extex.interpreter.interaction.Interaction)
                  */
-                public void setInteraction(final Interaction interaction)
-                        throws InterpreterException {
+                public void setInteraction(final Interaction interaction) {
 
                 }
 
@@ -854,7 +846,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  * @see org.extex.interpreter.context.ContextTokens#setToks(java.lang.String, org.extex.interpreter.type.tokens.Tokens, boolean)
                  */
                 public void setToks(final String name, final Tokens toks,
-                        final boolean global) throws InterpreterException {
+                        final boolean global) {
 
                 }
 
@@ -958,7 +950,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  * @see org.extex.backend.outputStream.OutputStreamFactory#getOutputStream(java.lang.String, java.lang.String)
                  */
                 public OutputStream getOutputStream(final String name,
-                        final String type) throws DocumentWriterException {
+                        final String type) {
 
                     return null;
                 }
@@ -1082,8 +1074,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 /**
                  * @see org.extex.interpreter.context.Context#getLanguage(java.lang.String)
                  */
-                public Language getLanguage(final String language)
-                        throws InterpreterException {
+                public Language getLanguage(final String language) {
 
                     return null;
                 }
@@ -1195,7 +1186,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 /**
                  * @see org.extex.interpreter.context.Context#popConditional()
                  */
-                public Conditional popConditional() throws InterpreterException {
+                public Conditional popConditional() {
 
                     return null;
                 }
@@ -1227,32 +1218,28 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 /**
                  * @see org.extex.interpreter.context.Context#set(org.extex.interpreter.context.Color, boolean)
                  */
-                public void set(final Color color, final boolean global)
-                        throws ConfigurationException {
+                public void set(final Color color, final boolean global) {
 
                 }
 
                 /**
                  * @see org.extex.interpreter.context.Context#set(org.extex.interpreter.context.tc.Direction, boolean)
                  */
-                public void set(final Direction direction, final boolean global)
-                        throws ConfigurationException {
+                public void set(final Direction direction, final boolean global) {
 
                 }
 
                 /**
                  * @see org.extex.interpreter.context.Context#set(org.extex.interpreter.type.font.Font, boolean)
                  */
-                public void set(final Font font, final boolean global)
-                        throws ConfigurationException {
+                public void set(final Font font, final boolean global) {
 
                 }
 
                 /**
                  * @see org.extex.interpreter.context.Context#set(org.extex.language.Language, boolean)
                  */
-                public void set(final Language language, final boolean global)
-                        throws ConfigurationException {
+                public void set(final Language language, final boolean global) {
 
                 }
 
@@ -1291,8 +1278,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  * @see org.extex.interpreter.context.Context#setCatcode(org.extex.type.UnicodeChar, org.extex.scanner.type.Catcode, boolean)
                  */
                 public void setCatcode(final UnicodeChar c,
-                        final Catcode catcode, final boolean global)
-                        throws HelpingException {
+                        final Catcode catcode, final boolean global) {
 
                 }
 
@@ -1308,7 +1294,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  * @see org.extex.interpreter.context.Context#setGlue(java.lang.String, org.extex.interpreter.type.glue.Glue, boolean)
                  */
                 public void setGlue(final String name, final Glue value,
-                        final boolean global) throws InterpreterException {
+                        final boolean global) {
 
                 }
 
@@ -1322,8 +1308,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 /**
                  * @see org.extex.interpreter.context.Context#setLanguageManager(org.extex.language.LanguageManager)
                  */
-                public void setLanguageManager(final LanguageManager manager)
-                        throws ConfigurationException {
+                public void setLanguageManager(final LanguageManager manager) {
 
                 }
 
@@ -1338,8 +1323,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 /**
                  * @see org.extex.interpreter.context.Context#setMagnification(long, boolean)
                  */
-                public void setMagnification(final long mag, final boolean lock)
-                        throws HelpingException {
+                public void setMagnification(final long mag, final boolean lock) {
 
                 }
 
@@ -1416,8 +1400,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 /**
                  * @see org.extex.interpreter.context.ContextCode#getCode(org.extex.scanner.type.token.CodeToken)
                  */
-                public Code getCode(final CodeToken t)
-                        throws InterpreterException {
+                public Code getCode(final CodeToken t) {
 
                     return null;
                 }
@@ -1426,7 +1409,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  * @see org.extex.interpreter.context.ContextCode#setCode(org.extex.scanner.type.token.CodeToken, org.extex.interpreter.type.Code, boolean)
                  */
                 public void setCode(final CodeToken t, final Code code,
-                        final boolean global) throws InterpreterException {
+                        final boolean global) {
 
                 }
 
@@ -1442,7 +1425,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  * @see org.extex.interpreter.context.ContextCount#setCount(java.lang.String, long, boolean)
                  */
                 public void setCount(final String name, final long value,
-                        final boolean global) throws InterpreterException {
+                        final boolean global) {
 
                 }
 
@@ -1458,7 +1441,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  * @see org.extex.interpreter.context.ContextDimen#setDimen(java.lang.String, org.extex.interpreter.type.dimen.Dimen, boolean)
                  */
                 public void setDimen(final String name, final Dimen value,
-                        final boolean global) throws InterpreterException {
+                        final boolean global) {
 
                 }
 
@@ -1466,7 +1449,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  * @see org.extex.interpreter.context.ContextDimen#setDimen(java.lang.String, long, boolean)
                  */
                 public void setDimen(final String name, final long value,
-                        final boolean global) throws InterpreterException {
+                        final boolean global) {
 
                 }
 
@@ -1543,8 +1526,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 /**
                  * @see org.extex.interpreter.context.ContextGroup#afterGroup(org.extex.scanner.type.token.Token)
                  */
-                public void afterGroup(final Token t)
-                        throws InterpreterException {
+                public void afterGroup(final Token t) {
 
                 }
 
@@ -1552,7 +1534,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  * @see org.extex.interpreter.context.ContextGroup#closeGroup(org.extex.typesetter.Typesetter, org.extex.interpreter.TokenSource)
                  */
                 public void closeGroup(final Typesetter typesetter,
-                        final TokenSource source) throws InterpreterException {
+                        final TokenSource source) {
 
                 }
 
@@ -1592,9 +1574,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  * @see org.extex.interpreter.context.ContextGroup#openGroup(org.extex.interpreter.context.group.GroupType, org.extex.type.Locator, org.extex.scanner.type.token.Token)
                  */
                 public void openGroup(final GroupType id,
-                        final Locator locator, final Token start)
-                        throws ConfigurationException,
-                            InterpreterException {
+                        final Locator locator, final Token start) {
 
                 }
 
@@ -1625,8 +1605,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 /**
                  * @see org.extex.interpreter.context.ContextInteraction#setInteraction(org.extex.interpreter.interaction.Interaction)
                  */
-                public void setInteraction(final Interaction interaction)
-                        throws InterpreterException {
+                public void setInteraction(final Interaction interaction) {
 
                 }
 
@@ -1650,7 +1629,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  * @see org.extex.interpreter.context.ContextTokens#setToks(java.lang.String, org.extex.interpreter.type.tokens.Tokens, boolean)
                  */
                 public void setToks(final String name, final Tokens toks,
-                        final boolean global) throws InterpreterException {
+                        final boolean global) {
 
                 }
 

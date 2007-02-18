@@ -77,7 +77,7 @@ public class WriteTest extends NoFlagsButImmediatePrimitiveTester {
         assertFailure(//--- input code ---
                 "\\write 2",
                 //--- log message ---
-                "Unexpected end of file while processing tokens" //TODO tokens should be \write
+                "File ended while scanning text of \\write"
         );
     }
 

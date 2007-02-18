@@ -76,7 +76,7 @@ public class InputTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
-    public void testErr0() throws Exception {
+    public void testError1() throws Exception {
 
         assertFailure(//--- input code ---
                 "\\input DoesNotExist",
