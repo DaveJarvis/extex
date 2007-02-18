@@ -67,14 +67,8 @@ import org.extex.tex.main.exception.MainConfigurationException;
 import org.extex.tex.main.exception.MainException;
 import org.extex.tex.main.exception.MainIOException;
 import org.extex.tex.main.exception.MainMissingArgumentException;
+import org.extex.tex.main.exception.MainUnknownDebugOptionException;
 import org.extex.tex.main.exception.MainUnknownOptionException;
-import org.extex.tex.main.inputHandler.TeXInputReader;
-import org.extex.tex.main.observer.FileCloseObserver;
-import org.extex.tex.main.observer.FileOpenObserver;
-import org.extex.tex.main.observer.TokenObserver;
-import org.extex.tex.main.observer.TokenPushObserver;
-import org.extex.tex.main.queryFile.QueryFileHandler;
-import org.extex.tex.main.queryFile.QueryFileHandlerTeXImpl;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.exception.NotObservableException;
 import org.extex.util.framework.configuration.Configuration;
@@ -425,7 +419,7 @@ import org.extex.util.resource.ResourceFinder;
  *
  * <p>
  *  Settings can be stored in properties files. Those settings are the
- *  fallbacks if no corresponding command line arguments are found.
+ *  fallback values if no corresponding command line arguments are found.
  * </p>
  * <p>
  *  The properties are stored in a file named <tt>.extex</tt>. It is
@@ -633,7 +627,7 @@ import org.extex.util.resource.ResourceFinder;
  *    search for input files.
  *   </dd>
  *
- *   <dt><a name="extex.trace.font.files"/><tt>extex.trace.font.filess</tt></dt>
+ *   <dt><a name="extex.trace.font.files"/><tt>extex.trace.font.files</tt></dt>
  *   <dd>
  *    This boolean parameter contains the indicator whether or not to trace the
  *    search for font files.
@@ -730,17 +724,12 @@ public class TeX extends ExTeX {
     protected static final int EXIT_OK = 0;
 
     /**
-     * The field <tt>PROP_PARSE_FIRST_LINE</tt> contains the name of the
-     * property to nable the parsing of the first line of the file.
+     * The constant <tt>PAGE_KEYS</tt> contains the resoruce keys to report
+     * pages and file.
      */
-    private static final String PROP_PARSE_FIRST_LINE =
-            "extex.parse.first.line";
-
-    /**
-     * The constant <tt>TRACE_MAP</tt> contains the mapping from single
-     * characters to tracing property names.
-     */
-    private static final Map TRACE_MAP = new HashMap();
+    private static final String[] PAGE_KEYS =
+            new String[]{"ExTeX.NoPages", "ExTeX.Page", "ExTeX.Pages",
+                    "ExTeX.NoPages", "ExTeX.File.Page", "ExTeX.File.Pages"};
 
     /**
      * The field <tt>PROP_OUTPUTDIR</tt> contains the name of the
@@ -754,6 +743,19 @@ public class TeX extends ExTeX {
      */
     private static final String PROP_OUTPUT_DIR_FALLBACK =
             "tex.output.dir.fallback";
+
+    /**
+     * The field <tt>PROP_PARSE_FIRST_LINE</tt> contains the name of the
+     * property to enable the parsing of the first line of the file.
+     */
+    private static final String PROP_PARSE_FIRST_LINE =
+            "extex.parse.first.line";
+
+    /**
+     * The constant <tt>TRACE_MAP</tt> contains the mapping from single
+     * characters to tracing property names.
+     */
+    private static final Map TRACE_MAP = new HashMap();
 
     static {
         TRACE_MAP.put("+", PROP_TRACING_ONLINE);
@@ -782,14 +784,36 @@ public class TeX extends ExTeX {
      */
     public static void main(final String[] args) {
 
-        int status;
+        System.exit(mainProgram(args));
+    }
+
+    /**
+     * This is the main method which is invoked to run the whole engine from
+     * the command line. It creates a new <logo>ExTeX</logo> object and invokes
+     * <tt>{@link #run(java.lang.String[]) run()}</tt> on it.
+     * <p>
+     *  The return value is the exit status. The value 0 indicates an
+     *  successful run.
+     * </p>
+     * <p>
+     *  The properties to be used are taken from the
+     *  <tt>{@link java.lang.System#getProperties() System.properties}</tt> and
+     *  the user's properties in the file <tt>.extex</tt>. The user properties
+     *  are loaded both from the users home directory and the current directory.
+     *  Finally the properties can be overwritten on the command line.
+     * </p>
+     *
+     * @param args the list of command line arguments
+     *
+     * @return the program exit status
+     */
+    public static int mainProgram(final String[] args) {
 
         try {
 
-            TeX tex = new TeX(System.getProperties(), DOT_EXTEX);
-            status = tex.run(args);
+            return new TeX(System.getProperties(), DOT_EXTEX).run(args);
 
-        } catch (Throwable e) {
+        } catch (Exception e) {
             Logger logger = Logger.getLogger(TeX.class.getName());
             logger.setUseParentHandlers(false);
             logger.setLevel(Level.ALL);
@@ -801,16 +825,21 @@ public class TeX extends ExTeX {
 
             logException(logger, LocalizerFactory.getLocalizer(TeX.class)
                 .format("ExTeX.SevereError", e.toString()), e);
-            status = EXIT_INTERNAL_ERROR;
+            return EXIT_INTERNAL_ERROR;
         }
-
-        System.exit(status);
     }
+
+    /**
+     * The field <tt>interpreter</tt> contains the interpreter. This is an
+     * intermediate variable used to transport the interpreter to places where
+     *  it is needed.
+     */
+    private Interpreter interpreter;;
 
     /**
      * The field <tt>localizer</tt> contains the localizer.
      */
-    private Localizer localizer = LocalizerFactory.getLocalizer(TeX.class);;
+    private Localizer localizer = LocalizerFactory.getLocalizer(TeX.class);
 
     /**
      * The field <tt>observers</tt> contains the observers.
@@ -823,17 +852,15 @@ public class TeX extends ExTeX {
     private List observers = new ArrayList();
 
     /**
+     * The field <tt>primaryFile</tt> contains the ...
+     */
+    private String primaryFile = null;
+
+    /**
      * The field <tt>queryFileHandler</tt> contains the instance of the handler
      * to ask for a file name if none is given.
      */
     private QueryFileHandler queryFileHandler = new QueryFileHandlerTeXImpl();
-
-    /**
-     * The field <tt>interpreter</tt> contains the interpreter. This is an
-     * intermediate variable used to transport the interpreter to places where
-     *  it is needed.
-     */
-    private Interpreter interpreter;
 
     /**
      * Creates a new object and initializes the properties from given
@@ -946,7 +973,7 @@ public class TeX extends ExTeX {
      *      java.util.Properties)
      */
     protected boolean initializeStreams(final Interpreter interpreter,
-            final Properties properties) throws ConfigurationException {
+            final Properties properties) {
 
         TokenStreamFactory factory = interpreter.getTokenStreamFactory();
 
@@ -967,6 +994,108 @@ public class TeX extends ExTeX {
     }
 
     /**
+     * Write the indicator of the pages produced to the logger.
+     *
+     * @param backend the back-end driver
+     *
+     * @see org.extex.ExTeX#logPages(org.extex.backend.BackendDriver)
+     */
+    protected void logPages(final BackendDriver backend) {
+
+        int pages = backend.getPages();
+
+        if (pages == 0 && primaryFile != null) {
+            new File(primaryFile).delete();
+            primaryFile = null;
+        }
+
+        String pattern =
+                PAGE_KEYS[(pages < 2 ? pages : 2)
+                        + (primaryFile == null ? 0 : 3)];
+        getLogger().log(
+            (getBooleanProperty(PROP_NO_BANNER) ? Level.FINE : Level.INFO),
+            localizer.format(pattern, primaryFile, //
+                Integer.toString(pages)));
+    }
+
+    /**
+     * Create a new document writer.
+     *
+     * @param config the configuration object for the document writer
+     * @param outFactory the output factory
+     * @param options the options to be passed to the document writer
+     * @param colorConfig the configuration for the color converter
+     * @param finder the resource finder if one is requested
+     * @param fontFactory the font factory
+     *
+     * @return the new document writer
+     *
+     * @throws DocumentWriterException in case of an error
+     * @throws ConfigurationException in case of a configuration problem
+     *
+     * @see org.extex.ExTeX#makeBackend(
+     *      org.extex.util.framework.configuration.Configuration,
+     *      org.extex.backend.outputStream.OutputStreamFactory,
+     *      org.extex.backend.documentWriter.DocumentWriterOptions,
+     *      org.extex.util.framework.configuration.Configuration,
+     *      org.extex.util.resource.ResourceFinder,
+     *      CoreFontFactory)
+     */
+    protected BackendDriver makeBackend(final Configuration config,
+            final OutputStreamFactory outFactory,
+            final DocumentWriterOptions options,
+            final Configuration colorConfig, final ResourceFinder finder,
+            final CoreFontFactory fontFactory)
+            throws DocumentWriterException,
+                ConfigurationException {
+
+        outFactory.register(new OutputStreamObserver() {
+
+            /**
+             * Recognize that a new output stream has been delivered.
+             *
+             * @param name the name of the resource requested
+             * @param type the type of the resource
+             * @param stream the stream to be delivered
+             *
+             * @see org.extex.backend.outputStream.OutputStreamObserver#update(
+             *      java.lang.String,
+             *      java.lang.String,
+             *      java.io.OutputStream)
+             */
+            public void update(final String name, final String type,
+                    final OutputStream stream) {
+
+                if (primaryFile != null) {
+                    // ignore
+                } else if (stream instanceof NamedOutputStream) {
+                    primaryFile = ((NamedOutputStream) stream).getName();
+                } else if (stream != null) {
+                    primaryFile = name;
+                }
+            }
+        });
+
+        return super.makeBackend(config, outFactory, options, colorConfig,
+            finder, fontFactory);
+    }
+
+    /**
+     * Create a new interpreter.
+     *
+     * @param config the configuration object for the interpreter
+     * @param outFactory the factory for new output streams
+     * @param finder the resource finder
+     * @param jobname the job name
+     *
+     * @return the new interpreter
+     *
+     * @throws ConfigurationException in case that some kind of problems have
+     *   been detected in the configuration
+     * @throws GeneralException in case of an error of some other kind
+     * @throws FontException in case of problems with the font itself
+     * @throws IOException in case of an IO error
+     *
      * @see org.extex.ExTeX#makeInterpreter(
      *      org.extex.util.framework.configuration.Configuration,
      *      org.extex.backend.outputStream.OutputStreamFactory,
@@ -1015,53 +1144,6 @@ public class TeX extends ExTeX {
     }
 
     /**
-     * The field <tt>primaryFile</tt> contains the ...
-     */
-    private String primaryFile = null;
-
-    /**
-     * @see org.extex.ExTeX#makeBackend(
-     *      org.extex.util.framework.configuration.Configuration,
-     *      org.extex.backend.outputStream.OutputStreamFactory,
-     *      org.extex.backend.documentWriter.DocumentWriterOptions,
-     *      org.extex.util.framework.configuration.Configuration,
-     *      org.extex.util.resource.ResourceFinder,
-     *      CoreFontFactory)
-     */
-    protected BackendDriver makeBackend(final Configuration config,
-            final OutputStreamFactory outFactory,
-            final DocumentWriterOptions options,
-            final Configuration colorConfig, final ResourceFinder finder,
-            final CoreFontFactory fontFactory)
-            throws DocumentWriterException,
-                ConfigurationException {
-
-        outFactory.register(new OutputStreamObserver() {
-
-            /**
-             * @see org.extex.backend.outputStream.OutputStreamObserver#update(
-             *      java.lang.String,
-             *      java.lang.String,
-             *      java.io.OutputStream)
-             */
-            public void update(final String name, final String type,
-                    final OutputStream stream) {
-
-                if (primaryFile != null) {
-                    // ignore
-                } else if (stream instanceof NamedOutputStream) {
-                    primaryFile = ((NamedOutputStream) stream).getName();
-                } else if (stream != null) {
-                    primaryFile = name;
-                }
-            }
-        });
-
-        return super.makeBackend(config, outFactory, options, colorConfig,
-            finder, fontFactory);
-    }
-
-    /**
      * Create a TokenStreamFactory.
      * Implicitly the logger is used.
      *
@@ -1089,11 +1171,20 @@ public class TeX extends ExTeX {
             factory.registerObserver(new OpenFileObserver() {
 
                 /**
-                 * The field <tt>first</tt> contains the ...
+                 * The field <tt>first</tt> contains the indicator of the first
+                 * visit.
                  */
                 boolean first = true;
 
                 /**
+                 * This method is meant to be invoked just after a new file
+                 * based stream has been opened.
+                 *
+                 * @param filename the name of the file to be opened
+                 * @param filetype the type of the file to be opened. The type
+                 *   is resolved via the configuration to a file name pattern
+                 * @param stream the input stream to read from
+                 *
                  * @see org.extex.scanner.stream.observer.file.OpenFileObserver#update(
                  *      java.lang.String,
                  *      java.lang.String,
@@ -1153,51 +1244,6 @@ public class TeX extends ExTeX {
     }
 
     /**
-     * Write the indicator of the pages produced to the logger.
-     *
-     * @param backend the back-end driver
-     *
-     * @see org.extex.ExTeX#logPages(org.extex.backend.BackendDriver)
-     */
-    protected void logPages(final BackendDriver backend) {
-
-        int pages = backend.getPages();
-
-        if (pages == 0 && primaryFile != null) {
-            new File(primaryFile).delete();
-            primaryFile = null;
-        }
-
-        String pattern;
-        switch ((pages < 2 ? pages : 2) + (primaryFile == null ? 0 : 3)) {
-            case 0:
-                pattern = "ExTeX.NoPages";
-                break;
-            case 1:
-                pattern = "ExTeX.Page";
-                break;
-            case 2:
-                pattern = "ExTeX.Pages";
-                break;
-            case 3:
-                pattern = "ExTeX.NoPages";
-                break;
-            case 4:
-                pattern = "ExTeX.File.Page";
-                break;
-            case 5:
-                pattern = "ExTeX.File.Pages";
-                break;
-            default:
-                pattern = "";
-        }
-        getLogger().log(
-            (getBooleanProperty(PROP_NO_BANNER) ? Level.FINE : Level.INFO),
-            localizer.format(pattern, primaryFile, //
-                Integer.toString(pages)));
-    }
-
-    /**
      * Loads a properties file into the already existing properties.
      * The values from the file overwrite existing values.
      *
@@ -1209,19 +1255,20 @@ public class TeX extends ExTeX {
      */
     protected boolean mergeProperties(final String arg) throws IOException {
 
-        InputStream is = getClass().getResourceAsStream("config.extex." + arg);
-        if (is == null) {
-            try {
-                is = new FileInputStream(new File(".extexcfg", arg));
-            } catch (FileNotFoundException e) {
+        InputStream in = getClass().getResourceAsStream("/config/extex/" + arg);
+        if (in == null) {
+            File file = new File(".extex-" + arg);
+            if (!file.canRead()) {
                 return false;
             }
+            try {
+                in = new FileInputStream(file);
+            } catch (FileNotFoundException e) {
+                return false; // this should not happen since checked before
+            }
         }
-        getProperties().load(is);
-
-        if (is != null) {
-            is.close();
-        }
+        getProperties().load(in);
+        in.close();
         return true;
     }
 
@@ -1239,7 +1286,7 @@ public class TeX extends ExTeX {
 
         try {
 
-            return runCL(args);
+            return runCommandLine(args);
 
         } catch (MainException e) {
             showBanner(null, Level.INFO);
@@ -1318,7 +1365,7 @@ public class TeX extends ExTeX {
      * @throws InteractionUnknownException in case of an unknown interaction
      *  mode
      */
-    protected int runCL(final String[] args)
+    protected int runCommandLine(final String[] args)
             throws MainException,
                 IOException,
                 InteractionUnknownException {
@@ -1334,31 +1381,44 @@ public class TeX extends ExTeX {
 
             if (c == '-') {
                 if (arg.equals("-")) {
-                    throw new MainUnknownOptionException(arg);
+                    // extex - <file>
+                    return runWithFile(args, i + 1);
                 }
                 arg = arg.substring(1);
                 switch (arg.charAt(0)) {
                     case '-':
-                        if ("-".equals(arg)) {
-                            return runWithFile(args, i + 1);
-                        }
-                        int eq = arg.indexOf('=');
-                        if (eq >= 0) {
-                            String val = arg.substring(eq + 1);
-                            setProperty(arg.substring(1, eq), val);
+                        String a;
+                        if (!"-".equals(arg)) {
+                            // extex --<property>...
+                            a = arg.substring(1);
                         } else if (++i < args.length) {
-                            setProperty(arg.substring(1), args[i]);
+                            // extex -- <property>...
+                            a = args[i];
                         } else {
+                            // extex --
+                            throw new MainMissingArgumentException("--");
+                        }
+                        int eq = a.indexOf('=');
+                        if (eq >= 0) {
+                            // extex -- <property>=<value>
+                            setProperty(a.substring(0, eq), a.substring(eq + 1));
+                        } else if (++i < args.length) {
+                            // extex -- <property> <value>
+                            setProperty(a, args[i]);
+                        } else {
+                            // extex -- <property>
                             throw new MainMissingArgumentException("-" + arg);
                         }
                         break;
 
                     case 'c':
                         if (set("configuration", PROP_CONFIG, args, i)) {
+                            // extex -configuration <configuration>
                             i++;
                         } else if (set("configuration", PROP_CONFIG, arg)) {
-                            // ok
+                            // extex -configuration=<configuration>
                         } else if ("copyright".startsWith(arg)) {
+                            // extex -copyright
                             int year =
                                     Calendar.getInstance().get(Calendar.YEAR);
                             String copyrightYear =
@@ -1369,6 +1429,7 @@ public class TeX extends ExTeX {
                             return info(getLocalizer().format(
                                 "ExTeX.Copyright", copyrightYear));
                         } else if ("copying".startsWith(arg)) {
+                            // extex -copying
                             return copying(System.err);
                         } else if (!mergeProperties(arg)) {
                             throw new MainUnknownOptionException(arg);
@@ -1377,14 +1438,17 @@ public class TeX extends ExTeX {
                     case 'd':
                         if ("debug".startsWith(arg)) {
                             if (++i >= args.length) {
+                                // extex -debug
                                 throw new MainMissingArgumentException(arg);
                             }
+                            // extex -debug <debug flags>
                             useTrace(args[i]);
                         } else if (arg.startsWith("debug=")
                                 || arg.startsWith("debu=")
                                 || arg.startsWith("deb=")
                                 || arg.startsWith("de=")
                                 || arg.startsWith("d=")) {
+                            // extex -debug=<debug flags>
                             useTrace(arg.substring(arg.indexOf('=') + 1));
                         } else if (!mergeProperties(arg)) {
                             throw new MainUnknownOptionException(arg);
@@ -1392,9 +1456,11 @@ public class TeX extends ExTeX {
                         break;
                     case 'h':
                         if ("help".startsWith(arg)) {
+                            // extex -help
                             return info(getLocalizer().format("ExTeX.Usage",
                                 getProperty(PROP_PROGNAME)));
                         } else if ("halt-on-error".startsWith(arg)) {
+                            // extex -halt-on-error
                             setProperty(PROP_HALT_ON_ERROR, "true");
                         } else if (!mergeProperties(arg)) {
                             throw new MainUnknownOptionException(arg);
@@ -1402,8 +1468,16 @@ public class TeX extends ExTeX {
                         break;
                     case 'f':
                         if (set("fmt", PROP_FMT, args, i)) {
+                            // extex -fmt <format>
                             i++;
                         } else if (set("fmt", PROP_FMT, arg)) {
+                            // extex -fmt=<format>
+                            // ok
+                        } else if (set("format", PROP_FMT, args, i)) {
+                            // extex -format <format>
+                            i++;
+                        } else if (set("format", PROP_FMT, arg)) {
+                            // extex -format=<format>
                             // ok
                         } else if (!mergeProperties(arg)) {
                             throw new MainUnknownOptionException(arg);
@@ -1411,11 +1485,14 @@ public class TeX extends ExTeX {
                         break;
                     case 'i':
                         if (set("interaction", PROP_INTERACTION, args, i)) {
+                            // extex -interaction <mode>
                             i++;
                             applyInteraction();
                         } else if (set("interaction", PROP_INTERACTION, arg)) {
+                            // extex -interaction=<mode>
                             applyInteraction();
-                        } else if ("ini".startsWith(arg)) {
+                        } else if ("initial".startsWith(arg)) {
+                            // extex -ini
                             setProperty(PROP_INI, "true");
                         } else if (!mergeProperties(arg)) {
                             throw new MainUnknownOptionException(arg);
@@ -1424,9 +1501,13 @@ public class TeX extends ExTeX {
                     case 'j':
                         if (set("job-name", PROP_JOBNAME_MASTER, arg)
                                 || set("jobname", PROP_JOBNAME_MASTER, arg)) {
+                            // extex -job-name=<name>
+                            // extex -jobname=<name>
                             // ok
                         } else if (set("job-name", PROP_JOBNAME_MASTER, args, i)
                                 || set("jobname", PROP_JOBNAME_MASTER, args, i)) {
+                            // extex -job-name <name>
+                            // extex -jobname <name>
                             i++;
                         } else if (!mergeProperties(arg)) {
                             throw new MainUnknownOptionException(arg);
@@ -1434,9 +1515,11 @@ public class TeX extends ExTeX {
                         break;
                     case 'l':
                         if (set("language", PROP_LANG, args, i)) {
+                            // extex -language <language>
                             i++;
                             applyLanguage();
                         } else if (set("language", PROP_LANG, arg)) {
+                            // extex -language=<language>
                             applyLanguage();
                         } else if (!mergeProperties(arg)) {
                             throw new MainUnknownOptionException(arg);
@@ -1444,15 +1527,23 @@ public class TeX extends ExTeX {
                         break;
                     case 'o':
                         if (set("output", PROP_OUTPUT_TYPE, args, i)) {
+                            // extex -output <type>
                             i++;
+                        } else if (set("output", PROP_OUTPUT_TYPE, arg)) {
+                            // extex -output=<type>
+                            // ok
                         } else if (set("output-path", PROP_OUTPUT_DIRS, args, i)) {
+                            // extex -output-path <type>
                             i++;
                         } else if (set("output-path", PROP_OUTPUT_DIRS, arg)) {
+                            // extex -output-path=<type>
                             // ok
                         } else if (set("output-directory", PROP_OUTPUT_DIR,
                             args, i)) {
+                            // extex -output-directory <path>
                             i++;
                         } else if (set("output-directory", PROP_OUTPUT_DIR, arg)) {
+                            // extex -output-directory=<path>
                             // ok
                         } else if (!mergeProperties(arg)) {
                             throw new MainUnknownOptionException(arg);
@@ -1460,10 +1551,13 @@ public class TeX extends ExTeX {
                         break;
                     case 'p':
                         if (set("progname", PROP_PROGNAME, args, i)) {
+                            // extex -progname <name>
                             i++;
                         } else if (set("progname", PROP_PROGNAME, arg)) {
+                            // extex -progname=<name>
                             // ok
                         } else if ("parse-first-line".startsWith(arg)) {
+                            // extex -parse-first-line
                             setProperty(PROP_PARSE_FIRST_LINE, "true");
                         } else if (!mergeProperties(arg)) {
                             throw new MainUnknownOptionException(arg);
@@ -1471,18 +1565,24 @@ public class TeX extends ExTeX {
                         break;
                     case 't':
                         if (set("texinputs", PROP_TEXINPUTS, args, i)) {
+                            // extex -texinputs <path>
                             i++;
                         } else if (set("texinputs", PROP_TEXINPUTS, arg)) {
+                            // extex -texinputs=<path>
                             // ok
                         } else if (set("texoutputs", PROP_OUTPUT_DIR, args, i)) {
+                            // extex -texoutputs <path>
                             i++;
                         } else if (set("texoutputs", PROP_OUTPUT_DIR, arg)) {
+                            // extex -texoutputs=<path>
                             // ok
                         } else if (set("texmfoutputs",
                             PROP_OUTPUT_DIR_FALLBACK, args, i)) {
+                            // extex -texmfoutputs <path>
                             i++;
                         } else if (set("texmfoutputs",
                             PROP_OUTPUT_DIR_FALLBACK, arg)) {
+                            // extex -texmfoutputs=<path>
                             // ok
                         } else if (!mergeProperties(arg)) {
                             throw new MainUnknownOptionException(arg);
@@ -1490,6 +1590,7 @@ public class TeX extends ExTeX {
                         break;
                     case 'v':
                         if ("version".startsWith(arg)) {
+                            // extex -version
                             showBanner(null, Level.INFO);
                             return EXIT_OK;
                         } else if (!mergeProperties(arg)) {
@@ -1502,18 +1603,20 @@ public class TeX extends ExTeX {
                         }
                 }
             } else if (c == '&') {
+                // extex &<format>
                 setProperty(PROP_FMT, arg.substring(1));
             } else if (c == '\\') {
+                // extex \<code>
                 applyLanguage();
                 return runWithCode(args, i);
-            } else if (arg.equals("")) {
-                // silently ignored as TeXk does
             } else {
+                // extex <file>
                 applyLanguage();
                 return runWithFile(args, i);
             }
         }
 
+        // extex
         applyLanguage();
         return runWithoutFile();
     }
@@ -1559,9 +1662,12 @@ public class TeX extends ExTeX {
      * @return the exit code
      *
      * @throws MainException in case of an error
+     * @throws InteractionUnknownException if the interaction from the
+     *   properties is unknown
      */
     private int runWithFile(final String[] arguments, final int position)
-            throws MainException {
+            throws MainException,
+                InteractionUnknownException {
 
         if (position >= arguments.length) {
             return runWithoutFile();
@@ -1577,15 +1683,15 @@ public class TeX extends ExTeX {
      * @return the exit code
      *
      * @throws MainException in case of an error
+     * @throws InteractionUnknownException if the interaction from the
+     *   properties is unknown
      */
-    private int runWithoutFile() throws MainException {
+    private int runWithoutFile()
+            throws MainException,
+                InteractionUnknownException {
 
-        try {
-            if (!Interaction.get(getProperty(PROP_INTERACTION)).equals(
-                Interaction.ERRORSTOPMODE)) {
-                return EXIT_INTERNAL_ERROR;
-            }
-        } catch (InteractionUnknownException e1) {
+        if (!Interaction.get(getProperty(PROP_INTERACTION)).equals(
+            Interaction.ERRORSTOPMODE)) {
             return EXIT_INTERNAL_ERROR;
         }
 
@@ -1593,7 +1699,7 @@ public class TeX extends ExTeX {
             showBanner(new ConfigurationFactory()
                 .newInstance(getProperty(PROP_CONFIG)), Level.INFO);
         } catch (ConfigurationException e) {
-            // ignored on purpose. It will be checked again later
+            showBanner(null, Level.INFO);
         }
 
         QueryFileHandler queryHandler = getQueryFileHandler();
@@ -1692,10 +1798,11 @@ public class TeX extends ExTeX {
      *
      * @param arg the argument
      *
-     * @throws MainUnknownOptionException in case that the specified option
-     *  letter has no assigned property to set
+     * @throws MainUnknownDebugOptionException in case that the specified option
+     *   letter has no assigned property to set
      */
-    protected void useTrace(final String arg) throws MainUnknownOptionException {
+    protected void useTrace(final String arg)
+            throws MainUnknownDebugOptionException {
 
         getLogger().setLevel(Level.FINE);
 
@@ -1704,7 +1811,8 @@ public class TeX extends ExTeX {
             if (prop != null) {
                 setProperty(prop, "true");
             } else {
-                throw new MainUnknownOptionException(arg.substring(i, i + 1));
+                throw new MainUnknownDebugOptionException(arg.substring(i,
+                    i + 1));
             }
         }
     }
