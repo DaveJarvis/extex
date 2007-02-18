@@ -33,7 +33,7 @@ import org.extex.interpreter.type.dimen.DimenConvertible;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.ControlSequenceToken;
 import org.extex.scanner.type.token.Token;
-
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * Real (with a double value)
@@ -81,10 +81,13 @@ public class Real implements Serializable {
      *
      * @param context ...
      * @param source the token source
+     *
      * @throws InterpreterException ...
+     * @throws ConfigurationException in case of an configuration error
      */
     public Real(final Context context, final TokenSource source)
-            throws InterpreterException {
+            throws InterpreterException,
+                ConfigurationException {
 
         super();
         value = scanReal(context, source);
@@ -95,11 +98,15 @@ public class Real implements Serializable {
      *
      * @param context ...
      * @param source ...
+     *
      * @return the <code>Real</code>-value
+     *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      */
     private double scanReal(final Context context, final TokenSource source)
-            throws InterpreterException {
+            throws InterpreterException,
+                ConfigurationException {
 
         long val = 0;
         boolean neg = false;
@@ -117,13 +124,13 @@ public class Real implements Serializable {
             Code code = context.getCode((ControlSequenceToken) t);
             if (code instanceof RealConvertible) {
                 return (((RealConvertible) code).convertReal(context, source))
-                        .getValue();
+                    .getValue();
             } else if (code instanceof CountConvertible) {
                 return (new Real(((CountConvertible) code).convertCount(
-                        context, source, null))).getValue();
+                    context, source, null))).getValue();
             } else if (code instanceof DimenConvertible) {
                 return (new Real(((DimenConvertible) code).convertDimen(
-                        context, source, null))).getValue();
+                    context, source, null))).getValue();
             }
         }
 
@@ -144,7 +151,7 @@ public class Real implements Serializable {
 
         if (t != null
                 && (t.equals(Catcode.OTHER, ".") || t
-                        .equals(Catcode.OTHER, ","))) {
+                    .equals(Catcode.OTHER, ","))) {
             val = source.scanNumber(context);
         } else {
             source.push(t);

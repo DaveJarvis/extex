@@ -25,6 +25,7 @@ import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.count.CountConvertible;
 import org.extex.util.exception.GeneralException;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.real.RealConvertible;
@@ -69,12 +70,16 @@ public class MathSub extends AbstractMath
     /**
      * Calculate
      * @param context   the context
-     * @param source    the tokensource
-     * @return  the real-value
-     * @throws GeneralException if a error occoured
+     * @param source    the token source
+     *
+     * @return  the real value
+     *
+     * @throws GeneralException if a error occurred
+     * @throws ConfigurationException in case of an configuration error
      */
     protected Real calculate(final Context context, final TokenSource source)
-    throws InterpreterException {
+            throws InterpreterException,
+                ConfigurationException {
 
         Real real1 = new Real(context, source);
         Real real2 = new Real(context, source);

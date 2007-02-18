@@ -28,6 +28,7 @@ import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.interpreter.context.ContextExtension;
 import de.dante.extex.interpreter.type.transform.Transform;
@@ -70,7 +71,7 @@ public class NamedTransform extends AbstractAssignment implements Theable {
      */
     public void assign(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws InterpreterException {
+            throws InterpreterException, ConfigurationException {
 
         if (context instanceof ContextExtension) {
 
@@ -92,7 +93,7 @@ public class NamedTransform extends AbstractAssignment implements Theable {
      *
      * @param context    the interpreter context
      * @param value      the new value
-     * @throws InterpreterException if a error occured.
+     * @throws InterpreterException if an error occurred.
      */
     public void set(final Context context, final Transform value)
             throws InterpreterException {

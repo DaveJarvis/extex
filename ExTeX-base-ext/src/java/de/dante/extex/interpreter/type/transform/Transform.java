@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -26,13 +26,14 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.InterpreterNumberFormatException;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.interpreter.type.real.Real;
 
 /**
  * Transform (transformation with six values)
  *
- * @author <a href="mailto:m.g.sn@gmx.de">Michael Niedermair</a>
+ * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
 public class Transform implements Serializable {
@@ -144,9 +145,11 @@ public class Transform implements Serializable {
      * @param context   the context
      * @param source    the token source
      * @throws InterpreterException ...
+     * @throws ConfigurationException in case of an configuration error
      */
     public Transform(final Context context, final TokenSource source)
-            throws InterpreterException {
+            throws InterpreterException,
+                ConfigurationException {
 
         super();
         for (int i = 0; i < MAXVAL; i++) {

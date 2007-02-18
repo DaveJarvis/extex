@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -22,6 +22,7 @@ package de.dante.extex.interpreter.type.real;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This is an interface which describes the feature to be convertibe into a real.
@@ -36,9 +37,13 @@ public interface RealConvertible {
      *
      * @param context   the interpreter context
      * @param source    the source for new tokens
+     *
      * @return the converted value
+     *
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
      */
     Real convertReal(Context context, TokenSource source)
-            throws InterpreterException;
+            throws InterpreterException,
+                ConfigurationException;
 }

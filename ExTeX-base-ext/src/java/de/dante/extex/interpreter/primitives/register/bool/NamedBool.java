@@ -28,6 +28,7 @@ import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.interpreter.context.ContextExtension;
 import de.dante.extex.interpreter.type.bool.Bool;
@@ -80,7 +81,8 @@ public class NamedBool extends AbstractAssignment
      */
     public void assign(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws InterpreterException {
+            throws InterpreterException,
+                ConfigurationException {
 
         if (context instanceof ContextExtension) {
 

@@ -35,6 +35,7 @@ import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.ControlSequenceToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.real.RealConvertible;
@@ -82,7 +83,8 @@ public class PrintFormat extends AbstractCode implements Theable {
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws InterpreterException {
+            throws InterpreterException,
+                ConfigurationException {
 
         source.push(the(context, source, typesetter));
     }
@@ -93,7 +95,9 @@ public class PrintFormat extends AbstractCode implements Theable {
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+            final Typesetter typesetter)
+            throws InterpreterException,
+                ConfigurationException {
 
         // \the\printformat{pattern}\real7
 
@@ -107,7 +111,7 @@ public class PrintFormat extends AbstractCode implements Theable {
 
         if (!(cs instanceof ControlSequenceToken)) {
             throw new CantUseAfterException(cs.toText(),
-                    printableControlSequence(context));
+                printableControlSequence(context));
         }
 
         Code code = context.getCode((CodeToken) cs);
@@ -122,7 +126,7 @@ public class PrintFormat extends AbstractCode implements Theable {
             return toks;
         } else {
             throw new CantUseAfterException(cs.toText(),
-                    printableControlSequence(context));
+                printableControlSequence(context));
         }
     }
 }

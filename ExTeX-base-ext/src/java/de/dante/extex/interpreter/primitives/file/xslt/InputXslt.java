@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -37,7 +37,6 @@ import org.extex.interpreter.exception.InterpreterException;
 import org.extex.scanner.stream.TokenStreamFactory;
 import org.extex.typesetter.Typesetter;
 import org.extex.unit.base.file.AbstractFileCode;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.resource.ResourceFinder;
 
 import de.dante.util.xslt.Transform;
@@ -129,8 +128,6 @@ public class InputXslt extends AbstractFileCode {
 
             source.addStream(factory.newInstance(reader));
 
-        } catch (ConfigurationException e) {
-            throw new InterpreterException(e);
         } catch (TransformerException e) {
             throw new InterpreterException(e);
         } catch (TransformerFactoryConfigurationError e) {

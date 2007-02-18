@@ -29,6 +29,7 @@ import org.extex.interpreter.type.count.Count;
 import org.extex.interpreter.type.count.CountConvertible;
 import org.extex.scanner.type.token.ControlSequenceToken;
 import org.extex.scanner.type.token.Token;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.interpreter.type.bool.exception.InterpreterNoBoolValueException;
 import de.dante.extex.interpreter.type.real.RealConvertible;
@@ -78,7 +79,8 @@ public class Bool implements Serializable {
      * @throws InterpreterException in case of an error.
      */
     public Bool(final Context context, final TokenSource source)
-            throws InterpreterException {
+            throws InterpreterException,
+                ConfigurationException {
 
         super();
         value = scanBool(context, source);
@@ -88,12 +90,13 @@ public class Bool implements Serializable {
      * Scan the input stream for tokens making up a <code>Bool</code>.
      *
      * @param context   the context
-     * @param source    the tokensource
+     * @param source    the token source
      * @return the boolean value
      * @throws InterpreterException in case of an error
      */
     private boolean scanBool(final Context context, final TokenSource source)
-            throws InterpreterException {
+            throws InterpreterException,
+                ConfigurationException {
 
         Token tok = source.scanNonSpace(context);
 
@@ -103,10 +106,10 @@ public class Bool implements Serializable {
             Code code = context.getCode((ControlSequenceToken) tok);
             if (code instanceof CountConvertible) {
                 return (new Bool(((CountConvertible) code).convertCount(
-                        context, source, null))).getValue();
+                    context, source, null))).getValue();
             } else if (code instanceof RealConvertible) {
                 return (new Bool(((((RealConvertible) code).convertReal(
-                        context, source)).getLong()))).getValue();
+                    context, source)).getLong()))).getValue();
             }
             throw new InterpreterNoBoolValueException();
         }
@@ -114,7 +117,7 @@ public class Bool implements Serializable {
         source.push(tok);
         if (tok.getChar().isDigit()) {
             return (new Bool(Count.scanInteger(context, source, null)))
-                    .getValue();
+                .getValue();
         }
 
         if (source.getKeyword(context, "true")) {

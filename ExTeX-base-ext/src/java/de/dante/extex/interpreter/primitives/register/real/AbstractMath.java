@@ -29,6 +29,7 @@ import org.extex.interpreter.type.count.CountConvertible;
 import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.util.exception.GeneralException;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.real.RealConvertible;
@@ -39,8 +40,11 @@ import de.dante.extex.interpreter.type.real.RealConvertible;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public abstract class AbstractMath extends AbstractCode implements Theable,
-        RealConvertible, CountConvertible {
+public abstract class AbstractMath extends AbstractCode
+        implements
+            Theable,
+            RealConvertible,
+            CountConvertible {
 
     /**
      * Creates a new object.
@@ -63,7 +67,8 @@ public abstract class AbstractMath extends AbstractCode implements Theable,
      */
     public void execute(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws InterpreterException {
+            throws InterpreterException,
+                ConfigurationException {
 
         Real real = calculate(context, source);
         source.push(new Tokens(context, real.toString()));
@@ -75,7 +80,9 @@ public abstract class AbstractMath extends AbstractCode implements Theable,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+            final Typesetter typesetter)
+            throws InterpreterException,
+                ConfigurationException {
 
         Real real = calculate(context, source);
         return new Tokens(context, real.toString());
@@ -87,7 +94,8 @@ public abstract class AbstractMath extends AbstractCode implements Theable,
      *      org.extex.interpreter.TokenSource)
      */
     public Real convertReal(final Context context, final TokenSource source)
-            throws InterpreterException {
+            throws InterpreterException,
+                ConfigurationException {
 
         return calculate(context, source);
     }
@@ -98,7 +106,9 @@ public abstract class AbstractMath extends AbstractCode implements Theable,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+            final Typesetter typesetter)
+            throws InterpreterException,
+                ConfigurationException {
 
         return calculate(context, source).getLong();
     }
@@ -107,11 +117,14 @@ public abstract class AbstractMath extends AbstractCode implements Theable,
      * Calculate
      *
      * @param context the context
-     * @param source the tokensource
+     * @param source the token source
      * @return the real-value
-     * @throws GeneralException if a error occoured
+     * @throws GeneralException if a error occurred
+     * @throws ConfigurationException in case of an configuration error
      */
     protected abstract Real calculate(final Context context,
-            final TokenSource source) throws InterpreterException;
+            final TokenSource source)
+            throws InterpreterException,
+                ConfigurationException;
 
 }

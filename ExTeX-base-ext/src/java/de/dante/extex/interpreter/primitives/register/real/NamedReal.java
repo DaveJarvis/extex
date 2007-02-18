@@ -33,6 +33,7 @@ import org.extex.interpreter.type.count.CountConvertible;
 import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.util.exception.GeneralException;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.interpreter.context.ContextExtension;
 import de.dante.extex.interpreter.type.real.Real;
@@ -84,7 +85,8 @@ public class NamedReal extends AbstractAssignment
      */
     public void assign(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws InterpreterException {
+            throws InterpreterException,
+                ConfigurationException {
 
         if (context instanceof ContextExtension) {
 
@@ -177,7 +179,8 @@ public class NamedReal extends AbstractAssignment
      */
     public void advance(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws InterpreterException {
+            throws InterpreterException,
+                ConfigurationException {
 
         if (context instanceof ContextExtension) {
 
@@ -204,7 +207,7 @@ public class NamedReal extends AbstractAssignment
      */
     public void multiply(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws InterpreterException {
+            throws InterpreterException, ConfigurationException {
 
         if (context instanceof ContextExtension) {
             ContextExtension contextextex = (ContextExtension) context;
@@ -231,7 +234,7 @@ public class NamedReal extends AbstractAssignment
      */
     public void divide(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws InterpreterException {
+            throws InterpreterException, ConfigurationException {
 
         if (context instanceof ContextExtension) {
             ContextExtension contextextex = (ContextExtension) context;

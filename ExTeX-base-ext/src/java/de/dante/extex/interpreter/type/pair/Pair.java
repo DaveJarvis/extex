@@ -26,6 +26,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.InterpreterNumberFormatException;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.interpreter.type.real.Real;
 
@@ -96,10 +97,12 @@ public class Pair implements Serializable {
      *
      * @param context   the context
      * @param source    the token source
+     *
      * @throws InterpreterException ...
+     * @throws ConfigurationException in case of an configuration error
      */
     public Pair(final Context context, final TokenSource source)
-            throws InterpreterException {
+            throws InterpreterException, ConfigurationException {
 
         super();
         xval = new Real(context, source);

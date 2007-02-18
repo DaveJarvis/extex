@@ -25,6 +25,7 @@ import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.count.CountConvertible;
 import org.extex.util.exception.GeneralException;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.real.RealConvertible;
@@ -70,12 +71,16 @@ public class MathRint extends AbstractMath
     /**
      * Calculate
      * @param context   the context
-     * @param source    the tokensource
+     * @param source    the token source
+     *
      * @return  the real value
-     * @throws InterpreterException if a error occoured
+     *
+     * @throws InterpreterException if a error occurred
+     * @throws ConfigurationException in case of an configuration error
      */
     protected Real calculate(final Context context, final TokenSource source)
-            throws InterpreterException {
+            throws InterpreterException,
+                ConfigurationException {
 
         Real real = new Real(context, source);
         return new Real(Math.rint(real.getValue()));
