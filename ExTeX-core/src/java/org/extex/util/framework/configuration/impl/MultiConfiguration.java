@@ -62,6 +62,21 @@ public class MultiConfiguration implements Configuration {
     }
 
     /**
+     * Extract a sub-configuration with a given name.
+     *
+     * @param key the tag name of the sub-configuration
+     *
+     * @return the sub-configuration or <code>null</code> if none is found
+     *
+     * @throws ConfigurationInvalidResourceException in case that the given
+     *  resource name is <code>null</code> or empty
+     * @throws ConfigurationNotFoundException in case that the named path does
+     *  not lead to a resource
+     * @throws ConfigurationSyntaxException in case that the resource contains
+     *  syntax errors
+     * @throws ConfigurationIOException in case of an IO exception while
+     *  reading the resource
+     *
      * @see org.extex.util.framework.configuration.Configuration#findConfiguration(
      *      java.lang.String)
      */
