@@ -241,6 +241,15 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
+     * A DVI <tt>fntDef</tt> instruction has been encountered.
+     *
+     * @param off the current byte position in the input stream
+     * @param k the number of the font
+     * @param c ...
+     * @param s ...
+     * @param d ...
+     * @param name ...
+     *
      * @see org.extex.dviware.DviProcessor#fntDef(int, int, int, int, int, java.lang.String)
      */
     public void fntDef(final int off, final int k, final int c, final int s,
@@ -290,6 +299,18 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
+     * A DVI <tt>post</tt> instruction has been encountered.
+     *
+     * @param off the current byte position in the input stream
+     * @param p ...
+     * @param num the numerator
+     * @param den the denominator
+     * @param mag the magnification
+     * @param l ...
+     * @param u ...
+     * @param sp ...
+     * @param tp ...
+     *
      * @see org.extex.dviware.DviProcessor#post(int, int, int, int, int, int, int, int, int)
      */
     public void post(final int off, final int p, final int num, final int den,
@@ -334,6 +355,15 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
+     * A DVI <tt>pre</tt> instruction has been encountered.
+     *
+     * @param off the current byte position in the input stream
+     * @param id ...
+     * @param num the numerator
+     * @param den the denominator
+     * @param mag the magnification in permille
+     * @param comment the comment string
+     *
      * @see org.extex.dviware.DviProcessor#pre(int, int, int, int, int, java.lang.String)
      */
     public void pre(final int off, final int id, final int num, final int den,

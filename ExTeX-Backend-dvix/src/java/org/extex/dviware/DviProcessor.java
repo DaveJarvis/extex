@@ -139,13 +139,13 @@ public interface DviProcessor {
      * A DVI <tt>pre</tt> instruction has been encountered.
      *
      * @param off the current byte position in the input stream
-     * @param i ...
+     * @param id ...
      * @param num the numerator
      * @param den the denominator
      * @param mag the magnification in permille
      * @param comment the comment string
      */
-    void pre(int off, int i, int num, int den, int mag, String comment);
+    void pre(int off, int id, int num, int den, int mag, String comment);
 
     /**
      * A DVI <tt>push</tt> instruction has been encountered.
