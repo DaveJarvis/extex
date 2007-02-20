@@ -87,16 +87,16 @@ public class TexUnitInfo extends UnitInfo
             LogEnabled {
 
     /**
-     * The field <tt>TRACING_COMMANDS</tt> contains the name of the count
-     * register controlling the activation of command tracing.
-     */
-    private static final String TRACING_COMMANDS = "tracingcommands";
-
-    /**
      * The field <tt>serialVersionUID</tt> contains the version number for
      * serialization.
      */
     protected static final long serialVersionUID = 2005L;
+
+    /**
+     * The field <tt>TRACING_COMMANDS</tt> contains the name of the count
+     * register controlling the activation of command tracing.
+     */
+    private static final String TRACING_COMMANDS = "tracingcommands";
 
     /**
      * The field <tt>logger</tt> contains the local reference to the logger.
@@ -107,7 +107,7 @@ public class TexUnitInfo extends UnitInfo
      * The field <tt>notRegistered</tt> contains the indicator that the observer
      * for command events as not been registered yet.
      */
-    private transient boolean notRegistered;
+    private transient boolean notRegistered = true;
 
     /**
      * Creates a new object.
@@ -153,6 +153,18 @@ public class TexUnitInfo extends UnitInfo
     }
 
     /**
+     * Return the singleton constant object after the serialized instance
+     * has been read back in.
+     *
+     * @return the instance of this object
+     */
+    protected Object readResolve() {
+
+        notRegistered = true;
+        return this;
+    }
+
+    /**
      * @see org.extex.interpreter.context.observer.load.LoadedObserver#receiveLoaded(
      *      org.extex.interpreter.context.Context,
      *       org.extex.interpreter.TokenSource)
@@ -163,35 +175,33 @@ public class TexUnitInfo extends UnitInfo
         if (context.getCount(TRACING_COMMANDS).gt(Count.ZERO)) {
             if (notRegistered && source instanceof CommandObservable) {
                 ((CommandObservable) source)
-                        .registerObserver(new TraceCommandObserver(logger,
-                                context));
+                    .registerObserver(new TraceCommandObserver(logger, context));
                 notRegistered = false;
             }
         } else if (context instanceof CountObservable) {
             ((CountObservable) context).registerCountObserver(TRACING_COMMANDS,
-                    new CountObserver() {
+                new CountObserver() {
 
-                        /**
-                         * @see org.extex.interpreter.context.observer.count.CountObserver#receiveCountChange(
-                         *      org.extex.interpreter.context.ContextInternals,
-                         *      java.lang.String,
-                         *      org.extex.interpreter.type.count.Count)
-                         */
-                        public void receiveCountChange(
-                                final ContextInternals context,
-                                final String name, final Count value)
-                                throws Exception {
+                    /**
+                     * @see org.extex.interpreter.context.observer.count.CountObserver#receiveCountChange(
+                     *      org.extex.interpreter.context.ContextInternals,
+                     *      java.lang.String,
+                     *      org.extex.interpreter.type.count.Count)
+                     */
+                    public void receiveCountChange(
+                            final ContextInternals context, final String name,
+                            final Count value) throws Exception {
 
-                            if (notRegistered && value != null
-                                    && value.getValue() > 0
-                                    && source instanceof CommandObservable) {
-                                ((CommandObservable) source)
-                                        .registerObserver(new TraceCommandObserver(
-                                                logger, context));
-                                notRegistered = false;
-                            }
+                        if (notRegistered && value != null
+                                && value.getValue() > 0
+                                && source instanceof CommandObservable) {
+                            ((CommandObservable) source)
+                                .registerObserver(new TraceCommandObserver(
+                                    logger, context));
+                            notRegistered = false;
                         }
-                    });
+                    }
+                });
         }
     }
 
