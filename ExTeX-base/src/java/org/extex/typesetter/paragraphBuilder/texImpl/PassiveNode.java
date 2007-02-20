@@ -114,6 +114,10 @@ public class PassiveNode {
     }
 
     /**
+     * Returns a string representation of the object.
+     *
+     * @return  a string representation of the object
+     *
      * @see java.lang.Object#toString()
      */
     public String toString() {
