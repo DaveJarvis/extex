@@ -133,11 +133,17 @@ public class ToksParameter extends AbstractToks
      *
      * @param source the source for the next tokens &ndash; if required
      * @param context the interpreter context to use
+     * @param typesetter the typesetter
      *
      * @return the key for the tokens register
+     *
+     * @see org.extex.unit.base.register.toks.AbstractToks#getKey(
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource,
+     *      org.extex.typesetter.Typesetter)
      */
     protected String getKey(final Context context, final TokenSource source,
-            Typesetter typesetter) {
+            final Typesetter typesetter) {
 
         if (Namespace.SUPPORT_NAMESPACE_TOKS) {
             return context.getNamespace() + "\b" + key;
