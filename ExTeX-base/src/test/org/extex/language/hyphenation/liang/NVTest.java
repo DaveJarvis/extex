@@ -108,6 +108,10 @@ public class NVTest extends TestCase {
         }
 
         /**
+         * Returns the actual size.
+         *
+         * @return the actual size
+         *
          * @see org.extex.font.type.Fount#getActualSize()
          */
         public FixedDimen getActualSize() {
@@ -164,6 +168,13 @@ public class NVTest extends TestCase {
         }
 
         /**
+         * Returns the byte array for the external file. E.g. cmr12.pfb.
+         *
+         * @return Returns the byte array for the external file e.g. cmr12.pfb
+         *
+         * @deprecated this single method should be replaced by some way to
+         *   retrieve an appropriate font format
+         *
          * @see org.extex.font.type.Fount#getFontByteArray()
          */
         public FontByteArray getFontByteArray() {
@@ -373,11 +384,6 @@ public class NVTest extends TestCase {
     }
 
     /**
-     * The field <tt>hyphen</tt> contains the token for the hyphen char.
-     */
-    private static UnicodeChar hyphen;
-
-    /**
      * The field <tt>tokenFactory</tt> contains the token factory.
      */
     private static TokenFactory tokenFactory;
@@ -430,13 +436,11 @@ public class NVTest extends TestCase {
         font = new MockFont();
         cnf = new CachingNodeFactory();
         tokenFactory = new TokenFactoryImpl();
-        f =
-                tokenFactory.createToken(Catcode.LETTER, 'f',
-                    Namespace.DEFAULT_NAMESPACE);
-        l =
-                tokenFactory.createToken(Catcode.LETTER, 'l',
-                    Namespace.DEFAULT_NAMESPACE);
-        hyphen = font.getHyphenChar();
+        f = tokenFactory.createToken(Catcode.LETTER, 'f', //
+            Namespace.DEFAULT_NAMESPACE);
+        l = tokenFactory.createToken(Catcode.LETTER, 'l', //
+            Namespace.DEFAULT_NAMESPACE);
+        UnicodeChar hyphen = font.getHyphenChar();
         tc = new TypesettingContextImpl(font);
         ModifiableLanguage lang = new BaseHyphenationTable();
         lang.setLigatureBuilder(new LigatureBuilderImpl());
@@ -574,5 +578,4 @@ public class NVTest extends TestCase {
     //        assertTrue(list.get(0) instanceof DiscretionaryNode);
     //        assertEquals(list.get(1), ffl);
     //    }
-
 }
