@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.scanner.stream.impl;
+package org.extex.scanner.base;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -143,12 +143,12 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
      * The index in the buffer for the next character to consider. This is an
      * invariant: after a character is read this pointer has to be advanced.
      */
-    protected int pointer = 1;
+    private int pointer = 1;
 
     /**
      * The field <tt>saveChar</tt> contains the saved look-ahead character.
      */
-    protected UnicodeChar saveChar = null;
+    private UnicodeChar saveChar = null;
 
     /**
      * The field <tt>source</tt> contains the description of the source for
@@ -159,7 +159,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
     /**
      * The field <tt>state</tt> contains the current state of operation.
      */
-    protected State state = NEW_LINE;
+    private State state = NEW_LINE;
 
     /**
      * The field <tt>visitor</tt> contains the visitor to separate the cases
@@ -168,6 +168,17 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
     private CatcodeVisitor visitor = new CatcodeVisitor() {
 
         /**
+         * This visit method is invoked on an active token.
+         * In <logo>TeX</logo> this is e.g. ~.
+         *
+         * @param arg1 the first argument to pass
+         * @param arg2 the second argument to pass
+         * @param arg3 the third argument to pass
+         *
+         * @return some value
+         *
+         * @throws Exception in case of an error
+         *
          * @see org.extex.scanner.type.CatcodeVisitor#visitActive(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
@@ -184,6 +195,17 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
         }
 
         /**
+         * This visit method is invoked on a comment token.
+         * In <logo>TeX</logo> this normally is a %.
+         *
+         * @param arg1 the first argument to pass
+         * @param arg2 the second argument to pass
+         * @param arg3 the third argument to pass
+         *
+         * @return some value
+         *
+         * @throws Exception in case of an error
+         *
          * @see org.extex.scanner.type.CatcodeVisitor#visitComment(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
@@ -196,8 +218,18 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
         }
 
         /**
-         * @see org.extex.scanner.type.CatcodeVisitor#visitCr( java.lang.Object,
-         *      java.lang.Object, java.lang.Object)
+         * This visit method is invoked on a cr token.
+         *
+         * @param arg1 the first argument to pass
+         * @param arg2 the second argument to pass
+         * @param arg3 the third argument to pass
+         *
+         * @return some value
+         *
+         * @throws Exception in case of an error
+         *
+         * @see org.extex.scanner.type.CatcodeVisitor#visitCr(
+         *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
         public Object visitCr(final Object oFactory, final Object oTokenizer,
                 final Object uchar) throws GeneralException {
@@ -207,14 +239,12 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
             Token t = null;
 
             if (state == MID_LINE) {
-                t =
-                        factory.createToken(Catcode.SPACE, ' ', tokenizer
-                            .getNamespace());
+                t = factory.createToken(Catcode.SPACE, ' ', //
+                    tokenizer.getNamespace());
             } else if (state == NEW_LINE) {
-                t =
-                        factory.createToken(Catcode.ESCAPE,
-                            (UnicodeChar) uchar, "par", tokenizer
-                                .getNamespace());
+                t = factory.createToken(Catcode.ESCAPE, //
+                    UnicodeChar.get('\\'), "par", //
+                    tokenizer.getNamespace());
             } else {
                 // drop the character
             }
@@ -224,6 +254,17 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
         }
 
         /**
+         * This visit method is invoked on an escape token.
+         * In <logo>TeX</logo> this normally means a control sequence.
+         *
+         * @param arg1 the first argument to pass
+         * @param arg2 the second argument to pass
+         * @param arg3 the third argument to pass
+         *
+         * @return some value
+         *
+         * @throws Exception in case of an error
+         *
          * @see org.extex.scanner.type.CatcodeVisitor#visitEscape(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
@@ -266,12 +307,23 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
 
             } else {
                 state = MID_LINE;
-                return factory.createToken(Catcode.ESCAPE, uc, namespace);
+                return factory.createToken(Catcode.ESCAPE, (UnicodeChar) uchar,
+                    Character.toString((char) (uc.getCodePoint())), namespace);
 
             }
         }
 
         /**
+         * This visit method is invoked on an ignore token.
+         *
+         * @param arg1 the first argument to pass
+         * @param arg2 the second argument to pass
+         * @param arg3 the third argument to pass
+         *
+         * @return some value
+         *
+         * @throws Exception in case of an error
+         *
          * @see org.extex.scanner.type.CatcodeVisitor#visitIgnore(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
@@ -283,6 +335,16 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
         }
 
         /**
+         * This visit method is invoked on an invalid token.
+         *
+         * @param arg1 the first argument to pass
+         * @param arg2 the second argument to pass
+         * @param arg3 the third argument to pass
+         *
+         * @return some value
+         *
+         * @throws Exception in case of an error
+         *
          * @see org.extex.scanner.type.CatcodeVisitor#visitInvalid(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
@@ -296,6 +358,16 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
         }
 
         /**
+         * This visit method is invoked on a left brace token.
+         *
+         * @param arg1 the first argument to pass
+         * @param arg2 the second argument to pass
+         * @param arg3 the third argument to pass
+         *
+         * @return some value
+         *
+         * @throws Exception in case of an error
+         *
          * @see org.extex.scanner.type.CatcodeVisitor#visitLeftBrace(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
@@ -311,6 +383,16 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
         }
 
         /**
+         * This visit method is invoked on a letter token.
+         *
+         * @param arg1 the first argument to pass
+         * @param arg2 the second argument to pass
+         * @param arg3 the third argument to pass
+         *
+         * @return some value
+         *
+         * @throws Exception in case of an error
+         *
          * @see org.extex.scanner.type.CatcodeVisitor#visitLetter(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
@@ -326,6 +408,17 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
         }
 
         /**
+         * This visit method is invoked on a macro parameter token.
+         * In <logo>TeX</logo> this normally is a #.
+         *
+         * @param arg1 the first argument to pass
+         * @param arg2 the second argument to pass
+         * @param arg3 the third argument to pass
+         *
+         * @return some value
+         *
+         * @throws Exception in case of an error
+         *
          * @see org.extex.scanner.type.CatcodeVisitor#visitMacroParam(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
@@ -341,6 +434,17 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
         }
 
         /**
+         * This visit method is invoked on a math shift token.
+         * In <logo>TeX</logo> this normally is a $.
+         *
+         * @param arg1 the first argument to pass
+         * @param arg2 the second argument to pass
+         * @param arg3 the third argument to pass
+         *
+         * @return some value
+         *
+         * @throws Exception in case of an error
+         *
          * @see org.extex.scanner.type.CatcodeVisitor#visitMathShift(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
@@ -356,6 +460,16 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
         }
 
         /**
+         * This visit method is invoked on an other token.
+         *
+         * @param arg1 the first argument to pass
+         * @param arg2 the second argument to pass
+         * @param arg3 the third argument to pass
+         *
+         * @return some value
+         *
+         * @throws Exception in case of an error
+         *
          * @see org.extex.scanner.type.CatcodeVisitor#visitOther(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
@@ -371,6 +485,16 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
         }
 
         /**
+         * This visit method is invoked on a right brace token.
+         *
+         * @param arg1 the first argument to pass
+         * @param arg2 the second argument to pass
+         * @param arg3 the third argument to pass
+         *
+         * @return some value
+         *
+         * @throws Exception in case of an error
+         *
          * @see org.extex.scanner.type.CatcodeVisitor#visitRightBrace(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
@@ -417,6 +541,17 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
         }
 
         /**
+         * This visit method is invoked on a sub mark token.
+         * In <logo>TeX</logo> this normally is a _.
+         *
+         * @param arg1 the first argument to pass
+         * @param arg2 the second argument to pass
+         * @param arg3 the third argument to pass
+         *
+         * @return some value
+         *
+         * @throws Exception in case of an error
+         *
          * @see org.extex.scanner.type.CatcodeVisitor#visitSubMark(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
@@ -432,6 +567,17 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
         }
 
         /**
+         * This visit method is invoked on a sup mark token.
+         * In <logo>TeX</logo> this normally is a ^.
+         *
+         * @param arg1 the first argument to pass
+         * @param arg2 the second argument to pass
+         * @param arg3 the third argument to pass
+         *
+         * @return some value
+         *
+         * @throws Exception in case of an error
+         *
          * @see org.extex.scanner.type.CatcodeVisitor#visitSupMark(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
@@ -447,6 +593,17 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
         }
 
         /**
+         * This visit method is invoked on a tab mark token.
+         * In <logo>TeX</logo> this normally is a &.
+         *
+         * @param arg1 the first argument to pass
+         * @param arg2 the second argument to pass
+         * @param arg3 the third argument to pass
+         *
+         * @return some value
+         *
+         * @throws Exception in case of an error
+         *
          * @see org.extex.scanner.type.CatcodeVisitor#visitTabMark(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
@@ -486,7 +643,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
         super(true);
 
         int bufferSize = -1;
-        String size = config.getAttribute(BUFFERSIZE_ATTRIBUTE).trim();
+        String size = config.getAttribute(BUFFERSIZE_ATTRIBUTE);
         if (size != null && !size.equals("")) {
             try {
                 bufferSize = Integer.parseInt(size);
@@ -504,9 +661,8 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
         }
 
         this.source = theSource;
-        this.in =
-                new LineNumberReader(new InputStreamReader(inputStream,
-                    encoding));
+        this.in = new LineNumberReader(//
+            new InputStreamReader(inputStream, encoding));
 
     }
 
@@ -559,7 +715,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
      */
     protected boolean atEndOfLine() {
 
-        return (pointer > line.length());
+        return (pointer >= line.length());
     }
 
     /**
@@ -613,31 +769,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
             UnicodeChar c = getRawChar();
 
             if (uc.equals(c)) {
-                c = getRawChar();
-                if (c == null) {
-                    return null; // ^^ at end is silently ignored
-                }
-                int hexHigh = hex2int(c.getCodePoint());
-                if (hexHigh >= 0) {
-                    savePointer = pointer;
-                    uc = getRawChar();
-                    if (uc == null) {
-                        uc = UnicodeChar.get(hexHigh);
-                    } else {
-                        int hexLow = hex2int(uc.getCodePoint());
-                        if (hexLow < 0) {
-                            pointer = savePointer;
-                            uc = UnicodeChar.get(hexHigh);
-                        } else {
-                            uc = UnicodeChar.get((hexHigh << 4) + hexLow);
-                        }
-                    }
-                } else if (c != null) {
-                    hexHigh = c.getCodePoint();
-                    uc =
-                            UnicodeChar.get(((hexHigh < CARET_LIMIT) ? hexHigh
-                                    + CARET_LIMIT : hexHigh - CARET_LIMIT));
-                }
+                return caretCaret(uc, c);
             } else {
                 pointer = savePointer;
             }
@@ -647,6 +779,53 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
     }
 
     /**
+     * Handle double carets.
+     *
+     * @param caret1 the first caret
+     * @param caret2 the second caret
+     *
+     * @return ...
+     */
+    private UnicodeChar caretCaret(final UnicodeChar caret1,
+            final UnicodeChar caret2) {
+
+        UnicodeChar c = getRawChar();
+        if (c == null) {
+            // this should be impossible since a space is added to the end of
+            // the input stream
+            return null; // ^^ at end is silently ignored
+        }
+        int hexHigh = hex2int(c.getCodePoint());
+        if (hexHigh < 0) {
+            hexHigh = c.getCodePoint();
+            return UnicodeChar.get(((hexHigh < CARET_LIMIT) //
+                    ? hexHigh + CARET_LIMIT
+                    : hexHigh - CARET_LIMIT));
+        }
+
+        c = getRawChar();
+        if (c == null) {
+            // this should be impossible since a space is added to the end of
+            // the input stream
+            return UnicodeChar.get(hexHigh);
+        }
+        int hexLow = hex2int(c.getCodePoint());
+        if (hexLow < 0) {
+            ungetChar(c);
+            return UnicodeChar.get(hexHigh);
+        }
+
+        return UnicodeChar.get((hexHigh << 4) + hexLow);
+    }
+
+    /**
+     * Getter for the locator.
+     * The locator describes the place the tokens have been read from in terms
+     * of the user. This information is meant for the end user to track down
+     * problems.
+     *
+     * @return the locator
+     *
      * @see org.extex.scanner.TokenStream#getLocator()
      */
     public Locator getLocator() {
@@ -656,7 +835,16 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
     }
 
     /**
-     * @see org.extex.scanner.stream.impl.TokenStreamBaseImpl#getNext(
+     * Get the next token when the stack is empty.
+     * This method is meant to be overloaded by derived classes.
+     *
+     * @param factory the factory for new tokens
+     * @param tokenizer the classifies for characters
+     *
+     * @return the next Token or <code>null</code>
+     * @throws ScannerException in case of an error
+     *
+     * @see org.extex.scanner.base.TokenStreamBaseImpl#getNext(
      *      org.extex.scanner.type.token.TokenFactory,
      *      org.extex.interpreter.Tokenizer)
      */
@@ -672,9 +860,8 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
             }
 
             try {
-                t =
-                        (Token) tokenizer.getCatcode(uc).visit(visitor,
-                            factory, tokenizer, uc);
+                t = (Token) tokenizer.getCatcode(uc).visit(visitor, //
+                    factory, tokenizer, uc);
             } catch (Exception e) {
                 throw new ScannerException(e);
             }
@@ -722,11 +909,19 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
     }
 
     /**
+     * Check to see if a further token can be acquired from the token stream.
+     *
+     * @return <code>true</code> if the stream is at its end
+     *
+     * @throws ScannerException in case that an error has been encountered.
+     *  Especially if an IO exceptions occurs it is delivered as chained
+     *  exception in a ScannerException.
+     *
      * @see org.extex.scanner.TokenStream#isEof()
      */
     public boolean isEof() throws ScannerException {
 
-        if (!super.isEof()) {
+        if (saveChar != null || !super.isEof()) {
             return false;
         }
 
@@ -744,6 +939,14 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
     }
 
     /**
+     * Check to see if the token stream is currently at the end of line.
+     *
+     * @return <code>true</code> if the stream is at end of line
+     *
+     * @throws ScannerException in case that an error has been encountered.
+     *  Especially if an IO exceptions occurs it is delivered as chained
+     *  exception in a ScannerException.
+     *
      * @see org.extex.scanner.TokenStream#isEol()
      */
     public boolean isEol() {
@@ -777,6 +980,10 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
     }
 
     /**
+     * Returns a string representation of the object.
+     *
+     * @return  a string representation of the object
+     *
      * @see java.lang.Object#toString()
      */
     public String toString() {

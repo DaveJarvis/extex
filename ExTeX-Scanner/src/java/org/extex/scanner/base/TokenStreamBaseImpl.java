@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.scanner.stream.impl;
+package org.extex.scanner.base;
 
 import org.extex.interpreter.Tokenizer;
 import org.extex.interpreter.type.tokens.Tokens;
@@ -27,7 +27,6 @@ import org.extex.scanner.type.token.SpaceToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
 import org.extex.type.Locator;
-
 
 /**
  * This is the base implementation of a token stream. It has an internal stack
@@ -81,7 +80,7 @@ public class TokenStreamBaseImpl implements TokenStream {
         super();
         this.fileStream = isFile;
 
-        for (int i = tokens.length() - 1; i > 0; i--) {
+        for (int i = tokens.length() - 1; i >= 0; i--) {
             stack.add(tokens.get(i));
         }
     }
@@ -96,7 +95,7 @@ public class TokenStreamBaseImpl implements TokenStream {
     public boolean closeFileStream() {
 
         stack = new Tokens();
-        return false;
+        return fileStream;
     }
 
     /**
@@ -122,13 +121,13 @@ public class TokenStreamBaseImpl implements TokenStream {
 
         if (!skipSpaces) {
             return (stack.length() > 0 ? //
-                    stack.removeLast() : //
+                    stack.removeLast()
+                    : //
                     getNext(factory, tokenizer));
         }
-
         Token t;
-        while (stack.length() > 0) {
-            t = stack.removeLast();
+
+        for (t = stack.removeLast(); t != null; t = stack.removeLast()) {
             if (!(t instanceof SpaceToken)) {
                 return t;
             }
@@ -185,6 +184,10 @@ public class TokenStreamBaseImpl implements TokenStream {
     }
 
     /**
+     * Check to see if the token stream is currently at the end of line.
+     *
+     * @return <code>true</code> if the stream is at end of line
+     *
      * @see org.extex.scanner.TokenStream#isEol()
      */
     public boolean isEol() throws ScannerException {
@@ -210,7 +213,7 @@ public class TokenStreamBaseImpl implements TokenStream {
      * a <code>null</code> token is not pushed!
      * <p>
      * Note that it is up to the implementation to accept tokens not produced
-     * with the token factory for push back. In general the behaviour in such a
+     * with the token factory for push back. In general the behavior in such a
      * case is not defined and should be avoided.
      * </p>
      *

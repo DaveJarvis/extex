@@ -46,7 +46,7 @@
     -  token stream.
     -->
   <Scanner default="base">
-    <base class="org.extex.scanner.stream.impl.TokenStreamImpl"
+    <base class="org.extex.scanner.base.TokenStreamImpl"
           buffersize=""/>
     <base32 class="org.extex.scanner.stream.impl32.TokenStreamImpl"
             buffersize=""/>
