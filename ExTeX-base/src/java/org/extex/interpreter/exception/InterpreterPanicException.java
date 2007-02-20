@@ -74,6 +74,14 @@ public class InterpreterPanicException extends InterpreterException {
     }
 
     /**
+     * Creates a localized description of this throwable.
+     * Subclasses may override this method in order to produce a
+     * locale-specific message.  For subclasses that do not override this
+     * method, the default implementation returns the same result as
+     * <code>getMessage()</code>.
+     *
+     * @return  The localized description of this throwable.
+     *
      * @see java.lang.Throwable#getLocalizedMessage()
      */
     public String getLocalizedMessage() {
