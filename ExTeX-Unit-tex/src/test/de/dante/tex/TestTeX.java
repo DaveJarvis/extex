@@ -79,8 +79,12 @@ public final class TestTeX {
         }
 
         /**
-         * TODO missing JavaDoc.
+         * TODO missing JavaDoc
          *
+         * @param editHandler ...
+         *
+         * @see org.extex.interpreter.ErrorHandler#setEditHandler(
+         *      org.extex.main.errorHandler.editHandler.EditHandler)
          */
         public void setEditHandler(final EditHandler editHandler) {
 
@@ -89,7 +93,6 @@ public final class TestTeX {
 
     /**
      * TODO missing JavaDoc.
-     *
      */
     private static ErrorHandler errorHandler = new AssertFailErrorHandler();
 
