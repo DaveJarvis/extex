@@ -42,7 +42,6 @@ import org.extex.typesetter.type.node.HorizontalListNode;
 import org.extex.typesetter.type.node.SpaceNode;
 import org.extex.typesetter.type.node.factory.CachingNodeFactory;
 import org.extex.typesetter.type.node.factory.NodeFactory;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * Test suite for the base hyphenation table.
@@ -55,7 +54,7 @@ public class BaseHyphenationTableTest extends TestCase {
     /**
      * Mock implementation of a font.
      */
-    private class MockFont extends NullFont {
+    private static class MockFont extends NullFont {
 
         /**
          * The field <tt>serialVersionUID</tt> contains the version number for
