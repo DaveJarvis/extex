@@ -142,6 +142,18 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     }
 
     /**
+     * Create a new {@link org.extex.scanner.type.token.Token Token} of the
+     * appropriate kind. Tokens are immutable (no setters) thus the factory
+     * pattern can be applied.
+     *
+     * @param code the category code
+     * @param c the character value
+     * @param namespace the name space to use
+     *
+     * @return the new token
+     *
+     * @throws CatcodeException in case of an error
+     *
      * @see org.extex.scanner.type.token.TokenFactory#createToken(
      *      org.extex.scanner.type.Catcode,
      *      int,
@@ -164,6 +176,18 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     }
 
     /**
+     * Get an instance of a token with a given Catcode and value.
+     *
+     * @param code the catcode
+     * @param esc the Unicode character value of the escape character
+     * @param value the value
+     * @param namespace the name space for the token. This is relevant for
+     *  ACTIVE and ESCAPE catcodes only.
+     *
+     * @return the appropriate token
+     *
+     * @throws CatcodeException in case of an error
+     *
      * @see org.extex.scanner.type.token.TokenFactory#createToken(
      *      org.extex.scanner.type.Catcode,
      *      org.extex.type.UnicodeChar,
@@ -186,6 +210,18 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     }
 
     /**
+     * Get an instance of a token with a given Catcode and Unicode character
+     * value.
+     *
+     * @param code the catcode
+     * @param c the Unicode character value
+     * @param namespace the name space for the token. This is relevant for
+     * ACTIVE and ESCAPE catcodes only.
+     *
+     * @return the appropriate token
+     *
+     * @throws CatcodeException in case of an error
+     *
      * @see org.extex.scanner.type.token.TokenFactory#createToken(
      *      org.extex.scanner.type.Catcode,
      *      org.extex.type.UnicodeChar,
@@ -277,6 +313,17 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     }
 
     /**
+     * This visit method is invoked on an escape token.
+     * In <logo>TeX</logo> this normally means a control sequence.
+     *
+     * @param arg1 the first argument to pass
+     * @param arg2 the second argument to pass
+     * @param arg3 the third argument to pass
+     *
+     * @return some value
+     *
+     * @throws Exception in case of an error
+     *
      * @see org.extex.scanner.type.CatcodeVisitor#visitEscape(
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
