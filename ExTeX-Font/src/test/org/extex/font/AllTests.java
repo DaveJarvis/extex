@@ -19,7 +19,8 @@
 
 package org.extex.font;
 
-import java.text.Format;
+import junit.framework.Test;
+import junit.framework.TestSuite;
 
 import org.extex.font.format.afm.AfmParserTest;
 import org.extex.font.format.tfm.TfmFixWordTest;
@@ -27,9 +28,8 @@ import org.extex.font.format.tfm.TfmReaderTest;
 import org.extex.font.format.tfm.U2tFactoryTest;
 import org.extex.font.format.xtf.XtfReaderGara1Test;
 import org.extex.font.format.xtf.XtfReaderGara2Test;
-
-import junit.framework.Test;
-import junit.framework.TestSuite;
+import org.extex.font.format.xtf.XtfReaderGara3Test;
+import org.extex.font.format.xtf.XtfReaderGara4Test;
 
 /**
  * Test suite for the fonts. 
@@ -60,6 +60,8 @@ public class AllTests {
         suite.addTestSuite(FontFactoryImplCmmanTest.class);
         suite.addTestSuite(XtfReaderGara1Test.class);
         suite.addTestSuite(XtfReaderGara2Test.class);
+        suite.addTestSuite(XtfReaderGara3Test.class);
+        suite.addTestSuite(XtfReaderGara4Test.class);
         suite.addTestSuite(TfmReaderTest.class);
         suite.addTestSuite(TfmFixWordTest.class);
         suite.addTestSuite(U2tFactoryTest.class);

@@ -27,6 +27,7 @@ import java.util.Comparator;
 import java.util.Date;
 
 import org.extex.font.format.xtf.TtfTableCMAP.Format;
+import org.extex.font.format.xtf.TtfTableGLYF.Descript;
 import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessInputFile;
 import org.extex.util.file.random.RandomAccessInputStream;
@@ -1014,6 +1015,43 @@ public class XtfReader implements XMLWriterConvertible {
         if (format != null) {
             return hmtx.getAdvanceWidth(pos);
         }
+        return 0;
+    }
+
+    /**
+     * Returns the glyph bounding box for the char by using the platform and encoding.
+     * If no char is found, <code>null</code> be returned.
+     *
+     * @param glypname   The glyph name.
+     * @param platformId The platform id.
+     * @param encodingId The encoding id.
+     * @return Returns the glyph bounding box for the char.
+     */
+    public XtfBoundingBox mapCharCodeToBB(final String glypname,
+            final short platformId, final short encodingId) {
+
+        int pos = post.getGlyphNamePosition(glypname);
+        if (pos < 0) {
+            return null;
+        }
+        // get format
+        Format format = getCmapTable().getFormat(platformId, encodingId);
+        if (format != null) {
+
+            Descript desc = glyf.getDescription(pos);
+            if (desc != null) {
+                return new XtfBoundingBox(desc.getXMin(), desc.getYMin(), desc
+                        .getXMax(), desc.getYMax());
+            }
+        }
+        return null;
+    }
+
+    public int getKerning(final String glypname1, final String glypname2,
+            final short platformId, final short encodingId) {
+
+        // TODO
+        
         return 0;
     }
 

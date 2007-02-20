@@ -241,7 +241,7 @@ public class TtfTableGLYF extends AbstractXtfTable
      *              points in a character.</td></tr>
      *   <tr><td>This x is same (Positive x-Short Vector)</td><td>4</td><td>
      *              This flag has two meanings, depending on how the
-     *               x-Short Vector flag is set. If x-Short Vector is set, this bit
+     *              x-Short Vector flag is set. If x-Short Vector is set, this bit
      *              describes the sign of the value, with 1 equalling positive and 0
      *              negative. If the x-Short Vector bit is not set and this bit is
      *              set, then the current x-coordinate is the same as the previous
@@ -250,7 +250,7 @@ public class TtfTableGLYF extends AbstractXtfTable
      *              delta vector.</td>/tr>
      *    <tr><td>This y is same (Positive y-Short Vector)</td><td>5</td><td>
      *              This flag has two meanings, depending on how the
-     *               y-Short Vector flag is set. If y-Short Vector is set, this bit
+     *              y-Short Vector flag is set. If y-Short Vector is set, this bit
      *              describes the sign of the value, with 1 equalling positive and 0
      *              negative. If the y-Short Vector bit is not set and this bit is
      *              set, then the current y-coordinate is the same as the previous

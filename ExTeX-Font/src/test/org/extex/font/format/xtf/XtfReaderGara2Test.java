@@ -23,8 +23,6 @@ import java.io.IOException;
 
 import junit.framework.TestCase;
 
-import org.extex.font.format.xtf.TtfTableCMAP.Format;
-
 /**
  * Tests for the <code>XtfReader</code>.
  *
@@ -48,7 +46,7 @@ public class XtfReaderGara2Test extends TestCase {
     public XtfReaderGara2Test() throws IOException {
 
         if (reader == null) {
-            reader = new XtfReader("../ExTeX-font/src/font/Gara.ttf");
+            reader = new XtfReader("../ExTeX-Font/src/font/Gara.ttf");
         }
     }
 
