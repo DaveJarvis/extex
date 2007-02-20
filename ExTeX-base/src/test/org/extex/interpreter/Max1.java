@@ -30,8 +30,8 @@ import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.glue.FixedGlue;
 import org.extex.language.ligature.LigatureBuilder;
 import org.extex.scanner.TokenStream;
+import org.extex.scanner.base.TokenStreamImpl;
 import org.extex.scanner.stream.TokenStreamFactory;
-import org.extex.scanner.stream.impl.TokenStreamImpl;
 import org.extex.scanner.type.token.Token;
 import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
@@ -42,7 +42,6 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.TypesetterOptions;
 import org.extex.typesetter.exception.InvalidSpacefactorException;
 import org.extex.typesetter.exception.TypesetterException;
-import org.extex.typesetter.exception.TypesetterUnsupportedException;
 import org.extex.typesetter.listMaker.ListManager;
 import org.extex.typesetter.output.OutputRoutine;
 import org.extex.typesetter.pageBuilder.PageBuilder;
@@ -52,10 +51,8 @@ import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.noad.Noad;
 import org.extex.typesetter.type.node.factory.NodeFactory;
-import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.ConfigurationFactory;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
