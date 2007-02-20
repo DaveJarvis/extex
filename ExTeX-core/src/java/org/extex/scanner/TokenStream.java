@@ -110,7 +110,7 @@ public interface TokenStream {
      * a <code>null</code> token is not pushed!
      * <p>
      * Note that it is up to the implementation to accept tokens not produced
-     * with the token factory for push back. In general the behaviour in such a
+     * with the token factory for push back. In general the behavior in such a
      * case is not defined and should be avoided.
      * </p>
      *
