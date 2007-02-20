@@ -53,7 +53,7 @@ public class OutputFactory extends AbstractFactory
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision: 4728 $
      */
-    private class Int {
+    private static class Int {
 
         /**
          * The field <tt>value</tt> contains the encapsulated value.
@@ -151,7 +151,7 @@ public class OutputFactory extends AbstractFactory
      * The field <tt>outputDirectories</tt> contains the list of output
      * directories. The list is tried first to last.
      */
-    private transient String[] outputDirectories;
+    private String[] outputDirectories;
 
     /**
      * Creates a new object.
@@ -162,7 +162,7 @@ public class OutputFactory extends AbstractFactory
     public OutputFactory(final String[] outdirs, final String basename) {
 
         super();
-        this.outputDirectories = outdirs;
+        this.outputDirectories = (String[]) outdirs.clone();
         this.basename = basename;
     }
 

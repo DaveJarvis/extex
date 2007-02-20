@@ -54,7 +54,7 @@ public class PageManager {
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision$
      */
-    private class Range implements Validator {
+    private static class Range implements Validator {
 
         /**
          * The field <tt>max</tt> contains the highest value.
