@@ -40,7 +40,11 @@ public class TeXParagraphBuiderTest extends AbstractParagraphBuiderTester {
         junit.textui.TestRunner.run(TeXParagraphBuiderTest.class);
     }
     /**
-     * @see de.dante.extex.typesetter.paragraphBuilder.AbstractParagraphBuiderTester#getParagraphBuilder()
+     * This method creates a new paragraph builder to be tested.
+     *
+     * @return the new paragraph builder
+     *
+     * @see org.extex.typesetter.paragraphBuilder.AbstractParagraphBuiderTester#getParagraphBuilder()
      */
     protected ParagraphBuilder getParagraphBuilder() {
 
@@ -48,7 +52,14 @@ public class TeXParagraphBuiderTest extends AbstractParagraphBuiderTester {
     }
 
     /**
-     * @see de.dante.extex.typesetter.paragraphBuilder.AbstractParagraphBuiderTester#traceonline()
+     * This method provides an indicator whether or not the tracing should be
+     * written to the console.
+     * This method is meant to be overwritten by derived classes to change the
+     * default behavior.
+     *
+     * @return <code>true</code> iff the tracing is requested
+     *
+     * @see org.extex.typesetter.paragraphBuilder.AbstractParagraphBuiderTester#traceonline()
      */
     protected boolean traceonline() {
 
