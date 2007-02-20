@@ -48,8 +48,6 @@ import org.extex.backend.outputStream.OutputStreamFactory;
 import org.extex.color.ColorConverter;
 import org.extex.color.ColorConverterFacory;
 import org.extex.font.CoreFontFactory;
-import org.extex.font.ExtexFont;
-import org.extex.font.FontKey;
 import org.extex.font.exception.FontException;
 import org.extex.interpreter.ErrorHandler;
 import org.extex.interpreter.ErrorHandlerFactory;
@@ -88,8 +86,6 @@ import org.extex.typesetter.output.OutputRoutineFactory;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.exception.NotObservableException;
 import org.extex.util.framework.Registrar;
-import org.extex.util.framework.RegistrarException;
-import org.extex.util.framework.RegistrarObserver;
 import org.extex.util.framework.configuration.Configurable;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.ConfigurationFactory;
@@ -101,7 +97,6 @@ import org.extex.util.framework.configuration.exception.ConfigurationNoSuchMetho
 import org.extex.util.framework.configuration.exception.ConfigurationSyntaxException;
 import org.extex.util.framework.i18n.Localizer;
 import org.extex.util.framework.i18n.LocalizerFactory;
-import org.extex.util.resource.InteractionProvider;
 import org.extex.util.resource.PropertyConfigurable;
 import org.extex.util.resource.ResourceConsumer;
 import org.extex.util.resource.ResourceFinder;
@@ -488,103 +483,6 @@ import org.extex.util.resource.ResourceFinderFactory;
 public class ExTeX {
 
     /**
-     * This class is used to inject a resource finder when a class is loaded
-     * from a format which needs it.
-     *
-     * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision: 4770 $
-     */
-    private class ResourceFinderInjector implements RegistrarObserver {
-
-        /**
-         * The field <tt>finder</tt> contains the resource finder to inject.
-         */
-        private ResourceFinder finder;
-
-        /**
-         * Creates a new object.
-         *
-         * @param finder the resource finder to inject
-         */
-        public ResourceFinderInjector(final ResourceFinder finder) {
-
-            super();
-            this.finder = finder;
-        }
-
-        /**
-         * @see org.extex.util.framework.RegistrarObserver#reconnect(java.lang.Object)
-         */
-        public Object reconnect(final Object object) throws RegistrarException {
-
-            ((ResourceConsumer) object).setResourceFinder(finder);
-            return object;
-        }
-    }
-
-    /**
-     * This class is used to inject a resource finder when a class is loaded
-     * from a format which needs it.
-     *
-     * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision: 4770 $
-     */
-    private class FontInjector implements RegistrarObserver {
-
-        /**
-         * The field <tt>factory</tt> contains the font factory to use for
-         * reconnecting the font.
-         */
-        private CoreFontFactory factory;
-
-        /**
-         * Creates a new object.
-         *
-         * @param factory the resource finder to inject
-         */
-        public FontInjector(final CoreFontFactory factory) {
-
-            super();
-            this.factory = factory;
-        }
-
-        /**
-         * Reconnect an object.
-         * It should return the object which should actually be used. This is
-         * normally the object which is passed in as argument. Nevertheless the
-         * as a side effect the object can be attached to an internal list in a
-         * factory or augmented with additional information by invoking some of
-         * its methods.
-         *
-         * @param object the object to reconnect
-         *
-         * @return the object to be actually used
-         *
-         * @throws RegistrarException in case of an error during configuration
-         *
-         * @see org.extex.util.framework.RegistrarObserver#reconnect(java.lang.Object)
-         */
-        public Object reconnect(final Object object) throws RegistrarException {
-
-            ModifiableFont font = (ModifiableFont) object;
-            FontKey fontKey = font.getFontKey();
-            ExtexFont fnt;
-            try {
-                fnt = factory.getInstance(fontKey);
-            } catch (ConfigurationException e) {
-                throw new RegistrarException(e);
-            } catch (FontException e) {
-                throw new RegistrarException(e);
-            }
-            if (fnt == null) {
-                throw new RegistrarFontNotFoundException(fontKey);
-            }
-            font.setFont(fnt);
-            return object;
-        }
-    }
-
-    /**
      * The field <tt>CONTEXT_TAG</tt> contains the name of the tag for the
      * configuration of the context.
      */
@@ -873,50 +771,11 @@ public class ExTeX {
     private InteractionObserver interactionObserver = null;
 
     /**
-     * This internal interface extends the interaction provider by the ability
-     * to set a context as final source of information.
-     *
-     * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision: 4770 $
-     */
-    private interface MyInteractionProvider extends InteractionProvider {
-
-        /**
-         * Setter for the interpreter context.
-         *
-         * @param context the interpreter context
-         */
-        void setContext(Context context);
-    }
-
-    /**
      * The field <tt>iProvider</tt> contains the bridge from the resource
      * finder to the context.
      */
-    private MyInteractionProvider iProvider = new MyInteractionProvider() {
-
-        /**
-         * The field <tt>context</tt> contains the interpreter context.
-         */
-        private Context context;
-
-        /**
-         * @see org.extex.util.resource.InteractionProvider#getInteraction()
-         */
-        public Interaction getInteraction() {
-
-            return context.getInteraction();
-        }
-
-        /**
-         * @see org.extex.ExTeX.MyInteractionProvider#setContext(
-         *      org.extex.interpreter.context.Context)
-         */
-        public void setContext(final Context context) {
-
-            this.context = context;
-        }
-    };
+    private ContextawareInteractionProvider iProvider =
+            new ContextawareInteractionProvider();
 
     /**
      * The field <tt>localizer</tt> contains the localizer. It is initiated
