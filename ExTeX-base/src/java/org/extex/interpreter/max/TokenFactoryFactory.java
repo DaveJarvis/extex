@@ -21,7 +21,6 @@ package org.extex.interpreter.max;
 
 import org.extex.scanner.type.token.TokenFactory;
 import org.extex.util.framework.AbstractFactory;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides a factory for a
