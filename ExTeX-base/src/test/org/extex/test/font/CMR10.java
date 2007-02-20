@@ -169,43 +169,43 @@ public class CMR10 implements Font, Serializable {
      * The field <tt>SLANT</tt> contains the font dimen position for the slant
      * parameter.
      */
-    private static final int SLANT = 0;
+    protected static final int SLANT = 0;
 
     /**
      * The field <tt>SPACE</tt> contains the font dimen position for the space
      * parameter.
      */
-    private static final int SPACE = 1;
+    protected static final int SPACE = 1;
 
     /**
      * The field <tt>STRETCH</tt> contains the font dimen position for the
      * stretch parameter.
      */
-    private static final int STRETCH = 2;
+    protected static final int STRETCH = 2;
 
     /**
      * The field <tt>SHRINK</tt> contains the font dimen position for the
      * shrink parameter.
      */
-    private static final int SHRINK = 3;
+    protected static final int SHRINK = 3;
 
     /**
      * The field <tt>XHEIGHT</tt> contains the font dimen position for the
      * xheight parameter.
      */
-    private static final int XHEIGHT = 4;
+    protected static final int XHEIGHT = 4;
 
     /**
      * The field <tt>QUAD</tt> contains the font dimen position for the quad
      * parameter.
      */
-    private static final int QUAD = 5;
+    protected static final int QUAD = 5;
 
     /**
      * The field <tt>EXTRASPACE</tt> contains the font dimen position for the
      * extraspace parameter.
      */
-    private static final int EXTRASPACE = 6;
+    protected static final int EXTRASPACE = 6;
 
     /**
      * The field <tt>glyphs</tt> contains the hash map for the glyphs.
@@ -1160,7 +1160,7 @@ public class CMR10 implements Font, Serializable {
         makeGlyph('e', new Dimen(Dimen.ONE * 444446 / TEN_6), // CHARWD
             new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
         );
-        g = g = g = makeGlyph('f', new Dimen(Dimen.ONE * 305557 / TEN_6), // CHARWD
+        g = makeGlyph('f', new Dimen(Dimen.ONE * 305557 / TEN_6), // CHARWD
             new Dimen(Dimen.ONE * 694445 / TEN_6), // CHARHT
             Dimen.ZERO_PT, new Dimen(Dimen.ONE * 77779 / TEN_6) // CHARIC
                 );
@@ -1505,6 +1505,10 @@ public class CMR10 implements Font, Serializable {
     }
 
     /**
+     * Returns the actual size.
+     *
+     * @return the actual size
+     *
      * @see org.extex.font.type.Fount#getActualSize()
      */
     public FixedDimen getActualSize() {
@@ -1513,6 +1517,10 @@ public class CMR10 implements Font, Serializable {
     }
 
     /**
+     * Returns the check sum.
+     *
+     * @return the check sum
+     *
      * @see org.extex.font.type.Fount#getCheckSum()
      */
     public int getCheckSum() {
@@ -1533,15 +1541,22 @@ public class CMR10 implements Font, Serializable {
     }
 
     /**
+     * Return the em size of the font.
+     *
+     * @return em size
+     *
      * @see org.extex.font.type.Fount#getEm()
      */
     public FixedDimen getEm() {
 
-        // TODO gene: getEm unimplemented
-        return null;
+        return fontdimen[QUAD];
     }
 
     /**
+     * Return the ex size of the font.
+     *
+     * @return ex size
+     *
      * @see org.extex.font.type.Fount#getEx()
      */
     public FixedDimen getEx() {
@@ -1550,6 +1565,11 @@ public class CMR10 implements Font, Serializable {
     }
 
     /**
+     * Return font dimen size with a key.
+     *
+     * @param key the key
+     * @return the value for the key
+     *
      * @see org.extex.font.type.Fount#getFontDimen(java.lang.String)
      */
     public FixedDimen getFontDimen(final String key) {
