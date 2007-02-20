@@ -179,7 +179,9 @@ public class LigatureBuilderImplTest extends TestCase {
     protected void setUp() throws Exception {
 
         super.setUp();
-        tc1 = new TypesettingContextImpl(new MockFont());
+        if (tc1 == null) {
+            tc1 = new TypesettingContextImpl(new MockFont());
+        }
     }
 
     /**
