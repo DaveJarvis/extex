@@ -21,6 +21,8 @@
 
 package org.extex.backend.documentWriter.dvi;
 
+import java.io.PrintStream;
+
 import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.typesetter.type.InspectableNodeVisitor;
 import org.extex.typesetter.type.Node;
@@ -47,7 +49,6 @@ import org.extex.typesetter.type.node.VirtualCharNode;
 import org.extex.typesetter.type.node.WhatsItNode;
 import org.extex.util.exception.GeneralException;
 
-
 /**
  * This is a implementation of a NodeVisitor for debugging.
  *
@@ -58,9 +59,13 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
 
     /**
      * Visitor for debugging.
-     *
      */
     private InspectableNodeVisitor nodeVisitor = null;
+
+    /**
+     * The field <tt>printStream</tt> contains the ...
+     */
+    private PrintStream printStream = System.out;
 
     /**
      * Creates a new instance.
@@ -126,7 +131,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
         appendNodeInformation(buffer, value);
 
         // TODO: better the visitor knows where the Node is (TE)
-        System.out.println(buffer);
+        printStream.println(buffer);
     }
 
     /**
