@@ -25,7 +25,6 @@ import java.io.OutputStream;
 import java.util.Calendar;
 import java.util.Iterator;
 
-import org.extex.backend.documentWriter.exception.DocumentWriterException;
 import org.extex.backend.outputStream.OutputStreamFactory;
 import org.extex.backend.outputStream.OutputStreamObserver;
 import org.extex.font.CoreFontFactory;
@@ -41,9 +40,7 @@ import org.extex.interpreter.context.group.GroupType;
 import org.extex.interpreter.context.observer.group.AfterGroupObserver;
 import org.extex.interpreter.context.tc.Direction;
 import org.extex.interpreter.context.tc.TypesettingContext;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.InterpreterPanicException;
-import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.interaction.Interaction;
 import org.extex.interpreter.loader.SerialLoader;
 import org.extex.interpreter.type.Code;
@@ -72,7 +69,6 @@ import org.extex.type.Locator;
 import org.extex.type.UnicodeChar;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.paragraphBuilder.ParagraphShape;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.framework.i18n.LocalizerFactory;
 
 /**
