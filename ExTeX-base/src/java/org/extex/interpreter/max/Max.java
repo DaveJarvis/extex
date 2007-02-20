@@ -242,13 +242,13 @@ public abstract class Max
     /**
      * The field <tt>localizer</tt> contains the localizer to use.
      */
-    private transient Localizer localizer = null;
+    private Localizer localizer = null;
 
     /**
      * The field <tt>logger</tt> contains the logger or
      * <code>null</code> if none has been set yet.
      */
-    private transient Logger logger = null;
+    private Logger logger = null;
 
     /**
      * The field <tt>maxErrors</tt> contains the number of errors after which
@@ -263,53 +263,53 @@ public abstract class Max
      * receive a notification when a new token is about to be expanded. The
      * argument is the token to be executed.
      */
-    private transient CommandObserver observersCommand = null;
+    private CommandObserver observersCommand = null;
 
     /**
      * This observer list is used for the observers which are registered to
      * receive a notification when an error occurs. The argument is the
      * exception encountered.
      */
-    private transient ErrorObserver observersError = null;
+    private ErrorObserver observersError = null;
 
     /**
      * This observer list is used for the observers which are registered to
      * receive a notification when a new token is about to be expanded. The
      * argument is the token to be expanded.
      */
-    private transient ExpandObserver observersExpand = null;
+    private ExpandObserver observersExpand = null;
 
     /**
      * The field <tt>observersLoad</tt> contains the observer list for the
      * observers which are registered to receive a notification when a format
      * is loaded.
      */
-    private transient LoadObserver observersLoad = null;
+    private LoadObserver observersLoad = null;
 
     /**
      * This observer list is used for the observers which are registered to
      * receive a notification when a macro is expanded.
      */
-    private transient ExpandMacroObserver observersMacro = null;
+    private ExpandMacroObserver observersMacro = null;
 
     /**
      * The field <tt>observersStart</tt> contains the observer list for the
      * observers which are registered to receive a notification when the
      * execution is started.
      */
-    private transient StartObserver observersStart = null;
+    private StartObserver observersStart = null;
 
     /**
      * The field <tt>observersStop</tt> contains the observer list for the
      * observers which are registered to receive a notification when the
      * execution is finished.
      */
-    private transient StopObserver observersStop = null;
+    private StopObserver observersStop = null;
 
     /**
      * The field <tt>outFactory</tt> contains the output factory.
      */
-    private transient OutputStreamFactory outFactory = null;
+    private OutputStreamFactory outFactory = null;
 
     /**
      * This is the prefix for the next invocation.
