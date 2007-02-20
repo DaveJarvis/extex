@@ -48,7 +48,7 @@ public class StringSource extends Moritz {
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision:4408 $
      */
-    private class TStream implements TokenStream {
+    private static class TStream implements TokenStream {
 
         /**
          * The field <tt>cs</tt> contains the char sequence containing the chars
