@@ -110,7 +110,7 @@ public class LoadingLanguageManager extends BaseLanguageManager
     /**
      * The field <tt>outFactory</tt> contains the output stream factory.
      */
-    private OutputStreamFactory outFactory = null;
+    private transient OutputStreamFactory outFactory = null;
 
     /**
      * Creates a new object.
