@@ -53,7 +53,6 @@ import org.extex.typesetter.type.page.Page;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.configuration.Configurable;
 import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This is an implementation of a document writer which can act both as sample
