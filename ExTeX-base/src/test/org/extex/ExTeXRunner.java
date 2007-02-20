@@ -26,7 +26,6 @@ import junit.framework.TestCase;
 import org.extex.font.CoreFontFactory;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.ConfigurationFactory;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.resource.ResourceFinder;
 
 /**
@@ -41,9 +40,10 @@ public class ExTeXRunner extends TestCase {
     /**
      * myextex
      */
-    protected MyExTeX extex;
+    private MyExTeX extex;
 
     /**
+     * @throws Exception ...
      * @see junit.framework.TestCase#setUp()
      */
     protected void setUp() throws Exception {
@@ -117,13 +117,12 @@ public class ExTeXRunner extends TestCase {
         /**
          * Returns the finder.
          * @return Returns the finder.
-         * @throws ConfigurationException if an error occurs.
          */
         public ResourceFinder getResourceFinder() {
 
             if (finder == null) {
-                finder = makeResourceFinder(config
-                        .findConfiguration("Resource"));
+                finder =
+                        makeResourceFinder(config.findConfiguration("Resource"));
             }
             return finder;
         }
@@ -136,13 +135,13 @@ public class ExTeXRunner extends TestCase {
         /**
          * Returns the font factory.
          * @return Returns the font factory.
-         * @throws ConfigurationException if an error occurs
          */
         public CoreFontFactory getFontFactory() {
 
             if (fontFactory == null) {
-                fontFactory = makeFontFactory(config.getConfiguration("Fonts"),
-                        getResourceFinder());
+                fontFactory =
+                        makeFontFactory(config.getConfiguration("Fonts"),
+                            getResourceFinder());
             }
             return fontFactory;
         }
