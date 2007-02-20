@@ -72,7 +72,7 @@ public class CompressedLiangsHyphenationTable extends LiangsHyphenationTable {
      *
      * @throws IOException in case of an IO error
      */
-    protected void writeObject(final ObjectOutputStream out) throws IOException {
+    private void writeObject(final ObjectOutputStream out) throws IOException {
 
         if (!isCompressed()) {
             compress(getPatterns(), new HashMap());
