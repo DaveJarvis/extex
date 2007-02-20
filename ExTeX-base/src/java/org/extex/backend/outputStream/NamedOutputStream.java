@@ -113,6 +113,10 @@ public class NamedOutputStream extends OutputStream {
     }
 
     /**
+     * Returns a hash code value for the object.
+     *
+     * @return  a hash code value for this object
+     *
      * @see java.lang.Object#hashCode()
      */
     public int hashCode() {
@@ -121,6 +125,10 @@ public class NamedOutputStream extends OutputStream {
     }
 
     /**
+     * Returns a string representation of the object.
+     *
+     * @return  a string representation of the object
+     *
      * @see java.lang.Object#toString()
      */
     public String toString() {
