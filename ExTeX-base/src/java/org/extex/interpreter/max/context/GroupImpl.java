@@ -297,25 +297,31 @@ public class GroupImpl implements Group {
     }
 
     /**
+     * Get some extension object stored in the group.
+     *
+     * @param extension the reference for the extension
+     * @param key the key of the object
+     *
+     * @return the object stored for the extension under the given key or
+     *   <code>null</code> if none is there
+     *
      * @see org.extex.interpreter.max.context.Group#get(
      *      java.lang.Object,
      *      java.lang.Object)
      */
     public Object get(final Object extension, final Object key) {
 
-        Map map;
-        Object value;
-
-        if (extensionMap != null
-                && (map = (Map) extensionMap.get(extension)) != null
-                && (value = map.get(key)) != null) {
-            return value;
-        }
-        if (next != null) {
-            return next.get(extension, key);
+        if (extensionMap != null) {
+            Map map = (Map) extensionMap.get(extension);
+            if (map != null) {
+                Object value = map.get(key);
+                if (value != null) {
+                    return value;
+                }
+            }
         }
 
-        return null;
+        return (next != null ? next.get(extension, key) : null);
     }
 
     /**
@@ -352,11 +358,7 @@ public class GroupImpl implements Group {
                 return box;
             }
         }
-        if (next != null) {
-            return next.getBox(name);
-        }
-
-        return null;
+        return (next != null ? next.getBox(name) : null);
     }
 
     /**

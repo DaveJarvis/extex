@@ -596,21 +596,24 @@ public interface Group extends Tokenizer, Serializable {
     void setUccode(UnicodeChar lc, UnicodeChar uc, boolean global);
 
     /**
-     * TODO gene: missing JavaDoc
+     * Get some extension object stored in the group.
      *
-     * @param extension
-     * @param key
-     * @return
+     * @param extension the reference for the extension
+     * @param key the key of the object
+     *
+     * @return the object stored for the extension under the given key or
+     *   <code>null</code> if none is there
      */
     Object get(Object extension, Object key);
 
     /**
-     * TODO gene: missing JavaDoc
+     * Store some extension object in the group.
      *
-     * @param extension
-     * @param key
-     * @param value
-     * @param global
+     * @param extension the reference for the extension
+     * @param key the key of the object
+     * @param value the value to store
+     * @param global the indicator that the assignment should be performed
+     *   globally
      */
     void set(Object extension, Object key, Object value, boolean global);
 

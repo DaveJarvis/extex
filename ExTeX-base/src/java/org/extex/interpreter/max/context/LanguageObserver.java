@@ -82,8 +82,6 @@ public class LanguageObserver implements CountObserver, TokensObserver {
      * @param value the new value assigned to the name. In case of
      *  <code>null</code> the name is unbound.
      *
-     * @throws Exception in case of a problem
-     *
      * @see org.extex.interpreter.context.observer.tokens.TokensObserver#receiveTokensChange(
      *      org.extex.interpreter.context.ContextInternals,
      *      java.lang.String,

@@ -295,7 +295,7 @@ public class ContextImpl
     /**
      * The field <tt>id</tt> contains the is string.
      * The id string is the classification of the
-     * original source as given in the fmt file. The id string can be
+     * original source as given in the format file. The id string can be
      * <code>null</code> if not known yet.
      */
     private String id = null;
@@ -646,9 +646,9 @@ public class ContextImpl
     }
 
     /**
-     * Getter for the afterassignment token.
+     * Getter for the after assignment token.
      *
-     * @return the afterassignment token.
+     * @return the after assignment token
      *
      * @see org.extex.interpreter.context.Context#getAfterassignment()
      */
@@ -783,9 +783,9 @@ public class ContextImpl
     /**
      * Getter for the delimiter code mapping.
      *
-     * @param c the character to which the delcode is assigned
+     * @param c the character to which the delimiter code is assigned
      *
-     * @return the delcode for the given character
+     * @return the delimiter code for the given character
      *
      * @see org.extex.interpreter.context.Context#getDelcode(
      *      org.extex.type.UnicodeChar)
@@ -1799,7 +1799,7 @@ public class ContextImpl
     }
 
     /**
-     * This method is able to invoke all observers for a toks change event.
+     * This method is able to invoke all observers for a tokens change event.
      *
      * @param name the name of the count register
      * @param toks the new value
@@ -1937,9 +1937,9 @@ public class ContextImpl
     }
 
     /**
-     * Setter for the afterassignment token.
+     * Setter for the after assignment token.
      *
-     * @param token the afterassignment token.
+     * @param token the after assignment token
      *
      * @see org.extex.interpreter.context.Context#setAfterassignment(
      *      org.extex.scanner.type.token.Token)
@@ -2077,7 +2077,7 @@ public class ContextImpl
     /**
      * Setter for the delimiter code mapping.
      *
-     * @param c the character to which the delcode is assigned
+     * @param c the character to which the delimiter code is assigned
      * @param delimiter the delimiter code
      * @param global the indicator for the scope; <code>true</code> means all
      *            groups; otherwise the current group is affected only
@@ -2213,7 +2213,7 @@ public class ContextImpl
 
     /**
      * Setter for the id string. The id string is the classification of the
-     * original source like given in the fmt file.
+     * original source like given in the format file.
      *
      * @param theId the id string
      *
@@ -2410,7 +2410,7 @@ public class ContextImpl
     }
 
     /**
-     * Setter for a outfile descriptor.
+     * Setter for a output file descriptor.
      *
      * @param name the name or the number of the file register
      * @param file the descriptor of the output file
@@ -2787,7 +2787,7 @@ public class ContextImpl
     }
 
     /**
-     * Remove a registered observer for toks change events.
+     * Remove a registered observer for tokens change events.
      * Tokens change events are triggered when an assignment to a tokens
      * register is performed. In this case the appropriate method in the
      * observer is invoked.
