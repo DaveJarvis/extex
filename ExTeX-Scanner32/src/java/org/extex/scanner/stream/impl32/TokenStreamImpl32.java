@@ -28,12 +28,10 @@ import org.extex.scanner.exception.ScannerException;
 import org.extex.scanner.stream.TokenStreamOptions;
 import org.extex.scanner.stream.exception.ScannerNoHexDigitFoundException;
 import org.extex.scanner.stream.exception.ScannerNoUnicodeNameException;
-import org.extex.scanner.stream.impl.TokenStreamImpl;
 import org.extex.scanner.type.Catcode;
 import org.extex.type.UnicodeChar;
 import org.extex.util.framework.configuration.Configuration;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
-
 
 /**
  * This class contains an implementation of a token stream which is fed from a
@@ -47,12 +45,32 @@ import org.extex.util.framework.configuration.exception.ConfigurationException;
  * </ul>
  * </p>
  *
- * @see org.extex.scanner.stream.impl.TokenStreamImpl
+ * @see org.extex.scanner.base.TokenStreamImpl
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision:4725 $
  */
 
 public class TokenStreamImpl32 extends TokenStreamImpl {
+
+    /**
+     * Unicode char for ';'
+     */
+    private static final UnicodeChar CPOINT = UnicodeChar.get(';');
+
+    /**
+     * hex
+     */
+    private static final int HEX = 16;
+
+    /**
+     * max hex digits (for Omega 4 digits)
+     */
+    private static final int MAX_HEX_DIGITS = 4;
+
+    /**
+     * shift 4
+     */
+    private static final int SHIFT4 = 4;
 
     /**
      * Creates a new object.
@@ -113,7 +131,7 @@ public class TokenStreamImpl32 extends TokenStreamImpl {
     }
 
     /**
-     * @see org.extex.scanner.stream.impl.TokenStreamImpl#getChar(
+     * @see org.extex.scanner.base.TokenStreamImpl#getChar(
      *      org.extex.interpreter.Tokenizer)
      */
     protected UnicodeChar getChar(final Tokenizer tokenizer)
@@ -180,14 +198,17 @@ public class TokenStreamImpl32 extends TokenStreamImpl {
                                 pointer = savePointer;
                                 uc = UnicodeChar.get(hexHigh);
                             } else {
-                                uc = UnicodeChar.get((hexHigh << SHIFT4)
-                                        + hexLow);
+                                uc =
+                                        UnicodeChar.get((hexHigh << SHIFT4)
+                                                + hexLow);
                             }
                         }
                     } else if (c != null) {
                         hexHigh = c.getCodePoint();
-                        uc = UnicodeChar.get(((hexHigh < CARET_LIMIT) ? hexHigh
-                                + CARET_LIMIT : hexHigh - CARET_LIMIT));
+                        uc =
+                                UnicodeChar.get(((hexHigh < CARET_LIMIT)
+                                        ? hexHigh + CARET_LIMIT
+                                        : hexHigh - CARET_LIMIT));
                     }
                 }
             } else {
@@ -196,6 +217,24 @@ public class TokenStreamImpl32 extends TokenStreamImpl {
         }
 
         return uc;
+    }
+
+    /**
+     * Analyze a character and return its hex value as char.
+     *
+     * @param c     The character code to analyze.
+     * @return Returns the char value of a hex digit
+     *         or 0 if no hex digit is given.
+     */
+    private char hex2char(final int c) {
+
+        char ch = (char) Character.toLowerCase((char) c);
+
+        if ('0' <= ch && ch <= '9' || 'a' <= ch && ch <= 'f') {
+            return ch;
+        }
+        return (char) 0;
+
     }
 
     /**
@@ -233,39 +272,6 @@ public class TokenStreamImpl32 extends TokenStreamImpl {
     }
 
     /**
-     * Analyze a character and return its hex value as char.
-     *
-     * @param c     The character code to analyze.
-     * @return Returns the char value of a hex digit
-     *         or 0 if no hex digit is given.
-     */
-    private char hex2char(final int c) {
-
-        char ch = (char) Character.toLowerCase((char) c);
-
-        if ('0' <= ch && ch <= '9' || 'a' <= ch && ch <= 'f') {
-            return ch;
-        }
-        return (char) 0;
-
-    }
-
-    /**
-     * hex
-     */
-    private static final int HEX = 16;
-
-    /**
-     * max hex digits (for Omega 4 digits)
-     */
-    private static final int MAX_HEX_DIGITS = 4;
-
-    /**
-     * shift 4
-     */
-    private static final int SHIFT4 = 4;
-
-    /**
      * Scan a Unicode name.
      * <pre>
      * ^^^^NAME;
@@ -293,10 +299,5 @@ public class TokenStreamImpl32 extends TokenStreamImpl {
         }
         return buf.toString();
     }
-
-    /**
-     * Unicode char for ';'
-     */
-    private static final UnicodeChar CPOINT = UnicodeChar.get(';');
 
 }
