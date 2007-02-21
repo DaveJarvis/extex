@@ -44,7 +44,7 @@ for %%i in (%LIBDIR%\*.jar) do (
   set LOCALCLASSPATH=!LOCALCLASSPATH!;%%i
 )
 
-java -classpath %LOCALCLASSPATH% org.extex.tex.main.TeX %*
+java -classpath %LOCALCLASSPATH% org.extex.main.tex.TeX %*
 
 :end
 
