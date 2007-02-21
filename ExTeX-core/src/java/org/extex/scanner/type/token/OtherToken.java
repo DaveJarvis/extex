@@ -23,7 +23,7 @@ import org.extex.scanner.type.Catcode;
 import org.extex.type.UnicodeChar;
 
 /**
- * This class represents an other token, i.e. one not covered by the other
+ * This class represents an other token, this is one not covered by the other
  * token classes.
  * <p>
  * This class has a protected constructor only. Use the factory
