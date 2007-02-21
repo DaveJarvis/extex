@@ -15,7 +15,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Backend-text"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Backend-xml"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-base-ext"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-CLI-TeX"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Scanner"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Scanner32"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Unit-color"/>
@@ -27,5 +26,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Unit-omega"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Unit-pdftex"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Unit-tex"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Main-tex"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
