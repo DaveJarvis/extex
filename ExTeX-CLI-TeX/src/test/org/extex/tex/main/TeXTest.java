@@ -228,13 +228,14 @@ public class TeXTest extends TestCase {
     /**
      * TODO gene: missing JavaDoc
      *
-     * @param name
+     * @param name the name of the log file
+     *
      * @return
      */
     private static String transcript(final String name) {
 
-        return "Transcript written on "
-                + (new File(".", name + ".log")).toString() + ".\n";
+        File file = new File(".", name + ".log");
+        return "Transcript written on " + file.toString() + ".\n";
     }
 
     /**
@@ -268,6 +269,7 @@ public class TeXTest extends TestCase {
 
         runSuccess(new String[]{"-ini", "\\end"}, //
             BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
+        new File(".", "texput.log").delete();
     }
 
     /**
@@ -280,6 +282,7 @@ public class TeXTest extends TestCase {
         System.setIn(new ByteArrayInputStream("\\relax\n\\end\\n".getBytes()));
         runSuccess(new String[]{"-ini"}, //
             BANNER_TEX + "**\n*\nNo pages of output.\n" + TRANSCRIPT_TEXPUT);
+        new File(".", "texput.log").delete();
     }
 
     /**
@@ -295,6 +298,7 @@ public class TeXTest extends TestCase {
         runFailure(new String[]{"-conf=xyz"}, //
             BANNER + "**" + TRANSCRIPT_TEXPUT
                     + "Configuration problem: Configuration `xyz' not found");
+        new File(".", "texput.log").delete();
     }
 
     /**
@@ -310,6 +314,7 @@ public class TeXTest extends TestCase {
         runFailure(new String[]{"-conf", "xyz"}, //
             BANNER + "**" + TRANSCRIPT_TEXPUT
                     + "Configuration problem: Configuration `xyz' not found");
+        new File(".", "texput.log").delete();
     }
 
     /**
@@ -369,6 +374,7 @@ public class TeXTest extends TestCase {
                     + "**"
                     + TRANSCRIPT_TEXPUT
                     + "Configuration problem: Unsupported encoding xyz in <stdin>");
+        new File(".", "texput.log").delete();
     }
 
     /**
@@ -386,6 +392,7 @@ public class TeXTest extends TestCase {
                     + "**"
                     + TRANSCRIPT_TEXPUT
                     + "Configuration problem: Unsupported encoding xyz in <stdin>");
+        new File(".", "texput.log").delete();
     }
 
     /**
@@ -399,6 +406,7 @@ public class TeXTest extends TestCase {
 
         runSuccess(new String[]{"-abc.properties", "-init", "\\end"}, //
             TRANSCRIPT_TEXPUT);
+        new File(".", "texput.log").delete();
     }
 
     /**
@@ -412,6 +420,7 @@ public class TeXTest extends TestCase {
 
         runSuccess(new String[]{"-ppp.properties", "-init", "\\end"}, //
             TRANSCRIPT_TEXPUT);
+        new File(".", "texput.log").delete();
     }
 
     /**
@@ -439,6 +448,7 @@ public class TeXTest extends TestCase {
         runSuccess(new String[]{"-ini", "UndefinedFile"}, //
             BANNER_TEX + "I can\'t find file `UndefinedFile\'\n" + "*\n"
                     + "No pages of output.\n" + transcript("UndefinedFile"));
+        new File(".", "UndefinedFile.log").delete();
     }
 
     /**
@@ -453,6 +463,7 @@ public class TeXTest extends TestCase {
         runSuccess(new String[]{"-ini", EMPTY_TEX}, //
             BANNER_TEX + "(../ExTeX-Unit-tex/src/test/tex/empty.tex )\n"
                     + "*\n" + "No pages of output.\n" + transcript("empty"));
+        new File(".", "empty.log").delete();
     }
 
     /**
@@ -469,6 +480,7 @@ public class TeXTest extends TestCase {
         runSuccess(new String[]{"-ini"},//
             BANNER_TEX + "**(" + EMPTY_TEX + " )\n" + "*\n"
                     + "No pages of output.\n" + transcript("empty"));
+        new File(".", "empty.log").delete();
     }
 
     /**
@@ -483,6 +495,7 @@ public class TeXTest extends TestCase {
         runSuccess(new String[]{"-ini", "UndefinedFile.tex"}, //
             BANNER_TEX + "I can\'t find file `UndefinedFile.tex\'\n" + "*\n"
                     + "No pages of output.\n" + transcript("UndefinedFile"));
+        new File(".", "UndefinedFile.log").delete();
     }
 
     /**
@@ -497,6 +510,7 @@ public class TeXTest extends TestCase {
         runSuccess(new String[]{"-ini", "-", "-UndefinedFile"}, //
             BANNER_TEX + "I can\'t find file `-UndefinedFile\'\n" + "*\n"
                     + "No pages of output.\n" + transcript("-UndefinedFile"));
+        new File(".", "-UndefinedFile.log").delete();
     }
 
     /**
@@ -513,6 +527,7 @@ public class TeXTest extends TestCase {
                     + "**\nSorry, I can't find the format `xyzzy.fmt'; will try `tex.fmt'.\n"
                     + "Sorry, I can't find the format `tex.fmt'!\n"
                     + TRANSCRIPT_TEXPUT);
+        new File(".", "texput.log").delete();
     }
 
     /**
@@ -528,6 +543,7 @@ public class TeXTest extends TestCase {
                     + "**\nSorry, I can't find the format `xyzzy.fmt'; will try `tex.fmt'.\n"
                     + "Sorry, I can't find the format `tex.fmt'!\n"
                     + TRANSCRIPT_TEXPUT);
+        new File(".", "texput.log").delete();
     }
 
     /**
@@ -544,6 +560,7 @@ public class TeXTest extends TestCase {
                     + "Sorry, I can't find the format `xyzzy.fmt'; will try `tex.fmt'.\n"
                     + "Sorry, I can't find the format `tex.fmt'!\n"
                     + TRANSCRIPT_TEXPUT);
+        new File(".", "texput.log").delete();
     }
 
     /**
@@ -560,6 +577,7 @@ public class TeXTest extends TestCase {
                     + "Sorry, I can't find the format `xyzzy.fmt'; will try `tex.fmt'.\n"
                     + "Sorry, I can't find the format `tex.fmt'!\n"
                     + TRANSCRIPT_TEXPUT);
+        new File(".", "texput.log").delete();
     }
 
     /**
@@ -576,6 +594,7 @@ public class TeXTest extends TestCase {
                     + "Sorry, I can't find the format `xyzzy.fmt'; will try `tex.fmt'.\n"
                     + "Sorry, I can't find the format `tex.fmt'!\n"
                     + TRANSCRIPT_TEXPUT);
+        new File(".", "texput.log").delete();
     }
 
     /**
@@ -589,8 +608,9 @@ public class TeXTest extends TestCase {
 
         runFailure(new String[]{"-ini", "-halt-on-error", "\\xxxx"}, //
             BANNER_TEX + ":1: Undefined control sequence \\xxxx\n" + "\\xxxx\n"
-                    + "______^\n" + "? \n" + "End of file on the terminal!\n"
+                    + "_____^\n" + "? \n" + "End of file on the terminal!\n"
                     + TRANSCRIPT_TEXPUT);
+        new File(".", "texput.log").delete();
     }
 
     /**
@@ -761,6 +781,7 @@ public class TeXTest extends TestCase {
         runSuccess(new String[]{"-jobname=abc", "-ini",
                 "--extex.nobanner=true", "\\end"}, //
             transcript("abc"));
+        new File(".", "abc.log").delete();
     }
 
     /**
@@ -773,6 +794,7 @@ public class TeXTest extends TestCase {
         runSuccess(new String[]{"-jobname", "abc", "-ini",
                 "--extex.nobanner=true", "\\end"}, //
             transcript("abc"));
+        new File(".", "abc.log").delete();
     }
 
     /**
@@ -842,6 +864,7 @@ public class TeXTest extends TestCase {
             BANNER_TEX + "**\n" + "*\n" + "No pages of output.\n"
                     + "Transcript written on "
                     + (new File(".", "texput.log")).toString() + ".\n");
+        new File(".", "texput.log").delete();
     }
 
     /**
@@ -865,6 +888,7 @@ public class TeXTest extends TestCase {
         System.setIn(new ByteArrayInputStream("\\relax\n\\end\\n".getBytes()));
         runSuccess(new String[]{"-ini", "--extex.nobanner=true"}, //
             "**\n*" + TRANSCRIPT_TEXPUT);
+        new File(".", "texput.log").delete();
     }
 
     /**
@@ -895,6 +919,7 @@ public class TeXTest extends TestCase {
                     + "**"
                     + TRANSCRIPT_TEXPUT
                     + "Configuration problem: Configuration `backend/undefined.xml\' not found");
+        new File(".", "texput.log").delete();
     }
 
     /**
@@ -912,6 +937,7 @@ public class TeXTest extends TestCase {
                     + "**"
                     + TRANSCRIPT_TEXPUT
                     + "Configuration problem: Configuration `backend/undefined.xml\' not found");
+        new File(".", "texput.log").delete();
     }
 
     /**
@@ -925,6 +951,7 @@ public class TeXTest extends TestCase {
 
         runSuccess(new String[]{"-ini", "-output-path=.", "\\end"}, //
             BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
+        new File(".", "texput.log").delete();
     }
 
     /**
@@ -938,6 +965,7 @@ public class TeXTest extends TestCase {
 
         runSuccess(new String[]{"-ini", "-output-path", ".", "\\end"}, //
             BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
+        new File(".", "texput.log").delete();
     }
 
     /**
@@ -952,6 +980,7 @@ public class TeXTest extends TestCase {
         runSuccess(new String[]{"-ini", "-output-path=.", "-output-dir=.",
                 "\\end"}, //
             BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
+        new File(".", "texput.log").delete();
     }
 
     /**
@@ -979,6 +1008,7 @@ public class TeXTest extends TestCase {
         System.setIn(new ByteArrayInputStream("".getBytes()));
         runSuccess(new String[]{"-ini", "-parse", "\\end"}, //
             BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
+        new File(".", "texput.log").delete();
     }
 
     /**
@@ -993,6 +1023,7 @@ public class TeXTest extends TestCase {
         runSuccess(new String[]{"-ini", "-parse", EMPTY_TEX}, //
             BANNER_TEX + "(" + EMPTY_TEX + " )\n" + "*\n"
                     + "No pages of output.\n" + transcript("empty"));
+        new File(".", "empty.log").delete();
     }
 
     /**
@@ -1013,6 +1044,7 @@ public class TeXTest extends TestCase {
                     + "Sorry, I can\'t find the format `undef.fmt\'; will try `tex.fmt\'.\n"
                     + ")\n" + "*\n" + "No pages of output.\n"
                     + transcript("parse1"));
+        new File(".", "parse1.log").delete();
     }
 
     /**
@@ -1110,6 +1142,7 @@ public class TeXTest extends TestCase {
         runSuccess(new String[]{"-ini"}, //
             BANNER_TEX + "**I can't find file `xyzzy'\n" + "*\n"
                     + "No pages of output.\n" + transcript("xyzzy"));
+        new File(".", "xyzzy.log").delete();
     }
 
     /**
@@ -1123,6 +1156,7 @@ public class TeXTest extends TestCase {
 
         runSuccess(new String[]{"-texinputs=.", "-ini", "\\end"}, //
             BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
+        new File(".", "texput.log").delete();
     }
 
     /**
@@ -1136,6 +1170,7 @@ public class TeXTest extends TestCase {
 
         runSuccess(new String[]{"-texinputs", ".", "-ini", "\\end"}, //
             BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
+        new File(".", "texput.log").delete();
     }
 
     /**
@@ -1162,6 +1197,7 @@ public class TeXTest extends TestCase {
 
         runSuccess(new String[]{"-ini", "-texmfoutputs=.", "\\end"}, //
             BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
+        new File(".", "texput.log").delete();
     }
 
     /**
@@ -1175,6 +1211,7 @@ public class TeXTest extends TestCase {
 
         runSuccess(new String[]{"-ini", "-texmfoutputs", ".", "\\end"}, //
             BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
+        new File(".", "texput.log").delete();
     }
 
     /**
@@ -1201,6 +1238,7 @@ public class TeXTest extends TestCase {
 
         runSuccess(new String[]{"-ini", "-texoutputs=.", "\\end"}, //
             BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
+        new File(".", "texput.log").delete();
     }
 
     /**
@@ -1214,6 +1252,7 @@ public class TeXTest extends TestCase {
 
         runSuccess(new String[]{"-ini", "-texoutputs", ".", "\\end"}, //
             BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
+        new File(".", "texput.log").delete();
     }
 
     /**
@@ -1240,6 +1279,7 @@ public class TeXTest extends TestCase {
 
         runSuccess(new String[]{"-d=fFTM", "-ini", "\\end"}, //
             BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
+        new File(".", "texput.log").delete();
     }
 
     /**
@@ -1253,6 +1293,7 @@ public class TeXTest extends TestCase {
 
         runSuccess(new String[]{"-d", "fFTM", "-ini", "\\end"}, //
             BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
+        new File(".", "texput.log").delete();
     }
 
     /**
@@ -1266,6 +1307,7 @@ public class TeXTest extends TestCase {
 
         runSuccess(new String[]{"-debug", "fFTM", "-ini", "\\end"}, //
             BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
+        new File(".", "texput.log").delete();
     }
 
     /**
@@ -1279,6 +1321,7 @@ public class TeXTest extends TestCase {
 
         runSuccess(new String[]{"-debug=fFTM", "-ini", "\\end"}, //
             BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
+        new File(".", "texput.log").delete();
     }
 
     /**
@@ -1292,6 +1335,7 @@ public class TeXTest extends TestCase {
 
         runFailure(new String[]{"-d=^"}, //
             BANNER + "Unknown debug option: ^\n");
+        new File(".", "texput.log").delete();
     }
 
     /**
