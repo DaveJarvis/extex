@@ -59,6 +59,6 @@ esac
 #echo $LOCALCLASSPATH
 
 exec java $EXTEX_JAVA_OPTS -classpath "$LOCALCLASSPATH" \
-    org.extex.tex.main.TeX -progname=`basename $0` $*
+    org.extex.main.tex.TeX -progname=`basename $0` $*
 
 #
