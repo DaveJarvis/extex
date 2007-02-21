@@ -26,7 +26,7 @@ export ANT_HOME=/serv/extex-project/lib/ant/
 #
 LOG=$LOCALDIR/log
 TRUNK=$LOCALDIR/trunk
-export PATH=${JAVA_HOME}/bin:$PATH
+export PATH=${JAVA_HOME}/bin:${ANT_HOME}/bin:$PATH
 
 cd $TRUNK
 date >$LOG/export.log >>$LOG/export.log 2>&1
