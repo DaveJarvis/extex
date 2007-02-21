@@ -21,7 +21,7 @@ if [ "$INSTALLDIR" == "" ]; then
     exit 1
 fi
 
-ant -f nightly-build all
+ant -f nightly-build.xml all
 
 
 #####################################################################
