@@ -20,7 +20,7 @@
 package org.extex.font.exception;
 
 /**
- * Font: NoExternalFile
+ * Font: NoExternalFile.
  * <p>e.g. pfb- or ttf-file is missing</p>
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
