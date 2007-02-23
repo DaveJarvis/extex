@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.tex.main.exception;
+package org.extex.main.tex.exception;
 
 /**
  * This exception is thrown when the main program detects an configuration

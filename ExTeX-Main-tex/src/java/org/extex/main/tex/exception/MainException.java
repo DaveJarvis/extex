@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.tex.main.exception;
+package org.extex.main.tex.exception;
 
 import org.extex.util.exception.GeneralException;
 

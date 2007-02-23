@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.tex.main;
+package org.extex.main.tex;
 
 import org.extex.main.errorHandler.editHandler.EditHandler;
 import org.extex.type.Locator;

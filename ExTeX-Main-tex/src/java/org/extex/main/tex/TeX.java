@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.tex.main;
+package org.extex.main.tex;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -60,15 +60,15 @@ import org.extex.interpreter.observer.push.PushObserver;
 import org.extex.interpreter.observer.streamClose.StreamCloseObservable;
 import org.extex.interpreter.observer.streamClose.StreamCloseObserver;
 import org.extex.main.logging.LogFormatter;
+import org.extex.main.tex.exception.MainCodingException;
+import org.extex.main.tex.exception.MainConfigurationException;
+import org.extex.main.tex.exception.MainException;
+import org.extex.main.tex.exception.MainIOException;
+import org.extex.main.tex.exception.MainMissingArgumentException;
+import org.extex.main.tex.exception.MainUnknownDebugOptionException;
+import org.extex.main.tex.exception.MainUnknownOptionException;
 import org.extex.scanner.stream.TokenStreamFactory;
 import org.extex.scanner.stream.observer.file.OpenFileObserver;
-import org.extex.tex.main.exception.MainCodingException;
-import org.extex.tex.main.exception.MainConfigurationException;
-import org.extex.tex.main.exception.MainException;
-import org.extex.tex.main.exception.MainIOException;
-import org.extex.tex.main.exception.MainMissingArgumentException;
-import org.extex.tex.main.exception.MainUnknownDebugOptionException;
-import org.extex.tex.main.exception.MainUnknownOptionException;
 import org.extex.util.exception.GeneralException;
 import org.extex.util.exception.NotObservableException;
 import org.extex.util.framework.configuration.Configuration;

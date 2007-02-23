@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.tex.main.exception;
+package org.extex.main.tex.exception;
 
 /**
  * This exception is a wrapper for the IOException. It converts this exception

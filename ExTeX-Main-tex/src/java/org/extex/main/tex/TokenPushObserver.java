@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.tex.main;
+package org.extex.main.tex;
 
 import java.util.logging.Logger;
 
