@@ -52,7 +52,7 @@ case "`uname`" in
     ;;
 esac
 
-exec java $EXTEX_JAVA_OPTS -classpath "$LOCALCLASSPATH" \
+exec $JAVA_HOME/bin/java $EXTEX_JAVA_OPTS -classpath "$LOCALCLASSPATH" \
     org.extex.main.tex.TeX -progname=`basename $0` $*
 
 #
