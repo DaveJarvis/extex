@@ -16,12 +16,16 @@ if [ "$JAVA_HOME" == "" ]; then
     echo "JAVA_HOME is undefined"
     exit 1
 fi
+if [ "$ANT_HOME" == "" ]; then
+    echo "ANT_HOME is undefined"
+    exit 1
+fi
 if [ "$INSTALLDIR" == "" ]; then
     echo "INSTALLDIR is undefined"
     exit 1
 fi
 
-ant -quiet -noinput -keep-going -f nightly-build.xml all
+$ANT_HOME/bin/ant -quiet -noinput -keep-going -f nightly-build.xml all
 
 
 #####################################################################
