@@ -195,7 +195,7 @@
       </fileset>
       <manifest>
         <attribute name="Built-By" value="${user.name}" />
-        <attribute name="Main-Class" value="org.extex.tex.main.TeX" />
+        <attribute name="Main-Class" value="org.extex.main.tex.TeX" />
       </manifest>
     </jar>
   </target>
@@ -296,6 +296,7 @@
     </junit>
 
     <delete dir="${test.results.html}" />
+    <mkdir dir="${test.results.html}" />
     <junitreport todir="${test.results}">
       <fileset dir="${test.results}">
         <include name="TEST-*.xml"/>
