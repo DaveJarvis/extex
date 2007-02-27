@@ -1165,6 +1165,24 @@ public class Moritz extends Max
     }
 
     /**
+     * Get the next expanded token form the input streams between <code>{</code>
+     * and <code>}</code>. If the current input stream is at its end then the
+     * next one on the streamStack is used until a token could be read. If all
+     * stream are at the end then <code>null</code> is returned.
+     *
+     * @param context the interpreter context
+     * @param primitive the name of the invoking primitive for error handling
+     * @param reportUndefined indicator that an undefined control sequence leads
+     *            to an exception. This parameter is effective only if
+     *            ignoreUndefined is <code>false</code>
+     * @param ignoreUndefined indicator that an undefined control sequence
+     *            should be treated as <tt>\relax</tt>
+     *
+     * @return the next tokens read so far. The return value is guaranteed not
+     *   to be <code>null</code> under any circumstances
+     *
+     * @throws InterpreterException in case of an error
+     *
      * @see org.extex.interpreter.TokenSource#scanTokens(
      *      org.extex.interpreter.context.Context,
      *      boolean,
@@ -1181,7 +1199,7 @@ public class Moritz extends Max
 
         if (token == null) {
             throw new EofException(primitive);
-        } else if (!token.isa(Catcode.LEFTBRACE)) {
+        } else if (!(token instanceof LeftBraceToken)) {
             throw new MissingLeftBraceException(primitive);
         }
 
