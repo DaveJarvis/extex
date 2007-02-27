@@ -38,6 +38,7 @@
           description="Build nearly everything and translate the build log into a HTML page">
 
     <mkdir dir="${log.dir}" />
+    <delete file="${report.file}"/>
     <java fork="true" classname="org.apache.tools.ant.Main">
       <classpath>
         <fileset dir="${ant.home}/lib" includes="*.jar" />
