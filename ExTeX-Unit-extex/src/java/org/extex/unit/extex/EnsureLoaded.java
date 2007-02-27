@@ -146,10 +146,12 @@ public class EnsureLoaded extends AbstractCode
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        Tokens tokens = source.scanTokens(context, false, false, getName());
+        String cs = printableControlSequence(context);
+        Tokens tokens = source.scanTokens(context, false, false, cs);
 
         if (tokens == null) {
-            throw new EofException(getName());
+            // this can not happen.
+            throw new EofException(cs);
         }
         String configName = tokens.toText();
         try {
@@ -165,16 +167,6 @@ public class EnsureLoaded extends AbstractCode
             throw new HelpingException(getLocalizer(), "UnknownUnit",
                     configName);
         }
-    }
-
-    /**
-     * Getter for logger.
-     *
-     * @return the logger
-     */
-    protected Logger getLogger() {
-
-        return this.logger;
     }
 
     /**
