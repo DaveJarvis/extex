@@ -65,7 +65,6 @@ import org.extex.type.UnicodeChar;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.TypesetterOptions;
 import org.extex.typesetter.paragraphBuilder.ParagraphShape;
-import org.extex.util.exception.GeneralException;
 import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
@@ -189,17 +188,13 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see org.extex.interpreter.context.ContextCode#expand(
-     *      org.extex.interpreter.type.tokens.Tokens,
-     *      org.extex.typesetter.Typesetter)
-     */
-    public Tokens expand(final Tokens tokens, final Typesetter typesetter)
-            throws GeneralException {
-
-        throw new RuntimeException("unimplemented");
-    }
-
-    /**
+     * Getter for a value from an extended section of the context.
+     *
+     * @param extension the name of the extension
+     * @param key the key for the value
+     *
+     * @return the value stored
+     *
      * @see org.extex.interpreter.context.Context#get(
      *      java.lang.Object,
      *      java.lang.Object)
