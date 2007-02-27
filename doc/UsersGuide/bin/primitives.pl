@@ -77,12 +77,23 @@ my %primitive = ();
 my %primUse   = ();
 my %cache     = ();
 
-foreach my $file (@ARGV) {
-  local $_ = $file;
-  s|.*/(.*)\.xml|$1|;
-  $cfg{$_} = $file;
-  print STDERR "--- Got configuration $_ -> $file" if $verbose;
+my @modules=@ARGV;
+
+foreach my $m (@modules) {
+  foreach (glob "$m/src/resources/config/*.xml") {
+    my $file = $_;
+    s|.*/(.*)\.xml|$1|;
+    $cfg{$_} = $file;
+    print STDERR "--- Got configuration $_ -> $file" if $verbose;
+  }
 }
+
+#foreach my $file (@modules) {
+#  local $_ = $file;
+#  s|.*/(.*)\.xml|$1|;
+#  $cfg{$_} = $file;
+#  print STDERR "--- Got configuration $_ -> $file" if $verbose;
+#}
 
 my $out = ($sfile ? new FileHandle($sfile, 'w'): \*STDOUT) || die "$sfile: $!\n";
 
