@@ -47,6 +47,38 @@ public class EnsureloadedTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
+    public void testError1() throws Exception {
+
+        assertFailure(
+        //--- input code ---
+                DEFINE_BRACES + "\\ensureloaded",
+                //--- log message ---
+                "Unexpected end of file while processing \\ensureloaded");
+    }
+
+    /**
+     * <testcase primitive="\ensureloaded">
+     *  Test case checking that <tt>\ensureloaded</tt> ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testError2() throws Exception {
+
+        assertFailure(
+        //--- input code ---
+                DEFINE_BRACES + "\\ensureloaded{xxx}",
+                //--- log message ---
+                "I don't know the unit `xxx'");
+    }
+
+    /**
+     * <testcase primitive="\ensureloaded">
+     *  Test case checking that <tt>\ensureloaded</tt> ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
     public void test1() throws Exception {
 
         assertSuccess(
