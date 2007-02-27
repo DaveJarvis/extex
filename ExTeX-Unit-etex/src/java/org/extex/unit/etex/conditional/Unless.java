@@ -110,7 +110,7 @@ public class Unless extends AbstractCode {
         Code code = context.getCode(token);
 
         if (!code.isIf() || code instanceof Ifcase) {
-            throw new CantUseAfterException(token.toText(),
+            throw new CantUseAfterException(token.toText(context.escapechar()),
                 printableControlSequence(context));
         }
 

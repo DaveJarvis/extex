@@ -43,6 +43,7 @@ import org.extex.typesetter.Typesetter;
  * </p>
  *
  * <h4>Syntax</h4>
+ * <p>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;endgroup&rang;

@@ -51,7 +51,6 @@ import org.extex.typesetter.Typesetter;
  *      &rarr; <tt>\shipout</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getBox(Flags,Context,Typesetter, Token)
  *        &lang;box&rang;}  </pre>
- * </p>
  *
  * <h4>Examples</h4>
  *  <pre class="TeXSample">

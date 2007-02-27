@@ -60,7 +60,7 @@ import org.extex.typesetter.Typesetter;
  *  <tr>
  *   <td>marks</td>
  *   <td align="center"></td>
- *   <td align="center"><tt>\mark{a}</tt><br><tt>\mark{b}</tt></td>
+ *   <td align="center"><tt>\mark{a}</tt><br/><tt>\mark{b}</tt></td>
  *   <td align="center"></td>
  *   <td align="center"><tt>\mark{c}</tt></td>
  *   <td align="center"></td>

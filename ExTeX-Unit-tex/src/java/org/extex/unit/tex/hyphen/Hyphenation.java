@@ -75,7 +75,7 @@ import org.extex.unit.base.register.CharCode;
  *  <pre class="TeXSample">
  *   \hyphenation{as-so-ciate as-so-ciates}  </pre>
  *  <pre class="TeXSample">
- *   \hyphenation{Groﬂ--Ger-au}  </pre>
+ *   \hyphenation{Gro&szlig;--Ger-au}  </pre>
  *
  * </doc>
  *

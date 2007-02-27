@@ -29,8 +29,8 @@ import org.extex.typesetter.Typesetter;
 /**
  * This class provides an implementation for the primitive <code>\noboundary</code>.
  *
- * <doc name="\noboundary">
- * <h3>The Primitive <tt>\\</tt></h3>
+ * <doc name="noboundary">
+ * <h3>The Primitive <tt>\noboundary</tt></h3>
  * <p>
  *  TODO missing documentation
  * </p>

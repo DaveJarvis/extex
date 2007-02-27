@@ -646,7 +646,9 @@ public interface TokenSource {
      * Get the next expanded token form the input streams between <code>{</code>
      * and <code>}</code>. If the current input stream is at its end then the
      * next one on the streamStack is used until a token could be read. If all
-     * stream are at the end then <code>null</code> is returned.
+     * stream are at the end then <code>null</code> is returned. Nevertheless
+     * if some tokens could have been read before the end of file occurred then
+     * those tokens are returned &ndash; even if no matching brace is found.
      *
      * <p>
      * This method parses the following syntactic entity:
@@ -674,7 +676,8 @@ public interface TokenSource {
      * @param ignoreUndefined indicator that an undefined control sequence
      *            should be treated as <tt>\relax</tt>
      *
-     * @return the next tokens or <code>null</code>
+     * @return the next tokens read so far. The return value is guaranteed not
+     *   to be <code>null</code> under any circumstances
      *
      * @throws InterpreterException in case of an error
      */

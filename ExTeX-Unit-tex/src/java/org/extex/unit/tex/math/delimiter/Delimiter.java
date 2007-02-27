@@ -46,7 +46,6 @@ import org.extex.util.framework.configuration.exception.ConfigurationException;
  *  <pre class="syntax">
  *    &lang;delimiter&rang;
  *       &rarr; <tt>\delimiter</tt> &lang;delcode&rang; </pre>
- * </p>
  *
  * <h4>Examples</h4>
  *  <pre class="TeXSample">

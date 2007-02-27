@@ -51,9 +51,9 @@
   </p>
   <p>
    Executable code has to implement the interface {@link
-   de.dante.extex.interpreter.type.Code Code}. Doing this directly is not
+   org.extex.interpreter.type.Code Code}. Doing this directly is not
    hard. Nevertheless the abstract base class {@link
-   de.dante.extex.interpreter.type.AbstractCode AbstractCode} is provided
+   org.extex.interpreter.type.AbstractCode AbstractCode} is provided
    which contains default implementations for all methods already.
    Thus only the interesting methods have to be overwritten.
   </p>
@@ -64,12 +64,12 @@
    <pre class="JavaSample">
     <b>package</b> my.package;
 
-    <b>import</b> de.dante.extex.interpreter.context.Context;
-    <b>import</b> de.dante.extex.interpreter.Flags;
-    <b>import</b> de.dante.extex.interpreter.TokenSource;
-    <b>import</b> de.dante.extex.interpreter.exception.InterpreterException;
-    <b>import</b> de.dante.extex.interpreter.type.AbstractCode;
-    <b>import</b> de.dante.extex.typesetter.Typesetter;
+    <b>import</b> org.extex.interpreter.context.Context;
+    <b>import</b> org.extex.interpreter.Flags;
+    <b>import</b> org.extex.interpreter.TokenSource;
+    <b>import</b> org.extex.interpreter.exception.InterpreterException;
+    <b>import</b> org.extex.interpreter.type.AbstractCode;
+    <b>import</b> org.extex.typesetter.Typesetter;
  
     <b>class</b> MyPrimitive <b>extends</b> AbstractCode {
 
@@ -94,7 +94,7 @@
    following parameters are provided:
   </p>
   <dl>
-   <dt><tt><b>{@link de.dante.extex.interpreter.Flags Flags}</b> prefix</tt></dt>
+   <dt><tt><b>{@link org.extex.interpreter.Flags Flags}</b> prefix</tt></dt>
    <dd>This parameter gives access to prefix arguments like
     <tt>\immediate</tt> or <tt>\global</tt>. For this purpose the
     class Flags provides appropriate getters.
@@ -107,13 +107,13 @@
     primitive yourself.
     </p>
    </dd>
-   <dt><tt><b>{@link de.dante.extex.interpreter.context.Context Context}</b> context</tt></dt>
+   <dt><tt><b>{@link org.extex.interpreter.context.Context Context}</b> context</tt></dt>
    <dd>The context provides reading and writing access to the data
     stored in the processor. This information is the memory. It is
     written to file when dumping a format. Refer to the documentation
     of the interface Context for details.
    </dd>
-   <dt><tt><b>{@link de.dante.extex.interpreter.TokenSource TokenSource}</b> source</tt></dt>
+   <dt><tt><b>{@link org.extex.interpreter.TokenSource TokenSource}</b> source</tt></dt>
    <dd>The source provides access to the token stream. It can be used
     to get the next tokens if required. For example when implementing
     a primitive like <tt>\def</tt> it is necessary to read the next
@@ -125,7 +125,7 @@
     implementing expandable primitives.
     </p>
    </dd>
-   <dt><tt><b>{@link de.dante.extex.typesetter.Typesetter Typesetter}</b> typesetter</tt></dt>
+   <dt><tt><b>{@link org.extex.typesetter.Typesetter Typesetter}</b> typesetter</tt></dt>
    <dd>
     The typesetter is the component which collects nodes and finally
     sends them to the document writer. With access to this component
@@ -148,7 +148,7 @@
    can find lines like the following one:
    <pre class="Sample">
      <b>&lt;define</b> name="def"
-              class="de.dante.extex.interpreter.primitives.macro.Def"<b>/&gt;</b></pre>
+              class="org.extex.interpreter.primitives.macro.Def"<b>/&gt;</b></pre>
   </p>
   <p>
    To add another primitive to <logo>ExTeX</logo> you should make a copy of this
@@ -173,7 +173,7 @@
    new macros. Those macros are defined at runtime. The assignment of
    the Java code to the macro name can be controlled with the help of
    a primitive. Check out whether the macro {@link
-   de.dante.extex.interpreter.primitives.dynamic.java.JavaDef
+   org.extex.interpreter.primitives.dynamic.java.JavaDef
    <tt>\javadef</tt>} is defined in one of the configuration files provided and
    consult the documentation.
   </p>
@@ -182,7 +182,7 @@
   <p>
    The implementing Java code for new primitives can signal abnormal
    situations with the help of exceptions. The exceptions used should
-   be derived from {@link de.dante.extex.interpreter.exception.InterpreterException
+   be derived from {@link org.extex.interpreter.exception.InterpreterException
    InterpreterException}. <tt>RuntimeException</tt>s and <tt>Error</tt>s
    or derived classes should not be used.
   </p>
@@ -200,19 +200,19 @@
    the parameter <tt>\globaldef</tt> is evaluated and the macro
    <tt>\afterassignment</tt> has some effect. To ease the development
    of assignments the abstract base class {@link
-   de.dante.extex.interpreter.type.AbstractAssignment AbstractAssignment} is
+   org.extex.interpreter.type.AbstractAssignment AbstractAssignment} is
    provided. This class defines the method <tt>execute()</tt>
    appropriately. The only task left is to overwrite the method
    <tt>assign()</tt> to perform the assignment.
    <pre class="JavaSample">
     <b>package</b> my.package;
 
-    <b>import</b> de.dante.extex.interpreter.contect.Context;
-    <b>import</b> de.dante.extex.interpreter.Flags;
-    <b>import</b> de.dante.extex.interpreter.TokenSource;
-    <b>import</b> de.dante.extex.interpreter.exception.InterpreterException;
-    <b>import</b> de.dante.extex.interpreter.type.AbstractAssignment;
-    <b>import</b> de.dante.extex.typesetter.Typesetter;
+    <b>import</b> org.extex.interpreter.contect.Context;
+    <b>import</b> org.extex.interpreter.Flags;
+    <b>import</b> org.extex.interpreter.TokenSource;
+    <b>import</b> org.extex.interpreter.exception.InterpreterException;
+    <b>import</b> org.extex.interpreter.type.AbstractAssignment;
+    <b>import</b> org.extex.typesetter.Typesetter;
  
     <b>class</b> MyAssign <b>extends</b> AbstractAssignment {
 
@@ -241,7 +241,7 @@
   <p>
    Some macros are expandable. This means that they can be used on the
    right-hand-side of an invocation as well. This feature is expressed
-   by the interface {@link de.dante.extex.interpreter.type.ExpandableCode
+   by the interface {@link org.extex.interpreter.type.ExpandableCode
    ExpandableCode}. Since Java does not allow multiple inheritance
    no abstract base class is provided.
   </p>
@@ -252,13 +252,13 @@
    <pre class="JavaSample">
     <b>package</b> my.package;
 
-    <b>import</b> de.dante.extex.interpreter.contect.Context;
-    <b>import</b> de.dante.extex.interpreter.Flags;
-    <b>import</b> de.dante.extex.interpreter.TokenSource;
-    <b>import</b> de.dante.extex.interpreter.exception.InterpreterException;
-    <b>import</b> de.dante.extex.interpreter.type.AbstractCode;
-    <b>import</b> de.dante.extex.interpreter.type.ExpandableCode;
-    <b>import</b> de.dante.extex.typesetter.Typesetter;
+    <b>import</b> org.extex.interpreter.contect.Context;
+    <b>import</b> org.extex.interpreter.Flags;
+    <b>import</b> org.extex.interpreter.TokenSource;
+    <b>import</b> org.extex.interpreter.exception.InterpreterException;
+    <b>import</b> org.extex.interpreter.type.AbstractCode;
+    <b>import</b> org.extex.interpreter.type.ExpandableCode;
+    <b>import</b> org.extex.typesetter.Typesetter;
  
     <b>class</b> MyExpandable <b>extends</b> AbstractCode <b>implements</b> ExpandableCode {
 
@@ -302,7 +302,7 @@
   </p>
   <p>
    All neccesary actions are performed by the abstract base class
-   {@link de.dante.extex.interpreter.primitives.conditional.AbstractIf
+   {@link org.extex.interpreter.primitives.conditional.AbstractIf
    AbstractIf}. The only thing to do is to implement the method
    <tt>conditional()</tt> which computes whether the then or the else
    branch should be considered relevant. This is shown in the
@@ -310,12 +310,12 @@
    <pre class="JavaSample">
     <b>package</b> my.package;
 
-    <b>import</b> de.dante.extex.interpreter.primitives.conditional.AbstractIf;
-    <b>import</b> de.dante.extex.interpreter.contect.Context;
-    <b>import</b> de.dante.extex.interpreter.Flags;
-    <b>import</b> de.dante.extex.interpreter.TokenSource;
-    <b>import</b> de.dante.extex.interpreter.exception.InterpreterException;
-    <b>import</b> de.dante.extex.typesetter.Typesetter;
+    <b>import</b> org.extex.interpreter.primitives.conditional.AbstractIf;
+    <b>import</b> org.extex.interpreter.contect.Context;
+    <b>import</b> org.extex.interpreter.Flags;
+    <b>import</b> org.extex.interpreter.TokenSource;
+    <b>import</b> org.extex.interpreter.exception.InterpreterException;
+    <b>import</b> org.extex.typesetter.Typesetter;
  
     <b>class</b> MyIf <b>extends</b> AbstractIf {
 
@@ -330,7 +330,7 @@
                                  <b>final</b> Typesetter typesetter
                                 ) <b>throws</b> InterpreterException {
         <i>// implement the evaluation of the conditional here</i>
-	<b>return</b> <i>result</i>;
+        <b>return</b> <i>result</i>;
       }
     }</pre>
    The parameters are the same as the parameters for
@@ -351,7 +351,7 @@
   </p>
   <p>
    The ability to be usable after <tt>\the</tt> is expressed with the
-   help of the interface {@link de.dante.extex.interpreter.type.Theable
+   help of the interface {@link org.extex.interpreter.type.Theable
    Theable}. Thus it is enough for a primitive to implement this
    interface if it needs to be usable after <tt>\the</tt>.
   </p>
@@ -362,52 +362,51 @@
   <table format="lll">
    <tr>
     <td><tt>\advance</tt></td>
-    <td>{@link de.dante.extex.interpreter.type.arithmetic.Advanceable
+    <td>{@link org.extex.interpreter.type.arithmetic.Advanceable
       Advanceable}</td>
    </tr>
    <tr>
     <td><tt>\box</tt></td>
-    <td>{@link de.dante.extex.interpreter.type.box.Boxable Boxable}</td>
+    <td>{@link org.extex.interpreter.type.box.Boxable Boxable}</td>
    </tr>
    <tr>
     <td><tt>\count</tt></td>
-    <td>{@link de.dante.extex.interpreter.type.count.CountConvertible
+    <td>{@link org.extex.interpreter.type.count.CountConvertible
       CountConvertible}</td>
    </tr>
    <tr>
     <td><tt>\dimen</tt></td>
-    <td>{@link de.dante.extex.interpreter.type.dimen.DimenConvertible
+    <td>{@link org.extex.interpreter.type.dimen.DimenConvertible
       DimenConvertible}</td>
    </tr>
    <tr>
     <td><tt>\divide</tt></td>
-    <td>{@link de.dante.extex.interpreter.type.arithmetic.Divideable
+    <td>{@link org.extex.interpreter.type.arithmetic.Divideable
       Dividable}</td>
    </tr>
    <tr>
     <td><tt>\font</tt></td>
-    <td>{@link de.dante.extex.interpreter.type.font.FontConvertible
+    <td>{@link org.extex.interpreter.type.font.FontConvertible
       FontConvertible}</td>
    </tr>
    <tr>
     <td><tt>\multiply</tt></td>
-    <td>{@link de.dante.extex.interpreter.type.arithmetic.Multiplyable
+    <td>{@link org.extex.interpreter.type.arithmetic.Multiplyable
       Multiplyable}</td>
    </tr>
    <tr>
     <td><tt>\show</tt></td>
-    <td>{@link de.dante.extex.interpreter.type.Showable Showable}</td>
+    <td>{@link org.extex.interpreter.type.Showable Showable}</td>
    </tr>
    <tr>
     <td><tt>\showthe</tt></td>
-    <td>{@link de.dante.extex.interpreter.type.Theable Theable}</td>
+    <td>{@link org.extex.interpreter.type.Theable Theable}</td>
    </tr>
    <tr>
     <td><tt>\the</tt></td>
-    <td>{@link de.dante.extex.interpreter.type.Theable Theable}</td>
+    <td>{@link org.extex.interpreter.type.Theable Theable}</td>
    </tr>
   </table>
-
   </doc>
 
  </body>

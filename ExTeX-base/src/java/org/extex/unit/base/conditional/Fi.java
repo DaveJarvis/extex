@@ -43,7 +43,6 @@ import org.extex.typesetter.Typesetter;
  *  <pre class="syntax">
  *    &lang;fi&rang;
  *     &rarr; <tt>\fi</tt>  </pre>
- * </p>
  *
  * <h4>Examples</h4>
  *  <pre class="TeXSample">

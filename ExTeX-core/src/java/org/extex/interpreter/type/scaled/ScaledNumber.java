@@ -580,9 +580,6 @@ public class ScaledNumber {
      * Determine the printable representation of the object.
      *
      * @return the printable representation
-     *
-     * @see #toString(StringBuffer)
-     * @see #toToks(Tokens,TokenFactory)
      */
     public String toString() {
 

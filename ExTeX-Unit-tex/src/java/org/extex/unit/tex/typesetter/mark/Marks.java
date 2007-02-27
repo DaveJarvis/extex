@@ -53,7 +53,7 @@ import org.extex.typesetter.type.node.MarkNode;
  *  <pre class="syntax">
  *    &lang;marks&rang;
  *      &rarr; <tt>\marks</tt> {@linkplain
- *        org.extex.unit.etex.typesetter.mark.AbstractMarksCode#getKey(Context,TokenSource,Typesetter)
+ *        org.extex.unit.tex.typesetter.mark.AbstractMarksCode#getKey(Context,TokenSource,Typesetter)
  *        &lang;mark name&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
  *        &lang;tokens&rang;}  </pre>

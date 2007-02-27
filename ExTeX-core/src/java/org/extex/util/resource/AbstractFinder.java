@@ -88,7 +88,8 @@ public abstract class AbstractFinder implements LogEnabled, ResourceFinder {
      *
      * @param configuration the encapsulated configuration object
      *
-     * @throws ConfigurationMissingException in case of an error
+     * @throws ConfigurationMissingException in case of an error: The argument
+     *   configuration is <code>null</code>.
      */
     public AbstractFinder(final Configuration configuration)
             throws ConfigurationMissingException {

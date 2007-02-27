@@ -73,7 +73,7 @@
  <p>
   These considerations have let to the implementation of a test driver
   for <logo>ExTeX</logo> primitives. This test driver is provided in
-  <tt>de.dante.test.ExTeXlauncher</tt>.
+  <tt>org.extex.test.ExTeXlauncher</tt>.
  </p>
 
  <h4>Writing Tests for Primitives</h4>
@@ -84,9 +84,9 @@
  </p>
 
  <pre class="JavaSample">
-  <b>package</b> de.dante.extex.interpreter.primitives;
+  <b>package</b> org.extex.interpreter.primitives;
 
-  <b>import</b> de.dante.test.ExTeXLauncher;
+  <b>import</b> org.extex.test.ExTeXLauncher;
 
   <i>/**
    * This is a test suite for the primitive &lt;tt&gt;\relax&lt;/tt&gt;.
@@ -148,7 +148,7 @@
   Now we want to have a closer look at the test file step by step.
  </p>
  <pre class="JavaSample">
-  <b>package</b> de.dante.extex.interpreter.primitives;
+  <b>package</b> org.extex.interpreter.primitives;
  </pre>
  <p>
   The first line declares where the test suite is located. In the
@@ -158,7 +158,7 @@
   instead of any other directory separator.
  </p>
  <pre class="JavaSample">
-  <b>import</b> de.dante.test.ExTeXLauncher;
+  <b>import</b> org.extex.test.ExTeXLauncher;
  </pre>
  <p>
   Next we import the base class itself.

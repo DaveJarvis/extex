@@ -64,7 +64,7 @@ import org.extex.util.framework.configuration.exception.ConfigurationException;
  *        &lang;outfile&nbsp;name&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.interpreter.primitive.file.AbstractFileCode#scanFileName(Context,TokenSource)
+ *        org.extex.unit.base.file.AbstractFileCode#scanFileName(Context,TokenSource)
  *        &lang;file name&rang;}
  *
  *    &lang;optional prefix&rang;

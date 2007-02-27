@@ -39,7 +39,6 @@ import org.extex.util.framework.logger.LogEnabled;
 import org.extex.util.resource.ResourceConsumer;
 import org.extex.util.resource.ResourceFinder;
 
-
 /**
  * This is the abstract base class for factories. It contains some common
  * methods which should make it easy to create a custom factory.
@@ -130,7 +129,7 @@ public abstract class AbstractFactory
 
         if (instance instanceof Localizable) {
             ((Localizable) instance).enableLocalization(LocalizerFactory
-                    .getLocalizer(className));
+                .getLocalizer(className));
         }
     }
 
@@ -154,18 +153,18 @@ public abstract class AbstractFactory
      * The field <tt>configuration</tt> contains the configuration of the
      * factory which is also passed to the new instances.
      */
-    private transient Configuration configuration = null;
+    private Configuration configuration = null;
 
     /**
      * The field <tt>logger</tt> contains the logger to pass to the new
      * typesetters.
      */
-    private transient Logger logger = null;
+    private Logger logger = null;
 
     /**
      * The field <tt>resourceFinder</tt> contains the ...
      */
-    private transient ResourceFinder resourceFinder = null;
+    private ResourceFinder resourceFinder = null;
 
     /**
      * Creates a new factory object.
@@ -176,6 +175,12 @@ public abstract class AbstractFactory
     }
 
     /**
+     * Configure an object according to a given Configuration.
+     *
+     * @param config the configuration object to consider
+     *
+     * @throws ConfigurationException in case that something went wrong
+     *
      * @see org.extex.util.framework.configuration.Configurable#configure(
      *      org.extex.util.framework.configuration.Configuration)
      */
@@ -238,7 +243,7 @@ public abstract class AbstractFactory
             throws ConfigurationException {
 
         return createInstanceForConfiguration(selectConfiguration(type),
-                target, argClass, arg);
+            target, argClass, arg);
     }
 
     /**
@@ -258,7 +263,7 @@ public abstract class AbstractFactory
 
         if (className == null) {
             throw new ConfigurationMissingAttributeException(CLASS_ATTRIBUTE,
-                    config);
+                config);
         }
 
         Class theClass;
@@ -270,7 +275,7 @@ public abstract class AbstractFactory
 
         if (!target.isAssignableFrom(theClass)) {
             throw new ConfigurationInvalidClassException(theClass.getName(),
-                    target.getName(), config);
+                target.getName(), config);
         }
 
         try {
@@ -283,15 +288,16 @@ public abstract class AbstractFactory
                 switch (args.length) {
                     case 0:
                         return createInstanceForConfiguration0(config,
-                                className, theClass);
+                            className, theClass);
                     case 1:
-                        instance = createInstanceForConfiguration1(config,
-                                target, className, constructor, args[0]);
+                        instance =
+                                createInstanceForConfiguration1(config, target,
+                                    className, constructor, args[0]);
                         break;
                     case 2:
-                        instance = createInstanceForConfiguration2(config,
-                                target, className, constructor, args[0],
-                                args[1]);
+                        instance =
+                                createInstanceForConfiguration2(config, target,
+                                    className, constructor, args[0], args[1]);
                         break;
                     default:
                         // Consider the next constructor
@@ -317,7 +323,7 @@ public abstract class AbstractFactory
         }
 
         throw new ConfigurationInvalidClassException(theClass.getName(), target
-                .getName(), config);
+            .getName(), config);
     }
 
     /**
@@ -341,7 +347,7 @@ public abstract class AbstractFactory
 
         if (className == null) {
             throw new ConfigurationMissingAttributeException(CLASS_ATTRIBUTE,
-                    config);
+                config);
         }
 
         Class theClass;
@@ -353,7 +359,7 @@ public abstract class AbstractFactory
 
         if (!target.isAssignableFrom(theClass)) {
             throw new ConfigurationInvalidClassException(theClass.getName(),
-                    target.getName(), config);
+                target.getName(), config);
         }
 
         try {
@@ -365,8 +371,9 @@ public abstract class AbstractFactory
                 switch (args.length) {
                     case 1:
                         if (args[0].isAssignableFrom(argClass)) {
-                            instance = constructors[i]
-                                    .newInstance(new Object[]{arg});
+                            instance =
+                                    constructors[i]
+                                        .newInstance(new Object[]{arg});
                             enableLogging(instance, getLogger());
                             configure(instance, config);
                             enableLocalization(instance, className);
@@ -378,15 +385,19 @@ public abstract class AbstractFactory
                         if (args[1].isAssignableFrom(argClass)) {
                             if (args[0].isAssignableFrom(Configuration.class)
                                     && args[1].isAssignableFrom(argClass)) {
-                                instance = constructors[i]
-                                        .newInstance(new Object[]{config, arg});
+                                instance =
+                                        constructors[i]
+                                            .newInstance(new Object[]{config,
+                                                    arg});
                                 enableLogging(instance, getLogger());
                                 enableLocalization(instance, className);
                                 return instance;
                             } else if (args[0].isAssignableFrom(Logger.class)
                                     && args[1].isAssignableFrom(argClass)) {
-                                instance = constructors[i]
-                                        .newInstance(new Object[]{config, arg});
+                                instance =
+                                        constructors[i]
+                                            .newInstance(new Object[]{config,
+                                                    arg});
                                 configure(instance, config);
                                 enableLocalization(instance, className);
                                 return instance;
@@ -414,7 +425,7 @@ public abstract class AbstractFactory
         }
 
         throw new ConfigurationInvalidClassException(theClass.getName(), target
-                .getName(), config);
+            .getName(), config);
     }
 
     /**
@@ -436,7 +447,7 @@ public abstract class AbstractFactory
 
         if (className == null) {
             throw new ConfigurationMissingAttributeException(CLASS_ATTRIBUTE,
-                    config);
+                config);
         }
 
         try {
@@ -444,7 +455,7 @@ public abstract class AbstractFactory
 
             if (!target.isAssignableFrom(theClass)) {
                 throw new ConfigurationInvalidClassException(
-                        theClass.getName(), target.getName(), config);
+                    theClass.getName(), target.getName(), config);
             }
 
             Constructor[] constructors = theClass.getConstructors();
@@ -455,8 +466,9 @@ public abstract class AbstractFactory
                 switch (args.length) {
                     case 1:
                         if (args[0].isAssignableFrom(String.class)) {
-                            instance = constructors[i]
-                                    .newInstance(new Object[]{arg1});
+                            instance =
+                                    constructors[i]
+                                        .newInstance(new Object[]{arg1});
                             enableLogging(instance, getLogger());
                             configure(instance, config);
                             enableLocalization(instance, className);
@@ -669,16 +681,16 @@ public abstract class AbstractFactory
 
         Configuration config = this.configuration.findConfiguration(type);
         if (config == null) {
-            String fallback = this.configuration
-                    .getAttribute(DEFAULT_ATTRIBUTE);
+            String fallback =
+                    this.configuration.getAttribute(DEFAULT_ATTRIBUTE);
             if (fallback == null) {
                 throw new ConfigurationMissingAttributeException(
-                        DEFAULT_ATTRIBUTE, configuration);
+                    DEFAULT_ATTRIBUTE, configuration);
             }
             config = configuration.findConfiguration(fallback);
             if (config == null) {
                 throw new ConfigurationMissingAttributeException(fallback,
-                        this.configuration);
+                    this.configuration);
             }
         }
         return config;

@@ -104,7 +104,6 @@ import org.extex.util.framework.configuration.exception.ConfigurationException;
  *          &lang;equals&rang;} {@linkplain
  *          org.extex.interpreter.TokenSource#getFont(Context,String)
  *          &lang;font&rang;}  </pre>
- * </p>
  *
  * <h4>Examples</h4>
  *  <pre class="TeXSample">
@@ -135,7 +134,6 @@ import org.extex.util.framework.configuration.exception.ConfigurationException;
  *          &lang;equals&rang;} {@linkplain
  *          org.extex.interpreter.TokenSource#getFont(Context,String)
  *          &lang;font&rang;}  </pre>
- * </p>
  *
  * <h4>Examples</h4>
  *  <pre class="TeXSample">
@@ -166,7 +164,6 @@ import org.extex.util.framework.configuration.exception.ConfigurationException;
  *          &lang;equals&rang;} {@linkplain
  *          org.extex.interpreter.TokenSource#getFont(Context,String)
  *          &lang;font&rang;}  </pre>
- * </p>
  *
  * <h4>Examples</h4>
  *  <pre class="TeXSample">

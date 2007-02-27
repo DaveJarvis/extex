@@ -60,7 +60,7 @@ import org.extex.util.framework.i18n.LocalizerFactory;
  * <p>
  *  The box register 255 is used to pass in the current vertical list. This list
  *  is assumed to make it to the page. For this purpose the primitive
- *  {@link org.extex.interpreter.primitives.typesetter.output.Shipout \shipout}
+ *  {@link org.extex.unit.tex.typesetter.output.Shipout \shipout}
  *  can be used.
  * </p>
  * <p>
@@ -69,12 +69,12 @@ import org.extex.util.framework.i18n.LocalizerFactory;
  * </p>
  * <p>
  *  The output routine is assumed to invoke
- *  {@link org.extex.interpreter.primitives.typesetter.output.Shipout \shipout}.
+ *  {@link org.extex.unit.tex.typesetter.output.Shipout \shipout}.
  *  This does not have to happen at each invocation of the output routine.
  *  The count register
  *  <tt>\maxdeadcycles</tt> determines how many invocations are allowed which
  *  do not call
- *  {@link org.extex.interpreter.primitives.typesetter.output.Shipout \shipout}.
+ *  {@link org.extex.unit.tex.typesetter.output.Shipout \shipout}.
  *  The count register <tt>\deadcycles</tt>
  *  contains the number of dead cycles encountered already.
  * </p>

@@ -49,6 +49,7 @@ import org.extex.util.framework.logger.LogEnabled;
  * </p>
  *
  * <h4>Syntax</h4>
+ * <p>
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;closeout&rang;

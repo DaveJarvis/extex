@@ -58,13 +58,45 @@ public class UnlessTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
-    public void testErr1() throws Exception {
+    public void testError1() throws Exception {
+
+        assertFailure(
+        //--- input code ---
+                "\\unless",
+                //--- error channel ---
+                "Missing control sequence inserted");
+    }
+
+    /**
+     * <testcase primitive="\u005cnless">
+     *  Test case checking that <tt>\u005cnless</tt> ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testError2() throws Exception {
 
         assertFailure(
         //--- input code ---
                 "\\unless\\relax",
                 //--- error channel ---
                 "You can't use `\\relax' after \\unless");
+    }
+
+    /**
+     * <testcase primitive="\u005cnless">
+     *  Test case checking that <tt>\u005cnless</tt> ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testError3() throws Exception {
+
+        assertFailure(
+        //--- input code ---
+                "\\unless A",
+                //--- error channel ---
+                "Missing control sequence inserted");
     }
 
     /**

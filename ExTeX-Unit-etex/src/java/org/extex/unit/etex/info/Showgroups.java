@@ -432,7 +432,8 @@ public class Showgroups extends AbstractCode
                     : loc.format("log.level" + key, Integer.toString(i)));
             start = g.getGroupStart();
             String token = (start == null ? "" //
-                    : loc.format("log.token" + key, start.toText()));
+                    : loc.format("log.token" + key, //
+                        start.toText(context.escapechar())));
             locator = g.getLocator();
             String line =
                     (locator == null ? "" //

@@ -48,11 +48,10 @@ import org.extex.typesetter.Typesetter;
  *  <pre class="syntax">
  *    &lang;else&rang;
  *      &rarr; <tt>\else</tt>  </pre>
- * </p>
  *
  * <h4>Examples</h4>
  *  <pre class="TeXSample">
- *    \ifnum 1<2\else no\fi  </pre>
+ *    \ifnum 1&lt;2\else no\fi  </pre>
  * </doc>
  *
  *

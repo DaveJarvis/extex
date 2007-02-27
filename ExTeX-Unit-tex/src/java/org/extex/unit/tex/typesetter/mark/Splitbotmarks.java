@@ -37,7 +37,7 @@ import org.extex.interpreter.type.tokens.Tokens;
  *  <pre class="syntax">
  *    &lang;splibotmarks&rang;
  *      &rarr; <tt>\splitbotmarks</tt> {@linkplain
- *        org.extex.unit.etex.typesetter.mark.AbstractMarksCode#getKey(Context,TokenSource,Typesetter)
+ *        org.extex.unit.tex.typesetter.mark.AbstractMarksCode#getKey(Context,TokenSource,Typesetter)
  *        &lang;mark name&rang;}  </pre>
  *
  * <h4>Examples</h4>

@@ -285,10 +285,11 @@ public class MultiConfiguration implements Configuration {
      * configuration and append them to a given StringList.
      *
      * @param key the name of the tags
-     * @param list the list tol append the values to
+     * @param list the list to append the values to
      *
      * @see org.extex.util.framework.configuration.Configuration#getValues(
-     *      org.extex.util.StringList, java.lang.String)
+     *      org.extex.type.StringList,
+     *      java.lang.String)
      */
     public void getValues(final StringList list, final String key) {
 

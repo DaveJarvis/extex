@@ -87,7 +87,6 @@ import org.extex.typesetter.Typesetter;
  *  which is configurable via the count register <tt>\max.register</tt>.
  *  This means that the feature can be disabled in the compatibility modes.
  * </p>
- * <p>
  * </doc>
  *
  *

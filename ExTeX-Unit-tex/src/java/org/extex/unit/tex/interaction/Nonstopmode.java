@@ -50,12 +50,10 @@ import org.extex.typesetter.Typesetter;
  *  <pre class="syntax">
  *    &lang;nonstopmode&rang;
  *      &rarr; <tt>\nonstopmode</tt>  </pre>
- * </p>
- * <p>
- *  Examples:
+ *
+ * <h4>Examples</h4>
  *  <pre class="TeXSample">
  *    \nonstopmode  </pre>
- * </p>
  * </doc>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
