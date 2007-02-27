@@ -55,9 +55,35 @@ public class LetterTokenTest extends TestCase {
 
     /**
      */
-    public void testToString() {
+    public void testToString1() {
 
         assertEquals("the letter x", t.toString());
+    }
+
+    /**
+     */
+    public void testToString2() {
+
+        assertEquals("the letter ^^1", new LetterToken(UnicodeChar.get(1))
+            .toString());
+    }
+
+    /**
+     */
+    public void testToStringBuffer1() {
+
+        StringBuffer sb = new StringBuffer();
+        t.toString(sb);
+        assertEquals("the letter x", sb.toString());
+    }
+
+    /**
+     */
+    public void testToStringBuffer2() {
+
+        StringBuffer sb = new StringBuffer();
+        new LetterToken(UnicodeChar.get(1)).toString(sb);
+        assertEquals("the letter ^^1", sb.toString());
     }
 
     /**
