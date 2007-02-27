@@ -32,14 +32,15 @@ import junit.framework.TestCase;
 public class InteractionTest extends TestCase {
 
     /**
-     * TODO gene: missing JavaDoc.
+     * Sensor for the interaction mode.
      */
     private class Sensor implements InteractionVisitor {
 
         /**
-         * The field <tt>mode</tt> contains the ...
+         * The field <tt>mode</tt> contains the interaction mode encountered
+         * last.
          */
-        public Interaction mode = null;
+        private Interaction mode = null;
 
         /**
          * Invoke the method in case of a batchmode interaction.
@@ -124,6 +125,7 @@ public class InteractionTest extends TestCase {
             mode = Interaction.SCROLLMODE;
             return false;
         }
+
     };
 
     /**
