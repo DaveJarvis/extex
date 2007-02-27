@@ -51,14 +51,12 @@ public class ClasspathArchiveFinderTest extends TestCase {
                     ConfigurationSyntaxException,
                     ConfigurationIOException {
 
-            // TODO gene: findConfiguration unimplemented
             return null;
         }
 
         public Configuration findConfiguration(final String key,
                 final String attribute) throws ConfigurationException {
 
-            // TODO gene: findConfiguration unimplemented
             return null;
         }
 
