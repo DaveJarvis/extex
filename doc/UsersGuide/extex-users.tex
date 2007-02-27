@@ -251,30 +251,29 @@ installer. This installer\index{installer} is distributed as one file
   \url{http://www.extex.org/download/}
 \end{quotation}
 
+If you have got the installer there is no need for you to get the
+sources as well. Thus you can skip the following section.
+
 
 \subsection{Getting the Sources}
 %@author Gerd Neugebauer
 
-The sources of \ExTeX\ are stored in a CVS repository. To access this
-repository you need access to the internet and CVS installed in some
+The sources of \ExTeX\ are stored in a Subversion repository. To access this
+repository you need access to the internet and Subversion installed in some
 way.
 
 
 The coordinates of the repository are:\index{repository}\index{CVS}
 \medskip
-
-\begin{tabular}{ll}\toprule
-  Connection type: & \texttt{pserver}			\\
-  User:		   & \texttt{anonymous}			\\
-  Host:		   & \texttt{cvs.extex.berlios.de}	\\
-  Location:	   & \texttt{/cvsroot/extex}		\\
-  Module:	   & \texttt{ExTeX}			\\\bottomrule
-\end{tabular}
+\begin{quotation}
+  \texttt{https://svn.berlios.de/svnroot/repos/extex}
+\end{quotation}
 \bigskip
 
-We assume here that you have access to CVS on the command line. This
-can be either a shell on a Unix-like system or something like cygwin on
-Windows. We also assume that you have direct connection to the internet.
+We assume here that you have access to Subversion on the command line.
+This can be either a shell on a Unix-like system or something like
+cygwin on Windows. We also assume that you have direct connection to
+the internet.
 
 First we create a directory where the sources are stored:
 \begin{lstlisting}{}
@@ -286,20 +285,15 @@ Next we change the current directory to this base directory:
 # cd ExTeX
 \end{lstlisting}
 
-Now we log into the CVS repository. This login uses an anonymous
-account. This enables us to download the sources but not to commit any
-changes. The committing is restricted to members of the \ExTeX{} team.
-\begin{lstlisting}{}
-# cvs -d:pserver:anonymous@cvs.extex.berlios.de/cvsroot/extex login
-\end{lstlisting}
-
 Finally we can check out the sources:
 \begin{lstlisting}{}
-# cvs -d:pserver:anonymous@cvs.extex.berlios.de/cvsroot/extex co ExTeX
+# svn checkout https://svn.berlios.de/svnroot/repos/extex/trunk
 \end{lstlisting}
 
 This command shows a lot of output. At the end the current directory
-is filled with a lot of files and directories.
+contains the sub-directory \texttt{trunk} which is filled with a lot
+of files and directories.
+
 
 \section{Installing \ExTeX}
 %@author Gerd Neugebauer
@@ -379,53 +373,53 @@ Finally you have to make sure that the executables \Prog{extex} or
 \Prog{extex.bat} is on your path for executables.\index{path}
 
 
-\subsection{Creating the \ExTeX\ Installer}
-%@author Gerd Neugebauer
+%\subsection{Creating the \ExTeX\ Installer}
+%%@author Gerd Neugebauer
+%
+%You can create the installer of \ExTeX\ from the sources. All you need
+%for this step is contained in the source distribution. Suppose you are
+%in the base directory of the distribution. Then the following command
+%creates the installer:\index{installer!building}
+%
+%\begin{lstlisting}{}
+%# build installer
+%\end{lstlisting}
+%
+%As a result the file \File{ExTeX-setup.jar} is created in the
+%directory \texttt{target}. This file is a self-contained installer.
+%You can immediately start the installer with the following command line:
+%
+%\begin{lstlisting}{}
+%# java -jar target/ExTeX-setup.jar
+%\end{lstlisting}
+%
+%In addition the installer file can be moved to any other place -- even
+%other machines -- and run the installation there (see also
+%section~\ref{sec:installer}).
 
-You can create the installer of \ExTeX\ from the sources. All you need
-for this step is contained in the source distribution. Suppose you are
-in the base directory of the distribution. Then the following command
-creates the installer:\index{installer!building}
 
-\begin{lstlisting}{}
-# build installer
-\end{lstlisting}
-
-As a result the file \File{ExTeX-setup.jar} is created in the
-directory \texttt{target}. This file is a self-contained installer.
-You can immediately start the installer with the following command line:
-
-\begin{lstlisting}{}
-# java -jar target/ExTeX-setup.jar
-\end{lstlisting}
-
-In addition the installer file can be moved to any other place -- even
-other machines -- and run the installation there (see also
-section~\ref{sec:installer}).
-
-
-\subsection{Installing \ExTeX\ from the Sources on the Command Line}
-%@author Gerd Neugebauer
-
-To install you can use the build script provided in the \ExTeX{}
-base directory.
-
-\begin{lstlisting}{}
-# build -Dinstall.dir=/usr/local/share/ExTeX install
-\end{lstlisting}
-
-Additionally you have to copy the file \File{.extex} from the base
-directory of the \ExTeX\ to your home directory and adapted to your
-installation. Most probably the value of the property
-\Property{extex.texinputs} needs adaptation to point to your
-texmf\index{texmf} trees.
-
-Finally you have to make sure that the executables \Prog{extex} or
-
-\Prog{extex.bat} is on your path for executables.
-
-Now you can forget the source directory. It is not needed any more
-unless you are debugging or developing \ExTeX{} extensions.
+%\subsection{Installing \ExTeX\ from the Sources on the Command Line}
+%%@author Gerd Neugebauer
+%
+%To install you can use the build script provided in the \ExTeX{}
+%base directory.
+%
+%\begin{lstlisting}{}
+%# build -Dinstall.dir=/usr/local/share/ExTeX install
+%\end{lstlisting}
+%
+%Additionally you have to copy the file \File{.extex} from the base
+%directory of the \ExTeX\ to your home directory and adapted to your
+%installation. Most probably the value of the property
+%\Property{extex.texinputs} needs adaptation to point to your
+%texmf\index{texmf} trees.
+%
+%Finally you have to make sure that the executables \Prog{extex} or
+%
+%\Prog{extex.bat} is on your path for executables.
+%
+%Now you can forget the source directory. It is not needed any more
+%unless you are debugging or developing \ExTeX{} extensions.
 
 
 %------------------------------------------------------------------------------
