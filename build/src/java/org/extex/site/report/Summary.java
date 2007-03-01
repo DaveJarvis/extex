@@ -20,13 +20,13 @@
 package org.extex.site.report;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FilenameFilter;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
-
-import sun.misc.Compare;
-import sun.misc.Sort;
+import java.util.List;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -41,7 +41,7 @@ public class Summary {
      *
      * @param args the command line arguments
      */
-    public static void main(final String[] args) throws FileNotFoundException {
+    public static void main(final String[] args) {
 
         String directory = ".";
 
@@ -69,15 +69,26 @@ public class Summary {
                 return name.endsWith(".xml");
             }
         });
+        List l = new ArrayList(); 
+        for (int j=0;j<list.length;j++) {
+            l.add(list[j]);
+        }
 
-        Sort.quicksort(list, new Compare() {
+        Collections.sort(l, new Comparator() {
 
             /**
-             * @see sun.misc.Compare#doCompare(java.lang.Object, java.lang.Object)
+             * Compare two objects.
+             *
+             * @param o1 the first object
+             * @param o2 the second object
+             *
+             * @return ...
+             *
+             * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
              */
-            public int doCompare(final Object arg0, final Object arg1) {
+            public int compare(final Object o1, final Object o2) {
 
-                return ((String) arg0).compareTo((String) arg1);
+                return ((String) o1).compareTo((String) o2);
             }
         });
 
@@ -91,7 +102,7 @@ public class Summary {
 
         for (int j = 0; j < list.length; j++) {
             stream.print("  <file name=\"");
-            stream.print(list[j]);
+            stream.print(l.get(j));
             stream.println("\"/>");
         }
         stream.println("</summary>");
