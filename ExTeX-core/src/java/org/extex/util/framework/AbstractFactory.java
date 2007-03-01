@@ -177,7 +177,7 @@ public abstract class AbstractFactory
     /**
      * Configure an object according to a given Configuration.
      *
-     * @param config the configuration object to consider
+     * @param theConfiguration the configuration object to consider
      *
      * @throws ConfigurationException in case that something went wrong
      *

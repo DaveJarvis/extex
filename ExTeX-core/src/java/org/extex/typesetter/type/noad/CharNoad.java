@@ -100,7 +100,7 @@ public class CharNoad extends AbstractNoad {
      * @param previousNoad the previous noad
      * @param noads the list of noads currently processed
      * @param index the index of the current node in the list
-     * @param list the list to add the nodes to. This list contains the Nodes
+     * @param nodes the list to add the nodes to. This list contains the Nodes
      *  previously typeset. Thus it can be used to look back
      * @param mathContext the context to consider
      * @param logger the logger for debugging and tracing information

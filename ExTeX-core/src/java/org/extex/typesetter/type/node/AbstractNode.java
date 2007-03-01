@@ -399,9 +399,9 @@ public abstract class AbstractNode implements Node {
      * @see org.extex.typesetter.type.Node#setDepth(
      *      org.extex.interpreter.type.dimen.FixedDimen)
      */
-    public void setDepth(final FixedDimen glue) {
+    public void setDepth(final FixedDimen depth) {
 
-        depth.set(glue);
+        this.depth.set(depth);
     }
 
     /**
@@ -412,9 +412,9 @@ public abstract class AbstractNode implements Node {
      * @see org.extex.typesetter.type.Node#setHeight(
      *      org.extex.interpreter.type.dimen.FixedDimen)
      */
-    public void setHeight(final FixedDimen glue) {
+    public void setHeight(final FixedDimen height) {
 
-        height.set(glue);
+        this.height.set(height);
     }
 
     /**
@@ -425,9 +425,9 @@ public abstract class AbstractNode implements Node {
      * @see org.extex.typesetter.type.Node#setWidth(
      *      org.extex.interpreter.type.dimen.FixedDimen)
      */
-    public void setWidth(final FixedDimen glue) {
+    public void setWidth(final FixedDimen width) {
 
-        width.set(glue);
+        this.width.set(width);
     }
 
     /**
@@ -491,7 +491,7 @@ public abstract class AbstractNode implements Node {
      *      int)
      */
     public void toString(final StringBuffer sb, final String prefix,
-            final int b, final int d) {
+            final int breadth, final int depth) {
 
         sb.append(getLocalizer().format("String.Format"));
     }

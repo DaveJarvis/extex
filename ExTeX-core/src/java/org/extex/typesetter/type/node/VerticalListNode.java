@@ -305,7 +305,8 @@ public class VerticalListNode extends GenericNodeList implements NodeList {
      *      org.extex.interpreter.type.dimen.FixedDimen,
      *      org.extex.interpreter.type.glue.FixedGlueComponent)
      */
-    public void spreadHeight(final FixedDimen w, final FixedGlueComponent sum) {
+    public void spreadHeight(final FixedDimen height,
+            final FixedGlueComponent sum) {
 
     }
 
