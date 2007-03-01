@@ -43,7 +43,7 @@
 
     <mkdir dir="${log.dir}" />
     <delete file="${report.file}"/>
-    <exec executable="ant${bat}$">
+    <exec executable="ant${bat}">
       <arg value="-quiet" />
       <arg value="-logger" />
       <arg value="org.apache.tools.ant.XmlLogger" />
