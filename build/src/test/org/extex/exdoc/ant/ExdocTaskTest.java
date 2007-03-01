@@ -32,14 +32,6 @@ import org.apache.tools.ant.BuildFileTest;
 public class ExdocTaskTest extends BuildFileTest {
 
     /**
-     * The field <tt>ANT</tt> contains the ...
-     */
-    private static final String ANT =
-            (System.getProperty("os.name").startsWith("Windows") //
-                    ? "ant.bat"
-                    : "ant");
-
-    /**
      * Creates a new object.
      *
      * @param name the name
