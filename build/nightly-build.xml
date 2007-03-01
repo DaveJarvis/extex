@@ -33,27 +33,28 @@
 
   <property name="report.file" value="target/build.html" />
 
+  <condition property="bat" value=".bat" else="">
+    <os family="windows"/>
+  </condition>
+  
   <!-- ==================================================================== -->
   <target name="all"
           description="Build nearly everything and translate the build log into a HTML page">
 
     <mkdir dir="${log.dir}" />
     <delete file="${report.file}"/>
-    <java fork="true" classname="org.apache.tools.ant.Main">
-      <classpath>
-        <fileset dir="${ant.home}/lib" includes="*.jar" />
-      </classpath>
-      <jvmarg value="-Dant.home=${ant.home}" />
+    <exec executable="ant${bat}$">
       <arg value="-quiet" />
       <arg value="-logger" />
       <arg value="org.apache.tools.ant.XmlLogger" />
       <arg value="-logfile" />
       <arg value="${log.dir}/${log.file}" />
-    </java>
+    </exec>
 
     <xslt in="${log.dir}/${log.file}"
           out="${report.file}"
           style="${log.style}" />
+    <delete file="${log.dir}/${log.file}"/>
   </target>
 
   <!-- ==================================================================== -->
