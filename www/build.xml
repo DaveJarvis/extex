@@ -78,7 +78,7 @@
     <taskdef name="testSummary"
              classname="org.extex.site.TestSummary"
              classpath="target/classes:${ant.project.name}.jar" />
-    <testSummary input="../build/target/application/html/reports/tests/overview-summary.html"
+    <testSummary input="../build/target/application/html/snapshot/tests/overview-summary.html"
                  output="target/test-summary.html" />
   </target>
 
