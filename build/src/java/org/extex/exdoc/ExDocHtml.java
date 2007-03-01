@@ -28,9 +28,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
@@ -49,31 +47,12 @@ import org.extex.exdoc.util.Key;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class ExDocTeX extends ExDocXml {
-
-    /**
-     * The field <tt>ENTITY_MAP</tt> contains the ...
-     */
-    private static final Map ENTITY_MAP = new HashMap();
+public class ExDocHtml extends ExDocXml {
 
     /**
      * The field <tt>XSLT</tt> contains the ...
      */
-    private static final String XSLT = "org/extex/exdoc/xslt/xml2tex.xsl";
-
-    static {
-        ENTITY_MAP.put("amp", "&amp;");
-        ENTITY_MAP.put("gt", "&gt;");
-        ENTITY_MAP.put("lt", "&lt;");
-        ENTITY_MAP.put("nbsp", "~");
-        ENTITY_MAP.put("lang", "\\tag{");
-        ENTITY_MAP.put("rang", "}");
-        ENTITY_MAP.put("larr", "\\ensuremath{\\leftarrow}");
-        ENTITY_MAP.put("rarr", "\\ensuremath{\\rightarrow}");
-        ENTITY_MAP.put("tilde", "\\~{}");
-        ENTITY_MAP.put("ndash", "--");
-        ENTITY_MAP.put("#x5c", "\\");
-    }
+    private static final String XSLT = "org/extex/exdoc/xslt/xml2tml.xsl";
 
     /**
      * The main program for this class.
@@ -83,15 +62,11 @@ public class ExDocTeX extends ExDocXml {
     public static void main(final String[] args) {
 
         try {
-            new ExDocTeX().run(args);
+            new ExDocHtml().run(args);
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
     }
-
-    private String primitveFile = null;
-
-    private String syntaxFile = null;
 
     /**
      * The field <tt>keys</tt> contains the ...
@@ -103,57 +78,9 @@ public class ExDocTeX extends ExDocXml {
      *
      * @throws ParserConfigurationException in case of an error
      */
-    public ExDocTeX() throws ParserConfigurationException {
+    public ExDocHtml() throws ParserConfigurationException {
 
         super();
-    }
-
-    /**
-     * Replace all strings of a given form into something new.
-     *
-     * @param content the content to transform
-     * @param from the string to be replaced
-     * @param to the new sring to be inserted
-     */
-    private void replace(final StringBuffer content, final String from,
-            final String to) {
-
-        int length = from.length();
-
-        for (int i = content.indexOf(from); i >= 0; i =
-                content.indexOf(from, i + to.length())) {
-            content.replace(i, i + length, to);
-        }
-    }
-
-    /**
-     * Replace HTML entities of the form <tt>&amp;&lang;name&rang;;</tt> to
-     * appropriate values.
-     *
-     * @param content the content to transform
-     * @param name the name of te resource currently processed
-     */
-    private void replaceEntities(final StringBuffer content, final Key name) {
-
-        int j;
-        for (int i = content.indexOf("&"); i >= 0; i = content.indexOf("&", j)) {
-            j = content.indexOf(";", i);
-            String entity = content.substring(i + 1, j);
-            String to;
-            if (entity.charAt(0) == '#') {
-                int c = Integer.parseInt("0x" + entity.substring(1));
-                to = Character.toString((char) c);
-            } else {
-                to = (String) ENTITY_MAP.get(entity);
-                if (to == null) {
-                    warning(name.getLocation() + ": Unknown entity " + entity);
-                    to = "???";
-                }
-            }
-            content.replace(i, j + 1, to);
-            j = i + to.length();
-        }
-
     }
 
     /**
@@ -166,8 +93,8 @@ public class ExDocTeX extends ExDocXml {
         for (int i = content.indexOf("TODO "); i >= 0; i =
                 content.indexOf("TODO ", i + 5)) {
             int j = content.indexOf("\n", i);
-            content.replace(j, j + 1, "}\n");
-            content.replace(i, i + 5, "\\ToDo{");
+            content.replace(j, j + 1, "/>\n");
+            content.replace(i, i + 5, "<img src=\"unimplemented.png\"");
         }
     }
 
@@ -227,18 +154,7 @@ public class ExDocTeX extends ExDocXml {
             throws IOException {
 
         FileOutputStream out =
-                new FileOutputStream(new File(getOutput(), name + ".tex"));
-
-        replace(content, "\\", "\\textbackslash{}");
-        replace(content, "$", "\\$");
-        replace(content, "_", "\\_$");
-        replace(content, "~", "\\~{}");
-        replace(content, "%", "\\%");
-
-        replace(content, "<tt>\\", "<tt class=\"macro\">\\");
-
-        replaceEntities(content, name);
-        replaceTodo(content);
+                new FileOutputStream(new File(getOutput(), name + ".html"));
 
         try {
             InputStream xslt =

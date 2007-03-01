@@ -39,32 +39,35 @@ import java.util.regex.Pattern;
 public class Traverser {
 
     /**
-     * The constant <tt>PATTERN_AUTHOR</tt> contains the ...
+     * The constant <tt>PATTERN_AUTHOR</tt> contains the pattern for the author.
      */
     private static final Pattern PATTERN_AUTHOR =
-            Pattern.compile("^ * @author <a href=\"mailto:(.*)\">(.*)</a>");
+            Pattern.compile("@author\\s+<a href=\"mailto:(.*)\">(.*)</a>");
 
     /**
-     * The constant <tt>PATTERN_CLASS</tt> contains the ...
+     * The constant <tt>PATTERN_CLASS</tt> contains the pattern for the class or
+     * interface.
      */
     private static final Pattern PATTERN_CLASS =
             Pattern.compile("^public.* (class|interface)\\s+(\\w+)");
 
     /**
-     * The constant <tt>PATTERN_METHOD</tt> contains the ...
+     * The constant <tt>PATTERN_METHOD</tt> contains the pattern for the
+     * method of a class.
      */
     private static final Pattern PATTERN_METHOD =
             Pattern
                 .compile("^\\s*(private|public|protected)[a-zA-Z_0-9 ]* (\\w+)\\(");
 
     /**
-     * The constant <tt>PATTERN_METHOD_I</tt> contains the ...
+     * The constant <tt>PATTERN_METHOD_I</tt> contains the pattern for the
+     * method of an interface.
      */
     private static final Pattern PATTERN_METHOD_I =
             Pattern.compile("^\\s*([a-zA-Z_0-9 ]*) (\\w+)\\(");
 
     /**
-     * The constant <tt>PATTERN_PACKAGE</tt> contains the ...
+     * The constant <tt>PATTERN_PACKAGE</tt> contains the pattern for a package.
      */
     private static final Pattern PATTERN_PACKAGE =
             Pattern.compile("^package[ ]*([^;]*);");
@@ -94,9 +97,28 @@ public class Traverser {
     private String output = null;
 
     /**
-     * The field <tt>verbose</tt> contains the ...
+     * The field <tt>verbose</tt> contains the indicator for verbosity.
      */
     private boolean verbose = false;
+
+    /**
+     * TODO gene: missing JavaDoc
+     *
+     * @param sb the target string buffer
+     * @param attribute the name of the attribute
+     * @param value the value of the attribute
+     */
+    private void addAttribute(final StringBuffer sb, final String attribute,
+            final String value) {
+
+        if (value != null) {
+            sb.append(" ");
+            sb.append(attribute);
+            sb.append("=\"");
+            sb.append(value);
+            sb.append("\"");
+        }
+    }
 
     /**
      * Getter for output.
@@ -109,7 +131,7 @@ public class Traverser {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Log an informative message.
      *
      * @param msg the message
      */
@@ -134,7 +156,7 @@ public class Traverser {
      * TODO gene: missing JavaDoc
      *
      * @param key ...
-     * @param author ...
+     * @param author the author
      */
     protected void out(final String key, final Author author) {
 
@@ -146,7 +168,8 @@ public class Traverser {
      *
      * @param key ...
      * @param cs ...
-     * @throws Exception ...
+     *
+     * @throws Exception in case of an error
      */
     protected void out(final String key, final StringBuffer cs)
             throws Exception {
@@ -169,16 +192,27 @@ public class Traverser {
         LineNumberReader in = new LineNumberReader(new FileReader(f));
         Stack stack = new Stack();
         String line;
+        Matcher m;
+        Author author = null;
 
         while ((line = in.readLine()) != null) {
             int offset = line.indexOf("<doc");
             if (offset >= 0) {
                 stack.add(scanDoc(in, line, offset));
+            } else if (author == null) {
+                m = PATTERN_AUTHOR.matcher(line);
+                if (m.find()) {
+                    author = new Author(//
+                        line.substring(m.start(2), m.end(2)), //
+                        line.substring(m.start(1), m.end(1)));
+                    out(f.toString(), author);
+                    continue;
+                }
             }
         }
 
         in.close();
-        treatDocs(stack, f.getParent().toString().replace('\\', '/')
+        treatDocs(stack, author, f.getParent().toString().replace('\\', '/')
             .replaceFirst(".*/src/(java|main/java)/", "").replace('/', '.'));
     }
 
@@ -186,6 +220,7 @@ public class Traverser {
      * Process a Java file.
      *
      * @param f the Java file
+     *
      * @throws Exception in case of an error
      */
     private void processJava(final File f) throws Exception {
@@ -198,10 +233,10 @@ public class Traverser {
         Stack stack = new Stack();
         String packageName = "";
         String className = "";
-        boolean auth = true;
         Matcher m;
         String line;
         Pattern p = null;
+        Author author = null;
 
         while ((line = in.readLine()) != null) {
 
@@ -215,20 +250,20 @@ public class Traverser {
             m = PATTERN_CLASS.matcher(line);
             if (m.find()) {
                 className = line.substring(m.start(2), m.end(2));
-                treatDocs(stack, packageName, className);
+                treatDocs(stack, author, packageName, className);
                 p = (line.substring(m.start(2), m.end(2)).equals("class") //
                         ? PATTERN_METHOD
                         : PATTERN_METHOD_I);
                 break;
             }
 
-            if (auth) {
+            if (author == null) {
                 m = PATTERN_AUTHOR.matcher(line);
                 if (m.find()) {
-                    auth = false;
-                    out(f.toString(), new Author(//
+                    author = new Author(//
                         line.substring(m.start(2), m.end(2)), //
-                        line.substring(m.start(1), m.end(1))));
+                        line.substring(m.start(1), m.end(1)));
+                    out(f.toString(), author);
                     continue;
                 }
             }
@@ -244,7 +279,7 @@ public class Traverser {
             m = p.matcher(line);
             if (m.find()) {
                 String methodName = line.substring(m.start(2), m.end(2));
-                treatDocs(stack, packageName, className, methodName);
+                treatDocs(stack, author, packageName, className, methodName);
                 continue;
             }
 
@@ -261,6 +296,7 @@ public class Traverser {
 
     /**
      * Run with the command line arguments.
+     * A value of <code>null</code> is ignored.
      *
      * @param args the command line arguments
      *
@@ -273,7 +309,9 @@ public class Traverser {
         for (int i = 0; i < args.length; i++) {
             String arg = args[i];
 
-            if (opt && arg.startsWith("-")) {
+            if (arg == null) {
+                // ignored
+            } else if (opt && arg.startsWith("-")) {
                 if ("-".equals(arg)) {
                     opt = false;
                 } else {
@@ -408,48 +446,25 @@ public class Traverser {
      * Process a list of package level docs.
      *
      * @param stack the list of docs
+     * @param author the author
      * @param packageName the name of the package
      *   class level docs
+     *
      * @throws Exception in case of an error
      */
-    private void treatDocs(final Stack stack, final String packageName)
-            throws Exception {
+    private void treatDocs(final Stack stack, final Author author,
+            final String packageName) throws Exception {
 
         while (!stack.isEmpty()) {
             CharSequence cs = (CharSequence) stack.pop();
             StringBuffer sb = new StringBuffer("<doc");
-            sb.append(" package=\"");
-            sb.append(packageName);
-            sb.append("\"");
+            addAttribute(sb, "package", packageName);
+            if (author != null) {
+                addAttribute(sb, "authorName", author.getName());
+                addAttribute(sb, "authorEmail", author.getEmail());
+            }
             sb.append(cs.subSequence(4, cs.length()));
             out(packageName, sb);
-        }
-    }
-
-    /**
-     * Process a list of class level docs.
-     *
-     * @param stack the list of docs
-     * @param packageName the name of the package
-     * @param className the name of the class
-     *   class level docs
-     * @throws Exception in case of an error
-     */
-    private void treatDocs(final Stack stack, final String packageName,
-            final String className) throws Exception {
-
-        String name = packageName + "." + className;
-
-        while (!stack.isEmpty()) {
-            CharSequence cs = (CharSequence) stack.pop();
-            StringBuffer sb = new StringBuffer("<doc");
-            sb.append(" package=\"");
-            sb.append(packageName);
-            sb.append("\" class=\"");
-            sb.append(className);
-            sb.append("\"");
-            sb.append(cs.subSequence(4, cs.length()));
-            out(name, sb);
         }
     }
 
@@ -457,27 +472,59 @@ public class Traverser {
      * Process a list of method level docs.
      *
      * @param stack the list of docs
+     * @param author the author
      * @param packageName the name of the package
      * @param className the name of the class
      * @param methodName the name if the method or <code>null</code> for
      *   class level docs
      * @throws Exception in case of an error
      */
-    private void treatDocs(final Stack stack, final String packageName,
-            final String className, final String methodName) throws Exception {
+    private void treatDocs(final Stack stack, final Author author,
+            final String packageName, final String className,
+            final String methodName) throws Exception {
 
         String name = packageName + "." + className + "#" + methodName;
 
         while (!stack.isEmpty()) {
             CharSequence cs = (CharSequence) stack.pop();
             StringBuffer sb = new StringBuffer("<doc");
-            sb.append(" package=\"");
-            sb.append(packageName);
-            sb.append("\" class=\"");
-            sb.append(className);
-            sb.append("\" method=\"");
-            sb.append(methodName);
-            sb.append("\"");
+            addAttribute(sb, "package", packageName);
+            addAttribute(sb, "class", className);
+            addAttribute(sb, "method", methodName);
+            if (author != null) {
+                addAttribute(sb, "authorName", author.getName());
+                addAttribute(sb, "authorEmail", author.getEmail());
+            }
+            sb.append(cs.subSequence(4, cs.length()));
+            out(name, sb);
+        }
+    }
+
+    /**
+     * Process a list of class level docs.
+     *
+     * @param stack the list of docs
+     * @param author the author
+     * @param packageName the name of the package
+     * @param className the name of the class
+     *   class level docs
+     *
+     * @throws Exception in case of an error
+     */
+    private void treatDocs(final Stack stack, final Author author,
+            final String packageName, final String className) throws Exception {
+
+        String name = packageName + "." + className;
+
+        while (!stack.isEmpty()) {
+            CharSequence cs = (CharSequence) stack.pop();
+            StringBuffer sb = new StringBuffer("<doc");
+            addAttribute(sb, "package", packageName);
+            addAttribute(sb, "class", className);
+            if (author != null) {
+                addAttribute(sb, "authorName", author.getName());
+                addAttribute(sb, "authorEmail", author.getEmail());
+            }
             sb.append(cs.subSequence(4, cs.length()));
             out(name, sb);
         }

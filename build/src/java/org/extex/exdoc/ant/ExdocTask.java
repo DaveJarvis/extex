@@ -30,6 +30,7 @@ import org.apache.tools.ant.DirectoryScanner;
 import org.apache.tools.ant.Task;
 import org.apache.tools.ant.types.DirSet;
 import org.apache.tools.ant.types.Path;
+import org.extex.exdoc.ExDocXml;
 import org.extex.exdoc.Exdoc;
 
 /**
@@ -102,15 +103,15 @@ public class ExdocTask extends Task {
      */
     public void execute() throws BuildException {
 
-        Exdoc exdoc = null;
+        ExDocXml exdoc = null;
         if ("xml".equals(format)) {
             try {
-                exdoc = new Exdoc() {
+                exdoc = new ExDocXml() {
 
                     /**
                      * TODO gene: missing JavaDoc
                      *
-                     * @param msg
+                     * @param msg ...
                      *
                      * @see org.extex.exdoc.util.Traverser#info(java.lang.String)
                      */
@@ -124,7 +125,7 @@ public class ExdocTask extends Task {
                     /**
                      * TODO gene: missing JavaDoc
                      *
-                     * @param msg
+                     * @param msg ...
                      *
                      * @see org.extex.exdoc.util.Traverser#warning(java.lang.String)
                      */

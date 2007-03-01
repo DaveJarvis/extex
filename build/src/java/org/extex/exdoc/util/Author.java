@@ -60,15 +60,26 @@ public class Author {
         return email;
     }
 
-    
     /**
      * Getter for name.
      *
      * @return the name
      */
     protected String getName() {
-    
+
         return name;
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     *
+     * @return
+     *
+     * @see java.lang.Object#toString()
+     */
+    public String toString() {
+
+        return name + " <" + email + ">";
     }
 
 }
