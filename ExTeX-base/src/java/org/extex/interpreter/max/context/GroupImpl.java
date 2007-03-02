@@ -1086,7 +1086,7 @@ public class GroupImpl implements Group {
     /**
      * Setter for the catcode of a character in the specified groups.
      *
-     * @param c the character
+     * @param uc the character
      * @param code the catcode
      * @param global the indicator for the scope; <code>true</code> means all
      *  groups; otherwise the current group is affected only
@@ -1174,17 +1174,17 @@ public class GroupImpl implements Group {
      *      org.extex.type.UnicodeChar,
      *      MathDelimiter, boolean)
      */
-    public void setDelcode(final UnicodeChar c, final MathDelimiter code,
+    public void setDelcode(final UnicodeChar uc, final MathDelimiter code,
             final boolean global) {
 
         if (delcodeMap == null) {
             delcodeMap = new HashMap();
         }
 
-        delcodeMap.put(c, code);
+        delcodeMap.put(uc, code);
 
         if (global && next != null) {
-            next.setDelcode(c, code, global);
+            next.setDelcode(uc, code, global);
         }
     }
 
@@ -1340,17 +1340,17 @@ public class GroupImpl implements Group {
      *      org.extex.type.UnicodeChar,
      *      MathCode, boolean)
      */
-    public void setMathcode(final UnicodeChar c, final MathCode code,
+    public void setMathcode(final UnicodeChar uc, final MathCode code,
             final boolean global) {
 
         if (mathcodeMap == null) {
             mathcodeMap = new HashMap();
         }
 
-        mathcodeMap.put(c, code);
+        mathcodeMap.put(uc, code);
 
         if (global && next != null) {
-            next.setMathcode(c, code, global);
+            next.setMathcode(uc, code, global);
         }
     }
 
@@ -1436,17 +1436,17 @@ public class GroupImpl implements Group {
      *      org.extex.type.UnicodeChar,
      *      org.extex.interpreter.type.count.Count, boolean)
      */
-    public void setSfcode(final UnicodeChar c, final Count code,
+    public void setSfcode(final UnicodeChar uc, final Count code,
             final boolean global) {
 
         if (sfcodeMap == null) {
             sfcodeMap = new HashMap();
         }
 
-        sfcodeMap.put(c, code);
+        sfcodeMap.put(uc, code);
 
         if (global && next != null) {
-            next.setSfcode(c, code, global);
+            next.setSfcode(uc, code, global);
         }
     }
 

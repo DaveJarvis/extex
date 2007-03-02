@@ -410,7 +410,7 @@ public class MathListMaker extends HorizontalListMaker
     /**
      * Add a mathematical delimiter.
      *
-     * @param del the delimiter
+     * @param delimiter the delimiter
      * @param tc the typesetting context
      *
      * @throws TypesetterException in case of an error
@@ -596,7 +596,7 @@ public class MathListMaker extends HorizontalListMaker
     /**
      * Setter for the logger.
      *
-     * @param logger the logger to use
+     * @param log the logger to use
      *
      * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
@@ -730,8 +730,8 @@ public class MathListMaker extends HorizontalListMaker
      * Add a letter to the current list or treat it in some other appropriate
      * way.
      *
+     * @param symbol the character
      * @param tc the typesetting context
-     * @param uc the character
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param locator the locator
@@ -1008,7 +1008,8 @@ public class MathListMaker extends HorizontalListMaker
      * @see org.extex.typesetter.ListMaker#showlist(
      *      java.lang.StringBuffer, long, long)
      */
-    public void showlist(final StringBuffer sb, final long l, final long m) {
+    public void showlist(final StringBuffer sb, final long depth,
+            final long breadth) {
 
     }
 
@@ -1018,7 +1019,7 @@ public class MathListMaker extends HorizontalListMaker
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     * @param t the actual sub mark token
+     * @param token the actual sub mark token
      *
      * @throws TypesetterException in case of an error
      *
@@ -1052,7 +1053,7 @@ public class MathListMaker extends HorizontalListMaker
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     * @param t the actual super mark token
+     * @param token the actual super mark token
      *
      * @throws TypesetterException in case of an error
      *

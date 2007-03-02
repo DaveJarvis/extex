@@ -364,7 +364,7 @@ public abstract class MathClass implements Serializable {
          */
         protected Object readResolve() throws ObjectStreamException {
 
-            return MathClass.PUNCTUATION;
+            return MathClass.PUNCTATION;
         }
 
         /**
@@ -552,7 +552,7 @@ public abstract class MathClass implements Serializable {
      * The field <tt>PUNCTUATION</tt> contains the instance representing the
      * punctation class. This class has the code 6 in <logo>TeX</logo>.
      */
-    public static final MathClass PUNCTUATION = new PunctationMathClass();
+    public static final MathClass PUNCTATION = new PunctationMathClass();
 
     /**
      * The field <tt>RELATION</tt> contains the instance representing the
@@ -573,7 +573,7 @@ public abstract class MathClass implements Serializable {
      * @see MathClass#getMathClass(int)
      */
     private static final MathClass[] MC =
-            {ORDINARY, LARGE, BINARY, RELATION, OPENING, CLOSING, PUNCTUATION,
+            {ORDINARY, LARGE, BINARY, RELATION, OPENING, CLOSING, PUNCTATION,
                     VARIABLE, null};
 
     /**
@@ -689,7 +689,7 @@ public abstract class MathClass implements Serializable {
                     break;
                 case 'p':
                     if (source.getKeyword(context, "punct")) {
-                        return MathClass.PUNCTUATION;
+                        return MathClass.PUNCTATION;
                     }
                     break;
                 case 'r':

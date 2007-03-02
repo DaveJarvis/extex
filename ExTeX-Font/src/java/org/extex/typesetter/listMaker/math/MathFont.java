@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -21,7 +21,6 @@ package org.extex.typesetter.listMaker.math;
 
 import org.extex.font.FontByteArray;
 import org.extex.font.FontKey;
-import org.extex.interpreter.type.count.Count;
 import org.extex.interpreter.type.count.FixedCount;
 import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.interpreter.type.dimen.FixedDimen;
@@ -57,8 +56,38 @@ public class MathFont implements Font {
         this.font = font;
     }
 
- 
     /**
+     * Returns the actual FontKey for this font.
+     * The font key may differ from the one requested.
+     *
+     * @return the actual FontKey for this font.
+     *
+     * @see org.extex.interpreter.type.font.Font#getActualFontKey()
+     */
+    public FontKey getActualFontKey() {
+
+        // TODO getActualFontKey unimplemented
+        return null;
+    }
+
+    /**
+     * Returns the actual size of the font.
+     *
+     * @return the actual size of the font.
+     *
+     * @see org.extex.interpreter.type.font.Font#getActualSize()
+     */
+    public FixedDimen getActualSize() {
+
+        // TODO getActualsize unimplemented
+        return null;
+    }
+
+    /**
+     * Returns the check sum of the font.
+     *
+     * @return the check sum of the font
+     *
      * @see org.extex.interpreter.type.font.Font#getCheckSum()
      */
     public int getCheckSum() {
@@ -67,6 +96,12 @@ public class MathFont implements Font {
     }
 
     /**
+     * Returns the depth of the character.
+     *
+     * @param uc the character
+     *
+     * @return the depth of the character
+     *
      * @see org.extex.interpreter.type.font.Font#getDepth(
      *      org.extex.type.UnicodeChar)
      */
@@ -75,9 +110,27 @@ public class MathFont implements Font {
         return font.getDepth(uc);
     }
 
+    /**
+     * Returns the design size of the font.
+     *
+     * @return the design size of the font
+     *
+     * @see org.extex.interpreter.type.font.Font#getDesignSize()
+     */
+    public FixedDimen getDesignSize() {
+
+        return font.getDesignSize();
+    }
 
     /**
-     * @see org.extex.interpreter.type.font.Font#getEfCode(org.extex.type.UnicodeChar)
+     * Getter for the ef code.
+     *
+     * @param uc the character
+     *
+     * @return the ef code
+     *
+     * @see org.extex.interpreter.type.font.Font#getEfCode(
+     *      org.extex.type.UnicodeChar)
      */
     public long getEfCode(final UnicodeChar uc) {
 
@@ -85,6 +138,10 @@ public class MathFont implements Font {
     }
 
     /**
+     * Returns the size of 'M'.
+     *
+     * @return the size of 'M'.
+     *
      * @see org.extex.interpreter.type.font.Font#getEm()
      */
     public FixedDimen getEm() {
@@ -93,6 +150,10 @@ public class MathFont implements Font {
     }
 
     /**
+     * Returns the size of 'x'.
+     *
+     * @return Returns the size of 'x'.
+     *
      * @see org.extex.interpreter.type.font.Font#getEx()
      */
     public FixedDimen getEx() {
@@ -109,6 +170,15 @@ public class MathFont implements Font {
     }
 
     /**
+     * Returns the size of the parameter with the name 'name'.
+     * <p>
+     * The size are multiples of the design size!
+     * </p>
+     *
+     * @param key the name of the parameter.
+     *
+     * @return the size of the parameter with the name 'name'.
+     *
      * @see org.extex.interpreter.type.font.Font#getFontDimen(String)
      */
     public FixedDimen getFontDimen(final String key) {
@@ -117,7 +187,11 @@ public class MathFont implements Font {
     }
 
     /**
-     * @see org.extex.font.type.Fount#getFontKey()
+     * Returns the FontKey for this font.
+     *
+     * @return the FontKey for this font
+     *
+     * @see org.extex.interpreter.type.font.Font#getFontKey()
      */
     public FontKey getFontKey() {
 
@@ -125,6 +199,10 @@ public class MathFont implements Font {
     }
 
     /**
+     * Returns the name of the font.
+     *
+     * @return the name of the font
+     *
      * @see org.extex.interpreter.type.font.Font#getFontName()
      */
     public String getFontName() {
@@ -133,6 +211,12 @@ public class MathFont implements Font {
     }
 
     /**
+     * Returns the height of a character.
+     *
+     * @param uc the character
+     *
+     * @return the height of the character
+     *
      * @see org.extex.interpreter.type.font.Font#getHeight(
      *      org.extex.type.UnicodeChar)
      */
@@ -142,6 +226,10 @@ public class MathFont implements Font {
     }
 
     /**
+     * Returns the hyphen character.
+     *
+     * @return the hyphen character
+     *
      * @see org.extex.interpreter.type.font.Font#getHyphenChar()
      */
     public UnicodeChar getHyphenChar() {
@@ -150,6 +238,12 @@ public class MathFont implements Font {
     }
 
     /**
+     * Returns the italic correction of a character.
+     *
+     * @param uc the character
+     *
+     * @return the italic correction of the character
+     *
      * @see org.extex.interpreter.type.font.Font#getItalicCorrection(
      *      org.extex.type.UnicodeChar)
      */
@@ -159,6 +253,13 @@ public class MathFont implements Font {
     }
 
     /**
+     * Returns the kerning between two characters.
+     *
+     * @param uc1 the first character
+     * @param uc2 the second character
+     *
+     * @return the kerning between two characters
+     *
      * @see org.extex.interpreter.type.font.Font#getKerning(
      *      org.extex.type.UnicodeChar, org.extex.type.UnicodeChar)
      */
@@ -168,14 +269,13 @@ public class MathFont implements Font {
     }
 
     /**
-     * @see org.extex.interpreter.type.font.Font#getLetterSpacing()
-     */
-    public FixedGlue getLetterSpacing() {
-
-        return null; //this.font.getLetterSpacing();
-    }
-
-    /**
+     * Returns the ligature for two characters.
+     *
+     * @param uc1 the first character
+     * @param uc2 the second character
+     *
+     * @return Returns the ligature for two characters
+     *
      * @see org.extex.interpreter.type.font.Font#getLigature(
      *      org.extex.type.UnicodeChar, org.extex.type.UnicodeChar)
      */
@@ -185,14 +285,22 @@ public class MathFont implements Font {
     }
 
     /**
-     * @see org.extex.interpreter.type.font.Font#getProperty(String)
+     * Returns the scale factor of the font.
+     *
+     * @return the scale factor of the font
+     *
+     * @see org.extex.interpreter.type.font.Font#getScaleFactor()
      */
-    public String getProperty(final String key) {
+    public FixedCount getScaleFactor() {
 
-        return null; //this.font.getProperty(key);
+        return font.getScaleFactor();
     }
 
     /**
+     * Returns the skew char.
+     *
+     * @return the skew char
+     *
      * @see org.extex.interpreter.type.font.Font#getSkewChar()
      */
     public UnicodeChar getSkewChar() {
@@ -201,6 +309,10 @@ public class MathFont implements Font {
     }
 
     /**
+     * Returns the size of the 'space'.
+     *
+     * @return the size of the 'space'.
+     *
      * @see org.extex.interpreter.type.font.Font#getSpace()
      */
     public FixedGlue getSpace() {
@@ -209,6 +321,12 @@ public class MathFont implements Font {
     }
 
     /**
+     * Returns the width of a character.
+     *
+     * @param uc the character
+     *
+     * @return the width of the character
+     *
      * @see org.extex.interpreter.type.font.Font#getWidth(
      *      org.extex.type.UnicodeChar)
      */
@@ -218,7 +336,14 @@ public class MathFont implements Font {
     }
 
     /**
-     * @see org.extex.interpreter.type.font.Font#hasGlyph(org.extex.type.UnicodeChar)
+     * Determine whether the glyph for a given character is present in this font.
+     *
+     * @param uc the character
+     *
+     * @return <code>true</code> iff the glyph is present
+     *
+     * @see org.extex.interpreter.type.font.Font#hasGlyph(
+     *      org.extex.type.UnicodeChar)
      */
     public boolean hasGlyph(final UnicodeChar uc) {
 
@@ -226,6 +351,13 @@ public class MathFont implements Font {
     }
 
     /**
+     * Setter for the ef code.
+     * The ef code influences the stretchability of characters. It has a
+     * positive value. 1000 means "normal" stretchability.
+     *
+     * @param uc the character
+     * @param code the associated code
+     *
      * @see org.extex.interpreter.type.font.Font#setEfCode(
      *      org.extex.type.UnicodeChar, long)
      */
@@ -235,6 +367,11 @@ public class MathFont implements Font {
     }
 
     /**
+     * Set the new value for the font parameter.
+     *
+     * @param key the name of the parameter
+     * @param value the value to set
+     *
      * @see org.extex.interpreter.type.font.Font#setFontDimen(String, Dimen)
      */
     public void setFontDimen(final String key, final Dimen value) {
@@ -243,7 +380,12 @@ public class MathFont implements Font {
     }
 
     /**
-     * @see org.extex.interpreter.type.font.Font#setHyphenChar(UnicodeChar)
+     * Set the hyphen character.
+     *
+     * @param hyphen the hyphen character
+     *
+     * @see org.extex.interpreter.type.font.Font#setHyphenChar(
+     *      org.extex.type.UnicodeChar)
      */
     public void setHyphenChar(final UnicodeChar hyphen) {
 
@@ -251,7 +393,12 @@ public class MathFont implements Font {
     }
 
     /**
-     * @see org.extex.interpreter.type.font.Font#setSkewChar(UnicodeChar)
+     * Set the skew character.
+     *
+     * @param skew the skew character
+     *
+     * @see org.extex.interpreter.type.font.Font#setSkewChar(
+     *      org.extex.type.UnicodeChar)
      */
     public void setSkewChar(final UnicodeChar skew) {
 
@@ -259,47 +406,15 @@ public class MathFont implements Font {
     }
 
     /**
+     * Returns a string representation of the object.
+     *
+     * @return  a string representation of the object
+     *
      * @see java.lang.Object#toString()
      */
     public String toString() {
 
         return this.font.toString();
-    }
-
-    public void setActualSize(Dimen size) {
-
-        // TODO mgn: setActualsize unimplemented
-        
-    }
-
-    public void setScaleFactor(Count scaleFactor) {
-
-        // TODO mgn: setScalefactor unimplemented
-        
-    }
-
-    public FixedDimen getActualSize() {
-
-        // TODO mgn: getActualsize unimplemented
-        return null;
-    }
-
-    public FixedDimen getDesignSize() {
-
-        // TODO mgn: getDesignsize unimplemented
-        return null;
-    }
-
-    public FixedCount getScaleFactor() {
-
-        // TODO mgn: getScalefactor unimplemented
-        return null;
-    }
-
-    public FontKey getActualFontKey() {
-
-        // TODO mgn: getActualFontKey unimplemented
-        return null;
     }
 
 }

@@ -290,6 +290,12 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     /**
      * Comments are ignored thus <code>null</code> is returned in any case.
      *
+     * @param oValue the string value of the token
+     * @param oChar the character value of the token
+     * @param oNamespace the name space of the token
+     *
+     * @return <code>null</code>
+     *
      * @see org.extex.scanner.type.CatcodeVisitor#visitComment(
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
@@ -316,11 +322,11 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
      * This visit method is invoked on an escape token.
      * In <logo>TeX</logo> this normally means a control sequence.
      *
-     * @param arg1 the first argument to pass
-     * @param arg2 the second argument to pass
-     * @param arg3 the third argument to pass
+     * @param oValue the string value of the token
+     * @param oChar the character value of the token
+     * @param oNamespace the name space of the token
      *
-     * @return some value
+     * @return the token requested
      *
      * @throws Exception in case of an error
      *
@@ -404,6 +410,10 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     /**
      * A left brace token is expected to take a single character only.
      *
+     * @param oValue the string value of the token
+     * @param oChar the character value of the token
+     * @param ignore the name space of the token
+     *
      * @see org.extex.scanner.type.CatcodeVisitor#visitLeftBrace(
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
@@ -440,6 +450,10 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     /**
      * A letter token is expected to take a single character only.
      *
+     * @param oValue the string value of the token
+     * @param oChar the character value of the token
+     * @param ignore the name space of the token
+     *
      * @see org.extex.scanner.type.CatcodeVisitor#visitLetter(
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
@@ -474,6 +488,10 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     }
 
     /**
+     * @param oValue the string value of the token
+     * @param oChar the character value of the token
+     * @param ignore the name space of the token
+     *
      * @see org.extex.scanner.type.CatcodeVisitor#visitMacroParam(
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
@@ -508,6 +526,10 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     }
 
     /**
+     * @param oValue the string value of the token
+     * @param oChar the character value of the token
+     * @param ignore the name space of the token
+     *
      * @see org.extex.scanner.type.CatcodeVisitor#visitMathShift(
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
@@ -542,6 +564,10 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     }
 
     /**
+     * @param oValue the string value of the token
+     * @param oChar the character value of the token
+     * @param ignore the name space of the token
+     *
      * @see org.extex.scanner.type.CatcodeVisitor#visitOther(
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
@@ -576,6 +602,10 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     }
 
     /**
+     * @param oValue the string value of the token
+     * @param oChar the character value of the token
+     * @param ignore the name space of the token
+     *
      * @see org.extex.scanner.type.CatcodeVisitor#visitRightBrace(
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
@@ -630,6 +660,10 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     }
 
     /**
+     * @param oValue the string value of the token
+     * @param oChar the character value of the token
+     * @param ignore the name space of the token
+     *
      * @see org.extex.scanner.type.CatcodeVisitor#visitSubMark(
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
@@ -664,6 +698,10 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     }
 
     /**
+     * @param oValue the string value of the token
+     * @param oChar the character value of the token
+     * @param ignore the name space of the token
+     *
      * @see org.extex.scanner.type.CatcodeVisitor#visitSupMark(
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
@@ -698,6 +736,10 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     }
 
     /**
+     * @param oValue the string value of the token
+     * @param oChar the character value of the token
+     * @param ignore the name space of the token
+     *
      * @see org.extex.scanner.type.CatcodeVisitor#visitTabMark(
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)

@@ -59,7 +59,7 @@ import org.extex.unit.base.register.count.util.IntegerCode;
  *        &lang;control sequence&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
+ *        org.extex.interpreter.type.count.Count#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}
  *
  *    &lang;optional prefix&rang;

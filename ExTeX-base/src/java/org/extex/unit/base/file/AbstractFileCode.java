@@ -80,7 +80,7 @@ public abstract class AbstractFileCode extends AbstractCode
      *  <pre class="syntax">
      *    &lang;infile&nbsp;name&rang;
      *      &rarr; {@linkplain
-     *        org.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
+     *        org.extex.interpreter.type.count.Count#scanNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;} </pre>
      * </doc>
      *
@@ -124,7 +124,7 @@ public abstract class AbstractFileCode extends AbstractCode
      *  <pre class="syntax">
      *    &lang;infile&nbsp;name&rang;
      *      &rarr; {@linkplain
-     *        org.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
+     *        org.extex.interpreter.type.count.Count#scanNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;} </pre>
      * </doc>
      *

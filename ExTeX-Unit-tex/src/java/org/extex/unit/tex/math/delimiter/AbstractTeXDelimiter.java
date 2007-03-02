@@ -510,7 +510,7 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
                         case 'p':
                             if (source.getKeyword(context, "punct")) {
                                 return parse(context, source, typesetter,
-                                    MathClass.PUNCTUATION, primitive);
+                                    MathClass.PUNCTATION, primitive);
                             }
                             break;
                         case 'r':

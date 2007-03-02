@@ -152,7 +152,7 @@ public class TypesetterImpl
     /**
      * Add a glue node to the list.
      *
-     * @param g the glue to add
+     * @param glue the glue to add
      *
      * @throws TypesetterException in case of an error
      *
@@ -343,7 +343,7 @@ public class TypesetterImpl
     /**
      * Setter for the logger.
      *
-     * @param logger the logger to use
+     * @param theLogger the logger to use
      *
      * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
@@ -682,10 +682,10 @@ public class TypesetterImpl
      * @see org.extex.typesetter.listMaker.ListManager#push(
      *      org.extex.typesetter.ListMaker)
      */
-    public void push(final ListMaker list) throws TypesetterException {
+    public void push(final ListMaker listMaker) throws TypesetterException {
 
         saveStack.add(listMaker);
-        listMaker = list;
+        this.listMaker = listMaker;
     }
 
     /**

@@ -283,7 +283,7 @@ public class OmathcodeTest extends NoFlagsButGlobalPrimitiveTester {
                 "");
         MathCode mc = interpreter.getContext()
                 .getMathcode(UnicodeChar.get('.'));
-        assertEquals(MathClass.PUNCTUATION, mc.getMathClass());
+        assertEquals(MathClass.PUNCTATION, mc.getMathClass());
         assertEquals(0, mc.getMathGlyph().getFamily());
         assertEquals('A', mc.getMathGlyph().getCharacter().getCodePoint());
     }

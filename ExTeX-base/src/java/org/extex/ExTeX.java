@@ -458,7 +458,7 @@ import org.extex.util.resource.ResourceFinderFactory;
  *    <dd>
  *     Initialize the input and output streams.
  *    </dd>
- *    <dt>{@link #makeTypesetter(Interpreter,Configuration,OutputStreamFactory,ResourceFinder) makeTypesetter()}</dt>
+ *    <dt>{@link #makeTypesetter(Interpreter,Configuration,OutputStreamFactory,ResourceFinder,CoreFontFactory) makeTypesetter()}</dt>
  *    <dd>
  *     Creates the typesetter.
  *    </dd>

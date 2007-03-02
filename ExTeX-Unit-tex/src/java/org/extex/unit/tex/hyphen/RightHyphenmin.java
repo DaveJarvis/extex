@@ -54,7 +54,7 @@ import org.extex.util.framework.configuration.exception.ConfigurationException;
  *      &rarr; <tt>\righthyphenmin</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
+ *        org.extex.interpreter.type.count.Count#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}  </pre>
  *
  * <h4>Example:</h4>

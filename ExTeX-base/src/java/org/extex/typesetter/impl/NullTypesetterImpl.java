@@ -93,7 +93,7 @@ public class NullTypesetterImpl implements Typesetter {
      * @see org.extex.typesetter.ListMaker#add(
      *     org.extex.typesetter.type.Node)
      */
-    public void add(final Node c) throws TypesetterException {
+    public void add(final Node node) throws TypesetterException {
 
         // nothing to do
     }
@@ -602,7 +602,7 @@ public class NullTypesetterImpl implements Typesetter {
      * @see org.extex.typesetter.ListMaker#setSpacefactor(
      *     org.extex.interpreter.type.count.FixedCount)
      */
-    public void setSpacefactor(final FixedCount f)
+    public void setSpacefactor(final FixedCount sf)
             throws InvalidSpacefactorException {
 
         // nothing to do
@@ -634,7 +634,8 @@ public class NullTypesetterImpl implements Typesetter {
      * @see org.extex.typesetter.ListMaker#showlist(
      *      java.lang.StringBuffer, long, long)
      */
-    public void showlist(final StringBuffer sb, final long l, final long m) {
+    public void showlist(final StringBuffer sb, final long depth,
+            final long breadth) {
 
     }
 
@@ -651,7 +652,8 @@ public class NullTypesetterImpl implements Typesetter {
      *      long,
      *      long)
      */
-    public void showlists(final StringBuffer sb, final long l, final long m) {
+    public void showlists(final StringBuffer sb, final long depth,
+            final long breadth) {
 
     }
 

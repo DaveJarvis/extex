@@ -46,14 +46,14 @@ import org.extex.unit.base.conditional.AbstractIf;
  *  <pre class="syntax">
  *    &lang;ifnum&rang;
  *      &rarr; <tt>\ifnum</tt> {@linkplain
- *        org.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
+ *        org.extex.interpreter.type.count.Count#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;} &lang;op&rang; {@linkplain
- *        org.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
+ *        org.extex.interpreter.type.count.Count#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;} &lang;true text&rang; <tt>\fi</tt>
  *      | <tt>\ifnum</tt> {@linkplain
- *        org.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
+ *        org.extex.interpreter.type.count.Count#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;} &lang;op&rang; {@linkplain
- *        org.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
+ *        org.extex.interpreter.type.count.Count#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;} &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt>
  *
  *    &lang;op&rang;

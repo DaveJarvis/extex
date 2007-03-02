@@ -30,9 +30,9 @@ import org.extex.util.framework.configuration.exception.ConfigurationException;
 public interface LanguageManagerCarrier {
 
     /**
-     * Setter for the hyphenation factory.
+     * Setter for the language manager.
      *
-     * @param hyphenationFactory the hyphenation factory to carry
+     * @param manager the language manager to carry
      */
     void setLanguageManager(LanguageManager hyphenationFactory)
             throws ConfigurationException;

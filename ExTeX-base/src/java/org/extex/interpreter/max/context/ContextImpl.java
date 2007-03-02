@@ -504,7 +504,7 @@ public class ContextImpl
     /**
      * Configure an object according to a given Configuration.
      *
-     * @param config the configuration object to consider
+     * @param configuration the configuration object to consider
      *
      * @throws ConfigurationException in case that something went wrong
      *
@@ -577,9 +577,9 @@ public class ContextImpl
      * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
-    public void enableLogging(final Logger theLogger) {
+    public void enableLogging(final Logger logger) {
 
-        this.logger = theLogger;
+        this.logger = logger;
     }
 
     /**
@@ -1066,9 +1066,9 @@ public class ContextImpl
      * @see org.extex.interpreter.context.Context#getMathcode(
      *      org.extex.type.UnicodeChar)
      */
-    public MathCode getMathcode(final UnicodeChar c) {
+    public MathCode getMathcode(final UnicodeChar uc) {
 
-        return group.getMathcode(c);
+        return group.getMathcode(uc);
     }
 
     /**
@@ -1135,9 +1135,9 @@ public class ContextImpl
      * @see org.extex.interpreter.context.Context#getSfcode(
      *      org.extex.type.UnicodeChar)
      */
-    public Count getSfcode(final UnicodeChar c) {
+    public Count getSfcode(final UnicodeChar uc) {
 
-        return group.getSfcode(c);
+        return group.getSfcode(uc);
     }
 
     /**
@@ -1312,7 +1312,7 @@ public class ContextImpl
      * pushed onto the stack to be reactivated when the new group will be
      * closed.
      *
-     * @param id the type of the group
+     * @param type the type of the group
      * @param locator the locator for the start
      * @param start the token which started the group
      *
@@ -1396,7 +1396,7 @@ public class ContextImpl
      * Put a value onto the conditional stack.
      *
      * @param locator the locator for the start of the if statement
-     * @param value the value to push
+     * @param isIfThenElse the value to push
      * @param primitive the name of the primitive which triggered this
      *  operation
      * @param branch the branch number
@@ -1495,13 +1495,13 @@ public class ContextImpl
      *      org.extex.scanner.type.token.Token,
      *      org.extex.interpreter.context.observer.code.CodeObserver)
      */
-    public synchronized void registerCodeChangeObserver(final Token name,
+    public synchronized void registerCodeChangeObserver(final Token token,
             final CodeObserver observer) {
 
-        List observerList = (List) changeCodeObservers.get(name);
+        List observerList = (List) changeCodeObservers.get(token);
         if (null == observerList) {
             observerList = new ArrayList();
-            changeCodeObservers.put(name, observerList);
+            changeCodeObservers.put(token, observerList);
         }
         observerList.add(observer);
     }
@@ -1984,10 +1984,10 @@ public class ContextImpl
      *      org.extex.type.UnicodeChar,
      *      org.extex.scanner.type.Catcode, boolean)
      */
-    public void setCatcode(final UnicodeChar c, final Catcode cc,
+    public void setCatcode(final UnicodeChar c, final Catcode catcode,
             final boolean global) {
 
-        group.setCatcode(c, cc, global);
+        group.setCatcode(c, catcode, global);
     }
 
     /**
@@ -2172,7 +2172,7 @@ public class ContextImpl
     /**
      * Setter for the font factory.
      *
-     * @param fontFactory the font factory to set.
+     * @param factory the font factory to set.
      *
      * @see org.extex.interpreter.context.Context#setFontFactory(
      *      org.extex.font.CoreFontFactory)
@@ -2274,9 +2274,9 @@ public class ContextImpl
     }
 
     /**
-     * Setter for the hyphenation factory.
+     * Setter for the language manager.
      *
-     * @param hyphenationFactory the hyphenation factory to carry
+     * @param manager the language manager to carry
      *
      * @see org.extex.language.LanguageManagerCarrier#setLanguageManager(
      *      org.extex.language.LanguageManager)
@@ -2364,16 +2364,16 @@ public class ContextImpl
      * @param uc the character index
      * @param code the new math code
      * @param global the indicator for the scope; <code>true</code> means all
-     *  groups; otherwise the current group is affected only
+     *   groups; otherwise the current group is affected only
      *
      * @see org.extex.interpreter.context.Context#setMathcode(
      *      org.extex.type.UnicodeChar,
      *      MathCode, boolean)
      */
-    public void setMathcode(final UnicodeChar c, final MathCode code,
+    public void setMathcode(final UnicodeChar uc, final MathCode code,
             final boolean global) {
 
-        group.setMathcode(c, code, global);
+        group.setMathcode(uc, code, global);
     }
 
     /**
@@ -2454,10 +2454,10 @@ public class ContextImpl
      *      org.extex.type.UnicodeChar,
      *      org.extex.interpreter.type.count.Count, boolean)
      */
-    public void setSfcode(final UnicodeChar c, final Count code,
+    public void setSfcode(final UnicodeChar uc, final Count code,
             final boolean global) {
 
-        group.setSfcode(c, code, global);
+        group.setSfcode(uc, code, global);
     }
 
     /**

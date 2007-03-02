@@ -54,8 +54,8 @@ import org.extex.typesetter.Typesetter;
  *
  * </doc>
  *
- * @see org.extex.interpreter.primitives.namespace.Export
- * @see org.extex.interpreter.primitives.namespace.Import
+ * @see org.extex.unit.namespace.Export
+ * @see org.extex.unit.namespace.Import
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4732 $

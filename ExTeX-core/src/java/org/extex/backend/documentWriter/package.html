@@ -75,29 +75,29 @@
   <h4>Localization</h4>
   <p>
    If the instantiated class implements the interface {@link
-   org.util.framework.i18n.Localizable Localizable} then the
+   org.extex.util.framework.i18n.Localizable Localizable} then the
    associated method is used to pass on the localizer to the new
    instance. The localizer is acquired from the {@link
-   org.util.framework.i18n.LocalizerFactory LocalizerFactory}
+   org.extex.util.framework.i18n.LocalizerFactory LocalizerFactory}
    with the name of the class as key.
   </p>
   <h4>Configuration</h4>
   <p>
    The document writer can implement the interface {@link
-   org.util.framework.configuration.Configurable Configurable}.
+   org.extex.util.framework.configuration.Configurable Configurable}.
    In this case the configuration object is passed to the document
    writer at startup.
   </p>
   <p>
    The document writer can implement the interface {@link
-   org.util.resource.PropertyConfigurable PropertyConfigurable}.
+   org.extex.util.resource.PropertyConfigurable PropertyConfigurable}.
    In this case the properties with the user's settings are passed to
    the document writer at startup.
   </p>
   <h4>Logging</h4>
   <p>
    The document writer can implement the interface {@link
-   org.util.framework.logger.LogEnabled LogEnabled}. In this case
+   org.extex.util.framework.logger.LogEnabled LogEnabled}. In this case
    the logger is passed to the document writer at startup. It can be
    used to send some informative or debugging messages to the log
    file.
@@ -111,7 +111,7 @@
   <h4>Resource Access</h4>
   <p>
    The document writer can implement the interface {@link
-   org.util.resource.ResoureConsumer ResoureConsumer}. In this
+   org.extex.util.resource.ResoureConsumer ResoureConsumer}. In this
    case a resource finder is passed to the document writer.
   </p>
 

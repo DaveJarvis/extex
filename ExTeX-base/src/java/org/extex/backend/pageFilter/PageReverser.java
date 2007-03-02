@@ -72,7 +72,7 @@ public class PageReverser implements PagePipe {
     /**
      * Setter for the output node pipe.
      *
-     * @param out the output node pipe
+     * @param pipe the output node pipe
      *
      * @see org.extex.backend.pageFilter.PagePipe#setOutput(
      *     org.extex.backend.pageFilter.PagePipe)
@@ -105,7 +105,7 @@ public class PageReverser implements PagePipe {
      * properly filled. Thus all information should be present to place the
      * ink on the paper.
      *
-     * @param nodes the nodes to send
+     * @param page the page to send
      *
      * @throws BackendException in case of an error
      *

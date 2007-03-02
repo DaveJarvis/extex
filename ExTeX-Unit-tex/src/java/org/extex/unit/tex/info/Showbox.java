@@ -74,7 +74,7 @@ import org.extex.util.framework.logger.LogEnabled;
  *      &rarr; <tt>\showboxbreadth</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
+ *        org.extex.interpreter.type.count.Count#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}  </pre>
  *
  * <h4>Examples</h4>
@@ -98,7 +98,7 @@ import org.extex.util.framework.logger.LogEnabled;
  *      &rarr; <tt>\showboxdepth</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
+ *        org.extex.interpreter.type.count.Count#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}  </pre>
  *
  * <h4>Examples</h4>

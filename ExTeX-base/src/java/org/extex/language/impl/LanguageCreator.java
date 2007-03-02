@@ -35,7 +35,7 @@ public interface LanguageCreator {
     /**
      * Create a new instance for the given index if required.
      *
-     * @param index the symbolic name of the language
+     * @param name the symbolic name of the language
      *
      * @return the new instance
      *
@@ -46,7 +46,7 @@ public interface LanguageCreator {
     /**
      * Load or create a new instance for the given index if required.
      *
-     * @param index the symbolic name of the language
+     * @param name the symbolic name of the language
      *
      * @return the new instance
      *

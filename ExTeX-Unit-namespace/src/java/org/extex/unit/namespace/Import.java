@@ -66,8 +66,8 @@ import org.extex.unit.tex.macro.Let;
  * </doc>
  *
  *
- * @see org.extex.interpreter.primitives.namespace.Export
- * @see org.extex.interpreter.primitives.namespace.Namespace
+ * @see org.extex.unit.namespace.Export
+ * @see org.extex.unit.namespace.Namespace
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4770 $

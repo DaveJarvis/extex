@@ -115,7 +115,7 @@ import org.extex.util.framework.i18n.LocalizerFactory;
  *      &rarr; <tt>\deadcycles</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
+ *        org.extex.interpreter.type.count.Count#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}  </pre>
  *
  * <h4>Examples</h4>
@@ -145,7 +145,7 @@ import org.extex.util.framework.i18n.LocalizerFactory;
  *      &rarr; <tt>\maxdeadcycles</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
+ *        org.extex.interpreter.type.count.Count#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}  </pre>
  *
  * <h4>Examples</h4>

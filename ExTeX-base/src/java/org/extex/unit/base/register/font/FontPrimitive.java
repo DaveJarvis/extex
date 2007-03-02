@@ -299,7 +299,7 @@ public class FontPrimitive extends AbstractAssignment
     /**
      * Setter for the logger.
      *
-     * @param logger the logger to use
+     * @param log the logger to use
      *
      * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)

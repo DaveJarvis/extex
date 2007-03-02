@@ -57,7 +57,7 @@ import org.extex.unit.base.conditional.Fi;
  *  <pre class="syntax">
  *    &lang;ifcase&rang;
  *     &rarr; <tt>\ifcase</tt> {@linkplain
- *        org.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
+ *        org.extex.interpreter.type.count.Count#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}  &lang;cases&rang; <tt>\fi</tt>
  *
  *    &lang;cases&rang;

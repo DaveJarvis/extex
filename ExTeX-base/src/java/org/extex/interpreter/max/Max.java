@@ -146,7 +146,7 @@ import org.extex.util.framework.logger.LogEnabled;
  *      &rarr; <tt>\ignorevoid</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
+ *        org.extex.interpreter.type.count.Count#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}  </pre>
  *
  * <h4>Examples</h4>
@@ -796,7 +796,7 @@ public abstract class Max
      *      org.extex.interpreter.type.tokens.Tokens,
      *      org.extex.typesetter.Typesetter)
      */
-    public Tokens expand(final Tokens tokens, final Typesetter ts)
+    public Tokens expand(final Tokens tokens, final Typesetter typesetter)
             throws InterpreterException {
 
         Tokens result = new Tokens();
@@ -983,7 +983,7 @@ public abstract class Max
      *      &rarr; <tt>\day</tt> {@linkplain
      *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
      *        &lang;equals&rang;} {@linkplain
-     *        org.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
+     *        org.extex.interpreter.type.count.Count#scanNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;}  </pre>
      *
      * <h4>Examples</h4>
@@ -1015,7 +1015,7 @@ public abstract class Max
      *      &rarr; <tt>\month</tt> {@linkplain
      *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
      *        &lang;equals&rang;} {@linkplain
-     *        org.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
+     *        org.extex.interpreter.type.count.Count#scanNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;}  </pre>
      *
      * <h4>Examples</h4>
@@ -1046,7 +1046,7 @@ public abstract class Max
      *      &rarr; <tt>\year</tt> {@linkplain
      *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
      *        &lang;equals&rang;} {@linkplain
-     *        org.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
+     *        org.extex.interpreter.type.count.Count#scanNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;}  </pre>
      *
      * <h4>Examples</h4>
@@ -1079,7 +1079,7 @@ public abstract class Max
      *      &rarr; <tt>\time</tt> {@linkplain
      *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
      *        &lang;equals&rang;} {@linkplain
-     *        org.extex.interpreter.TokenSource#scanInteger(Context,Typesetter)
+     *        org.extex.interpreter.type.count.Count#scanNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;}  </pre>
      *
      * <h4>Examples</h4>

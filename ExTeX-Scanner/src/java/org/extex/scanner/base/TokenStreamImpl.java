@@ -890,8 +890,8 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
     }
 
     /**
-     * Analyze a character and return its hex value, i.e. '0' to '9' are mapped
-     * to 0 to 9 and 'a' to 'f' (case sensitive) are mapped to 10 to 15.
+     * Analyze a character and return its hex value. This means '0' to '9' are
+     * mapped to 0 to 9 and 'a' to 'f' (case sensitive) are mapped to 10 to 15.
      *
      * @param c the character code to analyze
      *

@@ -29,7 +29,6 @@ import org.extex.interpreter.exception.InterpreterException;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.CatcodeException;
 import org.extex.scanner.type.token.ControlSequenceToken;
-import org.extex.scanner.type.token.MacroParamToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
 import org.extex.type.UnicodeChar;

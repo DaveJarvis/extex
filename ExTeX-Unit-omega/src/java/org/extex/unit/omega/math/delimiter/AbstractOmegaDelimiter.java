@@ -380,7 +380,7 @@ public abstract class AbstractOmegaDelimiter extends AbstractMathCode {
                         case 'p':
                             if (source.getKeyword(context, "punct")) {
                                 return parse(context, source, typesetter,
-                                    MathClass.PUNCTUATION, primitive);
+                                    MathClass.PUNCTATION, primitive);
                             }
                             break;
                         case 'r':

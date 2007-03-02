@@ -138,7 +138,7 @@ public class LoadingLanguageManager extends BaseLanguageManager
     /**
      * Create a new instance for the given index if required.
      *
-     * @param index the symbolic name of the language
+     * @param name the symbolic name of the language
      *
      * @return the new instance
      *
@@ -161,7 +161,7 @@ public class LoadingLanguageManager extends BaseLanguageManager
     /**
      * Load or create a new instance for the given index if required.
      *
-     * @param index the symbolic name of the language
+     * @param name the symbolic name of the language
      *
      * @return the new instance
      *

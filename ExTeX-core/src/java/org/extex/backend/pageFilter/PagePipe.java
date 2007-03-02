@@ -45,7 +45,7 @@ public interface PagePipe {
      * properly filled. Thus all information should be present to place the
      * ink on the paper.
      *
-     * @param nodes the nodes to send
+     * @param page the page to send
      *
      * @throws BackendException in case of an error
      */

@@ -44,9 +44,9 @@ import org.extex.typesetter.Typesetter;
  *  <pre class="syntax">
  *    &lang;pdfincludechars&rang;
  *       &rarr; <tt>\pdfincludechars</tt> {@linkplain
- *          org.extex.interpreter.TokenSource#getFont(Context, String)
+ *          org.extex.interpreter.TokenSource#getFont(org.extex.interpreter.context.Context,String)
  *          &lang;font&rang;} {@linkplain
- *          org.extex.interpreter.TokenSource#scanTokens(Context, String)
+ *          org.extex.interpreter.TokenSource#scanTokens(org.extex.interpreter.context.Context,String)
  *          &lang;general text&rang;} </pre>
  *
  * <h4>Examples</h4>
