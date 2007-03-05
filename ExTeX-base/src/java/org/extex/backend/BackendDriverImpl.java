@@ -244,7 +244,7 @@ public class BackendDriverImpl
     /**
      * Setter for the output stream.
      *
-     * @param writerFactory the output stream
+     * @param factory the output stream
      *
      * @see org.extex.backend.documentWriter.MultipleDocumentStream#setOutputStreamFactory(
      *      org.extex.backend.outputStream.OutputStreamFactory)

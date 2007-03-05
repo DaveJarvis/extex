@@ -41,7 +41,7 @@ public interface LanguageCreator {
      *
      * @throws HyphenationException in case of an error
      */
-    Language createLanguageInstance(String index) throws HyphenationException;
+    Language createLanguageInstance(String name) throws HyphenationException;
 
     /**
      * Load or create a new instance for the given index if required.
@@ -52,6 +52,6 @@ public interface LanguageCreator {
      *
      * @throws HyphenationException in case of an error
      */
-    Language loadLanguageInstance(String index) throws HyphenationException;
+    Language loadLanguageInstance(String name) throws HyphenationException;
 
 }

@@ -297,7 +297,8 @@ public class TypesetterImpl
      * @throws TypesetterException in case of an error
      * @throws ConfigurationException in case of a configuration error
      *
-     * @see org.extex.typesetter.ListMaker#complete(org.extex.typesetter.TypesetterOptions)
+     * @see org.extex.typesetter.ListMaker#complete(
+     *      org.extex.typesetter.TypesetterOptions)
      */
     public NodeList complete(final TypesetterOptions context)
             throws TypesetterException {
@@ -668,7 +669,7 @@ public class TypesetterImpl
             throw new ImpossibleException("Typesetter.EmptyStack");
         }
         ListMaker current = listMaker;
-        listMaker = (ListMaker) (saveStack.remove(saveStack.size() - 1));
+        this.listMaker = (ListMaker) (saveStack.remove(saveStack.size() - 1));
         return current;
     }
 
@@ -684,7 +685,7 @@ public class TypesetterImpl
      */
     public void push(final ListMaker listMaker) throws TypesetterException {
 
-        saveStack.add(listMaker);
+        saveStack.add(this.listMaker);
         this.listMaker = listMaker;
     }
 

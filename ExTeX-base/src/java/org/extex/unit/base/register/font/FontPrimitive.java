@@ -93,7 +93,7 @@ import org.extex.util.framework.logger.LogEnabled;
  *
  *    &lang;option&rang;
  *      &rarr; [scaled] {@linkplain
- *        org.extex.interpreter.TokenSource#scanInteger(org.extex.interpreter.context.Context,Typesetter)
+     *        org.extex.interpreter.type.count.Count#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}
  *       | [at] {@linkplain
  *           org.extex.interpreter.type.dimen#Dimen(org.extex.interpreter.context.Context,org.extex.interpreter.TokenSource)
