@@ -49,6 +49,7 @@
       <arg value="org.apache.tools.ant.XmlLogger" />
       <arg value="-logfile" />
       <arg value="${log.dir}/${log.file}" />
+      <arg value="all" />
     </exec>
 
     <xslt in="${log.dir}/${log.file}"
@@ -60,12 +61,12 @@
   <!-- ==================================================================== -->
   <target name="deploy"
           description="Create the site and deploy it to the destination"
-          depends="all">
+          >
 
     <mkdir dir="${deploy.dir}" />
-    <move todir="${deploy.dir}">
-      <fileset dir="target/application/html"/>
-    </move>
+    <copy todir="${deploy.dir}">
+      <fileset dir="../build/target/application/html"/>
+    </copy>
   </target>
 
 </project>
