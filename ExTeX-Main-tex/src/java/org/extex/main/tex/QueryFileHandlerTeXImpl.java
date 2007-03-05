@@ -95,7 +95,7 @@ public class QueryFileHandlerTeXImpl implements QueryFileHandler {
      *
      * @return the file name or <code>null</code> if none has been given
      *
-     * @see org.extex.tex.main.QueryFileHandler#query(
+     * @see org.extex.main.tex.QueryFileHandler#query(
      *      java.util.logging.Logger,
      *      java.util.Properties)
      */

@@ -48,7 +48,7 @@ public class ErrorHandlerTeXImpl extends ErrorHandlerImpl {
      * @param message the error message
      * @param locator the locator for the error position
      *
-     * @see org.extex.tex.main.ErrorHandlerImpl#showErrorLine(
+     * @see org.extex.main.tex.ErrorHandlerImpl#showErrorLine(
      *      java.util.logging.Logger, java.lang.String, org.extex.type.Locator)
      */
     protected void showErrorLine(final Logger logger, final String message,
