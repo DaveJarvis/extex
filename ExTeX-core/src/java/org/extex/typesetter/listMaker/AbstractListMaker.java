@@ -237,7 +237,7 @@ public abstract class AbstractListMaker implements ListMaker {
      * @see org.extex.typesetter.ListMaker#setSpacefactor(
      *      org.extex.interpreter.type.count.FixedCount)
      */
-    public void setSpacefactor(final FixedCount f)
+    public void setSpacefactor(final FixedCount sf)
             throws TypesetterUnsupportedException,
                 InvalidSpacefactorException {
 
@@ -250,7 +250,7 @@ public abstract class AbstractListMaker implements ListMaker {
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     * @param t the actual sub mark token
+     * @param token the actual sub mark token
      *
      * @throws TypesetterException in case of an error
      *
@@ -274,7 +274,7 @@ public abstract class AbstractListMaker implements ListMaker {
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     * @param t the actual super mark token
+     * @param token the actual super mark token
      *
      * @throws TypesetterException in case of an error
      *

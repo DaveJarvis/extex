@@ -216,7 +216,7 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
      * @param code the catcode
      * @param c the Unicode character value
      * @param namespace the name space for the token. This is relevant for
-     * ACTIVE and ESCAPE catcodes only.
+     *   ACTIVE and ESCAPE catcodes only.
      *
      * @return the appropriate token
      *
@@ -245,6 +245,12 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     /**
      * Active characters are cached. Thus a lookup in the cache precedes the
      * creation of a new token.
+     *
+     * @param oValue the string value of the token
+     * @param oChar the character value of the token
+     * @param oNamespace the name space of the token
+     *
+     * @return the active token
      *
      * @see org.extex.scanner.type.CatcodeVisitor#visitActive(
      *      java.lang.Object,
@@ -292,7 +298,7 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
      *
      * @param oValue the string value of the token
      * @param oChar the character value of the token
-     * @param oNamespace the name space of the token
+     * @param ignore the name space of the token
      *
      * @return <code>null</code>
      *
@@ -308,6 +314,12 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
 
     /**
      * There is only one CrToken.
+     *
+     * @param oValue the string value of the token
+     * @param oChar the character value of the token
+     * @param ignore the name space of the token
+     *
+     * @return the CR token
      *
      * @see org.extex.scanner.type.CatcodeVisitor#visitCr(java.lang.Object,
      *      java.lang.Object, java.lang.Object)

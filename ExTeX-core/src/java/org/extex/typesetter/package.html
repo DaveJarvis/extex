@@ -43,7 +43,7 @@
   </p>
 
   <p>The typesetter maintains a stack of 
-  {@link org.extex.typesetter.listMaker.ListMaker ListMaker}s. If
+  {@link org.extex.typesetter.ListMaker ListMaker}s. If
   the top of this stack is a horizontal list then it is closed first.
   this leaves a vertical list
   ({@link org.extex.typesetter.listMaker.HorizontalListMaker HorizontalListMaker}).
@@ -53,7 +53,7 @@
   <p>The horizontal list maker instructs his manager &ndash; which is
   also the typesetter &ndash; to build the paragraph. The typesetter
   propagates this message to the
-  {@link org.extex.typeseter.paragraphBuilder.ParagraphBuilder ParagraphBuilder}.
+  {@link org.extex.typesetter.paragraphBuilder.ParagraphBuilder ParagraphBuilder}.
   </p>
 
   <p>When the contents is added to the topmost list maker &ndash;
@@ -63,7 +63,7 @@
   </p>
 
   <p>The output routine is an implementation of the interface
-  {@link org.extex.typesetter.OutputRoutine OutputRoutine}. The
+  {@link org.extex.typesetter.output.OutputRoutine OutputRoutine}. The
   TeX implementation for the output routine executes some tokens with
   the help of an interpreter. In the course of this execution the
   primitive <tt>\shipout</tt> can be used to send some material to the

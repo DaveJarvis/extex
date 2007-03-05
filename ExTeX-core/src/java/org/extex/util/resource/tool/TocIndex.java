@@ -66,8 +66,7 @@ public class TocIndex {
                 if (i < args.length) {
                     arg = args[++i];
                     try {
-                        System
-                            .setOut(new PrintStream(new FileOutputStream(arg)));
+                        out = new PrintStream(new FileOutputStream(arg));
                     } catch (FileNotFoundException e) {
                         err.print(arg);
                         err.print(" ");

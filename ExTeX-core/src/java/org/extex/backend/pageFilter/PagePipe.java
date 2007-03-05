@@ -49,7 +49,7 @@ public interface PagePipe {
      *
      * @throws BackendException in case of an error
      */
-    void shipout(Page nodes) throws BackendException;
+    void shipout(Page page) throws BackendException;
 
     /**
      * Setter for the output node pipe.

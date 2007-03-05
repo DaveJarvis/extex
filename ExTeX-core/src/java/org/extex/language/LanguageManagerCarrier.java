@@ -34,7 +34,7 @@ public interface LanguageManagerCarrier {
      *
      * @param manager the language manager to carry
      */
-    void setLanguageManager(LanguageManager hyphenationFactory)
+    void setLanguageManager(LanguageManager manager)
             throws ConfigurationException;
 
 }

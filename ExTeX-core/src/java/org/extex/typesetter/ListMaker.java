@@ -275,12 +275,12 @@ public interface ListMaker {
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     * @param t the actual sub mark token
+     * @param token the actual sub mark token
      *
      * @throws TypesetterException in case of an error
      */
     void subscriptMark(Context context, TokenSource source,
-            Typesetter typesetter, Token t) throws TypesetterException;
+            Typesetter typesetter, Token token) throws TypesetterException;
 
     /**
      * Treat a superscript mark. This might be meaningful in math mode only.
@@ -288,12 +288,12 @@ public interface ListMaker {
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     * @param t the actual super mark token
+     * @param token the actual super mark token
      *
      * @throws TypesetterException in case of an error
      */
     void superscriptMark(Context context, TokenSource source,
-            Typesetter typesetter, Token t) throws TypesetterException;
+            Typesetter typesetter, Token token) throws TypesetterException;
 
     /**
      * Treat a alignment tab character.
