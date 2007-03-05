@@ -46,7 +46,7 @@ import org.extex.typesetter.Typesetter;
  *       &rarr; <tt>\pdfincludechars</tt> {@linkplain
  *          org.extex.interpreter.TokenSource#getFont(org.extex.interpreter.context.Context,String)
  *          &lang;font&rang;} {@linkplain
- *          org.extex.interpreter.TokenSource#scanTokens(org.extex.interpreter.context.Context,String)
+ *          org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,String)
  *          &lang;general text&rang;} </pre>
  *
  * <h4>Examples</h4>
@@ -77,6 +77,18 @@ public class Pdfincludechars extends AbstractPdftexCode {
     }
 
     /**
+     * This method takes the first token and executes it. The result is placed
+     * on the stack. This operation might have side effects. To execute a token
+     * it might be necessary to consume further tokens.
+     *
+     * @param prefix the prefix controlling the execution
+     * @param context the interpreter context
+     * @param source the token source
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
+     *
      * @see org.extex.interpreter.type.AbstractCode#execute(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,

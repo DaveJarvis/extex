@@ -42,12 +42,12 @@ import org.extex.util.framework.configuration.exception.ConfigurationException;
  *  <pre class="syntax">
  *    &lang;pdfobj&rang;
  *       &rarr; <tt>\pdfobj</tt> &lang;optional attr&rang; &lang;optional stream or file&rang; {@linkplain
- *          org.extex.interpreter.TokenSource#scanTokens(Context, String)
+ *          org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,String)
  *          &lang;general text&rang;}
  *
  *    &lang;optional attr&rang;
  *       &rarr; <tt>attr</tt> {@linkplain
- *          org.extex.interpreter.TokenSource#scanTokens(Context, String)
+ *          org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,String)
  *          &lang;general text&rang;}
  *       |
  *

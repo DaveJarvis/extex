@@ -33,6 +33,7 @@ import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.paragraphBuilder.ParagraphShape;
 import org.extex.util.exception.GeneralException;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive <code>\relax</code>.
@@ -89,6 +90,20 @@ public class Parshapedimen extends AbstractCode
     }
 
     /**
+     * This method converts a register into a count. It might be necessary to
+     * read further tokens to determine which value to use. For instance an
+     * additional register number might be required. In this case the additional
+     * arguments Context and TokenSource can be used.
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter to use for conversion
+     *
+     * @return the converted value
+     *
+     * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
+     *
      * @see org.extex.interpreter.type.count.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
@@ -100,9 +115,26 @@ public class Parshapedimen extends AbstractCode
     }
 
     /**
-     * @see org.extex.interpreter.type.count.DimenConvertible#convertDimen(
+     * This method converts a register into a dimen.
+     * It might be necessary to read further tokens to determine which value to
+     * use. For instance an additional register number might be required. In
+     * this case the additional arguments Context and TokenSource can be used.
+     *
+     * The return value is the length in scaled points.
+     *
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter to use for conversion
+     *
+     * @return the converted value in sp
+     *
+     * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
+     *
+     * @see org.extex.interpreter.type.dimen.DimenConvertible#convertDimen(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, Typesetter)
+     *      org.extex.interpreter.TokenSource,
+     *      org.extex.typesetter.Typesetter)
      */
     public long convertDimen(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
@@ -118,6 +150,17 @@ public class Parshapedimen extends AbstractCode
     }
 
     /**
+     * This method is the getter for the description of the primitive.
+     *
+     * @param context the interpreter context
+     * @param source the source for further tokens to qualify the request
+     * @param typesetter the typesetter to use
+     *
+     * @return the description of the primitive as list of Tokens
+     *
+     * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
+     *
      * @see org.extex.interpreter.type.Theable#the(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)

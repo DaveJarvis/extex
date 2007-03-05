@@ -41,7 +41,7 @@ import org.extex.util.framework.configuration.exception.ConfigurationException;
  *  <pre class="syntax">
  *    &lang;pdfliteral&rang;
  *       &rarr; <tt>\pdfliteral</tt> &lang;optional direct&rang; {@linkplain
- *          org.extex.interpreter.TokenSource#scanTokens(Context, String)
+ *          org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,String)
  *          &lang;general text&rang;}
  *
  *    &lang;optional direct&rang;

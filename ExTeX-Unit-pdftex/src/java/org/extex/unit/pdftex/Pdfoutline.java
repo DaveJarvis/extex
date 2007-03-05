@@ -27,6 +27,7 @@ import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.count.Count;
 import org.extex.typesetter.Typesetter;
 import org.extex.unit.pdftex.util.action.ActionSpec;
+import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive <code>\pdfoutline</code>.
@@ -42,7 +43,7 @@ import org.extex.unit.pdftex.util.action.ActionSpec;
  *  <pre class="syntax">
  *    &lang;pdfoutline&rang;
  *       &rarr; <tt>\pdfoutline</tt> ... {@linkplain
- *          org.extex.interpreter.TokenSource#scanTokens(Context, String)
+ *          org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,String)
  *          &lang;general text&rang;} </pre>
  *
  * <h4>Examples</h4>
@@ -72,6 +73,18 @@ public class Pdfoutline extends AbstractPdftexCode {
     }
 
     /**
+     * This method takes the first token and executes it. The result is placed
+     * on the stack. This operation might have side effects. To execute a token
+     * it might be necessary to consume further tokens.
+     *
+     * @param prefix the prefix controlling the execution
+     * @param context the interpreter context
+     * @param source the token source
+     * @param typesetter the typesetter
+     *
+     * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
+     *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
