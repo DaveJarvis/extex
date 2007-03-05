@@ -52,7 +52,7 @@ import org.extex.typesetter.Typesetter;
  *  <pre class="syntax">
  *    &lang;setbox&rang;
  *      &rarr; &lang;optional prefix&rang; <tt>\setbox</tt> {@linkplain
- *        org.extex.unit.tex.register.box.AbstractBox#getKey(Context,TokenSource,Typesetter,String)
+ *        org.extex.unit.tex.register.box.Setbox#getKey(Context,TokenSource,Typesetter,String)
  *        &lang;box register name&rang;} &lang;box&rang;
  *
  *    &lang;optional prefix&rang;

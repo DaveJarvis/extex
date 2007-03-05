@@ -21,8 +21,6 @@ package org.extex.unit.tex.info;
 
 import java.util.logging.Logger;
 
-import javax.xml.transform.Source;
-
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -50,7 +48,7 @@ import org.extex.util.framework.logger.LogEnabled;
  *  <pre class="syntax">
  *    &lang;showbox&rang;
  *      &rarr; <tt>\showbox</tt> {@linkplain
- *        org.extex.unit.tex.register.box.Setbox#getKey(Context,Source,Typesetter,String)
+ *        org.extex.unit.tex.register.box.Setbox#getKey(Context,TokenSource,Typesetter,String)
  *        &lang;box&nbsp;register&nbsp;name&rang;}  </pre>
  *
  * <h4>Examples</h4>

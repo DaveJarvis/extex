@@ -302,11 +302,12 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
      * cells can be integrated. If some cells are not filled jet then they
      * are treated as empty.
      * In contrast to the method
-     * {@link #cr(org.extex.interpreter.context.Context,org.extex.typesetter.Typesetter, boolean) cr()}
+     * {@link #cr(Context, TokenSource, NodeList) cr()}
      * this method is a noop when the alignment is at the beginning of a row.
      *
      * @param context the interpreter context
      * @param source the token source
+     * @param typesetter the typesetter
      *
      * @throws TypesetterException in case of an error
      *
@@ -429,7 +430,7 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
      *
      * @param context the interpreter context
      * @param source the source for new tokens
-     * @param t the actual tab token
+     * @param token the actual tab token
      *
      * @throws TypesetterException in case of an error
      * @throws ConfigurationException in case of a configuration error

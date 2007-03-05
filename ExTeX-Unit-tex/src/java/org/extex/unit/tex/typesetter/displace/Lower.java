@@ -50,7 +50,7 @@ import org.extex.unit.tex.typesetter.box.AbstractBoxPrimitive;
  *      &rarr; <tt>\lower</tt> {@linkplain
  *        org.extex.interpreter.type.dimen#Dimen(Context,TokenSource)
  *        &lang;dimen&rang;} {@linkplain
- *        org.extex.interpreter.TokenSource#getBox(Context,Typesetter)
+ *        org.extex.interpreter.TokenSource#getBox(org.extex.interpreter.Flags,Context,Typesetter,Token)
  *        &lang;box&rang;} </pre>
  *
  * <h4>Examples</h4>

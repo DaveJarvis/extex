@@ -21,8 +21,6 @@ package org.extex.unit.tex.register.box;
 
 import java.io.Serializable;
 
-import javax.xml.transform.Source;
-
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -60,7 +58,7 @@ import org.extex.util.exception.GeneralException;
  *  <pre class="syntax">
  *    &lang;dp&rang;
  *      &rarr; &lang;optional prefix&rang; <tt>\dp</tt> {@linkplain
- *        org.extex.unit.tex.register.box.Setbox#getKey(Context,Source,Typesetter,String)
+ *        org.extex.unit.tex.register.box.Setbox#getKey(Context,TokenSource,Typesetter,String)
  *        &lang;box register name&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain

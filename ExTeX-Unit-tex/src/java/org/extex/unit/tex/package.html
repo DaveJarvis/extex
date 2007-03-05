@@ -173,9 +173,8 @@
    new macros. Those macros are defined at runtime. The assignment of
    the Java code to the macro name can be controlled with the help of
    a primitive. Check out whether the macro {@link
-   org.extex.interpreter.primitives.dynamic.java.JavaDef
-   <tt>\javadef</tt>} is defined in one of the configuration files provided and
-   consult the documentation.
+   org.extex.unit.dynamic.java.JavaDef <tt>\javadef</tt>} is defined in one of
+   the configuration files provided and consult the documentation.
   </p>
 
   <h4>Exceptions</h4>
@@ -196,8 +195,8 @@
 
   <h4>Assignments</h4>
   <p>
-   Assignments are a special kind of executable code. <logo>TeX</logo> defines that
-   the parameter <tt>\globaldef</tt> is evaluated and the macro
+   Assignments are a special kind of executable code. <logo>TeX</logo> defines
+   that the parameter <tt>\globaldef</tt> is evaluated and the macro
    <tt>\afterassignment</tt> has some effect. To ease the development
    of assignments the abstract base class {@link
    org.extex.interpreter.type.AbstractAssignment AbstractAssignment} is
@@ -302,15 +301,14 @@
   </p>
   <p>
    All neccesary actions are performed by the abstract base class
-   {@link org.extex.interpreter.primitives.conditional.AbstractIf
-   AbstractIf}. The only thing to do is to implement the method
-   <tt>conditional()</tt> which computes whether the then or the else
-   branch should be considered relevant. This is shown in the
-   following example:
+   {@link org.extex.unit.base.conditional.AbstractIf AbstractIf}. The only
+   thing to do is to implement the method <tt>conditional()</tt> which computes
+   whether the then or the else branch should be considered relevant. This is
+   shown in the following example:
    <pre class="JavaSample">
     <b>package</b> my.package;
 
-    <b>import</b> org.extex.interpreter.primitives.conditional.AbstractIf;
+    <b>import</b> org.extex.unit.base.conditional.AbstractIf;
     <b>import</b> org.extex.interpreter.contect.Context;
     <b>import</b> org.extex.interpreter.Flags;
     <b>import</b> org.extex.interpreter.TokenSource;
