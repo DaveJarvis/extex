@@ -30,11 +30,12 @@ import org.apache.tools.ant.DirectoryScanner;
 import org.apache.tools.ant.Task;
 import org.apache.tools.ant.types.DirSet;
 import org.apache.tools.ant.types.Path;
+import org.extex.exdoc.ExDocHtml;
+import org.extex.exdoc.ExDocTeX;
 import org.extex.exdoc.ExDocXml;
-import org.extex.exdoc.Exdoc;
 
 /**
- * TODO gene: missing JavaDoc.
+ * Provide an Ant task for the Exdoc functionality.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -42,22 +43,22 @@ import org.extex.exdoc.Exdoc;
 public class ExdocTask extends Task {
 
     /**
-     * The field <tt>format</tt> contains the ...
+     * The field <tt>format</tt> contains the format to use.
      */
     private String format = "xml";
 
     /**
-     * The field <tt>output</tt> contains the ...
+     * The field <tt>output</tt> contains the output attribute.
      */
     private String output = "exdoc";
 
     /**
-     * The field <tt>roots</tt> contains the ...
+     * The field <tt>roots</tt> contains the list of root directories to consider.
      */
     private List roots = new ArrayList();
 
     /**
-     * The field <tt>verbose</tt> contains the ...
+     * The field <tt>verbose</tt> contains the verbosity indicator.
      */
     private boolean verbose = false;
 
@@ -89,9 +90,7 @@ public class ExdocTask extends Task {
 
         for (int i = 0; i < list.length; i++) {
             roots.add(list[i]);
-            System.out.println(list[i]);
         }
-
     }
 
     /**
@@ -105,45 +104,18 @@ public class ExdocTask extends Task {
 
         ExDocXml exdoc = null;
         if ("xml".equals(format)) {
-            try {
-                exdoc = new ExDocXml() {
-
-                    /**
-                     * TODO gene: missing JavaDoc
-                     *
-                     * @param msg ...
-                     *
-                     * @see org.extex.exdoc.util.Traverser#info(java.lang.String)
-                     */
-                    protected void info(final String msg) {
-
-                        if (verbose) {
-                            log(msg);
-                        }
-                    }
-
-                    /**
-                     * TODO gene: missing JavaDoc
-                     *
-                     * @param msg ...
-                     *
-                     * @see org.extex.exdoc.util.Traverser#warning(java.lang.String)
-                     */
-                    protected void warning(final String msg) {
-
-                        log(msg);
-                    }
-                };
-            } catch (ParserConfigurationException e) {
-                throw new BuildException(e);
-            }
+            exdoc = makeExDocXml();
+        } else if ("html".equals(format)) {
+            exdoc = makeExDocHtml();
+        } else if ("tex".equals(format)) {
+            exdoc = makeExDocTeX();
         } else {
             throw new BuildException("format `" + format + "' is not supported");
         }
         int size = roots.size();
         if (size == 0) {
             throw new BuildException(
-                "missing base dirs; please use an embedded <dirset>");
+                "missing base directories; please use an embedded <dirset>");
         }
         String[] args = new String[size + 1];
         args[0] = "-";
@@ -157,6 +129,135 @@ public class ExdocTask extends Task {
         } catch (Exception e) {
             throw new BuildException(e);
         }
+    }
+
+    /**
+     * Create an Exdoc object for HTML translation.
+     *
+     * @return Exdoc object
+     */
+    private ExDocXml makeExDocHtml() {
+
+        ExDocXml exdoc = null;
+        try {
+            exdoc = new ExDocHtml() {
+
+                /**
+                 * Log an info message.
+                 *
+                 * @param msg the message
+                 *
+                 * @see org.extex.exdoc.util.Traverser#info(java.lang.String)
+                 */
+                protected void info(final String msg) {
+
+                    if (verbose) {
+                        log(msg);
+                    }
+                }
+
+                /**
+                 * Log a message.
+                 *
+                 * @param msg the message
+                 *
+                 * @see org.extex.exdoc.util.Traverser#warning(java.lang.String)
+                 */
+                protected void warning(final String msg) {
+
+                    log(msg);
+                }
+            };
+        } catch (ParserConfigurationException e) {
+            throw new BuildException(e);
+        }
+        return exdoc;
+    }
+
+    /**
+     * Create an Exdoc object for TeX translation.
+     *
+     * @return Exdoc object
+     */
+    private ExDocXml makeExDocTeX() {
+
+        ExDocXml exdoc = null;
+        try {
+            exdoc = new ExDocTeX() {
+
+                /**
+                 * Log an info message.
+                 *
+                 * @param msg the message
+                 *
+                 * @see org.extex.exdoc.util.Traverser#info(java.lang.String)
+                 */
+                protected void info(final String msg) {
+
+                    if (verbose) {
+                        log(msg);
+                    }
+                }
+
+                /**
+                 * Log a message.
+                 *
+                 * @param msg the message
+                 *
+                 * @see org.extex.exdoc.util.Traverser#warning(java.lang.String)
+                 */
+                protected void warning(final String msg) {
+
+                    log(msg);
+                }
+            };
+        } catch (ParserConfigurationException e) {
+            throw new BuildException(e);
+        }
+        return exdoc;
+    }
+
+    /**
+     * Create an Exdoc object for XML translation.
+     *
+     * @return Exdoc object
+     */
+    private ExDocXml makeExDocXml() {
+
+        ExDocXml exdoc = null;
+        try {
+            exdoc = new ExDocXml() {
+
+                /**
+                 * Log an info message.
+                 *
+                 * @param msg the message
+                 *
+                 * @see org.extex.exdoc.util.Traverser#info(java.lang.String)
+                 */
+                protected void info(final String msg) {
+
+                    if (verbose) {
+                        log(msg);
+                    }
+                }
+
+                /**
+                 * Log a message.
+                 *
+                 * @param msg the message
+                 *
+                 * @see org.extex.exdoc.util.Traverser#warning(java.lang.String)
+                 */
+                protected void warning(final String msg) {
+
+                    log(msg);
+                }
+            };
+        } catch (ParserConfigurationException e) {
+            throw new BuildException(e);
+        }
+        return exdoc;
     }
 
     /**
