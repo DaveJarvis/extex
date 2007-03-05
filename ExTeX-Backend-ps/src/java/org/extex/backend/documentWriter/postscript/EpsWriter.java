@@ -104,19 +104,19 @@ public class EpsWriter extends AbstractPostscriptWriter {
      * @see org.extex.backend.documentWriter.DocumentWriter#shipout(
      *      org.extex.typesetter.type.page.Page)
      */
-    public int shipout(final Page p) throws GeneralException, IOException {
+    public int shipout(final Page page) throws GeneralException, IOException {
 
         PsConverter converter = getConverter(headerManager);
 
         OutputStream stream = newOutputStream("eps");
 
-        byte[] bytes = converter.toPostScript(p, fontManager, headerManager);
+        byte[] bytes = converter.toPostScript(page, fontManager, headerManager);
 
         stream.write("%!PS-Adobe-2.0 EPSF-2.0\n".getBytes());
         writeDsc(stream, "Creator", getParameter("Creator"));
         writeDsc(stream, "Title", getParameter("Title"));
-        writeBB(stream, "BoundingBox", p.getNodes());
-        writeHRBB(stream, "HiResBoundingBox", p.getNodes());
+        writeBB(stream, "BoundingBox", page.getNodes());
+        writeHRBB(stream, "HiResBoundingBox", page.getNodes());
         writeFonts(stream, fontManager);
         writeDsc(stream, "EndComments");
         fontManager.write(stream);

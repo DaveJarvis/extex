@@ -193,7 +193,7 @@ public abstract class AbstractPostscriptWriter
     /**
      * Setter for the output stream.
      *
-     * @param writerFactory the output stream
+     * @param factory the output stream
      *
      * @see org.extex.backend.documentWriter.MultipleDocumentStream#setOutputStreamFactory(
      *      org.extex.backend.outputStream.OutputStreamFactory)
@@ -224,7 +224,7 @@ public abstract class AbstractPostscriptWriter
     /**
      * Setter for the resource finder.
      *
-     * @param finder the resource finder
+     * @param resourceFinder the resource finder
      *
      * @see org.extex.util.resource.ResourceConsumer#setResourceFinder(
      *      org.extex.util.resource.ResourceFinder)
