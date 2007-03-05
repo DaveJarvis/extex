@@ -61,7 +61,8 @@ public class ExDocXml extends Traverser {
     }
 
     /**
-     * The field <tt>builder</tt> contains the ...
+     * The field <tt>builder</tt> contains the document builder for parsing the
+     * XML file.
      */
     private DocumentBuilder builder;
 
@@ -258,14 +259,14 @@ public class ExDocXml extends Traverser {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Ship the given content to the appropriate file.
      *
-     * @param k the name of the resource
+     * @param key the name of the resource
      * @param content the output stream in form of a string buffer
      *
      * @throws IOException in case of an I/O error
      */
-    protected void shipout(final Key k, final StringBuffer content)
+    protected void shipout(final Key key, final StringBuffer content)
             throws IOException {
 
         content.insert(0, "<?xml version=\"1.0\" encoding=\"ISO-8859-1\" ?>\n");
@@ -278,7 +279,7 @@ public class ExDocXml extends Traverser {
             outDir = defaultOutputDirectory;
         }
 
-        File file = new File(outDir, k + ".xml");
+        File file = new File(outDir, key + ".xml");
         FileWriter os = new FileWriter(file);
         os.write(s);
         os.close();

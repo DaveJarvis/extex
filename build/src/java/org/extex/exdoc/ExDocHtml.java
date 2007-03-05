@@ -42,7 +42,7 @@ import javax.xml.transform.stream.StreamSource;
 import org.extex.exdoc.util.Key;
 
 /**
- * TODO gene: missing JavaDoc.
+ * Extract doc tags from sources and translate them to HTML.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -50,7 +50,7 @@ import org.extex.exdoc.util.Key;
 public class ExDocHtml extends ExDocXml {
 
     /**
-     * The field <tt>XSLT</tt> contains the ...
+     * The field <tt>XSLT</tt> contains the name of the XSLT file to use.
      */
     private static final String XSLT = "org/extex/exdoc/xslt/xml2tml.xsl";
 
@@ -143,7 +143,7 @@ public class ExDocHtml extends ExDocXml {
     /**
      * TODO gene: missing JavaDoc
      *
-     * @param name th name of the resource currently processed
+     * @param name the name of the resource currently processed
      * @param content the content to be shipped
      *
      * @throws IOException in case of an I/O error
