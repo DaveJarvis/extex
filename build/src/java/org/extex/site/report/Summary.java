@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -34,7 +34,7 @@ import java.util.List;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Summary {
+public final class Summary {
 
     /**
      * The command line interface.
@@ -54,7 +54,7 @@ public class Summary {
                     directory = args[i];
                 }
             } else {
-
+                // ...
             }
         }
 
@@ -69,8 +69,8 @@ public class Summary {
                 return name.endsWith(".xml");
             }
         });
-        List l = new ArrayList(); 
-        for (int j=0;j<list.length;j++) {
+        List l = new ArrayList();
+        for (int j = 0; j < list.length; j++) {
             l.add(list[j]);
         }
 
