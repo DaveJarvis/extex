@@ -66,6 +66,7 @@ public class ExdocTaskTest extends BuildFileTest {
 
     /**
      *
+     * @throws IOException ...
      */
     public final void ___test1() throws IOException {
 
