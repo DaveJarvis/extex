@@ -3,7 +3,7 @@
 <installation version="1.0">
   <info>
     <appname>ExTeX</appname>
-    <appversion>0.0</appversion>
+    <appversion>0.0-snapshot</appversion>
     <authors>
       <author name="Gerd Neugebauer" email="gene@gerd-neugebauer.de"/>
       <author name="Michael Niedermair" email="m.g.n@gmx.de"/>
@@ -97,7 +97,7 @@
 
     <pack name="TeX-MF" id="texmf" required="no">
       <description/>
-      <fileset dir="../../texmf/target"
+      <fileset dir="../../build/target"
                targetdir="$INSTALL_PATH/lib">
         <include name="*.jar"/>
       </fileset>
