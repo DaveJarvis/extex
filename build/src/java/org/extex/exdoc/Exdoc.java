@@ -50,7 +50,7 @@ public final class Exdoc {
                 new ExDocXml().run(args);
             }
         } catch (Exception e) {
-            System.err.println(e.getMessage());
+            System.err.println(e.toString());
         }
     }
 

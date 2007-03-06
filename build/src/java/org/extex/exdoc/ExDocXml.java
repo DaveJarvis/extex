@@ -56,7 +56,7 @@ public class ExDocXml extends Traverser {
         try {
             new ExDocXml().run(args);
         } catch (Exception e) {
-            System.err.println(e.getMessage());
+            System.err.println(e.toString());
         }
     }
 
@@ -228,8 +228,8 @@ public class ExDocXml extends Traverser {
      *
      * @return ...
      *
-     * @throws IOException ...
-     * @throws SAXException ...
+     * @throws IOException in case of an I/O error
+     * @throws SAXException in case of a parse error
      */
     protected Element scan(final CharSequence cs)
             throws SAXException,

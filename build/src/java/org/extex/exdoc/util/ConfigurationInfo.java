@@ -30,10 +30,19 @@ import java.util.List;
  */
 public class ConfigurationInfo {
 
-    private String name;
-
+    /**
+     * The field <tt>banner</tt> contains the ...
+     */
     private String banner;
 
+    /**
+     * The field <tt>name</tt> contains the ...
+     */
+    private String name;
+
+    /**
+     * The field <tt>units</tt> contains the ...
+     */
     private List units = new ArrayList();
 
     /**
@@ -52,12 +61,42 @@ public class ConfigurationInfo {
     /**
      * TODO gene: missing JavaDoc
      *
-     * @param src
+     * @param src ...
      */
     public void addUnit(final String src) {
 
         System.err.println(src);
         units.add(src);
+    }
+
+    /**
+     * Getter for banner.
+     *
+     * @return the banner
+     */
+    public String getBanner() {
+
+        return banner;
+    }
+
+    /**
+     * Getter for name.
+     *
+     * @return the name
+     */
+    public String getName() {
+
+        return name;
+    }
+
+    /**
+     * Getter for units.
+     *
+     * @return the units
+     */
+    public List getUnits() {
+
+        return units;
     }
 
 }

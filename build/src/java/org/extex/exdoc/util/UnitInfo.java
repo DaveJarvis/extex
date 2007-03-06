@@ -51,10 +51,36 @@ public class UnitInfo {
         this.name = name;
     }
 
+    /**
+     * TODO gene: missing JavaDoc
+     *
+     * @param def ...
+     * @param c ...
+     */
     public void add(final String def, final String c) {
 
         // TODO gene: add unimplemented
-        
+
+    }
+
+    /**
+     * Getter for name.
+     *
+     * @return the name
+     */
+    public String getName() {
+
+        return name;
+    }
+
+    /**
+     * Getter for primitives.
+     *
+     * @return the primitives
+     */
+    public List getPrimitives() {
+
+        return primitives;
     }
 
 }

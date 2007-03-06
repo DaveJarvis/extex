@@ -67,7 +67,6 @@ public class ExDocTeX extends ExDocXml {
         ENTITY_MAP.put("lt", "&lt;");
         ENTITY_MAP.put("apos", "'");
         ENTITY_MAP.put("quod", "''");
-        ENTITY_MAP.put("#x5c", "\\");
 
         ENTITY_MAP.put("AElig", "\\AE{}");
         ENTITY_MAP.put("Aacute", "\\'A");
@@ -82,7 +81,7 @@ public class ExDocTeX extends ExDocXml {
         ENTITY_MAP.put("Chi", "\\ensuremath{X}");
         ENTITY_MAP.put("Dagger", "\\ddagger{}");
         ENTITY_MAP.put("Delta", "\\ensuremath{\\Delta}");
-//        ENTITY_MAP.put("ETH", "&amp;ETH;");
+        //        ENTITY_MAP.put("ETH", "&amp;ETH;");
         ENTITY_MAP.put("Eacute", "\\'E");
         ENTITY_MAP.put("Ecirc", "\\^E");
         ENTITY_MAP.put("Egrave", "\\`E");
@@ -113,7 +112,7 @@ public class ExDocTeX extends ExDocXml {
         ENTITY_MAP.put("Psi", "\\ensuremath{\\Psi}");
         ENTITY_MAP.put("Rho", "\\ensuremath{\\Rho}");
         ENTITY_MAP.put("Sigma", "\\ensuremath{\\Sigma}");
-//        ENTITY_MAP.put("THORN", "&amp;THORN;");
+        //        ENTITY_MAP.put("THORN", "&amp;THORN;");
         ENTITY_MAP.put("Tau", "\\ensuremath{\\Tau}");
         ENTITY_MAP.put("Theta", "\\ensuremath{\\Theta}");
         ENTITY_MAP.put("Uacute", "\\'U");
@@ -134,12 +133,12 @@ public class ExDocTeX extends ExDocXml {
         ENTITY_MAP.put("and", "\\ensuremath{\\land}");
         ENTITY_MAP.put("ang", "\\ensuremath{\\ang}");
         ENTITY_MAP.put("aring", "\\aa{}");
-//        ENTITY_MAP.put("asymp", "&amp;asymp;");
+        //        ENTITY_MAP.put("asymp", "&amp;asymp;");
         ENTITY_MAP.put("atilde", "\\~a");
         ENTITY_MAP.put("auml", "\\\"a");
-//        ENTITY_MAP.put("bdquo", "&amp;bdquo;");
+        //        ENTITY_MAP.put("bdquo", "&amp;bdquo;");
         ENTITY_MAP.put("beta", "\\ensuremath{\\beta}");
-//        ENTITY_MAP.put("brvbar", "&amp;brvbar;");
+        //        ENTITY_MAP.put("brvbar", "&amp;brvbar;");
         ENTITY_MAP.put("bull", "\\ensuremath{\\bullet}");
         ENTITY_MAP.put("cap", "\\ensuremath{\\cap}");
         ENTITY_MAP.put("ccedil", "\\c c");
@@ -147,9 +146,9 @@ public class ExDocTeX extends ExDocXml {
         ENTITY_MAP.put("cent", "\\textcent{}");
         ENTITY_MAP.put("chi", "\\ensuremath{\\chi}");
         ENTITY_MAP.put("clubs", "\\clubsuit{}");
-//        ENTITY_MAP.put("cong", "&amp;cong;");
+        //        ENTITY_MAP.put("cong", "&amp;cong;");
         ENTITY_MAP.put("copy", "\\copyright{}");
-//        ENTITY_MAP.put("crarr", "&amp;crarr;");
+        //        ENTITY_MAP.put("crarr", "&amp;crarr;");
         ENTITY_MAP.put("cup", "\\ensuremath{\\cup}");
         ENTITY_MAP.put("curren", "\\textcurrency{}");
         ENTITY_MAP.put("dArr", "\\ensuremath{\\Downarrow}");
@@ -168,7 +167,7 @@ public class ExDocTeX extends ExDocXml {
         ENTITY_MAP.put("epsilon", "\\ensuremath{\\epsilon}");
         ENTITY_MAP.put("equiv", "\\ensuremath{\\equiv}");
         ENTITY_MAP.put("eta", "\\ensuremath{\\eta}");
-//        ENTITY_MAP.put("eth", "&amp;eth;");
+        //        ENTITY_MAP.put("eth", "&amp;eth;");
         ENTITY_MAP.put("euml", "\\\"e");
         ENTITY_MAP.put("euro", "\\texteuro{}");
         ENTITY_MAP.put("exist", "\\ensuremath{\\exists}");
@@ -205,10 +204,10 @@ public class ExDocTeX extends ExDocXml {
         ENTITY_MAP.put("le", "\\ensuremath{\\leq}");
         ENTITY_MAP.put("lfloor", "\\ensuremath{\\lfloor}");
         ENTITY_MAP.put("lowast", "\\ensuremath{\\ast}");
-//        ENTITY_MAP.put("loz", "&amp;loz;");
-//        ENTITY_MAP.put("lrm", "&amp;lrm;");
-//        ENTITY_MAP.put("lsaquo", "&amp;lsaquo;");
-//        ENTITY_MAP.put("lsquo", "&amp;lsquo;");
+        //        ENTITY_MAP.put("loz", "&amp;loz;");
+        //        ENTITY_MAP.put("lrm", "&amp;lrm;");
+        //        ENTITY_MAP.put("lsaquo", "&amp;lsaquo;");
+        //        ENTITY_MAP.put("lsquo", "&amp;lsquo;");
         ENTITY_MAP.put("macr", "\\textmacron{}");
         ENTITY_MAP.put("mdash", "---");
         ENTITY_MAP.put("micro", "&amp;micro;");
@@ -242,7 +241,7 @@ public class ExDocTeX extends ExDocXml {
         ENTITY_MAP.put("para", "\\P{}");
         ENTITY_MAP.put("part", "\\ensuremath{\\partial}");
         ENTITY_MAP.put("permil", "\textperthousand{}");
-//        ENTITY_MAP.put("perp", "&amp;perp;");
+        //        ENTITY_MAP.put("perp", "&amp;perp;");
         ENTITY_MAP.put("phi", "\\ensuremath{\\phi}");
         ENTITY_MAP.put("pi", "\\ensuremath{\\pi}");
         ENTITY_MAP.put("piv", "\\ensuremath{\\varpi}");
@@ -250,7 +249,7 @@ public class ExDocTeX extends ExDocXml {
         ENTITY_MAP.put("pound", "\\pounds{}");
         ENTITY_MAP.put("prime", "\\ensuremath{'}");
         ENTITY_MAP.put("prod", "\\ensuremath{prod}");
-//        ENTITY_MAP.put("prop", "&amp;prop;");
+        //        ENTITY_MAP.put("prop", "&amp;prop;");
         ENTITY_MAP.put("psi", "\\ensuremath{\\psi}");
         ENTITY_MAP.put("rArr", "\\ensuremath{\\Rightarrow}");
         ENTITY_MAP.put("radic", "\\ensuremath{\\sqrt{}}");
@@ -263,15 +262,15 @@ public class ExDocTeX extends ExDocXml {
         ENTITY_MAP.put("reg", "\\textregistered{}");
         ENTITY_MAP.put("rfloor", "\\ensuremath{\\rfloor}");
         ENTITY_MAP.put("rho", "\\ensuremath{\\rho}");
-//        ENTITY_MAP.put("rlm", "&amp;rlm;");
-//        ENTITY_MAP.put("rsaquo", "&amp;rsaquo;");
-//        ENTITY_MAP.put("rsquo", "&amp;rsquo;");
-//        ENTITY_MAP.put("sbquo", "&amp;sbquo;");
+        //        ENTITY_MAP.put("rlm", "&amp;rlm;");
+        //        ENTITY_MAP.put("rsaquo", "&amp;rsaquo;");
+        //        ENTITY_MAP.put("rsquo", "&amp;rsquo;");
+        //        ENTITY_MAP.put("sbquo", "&amp;sbquo;");
         ENTITY_MAP.put("sdot", "\\ensuremath{\\cdot}");
         ENTITY_MAP.put("sect", "\\S{}");
         ENTITY_MAP.put("shy", "\\-");
         ENTITY_MAP.put("sigma", "\\ensuremath{\\sigma}");
-//        ENTITY_MAP.put("sigmaf", "&amp;sigmaf;");
+        //        ENTITY_MAP.put("sigmaf", "&amp;sigmaf;");
         ENTITY_MAP.put("sim", "\\ensuremath{\\sim}");
         ENTITY_MAP.put("spades", "\\spadesuit{}");
         ENTITY_MAP.put("sub", "\\ensuremath{\\subset}");
@@ -284,11 +283,11 @@ public class ExDocTeX extends ExDocXml {
         ENTITY_MAP.put("supe", "\\ensuremath{\\supseteq}");
         ENTITY_MAP.put("szlig", "\\ss{}");
         ENTITY_MAP.put("tau", "\\ensuremath{\\tau}");
-//        ENTITY_MAP.put("there4", "&amp;there4;");
+        //        ENTITY_MAP.put("there4", "&amp;there4;");
         ENTITY_MAP.put("theta", "\\ensuremath{\\theta}");
         ENTITY_MAP.put("thetasym", "\\ensuremath{\\vartheta}");
         ENTITY_MAP.put("thinsp", "\\,");
-//        ENTITY_MAP.put("thorn", "&amp;thorn;");
+        //        ENTITY_MAP.put("thorn", "&amp;thorn;");
         ENTITY_MAP.put("times", "\\ensuremath{times}");
         ENTITY_MAP.put("tilde", "\\~{}");
         ENTITY_MAP.put("trade", "\\texttradenark");
@@ -321,7 +320,7 @@ public class ExDocTeX extends ExDocXml {
         try {
             new ExDocTeX().run(args);
         } catch (Exception e) {
-            System.err.println(e.getMessage());
+            System.err.println(e.toString());
         }
     }
 
@@ -383,7 +382,12 @@ public class ExDocTeX extends ExDocXml {
             String entity = content.substring(i + 1, j);
             String to;
             if (entity.charAt(0) == '#') {
-                int c = Integer.parseInt("0x" + entity.substring(1));
+                int c;
+                if (entity.charAt(1) == 'x') {
+                    c = Integer.parseInt(entity.substring(2), 16);
+                } else {
+                    c = Integer.parseInt(entity.substring(1));
+                }
                 to = Character.toString((char) c);
             } else {
                 to = (String) ENTITY_MAP.get(entity);

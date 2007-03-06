@@ -25,6 +25,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -64,7 +65,7 @@ public class ExDocHtml extends ExDocXml {
         try {
             new ExDocHtml().run(args);
         } catch (Exception e) {
-            System.err.println(e.getMessage());
+            System.err.println(e.toString());
         }
     }
 
@@ -134,9 +135,23 @@ public class ExDocHtml extends ExDocXml {
             }
         });
         int size = keys.size();
-        for (int i = 0; i < size; i++) {
-            Key key = (Key) keys.get(i);
-            System.err.println(key.toString());
+        File file = new File(getOutput(),
+                            "primitives.html");
+        PrintStream prim =
+                new PrintStream(new FileOutputStream(file));
+        try {
+            for (int i = 0; i < size; i++) {
+                Key key = (Key) keys.get(i);
+                if ("".equals(key.getTheClass())) {
+                    prim.print("<a href=\"");
+                    prim.print(key.getLocation());
+                    prim.print("\">");
+                    prim.print(key.getTheName());
+                    prim.println("</a>");
+                }
+            }
+        } finally {
+            prim.close();
         }
     }
 

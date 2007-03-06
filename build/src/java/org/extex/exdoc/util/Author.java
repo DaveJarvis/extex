@@ -20,7 +20,7 @@
 package org.extex.exdoc.util;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class is a container for an author with an email address.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -28,12 +28,12 @@ package org.extex.exdoc.util;
 public class Author {
 
     /**
-     * The field <tt>email</tt> contains the ...
+     * The field <tt>email</tt> contains the email address.
      */
     private String email;
 
     /**
-     * The field <tt>name</tt> contains the ...
+     * The field <tt>name</tt> contains the name of the author.
      */
     private String name;
 
@@ -71,9 +71,9 @@ public class Author {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Return a printable representation of the object.
      *
-     * @return
+     * @return the author and email
      *
      * @see java.lang.Object#toString()
      */

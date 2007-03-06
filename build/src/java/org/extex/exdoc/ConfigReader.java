@@ -21,7 +21,6 @@ package org.extex.exdoc;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -135,13 +134,11 @@ public class ConfigReader {
      *
      * @return ...
      *
-     * @throws FileNotFoundException
-     * @throws SAXException
-     * @throws IOException
+     * @throws SAXException ...
+     * @throws IOException ...
      */
     private Element readXml(final File file)
-            throws FileNotFoundException,
-                SAXException,
+            throws SAXException,
                 IOException {
 
         InputStream stream = new FileInputStream(file);
@@ -240,11 +237,9 @@ public class ConfigReader {
      *
      * @throws IOException ...
      * @throws SAXException ...
-     * @throws FileNotFoundException ...
      */
     private void scanUnit(final File base, final String f)
-            throws FileNotFoundException,
-                SAXException,
+            throws SAXException,
                 IOException {
 
         String unit = f.substring(0, f.length() - UNIT_EXTENSION.length());
