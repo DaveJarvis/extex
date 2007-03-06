@@ -75,7 +75,7 @@ import org.extex.typesetter.type.NodeList;
  *
  * </doc>
  *
- * <doc type="parameter" name="everyvbox">
+ * <doc name="everyvbox">
  * <h3>The Tokens Parameter <tt>\everyvbox</tt></h3>
  * <p>
  *  The tokens parameter is used in <tt>\vbox</tt>. The tokens contained are

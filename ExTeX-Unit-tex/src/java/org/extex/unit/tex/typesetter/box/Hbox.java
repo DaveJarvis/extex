@@ -69,7 +69,7 @@ import org.extex.typesetter.Typesetter;
  * </doc>
  *
  *
- * <doc type="parameter" name="everyhbox">
+ * <doc name="everyhbox">
  * <h3>The Tokens Parameter <tt>\everyhbox</tt></h3>
  * <p>
  *  The tokens parameter is used in <tt>/hbox</tt>. The tokens contained are
