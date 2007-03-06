@@ -56,12 +56,12 @@
   <!-- ==================================================================== -->
   <target name="extex-jar" description="Compile the Java files">
 
-    <ant dir="../build" target="jar" inheritAll="false"/>
+    <ant dir="../build" target="jar" inheritAll="false" />
   </target>
 
   <!-- ==================================================================== -->
   <target name="formats"
-          depends="extex-jar,index"
+          depends="extex-jar"
           description="Generate the various formats">
 
     <mkdir dir="target/texmf" />
@@ -90,7 +90,7 @@
       <arg value="\input plain.tex \dump\end" />
     </java>
 
-    <jar jarfile="${target}/extex-formats.jar"
+    <jar jarfile="${format.jar}"
          basedir="target"
          includes="texmf/*.fmt,texmf/*.log">
       <manifest>
@@ -100,7 +100,8 @@
   </target>
 
   <!-- ==================================================================== -->
-  <target name="index" description="Pack the texmf tree into a jar archive">
+  <target name="index"
+          description="Create an index for all files in the archive">
 
     <mkdir dir="target/classes" />
 
@@ -124,7 +125,7 @@
   <target name="texmf"
           depends="index"
           description="Pack the texmf tree into a jar archive">
-    <jar jarfile="target/extex-texmf.jar" basedir="src/texmf" />
+    <jar jarfile="${target}/extex-texmf.jar" basedir="src/texmf" />
   </target>
 
 </project>
