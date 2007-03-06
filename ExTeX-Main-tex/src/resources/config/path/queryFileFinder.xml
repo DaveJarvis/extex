@@ -90,13 +90,23 @@
     </default>
   </Finder>
 
+  <Finder class="org.extex.util.resource.ClasspathArchiveFinder"
+          trace="false"
+          default="default">
+    <default>
+      <extension>.{type}</extension>
+    </default>
+  </Finder>
+
   <Finder class="org.extex.util.resource.ClasspathFinder"
           trace="false"
           default="default">
     <fmt prefix="texmf/">
       <extension>.fmt</extension>
     </fmt>
-    <default skip="true"/>
+    <default>
+      <extension>.{type}</extension>
+    </default>
   </Finder>
 
   <Finder class="org.extex.util.resource.LsrFinder"
