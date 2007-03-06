@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/java"/>
+	<classpathentry kind="src" path="src/resources"/>
+	<classpathentry kind="src" path="src/test"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-base"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-core"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3.8.1"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-base-ext"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Font"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Unit-color"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Unit-etex"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Unit-extex"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Unit-image"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Unit-namespace"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Unit-native"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Unit-omega"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Unit-pdftex"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Unit-tex"/>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>
