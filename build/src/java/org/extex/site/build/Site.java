@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -56,7 +56,7 @@ public class Site {
     /**
      * The field <tt>logger</tt> contains the logger.
      */
-    private static final Logger logger = Logger.getLogger(Site.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(Site.class.getName());
 
     /**
      * Copy a file to a new destination.
@@ -90,7 +90,7 @@ public class Site {
     private static void exit(final String message) {
 
         if (message != null) {
-            logger.severe(message);
+            LOGGER.severe(message);
             System.exit(1);
         } else {
             System.exit(0);
@@ -106,7 +106,7 @@ public class Site {
 
         String directory = ".";
         String destination = "tmp";
-        logger.setUseParentHandlers(false);
+        LOGGER.setUseParentHandlers(false);
         ConsoleHandler handler = new ConsoleHandler();
         handler.setFormatter(new Formatter() {
 
@@ -119,8 +119,8 @@ public class Site {
             }
 
         });
-        logger.addHandler(handler);
-        logger.setLevel(Level.WARNING);
+        LOGGER.addHandler(handler);
+        LOGGER.setLevel(Level.WARNING);
 
         int i = 0;
 
@@ -137,7 +137,7 @@ public class Site {
                     destination = args[i];
                 }
             } else if ("-verbose".startsWith(a)) {
-                logger.setLevel(Level.INFO);
+                LOGGER.setLevel(Level.INFO);
             } else if ("-force".startsWith(a)) {
                 force = true;
             } else if ("-help".startsWith(a)) {
@@ -190,12 +190,12 @@ public class Site {
         }
 
         if (filename.endsWith(".html")) {
-            logger.info("processing " + in + " to " + out);
+            LOGGER.info("processing " + in + " to " + out);
             processHtml(in, out, site);
 
         } else if (force || !out.exists()
                 || out.lastModified() < in.lastModified()) {
-            logger.info("copying " + in + " to " + out);
+            LOGGER.info("copying " + in + " to " + out);
             copy(in, out);
         }
 
@@ -204,9 +204,11 @@ public class Site {
     /**
      * Process a HTML file.
      *
-     * @param in the input file
-     * @param out the output file
+     * @param infile the input file
+     * @param outfile the output file
      * @param site the current site
+     *
+     * @throws IOException in case something went wrong
      */
     private static void processHtml(final File infile, final File outfile,
             final Site site) throws IOException {
@@ -229,8 +231,8 @@ public class Site {
     /**
      * Process a HTML file.
      *
-     * @param from
-     * @param stream
+     * @param from ...
+     * @param stream ...
      * @param site the current site
      *
      * @throws FileNotFoundException in case that the file could ot be opened
@@ -318,19 +320,19 @@ public class Site {
     private static char[] readFile(final File from)
             throws FileNotFoundException {
 
-        logger.fine(" [" + from.toString() + "]");
+        LOGGER.fine(" [" + from.toString() + "]");
         Reader in = new FileReader(from);
 
         char[] ba = new char[(int) from.length() + 1];
         try {
             in.read(ba);
         } catch (IOException e) {
-            logger.severe(e.getMessage());
+            LOGGER.severe(e.getMessage());
         } finally {
             try {
                 in.close();
             } catch (IOException e) {
-                logger.warning(e.getMessage());
+                LOGGER.warning(e.getMessage());
             }
         }
         return ba;
@@ -354,7 +356,7 @@ public class Site {
         }
 
         if (!out.exists()) {
-            logger.info("creating directory " + out.toString());
+            LOGGER.info("creating directory " + out.toString());
             if (!out.mkdir()) {
                 exit("mkdir failed: " + out.toString());
             }
@@ -418,7 +420,7 @@ public class Site {
      *
      * @return the contents
      *
-     * @throws FileNotFoundException in case that the file could ot be opened
+     * @throws FileNotFoundException in case that the file could not be opened
      */
     public String find(final String name) throws FileNotFoundException {
 
@@ -447,7 +449,7 @@ public class Site {
      *
      * @param parent the parent to set
      */
-    public void setParent(Site parent) {
+    public void setParent(final Site parent) {
 
         this.parent = parent;
     }
