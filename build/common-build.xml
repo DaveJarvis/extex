@@ -34,6 +34,8 @@
   <property name="classes" location="target/classes" />
   <property name="javadoc" location="target/javadoc" />
   <property name="target" location="target" />
+  <property name="main.class" value="org.extex.main.tex.TeX" />
+
   <!-- classpath for the project -->
   <path id="main.class.path">
     <fileset dir="lib">
@@ -65,6 +67,7 @@
 
   <!-- ==================================================================== -->
   <target name="compile" description="Compile the Java files (without tests)">
+
     <mkdir dir="${classes}" />
     <ant target="_dependencies_">
       <property name="target" value="compile"/>
@@ -80,6 +83,7 @@
       <fileset dir="src/java">
         <include name="**/*.properties" />
         <include name="**/*.xml" />
+        <include name="**/*.txt" />
       </fileset>
       <fileset dir="src/resources">
         <include name="**/*.properties" />
@@ -118,7 +122,7 @@
   <!-- ==================================================================== -->
   <target name="jar"
           depends="compile"
-          description="Create the ExTeX jar file containing all compiled classes
+          description="Create the jar file containing all compiled classes
                        except test cases.">
     <mkdir dir="${target}/lib" />
     <!-- make a jar from the classes not matching magic testcase identifiers-->
@@ -136,7 +140,7 @@
       </fileset>
       <manifest>
       <attribute name="Built-By" value="${user.name}" />
-        <attribute name="Main-Class" value="org.extex.main.tex.TeX" />
+        <attribute name="Main-Class" value="${main.class}" />
       </manifest>
     </jar>
   </target>
