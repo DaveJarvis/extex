@@ -1,0 +1,17 @@
+<project>
+
+  <taskdef name="LaTeX"
+           classname="org.extex.ant.latex.LatexTask"
+           classpath="../../../../../../target/classes"/>
+
+  <target name="t1">
+    <LaTeX>
+    </LaTeX>
+  </target>
+
+  <target name="t2">
+    <LaTeX file="abc">
+    </LaTeX>
+  </target>
+
+</project>
