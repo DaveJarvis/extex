@@ -139,6 +139,8 @@
 
     <ant dir="../texmf" target="formats">
       <property name="target" value="${target}" />
+      <property name="format.jar"
+                value="${target}/${application}/extex-formats.jar" />
     </ant>
   </target>
 
@@ -157,7 +159,7 @@
 
   <!-- ==================================================================== -->
   <target name="installer"
-          depends="jar,formats,lib"
+          depends="jar,formats,lib,texmf"
           description="Create the standalone installer for ExTeX.">
     <mkdir dir="${snapshot}" />
     <izpack input="${installer.dir}/install.xml"
@@ -233,6 +235,8 @@
   <!-- ==================================================================== -->
   <target name="site.static"
           description="Build the static structure of the site">
+
+    <mkdir dir="${target}/${application}/html" />
     <subant antfile="../www/build.xml" buildpath="../www" target="site">
       <property name="site" value="${target}/${application}/html" />
     </subant>
@@ -300,6 +304,14 @@
   <!-- ==================================================================== -->
   <target name="tests" description="Alias for test" depends="test" />
 
+  <!-- ==================================================================== -->
+  <target name="texmf" description="Create a minimal TeX-MF tree">
+
+    <subant antfile="../texmf/build.xml" buildpath="../texmf" target="texmf">
+      <property name="target" value="${target}" />
+    </subant>
+  </target>
+
 
 
   <!-- === testreport =========================
@@ -337,16 +349,5 @@
     </xslt>
   </target>
 ================================== -->
-  <!-- === installer ==========================
-  <target name="installer"
-          depends="jar,formats"
-          description="Create a standalone installer for ExTeX.">
-    <izpack input="${installer.dir}/install.xml"
-            output="${target}/ExTeX-setup.jar"
-            installerType="standard"
-            basedir="${installer.dir}"
-            izPackDir="${installer.dir}/IzPack/" />
-  </target>
-  ================================== -->
 
 </project>
