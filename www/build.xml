@@ -28,6 +28,9 @@
 
   <property name="target" location="target" />
   <property name="site" location="target/site" />
+  <property name="overview-summary"
+            location="../build/target/application/html/snapshot/tests/overview-summary.html" />
+
   <property name="verbose" value="false" />
 
   <import file="build-unit.xml" />
@@ -62,6 +65,7 @@
   <!-- ==================================================================== -->
   <target name="site" description="Create the web site" depends="test-summary">
 
+    <mkdir dir="${site}" />
     <exec executable="perl" failonerror="true">
       <arg line="bin/make.pl" />
       <arg line="-src=src/site" />
@@ -74,12 +78,12 @@
           description="Create test summary page fragment"
           depends="init">
 
-    <mkdir dir="target" />
+    <mkdir dir="${target}" />
     <taskdef name="testSummary"
              classname="org.extex.site.TestSummary"
              classpath="target/classes:${ant.project.name}.jar" />
-    <testSummary input="../build/target/application/html/snapshot/tests/overview-summary.html"
-                 output="target/test-summary.html" />
+    <testSummary input="${overview-summary}"
+                 output="${target}/test-summary.html" />
   </target>
 
   <!-- ==================================================================== -->
