@@ -31,6 +31,7 @@
 <xsl:template match="/">
 <html>
   <head>
+    <title>ExTeX Build Log</title>
     <style type="text/css">
     .bannercell {
       border: 0px;
@@ -38,12 +39,12 @@
     }
     body {
       margin: 0;
-      font:normal 100% arial,helvetica,sanserif;
+      font:normal 100% helvetica,sanserif;
       background-color:#FFFFFF;
       color:#000000;
     }
     table.status {
-      font:bold 80% arial,helvetica,sanserif;
+      font:bold 80% helvetica,sanserif;
       background-color:#525D76;
       color:#ffffff;
     }
@@ -92,7 +93,7 @@
       border: none
     }
     h3 {
-      font:bold 80% arial,helvetica,sanserif;
+      font:bold 80% helvetica,sanserif;
       background: #525D76;
       color: white;
       text-decoration: none;
@@ -130,7 +131,7 @@
       <tr><td><hr noshade="yes" size="1"/></td></tr>
       <tr><td>
       <div align="center"><font color="#525D76" size="-1"><em>
-      Copyright &#169; 2006, The ExTeX Group
+      Copyright &#169; 2007, The ExTeX Group
       </em></font></div>
       </td></tr>
     </table>
@@ -147,10 +148,10 @@
     </xsl:attribute>
     <tr>
       <xsl:if test="@error">
-        <td nowrap="yes">Build Failed</td> 
+        <td nowrap="yes">Build Failed <xsl:value-of select="@date"/></td> 
       </xsl:if>
       <xsl:if test="not(@error)">
-        <td nowrap="yes">Build Complete</td>
+        <td nowrap="yes">Build Complete <xsl:value-of select="@date"/></td>
       </xsl:if>
         <td style="text-align:right" nowrap="yes">Total Time: <xsl:value-of select="@time"/></td>
     </tr>
