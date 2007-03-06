@@ -22,18 +22,25 @@
 
 <project name="doc-users-guide" default="all" basedir=".">
 
-  <description>ExTeX - build file</description>
+  <description>
+    The user's guilde contains information targeted at the end user of ExTeX.
+    Some parts of this user's guide is collected from the sources. This follows
+    the tradition of the Web system of Don Knuth.
+  </description>
 
-  <property name="tmp" location="tmp"/>
-  <property name="deploy" location="deploy"/>
+  <property name="tmp" location="tmp" />
+  <property name="deploy" location="deploy" />
+  <property name="failonerror" value="true" />
 
-  <target name="all"
-          description="Build nearly everything">
-    <exec executable="make" output="tmp/extex-users.out" failonerror="true"/>
+  <!-- ==================================================================== -->
+  <target name="all" description="Build nearly everything">
+    <exec executable="make"
+          output="tmp/extex-users.out"
+          failonerror="${failonerror}" />
   </target>
 
-  <target name="compile"
-          description="Compile the source files">
+  <!-- ==================================================================== -->
+  <target name="compile" description="Compile the source files">
   </target>
 
 </project>
