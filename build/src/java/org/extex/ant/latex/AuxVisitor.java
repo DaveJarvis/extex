@@ -29,10 +29,31 @@ import java.io.IOException;
  */
 public interface AuxVisitor {
 
+    /**
+     * TODO gene: missing JavaDoc
+     *
+     * @param file ...
+     *
+     * @throws IOException in case of an error
+     */
     void visitLaTeX(File file) throws IOException;
 
+    /**
+     * TODO gene: missing JavaDoc
+     *
+     * @param file ...
+     *
+     * @throws IOException in case of an error
+     */
     void visitBibTeX(File file) throws IOException;
 
+    /**
+     * TODO gene: missing JavaDoc
+     *
+     * @param file ...
+     *
+     * @throws IOException in case of an error
+     */
     void visitMakeindex(File file) throws IOException;
 
 }

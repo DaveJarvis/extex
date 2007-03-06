@@ -16,13 +16,14 @@
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
+
 package org.extex.ant.latex;
 
 import java.io.File;
 
 /**
  * ...
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -35,18 +36,20 @@ public class AuxFile {
 
     /**
      * Creates a new object.
-     * 
+     *
+     * @param name ...
      */
     public AuxFile(final String name) {
+
         super();
-        
+
         this.name = name.replaceAll("\\.[a-zA-Z0-9_]$", "") + ".aux";
     }
 
     /**
      * ...
-     * 
-     * @return
+     *
+     * @return ...
      */
     public boolean canRead() {
 
@@ -55,23 +58,27 @@ public class AuxFile {
     }
 
     /**
+     * ...
+     *
+     * @param visitor ...
+     *
+     * @return ...
+     */
+    public boolean redo(final AuxVisitor visitor) {
+
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    /**
+     *
+     * @return the string representation
+     *
      * @see java.lang.Object#toString()
      */
     public String toString() {
 
         return name;
     }
-
-    /**
-     * ...
-     * 
-     * @param visitor
-     * @return
-     */
-    public boolean redo(final AuxVisitor visitor) {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
 
 }

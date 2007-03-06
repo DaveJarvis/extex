@@ -16,6 +16,7 @@
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
+
 package org.extex.ant.latex;
 
 import java.io.File;
@@ -29,50 +30,103 @@ import org.apache.tools.ant.types.FileSet;
 
 /**
  * This class provides an interface from Ant to LaTeX.
- * 
+ *
  * <pre>
- *            &lt;taskdef name=&quot;LaTeX&quot; .../&gt;
- *            
- *            &lt;LaTeX file=&quot;abc.ltx&quot;
- *                   executable=&quot;latex&quot;
- *            &gt;
- *            &lt;/LaTeX&gt;
+ *   &lt;taskdef name=&quot;LaTeX&quot; .../&gt;
+ *
+ *   &lt;LaTeX file=&quot;abc.ltx&quot;
+ *          executable=&quot;latex&quot;
+ *          &gt;
+ *   &lt;/LaTeX&gt;
  * </pre>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public class LatexTask extends Task {
 
+    /**
+     * The field <tt>basename</tt> contains the ...
+     */
     private String basename;
 
+    /**
+     * The field <tt>bibtex</tt> contains the ...
+     */
     private String bibtex = "bibtex";
 
+    /**
+     * The field <tt>executable</tt> contains the ...
+     */
     private String executable = "pdflatex";
 
+    /**
+     * The field <tt>file</tt> contains the ...
+     */
     private String file = null;
 
+    /**
+     * The field <tt>filesets</tt> contains the ...
+     */
     private List filesets = new ArrayList();
 
+    /**
+     * The field <tt>keepAux</tt> contains the ...
+     */
     private boolean keepAux = true;
 
+    /**
+     * The field <tt>makeindex</tt> contains the ...
+     */
     private String makeindex = "makeindex";
 
+    /**
+     * The field <tt>target</tt> contains the ...
+     */
     private String target = null;
 
+    /**
+     * The field <tt>visitor</tt> contains the ...
+     */
     private AuxVisitor visitor = new AuxVisitor() {
 
-        public void visitBibTeX(final File file) throws IOException {
+        /**
+         * TODO gene: missing JavaDoc
+         *
+         * @param f ...
+         * @throws IOException ...
+         *
+         * @see org.extex.ant.latex.AuxVisitor#visitBibTeX(java.io.File)
+         */
+        public void visitBibTeX(final File f) throws IOException {
 
             run(bibtex);
         }
 
-        public void visitLaTeX(final File file) throws IOException {
+        /**
+         * TODO gene: missing JavaDoc
+         *
+         * @param f ...
+         *
+         * @throws IOException ...
+         *
+         * @see org.extex.ant.latex.AuxVisitor#visitLaTeX(java.io.File)
+         */
+        public void visitLaTeX(final File f) throws IOException {
 
             run(executable);
         }
 
-        public void visitMakeindex(final File file) throws IOException {
+        /**
+         * TODO gene: missing JavaDoc
+         *
+         * @param f ...
+         *
+         * @throws IOException ...
+         *
+         * @see org.extex.ant.latex.AuxVisitor#visitMakeindex(java.io.File)
+         */
+        public void visitMakeindex(final File f) throws IOException {
 
             run(makeindex);
         }
@@ -81,8 +135,8 @@ public class LatexTask extends Task {
 
     /**
      * ...
-     * 
-     * @param fileset
+     *
+     * @param fileset ...
      */
     public void addFileset(final FileSet fileset) {
 
@@ -111,9 +165,9 @@ public class LatexTask extends Task {
 
     /**
      * ...
-     * 
-     * @param aux
-     * 
+     *
+     * @param aux ...
+     *
      * @throws IOException in case of an error
      */
     private void execute(final AuxFile aux) throws IOException {
@@ -128,14 +182,16 @@ public class LatexTask extends Task {
         }
 
         while (aux.redo(visitor)) {
+            // ...
         }
     }
 
     /**
      * ...
-     * 
+     *
+     * @param program the command name
+     *
      * @throws IOException in case of an error
-     * 
      */
     private void run(final String program) throws IOException {
 
@@ -146,27 +202,27 @@ public class LatexTask extends Task {
 
     /**
      * Setter for executable.
-     * 
+     *
      * @param executable the executable to set.
      */
-    public void setExecutable(String executable) {
+    public void setExecutable(final String executable) {
 
         this.executable = executable;
     }
 
     /**
      * Setter for file name.
-     * 
+     *
      * @param name the name to set.
      */
-    public void setFile(String name) {
+    public void setFile(final String name) {
 
         this.file = name;
     }
 
     /**
      * Setter for keepAux.
-     * 
+     *
      * @param keep the keepAux to set.
      */
     public void setKeepAux(final String keep) {
@@ -176,7 +232,7 @@ public class LatexTask extends Task {
 
     /**
      * Setter for target.
-     * 
+     *
      * @param target the target to set.
      */
     public void setTarget(final String target) {
@@ -186,10 +242,10 @@ public class LatexTask extends Task {
 
     /**
      * ...
-     * 
-     * @param file
-     * 
-     * @return
+     *
+     * @param f the file to check
+     *
+     * @return <code>true</code> iff ...
      */
     private boolean upToDate(final File f) {
 
@@ -201,7 +257,7 @@ public class LatexTask extends Task {
             return false;
         }
         for (int i = 0; i < filesets.size(); i++) {
-            System.err.println(((FileSet)filesets.get(i)).toString());
+            System.err.println(((FileSet) filesets.get(i)).toString());
         }
         return true;
     }
