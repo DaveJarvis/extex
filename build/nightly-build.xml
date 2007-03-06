@@ -27,46 +27,54 @@
 
   <property name="deploy.dir" location="target/site" />
 
-  <property name="log.dir" value="target" />
+  <property name="log.dir" value="target/application/html/snapshot" />
   <property name="log.file" value="build.log" />
   <property name="log.style" location="./src/xslt/ant-log.xsl" />
 
-  <property name="report.file" value="target/build.html" />
+  <property name="report.file" value="target/application/html/snapshot/build.html" />
+
+  <property name="main.target" value="all" />
 
   <condition property="bat" value=".bat" else="">
-    <os family="windows"/>
+    <os family="windows" />
   </condition>
-  
+
+  <!-- ==================================================================== -->
+  <javac srcdir="src/java" destdir="target/classes" />
+  <taskdef name="tuneAntLog"
+           classname="org.extex.ant.log.TuneAntLogTask"
+           classpath="target/classes" />
+
   <!-- ==================================================================== -->
   <target name="all"
           description="Build nearly everything and translate the build log into a HTML page">
 
     <mkdir dir="${log.dir}" />
-    <delete file="${report.file}"/>
+    <delete file="${report.file}" />
     <exec executable="ant${bat}">
       <arg value="-quiet" />
       <arg value="-logger" />
       <arg value="org.apache.tools.ant.XmlLogger" />
       <arg value="-logfile" />
       <arg value="${log.dir}/${log.file}" />
-      <arg value="all" />
+      <arg value="${main.target}" />
     </exec>
 
+    <tuneAntLog file="${log.dir}/${log.file}" />
     <xslt in="${log.dir}/${log.file}"
           out="${report.file}"
           style="${log.style}" />
-    <delete file="${log.dir}/${log.file}"/>
   </target>
 
   <!-- ==================================================================== -->
   <target name="deploy"
-          description="Create the site and deploy it to the destination"
-          >
+          description="Create the site and deploy it to the destination">
 
     <mkdir dir="${deploy.dir}" />
     <copy todir="${deploy.dir}">
-      <fileset dir="../build/target/application/html"/>
+      <fileset dir="../build/target/application/html" />
     </copy>
+    <copy file="${report.file}" todir="${deploy.dir}/snapshot" />
   </target>
 
 </project>
