@@ -16,6 +16,7 @@
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
+
 package org.extex.checkstyle;
 
 import java.io.FileNotFoundException;
@@ -31,7 +32,14 @@ import java.util.regex.Pattern;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class StripPath {
+public final class StripPath {
+
+    /**
+     * Creates a new object.
+     */
+    private StripPath() {
+
+    }
 
     /**
      * Command line interface.
@@ -65,7 +73,9 @@ public class StripPath {
         LineNumberReader reader = new LineNumberReader(new FileReader(name));
         String line;
         StringBuffer sb = new StringBuffer();
-        Pattern pattern = Pattern.compile("<file name=\"[^\"]*[/\\\\]([^/\\\\]*)[/\\\\]src[/\\\\][a-zA-Z0-9_-]+([/\\\\].*)\"");
+        Pattern pattern =
+                Pattern
+                    .compile("<file name=\"[^\"]*[/\\\\]([^/\\\\]*)[/\\\\]src[/\\\\][a-zA-Z0-9_-]+([/\\\\].*)\"");
 
         while ((line = reader.readLine()) != null) {
             line = pattern.matcher(line).replaceFirst("<file name=\"$1$2\"");
