@@ -99,12 +99,8 @@
   <Finder class="org.extex.util.resource.ClasspathArchiveFinder"
           trace="false"
           default="default">
-    <fmt>
-      <extension>.fmt</extension>
-    </fmt>
     <default>
       <extension>.{type}</extension>
-      <extension></extension>
     </default>
   </Finder>
 
