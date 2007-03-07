@@ -119,6 +119,13 @@ public abstract class AbstractFinder implements LogEnabled, ResourceFinder {
     }
 
     /**
+     * Enable or disable the tracing. The argument indicates whether tracing
+     * should be enabled or disabled.
+     * The resource finder can decide on its own how to perform tracing. The
+     * preferred way is to write tracing records to a logger.
+     *
+     * @param flag indicator whether tracing should be turned on or off.
+     *
      * @see org.extex.util.resource.ResourceFinder#enableTracing(boolean)
      */
     public void enableTracing(final boolean flag) {
