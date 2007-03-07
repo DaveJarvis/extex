@@ -159,17 +159,32 @@ public class ClasspathArchiveFinder extends AbstractFinder {
             throws ConfigurationException {
 
         super(configuration);
-        String tocName = configuration.getAttribute("toc");
-        index = initialize(tocName != null ? tocName : DEFALUT_TOC_NAME);
     }
 
     /**
+     * Find a resource which can be used for reading. If the search fails then
+     * <code>null</code> is returned.
+     *
+     * @param name the base name of the resource
+     * @param type the type, i.e. the extension
+     *
+     * @return the file or <code>null</code> if none could be found
+     *
+     * @throws ConfigurationException in case of an exception
+     *
      * @see org.extex.util.resource.ResourceFinder#findResource(
      *      java.lang.String,
      *      java.lang.String)
      */
     public InputStream findResource(final String name, final String type)
             throws ConfigurationException {
+
+        trace("Searching", name, type);
+
+        if (index == null) {
+            String tocName = getConfiguration().getAttribute("toc");
+            index = initialize(tocName != null ? tocName : DEFALUT_TOC_NAME);
+        }
 
         Configuration configuration = getConfiguration();
         Configuration cfg = configuration.findConfiguration(type);
@@ -242,6 +257,7 @@ public class ClasspathArchiveFinder extends AbstractFinder {
             Enumeration toc = classLoader.getResources(tocName);
             while (toc.hasMoreElements()) {
                 URL url = (URL) toc.nextElement();
+                trace("IndexFound", url.toString(), "");
                 String protocol = url.getProtocol();
                 String host = url.getHost();
                 int port = url.getPort();
