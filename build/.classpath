@@ -33,7 +33,5 @@
 	<classpathentry kind="var" path="ANT_HOME/lib/ant-xslp.jar" sourcepath="/ANT_HOME/src/main"/>
 	<classpathentry kind="var" path="ANT_HOME/lib/xercesImpl.jar" sourcepath="/ANT_HOME/src/main"/>
 	<classpathentry kind="var" path="ANT_HOME/lib/xml-apis.jar" sourcepath="/ANT_HOME/src/main"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-core"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Font"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
