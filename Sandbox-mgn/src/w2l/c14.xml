@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<config>
+
+  <option name="create_user_config" value="false" />
+  <option name="use_ooomath" value="false" />
+  <option name="documentclass" value="scrbook" />
+  <option name="global_options" value="a4paper" />
+  <option name="backend" value="unspecified" />
+  <option name="inputencoding" value="latin1" />
+  <option name="multilingual" value="false" />
+  <option name="greek_math" value="true" />
+  <option name="use_pifont" value="true" />
+  <option name="use_ifsym" value="false" />
+  <option name="use_wasysym" value="false" />
+  <option name="use_bbding" value="false" />
+  <option name="use_eurosym" value="false" />
+  <option name="use_tipa" value="false" />
+  <option name="use_color" value="false" />
+  <option name="use_hyperref" value="false" />
+  <option name="use_endnotes" value="false" />
+  <option name="use_ulem" value="false" />
+  <option name="use_bibtex" value="false" />
+  <option name="use_lastpage" value="false" />
+  <option name="bibtex_style" value="plain" />
+  <option name="paragraph_formatting" value="ignore_all" />
+  <option name="list_formatting" value="ignore_all" />
+  <option name="heading_formatting" value="ignore_all" />
+  <option name="page_formatting" value="ignore_all" />
+  <option name="ignore_footnotes_configuration" value="true" />
+  <option name="ignore_empty_paragraphs" value="true" />
+  <option name="ignore_hard_page_breaks" value="true" />
+  <option name="ignore_hard_line_breaks" value="true" />
+  <option name="ignore_double_spaces" value="true" />
+  <option name="no_preamble" value="true" />
+
+   <option name="formatting" value="ignore_most" />
+
+  <heading-map max-level="4">
+    <heading-level-map writer-level="1" name="chapter" level="1" />
+    <heading-level-map writer-level="2" name="section" level="2" />
+    <heading-level-map writer-level="3" name="subsection" level="3" />
+    <heading-level-map writer-level="4" name="subsubsection" level="4" />
+  </heading-map>
+
+
+  <string-replace input="z.B." latex-code="\zB" />
+  <string-replace input="z. B." latex-code="\zB" />
+  <string-replace input="u.a." latex-code="\uA" />
+  <!-- Silbentrennung !!! -->
+  <string-replace input="­" latex-code="" />
+  <string-replace input="bzw." latex-code="\bzw" />
+
+
+  <option name="image_options" value="width=\maxwidth" />
+  <option name="remove_graphics_extension" value="true" />
+  <option name="keep_image_size" value="true" />
+
+  <option name="figure_sequence_name" value="Illustration" />
+  <option name="float_figures" value="true" />
+  <option name="float_options" value="" />
+
+  <option name="debug" value="false" />
+
+</config>
+

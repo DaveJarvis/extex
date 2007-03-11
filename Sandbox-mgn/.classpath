@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src/java"/>
+	<classpathentry kind="src" path="src/test"/>
 	<classpathentry kind="src" path="src/config"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-base"/>
@@ -10,5 +11,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-base-ext"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Scanner"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Scanner32"/>
+	<classpathentry kind="lib" path="lib/writer2latex.jar" sourcepath="lib/writer2latex-src.zip"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
