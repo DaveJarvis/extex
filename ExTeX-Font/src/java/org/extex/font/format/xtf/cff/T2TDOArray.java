@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -22,6 +22,8 @@ package org.extex.font.format.xtf.cff;
 import java.io.IOException;
 import java.util.List;
 
+import org.extex.util.xml.XMLStreamWriter;
+
 /**
  * Abstract class for all array-values.
  *
@@ -30,6 +32,16 @@ import java.util.List;
  */
 
 public abstract class T2TDOArray extends T2TopDICTOperator {
+
+    /**
+     * bytes
+     */
+    private short[] bytes;
+
+    /**
+     * value
+     */
+    private T2Number[] value;
 
     /**
      * Create a new object.
@@ -54,21 +66,19 @@ public abstract class T2TDOArray extends T2TopDICTOperator {
     }
 
     /**
-     * bytes
-     */
-    private short[] bytes;
-
-    /**
-     * value
-     */
-    private T2Number[] value;
-
-    /**
      * @see org.extex.font.format.xtf.cff.T2CharString#getBytes()
      */
     public short[] getBytes() {
 
         return bytes;
+    }
+
+    /**
+     * @see org.extex.font.format.xtf.cff.T2Operator#getValue()
+     */
+    public Object getValue() {
+
+        return value;
     }
 
     /**
@@ -93,11 +103,18 @@ public abstract class T2TDOArray extends T2TopDICTOperator {
     }
 
     /**
-     * Returns the value.
-     * @return Returns the value.
+     * @see org.extex.util.XMLWriterConvertible#writeXML(
+     *      org.extex.util.xml.XMLStreamWriter)
      */
-    public T2Number[] getValue() {
+    public void writeXML(final XMLStreamWriter writer) throws IOException {
 
-        return value;
+        writer.writeStartElement("topdict");
+        writer.writeAttribute("name", getName());
+        for (int i = 0; i < value.length; i++) {
+            writer.writeAttribute("value_" + i, value[i].toString());
+        }
+        writer.writeEndElement();
+
     }
+
 }

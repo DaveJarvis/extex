@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -22,11 +22,10 @@ package org.extex.font.format.xtf.cff;
 import java.io.IOException;
 import java.util.List;
 
-import org.extex.util.xml.XMLStreamWriter;
-
+import org.extex.font.format.xtf.OtfTableCFF;
 
 /**
- * FontMatrix
+ * FontMatrix.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
@@ -38,11 +37,14 @@ public class T2TDOFontMatrix extends T2TDOArray {
      * Create a new object.
      *
      * @param stack the stack
-     * @throws IOException if an IO.error occurs.
+     * @param cff   the cff table
+     * @throws IOException if an IO-error occurs.
      */
-    public T2TDOFontMatrix(final List stack) throws IOException {
+    public T2TDOFontMatrix(final List stack, final OtfTableCFF cff)
+            throws IOException {
 
         super(stack, new short[]{ESCAPE_BYTE, FONTMATRIX});
+        this.cff = cff;
     }
 
     /**
@@ -51,15 +53,6 @@ public class T2TDOFontMatrix extends T2TDOArray {
     public String getName() {
 
         return "fontmatrix";
-    }
-
-    /**
-     * @see org.extex.util.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(final XMLStreamWriter writer) throws IOException {
-
-        // MGN incomplete
     }
 
 }

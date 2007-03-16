@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -25,7 +25,6 @@ import java.util.List;
 import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
 
-
 /**
  * Operator.
  *
@@ -33,7 +32,9 @@ import org.extex.util.file.random.RandomAccessR;
  * @version $Revision$
  */
 
-public abstract class T2Operator extends T2CharString implements XMLWriterConvertible{
+public abstract class T2Operator extends T2CharString
+        implements
+            XMLWriterConvertible {
 
     /**
      * rmoveto
@@ -148,6 +149,12 @@ public abstract class T2Operator extends T2CharString implements XMLWriterConver
     public abstract String getName();
 
     /**
+     * Returns the value of the operator.
+     * @return Returns the value of the operator.
+     */
+    public abstract Object getValue();
+
+    /**
      * Convert a stack (a List) into an array and add at the top the id-array.
      * @param stack     the stack
      * @param id        the id-array
@@ -181,4 +188,6 @@ public abstract class T2Operator extends T2CharString implements XMLWriterConver
         }
         return bytes;
     }
+    
+    
 }

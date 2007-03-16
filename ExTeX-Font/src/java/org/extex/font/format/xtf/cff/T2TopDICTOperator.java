@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -23,9 +23,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.extex.font.format.xtf.OtfTableCFF;
 import org.extex.util.file.random.RandomAccessR;
-import org.jdom.Element;
-
 
 /**
  * Top DICT Operator.
@@ -37,7 +36,7 @@ import org.jdom.Element;
  *         <td><b>Operand(s)</b></td><td><b>Default, notes</b></td>
  *     </tr>
  *   </thead>
- *   <tr><td>version</td><td>0</td><td>SID</td><td>- , FontInfo</td></tr>
+ *   <tr><td>Version</td><td>0</td><td>SID</td><td>- , FontInfo</td></tr>
  *   <tr><td>Notice</td><td>1</td><td>SID</td>- , FontInfo</td></tr>
  *   <tr><td>Copyright</td><td>12 0</td><td>SID</td><td>- , FontInfo</td></tr>
  *   <tr><td>FullName</td><td>2</td><td>SID</td><td>- , FontInfo</td></tr>
@@ -207,11 +206,12 @@ public abstract class T2TopDICTOperator extends T2Operator {
      * Create a new instance.
      *
      * @param rar       the input
+     * @param cff       the cff table
      * @return Returns the new T2Operatorr object.
      * @throws IOException if an IO-error occurs.
      */
-    public static T2Operator newInstance(final RandomAccessR rar)
-            throws IOException {
+    public static T2Operator newInstance(final RandomAccessR rar,
+            final OtfTableCFF cff) throws IOException {
 
         List stack = new ArrayList();
 
@@ -221,58 +221,58 @@ public abstract class T2TopDICTOperator extends T2Operator {
 
             switch (b) {
                 case VERSION :
-                    return new T2TDOVersion(stack);
+                    return new T2TDOVersion(stack, cff);
                 case NOTICE :
-                    return new T2TDONotice(stack);
+                    return new T2TDONotice(stack, cff);
                 case FULLNAME :
-                    return new T2TDOFullName(stack);
+                    return new T2TDOFullName(stack, cff);
                 case FAMILYNAME :
-                    return new T2TDOFamilyName(stack);
+                    return new T2TDOFamilyName(stack, cff);
                 case WEIGHT :
-                    return new T2TDOWeight(stack);
+                    return new T2TDOWeight(stack, cff);
                 case FONTBBOX :
-                    return new T2TDOFontBBox(stack);
+                    return new T2TDOFontBBox(stack, cff);
                 case ESCAPE_BYTE :
                     int b1 = rar.readUnsignedByte();
                     switch (b1) {
                         case COPYRIGHT :
-                            return new T2TDOCopyright(stack);
+                            return new T2TDOCopyright(stack, cff);
                         case ISFIXEDPITCH :
-                            return new T2TDOisFixedPitch(stack);
+                            return new T2TDOisFixedPitch(stack, cff);
                         case ITALICANGLE :
-                            return new T2TDOItalicAngle(stack);
+                            return new T2TDOItalicAngle(stack, cff);
                         case UNDERLINEPOSITION :
-                            return new T2TDOUnderlinePosition(stack);
+                            return new T2TDOUnderlinePosition(stack, cff);
                         case UNDERLINETHICKNESS :
-                            return new T2TDOUnderlineThickness(stack);
+                            return new T2TDOUnderlineThickness(stack, cff);
                         case PAINTTYPE :
-                            return new T2TDOPaintType(stack);
+                            return new T2TDOPaintType(stack, cff);
                         case CHARSTRINGTYPE :
-                            return new T2TDOCharStringType(stack);
+                            return new T2TDOCharStringType(stack, cff);
                         case FONTMATRIX :
-                            return new T2TDOFontMatrix(stack);
+                            return new T2TDOFontMatrix(stack, cff);
                         case STROKEWIDTH :
-                            return new T2TDOStrokeWidth(stack);
+                            return new T2TDOStrokeWidth(stack, cff);
                         case SYNTHETICBASE :
-                            return new T2TDOSyntheticBase(stack);
+                            return new T2TDOSyntheticBase(stack, cff);
                         case POSTSCRIPT :
-                            return new T2TDOPostscript(stack);
+                            return new T2TDOPostscript(stack, cff);
                         default :
                             throw new T2NotAOperatorException();
 
                     }
                 case UNIQUEID :
-                    return new T2TDOUniqueID(stack);
+                    return new T2TDOUniqueID(stack, cff);
                 case XUID :
-                    return new T2TDOXUID(stack);
+                    return new T2TDOXUID(stack, cff);
                 case CHARSET :
-                    return new T2TDOCharset(stack);
+                    return new T2TDOCharset(stack, cff);
                 case ENCODING :
-                    return new T2TDOEncoding(stack);
+                    return new T2TDOEncoding(stack, cff);
                 case CHARSTRINGS :
-                    return new T2TDOCharStrings(stack);
+                    return new T2TDOCharStrings(stack, cff);
                 case PRIVATE :
-                    return new T2TDOPrivate(stack);
+                    return new T2TDOPrivate(stack, cff);
                 default :
                     // number
                     T2Number number = T2CharString.readNumber(rar, b);
@@ -280,16 +280,6 @@ public abstract class T2TopDICTOperator extends T2Operator {
                     break;
             }
         }
-    }
-
-    /**
-     * @see org.extex.util.XMLConvertible#toXML()
-     */
-    public Element toXML() {
-
-        Element op = new Element(getName());
-        op.setAttribute("value", toString());
-        return op;
     }
 
 }

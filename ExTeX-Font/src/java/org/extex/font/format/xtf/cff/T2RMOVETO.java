@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -22,7 +22,6 @@ package org.extex.font.format.xtf.cff;
 import java.io.IOException;
 
 import org.extex.util.xml.XMLStreamWriter;
-
 
 /**
  * rmoveto |- dx1 dy1 rmoveto (21) |
@@ -67,6 +66,15 @@ public class T2RMOVETO extends T2PathConstruction {
     public String getName() {
 
         return "rmoveto";
+    }
+
+    /**
+     * @see org.extex.font.format.xtf.cff.T2Operator#getValue()
+     */
+    public Object getValue() {
+
+        // TODO mgn: getValue unimplemented
+        return null;
     }
 
     /**

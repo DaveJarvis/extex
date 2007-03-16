@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -272,7 +272,7 @@ public class RandomAccessInputStream implements RandomAccessR {
     private void readBytes(final byte[] b, final int off, final int len) {
 
         for (int i = 0; i < len; i++) {
-            b[off + i] = (byte) buffer[pointer++];
+            b[off + i] = buffer[pointer++];
             if (pointer >= buffer.length) {
                 throw new IndexOutOfBoundsException();
             }

@@ -30,6 +30,7 @@ import org.extex.font.format.xtf.XtfReaderGara1Test;
 import org.extex.font.format.xtf.XtfReaderGara2Test;
 import org.extex.font.format.xtf.XtfReaderGara3Test;
 import org.extex.font.format.xtf.XtfReaderGara4Test;
+import org.extex.font.format.xtf.XtfReaderLmRoman10Regular01Test;
 
 /**
  * Test suite for the fonts. 
@@ -66,6 +67,7 @@ public class AllTests {
         suite.addTestSuite(TfmFixWordTest.class);
         suite.addTestSuite(U2tFactoryTest.class);
         suite.addTestSuite(AfmParserTest.class);
+        suite.addTestSuite(XtfReaderLmRoman10Regular01Test.class);
         //$JUnit-END$
         return suite;
     }

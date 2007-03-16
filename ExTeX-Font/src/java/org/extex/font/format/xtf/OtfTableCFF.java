@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -21,18 +21,17 @@ package org.extex.font.format.xtf;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.extex.font.format.xtf.cff.T2CharString;
 import org.extex.font.format.xtf.cff.T2Operator;
 import org.extex.font.format.xtf.cff.T2StandardStrings;
-import org.extex.util.XMLConvertible;
+import org.extex.font.format.xtf.cff.T2TDOCharset;
 import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessInputArray;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
-import org.jdom.Comment;
-import org.jdom.Element;
-
 
 /**
  * The 'CFF' - PostScript font program.
@@ -93,160 +92,20 @@ import org.jdom.Element;
 public class OtfTableCFF extends AbstractXtfTable
         implements
             XtfTable,
-            XMLWriterConvertible{
+            XMLWriterConvertible {
 
     /**
-     * Create a new object
-     *
-     * @param tablemap  the tablemap
-     * @param de        entry
-     * @param rar       input
-     * @throws IOException if an IO-error occurs
-     */
-    OtfTableCFF(final XtfTableMap tablemap, final XtfTableDirectory.Entry de,
-            final RandomAccessR rar) throws IOException {
-
-        super(tablemap);
-        rar.seek(de.getOffset());
-
-        // header
-        versionmajor = rar.readUnsignedByte();
-        versionminor = rar.readUnsignedByte();
-        hdrSize = rar.readUnsignedByte();
-        offSize = rar.readUnsignedByte();
-
-        // index
-        nameindex = new NameIndex(de.getOffset() + hdrSize, rar);
-        topdictindex = new TopDictIndex(-1, rar);
-
-        System.out.println("pointer: " + Long.toHexString(rar.getPointer()));
-
-        stringindex = new StringIndex(-1, rar);
-
-        // incomplete
-    }
-
-    /**
-     * The table NameINDEX
-     */
-    private NameIndex nameindex;
-
-    /**
-     * The table top DICT INDEX
-     */
-    private TopDictIndex topdictindex;
-
-    /**
-     * The tbale StringINDEX
-     */
-    private StringIndex stringindex;
-
-    /**
-     * offset size
-     */
-    private int offSize;
-
-    /**
-     * header size
-     */
-    private int hdrSize;
-
-    /**
-     * Version major
-     */
-    private int versionmajor;
-
-    /**
-     * Version minor
-     */
-    private int versionminor;
-
-    /**
-     * Get the table type, as a table directory value.
-     * @return Returns the table type
-     */
-    public int getType() {
-
-        return XtfReader.CFF;
-    }
-    /**
-     * @see org.extex.font.format.xtf.XtfTable#getShortcut()
-     */
-    public String getShortcut() {
-
-        return "cff";
-    }
-
-    /**
-     * @see org.extex.util.XMLConvertible#toXML()
-     */
-    public Element toXML() {
-
-        Element table = new Element("cff");
-        table.setAttribute("id", "0x" + Integer.toHexString(getType()));
-        table.setAttribute("version", String.valueOf(versionmajor) + "."
-                + String.valueOf(versionminor));
-        table.setAttribute("hdrsize", String.valueOf(hdrSize));
-        table.setAttribute("offsize", String.valueOf(offSize));
-        if (nameindex != null) {
-            table.addContent(nameindex.toXML());
-        }
-        if (topdictindex != null) {
-            table.addContent(topdictindex.toXML());
-        }
-        if (stringindex != null) {
-            table.addContent(stringindex.toXML());
-        }
-        Comment c = new Comment("incomplete");
-        table.addContent(c);
-        return table;
-
-    }
-
-    /**
-     * Returns the hdrSize.
-     * @return Returns the hdrSize.
-     */
-    public int getHdrSize() {
-
-        return hdrSize;
-    }
-
-    /**
-     * Returns the versionmajor.
-     * @return Returns the versionmajor.
-     */
-    public int getVersionmajor() {
-
-        return versionmajor;
-    }
-
-    /**
-     * Returns the versionminor.
-     * @return Returns the versionminor.
-     */
-    public int getVersionminor() {
-
-        return versionminor;
-    }
-
-    /**
-     * Returns the nameindex.
-     * @return Returns the nameindex.
-     */
-    public NameIndex getNameindex() {
-
-        return nameindex;
-    }
-
-    // ---------------------------------------------------
-    // ---------------------------------------------------
-    // ---------------------------------------------------
-    // ---------------------------------------------------
-    // ---------------------------------------------------
-
-    /**
-     * INDEX-Table
+     * INDEX-Table.
+     * <p>
+     * An INDEX is an array of variable-sized objects.
+     * It comprises a header, an offset array, and object data.
+     * The offset array specifies offsets within the object data.
+     * An object is retrieved by indexing the offset array and fetching
+     * the object at the specified offset. The object's length can
+     * be determined by subtracting its offset from the next offset
+     * in the offset array. An additional offset is added at the end
+     * of the offset array so the length of the last object may be determined.
+     * </p>
      *
      * <table border="1">
      *   <thead>
@@ -271,9 +130,29 @@ public class OtfTableCFF extends AbstractXtfTable
      * </td></tr>
      *   <tr><td>Card8</td><td>data [&lt;varies&gt;]</td><td>
      *       Object data</td></tr>
-     *  </table>
+     * </table>
+     *
+     * Offsets in the offset array are relative to the byte that
+     * precedes the object data. Therefore the first element of the
+     * offset array is always 1. (This ensures that every object
+     * has a corresponding offset which is always nonzero and
+     * permits the efficient implementation of dynamic object loading.)
+     *
+     * An empty INDEX is represented by a count field with a 0 value
+     * and no additional fields. Thus, the total size of an empty
+     * INDEX is 2 bytes.
      */
-    abstract class Index implements XMLConvertible {
+    abstract class Index implements XMLWriterConvertible {
+
+        /**
+         * Number of objects
+         */
+        private int count;
+
+        /**
+         * all datas
+         */
+        private Object[] datas;
 
         /**
          * Create a new object.
@@ -313,6 +192,24 @@ public class OtfTableCFF extends AbstractXtfTable
         }
 
         /**
+         * Returns the count.
+         * @return Returns the count.
+         */
+        public int getCount() {
+
+            return count;
+        }
+
+        /**
+         * Returns the datas.
+         * @return Returns the datas.
+         */
+        public Object[] getDatas() {
+
+            return datas;
+        }
+
+        /**
          * Read the data
          * @param start the start offset
          * @param end   the end offset
@@ -320,12 +217,12 @@ public class OtfTableCFF extends AbstractXtfTable
          * @return Returns the data
          * @throws IOException if an IO-error occurs
          */
-        private short[] readData(final int start, final int end,
+        private byte[] readData(final int start, final int end,
                 final RandomAccessR rar) throws IOException {
 
-            short[] data = new short[end - start];
+            byte[] data = new byte[end - start];
             for (int i = 0; i < data.length; i++) {
-                data[i] = (short) rar.readUnsignedByte();
+                data[i] = (byte) rar.readUnsignedByte();
             }
             return data;
         }
@@ -347,34 +244,6 @@ public class OtfTableCFF extends AbstractXtfTable
                 offset += b;
             }
             return offset;
-        }
-
-        /**
-         * all datas
-         */
-        private Object[] datas;
-
-        /**
-         * Number of objects
-         */
-        private int count;
-
-        /**
-         * Returns the count.
-         * @return Returns the count.
-         */
-        public int getCount() {
-
-            return count;
-        }
-
-        /**
-         * Returns the datas.
-         * @return Returns the datas.
-         */
-        public Object[] getDatas() {
-
-            return datas;
         }
     }
 
@@ -408,7 +277,7 @@ public class OtfTableCFF extends AbstractXtfTable
             if (index < 0 || index > getCount()) {
                 return null;
             }
-            short[] data = (short[]) getDatas()[index];
+            byte[] data = (byte[]) getDatas()[index];
             StringBuffer buf = new StringBuffer(data.length);
 
             for (int i = 0; i < data.length; i++) {
@@ -418,90 +287,20 @@ public class OtfTableCFF extends AbstractXtfTable
         }
 
         /**
-         * @see org.extex.util.XMLConvertible#toXML()
+         * @see org.extex.util.XMLWriterConvertible#writeXML(
+         *      org.extex.util.xml.XMLStreamWriter)
          */
-        public Element toXML() {
+        public void writeXML(final XMLStreamWriter writer) throws IOException {
 
-            Element table = new Element("nameindex");
-            table.setAttribute("count", String.valueOf(getCount()));
-            // table.setAttribute("offsetsize", String.valueOf(offSize));
-
+            writer.writeStartElement("nameindex");
             for (int i = 0; i < getDatas().length; i++) {
-                Element edata = new Element("name");
-                table.addContent(edata);
-                edata.setAttribute("id", String.valueOf(i));
-                edata.setAttribute("value", String.valueOf(getName(i)));
+                writer.writeStartElement("name");
+                writer.writeAttribute("id", i);
+                writer.writeAttribute("value", getName(i));
+                writer.writeEndElement();
             }
-            return table;
+            writer.writeEndElement();
         }
-    }
-
-    /**
-     * This contains the top-level DICTs of all the fonts
-     * in the FontSet stored in an INDEX structure.
-     */
-    class TopDictIndex extends Index {
-
-        /**
-         * Create a new object.
-         *
-         * @param offset    the offset
-         * @param rar       the input
-         * @throws IOException if an IO-error occurs.
-         */
-        public TopDictIndex(final int offset, final RandomAccessR rar)
-                throws IOException {
-
-            super(offset, rar);
-
-            if (getDatas().length > 0) {
-                byte[] data = (byte[]) getDatas()[0];
-
-                RandomAccessInputArray arar = new RandomAccessInputArray(data);
-
-                ArrayList list = new ArrayList();
-                try {
-                    // read until end of input -> IOException
-                    while (true) {
-                        T2Operator op = T2CharString.readTopDICTOperator(arar);
-                        list.add(op);
-                    }
-                } catch (IOException e) {
-                    values = new T2Operator[list.size()];
-                    for (int i = 0; i < list.size(); i++) {
-                        values[i] = (T2Operator) list.get(i);
-                    }
-                }
-            }
-        }
-
-        /**
-         * values
-         */
-        private T2Operator[] values;
-
-        /**
-         * Returns the values.
-         * @return Returns the values.
-         */
-        public T2Operator[] getValues() {
-
-            return values;
-        }
-
-        /**
-         * @see org.extex.util.XMLConvertible#toXML()
-         */
-        public Element toXML() {
-
-            Element table = new Element("topdictindex");
-            table.setAttribute("count", String.valueOf(getCount()));
-            for (int i = 0; i < values.length; i++) {
-                // MGN table.addContent(values[i].toXML());
-            }
-            return table;
-        }
-
     }
 
     /**
@@ -540,6 +339,11 @@ public class OtfTableCFF extends AbstractXtfTable
     class StringIndex extends Index {
 
         /**
+         * The values.
+         */
+        private String[] values;
+
+        /**
          * Create a new object.
          *
          * @param offset    the offset
@@ -554,10 +358,7 @@ public class OtfTableCFF extends AbstractXtfTable
             values = new String[getDatas().length];
 
             for (int i = 0; i < getDatas().length; i++) {
-                byte[] tmp = (byte[]) getDatas()[i];
-                System.out.print(" array[" + i + "] ");
-                tmp_print(tmp);
-                values[i] = convert(tmp);
+                values[i] = convert((byte[]) getDatas()[i]);
             }
         }
 
@@ -565,23 +366,40 @@ public class OtfTableCFF extends AbstractXtfTable
          * Convert the array to a string.
          * @param data  the data-array
          * @return Returns the String.
-         * @throws IOException if an IO-error occurs.
          */
-        private String convert(final byte[] data) throws IOException {
+        private String convert(final byte[] data) {
 
-            RandomAccessInputArray arar = new RandomAccessInputArray(data);
+            StringBuffer buf = new StringBuffer(data.length);
 
-            int sid = arar.readUnsignedShort();
+            for (int i = 0; i < data.length; i++) {
+                buf.append((char) data[i]);
+            }
 
-            System.out.println("sid = " + sid);
-
-            return "";
+            return buf.toString();
         }
 
         /**
-         * the values
+         * Returns the String for the SID.
+         *
+         * First, test if SID is in standard range
+         * then fetch from internal table, otherwise,
+         * fetch string from the String INDEX using a value of (SID-nStdStrings)
+         * as the index.
+         *
+         * @param sid   the SID for the string.
+         * @return Returns the String or <code>null</code>, if not found.
          */
-        private String[] values;
+        public String getString(final int sid) {
+
+            int highestSID = T2StandardStrings.getHighestSID();
+            if (sid <= highestSID) {
+                return T2StandardStrings.getString(sid);
+            }
+            if (sid - highestSID - 1 < values.length) {
+                return values[sid - highestSID - 1];
+            }
+            return null;
+        }
 
         /**
          * Returns the values.
@@ -593,28 +411,335 @@ public class OtfTableCFF extends AbstractXtfTable
         }
 
         /**
-         * Returns the String.
-         * @param sid   the SID for the string.
-         * @return Returns the String.
+         * @see org.extex.util.XMLWriterConvertible#writeXML(
+         *      org.extex.util.xml.XMLStreamWriter)
          */
-        public String getString(final int sid) {
+        public void writeXML(final XMLStreamWriter writer) throws IOException {
 
-            if (sid < T2StandardStrings.getHighestSID()) {
-                return T2StandardStrings.getString(sid);
+            writer.writeStartElement("stringindex");
+
+            int highestSID = T2StandardStrings.getHighestSID();
+            for (int i = 0; i < highestSID + values.length; i++) {
+                writer.writeStartElement("string");
+                writer.writeAttribute("sid", i);
+                writer.writeAttribute("value", getString(i));
+                writer.writeEndElement();
             }
-            // incomplete
-            return null;
+            writer.writeEndElement();
+        }
+    }
+
+    /**
+     * This contains the top-level DICTs of all the fonts
+     * in the FontSet stored in an INDEX structure.
+     * Top DICT Operator Entries
+     * Name     Value      Operand(s)         Default, notes
+     */
+    class TopDictIndex extends Index {
+
+        /**
+         * values
+         */
+        private T2Operator[] values;
+
+        /**
+         * The hash map.
+         */
+        private Map hashValues;
+
+        /**
+         * Create a new object.
+         *
+         * @param offset    the offset
+         * @param rar       the input
+         * @throws IOException if an IO-error occurs.
+         */
+        public TopDictIndex(final int offset, final RandomAccessR rar)
+                throws IOException {
+
+            super(offset, rar);
+
+            hashValues = new HashMap();
+
+            if (getDatas().length > 0) {
+                byte[] data = (byte[]) getDatas()[0];
+
+                RandomAccessInputArray arar = new RandomAccessInputArray(data);
+
+                ArrayList list = new ArrayList();
+                try {
+                    // read until end of input -> IOException
+                    while (true) {
+                        T2Operator op = T2CharString.readTopDICTOperator(arar,
+                                cff);
+                        list.add(op);
+                        hashValues.put(op.getName().toLowerCase(), op);
+                    }
+                } catch (IOException e) {
+                    values = new T2Operator[list.size()];
+                    for (int i = 0; i < list.size(); i++) {
+                        values[i] = (T2Operator) list.get(i);
+                    }
+                }
+            }
         }
 
         /**
-         * @see org.extex.util.XMLConvertible#toXML()
+         * Returns the operator for the key.
+         * 
+         * @param key   The key (lowercase).
+         * @return Returns the operator for the key
+         *         or <code>null</code>, if not found.
          */
-        public Element toXML() {
+        public T2Operator get(String key) {
 
-            Element table = new Element("stringindex");
-            table.setAttribute("count", String.valueOf(getCount()));
-            return table;
+            return (T2Operator) hashValues.get(key.toLowerCase());
         }
+
+        /**
+         * Returns the values.
+         * @return Returns the values.
+         */
+        public T2Operator[] getValues() {
+
+            return values;
+        }
+
+        /**
+         * @see org.extex.util.XMLWriterConvertible#writeXML(
+         *      org.extex.util.xml.XMLStreamWriter)
+         */
+        public void writeXML(final XMLStreamWriter writer) throws IOException {
+
+            writer.writeStartElement("topdictindex");
+            for (int i = 0; i < values.length; i++) {
+                values[i].writeXML(writer);
+            }
+            writer.writeEndElement();
+        }
+
+    }
+
+    /**
+     * The instance itself.
+     */
+    private OtfTableCFF cff;
+
+    /**
+     * header size
+     */
+    private int hdrSize;
+
+    /**
+     * The table NameINDEX
+     */
+    private NameIndex nameindex;
+
+    /**
+     * offset size
+     */
+    private int offSize;
+
+    /**
+     * The table StringINDEX
+     */
+    private StringIndex stringindex;
+
+    /**
+     * The table top DICT INDEX
+     */
+    private TopDictIndex topdictindex;
+
+    /**
+     * Version major
+     */
+    private int versionmajor;
+
+    /**
+     * Version minor
+     */
+    private int versionminor;
+
+    /**
+     * Create a new object
+     *
+     * @param tablemap  the tablemap
+     * @param de        entry
+     * @param rar       input
+     * @throws IOException if an IO-error occurs
+     */
+    OtfTableCFF(final XtfTableMap tablemap, final XtfTableDirectory.Entry de,
+            final RandomAccessR rar) throws IOException {
+
+        super(tablemap);
+        cff = this;
+        rar.seek(de.getOffset());
+
+        // header
+        readHeader(rar);
+
+        // index
+        readNameIndex(de, rar);
+        readTopDictIndex(rar);
+        readStringIndex(rar);
+
+        // read special index entries
+        readCharset(rar);
+
+        // Global Subr INDEX
+
+        // incomplete
+    }
+
+    /**
+     * Read the charset entry.
+     * Charset data is located via the offset operand to the
+     * charset operator in the Top DICT. Each charset
+     * is described by a format-type identifier byte followed
+     * by format-specific data.
+     *
+     * @param rar the input
+     */
+    private void readCharset(RandomAccessR rar) {
+
+        T2Operator charset = getTopDictIndex("charset");
+        if (charset != null) {
+            int offset = ((T2TDOCharset)charset).getInteger();
+            // TODO mgn hiuer aufgehört
+        }
+        
+    }
+
+    /**
+     * Returns the hdrSize.
+     * @return Returns the hdrSize.
+     */
+    public int getHdrSize() {
+
+        return hdrSize;
+    }
+
+    /**
+     * Returns the nameindex.
+     * @return Returns the nameindex.
+     */
+    public NameIndex getNameindex() {
+
+        return nameindex;
+    }
+
+    /**
+     * @see org.extex.font.format.xtf.XtfTable#getShortcut()
+     */
+    public String getShortcut() {
+
+        return "cff";
+    }
+
+    /**
+     * @see org.extex.font.format.xtf.OtfTableCFF.StringIndex#getString(int)
+     */
+    public String getString(final int sid) {
+
+        return stringindex.getString(sid);
+    }
+
+    /**
+     * Get the table type, as a table directory value.
+     * @return Returns the table type
+     */
+    public int getType() {
+
+        return XtfReader.CFF;
+    }
+
+    /**
+     * Returns the versionmajor.
+     * @return Returns the versionmajor.
+     */
+    public int getVersionmajor() {
+
+        return versionmajor;
+    }
+
+    /**
+     * Returns the versionminor.
+     * @return Returns the versionminor.
+     */
+    public int getVersionminor() {
+
+        return versionminor;
+    }
+
+    // ---------------------------------------------------
+    // ---------------------------------------------------
+    // ---------------------------------------------------
+    // ---------------------------------------------------
+    // ---------------------------------------------------
+
+    /**
+     * Read the Header. TODO: create html-table
+     * Type    Name     Description
+     * Card8   major    Format major version (starting at 1)
+     * Card8   minor    Format minor version (starting at 0)
+     * Card8   hdrSize  Header size (bytes)
+     * OffSize offSize  Absolute offset (0) size
+     *
+     * @param rar  The Input.
+     * @throws IOException if an IO-error occurs
+     */
+    private void readHeader(final RandomAccessR rar) throws IOException {
+
+        versionmajor = rar.readUnsignedByte();
+        versionminor = rar.readUnsignedByte();
+        hdrSize = rar.readUnsignedByte();
+        offSize = rar.readUnsignedByte();
+    }
+
+    /**
+     * Read the name index.
+     *
+     * This contains the PostScript language names (FontName or CIDFontName)
+     * of all the fonts in the FontSet stored in an INDEX structure.
+     * The font names are sorted, thereby permitting a
+     * binary search to be performed when locating a specific font
+     * within a FontSet. The sort order is based on character codes
+     * treated as 8-bit unsigned integers. A given font name precedes
+     * another font name having the first name as its prefix.
+     * There must be at least one entry in this INDEX,
+     * i.e. the FontSet must contain at least one font.
+     *
+     * @param de    The entry.
+     * @param rar   The Input.
+     * @throws IOException if an io-error occuured.
+     */
+    private void readNameIndex(final XtfTableDirectory.Entry de,
+            final RandomAccessR rar) throws IOException {
+
+        nameindex = new NameIndex(de.getOffset() + hdrSize, rar);
+    }
+
+    /**
+     * Read the string index.
+     *
+     *
+     * @param rar   The input.
+     * @throws IOException if an IO-error occurred.
+     */
+    private void readStringIndex(final RandomAccessR rar) throws IOException {
+
+        stringindex = new StringIndex(-1, rar);
+    }
+
+    /**
+     * Read the top dict index.
+     *
+     * @param rar   The input.
+     * @throws IOException if an IO-error occurred.
+     */
+    private void readTopDictIndex(final RandomAccessR rar) throws IOException {
+
+        topdictindex = new TopDictIndex(-1, rar);
     }
 
     /**
@@ -623,16 +748,20 @@ public class OtfTableCFF extends AbstractXtfTable
      */
     private void tmp_print(final byte[] data) {
 
+        StringBuffer buf = new StringBuffer();
+
         for (int i = 0; i < data.length; i++) {
             System.out.print("0x" + Integer.toHexString(data[i]) + " ");
             System.out.print("[");
             char c = (char) data[i];
+            buf.append(c);
             if (Character.isLetterOrDigit(c)) {
                 System.out.print(c);
             }
             System.out.print("]  ");
         }
         System.out.println();
+        System.out.println(buf.toString());
     }
 
     /**
@@ -642,8 +771,29 @@ public class OtfTableCFF extends AbstractXtfTable
     public void writeXML(final XMLStreamWriter writer) throws IOException {
 
         writeStartElement(writer);
+        writer.writeAttribute("version", String.valueOf(versionmajor) + "."
+                + String.valueOf(versionminor));
+        writer.writeAttribute("hdrsize", String.valueOf(hdrSize));
+        writer.writeAttribute("offsize", String.valueOf(offSize));
+        if (nameindex != null) {
+            nameindex.writeXML(writer);
+        }
+        if (topdictindex != null) {
+            topdictindex.writeXML(writer);
+        }
+        if (stringindex != null) {
+            stringindex.writeXML(writer);
+        }
         writer.writeComment("incomplete");
         writer.writeEndElement();
+    }
+
+    /**
+     * @see org.extex.font.format.xtf.OtfTableCFF.TopDictIndex#get(java.lang.String)
+     */
+    public T2Operator getTopDictIndex(String key) {
+
+        return topdictindex.get(key);
     }
 
 }

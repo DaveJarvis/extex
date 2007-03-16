@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -21,11 +21,11 @@ package org.extex.font.format.xtf.cff;
 
 import java.io.IOException;
 
+import org.extex.font.format.xtf.OtfTableCFF;
 import org.extex.util.file.random.RandomAccessR;
 
-
 /**
- * The Type 2 Chatstring format.
+ * The Type 2 Charstring format.
  *
  * @see <a href="http://partners.adobe.com/asn/developer/pdfs/tn/5177.Type2.pdf">
  *      Adobe Technical Note #5177: Type 2 Charstring Format</a>
@@ -180,15 +180,23 @@ public abstract class T2CharString {
     }
 
     /**
+     * The cff table.
+     */
+    protected OtfTableCFF cff;
+
+    /**
      * Read a top DICT operator.
      *
      * @param rar       the input
+     * @param cff       the cff table
      * @return  Return the Top DICT operator
      * @throws IOException if an IO-error occurs
      */
-    public static T2Operator readTopDICTOperator(final RandomAccessR rar)
-            throws IOException {
+    public static T2Operator readTopDICTOperator(final RandomAccessR rar,
+            final OtfTableCFF cff) throws IOException {
 
-        return T2TopDICTOperator.newInstance(rar);
+        return T2TopDICTOperator.newInstance(rar, cff);
     }
+    
+    
 }

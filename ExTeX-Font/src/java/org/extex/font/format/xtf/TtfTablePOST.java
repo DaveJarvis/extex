@@ -82,6 +82,20 @@ import org.extex.util.xml.XMLStreamWriter;
  *          glyph names with length bytes [variable] (a Pascal string)</td></tr>
  * </table>
  *
+ * <p>Format 3</p>
+ * <p>
+ * This version is used by OpenType fonts with TrueType or CFF data.
+ * The version makes it possible to create a special font that is
+ * not burdened with a large 'post' table set of glyph names.
+ * </p>
+ * <p>
+ * This version specifies that no PostScript name information is provided
+ * for the glyphs in this font file. The printing behavior of this version
+ * on PostScript printers is unspecified, except that it should not result
+ * in a fatal or unrecoverable error. Some drivers may print nothing,
+ * other drivers may attempt to print using a default naming scheme.
+ * </p>
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -544,6 +558,8 @@ public class TtfTablePOST extends AbstractXtfTable
                 return (glyphNameIndex[i] > FORMAT1NAME.length - 1)
                         ? psGlyphName[glyphNameIndex[i] - FORMAT1NAME.length]
                         : FORMAT1NAME[glyphNameIndex[i]];
+            case FORMAT3:
+                // TODO
             default :
                 break;
         }
