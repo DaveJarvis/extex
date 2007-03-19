@@ -19,8 +19,8 @@
 
 package org.extex.interpreter.exception;
 
-import org.extex.util.exception.GeneralException;
-import org.extex.util.framework.i18n.Localizer;
+import org.extex.core.exception.GeneralException;
+import org.extex.framework.i18n.Localizer;
 
 /**
  * This is the base class for all exceptions of the interpreter.

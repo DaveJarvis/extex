@@ -19,9 +19,9 @@
 
 package org.extex.typesetter.type;
 
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.FixedDimen;
-import org.extex.interpreter.type.glue.FixedGlue;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.glue.FixedGlue;
 
 /**
  * This interface describes the features of a linear collection of nodes.

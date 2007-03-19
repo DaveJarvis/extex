@@ -19,17 +19,17 @@
 
 package org.extex.typesetter;
 
+import org.extex.core.UnicodeChar;
+import org.extex.core.count.FixedCount;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.exception.GeneralException;
+import org.extex.core.glue.FixedGlue;
+import org.extex.core.muskip.Muskip;
 import org.extex.interpreter.context.tc.TypesettingContext;
 import org.extex.interpreter.context.tc.TypesettingContextFactory;
-import org.extex.interpreter.type.count.FixedCount;
-import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.font.Font;
-import org.extex.interpreter.type.glue.FixedGlue;
-import org.extex.interpreter.type.muskip.Muskip;
 import org.extex.scanner.type.token.TokenFactory;
-import org.extex.type.UnicodeChar;
 import org.extex.typesetter.paragraphBuilder.ParagraphShape;
-import org.extex.util.exception.GeneralException;
 
 /**
  * This interface describes the possibilities of the typesetter to access its

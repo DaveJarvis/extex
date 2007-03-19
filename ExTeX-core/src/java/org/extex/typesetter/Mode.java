@@ -19,8 +19,8 @@
 
 package org.extex.typesetter;
 
-import org.extex.util.framework.i18n.Localizer;
-import org.extex.util.framework.i18n.LocalizerFactory;
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * This class provides type-safe constants for the modes of a typesetter.

@@ -19,8 +19,8 @@
 
 package org.extex.interpreter.context.observer.dimen;
 
+import org.extex.core.dimen.Dimen;
 import org.extex.interpreter.context.ContextInternals;
-import org.extex.interpreter.type.dimen.Dimen;
 
 /**
  * This interface describes the ability to receive a notification about the

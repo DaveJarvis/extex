@@ -21,8 +21,8 @@ package org.extex.font;
 
 import junit.framework.TestCase;
 
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
 
 /**
  * Test suite for the font key.

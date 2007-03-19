@@ -21,8 +21,8 @@ package org.extex.backend.documentWriter;
 
 import java.io.IOException;
 
+import org.extex.core.exception.GeneralException;
 import org.extex.typesetter.type.page.Page;
-import org.extex.util.exception.GeneralException;
 
 /**
  * This is the interface to the back-end of the system. The document has to be

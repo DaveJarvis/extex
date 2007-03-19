@@ -19,15 +19,15 @@
 
 package org.extex.font;
 
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.type.UnicodeChar;
+import org.extex.core.UnicodeChar;
+import org.extex.core.dimen.Dimen;
 
 
 /**
  * Interface for a Glyph
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4388 $
+ * @version $Revision:4745 $
  */
 public interface Glyph {
 

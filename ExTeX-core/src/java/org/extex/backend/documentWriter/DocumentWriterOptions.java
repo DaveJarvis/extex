@@ -18,9 +18,9 @@
  */
 package org.extex.backend.documentWriter;
 
-import org.extex.interpreter.type.count.FixedCount;
-import org.extex.interpreter.type.dimen.FixedDimen;
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.core.count.FixedCount;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.scanner.type.tokens.Tokens;
 
 
 /**

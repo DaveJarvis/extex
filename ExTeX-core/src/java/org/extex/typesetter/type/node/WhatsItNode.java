@@ -19,8 +19,8 @@
 
 package org.extex.typesetter.type.node;
 
+import org.extex.core.exception.GeneralException;
 import org.extex.typesetter.type.NodeVisitor;
-import org.extex.util.exception.GeneralException;
 
 /**
  * This node type represents the extension node from the perspective of

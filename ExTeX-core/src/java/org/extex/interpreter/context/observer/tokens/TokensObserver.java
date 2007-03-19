@@ -20,7 +20,7 @@
 package org.extex.interpreter.context.observer.tokens;
 
 import org.extex.interpreter.context.ContextInternals;
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.tokens.Tokens;
 
 /**
  * This interface describes the ability to receive a notification about the

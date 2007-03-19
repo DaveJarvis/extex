@@ -19,8 +19,8 @@
 
 package org.extex.typesetter.type.node;
 
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
 
 /**
  * This interface describes the capabilities for an extension object to be

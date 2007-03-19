@@ -22,12 +22,12 @@ package org.extex.typesetter.type.noad;
 import java.io.Serializable;
 import java.util.logging.Logger;
 
-import org.extex.type.UnicodeChar;
+import org.extex.core.UnicodeChar;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.noad.util.MathContext;
 import org.extex.typesetter.type.noad.util.MathSpacing;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides a container for a mathematical glyph.

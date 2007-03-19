@@ -19,12 +19,12 @@
 
 package org.extex.typesetter.type.node;
 
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.FixedDimen;
-import org.extex.interpreter.type.glue.FixedGlue;
-import org.extex.interpreter.type.glue.FixedGlueComponent;
-import org.extex.interpreter.type.glue.Glue;
-import org.extex.interpreter.type.glue.WideGlue;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.glue.FixedGlue;
+import org.extex.core.glue.FixedGlueComponent;
+import org.extex.core.glue.Glue;
+import org.extex.core.glue.WideGlue;
 
 /**
  * This node represents a <logo>TeX</logo> "glue" node.
@@ -112,7 +112,7 @@ public abstract class AbstractExpandableNode extends AbstractNode {
      * @param glue the glue to add to.
      *
      * @see org.extex.typesetter.type.Node#addDepthTo(
-     *      org.extex.interpreter.type.glue.WideGlue)
+     *      org.extex.core.glue.WideGlue)
      */
     public void addDepthTo(final WideGlue glue) {
 
@@ -129,7 +129,7 @@ public abstract class AbstractExpandableNode extends AbstractNode {
      * @param glue the glue to add to.
      *
      * @see org.extex.typesetter.type.Node#addHeightTo(
-     *      org.extex.interpreter.type.glue.WideGlue)
+     *      org.extex.core.glue.WideGlue)
      */
     public void addHeightTo(final WideGlue glue) {
 
@@ -146,7 +146,7 @@ public abstract class AbstractExpandableNode extends AbstractNode {
      * @param glue the glue to add to.
      *
      * @see org.extex.typesetter.type.Node#addWidthTo(
-     *      org.extex.interpreter.type.glue.WideGlue)
+     *      org.extex.core.glue.WideGlue)
      */
     public void addWidthTo(final WideGlue glue) {
 
@@ -185,8 +185,8 @@ public abstract class AbstractExpandableNode extends AbstractNode {
      * @param sum the total sum of the glues
      *
      * @see org.extex.typesetter.type.node.AbstractNode#spreadHeight(
-     *      org.extex.interpreter.type.dimen.FixedDimen,
-     *      org.extex.interpreter.type.glue.FixedGlueComponent)
+     *      org.extex.core.dimen.FixedDimen,
+     *      org.extex.core.glue.FixedGlueComponent)
      */
     public void spreadHeight(final FixedDimen height,
             final FixedGlueComponent sum) {
@@ -208,8 +208,8 @@ public abstract class AbstractExpandableNode extends AbstractNode {
      * @param sum the total sum of the glues
      *
      * @see org.extex.typesetter.type.Node#spreadWidth(
-     *      org.extex.interpreter.type.dimen.FixedDimen,
-     *      org.extex.interpreter.type.glue.FixedGlueComponent)
+     *      org.extex.core.dimen.FixedDimen,
+     *      org.extex.core.glue.FixedGlueComponent)
      */
     public void spreadWidth(final FixedDimen width, final FixedGlueComponent sum) {
 

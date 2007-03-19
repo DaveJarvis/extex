@@ -19,7 +19,7 @@
 
 package org.extex.scanner.stream.exception;
 
-import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
  * This Exception is thrown when no file finder has been provided before it is

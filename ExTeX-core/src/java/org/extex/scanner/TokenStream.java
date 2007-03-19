@@ -19,11 +19,10 @@
 
 package org.extex.scanner;
 
-import org.extex.interpreter.Tokenizer;
+import org.extex.core.Locator;
 import org.extex.scanner.exception.ScannerException;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
-import org.extex.type.Locator;
 
 /**
  * This interface describes the features of a stream capable of delivering

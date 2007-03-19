@@ -21,7 +21,7 @@ package org.extex.font;
 
 import java.io.Serializable;
 
-import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.core.dimen.Dimen;
 
 
 /**

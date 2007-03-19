@@ -19,15 +19,18 @@
 
 package org.extex.typesetter.listMaker;
 
+import org.extex.core.Locator;
+import org.extex.core.count.FixedCount;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.MissingMathException;
-import org.extex.interpreter.type.count.FixedCount;
-import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.Token;
-import org.extex.type.Locator;
 import org.extex.typesetter.ListMaker;
 import org.extex.typesetter.Mode;
 import org.extex.typesetter.Typesetter;
@@ -37,9 +40,6 @@ import org.extex.typesetter.exception.TypesetterHelpingException;
 import org.extex.typesetter.exception.TypesetterUnsupportedException;
 import org.extex.typesetter.listMaker.math.DisplaymathListMaker;
 import org.extex.typesetter.listMaker.math.MathListMaker;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-import org.extex.util.framework.i18n.Localizer;
-import org.extex.util.framework.i18n.LocalizerFactory;
 
 /**
  * This abstract class provides some methods common to all ListMakers.
@@ -218,7 +218,7 @@ public abstract class AbstractListMaker implements ListMaker {
      * @throws TypesetterUnsupportedException in case of an error
      *
      * @see org.extex.typesetter.ListMaker#setPrevDepth(
-     *      org.extex.interpreter.type.dimen.FixedDimen)
+     *      org.extex.core.dimen.FixedDimen)
      */
     public void setPrevDepth(final FixedDimen pd)
             throws TypesetterUnsupportedException {
@@ -235,7 +235,7 @@ public abstract class AbstractListMaker implements ListMaker {
      * @throws InvalidSpacefactorException in case of an invalid space factor
      *
      * @see org.extex.typesetter.ListMaker#setSpacefactor(
-     *      org.extex.interpreter.type.count.FixedCount)
+     *      org.extex.core.count.FixedCount)
      */
     public void setSpacefactor(final FixedCount sf)
             throws TypesetterUnsupportedException,

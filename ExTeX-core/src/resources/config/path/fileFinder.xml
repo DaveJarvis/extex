@@ -18,7 +18,7 @@
   -
   -->
 <Resource>
-  <Finder class="org.extex.util.resource.FileFinder"
+  <Finder class="org.extex.resource.FileFinder"
           default="default">
     <u2t>
       <extension>.u2t</extension>
@@ -96,7 +96,7 @@
     </default>
   </Finder>
 
-  <Finder class="org.extex.util.resource.ClasspathArchiveFinder"
+  <Finder class="org.extex.resource.ClasspathArchiveFinder"
           trace="false"
           default="default">
     <default>
@@ -104,7 +104,7 @@
     </default>
   </Finder>
 
-  <Finder class="org.extex.util.resource.ClasspathFinder"
+  <Finder class="org.extex.resource.ClasspathFinder"
           trace="false"
           default="default">
     <fmt prefix="texmf/">
@@ -113,7 +113,7 @@
     <default skip="true"/>
   </Finder>
 
-  <Finder class="org.extex.util.resource.LsrFinder"
+  <Finder class="org.extex.resource.LsrFinder"
           trace="false"
           capacity="88888"
           default="default">

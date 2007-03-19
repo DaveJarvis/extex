@@ -19,8 +19,8 @@
 
 package org.extex.typesetter.type.noad.util;
 
+import org.extex.core.muskip.Muskip;
 import org.extex.interpreter.exception.ImpossibleException;
-import org.extex.interpreter.type.muskip.Muskip;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.noad.StyleNoad;

@@ -22,19 +22,20 @@ package org.extex.typesetter.listMaker;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.extex.core.Locator;
+import org.extex.core.UnicodeChar;
+import org.extex.core.count.Count;
+import org.extex.core.count.FixedCount;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.glue.FixedGlue;
+import org.extex.core.glue.Glue;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.tc.TypesettingContext;
 import org.extex.interpreter.exception.InterpreterException;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.count.FixedCount;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.font.Font;
-import org.extex.interpreter.type.glue.FixedGlue;
-import org.extex.interpreter.type.glue.Glue;
-import org.extex.type.Locator;
-import org.extex.type.UnicodeChar;
 import org.extex.typesetter.Mode;
 import org.extex.typesetter.ParagraphObserver;
 import org.extex.typesetter.TypesetterOptions;
@@ -47,7 +48,6 @@ import org.extex.typesetter.type.node.CharNode;
 import org.extex.typesetter.type.node.HorizontalListNode;
 import org.extex.typesetter.type.node.ImplicitKernNode;
 import org.extex.typesetter.type.node.SpaceNode;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * Maker for a horizontal list.
@@ -129,7 +129,7 @@ public class HorizontalListMaker extends AbstractListMaker {
 
     /**
      * @see org.extex.typesetter.ListMaker#add(
-     *      org.extex.interpreter.type.glue.FixedGlue)
+     *      org.extex.core.glue.FixedGlue)
      */
     public void add(final FixedGlue g) throws TypesetterException {
 
@@ -140,7 +140,7 @@ public class HorizontalListMaker extends AbstractListMaker {
     /**
      * @see org.extex.typesetter.ListMaker#addSpace(
      *      org.extex.interpreter.context.tc.TypesettingContext,
-     *      org.extex.interpreter.type.count.Count)
+     *      org.extex.core.count.Count)
      */
     public void addSpace(final TypesettingContext context, final Count sfCount)
             throws TypesetterException,
@@ -202,7 +202,7 @@ public class HorizontalListMaker extends AbstractListMaker {
      * @see org.extex.typesetter.ListMaker#cr(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.context.tc.TypesettingContext,
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar)
      */
     public void cr(final Context context, final TypesettingContext tc,
             final UnicodeChar uc) throws TypesetterException {
@@ -253,11 +253,11 @@ public class HorizontalListMaker extends AbstractListMaker {
      * @param locator the locator
      *
      * @see org.extex.typesetter.ListMaker#letter(
-     *      org.extex.type.UnicodeChar,
+     *      org.extex.core.UnicodeChar,
      *      org.extex.interpreter.context.tc.TypesettingContext,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      org.extex.type.Locator)
+     *      org.extex.core.Locator)
      * @see "The TeXbook [p.76]"
      */
     public boolean letter(final UnicodeChar symbol,
@@ -346,7 +346,7 @@ public class HorizontalListMaker extends AbstractListMaker {
 
     /**
      * @see org.extex.typesetter.ListMaker#setSpacefactor(
-     *      org.extex.interpreter.type.count.FixedCount)
+     *      org.extex.core.count.FixedCount)
      */
     public void setSpacefactor(final FixedCount f)
             throws TypesetterUnsupportedException,

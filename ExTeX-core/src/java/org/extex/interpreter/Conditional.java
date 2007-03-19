@@ -21,8 +21,8 @@ package org.extex.interpreter;
 
 import java.io.Serializable;
 
+import org.extex.core.Locator;
 import org.extex.interpreter.type.Code;
-import org.extex.type.Locator;
 
 /**
  * This class represents a conditional for a normal <tt>\if \else \fi</tt>

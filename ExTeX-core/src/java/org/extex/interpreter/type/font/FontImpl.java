@@ -20,13 +20,13 @@ package org.extex.interpreter.type.font;
 
 import java.io.ObjectStreamException;
 
+import org.extex.core.UnicodeChar;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.glue.FixedGlue;
 import org.extex.font.ExtexFont;
 import org.extex.font.FontKey;
 import org.extex.font.type.other.NullFont;
-import org.extex.interpreter.type.dimen.FixedDimen;
-import org.extex.interpreter.type.glue.FixedGlue;
-import org.extex.type.UnicodeChar;
-import org.extex.util.framework.Registrar;
+import org.extex.framework.Registrar;
 
 /**
  * This class constitutes a wrapper for a font. Here all information is stored
@@ -118,7 +118,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      * @return the depth of the char
      *
      * @see org.extex.interpreter.type.font.Font#getDepth(
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar)
      */
     public FixedGlue getDepth(final UnicodeChar uc) {
 
@@ -219,7 +219,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      * @return the height of the char
      *
      * @see org.extex.interpreter.type.font.Font#getHeight(
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar)
      */
     public FixedGlue getHeight(final UnicodeChar uc) {
 
@@ -234,7 +234,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      * @return the italic correction of the char
      *
      * @see org.extex.interpreter.type.font.Font#getItalicCorrection(
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar)
      */
     public FixedDimen getItalicCorrection(final UnicodeChar uc) {
 
@@ -250,8 +250,8 @@ public class FontImpl extends NullFont implements ModifiableFont {
      * @return the kerning between two characters
      *
      * @see org.extex.interpreter.type.font.Font#getKerning(
-     *      org.extex.type.UnicodeChar,
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar,
+     *      org.extex.core.UnicodeChar)
      */
     public FixedDimen getKerning(final UnicodeChar uc1, final UnicodeChar uc2) {
 
@@ -267,8 +267,8 @@ public class FontImpl extends NullFont implements ModifiableFont {
      * @return Returns the ligature for two characters
      *
      * @see org.extex.interpreter.type.font.Font#getLigature(
-     *      org.extex.type.UnicodeChar,
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar,
+     *      org.extex.core.UnicodeChar)
      */
     public UnicodeChar getLigature(final UnicodeChar uc1, final UnicodeChar uc2) {
 
@@ -295,7 +295,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      * @return the width of the character
      *
      * @see org.extex.interpreter.type.font.Font#getWidth(
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar)
      */
     public FixedGlue getWidth(final UnicodeChar uc) {
 
@@ -310,7 +310,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      * @return <code>true</code> iff the glyph is present
      *
      * @see org.extex.interpreter.type.font.Font#hasGlyph(
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar)
      */
     public boolean hasGlyph(final UnicodeChar uc) {
 

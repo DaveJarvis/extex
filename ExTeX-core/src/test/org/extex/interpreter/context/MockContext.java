@@ -21,11 +21,19 @@ package org.extex.interpreter.context;
 
 import java.util.Iterator;
 
+import org.extex.core.Locator;
+import org.extex.core.UnicodeChar;
+import org.extex.core.count.Count;
+import org.extex.core.count.FixedCount;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.glue.FixedGlue;
+import org.extex.core.glue.Glue;
+import org.extex.core.muskip.Muskip;
 import org.extex.font.CoreFontFactory;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Conditional;
-import org.extex.interpreter.Namespace;
 import org.extex.interpreter.TokenSource;
-import org.extex.interpreter.Tokenizer;
 import org.extex.interpreter.context.group.GroupInfo;
 import org.extex.interpreter.context.group.GroupType;
 import org.extex.interpreter.context.observer.group.AfterGroupObserver;
@@ -38,34 +46,26 @@ import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.interaction.Interaction;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.box.Box;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.count.FixedCount;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.file.InFile;
 import org.extex.interpreter.type.file.OutFile;
 import org.extex.interpreter.type.font.Font;
-import org.extex.interpreter.type.glue.FixedGlue;
-import org.extex.interpreter.type.glue.Glue;
 import org.extex.interpreter.type.math.MathCode;
 import org.extex.interpreter.type.math.MathDelimiter;
-import org.extex.interpreter.type.muskip.Muskip;
-import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.interpreter.unit.UnitInfo;
 import org.extex.language.Language;
 import org.extex.language.LanguageManager;
 import org.extex.scanner.TokenStream;
+import org.extex.scanner.Tokenizer;
 import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
 import org.extex.scanner.type.token.TokenFactoryImpl;
-import org.extex.type.Locator;
-import org.extex.type.UnicodeChar;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.TypesetterOptions;
 import org.extex.typesetter.paragraphBuilder.ParagraphShape;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This mock implementation of a context does nothing useful but provide dummy
@@ -230,8 +230,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see org.extex.interpreter.Tokenizer#getCatcode(
-     *      org.extex.type.UnicodeChar)
+     * @see org.extex.scanner.Tokenizer#getCatcode(
+     *      org.extex.core.UnicodeChar)
      */
     public Catcode getCatcode(final UnicodeChar c) {
 
@@ -289,7 +289,7 @@ public class MockContext implements Context, TypesetterOptions {
 
     /**
      * @see org.extex.interpreter.context.Context#getDelcode(
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar)
      */
     public MathDelimiter getDelcode(final UnicodeChar c) {
 
@@ -438,7 +438,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see org.extex.interpreter.context.Context#getLccode(org.extex.type.UnicodeChar)
+     * @see org.extex.interpreter.context.Context#getLccode(org.extex.core.UnicodeChar)
      */
     public UnicodeChar getLccode(final UnicodeChar uc) {
 
@@ -455,7 +455,7 @@ public class MockContext implements Context, TypesetterOptions {
 
     /**
      * @see org.extex.interpreter.context.Context#getMathcode(
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar)
      */
     public MathCode getMathcode(final UnicodeChar uc) {
 
@@ -471,7 +471,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see org.extex.interpreter.Tokenizer#getNamespace()
+     * @see org.extex.scanner.Tokenizer#getNamespace()
      */
     public String getNamespace() {
 
@@ -495,7 +495,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see org.extex.interpreter.context.Context#getSfcode(org.extex.type.UnicodeChar)
+     * @see org.extex.interpreter.context.Context#getSfcode(org.extex.core.UnicodeChar)
      */
     public Count getSfcode(final UnicodeChar uc) {
 
@@ -583,7 +583,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see org.extex.interpreter.context.Context#getUccode(org.extex.type.UnicodeChar)
+     * @see org.extex.interpreter.context.Context#getUccode(org.extex.core.UnicodeChar)
      */
     public UnicodeChar getUccode(final UnicodeChar lc) {
 
@@ -609,7 +609,7 @@ public class MockContext implements Context, TypesetterOptions {
     /**
      * @see org.extex.interpreter.context.ContextGroup#openGroup(
      *      org.extex.interpreter.context.group.GroupType,
-     *      org.extex.type.Locator,
+     *      org.extex.core.Locator,
      *      org.extex.scanner.type.token.Token)
      */
     public void openGroup(GroupType id, Locator locator, Token start)
@@ -637,7 +637,7 @@ public class MockContext implements Context, TypesetterOptions {
 
     /**
      * @see org.extex.interpreter.context.Context#pushConditional(
-     *      org.extex.type.Locator,
+     *      org.extex.core.Locator,
      *      boolean,
      *      org.extex.interpreter.type.Code,
      *      long,
@@ -736,7 +736,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see org.extex.interpreter.context.Context#setCatcode(org.extex.type.UnicodeChar, org.extex.scanner.type.Catcode, boolean)
+     * @see org.extex.interpreter.context.Context#setCatcode(org.extex.core.UnicodeChar, org.extex.scanner.type.Catcode, boolean)
      */
     public void setCatcode(final UnicodeChar c, final Catcode cc,
             final boolean global) {
@@ -774,7 +774,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see org.extex.interpreter.context.Context#setDelcode(org.extex.type.UnicodeChar, MathDelimiter, boolean)
+     * @see org.extex.interpreter.context.Context#setDelcode(org.extex.core.UnicodeChar, MathDelimiter, boolean)
      */
     public void setDelcode(final UnicodeChar c, final MathDelimiter delimiter,
             final boolean global) {
@@ -783,7 +783,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see org.extex.interpreter.context.ContextDimen#setDimen(java.lang.String, org.extex.interpreter.type.dimen.Dimen, boolean)
+     * @see org.extex.interpreter.context.ContextDimen#setDimen(java.lang.String, org.extex.core.dimen.Dimen, boolean)
      */
     public void setDimen(final String name, final Dimen value,
             final boolean global) throws InterpreterException {
@@ -818,7 +818,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see org.extex.interpreter.context.Context#setGlue(java.lang.String, org.extex.interpreter.type.glue.Glue, boolean)
+     * @see org.extex.interpreter.context.Context#setGlue(java.lang.String, org.extex.core.glue.Glue, boolean)
      */
     public void setGlue(final String name, final Glue value,
             final boolean global) throws InterpreterException {
@@ -864,8 +864,8 @@ public class MockContext implements Context, TypesetterOptions {
 
     /**
      * @see org.extex.interpreter.context.Context#setLccode(
-     *      org.extex.type.UnicodeChar,
-     *      org.extex.type.UnicodeChar,
+     *      org.extex.core.UnicodeChar,
+     *      org.extex.core.UnicodeChar,
      *      boolean)
      */
     public void setLccode(final UnicodeChar uc, final UnicodeChar lc,
@@ -886,7 +886,7 @@ public class MockContext implements Context, TypesetterOptions {
     /**
      * @see org.extex.interpreter.context.ContextMark#setMark(
      *      java.lang.Object,
-     *      org.extex.interpreter.type.tokens.Tokens)
+     *      org.extex.scanner.type.tokens.Tokens)
      */
     public void setMark(final Object name, final Tokens mark) {
 
@@ -895,7 +895,7 @@ public class MockContext implements Context, TypesetterOptions {
 
     /**
      * @see org.extex.interpreter.context.Context#setMathcode(
-     *      org.extex.type.UnicodeChar,
+     *      org.extex.core.UnicodeChar,
      *      MathCode,
      *      boolean)
      */
@@ -906,7 +906,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see org.extex.interpreter.context.Context#setMuskip(java.lang.String, org.extex.interpreter.type.muskip.Muskip, boolean)
+     * @see org.extex.interpreter.context.Context#setMuskip(java.lang.String, org.extex.core.muskip.Muskip, boolean)
      */
     public void setMuskip(final String name, final Muskip value,
             final boolean global) {
@@ -940,7 +940,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see org.extex.interpreter.context.Context#setSfcode(org.extex.type.UnicodeChar, org.extex.interpreter.type.count.Count, boolean)
+     * @see org.extex.interpreter.context.Context#setSfcode(org.extex.core.UnicodeChar, org.extex.core.count.Count, boolean)
      */
     public void setSfcode(final UnicodeChar uc, final Count code,
             final boolean global) {
@@ -951,7 +951,7 @@ public class MockContext implements Context, TypesetterOptions {
     /**
      * @see org.extex.interpreter.context.ContextMark#setSplitMark(
      *      java.lang.Object,
-     *      org.extex.interpreter.type.tokens.Tokens)
+     *      org.extex.scanner.type.tokens.Tokens)
      */
     public void setSplitMark(final Object name, final Tokens mark) {
 
@@ -977,7 +977,7 @@ public class MockContext implements Context, TypesetterOptions {
     /**
      * @see org.extex.interpreter.context.ContextTokens#setToks(
      *      java.lang.String,
-     *      org.extex.interpreter.type.tokens.Tokens, boolean)
+     *      org.extex.scanner.type.tokens.Tokens, boolean)
      */
     public void setToks(final String name, final Tokens toks,
             final boolean global) throws InterpreterException {
@@ -996,8 +996,8 @@ public class MockContext implements Context, TypesetterOptions {
 
     /**
      * @see org.extex.interpreter.context.Context#setUccode(
-     *      org.extex.type.UnicodeChar,
-     *      org.extex.type.UnicodeChar,
+     *      org.extex.core.UnicodeChar,
+     *      org.extex.core.UnicodeChar,
      *      boolean)
      */
     public void setUccode(final UnicodeChar lc, final UnicodeChar uc,

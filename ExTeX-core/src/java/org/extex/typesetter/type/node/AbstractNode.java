@@ -19,19 +19,19 @@
 
 package org.extex.typesetter.type.node;
 
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.exception.GeneralException;
+import org.extex.core.glue.FixedGlue;
+import org.extex.core.glue.FixedGlueComponent;
+import org.extex.core.glue.Glue;
+import org.extex.core.glue.WideGlue;
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.FixedDimen;
-import org.extex.interpreter.type.glue.FixedGlue;
-import org.extex.interpreter.type.glue.FixedGlueComponent;
-import org.extex.interpreter.type.glue.Glue;
-import org.extex.interpreter.type.glue.WideGlue;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeVisitor;
-import org.extex.util.exception.GeneralException;
-import org.extex.util.framework.i18n.Localizer;
-import org.extex.util.framework.i18n.LocalizerFactory;
 
 /**
  * This abstract class provides some methods common to all Nodes.
@@ -116,7 +116,7 @@ public abstract class AbstractNode implements Node {
      * @param glue the glue to add to.
      *
      * @see org.extex.typesetter.type.Node#addDepthTo(
-     *      org.extex.interpreter.type.glue.WideGlue)
+     *      org.extex.core.glue.WideGlue)
      */
     public void addDepthTo(final WideGlue glue) {
 
@@ -129,7 +129,7 @@ public abstract class AbstractNode implements Node {
      * @param glue the glue to add to.
      *
      * @see org.extex.typesetter.type.Node#addHeightTo(
-     *      org.extex.interpreter.type.glue.WideGlue)
+     *      org.extex.core.glue.WideGlue)
      */
     public void addHeightTo(final WideGlue glue) {
 
@@ -142,7 +142,7 @@ public abstract class AbstractNode implements Node {
      * @param glue the glue to add to.
      *
      * @see org.extex.typesetter.type.Node#addWidthTo(
-     *      org.extex.interpreter.type.glue.WideGlue)
+     *      org.extex.core.glue.WideGlue)
      */
     public void addWidthTo(final WideGlue glue) {
 
@@ -397,7 +397,7 @@ public abstract class AbstractNode implements Node {
      * @param depth the node depth
      *
      * @see org.extex.typesetter.type.Node#setDepth(
-     *      org.extex.interpreter.type.dimen.FixedDimen)
+     *      org.extex.core.dimen.FixedDimen)
      */
     public void setDepth(final FixedDimen depth) {
 
@@ -410,7 +410,7 @@ public abstract class AbstractNode implements Node {
      * @param height the new height
      *
      * @see org.extex.typesetter.type.Node#setHeight(
-     *      org.extex.interpreter.type.dimen.FixedDimen)
+     *      org.extex.core.dimen.FixedDimen)
      */
     public void setHeight(final FixedDimen height) {
 
@@ -423,7 +423,7 @@ public abstract class AbstractNode implements Node {
      * @param width the new width
      *
      * @see org.extex.typesetter.type.Node#setWidth(
-     *      org.extex.interpreter.type.dimen.FixedDimen)
+     *      org.extex.core.dimen.FixedDimen)
      */
     public void setWidth(final FixedDimen width) {
 
@@ -438,8 +438,8 @@ public abstract class AbstractNode implements Node {
      * @param sum the total sum of the glues
      *
      * @see org.extex.typesetter.type.Node#spreadHeight(
-     *      org.extex.interpreter.type.dimen.FixedDimen,
-     *      org.extex.interpreter.type.glue.FixedGlueComponent)
+     *      org.extex.core.dimen.FixedDimen,
+     *      org.extex.core.glue.FixedGlueComponent)
      */
     public void spreadHeight(final FixedDimen h, final FixedGlueComponent sum) {
 
@@ -453,8 +453,8 @@ public abstract class AbstractNode implements Node {
      * @param sum the total sum of the glues
      *
      * @see org.extex.typesetter.type.Node#spreadWidth(
-     *      org.extex.interpreter.type.dimen.FixedDimen,
-     *      org.extex.interpreter.type.glue.FixedGlueComponent)
+     *      org.extex.core.dimen.FixedDimen,
+     *      org.extex.core.glue.FixedGlueComponent)
      */
     public void spreadWidth(final FixedDimen w, final FixedGlueComponent sum) {
 

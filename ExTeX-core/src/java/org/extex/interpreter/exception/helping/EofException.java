@@ -19,8 +19,8 @@
 
 package org.extex.interpreter.exception.helping;
 
-import org.extex.util.framework.i18n.Localizer;
-import org.extex.util.framework.i18n.LocalizerFactory;
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * This exception is raised when an unexpected end of file is encountered.

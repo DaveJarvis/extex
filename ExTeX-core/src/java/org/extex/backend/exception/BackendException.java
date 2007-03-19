@@ -19,7 +19,7 @@
 
 package org.extex.backend.exception;
 
-import org.extex.util.exception.GeneralException;
+import org.extex.core.exception.GeneralException;
 
 /**
  * This exception signals that something went wrong in the back-end.

@@ -23,10 +23,10 @@ import java.util.logging.Logger;
 
 import org.extex.backend.documentWriter.exception.DocumentWriterException;
 import org.extex.backend.outputStream.OutputStreamFactory;
-import org.extex.util.framework.AbstractFactory;
-import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-import org.extex.util.framework.configuration.exception.ConfigurationMissingAttributeException;
+import org.extex.framework.AbstractFactory;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.configuration.exception.ConfigurationMissingAttributeException;
 
 /**
  * This is the factory to provide an instance of a document writer.
@@ -37,17 +37,17 @@ import org.extex.util.framework.configuration.exception.ConfigurationMissingAttr
  * trigger special actions:
  * </p>
  * <dl>
- * <dt>{@link org.extex.util.framework.configuration.Configurable Configurable}</dt>
+ * <dt>{@link org.extex.framework.configuration.Configurable Configurable}</dt>
  * <dd> If this interface is implemented then a
- * {@link org.extex.util.framework.configuration.Configuration Configuration} is
+ * {@link org.extex.framework.configuration.Configuration Configuration} is
  * passed in with the interface method. </dd>
- * <dt>{@link org.extex.util.framework.logger.LogEnabled LogEnabled}</dt>
+ * <dt>{@link org.extex.framework.logger.LogEnabled LogEnabled}</dt>
  * <dd> If this interface is implemented then a
  * {@link java.util.logging.Logger Logger} is passed in with the interface
  * method. </dd>
- * <dt>{@link org.extex.util.framework.i18n.Localizable Localizable}</dt>
+ * <dt>{@link org.extex.framework.i18n.Localizable Localizable}</dt>
  * <dd> If this interface is implemented then a
- * {@link org.extex.util.framework.i18n.Localizer Localizer} is passed in with
+ * {@link org.extex.framework.i18n.Localizer Localizer} is passed in with
  * the interface method. </dd>
  * <dt>{@link org.extex.backend.documentWriter.SingleDocumentStream SingleDocumentStream}</dt>
  * <dd> If this interface is implemented then a

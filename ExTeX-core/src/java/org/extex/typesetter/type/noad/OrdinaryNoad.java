@@ -21,16 +21,16 @@ package org.extex.typesetter.type.noad;
 
 import java.util.logging.Logger;
 
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.ImmutableDimen;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.context.tc.TypesettingContext;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.ImmutableDimen;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.noad.util.MathContext;
 import org.extex.typesetter.type.noad.util.MathSpacing;
 import org.extex.typesetter.type.node.HorizontalListNode;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This Noad represents an ordinary character.

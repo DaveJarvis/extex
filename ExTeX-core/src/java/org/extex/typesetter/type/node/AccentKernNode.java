@@ -19,7 +19,7 @@
 
 package org.extex.typesetter.type.node;
 
-import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.core.dimen.Dimen;
 
 /**
  * This class provides the same functionality as

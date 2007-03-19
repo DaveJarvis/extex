@@ -19,7 +19,7 @@
 
 package org.extex.interpreter.context;
 
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.tokens.Tokens;
 
 /**
  * This interface describes the container for marks of an interpreter

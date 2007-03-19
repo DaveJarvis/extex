@@ -21,9 +21,10 @@ package org.extex.typesetter.type.noad;
 
 import java.util.logging.Logger;
 
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.context.tc.TypesettingContext;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.noad.util.MathContext;
@@ -32,7 +33,6 @@ import org.extex.typesetter.type.node.ExplicitKernNode;
 import org.extex.typesetter.type.node.HorizontalListNode;
 import org.extex.typesetter.type.node.RuleNode;
 import org.extex.typesetter.type.node.VerticalListNode;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an over-lining for the nucleus.

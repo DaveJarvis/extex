@@ -18,12 +18,12 @@
 
 package org.extex.interpreter.type.font;
 
+import org.extex.core.UnicodeChar;
+import org.extex.core.count.FixedCount;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.glue.FixedGlue;
 import org.extex.font.FontKey;
-import org.extex.interpreter.type.count.FixedCount;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.FixedDimen;
-import org.extex.interpreter.type.glue.FixedGlue;
-import org.extex.type.UnicodeChar;
 
 /**
  * Font Interface.

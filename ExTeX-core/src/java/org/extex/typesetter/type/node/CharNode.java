@@ -19,13 +19,13 @@
 
 package org.extex.typesetter.type.node;
 
+import org.extex.core.UnicodeChar;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.exception.GeneralException;
+import org.extex.core.glue.FixedGlue;
 import org.extex.interpreter.context.tc.TypesettingContext;
-import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.interpreter.type.font.Font;
-import org.extex.interpreter.type.glue.FixedGlue;
-import org.extex.type.UnicodeChar;
 import org.extex.typesetter.type.NodeVisitor;
-import org.extex.util.exception.GeneralException;
 
 /**
  * This is the Node which carries a single character.

@@ -21,9 +21,9 @@ package org.extex.language.ligature;
 
 import java.io.Serializable;
 
+import org.extex.core.UnicodeChar;
 import org.extex.interpreter.type.font.Font;
 import org.extex.language.hyphenation.exception.HyphenationException;
-import org.extex.type.UnicodeChar;
 import org.extex.typesetter.type.NodeList;
 
 /**

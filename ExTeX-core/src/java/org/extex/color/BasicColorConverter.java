@@ -24,9 +24,9 @@ import org.extex.color.model.ColorFactory;
 import org.extex.color.model.GrayscaleColor;
 import org.extex.color.model.HsvColor;
 import org.extex.color.model.RgbColor;
+import org.extex.core.exception.GeneralException;
 import org.extex.interpreter.context.Color;
 import org.extex.interpreter.exception.ImpossibleException;
-import org.extex.util.exception.GeneralException;
 
 /**
  * This implementation of a color converter is based on the formulas in the

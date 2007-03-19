@@ -19,9 +19,10 @@
 
 package org.extex.scanner.type.token;
 
+import org.extex.core.UnicodeChar;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.CatcodeException;
-import org.extex.type.UnicodeChar;
+import org.extex.scanner.type.tokens.Tokens;
 
 /**
  * This is the interface for the token factory.
@@ -41,7 +42,7 @@ public interface TokenFactory {
      * @param esc the Unicode character value of the escape character
      * @param value the value
      * @param namespace the name space for the token. This is relevant for
-     *  ACTIVE and ESCAPE catcodes only.
+     *  ACTIVE and ESCAPE category codes only.
      *
      * @return the appropriate token
      *
@@ -73,7 +74,7 @@ public interface TokenFactory {
      * @param code the catcode
      * @param c the Unicode character value
      * @param namespace the name space for the token. This is relevant for
-     * ACTIVE and ESCAPE catcodes only.
+     *   ACTIVE and ESCAPE category codes only.
      *
      * @return the appropriate token
      *
@@ -81,5 +82,36 @@ public interface TokenFactory {
      */
     Token createToken(Catcode code, UnicodeChar c, String namespace)
             throws CatcodeException;
+
+    /**
+     * Convert a character sequence to a list of tokens.
+     * <p>
+     * Each character of the string is converted into a <code>OtherToken</code>
+     * and added to the internal list. An exception is made for spaces which
+     * are converted into a <code>SpaceToken</code>.
+     * </p>
+     *
+     * @param s the character sequence to translate to tokens
+     *
+     * @return the token list
+     *
+     * @throws CatcodeException in case of an error
+     */
+    Tokens toTokens(CharSequence s) throws CatcodeException;
+
+    /**
+     * Convert a long value into a list of tokens.
+     * <p>
+     * Each character is converted into a <code>OtherToken</code>
+     * and added to the internal list.
+     * </p>
+     *
+     * @param l the value to convert
+     *
+     * @return the token list
+     *
+     * @throws CatcodeException in case of an error
+     */
+    Tokens toTokens(long l) throws CatcodeException;
 
 }

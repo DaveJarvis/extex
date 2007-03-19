@@ -22,8 +22,8 @@ package org.extex.typesetter.type.node.factory;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.extex.core.UnicodeChar;
 import org.extex.interpreter.context.tc.TypesettingContext;
-import org.extex.type.UnicodeChar;
 import org.extex.typesetter.type.Node;
 
 /**

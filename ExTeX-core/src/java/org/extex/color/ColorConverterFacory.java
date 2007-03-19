@@ -21,8 +21,8 @@ package org.extex.color;
 
 import java.util.logging.Logger;
 
-import org.extex.util.framework.AbstractFactory;
-import org.extex.util.framework.configuration.Configuration;
+import org.extex.framework.AbstractFactory;
+import org.extex.framework.configuration.Configuration;
 
 /**
  * This is the factory to provide an instance of a color converter.

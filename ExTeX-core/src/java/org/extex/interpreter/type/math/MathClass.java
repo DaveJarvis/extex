@@ -22,18 +22,18 @@ package org.extex.interpreter.type.math;
 import java.io.ObjectStreamException;
 import java.io.Serializable;
 
+import org.extex.core.count.CountParser;
+import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.exception.helping.MissingNumberException;
-import org.extex.interpreter.type.count.Count;
 import org.extex.scanner.type.token.LetterToken;
 import org.extex.scanner.type.token.OtherToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
-import org.extex.util.framework.i18n.LocalizerFactory;
 
 /**
  * This class provides the classification of mathematical characters.
@@ -651,7 +651,7 @@ public abstract class MathClass implements Serializable {
         if (t instanceof OtherToken) {
             source.push(t);
             try {
-                long n = Count.scanNumber(context, source, typesetter);
+                long n = CountParser.scanNumber(context, source, typesetter);
                 if (n >= 0 && n <= MC.length) {
                     return MC[(int) n];
                 }

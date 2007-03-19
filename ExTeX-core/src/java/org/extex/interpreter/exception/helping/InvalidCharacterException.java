@@ -19,9 +19,9 @@
 
 package org.extex.interpreter.exception.helping;
 
-import org.extex.type.UnicodeChar;
-import org.extex.util.framework.i18n.Localizer;
-import org.extex.util.framework.i18n.LocalizerFactory;
+import org.extex.core.UnicodeChar;
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * This exception is raised when an unexpected character code is encountered.

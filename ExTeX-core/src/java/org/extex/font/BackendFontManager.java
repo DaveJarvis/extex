@@ -21,7 +21,7 @@ package org.extex.font;
 
 import java.util.Iterator;
 
-import org.extex.type.UnicodeChar;
+import org.extex.core.UnicodeChar;
 
 /**
  * The back-end font manager describes the abilities needed by a back-end to

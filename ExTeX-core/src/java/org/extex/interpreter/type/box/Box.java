@@ -24,17 +24,20 @@ import java.util.logging.Logger;
 
 import javax.naming.OperationNotSupportedException;
 
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.group.GroupType;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.MissingLeftBraceException;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.FixedDimen;
-import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.Token;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.ListMaker;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.TypesetterOptions;
@@ -43,9 +46,6 @@ import org.extex.typesetter.listMaker.RestrictedHorizontalListMaker;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.node.HorizontalListNode;
 import org.extex.typesetter.type.node.VerticalListNode;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-import org.extex.util.framework.i18n.Localizer;
-import org.extex.util.framework.i18n.LocalizerFactory;
 
 /**
  * This class is used to represent box registers.

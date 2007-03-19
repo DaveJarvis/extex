@@ -21,8 +21,8 @@ package org.extex.language.word;
 
 import java.io.Serializable;
 
+import org.extex.core.UnicodeCharList;
 import org.extex.language.hyphenation.exception.HyphenationException;
-import org.extex.type.UnicodeCharList;
 import org.extex.typesetter.TypesetterOptions;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.node.CharNode;

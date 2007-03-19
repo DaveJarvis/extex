@@ -21,10 +21,10 @@ package org.extex.language.hyphenation;
 
 import java.io.Serializable;
 
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.core.UnicodeChar;
+import org.extex.core.UnicodeCharList;
 import org.extex.language.hyphenation.exception.HyphenationException;
-import org.extex.type.UnicodeChar;
-import org.extex.type.UnicodeCharList;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.TypesetterOptions;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.node.factory.NodeFactory;

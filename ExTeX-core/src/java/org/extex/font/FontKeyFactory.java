@@ -21,8 +21,8 @@ package org.extex.font;
 
 import java.util.Map;
 
-import org.extex.interpreter.type.dimen.FixedDimen;
-import org.extex.util.framework.AbstractFactory;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.framework.AbstractFactory;
 
 /**
  * Factory for the font key.

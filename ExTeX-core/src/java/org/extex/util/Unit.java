@@ -21,9 +21,9 @@ package org.extex.util;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.FixedDimen;
-import org.extex.interpreter.type.glue.GlueComponent;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.glue.GlueComponent;
 
 /**
  * This class implements a converter e.g for dimen values.

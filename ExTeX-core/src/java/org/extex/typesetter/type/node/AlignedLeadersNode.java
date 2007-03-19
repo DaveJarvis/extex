@@ -19,12 +19,12 @@
 
 package org.extex.typesetter.type.node;
 
+import org.extex.core.exception.GeneralException;
+import org.extex.core.glue.FixedGlue;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.type.glue.FixedGlue;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeVisitor;
-import org.extex.util.exception.GeneralException;
 
 /**
  * This node represents an aligned leaders node as used by the primitive

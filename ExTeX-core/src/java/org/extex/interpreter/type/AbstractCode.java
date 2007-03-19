@@ -22,6 +22,9 @@ package org.extex.interpreter.type;
 import java.io.ObjectStreamException;
 import java.io.Serializable;
 
+import org.extex.framework.Registrar;
+import org.extex.framework.i18n.Localizable;
+import org.extex.framework.i18n.Localizer;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -30,9 +33,6 @@ import org.extex.interpreter.exception.helping.CantUseInException;
 import org.extex.scanner.type.token.ControlSequenceToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
-import org.extex.util.framework.Registrar;
-import org.extex.util.framework.i18n.Localizable;
-import org.extex.util.framework.i18n.Localizer;
 
 /**
  * This is the abstract base class which can be used for all classes
@@ -93,8 +93,8 @@ public abstract class AbstractCode implements Code, Localizable, Serializable {
      *
      * @param theLocalizer the new value for the localizer
      *
-     * @see org.extex.util.framework.i18n.Localizable#enableLocalization(
-     *      org.extex.util.framework.i18n.Localizer)
+     * @see org.extex.framework.i18n.Localizable#enableLocalization(
+     *      org.extex.framework.i18n.Localizer)
      */
     public void enableLocalization(final Localizer theLocalizer) {
 

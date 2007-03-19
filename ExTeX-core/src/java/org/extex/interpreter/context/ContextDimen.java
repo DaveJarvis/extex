@@ -19,8 +19,8 @@
 
 package org.extex.interpreter.context;
 
+import org.extex.core.dimen.Dimen;
 import org.extex.interpreter.exception.InterpreterException;
-import org.extex.interpreter.type.dimen.Dimen;
 
 /**
  * This interface describes the container for all data of an interpreter
@@ -44,7 +44,7 @@ public interface ContextDimen {
     Dimen getDimen(String name);
 
     /**
-     * Setter for the {@link org.extex.interpreter.type.dimen.Dimen Dimen}
+     * Setter for the {@link org.extex.core.dimen.Dimen Dimen}
      * register in all requested groups. Dimen registers are named, either with
      * a number or an arbitrary string. The numbered registers where limited to
      * 256 in <logo>TeX</logo>. This restriction does no longer hold for
@@ -63,7 +63,7 @@ public interface ContextDimen {
             throws InterpreterException;
 
     /**
-     * Setter for the {@link org.extex.interpreter.type.dimen.Dimen Dimen}
+     * Setter for the {@link org.extex.core.dimen.Dimen Dimen}
      * register in all requested groups. Dimen registers are named, either with
      * a number or an arbitrary string. The numbered registers where limited to
      * 256 in <logo>TeX</logo>. This restriction does no longer hold for

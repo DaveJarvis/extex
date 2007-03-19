@@ -21,11 +21,11 @@ package org.extex.interpreter.type.math;
 
 import java.io.Serializable;
 
+import org.extex.core.UnicodeChar;
+import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.HelpingException;
-import org.extex.type.UnicodeChar;
 import org.extex.typesetter.type.noad.MathGlyph;
-import org.extex.util.framework.i18n.LocalizerFactory;
 
 /**
  * This class represents a mathematical character. It consists of a class, a

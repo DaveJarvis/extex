@@ -19,12 +19,12 @@
 
 package org.extex.typesetter.type.node;
 
+import org.extex.core.exception.GeneralException;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.file.OutFile;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeVisitor;
-import org.extex.util.exception.GeneralException;
 
 /**
  * This WhatsIt node which opens an out file at shipping.

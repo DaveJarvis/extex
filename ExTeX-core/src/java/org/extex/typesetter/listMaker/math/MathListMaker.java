@@ -22,8 +22,15 @@ package org.extex.typesetter.listMaker.math;
 import java.util.Stack;
 import java.util.logging.Logger;
 
+import org.extex.core.Locator;
+import org.extex.core.UnicodeChar;
+import org.extex.core.count.Count;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.muskip.Mudimen;
+import org.extex.core.muskip.Muskip;
+import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.Flags;
-import org.extex.interpreter.Namespace;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.group.GroupType;
@@ -32,20 +39,15 @@ import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.exception.helping.MissingMathException;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.font.Font;
 import org.extex.interpreter.type.math.MathCode;
 import org.extex.interpreter.type.math.MathDelimiter;
-import org.extex.interpreter.type.muskip.Mudimen;
-import org.extex.interpreter.type.muskip.Muskip;
-import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.CatcodeException;
+import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.token.ActiveCharacterToken;
 import org.extex.scanner.type.token.Token;
-import org.extex.type.Locator;
-import org.extex.type.UnicodeChar;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Mode;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.TypesetterOptions;
@@ -74,8 +76,6 @@ import org.extex.typesetter.type.node.BeforeMathNode;
 import org.extex.typesetter.type.node.DiscretionaryNode;
 import org.extex.typesetter.type.node.GenericNodeList;
 import org.extex.typesetter.type.node.GlueNode;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-import org.extex.util.framework.logger.LogEnabled;
 
 /**
  * This is the list maker for the inline math formulae.
@@ -382,7 +382,7 @@ public class MathListMaker extends HorizontalListMaker
      * @throws TypesetterException in case of an error
      *
      * @see org.extex.typesetter.ListMaker#add(
-     *      org.extex.interpreter.type.glue.FixedGlue)
+     *      org.extex.core.glue.FixedGlue)
      */
     public void add(final FixedDimen g) throws TypesetterException {
 
@@ -435,7 +435,7 @@ public class MathListMaker extends HorizontalListMaker
      * @throws TypesetterException in case of an error
      *
      * @see org.extex.typesetter.listMaker.math.NoadConsumer#add(
-     *      org.extex.interpreter.type.muskip.Mudimen)
+     *      org.extex.core.muskip.Mudimen)
      */
     public void add(final Mudimen skip) throws TypesetterException {
 
@@ -450,7 +450,7 @@ public class MathListMaker extends HorizontalListMaker
      * @throws TypesetterException in case of an error
      *
      * @see org.extex.typesetter.listMaker.math.NoadConsumer#add(
-     *      org.extex.interpreter.type.muskip.Muskip)
+     *      org.extex.core.muskip.Muskip)
      */
     public void add(final Muskip glue) throws TypesetterException {
 
@@ -515,7 +515,7 @@ public class MathListMaker extends HorizontalListMaker
      *
      * @see org.extex.typesetter.ListMaker#addSpace(
      *      org.extex.interpreter.context.tc.TypesettingContext,
-     *      org.extex.interpreter.type.count.Count)
+     *      org.extex.core.count.Count)
      */
     public void addSpace(final TypesettingContext typesettingContext,
             final Count spacefactor)
@@ -586,7 +586,7 @@ public class MathListMaker extends HorizontalListMaker
      * @see org.extex.typesetter.ListMaker#cr(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.context.tc.TypesettingContext,
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar)
      */
     public void cr(final Context context, final TypesettingContext tc,
             final UnicodeChar uc) throws TypesetterException {
@@ -598,7 +598,7 @@ public class MathListMaker extends HorizontalListMaker
      *
      * @param log the logger to use
      *
-     * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
     public void enableLogging(final Logger log) {
@@ -742,10 +742,10 @@ public class MathListMaker extends HorizontalListMaker
      * @throws TypesetterException in case of an error
      *
      * @see org.extex.typesetter.ListMaker#letter(
-     *      org.extex.type.UnicodeChar,
+     *      org.extex.core.UnicodeChar,
      *      org.extex.interpreter.context.tc.TypesettingContext,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.type.Locator)
+     *      org.extex.interpreter.TokenSource, org.extex.core.Locator)
      */
     public boolean letter(final UnicodeChar symbol,
             final TypesettingContext tc, final Context context,
@@ -1098,7 +1098,7 @@ public class MathListMaker extends HorizontalListMaker
      * @see org.extex.typesetter.listMaker.math.NoadConsumer#switchToFraction(
      *      org.extex.interpreter.type.math.MathDelimiter,
      *      org.extex.interpreter.type.math.MathDelimiter,
-     *      org.extex.interpreter.type.dimen.FixedDimen,
+     *      org.extex.core.dimen.FixedDimen,
      *      org.extex.interpreter.context.tc.TypesettingContext)
      */
     public void switchToFraction(final MathDelimiter leftDelimiter,

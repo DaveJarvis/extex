@@ -19,15 +19,14 @@
 
 package org.extex.interpreter.type;
 
-
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.tokens.Tokens;
 
 /**
  * This is a interface to mark those classes which are able to provide a
  * description. This description is returned in form of
- * {@link org.extex.interpreter.type.tokens.Tokens Tokens}.
+ * {@link org.extex.scanner.type.tokens.Tokens Tokens}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

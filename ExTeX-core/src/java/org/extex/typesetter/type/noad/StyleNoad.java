@@ -22,12 +22,12 @@ package org.extex.typesetter.type.noad;
 import java.io.ObjectStreamException;
 import java.util.logging.Logger;
 
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.context.Context;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.noad.util.MathContext;
 import org.extex.typesetter.type.noad.util.MathSpacing;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This Noad indicates a change in the style to be used for the further

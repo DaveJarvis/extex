@@ -19,8 +19,8 @@
 
 package org.extex.interpreter.exception.helping;
 
+import org.extex.framework.i18n.Localizer;
 import org.extex.interpreter.exception.InterpreterException;
-import org.extex.util.framework.i18n.Localizer;
 
 /**
  * This class provides an Exception with the possibility to provide additional
@@ -28,7 +28,7 @@ import org.extex.util.framework.i18n.Localizer;
  * first level is the message and the second level is the additional help.
  * <p>
  * Both information strings are mapped via the
- * {@link org.extex.util.framework.i18n.Localizer Localizer} apparatus.
+ * {@link org.extex.framework.i18n.Localizer Localizer} apparatus.
  * The key provided to this Exception is used as a key to find the format in
  * the resource bundle. For the localized message of the exception it is used
  * plain and for the help the string ".help" is appended.

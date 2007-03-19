@@ -19,21 +19,21 @@
 
 package org.extex.interpreter;
 
+import org.extex.core.Locator;
+import org.extex.core.UnicodeChar;
+import org.extex.core.exception.GeneralException;
+import org.extex.core.exception.NotObservableException;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.box.Box;
 import org.extex.interpreter.type.font.Font;
-import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.TokenStream;
 import org.extex.scanner.stream.TokenStreamFactory;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
-import org.extex.type.Locator;
-import org.extex.type.UnicodeChar;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
-import org.extex.util.exception.GeneralException;
-import org.extex.util.exception.NotObservableException;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This interface describes a class to acquire
@@ -514,7 +514,7 @@ public interface TokenSource {
      *
      * @throws InterpreterException in case of an error
      *
-     * @deprecated use Count.scanNumber() instead
+     * @deprecated use CountParser.scanNumber() instead
      */
     long scanNumber(Context context) throws InterpreterException;
 
@@ -551,7 +551,7 @@ public interface TokenSource {
      *             especially<br>
      *             MissingNumberException in case that no number could be read
      *
-     * @deprecated use Count.scanNumber() instead
+     * @deprecated use CountParser.scanNumber() instead
      */
     long scanNumber(Context context, Token token) throws InterpreterException;
 

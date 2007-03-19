@@ -19,8 +19,9 @@
 
 package org.extex.typesetter.listMaker;
 
-import org.extex.interpreter.type.count.FixedCount;
-import org.extex.type.Locator;
+import org.extex.core.Locator;
+import org.extex.core.count.FixedCount;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.typesetter.ListMaker;
 import org.extex.typesetter.TypesetterOptions;
 import org.extex.typesetter.exception.InvalidSpacefactorException;
@@ -29,7 +30,6 @@ import org.extex.typesetter.exception.TypesetterUnsupportedException;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.node.HorizontalListNode;
 import org.extex.typesetter.type.node.factory.NodeFactory;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * Interface for the Manager of a list maker.

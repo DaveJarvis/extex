@@ -19,8 +19,8 @@
 
 package org.extex.interpreter.context;
 
+import org.extex.core.count.Count;
 import org.extex.interpreter.exception.InterpreterException;
-import org.extex.interpreter.type.count.Count;
 
 /**
  * This interface describes the container for count registers of an interpreter
@@ -33,7 +33,7 @@ import org.extex.interpreter.type.count.Count;
 public interface ContextCount {
 
     /**
-     * Getter for the {@link org.extex.interpreter.type.count.Count count}
+     * Getter for the {@link org.extex.core.count.Count count}
      * register. Count registers are named, either with a number or an
      * arbitrary string.
      * <p>
@@ -54,7 +54,7 @@ public interface ContextCount {
     Count getCount(String name);
 
     /**
-     * Setter for the {@link org.extex.interpreter.type.count.Count count}
+     * Setter for the {@link org.extex.core.count.Count count}
      * register in all requested groups. Count registers are named, either with
      * a number or an arbitrary string. The numbered registers where limited to
      * 256 in <logo>TeX</logo>. This restriction does no longer hold for

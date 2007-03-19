@@ -19,8 +19,8 @@
 
 package org.extex.scanner.stream;
 
-import org.extex.interpreter.type.count.FixedCount;
-import org.extex.interpreter.type.tokens.FixedTokens;
+import org.extex.core.count.FixedCount;
+import org.extex.scanner.type.tokens.FixedTokens;
 
 /**
  * This interface describes the possibilities of a token stream to access its

@@ -24,7 +24,6 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.typesetter.Typesetter;
 
-
 /**
  * This interface describes the ability to be initialized
  * This is a life-cycle feature.

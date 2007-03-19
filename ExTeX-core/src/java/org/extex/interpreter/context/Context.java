@@ -22,31 +22,31 @@ package org.extex.interpreter.context;
 import java.io.Serializable;
 import java.util.Iterator;
 
+import org.extex.core.Locator;
+import org.extex.core.UnicodeChar;
+import org.extex.core.count.Count;
+import org.extex.core.glue.Glue;
+import org.extex.core.muskip.Muskip;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Conditional;
-import org.extex.interpreter.Tokenizer;
 import org.extex.interpreter.context.tc.Direction;
 import org.extex.interpreter.context.tc.TypesettingContext;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.box.Box;
-import org.extex.interpreter.type.count.Count;
 import org.extex.interpreter.type.font.Font;
-import org.extex.interpreter.type.glue.Glue;
 import org.extex.interpreter.type.math.MathCode;
 import org.extex.interpreter.type.math.MathDelimiter;
-import org.extex.interpreter.type.muskip.Muskip;
 import org.extex.interpreter.unit.UnitInfo;
 import org.extex.language.Language;
 import org.extex.language.LanguageManager;
 import org.extex.scanner.TokenStream;
+import org.extex.scanner.Tokenizer;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
-import org.extex.type.Locator;
-import org.extex.type.UnicodeChar;
 import org.extex.typesetter.paragraphBuilder.ParagraphShape;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This interface describes the container for all data of an interpreter

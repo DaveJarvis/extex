@@ -27,6 +27,14 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.extex.framework.AbstractFactory;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.exception.ConfigurationClassNotFoundException;
+import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.configuration.exception.ConfigurationInstantiationException;
+import org.extex.framework.configuration.exception.ConfigurationMissingAttributeException;
+import org.extex.framework.configuration.exception.ConfigurationNoSuchMethodException;
+import org.extex.resource.ResourceFinder;
 import org.extex.scanner.TokenStream;
 import org.extex.scanner.stream.exception.MissingResourceFinderException;
 import org.extex.scanner.stream.observer.file.OpenFileObservable;
@@ -38,14 +46,6 @@ import org.extex.scanner.stream.observer.reader.OpenReaderObserverList;
 import org.extex.scanner.stream.observer.string.OpenStringObservable;
 import org.extex.scanner.stream.observer.string.OpenStringObserver;
 import org.extex.scanner.stream.observer.string.OpenStringObserverList;
-import org.extex.util.framework.AbstractFactory;
-import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.configuration.exception.ConfigurationClassNotFoundException;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-import org.extex.util.framework.configuration.exception.ConfigurationInstantiationException;
-import org.extex.util.framework.configuration.exception.ConfigurationMissingAttributeException;
-import org.extex.util.framework.configuration.exception.ConfigurationNoSuchMethodException;
-import org.extex.util.resource.ResourceFinder;
 
 /**
  * This is the factory to provide an instance of a

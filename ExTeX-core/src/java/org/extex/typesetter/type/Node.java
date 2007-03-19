@@ -21,13 +21,13 @@ package org.extex.typesetter.type;
 
 import java.io.Serializable;
 
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.exception.GeneralException;
+import org.extex.core.glue.FixedGlueComponent;
+import org.extex.core.glue.WideGlue;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.type.dimen.FixedDimen;
-import org.extex.interpreter.type.glue.FixedGlueComponent;
-import org.extex.interpreter.type.glue.WideGlue;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.node.CharNode;
-import org.extex.util.exception.GeneralException;
 
 /**
  * A node is the basic data structure for the typesetter. It has a reference

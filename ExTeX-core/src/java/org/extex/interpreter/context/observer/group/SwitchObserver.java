@@ -19,11 +19,11 @@
 
 package org.extex.interpreter.context.observer.group;
 
-import org.extex.util.Switch;
+import org.extex.core.Switch;
 
 /**
  * This class provides an observer which sets a
- * {@link org.extex.util.Switch Switch} when an event is received.
+ * {@link org.extex.core.Switch Switch} when an event is received.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4726 $

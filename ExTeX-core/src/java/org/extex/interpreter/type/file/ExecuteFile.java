@@ -22,10 +22,10 @@ package org.extex.interpreter.type.file;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.exception.InterpreterException;
-import org.extex.interpreter.type.tokens.Tokens;
-import org.extex.util.framework.i18n.Localizer;
-import org.extex.util.framework.i18n.LocalizerFactory;
+import org.extex.scanner.type.tokens.Tokens;
 
 /**
  * This is a class presenting itself as an OutFile which sends the tokens
@@ -100,7 +100,7 @@ public class ExecuteFile extends OutFile {
      * @throws IOException in case of an IO error
      *
      * @see org.extex.interpreter.type.file.OutFile#write(
-     *      org.extex.interpreter.type.tokens.Tokens)
+     *      org.extex.scanner.type.tokens.Tokens)
      */
     public void write(final Tokens toks) throws IOException {
 

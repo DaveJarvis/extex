@@ -23,7 +23,7 @@ import java.io.IOException;
 import java.util.logging.Logger;
 
 import org.extex.interpreter.exception.InterpreterException;
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.tokens.Tokens;
 
 /**
  * This implementation of an OutFile encapsulates a Logger.
@@ -96,7 +96,7 @@ public class LogFile extends OutFile {
      * @throws IOException in case of an IO error
      *
      * @see org.extex.interpreter.type.file.OutFile#write(
-     *      org.extex.interpreter.type.tokens.Tokens)
+     *      org.extex.scanner.type.tokens.Tokens)
      */
     public void write(final Tokens toks)
             throws InterpreterException,

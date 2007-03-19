@@ -23,11 +23,11 @@ import java.util.Properties;
 import java.util.logging.Logger;
 
 import org.extex.backend.outputStream.OutputStreamFactory;
+import org.extex.framework.AbstractFactory;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.type.OutputStreamConsumer;
-import org.extex.util.framework.AbstractFactory;
-import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-import org.extex.util.resource.PropertyConfigurable;
+import org.extex.resource.PropertyConfigurable;
 
 /**
  * This class provides a factory for

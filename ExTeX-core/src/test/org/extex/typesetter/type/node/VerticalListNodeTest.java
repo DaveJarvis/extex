@@ -21,8 +21,8 @@ package org.extex.typesetter.type.node;
 
 import junit.framework.TestCase;
 
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.glue.Glue;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.glue.Glue;
 
 /**
  * This file contains test cases for the vertical list node.

@@ -20,8 +20,8 @@
 package org.extex.typesetter.output;
 
 import org.extex.backend.BackendDriver;
+import org.extex.core.exception.GeneralException;
 import org.extex.typesetter.type.page.Page;
-import org.extex.util.exception.GeneralException;
 
 /**
  * This interface describes the functionality provided by an output routine.

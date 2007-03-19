@@ -19,10 +19,10 @@
 
 package org.extex.typesetter.type.node;
 
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.exception.GeneralException;
 import org.extex.typesetter.type.NodeVisitor;
-import org.extex.util.exception.GeneralException;
 
 /**
  * This class provides the same functionality as

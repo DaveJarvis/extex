@@ -19,10 +19,10 @@
 
 package org.extex.typesetter.type.page;
 
+import org.extex.core.exception.GeneralException;
 import org.extex.interpreter.context.Context;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.NodeList;
-import org.extex.util.exception.GeneralException;
 
 /**
  * This class provides a factory for page instances.

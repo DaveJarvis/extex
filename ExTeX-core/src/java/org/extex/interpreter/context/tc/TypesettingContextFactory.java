@@ -20,16 +20,16 @@
 package org.extex.interpreter.context.tc;
 
 import org.extex.font.type.other.NullFont;
+import org.extex.framework.AbstractFactory;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.exception.ConfigurationClassNotFoundException;
+import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.configuration.exception.ConfigurationInstantiationException;
+import org.extex.framework.configuration.exception.ConfigurationMissingAttributeException;
 import org.extex.interpreter.context.Color;
 import org.extex.interpreter.type.font.Font;
 import org.extex.language.Language;
 import org.extex.language.LanguageManager;
-import org.extex.util.framework.AbstractFactory;
-import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.configuration.exception.ConfigurationClassNotFoundException;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-import org.extex.util.framework.configuration.exception.ConfigurationInstantiationException;
-import org.extex.util.framework.configuration.exception.ConfigurationMissingAttributeException;
 
 /**
  * This class provides a factory for a
@@ -83,8 +83,8 @@ public class TypesettingContextFactory extends AbstractFactory {
      *      could not be loaded.</li>
      * </ul>
      *
-     * @see org.extex.util.framework.configuration.Configurable#configure(
-     *      org.extex.util.framework.configuration.Configuration)
+     * @see org.extex.framework.configuration.Configurable#configure(
+     *      org.extex.framework.configuration.Configuration)
      */
     public void configure(final Configuration configuration) {
 

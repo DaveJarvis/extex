@@ -19,12 +19,11 @@
 
 package org.extex.typesetter.type.node.factory;
 
+import org.extex.core.UnicodeChar;
 import org.extex.interpreter.context.tc.TypesettingContext;
-import org.extex.type.UnicodeChar;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.node.DiscretionaryNode;
 import org.extex.typesetter.type.node.HorizontalListNode;
-import org.extex.unicode.Unicode;
 
 /**
  * This is the factory for
@@ -61,7 +60,7 @@ public class SimpleUnicodeNodeFactory extends SimpleNodeFactory {
     public Node getNode(final TypesettingContext typesettingContext,
             final UnicodeChar uc) {
 
-        if (uc.equals(Unicode.SHY)) {
+        if (uc.equals(UnicodeChar.SHY)) {
             UnicodeChar hyphen = typesettingContext.getFont().getHyphenChar();
             if (hyphen == null) {
                 return null;

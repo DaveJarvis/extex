@@ -23,16 +23,16 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.extex.core.UnicodeChar;
+import org.extex.core.count.Count;
+import org.extex.core.count.FixedCount;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.glue.FixedGlue;
+import org.extex.core.glue.Glue;
 import org.extex.font.FontKey;
 import org.extex.font.FontKeyFactory;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.count.FixedCount;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.font.Font;
-import org.extex.interpreter.type.glue.FixedGlue;
-import org.extex.interpreter.type.glue.Glue;
-import org.extex.type.UnicodeChar;
 
 /**
  * This class implements a dummy font which does not contain any characters.
@@ -391,7 +391,7 @@ public class NullFont implements Font, Serializable {
      * @param value the value to set
      *
      * @see org.extex.interpreter.type.font.Font#setFontDimen(
-     *      java.lang.String, org.extex.interpreter.type.dimen.Dimen)
+     *      java.lang.String, org.extex.core.dimen.Dimen)
      */
     public void setFontDimen(final String name, final Dimen value) {
 

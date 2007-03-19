@@ -21,11 +21,11 @@ package org.extex.font;
 
 import java.util.Map;
 
+import org.extex.core.StringList;
+import org.extex.core.dimen.FixedDimen;
 import org.extex.font.exception.FontException;
-import org.extex.interpreter.type.dimen.FixedDimen;
-import org.extex.type.StringList;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-import org.extex.util.resource.ResourceFinder;
+import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.resource.ResourceFinder;
 
 /**
  * This interface describes the features of a font factory needed by the core.

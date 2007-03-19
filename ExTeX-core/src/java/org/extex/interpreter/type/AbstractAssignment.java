@@ -32,8 +32,8 @@ import org.extex.typesetter.Typesetter;
  * method <tt>assign</tt> is used instead of the method <tt>execute</tt>.
  *
  * <p>
- *  This abstract class takes care of the treatment of the <tt>\afterassign</tt>
- *  token and the <tt>\globaldefs</tt> declaration.
+ *  This abstract class takes care of the treatment of the
+ *  <tt>\afterassignment</tt> token and the <tt>\globaldefs</tt> declaration.
  * </p>
  *
  *

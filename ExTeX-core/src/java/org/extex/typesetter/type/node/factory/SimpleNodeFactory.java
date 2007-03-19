@@ -19,10 +19,9 @@
 
 package org.extex.typesetter.type.node.factory;
 
-import org.extex.font.type.VirtualFount;
+import org.extex.core.UnicodeChar;
 import org.extex.interpreter.context.tc.TypesettingContext;
 import org.extex.interpreter.type.font.Font;
-import org.extex.type.UnicodeChar;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.node.CharNode;
 
@@ -66,9 +65,10 @@ public class SimpleNodeFactory implements NodeFactory {
 
         if (!font.hasGlyph(uc)) {
             return null;
-        } else if (font instanceof VirtualFount) {
-            return ((VirtualFount) font).getVirtualCharNode(typesettingContext,
-                uc);
+            //TODO gene: reinvent the virtual fonts
+//        } else if (font instanceof VirtualFount) {
+//            return ((VirtualFount) font).getVirtualCharNode(typesettingContext,
+//                uc);
         }
 
         return new CharNode(typesettingContext, uc);

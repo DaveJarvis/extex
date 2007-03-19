@@ -19,8 +19,8 @@
 
 package org.extex.main.errorHandler.editHandler;
 
-import org.extex.type.Locator;
-import org.extex.util.framework.i18n.Localizer;
+import org.extex.core.Locator;
+import org.extex.framework.i18n.Localizer;
 
 /**
  * This interface describes the possibility to edit a file at a certain

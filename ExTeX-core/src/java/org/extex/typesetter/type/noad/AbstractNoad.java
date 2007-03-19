@@ -21,10 +21,13 @@ package org.extex.typesetter.type.noad;
 
 import java.util.logging.Logger;
 
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.glue.Glue;
+import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.exception.ImpossibleException;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.FixedDimen;
-import org.extex.interpreter.type.glue.Glue;
 import org.extex.typesetter.TypesetterOptions;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.Node;
@@ -36,9 +39,6 @@ import org.extex.typesetter.type.node.GlueNode;
 import org.extex.typesetter.type.node.HorizontalListNode;
 import org.extex.typesetter.type.node.ImplicitKernNode;
 import org.extex.typesetter.type.node.VerticalListNode;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-import org.extex.util.framework.i18n.Localizer;
-import org.extex.util.framework.i18n.LocalizerFactory;
 
 /**
  * This is the abstract base class for Noads.

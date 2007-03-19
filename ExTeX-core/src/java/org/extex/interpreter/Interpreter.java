@@ -22,7 +22,9 @@ package org.extex.interpreter;
 import java.io.IOException;
 import java.io.InputStream;
 
+import org.extex.core.exception.GeneralException;
 import org.extex.font.CoreFontFactory;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.ErrorLimitException;
 import org.extex.interpreter.exception.InterpreterException;
@@ -31,8 +33,6 @@ import org.extex.interpreter.loader.LoaderException;
 import org.extex.scanner.TokenStream;
 import org.extex.scanner.stream.TokenStreamFactory;
 import org.extex.typesetter.Typesetter;
-import org.extex.util.exception.GeneralException;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This interface represents the outside view on an interpreter. It contains

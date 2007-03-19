@@ -20,7 +20,7 @@
 package org.extex.interpreter.context;
 
 import org.extex.interpreter.exception.InterpreterException;
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.tokens.Tokens;
 
 /**
  * This interface describes the container for all data of an interpreter
@@ -33,7 +33,7 @@ import org.extex.interpreter.type.tokens.Tokens;
 public interface ContextTokens {
 
     /**
-     * Getter for the {@link org.extex.interpreter.type.tokens.Tokens Tokens}
+     * Getter for the {@link org.extex.scanner.type.tokens.Tokens Tokens}
      * register. Tokens registers are named, either with a number or an
      * arbitrary string. The numbered registers where limited to 256 in
      * <logo>TeX</logo>.
@@ -49,7 +49,7 @@ public interface ContextTokens {
     Tokens getToks(String name);
 
     /**
-     * Getter for the {@link org.extex.interpreter.type.tokens.Tokens toks}
+     * Getter for the {@link org.extex.scanner.type.tokens.Tokens toks}
      * register. Tokens registers are named, either with a number or an
      * arbitrary string. The numbered registers where limited to 256 in
      * <logo>TeX</logo>.
@@ -65,7 +65,7 @@ public interface ContextTokens {
     Tokens getToksOrNull(String name);
 
     /**
-     * Setter for the {@link org.extex.interpreter.type.tokens.Tokens Tokens}
+     * Setter for the {@link org.extex.scanner.type.tokens.Tokens Tokens}
      * register in the specified groups. Tokens registers are named, either with
      * a number or an arbitrary string. The numbered registers where limited to
      * 256 in <logo>TeX</logo>. This restriction does no longer hold for

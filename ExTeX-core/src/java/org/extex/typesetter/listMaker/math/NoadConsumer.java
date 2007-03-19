@@ -19,16 +19,16 @@
 
 package org.extex.typesetter.listMaker.math;
 
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.muskip.Mudimen;
+import org.extex.core.muskip.Muskip;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.group.GroupType;
 import org.extex.interpreter.context.tc.TypesettingContext;
-import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.math.MathCode;
 import org.extex.interpreter.type.math.MathDelimiter;
-import org.extex.interpreter.type.muskip.Mudimen;
-import org.extex.interpreter.type.muskip.Muskip;
 import org.extex.typesetter.ListMaker;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;

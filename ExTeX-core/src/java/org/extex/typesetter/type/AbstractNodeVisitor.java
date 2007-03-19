@@ -19,6 +19,7 @@
 
 package org.extex.typesetter.type;
 
+import org.extex.core.exception.GeneralException;
 import org.extex.typesetter.type.node.AdjustNode;
 import org.extex.typesetter.type.node.AfterMathNode;
 import org.extex.typesetter.type.node.AlignedLeadersNode;
@@ -38,7 +39,6 @@ import org.extex.typesetter.type.node.RuleNode;
 import org.extex.typesetter.type.node.SpaceNode;
 import org.extex.typesetter.type.node.VerticalListNode;
 import org.extex.typesetter.type.node.WhatsItNode;
-import org.extex.util.exception.GeneralException;
 
 /**
  * This abstract class can be used as base for node visitors for which only a

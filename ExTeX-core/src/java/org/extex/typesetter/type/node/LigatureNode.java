@@ -19,12 +19,12 @@
 
 package org.extex.typesetter.type.node;
 
+import org.extex.core.UnicodeChar;
+import org.extex.core.exception.GeneralException;
 import org.extex.interpreter.context.tc.TypesettingContext;
 import org.extex.interpreter.type.font.Font;
-import org.extex.type.UnicodeChar;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeVisitor;
-import org.extex.util.exception.GeneralException;
 
 /**
  * The ligature node represents a ligature of several characters.

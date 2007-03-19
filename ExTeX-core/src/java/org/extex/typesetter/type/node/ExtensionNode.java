@@ -19,7 +19,7 @@
 
 package org.extex.typesetter.type.node;
 
-import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.core.dimen.FixedDimen;
 import org.extex.typesetter.type.Node;
 
 /**
@@ -94,7 +94,7 @@ public class ExtensionNode extends WhatsItNode implements Node {
      * @param depth the node depth
      *
      * @see org.extex.typesetter.type.Node#setDepth(
-     *      org.extex.interpreter.type.dimen.FixedDimen)
+     *      org.extex.core.dimen.FixedDimen)
      */
     public void setDepth(final FixedDimen depth) {
 
@@ -107,7 +107,7 @@ public class ExtensionNode extends WhatsItNode implements Node {
      * @param height the new height
      *
      * @see org.extex.typesetter.type.Node#setHeight(
-     *      org.extex.interpreter.type.dimen.FixedDimen)
+     *      org.extex.core.dimen.FixedDimen)
      */
     public void setHeight(final FixedDimen height) {
 
@@ -120,7 +120,7 @@ public class ExtensionNode extends WhatsItNode implements Node {
      * @param width the new width
      *
      * @see org.extex.typesetter.type.Node#setWidth(
-     *      org.extex.interpreter.type.dimen.FixedDimen)
+     *      org.extex.core.dimen.FixedDimen)
      */
     public void setWidth(final FixedDimen width) {
 

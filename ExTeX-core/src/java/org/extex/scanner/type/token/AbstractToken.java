@@ -21,10 +21,10 @@ package org.extex.scanner.type.token;
 
 import java.io.Serializable;
 
+import org.extex.core.UnicodeChar;
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.scanner.type.Catcode;
-import org.extex.type.UnicodeChar;
-import org.extex.util.framework.i18n.Localizer;
-import org.extex.util.framework.i18n.LocalizerFactory;
 
 /**
  * This is the abstract base class for all Tokens.
@@ -228,7 +228,7 @@ public abstract class AbstractToken implements Token, Serializable {
      * @return the printable representation
      *
      * @see org.extex.scanner.type.token.Token#toText(
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar)
      */
     public String toText(final UnicodeChar esc) {
 

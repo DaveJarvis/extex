@@ -18,9 +18,9 @@
 
 package org.extex.font.type;
 
+import org.extex.core.UnicodeChar;
 import org.extex.font.ExtexFont;
 import org.extex.font.Glyph;
-import org.extex.type.UnicodeChar;
 
 /**
  * Fount Interface (only getter)

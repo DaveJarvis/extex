@@ -20,7 +20,8 @@
 package org.extex.typesetter;
 
 import org.extex.backend.BackendDriver;
-import org.extex.type.Locator;
+import org.extex.core.Locator;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.listMaker.ListManager;
 import org.extex.typesetter.output.OutputRoutine;
@@ -28,7 +29,6 @@ import org.extex.typesetter.pageBuilder.PageBuilder;
 import org.extex.typesetter.paragraphBuilder.ParagraphBuilder;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.node.factory.NodeFactory;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This interface describes the capabilities of a typesetter.

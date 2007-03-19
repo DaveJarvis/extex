@@ -19,7 +19,7 @@
 
 package org.extex.typesetter.type.node;
 
-import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.core.dimen.FixedDimen;
 
 /**
  * This class provides the same functionality as

@@ -21,13 +21,13 @@ package org.extex.interpreter.type.file;
 
 import java.io.Serializable;
 
-import org.extex.interpreter.Tokenizer;
 import org.extex.interpreter.exception.InterpreterException;
-import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.TokenStream;
+import org.extex.scanner.Tokenizer;
 import org.extex.scanner.exception.ScannerException;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
+import org.extex.scanner.type.tokens.Tokens;
 
 /**
  * This class holds an input file from which tokens can be read.

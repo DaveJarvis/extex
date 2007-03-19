@@ -21,9 +21,9 @@ package org.extex.scanner.type.token;
 
 import junit.framework.TestCase;
 
-import org.extex.interpreter.Namespace;
+import org.extex.core.UnicodeChar;
 import org.extex.scanner.type.Catcode;
-import org.extex.type.UnicodeChar;
+import org.extex.scanner.type.Namespace;
 
 /**
  * Test cases for control sequence tokens.

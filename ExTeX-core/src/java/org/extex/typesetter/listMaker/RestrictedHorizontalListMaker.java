@@ -19,12 +19,12 @@
 
 package org.extex.typesetter.listMaker;
 
-import org.extex.type.Locator;
+import org.extex.core.Locator;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.typesetter.Mode;
 import org.extex.typesetter.TypesetterOptions;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.NodeList;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This is the derived class for a list maker in restricted horizontal mode.

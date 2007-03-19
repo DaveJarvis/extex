@@ -21,13 +21,13 @@ package org.extex.typesetter.type.noad;
 
 import java.util.logging.Logger;
 
-import org.extex.interpreter.type.glue.Glue;
-import org.extex.interpreter.type.muskip.Muskip;
+import org.extex.core.glue.Glue;
+import org.extex.core.muskip.Muskip;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.noad.util.MathContext;
 import org.extex.typesetter.type.node.GlueNode;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This Noad carries a muglue value. This value is translated into a GlueNode
@@ -69,7 +69,7 @@ public class GlueNoad extends AbstractNoad {
      *
      * @return the kill
      *
-     * @see org.extex.interpreter.type.muskip.Muskip#isKill()
+     * @see org.extex.core.muskip.Muskip#isKill()
      */
     public boolean isKill() {
 

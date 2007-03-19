@@ -19,8 +19,8 @@
 
 package org.extex.scanner.type.token;
 
+import org.extex.core.UnicodeChar;
 import org.extex.scanner.type.Catcode;
-import org.extex.type.UnicodeChar;
 
 /**
  * This is the interface for a token. A token is a pair of catcode and value.

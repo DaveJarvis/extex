@@ -19,7 +19,7 @@
 
 package org.extex.scanner.type;
 
-import org.extex.util.exception.GeneralException;
+import org.extex.core.exception.GeneralException;
 
 /**
  * This exception is thrown when something in the context of catcode creation or

@@ -19,18 +19,18 @@
 
 package org.extex.typesetter.type.noad.util;
 
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.glue.Glue;
+import org.extex.core.glue.GlueComponent;
+import org.extex.core.muskip.Mudimen;
+import org.extex.core.muskip.Muskip;
+import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.exception.helping.HelpingException;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.font.Font;
-import org.extex.interpreter.type.glue.Glue;
-import org.extex.interpreter.type.glue.GlueComponent;
-import org.extex.interpreter.type.muskip.Mudimen;
-import org.extex.interpreter.type.muskip.Muskip;
 import org.extex.typesetter.TypesetterOptions;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.noad.StyleNoad;
-import org.extex.util.framework.i18n.LocalizerFactory;
 
 /**
  * This class provides a container for the information on the current

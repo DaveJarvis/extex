@@ -19,21 +19,21 @@
 
 package org.extex.typesetter.type.node;
 
+import org.extex.core.UnicodeChar;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.exception.GeneralException;
+import org.extex.core.glue.FixedGlue;
+import org.extex.core.glue.FixedGlueComponent;
+import org.extex.core.glue.WideGlue;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.tc.TypesettingContext;
 import org.extex.interpreter.exception.ImpossibleException;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.FixedDimen;
-import org.extex.interpreter.type.glue.FixedGlue;
-import org.extex.interpreter.type.glue.FixedGlueComponent;
-import org.extex.interpreter.type.glue.WideGlue;
-import org.extex.type.UnicodeChar;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeIterator;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.NodeVisitor;
-import org.extex.util.exception.GeneralException;
 
 /**
  * This class exposes itself as character node but contains an hlist internally.
@@ -81,7 +81,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
          * @param glue the glue to add
          *
          * @see org.extex.typesetter.type.NodeList#addSkip(
-         *      org.extex.interpreter.type.glue.FixedGlue)
+         *      org.extex.core.glue.FixedGlue)
          */
         public void addSkip(final FixedGlue glue) {
 
@@ -167,7 +167,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * @param glue the glue to add
      *
      * @see org.extex.typesetter.type.NodeList#addSkip(
-     *      org.extex.interpreter.type.glue.FixedGlue)
+     *      org.extex.core.glue.FixedGlue)
      */
     public void addSkip(final FixedGlue glue) {
 
@@ -180,7 +180,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * @param glue the glue to add to.
      *
      * @see org.extex.typesetter.type.node.AbstractNode#addWidthTo(
-     *      org.extex.interpreter.type.glue.WideGlue)
+     *      org.extex.core.glue.WideGlue)
      */
     public void addWidthTo(final WideGlue glue) {
 
@@ -410,7 +410,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * @param depth the node depth
      *
      * @see org.extex.typesetter.type.Node#setDepth(
-     *      org.extex.interpreter.type.dimen.FixedDimen)
+     *      org.extex.core.dimen.FixedDimen)
      */
     public void setDepth(final FixedDimen depth) {
 
@@ -423,7 +423,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * @param height the new height
      *
      * @see org.extex.typesetter.type.Node#setHeight(
-     *      org.extex.interpreter.type.dimen.FixedDimen)
+     *      org.extex.core.dimen.FixedDimen)
      */
     public void setHeight(final FixedDimen height) {
 
@@ -439,7 +439,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * @param d the move value
      *
      * @see org.extex.typesetter.type.NodeList#setMove(
-     *      org.extex.interpreter.type.dimen.FixedDimen)
+     *      org.extex.core.dimen.FixedDimen)
      */
     public void setMove(final FixedDimen d) {
 
@@ -454,7 +454,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * @param d the amount to be shifted
      *
      * @see org.extex.typesetter.type.NodeList#setShift(
-     *      org.extex.interpreter.type.dimen.FixedDimen)
+     *      org.extex.core.dimen.FixedDimen)
      */
     public void setShift(final FixedDimen d) {
 
@@ -467,7 +467,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * @param width the new width
      *
      * @see org.extex.typesetter.type.Node#setWidth(
-     *      org.extex.interpreter.type.dimen.FixedDimen)
+     *      org.extex.core.dimen.FixedDimen)
      */
     public void setWidth(final FixedDimen width) {
 
@@ -494,8 +494,8 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * @param sum the total sum of the glues
      *
      * @see org.extex.typesetter.type.Node#spreadWidth(
-     *      org.extex.interpreter.type.dimen.FixedDimen,
-     *      org.extex.interpreter.type.glue.FixedGlueComponent)
+     *      org.extex.core.dimen.FixedDimen,
+     *      org.extex.core.glue.FixedGlueComponent)
      */
     public void spreadWidth(final FixedDimen width, final FixedGlueComponent sum) {
 

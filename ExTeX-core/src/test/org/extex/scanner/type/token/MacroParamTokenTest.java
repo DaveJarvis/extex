@@ -21,8 +21,8 @@ package org.extex.scanner.type.token;
 
 import junit.framework.TestCase;
 
+import org.extex.core.UnicodeChar;
 import org.extex.scanner.type.Catcode;
-import org.extex.type.UnicodeChar;
 
 /**
  * Tests for the macro parameter tokens.

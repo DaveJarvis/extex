@@ -23,12 +23,14 @@ import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.extex.core.UnicodeChar;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.CatcodeException;
 import org.extex.scanner.type.CatcodeVisitor;
 import org.extex.scanner.type.CatcodeVisitorException;
 import org.extex.scanner.type.CatcodeWrongLengthException;
-import org.extex.type.UnicodeChar;
+import org.extex.scanner.type.Namespace;
+import org.extex.scanner.type.tokens.Tokens;
 
 /**
  * This is a implementation of a token factory. This means that the factory
@@ -176,6 +178,39 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     }
 
     /**
+     * Get an instance of a token with a given Catcode and Unicode character
+     * value.
+     *
+     * @param code the catcode
+     * @param c the Unicode character value
+     * @param namespace the name space for the token. This is relevant for
+     *   ACTIVE and ESCAPE catcodes only.
+     *
+     * @return the appropriate token
+     *
+     * @throws CatcodeException in case of an error
+     *
+     * @see org.extex.scanner.type.token.TokenFactory#createToken(
+     *      org.extex.scanner.type.Catcode,
+     *      org.extex.core.UnicodeChar,
+     *      java.lang.String)
+     */
+    public Token createToken(final Catcode code, final UnicodeChar c,
+            final String namespace) throws CatcodeException {
+
+        try {
+            return (Token) code.visit(this, null, c, namespace);
+        } catch (CatcodeException e) {
+            throw e;
+        } catch (RuntimeException e) {
+            throw e;
+        } catch (Exception e) {
+            // this should not happen
+            throw new CatcodeException(e);
+        }
+    }
+
+    /**
      * Get an instance of a token with a given Catcode and value.
      *
      * @param code the catcode
@@ -190,7 +225,7 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
      *
      * @see org.extex.scanner.type.token.TokenFactory#createToken(
      *      org.extex.scanner.type.Catcode,
-     *      org.extex.type.UnicodeChar,
+     *      org.extex.core.UnicodeChar,
      *      java.lang.String,
      *      java.lang.String)
      */
@@ -210,36 +245,68 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     }
 
     /**
-     * Get an instance of a token with a given Catcode and Unicode character
-     * value.
+     * Convert a character sequence to a list of tokens.
+     * <p>
+     * Each character of the string is converted into a <code>OtherToken</code>
+     * and added to the internal list. An exception is made for spaces which
+     * are converted into a <code>SpaceToken</code>.
+     * </p>
      *
-     * @param code the catcode
-     * @param c the Unicode character value
-     * @param namespace the name space for the token. This is relevant for
-     *   ACTIVE and ESCAPE catcodes only.
+     * @param s the character sequence to translate to tokens
      *
-     * @return the appropriate token
+     * @return the token list
      *
      * @throws CatcodeException in case of an error
      *
-     * @see org.extex.scanner.type.token.TokenFactory#createToken(
-     *      org.extex.scanner.type.Catcode,
-     *      org.extex.type.UnicodeChar,
-     *      java.lang.String)
+     * @see org.extex.scanner.type.token.TokenFactory#toTokens(java.lang.CharSequence)
      */
-    public Token createToken(final Catcode code, final UnicodeChar c,
-            final String namespace) throws CatcodeException {
+    public Tokens toTokens(final CharSequence s) throws CatcodeException {
 
-        try {
-            return (Token) code.visit(this, null, c, namespace);
-        } catch (CatcodeException e) {
-            throw e;
-        } catch (RuntimeException e) {
-            throw e;
-        } catch (Exception e) {
-            // this should not happen
-            throw new CatcodeException(e);
+        Tokens tokens = new Tokens();
+        if (s != null) {
+            return tokens;
         }
+
+        int len = s.length();
+
+        for (int i = 0; i < len; i++) {
+            char c = s.charAt(i);
+            tokens.add(createToken((c == ' ' ? Catcode.SPACE : Catcode.OTHER),
+                c, Namespace.DEFAULT_NAMESPACE));
+        }
+
+        return tokens;
+    }
+
+    /**
+     * Convert a long value into a list of tokens.
+     * <p>
+     * Each character is converted into a <code>OtherToken</code>
+     * and added to the internal list.
+     * </p>
+     *
+     * @param l the value to convert
+     *
+     * @return the token list
+     *
+     * @throws CatcodeException in case of an error
+     *
+     * @see org.extex.scanner.type.token.TokenFactory#toTokens(long)
+     */
+    public Tokens toTokens(final long l) throws CatcodeException {
+
+        Tokens tokens = new Tokens();
+        StringBuffer s = new StringBuffer();
+        s.append(l);
+
+        int len = s.length();
+
+        for (int i = 0; i < len; i++) {
+            tokens.add(createToken(Catcode.OTHER, s.charAt(i),
+                Namespace.DEFAULT_NAMESPACE));
+        }
+
+        return tokens;
     }
 
     /**

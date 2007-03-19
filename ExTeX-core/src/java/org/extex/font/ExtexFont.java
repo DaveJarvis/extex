@@ -19,10 +19,10 @@
 
 package org.extex.font;
 
-import org.extex.interpreter.type.count.FixedCount;
-import org.extex.interpreter.type.dimen.FixedDimen;
-import org.extex.interpreter.type.glue.FixedGlue;
-import org.extex.type.UnicodeChar;
+import org.extex.core.UnicodeChar;
+import org.extex.core.count.FixedCount;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.glue.FixedGlue;
 
 /**
  * Interface for the extex font.

@@ -19,10 +19,9 @@
 
 package org.extex.interpreter.type;
 
-
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.tokens.Tokens;
 
 /**
  * This interface describes the ability to write some tokens to a output file

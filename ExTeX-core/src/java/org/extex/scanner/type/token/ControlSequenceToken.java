@@ -19,9 +19,9 @@
 
 package org.extex.scanner.type.token;
 
-import org.extex.interpreter.Namespace;
+import org.extex.core.UnicodeChar;
 import org.extex.scanner.type.Catcode;
-import org.extex.type.UnicodeChar;
+import org.extex.scanner.type.Namespace;
 
 /**
  * This class represents a control sequence token.
@@ -288,7 +288,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      * @return the printable representation
      *
      * @see org.extex.scanner.type.token.Token#toText(
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar)
      */
     public String toText(final UnicodeChar esc) {
 

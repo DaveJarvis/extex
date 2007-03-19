@@ -19,9 +19,9 @@
 
 package org.extex.scanner.type.token;
 
-import org.extex.interpreter.Namespace;
+import org.extex.core.UnicodeChar;
 import org.extex.scanner.type.Catcode;
-import org.extex.type.UnicodeChar;
+import org.extex.scanner.type.Namespace;
 
 /**
  * This class represents an active character token.

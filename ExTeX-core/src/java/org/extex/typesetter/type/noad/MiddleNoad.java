@@ -21,13 +21,13 @@ package org.extex.typesetter.type.noad;
 
 import java.util.logging.Logger;
 
-import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.core.dimen.Dimen;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.type.math.MathDelimiter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.noad.util.MathContext;
 import org.extex.typesetter.type.node.HorizontalListNode;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This Noad carries a delimiter which is set in the middle between math
@@ -107,8 +107,8 @@ public class MiddleNoad extends LeftNoad {
      *      org.extex.typesetter.type.NodeList,
      *      org.extex.typesetter.type.noad.util.MathContext,
      *      java.util.logging.Logger,
-     *      org.extex.interpreter.type.dimen.Dimen,
-     *      org.extex.interpreter.type.dimen.Dimen)
+     *      org.extex.core.dimen.Dimen,
+     *      org.extex.core.dimen.Dimen)
      */
     public void typeset(final Noad previousNoad, final NoadList noads,
             final int index, final NodeList list,

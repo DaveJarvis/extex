@@ -21,11 +21,11 @@ package org.extex.interpreter.type.font;
 
 import java.util.logging.Logger;
 
-import org.extex.interpreter.type.count.Count;
-import org.extex.type.UnicodeChar;
+import org.extex.core.UnicodeChar;
+import org.extex.core.count.Count;
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.typesetter.TypesetterOptions;
-import org.extex.util.framework.i18n.Localizer;
-import org.extex.util.framework.i18n.LocalizerFactory;
 
 /**
  * Font utility methods.

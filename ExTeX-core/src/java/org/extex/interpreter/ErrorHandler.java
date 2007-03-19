@@ -19,11 +19,11 @@
 
 package org.extex.interpreter;
 
+import org.extex.core.exception.GeneralException;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.main.errorHandler.editHandler.EditHandler;
 import org.extex.scanner.type.token.Token;
-import org.extex.util.exception.GeneralException;
 
 /**
  * This interface defines the capabilities of an error handler. The error

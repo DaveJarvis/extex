@@ -19,8 +19,8 @@
 
 package org.extex.interpreter;
 
+import org.extex.core.Locator;
 import org.extex.interpreter.type.Code;
-import org.extex.type.Locator;
 
 /**
  * This class represents a conditional for an <tt>\ifcase</tt> construct.

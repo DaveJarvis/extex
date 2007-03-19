@@ -19,8 +19,8 @@
 
 package org.extex.scanner.stream.exception;
 
+import org.extex.core.UnicodeChar;
 import org.extex.scanner.exception.ScannerException;
-import org.extex.type.UnicodeChar;
 
 /**
  * This is thrown when an invalid character has been encountered.

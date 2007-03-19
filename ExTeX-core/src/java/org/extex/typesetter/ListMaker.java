@@ -19,22 +19,22 @@
 
 package org.extex.typesetter;
 
+import org.extex.core.Locator;
+import org.extex.core.UnicodeChar;
+import org.extex.core.count.Count;
+import org.extex.core.count.FixedCount;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.glue.FixedGlue;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.tc.TypesettingContext;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.count.FixedCount;
-import org.extex.interpreter.type.dimen.FixedDimen;
-import org.extex.interpreter.type.glue.FixedGlue;
 import org.extex.scanner.type.token.Token;
-import org.extex.type.Locator;
-import org.extex.type.UnicodeChar;
 import org.extex.typesetter.exception.InvalidSpacefactorException;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.exception.TypesetterUnsupportedException;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This interface describes the capabilities of a list maker.

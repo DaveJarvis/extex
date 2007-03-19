@@ -19,8 +19,8 @@
 
 package org.extex.scanner.type.token;
 
+import org.extex.core.UnicodeChar;
 import org.extex.scanner.type.Catcode;
-import org.extex.type.UnicodeChar;
 
 /**
  * This class represents a right brace token.

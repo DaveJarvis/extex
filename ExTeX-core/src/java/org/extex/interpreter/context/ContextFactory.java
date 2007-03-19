@@ -21,8 +21,8 @@ package org.extex.interpreter.context;
 
 import java.util.logging.Logger;
 
-import org.extex.util.framework.AbstractFactory;
-import org.extex.util.framework.configuration.Configuration;
+import org.extex.framework.AbstractFactory;
+import org.extex.framework.configuration.Configuration;
 
 /**
  * This class provides a factory for a

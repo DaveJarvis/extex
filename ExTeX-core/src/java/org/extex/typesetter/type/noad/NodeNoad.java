@@ -21,6 +21,7 @@ package org.extex.typesetter.type.noad;
 
 import java.util.logging.Logger;
 
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
@@ -28,7 +29,6 @@ import org.extex.typesetter.type.noad.util.MathContext;
 import org.extex.typesetter.type.noad.util.MathSpacing;
 import org.extex.typesetter.type.node.GlueNode;
 import org.extex.typesetter.type.node.KernNode;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This noad contains a node which is passed through the math apparatus.

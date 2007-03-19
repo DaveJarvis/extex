@@ -19,8 +19,8 @@
 
 package org.extex.interpreter.context.observer.count;
 
+import org.extex.core.count.Count;
 import org.extex.interpreter.context.ContextInternals;
-import org.extex.interpreter.type.count.Count;
 
 /**
  * This interface describes the ability to receive a notification about the

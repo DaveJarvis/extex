@@ -21,15 +21,16 @@ package org.extex.typesetter.type.noad;
 
 import java.util.logging.Logger;
 
+import org.extex.core.UnicodeChar;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.context.Color;
 import org.extex.interpreter.context.tc.TypesettingContext;
 import org.extex.interpreter.context.tc.TypesettingContextFactory;
 import org.extex.interpreter.exception.helping.HelpingException;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.font.Font;
 import org.extex.interpreter.type.font.FontUtil;
-import org.extex.type.UnicodeChar;
 import org.extex.typesetter.TypesetterOptions;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.Node;
@@ -38,7 +39,6 @@ import org.extex.typesetter.type.noad.util.MathContext;
 import org.extex.typesetter.type.noad.util.MathFontParameter;
 import org.extex.typesetter.type.node.CharNode;
 import org.extex.typesetter.type.node.ImplicitKernNode;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides a container for a mathematical character.

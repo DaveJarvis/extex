@@ -21,10 +21,10 @@ package org.extex.font;
 
 import java.io.Serializable;
 
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.glue.FixedGlue;
-import org.extex.interpreter.type.glue.Glue;
+import org.extex.core.count.Count;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.glue.FixedGlue;
+import org.extex.core.glue.Glue;
 
 /**
  * Font key class.

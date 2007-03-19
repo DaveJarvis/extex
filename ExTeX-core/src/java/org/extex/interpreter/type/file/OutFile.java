@@ -27,8 +27,8 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.io.Writer;
 
+import org.extex.core.UnicodeChar;
 import org.extex.interpreter.exception.InterpreterException;
-import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.type.token.ActiveCharacterToken;
 import org.extex.scanner.type.token.ControlSequenceToken;
 import org.extex.scanner.type.token.CrToken;
@@ -43,7 +43,7 @@ import org.extex.scanner.type.token.SubMarkToken;
 import org.extex.scanner.type.token.SupMarkToken;
 import org.extex.scanner.type.token.TabMarkToken;
 import org.extex.scanner.type.token.TokenVisitor;
-import org.extex.type.UnicodeChar;
+import org.extex.scanner.type.tokens.Tokens;
 
 /**
  * This class holds an output file onto which tokens can be wrtitten.

@@ -19,17 +19,17 @@
 
 package org.extex.typesetter.listMaker;
 
-import org.extex.interpreter.type.dimen.FixedDimen;
-import org.extex.interpreter.type.glue.FixedGlue;
-import org.extex.interpreter.type.glue.Glue;
-import org.extex.type.Locator;
+import org.extex.core.Locator;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.glue.FixedGlue;
+import org.extex.core.glue.Glue;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.typesetter.Mode;
 import org.extex.typesetter.TypesetterOptions;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.node.HorizontalListNode;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides a maker for a vertical list.

@@ -21,10 +21,11 @@ package org.extex.typesetter.type.noad;
 
 import java.util.logging.Logger;
 
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.glue.FixedGlue;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.context.tc.TypesettingContext;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.FixedDimen;
-import org.extex.interpreter.type.glue.FixedGlue;
 import org.extex.interpreter.type.math.MathDelimiter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.NodeList;
@@ -34,7 +35,6 @@ import org.extex.typesetter.type.node.GlueNode;
 import org.extex.typesetter.type.node.HorizontalListNode;
 import org.extex.typesetter.type.node.RuleNode;
 import org.extex.typesetter.type.node.VerticalListNode;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This Noad represents some mathematical material stacked above some other

@@ -21,8 +21,8 @@ package org.extex.color.model;
 
 import org.extex.color.ColorUtil;
 import org.extex.color.ColorVisitor;
+import org.extex.core.exception.GeneralException;
 import org.extex.interpreter.context.Color;
-import org.extex.util.exception.GeneralException;
 
 /**
  * This class implements a color specification in CMYK mode with an alpha

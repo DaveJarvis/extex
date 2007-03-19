@@ -19,11 +19,11 @@
 
 package org.extex.typesetter.type.node;
 
-import org.extex.interpreter.type.count.Count;
+import org.extex.core.count.Count;
+import org.extex.core.exception.GeneralException;
 import org.extex.typesetter.Discardable;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeVisitor;
-import org.extex.util.exception.GeneralException;
 
 /**
  * This class represents a Node which holds a penalty value. It is used during

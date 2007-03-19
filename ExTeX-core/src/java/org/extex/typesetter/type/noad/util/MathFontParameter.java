@@ -19,8 +19,8 @@
 
 package org.extex.typesetter.type.noad.util;
 
-import org.extex.interpreter.Namespace;
 import org.extex.interpreter.context.Context;
+import org.extex.scanner.type.Namespace;
 import org.extex.typesetter.TypesetterOptions;
 
 /**

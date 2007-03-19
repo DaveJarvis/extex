@@ -19,7 +19,7 @@
 
 package org.extex.interpreter.interaction;
 
-import org.extex.util.exception.GeneralException;
+import org.extex.core.exception.GeneralException;
 
 /**
  * This interface describes a visitor for interaction modes.

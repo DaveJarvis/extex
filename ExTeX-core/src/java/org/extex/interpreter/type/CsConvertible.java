@@ -25,7 +25,6 @@ import org.extex.interpreter.exception.InterpreterException;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 
-
 /**
  * This is an interface which describes the feature to be convertible into a
  * control sequence.
@@ -43,8 +42,10 @@ public interface CsConvertible {
      *
      * @param context the interpreter context
      * @param source the source for new tokens
-     * @param typesetter TODO
+     * @param typesetter the typesetter
+     *
      * @return the converted value
+     *
      * @throws InterpreterException in case of an error
      */
     Token convertCs(Context context, TokenSource source, Typesetter typesetter)

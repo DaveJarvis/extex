@@ -19,17 +19,18 @@
 
 package org.extex.interpreter.type;
 
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.CatcodeException;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This is a interface to mark those classes which are able to provide a
  * description. This description is returned in form of
- * {@link org.extex.interpreter.type.tokens.Tokens Tokens}.
+ * {@link org.extex.scanner.type.tokens.Tokens Tokens}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -46,10 +47,12 @@ public interface Theable {
      * @return the description of the primitive as list of Tokens
      *
      * @throws InterpreterException in case of an error
+     * @throws CatcodeException in case of an error in token creation
      * @throws ConfigurationException in case of an configuration error
      */
     Tokens the(Context context, TokenSource source, Typesetter typesetter)
             throws InterpreterException,
+                CatcodeException,
                 ConfigurationException;
 
 }

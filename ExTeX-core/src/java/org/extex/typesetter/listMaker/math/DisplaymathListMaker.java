@@ -19,16 +19,17 @@
 
 package org.extex.typesetter.listMaker.math;
 
+import org.extex.core.Locator;
+import org.extex.core.count.Count;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.CantUseInException;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.HelpingException;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.type.token.Token;
-import org.extex.type.Locator;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Mode;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.TypesetterOptions;
@@ -39,7 +40,6 @@ import org.extex.typesetter.type.noad.MathList;
 import org.extex.typesetter.type.noad.StyleNoad;
 import org.extex.typesetter.type.noad.util.MathContext;
 import org.extex.typesetter.type.node.HorizontalListNode;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This is the list maker for the display math formulae.

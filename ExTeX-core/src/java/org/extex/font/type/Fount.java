@@ -18,10 +18,10 @@
 
 package org.extex.font.type;
 
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.glue.FixedGlue;
 import org.extex.font.FontByteArray;
 import org.extex.font.FountKey;
-import org.extex.interpreter.type.dimen.FixedDimen;
-import org.extex.interpreter.type.glue.FixedGlue;
 
 /**
  * Fount Interface (only getter)

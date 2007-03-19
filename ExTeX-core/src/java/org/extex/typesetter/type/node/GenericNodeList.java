@@ -21,17 +21,17 @@ package org.extex.typesetter.type.node;
 
 import java.util.ArrayList;
 
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.exception.GeneralException;
+import org.extex.core.glue.FixedGlue;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.ImpossibleException;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.FixedDimen;
-import org.extex.interpreter.type.glue.FixedGlue;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeIterator;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.NodeVisitor;
-import org.extex.util.exception.GeneralException;
 
 /**
  * Abstract base class for all <code>NodeList</code>s.
@@ -141,7 +141,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * @param glue the glue to add
      *
      * @see org.extex.typesetter.type.NodeList#addSkip(
-     *      org.extex.interpreter.type.glue.FixedGlue)
+     *      org.extex.core.glue.FixedGlue)
      */
     public void addSkip(final FixedGlue glue) {
 
@@ -397,7 +397,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * @param d the move value
      *
      * @see org.extex.typesetter.type.NodeList#setMove(
-     *      org.extex.interpreter.type.dimen.FixedDimen)
+     *      org.extex.core.dimen.FixedDimen)
      */
     public void setMove(final FixedDimen d) {
 
@@ -412,7 +412,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * @param d the amount to be shifted
      *
      * @see org.extex.typesetter.type.NodeList#setShift(
-     *      org.extex.interpreter.type.dimen.FixedDimen)
+     *      org.extex.core.dimen.FixedDimen)
      */
     public void setShift(final FixedDimen d) {
 

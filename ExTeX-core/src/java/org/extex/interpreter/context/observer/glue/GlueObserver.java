@@ -19,8 +19,8 @@
 
 package org.extex.interpreter.context.observer.glue;
 
+import org.extex.core.glue.Glue;
 import org.extex.interpreter.context.ContextInternals;
-import org.extex.interpreter.type.glue.Glue;
 
 /**
  * This interface describes the ability to receive a notification about the

@@ -19,7 +19,7 @@
 
 package org.extex.scanner.exception;
 
-import org.extex.util.exception.GeneralException;
+import org.extex.core.exception.GeneralException;
 
 /**
  * This is the base class for all exceptions thrown by the scanner.

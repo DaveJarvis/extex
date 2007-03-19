@@ -22,7 +22,7 @@ package org.extex.interpreter.context;
 import java.io.Serializable;
 
 import org.extex.color.ColorVisitor;
-import org.extex.util.exception.GeneralException;
+import org.extex.core.exception.GeneralException;
 
 /**
  * This interface declares some methods to access the color with an alpha

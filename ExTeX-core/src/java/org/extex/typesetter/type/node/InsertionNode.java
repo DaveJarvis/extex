@@ -19,10 +19,10 @@
 
 package org.extex.typesetter.type.node;
 
+import org.extex.core.exception.GeneralException;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.NodeVisitor;
-import org.extex.util.exception.GeneralException;
 
 /**
  * This node is meant to record an insertion.

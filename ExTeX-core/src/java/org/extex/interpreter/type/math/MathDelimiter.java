@@ -22,7 +22,7 @@ package org.extex.interpreter.type.math;
 import java.io.Serializable;
 import java.util.logging.Logger;
 
-import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.core.dimen.FixedDimen;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.noad.MathGlyph;

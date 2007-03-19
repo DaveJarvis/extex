@@ -21,12 +21,12 @@ package org.extex.typesetter.type.noad;
 
 import java.util.logging.Logger;
 
-import org.extex.interpreter.type.muskip.Mudimen;
+import org.extex.core.muskip.Mudimen;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.noad.util.MathContext;
 import org.extex.typesetter.type.node.ExplicitKernNode;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This Noad carries a kerning value in math units.
