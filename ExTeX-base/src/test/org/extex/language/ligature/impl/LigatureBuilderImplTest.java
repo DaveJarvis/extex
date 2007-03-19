@@ -21,12 +21,12 @@ package org.extex.language.ligature.impl;
 
 import junit.framework.TestCase;
 
+import org.extex.core.UnicodeChar;
+import org.extex.core.glue.Glue;
 import org.extex.font.type.other.NullFont;
 import org.extex.interpreter.context.tc.TypesettingContext;
 import org.extex.interpreter.context.tc.TypesettingContextImpl;
-import org.extex.interpreter.type.glue.Glue;
 import org.extex.language.ligature.LigatureBuilder;
-import org.extex.type.UnicodeChar;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.node.CharNode;
@@ -68,7 +68,7 @@ public class LigatureBuilderImplTest extends TestCase {
          * @return <code>true</code> iff the glyph is present
          *
          * @see org.extex.interpreter.type.font.Font#hasGlyph(
-         *      org.extex.type.UnicodeChar)
+         *      org.extex.core.UnicodeChar)
          */
         public boolean hasGlyph(final UnicodeChar uc) {
 
@@ -94,8 +94,8 @@ public class LigatureBuilderImplTest extends TestCase {
          * @return the ligature for two chars
          *
          * @see org.extex.interpreter.type.font.Font#getLigature(
-         *      org.extex.type.UnicodeChar,
-         *      org.extex.type.UnicodeChar)
+         *      org.extex.core.UnicodeChar,
+         *      org.extex.core.UnicodeChar)
          */
         public UnicodeChar getLigature(final UnicodeChar uc1,
                 final UnicodeChar uc2) {

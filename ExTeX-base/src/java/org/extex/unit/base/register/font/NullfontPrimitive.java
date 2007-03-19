@@ -20,6 +20,7 @@
 package org.extex.unit.base.register.font;
 
 import org.extex.font.type.other.NullFont;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -31,7 +32,6 @@ import org.extex.interpreter.type.font.FontConvertible;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive

@@ -19,11 +19,11 @@
 
 package org.extex.interpreter.max.context;
 
+import org.extex.core.count.Count;
 import org.extex.interpreter.context.ContextInternals;
 import org.extex.interpreter.context.observer.count.CountObserver;
 import org.extex.interpreter.context.observer.tokens.TokensObserver;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.tokens.Tokens;
 
 /**
  * This observer is meant for keeping the current typesetting context in sync
@@ -60,7 +60,7 @@ public class LanguageObserver implements CountObserver, TokensObserver {
      * @see org.extex.interpreter.context.observer.count.CountObserver#receiveCountChange(
      *      org.extex.interpreter.context.ContextInternals,
      *      java.lang.String,
-     *      org.extex.interpreter.type.count.Count)
+     *      org.extex.core.count.Count)
      */
     public void receiveCountChange(final ContextInternals context,
             final String name, final Count value) {
@@ -85,7 +85,7 @@ public class LanguageObserver implements CountObserver, TokensObserver {
      * @see org.extex.interpreter.context.observer.tokens.TokensObserver#receiveTokensChange(
      *      org.extex.interpreter.context.ContextInternals,
      *      java.lang.String,
-     *      org.extex.interpreter.type.tokens.Tokens)
+     *      org.extex.scanner.type.tokens.Tokens)
      */
     public void receiveTokensChange(final ContextInternals context,
             final String name, final Tokens value) {

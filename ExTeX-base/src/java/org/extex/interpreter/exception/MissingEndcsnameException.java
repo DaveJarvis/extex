@@ -19,9 +19,9 @@
 
 package org.extex.interpreter.exception;
 
+import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.context.Context;
 import org.extex.scanner.type.token.Token;
-import org.extex.util.framework.i18n.LocalizerFactory;
 
 /**
  * This exception is raised when a <tt>\csname</tt> without matching

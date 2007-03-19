@@ -23,7 +23,12 @@ import java.util.Iterator;
 import java.util.logging.Logger;
 
 import org.extex.backend.outputStream.OutputStreamFactory;
-import org.extex.interpreter.Namespace;
+import org.extex.core.UnicodeChar;
+import org.extex.core.exception.GeneralException;
+import org.extex.framework.AbstractFactory;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.helping.HelpingException;
@@ -31,19 +36,14 @@ import org.extex.interpreter.max.StringSource;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.InitializableCode;
 import org.extex.interpreter.type.OutputStreamConsumer;
-import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
-import org.extex.type.UnicodeChar;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.unit.base.macro.LetCode;
-import org.extex.util.exception.GeneralException;
-import org.extex.util.framework.AbstractFactory;
-import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-import org.extex.util.framework.i18n.LocalizerFactory;
 
 /**
  * This is a factory load to units from a configuration.

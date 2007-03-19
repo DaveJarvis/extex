@@ -22,19 +22,21 @@ package org.extex.interpreter;
 import junit.framework.TestCase;
 
 import org.extex.backend.BackendDriver;
+import org.extex.core.Locator;
+import org.extex.core.UnicodeChar;
+import org.extex.core.count.Count;
+import org.extex.core.count.FixedCount;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.glue.FixedGlue;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.ConfigurationFactory;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.tc.TypesettingContext;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.count.FixedCount;
-import org.extex.interpreter.type.dimen.FixedDimen;
-import org.extex.interpreter.type.glue.FixedGlue;
 import org.extex.language.ligature.LigatureBuilder;
 import org.extex.scanner.TokenStream;
 import org.extex.scanner.base.TokenStreamImpl;
 import org.extex.scanner.stream.TokenStreamFactory;
 import org.extex.scanner.type.token.Token;
-import org.extex.type.Locator;
-import org.extex.type.UnicodeChar;
 import org.extex.typesetter.ListMaker;
 import org.extex.typesetter.Mode;
 import org.extex.typesetter.ParagraphObserver;
@@ -51,8 +53,6 @@ import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.noad.Noad;
 import org.extex.typesetter.type.node.factory.NodeFactory;
-import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.configuration.ConfigurationFactory;
 
 /**
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -71,7 +71,7 @@ public class Max1 extends TestCase {
 
         /**
          * @see org.extex.typesetter.ListMaker#addGlue(
-         *      org.extex.interpreter.type.glue.Glue)
+         *      org.extex.core.glue.Glue)
          */
         public void add(final FixedGlue g) throws TypesetterException {
 
@@ -109,7 +109,7 @@ public class Max1 extends TestCase {
         /**
          * @see org.extex.typesetter.ListMaker#addSpace(
          *      org.extex.interpreter.context.tc.TypesettingContext,
-         *      org.extex.interpreter.type.count.Count)
+         *      org.extex.core.count.Count)
          */
         public void addSpace(final TypesettingContext typesettingContext,
                 final Count spacefactor) {
@@ -140,8 +140,8 @@ public class Max1 extends TestCase {
         }
 
         /**
-         * @see org.extex.util.framework.configuration.Configurable#configure(
-         *      org.extex.util.framework.configuration.Configuration)
+         * @see org.extex.framework.configuration.Configurable#configure(
+         *      org.extex.framework.configuration.Configuration)
          */
         public void configure(final Configuration config) {
 
@@ -152,7 +152,7 @@ public class Max1 extends TestCase {
          * @see org.extex.typesetter.ListMaker#cr(
          *      org.extex.interpreter.context.Context,
          *      org.extex.interpreter.context.tc.TypesettingContext,
-         *      org.extex.type.UnicodeChar)
+         *      org.extex.core.UnicodeChar)
          */
         public void cr(final Context context, final TypesettingContext tc,
                 final UnicodeChar uc) {
@@ -161,7 +161,7 @@ public class Max1 extends TestCase {
 
         /**
          * @see org.extex.typesetter.Typesetter#ensureHorizontalMode(
-         *      org.extex.type.Locator)
+         *      org.extex.core.Locator)
          */
         public ListMaker ensureHorizontalMode(Locator locator) {
 
@@ -267,8 +267,8 @@ public class Max1 extends TestCase {
          * @see org.extex.typesetter.ListMaker#letter(
          *      org.extex.interpreter.context.Context,
          *      org.extex.interpreter.context.tc.TypesettingContext,
-         *      org.extex.type.UnicodeChar,
-         *      org.extex.type.Locator)
+         *      org.extex.core.UnicodeChar,
+         *      org.extex.core.Locator)
          */
         public boolean letter(final UnicodeChar uc,
                 final TypesettingContext tc, final Context context,
@@ -338,7 +338,7 @@ public class Max1 extends TestCase {
 
         /**
          * @see org.extex.typesetter.Typesetter#setLigatureBuilder(
-         *      org.extex.typesetter.ligatureBuilder.LigatureBuilder)
+         *      org.extex.core.ligatureBuilder.LigatureBuilder)
          */
         public void setLigatureBuilder(final LigatureBuilder ligatureBuilder) {
 
@@ -363,7 +363,7 @@ public class Max1 extends TestCase {
 
         /**
          * @see org.extex.typesetter.Typesetter#setOutputRoutine(
-         *      org.extex.typesetter.OutputRoutine)
+         *      org.extex.core.OutputRoutine)
          */
         public void setOutputRoutine(final OutputRoutine output) {
 
@@ -398,7 +398,7 @@ public class Max1 extends TestCase {
 
         /**
          * @see org.extex.typesetter.ListMaker#setPrevDepth(
-         *      org.extex.interpreter.type.dimen.Dimen)
+         *      org.extex.core.dimen.Dimen)
          */
         public void setPrevDepth(final FixedDimen pd) {
 

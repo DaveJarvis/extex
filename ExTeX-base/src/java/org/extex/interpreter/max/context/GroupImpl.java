@@ -22,8 +22,14 @@ package org.extex.interpreter.max.context;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.extex.core.Locator;
+import org.extex.core.UnicodeChar;
+import org.extex.core.count.Count;
+import org.extex.core.count.ImmutableCount;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.glue.Glue;
+import org.extex.core.muskip.Muskip;
 import org.extex.font.type.other.NullFont;
-import org.extex.interpreter.Namespace;
 import org.extex.interpreter.context.group.GroupType;
 import org.extex.interpreter.context.observer.group.AfterGroupObserver;
 import org.extex.interpreter.context.observer.group.AfterGroupObserverList;
@@ -31,24 +37,18 @@ import org.extex.interpreter.context.tc.TypesettingContext;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.box.Box;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.count.ImmutableCount;
-import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.interpreter.type.file.InFile;
 import org.extex.interpreter.type.file.OutFile;
 import org.extex.interpreter.type.font.Font;
-import org.extex.interpreter.type.glue.Glue;
 import org.extex.interpreter.type.math.MathClass;
 import org.extex.interpreter.type.math.MathCode;
 import org.extex.interpreter.type.math.MathDelimiter;
-import org.extex.interpreter.type.muskip.Muskip;
-import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.TokenStream;
 import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
-import org.extex.type.Locator;
-import org.extex.type.UnicodeChar;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.type.noad.MathGlyph;
 
 /**
@@ -368,8 +368,8 @@ public class GroupImpl implements Group {
      *
      * @return the category code of a character
      *
-     * @see org.extex.interpreter.Tokenizer#getCatcode(
-     *      org.extex.type.UnicodeChar)
+     * @see org.extex.scanner.Tokenizer#getCatcode(
+     *      org.extex.core.UnicodeChar)
      */
     public Catcode getCatcode(final UnicodeChar c) {
 
@@ -500,7 +500,7 @@ public class GroupImpl implements Group {
      * @return the delcode for the given character
      *
      * @see org.extex.interpreter.max.context.Group#getDelcode(
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar)
      */
     public MathDelimiter getDelcode(final UnicodeChar c) {
 
@@ -646,7 +646,7 @@ public class GroupImpl implements Group {
      * @return the lower case equivalent or null if none exists
      *
      * @see org.extex.interpreter.max.context.Group#getLccode(
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar)
      */
     public UnicodeChar getLccode(final UnicodeChar lc) {
 
@@ -708,7 +708,7 @@ public class GroupImpl implements Group {
      * @return the math code for the given character
      *
      * @see org.extex.interpreter.max.context.Group#getMathcode(
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar)
      */
     public MathCode getMathcode(final UnicodeChar c) {
 
@@ -828,7 +828,7 @@ public class GroupImpl implements Group {
      * @return the sfcode of the given character
      *
      * @see org.extex.interpreter.max.context.Group#getSfcode(
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar)
      */
     public Count getSfcode(final UnicodeChar c) {
 
@@ -989,7 +989,7 @@ public class GroupImpl implements Group {
      * @return the upper case equivalent or null if none exists
      *
      * @see org.extex.interpreter.max.context.Group#getUccode(
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar)
      */
     public UnicodeChar getUccode(final UnicodeChar uc) {
 
@@ -1092,7 +1092,7 @@ public class GroupImpl implements Group {
      *  groups; otherwise the current group is affected only
      *
      * @see org.extex.interpreter.max.context.Group#setCatcode(
-     *      org.extex.type.UnicodeChar,
+     *      org.extex.core.UnicodeChar,
      *      org.extex.scanner.type.Catcode,
      *      boolean)
      */
@@ -1146,7 +1146,7 @@ public class GroupImpl implements Group {
      *
      * @see org.extex.interpreter.max.context.Group#setCount(
      *      java.lang.String,
-     *      org.extex.interpreter.type.count.Count, boolean)
+     *      org.extex.core.count.Count, boolean)
      */
     public void setCount(final String name, final Count value,
             final boolean global) {
@@ -1171,7 +1171,7 @@ public class GroupImpl implements Group {
      *  groups; otherwise the current group is affected only
      *
      * @see org.extex.interpreter.max.context.Group#setDelcode(
-     *      org.extex.type.UnicodeChar,
+     *      org.extex.core.UnicodeChar,
      *      MathDelimiter, boolean)
      */
     public void setDelcode(final UnicodeChar uc, final MathDelimiter code,
@@ -1198,7 +1198,7 @@ public class GroupImpl implements Group {
      *
      * @see org.extex.interpreter.max.context.Group#setDimen(
      *      java.lang.String,
-     *      org.extex.interpreter.type.dimen.Dimen, boolean)
+     *      org.extex.core.dimen.Dimen, boolean)
      */
     public void setDimen(final String name, final Dimen value,
             final boolean global) {
@@ -1300,8 +1300,8 @@ public class GroupImpl implements Group {
      *  groups; otherwise the current group is affected only
      *
      * @see org.extex.interpreter.max.context.Group#setLccode(
-     *      org.extex.type.UnicodeChar,
-     *      org.extex.type.UnicodeChar,
+     *      org.extex.core.UnicodeChar,
+     *      org.extex.core.UnicodeChar,
      *      boolean)
      */
     public void setLccode(final UnicodeChar lc, final UnicodeChar uc,
@@ -1337,7 +1337,7 @@ public class GroupImpl implements Group {
      *  groups; otherwise the current group is affected only
      *
      * @see org.extex.interpreter.max.context.Group#setMathcode(
-     *      org.extex.type.UnicodeChar,
+     *      org.extex.core.UnicodeChar,
      *      MathCode, boolean)
      */
     public void setMathcode(final UnicodeChar uc, final MathCode code,
@@ -1364,7 +1364,7 @@ public class GroupImpl implements Group {
      *
      * @see org.extex.interpreter.max.context.Group#setMuskip(
      *      java.lang.String,
-     *      org.extex.interpreter.type.muskip.Muskip, boolean)
+     *      org.extex.core.muskip.Muskip, boolean)
      */
     public void setMuskip(final String name, final Muskip value,
             final boolean global) {
@@ -1433,8 +1433,8 @@ public class GroupImpl implements Group {
      *  groups; otherwise the current group is affected only
      *
      * @see org.extex.interpreter.max.context.Group#setSfcode(
-     *      org.extex.type.UnicodeChar,
-     *      org.extex.interpreter.type.count.Count, boolean)
+     *      org.extex.core.UnicodeChar,
+     *      org.extex.core.count.Count, boolean)
      */
     public void setSfcode(final UnicodeChar uc, final Count code,
             final boolean global) {
@@ -1460,7 +1460,7 @@ public class GroupImpl implements Group {
      *
      * @see org.extex.interpreter.max.context.Group#setSkip(
      *      java.lang.String,
-     *      org.extex.interpreter.type.glue.Glue, boolean)
+     *      org.extex.core.glue.Glue, boolean)
      */
     public void setSkip(final String name, final Glue value,
             final boolean global) {
@@ -1509,7 +1509,7 @@ public class GroupImpl implements Group {
      *
      * @see org.extex.interpreter.max.context.Group#setToks(
      *      java.lang.String,
-     *      org.extex.interpreter.type.tokens.Tokens, boolean)
+     *      org.extex.scanner.type.tokens.Tokens, boolean)
      */
     public void setToks(final String name, final Tokens value,
             final boolean global) {
@@ -1569,8 +1569,8 @@ public class GroupImpl implements Group {
      *  groups; otherwise the current group is affected only
      *
      * @see org.extex.interpreter.max.context.Group#setUccode(
-     *      org.extex.type.UnicodeChar,
-     *      org.extex.type.UnicodeChar,
+     *      org.extex.core.UnicodeChar,
+     *      org.extex.core.UnicodeChar,
      *      boolean)
      */
     public void setUccode(final UnicodeChar uc, final UnicodeChar lc,

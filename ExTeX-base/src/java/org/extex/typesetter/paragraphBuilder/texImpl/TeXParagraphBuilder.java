@@ -23,20 +23,24 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
+import org.extex.core.Locator;
+import org.extex.core.UnicodeChar;
+import org.extex.core.count.Count;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.exception.GeneralException;
+import org.extex.core.glue.FixedGlue;
+import org.extex.core.glue.FixedGlueComponent;
+import org.extex.core.glue.Glue;
+import org.extex.core.glue.GlueComponent;
+import org.extex.core.glue.WideGlue;
+import org.extex.framework.i18n.Localizable;
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.context.tc.TypesettingContext;
 import org.extex.interpreter.exception.helping.HelpingException;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.FixedDimen;
-import org.extex.interpreter.type.glue.FixedGlue;
-import org.extex.interpreter.type.glue.FixedGlueComponent;
-import org.extex.interpreter.type.glue.Glue;
-import org.extex.interpreter.type.glue.GlueComponent;
-import org.extex.interpreter.type.glue.WideGlue;
 import org.extex.language.Language;
 import org.extex.language.hyphenation.exception.HyphenationException;
-import org.extex.type.Locator;
-import org.extex.type.UnicodeChar;
 import org.extex.typesetter.Badness;
 import org.extex.typesetter.Discardable;
 import org.extex.typesetter.TypesetterOptions;
@@ -71,10 +75,6 @@ import org.extex.typesetter.type.node.VerticalListNode;
 import org.extex.typesetter.type.node.VirtualCharNode;
 import org.extex.typesetter.type.node.WhatsItNode;
 import org.extex.typesetter.type.node.factory.NodeFactory;
-import org.extex.util.exception.GeneralException;
-import org.extex.util.framework.i18n.Localizable;
-import org.extex.util.framework.i18n.Localizer;
-import org.extex.util.framework.logger.LogEnabled;
 
 /**
  * This class implements the paragraph breaking algorithm as used in
@@ -502,7 +502,7 @@ public class TeXParagraphBuilder
     }
 
     /**
-     * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *   java.util.logging.Logger)
      */
     public void enableLogging(final Logger theLogger) {
@@ -515,8 +515,8 @@ public class TeXParagraphBuilder
      *
      * @param theLocalizer the new value for the localizer
      *
-     * @see org.extex.util.framework.i18n.Localizable#enableLocalization(
-     *   org.extex.util.framework.i18n.Localizer)
+     * @see org.extex.framework.i18n.Localizable#enableLocalization(
+     *   org.extex.framework.i18n.Localizer)
      */
     public void enableLocalization(final Localizer theLocalizer) {
 

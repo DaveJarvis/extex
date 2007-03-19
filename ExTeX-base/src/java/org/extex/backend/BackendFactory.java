@@ -32,13 +32,13 @@ import org.extex.backend.outputStream.OutputStreamFactory;
 import org.extex.color.ColorAware;
 import org.extex.color.ColorConverter;
 import org.extex.font.CoreFontFactory;
-import org.extex.util.framework.AbstractFactory;
-import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-import org.extex.util.framework.configuration.exception.ConfigurationMissingAttributeException;
-import org.extex.util.resource.PropertyConfigurable;
-import org.extex.util.resource.ResourceConsumer;
-import org.extex.util.resource.ResourceFinder;
+import org.extex.framework.AbstractFactory;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.configuration.exception.ConfigurationMissingAttributeException;
+import org.extex.resource.PropertyConfigurable;
+import org.extex.resource.ResourceConsumer;
+import org.extex.resource.ResourceFinder;
 
 /**
  * This class provides a factory for the back-end.
@@ -49,31 +49,31 @@ import org.extex.util.resource.ResourceFinder;
  *  trigger special actions:
  * </p>
  * <dl>
- *  <dt>{@link org.extex.util.framework.configuration.Configurable Configurable}</dt>
+ *  <dt>{@link org.extex.framework.configuration.Configurable Configurable}</dt>
  *  <dd>
  *   If this interface is implemented then a
- *   {@link org.extex.util.framework.configuration.Configuration Configuration}
+ *   {@link org.extex.framework.configuration.Configuration Configuration}
  *   is passed in with the interface method.
  *  </dd>
- *  <dt>{@link org.extex.util.framework.logger.LogEnabled LogEnabled}</dt>
+ *  <dt>{@link org.extex.framework.logger.LogEnabled LogEnabled}</dt>
  *  <dd>
  *   If this interface is implemented then a
  *   {@link java.util.logging.Logger Logger}
  *   is passed in with the interface method.
  *  </dd>
- *  <dt>{@link org.extex.util.framework.i18n.Localizable Localizable}</dt>
+ *  <dt>{@link org.extex.framework.i18n.Localizable Localizable}</dt>
  *  <dd>
  *   If this interface is implemented then a
- *   {@link org.extex.util.framework.i18n.Localizer Localizer}
+ *   {@link org.extex.framework.i18n.Localizer Localizer}
  *   is passed in with the interface method.
  *  </dd>
- *  <dt>{@link org.extex.util.resource.ResourceConsumer ResourceConsumer}</dt>
+ *  <dt>{@link org.extex.resource.ResourceConsumer ResourceConsumer}</dt>
  *  <dd>
  *   If this interface is implemented then a
- *   {@link org.extex.util.resource.ResourceFinder ResourceFinder}
+ *   {@link org.extex.resource.ResourceFinder ResourceFinder}
  *   is passed in with the interface method.
  *  </dd>
- *  <dt>{@link org.extex.util.resource.PropertyConfigurable PropertyConfigurable}</dt>
+ *  <dt>{@link org.extex.resource.PropertyConfigurable PropertyConfigurable}</dt>
  *  <dd>
  *   If this interface is implemented then a
  *   {@link java.util.Properties Properties} instance

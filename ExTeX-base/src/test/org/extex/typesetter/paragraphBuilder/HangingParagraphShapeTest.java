@@ -21,7 +21,7 @@ package org.extex.typesetter.paragraphBuilder;
 
 import junit.framework.TestCase;
 
-import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.core.dimen.Dimen;
 
 /**
  * Test cases for the class HangingParagraphShape.

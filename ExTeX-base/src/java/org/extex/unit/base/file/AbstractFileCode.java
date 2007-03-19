@@ -19,20 +19,20 @@
 
 package org.extex.unit.base.file;
 
+import org.extex.core.count.CountParser;
+import org.extex.framework.configuration.Configurable;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.BadFileNumberException;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.type.AbstractCode;
-import org.extex.interpreter.type.count.Count;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.SpaceToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
-import org.extex.util.framework.configuration.Configurable;
-import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This abstract class provides some common methods for primitives dealing with
@@ -80,7 +80,7 @@ public abstract class AbstractFileCode extends AbstractCode
      *  <pre class="syntax">
      *    &lang;infile&nbsp;name&rang;
      *      &rarr; {@linkplain
-     *        org.extex.interpreter.type.count.Count#scanNumber(Context,TokenSource,Typesetter)
+     *        org.extex.core.count.Count#scanNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;} </pre>
      * </doc>
      *
@@ -97,7 +97,7 @@ public abstract class AbstractFileCode extends AbstractCode
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        long no = Count.scanNumber(context, source, typesetter);
+        long no = CountParser.scanNumber(context, source, typesetter);
         String key = Long.toString(no);
 
         if (no < 0 || no > MAX_IN_FILE_NO) {
@@ -124,7 +124,7 @@ public abstract class AbstractFileCode extends AbstractCode
      *  <pre class="syntax">
      *    &lang;infile&nbsp;name&rang;
      *      &rarr; {@linkplain
-     *        org.extex.interpreter.type.count.Count#scanNumber(Context,TokenSource,Typesetter)
+     *        org.extex.core.count.Count#scanNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;} </pre>
      * </doc>
      *
@@ -141,7 +141,7 @@ public abstract class AbstractFileCode extends AbstractCode
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        long no = Count.scanNumber(context, source, typesetter);
+        long no = CountParser.scanNumber(context, source, typesetter);
         return Long.toString(no);
     }
 
@@ -169,8 +169,8 @@ public abstract class AbstractFileCode extends AbstractCode
      *
      * @throws ConfigurationException in case of an error
      *
-     * @see org.extex.util.framework.configuration.Configurable#configure(
-     *      org.extex.util.framework.configuration.Configuration)
+     * @see org.extex.framework.configuration.Configurable#configure(
+     *      org.extex.framework.configuration.Configuration)
      */
     public void configure(final Configuration config) {
 

@@ -19,7 +19,7 @@
 
 package org.extex.interpreter.exception;
 
-import org.extex.util.framework.i18n.Localizer;
+import org.extex.framework.i18n.Localizer;
 
 /**
  * This exception signals the error handler that a continuation is not

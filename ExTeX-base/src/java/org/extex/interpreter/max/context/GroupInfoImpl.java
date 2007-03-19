@@ -19,10 +19,10 @@
 
 package org.extex.interpreter.max.context;
 
+import org.extex.core.Locator;
 import org.extex.interpreter.context.group.GroupInfo;
 import org.extex.interpreter.context.group.GroupType;
 import org.extex.scanner.type.token.Token;
-import org.extex.type.Locator;
 
 /**
  * This class provides a reference implementation for a

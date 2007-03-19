@@ -21,12 +21,12 @@ package org.extex.language.hyphenation.liang;
 
 import junit.framework.TestCase;
 
-import org.extex.interpreter.Namespace;
-import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.CatcodeException;
+import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.token.TokenFactory;
 import org.extex.scanner.type.token.TokenFactoryImpl;
+import org.extex.scanner.type.tokens.Tokens;
 
 /**
  * This class contains soem test cases fro liang's hyphenation table.

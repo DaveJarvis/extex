@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.main.logging;
+package org.extex.logging;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintWriter;

@@ -21,7 +21,7 @@ package org.extex;
 
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.interaction.Interaction;
-import org.extex.util.resource.InteractionProvider;
+import org.extex.resource.InteractionIndicator;
 
 /**
  * This internal interface extends the interaction provider by the ability
@@ -30,7 +30,7 @@ import org.extex.util.resource.InteractionProvider;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class ContextawareInteractionProvider implements InteractionProvider {
+public class ContextawareInteractionIndicator implements InteractionIndicator {
 
     /**
      * The field <tt>context</tt> contains the interpreter context.
@@ -40,13 +40,13 @@ public class ContextawareInteractionProvider implements InteractionProvider {
     /**
      * Getter for the interaction mode.
      *
-     * @return the interaction mode
+     * @return <code>true</code> iff interaction with the user is desirable
      *
-     * @see org.extex.util.resource.InteractionProvider#getInteraction()
+     * @see org.extex.resource.InteractionIndicator#isInteractive()
      */
-    public Interaction getInteraction() {
+    public boolean isInteractive() {
 
-        return context.getInteraction();
+        return context.getInteraction() == Interaction.ERRORSTOPMODE;
     }
 
     /**

@@ -20,23 +20,23 @@
 package org.extex.typesetter;
 
 import org.extex.backend.BackendDriver;
+import org.extex.framework.AbstractFactory;
+import org.extex.framework.configuration.Configurable;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.context.Context;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.pageBuilder.PageBuilder;
 import org.extex.typesetter.paragraphBuilder.ParagraphBuilder;
 import org.extex.typesetter.type.node.factory.NodeFactory;
 import org.extex.typesetter.type.page.PageFactoryImpl;
-import org.extex.util.framework.AbstractFactory;
-import org.extex.util.framework.configuration.Configurable;
-import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-import org.extex.util.framework.logger.LogEnabled;
 
 /**
  * This is the factory for instances of
  * {@link org.extex.typesetter.Typesetter Typesetter}.
  * This factory inherits its properties from the
- * {@link org.extex.util.framework.AbstractFactory AbstractFactory}. Among them
+ * {@link org.extex.framework.AbstractFactory AbstractFactory}. Among them
  * the support for configuration and logging.
  *
  * <h3>Configuration</h3>
@@ -72,11 +72,11 @@ import org.extex.util.framework.logger.LogEnabled;
  * </p>
  * <p>
  *  The configuration is passed down to the new instance if it implements the
- *  interface {@link org.extex.util.framework.configuration.Configurable Configurable}.
+ *  interface {@link org.extex.framework.configuration.Configurable Configurable}.
  * </p>
  * <p>
  *  If the class implements the interface
- *  {@link org.extex.util.framework.logger.LogEnabled LogEnabled} then a logger
+ *  {@link org.extex.framework.logger.LogEnabled LogEnabled} then a logger
  *  is passed to the new instance. For this purpose the factory itself is
  *  log enabled to receive the logger.
  * </p>

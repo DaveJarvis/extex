@@ -24,16 +24,16 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.extex.framework.AbstractFactory;
+import org.extex.framework.Registrar;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.language.Language;
 import org.extex.language.LanguageManager;
 import org.extex.language.ModifiableLanguage;
 import org.extex.language.ligature.LigatureBuilder;
 import org.extex.language.word.WordTokenizer;
-import org.extex.util.framework.AbstractFactory;
-import org.extex.util.framework.Registrar;
-import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.i18n.Localizer;
-import org.extex.util.framework.i18n.LocalizerFactory;
 
 /**
  * This class manages the <code>HyphenationTable</code>s. It is a container
@@ -45,7 +45,7 @@ import org.extex.util.framework.i18n.LocalizerFactory;
  * This instance is configurable. The configuration is used to select the
  * appropriate class and optional parameters for a requested instance. In this
  * respect this class makes best use of the infrastructure of the
- * {@link org.extex.util.framework.AbstractFactory AbstractFactory}.
+ * {@link org.extex.framework.AbstractFactory AbstractFactory}.
  *
  *
  *

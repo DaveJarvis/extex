@@ -19,10 +19,10 @@
 
 package org.extex.unit.base.register.font;
 
+import org.extex.core.count.CountParser;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
-import org.extex.interpreter.type.count.Count;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.noad.util.MathFontParameter;
 
@@ -71,7 +71,7 @@ public class NumberedFont extends NamedFont {
             final Typesetter typesetter) throws InterpreterException {
 
         return MathFontParameter.key(context, getName(), //
-            Long.toString(Count.scanNumber(context, source, typesetter)));
+            Long.toString(CountParser.scanNumber(context, source, typesetter)));
     }
 
 }

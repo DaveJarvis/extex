@@ -21,7 +21,8 @@ package org.extex.language.hyphenation.liang;
 
 import java.util.logging.Logger;
 
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.core.UnicodeChar;
+import org.extex.core.UnicodeCharList;
 import org.extex.language.hyphenation.base.BaseHyphenationTable;
 import org.extex.language.hyphenation.exception.DuplicateHyphenationException;
 import org.extex.language.hyphenation.exception.HyphenationException;
@@ -31,8 +32,7 @@ import org.extex.language.hyphenation.exception.ImmutableHyphenationException;
 import org.extex.scanner.type.token.LetterToken;
 import org.extex.scanner.type.token.OtherToken;
 import org.extex.scanner.type.token.Token;
-import org.extex.type.UnicodeChar;
-import org.extex.type.UnicodeCharList;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.TypesetterOptions;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
@@ -238,7 +238,7 @@ public class LiangsHyphenationTable extends BaseHyphenationTable {
      * @see org.extex.language.hyphenation.Hyphenator#hyphenate(
      *      org.extex.typesetter.type.NodeList,
      *      org.extex.typesetter.TypesetterOptions,
-     *      org.extex.type.UnicodeChar,
+     *      org.extex.core.UnicodeChar,
      *      int,
      *      boolean,
      *      org.extex.typesetter.type.node.factory.NodeFactory)
@@ -281,7 +281,7 @@ public class LiangsHyphenationTable extends BaseHyphenationTable {
      *      org.extex.typesetter.type.NodeList,
      *      org.extex.typesetter.TypesetterOptions,
      *      int,
-     *      org.extex.type.UnicodeCharList,
+     *      org.extex.core.UnicodeCharList,
      *      org.extex.typesetter.type.node.CharNode)
      */
     public boolean hyphenateOne(final NodeList nodelist,

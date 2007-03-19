@@ -19,10 +19,10 @@
 
 package org.extex;
 
-import org.extex.util.framework.RegistrarException;
-import org.extex.util.framework.RegistrarObserver;
-import org.extex.util.resource.ResourceConsumer;
-import org.extex.util.resource.ResourceFinder;
+import org.extex.framework.RegistrarException;
+import org.extex.framework.RegistrarObserver;
+import org.extex.resource.ResourceConsumer;
+import org.extex.resource.ResourceFinder;
 
 /**
  * This class is used to inject a resource finder when a class is loaded
@@ -63,7 +63,7 @@ public class ResourceFinderInjector implements RegistrarObserver {
      *
      * @throws RegistrarException in case of an error during configuration
      *
-     * @see org.extex.util.framework.RegistrarObserver#reconnect(java.lang.Object)
+     * @see org.extex.framework.RegistrarObserver#reconnect(java.lang.Object)
      */
     public Object reconnect(final Object object) throws RegistrarException {
 

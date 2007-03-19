@@ -22,17 +22,17 @@ package org.extex.interpreter.max;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.extex.interpreter.Namespace;
-import org.extex.interpreter.Tokenizer;
+import org.extex.core.Locator;
+import org.extex.core.UnicodeChar;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.scanner.TokenStream;
+import org.extex.scanner.Tokenizer;
 import org.extex.scanner.exception.ScannerException;
 import org.extex.scanner.type.CatcodeException;
+import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
-import org.extex.type.Locator;
-import org.extex.type.UnicodeChar;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides a token source which is fed from a string.
@@ -105,7 +105,7 @@ public class StringSource extends Moritz {
          *
          * @see org.extex.scanner.TokenStream#get(
          *      org.extex.scanner.type.token.TokenFactory,
-         *      org.extex.interpreter.Tokenizer)
+         *      org.extex.scanner.Tokenizer)
          */
         public Token get(final TokenFactory factory, final Tokenizer tokenizer)
                 throws ScannerException {

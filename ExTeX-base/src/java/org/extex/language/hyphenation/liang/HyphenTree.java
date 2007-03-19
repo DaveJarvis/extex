@@ -25,8 +25,8 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.logging.Logger;
 
+import org.extex.core.UnicodeChar;
 import org.extex.language.hyphenation.exception.DuplicateHyphenationException;
-import org.extex.type.UnicodeChar;
 
 /**
  * <h2>Data Structures for Liang's Algorithm</h2>

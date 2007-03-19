@@ -47,8 +47,24 @@ import org.extex.backend.outputStream.OutputFactory;
 import org.extex.backend.outputStream.OutputStreamFactory;
 import org.extex.color.ColorConverter;
 import org.extex.color.ColorConverterFacory;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.DimenParser;
+import org.extex.core.exception.GeneralException;
+import org.extex.core.exception.NotObservableException;
 import org.extex.font.CoreFontFactory;
 import org.extex.font.exception.FontException;
+import org.extex.framework.Registrar;
+import org.extex.framework.configuration.Configurable;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.ConfigurationFactory;
+import org.extex.framework.configuration.exception.ConfigurationClassNotFoundException;
+import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.configuration.exception.ConfigurationInstantiationException;
+import org.extex.framework.configuration.exception.ConfigurationMissingAttributeException;
+import org.extex.framework.configuration.exception.ConfigurationNoSuchMethodException;
+import org.extex.framework.configuration.exception.ConfigurationSyntaxException;
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.ErrorHandler;
 import org.extex.interpreter.ErrorHandlerFactory;
 import org.extex.interpreter.Interpreter;
@@ -65,15 +81,18 @@ import org.extex.interpreter.interaction.InteractionUnknownException;
 import org.extex.interpreter.loader.LoaderException;
 import org.extex.interpreter.max.StringSource;
 import org.extex.interpreter.max.TokenFactoryFactory;
-import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.interpreter.type.font.Font;
 import org.extex.interpreter.type.font.FontImpl;
 import org.extex.interpreter.type.font.ModifiableFont;
 import org.extex.interpreter.unit.LoadUnit;
 import org.extex.language.LanguageManager;
 import org.extex.language.LanguageManagerFactory;
-import org.extex.main.logging.LogFormatter;
+import org.extex.logging.LogFormatter;
 import org.extex.main.observer.InteractionModeObserver;
+import org.extex.resource.PropertyConfigurable;
+import org.extex.resource.ResourceConsumer;
+import org.extex.resource.ResourceFinder;
+import org.extex.resource.ResourceFinderFactory;
 import org.extex.scanner.TokenStream;
 import org.extex.scanner.stream.TokenStreamFactory;
 import org.extex.scanner.stream.TokenStreamOptions;
@@ -83,24 +102,6 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.TypesetterFactory;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.output.OutputRoutineFactory;
-import org.extex.util.exception.GeneralException;
-import org.extex.util.exception.NotObservableException;
-import org.extex.util.framework.Registrar;
-import org.extex.util.framework.configuration.Configurable;
-import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.configuration.ConfigurationFactory;
-import org.extex.util.framework.configuration.exception.ConfigurationClassNotFoundException;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-import org.extex.util.framework.configuration.exception.ConfigurationInstantiationException;
-import org.extex.util.framework.configuration.exception.ConfigurationMissingAttributeException;
-import org.extex.util.framework.configuration.exception.ConfigurationNoSuchMethodException;
-import org.extex.util.framework.configuration.exception.ConfigurationSyntaxException;
-import org.extex.util.framework.i18n.Localizer;
-import org.extex.util.framework.i18n.LocalizerFactory;
-import org.extex.util.resource.PropertyConfigurable;
-import org.extex.util.resource.ResourceConsumer;
-import org.extex.util.resource.ResourceFinder;
-import org.extex.util.resource.ResourceFinderFactory;
 
 /**
  * This is the programmatic interface to the <logo>ExTeX</logo> functionality.
@@ -774,8 +775,8 @@ public class ExTeX {
      * The field <tt>iProvider</tt> contains the bridge from the resource
      * finder to the context.
      */
-    private ContextawareInteractionProvider iProvider =
-            new ContextawareInteractionProvider();
+    private ContextawareInteractionIndicator iProvider =
+            new ContextawareInteractionIndicator();
 
     /**
      * The field <tt>localizer</tt> contains the localizer. It is initiated
@@ -1694,8 +1695,8 @@ public class ExTeX {
                 "ExTeX.InvalidPageSize", page));
         }
         try {
-            Dimen width = Dimen.parse(context, new StringSource(w), null);
-            Dimen height = Dimen.parse(context, new StringSource(h), null);
+            Dimen width = DimenParser.parse(context, new StringSource(w), null);
+            Dimen height = DimenParser.parse(context, new StringSource(h), null);
 
             context.setDimen("mediawidth", width, true);
             context.setDimen("mediaheight", height, true);

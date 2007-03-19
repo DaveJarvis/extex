@@ -19,10 +19,10 @@
 
 package org.extex.language.ligature.impl;
 
+import org.extex.core.UnicodeChar;
 import org.extex.interpreter.type.font.Font;
 import org.extex.language.hyphenation.exception.HyphenationException;
 import org.extex.language.ligature.LigatureBuilder;
-import org.extex.type.UnicodeChar;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.node.CharNode;
 
@@ -71,8 +71,8 @@ public class EmptyLigatureBuilder implements LigatureBuilder {
 
     /**
      * @see org.extex.language.ligature.LigatureBuilder#getLigature(
-     *      org.extex.type.UnicodeChar,
-     *      org.extex.type.UnicodeChar,
+     *      org.extex.core.UnicodeChar,
+     *      org.extex.core.UnicodeChar,
      *      org.extex.interpreter.type.font.Font)
      */
     public UnicodeChar getLigature(final UnicodeChar c1, final UnicodeChar c2,

@@ -19,8 +19,8 @@
 
 package org.extex.typesetter.paragraphBuilder;
 
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
 
 /**
  * This paragraph shape represents a block with hanging indentation.

@@ -24,12 +24,16 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.extex.core.count.FixedCount;
+import org.extex.core.count.ImmutableCount;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.DimenParser;
+import org.extex.core.exception.GeneralException;
+import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.max.StringSource;
-import org.extex.interpreter.type.count.FixedCount;
-import org.extex.interpreter.type.count.ImmutableCount;
-import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.node.AdjustNode;
@@ -53,9 +57,6 @@ import org.extex.typesetter.type.node.SpecialNode;
 import org.extex.typesetter.type.node.VerticalListNode;
 import org.extex.typesetter.type.node.VirtualCharNode;
 import org.extex.typesetter.type.node.WhatsItNode;
-import org.extex.util.exception.GeneralException;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-import org.extex.util.framework.logger.LogEnabled;
 
 /**
  * This class provides a factory for page instances.
@@ -106,7 +107,7 @@ import org.extex.util.framework.logger.LogEnabled;
  *      &rarr; &lang;optional prefix&rang; <tt>\mediawidth</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@link
- *        org.extex.interpreter.type.dimen.Dimen#parse(Context,TokenSource,Typesetter)
+ *        org.extex.core.dimen.Dimen#parse(Context,TokenSource,Typesetter)
  *        &lang;dimen value&rang;}
  *
  *    &lang;optional prefix&rang;
@@ -138,7 +139,7 @@ import org.extex.util.framework.logger.LogEnabled;
  *      &rarr; &lang;optional prefix&rang; <tt>\mediaheight</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@link
- *        org.extex.interpreter.type.dimen.Dimen#parse(Context,TokenSource,Typesetter)
+ *        org.extex.core.dimen.Dimen#parse(Context,TokenSource,Typesetter)
  *        &lang;dimen value&rang;}
  *
  *    &lang;optional prefix&rang;
@@ -176,7 +177,7 @@ import org.extex.util.framework.logger.LogEnabled;
  *      &rarr; &lang;optional prefix&rang; <tt>\hoffset</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@link
- *        org.extex.interpreter.type.dimen.Dimen#parse(Context,TokenSource,Typesetter)
+ *        org.extex.core.dimen.Dimen#parse(Context,TokenSource,Typesetter)
  *        &lang;dimen value&rang;}
  *
  *    &lang;optional prefix&rang;
@@ -214,7 +215,7 @@ import org.extex.util.framework.logger.LogEnabled;
  *      &rarr; &lang;optional prefix&rang; <tt>\voffset</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@link
- *        org.extex.interpreter.type.dimen.Dimen#parse(Context,TokenSource,Typesetter)
+ *        org.extex.core.dimen.Dimen#parse(Context,TokenSource,Typesetter)
  *        &lang;dimen value&rang;}
  *
  *    &lang;optional prefix&rang;
@@ -740,9 +741,9 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
                     Matcher m = sizePattern.matcher(text);
                     if (m.matches()) {
                         try {
-                            Dimen width = Dimen.parse(context, //
+                            Dimen width = DimenParser.parse(context, //
                                 new StringSource(m.group(1)), typesetter);
-                            Dimen height = Dimen.parse(context, //
+                            Dimen height = DimenParser.parse(context, //
                                 new StringSource(m.group(2)), typesetter);
                             page.setMediaWidth(width);
                             page.setMediaHeight(height);
@@ -777,7 +778,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
     }
 
     /**
-     * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
     public void enableLogging(final Logger log) {

@@ -35,13 +35,13 @@ import java.util.zip.GZIPOutputStream;
 import org.extex.backend.documentWriter.exception.DocumentWriterException;
 import org.extex.backend.outputStream.NamedOutputStream;
 import org.extex.backend.outputStream.OutputStreamFactory;
+import org.extex.framework.Registrar;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.type.OutputStreamConsumer;
 import org.extex.language.Language;
 import org.extex.language.hyphenation.exception.HyphenationException;
-import org.extex.util.framework.Registrar;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-import org.extex.util.resource.ResourceConsumer;
-import org.extex.util.resource.ResourceFinder;
+import org.extex.resource.ResourceConsumer;
+import org.extex.resource.ResourceFinder;
 
 /**
  * This class manages the <code>Language</code>s. It is a container
@@ -65,7 +65,7 @@ import org.extex.util.resource.ResourceFinder;
  * This instance is configurable. The configuration is used to select the
  * appropriate class and optional parameters for a requested instance. In this
  * respect this class makes best use of the infrastructure of the
- * {@link org.extex.util.framework.AbstractFactory AbstractFactory}.
+ * {@link org.extex.framework.AbstractFactory AbstractFactory}.
  *
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -319,8 +319,8 @@ public class LoadingLanguageManager extends BaseLanguageManager
      *
      * @param finder the resource finder
      *
-     * @see org.extex.util.resource.ResourceConsumer#setResourceFinder(
-     *      org.extex.util.resource.ResourceFinder)
+     * @see org.extex.resource.ResourceConsumer#setResourceFinder(
+     *      org.extex.resource.ResourceFinder)
      */
     public void setResourceFinder(final ResourceFinder finder) {
 

@@ -20,16 +20,18 @@
 package org.extex.typesetter.impl;
 
 import org.extex.backend.BackendDriver;
+import org.extex.core.Locator;
+import org.extex.core.UnicodeChar;
+import org.extex.core.count.Count;
+import org.extex.core.count.FixedCount;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.glue.FixedGlue;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.tc.TypesettingContext;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.count.FixedCount;
-import org.extex.interpreter.type.dimen.FixedDimen;
-import org.extex.interpreter.type.glue.FixedGlue;
 import org.extex.scanner.type.token.Token;
-import org.extex.type.Locator;
-import org.extex.type.UnicodeChar;
 import org.extex.typesetter.ListMaker;
 import org.extex.typesetter.Mode;
 import org.extex.typesetter.ParagraphObserver;
@@ -45,8 +47,6 @@ import org.extex.typesetter.paragraphBuilder.ParagraphBuilder;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.node.factory.NodeFactory;
-import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * The dummy typesetter which does nothing but provide the appropriate
@@ -73,7 +73,7 @@ public class NullTypesetterImpl implements Typesetter {
 
     /**
      * @see org.extex.typesetter.ListMaker#add(
-     *      org.extex.interpreter.type.glue.FixedGlue)
+     *      org.extex.core.glue.FixedGlue)
      */
     public void add(final FixedGlue g) throws TypesetterException {
 
@@ -130,7 +130,7 @@ public class NullTypesetterImpl implements Typesetter {
      *
      * @see org.extex.typesetter.ListMaker#addSpace(
      *      org.extex.interpreter.context.tc.TypesettingContext,
-     *      org.extex.interpreter.type.count.Count)
+     *      org.extex.core.count.Count)
      */
     public void addSpace(final TypesettingContext typesettingContext,
             final Count spacefactor)
@@ -193,8 +193,8 @@ public class NullTypesetterImpl implements Typesetter {
      *
      * @throws ConfigurationException in case that something went wrong
      *
-     * @see org.extex.util.framework.configuration.Configurable#configure(
-     *     org.extex.util.framework.configuration.Configuration)
+     * @see org.extex.framework.configuration.Configurable#configure(
+     *     org.extex.framework.configuration.Configuration)
      */
     public void configure(final Configuration config) {
 
@@ -213,7 +213,7 @@ public class NullTypesetterImpl implements Typesetter {
      * @see org.extex.typesetter.ListMaker#cr(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.context.tc.TypesettingContext,
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar)
      */
     public void cr(final Context context, final TypesettingContext tc,
             final UnicodeChar uc) throws TypesetterException {
@@ -231,7 +231,7 @@ public class NullTypesetterImpl implements Typesetter {
      * @throws TypesetterException in case of an error
      *
      * @see org.extex.typesetter.Typesetter#ensureHorizontalMode(
-     *      org.extex.type.Locator)
+     *      org.extex.core.Locator)
      */
     public ListMaker ensureHorizontalMode(Locator locator) {
 
@@ -413,11 +413,11 @@ public class NullTypesetterImpl implements Typesetter {
      * @throws TypesetterException in case of an error
      *
      * @see org.extex.typesetter.ListMaker#letter(
-     *      org.extex.type.UnicodeChar,
+     *      org.extex.core.UnicodeChar,
      *      org.extex.interpreter.context.tc.TypesettingContext,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      org.extex.type.Locator)
+     *      org.extex.core.Locator)
      */
     public boolean letter(final UnicodeChar uc, final TypesettingContext tc,
             final Context context, TokenSource source, final Locator locator)
@@ -584,7 +584,7 @@ public class NullTypesetterImpl implements Typesetter {
      * @throws TypesetterUnsupportedException in case of an error
      *
      * @see org.extex.typesetter.ListMaker#setPrevDepth(
-     *     org.extex.interpreter.type.dimen.FixedDimen)
+     *     org.extex.core.dimen.FixedDimen)
      */
     public void setPrevDepth(final FixedDimen pd) {
 
@@ -600,7 +600,7 @@ public class NullTypesetterImpl implements Typesetter {
      * @throws InvalidSpacefactorException in case of an invalid space factor
      *
      * @see org.extex.typesetter.ListMaker#setSpacefactor(
-     *     org.extex.interpreter.type.count.FixedCount)
+     *     org.extex.core.count.FixedCount)
      */
     public void setSpacefactor(final FixedCount sf)
             throws InvalidSpacefactorException {

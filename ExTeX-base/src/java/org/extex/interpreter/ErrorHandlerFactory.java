@@ -19,15 +19,15 @@
 
 package org.extex.interpreter;
 
+import org.extex.framework.AbstractFactory;
+import org.extex.framework.configuration.Configuration;
 import org.extex.main.errorHandler.editHandler.EditHandler;
-import org.extex.util.framework.AbstractFactory;
-import org.extex.util.framework.configuration.Configuration;
 
 /**
  * This is the factory for instances of
  * {@link org.extex.interpreter.ErrorHandler ErrorHandler}.
  * This factory inherits its properties from the
- * {@link org.extex.util.framework.AbstractFactory AbstractFactory}. Among them
+ * {@link org.extex.framework.AbstractFactory AbstractFactory}. Among them
  * the support for configuration and logging.
  *
  * <h3>Configuration</h3>
@@ -57,11 +57,11 @@ import org.extex.util.framework.configuration.Configuration;
  * </p>
  * <p>
  *  The configuration is passed down to the new instance if it implements the
- *  interface {@link org.extex.util.framework.configuration.Configurable Configurable}.
+ *  interface {@link org.extex.framework.configuration.Configurable Configurable}.
  * </p>
  * <p>
  *  If the class implements the interface
- *  {@link org.extex.util.framework.logger.LogEnabled LogEnabled} then a logger
+ *  {@link org.extex.framework.logger.LogEnabled LogEnabled} then a logger
  *  is passed to the new instance. For this purpose the factory itself is
  *  log enabled to receive the logger.
  * </p>

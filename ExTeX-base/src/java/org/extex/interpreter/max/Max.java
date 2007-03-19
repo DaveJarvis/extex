@@ -27,13 +27,28 @@ import java.util.Iterator;
 import java.util.logging.Logger;
 
 import org.extex.backend.outputStream.OutputStreamFactory;
+import org.extex.core.Switch;
+import org.extex.core.UnicodeChar;
+import org.extex.core.count.Count;
+import org.extex.core.exception.GeneralException;
 import org.extex.font.CoreFontFactory;
+import org.extex.framework.Registrar;
+import org.extex.framework.RegistrarObserver;
+import org.extex.framework.configuration.Configurable;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.ConfigurationFactory;
+import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.configuration.exception.ConfigurationMissingException;
+import org.extex.framework.configuration.exception.ConfigurationWrapperException;
+import org.extex.framework.i18n.Localizable;
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
+import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.Conditional;
 import org.extex.interpreter.ErrorHandler;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.FlagsImpl;
 import org.extex.interpreter.Interpreter;
-import org.extex.interpreter.Namespace;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.group.GroupType;
@@ -79,14 +94,13 @@ import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.OutputStreamConsumer;
 import org.extex.interpreter.type.PrefixCode;
 import org.extex.interpreter.type.ProtectedCode;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.interpreter.unit.LoadUnit;
 import org.extex.interpreter.unit.UnitInfo;
 import org.extex.language.LanguageManager;
 import org.extex.scanner.TokenStream;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.CatcodeException;
+import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.token.ActiveCharacterToken;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.ControlSequenceToken;
@@ -103,24 +117,10 @@ import org.extex.scanner.type.token.SupMarkToken;
 import org.extex.scanner.type.token.TabMarkToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenVisitor;
-import org.extex.type.UnicodeChar;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.base.register.count.util.IntegerCode;
-import org.extex.util.Switch;
-import org.extex.util.exception.GeneralException;
-import org.extex.util.framework.Registrar;
-import org.extex.util.framework.RegistrarObserver;
-import org.extex.util.framework.configuration.Configurable;
-import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.configuration.ConfigurationFactory;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-import org.extex.util.framework.configuration.exception.ConfigurationMissingException;
-import org.extex.util.framework.configuration.exception.ConfigurationWrapperException;
-import org.extex.util.framework.i18n.Localizable;
-import org.extex.util.framework.i18n.Localizer;
-import org.extex.util.framework.i18n.LocalizerFactory;
-import org.extex.util.framework.logger.LogEnabled;
 
 /**
  * This is a reference implementation for a <b>MA</b>cro e<b>X</b>pander. The
@@ -146,7 +146,7 @@ import org.extex.util.framework.logger.LogEnabled;
  *      &rarr; <tt>\ignorevoid</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.interpreter.type.count.Count#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.core.count.Count#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}  </pre>
  *
  * <h4>Examples</h4>
@@ -632,8 +632,8 @@ public abstract class Max
      *
      * @param theLocalizer the getLocalizer() to use
      *
-     * @see org.extex.util.framework.i18n.Localizable#enableLocalization(
-     *      org.extex.util.framework.i18n.Localizer)
+     * @see org.extex.framework.i18n.Localizable#enableLocalization(
+     *      org.extex.framework.i18n.Localizer)
      */
     public void enableLocalization(final Localizer theLocalizer) {
 
@@ -645,7 +645,7 @@ public abstract class Max
      *
      * @param theLogger the new logger
      *
-     * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *         java.util.logging.Logger)
      */
     public void enableLogging(final Logger theLogger) {
@@ -793,7 +793,7 @@ public abstract class Max
      * @throws ConfigurationException in case of an configuration problem
      *
      * @see org.extex.interpreter.Interpreter#expand(
-     *      org.extex.interpreter.type.tokens.Tokens,
+     *      org.extex.scanner.type.tokens.Tokens,
      *      org.extex.typesetter.Typesetter)
      */
     public Tokens expand(final Tokens tokens, final Typesetter typesetter)
@@ -983,7 +983,7 @@ public abstract class Max
      *      &rarr; <tt>\day</tt> {@linkplain
      *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
      *        &lang;equals&rang;} {@linkplain
-     *        org.extex.interpreter.type.count.Count#scanNumber(Context,TokenSource,Typesetter)
+     *        org.extex.core.count.Count#scanNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;}  </pre>
      *
      * <h4>Examples</h4>
@@ -1015,7 +1015,7 @@ public abstract class Max
      *      &rarr; <tt>\month</tt> {@linkplain
      *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
      *        &lang;equals&rang;} {@linkplain
-     *        org.extex.interpreter.type.count.Count#scanNumber(Context,TokenSource,Typesetter)
+     *        org.extex.core.count.Count#scanNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;}  </pre>
      *
      * <h4>Examples</h4>
@@ -1046,7 +1046,7 @@ public abstract class Max
      *      &rarr; <tt>\year</tt> {@linkplain
      *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
      *        &lang;equals&rang;} {@linkplain
-     *        org.extex.interpreter.type.count.Count#scanNumber(Context,TokenSource,Typesetter)
+     *        org.extex.core.count.Count#scanNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;}  </pre>
      *
      * <h4>Examples</h4>
@@ -1079,7 +1079,7 @@ public abstract class Max
      *      &rarr; <tt>\time</tt> {@linkplain
      *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
      *        &lang;equals&rang;} {@linkplain
-     *        org.extex.interpreter.type.count.Count#scanNumber(Context,TokenSource,Typesetter)
+     *        org.extex.core.count.Count#scanNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;}  </pre>
      *
      * <h4>Examples</h4>
@@ -1137,7 +1137,7 @@ public abstract class Max
         Object ref1 = Registrar.register(new RegistrarObserver() {
 
             /**
-             * @see org.extex.util.framework.RegistrarObserver#reconnect(
+             * @see org.extex.framework.RegistrarObserver#reconnect(
              *      java.lang.Object)
              */
             public Object reconnect(final Object object) {
@@ -1150,7 +1150,7 @@ public abstract class Max
         Object ref2 = Registrar.register(new RegistrarObserver() {
 
             /**
-             * @see org.extex.util.framework.RegistrarObserver#reconnect(
+             * @see org.extex.framework.RegistrarObserver#reconnect(
              *      java.lang.Object)
              */
             public Object reconnect(final Object object) {
@@ -1493,7 +1493,8 @@ public abstract class Max
      */
     public void setJobname(final String jobname) throws GeneralException {
 
-        context.setToks("jobname", new Tokens(context, jobname), true);
+        context.setToks("jobname", //
+            context.getTokenFactory().toTokens( jobname), true);
     }
 
     /**
@@ -1601,8 +1602,7 @@ public abstract class Max
      *      java.lang.Object)
      */
     public Object visitEscape(final ControlSequenceToken token,
-            final Object ignore)
-            throws InterpreterException {
+            final Object ignore) throws InterpreterException {
 
         Code code = context.getCode(token);
         if (observersMacro != null) {

@@ -26,15 +26,16 @@ import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.extex.core.UnicodeChar;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.glue.FixedGlue;
+import org.extex.core.glue.Glue;
+import org.extex.core.glue.WideGlue;
+import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.context.tc.TypesettingContext;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.FixedDimen;
-import org.extex.interpreter.type.glue.FixedGlue;
-import org.extex.interpreter.type.glue.Glue;
-import org.extex.interpreter.type.glue.WideGlue;
 import org.extex.language.hyphenation.exception.HyphenationException;
-import org.extex.main.logging.LogFormatter;
-import org.extex.type.UnicodeChar;
+import org.extex.logging.LogFormatter;
 import org.extex.typesetter.Badness;
 import org.extex.typesetter.Discardable;
 import org.extex.typesetter.TypesetterOptions;
@@ -54,7 +55,6 @@ import org.extex.typesetter.type.node.KernNode;
 import org.extex.typesetter.type.node.PenaltyNode;
 import org.extex.typesetter.type.node.VerticalListNode;
 import org.extex.typesetter.type.node.factory.NodeFactory;
-import org.extex.util.framework.logger.LogEnabled;
 
 /**
  * This class provides a paragraph builder.
@@ -438,7 +438,7 @@ public class ParagraphBuilderImpl implements ParagraphBuilder, LogEnabled {
     }
 
     /**
-     * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
     public void enableLogging(final Logger theLogger) {

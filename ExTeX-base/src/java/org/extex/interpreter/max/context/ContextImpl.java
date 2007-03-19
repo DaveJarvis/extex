@@ -32,11 +32,29 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.extex.backend.documentWriter.DocumentWriterOptions;
+import org.extex.core.Locator;
+import org.extex.core.UnicodeChar;
+import org.extex.core.count.Count;
+import org.extex.core.count.FixedCount;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.exception.GeneralException;
+import org.extex.core.glue.FixedGlue;
+import org.extex.core.glue.Glue;
+import org.extex.core.muskip.Muskip;
 import org.extex.font.CoreFontFactory;
+import org.extex.framework.Registrar;
+import org.extex.framework.configuration.Configurable;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.configuration.exception.ConfigurationMissingException;
+import org.extex.framework.configuration.exception.ConfigurationWrapperException;
+import org.extex.framework.i18n.Localizable;
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.Conditional;
 import org.extex.interpreter.ConditionalSwitch;
 import org.extex.interpreter.TokenSource;
-import org.extex.interpreter.Tokenizer;
 import org.extex.interpreter.context.Color;
 import org.extex.interpreter.context.ContextInternals;
 import org.extex.interpreter.context.group.GroupInfo;
@@ -68,44 +86,26 @@ import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.interaction.Interaction;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.box.Box;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.count.FixedCount;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.file.InFile;
 import org.extex.interpreter.type.file.OutFile;
 import org.extex.interpreter.type.font.Font;
-import org.extex.interpreter.type.glue.FixedGlue;
-import org.extex.interpreter.type.glue.Glue;
 import org.extex.interpreter.type.math.MathCode;
 import org.extex.interpreter.type.math.MathDelimiter;
-import org.extex.interpreter.type.muskip.Muskip;
-import org.extex.interpreter.type.tokens.FixedTokens;
-import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.interpreter.unit.UnitInfo;
 import org.extex.language.Language;
 import org.extex.language.LanguageManager;
 import org.extex.scanner.TokenStream;
+import org.extex.scanner.Tokenizer;
 import org.extex.scanner.stream.TokenStreamOptions;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
-import org.extex.type.Locator;
-import org.extex.type.UnicodeChar;
+import org.extex.scanner.type.tokens.FixedTokens;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.TypesetterOptions;
 import org.extex.typesetter.paragraphBuilder.ParagraphShape;
-import org.extex.util.exception.GeneralException;
-import org.extex.util.framework.Registrar;
-import org.extex.util.framework.configuration.Configurable;
-import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-import org.extex.util.framework.configuration.exception.ConfigurationMissingException;
-import org.extex.util.framework.configuration.exception.ConfigurationWrapperException;
-import org.extex.util.framework.i18n.Localizable;
-import org.extex.util.framework.i18n.Localizer;
-import org.extex.util.framework.logger.LogEnabled;
 
 /**
  * This is a reference implementation for an interpreter context.
@@ -508,8 +508,8 @@ public class ContextImpl
      *
      * @throws ConfigurationException in case that something went wrong
      *
-     * @see org.extex.util.framework.configuration.Configurable#configure(
-     *      org.extex.util.framework.configuration.Configuration)
+     * @see org.extex.framework.configuration.Configurable#configure(
+     *      org.extex.framework.configuration.Configuration)
      */
     public void configure(final Configuration configuration) {
 
@@ -561,8 +561,8 @@ public class ContextImpl
      *
      * @param theLocalizer the localizer to use
      *
-     * @see org.extex.util.framework.i18n.Localizable#enableLocalization(
-     *      org.extex.util.framework.i18n.Localizer)
+     * @see org.extex.framework.i18n.Localizable#enableLocalization(
+     *      org.extex.framework.i18n.Localizer)
      */
     public void enableLocalization(final Localizer theLocalizer) {
 
@@ -574,7 +574,7 @@ public class ContextImpl
      *
      * @param logger the logger to use
      *
-     * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
     public void enableLogging(final Logger logger) {
@@ -702,7 +702,7 @@ public class ContextImpl
      *
      * @return the catcode for the character
      *
-     * @see org.extex.interpreter.Tokenizer#getCatcode(org.extex.type.UnicodeChar)
+     * @see org.extex.scanner.Tokenizer#getCatcode(org.extex.core.UnicodeChar)
      */
     public Catcode getCatcode(final UnicodeChar uc) {
 
@@ -745,7 +745,7 @@ public class ContextImpl
     }
 
     /**
-     * Getter for the {@link org.extex.interpreter.type.count.Count count}
+     * Getter for the {@link org.extex.core.count.Count count}
      * register. Count registers are named, either with a number or an
      * arbitrary string.
      * <p>
@@ -788,7 +788,7 @@ public class ContextImpl
      * @return the delimiter code for the given character
      *
      * @see org.extex.interpreter.context.Context#getDelcode(
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar)
      */
     public MathDelimiter getDelcode(final UnicodeChar c) {
 
@@ -1036,7 +1036,7 @@ public class ContextImpl
      * @return the lower case equivalent or null if none exists
      *
      * @see org.extex.interpreter.context.Context#getLccode(
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar)
      */
     public UnicodeChar getLccode(final UnicodeChar uc) {
 
@@ -1064,7 +1064,7 @@ public class ContextImpl
      * @return the math code
      *
      * @see org.extex.interpreter.context.Context#getMathcode(
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar)
      */
     public MathCode getMathcode(final UnicodeChar uc) {
 
@@ -1133,7 +1133,7 @@ public class ContextImpl
      * @return the space factor code.
      *
      * @see org.extex.interpreter.context.Context#getSfcode(
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar)
      */
     public Count getSfcode(final UnicodeChar uc) {
 
@@ -1266,7 +1266,7 @@ public class ContextImpl
 
     /**
      * @see org.extex.interpreter.context.Context#getUccode(
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar)
      */
     public UnicodeChar getUccode(final UnicodeChar lc) {
 
@@ -1324,7 +1324,7 @@ public class ContextImpl
      *
      * @see org.extex.interpreter.context.ContextGroup#openGroup(
      *      org.extex.interpreter.context.group.GroupType,
-     *      org.extex.type.Locator,
+     *      org.extex.core.Locator,
      *      org.extex.scanner.type.token.Token)
      */
     public void openGroup(final GroupType type, final Locator locator,
@@ -1403,7 +1403,7 @@ public class ContextImpl
      * @param neg negation indicator
      *
      * @see org.extex.interpreter.context.Context#pushConditional(
-     *      org.extex.type.Locator,
+     *      org.extex.core.Locator,
      *      boolean,
      *      org.extex.interpreter.type.Code,
      *      long,
@@ -1981,7 +1981,7 @@ public class ContextImpl
      * @throws HelpingException in case of an error
      *
      * @see org.extex.interpreter.context.Context#setCatcode(
-     *      org.extex.type.UnicodeChar,
+     *      org.extex.core.UnicodeChar,
      *      org.extex.scanner.type.Catcode, boolean)
      */
     public void setCatcode(final UnicodeChar c, final Catcode catcode,
@@ -2024,7 +2024,7 @@ public class ContextImpl
     }
 
     /**
-     * Setter for the {@link org.extex.interpreter.type.count.Count count}
+     * Setter for the {@link org.extex.core.count.Count count}
      * register in all requested groups. Count registers are named, either with
      * a number or an arbitrary string. The numbered registers where limited to
      * 256 in <logo>TeX</logo>. This restriction does no longer hold for
@@ -2083,7 +2083,7 @@ public class ContextImpl
      *            groups; otherwise the current group is affected only
      *
      * @see org.extex.interpreter.context.Context#setDelcode(
-     *      org.extex.type.UnicodeChar,
+     *      org.extex.core.UnicodeChar,
      *      org.extex.interpreter.type.math.MathDelimiter,
      *      boolean)
      */
@@ -2094,7 +2094,7 @@ public class ContextImpl
     }
 
     /**
-     * Setter for the {@link org.extex.interpreter.type.dimen.Dimen Dimen}
+     * Setter for the {@link org.extex.core.dimen.Dimen Dimen}
      * register in all requested groups. Dimen registers are named, either with
      * a number or an arbitrary string. The numbered registers where limited to
      * 256 in <logo>TeX</logo>. This restriction does no longer hold for
@@ -2109,7 +2109,7 @@ public class ContextImpl
      *
      * @see org.extex.interpreter.context.Context#setDimen(
      *      java.lang.String,
-     *      org.extex.interpreter.type.dimen.Dimen,
+     *      org.extex.core.dimen.Dimen,
      *      boolean)
      */
     public void setDimen(final String name, final Dimen value,
@@ -2128,7 +2128,7 @@ public class ContextImpl
     }
 
     /**
-     * Setter for the {@link org.extex.interpreter.type.dimen.Dimen Dimen}
+     * Setter for the {@link org.extex.core.dimen.Dimen Dimen}
      * register in all requested groups. Dimen registers are named, either with
      * a number or an arbitrary string. The numbered registers where limited to
      * 256 in <logo>TeX</logo>. This restriction does no longer hold for
@@ -2194,7 +2194,7 @@ public class ContextImpl
      *
      * @see org.extex.interpreter.context.Context#setGlue(
      *      java.lang.String,
-     *      org.extex.interpreter.type.glue.Glue, boolean)
+     *      org.extex.core.glue.Glue, boolean)
      */
     public void setGlue(final String name, final Glue value,
             final boolean global) throws InterpreterException {
@@ -2301,8 +2301,8 @@ public class ContextImpl
      *  groups; otherwise the current group is affected only
      *
      * @see org.extex.interpreter.context.Context#setLccode(
-     *      org.extex.type.UnicodeChar,
-     *      org.extex.type.UnicodeChar,
+     *      org.extex.core.UnicodeChar,
+     *      org.extex.core.UnicodeChar,
      *      boolean)
      */
     public void setLccode(final UnicodeChar uc, final UnicodeChar lc,
@@ -2348,7 +2348,7 @@ public class ContextImpl
      *
      * @see org.extex.interpreter.context.Context#setMark(
      *      java.lang.Object,
-     *      org.extex.interpreter.type.tokens.Tokens)
+     *      org.extex.scanner.type.tokens.Tokens)
      */
     public void setMark(final Object name, final Tokens mark) {
 
@@ -2367,7 +2367,7 @@ public class ContextImpl
      *   groups; otherwise the current group is affected only
      *
      * @see org.extex.interpreter.context.Context#setMathcode(
-     *      org.extex.type.UnicodeChar,
+     *      org.extex.core.UnicodeChar,
      *      MathCode, boolean)
      */
     public void setMathcode(final UnicodeChar uc, final MathCode code,
@@ -2386,7 +2386,7 @@ public class ContextImpl
      *
      * @see org.extex.interpreter.context.Context#setMuskip(
      *      java.lang.String,
-     *      org.extex.interpreter.type.muskip.Muskip, boolean)
+     *      org.extex.core.muskip.Muskip, boolean)
      */
     public void setMuskip(final String name, final Muskip value,
             final boolean global) {
@@ -2451,8 +2451,8 @@ public class ContextImpl
      *            groups; otherwise the current group is affected only
      *
      * @see org.extex.interpreter.context.Context#setSfcode(
-     *      org.extex.type.UnicodeChar,
-     *      org.extex.interpreter.type.count.Count, boolean)
+     *      org.extex.core.UnicodeChar,
+     *      org.extex.core.count.Count, boolean)
      */
     public void setSfcode(final UnicodeChar uc, final Count code,
             final boolean global) {
@@ -2469,7 +2469,7 @@ public class ContextImpl
      *
      * @see org.extex.interpreter.context.ContextMark#setSplitMark(
      *      java.lang.Object,
-     *      org.extex.interpreter.type.tokens.Tokens)
+     *      org.extex.scanner.type.tokens.Tokens)
      */
     public void setSplitMark(final Object name, final Tokens mark) {
 
@@ -2507,7 +2507,7 @@ public class ContextImpl
     }
 
     /**
-     * Setter for the {@link org.extex.interpreter.type.tokens.Tokens Tokens}
+     * Setter for the {@link org.extex.scanner.type.tokens.Tokens Tokens}
      * register in the specified groups. Tokens registers are named, either with
      * a number or an arbitrary string. The numbered registers where limited to
      * 256 in <logo>TeX</logo>. This restriction does no longer hold for
@@ -2521,7 +2521,7 @@ public class ContextImpl
      * @throws InterpreterException in case of a problem in an observer
      *
      * @see org.extex.interpreter.context.Context#setToks(java.lang.String,
-     *      org.extex.interpreter.type.tokens.Tokens, boolean)
+     *      org.extex.scanner.type.tokens.Tokens, boolean)
      */
     public void setToks(final String name, final Tokens toks,
             final boolean global) throws InterpreterException {
@@ -2548,8 +2548,8 @@ public class ContextImpl
      *   groups; otherwise the current group is affected only
      *
      * @see org.extex.interpreter.context.Context#setUccode(
-     *      org.extex.type.UnicodeChar,
-     *      org.extex.type.UnicodeChar,
+     *      org.extex.core.UnicodeChar,
+     *      org.extex.core.UnicodeChar,
      *      boolean)
      */
     public void setUccode(final UnicodeChar lc, final UnicodeChar uc,

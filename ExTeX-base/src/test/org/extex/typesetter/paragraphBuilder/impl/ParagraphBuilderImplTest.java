@@ -21,24 +21,24 @@ package org.extex.typesetter.paragraphBuilder.impl;
 
 import junit.framework.TestCase;
 
+import org.extex.core.UnicodeChar;
+import org.extex.core.count.Count;
+import org.extex.core.count.FixedCount;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.exception.GeneralException;
+import org.extex.core.glue.FixedGlue;
+import org.extex.core.glue.Glue;
+import org.extex.core.muskip.Muskip;
 import org.extex.interpreter.context.tc.TypesettingContext;
 import org.extex.interpreter.context.tc.TypesettingContextFactory;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.count.FixedCount;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.font.Font;
-import org.extex.interpreter.type.glue.FixedGlue;
-import org.extex.interpreter.type.glue.Glue;
-import org.extex.interpreter.type.muskip.Muskip;
 import org.extex.scanner.type.token.TokenFactory;
-import org.extex.type.UnicodeChar;
 import org.extex.typesetter.TypesetterOptions;
 import org.extex.typesetter.paragraphBuilder.ParagraphBuilder;
 import org.extex.typesetter.paragraphBuilder.ParagraphShape;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.node.HorizontalListNode;
-import org.extex.util.exception.GeneralException;
 
 /**
  * ...
@@ -140,7 +140,7 @@ public class ParagraphBuilderImplTest extends TestCase {
          * @return the lower case equivalent or null if none exists
          *
          * @see org.extex.typesetter.TypesetterOptions#getLccode(
-         *      org.extex.type.UnicodeChar)
+         *      org.extex.core.UnicodeChar)
          */
         public UnicodeChar getLccode(final UnicodeChar uc) {
 
@@ -231,7 +231,7 @@ public class ParagraphBuilderImplTest extends TestCase {
          *
          * @see org.extex.typesetter.TypesetterOptions#setCountOption(
          *      java.lang.String,
-         *      org.extex.interpreter.type.count.FixedCount)
+         *      org.extex.core.count.FixedCount)
          */
         public void setCountOption(final String name, final long value)
                 throws GeneralException {

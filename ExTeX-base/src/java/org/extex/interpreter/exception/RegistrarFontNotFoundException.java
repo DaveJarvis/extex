@@ -20,8 +20,8 @@
 package org.extex.interpreter.exception;
 
 import org.extex.font.FontKey;
-import org.extex.util.framework.RegistrarException;
-import org.extex.util.framework.i18n.LocalizerFactory;
+import org.extex.framework.RegistrarException;
+import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * This exception signals that a font could not be found during a registrar

@@ -38,21 +38,21 @@ import junit.framework.TestCase;
 
 import org.extex.ExTeX;
 import org.extex.backend.outputStream.OutputStreamFactory;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.exception.GeneralException;
 import org.extex.font.exception.FontException;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.ErrorHandler;
 import org.extex.interpreter.Interpreter;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
-import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.logging.LogFormatter;
 import org.extex.main.errorHandler.editHandler.EditHandler;
-import org.extex.main.logging.LogFormatter;
+import org.extex.resource.ResourceFinder;
 import org.extex.scanner.type.token.Token;
 import org.extex.test.font.LauncherFont;
-import org.extex.util.exception.GeneralException;
-import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-import org.extex.util.resource.ResourceFinder;
 
 /**
  * This base class for test cases handles all the nifty gritty details of
@@ -98,7 +98,7 @@ public class ExTeXLauncher extends TestCase {
          * @return <code>true</code> iff the processing can continue
          *
          * @see org.extex.interpreter.ErrorHandler#handleError(
-         *      org.extex.util.exception.GeneralException,
+         *      org.extex.core.exception.GeneralException,
          *      org.extex.scanner.type.token.Token,
          *      org.extex.interpreter.TokenSource,
          *      org.extex.interpreter.context.Context)
@@ -317,9 +317,9 @@ public class ExTeXLauncher extends TestCase {
 
             /**
              * @see org.extex.ExTeX#makeInterpreter(
-             *      org.extex.util.framework.configuration.Configuration,
+             *      org.extex.framework.configuration.Configuration,
              *      org.extex.backend.outputStream.OutputStreamFactory,
-             *      org.extex.util.resource.ResourceFinder, java.lang.String)
+             *      org.extex.resource.ResourceFinder, java.lang.String)
              */
             protected Interpreter makeInterpreter(final Configuration config,
                     final OutputStreamFactory outFatory,

@@ -19,8 +19,8 @@
 
 package org.extex.typesetter.paragraphBuilder.impl;
 
-import org.extex.interpreter.type.glue.FixedGlue;
-import org.extex.interpreter.type.glue.WideGlue;
+import org.extex.core.glue.FixedGlue;
+import org.extex.core.glue.WideGlue;
 
 /**
  * This class represents a break point for the paragraph breaking.

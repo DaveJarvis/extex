@@ -19,14 +19,14 @@
 
 package org.extex.interpreter.max;
 
+import org.extex.framework.AbstractFactory;
 import org.extex.scanner.type.token.TokenFactory;
-import org.extex.util.framework.AbstractFactory;
 
 /**
  * This class provides a factory for a
  * {@link org.extex.scanner.type.token.TokenFactory TokenFactory}.
  * This factory inherits its properties from the
- * {@link org.extex.util.framework.AbstractFactory AbstractFactory}. Among them
+ * {@link org.extex.framework.AbstractFactory AbstractFactory}. Among them
  * the support for configuration and logging.
  *
  * <h3>Configuration</h3>
@@ -46,11 +46,11 @@ import org.extex.util.framework.AbstractFactory;
  * </p>
  * <p>
  *  The configuration is passed down to the new instance if it implements the
- *  interface {@link org.extex.util.framework.configuration.Configurable Configurable}.
+ *  interface {@link org.extex.framework.configuration.Configurable Configurable}.
  * </p>
  * <p>
  *  If the class implements the interface
- *  {@link org.extex.util.framework.logger.LogEnabled LogEnabled} then a logger
+ *  {@link org.extex.framework.logger.LogEnabled LogEnabled} then a logger
  *  is passed to the new instance. For this purpose the factory itself is
  *  log enabled to receive the logger.
  * </p>

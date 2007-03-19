@@ -19,15 +19,15 @@
 
 package org.extex.language.word.impl;
 
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.core.UnicodeChar;
+import org.extex.core.UnicodeCharList;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
 import org.extex.interpreter.type.font.Font;
 import org.extex.language.Language;
 import org.extex.language.hyphenation.exception.HyphenationException;
 import org.extex.language.ligature.LigatureBuilder;
 import org.extex.language.word.WordTokenizer;
-import org.extex.type.UnicodeChar;
-import org.extex.type.UnicodeCharList;
 import org.extex.typesetter.TypesetterOptions;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
@@ -234,7 +234,7 @@ public class ExTeXWords implements WordTokenizer {
      * @see org.extex.language.word.WordTokenizer#findWord(
      *      org.extex.typesetter.type.NodeList,
      *      int,
-     *      org.extex.type.UnicodeCharList)
+     *      org.extex.core.UnicodeCharList)
      */
     public int findWord(final NodeList nodes, final int start,
             final UnicodeCharList word) throws HyphenationException {
@@ -338,7 +338,7 @@ public class ExTeXWords implements WordTokenizer {
 
     /**
      * @see org.extex.language.word.WordTokenizer#normalize(
-     *      org.extex.type.UnicodeCharList,
+     *      org.extex.core.UnicodeCharList,
      *      org.extex.typesetter.TypesetterOptions)
      */
     public UnicodeCharList normalize(final UnicodeCharList word,

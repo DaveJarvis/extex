@@ -19,6 +19,8 @@
 
 package org.extex.interpreter.type.dimen;
 
+import org.extex.core.dimen.Dimen;
+
 import junit.framework.TestCase;
 
 /**

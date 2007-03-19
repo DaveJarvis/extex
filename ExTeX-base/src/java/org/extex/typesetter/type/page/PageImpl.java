@@ -19,9 +19,9 @@
 
 package org.extex.typesetter.type.page;
 
+import org.extex.core.count.FixedCount;
+import org.extex.core.dimen.Dimen;
 import org.extex.interpreter.context.Color;
-import org.extex.interpreter.type.count.FixedCount;
-import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.typesetter.type.NodeList;
 
 /**
@@ -199,7 +199,7 @@ public class PageImpl implements Page {
      * @param offset the media horizontal offset
      *
      * @see org.extex.typesetter.type.page.Page#setMediaHOffset(
-     *      org.extex.interpreter.type.dimen.Dimen)
+     *      org.extex.core.dimen.Dimen)
      */
     public void setMediaHOffset(final Dimen offset) {
 
@@ -212,7 +212,7 @@ public class PageImpl implements Page {
      * @param offset the media vertical offset
      *
      * @see org.extex.typesetter.type.page.Page#setMediaVOffset(
-     *      org.extex.interpreter.type.dimen.Dimen)
+     *      org.extex.core.dimen.Dimen)
      */
     public void setMediaVOffset(final Dimen offset) {
 
@@ -225,7 +225,7 @@ public class PageImpl implements Page {
      * @param width the mediaWidth to set
      *
      * @see org.extex.typesetter.type.page.Page#setMediaWidth(
-     *      org.extex.interpreter.type.dimen.Dimen)
+     *      org.extex.core.dimen.Dimen)
      */
     public void setMediaWidth(final Dimen width) {
 

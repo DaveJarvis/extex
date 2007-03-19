@@ -33,8 +33,8 @@ import java.util.Map;
 
 import org.extex.backend.documentWriter.exception.DocumentWriterException;
 import org.extex.backend.documentWriter.exception.OutputStreamOpenException;
-import org.extex.util.framework.AbstractFactory;
-import org.extex.util.framework.configuration.Configuration;
+import org.extex.framework.AbstractFactory;
+import org.extex.framework.configuration.Configuration;
 
 /**
  * This factory creates an output stream from a specification in the

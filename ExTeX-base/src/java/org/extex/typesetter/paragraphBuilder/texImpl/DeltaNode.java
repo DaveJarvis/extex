@@ -19,7 +19,7 @@
 
 package org.extex.typesetter.paragraphBuilder.texImpl;
 
-import org.extex.interpreter.type.glue.WideGlue;
+import org.extex.core.glue.WideGlue;
 
 /** 822.
  *

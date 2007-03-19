@@ -20,8 +20,9 @@
 package org.extex.typesetter.pageBuilder.impl;
 
 import org.extex.backend.BackendDriver;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.exception.GeneralException;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.TypesetterOptions;
 import org.extex.typesetter.exception.TypesetterException;
@@ -31,7 +32,6 @@ import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.node.VerticalListNode;
 import org.extex.typesetter.type.page.Page;
 import org.extex.typesetter.type.page.PageFactory;
-import org.extex.util.exception.GeneralException;
 
 /**
  * This is a first reference implementation of a page builder.

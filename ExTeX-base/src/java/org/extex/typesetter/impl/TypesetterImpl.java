@@ -23,17 +23,21 @@ import java.util.ArrayList;
 import java.util.logging.Logger;
 
 import org.extex.backend.BackendDriver;
+import org.extex.core.Locator;
+import org.extex.core.UnicodeChar;
+import org.extex.core.count.Count;
+import org.extex.core.count.FixedCount;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.glue.FixedGlue;
+import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.i18n.Localizable;
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.tc.TypesettingContext;
 import org.extex.interpreter.exception.ImpossibleException;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.count.FixedCount;
-import org.extex.interpreter.type.dimen.FixedDimen;
-import org.extex.interpreter.type.glue.FixedGlue;
 import org.extex.scanner.type.token.Token;
-import org.extex.type.Locator;
-import org.extex.type.UnicodeChar;
 import org.extex.typesetter.ListMaker;
 import org.extex.typesetter.Mode;
 import org.extex.typesetter.ParagraphObserver;
@@ -56,10 +60,6 @@ import org.extex.typesetter.type.node.PenaltyNode;
 import org.extex.typesetter.type.node.VerticalListNode;
 import org.extex.typesetter.type.node.factory.CachingNodeFactory;
 import org.extex.typesetter.type.node.factory.NodeFactory;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-import org.extex.util.framework.i18n.Localizable;
-import org.extex.util.framework.i18n.Localizer;
-import org.extex.util.framework.logger.LogEnabled;
 
 /**
  * This is a reference implementation of the
@@ -157,7 +157,7 @@ public class TypesetterImpl
      * @throws TypesetterException in case of an error
      *
      * @see org.extex.typesetter.ListMaker#add(
-     *      org.extex.interpreter.type.glue.FixedGlue)
+     *      org.extex.core.glue.FixedGlue)
      */
     public void add(final FixedGlue glue) throws TypesetterException {
 
@@ -229,7 +229,7 @@ public class TypesetterImpl
      *
      * @see org.extex.typesetter.ListMaker#addSpace(
      *      org.extex.interpreter.context.tc.TypesettingContext,
-     *      org.extex.interpreter.type.count.Count)
+     *      org.extex.core.count.Count)
      */
     public void addSpace(final TypesettingContext typesettingContext,
             final Count spacefactor) throws TypesetterException {
@@ -320,7 +320,7 @@ public class TypesetterImpl
      * @see org.extex.typesetter.ListMaker#cr(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.context.tc.TypesettingContext,
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar)
      */
     public void cr(final Context context, final TypesettingContext tc,
             final UnicodeChar uc) throws TypesetterException {
@@ -333,8 +333,8 @@ public class TypesetterImpl
      *
      * @param theLocalizer the new localizer
      *
-     * @see org.extex.util.framework.i18n.Localizable#enableLocalization(
-     *      org.extex.util.framework.i18n.Localizer)
+     * @see org.extex.framework.i18n.Localizable#enableLocalization(
+     *      org.extex.framework.i18n.Localizer)
      */
     public void enableLocalization(final Localizer theLocalizer) {
 
@@ -346,7 +346,7 @@ public class TypesetterImpl
      *
      * @param theLogger the logger to use
      *
-     * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
     public void enableLogging(final Logger theLogger) {
@@ -395,7 +395,7 @@ public class TypesetterImpl
      * @throws TypesetterException in case of an error
      *
      * @see org.extex.typesetter.listMaker.ListManager#ensureHorizontalMode(
-     *      org.extex.type.Locator)
+     *      org.extex.core.Locator)
      */
     public ListMaker ensureHorizontalMode(final Locator locator)
             throws TypesetterException {
@@ -598,11 +598,11 @@ public class TypesetterImpl
      * @throws TypesetterException in case of an error
      *
      * @see org.extex.typesetter.ListMaker#letter(
-     *      org.extex.type.UnicodeChar,
+     *      org.extex.core.UnicodeChar,
      *      org.extex.interpreter.context.tc.TypesettingContext,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
-     *      org.extex.type.Locator)
+     *      org.extex.core.Locator)
      */
     public boolean letter(final UnicodeChar uc, final TypesettingContext tc,
             final Context context, TokenSource source, final Locator locator)
@@ -813,7 +813,7 @@ public class TypesetterImpl
      * @throws TypesetterUnsupportedException in case of an error
      *
      * @see org.extex.typesetter.ListMaker#setPrevDepth(
-     *      org.extex.interpreter.type.dimen.FixedDimen)
+     *      org.extex.core.dimen.FixedDimen)
      */
     public void setPrevDepth(final FixedDimen pd)
             throws TypesetterUnsupportedException {
@@ -830,7 +830,7 @@ public class TypesetterImpl
      * @throws InvalidSpacefactorException in case of an invalid space factor
      *
      * @see org.extex.typesetter.ListMaker#setSpacefactor(
-     *      org.extex.interpreter.type.count.FixedCount)
+     *      org.extex.core.count.FixedCount)
      */
     public void setSpacefactor(final FixedCount sf)
             throws TypesetterUnsupportedException,

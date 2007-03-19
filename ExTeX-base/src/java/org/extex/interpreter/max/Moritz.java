@@ -21,11 +21,16 @@ package org.extex.interpreter.max;
 
 import java.util.ArrayList;
 
+import org.extex.core.Locator;
+import org.extex.core.UnicodeChar;
+import org.extex.core.count.CountParser;
+import org.extex.core.exception.GeneralException;
+import org.extex.core.exception.NotObservableException;
+import org.extex.framework.configuration.Configurable;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.Interpreter;
-import org.extex.interpreter.Namespace;
 import org.extex.interpreter.TokenSource;
-import org.extex.interpreter.Tokenizer;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.IllegalRegisterException;
 import org.extex.interpreter.exception.InterpreterException;
@@ -55,12 +60,11 @@ import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.CsConvertible;
 import org.extex.interpreter.type.box.Box;
 import org.extex.interpreter.type.box.Boxable;
-import org.extex.interpreter.type.count.Count;
 import org.extex.interpreter.type.font.Font;
 import org.extex.interpreter.type.font.FontConvertible;
-import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.interpreter.type.tokens.TokensConvertible;
 import org.extex.scanner.TokenStream;
+import org.extex.scanner.Tokenizer;
 import org.extex.scanner.exception.ScannerException;
 import org.extex.scanner.stream.TokenStreamFactory;
 import org.extex.scanner.stream.observer.file.OpenFileObservable;
@@ -71,6 +75,7 @@ import org.extex.scanner.stream.observer.string.OpenStringObservable;
 import org.extex.scanner.stream.observer.string.OpenStringObserver;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.CatcodeException;
+import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.ControlSequenceToken;
 import org.extex.scanner.type.token.LeftBraceToken;
@@ -80,15 +85,10 @@ import org.extex.scanner.type.token.RightBraceToken;
 import org.extex.scanner.type.token.SpaceToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
-import org.extex.type.Locator;
-import org.extex.type.UnicodeChar;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.unit.base.register.count.util.IntegerCode;
 import org.extex.unit.base.register.toks.ToksParameter;
-import org.extex.util.exception.GeneralException;
-import org.extex.util.exception.NotObservableException;
-import org.extex.util.framework.configuration.Configurable;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides the layer above the input streams and the tokenizer. It
@@ -885,7 +885,7 @@ public class Moritz extends Max
      * @throws InterpreterException in case of an error
      *
      * @see org.extex.interpreter.TokenSource#push(
-     *      org.extex.interpreter.type.tokens.Tokens)
+     *      org.extex.scanner.type.tokens.Tokens)
      */
     public void push(final Tokens tokens) throws InterpreterException {
 
@@ -1057,7 +1057,7 @@ public class Moritz extends Max
         } else {
 
             push(t);
-            cc = Count.scanInteger(context, this, typesetter);
+            cc = CountParser.scanInteger(context, this, typesetter);
 
             if (cc < 0 || cc > MAX_CHAR_CODE) {
                 throw new BadCharacterException(cc);
@@ -1097,7 +1097,7 @@ public class Moritz extends Max
      */
     public long scanNumber(final Context context) throws InterpreterException {
 
-        return Count.scanNumber(context, this, getTypesetter(),
+        return CountParser.scanNumber(context, this, getTypesetter(),
             getNonSpace(context));
     }
 
@@ -1109,7 +1109,7 @@ public class Moritz extends Max
     public long scanNumber(final Context context, final Token token)
             throws InterpreterException {
 
-        return Count.scanNumber(context, this, getTypesetter(), token);
+        return CountParser.scanNumber(context, this, getTypesetter(), token);
     }
 
     /**
@@ -1137,7 +1137,7 @@ public class Moritz extends Max
         }
 
         source.push(token);
-        long registerNumber = Count.scanInteger(context, source, typesetter);
+        long registerNumber = CountParser.scanInteger(context, source, typesetter);
         if (registerNumber < 0 || maxRegisterValue >= 0
                 && registerNumber > maxRegisterValue) {
             throw new IllegalRegisterException(Long.toString(registerNumber));

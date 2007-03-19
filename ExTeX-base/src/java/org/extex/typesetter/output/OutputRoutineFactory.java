@@ -21,9 +21,9 @@ package org.extex.typesetter.output;
 
 import java.util.logging.Logger;
 
+import org.extex.framework.AbstractFactory;
+import org.extex.framework.configuration.Configuration;
 import org.extex.interpreter.Interpreter;
-import org.extex.util.framework.AbstractFactory;
-import org.extex.util.framework.configuration.Configuration;
 
 /**
  * This class provides a factory for the output routines.

@@ -24,26 +24,25 @@ import java.util.Map;
 
 import junit.framework.TestCase;
 
-import org.extex.font.FontByteArray;
+import org.extex.core.UnicodeChar;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.glue.FixedGlue;
 import org.extex.font.FontKey;
 import org.extex.font.FontKeyFactory;
 import org.extex.font.type.other.NullFont;
-import org.extex.interpreter.Namespace;
 import org.extex.interpreter.context.tc.ModifiableTypesettingContext;
 import org.extex.interpreter.context.tc.TypesettingContext;
 import org.extex.interpreter.context.tc.TypesettingContextImpl;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.font.Font;
-import org.extex.interpreter.type.glue.FixedGlue;
 import org.extex.language.ModifiableLanguage;
 import org.extex.language.hyphenation.base.BaseHyphenationTable;
 import org.extex.language.ligature.impl.LigatureBuilderImpl;
 import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
 import org.extex.scanner.type.token.TokenFactoryImpl;
-import org.extex.type.UnicodeChar;
 import org.extex.typesetter.type.node.factory.CachingNodeFactory;
 import org.extex.typesetter.type.node.factory.NodeFactory;
 
@@ -168,21 +167,6 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * Returns the byte array for the external file. E.g. cmr12.pfb.
-         *
-         * @return Returns the byte array for the external file e.g. cmr12.pfb
-         *
-         * @deprecated this single method should be replaced by some way to
-         *   retrieve an appropriate font format
-         *
-         * @see org.extex.font.type.Fount#getFontByteArray()
-         */
-        public FontByteArray getFontByteArray() {
-
-            return null;
-        }
-
-        /**
          * Return font dimen size with a key.
          *
          * @param key the key
@@ -274,7 +258,7 @@ public class NVTest extends TestCase {
          * @param value the value to set
          *
          * @see org.extex.interpreter.type.font.Font#setFontDimen(
-         *      java.lang.String, org.extex.interpreter.type.dimen.Dimen)
+         *      java.lang.String, org.extex.core.dimen.Dimen)
          */
         public void setFontDimen(final String name, final Dimen value) {
 
@@ -285,7 +269,7 @@ public class NVTest extends TestCase {
          *
          * @param h The hyphen character
          *
-         * @see org.extex.interpreter.type.font.Font#setHyphenChar(org.extex.type.UnicodeChar)
+         * @see org.extex.interpreter.type.font.Font#setHyphenChar(org.extex.core.UnicodeChar)
          */
         public void setHyphenChar(final UnicodeChar h) {
 
@@ -297,7 +281,7 @@ public class NVTest extends TestCase {
          *
          * @param skew the skew character
          *
-         * @see org.extex.interpreter.type.font.Font#setSkewChar(org.extex.type.UnicodeChar)
+         * @see org.extex.interpreter.type.font.Font#setSkewChar(org.extex.core.UnicodeChar)
          */
         public void setSkewChar(final UnicodeChar skew) {
 
@@ -311,7 +295,7 @@ public class NVTest extends TestCase {
          * @param uc the character
          * @param code the associated code
          *
-         * @see org.extex.interpreter.type.font.Font#setEfCode(org.extex.type.UnicodeChar, long)
+         * @see org.extex.interpreter.type.font.Font#setEfCode(org.extex.core.UnicodeChar, long)
          */
         public void setEfCode(final UnicodeChar uc, final long code) {
 
@@ -325,7 +309,7 @@ public class NVTest extends TestCase {
          *
          * @return the ef code
          *
-         * @see org.extex.font.type.other.NullFont#getEfCode(org.extex.type.UnicodeChar)
+         * @see org.extex.font.type.other.NullFont#getEfCode(org.extex.core.UnicodeChar)
          */
         public long getEfCode(final UnicodeChar uc) {
 

@@ -27,10 +27,10 @@ import org.extex.backend.documentWriter.exception.DocumentWriterException;
 import org.extex.backend.exception.BackendException;
 import org.extex.backend.outputStream.OutputStreamFactory;
 import org.extex.backend.pageFilter.PagePipe;
+import org.extex.core.exception.GeneralException;
+import org.extex.framework.configuration.Configurable;
+import org.extex.framework.configuration.Configuration;
 import org.extex.typesetter.type.page.Page;
-import org.extex.util.exception.GeneralException;
-import org.extex.util.framework.configuration.Configurable;
-import org.extex.util.framework.configuration.Configuration;
 
 /**
  * This back-end driver can be used to combine several components.
@@ -183,8 +183,8 @@ public class BackendDriverImpl
      *
      * @param config the configuration object to consider
      *
-     * @see org.extex.util.framework.configuration.Configurable#configure(
-     *      org.extex.util.framework.configuration.Configuration)
+     * @see org.extex.framework.configuration.Configurable#configure(
+     *      org.extex.framework.configuration.Configuration)
      */
     public void configure(final Configuration config) {
 

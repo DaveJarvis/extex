@@ -24,29 +24,32 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.extex.core.count.Count;
+import org.extex.core.count.CountParser;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.DimenParser;
+import org.extex.core.glue.Glue;
+import org.extex.core.glue.GlueParser;
 import org.extex.font.CoreFontFactory;
 import org.extex.font.ExtexFont;
 import org.extex.font.exception.FontException;
+import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.configuration.exception.ConfigurationIOException;
+import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractAssignment;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.interpreter.type.font.Font;
 import org.extex.interpreter.type.font.FontConvertible;
 import org.extex.interpreter.type.font.FontImpl;
-import org.extex.interpreter.type.glue.Glue;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.ControlSequenceToken;
 import org.extex.scanner.type.token.SpaceToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-import org.extex.util.framework.configuration.exception.ConfigurationIOException;
-import org.extex.util.framework.logger.LogEnabled;
 
 /**
  * This class provides an implementation for the primitive <code>\font</code>.
@@ -93,10 +96,10 @@ import org.extex.util.framework.logger.LogEnabled;
  *
  *    &lang;option&rang;
  *      &rarr; [scaled] {@linkplain
-     *        org.extex.interpreter.type.count.Count#scanNumber(Context,TokenSource,Typesetter)
+     *        org.extex.core.count.Count#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}
  *       | [at] {@linkplain
- *           org.extex.interpreter.type.dimen#Dimen(org.extex.interpreter.context.Context,org.extex.interpreter.TokenSource)
+ *           org.extex.core.dimen#Dimen(org.extex.interpreter.context.Context,org.extex.interpreter.TokenSource)
  *           &lang;size&rang;}
  *       | [noligatures]
  *       | [nokerning]
@@ -208,14 +211,14 @@ public class FontPrimitive extends AbstractAssignment
         Count scale = null;
 
         if (source.getKeyword(context, "at")) {
-            fontSize = Dimen.parse(context, source, typesetter);
+            fontSize = DimenParser.parse(context, source, typesetter);
             if (fontSize.lt(Dimen.ZERO_PT)) {
                 throw new HelpingException(getLocalizer(), "TTP.ImproperAt",
                     fontSize.toString());
             }
 
         } else if (source.getKeyword(context, "scaled")) {
-            long s = Count.scanInteger(context, source, typesetter);
+            long s = CountParser.scanInteger(context, source, typesetter);
             if (s <= 0) {
                 throw new HelpingException(getLocalizer(), "TTP.IllegalMag",
                     Long.toString(s), "32768"); //TODO gene: max ok?
@@ -230,7 +233,7 @@ public class FontPrimitive extends AbstractAssignment
         for (;;) {
 
             if (source.getKeyword(context, "letterspaced")) {
-                letterspaced = Glue.parse(source, context, typesetter);
+                letterspaced = GlueParser.parse(source, context, typesetter);
             } else if (source.getKeyword(context, "noligatures")) {
                 ligatures = false;
             } else if (source.getKeyword(context, "nokerning")) {
@@ -301,7 +304,7 @@ public class FontPrimitive extends AbstractAssignment
      *
      * @param log the logger to use
      *
-     * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
     public void enableLogging(final Logger log) {

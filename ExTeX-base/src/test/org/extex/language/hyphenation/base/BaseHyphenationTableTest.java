@@ -21,21 +21,21 @@ package org.extex.language.hyphenation.base;
 
 import junit.framework.TestCase;
 
-import org.extex.font.FontByteArray;
+import org.extex.core.UnicodeChar;
+import org.extex.core.UnicodeCharList;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.glue.FixedGlue;
+import org.extex.core.glue.Glue;
 import org.extex.font.FontKey;
 import org.extex.font.FontKeyFactory;
 import org.extex.font.type.other.NullFont;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.context.MockContext;
 import org.extex.interpreter.context.tc.TypesettingContext;
 import org.extex.interpreter.context.tc.TypesettingContextImpl;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.FixedDimen;
-import org.extex.interpreter.type.glue.FixedGlue;
-import org.extex.interpreter.type.glue.Glue;
 import org.extex.language.Language;
 import org.extex.language.word.impl.TeXWords;
-import org.extex.type.UnicodeChar;
-import org.extex.type.UnicodeCharList;
 import org.extex.typesetter.type.node.CharNode;
 import org.extex.typesetter.type.node.DiscretionaryNode;
 import org.extex.typesetter.type.node.HorizontalListNode;
@@ -125,21 +125,6 @@ public class BaseHyphenationTableTest extends TestCase {
         public FixedDimen getEx() {
 
             return Dimen.ONE_INCH;
-        }
-
-        /**
-         * Returns the byte array for the external file. E.g. cmr12.pfb.
-         *
-         * @return Returns the byte array for the external file e.g. cmr12.pfb
-         *
-         * @deprecated this single method should be replaced by some way to
-         *   retrieve an appropriate font format
-         *
-         * @see org.extex.font.type.Fount#getFontByteArray()
-         */
-        public FontByteArray getFontByteArray() {
-
-            return null;
         }
 
         /**
@@ -233,7 +218,7 @@ public class BaseHyphenationTableTest extends TestCase {
          * @return <code>true</code> iff the glyph is present
          *
          * @see org.extex.interpreter.type.font.Font#hasGlyph(
-         *      org.extex.type.UnicodeChar)
+         *      org.extex.core.UnicodeChar)
          */
         public boolean hasGlyph(final UnicodeChar uc) {
 
@@ -248,7 +233,7 @@ public class BaseHyphenationTableTest extends TestCase {
          * @param uc the character
          * @param code the associated code
          *
-         * @see org.extex.interpreter.type.font.Font#setEfCode(org.extex.type.UnicodeChar,
+         * @see org.extex.interpreter.type.font.Font#setEfCode(org.extex.core.UnicodeChar,
          *      long)
          */
         public void setEfCode(final UnicodeChar uc, final long code) {
@@ -263,7 +248,7 @@ public class BaseHyphenationTableTest extends TestCase {
          * @param value The value to set.
          *
          * @see org.extex.interpreter.type.font.Font#setFontDimen(
-         *      java.lang.String, org.extex.interpreter.type.dimen.Dimen)
+         *      java.lang.String, org.extex.core.dimen.Dimen)
          */
         public void setFontDimen(final String name, final Dimen value) {
 
@@ -275,7 +260,7 @@ public class BaseHyphenationTableTest extends TestCase {
          * @param h the hyphen char
          *
          * @see org.extex.interpreter.type.font.Font#setHyphenChar(
-         *      org.extex.type.UnicodeChar)
+         *      org.extex.core.UnicodeChar)
          */
         public void setHyphenChar(final UnicodeChar h) {
 
@@ -288,7 +273,7 @@ public class BaseHyphenationTableTest extends TestCase {
          * @param s the skew char
          *
          * @see org.extex.interpreter.type.font.Font#setSkewChar(
-         *      org.extex.type.UnicodeChar)
+         *      org.extex.core.UnicodeChar)
          */
         public void setSkewChar(final UnicodeChar s) {
 
@@ -327,7 +312,7 @@ public class BaseHyphenationTableTest extends TestCase {
          * @return the lower case equivalent or null if none exists
          *
          * @see org.extex.interpreter.context.Context#getLccode(
-         *      org.extex.type.UnicodeChar)
+         *      org.extex.core.UnicodeChar)
          */
         public UnicodeChar getLccode(final UnicodeChar uc) {
 

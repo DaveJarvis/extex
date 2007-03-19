@@ -21,6 +21,7 @@ package org.extex.language.word.impl;
 
 import junit.framework.TestCase;
 
+import org.extex.core.UnicodeChar;
 import org.extex.interpreter.context.tc.ModifiableTypesettingContext;
 import org.extex.interpreter.context.tc.TypesettingContextImpl;
 import org.extex.interpreter.type.font.Font;
@@ -29,7 +30,6 @@ import org.extex.language.hyphenation.exception.HyphenationException;
 import org.extex.language.ligature.impl.LigatureBuilderImpl;
 import org.extex.language.word.WordTokenizer;
 import org.extex.test.font.CMR10;
-import org.extex.type.UnicodeChar;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.node.CharNode;
 import org.extex.typesetter.type.node.DiscretionaryNode;
