@@ -19,13 +19,13 @@
 
 package org.extex.unit.tex.register.count;
 
+import org.extex.core.count.CountParser;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.ArithmeticOverflowException;
 import org.extex.interpreter.exception.helping.HelpingException;
-import org.extex.interpreter.type.count.Count;
 import org.extex.typesetter.Typesetter;
 
 /**
@@ -114,7 +114,7 @@ public class Prevgraf extends CountPrimitive {
         String key = getKey(context, source, typesetter);
         source.getKeyword(context, "by");
 
-        long value = Count.scanInteger(context, source, null)
+        long value = CountParser.scanInteger(context, source, null)
                 + context.getCount(key).getValue();
 
         if (value < 0) {
@@ -151,7 +151,7 @@ public class Prevgraf extends CountPrimitive {
         String key = getKey(context, source, typesetter);
         source.getOptionalEquals(context);
 
-        long value = Count.scanInteger(context, source, typesetter);
+        long value = CountParser.scanInteger(context, source, typesetter);
         if (value < 0) {
             throw new HelpingException(getLocalizer(), "TTP.BadPrevGraf",
                     printableControlSequence(context), Long.toString(value));
@@ -183,7 +183,7 @@ public class Prevgraf extends CountPrimitive {
         String key = getKey(context, source, typesetter);
         source.getKeyword(context, "by");
 
-        long value = Count.scanInteger(context, source, null);
+        long value = CountParser.scanInteger(context, source, null);
 
         if (value == 0) {
             throw new ArithmeticOverflowException(
@@ -222,7 +222,7 @@ public class Prevgraf extends CountPrimitive {
         String key = getKey(context, source, typesetter);
         source.getKeyword(context, "by");
 
-        long value = Count.scanInteger(context, source, null);
+        long value = CountParser.scanInteger(context, source, null);
         value *= context.getCount(key).getValue();
         if (value < 0) {
             throw new HelpingException(getLocalizer(), "TTP.BadPrevGraf",

@@ -19,6 +19,10 @@
 
 package org.extex.unit.omega.math.delimiter;
 
+import org.extex.core.UnicodeChar;
+import org.extex.core.count.CountConvertible;
+import org.extex.core.count.CountParser;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -29,14 +33,11 @@ import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.arithmetic.Advanceable;
 import org.extex.interpreter.type.arithmetic.Divideable;
 import org.extex.interpreter.type.arithmetic.Multiplyable;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.count.CountConvertible;
 import org.extex.interpreter.type.math.MathDelimiter;
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.CatcodeException;
 import org.extex.scanner.type.token.Token;
-import org.extex.type.UnicodeChar;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive
@@ -158,11 +159,11 @@ public class Odelcode extends AbstractAssignment
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        UnicodeChar charCode = source.scanCharacterCode(context, typesetter,
-                getName());
+        UnicodeChar charCode =
+                source.scanCharacterCode(context, typesetter, getName());
         source.getKeyword(context, "by");
 
-        long value = Count.scanInteger(context, source, null);
+        long value = CountParser.scanInteger(context, source, null);
         MathDelimiter delcode = context.getDelcode(charCode);
         value += AbstractOmegaDelimiter.delimiterToLong(delcode);
 
@@ -192,13 +193,15 @@ public class Odelcode extends AbstractAssignment
      */
     public void assign(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws InterpreterException, ConfigurationException {
+            throws InterpreterException,
+                ConfigurationException {
 
-        UnicodeChar charCode = source.scanCharacterCode(context, typesetter,
-                getName());
+        UnicodeChar charCode =
+                source.scanCharacterCode(context, typesetter, getName());
         source.getOptionalEquals(context);
-        MathDelimiter del = AbstractOmegaDelimiter.parseDelimiter(context,
-                source, typesetter, getName());
+        MathDelimiter del =
+                AbstractOmegaDelimiter.parseDelimiter(context, source,
+                    typesetter, getName());
         context.setDelcode(charCode, del, prefix.clearGlobal());
     }
 
@@ -223,8 +226,8 @@ public class Odelcode extends AbstractAssignment
         }
 
         context.setDelcode(charCode, AbstractOmegaDelimiter
-                .newMathDelimiter(value), //
-                prefix.clearGlobal());
+            .newMathDelimiter(value), //
+            prefix.clearGlobal());
 
         Token afterassignment = context.getAfterassignment();
         if (afterassignment != null) {
@@ -247,7 +250,7 @@ public class Odelcode extends AbstractAssignment
      *
      * @throws InterpreterException in case of an error
      *
-     * @see org.extex.interpreter.type.count.CountConvertible#convertCount(
+     * @see org.extex.interpreter.type.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
@@ -255,8 +258,8 @@ public class Odelcode extends AbstractAssignment
     public long convertCount(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
 
-        UnicodeChar charCode = source.scanCharacterCode(context, typesetter,
-                getName());
+        UnicodeChar charCode =
+                source.scanCharacterCode(context, typesetter, getName());
         MathDelimiter delcode = context.getDelcode(charCode);
         return AbstractOmegaDelimiter.delimiterToLong(delcode);
     }
@@ -282,15 +285,15 @@ public class Odelcode extends AbstractAssignment
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        UnicodeChar charCode = source.scanCharacterCode(context, typesetter,
-                getName());
+        UnicodeChar charCode =
+                source.scanCharacterCode(context, typesetter, getName());
         source.getKeyword(context, "by");
 
-        long value = Count.scanInteger(context, source, null);
+        long value = CountParser.scanInteger(context, source, null);
         MathDelimiter delcode = context.getDelcode(charCode);
         if (value == 0) {
             throw new ArithmeticOverflowException(
-                    printableControlSequence(context));
+                printableControlSequence(context));
         }
 
         value = AbstractOmegaDelimiter.delimiterToLong(delcode) / value;
@@ -318,11 +321,11 @@ public class Odelcode extends AbstractAssignment
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        UnicodeChar charCode = source.scanCharacterCode(context, typesetter,
-                getName());
+        UnicodeChar charCode =
+                source.scanCharacterCode(context, typesetter, getName());
         source.getKeyword(context, "by");
 
-        long value = Count.scanInteger(context, source, null);
+        long value = CountParser.scanInteger(context, source, null);
         MathDelimiter delcode = context.getDelcode(charCode);
         value *= AbstractOmegaDelimiter.delimiterToLong(delcode);
         assign(prefix, context, source, charCode, value);
@@ -336,7 +339,10 @@ public class Odelcode extends AbstractAssignment
      * @param typesetter the typesetter to use
      *
      * @return the description of the primitive as list of Tokens
+     *
      * @throws InterpreterException in case of an error
+     * @throws CatcodeException in case of an error in token creation
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.interpreter.type.Theable#the(
      *      org.extex.interpreter.context.Context,
@@ -344,13 +350,15 @@ public class Odelcode extends AbstractAssignment
      *      org.extex.typesetter.Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+            final Typesetter typesetter)
+            throws InterpreterException,
+                CatcodeException {
 
-        UnicodeChar charCode = source.scanCharacterCode(context, typesetter,
-                getName());
+        UnicodeChar charCode =
+                source.scanCharacterCode(context, typesetter, getName());
         MathDelimiter delcode = context.getDelcode(charCode);
         long value = AbstractOmegaDelimiter.delimiterToLong(delcode);
-        return new Tokens(context, value);
+        return context.getTokenFactory().toTokens(value);
     }
 
 }

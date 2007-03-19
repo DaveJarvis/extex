@@ -19,16 +19,18 @@
 
 package org.extex.unit.tex.typesetter.paragraph;
 
+import org.extex.core.count.CountConvertible;
+import org.extex.core.count.CountParser;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.DimenParser;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Theable;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.count.CountConvertible;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.CatcodeException;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.paragraphBuilder.ParagraphShape;
 
@@ -122,7 +124,7 @@ public class Parshape extends AbstractCode implements CountConvertible, Theable 
      *
      * @throws InterpreterException in case of an error
      *
-     * @see org.extex.interpreter.type.count.CountConvertible#convertCount(
+     * @see org.extex.interpreter.type.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
@@ -155,14 +157,14 @@ public class Parshape extends AbstractCode implements CountConvertible, Theable 
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        long n = Count.scanInteger(context, source, typesetter);
+        long n = CountParser.scanInteger(context, source, typesetter);
         if (n <= 0) {
             context.setParshape(null);
         } else {
             ParagraphShape parshape = new ParagraphShape();
             while (n-- > 0) {
-                Dimen left = Dimen.parse(context, source, typesetter);
-                Dimen right = Dimen.parse(context, source, typesetter);
+                Dimen left = DimenParser.parse(context, source, typesetter);
+                Dimen right = DimenParser.parse(context, source, typesetter);
                 parshape.add(left, right);
             }
             context.setParshape(parshape);
@@ -177,18 +179,22 @@ public class Parshape extends AbstractCode implements CountConvertible, Theable 
      * @param typesetter the typesetter to use
      *
      * @return the description of the primitive as list of Tokens
+     *
      * @throws InterpreterException in case of an error
+     * @throws CatcodeException in case of an error in token creation
      *
      * @see org.extex.interpreter.type.Theable#the(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+            final Typesetter typesetter)
+            throws InterpreterException,
+                CatcodeException {
 
         ParagraphShape parshape = context.getParshape();
-        return new Tokens(context, parshape != null ? Long.toString(parshape
-                .getSize() / 2) : "0");
+        return context.getTokenFactory().toTokens( //
+            parshape != null ? parshape.getSize() / 2 : 0);
     }
 
 }

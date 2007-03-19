@@ -21,10 +21,10 @@ package org.extex.unit.pdftex.util.id;
 
 import java.io.Serializable;
 
+import org.extex.core.count.CountParser;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
-import org.extex.interpreter.type.count.Count;
 import org.extex.typesetter.Typesetter;
 import org.extex.unit.pdftex.exception.InterpreterPdftexIdentifierTypeException;
 
@@ -60,7 +60,7 @@ public abstract class IdSpec implements Serializable {
             throws InterpreterException {
 
         if (source.getKeyword(context, "num")) {
-            long num = Count.scanNumber(context, source, typesetter);
+            long num = CountParser.scanNumber(context, source, typesetter);
             return new NumIdSpec(num);
         } else if (source.getKeyword(context, "name")) {
             String id = source.scanTokensAsString(context, name);

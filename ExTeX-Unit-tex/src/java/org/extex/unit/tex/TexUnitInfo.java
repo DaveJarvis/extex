@@ -21,6 +21,8 @@ package org.extex.unit.tex;
 
 import java.util.logging.Logger;
 
+import org.extex.core.count.Count;
+import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.ContextInternals;
@@ -29,11 +31,9 @@ import org.extex.interpreter.context.observer.count.CountObserver;
 import org.extex.interpreter.context.observer.load.LoadedObserver;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.observer.command.CommandObservable;
-import org.extex.interpreter.type.count.Count;
 import org.extex.interpreter.unit.Loader;
 import org.extex.interpreter.unit.UnitInfo;
 import org.extex.typesetter.Typesetter;
-import org.extex.util.framework.logger.LogEnabled;
 
 /**
  * This class provides the setup for the unit <b>tex</b>.
@@ -124,7 +124,7 @@ public class TexUnitInfo extends UnitInfo
      *
      * @param log the logger to use
      *
-     * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
     public void enableLogging(final Logger log) {
@@ -186,7 +186,7 @@ public class TexUnitInfo extends UnitInfo
                      * @see org.extex.interpreter.context.observer.count.CountObserver#receiveCountChange(
                      *      org.extex.interpreter.context.ContextInternals,
                      *      java.lang.String,
-                     *      org.extex.interpreter.type.count.Count)
+                     *      org.extex.core.count.Count)
                      */
                     public void receiveCountChange(
                             final ContextInternals context, final String name,

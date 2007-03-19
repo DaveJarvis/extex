@@ -19,6 +19,8 @@
 
 package org.extex.unit.etex.typesetter;
 
+import org.extex.core.count.Count;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -27,9 +29,7 @@ import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.ExtensionDisabledException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
-import org.extex.interpreter.type.count.Count;
 import org.extex.typesetter.Typesetter;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive

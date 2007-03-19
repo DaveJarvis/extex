@@ -27,7 +27,8 @@ import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.EofInToksException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.ExpandableCode;
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.CatcodeException;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 
 /**
@@ -90,10 +91,12 @@ public class Detokenize extends AbstractCode implements ExpandableCode {
         Tokens tokens;
         try {
             tokens = source.getTokens(context, source, typesetter);
+            source.push(context.getTokenFactory().toTokens(tokens.toText()));
         } catch (EofException e) {
             throw new EofInToksException(printableControlSequence(context));
+        } catch (CatcodeException e) {
+            throw new InterpreterException(e);
         }
-        source.push(new Tokens(context, tokens.toText()));
     }
 
     /**
@@ -113,7 +116,11 @@ public class Detokenize extends AbstractCode implements ExpandableCode {
         } catch (EofException e) {
             throw new EofInToksException(printableControlSequence(context));
         }
-        source.push(new Tokens(context, tokens.toText()));
+        try {
+            source.push(context.getTokenFactory().toTokens(tokens.toText()));
+        } catch (CatcodeException e) {
+            throw new InterpreterException(e);
+        }
     }
 
 }

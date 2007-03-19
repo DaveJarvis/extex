@@ -24,6 +24,10 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.logging.Logger;
 
+import org.extex.framework.configuration.Configurable;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -34,10 +38,6 @@ import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.unit.LoaderFactory;
 import org.extex.typesetter.Typesetter;
-import org.extex.util.framework.configuration.Configurable;
-import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-import org.extex.util.framework.logger.LogEnabled;
 
 /**
  * This primitive initiates the loading of native code and implements the
@@ -186,8 +186,8 @@ public class NativeLoad extends AbstractCode
      *
      * @throws ConfigurationException in case that something went wrong
      *
-     * @see org.extex.util.framework.configuration.Configurable#configure(
-     *      org.extex.util.framework.configuration.Configuration)
+     * @see org.extex.framework.configuration.Configurable#configure(
+     *      org.extex.framework.configuration.Configuration)
      */
     public void configure(final Configuration config)
             throws ConfigurationException {
@@ -204,7 +204,7 @@ public class NativeLoad extends AbstractCode
      *
      * @param log the logger to use
      *
-     * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
     public void enableLogging(final Logger log) {

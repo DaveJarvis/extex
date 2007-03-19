@@ -21,25 +21,25 @@ package org.extex.unit.etex.file;
 
 import java.util.logging.Logger;
 
+import org.extex.core.UnicodeChar;
+import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.Flags;
-import org.extex.interpreter.Namespace;
 import org.extex.interpreter.TokenSource;
-import org.extex.interpreter.Tokenizer;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.interaction.Interaction;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.file.InFile;
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.Tokenizer;
 import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.token.CodeToken;
-import org.extex.type.UnicodeChar;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.unit.base.file.AbstractFileCode;
 import org.extex.unit.tex.macro.util.MacroCode;
 import org.extex.unit.tex.macro.util.MacroPattern;
-import org.extex.util.framework.logger.LogEnabled;
 
 /**
  * This class provides an implementation for the primitive <code>\readline</code>.
@@ -100,8 +100,8 @@ public class Readline extends AbstractAssignment implements LogEnabled {
          *
          * @return the category code of a character
          *
-         * @see org.extex.interpreter.Tokenizer#getCatcode(
-         *      org.extex.type.UnicodeChar)
+         * @see org.extex.scanner.Tokenizer#getCatcode(
+         *      org.extex.core.UnicodeChar)
          */
         public Catcode getCatcode(final UnicodeChar c) {
 
@@ -113,7 +113,7 @@ public class Readline extends AbstractAssignment implements LogEnabled {
          *
          * @return the name space
          *
-         * @see org.extex.interpreter.Tokenizer#getNamespace()
+         * @see org.extex.scanner.Tokenizer#getNamespace()
          */
         public String getNamespace() {
 
@@ -214,7 +214,7 @@ public class Readline extends AbstractAssignment implements LogEnabled {
      *
      * @param log the logger to use
      *
-     * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
     public void enableLogging(final Logger log) {

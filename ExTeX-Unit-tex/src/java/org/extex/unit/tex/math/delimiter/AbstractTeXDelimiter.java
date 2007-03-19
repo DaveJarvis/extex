@@ -19,6 +19,11 @@
 
 package org.extex.unit.tex.math.delimiter;
 
+import org.extex.core.UnicodeChar;
+import org.extex.core.count.CountParser;
+import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -28,20 +33,15 @@ import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.exception.helping.MissingNumberException;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.ExpandableCode;
-import org.extex.interpreter.type.count.Count;
 import org.extex.interpreter.type.math.MathClass;
 import org.extex.interpreter.type.math.MathClassVisitor;
 import org.extex.interpreter.type.math.MathDelimiter;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.OtherToken;
 import org.extex.scanner.type.token.Token;
-import org.extex.type.UnicodeChar;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.noad.MathGlyph;
 import org.extex.unit.tex.math.AbstractMathCode;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-import org.extex.util.framework.i18n.Localizer;
-import org.extex.util.framework.i18n.LocalizerFactory;
 
 /**
  * This abstract class adds the ability to translate
@@ -413,10 +413,10 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
             final MathClass mClass, final String primitive)
             throws InterpreterException {
 
-        int smallFam = (int) Count.scanNumber(context, source, typesetter);
+        int smallFam = (int) CountParser.scanNumber(context, source, typesetter);
         UnicodeChar smallChar =
                 source.scanCharacterCode(context, typesetter, primitive);
-        int largeFam = (int) Count.scanNumber(context, source, typesetter);
+        int largeFam = (int) CountParser.scanNumber(context, source, typesetter);
         UnicodeChar largeChar =
                 source.scanCharacterCode(context, typesetter, primitive);
 
@@ -454,7 +454,7 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
             if (t instanceof CodeToken) {
                 Code code = context.getCode((CodeToken) t);
                 if (code instanceof Delimiter) {
-                    return newMathDelimiter(Count.scanNumber(context, source,
+                    return newMathDelimiter(CountParser.scanNumber(context, source,
                         typesetter));
                 } else if (code instanceof ExpandableCode) {
                     ((ExpandableCode) code).expand(Flags.NONE, context, source,
@@ -471,7 +471,7 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
                 } else if (t instanceof OtherToken) {
                     source.push(t);
                     try {
-                        return newMathDelimiter(Count.scanNumber(context,
+                        return newMathDelimiter(CountParser.scanNumber(context,
                             source, typesetter));
                     } catch (MissingNumberException e) {
                         throw new HelpingException(getMyLocalizer(),

@@ -21,9 +21,9 @@ package org.extex.unit.pdftex;
 
 import org.extex.backend.documentWriter.DocumentWriter;
 import org.extex.backend.documentWriter.PdftexSupport;
+import org.extex.core.count.Count;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
-import org.extex.interpreter.type.count.Count;
 import org.extex.typesetter.Typesetter;
 import org.extex.unit.pdftex.exception.InterpreterPdftexException;
 

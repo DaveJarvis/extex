@@ -19,16 +19,17 @@
 
 package org.extex.unit.tex.math.fraction;
 
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.DimenParser;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
-import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.interpreter.type.math.MathDelimiter;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.listMaker.math.NoadConsumer;
 import org.extex.unit.tex.math.delimiter.AbstractTeXDelimiter;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive
@@ -59,7 +60,7 @@ import org.extex.util.framework.configuration.exception.ConfigurationException;
  *  <pre class="syntax">
  *    &lang;abovewithdelims&rang;
  *       &rarr; &lang;math material&rang; <tt>\abovewithdelims</tt> ... {@linkplain
- *        org.extex.interpreter.type.dimen#Dimen(org.extex.interpreter.context.Context,org.extex.interpreter.TokenSource)
+ *        org.extex.core.dimen#Dimen(org.extex.interpreter.context.Context,org.extex.interpreter.TokenSource)
  *        &lang;dimen&rang;} &lang;math material&rang;  </pre>
  *
  * <h4>Examples</h4>
@@ -117,7 +118,7 @@ public class Abovewithdelims extends AbstractTeXDelimiter {
                 parseDelimiter(context, source, typesetter, getName());
         MathDelimiter del2 =
                 parseDelimiter(context, source, typesetter, getName());
-        Dimen d = Dimen.parse(context, source, typesetter);
+        Dimen d = DimenParser.parse(context, source, typesetter);
         nc.switchToFraction(del1, del2, d, context.getTypesettingContext());
     }
 

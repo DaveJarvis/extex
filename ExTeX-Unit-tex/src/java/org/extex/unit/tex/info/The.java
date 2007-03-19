@@ -19,6 +19,7 @@
 
 package org.extex.unit.tex.info;
 
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -31,9 +32,10 @@ import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.CodeExpander;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.Theable;
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.CatcodeException;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 
 /**
@@ -123,12 +125,19 @@ public class The extends AbstractCode implements ExpandableCode, CodeExpander {
             Code code = context.getCode((CodeToken) cs);
 
             if (code instanceof Theable) {
-                Tokens toks = ((Theable) code).the(context, source, typesetter);
+                Tokens toks;
+                try {
+                    toks = ((Theable) code).the(context, source, typesetter);
+                } catch (CatcodeException e) {
+                    throw new InterpreterException(e);
+                } catch (ConfigurationException e) {
+                    throw new InterpreterException(e);
+                }
                 source.push(toks);
                 return;
             } else if (code == null) {
-                throw new UndefinedControlSequenceException(cs.toText(context
-                    .escapechar()));
+                throw new UndefinedControlSequenceException(//
+                    cs.toText(context.escapechar()));
             }
         }
 
@@ -180,7 +189,7 @@ public class The extends AbstractCode implements ExpandableCode, CodeExpander {
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter,
-     *      org.extex.interpreter.type.tokens.Tokens)
+     *      org.extex.scanner.type.tokens.Tokens)
      */
     public void expandCode(final Context context, final TokenSource source,
             final Typesetter typesetter, final Tokens tokens)
@@ -196,7 +205,14 @@ public class The extends AbstractCode implements ExpandableCode, CodeExpander {
             Code code = context.getCode((CodeToken) cs);
 
             if (code instanceof Theable) {
-                tokens.add(((Theable) code).the(context, source, typesetter));
+                try {
+                    tokens.add(((Theable) code)
+                        .the(context, source, typesetter));
+                } catch (CatcodeException e) {
+                    throw new InterpreterException(e);
+                } catch (ConfigurationException e) {
+                    throw new InterpreterException(e);
+                }
                 return;
             }
         }

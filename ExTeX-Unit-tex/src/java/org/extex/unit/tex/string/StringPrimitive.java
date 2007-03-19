@@ -25,7 +25,7 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.ExpandableCode;
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.CatcodeException;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 
@@ -37,10 +37,10 @@ import org.extex.typesetter.Typesetter;
  * <h3>The Primitive <tt>\string</tt></h3>
  * <p>
  *  This primitive takes the next unexpanded token. If this token is a control
- *  sequence &ndash; and no active character &ndash; then the value of <tt>escapechar</tt>
- *  followed by the characters from the name of the control sequence.
- *  Otherwise it is a single character token containing the character code of
- *  the token.
+ *  sequence &ndash; and no active character &ndash; then the value of
+ *  <tt>escapechar</tt> followed by the characters from the name of the control
+ *  sequence. Otherwise it is a single character token containing the character
+ *  code of the token.
  * </p>
  *
  * <h4>Syntax</h4>
@@ -128,7 +128,11 @@ public class StringPrimitive extends AbstractCode implements ExpandableCode {
             throws InterpreterException {
 
         Token t = source.getToken(context);
-        source.push(new Tokens(context, context.esc(t)));
+        try {
+            source.push(context.getTokenFactory().toTokens( context.esc(t)));
+        } catch (CatcodeException e) {
+            throw new InterpreterException(e);
+        }
     }
 
 }

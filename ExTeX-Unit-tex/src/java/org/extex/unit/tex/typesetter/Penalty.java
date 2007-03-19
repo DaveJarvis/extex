@@ -19,15 +19,15 @@
 
 package org.extex.unit.tex.typesetter;
 
+import org.extex.core.count.CountParser;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.AbstractCode;
-import org.extex.interpreter.type.count.Count;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.node.PenaltyNode;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive <code>\penalty</code>.
@@ -106,7 +106,7 @@ public class Penalty extends AbstractCode {
             throws InterpreterException,
                 ConfigurationException {
 
-        long penalty = Count.scanInteger(context, source, typesetter);
+        long penalty = CountParser.scanInteger(context, source, typesetter);
         typesetter.add(new PenaltyNode(penalty));
     }
 

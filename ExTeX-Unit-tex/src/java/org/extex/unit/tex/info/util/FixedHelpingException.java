@@ -73,7 +73,7 @@ public class FixedHelpingException extends HelpingException {
      *
      * @return the help information
      *
-     * @see org.extex.util.exception.GeneralException#getHelp()
+     * @see org.extex.core.exception.GeneralException#getHelp()
      */
     public String getHelp() {
 

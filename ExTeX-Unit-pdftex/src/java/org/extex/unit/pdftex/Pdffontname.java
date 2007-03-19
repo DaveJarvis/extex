@@ -27,8 +27,9 @@ import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.font.Font;
-import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.interpreter.type.tokens.TokensConvertible;
+import org.extex.scanner.type.CatcodeException;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 
 /**
@@ -109,7 +110,11 @@ public class Pdffontname extends AbstractPdftexCode
         Font font = source.getFont(context, getName());
 
         String name = writer.pdffontname(font);
-        return new Tokens(context, name);
+        try {
+            return context.getTokenFactory().toTokens( name);
+        } catch (CatcodeException e) {
+            throw new InterpreterException(e);
+        }
     }
 
     /**

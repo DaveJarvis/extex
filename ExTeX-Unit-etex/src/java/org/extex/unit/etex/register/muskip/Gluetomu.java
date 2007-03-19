@@ -19,15 +19,16 @@
 
 package org.extex.unit.etex.register.muskip;
 
+import org.extex.core.glue.Glue;
+import org.extex.core.glue.GlueParser;
+import org.extex.core.muskip.Muskip;
+import org.extex.core.muskip.MuskipConvertible;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.CantUseInException;
 import org.extex.interpreter.type.AbstractCode;
-import org.extex.interpreter.type.glue.Glue;
-import org.extex.interpreter.type.muskip.Muskip;
-import org.extex.interpreter.type.muskip.MuskipConvertible;
 import org.extex.typesetter.Typesetter;
 
 /**
@@ -76,7 +77,7 @@ public class Gluetomu extends AbstractCode implements MuskipConvertible {
     }
 
     /**
-     * @see org.extex.interpreter.type.muskip.MuskipConvertible#convertMuskip(
+     * @see org.extex.core.muskip.MuskipConvertible#convertMuskip(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
@@ -85,7 +86,7 @@ public class Gluetomu extends AbstractCode implements MuskipConvertible {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        Glue glue = Glue.parse(source, context, typesetter);
+        Glue glue = GlueParser.parse(source, context, typesetter);
 
         return new Muskip(glue.getLength(), glue.getStretch(), glue.getShrink());
     }

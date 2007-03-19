@@ -21,8 +21,8 @@ package org.extex.unit.tex.info;
 
 import java.util.logging.Logger;
 
+import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.Flags;
-import org.extex.interpreter.Namespace;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
@@ -30,14 +30,14 @@ import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.Showable;
-import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.CatcodeException;
+import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.ControlSequenceToken;
 import org.extex.scanner.type.token.Token;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
-import org.extex.util.framework.logger.LogEnabled;
 
 /**
  * This class provides an implementation for the primitive <code>\show</code>.
@@ -126,7 +126,7 @@ public class Show extends AbstractCode implements LogEnabled {
      *
      * @param log the logger to use
      *
-     * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
     public void enableLogging(final Logger log) {
@@ -176,44 +176,46 @@ public class Show extends AbstractCode implements LogEnabled {
     protected Tokens meaning(final Token t, final Context context)
             throws InterpreterException {
 
-        if (!(t instanceof CodeToken)) {
-            return new Tokens(context, t.toString());
-        }
         Tokens toks;
-
-        if (t instanceof ControlSequenceToken) {
-
-            toks = new Tokens(context, context.esc(t));
-
-        } else {
-            try {
-                Token token = context.getTokenFactory()
-                        .createToken(Catcode.OTHER, t.getChar(),
-                                Namespace.DEFAULT_NAMESPACE);
-                toks = new Tokens(token);
-            } catch (CatcodeException e) {
-                throw new InterpreterException(e);
+        try {
+            if (!(t instanceof CodeToken)) {
+                return context.getTokenFactory().toTokens(t.toString());
             }
-        }
 
-        toks.add(new Tokens(context, "="));
-        Code code = context.getCode((CodeToken) t);
-        if (code == null) {
+            if (t instanceof ControlSequenceToken) {
 
-            toks.add(new Tokens(context, //
+                toks = context.getTokenFactory().toTokens(context.esc(t));
+
+            } else {
+                toks =
+                        new Tokens(//
+                            context.getTokenFactory().createToken(
+                                Catcode.OTHER, t.getChar(),
+                                Namespace.DEFAULT_NAMESPACE));
+            }
+
+            toks.add(context.getTokenFactory().toTokens("="));
+            Code code = context.getCode((CodeToken) t);
+            if (code == null) {
+
+                toks.add(context.getTokenFactory().toTokens( //
                     getLocalizer().format("TTP.Undefined")));
 
-        } else if ((code instanceof Showable)) {
+            } else if ((code instanceof Showable)) {
 
-            toks.add(((Showable) code).show(context));
+                toks.add(((Showable) code).show(context));
 
-        } else {
+            } else {
 
-            toks.add(new Tokens(context, context.esc(code.getName())));
+                toks.add(context.getTokenFactory().toTokens(
+                    context.esc(code.getName())));
 
-//        } else {
-//
-//            toks.add(new Tokens(context, t.getChar().getCodePoint()));
+                //        } else {
+                //
+                //            toks.add(new Tokens(context, t.getChar().getCodePoint()));
+            }
+        } catch (CatcodeException e) {
+            throw new InterpreterException(e);
         }
         return toks;
     }

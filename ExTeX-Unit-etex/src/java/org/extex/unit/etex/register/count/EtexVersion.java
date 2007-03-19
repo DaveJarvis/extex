@@ -59,7 +59,7 @@ public class EtexVersion extends AbstractReadonlyCount {
     }
 
     /**
-     * @see org.extex.interpreter.type.count.CountConvertible#convertCount(
+     * @see org.extex.interpreter.type.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */

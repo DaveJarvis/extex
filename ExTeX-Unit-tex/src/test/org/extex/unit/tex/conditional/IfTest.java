@@ -19,13 +19,14 @@
 
 package org.extex.unit.tex.conditional;
 
+import org.extex.core.Locator;
+import org.extex.core.UnicodeChar;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.box.Box;
 import org.extex.interpreter.type.font.Font;
-import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.TokenStream;
 import org.extex.scanner.stream.TokenStreamFactory;
 import org.extex.scanner.type.Catcode;
@@ -33,9 +34,8 @@ import org.extex.scanner.type.CatcodeException;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactoryImpl;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.test.ExTeXLauncher;
-import org.extex.type.Locator;
-import org.extex.type.UnicodeChar;
 import org.extex.typesetter.Typesetter;
 
 /**
@@ -306,7 +306,7 @@ public class IfTest extends ExTeXLauncher {
          * @return the expanded tokens
          *
          * @see org.extex.interpreter.TokenSource#expand(
-         *      org.extex.interpreter.type.tokens.Tokens,
+         *      org.extex.scanner.type.tokens.Tokens,
          *      org.extex.typesetter.Typesetter)
          */
         public Tokens expand(final Tokens tokens, final Typesetter typesetter) {
@@ -543,7 +543,7 @@ public class IfTest extends ExTeXLauncher {
          * @param tokens the tokens to push
          *
          * @see org.extex.interpreter.TokenSource#push(
-         *      org.extex.interpreter.type.tokens.Tokens)
+         *      org.extex.scanner.type.tokens.Tokens)
          */
         public void push(final Tokens tokens) throws InterpreterException {
 
@@ -587,7 +587,7 @@ public class IfTest extends ExTeXLauncher {
         }
 
         /**
-         * @deprecated use Count.scanNumber() instead
+         * @deprecated use CountParser.scanNumber() instead
          * @see org.extex.interpreter.TokenSource#scanNumber(
          *      org.extex.interpreter.context.Context)
          */
@@ -598,7 +598,7 @@ public class IfTest extends ExTeXLauncher {
         }
 
         /**
-         * @deprecated use Count.scanNumber() instead
+         * @deprecated use CountParser.scanNumber() instead
          * @see org.extex.interpreter.TokenSource#scanNumber(
          *       org.extex.interpreter.context.Context,
          *       org.extex.scanner.type.token.Token)

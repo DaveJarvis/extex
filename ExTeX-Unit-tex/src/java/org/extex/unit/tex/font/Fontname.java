@@ -19,6 +19,8 @@
 
 package org.extex.unit.tex.font;
 
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.exception.GeneralException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -26,12 +28,11 @@ import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.ExpandableCode;
-import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.font.Font;
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.CatcodeException;
 import org.extex.scanner.type.token.TokenFactory;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
-import org.extex.util.exception.GeneralException;
 
 /**
  * This class provides an implementation for the primitive
@@ -114,17 +115,21 @@ public class Fontname extends AbstractCode implements ExpandableCode {
 
         source.skipSpace();
         Font font;
+        Tokens fontname;
         try {
             font = source.getFont(context, getName());
+            fontname = context.getTokenFactory().toTokens( //
+                font.getFontName());
         } catch (EofException e) {
             throw new EofException(printableControlSequence(context));
+        } catch (CatcodeException e) {
+            throw new InterpreterException(e);
         }
-        Tokens fontname = new Tokens(context, font.getFontName());
         FixedDimen size = font.getActualSize();
         if (font.getDesignSize().ne(size)) {
             TokenFactory tokenFactory = context.getTokenFactory();
             try {
-                fontname.add(tokenFactory, " at ");
+                fontname.add(tokenFactory.toTokens(" at "));
                 fontname.add(size.toToks(tokenFactory));
             } catch (InterpreterException e) {
                 throw e;

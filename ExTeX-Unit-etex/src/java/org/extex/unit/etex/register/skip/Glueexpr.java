@@ -19,12 +19,12 @@
 
 package org.extex.unit.etex.register.skip;
 
+import org.extex.core.muskip.Muskip;
+import org.extex.core.muskip.MuskipConvertible;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.AbstractCode;
-import org.extex.interpreter.type.muskip.Muskip;
-import org.extex.interpreter.type.muskip.MuskipConvertible;
 import org.extex.typesetter.Typesetter;
 
 /**
@@ -75,7 +75,7 @@ public class Glueexpr extends AbstractCode implements MuskipConvertible {
     }
 
     /**
-     * @see org.extex.interpreter.type.muskip.MuskipConvertible#convertMuskip(
+     * @see org.extex.core.muskip.MuskipConvertible#convertMuskip(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)

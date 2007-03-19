@@ -19,6 +19,10 @@
 
 package org.extex.unit.tex.math.delimiter;
 
+import org.extex.core.UnicodeChar;
+import org.extex.core.count.CountConvertible;
+import org.extex.core.count.CountParser;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -29,14 +33,11 @@ import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.arithmetic.Advanceable;
 import org.extex.interpreter.type.arithmetic.Divideable;
 import org.extex.interpreter.type.arithmetic.Multiplyable;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.count.CountConvertible;
 import org.extex.interpreter.type.math.MathDelimiter;
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.CatcodeException;
 import org.extex.scanner.type.token.Token;
-import org.extex.type.UnicodeChar;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive
@@ -162,7 +163,7 @@ public class Delcode extends AbstractAssignment
                 source.scanCharacterCode(context, typesetter, getName());
         source.getKeyword(context, "by");
 
-        long value = Count.scanInteger(context, source, null);
+        long value = CountParser.scanInteger(context, source, null);
         MathDelimiter delcode = context.getDelcode(charCode);
         value += AbstractTeXDelimiter.delimiterToLong(delcode);
 
@@ -249,7 +250,7 @@ public class Delcode extends AbstractAssignment
      *
      * @throws InterpreterException in case of an error
      *
-     * @see org.extex.interpreter.type.count.CountConvertible#convertCount(
+     * @see org.extex.interpreter.type.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
@@ -288,7 +289,7 @@ public class Delcode extends AbstractAssignment
                 source.scanCharacterCode(context, typesetter, getName());
         source.getKeyword(context, "by");
 
-        long value = Count.scanInteger(context, source, null);
+        long value = CountParser.scanInteger(context, source, null);
         MathDelimiter delcode = context.getDelcode(charCode);
         if (value == 0) {
             throw new ArithmeticOverflowException(
@@ -324,7 +325,7 @@ public class Delcode extends AbstractAssignment
                 source.scanCharacterCode(context, typesetter, getName());
         source.getKeyword(context, "by");
 
-        long value = Count.scanInteger(context, source, null);
+        long value = CountParser.scanInteger(context, source, null);
         MathDelimiter delcode = context.getDelcode(charCode);
         value *= AbstractTeXDelimiter.delimiterToLong(delcode);
         assign(prefix, context, source, charCode, value);
@@ -338,7 +339,9 @@ public class Delcode extends AbstractAssignment
      * @param typesetter the typesetter to use
      *
      * @return the description of the primitive as list of Tokens
+     *
      * @throws InterpreterException in case of an error
+     * @throws CatcodeException in case of an error in token creation
      *
      * @see org.extex.interpreter.type.Theable#the(
      *      org.extex.interpreter.context.Context,
@@ -346,13 +349,15 @@ public class Delcode extends AbstractAssignment
      *      org.extex.typesetter.Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+            final Typesetter typesetter)
+            throws InterpreterException,
+                CatcodeException {
 
         UnicodeChar charCode =
                 source.scanCharacterCode(context, typesetter, getName());
         MathDelimiter delcode = context.getDelcode(charCode);
         long value = AbstractTeXDelimiter.delimiterToLong(delcode);
-        return new Tokens(context, value);
+        return context.getTokenFactory().toTokens(value);
     }
 
 }

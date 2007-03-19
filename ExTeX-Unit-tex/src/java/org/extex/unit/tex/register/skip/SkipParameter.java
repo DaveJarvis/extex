@@ -19,9 +19,9 @@
 
 package org.extex.unit.tex.register.skip;
 
-import org.extex.interpreter.Namespace;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.scanner.type.Namespace;
 import org.extex.typesetter.Typesetter;
 
 /**

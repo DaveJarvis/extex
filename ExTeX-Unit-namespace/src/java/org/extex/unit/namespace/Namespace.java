@@ -19,6 +19,7 @@
 
 package org.extex.unit.namespace;
 
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -28,7 +29,8 @@ import org.extex.interpreter.exception.helping.EofInToksException;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.Theable;
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.CatcodeException;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 
 /**
@@ -111,19 +113,38 @@ public class Namespace extends AbstractAssignment
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        source.push(new Tokens(context, context.getNamespace()));
+        try {
+            source.push(context.getTokenFactory().toTokens( //
+                context.getNamespace()));
+        } catch (CatcodeException e) {
+            throw new InterpreterException(e);
+        }
     }
 
     /**
+     * This method is the getter for the description of the primitive.
+     *
+     * @param context the interpreter context
+     * @param source the source for further tokens to qualify the request
+     * @param typesetter the typesetter to use
+     *
+     * @return the description of the primitive as list of Tokens
+     *
+     * @throws InterpreterException in case of an error
+     * @throws CatcodeException in case of an error in token creation
+     * @throws ConfigurationException in case of an configuration error
+     *
      * @see org.extex.interpreter.type.Theable#the(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+            final Typesetter typesetter)
+            throws InterpreterException,
+                CatcodeException {
 
-        return new Tokens(context, context.getNamespace());
+        return context.getTokenFactory().toTokens(context.getNamespace());
     }
 
 }

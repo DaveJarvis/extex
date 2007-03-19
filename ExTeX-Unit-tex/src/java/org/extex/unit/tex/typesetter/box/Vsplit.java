@@ -23,6 +23,11 @@ import java.util.logging.Logger;
 
 import javax.naming.OperationNotSupportedException;
 
+import org.extex.core.count.Count;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.DimenParser;
+import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -31,14 +36,10 @@ import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.box.Box;
 import org.extex.interpreter.type.box.Boxable;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.NodeList;
 import org.extex.unit.tex.register.box.Setbox;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-import org.extex.util.framework.logger.LogEnabled;
 
 /**
  * This class provides an implementation for the primitive <code>\vsplit</code>.
@@ -93,7 +94,7 @@ public class Vsplit extends AbstractCode implements Boxable, LogEnabled {
      *
      * @param log the logger to use
      *
-     * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
     public void enableLogging(final Logger log) {
@@ -175,7 +176,7 @@ public class Vsplit extends AbstractCode implements Boxable, LogEnabled {
         if (!source.getKeyword(context, "to")) {
             throw new HelpingException(getLocalizer(), "TTP.MissingToForVsplit");
         }
-        Dimen ht = Dimen.parse(context, source, typesetter);
+        Dimen ht = DimenParser.parse(context, source, typesetter);
         Box b = context.getBox(key);
         if (b == null || !b.isVbox()) {
             throw new HelpingException(getLocalizer(), "TTP.SplittingNonVbox",

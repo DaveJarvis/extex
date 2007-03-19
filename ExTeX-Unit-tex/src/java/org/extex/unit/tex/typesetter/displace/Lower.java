@@ -19,11 +19,12 @@
 
 package org.extex.unit.tex.typesetter.displace;
 
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.DimenParser;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.box.Box;
-import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 import org.extex.unit.tex.typesetter.box.AbstractBoxPrimitive;
@@ -48,7 +49,7 @@ import org.extex.unit.tex.typesetter.box.AbstractBoxPrimitive;
  *  <pre class="syntax">
  *    &lang;lower&rang;
  *      &rarr; <tt>\lower</tt> {@linkplain
- *        org.extex.interpreter.type.dimen#Dimen(Context,TokenSource)
+ *        org.extex.core.dimen#Dimen(Context,TokenSource)
  *        &lang;dimen&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getBox(org.extex.interpreter.Flags,Context,Typesetter,Token)
  *        &lang;box&rang;} </pre>
@@ -108,7 +109,7 @@ public class Lower extends AbstractBoxPrimitive {
             final Typesetter typesetter, final Token insert)
             throws InterpreterException {
 
-        Dimen amount = Dimen.parse(context, source, typesetter);
+        Dimen amount = DimenParser.parse(context, source, typesetter);
         Box box = source.getBox(null, context, typesetter, insert);
         if (box != null && !box.isVoid()) {
             amount.add(box.getShift());

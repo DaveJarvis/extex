@@ -19,14 +19,15 @@
 
 package org.extex.unit.tex.typesetter.undo;
 
+import org.extex.core.count.CountConvertible;
+import org.extex.core.dimen.DimenConvertible;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Theable;
-import org.extex.interpreter.type.count.CountConvertible;
-import org.extex.interpreter.type.dimen.DimenConvertible;
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.CatcodeException;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.node.PenaltyNode;
@@ -86,7 +87,7 @@ public class Lastpenalty extends AbstractCode
      *
      * @throws InterpreterException in case of an error
      *
-     * @see org.extex.interpreter.type.count.CountConvertible#convertCount(
+     * @see org.extex.interpreter.type.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
@@ -116,7 +117,7 @@ public class Lastpenalty extends AbstractCode
      *
      * @throws InterpreterException in case of an error
      *
-     * @see org.extex.interpreter.type.dimen.DimenConvertible#convertDimen(
+     * @see org.extex.core.dimen.DimenConvertible#convertDimen(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
@@ -139,6 +140,7 @@ public class Lastpenalty extends AbstractCode
      *
      * @return the description of the primitive as list of Tokens
      * @throws InterpreterException in case of an error
+     * @throws CatcodeException in case of an error in token creation
      *
      * @see org.extex.interpreter.type.Theable#the(
      *      org.extex.interpreter.context.Context,
@@ -146,12 +148,15 @@ public class Lastpenalty extends AbstractCode
      *      org.extex.typesetter.Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+            final Typesetter typesetter)
+            throws InterpreterException,
+                CatcodeException {
 
         Node node = typesetter.getLastNode();
-        long pen = (node instanceof PenaltyNode ? ((PenaltyNode) node)
-                .getPenalty() : 0);
-        return new Tokens(context, Long.toString(pen));
+        long penalty =
+                (node instanceof PenaltyNode ? ((PenaltyNode) node)
+                    .getPenalty() : 0);
+        return context.getTokenFactory().toTokens(penalty);
     }
 
 }

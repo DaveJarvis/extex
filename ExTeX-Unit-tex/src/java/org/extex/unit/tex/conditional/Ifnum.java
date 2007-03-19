@@ -19,12 +19,12 @@
 
 package org.extex.unit.tex.conditional;
 
+import org.extex.core.count.CountParser;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.HelpingException;
-import org.extex.interpreter.type.count.Count;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
@@ -46,14 +46,14 @@ import org.extex.unit.base.conditional.AbstractIf;
  *  <pre class="syntax">
  *    &lang;ifnum&rang;
  *      &rarr; <tt>\ifnum</tt> {@linkplain
- *        org.extex.interpreter.type.count.Count#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.core.count.Count#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;} &lang;op&rang; {@linkplain
- *        org.extex.interpreter.type.count.Count#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.core.count.Count#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;} &lang;true text&rang; <tt>\fi</tt>
  *      | <tt>\ifnum</tt> {@linkplain
- *        org.extex.interpreter.type.count.Count#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.core.count.Count#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;} &lang;op&rang; {@linkplain
- *        org.extex.interpreter.type.count.Count#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.core.count.Count#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;} &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt>
  *
  *    &lang;op&rang;
@@ -110,7 +110,7 @@ public class Ifnum extends AbstractIf {
     public boolean conditional(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
 
-        long value = Count.scanInteger(context, source, typesetter);
+        long value = CountParser.scanInteger(context, source, typesetter);
         Token rel = source.getToken(context);
         if (rel == null) {
             throw new EofException(printableControlSequence(context));
@@ -118,13 +118,13 @@ public class Ifnum extends AbstractIf {
         if (rel.getCatcode() == Catcode.OTHER) {
             switch (rel.getChar().getCodePoint()) {
                 case '<':
-                    return (value < Count.scanInteger(context, source,
+                    return (value < CountParser.scanInteger(context, source,
                         typesetter));
                 case '=':
-                    return (value == Count.scanInteger(context, source,
+                    return (value == CountParser.scanInteger(context, source,
                         typesetter));
                 case '>':
-                    return (value > Count.scanInteger(context, source,
+                    return (value > CountParser.scanInteger(context, source,
                         typesetter));
                 default:
                     // fall-through

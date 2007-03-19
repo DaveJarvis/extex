@@ -22,8 +22,8 @@ package org.extex.scanner.base;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
+import org.extex.framework.configuration.Configuration;
 import org.extex.scanner.TokenStream;
-import org.extex.util.framework.configuration.Configuration;
 
 /**
  * Test cases for the string implementation of a token stream.

@@ -19,6 +19,11 @@
 
 package org.extex.unit.tex.typesetter;
 
+import org.extex.core.UnicodeChar;
+import org.extex.core.count.Count;
+import org.extex.core.count.CountConvertible;
+import org.extex.core.count.CountParser;
+import org.extex.core.dimen.DimenConvertible;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -26,11 +31,8 @@ import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.InvalidCodeException;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.Theable;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.count.CountConvertible;
-import org.extex.interpreter.type.dimen.DimenConvertible;
-import org.extex.interpreter.type.tokens.Tokens;
-import org.extex.type.UnicodeChar;
+import org.extex.scanner.type.CatcodeException;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 
 /**
@@ -58,8 +60,7 @@ import org.extex.typesetter.Typesetter;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4732 $
  */
-public class Sfcode extends AbstractAssignment
-        implements
+public class Sfcode extends AbstractAssignment implements
 //            ExpandableCode,
             CountConvertible,
             DimenConvertible,
@@ -108,14 +109,14 @@ public class Sfcode extends AbstractAssignment
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        UnicodeChar charCode = source.scanCharacterCode(context, typesetter,
-                getName());
+        UnicodeChar charCode =
+                source.scanCharacterCode(context, typesetter, getName());
         source.getOptionalEquals(context);
-        Count sfCode = Count.parse(context, source, typesetter);
+        Count sfCode = CountParser.parse(context, source, typesetter);
 
         if (sfCode.lt(Count.ZERO) || sfCode.getValue() > MAX_SF_CODE) {
             throw new InvalidCodeException(sfCode.toString(), //
-                    Integer.toString(MAX_SF_CODE));
+                Integer.toString(MAX_SF_CODE));
         }
 
         context.setSfcode(charCode, sfCode, prefix.clearGlobal());
@@ -135,15 +136,15 @@ public class Sfcode extends AbstractAssignment
      *
      * @throws InterpreterException in case of an error
      *
-     * @see org.extex.interpreter.type.count.CountConvertible#convertCount(
+     * @see org.extex.interpreter.type.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
     public long convertCount(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
 
-        UnicodeChar ucCode = source.scanCharacterCode(context, typesetter,
-                getName());
+        UnicodeChar ucCode =
+                source.scanCharacterCode(context, typesetter, getName());
         return context.getSfcode(ucCode).getValue();
     }
 
@@ -163,7 +164,7 @@ public class Sfcode extends AbstractAssignment
      *
      * @throws InterpreterException in case of an error
      *
-     * @see org.extex.interpreter.type.dimen.DimenConvertible#convertDimen(
+     * @see org.extex.core.dimen.DimenConvertible#convertDimen(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
@@ -197,7 +198,11 @@ public class Sfcode extends AbstractAssignment
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        source.push(the(context, source, typesetter));
+        try {
+            source.push(the(context, source, typesetter));
+        } catch (CatcodeException e) {
+            throw new InterpreterException(e);
+        }
     }
 
     /**
@@ -208,16 +213,21 @@ public class Sfcode extends AbstractAssignment
      * @param typesetter the typesetter to use
      *
      * @return the description of the primitive as list of Tokens
+     *
      * @throws InterpreterException in case of an error
+     * @throws CatcodeException in case of an error in token creation
      *
      * @see org.extex.interpreter.type.Theable#the(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+            final Typesetter typesetter)
+            throws InterpreterException,
+                CatcodeException {
 
-        return new Tokens(context, convertCount(context, source, typesetter));
+        return context.getTokenFactory().toTokens( //
+            convertCount(context, source, typesetter));
     }
 
 }

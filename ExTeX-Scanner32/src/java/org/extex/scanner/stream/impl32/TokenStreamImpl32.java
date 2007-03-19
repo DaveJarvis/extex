@@ -23,15 +23,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
 
-import org.extex.interpreter.Tokenizer;
+import org.extex.core.UnicodeChar;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.scanner.Tokenizer;
 import org.extex.scanner.exception.ScannerException;
 import org.extex.scanner.stream.TokenStreamOptions;
 import org.extex.scanner.stream.exception.ScannerNoHexDigitFoundException;
 import org.extex.scanner.stream.exception.ScannerNoUnicodeNameException;
 import org.extex.scanner.type.Catcode;
-import org.extex.type.UnicodeChar;
-import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class contains an implementation of a token stream which is fed from a
@@ -132,7 +132,7 @@ public class TokenStreamImpl32 extends TokenStreamImpl {
 
     /**
      * @see org.extex.scanner.base.TokenStreamImpl#getChar(
-     *      org.extex.interpreter.Tokenizer)
+     *      org.extex.scanner.Tokenizer)
      */
     protected UnicodeChar getChar(final Tokenizer tokenizer)
             throws ScannerException {

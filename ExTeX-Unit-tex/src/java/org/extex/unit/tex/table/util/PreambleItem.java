@@ -19,7 +19,7 @@
 
 package org.extex.unit.tex.table.util;
 
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.tokens.Tokens;
 
 /**
  * This class provides a building block for the preamble of an alignment.

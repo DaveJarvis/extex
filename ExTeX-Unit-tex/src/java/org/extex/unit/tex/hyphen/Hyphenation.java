@@ -19,6 +19,8 @@
 
 package org.extex.unit.tex.hyphen;
 
+import org.extex.core.UnicodeChar;
+import org.extex.core.UnicodeCharList;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
@@ -29,9 +31,6 @@ import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.LetterToken;
 import org.extex.scanner.type.token.OtherToken;
 import org.extex.scanner.type.token.Token;
-import org.extex.type.UnicodeChar;
-import org.extex.type.UnicodeCharList;
-import org.extex.unicode.Unicode;
 import org.extex.unit.base.register.CharCode;
 
 /**
@@ -140,10 +139,10 @@ public class Hyphenation extends HyphenationPrimitive {
                 } else {
                     hyphen = true;
                 }
-                word.add(Unicode.SHY);
+                word.add(UnicodeChar.SHY);
             } else {
                 if (hyphen) {
-                    word.add(Unicode.SHY);
+                    word.add(UnicodeChar.SHY);
                     hyphen = false;
                 }
                 uc = t.getChar();

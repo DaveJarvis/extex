@@ -19,14 +19,17 @@
 
 package org.extex.unit.omega.register.skip;
 
+import org.extex.core.count.CountConvertible;
+import org.extex.core.glue.Glue;
+import org.extex.core.glue.GlueParser;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Theable;
-import org.extex.interpreter.type.count.CountConvertible;
-import org.extex.interpreter.type.glue.Glue;
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.CatcodeException;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 
 /**
@@ -51,7 +54,7 @@ import org.extex.typesetter.Typesetter;
  *  <pre class="syntax">
  *    &lang;gluestretchorder&rang;
  *      &rarr; <tt>\gluestretchorder</tt> {@linkplain
- *        org.extex.interpreter.type.glue.Glue#parse(TokenSource,Context,Typesetter)
+ *        org.extex.core.glue.Glue#parse(TokenSource,Context,Typesetter)
  *        &lang;glue&rang;} </pre>
  *
  * <h4>Examples</h4>
@@ -98,7 +101,7 @@ public class Ogluestretchorder extends AbstractCode
      *
      * @throws InterpreterException in case of an error
      *
-     * @see org.extex.interpreter.type.count.CountConvertible#convertCount(
+     * @see org.extex.interpreter.type.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
@@ -106,7 +109,7 @@ public class Ogluestretchorder extends AbstractCode
     public long convertCount(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
 
-        Glue glue = Glue.parse(source, context, typesetter);
+        Glue glue = GlueParser.parse(source, context, typesetter);
         return glue.getStretch().getOrder();
     }
 
@@ -118,7 +121,10 @@ public class Ogluestretchorder extends AbstractCode
      * @param typesetter the typesetter to use
      *
      * @return the description of the primitive as list of Tokens
+     *
      * @throws InterpreterException in case of an error
+     * @throws CatcodeException in case of an error in token creation
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.interpreter.type.Theable#the(
      *      org.extex.interpreter.context.Context,
@@ -126,10 +132,12 @@ public class Ogluestretchorder extends AbstractCode
      *      org.extex.typesetter.Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+            final Typesetter typesetter)
+            throws InterpreterException,
+                CatcodeException {
 
-        return new Tokens(context, Long.toString(convertCount(context, source,
-                typesetter)));
+        return context.getTokenFactory().toTokens( //
+            convertCount(context, source, typesetter));
     }
 
 }

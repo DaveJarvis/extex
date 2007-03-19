@@ -30,6 +30,9 @@ import java.util.Properties;
 import junit.framework.Assert;
 
 import org.extex.ExTeX;
+import org.extex.core.exception.GeneralException;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.ConfigurationFactory;
 import org.extex.interpreter.ErrorHandler;
 import org.extex.interpreter.Interpreter;
 import org.extex.interpreter.InterpreterFactory;
@@ -37,9 +40,6 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.main.errorHandler.editHandler.EditHandler;
 import org.extex.scanner.type.token.Token;
-import org.extex.util.exception.GeneralException;
-import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.configuration.ConfigurationFactory;
 
 /**
  * Test for ExTeX.
@@ -66,7 +66,7 @@ public final class TestTeX {
          * @return ...
          *
          * @see org.extex.interpreter.ErrorHandler#handleError(
-         *      org.extex.util.exception.GeneralException,
+         *      org.extex.core.exception.GeneralException,
          *      org.extex.scanner.type.token.Token,
          *      org.extex.interpreter.TokenSource,
          *      org.extex.interpreter.context.Context)

@@ -21,13 +21,14 @@ package org.extex.unit.tex.table;
 
 import java.util.List;
 
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.DimenParser;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.MissingLeftBraceException;
-import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
@@ -118,7 +119,7 @@ public class Valign extends AbstractAlign {
         Dimen height = null;
 
         if (source.getKeyword(context, "to")) {
-            height = Dimen.parse(context, source, typesetter);
+            height = DimenParser.parse(context, source, typesetter);
         }
         Token t = source.getToken(context);
         if (t == null) {

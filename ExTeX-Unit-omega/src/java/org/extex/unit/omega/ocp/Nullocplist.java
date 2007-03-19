@@ -21,13 +21,13 @@ package org.extex.unit.omega.ocp;
 
 import java.util.logging.Logger;
 
+import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.typesetter.Typesetter;
-import org.extex.util.framework.logger.LogEnabled;
 
 /**
  * This class provides an implementation for the primitive <code>\nullocplist</code>.
@@ -80,7 +80,7 @@ public class Nullocplist extends AbstractCode implements LogEnabled {
      *
      * @param log the logger to use
      *
-     * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
     public void enableLogging(final Logger log) {

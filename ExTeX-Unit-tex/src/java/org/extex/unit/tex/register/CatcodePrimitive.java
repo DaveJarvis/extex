@@ -19,6 +19,9 @@
 
 package org.extex.unit.tex.register;
 
+import org.extex.core.UnicodeChar;
+import org.extex.core.count.CountConvertible;
+import org.extex.core.count.CountParser;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -26,12 +29,9 @@ import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.InvalidCodeException;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.Theable;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.count.CountConvertible;
-import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.CatcodeException;
-import org.extex.type.UnicodeChar;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 
 /**
@@ -187,17 +187,17 @@ public class CatcodePrimitive extends AbstractAssignment
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        UnicodeChar charCode = source.scanCharacterCode(context, typesetter,
-                getName());
+        UnicodeChar charCode =
+                source.scanCharacterCode(context, typesetter, getName());
         source.getOptionalEquals(context);
-        long ccNumber = Count.scanInteger(context, source, typesetter);
+        long ccNumber = CountParser.scanInteger(context, source, typesetter);
 
         try {
             context.setCatcode(charCode, Catcode.toCatcode((int) ccNumber),
-                    prefix.clearGlobal());
+                prefix.clearGlobal());
         } catch (CatcodeException e) {
             throw new InvalidCodeException(Long.toString(ccNumber), //
-                    Integer.toString(Catcode.getCatcodeMax()));
+                Integer.toString(Catcode.getCatcodeMax()));
         }
 
     }
@@ -216,7 +216,7 @@ public class CatcodePrimitive extends AbstractAssignment
      *
      * @throws InterpreterException in case of an error
      *
-     * @see org.extex.interpreter.type.count.CountConvertible#convertCount(
+     * @see org.extex.interpreter.type.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
@@ -224,8 +224,8 @@ public class CatcodePrimitive extends AbstractAssignment
     public long convertCount(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
 
-        UnicodeChar charCode = source.scanCharacterCode(context, typesetter,
-                getName());
+        UnicodeChar charCode =
+                source.scanCharacterCode(context, typesetter, getName());
 
         return context.getCatcode(charCode).getCode();
     }
@@ -238,7 +238,9 @@ public class CatcodePrimitive extends AbstractAssignment
      * @param typesetter the typesetter to use
      *
      * @return the description of the primitive as list of Tokens
+     *
      * @throws InterpreterException in case of an error
+     * @throws CatcodeException in case of an error in token creation
      *
      * @see org.extex.interpreter.type.Theable#the(
      *      org.extex.interpreter.context.Context,
@@ -246,9 +248,12 @@ public class CatcodePrimitive extends AbstractAssignment
      *      org.extex.typesetter.Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+            final Typesetter typesetter)
+            throws InterpreterException,
+                CatcodeException {
 
-        return new Tokens(context, convertCount(context, source, typesetter));
+        return context.getTokenFactory().toTokens( //
+            convertCount(context, source, typesetter));
     }
 
 }

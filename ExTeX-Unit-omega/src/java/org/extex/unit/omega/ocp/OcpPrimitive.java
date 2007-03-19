@@ -19,17 +19,17 @@
 
 package org.extex.unit.omega.ocp;
 
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.resource.ResourceConsumer;
+import org.extex.resource.ResourceFinder;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.unit.base.file.AbstractFileCode;
 import org.extex.unit.omega.ocp.util.Ocp;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-import org.extex.util.resource.ResourceConsumer;
-import org.extex.util.resource.ResourceFinder;
 
 /**
  * This class provides an implementation for the primitive <code>\ocp</code>.
@@ -112,8 +112,8 @@ public class OcpPrimitive extends AbstractFileCode implements ResourceConsumer {
      *
      * @param resourceFinder the resource finder
      *
-     * @see org.extex.util.resource.ResourceConsumer#setResourceFinder(
-     *      org.extex.util.resource.ResourceFinder)
+     * @see org.extex.resource.ResourceConsumer#setResourceFinder(
+     *      org.extex.resource.ResourceFinder)
      */
     public void setResourceFinder(final ResourceFinder resourceFinder) {
 

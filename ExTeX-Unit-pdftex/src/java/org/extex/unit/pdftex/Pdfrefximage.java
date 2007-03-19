@@ -19,15 +19,15 @@
 
 package org.extex.unit.pdftex;
 
+import org.extex.core.count.CountParser;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
-import org.extex.interpreter.type.count.Count;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.node.pdftex.PdfRefXImage;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive <code>\pdfrefximage</code>.
@@ -97,7 +97,7 @@ public class Pdfrefximage extends AbstractPdftexCode {
 
         ensurePdftex(context, typesetter);
 
-        long no = Count.scanNumber(context, source, typesetter);
+        long no = CountParser.scanNumber(context, source, typesetter);
 
         typesetter.add(new PdfRefXImage(no));
     }

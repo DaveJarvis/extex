@@ -19,6 +19,10 @@
 
 package org.extex.unit.tex.hyphen;
 
+import org.extex.core.count.CountConvertible;
+import org.extex.core.count.CountParser;
+import org.extex.core.dimen.DimenConvertible;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -28,15 +32,12 @@ import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.arithmetic.Advanceable;
 import org.extex.interpreter.type.arithmetic.Divideable;
 import org.extex.interpreter.type.arithmetic.Multiplyable;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.count.CountConvertible;
-import org.extex.interpreter.type.dimen.DimenConvertible;
-import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.language.Language;
 import org.extex.language.hyphenation.exception.HyphenationException;
+import org.extex.scanner.type.CatcodeException;
 import org.extex.scanner.type.token.Token;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive
@@ -54,7 +55,7 @@ import org.extex.util.framework.configuration.exception.ConfigurationException;
  *      &rarr; <tt>\righthyphenmin</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.interpreter.type.count.Count#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.core.count.Count#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}  </pre>
  *
  * <h4>Example:</h4>
@@ -127,7 +128,7 @@ public class RightHyphenmin extends AbstractHyphenationCode
         Language table = getHyphenationTable(context);
         source.getKeyword(context, "by");
         long righthyphenmin = table.getRightHyphenmin();
-        righthyphenmin += Count.scanInteger(context, source, typesetter);
+        righthyphenmin += CountParser.scanInteger(context, source, typesetter);
 
         try {
             table.setRightHyphenmin(righthyphenmin);
@@ -160,7 +161,7 @@ public class RightHyphenmin extends AbstractHyphenationCode
      *
      * @throws InterpreterException in case of an error
      *
-     * @see org.extex.interpreter.type.count.CountConvertible#convertCount(
+     * @see org.extex.interpreter.type.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
@@ -187,7 +188,7 @@ public class RightHyphenmin extends AbstractHyphenationCode
      *
      * @throws InterpreterException in case of an error
      *
-     * @see org.extex.interpreter.type.dimen.DimenConvertible#convertDimen(
+     * @see org.extex.core.dimen.DimenConvertible#convertDimen(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
@@ -227,10 +228,10 @@ public class RightHyphenmin extends AbstractHyphenationCode
         Language table = getHyphenationTable(context);
         source.getKeyword(context, "by");
         long righthyphenmin = table.getRightHyphenmin();
-        long arg = Count.scanInteger(context, source, typesetter);
+        long arg = CountParser.scanInteger(context, source, typesetter);
         if (arg == 0) {
             throw new ArithmeticOverflowException(
-                    printableControlSequence(context));
+                printableControlSequence(context));
         }
         righthyphenmin /= arg;
 
@@ -280,7 +281,8 @@ public class RightHyphenmin extends AbstractHyphenationCode
 
         Language table = getHyphenationTable(context);
         source.getOptionalEquals(context);
-        long righthyphenmin = Count.scanInteger(context, source, typesetter);
+        long righthyphenmin =
+                CountParser.scanInteger(context, source, typesetter);
 
         try {
             table.setRightHyphenmin(righthyphenmin);
@@ -328,7 +330,7 @@ public class RightHyphenmin extends AbstractHyphenationCode
         Language table = getHyphenationTable(context);
         source.getKeyword(context, "by");
         long righthyphenmin = table.getRightHyphenmin();
-        righthyphenmin *= Count.scanInteger(context, source, typesetter);
+        righthyphenmin *= CountParser.scanInteger(context, source, typesetter);
 
         try {
             table.setRightHyphenmin(righthyphenmin);
@@ -355,19 +357,23 @@ public class RightHyphenmin extends AbstractHyphenationCode
      * @param typesetter the typesetter to use
      *
      * @return the description of the primitive as list of Tokens
+     *
      * @throws InterpreterException in case of an error
+     * @throws CatcodeException in case of an error in token creation
      *
      * @see org.extex.interpreter.type.Theable#the(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+            final Typesetter typesetter)
+            throws InterpreterException,
+                CatcodeException {
 
         Language table = getHyphenationTable(context);
         try {
-            return new Tokens(context, String
-                    .valueOf(table.getRightHyphenmin()));
+            return context.getTokenFactory().toTokens( //
+                String.valueOf(table.getRightHyphenmin()));
         } catch (HyphenationException e) {
             if (e.getCause() instanceof ConfigurationException) {
                 throw new InterpreterException(e.getCause());

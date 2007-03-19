@@ -19,16 +19,16 @@
 
 package org.extex.unit.tex.register.count;
 
+import org.extex.core.count.CountParser;
+import org.extex.framework.configuration.Configurable;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.InitializableCode;
-import org.extex.interpreter.type.count.Count;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
-import org.extex.util.framework.configuration.Configurable;
-import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the count valued primitives like
@@ -80,8 +80,8 @@ public class IntegerParameter extends CountPrimitive
      *
      * @throws ConfigurationException in case that something went wrong
      *
-     * @see org.extex.util.framework.configuration.Configurable#configure(
-     *      org.extex.util.framework.configuration.Configuration)
+     * @see org.extex.framework.configuration.Configurable#configure(
+     *      org.extex.framework.configuration.Configuration)
      */
     public void configure(final Configuration config)
             throws ConfigurationException {
@@ -137,7 +137,7 @@ public class IntegerParameter extends CountPrimitive
             Token t = source.getToken(context);
             if (t != null) {
                 source.push(t);
-                long value = Count.scanInteger(context, source, typesetter);
+                long value = CountParser.scanInteger(context, source, typesetter);
                 context.setCount(getKey(context, source, typesetter), value,
                         true);
             }

@@ -19,13 +19,15 @@
 
 package org.extex.unit.omega.math;
 
+import org.extex.core.UnicodeChar;
+import org.extex.core.count.CountParser;
+import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.Code;
-import org.extex.interpreter.type.count.Count;
 import org.extex.interpreter.type.math.MathClass;
 import org.extex.interpreter.type.math.MathClassVisitor;
 import org.extex.interpreter.type.math.MathCode;
@@ -33,12 +35,10 @@ import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.LeftBraceToken;
 import org.extex.scanner.type.token.RightBraceToken;
 import org.extex.scanner.type.token.Token;
-import org.extex.type.UnicodeChar;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.noad.MathGlyph;
 import org.extex.unit.tex.math.AbstractMathCode;
 import org.extex.unit.tex.math.util.MathCodeConvertible;
-import org.extex.util.framework.i18n.LocalizerFactory;
 
 /**
  * This is the base class for all math primitives using the Omega encoding.
@@ -203,7 +203,7 @@ public abstract class AbstractOmegaMathCode extends AbstractMathCode {
         if (t instanceof LeftBraceToken) {
             MathClass mc =
                     MathClass.parse(context, source, typesetter, primitive);
-            long family = Count.parse(context, source, typesetter).getValue();
+            long family = CountParser.parse(context, source, typesetter).getValue();
             UnicodeChar c =
                     source.scanCharacterCode(context, typesetter, primitive);
 
@@ -226,7 +226,7 @@ public abstract class AbstractOmegaMathCode extends AbstractMathCode {
         }
 
         source.push(t);
-        long code = Count.parse(context, source, typesetter).getValue();
+        long code = CountParser.parse(context, source, typesetter).getValue();
 
         if (code < 0 || code > SPECIAL_MATH_CODE) {
             throw new HelpingException(LocalizerFactory

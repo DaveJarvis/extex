@@ -20,16 +20,17 @@
 package org.extex.unit.pdftex;
 
 import org.extex.backend.documentWriter.PdftexSupport;
+import org.extex.core.count.CountParser;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.DimenParser;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.node.RuleNode;
 import org.extex.typesetter.type.node.pdftex.PdfRefXImage;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive <code>\pdfximage</code>.
@@ -105,15 +106,15 @@ public class Pdfximage extends AbstractPdftexCode {
 
         for (;;) {
             if (source.getKeyword(context, "width")) {
-                width = Dimen.parse(context, source, typesetter);
+                width = DimenParser.parse(context, source, typesetter);
             } else if (source.getKeyword(context, "height")) {
-                height = Dimen.parse(context, source, typesetter);
+                height = DimenParser.parse(context, source, typesetter);
             } else if (source.getKeyword(context, "depth")) {
-                depth = Dimen.parse(context, source, typesetter);
+                depth = DimenParser.parse(context, source, typesetter);
             } else if (source.getKeyword(context, "attr")) {
                 attr = source.scanTokensAsString(context, getName());
             } else if (source.getKeyword(context, "page")) {
-                page = Count.scanInteger(context, source, typesetter);
+                page = CountParser.scanInteger(context, source, typesetter);
             } else {
                 break;
             }

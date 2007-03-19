@@ -19,12 +19,13 @@
 
 package org.extex.unit.tex.conditional;
 
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.DimenParser;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.HelpingException;
-import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
@@ -46,14 +47,14 @@ import org.extex.unit.base.conditional.AbstractIf;
  *  <pre class="syntax">
  *    &lang;ifdim&rang;
  *      &rarr; <tt>\ifdim</tt> {@linkplain
- *        org.extex.interpreter.type.dimen#Dimen(Context,TokenSource)
+ *        org.extex.core.dimen#Dimen(Context,TokenSource)
  *        &lang;dimen&rang;} &lang;op&rang; {@linkplain
- *        org.extex.interpreter.type.dimen#Dimen(Context,TokenSource)
+ *        org.extex.core.dimen#Dimen(Context,TokenSource)
  *        &lang;dimen&rang;} &lang;true text&rang; <tt>\fi</tt>
  *      | <tt>\ifdim</tt> {@linkplain
- *        org.extex.interpreter.type.dimen#Dimen(Context,TokenSource)
+ *        org.extex.core.dimen#Dimen(Context,TokenSource)
  *        &lang;dimen&rang;} &lang;op&rang; {@linkplain
- *        org.extex.interpreter.type.dimen#Dimen(Context,TokenSource)
+ *        org.extex.core.dimen#Dimen(Context,TokenSource)
  *        &lang;dimen&rang;} &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt>
  *
  *    &lang;op&rang;
@@ -106,7 +107,7 @@ public class Ifdim extends AbstractIf {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        long x = Dimen.parse(context, source, typesetter).getValue();
+        long x = DimenParser.parse(context, source, typesetter).getValue();
         Token rel = source.getToken(context);
         if (rel == null) {
             throw new EofException(printableControlSequence(context));
@@ -114,13 +115,13 @@ public class Ifdim extends AbstractIf {
         if (rel.getCatcode() == Catcode.OTHER) {
             switch (rel.getChar().getCodePoint()) {
                 case '<':
-                    return (x < Dimen.parse(context, source, typesetter)
+                    return (x < DimenParser.parse(context, source, typesetter)
                             .getValue());
                 case '=':
-                    return (x == Dimen.parse(context, source, typesetter)
+                    return (x == DimenParser.parse(context, source, typesetter)
                             .getValue());
                 case '>':
-                    return (x > Dimen.parse(context, source, typesetter)
+                    return (x > DimenParser.parse(context, source, typesetter)
                             .getValue());
                 default:
             // Fall through to error handling

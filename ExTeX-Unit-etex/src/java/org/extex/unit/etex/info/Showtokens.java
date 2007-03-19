@@ -21,6 +21,7 @@ package org.extex.unit.etex.info;
 
 import java.util.logging.Logger;
 
+import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -30,15 +31,14 @@ import org.extex.interpreter.exception.helping.EofInToksException;
 import org.extex.interpreter.exception.helping.MissingLeftBraceException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Code;
-import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.interpreter.type.tokens.TokensConvertible;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.LeftBraceToken;
 import org.extex.scanner.type.token.RightBraceToken;
 import org.extex.scanner.type.token.Token;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
-import org.extex.util.framework.logger.LogEnabled;
 
 /**
  * This class provides an implementation for the primitive <code>\showtokens</code>.
@@ -93,7 +93,7 @@ public class Showtokens extends AbstractCode implements LogEnabled {
      *
      * @param log the logger to use
      *
-     * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
     public void enableLogging(final Logger log) {

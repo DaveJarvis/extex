@@ -21,11 +21,12 @@ package org.extex.unit.pdftex.util.destination;
 
 import java.io.Serializable;
 
+import org.extex.core.count.CountParser;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.DimenParser;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.node.RuleNode;
 import org.extex.unit.pdftex.exception.InterpreterPdftexDestinationTypeException;
@@ -300,11 +301,11 @@ public abstract class DestType implements Serializable {
 
             for (;;) {
                 if (source.getKeyword(context, "width")) {
-                    width = Dimen.parse(context, source, typesetter);
+                    width = DimenParser.parse(context, source, typesetter);
                 } else if (source.getKeyword(context, "height")) {
-                    height = Dimen.parse(context, source, typesetter);
+                    height = DimenParser.parse(context, source, typesetter);
                 } else if (source.getKeyword(context, "depth")) {
-                    depth = Dimen.parse(context, source, typesetter);
+                    depth = DimenParser.parse(context, source, typesetter);
                 } else {
                     break;
                 }
@@ -314,7 +315,7 @@ public abstract class DestType implements Serializable {
                 true));
 
         } else if (source.getKeyword(context, "zoom")) {
-            long zoom = Count.scanInteger(context, source, typesetter);
+            long zoom = CountParser.scanInteger(context, source, typesetter);
             return new ZoomDestType(zoom);
         }
 

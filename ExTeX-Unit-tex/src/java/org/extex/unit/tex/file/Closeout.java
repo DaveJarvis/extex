@@ -22,6 +22,8 @@ package org.extex.unit.tex.file;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -31,8 +33,6 @@ import org.extex.interpreter.type.file.OutFile;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.node.WhatsItCloseNode;
 import org.extex.unit.base.file.AbstractFileCode;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-import org.extex.util.framework.logger.LogEnabled;
 
 /**
  * This class provides an implementation for the primitive
@@ -97,7 +97,7 @@ public class Closeout extends AbstractCode implements LogEnabled {
      *
      * @param theLogger the new logger
      *
-     * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
     public void enableLogging(final Logger theLogger) {

@@ -21,6 +21,11 @@ package org.extex.unit.tex.table;
 
 import java.util.List;
 
+import org.extex.core.Locator;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.DimenParser;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -30,11 +35,8 @@ import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.MissingLeftBraceException;
 import org.extex.interpreter.type.box.Box;
 import org.extex.interpreter.type.box.Boxable;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.Token;
-import org.extex.type.Locator;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.TypesetterOptions;
 import org.extex.typesetter.listMaker.HAlignListMaker;
@@ -170,9 +172,9 @@ public class Halign extends AbstractAlign implements Boxable {
         boolean spread = false;
 
         if (source.getKeyword(context, "to")) {
-            width = Dimen.parse(context, source, typesetter);
+            width = DimenParser.parse(context, source, typesetter);
         } else if (source.getKeyword(context, "spread")) {
-            width = Dimen.parse(context, source, typesetter);
+            width = DimenParser.parse(context, source, typesetter);
             spread = true;
         }
         Token t = source.getToken(context);

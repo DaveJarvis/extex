@@ -21,6 +21,8 @@ package org.extex.unit.tex.info;
 
 import java.util.logging.Logger;
 
+import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -29,11 +31,11 @@ import org.extex.interpreter.exception.helping.CantUseAfterException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.Theable;
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.CatcodeException;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
-import org.extex.util.framework.logger.LogEnabled;
 
 /**
  * This class provides an implementation for the primitive
@@ -77,7 +79,7 @@ public class Showthe extends AbstractCode implements LogEnabled {
      *
      * @param log the logger to use
      *
-     * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
     public void enableLogging(final Logger log) {
@@ -115,7 +117,14 @@ public class Showthe extends AbstractCode implements LogEnabled {
             Code code = context.getCode((CodeToken) cs);
 
             if (code != null && code instanceof Theable) {
-                Tokens toks = ((Theable) code).the(context, source, typesetter);
+                Tokens toks;
+                try {
+                    toks = ((Theable) code).the(context, source, typesetter);
+                } catch (CatcodeException e) {
+                    throw new InterpreterException(e);
+                } catch (ConfigurationException e) {
+                    throw new InterpreterException(e);
+                }
                 logger.info(getLocalizer().format("TTP.Format", toks.toText()));
                 return;
             }

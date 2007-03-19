@@ -19,6 +19,11 @@
 
 package org.extex.unit.tex.register.skip;
 
+import org.extex.core.count.CountParser;
+import org.extex.core.exception.GeneralException;
+import org.extex.core.glue.Glue;
+import org.extex.core.glue.GlueConvertible;
+import org.extex.core.glue.GlueParser;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -28,12 +33,8 @@ import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.arithmetic.Advanceable;
 import org.extex.interpreter.type.arithmetic.Divideable;
 import org.extex.interpreter.type.arithmetic.Multiplyable;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.glue.Glue;
-import org.extex.interpreter.type.glue.GlueConvertible;
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
-import org.extex.util.exception.GeneralException;
 
 /**
  * This class provides an implementation for the primitive <code>\skip</code>.
@@ -58,7 +59,7 @@ import org.extex.util.exception.GeneralException;
  *        &lang;register name&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.interpreter.type.glue.Glue#parse(TokenSource,Context,Typesetter)
+ *        org.extex.core.glue.Glue#parse(TokenSource,Context,Typesetter)
  *        &lang;glue&rang;}
  *
  *   &lang;optional prefix&rang;
@@ -121,7 +122,7 @@ public class SkipPrimitive extends AbstractSkip
 
         String key = getKey(context, source, typesetter);
         source.getKeyword(context, "by");
-        Glue g = Glue.parse(source, context, typesetter);
+        Glue g = GlueParser.parse(source, context, typesetter);
         g.add(context.getGlue(key));
         context.setGlue(key, g, prefix.clearGlobal());
     }
@@ -150,7 +151,7 @@ public class SkipPrimitive extends AbstractSkip
 
         String key = getKey(context, source, typesetter);
         source.getOptionalEquals(context);
-        Glue g = Glue.parse(source, context, typesetter);
+        Glue g = GlueParser.parse(source, context, typesetter);
         context.setGlue(key, g, prefix.clearGlobal());
     }
 
@@ -168,7 +169,7 @@ public class SkipPrimitive extends AbstractSkip
      *
      * @throws InterpreterException in case of an error
      *
-     * @see org.extex.interpreter.type.glue.GlueConvertible#convertGlue(
+     * @see org.extex.core.glue.GlueConvertible#convertGlue(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
@@ -203,7 +204,7 @@ public class SkipPrimitive extends AbstractSkip
 
         String key = getKey(context, source, typesetter);
         source.getKeyword(context, "by");
-        long value = Count.scanInteger(context, source, null);
+        long value = CountParser.scanInteger(context, source, null);
 
         if (value == 0) {
             throw new ArithmeticOverflowException(
@@ -238,7 +239,7 @@ public class SkipPrimitive extends AbstractSkip
 
         String key = getKey(context, source, typesetter);
         source.getKeyword(context, "by");
-        long value = Count.scanInteger(context, source, null);
+        long value = CountParser.scanInteger(context, source, null);
 
         Glue g = new Glue(context.getGlue(key));
         g.multiplyAll(value, 1);

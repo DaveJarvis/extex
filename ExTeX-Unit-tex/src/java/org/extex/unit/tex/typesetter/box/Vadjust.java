@@ -19,6 +19,7 @@
 
 package org.extex.unit.tex.typesetter.box;
 
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -30,7 +31,6 @@ import org.extex.interpreter.type.box.Box;
 import org.extex.typesetter.Mode;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.node.AdjustNode;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive <code>\vadjust</code>.

@@ -19,6 +19,7 @@
 
 package org.extex.unit.tex.string;
 
+import org.extex.core.UnicodeChar;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -27,13 +28,12 @@ import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.EofInToksException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.ExpandableCode;
-import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.type.CatcodeException;
 import org.extex.scanner.type.token.LetterToken;
 import org.extex.scanner.type.token.OtherToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
-import org.extex.type.UnicodeChar;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 
 /**

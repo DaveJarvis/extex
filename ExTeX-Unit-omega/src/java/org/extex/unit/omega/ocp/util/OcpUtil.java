@@ -21,6 +21,7 @@ package org.extex.unit.omega.ocp.util;
 
 import java.io.InputStream;
 
+import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
@@ -32,7 +33,6 @@ import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.SpaceToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
-import org.extex.util.framework.i18n.LocalizerFactory;
 
 /**
  * This class contains utility methods.

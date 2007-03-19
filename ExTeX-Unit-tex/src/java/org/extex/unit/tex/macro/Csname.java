@@ -19,6 +19,7 @@
 
 package org.extex.unit.tex.macro;
 
+import org.extex.framework.i18n.Localizer;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -29,15 +30,14 @@ import org.extex.interpreter.exception.helping.UndefinedControlSequenceException
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.ExpandableCode;
-import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.CatcodeException;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.SpaceToken;
 import org.extex.scanner.type.token.Token;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.unit.tex.Relax;
-import org.extex.util.framework.i18n.Localizer;
 
 /**
  * This class provides an implementation for the primitive <code>\csname</code>.

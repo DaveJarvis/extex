@@ -19,14 +19,14 @@
 
 package org.extex.unit.tex.typesetter.mark;
 
+import org.extex.core.count.CountParser;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.AbstractCode;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.type.token.LeftBraceToken;
 import org.extex.scanner.type.token.Token;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 
 /**
@@ -68,7 +68,7 @@ public abstract class AbstractMarkCode extends AbstractCode {
             return (tokens == null ? "" : tokens.toText());
         }
 
-        return Long.toString(Count.scanInteger(context, source, typesetter));
+        return Long.toString(CountParser.scanInteger(context, source, typesetter));
     }
 
 }

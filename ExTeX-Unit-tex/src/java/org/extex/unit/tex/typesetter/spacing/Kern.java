@@ -19,15 +19,16 @@
 
 package org.extex.unit.tex.typesetter.spacing;
 
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.DimenParser;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.AbstractCode;
-import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.node.ExplicitKernNode;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive <code>\kern</code>.
@@ -45,7 +46,7 @@ import org.extex.util.framework.configuration.exception.ConfigurationException;
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    &lang;kern&rang;
- *      &rarr; <tt>\kern</tt> {@linkplain org.extex.interpreter.type.dimen#Dimen(Context,TokenSource)
+ *      &rarr; <tt>\kern</tt> {@linkplain org.extex.core.dimen#Dimen(Context,TokenSource)
  *      &lang;dimen&rang;}   </pre>
  *
  * <h4>Examples</h4>
@@ -108,7 +109,7 @@ public class Kern extends AbstractCode {
             throws InterpreterException,
                 ConfigurationException {
 
-        Dimen kern = Dimen.parse(context, source, typesetter);
+        Dimen kern = DimenParser.parse(context, source, typesetter);
         typesetter.add(new ExplicitKernNode(kern, true));
     }
 

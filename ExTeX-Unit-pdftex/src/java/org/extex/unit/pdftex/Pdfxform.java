@@ -20,15 +20,15 @@
 package org.extex.unit.pdftex;
 
 import org.extex.backend.documentWriter.PdftexSupport;
+import org.extex.core.count.CountParser;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.box.Box;
-import org.extex.interpreter.type.count.Count;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.node.pdftex.PdfXForm;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive <code>\pdfxform</code>.
@@ -109,7 +109,7 @@ public class Pdfxform extends AbstractPdftexCode {
             }
         }
 
-        long b = Count.scanInteger(context, source, typesetter);
+        long b = CountParser.scanInteger(context, source, typesetter);
         Box box = context.getBox(Long.toString(b));
         PdfXForm form = writer.getXForm(attr, resources, box);
 

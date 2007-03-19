@@ -19,6 +19,9 @@
 
 package org.extex.unit.tex.register.count;
 
+import org.extex.core.count.Count;
+import org.extex.core.count.CountConvertible;
+import org.extex.core.count.CountParser;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -29,9 +32,8 @@ import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.arithmetic.Advanceable;
 import org.extex.interpreter.type.arithmetic.Divideable;
 import org.extex.interpreter.type.arithmetic.Multiplyable;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.count.CountConvertible;
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.CatcodeException;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 
 /**
@@ -54,7 +56,7 @@ import org.extex.typesetter.Typesetter;
  *        &lang;register name&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.interpreter.type.count.Count#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.core.count.Count#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}
  *
  *   &lang;optional prefix&rang;
@@ -125,7 +127,7 @@ public class CountPrimitive extends AbstractCount
         String key = getKey(context, source, typesetter);
         source.getKeyword(context, "by");
 
-        long value = Count.scanInteger(context, source, typesetter);
+        long value = CountParser.scanInteger(context, source, typesetter);
         value += context.getCount(key).getValue();
 
         context.setCount(key, value, prefix.clearGlobal());
@@ -158,7 +160,7 @@ public class CountPrimitive extends AbstractCount
         String key = getKey(context, source, typesetter);
         source.getOptionalEquals(context);
 
-        long value = Count.scanInteger(context, source, typesetter);
+        long value = CountParser.scanInteger(context, source, typesetter);
         context.setCount(key, value, prefix.clearGlobal());
     }
 
@@ -176,7 +178,7 @@ public class CountPrimitive extends AbstractCount
      *
      * @throws InterpreterException in case of an error
      *
-     * @see org.extex.interpreter.type.count.CountConvertible#convertCount(
+     * @see org.extex.interpreter.type.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
@@ -212,11 +214,11 @@ public class CountPrimitive extends AbstractCount
         String key = getKey(context, source, typesetter);
         source.getKeyword(context, "by");
 
-        long value = Count.scanInteger(context, source, typesetter);
+        long value = CountParser.scanInteger(context, source, typesetter);
 
         if (value == 0) {
             throw new ArithmeticOverflowException(
-                    printableControlSequence(context));
+                printableControlSequence(context));
         }
 
         value = context.getCount(key).getValue() / value;
@@ -248,7 +250,12 @@ public class CountPrimitive extends AbstractCount
             throws InterpreterException {
 
         String key = getKey(context, source, typesetter);
-        source.push(context.getCount(key).toToks(context));
+        try {
+            source.push(context.getTokenFactory().toTokens(
+                context.getCount(key).getValue()));
+        } catch (CatcodeException e) {
+            throw new InterpreterException(e);
+        }
     }
 
     /**
@@ -275,7 +282,7 @@ public class CountPrimitive extends AbstractCount
         String key = getKey(context, source, typesetter);
         source.getKeyword(context, "by");
 
-        long value = Count.scanInteger(context, source, typesetter);
+        long value = CountParser.scanInteger(context, source, typesetter);
         value *= context.getCount(key).getValue();
         context.setCount(key, value, prefix.clearGlobal());
     }
@@ -288,17 +295,22 @@ public class CountPrimitive extends AbstractCount
      * @param typesetter the typesetter to use
      *
      * @return the description of the primitive as list of Tokens
+     *
      * @throws InterpreterException in case of an error
+     * @throws CatcodeException in case of an error in token creation
      *
      * @see org.extex.interpreter.type.Theable#the(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+            final Typesetter typesetter)
+            throws InterpreterException,
+                CatcodeException {
 
         String key = getKey(context, source, typesetter);
-        return new Tokens(context, context.getCount(key).getValue());
+        return context.getTokenFactory().toTokens( //
+            context.getCount(key).getValue());
     }
 
 }

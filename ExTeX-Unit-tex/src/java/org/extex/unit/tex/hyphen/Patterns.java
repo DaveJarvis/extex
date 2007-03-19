@@ -19,14 +19,13 @@
 
 package org.extex.unit.tex.hyphen;
 
+import org.extex.core.UnicodeChar;
 import org.extex.interpreter.Flags;
-import org.extex.interpreter.Namespace;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.MissingLeftBraceException;
-import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.language.Language;
 import org.extex.language.hyphenation.exception.DuplicateHyphenationException;
 import org.extex.language.hyphenation.exception.IllegalTokenHyphenationException;
@@ -34,6 +33,7 @@ import org.extex.language.hyphenation.exception.IllegalValueHyphenationException
 import org.extex.language.hyphenation.exception.ImmutableHyphenationException;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.CatcodeException;
+import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.token.ActiveCharacterToken;
 import org.extex.scanner.type.token.ControlSequenceToken;
 import org.extex.scanner.type.token.CrToken;
@@ -49,7 +49,7 @@ import org.extex.scanner.type.token.SupMarkToken;
 import org.extex.scanner.type.token.TabMarkToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenVisitor;
-import org.extex.type.UnicodeChar;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 
 /**

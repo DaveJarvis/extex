@@ -22,15 +22,17 @@ package org.extex.unit.etex.conditional.analyze;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.extex.core.count.Count;
+import org.extex.core.count.CountConvertible;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Conditional;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Theable;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.count.CountConvertible;
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.CatcodeException;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.unit.etex.conditional.Ifcsname;
 import org.extex.unit.etex.conditional.Ifdefined;
@@ -171,7 +173,7 @@ public class Currentiftype extends AbstractCode
      *
      * @throws InterpreterException in case of an error
      *
-     * @see org.extex.interpreter.type.count.CountConvertible#convertCount(
+     * @see org.extex.interpreter.type.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
@@ -196,7 +198,10 @@ public class Currentiftype extends AbstractCode
      * @param typesetter the typesetter to use
      *
      * @return the description of the primitive as list of Tokens
+     *
      * @throws InterpreterException in case of an error
+     * @throws CatcodeException in case of an error in token creation
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.interpreter.type.Theable#the(
      *      org.extex.interpreter.context.Context,
@@ -204,9 +209,12 @@ public class Currentiftype extends AbstractCode
      *      org.extex.typesetter.Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+            final Typesetter typesetter)
+            throws InterpreterException,
+                CatcodeException {
 
-        return new Tokens(context, convertCount(context, source, typesetter));
+        return context.getTokenFactory().toTokens( //
+            convertCount(context, source, typesetter));
     }
 
 }

@@ -19,15 +19,16 @@
 
 package org.extex.unit.tex.math.util;
 
+import org.extex.core.count.CountConvertible;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.Showable;
 import org.extex.interpreter.type.Theable;
-import org.extex.interpreter.type.count.CountConvertible;
 import org.extex.interpreter.type.math.MathCode;
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.CatcodeException;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.listMaker.math.NoadConsumer;
 import org.extex.unit.tex.math.AbstractTeXMathCode;
@@ -83,7 +84,7 @@ public class TeXMathcharCode extends AbstractTeXMathCode
      *
      * @throws InterpreterException in case of an error
      *
-     * @see org.extex.interpreter.type.count.CountConvertible#convertCount(
+     * @see org.extex.interpreter.type.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
@@ -152,6 +153,7 @@ public class TeXMathcharCode extends AbstractTeXMathCode
      * @param context the interpreter context
      *
      * @return the description of the primitive as list of Tokens
+     *
      * @throws InterpreterException in case of an error
      *
      * @see org.extex.interpreter.type.Showable#show(
@@ -159,8 +161,15 @@ public class TeXMathcharCode extends AbstractTeXMathCode
      */
     public Tokens show(final Context context) throws InterpreterException {
 
-        return new Tokens(context, context.esc("mathchar") + "\""
-                + Long.toHexString(mathCodeToLong(mathchar)).toUpperCase());
+        try {
+            return context.getTokenFactory().toTokens(
+                context.esc("mathchar")
+                        + "\""
+                        + Long.toHexString(mathCodeToLong(mathchar))
+                            .toUpperCase());
+        } catch (CatcodeException e) {
+            throw new InterpreterException(e);
+        }
     }
 
     /**
@@ -171,7 +180,9 @@ public class TeXMathcharCode extends AbstractTeXMathCode
      * @param typesetter the typesetter to use
      *
      * @return the description of the primitive as list of Tokens
+     *
      * @throws InterpreterException in case of an error
+     * @throws CatcodeException in case of an error in token creation
      *
      * @see org.extex.interpreter.type.Theable#the(
      *      org.extex.interpreter.context.Context,
@@ -179,9 +190,11 @@ public class TeXMathcharCode extends AbstractTeXMathCode
      *      org.extex.typesetter.Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+            final Typesetter typesetter)
+            throws InterpreterException,
+                CatcodeException {
 
-        return new Tokens(context, mathCodeToLong(mathchar));
+        return context.getTokenFactory().toTokens(mathCodeToLong(mathchar));
     }
 
 }

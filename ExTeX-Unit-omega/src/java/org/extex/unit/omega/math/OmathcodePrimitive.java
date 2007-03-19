@@ -19,16 +19,18 @@
 
 package org.extex.unit.omega.math;
 
+import org.extex.core.UnicodeChar;
+import org.extex.core.count.CountConvertible;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.Theable;
-import org.extex.interpreter.type.count.CountConvertible;
 import org.extex.interpreter.type.math.MathCode;
-import org.extex.interpreter.type.tokens.Tokens;
-import org.extex.type.UnicodeChar;
+import org.extex.scanner.type.CatcodeException;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 
 /**
@@ -104,11 +106,12 @@ public class OmathcodePrimitive extends AbstractAssignment
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        UnicodeChar charCode = source.scanCharacterCode(context, typesetter,
-                getName());
+        UnicodeChar charCode =
+                source.scanCharacterCode(context, typesetter, getName());
         source.getOptionalEquals(context);
-        MathCode mathchar = AbstractOmegaMathCode.parseMathCode(context,
-                source, typesetter, getName());
+        MathCode mathchar =
+                AbstractOmegaMathCode.parseMathCode(context, source,
+                    typesetter, getName());
         context.setMathcode(charCode, mathchar, prefix.clearGlobal());
     }
 
@@ -126,7 +129,7 @@ public class OmathcodePrimitive extends AbstractAssignment
      *
      * @throws InterpreterException in case of an error
      *
-     * @see org.extex.interpreter.type.count.CountConvertible#convertCount(
+     * @see org.extex.interpreter.type.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
@@ -134,10 +137,10 @@ public class OmathcodePrimitive extends AbstractAssignment
     public long convertCount(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
 
-        UnicodeChar charCode = source.scanCharacterCode(context, typesetter,
-                getName());
+        UnicodeChar charCode =
+                source.scanCharacterCode(context, typesetter, getName());
         return AbstractOmegaMathCode.mathCodeToLong(context
-                .getMathcode(charCode));
+            .getMathcode(charCode));
     }
 
     /**
@@ -148,7 +151,10 @@ public class OmathcodePrimitive extends AbstractAssignment
      * @param typesetter the typesetter to use
      *
      * @return the description of the primitive as list of Tokens
+     *
      * @throws InterpreterException in case of an error
+     * @throws CatcodeException in case of an error in token creation
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.interpreter.type.Theable#the(
      *      org.extex.interpreter.context.Context,
@@ -156,9 +162,12 @@ public class OmathcodePrimitive extends AbstractAssignment
      *      org.extex.typesetter.Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+            final Typesetter typesetter)
+            throws InterpreterException,
+                CatcodeException {
 
-        return new Tokens(context, convertCount(context, source, typesetter));
+        return context.getTokenFactory().toTokens( //
+            convertCount(context, source, typesetter));
     }
 
 }

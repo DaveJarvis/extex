@@ -19,6 +19,7 @@
 
 package org.extex.unit.omega.math.delimiter;
 
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -29,7 +30,6 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.listMaker.math.NoadConsumer;
 import org.extex.typesetter.type.noad.Noad;
 import org.extex.typesetter.type.noad.RadicalNoad;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive

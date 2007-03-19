@@ -19,6 +19,9 @@
 
 package org.extex.unit.tex.typesetter.box;
 
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.DimenParser;
+import org.extex.core.dimen.FixedDimen;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.group.GroupType;
@@ -26,10 +29,8 @@ import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.MissingLeftBraceException;
 import org.extex.interpreter.type.box.Box;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.FixedDimen;
-import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.type.token.Token;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
@@ -59,10 +60,10 @@ import org.extex.typesetter.type.NodeList;
  *    &lang;box specification&rang;
  *      &rarr;
  *         | <tt>to</tt> {@linkplain
- *           org.extex.interpreter.type.dimen.Dimen#parse(Context,TokenSource,Typesetter)
+ *           org.extex.core.dimen.Dimen#parse(Context,TokenSource,Typesetter)
  *           &lang;rule dimension&rang;}
  *         | <tt>spread</tt> {@linkplain
- *           org.extex.interpreter.type.dimen.Dimen#parse(Context,TokenSource,Typesetter)
+ *           org.extex.core.dimen.Dimen#parse(Context,TokenSource,Typesetter)
  *           &lang;rule dimension&rang;}  </pre>
  *
  * <h4>Examples</h4>
@@ -146,13 +147,13 @@ public class Vbox extends AbstractBoxPrimitive {
         Box box;
         try {
             if (source.getKeyword(context, "to")) {
-                Dimen d = Dimen.parse(context, source, typesetter);
+                Dimen d = DimenParser.parse(context, source, typesetter);
                 box =
                         constructBox(context, source, typesetter, startToken,
                             insert);
                 box.setHeight(d);
             } else if (source.getKeyword(context, "spread")) {
-                Dimen d = Dimen.parse(context, source, typesetter);
+                Dimen d = DimenParser.parse(context, source, typesetter);
                 box =
                         constructBox(context, source, typesetter, startToken,
                             insert);

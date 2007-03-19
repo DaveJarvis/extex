@@ -19,8 +19,8 @@
 
 package org.extex.unit.omega.mode;
 
+import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.exception.helping.HelpingException;
-import org.extex.util.framework.i18n.LocalizerFactory;
 
 /**
  * this exception signals that an invalid specification for a direction has been

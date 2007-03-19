@@ -19,6 +19,7 @@
 
 package org.extex.unit.tex.typesetter;
 
+import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
@@ -28,7 +29,6 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.listMaker.HorizontalListMaker;
 import org.extex.typesetter.listMaker.ListManager;
-import org.extex.util.framework.i18n.LocalizerFactory;
 
 /**
  * This an abstract base class for primitives in horizontal mode.

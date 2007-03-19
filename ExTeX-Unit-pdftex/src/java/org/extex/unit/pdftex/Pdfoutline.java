@@ -20,14 +20,14 @@
 package org.extex.unit.pdftex;
 
 import org.extex.backend.documentWriter.PdftexSupport;
+import org.extex.core.count.CountParser;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
-import org.extex.interpreter.type.count.Count;
 import org.extex.typesetter.Typesetter;
 import org.extex.unit.pdftex.util.action.ActionSpec;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive <code>\pdfoutline</code>.
@@ -102,7 +102,7 @@ public class Pdfoutline extends AbstractPdftexCode {
                     getName());
         long count = 0;
         if (source.getKeyword(context, "count")) {
-            count = Count.scanInteger(context, source, typesetter);
+            count = CountParser.scanInteger(context, source, typesetter);
         }
 
         String text = source.scanTokensAsString(context, getName());

@@ -19,13 +19,15 @@
 
 package org.extex.unit.tex.typesetter.box;
 
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.DimenParser;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.box.RuleConvertible;
-import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.typesetter.Mode;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.node.RuleNode;
@@ -55,13 +57,13 @@ import org.extex.typesetter.type.node.RuleNode;
  *
  *    &lang;rule dimension&rang;
  *        &rarr; <tt>width</tt> {@linkplain
- *        org.extex.interpreter.type.dimen#Dimen(Context,TokenSource)
+ *        org.extex.core.dimen#Dimen(Context,TokenSource)
  *        &lang;dimen&rang;}
  *         |  <tt>height</tt> {@linkplain
- *        org.extex.interpreter.type.dimen#Dimen(Context,TokenSource)
+ *        org.extex.core.dimen#Dimen(Context,TokenSource)
  *        &lang;dimen&rang;}
  *         |  <tt>depth</tt> {@linkplain
- *        org.extex.interpreter.type.dimen#Dimen(Context,TokenSource)
+ *        org.extex.core.dimen#Dimen(Context,TokenSource)
  *        &lang;dimen&rang;}   </pre>
  *
  * <p>
@@ -164,11 +166,11 @@ public class Hrule extends AbstractCode implements RuleConvertible {
 
         for (;;) {
             if (source.getKeyword(context, "width")) {
-                width = Dimen.parse(context, source, typesetter);
+                width = DimenParser.parse(context, source, typesetter);
             } else if (source.getKeyword(context, "height")) {
-                height = Dimen.parse(context, source, typesetter);
+                height = DimenParser.parse(context, source, typesetter);
             } else if (source.getKeyword(context, "depth")) {
-                depth = Dimen.parse(context, source, typesetter);
+                depth = DimenParser.parse(context, source, typesetter);
             } else {
                 break;
             }

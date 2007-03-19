@@ -19,7 +19,7 @@
 
 package org.extex.unit.pdftex.util.destination;
 
-import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.core.dimen.FixedDimen;
 import org.extex.typesetter.type.node.RuleNode;
 
 /**

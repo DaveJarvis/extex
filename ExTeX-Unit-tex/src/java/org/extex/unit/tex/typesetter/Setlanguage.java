@@ -19,6 +19,7 @@
 
 package org.extex.unit.tex.typesetter;
 
+import org.extex.core.count.CountParser;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -26,10 +27,9 @@ import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.EofInToksException;
 import org.extex.interpreter.type.AbstractCode;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.type.token.LeftBraceToken;
 import org.extex.scanner.type.token.Token;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.ParagraphObserver;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.NodeList;
@@ -163,7 +163,7 @@ public class Setlanguage extends AbstractCode {
             }
             context.setToks("lang", tokens, false);
         } else {
-            long no = Count.scanInteger(context, source, typesetter);
+            long no = CountParser.scanInteger(context, source, typesetter);
             context.setCount("language", no, false);
             context.setToks("lang", Tokens.EMPTY, false);
         }

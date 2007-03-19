@@ -42,10 +42,10 @@ import org.extex.unit.tex.register.box.Setbox;
  *  <pre class="syntax">
  *    &lang;ifvoid&rang;
  *      &rarr; <tt>\ifvoid</tt> {@linkplain
- *        org.extex.interpreter.type.count.Count#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.core.count.Count#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;} &lang;true text&rang; <tt>\fi</tt>
  *      | <tt>\ifvoid</tt> {@linkplain
- *        org.extex.interpreter.type.count.Count#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.core.count.Count#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;} &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt> </pre>
  *
  * <h4>Examples</h4>

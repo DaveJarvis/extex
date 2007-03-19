@@ -19,9 +19,9 @@
 
 package org.extex.unit.dynamic.java;
 
+import org.extex.core.exception.GeneralException;
 import org.extex.interpreter.context.Context;
 import org.extex.typesetter.Typesetter;
-import org.extex.util.exception.GeneralException;
 
 /**
  * Dummy Loadable which just records that the load has been requested.

@@ -19,6 +19,8 @@
 
 package org.extex.unit.tex.register.count;
 
+import org.extex.core.count.CountConvertible;
+import org.extex.core.count.CountParser;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -29,10 +31,9 @@ import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.arithmetic.Advanceable;
 import org.extex.interpreter.type.arithmetic.Divideable;
 import org.extex.interpreter.type.arithmetic.Multiplyable;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.count.CountConvertible;
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.CatcodeException;
 import org.extex.scanner.type.token.Token;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 
 /**
@@ -71,7 +72,7 @@ import org.extex.typesetter.Typesetter;
  *      &rarr; &lang;optional prefix&rang; <tt>\mag</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.interpreter.type.count.Count#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.core.count.Count#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}
  *
  *    &lang;optional prefix&rang;
@@ -139,7 +140,7 @@ public class Mag extends AbstractCount
 
         source.getKeyword(context, "by");
 
-        long value = Count.scanInteger(context, source, null);
+        long value = CountParser.scanInteger(context, source, null);
         value += context.getMagnification();
 
         context.setMagnification(value, true);
@@ -171,7 +172,7 @@ public class Mag extends AbstractCount
 
         source.getOptionalEquals(context);
 
-        long value = Count.scanInteger(context, source, typesetter);
+        long value = CountParser.scanInteger(context, source, typesetter);
         context.setMagnification(value, true);
     }
 
@@ -189,7 +190,7 @@ public class Mag extends AbstractCount
      *
      * @throws InterpreterException in case of an error
      *
-     * @see org.extex.interpreter.type.count.CountConvertible#convertCount(
+     * @see org.extex.interpreter.type.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
@@ -222,11 +223,11 @@ public class Mag extends AbstractCount
 
         source.getKeyword(context, "by");
 
-        long value = Count.scanInteger(context, source, null);
+        long value = CountParser.scanInteger(context, source, null);
 
         if (value == 0) {
             throw new ArithmeticOverflowException(
-                    printableControlSequence(context));
+                printableControlSequence(context));
         }
 
         value = context.getMagnification() / value;
@@ -257,8 +258,12 @@ public class Mag extends AbstractCount
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        source.push(new Tokens(context, Long.toString(context
-                .getMagnification())));
+        try {
+            source.push(context.getTokenFactory().toTokens( //
+                context.getMagnification()));
+        } catch (CatcodeException e) {
+            throw new InterpreterException(e);
+        }
     }
 
     /**
@@ -286,7 +291,7 @@ public class Mag extends AbstractCount
             return;
         }
         source.push(t);
-        long value = Count.scanInteger(context, source, typesetter);
+        long value = CountParser.scanInteger(context, source, typesetter);
         context.setMagnification(value, false);
     }
 
@@ -313,7 +318,7 @@ public class Mag extends AbstractCount
 
         source.getKeyword(context, "by");
 
-        long value = Count.scanInteger(context, source, null);
+        long value = CountParser.scanInteger(context, source, null);
         value *= context.getMagnification();
         context.setMagnification(value, true);
     }
@@ -326,7 +331,9 @@ public class Mag extends AbstractCount
      * @param typesetter the typesetter to use
      *
      * @return the description of the primitive as list of Tokens
+     *
      * @throws InterpreterException in case of an error
+     * @throws CatcodeException in case of an error in token creation
      *
      * @see org.extex.interpreter.type.Theable#the(
      *      org.extex.interpreter.context.Context,
@@ -334,9 +341,12 @@ public class Mag extends AbstractCount
      *      org.extex.typesetter.Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+            final Typesetter typesetter)
+            throws InterpreterException,
+                CatcodeException {
 
-        return new Tokens(context, Long.toString(context.getMagnification()));
+        return context.getTokenFactory().toTokens( //
+            context.getMagnification());
     }
 
 }

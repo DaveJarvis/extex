@@ -24,8 +24,9 @@ import java.io.StringReader;
 
 import junit.framework.TestCase;
 
-import org.extex.interpreter.Tokenizer;
+import org.extex.core.UnicodeChar;
 import org.extex.scanner.TokenStream;
+import org.extex.scanner.Tokenizer;
 import org.extex.scanner.stream.exception.ScannerNoUnicodeNameException;
 import org.extex.scanner.stream.impl32.TokenStreamImpl32;
 import org.extex.scanner.type.Catcode;
@@ -33,7 +34,6 @@ import org.extex.scanner.type.token.OtherToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
 import org.extex.scanner.type.token.TokenFactoryImpl;
-import org.extex.type.UnicodeChar;
 
 
 /**

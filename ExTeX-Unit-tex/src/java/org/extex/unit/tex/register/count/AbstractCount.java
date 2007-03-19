@@ -19,13 +19,13 @@
 
 package org.extex.unit.tex.register.count;
 
-import org.extex.interpreter.Namespace;
+import org.extex.core.count.CountParser;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.InitializableCode;
-import org.extex.interpreter.type.count.Count;
+import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 
@@ -101,7 +101,7 @@ public abstract class AbstractCount extends AbstractAssignment
             return;
         }
         source.push(t);
-        long value = Count.scanInteger(context, source, typesetter);
+        long value = CountParser.scanInteger(context, source, typesetter);
         context.setCount(getKey(context, source, typesetter), value, true);
     }
 

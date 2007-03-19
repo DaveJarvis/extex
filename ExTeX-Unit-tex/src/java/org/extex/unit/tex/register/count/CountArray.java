@@ -19,10 +19,10 @@
 
 package org.extex.unit.tex.register.count;
 
+import org.extex.core.count.CountParser;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
-import org.extex.interpreter.type.count.Count;
 import org.extex.typesetter.Typesetter;
 
 /**
@@ -70,7 +70,7 @@ public class CountArray extends CountPrimitive {
     protected String getKey(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
 
-        long no = Count.scanInteger(context, source, typesetter);
+        long no = CountParser.scanInteger(context, source, typesetter);
         return getName() + Long.toString(no);
     }
 

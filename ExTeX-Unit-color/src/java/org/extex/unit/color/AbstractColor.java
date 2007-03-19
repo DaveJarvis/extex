@@ -25,6 +25,7 @@ import org.extex.color.model.CmykColor;
 import org.extex.color.model.GrayscaleColor;
 import org.extex.color.model.HsvColor;
 import org.extex.color.model.RgbColor;
+import org.extex.core.exception.GeneralException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Color;
 import org.extex.interpreter.context.Context;
@@ -33,9 +34,8 @@ import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.Showable;
 import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.color.ColorConvertible;
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
-import org.extex.util.exception.GeneralException;
 
 /**
  * This class is a abstract base class for color primitives.
@@ -153,7 +153,8 @@ public abstract class AbstractColor extends AbstractAssignment
 
         Color color = convertColor(context, null, null);
         try {
-            return new Tokens(context, (String) color.visit(theVisitor, null));
+            return context.getTokenFactory().toTokens(//
+                (String) color.visit(theVisitor, null));
         } catch (InterpreterException e) {
             throw e;
         } catch (GeneralException e) {
@@ -172,7 +173,8 @@ public abstract class AbstractColor extends AbstractAssignment
 
         Color color = convertColor(context, source, typesetter);
         try {
-            return new Tokens(context, (String) color.visit(theVisitor, null));
+            return context.getTokenFactory().toTokens(//
+                (String) color.visit(theVisitor, null));
         } catch (InterpreterException e) {
             throw e;
         } catch (GeneralException e) {

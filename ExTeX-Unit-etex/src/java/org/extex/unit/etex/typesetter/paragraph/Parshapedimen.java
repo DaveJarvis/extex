@@ -19,21 +19,21 @@
 
 package org.extex.unit.etex.typesetter.paragraph;
 
+import org.extex.core.count.CountConvertible;
+import org.extex.core.count.CountParser;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.DimenConvertible;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.exception.GeneralException;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Theable;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.count.CountConvertible;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.DimenConvertible;
-import org.extex.interpreter.type.dimen.FixedDimen;
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.paragraphBuilder.ParagraphShape;
-import org.extex.util.exception.GeneralException;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive <code>\relax</code>.
@@ -104,7 +104,7 @@ public class Parshapedimen extends AbstractCode
      * @throws InterpreterException in case of an error
      * @throws ConfigurationException in case of an configuration error
      *
-     * @see org.extex.interpreter.type.count.CountConvertible#convertCount(
+     * @see org.extex.interpreter.type.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
@@ -131,7 +131,7 @@ public class Parshapedimen extends AbstractCode
      * @throws InterpreterException in case of an error
      * @throws ConfigurationException in case of an configuration error
      *
-     * @see org.extex.interpreter.type.dimen.DimenConvertible#convertDimen(
+     * @see org.extex.core.dimen.DimenConvertible#convertDimen(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
@@ -139,7 +139,7 @@ public class Parshapedimen extends AbstractCode
     public long convertDimen(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
 
-        int n = (int) Count.scanInteger(context, source, typesetter);
+        int n = (int) CountParser.scanInteger(context, source, typesetter);
         ParagraphShape parshape = context.getParshape();
         if (parshape == null || n < 0) {
             return 0;
@@ -168,7 +168,7 @@ public class Parshapedimen extends AbstractCode
     public Tokens the(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
 
-        int n = (int) Count.scanInteger(context, source, typesetter);
+        int n = (int) CountParser.scanInteger(context, source, typesetter);
         ParagraphShape parshape = context.getParshape();
         FixedDimen d = (parshape == null || n < 0
                 ? Dimen.ZERO_PT

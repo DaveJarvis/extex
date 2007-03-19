@@ -19,14 +19,14 @@
 
 package org.extex.scanner.base;
 
-import org.extex.interpreter.Tokenizer;
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.core.Locator;
 import org.extex.scanner.TokenStream;
+import org.extex.scanner.Tokenizer;
 import org.extex.scanner.exception.ScannerException;
 import org.extex.scanner.type.token.SpaceToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
-import org.extex.type.Locator;
+import org.extex.scanner.type.tokens.Tokens;
 
 /**
  * This is the base implementation of a token stream. It has an internal stack
@@ -114,7 +114,7 @@ public class TokenStreamBaseImpl implements TokenStream {
      *
      * @see org.extex.scanner.TokenStream#get(
      *      org.extex.scanner.type.token.TokenFactory,
-     *      org.extex.interpreter.Tokenizer)
+     *      org.extex.scanner.Tokenizer)
      */
     public Token get(final TokenFactory factory, final Tokenizer tokenizer)
             throws ScannerException {

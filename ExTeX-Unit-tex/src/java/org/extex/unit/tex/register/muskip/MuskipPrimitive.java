@@ -19,11 +19,11 @@
 
 package org.extex.unit.tex.register.muskip;
 
-import org.extex.interpreter.Namespace;
+import org.extex.core.count.CountParser;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
-import org.extex.interpreter.type.count.Count;
+import org.extex.scanner.type.Namespace;
 import org.extex.typesetter.Typesetter;
 
 /**
@@ -54,7 +54,7 @@ import org.extex.typesetter.Typesetter;
  *        &lang;register name&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.interpreter.type.muskip.Muskip#parse(Context,TokenSource,Typesetter)
+ *        org.extex.core.muskip.Muskip#parse(Context,TokenSource,Typesetter)
  *        &lang;muglue&rang;}
  *
  *   &lang;optional prefix&rang;
@@ -109,7 +109,7 @@ public class MuskipPrimitive extends MuskipParameter {
     protected String getKey(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
 
-        String number = Long.toString(Count.scanNumber(context, source,
+        String number = Long.toString(CountParser.scanNumber(context, source,
                 typesetter));
 
         if (Namespace.SUPPORT_NAMESPACE_MUSKIP) {

@@ -21,7 +21,7 @@ package org.extex.unit.tex.macro.util;
 
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.type.ProtectedCode;
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.tokens.Tokens;
 
 /**
  * This class is identical to the super class MacroCode but in addition it

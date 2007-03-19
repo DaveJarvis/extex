@@ -21,6 +21,7 @@ package org.extex.unit.tex.info;
 
 import java.util.logging.Logger;
 
+import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -29,7 +30,6 @@ import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.box.Box;
 import org.extex.typesetter.Typesetter;
 import org.extex.unit.tex.register.box.Setbox;
-import org.extex.util.framework.logger.LogEnabled;
 
 /**
  * This class provides an implementation for the primitive <code>\showbox</code>.
@@ -72,7 +72,7 @@ import org.extex.util.framework.logger.LogEnabled;
  *      &rarr; <tt>\showboxbreadth</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.interpreter.type.count.Count#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.core.count.Count#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}  </pre>
  *
  * <h4>Examples</h4>
@@ -96,7 +96,7 @@ import org.extex.util.framework.logger.LogEnabled;
  *      &rarr; <tt>\showboxdepth</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.interpreter.type.count.Count#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.core.count.Count#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}  </pre>
  *
  * <h4>Examples</h4>
@@ -136,7 +136,7 @@ public class Showbox extends AbstractCode implements LogEnabled {
      *
      * @param log the logger to use
      *
-     * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
     public void enableLogging(final Logger log) {

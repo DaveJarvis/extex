@@ -19,6 +19,11 @@
 
 package org.extex.unit.tex.font;
 
+import org.extex.core.count.CountParser;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.DimenParser;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.exception.GeneralException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -27,15 +32,11 @@ import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.Theable;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.font.Font;
-import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.Token;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
-import org.extex.util.exception.GeneralException;
 
 /**
  * This class provides an implementation for the primitive
@@ -65,7 +66,7 @@ import org.extex.util.exception.GeneralException;
  *          &lang;font&rang;} {@linkplain
  *          org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *          &lang;equals&rang;} {@linkplain
- *          org.extex.interpreter.type.dimen#Dimen(Context,TokenSource)
+ *          org.extex.core.dimen#Dimen(Context,TokenSource)
  *          &lang;dimen&rang;}   </pre>
  *  TODO gene: document Extension
  *
@@ -130,7 +131,7 @@ public class Fontdimen extends AbstractAssignment
         source.skipSpace();
         Font font = source.getFont(context, getName());
         source.getOptionalEquals(context);
-        Dimen size = Dimen.parse(context, source, typesetter);
+        Dimen size = DimenParser.parse(context, source, typesetter);
         font.setFontDimen(key, size);
     }
 
@@ -176,7 +177,7 @@ public class Fontdimen extends AbstractAssignment
             return key;
         }
         source.push(t);
-        return Long.toString(Count.scanInteger(context, source, typesetter));
+        return Long.toString(CountParser.scanInteger(context, source, typesetter));
     }
 
     /**

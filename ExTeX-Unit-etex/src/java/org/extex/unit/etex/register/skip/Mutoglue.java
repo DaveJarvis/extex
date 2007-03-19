@@ -19,13 +19,13 @@
 
 package org.extex.unit.etex.register.skip;
 
+import org.extex.core.glue.Glue;
+import org.extex.core.glue.GlueConvertible;
+import org.extex.core.muskip.Muskip;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.AbstractCode;
-import org.extex.interpreter.type.glue.Glue;
-import org.extex.interpreter.type.glue.GlueConvertible;
-import org.extex.interpreter.type.muskip.Muskip;
 import org.extex.typesetter.Typesetter;
 
 /**
@@ -76,7 +76,7 @@ public class Mutoglue extends AbstractCode implements GlueConvertible {
     }
 
     /**
-     * @see org.extex.interpreter.type.glue.GlueConvertible#convertGlue(
+     * @see org.extex.core.glue.GlueConvertible#convertGlue(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)

@@ -21,6 +21,7 @@ package org.extex.unit.tex.file;
 
 import java.util.logging.Logger;
 
+import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -29,13 +30,12 @@ import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.interaction.Interaction;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.file.InFile;
-import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.type.token.CodeToken;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.unit.base.file.AbstractFileCode;
 import org.extex.unit.tex.macro.util.MacroCode;
 import org.extex.unit.tex.macro.util.MacroPattern;
-import org.extex.util.framework.logger.LogEnabled;
 
 /**
  * This class provides an implementation for the primitive <code>\read</code>.
@@ -178,7 +178,7 @@ public class Read extends AbstractAssignment implements LogEnabled {
      *
      * @param log the logger to use
      *
-     * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
     public void enableLogging(final Logger log) {

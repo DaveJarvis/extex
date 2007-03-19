@@ -21,6 +21,7 @@ package org.extex.unit.tex.file;
 
 import java.io.File;
 
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -29,7 +30,6 @@ import org.extex.interpreter.type.file.OutFile;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.node.WhatsItOpenNode;
 import org.extex.unit.base.file.AbstractFileCode;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive

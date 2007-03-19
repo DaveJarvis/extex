@@ -19,6 +19,7 @@
 
 package org.extex.unit.pdftex;
 
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -27,7 +28,6 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.node.pdftex.PdfDest;
 import org.extex.unit.pdftex.util.destination.DestType;
 import org.extex.unit.pdftex.util.id.IdSpec;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive <code>\pdfdest</code>.

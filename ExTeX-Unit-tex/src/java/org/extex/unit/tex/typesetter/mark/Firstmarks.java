@@ -20,7 +20,7 @@
 package org.extex.unit.tex.typesetter.mark;
 
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.tokens.Tokens;
 
 /**
  * This class provides an implementation for the primitive

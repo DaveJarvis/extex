@@ -19,9 +19,12 @@
 
 package org.extex.unit.tex.macro.util;
 
+import org.extex.core.Locator;
+import org.extex.core.exception.GeneralException;
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
-import org.extex.interpreter.Tokenizer;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.ImpossibleException;
 import org.extex.interpreter.exception.InterpreterException;
@@ -33,24 +36,24 @@ import org.extex.interpreter.type.ComparableCode;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.PrefixCode;
 import org.extex.interpreter.type.Showable;
-import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.TokenStream;
+import org.extex.scanner.Tokenizer;
 import org.extex.scanner.exception.ScannerException;
 import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.CatcodeException;
+import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.token.CodeToken;
+import org.extex.scanner.type.token.ControlSequenceToken;
 import org.extex.scanner.type.token.LeftBraceToken;
 import org.extex.scanner.type.token.MacroParamToken;
 import org.extex.scanner.type.token.OtherToken;
 import org.extex.scanner.type.token.RightBraceToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
-import org.extex.type.Locator;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.unit.base.macro.LetCode;
 import org.extex.unit.tex.typesetter.paragraph.Par;
-import org.extex.util.exception.GeneralException;
-import org.extex.util.framework.i18n.Localizer;
-import org.extex.util.framework.i18n.LocalizerFactory;
 
 /**
  * This class provides an implementation for any macro code bound to a
@@ -130,7 +133,7 @@ public class MacroCode extends AbstractCode
          *
          * @see org.extex.scanner.TokenStream#get(
          *      org.extex.scanner.type.token.TokenFactory,
-         *      org.extex.interpreter.Tokenizer)
+         *      org.extex.scanner.Tokenizer)
          */
         public Token get(final TokenFactory factory, final Tokenizer tokenizer)
                 throws ScannerException {
@@ -506,7 +509,7 @@ public class MacroCode extends AbstractCode
     /**
      * Match the pattern of this macro with the next tokens from the token
      * source. As a result the matching arguments are stored in an array of
-     * {@link org.extex.interpreter.type.tokens.Tokens Tokens}. This array
+     * {@link org.extex.scanner.type.tokens.Tokens Tokens}. This array
      * is returned.
      *
      * @param context the processor context
@@ -618,15 +621,52 @@ public class MacroCode extends AbstractCode
             }
             sb.append(getLocalizer().format("TTP.macro"));
             sb.append(":\n");
-            Tokens toks = new Tokens(context, sb);
-            pattern.show(context, toks);
-            toks.add(context.getTokenFactory(), "->");
-            body.show(context, toks);
+            Tokens toks = context.getTokenFactory().toTokens(sb);
+            show(pattern, context, toks);
+            toks.add(context.getTokenFactory().toTokens("->"));
+            show(body, context, toks);
             return toks;
-        } catch (InterpreterException e) {
-            throw e;
         } catch (GeneralException e) {
             throw new InterpreterException(e);
+        }
+    }
+
+    /**
+     * Determine the printable representation of the object and append it to a
+     * list of Tokens.
+     *
+     * @param tokens the tokens to add
+     * @param context  the processor context
+     * @param toks the tokens to add to
+     *
+     * @throws GeneralException in case of an error
+     *
+     * @see org.extex.scanner.type.tokens.FixedTokens#show(
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.scanner.type.tokens.Tokens)
+     */
+    private void show(final Tokens tokens, final Context context,
+            final Tokens toks) throws CatcodeException {
+
+        TokenFactory factory = context.getTokenFactory();
+        Token t;
+
+        for (int i = 0; i < tokens.length(); i++) {
+            t = (Token) (tokens.get(i));
+            if (t instanceof ControlSequenceToken) {
+                long esc = context.getCount("escapechar").getValue();
+                if (esc >= 0) {
+                    toks.add(factory.createToken(Catcode.OTHER, (char) (esc),
+                        Namespace.DEFAULT_NAMESPACE));
+                }
+                toks.add(factory.toTokens(t.toString()));
+                //            } else if (t instanceof MacroParamToken) {
+                //                toks.add(factory.createToken(Catcode.OTHER, '#',
+                //                        Namespace.DEFAULT_NAMESPACE));
+            } else {
+                toks.add(factory.createToken(Catcode.OTHER, t.getChar(),
+                    Namespace.DEFAULT_NAMESPACE));
+            }
         }
     }
 

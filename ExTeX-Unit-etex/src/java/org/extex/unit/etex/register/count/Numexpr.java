@@ -19,6 +19,9 @@
 
 package org.extex.unit.etex.register.count;
 
+import org.extex.core.count.CountConvertible;
+import org.extex.core.count.CountParser;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
@@ -27,12 +30,11 @@ import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Theable;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.count.CountConvertible;
-import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.CatcodeException;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.unit.tex.Relax;
 
@@ -232,7 +234,7 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
      *
      * @throws InterpreterException in case of an error
      *
-     * @see org.extex.interpreter.type.count.CountConvertible#convertCount(
+     * @see org.extex.interpreter.type.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
@@ -335,7 +337,7 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
         }
 
         source.push(t);
-        return Count.scanNumber(context, source, typesetter);
+        return CountParser.scanNumber(context, source, typesetter);
     }
 
     /**
@@ -346,7 +348,10 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
      * @param typesetter the typesetter to use
      *
      * @return the description of the primitive as list of Tokens
+     *
      * @throws InterpreterException in case of an error
+     * @throws CatcodeException in case of an error in token creation
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.interpreter.type.Theable#the(
      *      org.extex.interpreter.context.Context,
@@ -354,10 +359,11 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
      *      org.extex.typesetter.Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+            final Typesetter typesetter)
+            throws InterpreterException,
+                CatcodeException {
 
-        return new Tokens(context, Long.toString(convertCount(context, source,
-            typesetter)));
+        return context.getTokenFactory().toTokens( //
+            convertCount(context, source, typesetter));
     }
-
 }

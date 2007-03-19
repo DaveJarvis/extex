@@ -19,6 +19,7 @@
 
 package org.extex.unit.etex.register.count;
 
+import org.extex.core.exception.GeneralException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
@@ -46,7 +47,6 @@ import org.extex.typesetter.type.node.VerticalListNode;
 import org.extex.typesetter.type.node.VirtualCharNode;
 import org.extex.typesetter.type.node.WhatsItNode;
 import org.extex.unit.tex.register.count.AbstractReadonlyCount;
-import org.extex.util.exception.GeneralException;
 
 /**
  * This class provides an implementation for the primitive
@@ -586,7 +586,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
      *
      * @throws InterpreterException in case of an error
      *
-     * @see org.extex.interpreter.type.count.CountConvertible#convertCount(
+     * @see org.extex.interpreter.type.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */

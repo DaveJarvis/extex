@@ -19,6 +19,8 @@
 
 package org.extex.unit.tex.typesetter.box;
 
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.DimenParser;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.group.GroupType;
@@ -26,9 +28,8 @@ import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.MissingLeftBraceException;
 import org.extex.interpreter.type.box.Box;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.type.token.Token;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 
 /**
@@ -140,13 +141,13 @@ public class Hbox extends AbstractBoxPrimitive {
         Box box;
         try {
             if (source.getKeyword(context, "to")) {
-                Dimen d = Dimen.parse(context, source, typesetter);
+                Dimen d = DimenParser.parse(context, source, typesetter);
                 box =
                         acquireBox(context, source, typesetter, startToken,
                             GroupType.ADJUSTED_HBOX_GROUP, insert);
                 box.setWidth(d);
             } else if (source.getKeyword(context, "spread")) {
-                Dimen d = Dimen.parse(context, source, typesetter);
+                Dimen d = DimenParser.parse(context, source, typesetter);
                 box =
                         acquireBox(context, source, typesetter, startToken,
                             GroupType.ADJUSTED_HBOX_GROUP, insert);

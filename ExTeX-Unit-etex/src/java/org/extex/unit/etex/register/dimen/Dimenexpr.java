@@ -19,6 +19,12 @@
 
 package org.extex.unit.etex.register.dimen;
 
+import org.extex.core.count.CountConvertible;
+import org.extex.core.count.CountParser;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.DimenConvertible;
+import org.extex.core.dimen.DimenParser;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -31,17 +37,13 @@ import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.Theable;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.count.CountConvertible;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.DimenConvertible;
-import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.CatcodeException;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.LetterToken;
 import org.extex.scanner.type.token.OtherToken;
 import org.extex.scanner.type.token.Token;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.unit.tex.Relax;
 
@@ -152,14 +154,13 @@ public class Dimenexpr extends AbstractCode
      * @throws InterpreterException in case of an error
      * @throws ConfigurationException in case of an configuration error
      *
-     * @see org.extex.interpreter.type.count.CountConvertible#convertCount(
+     * @see org.extex.interpreter.type.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
     public long convertCount(final Context context, final TokenSource source,
-            final Typesetter typesetter)
-            throws InterpreterException {
+            final Typesetter typesetter) throws InterpreterException {
 
         long result = evalExpr(context, source, typesetter);
         Token t = source.getToken(context);
@@ -187,14 +188,13 @@ public class Dimenexpr extends AbstractCode
      * @throws InterpreterException in case of an error
      * @throws ConfigurationException in case of an configuration error
      *
-     * @see org.extex.interpreter.type.dimen.DimenConvertible#convertDimen(
+     * @see org.extex.core.dimen.DimenConvertible#convertDimen(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
     public long convertDimen(final Context context, final TokenSource source,
-            final Typesetter typesetter)
-            throws InterpreterException {
+            final Typesetter typesetter) throws InterpreterException {
 
         long result = evalExpr(context, source, typesetter);
         Token t = source.getToken(context);
@@ -218,8 +218,7 @@ public class Dimenexpr extends AbstractCode
      * @throws ConfigurationException in case of an configuration error
      */
     private long evalExpr(final Context context, final TokenSource source,
-            final Typesetter typesetter)
-            throws InterpreterException {
+            final Typesetter typesetter) throws InterpreterException {
 
         long val = evalOperand(context, source, typesetter);
 
@@ -254,8 +253,7 @@ public class Dimenexpr extends AbstractCode
      * @throws ConfigurationException in case of an configuration error
      */
     private long evalOperand(final Context context, final TokenSource source,
-            final Typesetter typesetter)
-            throws InterpreterException {
+            final Typesetter typesetter) throws InterpreterException {
 
         long val =
                 evalTerminal(context, source, typesetter, source
@@ -314,17 +312,24 @@ public class Dimenexpr extends AbstractCode
                 } else if (t.equals(Catcode.OTHER, '.')
                         || t.equals(Catcode.OTHER, ',')) {
                     source.push(t);
-                    return Dimen.parse(context, source, typesetter).getValue();
+                    return DimenParser.parse(context, source, typesetter)
+                        .getValue();
                 }
-                long pre = Count.scanNumber(context, source, typesetter, t);
+                long pre =
+                        CountParser.scanNumber(context, source, typesetter, t);
                 t = source.getToken(context);
                 if (t == null) {
                     return pre;
                 } else if (t.equals(Catcode.OTHER, '.')
                         || t.equals(Catcode.OTHER, ',')) {
                     source.push(t);
-                    source.push(new Tokens(context, pre));
-                    return Dimen.parse(context, source, typesetter).getValue();
+                    try {
+                        source.push(context.getTokenFactory().toTokens(pre));
+                    } catch (CatcodeException e) {
+                        throw new InterpreterException(e);
+                    }
+                    return DimenParser.parse(context, source, typesetter)
+                        .getValue();
                 }
                 source.push(t);
                 t = source.getNonSpace(context);
@@ -333,12 +338,21 @@ public class Dimenexpr extends AbstractCode
 
                 } else if (t instanceof LetterToken) {
                     source.push(t);
-                    source.push(new Tokens(context, pre));
-                    return Dimen.parse(context, source, typesetter).getValue();
+                    try {
+                        source.push(context.getTokenFactory().toTokens(pre));
+                    } catch (CatcodeException e) {
+                        throw new InterpreterException(e);
+                    }
+                    return DimenParser.parse(context, source, typesetter)
+                        .getValue();
                 } else {
                     source.push(t);
-                    source.push(new Tokens(context, pre));
-                    return Count.scanNumber(context, source, typesetter);
+                    try {
+                        source.push(context.getTokenFactory().toTokens(pre));
+                    } catch (CatcodeException e) {
+                        throw new InterpreterException(e);
+                    }
+                    return CountParser.scanNumber(context, source, typesetter);
                 }
 
             } else if (t instanceof CodeToken) {
@@ -380,8 +394,7 @@ public class Dimenexpr extends AbstractCode
      *      org.extex.typesetter.Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter)
-            throws InterpreterException {
+            final Typesetter typesetter) throws InterpreterException {
 
         try {
             Dimen d = new Dimen(convertDimen(context, source, typesetter));

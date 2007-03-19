@@ -19,6 +19,8 @@
 
 package org.extex.unit.tex.conditional;
 
+import org.extex.core.Locator;
+import org.extex.core.count.CountParser;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -26,10 +28,8 @@ import org.extex.interpreter.exception.ImpossibleException;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.Code;
-import org.extex.interpreter.type.count.Count;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
-import org.extex.type.Locator;
 import org.extex.typesetter.Typesetter;
 import org.extex.unit.base.conditional.AbstractIf;
 import org.extex.unit.base.conditional.Else;
@@ -57,7 +57,7 @@ import org.extex.unit.base.conditional.Fi;
  *  <pre class="syntax">
  *    &lang;ifcase&rang;
  *     &rarr; <tt>\ifcase</tt> {@linkplain
- *        org.extex.interpreter.type.count.Count#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.core.count.Count#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}  &lang;cases&rang; <tt>\fi</tt>
  *
  *    &lang;cases&rang;
@@ -129,7 +129,7 @@ public class Ifcase extends AbstractIf {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        long branch = Count.scanInteger(context, source, typesetter);
+        long branch = CountParser.scanInteger(context, source, typesetter);
         if (branch < 0) {
             if (skipToElseOrFi(context, source,
                 printableControlSequence(context))) {

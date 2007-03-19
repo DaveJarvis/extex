@@ -19,6 +19,12 @@
 
 package org.extex.unit.tex.typesetter;
 
+import org.extex.core.count.CountConvertible;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.DimenConvertible;
+import org.extex.core.dimen.DimenParser;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.exception.GeneralException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -27,15 +33,10 @@ import org.extex.interpreter.exception.helping.CantUseInException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.Theable;
-import org.extex.interpreter.type.count.CountConvertible;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.DimenConvertible;
-import org.extex.interpreter.type.dimen.FixedDimen;
-import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.type.CatcodeException;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterUnsupportedException;
-import org.extex.util.exception.GeneralException;
 
 /**
  * This class provides an implementation for the primitive
@@ -124,7 +125,7 @@ public class Prevdepth extends AbstractAssignment
             throws InterpreterException {
 
         source.getOptionalEquals(context);
-        Dimen pd = Dimen.parse(context, source, typesetter);
+        Dimen pd = DimenParser.parse(context, source, typesetter);
         if (pd.getValue() < IGNORE) {
             pd = null;
         }
@@ -150,7 +151,7 @@ public class Prevdepth extends AbstractAssignment
      *
      * @throws InterpreterException in case of an error
      *
-     * @see org.extex.interpreter.type.count.CountConvertible#convertCount(
+     * @see org.extex.interpreter.type.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
@@ -185,7 +186,7 @@ public class Prevdepth extends AbstractAssignment
      *
      * @throws InterpreterException in case of an error
      *
-     * @see org.extex.interpreter.type.dimen.DimenConvertible#convertDimen(
+     * @see org.extex.core.dimen.DimenConvertible#convertDimen(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)

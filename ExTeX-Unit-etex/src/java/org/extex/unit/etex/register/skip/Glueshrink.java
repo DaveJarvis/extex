@@ -19,16 +19,18 @@
 
 package org.extex.unit.etex.register.skip;
 
+import org.extex.core.count.CountConvertible;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.DimenConvertible;
+import org.extex.core.glue.Glue;
+import org.extex.core.glue.GlueParser;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Theable;
-import org.extex.interpreter.type.count.CountConvertible;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.DimenConvertible;
-import org.extex.interpreter.type.glue.Glue;
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.CatcodeException;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 
 /**
@@ -53,7 +55,7 @@ import org.extex.typesetter.Typesetter;
  *  <pre class="syntax">
  *    &lang;glueshrink&rang;
  *      &rarr; <tt>\glueshrink</tt> {@linkplain
- *        org.extex.interpreter.type.glue.Glue#parse(TokenSource,Context,Typesetter)
+ *        org.extex.core.glue.Glue#parse(TokenSource,Context,Typesetter)
  *        &lang;glue&rang;} </pre>
  *
  * <h4>Examples</h4>
@@ -88,7 +90,7 @@ public class Glueshrink extends AbstractCode
     }
 
     /**
-     * @see org.extex.interpreter.type.count.CountConvertible#convertCount(
+     * @see org.extex.interpreter.type.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
@@ -96,12 +98,12 @@ public class Glueshrink extends AbstractCode
     public long convertCount(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
 
-        Glue glue = Glue.parse(source, context, typesetter);
+        Glue glue = GlueParser.parse(source, context, typesetter);
         return glue.getShrink().getValue();
     }
 
     /**
-     * @see org.extex.interpreter.type.dimen.DimenConvertible#convertDimen(
+     * @see org.extex.core.dimen.DimenConvertible#convertDimen(
      *     org.extex.interpreter.context.Context,
      *     org.extex.interpreter.TokenSource,
      *     org.extex.typesetter.Typesetter)
@@ -109,7 +111,7 @@ public class Glueshrink extends AbstractCode
     public long convertDimen(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
 
-        Glue glue = Glue.parse(source, context, typesetter);
+        Glue glue = GlueParser.parse(source, context, typesetter);
         return glue.getShrink().getValue();
     }
 
@@ -120,10 +122,12 @@ public class Glueshrink extends AbstractCode
      *      org.extex.typesetter.Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+            final Typesetter typesetter)
+            throws CatcodeException,
+                InterpreterException {
 
-        return new Tokens(context, (new Dimen(convertDimen(context, source,
-                typesetter))).toString());
+        return context.getTokenFactory().toTokens(//
+            (new Dimen(convertDimen(context, source, typesetter))).toString());
     }
 
 }

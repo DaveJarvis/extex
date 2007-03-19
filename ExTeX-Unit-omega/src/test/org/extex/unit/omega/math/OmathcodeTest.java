@@ -19,11 +19,11 @@
 
 package org.extex.unit.omega.math;
 
+import org.extex.core.UnicodeChar;
 import org.extex.interpreter.Interpreter;
 import org.extex.interpreter.type.math.MathClass;
 import org.extex.interpreter.type.math.MathCode;
 import org.extex.test.NoFlagsButGlobalPrimitiveTester;
-import org.extex.type.UnicodeChar;
 import org.extex.unit.tex.math.AbstractMathTester;
 
 /**

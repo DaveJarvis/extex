@@ -19,6 +19,7 @@
 
 package org.extex.unit.tex.register.box;
 
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -28,7 +29,6 @@ import org.extex.interpreter.type.box.Box;
 import org.extex.interpreter.type.box.Boxable;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive <code>\box</code>.

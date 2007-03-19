@@ -27,24 +27,24 @@ import java.io.LineNumberReader;
 import java.io.Reader;
 import java.io.StringReader;
 
-import org.extex.interpreter.Namespace;
-import org.extex.interpreter.Tokenizer;
+import org.extex.core.Locator;
+import org.extex.core.UnicodeChar;
+import org.extex.core.exception.GeneralException;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.configuration.exception.ConfigurationSyntaxException;
 import org.extex.interpreter.exception.helping.InvalidCharacterException;
 import org.extex.scanner.TokenStream;
+import org.extex.scanner.Tokenizer;
 import org.extex.scanner.base.TokenStreamBaseImpl;
 import org.extex.scanner.exception.ScannerException;
 import org.extex.scanner.stream.TokenStreamOptions;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.CatcodeException;
 import org.extex.scanner.type.CatcodeVisitor;
+import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
-import org.extex.type.Locator;
-import org.extex.type.UnicodeChar;
-import org.extex.util.exception.GeneralException;
-import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-import org.extex.util.framework.configuration.exception.ConfigurationSyntaxException;
 
 /**
  * This class contains an implementation of a token stream which is fed from a
@@ -825,7 +825,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
      *
      * @see org.extex.scanner.base.TokenStreamBaseImpl#getNext(
      *      org.extex.scanner.type.token.TokenFactory,
-     *      org.extex.interpreter.Tokenizer)
+     *      org.extex.scanner.Tokenizer)
      */
     protected Token getNext(final TokenFactory factory,
             final Tokenizer tokenizer) throws ScannerException {

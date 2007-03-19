@@ -26,8 +26,8 @@ import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.CodeExpander;
 import org.extex.interpreter.type.ExpandableCode;
-import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.type.token.Token;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 
 /**
@@ -147,7 +147,7 @@ public class Noexpand extends AbstractCode
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter,
-     *      org.extex.interpreter.type.tokens.Tokens)
+     *      org.extex.scanner.type.tokens.Tokens)
      */
     public void expandCode(final Context context, final TokenSource source,
             final Typesetter typesetter, final Tokens tokens)

@@ -19,8 +19,11 @@
 
 package org.extex.unit.tex.register.muskip;
 
+import org.extex.core.count.CountParser;
+import org.extex.core.exception.GeneralException;
+import org.extex.core.muskip.Muskip;
+import org.extex.core.muskip.MuskipConvertible;
 import org.extex.interpreter.Flags;
-import org.extex.interpreter.Namespace;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
@@ -30,12 +33,9 @@ import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.arithmetic.Advanceable;
 import org.extex.interpreter.type.arithmetic.Divideable;
 import org.extex.interpreter.type.arithmetic.Multiplyable;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.muskip.Muskip;
-import org.extex.interpreter.type.muskip.MuskipConvertible;
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.Namespace;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
-import org.extex.util.exception.GeneralException;
 
 /**
  * This class provides an implementation for the primitive <code>\muskip</code>.
@@ -144,7 +144,7 @@ public class MuskipParameter extends AbstractAssignment
      *
      * @throws InterpreterException in case of an error
      *
-     * @see org.extex.interpreter.type.muskip.MuskipConvertible#convertMuskip(
+     * @see org.extex.core.muskip.MuskipConvertible#convertMuskip(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
@@ -180,7 +180,7 @@ public class MuskipParameter extends AbstractAssignment
 
         String key = getKey(context, source, typesetter);
         source.getKeyword(context, "by");
-        long value = Count.scanInteger(context, source, null);
+        long value = CountParser.scanInteger(context, source, null);
 
         if (value == 0) {
             throw new ArithmeticOverflowException(
@@ -236,7 +236,7 @@ public class MuskipParameter extends AbstractAssignment
 
         String key = getKey(context, source, typesetter);
         source.getKeyword(context, "by");
-        long value = Count.scanInteger(context, source, null);
+        long value = CountParser.scanInteger(context, source, null);
 
         Muskip ms = new Muskip(context.getMuskip(key));
         ms.multiply(value, 1);

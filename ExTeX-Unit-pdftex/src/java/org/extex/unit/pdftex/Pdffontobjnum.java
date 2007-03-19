@@ -20,13 +20,14 @@
 package org.extex.unit.pdftex;
 
 import org.extex.backend.documentWriter.PdftexSupport;
+import org.extex.core.count.CountConvertible;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.Theable;
-import org.extex.interpreter.type.count.CountConvertible;
 import org.extex.interpreter.type.font.Font;
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.CatcodeException;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 
 /**
@@ -92,7 +93,7 @@ public class Pdffontobjnum extends AbstractPdftexCode
      *
      * @throws InterpreterException in case of an error
      *
-     * @see org.extex.interpreter.type.count.CountConvertible#convertCount(
+     * @see org.extex.interpreter.type.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
@@ -130,7 +131,12 @@ public class Pdffontobjnum extends AbstractPdftexCode
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        return new Tokens(context, convertCount(context, source, typesetter));
+        try {
+            return context.getTokenFactory().toTokens( //
+                convertCount(context, source, typesetter));
+        } catch (CatcodeException e) {
+            throw new InterpreterException(e);
+        }
     }
 
     /**

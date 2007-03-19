@@ -63,7 +63,7 @@ import org.extex.typesetter.Typesetter;
  *      org.extex.interpreter.TokenSource#scanNumber(Context)
  *      &lang;number&rang;}
  *      |  &lang;dimen variable&rang; &lang;optional <tt>by</tt>&rang; {@linkplain
- *        org.extex.interpreter.type.dimen#Dimen(Context,TokenSource)
+ *        org.extex.core.dimen#Dimen(Context,TokenSource)
  *        &lang;dimen&rang;}
  *      |  &lang;glue variable&rang; &lang;optional <tt>by</tt>&rang; &lang;glue&rang;
  *      |  &lang;muglue variable&rang; &lang;optional <tt>by</tt>&rang; &lang;muglue&rang;

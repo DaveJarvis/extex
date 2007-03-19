@@ -19,10 +19,10 @@
 
 package org.extex.unit.tex.conditional;
 
+import org.extex.core.count.CountParser;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
-import org.extex.interpreter.type.count.Count;
 import org.extex.typesetter.Typesetter;
 import org.extex.unit.base.conditional.AbstractIf;
 
@@ -41,10 +41,10 @@ import org.extex.unit.base.conditional.AbstractIf;
  *  <pre class="syntax">
  *    &lang;ifodd&rang;
  *      &rarr; <tt>\ifodd</tt> {@linkplain
- *        org.extex.interpreter.type.count.Count#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.core.count.Count#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;} &lang;true text&rang; <tt>\fi</tt>
  *      | <tt>\ifodd</tt> {@linkplain
- *        org.extex.interpreter.type.count.Count#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.core.count.Count#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;} &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt> </pre>
  *
  * <h4>Examples</h4>
@@ -96,7 +96,7 @@ public class Ifodd extends AbstractIf {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        return ((Count.scanInteger(context, source, typesetter) & 1) == 1);
+        return ((CountParser.scanInteger(context, source, typesetter) & 1) == 1);
     }
 
 }

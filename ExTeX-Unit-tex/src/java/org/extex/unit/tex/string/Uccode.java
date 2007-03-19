@@ -19,6 +19,9 @@
 
 package org.extex.unit.tex.string;
 
+import org.extex.core.UnicodeChar;
+import org.extex.core.count.CountConvertible;
+import org.extex.core.dimen.DimenConvertible;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -28,10 +31,8 @@ import org.extex.interpreter.exception.helping.InvalidCodeException;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.Theable;
-import org.extex.interpreter.type.count.CountConvertible;
-import org.extex.interpreter.type.dimen.DimenConvertible;
-import org.extex.interpreter.type.tokens.Tokens;
-import org.extex.type.UnicodeChar;
+import org.extex.scanner.type.CatcodeException;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 
 /**
@@ -73,8 +74,12 @@ import org.extex.typesetter.Typesetter;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
-public class Uccode extends AbstractAssignment implements ExpandableCode,
-        Theable, CountConvertible, DimenConvertible {
+public class Uccode extends AbstractAssignment
+        implements
+            ExpandableCode,
+            Theable,
+            CountConvertible,
+            DimenConvertible {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for
@@ -114,16 +119,16 @@ public class Uccode extends AbstractAssignment implements ExpandableCode,
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        UnicodeChar ucCode = source.scanCharacterCode(context, typesetter,
-                                                      getName());
+        UnicodeChar ucCode =
+                source.scanCharacterCode(context, typesetter, getName());
         source.getOptionalEquals(context);
         try {
-            UnicodeChar lcCode = source.scanCharacterCode(context, typesetter,
-                                                          getName());
+            UnicodeChar lcCode =
+                    source.scanCharacterCode(context, typesetter, getName());
             context.setUccode(ucCode, lcCode, prefix.clearGlobal());
         } catch (InvalidCharacterException e) {
             throw new InvalidCodeException(e.getChar(), Integer
-                    .toString(UnicodeChar.MAX_VALUE));
+                .toString(UnicodeChar.MAX_VALUE));
         }
     }
 
@@ -141,15 +146,15 @@ public class Uccode extends AbstractAssignment implements ExpandableCode,
      *
      * @throws InterpreterException in case of an error
      *
-     * @see org.extex.interpreter.type.count.CountConvertible#convertCount(
+     * @see org.extex.interpreter.type.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
     public long convertCount(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
 
-        UnicodeChar ucCode = source.scanCharacterCode(context, typesetter,
-                                                      getName());
+        UnicodeChar ucCode =
+                source.scanCharacterCode(context, typesetter, getName());
         return context.getUccode(ucCode).getCodePoint();
     }
 
@@ -169,7 +174,7 @@ public class Uccode extends AbstractAssignment implements ExpandableCode,
      *
      * @throws InterpreterException in case of an error
      *
-     * @see org.extex.interpreter.type.dimen.DimenConvertible#convertDimen(
+     * @see org.extex.core.dimen.DimenConvertible#convertDimen(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
@@ -203,7 +208,11 @@ public class Uccode extends AbstractAssignment implements ExpandableCode,
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        source.push(the(context, source, typesetter));
+        try {
+            source.push(the(context, source, typesetter));
+        } catch (CatcodeException e) {
+            throw new InterpreterException(e);
+        }
     }
 
     /**
@@ -214,16 +223,21 @@ public class Uccode extends AbstractAssignment implements ExpandableCode,
      * @param typesetter the typesetter to use
      *
      * @return the description of the primitive as list of Tokens
+     *
      * @throws InterpreterException in case of an error
+     * @throws CatcodeException in case of an error in token creation
      *
      * @see org.extex.interpreter.type.Theable#the(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+            final Typesetter typesetter)
+            throws InterpreterException,
+                CatcodeException {
 
-        return new Tokens(context, convertCount(context, source, typesetter));
+        return context.getTokenFactory().toTokens( //
+            convertCount(context, source, typesetter));
     }
 
 }

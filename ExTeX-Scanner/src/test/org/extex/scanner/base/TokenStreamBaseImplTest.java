@@ -21,10 +21,10 @@ package org.extex.scanner.base;
 
 import junit.framework.TestCase;
 
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.core.Locator;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.Token;
-import org.extex.type.Locator;
+import org.extex.scanner.type.tokens.Tokens;
 
 /**
  * Test suite for TokenStreamBaseImpl.

@@ -21,8 +21,8 @@ package org.extex.scanner.base;
 
 import java.util.Iterator;
 
-import org.extex.type.StringList;
-import org.extex.util.framework.configuration.Configuration;
+import org.extex.core.StringList;
+import org.extex.framework.configuration.Configuration;
 
 /**
  * This class is a dummy configuration which does nothing but deliver a single
@@ -56,7 +56,7 @@ public class MyConfiguration implements Configuration {
      *
      * @return the sub-configuration or <code>null</code> if none is found
      *
-     * @see org.extex.util.framework.configuration.Configuration#findConfiguration(java.lang.String)
+     * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String)
      */
     public Configuration findConfiguration(final String key) {
 
@@ -71,7 +71,7 @@ public class MyConfiguration implements Configuration {
      *
      * @return the sub-configuration
      *
-     * @see org.extex.util.framework.configuration.Configuration#findConfiguration(java.lang.String, java.lang.String)
+     * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String, java.lang.String)
      */
     public Configuration findConfiguration(final String key, final String a) {
 
@@ -86,7 +86,7 @@ public class MyConfiguration implements Configuration {
      * @return the value of the attribute or <code>null</code> if such an
      * attribute is not present
      *
-     * @see org.extex.util.framework.configuration.Configuration#getAttribute(java.lang.String)
+     * @see org.extex.framework.configuration.Configuration#getAttribute(java.lang.String)
      */
     public String getAttribute(final String name) {
 
@@ -100,7 +100,7 @@ public class MyConfiguration implements Configuration {
      *
      * @return the sub-configuration
      *
-     * @see org.extex.util.framework.configuration.Configuration#getConfiguration(java.lang.String)
+     * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String)
      */
     public Configuration getConfiguration(final String key) {
 
@@ -115,7 +115,7 @@ public class MyConfiguration implements Configuration {
      *
      * @return the sub-configuration
      *
-     * @see org.extex.util.framework.configuration.Configuration#getConfiguration(java.lang.String, java.lang.String)
+     * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String, java.lang.String)
      */
     public Configuration getConfiguration(final String key, final String a) {
 
@@ -127,7 +127,7 @@ public class MyConfiguration implements Configuration {
      *
      * @return the text stored directly in this configuration
      *
-     * @see org.extex.util.framework.configuration.Configuration#getValue()
+     * @see org.extex.framework.configuration.Configuration#getValue()
      */
     public String getValue() {
 
@@ -141,7 +141,7 @@ public class MyConfiguration implements Configuration {
      *
      * @return the value of key or <code>null</code>
      *
-     * @see org.extex.util.framework.configuration.Configuration#getValue(java.lang.String)
+     * @see org.extex.framework.configuration.Configuration#getValue(java.lang.String)
      */
     public String getValue(final String key) {
 
@@ -157,7 +157,7 @@ public class MyConfiguration implements Configuration {
      *
      * @return the value of key or the default value
      *
-     * @see org.extex.util.framework.configuration.Configuration#getValueAsInteger(java.lang.String, int)
+     * @see org.extex.framework.configuration.Configuration#getValueAsInteger(java.lang.String, int)
      */
     public int getValueAsInteger(final String key, final int defaultValue) {
 
@@ -172,7 +172,7 @@ public class MyConfiguration implements Configuration {
      *
      * @return the list of values
      *
-     * @see org.extex.util.framework.configuration.Configuration#getValues(java.lang.String)
+     * @see org.extex.framework.configuration.Configuration#getValues(java.lang.String)
      */
     public StringList getValues(final String key) {
 
@@ -187,7 +187,7 @@ public class MyConfiguration implements Configuration {
      *  I this case nothing is appended.
      * @param list the list to append the values to
      *
-     * @see org.extex.util.framework.configuration.Configuration#getValues(org.extex.type.StringList, java.lang.String)
+     * @see org.extex.framework.configuration.Configuration#getValues(org.extex.core.StringList, java.lang.String)
      */
     public void getValues(final StringList list, final String key) {
 
@@ -198,7 +198,7 @@ public class MyConfiguration implements Configuration {
      *
      * @return an iterator for all sub-configurations
      *
-     * @see org.extex.util.framework.configuration.Configuration#iterator()
+     * @see org.extex.framework.configuration.Configuration#iterator()
      */
     public Iterator iterator() {
 
@@ -212,7 +212,7 @@ public class MyConfiguration implements Configuration {
      *
      * @return the iterator
      *
-     * @see org.extex.util.framework.configuration.Configuration#iterator(java.lang.String)
+     * @see org.extex.framework.configuration.Configuration#iterator(java.lang.String)
      */
     public Iterator iterator(final String key) {
 

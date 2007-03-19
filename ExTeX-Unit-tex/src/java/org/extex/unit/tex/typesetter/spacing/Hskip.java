@@ -19,12 +19,13 @@
 
 package org.extex.unit.tex.typesetter.spacing;
 
+import org.extex.core.glue.FixedGlue;
+import org.extex.core.glue.Glue;
+import org.extex.core.glue.GlueParser;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
-import org.extex.interpreter.type.glue.FixedGlue;
-import org.extex.interpreter.type.glue.Glue;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.tex.typesetter.AbstractHorizontalCode;
@@ -96,7 +97,7 @@ public class Hskip extends AbstractHorizontalCode implements HorizontalSkip {
             throws InterpreterException {
 
         switchToHorizontalMode(typesetter);
-        Glue g = Glue.parse(source, context, typesetter);
+        Glue g = GlueParser.parse(source, context, typesetter);
         try {
             typesetter.add(g);
         } catch (TypesetterException e) {
@@ -123,7 +124,7 @@ public class Hskip extends AbstractHorizontalCode implements HorizontalSkip {
     public FixedGlue getGlue(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
 
-        return Glue.parse(source, context, typesetter);
+        return GlueParser.parse(source, context, typesetter);
     }
 
 }

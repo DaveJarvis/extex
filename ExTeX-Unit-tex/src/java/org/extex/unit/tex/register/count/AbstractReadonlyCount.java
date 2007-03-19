@@ -19,6 +19,7 @@
 
 package org.extex.unit.tex.register.count;
 
+import org.extex.core.count.CountConvertible;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -26,8 +27,8 @@ import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.CantUseInException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Theable;
-import org.extex.interpreter.type.count.CountConvertible;
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.CatcodeException;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 
 /**
@@ -76,7 +77,7 @@ public abstract class AbstractReadonlyCount extends AbstractCode
             throws InterpreterException {
 
         throw new CantUseInException(printableControlSequence(context),
-                typesetter.getMode().toString());
+            typesetter.getMode().toString());
     }
 
     /**
@@ -87,17 +88,21 @@ public abstract class AbstractReadonlyCount extends AbstractCode
      * @param typesetter the typesetter to use
      *
      * @return the description of the primitive as list of Tokens
+     *
      * @throws InterpreterException in case of an error
+     * @throws CatcodeException in case of an error in token creation
      *
      * @see org.extex.interpreter.type.Theable#the(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+            final Typesetter typesetter)
+            throws InterpreterException,
+                CatcodeException {
 
         long value = convertCount(context, source, typesetter);
-        return new Tokens(context, Long.toString(value));
+        return context.getTokenFactory().toTokens(value);
     }
 
 }

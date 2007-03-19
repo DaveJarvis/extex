@@ -19,14 +19,14 @@
 
 package org.extex.unit.tex.hyphen;
 
+import org.extex.core.Locator;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.tc.TypesettingContext;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.AbstractCode;
-import org.extex.interpreter.type.tokens.Tokens;
-import org.extex.type.Locator;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.ListMaker;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.TypesetterOptions;

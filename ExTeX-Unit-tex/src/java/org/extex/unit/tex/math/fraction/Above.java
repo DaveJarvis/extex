@@ -19,11 +19,12 @@
 
 package org.extex.unit.tex.math.fraction;
 
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.DimenParser;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
-import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.listMaker.math.NoadConsumer;
 import org.extex.unit.tex.math.AbstractMathCode;
@@ -55,7 +56,7 @@ import org.extex.unit.tex.math.AbstractMathCode;
  *  <pre class="syntax">
  *    &lang;above&rang;
  *       &rarr; &lang;math material&rang; <tt>\above</tt> {@linkplain
- *        org.extex.interpreter.type.dimen#Dimen(org.extex.interpreter.context.Context,org.extex.interpreter.TokenSource)
+ *        org.extex.core.dimen#Dimen(org.extex.interpreter.context.Context,org.extex.interpreter.TokenSource)
  *        &lang;dimen&rang;} &lang;math material&rang; </pre>
  *
  * <h4>Examples</h4>
@@ -107,7 +108,7 @@ public class Above extends AbstractMathCode {
             throws InterpreterException {
 
         NoadConsumer nc = getListMaker(context, typesetter);
-        Dimen d = Dimen.parse(context, source, typesetter);
+        Dimen d = DimenParser.parse(context, source, typesetter);
 
         nc.switchToFraction(null, null, d, context.getTypesettingContext());
     }

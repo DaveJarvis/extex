@@ -19,24 +19,24 @@
 
 package org.extex.unit.etex.scan;
 
+import org.extex.core.Locator;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
-import org.extex.interpreter.Tokenizer;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.EofInToksException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.ExpandableCode;
-import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.TokenStream;
+import org.extex.scanner.Tokenizer;
 import org.extex.scanner.exception.ScannerException;
 import org.extex.scanner.stream.TokenStreamFactory;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
-import org.extex.type.Locator;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an implementation for the primitive
@@ -129,7 +129,7 @@ public class Scantokens extends AbstractCode implements ExpandableCode {
          *
          * @see org.extex.scanner.TokenStream#get(
          *      org.extex.scanner.type.token.TokenFactory,
-         *      org.extex.interpreter.Tokenizer)
+         *      org.extex.scanner.Tokenizer)
          */
         public Token get(final TokenFactory factory, final Tokenizer tokenizer)
                 throws ScannerException {

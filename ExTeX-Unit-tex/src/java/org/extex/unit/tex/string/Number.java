@@ -19,14 +19,14 @@
 
 package org.extex.unit.tex.string;
 
+import org.extex.core.count.CountParser;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.ExpandableCode;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.CatcodeException;
 import org.extex.typesetter.Typesetter;
 
 /**
@@ -93,8 +93,12 @@ public class Number extends AbstractCode implements ExpandableCode {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        long n = Count.scanInteger(context, source, typesetter);
-        source.push(new Tokens(context, Long.toString(n)));
+        long number = CountParser.scanInteger(context, source, typesetter);
+        try {
+            source.push(context.getTokenFactory().toTokens(number));
+        } catch (CatcodeException e) {
+            throw new InterpreterException(e);
+        }
     }
 
     /**
@@ -121,8 +125,12 @@ public class Number extends AbstractCode implements ExpandableCode {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        long n = Count.scanInteger(context, source, typesetter);
-        source.push(new Tokens(context, Long.toString(n)));
+        long number = CountParser.scanInteger(context, source, typesetter);
+        try {
+            source.push(context.getTokenFactory().toTokens(number));
+        } catch (CatcodeException e) {
+            throw new InterpreterException(e);
+        }
     }
 
 }

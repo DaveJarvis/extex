@@ -19,11 +19,11 @@
 
 package org.extex.unit.tex.math.spacing;
 
+import org.extex.core.muskip.Mudimen;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
-import org.extex.interpreter.type.muskip.Mudimen;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.listMaker.math.NoadConsumer;
 import org.extex.unit.tex.math.AbstractMathCode;
@@ -43,7 +43,7 @@ import org.extex.unit.tex.math.AbstractMathCode;
  *  <pre class="syntax">
  *    &lang;mkern&rang;
  *       &rarr; <tt>\mkern</tt> {@linkplain
- *          org.extex.interpreter.type.muskip.Mudimen#parseMudimen(Context,TokenSource,Typesetter)
+ *          org.extex.core.muskip.Mudimen#parseMudimen(Context,TokenSource,Typesetter)
  *          &lang;mudimen&rang;} </pre>
  *
  * <h4>Examples</h4>

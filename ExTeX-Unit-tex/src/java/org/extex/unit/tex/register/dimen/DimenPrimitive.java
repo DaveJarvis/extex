@@ -19,6 +19,11 @@
 
 package org.extex.unit.tex.register.dimen;
 
+import org.extex.core.count.CountConvertible;
+import org.extex.core.count.CountParser;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.DimenConvertible;
+import org.extex.core.dimen.DimenParser;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -29,12 +34,8 @@ import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.arithmetic.Advanceable;
 import org.extex.interpreter.type.arithmetic.Divideable;
 import org.extex.interpreter.type.arithmetic.Multiplyable;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.count.CountConvertible;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.DimenConvertible;
-import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.type.CatcodeException;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 
 /**
@@ -61,7 +62,7 @@ import org.extex.typesetter.Typesetter;
  *        &lang;register name&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.interpreter.type.dimen.Dimen#parse(Context,TokenSource,Typesetter)
+ *        org.extex.core.dimen.Dimen#parse(Context,TokenSource,Typesetter)
  *        &lang;dimen value&rang;}
  *
  *   &lang;optional prefix&rang;
@@ -125,7 +126,7 @@ public class DimenPrimitive extends AbstractDimen
         String key = getKey(context, source, typesetter);
         source.getKeyword(context, "by");
 
-        Dimen d = Dimen.parse(context, source, typesetter);
+        Dimen d = DimenParser.parse(context, source, typesetter);
         d.add(context.getDimen(key));
         context.setDimen(key, d, prefix.clearGlobal());
     }
@@ -155,7 +156,7 @@ public class DimenPrimitive extends AbstractDimen
         String key = getKey(context, source, typesetter);
         source.getOptionalEquals(context);
 
-        Dimen dimen = Dimen.parse(context, source, typesetter);
+        Dimen dimen = DimenParser.parse(context, source, typesetter);
         context.setDimen(key, dimen, prefix.clearGlobal());
     }
 
@@ -173,7 +174,7 @@ public class DimenPrimitive extends AbstractDimen
      *
      * @throws InterpreterException in case of an error
      *
-     * @see org.extex.interpreter.type.count.CountConvertible#convertCount(
+     * @see org.extex.interpreter.type.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
@@ -201,7 +202,7 @@ public class DimenPrimitive extends AbstractDimen
      *
      * @throws InterpreterException in case of an error
      *
-     * @see org.extex.interpreter.type.dimen.DimenConvertible#convertDimen(
+     * @see org.extex.core.dimen.DimenConvertible#convertDimen(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
@@ -234,7 +235,7 @@ public class DimenPrimitive extends AbstractDimen
 
         String key = getKey(context, source, typesetter);
         source.getKeyword(context, "by");
-        long value = Count.scanInteger(context, source, null);
+        long value = CountParser.scanInteger(context, source, null);
 
         if (value == 0) {
             throw new ArithmeticOverflowException(
@@ -302,7 +303,7 @@ public class DimenPrimitive extends AbstractDimen
 
         String key = getKey(context, source, typesetter);
         source.getKeyword(context, "by");
-        long value = Count.scanInteger(context, source, null);
+        long value = CountParser.scanInteger(context, source, null);
         Dimen d = new Dimen(context.getDimen(key).getValue() * value);
         context.setDimen(key, d, prefix.clearGlobal());
     }

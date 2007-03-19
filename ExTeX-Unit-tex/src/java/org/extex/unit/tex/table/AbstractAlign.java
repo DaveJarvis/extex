@@ -22,19 +22,19 @@ package org.extex.unit.tex.table;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Code;
-import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.unit.tex.table.util.PreambleItem;
-import org.extex.util.framework.i18n.Localizer;
-import org.extex.util.framework.i18n.LocalizerFactory;
 
 /**
  * This is the abstract base class for alignments.

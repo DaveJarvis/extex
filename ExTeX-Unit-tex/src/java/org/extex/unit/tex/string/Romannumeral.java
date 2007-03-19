@@ -19,18 +19,18 @@
 
 package org.extex.unit.tex.string;
 
+import org.extex.core.count.CountParser;
 import org.extex.interpreter.Flags;
-import org.extex.interpreter.Namespace;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.ExpandableCode;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.CatcodeException;
+import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.token.TokenFactory;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 
 /**
@@ -50,7 +50,7 @@ import org.extex.typesetter.Typesetter;
  *  <pre class="syntax">
  *    &lang;romannumeral&rang;
  *        &rarr; <tt>\romannumeral</tt> {@linkplain
- *           org.extex.interpreter.type.count.Count#scanNumber(Context,TokenSource,Typesetter)
+ *           org.extex.core.count.Count#scanNumber(Context,TokenSource,Typesetter)
  *           &lang;number&rang;} </pre>
  *
  * <h4>Examples</h4>
@@ -140,7 +140,7 @@ public class Romannumeral extends AbstractCode implements ExpandableCode {
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
-        long n = Count.scanInteger(context, source, typesetter);
+        long n = CountParser.scanInteger(context, source, typesetter);
         Tokens toks = new Tokens();
         TokenFactory factory = context.getTokenFactory();
         int j = 0;

@@ -19,10 +19,10 @@
 
 package org.extex.unit.dynamic;
 
+import org.extex.core.exception.GeneralException;
 import org.extex.interpreter.context.Context;
 import org.extex.typesetter.Typesetter;
 import org.extex.unit.dynamic.java.Loadable;
-import org.extex.util.exception.GeneralException;
 
 /**
  * This class provides a sensor for the loading operation.

@@ -19,7 +19,7 @@
 
 package org.extex.unit.tex.macro.util;
 
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.tokens.Tokens;
 
 /**
  * This class provides a container for the pattern of a macro.

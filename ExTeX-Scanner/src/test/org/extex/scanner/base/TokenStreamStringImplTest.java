@@ -24,15 +24,15 @@ import java.io.StringReader;
 
 import junit.framework.TestCase;
 
-import org.extex.interpreter.Tokenizer;
+import org.extex.core.Locator;
+import org.extex.core.UnicodeChar;
 import org.extex.scanner.TokenStream;
+import org.extex.scanner.Tokenizer;
 import org.extex.scanner.exception.ScannerException;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
 import org.extex.scanner.type.token.TokenFactoryImpl;
-import org.extex.type.Locator;
-import org.extex.type.UnicodeChar;
 
 /**
  * Test cases for the string implementation of a token stream.
@@ -65,8 +65,8 @@ public class TokenStreamStringImplTest extends TestCase {
          *
          * @return the category code of a character
          *
-         * @see org.extex.interpreter.Tokenizer#getCatcode(
-         *      org.extex.type.UnicodeChar)
+         * @see org.extex.scanner.Tokenizer#getCatcode(
+         *      org.extex.core.UnicodeChar)
          */
         public Catcode getCatcode(final UnicodeChar c) {
 
@@ -115,7 +115,7 @@ public class TokenStreamStringImplTest extends TestCase {
          *
          * @return the name space
          *
-         * @see org.extex.interpreter.Tokenizer#getNamespace()
+         * @see org.extex.scanner.Tokenizer#getNamespace()
          */
         public String getNamespace() {
 
