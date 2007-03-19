@@ -19,15 +19,15 @@
 
 package org.extex.typesetter.dump;
 
+import org.extex.core.count.Count;
+import org.extex.core.glue.FixedGlue;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.context.tc.TypesettingContext;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.glue.FixedGlue;
 import org.extex.typesetter.TypesetterOptions;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.impl.TypesetterImpl;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class implements the typesetter interface but simply records the events
@@ -59,7 +59,7 @@ public class DumpTypesetter extends TypesetterImpl {
 
     /**
      * @see org.extex.typesetter.ListMaker#add(
-     *      org.extex.interpreter.type.glue.FixedGlue)
+     *      org.extex.core.glue.FixedGlue)
      */
     public void add(final FixedGlue g) throws TypesetterException {
 
@@ -69,7 +69,7 @@ public class DumpTypesetter extends TypesetterImpl {
     /**
      * @see org.extex.typesetter.ListMaker#addSpace(
      *      org.extex.interpreter.context.tc.TypesettingContext,
-     *      org.extex.interpreter.type.count.Count)
+     *      org.extex.core.count.Count)
      */
     public void addSpace(final TypesettingContext typesettingContext,
             final Count spacefactor)

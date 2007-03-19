@@ -19,7 +19,7 @@
 
 package org.extex.main.tex.exception;
 
-import org.extex.util.exception.GeneralException;
+import org.extex.core.exception.GeneralException;
 
 /**
  * This is the base class for all exceptions of the main class. In addition to

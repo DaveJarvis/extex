@@ -19,13 +19,13 @@
 
 package org.extex.interpreter.expression.term;
 
+import org.extex.core.dimen.Dimen;
+import org.extex.core.glue.Glue;
+import org.extex.core.glue.WideGlue;
+import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.expression.EType;
 import org.extex.interpreter.expression.exception.CastException;
 import org.extex.interpreter.expression.exception.UnsupportedException;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.glue.Glue;
-import org.extex.interpreter.type.glue.WideGlue;
-import org.extex.util.framework.i18n.LocalizerFactory;
 
 /**
  * This class encapsulates a glue value for the use in the expression

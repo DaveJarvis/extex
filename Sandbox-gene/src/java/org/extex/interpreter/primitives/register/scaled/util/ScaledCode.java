@@ -19,6 +19,8 @@
 
 package org.extex.interpreter.primitives.register.scaled.util;
 
+import org.extex.core.scaled.ScaledConvertible;
+import org.extex.core.scaled.ScaledNumber;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -29,10 +31,8 @@ import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.arithmetic.Advanceable;
 import org.extex.interpreter.type.arithmetic.Divideable;
 import org.extex.interpreter.type.arithmetic.Multiplyable;
-import org.extex.interpreter.type.scaled.ScaledConvertible;
-import org.extex.interpreter.type.scaled.ScaledNumber;
-import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.scanner.type.CatcodeException;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 
 /**
@@ -106,7 +106,7 @@ public class ScaledCode extends AbstractAssignment
     }
 
     /**
-     * @see org.extex.interpreter.type.scaled.ScaledConvertible#convertScaled(
+     * @see org.extex.core.scaled.ScaledConvertible#convertScaled(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)

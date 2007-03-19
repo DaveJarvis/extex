@@ -19,10 +19,10 @@
 
 package org.extex.interpreter.expression.term;
 
+import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.expression.EType;
 import org.extex.interpreter.expression.exception.CastException;
 import org.extex.interpreter.expression.exception.UnsupportedException;
-import org.extex.util.framework.i18n.LocalizerFactory;
 
 /**
  * This class encapsulates a boolean value for the use in the expression

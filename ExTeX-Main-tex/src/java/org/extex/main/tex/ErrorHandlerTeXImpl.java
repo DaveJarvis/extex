@@ -21,7 +21,7 @@ package org.extex.main.tex;
 
 import java.util.logging.Logger;
 
-import org.extex.type.Locator;
+import org.extex.core.Locator;
 
 /**
  * This is the error handler in <logo>TeX</logo> compatibility mode: the message
@@ -49,7 +49,7 @@ public class ErrorHandlerTeXImpl extends ErrorHandlerImpl {
      * @param locator the locator for the error position
      *
      * @see org.extex.main.tex.ErrorHandlerImpl#showErrorLine(
-     *      java.util.logging.Logger, java.lang.String, org.extex.type.Locator)
+     *      java.util.logging.Logger, java.lang.String, org.extex.core.Locator)
      */
     protected void showErrorLine(final Logger logger, final String message,
             final Locator locator) {

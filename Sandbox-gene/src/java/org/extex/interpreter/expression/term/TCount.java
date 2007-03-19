@@ -19,12 +19,12 @@
 
 package org.extex.interpreter.expression.term;
 
+import org.extex.core.count.Count;
+import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.exception.helping.ArithmeticOverflowException;
 import org.extex.interpreter.expression.EType;
 import org.extex.interpreter.expression.exception.CastException;
 import org.extex.interpreter.expression.exception.UnsupportedException;
-import org.extex.interpreter.type.count.Count;
-import org.extex.util.framework.i18n.LocalizerFactory;
 
 /**
  * This class encapsulates a long value for the use in the expression

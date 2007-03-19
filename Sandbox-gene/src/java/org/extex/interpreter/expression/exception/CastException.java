@@ -19,8 +19,8 @@
 
 package org.extex.interpreter.expression.exception;
 
+import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.exception.helping.HelpingException;
-import org.extex.util.framework.i18n.LocalizerFactory;
 
 /**
  * This exception signals that the attempt to cast a value has failed.

@@ -19,9 +19,9 @@
 
 package org.extex.main.tex;
 
+import org.extex.core.Locator;
+import org.extex.framework.i18n.Localizer;
 import org.extex.main.errorHandler.editHandler.EditHandler;
-import org.extex.type.Locator;
-import org.extex.util.framework.i18n.Localizer;
 
 /**
  * This is a dummy implementation for an EditHandler which just prints the
@@ -49,8 +49,8 @@ public class EditHandlerTeXImpl implements EditHandler {
      * @return <code>true</code> iff the job can be continued
      *
      * @see org.extex.main.errorHandler.editHandler.EditHandler#edit(
-     *      org.extex.util.framework.i18n.Localizer,
-     *      org.extex.type.Locator)
+     *      org.extex.framework.i18n.Localizer,
+     *      org.extex.core.Locator)
      */
     public boolean edit(final Localizer localizer, final Locator locator) {
 

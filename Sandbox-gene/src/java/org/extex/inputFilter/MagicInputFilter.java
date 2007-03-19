@@ -24,9 +24,9 @@ import java.io.InputStream;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.extex.core.UnicodeChar;
 import org.extex.interpreter.context.Context;
 import org.extex.scanner.type.Catcode;
-import org.extex.type.UnicodeChar;
 
 /**
  * TODO gene: missing JavaDoc.

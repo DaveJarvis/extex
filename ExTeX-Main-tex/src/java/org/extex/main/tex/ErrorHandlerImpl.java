@@ -22,6 +22,12 @@ package org.extex.main.tex;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+import org.extex.core.Locator;
+import org.extex.core.exception.GeneralException;
+import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.i18n.Localizable;
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.ErrorHandler;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -32,12 +38,6 @@ import org.extex.interpreter.interaction.Interaction;
 import org.extex.interpreter.interaction.InteractionVisitor;
 import org.extex.main.errorHandler.editHandler.EditHandler;
 import org.extex.scanner.type.token.Token;
-import org.extex.type.Locator;
-import org.extex.util.exception.GeneralException;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-import org.extex.util.framework.i18n.Localizable;
-import org.extex.util.framework.i18n.Localizer;
-import org.extex.util.framework.logger.LogEnabled;
 
 /**
  * This is a simple implementation of the error handler interacting with the
@@ -275,8 +275,8 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
      *
      * @param theLocalizer the new localizer
      *
-     * @see org.extex.util.framework.i18n.Localizable#enableLocalization(
-     *      org.extex.util.framework.i18n.Localizer)
+     * @see org.extex.framework.i18n.Localizable#enableLocalization(
+     *      org.extex.framework.i18n.Localizer)
      */
     public void enableLocalization(final Localizer theLocalizer) {
 
@@ -284,7 +284,7 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
     }
 
     /**
-     * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
     public void enableLogging(final Logger theLogger) {
@@ -337,7 +337,7 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
 
     /**
      * @see org.extex.interpreter.ErrorHandler#handleError(
-     *      org.extex.util.exception.GeneralException,
+     *      org.extex.core.exception.GeneralException,
      *      org.extex.scanner.type.token.Token,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.interpreter.context.Context)

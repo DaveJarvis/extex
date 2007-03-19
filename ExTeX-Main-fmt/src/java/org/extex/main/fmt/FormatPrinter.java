@@ -35,10 +35,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.zip.GZIPInputStream;
 
+import org.extex.core.UnicodeChar;
+import org.extex.core.count.Count;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.glue.Glue;
 import org.extex.interpreter.loader.LoaderException;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.glue.Glue;
 import org.extex.scanner.type.token.ControlSequenceToken;
 import org.extex.scanner.type.token.LeftBraceToken;
 import org.extex.scanner.type.token.LetterToken;
@@ -48,7 +49,6 @@ import org.extex.scanner.type.token.OtherToken;
 import org.extex.scanner.type.token.RightBraceToken;
 import org.extex.scanner.type.token.SpaceToken;
 import org.extex.scanner.type.token.Token;
-import org.extex.type.UnicodeChar;
 
 /**
  * Load a format file and print it in a reasonable form.

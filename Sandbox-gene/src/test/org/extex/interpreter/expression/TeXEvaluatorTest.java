@@ -21,15 +21,15 @@ package org.extex.interpreter.expression;
 
 import junit.framework.TestCase;
 
+import org.extex.core.count.Count;
+import org.extex.framework.configuration.ConfigurationFactory;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.MissingNumberException;
 import org.extex.interpreter.expression.term.Accumulator;
 import org.extex.interpreter.max.StringSource;
 import org.extex.interpreter.max.context.ContextImpl;
-import org.extex.interpreter.type.count.Count;
 import org.extex.scanner.type.token.TokenFactoryImpl;
-import org.extex.util.framework.configuration.ConfigurationFactory;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class is a test suite for the expression evaluator.

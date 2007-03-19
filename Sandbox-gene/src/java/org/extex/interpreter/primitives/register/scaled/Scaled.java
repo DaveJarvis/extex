@@ -19,13 +19,13 @@
 
 package org.extex.interpreter.primitives.register.scaled;
 
+import org.extex.core.scaled.ScaledNumber;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.primitives.register.scaled.util.ScaledCode;
 import org.extex.interpreter.type.AbstractAssignment;
-import org.extex.interpreter.type.scaled.ScaledNumber;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 

@@ -23,16 +23,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.logging.Logger;
 
-import org.extex.interpreter.interaction.Interaction;
-import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-import org.extex.util.framework.i18n.Localizer;
-import org.extex.util.framework.i18n.LocalizerFactory;
-import org.extex.util.framework.logger.LogEnabled;
-import org.extex.util.resource.InteractionAware;
-import org.extex.util.resource.InteractionProvider;
-import org.extex.util.resource.RecursiveFinder;
-import org.extex.util.resource.ResourceFinder;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
+import org.extex.framework.logger.LogEnabled;
+import org.extex.resource.InteractionAware;
+import org.extex.resource.InteractionIndicator;
+import org.extex.resource.RecursiveFinder;
+import org.extex.resource.ResourceFinder;
 
 /**
  * This ResourceFinder queries the user for the name of the file to use and
@@ -69,7 +68,7 @@ public class ResourceFinderImpl
     /**
      * The field <tt>provider</tt> contains the interaction provider.
      */
-    private InteractionProvider provider = null;
+    private InteractionIndicator provider = null;
 
     /**
      * Creates a new object.
@@ -89,7 +88,7 @@ public class ResourceFinderImpl
      *
      * @param theLogger the logger to use
      *
-     * @see org.extex.util.framework.logger.LogEnabled#enableLogging(
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
     public void enableLogging(final Logger theLogger) {
@@ -103,7 +102,7 @@ public class ResourceFinderImpl
      *
      * @param flag the trace flag
      *
-     * @see org.extex.util.resource.ResourceFinder#enableTracing(boolean)
+     * @see org.extex.resource.ResourceFinder#enableTracing(boolean)
      */
     public void enableTracing(final boolean flag) {
 
@@ -120,7 +119,7 @@ public class ResourceFinderImpl
      *
      * @throws ConfigurationException in case of an exception
      *
-     * @see org.extex.util.resource.ResourceFinder#findResource(
+     * @see org.extex.resource.ResourceFinder#findResource(
      *      java.lang.String,
      *      java.lang.String)
      */
@@ -140,14 +139,11 @@ public class ResourceFinderImpl
         }
 
         String line = name;
-        Localizer localizer = LocalizerFactory
-                .getLocalizer(ResourceFinderImpl.class);
+        Localizer localizer =
+                LocalizerFactory.getLocalizer(ResourceFinderImpl.class);
 
-        if (provider != null) {
-            Interaction interaction = provider.getInteraction();
-            if (interaction != Interaction.ERRORSTOPMODE) {
-                return null;
-            }
+        if (provider != null && !provider.isInteractive()) {
+            return null;
         }
 
         if (!line.equals("")) {
@@ -176,8 +172,8 @@ public class ResourceFinderImpl
         StringBuffer sb = new StringBuffer();
 
         try {
-            for (int c = System.in.read(); c > 0 && c != '\n'; c = System.in
-                    .read()) {
+            for (int c = System.in.read(); c > 0 && c != '\n'; c =
+                    System.in.read()) {
 
                 if (c != '\r' && (c != ' ' || sb.length() > 0)) {
                     sb.append((char) c);
@@ -195,10 +191,10 @@ public class ResourceFinderImpl
      *
      * @param provider the provider
      *
-     * @see org.extex.util.resource.InteractionAware#setInteractionProvider(
-     *      org.extex.util.resource.InteractionProvider)
+     * @see org.extex.resource.InteractionAware#setInteractionProvider(
+     *      org.extex.resource.InteractionIndicator)
      */
-    public void setInteractionProvider(final InteractionProvider provider) {
+    public void setInteractionProvider(final InteractionIndicator provider) {
 
         this.provider = provider;
     }
@@ -208,8 +204,8 @@ public class ResourceFinderImpl
      *
      * @param parent the parent resource finder
      *
-     * @see org.extex.util.resource.RecursiveFinder#setParent(
-     *      org.extex.util.resource.ResourceFinder)
+     * @see org.extex.resource.RecursiveFinder#setParent(
+     *      org.extex.resource.ResourceFinder)
      */
     public void setParent(final ResourceFinder parent) {
 

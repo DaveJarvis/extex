@@ -47,8 +47,16 @@ import org.extex.backend.documentWriter.exception.DocumentWriterException;
 import org.extex.backend.outputStream.NamedOutputStream;
 import org.extex.backend.outputStream.OutputStreamFactory;
 import org.extex.backend.outputStream.OutputStreamObserver;
+import org.extex.core.exception.GeneralException;
+import org.extex.core.exception.NotObservableException;
 import org.extex.font.CoreFontFactory;
 import org.extex.font.exception.FontException;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.ConfigurationFactory;
+import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.configuration.exception.ConfigurationUnsupportedEncodingException;
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.Interpreter;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.interaction.Interaction;
@@ -59,7 +67,7 @@ import org.extex.interpreter.observer.push.PushObservable;
 import org.extex.interpreter.observer.push.PushObserver;
 import org.extex.interpreter.observer.streamClose.StreamCloseObservable;
 import org.extex.interpreter.observer.streamClose.StreamCloseObserver;
-import org.extex.main.logging.LogFormatter;
+import org.extex.logging.LogFormatter;
 import org.extex.main.tex.exception.MainCodingException;
 import org.extex.main.tex.exception.MainConfigurationException;
 import org.extex.main.tex.exception.MainException;
@@ -67,17 +75,9 @@ import org.extex.main.tex.exception.MainIOException;
 import org.extex.main.tex.exception.MainMissingArgumentException;
 import org.extex.main.tex.exception.MainUnknownDebugOptionException;
 import org.extex.main.tex.exception.MainUnknownOptionException;
+import org.extex.resource.ResourceFinder;
 import org.extex.scanner.stream.TokenStreamFactory;
 import org.extex.scanner.stream.observer.file.OpenFileObserver;
-import org.extex.util.exception.GeneralException;
-import org.extex.util.exception.NotObservableException;
-import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.configuration.ConfigurationFactory;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-import org.extex.util.framework.configuration.exception.ConfigurationUnsupportedEncodingException;
-import org.extex.util.framework.i18n.Localizer;
-import org.extex.util.framework.i18n.LocalizerFactory;
-import org.extex.util.resource.ResourceFinder;
 
 /**
  * This is the command line interface to <logo>ExTeX</logo>.
@@ -1034,11 +1034,11 @@ public class TeX extends ExTeX {
      * @throws ConfigurationException in case of a configuration problem
      *
      * @see org.extex.ExTeX#makeBackend(
-     *      org.extex.util.framework.configuration.Configuration,
+     *      org.extex.framework.configuration.Configuration,
      *      org.extex.backend.outputStream.OutputStreamFactory,
      *      org.extex.backend.documentWriter.DocumentWriterOptions,
-     *      org.extex.util.framework.configuration.Configuration,
-     *      org.extex.util.resource.ResourceFinder,
+     *      org.extex.framework.configuration.Configuration,
+     *      org.extex.resource.ResourceFinder,
      *      CoreFontFactory)
      */
     protected BackendDriver makeBackend(final Configuration config,
@@ -1097,9 +1097,9 @@ public class TeX extends ExTeX {
      * @throws IOException in case of an IO error
      *
      * @see org.extex.ExTeX#makeInterpreter(
-     *      org.extex.util.framework.configuration.Configuration,
+     *      org.extex.framework.configuration.Configuration,
      *      org.extex.backend.outputStream.OutputStreamFactory,
-     *      org.extex.util.resource.ResourceFinder,
+     *      org.extex.resource.ResourceFinder,
      *      java.lang.String)
      */
     protected Interpreter makeInterpreter(final Configuration config,

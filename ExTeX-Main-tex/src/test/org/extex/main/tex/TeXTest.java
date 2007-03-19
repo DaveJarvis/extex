@@ -82,12 +82,14 @@ public class TeXTest extends TestCase {
     public static final int EXIT_OK = 0;
 
     /**
-     * The constant <tt>PARSE_PATH</tt> contains the ...
+     * The constant <tt>PARSE_PATH</tt> contains the full path of the
+     * data directory.
      */
-    private static final String PARSE_PATH = "../ExTeX-CLI-tex/src/test/data/";
+    private static final String PARSE_PATH = "../ExTeX-Main-tex/src/test/data/";
 
     /**
-     * The constant <tt>TRANSCRIPT_TEXPUT</tt> contains the ...
+     * The constant <tt>TRANSCRIPT_TEXPUT</tt> contains the full name of the
+     * transcript file.
      */
     private static final String TRANSCRIPT_TEXPUT = transcript("texput");
 
