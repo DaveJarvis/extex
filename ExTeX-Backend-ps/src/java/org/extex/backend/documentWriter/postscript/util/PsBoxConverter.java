@@ -25,11 +25,12 @@ import java.io.InputStream;
 
 import org.extex.backend.documentWriter.exception.DocumentWriterException;
 import org.extex.backend.documentWriter.exception.DocumentWriterIOException;
+import org.extex.core.UnicodeChar;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.exception.GeneralException;
 import org.extex.interpreter.context.tc.TypesettingContext;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.font.Font;
-import org.extex.type.UnicodeChar;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeVisitor;
 import org.extex.typesetter.type.node.AdjustNode;
@@ -54,7 +55,6 @@ import org.extex.typesetter.type.node.VerticalListNode;
 import org.extex.typesetter.type.node.VirtualCharNode;
 import org.extex.typesetter.type.node.WhatsItNode;
 import org.extex.typesetter.type.page.Page;
-import org.extex.util.exception.GeneralException;
 
 /**
  * This class provides a converter to PostScript code which shows mainly the

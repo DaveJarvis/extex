@@ -26,9 +26,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
 import org.extex.dviware.Dvi;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.font.Font;
 
 /**

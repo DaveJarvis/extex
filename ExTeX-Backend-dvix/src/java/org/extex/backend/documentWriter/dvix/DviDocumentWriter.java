@@ -33,6 +33,8 @@ import org.extex.color.ColorConverter;
 import org.extex.color.model.CmykColor;
 import org.extex.color.model.GrayscaleColor;
 import org.extex.color.model.RgbColor;
+import org.extex.core.count.FixedCount;
+import org.extex.core.exception.GeneralException;
 import org.extex.dviware.Dvi;
 import org.extex.dviware.type.DviBop;
 import org.extex.dviware.type.DviCode;
@@ -46,8 +48,10 @@ import org.extex.dviware.type.DviRight;
 import org.extex.dviware.type.DviSetChar;
 import org.extex.dviware.type.DviSetRule;
 import org.extex.dviware.type.DviXxx;
+import org.extex.framework.configuration.Configurable;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.context.Color;
-import org.extex.interpreter.type.count.FixedCount;
 import org.extex.interpreter.type.font.Font;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
@@ -74,10 +78,6 @@ import org.extex.typesetter.type.node.VerticalListNode;
 import org.extex.typesetter.type.node.VirtualCharNode;
 import org.extex.typesetter.type.node.WhatsItNode;
 import org.extex.typesetter.type.page.Page;
-import org.extex.util.exception.GeneralException;
-import org.extex.util.framework.configuration.Configurable;
-import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides a base implementation of a DVI document writer.
@@ -715,8 +715,8 @@ public class DviDocumentWriter
      *
      * @throws ConfigurationException in case that something went wrong
      *
-     * @see org.extex.util.framework.configuration.Configurable#configure(
-     *      org.extex.util.framework.configuration.Configuration)
+     * @see org.extex.framework.configuration.Configurable#configure(
+     *      org.extex.framework.configuration.Configuration)
      */
     public void configure(final Configuration config) {
 

@@ -35,12 +35,12 @@ import org.extex.backend.documentWriter.postscript.util.PsConverter;
 import org.extex.backend.outputStream.OutputStreamFactory;
 import org.extex.color.ColorAware;
 import org.extex.color.ColorConverter;
+import org.extex.framework.configuration.Configurable;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.type.font.Font;
-import org.extex.util.framework.configuration.Configurable;
-import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-import org.extex.util.resource.ResourceConsumer;
-import org.extex.util.resource.ResourceFinder;
+import org.extex.resource.ResourceConsumer;
+import org.extex.resource.ResourceFinder;
 
 /**
  * This is the abstract base class for document writers producing PostScript
@@ -103,8 +103,8 @@ public abstract class AbstractPostscriptWriter
      *
      * @throws ConfigurationException in case that something went wrong
      *
-     * @see org.extex.util.framework.configuration.Configurable#configure(
-     *      org.extex.util.framework.configuration.Configuration)
+     * @see org.extex.framework.configuration.Configurable#configure(
+     *      org.extex.framework.configuration.Configuration)
      */
     public void configure(final Configuration config) {
 
@@ -226,8 +226,8 @@ public abstract class AbstractPostscriptWriter
      *
      * @param resourceFinder the resource finder
      *
-     * @see org.extex.util.resource.ResourceConsumer#setResourceFinder(
-     *      org.extex.util.resource.ResourceFinder)
+     * @see org.extex.resource.ResourceConsumer#setResourceFinder(
+     *      org.extex.resource.ResourceFinder)
      */
     public void setResourceFinder(final ResourceFinder resourceFinder) {
 

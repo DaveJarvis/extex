@@ -30,6 +30,10 @@ import org.extex.backend.documentWriter.SingleDocumentStream;
 import org.extex.color.ColorAware;
 import org.extex.color.ColorConverter;
 import org.extex.color.model.RgbColor;
+import org.extex.core.exception.GeneralException;
+import org.extex.framework.configuration.Configurable;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.context.Color;
 import org.extex.interpreter.type.font.Font;
 import org.extex.typesetter.type.Node;
@@ -57,10 +61,6 @@ import org.extex.typesetter.type.node.VerticalListNode;
 import org.extex.typesetter.type.node.VirtualCharNode;
 import org.extex.typesetter.type.node.WhatsItNode;
 import org.extex.typesetter.type.page.Page;
-import org.extex.util.exception.GeneralException;
-import org.extex.util.framework.configuration.Configurable;
-import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides a base implementation of a RTF document writer.
@@ -699,8 +699,8 @@ public class RtfDocumentWriter extends RtfDocument
      *
      * @throws ConfigurationException in case that something went wrong
      *
-     * @see org.extex.util.framework.configuration.Configurable#configure(
-     *      org.extex.util.framework.configuration.Configuration)
+     * @see org.extex.framework.configuration.Configurable#configure(
+     *      org.extex.framework.configuration.Configuration)
      */
     public void configure(final Configuration config) {
 

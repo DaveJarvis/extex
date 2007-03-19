@@ -28,6 +28,8 @@ import org.extex.backend.documentWriter.SingleDocumentStream;
 import org.extex.backend.documentWriter.exception.DocumentWriterClosedChannelException;
 import org.extex.backend.documentWriter.exception.DocumentWriterException;
 import org.extex.backend.documentWriter.exception.DocumentWriterIOException;
+import org.extex.core.exception.GeneralException;
+import org.extex.framework.configuration.Configuration;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeIterator;
 import org.extex.typesetter.type.NodeList;
@@ -53,8 +55,6 @@ import org.extex.typesetter.type.node.VerticalListNode;
 import org.extex.typesetter.type.node.VirtualCharNode;
 import org.extex.typesetter.type.node.WhatsItNode;
 import org.extex.typesetter.type.page.Page;
-import org.extex.util.exception.GeneralException;
-import org.extex.util.framework.configuration.Configuration;
 
 
 /**

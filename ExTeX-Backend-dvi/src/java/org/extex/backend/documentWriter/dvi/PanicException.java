@@ -19,7 +19,7 @@
 
 package org.extex.backend.documentWriter.dvi;
 
-import org.extex.util.exception.GeneralException;
+import org.extex.core.exception.GeneralException;
 
 /**
  * Panic exception in dvi writer.

@@ -33,8 +33,12 @@ import org.extex.backend.documentWriter.SingleDocumentStream;
 import org.extex.backend.documentWriter.exception.DocumentWriterClosedChannelException;
 import org.extex.backend.documentWriter.exception.DocumentWriterException;
 import org.extex.backend.documentWriter.exception.DocumentWriterIOException;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.type.UnicodeChar;
+import org.extex.core.UnicodeChar;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.exception.GeneralException;
+import org.extex.framework.configuration.Configurable;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeIterator;
 import org.extex.typesetter.type.NodeList;
@@ -61,10 +65,6 @@ import org.extex.typesetter.type.node.VirtualCharNode;
 import org.extex.typesetter.type.node.WhatsItNode;
 import org.extex.typesetter.type.page.Page;
 import org.extex.util.Unit;
-import org.extex.util.exception.GeneralException;
-import org.extex.util.framework.configuration.Configurable;
-import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.extex.util.xml.XMLStreamWriter;
 
 
@@ -446,8 +446,8 @@ public class XMLDocumentWriter
     }
 
     /**
-     * @see org.extex.util.framework.configuration.Configurable#configure(
-     *      org.extex.util.framework.configuration.Configuration)
+     * @see org.extex.framework.configuration.Configurable#configure(
+     *      org.extex.framework.configuration.Configuration)
      */
     public void configure(final Configuration cfg)
             throws ConfigurationException {

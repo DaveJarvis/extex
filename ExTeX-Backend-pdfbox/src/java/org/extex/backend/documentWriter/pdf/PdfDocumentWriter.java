@@ -31,13 +31,13 @@ import org.extex.backend.documentWriter.exception.DocumentWriterClosedChannelExc
 import org.extex.backend.documentWriter.exception.DocumentWriterException;
 import org.extex.backend.documentWriter.exception.DocumentWriterIOException;
 import org.extex.backend.documentWriter.pdf.exception.DocumentWriterPdfException;
-import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.exception.GeneralException;
+import org.extex.framework.configuration.Configuration;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.NodeVisitor;
 import org.extex.typesetter.type.page.Page;
 import org.extex.util.Unit;
-import org.extex.util.exception.GeneralException;
-import org.extex.util.framework.configuration.Configuration;
 import org.pdfbox.exceptions.COSVisitorException;
 import org.pdfbox.pdmodel.PDDocument;
 import org.pdfbox.pdmodel.PDPage;

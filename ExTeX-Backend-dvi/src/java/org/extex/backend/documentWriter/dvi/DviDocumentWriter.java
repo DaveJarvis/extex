@@ -26,6 +26,10 @@ import org.extex.backend.documentWriter.DocumentWriter;
 import org.extex.backend.documentWriter.DocumentWriterOptions;
 import org.extex.backend.documentWriter.SingleDocumentStream;
 import org.extex.backend.documentWriter.exception.NoOutputStreamException;
+import org.extex.core.exception.GeneralException;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.i18n.Localizable;
+import org.extex.framework.i18n.Localizer;
 import org.extex.interpreter.type.font.Font;
 import org.extex.typesetter.Mode;
 import org.extex.typesetter.type.InspectableNodeVisitor;
@@ -54,10 +58,6 @@ import org.extex.typesetter.type.node.VerticalListNode;
 import org.extex.typesetter.type.node.VirtualCharNode;
 import org.extex.typesetter.type.node.WhatsItNode;
 import org.extex.typesetter.type.page.Page;
-import org.extex.util.exception.GeneralException;
-import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.i18n.Localizable;
-import org.extex.util.framework.i18n.Localizer;
 
 /**
  * This is a implementation of a dvi document writer.
@@ -633,8 +633,8 @@ public class DviDocumentWriter
      *
      * @param theLocalizer a <code>Localizer</code> value
      *
-     * @see org.extex.util.framework.i18n.Localizable#enableLocalization(
-     *      org.extex.util.framework.i18n.Localizer)
+     * @see org.extex.framework.i18n.Localizable#enableLocalization(
+     *      org.extex.framework.i18n.Localizer)
      */
     public void enableLocalization(final Localizer theLocalizer) {
 

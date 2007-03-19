@@ -30,15 +30,14 @@ import java.util.Stack;
 import java.util.Vector;
 
 import org.extex.backend.documentWriter.DocumentWriterOptions;
-import org.extex.font.Glyph;
-import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.core.UnicodeChar;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.exception.GeneralException;
 import org.extex.interpreter.type.font.Font;
-import org.extex.type.UnicodeChar;
 import org.extex.typesetter.Mode;
 import org.extex.typesetter.type.node.CharNode;
 import org.extex.typesetter.type.node.RuleNode;
 import org.extex.typesetter.type.node.WhatsItNode;
-import org.extex.util.exception.GeneralException;
 
 /**
  * This is a implementation of a dvi document writer.

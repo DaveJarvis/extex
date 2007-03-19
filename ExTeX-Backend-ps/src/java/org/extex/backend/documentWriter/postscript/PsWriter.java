@@ -34,10 +34,10 @@ import org.extex.backend.documentWriter.postscript.util.FontManager;
 import org.extex.backend.documentWriter.postscript.util.HeaderManager;
 import org.extex.backend.documentWriter.postscript.util.PsConverter;
 import org.extex.backend.documentWriter.postscript.util.PsUnit;
-import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.exception.GeneralException;
+import org.extex.framework.configuration.Configurable;
 import org.extex.typesetter.type.page.Page;
-import org.extex.util.exception.GeneralException;
-import org.extex.util.framework.configuration.Configurable;
 
 /**
  * This document writer produces multi-page PostScript documents.

@@ -28,13 +28,13 @@ import org.extex.backend.documentWriter.MultipleDocumentStream;
 import org.extex.backend.documentWriter.exception.DocumentWriterException;
 import org.extex.backend.documentWriter.exception.DocumentWriterIOException;
 import org.extex.backend.outputStream.OutputStreamFactory;
-import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.exception.GeneralException;
+import org.extex.framework.configuration.Configuration;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.NodeVisitor;
 import org.extex.typesetter.type.page.Page;
 import org.extex.util.Unit;
-import org.extex.util.exception.GeneralException;
-import org.extex.util.framework.configuration.Configuration;
 
 
 /**

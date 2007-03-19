@@ -29,11 +29,15 @@ import org.extex.color.ColorAware;
 import org.extex.color.ColorConverter;
 import org.extex.color.model.GrayscaleColor;
 import org.extex.color.model.RgbColor;
+import org.extex.core.UnicodeChar;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.exception.GeneralException;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.context.Color;
 import org.extex.interpreter.context.tc.TypesettingContext;
-import org.extex.interpreter.type.dimen.Dimen;
 import org.extex.interpreter.type.font.Font;
-import org.extex.type.UnicodeChar;
+import org.extex.resource.ResourceConsumer;
+import org.extex.resource.ResourceFinder;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeVisitor;
 import org.extex.typesetter.type.node.AdjustNode;
@@ -58,10 +62,6 @@ import org.extex.typesetter.type.node.VerticalListNode;
 import org.extex.typesetter.type.node.VirtualCharNode;
 import org.extex.typesetter.type.node.WhatsItNode;
 import org.extex.typesetter.type.page.Page;
-import org.extex.util.exception.GeneralException;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-import org.extex.util.resource.ResourceConsumer;
-import org.extex.util.resource.ResourceFinder;
 
 /**
  * This class provides a converter to PostScript code.
@@ -316,8 +316,8 @@ public class PsBasicConverter
     }
 
     /**
-     * @see org.extex.util.resource.ResourceConsumer#setResourceFinder(
-     *      org.extex.util.resource.ResourceFinder)
+     * @see org.extex.resource.ResourceConsumer#setResourceFinder(
+     *      org.extex.resource.ResourceFinder)
      */
     public void setResourceFinder(final ResourceFinder resourceFinder) {
 

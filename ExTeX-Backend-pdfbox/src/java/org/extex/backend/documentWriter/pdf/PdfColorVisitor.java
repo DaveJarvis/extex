@@ -25,7 +25,7 @@ import org.extex.color.model.CmykColor;
 import org.extex.color.model.GrayscaleColor;
 import org.extex.color.model.HsvColor;
 import org.extex.color.model.RgbColor;
-import org.extex.util.exception.GeneralException;
+import org.extex.core.exception.GeneralException;
 import org.pdfbox.pdmodel.edit.PDPageContentStream;
 
 /**

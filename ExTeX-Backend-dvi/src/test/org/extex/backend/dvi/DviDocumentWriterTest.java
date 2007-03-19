@@ -30,13 +30,16 @@ import org.extex.backend.documentWriter.SingleDocumentStream;
 import org.extex.backend.documentWriter.dvi.DviDocumentWriter;
 import org.extex.backend.documentWriter.dvi.PanicException;
 import org.extex.backend.documentWriter.exception.NoOutputStreamException;
+import org.extex.core.count.FixedCount;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.exception.GeneralException;
+import org.extex.core.glue.Glue;
+import org.extex.framework.configuration.Configuration;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
-import org.extex.interpreter.type.count.FixedCount;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.FixedDimen;
-import org.extex.interpreter.type.glue.Glue;
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.token.TokenFactory;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.node.ExplicitKernNode;
@@ -46,8 +49,6 @@ import org.extex.typesetter.type.node.MarkNode;
 import org.extex.typesetter.type.node.VerticalListNode;
 import org.extex.typesetter.type.page.Page;
 import org.extex.typesetter.type.page.PageImpl;
-import org.extex.util.exception.GeneralException;
-import org.extex.util.framework.configuration.Configuration;
 
 /**
  * JUnit tests for class <code>DviDocumentWriter</code>.
@@ -292,7 +293,7 @@ public class DviDocumentWriterTest extends TestCase {
          *
          * @return the value
          *
-         * @see org.extex.interpreter.type.count.FixedCount#getValue()
+         * @see org.extex.core.count.FixedCount#getValue()
          */
         public long getValue() {
 
@@ -300,7 +301,7 @@ public class DviDocumentWriterTest extends TestCase {
         }
 
         /**
-         * @see org.extex.interpreter.type.count.FixedCount#eq(org.extex.interpreter.type.count.FixedCount)
+         * @see org.extex.core.count.FixedCount#eq(org.extex.core.count.FixedCount)
          */
         public boolean eq(final FixedCount count) {
 
@@ -309,7 +310,7 @@ public class DviDocumentWriterTest extends TestCase {
         }
 
         /**
-         * @see org.extex.interpreter.type.count.FixedCount#ge(org.extex.interpreter.type.count.FixedCount)
+         * @see org.extex.core.count.FixedCount#ge(org.extex.core.count.FixedCount)
          */
         public boolean ge(final FixedCount count) {
 
@@ -318,7 +319,7 @@ public class DviDocumentWriterTest extends TestCase {
         }
 
         /**
-         * @see org.extex.interpreter.type.count.FixedCount#gt(org.extex.interpreter.type.count.FixedCount)
+         * @see org.extex.core.count.FixedCount#gt(org.extex.core.count.FixedCount)
          */
         public boolean gt(final FixedCount count) {
 
@@ -327,7 +328,7 @@ public class DviDocumentWriterTest extends TestCase {
         }
 
         /**
-         * @see org.extex.interpreter.type.count.FixedCount#le(org.extex.interpreter.type.count.FixedCount)
+         * @see org.extex.core.count.FixedCount#le(org.extex.core.count.FixedCount)
          */
         public boolean le(final FixedCount count) {
 
@@ -336,7 +337,7 @@ public class DviDocumentWriterTest extends TestCase {
         }
 
         /**
-         * @see org.extex.interpreter.type.count.FixedCount#lt(org.extex.interpreter.type.count.FixedCount)
+         * @see org.extex.core.count.FixedCount#lt(org.extex.core.count.FixedCount)
          */
         public boolean lt(final FixedCount count) {
 
@@ -345,7 +346,7 @@ public class DviDocumentWriterTest extends TestCase {
         }
 
         /**
-         * @see org.extex.interpreter.type.count.FixedCount#ne(org.extex.interpreter.type.count.FixedCount)
+         * @see org.extex.core.count.FixedCount#ne(org.extex.core.count.FixedCount)
          */
         public boolean ne(final FixedCount count) {
 
@@ -356,11 +357,6 @@ public class DviDocumentWriterTest extends TestCase {
         public void toString(final StringBuffer buffer) {
 
             buffer.append(toString());
-        }
-
-        public Tokens toToks(final Context context) throws InterpreterException {
-
-            return new Tokens(context, value);
         }
     }
 

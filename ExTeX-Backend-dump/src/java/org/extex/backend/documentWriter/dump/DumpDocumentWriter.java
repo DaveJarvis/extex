@@ -26,7 +26,11 @@ import org.extex.backend.documentWriter.DocumentWriter;
 import org.extex.backend.documentWriter.DocumentWriterOptions;
 import org.extex.backend.documentWriter.SingleDocumentStream;
 import org.extex.backend.documentWriter.exception.DocumentWriterException;
-import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.exception.GeneralException;
+import org.extex.framework.configuration.Configurable;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.NodeVisitor;
 import org.extex.typesetter.type.node.AdjustNode;
@@ -50,10 +54,6 @@ import org.extex.typesetter.type.node.VerticalListNode;
 import org.extex.typesetter.type.node.VirtualCharNode;
 import org.extex.typesetter.type.node.WhatsItNode;
 import org.extex.typesetter.type.page.Page;
-import org.extex.util.exception.GeneralException;
-import org.extex.util.framework.configuration.Configurable;
-import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This is an implementation of a document writer which can act both as sample
@@ -668,8 +668,8 @@ public class DumpDocumentWriter
      *
      * @throws ConfigurationException in case that something went wrong
      *
-     * @see org.extex.util.framework.configuration.Configurable#configure(
-     *      org.extex.util.framework.configuration.Configuration)
+     * @see org.extex.framework.configuration.Configurable#configure(
+     *      org.extex.framework.configuration.Configuration)
      */
     public void configure(final Configuration config) {
 

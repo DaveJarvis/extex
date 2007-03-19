@@ -23,7 +23,8 @@ package org.extex.backend.documentWriter.dvi;
 
 import java.io.PrintStream;
 
-import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.exception.GeneralException;
 import org.extex.typesetter.type.InspectableNodeVisitor;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeVisitor;
@@ -47,7 +48,6 @@ import org.extex.typesetter.type.node.SpaceNode;
 import org.extex.typesetter.type.node.VerticalListNode;
 import org.extex.typesetter.type.node.VirtualCharNode;
 import org.extex.typesetter.type.node.WhatsItNode;
-import org.extex.util.exception.GeneralException;
 
 /**
  * This is a implementation of a NodeVisitor for debugging.
