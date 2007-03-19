@@ -149,11 +149,11 @@
 
     <mkdir dir="target/classes" />
     <javac destdir="target/classes" debug="on" deprecation="false">
-      <fileset dir="src/java" includes="*.java" />
+      <fileset dir="src/main/java" includes="*.java" />
     </javac>
 
     <copy todir="target/classes">
-      <fileset dir="src/java" excludes="*.java" />
+      <fileset dir="src/main/java" excludes="*.java" />
     </copy>
   </target>
 
