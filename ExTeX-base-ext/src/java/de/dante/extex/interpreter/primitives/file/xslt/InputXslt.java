@@ -34,10 +34,10 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.resource.ResourceFinder;
 import org.extex.scanner.stream.TokenStreamFactory;
 import org.extex.typesetter.Typesetter;
 import org.extex.unit.base.file.AbstractFileCode;
-import org.extex.util.resource.ResourceFinder;
 
 import de.dante.util.xslt.Transform;
 

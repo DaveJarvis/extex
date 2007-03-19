@@ -19,12 +19,12 @@
 
 package de.dante.extex.interpreter.primitives.register.real;
 
+import org.extex.core.count.CountConvertible;
+import org.extex.core.exception.GeneralException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.Theable;
-import org.extex.interpreter.type.count.CountConvertible;
-import org.extex.util.exception.GeneralException;
 
 import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.real.RealConvertible;

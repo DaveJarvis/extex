@@ -19,10 +19,10 @@
 
 package de.dante.extex.interpreter.type.real;
 
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * This is an interface which describes the feature to be convertibe into a real.

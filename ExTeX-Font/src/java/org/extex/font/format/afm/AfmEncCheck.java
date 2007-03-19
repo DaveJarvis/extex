@@ -31,8 +31,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.extex.font.exception.FontException;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-import org.extex.util.resource.ResourceFinder;
+import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.resource.ResourceFinder;
 
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;

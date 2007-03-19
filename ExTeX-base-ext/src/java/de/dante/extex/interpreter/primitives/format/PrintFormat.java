@@ -21,6 +21,7 @@ package de.dante.extex.interpreter.primitives.format;
 
 import java.text.DecimalFormat;
 
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -30,12 +31,12 @@ import org.extex.interpreter.exception.helping.UndefinedControlSequenceException
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.Theable;
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.CatcodeException;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.ControlSequenceToken;
 import org.extex.scanner.type.token.Token;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.real.RealConvertible;
@@ -122,8 +123,12 @@ public class PrintFormat extends AbstractCode implements Theable {
         } else if (code instanceof RealConvertible) {
             Real val = ((RealConvertible) code).convertReal(context, source);
             DecimalFormat form = new DecimalFormat(pattern);
-            Tokens toks = new Tokens(context, form.format(val.getValue()));
-            return toks;
+            try {
+                return context.getTokenFactory().toTokens( //
+                    form.format(val.getValue()));
+            } catch (CatcodeException e) {
+                throw new InterpreterException(e);
+            }
         } else {
             throw new CantUseAfterException(cs.toText(),
                 printableControlSequence(context));

@@ -24,14 +24,14 @@ import java.util.logging.Logger;
 
 import junit.framework.TestCase;
 
-import org.extex.util.framework.configuration.Configurable;
-import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.configuration.ConfigurationFactory;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-import org.extex.util.resource.PropertyConfigurable;
-import org.extex.util.resource.ResourceConsumer;
-import org.extex.util.resource.ResourceFinder;
-import org.extex.util.resource.ResourceFinderFactory;
+import org.extex.framework.configuration.Configurable;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.ConfigurationFactory;
+import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.resource.PropertyConfigurable;
+import org.extex.resource.ResourceConsumer;
+import org.extex.resource.ResourceFinder;
+import org.extex.resource.ResourceFinderFactory;
 
 /**
  * Test for the font factory.

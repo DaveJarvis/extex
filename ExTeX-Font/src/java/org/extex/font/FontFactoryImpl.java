@@ -24,18 +24,18 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.WeakHashMap;
 
+import org.extex.core.StringList;
+import org.extex.core.dimen.FixedDimen;
 import org.extex.font.exception.FontException;
 import org.extex.font.format.NullExtexFont;
 import org.extex.font.manager.BackendFontManagerList;
-import org.extex.interpreter.type.dimen.FixedDimen;
-import org.extex.type.StringList;
-import org.extex.util.framework.AbstractFactory;
-import org.extex.util.framework.configuration.Configurable;
-import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-import org.extex.util.resource.PropertyConfigurable;
-import org.extex.util.resource.ResourceConsumer;
-import org.extex.util.resource.ResourceFinder;
+import org.extex.framework.AbstractFactory;
+import org.extex.framework.configuration.Configurable;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.resource.PropertyConfigurable;
+import org.extex.resource.ResourceConsumer;
+import org.extex.resource.ResourceFinder;
 
 /**
  * Factory to load a font.
@@ -93,8 +93,8 @@ public class FontFactoryImpl
     }
 
     /**
-     * @see org.extex.util.framework.configuration.Configurable#configure(
-     *      org.extex.util.framework.configuration.Configuration)
+     * @see org.extex.framework.configuration.Configurable#configure(
+     *      org.extex.framework.configuration.Configuration)
      */
     public void configure(final Configuration config)
             throws ConfigurationException {
@@ -113,7 +113,7 @@ public class FontFactoryImpl
 
     /**
      * @see org.extex.font.CoreFontFactory#getFontKey(java.lang.String,
-     *      org.extex.interpreter.type.dimen.FixedDimen)
+     *      org.extex.core.dimen.FixedDimen)
      */
     public FontKey getFontKey(final String fontName, final FixedDimen size) {
 
@@ -123,7 +123,7 @@ public class FontFactoryImpl
 
     /**
      * @see org.extex.font.CoreFontFactory#getFontKey(java.lang.String,
-     *      org.extex.interpreter.type.dimen.FixedDimen, java.util.Map)
+     *      org.extex.core.dimen.FixedDimen, java.util.Map)
      */
     public FontKey getFontKey(final String fontName, final FixedDimen size,
             final Map map) {
@@ -231,7 +231,7 @@ public class FontFactoryImpl
     }
 
     /**
-     * @see org.extex.util.resource.PropertyConfigurable#setProperties(java.util.Properties)
+     * @see org.extex.resource.PropertyConfigurable#setProperties(java.util.Properties)
      */
     public void setProperties(final Properties properties) {
 
@@ -239,8 +239,8 @@ public class FontFactoryImpl
     }
 
     /**
-     * @see org.extex.util.resource.ResourceConsumer#setResourceFinder(
-     *      org.extex.util.resource.ResourceFinder)
+     * @see org.extex.resource.ResourceConsumer#setResourceFinder(
+     *      org.extex.resource.ResourceFinder)
      */
     public void setResourceFinder(final ResourceFinder finder) {
 
@@ -249,7 +249,7 @@ public class FontFactoryImpl
     }
 
     /**
-     * @see org.extex.util.resource.ResourceFinder#enableTracing(boolean)
+     * @see org.extex.resource.ResourceFinder#enableTracing(boolean)
      */
     public void enableTracing(final boolean flag) {
 
@@ -257,7 +257,7 @@ public class FontFactoryImpl
     }
 
     /**
-     * @see org.extex.util.resource.ResourceFinder#findResource(java.lang.String,
+     * @see org.extex.resource.ResourceFinder#findResource(java.lang.String,
      *      java.lang.String)
      */
     public InputStream findResource(final String name, final String type)
@@ -268,7 +268,7 @@ public class FontFactoryImpl
 
     /**
      * @see org.extex.font.CoreFontFactory#getFontKey(org.extex.font.FontKey,
-     *      org.extex.interpreter.type.dimen.FixedDimen)
+     *      org.extex.core.dimen.FixedDimen)
      */
     public FontKey getFontKey(final FontKey fontKey, final FixedDimen size) {
 
@@ -276,7 +276,7 @@ public class FontFactoryImpl
     }
 
     /**
-     * @see org.extex.font.CoreFontFactory#createManager(org.extex.type.StringList)
+     * @see org.extex.font.CoreFontFactory#createManager(org.extex.core.StringList)
      */
     public BackendFontManager createManager(final StringList fontTypes)
             throws ConfigurationException {

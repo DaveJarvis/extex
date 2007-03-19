@@ -19,13 +19,13 @@
 
 package org.extex.interpreter.type.font;
 
+import org.extex.core.UnicodeChar;
+import org.extex.core.dimen.Dimen;
 import org.extex.font.Glyph;
 import org.extex.font.type.InternalFount;
 import org.extex.font.type.ModifiableFount;
 import org.extex.font.type.VirtualFount;
 import org.extex.interpreter.context.tc.TypesettingContext;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.type.UnicodeChar;
 import org.extex.typesetter.type.node.VirtualCharNode;
 
 
@@ -54,7 +54,7 @@ public class VirtualFontImpl implements VirtualFount {
     /**
      * @see org.extex.font.type.VirtualFount#getVirtualCharNode(
      *      org.extex.interpreter.context.tc.TypesettingContext,
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar)
      */
     public VirtualCharNode getVirtualCharNode(final TypesettingContext context,
             final UnicodeChar uc) {

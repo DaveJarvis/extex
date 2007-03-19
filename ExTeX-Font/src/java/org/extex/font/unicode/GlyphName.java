@@ -26,7 +26,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Properties;
 
-import org.extex.type.UnicodeChar;
+import org.extex.core.UnicodeChar;
 
 /**
  * This class manage the correlation between the glyph name and

@@ -26,7 +26,7 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 
 import org.extex.font.format.afm.AfmParser;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.util.xml.XMLStreamWriter;
 
 

@@ -23,8 +23,8 @@ import java.io.IOException;
 
 import org.extex.font.exception.FontException;
 import org.extex.format.dvi.exception.DviException;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.util.file.random.RandomAccessR;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 
 /**

@@ -21,6 +21,9 @@ package de.dante.extex.interpreter.type.real;
 
 import java.io.Serializable;
 
+import org.extex.core.count.CountConvertible;
+import org.extex.core.dimen.DimenConvertible;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterArithmeticException;
@@ -28,12 +31,9 @@ import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.InterpreterMissingNumberException;
 import org.extex.interpreter.exception.InterpreterNumberFormatException;
 import org.extex.interpreter.type.Code;
-import org.extex.interpreter.type.count.CountConvertible;
-import org.extex.interpreter.type.dimen.DimenConvertible;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.ControlSequenceToken;
 import org.extex.scanner.type.token.Token;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 /**
  * Real (with a double value)

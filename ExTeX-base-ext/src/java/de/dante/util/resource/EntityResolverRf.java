@@ -31,8 +31,8 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-import org.extex.util.resource.ResourceFinder;
+import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.resource.ResourceFinder;
 import org.xml.sax.EntityResolver;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;

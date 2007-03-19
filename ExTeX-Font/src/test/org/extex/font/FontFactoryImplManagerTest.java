@@ -21,8 +21,8 @@ package org.extex.font;
 
 import java.util.Iterator;
 
-import org.extex.type.StringList;
-import org.extex.type.UnicodeChar;
+import org.extex.core.StringList;
+import org.extex.core.UnicodeChar;
 
 /**
  * Test for the font factory (manager).

@@ -19,9 +19,9 @@
 
 package de.dante.extex.unicodeFont.type;
 
+import org.extex.core.UnicodeChar;
+import org.extex.core.dimen.Dimen;
 import org.extex.font.BaseFont;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.type.UnicodeChar;
 
 /**
  * Interface for the backend font.

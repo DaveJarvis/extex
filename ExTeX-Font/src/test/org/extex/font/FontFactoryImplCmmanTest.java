@@ -19,9 +19,9 @@
 
 package org.extex.font;
 
+import org.extex.core.UnicodeChar;
 import org.extex.font.exception.FontException;
-import org.extex.type.UnicodeChar;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
  * Test for the font factory (with font logosl9).

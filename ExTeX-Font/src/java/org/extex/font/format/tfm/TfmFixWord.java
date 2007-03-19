@@ -23,8 +23,8 @@ import java.io.Serializable;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
 
 /**
  * TFM-FixWord.

@@ -30,12 +30,12 @@ import java.util.Properties;
 import junit.framework.TestCase;
 
 import org.extex.font.exception.FontMapNotFoundException;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.ConfigurationFactory;
+import org.extex.resource.ResourceFinder;
+import org.extex.resource.ResourceFinderFactory;
 import org.extex.util.file.random.RandomAccessInputFile;
 import org.extex.util.file.random.RandomAccessR;
-import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.configuration.ConfigurationFactory;
-import org.extex.util.resource.ResourceFinder;
-import org.extex.util.resource.ResourceFinderFactory;
 
 import de.dante.extex.unicodeFont.format.tex.psfontmap.enc.EncFactory;
 

@@ -48,7 +48,7 @@ import org.extex.font.format.tfm.TfmParamArray;
 import org.extex.font.format.tfm.TfmReader;
 import org.extex.font.format.tfm.TfmVisitor;
 import org.extex.font.format.tfm.TfmWidthArray;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.configuration.exception.ConfigurationException;
 
 import de.dante.util.font.AbstractFontUtil;
 

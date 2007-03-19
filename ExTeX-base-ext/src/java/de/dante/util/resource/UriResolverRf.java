@@ -26,8 +26,8 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.URIResolver;
 import javax.xml.transform.stream.StreamSource;
 
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-import org.extex.util.resource.ResourceFinder;
+import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.resource.ResourceFinder;
 
 
 /**

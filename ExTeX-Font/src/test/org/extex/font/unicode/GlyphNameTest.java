@@ -19,7 +19,7 @@
 
 package org.extex.font.unicode;
 
-import org.extex.type.UnicodeChar;
+import org.extex.core.UnicodeChar;
 
 import junit.framework.TestCase;
 
@@ -52,7 +52,7 @@ public class GlyphNameTest extends TestCase {
     }
 
     /**
-     * Test method for {@link org.extex.font.unicode.GlyphName#getGlyphname(org.extex.type.UnicodeChar)}.
+     * Test method for {@link org.extex.font.unicode.GlyphName#getGlyphname(org.extex.core.UnicodeChar)}.
      */
     public void testGetGlyphname() throws Exception {
 

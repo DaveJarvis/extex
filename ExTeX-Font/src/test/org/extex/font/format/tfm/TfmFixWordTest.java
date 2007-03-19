@@ -21,7 +21,7 @@ package org.extex.font.format.tfm;
 
 import junit.framework.TestCase;
 
-import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.core.dimen.Dimen;
 
 /**
  * Test for TfmFixWord.
@@ -32,7 +32,7 @@ import org.extex.interpreter.type.dimen.Dimen;
 public class TfmFixWordTest extends TestCase {
 
     /**
-     * Test method for {@link org.extex.font.format.tfm.TfmFixWord#toDimen(org.extex.interpreter.type.dimen.FixedDimen)}.
+     * Test method for {@link org.extex.font.format.tfm.TfmFixWord#toDimen(org.extex.core.dimen.FixedDimen)}.
      */
     public void testToDimen01() {
 
@@ -46,7 +46,7 @@ public class TfmFixWordTest extends TestCase {
     }
 
     /**
-     * Test method for {@link org.extex.font.format.tfm.TfmFixWord#toDimen(org.extex.interpreter.type.dimen.FixedDimen)}.
+     * Test method for {@link org.extex.font.format.tfm.TfmFixWord#toDimen(org.extex.core.dimen.FixedDimen)}.
      */
     public void testToDimen02() {
 
@@ -56,7 +56,7 @@ public class TfmFixWordTest extends TestCase {
     }
 
     /**
-     * Test method for {@link org.extex.font.format.tfm.TfmFixWord#toDimen(org.extex.interpreter.type.dimen.FixedDimen)}.
+     * Test method for {@link org.extex.font.format.tfm.TfmFixWord#toDimen(org.extex.core.dimen.FixedDimen)}.
      */
     public void testToDimen03() {
 
@@ -66,7 +66,7 @@ public class TfmFixWordTest extends TestCase {
     }
 
     /**
-     * Test method for {@link org.extex.font.format.tfm.TfmFixWord#toDimen(org.extex.interpreter.type.dimen.FixedDimen)}.
+     * Test method for {@link org.extex.font.format.tfm.TfmFixWord#toDimen(org.extex.core.dimen.FixedDimen)}.
      */
     public void testToDimen04() {
 
@@ -76,7 +76,7 @@ public class TfmFixWordTest extends TestCase {
     }
 
     /**
-     * Test method for {@link org.extex.font.format.tfm.TfmFixWord#toDimen(org.extex.interpreter.type.dimen.FixedDimen)}.
+     * Test method for {@link org.extex.font.format.tfm.TfmFixWord#toDimen(org.extex.core.dimen.FixedDimen)}.
      */
     public void testToDimen05() {
 

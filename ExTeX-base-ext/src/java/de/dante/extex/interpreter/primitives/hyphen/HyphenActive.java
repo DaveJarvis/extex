@@ -19,19 +19,19 @@
 
 package de.dante.extex.interpreter.primitives.hyphen;
 
+import org.extex.core.count.CountParser;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.Theable;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.tokens.Tokens;
 import org.extex.language.Language;
 import org.extex.language.hyphenation.exception.HyphenationException;
+import org.extex.scanner.type.CatcodeException;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.unit.tex.hyphen.AbstractHyphenationCode;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-
 
 /**
  * This class provides an implementation for the primitive <code>\hyphenactive</code>.
@@ -82,7 +82,8 @@ public class HyphenActive extends AbstractHyphenationCode implements Theable {
 
         Language table = getHyphenationTable(context);
         source.getOptionalEquals(context);
-        boolean active = (Count.scanInteger(context, source, typesetter) == 0);
+        boolean active =
+                (CountParser.scanInteger(context, source, typesetter) == 0);
         try {
             table.setHyphenActive(active);
         } catch (HyphenationException e) {
@@ -94,18 +95,32 @@ public class HyphenActive extends AbstractHyphenationCode implements Theable {
     }
 
     /**
-     * Return the <code>Tokens</code> to show the content with <code>\the</code>.
+     * This method is the getter for the description of the primitive.
+     *
+     * @param context the interpreter context
+     * @param source the source for further tokens to qualify the request
+     * @param typesetter the typesetter to use
+     *
+     * @return the description of the primitive as list of Tokens
+     *
+     * @throws InterpreterException in case of an error
+     * @throws CatcodeException in case of an error in token creation
+     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.interpreter.type.Theable#the(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, Typesetter)
+     *      org.extex.interpreter.TokenSource,
+     *      org.extex.typesetter.Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+            final Typesetter typesetter)
+            throws InterpreterException,
+                CatcodeException {
 
         Language table = getHyphenationTable(context);
         try {
-            return new Tokens(context, (table.isHyphenActive() ? "0" : "1"));
+            return context.getTokenFactory().toTokens( //
+                (table.isHyphenActive() ? "0" : "1"));
         } catch (HyphenationException e) {
             if (e.getCause() instanceof ConfigurationException) {
                 throw new InterpreterException(e.getCause());

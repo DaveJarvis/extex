@@ -18,7 +18,7 @@
   -
   -->
 <Resource>
-  <Finder class="org.extex.util.resource.FileFinder"
+  <Finder class="org.extex.resource.FileFinder"
           default="default">
     <u2t>
       <extension>.u2t</extension>

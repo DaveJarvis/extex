@@ -27,14 +27,14 @@ import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.extex.main.logging.LogFormatter;
-import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.configuration.ConfigurationFactory;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-import org.extex.util.framework.i18n.Localizer;
-import org.extex.util.framework.i18n.LocalizerFactory;
-import org.extex.util.resource.ResourceFinder;
-import org.extex.util.resource.ResourceFinderFactory;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.ConfigurationFactory;
+import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
+import org.extex.logging.LogFormatter;
+import org.extex.resource.ResourceFinder;
+import org.extex.resource.ResourceFinderFactory;
 
 
 /**

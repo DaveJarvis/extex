@@ -21,7 +21,7 @@ package de.dante.extex.unicodeFont;
 
 import org.extex.font.FontKey;
 import org.extex.font.exception.FontException;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.unicodeFont.type.TexFont;
 

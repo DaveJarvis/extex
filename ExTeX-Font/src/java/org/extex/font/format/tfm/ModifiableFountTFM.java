@@ -22,18 +22,18 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.extex.core.UnicodeChar;
+import org.extex.core.count.Count;
+import org.extex.core.count.FixedCount;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.glue.FixedGlue;
+import org.extex.core.glue.Glue;
 import org.extex.font.FontByteArray;
 import org.extex.font.FontKey;
 import org.extex.font.Glyph;
 import org.extex.font.GlyphImpl;
 import org.extex.font.type.ModifiableFount;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.count.FixedCount;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.FixedDimen;
-import org.extex.interpreter.type.glue.FixedGlue;
-import org.extex.interpreter.type.glue.Glue;
-import org.extex.type.UnicodeChar;
 
 /**
  * Adapter for a ModifiableFount for TFM.
@@ -152,7 +152,7 @@ public class ModifiableFountTFM implements ModifiableFount, Serializable {
     /**
      * @see org.extex.font.type.ModifiableFount#setFontDimen(
      *      java.lang.String,
-     *      org.extex.interpreter.type.dimen.Dimen)
+     *      org.extex.core.dimen.Dimen)
      */
     public void setFontDimen(final String key, final Dimen value) {
 
@@ -165,7 +165,7 @@ public class ModifiableFountTFM implements ModifiableFount, Serializable {
     private Map glyphmap = new HashMap();
 
     /**
-     * @see org.extex.font.type.InternalFount#getGlyph(org.extex.type.UnicodeChar)
+     * @see org.extex.font.type.InternalFount#getGlyph(org.extex.core.UnicodeChar)
      */
     public Glyph getGlyph(final UnicodeChar c) {
 

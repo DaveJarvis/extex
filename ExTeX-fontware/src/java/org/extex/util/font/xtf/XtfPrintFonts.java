@@ -31,7 +31,7 @@ import java.util.List;
 import org.extex.font.format.xtf.TtfTableCMAP;
 import org.extex.font.format.xtf.TtfTableNAME;
 import org.extex.font.format.xtf.XtfReader;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.configuration.exception.ConfigurationException;
 
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;

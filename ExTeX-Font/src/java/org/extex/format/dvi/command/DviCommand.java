@@ -28,8 +28,8 @@ import org.extex.format.dvi.exception.DviException;
 import org.extex.format.dvi.exception.DviPostNotFoundException;
 import org.extex.format.dvi.exception.DviPreNotFoundException;
 import org.extex.format.dvi.exception.DviUndefinedOpcodeException;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.util.file.random.RandomAccessR;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 
 /**

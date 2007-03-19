@@ -26,14 +26,14 @@ import java.util.logging.Logger;
 
 import junit.framework.TestCase;
 
-import org.extex.interpreter.type.dimen.Dimen;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.glue.Glue;
+import org.extex.core.glue.GlueComponent;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.ConfigurationFactory;
 import org.extex.interpreter.type.font.Font;
-import org.extex.interpreter.type.glue.Glue;
-import org.extex.interpreter.type.glue.GlueComponent;
-import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.configuration.ConfigurationFactory;
-import org.extex.util.resource.ResourceFinder;
-import org.extex.util.resource.ResourceFinderFactory;
+import org.extex.resource.ResourceFinder;
+import org.extex.resource.ResourceFinderFactory;
 
 /**
  * Test the font-system

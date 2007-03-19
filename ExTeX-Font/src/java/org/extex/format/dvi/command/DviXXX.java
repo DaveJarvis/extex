@@ -19,7 +19,7 @@
 
 package org.extex.format.dvi.command;
 
-import org.extex.type.UnicodeChar;
+import org.extex.core.UnicodeChar;
 
 /**
  * DVI: xxx

@@ -24,6 +24,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
 
+import org.extex.core.UnicodeChar;
+import org.extex.core.count.Count;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.glue.Glue;
 import org.extex.font.FontFactory;
 import org.extex.font.FountKey;
 import org.extex.font.exception.FontException;
@@ -53,15 +58,10 @@ import org.extex.format.dvi.exception.DviException;
 import org.extex.format.dvi.exception.DviFontNotFoundException;
 import org.extex.format.dvi.exception.DviGlyphNotFoundException;
 import org.extex.format.dvi.exception.DviMissingFontException;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.type.font.Font;
-import org.extex.interpreter.type.glue.Glue;
-import org.extex.type.UnicodeChar;
 import org.extex.util.Unit;
 import org.extex.util.file.random.RandomAccessR;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.jdom.Element;
 
 /**

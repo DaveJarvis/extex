@@ -16,23 +16,23 @@
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
+
 package de.dante.extex.unicodeFont;
 
 import java.util.Properties;
 import java.util.logging.Logger;
 
 import org.extex.font.FontFactory;
-import org.extex.interpreter.interaction.Interaction;
-import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.configuration.ConfigurationFactory;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-import org.extex.util.resource.InteractionProvider;
-import org.extex.util.resource.ResourceFinder;
-import org.extex.util.resource.ResourceFinderFactory;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.ConfigurationFactory;
+import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.resource.InteractionIndicator;
+import org.extex.resource.ResourceFinder;
+import org.extex.resource.ResourceFinderFactory;
 
 /**
  * ...
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -42,52 +42,66 @@ public final class Util {
      * Creates a new object.
      */
     private Util() {
+
     }
 
     /**
      * ...
-     * 
+     *
      * @return ...
-     * 
+     *
      * @throws ConfigurationException ...
      */
     public static ResourceFinder makeResourceFinder()
             throws ConfigurationException {
 
         Logger logger = Logger.getLogger(Util.class.getName());
-        Configuration config = new ConfigurationFactory()
-                .newInstance("config/path/fontTestFileFinder.xml");
+        Configuration config =
+                new ConfigurationFactory()
+                    .newInstance("config/path/fontTestFileFinder.xml");
         Properties properties = System.getProperties();
         properties.setProperty("extex.fonts", "../ExTeX-BaseFont/src/font");
 
-        ResourceFinder finder = new ResourceFinderFactory()
-                .createResourceFinder(config, logger, properties,
-                                      new InteractionProvider() {
-                                          public Interaction getInteraction() {
-                                              return Interaction.BATCHMODE;
-                                          }
-                                      });
+        ResourceFinder finder =
+                new ResourceFinderFactory().createResourceFinder(config,
+                    logger, properties, new InteractionIndicator() {
+
+                        /**
+                         * Getter for the interaction mode.
+                         *
+                         * @return <code>true</code> iff interaction with the
+                         *         user is desirable
+                         *
+                         * @see org.extex.resource.InteractionIndicator#isInteractive()
+                         */
+                        public boolean isInteractive() {
+
+                            return false;
+                        }
+                    });
 
         return finder;
     }
 
     /**
      * ...
-     * 
+     *
      * @return ...
      *
-     * @throws Exception ... 
+     * @throws Exception ...
      */
     public static FontFactory makeFontFactory() throws Exception {
 
-        Configuration config = new ConfigurationFactory()
-                .newInstance("config/extex-test-font.xml").getConfiguration("Fonts");
+        Configuration config =
+                new ConfigurationFactory().newInstance(
+                    "config/extex-test-font.xml").getConfiguration("Fonts");
         String fontClass = config.getAttribute("class");
 
-        return (FontFactory) (Class.forName(fontClass)
-                .getConstructor(new Class[]{Configuration.class, //
-                        ResourceFinder.class}).newInstance(new Object[]{config,
+        return (FontFactory) (Class.forName(fontClass).getConstructor(
+            new Class[]{Configuration.class, //
+                    ResourceFinder.class}).newInstance(new Object[]{config,
                 makeResourceFinder()}));
 
     }
+
 }

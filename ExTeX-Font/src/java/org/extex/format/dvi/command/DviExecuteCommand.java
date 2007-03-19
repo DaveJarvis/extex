@@ -21,7 +21,7 @@ package org.extex.format.dvi.command;
 
 import org.extex.font.exception.FontException;
 import org.extex.format.dvi.exception.DviException;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.configuration.exception.ConfigurationException;
 
 
 /**

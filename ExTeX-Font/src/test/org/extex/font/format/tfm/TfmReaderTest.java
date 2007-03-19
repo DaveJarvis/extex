@@ -21,8 +21,8 @@ package org.extex.font.format.tfm;
 
 import java.io.FileInputStream;
 
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
 
 import junit.framework.TestCase;
 

@@ -23,13 +23,13 @@ import java.util.Iterator;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
+import org.extex.core.Unicode;
+import org.extex.core.UnicodeChar;
 import org.extex.font.BackendCharacter;
 import org.extex.font.BackendFont;
 import org.extex.font.BackendFontFactory;
 import org.extex.font.BackendFontManager;
 import org.extex.font.FontKey;
-import org.extex.type.UnicodeChar;
-import org.extex.unicode.Unicode;
 
 /**
  * Backend font manager for a tfm font.
@@ -102,7 +102,7 @@ public class TfmBackendFontManager implements BackendFontManager {
     }
 
     /**
-     * @see org.extex.font.BackendFontManager#recognize(org.extex.font.FontKey, org.extex.type.UnicodeChar)
+     * @see org.extex.font.BackendFontManager#recognize(org.extex.font.FontKey, org.extex.core.UnicodeChar)
      */
     public boolean recognize(final FontKey fontKey, final UnicodeChar uc) {
 

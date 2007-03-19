@@ -49,8 +49,8 @@ import org.extex.format.dvi.command.DviXXX;
 import org.extex.format.dvi.command.DviY;
 import org.extex.format.dvi.command.DviZ;
 import org.extex.format.dvi.exception.DviException;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.util.file.random.RandomAccessR;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 
 /**

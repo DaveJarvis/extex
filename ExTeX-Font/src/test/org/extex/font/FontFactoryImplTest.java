@@ -21,10 +21,10 @@ package org.extex.font;
 
 import java.util.HashMap;
 
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
 import org.extex.font.exception.CorruptFontException;
 import org.extex.font.format.NullExtexFont;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.FixedDimen;
 
 /**
  * Test for the font factory.

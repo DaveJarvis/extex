@@ -21,12 +21,12 @@ package de.dante.extex.interpreter.context.impl.extension;
 
 import java.io.Serializable;
 
+import org.extex.core.exception.GeneralException;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterExtensionException;
 import org.extex.interpreter.max.context.ContextImpl;
-import org.extex.util.exception.GeneralException;
-import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.interpreter.context.ContextExtension;
 import de.dante.extex.interpreter.type.bool.Bool;

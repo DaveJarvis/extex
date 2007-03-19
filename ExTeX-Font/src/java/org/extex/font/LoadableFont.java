@@ -22,7 +22,7 @@ package org.extex.font;
 import java.io.InputStream;
 
 import org.extex.font.exception.CorruptFontException;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
  * Interface for font which can be loaded from an external resource.

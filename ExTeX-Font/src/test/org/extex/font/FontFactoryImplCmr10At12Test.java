@@ -19,12 +19,12 @@
 
 package org.extex.font;
 
+import org.extex.core.count.FixedCount;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
 import org.extex.font.exception.FontException;
 import org.extex.font.type.other.NullFont;
-import org.extex.interpreter.type.count.FixedCount;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.FixedDimen;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
  * Test for the font factory.

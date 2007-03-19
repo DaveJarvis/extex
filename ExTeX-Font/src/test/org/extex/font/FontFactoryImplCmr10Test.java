@@ -19,16 +19,16 @@
 
 package org.extex.font;
 
+import org.extex.core.UnicodeChar;
+import org.extex.core.count.Count;
+import org.extex.core.count.FixedCount;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.glue.FixedGlue;
+import org.extex.core.glue.Glue;
 import org.extex.font.exception.FontException;
 import org.extex.font.type.other.NullFont;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.count.FixedCount;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.FixedDimen;
-import org.extex.interpreter.type.glue.FixedGlue;
-import org.extex.interpreter.type.glue.Glue;
-import org.extex.type.UnicodeChar;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
  * Test for the font factory (cmr10).

@@ -23,11 +23,11 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.extex.interpreter.Tokenizer;
+import org.extex.core.exception.GeneralException;
 import org.extex.interpreter.exception.InterpreterExtensionException;
 import org.extex.interpreter.max.context.Group;
 import org.extex.interpreter.max.context.GroupImpl;
-import org.extex.util.exception.GeneralException;
+import org.extex.scanner.Tokenizer;
 
 import de.dante.extex.interpreter.type.bool.Bool;
 import de.dante.extex.interpreter.type.hash.toks.HashToks;

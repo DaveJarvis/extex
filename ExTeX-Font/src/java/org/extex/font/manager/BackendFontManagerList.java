@@ -25,12 +25,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.extex.core.UnicodeChar;
 import org.extex.font.BackendCharacter;
 import org.extex.font.BackendFont;
 import org.extex.font.BackendFontFactory;
 import org.extex.font.BackendFontManager;
 import org.extex.font.FontKey;
-import org.extex.type.UnicodeChar;
 
 /**
  * A list of backend managers.
@@ -194,7 +194,7 @@ public class BackendFontManagerList implements BackendFontManager {
 
     /**
      * @see org.extex.font.BackendFontManager#recognize(org.extex.font.FontKey,
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar)
      */
     public boolean recognize(final FontKey fontKey, final UnicodeChar uc) {
 

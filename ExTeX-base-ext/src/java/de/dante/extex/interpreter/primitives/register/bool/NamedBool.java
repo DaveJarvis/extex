@@ -19,6 +19,7 @@
 
 package de.dante.extex.interpreter.primitives.register.bool;
 
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -26,9 +27,9 @@ import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.InterpreterExtensionException;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.Theable;
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.CatcodeException;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.interpreter.context.ContextExtension;
 import de.dante.extex.interpreter.type.bool.Bool;
@@ -136,18 +137,33 @@ public class NamedBool extends AbstractAssignment
     }
 
     /**
+     * This method is the getter for the description of the primitive.
+     *
+     * @param context the interpreter context
+     * @param source the source for further tokens to qualify the request
+     * @param typesetter the typesetter to use
+     *
+     * @return the description of the primitive as list of Tokens
+     *
+     * @throws InterpreterException in case of an error
+     * @throws CatcodeException in case of an error in token creation
+     * @throws ConfigurationException in case of an configuration error
+     *
      * @see org.extex.interpreter.type.Theable#the(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, Typesetter)
+     *      org.extex.interpreter.TokenSource,
+     *      org.extex.typesetter.Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+            final Typesetter typesetter)
+            throws InterpreterException,
+                CatcodeException {
 
         if (context instanceof ContextExtension) {
             ContextExtension contextextex = (ContextExtension) context;
             String key = getKey(context, source);
             String s = contextextex.getBool(key).toString();
-            return new Tokens(context, s);
+            return context.getTokenFactory().toTokens(s);
         }
         throw new InterpreterExtensionException();
     }
@@ -156,7 +172,7 @@ public class NamedBool extends AbstractAssignment
      * Return the key (the name of the primitive) for the register.
      *
      * @param context   the context
-     * @param source    the tokensource
+     * @param source    the token source
      * @return the key
      * @throws InterpreterException in case of an error
      */

@@ -31,18 +31,18 @@ import java.util.Properties;
 
 import junit.framework.TestCase;
 
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.ConfigurationFactory;
+import org.extex.framework.configuration.exception.ConfigurationClassNotFoundException;
+import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.configuration.exception.ConfigurationInstantiationException;
+import org.extex.framework.configuration.exception.ConfigurationMissingAttributeException;
+import org.extex.framework.configuration.exception.ConfigurationNoSuchMethodException;
+import org.extex.resource.PropertyConfigurable;
+import org.extex.resource.ResourceFinder;
+import org.extex.resource.ResourceFinderFactory;
 import org.extex.util.file.random.RandomAccessInputFile;
 import org.extex.util.file.random.RandomAccessR;
-import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.configuration.ConfigurationFactory;
-import org.extex.util.framework.configuration.exception.ConfigurationClassNotFoundException;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-import org.extex.util.framework.configuration.exception.ConfigurationInstantiationException;
-import org.extex.util.framework.configuration.exception.ConfigurationMissingAttributeException;
-import org.extex.util.framework.configuration.exception.ConfigurationNoSuchMethodException;
-import org.extex.util.resource.PropertyConfigurable;
-import org.extex.util.resource.ResourceFinder;
-import org.extex.util.resource.ResourceFinderFactory;
 
 /**
  * Test the vftovp class.

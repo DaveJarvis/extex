@@ -19,14 +19,14 @@
 
 package org.extex.typesetter.listMaker.math;
 
+import org.extex.core.UnicodeChar;
+import org.extex.core.count.FixedCount;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.glue.FixedGlue;
 import org.extex.font.FontByteArray;
 import org.extex.font.FontKey;
-import org.extex.interpreter.type.count.FixedCount;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.FixedDimen;
 import org.extex.interpreter.type.font.Font;
-import org.extex.interpreter.type.glue.FixedGlue;
-import org.extex.type.UnicodeChar;
 
 /**
  * This class encapsulates a font and provides access to the font dimens with
@@ -103,7 +103,7 @@ public class MathFont implements Font {
      * @return the depth of the character
      *
      * @see org.extex.interpreter.type.font.Font#getDepth(
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar)
      */
     public FixedGlue getDepth(final UnicodeChar uc) {
 
@@ -130,7 +130,7 @@ public class MathFont implements Font {
      * @return the ef code
      *
      * @see org.extex.interpreter.type.font.Font#getEfCode(
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar)
      */
     public long getEfCode(final UnicodeChar uc) {
 
@@ -218,7 +218,7 @@ public class MathFont implements Font {
      * @return the height of the character
      *
      * @see org.extex.interpreter.type.font.Font#getHeight(
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar)
      */
     public FixedGlue getHeight(final UnicodeChar uc) {
 
@@ -245,7 +245,7 @@ public class MathFont implements Font {
      * @return the italic correction of the character
      *
      * @see org.extex.interpreter.type.font.Font#getItalicCorrection(
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar)
      */
     public FixedDimen getItalicCorrection(final UnicodeChar uc) {
 
@@ -261,7 +261,7 @@ public class MathFont implements Font {
      * @return the kerning between two characters
      *
      * @see org.extex.interpreter.type.font.Font#getKerning(
-     *      org.extex.type.UnicodeChar, org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar, org.extex.core.UnicodeChar)
      */
     public FixedDimen getKerning(final UnicodeChar uc1, final UnicodeChar uc2) {
 
@@ -277,7 +277,7 @@ public class MathFont implements Font {
      * @return Returns the ligature for two characters
      *
      * @see org.extex.interpreter.type.font.Font#getLigature(
-     *      org.extex.type.UnicodeChar, org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar, org.extex.core.UnicodeChar)
      */
     public UnicodeChar getLigature(final UnicodeChar uc1, final UnicodeChar uc2) {
 
@@ -328,7 +328,7 @@ public class MathFont implements Font {
      * @return the width of the character
      *
      * @see org.extex.interpreter.type.font.Font#getWidth(
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar)
      */
     public FixedGlue getWidth(final UnicodeChar uc) {
 
@@ -343,7 +343,7 @@ public class MathFont implements Font {
      * @return <code>true</code> iff the glyph is present
      *
      * @see org.extex.interpreter.type.font.Font#hasGlyph(
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar)
      */
     public boolean hasGlyph(final UnicodeChar uc) {
 
@@ -359,7 +359,7 @@ public class MathFont implements Font {
      * @param code the associated code
      *
      * @see org.extex.interpreter.type.font.Font#setEfCode(
-     *      org.extex.type.UnicodeChar, long)
+     *      org.extex.core.UnicodeChar, long)
      */
     public void setEfCode(final UnicodeChar uc, final long code) {
 
@@ -385,7 +385,7 @@ public class MathFont implements Font {
      * @param hyphen the hyphen character
      *
      * @see org.extex.interpreter.type.font.Font#setHyphenChar(
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar)
      */
     public void setHyphenChar(final UnicodeChar hyphen) {
 
@@ -398,7 +398,7 @@ public class MathFont implements Font {
      * @param skew the skew character
      *
      * @see org.extex.interpreter.type.font.Font#setSkewChar(
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar)
      */
     public void setSkewChar(final UnicodeChar skew) {
 

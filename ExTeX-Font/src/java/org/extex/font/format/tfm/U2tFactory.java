@@ -28,9 +28,9 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.WeakHashMap;
 
-import org.extex.type.UnicodeChar;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-import org.extex.util.resource.ResourceFinder;
+import org.extex.core.UnicodeChar;
+import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.resource.ResourceFinder;
 
 /**
  * Factory for the Unicode to tex font mapping.

@@ -35,12 +35,12 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
+import org.extex.core.UnicodeChar;
 import org.extex.font.FontKeyFactory;
 import org.extex.font.exception.FontException;
 import org.extex.font.format.tfm.TfmReader;
 import org.extex.font.unicode.GlyphName;
-import org.extex.type.UnicodeChar;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.util.xml.XMLStreamWriter;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;

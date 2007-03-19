@@ -24,20 +24,20 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.extex.core.Unicode;
+import org.extex.core.UnicodeChar;
+import org.extex.core.count.Count;
+import org.extex.core.count.FixedCount;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.glue.FixedGlue;
+import org.extex.core.glue.Glue;
 import org.extex.font.CoreFontFactory;
 import org.extex.font.FontKey;
 import org.extex.font.LoadableFont;
 import org.extex.font.exception.CorruptFontException;
 import org.extex.font.exception.CorruptedTfmFontMappingException;
-import org.extex.interpreter.type.count.Count;
-import org.extex.interpreter.type.count.FixedCount;
-import org.extex.interpreter.type.dimen.Dimen;
-import org.extex.interpreter.type.dimen.FixedDimen;
-import org.extex.interpreter.type.glue.FixedGlue;
-import org.extex.interpreter.type.glue.Glue;
-import org.extex.type.UnicodeChar;
-import org.extex.unicode.Unicode;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
  * Class to load tfm fonts.
@@ -92,7 +92,7 @@ public class LoadableTfmFont implements LoadableFont {
     }
 
     /**
-     * @see org.extex.font.ExtexFont#getDepth(org.extex.type.UnicodeChar)
+     * @see org.extex.font.ExtexFont#getDepth(org.extex.core.UnicodeChar)
      */
     public FixedGlue getDepth(final UnicodeChar uc) {
 
@@ -156,7 +156,7 @@ public class LoadableTfmFont implements LoadableFont {
     }
 
     /**
-     * @see org.extex.font.ExtexFont#getHeight(org.extex.type.UnicodeChar)
+     * @see org.extex.font.ExtexFont#getHeight(org.extex.core.UnicodeChar)
      */
     public FixedGlue getHeight(final UnicodeChar uc) {
 
@@ -169,7 +169,7 @@ public class LoadableTfmFont implements LoadableFont {
     }
 
     /**
-     * @see org.extex.font.ExtexFont#getItalicCorrection(org.extex.type.UnicodeChar)
+     * @see org.extex.font.ExtexFont#getItalicCorrection(org.extex.core.UnicodeChar)
      */
     public FixedDimen getItalicCorrection(final UnicodeChar uc) {
 
@@ -182,7 +182,7 @@ public class LoadableTfmFont implements LoadableFont {
     }
 
     /**
-     * @see org.extex.font.ExtexFont#getKerning(org.extex.type.UnicodeChar, org.extex.type.UnicodeChar)
+     * @see org.extex.font.ExtexFont#getKerning(org.extex.core.UnicodeChar, org.extex.core.UnicodeChar)
      */
     public FixedDimen getKerning(final UnicodeChar uc1, final UnicodeChar uc2) {
 
@@ -196,7 +196,7 @@ public class LoadableTfmFont implements LoadableFont {
     }
 
     /**
-     * @see org.extex.font.ExtexFont#getLigature(org.extex.type.UnicodeChar, org.extex.type.UnicodeChar)
+     * @see org.extex.font.ExtexFont#getLigature(org.extex.core.UnicodeChar, org.extex.core.UnicodeChar)
      */
     public UnicodeChar getLigature(final UnicodeChar uc1, final UnicodeChar uc2) {
 
@@ -236,7 +236,7 @@ public class LoadableTfmFont implements LoadableFont {
     }
 
     /**
-     * @see org.extex.font.ExtexFont#getWidth(org.extex.type.UnicodeChar)
+     * @see org.extex.font.ExtexFont#getWidth(org.extex.core.UnicodeChar)
      */
     public FixedGlue getWidth(final UnicodeChar uc) {
 
@@ -279,7 +279,7 @@ public class LoadableTfmFont implements LoadableFont {
     }
 
     /**
-     * @see org.extex.interpreter.type.font.Font#hasGlyph(org.extex.type.UnicodeChar)
+     * @see org.extex.interpreter.type.font.Font#hasGlyph(org.extex.core.UnicodeChar)
      */
     public boolean hasGlyph(final UnicodeChar uc) {
 

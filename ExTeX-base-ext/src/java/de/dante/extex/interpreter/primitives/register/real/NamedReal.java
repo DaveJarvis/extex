@@ -19,6 +19,9 @@
 
 package de.dante.extex.interpreter.primitives.register.real;
 
+import org.extex.core.count.CountConvertible;
+import org.extex.core.exception.GeneralException;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -29,11 +32,9 @@ import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.arithmetic.Advanceable;
 import org.extex.interpreter.type.arithmetic.Divideable;
 import org.extex.interpreter.type.arithmetic.Multiplyable;
-import org.extex.interpreter.type.count.CountConvertible;
-import org.extex.interpreter.type.tokens.Tokens;
+import org.extex.scanner.type.CatcodeException;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
-import org.extex.util.exception.GeneralException;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.interpreter.context.ContextExtension;
 import de.dante.extex.interpreter.type.real.Real;
@@ -140,18 +141,33 @@ public class NamedReal extends AbstractAssignment
     }
 
     /**
+     * This method is the getter for the description of the primitive.
+     *
+     * @param context the interpreter context
+     * @param source the source for further tokens to qualify the request
+     * @param typesetter the typesetter to use
+     *
+     * @return the description of the primitive as list of Tokens
+     *
+     * @throws InterpreterException in case of an error
+     * @throws CatcodeException in case of an error in token creation
+     * @throws ConfigurationException in case of an configuration error
+     *
      * @see org.extex.interpreter.type.Theable#the(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, Typesetter)
+     *      org.extex.interpreter.TokenSource,
+     *      org.extex.typesetter.Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+            final Typesetter typesetter)
+            throws InterpreterException,
+                CatcodeException {
 
         if (context instanceof ContextExtension) {
             ContextExtension contextextex = (ContextExtension) context;
             String key = getKey(context, source);
             String s = contextextex.getReal(key).toString();
-            return new Tokens(context, s);
+            return context.getTokenFactory().toTokens(s);
         }
         throw new InterpreterExtensionException();
     }
@@ -160,7 +176,7 @@ public class NamedReal extends AbstractAssignment
      * Return the key (the name of the primitive) for the register.
      *
      * @param context   the context
-     * @param source    the tokensource
+     * @param source    the token source
      * @return the key
      * @throws InterpreterException in case of an error.
      */
@@ -207,7 +223,8 @@ public class NamedReal extends AbstractAssignment
      */
     public void multiply(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws InterpreterException, ConfigurationException {
+            throws InterpreterException,
+                ConfigurationException {
 
         if (context instanceof ContextExtension) {
             ContextExtension contextextex = (ContextExtension) context;
@@ -234,7 +251,8 @@ public class NamedReal extends AbstractAssignment
      */
     public void divide(final Flags prefix, final Context context,
             final TokenSource source, final Typesetter typesetter)
-            throws InterpreterException, ConfigurationException {
+            throws InterpreterException,
+                ConfigurationException {
 
         if (context instanceof ContextExtension) {
             ContextExtension contextextex = (ContextExtension) context;
@@ -269,7 +287,7 @@ public class NamedReal extends AbstractAssignment
     }
 
     /**
-     * @see org.extex.interpreter.type.count.CountConvertible#convertCount(
+     * @see org.extex.interpreter.type.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)

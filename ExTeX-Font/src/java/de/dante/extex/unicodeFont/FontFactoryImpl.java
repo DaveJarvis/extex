@@ -24,15 +24,15 @@ import java.util.Properties;
 
 import org.extex.font.FontKey;
 import org.extex.font.exception.FontException;
-import org.extex.util.framework.AbstractFactory;
-import org.extex.util.framework.Registrar;
-import org.extex.util.framework.RegistrarException;
-import org.extex.util.framework.RegistrarObserver;
-import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-import org.extex.util.resource.PropertyConfigurable;
-import org.extex.util.resource.ResourceConsumer;
-import org.extex.util.resource.ResourceFinder;
+import org.extex.framework.AbstractFactory;
+import org.extex.framework.Registrar;
+import org.extex.framework.RegistrarException;
+import org.extex.framework.RegistrarObserver;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.resource.PropertyConfigurable;
+import org.extex.resource.ResourceConsumer;
+import org.extex.resource.ResourceFinder;
 
 import de.dante.extex.unicodeFont.exception.FontNotFoundException;
 import de.dante.extex.unicodeFont.format.tex.psfontmap.PsFontEncoding;
@@ -247,8 +247,8 @@ public class FontFactoryImpl extends AbstractFactory
     private ResourceFinder finder;
 
     /**
-     * @see org.extex.util.resource.ResourceConsumer#setResourceFinder(
-     *      org.extex.util.resource.ResourceFinder)
+     * @see org.extex.resource.ResourceConsumer#setResourceFinder(
+     *      org.extex.resource.ResourceFinder)
      */
     public void setResourceFinder(final ResourceFinder theFinder) {
 
@@ -256,7 +256,7 @@ public class FontFactoryImpl extends AbstractFactory
     }
 
     /**
-     * @see org.extex.util.framework.AbstractFactory#reconnect(java.lang.Object)
+     * @see org.extex.framework.AbstractFactory#reconnect(java.lang.Object)
      */
     public Object reconnect(final Object instance) throws RegistrarException {
 
@@ -282,7 +282,7 @@ public class FontFactoryImpl extends AbstractFactory
     private Properties properties;
 
     /**
-     * @see org.extex.util.resource.PropertyConfigurable#setProperties(
+     * @see org.extex.resource.PropertyConfigurable#setProperties(
      *      java.util.Properties)
      */
     public void setProperties(final Properties theProperties) {

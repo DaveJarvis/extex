@@ -44,7 +44,7 @@ import org.extex.font.format.afm.AfmEncCheck;
 import org.extex.font.format.afm.AfmKernPairs;
 import org.extex.font.format.afm.AfmParser;
 import org.extex.font.format.pl.PlWriter;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.util.xml.XMLStreamWriter;
 
 import de.dante.extex.unicodeFont.format.tex.psfontmap.enc.EncReader;

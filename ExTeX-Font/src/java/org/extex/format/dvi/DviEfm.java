@@ -22,6 +22,8 @@ package org.extex.format.dvi;
 import java.io.IOException;
 import java.util.Map;
 
+import org.extex.core.UnicodeChar;
+import org.extex.core.dimen.FixedDimen;
 import org.extex.font.FontFactory;
 import org.extex.font.exception.FontException;
 import org.extex.font.format.tfm.TfmFixWord;
@@ -49,12 +51,10 @@ import org.extex.format.dvi.command.DviZ;
 import org.extex.format.dvi.exception.DviException;
 import org.extex.format.dvi.exception.DviGlyphNotFoundException;
 import org.extex.format.dvi.exception.DviMissingFontException;
-import org.extex.interpreter.type.dimen.FixedDimen;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.type.font.Font;
-import org.extex.type.UnicodeChar;
 import org.extex.util.Unit;
 import org.extex.util.file.random.RandomAccessR;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
 import org.jdom.Element;
 
 

@@ -26,12 +26,12 @@ import java.util.logging.Logger;
 
 import junit.framework.TestCase;
 
-import org.extex.type.UnicodeChar;
-import org.extex.util.framework.configuration.Configuration;
-import org.extex.util.framework.configuration.ConfigurationFactory;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
-import org.extex.util.resource.ResourceFinder;
-import org.extex.util.resource.ResourceFinderFactory;
+import org.extex.core.UnicodeChar;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.ConfigurationFactory;
+import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.resource.ResourceFinder;
+import org.extex.resource.ResourceFinderFactory;
 
 /**
  * Test for the u2t factory.

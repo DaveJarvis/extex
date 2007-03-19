@@ -29,13 +29,13 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
+import org.extex.core.UnicodeChar;
 import org.extex.font.exception.FontException;
 import org.extex.font.format.afm.AfmCharMetric;
 import org.extex.font.format.afm.AfmKernPairs;
 import org.extex.font.format.afm.AfmParser;
 import org.extex.font.unicode.GlyphName;
-import org.extex.type.UnicodeChar;
-import org.extex.util.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.configuration.exception.ConfigurationException;
 
 import de.dante.extex.unicodeFont.format.tex.psfontmap.enc.EncReader;
 

@@ -20,8 +20,8 @@
 package org.extex.font.exception;
 
 import org.extex.font.FontKey;
-import org.extex.util.framework.i18n.Localizer;
-import org.extex.util.framework.i18n.LocalizerFactory;
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * Font exception if problems occurred during reading the font file.

@@ -19,12 +19,12 @@
 
 package de.dante.extex.interpreter.primitives.register.hash.toks;
 
+import org.extex.core.count.CountParser;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.AbstractAssignment;
-import org.extex.interpreter.type.count.Count;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 
@@ -71,7 +71,7 @@ public class HashToksDef extends AbstractAssignment {
         CodeToken tok = source.getControlSequence(context, typesetter);
         source.getOptionalEquals(context);
         String key = "hashtoks#"
-                + Long.toString(Count.scanInteger(context, source, typesetter));
+                + Long.toString(CountParser.scanInteger(context, source, typesetter));
         context.setCode(tok, new NamedHashToks(key), prefix.isGlobal());
         prefix.clearGlobal();
     }
