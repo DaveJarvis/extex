@@ -108,8 +108,7 @@ public abstract class T2TDOArray extends T2TopDICTOperator {
      */
     public void writeXML(final XMLStreamWriter writer) throws IOException {
 
-        writer.writeStartElement("topdict");
-        writer.writeAttribute("name", getName());
+        writer.writeStartElement(getName());
         for (int i = 0; i < value.length; i++) {
             writer.writeAttribute("value_" + i, value[i].toString());
         }

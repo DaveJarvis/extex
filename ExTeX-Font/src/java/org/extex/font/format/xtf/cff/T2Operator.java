@@ -22,6 +22,7 @@ package org.extex.font.format.xtf.cff;
 import java.io.IOException;
 import java.util.List;
 
+import org.extex.font.format.xtf.OtfTableCFF;
 import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
 
@@ -188,6 +189,14 @@ public abstract class T2Operator extends T2CharString
         }
         return bytes;
     }
-    
-    
+
+    /**
+     * @see org.extex.font.format.xtf.cff.T2CharString#init(
+     *      org.extex.util.file.random.RandomAccessR,
+     *      org.extex.font.format.xtf.OtfTableCFF)
+     */
+    public void init(final RandomAccessR rar, final OtfTableCFF cff,
+            final int baseoffset) throws IOException {
+
+    }
 }

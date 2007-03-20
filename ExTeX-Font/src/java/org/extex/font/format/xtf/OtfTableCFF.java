@@ -22,12 +22,18 @@ package org.extex.font.format.xtf;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.extex.font.format.xtf.cff.T2CharString;
 import org.extex.font.format.xtf.cff.T2Operator;
+import org.extex.font.format.xtf.cff.T2StandardEncoding;
 import org.extex.font.format.xtf.cff.T2StandardStrings;
-import org.extex.font.format.xtf.cff.T2TDOCharset;
+import org.extex.font.format.xtf.cff.T2TDOBoolean;
+import org.extex.font.format.xtf.cff.T2TDOItalicAngle;
+import org.extex.font.format.xtf.cff.T2TDOUnderlinePosition;
+import org.extex.font.format.xtf.cff.T2TDOUnderlineThickness;
 import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessInputArray;
 import org.extex.util.file.random.RandomAccessR;
@@ -95,9 +101,286 @@ public class OtfTableCFF extends AbstractXtfTable
             XMLWriterConvertible {
 
     /**
-     * INDEX-Table.
-     * <p>
+     * The instance itself.
+     */
+    private OtfTableCFF cff;
+
+    /**
+     * header size
+     */
+    private int hdrSize;
+
+    /**
+     * The named index.
+     */
+    private List namedIndex;
+
+    /**
+     * offset size
+     */
+    private int offSize;
+
+    /**
+     * The string index.
+     */
+    private List stringIndex;
+
+    /**
+     * The top dict index.
+     */
+    private Map topDictIndex;
+
+    /**
+     * Version major
+     */
+    private int versionmajor;
+
+    /**
+     * Version minor
+     */
+    private int versionminor;
+
+    /**
+     * Create a new object
+     *
+     * @param tablemap  the tablemap
+     * @param de        entry
+     * @param rar       input
+     * @throws IOException if an IO-error occurs
+     */
+    OtfTableCFF(final XtfTableMap tablemap, final XtfTableDirectory.Entry de,
+            final RandomAccessR rar) throws IOException {
+
+        super(tablemap);
+        cff = this;
+        int baseoffset = de.getOffset();
+        rar.seek(baseoffset);
+
+        // header
+        readHeader(rar);
+
+        // index
+        readNameIndex(de, rar);
+        readTopDictIndex(rar);
+        readStringIndex(rar);
+
+        // initialize the T2Operators
+        Iterator it = topDictIndex.keySet().iterator();
+        while (it.hasNext()) {
+            String key = (String) it.next();
+            T2Operator op = (T2Operator) topDictIndex.get(key);
+            op.init(rar, cff, baseoffset);
+        }
+
+        // Global Subr INDEX
+
+        // incomplete
+    }
+
+    /**
+     * Returns the UnderlineThickness.
+     *
+     * @return Returns the UnderlineThickness.
+     */
+    public int getUnderlineThicknessn() {
+
+        T2Operator op = (T2Operator) topDictIndex.get("underlinethickness");
+        if (op == null) {
+            return 0;
+        }
+        if (op instanceof T2TDOUnderlineThickness) {
+            T2TDOUnderlineThickness val = (T2TDOUnderlineThickness) op;
+            return val.getInteger();
+        }
+
+        return 0;
+    }
+
+    /**
+     * Returns the UnderlinePosition.
+     *
+     * @return Returns the UnderlinePosition.
+     */
+    public int getUnderlinePosition() {
+
+        T2Operator op = (T2Operator) topDictIndex.get("underlineposition");
+        if (op == null) {
+            return 0;
+        }
+        if (op instanceof T2TDOUnderlinePosition) {
+            T2TDOUnderlinePosition val = (T2TDOUnderlinePosition) op;
+            return val.getInteger();
+        }
+
+        return 0;
+    }
+
+    /**
+     * Returns the ItalicAngle.
+     *
+     * @return Returns the ItalicAngle.
+     */
+    public int getItalicAngle() {
+
+        T2Operator op = (T2Operator) topDictIndex.get("ItalicAngle");
+        if (op == null) {
+            return 0;
+        }
+        if (op instanceof T2TDOItalicAngle) {
+            T2TDOItalicAngle val = (T2TDOItalicAngle) op;
+            return val.getInteger();
+        }
+
+        return 0;
+    }
+
+    /**
+     * Returns the value of fixed pitch.
+     *
+     * @return Returns the value of fixed pitch.
+     */
+    public boolean isFixedPitch() {
+
+        T2Operator op = (T2Operator) topDictIndex.get("isfixedpitch");
+        if (op == null) {
+            return false;
+        }
+        if (op instanceof T2TDOBoolean) {
+            T2TDOBoolean bool = (T2TDOBoolean) op;
+            return bool.isValue();
+        }
+        return false;
+    }
+
+    /**
+     * Return the name of the encoding.
+     *
+     * @return Return the name of the encoding.
+     */
+    public String getEncoding() {
+
+        // exists an encoding?
+        T2Operator op = (T2Operator) topDictIndex.get("encoding");
+        if (op == null) {
+            return T2StandardEncoding.getName();
+        }
+        // TODO incomplete
+        return "incomplete";
+    }
+
+    /**
+     * Convert the array to a string.
+     * @param data  the data-array
+     * @return Returns the String.
+     */
+    private String convertArrayToString(final byte[] data) {
+
+        StringBuffer buf = new StringBuffer(data.length);
+
+        for (int i = 0; i < data.length; i++) {
+            buf.append((char) data[i]);
+        }
+
+        return buf.toString();
+    }
+
+    /**
+     * Returns the hdrSize.
+     * @return Returns the hdrSize.
+     */
+    public int getHdrSize() {
+
+        return hdrSize;
+    }
+
+    /**
+     * Getter for namedIndex.
+     *
+     * @return Returns the namedIndex.
+     */
+    public List getNamedIndex() {
+
+        return namedIndex;
+    }
+
+    // ---------------------------------------------------
+    // ---------------------------------------------------
+    // ---------------------------------------------------
+    // ---------------------------------------------------
+    // ---------------------------------------------------
+
+    /**
+     * @see org.extex.font.format.xtf.XtfTable#getShortcut()
+     */
+    public String getShortcut() {
+
+        return "cff";
+    }
+
+    /**
+     * Returns the String for the SID.
+     *
+     * First, test if SID is in standard range
+     * then fetch from internal table, otherwise,
+     * fetch string from the String INDEX using a value of (SID-nStdStrings)
+     * as the index.
+     *
+     * @param sid   the SID for the string.
+     * @return Returns the String or <code>null</code>, if not found.
+     */
+    public String getStringIndex(final int sid) {
+
+        int highestSID = T2StandardStrings.getHighestSID();
+        if (sid <= highestSID) {
+            return T2StandardStrings.getString(sid);
+        }
+        if (sid - highestSID - 1 < stringIndex.size()) {
+            return (String) stringIndex.get(sid - highestSID - 1);
+        }
+        return null;
+    }
+
+    /**
+     * Returns the type 2 operator for the key.
+     *
+     * @param key   The key.
+     * @return Returns the type 2 operator for the key.
+     */
+    public T2Operator getTopDictIndex(String key) {
+
+        return (T2Operator) topDictIndex.get(key);
+    }
+
+    /**
+     * Get the table type, as a table directory value.
+     * @return Returns the table type
+     */
+    public int getType() {
+
+        return XtfReader.CFF;
+    }
+
+    /**
+     * Returns the versionmajor.
+     * @return Returns the versionmajor.
+     */
+    public int getVersionmajor() {
+
+        return versionmajor;
+    }
+
+    /**
+     * Returns the versionminor.
+     * @return Returns the versionminor.
+     */
+    public int getVersionminor() {
+
+        return versionminor;
+    }
+
+    /**
      * An INDEX is an array of variable-sized objects.
+     * <p>
      * It comprises a header, an offset array, and object data.
      * The offset array specifies offsets within the object data.
      * An object is retrieved by indexing the offset array and fetching
@@ -141,541 +424,22 @@ public class OtfTableCFF extends AbstractXtfTable
      * An empty INDEX is represented by a count field with a 0 value
      * and no additional fields. Thus, the total size of an empty
      * INDEX is 2 bytes.
-     */
-    abstract class Index implements XMLWriterConvertible {
-
-        /**
-         * Number of objects
-         */
-        private int count;
-
-        /**
-         * all datas
-         */
-        private Object[] datas;
-
-        /**
-         * Create a new object.
-         *
-         * @param offset        the offset
-         * @param rar           the input
-         * @throws IOException if an IO-error occurs
-         */
-        Index(final int offset, final RandomAccessR rar) throws IOException {
-
-            // go to the offset.
-            // is the offset less than zero,
-            // the input (pointer) is on the correct offset
-            if (offset > 0) {
-                rar.seek(offset);
-            }
-
-            count = rar.readUnsignedShort();
-            if (count > 0) {
-                int ioffSize = rar.readUnsignedByte();
-                datas = new Object[count];
-                int[] offsetarray = new int[count + 1];
-
-                // read all offsets
-                for (int offs = 0; offs < offsetarray.length; offs++) {
-                    offsetarray[offs] = readOffset(ioffSize, rar);
-                    //                    System.out.println("offset [" + offs + "]="
-                    //                            + offsetarray[offs]);
-                }
-
-                // get data
-                for (int i = 0; i < count; i++) {
-                    datas[i] = readData(offsetarray[i], offsetarray[i + 1], rar);
-                }
-            }
-
-        }
-
-        /**
-         * Returns the count.
-         * @return Returns the count.
-         */
-        public int getCount() {
-
-            return count;
-        }
-
-        /**
-         * Returns the datas.
-         * @return Returns the datas.
-         */
-        public Object[] getDatas() {
-
-            return datas;
-        }
-
-        /**
-         * Read the data
-         * @param start the start offset
-         * @param end   the end offset
-         * @param rar   the input
-         * @return Returns the data
-         * @throws IOException if an IO-error occurs
-         */
-        private byte[] readData(final int start, final int end,
-                final RandomAccessR rar) throws IOException {
-
-            byte[] data = new byte[end - start];
-            for (int i = 0; i < data.length; i++) {
-                data[i] = (byte) rar.readUnsignedByte();
-            }
-            return data;
-        }
-
-        /**
-         * Read the offset (see offsetsize)
-         * @param os        the offsetsize
-         * @param rar       the input
-         * @return Returns the offset
-         * @throws IOException if an IO-error occurs
-         */
-        private int readOffset(final int os, final RandomAccessR rar)
-                throws IOException {
-
-            int offset = 0;
-            for (int i = 0; i < os; i++) {
-                int b = rar.readUnsignedByte();
-                offset = offset << XtfConstants.SHIFT8;
-                offset += b;
-            }
-            return offset;
-        }
-    }
-
-    /**
-     * This contains the PostScript language names
-     * (FontName or CIDFontName) of all the fonts
-     * in the FontSet stored in an INDEX structure.
-     */
-    class NameIndex extends Index {
-
-        /**
-         * Create a new object.
-         *
-         * @param offset    the offset
-         * @param rar       the input
-         * @throws IOException if an IO-error occurs.
-         */
-        public NameIndex(final int offset, final RandomAccessR rar)
-                throws IOException {
-
-            super(offset, rar);
-        }
-
-        /**
-         * Return the name as string
-         * @param index     the index for the name
-         * @return Returns the name as string
-         */
-        public String getName(final int index) {
-
-            if (index < 0 || index > getCount()) {
-                return null;
-            }
-            byte[] data = (byte[]) getDatas()[index];
-            StringBuffer buf = new StringBuffer(data.length);
-
-            for (int i = 0; i < data.length; i++) {
-                buf.append((char) data[i]);
-            }
-            return buf.toString();
-        }
-
-        /**
-         * @see org.extex.util.XMLWriterConvertible#writeXML(
-         *      org.extex.util.xml.XMLStreamWriter)
-         */
-        public void writeXML(final XMLStreamWriter writer) throws IOException {
-
-            writer.writeStartElement("nameindex");
-            for (int i = 0; i < getDatas().length; i++) {
-                writer.writeStartElement("name");
-                writer.writeAttribute("id", i);
-                writer.writeAttribute("value", getName(i));
-                writer.writeEndElement();
-            }
-            writer.writeEndElement();
-        }
-    }
-
-    /**
-     * String INDEX
      *
-     * <p>
-     * All the strings, with the exception of the FontName
-     * and CIDFontName strings which appear in the Name INDEX,
-     * used by different fonts within the FontSet are collected
-     * together into an INDEX structure and are referenced by
-     * a 2-byte unsigned number called a string identifier or SID.
-     * Only unique strings are stored in the table thereby removing
-     * duplication across fonts. Further space saving is obtained by
-     * allocating commonly occurring strings to predefined SIDs.
-     * These strings, known as the standard strings, describe all
-     * the names used in the ISOAdobe and Expert character sets along
-     * with a few other strings common to Type 1 fonts.
-     * </p>
-     * <p>
-     * The client program will contain an array of standard strings
-     * with nStdStrings elements. Thus, the standard strings take
-     * SIDs in the range 0 to (nStdStrings  1). The first string
-     * in the String INDEX corresponds to the SID whose value is
-     * equal to nStdStrings, the first non-standard string, and so on.
-     * When the client needs to determine the string that corresponds
-     * to a particular SID it performs the following: test if SID
-     * is in standard range then fetch from internal table, otherwise,
-     * fetch string from the String INDEX using a value of
-     * (SID  nStdStrings) as the index. An SID is defined as a 2-byte
-     * unsigned number but only takes values in the range 0 64999,
-     * inclusive. SID values 65000 and above are available for
-     * implementation use. A FontSet with zero non-standard strings
-     * is represented by an empty INDEX.
-     * </p>
-     */
-    class StringIndex extends Index {
-
-        /**
-         * The values.
-         */
-        private String[] values;
-
-        /**
-         * Create a new object.
-         *
-         * @param offset    the offset
-         * @param rar       the input
-         * @throws IOException if an IO-error occurs.
-         */
-        public StringIndex(final int offset, final RandomAccessR rar)
-                throws IOException {
-
-            super(offset, rar);
-
-            values = new String[getDatas().length];
-
-            for (int i = 0; i < getDatas().length; i++) {
-                values[i] = convert((byte[]) getDatas()[i]);
-            }
-        }
-
-        /**
-         * Convert the array to a string.
-         * @param data  the data-array
-         * @return Returns the String.
-         */
-        private String convert(final byte[] data) {
-
-            StringBuffer buf = new StringBuffer(data.length);
-
-            for (int i = 0; i < data.length; i++) {
-                buf.append((char) data[i]);
-            }
-
-            return buf.toString();
-        }
-
-        /**
-         * Returns the String for the SID.
-         *
-         * First, test if SID is in standard range
-         * then fetch from internal table, otherwise,
-         * fetch string from the String INDEX using a value of (SID-nStdStrings)
-         * as the index.
-         *
-         * @param sid   the SID for the string.
-         * @return Returns the String or <code>null</code>, if not found.
-         */
-        public String getString(final int sid) {
-
-            int highestSID = T2StandardStrings.getHighestSID();
-            if (sid <= highestSID) {
-                return T2StandardStrings.getString(sid);
-            }
-            if (sid - highestSID - 1 < values.length) {
-                return values[sid - highestSID - 1];
-            }
-            return null;
-        }
-
-        /**
-         * Returns the values.
-         * @return Returns the values.
-         */
-        public String[] getValues() {
-
-            return values;
-        }
-
-        /**
-         * @see org.extex.util.XMLWriterConvertible#writeXML(
-         *      org.extex.util.xml.XMLStreamWriter)
-         */
-        public void writeXML(final XMLStreamWriter writer) throws IOException {
-
-            writer.writeStartElement("stringindex");
-
-            int highestSID = T2StandardStrings.getHighestSID();
-            for (int i = 0; i < highestSID + values.length; i++) {
-                writer.writeStartElement("string");
-                writer.writeAttribute("sid", i);
-                writer.writeAttribute("value", getString(i));
-                writer.writeEndElement();
-            }
-            writer.writeEndElement();
-        }
-    }
-
-    /**
-     * This contains the top-level DICTs of all the fonts
-     * in the FontSet stored in an INDEX structure.
-     * Top DICT Operator Entries
-     * Name     Value      Operand(s)         Default, notes
-     */
-    class TopDictIndex extends Index {
-
-        /**
-         * values
-         */
-        private T2Operator[] values;
-
-        /**
-         * The hash map.
-         */
-        private Map hashValues;
-
-        /**
-         * Create a new object.
-         *
-         * @param offset    the offset
-         * @param rar       the input
-         * @throws IOException if an IO-error occurs.
-         */
-        public TopDictIndex(final int offset, final RandomAccessR rar)
-                throws IOException {
-
-            super(offset, rar);
-
-            hashValues = new HashMap();
-
-            if (getDatas().length > 0) {
-                byte[] data = (byte[]) getDatas()[0];
-
-                RandomAccessInputArray arar = new RandomAccessInputArray(data);
-
-                ArrayList list = new ArrayList();
-                try {
-                    // read until end of input -> IOException
-                    while (true) {
-                        T2Operator op = T2CharString.readTopDICTOperator(arar,
-                                cff);
-                        list.add(op);
-                        hashValues.put(op.getName().toLowerCase(), op);
-                    }
-                } catch (IOException e) {
-                    values = new T2Operator[list.size()];
-                    for (int i = 0; i < list.size(); i++) {
-                        values[i] = (T2Operator) list.get(i);
-                    }
-                }
-            }
-        }
-
-        /**
-         * Returns the operator for the key.
-         * 
-         * @param key   The key (lowercase).
-         * @return Returns the operator for the key
-         *         or <code>null</code>, if not found.
-         */
-        public T2Operator get(String key) {
-
-            return (T2Operator) hashValues.get(key.toLowerCase());
-        }
-
-        /**
-         * Returns the values.
-         * @return Returns the values.
-         */
-        public T2Operator[] getValues() {
-
-            return values;
-        }
-
-        /**
-         * @see org.extex.util.XMLWriterConvertible#writeXML(
-         *      org.extex.util.xml.XMLStreamWriter)
-         */
-        public void writeXML(final XMLStreamWriter writer) throws IOException {
-
-            writer.writeStartElement("topdictindex");
-            for (int i = 0; i < values.length; i++) {
-                values[i].writeXML(writer);
-            }
-            writer.writeEndElement();
-        }
-
-    }
-
-    /**
-     * The instance itself.
-     */
-    private OtfTableCFF cff;
-
-    /**
-     * header size
-     */
-    private int hdrSize;
-
-    /**
-     * The table NameINDEX
-     */
-    private NameIndex nameindex;
-
-    /**
-     * offset size
-     */
-    private int offSize;
-
-    /**
-     * The table StringINDEX
-     */
-    private StringIndex stringindex;
-
-    /**
-     * The table top DICT INDEX
-     */
-    private TopDictIndex topdictindex;
-
-    /**
-     * Version major
-     */
-    private int versionmajor;
-
-    /**
-     * Version minor
-     */
-    private int versionminor;
-
-    /**
-     * Create a new object
-     *
-     * @param tablemap  the tablemap
-     * @param de        entry
-     * @param rar       input
+     * @param start the start offset
+     * @param end   the end offset
+     * @param rar   the input
+     * @return Returns the data
      * @throws IOException if an IO-error occurs
      */
-    OtfTableCFF(final XtfTableMap tablemap, final XtfTableDirectory.Entry de,
+    private byte[] readDataFromIndex(final int start, final int end,
             final RandomAccessR rar) throws IOException {
 
-        super(tablemap);
-        cff = this;
-        rar.seek(de.getOffset());
-
-        // header
-        readHeader(rar);
-
-        // index
-        readNameIndex(de, rar);
-        readTopDictIndex(rar);
-        readStringIndex(rar);
-
-        // read special index entries
-        readCharset(rar);
-
-        // Global Subr INDEX
-
-        // incomplete
-    }
-
-    /**
-     * Read the charset entry.
-     * Charset data is located via the offset operand to the
-     * charset operator in the Top DICT. Each charset
-     * is described by a format-type identifier byte followed
-     * by format-specific data.
-     *
-     * @param rar the input
-     */
-    private void readCharset(RandomAccessR rar) {
-
-        T2Operator charset = getTopDictIndex("charset");
-        if (charset != null) {
-            int offset = ((T2TDOCharset)charset).getInteger();
-            // TODO mgn hiuer aufgehört
+        byte[] data = new byte[end - start];
+        for (int i = 0; i < data.length; i++) {
+            data[i] = (byte) rar.readUnsignedByte();
         }
-        
+        return data;
     }
-
-    /**
-     * Returns the hdrSize.
-     * @return Returns the hdrSize.
-     */
-    public int getHdrSize() {
-
-        return hdrSize;
-    }
-
-    /**
-     * Returns the nameindex.
-     * @return Returns the nameindex.
-     */
-    public NameIndex getNameindex() {
-
-        return nameindex;
-    }
-
-    /**
-     * @see org.extex.font.format.xtf.XtfTable#getShortcut()
-     */
-    public String getShortcut() {
-
-        return "cff";
-    }
-
-    /**
-     * @see org.extex.font.format.xtf.OtfTableCFF.StringIndex#getString(int)
-     */
-    public String getString(final int sid) {
-
-        return stringindex.getString(sid);
-    }
-
-    /**
-     * Get the table type, as a table directory value.
-     * @return Returns the table type
-     */
-    public int getType() {
-
-        return XtfReader.CFF;
-    }
-
-    /**
-     * Returns the versionmajor.
-     * @return Returns the versionmajor.
-     */
-    public int getVersionmajor() {
-
-        return versionmajor;
-    }
-
-    /**
-     * Returns the versionminor.
-     * @return Returns the versionminor.
-     */
-    public int getVersionminor() {
-
-        return versionminor;
-    }
-
-    // ---------------------------------------------------
-    // ---------------------------------------------------
-    // ---------------------------------------------------
-    // ---------------------------------------------------
-    // ---------------------------------------------------
 
     /**
      * Read the Header. TODO: create html-table
@@ -716,19 +480,118 @@ public class OtfTableCFF extends AbstractXtfTable
     private void readNameIndex(final XtfTableDirectory.Entry de,
             final RandomAccessR rar) throws IOException {
 
-        nameindex = new NameIndex(de.getOffset() + hdrSize, rar);
+        int offset = de.getOffset() + hdrSize;
+        namedIndex = new ArrayList();
+
+        if (offset > 0) {
+            rar.seek(offset);
+
+            int count = rar.readUnsignedShort();
+            if (count > 0) {
+                int[] offsetarray = readOffsets(rar, count);
+
+                // get data
+                for (int i = 0; i < count; i++) {
+                    byte[] data = readDataFromIndex(offsetarray[i],
+                            offsetarray[i + 1], rar);
+                    namedIndex.add(convertArrayToString(data));
+                }
+            }
+
+        }
+    }
+
+    /**
+     * Read the offset (see offsetsize).
+     * @param os        the offsetsize
+     * @param rar       the input
+     * @return Returns the offset
+     * @throws IOException if an IO-error occurs
+     */
+    private int readOffsetFromIndex(final int os, final RandomAccessR rar)
+            throws IOException {
+
+        int offset = 0;
+        for (int i = 0; i < os; i++) {
+            int b = rar.readUnsignedByte();
+            offset = offset << XtfConstants.SHIFT8;
+            offset += b;
+        }
+        return offset;
+    }
+
+    /**
+     * Read the offsets.
+     *
+     * @param rar       The input.
+     * @param count     The count.
+     * @return Returns the offsets.
+     * @throws IOException if a IO-error occurred.
+     */
+    private int[] readOffsets(final RandomAccessR rar, int count)
+            throws IOException {
+
+        int ioffSize = rar.readUnsignedByte();
+        int[] offsetarray = new int[count + 1];
+
+        // read all offsets
+        for (int offs = 0; offs < offsetarray.length; offs++) {
+            offsetarray[offs] = readOffsetFromIndex(ioffSize, rar);
+        }
+        return offsetarray;
     }
 
     /**
      * Read the string index.
      *
+     * <p>
+     * All the strings, with the exception of the FontName
+     * and CIDFontName strings which appear in the Name INDEX,
+     * used by different fonts within the FontSet are collected
+     * together into an INDEX structure and are referenced by
+     * a 2-byte unsigned number called a string identifier or SID.
+     * Only unique strings are stored in the table thereby removing
+     * duplication across fonts. Further space saving is obtained by
+     * allocating commonly occurring strings to predefined SIDs.
+     * These strings, known as the standard strings, describe all
+     * the names used in the ISOAdobe and Expert character sets along
+     * with a few other strings common to Type 1 fonts.
+     * </p>
+     * <p>
+     * The client program will contain an array of standard strings
+     * with nStdStrings elements. Thus, the standard strings take
+     * SIDs in the range 0 to (nStdStrings  1). The first string
+     * in the String INDEX corresponds to the SID whose value is
+     * equal to nStdStrings, the first non-standard string, and so on.
+     * When the client needs to determine the string that corresponds
+     * to a particular SID it performs the following: test if SID
+     * is in standard range then fetch from internal table, otherwise,
+     * fetch string from the String INDEX using a value of
+     * (SID  nStdStrings) as the index. An SID is defined as a 2-byte
+     * unsigned number but only takes values in the range 0 64999,
+     * inclusive. SID values 65000 and above are available for
+     * implementation use. A FontSet with zero non-standard strings
+     * is represented by an empty INDEX.
+     * </p>
      *
      * @param rar   The input.
      * @throws IOException if an IO-error occurred.
      */
     private void readStringIndex(final RandomAccessR rar) throws IOException {
 
-        stringindex = new StringIndex(-1, rar);
+        stringIndex = new ArrayList();
+
+        int count = rar.readUnsignedShort();
+        if (count > 0) {
+            int[] offsetarray = readOffsets(rar, count);
+
+            // get data
+            for (int i = 0; i < count; i++) {
+                byte[] data = readDataFromIndex(offsetarray[i],
+                        offsetarray[i + 1], rar);
+                stringIndex.add(convertArrayToString(data));
+            }
+        }
     }
 
     /**
@@ -739,29 +602,28 @@ public class OtfTableCFF extends AbstractXtfTable
      */
     private void readTopDictIndex(final RandomAccessR rar) throws IOException {
 
-        topdictindex = new TopDictIndex(-1, rar);
-    }
+        topDictIndex = new HashMap();
 
-    /**
-     * print the array (only for test)
-     * @param data  the array
-     */
-    private void tmp_print(final byte[] data) {
+        int count = rar.readUnsignedShort();
+        if (count > 0) {
+            int[] offsetarray = readOffsets(rar, count);
 
-        StringBuffer buf = new StringBuffer();
-
-        for (int i = 0; i < data.length; i++) {
-            System.out.print("0x" + Integer.toHexString(data[i]) + " ");
-            System.out.print("[");
-            char c = (char) data[i];
-            buf.append(c);
-            if (Character.isLetterOrDigit(c)) {
-                System.out.print(c);
+            // get data
+            for (int i = 0; i < count; i++) {
+                byte[] data = readDataFromIndex(offsetarray[i],
+                        offsetarray[i + 1], rar);
+                RandomAccessInputArray arar = new RandomAccessInputArray(data);
+                try {
+                    // read until end of input -> IOException
+                    while (true) {
+                        T2Operator op = T2CharString.readTopDICTOperator(arar);
+                        topDictIndex.put(op.getName().toLowerCase(), op);
+                    }
+                } catch (IOException e) {
+                    // EOF
+                }
             }
-            System.out.print("]  ");
         }
-        System.out.println();
-        System.out.println(buf.toString());
     }
 
     /**
@@ -775,25 +637,41 @@ public class OtfTableCFF extends AbstractXtfTable
                 + String.valueOf(versionminor));
         writer.writeAttribute("hdrsize", String.valueOf(hdrSize));
         writer.writeAttribute("offsize", String.valueOf(offSize));
-        if (nameindex != null) {
-            nameindex.writeXML(writer);
+
+        // namedindex
+        writer.writeStartElement("nameindex");
+        for (int i = 0, n = namedIndex.size(); i < n; i++) {
+            writer.writeStartElement("name");
+            writer.writeAttribute("id", i);
+            writer.writeAttribute("value", namedIndex.get(i));
+            writer.writeEndElement();
         }
-        if (topdictindex != null) {
-            topdictindex.writeXML(writer);
+        writer.writeEndElement();
+
+        // topdict index
+        writer.writeStartElement("topdictindex");
+        Iterator it = topDictIndex.keySet().iterator();
+        while (it.hasNext()) {
+            String key = (String) it.next();
+            T2Operator op = (T2Operator) topDictIndex.get(key);
+            op.writeXML(writer);
         }
-        if (stringindex != null) {
-            stringindex.writeXML(writer);
+        writer.writeEndElement();
+
+        // stringindex
+        writer.writeStartElement("stringindex");
+        int highestSID = T2StandardStrings.getHighestSID();
+        for (int i = 0, n = highestSID + stringIndex.size(); i < n; i++) {
+            writer.writeStartElement("string");
+            writer.writeAttribute("sid", i);
+            writer.writeAttribute("value", getStringIndex(i));
+            writer.writeEndElement();
         }
+        writer.writeEndElement();
+
+        // ------------
         writer.writeComment("incomplete");
         writer.writeEndElement();
-    }
-
-    /**
-     * @see org.extex.font.format.xtf.OtfTableCFF.TopDictIndex#get(java.lang.String)
-     */
-    public T2Operator getTopDictIndex(String key) {
-
-        return topdictindex.get(key);
     }
 
 }

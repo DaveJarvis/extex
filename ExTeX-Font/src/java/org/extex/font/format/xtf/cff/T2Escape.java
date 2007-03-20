@@ -19,6 +19,11 @@
 
 package org.extex.font.format.xtf.cff;
 
+import java.io.IOException;
+
+import org.extex.font.format.xtf.OtfTableCFF;
+import org.extex.util.file.random.RandomAccessR;
+
 /**
  * Escape.
  *
@@ -50,5 +55,15 @@ public class T2Escape extends T2CharString {
     public short[] getBytes() {
 
         return new short[]{ESCAPE_BYTE};
+    }
+
+    /**
+     * @see org.extex.font.format.xtf.cff.T2CharString#init(
+     *      org.extex.util.file.random.RandomAccessR,
+     *      org.extex.font.format.xtf.OtfTableCFF, int)
+     */
+    public void init(final RandomAccessR rar, final OtfTableCFF cff,
+            final int baseoffset) throws IOException {
+
     }
 }

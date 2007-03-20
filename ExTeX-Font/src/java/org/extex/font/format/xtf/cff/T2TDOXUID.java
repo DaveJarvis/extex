@@ -22,8 +22,6 @@ package org.extex.font.format.xtf.cff;
 import java.io.IOException;
 import java.util.List;
 
-import org.extex.font.format.xtf.OtfTableCFF;
-
 /**
  * XUID.
  *
@@ -37,14 +35,11 @@ public class T2TDOXUID extends T2TDOArray {
      * Create a new object.
      *
      * @param stack the stack
-     * @param cff   the cff table
      * @throws IOException if an IO-error occurs.
      */
-    public T2TDOXUID(final List stack, final OtfTableCFF cff)
-            throws IOException {
+    public T2TDOXUID(final List stack) throws IOException {
 
         super(stack, new short[]{XUID});
-        this.cff = cff;
     }
 
     /**

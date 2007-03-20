@@ -20,12 +20,39 @@
 package org.extex.font.format.xtf.cff;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.extex.font.format.xtf.OtfTableCFF;
+import org.extex.util.file.random.RandomAccessInputArray;
+import org.extex.util.file.random.RandomAccessR;
+import org.extex.util.xml.XMLStreamWriter;
 
 /**
  * Private.
+ *
+ * Private DICT Operators
+ * Name              Value      Operand(s)  Default, notes
+ * BlueValues        6          delta       -
+ * OtherBlues        7          delta       -
+ * FamilyBlues       8          delta       -
+ * FamilyOtherBlues  9          delta       -
+ * BlueScale         12 9       number      - 0.039625
+ * BlueShift         12 10      number      7
+ * BlueFuzz          12 11      number      1
+ * StdHW             10         number      -
+ * StdVW             11         number      -
+ * StemSnapH         12 12      delta       -
+ * StemSnapV         12 13      delta       -
+ * ForceBold         12 14      boolean     false
+ * LanguageGroup     12 17      number      0
+ * ExpansionFactor   12 18      number      0.06
+ * initialRandomSeed 12 19      number      0
+ * Subrs             19         number      -, Offset (self) to local subrs
+ * defaultWidthX     20         number      0, see below
+ * nominalWidthX     21         number      0, see below
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
@@ -34,18 +61,34 @@ import org.extex.font.format.xtf.OtfTableCFF;
 public class T2TDOPrivate extends T2TDOArray {
 
     /**
+     * The dict key array.
+     */
+    private T1DictKey[] dictkeys;
+
+    /**
+     * The hash map.
+     */
+    private Map hashValues;
+
+    /**
+     * The offset.
+     */
+    private int offset = -1;
+
+    /**
+     * The size.
+     */
+    private int size = -1;
+
+    /**
      * Create a new object.
      *
      * @param stack the stack
-     * @param cff   the cff table
      * @throws IOException if an IO-error occurs.
      */
-    public T2TDOPrivate(final List stack, final OtfTableCFF cff)
-            throws IOException {
+    public T2TDOPrivate(final List stack) throws IOException {
 
         super(stack, new short[]{PRIVATE});
-        this.cff = cff;
-
     }
 
     /**
@@ -54,6 +97,69 @@ public class T2TDOPrivate extends T2TDOArray {
     public String getName() {
 
         return "private";
+    }
+
+    /**
+     * @see org.extex.font.format.xtf.cff.T2Operator#init(
+     *      org.extex.util.file.random.RandomAccessR,
+     *      org.extex.font.format.xtf.OtfTableCFF, int)
+     */
+    public void init(final RandomAccessR rar, final OtfTableCFF cff,
+            final int baseoffset) throws IOException {
+
+        hashValues = new HashMap();
+
+        T2Number[] val = (T2Number[]) getValue();
+        if (val.length >= 1) {
+            size = val[0].getInteger();
+        }
+        if (val.length >= 2) {
+            offset = val[1].getInteger();
+        }
+
+        if (offset > 0) {
+            rar.seek(baseoffset + offset);
+
+            byte[] data = new byte[size];
+            rar.readFully(data);
+            RandomAccessInputArray arar = new RandomAccessInputArray(data);
+
+            ArrayList list = new ArrayList();
+            try {
+                // read until end of input -> IOException
+                while (true) {
+                    T1DictKey op = T1DictKey.newInstance(arar);
+                    list.add(op);
+                    hashValues.put(op.getName().toLowerCase(), op);
+                }
+            } catch (IOException e) {
+                dictkeys = new T1DictKey[list.size()];
+                for (int i = 0; i < list.size(); i++) {
+                    dictkeys[i] = (T1DictKey) list.get(i);
+                }
+            }
+
+        }
+    }
+
+    /**
+     * @see org.extex.util.XMLWriterConvertible#writeXML(
+     *      org.extex.util.xml.XMLStreamWriter)
+     */
+    public void writeXML(final XMLStreamWriter writer) throws IOException {
+
+        writer.writeStartElement(getName());
+        writer.writeAttribute("size", size);
+        writer.writeAttribute("offset", offset);
+
+        if (dictkeys != null) {
+            for (int i = 0; i < dictkeys.length; i++) {
+                T1DictKey dk = dictkeys[i];
+                dk.writeXML(writer);
+            }
+        }
+        writer.writeEndElement();
+
     }
 
 }

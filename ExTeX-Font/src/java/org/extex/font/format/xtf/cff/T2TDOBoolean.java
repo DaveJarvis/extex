@@ -116,8 +116,7 @@ public abstract class T2TDOBoolean extends T2TopDICTOperator {
      */
     public void writeXML(final XMLStreamWriter writer) throws IOException {
 
-        writer.writeStartElement("topdict");
-        writer.writeAttribute("name", getName());
+        writer.writeStartElement(getName());
         writer.writeAttribute("value", value);
         writer.writeEndElement();
 

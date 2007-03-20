@@ -23,7 +23,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.extex.font.format.xtf.OtfTableCFF;
 import org.extex.util.file.random.RandomAccessR;
 
 /**
@@ -206,12 +205,11 @@ public abstract class T2TopDICTOperator extends T2Operator {
      * Create a new instance.
      *
      * @param rar       the input
-     * @param cff       the cff table
      * @return Returns the new T2Operatorr object.
      * @throws IOException if an IO-error occurs.
      */
-    public static T2Operator newInstance(final RandomAccessR rar,
-            final OtfTableCFF cff) throws IOException {
+    public static T2Operator newInstance(final RandomAccessR rar)
+            throws IOException {
 
         List stack = new ArrayList();
 
@@ -221,58 +219,58 @@ public abstract class T2TopDICTOperator extends T2Operator {
 
             switch (b) {
                 case VERSION :
-                    return new T2TDOVersion(stack, cff);
+                    return new T2TDOVersion(stack);
                 case NOTICE :
-                    return new T2TDONotice(stack, cff);
+                    return new T2TDONotice(stack);
                 case FULLNAME :
-                    return new T2TDOFullName(stack, cff);
+                    return new T2TDOFullName(stack);
                 case FAMILYNAME :
-                    return new T2TDOFamilyName(stack, cff);
+                    return new T2TDOFamilyName(stack);
                 case WEIGHT :
-                    return new T2TDOWeight(stack, cff);
+                    return new T2TDOWeight(stack);
                 case FONTBBOX :
-                    return new T2TDOFontBBox(stack, cff);
+                    return new T2TDOFontBBox(stack);
                 case ESCAPE_BYTE :
                     int b1 = rar.readUnsignedByte();
                     switch (b1) {
                         case COPYRIGHT :
-                            return new T2TDOCopyright(stack, cff);
+                            return new T2TDOCopyright(stack);
                         case ISFIXEDPITCH :
-                            return new T2TDOisFixedPitch(stack, cff);
+                            return new T2TDOisFixedPitch(stack);
                         case ITALICANGLE :
-                            return new T2TDOItalicAngle(stack, cff);
+                            return new T2TDOItalicAngle(stack);
                         case UNDERLINEPOSITION :
-                            return new T2TDOUnderlinePosition(stack, cff);
+                            return new T2TDOUnderlinePosition(stack);
                         case UNDERLINETHICKNESS :
-                            return new T2TDOUnderlineThickness(stack, cff);
+                            return new T2TDOUnderlineThickness(stack);
                         case PAINTTYPE :
-                            return new T2TDOPaintType(stack, cff);
+                            return new T2TDOPaintType(stack);
                         case CHARSTRINGTYPE :
-                            return new T2TDOCharStringType(stack, cff);
+                            return new T2TDOCharStringType(stack);
                         case FONTMATRIX :
-                            return new T2TDOFontMatrix(stack, cff);
+                            return new T2TDOFontMatrix(stack);
                         case STROKEWIDTH :
-                            return new T2TDOStrokeWidth(stack, cff);
+                            return new T2TDOStrokeWidth(stack);
                         case SYNTHETICBASE :
-                            return new T2TDOSyntheticBase(stack, cff);
+                            return new T2TDOSyntheticBase(stack);
                         case POSTSCRIPT :
-                            return new T2TDOPostscript(stack, cff);
+                            return new T2TDOPostscript(stack);
                         default :
                             throw new T2NotAOperatorException();
 
                     }
                 case UNIQUEID :
-                    return new T2TDOUniqueID(stack, cff);
+                    return new T2TDOUniqueID(stack);
                 case XUID :
-                    return new T2TDOXUID(stack, cff);
+                    return new T2TDOXUID(stack);
                 case CHARSET :
-                    return new T2TDOCharset(stack, cff);
+                    return new T2TDOCharset(stack);
                 case ENCODING :
-                    return new T2TDOEncoding(stack, cff);
+                    return new T2TDOEncoding(stack);
                 case CHARSTRINGS :
-                    return new T2TDOCharStrings(stack, cff);
+                    return new T2TDOCharStrings(stack);
                 case PRIVATE :
-                    return new T2TDOPrivate(stack, cff);
+                    return new T2TDOPrivate(stack);
                 default :
                     // number
                     T2Number number = T2CharString.readNumber(rar, b);

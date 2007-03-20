@@ -21,6 +21,7 @@ package org.extex.font.format.xtf.cff;
 
 import java.io.IOException;
 
+import org.extex.font.format.xtf.OtfTableCFF;
 import org.extex.util.file.random.RandomAccessR;
 
 /**
@@ -129,4 +130,13 @@ public abstract class T2Number extends T2CharString {
      */
     public abstract double getDouble();
 
+    /**
+     * @see org.extex.font.format.xtf.cff.T2CharString#init(
+     *      org.extex.util.file.random.RandomAccessR,
+     *      org.extex.font.format.xtf.OtfTableCFF, int)
+     */
+    public void init(final RandomAccessR rar, final OtfTableCFF cff,
+            final int baseoffset) throws IOException {
+
+    }
 }

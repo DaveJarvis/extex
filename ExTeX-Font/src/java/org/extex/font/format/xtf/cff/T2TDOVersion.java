@@ -22,9 +22,6 @@ package org.extex.font.format.xtf.cff;
 import java.io.IOException;
 import java.util.List;
 
-import org.extex.font.format.xtf.OtfTableCFF;
-import org.extex.util.xml.XMLStreamWriter;
-
 /**
  * Version.
  *
@@ -38,14 +35,11 @@ public class T2TDOVersion extends T2TDOSID {
      * Create a new object.
      *
      * @param stack the stack
-     * @param cff   the cff table
      * @throws IOException if an IO.error occurs.
      */
-    public T2TDOVersion(final List stack, final OtfTableCFF cff)
-            throws IOException {
+    public T2TDOVersion(final List stack) throws IOException {
 
         super(stack, new short[]{VERSION});
-        this.cff = cff;
     }
 
     /**
@@ -56,15 +50,4 @@ public class T2TDOVersion extends T2TDOSID {
         return "version";
     }
 
-    /**
-     * @see org.extex.util.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(final XMLStreamWriter writer) throws IOException {
-
-        writer.writeStartElement("topdict");
-        writer.writeAttribute("name", getName());
-        writer.writeAttribute("value", cff.getString(getSID()));
-        writer.writeEndElement();
-    }
 }

@@ -724,31 +724,6 @@ public class TtfTableCMAP extends AbstractXtfTable
             return 0;
         }
 
-        /**
-         * Returns the info for this class.
-         * @return Returns the info for this class
-         */
-        public String toString() {
-
-            StringBuffer buf = new StringBuffer();
-            buf.append(super.toString());
-            buf
-                    .append("   segCountX2   : " + String.valueOf(segCountX2)
-                            + '\n');
-            buf.append("   searchRange  : " + String.valueOf(searchRange)
-                    + '\n');
-            buf.append("   entryselector: " + String.valueOf(entrySelector)
-                    + '\n');
-            buf
-                    .append("   rangeshift   : " + String.valueOf(rangeShift)
-                            + '\n');
-            buf.append("   endcode      : " + String.valueOf(endCode) + '\n');
-            buf.append("   startcode    : " + String.valueOf(startCode) + '\n');
-            buf.append("   idDelta      : " + String.valueOf(idDelta) + '\n');
-            buf.append("   idRangeOffset: : " + String.valueOf(idRangeOffset)
-                    + '\n');
-            return buf.toString();
-        }
 
         /**
          * @see org.extex.util.XMLWriterConvertible#writeXML(

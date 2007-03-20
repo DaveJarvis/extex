@@ -19,6 +19,9 @@
 
 package org.extex.font.format.xtf.cff;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Predefined Charset (expert subset).
  * <p>
@@ -33,13 +36,6 @@ package org.extex.font.format.xtf.cff;
  */
 
 public final class T2PredefinedCharsetExpertSubset {
-
-    /**
-     * no instance
-     */
-    private T2PredefinedCharsetExpertSubset() {
-
-    }
 
     /**
      * Predefined Charset (expert subset)
@@ -426,6 +422,11 @@ public final class T2PredefinedCharsetExpertSubset {
     };
 
     /**
+     * The map for the names.
+     */
+    private static Map names = null;
+
+    /**
      * Returns the name or '.notdef' if number out of range.
      * @param sid   the sid for the name
      * @return Returns the name  or '.notdef' if number out of range.
@@ -445,12 +446,26 @@ public final class T2PredefinedCharsetExpertSubset {
      */
     public static int getSID(final String name) {
 
-        for (int i = 0; i < DATA.length; i++) {
-            if (DATA[i].equals(name)) {
-                return i;
+        if (names == null) {
+            names = new HashMap(DATA.length);
+            for (int i = 0; i < DATA.length; i++) {
+                String key = DATA[i];
+                names.put(key, new Integer(i));
             }
         }
+        Integer ii = (Integer) names.get(name);
+        if (ii != null) {
+            return ii.intValue();
+        }
+
         return -1;
+    };
+
+    /**
+     * no instance
+     */
+    private T2PredefinedCharsetExpertSubset() {
+
     }
 
 }

@@ -23,9 +23,23 @@ import java.io.IOException;
 import java.util.List;
 
 import org.extex.font.format.xtf.OtfTableCFF;
+import org.extex.util.file.random.RandomAccessR;
+import org.extex.util.xml.XMLStreamWriter;
 
 /**
  * Charset.
+ *
+ * <p>
+ * Charset data is located via the offset operand to the charset operator
+ * in the Top DICT. Each charset is described by a format-type identifier
+ * byte followed by format-specific data.
+ * </p>
+ * <p>TODO change to HTML table
+ * Format 0
+ * Type  Name                Description
+ * Card8 format              =0
+ * SID   glyph  [nGlyphs-1]  Glyph name array
+ * </p>
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
@@ -37,15 +51,11 @@ public class T2TDOCharset extends T2TDONumber {
      * Create a new object.
      *
      * @param stack the stack
-     * @param cff   the cff table
      * @throws IOException if an IO.error occurs.
      */
-    public T2TDOCharset(final List stack, final OtfTableCFF cff)
-            throws IOException {
+    public T2TDOCharset(final List stack) throws IOException {
 
         super(stack, new short[]{CHARSET});
-        this.cff = cff;
-
     }
 
     /**
@@ -54,6 +64,46 @@ public class T2TDOCharset extends T2TDONumber {
     public String getName() {
 
         return "charset";
+    }
+
+    /**
+     * Read the charset entry.
+     * Charset data is located via the offset operand to the
+     * charset operator in the Top DICT. Each charset
+     * is described by a format-type identifier byte followed
+     * by format-specific data.
+     *
+     * @see org.extex.font.format.xtf.cff.T2Operator#init(
+     *      org.extex.util.file.random.RandomAccessR,
+     *      org.extex.font.format.xtf.OtfTableCFF, int)
+     */
+    public void init(final RandomAccessR rar, final OtfTableCFF cff,
+            final int baseoffset) throws IOException {
+
+        int offset = getInteger();
+        if (offset > 0) {
+            rar.seek(offset);
+
+            format = rar.readUnsignedByte();
+        }
+    }
+
+    /**
+     * The format.
+     */
+    private int format = -1;
+
+    /**
+     * @see org.extex.util.XMLWriterConvertible#writeXML(
+     *      org.extex.util.xml.XMLStreamWriter)
+     */
+    public void writeXML(final XMLStreamWriter writer) throws IOException {
+
+        writer.writeStartElement(getName());
+        writer.writeAttribute("value", getValue());
+        writer.writeAttribute("format", format);
+        writer.writeEndElement();
+
     }
 
 }

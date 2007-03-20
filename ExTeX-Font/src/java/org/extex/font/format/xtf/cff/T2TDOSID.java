@@ -22,6 +22,8 @@ package org.extex.font.format.xtf.cff;
 import java.io.IOException;
 import java.util.List;
 
+import org.extex.font.format.xtf.OtfTableCFF;
+import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 
 /**
@@ -37,6 +39,11 @@ public abstract class T2TDOSID extends T2TopDICTOperator {
      * bytes
      */
     private short[] bytes;
+
+    /**
+     * The string for the SID.
+     */
+    private String sidstring;
 
     /**
      * value
@@ -58,7 +65,6 @@ public abstract class T2TDOSID extends T2TopDICTOperator {
             throw new T2MissingNumberException();
         }
         value = ((T2Number) stack.get(0)).getInteger();
-
         bytes = convertStackaddID(stack, id);
     }
 
@@ -80,6 +86,25 @@ public abstract class T2TDOSID extends T2TopDICTOperator {
     }
 
     /**
+     * @see org.extex.font.format.xtf.cff.T2Operator#getValue()
+     */
+    public Object getValue() {
+
+        return sidstring;
+    }
+
+    /**
+     * @see org.extex.font.format.xtf.cff.T2Operator#init(
+     *      org.extex.util.file.random.RandomAccessR,
+     *      org.extex.font.format.xtf.OtfTableCFF, int)
+     */
+    public void init(final RandomAccessR rar, final OtfTableCFF cff,
+            final int baseoffset) throws IOException {
+
+        sidstring = cff.getStringIndex(getSID());
+    }
+
+    /**
      * @see java.lang.Object#toString()
      */
     public String toString() {
@@ -88,21 +113,12 @@ public abstract class T2TDOSID extends T2TopDICTOperator {
     }
 
     /**
-     * @see org.extex.font.format.xtf.cff.T2Operator#getValue()
-     */
-    public Object getValue() {
-
-        return cff.getString(getSID());
-    }
-
-    /**
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(final XMLStreamWriter writer) throws IOException {
 
-        writer.writeStartElement("topdict");
-        writer.writeAttribute("name", getName());
+        writer.writeStartElement(getName());
         writer.writeAttribute("value", getValue());
         writer.writeEndElement();
 

@@ -32,13 +32,6 @@ package org.extex.font.format.xtf.cff;
 public final class T2StandardEncoding {
 
     /**
-     * no instance
-     */
-    private T2StandardEncoding() {
-
-    }
-
-    /**
      * Standard Encoding
      */
     public static final String DATA[][] = {{".notdef", "0"}, // 0
@@ -300,6 +293,29 @@ public final class T2StandardEncoding {
     };
 
     /**
+     * Returns the highest code.
+     *
+     * @return Returns the highest code.
+     */
+    public static int getHighestCode() {
+
+        return DATA.length - 1;
+    }
+
+    /**
+     * Returns the SID for a code or -1 if not found.
+     * @param code  the code
+     * @return Returns the SID for a code or -1 if not found.
+     */
+    public static int getSID(final int code) {
+
+        if (code >= 0 && code < DATA.length) {
+            return Integer.parseInt(DATA[code][1]);
+        }
+        return -1;
+    }
+
+    /**
      * Returns the name or '.notdef' if number out of range.
      * @param code   the codefor the string
      * @return Returns the name or '.notdef' if number out of range.
@@ -313,18 +329,19 @@ public final class T2StandardEncoding {
     }
 
     /**
-     * Returns the SID for a code or -1 if not found.
-     * @param code  the code
-     * @return Returns the SID for a code or -1 if not found.
+     * no instance
      */
-    public static int getSID(final int code) {
+    private T2StandardEncoding() {
 
-        for (int i = 0; i < DATA.length; i++) {
-            if (Integer.parseInt(DATA[i][1]) == code) {
-                return i;
-            }
-        }
-        return -1;
+    }
+
+    /**
+     * Returns the name of the encoding.
+     * @return Returns the name of the encoding.
+     */
+    public static String getName() {
+
+        return "StandardEncoding";
     }
 
 }

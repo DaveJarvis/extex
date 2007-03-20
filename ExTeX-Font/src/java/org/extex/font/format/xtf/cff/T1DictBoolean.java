@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -25,13 +25,12 @@ import java.util.List;
 import org.extex.util.xml.XMLStreamWriter;
 
 /**
- * Abstract class for all number-values.
+ * Type 1 dict boolean.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-
-public abstract class T2TDONumber extends T2TopDICTOperator {
+public abstract class T1DictBoolean extends T1DictKey {
 
     /**
      * Create a new object.
@@ -40,17 +39,22 @@ public abstract class T2TDONumber extends T2TopDICTOperator {
      * @param id    the operator-id for the value
      * @throws IOException if an IO-error occurs.
      */
-    protected T2TDONumber(final List stack, final short[] id)
+    protected T1DictBoolean(final List stack, final short[] id)
             throws IOException {
 
         super();
+
         if (stack.size() < 1) {
             throw new T2MissingNumberException();
         }
-        value = ((T2Number) stack.get(0));
-
+        int v = ((T2Number) stack.get(0)).getInteger();
         bytes = convertStackaddID(stack, id);
 
+        if (v == 0) {
+            value = false;
+        } else {
+            value = true;
+        }
     }
 
     /**
@@ -59,9 +63,18 @@ public abstract class T2TDONumber extends T2TopDICTOperator {
     private short[] bytes;
 
     /**
+     * Check, if the objekt is a boolean.
+     * @return Returns <code>true</code>, if the object is a boolean.
+     */
+    public boolean isBoolean() {
+
+        return true;
+    }
+
+    /**
      * value
      */
-    private T2Number value;
+    private boolean value;
 
     /**
      * @see org.extex.font.format.xtf.cff.T2CharString#getBytes()
@@ -72,45 +85,20 @@ public abstract class T2TDONumber extends T2TopDICTOperator {
     }
 
     /**
-     * Check, if the objekt is a integer.
-     * @return Returns <code>true</code>, if the object is a integer.
-     */
-    public boolean isInteger() {
-
-        return value.isInteger();
-    }
-
-    /**
-     * Check, if the objekt is a double.
-     * @return Returns <code>true</code>, if the object is a double.
-     */
-    public boolean isDouble() {
-
-        return value.isDouble();
-    }
-
-    /**
-     * @see org.extex.font.type.ttf.cff.T2Number#getDouble()
-     */
-    public double getDouble() {
-
-        return value.getDouble();
-    }
-
-    /**
-     * @see org.extex.font.type.ttf.cff.T2Number#getInteger()
-     */
-    public int getInteger() {
-
-        return value.getInteger();
-    }
-
-    /**
      * @see java.lang.Object#toString()
      */
     public String toString() {
 
-        return value.toString();
+        return String.valueOf(value);
+    }
+
+    /**
+     * Returns the value.
+     * @return Returns the value.
+     */
+    public boolean isValue() {
+
+        return value;
     }
 
     /**
@@ -118,7 +106,7 @@ public abstract class T2TDONumber extends T2TopDICTOperator {
      */
     public Object getValue() {
 
-        return value;
+        return new Boolean(value);
     }
 
     /**

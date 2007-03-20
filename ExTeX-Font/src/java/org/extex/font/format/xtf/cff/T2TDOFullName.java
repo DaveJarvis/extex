@@ -37,14 +37,11 @@ public class T2TDOFullName extends T2TDOSID {
      * Create a new object.
      *
      * @param stack the stack
-     * @param cff   the cff table
      * @throws IOException if an IO-error occurs.
      */
-    public T2TDOFullName(final List stack, final OtfTableCFF cff)
-            throws IOException {
+    public T2TDOFullName(final List stack) throws IOException {
 
         super(stack, new short[]{FULLNAME});
-        this.cff = cff;
     }
 
     /**

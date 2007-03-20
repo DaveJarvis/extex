@@ -22,8 +22,6 @@ package org.extex.font.format.xtf.cff;
 import java.io.IOException;
 import java.util.List;
 
-import org.extex.font.format.xtf.OtfTableCFF;
-
 /**
  * UnderlinePosition.
  *
@@ -37,14 +35,11 @@ public class T2TDOUnderlinePosition extends T2TDONumber {
      * Create a new object.
      *
      * @param stack the stack
-     * @param cff   the cff table
      * @throws IOException if an IO-error occurs.
      */
-    public T2TDOUnderlinePosition(final List stack, final OtfTableCFF cff)
-            throws IOException {
+    public T2TDOUnderlinePosition(final List stack) throws IOException {
 
         super(stack, new short[]{ESCAPE_BYTE, UNDERLINEPOSITION});
-        this.cff = cff;
     }
 
     /**

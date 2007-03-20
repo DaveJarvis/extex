@@ -109,9 +109,33 @@ public class XtfReaderLmRoman10Regular01Test extends TestCase {
                 .getValue());
         assertEquals("LMRoman10", cff.getTopDictIndex("familyname").getValue());
         assertEquals("Normal", cff.getTopDictIndex("weight").getValue());
-        assertEquals("Normal", cff.getTopDictIndex("weight").getValue());
+        assertEquals("StandardEncoding", cff.getEncoding());
+        assertEquals(false, cff.isFixedPitch());
+        assertEquals(0, cff.getItalicAngle());
+        assertEquals(-146, cff.getUnderlinePosition());
+        assertEquals(40, cff.getUnderlineThicknessn());
+        //        assertEquals("0", cff.getTopDictIndex("PaintType").getValue());
+        //        assertEquals("2", cff.getTopDictIndex("CharstringType").getValue());
+        //        assertEquals("0", cff.getTopDictIndex("StrokeWidth").getValue());
+
+        //        <FontMatrix value="0.001 0 0 0.001 0 0"/>
+        //        <FontBBox value="-430 -290 1417 1127"/>
+        //        <StrokeWidth value="0"/>
 
     }
+
+    //    /**
+    //     * test 05.
+    //     *
+    //     * @throws Exception if an error occurred.
+    //     */
+    //    public void test05() throws Exception {
+    //
+    //        // plattformid = 3 (Windows) , encodingid = 1 (Unicode)
+    //        assertEquals("space", reader.mapCharCodeToGlyphname(0x20, (short) 3,
+    //                (short) 1));
+    //
+    //    }
 
     /**
      * test 99.

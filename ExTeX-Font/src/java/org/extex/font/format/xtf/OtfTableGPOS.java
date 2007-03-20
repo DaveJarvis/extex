@@ -28,6 +28,11 @@ import org.extex.util.xml.XMLStreamWriter;
 
 /**
  * Table gpos.
+ * <p>
+ * The Glyph Positioning table (GPOS) provides precise control
+ * over glyph placement for sophisticated text layout
+ * and rendering in each script and language system that a font supports.
+ * </p>
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$

@@ -180,23 +180,27 @@ public abstract class T2CharString {
     }
 
     /**
-     * The cff table.
-     */
-    protected OtfTableCFF cff;
-
-    /**
      * Read a top DICT operator.
      *
      * @param rar       the input
-     * @param cff       the cff table
      * @return  Return the Top DICT operator
      * @throws IOException if an IO-error occurs
      */
-    public static T2Operator readTopDICTOperator(final RandomAccessR rar,
-            final OtfTableCFF cff) throws IOException {
+    public static T2Operator readTopDICTOperator(final RandomAccessR rar)
+            throws IOException {
 
-        return T2TopDICTOperator.newInstance(rar, cff);
+        return T2TopDICTOperator.newInstance(rar);
     }
-    
-    
+
+    /**
+     * Initialize.
+     *
+     * @param rar        The input
+     * @param cff        The cff table
+     * @param baseoffset The base offset from cff.
+     * @throws IOException if an IO-error occurred.
+     */
+    public abstract void init(final RandomAccessR rar, final OtfTableCFF cff,
+            final int baseoffset) throws IOException;
+
 }

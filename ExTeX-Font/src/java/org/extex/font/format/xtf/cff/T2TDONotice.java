@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.util.List;
 
 import org.extex.font.format.xtf.OtfTableCFF;
+import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 
 /**
@@ -38,14 +39,11 @@ public class T2TDONotice extends T2TDOSID {
      * Create a new object.
      *
      * @param stack the stack
-     * @param cff   the cff table
      * @throws IOException if an IO-error occurs.
      */
-    public T2TDONotice(final List stack, final OtfTableCFF cff)
-            throws IOException {
+    public T2TDONotice(final List stack) throws IOException {
 
         super(stack, new short[]{NOTICE});
-        this.cff = cff;
     }
 
     /**
@@ -54,19 +52,6 @@ public class T2TDONotice extends T2TDOSID {
     public String getName() {
 
         return "notice";
-    }
-
-    /**
-     * @see org.extex.util.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(final XMLStreamWriter writer) throws IOException {
-
-        writer.writeStartElement("topdict");
-        writer.writeAttribute("name", getName());
-        writer.writeAttribute("value", cff.getString(getSID()));
-        writer.writeEndElement();
-
     }
 
 }

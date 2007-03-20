@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -25,13 +25,12 @@ import java.util.List;
 import org.extex.util.xml.XMLStreamWriter;
 
 /**
- * Abstract class for all number-values.
+ * Type 1 dict number.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-
-public abstract class T2TDONumber extends T2TopDICTOperator {
+public abstract class T1DictNumber extends T1DictKey {
 
     /**
      * Create a new object.
@@ -40,7 +39,7 @@ public abstract class T2TDONumber extends T2TopDICTOperator {
      * @param id    the operator-id for the value
      * @throws IOException if an IO-error occurs.
      */
-    protected T2TDONumber(final List stack, final short[] id)
+    protected T1DictNumber(final List stack, final short[] id)
             throws IOException {
 
         super();
@@ -132,5 +131,4 @@ public abstract class T2TDONumber extends T2TopDICTOperator {
         writer.writeEndElement();
 
     }
-
 }

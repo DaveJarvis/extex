@@ -19,6 +19,8 @@
 
 package org.extex.font.format.xtf.cff;
 
+import java.util.Map;
+
 /**
  * Standard Strings.
  * <p>
@@ -457,16 +459,27 @@ public final class T2StandardStrings {
     }
 
     /**
+     * The map for the names.
+     */
+    private static Map names = null;
+
+    /**
      * Returns the SID for a StandardString or -1 if not found.
      * @param name  the StandardString
      * @return Returns the SID for a StandardString or -1 if not found.
      */
     public static int getSID(final String name) {
 
-        for (int i = 0; i < DATA.length; i++) {
-            if (DATA[i].equals(name)) {
-                return i;
+        if (names == null) {
+            for (int i = 0; i < DATA.length; i++) {
+                String key = DATA[i];
+                names.put(key, new Integer(i));
             }
+        }
+
+        Integer ii = (Integer) names.get(name);
+        if (ii != null) {
+            return ii.intValue();
         }
         return -1;
     }
