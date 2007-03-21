@@ -66,9 +66,8 @@ public abstract class AbstractMuskip extends AbstractAssignment {
 
         if (Namespace.SUPPORT_NAMESPACE_SKIP) {
             return context.getNamespace() + "muskip#" + name;
-        } else {
-            return "muskip#" + name;
         }
+        return "muskip#" + name;
     }
 
 }

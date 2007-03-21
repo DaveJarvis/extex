@@ -77,9 +77,8 @@ public class ToksParameter extends AbstractToks
 
         if (Namespace.SUPPORT_NAMESPACE_TOKS) {
             return context.getNamespace() + "\b" + name;
-        } else {
-            return name;
         }
+        return name;
     }
 
     /**
@@ -147,9 +146,8 @@ public class ToksParameter extends AbstractToks
 
         if (Namespace.SUPPORT_NAMESPACE_TOKS) {
             return context.getNamespace() + "\b" + key;
-        } else {
-            return key;
         }
+        return key;
     }
 
     /**

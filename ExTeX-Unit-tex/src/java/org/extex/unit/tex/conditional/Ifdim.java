@@ -19,7 +19,6 @@
 
 package org.extex.unit.tex.conditional;
 
-import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.DimenParser;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;

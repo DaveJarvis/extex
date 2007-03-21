@@ -30,13 +30,12 @@ import org.extex.framework.configuration.exception.ConfigurationIOException;
 import org.extex.framework.configuration.exception.ConfigurationInvalidResourceException;
 import org.extex.framework.configuration.exception.ConfigurationNotFoundException;
 import org.extex.framework.configuration.exception.ConfigurationSyntaxException;
-import org.extex.framework.configuration.impl.ConfigurationXMLImpl;
 
 /**
  * This is the test suite for the ConfigurationXMLImpl class.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5417 $
  */
 public class ConfigurationXMLImplTest extends TestCase {
 

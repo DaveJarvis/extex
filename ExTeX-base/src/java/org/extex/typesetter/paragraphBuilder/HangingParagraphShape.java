@@ -31,6 +31,12 @@ import org.extex.core.dimen.FixedDimen;
 public class HangingParagraphShape extends ParagraphShape {
 
     /**
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
+     */
+    private static final long serialVersionUID = 2007L;
+
+    /**
      * The field <tt>hangafter</tt> contains the number of lines to start or
      * end hanging.
      */

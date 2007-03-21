@@ -104,8 +104,7 @@ public final class LoadUnit extends AbstractFactory {
     public static void loadUnit(final Configuration configuration,
             final Context context, final TokenSource source,
             final Typesetter typesetter, final Logger logger,
-            final OutputStreamFactory outputFactory)
-            throws GeneralException {
+            final OutputStreamFactory outputFactory) throws GeneralException {
 
         TokenFactory tokenFactory = context.getTokenFactory();
         LoadUnit primitiveFactory = new LoadUnit();
@@ -152,14 +151,13 @@ public final class LoadUnit extends AbstractFactory {
                         throw new HelpingException(LocalizerFactory
                             .getLocalizer(LoadUnit.class),
                             "Loader.Import.undef", t.toString());
-                    } else {
-                        context.setCode(((CodeToken) t)
-                            .cloneInNamespace(namespace),
-                            (t instanceof CodeToken //
-                                    ? context.getCode((CodeToken) t)
-                                    : new LetCode(t)), //
-                            false);
                     }
+                    context.setCode(
+                        ((CodeToken) t).cloneInNamespace(namespace),
+                        (t instanceof CodeToken //
+                                ? context.getCode((CodeToken) t)
+                                : new LetCode(t)), //
+                        false);
                 }
             }
         }
@@ -209,8 +207,7 @@ public final class LoadUnit extends AbstractFactory {
     public void define(final Configuration configuration,
             final TokenFactory tokenFactory, final Context context,
             final Typesetter typesetter, final Logger outputLogger,
-            final OutputStreamFactory outputFactory)
-            throws GeneralException {
+            final OutputStreamFactory outputFactory) throws GeneralException {
 
         enableLogging(outputLogger);
         UnicodeChar esc = UnicodeChar.get('\\');

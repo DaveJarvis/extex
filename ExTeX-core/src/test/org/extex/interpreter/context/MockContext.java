@@ -111,6 +111,7 @@ public class MockContext implements Context, TypesetterOptions {
      */
     public void addUnit(final UnitInfo info) {
 
+        //not needed
     }
 
     /**
@@ -149,6 +150,7 @@ public class MockContext implements Context, TypesetterOptions {
      */
     public void clearSplitMarks() {
 
+        //not needed
     }
 
     /**
@@ -771,6 +773,7 @@ public class MockContext implements Context, TypesetterOptions {
      */
     public void setCountOption(final String name, final long value) {
 
+        //not needed
     }
 
     /**
@@ -955,6 +958,7 @@ public class MockContext implements Context, TypesetterOptions {
      */
     public void setSplitMark(final Object name, final Tokens mark) {
 
+        //not needed
     }
 
     /**
@@ -1019,7 +1023,6 @@ public class MockContext implements Context, TypesetterOptions {
      */
     public Iterator unitIterator() {
 
-        // TODO gene: unitIterator unimplemented
         return null;
     }
 

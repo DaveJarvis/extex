@@ -120,107 +120,103 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
 
                     if (line.equals("") || line.equals(NL)) {
                         return true;
-                    } else {
-                        switch (line.charAt(0)) {
-                            case '0':
-                            case '9':
-                            case '8':
-                            case '7':
-                            case '6':
-                            case '5':
-                            case '4':
-                            case '3':
-                            case '2':
-                            case '1':
-                                int count = line.charAt(0) - '0';
-                                if (line.length() > 1
-                                        && Character.isDigit(line.charAt(1))) {
-                                    count = count * 10 + line.charAt(1) - '0';
-                                }
-                                while (count-- > 0) {
-                                    source.getToken(context);
-                                }
-                                firstHelp = false;
-                                break;
-                            case 'd':
-                            case 'D':
-                                if (ENABLE_DEBUG) {
-                                    // TTP[84] TTP[1338]
-                                    handleDebug();
-                                } else {
-                                    logger.severe(localizer
-                                        .format("ErrorHandler.help")
-                                            + NL);
-                                }
-                                break;
-                            case 'e':
-                            case 'E':
-                                // TTP[84]
-                                if (editHandler != null
-                                        && editHandler.edit(localizer, //
-                                            source.getLocator())) {
-
-                                    context
-                                        .setInteraction(Interaction.SCROLLMODE);
-                                    logger.info(localizer
-                                        .format("ErrorHandler.scrollmode")
-                                            + NL);
-                                }
-                                return true;
-                            case 'i':
-                            case 'I':
-                                source.addStream(source.getTokenStreamFactory()
-                                    .newInstance(line.substring(1)));
-                                break;
-                            case 'h':
-                            case 'H':
-
-                                String help;
-
-                                if (!firstHelp) {
-                                    help =
-                                            localizer
-                                                .format("ErrorHandler.noMoreHelp");
-                                } else if ((help = ex.getHelp()) == null) {
-                                    help =
-                                            localizer
-                                                .format("ErrorHandler.noHelp");
-                                }
-
-                                firstHelp = false;
-                                logger.severe(help + NL);
-                                break;
-                            case 'q':
-                            case 'Q':
-                                context.setInteraction(Interaction.BATCHMODE);
-                                logger.info(localizer
-                                    .format("ErrorHandler.batchmode")
+                    }
+                    switch (line.charAt(0)) {
+                        case '0':
+                        case '9':
+                        case '8':
+                        case '7':
+                        case '6':
+                        case '5':
+                        case '4':
+                        case '3':
+                        case '2':
+                        case '1':
+                            int count = line.charAt(0) - '0';
+                            if (line.length() > 1
+                                    && Character.isDigit(line.charAt(1))) {
+                                count = count * 10 + line.charAt(1) - '0';
+                            }
+                            while (count-- > 0) {
+                                source.getToken(context);
+                            }
+                            firstHelp = false;
+                            break;
+                        case 'd':
+                        case 'D':
+                            if (ENABLE_DEBUG) {
+                                // TTP[84] TTP[1338]
+                                handleDebug();
+                            } else {
+                                logger.severe(localizer
+                                    .format("ErrorHandler.help")
                                         + NL);
-                                return true;
-                            case 'r':
-                            case 'R':
-                                context.setInteraction(Interaction.NONSTOPMODE);
-                                logger.info(localizer
-                                    .format("ErrorHandler.nonstopmode")
-                                        + NL);
-                                return true;
-                            case 's':
-                            case 'S':
+                            }
+                            break;
+                        case 'e':
+                        case 'E':
+                            // TTP[84]
+                            if (editHandler != null
+                                    && editHandler.edit(localizer, //
+                                        source.getLocator())) {
+
                                 context.setInteraction(Interaction.SCROLLMODE);
                                 logger.info(localizer
                                     .format("ErrorHandler.scrollmode")
                                         + NL);
-                                return true;
-                            case 'x':
-                            case 'X':
-                                return false;
-                            default:
-                                logger.severe(localizer
-                                    .format("ErrorHandler.help")
-                                        + NL);
-                        }
+                            }
+                            return true;
+                        case 'i':
+                        case 'I':
+                            source.addStream(source.getTokenStreamFactory()
+                                .newInstance(line.substring(1)));
+                            break;
+                        case 'h':
+                        case 'H':
+
+                            String help;
+
+                            if (!firstHelp) {
+                                help =
+                                        localizer
+                                            .format("ErrorHandler.noMoreHelp");
+                            } else if ((help = ex.getHelp()) == null) {
+                                help = localizer.format("ErrorHandler.noHelp");
+                            }
+
+                            firstHelp = false;
+                            logger.severe(help + NL);
+                            break;
+                        case 'q':
+                        case 'Q':
+                            context.setInteraction(Interaction.BATCHMODE);
+                            logger.info(localizer
+                                .format("ErrorHandler.batchmode")
+                                    + NL);
+                            return true;
+                        case 'r':
+                        case 'R':
+                            context.setInteraction(Interaction.NONSTOPMODE);
+                            logger.info(localizer
+                                .format("ErrorHandler.nonstopmode")
+                                    + NL);
+                            return true;
+                        case 's':
+                        case 'S':
+                            context.setInteraction(Interaction.SCROLLMODE);
+                            logger.info(localizer
+                                .format("ErrorHandler.scrollmode")
+                                    + NL);
+                            return true;
+                        case 'x':
+                        case 'X':
+                            return false;
+                        default:
+                            logger.severe(localizer.format("ErrorHandler.help")
+                                    + NL);
                     }
                 }
+
             } catch (ConfigurationException e) {
                 throw new GeneralException(e);
             }
@@ -329,9 +325,9 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
                  } else if ("15".equals(line)) {
                  } else if ("16".equals(line)) {
                  */
-            } else {
-                logger.config(localizer.format("ErrorHandler.DebugElsePrompt"));
             }
+
+            logger.config(localizer.format("ErrorHandler.DebugElsePrompt"));
         }
     }
 
@@ -432,7 +428,7 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
             sb.append(':');
             sb.append(lineNumber >= 0 ? Integer.toString(lineNumber) : "");
             sb.append(':');
-            if (loc.getCause()==null) {
+            if (loc.getCause() == null) {
                 sb.append(' ');
                 sb.append(message);
             }

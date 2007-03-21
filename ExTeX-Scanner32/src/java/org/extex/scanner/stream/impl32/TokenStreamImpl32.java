@@ -203,7 +203,7 @@ public class TokenStreamImpl32 extends TokenStreamImpl {
                                                 + hexLow);
                             }
                         }
-                    } else if (c != null) {
+                    } else {
                         hexHigh = c.getCodePoint();
                         uc =
                                 UnicodeChar.get(((hexHigh < CARET_LIMIT)
@@ -228,7 +228,7 @@ public class TokenStreamImpl32 extends TokenStreamImpl {
      */
     private char hex2char(final int c) {
 
-        char ch = (char) Character.toLowerCase((char) c);
+        char ch = Character.toLowerCase((char) c);
 
         if ('0' <= ch && ch <= '9' || 'a' <= ch && ch <= 'f') {
             return ch;

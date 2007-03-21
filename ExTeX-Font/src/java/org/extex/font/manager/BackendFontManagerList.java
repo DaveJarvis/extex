@@ -229,6 +229,7 @@ public class BackendFontManagerList implements BackendFontManager {
     }
 
     /**
+     * {@inheritDoc}
      * @see java.util.List#size()
      */
     public int size() {
@@ -242,6 +243,7 @@ public class BackendFontManagerList implements BackendFontManager {
     private BackendFontFactory factory;
 
     /**
+     * {@inheritDoc}
      * @see org.extex.font.BackendFontManager#setBackendFontFactory(org.extex.font.BackendFontFactory)
      */
     public void setBackendFontFactory(final BackendFontFactory factory) {

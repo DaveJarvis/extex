@@ -330,6 +330,7 @@ public class Glue implements Serializable, FixedGlue {
     }
 
     /**
+     * {@inheritDoc}
      * @see org.extex.core.glue.FixedGlue#ne(
      *      org.extex.core.glue.FixedGlue)
      */
@@ -377,7 +378,7 @@ public class Glue implements Serializable, FixedGlue {
      *
      * @param x the new length component
      */
-    public void setLength(FixedDimen x) {
+    public void setLength(final FixedDimen x) {
 
         length.set(x);
     }
@@ -387,7 +388,7 @@ public class Glue implements Serializable, FixedGlue {
      *
      * @param x the new shrink component
      */
-    public void setShrink(FixedDimen x) {
+    public void setShrink(final FixedDimen x) {
 
         shrink.set(x);
     }
@@ -397,7 +398,7 @@ public class Glue implements Serializable, FixedGlue {
      *
      * @param x the new stretch component
      */
-    public void setStretch(FixedDimen x) {
+    public void setStretch(final FixedDimen x) {
 
         stretch.set(x);
     }

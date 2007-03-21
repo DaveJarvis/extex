@@ -71,7 +71,7 @@ public class DviDown extends AbstractDviCode {
      */
     public int write(final OutputStream stream) throws IOException {
 
-        return opcodeSigned(Dvi.DOWN1, (int) dist, stream);
+        return opcodeSigned(Dvi.DOWN1, dist, stream);
     }
 
 }

@@ -770,9 +770,8 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
 
             if (uc.equals(c)) {
                 return caretCaret(uc, c);
-            } else {
-                pointer = savePointer;
             }
+            pointer = savePointer;
         }
 
         return uc;
@@ -884,9 +883,8 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
 
         if (pointer < line.length()) {
             return UnicodeChar.get(line.charAt(pointer++));
-        } else {
-            return (pointer++ > line.length() ? null : CR);
         }
+        return (pointer++ > line.length() ? null : CR);
     }
 
     /**

@@ -198,10 +198,9 @@ public class LoadingLanguageManager extends BaseLanguageManager
                     in.close();
                     getTables().put(name, lang);
                     return lang;
-                } else {
-                    getLogger().warning(
-                        getLocalizer().format("LanguageNotFound", name));
                 }
+                getLogger().warning(
+                    getLocalizer().format("LanguageNotFound", name));
             } catch (ConfigurationException e) {
                 throw new HyphenationException(e);
             } catch (IOException e) {

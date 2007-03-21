@@ -20,9 +20,6 @@
 package org.extex.interpreter.type.font;
 
 import org.extex.core.UnicodeChar;
-import org.extex.core.dimen.Dimen;
-import org.extex.font.Glyph;
-import org.extex.font.type.InternalFount;
 import org.extex.font.type.ModifiableFount;
 import org.extex.font.type.VirtualFount;
 import org.extex.interpreter.context.tc.TypesettingContext;

@@ -36,9 +36,6 @@ import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.GeneralException;
 import org.extex.core.glue.Glue;
 import org.extex.framework.configuration.Configuration;
-import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
-import org.extex.scanner.type.token.TokenFactory;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
@@ -47,7 +44,6 @@ import org.extex.typesetter.type.node.GlueNode;
 import org.extex.typesetter.type.node.InsertionNode;
 import org.extex.typesetter.type.node.MarkNode;
 import org.extex.typesetter.type.node.VerticalListNode;
-import org.extex.typesetter.type.page.Page;
 import org.extex.typesetter.type.page.PageImpl;
 
 /**

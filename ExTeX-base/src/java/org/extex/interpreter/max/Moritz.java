@@ -493,9 +493,8 @@ public class Moritz extends Max
         if (getKeyword(context, s, 0)) {
             skipSpaces = true;
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
     /**
@@ -1054,17 +1053,15 @@ public class Moritz extends Max
 
             return uc;
 
-        } else {
-
-            push(t);
-            cc = CountParser.scanInteger(context, this, typesetter);
-
-            if (cc < 0 || cc > MAX_CHAR_CODE) {
-                throw new BadCharacterException(cc);
-            }
-            return UnicodeChar.get((int) cc);
         }
 
+        push(t);
+        cc = CountParser.scanInteger(context, this, typesetter);
+
+        if (cc < 0 || cc > MAX_CHAR_CODE) {
+            throw new BadCharacterException(cc);
+        }
+        return UnicodeChar.get((int) cc);
     }
 
     /**
@@ -1137,7 +1134,8 @@ public class Moritz extends Max
         }
 
         source.push(token);
-        long registerNumber = CountParser.scanInteger(context, source, typesetter);
+        long registerNumber =
+                CountParser.scanInteger(context, source, typesetter);
         if (registerNumber < 0 || maxRegisterValue >= 0
                 && registerNumber > maxRegisterValue) {
             throw new IllegalRegisterException(Long.toString(registerNumber));

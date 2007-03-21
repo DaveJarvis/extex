@@ -19,8 +19,6 @@
 
 package org.extex.core;
 
-import org.extex.core.Switch;
-
 import junit.framework.TestCase;
 
 /**

@@ -652,7 +652,7 @@ public class MacroCode extends AbstractCode
         Token t;
 
         for (int i = 0; i < tokens.length(); i++) {
-            t = (Token) (tokens.get(i));
+            t = tokens.get(i);
             if (t instanceof ControlSequenceToken) {
                 long esc = context.getCount("escapechar").getValue();
                 if (esc >= 0) {

@@ -71,7 +71,7 @@ public class DviRight extends AbstractDviCode {
      */
     public int write(final OutputStream stream) throws IOException {
 
-        return opcodeSigned(Dvi.RIGHT1, (int) dist, stream);
+        return opcodeSigned(Dvi.RIGHT1, dist, stream);
     }
 
 }

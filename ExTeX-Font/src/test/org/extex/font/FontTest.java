@@ -27,7 +27,6 @@ import java.util.logging.Logger;
 import junit.framework.TestCase;
 
 import org.extex.core.dimen.Dimen;
-import org.extex.core.glue.Glue;
 import org.extex.core.glue.GlueComponent;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.ConfigurationFactory;

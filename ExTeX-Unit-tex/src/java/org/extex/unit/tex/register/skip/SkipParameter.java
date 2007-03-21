@@ -80,9 +80,8 @@ public class SkipParameter extends SkipPrimitive {
 
         if (Namespace.SUPPORT_NAMESPACE_SKIP) {
             return context.getNamespace() + "\b" + getName();
-        } else {
-            return getName();
         }
+        return getName();
     }
 
 }

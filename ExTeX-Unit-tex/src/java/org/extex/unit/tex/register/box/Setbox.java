@@ -153,9 +153,8 @@ public class Setbox extends AbstractAssignment {
         if (Namespace.SUPPORT_NAMESPACE_BOX) {
             String namespace = context.getNamespace();
             return ("".equals(namespace) ? key : namespace + "#" + key);
-        } else {
-            return key;
         }
+        return key;
     }
 
     /**

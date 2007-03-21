@@ -409,10 +409,10 @@ public class DviDocumentWriter
                 dviH += node.getWidth().getValue();
                 dviCode.add(new DviSetChar(node.getCharacter().getCodePoint()));
                 return Boolean.TRUE; // do not move any more
-            } else {
-                dviCode.add(new DviPutChar(node.getCharacter().getCodePoint()));
-                return null;
             }
+
+            dviCode.add(new DviPutChar(node.getCharacter().getCodePoint()));
+            return null;
         }
 
         /**
@@ -747,6 +747,7 @@ public class DviDocumentWriter
      */
     protected void optimize(final List list) {
 
+        // not yet
     }
 
     /**

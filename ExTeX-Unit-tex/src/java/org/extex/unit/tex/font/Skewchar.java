@@ -148,11 +148,7 @@ public class Skewchar extends AbstractAssignment
         try {
             Font font = source.getFont(context, getName());
             UnicodeChar uc = font.getSkewChar();
-            if (uc == null) {
-                return -1;
-            } else {
-                return uc.getCodePoint();
-            }
+            return (uc == null ? -1 : uc.getCodePoint());
         } catch (EofException e) {
             throw new EofException(printableControlSequence(context));
         }
@@ -208,7 +204,9 @@ public class Skewchar extends AbstractAssignment
      *      org.extex.typesetter.Typesetter)
      */
     public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException, CatcodeException {
+            final Typesetter typesetter)
+            throws InterpreterException,
+                CatcodeException {
 
         Font font = source.getFont(context, getName());
         UnicodeChar uc = font.getSkewChar();

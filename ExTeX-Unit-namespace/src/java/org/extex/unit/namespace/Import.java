@@ -116,10 +116,9 @@ public class Import extends Let {
                 if (context.getCode((CodeToken) t) == null) {
                     throw new HelpingException(getLocalizer(),
                         "Namespace.Import.undef", t.toString());
-                } else {
-                    let(prefix, context, //
-                        ((CodeToken) t).cloneInNamespace(namespace), t);
                 }
+                let(prefix, context, //
+                    ((CodeToken) t).cloneInNamespace(namespace), t);
             }
         }
     }

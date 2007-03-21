@@ -105,9 +105,8 @@ public class NamedFont extends AbstractAssignment
 
         if (Namespace.SUPPORT_NAMESPACE_FONT) {
             return context.getNamespace() + "\b" + getName();
-        } else {
-            return getName();
         }
+        return getName();
     }
 
     /**

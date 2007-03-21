@@ -191,6 +191,7 @@ public class MyConfiguration implements Configuration {
      */
     public void getValues(final StringList list, final String key) {
 
+        //not needed
     }
 
     /**

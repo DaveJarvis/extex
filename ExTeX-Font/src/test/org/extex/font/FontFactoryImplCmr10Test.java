@@ -20,7 +20,6 @@
 package org.extex.font;
 
 import org.extex.core.UnicodeChar;
-import org.extex.core.count.Count;
 import org.extex.core.count.FixedCount;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;

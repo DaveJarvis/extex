@@ -61,14 +61,13 @@ public abstract class AbstractSkip extends AbstractAssignment {
     protected String getKey(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
 
-        String name = source.scanRegisterName(context, source, typesetter,
-                getName());
+        String name =
+                source.scanRegisterName(context, source, typesetter, getName());
 
         if (Namespace.SUPPORT_NAMESPACE_SKIP) {
             return context.getNamespace() + "skip#" + name;
-        } else {
-            return "skip#" + name;
         }
+        return "skip#" + name;
     }
 
 }

@@ -422,8 +422,7 @@ public class GroupImpl implements Group {
 
         Code code = getCodeForToken(token);
 
-        if (Namespace.SUPPORT_NAMESPACE_DEF && code == null
-                && token instanceof CodeToken) {
+        if (Namespace.SUPPORT_NAMESPACE_DEF && code == null) {
             CodeToken t = token.cloneInDefaultNamespace();
             if (t != token) {
                 code = getCodeForToken(t);
@@ -481,14 +480,14 @@ public class GroupImpl implements Group {
         }
         if (next != null) {
             return next.getCount(name);
-        } else {
-            Count count = new Count(0);
-            if (countMap == null) {
-                countMap = new HashMap();
-            }
-            countMap.put(name, count);
-            return count;
         }
+
+        Count count = new Count(0);
+        if (countMap == null) {
+            countMap = new HashMap();
+        }
+        countMap.put(name, count);
+        return count;
     }
 
     /**
@@ -555,14 +554,14 @@ public class GroupImpl implements Group {
         }
         if (next != null) {
             return next.getDimen(name);
-        } else {
-            Dimen dimen = new Dimen();
-            if (dimenMap == null) {
-                dimenMap = new HashMap();
-            }
-            dimenMap.put(name, dimen);
-            return dimen;
         }
+
+        Dimen dimen = new Dimen();
+        if (dimenMap == null) {
+            dimenMap = new HashMap();
+        }
+        dimenMap.put(name, dimen);
+        return dimen;
     }
 
     /**

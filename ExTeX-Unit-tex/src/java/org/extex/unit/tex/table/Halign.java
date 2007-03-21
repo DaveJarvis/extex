@@ -22,7 +22,6 @@ package org.extex.unit.tex.table;
 import java.util.List;
 
 import org.extex.core.Locator;
-import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.DimenParser;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.framework.configuration.exception.ConfigurationException;

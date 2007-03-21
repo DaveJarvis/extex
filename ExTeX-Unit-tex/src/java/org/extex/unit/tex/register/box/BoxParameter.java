@@ -95,9 +95,8 @@ public class BoxParameter extends AbstractCode {
 
         if (Namespace.SUPPORT_NAMESPACE_BOX) {
             return context.getNamespace() + "\b" + getName();
-        } else {
-            return getName();
         }
+        return getName();
     }
 
 }

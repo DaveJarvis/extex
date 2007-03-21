@@ -136,11 +136,10 @@ public abstract class ConfigurationException extends RuntimeException {
                                 .format(
                                     "ConfigurationException.FormatCauseMessageLocation",
                                     getText(), msg, message, source);
-                        } else {
-                            return getLocalizer().format(
-                                "ConfigurationException.FormatCauseLocation",
-                                getText(), msg, source);
                         }
+                        return getLocalizer().format(
+                            "ConfigurationException.FormatCauseLocation",
+                            getText(), msg, source);
                     } else if (message != null) {
                         return getLocalizer().format(
                             "ConfigurationException.FormatCauseMessage",
@@ -159,10 +158,9 @@ public abstract class ConfigurationException extends RuntimeException {
                 return getLocalizer().format(
                     "ConfigurationException.FormatMessageLocation", getText(),
                     message, source);
-            } else {
-                return getLocalizer().format(
-                    "ConfigurationException.FormatLocation", getText(), source);
             }
+            return getLocalizer().format(
+                "ConfigurationException.FormatLocation", getText(), source);
         } else if (message != null) {
             return getLocalizer().format(
                 "ConfigurationException.FormatMessage", getText(), message);

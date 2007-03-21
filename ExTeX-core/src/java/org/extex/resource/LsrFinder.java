@@ -45,11 +45,11 @@ import org.extex.framework.configuration.exception.ConfigurationWrapperException
  * This resource finder searches a file in a <tt>ls-R</tt> file database as
  * present in a texmf tree. For this purpose the <tt>ls-R</tt> file databases
  * found are read and stored internally.
- * 
+ *
  * <h2>Configuration</h2>
  * The lsr finder can be configured to influence its actions. The following
  * example shows a configuration for a lsr finder:
- * 
+ *
  * <pre>
  * &lt;Finder class=&quot;de.dante.util.resource.LsrFinder&quot;
  *          default=&quot;default&quot;
@@ -64,7 +64,7 @@ import org.extex.framework.configuration.exception.ConfigurationWrapperException
  *   &lt;default&gt;&lt;extension/&gt;&lt;/default&gt;
  * &lt;/Finder&gt;
  * </pre>
- * 
+ *
  * <p>
  * Whenever a resource is sought the first step is to ensure that the file
  * databases are read in. For this purpose the <tt>path</tt> tag is used. The
@@ -116,8 +116,8 @@ import org.extex.framework.configuration.exception.ConfigurationWrapperException
  * the number of files expected for best performance. The attribute
  * <tt>capacity</tt> is optional.
  * </p>
- * 
- * 
+ *
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
@@ -167,9 +167,9 @@ public class LsrFinder extends AbstractFinder implements PropertyConfigurable {
 
     /**
      * Creates a new object.
-     * 
+     *
      * @param configuration the encapsulated configuration object
-     * 
+     *
      * @throws ConfigurationMissingException in case of an error
      */
     public LsrFinder(final Configuration configuration)
@@ -206,7 +206,7 @@ public class LsrFinder extends AbstractFinder implements PropertyConfigurable {
             String t = config.getAttribute(ATTR_DEFAULT);
             if (t == null) {
                 throw new ConfigurationMissingAttributeException(ATTR_DEFAULT,
-                        config);
+                    config);
             }
             cfg = config.getConfiguration(t);
             if (cfg == null) {
@@ -230,19 +230,16 @@ public class LsrFinder extends AbstractFinder implements PropertyConfigurable {
                 continue;
             } else if (c instanceof File) {
                 File file = (File) c;
-                if (file != null) {
-                    trace("Try", file.toString(), null, null);
-                    if (file.canRead()) {
-                        try {
-                            InputStream stream = new FileInputStream(file);
-                            trace("Found", file.toString(), null, null);
-                            return stream;
-                        } catch (FileNotFoundException e) {
-                            // ignore unreadable files
-                            trace("FoundUnreadable", file.toString(), null,
-                                  null);
-                            continue;
-                        }
+                trace("Try", file.toString(), null, null);
+                if (file.canRead()) {
+                    try {
+                        InputStream stream = new FileInputStream(file);
+                        trace("Found", file.toString(), null, null);
+                        return stream;
+                    } catch (FileNotFoundException e) {
+                        // ignore unreadable files
+                        trace("FoundUnreadable", file.toString(), null, null);
+                        continue;
                     }
                 }
             } else {
@@ -262,7 +259,7 @@ public class LsrFinder extends AbstractFinder implements PropertyConfigurable {
                                 // this should not happen since it has been
                                 // checked before
                                 trace("FoundUnreadable", file.toString(), null,
-                                      null);
+                                    null);
                                 continue;
                             }
                         }
@@ -276,7 +273,7 @@ public class LsrFinder extends AbstractFinder implements PropertyConfigurable {
 
     /**
      * Load the external cache file into memory.
-     * 
+     *
      * @throws ConfigurationException in case of an error
      */
     private void initialize() throws ConfigurationException {
@@ -287,8 +284,10 @@ public class LsrFinder extends AbstractFinder implements PropertyConfigurable {
             throw new ConfigurationMissingException(TAG_PATH, config.toString());
         }
 
-        cache = (initialCapacity > 0 ? new HashMap(initialCapacity)
-                : new HashMap());
+        cache =
+                (initialCapacity > 0
+                        ? new HashMap(initialCapacity)
+                        : new HashMap());
 
         while (it.hasNext()) {
             Configuration cfg = (Configuration) it.next();
@@ -299,8 +298,9 @@ public class LsrFinder extends AbstractFinder implements PropertyConfigurable {
                 if (name == null) {
                     trace("UndefinedProperty", pathProperty, null, null);
                 } else {
-                    StringListIterator sit = new StringList(name, System
-                            .getProperty("path.separator", ":")).getIterator();
+                    StringListIterator sit =
+                            new StringList(name, System.getProperty(
+                                "path.separator", ":")).getIterator();
                     while (sit.hasNext()) {
                         load(sit.next());
                     }
@@ -316,9 +316,9 @@ public class LsrFinder extends AbstractFinder implements PropertyConfigurable {
 
     /**
      * Load the ls-R file.
-     * 
+     *
      * @param path the path for the ls-R file
-     * 
+     *
      * @throws ConfigurationException if an error occurred
      */
     private void load(final String path) throws ConfigurationException {
@@ -333,8 +333,8 @@ public class LsrFinder extends AbstractFinder implements PropertyConfigurable {
         File directory = new File(path);
 
         try {
-            BufferedInputStream in = new BufferedInputStream(
-                    new FileInputStream(file));
+            BufferedInputStream in =
+                    new BufferedInputStream(new FileInputStream(file));
             for (int c = in.read(); c >= 0; c = in.read()) {
                 if (c == '%') {
                     do {
@@ -351,7 +351,7 @@ public class LsrFinder extends AbstractFinder implements PropertyConfigurable {
                         if (line.charAt(len - 1) == ':') {
                             line.deleteCharAt(len - 1);
                             if (len > 2 && line.charAt(0) == '.'
-                                && line.charAt(1) == '/') {
+                                    && line.charAt(1) == '/') {
                                 line.delete(0, 2);
                             }
                             directory = new File(path, line.toString());
@@ -411,8 +411,8 @@ public class LsrFinder extends AbstractFinder implements PropertyConfigurable {
         }
 
         trace("DatabaseLoaded", file.toString(), //
-              Long.toString(System.currentTimeMillis() - start), //
-              Integer.toString(cache.size()));
+            Long.toString(System.currentTimeMillis() - start), //
+            Integer.toString(cache.size()));
         // PrintStream err = System.err;
         // err.print(file);
         // err.print('\t');
@@ -421,9 +421,9 @@ public class LsrFinder extends AbstractFinder implements PropertyConfigurable {
 
     /**
      * Setter for the properties.
-     * 
+     *
      * @param prop the new properties
-     * 
+     *
      * @see org.extex.resource.PropertyConfigurable#setProperties(
      *      java.util.Properties)
      */

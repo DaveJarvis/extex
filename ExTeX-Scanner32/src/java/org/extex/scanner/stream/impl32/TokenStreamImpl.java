@@ -790,7 +790,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                             uc = UnicodeChar.get((hexHigh << 4) + hexLow);
                         }
                     }
-                } else if (c != null) {
+                } else {
                     hexHigh = c.getCodePoint();
                     uc = UnicodeChar.get(((hexHigh < CARET_LIMIT) //
                             ? hexHigh + CARET_LIMIT
@@ -864,9 +864,8 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
 
         if (pointer < line.length()) {
             return UnicodeChar.get(line.charAt(pointer++));
-        } else {
-            return (pointer++ > line.length() ? null : CR);
         }
+        return (pointer++ > line.length() ? null : CR);
     }
 
     /**

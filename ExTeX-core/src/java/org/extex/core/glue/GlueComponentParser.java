@@ -19,8 +19,6 @@
 
 package org.extex.core.glue;
 
-import java.io.Serializable;
-
 import org.extex.core.dimen.DimenConvertible;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.scaled.ScaledNumber;
@@ -29,19 +27,14 @@ import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.ImpossibleException;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.scanner.type.Catcode;
-import org.extex.scanner.type.CatcodeException;
-import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.LetterToken;
 import org.extex.scanner.type.token.Token;
-import org.extex.scanner.type.token.TokenFactory;
-import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 
 /**

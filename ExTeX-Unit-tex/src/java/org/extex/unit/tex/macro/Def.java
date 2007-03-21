@@ -172,6 +172,7 @@ public class Def extends AbstractAssignment {
             } else if (t instanceof CodeToken) {
                 Code code = context.getCode((CodeToken) t);
                 if (code == null) {
+                    // undefined
                 } else if (code.isOuter()) {
                     throw new HelpingException(getLocalizer(),
                         "TTP.OuterInDef", printableControlSequence(context));

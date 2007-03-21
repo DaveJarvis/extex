@@ -104,6 +104,7 @@ public class Max1 extends TestCase {
         public void addAndAdjust(final NodeList list,
                 final TypesetterOptions options) throws TypesetterException {
 
+            //not needed
         }
 
         /**
@@ -122,6 +123,7 @@ public class Max1 extends TestCase {
          */
         public void afterParagraph(final ParagraphObserver observer) {
 
+            //not needed
         }
 
         /**
@@ -129,6 +131,7 @@ public class Max1 extends TestCase {
          */
         public void clearShipoutMark() {
 
+            //not needed
         }
 
         /**
@@ -157,6 +160,7 @@ public class Max1 extends TestCase {
         public void cr(final Context context, final TypesettingContext tc,
                 final UnicodeChar uc) {
 
+            //not needed
         }
 
         /**
@@ -261,6 +265,7 @@ public class Max1 extends TestCase {
          */
         public void leftBrace() {
 
+            //not needed
         }
 
         /**
@@ -286,6 +291,7 @@ public class Max1 extends TestCase {
         public void mathShift(final Context context, final TokenSource source,
                 final Token t) {
 
+            //not needed
         }
 
         /**
@@ -310,6 +316,7 @@ public class Max1 extends TestCase {
          */
         public void push(final ListMaker listMaker) {
 
+            //not needed
         }
 
         /**
@@ -325,6 +332,7 @@ public class Max1 extends TestCase {
          */
         public void rightBrace() throws TypesetterException {
 
+            //not needed
         }
 
         /**
@@ -351,6 +359,7 @@ public class Max1 extends TestCase {
          */
         public void setNodeFactory(final NodeFactory nodeFactory) {
 
+            //not needed
         }
 
         /**
@@ -359,6 +368,7 @@ public class Max1 extends TestCase {
          */
         public void setOptions(final TypesetterOptions options) {
 
+            //not needed
         }
 
         /**
@@ -367,6 +377,7 @@ public class Max1 extends TestCase {
          */
         public void setOutputRoutine(final OutputRoutine output) {
 
+            //not needed
         }
 
         /**
@@ -429,6 +440,7 @@ public class Max1 extends TestCase {
          */
         public void showlist(final StringBuffer sb, final long l, final long m) {
 
+            //not needed
         }
 
         /**
@@ -437,6 +449,7 @@ public class Max1 extends TestCase {
          */
         public void showlists(final StringBuffer sb, final long l, final long m) {
 
+            //not needed
         }
 
         /**
@@ -448,6 +461,7 @@ public class Max1 extends TestCase {
                 final TokenSource source, final Typesetter typesetter,
                 final Token t) {
 
+            //not needed
         }
 
         /**
@@ -459,6 +473,7 @@ public class Max1 extends TestCase {
                 final TokenSource source, final Typesetter typesetter,
                 final Token t) {
 
+            //not needed
         }
 
         /**
@@ -469,6 +484,7 @@ public class Max1 extends TestCase {
         public void tab(final Context context, final TokenSource source,
                 final Token t) {
 
+            //not needed
         }
 
         /**
@@ -503,6 +519,7 @@ public class Max1 extends TestCase {
          */
         public void treatLetter(final TypesettingContext context, final Token t) {
 
+            //not needed
         }
 
     }

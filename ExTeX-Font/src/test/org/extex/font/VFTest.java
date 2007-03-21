@@ -22,7 +22,6 @@ package org.extex.font;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
@@ -40,8 +39,6 @@ import org.extex.framework.configuration.exception.ConfigurationNoSuchMethodExce
 import org.extex.resource.PropertyConfigurable;
 import org.extex.resource.ResourceFinder;
 import org.extex.resource.ResourceFinderFactory;
-import org.extex.util.file.random.RandomAccessInputStream;
-import org.extex.util.xml.XMLStreamWriter;
 
 /**
  * Test the VFFont class.

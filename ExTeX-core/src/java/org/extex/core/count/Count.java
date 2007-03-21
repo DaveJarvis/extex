@@ -23,10 +23,7 @@ import java.io.Serializable;
 
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.ArithmeticOverflowException;
-import org.extex.scanner.type.token.TokenFactory;
-import org.extex.scanner.type.tokens.Tokens;
 
 /**
  * This class represents a long integer value. It is used for instance as count

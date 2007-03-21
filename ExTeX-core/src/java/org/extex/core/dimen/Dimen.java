@@ -21,16 +21,11 @@ package org.extex.core.dimen;
 
 import java.io.Serializable;
 
-import org.extex.core.dimen.parser.LengthParser;
 import org.extex.core.glue.FixedGlueComponent;
 import org.extex.core.glue.GlueComponent;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
-import org.extex.interpreter.TokenSource;
-import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.ArithmeticOverflowException;
-import org.extex.typesetter.Typesetter;
 
 /**
  * This class implements the dimen value. This is a length with fixed point
@@ -43,11 +38,23 @@ import org.extex.typesetter.Typesetter;
 public class Dimen extends GlueComponent implements Serializable, FixedDimen {
 
     /**
+     * The constant <tt>ZERO</tt> contains the non-stretchable and
+     * non-shrinkable value of 0&nbsp;pt.
+     */
+    public static final FixedGlueComponent ZERO = GlueComponent.ZERO;
+
+    /**
+     * The constant <tt>ONE</tt> contains the internal representation for 1pt.
+     * @see "<logo>TeX</logo> &ndash; The Program [101]"
+     */
+    public static final long ONE = GlueComponent.ONE;
+
+    /**
      * The constant <tt>ONE_INCH</tt> contains the immutable dimen register
      * representing the length of 1&nbsp;in.
      */
-    public static final ImmutableDimen ONE_INCH = new ImmutableDimen(
-            ONE * 7227 / 100);
+    public static final ImmutableDimen ONE_INCH =
+            new ImmutableDimen(ONE * 7227 / 100);
 
     /**
      * The constant <tt>ONE_PT</tt> contains the immutable dimen register

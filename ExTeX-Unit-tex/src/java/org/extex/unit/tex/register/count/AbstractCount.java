@@ -71,9 +71,8 @@ public abstract class AbstractCount extends AbstractAssignment
 
         if (Namespace.SUPPORT_NAMESPACE_COUNT) {
             return context.getNamespace() + "\b" + name;
-        } else {
-            return name;
         }
+        return name;
     }
 
     /**

@@ -39,7 +39,7 @@ import org.extex.resource.ResourceFinder;
 
 /**
  * Factory to load a font.
- * 
+ *
  * The factory use a cache (a weakmap) to increase the speed.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
@@ -140,7 +140,7 @@ public class FontFactoryImpl
      * are returned.
      *
      * If the font is found in the cache, the cached object is returned,
-     * otherwise, the font is loaded from a file. 
+     * otherwise, the font is loaded from a file.
      *
      * @param key the fount key
      *
@@ -192,7 +192,7 @@ public class FontFactoryImpl
     private class Loader extends AbstractFactory {
 
         /**
-         * Returns the loadable font. 
+         * Returns the loadable font.
          *
          * @param subcfg    the configuration.
          * @return the loadable font.

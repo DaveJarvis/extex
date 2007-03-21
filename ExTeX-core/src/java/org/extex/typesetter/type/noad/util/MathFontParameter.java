@@ -46,9 +46,8 @@ public final class MathFontParameter {
 
         if (Namespace.SUPPORT_NAMESPACE_FONT) {
             return context.getNamespace() + "\b" + theName + "#" + theNumber;
-        } else {
-            return theName + "#" + theNumber;
         }
+        return theName + "#" + theNumber;
     }
 
     /**
@@ -65,9 +64,8 @@ public final class MathFontParameter {
 
         if (Namespace.SUPPORT_NAMESPACE_FONT) {
             return context.getNamespace() + "\b" + theName + "#" + theNumber;
-        } else {
-            return theName + "#" + theNumber;
         }
+        return theName + "#" + theNumber;
     }
 
     /**

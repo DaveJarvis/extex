@@ -337,11 +337,10 @@ public class Patterns extends AbstractHyphenationCode {
                 if (lc == null) {
                     throw new InterpreterException(getLocalizer().format(
                         "TTP.NonLetterInHyph", token.toString()));
-                } else {
-                    tokens.add(context.getTokenFactory().createToken(
-                        Catcode.LETTER, c.equals(lc) ? c : lc,
-                        Namespace.DEFAULT_NAMESPACE));
                 }
+                tokens.add(context.getTokenFactory().createToken(
+                    Catcode.LETTER, c.equals(lc) ? c : lc,
+                    Namespace.DEFAULT_NAMESPACE));
                 letter = true;
             }
 

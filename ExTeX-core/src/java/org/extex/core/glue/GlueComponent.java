@@ -218,6 +218,7 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
     }
 
     /**
+     * {@inheritDoc}
      * @see org.extex.core.glue.FixedGlueComponent#getOrder()
      */
     public int getOrder() {

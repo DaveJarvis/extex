@@ -30,7 +30,6 @@ import org.extex.core.glue.Glue;
 import org.extex.font.FontKey;
 import org.extex.font.FontKeyFactory;
 import org.extex.font.type.other.NullFont;
-import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.context.MockContext;
 import org.extex.interpreter.context.tc.TypesettingContext;
 import org.extex.interpreter.context.tc.TypesettingContextImpl;

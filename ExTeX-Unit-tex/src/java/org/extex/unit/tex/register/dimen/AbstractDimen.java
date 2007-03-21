@@ -71,9 +71,8 @@ public abstract class AbstractDimen extends AbstractAssignment {
 
         if (Namespace.SUPPORT_NAMESPACE_DIMEN) {
             return context.getNamespace() + "dimen#" + name;
-        } else {
-            return name;
         }
+        return name;
     }
 
 }

@@ -48,78 +48,78 @@ public class CMR10 implements Font, Serializable {
      */
     protected static final long serialVersionUID = 2006L;
 
+    /**
+     * Private implementation of the glyph interface.
+     *
+     * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+     * @version $Revision: 4784 $
+     */
+    public class MyGlyph implements Serializable {
+
         /**
-         * Private implementation of the glyph interface.
-         *
-         * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-         * @version $Revision: 4784 $
+         * The constant <tt>serialVersionUID</tt> contains the id for
+         * serialization.
          */
-        public class MyGlyph implements Serializable {
-    
-            /**
-             * The constant <tt>serialVersionUID</tt> contains the id for
-             * serialization.
-             */
-            protected static final long serialVersionUID = 2006L;
-    
-            /**
-             * Creates a new object.
-             *
-             * @param c the character
-             * @param w the width
-             * @param h the height
-             */
-            public MyGlyph(final UnicodeChar c, final Dimen w, final Dimen h) {
-    
-    //            super(h, Dimen.ZERO_PT, w, Dimen.ZERO_PT);
-//                setName(c.toString());
-            }
-    
-            /**
-             * Creates a new object.
-             *
-             * @param c the character
-             * @param w the width
-             * @param h the height
-             * @param d the depth
-             * @param ic the italic correction
-             */
-            public MyGlyph(final UnicodeChar c, final Dimen w, final Dimen h,
-                    final Dimen d, final Dimen ic) {
-    
-//                super(h, d, w, ic);
-    //            setName(c.toString());
-            }
-    
-    //        /**
-    //         * Add a ligature entry.
-    //         *
-    //         * @param c the next letter
-    //         * @param d the ligature letter
-    //         */
-    //        public void addLig(final char c, final char d) {
-    //
-    //            Ligature lig = new Ligature();
-    //            lig.setLetter(Character.toString(c));
-    //            lig.setLetterid(Integer.toString(c));
-    //            lig.setLig(Character.toString(d));
-    //            lig.setLigid(Integer.toString(d));
-    //            addLigature(lig);
-    //        }
-    //
-    //        /**
-    //         * Add a kerning entry.
-    //         *
-    //         * @param c the character
-    //         * @param dimen the kerning
-    //         */
-    //        public void addKern(final char c, final Dimen dimen) {
-    //
-    //            String s = Character.toString(c);
-    //            addKerning(new Kerning(s, s, dimen));
-    //        }
-    
+        protected static final long serialVersionUID = 2006L;
+
+        /**
+         * Creates a new object.
+         *
+         * @param c the character
+         * @param w the width
+         * @param h the height
+         */
+        public MyGlyph(final UnicodeChar c, final Dimen w, final Dimen h) {
+
+            //            super(h, Dimen.ZERO_PT, w, Dimen.ZERO_PT);
+            //                setName(c.toString());
         }
+
+        /**
+         * Creates a new object.
+         *
+         * @param c the character
+         * @param w the width
+         * @param h the height
+         * @param d the depth
+         * @param ic the italic correction
+         */
+        public MyGlyph(final UnicodeChar c, final Dimen w, final Dimen h,
+                final Dimen d, final Dimen ic) {
+
+            //                super(h, d, w, ic);
+            //            setName(c.toString());
+        }
+
+        //        /**
+        //         * Add a ligature entry.
+        //         *
+        //         * @param c the next letter
+        //         * @param d the ligature letter
+        //         */
+        //        public void addLig(final char c, final char d) {
+        //
+        //            Ligature lig = new Ligature();
+        //            lig.setLetter(Character.toString(c));
+        //            lig.setLetterid(Integer.toString(c));
+        //            lig.setLig(Character.toString(d));
+        //            lig.setLigid(Integer.toString(d));
+        //            addLigature(lig);
+        //        }
+        //
+        //        /**
+        //         * Add a kerning entry.
+        //         *
+        //         * @param c the character
+        //         * @param dimen the kerning
+        //         */
+        //        public void addKern(final char c, final Dimen dimen) {
+        //
+        //            String s = Character.toString(c);
+        //            addKerning(new Kerning(s, s, dimen));
+        //        }
+
+    }
 
     /**
      * The field <tt>ONE_683332</tt> contains the ...
@@ -1643,13 +1643,13 @@ public class CMR10 implements Font, Serializable {
      *
      * @return ...
      */
-    private MyGlyph makeGlyph(final char c, final Dimen w, final Dimen h) {
-
-        UnicodeChar uc = UnicodeChar.get(c);
-        MyGlyph g = new MyGlyph(uc, w, h);
-        glyphs.put(uc, g);
-        return g;
-    }
+//    private MyGlyph makeGlyph(final char c, final Dimen w, final Dimen h) {
+//
+//        UnicodeChar uc = UnicodeChar.get(c);
+//        MyGlyph g = new MyGlyph(uc, w, h);
+//        glyphs.put(uc, g);
+//        return g;
+//    }
 
     /**
      * TODO gene: missing JavaDoc
@@ -1662,14 +1662,14 @@ public class CMR10 implements Font, Serializable {
      *
      * @return ...
      */
-    private MyGlyph makeGlyph(final char c, final Dimen w, final Dimen h,
-            final Dimen d, final Dimen ic) {
-
-        UnicodeChar uc = UnicodeChar.get(c);
-        MyGlyph g = new MyGlyph(uc, w, h, d, ic);
-        glyphs.put(uc, g);
-        return g;
-    }
+//    private MyGlyph makeGlyph(final char c, final Dimen w, final Dimen h,
+//            final Dimen d, final Dimen ic) {
+//
+//        UnicodeChar uc = UnicodeChar.get(c);
+//        MyGlyph g = new MyGlyph(uc, w, h, d, ic);
+//        glyphs.put(uc, g);
+//        return g;
+//    }
 
     /**
      * Set the new value for the font parameter.

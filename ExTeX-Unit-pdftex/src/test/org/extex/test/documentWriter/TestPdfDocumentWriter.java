@@ -477,6 +477,7 @@ public class TestPdfDocumentWriter
      */
     public void setParameter(final String name, final String value) {
 
+        //not needed
     }
 
     /**

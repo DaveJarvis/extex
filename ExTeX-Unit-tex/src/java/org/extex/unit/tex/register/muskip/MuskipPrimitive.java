@@ -109,14 +109,14 @@ public class MuskipPrimitive extends MuskipParameter {
     protected String getKey(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
 
-        String number = Long.toString(CountParser.scanNumber(context, source,
-                typesetter));
+        String number =
+                Long.toString(CountParser.scanNumber(context, source,
+                    typesetter));
 
         if (Namespace.SUPPORT_NAMESPACE_MUSKIP) {
             return context.getNamespace() + "\b" + getName() + "#" + number;
-        } else {
-            return getName() + "#" + number;
         }
+        return getName() + "#" + number;
     }
 
 }

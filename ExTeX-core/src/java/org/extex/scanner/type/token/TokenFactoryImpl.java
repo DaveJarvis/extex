@@ -263,7 +263,7 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     public Tokens toTokens(final CharSequence s) throws CatcodeException {
 
         Tokens tokens = new Tokens();
-        if (s != null) {
+        if (s == null) {
             return tokens;
         }
 

@@ -231,7 +231,7 @@ public class CreateClasspathArchive {
      * Do it!
      * @param dir       The directory to read.
      * @param jarname   The name of the jar file.
-     * @throws IOException if a IO-error occurred. 
+     * @throws IOException if a IO-error occurred.
      */
     public void doIt(final String jarname, final String dir)
             throws IOException {

@@ -49,6 +49,14 @@ import org.extex.typesetter.Typesetter;
 public final class CountParser {
 
     /**
+     * Creates a new object.
+     */
+    private CountParser() {
+
+        super();
+    }
+
+    /**
      * This interface describes a binary operation on two longs.
      *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>

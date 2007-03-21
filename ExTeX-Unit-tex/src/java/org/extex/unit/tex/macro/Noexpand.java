@@ -104,6 +104,7 @@ public class Noexpand extends AbstractCode
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
+        // relax
     }
 
     /**
@@ -130,6 +131,7 @@ public class Noexpand extends AbstractCode
             final TokenSource source, final Typesetter typesetter)
             throws InterpreterException {
 
+        // relax
     }
 
     /**

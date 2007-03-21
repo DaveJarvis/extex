@@ -140,6 +140,7 @@ public class PageSelector implements PagePipe {
      */
     public void setParameter(final String name, final String value) {
 
+        //not needed
     }
 
     /**

@@ -32,6 +32,12 @@ import org.extex.core.dimen.FixedDimen;
 public class FixedParagraphShape extends ParagraphShape {
 
     /**
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
+     */
+    private static final long serialVersionUID = 2007L;
+
+    /**
      * The field <tt>hsize</tt> contains the width of the fixed block.
      */
     private FixedDimen hsize;

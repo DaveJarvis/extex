@@ -32,7 +32,7 @@ import com.ibm.icu.lang.UCharacter;
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
+ * @version $Revision:5417 $
  */
 public class UnicodeChar implements Serializable {
 
@@ -66,7 +66,8 @@ public class UnicodeChar implements Serializable {
     /**
      * The field <tt>BREAK_PERMITTED_HERE</tt> contains the optional break.
      */
-    public static final UnicodeChar BREAK_PERMITTED_HERE = UnicodeChar.get(0x82);
+    public static final UnicodeChar BREAK_PERMITTED_HERE =
+            UnicodeChar.get(0x82);
 
     /**
      * The field <tt>NEXT_LINE</tt> contains the next line control character.
@@ -104,20 +105,18 @@ public class UnicodeChar implements Serializable {
      */
     public static UnicodeChar get(final int code) {
 
-        UnicodeChar uc;
         if (code < UCharacter.MIN_VALUE || code > UCharacter.MAX_VALUE) {
             return null;
         }
         if (0 <= code && code < CACHE_SIZE) {
-            uc = cache[code];
+            UnicodeChar uc = cache[code];
             if (uc == null) {
                 uc = new UnicodeChar(code);
                 cache[code] = uc;
             }
             return uc;
-        } else {
-            return new UnicodeChar(code);
         }
+        return new UnicodeChar(code);
     }
 
     /**

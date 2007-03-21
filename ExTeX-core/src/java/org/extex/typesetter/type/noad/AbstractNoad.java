@@ -278,50 +278,49 @@ public abstract class AbstractNoad implements Noad {
             sup.setShift(shiftUp);
             hlist.add(sup);
             return hlist;
-        } else {
-            // both subscript and superscript
+        }
+        // both subscript and superscript
 
-            shiftDown.max(mc.mathParameter(MathFontParameter.SUP2));
+        shiftDown.max(mc.mathParameter(MathFontParameter.SUP2));
 
-            clr.set(mc.mathParameter(MathFontParameter.DEFAULT_RULE_THICKNESS));
-            clr.multiply(4);
+        clr.set(mc.mathParameter(MathFontParameter.DEFAULT_RULE_THICKNESS));
+        clr.multiply(4);
+        clr.subtract(shiftUp);
+        clr.add(sup.getDepth());
+        clr.subtract(sub.getHeight());
+        clr.add(shiftDown);
+
+        if (clr.gt(Dimen.ZERO_PT)) {
+            shiftDown.add(clr);
+
+            clr.abs(mc.mathParameter(MathFontParameter.MATH_X_HEIGHT));
+            clr.multiply(4, 5);
             clr.subtract(shiftUp);
             clr.add(sup.getDepth());
-            clr.subtract(sub.getHeight());
-            clr.add(shiftDown);
-
             if (clr.gt(Dimen.ZERO_PT)) {
-                shiftDown.add(clr);
-
-                clr.abs(mc.mathParameter(MathFontParameter.MATH_X_HEIGHT));
-                clr.multiply(4, 5);
-                clr.subtract(shiftUp);
-                clr.add(sup.getDepth());
-                if (clr.gt(Dimen.ZERO_PT)) {
-                    shiftUp.add(clr);
-                    shiftDown.subtract(clr);
-                }
+                shiftUp.add(clr);
+                shiftDown.subtract(clr);
             }
-
-            //          shift_amount(x) ? delta;  {superscript is delta to the right of the subscript}
-            sup.setMove(delta);
-            VerticalListNode vlist = new VerticalListNode();
-            vlist.add(sup);
-            //            p ? new_kern((shift_up-depth(x))-(height(y)-shift _down));
-            clr.set(shiftUp);
-            clr.subtract(sup.getDepth());
-            clr.subtract(sub.getHeight());
-            clr.add(shiftDown);
-            vlist.add(new ImplicitKernNode(clr, false));
-            vlist.add(sub);
-            //            link(x) ? p;
-            //            link(p) ? y;
-            //            x ? vpack(x,natural);
-            //            shift_amount(x) ? shift_down;
-            vlist.setShift(shiftDown);
-            hlist.add(vlist);
-            return hlist;
         }
+
+        //          shift_amount(x) ? delta;  {superscript is delta to the right of the subscript}
+        sup.setMove(delta);
+        VerticalListNode vlist = new VerticalListNode();
+        vlist.add(sup);
+        //            p ? new_kern((shift_up-depth(x))-(height(y)-shift _down));
+        clr.set(shiftUp);
+        clr.subtract(sup.getDepth());
+        clr.subtract(sub.getHeight());
+        clr.add(shiftDown);
+        vlist.add(new ImplicitKernNode(clr, false));
+        vlist.add(sub);
+        //            link(x) ? p;
+        //            link(p) ? y;
+        //            x ? vpack(x,natural);
+        //            shift_amount(x) ? shift_down;
+        vlist.setShift(shiftDown);
+        hlist.add(vlist);
+        return hlist;
     }
 
     /**

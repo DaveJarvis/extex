@@ -184,7 +184,7 @@ public class MuskipParameter extends AbstractAssignment
 
         if (value == 0) {
             throw new ArithmeticOverflowException(
-                    printableControlSequence(context));
+                printableControlSequence(context));
         }
 
         Muskip ms = new Muskip(context.getMuskip(key));
@@ -208,9 +208,8 @@ public class MuskipParameter extends AbstractAssignment
 
         if (Namespace.SUPPORT_NAMESPACE_MUSKIP) {
             return context.getNamespace() + "\b" + getName();
-        } else {
-            return getName();
         }
+        return getName();
     }
 
     /**

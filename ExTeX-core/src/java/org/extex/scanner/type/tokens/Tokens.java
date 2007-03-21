@@ -24,14 +24,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.extex.core.UnicodeChar;
-import org.extex.core.exception.GeneralException;
-import org.extex.interpreter.context.Context;
-import org.extex.scanner.type.Catcode;
-import org.extex.scanner.type.CatcodeException;
-import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.token.ControlSequenceToken;
 import org.extex.scanner.type.token.Token;
-import org.extex.scanner.type.token.TokenFactory;
 
 /**
  * This class is a container for a list of
@@ -110,6 +104,7 @@ public class Tokens implements Serializable, FixedTokens {
     }
 
     /**
+     * {@inheritDoc}
      * @see java.lang.Object#equals(java.lang.Object)
      */
     public boolean equals(final Object object) {

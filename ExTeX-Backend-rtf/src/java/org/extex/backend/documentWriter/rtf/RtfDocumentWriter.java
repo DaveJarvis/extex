@@ -704,6 +704,7 @@ public class RtfDocumentWriter extends RtfDocument
      */
     public void configure(final Configuration config) {
 
+        //not needed
     }
 
     /**
@@ -727,6 +728,7 @@ public class RtfDocumentWriter extends RtfDocument
      */
     protected void optimize(final List list) {
 
+        //not yet
     }
 
     /**

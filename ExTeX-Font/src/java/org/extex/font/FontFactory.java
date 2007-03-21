@@ -18,8 +18,6 @@
 
 package org.extex.font;
 
-
-
 /**
  * This interface describes a factory to manage fonts.
  *
@@ -29,6 +27,5 @@ package org.extex.font;
  */
 public interface FontFactory extends CoreFontFactory {
 
-    
     // mgn: löschen
 }

@@ -66,9 +66,8 @@ public abstract class AbstractToks extends AbstractAssignment {
 
         if (Namespace.SUPPORT_NAMESPACE_TOKS) {
             return context.getNamespace() + "toks#" + name;
-        } else {
-            return "toks#" + name;
         }
+        return "toks#" + name;
     }
 
 }

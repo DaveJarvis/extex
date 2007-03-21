@@ -93,11 +93,11 @@ public class TGlue extends WideGlue implements EType {
         } else if (t instanceof TDouble) {
             double x = ((TDouble) t).getValue();
             value.setLength(//
-                    new Dimen((long) (value.getLength().getValue() / x)));
+                new Dimen((long) (value.getLength().getValue() / x)));
             value.setStretch(//
-                    new Dimen((long) (value.getStretch().getValue() / x)));
+                new Dimen((long) (value.getStretch().getValue() / x)));
             value.setShrink(//
-                    new Dimen((long) (value.getShrink().getValue() / x)));
+                new Dimen((long) (value.getShrink().getValue() / x)));
             // TODO gene: divide unimplemented
             return this;
         }
@@ -123,12 +123,11 @@ public class TGlue extends WideGlue implements EType {
      */
     public TBoolean ge(final EType t) throws CastException {
 
-        if (t instanceof TGlue) {
-            Glue x = ((TGlue) t).value;
-            return new TBoolean(value.getLength().ge(x.getLength()));
-        } else {
+        if (!(t instanceof TGlue)) {
             throw new CastException();
         }
+        Glue x = ((TGlue) t).value;
+        return new TBoolean(value.getLength().ge(x.getLength()));
     }
 
     /**
@@ -137,12 +136,11 @@ public class TGlue extends WideGlue implements EType {
      */
     public TBoolean gt(final EType t) throws CastException {
 
-        if (t instanceof TGlue) {
-            Glue x = ((TGlue) t).value;
-            return new TBoolean(value.getLength().gt(x.getLength()));
-        } else {
+        if (!(t instanceof TGlue)) {
             throw new CastException();
         }
+        Glue x = ((TGlue) t).value;
+        return new TBoolean(value.getLength().gt(x.getLength()));
     }
 
     /**
@@ -151,12 +149,11 @@ public class TGlue extends WideGlue implements EType {
      */
     public TBoolean le(final EType t) throws CastException {
 
-        if (t instanceof TGlue) {
-            Glue x = ((TGlue) t).value;
-            return new TBoolean(value.getLength().le(x.getLength()));
-        } else {
+        if (!(t instanceof TGlue)) {
             throw new CastException();
         }
+        Glue x = ((TGlue) t).value;
+        return new TBoolean(value.getLength().le(x.getLength()));
     }
 
     /**
@@ -255,7 +252,7 @@ public class TGlue extends WideGlue implements EType {
     public String toString() {
 
         return LocalizerFactory.getLocalizer(TGlue.class).format("Format",
-                super.toString());
+            super.toString());
     }
 
 }

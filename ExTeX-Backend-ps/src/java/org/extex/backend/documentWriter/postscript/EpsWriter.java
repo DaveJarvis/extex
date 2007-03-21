@@ -69,6 +69,7 @@ public class EpsWriter extends AbstractPostscriptWriter {
      */
     public void close() {
 
+        //nothing to do
     }
 
     /**

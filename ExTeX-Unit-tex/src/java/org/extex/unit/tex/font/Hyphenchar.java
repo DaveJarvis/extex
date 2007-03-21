@@ -162,17 +162,14 @@ public class Hyphenchar extends AbstractAssignment
     public long convertCount(final Context context, final TokenSource source,
             final Typesetter typesetter) throws InterpreterException {
 
+        UnicodeChar uc;
         try {
             Font font = source.getFont(context, getName());
-            UnicodeChar uc = font.getHyphenChar();
-            if (uc == null) {
-                return -1;
-            } else {
-                return uc.getCodePoint();
-            }
+            uc = font.getHyphenChar();
         } catch (EofException e) {
             throw new EofException(printableControlSequence(context));
         }
+        return (uc == null ? -1 : uc.getCodePoint());
     }
 
     /**

@@ -33,7 +33,7 @@ import org.extex.font.format.xtf.XtfReaderGara4Test;
 import org.extex.font.format.xtf.XtfReaderLmRoman10Regular01Test;
 
 /**
- * Test suite for the fonts. 
+ * Test suite for the fonts.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$

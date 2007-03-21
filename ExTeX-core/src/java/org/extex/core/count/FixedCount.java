@@ -19,10 +19,6 @@
 
 package org.extex.core.count;
 
-import org.extex.interpreter.exception.InterpreterException;
-import org.extex.scanner.type.token.TokenFactory;
-import org.extex.scanner.type.tokens.Tokens;
-
 /**
  * This interface describes the features of a
  * {@link org.extex.core.count.Count Count} which do not modify
